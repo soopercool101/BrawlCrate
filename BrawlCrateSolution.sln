@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ikarus", "Ikarus\Ikarus.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net", "Updater\Net.csproj", "{9FAFC886-08B5-4922-BECC-E03D84FF15B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdaterCore", "UpdaterCore\UpdaterCore.csproj", "{866BADB8-807A-4787-BF6D-032DB97DDC6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,18 @@ Global
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0}.Release|x64.Build.0 = Release|x64
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0}.Release|x86.ActiveCfg = Release|x86
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0}.Release|x86.Build.0 = Release|x86
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Debug|x64.Build.0 = Debug|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Debug|x86.Build.0 = Debug|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Release|x64.ActiveCfg = Release|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Release|x64.Build.0 = Release|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Release|x86.ActiveCfg = Release|Any CPU
+		{866BADB8-807A-4787-BF6D-032DB97DDC6B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
