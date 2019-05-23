@@ -1,20 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0B8588FD-74EE-4A7D-A397-91EA3F6A2C77}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrawlCrate</RootNamespace>
-    <AssemblyName>BrawlCrate</AssemblyName>
-    <FileAlignment>512</FileAlignment>
     <PlatformTarget>x86</PlatformTarget>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
+    <TargetFramework>net472</TargetFramework>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,62 +19,68 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <AssemblyTitle>BrawlCrate v0.78</AssemblyTitle>
+    <Product>BrawlCrate</Product>
+    <Description>This program is provided as-is without any warranty, implied or otherwise." +
+" By using this program, the end user agrees to take full responsibility regarding its proper and lawful use." +
+" The authors/hosts/distributors cannot be held responsible for any damage resulting in the use of this program," +
+" nor can they be held accountable for the manner in which it is used.</Description>
+    <Copyright>@"Copyright © 2009 - 2017 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky
+Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
+    <AssemblyVersion>0.78.1.0</AssemblyVersion>
+    <FileVersion>0.78.1.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DefineConstants>DEBUG</DefineConstants>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <Prefer32Bit>false</Prefer32Bit>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants />
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DefineConstants>DEBUG</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DefineConstants>DEBUG</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
+    <DefineConstants />
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DefineConstants />
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DefineConstants />
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
@@ -93,252 +89,161 @@
   <PropertyGroup>
     <StartupObject>BrawlCrate.Program</StartupObject>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DefineConstants />
     <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
-    <Reference Include="IronPython, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Modules, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.Modules.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.SQLite, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Wpf, Version=2.7.9.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronPython.2.7.9\lib\net45\IronPython.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Dynamic, Version=1.2.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicLanguageRuntime.1.2.2\lib\net45\Microsoft.Dynamic.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting, Version=1.2.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicLanguageRuntime.1.2.2\lib\net45\Microsoft.Scripting.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata, Version=1.2.2.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicLanguageRuntime.1.2.2\lib\net45\Microsoft.Scripting.Metadata.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DynamicLanguageRuntime" Version="1.2.2" />
+    <PackageReference Include="IronPython" Version="2.7.9" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BrawlLib\OpenTK.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NodeWrappers\ClassicStageTblWrapper.cs" />
-    <Compile Include="NodeWrappers\MultiSelectableWrapper.cs" />
-    <Compile Include="NodeWrappers\SCLAWrapper.cs" />
-    <Compile Include="UI\TreeViewMS.cs">
+    <Compile Update="UI\TreeViewMS.cs">
       <SubType>Component</SubType>
     </Compile>
-    <None Include="app.config" />
     <None Include="NodeWrappers\BMDWrapper.cs" />
     <None Include="NodeWrappers\RARCWrapper.cs" />
     <None Include="NodeWrappers\FMDLWrapper.cs" />
-    <Compile Include="NodeWrappers\SndBgmTitleDataFolderWrapper.cs" />
-    <Compile Include="NodeWrappers\Subspace\ADSJWrapper.cs" />
-    <Compile Include="NodeWrappers\Subspace\BLOCWrapper.cs" />
-    <Compile Include="NodeWrappers\Subspace\GDORWrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RSARWrapper.cs" />
-    <Compile Include="NodeWrappers\STDTWrapper.cs" />
-    <Compile Include="NodeWrappers\Subspace\GSNDWrapper.cs" />
-    <Compile Include="NodeWrappers\HavokWrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\TPLWrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RWSDSoundGroupWrapper.cs" />
-    <Compile Include="NodeWrappers\Archives\U8FolderWrapper.cs" />
-    <Compile Include="NodeWrappers\Archives\U8Wrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RSARSoundWrapper.cs" />
-    <Compile Include="NodeWrappers\SCN0Wrapper.cs" />
-    <Compile Include="NodeWrappers\Animations\SRT0Wrapper.cs" />
-    <Compile Include="NodeWrappers\Animations\SHP0Wrapper.cs" />
-    <Compile Include="NodeWrappers\Archives\ARCWrapper.cs" />
-    <Compile Include="NodeWrappers\Archives\BRESGroupWrapper.cs" />
-    <Compile Include="NodeWrappers\Archives\BRESWrapper.cs" />
-    <Compile Include="NodeWrappers\Animations\CHR0Wrapper.cs" />
-    <Compile Include="NodeWrappers\STPMWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\TEVStageWrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\REFTImageWrapper.cs" />
-    <Compile Include="NodeWrappers\NoEditWrapper.cs" />
     <None Include="NodeWrappers\MDefWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\MDL0MaterialWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\MDL0ShaderWrapper.cs" />
-    <Compile Include="NodeWrappers\Archives\MRGWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\MDL0PolygonWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\MDL0BoneWrapper.cs" />
-    <Compile Include="NodeWrappers\Animations\PAT0Wrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\REFTWrapper.cs" />
-    <Compile Include="NodeWrappers\RELWrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\REFFWrapper.cs" />
-    <Compile Include="NodeWrappers\Animations\CLR0Wrapper.cs" />
-    <Compile Include="NodeWrappers\CollisionWrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\EFLSWrapper.cs" />
-    <Compile Include="NodeWrappers\GenericWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\MDL0GroupWrapper.cs" />
-    <Compile Include="NodeWrappers\MDL0\MDL0Wrapper.cs" />
-    <Compile Include="NodeWrappers\MSBinWrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\PLT0Wrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RBNKWrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RSARFolderWrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RSEQWrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RSTMWrapper.cs" />
-    <Compile Include="NodeWrappers\Audio\RWSDWrapper.cs" />
-    <Compile Include="NodeWrappers\Graphics\TEX0Wrapper.cs" />
-    <Compile Include="NodeWrappers\Animations\VIS0Wrapper.cs" />
-    <Compile Include="API\Plugin.cs" />
-    <Compile Include="API\bboxapi.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="UI\AboutForm.cs">
+    <Compile Update="UI\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AboutForm.designer.cs">
+    <Compile Update="UI\AboutForm.designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NodeWrappers\BaseWrapper.cs" />
-    <Compile Include="UI\CloneSoundDialog.cs">
+    <Compile Update="UI\CloneSoundDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CollisionEditor.cs">
+    <Compile Update="UI\CollisionEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\CollisionForm.cs">
+    <Compile Update="UI\CollisionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\IssueDialog.cs">
+    <Compile Update="UI\IssueDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\IssueDialog.Designer.cs">
+    <Compile Update="UI\IssueDialog.Designer.cs">
       <DependentUpon>IssueDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelEditControl\Animation.cs">
+    <Compile Update="UI\Model Previewer\ModelEditControl\Animation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelEditControl\ButtonClick.cs">
+    <Compile Update="UI\Model Previewer\ModelEditControl\ButtonClick.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelEditControl\MiscFunctions.cs">
+    <Compile Update="UI\Model Previewer\ModelEditControl\MiscFunctions.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelEditControl\Designer.cs">
+    <Compile Update="UI\Model Previewer\ModelEditControl\Designer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelEditControl\Rendering.cs">
+    <Compile Update="UI\Model Previewer\ModelEditControl\Rendering.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelEditControl\Variables.cs">
+    <Compile Update="UI\Model Previewer\ModelEditControl\Variables.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelViewerHelp.cs">
+    <Compile Update="UI\Model Previewer\ModelViewerHelp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\LeftPanel.cs">
+    <Compile Update="UI\Model Previewer\LeftPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Model Previewer\ModelViewerSettings.cs">
+    <Compile Update="UI\Model Previewer\ModelViewerSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\SettingsDialog.cs">
+    <Compile Update="UI\SettingsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <None Include="packages.config" />
-    <Compile Include="UI\MainForm.cs">
+    <Compile Update="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\MainForm.designer.cs">
+    <Compile Update="UI\MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ModelForm.cs">
+    <Compile Update="UI\ModelForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="UI\ResourceTree.cs">
+    <Compile Update="UI\ResourceTree.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AboutForm.resx">
+    <EmbeddedResource Update="UI\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CloneSoundDialog.resx">
+    <EmbeddedResource Update="UI\CloneSoundDialog.resx">
       <DependentUpon>CloneSoundDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CollisionEditor.resx">
+    <EmbeddedResource Update="UI\CollisionEditor.resx">
       <DependentUpon>CollisionEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CollisionForm.resx">
+    <EmbeddedResource Update="UI\CollisionForm.resx">
       <DependentUpon>CollisionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\IssueDialog.resx">
+    <EmbeddedResource Update="UI\IssueDialog.resx">
       <DependentUpon>IssueDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\MainForm.resx">
+    <EmbeddedResource Update="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Model Previewer\ModelEditControl\Designer.resx">
+    <EmbeddedResource Update="UI\Model Previewer\ModelEditControl\Designer.resx">
       <DependentUpon>Designer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Model Previewer\ModelViewerHelp.resx">
+    <EmbeddedResource Update="UI\Model Previewer\ModelViewerHelp.resx">
       <DependentUpon>ModelViewerHelp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Model Previewer\LeftPanel.resx">
+    <EmbeddedResource Update="UI\Model Previewer\LeftPanel.resx">
       <DependentUpon>LeftPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Model Previewer\ModelViewerSettings.resx">
+    <EmbeddedResource Update="UI\Model Previewer\ModelViewerSettings.resx">
       <DependentUpon>ModelViewerSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ModelForm.resx">
+    <EmbeddedResource Update="UI\ModelForm.resx">
       <DependentUpon>ModelForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SettingsDialog.resx">
+    <EmbeddedResource Update="UI\SettingsDialog.resx">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
@@ -405,23 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Coll.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SHP.png" />
@@ -787,39 +675,20 @@
     <None Include="Resources\TPL.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrawlLib\BrawlLib.csproj">
-      <Project>{462d0bbf-ce82-405b-8848-2f91e9e14c55}</Project>
-      <Name>BrawlLib</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\BrawlLib\BrawlLib.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent Condition=" '$(OS)' == 'Unix' ">cp "$(SolutionDir)/Updater/bin/$(ConfigurationName)/Updater.exe" "$(TargetDir)/Updater.exe"</PostBuildEvent>
-    <PostBuildEvent Condition=" '$(OS)' != 'Unix' ">%25windir%25\system32\xcopy "$(SolutionDir)Updater\bin\$(ConfigurationName)\Updater.exe" "$(TargetDir)" /Y /I</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>cd $(TargetDir)
-mkdir Lib
-mkdir Python
-%25windir%25\system32\xcopy "$(SolutionDir)Updater\bin\$(PlatformName)\$(ConfigurationName)\Octokit.dll" "$(TargetDir)/Lib" /Y /I
-%25windir%25\system32\xcopy "$(SolutionDir)Updater\bin\$(PlatformName)\$(ConfigurationName)\Updater.exe" "$(TargetDir)/Lib" /Y /I
-%25windir%25\system32\xcopy "$(SolutionDir)$(ProjectName)\Lib" "$(TargetDir)/Python" /Y /I /E
-%25windir%25\system32\xcopy "$(TargetDir)*.dll" "$(TargetDir)/Lib" /Y /I
-%25windir%25\system32\xcopy "$(TargetDir)*.dll" "$(TargetDir)/lib" /Y /I
-%25windir%25\system32\xcopy "$(TargetDir)*.dll.config" "$(TargetDir)/lib" /Y /I
-del *.dll
-del *.dll.config
-del updater.exe</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+  <ItemGroup>
+    <Compile Remove="NodeWrappers\BMDWrapper.cs" />
+    <Compile Remove="NodeWrappers\RARCWrapper.cs" />
+    <Compile Remove="NodeWrappers\FMDLWrapper.cs" />
+    <Compile Remove="NodeWrappers\MDefWrapper.cs" />
+    <Compile Remove="NodeWrappers\ItmFreqWrapper.cs" />
+    <Compile Remove="UI\Model Previewer\ModelEditControl\BRRESNodes.cs" />
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)" />
   </Target>
-  <Target Name="AfterBuild">
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="cd $(TargetDir)&#xD;&#xA;mkdir Lib&#xD;&#xA;mkdir Python&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)\Updater\$(OutputDir)\Octokit.dll&quot; &quot;$(TargetDir)\Lib\&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)\Updater\$(OutputDir)\Updater.exe&quot; &quot;$(TargetDir)\Lib\&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)$(ProjectName)\Lib\*&quot; &quot;$(TargetDir)\Python\&quot; /Y /I /E&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(TargetDir)*.dll&quot; &quot;$(TargetDir)\Lib\&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(TargetDir)*.dll&quot; &quot;$(TargetDir)\Lib\&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(TargetDir)*.dll.config&quot; &quot;$(TargetDir)\Lib\&quot; /Y /I&#xD;&#xA;del *.dll&#xD;&#xA;del *.dll.config&#xD;&#xA;del updater.exe" />
   </Target>
-  -->
 </Project>

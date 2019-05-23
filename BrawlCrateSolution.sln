@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrawlCrate", "BrawlCrate\BrawlCrate.csproj", "{0B8588FD-74EE-4A7D-A397-91EA3F6A2C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlCrate", "BrawlCrate\BrawlCrate.csproj", "{0B8588FD-74EE-4A7D-A397-91EA3F6A2C77}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9FAFC886-08B5-4922-BECC-E03D84FF15B0} = {9FAFC886-08B5-4922-BECC-E03D84FF15B0}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrawlLib", "BrawlLib\BrawlLib.csproj", "{462D0BBF-CE82-405B-8848-2F91E9E14C55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlLib", "BrawlLib\BrawlLib.csproj", "{462D0BBF-CE82-405B-8848-2F91E9E14C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikarus", "Ikarus\Ikarus.csproj", "{E47B2B3C-B95D-40E9-88EB-639FA4D34CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ikarus", "Ikarus\Ikarus.csproj", "{E47B2B3C-B95D-40E9-88EB-639FA4D34CB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net", "Updater\Net.csproj", "{9FAFC886-08B5-4922-BECC-E03D84FF15B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net", "Updater\Net.csproj", "{9FAFC886-08B5-4922-BECC-E03D84FF15B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
