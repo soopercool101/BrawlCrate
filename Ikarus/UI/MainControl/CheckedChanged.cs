@@ -12,29 +12,29 @@ namespace Ikarus.UI
             //if (_updating) return;
             //BrawlLib.Properties.Settings.Default.External = storeSettingsExternallyToolStripMenuItem.Checked;
 
-            //BrawlBoxViewerSettings settings = new BrawlBoxViewerSettings();
+            //BrawlCrateViewerSettings settings = new BrawlCrateViewerSettings();
             //if (BrawlLib.Properties.Settings.Default.External)
             //{
             //    settings = BrawlLib.Properties.Settings.Default.ViewerSettings;
-            //    using (FileStream stream = new FileStream(Application.StartupPath + "/brawlbox.settings", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            //    using (FileStream stream = new FileStream(Application.StartupPath + "/BrawlCrate.settings", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
             //    {
             //        CompactStringTable s = new CompactStringTable();
             //        s.Add(ScreenCapBgLocText.Text);
-            //        stream.SetLength((long)BrawlBoxViewerSettings.Size + s.TotalSize);
+            //        stream.SetLength((long)BrawlCrateViewerSettings.Size + s.TotalSize);
             //        using (FileMap map = FileMap.FromStream(stream))
             //        {
-            //            *(BrawlBoxViewerSettings*)map.Address = settings;
-            //            s.WriteTable(map.Address + BrawlBoxViewerSettings.Size);
-            //            ((BrawlBoxViewerSettings*)map.Address)->_screenCapPathOffset = (uint)s[ScreenCapBgLocText.Text] - (uint)map.Address;
+            //            *(BrawlCrateViewerSettings*)map.Address = settings;
+            //            s.WriteTable(map.Address + BrawlCrateViewerSettings.Size);
+            //            ((BrawlCrateViewerSettings*)map.Address)->_screenCapPathOffset = (uint)s[ScreenCapBgLocText.Text] - (uint)map.Address;
             //        }
             //    }
             //}
             //else
             //{
-            //    if (File.Exists(Application.StartupPath + "/brawlbox.settings"))
-            //        using (FileMap map = FileMap.FromFile(Application.StartupPath + "/brawlbox.settings", FileMapProtect.Read))
-            //            if (*(uint*)map.Address == BrawlBoxViewerSettings.Tag)
-            //                settings = *(BrawlBoxViewerSettings*)map.Address;
+            //    if (File.Exists(Application.StartupPath + "/BrawlCrate.settings"))
+            //        using (FileMap map = FileMap.FromFile(Application.StartupPath + "/BrawlCrate.settings", FileMapProtect.Read))
+            //            if (*(uint*)map.Address == BrawlCrateViewerSettings.Tag)
+            //                settings = *(BrawlCrateViewerSettings*)map.Address;
 
             //    BrawlLib.Properties.Settings.Default.ViewerSettings = settings;
             //    BrawlLib.Properties.Settings.Default.ScreenCapBgLocText = ScreenCapBgLocText.Text;

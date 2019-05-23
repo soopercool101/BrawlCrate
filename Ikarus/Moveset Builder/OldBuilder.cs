@@ -15,8 +15,8 @@ namespace Ikarus.MovesetBuilder
 
         //PhantomWings, for the PSA source code and its text files.
         //Dantarion, for the OpenSA3/Tabuu source code.
-        //Kryal, for Brawlbox and starting to make structs for this format.
-        //Bero, for starting to parse the format for Brawlbox.
+        //Kryal, for BrawlCrate and starting to make structs for this format.
+        //Bero, for starting to parse the format for BrawlCrate.
         //Toomai, for the hitbox/hurtbox flags and rendering code.
         //The Project M team, for their moveset text files to use in the internal event dictionary.
 

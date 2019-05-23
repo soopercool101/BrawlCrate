@@ -83,7 +83,7 @@ namespace Ikarus.UI
 
         private void donateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=3T2HNHK5BM8LL&lc=US&item_name=Brawlbox&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted");
+            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=3T2HNHK5BM8LL&lc=US&item_name=BrawlCrate&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted");
         }
     }
 }

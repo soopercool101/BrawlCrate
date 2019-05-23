@@ -705,7 +705,7 @@ namespace System
                 0.0f, -0.5f, 0.0f, 0.5f,
                 0.0f, 0.0f, 0.0f, 1.0f);
 
-            //If no light is referenced, use the BrawlBox built-in light
+            //If no light is referenced, use the BrawlCrate built-in light
             if (refLight < 0 || (node != null && node.LightGroup != null && refLight >= node.LightGroup.Children.Count))
             {
                 refLight = 0;

@@ -49,8 +49,8 @@ namespace Net
             }
             else
             {
-                //Find and close the brawlbox application that will be overwritten
-                Process[] px =  Process.GetProcessesByName("BrawlBox");
+                //Find and close the BrawlCrate application that will be overwritten
+                Process[] px =  Process.GetProcessesByName("BrawlCrate");
                 Process p = px.FirstOrDefault(x => x.MainModule.FileName.StartsWith(AppPath));
                 if (p != null && p != default(Process) && p.CloseMainWindow())
                     p.Close();
@@ -91,7 +91,7 @@ namespace Net
                     // Check if this is a known pre-release version
                     bool isPreRelease = releases.Any(r => r.Prerelease
                         && string.Equals(releases[0].TagName, releaseTag, StringComparison.InvariantCulture)
-                        && r.Name.IndexOf("BrawlBox", StringComparison.InvariantCultureIgnoreCase) >= 0);
+                        && r.Name.IndexOf("BrawlCrate", StringComparison.InvariantCultureIgnoreCase) >= 0);
 
                     // If this is not a known pre-release version, remove all pre-release versions from the list
                     if (!isPreRelease) {
@@ -107,7 +107,7 @@ namespace Net
                 if (releases != null &&
                     releases.Count > 0 &&
                     !String.Equals(releases[0].TagName, releaseTag, StringComparison.InvariantCulture) && //Make sure the most recent version is not this version
-                    releases[0].Name.IndexOf("BrawlBox", StringComparison.InvariantCultureIgnoreCase) >= 0) //Make sure this is a BrawlBox release
+                    releases[0].Name.IndexOf("BrawlCrate", StringComparison.InvariantCultureIgnoreCase) >= 0) //Make sure this is a BrawlCrate release
                 {
                     DialogResult UpdateResult = MessageBox.Show(releases[0].Name + " is available! Update now?", "Update", MessageBoxButtons.YesNo);
                     if (UpdateResult == DialogResult.Yes)
@@ -149,7 +149,7 @@ namespace Net
         {
             try
             {
-                //Gain access to the BrawlBox account on github for submitting the report.
+                //Gain access to the BrawlCrate account on github for submitting the report.
                 //I don't really care if this gets compromised, the token has no user settings access so I'll just revoke access to the token and generate a new one.
                 //Have to use a byte array to (hopefully) bypass github's automatic detection of the token as a string.
                 Octokit.Credentials s = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
@@ -159,7 +159,7 @@ namespace Net
                 try
                 {
                     releases = await github.Release.GetAll("libertyernie", "brawltools");
-                    issues = await github.Issue.GetForRepository("BrawlBox", "BrawlBoxIssues");
+                    issues = await github.Issue.GetForRepository("BrawlCrate", "BrawlCrateIssues");
                 }
                 catch (System.Net.Http.HttpRequestException)
                 {
@@ -206,7 +206,7 @@ namespace Net
                                         Environment.NewLine +
                                         i.Body;
 
-                                    Issue x = await github.Issue.Update("BrawlBox", "BrawlBoxIssues", i.Number, update);
+                                    Issue x = await github.Issue.Update("BrawlCrate", "BrawlCrateIssues", i.Number, update);
                                 }
                             }
                     
@@ -224,7 +224,7 @@ namespace Net
                             Environment.NewLine +
                             StackTrace
                         };
-                        Issue x = await github.Issue.Create("BrawlBox", "BrawlBoxIssues", issue);
+                        Issue x = await github.Issue.Create("BrawlCrate", "BrawlCrateIssues", issue);
                     }
                 }
             }
@@ -263,12 +263,12 @@ namespace Net
                         Task t = Updater.UpdateCheck(true);
                         t.Wait();
                         break;
-                    case "-bu": //brawlbox update call
+                    case "-bu": //BrawlCrate update call
                         somethingDone = true;
                         Task t2 = Updater.CheckUpdates(args[1], args[2] != "0");
                         t2.Wait();
                         break;
-                    case "-bi": //brawlbox issue call
+                    case "-bi": //BrawlCrate issue call
                         somethingDone = true;
                         Task t3 = BugSquish.CreateIssue(args[1], args[2], args[3], args[4], args[5]);
                         t3.Wait();

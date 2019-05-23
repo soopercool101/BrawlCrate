@@ -154,7 +154,7 @@ namespace Ikarus.MovesetFile
         }
 
         //How to parse the articles for a character:
-        //Using Brawlbox v0.68b, you can view a character's extra data offsets (header data specific to that character)
+        //Using BrawlCrate v0.68b, you can view a character's extra data offsets (header data specific to that character)
         //by opening the character's moveset file and going to MoveDef_FitChar->Sections->data
         //Go the properties and view the ExtraOffsets collection.
         //Use this to set up the struct for the character accordingly (find their struct by name below).

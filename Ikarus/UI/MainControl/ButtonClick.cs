@@ -70,7 +70,7 @@ namespace Ikarus.UI
                     DirectoryInfo dir = new DirectoryInfo(outPath);
                     FileInfo[] files = dir.GetFiles();
                     int i = 0;
-                    string name = "BrawlboxScreencap";
+                    string name = "BrawlCrateScreencap";
                     Top:
                     foreach (FileInfo f in files)
                         if (f.Name == name + i + _imgExt)
@@ -308,16 +308,16 @@ namespace Ikarus.UI
 
             //    //if (BrawlLib.Properties.Settings.Default.External)
             //    //{
-            //    //    using (FileStream stream = new FileStream(Application.StartupPath + "/brawlbox.settings", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            //    //    using (FileStream stream = new FileStream(Application.StartupPath + "/BrawlCrate.settings", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
             //    //    {
             //    //        CompactStringTable s = new CompactStringTable();
             //    //        s.Add(ScreenCapBgLocText.Text);
-            //    //        stream.SetLength((long)BrawlBoxViewerSettings.Size + s.TotalSize);
+            //    //        stream.SetLength((long)BrawlCrateViewerSettings.Size + s.TotalSize);
             //    //        using (FileMap map = FileMap.FromStream(stream))
             //    //        {
-            //    //            *(BrawlBoxViewerSettings*)map.Address = settings;
-            //    //            s.WriteTable(map.Address + BrawlBoxViewerSettings.Size);
-            //    //            ((BrawlBoxViewerSettings*)map.Address)->_screenCapPathOffset = (uint)s[ScreenCapBgLocText.Text] - (uint)map.Address;
+            //    //            *(BrawlCrateViewerSettings*)map.Address = settings;
+            //    //            s.WriteTable(map.Address + BrawlCrateViewerSettings.Size);
+            //    //            ((BrawlCrateViewerSettings*)map.Address)->_screenCapPathOffset = (uint)s[ScreenCapBgLocText.Text] - (uint)map.Address;
             //    //        }
             //    //    }
             //    //}
@@ -360,12 +360,12 @@ namespace Ikarus.UI
             //{
             //    if (BrawlLib.Properties.Settings.Default.External)
             //    {
-            //        if (File.Exists(Application.StartupPath + "/brawlbox.settings"))
-            //            File.Delete(Application.StartupPath + "/brawlbox.settings");
+            //        if (File.Exists(Application.StartupPath + "/BrawlCrate.settings"))
+            //            File.Delete(Application.StartupPath + "/BrawlCrate.settings");
             //    }
             //    else
             //    {
-            //        BrawlBoxViewerSettings v = BrawlLib.Properties.Settings.Default.ViewerSettings;
+            //        BrawlCrateViewerSettings v = BrawlLib.Properties.Settings.Default.ViewerSettings;
             //        v.UseModelViewerSettings = false;
             //        BrawlLib.Properties.Settings.Default.ViewerSettings = v;
             //    }

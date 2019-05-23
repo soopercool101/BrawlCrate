@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Brawlbox updater")]
-[assembly: AssemblyDescription("Simple application that updates a brawlbox installation")]
+[assembly: AssemblyTitle("BrawlCrate updater")]
+[assembly: AssemblyDescription("Simple application that updates a BrawlCrate installation")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Brawltools")]
-[assembly: AssemblyProduct("Brawlbox")]
+[assembly: AssemblyProduct("BrawlCrate")]
 [assembly: AssemblyCopyright("Copyright © Tommy Burrows - (Sammi Husky)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

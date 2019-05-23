@@ -708,7 +708,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         /* These are absolute offsets - land within section 1.
-         * When BrawlBox rebuilds st_otrain.rel, it cuts out 16 bytes from 0xA50-0xA60,
+         * When BrawlCrate rebuilds st_otrain.rel, it cuts out 16 bytes from 0xA50-0xA60,
          * but those come after these, so we should be ok. */
         private readonly static int[] OTrainItemOffsets = {
             // Changing some values but not others has strange effects

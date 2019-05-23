@@ -117,7 +117,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }) {
                             int s;
                             if (!sizes.TryGetValue(key, out s) || s != 0x104) {
-                                MessageBox.Show($"Changing the size of {key} may not work properly (BrawlBox doesn't know yet which size entry to update)");
+                                MessageBox.Show($"Changing the size of {key} may not work properly (BrawlCrate doesn't know yet which size entry to update)");
                             }
                         }
 

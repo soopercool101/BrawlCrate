@@ -1013,7 +1013,7 @@ namespace BrawlLib.Modeling
             _header._modelName = model.Name;
 
             //To do: Add the ability to change the comment
-            _header._comment = "MDL0 model converted to PMD by Brawlbox.";
+            _header._comment = "MDL0 model converted to PMD by BrawlCrate.";
 
             foreach (MDL0MaterialNode m in model._matList)
             {

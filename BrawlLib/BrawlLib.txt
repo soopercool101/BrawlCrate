@@ -15,11 +15,11 @@ they be held accountable for the manner in which it is used.
 |************ Change Log ************|
  ====================================
 
- Changes beginning with an asterisk (*) affect BrawlBox behavior,
+ Changes beginning with an asterisk (*) affect BrawlCrate behavior,
  while changes beginning with a period (.) serve to add/modify
- features that BrawlBox doesn't use.
+ features that BrawlCrate doesn't use.
 
- See BrawlBox's Changelog.txt for more recent changes (mid-2014 and newer.)
+ See BrawlCrate's Changelog.txt for more recent changes (mid-2014 and newer.)
 
  (7/26/2014) - BrawlLib 0.20b
  	* BLOC archives are now rebuildable
@@ -27,7 +27,7 @@ they be held accountable for the manner in which it is used.
 	* Module ID->name list now embedded (not loaded from text file)
 
  (6/28/2014) - BrawlLib 0.20a
-    * See BrawlBox 0.73a changelog (additions to interpolation editor, RELNode)
+    * See BrawlCrate 0.73a changelog (additions to interpolation editor, RELNode)
 	* BrawlLib.SSBB.Stage added - keeps a list of Brawl stages' names, filenames, and IDs
 
  (6/3/2014) - BrawlLib 0.20
@@ -58,7 +58,7 @@ they be held accountable for the manner in which it is used.
 	. Added Volume and VolumePercent properties to AudioPlaybackPanel
 	* Don't crash when editing MDL0 models without any objects defined
 
- For changes prior to 2014, see the BrawlBox changelog, or:
+ For changes prior to 2014, see the BrawlCrate changelog, or:
  https://github.com/libertyernie/brawltools/blob/367f812284b03d0f6e201f6b3a840d9cbac4107f/BrawlLib/BrawlLib.txt
 
  ====================================
