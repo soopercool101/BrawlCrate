@@ -1,0 +1,82 @@
+﻿
+BrawlLib Resource Library - Version 0.20a
+Copyright © 2009 - 2013 Bryan Moulton & BlackJax96
+Copyright © 2014 libertyernie & Sammi Husky
+
+https://github.com/libertyernie/brawltools
+
+This program is provided as-is without any warranty, implied or otherwise.
+By using this program, the end user agrees to take full responsibility
+regarding its proper and lawful use. The authors/hosts/distributors cannot be 
+held responsible for any damage resulting in the use of this program, nor can 
+they be held accountable for the manner in which it is used.
+
+ ====================================
+|************ Change Log ************|
+ ====================================
+
+ Changes beginning with an asterisk (*) affect BrawlBox behavior,
+ while changes beginning with a period (.) serve to add/modify
+ features that BrawlBox doesn't use.
+
+ See BrawlBox's Changelog.txt for more recent changes (mid-2014 and newer.)
+
+ (7/26/2014) - BrawlLib 0.20b
+ 	* BLOC archives are now rebuildable
+		* GSND files are now partially editable
+	* Module ID->name list now embedded (not loaded from text file)
+
+ (6/28/2014) - BrawlLib 0.20a
+    * See BrawlBox 0.73a changelog (additions to interpolation editor, RELNode)
+	* BrawlLib.SSBB.Stage added - keeps a list of Brawl stages' names, filenames, and IDs
+
+ (6/3/2014) - BrawlLib 0.20
+    * More support for Subspace Emissary data formats
+    * Moved AttributeGrid to BrawlLib (from Ikarus)
+    * Fixed MSBin encoding for empty strings
+
+ (5/4/2014) - BrawlLib 0.19.1
+    * Fixed UTF-8 encoding (was corrupting files)
+
+ (5/3/2014) - BrawlLib 0.19L
+    * MSBin strings are now properly encoded/decoded to/from UTF-8, instead of just ASCII
+	  * Fixes the appearance of strings like "Pokémon" and allows editing of non-Latin text
+    . MD5EnsureChildrenIncluded and its friends moved to a new file called NodeDeepChecksum
+
+ (4/6/2014) - BrawlLib v0.18L3
+    . ResourceNode.MD5EnsureChildrenIncluded() or MD5StrEnsureChildrenIncluded(): will XOR own MD5 sum with those of children if children aren't already included in the node's own data
+
+ (3/13/2014) - BrawlLib v0.18L2
+	* When exporting BRES entries (TEX0, MDL0, etc.), reset the BRES index offset (0x0c, 4 bytes) to 0 so that exported files with the same data will be identical
+	. Implement MD5() and MD5Str() functions to get checksums of resource node data
+      . Note: result of MD5() is NOT guaranteed to match what the MD5 checksum of a node's data would be after being exported to a separate file
+	. Override MD5() for BRESEntryNode to simulate the export behavior, so checksums of identical nodes will match
+
+ (2/13/2014) - BrawlLib v0.18L
+	. Added the HideMDL0Errors assembly property, which will prevent dialog boxes from appearing when MDL0 errors are detected
+	. Added the InitialSize and InitialFormat properties to TextureConverterDialog
+	. Added Volume and VolumePercent properties to AudioPlaybackPanel
+	* Don't crash when editing MDL0 models without any objects defined
+
+ For changes prior to 2014, see the BrawlBox changelog, or:
+ https://github.com/libertyernie/brawltools/blob/367f812284b03d0f6e201f6b3a840d9cbac4107f/BrawlLib/BrawlLib.txt
+
+ ====================================
+|*********** Requirements ***********|
+ ====================================
+ 
+* Microsoft .Net Framework v4.0
+	http://www.microsoft.com/en-us/download/details.aspx?id=17718
+	
+* A video card that supports OpenGL 1.1 or higher.
+
+ ====================================
+|********* Acknowledgements *********|
+ ====================================
+
+Super Smash Brothers Brawl is copyrighted property - © 2008 Nintendo and HAL Laboratory, Inc.
+
+Characters are copyrighted by the following:
+© Nintendo / HAL Laboratory, Inc. / Pokemon / Creatures Inc. / GAME FREAK Inc. / SHIGESATO ITOI / 
+APE Inc. / INTELLIGENT SYSTEMS / Konami Digital Entertainment Co., Ltd. / SEGA
+

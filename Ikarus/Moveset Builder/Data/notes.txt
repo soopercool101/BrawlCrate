@@ -1,0 +1,58 @@
+//---Notes--- (these may or may not actually matter - follow just to be safe)
+// - Subroutines are written right before the first script are called by
+// - Children are written before their parent
+
+//---General order of data---
+//Header
+//Attributes
+//SSE Attributes
+//Common Action Flags
+//Unknown 7
+//Subaction Other Data
+//Subaction GFX Data - includes articles (at end)
+//Misc Bone Section
+//Subaction SFX Data - includes articles (at end)
+//Sound Lists Final Children Entries
+//Subaction Main Data - includes articles (at end)
+//Misc Section 1
+//Hurtboxes
+//Misc Unk Section 9 Final Children Entries
+//Ledgegrabs
+//Crawl
+//Tether
+//Multijump
+//Glide
+//Actions Data Part1/Part2 alternating
+//Subroutines
+//Article Actions
+//Action Flags
+//Action Entry Offsets
+//Action Exit Offsets
+//Action Pre
+//Subaction Flags
+//Subaction Offsets Main/GFX/SFX/Other
+//Model Visibility
+//Misc Item Bones
+//Hand Bones
+//Unknown Section 9
+//Unk24
+//Unknown Section 12
+//Unk22
+//Extra Params
+//Static Articles
+//Entry Article
+//Attributed Articles
+//Misc Section 2
+//Action Interrupts
+//Bone Floats 1
+//Bone Floats 2
+//Bone Floats 3
+//Bone References Main
+//Bone References Misc
+//Misc Sound Lists
+//Misc Section Header
+//Sections Data (includes data header)
+//Lookup Offsets
+//Sections Offsets
+//References Offsets
+//Sections/References String Table

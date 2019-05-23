@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E47B2B3C-B95D-40E9-88EB-639FA4D34CB3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ikarus</RootNamespace>
+    <AssemblyName>Ikarus</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Untitled-1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenTK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BrawlLib\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Moveset Builder\BuilderBase.cs" />
+    <Compile Include="Moveset Builder\DataCommon\Part3.cs" />
+    <Compile Include="Moveset Builder\DataCommon\Part2.cs" />
+    <Compile Include="Moveset Builder\DataCommon\Part1.cs" />
+    <Compile Include="Moveset Builder\Data\Part5.cs" />
+    <Compile Include="Moveset Builder\Data\Part4.cs" />
+    <Compile Include="Moveset Builder\Data\Part3.cs" />
+    <Compile Include="Moveset Builder\Data\Part2.cs" />
+    <Compile Include="Moveset Builder\Data\Part1.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscArrayOfIndexArrays.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscCrawl.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscGlide.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscMultiJump.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscFinalSmashAura.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscLedgeGrab.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscHurtbox.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscUnk10.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscTether.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscUnk7.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Misc Nodes\MiscUnk12.cs" />
+    <Compile Include="Moveset Entries\DataCommon Nodes\CmnLegBonesNode.cs" />
+    <Compile Include="Moveset Entries\DataCommon Nodes\CmnUnknown11Node.cs" />
+    <Compile Include="Moveset Entries\MovesetNode.cs" />
+    <Compile Include="Moveset Entries\Scripts\Script.cs" />
+    <Compile Include="Moveset Entries\Scripts\Event.cs" />
+    <Compile Include="Moveset Entries\Scripts\Parameter.cs" />
+    <EmbeddedResource Include="UI\ModelListsPanel.resx">
+      <DependentUpon>ModelListsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LogDialog.resx">
+      <DependentUpon>LogDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\OpenedFilesDialog.resx">
+      <DependentUpon>OpenedFilesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SplashForm.resx">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SyntaxTextBox\SyntaxHighlightingTextBox.resx">
+      <DependentUpon>SyntaxHighlightingTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Moveset Entries\CharacterSpecific.cs" />
+    <Compile Include="Moveset Entries\Sections\DataCommonSection.cs" />
+    <Compile Include="Moveset Entries\DataCommon Nodes\CmnPatternPowerMulNode.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\ActionFlags.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\ActionInterrupts.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\ActionOverrides.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\ActionPre.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Article.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\AttributeList.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\BoneReferences2.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\CollisionData.cs" />
+    <Compile Include="Moveset Entries\Sections\DataSection.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\ItemAnchor.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Miscellaneous.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\ModelVisibility.cs" />
+    <None Include="Moveset Entries\Data Nodes\MoveDefStaticArticleGroupNode.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Unknown22.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Unknown24.cs" />
+    <Compile Include="Moveset Entries\Data Nodes\Unknown7.cs" />
+    <Compile Include="Moveset Entries\Sections\AnimParamSection.cs" />
+    <None Include="Moveset Entries\Lookup.cs" />
+    <Compile Include="Moveset Entries\RawParamList.cs" />
+    <Compile Include="Moveset Entries\Scripts\Scriptor.cs" />
+    <Compile Include="RunTimeData\Attributes.cs" />
+    <Compile Include="RunTimeData\Variables\Accessors.cs" />
+    <Compile Include="RunTimeData\Variables\ICFunctions.cs" />
+    <Compile Include="RunTimeData\InfoClasses.cs" />
+    <Compile Include="RunTimeData\RunTime.cs" />
+    <Compile Include="Manager\ManagerClasses.cs" />
+    <Compile Include="Manager\ManagerTextData.cs" />
+    <Compile Include="DropDownLists.cs" />
+    <Compile Include="FighterDefEnums.cs" />
+    <Compile Include="UI\Components\FolderSelectDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Components\FolderSelectDialog.designer.cs">
+      <DependentUpon>FolderSelectDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\NewScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\NewScriptEditor.Designer.cs">
+      <DependentUpon>NewScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ModelListsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LogDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LogDialog.Designer.cs">
+      <DependentUpon>LogDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\OpenedFilesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\OpenedFilesDialog.Designer.cs">
+      <DependentUpon>OpenedFilesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SplashForm.Designer.cs">
+      <DependentUpon>SplashForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SyntaxTextBox\Fontdictionary.cs" />
+    <Compile Include="UI\SyntaxTextBox\HighlightDescriptor.cs" />
+    <Compile Include="UI\SyntaxTextBox\HighlightDescriptorCollection.cs" />
+    <Compile Include="UI\SyntaxTextBox\SeperaratorCollection.cs" />
+    <Compile Include="UI\SyntaxTextBox\SyntaxHighlightingTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\SyntaxTextBox\Win32.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Moveset Builder\DataCommon\DataCommonBuilder.cs" />
+    <Compile Include="Moveset Builder\Data\DataBuilder.cs" />
+    <Compile Include="Structs\ExtraDataOffsets.cs" />
+    <Compile Include="Structs\FighterDefinition.cs" />
+    <Compile Include="UI\Controls\ArticleAttributeGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\EventDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\EventList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\EventList.designer.cs">
+      <DependentUpon>EventList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\EventModifier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\EventModifierWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\OffsetEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AboutForm.designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ManagerMain.cs" />
+    <Compile Include="UI\Controls\HurtboxEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\HurtboxEditor.Designer.cs">
+      <DependentUpon>HurtboxEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RSAREditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RSAREditor.Designer.cs">
+      <DependentUpon>RSAREditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MiscPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moveset Builder\MoveDefStringTables.cs" />
+    <Compile Include="WiimoteLib\DataTypes.cs" />
+    <Compile Include="WiimoteLib\Events.cs" />
+    <Compile Include="WiimoteLib\HIDImports.cs" />
+    <Compile Include="WiimoteLib\Wiimote.cs" />
+    <None Include="Moveset Builder\OldBuilder.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ListsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\Animation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\BRRESNodes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\ButtonClick.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\CheckedChanged.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\Designer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\FileHandling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\Rendering.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainControl\Variables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ScriptPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EditorPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\EditorPanel.Designer.cs">
+      <DependentUpon>EditorPanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Controls\ArticleAttributeGrid.resx">
+      <DependentUpon>ArticleAttributeGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\EventDescription.resx">
+      <DependentUpon>EventDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\EventList.resx">
+      <DependentUpon>EventList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\EventModifier.resx">
+      <DependentUpon>EventModifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\EventModifierWindow.resx">
+      <DependentUpon>EventModifierWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\OffsetEditor.resx">
+      <DependentUpon>OffsetEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\ScriptEditor.resx">
+      <DependentUpon>ScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\HurtboxEditor.resx">
+      <DependentUpon>HurtboxEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\NewScriptEditor.resx">
+      <DependentUpon>NewScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RSAREditor.resx">
+      <DependentUpon>RSAREditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MiscPanel.resx">
+      <DependentUpon>MiscPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\ListsPanel.resx">
+      <DependentUpon>ListsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainControl\Designer.resx">
+      <DependentUpon>Designer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\ScriptPanel.resx">
+      <DependentUpon>ScriptPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditorPanel.resx">
+      <DependentUpon>EditorPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrawlLib\BrawlLib.csproj">
+      <Project>{462D0BBF-CE82-405B-8848-2F91E9E14C55}</Project>
+      <Name>BrawlLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moveset Builder\DataCommon\notes.txt" />
+    <Content Include="Moveset Builder\Data\notes.txt" />
+    <Content Include="OpenTK.dll" />
+    <None Include="Resources\splash.png" />
+    <Content Include="Untitled-1.ico" />
+    <Content Include="WiimoteLib.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

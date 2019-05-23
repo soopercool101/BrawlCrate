@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Model Editor Help
+
+[____Controls____]
+
+_____Model Panel_____
+Right mouse button: Hold to pan
+Ctrl + Right mouse: Hold to rotate
+Mouse wheel: Zoom
+Arrow keys: Pan
+Ctrl + Arrow keys: Rotate
++, - keys: Zoom
+Shift key: Increase camera translation/rotation speed
+
+_____Panels_____
+A key: Toggle left panel
+W key: Toggle top panel
+S key: Toggle bottom panel
+D key: Toggle right panel
+Ctrl + Alt + D: Toggle all panels
+
+E key: Use bone scale control
+R key: Use bone rotation control
+T key: Use bone translation control
+
+F key: Toggle floor
+B key: Toggle bones
+P key: Toggle polygons
+V key: Toggle vertices
+
+J key: Toggle Vertex Editor (replaces animation editor on bottom panel)
+
+Ctrl + U: Reset Camera
+G Key: Reload Textures
+
+____Animations_____
+Page Up: Next Frame
+Page Down: Previous Frame
+Ctrl + Page Up: Last Frame
+Ctrl + Page Down: First Frame
+Space key: Play animation
+
+CHR0 Editor Only
+Ctrl + Z: Undo
+Ctrl + Y: Redo
+
+Ctrl + C: Copy Bone Frame
+Ctrl + Shift + C: Copy Whole Frame
+
+Ctrl + V: Paste Bone Frame
+Ctrl + Alt + V: Paste Bone Frame - Keyframes only
+
+Ctrl + Shift + V: Paste Whole Frame
+Ctrl + Alt + Shift + V: Paste Whole Frame - Keyframes only
+
+Ctrl + Backspace: Clear Bone Frame of All Keyframes
+Ctrl + Shift + Backspace: Clear Whole Frame of All Keyframes
+
+Delete Key: Remove Frame
+
+____Other_____
+Ctrl + A: Select all vertices
+
+
+There are various control panels that are hidden in the model viewer. You'll notice that when you press one of the bars along the border of the window, these controls will expand allowing greater control over the content.
+
+[____Loading an External File____]
+
+External file loading allows you to preview a model while using textures and/or animations stored in another location.
+
+    Expand the menu panel by clicking on the bar at the top of the window.
+    Click File -&gt; Animations -&gt; Open to open the file dialog.
+    Find a file you want to load (most likely FitMotion) and open it.
+    The animation list will now populate, and include animations found in both files.
+    Textures found in the external file will automatically reload to allow viewing. 
+
+[____Animation Playback Controls____]
+
+    Expand the playback panel by clicking on the bar at the bottom of the window.
+    Take note of the controls listed here and their functions:
+       - Speed - Playback speed of animation preview (in frames /sec).
+      -  Loop - When checked, the animation will loop back to the beginning while playing.
+      -  Play - Starts/stops animation playback.
+       - Frame - Current animation frame. The text to the right will show how many total frames are in the animation. Frame 0 is always the neutral (bind pose) frame.
+       - &lt; &gt; - These buttons traverse frames forwards and backwards. 
+    Playback will automatically reset to frame #1 when an animation is selected. 
+
+Tip: for better frame control, select the Frame box and use the up/down arrow keys.
+
+[____Texture Controls____]
+
+    Expand the asset panel by clicking on the bar at the left side of the window.
+    The textures are listed at the bottom of the asset panel.
+    Selecting a texture will highlight it in the preview.
+    Checking/unchecking a texture will show/hide that texture in the preview.
+    Right-clicking a texture brings up a context menu, which offers more commands:
+       - Source - Lists the location the texture was loaded from.
+       - Size - Size of the texture.
+       - View - Allows for viewing the texture in a pop-up window.
+       - Replace - Opens the advanced texture replacer. (Only for embedded textures)
+       - Export - Exports the texture to a file. (Only for embedded textures)
+       - Reload - Attempts to reload a texture (useful when using texture files directly) 
+    Press Esc while in the texture list to deselect the current item. 
+
+[____Bone Controls____]
+
+    Expand the asset panel by clicking on the bar at the left side of the window.
+    Bones are listed in the center of the asset panel.
+    Selecting a bone will highlight it in the preview (must be visible of course).
+    Checking/unchecking a bone will show/hide it and any child bones in the preview.
+    Selecting a bone will populate the transformation controls in the animation panel (right side).
+    Press Esc while in the bone list to deselect the current item. 
+
+[____Object  Controls____]
+
+   - Expand the asset panel by clicking on the bar at the left side of the window.
+   - Polygons are listed in the top of the asset panel.
+   - Toggling a polygon will switch between show/wire-frame/hide modes.
+   - Press Esc while in the polygon list to deselect the current item. 
+
+[____Animation Editing____]
+
+Once you have loaded a model and some animations, you're ready to begin changing animations.
+
+    Select an animation and advance to the frame(s) you want to change.
+    Click the bone on the model that you want to change. You can also use the bone list to find a bone.
+    You'll notice that as you select different bones the transformation values at the bottom of the animation frame will change.
+    These reflect the current state of the selected bone during that frame.
+    As you advance through the frames, these values will change, giving you a numerical representation of the bone's state during an animation.
+    You'll notice that some of these boxes will turn yellow during an animation sequence. These are key-frames. 
+
+Key-frames are the most important aspect of animation editing, and understanding them is 'key'. (ha!)
+
+Instead of trying to explain key-frames in detail, let me give some examples:
+
+    When you change a value in the editor, the box will turn yellow. This means you've created a key-frame.
+    As you step back and forth through the animation, you'll notice that other frames lead to/from this value.
+    If one frame is 'keyed' to 10 and another is 'keyed' to 30, all frames between them are spread out evenly.
+    This means that the frames will slowly step up or down to the next key-frame. 
+
+    If a key-frame changes, so do all the values before/after it (until another key-frame is reached). The same happens when a key-frame is deleted. 
+
+Whew! I hope that made sense. If not, the best way to learn is by playing with the editor. Once you see how it works, it's not very difficult at all.
+
+[____Editing Controls____]
+
+    To create/change a key-frame, all you have to do is change the value in the box.
+    Changes are applied either when you leave the box or by pressing Enter.
+    Changes can be canceled by pressing the Esc key.
+    A key-frame can be deleted by clearing the box entirely. 
+
+[____Transformation Values____]
+
+A bone can be 'transformed' or changed by using three distinct values: Scale, Rotation and Translation.
+
+    Scale will make any child bones larger or smaller depending on the value.
+
+        Think of it like a multiplier, in terms of percentages: 0.5 = 50%, 1.0 = 100%, 2.0 = 200%. When you change the scale, you will most likely change all three values (x,y,z). Otherwise it looks odd. 
+
+    Rotation is pretty much the soul of animation. It allows bones to rotate around each other.
+
+        If you put a stick on a ball and rolled it, the stick would rotate around the ball. As a bone/node is 'rotated', anything attached to that structure will move as well. 
+
+    Translation is a spatial movement from one point to another.
+
+        You will most likely not have to touch this, because doing so may stretch the bones. The same movement can be achieved through rotation: just change the parent node. 
+
+All three of these values can be changed along three axis: x, y, and z.
+
+Think back to geometry and graphing:
+
+    The X axis moves from left to right across the screen. Left being negative, right being positive.
+    The Y axis moves from bottom to top. Down being negative, up being positive.
+    The Z axis moves from near to far. Near being negative, far being positive. 
+
+Each node has axis indicators which may help determine the state of a node:
+
+    X is red, Y is green, Z is blue.
+    The direction of these lines denotes the positive direction of each axis. 
+
+Transformation values are applied in the following order:
+
+    Translation
+
+        A new node is created at an absolute location, relative to the previous/parent. This creates a bone, which is simply a line between one node and the next. 
+
+    Rotation
+
+        The new node is rotated, which also rotates any attached bones/nodes. This rotation does not affect the newly created bone. 
+
+    Scale
+
+        A scale/multiplier is applied, which affects all child nodes and geometry. 
+
+Once again, if this doesn't make sense just play around with it. You'll get it eventually.
+
+[____Editing Tips____]
+
+   - Use cut/copy/paste for quick key-frame moving.
+   - Toggle wire-frame mode to see how bones affect the polygons.
+   - Change one rotation value at a time and see how it affects the model. 
+
+Textures are automatically loaded from the same directory as the file. You can load textures on-the-fly using the following method:
+
+    Extract all the textures/models to the same directory (with Export All).
+    Open the model file, and it will then load the extracted textures.
+    When you make changes to a texture, use the reload feature to see the changes.
+    Textures no longer have to be replaced to see how it affects the model, just reload them.
+    When you're done, open the original file and use the Replace All feature. </value>
+  </data>
+  <data name="richTextBox1.Text2" xml:space="preserve">
+    <value>Collision Editor Help
+
+[___Controls___]
+
+Escape: Clear selection
+Delete: Delete selected plane/link
+
+Ctrl+Z: Undo
+Ctrl+Y: Redo
+
+[ key and ] key: Move selection to next or previous plane/link
+
+a,w,s,d keys: Move selected plane/link with a small increment
+a,w,s,d + Shift: Move selected plane/link with a large increment
+
+Alt + Left Click: Create a link in space or on the target plane
+Shift + Left Click: Add plane/link to selection
+Ctrl + Left Click: Remove plane/link from selection
+
+Shift + Ctrl + Left Click: Drag plane/link when not hovering over it</value>
+  </data>
+</root>
