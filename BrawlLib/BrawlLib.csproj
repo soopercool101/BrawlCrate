@@ -88,7 +88,13 @@
     <PostBuildEvent />
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.DirectoryServices" Version="4.*" />
+    <Compile Remove="WiiU\**" />
+    <EmbeddedResource Remove="WiiU\**" />
+    <None Remove="WiiU\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="3.0.1" />
+    <PackageReference Include="System.DirectoryServices" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
@@ -484,7 +490,6 @@
     <Compile Update="System\Windows\Forms\TransformAttributesForm.Designer.cs">
       <DependentUpon>TransformAttributesForm.cs</DependentUpon>
     </Compile>
-    <None Include="WiiU\ElementCodec.cs" />
     <Compile Update="System\Windows\Controls\GoodProgressBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -689,10 +694,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OpenTK.dll" />
     <Content Include="System\Windows\Controls\Hex Editor\HexBox.bmp" />
     <Content Include="BrawlLib.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -732,7 +736,6 @@
     <Compile Remove="System\PowerPCAssembly\PPCData.cs" />
     <Compile Remove="System\PowerPCAssembly\Assembly.cs" />
     <Compile Remove="System\Windows\Forms\GradientDialog2.cs" />
-    <Compile Remove="WiiU\ElementCodec.cs" />
     <Compile Remove="System\Audio\G726.cs" />
     <Compile Remove="SSBB\ResourceNodes\Subspace\ADSJNode.cs" />
     <Compile Remove="SSBB\ResourceNodes\Subspace\GBLKNode.cs" />

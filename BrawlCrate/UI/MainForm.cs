@@ -66,24 +66,6 @@ namespace BrawlCrate
             Text += " DEBUG";
 #endif
 
-            foreach (string filename in new string[] {
-                "BrawlLib.dll",
-                "OpenTK.dll",
-                "Octokit.dll",
-                "Updater.exe"
-            }) {
-                string directory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                if (File.Exists(Path.Combine(directory, filename))) {
-                    if (File.Exists(Path.Combine(directory, "lib", filename))) {
-                        MessageBox.Show(@"The directory structure of BrawlCrate has changed.
-Please delete the files BrawlLib.dll, OpenTK.dll, Octokit.dll, and Updater.exe;
-newer versions of these files should be located in the Lib directory.");
-                        Enabled = false;
-                        break;
-                    }
-                }
-            }
-
             soundPackControl1._grid = propertyGrid1;
             soundPackControl1.lstSets.SmallImageList = ResourceTree.Images;
             foreach (Control c in splitContainer2.Panel2.Controls)
@@ -109,10 +91,7 @@ newer versions of these files should be located in the Lib directory.");
             pluginToolStripMenuItem.DropDown.Items.Clear();
             if (Directory.Exists(plugins))
             {
-                foreach (var str in Directory.EnumerateFiles(plugins, "*.fsx"))
-                {
-                    pluginToolStripMenuItem.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
-                }
+                reloadPluginsToolStripMenuItem_Click(null, null);
             }
             if (Directory.Exists(loaders))
             {
@@ -131,14 +110,16 @@ newer versions of these files should be located in the Lib directory.");
             try
             {
                 string path;
+                bool automatic = true;//(!manual && _autoUpdate) || (!manual && _canary);
                 if (Program.CanRunGithubApp(manual, out path))
                 {
+                    bool _docUpdates = false;
                     Process.Start(new ProcessStartInfo()
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = String.Format("-bu {0} {1}",
-                        Program.TagName, manual ? "1" : "0"),
+                        Arguments = String.Format("-bu {0} {1} {2} {3} \"{4}\"",
+                            Program.TagName, manual ? "1" : "0", _docUpdates ? "1" : "0", automatic ? "1" : "0", Program.RootPath == null ? "<null>" : Program.RootPath),
                     });
                 }
                 else

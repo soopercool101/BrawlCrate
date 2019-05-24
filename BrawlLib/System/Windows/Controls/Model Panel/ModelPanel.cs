@@ -495,7 +495,7 @@ namespace System.Windows.Forms
             GL.Hint(HintTarget.GenerateMipmapHint, HintMode.Nicest);
 
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             GL.Enable(EnableCap.AlphaTest);
             GL.AlphaFunc(AlphaFunction.Gequal, 0.1f);
@@ -539,7 +539,7 @@ namespace System.Windows.Forms
             GL.MatrixMode(MatrixMode.Modelview);
 
             GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             GL.Enable(EnableCap.Lighting);
             GL.Enable(EnableCap.DepthTest);
 

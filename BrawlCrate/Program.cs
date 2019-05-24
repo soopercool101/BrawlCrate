@@ -14,7 +14,7 @@ namespace BrawlCrate
     static class Program
     {
         //Make sure this matches the tag name of the release on github exactly
-        public static readonly string TagName = "v0.78_h1";
+        public static readonly string TagName = "BrawlCrate_v0.26Hotfix1";
 
         public static readonly string AssemblyTitle;
         public static readonly string AssemblyDescription;
@@ -432,7 +432,7 @@ namespace BrawlCrate
 
         public static bool CanRunGithubApp(bool showMessages, out string path)
         {
-            path = $"{Application.StartupPath}\\lib\\Updater.exe";
+            path = $"{Application.StartupPath}\\Updater.exe";
             if (!File.Exists(path))
             {
                 if (showMessages)
