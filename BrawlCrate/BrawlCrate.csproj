@@ -19,13 +19,10 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <AssemblyTitle>BrawlCrate v0.78</AssemblyTitle>
+    <AssemblyTitle>BrawlCrate NEXT</AssemblyTitle>
     <Product>BrawlCrate</Product>
-    <Description>This program is provided as-is without any warranty, implied or otherwise." +
-" By using this program, the end user agrees to take full responsibility regarding its proper and lawful use." +
-" The authors/hosts/distributors cannot be held responsible for any damage resulting in the use of this program," +
-" nor can they be held accountable for the manner in which it is used.</Description>
-    <Copyright>@"Copyright © 2009 - 2017 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky
+    <Description>This program is provided as-is without any warranty, implied or otherwise. By using this program, the end user agrees to take full responsibility regarding its proper and lawful use. The authors/hosts/distributors cannot be held responsible for any damage resulting in the use of this program, nor can they be held accountable for the manner in which it is used.</Description>
+    <Copyright>Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky
 Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <AssemblyVersion>0.78.1.0</AssemblyVersion>
     <FileVersion>0.78.1.0</FileVersion>
