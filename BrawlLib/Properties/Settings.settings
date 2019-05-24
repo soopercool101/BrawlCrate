@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BrawlLib.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ColladaImportOptions" Type="BrawlLib.Modeling.Collada" Scope="User">
+    <Setting Name="ColladaImportOptions" Type="BrawlLib.Modeling.Collada.ImportOptions" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="HideMDL0Errors" Type="System.Boolean" Scope="User">

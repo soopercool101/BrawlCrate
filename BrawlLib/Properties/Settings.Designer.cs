@@ -25,9 +25,9 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::BrawlLib.Modeling.Collada ColladaImportOptions {
+        public global::BrawlLib.Modeling.Collada.ImportOptions ColladaImportOptions {
             get {
-                return ((global::BrawlLib.Modeling.Collada)(this["ColladaImportOptions"]));
+                return ((global::BrawlLib.Modeling.Collada.ImportOptions)(this["ColladaImportOptions"]));
             }
             set {
                 this["ColladaImportOptions"] = value;
