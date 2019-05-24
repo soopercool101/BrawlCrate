@@ -110,10 +110,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <PackageReference Include="IronPython" Version="2.7.9" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>..\BrawlLib\OpenTK.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="WindowsBase" />
   </ItemGroup>

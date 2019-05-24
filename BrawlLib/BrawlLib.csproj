@@ -97,10 +97,6 @@
     <PackageReference Include="System.DirectoryServices" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <HintPath>.\OpenTK.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Messaging" />
@@ -152,6 +148,11 @@
     <None Include="SSBB\Types\Wii U\FSAR.cs" />
     <None Include="SSBB\Types\Wii U\FTEX.cs" />
     <None Include="SSBB\Types\Wii U\SARC.cs" />
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="System\Windows\Controls\AttributeGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -753,5 +754,11 @@
     <Compile Remove="SSBB\Types\Subspace\GMOV.cs" />
     <Compile Remove="SSBB\Types\Subspace\GMPS.cs" />
     <Compile Remove="SSBB\Types\Subspace\GSND.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>
