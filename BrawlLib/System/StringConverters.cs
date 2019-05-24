@@ -1,13 +1,13 @@
-﻿using System.ComponentModel;
+﻿using BrawlLib.Imaging;
+using System.ComponentModel;
 using System.Globalization;
-using BrawlLib.Imaging;
 using System.Windows.Forms;
 
 namespace System
 {
     public class Vector4StringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', '(', ')', ' ' };
+        private static readonly char[] delims = new char[] { ',', '(', ')', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(Vector4); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
@@ -34,10 +34,10 @@ namespace System
 
     public class Vector3StringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', '(', ')', ' ' };
+        private static readonly char[] delims = new char[] { ',', '(', ')', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(Vector3); }
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)        {            return value.ToString();        }
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) { return sourceType == typeof(string); }
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
@@ -60,7 +60,7 @@ namespace System
 
     public class Vector2StringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', '(', ')', ' ' };
+        private static readonly char[] delims = new char[] { ',', '(', ')', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(Vector2); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
@@ -85,9 +85,9 @@ namespace System
 
     public class RGBAStringConverter : TypeConverter
     {
-        GoodColorDialog d = new GoodColorDialog();
+        private readonly GoodColorDialog d = new GoodColorDialog();
 
-        private static char[] delims = new char[] { ',', 'R', 'G', 'B', 'A', ':', ' ' };
+        private static readonly char[] delims = new char[] { ',', 'R', 'G', 'B', 'A', ':', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(RGBAPixel); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
@@ -99,7 +99,7 @@ namespace System
 
             string s = value.ToString();
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-            
+
             if (arr.Length == 4)
             {
                 byte.TryParse(arr[0], out p.R);
@@ -118,7 +118,7 @@ namespace System
 
     public class GXColorS10StringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', 'R', 'G', 'B', 'A', ':', ' ' };
+        private static readonly char[] delims = new char[] { ',', 'R', 'G', 'B', 'A', ':', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(GXColorS10); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
@@ -145,7 +145,7 @@ namespace System
 
     public unsafe class Matrix43StringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', '(', ')', ' ' };
+        private static readonly char[] delims = new char[] { ',', '(', ')', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(Matrix34); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
@@ -179,7 +179,7 @@ namespace System
 
     public unsafe class MatrixStringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', '(', ')', ' ' };
+        private static readonly char[] delims = new char[] { ',', '(', ')', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(Matrix); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }
@@ -217,7 +217,7 @@ namespace System
 
     public class QuaternionStringConverter : TypeConverter
     {
-        private static char[] delims = new char[] { ',', '(', ')', ' ' };
+        private static readonly char[] delims = new char[] { ',', '(', ')', ' ' };
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) { return destinationType == typeof(Vector4); }
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType) { return value.ToString(); }

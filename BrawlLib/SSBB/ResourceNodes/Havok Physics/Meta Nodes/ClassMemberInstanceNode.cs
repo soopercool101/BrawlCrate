@@ -4,10 +4,10 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe abstract class ClassMemberInstanceNode : HavokClassNode
+    public abstract unsafe class ClassMemberInstanceNode : HavokClassNode
     {
         [Browsable(false)]
-        protected VoidPtr Data { get { return WorkingUncompressed.Address; } }
+        protected VoidPtr Data => WorkingUncompressed.Address;
 
         public bool _isZero;
         public hkClassMember.Type _memberType;
@@ -16,9 +16,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public hkClassEnumNode _enumNode;
 
         [Category("Class Member Instance")]
-        public string Inheritance { get { return _classNode == null ? null : _classNode.Inheritance; } }
+        public string Inheritance => _classNode == null ? null : _classNode.Inheritance;
         [Category("Class Member Instance")]
-        public bool SerializedAsZero { get { return _isZero; } }
+        public bool SerializedAsZero => _isZero;
 #if DEBUG
         [Category("Class Member Instance")]
         public string TypeName { get { return GetType().ToString(); } }

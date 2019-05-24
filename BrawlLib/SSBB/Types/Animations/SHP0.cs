@@ -3,8 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
-    [StructLayout(LayoutKind.Sequential, Pack=1)]
-    unsafe struct SHP0v3
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    internal unsafe struct SHP0v3
     {
         public const string Tag = "SHP0";
         public const int Size = 0x28;
@@ -36,28 +36,28 @@ namespace BrawlLib.SSBBTypes
             _stringOffset = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public bint* StringEntries { get { return (bint*)(Address + _stringListOffset); } }
+        public bint* StringEntries => (bint*)(Address + _stringListOffset);
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SHP0v4
+    internal unsafe struct SHP0v4
     {
         public const string Tag = "SHP0";
         public const int Size = 0x2C;
@@ -91,34 +91,34 @@ namespace BrawlLib.SSBBTypes
             _stringOffset = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public bint* StringEntries { get { return (bint*)(Address + _stringListOffset); } }
+        public bint* StringEntries => (bint*)(Address + _stringListOffset);
 
         public VoidPtr UserData
         {
-            get { return _userDataOffset == 0 ? null : Address + _userDataOffset; }
-            set { _userDataOffset = (int)(VoidPtr)value - (int)Address; }
+            get => _userDataOffset == 0 ? null : Address + _userDataOffset;
+            set => _userDataOffset = (int)value - (int)Address;
         }
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SHP0Entry
+    internal unsafe struct SHP0Entry
     {
         public const int Size = 0x14;
 
@@ -128,34 +128,34 @@ namespace BrawlLib.SSBBTypes
         public bshort _numIndices;
         public bint _fixedFlags; //Bit is set if entry is fixed
         public bint _indiciesOffset;
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         //Aligned to 4 bytes
-        public bshort* Indicies { get { return (bshort*)(Address + _indiciesOffset); } }
+        public bshort* Indicies => (bshort*)(Address + _indiciesOffset);
 
-        public bint* EntryOffset { get { return (bint*)(Address + (_indiciesOffset - 4 * _numIndices)); } }
+        public bint* EntryOffset => (bint*)(Address + (_indiciesOffset - 4 * _numIndices));
         public SHP0KeyframeEntries* GetEntry(int index)
         {
             bint* ptr = &EntryOffset[index];
             return (SHP0KeyframeEntries*)((VoidPtr)ptr + *ptr);
         }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SHP0KeyframeEntries
+    internal unsafe struct SHP0KeyframeEntries
     {
         public bshort _numEntries;
         public bshort _unk1;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public BVec3* Entries { get { return (BVec3*)(Address + 4); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public BVec3* Entries => (BVec3*)(Address + 4);
     }
 }

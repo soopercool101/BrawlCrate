@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static REFFWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -42,12 +42,12 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
-        
+
         #endregion
 
         public REFFWrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.REFF; } }
+        public override string ExportFilter => FileFilters.REFF;
 
         public void NewEntry()
         {
@@ -56,9 +56,14 @@ namespace BrawlCrate.NodeWrappers
             REFFNode node = _resource as REFFNode;
             ResourceNode emitter;
             if (node.VersionMinor == 9)
+            {
                 e.AddChild(emitter = new REFFEmitterNode9() { _name = "Emitter" });
+            }
             else
+            {
                 e.AddChild(emitter = new REFFEmitterNode7() { _name = "Emitter" });
+            }
+
             emitter.AddChild(new REFFTEVStage(0));
             emitter.AddChild(new REFFTEVStage(1));
             emitter.AddChild(new REFFTEVStage(2));
@@ -66,7 +71,7 @@ namespace BrawlCrate.NodeWrappers
             e.AddChild(new REFFParticleNode() { _name = "Particle" });
             e.AddChild(new REFFAnimationListNode() { _name = "Animations" });
             _resource.AddChild(e);
-            BaseWrapper w = this.FindResource(e, true);
+            BaseWrapper w = FindResource(e, true);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
         }

@@ -1,5 +1,5 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -12,7 +12,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is RBNKNode)) ;
+                while (((n = n.Parent) != null) && !(n is RBNKNode))
+                {
+                    ;
+                }
+
                 return n as RBNKNode;
             }
         }
@@ -20,8 +24,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RBNKDataGroupNode : ResourceNode
     {
-        internal RBNK_DATAHeader* Header { get { return (RBNK_DATAHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RBNKGroup; } }
+        internal RBNK_DATAHeader* Header => (RBNK_DATAHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RBNKGroup;
 
         public override bool OnInitialize()
         {
@@ -48,13 +52,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                     default:
                         e = new RBNKNullNode();
                         if (list != null)
+                        {
                             (e as RBNKNullNode)._key = (byte)list[i].Tag;
-                        (e as RBNKNullNode)._invalid = true;
+                        } (e as RBNKNullNode)._invalid = true;
                         break;
                     case 1: //InstParam
                         e = new RBNKDataInstParamNode();
                         if (list != null)
+                        {
                             (e as RBNKDataInstParamNode)._key = (byte)list[i].Tag;
+                        }
+
                         break;
                     case 2: //RangeTable
                         e = new RBNKDataRangeTableNode();
@@ -71,7 +79,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     e._offset = offset;
                     if (list != null)
+                    {
                         e._name = list[i].String;
+                    }
+
                     e.Initialize(this, header->_list.Get(offset, i), 0);
                 }
             }
@@ -81,7 +92,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int size = 0xC;
             foreach (RBNKEntryNode g in Children)
+            {
                 size += 8 + g.CalculateSize(true);
+            }
+
             return size.Align(0x20);
         }
 
@@ -100,17 +114,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (g is RBNKDataInstParamNode)
                 {
-                    header->_list.Entries[g.Index] = (int)(addr - header->_list.Address);
+                    header->_list.Entries[g.Index] = addr - header->_list.Address;
                     header->_list.Entries[g.Index]._dataType = 1;
                 }
                 else if (g is RBNKDataRangeTableNode)
                 {
-                    header->_list.Entries[g.Index] = (int)(addr - header->_list.Address);
+                    header->_list.Entries[g.Index] = addr - header->_list.Address;
                     header->_list.Entries[g.Index]._dataType = 2;
                 }
                 else if (g is RBNKDataIndexTableNode)
                 {
-                    header->_list.Entries[g.Index] = (int)(addr - header->_list.Address);
+                    header->_list.Entries[g.Index] = addr - header->_list.Address;
                     header->_list.Entries[g.Index]._dataType = 3;
                 }
                 else if (g is RBNKNullNode && !(g as RBNKNullNode)._invalid)
@@ -133,8 +147,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RBNKSoundGroupNode : ResourceNode
     {
-        internal RBNK_WAVEHeader* Header { get { return (RBNK_WAVEHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RSARFileSoundGroup; } }
+        internal RBNK_WAVEHeader* Header => (RBNK_WAVEHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RSARFileSoundGroup;
 
         public VoidPtr _audioAddr;
 
@@ -149,16 +163,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             VoidPtr offset = &Header->_list;
             for (int i = 0; i < Header->_list._numEntries; i++)
+            {
                 new WAVESoundNode() { _offset = offset }.Initialize(this, Header->_list.Get(offset, i), 0);
+            }
+
             foreach (WAVESoundNode n in Children)
+            {
                 n.GetAudio();
+            }
         }
 
         public override int OnCalculateSize(bool force)
         {
             int size = 0xC + Children.Count * 8;
             foreach (WAVESoundNode g in Children)
+            {
                 size += g.WorkingUncompressed.Length;
+            }
+
             return size.Align(0x20);
         }
 
@@ -169,7 +191,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_list._numEntries = Children.Count;
             header->_length = (uint)length;
             ruint* table = header->_list.Entries;
-            VoidPtr addr = (VoidPtr)(table + Children.Count);
+            VoidPtr addr = table + Children.Count;
             VoidPtr baseAddr = _audioAddr;
             foreach (WAVESoundNode r in Children)
             {

@@ -1,8 +1,8 @@
-﻿using System;
-using BrawlLib;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static SCLAWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -48,7 +48,7 @@ namespace BrawlCrate.NodeWrappers
         }
         #endregion
 
-        public override string ExportFilter { get { return FileFilters.SCLA; } }
+        public override string ExportFilter => FileFilters.SCLA;
 
         public void NewEntry()
         {

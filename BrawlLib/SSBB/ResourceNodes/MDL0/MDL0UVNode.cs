@@ -1,52 +1,53 @@
-﻿using System;
-using System.ComponentModel;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0UVNode : MDL0EntryNode
     {
-        internal MDL0UVData* Header { get { return (MDL0UVData*)WorkingUncompressed.Address; } }
-        public MDL0ObjectNode[] Objects { get { return _objects.ToArray(); } }
+        internal MDL0UVData* Header => (MDL0UVData*)WorkingUncompressed.Address;
+        public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-
-        MDL0UVData _hdr = new MDL0UVData() { _format = (int)WiiVertexComponentType.Float };
-
-        [Category("UV Data")]
-        public int ID { get { return _hdr._index; } }
-        [Category("UV Data")]
-        public bool IsST { get { return _hdr._isST != 0; } }
-        [Category("UV Data")]
-        public WiiVertexComponentType Format { get { return (WiiVertexComponentType)(int)_hdr._format; } }
-        [Category("UV Data")]
-        public byte Divisor { get { return _hdr._divisor; } }
-        [Category("UV Data")]
-        public byte EntryStride { get { return _hdr._entryStride; } }
-        [Category("UV Data")]
-        public int NumEntries { get { return _hdr._numEntries; } }
+        private MDL0UVData _hdr = new MDL0UVData() { _format = (int)WiiVertexComponentType.Float };
 
         [Category("UV Data")]
-        public Vector2 Min { get { return _hdr._min; } }
+        public int ID => _hdr._index;
         [Category("UV Data")]
-        public Vector2 Max { get { return _hdr._max; } }
+        public bool IsST => _hdr._isST != 0;
+        [Category("UV Data")]
+        public WiiVertexComponentType Format => (WiiVertexComponentType)(int)_hdr._format;
+        [Category("UV Data")]
+        public byte Divisor => _hdr._divisor;
+        [Category("UV Data")]
+        public byte EntryStride => _hdr._entryStride;
+        [Category("UV Data")]
+        public int NumEntries => _hdr._numEntries;
 
-        public bool ForceRebuild { get { return _forceRebuild; } set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
-        public bool ForceFloat { get { return _forceFloat; } set { if (_forceFloat != value) { _forceFloat = value; } } }
-        
+        [Category("UV Data")]
+        public Vector2 Min => _hdr._min;
+        [Category("UV Data")]
+        public Vector2 Max => _hdr._max;
+
+        public bool ForceRebuild { get => _forceRebuild; set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
+        public bool ForceFloat { get => _forceFloat; set { if (_forceFloat != value) { _forceFloat = value; } } }
+
         private Vector2[] _points;
         public Vector2[] Points
         {
-            get { return _points == null ? _points = VertexCodec.ExtractUVs(Header) : _points; }
+            get => _points == null ? _points = VertexCodec.ExtractUVs(Header) : _points;
             set
             {
                 _points = value;
 
                 _forceRebuild = true;
                 if (Format == WiiVertexComponentType.Float)
+                {
                     _forceFloat = true;
-                
+                }
+
                 SignalPropertyChange();
             }
         }
@@ -62,7 +63,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             //SetSizeInternal(_hdr._dataLen);
 
             if ((_name == null) && (Header->_stringOffset != 0))
+            {
                 _name = Header->ResourceString;
+            }
 
             return false;
         }
@@ -77,7 +80,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enc = new VertexCodec(Points, _forceFloat);
                 return _enc._dataLen.Align(0x20) + 0x40;
             }
-            else return base.OnCalculateSize(force);
+            else
+            {
+                return base.OnCalculateSize(force);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -105,7 +111,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _forceRebuild = false;
             }
             else
+            {
                 base.OnRebuild(address, length, force);
+            }
         }
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)

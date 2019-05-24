@@ -1,9 +1,9 @@
-﻿using System.Runtime.InteropServices;
-using System.Audio;
+﻿using System.Audio;
+using System.Runtime.InteropServices;
 
 namespace System
 {
-    static partial class Win32
+    internal static partial class Win32
     {
         internal static partial class DirectSound
         {

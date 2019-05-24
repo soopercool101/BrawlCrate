@@ -2,7 +2,7 @@
 
 namespace System
 {
-    static unsafe class Linux
+    internal static unsafe class Linux
     {
 
         public const string libmName = "libm.so";

@@ -15,12 +15,16 @@ namespace BrawlLib.Wii.Animations
         {
             MDL0Node model;
 
-            OpenFileDialog dlgOpen = new OpenFileDialog();
-            dlgOpen.Filter = "MDL0 Model (*.mdl0)|*.mdl0";
-            dlgOpen.Title = "Select the model this animation is for...";
+            OpenFileDialog dlgOpen = new OpenFileDialog
+            {
+                Filter = "MDL0 Model (*.mdl0)|*.mdl0",
+                Title = "Select the model this animation is for..."
+            };
 
             if (dlgOpen.ShowDialog() != DialogResult.OK || (model = (MDL0Node)NodeFactory.FromFile(null, dlgOpen.FileName)) == null)
+            {
                 return;
+            }
 
             using (StreamWriter file = new StreamWriter(output))
             {
@@ -30,12 +34,14 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine("linearUnit cm;");
                 file.WriteLine("angularUnit deg;");
                 file.WriteLine("startTime 1;");
-                file.WriteLine(String.Format("endTime {0};", node.FrameCount));
+                file.WriteLine(string.Format("endTime {0};", node.FrameCount));
                 foreach (CHR0EntryNode e in node.Children)
                 {
                     MDL0BoneNode bone = model.FindChild("Bones/" + e.Name, true) as MDL0BoneNode;
                     if (bone == null)
+                    {
                         continue;
+                    }
 
                     KeyframeCollection c = e.Keyframes;
                     for (int index = 0; index < 9; index++)
@@ -43,12 +49,14 @@ namespace BrawlLib.Wii.Animations
                         KeyframeArray array = c._keyArrays[index];
 
                         if (array._keyCount <= 0)
+                        {
                             continue;
-                        
-                        file.WriteLine(String.Format("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5}", types[index / 3], axes[index % 3], e.Name, 0, bone.Children.Count, index < 6 ? (index + 3) : index - 6));
+                        }
+
+                        file.WriteLine(string.Format("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5}", types[index / 3], axes[index % 3], e.Name, 0, bone.Children.Count, index < 6 ? (index + 3) : index - 6));
                         file.WriteLine("animData {");
                         file.WriteLine("  input time;");
-                        file.WriteLine(String.Format("  output {0};", index > 2 && index < 6 ? "angular" : "linear"));
+                        file.WriteLine(string.Format("  output {0};", index > 2 && index < 6 ? "angular" : "linear"));
                         file.WriteLine("  weighted 0;");
                         file.WriteLine("  preInfinity constant;");
                         file.WriteLine("  postInfinity constant;");
@@ -59,7 +67,7 @@ namespace BrawlLib.Wii.Animations
                             //float angle = (float)Math.Atan(entry._tangent) * Maths._rad2degf;
                             //if (single)
                             {
-                                file.WriteLine(String.Format("    {0} {1} {2} {2} {3} {4} {5};",
+                                file.WriteLine(string.Format("    {0} {1} {2} {2} {3} {4} {5};",
                                     entry._index + 1,
                                     entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
                                     "auto",//single ? "auto" : "fixed",
@@ -90,7 +98,9 @@ namespace BrawlLib.Wii.Animations
                     string tag = line.Substring(0, i);
 
                     if (tag == "anim")
+                    {
                         break;
+                    }
 
                     string val = line.Substring(i + 1, line.IndexOf(';') - i - 1);
 
@@ -104,7 +114,7 @@ namespace BrawlLib.Wii.Animations
                         case "endUnitless":
                             float.TryParse(val, out end);
                             break;
-                            
+
                         case "animVersion":
                         case "mayaVersion":
                         case "timeUnit":
@@ -121,12 +131,18 @@ namespace BrawlLib.Wii.Animations
                 while (true)
                 {
                     if (line == null)
+                    {
                         break;
+                    }
 
                     string[] anim = line.Split(' ');
                     if (anim.Length != 7)
                     {
-                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim ")) ;
+                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim "))
+                        {
+                            ;
+                        }
+
                         continue;
                     }
                     string t = anim[2];
@@ -135,34 +151,56 @@ namespace BrawlLib.Wii.Animations
                     if (t.StartsWith("scale"))
                     {
                         if (t.EndsWith("X"))
+                        {
                             mode = 0;
+                        }
                         else if (t.EndsWith("Y"))
+                        {
                             mode = 1;
+                        }
                         else if (t.EndsWith("Z"))
+                        {
                             mode = 2;
+                        }
                     }
                     else if (t.StartsWith("rotate"))
                     {
                         if (t.EndsWith("X"))
+                        {
                             mode = 3;
+                        }
                         else if (t.EndsWith("Y"))
+                        {
                             mode = 4;
+                        }
                         else if (t.EndsWith("Z"))
+                        {
                             mode = 5;
+                        }
                     }
                     else if (t.StartsWith("translate"))
                     {
                         if (t.EndsWith("X"))
+                        {
                             mode = 6;
+                        }
                         else if (t.EndsWith("Y"))
+                        {
                             mode = 7;
+                        }
                         else if (t.EndsWith("Z"))
+                        {
                             mode = 8;
+                        }
                     }
 
                     if (mode == -1)
                     {
-                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim ")) ;
+                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim "))
+                        {
+                            ;
+                        }
+
                         continue;
                     }
 
@@ -184,7 +222,9 @@ namespace BrawlLib.Wii.Animations
                             int i = line.IndexOf(' ');
 
                             if (i < 0)
+                            {
                                 break;
+                            }
 
                             string tag = line.Substring(0, i);
 
@@ -196,13 +236,14 @@ namespace BrawlLib.Wii.Animations
                                     line = file.ReadLine().TrimStart();
 
                                     if (line == "}")
+                                    {
                                         break;
+                                    }
 
                                     string[] s = line.Split(' ');
 
-                                    float inVal, outVal;
-                                    float.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture, out inVal);
-                                    float.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture, out outVal);
+                                    float.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float inVal);
+                                    float.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float outVal);
 
                                     float finalTan = 0;
 
@@ -254,27 +295,40 @@ namespace BrawlLib.Wii.Animations
 
                                     KeyframeEntry x = e.SetKeyframe(mode, (int)(inVal - 0.5f), outVal, true);
                                     if (!anyFixed)
+                                    {
                                         l.Add(x);
+                                    }
                                     else
                                     {
                                         if (bothFixed)
+                                        {
                                             finalTan = (float)Math.Tan(((angle1 + angle2) / 2) * Maths._deg2radf) * ((weight1 + weight2) / 2);
+                                        }
                                         else if (firstFixed)
+                                        {
                                             finalTan = (float)Math.Tan(angle1 * Maths._deg2radf) * weight1;
+                                        }
                                         else
+                                        {
                                             finalTan = (float)Math.Tan(angle2 * Maths._deg2radf) * weight2;
+                                        }
 
                                         x._tangent = finalTan;
                                     }
                                 }
                                 foreach (KeyframeEntry w in l)
+                                {
                                     w.GenerateTangent();
+                                }
                             }
                             else
                             {
                                 int z = line.IndexOf(';') - i - 1;
                                 if (z < 0)
+                                {
                                     continue;
+                                }
+
                                 string val = line.Substring(i + 1, z);
 
                                 switch (tag)

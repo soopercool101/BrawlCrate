@@ -1,8 +1,8 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
-using System.ComponentModel;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static MDL0MaterialWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -66,14 +66,17 @@ namespace BrawlCrate.NodeWrappers
 
             ShaderGenerator.UsePixelLighting = MessageBox.Show(MainForm.Instance, "Use per-pixel lighting?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
 
-            SaveFileDialog s = new SaveFileDialog();
-
-            s.Filter = "Text File (*.txt)|*.txt";
-            s.FileName = _resource.Name + " vertex shader";
-            s.Title = "Choose a place to save the vertex shader";
+            SaveFileDialog s = new SaveFileDialog
+            {
+                Filter = "Text File (*.txt)|*.txt",
+                FileName = _resource.Name + " vertex shader",
+                Title = "Choose a place to save the vertex shader"
+            };
             if (s.ShowDialog() == DialogResult.OK)
+            {
                 System.IO.File.WriteAllText(s.FileName, ShaderGenerator.GenVertexShader().Replace("\n", Environment.NewLine));
-            
+            }
+
             s.Filter = "Text File (*.txt)|*.txt";
             s.FileName = _resource.Name + " fragment shader";
             s.Title = "Choose a place to save the fragment shader";

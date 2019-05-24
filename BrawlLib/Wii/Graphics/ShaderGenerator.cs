@@ -1,8 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using OpenTK.Graphics.OpenGL;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Globalization;
 
 namespace BrawlLib.Wii.Graphics
@@ -11,31 +10,33 @@ namespace BrawlLib.Wii.Graphics
     {
         public static bool UsePixelLighting
         {
-            get { return _pixelLighting; }
+            get => _pixelLighting;
             set
             {
                 if (_pixelLighting == value)
+                {
                     return;
+                }
 
                 _pixelLighting = value;
                 _forceRecompile = true;
             }
         }
-        static bool _pixelLighting = false;
+
+        private static bool _pixelLighting = false;
 
         public static bool _forceRecompile = false;
 
         //Determines if the final shader should be written to the console for review
-        static bool AlwaysOutputShader = false;
-
-        static bool DoTrunc = false;
+        private static readonly bool AlwaysOutputShader = false;
+        private static readonly bool DoTrunc = false;
 
         //The GLSL version to be used.
         //120 is the only supported version right now because it's the most compatible version
-        static int GLSLVersion = 120;
+        private static readonly int GLSLVersion = 120;
 
         //Red fragment shader, just to test if it's working
-        static bool TestFrag = false;
+        private static readonly bool TestFrag = false;
 
         private static string _shaderCode = null;
         private static bool _vertex = false;
@@ -49,28 +50,28 @@ namespace BrawlLib.Wii.Graphics
         //used for light channel calculations with SCN0
         //3 Color Registers, these can be used and modified by the shader
         //4 Constant Color Registers, these can be used but cannot be modified by the shader
-        static readonly string[] _uaMatColorName = { "amb", "clr", "creg", "ccreg" };
+        private static readonly string[] _uaMatColorName = { "amb", "clr", "creg", "ccreg" };
 
         //SCN0 Lightset
         //8 possible lights, 1 possible ambient light
         //These are used for light channel color calculations,
         //which the result of can be used by the shader's RasterColor selection
-        const string _uSCNLightSetAmbLightName = "scnSetAmbLight";
-        const string _uSCNLightSetLightsName = "scnSetLights";
+        private const string _uSCNLightSetAmbLightName = "scnSetAmbLight";
+        private const string _uSCNLightSetLightsName = "scnSetLights";
 
         //SCN0 Fog
-        const string _uSCNFogStartName = "scnFogStartZ";
-        const string _uSCNFogEndName = "scnFogEndZ";
-        const string _uSCNFogColorName = "scnFogColor";
-        const string _uSCNFogTypeName = "scnFogType";
+        private const string _uSCNFogStartName = "scnFogStartZ";
+        private const string _uSCNFogEndName = "scnFogEndZ";
+        private const string _uSCNFogColorName = "scnFogColor";
+        private const string _uSCNFogTypeName = "scnFogType";
 
         //Varying variables
-        const string _vNormalName = "vNormal";
-        const string _vPositionName = "vPosition";
-        static readonly string[] _vVtxColorsName = { "vtxColor0", "vtxColor1" };
+        private const string _vNormalName = "vNormal";
+        private const string _vPositionName = "vPosition";
+        private static readonly string[] _vVtxColorsName = { "vtxColor0", "vtxColor1" };
 
         //Fragment shader variables
-        const string LightChannelName = "lightChannel";
+        private const string LightChannelName = "lightChannel";
 
         public static unsafe void SetUniforms(MDL0MaterialNode mat)
         {
@@ -110,7 +111,9 @@ namespace BrawlLib.Wii.Graphics
         private static void WriteFragmentUniforms()
         {
             for (int i = 0; i < _material.Children.Count; i++)
+            {
                 wU("sampler2D texture{0};", i.ToString());
+            }
 
             wl();
 
@@ -163,7 +166,10 @@ namespace BrawlLib.Wii.Graphics
             wl();
             WriteVersion();
             if (!UsePixelLighting)
+            {
                 WriteLightFrameStruct();
+            }
+
             WriteClamps();
             WriteVertexUniforms();
             WriteVarying();
@@ -174,14 +180,21 @@ namespace BrawlLib.Wii.Graphics
 
                 wl("{0} = vec3(gl_ModelViewMatrix * gl_Vertex);", _vPositionName);
                 if (UsePixelLighting)
+                {
                     wl("{0} = gl_NormalMatrix * gl_Normal;", _vNormalName);
+                }
                 else
+                {
                     wl("{0} = normalize(gl_NormalMatrix * gl_Normal);", _vNormalName);
+                }
+
                 wl("{0} = gl_Color;", _vVtxColorsName[0]);
                 wl("{0} = gl_SecondaryColor;", _vVtxColorsName[1]);
 
                 if (!UsePixelLighting)
+                {
                     WriteLightChannels();
+                }
 
                 for (int i = 0; i < _material.Children.Count; i++)
                 {
@@ -190,7 +203,9 @@ namespace BrawlLib.Wii.Graphics
                     //LightChannels are not written in the vertex shader when using pixel lighting,
                     //but color texture coordinates need it. Need to handle this in the fragment shader
                     if (mr.Coordinates == TexSourceRow.Colors && UsePixelLighting)
+                    {
                         continue;
+                    }
 
                     WriteCoordSource(mr, i);
 
@@ -200,7 +215,7 @@ namespace BrawlLib.Wii.Graphics
             return Finish();
         }
 
-        static void WriteClamps()
+        private static void WriteClamps()
         {
             wl("float satlf(float f)");
             OpenBracket();
@@ -227,23 +242,29 @@ namespace BrawlLib.Wii.Graphics
         private static void WriteCoordSource(MDL0MaterialRefNode mr, int i)
         {
             //Associated texture coordinates are loaded into the same active texture unit as the map's index
-            string src = mr.TextureCoordId >= 0 ? 
-                ("gl_MultiTexCoord" + i) : 
+            string src = mr.TextureCoordId >= 0 ?
+                ("gl_MultiTexCoord" + i) :
                 _texGenSrc[(int)mr.Coordinates];
 
             if (mr.Coordinates == TexSourceRow.Colors)
-                src = String.Format(src, mr.Type == TexTexgenType.Color1 ? "1" : "0");
+            {
+                src = string.Format(src, mr.Type == TexTexgenType.Color1 ? "1" : "0");
+            }
 
-            src = String.Format("gl_TextureMatrix[{0}] * {1}", i, src);
+            src = string.Format("gl_TextureMatrix[{0}] * {1}", i, src);
 
             //TODO: Normalizing doesn't work right when a mesh is scaled by a bone
             if (mr.Normalize)
-                src = String.Format("normalize({0})", src);
+            {
+                src = string.Format("normalize({0})", src);
+            }
 
             wl("vec4 uv{0} = {1};", i, src);
 
             if (mr.Projection == TexProjection.STQ)
+            {
                 wl("if (uv{0}.z != 0.0f) uv{0}.xy = uv{0}.xy / uv{0}.z;", i);
+            }
         }
 
         public static string GenMaterialFragShader()
@@ -256,7 +277,10 @@ namespace BrawlLib.Wii.Graphics
             wl();
             WriteVersion();
             if (UsePixelLighting)
+            {
                 WriteLightFrameStruct();
+            }
+
             WriteClamps();
             WriteFragmentUniforms();
             WriteVarying();
@@ -317,9 +341,13 @@ namespace BrawlLib.Wii.Graphics
                     {
                         MDL0MaterialRefNode mr = (MDL0MaterialRefNode)_material.Children[i];
                         if (mr.Coordinates == TexSourceRow.Colors)
+                        {
                             WriteCoordSource(mr, i);
-                        else 
+                        }
+                        else
+                        {
                             wl("vec4 uv{0} = gl_TexCoord[{0}];", i);
+                        }
                     }
                 }
 
@@ -336,14 +364,16 @@ namespace BrawlLib.Wii.Graphics
                     //No point doing them if they'll be thrown out later
                     //This is a low priority optimization
                     Comment("Constant Alpha");
-                    wl("{0}.a = {1};", PrevRegName, ((float)_material.ConstantAlphaValue / 255.0f).ToString(CultureInfo.InvariantCulture));
+                    wl("{0}.a = {1};", PrevRegName, (_material.ConstantAlphaValue / 255.0f).ToString(CultureInfo.InvariantCulture));
                     wl();
                 }
 
                 ApplyFog();
 
                 if (DoTrunc)
+                {
                     wl("{0} = truncc4({0});", PrevRegName);
+                }
 
                 wl("gl_FragColor = {0};", PrevRegName, _uSCNFogColorName, _fogDensityName);
 
@@ -352,23 +382,31 @@ namespace BrawlLib.Wii.Graphics
                     wl();
                     Comment("Alpha Function");
 
-                    string compare0 = String.Format(_alphaTestCompName[(int)func0], "gl_FragColor.a", ((float)func._ref0 / 255.0f).ToString(CultureInfo.InvariantCulture));
-                    string compare1 = String.Format(_alphaTestCompName[(int)func1], "gl_FragColor.a", ((float)func._ref1 / 255.0f).ToString(CultureInfo.InvariantCulture));
+                    string compare0 = string.Format(_alphaTestCompName[(int)func0], "gl_FragColor.a", (func._ref0 / 255.0f).ToString(CultureInfo.InvariantCulture));
+                    string compare1 = string.Format(_alphaTestCompName[(int)func1], "gl_FragColor.a", (func._ref1 / 255.0f).ToString(CultureInfo.InvariantCulture));
                     string fullcompare = string.Format(_alphaTestCombineName[(int)logic], compare0, compare1);
 
                     if (logic == AlphaOp.Or)
                     {
                         if (func0 == AlphaCompare.Always)
+                        {
                             fullcompare = compare1;
+                        }
                         else if (func1 == AlphaCompare.Always)
+                        {
                             fullcompare = compare0;
+                        }
                     }
                     else if (logic == AlphaOp.And)
                     {
                         if (func0 == AlphaCompare.Never)
+                        {
                             fullcompare = compare1;
+                        }
                         else if (func1 == AlphaCompare.Never)
+                        {
                             fullcompare = compare0;
+                        }
                     }
 
                     wl("if (!(" + fullcompare + ")) discard;");
@@ -382,7 +420,7 @@ namespace BrawlLib.Wii.Graphics
             return Finish();
         }
 
-        static void ApplyFog()
+        private static void ApplyFog()
         {
             string pixelZ = "posZ";
 
@@ -448,33 +486,40 @@ namespace BrawlLib.Wii.Graphics
             CloseBracket();
         }
 
-        static string WriteLightChannels()
+        private static string WriteLightChannels()
         {
             Comment("Lighting Calculations");
 
             string error = WriteLightChannel(_material.LightChannel0, 0);
-            if (!String.IsNullOrEmpty(error))
+            if (!string.IsNullOrEmpty(error))
+            {
                 return error;
+            }
+
             error = WriteLightChannel(_material.LightChannel1, 1);
-            if (!String.IsNullOrEmpty(error))
+            if (!string.IsNullOrEmpty(error))
+            {
                 return error;
+            }
 
             return null;
         }
 
-        static string WriteLightChannel(LightChannel channel, int index)
+        private static string WriteLightChannel(LightChannel channel, int index)
         {
             if (!channel.Flags.HasFlag(LightingChannelFlags.UseChanColor) &&
                 !channel.Flags.HasFlag(LightingChannelFlags.UseChanAlpha))
+            {
                 return null;
+            }
 
             Comment("LightChannel" + index);
 
             LightChannelControl color = channel._color;
             LightChannelControl alpha = channel._alpha;
 
-            string amb = String.Format("{0}[{1}]", _uaMatColorName[0], index);
-            string clr = String.Format("{0}[{1}]", _uaMatColorName[1], index);
+            string amb = string.Format("{0}[{1}]", _uaMatColorName[0], index);
+            string clr = string.Format("{0}[{1}]", _uaMatColorName[1], index);
 
             string matColorName = "matColor" + index;
             string lightFuncName = "lightFunc" + index;
@@ -486,21 +531,30 @@ namespace BrawlLib.Wii.Graphics
             {
                 //Set SCN0 ambient color 
                 if (color.Enabled && alpha.Enabled)
+                {
                     wl("{0} = {1};", illumName, _uSCNLightSetAmbLightName);
+                }
                 else
                 {
                     if (color.Enabled)
+                    {
                         wl("{0}.rgb = {1}.rgb;", illumName, _uSCNLightSetAmbLightName);
+                    }
+
                     if (alpha.Enabled)
+                    {
                         wl("{0}.a = {1}.a;", illumName, _uSCNLightSetAmbLightName);
+                    }
                 }
 
                 //Set material base color
                 GXColorSrc cAmbSrc = color.AmbientSource;
                 GXColorSrc aAmbSrc = alpha.AmbientSource;
                 if (cAmbSrc == aAmbSrc)
+                {
                     wl("{0} *= {1};", illumName,
                         cAmbSrc == GXColorSrc.Register ? amb : _vVtxColorsName[index]);
+                }
                 else
                 {
                     wl("{0}.rgb *= {1}.rgb;", illumName,
@@ -534,8 +588,8 @@ namespace BrawlLib.Wii.Graphics
                         #region Diffuse Attenuation
 
                         //Initialize attenuation value with diffuse attenuation
-                        string cAttn = String.Format("float {0}{1} = ", attnName, colorPassSuffix) + "{0};";
-                        string aAttn = String.Format("float {0}{1} = ", attnName, alphaPassSuffix) + "{0};";
+                        string cAttn = string.Format("float {0}{1} = ", attnName, colorPassSuffix) + "{0};";
+                        string aAttn = string.Format("float {0}{1} = ", attnName, alphaPassSuffix) + "{0};";
                         switch (color.DiffuseFunction)
                         {
                             case GXDiffuseFn.Disabled: wl(cAttn, "1.0"); break;
@@ -559,7 +613,7 @@ namespace BrawlLib.Wii.Graphics
                             //Distance and angular quadratic coefficients
                             wl("float k0 = 1.0, k1 = 0.0, k2 = 0.0;");
                             wl("float a0 = 1.0, a1 = 0.0, a2 = 0.0;");
-                            
+
                             wl("vec3 {0} = gl_NormalMatrix * {1}.{2};", lightDirName, lightName, LightDirName);
                         }
 
@@ -584,7 +638,9 @@ namespace BrawlLib.Wii.Graphics
 
             //Set light function
             if (color.Enabled == alpha.Enabled)
+            {
                 wl("{0} = {1};", lightFuncName, color.Enabled ? illumName : vec4One);
+            }
             else
             {
                 wl("{0}.rgb = {1};", lightFuncName, color.Enabled ? illumName + ".rgb" : vec3One);
@@ -595,8 +651,10 @@ namespace BrawlLib.Wii.Graphics
             GXColorSrc colorSrc = color.MaterialSource;
             GXColorSrc alphaSrc = alpha.MaterialSource;
             if (colorSrc == alphaSrc)
+            {
                 wl("{0} = {1};", matColorName,
                     colorSrc == GXColorSrc.Register ? clr : _vVtxColorsName[index]);
+            }
             else
             {
                 wl("{0}.rgb = {1}.rgb;", matColorName,
@@ -611,16 +669,16 @@ namespace BrawlLib.Wii.Graphics
             return null;
         }
 
-        const string colorPassSuffix = "C";
-        const string alphaPassSuffix = "A";
-        const string attnName = "attn";
-        const string AAttName = "AAtt";
-        const string distName = "distL";
-        const string NdotLName = "NdotL";
-        const string lightDirName = "lightDir";
-        const string lightVecName = "lightVec";
-        static string lightName = "lightAnimFrame";
-        const string lightColorName = "lightColor";
+        private const string colorPassSuffix = "C";
+        private const string alphaPassSuffix = "A";
+        private const string attnName = "attn";
+        private const string AAttName = "AAtt";
+        private const string distName = "distL";
+        private const string NdotLName = "NdotL";
+        private const string lightDirName = "lightDir";
+        private const string lightVecName = "lightVec";
+        private static readonly string lightName = "lightAnimFrame";
+        private const string lightColorName = "lightColor";
 
         private static void CalcAttn(GXAttnFn fn, bool colorPass, string illumName)
         {
@@ -646,7 +704,9 @@ namespace BrawlLib.Wii.Graphics
                     OpenBracket();
                 }
                 else
+                {
                     Comment("Spot Attn");
+                }
 
                 //Write floats for light attenuation color equation
                 wl("float {0}{1} = 1.0;", AAttName, suffix); //Angular attenuation
@@ -705,8 +765,8 @@ namespace BrawlLib.Wii.Graphics
                 }
 
                 string equation = "{2}2 * {0}{1} * {0}{1} + {2}1 * {0}{1} + {2}0";
-                string numerator = String.Format(equation, AAttName, suffix, "a");
-                string denominator = String.Format(equation, distName, suffix, "k");
+                string numerator = string.Format(equation, AAttName, suffix, "a");
+                string denominator = string.Format(equation, distName, suffix, "k");
 
                 wl("{0}{3} *= satlf({1}) / ({2});", attnName, numerator, denominator, suffix);
 
@@ -737,20 +797,45 @@ namespace BrawlLib.Wii.Graphics
             bool usesRas = false;
             bool usesConst = false;
             bool[] usesReg = new bool[3];
-            
+
             int x = 1;
             foreach (MDL0TEVStageNode stage in _shaderNode.Children)
             {
-                if (!usesTex) usesTex = stage.AnyTextureSourceUsed();
-                if (!usesRas) usesRas = stage.AnyRasterSourceUsed();
-                if (!usesConst) usesConst = stage.AnyConstantColorSourceUsed() || stage.AnyConstantAlphaSourceUsed();
-                if (!usesReg[0]) usesReg[0] = stage.AnyReg0Used();
-                if (!usesReg[1]) usesReg[1] = stage.AnyReg1Used();
-                if (!usesReg[2]) usesReg[2] = stage.AnyReg2Used();
+                if (!usesTex)
+                {
+                    usesTex = stage.AnyTextureSourceUsed();
+                }
+
+                if (!usesRas)
+                {
+                    usesRas = stage.AnyRasterSourceUsed();
+                }
+
+                if (!usesConst)
+                {
+                    usesConst = stage.AnyConstantColorSourceUsed() || stage.AnyConstantAlphaSourceUsed();
+                }
+
+                if (!usesReg[0])
+                {
+                    usesReg[0] = stage.AnyReg0Used();
+                }
+
+                if (!usesReg[1])
+                {
+                    usesReg[1] = stage.AnyReg1Used();
+                }
+
+                if (!usesReg[2])
+                {
+                    usesReg[2] = stage.AnyReg2Used();
+                }
 
                 string error = WriteStage(stage);
                 if (error != null)
+                {
                     return new string[] { error };
+                }
 
                 wl();
 
@@ -759,12 +844,27 @@ namespace BrawlLib.Wii.Graphics
             }
 
             for (int i = 1; i < 4; i++)
+            {
                 if (usesReg[i - 1])
+                {
                     wl("vec4 {0} = {1};", _outReg[i], _defaultRegisterValues[i]);
+                }
+            }
 
-            if (usesTex) wl("vec4 {0};", _texColorName);
-            if (usesRas) wl("vec4 {0};", _rasColorName);
-            if (usesConst) wl("vec4 {0};", _constColorName);
+            if (usesTex)
+            {
+                wl("vec4 {0};", _texColorName);
+            }
+
+            if (usesRas)
+            {
+                wl("vec4 {0};", _rasColorName);
+            }
+
+            if (usesConst)
+            {
+                wl("vec4 {0};", _constColorName);
+            }
 
             wl();
 
@@ -776,7 +876,7 @@ namespace BrawlLib.Wii.Graphics
 
         public static string WriteStage(MDL0TEVStageNode stage)
         {
-            string identifier = String.Format("{0} {1}", stage.Parent.Name, stage.Name);
+            string identifier = string.Format("{0} {1}", stage.Parent.Name, stage.Name);
 
             Comment(identifier);
             OpenBracket();
@@ -785,9 +885,14 @@ namespace BrawlLib.Wii.Graphics
             string tswap = swapModeTable[(int)stage.TextureSwap];
 
             if (stage.AnyConstantColorSourceUsed())
+            {
                 wl(_constColorName + ".rgb = {0};", _cConst[(int)stage.ConstantColorSelection]);
+            }
+
             if (stage.AnyConstantAlphaSourceUsed())
+            {
                 wl(_constColorName + ".a = {0};", _aConst[(int)stage.ConstantAlphaSelection]);
+            }
 
             if (stage.AnyTextureSourceUsed())
             {
@@ -797,17 +902,24 @@ namespace BrawlLib.Wii.Graphics
                     int coordID = (int)stage.TextureCoordID;
 
                     if (UsePixelLighting)
+                    {
                         wl(_texColorName + " = texture2D(texture{0}, uv{1}.st).{2};",
                             mapID.ToString(), coordID.ToString(), tswap);
+                    }
                     else
+                    {
                         wl(_texColorName + " = texture2D(texture{0}, gl_TexCoord[{1}].st).{2};",
                             mapID.ToString(), coordID.ToString(), tswap);
+                    }
                 }
                 else
+                {
                     wl(_texColorName + " = {0};", vec4Zero);
+                }
             }
 
             if (stage.AnyRasterSourceUsed())
+            {
                 switch (stage.RasterColor)
                 {
                     case ColorSelChan.LightChannel0:
@@ -824,6 +936,7 @@ namespace BrawlLib.Wii.Graphics
                         wl(_rasColorName + " = {0};", vec4Zero);
                         break;
                 }
+            }
 
             string reg, ca, cb, cc, cd, aa, ab, ac, ad;
 
@@ -845,13 +958,15 @@ namespace BrawlLib.Wii.Graphics
                 int bias = (int)color.Bias;
                 int scale = (int)color.Shift;
 
-                wl(String.Format("{0} = ({4} {5} (mix({1},{2},{3})){6}){7};",
+                wl(string.Format("{0} = ({4} {5} (mix({1},{2},{3})){6}){7};",
                     reg, ca, cb, cc, cd,
                     cOp == TevColorOp.Add ? "+" : "-",
                     _tevBiasName[bias],
                     _tevScaleName[scale]));
                 if (color.Clamp)
+                {
                     wl("{0} = satv({0});", reg, vec3Zero, vec3One);
+                }
             }
             else if (icOp >= 8 && icOp <= 15)
             {
@@ -859,8 +974,8 @@ namespace BrawlLib.Wii.Graphics
 
                 //255 divided down to 1 has an accuracy of ~0.00392 between values
                 //use abs() < 0.005 to compare equality of floats that may not be accurate
-                string comp = greater ? 
-                    ca + ".{0}" + " > " + cb + ".{0}" : 
+                string comp = greater ?
+                    ca + ".{0}" + " > " + cb + ".{0}" :
                     "abs(" + ca + ".{0} - " + cb + ".{0}) < 0.005";
 
                 string compAdd = "if ({0}) " + reg + ".{1} += " + cc + ".{1};";
@@ -871,30 +986,30 @@ namespace BrawlLib.Wii.Graphics
                 //Compare a and b selections and add c to the register
                 if (icOp > 13)
                 {
-                    wl(compAdd, String.Format(comp, "r"), "r");
-                    wl(compAdd, String.Format(comp, "g"), "g");
-                    wl(compAdd, String.Format(comp, "b"), "b");
+                    wl(compAdd, string.Format(comp, "r"), "r");
+                    wl(compAdd, string.Format(comp, "g"), "g");
+                    wl(compAdd, string.Format(comp, "b"), "b");
                 }
                 else
                 {
                     switch (icOp / 2 - 4)
                     {
                         case 0: //R
-                            wl(compAdd, 
-                                String.Format(comp, "r"), 
+                            wl(compAdd,
+                                string.Format(comp, "r"),
                                 "rgb");
                             break;
                         case 1: //GR
-                            wl(compAdd, 
-                                String.Format(comp, "r") + " && " + 
-                                String.Format(comp, "g"), 
+                            wl(compAdd,
+                                string.Format(comp, "r") + " && " +
+                                string.Format(comp, "g"),
                                 "rgb");
                             break;
                         case 2: //BGR
                             wl(compAdd,
-                                String.Format(comp, "r") + " && " +
-                                String.Format(comp, "g") + " && " +
-                                String.Format(comp, "b"),
+                                string.Format(comp, "r") + " && " +
+                                string.Format(comp, "g") + " && " +
+                                string.Format(comp, "b"),
                                 "rgb");
                             break;
                     }
@@ -919,13 +1034,15 @@ namespace BrawlLib.Wii.Graphics
                 int bias = (int)alpha.Bias;
                 int scale = (int)alpha.Shift;
 
-                wl(String.Format("{0} = ({4} {5} (mix({1},{2},{3})){6}){7};",
+                wl(string.Format("{0} = ({4} {5} (mix({1},{2},{3})){6}){7};",
                     reg, aa, ab, ac, ad,
                     aOp == TevAlphaOp.Add ? "+" : "-",
                     _tevBiasName[bias],
                     _tevScaleName[scale]));
                 if (alpha.Clamp)
+                {
                     wl("{0} = satf({0});", reg);
+                }
             }
             else if (iaOp >= 8 && iaOp <= 15)
             {
@@ -943,7 +1060,7 @@ namespace BrawlLib.Wii.Graphics
                         aa + ".{0}" + " > " + ab + ".{0}" :
                         "abs(" + aa + ".{0} - " + ab + ".{0}) < 0.005";
 
-                    wl(compAdd, String.Format(comp, "a"), "a");
+                    wl(compAdd, string.Format(comp, "a"), "a");
                 }
                 else
                 {
@@ -956,20 +1073,20 @@ namespace BrawlLib.Wii.Graphics
                     {
                         case 0: //R
                             wl(compAdd,
-                                String.Format(comp, "r"),
+                                string.Format(comp, "r"),
                                 "a");
                             break;
                         case 1: //GR
                             wl(compAdd,
-                                String.Format(comp, "r") + " && " +
-                                String.Format(comp, "g"),
+                                string.Format(comp, "r") + " && " +
+                                string.Format(comp, "g"),
                                 "a");
                             break;
                         case 2: //BGR
                             wl(compAdd,
-                                String.Format(comp, "r") + " && " +
-                                String.Format(comp, "g") + " && " +
-                                String.Format(comp, "b"),
+                                string.Format(comp, "r") + " && " +
+                                string.Format(comp, "g") + " && " +
+                                string.Format(comp, "b"),
                                 "a");
                             break;
                     }
@@ -1031,7 +1148,10 @@ namespace BrawlLib.Wii.Graphics
             {
                 string t = "";
                 for (int i = 0; i < tabCount; i++)
+                {
                     t += "\t";
+                }
+
                 return t;
             }
         }
@@ -1080,7 +1200,9 @@ namespace BrawlLib.Wii.Graphics
 
             //Decrease tabs for every close bracket
             if (args.Length == 0)
+            {
                 tabCount -= Helpers.FindCount(str, 0, '}');
+            }
 
             bool s = false;
             int r = str.LastIndexOf(NewLine);
@@ -1090,13 +1212,18 @@ namespace BrawlLib.Wii.Graphics
                 s = true;
             }
             str = str.Replace(NewLine, NewLine + Tabs);
-            if (s) str += NewLine;
+            if (s)
+            {
+                str += NewLine;
+            }
 
-            _shaderCode += Tabs + (args != null && args.Length > 0 ? String.Format(str, args) : str);
+            _shaderCode += Tabs + (args != null && args.Length > 0 ? string.Format(str, args) : str);
 
             //Increase tabs for every open bracket
             if (args.Length == 0)
+            {
                 tabCount += Helpers.FindCount(str, 0, '{');
+            }
         }
         private static void OpenBracket()
         {
@@ -1116,7 +1243,10 @@ namespace BrawlLib.Wii.Graphics
             {
                 float[] values = new float[p.Length * 4];
                 for (int i = 0; i < values.Length; i++)
+                {
                     values[i] = ((float*)p[i >> 2].Address)[i & 3];
+                }
+
                 GL.Uniform4(u, p.Length, values);
             }
         }
@@ -1127,26 +1257,35 @@ namespace BrawlLib.Wii.Graphics
             {
                 float[] values = new float[p.Length * 3];
                 for (int i = 0; i < values.Length; i++)
+                {
                     values[i] = ((float*)p[i / 3].Address)[i % 3];
+                }
+
                 GL.Uniform3(u, p.Length, values);
             }
         }
         private static void Uniform(int pHandle, string name, params float[] p)
         {
             int u = GL.GetUniformLocation(pHandle, name);
-            if (u > -1) GL.Uniform1(u, p.Length, p);
+            if (u > -1)
+            {
+                GL.Uniform1(u, p.Length, p);
+            }
         }
         private static void Uniform(int pHandle, string name, params int[] p)
         {
             int u = GL.GetUniformLocation(pHandle, name);
-            if (u > -1) GL.Uniform1(u, p.Length, p);
+            if (u > -1)
+            {
+                GL.Uniform1(u, p.Length, p);
+            }
         }
         private static void Uniform(int pHandle, string name, GLSLLightFrame[] p)
         {
             for (int i = 0; i < p.Length; i++)
             {
                 GLSLLightFrame frame = p[i];
-                string x = String.Format("{0}[{1}].", name, i);
+                string x = string.Format("{0}[{1}].", name, i);
                 Uniform(pHandle, x + LightEnabledName, frame.Enabled);
                 Uniform(pHandle, x + LightSpecEnabledName, frame.SpecEnabled);
                 Uniform(pHandle, x + LightPosName, frame.Position);
@@ -1161,18 +1300,18 @@ namespace BrawlLib.Wii.Graphics
         #endregion
 
         #region Light
-        const string LightStructName = "LightFrame";
-        const string LightEnabledName = "enabled";
-        const string LightSpecEnabledName = "hasSpecular";
-        const string LightPosName = "pos";
-        const string LightDirName = "dir";
-        const string LightColorName = "color";
-        const string LightSpecColorName = "specColor";
-        const string LightDistCoefsName = "distCoefs";
-        const string LightSpotCoefsName = "spotCoefs";
-        const string LightDistCoefsSpecName = "distCoefsSpec";
+        private const string LightStructName = "LightFrame";
+        private const string LightEnabledName = "enabled";
+        private const string LightSpecEnabledName = "hasSpecular";
+        private const string LightPosName = "pos";
+        private const string LightDirName = "dir";
+        private const string LightColorName = "color";
+        private const string LightSpecColorName = "specColor";
+        private const string LightDistCoefsName = "distCoefs";
+        private const string LightSpotCoefsName = "spotCoefs";
+        private const string LightDistCoefsSpecName = "distCoefsSpec";
 
-        static void WriteLightFrameStruct()
+        private static void WriteLightFrameStruct()
         {
             wl("struct {0}", LightStructName);
             wl("{");
@@ -1197,28 +1336,24 @@ namespace BrawlLib.Wii.Graphics
 
         #region Variable Names
 
-        const string Trunc1Name = "truncc1";
-        const string Trunc3Name = "truncc3";
-        const string Trunc4Name = "truncc4";
+        private const string Trunc1Name = "truncc1";
+        private const string Trunc3Name = "truncc3";
+        private const string Trunc4Name = "truncc4";
+        private const string vec4Zero = "vec4(0.0)";
+        private const string vec4Half = "vec4(0.5)";
+        private const string vec4One = "vec4(1.0)";
+        private const string vec3Zero = "vec3(0.0)";
+        private const string vec3Half = "vec3(0.5)";
+        private const string vec3One = "vec3(1.0)";
+        private const string _fogDensityName = "fogDensity";
+        private const string _texColorName = "texColor";
+        private const string _rasColorName = "rasColor";
+        private const string _constColorName = "constColor";
+        private static readonly string[] _outReg = { "rPrev", "r0", "r1", "r2" };
 
-        const string vec4Zero = "vec4(0.0)";
-        const string vec4Half = "vec4(0.5)";
-        const string vec4One = "vec4(1.0)";
+        private static string PrevRegName => _outReg[0];
 
-        const string vec3Zero = "vec3(0.0)";
-        const string vec3Half = "vec3(0.5)";
-        const string vec3One = "vec3(1.0)";
-
-        const string _fogDensityName = "fogDensity";
-
-        const string _texColorName = "texColor";
-        const string _rasColorName = "rasColor";
-        const string _constColorName = "constColor";
-
-        static readonly string[] _outReg = { "rPrev", "r0", "r1", "r2" };
-        static string PrevRegName { get { return _outReg[0]; } }
-
-        static readonly string[] _texGenSrc =
+        private static readonly string[] _texGenSrc =
         {
             "gl_Vertex",
             "vec4(gl_Normal, 1.0)",
@@ -1234,22 +1369,25 @@ namespace BrawlLib.Wii.Graphics
             "gl_MultiTexCoord6",
             "gl_MultiTexCoord7"
         };
-        static readonly string[] _defaultRegisterValues =
+        private static readonly string[] _defaultRegisterValues =
         {
             vec4One,
             _uaMatColorName[2] + "[0]",
             _uaMatColorName[2] + "[1]",
             _uaMatColorName[2] + "[2]"
         };
-        static string TruncCSel(int i)
+
+        private static string TruncCSel(int i)
         {
-            return DoTrunc && i < 8 ? String.Format("{0}({1})", Trunc3Name, _cSel[i]) : _cSel[i];
+            return DoTrunc && i < 8 ? string.Format("{0}({1})", Trunc3Name, _cSel[i]) : _cSel[i];
         }
-        static string TruncASel(int i)
+
+        private static string TruncASel(int i)
         {
-            return DoTrunc && i < 4 ? String.Format("{0}({1})", Trunc1Name, _aSel[i]) : _aSel[i];
+            return DoTrunc && i < 4 ? string.Format("{0}({1})", Trunc1Name, _aSel[i]) : _aSel[i];
         }
-        static readonly string[] _cSel =
+
+        private static readonly string[] _cSel =
         {
             _outReg[0] + ".rgb", _outReg[0] + ".aaa",
             _outReg[1] + ".rgb", _outReg[1] + ".aaa",
@@ -1262,7 +1400,7 @@ namespace BrawlLib.Wii.Graphics
             _constColorName + ".rgb",
             vec3Zero
         };
-        static readonly string[] _aSel =
+        private static readonly string[] _aSel =
         {
             _outReg[0] + ".a",
             _outReg[1] + ".a",
@@ -1273,7 +1411,7 @@ namespace BrawlLib.Wii.Graphics
             _constColorName + ".a",
             "0.0"
         };
-        static readonly string[] _cConst =
+        private static readonly string[] _cConst =
         {
             //Constants
             vec3One,
@@ -1288,26 +1426,26 @@ namespace BrawlLib.Wii.Graphics
             "", "", "", "",
             //Constant color selections
             _uaMatColorName[3] + "[0].rgb", _uaMatColorName[3] + "[1].rgb", _uaMatColorName[3] + "[2].rgb", _uaMatColorName[3] + "[3].rgb",
-            _uaMatColorName[3] + "[0].rrr", _uaMatColorName[3] + "[1].rrr", _uaMatColorName[3] + "[2].rrr", _uaMatColorName[3] + "[3].rrr", 
+            _uaMatColorName[3] + "[0].rrr", _uaMatColorName[3] + "[1].rrr", _uaMatColorName[3] + "[2].rrr", _uaMatColorName[3] + "[3].rrr",
             _uaMatColorName[3] + "[0].ggg", _uaMatColorName[3] + "[1].ggg", _uaMatColorName[3] + "[2].ggg", _uaMatColorName[3] + "[3].ggg",
-            _uaMatColorName[3] + "[0].bbb", _uaMatColorName[3] + "[1].bbb", _uaMatColorName[3] + "[2].bbb", _uaMatColorName[3] + "[3].bbb", 
-            _uaMatColorName[3] + "[0].aaa", _uaMatColorName[3] + "[1].aaa", _uaMatColorName[3] + "[2].aaa", _uaMatColorName[3] + "[3].aaa" 
+            _uaMatColorName[3] + "[0].bbb", _uaMatColorName[3] + "[1].bbb", _uaMatColorName[3] + "[2].bbb", _uaMatColorName[3] + "[3].bbb",
+            _uaMatColorName[3] + "[0].aaa", _uaMatColorName[3] + "[1].aaa", _uaMatColorName[3] + "[2].aaa", _uaMatColorName[3] + "[3].aaa"
         };
-        static readonly string[] _aConst =
+        private static readonly string[] _aConst =
         {
             //Constants
             "1.0", "0.875", "0.75", "0.625", "0.5", "0.375", "0.25", "0.125",
             //8 - 15 not used, skip
             "", "", "", "", "", "", "", "",
             //Constant alpha selections
-            _uaMatColorName[3] + "[0].r", _uaMatColorName[3] + "[1].r", _uaMatColorName[3] + "[2].r", _uaMatColorName[3] + "[3].r", 
+            _uaMatColorName[3] + "[0].r", _uaMatColorName[3] + "[1].r", _uaMatColorName[3] + "[2].r", _uaMatColorName[3] + "[3].r",
             _uaMatColorName[3] + "[0].g", _uaMatColorName[3] + "[1].g", _uaMatColorName[3] + "[2].g", _uaMatColorName[3] + "[3].g",
-            _uaMatColorName[3] + "[0].b", _uaMatColorName[3] + "[1].b", _uaMatColorName[3] + "[2].b", _uaMatColorName[3] + "[3].b", 
-            _uaMatColorName[3] + "[0].a", _uaMatColorName[3] + "[1].a", _uaMatColorName[3] + "[2].a", _uaMatColorName[3] + "[3].a" 
+            _uaMatColorName[3] + "[0].b", _uaMatColorName[3] + "[1].b", _uaMatColorName[3] + "[2].b", _uaMatColorName[3] + "[3].b",
+            _uaMatColorName[3] + "[0].a", _uaMatColorName[3] + "[1].a", _uaMatColorName[3] + "[2].a", _uaMatColorName[3] + "[3].a"
         };
-        static readonly string[] _tevBiasName = { "", " + 0.5", " - 0.5" };
-        static readonly string[] _tevScaleName = { "", " * 2.0", " * 4.0", " * 0.5" };
-        static readonly string[] _alphaTestCompName =
+        private static readonly string[] _tevBiasName = { "", " + 0.5", " - 0.5" };
+        private static readonly string[] _tevScaleName = { "", " * 2.0", " * 4.0", " * 0.5" };
+        private static readonly string[] _alphaTestCompName =
         {
             "{0} != {0}",
             "{0} < {1}",
@@ -1318,7 +1456,7 @@ namespace BrawlLib.Wii.Graphics
             "{0} >= {1}",
             "{0} == {0}"
         };
-        static readonly string[] _alphaTestCombineName = 
+        private static readonly string[] _alphaTestCombineName =
         {
             "({0}) && ({1})",
             "({0}) || ({1})",
@@ -1328,7 +1466,7 @@ namespace BrawlLib.Wii.Graphics
         #endregion
 
         #region Other Functions
-        static string HandleProblem(string message)
+        private static string HandleProblem(string message)
         {
 #if DEBUG
             MessageBox.Show(_material.RootNode._mainForm, message, String.Format("Handled error compiling {0} shader", _vertex ? "vertex" : "fragment"), MessageBoxButtons.OK);
@@ -1392,7 +1530,9 @@ namespace BrawlLib.Wii.Graphics
                     {
                         int tabCount = int.Parse(fragSplit[1]);
                         for (int i = 0; i < tabCount; i++)
+                        {
                             tabs += "\t";
+                        }
                     }
 
                     for (int i = 0, stageIndex = 0; i < shaderStages.Length; i++)
@@ -1401,7 +1541,9 @@ namespace BrawlLib.Wii.Graphics
                         {
                             //Don't write stages that aren't active
                             if (stageIndex >= stageCount)
+                            {
                                 break;
+                            }
 
                             stageIndex++;
                         }
@@ -1411,7 +1553,9 @@ namespace BrawlLib.Wii.Graphics
                             StringSplitOptions.None);
 
                         foreach (string line in shadSplit)
+                        {
                             combineFrag += tabs + line + ShaderGenerator.NewLine;
+                        }
                     }
                 }
                 combineFrag += fragSplit[2];

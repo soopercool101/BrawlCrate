@@ -7,45 +7,45 @@ namespace BrawlLib.SSBBTypes
 {
     public abstract unsafe class SakuraiEntryNode
     {
-        public string EntryOffset { get { return "0x" + _offset.ToString("X"); } }
-        public string EntrySize { get { return "0x" + _initSize.ToString("X"); } }
-        
+        public string EntryOffset => "0x" + _offset.ToString("X");
+        public string EntrySize => "0x" + _initSize.ToString("X");
+
         [Browsable(false)]
-        public int RebuildOffset
-        {
-            get
-            {
-                return RebuildAddress == null 
-                    || BaseAddress == null 
-                    || RebuildAddress < BaseAddress ? 
+        public int RebuildOffset => RebuildAddress == null
+                    || BaseAddress == null
+                    || RebuildAddress < BaseAddress ?
                     -1 : Offset(RebuildAddress);
-            }
-        }
         [Browsable(false)]
-        public VoidPtr BaseAddress { get { return _root.BaseAddress; } }
+        public VoidPtr BaseAddress => _root.BaseAddress;
         [Browsable(false)]
-        public bool External { get { return _externalEntry != null; } }
+        public bool External => _externalEntry != null;
         [Browsable(false)]
         public bool HasChanged
         {
-            get { return _root != null && _root.ChangedEntries.Contains(this); }
+            get => _root != null && _root.ChangedEntries.Contains(this);
             set
             {
                 if (_root != null)
+                {
                     if (value)
                     {
                         if (!_root.ChangedEntries.Contains(this))
+                        {
                             _root.ChangedEntries.Add(this);
+                        }
                     }
                     else
                     {
                         if (_root.ChangedEntries.Contains(this))
+                        {
                             _root.ChangedEntries.Remove(this);
+                        }
                     }
+                }
             }
         }
         [Browsable(false)]
-        public virtual string Name { get { return _name; } }
+        public virtual string Name => _name;
         /// <summary>
         /// This is where the data for this node was written during the last rebuild.
         /// Don't forget to set this when rebuilding a node!
@@ -53,11 +53,13 @@ namespace BrawlLib.SSBBTypes
         [Browsable(false)]
         public VoidPtr RebuildAddress
         {
-            get { return _rebuildAddress; }
+            get => _rebuildAddress;
             set
             {
                 if (_root.IsRebuilding)
+                {
                     _rebuildAddress = value;
+                }
 #if DEBUG
                 else
                     throw new Exception("Can't set rebuild address when the file isn't being rebuilt.");
@@ -65,11 +67,11 @@ namespace BrawlLib.SSBBTypes
             }
         }
         [Browsable(false)]
-        public virtual bool IsDirty { get { return _root.ChangedEntries.Contains(this); } set { HasChanged = value; } }
+        public virtual bool IsDirty { get => _root.ChangedEntries.Contains(this); set => HasChanged = value; }
         [Browsable(false)]
-        public virtual int Index { get { return _index; } }
+        public virtual int Index => _index;
         [Browsable(false)]
-        public int TotalSize { get { return _entryLength + _childLength; } }
+        public int TotalSize => _entryLength + _childLength;
 
         public string _name;
         public SakuraiEntryNode _parent;
@@ -88,16 +90,16 @@ namespace BrawlLib.SSBBTypes
         public int _entryLength = 0, _childLength = 0;
 
         [Browsable(false)]
-        public int LookupCount { get { return _lookupCount; } }
+        public int LookupCount => _lookupCount;
         private int _lookupCount = 0;
 
         private List<VoidPtr> _lookupAddresses;
-        
+
         //Functions
         /// <summary>
         /// Call this when an entry's size changes
         /// </summary>
-        public void SignalRebuildChange() { if (_root != null) _root.RebuildEntries.Add(this); HasChanged = true; }
+        public void SignalRebuildChange() { if (_root != null) { _root.RebuildEntries.Add(this); } HasChanged = true; }
         /// <summary>
         /// Call this when a property has been changed but the size remains the same
         /// </summary>
@@ -158,10 +160,14 @@ namespace BrawlLib.SSBBTypes
             int offset = root.Offset(addr);
             bool attributes = parameters.Contains("Attributes");
             if (offset <= 0 && !attributes)
+            {
                 return null;
+            }
 
             if (attributes)
+            {
                 parameters = new object[0];
+            }
 
             T n = Activator.CreateInstance(typeof(T), parameters) as T;
             n.Setup(root, parent, offset);
@@ -188,10 +194,15 @@ namespace BrawlLib.SSBBTypes
             _offset = offset;
             _parent = parent;
             if (_initSize <= 0)
+            {
                 _initSize = _root.GetSize(_offset);
+            }
+
             _root.EntryCache[_offset] = this;
             if ((_externalEntry = _root.TryGetExternal(offset)) != null)
+            {
                 _externalEntry.References.Add(this);
+            }
         }
         public int GetSize()
         {
@@ -209,7 +220,9 @@ namespace BrawlLib.SSBBTypes
         public int Write(VoidPtr address)
         {
             if (External)
+            {
                 throw new Exception("Trying to write an external data entry inside of a section's child data!");
+            }
 
             //Reset list of lookup offsets
             //Addresses will be added in OnWrite.
@@ -246,7 +259,10 @@ namespace BrawlLib.SSBBTypes
         public int GetLookupCount()
         {
             if (_lookupCount == 0)
+            {
                 _lookupCount = OnGetLookupCount();
+            }
+
             return _lookupCount;
         }
 
@@ -270,7 +286,7 @@ namespace BrawlLib.SSBBTypes
         }
 
         [Browsable(false)]
-        public List<VoidPtr> LookupAddresses { get { return _lookupAddresses; } }
+        public List<VoidPtr> LookupAddresses => _lookupAddresses;
 
         //Overridable functions
         protected virtual void OnParse(VoidPtr address) { }
@@ -279,7 +295,7 @@ namespace BrawlLib.SSBBTypes
         protected virtual int OnGetLookupCount() { return 0; }
         protected virtual void PostProcess(LookupManager lookupOffsets) { }
 
-        public override string ToString() { return String.IsNullOrEmpty(Name) ? base.ToString() : Name; }
+        public override string ToString() { return string.IsNullOrEmpty(Name) ? base.ToString() : Name; }
 
         public virtual void PostParse() { }
     }

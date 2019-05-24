@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
-using System.Text;
-using System.IO;
-using BrawlLib.IO;
+﻿using BrawlLib.IO;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
+using System.Text;
 
 namespace System.Windows.Forms
 {
@@ -14,13 +14,13 @@ namespace System.Windows.Forms
         #region Definition of "Stage" inner class
         public class Stage
         {
-            private byte id;
-            private string name;
-            private string filename;
+            private readonly byte id;
+            private readonly string name;
+            private readonly string filename;
 
-            public byte ID { get { return id; } }
-            public string Name { get { return name; } }
-            public string Filename { get { return filename; } }
+            public byte ID => id;
+            public string Name => name;
+            public string Filename => filename;
 
             public Stage(byte id, string name, string filename)
             {
@@ -33,7 +33,7 @@ namespace System.Windows.Forms
         }
         #endregion
 
-        private static Stage[] stageList = new Stage[] {
+        private static readonly Stage[] stageList = new Stage[] {
             new Stage(0, "STGCUSTOM##.pac", "st_custom##.rel"),
             new Stage(1, "Battlefield", "st_battle.rel"),
             new Stage(2, "Final Destination", "st_final.rel"),
@@ -83,7 +83,7 @@ namespace System.Windows.Forms
             new Stage(55, "Online Training", "st_otrain.rel"),
             new Stage(56, "TargetBreak", "st_tbreak.rel"),
         };
-        private static int[] indicesToIgnore = {
+        private static readonly int[] indicesToIgnore = {
             2959, // st_croll (PAL)
             431, // st_onett, st_metalgear
             387, // st_dxyorster
@@ -91,8 +91,8 @@ namespace System.Windows.Forms
             419, // st_donkey
             423, // st_halberd, st_jungle, st_mansion
             };
-        public static ReadOnlyCollection<Stage> StageList { get { return Array.AsReadOnly(stageList); } }
-        public static ReadOnlyCollection<int> IndicesToIgnore { get { return Array.AsReadOnly(indicesToIgnore); } }
+        public static ReadOnlyCollection<Stage> StageList => Array.AsReadOnly(stageList);
+        public static ReadOnlyCollection<int> IndicesToIgnore => Array.AsReadOnly(indicesToIgnore);
 
         #region Designer
 
@@ -126,218 +126,218 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnOkay = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.lblOffsetValue = new System.Windows.Forms.Label();
-            this.lblOffsetDesc = new System.Windows.Forms.Label();
-            this.lblNameValue = new System.Windows.Forms.Label();
-            this.lblSizeValue = new System.Windows.Forms.Label();
-            this.lblSizeDesc = new System.Windows.Forms.Label();
-            this.pnlInfo = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblIDValue = new System.Windows.Forms.Label();
-            this.lblIDDesc = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pnlEdit = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.itemSelection = new System.Windows.Forms.ComboBox();
-            this.lblItemDesc = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblCurrentStage = new System.Windows.Forms.Label();
-            this.lblNewStageDesc = new System.Windows.Forms.Label();
-            this.stageSelection = new System.Windows.Forms.ComboBox();
-            this.lblCurrentStageDesc = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
-            this.pnlInfo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.pnlEdit.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            btnOkay = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            txtPath = new System.Windows.Forms.TextBox();
+            btnBrowse = new System.Windows.Forms.Button();
+            lblOffsetValue = new System.Windows.Forms.Label();
+            lblOffsetDesc = new System.Windows.Forms.Label();
+            lblNameValue = new System.Windows.Forms.Label();
+            lblSizeValue = new System.Windows.Forms.Label();
+            lblSizeDesc = new System.Windows.Forms.Label();
+            pnlInfo = new System.Windows.Forms.Panel();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            lblIDValue = new System.Windows.Forms.Label();
+            lblIDDesc = new System.Windows.Forms.Label();
+            panel4 = new System.Windows.Forms.Panel();
+            pnlEdit = new System.Windows.Forms.Panel();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            itemSelection = new System.Windows.Forms.ComboBox();
+            lblItemDesc = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            lblCurrentStage = new System.Windows.Forms.Label();
+            lblNewStageDesc = new System.Windows.Forms.Label();
+            stageSelection = new System.Windows.Forms.ComboBox();
+            lblCurrentStageDesc = new System.Windows.Forms.Label();
+            panel3 = new System.Windows.Forms.Panel();
+            dlgOpen = new System.Windows.Forms.OpenFileDialog();
+            tmrUpdate = new System.Windows.Forms.Timer(components);
+            pnlInfo.SuspendLayout();
+            groupBox1.SuspendLayout();
+            panel4.SuspendLayout();
+            pnlEdit.SuspendLayout();
+            groupBox2.SuspendLayout();
+            panel3.SuspendLayout();
+            SuspendLayout();
             // 
             // btnOkay
             // 
-            this.btnOkay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOkay.Enabled = false;
-            this.btnOkay.Location = new System.Drawing.Point(3, 3);
-            this.btnOkay.Name = "btnOkay";
-            this.btnOkay.Size = new System.Drawing.Size(75, 23);
-            this.btnOkay.TabIndex = 0;
-            this.btnOkay.Text = "Okay";
-            this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Enabled = false;
+            btnOkay.Location = new System.Drawing.Point(3, 3);
+            btnOkay.Name = "btnOkay";
+            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.TabIndex = 0;
+            btnOkay.Text = "Okay";
+            btnOkay.UseVisualStyleBackColor = true;
+            btnOkay.Click += new System.EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(80, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnCancel.Location = new System.Drawing.Point(80, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.TabIndex = 1;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += new System.EventHandler(btnCancel_Click);
             // 
             // txtPath
             // 
-            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPath.Location = new System.Drawing.Point(0, 0);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(222, 20);
-            this.txtPath.TabIndex = 2;
+            txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right);
+            txtPath.Location = new System.Drawing.Point(0, 0);
+            txtPath.Name = "txtPath";
+            txtPath.ReadOnly = true;
+            txtPath.Size = new System.Drawing.Size(222, 20);
+            txtPath.TabIndex = 2;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowse.Location = new System.Drawing.Point(227, 0);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(25, 20);
-            this.btnBrowse.TabIndex = 3;
-            this.btnBrowse.Text = "...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            btnBrowse.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnBrowse.Location = new System.Drawing.Point(227, 0);
+            btnBrowse.Name = "btnBrowse";
+            btnBrowse.Size = new System.Drawing.Size(25, 20);
+            btnBrowse.TabIndex = 3;
+            btnBrowse.Text = "...";
+            btnBrowse.UseVisualStyleBackColor = true;
+            btnBrowse.Click += new System.EventHandler(btnBrowse_Click);
             // 
             // lblOffsetValue
             // 
-            this.lblOffsetValue.Location = new System.Drawing.Point(56, 56);
-            this.lblOffsetValue.Name = "lblOffsetValue";
-            this.lblOffsetValue.Size = new System.Drawing.Size(96, 20);
-            this.lblOffsetValue.TabIndex = 5;
-            this.lblOffsetValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblOffsetValue.Location = new System.Drawing.Point(56, 56);
+            lblOffsetValue.Name = "lblOffsetValue";
+            lblOffsetValue.Size = new System.Drawing.Size(96, 20);
+            lblOffsetValue.TabIndex = 5;
+            lblOffsetValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblOffsetDesc
             // 
-            this.lblOffsetDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOffsetDesc.Location = new System.Drawing.Point(6, 56);
-            this.lblOffsetDesc.Name = "lblOffsetDesc";
-            this.lblOffsetDesc.Size = new System.Drawing.Size(48, 20);
-            this.lblOffsetDesc.TabIndex = 4;
-            this.lblOffsetDesc.Text = "Offset:";
-            this.lblOffsetDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblOffsetDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblOffsetDesc.Location = new System.Drawing.Point(6, 56);
+            lblOffsetDesc.Name = "lblOffsetDesc";
+            lblOffsetDesc.Size = new System.Drawing.Size(48, 20);
+            lblOffsetDesc.TabIndex = 4;
+            lblOffsetDesc.Text = "Offset:";
+            lblOffsetDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblNameValue
             // 
-            this.lblNameValue.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameValue.Location = new System.Drawing.Point(7, 16);
-            this.lblNameValue.Name = "lblNameValue";
-            this.lblNameValue.Size = new System.Drawing.Size(145, 20);
-            this.lblNameValue.TabIndex = 3;
-            this.lblNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblNameValue.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblNameValue.Location = new System.Drawing.Point(7, 16);
+            lblNameValue.Name = "lblNameValue";
+            lblNameValue.Size = new System.Drawing.Size(145, 20);
+            lblNameValue.TabIndex = 3;
+            lblNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSizeValue
             // 
-            this.lblSizeValue.Location = new System.Drawing.Point(56, 36);
-            this.lblSizeValue.Name = "lblSizeValue";
-            this.lblSizeValue.Size = new System.Drawing.Size(96, 20);
-            this.lblSizeValue.TabIndex = 1;
-            this.lblSizeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblSizeValue.Location = new System.Drawing.Point(56, 36);
+            lblSizeValue.Name = "lblSizeValue";
+            lblSizeValue.Size = new System.Drawing.Size(96, 20);
+            lblSizeValue.TabIndex = 1;
+            lblSizeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSizeDesc
             // 
-            this.lblSizeDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSizeDesc.Location = new System.Drawing.Point(6, 36);
-            this.lblSizeDesc.Name = "lblSizeDesc";
-            this.lblSizeDesc.Size = new System.Drawing.Size(48, 20);
-            this.lblSizeDesc.TabIndex = 0;
-            this.lblSizeDesc.Text = "Size:";
-            this.lblSizeDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblSizeDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblSizeDesc.Location = new System.Drawing.Point(6, 36);
+            lblSizeDesc.Name = "lblSizeDesc";
+            lblSizeDesc.Size = new System.Drawing.Size(48, 20);
+            lblSizeDesc.TabIndex = 0;
+            lblSizeDesc.Text = "Size:";
+            lblSizeDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlInfo
             // 
-            this.pnlInfo.Controls.Add(this.groupBox1);
-            this.pnlInfo.Controls.Add(this.panel4);
-            this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlInfo.Location = new System.Drawing.Point(256, 0);
-            this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(158, 132);
-            this.pnlInfo.TabIndex = 9;
+            pnlInfo.Controls.Add(groupBox1);
+            pnlInfo.Controls.Add(panel4);
+            pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
+            pnlInfo.Location = new System.Drawing.Point(256, 0);
+            pnlInfo.Name = "pnlInfo";
+            pnlInfo.Size = new System.Drawing.Size(158, 132);
+            pnlInfo.TabIndex = 9;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblIDValue);
-            this.groupBox1.Controls.Add(this.lblIDDesc);
-            this.groupBox1.Controls.Add(this.lblOffsetValue);
-            this.groupBox1.Controls.Add(this.lblOffsetDesc);
-            this.groupBox1.Controls.Add(this.lblNameValue);
-            this.groupBox1.Controls.Add(this.lblSizeValue);
-            this.groupBox1.Controls.Add(this.lblSizeDesc);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(158, 103);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "File Info";
+            groupBox1.Controls.Add(lblIDValue);
+            groupBox1.Controls.Add(lblIDDesc);
+            groupBox1.Controls.Add(lblOffsetValue);
+            groupBox1.Controls.Add(lblOffsetDesc);
+            groupBox1.Controls.Add(lblNameValue);
+            groupBox1.Controls.Add(lblSizeValue);
+            groupBox1.Controls.Add(lblSizeDesc);
+            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(158, 103);
+            groupBox1.TabIndex = 5;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "File Info";
             // 
             // lblIDValue
             // 
-            this.lblIDValue.Location = new System.Drawing.Point(56, 76);
-            this.lblIDValue.Name = "lblIDValue";
-            this.lblIDValue.Size = new System.Drawing.Size(96, 20);
-            this.lblIDValue.TabIndex = 7;
-            this.lblIDValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblIDValue.Location = new System.Drawing.Point(56, 76);
+            lblIDValue.Name = "lblIDValue";
+            lblIDValue.Size = new System.Drawing.Size(96, 20);
+            lblIDValue.TabIndex = 7;
+            lblIDValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblIDDesc
             // 
-            this.lblIDDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIDDesc.Location = new System.Drawing.Point(6, 76);
-            this.lblIDDesc.Name = "lblIDDesc";
-            this.lblIDDesc.Size = new System.Drawing.Size(48, 20);
-            this.lblIDDesc.TabIndex = 6;
-            this.lblIDDesc.Text = "ID:";
-            this.lblIDDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblIDDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblIDDesc.Location = new System.Drawing.Point(6, 76);
+            lblIDDesc.Name = "lblIDDesc";
+            lblIDDesc.Size = new System.Drawing.Size(48, 20);
+            lblIDDesc.TabIndex = 6;
+            lblIDDesc.Text = "ID:";
+            lblIDDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnOkay);
-            this.panel4.Controls.Add(this.btnCancel);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 103);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(158, 29);
-            this.panel4.TabIndex = 6;
+            panel4.Controls.Add(btnOkay);
+            panel4.Controls.Add(btnCancel);
+            panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel4.Location = new System.Drawing.Point(0, 103);
+            panel4.Name = "panel4";
+            panel4.Size = new System.Drawing.Size(158, 29);
+            panel4.TabIndex = 6;
             // 
             // pnlEdit
             // 
-            this.pnlEdit.Controls.Add(this.groupBox2);
-            this.pnlEdit.Controls.Add(this.panel3);
-            this.pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlEdit.Location = new System.Drawing.Point(0, 0);
-            this.pnlEdit.Name = "pnlEdit";
-            this.pnlEdit.Size = new System.Drawing.Size(256, 132);
-            this.pnlEdit.TabIndex = 10;
+            pnlEdit.Controls.Add(groupBox2);
+            pnlEdit.Controls.Add(panel3);
+            pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlEdit.Location = new System.Drawing.Point(0, 0);
+            pnlEdit.Name = "pnlEdit";
+            pnlEdit.Size = new System.Drawing.Size(256, 132);
+            pnlEdit.TabIndex = 10;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.itemSelection);
-            this.groupBox2.Controls.Add(this.lblItemDesc);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.lblCurrentStage);
-            this.groupBox2.Controls.Add(this.lblNewStageDesc);
-            this.groupBox2.Controls.Add(this.stageSelection);
-            this.groupBox2.Controls.Add(this.lblCurrentStageDesc);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 20);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(256, 112);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Options";
+            groupBox2.Controls.Add(itemSelection);
+            groupBox2.Controls.Add(lblItemDesc);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Controls.Add(lblCurrentStage);
+            groupBox2.Controls.Add(lblNewStageDesc);
+            groupBox2.Controls.Add(stageSelection);
+            groupBox2.Controls.Add(lblCurrentStageDesc);
+            groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox2.Location = new System.Drawing.Point(0, 20);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(256, 112);
+            groupBox2.TabIndex = 13;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Options";
             // 
             // itemSelection
             // 
-            this.itemSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.itemSelection.Enabled = false;
-            this.itemSelection.FormattingEnabled = true;
-            this.itemSelection.Items.AddRange(new object[] {
+            itemSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            itemSelection.Enabled = false;
+            itemSelection.FormattingEnabled = true;
+            itemSelection.Items.AddRange(new object[] {
             "Assist Trophy",
             "Franklin Badge",
             "Banana Peel",
@@ -408,100 +408,100 @@ namespace System.Windows.Forms
             "Unira",
             "Bunny Hood",
             "Warpstar"});
-            this.itemSelection.Location = new System.Drawing.Point(84, 62);
-            this.itemSelection.Name = "itemSelection";
-            this.itemSelection.Size = new System.Drawing.Size(166, 21);
-            this.itemSelection.TabIndex = 6;
+            itemSelection.Location = new System.Drawing.Point(84, 62);
+            itemSelection.Name = "itemSelection";
+            itemSelection.Size = new System.Drawing.Size(166, 21);
+            itemSelection.TabIndex = 6;
             // 
             // lblItemDesc
             // 
-            this.lblItemDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemDesc.Location = new System.Drawing.Point(6, 62);
-            this.lblItemDesc.Name = "lblItemDesc";
-            this.lblItemDesc.Size = new System.Drawing.Size(72, 21);
-            this.lblItemDesc.TabIndex = 5;
-            this.lblItemDesc.Text = "Item:";
-            this.lblItemDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblItemDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblItemDesc.Location = new System.Drawing.Point(6, 62);
+            lblItemDesc.Name = "lblItemDesc";
+            lblItemDesc.Size = new System.Drawing.Size(72, 21);
+            lblItemDesc.TabIndex = 5;
+            lblItemDesc.Text = "Item:";
+            lblItemDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label3.Location = new System.Drawing.Point(4, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(209, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Mouse over the labels for more information.";
+            label3.AutoSize = true;
+            label3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            label3.Location = new System.Drawing.Point(4, 93);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(209, 13);
+            label3.TabIndex = 4;
+            label3.Text = "Mouse over the labels for more information.";
             // 
             // lblCurrentStage
             // 
-            this.lblCurrentStage.Location = new System.Drawing.Point(84, 14);
-            this.lblCurrentStage.Name = "lblCurrentStage";
-            this.lblCurrentStage.Size = new System.Drawing.Size(166, 21);
-            this.lblCurrentStage.TabIndex = 3;
-            this.lblCurrentStage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblCurrentStage.Location = new System.Drawing.Point(84, 14);
+            lblCurrentStage.Name = "lblCurrentStage";
+            lblCurrentStage.Size = new System.Drawing.Size(166, 21);
+            lblCurrentStage.TabIndex = 3;
+            lblCurrentStage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblNewStageDesc
             // 
-            this.lblNewStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewStageDesc.Location = new System.Drawing.Point(6, 38);
-            this.lblNewStageDesc.Name = "lblNewStageDesc";
-            this.lblNewStageDesc.Size = new System.Drawing.Size(72, 21);
-            this.lblNewStageDesc.TabIndex = 2;
-            this.lblNewStageDesc.Text = "New stage:";
-            this.lblNewStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblNewStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblNewStageDesc.Location = new System.Drawing.Point(6, 38);
+            lblNewStageDesc.Name = "lblNewStageDesc";
+            lblNewStageDesc.Size = new System.Drawing.Size(72, 21);
+            lblNewStageDesc.TabIndex = 2;
+            lblNewStageDesc.Text = "New stage:";
+            lblNewStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // stageSelection
             // 
-            this.stageSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.stageSelection.Enabled = false;
-            this.stageSelection.FormattingEnabled = true;
-            this.stageSelection.Location = new System.Drawing.Point(84, 38);
-            this.stageSelection.Name = "stageSelection";
-            this.stageSelection.Size = new System.Drawing.Size(166, 21);
-            this.stageSelection.TabIndex = 1;
+            stageSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            stageSelection.Enabled = false;
+            stageSelection.FormattingEnabled = true;
+            stageSelection.Location = new System.Drawing.Point(84, 38);
+            stageSelection.Name = "stageSelection";
+            stageSelection.Size = new System.Drawing.Size(166, 21);
+            stageSelection.TabIndex = 1;
             // 
             // lblCurrentStageDesc
             // 
-            this.lblCurrentStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentStageDesc.Location = new System.Drawing.Point(6, 14);
-            this.lblCurrentStageDesc.Name = "lblCurrentStageDesc";
-            this.lblCurrentStageDesc.Size = new System.Drawing.Size(72, 21);
-            this.lblCurrentStageDesc.TabIndex = 0;
-            this.lblCurrentStageDesc.Text = "Current:";
-            this.lblCurrentStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblCurrentStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblCurrentStageDesc.Location = new System.Drawing.Point(6, 14);
+            lblCurrentStageDesc.Name = "lblCurrentStageDesc";
+            lblCurrentStageDesc.Size = new System.Drawing.Size(72, 21);
+            lblCurrentStageDesc.TabIndex = 0;
+            lblCurrentStageDesc.Text = "Current:";
+            lblCurrentStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtPath);
-            this.panel3.Controls.Add(this.btnBrowse);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(256, 20);
-            this.panel3.TabIndex = 14;
+            panel3.Controls.Add(txtPath);
+            panel3.Controls.Add(btnBrowse);
+            panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            panel3.Location = new System.Drawing.Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(256, 20);
+            panel3.TabIndex = 14;
             // 
             // tmrUpdate
             // 
-            this.tmrUpdate.Interval = 10;
+            tmrUpdate.Interval = 10;
             // 
             // StageRelSwitcherDialog
             // 
-            this.ClientSize = new System.Drawing.Size(414, 132);
-            this.Controls.Add(this.pnlEdit);
-            this.Controls.Add(this.pnlInfo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "StageRelSwitcherDialog";
-            this.Text = "Stage REL Switcher";
-            this.pnlInfo.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.pnlEdit.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.ResumeLayout(false);
+            ClientSize = new System.Drawing.Size(414, 132);
+            Controls.Add(pnlEdit);
+            Controls.Add(pnlInfo);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Name = "StageRelSwitcherDialog";
+            Text = "Stage REL Switcher";
+            pnlInfo.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            pnlEdit.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ResumeLayout(false);
 
         }
 
@@ -509,24 +509,27 @@ namespace System.Windows.Forms
 
         private string _path;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string Path { get { return _path; } set { _path = value; } }
+        public string Path { get => _path; set => _path = value; }
 
         private byte[] _data;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public byte[] Data { get { return _data; } }
+        public byte[] Data => _data;
 
         public unsafe FileMap ToFileMap()
         {
             FileMap map = FileMap.FromTempFile(_data.Length);
             byte* ptr = (byte*)map.Address;
             for (int i = 0; i < _data.Length; i++)
+            {
                 ptr[i] = _data[i];
+            }
+
             return map;
         }
 
         private string _outputName;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string OutputName { get { return _outputName; } }
+        public string OutputName => _outputName;
 
         private int _stageIDOffset = -1;
 
@@ -557,7 +560,7 @@ namespace System.Windows.Forms
             dlgOpen.Filter = FILTER;
         }
 
-        new public DialogResult ShowDialog(IWin32Window owner)
+        public new DialogResult ShowDialog(IWin32Window owner)
         {
             DialogResult = DialogResult.Cancel;
             try { return base.ShowDialog(owner); }
@@ -588,7 +591,10 @@ namespace System.Windows.Forms
         private bool LoadFile()
         {
             if (dlgOpen.ShowDialog(this) == DialogResult.OK)
+            {
                 return LoadFile(dlgOpen.FileName);
+            }
+
             return false;
         }
         private bool LoadFile(string path)
@@ -622,8 +628,10 @@ namespace System.Windows.Forms
             byte currentID = findCurrentID();
             lblIDValue.Text = "0x" + Convert.ToString(currentID, 16);
 
-            foreach (Stage s in stageList) {
-                if (s.ID == currentID) {
+            foreach (Stage s in stageList)
+            {
+                if (s.ID == currentID)
+                {
                     lblCurrentStage.Text = s.Name;
                     stageSelection.SelectedItem = s;
                     break;
@@ -712,22 +720,33 @@ namespace System.Windows.Forms
                 {
                     indexToCheck++;
                     if (indexToCheck == searchFor.Length)
+                    {
                         if (IndicesToIgnore.Contains(i + 1))
                         {
                             //MessageBox.Show("ignored " + (i + 1));
                             indexToCheck = 0;
                         }
                         else
+                        {
                             found = true;
+                        }
+                    }
                 }
                 else
+                {
                     indexToCheck = 0;
+                }
+
                 i++;
             }
             if (found)
+            {
                 return i;
+            }
             else
+            {
                 return -1;
+            }
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

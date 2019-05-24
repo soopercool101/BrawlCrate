@@ -1,7 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Animations;
-using BrawlLib.SSBBTypes;
+using System;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.Modeling
 {
@@ -20,28 +20,32 @@ namespace BrawlLib.Modeling
             get
             {
                 fixed (FrameState* f = &this)
+                {
                     return ((float*)f)[index];
+                }
             }
             set
             {
                 fixed (FrameState* f = &this)
+                {
                     ((float*)f)[index] = value;
+                }
             }
         }
 
         public Vector3 Translate
         {
-            get { return _translate; }
+            get => _translate;
             set { _translate = value; CalcTransforms(); }
         }
         public Vector3 Rotate
         {
-            get { return _rotate; }
+            get => _rotate;
             set { _rotate = value; CalcTransforms(); }
         }
         public Vector3 Scale
         {
-            get { return _scale; }
+            get => _scale;
             set { _scale = value; CalcTransforms(); }
         }
 
@@ -69,7 +73,7 @@ namespace BrawlLib.Modeling
 
         public override string ToString()
         {
-            return String.Format("{0}{1}{2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
+            return string.Format("{0}{1}{2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
         }
 
         public static readonly FrameState Neutral = new FrameState(new Vector3(1.0f), new Vector3(), new Vector3());
@@ -94,37 +98,41 @@ namespace BrawlLib.Modeling
             get
             {
                 fixed (TextureFrameState* f = &this)
+                {
                     return ((float*)f)[index];
+                }
             }
             set
             {
                 fixed (TextureFrameState* f = &this)
+                {
                     ((float*)f)[index] = value;
+                }
             }
         }
 
         public Vector2 Translate
         {
-            get { return _translate; }
+            get => _translate;
             set { _translate = value; CalcTransforms(); }
         }
         public float Rotate
         {
-            get { return _rotate; }
+            get => _rotate;
             set { _rotate = value; CalcTransforms(); }
         }
         public Vector2 Scale
         {
-            get { return _scale; }
+            get => _scale;
             set { _scale = value; CalcTransforms(); }
         }
         /// <summary>
         /// Bit flags used for texture matrix calculation
         /// </summary>
-        public int Flags { get { return _flags; } }
-        public TexMatrixMode MatrixMode { get { return _matrixMode; } set { _matrixMode = value; CalcTransforms(); } }
-        public bool Indirect { get { return _indirect; } set { _indirect = value; CalcTransforms(); } }
-        
+        public int Flags => _flags;
+        public TexMatrixMode MatrixMode { get => _matrixMode; set { _matrixMode = value; CalcTransforms(); } }
+        public bool Indirect { get => _indirect; set { _indirect = value; CalcTransforms(); } }
+
         public TextureFrameState(SRTAnimationFrame frame, TexMatrixMode matrixMode, bool indirect)
         {
             _scale = frame.Scale;
@@ -152,11 +160,19 @@ namespace BrawlLib.Modeling
         {
             _flags = 0;
             if (Scale == new Vector2(1))
+            {
                 _flags |= 1;
+            }
+
             if (Rotate == 0)
+            {
                 _flags |= 2;
+            }
+
             if (Translate == new Vector2(0))
+            {
                 _flags |= 4;
+            }
         }
 
         public void CalcTransforms()
@@ -167,7 +183,7 @@ namespace BrawlLib.Modeling
 
         public override string ToString()
         {
-            return String.Format("{0}, {1}, {2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
+            return string.Format("{0}, {1}, {2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
         }
 
         public static readonly TextureFrameState Neutral = new TextureFrameState(new Vector2(1.0f), 0, new Vector2(), TexMatrixMode.MatrixMaya, false);

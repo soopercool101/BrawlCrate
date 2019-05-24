@@ -1,7 +1,7 @@
-﻿using System;
-using BrawlLib.IO;
-using System.Audio;
+﻿using BrawlLib.IO;
 using BrawlLib.SSBBTypes;
+using System;
+using System.Audio;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -39,7 +39,7 @@ namespace BrawlLib.Wii.Audio
                 //}
                 //else
                 //    loopPadding = 0;
-                
+
                 totalSamples = /*loopPadding + */samples;
             }
             else
@@ -53,7 +53,9 @@ namespace BrawlLib.Wii.Audio
             }
 
             if (progress != null)
+            {
                 progress.Begin(0, totalSamples * channels * 3, 0);
+            }
 
             blocks = (totalSamples + (samplesPerBlock - 1)) / samplesPerBlock;
 
@@ -69,7 +71,7 @@ namespace BrawlLib.Wii.Audio
                 lbSamples = samplesPerBlock;
                 lbTotal = lbSize = blockLen;
             }
-            
+
             //Get section sizes
             int waveSize = 0x1C,
             tableSize = channels * 4,
@@ -80,7 +82,7 @@ namespace BrawlLib.Wii.Audio
 
             //Create file map
             FileMap map = FileMap.FromTempFile(waveSize + channelSize + tableSize + adpcmInfoSize + dataSize);
-            
+
             //Get section pointers
             WaveInfo* wave = (WaveInfo*)map.Address;
 
@@ -98,7 +100,7 @@ namespace BrawlLib.Wii.Audio
             for (int i = 0; i < channels; i++)
             {
                 table[i] = (uint)&channelInfo[i] - (uint)wave;
-                channelInfo[i] = new ChannelInfo() 
+                channelInfo[i] = new ChannelInfo()
                 {
                     _volBackLeft = 1,
                     _volBackRight = 1,
@@ -112,7 +114,9 @@ namespace BrawlLib.Wii.Audio
             int* adpcData = stackalloc int[channels];
             ADPCMInfo** pAdpcm = (ADPCMInfo**)adpcData;
             for (int i = 0; i < channels; i++)
+            {
                 *(pAdpcm[i] = wave->GetADPCMInfo(i)) = new ADPCMInfo();
+            }
 
             //Create buffer for each channel
             int* bufferData = stackalloc int[channels];
@@ -138,12 +142,16 @@ namespace BrawlLib.Wii.Audio
 
                 stream.ReadSamples(sampleBuffer, 1);
                 for (int x = 0; x < channels; x++)
+                {
                     channelBuffers[x][i] = sampleBuffer[x];
+                }
             }
 
             //Calculate coefs
             for (int i = 0; i < channels; i++)
+            {
                 AudioConverter.CalcCoefs(channelBuffers[i] + 2, totalSamples, (short*)pAdpcm[i], progress);
+            }
 
             //Encode blocks
             byte* dPtr = (byte*)wave + entrySize;
@@ -167,7 +175,9 @@ namespace BrawlLib.Wii.Audio
 
                     //Set initial ps
                     if (bIndex == 1)
+                    {
                         pAdpcm[x]->_ps = *dPtr;
+                    }
 
                     //Advance output pointer
                     if (bIndex == blocks)
@@ -175,14 +185,20 @@ namespace BrawlLib.Wii.Audio
                         //Fill remaining
                         dPtr += lbSize;
                         for (int i = lbSize; i < lbTotal; i++)
+                        {
                             *dPtr++ = 0;
+                        }
                     }
                     else
+                    {
                         dPtr += blockLen;
+                    }
                 }
 
                 if (progress != null && (sIndex % samplesPerBlock) == 0)
+                {
                     progress.Update(progress.CurrentValue + (samplesPerBlock * 2 * channels));
+                }
             }
 
             //Reverse coefs
@@ -190,7 +206,9 @@ namespace BrawlLib.Wii.Audio
             {
                 short* p = pAdpcm[i]->_coefs;
                 for (int x = 0; x < 16; x++, p++)
+                {
                     *p = p->Reverse();
+                }
             }
 
             //Write loop states
@@ -214,10 +232,14 @@ namespace BrawlLib.Wii.Audio
 
             //Free memory
             for (int i = 0; i < channels; i++)
+            {
                 Marshal.FreeHGlobal((IntPtr)channelBuffers[i]);
+            }
 
             if (progress != null)
+            {
                 progress.Finish();
+            }
 
             return map;
         }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static EFLSWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -52,7 +52,7 @@ namespace BrawlCrate.NodeWrappers
 
         public EFLSWrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.EFLS; } }
+        public override string ExportFilter => FileFilters.EFLS;
     }
 
     [NodeWrapper(ResourceType.EFLSEntry)]
@@ -60,7 +60,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static EFLSEntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -101,6 +101,6 @@ namespace BrawlCrate.NodeWrappers
 
         public EFLSEntryWrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.Raw; } }
+        public override string ExportFilter => FileFilters.Raw;
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.IO;
-using BrawlLib.SSBBTypes;
-using System.Windows.Forms;
+﻿using BrawlLib.IO;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace BrawlLib.Wii.Compression
 {
@@ -23,7 +23,7 @@ namespace BrawlLib.Wii.Compression
     public static unsafe class Compressor
     {
         private const int CompressBufferLen = 0x60;
-        internal static CompressionType[] _supportedCompressionTypes = 
+        internal static CompressionType[] _supportedCompressionTypes =
         {
             CompressionType.None,
             CompressionType.LZ77,
@@ -34,29 +34,39 @@ namespace BrawlLib.Wii.Compression
         };
 
         public static bool Supports(CompressionType type) { return type != CompressionType.None && _supportedCompressionTypes.Contains(type); }
-        
-        const string _characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        private const string _characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         public static CompressionType GetAlgorithm(DataSource source) { return GetAlgorithm(source.Address, source.Length); }
         public static CompressionType GetAlgorithm(VoidPtr addr, int length)
         {
             BinTag compTag = *(BinTag*)addr;
             if (compTag == YAZ0.Tag)
+            {
                 return CompressionType.RunLengthYAZ0;
+            }
             else if (compTag == YAY0.Tag)
+            {
                 return CompressionType.RunLengthYAY0;
+            }
             else
             {
                 CompressionHeader* cmpr = (CompressionHeader*)addr;
 
                 if (cmpr->ExpandedSize < length)
+                {
                     return CompressionType.None;
+                }
 
                 if (!cmpr->HasLegitCompression())
+                {
                     return CompressionType.None;
+                }
 
                 //Check to make sure we're not reading a tag
                 if (IsTag((byte*)addr))
+                {
                     return CompressionType.None;
+                }
 
                 return cmpr->Algorithm;
             }
@@ -65,11 +75,17 @@ namespace BrawlLib.Wii.Compression
         {
             BinTag compTag = *(BinTag*)addr;
             if (compTag == YAZ0.Tag)
-                return (uint)((YAZ0*)addr)->_unCompDataLen;
+            {
+                return ((YAZ0*)addr)->_unCompDataLen;
+            }
             else if (compTag == YAY0.Tag)
-                return (uint)((YAY0*)addr)->_unCompDataLen;
+            {
+                return ((YAY0*)addr)->_unCompDataLen;
+            }
             else
+            {
                 return ((CompressionHeader*)addr)->ExpandedSize;
+            }
         }
 
         private static bool IsTag(byte* c)
@@ -80,7 +96,10 @@ namespace BrawlLib.Wii.Compression
                 (Array.IndexOf(chars, (char)tag[1]) >= 0) &&
                 (Array.IndexOf(chars, (char)tag[2]) >= 0) &&
                 (Array.IndexOf(chars, (char)tag[3]) >= 0))
+            {
                 return true;
+            }
+
             return false;
         }
 
@@ -88,14 +107,22 @@ namespace BrawlLib.Wii.Compression
         {
             byte* buffer = stackalloc byte[CompressBufferLen];
             if (alg == CompressionType.RunLengthYAZ0)
+            {
                 Expand((YAZ0*)src, buffer, CompressBufferLen);
+            }
             else if (alg == CompressionType.RunLengthYAY0)
+            {
                 Expand((YAY0*)src, buffer, CompressBufferLen);
+            }
             else
+            {
                 Expand((CompressionHeader*)src, buffer, CompressBufferLen);
+            }
 
             if (NodeFactory.GetRaw(buffer, CompressBufferLen) != null)
+            {
                 return true;
+            }
 
             return false;
         }
@@ -109,7 +136,9 @@ namespace BrawlLib.Wii.Compression
                 try
                 {
                     if (doTest && !Test(algorithm, source.Address))
+                    {
                         return null;
+                    }
 
                     uint len = 0;
                     if (algorithm == CompressionType.RunLengthYAZ0)

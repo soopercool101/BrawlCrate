@@ -1,7 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.Imaging;
+using System;
 using System.Drawing;
-using BrawlLib.Imaging;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.Wii.Textures
 {
@@ -27,7 +27,7 @@ namespace BrawlLib.Wii.Textures
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct wRGBA4Pixel
     {
-        bushort _data;
+        private bushort _data;
 
         public static explicit operator ARGBPixel(wRGBA4Pixel p)
         {
@@ -43,7 +43,7 @@ namespace BrawlLib.Wii.Textures
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct wRGBA6Pixel
     {
-        byte _b1, _b2, _b3;
+        private readonly byte _b1, _b2, _b3;
 
         public static explicit operator ARGBPixel(wRGBA6Pixel p)
         {
@@ -80,10 +80,10 @@ namespace BrawlLib.Wii.Textures
             _data = (ushort)((r << 11) | (g << 5) | b);
         }
 
-        public static bool operator >(wRGB565Pixel p1, wRGB565Pixel p2) { return (ushort)p1._data > (ushort)p2._data; }
-        public static bool operator <(wRGB565Pixel p1, wRGB565Pixel p2) { return (ushort)p1._data < (ushort)p2._data; }
-        public static bool operator >=(wRGB565Pixel p1, wRGB565Pixel p2) { return (ushort)p1._data >= (ushort)p2._data; }
-        public static bool operator <=(wRGB565Pixel p1, wRGB565Pixel p2) { return (ushort)p1._data <= (ushort)p2._data; }
+        public static bool operator >(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data > p2._data; }
+        public static bool operator <(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data < p2._data; }
+        public static bool operator >=(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data >= p2._data; }
+        public static bool operator <=(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data <= p2._data; }
         public static bool operator ==(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data._data == p2._data._data; }
         public static bool operator !=(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data._data != p2._data._data; }
 
@@ -119,7 +119,7 @@ namespace BrawlLib.Wii.Textures
         public static explicit operator wRGB565Pixel(RGBPixel p) { return new wRGB565Pixel(p.R, p.G, p.B); }
         public static explicit operator wRGB565Pixel(Color p) { return new wRGB565Pixel(p.R, p.G, p.B); }
 
-        public static explicit operator wRGB565Pixel(Vector3 v) 
+        public static explicit operator wRGB565Pixel(Vector3 v)
         {
             int r = Math.Max(Math.Min(Convert.ToInt32(v._x * 31.0f), 31), 0);
             int g = Math.Max(Math.Min(Convert.ToInt32(v._y * 63.0f), 63), 0);

@@ -1,17 +1,17 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GEG1Node : ResourceNode
     {
-        internal GEG1* Header { get { return (GEG1*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.GEG1; } }
+        internal GEG1* Header => (GEG1*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.GEG1;
 
         [Category("GEG1")]
         [DisplayName("Enemy Count")]
-        public int count { get { return Header->_count; } }
+        public int count => Header->_count;
         public override void OnPopulate()
         {
             for (int i = 0; i < Header->_count; i++)
@@ -27,7 +27,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             if (_name == null)
+            {
                 _name = "GEG1";
+            }
+
             return Header->_count > 0;
         }
 
@@ -36,8 +39,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GEG1EntryNode : ResourceNode
     {
-        internal GEG1Entry* Header { get { return (GEG1Entry*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.ENEMY; } }
+        internal GEG1Entry* Header => (GEG1Entry*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.ENEMY;
 
         [Browsable(true), TypeConverter(typeof(DropDownListEnemies))]
         [Category("Enemy Info")]
@@ -62,7 +65,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             if (_name == null)
+            {
                 _name = "Enemy[" + Index + ']';
+            }
+
             return false;
         }
     }

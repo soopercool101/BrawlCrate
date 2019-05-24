@@ -1,8 +1,8 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using BrawlLib.Wii.Models;
+﻿using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.Modeling
 {
@@ -11,8 +11,8 @@ namespace BrawlLib.Modeling
         public int _index;
         public Vertex3 _vertex;
 
-        private IMatrixNode Node { get { return _vertex != null ? _vertex.MatrixNode : null; } }
-        public ushort NodeID { get { if (Node != null) return (ushort)Node.NodeIndex; return ushort.MaxValue; } }
+        private IMatrixNode Node => _vertex != null ? _vertex.MatrixNode : null;
+        public ushort NodeID { get { if (Node != null) { return (ushort)Node.NodeIndex; } return ushort.MaxValue; } }
 
         public int _vertexIndex = -1;
         public int _normalIndex = -1;
@@ -20,23 +20,25 @@ namespace BrawlLib.Modeling
         public int[] _UVIndices = new int[8] { -1, -1, -1, -1, -1, -1, -1, -1 };
 
         [Category("Facepoint"), Browsable(true)]
-        public int VertexIndex { get { return _vertexIndex; } }
+        public int VertexIndex => _vertexIndex;
         [Category("Facepoint"), Browsable(true)]
-        public int NormalIndex { get { return _normalIndex; } }
+        public int NormalIndex => _normalIndex;
         [Category("Facepoint"), Browsable(true)]
-        public int[] ColorIndices { get { return _colorIndices; } }
+        public int[] ColorIndices => _colorIndices;
         [Category("Facepoint"), Browsable(true)]
-        public int[] UVIndices { get { return _UVIndices; } }
+        public int[] UVIndices => _UVIndices;
 
         public override string ToString()
         {
-            return String.Format("M({12}), V({0}), N({1}), C({2}, {3}), U({4}, {5}, {6}, {7}, {8}, {9}, {10}, {11})", _vertexIndex, _normalIndex, _colorIndices[0], _colorIndices[1], _UVIndices[0], _UVIndices[1], _UVIndices[2], _UVIndices[3], _UVIndices[4], _UVIndices[5], _UVIndices[6], _UVIndices[7], NodeID);
+            return string.Format("M({12}), V({0}), N({1}), C({2}, {3}), U({4}, {5}, {6}, {7}, {8}, {9}, {10}, {11})", _vertexIndex, _normalIndex, _colorIndices[0], _colorIndices[1], _UVIndices[0], _UVIndices[1], _UVIndices[2], _UVIndices[3], _UVIndices[4], _UVIndices[5], _UVIndices[6], _UVIndices[7], NodeID);
         }
 
         public override bool Equals(object obj)
         {
             if (obj == null || !(obj is Facepoint))
+            {
                 return false;
+            }
 
             return obj.ToString().Equals(ToString());
         }
@@ -59,8 +61,8 @@ namespace BrawlLib.Modeling
             Entries = (ushort)entries;
         }
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + 3; } }
+        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + 3;
     }
 
     public class PrimitiveGroup
@@ -75,15 +77,19 @@ namespace BrawlLib.Modeling
             {
                 //Re-assign node ids, just in case the nodes were moved
                 foreach (Facepoint point in _facePoints[i])
-                    if (!_nodes.Contains((ushort)point.NodeID))
-                        _nodes.Add((ushort)point.NodeID);
+                {
+                    if (!_nodes.Contains(point.NodeID))
+                    {
+                        _nodes.Add(point.NodeID);
+                    }
+                }
             }
         }
 
         //For imports
-        public PrimitiveHeader TriangleHeader { get { return new PrimitiveHeader(WiiPrimitiveType.TriangleList, _triangles.Count * 3); } }
-        public PrimitiveHeader LineHeader { get { return new PrimitiveHeader(WiiPrimitiveType.Lines, _lines.Count * 2); } }
-        
+        public PrimitiveHeader TriangleHeader => new PrimitiveHeader(WiiPrimitiveType.TriangleList, _triangles.Count * 3);
+        public PrimitiveHeader LineHeader => new PrimitiveHeader(WiiPrimitiveType.Lines, _lines.Count * 2);
+
         public List<PointTriangle> _triangles = new List<PointTriangle>();
         public List<PointTriangleStrip> _tristrips = new List<PointTriangleStrip>();
         public List<PointLine> _lines = new List<PointLine>();
@@ -95,8 +101,8 @@ namespace BrawlLib.Modeling
         public List<List<Facepoint>> _facePoints = new List<List<Facepoint>>();
 
         //Offset from the start of the primitives to this group.
-        public uint _offset; 
-        
+        public uint _offset;
+
         //Cache for rebuilding in case nodes are moved
         public List<NodeOffset> _nodeOffsets = new List<NodeOffset>();
 
@@ -106,54 +112,96 @@ namespace BrawlLib.Modeling
         {
             byte* grpAddr = (byte*)(primAddr + _offset);
             for (int i = 0; i < _nodeOffsets.Count; i++)
+            {
                 *(bushort*)(grpAddr + _nodeOffsets[i]._offset) = (ushort)_nodeOffsets[i]._node.NodeIndex;
+            }
         }
 
         private void AddTriangle(PointTriangle t)
         {
             _triangles.Add(t);
-            if (!_nodes.Contains(t._x.NodeID)) _nodes.Add(t._x.NodeID);
-            if (!_nodes.Contains(t._y.NodeID)) _nodes.Add(t._y.NodeID);
-            if (!_nodes.Contains(t._z.NodeID)) _nodes.Add(t._z.NodeID);
+            if (!_nodes.Contains(t._x.NodeID))
+            {
+                _nodes.Add(t._x.NodeID);
+            }
+
+            if (!_nodes.Contains(t._y.NodeID))
+            {
+                _nodes.Add(t._y.NodeID);
+            }
+
+            if (!_nodes.Contains(t._z.NodeID))
+            {
+                _nodes.Add(t._z.NodeID);
+            }
         }
         private void AddTristrip(PointTriangleStrip t)
         {
             _tristrips.Add(t);
             foreach (Facepoint p in t._points)
+            {
                 if (!_nodes.Contains(p.NodeID))
+                {
                     _nodes.Add(p.NodeID);
+                }
+            }
         }
         private void AddLine(PointLine t)
         {
             _lines.Add(t);
-            if (!_nodes.Contains(t._x.NodeID)) _nodes.Add(t._x.NodeID);
-            if (!_nodes.Contains(t._y.NodeID)) _nodes.Add(t._y.NodeID);
+            if (!_nodes.Contains(t._x.NodeID))
+            {
+                _nodes.Add(t._x.NodeID);
+            }
+
+            if (!_nodes.Contains(t._y.NodeID))
+            {
+                _nodes.Add(t._y.NodeID);
+            }
         }
         private void AddLinestrip(PointLineStrip t)
         {
             _linestrips.Add(t);
             foreach (Facepoint p in t._points)
+            {
                 if (!_nodes.Contains(p.NodeID))
+                {
                     _nodes.Add(p.NodeID);
+                }
+            }
         }
         private void AddPoint(FPoint t)
         {
             _points.Add(t);
-            if (!_nodes.Contains(t._x.NodeID)) _nodes.Add(t._x.NodeID);
+            if (!_nodes.Contains(t._x.NodeID))
+            {
+                _nodes.Add(t._x.NodeID);
+            }
         }
 
         public bool TryAdd(PrimitiveClass p)
         {
             if (p is PointTriangleStrip)
+            {
                 return TryAdd(p as PointTriangleStrip);
+            }
             else if (p is PointTriangle)
+            {
                 return TryAdd(p as PointTriangle);
+            }
             else if (p is PointLineStrip)
+            {
                 return TryAdd(p as PointLineStrip);
+            }
             else if (p is PointLine)
+            {
                 return TryAdd(p as PointLine);
+            }
             else if (p is FPoint)
+            {
                 return TryAdd(p as FPoint);
+            }
+
             return false;
         }
 
@@ -164,7 +212,9 @@ namespace BrawlLib.Modeling
             {
                 ushort id = p.NodeID;
                 if (!_nodes.Contains(id) && !newIds.Contains(id))
+                {
                     newIds.Add(id);
+                }
             }
 
             if (newIds.Count + _nodes.Count <= _nodeCountMax)
@@ -183,9 +233,20 @@ namespace BrawlLib.Modeling
             ushort y = t._y.NodeID;
             ushort z = t._z.NodeID;
 
-            if (!_nodes.Contains(x) && !newIds.Contains(x)) newIds.Add(x);
-            if (!_nodes.Contains(y) && !newIds.Contains(y)) newIds.Add(y);
-            if (!_nodes.Contains(z) && !newIds.Contains(z)) newIds.Add(z);
+            if (!_nodes.Contains(x) && !newIds.Contains(x))
+            {
+                newIds.Add(x);
+            }
+
+            if (!_nodes.Contains(y) && !newIds.Contains(y))
+            {
+                newIds.Add(y);
+            }
+
+            if (!_nodes.Contains(z) && !newIds.Contains(z))
+            {
+                newIds.Add(z);
+            }
 
             //There's a limit of 10 matrices per group...
             if (newIds.Count + _nodes.Count <= _nodeCountMax)
@@ -203,7 +264,9 @@ namespace BrawlLib.Modeling
             {
                 ushort id = p.NodeID;
                 if (!_nodes.Contains(id) && !newIds.Contains(id))
+                {
                     newIds.Add(id);
+                }
             }
 
             if (newIds.Count + _nodes.Count <= _nodeCountMax)
@@ -221,8 +284,15 @@ namespace BrawlLib.Modeling
             ushort x = t._x.NodeID;
             ushort y = t._y.NodeID;
 
-            if (!_nodes.Contains(x) && !newIds.Contains(x)) newIds.Add(x);
-            if (!_nodes.Contains(y) && !newIds.Contains(y)) newIds.Add(y);
+            if (!_nodes.Contains(x) && !newIds.Contains(x))
+            {
+                newIds.Add(x);
+            }
+
+            if (!_nodes.Contains(y) && !newIds.Contains(y))
+            {
+                newIds.Add(y);
+            }
 
             //There's a limit of 10 matrices per group...
             if (newIds.Count + _nodes.Count <= _nodeCountMax)
@@ -239,7 +309,10 @@ namespace BrawlLib.Modeling
 
             ushort x = t._x.NodeID;
 
-            if (!_nodes.Contains(x) && !newIds.Contains(x)) newIds.Add(x);
+            if (!_nodes.Contains(x) && !newIds.Contains(x))
+            {
+                newIds.Add(x);
+            }
 
             //There's a limit of 10 matrices per group...
             if (newIds.Count + _nodes.Count <= _nodeCountMax)
@@ -249,7 +322,7 @@ namespace BrawlLib.Modeling
             }
             return false;
         }
-        public override string ToString() { return String.Format("Nodes: {0} - Primitives: {1}", _nodes.Count, _headers.Count); }
+        public override string ToString() { return string.Format("Nodes: {0} - Primitives: {1}", _nodes.Count, _headers.Count); }
     }
 
     public class NodeOffset
@@ -275,13 +348,13 @@ namespace BrawlLib.Modeling
 
     public class PointTriangleStrip : PrimitiveClass
     {
-        public PrimitiveHeader Header { get { return new PrimitiveHeader(WiiPrimitiveType.TriangleStrip, _points.Count); } }
+        public PrimitiveHeader Header => new PrimitiveHeader(WiiPrimitiveType.TriangleStrip, _points.Count);
         public List<Facepoint> _points = new List<Facepoint>();
 
         public override List<Facepoint> Points
         {
-            get { return _points; }
-            set { _points = value; }
+            get => _points;
+            set => _points = value;
         }
     }
 
@@ -292,7 +365,7 @@ namespace BrawlLib.Modeling
         public Facepoint _z;
 
         public Facepoint this[int i]
-        { 
+        {
             get
             {
                 switch (i)
@@ -316,10 +389,7 @@ namespace BrawlLib.Modeling
 
         public override List<Facepoint> Points
         {
-            get
-            {
-                return new List<Facepoint>() { _x, _y, _z };
-            }
+            get => new List<Facepoint>() { _x, _y, _z };
             set
             {
                 _x = value[0];
@@ -338,22 +408,34 @@ namespace BrawlLib.Modeling
 
         public bool Contains(Facepoint f)
         {
-            if (_x == f) return true;
-            if (_y == f) return true;
-            if (_z == f) return true;
+            if (_x == f)
+            {
+                return true;
+            }
+
+            if (_y == f)
+            {
+                return true;
+            }
+
+            if (_z == f)
+            {
+                return true;
+            }
+
             return false;
         }
     }
 
     public class PointLineStrip : PrimitiveClass
     {
-        public PrimitiveHeader Header { get { return new PrimitiveHeader(WiiPrimitiveType.LineStrip, _points.Count); } }
+        public PrimitiveHeader Header => new PrimitiveHeader(WiiPrimitiveType.LineStrip, _points.Count);
         public List<Facepoint> _points = new List<Facepoint>();
 
         public override List<Facepoint> Points
         {
-            get { return _points; }
-            set { _points = value; }
+            get => _points;
+            set => _points = value;
         }
     }
 
@@ -385,10 +467,7 @@ namespace BrawlLib.Modeling
 
         public override List<Facepoint> Points
         {
-            get
-            {
-                return new List<Facepoint>() { _x, _y };
-            }
+            get => new List<Facepoint>() { _x, _y };
             set
             {
                 _x = value[0];
@@ -405,8 +484,16 @@ namespace BrawlLib.Modeling
 
         public bool Contains(Facepoint f)
         {
-            if (_x == f) return true;
-            if (_y == f) return true;
+            if (_x == f)
+            {
+                return true;
+            }
+
+            if (_y == f)
+            {
+                return true;
+            }
+
             return false;
         }
     }

@@ -11,14 +11,12 @@
             _characterPosition = characterPosition;
         }
 
-        public int CharacterPosition
-        {
-            get { return _characterPosition; }
-        } int _characterPosition;
+        public int CharacterPosition => _characterPosition;
 
-        public long Index
-        {
-            get { return _index; }
-        } long _index;
+        private readonly int _characterPosition;
+
+        public long Index => _index;
+
+        private readonly long _index;
     }
 }

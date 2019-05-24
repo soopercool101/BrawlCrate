@@ -38,13 +38,13 @@ namespace BrawlLib.OpenGL
             CalculateProjection();
         }
 
-        public float VerticalFieldOfView { get { return _fovY; } set { _fovY = value; CalculateProjection(); } }
-        public float NearDepth { get { return _nearZ; } set { _nearZ = value; CalculateProjection(); } }
-        public float FarDepth { get { return _farZ; } set { _farZ = value; CalculateProjection(); } }
-        public float Width { get { return _width; } set { _width = value; CalculateProjection(); } }
-        public float Height { get { return _height; } set { _height = value; CalculateProjection(); } }
-        public float Aspect { get { return _aspect; } set { _aspect = value; CalculateProjection(); } }
-        public bool Orthographic { get { return _ortho; } set { if (_ortho == value) return; _ortho = value; CalculateProjection(); } }
+        public float VerticalFieldOfView { get => _fovY; set { _fovY = value; CalculateProjection(); } }
+        public float NearDepth { get => _nearZ; set { _nearZ = value; CalculateProjection(); } }
+        public float FarDepth { get => _farZ; set { _farZ = value; CalculateProjection(); } }
+        public float Width { get => _width; set { _width = value; CalculateProjection(); } }
+        public float Height { get => _height; set { _height = value; CalculateProjection(); } }
+        public float Aspect { get => _aspect; set { _aspect = value; CalculateProjection(); } }
+        public bool Orthographic { get => _ortho; set { if (_ortho == value) { return; } _ortho = value; CalculateProjection(); } }
 
         public GLCamera() { Reset(); }
         public GLCamera(float width, float height, Vector3 defaultTranslate, Vector3 defaultRotate, Vector3 defaultScale)
@@ -61,7 +61,7 @@ namespace BrawlLib.OpenGL
             _matrix = Matrix.ReverseTransformMatrix(_scale, _rotation, _defaultTranslate);
             _matrixInverse = Matrix.TransformMatrix(_scale, _rotation, _defaultTranslate);
         }
-        
+
         public Vector3 GetPoint() { return _matrixInverse.Multiply(new Vector3()); }
 
         public void Scale(float x, float y, float z) { Scale(new Vector3(x, y, z)); }
@@ -78,7 +78,9 @@ namespace BrawlLib.OpenGL
                 Scale(scale, scale, scale);
             }
             else
+            {
                 Translate(0.0f, 0.0f, amt);
+            }
         }
         public void Translate(Vector3 v) { Translate(v._x, v._y, v._z); }
         public void Translate(float x, float y, float z)
@@ -93,11 +95,24 @@ namespace BrawlLib.OpenGL
         {
             //Fix for left and right dragging when the camera is upside down
             if (_rotation._x < -90.0f || _rotation._x > 90.0f)
+            {
                 v._y = -v._y;
+            }
 
-            if (_restrictXRot) v._x = 0.0f;
-            if (_restrictYRot) v._y = 0.0f;
-            if (_restrictZRot) v._z = 0.0f;
+            if (_restrictXRot)
+            {
+                v._x = 0.0f;
+            }
+
+            if (_restrictYRot)
+            {
+                v._y = 0.0f;
+            }
+
+            if (_restrictZRot)
+            {
+                v._z = 0.0f;
+            }
 
             _rotation = (_rotation + v).RemappedToRange(-180.0f, 180.0f);
 
@@ -148,11 +163,13 @@ namespace BrawlLib.OpenGL
             PositionChanged();
         }
 
-        bool _updating;
+        private bool _updating;
         private void PositionChanged()
         {
             if (!_updating && OnPositionChanged != null)
+            {
                 OnPositionChanged();
+            }
         }
 
         public void CalculateProjection()
@@ -168,7 +185,7 @@ namespace BrawlLib.OpenGL
                 _projectionInverse = Matrix.ReversePerspectiveMatrix(_fovY, _aspect, _nearZ, _farZ);
             }
         }
-        
+
         public event Action OnDimensionsChanged, OnPositionChanged;
 
         public void SetDimensions(float width, float height)
@@ -182,7 +199,9 @@ namespace BrawlLib.OpenGL
             CalculateProjection();
 
             if (OnDimensionsChanged != null)
+            {
                 OnDimensionsChanged();
+            }
         }
         /// <summary>
         /// Projects a screen point to world coordinates.
@@ -218,30 +237,35 @@ namespace BrawlLib.OpenGL
             //Also the order of the matrix multiplication matters
             Vector4 t1 = _matrix * (Vector4)source;
             Vector4 t2 = _projectionMatrix * t1;
-            if (t2._w == 0) return new Vector3();
+            if (t2._w == 0)
+            {
+                return new Vector3();
+            }
+
             Vector3 v = (Vector3)t2;
             return new Vector3(
                 (v._x / 2.0f + 0.5f) * Width,
-                Height - ((v._y / 2.0f + 0.5f) * Height), 
+                Height - ((v._y / 2.0f + 0.5f) * Height),
                 (v._z + 1.0f) / 2.0f);
         }
 
         public Vector3 ProjectCameraSphere(Vector2 screenPoint, Vector3 center, float radius, bool clamp)
         {
-            Vector3 point;
 
             //Get ray points
             Vector3 ray1 = UnProject(screenPoint._x, screenPoint._y, 0.0f);
             Vector3 ray2 = UnProject(screenPoint._x, screenPoint._y, 1.0f);
 
-            if (!Maths.LineSphereIntersect(ray1, ray2, center, radius, out point))
+            if (!Maths.LineSphereIntersect(ray1, ray2, center, radius, out Vector3 point))
             {
                 //If no intersect is found, project the ray through the plane perpendicular to the camera.
                 Maths.LinePlaneIntersect(ray1, ray2, center, GetPoint().Normalize(center), out point);
 
                 //Clamp the point to edge of the sphere
                 if (clamp)
+                {
                     point = Maths.PointAtLineDistance(center, point, radius);
+                }
             }
 
             return point;
@@ -264,20 +288,26 @@ namespace BrawlLib.OpenGL
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
             fixed (Matrix* p = &_projectionMatrix)
+            {
                 GL.LoadMatrix((float*)p);
+            }
         }
         public void LoadModelView()
         {
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
             fixed (Matrix* p = &_matrix)
+            {
                 GL.LoadMatrix((float*)p);
+            }
         }
 
         public unsafe void ZoomExtents(Vector3 point, float distance)
         {
             if (!_ortho)
+            {
                 _rotation = new Vector3();
+            }
 
             Vector3 position = point + new Vector3(0.0f, 0.0f, distance);
             _matrix = Matrix.ReverseTransformMatrix(_scale, _rotation, position);

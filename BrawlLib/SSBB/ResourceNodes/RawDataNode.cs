@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using BrawlLib.IO;
+﻿using BrawlLib.IO;
+using System;
 using System.ComponentModel;
+using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -13,11 +13,11 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class RawDataNode : ResourceNode, IBufferNode
     {
-        internal byte* Header { get { return (byte*)WorkingUncompressed.Address; } }
+        internal byte* Header => (byte*)WorkingUncompressed.Address;
 
         public UnsafeBuffer _buffer;
 
-        public int Size { get { return WorkingUncompressed.Length; } }
+        public int Size => WorkingUncompressed.Length;
 
         public RawDataNode() { }
         public RawDataNode(string name) { _name = name; }
@@ -25,15 +25,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(true), TypeConverter(typeof(DropDownListCompression))]
         public override string Compression
         {
-            get { return base.Compression; }
-            set { base.Compression = value; }
+            get => base.Compression;
+            set => base.Compression = value;
         }
 
         public override bool OnInitialize()
         {
             _buffer = new UnsafeBuffer(WorkingUncompressed.Length);
 
-            Memory.Move(_buffer.Address, (VoidPtr)Header, (uint)_buffer.Length);
+            Memory.Move(_buffer.Address, Header, (uint)_buffer.Length);
 
             return false;
         }
@@ -49,13 +49,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 stream.SetLength(_buffer.Length);
                 using (FileMap map = FileMap.FromStream(stream))
+                {
                     Memory.Move(map.Address, _buffer.Address, (uint)_buffer.Length);
+                }
             }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            VoidPtr header = (VoidPtr)address;
+            VoidPtr header = address;
             Memory.Move(header, _buffer.Address, (uint)length);
         }
 

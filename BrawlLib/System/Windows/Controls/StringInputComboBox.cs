@@ -10,12 +10,18 @@ namespace System.Windows.Forms
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Value
         {
-            get { return _value; }
+            get => _value;
             set
             {
-                if (_value == value) return;
+                if (_value == value)
+                {
+                    return;
+                }
 
-                if (check == false) _oldValue = Text;
+                if (check == false)
+                {
+                    _oldValue = Text;
+                }
 
                 _value = value;
 
@@ -31,7 +37,7 @@ namespace System.Windows.Forms
 
         protected override void OnTextUpdate(EventArgs e)
         {
-            
+
             base.OnTextUpdate(e);
         }
 
@@ -92,10 +98,14 @@ namespace System.Windows.Forms
 
         private void UpdateText()
         {
-            if (String.IsNullOrEmpty(_value))
+            if (string.IsNullOrEmpty(_value))
+            {
                 Text = "";
+            }
             else
+            {
                 Text = _value;
+            }
         }
 
         private void Apply()
@@ -103,7 +113,9 @@ namespace System.Windows.Forms
             string val = _value;
 
             if (val == Text)
+            {
                 return;
+            }
 
             val = Text;
 
@@ -111,7 +123,9 @@ namespace System.Windows.Forms
             {
                 _value = val;
                 if (ValueChanged != null)
+                {
                     ValueChanged(this, null);
+                }
             }
             UpdateText();
         }

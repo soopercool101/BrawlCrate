@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace System.Audio
 {
-    unsafe class wAudioDevice : AudioDevice
+    internal unsafe class wAudioDevice : AudioDevice
     {
         internal Guid _guid;
 
@@ -30,8 +30,8 @@ namespace System.Audio
         {
             get
             {
-                Guid g1 = Win32.DirectSound.DefaultPlaybackGuid, g2;
-                Win32.DirectSound.GetDeviceID(ref g1, out g2);
+                Guid g1 = Win32.DirectSound.DefaultPlaybackGuid;
+                Win32.DirectSound.GetDeviceID(ref g1, out Guid g2);
                 wAudioDevice dev = new wAudioDevice() { _guid = g2 };
 
                 GCHandle handle = GCHandle.Alloc(dev);
@@ -44,8 +44,8 @@ namespace System.Audio
         {
             get
             {
-                Guid g1 = Win32.DirectSound.DefaultVoicePlaybackGuid, g2;
-                Win32.DirectSound.GetDeviceID(ref g1, out g2);
+                Guid g1 = Win32.DirectSound.DefaultVoicePlaybackGuid;
+                Win32.DirectSound.GetDeviceID(ref g1, out Guid g2);
                 wAudioDevice dev = new wAudioDevice() { _guid = g2 };
 
                 GCHandle handle = GCHandle.Alloc(dev);
@@ -58,12 +58,14 @@ namespace System.Audio
         private static bool EnumCallback(Guid* guid, sbyte* desc, sbyte* module, IntPtr context)
         {
             if (guid == null)
+            {
                 return true;
+            }
 
             object ctx = ((GCHandle)context).Target;
             if (ctx is List<AudioDevice>)
             {
-                ((List<AudioDevice>)ctx).Add(new wAudioDevice(*guid, new String(desc), new String(module)));
+                ((List<AudioDevice>)ctx).Add(new wAudioDevice(*guid, new string(desc), new string(module)));
                 return true;
             }
             else if (ctx is wAudioDevice)
@@ -71,8 +73,8 @@ namespace System.Audio
                 wAudioDevice dev = ctx as wAudioDevice;
                 if (*guid == dev._guid)
                 {
-                    dev._description = new String(desc);
-                    dev._driver = new String(module);
+                    dev._description = new string(desc);
+                    dev._driver = new string(module);
                     return false;
                 }
                 return true;

@@ -1,6 +1,6 @@
 ﻿namespace System.IO
 {
-    public unsafe static class StreamExtension
+    public static unsafe class StreamExtension
     {
         public static long AlignPosition(this Stream stream, int align)
         {
@@ -14,7 +14,9 @@
             int numRead = stream.Read(arr, 0, length);
 
             fixed (byte* ptr = arr)
+            {
                 System.Memory.Move(dstAddr, ptr, (uint)numRead);
+            }
 
             return numRead;
         }
@@ -24,7 +26,9 @@
             byte[] arr = new byte[length];
 
             fixed (byte* ptr = arr)
+            {
                 System.Memory.Move(ptr, srcAddr, (uint)length);
+            }
 
             stream.Write(arr, 0, length);
         }

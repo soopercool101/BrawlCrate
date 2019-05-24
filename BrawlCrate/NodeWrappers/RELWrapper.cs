@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     public class RELWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RELWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -70,42 +70,46 @@ namespace BrawlCrate.NodeWrappers
         {
             RELNode r = _resource as RELNode;
 
-                ModuleDataNode s = r.Sections[r._prologSection];
+            ModuleDataNode s = r.Sections[r._prologSection];
 
-                foreach (SectionEditor l in SectionEditor._openedSections)
-                    if (l._section == s)
-                    {
-                        l.Focus();
-                        l.Position = r._prologOffset;
-                        l.hexBox1.Focus();
-                        return;
-                    }
+            foreach (SectionEditor l in SectionEditor._openedSections)
+            {
+                if (l._section == s)
+                {
+                    l.Focus();
+                    l.Position = r._prologOffset;
+                    l.hexBox1.Focus();
+                    return;
+                }
+            }
 
-                SectionEditor e = new SectionEditor(s as ModuleSectionNode);
-                e.Show();
-                e.Position = r._prologOffset;
-                e.hexBox1.Focus();
+            SectionEditor e = new SectionEditor(s as ModuleSectionNode);
+            e.Show();
+            e.Position = r._prologOffset;
+            e.hexBox1.Focus();
         }
 
         public void Destructor()
         {
             RELNode r = _resource as RELNode;
 
-                ModuleDataNode s = r.Sections[r._epilogSection];
+            ModuleDataNode s = r.Sections[r._epilogSection];
 
-                foreach (SectionEditor l in SectionEditor._openedSections)
-                    if (l._section == s)
-                    {
-                        l.Focus();
-                        l.Position = r._epilogOffset;
-                        l.hexBox1.Focus();
-                        return;
-                    }
+            foreach (SectionEditor l in SectionEditor._openedSections)
+            {
+                if (l._section == s)
+                {
+                    l.Focus();
+                    l.Position = r._epilogOffset;
+                    l.hexBox1.Focus();
+                    return;
+                }
+            }
 
-                SectionEditor e = new SectionEditor(s as ModuleSectionNode);
-                e.Show();
-                e.Position = r._epilogOffset;
-                e.hexBox1.Focus();
+            SectionEditor e = new SectionEditor(s as ModuleSectionNode);
+            e.Show();
+            e.Position = r._epilogOffset;
+            e.hexBox1.Focus();
 
         }
 
@@ -113,31 +117,33 @@ namespace BrawlCrate.NodeWrappers
         {
             RELNode r = _resource as RELNode;
 
-                ModuleDataNode s = r.Sections[r._unresolvedSection];
+            ModuleDataNode s = r.Sections[r._unresolvedSection];
 
-                foreach (SectionEditor l in SectionEditor._openedSections)
-                    if (l._section == s)
-                    {
-                        l.Focus();
-                        l.Position = r._unresolvedOffset;
-                        l.hexBox1.Focus();
-                        return;
-                    }
+            foreach (SectionEditor l in SectionEditor._openedSections)
+            {
+                if (l._section == s)
+                {
+                    l.Focus();
+                    l.Position = r._unresolvedOffset;
+                    l.hexBox1.Focus();
+                    return;
+                }
+            }
 
-                SectionEditor e = new SectionEditor(s as ModuleSectionNode);
-                e.Show();
-                e.Position = r._unresolvedOffset;
-                e.hexBox1.Focus();
+            SectionEditor e = new SectionEditor(s as ModuleSectionNode);
+            e.Show();
+            e.Position = r._unresolvedOffset;
+            e.hexBox1.Focus();
         }
 
-        public override string ExportFilter { get { return FileFilters.REL; } }
+        public override string ExportFilter => FileFilters.REL;
     }
 
     [NodeWrapper(ResourceType.RELSection)]
-    class RELSectionWrapper : GenericWrapper
+    internal class RELSectionWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RELSectionWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -180,23 +186,25 @@ namespace BrawlCrate.NodeWrappers
             ModuleSectionNode r = _resource as ModuleSectionNode;
 
             foreach (SectionEditor l in SectionEditor._openedSections)
+            {
                 if (l._section == r)
                 {
                     l.Focus();
                     return;
                 }
+            }
 
             new SectionEditor(r).Show();
         }
 
-        public override string ExportFilter { get { return FileFilters.Raw; } }
+        public override string ExportFilter => FileFilters.Raw;
     }
 
     [NodeWrapper(ResourceType.RELMethod)]
     public class RELMethodWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RELMethodWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -240,24 +248,28 @@ namespace BrawlCrate.NodeWrappers
             ModuleSectionNode section = r.Root.Children[(int)r.TargetSection] as ModuleSectionNode;
 
             foreach (SectionEditor l in SectionEditor._openedSections)
+            {
                 if (l._section == section)
                 {
                     if (l.Position != r.RootOffset - section.RootOffset)
+                    {
                         l.Position = r.RootOffset - section.RootOffset;
+                    }
 
                     l.Focus();
                     return;
                 }
+            }
 
             SectionEditor x = new SectionEditor(section);
             x.Show();
-            x.Text = String.Format("Module Section Editor - {0}->{1}", r.Object._name, r._name);
+            x.Text = string.Format("Module Section Editor - {0}->{1}", r.Object._name, r._name);
 
             x.Position = r.RootOffset - section.RootOffset;
             x.hexBox1.Focus();
         }
 
-        public override string ExportFilter { get { return FileFilters.Raw; } }
+        public override string ExportFilter => FileFilters.Raw;
     }
 
     [NodeWrapper(ResourceType.RELExternalMethod)]
@@ -271,7 +283,7 @@ namespace BrawlCrate.NodeWrappers
     public class RELInheritanceWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RELInheritanceWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -316,21 +328,21 @@ namespace BrawlCrate.NodeWrappers
 
 
             foreach (SectionEditor l in SectionEditor._openedSections)
+            {
                 if (l._section == section)
                 {
                     l.Focus();
                     return;
                 }
-
-
+            }
 
             SectionEditor x = new SectionEditor(section);
             x.Show();
-            x.Text = String.Format("Module Section Editor - {0}", section._name);
+            x.Text = string.Format("Module Section Editor - {0}", section._name);
             x.Position = r.RootOffset;
             x.hexBox1.Focus();
         }
 
-        public override string ExportFilter { get { return FileFilters.Raw; } }
+        public override string ExportFilter => FileFilters.Raw;
     }
 }

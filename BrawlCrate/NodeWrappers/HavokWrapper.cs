@@ -1,17 +1,17 @@
-﻿using System;
+﻿using BrawlLib;
+using BrawlLib.IO;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
 using System.IO;
-using BrawlLib.IO;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.Havok)]
     public class HavokWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static HavokWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -45,24 +45,27 @@ namespace BrawlCrate.NodeWrappers
 
         public HavokWrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.Havok; } }
-        public override string ImportFilter { get { return FileFilters.Havok; } }
-        
+        public override string ExportFilter => FileFilters.Havok;
+        public override string ImportFilter => FileFilters.Havok;
+
         public void ExportPatched()
         {
-            string outPath;
-            int index = Program.SaveFile(ExportFilter, Text, out outPath);
+            int index = Program.SaveFile(ExportFilter, Text, out string outPath);
             if (index != 0)
             {
                 if (Parent == null)
+                {
                     _resource.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
+                }
                 //_resource.Rebuild();
                 HavokNode p = _resource as HavokNode;
                 using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
                 {
                     stream.SetLength(p._buffer.Length);
                     using (FileMap map = FileMap.FromStream(stream))
+                    {
                         Memory.Move(map.Address, p._buffer.Address, (uint)p._buffer.Length);
+                    }
                 }
             }
         }

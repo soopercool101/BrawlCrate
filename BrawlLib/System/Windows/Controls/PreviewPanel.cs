@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using BrawlLib.Imaging;
+using System.Drawing;
 using System.Drawing.Drawing2D;
-using BrawlLib.Imaging;
 
 namespace System.Windows.Forms
 {
@@ -12,11 +12,11 @@ namespace System.Windows.Forms
         internal static HatchBrush _brush = new HatchBrush(HatchStyle.LargeCheckerBoard, Color.LightGray, Color.GhostWhite);
 
         private bool _disposeImage = true;
-        public bool DisposeImage { get { return _disposeImage; } set { _disposeImage = value; } }
+        public bool DisposeImage { get => _disposeImage; set => _disposeImage = value; }
 
         public object RenderingTarget
         {
-            get { return _target; }
+            get => _target;
             set
             {
                 if (_currentImage != null && _disposeImage) { _currentImage.Dispose(); _currentImage = null; }
@@ -24,36 +24,54 @@ namespace System.Windows.Forms
                 _target = value;
 
                 if (_target is IImageSource)
+                {
                     _maxIndex = ((IImageSource)_target).ImageCount - 1;
+                }
                 else
+                {
                     _maxIndex = 0;
+                }
 
                 if (_maxIndex > 0)
+                {
                     btnRight.Visible = btnLeft.Visible = true;
+                }
                 else
+                {
                     btnRight.Visible = btnLeft.Visible = false;
+                }
 
                 CurrentIndex = 0;
             }
         }
         public int CurrentIndex
         {
-            get { return _targetIndex; }
+            get => _targetIndex;
             set
             {
                 _targetIndex = Math.Min(Math.Max(value, 0), _maxIndex);
                 if (_targetIndex == 0)
+                {
                     btnLeft.Enabled = false;
+                }
                 else
+                {
                     btnLeft.Enabled = true;
+                }
 
                 if (_targetIndex == _maxIndex)
+                {
                     btnRight.Enabled = false;
+                }
                 else
+                {
                     btnRight.Enabled = true;
+                }
 
                 if (_target is Image)
+                {
                     _currentImage = _target as Image;
+                }
                 else if (_target is IImageSource)
                 {
                     if (_currentImage != null && _disposeImage) { _currentImage.Dispose(); _currentImage = null; }
@@ -76,10 +94,12 @@ namespace System.Windows.Forms
             g.Clear(BackColor);
 
             if (_currentImage == null)
+            {
                 return;
+            }
 
             int w = _currentImage.Width, h = _currentImage.Height;
-            Rectangle client = this.ClientRectangle;
+            Rectangle client = ClientRectangle;
             Rectangle bounds = new Rectangle(0, 0, w, h);
 
             float aspect = (float)w / h;
@@ -106,7 +126,19 @@ namespace System.Windows.Forms
 
         public event EventHandler LeftClicked, RightClicked;
 
-        private void btnLeft_Click(object sender, EventArgs e) { CurrentIndex--; if (LeftClicked != null) LeftClicked(null, null); }
-        private void btnRight_Click(object sender, EventArgs e) { CurrentIndex++; if (RightClicked != null) RightClicked(null, null); }
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            CurrentIndex--; if (LeftClicked != null)
+            {
+                LeftClicked(null, null);
+            }
+        }
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            CurrentIndex++; if (RightClicked != null)
+            {
+                RightClicked(null, null);
+            }
+        }
     }
 }

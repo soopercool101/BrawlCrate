@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Collections;
 using System.Reflection;
 
 namespace BrawlLib.SSBBTypes
@@ -17,33 +17,46 @@ namespace BrawlLib.SSBBTypes
             AddParsers(Assembly.GetEntryAssembly());
         }
 
-        static void AddParsers(Assembly e)
+        private static void AddParsers(Assembly e)
         {
             if (e == null)
+            {
                 return;
+            }
 
             Delegate del;
             foreach (Type t in e.GetTypes())
+            {
                 if (t.IsSubclassOf(typeof(TableEntryNode)))
+                {
                     if ((del = Delegate.CreateDelegate(typeof(SakuraiSectionParser), t, "TestType", false, false)) != null)
+                    {
                         _parsers.Add(del as SakuraiSectionParser);
+                    }
+                }
+            }
         }
 
         public static TableEntryNode GetRaw(string name)
         {
             TableEntryNode n = null;
             foreach (SakuraiSectionParser d in _parsers)
+            {
                 if ((n = d(name)) != null)
+                {
                     break;
+                }
+            }
+
             return n;
         }
 
         [Browsable(false)]
-        public List<int> DataOffsets { get { return _dataOffsets; } set { _dataOffsets = value; } }
+        public List<int> DataOffsets { get => _dataOffsets; set => _dataOffsets = value; }
         private List<int> _dataOffsets = new List<int>();
 
         [Browsable(false)]
-        public List<SakuraiEntryNode> References { get { return _references; } set { _references = value; } }
+        public List<SakuraiEntryNode> References { get => _references; set => _references = value; }
         private List<SakuraiEntryNode> _references = new List<SakuraiEntryNode>();
 
         protected override void OnParse(VoidPtr address)
@@ -60,7 +73,9 @@ namespace BrawlLib.SSBBTypes
 
                 //Infinite loops are NO GOOD
                 if (_dataOffsets.Contains(offset))
+                {
                     break;
+                }
             }
         }
     }
@@ -78,10 +93,14 @@ namespace BrawlLib.SSBBTypes
                 _data = new byte[_initSize];
                 byte* b = (byte*)address;
                 for (int i = 0; i < _data.Length; i++)
+                {
                     _data[i] = b[i];
+                }
             }
             else
+            {
                 _data = new byte[0];
+            }
         }
 
         protected override int OnGetSize()
@@ -94,8 +113,12 @@ namespace BrawlLib.SSBBTypes
             RebuildAddress = address;
             byte* header = (byte*)address;
             if (_data != null)
+            {
                 for (int i = 0; i < _data.Length; i++)
+                {
                     header[i] = _data[i];
+                }
+            }
         }
     }
 
@@ -106,20 +129,14 @@ namespace BrawlLib.SSBBTypes
 
         public static bool _hexadecimal;
         public bool HexDisplay
-        { 
-            get
-            {
-                return _hexadecimal;
-            } 
-            set
-            {
-                _hexadecimal = value;
-            }
+        {
+            get => _hexadecimal;
+            set => _hexadecimal = value;
         }
 
-        const string _validDec = "0123456789";
-        const string _validHex = "ABCDEFabcdef";
-        
+        private const string _validDec = "0123456789";
+        private const string _validHex = "ABCDEFabcdef";
+
         [Category("Index Entry")]
         public string Value
         {
@@ -137,7 +154,9 @@ namespace BrawlLib.SSBBTypes
                     return (neg ? "-" : "") + val.ToString("X");
                 }
                 else
+                {
                     return _value.ToString();
+                }
             }
             set
             {
@@ -151,13 +170,17 @@ namespace BrawlLib.SSBBTypes
                     }
 
                     if (value.StartsWith("0x"))
+                    {
                         value = value.Substring(2);
+                    }
 
                     value = value.RemoveInvalidCharacters(_validDec + _validHex);
                     _value = int.Parse(value, System.Globalization.NumberStyles.HexNumber);
 
                     if (neg)
+                    {
                         _value = -_value;
+                    }
                 }
                 else
                 {
@@ -168,7 +191,7 @@ namespace BrawlLib.SSBBTypes
                 SignalPropertyChange();
             }
         }
-        
+
         protected override void OnParse(VoidPtr address)
         {
             _value = *(bint*)address;
@@ -188,7 +211,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe class OffsetValue : SakuraiEntryNode
     {
         [Category("Offset Entry")]
-        public int DataOffset { get { return _dataOffset; } }
+        public int DataOffset => _dataOffset;
         private int _dataOffset = 0;
 
         protected override void OnParse(VoidPtr address) { _dataOffset = *(bint*)address; }
@@ -198,30 +221,30 @@ namespace BrawlLib.SSBBTypes
     /// Generic list class for handling structs in a memory array.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class EntryList<T> : SakuraiEntryNode, IEnumerable<T>, IListSource where T : SakuraiEntryNode 
+    public class EntryList<T> : SakuraiEntryNode, IEnumerable<T>, IListSource where T : SakuraiEntryNode
     {
         #region Child Enumeration
 
         public IEnumerator<T> GetEnumerator() { return _entries.GetEnumerator(); }
-        IEnumerator IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
+        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
 
-        public bool ContainsListCollection
-        {
-            get { return false; }
-        }
+        public bool ContainsListCollection => false;
 
         public IList GetList()
         {
             return _entries;
         }
 
-        public int Count { get { return _entries.Count; } }
+        public int Count => _entries.Count;
         public T this[int i]
         {
             get
             {
                 if (i >= 0 && i < Count)
+                {
                     return _entries[i];
+                }
+
                 return null;
             }
             set
@@ -238,9 +261,14 @@ namespace BrawlLib.SSBBTypes
             if (i >= 0)
             {
                 if (i < Count)
+                {
                     _entries.Insert(i, e);
+                }
                 else
+                {
                     _entries.Add(e);
+                }
+
                 SignalRebuildChange();
             }
         }
@@ -268,10 +296,10 @@ namespace BrawlLib.SSBBTypes
 
         #endregion
 
-        private int _stride, _count = -1;
+        private readonly int _stride, _count = -1;
         private BindingList<T> _entries;
 
-        public BindingList<T> Entries { get { return _entries; } }
+        public BindingList<T> Entries => _entries;
 
         public EntryList(int stride, int count) { _stride = stride; _count = count; }
         public EntryList(int stride) { _stride = stride; }
@@ -279,12 +307,14 @@ namespace BrawlLib.SSBBTypes
         {
             _entries = new BindingList<T>();
             if (_count > 0 || _initSize > 0)
+            {
                 for (int i = 0; i < (_count > 0 ? _count : _initSize / _stride); i++)
                 {
                     T e = Parse<T>(address[i, _stride]);
                     e._index = i;
                     _entries.Add(e);
                 }
+            }
         }
 
         protected override int OnGetSize()
@@ -296,14 +326,19 @@ namespace BrawlLib.SSBBTypes
         {
             RebuildAddress = address;
             for (int i = 0; i < _entries.Count; i++)
+            {
                 _entries[i].Write(address[i, _stride]);
+            }
         }
 
         protected override int OnGetLookupCount()
         {
             int count = 0;
             foreach (T e in _entries)
+            {
                 count += e.GetLookupCount();
+            }
+
             return count;
         }
     }
@@ -359,12 +394,12 @@ namespace BrawlLib.SSBBTypes
 
     public abstract unsafe class ListOffset : SakuraiEntryNode
     {
-        sListOffset hdr;
+        private sListOffset hdr;
 
         [Category("List Offset")]
-        public int StartOffset { get { return hdr._startOffset; } }
+        public int StartOffset => hdr._startOffset;
         [Category("List Offset")]
-        public int Count { get { return hdr._listCount; } }
+        public int Count => hdr._listCount;
 
         protected override void OnParse(VoidPtr address)
         {

@@ -1,81 +1,90 @@
-﻿using System;
+﻿using BrawlLib.IO;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Audio;
+using System;
 using System.Audio;
 using System.ComponentModel;
 using System.IO;
-using BrawlLib.IO;
 using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSTMNode : RSARFileNode, IAudioSource
     {
-        internal RSTMHeader* Header { get { return (RSTMHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RSTM; } }
+        internal RSTMHeader* Header => (RSTMHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RSTM;
 
-        int _encoding;
-        int _channels;
-        bool _looped;
-        int _sampleRate;
-        int _loopStart;
-        int _numSamples;
-        int _dataOffset;
-        int _numBlocks;
-        int _blockSize;
-        int _bps;
+        private int _encoding;
+        private int _channels;
+        private bool _looped;
+        private int _sampleRate;
+        private int _loopStart;
+        private int _numSamples;
+        private int _dataOffset;
+        private int _numBlocks;
+        private int _blockSize;
+        private int _bps;
 
         [Category("File Node"), Browsable(false)]
-        public override int FileNodeIndex { get { return _fileIndex; } }
+        public override int FileNodeIndex => _fileIndex;
         [Category("Data"), Browsable(false)]
-        public override string AudioLength { get { return _audioSource.Length.ToString("X"); } }
+        public override string AudioLength => _audioSource.Length.ToString("X");
         [Category("Data"), Browsable(false)]
-        public override string DataLength { get { return WorkingUncompressed.Length.ToString("X"); } }
+        public override string DataLength => WorkingUncompressed.Length.ToString("X");
         [Browsable(false)]
-        public override string[] GroupRefs { get { return _groupRefs.Select(x => x.TreePath).ToArray(); } }
+        public override string[] GroupRefs => _groupRefs.Select(x => x.TreePath).ToArray();
         [Browsable(false)]
-        public override string[] EntryRefs { get { return _references.ToArray(); } }
+        public override string[] EntryRefs => _references.ToArray();
 
         [Category("Audio Stream")]
-        public WaveEncoding Encoding { get { return (WaveEncoding)_encoding; } }
+        public WaveEncoding Encoding => (WaveEncoding)_encoding;
         [Category("Audio Stream")]
-        public int Channels { get { return _channels; } }
+        public int Channels => _channels;
         [Category("Audio Stream")]
-        public bool IsLooped { get { return _looped; } }
+        public bool IsLooped => _looped;
         [Category("Audio Stream")]
-        public int SampleRate { get { return _sampleRate; } }
+        public int SampleRate => _sampleRate;
         [Category("Audio Stream")]
-        public int LoopStartSample { get { return _loopStart; } }
+        public int LoopStartSample => _loopStart;
         [Category("Audio Stream")]
-        public int NumSamples { get { return _numSamples; } }
+        public int NumSamples => _numSamples;
         //[Category("Audio Stream")]
         //public int DataOffset { get { return _dataOffset; } }
         [Category("Audio Stream")]
-        public int NumBlocks { get { return _numBlocks; } }
+        public int NumBlocks => _numBlocks;
         [Category("Audio Stream")]
-        public int BlockSize { get { return _blockSize; } }
+        public int BlockSize => _blockSize;
         [Category("Audio Stream")]
-        public int BitsPerSample { get { return _bps; } }
+        public int BitsPerSample => _bps;
 
         public IAudioStream[] CreateStreams()
         {
             if (Header == null)
+            {
                 return null;
+            }
+
             StrmDataInfo* info = Header->HEADData->Part1;
             if (Header != null)
-                switch ((WaveEncoding)info->_format._encoding) {
+            {
+                switch ((WaveEncoding)info->_format._encoding)
+                {
                     case WaveEncoding.ADPCM:
                         return ADPCMStream.GetStreams(Header, _audioSource.Address);
                     case WaveEncoding.PCM16:
                         return PCMStream.GetStreams(Header, _audioSource.Address);
                 }
+            }
+
             return new IAudioStream[] { null };
         }
 
         public override bool OnInitialize()
         {
             if ((_name == null) && (_origPath != null))
+            {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
+            }
 
             base.OnInitialize();
 
@@ -124,8 +133,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public static bool ADPCMConversionWarningShown = false;
-        public static void ShowADPCMConversionWarning() {
-            if (!ADPCMConversionWarningShown) {
+        public static void ShowADPCMConversionWarning()
+        {
+            if (!ADPCMConversionWarningShown)
+            {
                 ADPCMConversionWarningShown = true;
                 System.Windows.Forms.MessageBox.Show("Note: FSTM and CSTM support is still in beta. Playback and output files might not be completely accurate.");
             }
@@ -134,7 +145,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override unsafe void Export(string outPath)
         {
             if (outPath.EndsWith(".wav"))
+            {
                 WAV.ToFile(CreateStreams()[0], outPath);
+            }
             else
             {
                 if (_audioSource != DataSource.Empty)
@@ -182,7 +195,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
                 else
+                {
                     base.Export(outPath);
+                }
             }
         }
 
@@ -191,13 +206,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             IAudioStream stream = null;
 
             if (fileName.EndsWith(".wav"))
+            {
                 stream = WAV.FromFile(fileName);
+            }
             else
+            {
                 base.Replace(fileName);
+            }
 
             if (stream != null)
+            {
                 try { ReplaceRaw(RSTMConverter.Encode(stream, null)); }
                 finally { stream.Dispose(); }
+            }
 
             if (Header->_header._tag == CSTMHeader.Tag || Header->_header._tag == FSTMHeader.Tag)
             {
@@ -212,7 +233,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) {
+        internal static ResourceNode TryParse(DataSource source)
+        {
             BinTag tag = ((RSTMHeader*)source.Address)->_header._tag;
             return tag == RSTMHeader.Tag || tag == CSTMHeader.Tag || tag == FSTMHeader.Tag ? new RSTMNode() : null;
         }

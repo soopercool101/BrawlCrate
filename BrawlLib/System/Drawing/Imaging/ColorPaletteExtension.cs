@@ -1,6 +1,6 @@
-﻿using System.Reflection;
+﻿using BrawlLib.Imaging;
 using BrawlLib.Wii.Textures;
-using BrawlLib.Imaging;
+using System.Reflection;
 
 namespace System.Drawing.Imaging
 {
@@ -31,33 +31,46 @@ namespace System.Drawing.Imaging
                 case WiiPaletteFormat.IA8:
                     {
                         for (int i = 0; i < pal.Entries.Length; i++)
+                        {
                             pal.Entries[i] = (Color)(IA8Pixel)pal.Entries[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB565:
                     {
                         for (int i = 0; i < pal.Entries.Length; i++)
+                        {
                             pal.Entries[i] = (Color)(wRGB565Pixel)pal.Entries[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB5A3:
                     {
                         for (int i = 0; i < pal.Entries.Length; i++)
+                        {
                             pal.Entries[i] = (Color)(wRGB5A3Pixel)pal.Entries[i];
+                        }
+
                         break;
                     }
             }
         }
         public static int FindMatch(this ColorPalette pal, ARGBPixel pixel)
         {
-            int bestDist = Int32.MaxValue, bestIndex = 0;
+            int bestDist = int.MaxValue, bestIndex = 0;
             for (int i = 0, c = pal.Entries.Length; i < c; i++)
             {
                 int dist = pixel.DistanceTo(pal.Entries[i]);
                 if (dist < bestDist)
                 {
                     bestIndex = i;
-                    if (dist == 0) break;
+                    if (dist == 0)
+                    {
+                        break;
+                    }
+
                     bestDist = dist;
                 }
             }

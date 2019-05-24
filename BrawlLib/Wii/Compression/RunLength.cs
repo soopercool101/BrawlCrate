@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.IO;
 using System.Threading;
-using BrawlLib.SSBB.ResourceNodes;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BrawlLib.Wii.Compression
 {
@@ -26,7 +26,7 @@ namespace BrawlLib.Wii.Compression
             }
         }
 
-        private static int _lookBackCache = 63;
+        private static readonly int _lookBackCache = 63;
         private const int _threadChunk = 0x10000;
         private List<Contraction>[] _contractions;
         private int _sourceLen;
@@ -42,7 +42,7 @@ namespace BrawlLib.Wii.Compression
             from = chunk * _threadChunk;
             to = Math.Min(from + _threadChunk, _sourceLen);
 
-            for (int i = from; i < to; )
+            for (int i = from; i < to;)
             {
                 bestRun = 0;
                 bestOffset = 0;
@@ -52,14 +52,19 @@ namespace BrawlLib.Wii.Compression
                     run = 0;
 
                     while (i + run < _sourceLen && run < 0x111 && _pSrc[j + run] == _pSrc[i + run])
+                    {
                         run++;
+                    }
 
                     if (run > bestRun)
                     {
                         bestRun = run;
                         bestOffset = i - j - 1;
 
-                        if (run == 0x111) break;
+                        if (run == 0x111)
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -70,7 +75,9 @@ namespace BrawlLib.Wii.Compression
                     i += bestRun;
                 }
                 else
+                {
                     i++;
+                }
             }
         }
 
@@ -91,17 +98,21 @@ namespace BrawlLib.Wii.Compression
             int chunkCount = (int)Math.Ceiling((double)srcLen / _threadChunk);
 
             if (progress != null)
+            {
                 progress.Begin(0, srcLen, 0);
+            }
 
             _contractions = new List<Contraction>[chunkCount];
 
             bool YAY0Comp = type == 1;
-            
+
             if (type == 0)
             {
-                YAZ0 header = new YAZ0();
-                header._tag = YAZ0.Tag;
-                header._unCompDataLen = (uint)_sourceLen;
+                YAZ0 header = new YAZ0
+                {
+                    _tag = YAZ0.Tag,
+                    _unCompDataLen = (uint)_sourceLen
+                };
                 outStream.Write(&header, YAZ0.Size);
             }
             else if (type == 1)
@@ -111,16 +122,20 @@ namespace BrawlLib.Wii.Compression
             }
             else
             {
-                CompressionHeader header = new CompressionHeader();
-                header.Algorithm = CompressionType.RunLength;
-                header.ExpandedSize = (uint)_sourceLen;
+                CompressionHeader header = new CompressionHeader
+                {
+                    Algorithm = CompressionType.RunLength,
+                    ExpandedSize = (uint)_sourceLen
+                };
                 outStream.Write(&header, 4 + (header.LargeSize ? 4 : 0));
             }
 
             ParallelLoopResult result = Parallel.For(0, chunkCount, FindContractions);
 
             while (!result.IsCompleted)
+            {
                 Thread.Sleep(100);
+            }
 
             List<Contraction> fullContractions;
             int codeBits, current;
@@ -149,7 +164,7 @@ namespace BrawlLib.Wii.Compression
             List<List<byte>> counts = new List<List<byte>>();
             List<List<byte>> data = new List<List<byte>>();
 
-            for (int i = 0; i < srcLen; )
+            for (int i = 0; i < srcLen;)
             {
                 if (codeBits == 8)
                 {
@@ -168,7 +183,7 @@ namespace BrawlLib.Wii.Compression
                 {
                     if (fullContractions[current].Size >= 0x12)
                     {
-                        byte 
+                        byte
                             b1 = (byte)(fullContractions[current].Offset >> 8),
                             b2 = (byte)(fullContractions[current].Offset & 0xFF);
 
@@ -186,7 +201,7 @@ namespace BrawlLib.Wii.Compression
                     }
                     else
                     {
-                        byte 
+                        byte
                             b1 = (byte)((fullContractions[current].Offset >> 8) | ((fullContractions[current].Size - 2) << 4)),
                             b2 = (byte)(fullContractions[current].Offset & 0xFF);
 
@@ -205,7 +220,9 @@ namespace BrawlLib.Wii.Compression
                     i += fullContractions[current++].Size;
 
                     while (current < fullContractions.Count && fullContractions[current].Location < i)
+                    {
                         current++;
+                    }
                 }
                 else
                 {
@@ -216,8 +233,12 @@ namespace BrawlLib.Wii.Compression
                 codeBits++;
 
                 if (progress != null)
+                {
                     if (i % 0x4000 == 0)
+                    {
                         progress.Update(i);
+                    }
+                }
             }
 
             codes.Add(codeByte);
@@ -227,29 +248,41 @@ namespace BrawlLib.Wii.Compression
             if (YAY0Comp)
             {
                 //Write header
-                YAY0 header = new YAY0();
-                header._tag = YAY0.Tag;
-                header._unCompDataLen = (uint)_sourceLen;
+                YAY0 header = new YAY0
+                {
+                    _tag = YAY0.Tag,
+                    _unCompDataLen = (uint)_sourceLen
+                };
                 uint offset = 0x10 + (uint)codes.Count;
                 header._countOffset = offset;
                 foreach (List<byte> list in counts)
+                {
                     offset += (uint)list.Count;
+                }
+
                 header._dataOffset = offset;
                 outStream.Write(&header, YAY0.Size);
 
                 //Write codes
                 foreach (byte c in codes)
+                {
                     outStream.WriteByte(c);
+                }
 
                 //Write counts
                 foreach (List<byte> list in counts)
+                {
                     outStream.Write(list.ToArray(), 0, list.Count);
+                }
 
                 //Write data
                 foreach (List<byte> list in data)
+                {
                     outStream.Write(list.ToArray(), 0, list.Count);
+                }
             }
             else
+            {
                 for (int i = 0; i < codes.Count; i++)
                 {
                     //Write code
@@ -257,36 +290,45 @@ namespace BrawlLib.Wii.Compression
                     //Write data
                     outStream.Write(data[i].ToArray(), 0, data[i].Count);
                 }
+            }
 
             outStream.Flush();
 
             if (progress != null)
+            {
                 progress.Finish();
+            }
 
             return (int)outStream.Length;
         }
 
         public static int CompactYAZ0(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
-            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAZ0", String.Format("Compressing {0}, please wait...", r.Name), false))
+            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAZ0", string.Format("Compressing {0}, please wait...", r.Name), false))
+            {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 0);
+            }
         }
         public static int CompactYAY0(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
-            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAY0", String.Format("Compressing {0}, please wait...", r.Name), false))
+            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAY0", string.Format("Compressing {0}, please wait...", r.Name), false))
+            {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 1);
+            }
         }
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
-            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength", String.Format("Compressing {0}, please wait...", r.Name), false))
+            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength", string.Format("Compressing {0}, please wait...", r.Name), false))
+            {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 2);
+            }
         }
         public static void ExpandYAZ0(YAZ0* header, VoidPtr dstAddress, int dstLen) { Expand(header->Data, dstAddress, dstLen); }
         public static void ExpandYAY0(YAY0* header, VoidPtr dstAddress, int dstLen)
         {
-            byte* 
-                codes = (byte*)header + 0x10, 
-                counts = (byte*)header + header->_countOffset, 
+            byte*
+                codes = (byte*)header + 0x10,
+                counts = (byte*)header + header->_countOffset,
                 srcPtr = (byte*)header + header->_dataOffset;
 
             Expand(ref srcPtr, ref codes, ref counts, (byte*)dstAddress, dstLen);
@@ -304,12 +346,23 @@ namespace BrawlLib.Wii.Compression
         }
         public static void Expand(ref byte* srcPtr, ref byte* codes, ref byte* counts, byte* dstPtr, int dstLen)
         {
-            for (byte* ceiling = dstPtr + dstLen; dstPtr < ceiling; )
-                for (byte control = *codes++, bit = 8; (bit-- != 0) && (dstPtr != ceiling); )
+            for (byte* ceiling = dstPtr + dstLen; dstPtr < ceiling;)
+            {
+                for (byte control = *codes++, bit = 8; (bit-- != 0) && (dstPtr != ceiling);)
+                {
                     if ((control & (1 << bit)) != 0)
+                    {
                         *dstPtr++ = *srcPtr++;
+                    }
                     else
-                        for (int b1 = *counts++, b2 = *counts++, offset = ((b1 & 0xF) << 8 | b2) + 2, temp = (b1 >> 4) & 0xF, num = temp == 0 ? *srcPtr++ + 0x12 : temp + 2; num-- > 0 && dstPtr != ceiling; *dstPtr++ = dstPtr[-offset]) ;
+                    {
+                        for (int b1 = *counts++, b2 = *counts++, offset = ((b1 & 0xF) << 8 | b2) + 2, temp = (b1 >> 4) & 0xF, num = temp == 0 ? *srcPtr++ + 0x12 : temp + 2; num-- > 0 && dstPtr != ceiling; *dstPtr++ = dstPtr[-offset])
+                        {
+                            ;
+                        }
+                    }
+                }
+            }
         }
     }
 }

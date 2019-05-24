@@ -2,7 +2,6 @@
 //Original source:
 //http://users.telenet.be/tfautre/softdev/tristripper/
 
-using System;
 using System.Collections.Generic;
 
 namespace BrawlLib.Modeling.Triangle_Converter
@@ -20,15 +19,15 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public void ResetStripID() { m_StripID = 0; }
         public void SetStripID(uint StripID) { m_StripID = StripID; }
-        public uint StripID { get { return m_StripID; } }
+        public uint StripID => m_StripID;
 
-        public uint A { get { return m_A; } }
-        public uint B { get { return m_B; } }
-        public uint C { get { return m_C; } }
+        public uint A => m_A;
+        public uint B => m_B;
+        public uint C => m_C;
 
-        private uint m_A;
-        private uint m_B;
-        private uint m_C;
+        private readonly uint m_A;
+        private readonly uint m_B;
+        private readonly uint m_C;
 
         private uint m_StripID;
         public uint m_Index;
@@ -38,8 +37,8 @@ namespace BrawlLib.Modeling.Triangle_Converter
     {
         public TriangleEdge(uint A, uint B) { m_A = A; m_B = B; }
 
-        public uint A { get { return m_A; } }
-        public uint B { get { return m_B; } }
+        public uint A => m_A;
+        public uint B => m_B;
 
         public static bool operator ==(TriangleEdge left, TriangleEdge right)
         {
@@ -53,7 +52,9 @@ namespace BrawlLib.Modeling.Triangle_Converter
         public override bool Equals(object obj)
         {
             if (obj == null || !(obj is TriangleEdge))
+            {
                 return false;
+            }
 
             return this == obj as TriangleEdge;
         }
@@ -68,15 +69,15 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override string ToString()
         {
-            return String.Format("{0} {1}", m_A, m_B);
+            return string.Format("{0} {1}", m_A, m_B);
         }
     }
 
     public class TriEdge : TriangleEdge
     {
         public TriEdge(uint A, uint B, uint TriPos) : base(A, B) { m_TriPos = TriPos; }
-        public uint TriPos { get { return m_TriPos; } }
-        private uint m_TriPos;
+        public uint TriPos => m_TriPos;
+        private readonly uint m_TriPos;
 
         public static bool operator ==(TriEdge left, TriEdge right)
         {
@@ -89,7 +90,9 @@ namespace BrawlLib.Modeling.Triangle_Converter
         public override bool Equals(object obj)
         {
             if (obj == null || !(obj is TriEdge))
+            {
                 return false;
+            }
 
             return this == obj as TriEdge;
         }
@@ -101,7 +104,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override string ToString()
         {
-            return String.Format("{0} {1} {2}", m_A, m_B, m_TriPos);
+            return string.Format("{0} {1} {2}", m_A, m_B, m_TriPos);
         }
     }
 
@@ -122,13 +125,13 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_Size = Size;
         }
 
-        public uint Start { get { return m_Start; } }
-        public TriOrder Order { get { return m_Order; } }
-        public uint Size { get { return m_Size; } }
+        public uint Start => m_Start;
+        public TriOrder Order => m_Order;
+        public uint Size => m_Size;
 
-        private uint m_Start;
-        private TriOrder m_Order;
-        private uint m_Size;
+        private readonly uint m_Start;
+        private readonly TriOrder m_Order;
+        private readonly uint m_Size;
 
         public List<ushort> _nodes = new List<ushort>();
     }

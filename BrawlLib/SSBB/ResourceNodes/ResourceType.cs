@@ -96,7 +96,7 @@
         SCN0Fog = 0x8200,
         SCN0Ambient = 0x8300,
         SCN0LightSet = 0x8400,
-        
+
         SHP0 = 0x2F0B,
         SHP0VertexSet = 0x5900,
         SHP0Entry = 0x3000,

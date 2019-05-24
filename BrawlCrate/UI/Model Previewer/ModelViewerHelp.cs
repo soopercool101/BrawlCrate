@@ -14,7 +14,9 @@
                 Height = 425;
             }
             else
+            {
                 richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            }
 
             base.Show(owner);
         }
@@ -34,46 +36,46 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelViewerHelp));
-            this.btnOkay = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.SuspendLayout();
+            btnOkay = new System.Windows.Forms.Button();
+            richTextBox1 = new System.Windows.Forms.RichTextBox();
+            SuspendLayout();
             // 
             // btnOkay
             // 
-            this.btnOkay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOkay.Location = new System.Drawing.Point(594, 575);
-            this.btnOkay.Name = "btnOkay";
-            this.btnOkay.Size = new System.Drawing.Size(75, 23);
-            this.btnOkay.TabIndex = 1;
-            this.btnOkay.Text = "&Okay";
-            this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Location = new System.Drawing.Point(594, 575);
+            btnOkay.Name = "btnOkay";
+            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.TabIndex = 1;
+            btnOkay.Text = "&Okay";
+            btnOkay.UseVisualStyleBackColor = true;
+            btnOkay.Click += new System.EventHandler(btnOkay_Click);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.Black;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 12);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.richTextBox1.Size = new System.Drawing.Size(657, 557);
-            this.richTextBox1.TabIndex = 2;
+            richTextBox1.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            richTextBox1.ForeColor = System.Drawing.Color.Black;
+            richTextBox1.Location = new System.Drawing.Point(12, 12);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
+            richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            richTextBox1.Size = new System.Drawing.Size(657, 557);
+            richTextBox1.TabIndex = 2;
             // 
             // ModelViewerHelp
             // 
-            this.AcceptButton = this.btnOkay;
-            this.ClientSize = new System.Drawing.Size(681, 610);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.btnOkay);
-            this.Name = "ModelViewerHelp";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Viewer Help";
-            this.ResumeLayout(false);
+            AcceptButton = btnOkay;
+            ClientSize = new System.Drawing.Size(681, 610);
+            Controls.Add(richTextBox1);
+            Controls.Add(btnOkay);
+            Name = "ModelViewerHelp";
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Viewer Help";
+            ResumeLayout(false);
 
         }
         #endregion

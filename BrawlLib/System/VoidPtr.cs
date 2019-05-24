@@ -7,14 +7,14 @@ namespace System
     {
         //address
         public void* address;
-        
-        public byte Byte { get { return *(byte*)address; } }
-        public sbyte SByte { get { return *(sbyte*)address; } }
-        public ushort UShort { get { return *(bushort*)address; } }
-        public short Short { get { return *(bshort*)address; } }
-        public uint UInt { get { return *(buint*)address; } }
-        public int Int { get { return *(bint*)address; } }
-        public float Single { get { return *(bfloat*)address; } }
+
+        public byte Byte => *(byte*)address;
+        public sbyte SByte => *(sbyte*)address;
+        public ushort UShort => *(bushort*)address;
+        public short Short => *(bshort*)address;
+        public uint UInt => *(buint*)address;
+        public int Int => *(bint*)address;
+        public float Single => *(bfloat*)address;
 
         public static int operator -(VoidPtr p1, VoidPtr p2) { return checked((int)((byte*)p1.address - (byte*)p2.address)); }
 
@@ -37,7 +37,7 @@ namespace System
         public static bool operator ==(VoidPtr p1, VoidPtr p2) { return p1.address == p2.address; }
         public static bool operator !=(VoidPtr p1, VoidPtr p2) { return p1.address != p2.address; }
 
-        public VoidPtr this[int count, int stride] { get { return this + (count * stride); } }
+        public VoidPtr this[int count, int stride] => this + (count * stride);
 
         //type casts
         public static implicit operator bool(VoidPtr ptr) { return ptr.address != null; }

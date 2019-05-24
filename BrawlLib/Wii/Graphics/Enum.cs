@@ -12,7 +12,7 @@
         //0000 0000 0000 0000 0000 1111 1111 1111   - XF Memory address
         //0000 0000 0000 0000 1111 0000 0000 0000   - Length (reads length + 1 uint values into XF memory)
         //1111 1111 1111 1111 0000 0000 0000 0000   - Index (for matrices, this is node index)
-        
+
         LoadIndexA = 0x20, //Position matrices (4 x 3)
         LoadIndexB = 0x28, //Normal matrices (3 x 3)
         LoadIndexC = 0x30, //Post matrices (4 x 4)
@@ -183,7 +183,7 @@
         CompBGR24Equal = 13,
         CompRGB8Greater = 14,
         CompRGB8Equal = 15,
-        
+
         //GX_TEV_COMP_A8_GT = GX_TEV_COMP_RGB8_GT, // for alpha channel
         //GX_TEV_COMP_A8_EQ = GX_TEV_COMP_RGB8_EQ  // for alpha channel
     }
@@ -314,9 +314,9 @@
         GX_ALPHA1,
         GX_COLOR0A0,          // Color 0 + Alpha 0
         GX_COLOR1A1,          // Color 1 + Alpha 1
-	    GX_COLOR_ZERO,        // RGBA = 0
-	    GX_ALPHA_BUMP,        // bump alpha 0 - 248, RGB = 0
-	    GX_ALPHA_BUMPN,       // normalized bump alpha, 0 - 255, RGB = 0
+        GX_COLOR_ZERO,        // RGBA = 0
+        GX_ALPHA_BUMP,        // bump alpha 0 - 248, RGB = 0
+        GX_ALPHA_BUMPN,       // normalized bump alpha, 0 - 255, RGB = 0
         GX_COLOR_NULL = 0xff
     }
 
@@ -344,7 +344,7 @@
         Constant3_8/*GX_TEV_KASEL_3_8*/ = 0x05, //0.375f
         Constant1_4/*GX_TEV_KASEL_2_8*/ = 0x06, //0.25f
         Constant1_8/*GX_TEV_KASEL_1_8*/ = 0x07, //0.125f
-        
+
         //GX_TEV_KASEL_1    = GX_TEV_KASEL_8_8,
         //GX_TEV_KASEL_3_4  = GX_TEV_KASEL_6_8,
         //GX_TEV_KASEL_1_2  = GX_TEV_KASEL_4_8,
@@ -383,7 +383,7 @@
         //GX_TEV_KCSEL_3_4  = GX_TEV_KCSEL_6_8,
         //GX_TEV_KCSEL_1_2  = GX_TEV_KCSEL_4_8,
         //GX_TEV_KCSEL_1_4  = GX_TEV_KCSEL_2_8,
-        
+
         ConstantColor0_RGB/*GX_TEV_KCSEL_K0*/   = 0x0C,
         ConstantColor1_RGB/*GX_TEV_KCSEL_K1*/   = 0x0D,
         ConstantColor2_RGB/*GX_TEV_KCSEL_K2*/   = 0x0E,
@@ -482,10 +482,10 @@
 
     public enum PosNrmMtx
     {
-        GX_PNMTX0 =  0,
-        GX_PNMTX1 =  3,
-        GX_PNMTX2 =  6,
-        GX_PNMTX3 =  9,
+        GX_PNMTX0 = 0,
+        GX_PNMTX1 = 3,
+        GX_PNMTX2 = 6,
+        GX_PNMTX3 = 9,
         GX_PNMTX4 = 12,
         GX_PNMTX5 = 15,
         GX_PNMTX6 = 18,
@@ -496,31 +496,31 @@
 
     public enum TexMtx
     {
-        GX_TEXMTX0  = 30,
-        GX_TEXMTX1  = 33,
-        GX_TEXMTX2  = 36,
-        GX_TEXMTX3  = 39,
-        GX_TEXMTX4  = 42,
-        GX_TEXMTX5  = 45,
-        GX_TEXMTX6  = 48,
-        GX_TEXMTX7  = 51,
-        GX_TEXMTX8  = 54,
-        GX_TEXMTX9  = 57,
+        GX_TEXMTX0 = 30,
+        GX_TEXMTX1 = 33,
+        GX_TEXMTX2 = 36,
+        GX_TEXMTX3 = 39,
+        GX_TEXMTX4 = 42,
+        GX_TEXMTX5 = 45,
+        GX_TEXMTX6 = 48,
+        GX_TEXMTX7 = 51,
+        GX_TEXMTX8 = 54,
+        GX_TEXMTX9 = 57,
         GX_IDENTITY = 60
     }
 
     public enum PTTexMtx
     {
-        GX_PTTEXMTX0  = 64,
-        GX_PTTEXMTX1  = 67,
-        GX_PTTEXMTX2  = 70,
-        GX_PTTEXMTX3  = 73,
-        GX_PTTEXMTX4  = 76,
-        GX_PTTEXMTX5  = 79,
-        GX_PTTEXMTX6  = 82,
-        GX_PTTEXMTX7  = 85,
-        GX_PTTEXMTX8  = 88,
-        GX_PTTEXMTX9  = 91,
+        GX_PTTEXMTX0 = 64,
+        GX_PTTEXMTX1 = 67,
+        GX_PTTEXMTX2 = 70,
+        GX_PTTEXMTX3 = 73,
+        GX_PTTEXMTX4 = 76,
+        GX_PTTEXMTX5 = 79,
+        GX_PTTEXMTX6 = 82,
+        GX_PTTEXMTX7 = 85,
+        GX_PTTEXMTX8 = 88,
+        GX_PTTEXMTX9 = 91,
         GX_PTTEXMTX10 = 94,
         GX_PTTEXMTX11 = 97,
         GX_PTTEXMTX12 = 100,
@@ -538,14 +538,14 @@
     {
         Clip_Enabled = 0,
         Clip_Disabled = 1
-    } 
+    }
 
     public enum TexMtxType
     {
         GX_MTX3x4 = 0,
         GX_MTX2x4
-    } 
-    
+    }
+
     public enum TexProjection
     {
         ST,//XF_TEX_ST = 0x0,
@@ -568,38 +568,38 @@
 
     public enum TexSourceRow
     {
-         Geometry,//XF_GEOM_INROW = 0x0,
-         Normals,//XF_NORMAL_INROW = 0x1,
-         Colors,//XF_COLORS_INROW = 0x2,
-         BinormalsT,//XF_BINORMAL_T_INROW = 0x3,
-         BinormalsB,//XF_BINORMAL_B_INROW = 0x4,
-         TexCoord0,//XF_TEX0_INROW = 0x5,
-         TexCoord1,//XF_TEX1_INROW  = 0x6,
-         TexCoord2,//XF_TEX2_INROW  = 0x7,
-         TexCoord3,//XF_TEX3_INROW =  0x8,
-         TexCoord4,//XF_TEX4_INROW  = 0x9,
-         TexCoord5,//XF_TEX5_INROW =  0xA,
-         TexCoord6,//XF_TEX6_INROW =  0xB,
-         TexCoord7,//XF_TEX7_INROW =  0xC
+        Geometry,//XF_GEOM_INROW = 0x0,
+        Normals,//XF_NORMAL_INROW = 0x1,
+        Colors,//XF_COLORS_INROW = 0x2,
+        BinormalsT,//XF_BINORMAL_T_INROW = 0x3,
+        BinormalsB,//XF_BINORMAL_B_INROW = 0x4,
+        TexCoord0,//XF_TEX0_INROW = 0x5,
+        TexCoord1,//XF_TEX1_INROW  = 0x6,
+        TexCoord2,//XF_TEX2_INROW  = 0x7,
+        TexCoord3,//XF_TEX3_INROW =  0x8,
+        TexCoord4,//XF_TEX4_INROW  = 0x9,
+        TexCoord5,//XF_TEX5_INROW =  0xA,
+        TexCoord6,//XF_TEX6_INROW =  0xB,
+        TexCoord7,//XF_TEX7_INROW =  0xC
     }
 
     public enum SpotFn
     {
-         Off = 0,
-         Flat,
-         Cos,
-         Cos2,
-	     Sharp,
-	     Ring,
-	     Ring2
+        Off = 0,
+        Flat,
+        Cos,
+        Cos2,
+        Sharp,
+        Ring,
+        Ring2
     }
 
     public enum DistAttnFn
     {
-         Off = 0,
-         Gentle,
-         Medium,
-         Steep
+        Off = 0,
+        Gentle,
+        Medium,
+        Steep
     }
 
     public enum FogType

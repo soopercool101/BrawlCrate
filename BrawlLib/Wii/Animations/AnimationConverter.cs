@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
-using BrawlLib.SSBB.ResourceNodes;
+using System;
 
 namespace BrawlLib.Wii.Animations
 {
@@ -16,11 +16,17 @@ namespace BrawlLib.Wii.Animations
 
             KeyframeCollection kf;
             if (node is CHR0Node && entry)
+            {
                 kf = DecodeCHR0Keyframes((CHR0Entry*)entry, numFrames);
+            }
             else if (node is SRT0Node && entry)
+            {
                 kf = DecodeSRT0Keyframes((SRT0TextureEntry*)entry, numFrames);
+            }
             else
+            {
                 kf = new KeyframeCollection(arrayCount, numFrames, defaults);
+            }
 
             kf.Loop = node.Loop;
 
@@ -37,12 +43,16 @@ namespace BrawlLib.Wii.Animations
             KeyframeArray kf = new KeyframeArray(numFrames) { Loop = node.Loop };
 
             if (entry == null)
+            {
                 return kf;
+            }
 
             int fCount = entry->_numEntries;
             BVec3* vec = entry->Entries;
             for (int i = 0; i < fCount; i++, vec++)
+            {
                 kf.SetFrameValue((int)vec->_y, vec->_z, true)._tangent = vec->_x;
+            }
 
             return kf;
         }
@@ -52,7 +62,9 @@ namespace BrawlLib.Wii.Animations
             KeyframeCollection kf = new KeyframeCollection(5, numFrames, 1, 1);
 
             if (entry == null)
+            {
                 return kf;
+            }
 
             bfloat* sPtr = (bfloat*)entry->Data;
             SRT0Code code = entry->Code;
@@ -62,38 +74,66 @@ namespace BrawlLib.Wii.Animations
                 if (code.ScaleIsotropic)
                 {
                     if (code.FixedScaleX)
+                    {
                         kf[0, 0, 1] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)sPtr + *(buint*)sPtr++, AnimDataFormat.I12, 0, 1);
+                    }
                 }
                 else
                 {
                     if (code.FixedScaleX)
+                    {
                         kf[0, 0] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)sPtr + *(buint*)sPtr++, AnimDataFormat.I12, 0);
+                    }
+
                     if (code.FixedScaleY)
+                    {
                         kf[0, 1] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)sPtr + *(buint*)sPtr++, AnimDataFormat.I12, 1);
+                    }
                 }
             }
             if (!code.NoRotation)
+            {
                 if (code.FixedRotation)
+                {
                     kf[0, 2] = *sPtr++;
+                }
                 else
+                {
                     DecodeFrames(kf, (VoidPtr)sPtr + *(buint*)sPtr++, AnimDataFormat.I12, 2);
-            
+                }
+            }
+
             if (!code.NoTranslation)
             {
                 if (code.FixedX)
+                {
                     kf[0, 3] = *sPtr++;
+                }
                 else
+                {
                     DecodeFrames(kf, (VoidPtr)sPtr + *(buint*)sPtr++, AnimDataFormat.I12, 3);
+                }
+
                 if (code.FixedY)
+                {
                     kf[0, 4] = *sPtr++;
+                }
                 else
+                {
                     DecodeFrames(kf, (VoidPtr)sPtr + *(buint*)sPtr++, AnimDataFormat.I12, 4);
+                }
             }
 
             return kf;
@@ -104,7 +144,9 @@ namespace BrawlLib.Wii.Animations
             KeyframeCollection kf = new KeyframeCollection(9, numFrames, 1, 1, 1);
 
             if (entry == null)
+            {
                 return kf;
+            }
 
             bfloat* sPtr = (bfloat*)entry->Data;
             AnimationCode code = entry->Code;
@@ -116,26 +158,42 @@ namespace BrawlLib.Wii.Animations
                 if (code.IsScaleIsotropic)
                 {
                     if (code.IsScaleZFixed)
+                    {
                         kf[0, 0, 1, 2] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 0, 1, 2);
+                    }
                 }
                 else
                 {
                     if (code.IsScaleXFixed)
+                    {
                         kf[0, 0] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 0);
+                    }
 
                     if (code.IsScaleYFixed)
+                    {
                         kf[0, 1] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 1);
+                    }
 
                     if (code.IsScaleZFixed)
+                    {
                         kf[0, 2] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 2);
+                    }
                 }
             }
 
@@ -145,26 +203,42 @@ namespace BrawlLib.Wii.Animations
                 if (code.IsRotationIsotropic)
                 {
                     if (code.IsRotationZFixed)
+                    {
                         kf[0, 3, 4, 5] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 3, 4, 5);
+                    }
                 }
                 else
                 {
                     if (code.IsRotationXFixed)
+                    {
                         kf[0, 3] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 3);
+                    }
 
                     if (code.IsRotationYFixed)
+                    {
                         kf[0, 4] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 4);
+                    }
 
                     if (code.IsRotationZFixed)
+                    {
                         kf[0, 5] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 5);
+                    }
                 }
             }
 
@@ -174,26 +248,42 @@ namespace BrawlLib.Wii.Animations
                 if (code.IsTranslationIsotropic)
                 {
                     if (code.IsTranslationZFixed)
+                    {
                         kf[0, 6, 7, 8] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 6, 7, 8);
+                    }
                 }
                 else
                 {
                     if (code.IsTranslationXFixed)
+                    {
                         kf[0, 6] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 6);
+                    }
 
                     if (code.IsTranslationYFixed)
+                    {
                         kf[0, 7] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 7);
+                    }
 
                     if (code.IsTranslationZFixed)
+                    {
                         kf[0, 8] = *sPtr++;
+                    }
                     else
+                    {
                         DecodeFrames(kf, (VoidPtr)entry + *(buint*)sPtr++, format, 8);
+                    }
                 }
             }
 
@@ -217,7 +307,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             I4Entry* entry = header->Data;
                             for (int i = 0; i < fCount; i++, entry++)
+                            {
                                 kf.SetFrameValue(x, entry->FrameIndex, vBase + (entry->Step * vStep), true)._tangent = entry->Tangent;
+                            }
                         }
                         break;
                     }
@@ -232,7 +324,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             I6Entry* entry = header->Data;
                             for (int i = 0; i < fCount; i++, entry++)
+                            {
                                 kf.SetFrameValue(x, entry->FrameIndex, vBase + (entry->_step * vStep), true)._tangent = entry->Tangent;
+                            }
                         }
                         break;
                     }
@@ -245,7 +339,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             I12Entry* entry = header->Data;
                             for (int i = 0; i < fCount; i++, entry++)
+                            {
                                 kf.SetFrameValue(x, (int)entry->_index, entry->_value, true)._tangent = entry->_tangent;
+                            }
                         }
                         break;
                     }
@@ -259,7 +355,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             byte* sPtr = header->Data;
                             for (int i = 0; i < kf.FrameLimit; i++)
+                            {
                                 (kf.SetFrameValue(x, i, vBase + (*sPtr++ * vStep), true)).GenerateTangent();
+                            }
                         }
                         break;
                     }
@@ -273,7 +371,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             bushort* sPtr = (bushort*)header->Data;
                             for (int i = 0; i < kf.FrameLimit; i++)
+                            {
                                 (kf.SetFrameValue(x, i, vBase + (*sPtr++ * vStep), true)).GenerateTangent();
+                            }
                         }
                         break;
                     }
@@ -283,7 +383,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             bfloat* sPtr = (bfloat*)dataAddr;
                             for (int i = 0; i < kf.FrameLimit; i++)
+                            {
                                 (kf.SetFrameValue(x, i, *sPtr++, true)).GenerateTangent();
+                            }
                         }
 
                         break;
@@ -303,7 +405,9 @@ namespace BrawlLib.Wii.Animations
             code = AnimationCode.Default;
 
             for (int i = 0; i < 3; i++)
+            {
                 dataSize += EvaluateCHR0Group(ref code, kf, i, ref entrySize);
+            }
 
             if (!code.HasRotation && !code.HasTranslation)
             {
@@ -327,8 +431,10 @@ namespace BrawlLib.Wii.Animations
             code = SRT0Code.Default;
 
             for (int i = 0; i < 3; i++)
+            {
                 dataSize += EvaluateSRT0Group(ref code, kf, i, ref entrySize);
-            
+            }
+
             return dataSize;
         }
 
@@ -396,13 +502,17 @@ namespace BrawlLib.Wii.Animations
                 if (group == 0)
                 {
                     if ((isFixed[0] != isFixed[1]) || (isFixed[0] != isFixed[2]))
+                    {
                         isotropic = false;
+                    }
                     else if ((count[0] != count[1]) || (count[0] != count[2]))
+                    {
                         isotropic = false;
+                    }
                     else
                     {
                         KeyframeEntry e1 = roots[0], e2 = roots[1], e3 = roots[2];
-                        for (int i = count[0]; i-- > 0; )
+                        for (int i = count[0]; i-- > 0;)
                         {
                             e1 = e1._next; e2 = e2._next; e3 = e3._next;
                             if ((e1._index != e2._index) || (e1._index != e3._index) ||
@@ -435,7 +545,9 @@ namespace BrawlLib.Wii.Animations
                 {
                     isScalable[i] = true;
                     if ((isFixed[i]) || (scaleSpan == -1))
+                    {
                         continue;
+                    }
 
                     //float* pValue = value[i];
                     eCount = count[i];
@@ -474,7 +586,9 @@ namespace BrawlLib.Wii.Animations
                     }
 
                     if ((span > spanEval) && (range == 0.0f))
+                    {
                         continue;
+                    }
 
                 SpanStep:
                     if (span > spanEval)
@@ -518,9 +632,13 @@ namespace BrawlLib.Wii.Animations
                     else
                     {
                         if ((scaleSpan <= 255) && (maxIndex <= 255))
+                        {
                             scaleSpan = 4095;
+                        }
                         else if ((scaleSpan <= 4095) && (maxIndex <= 2047))
+                        {
                             scaleSpan = 65535;
+                        }
                         else
                         {
                             scaleSpan = -1;
@@ -540,20 +658,34 @@ namespace BrawlLib.Wii.Animations
                     if (scale)
                     {
                         if ((group == 1) && (scaleSpan <= 255) && (frameSpan < 4.0f))
+                        {
                             format = AnimDataFormat.L1;
+                        }
                         else if ((scaleSpan <= 4095) && (maxIndex <= 255))
+                        {
                             format = AnimDataFormat.I4;
+                        }
                         else if ((frameSpan > 1.5f) && (maxIndex <= 2047))
+                        {
                             format = AnimDataFormat.I6;
+                        }
                         else if ((group == 1) && (frameSpan <= 3.0f))
+                        {
                             format = AnimDataFormat.L4;
+                        }
                         else
+                        {
                             format = AnimDataFormat.I12;
+                        }
                     }
                     else if ((group == 1) && (frameSpan <= 3.0f))
+                    {
                         format = AnimDataFormat.L4;
+                    }
                     else
+                    {
                         format = AnimDataFormat.I12;
+                    }
                 }
 
                 //calculate size
@@ -590,15 +722,22 @@ namespace BrawlLib.Wii.Animations
                 //Should we compress here?
             }
             else //Set isotropic to true, so it sets the default value.
+            {
                 isotropic = true;
+            }
 
             if (group == 0)
+            {
                 code.IgnoreScale = !exist;
+            }
 
             code.SetExists(group, exist);
             code.SetIsIsotropic(group, isotropic);
             for (int i = 0; i < 3; i++)
+            {
                 code.SetIsFixed(index + i, isFixed[i]);
+            }
+
             code.SetFormat(group, format);
 
             return dataLen;
@@ -636,13 +775,17 @@ namespace BrawlLib.Wii.Animations
                 if (group == 0)
                 {
                     if (isFixed[0] != isFixed[1])
+                    {
                         isotropic = false;
+                    }
                     else if (count[0] != count[1])
+                    {
                         isotropic = false;
+                    }
                     else
                     {
                         KeyframeEntry e1 = roots[0], e2 = roots[1];
-                        for (int i = count[0]; i-- > 0; )
+                        for (int i = count[0]; i-- > 0;)
                         {
                             e1 = e1._next; e2 = e2._next;
                             if ((e1._index != e2._index) ||
@@ -656,7 +799,10 @@ namespace BrawlLib.Wii.Animations
                 }
             }
             if (group == 0 && !isotropic)
+            {
                 code.ScaleIsotropic = false;
+            }
+
             for (int i = 0; i < (group == 1 ? 1 : 2); i++)
             {
                 if (exist)
@@ -668,7 +814,10 @@ namespace BrawlLib.Wii.Animations
                         case 2: code.NoTranslation = false; break;
                     }
                     if (!(group == 0 && i == 1 && code.ScaleIsotropic))
+                    {
                         entrySize += 4;
+                    }
+
                     if (!isFixed[i])
                     {
                         switch (group)
@@ -681,7 +830,8 @@ namespace BrawlLib.Wii.Animations
                                 }
                                 break;
                             case 1: code.FixedRotation = false; break;
-                            case 2: switch (i)
+                            case 2:
+                                switch (i)
                                 {
                                     case 0: code.FixedX = false; break;
                                     case 1: code.FixedY = false; break;
@@ -689,7 +839,9 @@ namespace BrawlLib.Wii.Animations
                                 break;
                         }
                         if (!(group == 0 && i == 1 && code.ScaleIsotropic))
+                        {
                             dataLen += 8 + (count[i] * 12);
+                        }
                     }
                 }
             }
@@ -710,29 +862,39 @@ namespace BrawlLib.Wii.Animations
 
             //Write values/offset and encode groups
             for (int i = 0, x = 0; i < 3; i++, x += 3)
+            {
                 if (code.GetExists(i))
                 {
                     AnimDataFormat format = code.GetFormat(i);
                     if ((i == 0) && (code.GetIsIsotropic(i)))
                     {
                         if (code.GetIsFixed(2))
+                        {
                             *(bfloat*)pOffset++ = kf._keyArrays[2]._keyRoot._next._value;
+                        }
                         else
                         {
-                            *pOffset++ = (int)(dataAddress - entryAddress);
+                            *pOffset++ = dataAddress - entryAddress;
                             dataAddress += EncodeEntry(x, format, kf, dataAddress);
                         }
                     }
                     else
+                    {
                         for (int y = 0, z = x; y < 3; y++, z++)
+                        {
                             if (code.GetIsFixed(z))
+                            {
                                 *(bfloat*)pOffset++ = kf._keyArrays[z]._keyRoot._next._value;
+                            }
                             else
                             {
-                                *pOffset++ = (int)(dataAddress - entryAddress);
+                                *pOffset++ = dataAddress - entryAddress;
                                 dataAddress += EncodeEntry(z, format, kf, dataAddress);
                             }
+                        }
+                    }
                 }
+            }
         }
 
         public static void EncodeSRT0Keyframes(KeyframeCollection kf, VoidPtr entryAddress, VoidPtr dataAddress, SRT0Code code)
@@ -763,7 +925,9 @@ namespace BrawlLib.Wii.Animations
                             if (axis == 0)
                             {
                                 if (code.FixedScaleX)
+                                {
                                     *(bfloat*)pOffset++ = kf._keyArrays[0]._keyRoot._next._value;
+                                }
                                 else
                                 {
                                     *pOffset = (int)dataAddress - (int)pOffset; pOffset++;
@@ -775,7 +939,9 @@ namespace BrawlLib.Wii.Animations
                         {
                             //This gets the fixed bit. Same order, so it can be indexed
                             if (code._data[5 + index])
+                            {
                                 *(bfloat*)pOffset++ = kf._keyArrays[index]._keyRoot._next._value;
+                            }
                             else
                             {
                                 *pOffset = (int)dataAddress - (int)pOffset; pOffset++;
@@ -801,7 +967,10 @@ namespace BrawlLib.Wii.Animations
             {
                 //Use all frames, just in case not all frames are key.
                 for (i = 0; i < numFrames; i++)
+                {
                     *pVal++ = kf[i, index];
+                }
+
                 return numFrames * 4;
             }
 
@@ -812,7 +981,9 @@ namespace BrawlLib.Wii.Animations
 
                 I12Entry* entry = header->Data;
                 for (frame = root._next; frame._index != -1; frame = frame._next)
+                {
                     *entry++ = new I12Entry(frame._index, frame._value, frame._tangent);
+                }
 
                 return keyCount * 12 + 8;
             }
@@ -823,8 +994,15 @@ namespace BrawlLib.Wii.Animations
             {
                 val = frame._value;
 
-                if (val > max) max = val;
-                if (val < min) min = val;
+                if (val > max)
+                {
+                    max = val;
+                }
+
+                if (val < min)
+                {
+                    min = val;
+                }
             }
             stride = max - min;
 
@@ -839,11 +1017,15 @@ namespace BrawlLib.Wii.Animations
 
                 byte* dPtr = header->Data;
                 for (i = 0; i < numFrames; i++)
+                {
                     *dPtr++ = (byte)((kf[i, index] - min) / step + 0.5f);
+                }
 
                 //Fill remaining bytes
                 while ((i++ & 3) != 0)
+                {
                     *dPtr++ = 0;
+                }
 
                 return (8 + numFrames).Align(4);
             }
@@ -891,7 +1073,9 @@ namespace BrawlLib.Wii.Animations
 
                 //Fill remaining bytes
                 if ((keyCount & 1) != 0)
+                {
                     entry->_data = 0;
+                }
 
                 return ((keyCount * 6) + 16).Align(4);
             }
@@ -908,7 +1092,9 @@ namespace BrawlLib.Wii.Animations
             int bestSpan = maxSpan, count;
 
             if (maxIterations <= 0)
+            {
                 maxIterations = maxSpan - 2;
+            }
 
             for (int i = 0; i < maxIterations; i++)
             {
@@ -918,9 +1104,13 @@ namespace BrawlLib.Wii.Animations
                 for (entry = root._next; entry != root; entry = entry._next)
                 {
                     if (evalAll)
+                    {
                         count = (entry._next == root) ? 1 : (entry._next._index - entry._index);
+                    }
                     else
+                    {
                         count = 1;
+                    }
 
                     for (int x = 0; x < count; x++)
                     {
@@ -929,9 +1119,14 @@ namespace BrawlLib.Wii.Animations
                         error = Math.Abs(val - (valBase + ((int)error * step)));
 
                         if (error > scaleError)
+                        {
                             goto Next;
+                        }
+
                         if (error > worstError)
+                        {
                             worstError = error;
+                        }
                     }
                 }
 

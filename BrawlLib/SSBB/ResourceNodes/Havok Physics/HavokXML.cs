@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -8,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class HavokXML
     {
-        static XmlWriterSettings _writerSettings = new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace };
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace };
         public static void Serialize(HavokNode node, string outFile)
         {
             using (FileStream stream = new FileStream(outFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 0x1000, FileOptions.SequentialScan))
@@ -22,14 +21,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Dictionary<HavokClassNode, int> classIDs = new Dictionary<HavokClassNode, int>();
                 int i = 1;
                 foreach (HavokSectionNode s in node.Children)
+                {
                     foreach (HavokClassNode c in s._classCache)
+                    {
                         if (!classIDs.ContainsKey(c))
+                        {
                             classIDs.Add(c, i++);
-                
+                        }
+                    }
+                }
+
                 //RecursiveGetClassIDsData(ref classIDs, node, node._dataSection);
 
                 HavokClassNode rootClass = node._dataSection.Children[0] as HavokClassNode;
-                List<HavokSectionNode> sections = 
+                List<HavokSectionNode> sections =
                     node.Children.Select(x => x as HavokSectionNode)
                     .Where(x => x != node._dataSection).ToList();
                 sections.Add(node._dataSection);
@@ -73,7 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     }
                                     writer.WriteEndElement();
                                 }
-                                
+
                             }
                             writer.WriteEndElement();
                         }
@@ -98,16 +103,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RecursiveGetClassIDsClasses(ref classIDs, node, type);
                 classIDs.Add(data, classIDs.Count + 1);
             }
-            
+
             for (int i = e.Children.Count - 1; i >= 0; i--)
+            {
                 RecursiveGetClassIDsData(ref classIDs, node, e.Children[i]);
+            }
         }
         private static void RecursiveGetClassIDsClasses(ref Dictionary<HavokClassNode, int> classIDs, HavokNode node, ResourceNode e)
         {
             if (e is hkClassNode)
             {
                 hkClassNode type = e as hkClassNode;
-                if (!String.IsNullOrEmpty(type.ParentClass))
+                if (!string.IsNullOrEmpty(type.ParentClass))
                 {
                     HavokClassNode c = node.GetClassNode(type.ParentClass);
                     classIDs.Add(c, classIDs.Count + 1);
@@ -115,32 +122,40 @@ namespace BrawlLib.SSBB.ResourceNodes
                 ResourceNode members = type.FindChild("Members", false);
                 foreach (hkClassMemberNode member in members.Children)
                 {
-                    if (!String.IsNullOrEmpty(member._class))
+                    if (!string.IsNullOrEmpty(member._class))
                     {
                         HavokClassNode c = node.GetClassNode(member._class);
                         classIDs.Add(c, classIDs.Count + 1);
                     }
-                    if (!String.IsNullOrEmpty(member._enum))
+                    if (!string.IsNullOrEmpty(member._enum))
                     {
                         HavokClassNode c = node.GetClassNode(member._enum);
                         classIDs.Add(c, classIDs.Count + 1);
                     }
                 }
                 if (!classIDs.ContainsKey(type))
+                {
                     classIDs.Add(type, classIDs.Count + 1);
+                }
             }
         }
 
         public static string SwapName(string className)
         {
             if (HardcodedName.ContainsKey(className))
+            {
                 return HardcodedName[className].Key;
+            }
+
             return className;
         }
         public static string GetSignature(string className)
         {
             if (HardcodedName.ContainsKey(className))
+            {
                 return HardcodedName[className].Value;
+            }
+
             return "0x0";
         }
         public static readonly Dictionary<string, KeyValuePair<string, string>> HardcodedName = new Dictionary<string, KeyValuePair<string, string>>()

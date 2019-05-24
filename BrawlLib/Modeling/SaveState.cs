@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.Modeling
 {

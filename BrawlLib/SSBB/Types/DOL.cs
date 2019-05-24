@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct DOLHeader
+    internal unsafe struct DOLHeader
     {
         public const int Size = 0x100;
 
@@ -15,7 +15,7 @@ namespace BrawlLib.SSBBTypes
         public buint Text4Offset;
         public buint Text5Offset;
         public buint Text6Offset;
-        
+
         public buint Data0Offset;
         public buint Data1Offset;
         public buint Data2Offset;
@@ -47,7 +47,7 @@ namespace BrawlLib.SSBBTypes
         public buint Data8LoadAddr;
         public buint Data9LoadAddr;
         public buint Data10LoadAddr;
-        
+
         public buint Text0Size;
         public buint Text1Size;
         public buint Text2Size;
@@ -73,13 +73,13 @@ namespace BrawlLib.SSBBTypes
         public buint entryPoint;
         public fixed byte padding[28];
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
-        public buint* TextOffset { get { return ((buint*)Address); } }
-        public buint* DataOffset { get { return ((buint*)Address + 7); } }
-        public buint* TextLoadAddr { get { return ((buint*)Address + 18); } }
-        public buint* DataLoadAddr { get { return ((buint*)Address + 25); } }
-        public buint* TextSize { get { return ((buint*)Address + 36); } }
-        public buint* DataSize { get { return ((buint*)Address + 43); } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public buint* TextOffset => ((buint*)Address);
+        public buint* DataOffset => ((buint*)Address + 7);
+        public buint* TextLoadAddr => ((buint*)Address + 18);
+        public buint* DataLoadAddr => ((buint*)Address + 25);
+        public buint* TextSize => ((buint*)Address + 36);
+        public buint* DataSize => ((buint*)Address + 43);
 
         public uint GetSize()
         {
@@ -87,7 +87,10 @@ namespace BrawlLib.SSBBTypes
             buint* sizes = TextSize;
             uint maxLen = 0;
             for (int i = 0; i < 18; ++i)
+            {
                 maxLen = Math.Max(offsets[i] + sizes[i], maxLen);
+            }
+
             return maxLen + 0x100;
         }
     }

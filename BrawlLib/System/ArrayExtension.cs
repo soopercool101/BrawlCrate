@@ -11,7 +11,10 @@ namespace System
             foreach (object x in a)
             {
                 if (x == o)
+                {
                     l.Add(i);
+                }
+
                 i++;
             }
             return l.ToArray();
@@ -20,9 +23,15 @@ namespace System
         {
             List<int> values = new List<int>();
             foreach (int i in a)
+            {
                 values.Add(i);
+            }
+
             foreach (int i in array)
+            {
                 values.Add(i);
+            }
+
             return values.ToArray();
         }
         public static int IndexOf(this Array a, object value)

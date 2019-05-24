@@ -2,8 +2,8 @@
 {
     public static class VQuant
     {
-        public static float[] DeQuantTable = new float[] 
-        { 
+        public static float[] DeQuantTable = new float[]
+        {
             1.0f / (1 << 0),         1.0f / (1 << 1),         1.0f / (1 << 2),         1.0f / (1 << 3),
             1.0f / (1 << 4),         1.0f / (1 << 5),         1.0f / (1 << 6),         1.0f / (1 << 7),
             1.0f / (1 << 8),         1.0f / (1 << 9),         1.0f / (1 << 10),        1.0f / (1 << 11),

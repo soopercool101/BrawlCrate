@@ -1,43 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public class UserDataCollectionPropertyDescriptor : PropertyDescriptor
     {
-        private UserDataCollection collection = null;
-        private int index = -1;
-        
+        private readonly UserDataCollection collection = null;
+        private readonly int index = -1;
+
         public UserDataCollectionPropertyDescriptor(UserDataCollection coll, int idx) : base("#" + idx.ToString(), null)
         {
-            this.collection = coll;
-            this.index = idx;
-        } 
+            collection = coll;
+            index = idx;
+        }
 
-        public override AttributeCollection Attributes { get { return new AttributeCollection(null); } }
+        public override AttributeCollection Attributes => new AttributeCollection(null);
         public override bool CanResetValue(object component) { return true; }
-        public override Type ComponentType { get { return this.collection.GetType(); } }
-        public override string DisplayName { get { return index >= collection.Count || index < 0 ? null : ((UserDataClass)this.collection[index]).ToString(); } }
-        public override string Description { get { return null; } }
-        public override object GetValue(object component) { return this.collection[index]; }
-        public override bool IsReadOnly { get { return true; } }
-        public override string Name { get { return "#" + index.ToString(); } }
-        public override Type PropertyType { get { return this.collection[index].GetType(); } }
+        public override Type ComponentType => collection.GetType();
+        public override string DisplayName => index >= collection.Count || index < 0 ? null : collection[index].ToString();
+        public override string Description => null;
+        public override object GetValue(object component) { return collection[index]; }
+        public override bool IsReadOnly => true;
+        public override string Name => "#" + index.ToString();
+        public override Type PropertyType => collection[index].GetType();
         public override void ResetValue(object component) { }
         public override bool ShouldSerializeValue(object component) { return true; }
-        public override void SetValue(object component, object value) { this.collection[index] = (UserDataClass)value; }
+        public override void SetValue(object component, object value) { collection[index] = (UserDataClass)value; }
     }
 
     public unsafe class UserDataCollection : CollectionBase, ICustomTypeDescriptor
     {
         public void Read(VoidPtr userDataAddr)
         {
-            if (userDataAddr == null) return;
+            if (userDataAddr == null)
+            {
+                return;
+            }
+
             UserData* data = (UserData*)userDataAddr;
             ResourceGroup* group = data->Group;
             ResourceEntry* pEntry = &group->_first + 1;
@@ -45,11 +49,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             for (int i = 0; i < count; i++, pEntry++)
             {
                 UserDataEntry* entry = (UserDataEntry*)((VoidPtr)group + pEntry->_dataOffset);
-                UserDataClass d = new UserDataClass() { _name = new String((sbyte*)group + pEntry->_stringOffset) };
+                UserDataClass d = new UserDataClass() { _name = new string((sbyte*)group + pEntry->_stringOffset) };
                 VoidPtr addr = (VoidPtr)entry + entry->_dataOffset;
                 d._type = entry->Type;
                 if (d._type != UserValueType.String)
+                {
                     for (int x = 0; x < entry->_entryCount; x++)
+                    {
                         switch (entry->Type)
                         {
                             case UserValueType.Float:
@@ -61,8 +67,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 addr += 4;
                                 break;
                         }
+                    }
+                }
                 else
-                    d._entries.Add(new String((sbyte*)addr));
+                {
+                    d._entries.Add(new string((sbyte*)addr));
+                }
+
                 Add(d);
             }
         }
@@ -73,29 +84,43 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 table.Add(s._name);
                 if (s._type == UserValueType.String && s._entries.Count > 0)
+                {
                     table.Add(s._entries[0]);
+                }
             }
         }
 
         public int GetSize()
         {
-            if (Count == 0) return 0;
+            if (Count == 0)
+            {
+                return 0;
+            }
 
             int len = 0x1C + (Count * 0x28);
             foreach (UserDataClass c in this)
+            {
                 foreach (string s in c._entries)
+                {
                     if (c.DataType != UserValueType.String)
+                    {
                         len += 4;
+                    }
+                }
+            }
 
             return len;
         }
 
         public void Write(VoidPtr userDataAddr)
         {
-            if (Count == 0 || userDataAddr == null) return;
+            if (Count == 0 || userDataAddr == null)
+            {
+                return;
+            }
 
             UserData* data = (UserData*)userDataAddr;
-            
+
             ResourceGroup* pGroup = data->Group;
             ResourceEntry* pEntry = &pGroup->_first + 1;
             *pGroup = new ResourceGroup(Count);
@@ -110,23 +135,32 @@ namespace BrawlLib.SSBB.ResourceNodes
                 *p = new UserDataEntry(s.DataType != UserValueType.String ? s._entries.Count : (s._entries.Count > 0 ? 1 : 0), s._type, id++);
                 pData += 0x18;
                 if (s.DataType != UserValueType.String)
+                {
                     for (int i = 0; i < s._entries.Count; i++)
+                    {
                         if (s.DataType == UserValueType.Float)
                         {
-                            float x;
-                            if (!float.TryParse(s._entries[i], out x))
+                            if (!float.TryParse(s._entries[i], out float x))
+                            {
                                 x = 0;
+                            }
+
                             *(bfloat*)pData = x;
                             pData += 4;
                         }
                         else if (s.DataType == UserValueType.Int)
                         {
-                            int x;
-                            if (!int.TryParse(s._entries[i], out x))
+                            if (!int.TryParse(s._entries[i], out int x))
+                            {
                                 x = 0;
+                            }
+
                             *(bint*)pData = x;
                             pData += 4;
                         }
+                    }
+                }
+
                 p->_totalLen = (int)pData - (int)p;
             }
             data->_totalLen = (int)pData - (int)userDataAddr;
@@ -134,7 +168,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void PostProcess(VoidPtr userDataAddr, StringTable stringTable)
         {
-            if (Count == 0 || userDataAddr == null) return;
+            if (Count == 0 || userDataAddr == null)
+            {
+                return;
+            }
 
             UserData* data = (UserData*)userDataAddr;
 
@@ -147,21 +184,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 UserDataEntry* entry = (UserDataEntry*)((byte*)pGroup + (pEntry++)->_dataOffset);
                 if (entry->Type == UserValueType.String && entry->_entryCount > 0)
-                    entry->_dataOffset = (int)((VoidPtr)(stringTable[this[i]._entries[0]] + 4) - (VoidPtr)entry);
+                {
+                    entry->_dataOffset = stringTable[this[i]._entries[0]] + 4 - entry;
+                }
+
                 ResourceEntry.Build(pGroup, i + 1, entry, (BRESString*)stringTable[this[i]._name]);
                 entry->ResourceStringAddress = stringTable[this[i]._name] + 4;
             }
         }
 
-        public void Add(UserDataClass u) { this.List.Add(u); }
-        public void Remove(UserDataClass u) { this.List.Remove(u); } 
-        public UserDataClass this[int index] 
+        public void Add(UserDataClass u) { List.Add(u); }
+        public void Remove(UserDataClass u) { List.Remove(u); }
+        public UserDataClass this[int index]
         {
-            get { return index >= List.Count || index < 0 ? null : (UserDataClass)this.List[index]; }
-            set { this.List[index] = value; }
+            get => index >= List.Count || index < 0 ? null : (UserDataClass)List[index];
+            set => List[index] = value;
         }
 
-        public String GetClassName()
+        public string GetClassName()
         {
             return TypeDescriptor.GetClassName(this, true);
         }
@@ -171,7 +211,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return TypeDescriptor.GetAttributes(this, true);
         }
 
-        public String GetComponentName()
+        public string GetComponentName()
         {
             return TypeDescriptor.GetComponentName(this, true);
         }
@@ -219,7 +259,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public PropertyDescriptorCollection GetProperties()
         {
             PropertyDescriptorCollection pds = new PropertyDescriptorCollection(null);
-            for (int i = 0; i < this.List.Count; i++)
+            for (int i = 0; i < List.Count; i++)
             {
                 UserDataCollectionPropertyDescriptor pd = new UserDataCollectionPropertyDescriptor(this, i);
                 pds.Add(pd);
@@ -234,39 +274,48 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string _name = "";
 
         [Category("User Data")]
-        public string Name { get { return _name; } set { _name = value; } }
+        public string Name { get => _name; set => _name = value; }
 
         [Category("User Data")]
-        public string[] Entries 
+        public string[] Entries
         {
-            get { return _entries.ToArray(); }
+            get => _entries.ToArray();
             set
             {
                 _entries = value.ToList<string>();
                 if (DataType != UserValueType.String)
+                {
                     for (int i = 0; i < _entries.Count; i++)
+                    {
                         if (DataType == UserValueType.Float)
                         {
-                            float x;
-                            if (!float.TryParse(_entries[i], out x))
-                                _entries[i] = "0"; 
+                            if (!float.TryParse(_entries[i], out float x))
+                            {
+                                _entries[i] = "0";
+                            }
                         }
                         else if (DataType == UserValueType.Int)
                         {
-                            int x;
-                            if (!int.TryParse(_entries[i], out x))
+                            if (!int.TryParse(_entries[i], out int x))
+                            {
                                 _entries[i] = "0";
+                            }
                         }
+                    }
+                }
             }
         }
         [Category("User Data")]
-        public UserValueType DataType { get { return _type; } set { _type = value; } }
+        public UserValueType DataType { get => _type; set => _type = value; }
 
         public override string ToString()
         {
             string s = _name + ":";
             foreach (string i in Entries)
+            {
                 s += i + ",";
+            }
+
             return s.Substring(0, s.Length - 1);
         }
 
@@ -286,8 +335,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public bint _totalLen; //Of everything user data related
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + 4); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + 4);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -304,7 +353,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         //Entries, in the specified type
 
-        public UserValueType Type { get { return (UserValueType)(int)_type; } set { _type = (int)value; } }
+        public UserValueType Type { get => (UserValueType)(int)_type; set => _type = (int)value; }
 
         public UserDataEntry(int entries, UserValueType type, int id)
         {
@@ -316,13 +365,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             _id = id;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 }

@@ -1,89 +1,119 @@
-﻿using BrawlLib.OpenGL;
-using System.ComponentModel;
+﻿using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.Modeling;
-using System.Drawing;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
     public partial class ModelEditControl : ModelEditorBase
     {
         #region Model Viewer Properties
-        void firstPersonCameraToolStripMenuItem_Click(object sender, EventArgs e)
+        private void firstPersonCameraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 FirstPersonCamera = !FirstPersonCamera;
+            }
         }
         private void shadersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderShaders = !RenderShaders;
+            }
         }
         private void scaleBonesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 ScaleBones = !ScaleBones;
+            }
         }
         private void modelToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderModelBox = !RenderModelBox;
+            }
         }
         private void objectsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderObjectBox = !RenderObjectBox;
+            }
         }
         private void visibilityBonesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderVisBoneBox = !RenderVisBoneBox;
+            }
         }
         private void displayBindBoundingBoxesOn0FrameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 UseBindStateBoxes = !UseBindStateBoxes;
+            }
         }
         private void chkBillboardBones_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 ApplyBillboardBones = !ApplyBillboardBones;
+            }
         }
         private void toggleRenderBones_Event(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderBones = !RenderBones;
+            }
         }
         private void toggleRenderPolygons_Event(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderPolygons = !RenderPolygons;
+            }
         }
         private void toggleRenderVertices_Event(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderVertices = !RenderVertices;
+            }
         }
         private void toggleRenderCollisions_Event(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderCollisions = !RenderCollisions;
+            }
         }
         private void toggleRenderFloor_Event(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderFloor = !RenderFloor;
+            }
         }
         private void wireframeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderWireframe = !RenderWireframe;
+            }
         }
         private void toggleNormals_Click(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 RenderNormals = !RenderNormals;
+            }
         }
         #endregion
 
@@ -95,16 +125,20 @@ namespace System.Windows.Forms
                 d.SelectedPath = ScreenCapBgLocText.Text;
                 d.Description = "Choose a place to automatically save screen captures.";
                 if (d.ShowDialog(this) == DialogResult.OK)
+                {
                     ScreenCapBgLocText.Text = d.SelectedPath;
+                }
             }
-            if (String.IsNullOrEmpty(ScreenCapBgLocText.Text))
+            if (string.IsNullOrEmpty(ScreenCapBgLocText.Text))
+            {
                 ScreenCapBgLocText.Text = Application.StartupPath + "\\ScreenCaptures";
+            }
         }
         private ImageType _imgType = ImageType.png;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public override ImageType ScreenCaptureType
         {
-            get { return _imgType; }
+            get => _imgType;
             set
             {
                 _imgType = value;
@@ -142,11 +176,17 @@ namespace System.Windows.Forms
             //Enabled = false;
             ModelPanel.Enabled = false;
             if (InterpolationEditor != null)
+            {
                 InterpolationEditor.Enabled = false;
+            }
+
             if (DisableBonesWhenPlaying)
             {
                 if (RenderBones == false)
+                {
                     _bonesWereOff = true;
+                }
+
                 RenderBones = false;
             }
             TogglePlay();
@@ -157,7 +197,9 @@ namespace System.Windows.Forms
         private void detachViewerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
 
             if (_viewerForm == null)
             {
@@ -170,7 +212,9 @@ namespace System.Windows.Forms
                 _viewerForm.modelPanel1._resourceList = modelPanel._resourceList;
                 _viewerForm.modelPanel1._renderList = modelPanel._renderList;
                 foreach (ModelPanelViewport v in modelPanel)
+                {
                     _viewerForm.modelPanel1.AddViewport(v);
+                }
 
                 _viewerForm.modelPanel1.CurrentViewport = modelPanel.CurrentViewport;
                 _viewerForm.FormClosed += _viewerForm_FormClosed;
@@ -189,17 +233,22 @@ namespace System.Windows.Forms
                 interpolationEditorToolStripMenuItem.Enabled = false;
 
                 if (_interpolationForm != null)
+                {
                     _interpolationForm.Close();
+                }
             }
             else
+            {
                 _viewerForm.Close();
+            }
         }
-        void _viewerForm_FormClosed(object sender, FormClosedEventArgs e)
+
+        private void _viewerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             modelPanel.Visible = true;
             modelPanel.Enabled = true;
             detachViewerToolStripMenuItem.Text = "Detach";
-            
+
             _viewerForm.modelPanel1.EventProcessKeyMessage -= ProcessKeyPreview;
 
             UnlinkModelPanel(_viewerForm.modelPanel1);
@@ -278,10 +327,14 @@ namespace System.Windows.Forms
                 d.SelectedPath = LiveTextureFolderPath.Text;
                 d.Description = "Choose a place to automatically scan for textures to apply when modified.";
                 if (d.ShowDialog(this) == DialogResult.OK)
+                {
                     LiveTextureFolderPath.Text = MDL0TextureNode.TextureOverrideDirectory = d.SelectedPath;
+                }
             }
-            if (String.IsNullOrEmpty(LiveTextureFolderPath.Text))
+            if (string.IsNullOrEmpty(LiveTextureFolderPath.Text))
+            {
                 LiveTextureFolderPath.Text = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            }
 
             modelPanel.RefreshReferences();
         }
@@ -302,7 +355,9 @@ namespace System.Windows.Forms
         private void newSceneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(this, "Are you sure you want to clear the current scene?\nYou will lose any unsaved data.", "Continue?", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+            {
                 return;
+            }
 
             TargetModel = null;
             _targetModels.Clear();
@@ -311,7 +366,7 @@ namespace System.Windows.Forms
         }
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.ParentForm.Close();
+            ParentForm.Close();
         }
 
         #region Rendered Models
@@ -346,8 +401,12 @@ namespace System.Windows.Forms
         private void hideAllOtherModelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (IModel node in _targetModels)
+            {
                 if (node != TargetModel)
+                {
                     ModelPanel.RemoveTarget(node);
+                }
+            }
 
             ModelPanel.Invalidate();
         }
@@ -355,11 +414,13 @@ namespace System.Windows.Forms
         private void deleteAllOtherModelsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (IModel node in _targetModels)
+            {
                 if (node != TargetModel)
                 {
                     _targetModels.Remove(node);
                     ModelPanel.RemoveTarget(node);
                 }
+            }
 
             ModelPanel.Invalidate();
         }
@@ -388,17 +449,23 @@ namespace System.Windows.Forms
                 UpdatePropDisplay();
             }
             else
+            {
                 _interpolationForm.Close();
+            }
         }
 
         private void portToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (TargetModel == null || !(TargetModel is MDL0Node))
+            {
                 return;
+            }
 
             NW4RAnimationNode node = TargetAnimation;
             if (node is CHR0Node)
+            {
                 (node as CHR0Node).Port((MDL0Node)TargetModel);
+            }
 
             AnimChanged();
         }
@@ -406,11 +473,15 @@ namespace System.Windows.Forms
         private void mergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (TargetModel == null)
+            {
                 return;
+            }
 
             NW4RAnimationNode node = TargetAnimation;
             if (node is CHR0Node)
+            {
                 (node as CHR0Node).MergeWith();
+            }
 
             AnimChanged();
         }
@@ -418,19 +489,31 @@ namespace System.Windows.Forms
         private void appendToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (TargetModel == null)
+            {
                 return;
+            }
 
             NW4RAnimationNode node = TargetAnimation;
             if (node is CHR0Node)
+            {
                 (node as CHR0Node).Append();
+            }
             else if (node is SRT0Node)
+            {
                 (node as SRT0Node).Append();
+            }
             else if (node is SHP0Node)
+            {
                 (node as SHP0Node).Append();
+            }
             else if (node is PAT0Node)
+            {
                 (node as PAT0Node).Append();
+            }
             else if (node is VIS0Node)
+            {
                 (node as VIS0Node).Append();
+            }
 
             AnimChanged();
         }
@@ -438,19 +521,31 @@ namespace System.Windows.Forms
         private void resizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (TargetModel == null)
+            {
                 return;
+            }
 
             NW4RAnimationNode node = TargetAnimation;
             if (node is CHR0Node)
+            {
                 (node as CHR0Node).Resize();
+            }
             else if (node is SRT0Node)
+            {
                 (node as SRT0Node).Resize();
+            }
             else if (node is SHP0Node)
+            {
                 (node as SHP0Node).Resize();
+            }
             else if (node is PAT0Node)
+            {
                 (node as PAT0Node).Resize();
+            }
             else if (node is VIS0Node)
+            {
                 (node as VIS0Node).Resize();
+            }
 
             AnimChanged();
         }
@@ -459,22 +554,38 @@ namespace System.Windows.Forms
         {
             NW4RAnimationNode n = TargetAnimation;
             if (n is CHR0Node)
+            {
                 ((CHR0Node)n).AverageKeys();
+            }
+
             if (n is SRT0Node)
+            {
                 ((SRT0Node)n).AverageKeys();
+            }
+
             if (n is SHP0Node)
+            {
                 ((SHP0Node)n).AverageKeys();
+            }
         }
 
         private void averageboneStartendTangentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NW4RAnimationNode n = TargetAnimation;
             if (n is CHR0Node && SelectedBone != null)
+            {
                 ((CHR0Node)n).AverageKeys(SelectedBone.Name);
+            }
+
             if (n is SRT0Node && TargetTexRef != null)
+            {
                 ((SRT0Node)n).AverageKeys(TargetTexRef.Parent.Name, TargetTexRef.Index);
+            }
+
             if (n is SHP0Node && SHP0Editor.SelectedDestination != null && SHP0Editor.VertexSetDest != null)
+            {
                 ((SHP0Node)n).AverageKeys(SHP0Editor.SelectedDestination, SHP0Editor.VertexSetDest.Name);
+            }
         }
 
         public void setColorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -495,46 +606,60 @@ namespace System.Windows.Forms
         private void playCHR0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_chr0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
         private void playSRT0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_srt0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
         private void playSHP0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_shp0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
         private void playPAT0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_pat0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
         private void playVIS0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_vis0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
         private void playCLR0ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_clr0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
         private void playSCN0ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (_scn0 != null && CurrentFrame != 0)
+            {
                 UpdateModel();
+            }
         }
 
-        ToolStripMenuItem _currentProjBox;
+        private ToolStripMenuItem _currentProjBox;
 
         private void perspectiveToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -1,7 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static MDL0ShaderWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -50,7 +50,9 @@ namespace BrawlCrate.NodeWrappers
         public override void MoveUp(bool select)
         {
             if (PrevNode == null)
+            {
                 return;
+            }
 
             if (_resource.MoveUp())
             {
@@ -60,18 +62,25 @@ namespace BrawlCrate.NodeWrappers
                 Remove();
                 parent.Nodes.Insert(index, this);
                 if (select)
+                {
                     TreeView.SelectedNode = this;
+                }
+
                 TreeView.EndUpdate();
 
                 foreach (ResourceNode n in _resource.Parent.Children)
+                {
                     n.Name = "Shader" + n.Index;
+                }
             }
         }
 
         public override void MoveDown(bool select)
         {
             if (NextNode == null)
+            {
                 return;
+            }
 
             if (_resource.MoveDown())
             {
@@ -81,11 +90,16 @@ namespace BrawlCrate.NodeWrappers
                 Remove();
                 parent.Nodes.Insert(index, this);
                 if (select)
+                {
                     TreeView.SelectedNode = this;
+                }
+
                 TreeView.EndUpdate();
 
                 foreach (ResourceNode n in _resource.Parent.Children)
+                {
                     n.Name = "Shader" + n.Index;
+                }
             }
         }
         #endregion

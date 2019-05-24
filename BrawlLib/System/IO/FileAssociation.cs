@@ -5,7 +5,7 @@ namespace System.IO
     public abstract class FileAssociation
     {
         protected string _extension;
-        public string Extension { get { return _extension; } }
+        public string Extension => _extension;
 
         public static FileAssociation Get(string extension)
         {
@@ -14,8 +14,8 @@ namespace System.IO
                 case PlatformID.Win32NT:
                     return new wFileAssociation(extension);
 
-                //case PlatformID.Unix:
-                //    return new lFileAssociation(extension);
+                    //case PlatformID.Unix:
+                    //    return new lFileAssociation(extension);
             }
             return null;
         }
@@ -27,7 +27,7 @@ namespace System.IO
     public abstract class FileType
     {
         protected string _name;
-        public string Name { get { return _name; } }
+        public string Name => _name;
 
         public static FileType Get(string name)
         {
@@ -36,8 +36,8 @@ namespace System.IO
                 case PlatformID.Win32NT:
                     return new wFileType(name);
 
-                //case PlatformID.Unix:
-                //    return new lFileType(name);
+                    //case PlatformID.Unix:
+                    //    return new lFileType(name);
             }
             return null;
         }
@@ -49,7 +49,7 @@ namespace System.IO
 
         public abstract void Delete();
 
-        public static bool operator ==(FileType t1, FileType t2) 
+        public static bool operator ==(FileType t1, FileType t2)
         {
             return Object.Equals(t1, t2);
         }
@@ -58,7 +58,10 @@ namespace System.IO
         public override bool Equals(object obj)
         {
             if (obj is FileType)
+            {
                 return _name.Equals(((FileType)obj)._name, StringComparison.OrdinalIgnoreCase);
+            }
+
             return base.Equals(obj);
         }
         public override int GetHashCode() { return base.GetHashCode(); }
@@ -66,24 +69,30 @@ namespace System.IO
 
     internal class wFileAssociation : FileAssociation
     {
-        private string _regPath;
+        private readonly string _regPath;
 
         public override FileType FileType
         {
             get
             {
                 string typeName = Registry.GetValue(_regPath, "", null) as string;
-                if (String.IsNullOrEmpty(typeName))
+                if (string.IsNullOrEmpty(typeName))
+                {
                     return null;
+                }
 
                 return FileType.Get(typeName);
             }
             set
             {
-                if ((value == null) || String.IsNullOrEmpty(value.Name))
+                if ((value == null) || string.IsNullOrEmpty(value.Name))
+                {
                     Delete();
+                }
                 else
+                {
                     Registry.SetValue(_regPath, "", value.Name);
+                }
             }
         }
 
@@ -95,7 +104,7 @@ namespace System.IO
 
         public override void Delete()
         {
-            if (!String.IsNullOrEmpty(_extension))
+            if (!string.IsNullOrEmpty(_extension))
             {
                 try { Registry.ClassesRoot.DeleteSubKeyTree(_extension); }
                 catch (Exception) { }
@@ -104,39 +113,47 @@ namespace System.IO
     }
     internal class wFileType : FileType
     {
-        private string _regPath;
+        private readonly string _regPath;
 
         public override string Icon
         {
-            get { return Registry.GetValue(_regPath + "\\DefaultIcon", "", null) as string; }
+            get => Registry.GetValue(_regPath + "\\DefaultIcon", "", null) as string;
             set
             {
                 if (string.IsNullOrEmpty(value))
+                {
                     try { Registry.ClassesRoot.DeleteSubKeyTree(_name + "\\DefaultIcon"); }
                     catch (Exception) { }
+                }
                 else
+                {
                     Registry.SetValue(_regPath + "\\DefaultIcon", "", value);
+                }
             }
         }
 
         internal wFileType(string name)
         {
             _name = name;
-            _regPath = String.Format("HKEY_CLASSES_ROOT\\{0}", _name);
+            _regPath = string.Format("HKEY_CLASSES_ROOT\\{0}", _name);
         }
 
         public override string GetCommand(string verb)
         {
-            return Registry.GetValue(String.Format("{0}\\shell\\{1}\\command", _regPath, verb), "", null) as string;
+            return Registry.GetValue(string.Format("{0}\\shell\\{1}\\command", _regPath, verb), "", null) as string;
         }
 
         public override void SetCommand(string verb, string command)
         {
-            if (String.IsNullOrEmpty(command))
-                try { Registry.ClassesRoot.DeleteSubKeyTree(String.Format("{0}\\shell\\{1}", _regPath, verb)); }
+            if (string.IsNullOrEmpty(command))
+            {
+                try { Registry.ClassesRoot.DeleteSubKeyTree(string.Format("{0}\\shell\\{1}", _regPath, verb)); }
                 catch (Exception) { }
+            }
             else
-                Registry.SetValue(String.Format("{0}\\shell\\{1}\\command", _regPath, verb), "", command);
+            {
+                Registry.SetValue(string.Format("{0}\\shell\\{1}\\command", _regPath, verb), "", command);
+            }
         }
 
         public override void Delete() { try { Registry.ClassesRoot.DeleteSubKeyTree(_name); } catch (Exception) { } }

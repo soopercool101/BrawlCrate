@@ -1,6 +1,6 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -9,11 +9,11 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static TEVStageWrapper()
         {
             _menu = new ContextMenuStrip();
-            
+
             _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
             _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripSeparator());
@@ -35,7 +35,9 @@ namespace BrawlCrate.NodeWrappers
         public override void MoveUp(bool select)
         {
             if (PrevNode == null)
+            {
                 return;
+            }
 
             if (_resource.MoveUp())
             {
@@ -45,18 +47,25 @@ namespace BrawlCrate.NodeWrappers
                 Remove();
                 parent.Nodes.Insert(index, this);
                 if (select)
+                {
                     TreeView.SelectedNode = this;
+                }
+
                 TreeView.EndUpdate();
 
                 foreach (ResourceNode n in _resource.Parent.Children)
+                {
                     n.Name = "Stage" + n.Index;
+                }
             }
         }
 
         public override void MoveDown(bool select)
         {
             if (NextNode == null)
+            {
                 return;
+            }
 
             if (_resource.MoveDown())
             {
@@ -66,11 +75,16 @@ namespace BrawlCrate.NodeWrappers
                 Remove();
                 parent.Nodes.Insert(index, this);
                 if (select)
+                {
                     TreeView.SelectedNode = this;
+                }
+
                 TreeView.EndUpdate();
 
                 foreach (ResourceNode n in _resource.Parent.Children)
+                {
                     n.Name = "Stage" + n.Index;
+                }
             }
         }
         #endregion

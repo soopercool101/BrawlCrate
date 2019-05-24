@@ -1,10 +1,10 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using BrawlLib.Wii.Textures;
-using BrawlLib.Imaging;
-using System.Drawing;
+﻿using BrawlLib.Imaging;
 using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Textures;
+using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
@@ -12,25 +12,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class TPLNode : ARCEntryNode
     {
-        public override ResourceType ResourceType { get { return ResourceType.TPL; } }
-        internal TPLHeader* Header { get { return (TPLHeader*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceType => ResourceType.TPL;
+        internal TPLHeader* Header => (TPLHeader*)WorkingUncompressed.Address;
 
         public override string Name
         {
-            get
-            {
-                return _name == null ? String.Format("TPL{0}", Index) : _name;
-            }
-            set
-            {
-                base.Name = value;
-            }
+            get => _name == null ? string.Format("TPL{0}", Index) : _name;
+            set => base.Name = value;
         }
 
         public override bool OnInitialize()
         {
             if (_origPath != null && _name == null)
+            {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
+            }
 
             return Header->_numEntries > 0;
         }
@@ -46,12 +42,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                     t.Initialize(this, p, 0);
 
                     if ((p = Header->GetPaletteEntry(i)) != null)
+                    {
                         new TPLPaletteNode() { _dataAddr = (VoidPtr)Header + ((TPLPaletteHeader*)p)->_data }.Initialize(t, p, 0);
+                    }
                 }
             }
         }
 
-        int size = 0, texHdrLen = 0, pltHdrLen = 0, texLen = 0, pltLen = 0;
+        private int size = 0, texHdrLen = 0, pltHdrLen = 0, texLen = 0, pltLen = 0;
         public override int OnCalculateSize(bool force)
         {
             texHdrLen = 0;
@@ -64,7 +62,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 texHdrLen += TPLTextureHeader.Size;
                 texLen += t.CalculateSize(true);
-                
+
                 if (t.Children.Count > 0)
                 {
                     pltHdrLen += TPLPaletteHeader.Size;
@@ -114,7 +112,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     pltData += p._calcSize;
                 }
                 else
+                {
                     values[1] = 0;
+                }
 
                 //Rebuild texture
                 values[0] = (uint)(texHdrs - address);
@@ -147,25 +147,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TPLTextureNode : ResourceNode, IImageSource
     {
-        public override ResourceType ResourceType { get { return ResourceType.TPLTexture; } }
-        internal TPLTextureHeader* Header { get { return (TPLTextureHeader*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceType => ResourceType.TPLTexture;
+        internal TPLTextureHeader* Header => (TPLTextureHeader*)WorkingUncompressed.Address;
 
         internal VoidPtr _dataAddr;
 
         public override string Name
         {
-            get
-            {
-                return String.Format("Texture{0}", Index);
-            }
-            set
-            {
-                base.Name = value;
-            }
+            get => string.Format("Texture{0}", Index);
+            set => base.Name = value;
         }
 
-        int _width, _height;
-        WiiPixelFormat _format;
+        private int _width, _height;
+        private WiiPixelFormat _format;
         internal MatWrapMode _uWrap;
         internal MatWrapMode _vWrap;
         internal MatTextureMinFilter _minFltr;
@@ -175,25 +169,25 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int _enableEdgeLod;
 
         [Category("Texture")]
-        public int Width { get { return _width; } }
+        public int Width => _width;
         [Category("Texture")]
-        public int Height { get { return _height; } }
+        public int Height => _height;
         [Category("Texture")]
-        public WiiPixelFormat Format { get { return _format; } }
+        public WiiPixelFormat Format => _format;
         [Category("Texture")]
-        public MatWrapMode UWrapMode { get { return _uWrap; } set { _uWrap = value; SignalPropertyChange(); } }
+        public MatWrapMode UWrapMode { get => _uWrap; set { _uWrap = value; SignalPropertyChange(); } }
         [Category("Texture")]
-        public MatWrapMode VWrapMode { get { return _vWrap; } set { _vWrap = value; SignalPropertyChange(); } }
+        public MatWrapMode VWrapMode { get => _vWrap; set { _vWrap = value; SignalPropertyChange(); } }
         [Category("Texture")]
-        public MatTextureMinFilter MinFilter { get { return _minFltr; } set { _minFltr = value; SignalPropertyChange(); } }
+        public MatTextureMinFilter MinFilter { get => _minFltr; set { _minFltr = value; SignalPropertyChange(); } }
         [Category("Texture")]
-        public MatTextureMagFilter MagFilter { get { return _magFltr; } set { _magFltr = value; SignalPropertyChange(); } }
+        public MatTextureMagFilter MagFilter { get => _magFltr; set { _magFltr = value; SignalPropertyChange(); } }
         [Category("Texture")]
-        public float LODBias { get { return _lodBias; } set { _lodBias = value; SignalPropertyChange(); } }
+        public float LODBias { get => _lodBias; set { _lodBias = value; SignalPropertyChange(); } }
         [Category("Texture")]
-        public int EnableEdgeLOD { get { return _enableEdgeLod; } set { _enableEdgeLod = value; SignalPropertyChange(); } }
+        public int EnableEdgeLOD { get => _enableEdgeLod; set { _enableEdgeLod = value; SignalPropertyChange(); } }
         [Category("Texture")]
-        public int LevelOfDetail { get { return _lod; } }
+        public int LevelOfDetail => _lod;
 
         public TPLPaletteNode GetPaletteNode() { return Children.Count > 0 ? Children[0] as TPLPaletteNode : null; }
 
@@ -214,33 +208,39 @@ namespace BrawlLib.SSBB.ResourceNodes
             _enableEdgeLod = Header->_edgeLODEnable;
 
             if (_replaced)
+            {
                 _dataAddr = WorkingUncompressed.Address + Header->_data;
+            }
 
             return false;
         }
 
         [Browsable(false)]
-        public int ImageCount { get { return LevelOfDetail; } }
+        public int ImageCount => LevelOfDetail;
         public Bitmap GetImage(int index)
         {
             try
             {
                 TPLPaletteNode plt = GetPaletteNode();
                 if (plt != null)
+                {
                     return TextureConverter.DecodeIndexed(_dataAddr, Width, Height, plt.Palette, index + 1, _format);
+                }
                 else
+                {
                     return TextureConverter.Decode(_dataAddr, Width, Height, index + 1, _format);
+                }
             }
             catch { return null; }
         }
 
         public void Replace(Bitmap bmp)
         {
-            FileMap tMap, pMap;
+            FileMap tMap;
             if (Children.Count > 0)
             {
                 TPLPaletteNode pn = GetPaletteNode();
-                tMap = TextureConverter.Get(Format).EncodeTPLTextureIndexed(bmp, pn.Colors, pn.Format, QuantizationAlgorithm.MedianCut, out pMap);
+                tMap = TextureConverter.Get(Format).EncodeTPLTextureIndexed(bmp, pn.Colors, pn.Format, QuantizationAlgorithm.MedianCut, out FileMap pMap);
                 ReplaceRaw(tMap);
                 AddChild(pn);
                 pn.ReplaceRaw(pMap);
@@ -257,17 +257,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             string ext = Path.GetExtension(fileName);
             Bitmap bmp;
-            if (String.Equals(ext, ".tga", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(ext, ".tga", StringComparison.OrdinalIgnoreCase))
+            {
                 bmp = TGA.FromFile(fileName);
+            }
             else if (
-                String.Equals(ext, ".png", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".tif", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".tiff", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".bmp", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".jpg", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".jpeg", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".gif", StringComparison.OrdinalIgnoreCase))
+                string.Equals(ext, ".png", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".tif", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".tiff", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".bmp", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".jpg", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".jpeg", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".gif", StringComparison.OrdinalIgnoreCase))
+            {
                 bmp = (Bitmap)Bitmap.FromFile(fileName);
+            }
             else
             {
                 base.Replace(fileName);
@@ -275,23 +279,55 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             using (Bitmap b = bmp)
+            {
                 Replace(b);
+            }
         }
 
         public override void Export(string outPath)
         {
             if (outPath.EndsWith(".png"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Png);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Png);
+                }
+            }
             else if (outPath.EndsWith(".tga"))
-                using (Bitmap bmp = GetImage(0)) bmp.SaveTGA(outPath);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.SaveTGA(outPath);
+                }
+            }
             else if (outPath.EndsWith(".tiff") || outPath.EndsWith(".tif"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Tiff);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Tiff);
+                }
+            }
             else if (outPath.EndsWith(".bmp"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Bmp);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Bmp);
+                }
+            }
             else if (outPath.EndsWith(".jpg") || outPath.EndsWith(".jpeg"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Jpeg);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Jpeg);
+                }
+            }
             else if (outPath.EndsWith(".gif"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Gif);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Gif);
+                }
+            }
             else
             {
                 int dataLen = TPLTextureHeader.Size + CalculateSize(true);
@@ -332,11 +368,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             _dataAddr = address;
         }
     }
-    
+
     public unsafe class TPLPaletteNode : ResourceNode, IColorSource
     {
-        public override ResourceType ResourceType { get { return ResourceType.TPLPalette; } }
-        internal TPLPaletteHeader* Header { get { return (TPLPaletteHeader*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceType => ResourceType.TPLPalette;
+        internal TPLPaletteHeader* Header => (TPLPaletteHeader*)WorkingUncompressed.Address;
 
         //private int _numColors;
         private WiiPaletteFormat _format;
@@ -347,14 +383,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public ColorPalette Palette
         {
-            get { return _palette == null ? _palette = TextureConverter.DecodePalette(_dataAddr, Header->_numEntries, Format) : _palette; }
+            get => _palette == null ? _palette = TextureConverter.DecodePalette(_dataAddr, Header->_numEntries, Format) : _palette;
             set { _palette = value; SignalPropertyChange(); }
         }
 
         [Category("Palette")]
-        public int Colors { get { return Palette.Entries.Length; } }// set { _numColors = value; } }
+        public int Colors => Palette.Entries.Length; // set { _numColors = value; } }
         [Category("Palette")]
-        public WiiPaletteFormat Format { get { return _format; } set { _format = value; SignalPropertyChange(); } }
+        public WiiPaletteFormat Format { get => _format; set { _format = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
@@ -368,7 +404,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _format = Header->PaletteFormat;
 
             if (_replaced)
+            {
                 _dataAddr = WorkingUncompressed.Address + Header->_data;
+            }
 
             return false;
         }
@@ -392,7 +430,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public string PrimaryColorName(int id) { return null; }
         [Browsable(false)]
-        public int TypeCount { get { return 1; } }
+        public int TypeCount => 1;
         [Browsable(false)]
         public int ColorCount(int id) { return Palette.Entries.Length; }
         public ARGBPixel GetColor(int index, int id) { return (ARGBPixel)Palette.Entries[index]; }

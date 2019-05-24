@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RSEQHeader
+    internal unsafe struct RSEQHeader
     {
         public const uint Tag = 0x51455352;
 
@@ -16,14 +16,14 @@ namespace BrawlLib.SSBBTypes
         public bint _lablOffset;
         public bint _lablLength;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public RSEQ_DATAHeader* Data { get { return (RSEQ_DATAHeader*)(Address + _dataOffset); } }
-        public LABLHeader* Labl { get { return (LABLHeader*)(Address + _lablOffset); } }
+        public RSEQ_DATAHeader* Data => (RSEQ_DATAHeader*)(Address + _dataOffset);
+        public LABLHeader* Labl => (LABLHeader*)(Address + _lablOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RSEQ_DATAHeader
+    internal unsafe struct RSEQ_DATAHeader
     {
         public const uint Tag = 0x41544144;
 
@@ -31,9 +31,9 @@ namespace BrawlLib.SSBBTypes
         public bint _size;
         public bint _baseOffset;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public VoidPtr MMLCommands { get { return (Address + _baseOffset); } }
+        public VoidPtr MMLCommands => (Address + _baseOffset);
     }
 
     public class MMLCommand
@@ -41,7 +41,7 @@ namespace BrawlLib.SSBBTypes
         public Mml _cmd;
         public uint _value;
         public MMLCommand[] _ex;
-        
+
         public MMLCommand() { }
         public MMLCommand(Mml cmd)
         {
@@ -232,7 +232,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct LABLHeader
+    internal unsafe struct LABLHeader
     {
         public const uint Tag = 0x4C42414C;
 
@@ -247,9 +247,9 @@ namespace BrawlLib.SSBBTypes
             _numEntries = count;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public bint* EntryOffset { get { return (bint*)(Address + 12); } }
+        public bint* EntryOffset => (bint*)(Address + 12);
 
         public LABLEntry* Get(int index)
         {
@@ -265,7 +265,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct LABLEntry
+    internal unsafe struct LABLEntry
     {
         public buint _id;
         public buint _stringLength;
@@ -283,8 +283,10 @@ namespace BrawlLib.SSBBTypes
             fixed (char* s = str)
             {
                 sPtr = s;
-                while (i++ < len) 
+                while (i++ < len)
+                {
                     *dPtr++ = (sbyte)*sPtr++;
+                }
             }
 
             //Trailing zero
@@ -292,14 +294,13 @@ namespace BrawlLib.SSBBTypes
 
             //Padding
             while ((i++ & 3) != 0)
+            {
                 *dPtr++ = 0;
+            }
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public string Name 
-        {
-            get { return new string((sbyte*)Address + 8); }
-        }
+        public string Name => new string((sbyte*)Address + 8);
     }
 }

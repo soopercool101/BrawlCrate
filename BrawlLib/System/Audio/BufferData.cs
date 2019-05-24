@@ -3,32 +3,32 @@
     public struct BufferData
     {
         internal int _sampleOffset;
-        public int SampleOffset { get { return _sampleOffset; } }
+        public int SampleOffset => _sampleOffset;
 
         internal int _sampleLength;
-        public int SampleLength { get { return _sampleLength; } }
+        public int SampleLength => _sampleLength;
 
         internal int _dataOffset;
-        public int DataOffset { get { return _dataOffset; } }
+        public int DataOffset => _dataOffset;
 
         internal int _dataLength;
-        public int DataLength { get { return _dataLength; } }
+        public int DataLength => _dataLength;
 
         internal IntPtr _part1Address;
-        public IntPtr Part1Address { get { return _part1Address; } }
+        public IntPtr Part1Address => _part1Address;
         internal int _part1Length;
-        public int Part1Length { get { return _part1Length; } }
+        public int Part1Length => _part1Length;
         internal int _part1Samples;
-        public int Part1Samples { get { return _part1Samples; } }
+        public int Part1Samples => _part1Samples;
 
         internal IntPtr _part2Address;
-        public IntPtr Part2Address { get { return _part2Address; } }
+        public IntPtr Part2Address => _part2Address;
         internal int _part2Length;
-        public int Part2Length { get { return _part2Length; } }
+        public int Part2Length => _part2Length;
         internal int _part2Samples;
-        public int Part2Samples { get { return _part2Samples; } }
+        public int Part2Samples => _part2Samples;
 
-        public bool IsSplit { get { return _part2Length != 0; } }
+        public bool IsSplit => _part2Length != 0;
 
         public void Fill(IAudioStream stream, bool loop)
         {
@@ -51,7 +51,9 @@
 
                 //Fill zeros
                 if (end)
+                {
                     Memory.Fill(blockAddr, (uint)(blockSamples * blockAlign), 0);
+                }
                 else
                 {
                     //Do we extend within last sample range?

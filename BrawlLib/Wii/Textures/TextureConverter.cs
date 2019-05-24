@@ -1,14 +1,14 @@
-﻿using System;
-using System.Drawing.Imaging;
-using System.Drawing;
-using BrawlLib.SSBBTypes;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
 using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace BrawlLib.Wii.Textures
 {
-    public unsafe abstract class TextureConverter
+    public abstract unsafe class TextureConverter
     {
         public static readonly TextureConverter I4 = new I4();
         public static readonly TextureConverter IA4 = new IA4();
@@ -25,7 +25,7 @@ namespace BrawlLib.Wii.Textures
         public abstract int BitsPerPixel { get; }
         public abstract int BlockWidth { get; }
         public abstract int BlockHeight { get; }
-        public bool IsIndexed { get { return ((RawFormat == WiiPixelFormat.CI4) || (RawFormat == WiiPixelFormat.CI8)); } }
+        public bool IsIndexed => ((RawFormat == WiiPixelFormat.CI4) || (RawFormat == WiiPixelFormat.CI8));
 
         protected ColorPalette _workingPalette;
 
@@ -48,22 +48,30 @@ namespace BrawlLib.Wii.Textures
         public virtual FileMap EncodeTPLTextureIndexed(Bitmap src, int numColors, WiiPaletteFormat format, QuantizationAlgorithm algorithm, out FileMap paletteFile)
         {
             using (Bitmap indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
+            {
                 return EncodeTPLTextureIndexed(indexed, 1, format, out paletteFile);
+            }
         }
         public virtual FileMap EncodeTextureIndexed(Bitmap src, int mipLevels, int numColors, WiiPaletteFormat format, QuantizationAlgorithm algorithm, out FileMap paletteFile)
         {
             using (Bitmap indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
+            {
                 return EncodeTEX0TextureIndexed(indexed, mipLevels, format, out paletteFile);
+            }
         }
         public virtual FileMap EncodeREFTTextureIndexed(Bitmap src, int mipLevels, int numColors, WiiPaletteFormat format, QuantizationAlgorithm algorithm)
         {
             using (Bitmap indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
+            {
                 return EncodeREFTTextureIndexed(indexed, mipLevels, format);
+            }
         }
         public virtual FileMap EncodeTPLTextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format, out FileMap paletteFile)
         {
             if (!src.IsIndexed())
+            {
                 throw new ArgumentException("Source image must be indexed.");
+            }
 
             FileMap texMap = EncodeTPLTexture(src, mipLevels);
             paletteFile = EncodeTPLPalette(src.Palette, format);
@@ -72,14 +80,18 @@ namespace BrawlLib.Wii.Textures
         public virtual FileMap EncodeREFTTextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format)
         {
             if (!src.IsIndexed())
+            {
                 throw new ArgumentException("Source image must be indexed.");
+            }
 
             return EncodeREFTTexture(src, mipLevels, format);
         }
         public virtual FileMap EncodeTEX0TextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format, out FileMap paletteFile)
         {
             if (!src.IsIndexed())
+            {
                 throw new ArgumentException("Source image must be indexed.");
+            }
 
             FileMap texMap = EncodeTEX0Texture(src, mipLevels);
             paletteFile = EncodePLT0Palette(src.Palette, format);
@@ -90,7 +102,7 @@ namespace BrawlLib.Wii.Textures
         {
             int w = src.Width, h = src.Height;
             int bw = BlockWidth, bh = BlockHeight;
-            
+
             ColorPalette pal = src.Palette;
 
             PixelFormat fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
@@ -106,8 +118,12 @@ namespace BrawlLib.Wii.Textures
                 int dStep = bw * bh * BitsPerPixel / 8;
 
                 using (DIB dib = DIB.FromBitmap(src, bw, bh, fmt))
+                {
                     for (int i = 1; i <= mipLevels; i++)
+                    {
                         EncodeLevel((VoidPtr)header + 0x20, dib, src, dStep, sStep, i);
+                    }
+                }
 
                 if (pal != null)
                 {
@@ -119,21 +135,30 @@ namespace BrawlLib.Wii.Textures
                             {
                                 IA8Pixel* dPtr = (IA8Pixel*)header->PaletteData;
                                 for (int i = 0; i < count; i++)
+                                {
                                     dPtr[i] = (IA8Pixel)pal.Entries[i];
+                                }
+
                                 break;
                             }
                         case WiiPaletteFormat.RGB565:
                             {
                                 wRGB565Pixel* dPtr = (wRGB565Pixel*)header->PaletteData;
                                 for (int i = 0; i < count; i++)
+                                {
                                     dPtr[i] = (wRGB565Pixel)pal.Entries[i];
+                                }
+
                                 break;
                             }
                         case WiiPaletteFormat.RGB5A3:
                             {
                                 wRGB5A3Pixel* dPtr = (wRGB5A3Pixel*)header->PaletteData;
                                 for (int i = 0; i < count; i++)
+                                {
                                     dPtr[i] = (wRGB5A3Pixel)pal.Entries[i];
+                                }
+
                                 break;
                             }
                     }
@@ -155,17 +180,18 @@ namespace BrawlLib.Wii.Textures
             int bw = BlockWidth, bh = BlockHeight;
 
             PixelFormat fmt;
-			switch (RawFormat) {
-				case WiiPixelFormat.CI4:
-				case WiiPixelFormat.CI8:
-				case WiiPixelFormat.CMPR:
-					fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
-					break;
-				default:
-					fmt = PixelFormat.Format32bppArgb;
-					break;
-			}
-			
+            switch (RawFormat)
+            {
+                case WiiPixelFormat.CI4:
+                case WiiPixelFormat.CI8:
+                case WiiPixelFormat.CMPR:
+                    fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
+                    break;
+                default:
+                    fmt = PixelFormat.Format32bppArgb;
+                    break;
+            }
+
             FileMap fileView = FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + 0x40);
             try
             {
@@ -177,8 +203,12 @@ namespace BrawlLib.Wii.Textures
                 int dStep = bw * bh * BitsPerPixel / 8;
 
                 using (DIB dib = DIB.FromBitmap(src, bw, bh, fmt))
+                {
                     for (int i = 1; i <= mipLevels; i++)
+                    {
                         EncodeLevel(header->PixelData, dib, src, dStep, sStep, i);
+                    }
+                }
 
                 return fileView;
             }
@@ -217,8 +247,12 @@ namespace BrawlLib.Wii.Textures
                 VoidPtr baseAddr = fileView.Address;
 
                 using (DIB dib = DIB.FromBitmap(src, bw, bh, fmt))
+                {
                     for (int i = 1; i <= mipLevels; i++)
+                    {
                         EncodeLevel(baseAddr + tex->_data, dib, src, dStep, sStep, i);
+                    }
+                }
 
                 return fileView;
             }
@@ -229,7 +263,7 @@ namespace BrawlLib.Wii.Textures
                 return null;
             }
         }
-        
+
         internal virtual void EncodeLevel(VoidPtr dstAddr, DIB dib, Bitmap src, int dStep, int sStep, int level)
         {
             int mw = dib.Width, mh = dib.Height, aw = mw.Align(BlockWidth);
@@ -237,7 +271,9 @@ namespace BrawlLib.Wii.Textures
             {
                 dstAddr += GetMipOffset(ref mw, ref mh, level);
                 using (Bitmap mip = src.GenerateMip(level))
+                {
                     dib.ReadBitmap(mip, mw, mh);
+                }
             }
 
             mw = mw.Align(BlockWidth);
@@ -249,7 +285,9 @@ namespace BrawlLib.Wii.Textures
                 VoidPtr sPtr = (int)dib.Scan0 + (y * dib.Stride);
                 VoidPtr dPtr = dstAddr + (y * bStride);
                 for (int x = 0; x < mw; x += BlockWidth, dPtr += dStep, sPtr += sStep)
+                {
                     EncodeBlock((ARGBPixel*)sPtr, dPtr, aw);
+                }
             }
         }
 
@@ -258,7 +296,7 @@ namespace BrawlLib.Wii.Textures
         public Bitmap DecodeTexture(TEX0v1* texture) { return DecodeTexture(texture, 1); }
         public virtual Bitmap DecodeTexture(TEX0v1* texture, int mipLevel)
         {
-            int w = (int)(ushort)texture->_width, h = (int)(ushort)texture->_height;
+            int w = (ushort)texture->_width, h = (ushort)texture->_height;
             VoidPtr addr = texture->PixelData + GetMipOffset(ref w, ref h, mipLevel);
             int aw = w.Align(BlockWidth), ah = h.Align(BlockHeight);
 
@@ -271,7 +309,9 @@ namespace BrawlLib.Wii.Textures
                     ARGBPixel* dPtr = (ARGBPixel*)dib.Scan0 + (y * aw);
                     VoidPtr sPtr = addr + (y * bStride);
                     for (int x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
+                    {
                         DecodeBlock(sPtr, dPtr, aw);
+                    }
                 }
                 return dib.ToBitmap();
             }
@@ -293,7 +333,9 @@ namespace BrawlLib.Wii.Textures
                     ARGBPixel* dPtr = (ARGBPixel*)dib.Scan0 + (y * aw);
                     VoidPtr sPtr = addr + (y * bStride);
                     for (int x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
+                    {
                         DecodeBlock(sPtr, dPtr, aw);
+                    }
                 }
                 return dib.ToBitmap();
             }
@@ -315,7 +357,7 @@ namespace BrawlLib.Wii.Textures
             try { return Decode(addr, w, h, mipLevel, fmt); }
             finally { _workingPalette = null; }
         }
-        
+
         protected abstract void DecodeBlock(VoidPtr blockAddr, ARGBPixel* destAddr, int width);
 
         public static TextureConverter Get(WiiPixelFormat format)
@@ -409,21 +451,30 @@ namespace BrawlLib.Wii.Textures
                     {
                         IA8Pixel* dPtr = (IA8Pixel*)destAddr;
                         for (int i = 0; i < count; i++)
+                        {
                             dPtr[i] = (IA8Pixel)pal.Entries[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB565:
                     {
                         wRGB565Pixel* dPtr = (wRGB565Pixel*)destAddr;
                         for (int i = 0; i < count; i++)
+                        {
                             dPtr[i] = (wRGB565Pixel)pal.Entries[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB5A3:
                     {
                         wRGB5A3Pixel* dPtr = (wRGB5A3Pixel*)destAddr;
                         for (int i = 0; i < count; i++)
+                        {
                             dPtr[i] = (wRGB5A3Pixel)pal.Entries[i];
+                        }
+
                         break;
                     }
             }
@@ -439,21 +490,30 @@ namespace BrawlLib.Wii.Textures
                     {
                         IA8Pixel* sPtr = (IA8Pixel*)palette->PaletteData;
                         for (int i = 0; i < count; i++)
+                        {
                             pal.Entries[i] = (Color)sPtr[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB565:
                     {
                         wRGB565Pixel* sPtr = (wRGB565Pixel*)palette->PaletteData;
                         for (int i = 0; i < count; i++)
+                        {
                             pal.Entries[i] = (Color)sPtr[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB5A3:
                     {
                         wRGB5A3Pixel* sPtr = (wRGB5A3Pixel*)palette->PaletteData;
                         for (int i = 0; i < count; i++)
+                        {
                             pal.Entries[i] = (Color)(ARGBPixel)sPtr[i];
+                        }
+
                         break;
                     }
             }
@@ -469,21 +529,30 @@ namespace BrawlLib.Wii.Textures
                     {
                         IA8Pixel* sPtr = (IA8Pixel*)address;
                         for (int i = 0; i < count; i++)
+                        {
                             pal.Entries[i] = (Color)sPtr[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB565:
                     {
                         wRGB565Pixel* sPtr = (wRGB565Pixel*)address;
                         for (int i = 0; i < count; i++)
+                        {
                             pal.Entries[i] = (Color)sPtr[i];
+                        }
+
                         break;
                     }
                 case WiiPaletteFormat.RGB5A3:
                     {
                         wRGB5A3Pixel* sPtr = (wRGB5A3Pixel*)address;
                         for (int i = 0; i < count; i++)
+                        {
                             pal.Entries[i] = (Color)(ARGBPixel)sPtr[i];
+                        }
+
                         break;
                     }
             }

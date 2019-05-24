@@ -1,51 +1,52 @@
-﻿using System;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using BrawlLib.Modeling;
 using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0VertexNode : MDL0EntryNode
     {
-        internal MDL0VertexData* Header { get { return (MDL0VertexData*)WorkingUncompressed.Address; } }
-        public MDL0ObjectNode[] Objects { get { return _objects.ToArray(); } }
+        internal MDL0VertexData* Header => (MDL0VertexData*)WorkingUncompressed.Address;
+        public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
+        private MDL0VertexData _hdr = new MDL0VertexData() { _type = (int)WiiVertexComponentType.Float };
 
-        MDL0VertexData _hdr = new MDL0VertexData() { _type = (int)WiiVertexComponentType.Float };
+        [Category("Vertex Data")]
+        public int ID => _hdr._index;
+        [Category("Vertex Data")]
+        public bool IsXYZ => _hdr._isXYZ != 0;
+        [Category("Vertex Data")]
+        public WiiVertexComponentType Format => (WiiVertexComponentType)(int)_hdr._type;
+        [Category("Vertex Data")]
+        public byte Divisor => _hdr._divisor;
+        [Category("Vertex Data")]
+        public byte EntryStride => _hdr._entryStride;
+        [Category("Vertex Data")]
+        public ushort NumVertices => _hdr._numVertices;
+        [Category("Vertex Data")]
+        public Vector3 EMin => _hdr._eMin;
+        [Category("Vertex Data")]
+        public Vector3 EMax => _hdr._eMax;
 
-        [Category("Vertex Data")]
-        public int ID { get { return _hdr._index; } }
-        [Category("Vertex Data")]
-        public bool IsXYZ { get { return _hdr._isXYZ != 0; } }
-        [Category("Vertex Data")]
-        public WiiVertexComponentType Format { get { return (WiiVertexComponentType)(int)_hdr._type; } }
-        [Category("Vertex Data")]
-        public byte Divisor { get { return _hdr._divisor; } }
-        [Category("Vertex Data")]
-        public byte EntryStride { get { return _hdr._entryStride; } }
-        [Category("Vertex Data")]
-        public ushort NumVertices { get { return _hdr._numVertices; } }
-        [Category("Vertex Data")]
-        public Vector3 EMin { get { return _hdr._eMin; } }
-        [Category("Vertex Data")]
-        public Vector3 EMax { get { return _hdr._eMax; } }
+        public bool ForceRebuild { get => _forceRebuild; set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
+        public bool ForceFloat { get => _forceFloat; set { if (_forceFloat != value) { _forceFloat = value; } } }
 
-        public bool ForceRebuild { get { return _forceRebuild; } set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
-        public bool ForceFloat { get { return _forceFloat; } set { if (_forceFloat != value) { _forceFloat = value; } } }
-        
         public Vector3[] _vertices;
         public Vector3[] Vertices
         {
-            get { return _vertices == null ? _vertices = VertexCodec.ExtractVertices(Header) : _vertices; }
+            get => _vertices == null ? _vertices = VertexCodec.ExtractVertices(Header) : _vertices;
             set
             {
                 _vertices = value;
 
                 _forceRebuild = true;
                 if (Format == WiiVertexComponentType.Float)
+                {
                     _forceFloat = true;
+                }
 
                 SignalPropertyChange();
             }
@@ -62,7 +63,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             //SetSizeInternal(_hdr._dataLen);
 
             if ((_name == null) && (Header->_stringOffset != 0))
+            {
                 _name = Header->ResourceString;
+            }
 
             return false;
         }
@@ -77,7 +80,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enc = new VertexCodec(Vertices, false, _forceFloat);
                 return _enc._dataLen.Align(0x20) + 0x40;
             }
-            else return base.OnCalculateSize(force);
+            else
+            {
+                return base.OnCalculateSize(force);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -106,14 +112,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _forceRebuild = false;
             }
             else
+            {
                 base.OnRebuild(address, length, force);
+            }
         }
 
         public override unsafe void Export(string outPath)
         {
             if (outPath.EndsWith(".obj"))
+            {
                 Wavefront.Serialize(outPath, this);
-            else base.Export(outPath);
+            }
+            else
+            {
+                base.Export(outPath);
+            }
         }
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)

@@ -2,7 +2,7 @@
 
 namespace System.Windows.Forms
 {
-    class SoundPathChanger : Form
+    internal class SoundPathChanger : Form
     {
         #region Designer
 
@@ -11,89 +11,89 @@ namespace System.Windows.Forms
         private Button btnCancel;
         private Button btnBrowse;
         private Label label1;
-    
+
         private void InitializeComponent()
         {
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.btnOkay = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            txtPath = new System.Windows.Forms.TextBox();
+            btnOkay = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            btnBrowse = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // txtPath
             // 
-            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPath.Location = new System.Drawing.Point(12, 34);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(330, 20);
-            this.txtPath.TabIndex = 0;
-            this.txtPath.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
+            txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            txtPath.Location = new System.Drawing.Point(12, 34);
+            txtPath.Name = "txtPath";
+            txtPath.Size = new System.Drawing.Size(330, 20);
+            txtPath.TabIndex = 0;
+            txtPath.TextChanged += new System.EventHandler(txtPath_TextChanged);
             // 
             // btnOkay
             // 
-            this.btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOkay.Location = new System.Drawing.Point(117, 65);
-            this.btnOkay.Name = "btnOkay";
-            this.btnOkay.Size = new System.Drawing.Size(75, 23);
-            this.btnOkay.TabIndex = 1;
-            this.btnOkay.Text = "Okay";
-            this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+            btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnOkay.Location = new System.Drawing.Point(117, 65);
+            btnOkay.Name = "btnOkay";
+            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.TabIndex = 1;
+            btnOkay.Text = "Okay";
+            btnOkay.UseVisualStyleBackColor = true;
+            btnOkay.Click += new System.EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancel.Location = new System.Drawing.Point(198, 65);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnCancel.Location = new System.Drawing.Point(198, 65);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.TabIndex = 2;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += new System.EventHandler(btnCancel_Click);
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(367, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "*Changing the path on an internal file will remove it from the RSAR*";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(367, 21);
+            label1.TabIndex = 3;
+            label1.Text = "*Changing the path on an internal file will remove it from the RSAR*";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(348, 34);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(31, 20);
-            this.btnBrowse.TabIndex = 4;
-            this.btnBrowse.Text = "...";
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            btnBrowse.Location = new System.Drawing.Point(348, 34);
+            btnBrowse.Name = "btnBrowse";
+            btnBrowse.Size = new System.Drawing.Size(31, 20);
+            btnBrowse.TabIndex = 4;
+            btnBrowse.Text = "...";
+            btnBrowse.UseVisualStyleBackColor = true;
+            btnBrowse.Click += new System.EventHandler(btnBrowse_Click);
             // 
             // SoundPathChanger
             // 
-            this.ClientSize = new System.Drawing.Size(391, 100);
-            this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOkay);
-            this.Controls.Add(this.txtPath);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "SoundPathChanger";
-            this.Text = "File Path";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ClientSize = new System.Drawing.Size(391, 100);
+            Controls.Add(btnBrowse);
+            Controls.Add(label1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOkay);
+            Controls.Add(txtPath);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Name = "SoundPathChanger";
+            Text = "File Path";
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
         #endregion
 
         private string _filePath = "";
-        public string FilePath { get { return _filePath; } set { _filePath = value; } }
+        public string FilePath { get => _filePath; set => _filePath = value; }
 
         public SoundPathChanger() { InitializeComponent(); dlg.FileOk += OnFileOk; }
         ~SoundPathChanger() { dlg.FileOk -= OnFileOk; }
@@ -120,7 +120,9 @@ namespace System.Windows.Forms
         public void OnFileOk(object sender, CancelEventArgs e)
         {
             if (!dlg.FileName.StartsWith(dlg.InitialDirectory))
+            {
                 dlg.FileName = dlg.InitialDirectory;
+            }
         }
 
         public OpenFileDialog dlg = new OpenFileDialog()
@@ -135,13 +137,17 @@ namespace System.Windows.Forms
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             if (dlg.ShowDialog() == DialogResult.OK)
+            {
                 txtPath.Text = dlg.FileName;
+            }
         }
 
         private void txtPath_TextChanged(object sender, EventArgs e)
         {
             if (!txtPath.Text.StartsWith(dlg.InitialDirectory))
+            {
                 txtPath.Text = dlg.InitialDirectory;
+            }
         }
     }
 }

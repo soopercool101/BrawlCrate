@@ -20,7 +20,7 @@ namespace System
         public static implicit operator VoidPtr(PString p) { return *(VoidPtr*)&p; }
         public static implicit operator PString(VoidPtr p) { return *(PString*)&p; }
 
-        public static explicit operator string(PString p) { return new String((sbyte*)p._address); }
+        public static explicit operator string(PString p) { return new string((sbyte*)p._address); }
 
         public static PString operator +(PString p, int amount)
         {
@@ -37,13 +37,18 @@ namespace System
         public override bool Equals(object obj)
         {
             if (obj is PString)
+            {
                 return Equals((PString)obj, false);
-            else if (obj is String)
-                return Equals((String)obj, false);
+            }
+            else if (obj is string)
+            {
+                return Equals((string)obj, false);
+            }
+
             return false;
         }
         public static bool Equals(PString s1, PString s2, bool ignoreCase) { return s1.Equals(s2, ignoreCase); }
-        public static bool Equals(PString s1, String s2, bool ignoreCase) { return s1.Equals(s2, ignoreCase); }
+        public static bool Equals(PString s1, string s2, bool ignoreCase) { return s1.Equals(s2, ignoreCase); }
         public bool Equals(PString s, bool ignoreCase)
         {
             byte* pStr1 = _address;
@@ -61,12 +66,16 @@ namespace System
                         if ((b1 >= 0x41) && (b1 <= 0x5A))
                         {
                             if (b1 + 0x20 == b2)
+                            {
                                 continue;
+                            }
                         }
                         else if ((b1 >= 0x61) && (b1 <= 0x7A))
                         {
                             if (b1 - 0x20 == b2)
+                            {
                                 continue;
+                            }
                         }
                     }
                     return false;
@@ -76,7 +85,7 @@ namespace System
 
             return true;
         }
-        public bool Equals(String s, bool ignoreCase)
+        public bool Equals(string s, bool ignoreCase)
         {
             byte* pStr1 = _address;
             char* pStr2;
@@ -96,12 +105,16 @@ namespace System
                             if ((b1 >= 0x41) && (b1 <= 0x5A))
                             {
                                 if (b1 + 0x20 == b2)
+                                {
                                     continue;
+                                }
                             }
                             else if ((b1 >= 0x61) && (b1 <= 0x7A))
                             {
                                 if (b1 - 0x20 == b2)
+                                {
                                     continue;
+                                }
                             }
                         }
                         return false;
@@ -114,12 +127,12 @@ namespace System
         }
         public override int GetHashCode() { return base.GetHashCode(); }
 
-        public override string ToString() { return new String(this); }
+        public override string ToString() { return new string(this); }
 
         public byte this[int index]
         {
-            get { return _address[index]; }
-            set { _address[index] = value; }
+            get => _address[index];
+            set => _address[index] = value;
         }
 
         public int Length
@@ -128,28 +141,42 @@ namespace System
             {
                 int len = 0;
                 byte* p = _address;
-                while (*p++ != 0) len++;
+                while (*p++ != 0)
+                {
+                    len++;
+                }
+
                 return len;
             }
         }
 
         public void Write(string s) { Write(s, 0); }
         public void Write(string s, int offset) { Write(s, offset, s.Length); }
-        public void Write(string s, int offset, int len) { fixed (char* p = s) Write(p, offset, len); }
+        public void Write(string s, int offset, int len)
+        {
+            fixed (char* p = s)
+            {
+                Write(p, offset, len);
+            }
+        }
 
         public void Write(char* p, int offset, int len)
         {
             byte* s = _address;
             p += offset;
             for (int i = 0; i < len; i++)
+            {
                 *s++ = (byte)*p++;
+            }
         }
         public void Write(byte* p, int offset, int len)
         {
             byte* s = _address;
             p += offset;
             for (int i = 0; i < len; i++)
+            {
                 *s++ = *p++;
+            }
         }
 
         //internal static unsafe bool Equals(sbyte* pStr, string str)

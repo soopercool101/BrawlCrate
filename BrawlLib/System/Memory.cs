@@ -2,7 +2,7 @@
 
 namespace System
 {
-    public unsafe static class Memory
+    public static unsafe class Memory
     {
         public static unsafe void Move(VoidPtr dst, VoidPtr src, uint size)
         {
@@ -19,9 +19,14 @@ namespace System
                         & Directory.Exists("/System")
                         & Directory.Exists("/Users")
                         & Directory.Exists("/Volumes"))
+                    {
                         goto case PlatformID.MacOSX;
+                    }
                     else
+                    {
                         Linux.memmove(dst, src, size);
+                    }
+
                     break;
             }
         }
@@ -30,24 +35,32 @@ namespace System
         {
             switch (Environment.OSVersion.Platform)
             {
-                case PlatformID.Win32NT: { 
-                    Win32.FillMemory(dest, length, value); 
-                    break; 
-                }
-                case PlatformID.MacOSX: { 
-                    OSX.memset(dest, value, length); 
-                    break; 
-                }
-                case PlatformID.Unix: { 
-                    if (Directory.Exists("/Applications")
-                        & Directory.Exists("/System")
-                        & Directory.Exists("/Users")
-                        & Directory.Exists("/Volumes"))
-                        goto case PlatformID.MacOSX;
-                    else
-                        Linux.memset(dest, value, length); 
-                    break; 
-                }
+                case PlatformID.Win32NT:
+                    {
+                        Win32.FillMemory(dest, length, value);
+                        break;
+                    }
+                case PlatformID.MacOSX:
+                    {
+                        OSX.memset(dest, value, length);
+                        break;
+                    }
+                case PlatformID.Unix:
+                    {
+                        if (Directory.Exists("/Applications")
+                            & Directory.Exists("/System")
+                            & Directory.Exists("/Users")
+                            & Directory.Exists("/Volumes"))
+                        {
+                            goto case PlatformID.MacOSX;
+                        }
+                        else
+                        {
+                            Linux.memset(dest, value, length);
+                        }
+
+                        break;
+                    }
             }
         }
     }

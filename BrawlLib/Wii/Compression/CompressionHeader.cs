@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.Wii.Compression
 {
@@ -31,8 +31,13 @@ namespace BrawlLib.Wii.Compression
             {
                 CompressionType c = (CompressionType)_algorithm[4, 4];
                 if (c == CompressionType.LZ77)
+                {
                     if (IsExtendedLZ77)
+                    {
                         c = CompressionType.ExtendedLZ77;
+                    }
+                }
+
                 return c;
             }
             set
@@ -48,31 +53,33 @@ namespace BrawlLib.Wii.Compression
         }
         public uint Parameter
         {
-            get { return (uint)_algorithm[0, 4]; }
-            set { _algorithm[0, 4] = (byte)value; }
+            get => _algorithm[0, 4];
+            set => _algorithm[0, 4] = (byte)value;
         }
-        public bool IsExtendedLZ77 { get { return Parameter != 0; } set { Parameter = (uint)(value ? 1 : 0); } }
-        public bool LargeSize { get { return (uint)_size == 0; } }
+        public bool IsExtendedLZ77 { get => Parameter != 0; set => Parameter = (uint)(value ? 1 : 0); }
+        public bool LargeSize => (uint)_size == 0;
         public uint ExpandedSize
         {
-            get { return LargeSize ? _extSize : (uint)_size; }
+            get => LargeSize ? _extSize : (uint)_size;
             set
             {
                 if ((value & 0xFFFFFF) != value) //Use extended header for sizes > 24 bits
                 {
-                    _extSize = (uint)value;
-                    _size = (UInt24)0;
+                    _extSize = value;
+                    _size = 0;
                 }
                 else
-                    _size = (UInt24)value;
+                {
+                    _size = value;
+                }
             }
         }
         public bool HasLegitCompression()
         {
             return Enum.IsDefined(typeof(CompressionType), (int)_algorithm[4, 4]) && Algorithm != CompressionType.None;
         }
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
-        public VoidPtr Data { get { return Address + 4 + (LargeSize ? 4 : 0); } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public VoidPtr Data => Address + 4 + (LargeSize ? 4 : 0);
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -85,9 +92,9 @@ namespace BrawlLib.Wii.Compression
         public buint _unCompDataLen;
         public fixed int padding[2];
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public VoidPtr Data { get { return Address + Size; } }
+        public VoidPtr Data => Address + Size;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -101,8 +108,8 @@ namespace BrawlLib.Wii.Compression
         public buint _countOffset;
         public buint _dataOffset;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public VoidPtr Data { get { return Address + Size; } }
+        public VoidPtr Data => Address + Size;
     }
 }

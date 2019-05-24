@@ -4,7 +4,7 @@ namespace Be.Windows.Forms
 {
     internal sealed class MemoryDataBlock : DataBlock
     {
-        byte[] _data;
+        private byte[] _data;
 
         public MemoryDataBlock(byte data)
         {
@@ -21,21 +21,9 @@ namespace Be.Windows.Forms
             _data = (byte[])data.Clone();
         }
 
-        public override long Length
-        {
-            get
-            {
-                return _data.LongLength;
-            }
-        }
+        public override long Length => _data.LongLength;
 
-        public byte[] Data
-        {
-            get
-            {
-                return _data;
-            }
-        }
+        public byte[] Data => _data;
 
         public void AddByteToEnd(byte value)
         {

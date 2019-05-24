@@ -1,7 +1,7 @@
-using System;
 using BrawlLib.SSBBTypes;
-using System.Audio;
 using BrawlLib.Wii.Audio;
+using System;
+using System.Audio;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -9,13 +9,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARFileAudioNode : RSARFileEntryNode, IAudioSource, IDisposable
     {
-        public override ResourceType ResourceType { get { return ResourceType.RSARFileAudioEntry; } }
-        
+        public override ResourceType ResourceType => ResourceType.RSARFileAudioEntry;
+
         [Browsable(false)]
-        public WaveInfo Info 
+        public WaveInfo Info
         {
-            get { return _info; }
-            set 
+            get => _info;
+            set
             {
                 _info = value;
                 _encoding = _info._format._encoding;
@@ -38,17 +38,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int _numSamples;
 
         [Category("Audio Stream")]
-        public WaveEncoding Encoding { get { return (WaveEncoding)_encoding; } }
+        public WaveEncoding Encoding => (WaveEncoding)_encoding;
         [Category("Audio Stream")]
-        public int Channels { get { return _channels; } }
+        public int Channels => _channels;
         [Category("Audio Stream")]
-        public bool IsLooped { get { return _looped; } }
+        public bool IsLooped => _looped;
         [Category("Audio Stream")]
-        public int SampleRate { get { return _sampleRate; } }
+        public int SampleRate => _sampleRate;
         [Category("Audio Stream")]
-        public int LoopStartSample { get { return _loopStart; } }
+        public int LoopStartSample => _loopStart;
         [Category("Audio Stream")]
-        public int NumSamples { get { return _numSamples; } }
+        public int NumSamples => _numSamples;
 
         internal IAudioStream _stream;
         internal UnsafeBuffer _streamBuffer;
@@ -58,7 +58,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void Dispose()
         {
             if (_audioSource != null)
+            {
                 _audioSource.Close();
+            }
 
             if (_stream != null)
             {
@@ -84,9 +86,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             _audioSource = new DataSource(_streamBuffer.Address, _streamBuffer.Length);
 
             if (info->_format._encoding == 2)
+            {
                 _stream = new ADPCMStream(info, _audioSource.Address);
+            }
             else
+            {
                 _stream = new PCMStream(info, _audioSource.Address);
+            }
         }
 
         //public int GetSize(bool RWAR)
@@ -120,12 +126,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         //public void RebuildAsRWAV(VoidPtr address, int length)
         //{
-            
+
         //}
 
         //public void RebuildAsRSARSound(VoidPtr address, int length)
         //{
-            
+
         //}
 
         public virtual IAudioStream[] CreateStreams() { return new IAudioStream[] { _stream }; }
@@ -133,12 +139,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RWAVNode : RSARFileAudioNode
     {
-        internal RWAV* Header { get { return (RWAV*)WorkingUncompressed.Address; } }
+        internal RWAV* Header => (RWAV*)WorkingUncompressed.Address;
 
         public override bool OnInitialize()
         {
             if (_name == null)
-                _name = String.Format("Audio[{0}]", Index);
+            {
+                _name = string.Format("Audio[{0}]", Index);
+            }
 
             Init(Header->Data->Data, Header->Data->_header._length, &Header->Info->_info);
 
@@ -150,15 +158,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override unsafe void Replace(string fileName)
         {
             if (fileName.EndsWith(".wav"))
-            using (BrstmConverterDialog dlg = new BrstmConverterDialog())
             {
-                dlg.Type = 2;
-                dlg.AudioSource = fileName;
-                if (dlg.ShowDialog(null) == DialogResult.OK)
-                    ReplaceRaw(dlg.AudioData);
+                using (BrstmConverterDialog dlg = new BrstmConverterDialog())
+                {
+                    dlg.Type = 2;
+                    dlg.AudioSource = fileName;
+                    if (dlg.ShowDialog(null) == DialogResult.OK)
+                    {
+                        ReplaceRaw(dlg.AudioData);
+                    }
+                }
             }
             else
+            {
                 base.Replace(fileName);
+            }
 
             //Init(Header->Data->Data, Header->Data->_header._length, &Header->Info->_info);
 
@@ -166,15 +180,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             SignalPropertyChange();
             Parent.Parent.SignalPropertyChange();
             if (RSARNode != null)
+            {
                 RSARNode.SignalPropertyChange();
+            }
         }
 
         public override unsafe void Export(string outPath)
         {
             if (outPath.EndsWith(".wav"))
+            {
                 WAV.ToFile(CreateStreams()[0], outPath);
+            }
             else
+            {
                 base.Export(outPath);
+            }
         }
     }
 }

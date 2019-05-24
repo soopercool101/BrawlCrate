@@ -1,24 +1,28 @@
-using System;
-using System.IO;
 using BrawlLib.IO;
-using System.Linq;
-using System.ComponentModel;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARFileNode : NW4RNode
     {
-        internal VoidPtr Data { get { return (VoidPtr)WorkingUncompressed.Address; } }
-        
+        internal VoidPtr Data => WorkingUncompressed.Address;
+
         public DataSource _audioSource;
-        
+
         internal RSARNode RSARNode
         {
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is RSARNode)) ;
+                while (((n = n.Parent) != null) && !(n is RSARNode))
+                {
+                    ;
+                }
+
                 return n as RSARNode;
             }
         }
@@ -29,35 +33,39 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (string s in GroupRefs)
             {
                 if (closestMatch == "")
+                {
                     closestMatch = s;
+                }
                 else
                 {
                     int one = closestMatch.Length;
                     int two = s.Length;
                     int min = Math.Min(one, two);
                     for (int i = 0; i < min; i++)
-                        if (Char.ToLower(s[i]) != Char.ToLower(closestMatch[i]) && i > 1)
+                    {
+                        if (char.ToLower(s[i]) != char.ToLower(closestMatch[i]) && i > 1)
                         {
                             closestMatch = closestMatch.Substring(0, i - 1);
                             break;
                         }
+                    }
                 }
             }
-            _name = String.Format("[{0}] {1}", _fileIndex, closestMatch);
+            _name = string.Format("[{0}] {1}", _fileIndex, closestMatch);
         }
 
         public List<RSARGroupNode> _groupRefs = new List<RSARGroupNode>();
         [Browsable(false)]
-        public RSARGroupNode[] GroupRefNodes { get { return _groupRefs.ToArray(); } }
+        public RSARGroupNode[] GroupRefNodes => _groupRefs.ToArray();
 
-        public virtual string[] GroupRefs { get { return _groupRefs.Select(x => x.TreePath).ToArray(); } }
+        public virtual string[] GroupRefs => _groupRefs.Select(x => x.TreePath).ToArray();
 
         public List<string> _references = new List<string>();
-        public virtual string[] EntryRefs { get { return _references.ToArray(); } }
+        public virtual string[] EntryRefs => _references.ToArray();
 
         public List<RSARSoundNode> _rsarSoundEntries = new List<RSARSoundNode>();
         [Browsable(false)]
-        public RSARSoundNode[] Sounds { get { return _rsarSoundEntries.ToArray(); } }
+        public RSARSoundNode[] Sounds => _rsarSoundEntries.ToArray();
         public void AddSoundRef(RSARSoundNode n)
         {
             if (!_rsarSoundEntries.Contains(n))
@@ -79,27 +87,63 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal LabelItem[] _labels;
 
         [Category("File Node"), Browsable(true)]
-        public virtual int FileNodeIndex { get { return _fileIndex; } }
-        
+        public virtual int FileNodeIndex => _fileIndex;
+
         internal int _entryNumber;
         [Category("Data"), Browsable(false)]
-        public int EntryNumber
-        {
-            get { return _entryNumber; }
-        }
+        public int EntryNumber => _entryNumber;
 
         [Category("Data"), Browsable(false)]
-        public virtual string InfoHeaderOffset { get { if (RSARNode != null && _infoHdr != null) return ((uint)(_infoHdr - (VoidPtr)RSARNode.Header)).ToString("X"); else return "0"; } }
+        public virtual string InfoHeaderOffset
+        {
+            get
+            {
+                if (RSARNode != null && _infoHdr != null)
+                {
+                    return ((uint)(_infoHdr - RSARNode.Header)).ToString("X");
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+        }
         public VoidPtr _infoHdr;
 
         [Category("Data"), Browsable(true)]
-        public virtual string AudioLength { get { return _audioSource.Length.ToString("X"); } }
+        public virtual string AudioLength => _audioSource.Length.ToString("X");
         [Category("Data"), Browsable(false)]
-        public virtual string AudioOffset { get { if (RSARNode != null && _audioSource.Address != null) return ((uint)(_audioSource.Address - (VoidPtr)RSARNode.Header)).ToString("X"); else return "0"; } }
+        public virtual string AudioOffset
+        {
+            get
+            {
+                if (RSARNode != null && _audioSource.Address != null)
+                {
+                    return ((uint)(_audioSource.Address - RSARNode.Header)).ToString("X");
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+        }
         [Category("Data"), Browsable(true)]
-        public virtual string DataLength { get { return WorkingUncompressed.Length.ToString("X"); } }
+        public virtual string DataLength => WorkingUncompressed.Length.ToString("X");
         [Category("Data"), Browsable(false)]
-        public virtual string DataOffset { get { if (RSARNode != null && Data != null) return ((uint)(Data - (VoidPtr)RSARNode.Header)).ToString("X"); else return "0"; } }
+        public virtual string DataOffset
+        {
+            get
+            {
+                if (RSARNode != null && Data != null)
+                {
+                    return ((uint)(Data - RSARNode.Header)).ToString("X");
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+        }
 
         protected virtual void GetStrings(LabelBuilder builder) { }
 
@@ -108,13 +152,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
 
             if (!_replaced)
+            {
                 _groupRefs = new List<RSARGroupNode>();
+            }
 
             if (_name == null)
+            {
                 if (_parent == null)
+                {
                     _name = Path.GetFileNameWithoutExtension(_origPath);
+                }
                 else
-                    _name = String.Format("[{0}] {1}", _fileIndex, ResourceType.ToString());
+                {
+                    _name = string.Format("[{0}] {1}", _fileIndex, ResourceType.ToString());
+                }
+            }
 
             return false;
         }
@@ -149,7 +201,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     //Write strings
                     if (lablLen > 0)
+                    {
                         labl.Write(addr);
+                    }
+
                     addr += lablLen;
 
                     //Write sound data
@@ -161,7 +216,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal protected virtual void PostProcess(VoidPtr audioAddr, VoidPtr dataAddr)
+        protected internal virtual void PostProcess(VoidPtr audioAddr, VoidPtr dataAddr)
         {
 
         }

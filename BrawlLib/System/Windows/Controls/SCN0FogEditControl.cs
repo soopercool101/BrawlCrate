@@ -11,7 +11,7 @@ namespace System.Windows.Forms
 
         private int _currentPage = 1;
         private FogAnimationFrame _currentFrame = FogAnimationFrame.Empty;
-        private NumericInputBox[] _boxes = new NumericInputBox[2];
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[2];
         private Panel panel1;
         private TabControl tabControl1;
         private TabPage tabPage1;
@@ -34,25 +34,29 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SCN0FogNode TargetSequence
         {
-            get { return _target; }
+            get => _target;
             set
             {
                 if (_target == value)
+                {
                     return;
+                }
 
                 _target = value;
                 UpdateTarget();
             }
         }
 
-        public SCN0FogEditControl() 
+        public SCN0FogEditControl()
         {
             InitializeComponent();
             _boxes[0] = numStart;
             _boxes[1] = numEnd;
 
             for (int i = 0; i < 2; i++)
+            {
                 _boxes[i].Tag = i;
+            }
         }
 
         private void UpdateTarget()
@@ -65,18 +69,24 @@ namespace System.Windows.Forms
                 {
                     FogAnimationFrame a;
                     for (int x = 0; x < _target.FrameCount; x++)
+                    {
                         if ((a = _target.GetAnimFrame(x)).HasKeys)
+                        {
                             listKeyframes.Items.Add(a);
+                        }
+                    }
 
                     _numFrames = _target.FrameCount;
 
                     _currentPage = 0;
                     numFrame.Value = 1;
                     numFrame.Maximum = _numFrames;
-                    lblFrameCount.Text = String.Format("/ {0}", _numFrames);
+                    lblFrameCount.Text = string.Format("/ {0}", _numFrames);
                 }
                 else
+                {
                     numFrame.Value = 1;
+                }
             }
             listKeyframes.EndUpdate();
             lightCtrl.ColorSource = TargetSequence;
@@ -105,7 +115,9 @@ namespace System.Windows.Forms
                 numEnd.Value = _currentFrame.End;
 
                 for (int i = 0; i < 2; i++)
+                {
                     UpdateBox(i);
+                }
 
                 btnPrev.Enabled = _currentPage > 0;
                 btnNext.Enabled = _currentPage < (_numFrames - 1);
@@ -118,17 +130,26 @@ namespace System.Windows.Forms
         {
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
+            {
                 if (((FogAnimationFrame)listKeyframes.Items[i]).Index == index)
+                {
                     return i;
+                }
+            }
+
             return -1;
         }
 
         private void UpdateBox(int index)
         {
             if (_target.GetKeyframe(index, _currentPage) != null)
+            {
                 _boxes[index].BackColor = Color.Yellow;
+            }
             else
+            {
                 _boxes[index].BackColor = Color.White;
+            }
         }
 
         private unsafe void BoxChanged(object sender, EventArgs e)
@@ -152,14 +173,20 @@ namespace System.Windows.Forms
                         kf = (FogAnimationFrame)listKeyframes.Items[kfIndex];
                         kf.SetBools(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 2) && float.IsNaN(pkf[x]); x++) ;
+                        for (x = 0; (x < 2) && float.IsNaN(pkf[x]); x++)
+                        {
+                            ;
+                        }
+
                         if (x == 2)
                         {
                             listKeyframes.Items.RemoveAt(kfIndex);
                             listKeyframes.SelectedIndex = -1;
                         }
                         else
+                        {
                             listKeyframes.Items[kfIndex] = kf;
+                        }
                     }
 
                     _target.RemoveKeyframe(index, _currentPage);
@@ -183,7 +210,10 @@ namespace System.Windows.Forms
                         pkf[index] = val;
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((FogAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++) ;
+                        for (x = 0; (x < count) && (((FogAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        {
+                            ;
+                        }
 
                         listKeyframes.Items.Insert(x, kf);
                         listKeyframes.SelectedIndex = x;
@@ -215,241 +245,241 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listKeyframes = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.lblFrameCount = new System.Windows.Forms.Label();
-            this.numStart = new System.Windows.Forms.NumericInputBox();
-            this.numEnd = new System.Windows.Forms.NumericInputBox();
-            this.numFrame = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lightCtrl = new System.Windows.Forms.CLRControl();
-            this.panel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFrame)).BeginInit();
-            this.tabPage3.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new System.Windows.Forms.Panel();
+            tabControl1 = new System.Windows.Forms.TabControl();
+            tabPage1 = new System.Windows.Forms.TabPage();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            listKeyframes = new System.Windows.Forms.ListBox();
+            panel2 = new System.Windows.Forms.Panel();
+            label7 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            btnNext = new System.Windows.Forms.Button();
+            btnPrev = new System.Windows.Forms.Button();
+            lblFrameCount = new System.Windows.Forms.Label();
+            numStart = new System.Windows.Forms.NumericInputBox();
+            numEnd = new System.Windows.Forms.NumericInputBox();
+            numFrame = new System.Windows.Forms.NumericUpDown();
+            label1 = new System.Windows.Forms.Label();
+            tabPage3 = new System.Windows.Forms.TabPage();
+            lightCtrl = new System.Windows.Forms.CLRControl();
+            panel1.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(numFrame)).BeginInit();
+            tabPage3.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(221, 200);
-            this.panel1.TabIndex = 23;
+            panel1.Controls.Add(tabControl1);
+            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(221, 200);
+            panel1.TabIndex = 23;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(221, 200);
-            this.tabControl1.TabIndex = 18;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Location = new System.Drawing.Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new System.Drawing.Size(221, 200);
+            tabControl1.TabIndex = 18;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.panel2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(213, 174);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Lighting";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(groupBox1);
+            tabPage1.Controls.Add(panel2);
+            tabPage1.Location = new System.Drawing.Point(4, 22);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new System.Drawing.Size(213, 174);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Lighting";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listKeyframes);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 102);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Keyframes";
+            groupBox1.Controls.Add(listKeyframes);
+            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(213, 102);
+            groupBox1.TabIndex = 21;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Keyframes";
             // 
             // listKeyframes
             // 
-            this.listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listKeyframes.FormattingEnabled = true;
-            this.listKeyframes.IntegralHeight = false;
-            this.listKeyframes.ItemHeight = 14;
-            this.listKeyframes.Location = new System.Drawing.Point(3, 16);
-            this.listKeyframes.Name = "listKeyframes";
-            this.listKeyframes.Size = new System.Drawing.Size(207, 83);
-            this.listKeyframes.TabIndex = 18;
-            this.listKeyframes.SelectedIndexChanged += new System.EventHandler(this.listKeyframes_SelectedIndexChanged);
+            listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
+            listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.FormattingEnabled = true;
+            listKeyframes.IntegralHeight = false;
+            listKeyframes.ItemHeight = 14;
+            listKeyframes.Location = new System.Drawing.Point(3, 16);
+            listKeyframes.Name = "listKeyframes";
+            listKeyframes.Size = new System.Drawing.Size(207, 83);
+            listKeyframes.TabIndex = 18;
+            listKeyframes.SelectedIndexChanged += new System.EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.btnNext);
-            this.panel2.Controls.Add(this.btnPrev);
-            this.panel2.Controls.Add(this.lblFrameCount);
-            this.panel2.Controls.Add(this.numStart);
-            this.panel2.Controls.Add(this.numEnd);
-            this.panel2.Controls.Add(this.numFrame);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 102);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(213, 72);
-            this.panel2.TabIndex = 22;
+            panel2.BackColor = System.Drawing.SystemColors.Control;
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(btnNext);
+            panel2.Controls.Add(btnPrev);
+            panel2.Controls.Add(lblFrameCount);
+            panel2.Controls.Add(numStart);
+            panel2.Controls.Add(numEnd);
+            panel2.Controls.Add(numFrame);
+            panel2.Controls.Add(label1);
+            panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel2.Location = new System.Drawing.Point(0, 102);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(213, 72);
+            panel2.TabIndex = 22;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(3, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 20);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Frame:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label7.Location = new System.Drawing.Point(3, 3);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(41, 20);
+            label7.TabIndex = 15;
+            label7.Text = "Frame:";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(6, 45);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "End Point Z";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.Location = new System.Drawing.Point(6, 45);
+            label3.Margin = new System.Windows.Forms.Padding(0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(70, 20);
+            label3.TabIndex = 2;
+            label3.Text = "End Point Z";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnNext
             // 
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(187, 1);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(23, 23);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = ">";
-            this.btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Location = new System.Drawing.Point(187, 1);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new System.Drawing.Size(23, 23);
+            btnNext.TabIndex = 2;
+            btnNext.Text = ">";
+            btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += new System.EventHandler(btnNext_Click);
             // 
             // btnPrev
             // 
-            this.btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrev.Location = new System.Drawing.Point(162, 1);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(23, 23);
-            this.btnPrev.TabIndex = 1;
-            this.btnPrev.Text = "<";
-            this.btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Location = new System.Drawing.Point(162, 1);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new System.Drawing.Size(23, 23);
+            btnPrev.TabIndex = 1;
+            btnPrev.Text = "<";
+            btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += new System.EventHandler(btnPrev_Click);
             // 
             // lblFrameCount
             // 
-            this.lblFrameCount.Location = new System.Drawing.Point(114, 3);
-            this.lblFrameCount.Name = "lblFrameCount";
-            this.lblFrameCount.Size = new System.Drawing.Size(51, 20);
-            this.lblFrameCount.TabIndex = 17;
-            this.lblFrameCount.Text = "/ 10";
-            this.lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrameCount.Location = new System.Drawing.Point(114, 3);
+            lblFrameCount.Name = "lblFrameCount";
+            lblFrameCount.Size = new System.Drawing.Size(51, 20);
+            lblFrameCount.TabIndex = 17;
+            lblFrameCount.Text = "/ 10";
+            lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // numStart
             // 
-            this.numStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numStart.Location = new System.Drawing.Point(75, 26);
-            this.numStart.Margin = new System.Windows.Forms.Padding(0);
-            this.numStart.Name = "numStart";
-            this.numStart.Size = new System.Drawing.Size(70, 20);
-            this.numStart.TabIndex = 3;
-            this.numStart.Text = "0";
-            this.numStart.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStart.Location = new System.Drawing.Point(75, 26);
+            numStart.Margin = new System.Windows.Forms.Padding(0);
+            numStart.Name = "numStart";
+            numStart.Size = new System.Drawing.Size(70, 20);
+            numStart.TabIndex = 3;
+            numStart.Text = "0";
+            numStart.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numEnd
             // 
-            this.numEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numEnd.Location = new System.Drawing.Point(75, 45);
-            this.numEnd.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numEnd.Name = "numEnd";
-            this.numEnd.Size = new System.Drawing.Size(70, 20);
-            this.numEnd.TabIndex = 6;
-            this.numEnd.Text = "0";
-            this.numEnd.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEnd.Location = new System.Drawing.Point(75, 45);
+            numEnd.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numEnd.Name = "numEnd";
+            numEnd.Size = new System.Drawing.Size(70, 20);
+            numEnd.TabIndex = 6;
+            numEnd.Text = "0";
+            numEnd.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numFrame
             // 
-            this.numFrame.Location = new System.Drawing.Point(50, 3);
-            this.numFrame.Minimum = new decimal(new int[] {
+            numFrame.Location = new System.Drawing.Point(50, 3);
+            numFrame.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numFrame.Name = "numFrame";
-            this.numFrame.Size = new System.Drawing.Size(58, 20);
-            this.numFrame.TabIndex = 0;
-            this.numFrame.Value = new decimal(new int[] {
+            numFrame.Name = "numFrame";
+            numFrame.Size = new System.Drawing.Size(58, 20);
+            numFrame.TabIndex = 0;
+            numFrame.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numFrame.ValueChanged += new System.EventHandler(this.numFrame_ValueChanged);
+            numFrame.ValueChanged += new System.EventHandler(numFrame_ValueChanged);
             // 
             // label1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(6, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Start Point Z";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.Location = new System.Drawing.Point(6, 26);
+            label1.Margin = new System.Windows.Forms.Padding(0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(70, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Start Point Z";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.lightCtrl);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(213, 174);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Light Color";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Controls.Add(lightCtrl);
+            tabPage3.Location = new System.Drawing.Point(4, 22);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new System.Drawing.Size(213, 174);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Light Color";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // lightCtrl
             // 
-            this.lightCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lightCtrl.Location = new System.Drawing.Point(0, 0);
-            this.lightCtrl.Name = "lightCtrl";
-            this.lightCtrl.Size = new System.Drawing.Size(213, 174);
-            this.lightCtrl.TabIndex = 0;
+            lightCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            lightCtrl.Location = new System.Drawing.Point(0, 0);
+            lightCtrl.Name = "lightCtrl";
+            lightCtrl.Size = new System.Drawing.Size(213, 174);
+            lightCtrl.TabIndex = 0;
             // 
             // SCN0FogEditControl
             // 
-            this.Controls.Add(this.panel1);
-            this.Name = "SCN0FogEditControl";
-            this.Size = new System.Drawing.Size(221, 200);
-            this.panel1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFrame)).EndInit();
-            this.tabPage3.ResumeLayout(false);
-            this.ResumeLayout(false);
+            Controls.Add(panel1);
+            Name = "SCN0FogEditControl";
+            Size = new System.Drawing.Size(221, 200);
+            panel1.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(numFrame)).EndInit();
+            tabPage3.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
         #endregion

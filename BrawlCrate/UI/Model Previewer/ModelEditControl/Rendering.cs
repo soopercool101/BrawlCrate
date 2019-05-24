@@ -1,14 +1,14 @@
 ﻿using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Drawing;
-using System.Collections.Generic;
 using OpenTK.Graphics.OpenGL;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
     public partial class ModelEditControl : ModelEditorBase
     {
-        public unsafe override void modelPanel1_PostRender(ModelPanelViewport panel)
+        public override unsafe void modelPanel1_PostRender(ModelPanelViewport panel)
         {
             RenderBrawlStageData(panel);
             base.modelPanel1_PostRender(panel);
@@ -25,9 +25,13 @@ namespace System.Windows.Forms
             GL.Disable(EnableCap.DepthTest);
 
             if (RenderCollisions)
+            {
                 foreach (CollisionNode node in _collisions)
+                {
                     node.Render();
-            
+                }
+            }
+
             #region RenderOverlays
             List<MDL0BoneNode> ItemBones = new List<MDL0BoneNode>();
 
@@ -41,13 +45,18 @@ namespace System.Windows.Forms
                 _targetModel is MDL0Node &&
                 ((((ResourceNode)_targetModel).Name.Contains("StgPosition")) ||
                 ((ResourceNode)_targetModel).Name.Contains("stagePosition")))
+            {
                 stgPos = _targetModel as MDL0Node;
+            }
             else if (_targetModels != null)
+            {
                 stgPos = _targetModels.Find(x => x is MDL0Node &&
                     ((ResourceNode)x).Name.Contains("StgPosition") ||
                     ((ResourceNode)x).Name.Contains("stagePosition")) as MDL0Node;
+            }
 
-            if (stgPos != null) 
+            if (stgPos != null)
+            {
                 foreach (MDL0BoneNode bone in stgPos._linker.BoneCache)
                 {
                     if (bone._name == "CamLimit0N") { CamBone0 = bone; }
@@ -59,9 +68,13 @@ namespace System.Windows.Forms
                         Vector3 position = bone._frameMatrix.GetPoint();
 
                         if (PointCollides(position))
+                        {
                             GL.Color4(0.0f, 1.0f, 0.0f, 0.5f);
-                        else 
+                        }
+                        else
+                        {
                             GL.Color4(1.0f, 0.0f, 0.0f, 0.5f);
+                        }
 
                         TKContext.DrawSphere(position, 5.0f, 32);
                     }
@@ -71,8 +84,11 @@ namespace System.Windows.Forms
                         TKContext.DrawSphere(bone._frameMatrix.GetPoint(), 5.0f, 32);
                     }
                     else if (bone._name.Contains("Item"))
+                    {
                         ItemBones.Add(bone);
+                    }
                 }
+            }
 
             //Render item fields if checked
             if (ItemBones != null && chkItems.Checked)

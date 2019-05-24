@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int GetSize() { return 8; }
 
         public ulong _value;
-        public ulong Value { get { return _value; } set { _value = value; SignalPropertyChange(); } }
+        public ulong Value { get => _value; set { _value = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {

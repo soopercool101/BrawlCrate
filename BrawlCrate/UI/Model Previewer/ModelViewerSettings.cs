@@ -1,9 +1,9 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Drawing;
+﻿using BrawlCrate;
 using BrawlLib.Imaging;
 using BrawlLib.OpenGL;
-using BrawlCrate;
+using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
@@ -114,10 +114,10 @@ namespace System.Windows.Forms
         private CheckBox chkPixelLighting;
         private ModelEditControl _form;
 
-        public ModelViewerSettingsDialog() 
+        public ModelViewerSettingsDialog()
         {
-            InitializeComponent(); 
-            _dlgColor = new GoodColorDialog(); 
+            InitializeComponent();
+            _dlgColor = new GoodColorDialog();
             maxUndoCount._integral = true;
             _boxes[0] = ax;
             _boxes[1] = ay;
@@ -154,25 +154,29 @@ namespace System.Windows.Forms
             _boxes[30] = maxUndoCount;
 
             for (int i = 0; i < 15; i++)
+            {
                 if (i < 4 || i > 6)
                 {
                     _boxes[i]._maxValue = 255;
                     _boxes[i]._minValue = 0;
                 }
+            }
 
             foreach (NumericInputBox b in _boxes)
-                b.ValueChanged += new System.EventHandler(this.BoxValueChanged);
+            {
+                b.ValueChanged += new System.EventHandler(BoxValueChanged);
+            }
 
             _updating = true;
             cboProjection.DataSource = Enum.GetNames(typeof(ViewportProjection));
             _updating = false;
         }
 
-        private NumericInputBox[] _boxes = new NumericInputBox[31];
-        private float[] _origValues = new float[31];
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[31];
+        private readonly float[] _origValues = new float[31];
         private Color _origNode, _origBone, _origFloor;
-        private CheckBox[] _checkBoxes = new CheckBox[9];
-        private bool[] _origChecks = new bool[9];
+        private readonly CheckBox[] _checkBoxes = new CheckBox[9];
+        private readonly bool[] _origChecks = new bool[9];
 
         public void Show(ModelEditControl owner)
         {
@@ -185,7 +189,7 @@ namespace System.Windows.Forms
             base.Show(_form as IWin32Window);
         }
 
-        ModelPanelViewport current;
+        private ModelPanelViewport current;
 
         public void UpdateAll()
         {
@@ -226,13 +230,17 @@ namespace System.Windows.Forms
             UpdateViewport(_form.ModelPanel.CurrentViewport);
         }
 
-        void Camera_OnPositionChanged()
+        private void Camera_OnPositionChanged()
         {
             if (_updating)
+            {
                 return;
+            }
 
             if (!chkDefaultPos.Checked)
+            {
                 chkCurrentPos_CheckedChanged(null, null);
+            }
         }
 
         public void UpdateViewport(GLViewport viewport)
@@ -240,17 +248,26 @@ namespace System.Windows.Forms
             if (viewport as ModelPanelViewport != current)
             {
                 if (current != null)
+                {
                     current.Camera.OnPositionChanged -= Camera_OnPositionChanged;
+                }
+
                 if (viewport != null)
+                {
                     viewport.Camera.OnPositionChanged += Camera_OnPositionChanged;
+                }
             }
 
             current = viewport as ModelPanelViewport;
 
             if (chkDefaultPos.Checked)
+            {
                 chkDefaultPos_CheckedChanged(null, null);
+            }
             else
+            {
                 chkCurrentPos_CheckedChanged(null, null);
+            }
 
             _updating = true;
 
@@ -307,7 +324,9 @@ namespace System.Windows.Forms
         private void BoxValueChanged(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
 
             _updating = true;
 
@@ -334,13 +353,21 @@ namespace System.Windows.Forms
             int i = (int)(sender as NumericInputBox).Tag;
 
             if (i == 3 || i == 10 || i == 14)
+            {
                 UpdateEmi();
+            }
             else if (i < 3)
+            {
                 UpdateAmb();
+            }
             else if (i < 10)
+            {
                 UpdateDif();
+            }
             else
+            {
                 UpdateSpe();
+            }
 
             if (chkCurrentPos.Checked)
             {
@@ -351,11 +378,11 @@ namespace System.Windows.Forms
             }
             else
             {
-                current.Camera._defaultTranslate = 
+                current.Camera._defaultTranslate =
                     new Vector3(numPosTX.Value, numPosTY.Value, numPosTZ.Value);
-                current.Camera._defaultRotate = 
+                current.Camera._defaultRotate =
                     new Vector3(numPosRX.Value, numPosRY.Value, numPosRZ.Value);
-                current.Camera._defaultScale = 
+                current.Camera._defaultScale =
                     new Vector3(numPosSX.Value, numPosSY.Value, numPosSZ.Value);
             }
 
@@ -394,7 +421,7 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) 
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             //current.Ambient = new Vector4(_origValues[0] / 255.0f, _origValues[1] / 255.0f, _origValues[2] / 255.0f, 1.0f);
             //current.LightPosition = new Vector4(_origValues[4], _origValues[5], _origValues[6], 1.0f);
@@ -416,8 +443,8 @@ namespace System.Windows.Forms
             //MDL0BoneNode.DefaultLineColor = _origBone;
             //MDL0BoneNode.DefaultNodeColor = _origNode;
 
-            DialogResult = DialogResult.Cancel; 
-            Close(); 
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -436,1416 +463,1416 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOkay = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.grpLighting = new System.Windows.Forms.GroupBox();
-            this.chkLightDirectional = new System.Windows.Forms.CheckBox();
-            this.chkLightEnabled = new System.Windows.Forms.CheckBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.ez = new System.Windows.Forms.NumericInputBox();
-            this.ey = new System.Windows.Forms.NumericInputBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ex = new System.Windows.Forms.NumericInputBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.sz = new System.Windows.Forms.NumericInputBox();
-            this.dz = new System.Windows.Forms.NumericInputBox();
-            this.radius = new System.Windows.Forms.NumericInputBox();
-            this.az = new System.Windows.Forms.NumericInputBox();
-            this.elevation = new System.Windows.Forms.NumericInputBox();
-            this.sy = new System.Windows.Forms.NumericInputBox();
-            this.azimuth = new System.Windows.Forms.NumericInputBox();
-            this.dy = new System.Windows.Forms.NumericInputBox();
-            this.ay = new System.Windows.Forms.NumericInputBox();
-            this.sx = new System.Windows.Forms.NumericInputBox();
-            this.dx = new System.Windows.Forms.NumericInputBox();
-            this.ax = new System.Windows.Forms.NumericInputBox();
-            this.grpProjection = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chkDefaultPos = new System.Windows.Forms.RadioButton();
-            this.chkCurrentPos = new System.Windows.Forms.RadioButton();
-            this.label26 = new System.Windows.Forms.Label();
-            this.numPosTX = new System.Windows.Forms.NumericInputBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.numPosTY = new System.Windows.Forms.NumericInputBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.numPosTZ = new System.Windows.Forms.NumericInputBox();
-            this.numPosSX = new System.Windows.Forms.NumericInputBox();
-            this.numPosRZ = new System.Windows.Forms.NumericInputBox();
-            this.numPosSY = new System.Windows.Forms.NumericInputBox();
-            this.numPosRY = new System.Windows.Forms.NumericInputBox();
-            this.numPosSZ = new System.Windows.Forms.NumericInputBox();
-            this.numPosRX = new System.Windows.Forms.NumericInputBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cboProjection = new System.Windows.Forms.ComboBox();
-            this.farZ = new System.Windows.Forms.NumericInputBox();
-            this.nearZ = new System.Windows.Forms.NumericInputBox();
-            this.yFov = new System.Windows.Forms.NumericInputBox();
-            this.zScale = new System.Windows.Forms.NumericInputBox();
-            this.tScale = new System.Windows.Forms.NumericInputBox();
-            this.rScale = new System.Windows.Forms.NumericInputBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.grpColors = new System.Windows.Forms.GroupBox();
-            this.lblCol1Color = new System.Windows.Forms.Label();
-            this.lblLineColor = new System.Windows.Forms.Label();
-            this.lblCol1Text = new System.Windows.Forms.Label();
-            this.lblLineText = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblOrbColor = new System.Windows.Forms.Label();
-            this.lblOrbText = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.chkRetrieveCorrAnims = new System.Windows.Forms.CheckBox();
-            this.chkSyncTexToObj = new System.Windows.Forms.CheckBox();
-            this.chkSyncObjToVIS = new System.Windows.Forms.CheckBox();
-            this.chkDisableBonesOnPlay = new System.Windows.Forms.CheckBox();
-            this.chkDisableHighlight = new System.Windows.Forms.CheckBox();
-            this.chkSnapBonesToFloor = new System.Windows.Forms.CheckBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.chkTextOverlays = new System.Windows.Forms.CheckBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chkPixelLighting = new System.Windows.Forms.CheckBox();
-            this.chkHideMainWindow = new System.Windows.Forms.CheckBox();
-            this.chkUsePointsAsBones = new System.Windows.Forms.CheckBox();
-            this.chkScaleBones = new System.Windows.Forms.CheckBox();
-            this.chkSaveWindowPosition = new System.Windows.Forms.CheckBox();
-            this.chkMaximize = new System.Windows.Forms.CheckBox();
-            this.maxUndoCount = new System.Windows.Forms.NumericInputBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkTanCam = new System.Windows.Forms.CheckBox();
-            this.chkTanFog = new System.Windows.Forms.CheckBox();
-            this.chkTanLight = new System.Windows.Forms.CheckBox();
-            this.chkTanSHP = new System.Windows.Forms.CheckBox();
-            this.chkTanSRT = new System.Windows.Forms.CheckBox();
-            this.chkTanCHR = new System.Windows.Forms.CheckBox();
-            this.chkPrecalcBoxes = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnResetSettings = new System.Windows.Forms.Button();
-            this.btnImportSettings = new System.Windows.Forms.Button();
-            this.btnExportSettings = new System.Windows.Forms.Button();
-            this.grpLighting.SuspendLayout();
-            this.grpProjection.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.grpColors.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            btnCancel = new System.Windows.Forms.Button();
+            btnOkay = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            grpLighting = new System.Windows.Forms.GroupBox();
+            chkLightDirectional = new System.Windows.Forms.CheckBox();
+            chkLightEnabled = new System.Windows.Forms.CheckBox();
+            label23 = new System.Windows.Forms.Label();
+            label22 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
+            label19 = new System.Windows.Forms.Label();
+            ez = new System.Windows.Forms.NumericInputBox();
+            ey = new System.Windows.Forms.NumericInputBox();
+            label8 = new System.Windows.Forms.Label();
+            ex = new System.Windows.Forms.NumericInputBox();
+            label17 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            sz = new System.Windows.Forms.NumericInputBox();
+            dz = new System.Windows.Forms.NumericInputBox();
+            radius = new System.Windows.Forms.NumericInputBox();
+            az = new System.Windows.Forms.NumericInputBox();
+            elevation = new System.Windows.Forms.NumericInputBox();
+            sy = new System.Windows.Forms.NumericInputBox();
+            azimuth = new System.Windows.Forms.NumericInputBox();
+            dy = new System.Windows.Forms.NumericInputBox();
+            ay = new System.Windows.Forms.NumericInputBox();
+            sx = new System.Windows.Forms.NumericInputBox();
+            dx = new System.Windows.Forms.NumericInputBox();
+            ax = new System.Windows.Forms.NumericInputBox();
+            grpProjection = new System.Windows.Forms.GroupBox();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            chkDefaultPos = new System.Windows.Forms.RadioButton();
+            chkCurrentPos = new System.Windows.Forms.RadioButton();
+            label26 = new System.Windows.Forms.Label();
+            numPosTX = new System.Windows.Forms.NumericInputBox();
+            label27 = new System.Windows.Forms.Label();
+            numPosTY = new System.Windows.Forms.NumericInputBox();
+            label28 = new System.Windows.Forms.Label();
+            numPosTZ = new System.Windows.Forms.NumericInputBox();
+            numPosSX = new System.Windows.Forms.NumericInputBox();
+            numPosRZ = new System.Windows.Forms.NumericInputBox();
+            numPosSY = new System.Windows.Forms.NumericInputBox();
+            numPosRY = new System.Windows.Forms.NumericInputBox();
+            numPosSZ = new System.Windows.Forms.NumericInputBox();
+            numPosRX = new System.Windows.Forms.NumericInputBox();
+            label25 = new System.Windows.Forms.Label();
+            cboProjection = new System.Windows.Forms.ComboBox();
+            farZ = new System.Windows.Forms.NumericInputBox();
+            nearZ = new System.Windows.Forms.NumericInputBox();
+            yFov = new System.Windows.Forms.NumericInputBox();
+            zScale = new System.Windows.Forms.NumericInputBox();
+            tScale = new System.Windows.Forms.NumericInputBox();
+            rScale = new System.Windows.Forms.NumericInputBox();
+            label14 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            grpColors = new System.Windows.Forms.GroupBox();
+            lblCol1Color = new System.Windows.Forms.Label();
+            lblLineColor = new System.Windows.Forms.Label();
+            lblCol1Text = new System.Windows.Forms.Label();
+            lblLineText = new System.Windows.Forms.Label();
+            label24 = new System.Windows.Forms.Label();
+            label20 = new System.Windows.Forms.Label();
+            lblOrbColor = new System.Windows.Forms.Label();
+            lblOrbText = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            chkRetrieveCorrAnims = new System.Windows.Forms.CheckBox();
+            chkSyncTexToObj = new System.Windows.Forms.CheckBox();
+            chkSyncObjToVIS = new System.Windows.Forms.CheckBox();
+            chkDisableBonesOnPlay = new System.Windows.Forms.CheckBox();
+            chkDisableHighlight = new System.Windows.Forms.CheckBox();
+            chkSnapBonesToFloor = new System.Windows.Forms.CheckBox();
+            tabControl1 = new System.Windows.Forms.TabControl();
+            tabPage1 = new System.Windows.Forms.TabPage();
+            chkTextOverlays = new System.Windows.Forms.CheckBox();
+            tabPage2 = new System.Windows.Forms.TabPage();
+            chkPixelLighting = new System.Windows.Forms.CheckBox();
+            chkHideMainWindow = new System.Windows.Forms.CheckBox();
+            chkUsePointsAsBones = new System.Windows.Forms.CheckBox();
+            chkScaleBones = new System.Windows.Forms.CheckBox();
+            chkSaveWindowPosition = new System.Windows.Forms.CheckBox();
+            chkMaximize = new System.Windows.Forms.CheckBox();
+            maxUndoCount = new System.Windows.Forms.NumericInputBox();
+            tabPage3 = new System.Windows.Forms.TabPage();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            chkTanCam = new System.Windows.Forms.CheckBox();
+            chkTanFog = new System.Windows.Forms.CheckBox();
+            chkTanLight = new System.Windows.Forms.CheckBox();
+            chkTanSHP = new System.Windows.Forms.CheckBox();
+            chkTanSRT = new System.Windows.Forms.CheckBox();
+            chkTanCHR = new System.Windows.Forms.CheckBox();
+            chkPrecalcBoxes = new System.Windows.Forms.CheckBox();
+            panel1 = new System.Windows.Forms.Panel();
+            btnResetSettings = new System.Windows.Forms.Button();
+            btnImportSettings = new System.Windows.Forms.Button();
+            btnExportSettings = new System.Windows.Forms.Button();
+            grpLighting.SuspendLayout();
+            grpProjection.SuspendLayout();
+            groupBox2.SuspendLayout();
+            grpColors.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            groupBox1.SuspendLayout();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(136, 6);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(60, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Enabled = false;
+            btnCancel.Location = new System.Drawing.Point(136, 6);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(60, 23);
+            btnCancel.TabIndex = 2;
+            btnCancel.Text = "&Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Visible = false;
+            btnCancel.Click += new System.EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
-            this.btnOkay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOkay.Location = new System.Drawing.Point(268, 6);
-            this.btnOkay.Name = "btnOkay";
-            this.btnOkay.Size = new System.Drawing.Size(60, 23);
-            this.btnOkay.TabIndex = 1;
-            this.btnOkay.Text = "&Okay";
-            this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Location = new System.Drawing.Point(268, 6);
+            btnOkay.Name = "btnOkay";
+            btnOkay.Size = new System.Drawing.Size(60, 23);
+            btnOkay.TabIndex = 1;
+            btnOkay.Text = "&Okay";
+            btnOkay.UseVisualStyleBackColor = true;
+            btnOkay.Click += new System.EventHandler(btnOkay_Click);
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(33, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Ambient:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.Location = new System.Drawing.Point(33, 81);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(56, 20);
+            label1.TabIndex = 7;
+            label1.Text = "Ambient:";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(6, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Radius";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.Location = new System.Drawing.Point(6, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(66, 20);
+            label2.TabIndex = 8;
+            label2.Text = "Radius";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(33, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Diffuse:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.Location = new System.Drawing.Point(33, 100);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(56, 20);
+            label3.TabIndex = 9;
+            label3.Text = "Diffuse:";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(33, 119);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 20);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Specular:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label4.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label4.Location = new System.Drawing.Point(33, 119);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(56, 20);
+            label4.TabIndex = 10;
+            label4.Text = "Specular:";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(88, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 20);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "R";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label5.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label5.Location = new System.Drawing.Point(88, 62);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(50, 20);
+            label5.TabIndex = 19;
+            label5.Text = "R";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(137, 62);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "G";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label6.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label6.Location = new System.Drawing.Point(137, 62);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(50, 20);
+            label6.TabIndex = 20;
+            label6.Text = "G";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(186, 62);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 20);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "B";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label7.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label7.Location = new System.Drawing.Point(186, 62);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(50, 20);
+            label7.TabIndex = 21;
+            label7.Text = "B";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grpLighting
             // 
-            this.grpLighting.Controls.Add(this.chkLightDirectional);
-            this.grpLighting.Controls.Add(this.chkLightEnabled);
-            this.grpLighting.Controls.Add(this.label23);
-            this.grpLighting.Controls.Add(this.label22);
-            this.grpLighting.Controls.Add(this.label21);
-            this.grpLighting.Controls.Add(this.label19);
-            this.grpLighting.Controls.Add(this.ez);
-            this.grpLighting.Controls.Add(this.ey);
-            this.grpLighting.Controls.Add(this.label8);
-            this.grpLighting.Controls.Add(this.ex);
-            this.grpLighting.Controls.Add(this.label17);
-            this.grpLighting.Controls.Add(this.label16);
-            this.grpLighting.Controls.Add(this.sz);
-            this.grpLighting.Controls.Add(this.dz);
-            this.grpLighting.Controls.Add(this.label2);
-            this.grpLighting.Controls.Add(this.radius);
-            this.grpLighting.Controls.Add(this.az);
-            this.grpLighting.Controls.Add(this.elevation);
-            this.grpLighting.Controls.Add(this.sy);
-            this.grpLighting.Controls.Add(this.azimuth);
-            this.grpLighting.Controls.Add(this.dy);
-            this.grpLighting.Controls.Add(this.ay);
-            this.grpLighting.Controls.Add(this.label7);
-            this.grpLighting.Controls.Add(this.label6);
-            this.grpLighting.Controls.Add(this.label5);
-            this.grpLighting.Controls.Add(this.label4);
-            this.grpLighting.Controls.Add(this.label3);
-            this.grpLighting.Controls.Add(this.label1);
-            this.grpLighting.Controls.Add(this.sx);
-            this.grpLighting.Controls.Add(this.dx);
-            this.grpLighting.Controls.Add(this.ax);
-            this.grpLighting.Location = new System.Drawing.Point(6, 195);
-            this.grpLighting.Name = "grpLighting";
-            this.grpLighting.Size = new System.Drawing.Size(310, 167);
-            this.grpLighting.TabIndex = 35;
-            this.grpLighting.TabStop = false;
-            this.grpLighting.Text = "Lighting";
+            grpLighting.Controls.Add(chkLightDirectional);
+            grpLighting.Controls.Add(chkLightEnabled);
+            grpLighting.Controls.Add(label23);
+            grpLighting.Controls.Add(label22);
+            grpLighting.Controls.Add(label21);
+            grpLighting.Controls.Add(label19);
+            grpLighting.Controls.Add(ez);
+            grpLighting.Controls.Add(ey);
+            grpLighting.Controls.Add(label8);
+            grpLighting.Controls.Add(ex);
+            grpLighting.Controls.Add(label17);
+            grpLighting.Controls.Add(label16);
+            grpLighting.Controls.Add(sz);
+            grpLighting.Controls.Add(dz);
+            grpLighting.Controls.Add(label2);
+            grpLighting.Controls.Add(radius);
+            grpLighting.Controls.Add(az);
+            grpLighting.Controls.Add(elevation);
+            grpLighting.Controls.Add(sy);
+            grpLighting.Controls.Add(azimuth);
+            grpLighting.Controls.Add(dy);
+            grpLighting.Controls.Add(ay);
+            grpLighting.Controls.Add(label7);
+            grpLighting.Controls.Add(label6);
+            grpLighting.Controls.Add(label5);
+            grpLighting.Controls.Add(label4);
+            grpLighting.Controls.Add(label3);
+            grpLighting.Controls.Add(label1);
+            grpLighting.Controls.Add(sx);
+            grpLighting.Controls.Add(dx);
+            grpLighting.Controls.Add(ax);
+            grpLighting.Location = new System.Drawing.Point(6, 195);
+            grpLighting.Name = "grpLighting";
+            grpLighting.Size = new System.Drawing.Size(310, 167);
+            grpLighting.TabIndex = 35;
+            grpLighting.TabStop = false;
+            grpLighting.Text = "Lighting";
             // 
             // chkLightDirectional
             // 
-            this.chkLightDirectional.AutoSize = true;
-            this.chkLightDirectional.Checked = true;
-            this.chkLightDirectional.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLightDirectional.Location = new System.Drawing.Point(215, 36);
-            this.chkLightDirectional.Name = "chkLightDirectional";
-            this.chkLightDirectional.Size = new System.Drawing.Size(76, 17);
-            this.chkLightDirectional.TabIndex = 45;
-            this.chkLightDirectional.Text = "Directional";
-            this.chkLightDirectional.UseVisualStyleBackColor = true;
-            this.chkLightDirectional.Visible = false;
-            this.chkLightDirectional.CheckedChanged += new System.EventHandler(this.chkLightDirectional_CheckedChanged);
+            chkLightDirectional.AutoSize = true;
+            chkLightDirectional.Checked = true;
+            chkLightDirectional.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkLightDirectional.Location = new System.Drawing.Point(215, 36);
+            chkLightDirectional.Name = "chkLightDirectional";
+            chkLightDirectional.Size = new System.Drawing.Size(76, 17);
+            chkLightDirectional.TabIndex = 45;
+            chkLightDirectional.Text = "Directional";
+            chkLightDirectional.UseVisualStyleBackColor = true;
+            chkLightDirectional.Visible = false;
+            chkLightDirectional.CheckedChanged += new System.EventHandler(chkLightDirectional_CheckedChanged);
             // 
             // chkLightEnabled
             // 
-            this.chkLightEnabled.AutoSize = true;
-            this.chkLightEnabled.Location = new System.Drawing.Point(215, 19);
-            this.chkLightEnabled.Name = "chkLightEnabled";
-            this.chkLightEnabled.Size = new System.Drawing.Size(65, 17);
-            this.chkLightEnabled.TabIndex = 44;
-            this.chkLightEnabled.Text = "Enabled";
-            this.chkLightEnabled.UseVisualStyleBackColor = true;
-            this.chkLightEnabled.CheckedChanged += new System.EventHandler(this.chkLightEnabled_CheckedChanged);
+            chkLightEnabled.AutoSize = true;
+            chkLightEnabled.Location = new System.Drawing.Point(215, 19);
+            chkLightEnabled.Name = "chkLightEnabled";
+            chkLightEnabled.Size = new System.Drawing.Size(65, 17);
+            chkLightEnabled.TabIndex = 44;
+            chkLightEnabled.Text = "Enabled";
+            chkLightEnabled.UseVisualStyleBackColor = true;
+            chkLightEnabled.CheckedChanged += new System.EventHandler(chkLightEnabled_CheckedChanged);
             // 
             // label23
             // 
-            this.label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label23.Location = new System.Drawing.Point(235, 138);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(40, 20);
-            this.label23.TabIndex = 43;
-            this.label23.Click += new System.EventHandler(this.label23_Click);
+            label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label23.Location = new System.Drawing.Point(235, 138);
+            label23.Name = "label23";
+            label23.Size = new System.Drawing.Size(40, 20);
+            label23.TabIndex = 43;
+            label23.Click += new System.EventHandler(label23_Click);
             // 
             // label22
             // 
-            this.label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label22.Location = new System.Drawing.Point(235, 119);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(40, 20);
-            this.label22.TabIndex = 42;
-            this.label22.Click += new System.EventHandler(this.label22_Click);
+            label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label22.Location = new System.Drawing.Point(235, 119);
+            label22.Name = "label22";
+            label22.Size = new System.Drawing.Size(40, 20);
+            label22.TabIndex = 42;
+            label22.Click += new System.EventHandler(label22_Click);
             // 
             // label21
             // 
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.Location = new System.Drawing.Point(235, 100);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(40, 20);
-            this.label21.TabIndex = 41;
-            this.label21.Click += new System.EventHandler(this.label21_Click);
+            label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label21.Location = new System.Drawing.Point(235, 100);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(40, 20);
+            label21.TabIndex = 41;
+            label21.Click += new System.EventHandler(label21_Click);
             // 
             // label19
             // 
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Location = new System.Drawing.Point(235, 81);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 20);
-            this.label19.TabIndex = 11;
-            this.label19.Click += new System.EventHandler(this.label19_Click);
+            label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label19.Location = new System.Drawing.Point(235, 81);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(40, 20);
+            label19.TabIndex = 11;
+            label19.Click += new System.EventHandler(label19_Click);
             // 
             // ez
             // 
-            this.ez.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ez.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ez.Integral = false;
-            this.ez.Location = new System.Drawing.Point(186, 138);
-            this.ez.MaximumValue = 3.402823E+38F;
-            this.ez.MinimumValue = -3.402823E+38F;
-            this.ez.Name = "ez";
-            this.ez.Size = new System.Drawing.Size(50, 20);
-            this.ez.TabIndex = 40;
-            this.ez.Text = "0";
+            ez.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            ez.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ez.Integral = false;
+            ez.Location = new System.Drawing.Point(186, 138);
+            ez.MaximumValue = 3.402823E+38F;
+            ez.MinimumValue = -3.402823E+38F;
+            ez.Name = "ez";
+            ez.Size = new System.Drawing.Size(50, 20);
+            ez.TabIndex = 40;
+            ez.Text = "0";
             // 
             // ey
             // 
-            this.ey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ey.Integral = false;
-            this.ey.Location = new System.Drawing.Point(137, 138);
-            this.ey.MaximumValue = 3.402823E+38F;
-            this.ey.MinimumValue = -3.402823E+38F;
-            this.ey.Name = "ey";
-            this.ey.Size = new System.Drawing.Size(50, 20);
-            this.ey.TabIndex = 39;
-            this.ey.Text = "0";
+            ey.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            ey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ey.Integral = false;
+            ey.Location = new System.Drawing.Point(137, 138);
+            ey.MaximumValue = 3.402823E+38F;
+            ey.MinimumValue = -3.402823E+38F;
+            ey.Name = "ey";
+            ey.Size = new System.Drawing.Size(50, 20);
+            ey.TabIndex = 39;
+            ey.Text = "0";
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(33, 138);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 20);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "Emission:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label8.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label8.Location = new System.Drawing.Point(33, 138);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(56, 20);
+            label8.TabIndex = 38;
+            label8.Text = "Emission:";
+            label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ex
             // 
-            this.ex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ex.Integral = false;
-            this.ex.Location = new System.Drawing.Point(88, 138);
-            this.ex.MaximumValue = 3.402823E+38F;
-            this.ex.MinimumValue = -3.402823E+38F;
-            this.ex.Name = "ex";
-            this.ex.Size = new System.Drawing.Size(50, 20);
-            this.ex.TabIndex = 37;
-            this.ex.Text = "0";
+            ex.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            ex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ex.Integral = false;
+            ex.Location = new System.Drawing.Point(88, 138);
+            ex.MaximumValue = 3.402823E+38F;
+            ex.MinimumValue = -3.402823E+38F;
+            ex.Name = "ex";
+            ex.Size = new System.Drawing.Size(50, 20);
+            ex.TabIndex = 37;
+            ex.Text = "0";
             // 
             // label17
             // 
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Location = new System.Drawing.Point(143, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 20);
-            this.label17.TabIndex = 36;
-            this.label17.Text = "Elevation";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label17.Location = new System.Drawing.Point(143, 16);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(66, 20);
+            label17.TabIndex = 36;
+            label17.Text = "Elevation";
+            label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label16
             // 
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Location = new System.Drawing.Point(75, 16);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(66, 20);
-            this.label16.TabIndex = 35;
-            this.label16.Text = "Azimuth";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label16.Location = new System.Drawing.Point(75, 16);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(66, 20);
+            label16.TabIndex = 35;
+            label16.Text = "Azimuth";
+            label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sz
             // 
-            this.sz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sz.Integral = false;
-            this.sz.Location = new System.Drawing.Point(186, 119);
-            this.sz.MaximumValue = 3.402823E+38F;
-            this.sz.MinimumValue = -3.402823E+38F;
-            this.sz.Name = "sz";
-            this.sz.Size = new System.Drawing.Size(50, 20);
-            this.sz.TabIndex = 30;
-            this.sz.Text = "0";
+            sz.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            sz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            sz.Integral = false;
+            sz.Location = new System.Drawing.Point(186, 119);
+            sz.MaximumValue = 3.402823E+38F;
+            sz.MinimumValue = -3.402823E+38F;
+            sz.Name = "sz";
+            sz.Size = new System.Drawing.Size(50, 20);
+            sz.TabIndex = 30;
+            sz.Text = "0";
             // 
             // dz
             // 
-            this.dz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dz.Integral = false;
-            this.dz.Location = new System.Drawing.Point(186, 100);
-            this.dz.MaximumValue = 3.402823E+38F;
-            this.dz.MinimumValue = -3.402823E+38F;
-            this.dz.Name = "dz";
-            this.dz.Size = new System.Drawing.Size(50, 20);
-            this.dz.TabIndex = 29;
-            this.dz.Text = "0";
+            dz.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            dz.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            dz.Integral = false;
+            dz.Location = new System.Drawing.Point(186, 100);
+            dz.MaximumValue = 3.402823E+38F;
+            dz.MinimumValue = -3.402823E+38F;
+            dz.Name = "dz";
+            dz.Size = new System.Drawing.Size(50, 20);
+            dz.TabIndex = 29;
+            dz.Text = "0";
             // 
             // radius
             // 
-            this.radius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.radius.Integral = false;
-            this.radius.Location = new System.Drawing.Point(6, 35);
-            this.radius.MaximumValue = 3.402823E+38F;
-            this.radius.MinimumValue = -3.402823E+38F;
-            this.radius.Name = "radius";
-            this.radius.Size = new System.Drawing.Size(66, 20);
-            this.radius.TabIndex = 4;
-            this.radius.Text = "0";
+            radius.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            radius.Integral = false;
+            radius.Location = new System.Drawing.Point(6, 35);
+            radius.MaximumValue = 3.402823E+38F;
+            radius.MinimumValue = -3.402823E+38F;
+            radius.Name = "radius";
+            radius.Size = new System.Drawing.Size(66, 20);
+            radius.TabIndex = 4;
+            radius.Text = "0";
             // 
             // az
             // 
-            this.az.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.az.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.az.Integral = false;
-            this.az.Location = new System.Drawing.Point(186, 81);
-            this.az.MaximumValue = 3.402823E+38F;
-            this.az.MinimumValue = -3.402823E+38F;
-            this.az.Name = "az";
-            this.az.Size = new System.Drawing.Size(50, 20);
-            this.az.TabIndex = 27;
-            this.az.Text = "0";
+            az.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            az.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            az.Integral = false;
+            az.Location = new System.Drawing.Point(186, 81);
+            az.MaximumValue = 3.402823E+38F;
+            az.MinimumValue = -3.402823E+38F;
+            az.Name = "az";
+            az.Size = new System.Drawing.Size(50, 20);
+            az.TabIndex = 27;
+            az.Text = "0";
             // 
             // elevation
             // 
-            this.elevation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.elevation.Integral = false;
-            this.elevation.Location = new System.Drawing.Point(143, 35);
-            this.elevation.MaximumValue = 3.402823E+38F;
-            this.elevation.MinimumValue = -3.402823E+38F;
-            this.elevation.Name = "elevation";
-            this.elevation.Size = new System.Drawing.Size(66, 20);
-            this.elevation.TabIndex = 28;
-            this.elevation.Text = "0";
+            elevation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            elevation.Integral = false;
+            elevation.Location = new System.Drawing.Point(143, 35);
+            elevation.MaximumValue = 3.402823E+38F;
+            elevation.MinimumValue = -3.402823E+38F;
+            elevation.Name = "elevation";
+            elevation.Size = new System.Drawing.Size(66, 20);
+            elevation.TabIndex = 28;
+            elevation.Text = "0";
             // 
             // sy
             // 
-            this.sy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sy.Integral = false;
-            this.sy.Location = new System.Drawing.Point(137, 119);
-            this.sy.MaximumValue = 3.402823E+38F;
-            this.sy.MinimumValue = -3.402823E+38F;
-            this.sy.Name = "sy";
-            this.sy.Size = new System.Drawing.Size(50, 20);
-            this.sy.TabIndex = 26;
-            this.sy.Text = "0";
+            sy.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            sy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            sy.Integral = false;
+            sy.Location = new System.Drawing.Point(137, 119);
+            sy.MaximumValue = 3.402823E+38F;
+            sy.MinimumValue = -3.402823E+38F;
+            sy.Name = "sy";
+            sy.Size = new System.Drawing.Size(50, 20);
+            sy.TabIndex = 26;
+            sy.Text = "0";
             // 
             // azimuth
             // 
-            this.azimuth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.azimuth.Integral = false;
-            this.azimuth.Location = new System.Drawing.Point(75, 35);
-            this.azimuth.MaximumValue = 3.402823E+38F;
-            this.azimuth.MinimumValue = -3.402823E+38F;
-            this.azimuth.Name = "azimuth";
-            this.azimuth.Size = new System.Drawing.Size(66, 20);
-            this.azimuth.TabIndex = 24;
-            this.azimuth.Text = "0";
+            azimuth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            azimuth.Integral = false;
+            azimuth.Location = new System.Drawing.Point(75, 35);
+            azimuth.MaximumValue = 3.402823E+38F;
+            azimuth.MinimumValue = -3.402823E+38F;
+            azimuth.Name = "azimuth";
+            azimuth.Size = new System.Drawing.Size(66, 20);
+            azimuth.TabIndex = 24;
+            azimuth.Text = "0";
             // 
             // dy
             // 
-            this.dy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dy.Integral = false;
-            this.dy.Location = new System.Drawing.Point(137, 100);
-            this.dy.MaximumValue = 3.402823E+38F;
-            this.dy.MinimumValue = -3.402823E+38F;
-            this.dy.Name = "dy";
-            this.dy.Size = new System.Drawing.Size(50, 20);
-            this.dy.TabIndex = 25;
-            this.dy.Text = "0";
+            dy.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            dy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            dy.Integral = false;
+            dy.Location = new System.Drawing.Point(137, 100);
+            dy.MaximumValue = 3.402823E+38F;
+            dy.MinimumValue = -3.402823E+38F;
+            dy.Name = "dy";
+            dy.Size = new System.Drawing.Size(50, 20);
+            dy.TabIndex = 25;
+            dy.Text = "0";
             // 
             // ay
             // 
-            this.ay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ay.Integral = false;
-            this.ay.Location = new System.Drawing.Point(137, 81);
-            this.ay.MaximumValue = 3.402823E+38F;
-            this.ay.MinimumValue = -3.402823E+38F;
-            this.ay.Name = "ay";
-            this.ay.Size = new System.Drawing.Size(50, 20);
-            this.ay.TabIndex = 23;
-            this.ay.Text = "0";
+            ay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            ay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ay.Integral = false;
+            ay.Location = new System.Drawing.Point(137, 81);
+            ay.MaximumValue = 3.402823E+38F;
+            ay.MinimumValue = -3.402823E+38F;
+            ay.Name = "ay";
+            ay.Size = new System.Drawing.Size(50, 20);
+            ay.TabIndex = 23;
+            ay.Text = "0";
             // 
             // sx
             // 
-            this.sx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.sx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sx.Integral = false;
-            this.sx.Location = new System.Drawing.Point(88, 119);
-            this.sx.MaximumValue = 3.402823E+38F;
-            this.sx.MinimumValue = -3.402823E+38F;
-            this.sx.Name = "sx";
-            this.sx.Size = new System.Drawing.Size(50, 20);
-            this.sx.TabIndex = 6;
-            this.sx.Text = "0";
+            sx.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            sx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            sx.Integral = false;
+            sx.Location = new System.Drawing.Point(88, 119);
+            sx.MaximumValue = 3.402823E+38F;
+            sx.MinimumValue = -3.402823E+38F;
+            sx.Name = "sx";
+            sx.Size = new System.Drawing.Size(50, 20);
+            sx.TabIndex = 6;
+            sx.Text = "0";
             // 
             // dx
             // 
-            this.dx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dx.Integral = false;
-            this.dx.Location = new System.Drawing.Point(88, 100);
-            this.dx.MaximumValue = 3.402823E+38F;
-            this.dx.MinimumValue = -3.402823E+38F;
-            this.dx.Name = "dx";
-            this.dx.Size = new System.Drawing.Size(50, 20);
-            this.dx.TabIndex = 5;
-            this.dx.Text = "0";
+            dx.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            dx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            dx.Integral = false;
+            dx.Location = new System.Drawing.Point(88, 100);
+            dx.MaximumValue = 3.402823E+38F;
+            dx.MinimumValue = -3.402823E+38F;
+            dx.Name = "dx";
+            dx.Size = new System.Drawing.Size(50, 20);
+            dx.TabIndex = 5;
+            dx.Text = "0";
             // 
             // ax
             // 
-            this.ax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ax.Integral = false;
-            this.ax.Location = new System.Drawing.Point(88, 81);
-            this.ax.MaximumValue = 3.402823E+38F;
-            this.ax.MinimumValue = -3.402823E+38F;
-            this.ax.Name = "ax";
-            this.ax.Size = new System.Drawing.Size(50, 20);
-            this.ax.TabIndex = 3;
-            this.ax.Text = "0";
+            ax.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            ax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            ax.Integral = false;
+            ax.Location = new System.Drawing.Point(88, 81);
+            ax.MaximumValue = 3.402823E+38F;
+            ax.MinimumValue = -3.402823E+38F;
+            ax.Name = "ax";
+            ax.Size = new System.Drawing.Size(50, 20);
+            ax.TabIndex = 3;
+            ax.Text = "0";
             // 
             // grpProjection
             // 
-            this.grpProjection.Controls.Add(this.groupBox2);
-            this.grpProjection.Controls.Add(this.label25);
-            this.grpProjection.Controls.Add(this.cboProjection);
-            this.grpProjection.Controls.Add(this.farZ);
-            this.grpProjection.Controls.Add(this.nearZ);
-            this.grpProjection.Controls.Add(this.yFov);
-            this.grpProjection.Controls.Add(this.zScale);
-            this.grpProjection.Controls.Add(this.tScale);
-            this.grpProjection.Controls.Add(this.rScale);
-            this.grpProjection.Controls.Add(this.label14);
-            this.grpProjection.Controls.Add(this.label13);
-            this.grpProjection.Controls.Add(this.label12);
-            this.grpProjection.Controls.Add(this.label11);
-            this.grpProjection.Controls.Add(this.label10);
-            this.grpProjection.Controls.Add(this.label9);
-            this.grpProjection.Location = new System.Drawing.Point(6, 6);
-            this.grpProjection.Name = "grpProjection";
-            this.grpProjection.Size = new System.Drawing.Size(310, 187);
-            this.grpProjection.TabIndex = 36;
-            this.grpProjection.TabStop = false;
-            this.grpProjection.Text = "Camera";
+            grpProjection.Controls.Add(groupBox2);
+            grpProjection.Controls.Add(label25);
+            grpProjection.Controls.Add(cboProjection);
+            grpProjection.Controls.Add(farZ);
+            grpProjection.Controls.Add(nearZ);
+            grpProjection.Controls.Add(yFov);
+            grpProjection.Controls.Add(zScale);
+            grpProjection.Controls.Add(tScale);
+            grpProjection.Controls.Add(rScale);
+            grpProjection.Controls.Add(label14);
+            grpProjection.Controls.Add(label13);
+            grpProjection.Controls.Add(label12);
+            grpProjection.Controls.Add(label11);
+            grpProjection.Controls.Add(label10);
+            grpProjection.Controls.Add(label9);
+            grpProjection.Location = new System.Drawing.Point(6, 6);
+            grpProjection.Name = "grpProjection";
+            grpProjection.Size = new System.Drawing.Size(310, 187);
+            grpProjection.TabIndex = 36;
+            grpProjection.TabStop = false;
+            grpProjection.Text = "Camera";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chkDefaultPos);
-            this.groupBox2.Controls.Add(this.chkCurrentPos);
-            this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.numPosTX);
-            this.groupBox2.Controls.Add(this.label27);
-            this.groupBox2.Controls.Add(this.numPosTY);
-            this.groupBox2.Controls.Add(this.label28);
-            this.groupBox2.Controls.Add(this.numPosTZ);
-            this.groupBox2.Controls.Add(this.numPosSX);
-            this.groupBox2.Controls.Add(this.numPosRZ);
-            this.groupBox2.Controls.Add(this.numPosSY);
-            this.groupBox2.Controls.Add(this.numPosRY);
-            this.groupBox2.Controls.Add(this.numPosSZ);
-            this.groupBox2.Controls.Add(this.numPosRX);
-            this.groupBox2.Location = new System.Drawing.Point(6, 105);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(297, 76);
-            this.groupBox2.TabIndex = 26;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Position";
+            groupBox2.Controls.Add(chkDefaultPos);
+            groupBox2.Controls.Add(chkCurrentPos);
+            groupBox2.Controls.Add(label26);
+            groupBox2.Controls.Add(numPosTX);
+            groupBox2.Controls.Add(label27);
+            groupBox2.Controls.Add(numPosTY);
+            groupBox2.Controls.Add(label28);
+            groupBox2.Controls.Add(numPosTZ);
+            groupBox2.Controls.Add(numPosSX);
+            groupBox2.Controls.Add(numPosRZ);
+            groupBox2.Controls.Add(numPosSY);
+            groupBox2.Controls.Add(numPosRY);
+            groupBox2.Controls.Add(numPosSZ);
+            groupBox2.Controls.Add(numPosRX);
+            groupBox2.Location = new System.Drawing.Point(6, 105);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(297, 76);
+            groupBox2.TabIndex = 26;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Position";
             // 
             // chkDefaultPos
             // 
-            this.chkDefaultPos.AutoSize = true;
-            this.chkDefaultPos.Location = new System.Drawing.Point(230, 44);
-            this.chkDefaultPos.Name = "chkDefaultPos";
-            this.chkDefaultPos.Size = new System.Drawing.Size(59, 17);
-            this.chkDefaultPos.TabIndex = 27;
-            this.chkDefaultPos.Text = "Default";
-            this.chkDefaultPos.UseVisualStyleBackColor = true;
-            this.chkDefaultPos.CheckedChanged += new System.EventHandler(this.chkDefaultPos_CheckedChanged);
+            chkDefaultPos.AutoSize = true;
+            chkDefaultPos.Location = new System.Drawing.Point(230, 44);
+            chkDefaultPos.Name = "chkDefaultPos";
+            chkDefaultPos.Size = new System.Drawing.Size(59, 17);
+            chkDefaultPos.TabIndex = 27;
+            chkDefaultPos.Text = "Default";
+            chkDefaultPos.UseVisualStyleBackColor = true;
+            chkDefaultPos.CheckedChanged += new System.EventHandler(chkDefaultPos_CheckedChanged);
             // 
             // chkCurrentPos
             // 
-            this.chkCurrentPos.AutoSize = true;
-            this.chkCurrentPos.Checked = true;
-            this.chkCurrentPos.Location = new System.Drawing.Point(230, 21);
-            this.chkCurrentPos.Name = "chkCurrentPos";
-            this.chkCurrentPos.Size = new System.Drawing.Size(59, 17);
-            this.chkCurrentPos.TabIndex = 26;
-            this.chkCurrentPos.TabStop = true;
-            this.chkCurrentPos.Text = "Current";
-            this.chkCurrentPos.UseVisualStyleBackColor = true;
-            this.chkCurrentPos.CheckedChanged += new System.EventHandler(this.chkCurrentPos_CheckedChanged);
+            chkCurrentPos.AutoSize = true;
+            chkCurrentPos.Checked = true;
+            chkCurrentPos.Location = new System.Drawing.Point(230, 21);
+            chkCurrentPos.Name = "chkCurrentPos";
+            chkCurrentPos.Size = new System.Drawing.Size(59, 17);
+            chkCurrentPos.TabIndex = 26;
+            chkCurrentPos.TabStop = true;
+            chkCurrentPos.Text = "Current";
+            chkCurrentPos.UseVisualStyleBackColor = true;
+            chkCurrentPos.CheckedChanged += new System.EventHandler(chkCurrentPos_CheckedChanged);
             // 
             // label26
             // 
-            this.label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label26.Location = new System.Drawing.Point(6, 13);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(71, 20);
-            this.label26.TabIndex = 14;
-            this.label26.Text = "Scale: ";
-            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label26.Location = new System.Drawing.Point(6, 13);
+            label26.Name = "label26";
+            label26.Size = new System.Drawing.Size(71, 20);
+            label26.TabIndex = 14;
+            label26.Text = "Scale: ";
+            label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numPosTX
             // 
-            this.numPosTX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosTX.Integral = false;
-            this.numPosTX.Location = new System.Drawing.Point(76, 51);
-            this.numPosTX.MaximumValue = 3.402823E+38F;
-            this.numPosTX.MinimumValue = -3.402823E+38F;
-            this.numPosTX.Name = "numPosTX";
-            this.numPosTX.Size = new System.Drawing.Size(50, 20);
-            this.numPosTX.TabIndex = 25;
-            this.numPosTX.Text = "0";
+            numPosTX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosTX.Integral = false;
+            numPosTX.Location = new System.Drawing.Point(76, 51);
+            numPosTX.MaximumValue = 3.402823E+38F;
+            numPosTX.MinimumValue = -3.402823E+38F;
+            numPosTX.Name = "numPosTX";
+            numPosTX.Size = new System.Drawing.Size(50, 20);
+            numPosTX.TabIndex = 25;
+            numPosTX.Text = "0";
             // 
             // label27
             // 
-            this.label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label27.Location = new System.Drawing.Point(6, 32);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(71, 20);
-            this.label27.TabIndex = 15;
-            this.label27.Text = "Rotation:";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label27.Location = new System.Drawing.Point(6, 32);
+            label27.Name = "label27";
+            label27.Size = new System.Drawing.Size(71, 20);
+            label27.TabIndex = 15;
+            label27.Text = "Rotation:";
+            label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numPosTY
             // 
-            this.numPosTY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosTY.Integral = false;
-            this.numPosTY.Location = new System.Drawing.Point(125, 51);
-            this.numPosTY.MaximumValue = 3.402823E+38F;
-            this.numPosTY.MinimumValue = -3.402823E+38F;
-            this.numPosTY.Name = "numPosTY";
-            this.numPosTY.Size = new System.Drawing.Size(50, 20);
-            this.numPosTY.TabIndex = 24;
-            this.numPosTY.Text = "0";
+            numPosTY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosTY.Integral = false;
+            numPosTY.Location = new System.Drawing.Point(125, 51);
+            numPosTY.MaximumValue = 3.402823E+38F;
+            numPosTY.MinimumValue = -3.402823E+38F;
+            numPosTY.Name = "numPosTY";
+            numPosTY.Size = new System.Drawing.Size(50, 20);
+            numPosTY.TabIndex = 24;
+            numPosTY.Text = "0";
             // 
             // label28
             // 
-            this.label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label28.Location = new System.Drawing.Point(6, 51);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(71, 20);
-            this.label28.TabIndex = 16;
-            this.label28.Text = "Translation:";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label28.Location = new System.Drawing.Point(6, 51);
+            label28.Name = "label28";
+            label28.Size = new System.Drawing.Size(71, 20);
+            label28.TabIndex = 16;
+            label28.Text = "Translation:";
+            label28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numPosTZ
             // 
-            this.numPosTZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosTZ.Integral = false;
-            this.numPosTZ.Location = new System.Drawing.Point(174, 51);
-            this.numPosTZ.MaximumValue = 3.402823E+38F;
-            this.numPosTZ.MinimumValue = -3.402823E+38F;
-            this.numPosTZ.Name = "numPosTZ";
-            this.numPosTZ.Size = new System.Drawing.Size(50, 20);
-            this.numPosTZ.TabIndex = 23;
-            this.numPosTZ.Text = "0";
+            numPosTZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosTZ.Integral = false;
+            numPosTZ.Location = new System.Drawing.Point(174, 51);
+            numPosTZ.MaximumValue = 3.402823E+38F;
+            numPosTZ.MinimumValue = -3.402823E+38F;
+            numPosTZ.Name = "numPosTZ";
+            numPosTZ.Size = new System.Drawing.Size(50, 20);
+            numPosTZ.TabIndex = 23;
+            numPosTZ.Text = "0";
             // 
             // numPosSX
             // 
-            this.numPosSX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosSX.Integral = false;
-            this.numPosSX.Location = new System.Drawing.Point(76, 13);
-            this.numPosSX.MaximumValue = 3.402823E+38F;
-            this.numPosSX.MinimumValue = -3.402823E+38F;
-            this.numPosSX.Name = "numPosSX";
-            this.numPosSX.Size = new System.Drawing.Size(50, 20);
-            this.numPosSX.TabIndex = 17;
-            this.numPosSX.Text = "0";
+            numPosSX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosSX.Integral = false;
+            numPosSX.Location = new System.Drawing.Point(76, 13);
+            numPosSX.MaximumValue = 3.402823E+38F;
+            numPosSX.MinimumValue = -3.402823E+38F;
+            numPosSX.Name = "numPosSX";
+            numPosSX.Size = new System.Drawing.Size(50, 20);
+            numPosSX.TabIndex = 17;
+            numPosSX.Text = "0";
             // 
             // numPosRZ
             // 
-            this.numPosRZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosRZ.Integral = false;
-            this.numPosRZ.Location = new System.Drawing.Point(174, 32);
-            this.numPosRZ.MaximumValue = 3.402823E+38F;
-            this.numPosRZ.MinimumValue = -3.402823E+38F;
-            this.numPosRZ.Name = "numPosRZ";
-            this.numPosRZ.Size = new System.Drawing.Size(50, 20);
-            this.numPosRZ.TabIndex = 22;
-            this.numPosRZ.Text = "0";
+            numPosRZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosRZ.Integral = false;
+            numPosRZ.Location = new System.Drawing.Point(174, 32);
+            numPosRZ.MaximumValue = 3.402823E+38F;
+            numPosRZ.MinimumValue = -3.402823E+38F;
+            numPosRZ.Name = "numPosRZ";
+            numPosRZ.Size = new System.Drawing.Size(50, 20);
+            numPosRZ.TabIndex = 22;
+            numPosRZ.Text = "0";
             // 
             // numPosSY
             // 
-            this.numPosSY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosSY.Integral = false;
-            this.numPosSY.Location = new System.Drawing.Point(125, 13);
-            this.numPosSY.MaximumValue = 3.402823E+38F;
-            this.numPosSY.MinimumValue = -3.402823E+38F;
-            this.numPosSY.Name = "numPosSY";
-            this.numPosSY.Size = new System.Drawing.Size(50, 20);
-            this.numPosSY.TabIndex = 18;
-            this.numPosSY.Text = "0";
+            numPosSY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosSY.Integral = false;
+            numPosSY.Location = new System.Drawing.Point(125, 13);
+            numPosSY.MaximumValue = 3.402823E+38F;
+            numPosSY.MinimumValue = -3.402823E+38F;
+            numPosSY.Name = "numPosSY";
+            numPosSY.Size = new System.Drawing.Size(50, 20);
+            numPosSY.TabIndex = 18;
+            numPosSY.Text = "0";
             // 
             // numPosRY
             // 
-            this.numPosRY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosRY.Integral = false;
-            this.numPosRY.Location = new System.Drawing.Point(125, 32);
-            this.numPosRY.MaximumValue = 3.402823E+38F;
-            this.numPosRY.MinimumValue = -3.402823E+38F;
-            this.numPosRY.Name = "numPosRY";
-            this.numPosRY.Size = new System.Drawing.Size(50, 20);
-            this.numPosRY.TabIndex = 21;
-            this.numPosRY.Text = "0";
+            numPosRY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosRY.Integral = false;
+            numPosRY.Location = new System.Drawing.Point(125, 32);
+            numPosRY.MaximumValue = 3.402823E+38F;
+            numPosRY.MinimumValue = -3.402823E+38F;
+            numPosRY.Name = "numPosRY";
+            numPosRY.Size = new System.Drawing.Size(50, 20);
+            numPosRY.TabIndex = 21;
+            numPosRY.Text = "0";
             // 
             // numPosSZ
             // 
-            this.numPosSZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosSZ.Integral = false;
-            this.numPosSZ.Location = new System.Drawing.Point(174, 13);
-            this.numPosSZ.MaximumValue = 3.402823E+38F;
-            this.numPosSZ.MinimumValue = -3.402823E+38F;
-            this.numPosSZ.Name = "numPosSZ";
-            this.numPosSZ.Size = new System.Drawing.Size(50, 20);
-            this.numPosSZ.TabIndex = 19;
-            this.numPosSZ.Text = "0";
+            numPosSZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosSZ.Integral = false;
+            numPosSZ.Location = new System.Drawing.Point(174, 13);
+            numPosSZ.MaximumValue = 3.402823E+38F;
+            numPosSZ.MinimumValue = -3.402823E+38F;
+            numPosSZ.Name = "numPosSZ";
+            numPosSZ.Size = new System.Drawing.Size(50, 20);
+            numPosSZ.TabIndex = 19;
+            numPosSZ.Text = "0";
             // 
             // numPosRX
             // 
-            this.numPosRX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numPosRX.Integral = false;
-            this.numPosRX.Location = new System.Drawing.Point(76, 32);
-            this.numPosRX.MaximumValue = 3.402823E+38F;
-            this.numPosRX.MinimumValue = -3.402823E+38F;
-            this.numPosRX.Name = "numPosRX";
-            this.numPosRX.Size = new System.Drawing.Size(50, 20);
-            this.numPosRX.TabIndex = 20;
-            this.numPosRX.Text = "0";
+            numPosRX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosRX.Integral = false;
+            numPosRX.Location = new System.Drawing.Point(76, 32);
+            numPosRX.MaximumValue = 3.402823E+38F;
+            numPosRX.MinimumValue = -3.402823E+38F;
+            numPosRX.Name = "numPosRX";
+            numPosRX.Size = new System.Drawing.Size(50, 20);
+            numPosRX.TabIndex = 20;
+            numPosRX.Text = "0";
             // 
             // label25
             // 
-            this.label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label25.Location = new System.Drawing.Point(6, 21);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(100, 21);
-            this.label25.TabIndex = 13;
-            this.label25.Text = "Projection:";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label25.Location = new System.Drawing.Point(6, 21);
+            label25.Name = "label25";
+            label25.Size = new System.Drawing.Size(100, 21);
+            label25.TabIndex = 13;
+            label25.Text = "Projection:";
+            label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cboProjection
             // 
-            this.cboProjection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProjection.FormattingEnabled = true;
-            this.cboProjection.Location = new System.Drawing.Point(105, 21);
-            this.cboProjection.Name = "cboProjection";
-            this.cboProjection.Size = new System.Drawing.Size(198, 21);
-            this.cboProjection.TabIndex = 12;
-            this.cboProjection.SelectedIndexChanged += new System.EventHandler(this.cboProjection_SelectedIndexChanged);
+            cboProjection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboProjection.FormattingEnabled = true;
+            cboProjection.Location = new System.Drawing.Point(105, 21);
+            cboProjection.Name = "cboProjection";
+            cboProjection.Size = new System.Drawing.Size(198, 21);
+            cboProjection.TabIndex = 12;
+            cboProjection.SelectedIndexChanged += new System.EventHandler(cboProjection_SelectedIndexChanged);
             // 
             // farZ
             // 
-            this.farZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.farZ.Integral = false;
-            this.farZ.Location = new System.Drawing.Point(243, 79);
-            this.farZ.MaximumValue = 3.402823E+38F;
-            this.farZ.MinimumValue = -3.402823E+38F;
-            this.farZ.Name = "farZ";
-            this.farZ.Size = new System.Drawing.Size(60, 20);
-            this.farZ.TabIndex = 11;
-            this.farZ.Text = "0";
+            farZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            farZ.Integral = false;
+            farZ.Location = new System.Drawing.Point(243, 79);
+            farZ.MaximumValue = 3.402823E+38F;
+            farZ.MinimumValue = -3.402823E+38F;
+            farZ.Name = "farZ";
+            farZ.Size = new System.Drawing.Size(60, 20);
+            farZ.TabIndex = 11;
+            farZ.Text = "0";
             // 
             // nearZ
             // 
-            this.nearZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nearZ.Integral = false;
-            this.nearZ.Location = new System.Drawing.Point(243, 60);
-            this.nearZ.MaximumValue = 3.402823E+38F;
-            this.nearZ.MinimumValue = -3.402823E+38F;
-            this.nearZ.Name = "nearZ";
-            this.nearZ.Size = new System.Drawing.Size(60, 20);
-            this.nearZ.TabIndex = 10;
-            this.nearZ.Text = "0";
+            nearZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            nearZ.Integral = false;
+            nearZ.Location = new System.Drawing.Point(243, 60);
+            nearZ.MaximumValue = 3.402823E+38F;
+            nearZ.MinimumValue = -3.402823E+38F;
+            nearZ.Name = "nearZ";
+            nearZ.Size = new System.Drawing.Size(60, 20);
+            nearZ.TabIndex = 10;
+            nearZ.Text = "0";
             // 
             // yFov
             // 
-            this.yFov.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.yFov.Integral = false;
-            this.yFov.Location = new System.Drawing.Point(243, 41);
-            this.yFov.MaximumValue = 3.402823E+38F;
-            this.yFov.MinimumValue = -3.402823E+38F;
-            this.yFov.Name = "yFov";
-            this.yFov.Size = new System.Drawing.Size(60, 20);
-            this.yFov.TabIndex = 9;
-            this.yFov.Text = "0";
+            yFov.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            yFov.Integral = false;
+            yFov.Location = new System.Drawing.Point(243, 41);
+            yFov.MaximumValue = 3.402823E+38F;
+            yFov.MinimumValue = -3.402823E+38F;
+            yFov.Name = "yFov";
+            yFov.Size = new System.Drawing.Size(60, 20);
+            yFov.TabIndex = 9;
+            yFov.Text = "0";
             // 
             // zScale
             // 
-            this.zScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.zScale.Integral = false;
-            this.zScale.Location = new System.Drawing.Point(105, 79);
-            this.zScale.MaximumValue = 3.402823E+38F;
-            this.zScale.MinimumValue = -3.402823E+38F;
-            this.zScale.Name = "zScale";
-            this.zScale.Size = new System.Drawing.Size(50, 20);
-            this.zScale.TabIndex = 8;
-            this.zScale.Text = "0";
+            zScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            zScale.Integral = false;
+            zScale.Location = new System.Drawing.Point(105, 79);
+            zScale.MaximumValue = 3.402823E+38F;
+            zScale.MinimumValue = -3.402823E+38F;
+            zScale.Name = "zScale";
+            zScale.Size = new System.Drawing.Size(50, 20);
+            zScale.TabIndex = 8;
+            zScale.Text = "0";
             // 
             // tScale
             // 
-            this.tScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tScale.Integral = false;
-            this.tScale.Location = new System.Drawing.Point(105, 60);
-            this.tScale.MaximumValue = 3.402823E+38F;
-            this.tScale.MinimumValue = -3.402823E+38F;
-            this.tScale.Name = "tScale";
-            this.tScale.Size = new System.Drawing.Size(50, 20);
-            this.tScale.TabIndex = 7;
-            this.tScale.Text = "0";
+            tScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            tScale.Integral = false;
+            tScale.Location = new System.Drawing.Point(105, 60);
+            tScale.MaximumValue = 3.402823E+38F;
+            tScale.MinimumValue = -3.402823E+38F;
+            tScale.Name = "tScale";
+            tScale.Size = new System.Drawing.Size(50, 20);
+            tScale.TabIndex = 7;
+            tScale.Text = "0";
             // 
             // rScale
             // 
-            this.rScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rScale.Integral = false;
-            this.rScale.Location = new System.Drawing.Point(105, 41);
-            this.rScale.MaximumValue = 3.402823E+38F;
-            this.rScale.MinimumValue = -3.402823E+38F;
-            this.rScale.Name = "rScale";
-            this.rScale.Size = new System.Drawing.Size(50, 20);
-            this.rScale.TabIndex = 6;
-            this.rScale.Text = "0";
+            rScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            rScale.Integral = false;
+            rScale.Location = new System.Drawing.Point(105, 41);
+            rScale.MaximumValue = 3.402823E+38F;
+            rScale.MinimumValue = -3.402823E+38F;
+            rScale.Name = "rScale";
+            rScale.Size = new System.Drawing.Size(50, 20);
+            rScale.TabIndex = 6;
+            rScale.Text = "0";
             // 
             // label14
             // 
-            this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Location = new System.Drawing.Point(154, 79);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(90, 20);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Far Z: ";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label14.Location = new System.Drawing.Point(154, 79);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(90, 20);
+            label14.TabIndex = 5;
+            label14.Text = "Far Z: ";
+            label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label13
             // 
-            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label13.Location = new System.Drawing.Point(154, 60);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 20);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Near Z: ";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label13.Location = new System.Drawing.Point(154, 60);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(90, 20);
+            label13.TabIndex = 4;
+            label13.Text = "Near Z: ";
+            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label12
             // 
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Location = new System.Drawing.Point(154, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(90, 20);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Y Field Of View: ";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label12.Location = new System.Drawing.Point(154, 41);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(90, 20);
+            label12.TabIndex = 3;
+            label12.Text = "Y Field Of View: ";
+            label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(6, 79);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 20);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Zoom Scale: ";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label11.Location = new System.Drawing.Point(6, 79);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(100, 20);
+            label11.TabIndex = 2;
+            label11.Text = "Zoom Scale: ";
+            label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label10
             // 
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Location = new System.Drawing.Point(6, 60);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 20);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Translation Scale: ";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label10.Location = new System.Drawing.Point(6, 60);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(100, 20);
+            label10.TabIndex = 1;
+            label10.Text = "Translation Scale: ";
+            label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label9
             // 
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Location = new System.Drawing.Point(6, 41);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 20);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Rotation Scale: ";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label9.Location = new System.Drawing.Point(6, 41);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(100, 20);
+            label9.TabIndex = 0;
+            label9.Text = "Rotation Scale: ";
+            label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // grpColors
             // 
-            this.grpColors.Controls.Add(this.lblCol1Color);
-            this.grpColors.Controls.Add(this.lblLineColor);
-            this.grpColors.Controls.Add(this.lblCol1Text);
-            this.grpColors.Controls.Add(this.lblLineText);
-            this.grpColors.Controls.Add(this.label24);
-            this.grpColors.Controls.Add(this.label20);
-            this.grpColors.Controls.Add(this.lblOrbColor);
-            this.grpColors.Controls.Add(this.lblOrbText);
-            this.grpColors.Controls.Add(this.label15);
-            this.grpColors.Location = new System.Drawing.Point(6, 6);
-            this.grpColors.Name = "grpColors";
-            this.grpColors.Size = new System.Drawing.Size(311, 84);
-            this.grpColors.TabIndex = 37;
-            this.grpColors.TabStop = false;
-            this.grpColors.Text = "Display Colors";
+            grpColors.Controls.Add(lblCol1Color);
+            grpColors.Controls.Add(lblLineColor);
+            grpColors.Controls.Add(lblCol1Text);
+            grpColors.Controls.Add(lblLineText);
+            grpColors.Controls.Add(label24);
+            grpColors.Controls.Add(label20);
+            grpColors.Controls.Add(lblOrbColor);
+            grpColors.Controls.Add(lblOrbText);
+            grpColors.Controls.Add(label15);
+            grpColors.Location = new System.Drawing.Point(6, 6);
+            grpColors.Name = "grpColors";
+            grpColors.Size = new System.Drawing.Size(311, 84);
+            grpColors.TabIndex = 37;
+            grpColors.TabStop = false;
+            grpColors.Text = "Display Colors";
             // 
             // lblCol1Color
             // 
-            this.lblCol1Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCol1Color.Location = new System.Drawing.Point(263, 54);
-            this.lblCol1Color.Name = "lblCol1Color";
-            this.lblCol1Color.Size = new System.Drawing.Size(40, 20);
-            this.lblCol1Color.TabIndex = 5;
-            this.lblCol1Color.Click += new System.EventHandler(this.lblCol1Color_Click);
+            lblCol1Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblCol1Color.Location = new System.Drawing.Point(263, 54);
+            lblCol1Color.Name = "lblCol1Color";
+            lblCol1Color.Size = new System.Drawing.Size(40, 20);
+            lblCol1Color.TabIndex = 5;
+            lblCol1Color.Click += new System.EventHandler(lblCol1Color_Click);
             // 
             // lblLineColor
             // 
-            this.lblLineColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLineColor.Location = new System.Drawing.Point(263, 35);
-            this.lblLineColor.Name = "lblLineColor";
-            this.lblLineColor.Size = new System.Drawing.Size(40, 20);
-            this.lblLineColor.TabIndex = 8;
-            this.lblLineColor.Click += new System.EventHandler(this.lblLineColor_Click);
+            lblLineColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblLineColor.Location = new System.Drawing.Point(263, 35);
+            lblLineColor.Name = "lblLineColor";
+            lblLineColor.Size = new System.Drawing.Size(40, 20);
+            lblLineColor.TabIndex = 8;
+            lblLineColor.Click += new System.EventHandler(lblLineColor_Click);
             // 
             // lblCol1Text
             // 
-            this.lblCol1Text.BackColor = System.Drawing.Color.White;
-            this.lblCol1Text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCol1Text.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCol1Text.Location = new System.Drawing.Point(105, 54);
-            this.lblCol1Text.Name = "lblCol1Text";
-            this.lblCol1Text.Size = new System.Drawing.Size(159, 20);
-            this.lblCol1Text.TabIndex = 7;
-            this.lblCol1Text.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblCol1Text.BackColor = System.Drawing.Color.White;
+            lblCol1Text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblCol1Text.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblCol1Text.Location = new System.Drawing.Point(105, 54);
+            lblCol1Text.Name = "lblCol1Text";
+            lblCol1Text.Size = new System.Drawing.Size(159, 20);
+            lblCol1Text.TabIndex = 7;
+            lblCol1Text.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblLineText
             // 
-            this.lblLineText.BackColor = System.Drawing.Color.White;
-            this.lblLineText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLineText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLineText.Location = new System.Drawing.Point(105, 35);
-            this.lblLineText.Name = "lblLineText";
-            this.lblLineText.Size = new System.Drawing.Size(159, 20);
-            this.lblLineText.TabIndex = 10;
-            this.lblLineText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblLineText.BackColor = System.Drawing.Color.White;
+            lblLineText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblLineText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblLineText.Location = new System.Drawing.Point(105, 35);
+            lblLineText.Name = "lblLineText";
+            lblLineText.Size = new System.Drawing.Size(159, 20);
+            lblLineText.TabIndex = 10;
+            lblLineText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label24
             // 
-            this.label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label24.Location = new System.Drawing.Point(6, 54);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(100, 20);
-            this.label24.TabIndex = 6;
-            this.label24.Text = "Floor Color:";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label24.Location = new System.Drawing.Point(6, 54);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(100, 20);
+            label24.TabIndex = 6;
+            label24.Text = "Floor Color:";
+            label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label20
             // 
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Location = new System.Drawing.Point(6, 35);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(100, 20);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "Bone Line Color:";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label20.Location = new System.Drawing.Point(6, 35);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(100, 20);
+            label20.TabIndex = 9;
+            label20.Text = "Bone Line Color:";
+            label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblOrbColor
             // 
-            this.lblOrbColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblOrbColor.Location = new System.Drawing.Point(263, 16);
-            this.lblOrbColor.Name = "lblOrbColor";
-            this.lblOrbColor.Size = new System.Drawing.Size(40, 20);
-            this.lblOrbColor.TabIndex = 5;
-            this.lblOrbColor.Click += new System.EventHandler(this.lblOrbColor_Click);
+            lblOrbColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblOrbColor.Location = new System.Drawing.Point(263, 16);
+            lblOrbColor.Name = "lblOrbColor";
+            lblOrbColor.Size = new System.Drawing.Size(40, 20);
+            lblOrbColor.TabIndex = 5;
+            lblOrbColor.Click += new System.EventHandler(lblOrbColor_Click);
             // 
             // lblOrbText
             // 
-            this.lblOrbText.BackColor = System.Drawing.Color.White;
-            this.lblOrbText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblOrbText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrbText.Location = new System.Drawing.Point(105, 16);
-            this.lblOrbText.Name = "lblOrbText";
-            this.lblOrbText.Size = new System.Drawing.Size(159, 20);
-            this.lblOrbText.TabIndex = 7;
-            this.lblOrbText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblOrbText.BackColor = System.Drawing.Color.White;
+            lblOrbText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblOrbText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblOrbText.Location = new System.Drawing.Point(105, 16);
+            lblOrbText.Name = "lblOrbText";
+            lblOrbText.Size = new System.Drawing.Size(159, 20);
+            lblOrbText.TabIndex = 7;
+            lblOrbText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label15
             // 
-            this.label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label15.Location = new System.Drawing.Point(6, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 20);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Bone Orb Color:";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label15.Location = new System.Drawing.Point(6, 16);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(100, 20);
+            label15.TabIndex = 6;
+            label15.Text = "Bone Orb Color:";
+            label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label18
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(4, 367);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(145, 13);
-            this.label18.TabIndex = 39;
-            this.label18.Text = "Maximum Undo/Redo Count:";
+            label18.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(4, 367);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(145, 13);
+            label18.TabIndex = 39;
+            label18.Text = "Maximum Undo/Redo Count:";
             // 
             // chkRetrieveCorrAnims
             // 
-            this.chkRetrieveCorrAnims.AutoSize = true;
-            this.chkRetrieveCorrAnims.Location = new System.Drawing.Point(6, 99);
-            this.chkRetrieveCorrAnims.Name = "chkRetrieveCorrAnims";
-            this.chkRetrieveCorrAnims.Size = new System.Drawing.Size(246, 17);
-            this.chkRetrieveCorrAnims.TabIndex = 40;
-            this.chkRetrieveCorrAnims.Text = "Retreieve animations with corresponding name";
-            this.chkRetrieveCorrAnims.UseVisualStyleBackColor = true;
-            this.chkRetrieveCorrAnims.CheckedChanged += new System.EventHandler(this.chkRetrieveCorrAnims_CheckedChanged);
+            chkRetrieveCorrAnims.AutoSize = true;
+            chkRetrieveCorrAnims.Location = new System.Drawing.Point(6, 99);
+            chkRetrieveCorrAnims.Name = "chkRetrieveCorrAnims";
+            chkRetrieveCorrAnims.Size = new System.Drawing.Size(246, 17);
+            chkRetrieveCorrAnims.TabIndex = 40;
+            chkRetrieveCorrAnims.Text = "Retreieve animations with corresponding name";
+            chkRetrieveCorrAnims.UseVisualStyleBackColor = true;
+            chkRetrieveCorrAnims.CheckedChanged += new System.EventHandler(chkRetrieveCorrAnims_CheckedChanged);
             // 
             // chkSyncTexToObj
             // 
-            this.chkSyncTexToObj.AutoSize = true;
-            this.chkSyncTexToObj.Location = new System.Drawing.Point(7, 96);
-            this.chkSyncTexToObj.Name = "chkSyncTexToObj";
-            this.chkSyncTexToObj.Size = new System.Drawing.Size(197, 17);
-            this.chkSyncTexToObj.TabIndex = 41;
-            this.chkSyncTexToObj.Text = "Sync texture list with selected object";
-            this.chkSyncTexToObj.UseVisualStyleBackColor = true;
-            this.chkSyncTexToObj.CheckedChanged += new System.EventHandler(this.chkSyncTexToObj_CheckedChanged);
+            chkSyncTexToObj.AutoSize = true;
+            chkSyncTexToObj.Location = new System.Drawing.Point(7, 96);
+            chkSyncTexToObj.Name = "chkSyncTexToObj";
+            chkSyncTexToObj.Size = new System.Drawing.Size(197, 17);
+            chkSyncTexToObj.TabIndex = 41;
+            chkSyncTexToObj.Text = "Sync texture list with selected object";
+            chkSyncTexToObj.UseVisualStyleBackColor = true;
+            chkSyncTexToObj.CheckedChanged += new System.EventHandler(chkSyncTexToObj_CheckedChanged);
             // 
             // chkSyncObjToVIS
             // 
-            this.chkSyncObjToVIS.AutoSize = true;
-            this.chkSyncObjToVIS.Location = new System.Drawing.Point(6, 122);
-            this.chkSyncObjToVIS.Name = "chkSyncObjToVIS";
-            this.chkSyncObjToVIS.Size = new System.Drawing.Size(272, 17);
-            this.chkSyncObjToVIS.TabIndex = 42;
-            this.chkSyncObjToVIS.Text = "Sync object list checkbox changes to selected VIS0";
-            this.chkSyncObjToVIS.UseVisualStyleBackColor = true;
-            this.chkSyncObjToVIS.CheckedChanged += new System.EventHandler(this.chkSyncObjToVIS_CheckedChanged);
+            chkSyncObjToVIS.AutoSize = true;
+            chkSyncObjToVIS.Location = new System.Drawing.Point(6, 122);
+            chkSyncObjToVIS.Name = "chkSyncObjToVIS";
+            chkSyncObjToVIS.Size = new System.Drawing.Size(272, 17);
+            chkSyncObjToVIS.TabIndex = 42;
+            chkSyncObjToVIS.Text = "Sync object list checkbox changes to selected VIS0";
+            chkSyncObjToVIS.UseVisualStyleBackColor = true;
+            chkSyncObjToVIS.CheckedChanged += new System.EventHandler(chkSyncObjToVIS_CheckedChanged);
             // 
             // chkDisableBonesOnPlay
             // 
-            this.chkDisableBonesOnPlay.AutoSize = true;
-            this.chkDisableBonesOnPlay.Location = new System.Drawing.Point(6, 145);
-            this.chkDisableBonesOnPlay.Name = "chkDisableBonesOnPlay";
-            this.chkDisableBonesOnPlay.Size = new System.Drawing.Size(204, 17);
-            this.chkDisableBonesOnPlay.TabIndex = 43;
-            this.chkDisableBonesOnPlay.Text = "Disable bones when playing animaton";
-            this.chkDisableBonesOnPlay.UseVisualStyleBackColor = true;
-            this.chkDisableBonesOnPlay.CheckedChanged += new System.EventHandler(this.chkDisableBonesOnPlay_CheckedChanged);
+            chkDisableBonesOnPlay.AutoSize = true;
+            chkDisableBonesOnPlay.Location = new System.Drawing.Point(6, 145);
+            chkDisableBonesOnPlay.Name = "chkDisableBonesOnPlay";
+            chkDisableBonesOnPlay.Size = new System.Drawing.Size(204, 17);
+            chkDisableBonesOnPlay.TabIndex = 43;
+            chkDisableBonesOnPlay.Text = "Disable bones when playing animaton";
+            chkDisableBonesOnPlay.UseVisualStyleBackColor = true;
+            chkDisableBonesOnPlay.CheckedChanged += new System.EventHandler(chkDisableBonesOnPlay_CheckedChanged);
             // 
             // chkDisableHighlight
             // 
-            this.chkDisableHighlight.AutoSize = true;
-            this.chkDisableHighlight.Location = new System.Drawing.Point(7, 119);
-            this.chkDisableHighlight.Name = "chkDisableHighlight";
-            this.chkDisableHighlight.Size = new System.Drawing.Size(210, 17);
-            this.chkDisableHighlight.TabIndex = 44;
-            this.chkDisableHighlight.Text = "Disable realtime highlighting in viewport";
-            this.chkDisableHighlight.UseVisualStyleBackColor = true;
-            this.chkDisableHighlight.CheckedChanged += new System.EventHandler(this.chkDisableHighlight_CheckedChanged);
+            chkDisableHighlight.AutoSize = true;
+            chkDisableHighlight.Location = new System.Drawing.Point(7, 119);
+            chkDisableHighlight.Name = "chkDisableHighlight";
+            chkDisableHighlight.Size = new System.Drawing.Size(210, 17);
+            chkDisableHighlight.TabIndex = 44;
+            chkDisableHighlight.Text = "Disable realtime highlighting in viewport";
+            chkDisableHighlight.UseVisualStyleBackColor = true;
+            chkDisableHighlight.CheckedChanged += new System.EventHandler(chkDisableHighlight_CheckedChanged);
             // 
             // chkSnapBonesToFloor
             // 
-            this.chkSnapBonesToFloor.AutoSize = true;
-            this.chkSnapBonesToFloor.Location = new System.Drawing.Point(7, 142);
-            this.chkSnapBonesToFloor.Name = "chkSnapBonesToFloor";
-            this.chkSnapBonesToFloor.Size = new System.Drawing.Size(205, 17);
-            this.chkSnapBonesToFloor.TabIndex = 46;
-            this.chkSnapBonesToFloor.Text = "Snap dragged bones to floor collisions";
-            this.chkSnapBonesToFloor.UseVisualStyleBackColor = true;
-            this.chkSnapBonesToFloor.CheckedChanged += new System.EventHandler(this.chkSnapBonesToFloor_CheckedChanged);
+            chkSnapBonesToFloor.AutoSize = true;
+            chkSnapBonesToFloor.Location = new System.Drawing.Point(7, 142);
+            chkSnapBonesToFloor.Name = "chkSnapBonesToFloor";
+            chkSnapBonesToFloor.Size = new System.Drawing.Size(205, 17);
+            chkSnapBonesToFloor.TabIndex = 46;
+            chkSnapBonesToFloor.Text = "Snap dragged bones to floor collisions";
+            chkSnapBonesToFloor.UseVisualStyleBackColor = true;
+            chkSnapBonesToFloor.CheckedChanged += new System.EventHandler(chkSnapBonesToFloor_CheckedChanged);
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(332, 419);
-            this.tabControl1.TabIndex = 47;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Location = new System.Drawing.Point(0, 0);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new System.Drawing.Size(332, 419);
+            tabControl1.TabIndex = 47;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.chkTextOverlays);
-            this.tabPage1.Controls.Add(this.grpProjection);
-            this.tabPage1.Controls.Add(this.grpLighting);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(324, 393);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Current Viewport";
+            tabPage1.BackColor = System.Drawing.Color.Transparent;
+            tabPage1.Controls.Add(chkTextOverlays);
+            tabPage1.Controls.Add(grpProjection);
+            tabPage1.Controls.Add(grpLighting);
+            tabPage1.Location = new System.Drawing.Point(4, 22);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            tabPage1.Size = new System.Drawing.Size(324, 393);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Current Viewport";
             // 
             // chkTextOverlays
             // 
-            this.chkTextOverlays.AutoSize = true;
-            this.chkTextOverlays.Location = new System.Drawing.Point(8, 369);
-            this.chkTextOverlays.Name = "chkTextOverlays";
-            this.chkTextOverlays.Size = new System.Drawing.Size(121, 17);
-            this.chkTextOverlays.TabIndex = 46;
-            this.chkTextOverlays.Text = "Enable text overlays";
-            this.chkTextOverlays.UseVisualStyleBackColor = true;
-            this.chkTextOverlays.CheckedChanged += new System.EventHandler(this.chkTextOverlays_CheckedChanged);
+            chkTextOverlays.AutoSize = true;
+            chkTextOverlays.Location = new System.Drawing.Point(8, 369);
+            chkTextOverlays.Name = "chkTextOverlays";
+            chkTextOverlays.Size = new System.Drawing.Size(121, 17);
+            chkTextOverlays.TabIndex = 46;
+            chkTextOverlays.Text = "Enable text overlays";
+            chkTextOverlays.UseVisualStyleBackColor = true;
+            chkTextOverlays.CheckedChanged += new System.EventHandler(chkTextOverlays_CheckedChanged);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.chkPixelLighting);
-            this.tabPage2.Controls.Add(this.chkHideMainWindow);
-            this.tabPage2.Controls.Add(this.chkUsePointsAsBones);
-            this.tabPage2.Controls.Add(this.chkScaleBones);
-            this.tabPage2.Controls.Add(this.chkSaveWindowPosition);
-            this.tabPage2.Controls.Add(this.chkMaximize);
-            this.tabPage2.Controls.Add(this.grpColors);
-            this.tabPage2.Controls.Add(this.chkSyncTexToObj);
-            this.tabPage2.Controls.Add(this.chkDisableHighlight);
-            this.tabPage2.Controls.Add(this.chkSnapBonesToFloor);
-            this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.maxUndoCount);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(324, 393);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "General";
+            tabPage2.Controls.Add(chkPixelLighting);
+            tabPage2.Controls.Add(chkHideMainWindow);
+            tabPage2.Controls.Add(chkUsePointsAsBones);
+            tabPage2.Controls.Add(chkScaleBones);
+            tabPage2.Controls.Add(chkSaveWindowPosition);
+            tabPage2.Controls.Add(chkMaximize);
+            tabPage2.Controls.Add(grpColors);
+            tabPage2.Controls.Add(chkSyncTexToObj);
+            tabPage2.Controls.Add(chkDisableHighlight);
+            tabPage2.Controls.Add(chkSnapBonesToFloor);
+            tabPage2.Controls.Add(label18);
+            tabPage2.Controls.Add(maxUndoCount);
+            tabPage2.Location = new System.Drawing.Point(4, 22);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            tabPage2.Size = new System.Drawing.Size(324, 393);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "General";
             // 
             // chkPixelLighting
             // 
-            this.chkPixelLighting.AutoSize = true;
-            this.chkPixelLighting.Location = new System.Drawing.Point(7, 280);
-            this.chkPixelLighting.Name = "chkPixelLighting";
-            this.chkPixelLighting.Size = new System.Drawing.Size(228, 17);
-            this.chkPixelLighting.TabIndex = 52;
-            this.chkPixelLighting.Text = "Per pixel lighting (as opposed to per vertex)";
-            this.chkPixelLighting.UseVisualStyleBackColor = true;
-            this.chkPixelLighting.CheckedChanged += new System.EventHandler(this.chkPixelLighting_CheckedChanged);
+            chkPixelLighting.AutoSize = true;
+            chkPixelLighting.Location = new System.Drawing.Point(7, 280);
+            chkPixelLighting.Name = "chkPixelLighting";
+            chkPixelLighting.Size = new System.Drawing.Size(228, 17);
+            chkPixelLighting.TabIndex = 52;
+            chkPixelLighting.Text = "Per pixel lighting (as opposed to per vertex)";
+            chkPixelLighting.UseVisualStyleBackColor = true;
+            chkPixelLighting.CheckedChanged += new System.EventHandler(chkPixelLighting_CheckedChanged);
             // 
             // chkHideMainWindow
             // 
-            this.chkHideMainWindow.AutoSize = true;
-            this.chkHideMainWindow.Location = new System.Drawing.Point(7, 257);
-            this.chkHideMainWindow.Name = "chkHideMainWindow";
-            this.chkHideMainWindow.Size = new System.Drawing.Size(112, 17);
-            this.chkHideMainWindow.TabIndex = 51;
-            this.chkHideMainWindow.Text = "Hide main window";
-            this.chkHideMainWindow.UseVisualStyleBackColor = true;
-            this.chkHideMainWindow.CheckedChanged += new System.EventHandler(this.chkHideMainWindow_CheckedChanged);
+            chkHideMainWindow.AutoSize = true;
+            chkHideMainWindow.Location = new System.Drawing.Point(7, 257);
+            chkHideMainWindow.Name = "chkHideMainWindow";
+            chkHideMainWindow.Size = new System.Drawing.Size(112, 17);
+            chkHideMainWindow.TabIndex = 51;
+            chkHideMainWindow.Text = "Hide main window";
+            chkHideMainWindow.UseVisualStyleBackColor = true;
+            chkHideMainWindow.CheckedChanged += new System.EventHandler(chkHideMainWindow_CheckedChanged);
             // 
             // chkUsePointsAsBones
             // 
-            this.chkUsePointsAsBones.AutoSize = true;
-            this.chkUsePointsAsBones.Location = new System.Drawing.Point(7, 234);
-            this.chkUsePointsAsBones.Name = "chkUsePointsAsBones";
-            this.chkUsePointsAsBones.Size = new System.Drawing.Size(137, 17);
-            this.chkUsePointsAsBones.TabIndex = 50;
-            this.chkUsePointsAsBones.Text = "Display bones as points";
-            this.chkUsePointsAsBones.UseVisualStyleBackColor = true;
-            this.chkUsePointsAsBones.CheckedChanged += new System.EventHandler(this.chkUsePointsAsBones_CheckedChanged);
+            chkUsePointsAsBones.AutoSize = true;
+            chkUsePointsAsBones.Location = new System.Drawing.Point(7, 234);
+            chkUsePointsAsBones.Name = "chkUsePointsAsBones";
+            chkUsePointsAsBones.Size = new System.Drawing.Size(137, 17);
+            chkUsePointsAsBones.TabIndex = 50;
+            chkUsePointsAsBones.Text = "Display bones as points";
+            chkUsePointsAsBones.UseVisualStyleBackColor = true;
+            chkUsePointsAsBones.CheckedChanged += new System.EventHandler(chkUsePointsAsBones_CheckedChanged);
             // 
             // chkScaleBones
             // 
-            this.chkScaleBones.AutoSize = true;
-            this.chkScaleBones.Location = new System.Drawing.Point(7, 211);
-            this.chkScaleBones.Name = "chkScaleBones";
-            this.chkScaleBones.Size = new System.Drawing.Size(145, 17);
-            this.chkScaleBones.TabIndex = 49;
-            this.chkScaleBones.Text = "Scale bones with camera";
-            this.chkScaleBones.UseVisualStyleBackColor = true;
-            this.chkScaleBones.CheckedChanged += new System.EventHandler(this.chkScaleBones_CheckedChanged);
+            chkScaleBones.AutoSize = true;
+            chkScaleBones.Location = new System.Drawing.Point(7, 211);
+            chkScaleBones.Name = "chkScaleBones";
+            chkScaleBones.Size = new System.Drawing.Size(145, 17);
+            chkScaleBones.TabIndex = 49;
+            chkScaleBones.Text = "Scale bones with camera";
+            chkScaleBones.UseVisualStyleBackColor = true;
+            chkScaleBones.CheckedChanged += new System.EventHandler(chkScaleBones_CheckedChanged);
             // 
             // chkSaveWindowPosition
             // 
-            this.chkSaveWindowPosition.AutoSize = true;
-            this.chkSaveWindowPosition.Location = new System.Drawing.Point(7, 188);
-            this.chkSaveWindowPosition.Name = "chkSaveWindowPosition";
-            this.chkSaveWindowPosition.Size = new System.Drawing.Size(205, 17);
-            this.chkSaveWindowPosition.TabIndex = 48;
-            this.chkSaveWindowPosition.Text = "Save window position and dimensions";
-            this.chkSaveWindowPosition.UseVisualStyleBackColor = true;
-            this.chkSaveWindowPosition.CheckedChanged += new System.EventHandler(this.chkSaveWindowPosition_CheckedChanged);
+            chkSaveWindowPosition.AutoSize = true;
+            chkSaveWindowPosition.Location = new System.Drawing.Point(7, 188);
+            chkSaveWindowPosition.Name = "chkSaveWindowPosition";
+            chkSaveWindowPosition.Size = new System.Drawing.Size(205, 17);
+            chkSaveWindowPosition.TabIndex = 48;
+            chkSaveWindowPosition.Text = "Save window position and dimensions";
+            chkSaveWindowPosition.UseVisualStyleBackColor = true;
+            chkSaveWindowPosition.CheckedChanged += new System.EventHandler(chkSaveWindowPosition_CheckedChanged);
             // 
             // chkMaximize
             // 
-            this.chkMaximize.AutoSize = true;
-            this.chkMaximize.Location = new System.Drawing.Point(7, 165);
-            this.chkMaximize.Name = "chkMaximize";
-            this.chkMaximize.Size = new System.Drawing.Size(176, 17);
-            this.chkMaximize.TabIndex = 47;
-            this.chkMaximize.Text = "Maximize window upon opening";
-            this.chkMaximize.UseVisualStyleBackColor = true;
-            this.chkMaximize.CheckedChanged += new System.EventHandler(this.chkMaximize_CheckedChanged);
+            chkMaximize.AutoSize = true;
+            chkMaximize.Location = new System.Drawing.Point(7, 165);
+            chkMaximize.Name = "chkMaximize";
+            chkMaximize.Size = new System.Drawing.Size(176, 17);
+            chkMaximize.TabIndex = 47;
+            chkMaximize.Text = "Maximize window upon opening";
+            chkMaximize.UseVisualStyleBackColor = true;
+            chkMaximize.CheckedChanged += new System.EventHandler(chkMaximize_CheckedChanged);
             // 
             // maxUndoCount
             // 
-            this.maxUndoCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.maxUndoCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.maxUndoCount.Integral = false;
-            this.maxUndoCount.Location = new System.Drawing.Point(155, 365);
-            this.maxUndoCount.MaximumValue = 3.402823E+38F;
-            this.maxUndoCount.MinimumValue = -3.402823E+38F;
-            this.maxUndoCount.Name = "maxUndoCount";
-            this.maxUndoCount.Size = new System.Drawing.Size(66, 20);
-            this.maxUndoCount.TabIndex = 37;
-            this.maxUndoCount.Text = "0";
-            this.maxUndoCount.ValueChanged += new System.EventHandler(this.maxUndoCount_ValueChanged);
+            maxUndoCount.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
+            maxUndoCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            maxUndoCount.Integral = false;
+            maxUndoCount.Location = new System.Drawing.Point(155, 365);
+            maxUndoCount.MaximumValue = 3.402823E+38F;
+            maxUndoCount.MinimumValue = -3.402823E+38F;
+            maxUndoCount.Name = "maxUndoCount";
+            maxUndoCount.Size = new System.Drawing.Size(66, 20);
+            maxUndoCount.TabIndex = 37;
+            maxUndoCount.Text = "0";
+            maxUndoCount.ValueChanged += new System.EventHandler(maxUndoCount_ValueChanged);
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.groupBox1);
-            this.tabPage3.Controls.Add(this.chkPrecalcBoxes);
-            this.tabPage3.Controls.Add(this.chkDisableBonesOnPlay);
-            this.tabPage3.Controls.Add(this.chkRetrieveCorrAnims);
-            this.tabPage3.Controls.Add(this.chkSyncObjToVIS);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(324, 393);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Animation";
+            tabPage3.Controls.Add(groupBox1);
+            tabPage3.Controls.Add(chkPrecalcBoxes);
+            tabPage3.Controls.Add(chkDisableBonesOnPlay);
+            tabPage3.Controls.Add(chkRetrieveCorrAnims);
+            tabPage3.Controls.Add(chkSyncObjToVIS);
+            tabPage3.Location = new System.Drawing.Point(4, 22);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new System.Drawing.Size(324, 393);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Animation";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkTanCam);
-            this.groupBox1.Controls.Add(this.chkTanFog);
-            this.groupBox1.Controls.Add(this.chkTanLight);
-            this.groupBox1.Controls.Add(this.chkTanSHP);
-            this.groupBox1.Controls.Add(this.chkTanSRT);
-            this.groupBox1.Controls.Add(this.chkTanCHR);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(309, 87);
-            this.groupBox1.TabIndex = 49;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Generate Tangents";
+            groupBox1.Controls.Add(chkTanCam);
+            groupBox1.Controls.Add(chkTanFog);
+            groupBox1.Controls.Add(chkTanLight);
+            groupBox1.Controls.Add(chkTanSHP);
+            groupBox1.Controls.Add(chkTanSRT);
+            groupBox1.Controls.Add(chkTanCHR);
+            groupBox1.Location = new System.Drawing.Point(6, 6);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(309, 87);
+            groupBox1.TabIndex = 49;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Generate Tangents";
             // 
             // chkTanCam
             // 
-            this.chkTanCam.AutoSize = true;
-            this.chkTanCam.Location = new System.Drawing.Point(67, 65);
-            this.chkTanCam.Name = "chkTanCam";
-            this.chkTanCam.Size = new System.Drawing.Size(93, 17);
-            this.chkTanCam.TabIndex = 55;
-            this.chkTanCam.Text = "SCN0 Camera";
-            this.chkTanCam.UseVisualStyleBackColor = true;
-            this.chkTanCam.CheckedChanged += new System.EventHandler(this.chkTanCam_CheckedChanged);
+            chkTanCam.AutoSize = true;
+            chkTanCam.Location = new System.Drawing.Point(67, 65);
+            chkTanCam.Name = "chkTanCam";
+            chkTanCam.Size = new System.Drawing.Size(93, 17);
+            chkTanCam.TabIndex = 55;
+            chkTanCam.Text = "SCN0 Camera";
+            chkTanCam.UseVisualStyleBackColor = true;
+            chkTanCam.CheckedChanged += new System.EventHandler(chkTanCam_CheckedChanged);
             // 
             // chkTanFog
             // 
-            this.chkTanFog.AutoSize = true;
-            this.chkTanFog.Location = new System.Drawing.Point(67, 42);
-            this.chkTanFog.Name = "chkTanFog";
-            this.chkTanFog.Size = new System.Drawing.Size(75, 17);
-            this.chkTanFog.TabIndex = 54;
-            this.chkTanFog.Text = "SCN0 Fog";
-            this.chkTanFog.UseVisualStyleBackColor = true;
-            this.chkTanFog.CheckedChanged += new System.EventHandler(this.chkTanFog_CheckedChanged);
+            chkTanFog.AutoSize = true;
+            chkTanFog.Location = new System.Drawing.Point(67, 42);
+            chkTanFog.Name = "chkTanFog";
+            chkTanFog.Size = new System.Drawing.Size(75, 17);
+            chkTanFog.TabIndex = 54;
+            chkTanFog.Text = "SCN0 Fog";
+            chkTanFog.UseVisualStyleBackColor = true;
+            chkTanFog.CheckedChanged += new System.EventHandler(chkTanFog_CheckedChanged);
             // 
             // chkTanLight
             // 
-            this.chkTanLight.AutoSize = true;
-            this.chkTanLight.Location = new System.Drawing.Point(67, 19);
-            this.chkTanLight.Name = "chkTanLight";
-            this.chkTanLight.Size = new System.Drawing.Size(80, 17);
-            this.chkTanLight.TabIndex = 53;
-            this.chkTanLight.Text = "SCN0 Light";
-            this.chkTanLight.UseVisualStyleBackColor = true;
-            this.chkTanLight.CheckedChanged += new System.EventHandler(this.chkTanLight_CheckedChanged);
+            chkTanLight.AutoSize = true;
+            chkTanLight.Location = new System.Drawing.Point(67, 19);
+            chkTanLight.Name = "chkTanLight";
+            chkTanLight.Size = new System.Drawing.Size(80, 17);
+            chkTanLight.TabIndex = 53;
+            chkTanLight.Text = "SCN0 Light";
+            chkTanLight.UseVisualStyleBackColor = true;
+            chkTanLight.CheckedChanged += new System.EventHandler(chkTanLight_CheckedChanged);
             // 
             // chkTanSHP
             // 
-            this.chkTanSHP.AutoSize = true;
-            this.chkTanSHP.Location = new System.Drawing.Point(6, 65);
-            this.chkTanSHP.Name = "chkTanSHP";
-            this.chkTanSHP.Size = new System.Drawing.Size(54, 17);
-            this.chkTanSHP.TabIndex = 52;
-            this.chkTanSHP.Text = "SHP0";
-            this.chkTanSHP.UseVisualStyleBackColor = true;
-            this.chkTanSHP.CheckedChanged += new System.EventHandler(this.chkTanSHP_CheckedChanged);
+            chkTanSHP.AutoSize = true;
+            chkTanSHP.Location = new System.Drawing.Point(6, 65);
+            chkTanSHP.Name = "chkTanSHP";
+            chkTanSHP.Size = new System.Drawing.Size(54, 17);
+            chkTanSHP.TabIndex = 52;
+            chkTanSHP.Text = "SHP0";
+            chkTanSHP.UseVisualStyleBackColor = true;
+            chkTanSHP.CheckedChanged += new System.EventHandler(chkTanSHP_CheckedChanged);
             // 
             // chkTanSRT
             // 
-            this.chkTanSRT.AutoSize = true;
-            this.chkTanSRT.Location = new System.Drawing.Point(6, 42);
-            this.chkTanSRT.Name = "chkTanSRT";
-            this.chkTanSRT.Size = new System.Drawing.Size(54, 17);
-            this.chkTanSRT.TabIndex = 51;
-            this.chkTanSRT.Text = "SRT0";
-            this.chkTanSRT.UseVisualStyleBackColor = true;
-            this.chkTanSRT.CheckedChanged += new System.EventHandler(this.chkTanSRT_CheckedChanged);
+            chkTanSRT.AutoSize = true;
+            chkTanSRT.Location = new System.Drawing.Point(6, 42);
+            chkTanSRT.Name = "chkTanSRT";
+            chkTanSRT.Size = new System.Drawing.Size(54, 17);
+            chkTanSRT.TabIndex = 51;
+            chkTanSRT.Text = "SRT0";
+            chkTanSRT.UseVisualStyleBackColor = true;
+            chkTanSRT.CheckedChanged += new System.EventHandler(chkTanSRT_CheckedChanged);
             // 
             // chkTanCHR
             // 
-            this.chkTanCHR.AutoSize = true;
-            this.chkTanCHR.Location = new System.Drawing.Point(6, 19);
-            this.chkTanCHR.Name = "chkTanCHR";
-            this.chkTanCHR.Size = new System.Drawing.Size(55, 17);
-            this.chkTanCHR.TabIndex = 50;
-            this.chkTanCHR.Text = "CHR0";
-            this.chkTanCHR.UseVisualStyleBackColor = true;
-            this.chkTanCHR.CheckedChanged += new System.EventHandler(this.chkTanCHR_CheckedChanged);
+            chkTanCHR.AutoSize = true;
+            chkTanCHR.Location = new System.Drawing.Point(6, 19);
+            chkTanCHR.Name = "chkTanCHR";
+            chkTanCHR.Size = new System.Drawing.Size(55, 17);
+            chkTanCHR.TabIndex = 50;
+            chkTanCHR.Text = "CHR0";
+            chkTanCHR.UseVisualStyleBackColor = true;
+            chkTanCHR.CheckedChanged += new System.EventHandler(chkTanCHR_CheckedChanged);
             // 
             // chkPrecalcBoxes
             // 
-            this.chkPrecalcBoxes.AutoSize = true;
-            this.chkPrecalcBoxes.Location = new System.Drawing.Point(6, 168);
-            this.chkPrecalcBoxes.Name = "chkPrecalcBoxes";
-            this.chkPrecalcBoxes.Size = new System.Drawing.Size(258, 17);
-            this.chkPrecalcBoxes.TabIndex = 48;
-            this.chkPrecalcBoxes.Text = "Display precalculated bounding boxes on frame 0";
-            this.chkPrecalcBoxes.UseVisualStyleBackColor = true;
-            this.chkPrecalcBoxes.CheckedChanged += new System.EventHandler(this.chkPrecalcBoxes_CheckedChanged);
+            chkPrecalcBoxes.AutoSize = true;
+            chkPrecalcBoxes.Location = new System.Drawing.Point(6, 168);
+            chkPrecalcBoxes.Name = "chkPrecalcBoxes";
+            chkPrecalcBoxes.Size = new System.Drawing.Size(258, 17);
+            chkPrecalcBoxes.TabIndex = 48;
+            chkPrecalcBoxes.Text = "Display precalculated bounding boxes on frame 0";
+            chkPrecalcBoxes.UseVisualStyleBackColor = true;
+            chkPrecalcBoxes.CheckedChanged += new System.EventHandler(chkPrecalcBoxes_CheckedChanged);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnResetSettings);
-            this.panel1.Controls.Add(this.btnImportSettings);
-            this.panel1.Controls.Add(this.btnExportSettings);
-            this.panel1.Controls.Add(this.btnCancel);
-            this.panel1.Controls.Add(this.btnOkay);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 419);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(332, 35);
-            this.panel1.TabIndex = 47;
+            panel1.Controls.Add(btnResetSettings);
+            panel1.Controls.Add(btnImportSettings);
+            panel1.Controls.Add(btnExportSettings);
+            panel1.Controls.Add(btnCancel);
+            panel1.Controls.Add(btnOkay);
+            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Location = new System.Drawing.Point(0, 419);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(332, 35);
+            panel1.TabIndex = 47;
             // 
             // btnResetSettings
             // 
-            this.btnResetSettings.Location = new System.Drawing.Point(202, 6);
-            this.btnResetSettings.Name = "btnResetSettings";
-            this.btnResetSettings.Size = new System.Drawing.Size(60, 23);
-            this.btnResetSettings.TabIndex = 5;
-            this.btnResetSettings.Text = "Reset";
-            this.btnResetSettings.UseVisualStyleBackColor = true;
-            this.btnResetSettings.Click += new System.EventHandler(this.btnResetSettings_Click);
+            btnResetSettings.Location = new System.Drawing.Point(202, 6);
+            btnResetSettings.Name = "btnResetSettings";
+            btnResetSettings.Size = new System.Drawing.Size(60, 23);
+            btnResetSettings.TabIndex = 5;
+            btnResetSettings.Text = "Reset";
+            btnResetSettings.UseVisualStyleBackColor = true;
+            btnResetSettings.Click += new System.EventHandler(btnResetSettings_Click);
             // 
             // btnImportSettings
             // 
-            this.btnImportSettings.Location = new System.Drawing.Point(70, 6);
-            this.btnImportSettings.Name = "btnImportSettings";
-            this.btnImportSettings.Size = new System.Drawing.Size(60, 23);
-            this.btnImportSettings.TabIndex = 4;
-            this.btnImportSettings.Text = "Import";
-            this.btnImportSettings.UseVisualStyleBackColor = true;
-            this.btnImportSettings.Visible = false;
-            this.btnImportSettings.Click += new System.EventHandler(this.btnImportSettings_Click);
+            btnImportSettings.Location = new System.Drawing.Point(70, 6);
+            btnImportSettings.Name = "btnImportSettings";
+            btnImportSettings.Size = new System.Drawing.Size(60, 23);
+            btnImportSettings.TabIndex = 4;
+            btnImportSettings.Text = "Import";
+            btnImportSettings.UseVisualStyleBackColor = true;
+            btnImportSettings.Visible = false;
+            btnImportSettings.Click += new System.EventHandler(btnImportSettings_Click);
             // 
             // btnExportSettings
             // 
-            this.btnExportSettings.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExportSettings.Location = new System.Drawing.Point(4, 6);
-            this.btnExportSettings.Name = "btnExportSettings";
-            this.btnExportSettings.Size = new System.Drawing.Size(60, 23);
-            this.btnExportSettings.TabIndex = 3;
-            this.btnExportSettings.Text = "Export";
-            this.btnExportSettings.UseVisualStyleBackColor = true;
-            this.btnExportSettings.Visible = false;
-            this.btnExportSettings.Click += new System.EventHandler(this.btnExportSettings_Click);
+            btnExportSettings.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnExportSettings.Location = new System.Drawing.Point(4, 6);
+            btnExportSettings.Name = "btnExportSettings";
+            btnExportSettings.Size = new System.Drawing.Size(60, 23);
+            btnExportSettings.TabIndex = 3;
+            btnExportSettings.Text = "Export";
+            btnExportSettings.UseVisualStyleBackColor = true;
+            btnExportSettings.Visible = false;
+            btnExportSettings.Click += new System.EventHandler(btnExportSettings_Click);
             // 
             // ModelViewerSettingsDialog
             // 
-            this.ClientSize = new System.Drawing.Size(332, 454);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MinimizeBox = false;
-            this.Name = "ModelViewerSettingsDialog";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Model Editor Settings";
-            this.grpLighting.ResumeLayout(false);
-            this.grpLighting.PerformLayout();
-            this.grpProjection.ResumeLayout(false);
-            this.grpProjection.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.grpColors.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
+            ClientSize = new System.Drawing.Size(332, 454);
+            Controls.Add(tabControl1);
+            Controls.Add(panel1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            MinimizeBox = false;
+            Name = "ModelViewerSettingsDialog";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Model Editor Settings";
+            grpLighting.ResumeLayout(false);
+            grpLighting.PerformLayout();
+            grpProjection.ResumeLayout(false);
+            grpProjection.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            grpColors.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
         #endregion
 
-        private GoodColorDialog _dlgColor;
+        private readonly GoodColorDialog _dlgColor;
         private void lblOrbColor_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = MDL0BoneNode.DefaultNodeColor;
@@ -1882,7 +1909,9 @@ namespace System.Windows.Forms
             lblOrbColor.BackColor = Color.FromArgb(MDL0BoneNode.DefaultNodeColor.R, MDL0BoneNode.DefaultNodeColor.G, MDL0BoneNode.DefaultNodeColor.B);
 
             if (!_updating)
+            {
                 _form.ModelPanel.Invalidate();
+            }
         }
         private void UpdateLine()
         {
@@ -1890,43 +1919,55 @@ namespace System.Windows.Forms
             lblLineColor.BackColor = Color.FromArgb(MDL0BoneNode.DefaultLineColor.R, MDL0BoneNode.DefaultLineColor.G, MDL0BoneNode.DefaultLineColor.B);
 
             if (!_updating)
+            {
                 _form.ModelPanel.Invalidate();
+            }
         }
         private void UpdateCol1()
         {
             lblCol1Text.Text = ((ARGBPixel)ModelEditorBase._floorHue).ToString();
             lblCol1Color.BackColor = Color.FromArgb(ModelEditorBase._floorHue.R, ModelEditorBase._floorHue.G, ModelEditorBase._floorHue.B);
-            
+
             if (!_updating)
+            {
                 _form.ModelPanel.Invalidate();
+            }
         }
         private void UpdateAmb()
         {
             label19.BackColor = Color.FromArgb(255, (int)(ax.Value), (int)(ay.Value), (int)(az.Value));
-            
+
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.Ambient = new Vector4(ax.Value / 255.0f, ay.Value / 255.0f, az.Value / 255.0f, 1.0f);
+            }
         }
         private void UpdateDif()
         {
             label21.BackColor = Color.FromArgb(255, (int)(dx.Value), (int)(dy.Value), (int)(dz.Value));
-            
+
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.Diffuse = new Vector4(dx.Value / 255.0f, dy.Value / 255.0f, dz.Value / 255.0f, 1.0f);
+            }
         }
         private void UpdateSpe()
         {
             label22.BackColor = Color.FromArgb(255, (int)(sx.Value), (int)(sy.Value), (int)(sz.Value));
-            
+
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.Specular = new Vector4(sx.Value / 255.0f, sy.Value / 255.0f, sz.Value / 255.0f, 1.0f);
+            }
         }
         private void UpdateEmi()
         {
             label23.BackColor = Color.FromArgb(255, (int)(ex.Value), (int)(ey.Value), (int)(ez.Value));
-            
+
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.Emission = new Vector4(ex.Value / 255.0f, ey.Value / 255.0f, ez.Value / 255.0f, 1.0f);
+            }
         }
         public bool _updating = false;
         private void label19_Click(object sender, EventArgs e)
@@ -1935,9 +1976,9 @@ namespace System.Windows.Forms
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
                 _updating = true;
-                ax.Value = (float)_dlgColor.Color.R;
-                ay.Value = (float)_dlgColor.Color.G;
-                az.Value = (float)_dlgColor.Color.B;
+                ax.Value = _dlgColor.Color.R;
+                ay.Value = _dlgColor.Color.G;
+                az.Value = _dlgColor.Color.B;
                 _updating = false;
                 UpdateAmb();
             }
@@ -1949,9 +1990,9 @@ namespace System.Windows.Forms
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
                 _updating = true;
-                dx.Value = (float)_dlgColor.Color.R;
-                dy.Value = (float)_dlgColor.Color.G;
-                dz.Value = (float)_dlgColor.Color.B;
+                dx.Value = _dlgColor.Color.R;
+                dy.Value = _dlgColor.Color.G;
+                dz.Value = _dlgColor.Color.B;
                 _updating = false;
                 UpdateDif();
             }
@@ -1963,9 +2004,9 @@ namespace System.Windows.Forms
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
                 _updating = true;
-                sx.Value = (float)_dlgColor.Color.R;
-                sy.Value = (float)_dlgColor.Color.G;
-                sz.Value = (float)_dlgColor.Color.B;
+                sx.Value = _dlgColor.Color.R;
+                sy.Value = _dlgColor.Color.G;
+                sz.Value = _dlgColor.Color.B;
                 _updating = false;
                 UpdateSpe();
             }
@@ -1977,9 +2018,9 @@ namespace System.Windows.Forms
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
                 _updating = true;
-                ex.Value = (float)_dlgColor.Color.R;
-                ey.Value = (float)_dlgColor.Color.G;
-                ez.Value = (float)_dlgColor.Color.B;
+                ex.Value = _dlgColor.Color.R;
+                ey.Value = _dlgColor.Color.G;
+                ez.Value = _dlgColor.Color.B;
                 _updating = false;
                 UpdateEmi();
             }
@@ -1997,94 +2038,128 @@ namespace System.Windows.Forms
         private void chkRetrieveCorrAnims_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 if (_form.RetrieveCorrespondingAnimations = chkRetrieveCorrAnims.Checked)
+                {
                     _form.GetFiles(_form.TargetAnimType);
+                }
                 else
+                {
                     _form.GetFiles(NW4RAnimType.None);
+                }
+            }
         }
 
         private void chkSyncTexToObj_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.SyncTexturesToObjectList = chkSyncTexToObj.Checked;
+            }
         }
 
         private void chkSyncObjToVIS_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.SyncVIS0 = chkSyncObjToVIS.Checked;
+            }
         }
 
         private void chkDisableBonesOnPlay_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.DisableBonesWhenPlaying = chkDisableBonesOnPlay.Checked;
+            }
         }
 
         private void chkDisableHighlight_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.DoNotHighlightOnMouseMove = chkDisableHighlight.Checked;
+            }
         }
 
         private void chkSnapBonesToFloor_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.SnapBonesToCollisions = chkSnapBonesToFloor.Checked;
+            }
         }
 
         private void chkMaximize_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form._maximize = chkMaximize.Checked;
+            }
         }
 
         private void chkPrecalcBoxes_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.UseBindStateBoxes = chkPrecalcBoxes.Checked;
+            }
         }
 
         private void chkTanCHR_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 CHR0EntryNode._generateTangents = chkTanCHR.Checked;
+            }
         }
 
         private void chkTanSRT_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 SRT0TextureNode._generateTangents = chkTanSRT.Checked;
+            }
         }
 
         private void chkTanSHP_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 SHP0VertexSetNode._generateTangents = chkTanSHP.Checked;
+            }
         }
 
         private void chkTanCam_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 SCN0CameraNode._generateTangents = chkTanCam.Checked;
+            }
         }
 
         private void chkTanFog_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 SCN0FogNode._generateTangents = chkTanFog.Checked;
+            }
         }
 
         private void chkTanLight_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 SCN0LightNode._generateTangents = chkTanLight.Checked;
+            }
         }
 
         private void btnResetSettings_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(this, "Are you sure you want to reset all settings to default?", "Reset?", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != Forms.DialogResult.OK)
+            {
                 return;
+            }
 
             BrawlCrate.Properties.Settings.Default.ViewerSettings = null;
             BrawlCrate.Properties.Settings.Default.ViewerSettingsSet = false;
@@ -2094,9 +2169,11 @@ namespace System.Windows.Forms
 
         private void btnImportSettings_Click(object sender, EventArgs e)
         {
-            OpenFileDialog od = new OpenFileDialog();
-            od.Filter = "BrawlCrate Settings (*.settings)|*.settings";
-            od.FileName = Application.StartupPath;
+            OpenFileDialog od = new OpenFileDialog
+            {
+                Filter = "BrawlCrate Settings (*.settings)|*.settings",
+                FileName = Application.StartupPath
+            };
             if (od.ShowDialog() == DialogResult.OK)
             {
                 string path = od.FileName;
@@ -2107,9 +2184,11 @@ namespace System.Windows.Forms
 
         private void btnExportSettings_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sd = new SaveFileDialog();
-            sd.Filter = "BrawlCrate Settings (*.settings)|*.settings";
-            sd.FileName = Application.StartupPath;
+            SaveFileDialog sd = new SaveFileDialog
+            {
+                Filter = "BrawlCrate Settings (*.settings)|*.settings",
+                FileName = Application.StartupPath
+            };
             if (sd.ShowDialog() == DialogResult.OK)
             {
                 string path = sd.FileName;
@@ -2123,25 +2202,33 @@ namespace System.Windows.Forms
         private void chkTextOverlays_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.TextOverlaysEnabled = chkTextOverlays.Checked;
+            }
         }
 
         private void maxUndoCount_ValueChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form._allowedUndos = (uint)maxUndoCount.Value;
+            }
         }
 
         private void chkSaveWindowPosition_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form._savePosition = chkSaveWindowPosition.Checked;
+            }
         }
 
         private void chkDefaultPos_CheckedChanged(object sender, EventArgs e)
         {
             if (!chkDefaultPos.Checked)
+            {
                 return;
+            }
 
             _updating = true;
 
@@ -2163,7 +2250,9 @@ namespace System.Windows.Forms
         private void chkCurrentPos_CheckedChanged(object sender, EventArgs e)
         {
             if (!chkCurrentPos.Checked)
+            {
                 return;
+            }
 
             _updating = true;
 
@@ -2186,44 +2275,59 @@ namespace System.Windows.Forms
         private void chkLightEnabled_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.LightEnabled = chkLightEnabled.Checked;
+            }
         }
 
         private void chkLightDirectional_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.LightDirectional = chkLightDirectional.Checked;
+            }
         }
 
         private void chkScaleBones_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.ScaleBones = chkScaleBones.Checked;
+            }
         }
 
         private void chkUsePointsAsBones_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 _form.ModelPanel.CurrentViewport.RenderBonesAsPoints = chkUsePointsAsBones.Checked;
+            }
         }
 
         private void chkHideMainWindow_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
-            
+            }
+
             MainForm.Instance.Visible = !(_form._hideMainWindow = chkHideMainWindow.Checked);
             foreach (ModelEditControl c in ModelEditControl.Instances)
+            {
                 c._hideMainWindow = _form._hideMainWindow;
+            }
+
             _form.SaveSettings();
         }
 
         private void chkPixelLighting_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
 
-            BrawlCrate.Properties.Settings.Default.PixelLighting = 
+            BrawlCrate.Properties.Settings.Default.PixelLighting =
                 ShaderGenerator.UsePixelLighting = chkPixelLighting.Checked;
             _form.ModelPanel.Invalidate();
             BrawlCrate.Properties.Settings.Default.Save();

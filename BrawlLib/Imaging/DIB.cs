@@ -7,26 +7,28 @@ namespace BrawlLib.Imaging
 {
     internal class DIB : IDisposable
     {
-        int _width, _height, _stride;
-        PixelFormat _format;
-        IntPtr _scan0;
+        private readonly int _width, _height, _stride;
+        private readonly PixelFormat _format;
+        private IntPtr _scan0;
 
-        public int Width { get { return _width; } }
-        public int Height { get { return _height; } }
-        public int Stride { get { return _stride; } }
-        public PixelFormat PixelFormat { get { return _format; } }
-        public IntPtr Scan0 { get { return _scan0; } }
+        public int Width => _width;
+        public int Height => _height;
+        public int Stride => _stride;
+        public PixelFormat PixelFormat => _format;
+        public IntPtr Scan0 => _scan0;
 
         public BitmapData BitmapData
         {
             get
             {
-                BitmapData data = new BitmapData();
-                data.Width = _width;
-                data.Height = _height;
-                data.Stride = _stride;
-                data.PixelFormat = _format;
-                data.Scan0 = _scan0;
+                BitmapData data = new BitmapData
+                {
+                    Width = _width,
+                    Height = _height,
+                    Stride = _stride,
+                    PixelFormat = _format,
+                    Scan0 = _scan0
+                };
                 return data;
             }
         }
@@ -157,7 +159,9 @@ namespace BrawlLib.Imaging
 
 
             for (int i = 0; i < height; i++, dest += linelen, src += _stride)
+            {
                 Memory.Move(dest, src, (uint)linelen);
+            }
         }
     }
 }

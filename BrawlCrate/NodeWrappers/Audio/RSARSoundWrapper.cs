@@ -1,21 +1,21 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSARSound)]
     public class RSARSoundWrapper : GenericWrapper
     {
-        public override string ExportFilter { get { return FileFilters.WAV; } }
+        public override string ExportFilter => FileFilters.WAV;
 
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RSARSoundWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -63,13 +63,17 @@ namespace BrawlCrate.NodeWrappers
                 {
                     string s = "The following entries also use this sound:\n";
                     foreach (RSARSoundNode x in n._waveDataNode._refs)
+                    {
                         s += x.TreePath + "\n";
+                    }
+
                     s += "\nDo you still want to replace this sound?";
                     if (MessageBox.Show(s, "Continue?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
                         return;
+                    }
                 }
-                string inPath;
-                int index = Program.OpenFile(ReplaceFilter, out inPath);
+                int index = Program.OpenFile(ReplaceFilter, out string inPath);
                 if (index != 0)
                 {
                     n._waveDataNode.Sound.Replace(inPath);
@@ -81,15 +85,22 @@ namespace BrawlCrate.NodeWrappers
         {
             RSARFileNode n;
             if ((n = (_resource as RSARSoundNode).SoundFileNode) == null)
+            {
                 return;
+            }
+
             if (n is RSARExtFileNode)
             {
                 RSARExtFileNode ext = n as RSARExtFileNode;
-                if (File.Exists(ext.FullExtPath)) 
+                if (File.Exists(ext.FullExtPath))
+                {
                     Process.Start(ext.FullExtPath);
+                }
             }
             else
+            {
                 new EditRSARFileDialog().ShowDialog(MainForm.Instance, n);
+            }
         }
     }
 }

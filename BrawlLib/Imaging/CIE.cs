@@ -104,13 +104,18 @@ namespace BrawlLib.Imaging
             init_powtable(gamma);
         }
 
-        static void init_powtable(double gamma)
+        private static void init_powtable(double gamma)
         {
             int i;
             for (i = 0; i < 11; i++)
+            {
                 powtable[i] = i / 255.0 * 12.92;
+            }
+
             for (; i < 256; i++)
+            {
                 powtable[i] = Math.Pow((i / 255.0 + 0.055) / 1.055, 2.4);
+            }
         }
 
         //static void rgbxyzrgb_init()

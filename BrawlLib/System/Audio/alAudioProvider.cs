@@ -1,10 +1,9 @@
-﻿using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using OpenTK.Audio;
+﻿using OpenTK.Audio;
+using System.Windows.Forms;
 
 namespace System.Audio
 {
-    unsafe class alAudioProvider : AudioProvider
+    internal unsafe class alAudioProvider : AudioProvider
     {
         private AudioContext context;
 
@@ -15,7 +14,11 @@ namespace System.Audio
         public override void Dispose()
         {
             base.Dispose();
-            if (context != null) context.Dispose();
+            if (context != null)
+            {
+                context.Dispose();
+            }
+
             context = null;
         }
 
@@ -30,7 +33,8 @@ namespace System.Audio
             return new alAudioBuffer(this, fmt, target.Samples) { _source = target, _owner = this };
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return "OpenAL wrapper";
         }
     }

@@ -1,43 +1,47 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Imaging;
 
 namespace BrawlLib.Wii.Textures
 {
-    unsafe class I4 : TextureConverter
+    internal unsafe class I4 : TextureConverter
     {
-        public override int BitsPerPixel { get { return 4; } }
-        public override int BlockWidth { get { return 8; } }
-        public override int BlockHeight { get { return 8; } }
+        public override int BitsPerPixel => 4;
+        public override int BlockWidth => 8;
+        public override int BlockHeight => 8;
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format24bppRgb; } }
-        public override WiiPixelFormat RawFormat { get { return WiiPixelFormat.I4; } }
+        public override WiiPixelFormat RawFormat => WiiPixelFormat.I4;
 
         protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
         {
-            I4Pixel* sPtr = (I4Pixel*)blockAddr; 
+            I4Pixel* sPtr = (I4Pixel*)blockAddr;
             //RGBPixel* dPtr = (RGBPixel*)destAddr;
             for (int y = 0; y < BlockHeight; y++, dPtr += width)
-                for (int x = 0; x < BlockWidth; )
+            {
+                for (int x = 0; x < BlockWidth;)
                 {
-                    dPtr[x++] = (ARGBPixel)(*sPtr)[0];
-                    dPtr[x++] = (ARGBPixel)(*sPtr++)[1];
+                    dPtr[x++] = (*sPtr)[0];
+                    dPtr[x++] = (*sPtr++)[1];
                 }
+            }
         }
 
         protected override void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width)
         {
             I4Pixel* dPtr = (I4Pixel*)blockAddr;
             for (int y = 0; y < BlockHeight; y++, sPtr += width)
-                for (int x = 0; x < BlockWidth; )
+            {
+                for (int x = 0; x < BlockWidth;)
                 {
                     (*dPtr)[0] = sPtr[x++];
                     (*dPtr++)[1] = sPtr[x++];
                 }
+            }
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct I4Pixel
+    internal unsafe struct I4Pixel
     {
         public byte _data;
 
@@ -46,7 +50,7 @@ namespace BrawlLib.Wii.Textures
             get
             {
                 byte c = (index % 2 == 0) ? (byte)((_data & 0xF0) | (_data >> 4)) : (byte)((_data & 0x0F) | (_data << 4));
-                return new ARGBPixel() {A = 0xFF, R = c, G = c, B = c };
+                return new ARGBPixel() { A = 0xFF, R = c, G = c, B = c };
             }
             set
             {

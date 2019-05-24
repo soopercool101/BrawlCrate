@@ -21,38 +21,20 @@ namespace System.Collections.Generic
 
             public T Value
             {
-                get
-                {
-                    return value;
-                }
-                set
-                {
-                    this.value = value;
-                }
+                get => value;
+                set => this.value = value;
             }
 
             public Node Previous
             {
-                get
-                {
-                    return previous;
-                }
-                set
-                {
-                    previous = value;
-                }
+                get => previous;
+                set => previous = value;
             }
 
             public Node Next
             {
-                get
-                {
-                    return next;
-                }
-                set
-                {
-                    next = value;
-                }
+                get => next;
+                set => next = value;
             }
         }
 

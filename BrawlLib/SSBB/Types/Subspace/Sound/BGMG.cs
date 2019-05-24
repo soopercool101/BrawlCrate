@@ -23,17 +23,16 @@ namespace BrawlLib.SSBBTypes
             _pad1 = 0x00;
         }
 
-        public VoidPtr this[int index] { get { return (VoidPtr)((byte*)Address + Offsets(index)); } }
+        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
         public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x10 + (index * 4)); }
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct BGMGEntry
     {
         public const int Size = 0x10;
-
-        fixed byte _stageID[4];
+        private readonly byte _stageID[4];
         public bint _infoIndex;
         public bint _volume;
         public int _pad;
@@ -47,7 +46,7 @@ namespace BrawlLib.SSBBTypes
             StageID = ID;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public string StageID
         {
@@ -57,7 +56,7 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)((VoidPtr)Address + i);
+                    bytes[i] = *(byte*)(Address + i);
                     if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
                     { s1 += bytes[i].ToString("x").ToUpper(); }
@@ -69,7 +68,9 @@ namespace BrawlLib.SSBBTypes
             {
 
                 if (value == null)
+                {
                     value = "";
+                }
 
                 fixed (byte* ptr = _stageID)
                 {

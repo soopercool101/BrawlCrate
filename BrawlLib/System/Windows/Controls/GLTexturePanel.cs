@@ -1,5 +1,5 @@
-﻿using BrawlLib.OpenGL;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
+using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using OpenTK.Graphics.OpenGL;
 
@@ -10,17 +10,19 @@ namespace System.Windows.Forms
         private GLTexture _currentTexture;
         public GLTexture Texture
         {
-            get { return _currentTexture; }
-            set 
+            get => _currentTexture;
+            set
             {
                 if (_currentTexture == value)
+                {
                     return;
+                }
 
                 _currentTexture = value;
             }
         }
 
-        unsafe internal override void OnInit(TKContext ctx)
+        internal override unsafe void OnInit(TKContext ctx)
         {
             //Set caps
             GL.Enable(EnableCap.Blend);
@@ -42,7 +44,9 @@ namespace System.Windows.Forms
         protected override void OnResize(EventArgs e)
         {
             if (_ctx != null)
+            {
                 _ctx.Update();
+            }
 
             UpdateProjection();
 
@@ -75,7 +79,7 @@ namespace System.Windows.Forms
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
 
             //Draw BG
-            float s = (float)width / (float)bgTex.Width, t = (float)height / (float)bgTex.Height;
+            float s = width / (float)bgTex.Width, t = height / (float)bgTex.Height;
 
             GL.Begin(BeginMode.Quads);
 
@@ -133,16 +137,22 @@ namespace System.Windows.Forms
         public static RGBAPixel _left = new RGBAPixel(192, 192, 192, 255), _right = new RGBAPixel(240, 240, 240, 255);
         public static unsafe GLTexture CreateBG()
         {
-            GLTexture tex = new GLTexture(16, 16);
-            tex._texId = GL.GenTexture();
+            GLTexture tex = new GLTexture(16, 16)
+            {
+                _texId = GL.GenTexture()
+            };
             GL.BindTexture(TextureTarget.Texture2D, tex._texId);
 
             int* pixelData = stackalloc int[16 * 16];
             RGBAPixel* p = (RGBAPixel*)pixelData;
 
             for (int y = 0; y < 16; y++)
+            {
                 for (int x = 0; x < 16; x++)
+                {
                     *p++ = ((x & 8) == (y & 8)) ? _left : _right;
+                }
+            }
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);

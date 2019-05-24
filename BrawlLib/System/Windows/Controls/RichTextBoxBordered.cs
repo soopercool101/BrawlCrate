@@ -6,8 +6,8 @@ namespace System.Windows.Forms
     {
         public override string Text
         {
-            get { return textBox.Text; }
-            set { textBox.Text = value; }
+            get => textBox.Text;
+            set => textBox.Text = value;
         }
 
         public RichTextBoxBordered()
@@ -34,7 +34,9 @@ namespace System.Windows.Forms
         private void textBox_TextChanged(object sender, EventArgs e)
         {
             if (TextChanged != null)
+            {
                 TextChanged(sender, e);
+            }
         }
     }
 }

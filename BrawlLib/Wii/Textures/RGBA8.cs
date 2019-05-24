@@ -1,16 +1,16 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Imaging;
 
 namespace BrawlLib.Wii.Textures
 {
-    unsafe class RGBA8 : TextureConverter
+    internal unsafe class RGBA8 : TextureConverter
     {
-        public override int BitsPerPixel { get { return 32; } }
-        public override int BlockWidth { get { return 4; } }
-        public override int BlockHeight { get { return 4; } }
+        public override int BitsPerPixel => 32;
+        public override int BlockWidth => 4;
+        public override int BlockHeight => 4;
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format32bppArgb; } }
-        public override WiiPixelFormat RawFormat { get { return WiiPixelFormat.RGBA8; } }
+        public override WiiPixelFormat RawFormat => WiiPixelFormat.RGBA8;
 
         protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
         {
@@ -39,22 +39,38 @@ namespace BrawlLib.Wii.Textures
         {
             RGBA8Pixel* dPtr = (RGBA8Pixel*)blockAddr;
             for (int y = 0; y < BlockHeight; y++, sPtr += width)
+            {
                 for (int x = 0; x < BlockWidth; dPtr = dPtr->Increase())
+                {
                     dPtr->Set(&sPtr[x++]);
+                }
+            }
         }
 
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RGBA8Pixel
+    internal unsafe struct RGBA8Pixel
     {
         public byte A;
         public byte R;
-        fixed byte _padding[30];
+        private readonly byte _padding[30];
         public byte G;
         public byte B;
 
-        public RGBA8Pixel* Increase() { fixed (RGBA8Pixel* ptr = &this) return (RGBA8Pixel*)((uint)ptr + 2); }
-        public RGBA8Pixel* Jump(int num) { fixed (RGBA8Pixel* ptr = &this) return (RGBA8Pixel*)((uint)ptr + (num << 1)); }
+        public RGBA8Pixel* Increase()
+        {
+            fixed (RGBA8Pixel* ptr = &this)
+            {
+                return (RGBA8Pixel*)((uint)ptr + 2);
+            }
+        }
+        public RGBA8Pixel* Jump(int num)
+        {
+            fixed (RGBA8Pixel* ptr = &this)
+            {
+                return (RGBA8Pixel*)((uint)ptr + (num << 1));
+            }
+        }
         public static explicit operator ARGBPixel(RGBA8Pixel p)
         {
             return new ARGBPixel() { A = p.A, R = p.R, G = p.G, B = p.B };

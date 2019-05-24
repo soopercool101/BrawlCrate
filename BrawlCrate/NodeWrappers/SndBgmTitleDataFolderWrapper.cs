@@ -8,7 +8,7 @@ namespace BrawlCrate.NodeWrappers
     [NodeWrapper(ResourceType.SndBgmTitleDataFolder)]
     public class SndBgmTitleDataFolderWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static SndBgmTitleDataFolderWrapper()
         {
             _menu = new ContextMenuStrip();

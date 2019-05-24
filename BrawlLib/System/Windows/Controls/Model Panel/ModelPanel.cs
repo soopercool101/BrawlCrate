@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
-using System.ComponentModel;
-using System.Drawing;
-using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using OpenTK.Graphics.OpenGL;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
 
 namespace System.Windows.Forms
 {
@@ -31,7 +31,7 @@ namespace System.Windows.Forms
             MDL0TextureNode._folderWatcher.Error -= _folderWatcher_Error;
         }
 
-        List<KeyValuePair<ModelPanelViewport, DragFlags>> _dragging = new List<KeyValuePair<ModelPanelViewport, DragFlags>>();
+        private readonly List<KeyValuePair<ModelPanelViewport, DragFlags>> _dragging = new List<KeyValuePair<ModelPanelViewport, DragFlags>>();
         public bool _draggingViewports = false;
 
         public BindingList<IRenderedObject> _renderList = new BindingList<IRenderedObject>();
@@ -42,7 +42,7 @@ namespace System.Windows.Forms
 
         #region Camera
 
-        public GLCamera Camera { get { return CurrentViewport.Camera; } }
+        public GLCamera Camera => CurrentViewport.Camera;
 
         public void ResetCamera()
         {
@@ -83,18 +83,15 @@ namespace System.Windows.Forms
 
         public new ModelPanelViewport CurrentViewport
         {
-            get { return base.CurrentViewport as ModelPanelViewport; }
-            set { base.CurrentViewport = value; }
+            get => base.CurrentViewport as ModelPanelViewport;
+            set => base.CurrentViewport = value;
         }
-        public new ModelPanelViewport HighlightedViewport
-        {
-            get { return base.HighlightedViewport as ModelPanelViewport; }
-        }
+        public new ModelPanelViewport HighlightedViewport => base.HighlightedViewport as ModelPanelViewport;
         public override void CreateDefaultViewport()
         {
             AddViewport(ModelPanelViewport.DefaultPerspective);
         }
-        
+
         #region Targets
         public void ClearAll()
         {
@@ -111,7 +108,9 @@ namespace System.Windows.Forms
         public void AddTarget(IRenderedObject target)
         {
             if (_renderList.Contains(target))
+            {
                 return;
+            }
 
             _renderList.Add(target);
             target.DrawCallsChanged += target_DrawCallsChanged;
@@ -119,26 +118,35 @@ namespace System.Windows.Forms
             target.Attach();
 
             foreach (DrawCallBase call in target.DrawCalls)
+            {
                 call.Bind();
+            }
 
             _drawCalls.AddRange(target.DrawCalls);
             _drawCalls.Sort(DrawCallSort);
 
             if (target is ResourceNode)
+            {
                 _resourceList.Add(target as ResourceNode);
+            }
 
             Invalidate();
         }
         public void RemoveTarget(IRenderedObject target, bool refreshReferences = true)
         {
             if (!_renderList.Contains(target))
+            {
                 return;
+            }
+
             _renderList.Remove(target);
 
             target.Detach();
 
             if (target is ResourceNode)
+            {
                 RemoveReference(target as ResourceNode, refreshReferences);
+            }
 
             target.DrawCallsChanged -= target_DrawCallsChanged;
 
@@ -146,13 +154,13 @@ namespace System.Windows.Forms
             _drawCalls.Sort(DrawCallSort);
         }
 
-        Comparison<DrawCallBase> _drawCallSort = DrawCallBase.Sort;
+        private Comparison<DrawCallBase> _drawCallSort = DrawCallBase.Sort;
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Comparison<DrawCallBase> DrawCallSort
         {
-            get { return _drawCallSort ?? DrawCallBase.Sort; }
-            set { _drawCallSort = value; }
+            get => _drawCallSort ?? DrawCallBase.Sort;
+            set => _drawCallSort = value;
         }
 
         public void target_DrawCallsChanged(object sender, EventArgs e)
@@ -165,7 +173,10 @@ namespace System.Windows.Forms
         public void ClearTargets()
         {
             for (int i = 0; i < _renderList.Count; i++)
+            {
                 _renderList[i].Detach();
+            }
+
             _renderList.Clear();
             _drawCalls.Clear();
         }
@@ -173,20 +184,28 @@ namespace System.Windows.Forms
         public void AddReference(ResourceNode node, bool refreshReferences = true)
         {
             if (_resourceList.Contains(node))
+            {
                 return;
+            }
 
             _resourceList.Add(node);
             if (refreshReferences)
+            {
                 RefreshReferences();
+            }
         }
         public void RemoveReference(ResourceNode node, bool refreshReferences = true)
         {
             if (!_resourceList.Contains(node))
+            {
                 return;
+            }
 
             _resourceList.Remove(node);
             if (refreshReferences)
+            {
                 RefreshReferences();
+            }
         }
         public void ClearReferences()
         {
@@ -202,7 +221,9 @@ namespace System.Windows.Forms
             }
 
             foreach (IRenderedObject o in _renderList)
+            {
                 o.Refresh();
+            }
 
             Invalidate();
         }
@@ -212,20 +233,30 @@ namespace System.Windows.Forms
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             if (!Enabled)
+            {
                 return;
-            
-            float z = (float)e.Delta / 120.0f;
+            }
+
+            float z = e.Delta / 120.0f;
             if (Control.ModifierKeys == Keys.Shift)
+            {
                 z *= 32;
+            }
 
             ModelPanelViewport v = HighlightedViewport;
             v.Zoom(-z * v._zoomFactor);
 
             if (Control.ModifierKeys == Keys.Alt)
+            {
                 if (z < 0)
+                {
                     v._multiplier /= 0.9f;
+                }
                 else
+                {
                     v._multiplier *= 0.9f;
+                }
+            }
 
             base.OnMouseWheel(e);
         }
@@ -233,7 +264,9 @@ namespace System.Windows.Forms
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (!Enabled)
+            {
                 return;
+            }
 
             ModelPanelViewport highlighted = HighlightedViewport;
             if (CurrentViewport != highlighted)
@@ -248,9 +281,14 @@ namespace System.Windows.Forms
                 case Forms.MouseButtons.Left:
                     _mouseDown = true;
                     if (_dragging.Count > 0 && _viewports.Count > 1)
+                    {
                         _draggingViewports = true;
+                    }
                     else
+                    {
                         CurrentViewport.HandleLeftMouseDown(e);
+                    }
+
                     break;
 
                 case Forms.MouseButtons.Right:
@@ -264,7 +302,8 @@ namespace System.Windows.Forms
 
             base.OnMouseDown(e);
         }
-        bool _mouseDown;
+
+        private bool _mouseDown;
         protected override void OnMouseUp(MouseEventArgs e)
         {
             switch (e.Button)
@@ -286,7 +325,10 @@ namespace System.Windows.Forms
                         }
                     }
                     else
+                    {
                         CurrentViewport.HandleLeftMouseUp(e);
+                    }
+
                     break;
 
                 case Forms.MouseButtons.Right:
@@ -297,7 +339,7 @@ namespace System.Windows.Forms
                     CurrentViewport._scrolling = false;
                     break;
 
-                    default:
+                default:
                     base.OnMouseUp(e);
                     return;
             }
@@ -306,7 +348,7 @@ namespace System.Windows.Forms
             base.OnMouseUp(e);
         }
 
-        enum DragFlags
+        private enum DragFlags
         {
             xMin,
             yMin,
@@ -325,7 +367,9 @@ namespace System.Windows.Forms
             }
 
             if (!Enabled)
+            {
                 return;
+            }
 
             base.OnMouseMove(e);
 
@@ -338,7 +382,7 @@ namespace System.Windows.Forms
                     yP = (float)y / Height,
                     xP = (float)x / Width;
 
-                foreach (var t in _dragging)
+                foreach (KeyValuePair<ModelPanelViewport, DragFlags> t in _dragging)
                 {
                     //TODO: don't allow the user to drag over another viewport
                     //bool cont = false;
@@ -402,36 +446,46 @@ namespace System.Windows.Forms
                 foreach (ModelPanelViewport w in _viewports)
                 {
                     //if (y > w.Region.Y - range && y < w.Region.Y + w.Region.Height + range)
-                        if (inRange(DragFlags.xMin, w.Region))
-                        {
-                            add(w, DragFlags.xMin);
-                        }
-                        else if (inRange(DragFlags.xMax, w.Region))
-                        {
-                            add(w, DragFlags.xMax);
-                        }
+                    if (inRange(DragFlags.xMin, w.Region))
+                    {
+                        add(w, DragFlags.xMin);
+                    }
+                    else if (inRange(DragFlags.xMax, w.Region))
+                    {
+                        add(w, DragFlags.xMax);
+                    }
                     //if (x > w.Region.X - range && x < w.Region.X + w.Region.Width + range)
-                        if (inRange(DragFlags.yMin, w.Region))
-                        {
-                            add(w, DragFlags.yMin);
-                        }
-                        else if (inRange(DragFlags.yMax, w.Region))
-                        {
-                            add(w, DragFlags.yMax);
-                        }
+                    if (inRange(DragFlags.yMin, w.Region))
+                    {
+                        add(w, DragFlags.yMin);
+                    }
+                    else if (inRange(DragFlags.yMax, w.Region))
+                    {
+                        add(w, DragFlags.yMax);
+                    }
                 }
 
                 if (xd && yd)
+                {
                     Cursor = Cursors.SizeAll;
+                }
                 else if (xd)
+                {
                     Cursor = Cursors.SizeWE;
+                }
                 else if (yd)
+                {
                     Cursor = Cursors.SizeNS;
+                }
                 else
+                {
                     CurrentViewport.HandleMouseMove(_ctx, e);
+                }
             }
             else
+            {
                 CurrentViewport.HandleMouseMove(_ctx, e);
+            }
         }
         #endregion
 
@@ -465,10 +519,16 @@ namespace System.Windows.Forms
         protected override bool ProcessKeyMessage(ref Message m)
         {
             if (EventProcessKeyMessage != null)
+            {
                 EventProcessKeyMessage(ref m);
+            }
             else if (Enabled && m.Msg == 0x100)
+            {
                 if (CurrentViewport.ProcessKeys((Keys)m.WParam, Control.ModifierKeys))
+                {
                     return true;
+                }
+            }
 
             return base.ProcessKeyMessage(ref m);
         }
@@ -477,7 +537,7 @@ namespace System.Windows.Forms
 
         #region OpenGL
 
-        internal unsafe override void OnInit(TKContext ctx)
+        internal override unsafe void OnInit(TKContext ctx)
         {
             Vector3 v = (Vector3)BackColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);
@@ -533,7 +593,9 @@ namespace System.Windows.Forms
             viewport.RecalcLight();
 
             if (PreRender != null)
+            {
                 PreRender(viewport);
+            }
 
             GL.PushAttrib(AttribMask.AllAttribBits);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -545,14 +607,20 @@ namespace System.Windows.Forms
 
             //Allow each model to set up any data specific to this frame and viewport
             foreach (IRenderedObject o in _renderList)
+            {
                 o.PreRender(viewport);
+            }
 
             //Render objects in specifically sorted order
             foreach (DrawCallBase call in _drawCalls)
+            {
                 call.Render(viewport);
+            }
 
             if (viewport._renderAttrib._renderShaders)
+            {
                 GL.UseProgram(0);
+            }
 
             GL.MatrixMode(MatrixMode.Texture);
             GL.LoadIdentity();
@@ -560,7 +628,9 @@ namespace System.Windows.Forms
             GL.PopAttrib();
 
             if (PostRender != null)
+            {
                 PostRender(viewport);
+            }
 
             viewport.RenderForeground(v == CurrentViewport, _viewports.Count == 1);
 
@@ -571,7 +641,7 @@ namespace System.Windows.Forms
         {
             GL.ReadBuffer(ReadBufferMode.Front);
             GL.PixelStore(PixelStoreParameter.UnpackAlignment, 1);
-            Bitmap bmp = new Bitmap(region.Width,  region.Height);
+            Bitmap bmp = new Bitmap(region.Width, region.Height);
             BitmapData data;
             if (withTransparency)
             {
@@ -595,11 +665,13 @@ namespace System.Windows.Forms
         {
             RefreshReferences();
         }
-        void _folderWatcher_Error(object sender, ErrorEventArgs e)
+
+        private void _folderWatcher_Error(object sender, ErrorEventArgs e)
         {
             RefreshReferences();
         }
-        void _folderWatcher_Renamed(object sender, RenamedEventArgs e)
+
+        private void _folderWatcher_Renamed(object sender, RenamedEventArgs e)
         {
             RefreshReferences();
         }
@@ -636,7 +708,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool FirstPersonCamera
         {
-            get { return CurrentViewport._firstPersonCamera; }
+            get => CurrentViewport._firstPersonCamera;
             set
             {
                 CurrentViewport._firstPersonCamera = value;
@@ -644,14 +716,16 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (FirstPersonCameraChanged != null)
+                {
                     FirstPersonCameraChanged(this, value);
+                }
             }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderFloor
         {
-            get { return CurrentViewport._renderFloor; }
+            get => CurrentViewport._renderFloor;
             set
             {
                 CurrentViewport._renderFloor = value;
@@ -659,14 +733,16 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderFloorChanged != null)
+                {
                     RenderFloorChanged(this, value);
+                }
             }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderBones
         {
-            get { return CurrentViewport._renderAttrib._renderBones; }
+            get => CurrentViewport._renderAttrib._renderBones;
             set
             {
                 CurrentViewport._renderAttrib._renderBones = value;
@@ -674,13 +750,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderBonesChanged != null)
+                {
                     RenderBonesChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderVertices
         {
-            get { return CurrentViewport._renderAttrib._renderVertices; }
+            get => CurrentViewport._renderAttrib._renderVertices;
             set
             {
                 CurrentViewport._renderAttrib._renderVertices = value;
@@ -688,13 +766,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderVerticesChanged != null)
+                {
                     RenderVerticesChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderNormals
         {
-            get { return CurrentViewport._renderAttrib._renderNormals; }
+            get => CurrentViewport._renderAttrib._renderNormals;
             set
             {
                 CurrentViewport._renderAttrib._renderNormals = value;
@@ -702,13 +782,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderNormalsChanged != null)
+                {
                     RenderNormalsChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderPolygons
         {
-            get { return CurrentViewport._renderAttrib._renderPolygons; }
+            get => CurrentViewport._renderAttrib._renderPolygons;
             set
             {
                 CurrentViewport._renderAttrib._renderPolygons = value;
@@ -716,13 +798,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderPolygonsChanged != null)
+                {
                     RenderPolygonsChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderWireframe
         {
-            get { return CurrentViewport._renderAttrib._renderWireframe; }
+            get => CurrentViewport._renderAttrib._renderWireframe;
             set
             {
                 CurrentViewport._renderAttrib._renderWireframe = value;
@@ -730,13 +814,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderWireframeChanged != null)
+                {
                     RenderWireframeChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderShaders
         {
-            get { return CurrentViewport._renderAttrib._renderShaders; }
+            get => CurrentViewport._renderAttrib._renderShaders;
             set
             {
                 CurrentViewport._renderAttrib._renderShaders = value;
@@ -744,13 +830,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderShadersChanged != null)
+                {
                     RenderShadersChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderModelBox
         {
-            get { return CurrentViewport._renderAttrib._renderModelBox; }
+            get => CurrentViewport._renderAttrib._renderModelBox;
             set
             {
                 CurrentViewport._renderAttrib._renderModelBox = value;
@@ -758,13 +846,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderModelBoxChanged != null)
+                {
                     RenderModelBoxChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderObjectBox
         {
-            get { return CurrentViewport._renderAttrib._renderObjectBoxes; }
+            get => CurrentViewport._renderAttrib._renderObjectBoxes;
             set
             {
                 CurrentViewport._renderAttrib._renderObjectBoxes = value;
@@ -772,13 +862,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderObjectBoxChanged != null)
+                {
                     RenderObjectBoxChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderVisBoneBox
         {
-            get { return CurrentViewport._renderAttrib._renderBoneBoxes; }
+            get => CurrentViewport._renderAttrib._renderBoneBoxes;
             set
             {
                 CurrentViewport._renderAttrib._renderBoneBoxes = value;
@@ -786,13 +878,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderVisBoneBoxChanged != null)
+                {
                     RenderVisBoneBoxChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseBindStateBoxes
         {
-            get { return CurrentViewport._renderAttrib._useBindStateBoxes; }
+            get => CurrentViewport._renderAttrib._useBindStateBoxes;
             set
             {
                 CurrentViewport._renderAttrib._useBindStateBoxes = value;
@@ -800,13 +894,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (UseBindStateBoxesChanged != null)
+                {
                     UseBindStateBoxesChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool DontRenderOffscreen
         {
-            get { return CurrentViewport._renderAttrib._dontRenderOffscreen; }
+            get => CurrentViewport._renderAttrib._dontRenderOffscreen;
             set
             {
                 CurrentViewport._renderAttrib._dontRenderOffscreen = value;
@@ -814,13 +910,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (RenderOffscreenChanged != null)
+                {
                     RenderOffscreenChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ApplyBillboardBones
         {
-            get { return CurrentViewport._renderAttrib._applyBillboardBones; }
+            get => CurrentViewport._renderAttrib._applyBillboardBones;
             set
             {
                 CurrentViewport._renderAttrib._applyBillboardBones = value;
@@ -828,13 +926,15 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (ApplyBillboardBonesChanged != null)
+                {
                     ApplyBillboardBonesChanged(this, value);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ScaleBones
         {
-            get { return CurrentViewport._renderAttrib._scaleBones; }
+            get => CurrentViewport._renderAttrib._scaleBones;
             set
             {
                 CurrentViewport._renderAttrib._scaleBones = value;
@@ -842,7 +942,9 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 if (ScaleBonesChanged != null)
+                {
                     ScaleBonesChanged(this, value);
+                }
             }
         }
 
@@ -869,7 +971,10 @@ namespace System.Windows.Forms
                 case ResourceType.U8:
                 case ResourceType.U8Folder:
                     foreach (ResourceNode n in node.Children)
+                    {
                         GetModelsRecursive(n, models);
+                    }
+
                     break;
                 case ResourceType.MDL0:
                 case ResourceType.BMD:

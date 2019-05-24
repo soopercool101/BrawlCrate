@@ -1,28 +1,24 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ATKDNode : ARCEntryNode
     {
-        internal ATKD* Header { get { return (ATKD*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType
-        {
-            get
-            {
-                return ResourceType.ATKD;
-            }
-        }
+        internal ATKD* Header => (ATKD*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.ATKD;
 
         [Category("ATKD Property")]
-        public int Entries { get { return Header->_numEntries; } }
+        public int Entries => Header->_numEntries;
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
-                this._name = "ATKD " + this.Parent.Name.Replace("ai_", "");//Naming this node
+            {
+                _name = "ATKD " + Parent.Name.Replace("ai_", "");//Naming this node
+            }
 
             return Header->_numEntries > 0;
         }
@@ -32,7 +28,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ATKDEntry* entry = Header->entries;
             for (int i = 0; i < Header->_numEntries; i++)
             {
-                new ATKDEntryNode().Initialize(this, new DataSource((VoidPtr)entry, 0x18));
+                new ATKDEntryNode().Initialize(this, new DataSource(entry, 0x18));
                 entry++;
             }
         }
@@ -42,7 +38,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             int header = 0x10;
             int entries = 0;
             for (int i = 0; i < Children.Count; i++)
+            {
                 entries += (int)ATKDEntry.Size;
+            }
+
             return (header + entries);
         }
 
@@ -55,7 +54,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             atkd->_unk2 = Header->_unk2;
             ATKDEntry* entries = (ATKDEntry*)((VoidPtr)atkd + 0x10);
             foreach (ATKDEntryNode node in Children)
-            { node.Rebuild((VoidPtr)entries, 0x24, true); entries++; }
+            { node.Rebuild(entries, 0x24, true); entries++; }
         }
 
         internal static ResourceNode TryParse(DataSource source) { return ((ATKD*)source.Address)->_tag == ATKD.Tag ? new ATKDNode() : null; }
@@ -63,31 +62,34 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ATKDEntryNode : ResourceNode
     {
-        internal ATKDEntry* Header { get { return (ATKDEntry*)WorkingUncompressed.Address; } }
+        internal ATKDEntry* Header => (ATKDEntry*)WorkingUncompressed.Address;
 
         private short SubActID, unk1, unk2, unk3;
-        float xMinRange, xMaxRange, yMinRange, yMaxRange;
+        private float xMinRange, xMaxRange, yMinRange, yMaxRange;
         [Category("ATKD Entry"), Description("ID of Sub Action. This is same to PSA's")]
-        public SubActionID SubActionName { get { return (SubActionID)SubActID; } set { SubActID = (short)value; SignalPropertyChange(); } }
+        public SubActionID SubActionName { get => (SubActionID)SubActID; set { SubActID = (short)value; SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Always 0")]
-        public string Unknown1 { get { return "0x" + ((short)unk1).ToString("X"); } set { unk1 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
+        public string Unknown1 { get => "0x" + unk1.ToString("X"); set { unk1 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Beginning frame of Danger Box")]
-        public string StartFrame { get { return "0x" + ((short)unk2).ToString("X"); } set { unk2 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
+        public string StartFrame { get => "0x" + unk2.ToString("X"); set { unk2 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Ending Frame of Danger Box")]
-        public string EndFrame { get { return "0x" + ((short)unk3).ToString("X"); } set { unk3 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
+        public string EndFrame { get => "0x" + unk3.ToString("X"); set { unk3 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Minimum offensive collision range in direction of X")]
-        public float XMinRange { get { return xMinRange; } set { xMinRange = value; SignalPropertyChange(); } }
+        public float XMinRange { get => xMinRange; set { xMinRange = value; SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Maximum offensive collision range in direction of X")]
-        public float XMaxRange { get { return xMaxRange; } set { xMaxRange = value; SignalPropertyChange(); } }
+        public float XMaxRange { get => xMaxRange; set { xMaxRange = value; SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Minimum offensive collision range in direction of Y")]
-        public float YMinRange { get { return yMinRange; } set { yMinRange = value; SignalPropertyChange(); } }
+        public float YMinRange { get => yMinRange; set { yMinRange = value; SignalPropertyChange(); } }
         [Category("ATKD Entry"), Description("Maximum offensive collision range in direction of Y")]
-        public float YMaxRange { get { return yMaxRange; } set { yMaxRange = value; SignalPropertyChange(); } }
+        public float YMaxRange { get => yMaxRange; set { yMaxRange = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
             if (_name == null)
+            {
                 _name = ((SubActionID)(short)Header->_SubActID).ToString();
+            }
+
             SubActID = Header->_SubActID;
             unk1 = Header->_unk1;
             unk2 = Header->_StartFrame;

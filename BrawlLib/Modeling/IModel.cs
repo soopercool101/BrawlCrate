@@ -25,7 +25,7 @@ namespace BrawlLib.Modeling
         void ApplyVIS(VIS0Node node, float index);
         void ApplyCLR(CLR0Node node, float index);
         void ApplySCN(SCN0Node node, float index);
-        
+
         void RenderVertices(bool depthPass, IBoneNode weightTarget, GLCamera camera);
         void RenderNormals();
         void RenderBoxes(bool model, bool obj, bool bone, bool bindState);

@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SndBgmTitleDataNode : ResourceNode
     {
-        public override ResourceType ResourceType { get { return ResourceType.SndBgmTitleDataFolder; } }
+        public override ResourceType ResourceType => ResourceType.SndBgmTitleDataFolder;
 
         public override bool OnInitialize()
         {
@@ -28,27 +28,35 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             // Rebuild children using new address
             for (int i = 0; i < Children.Count; i++)
+            {
                 Children[i].Rebuild(address + (i * sizeof(SndBgmTitleEntry)), sizeof(SndBgmTitleEntry), true);
+            }
         }
 
         public override int OnCalculateSize(bool force)
         {
             int size = 0;
             foreach (SndBgmTitleEntryNode node in Children)
+            {
                 size += node.CalculateSize(true);
+            }
+
             return size;
         }
 
         public void CreateEntry()
         {
             int maxID = 0, maxSongIndex = 0;
-            foreach (SndBgmTitleEntryNode entry in this.Children) {
+            foreach (SndBgmTitleEntryNode entry in Children)
+            {
                 maxID = Math.Max(entry.ID, maxID);
                 maxSongIndex = Math.Max(entry.SongTitleIndex, maxSongIndex);
             }
-            SndBgmTitleEntryNode n = new SndBgmTitleEntryNode();
-            n.ID = maxID + 1;
-            n.SongTitleIndex = maxSongIndex + 1;
+            SndBgmTitleEntryNode n = new SndBgmTitleEntryNode
+            {
+                ID = maxID + 1,
+                SongTitleIndex = maxSongIndex + 1
+            };
             AddChild(n);
         }
     }
@@ -56,32 +64,26 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SndBgmTitleEntryNode : ResourceNode
     {
         [Browsable(false)]
-        public SndBgmTitleDataNode Root
-        {
-            get
-            {
-                return _parent as SndBgmTitleDataNode;
-            }
-        }
+        public SndBgmTitleDataNode Root => _parent as SndBgmTitleDataNode;
 
         [Browsable(true)]
         [Category("Entry")]
-        public string Length { get { return sizeof(SndBgmTitleEntry).ToString("x"); } }
+        public string Length => sizeof(SndBgmTitleEntry).ToString("x");
 
         //internal SndBgmTitleEntry* Header { get { return (SndBgmTitleEntry*)WorkingUncompressed.Address; } }
         public SndBgmTitleEntry Data;
 
-        public override ResourceType ResourceType { get { return ResourceType.SndBgmTitleDataEntry; } }
+        public override ResourceType ResourceType => ResourceType.SndBgmTitleDataEntry;
 
         [Category("Song")]
         [DisplayName("Song ID")]
         [Description("The ID of the song to show the title for.")]
-        public int ID { get { return Data._ID; } set { Data._ID = value; SignalPropertyChange(); UpdateName(); } }
+        public int ID { get => Data._ID; set { Data._ID = value; SignalPropertyChange(); UpdateName(); } }
 
         [Category("Song")]
         [DisplayName("Song Title Index")]
         [Description("The index of the song title in info.pac (MiscData[140]) and other files.")]
-        public int SongTitleIndex { get { return Data._SongTitleIndex; } set { Data._SongTitleIndex = value; SignalPropertyChange(); UpdateName(); } }
+        public int SongTitleIndex { get => Data._SongTitleIndex; set { Data._SongTitleIndex = value; SignalPropertyChange(); UpdateName(); } }
 
         public SndBgmTitleEntryNode()
         {
@@ -93,13 +95,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             Data._unknown28 = -1;
             Data._unknown2c = 0x0B;
         }
-        
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
             if (WorkingUncompressed.Length != sizeof(SndBgmTitleEntry))
+            {
                 throw new Exception("Wrong size for SndBgmTitleEntryNode");
+            }
 
             // Copy the data from the address
             Data = *(SndBgmTitleEntry*)WorkingUncompressed.Address;

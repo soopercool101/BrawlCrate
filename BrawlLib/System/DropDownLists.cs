@@ -1,10 +1,10 @@
-﻿using System.ComponentModel;
-using System.Globalization;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Compression;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
+using System.Linq;
 
 namespace System
 {
@@ -16,7 +16,11 @@ namespace System
         {
             MDL0Node model = (context.Instance as DrawCall)._parentObject.Model;
             List<ResourceNode> mats = new List<ResourceNode>();
-            foreach (MDL0MaterialNode n in model._matList) mats.Add(n);
+            foreach (MDL0MaterialNode n in model._matList)
+            {
+                mats.Add(n);
+            }
+
             return new StandardValuesCollection(mats.Select(n => n.ToString()).ToList());
         }
     }
@@ -27,9 +31,13 @@ namespace System
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
             List<ResourceNode> opaMats = new List<ResourceNode>();
-            foreach (MDL0MaterialNode n in model._matList) /*if (!n.XLUMaterial)*/ opaMats.Add(n);
+            foreach (MDL0MaterialNode n in model._matList) /*if (!n.XLUMaterial)*/
+            {
+                opaMats.Add(n);
+            }
+
             return new StandardValuesCollection(opaMats.Select(n => n.ToString()).ToList());
-        } 
+        }
     }
     public class DropDownListXluMaterials : StringConverter
     {
@@ -38,7 +46,11 @@ namespace System
         {
             MDL0Node model = (context.Instance as MDL0EntryNode).Model;
             List<ResourceNode> xluMats = new List<ResourceNode>();
-            foreach (MDL0MaterialNode n in model._matList) /*if (n.XLUMaterial)*/ xluMats.Add(n);
+            foreach (MDL0MaterialNode n in model._matList) /*if (n.XLUMaterial)*/
+            {
+                xluMats.Add(n);
+            }
+
             return new StandardValuesCollection(xluMats.Select(n => n.ToString()).ToList());
         }
     }
@@ -130,7 +142,7 @@ namespace System
             return new StandardValuesCollection(model != null && model._furPosList != null ? model._furPosList.Select(n => n.ToString()).ToList() : null);
         }
     }
-    
+
     public class DropDownListFurVec : StringConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
@@ -153,8 +165,13 @@ namespace System
             SCN0Node node = (context.Instance as SCN0EntryNode).Parent.Parent as SCN0Node;
             ResourceNode n = node.FindChild("AmbLights(NW4R)", false);
             if (n != null)
+            {
                 return new StandardValuesCollection(n.Children.Select(r => r.ToString()).ToList());
-            else return null;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
@@ -166,8 +183,13 @@ namespace System
             SCN0Node node = (context.Instance as SCN0EntryNode).Parent.Parent as SCN0Node;
             ResourceNode n = node.FindChild("Lights(NW4R)", false);
             if (n != null)
+            {
                 return new StandardValuesCollection(n.Children.Select(r => r.ToString()).ToList());
-            else return null;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
@@ -254,11 +276,15 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             RSARSoundNode n = context.Instance as RSARSoundNode;
-            if (n.SoundFileNode == null || n.SoundFileNode is RSARExtFileNode) return null;
+            if (n.SoundFileNode == null || n.SoundFileNode is RSARExtFileNode)
+            {
+                return null;
+            }
+
             return new StandardValuesCollection(n.SoundFileNode.Children[0].Children.Select(r => r.ToString()).ToList());
         }
     }
-    
+
     public class DropDownListRSARInfoSeqLabls : StringConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
@@ -267,7 +293,9 @@ namespace System
             RSARSoundNode n = context.Instance as RSARSoundNode;
 
             if (n.SoundFileNode != null && n.SoundType == RSARSoundNode.SndType.SEQ)
+            {
                 return new StandardValuesCollection(n.SoundFileNode.Children.Select(r => r.ToString()).ToList());
+            }
 
             return null;
         }
@@ -279,7 +307,11 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             ResourceNode n = context.Instance as RSAREntryNode;
-            while (((n = n.Parent) != null) && !(n is RBNKNode)) ;
+            while (((n = n.Parent) != null) && !(n is RBNKNode))
+            {
+                ;
+            }
+
             return new StandardValuesCollection(n.Children[1].Children.Select(r => r.ToString()).ToList());
         }
     }
@@ -287,7 +319,7 @@ namespace System
     #endregion
 
     #region REFF
-    
+
     public class DropDownListReffAnimType : StringConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
@@ -323,7 +355,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Billboard)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.BillboardAssist)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -334,7 +369,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.StripeAssist)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -345,7 +383,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType != BrawlLib.SSBBTypes.ReffType.Billboard)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.Assist)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -356,7 +397,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Billboard)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.BillboardAhead)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -367,7 +411,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType != BrawlLib.SSBBTypes.ReffType.Billboard)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.Ahead)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -378,7 +425,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.StripeConnect)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -389,7 +439,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.StripeInitialPrevAxis)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -400,7 +453,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.StripeTexmapType)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -411,7 +467,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Directional)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.DirectionalPivot)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -422,7 +481,10 @@ namespace System
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
             if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Directional)
+            {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BrawlLib.SSBBTypes.Face)));
+            }
+
             return new StandardValuesCollection(null);
         }
     }
@@ -435,7 +497,10 @@ namespace System
         {
             List<string> values = new List<string>();
             foreach (int i in Compressor._supportedCompressionTypes)
+            {
                 values.Add(((CompressionType)i).ToString());
+            }
+
             return new StandardValuesCollection(values);
         }
     }
@@ -455,7 +520,11 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             ARCEntryNode entry = context.Instance as ARCEntryNode;
-            if (entry.Parent == null) return null;
+            if (entry.Parent == null)
+            {
+                return null;
+            }
+
             List<ARCEntryNode> list = entry.Parent.Children.Select(x => x as ARCEntryNode).ToList();
             list.Remove(entry);
             return new StandardValuesCollection(list);
@@ -468,7 +537,10 @@ namespace System
         {
             List<string> values = new List<string>();
             foreach (int i in GEG1Entry._KnownEnemies)
+            {
                 values.Add(((GEG1Entry.EnemyType)i).ToString());
+            }
+
             return new StandardValuesCollection(values);
         }
     }
@@ -499,7 +571,7 @@ namespace System
         {
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
-                var stage = BrawlLib.SSBB.Stage.Stages.Where(s => s.ID == (int)value).FirstOrDefault();
+                BrawlLib.SSBB.Stage stage = BrawlLib.SSBB.Stage.Stages.Where(s => s.ID == (int)value).FirstOrDefault();
                 return "0x" + ((int)value).ToString("X2") + (stage == null ? "" : (" - " + stage.Name));
             }
             return base.ConvertTo(context, culture, value, destinationType);
@@ -532,7 +604,7 @@ namespace System
         {
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
-                var item = BrawlLib.SSBB.Item.Items.Where(s => s.ID == (int)value).FirstOrDefault();
+                BrawlLib.SSBB.Item item = BrawlLib.SSBB.Item.Items.Where(s => s.ID == (int)value).FirstOrDefault();
                 return "0x" + ((int)value).ToString("X2") + (item == null ? "" : (" - " + item.Name));
             }
             return base.ConvertTo(context, culture, value, destinationType);
@@ -565,7 +637,7 @@ namespace System
         {
             if (destinationType == typeof(string) && value.GetType() == typeof(byte))
             {
-                var fighter = BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte)value).FirstOrDefault();
+                BrawlLib.SSBB.Fighter fighter = BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte)value).FirstOrDefault();
                 return "0x" + ((byte)value).ToString("X2") + (fighter == null ? "" : (" - " + fighter.Name));
             }
             return base.ConvertTo(context, culture, value, destinationType);

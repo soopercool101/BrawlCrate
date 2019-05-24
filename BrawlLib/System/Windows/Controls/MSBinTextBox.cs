@@ -6,7 +6,7 @@ namespace System.Windows.Forms
     {
         //private bool _isEditing = false;
 
-        public MSBinPreviewLabel() 
+        public MSBinPreviewLabel()
         {
             AutoSize = false;
         }

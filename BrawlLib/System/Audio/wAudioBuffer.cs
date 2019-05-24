@@ -3,25 +3,25 @@ using DS = System.Win32.DirectSound;
 
 namespace System.Audio
 {
-    unsafe class wAudioBuffer : AudioBuffer
+    internal unsafe class wAudioBuffer : AudioBuffer
     {
-        wAudioProvider _parent;
-        DS.IDirectSoundBuffer8 _dsb8;
+        private readonly wAudioProvider _parent;
+        private DS.IDirectSoundBuffer8 _dsb8;
 
         internal override int PlayCursor
         {
             get { uint pos; _dsb8.GetCurrentPosition(&pos, null); return (int)pos; }
-            set { _dsb8.SetCurrentPosition((uint)value); }
+            set => _dsb8.SetCurrentPosition((uint)value);
         }
         public override int Volume
         {
-            get { int vol; _dsb8.GetVolume(out vol); return vol; }
-            set { _dsb8.SetVolume(value); }
+            get { _dsb8.GetVolume(out int vol); return vol; }
+            set => _dsb8.SetVolume(value);
         }
         public override int Pan
         {
-            get { int pan; _dsb8.GetPan(out pan); return pan; }
-            set { _dsb8.SetPan(value); }
+            get { _dsb8.GetPan(out int pan); return pan; }
+            set => _dsb8.SetPan(value);
         }
 
         //internal wAudioBuffer(wAudioProvider parent, DS.IDirectSoundBuffer8 buffer) { _dsb8 = buffer; }
@@ -30,7 +30,9 @@ namespace System.Audio
             _parent = parent;
 
             if (desc.dwBufferBytes == 0)
+            {
                 return;
+            }
 
             _parent._ds8.CreateSoundBuffer(ref desc, out _dsb8, IntPtr.Zero);
 
@@ -56,12 +58,10 @@ namespace System.Audio
         public override BufferData Lock(int offset, int length)
         {
             BufferData data = new BufferData();
-            uint len1, len2;
-            IntPtr addr1, addr2;
 
             offset = offset.Align(_blockAlign);
             length = length.Align(_blockAlign);
-            
+
             data._dataOffset = offset;
             data._dataLength = length;
             data._sampleOffset = offset / _blockAlign;
@@ -69,7 +69,7 @@ namespace System.Audio
 
             if (length != 0)
             {
-                _dsb8.Lock((uint)offset, (uint)length, out addr1, out len1, out addr2, out len2, 0);
+                _dsb8.Lock((uint)offset, (uint)length, out IntPtr addr1, out uint len1, out IntPtr addr2, out uint len2, 0);
 
                 data._part1Address = addr1;
                 data._part1Length = (int)len1;
@@ -95,7 +95,7 @@ namespace System.Audio
             }
             catch { }
         }
-        public override void Stop() 
+        public override void Stop()
         {
             _dsb8.Stop();
         }

@@ -16,26 +16,26 @@ namespace BrawlLib.SSBBTypes
         public int _pad1, _pad2, _pad3;
 
         //From here begins file data. All offsets are relative to this location (0x20).
-        public VoidPtr BaseAddress { get { return Address + 0x20; } }
+        public VoidPtr BaseAddress => Address + 0x20;
 
-        public bint* LookupEntries { get { return (bint*)(BaseAddress + _lookupOffset); } }
+        public bint* LookupEntries => (bint*)(BaseAddress + _lookupOffset);
 
-        public sStringEntry* Sections { get { return (sStringEntry*)(BaseAddress + _lookupOffset + _lookupEntryCount * 4); } }
-        public sStringEntry* ExternalSubRoutines { get { return (sStringEntry*)(BaseAddress + _lookupOffset + _lookupEntryCount * 4 + _sectionCount * 8); } }
+        public sStringEntry* Sections => (sStringEntry*)(BaseAddress + _lookupOffset + _lookupEntryCount * 4);
+        public sStringEntry* ExternalSubRoutines => (sStringEntry*)(BaseAddress + _lookupOffset + _lookupEntryCount * 4 + _sectionCount * 8);
 
         //For Sections and References
-        public sStringTable* StringTable { get { return (sStringTable*)(BaseAddress + _lookupOffset + _lookupEntryCount * 4 + _sectionCount * 8 + _externalSubRoutineCount * 8); } }
+        public sStringTable* StringTable => (sStringTable*)(BaseAddress + _lookupOffset + _lookupEntryCount * 4 + _sectionCount * 8 + _externalSubRoutineCount * 8);
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct sStringTable
     {
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
         public string GetString(int offset)
         {
-            return new String((sbyte*)Address + offset);
+            return new string((sbyte*)Address + offset);
         }
     }
 
@@ -60,6 +60,6 @@ namespace BrawlLib.SSBBTypes
             _listCount = count;
         }
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

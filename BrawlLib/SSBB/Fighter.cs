@@ -14,13 +14,13 @@
 
         public Fighter(int id, string name)
         {
-            this.ID = id;
-            this.Name = name;
+            ID = id;
+            Name = name;
         }
 
         public override string ToString() { return Name; }
 
-        public readonly static Fighter[] Fighters = new Fighter[] {
+        public static readonly Fighter[] Fighters = new Fighter[] {
             //          ID     Display Name     
 			new Fighter(0x00, "Mario"),
             new Fighter(0x01, "Donkey Kong"),

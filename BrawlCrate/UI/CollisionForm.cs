@@ -1,5 +1,5 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlCrate;
+﻿using BrawlCrate;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
@@ -8,37 +8,37 @@ namespace System.Windows.Forms
         #region Designer
 
         private CollisionEditor collisionEditor1;
-    
+
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollisionForm));
-            this.collisionEditor1 = new System.Windows.Forms.CollisionEditor();
-            this.SuspendLayout();
+            collisionEditor1 = new System.Windows.Forms.CollisionEditor();
+            SuspendLayout();
             // 
             // collisionEditor1
             // 
-            this.collisionEditor1.BackColor = System.Drawing.Color.Lavender;
-            this.collisionEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.collisionEditor1.Location = new System.Drawing.Point(0, 0);
-            this.collisionEditor1.Name = "collisionEditor1";
-            this.collisionEditor1.Size = new System.Drawing.Size(800, 600);
-            this.collisionEditor1.TabIndex = 0;
+            collisionEditor1.BackColor = System.Drawing.Color.Lavender;
+            collisionEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            collisionEditor1.Location = new System.Drawing.Point(0, 0);
+            collisionEditor1.Name = "collisionEditor1";
+            collisionEditor1.Size = new System.Drawing.Size(800, 600);
+            collisionEditor1.TabIndex = 0;
             // 
             // CollisionForm
             // 
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.collisionEditor1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
-            this.Name = "CollisionForm";
-            this.Text = "Collision Editor";
-            this.ResumeLayout(false);
+            ClientSize = new System.Drawing.Size(800, 600);
+            Controls.Add(collisionEditor1);
+            Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            MinimizeBox = false;
+            Name = "CollisionForm";
+            Text = "Collision Editor";
+            ResumeLayout(false);
 
         }
 
         #endregion
 
-        CollisionNode _node;
+        private CollisionNode _node;
 
         public CollisionForm() { InitializeComponent(); Text = Program.AssemblyTitle + " - Collision Editor"; }
 
@@ -46,7 +46,7 @@ namespace System.Windows.Forms
         {
             _node = node;
             try { return ShowDialog(owner); }
-            finally {  _node = null; }
+            finally { _node = null; }
         }
 
         protected override void OnShown(EventArgs e)

@@ -13,7 +13,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct PAT0v3
+    internal unsafe struct PAT0v3
     {
         public const string Tag = "PAT0";
         public const int Size = 0x38;
@@ -31,44 +31,44 @@ namespace BrawlLib.SSBBTypes
 
         public bushort _numFrames;
         public bushort _numEntries; //Same as group entries, directly below
-        public bushort _numTexPtr; 
+        public bushort _numTexPtr;
         public bushort _numPltPtr;
 
         public bint _loop;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public bint* TexFile { get { return (bint*)(Address + _texTableOffset); } }
-        public bint* PltFile { get { return (bint*)(Address + _pltTableOffset); } }
+        public bint* TexFile => (bint*)(Address + _texTableOffset);
+        public bint* PltFile => (bint*)(Address + _pltTableOffset);
 
         public string GetTexStringEntry(int index)
         {
-            return new String((sbyte*)((VoidPtr)TexFile + TexFile[index]));
+            return new string((sbyte*)((VoidPtr)TexFile + TexFile[index]));
         }
 
         public string GetPltStringEntry(int index)
         {
-            return new String((sbyte*)((VoidPtr)PltFile + PltFile[index]));
+            return new string((sbyte*)((VoidPtr)PltFile + PltFile[index]));
         }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct PAT0v4
+    internal unsafe struct PAT0v4
     {
         public const string Tag = "PAT0";
         public const int Size = 0x3C;
@@ -92,46 +92,46 @@ namespace BrawlLib.SSBBTypes
 
         public bint _loop;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
-        
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+
         public VoidPtr UserData
         {
-            get { return _userDataOffset == 0 ? null : Address + _userDataOffset; }
-            set { _userDataOffset = (int)value - (int)Address; }
+            get => _userDataOffset == 0 ? null : Address + _userDataOffset;
+            set => _userDataOffset = (int)value - (int)Address;
         }
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public bint* TexFile { get { return (bint*)(Address + _texTableOffset); } }
-        public bint* PltFile { get { return (bint*)(Address + _pltTableOffset); } }
+        public bint* TexFile => (bint*)(Address + _texTableOffset);
+        public bint* PltFile => (bint*)(Address + _pltTableOffset);
 
 
         public string GetTexStringEntry(int index)
         {
-            return new String((sbyte*)((VoidPtr)TexFile + TexFile[index]));
+            return new string((sbyte*)((VoidPtr)TexFile + TexFile[index]));
         }
 
         public string GetPltStringEntry(int index)
         {
-            return new String((sbyte*)((VoidPtr)PltFile + PltFile[index]));
+            return new string((sbyte*)((VoidPtr)PltFile + PltFile[index]));
         }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct PAT0Pattern
+    internal unsafe struct PAT0Pattern
     {
         public const int Size = 0x8;
 
@@ -143,21 +143,21 @@ namespace BrawlLib.SSBBTypes
         public int GetTexTableOffset(int index) { return *((bint*)Address + 2 + index); }
         public void SetTexTableOffset(int index, int value) { *((bint*)Address + 2 + index) = value; }
         public void SetTexTableOffset(int index, VoidPtr value) { *((bint*)Address + 2 + index) = (int)value - (int)Address; }
-        
+
         //Use this only if texture is fixed
         public ushort GetIndex(int index, bool palette) { return *((bushort*)Address + 4 + index * 2 + (palette ? 1 : 0)); }
         public void SetIndex(int index, ushort value, bool palette) { *((bushort*)Address + 4 + index * 2 + (palette ? 1 : 0)) = value; }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
-        
-        public bint* Offsets { get { return (bint*)Address + 2; } }
+
+        public bint* Offsets => (bint*)Address + 2;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -168,9 +168,9 @@ namespace BrawlLib.SSBBTypes
         public bshort _textureCount;
         public bshort _pad;
         public bfloat _frameScale; // == 1 / last entry's key
-        
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
-        public PAT0Texture* Textures { get { return (PAT0Texture*)(Address + 0x8); } }
+
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public PAT0Texture* Textures => (PAT0Texture*)(Address + 0x8);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -182,6 +182,6 @@ namespace BrawlLib.SSBBTypes
         public bushort _texFileIndex;
         public bushort _pltFileIndex;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

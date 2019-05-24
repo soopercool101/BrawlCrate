@@ -1,43 +1,44 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
 using BrawlLib.SSBBTypes;
-using System.ComponentModel;
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using BrawlLib.Imaging;
+using System.ComponentModel;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class PAT0Node : NW4RAnimationNode
     {
-        internal PAT0v3* Header3 { get { return (PAT0v3*)WorkingUncompressed.Address; } }
-        internal PAT0v4* Header4 { get { return (PAT0v4*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.PAT0; } }
-        public override Type[] AllowedChildTypes { get { return new Type[] { typeof(PAT0EntryNode) }; } }
-        public override int[] SupportedVersions { get { return new int[] { 3, 4 }; } }
+        internal PAT0v3* Header3 => (PAT0v3*)WorkingUncompressed.Address;
+        internal PAT0v4* Header4 => (PAT0v4*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.PAT0;
+        public override Type[] AllowedChildTypes => new Type[] { typeof(PAT0EntryNode) };
+        public override int[] SupportedVersions => new int[] { 3, 4 };
 
         internal List<string> _textureFiles = new List<string>();
         internal List<string> _paletteFiles = new List<string>();
 
         public PAT0Node() { _version = 3; }
-        const string _category = "Texture Pattern Animation";
+
+        private const string _category = "Texture Pattern Animation";
 
         [Category(_category)]
         public override int FrameCount
         {
-            get { return base.FrameCount; }
-            set { base.FrameCount = value; }
+            get => base.FrameCount;
+            set => base.FrameCount = value;
         }
         [Category(_category)]
         public override bool Loop
         {
-            get { return base.Loop; }
-            set { base.Loop = value; }
+            get => base.Loop;
+            set => base.Loop = value;
         }
         [Category(_category)]
-        public string[] Textures { get { return _textureFiles.ToArray(); } }
+        public string[] Textures => _textureFiles.ToArray();
         [Category(_category)]
-        public string[] Palettes { get { return _paletteFiles.ToArray(); } }
+        public string[] Palettes => _paletteFiles.ToArray();
 
         public void RegenerateTextureList()
         {
@@ -51,25 +52,43 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //First, collect texture names
             foreach (PAT0EntryNode n in Children)
+            {
                 foreach (PAT0TextureNode t in n.Children)
+                {
                     foreach (PAT0TextureEntryNode e in t.Children)
-                        if (t._hasTex && !String.IsNullOrEmpty(e._tex))
+                    {
+                        if (t._hasTex && !string.IsNullOrEmpty(e._tex))
                         {
                             if ((index = _textureFiles.IndexOf(e._tex)) < 0)
+                            {
                                 _textureFiles.Add(e._tex);
+                            }
                         }
                         else
+                        {
                             e._texFileIndex = 0;
+                        }
+                    }
+                }
+            }
 
             //Sort them
             _textureFiles.Sort();
 
             //Now assign indices into the sorted list
             foreach (PAT0EntryNode n in Children)
+            {
                 foreach (PAT0TextureNode t in n.Children)
+                {
                     foreach (PAT0TextureEntryNode e in t.Children)
-                        if (t._hasTex && !String.IsNullOrEmpty(e._tex))
+                    {
+                        if (t._hasTex && !string.IsNullOrEmpty(e._tex))
+                        {
                             e._texFileIndex = (ushort)_textureFiles.IndexOf(e._tex);
+                        }
+                    }
+                }
+            }
         }
         public void RegeneratePaletteList()
         {
@@ -83,25 +102,43 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //First, collect palette names
             foreach (PAT0EntryNode n in Children)
+            {
                 foreach (PAT0TextureNode t in n.Children)
+                {
                     foreach (PAT0TextureEntryNode e in t.Children)
-                        if (t._hasPlt && !String.IsNullOrEmpty(e._plt))
+                    {
+                        if (t._hasPlt && !string.IsNullOrEmpty(e._plt))
                         {
                             if ((index = _paletteFiles.IndexOf(e._plt)) < 0)
+                            {
                                 _paletteFiles.Add(e._plt);
+                            }
                         }
                         else
+                        {
                             e._pltFileIndex = 0;
+                        }
+                    }
+                }
+            }
 
             //Sort them
             _paletteFiles.Sort();
 
             //Now assign indices into the sorted list
             foreach (PAT0EntryNode n in Children)
+            {
                 foreach (PAT0TextureNode t in n.Children)
+                {
                     foreach (PAT0TextureEntryNode e in t.Children)
-                        if (t._hasPlt && !String.IsNullOrEmpty(e._plt))
+                    {
+                        if (t._hasPlt && !string.IsNullOrEmpty(e._plt))
+                        {
                             e._pltFileIndex = (ushort)_paletteFiles.IndexOf(e._plt);
+                        }
+                    }
+                }
+            }
         }
 
         public override bool OnInitialize()
@@ -120,20 +157,26 @@ namespace BrawlLib.SSBB.ResourceNodes
                 texPtr = header->_numTexPtr;
                 pltPtr = header->_numPltPtr;
                 if ((_name == null) && (header->_stringOffset != 0))
+                {
                     _name = header->ResourceString;
+                }
 
                 if (header->_origPathOffset > 0)
+                {
                     _originalPath = header->OrigPath;
-
-                (_userEntries = new UserDataCollection()).Read(header->UserData);
+                } (_userEntries = new UserDataCollection()).Read(header->UserData);
 
                 //Get texture strings
                 for (int i = 0; i < texPtr; i++)
+                {
                     _textureFiles.Add(header->GetTexStringEntry(i));
+                }
 
                 //Get palette strings
                 for (int i = 0; i < pltPtr; i++)
+                {
                     _paletteFiles.Add(header->GetPltStringEntry(i));
+                }
 
                 return header->Group->_numEntries > 0;
             }
@@ -146,18 +189,26 @@ namespace BrawlLib.SSBB.ResourceNodes
                 pltPtr = header->_numPltPtr;
 
                 if ((_name == null) && (header->_stringOffset != 0))
+                {
                     _name = header->ResourceString;
+                }
 
                 if (header->_origPathOffset > 0)
+                {
                     _originalPath = header->OrigPath;
+                }
 
                 //Get texture strings
                 for (int i = 0; i < texPtr; i++)
+                {
                     _textureFiles.Add(header->GetTexStringEntry(i));
+                }
 
                 //Get palette strings
                 for (int i = 0; i < pltPtr; i++)
+                {
                     _paletteFiles.Add(header->GetPltStringEntry(i));
+                }
 
                 return header->Group->_numEntries > 0;
             }
@@ -167,7 +218,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             ResourceGroup* group = Header3->Group;
             for (int i = 0; i < group->_numEntries; i++)
+            {
                 new PAT0EntryNode().Initialize(this, new DataSource(group->First[i].DataAddress, PAT0Pattern.Size));
+            }
         }
 
         internal override void GetStrings(StringTable table)
@@ -178,15 +231,23 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 table.Add(n.Name);
                 foreach (PAT0TextureNode t in n.Children)
+                {
                     foreach (PAT0TextureEntryNode e in t.Children)
+                    {
                         table.Add(e.Name);
+                    }
+                }
             }
 
             if (_version == 4)
+            {
                 _userEntries.GetStrings(table);
+            }
 
-            if (!String.IsNullOrEmpty(_originalPath))
+            if (!string.IsNullOrEmpty(_originalPath))
+            {
                 table.Add(_originalPath);
+            }
         }
 
         public override int OnCalculateSize(bool force)
@@ -197,10 +258,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = PAT0v3.Size + 0x18 + Children.Count * 0x10;
             size += (_textureFiles.Count + _paletteFiles.Count) * 8;
             foreach (PAT0EntryNode n in Children)
+            {
                 size += n.CalculateSize(true);
+            }
 
             if (_version == 4)
+            {
                 size += _userEntries.GetSize();
+            }
 
             return size;
         }
@@ -251,10 +316,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Set pointers
             bint* ptr = (bint*)(commonHeader->Address + commonHeader->_texPtrTableOffset);
             for (int i = 0; i < _textureFiles.Count; i++)
+            {
                 *ptr++ = 0;
+            }
+
             ptr = (bint*)(commonHeader->Address + commonHeader->_pltPtrTableOffset);
             for (int i = 0; i < _paletteFiles.Count; i++)
+            {
                 *ptr++ = 0;
+            }
 
             ResourceGroup* group = commonHeader->Group;
             *group = new ResourceGroup(Children.Count);
@@ -264,13 +334,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceEntry* rEntry = group->First;
 
             foreach (PAT0EntryNode n in Children)
-                dataAddress += n._entryLen;
-            foreach (PAT0EntryNode n in Children)
-            foreach (PAT0TextureNode t in n.Children)
             {
-                n._dataAddrs[t.Index] = dataAddress;
-                if (n._dataLens[t.Index] != -1)
-                    dataAddress += n._dataLens[t.Index];
+                dataAddress += n._entryLen;
+            }
+
+            foreach (PAT0EntryNode n in Children)
+            {
+                foreach (PAT0TextureNode t in n.Children)
+                {
+                    n._dataAddrs[t.Index] = dataAddress;
+                    if (n._dataLens[t.Index] != -1)
+                    {
+                        dataAddress += n._dataLens[t.Index];
+                    }
+                }
             }
 
             foreach (PAT0EntryNode n in Children)
@@ -282,7 +359,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (_userEntries.Count > 0 && _version == 4)
+            {
                 _userEntries.Write(((PAT0v4*)address)->UserData = dataAddress);
+            }
         }
 
         protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength, StringTable stringTable)
@@ -293,14 +372,18 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_version == 4)
             {
                 ((PAT0v4*)dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
-                if (!String.IsNullOrEmpty(_originalPath))
+                if (!string.IsNullOrEmpty(_originalPath))
+                {
                     ((PAT0v4*)dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
+                }
             }
             else
             {
                 header->ResourceStringAddress = stringTable[Name] + 4;
-                if (!String.IsNullOrEmpty(_originalPath))
+                if (!string.IsNullOrEmpty(_originalPath))
+                {
                     header->OrigPathAddress = stringTable[_originalPath] + 4;
+                }
             }
 
             ResourceGroup* group = header->Group;
@@ -319,24 +402,37 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* strings = header->TexFile;
 
             for (i = 0; i < _textureFiles.Count; i++)
-                if (!String.IsNullOrEmpty(_textureFiles[i]))
+            {
+                if (!string.IsNullOrEmpty(_textureFiles[i]))
+                {
                     strings[i] = (int)stringTable[_textureFiles[i]] + 4 - (int)strings;
+                }
+            }
 
             strings = header->PltFile;
 
             for (i = 0; i < _paletteFiles.Count; i++)
-                if (!String.IsNullOrEmpty(_paletteFiles[i]))
+            {
+                if (!string.IsNullOrEmpty(_paletteFiles[i]))
+                {
                     strings[i] = (int)stringTable[_paletteFiles[i]] + 4 - (int)strings;
+                }
+            }
 
-            if (_version == 4) _userEntries.PostProcess(((PAT0v4*)dataAddress)->UserData, stringTable);
+            if (_version == 4)
+            {
+                _userEntries.PostProcess(((PAT0v4*)dataAddress)->UserData, stringTable);
+            }
         }
 
         internal static ResourceNode TryParse(DataSource source) { return ((PAT0v3*)source.Address)->_header._tag == PAT0v3.Tag ? new PAT0Node() : null; }
 
         public void CreateEntry()
         {
-            PAT0EntryNode n = new PAT0EntryNode();
-            n.Name = FindName(null);
+            PAT0EntryNode n = new PAT0EntryNode
+            {
+                Name = FindName(null)
+            };
             AddChild(n);
             n.CreateEntry();
         }
@@ -349,21 +445,27 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             FrameCountChanger f = new FrameCountChanger();
             if (f.ShowDialog(FrameCount) == DialogResult.OK)
+            {
                 Resize(f.NewValue);
+            }
         }
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count.
         /// </summary>
         public void Resize(int newFrameCount)
         {
-            float ratio = (float)newFrameCount / (float)FrameCount;
+            float ratio = newFrameCount / (float)FrameCount;
             foreach (PAT0EntryNode e in Children)
+            {
                 foreach (PAT0TextureNode t in e.Children)
                 {
                     foreach (PAT0TextureEntryNode x in t.Children)
+                    {
                         x._frame *= ratio;
+                    }
                     //t.SortChildren();
                 }
+            }
 
             FrameCount = newFrameCount;
         }
@@ -373,12 +475,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void Append()
         {
             PAT0Node external = null;
-            OpenFileDialog o = new OpenFileDialog();
-            o.Filter = "PAT0 Animation (*.pat0)|*.pat0";
-            o.Title = "Please select an animation to append.";
+            OpenFileDialog o = new OpenFileDialog
+            {
+                Filter = "PAT0 Animation (*.pat0)|*.pat0",
+                Title = "Please select an animation to append."
+            };
             if (o.ShowDialog() == DialogResult.OK)
+            {
                 if ((external = (PAT0Node)NodeFactory.FromFile(null, o.FileName)) != null)
+                {
                     Append(external);
+                }
+            }
         }
         /// <summary>
         /// Adds an animation to the end of this one
@@ -389,6 +497,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             FrameCount += external.FrameCount;
 
             foreach (PAT0EntryNode w in external.Children)
+            {
                 foreach (PAT0TextureNode _extEntry in w.Children)
                 {
                     PAT0TextureNode _intEntry = null;
@@ -396,10 +505,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         PAT0EntryNode wi = null;
                         if ((wi = (PAT0EntryNode)FindChild(w.Name, false)) == null)
+                        {
                             AddChild(wi = new PAT0EntryNode() { Name = FindName(null) });
+                        }
 
                         PAT0TextureNode newIntEntry = new PAT0TextureNode(_extEntry._texFlags, _extEntry.TextureIndex);
-                        
+
                         wi.AddChild(newIntEntry);
                         foreach (PAT0TextureEntryNode e in _extEntry.Children)
                         {
@@ -422,32 +533,31 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                     }
                 }
+            }
         }
         #endregion
     }
 
     public unsafe class PAT0EntryNode : ResourceNode
     {
-        internal PAT0Pattern* Header { get { return (PAT0Pattern*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.PAT0Entry; } }
-        public override Type[] AllowedChildTypes
-        {
-            get
-            {
-                return new Type[] { typeof(PAT0TextureNode) };
-            }
-        }
+        internal PAT0Pattern* Header => (PAT0Pattern*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.PAT0Entry;
+        public override Type[] AllowedChildTypes => new Type[] { typeof(PAT0TextureNode) };
 
         internal PAT0Flags[] texFlags = new PAT0Flags[8];
 
         public override bool OnInitialize()
         {
             if ((_name == null) && (Header->_stringOffset != 0))
+            {
                 _name = Header->ResourceString;
+            }
 
             uint flags = Header->_flags;
             for (int i = 0; i < 8; i++)
+            {
                 texFlags[i] = (PAT0Flags)((flags >> (i * 4)) & 0xF);
+            }
 
             return true;
         }
@@ -460,17 +570,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (p.HasFlag(PAT0Flags.Enabled))
                 {
                     if (!p.HasFlag(PAT0Flags.FixedTexture))
+                    {
                         new PAT0TextureNode(p, index).Initialize(this, new DataSource(Header->GetTexTable(count), PAT0Texture.Size));
+                    }
                     else
                     {
                         PAT0TextureNode t = new PAT0TextureNode(p, index) { textureCount = 1 };
                         t._parent = this;
                         _children.Add(t);
-                        PAT0TextureEntryNode entry = new PAT0TextureEntryNode();
-                        entry._frame = 0;
-                        entry._texFileIndex = Header->GetIndex(count, false);
-                        entry._pltFileIndex = Header->GetIndex(count, true);
-                        entry._parent = t;
+                        PAT0TextureEntryNode entry = new PAT0TextureEntryNode
+                        {
+                            _frame = 0,
+                            _texFileIndex = Header->GetIndex(count, false),
+                            _pltFileIndex = Header->GetIndex(count, true),
+                            _parent = t
+                        };
                         t._children.Add(entry);
                         entry.GetStrings();
                     }
@@ -488,18 +602,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             _entryLen = PAT0Pattern.Size + Children.Count * 4;
 
             foreach (PAT0TextureNode table in Children)
+            {
                 _dataLens[table.Index] = table.CalculateSize(true);
+            }
 
             //Check to see if any children can be remapped.
             foreach (PAT0TextureNode table in Children)
+            {
                 table.CompareToAll();
+            }
 
             int size = 0;
             foreach (int i in _dataLens)
+            {
                 if (i != -1)
+                {
                     size += i;
+                }
+            }
 
-            return size + _entryLen; 
+            return size + _entryLen;
         }
 
         public VoidPtr[] _dataAddrs;
@@ -513,7 +635,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (int i in _dataLens)
             {
                 if (i == -1)
+                {
                     _dataAddrs[x] = ((PAT0EntryNode)Parent.Children[((PAT0TextureNode)Children[x])._matIndex])._dataAddrs[((PAT0TextureNode)Children[x])._texIndex];
+                }
+
                 x++;
             }
             uint flags = 0;
@@ -521,9 +646,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 table._texFlags |= PAT0Flags.Enabled;
                 if (table.Children.Count > 1)
+                {
                     table._texFlags &= ~PAT0Flags.FixedTexture;
+                }
                 else
+                {
                     table._texFlags |= PAT0Flags.FixedTexture;
+                }
 
                 bool hasTex = false, hasPlt = false;
 
@@ -539,19 +668,30 @@ namespace BrawlLib.SSBB.ResourceNodes
                 hasPlt = table._hasPlt;
 
                 if (!hasTex)
+                {
                     table._texFlags &= ~PAT0Flags.HasTexture;
+                }
                 else
+                {
                     table._texFlags |= PAT0Flags.HasTexture;
+                }
+
                 if (!hasPlt)
+                {
                     table._texFlags &= ~PAT0Flags.HasPalette;
+                }
                 else
+                {
                     table._texFlags |= PAT0Flags.HasPalette;
+                }
 
                 if (table.Children.Count > 1)
                 {
                     header->SetTexTableOffset(table.Index, _dataAddrs[table.Index]);
                     if (table._rebuild)
+                    {
                         table.Rebuild(_dataAddrs[table.Index], PAT0TextureTable.Size + PAT0Texture.Size * table.Children.Count, true);
+                    }
                 }
                 else
                 {
@@ -559,28 +699,40 @@ namespace BrawlLib.SSBB.ResourceNodes
                     PAT0Node node = (PAT0Node)Parent;
 
                     short i = 0;
-                    if (table._hasTex && !String.IsNullOrEmpty(entry.Texture))
+                    if (table._hasTex && !string.IsNullOrEmpty(entry.Texture))
+                    {
                         i = (short)node._textureFiles.IndexOf(entry.Texture);
+                    }
 
                     if (i < 0)
+                    {
                         entry._texFileIndex = 0;
+                    }
                     else
+                    {
                         entry._texFileIndex = (ushort)i;
+                    }
 
                     i = 0;
-                    if (table._hasPlt && !String.IsNullOrEmpty(entry.Palette))
+                    if (table._hasPlt && !string.IsNullOrEmpty(entry.Palette))
+                    {
                         i = (short)node._paletteFiles.IndexOf(entry.Palette);
+                    }
 
                     if (i < 0)
+                    {
                         entry._pltFileIndex = 0;
+                    }
                     else
+                    {
                         entry._pltFileIndex = (ushort)i;
+                    }
 
                     header->SetIndex(table.Index, entry._texFileIndex, false);
                     header->SetIndex(table.Index, entry._pltFileIndex, true);
                 }
 
-                flags = flags & ~((uint)0xF << (table._textureIndex * 4)) | ((uint)table._texFlags << (table._textureIndex * 4)); 
+                flags = flags & ~((uint)0xF << (table._textureIndex * 4)) | ((uint)table._texFlags << (table._textureIndex * 4));
             }
 
             header->_flags = flags;
@@ -596,11 +748,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int value = 0;
             foreach (PAT0TextureNode t in Children)
+            {
                 if (t._textureIndex == value)
+                {
                     value++;
+                }
+            }
 
             if (value == 8)
+            {
                 return;
+            }
 
             PAT0TextureNode node = new PAT0TextureNode((PAT0Flags)7, value);
             AddChild(node);
@@ -610,15 +768,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class PAT0TextureNode : ResourceNode, IVideo
     {
-        internal PAT0TextureTable* Header { get { return (PAT0TextureTable*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.PAT0Texture; } }
-        public override Type[] AllowedChildTypes
-        {
-            get
-            {
-                return new Type[] { typeof(PAT0TextureEntryNode) };
-            }
-        }
+        internal PAT0TextureTable* Header => (PAT0TextureTable*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.PAT0Texture;
+        public override Type[] AllowedChildTypes => new Type[] { typeof(PAT0TextureEntryNode) };
 
         public PAT0Flags _texFlags;
         public int _textureIndex, textureCount;
@@ -635,18 +787,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("PAT0 Texture")]
         //public int TextureCount { get { return textureCount; } }
         [Category("PAT0 Texture")]
-        public bool HasTexture { get { return _hasTex; } set { _hasTex = value; SignalPropertyChange(); } }
+        public bool HasTexture { get => _hasTex; set { _hasTex = value; SignalPropertyChange(); } }
         [Category("PAT0 Texture")]
-        public bool HasPalette { get { return _hasPlt; } set { _hasPlt = value; SignalPropertyChange(); } }
+        public bool HasPalette { get => _hasPlt; set { _hasPlt = value; SignalPropertyChange(); } }
         [Category("PAT0 Texture")]
-        public int TextureIndex 
+        public int TextureIndex
         {
-            get { return _textureIndex; }
+            get => _textureIndex;
             set
             {
                 foreach (PAT0TextureNode t in Parent.Children)
+                {
                     if (t.Index != Index && t._textureIndex == (value > 7 ? 7 : value < 0 ? 0 : value))
+                    {
                         return;
+                    }
+                }
 
                 _textureIndex = value > 7 ? 7 : value < 0 ? 0 : value;
 
@@ -660,28 +816,36 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void CheckNext()
         {
             if (Index == Parent.Children.Count - 1)
+            {
                 return;
+            }
 
             int index = Index;
             if (_textureIndex > ((PAT0TextureNode)Parent.Children[Index + 1])._textureIndex)
             {
                 DoMoveDown();
                 if (index != Index)
+                {
                     CheckNext();
+                }
             }
         }
 
         public void CheckPrev()
         {
             if (Index == 0)
+            {
                 return;
+            }
 
             int index = Index;
             if (_textureIndex < ((PAT0TextureNode)Parent.Children[Index - 1])._textureIndex)
             {
                 DoMoveUp();
                 if (index != Index)
+                {
                     CheckPrev();
+                }
             }
         }
 
@@ -699,7 +863,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     continue;
                 }
                 if (prev._frame <= index && next._frame > index)
+                {
                     break;
+                }
+
                 prev = next;
             }
             return prev;
@@ -712,7 +879,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             PAT0TextureEntryNode prev = null;
             if (Children.Count == 0)
+            {
                 return null;
+            }
+
             foreach (PAT0TextureEntryNode next in Children)
             {
                 if (next.Index == 0)
@@ -721,13 +891,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                     continue;
                 }
                 if (prev._frame <= index && next._frame > index)
+                {
                     break;
+                }
+
                 prev = next;
             }
             if ((int)prev._frame == index)
+            {
                 return prev;
+            }
             else
+            {
                 return null;
+            }
         }
 
         /// <summary>
@@ -749,13 +926,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                     continue;
                 }
                 if (prev._frame <= index && next._frame > index)
+                {
                     break;
+                }
+
                 prev = next;
             }
             if ((int)prev._frame == index)
+            {
                 kf = true;
+            }
             else
+            {
                 kf = false;
+            }
+
             return prev.Texture;
         }
 
@@ -778,13 +963,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                     continue;
                 }
                 if (prev._frame <= index && next._frame > index)
+                {
                     break;
+                }
+
                 prev = next;
             }
             if ((int)prev._frame == index)
+            {
                 kf = true;
+            }
             else
+            {
                 kf = false;
+            }
+
             return prev.Palette;
         }
 
@@ -811,7 +1004,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 PAT0Texture* current = Header->Textures;
                 for (int i = 0; i < textureCount; i++, current++)
+                {
                     new PAT0TextureEntryNode().Initialize(this, new DataSource(current, PAT0Texture.Size));
+                }
             }
         }
 
@@ -832,7 +1027,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 PAT0Texture* entry = table->Textures;
                 foreach (PAT0TextureEntryNode n in Children)
+                {
                     n.Rebuild(entry++, PAT0Texture.Size, true);
+                }
             }
         }
 
@@ -841,32 +1038,36 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _rebuild = true;
             foreach (PAT0EntryNode e in Parent.Parent.Children)
-            foreach (PAT0TextureNode table in e.Children)
             {
-                if (table == this)
-                    return;
-
-                if (table != this && table.Children.Count == Children.Count)
+                foreach (PAT0TextureNode table in e.Children)
                 {
-                    bool same = true;
-                    for (int l = 0; l < Children.Count; l++)
+                    if (table == this)
                     {
-                        PAT0TextureEntryNode exte = (PAT0TextureEntryNode)table.Children[l];
-                        PAT0TextureEntryNode inte = (PAT0TextureEntryNode)Children[l];
-
-                        if (exte._frame != inte._frame || exte.Texture != inte.Texture || exte.Palette != inte.Palette)
-                        {
-                            same = false;
-                            break;
-                        }
-                    }
-                    if (same)
-                    {
-                        _rebuild = false;
-                        _matIndex = e.Index;
-                        _texIndex = table.Index;
-                        ((PAT0EntryNode)Parent)._dataLens[Index] = -1;
                         return;
+                    }
+
+                    if (table != this && table.Children.Count == Children.Count)
+                    {
+                        bool same = true;
+                        for (int l = 0; l < Children.Count; l++)
+                        {
+                            PAT0TextureEntryNode exte = (PAT0TextureEntryNode)table.Children[l];
+                            PAT0TextureEntryNode inte = (PAT0TextureEntryNode)Children[l];
+
+                            if (exte._frame != inte._frame || exte.Texture != inte.Texture || exte.Palette != inte.Palette)
+                            {
+                                same = false;
+                                break;
+                            }
+                        }
+                        if (same)
+                        {
+                            _rebuild = false;
+                            _matIndex = e.Index;
+                            _texIndex = table.Index;
+                            ((PAT0EntryNode)Parent)._dataLens[Index] = -1;
+                            return;
+                        }
                     }
                 }
             }
@@ -885,7 +1086,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </summary>
         public void SortChildren()
         {
-            Top:
+        Top:
             for (int i = 0; i < Children.Count; i++)
             {
                 PAT0TextureEntryNode t = Children[i] as PAT0TextureEntryNode;
@@ -893,63 +1094,72 @@ namespace BrawlLib.SSBB.ResourceNodes
                 t.CheckNext();
                 t.CheckPrev();
                 if (t.Index != x)
+                {
                     goto Top;
+                }
             }
         }
 
         #region IVideo Interface
 
         [Browsable(false)]
-        public uint NumFrames { get { return (uint)((PAT0Node)Parent.Parent).FrameCount; } }
+        public uint NumFrames => (uint)((PAT0Node)Parent.Parent).FrameCount;
         [Browsable(false)]
         public int GetImageIndexAtFrame(int frame)
         {
             PAT0TextureEntryNode node = GetPrevious(frame);
             if (node != null)
+            {
                 return node.Index;
+            }
+
             return 0;
         }
         [Browsable(false)]
-        public float FrameRate { get { return 60; } }
+        public float FrameRate => 60;
         [Browsable(false)]
-        public System.Audio.IAudioStream Audio { get { return null; } }
+        public System.Audio.IAudioStream Audio => null;
         [Browsable(false)]
-        public uint Frequency { get { return 0; } }
+        public uint Frequency => 0;
         [Browsable(false)]
-        public int ImageCount { get { return Children.Count; } }
+        public int ImageCount => Children.Count;
         [Browsable(false)]
         public System.Drawing.Bitmap GetImage(int index)
         {
             if (index < 0 || index >= Children.Count)
+            {
                 return null;
-            
+            }
+
             return ((PAT0TextureEntryNode)Children[index]).GetImage(0);
         }
 
         #endregion
     }
-    
+
     public unsafe class PAT0TextureEntryNode : ResourceNode, IImageSource
     {
-        internal PAT0Texture* Header { get { return (PAT0Texture*)WorkingUncompressed.Address; } }
+        internal PAT0Texture* Header => (PAT0Texture*)WorkingUncompressed.Address;
         public float _frame;
         public ushort _texFileIndex, _pltFileIndex;
 
         public string _tex = null, _plt = null;
 
-        public override ResourceType ResourceType { get { return ResourceType.PAT0TextureEntry; } }
-        public override bool AllowDuplicateNames { get { return true; } }
+        public override ResourceType ResourceType => ResourceType.PAT0TextureEntry;
+        public override bool AllowDuplicateNames => true;
 
         [Category("PAT0 Texture Entry")]
-        public float FrameIndex 
+        public float FrameIndex
         {
-            get { return _frame; }
+            get => _frame;
             set
             {
                 if (Index == 0)
                 {
                     if (Index == Children.Count - 1)
+                    {
                         _frame = 0;
+                    }
                     else if (value >= ((PAT0TextureEntryNode)Parent.Children[Index + 1])._frame)
                     {
                         ((PAT0TextureEntryNode)Parent.Children[Index + 1])._frame = 0;
@@ -965,7 +1175,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _frame = value;
                 CheckPrev();
                 CheckNext();
-                
+
                 SignalPropertyChange();
             }
         }
@@ -973,44 +1183,58 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void CheckNext()
         {
             if (Index == Parent.Children.Count - 1)
+            {
                 return;
+            }
 
             int index = Index;
             if (_frame > ((PAT0TextureEntryNode)Parent.Children[Index + 1])._frame)
             {
                 DoMoveDown();
                 if (index != Index)
+                {
                     CheckNext();
+                }
             }
         }
 
         public void CheckPrev()
         {
             if (Index == 0)
+            {
                 return;
+            }
 
             int index = Index;
             if (_frame < ((PAT0TextureEntryNode)Parent.Children[Index - 1])._frame)
             {
                 DoMoveUp();
                 if (index != Index)
+                {
                     CheckPrev();
+                }
             }
         }
 
         [Category("PAT0 Texture Entry"), Browsable(true), TypeConverter(typeof(DropDownListPAT0Textures))]
         public string Texture
         {
-            get { return _tex; }
-            set 
+            get => _tex;
+            set
             {
                 if (!(Parent as PAT0TextureNode)._hasTex || value == _tex)
+                {
                     return;
+                }
 
-                if (!String.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value))
+                {
                     Name = value;
+                }
                 else
+                {
                     SetTexture(value);
+                }
 
                 SignalPropertyChange();
             }
@@ -1018,11 +1242,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("PAT0 Texture Entry"), Browsable(true), TypeConverter(typeof(DropDownListPAT0Palettes))]
         public string Palette
         {
-            get { return _plt; }
-            set 
+            get => _plt;
+            set
             {
                 if (!(Parent as PAT0TextureNode)._hasPlt || value == _plt)
+                {
                     return;
+                }
 
                 _plt = value;
                 _paletteNode = null;
@@ -1042,7 +1268,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public override string Name
         {
-            get { return base.Name; }
+            get => base.Name;
             set { base.Name = value; SetTexture(value); }
         }
 
@@ -1080,10 +1306,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (_name == null && _plt != null)
+            {
                 _name = _plt;
+            }
 
             if (_name == null)
+            {
                 _name = "<null>";
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -1093,8 +1323,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             PAT0Texture* header = (PAT0Texture*)address;
 
             header->_key = _frame;
-            header->_texFileIndex = ((PAT0TextureNode)Parent)._hasTex && !String.IsNullOrEmpty(_tex) ? _texFileIndex : (ushort)0;
-            header->_pltFileIndex = ((PAT0TextureNode)Parent)._hasPlt && !String.IsNullOrEmpty(_plt) ? _pltFileIndex : (ushort)0;
+            header->_texFileIndex = ((PAT0TextureNode)Parent)._hasTex && !string.IsNullOrEmpty(_tex) ? _texFileIndex : (ushort)0;
+            header->_pltFileIndex = ((PAT0TextureNode)Parent)._hasPlt && !string.IsNullOrEmpty(_plt) ? _pltFileIndex : (ushort)0;
         }
 
         public override int OnCalculateSize(bool force)
@@ -1111,29 +1341,37 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     _textureNode = RootNode.FindChildByType(_tex, true, ResourceNodes.ResourceType.TEX0) as TEX0Node;
                     if (_textureNode == null)
+                    {
                         return 0;
+                    }
                 }
                 return _textureNode.ImageCount;
             }
         }
         public Bitmap GetImage(int index)
         {
-            if (String.IsNullOrEmpty(_tex))
+            if (string.IsNullOrEmpty(_tex))
+            {
                 return null;
+            }
 
             if (_textureNode == null)
             {
                 _textureNode = RootNode.FindChildByType(_tex, true, ResourceNodes.ResourceType.TEX0) as TEX0Node;
                 if (_textureNode == null)
+                {
                     return null;
+                }
             }
 
-            if (!String.IsNullOrEmpty(_plt) && _paletteNode == null)
+            if (!string.IsNullOrEmpty(_plt) && _paletteNode == null)
+            {
                 _paletteNode = RootNode.FindChildByType(_plt, true, ResourceNodes.ResourceType.PLT0) as PLT0Node;
+            }
 
             return _textureNode.GetImage(index, _paletteNode);
         }
-        
+
         public TEX0Node _textureNode = null;
         public PLT0Node _paletteNode = null;
     }

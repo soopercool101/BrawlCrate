@@ -11,7 +11,7 @@
         int ColorCount(int id);
         ARGBPixel GetColor(int index, int id);
         void SetColor(int index, int id, ARGBPixel color);
-        
+
         bool GetColorConstant(int id);
         void SetColorConstant(int id, bool constant);
     }

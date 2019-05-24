@@ -1,22 +1,22 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class EFLSNode : ARCEntryNode
     {
-        internal EFLSHeader* Header { get { return (EFLSHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.EFLS; } }
+        internal EFLSHeader* Header => (EFLSHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.EFLS;
 
         private int _brresCount, _unk1, _unk2;
 
         //[Category("Effect List")]
         //public int BrresCount { get { return _brresCount; } set { _brresCount = value; SignalPropertyChange(); } }
         [Category("Effect List")]
-        public int Unknown1 { get { return _unk1; } set { _unk1 = value; SignalPropertyChange(); } }
+        public int Unknown1 { get => _unk1; set { _unk1 = value; SignalPropertyChange(); } }
         [Category("Effect List")]
-        public int Unknown2 { get { return _unk2; } set { _unk2 = value; SignalPropertyChange(); } }
+        public int Unknown2 { get => _unk2; set { _unk2 = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
@@ -36,23 +36,34 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (EFLSEntryNode e in Children)
             {
                 if (e.UseBrres)
+                {
                     _brresCount++;
+                }
 
-                if (String.Equals(e._name, "<null>", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(e._name, "<null>", StringComparison.OrdinalIgnoreCase))
+                {
                     size += 0x10;
+                }
                 else
+                {
                     size += e._name.Length + 0x11;
+                }
 
                 if (e.Children.Count > 0)
                 {
                     re3dSize = re3dSize.Align(0x10);
                     re3dSize += 0x10;
                     foreach (RE3DEntryNode r in e.Children)
+                    {
                         re3dSize += 0x10 + r.Name.Length + 1 + r.Effect.Length + 1;
+                    }
                 }
             }
             if (re3dSize > 0)
+            {
                 RE3DOffset = size.Align(0x10);
+            }
+
             return size.Align(0x10) + re3dSize;
         }
 
@@ -60,7 +71,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             EFLSHeader* header = Header;
             for (int i = 0; i < header->_numEntries; i++)
+            {
                 new EFLSEntryNode() { _name = header->GetString(i) }.Initialize(this, &header->Entries[i], 0);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -80,7 +93,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 *entry = new EFLSEntry(n._brresID1, n._brresID2, offset, n._unk);
 
                 if (offset > 0)
+                {
                     n._name.Write(ref dPtr);
+                }
 
                 if (n.Children.Count > 0)
                 {
@@ -122,26 +137,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class EFLSEntryNode : ResourceNode
     {
-        internal EFLSEntry* Header { get { return (EFLSEntry*)WorkingUncompressed.Address; } }
-        public override bool AllowNullNames { get { return true; } }
-        public override ResourceType ResourceType { get { return ResourceType.EFLSEntry; } }
+        internal EFLSEntry* Header => (EFLSEntry*)WorkingUncompressed.Address;
+        public override bool AllowNullNames => true;
+        public override ResourceType ResourceType => ResourceType.EFLSEntry;
 
         internal int _brresID1, _brresID2, _re3dOffset, _unk;
-        
+
         [Category("Effect Entry")]
-        public bool UseBrres { get { return _brresID1 != -1; } set { _brresID1 = (value ? _brresID2 : -1); SignalPropertyChange(); } }
+        public bool UseBrres { get => _brresID1 != -1; set { _brresID1 = (value ? _brresID2 : -1); SignalPropertyChange(); } }
         [Category("Effect Entry")]
-        public uint BrresId { get { return (uint)_brresID2; } set { _brresID2 = (int)value; if (UseBrres) _brresID1 = _brresID2; SignalPropertyChange(); } }
+        public uint BrresId { get => (uint)_brresID2; set { _brresID2 = (int)value; if (UseBrres) { _brresID1 = _brresID2; } SignalPropertyChange(); } }
         [Category("Effect Entry")]
-        public int Unknown { get { return _unk; } set { _unk = value; SignalPropertyChange(); } }
-        
+        public int Unknown { get => _unk; set { _unk = value; SignalPropertyChange(); } }
+
         public override bool OnInitialize()
         {
             _brresID1 = Header->_brresID1;
             _brresID2 = Header->_brresID2;
             _re3dOffset = Header->_re3dOffset;
             _unk = Header->_unk;
-            
+
             return _re3dOffset > 0;
         }
 
@@ -149,13 +164,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             RE3D* data = (RE3D*)((VoidPtr)((EFLSNode)Parent).Header + _re3dOffset);
             for (int i = 0; i < data->_numEntries; i++)
+            {
                 new RE3DEntryNode().Initialize(this, (VoidPtr)data + 0x10 + 0x10 * i, 0x10);
+            }
         }
     }
 
     public unsafe class RE3DEntryNode : ResourceNode
     {
-        internal RE3DEntry* Header { get { return (RE3DEntry*)WorkingUncompressed.Address; } }
+        internal RE3DEntry* Header => (RE3DEntry*)WorkingUncompressed.Address;
 
         internal int _stringOffset;
         internal int _unk1;
@@ -166,14 +183,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string _effect;
 
         [Category("RE3D Entry")]
-        public int Unk1 { get { return _unk1; } set { _unk1 = value; SignalPropertyChange(); } }
+        public int Unk1 { get => _unk1; set { _unk1 = value; SignalPropertyChange(); } }
         [Category("RE3D Entry")]
-        public short Unk2 { get { return _unk2; } set { _unk2 = value; SignalPropertyChange(); } }
+        public short Unk2 { get => _unk2; set { _unk2 = value; SignalPropertyChange(); } }
         [Category("RE3D Entry")]
-        public short Unk3 { get { return _unk3; } set { _unk3 = value; SignalPropertyChange(); } }
+        public short Unk3 { get => _unk3; set { _unk3 = value; SignalPropertyChange(); } }
         [Category("RE3D Entry")]
-        public string Effect { get { return _effect; } set { _effect = value; SignalPropertyChange(); } }
-        
+        public string Effect { get => _effect; set { _effect = value; SignalPropertyChange(); } }
+
         public override bool OnInitialize()
         {
             _stringOffset = Header->_stringOffset;
@@ -182,8 +199,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unk3 = Header->_unk3;
             _stringOffset2 = Header->_effectNameOffset;
 
-            _name = new String((sbyte*)(((VoidPtr)Header - 0x10 - 0x10 * Index) + _stringOffset));
-            _effect = ((_stringOffset2 > 0) ? new String((sbyte*)(((VoidPtr)Header - 0x10 - 0x10 * Index) + _stringOffset2)) : null);
+            _name = new string((sbyte*)(((VoidPtr)Header - 0x10 - 0x10 * Index) + _stringOffset));
+            _effect = ((_stringOffset2 > 0) ? new string((sbyte*)(((VoidPtr)Header - 0x10 - 0x10 * Index) + _stringOffset2)) : null);
 
             return false;
         }

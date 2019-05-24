@@ -1,16 +1,16 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlCrate.NodeWrappers {
+namespace BrawlCrate.NodeWrappers
+{
     [NodeWrapper(ResourceType.ClassicStageTbl)]
-    public class ClassicStageTblWrapper : GenericWrapper {
-        private static ContextMenuStrip _menu;
-        static ClassicStageTblWrapper() {
+    public class ClassicStageTblWrapper : GenericWrapper
+    {
+        private static readonly ContextMenuStrip _menu;
+        static ClassicStageTblWrapper()
+        {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&New Entry", null, NewEntryAction, Keys.Control | Keys.H));
             _menu.Items.Add(new ToolStripSeparator());
@@ -27,17 +27,21 @@ namespace BrawlCrate.NodeWrappers {
             _menu.Closing += MenuClosing;
         }
 
-        private static void NewEntryAction(object sender, EventArgs e) {
+        private static void NewEntryAction(object sender, EventArgs e)
+        {
             GetInstance<ClassicStageTblWrapper>().NewEntry();
         }
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e) {
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
 
         }
-        private static void MenuOpening(object sender, CancelEventArgs e) {
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
 
         }
         public ClassicStageTblWrapper() { ContextMenuStrip = _menu; }
-        public void NewEntry() {
+        public void NewEntry()
+        {
             ((ClassicStageTblNode)_resource).CreateEntry();
         }
     }

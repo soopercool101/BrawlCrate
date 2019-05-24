@@ -1,19 +1,19 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.Imaging;
+using BrawlLib.IO;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using BrawlLib.Imaging;
-using BrawlLib.IO;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.Wii.Textures
 {
     public unsafe class CMPR : TextureConverter
     {
-        public override int BitsPerPixel { get { return 4; } }
-        public override int BlockWidth { get { return 8; } }
-        public override int BlockHeight { get { return 8; } }
+        public override int BitsPerPixel => 4;
+        public override int BlockWidth => 8;
+        public override int BlockHeight => 8;
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format32bppArgb; } }
-        public override WiiPixelFormat RawFormat { get { return WiiPixelFormat.CMPR; } }
+        public override WiiPixelFormat RawFormat => WiiPixelFormat.CMPR;
 
         private UnsafeBuffer _blockBuffer;
         //private List<CMPBlock> _blockCache = new List<CMPBlock>();
@@ -26,8 +26,12 @@ namespace BrawlLib.Wii.Textures
 
             //int index = 0;
             for (int y = 0; y < 8; y += 4)
+            {
                 for (int x = 0; x < 8; x += 4, sPtr++)
+                {
                     sPtr->Decode(&dPtr[(y * width) + x], width);
+                }
+            }
             //DXT1.DecodeBlock(&sPtr[index++], &dPtr[(y * width) + x], width);
         }
 
@@ -84,14 +88,20 @@ namespace BrawlLib.Wii.Textures
             {
                 ARGBPixel* img = (ARGBPixel*)dib.Scan0;
                 for (int y1 = 0; y1 < ah; y1 += 8)
+                {
                     for (int x1 = 0; x1 < aw; x1 += 8)
+                    {
                         for (int y = 0; y < 8; y += 4)
+                        {
                             for (int x = 0; x < 8; x += 4)
                             {
                                 *bPtr = NVDXT.compressDXT1a(img, x1 + x, y1 + y, aw, ah);
                                 bPtr->Decode(img, x1 + x, y1 + y, aw, ah);
                                 bPtr++;
                             }
+                        }
+                    }
+                }
 
                 dib.WriteBitmap(bmp, w, h);
             }
@@ -123,18 +133,26 @@ namespace BrawlLib.Wii.Textures
 
                 int blocks = _blockBuffer.Length / 8;
                 for (int i = 0; i < blocks; i++)
+                {
                     dPtr[i] = sPtr[i];
+                }
             }
             else
+            {
                 base.EncodeLevel(addr, dib, src, dStep, sStep, level);
+            }
         }
 
         protected override void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width)
         {
             CMPRBlock* dPtr = (CMPRBlock*)blockAddr;
             for (int y = 0; y < 2; y++, sPtr += (width * 4))
+            {
                 for (int x = 0; x < 8; x += 4)
+                {
                     *dPtr++ = CMPRBlock.Encode(&sPtr[x], width, false);
+                }
+            }
         }
     }
 
@@ -170,8 +188,12 @@ namespace BrawlLib.Wii.Textures
             uint lookup = _lookup;
 
             for (int y = 0, shift = 30; y < 4; y++, block += width)
+            {
                 for (int x = 0; x < 4; shift -= 2)
+                {
                     block[x++] = pixel[(lookup >> shift) & 0x03];
+                }
+            }
         }
 
 
@@ -182,18 +204,26 @@ namespace BrawlLib.Wii.Textures
             uint* pData = stackalloc uint[16];
             ARGBPixel* pColor = (ARGBPixel*)pData;
 
-            bool isSingle = true, hasAlpha = false, allAlpha = true;
+            bool hasAlpha = false;
             for (int y = 0, i = 0; y < 4; y++, block += width)
             {
                 for (int x = 0; x < 4; i++)
                 {
                     pColor[i] = block[x++];
-                    if (pData[i] != pData[0]) isSingle = false;
-                    if (pColor[i].A < 0x80) hasAlpha = true;
-                    else allAlpha = false;
+                    if (pData[i] != pData[0])
+                    {
+                    }
+
+                    if (pColor[i].A < 0x80)
+                    {
+                        hasAlpha = true;
+                    }
+                    else
+                    {
+                    }
                 }
             }
-           
+
             /*
              *  Foreach block:
              *      copy block to buffer

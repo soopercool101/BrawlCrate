@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.Wii.Models
 {
@@ -29,11 +29,14 @@ namespace BrawlLib.Wii.Models
         public void Dispose()
         {
             if (_handle.IsAllocated)
+            {
                 _handle.Free();
+            }
+
             _pData = null;
         }
 
-        bool _forceFloat = false;
+        private readonly bool _forceFloat = false;
         public VertexCodec(Vector3[] vertices, bool removeZ, bool forceFloat)
         {
             _forceFloat = forceFloat;
@@ -123,23 +126,45 @@ namespace BrawlLib.Wii.Models
             for (int i = 0; i < impLen; i++)
             {
                 if (imp != null)
+                {
                     fPtr = &_pData[imp[i] * _srcElements];
+                }
+
                 for (int x = 0; x < _srcElements; x++)
                 {
                     val = *fPtr++;
-                    if (val < pMin[x]) pMin[x] = val;
-                    if (val > pMax[x]) pMax[x] = val;
-                    if (val < vMin) vMin = val;
-                    if (val > vMax) vMax = val;
+                    if (val < pMin[x])
+                    {
+                        pMin[x] = val;
+                    }
+
+                    if (val > pMax[x])
+                    {
+                        pMax[x] = val;
+                    }
+
+                    if (val < vMin)
+                    {
+                        vMin = val;
+                    }
+
+                    if (val > vMax)
+                    {
+                        vMax = val;
+                    }
                 }
             }
 
             _min = min;
             _max = max;
             if (removeZ && (_srcElements == 3) && (min._z == 0) && (max._z == 0))
+            {
                 _dstElements = 2;
+            }
             else
+            {
                 _dstElements = _srcElements;
+            }
 
             _hasZ = _dstElements > 2;
 
@@ -149,7 +174,9 @@ namespace BrawlLib.Wii.Models
             {
                 //Is signed? If so, increase type
                 if (sign = (vMin < 0))
+                {
                     _type++;
+                }
 
                 int divisor = 0;
                 float rMin = 0.0f, rMax;
@@ -159,15 +186,21 @@ namespace BrawlLib.Wii.Models
                     float scale, maxVal;
 
                     if (i == 0)
+                    {
                         if (sign)
                         { rMax = 127.0f; rMin = -128.0f; }
                         else
+                        {
                             rMax = 255.0f;
+                        }
+                    }
                     else
                         if (sign)
-                        { rMax = 32767.0f; rMin = -32768.0f; }
-                        else
-                            rMax = 65535.0f;
+                    { rMax = 32767.0f; rMin = -32768.0f; }
+                    else
+                    {
+                        rMax = 65535.0f;
+                    }
 
                     maxVal = rMax / vDist;
                     while ((divisor < 32) && ((scale = VQuant.QuantTable[divisor]) <= maxVal))
@@ -178,44 +211,59 @@ namespace BrawlLib.Wii.Models
                         for (int y = 0; y < impLen; y++)
                         {
                             if (imp != null)
+                            {
                                 fPtr = &_pData[imp[i] * _srcElements];
+                            }
+
                             for (int z = 0; z < _srcElements; z++)
                             {
                                 if ((val = *fPtr++) == 0)
+                                {
                                     continue;
+                                }
 
                                 val *= scale;
-                                if (val > rMax) val = rMax;
-                                else if (val < rMin) val = rMin;
+                                if (val > rMax)
+                                {
+                                    val = rMax;
+                                }
+                                else if (val < rMin)
+                                {
+                                    val = rMin;
+                                }
 
                                 int step = (int)((val * scale));
                                 //int step = (int)((val * scale) + (val > 0 ? 0.5f : -0.5f));
                                 float error = Math.Abs((step / scale) - val);
 
                                 if (error > worstError)
+                                {
                                     worstError = error;
+                                }
 
                                 if (error > bestError)
+                                {
                                     goto Check;
+                                }
                             }
                         }
 
-                        //for (fPtr = sPtr; fPtr < fCeil; )
+                    //for (fPtr = sPtr; fPtr < fCeil; )
                     //{
                     //    if ((val = *fPtr++) == 0)
                     //        continue;
 
-                        //    val *= scale;
+                    //    val *= scale;
                     //    if (val > rMax) val = rMax;
                     //    else if (val < rMin) val = rMin;
 
-                        //    int step = (int)((val * scale);// + (val > 0 ? 0.5f : -0.5f));
+                    //    int step = (int)((val * scale);// + (val > 0 ? 0.5f : -0.5f));
                     //    float error = Math.Abs((step / scale) - val);
 
-                        //    if (error > worstError)
+                    //    if (error > worstError)
                     //        worstError = error;
 
-                        //    if (error > bestError)
+                    //    if (error > bestError)
                     //        break;
                     //}
 
@@ -226,14 +274,18 @@ namespace BrawlLib.Wii.Models
                             bestScale = divisor;
                             bestError = worstError;
                             if (bestError == 0)
+                            {
                                 goto Next;
+                            }
                         }
 
                         divisor++;
                     }
 
                     if (bestError < _maxError)
+                    {
                         goto Next;
+                    }
 
                     _type += 2;
                 }
@@ -256,7 +308,7 @@ namespace BrawlLib.Wii.Models
         private static readonly VertEncoder _byteEncoder = (float value, ref byte* pOut) =>
         {
             //int val = (int)(value + (value > 0 ? 0.5f : -0.5f));
-            *(byte*)pOut = (byte)value;
+            *pOut = (byte)value;
             pOut++;
         };
         private static readonly VertEncoder _shortEncoder = (float value, ref byte* pOut) =>
@@ -270,9 +322,8 @@ namespace BrawlLib.Wii.Models
             *(bfloat*)pOut = value;
             pOut += 4;
         };
-
-        VertEncoder _enc;
-        float _quantScale;
+        private VertEncoder _enc;
+        private float _quantScale;
         public void GetEncoder()
         {
             switch (_type)
@@ -296,21 +347,30 @@ namespace BrawlLib.Wii.Models
             try
             {
                 int[] imp = _remap._impTable;
-                
+
                 //Copy elements using encoder
                 float* pTemp = _pData;
                 for (int i = 0; i < _dstCount; i++)
                 {
                     if (imp != null)
+                    {
                         pTemp = &_pData[imp[i] * _srcElements];
+                    }
+
                     for (int x = 0; x < _srcElements; x++, pTemp++)
+                    {
                         if (x < _dstElements)
+                        {
                             _enc(*pTemp * _quantScale, ref pOut);
+                        }
+                    }
                 }
 
                 //Zero remaining
                 for (int i = _dataLen; (i & 0x1F) != 0; i++)
+                {
                     *pOut++ = 0;
+                }
             }
             finally { Dispose(); }
         }
@@ -322,23 +382,33 @@ namespace BrawlLib.Wii.Models
             //Copy element using encoder
             float* pTemp = _pData;
             if (imp != null)
+            {
                 pTemp = &_pData[imp[index] * _srcElements];
+            }
+
             for (int x = 0; x < _srcElements; x++, pTemp++)
+            {
                 if (x < _dstElements)
+                {
                     _enc(*pTemp * _quantScale, ref pOut);
-            
+                }
+            }
         }
         public void Write(Vector2[] vertices, byte* pOut)
         {
             fixed (Vector2* p = vertices)
+            {
                 Write((float*)p, pOut);
+            }
         }
         public void Write(Vector3[] vertices, byte* pOut)
         {
             fixed (Vector3* p = vertices)
+            {
                 Write((float*)p, pOut);
+            }
         }
-        
+
         public void Write(float* pIn, byte* pOut)
         {
             int[] imp = _remap._impTable;
@@ -349,15 +419,24 @@ namespace BrawlLib.Wii.Models
             for (int i = 0; i < _dstCount; i++)
             {
                 if (imp != null)
+                {
                     pTemp = &pIn[imp[i] * _srcElements];
+                }
+
                 for (int x = 0; x < _srcElements; x++, pTemp++)
+                {
                     if (x < _dstElements)
+                    {
                         _enc(*pTemp * _quantScale, ref pOut);
+                    }
+                }
             }
 
             //Zero remaining
             while (pOut < pCeil)
+            {
                 *pOut++ = 0;
+            }
         }
 
         #region Decoding
@@ -366,13 +445,15 @@ namespace BrawlLib.Wii.Models
         {
             int count = header->_numEntries;
             float scale = VQuant.DeQuantTable[header->_divisor];
-            int type = ((header->_isST == 0) ? (int)ElementCodec.CodecType.S : (int)ElementCodec.CodecType.ST) + (int)header->_format;
+            int type = ((header->_isST == 0) ? (int)ElementCodec.CodecType.S : (int)ElementCodec.CodecType.ST) + header->_format;
             ElementDecoder decoder = ElementCodec.Decoders[type];
             UnsafeBuffer buffer = new UnsafeBuffer(count * 8);
 
             byte* pIn = (byte*)header->Entries, pOut = (byte*)buffer.Address;
             for (int i = 0; i < count; i++)
+            {
                 decoder(ref pIn, ref pOut, scale);
+            }
 
             return buffer;
         }
@@ -391,7 +472,9 @@ namespace BrawlLib.Wii.Models
 
             byte* pIn = (byte*)data, pOut = (byte*)buffer.Address;
             for (int i = 0; i < count; i++)
+            {
                 decoder(ref pIn, ref pOut, scale);
+            }
 
             return buffer;
         }
@@ -400,13 +483,15 @@ namespace BrawlLib.Wii.Models
         {
             int count = header->_numVertices;
             float scale = VQuant.DeQuantTable[header->_divisor];
-            int type = ((header->_isXYZ == 0) ? (int)ElementCodec.CodecType.XY : (int)ElementCodec.CodecType.XYZ) + (int)header->_type;
+            int type = ((header->_isXYZ == 0) ? (int)ElementCodec.CodecType.XY : (int)ElementCodec.CodecType.XYZ) + header->_type;
             ElementDecoder decoder = ElementCodec.Decoders[type];
             UnsafeBuffer buffer = new UnsafeBuffer(count * 12);
 
             byte* pIn = (byte*)header->Data, pOut = (byte*)buffer.Address;
             for (int i = 0; i < count; i++)
+            {
                 decoder(ref pIn, ref pOut, scale);
+            }
 
             return buffer;
         }
@@ -414,18 +499,22 @@ namespace BrawlLib.Wii.Models
         {
             int count = header->_numVertices;
             float scale = VQuant.DeQuantTable[header->_divisor]; //Should always be zero?
-            int type = (int)ElementCodec.CodecType.XYZ + (int)header->_type;
+            int type = (int)ElementCodec.CodecType.XYZ + header->_type;
             ElementDecoder decoder = ElementCodec.Decoders[type];
             UnsafeBuffer buffer;
 
             if (header->_isNBT != 0)
+            {
                 count *= 3; //Format is the same, just with three Vectors each
+            }
 
             buffer = new UnsafeBuffer(count * 12);
 
             byte* pIn = (byte*)header->Data, pOut = (byte*)buffer.Address;
             for (int i = 0; i < count; i++)
+            {
                 decoder(ref pIn, ref pOut, scale);
+            }
 
             return buffer;
         }
@@ -437,24 +526,32 @@ namespace BrawlLib.Wii.Models
         public static Vector3[] ExtractVertices(MDL0VertexData* vertices)
         {
             if (vertices != null)
-                return ExtractVertices(vertices->Data, vertices->_numVertices, vertices->_isXYZ != 0, vertices->Type, (float)(1 << vertices->_divisor));
+            {
+                return ExtractVertices(vertices->Data, vertices->_numVertices, vertices->_isXYZ != 0, vertices->Type, 1 << vertices->_divisor);
+            }
             else
+            {
                 return null;
+            }
         }
         public static Vector3[] ExtractVertices(MDL0FurPosData* vertices)
         {
             if (vertices != null)
-                return ExtractVertices(vertices->Data, vertices->_numVertices, vertices->_isXYZ != 0, vertices->Type, (float)(1 << vertices->_divisor));
+            {
+                return ExtractVertices(vertices->Data, vertices->_numVertices, vertices->_isXYZ != 0, vertices->Type, 1 << vertices->_divisor);
+            }
             else
+            {
                 return null;
+            }
         }
         public static Vector3[] ExtractNormals(MDL0NormalData* normals)
         {
-            return ExtractVertices(normals->Data, normals->_numVertices, true, normals->Type, (float)(1 << normals->_divisor));
+            return ExtractVertices(normals->Data, normals->_numVertices, true, normals->Type, 1 << normals->_divisor);
         }
         public static Vector2[] ExtractUVs(MDL0UVData* uvs)
         {
-            return ExtractPoints(uvs->Entries, uvs->_numEntries, uvs->Type, (float)(1 << uvs->_divisor));
+            return ExtractPoints(uvs->Entries, uvs->_numEntries, uvs->Type, 1 << uvs->_divisor);
         }
 
         private static Vector2[] ExtractPoints(VoidPtr address, int count, WiiVertexComponentType type, float divisor)
@@ -484,9 +581,13 @@ namespace BrawlLib.Wii.Models
                     *dPtr++ = ReadValue(ref address, type, divisor);
                     *dPtr++ = ReadValue(ref address, type, divisor);
                     if (isXYZ)
+                    {
                         *dPtr++ = ReadValue(ref address, type, divisor);
+                    }
                     else
+                    {
                         *dPtr++ = 0.0f;
+                    }
                 }
             }
 

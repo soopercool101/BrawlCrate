@@ -1,26 +1,29 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
-using System.ComponentModel;
 
 namespace System
 {
     [Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct PartialVector3 {
+    public unsafe struct PartialVector3
+    {
         public float? _x, _y, _z;
 
         public PartialVector3(float? x, float? y, float? z) { _x = x; _y = y; _z = z; }
 
-        public static explicit operator Vector3(PartialVector3 v) {
+        public static explicit operator Vector3(PartialVector3 v)
+        {
             return new Vector3(
                 v._x ?? throw new Exception("Cannot cast to Vector3 (X value is missing)"),
                 v._y ?? throw new Exception("Cannot cast to Vector3 (Y value is missing)"),
                 v._z ?? throw new Exception("Cannot cast to Vector3 (Z value is missing)"));
         }
 
-        public static implicit operator PartialVector3(Vector3 v) {
+        public static implicit operator PartialVector3(Vector3 v)
+        {
             return new PartialVector3(v._x, v._y, v._z);
         }
     }
@@ -64,9 +67,13 @@ namespace System
         public static explicit operator Vector3(Vector4 v)
         {
             if (v._w == 0.0f)
+            {
                 return new Vector3(v._x, v._y, v._z);
+            }
             else
+            {
                 return new Vector3(v._x / v._w, v._y / v._w, v._z / v._w);
+            }
         }
         //public static explicit operator Vector4(Vector3 v) { return new Vector4(v._x, v._y, v._z, 1.0f); }
 
@@ -125,19 +132,51 @@ namespace System
         public float Dot() { return (_x * _x) + (_y * _y) + (_z * _z); }
 
         public static Vector3 Clamp(Vector3 v1, float min, float max) { v1.Clamp(min, max); return v1; }
-        public void Clamp(float min, float max) { this.Max(min); this.Min(max); }
+        public void Clamp(float min, float max) { Max(min); Min(max); }
 
         public static Vector3 Min(Vector3 v1, Vector3 v2) { return new Vector3(Math.Min(v1._x, v2._x), Math.Min(v1._y, v2._y), Math.Min(v1._z, v2._z)); }
         public static Vector3 Min(Vector3 v1, float f) { return new Vector3(Math.Min(v1._x, f), Math.Min(v1._y, f), Math.Min(v1._z, f)); }
         public void Min(Vector3 v) { _x = Math.Min(_x, v._x); _y = Math.Min(_y, v._y); _z = Math.Min(_z, v._z); }
-        public void Min(Vector3* v) { if (v->_x < _x) _x = v->_x; if (v->_y < _y) _y = v->_y; if (v->_z < _z) _z = v->_z; }
+        public void Min(Vector3* v)
+        {
+            if (v->_x < _x)
+            {
+                _x = v->_x;
+            }
+
+            if (v->_y < _y)
+            {
+                _y = v->_y;
+            }
+
+            if (v->_z < _z)
+            {
+                _z = v->_z;
+            }
+        }
         public void Min(float f) { _x = Math.Min(_x, f); _y = Math.Min(_y, f); _z = Math.Min(_z, f); }
 
         public static Vector3 Max(Vector3 v1, Vector3 v2) { return new Vector3(Math.Max(v1._x, v2._x), Math.Max(v1._y, v2._y), Math.Max(v1._z, v2._z)); }
         public static Vector3 Max(Vector3 v1, Vector3* v2) { return new Vector3(Math.Max(v1._x, v2->_x), Math.Max(v1._y, v2->_y), Math.Max(v1._z, v2->_z)); }
         public static Vector3 Max(Vector3 v1, float f) { return new Vector3(Math.Max(v1._x, f), Math.Max(v1._y, f), Math.Max(v1._z, f)); }
         public void Max(Vector3 v) { _x = Math.Max(_x, v._x); _y = Math.Max(_y, v._y); _z = Math.Max(_z, v._z); }
-        public void Max(Vector3* v) { if (v->_x > _x) _x = v->_x; if (v->_y > _y) _y = v->_y; if (v->_z > _z) _z = v->_z; }
+        public void Max(Vector3* v)
+        {
+            if (v->_x > _x)
+            {
+                _x = v->_x;
+            }
+
+            if (v->_y > _y)
+            {
+                _y = v->_y;
+            }
+
+            if (v->_z > _z)
+            {
+                _z = v->_z;
+            }
+        }
         public void Max(float f) { _x = Math.Max(_x, f); _y = Math.Max(_y, f); _z = Math.Max(_z, f); }
 
         public float DistanceTo(Vector3 v) { return (v - this).Dot(); }
@@ -166,7 +205,7 @@ namespace System
                 v._z > 0.0f ? (float)Math.Floor(v._z) : (float)Math.Ceiling(v._z));
         }
 
-        public override string ToString() { return String.Format("({0},{1},{2})", _x, _y, _z); }
+        public override string ToString() { return string.Format("({0},{1},{2})", _x, _y, _z); }
 
         public bool Contained(Vector3 start, Vector3 end, float expansion) { return Contained(this, start, end, expansion); }
         public static unsafe bool Contained(Vector3 point, Vector3 start, Vector3 end, float expansion)
@@ -180,7 +219,9 @@ namespace System
                 { temp = s1; s1 = s2; s2 = temp; }
 
                 if ((sPtr[i] < (s1[i] - expansion)) || (sPtr[i] > (s2[i] + expansion)))
+                {
                     return false;
+                }
             }
             return true;
         }
@@ -223,19 +264,34 @@ namespace System
         public override bool Equals(object obj)
         {
             if (obj is Vector3)
+            {
                 return this == (Vector3)obj;
+            }
+
             return false;
         }
 
         public unsafe float this[int index]
         {
-            get { fixed (Vector3* p = &this) return ((float*)p)[index]; }
-            set { fixed (Vector3* p = &this) ((float*)p)[index] = value; }
+            get
+            {
+                fixed (Vector3* p = &this)
+                {
+                    return ((float*)p)[index];
+                }
+            }
+            set
+            {
+                fixed (Vector3* p = &this)
+                {
+                    ((float*)p)[index] = value;
+                }
+            }
         }
 
         public void Lerp(Vector3 dest, float percent) { this += ((dest - this) * percent); }
         public Vector3 Lerped(Vector3 dest, float percent) { return this + ((dest - this) * percent); }
-        
+
         public void RemapToRange(float min, float max)
         {
             _x = _x.RemapToRange(min, max);
@@ -256,17 +312,30 @@ namespace System
             {
                 Vector3 o = (Vector3)obj;
                 if (_x > o._x)
+                {
                     return 1;
+                }
                 else if (_x < o._x)
+                {
                     return -1;
+                }
                 else if (_y > o._y)
+                {
                     return 1;
+                }
                 else if (_y < o._y)
+                {
                     return -1;
+                }
                 else if (_z > o._z)
+                {
                     return 1;
+                }
                 else if (_z < o._z)
+                {
                     return -1;
+                }
+
                 return 0;
             }
             return 1;
@@ -316,6 +385,6 @@ namespace System
         }
 
         [Browsable(false)]
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 }

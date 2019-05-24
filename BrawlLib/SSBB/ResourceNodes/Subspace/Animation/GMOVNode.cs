@@ -5,12 +5,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GMOVNode : ResourceNode
     {
-        internal GMOV* Header { get { return (GMOV*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.GMOV; } }
+        internal GMOV* Header => (GMOV*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.GMOV;
 
         [Category("GMOV")]
         [DisplayName("Entries")]
-        public int count { get { return Header->_count; } }
+        public int count => Header->_count;
         public override void OnPopulate()
         {
             for (int i = 0; i < Header->_count; i++)
@@ -26,7 +26,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             if (_name == null)
+            {
                 _name = "Movable Grounds";
+            }
+
             return Header->_count > 0;
         }
 
@@ -35,30 +38,37 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GMOVEntryNode : ResourceNode
     {
-        internal GMOVEntry* Header { get { return (GMOVEntry*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.Unknown; } }
+        internal GMOVEntry* Header => (GMOVEntry*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.Unknown;
         [Category("Movable Ground")]
         [DisplayName("Model Index")]
-        public int MID { get { return *(byte*)(WorkingUncompressed.Address + 0x44); } }
-        
+        public int MID => *(byte*)(WorkingUncompressed.Address + 0x44);
+
         [Category("Movable Ground")]
         [DisplayName("Collision Index")]
-        public int CID 
-        { 
-            get 
+        public int CID
+        {
+            get
             {
-            int CID = *(byte*)(WorkingUncompressed.Address + 0x45);
-            if (CID == 0xFF) 
-                return -1;
-            else
-                return CID;
-            } 
+                int CID = *(byte*)(WorkingUncompressed.Address + 0x45);
+                if (CID == 0xFF)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return CID;
+                }
+            }
         }
         public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
+            {
                 _name = "Object[" + Index + ']';
+            }
+
             return false;
         }
     }

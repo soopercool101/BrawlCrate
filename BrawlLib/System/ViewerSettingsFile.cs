@@ -1,11 +1,11 @@
 ﻿using BrawlLib.Imaging;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Reflection;
-using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace System
 {
@@ -41,7 +41,7 @@ namespace System
         public bool SnapToColl;
         public bool FlatBoneList;
         public bool BoneListContains;
-        
+
         public bool HideMainWindow;
         public bool SavePosition;
         public int _width, _height, _posX, _posY;

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static TPLWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -46,40 +46,41 @@ namespace BrawlCrate.NodeWrappers
 
         public TPLWrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.TPL; } }
+        public override string ExportFilter => FileFilters.TPL;
 
         public void ImportTexture()
         {
-            string path;
-            int index = Program.OpenFile(FileFilters.Images, out path);
+            int index = Program.OpenFile(FileFilters.Images, out string path);
             if (index == 8)
             {
                 TPLTextureNode t = new TPLTextureNode() { Name = "Texture" };
                 _resource.AddChild(t);
                 t.Replace(path);
 
-                BaseWrapper w = this.FindResource(t, true);
+                BaseWrapper w = FindResource(t, true);
                 w.EnsureVisible();
                 w.TreeView.SelectedNode = w;
             }
             else if (index > 0)
+            {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = path;
                     if (dlg.ShowDialog(MainForm.Instance, Resource as TPLNode) == DialogResult.OK)
                     {
-                        BaseWrapper w = this.FindResource(dlg.TPLTextureNode, true);
+                        BaseWrapper w = FindResource(dlg.TPLTextureNode, true);
                         w.EnsureVisible();
                         w.TreeView.SelectedNode = w;
                     }
                 }
+            }
         }
     }
 
     [NodeWrapper(ResourceType.TPLTexture)]
     public class TPLTextureNodeWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static TPLTextureNodeWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -121,18 +122,22 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public override string ExportFilter { get { return FileFilters.Images; } }
+        public override string ExportFilter => FileFilters.Images;
 
         public override void OnReplace(string inStream, int filterIndex)
         {
             if (filterIndex == 8)
+            {
                 base.OnReplace(inStream, filterIndex);
+            }
             else
+            {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = inStream;
                     dlg.ShowDialog(MainForm.Instance, (TPLTextureNode)_resource);
                 }
+            }
         }
     }
 }

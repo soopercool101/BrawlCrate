@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Imaging;
 
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct CLR0v3
+    internal unsafe struct CLR0v3
     {
         public const int Size = 0x24;
         public const string Tag = "CLR0";
@@ -24,7 +24,7 @@ namespace BrawlLib.SSBBTypes
             _header._size = size;
             _header._bresOffset = 0;
             _header._version = 3;
-            
+
             _dataOffset = Size;
             _stringOffset = 0;
             _origPathOffset = 0;
@@ -33,26 +33,26 @@ namespace BrawlLib.SSBBTypes
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct CLR0v4
+    internal unsafe struct CLR0v4
     {
         public const int Size = 0x28;
         public const string Tag = "CLR0";
@@ -82,27 +82,27 @@ namespace BrawlLib.SSBBTypes
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
         public VoidPtr UserData
         {
-            get { return _userDataOffset == 0 ? null : Address + _userDataOffset; }
-            set { _userDataOffset = (int)(VoidPtr)value - (int)Address; }
+            get => _userDataOffset == 0 ? null : Address + _userDataOffset;
+            set => _userDataOffset = (int)value - (int)Address;
         }
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -156,7 +156,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct CLR0Material
+    internal unsafe struct CLR0Material
     {
         public const int Size = 8;
 
@@ -174,28 +174,28 @@ namespace BrawlLib.SSBBTypes
             _flags = (uint)flags;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public CLR0EntryFlags Flags { get { return (CLR0EntryFlags)(uint)_flags; } set { _flags = (uint)value; } }
+        public CLR0EntryFlags Flags { get => (CLR0EntryFlags)(uint)_flags; set => _flags = (uint)value; }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    unsafe struct CLR0MaterialEntry
+    internal unsafe struct CLR0MaterialEntry
     {
         public RGBAPixel _colorMask; //Used as a mask for source color before applying frames
         public bint _data;
 
-        public RGBAPixel SolidColor { get { return *(RGBAPixel*)(Address + 4); } set { *(RGBAPixel*)(Address + 4) = value; } }
-        public RGBAPixel* Data { get { return (RGBAPixel*)(Address + _data + 4); } }
+        public RGBAPixel SolidColor { get => *(RGBAPixel*)(Address + 4); set => *(RGBAPixel*)(Address + 4) = value; }
+        public RGBAPixel* Data => (RGBAPixel*)(Address + _data + 4);
 
-        public CLR0MaterialEntry(RGBAPixel mask, RGBAPixel color) 
+        public CLR0MaterialEntry(RGBAPixel mask, RGBAPixel color)
         {
             _colorMask = mask;
             _data._data = *(int*)&color;
@@ -207,6 +207,6 @@ namespace BrawlLib.SSBBTypes
             _data = offset;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

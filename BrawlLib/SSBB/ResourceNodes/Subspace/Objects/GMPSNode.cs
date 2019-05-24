@@ -1,17 +1,16 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GMPSNode : ResourceNode
     {
-        internal GMPS* Header { get { return (GMPS*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.GMPS; } }
+        internal GMPS* Header => (GMPS*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.GMPS;
 
         [Category("GMPS")]
         [DisplayName("Entries")]
-        public int count { get { return Header->_count; } }
+        public int count => Header->_count;
         public override void OnPopulate()
         {
             for (int i = 0; i < Header->_count; i++)
@@ -27,7 +26,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             if (_name == null)
+            {
                 _name = "Punch Sliders";
+            }
+
             return Header->_count > 0;
         }
 
@@ -36,8 +38,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GMPSEntryNode : ResourceNode
     {
-        internal GMPSEntry* Header { get { return (GMPSEntry*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.Unknown; } }
+        internal GMPSEntry* Header => (GMPSEntry*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.Unknown;
         //[Category("Animated Object")]
         //[DisplayName("Model Index")]
         //public int MID { get { return *(byte*)(WorkingUncompressed.Address + 0x3C); } }
@@ -63,7 +65,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             if (_name == null)
-                _name = new String((sbyte*)(Header+0xFC));
+            {
+                _name = new string((sbyte*)(Header + 0xFC));
+            }
+
             return false;
         }
     }

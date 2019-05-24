@@ -1,13 +1,13 @@
-﻿using System;
+﻿using BrawlLib.Wii;
+using System;
 using System.Collections.Generic;
-using BrawlLib.Wii;
 using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MSBinNode : ARCEntryNode
     {
-        public override ResourceType ResourceType { get { return ResourceType.MSBin; } }
+        public override ResourceType ResourceType => ResourceType.MSBin;
         public List<string> _strings = new List<string>();
 
         public override bool OnInitialize()
@@ -25,7 +25,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 current = offsets[index];
                 if ((current < last) || (current > length))
+                {
                     break;
+                }
 
                 _strings.Add(MSBinDecoder.DecodeString(floor + last, current - last));
 
@@ -38,7 +40,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int len = (_strings.Count + 1) << 2;
             foreach (string s in _strings)
+            {
                 len += MSBinDecoder.GetStringSize(s);
+            }
 
             return len;
         }
@@ -64,11 +68,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             for (index = 0, last = 0; last != length; index++)
             {
                 if (index * 4 > source.Length)
+                {
                     return null;
+                }
 
                 current = offsets[index];
                 if ((current < last) || (current > length))
+                {
                     return null;
+                }
 
                 last = current;
             }
@@ -76,30 +84,41 @@ namespace BrawlLib.SSBB.ResourceNodes
             return (offsets[0] == (index << 2)) ? new MSBinNode() : null;
         }
 
-		public override unsafe void Export(string outPath) {
-			if (outPath.EndsWith(".txt")) {
-				using (StreamWriter sw = new StreamWriter(outPath)) {
-					foreach (string s in this._strings) {
-						sw.WriteLine(s.Replace("\r\n", "<br/>"));
-					}
-				}
-			} else {
-				base.Export(outPath);
-			}
-		}
+        public override unsafe void Export(string outPath)
+        {
+            if (outPath.EndsWith(".txt"))
+            {
+                using (StreamWriter sw = new StreamWriter(outPath))
+                {
+                    foreach (string s in _strings)
+                    {
+                        sw.WriteLine(s.Replace("\r\n", "<br/>"));
+                    }
+                }
+            }
+            else
+            {
+                base.Export(outPath);
+            }
+        }
 
-		public override unsafe void Replace(string fileName) {
-			if (fileName.EndsWith(".txt")) {
-				List<string> list = new List<string>();
-				foreach (string s in File.ReadAllLines(fileName)) {
-					list.Add(s.Replace("<br/>", "\r\n"));
-				}
-				this._strings = list;
-				this.SignalPropertyChange();
-				ForceReplacedEvent();
-			} else {
-				base.Replace(fileName);
-			}
-		}
+        public override unsafe void Replace(string fileName)
+        {
+            if (fileName.EndsWith(".txt"))
+            {
+                List<string> list = new List<string>();
+                foreach (string s in File.ReadAllLines(fileName))
+                {
+                    list.Add(s.Replace("<br/>", "\r\n"));
+                }
+                _strings = list;
+                SignalPropertyChange();
+                ForceReplacedEvent();
+            }
+            else
+            {
+                base.Replace(fileName);
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
+using System.ComponentModel;
 using System.Drawing;
-using BrawlLib.Modeling;
 
 namespace System.Windows.Forms
 {
@@ -10,121 +10,121 @@ namespace System.Windows.Forms
         #region Designer
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.texBox = new System.Windows.Forms.StringInputComboBox();
-            this.pltBox = new System.Windows.Forms.StringInputComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.grpEdit = new System.Windows.Forms.GroupBox();
-            this.btnPaste = new System.Windows.Forms.Button();
-            this.btnCopy = new System.Windows.Forms.Button();
-            this.btnCut = new System.Windows.Forms.Button();
-            this.grpEdit.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            texBox = new System.Windows.Forms.StringInputComboBox();
+            pltBox = new System.Windows.Forms.StringInputComboBox();
+            label2 = new System.Windows.Forms.Label();
+            grpEdit = new System.Windows.Forms.GroupBox();
+            btnPaste = new System.Windows.Forms.Button();
+            btnCopy = new System.Windows.Forms.Button();
+            btnCut = new System.Windows.Forms.Button();
+            grpEdit.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Texture:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(56, 23);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(46, 13);
+            label1.TabIndex = 1;
+            label1.Text = "Texture:";
             // 
             // texBox
             // 
-            this.texBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.texBox.FormattingEnabled = true;
-            this.texBox.Location = new System.Drawing.Point(108, 20);
-            this.texBox.Name = "texBox";
-            this.texBox.Size = new System.Drawing.Size(288, 21);
-            this.texBox.TabIndex = 2;
-            this.texBox.ValueChanged += new System.EventHandler(this.TexChanged);
+            texBox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            texBox.FormattingEnabled = true;
+            texBox.Location = new System.Drawing.Point(108, 20);
+            texBox.Name = "texBox";
+            texBox.Size = new System.Drawing.Size(288, 21);
+            texBox.TabIndex = 2;
+            texBox.ValueChanged += new System.EventHandler(TexChanged);
             // 
             // pltBox
             // 
-            this.pltBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pltBox.BackColor = System.Drawing.SystemColors.Window;
-            this.pltBox.FormattingEnabled = true;
-            this.pltBox.Location = new System.Drawing.Point(108, 47);
-            this.pltBox.Name = "pltBox";
-            this.pltBox.Size = new System.Drawing.Size(288, 21);
-            this.pltBox.TabIndex = 4;
-            this.pltBox.ValueChanged += new System.EventHandler(this.TexChanged);
+            pltBox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            pltBox.BackColor = System.Drawing.SystemColors.Window;
+            pltBox.FormattingEnabled = true;
+            pltBox.Location = new System.Drawing.Point(108, 47);
+            pltBox.Name = "pltBox";
+            pltBox.Size = new System.Drawing.Size(288, 21);
+            pltBox.TabIndex = 4;
+            pltBox.ValueChanged += new System.EventHandler(TexChanged);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(59, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Palette:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(59, 50);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(43, 13);
+            label2.TabIndex = 3;
+            label2.Text = "Palette:";
             // 
             // grpEdit
             // 
-            this.grpEdit.Controls.Add(this.btnPaste);
-            this.grpEdit.Controls.Add(this.pltBox);
-            this.grpEdit.Controls.Add(this.btnCopy);
-            this.grpEdit.Controls.Add(this.label1);
-            this.grpEdit.Controls.Add(this.texBox);
-            this.grpEdit.Controls.Add(this.btnCut);
-            this.grpEdit.Controls.Add(this.label2);
-            this.grpEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpEdit.Location = new System.Drawing.Point(0, 0);
-            this.grpEdit.Name = "grpEdit";
-            this.grpEdit.Size = new System.Drawing.Size(402, 77);
-            this.grpEdit.TabIndex = 28;
-            this.grpEdit.TabStop = false;
-            this.grpEdit.Text = "Edit Frame";
+            grpEdit.Controls.Add(btnPaste);
+            grpEdit.Controls.Add(pltBox);
+            grpEdit.Controls.Add(btnCopy);
+            grpEdit.Controls.Add(label1);
+            grpEdit.Controls.Add(texBox);
+            grpEdit.Controls.Add(btnCut);
+            grpEdit.Controls.Add(label2);
+            grpEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            grpEdit.Location = new System.Drawing.Point(0, 0);
+            grpEdit.Name = "grpEdit";
+            grpEdit.Size = new System.Drawing.Size(402, 77);
+            grpEdit.TabIndex = 28;
+            grpEdit.TabStop = false;
+            grpEdit.Text = "Edit Frame";
             // 
             // btnPaste
             // 
-            this.btnPaste.Location = new System.Drawing.Point(3, 54);
-            this.btnPaste.Name = "btnPaste";
-            this.btnPaste.Size = new System.Drawing.Size(50, 20);
-            this.btnPaste.TabIndex = 26;
-            this.btnPaste.Text = "Paste";
-            this.btnPaste.UseVisualStyleBackColor = true;
-            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            btnPaste.Location = new System.Drawing.Point(3, 54);
+            btnPaste.Name = "btnPaste";
+            btnPaste.Size = new System.Drawing.Size(50, 20);
+            btnPaste.TabIndex = 26;
+            btnPaste.Text = "Paste";
+            btnPaste.UseVisualStyleBackColor = true;
+            btnPaste.Click += new System.EventHandler(btnPaste_Click);
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(3, 35);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(50, 20);
-            this.btnCopy.TabIndex = 25;
-            this.btnCopy.Text = "Copy";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            btnCopy.Location = new System.Drawing.Point(3, 35);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new System.Drawing.Size(50, 20);
+            btnCopy.TabIndex = 25;
+            btnCopy.Text = "Copy";
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += new System.EventHandler(btnCopy_Click);
             // 
             // btnCut
             // 
-            this.btnCut.Location = new System.Drawing.Point(3, 16);
-            this.btnCut.Name = "btnCut";
-            this.btnCut.Size = new System.Drawing.Size(50, 20);
-            this.btnCut.TabIndex = 24;
-            this.btnCut.Text = "Cut";
-            this.btnCut.UseVisualStyleBackColor = true;
-            this.btnCut.Click += new System.EventHandler(this.btnCut_Click);
+            btnCut.Location = new System.Drawing.Point(3, 16);
+            btnCut.Name = "btnCut";
+            btnCut.Size = new System.Drawing.Size(50, 20);
+            btnCut.TabIndex = 24;
+            btnCut.Text = "Cut";
+            btnCut.UseVisualStyleBackColor = true;
+            btnCut.Click += new System.EventHandler(btnCut_Click);
             // 
             // PAT0Editor
             // 
-            this.Controls.Add(this.grpEdit);
-            this.MinimumSize = new System.Drawing.Size(402, 77);
-            this.Name = "PAT0Editor";
-            this.Size = new System.Drawing.Size(402, 77);
-            this.grpEdit.ResumeLayout(false);
-            this.grpEdit.PerformLayout();
-            this.ResumeLayout(false);
+            Controls.Add(grpEdit);
+            MinimumSize = new System.Drawing.Size(402, 77);
+            Name = "PAT0Editor";
+            Size = new System.Drawing.Size(402, 77);
+            grpEdit.ResumeLayout(false);
+            grpEdit.PerformLayout();
+            ResumeLayout(false);
 
         }
 
         #endregion
 
         private Label label1;
-        private System.ComponentModel.IContainer components;
+        private readonly System.ComponentModel.IContainer components;
         private StringInputComboBox texBox;
         private StringInputComboBox pltBox;
         private Label label2;
@@ -134,39 +134,40 @@ namespace System.Windows.Forms
         private Button btnCut;
 
         public ModelEditorBase _mainWindow;
-
-        StringInputComboBox texture, palette;
+        private readonly StringInputComboBox texture, palette;
 
         public PAT0Editor() { InitializeComponent(); }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoneNode TargetBone { get { return _mainWindow.SelectedBone; } set { _mainWindow.SelectedBone = value; } }
+        public IBoneNode TargetBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef { get { return _mainWindow.TargetTexRef; } set { _mainWindow.TargetTexRef = value; } }
+        public MDL0MaterialRefNode TargetTexRef { get => _mainWindow.TargetTexRef; set => _mainWindow.TargetTexRef = value; }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentFrame
         {
-            get { return _mainWindow.CurrentFrame; }
-            set { _mainWindow.CurrentFrame = value; }
+            get => _mainWindow.CurrentFrame;
+            set => _mainWindow.CurrentFrame = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IModel TargetModel
         {
-            get { return _mainWindow.TargetModel; }
-            set { _mainWindow.TargetModel = value; }
+            get => _mainWindow.TargetModel;
+            set => _mainWindow.TargetModel = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PAT0Node SelectedAnimation
         {
-            get { return _mainWindow.SelectedPAT0; }
-            set { _mainWindow.SelectedPAT0 = value; }
+            get => _mainWindow.SelectedPAT0;
+            set => _mainWindow.SelectedPAT0 = value;
         }
         public void UpdatePropDisplay()
         {
             if (!Enabled)
+            {
                 return;
+            }
 
             ResetTexture();
             ResetPalette();
@@ -178,18 +179,23 @@ namespace System.Windows.Forms
             PAT0TextureNode node;
 
             if (mr == null)
+            {
                 return;
+            }
 
             _updating = true;
             if ((SelectedAnimation != null) && (CurrentFrame > 0) && ((node = SelectedAnimation.FindChild(mr._parent.Name + "/Texture" + mr.Index, true) as PAT0TextureNode) != null))
             {
-                bool kf;
-                string e = node.GetPalette(CurrentFrame - 1, out kf);
+                string e = node.GetPalette(CurrentFrame - 1, out bool kf);
                 pltBox.Value = e;
                 if (!kf)
+                {
                     pltBox.BackColor = Color.White;
+                }
                 else
+                {
                     pltBox.BackColor = Color.Yellow;
+                }
             }
             else
             {
@@ -205,18 +211,23 @@ namespace System.Windows.Forms
             PAT0TextureNode node;
 
             if (mr == null)
+            {
                 return;
+            }
 
             _updating = true;
             if ((SelectedAnimation != null) && (CurrentFrame > 0) && ((node = SelectedAnimation.FindChild(mr._parent.Name + "/Texture" + mr.Index, true) as PAT0TextureNode) != null))
             {
-                bool kf;
-                string e = node.GetTexture(CurrentFrame - 1, out kf);
+                string e = node.GetTexture(CurrentFrame - 1, out bool kf);
                 texBox.Value = e;
                 if (!kf)
+                {
                     texBox.BackColor = Color.White;
+                }
                 else
+                {
                     texBox.BackColor = Color.Yellow;
+                }
             }
             else
             {
@@ -226,14 +237,16 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
-        bool _updating = false;
+        private bool _updating = false;
         internal unsafe void TexChanged(object sender, EventArgs e)
         {
             MDL0MaterialRefNode mr = TargetTexRef;
             PAT0TextureNode node;
 
             if (mr == null || _updating)
+            {
                 return;
+            }
 
             if (SelectedAnimation != null && CurrentFrame > 0)
             {
@@ -244,27 +257,36 @@ namespace System.Windows.Forms
                     PAT0TextureEntryNode tex = node.GetEntry(CurrentFrame - 1);
                     if (tex == null)
                     {
-                        if (!String.IsNullOrEmpty(texBox.Text) || !String.IsNullOrEmpty(pltBox.Text))
+                        if (!string.IsNullOrEmpty(texBox.Text) || !string.IsNullOrEmpty(pltBox.Text))
                         {
-                            tex = new PAT0TextureEntryNode();
-                            tex._frame = CurrentFrame - 1;
+                            tex = new PAT0TextureEntryNode
+                            {
+                                _frame = CurrentFrame - 1
+                            };
                             if (node.Children.Count > 0)
+                            {
                                 node.InsertChild(tex, true, node.GetPrevious(CurrentFrame - 1).Index + 1);
+                            }
                             else
+                            {
                                 node.AddChild(tex, true);
+                            }
+
                             tex.Texture = texBox.Text;
                             tex.Palette = pltBox.Text;
                         }
                     }
                     else
                     {
-                        if (!String.IsNullOrEmpty(texBox.Text) || !String.IsNullOrEmpty(pltBox.Text))
+                        if (!string.IsNullOrEmpty(texBox.Text) || !string.IsNullOrEmpty(pltBox.Text))
                         {
                             tex.Texture = texBox.Text;
                             tex.Palette = pltBox.Text;
                         }
                         else
+                        {
                             tex.Remove();
+                        }
                     }
                 }
             }
@@ -278,7 +300,9 @@ namespace System.Windows.Forms
         public void UpdateBoxes()
         {
             if (TargetModel == null)
+            {
                 return;
+            }
 
             texBox.Items.Clear();
             pltBox.Items.Clear();
@@ -286,20 +310,30 @@ namespace System.Windows.Forms
             if (TargetModel != null)
             {
                 foreach (ResourceNode s in ((ResourceNode)TargetModel).RootNode.FindChildrenByType(null, ResourceType.TEX0))
+                {
                     texBox.Items.Add(s.Name);
+                }
+
                 foreach (ResourceNode s in ((ResourceNode)TargetModel).RootNode.FindChildrenByType(null, ResourceType.PLT0))
+                {
                     pltBox.Items.Add(s.Name);
+                }
             }
             foreach (ResourceNode r in _mainWindow._openedFiles)
             {
                 foreach (ResourceNode s in r.FindChildrenByType(null, ResourceType.TEX0))
+                {
                     texBox.Items.Add(s.Name);
+                }
+
                 foreach (ResourceNode s in r.FindChildrenByType(null, ResourceType.PLT0))
+                {
                     pltBox.Items.Add(s.Name);
+                }
             }
         }
 
-        string Texture, Palette;
+        private string Texture, Palette;
         private void btnCut_Click(object sender, EventArgs e)
         {
             Texture = texBox.Text;

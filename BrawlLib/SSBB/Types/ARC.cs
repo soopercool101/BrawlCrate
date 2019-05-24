@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -12,32 +12,39 @@ namespace BrawlLib.SSBBTypes
         public uint _tag; //ARC
         public ushort _version; //0x0101
         public bushort _numFiles;
-        uint _unk1;
-        uint _unk2;
-        fixed sbyte _name[48];
+        private readonly uint _unk1;
+        private readonly uint _unk2;
+        private readonly sbyte _name[48];
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public string Name 
+        public string Name
         {
-            get { return new String((sbyte*)Address + 0x10); }
+            get => new string((sbyte*)Address + 0x10);
             set
             {
-                if (value == null) 
+                if (value == null)
+                {
                     value = "";
+                }
 
                 fixed (sbyte* ptr = _name)
                 {
                     int i = 0;
                     while ((i < 47) && (i < value.Length))
+                    {
                         ptr[i] = (sbyte)value[i++];
+                    }
 
-                    while (i < 48) ptr[i++] = 0;
+                    while (i < 48)
+                    {
+                        ptr[i++] = 0;
+                    }
                 }
             }
         }
 
-        public ARCFileHeader* First { get { return (ARCFileHeader*)(Address + Size); } }
+        public ARCFileHeader* First => (ARCFileHeader*)(Address + Size);
 
         public ARCHeader(ushort numFiles, string name)
         {
@@ -78,21 +85,21 @@ namespace BrawlLib.SSBBTypes
             _pad1 = _pad2 = _pad3 = _pad4 = _pad5 = 0;
         }
 
-        private ARCFileHeader* Address { get { fixed (ARCFileHeader* ptr = &this)return ptr; } }
+        private ARCFileHeader* Address { get { fixed (ARCFileHeader* ptr = &this) { return ptr; } } }
 
-        public VoidPtr Data { get { return (VoidPtr)Address + Size; } }
-        public ARCFileHeader* Next { get { return (ARCFileHeader*)((uint)(Data + _size)).Align(Size); } }
+        public VoidPtr Data => (VoidPtr)Address + Size;
+        public ARCFileHeader* Next => (ARCFileHeader*)((uint)(Data + _size)).Align(Size);
 
         public ARCFileType FileType
         {
-            get { return (ARCFileType)(short)_type; }
-            set { _type = (short)value; }
+            get => (ARCFileType)(short)_type;
+            set => _type = (short)value;
         }
-        public short Index { get { return _index; } set { _index = value; } }
-        public int Length { get { return _size; } set { _size = value; } }
-        public byte GroupIndex { get { return _groupIndex; } set { _groupIndex = value; } }
+        public short Index { get => _index; set => _index = value; }
+        public int Length { get => _size; set => _size = value; }
+        public byte GroupIndex { get => _groupIndex; set => _groupIndex = value; }
         //public byte Unknown { get { return _padding; } set { _padding = value; } }
-        public short ID { get { return _redirectIndex; } set { _redirectIndex = value; } }
+        public short ID { get => _redirectIndex; set => _redirectIndex = value; }
     }
 
     public enum ARCFileType : short

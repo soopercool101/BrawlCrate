@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct REFT
+    internal unsafe struct REFT
     {
         //Header + string is aligned to 4 bytes
 
@@ -19,11 +19,11 @@ namespace BrawlLib.SSBBTypes
         public bshort _stringLen;
         public bshort _padding; //0
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public string IdString
         {
-            get { return new String((sbyte*)Address + 0x28); }
+            get => new string((sbyte*)Address + 0x28);
             set
             {
                 int len = value.Length + 1;
@@ -33,16 +33,20 @@ namespace BrawlLib.SSBBTypes
                 fixed (char* sPtr = value)
                 {
                     for (int i = 0; i < len; i++)
+                    {
                         *dPtr++ = (byte)sPtr[i];
+                    }
                 }
 
                 //Align to 4 bytes
                 while ((len++ & 3) != 0)
+                {
                     *dPtr++ = 0;
+                }
             }
         }
 
-        public REFTypeObjectTable* Table { get { return (REFTypeObjectTable*)(Address + 0x18 + _dataOffset); } }
+        public REFTypeObjectTable* Table => (REFTypeObjectTable*)(Address + 0x18 + _dataOffset);
     }
 
     public unsafe struct REFTypeObjectTable
@@ -54,9 +58,9 @@ namespace BrawlLib.SSBBTypes
         public bushort _entries;
         public bushort _pad;
 
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
-        public REFTypeObjectEntry* First { get { return (REFTypeObjectEntry*)(Address + 8); } }
+        public REFTypeObjectEntry* First => (REFTypeObjectEntry*)(Address + 8);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -65,7 +69,7 @@ namespace BrawlLib.SSBBTypes
         public bshort _strLen;
         public string Name
         {
-            get { return new String((sbyte*)Address + 2); }
+            get => new string((sbyte*)Address + 2);
             set
             {
                 _strLen = (short)(value.Length + 1);
@@ -75,19 +79,19 @@ namespace BrawlLib.SSBBTypes
 
         public int DataOffset
         {
-            get { return (int)*(buint*)((byte*)Address + 2 + _strLen); }
-            set { *(buint*)((byte*)Address + 2 + _strLen) = (uint)value; }
+            get => (int)*(buint*)((byte*)Address + 2 + _strLen);
+            set => *(buint*)((byte*)Address + 2 + _strLen) = (uint)value;
         }
 
         public int DataLength
         {
-            get { return (int)*(buint*)((byte*)Address + 2 + _strLen + 4); }
-            set { *(buint*)((byte*)Address + 2 + _strLen + 4) = (uint)value; }
+            get => (int)*(buint*)((byte*)Address + 2 + _strLen + 4);
+            set => *(buint*)((byte*)Address + 2 + _strLen + 4) = (uint)value;
         }
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
-        public REFTypeObjectEntry* Next { get { return (REFTypeObjectEntry*)(Address + 10 + _strLen); } }
+        public REFTypeObjectEntry* Next => (REFTypeObjectEntry*)(Address + 10 + _strLen);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -107,8 +111,8 @@ namespace BrawlLib.SSBBTypes
         public byte _mag_filt;
         public byte _reserved;
         public bfloat _lod_bias;
-        
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public REFTImageHeader(ushort width, ushort height, byte format, byte pltFormat, ushort colors, uint imgSize, byte lod)
         {
@@ -136,6 +140,6 @@ namespace BrawlLib.SSBBTypes
 
         //From here starts the image.
 
-        public VoidPtr PaletteData { get { return Address + 0x20 + _imagelen; } }
+        public VoidPtr PaletteData => Address + 0x20 + _imagelen;
     }
 }

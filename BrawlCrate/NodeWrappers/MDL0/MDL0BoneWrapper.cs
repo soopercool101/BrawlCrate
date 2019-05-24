@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib.Modeling;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static MDL0BoneWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -88,23 +88,27 @@ namespace BrawlCrate.NodeWrappers
         {
             //try
             //{
-                if (PrevNode == null)
-                    return;
+            if (PrevNode == null)
+            {
+                return;
+            }
 
-                if (_resource.AddUp())
-                {
-                    TreeNode prev = PrevNode;
-                    TreeView.BeginUpdate();
-                    Remove();
-                    prev.Nodes.Add(this);
-                    _resource.Parent = _resource.Parent.Children[_resource.Index - 1];
-                    _resource.OnMoved();
-                    TreeView.EndUpdate();
-                    EnsureVisible();
-                    //TreeView.SelectedNode = this;
-                }
-                else
-                    return;
+            if (_resource.AddUp())
+            {
+                TreeNode prev = PrevNode;
+                TreeView.BeginUpdate();
+                Remove();
+                prev.Nodes.Add(this);
+                _resource.Parent = _resource.Parent.Children[_resource.Index - 1];
+                _resource.OnMoved();
+                TreeView.EndUpdate();
+                EnsureVisible();
+                //TreeView.SelectedNode = this;
+            }
+            else
+            {
+                return;
+            }
             //}
             //catch { return; }
         }
@@ -113,23 +117,27 @@ namespace BrawlCrate.NodeWrappers
         {
             //try
             //{
-                if (NextNode == null)
-                    return;
+            if (NextNode == null)
+            {
+                return;
+            }
 
-                if (_resource.AddDown())
-                {
-                    TreeNode next = NextNode;
-                    TreeView.BeginUpdate();
-                    Remove();
-                    next.Nodes.Add(this);
-                    _resource.Parent = _resource.Parent.Children[_resource.Index + 1];
-                    _resource.OnMoved();
-                    TreeView.EndUpdate();
-                    EnsureVisible();
-                    //TreeView.SelectedNode = this;
-                }
-                else
-                    return;
+            if (_resource.AddDown())
+            {
+                TreeNode next = NextNode;
+                TreeView.BeginUpdate();
+                Remove();
+                next.Nodes.Add(this);
+                _resource.Parent = _resource.Parent.Children[_resource.Index + 1];
+                _resource.OnMoved();
+                TreeView.EndUpdate();
+                EnsureVisible();
+                //TreeView.SelectedNode = this;
+            }
+            else
+            {
+                return;
+            }
             //}
             //catch { return; }
         }
@@ -138,21 +146,23 @@ namespace BrawlCrate.NodeWrappers
         {
             //try
             //{
-                if (Parent == null)
-                    return;
+            if (Parent == null)
+            {
+                return;
+            }
 
-                if (_resource.ToParent())
-                {
-                    TreeNode parent = Parent;
-                    TreeView.BeginUpdate();
-                    Remove();
-                    parent.Parent.Nodes.Add(this);
-                    _resource.Parent = _resource.Parent.Parent;
-                    _resource.OnMoved();
-                    TreeView.EndUpdate();
-                    EnsureVisible();
-                    //TreeView.SelectedNode = this;
-                }
+            if (_resource.ToParent())
+            {
+                TreeNode parent = Parent;
+                TreeView.BeginUpdate();
+                Remove();
+                parent.Parent.Nodes.Add(this);
+                _resource.Parent = _resource.Parent.Parent;
+                _resource.OnMoved();
+                TreeView.EndUpdate();
+                EnsureVisible();
+                //TreeView.SelectedNode = this;
+            }
             //}
             //catch { return; }
         }
@@ -163,7 +173,7 @@ namespace BrawlCrate.NodeWrappers
             int id = 1;
             string name = "NewBone0";
             MDL0Node model = ((MDL0BoneNode)_resource).Model;
-            Top:
+        Top:
             foreach (MDL0BoneNode b in model._linker.BoneCache)
             {
                 if (b.Name == name)
@@ -179,7 +189,7 @@ namespace BrawlCrate.NodeWrappers
 
             bone.RecalcFrameState();
             bone.RecalcBindState(false, false, false);
-            
+
             model._linker.RegenerateBoneCache();
 
             TreeView.EndUpdate();

@@ -1,12 +1,12 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWSDDataGroupNode : ResourceNode
     {
-        internal RWSD_DATAHeader* Header { get { return (RWSD_DATAHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RWSDDataGroup; } }
+        internal RWSD_DATAHeader* Header => (RWSD_DATAHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RWSDDataGroup;
 
         public override bool OnInitialize()
         {
@@ -18,7 +18,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int size = 0xC + Children.Count * 8;
             foreach (RSARFileEntryNode g in Children)
+            {
                 size += g.CalculateSize(true);
+            }
+
             return size.Align(0x20);
         }
 
@@ -32,7 +35,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (RWSDDataNode d in Children)
             {
                 d._baseAddr = header->_list.Address;
-                header->_list[d.Index] = (int)(addr - header->_list.Address);
+                header->_list[d.Index] = addr - header->_list.Address;
                 d.Rebuild(addr, d._calcSize, force);
                 addr += d._calcSize;
             }
@@ -41,8 +44,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RWSDSoundGroupNode : ResourceNode
     {
-        internal WAVEHeader* Header { get { return (WAVEHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RSARFileSoundGroup; } }
+        internal WAVEHeader* Header => (WAVEHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RSARFileSoundGroup;
 
         public VoidPtr _audioAddr;
 
@@ -56,16 +59,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             for (int i = 0; i < Header->_numEntries; i++)
+            {
                 new WAVESoundNode().Initialize(this, Header->GetEntry(i), 0);
+            }
+
             foreach (WAVESoundNode n in Children)
+            {
                 n.GetAudio();
+            }
         }
 
         public override int OnCalculateSize(bool force)
         {
             int size = 0xC + Children.Count * 4;
             foreach (WAVESoundNode g in Children)
+            {
                 size += g.WorkingUncompressed.Length;
+            }
+
             return size.Align(0x20);
         }
 
@@ -76,7 +87,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_numEntries = Children.Count;
             header->_length = length;
             buint* table = (buint*)header + 3;
-            VoidPtr addr = (VoidPtr)(table + Children.Count);
+            VoidPtr addr = table + Children.Count;
             VoidPtr baseAddr = _audioAddr;
             foreach (WAVESoundNode r in Children)
             {

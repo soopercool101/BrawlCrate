@@ -1,11 +1,10 @@
-﻿using System.Runtime.InteropServices;
-using System.IO;
-using BrawlLib.IO;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 
 namespace System.Audio
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RIFFHeader
+    internal unsafe struct RIFFHeader
     {
         public const uint RIFFTag = 0x46464952;
         public const uint WAVETag = 0x45564157;
@@ -15,14 +14,14 @@ namespace System.Audio
         public uint _length;
         public uint _waveTag;
         public fmtChunk _fmtChunk;
-        public dataChunk _listChunk { get { return *(dataChunk*)(Address + 12 + _fmtChunk.GetSize()); } }
-        public dataChunk _dataChunk 
+        public dataChunk _listChunk => *(dataChunk*)(Address + 12 + _fmtChunk.GetSize());
+        public dataChunk _dataChunk
         {
-            get { return *(dataChunk*)(Address + 12 + _fmtChunk.GetSize() + (_listChunk._chunkTag == LISTTag ? 8 + _listChunk._chunkSize : 0)); }
-            set { *(dataChunk*)(Address + 12 + _fmtChunk.GetSize()) = value; }
+            get => *(dataChunk*)(Address + 12 + _fmtChunk.GetSize() + (_listChunk._chunkTag == LISTTag ? 8 + _listChunk._chunkSize : 0));
+            set => *(dataChunk*)(Address + 12 + _fmtChunk.GetSize()) = value;
         }
 
-        public smplLoop[] _smplLoops 
+        public smplLoop[] _smplLoops
         {
             get
             {
@@ -33,10 +32,14 @@ namespace System.Audio
                 {
                     // There is more data in the file
                     smplChunk* chunk = (smplChunk*)ptr;
-					if (chunk->_chunkTag == smplChunk.smplTag) // This is a real smpl chunk
+                    if (chunk->_chunkTag == smplChunk.smplTag) // This is a real smpl chunk
+                    {
                         return chunk->_smplLoops;
+                    }
                     else // skip chunk and keep looking
+                    {
                         ptr += chunk->_chunkSize + 8;
+                    }
                 }
 
                 return new smplLoop[0];
@@ -55,11 +58,11 @@ namespace System.Audio
         }
 
         public uint GetSize() { return (uint)(12 + _fmtChunk.GetSize() + 8 + (_listChunk._chunkTag == LISTTag ? 8 + _listChunk._chunkSize : 0)); }
-        internal byte* Address { get { fixed (void* ptr = &this)return (byte*)ptr; } }
+        internal byte* Address { get { fixed (void* ptr = &this) { return (byte*)ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct fmtChunk
+    internal unsafe struct fmtChunk
     {
         public const uint fmtTag = 0x20746D66;
 
@@ -88,15 +91,15 @@ namespace System.Audio
             _blockAlign = (ushort)(bitsPerSample / 8 * channels);
             _avgBytesSec = (uint)(sampleRate * _blockAlign);
             _bitsPerSample = (ushort)bitsPerSample;
-            _extraParamSize = 
-                _randomFiller1 = 
+            _extraParamSize =
+                _randomFiller1 =
                 0;
             _randomFiller2 = 0;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct dataChunk
+    internal unsafe struct dataChunk
     {
         public const uint dataTag = 0x61746164;
         public const int Size = 8;
@@ -110,13 +113,13 @@ namespace System.Audio
             _chunkSize = dataLength;
         }
 
-        internal byte* Address { get { fixed (void* ptr = &this)return (byte*)ptr; } }
+        internal byte* Address { get { fixed (void* ptr = &this) { return (byte*)ptr; } } }
     }
 
     // http://www.piclist.com/techref/io/serial/midi/wave.html
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct smplChunk
+    internal unsafe struct smplChunk
     {
         public const uint smplTag = 0x6c706d73;
 
@@ -132,17 +135,18 @@ namespace System.Audio
         public uint _cSampleLoops;
         public uint _cbSamplerData;
 
-        internal byte* Address { get { fixed (void* ptr = &this)return (byte*)ptr; } }
+        internal byte* Address { get { fixed (void* ptr = &this) { return (byte*)ptr; } } }
 
-        public smplLoop[] _smplLoops 
+        public smplLoop[] _smplLoops
         {
             get
             {
                 smplLoop[] arr = new smplLoop[_cSampleLoops];
-                for (int i = 0; i < arr.Length; i++) {
+                for (int i = 0; i < arr.Length; i++)
+                {
                     byte* thisaddr = Address;
                     smplChunk* cc = (smplChunk*)Address;
-                    byte* thataddr = Address + 0x2C + i*0xC;
+                    byte* thataddr = Address + 0x2C + i * 0xC;
                     arr[i] = *((smplLoop*)thataddr);
                 }
                 return arr;
@@ -151,7 +155,8 @@ namespace System.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct smplLoop {
+    internal unsafe struct smplLoop
+    {
         public uint _dwIdentifier;
         public uint _dwType;
         public uint _dwStart;
@@ -159,12 +164,13 @@ namespace System.Audio
         public uint _dwFraction;
         public uint _dwPlayCount;
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return "Loop from " + _dwStart + " to " + _dwEnd;
         }
     }
 
-    public unsafe static class WAV
+    public static unsafe class WAV
     {
         public static IAudioStream FromFile(string path)
         {
@@ -179,11 +185,13 @@ namespace System.Audio
         public static byte[] ToByteArray(IAudioStream source, int samplePosition = 0, int maxSampleCount = int.MaxValue, bool appendSmplChunk = false)
         {
             int sampleCount = Math.Min(maxSampleCount, (source.Samples - samplePosition));
-            
+
             //Estimate size
             int outLen = 44 + (sampleCount * source.Channels * 2);
             if (appendSmplChunk && source.IsLooping)
+            {
                 outLen += 68;
+            }
 
             //Create byte array
             byte[] wavData = new byte[outLen];

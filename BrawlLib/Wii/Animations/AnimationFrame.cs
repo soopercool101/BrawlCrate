@@ -11,7 +11,7 @@ namespace BrawlLib.Wii.Animations
     {
         public static readonly CHRAnimationFrame Identity = new CHRAnimationFrame(new Vector3(1.0f), new Vector3(), new Vector3());
         public static readonly CHRAnimationFrame Empty = new CHRAnimationFrame();
-        
+
         public Vector3 Scale;
         public Vector3 Rotation;
         public Vector3 Translation;
@@ -28,10 +28,7 @@ namespace BrawlLib.Wii.Animations
         public bool hasTy;
         public bool hasTz;
 
-        public bool HasKeys
-        {
-            get { return hasSx || hasSy || hasSz || hasRx || hasRy || hasRz || hasTx || hasTy || hasTz; }
-        }
+        public bool HasKeys => hasSx || hasSy || hasSz || hasRx || hasRy || hasRz || hasTx || hasTy || hasTz;
 
         public void SetBool(int index, bool val)
         {
@@ -62,23 +59,23 @@ namespace BrawlLib.Wii.Animations
             switch (index)
             {
                 case 0:
-                    return hasSx; 
+                    return hasSx;
                 case 1:
-                    return hasSy; 
+                    return hasSy;
                 case 2:
-                    return hasSz; 
+                    return hasSz;
                 case 3:
-                    return hasRx; 
+                    return hasRx;
                 case 4:
-                    return hasRy; 
+                    return hasRy;
                 case 5:
-                    return hasRz; 
+                    return hasRz;
                 case 6:
-                    return hasTx; 
+                    return hasTx;
                 case 7:
-                    return hasTy; 
+                    return hasTy;
                 case 8:
-                    return hasTz; 
+                    return hasTz;
             }
             return false;
         }
@@ -131,11 +128,11 @@ namespace BrawlLib.Wii.Animations
             hasSx = hasSy = hasSz = hasRx = hasRy = hasRz = hasTx = hasTy = hasTz = false;
         }
         public int Index;
-        const int len = 6;
-        static string empty = new String('_', len);
+        private const int len = 6;
+        private static readonly string empty = new string('_', len);
         public override string ToString()
         {
-            return String.Format("[{0}]({1},{2},{3})({4},{5},{6})({7},{8},{9})", (Index + 1).ToString().PadLeft(5),
+            return string.Format("[{0}]({1},{2},{3})({4},{5},{6})({7},{8},{9})", (Index + 1).ToString().PadLeft(5),
             !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
             !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
             !hasSz ? empty : Scale._z.ToString().TruncateAndFill(len, ' '),
@@ -169,10 +166,7 @@ namespace BrawlLib.Wii.Animations
         public bool hasTx;
         public bool hasTy;
 
-        public bool HasKeys
-        {
-            get { return hasSx || hasSy || hasRx|| hasTx || hasTy; }
-        }
+        public bool HasKeys => hasSx || hasSy || hasRx || hasTx || hasTy;
 
         public void SetBool(int index, bool val)
         {
@@ -239,11 +233,11 @@ namespace BrawlLib.Wii.Animations
             hasSx = hasSy = hasRx = hasTx = hasTy = false;
         }
         public int Index;
-        const int len = 6;
-        static string empty = new String('_', len);
+        private const int len = 6;
+        private static readonly string empty = new string('_', len);
         public override string ToString()
         {
-            return String.Format("[{0}]({1},{2})({3})({4},{5})", (Index + 1).ToString().PadLeft(5),
+            return string.Format("[{0}]({1},{2})({3})({4},{5})", (Index + 1).ToString().PadLeft(5),
             !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
             !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
             !hasRx ? empty : Rotation.ToString().TruncateAndFill(len, ' '),
@@ -269,7 +263,7 @@ namespace BrawlLib.Wii.Animations
         public bool hasS;
         public bool hasE;
 
-        public bool HasKeys { get { return hasS || hasE; } }
+        public bool HasKeys => hasS || hasE;
 
         public void SetBools(int index, bool val)
         {
@@ -319,12 +313,12 @@ namespace BrawlLib.Wii.Animations
         }
 
         public float Index;
-        const int len = 6;
-        static string empty = new String('_', len);
+        private const int len = 6;
+        private static readonly string empty = new string('_', len);
 
         public override string ToString()
         {
-            return String.Format("[{0}] StartZ={1}, EndZ={2}", (Index + 1).ToString().PadLeft(5),
+            return string.Format("[{0}] StartZ={1}, EndZ={2}", (Index + 1).ToString().PadLeft(5),
             !hasS ? empty : Start.ToString().TruncateAndFill(len, ' '),
             !hasE ? empty : End.ToString().TruncateAndFill(len, ' '));
         }
@@ -352,14 +346,14 @@ namespace BrawlLib.Wii.Animations
         public Vector4 SpecColor;
 
         public GLSLLightFrame(
-            bool enabled, 
-            LightType type, 
-            Vector3 pos, 
+            bool enabled,
+            LightType type,
+            Vector3 pos,
             Vector3 aim,
-            Vector4 color, 
-            Vector3 distCoefs, 
-            Vector3 spotCoefs, 
-            bool specEnabled, 
+            Vector4 color,
+            Vector3 distCoefs,
+            Vector3 spotCoefs,
+            bool specEnabled,
             Vector4 specColor,
             Vector3 distCoefsSpec)
         {
@@ -387,7 +381,7 @@ namespace BrawlLib.Wii.Animations
             DiffColor = color;
             DiffK = distCoefs;
             DiffA = spotCoefs;
-            
+
             SpecEnabled = specEnabled ? 1 : 0;
             SpecColor = specColor;
             SpecK = distCoefsSpec;
@@ -424,10 +418,7 @@ namespace BrawlLib.Wii.Animations
         public bool hasRD;
         public bool hasRB;
 
-        public bool HasKeys
-        {
-            get { return hasSx || hasSy || hasSz || hasEx || hasEy || hasEz || hasSC || hasSB || hasRD || hasRB; }
-        }
+        public bool HasKeys => hasSx || hasSy || hasSz || hasEx || hasEy || hasEz || hasSC || hasSB || hasRD || hasRB;
 
         public void SetBools(int index, bool val)
         {
@@ -505,11 +496,11 @@ namespace BrawlLib.Wii.Animations
             hasSx = hasSy = hasSz = hasEx = hasEy = hasEz = hasSC = hasSB = hasRD = hasRB = false;
         }
         public float Index;
-        const int len = 6;
-        static string empty = new String('_', len);
+        private const int len = 6;
+        private static readonly string empty = new string('_', len);
         public override string ToString()
         {
-            return String.Format("[{0}] Start=({1},{2},{3}), End=({4},{5},{6}), SC={7}, SB={8} RD={9}, RB={10}", (Index + 1).ToString().PadLeft(5),
+            return string.Format("[{0}] Start=({1},{2},{3}), End=({4},{5},{6}), SC={7}, SB={8} RD={9}, RB={10}", (Index + 1).ToString().PadLeft(5),
             !hasSx ? empty : Start._x.ToString().TruncateAndFill(len, ' '),
             !hasSy ? empty : Start._y.ToString().TruncateAndFill(len, ' '),
             !hasSz ? empty : Start._z.ToString().TruncateAndFill(len, ' '),
@@ -557,10 +548,7 @@ namespace BrawlLib.Wii.Animations
         public bool hasNz;
         public bool hasFz;
 
-        public bool HasKeys
-        {
-            get { return hasPx || hasPy || hasPz || hasRx || hasRy || hasRz || hasAx || hasAy || hasAz || hasT || hasF || hasH || hasA || hasNz || hasFz; }
-        }
+        public bool HasKeys => hasPx || hasPy || hasPz || hasRx || hasRy || hasRz || hasAx || hasAy || hasAz || hasT || hasF || hasH || hasA || hasNz || hasFz;
 
         public void SetBools(int index, bool val)
         {
@@ -643,16 +631,24 @@ namespace BrawlLib.Wii.Animations
         public Vector3 GetRotation(SCN0CameraType type)
         {
             if (type == SCN0CameraType.Rotate)
+            {
                 return Rot;
+            }
             else //Aim - calculate rotation facing the position
+            {
                 return GetRotationMatrix(type).GetAngles();
+            }
         }
         public Matrix GetRotationMatrix(SCN0CameraType type)
         {
             if (type == SCN0CameraType.Rotate)
+            {
                 return Matrix.RotationMatrix(Rot);
+            }
             else //Aim - calculate rotation facing the position
+            {
                 return Matrix.RotationMatrix(Aim.LookatAngles(Pos) * Maths._rad2degf) * Matrix.RotationAboutZ(Twist);
+            }
         }
 
         public CameraAnimationFrame(Vector3 pos, Vector3 rot, Vector3 aim, float t, float f, float h, float a, float nz, float fz)
@@ -674,11 +670,11 @@ namespace BrawlLib.Wii.Animations
             hasA = hasNz = hasFz = false;
         }
         public float Index;
-        const int len = 6;
-        static string empty = new String('_', len);
+        private const int len = 6;
+        private static readonly string empty = new string('_', len);
         public override string ToString()
         {
-            return String.Format("[{0}] Pos=({1},{2},{3}), Rot=({4},{5},{6}), Aim=({7},{8},{9}), Twist={10}, FovY={11}, Height={12}, Aspect={13}, NearZ={14}, FarZ={15}", (Index + 1).ToString().PadLeft(5),
+            return string.Format("[{0}] Pos=({1},{2},{3}), Rot=({4},{5},{6}), Aim=({7},{8},{9}), Twist={10}, FovY={11}, Height={12}, Aspect={13}, NearZ={14}, FarZ={15}", (Index + 1).ToString().PadLeft(5),
             !hasPx ? empty : Pos._x.ToString().TruncateAndFill(len, ' '),
             !hasPy ? empty : Pos._y.ToString().TruncateAndFill(len, ' '),
             !hasPz ? empty : Pos._z.ToString().TruncateAndFill(len, ' '),

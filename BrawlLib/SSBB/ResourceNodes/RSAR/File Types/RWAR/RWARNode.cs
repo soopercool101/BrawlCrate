@@ -1,12 +1,12 @@
-using System;
 using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWARNode : RSAREntryNode
     {
-        internal RWAR* Header { get { return (RWAR*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.Unknown; } }
+        internal RWAR* Header => (RWAR*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.Unknown;
 
         public override bool OnInitialize()
         {
@@ -21,14 +21,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             RWARDataBlock* d = Header->Data;
 
             for (int i = 0; i < table->_entryCount; i++)
+            {
                 new RWAVNode().Initialize(this, d->GetEntry(table->Entries[i].waveFileRef), 0);
+            }
         }
 
         public override int OnCalculateSize(bool force)
         {
             int size = RWAR.Size + (12 + Children.Count * 12).Align(0x20) + RWARDataBlock.Size;
             foreach (RWAVNode n in Children)
+            {
                 size += n.WorkingUncompressed.Length;
+            }
+
             return size.Align(0x20);
         }
 
@@ -57,12 +62,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             VoidPtr addr = (VoidPtr)data + 0x20;
             foreach (RWAVNode n in Children)
             {
-                tabl->Entries[n.Index].waveFileRef = (uint)(addr - (VoidPtr)data);
+                tabl->Entries[n.Index].waveFileRef = (uint)(addr - data);
                 //Memory.Move(addr, n.WorkingSource.Address, (uint)n.WorkingSource.Length);
                 n.MoveRaw(addr, n.WorkingUncompressed.Length);
                 addr += (tabl->Entries[n.Index].waveFileSize = (uint)n.WorkingUncompressed.Length);
             }
-            data->_header._length = (int)(addr - (VoidPtr)data);
+            data->_header._length = addr - data;
             header->_dataLength = data->_header._length;
         }
 

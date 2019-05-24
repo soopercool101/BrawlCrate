@@ -11,25 +11,27 @@ namespace System.Windows.Forms
 
         private int _currentPage = 1;
         private CHRAnimationFrame _currentFrame = CHRAnimationFrame.Identity;
-        private NumericInputBox[] _boxes = new NumericInputBox[9];
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[9];
         private Panel panel1;
 
         private CHR0EntryNode _target;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CHR0EntryNode TargetSequence
         {
-            get { return _target; }
+            get => _target;
             set
             {
                 if (_target == value)
+                {
                     return;
+                }
 
                 _target = value;
                 UpdateTarget();
             }
         }
 
-        public AnimEditControl() 
+        public AnimEditControl()
         {
             InitializeComponent();
             _boxes[0] = numScaleX;
@@ -43,7 +45,9 @@ namespace System.Windows.Forms
             _boxes[8] = numTransZ;
 
             for (int i = 0; i < 9; i++)
+            {
                 _boxes[i].Tag = i;
+            }
         }
 
         private void UpdateTarget()
@@ -56,23 +60,29 @@ namespace System.Windows.Forms
                 {
                     CHRAnimationFrame ain, aout;
                     for (int x = 0; x < _target.FrameCount; x++)
+                    {
                         if ((ain = _target.GetAnimFrame(x)).HasKeys)
                         {
                             listKeyframes.Items.Add(ain);
                             aout = _target.GetAnimFrame(x, true);
                             if (!ain.Equals(aout))
+                            {
                                 listKeyframes.Items.Add(aout);
+                            }
                         }
+                    }
 
                     _numFrames = _target.FrameCount;
 
                     _currentPage = 0;
                     numFrame.Value = 1;
                     numFrame.Maximum = _numFrames;
-                    lblFrameCount.Text = String.Format("/ {0}", _numFrames);
+                    lblFrameCount.Text = string.Format("/ {0}", _numFrames);
                 }
                 else
+                {
                     numFrame.Value = 1;
+                }
             }
             listKeyframes.EndUpdate();
 
@@ -110,7 +120,9 @@ namespace System.Windows.Forms
                 numTransZ.Value = _currentFrame.Translation._z;
 
                 for (int i = 0; i < 9; i++)
+                {
                     UpdateBox(i);
+                }
 
                 btnPrev.Enabled = _currentPage > 0;
                 btnNext.Enabled = _currentPage < (_numFrames - 1);
@@ -123,17 +135,26 @@ namespace System.Windows.Forms
         {
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
+            {
                 if (((CHRAnimationFrame)listKeyframes.Items[i]).Index == index)
+                {
                     return i;
+                }
+            }
+
             return -1;
         }
 
         private void UpdateBox(int index)
         {
             if (_target.GetKeyframe(index, _currentPage) != null)
+            {
                 _boxes[index].BackColor = Color.Yellow;
+            }
             else
+            {
                 _boxes[index].BackColor = Color.White;
+            }
         }
 
         private unsafe void BoxChanged(object sender, EventArgs e)
@@ -157,14 +178,20 @@ namespace System.Windows.Forms
                         kf = (CHRAnimationFrame)listKeyframes.Items[kfIndex];
                         kf.SetBool(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 9) && float.IsNaN(pkf[x]); x++) ;
+                        for (x = 0; (x < 9) && float.IsNaN(pkf[x]); x++)
+                        {
+                            ;
+                        }
+
                         if (x == 9)
                         {
                             listKeyframes.Items.RemoveAt(kfIndex);
                             listKeyframes.SelectedIndex = -1;
                         }
                         else
+                        {
                             listKeyframes.Items[kfIndex] = kf;
+                        }
                     }
 
                     _target.RemoveKeyframe(index, _currentPage);
@@ -188,7 +215,10 @@ namespace System.Windows.Forms
                         pkf[index] = val;
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((CHRAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++) ;
+                        for (x = 0; (x < count) && (((CHRAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        {
+                            ;
+                        }
 
                         listKeyframes.Items.Insert(x, kf);
                         listKeyframes.SelectedIndex = x;
@@ -242,322 +272,322 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numScaleX = new System.Windows.Forms.NumericInputBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numRotX = new System.Windows.Forms.NumericInputBox();
-            this.numTransX = new System.Windows.Forms.NumericInputBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numScaleY = new System.Windows.Forms.NumericInputBox();
-            this.numTransY = new System.Windows.Forms.NumericInputBox();
-            this.numRotY = new System.Windows.Forms.NumericInputBox();
-            this.numScaleZ = new System.Windows.Forms.NumericInputBox();
-            this.numTransZ = new System.Windows.Forms.NumericInputBox();
-            this.numRotZ = new System.Windows.Forms.NumericInputBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numFrame = new System.Windows.Forms.NumericUpDown();
-            this.lblFrameCount = new System.Windows.Forms.Label();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.listKeyframes = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.numFrame)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            numScaleX = new System.Windows.Forms.NumericInputBox();
+            label4 = new System.Windows.Forms.Label();
+            numRotX = new System.Windows.Forms.NumericInputBox();
+            numTransX = new System.Windows.Forms.NumericInputBox();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            numScaleY = new System.Windows.Forms.NumericInputBox();
+            numTransY = new System.Windows.Forms.NumericInputBox();
+            numRotY = new System.Windows.Forms.NumericInputBox();
+            numScaleZ = new System.Windows.Forms.NumericInputBox();
+            numTransZ = new System.Windows.Forms.NumericInputBox();
+            numRotZ = new System.Windows.Forms.NumericInputBox();
+            label7 = new System.Windows.Forms.Label();
+            numFrame = new System.Windows.Forms.NumericUpDown();
+            lblFrameCount = new System.Windows.Forms.Label();
+            btnPrev = new System.Windows.Forms.Button();
+            btnNext = new System.Windows.Forms.Button();
+            listKeyframes = new System.Windows.Forms.ListBox();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            panel1 = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(numFrame)).BeginInit();
+            groupBox1.SuspendLayout();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(10, 51);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Scale";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.Location = new System.Drawing.Point(10, 51);
+            label1.Margin = new System.Windows.Forms.Padding(0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(70, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Scale";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(10, 89);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Translation";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.Location = new System.Drawing.Point(10, 89);
+            label2.Margin = new System.Windows.Forms.Padding(0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(70, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Translation";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(10, 70);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Rotation";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.Location = new System.Drawing.Point(10, 70);
+            label3.Margin = new System.Windows.Forms.Padding(0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(70, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Rotation";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numScaleX
             // 
-            this.numScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numScaleX.Location = new System.Drawing.Point(79, 51);
-            this.numScaleX.Margin = new System.Windows.Forms.Padding(0);
-            this.numScaleX.Name = "numScaleX";
-            this.numScaleX.Size = new System.Drawing.Size(70, 20);
-            this.numScaleX.TabIndex = 3;
-            this.numScaleX.Text = "0";
-            this.numScaleX.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleX.Location = new System.Drawing.Point(79, 51);
+            numScaleX.Margin = new System.Windows.Forms.Padding(0);
+            numScaleX.Name = "numScaleX";
+            numScaleX.Size = new System.Drawing.Size(70, 20);
+            numScaleX.TabIndex = 3;
+            numScaleX.Text = "0";
+            numScaleX.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // label4
             // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(79, 32);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "X";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label4.Location = new System.Drawing.Point(79, 32);
+            label4.Margin = new System.Windows.Forms.Padding(0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(70, 20);
+            label4.TabIndex = 4;
+            label4.Text = "X";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numRotX
             // 
-            this.numRotX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numRotX.Location = new System.Drawing.Point(79, 70);
-            this.numRotX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numRotX.Name = "numRotX";
-            this.numRotX.Size = new System.Drawing.Size(70, 20);
-            this.numRotX.TabIndex = 6;
-            this.numRotX.Text = "0";
-            this.numRotX.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numRotX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRotX.Location = new System.Drawing.Point(79, 70);
+            numRotX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numRotX.Name = "numRotX";
+            numRotX.Size = new System.Drawing.Size(70, 20);
+            numRotX.TabIndex = 6;
+            numRotX.Text = "0";
+            numRotX.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numTransX
             // 
-            this.numTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numTransX.Location = new System.Drawing.Point(79, 89);
-            this.numTransX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numTransX.Name = "numTransX";
-            this.numTransX.Size = new System.Drawing.Size(70, 20);
-            this.numTransX.TabIndex = 9;
-            this.numTransX.Text = "0";
-            this.numTransX.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransX.Location = new System.Drawing.Point(79, 89);
+            numTransX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numTransX.Name = "numTransX";
+            numTransX.Size = new System.Drawing.Size(70, 20);
+            numTransX.TabIndex = 9;
+            numTransX.Text = "0";
+            numTransX.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // label5
             // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(148, 32);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 20);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Y";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label5.Location = new System.Drawing.Point(148, 32);
+            label5.Margin = new System.Windows.Forms.Padding(0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(70, 20);
+            label5.TabIndex = 7;
+            label5.Text = "Y";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(217, 32);
-            this.label6.Margin = new System.Windows.Forms.Padding(0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 20);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Z";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label6.Location = new System.Drawing.Point(217, 32);
+            label6.Margin = new System.Windows.Forms.Padding(0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(70, 20);
+            label6.TabIndex = 8;
+            label6.Text = "Z";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numScaleY
             // 
-            this.numScaleY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numScaleY.Location = new System.Drawing.Point(148, 51);
-            this.numScaleY.Margin = new System.Windows.Forms.Padding(0);
-            this.numScaleY.Name = "numScaleY";
-            this.numScaleY.Size = new System.Drawing.Size(70, 20);
-            this.numScaleY.TabIndex = 4;
-            this.numScaleY.Text = "0";
-            this.numScaleY.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numScaleY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleY.Location = new System.Drawing.Point(148, 51);
+            numScaleY.Margin = new System.Windows.Forms.Padding(0);
+            numScaleY.Name = "numScaleY";
+            numScaleY.Size = new System.Drawing.Size(70, 20);
+            numScaleY.TabIndex = 4;
+            numScaleY.Text = "0";
+            numScaleY.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numTransY
             // 
-            this.numTransY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numTransY.Location = new System.Drawing.Point(148, 89);
-            this.numTransY.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numTransY.Name = "numTransY";
-            this.numTransY.Size = new System.Drawing.Size(70, 20);
-            this.numTransY.TabIndex = 10;
-            this.numTransY.Text = "0";
-            this.numTransY.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numTransY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransY.Location = new System.Drawing.Point(148, 89);
+            numTransY.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numTransY.Name = "numTransY";
+            numTransY.Size = new System.Drawing.Size(70, 20);
+            numTransY.TabIndex = 10;
+            numTransY.Text = "0";
+            numTransY.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numRotY
             // 
-            this.numRotY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numRotY.Location = new System.Drawing.Point(148, 70);
-            this.numRotY.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numRotY.Name = "numRotY";
-            this.numRotY.Size = new System.Drawing.Size(70, 20);
-            this.numRotY.TabIndex = 7;
-            this.numRotY.Text = "0";
-            this.numRotY.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numRotY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRotY.Location = new System.Drawing.Point(148, 70);
+            numRotY.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numRotY.Name = "numRotY";
+            numRotY.Size = new System.Drawing.Size(70, 20);
+            numRotY.TabIndex = 7;
+            numRotY.Text = "0";
+            numRotY.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numScaleZ
             // 
-            this.numScaleZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numScaleZ.Location = new System.Drawing.Point(217, 51);
-            this.numScaleZ.Margin = new System.Windows.Forms.Padding(0);
-            this.numScaleZ.Name = "numScaleZ";
-            this.numScaleZ.Size = new System.Drawing.Size(70, 20);
-            this.numScaleZ.TabIndex = 5;
-            this.numScaleZ.Text = "0";
-            this.numScaleZ.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numScaleZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleZ.Location = new System.Drawing.Point(217, 51);
+            numScaleZ.Margin = new System.Windows.Forms.Padding(0);
+            numScaleZ.Name = "numScaleZ";
+            numScaleZ.Size = new System.Drawing.Size(70, 20);
+            numScaleZ.TabIndex = 5;
+            numScaleZ.Text = "0";
+            numScaleZ.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numTransZ
             // 
-            this.numTransZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numTransZ.Location = new System.Drawing.Point(217, 89);
-            this.numTransZ.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numTransZ.Name = "numTransZ";
-            this.numTransZ.Size = new System.Drawing.Size(70, 20);
-            this.numTransZ.TabIndex = 11;
-            this.numTransZ.Text = "0";
-            this.numTransZ.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numTransZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransZ.Location = new System.Drawing.Point(217, 89);
+            numTransZ.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numTransZ.Name = "numTransZ";
+            numTransZ.Size = new System.Drawing.Size(70, 20);
+            numTransZ.TabIndex = 11;
+            numTransZ.Text = "0";
+            numTransZ.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numRotZ
             // 
-            this.numRotZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numRotZ.Location = new System.Drawing.Point(217, 70);
-            this.numRotZ.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numRotZ.Name = "numRotZ";
-            this.numRotZ.Size = new System.Drawing.Size(70, 20);
-            this.numRotZ.TabIndex = 8;
-            this.numRotZ.Text = "0";
-            this.numRotZ.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numRotZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRotZ.Location = new System.Drawing.Point(217, 70);
+            numRotZ.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numRotZ.Name = "numRotZ";
+            numRotZ.Size = new System.Drawing.Size(70, 20);
+            numRotZ.TabIndex = 8;
+            numRotZ.Text = "0";
+            numRotZ.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(37, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 20);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Frame:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label7.Location = new System.Drawing.Point(37, 5);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(61, 20);
+            label7.TabIndex = 15;
+            label7.Text = "Frame:";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numFrame
             // 
-            this.numFrame.Location = new System.Drawing.Point(104, 5);
-            this.numFrame.Minimum = new decimal(new int[] {
+            numFrame.Location = new System.Drawing.Point(104, 5);
+            numFrame.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numFrame.Name = "numFrame";
-            this.numFrame.Size = new System.Drawing.Size(58, 20);
-            this.numFrame.TabIndex = 0;
-            this.numFrame.Value = new decimal(new int[] {
+            numFrame.Name = "numFrame";
+            numFrame.Size = new System.Drawing.Size(58, 20);
+            numFrame.TabIndex = 0;
+            numFrame.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numFrame.ValueChanged += new System.EventHandler(this.numFrame_ValueChanged);
+            numFrame.ValueChanged += new System.EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
             // 
-            this.lblFrameCount.Location = new System.Drawing.Point(168, 5);
-            this.lblFrameCount.Name = "lblFrameCount";
-            this.lblFrameCount.Size = new System.Drawing.Size(45, 20);
-            this.lblFrameCount.TabIndex = 17;
-            this.lblFrameCount.Text = "/ 10";
-            this.lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrameCount.Location = new System.Drawing.Point(168, 5);
+            lblFrameCount.Name = "lblFrameCount";
+            lblFrameCount.Size = new System.Drawing.Size(45, 20);
+            lblFrameCount.TabIndex = 17;
+            lblFrameCount.Text = "/ 10";
+            lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnPrev
             // 
-            this.btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrev.Location = new System.Drawing.Point(219, 4);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(23, 23);
-            this.btnPrev.TabIndex = 1;
-            this.btnPrev.Text = "<";
-            this.btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Location = new System.Drawing.Point(219, 4);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new System.Drawing.Size(23, 23);
+            btnPrev.TabIndex = 1;
+            btnPrev.Text = "<";
+            btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += new System.EventHandler(btnPrev_Click);
             // 
             // btnNext
             // 
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(244, 4);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(23, 23);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = ">";
-            this.btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Location = new System.Drawing.Point(244, 4);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new System.Drawing.Size(23, 23);
+            btnNext.TabIndex = 2;
+            btnNext.Text = ">";
+            btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += new System.EventHandler(btnNext_Click);
             // 
             // listKeyframes
             // 
-            this.listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listKeyframes.FormattingEnabled = true;
-            this.listKeyframes.IntegralHeight = false;
-            this.listKeyframes.ItemHeight = 14;
-            this.listKeyframes.Location = new System.Drawing.Point(3, 16);
-            this.listKeyframes.Name = "listKeyframes";
-            this.listKeyframes.Size = new System.Drawing.Size(294, 76);
-            this.listKeyframes.TabIndex = 18;
-            this.listKeyframes.SelectedIndexChanged += new System.EventHandler(this.listKeyframes_SelectedIndexChanged);
+            listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
+            listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.FormattingEnabled = true;
+            listKeyframes.IntegralHeight = false;
+            listKeyframes.ItemHeight = 14;
+            listKeyframes.Location = new System.Drawing.Point(3, 16);
+            listKeyframes.Name = "listKeyframes";
+            listKeyframes.Size = new System.Drawing.Size(294, 76);
+            listKeyframes.TabIndex = 18;
+            listKeyframes.SelectedIndexChanged += new System.EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listKeyframes);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 95);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Keyframes";
+            groupBox1.Controls.Add(listKeyframes);
+            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(300, 95);
+            groupBox1.TabIndex = 21;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Keyframes";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.btnNext);
-            this.panel1.Controls.Add(this.numRotY);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.numTransY);
-            this.panel1.Controls.Add(this.btnPrev);
-            this.panel1.Controls.Add(this.numScaleX);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.numScaleY);
-            this.panel1.Controls.Add(this.lblFrameCount);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.numRotZ);
-            this.panel1.Controls.Add(this.numFrame);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.numTransZ);
-            this.panel1.Controls.Add(this.numRotX);
-            this.panel1.Controls.Add(this.numTransX);
-            this.panel1.Controls.Add(this.numScaleZ);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 95);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 117);
-            this.panel1.TabIndex = 23;
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(btnNext);
+            panel1.Controls.Add(numRotY);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(numTransY);
+            panel1.Controls.Add(btnPrev);
+            panel1.Controls.Add(numScaleX);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(numScaleY);
+            panel1.Controls.Add(lblFrameCount);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(numRotZ);
+            panel1.Controls.Add(numFrame);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(numTransZ);
+            panel1.Controls.Add(numRotX);
+            panel1.Controls.Add(numTransX);
+            panel1.Controls.Add(numScaleZ);
+            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Location = new System.Drawing.Point(0, 95);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(300, 117);
+            panel1.TabIndex = 23;
             // 
             // AnimEditControl
             // 
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
-            this.Name = "AnimEditControl";
-            this.Size = new System.Drawing.Size(300, 212);
-            ((System.ComponentModel.ISupportInitialize)(this.numFrame)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
+            Controls.Add(groupBox1);
+            Controls.Add(panel1);
+            Name = "AnimEditControl";
+            Size = new System.Drawing.Size(300, 212);
+            ((System.ComponentModel.ISupportInitialize)(numFrame)).EndInit();
+            groupBox1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
 
         }
 

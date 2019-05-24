@@ -1,16 +1,12 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using BrawlLib.SSBBTypes;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.Wii.Animations
 {
-    class CHR0JsonImporter
+    internal class CHR0JsonImporter
     {
         public static CHR0Node Convert(string input)
         {
@@ -25,23 +21,26 @@ namespace BrawlLib.Wii.Animations
     }
 
     [DataContract]
-    class BoneAnimation
+    internal class BoneAnimation
     {
         [DataMember]
-        int FrameCount;
+        private readonly int FrameCount;
         [DataMember]
-        bool Loop;
+        private readonly bool Loop;
         [DataMember]
-        ICollection<Bone> Bones;
+        private readonly ICollection<Bone> Bones;
 
         public CHR0Node ToCHR0Node()
         {
-            CHR0Node node = new CHR0Node();
-            node.Version = 4;
-            node.FrameCount = FrameCount;
-            node.Loop = Loop;
+            CHR0Node node = new CHR0Node
+            {
+                Version = 4,
+                FrameCount = FrameCount,
+                Loop = Loop
+            };
 
-            foreach (Bone bone in Bones) {
+            foreach (Bone bone in Bones)
+            {
                 bone.AddToNode(node);
             }
 
@@ -50,13 +49,13 @@ namespace BrawlLib.Wii.Animations
     }
 
     [DataContract]
-    class Bone
+    internal class Bone
     {
         [DataMember]
-        string Name;
+        private readonly string Name;
 
         [DataMember]
-        ICollection<Keyframe> Keyframes;
+        private readonly ICollection<Keyframe> Keyframes;
 
         public void AddToNode(CHR0Node parentNode)
         {
@@ -75,71 +74,70 @@ namespace BrawlLib.Wii.Animations
     }
 
     [DataContract]
-    class Keyframe
+    internal class Keyframe
     {
         [DataMember]
-        int Frame;
-
-        float?[] _transformations;
-
-        [DataMember]
-        float? ScaleX
-        {
-            get { return _transformations[0]; }
-            set { SetTransformation(0, value); }
-        }
-        [DataMember]
-        float? ScaleY
-        {
-            get { return _transformations[1]; }
-            set { SetTransformation(1, value); }
-        }
-        [DataMember]
-        float? ScaleZ
-        {
-            get { return _transformations[2]; }
-            set { SetTransformation(2, value); }
-        }
+        private readonly int Frame;
+        private float?[] _transformations;
 
         [DataMember]
-        float? RotationX
+        private float? ScaleX
         {
-            get { return _transformations[3]; }
-            set { SetTransformation(3, value); }
+            get => _transformations[0];
+            set => SetTransformation(0, value);
         }
         [DataMember]
-        float? RotationY
+        private float? ScaleY
         {
-            get { return _transformations[4]; }
-            set { SetTransformation(4, value); }
+            get => _transformations[1];
+            set => SetTransformation(1, value);
         }
         [DataMember]
-        float? RotationZ
+        private float? ScaleZ
         {
-            get { return _transformations[5]; }
-            set { SetTransformation(5, value); }
+            get => _transformations[2];
+            set => SetTransformation(2, value);
         }
 
         [DataMember]
-        float? TranslationX
+        private float? RotationX
         {
-            get { return _transformations[6]; }
-            set { SetTransformation(6, value); }
+            get => _transformations[3];
+            set => SetTransformation(3, value);
         }
         [DataMember]
-        float? TranslationY
+        private float? RotationY
         {
-            get { return _transformations[7]; }
-            set { SetTransformation(7, value); }
+            get => _transformations[4];
+            set => SetTransformation(4, value);
         }
         [DataMember]
-        float? TranslationZ
+        private float? RotationZ
         {
-            get { return _transformations[8]; }
-            set { SetTransformation(8, value); }
+            get => _transformations[5];
+            set => SetTransformation(5, value);
         }
 
-        void SetTransformation(int index, float? value)
+        [DataMember]
+        private float? TranslationX
+        {
+            get => _transformations[6];
+            set => SetTransformation(6, value);
+        }
+        [DataMember]
+        private float? TranslationY
+        {
+            get => _transformations[7];
+            set => SetTransformation(7, value);
+        }
+        [DataMember]
+        private float? TranslationZ
+        {
+            get => _transformations[8];
+            set => SetTransformation(8, value);
+        }
+
+        private void SetTransformation(int index, float? value)
         {
             if (_transformations == null)
             {

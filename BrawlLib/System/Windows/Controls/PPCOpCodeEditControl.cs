@@ -6,7 +6,7 @@ namespace System.Windows.Forms
     {
         public PPCOpCode _code;
         public bool _canFollowBranch;
-        bool _updating = false;
+        private bool _updating = false;
 
         public void SetCode(PPCOpCode code)
         {
@@ -28,19 +28,25 @@ namespace System.Windows.Forms
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             if (OnOpChanged != null)
+            {
                 OnOpChanged();
+            }
         }
 
         private void btnGoToBranch_Click(object sender, EventArgs e)
         {
             if (OnBranchFollowed != null)
+            {
                 OnBranchFollowed();
+            }
         }
 
         private void cboOpCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
         }
     }
 }

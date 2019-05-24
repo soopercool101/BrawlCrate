@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BrawlLib.IO;
+using BrawlLib.Modeling;
 using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Graphics;
+using BrawlLib.Wii.Models;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using BrawlLib.Modeling;
-using BrawlLib.Wii.Graphics;
 using System.Windows.Forms;
-using BrawlLib.Wii.Models;
-using BrawlLib.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0MaterialRefNode : MDL0EntryNode
     {
-        internal MDL0TextureRef* Header { get { return (MDL0TextureRef*)_origSource.Address; } set { _origSource.Address = value; } }
-        public override bool AllowDuplicateNames { get { return true; } }
+        internal MDL0TextureRef* Header { get => (MDL0TextureRef*)_origSource.Address; set => _origSource.Address = value; }
+        public override bool AllowDuplicateNames => true;
 
         [Browsable(false)]
-        public MDL0MaterialNode Material { get { return Parent as MDL0MaterialNode; } }
+        public MDL0MaterialNode Material => Parent as MDL0MaterialNode;
 
         public MDL0MaterialRefNode()
         {
@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get { return _texture != null ? _texture.Name : base.Name; }
+            get => _texture != null ? _texture.Name : base.Name;
             set { Texture = value; base.Name = value; }
         }
 
@@ -62,23 +62,33 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (Material.Objects != null)
                 {
                     foreach (MDL0ObjectNode n in Material.Objects)
+                    {
                         if (n.Weighted)
                         {
                             allsinglebinds = false;
                             if (!n._manager.HasTextureMatrix[Index])
+                            {
                                 return false;
+                            }
                         }
+                    }
                 }
-                else return false;
+                else
+                {
+                    return false;
+                }
 
                 if (allsinglebinds)
+                {
                     return false;
+                }
 
                 return true;
             }
             set
             {
                 foreach (MDL0ObjectNode n in Material.Objects)
+                {
                     if (n.Weighted)
                     {
                         n._manager.HasTextureMatrix[Index] = value;
@@ -86,8 +96,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                         n.SignalPropertyChange();
 
                         if (n._vertexNode.Format != WiiVertexComponentType.Float)
+                        {
                             n._vertexNode._forceRebuild = n._vertexNode._forceFloat = value;
+                        }
                     }
+                }
+
                 SignalPropertyChange();
             }
         }
@@ -95,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Coordinates"), TypeConverter(typeof(Vector2StringConverter))]
         public Vector2 Scale
         {
-            get { return _bindState.Scale; }
+            get => _bindState.Scale;
             set
             {
                 if (!CheckIfMetal())
@@ -109,7 +123,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Coordinates")]
         public float Rotation
         {
-            get { return _bindState.Rotate; }
+            get => _bindState.Rotate;
             set
             {
                 if (!CheckIfMetal())
@@ -123,7 +137,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Coordinates"), TypeConverter(typeof(Vector2StringConverter))]
         public Vector2 Translation
         {
-            get { return _bindState.Translate; }
+            get => _bindState.Translate;
             set
             {
                 if (!CheckIfMetal())
@@ -138,33 +152,33 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Matrix Effect")]
         public sbyte SCN0RefCamera
         {
-            get { return _texMatrixEffect.SCNCamera; }
+            get => _texMatrixEffect.SCNCamera;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMatrixEffect.SCNCamera = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("Texture Matrix Effect")]
         public sbyte SCN0RefLight
         {
-            get { return _texMatrixEffect.SCNLight; }
+            get => _texMatrixEffect.SCNLight;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMatrixEffect.SCNLight = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("Texture Matrix Effect")]
         public MappingMethod MapMode
         {
-            get { return _texMatrixEffect.MapMode; }
+            get => _texMatrixEffect.MapMode;
             set
             {
                 if (!CheckIfMetal())
@@ -178,7 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Matrix Effect"), TypeConverter(typeof(Matrix43StringConverter)), Browsable(false)]
         public Matrix34 EffectMatrix
         {
-            get { return _texMatrixEffect.TextureMatrix; }
+            get => _texMatrixEffect.TextureMatrix;
             set
             {
                 if (!CheckIfMetal())
@@ -188,56 +202,56 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-        
+
         [Category("XF TexGen Flags")]
         public TexProjection Projection
         {
-            get { return _texMtxFlags.Projection; }
+            get => _texMtxFlags.Projection;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMtxFlags.Projection = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("XF TexGen Flags")]
         public TexInputForm InputForm
         {
-            get { return _texMtxFlags.InputForm; }
+            get => _texMtxFlags.InputForm;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMtxFlags.InputForm = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("XF TexGen Flags")]
         public TexTexgenType Type
         {
-            get { return _texMtxFlags.TexGenType; }
+            get => _texMtxFlags.TexGenType;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMtxFlags.TexGenType = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("XF TexGen Flags")]
         public TexSourceRow Coordinates
         {
-            get { return _texMtxFlags.SourceRow; }
+            get => _texMtxFlags.SourceRow;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMtxFlags.SourceRow = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                     UpdateCurrentControl();
                 }
             }
@@ -245,39 +259,39 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("XF TexGen Flags")]
         public int EmbossSource
         {
-            get { return _texMtxFlags.EmbossSource; }
+            get => _texMtxFlags.EmbossSource;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMtxFlags.EmbossSource = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("XF TexGen Flags")]
         public int EmbossLight
         {
-            get { return _texMtxFlags.EmbossLight; }
+            get => _texMtxFlags.EmbossLight;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _texMtxFlags.EmbossLight = value;
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
         [Category("XF TexGen Flags")]
         public bool Normalize
         {
-            get { return _dualTexFlags._normalEnable != 0; }
+            get => _dualTexFlags._normalEnable != 0;
             set
             {
                 if (!CheckIfMetal())
                 {
                     _dualTexFlags._normalEnable = (byte)(value ? 1 : 0);
-                    SignalPropertyChange(); 
+                    SignalPropertyChange();
                 }
             }
         }
@@ -285,7 +299,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public MatWrapMode UWrapMode
         {
-            get { return (MatWrapMode)_uWrap; }
+            get => (MatWrapMode)_uWrap;
             set
             {
                 if (!CheckIfMetal())
@@ -299,7 +313,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public MatWrapMode VWrapMode
         {
-            get { return (MatWrapMode)_vWrap; }
+            get => (MatWrapMode)_vWrap;
             set
             {
                 if (!CheckIfMetal())
@@ -313,7 +327,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public MatTextureMinFilter MinFilter
         {
-            get { return (MatTextureMinFilter)_minFltr; }
+            get => (MatTextureMinFilter)_minFltr;
             set
             {
                 if (!CheckIfMetal())
@@ -327,7 +341,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public MatTextureMagFilter MagFilter
         {
-            get { return (MatTextureMagFilter)_magFltr; }
+            get => (MatTextureMagFilter)_magFltr;
             set
             {
                 if (!CheckIfMetal())
@@ -341,7 +355,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public float LODBias
         {
-            get { return _lodBias; }
+            get => _lodBias;
             set
             {
                 if (!CheckIfMetal())
@@ -355,7 +369,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public MatAnisotropy MaxAnisotropy
         {
-            get { return (MatAnisotropy)_maxAniso; }
+            get => (MatAnisotropy)_maxAniso;
             set
             {
                 if (!CheckIfMetal())
@@ -368,7 +382,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public bool ClampBias
         {
-            get { return _clampBias; }
+            get => _clampBias;
             set
             {
                 if (!CheckIfMetal())
@@ -381,7 +395,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public bool TexelInterpolate
         {
-            get { return _texelInterp; }
+            get => _texelInterp;
             set
             {
                 if (!CheckIfMetal())
@@ -399,16 +413,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public MDL0TextureNode TextureNode
         {
-            get { return _texture; }
+            get => _texture;
             set
             {
                 if (_texture == value)
+                {
                     return;
+                }
+
                 if (_texture != null)
                 {
                     _texture._references.Remove(this);
                     if (_texture._references.Count == 0)
+                    {
                         _texture.Remove();
+                    }
                 }
                 if ((_texture = value) != null)
                 {
@@ -417,20 +436,26 @@ namespace BrawlLib.SSBB.ResourceNodes
                     Name = _texture.Name;
 
                     if (_texture.Source == null)
+                    {
                         _texture.GetSource();
+                    }
 
                     if (_texture.Source is TEX0Node && ((TEX0Node)_texture.Source).HasPalette)
+                    {
                         PaletteNode = Model.FindOrCreatePalette(_texture.Name);
+                    }
                     else
+                    {
                         PaletteNode = null;
+                    }
                 }
             }
         }
         [Browsable(true), TypeConverter(typeof(DropDownListTextures))]
         public string Texture
         {
-            get { return _texture == null ? null : _texture.Name; }
-            set { TextureNode = String.IsNullOrEmpty(value) || Model == null ? null : Model.FindOrCreateTexture(value); SignalPropertyChange(); UpdateCurrentControl(); }
+            get => _texture == null ? null : _texture.Name;
+            set { TextureNode = string.IsNullOrEmpty(value) || Model == null ? null : Model.FindOrCreateTexture(value); SignalPropertyChange(); UpdateCurrentControl(); }
         }
         #endregion
 
@@ -439,26 +464,33 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public MDL0TextureNode PaletteNode
         {
-            get { return _palette; }
+            get => _palette;
             set
             {
                 if (_palette == value)
+                {
                     return;
+                }
+
                 if (_palette != null)
                 {
                     _palette._references.Remove(this);
                     if (_palette._references.Count == 0)
+                    {
                         _palette.Remove();
+                    }
                 }
                 if ((_palette = value) != null)
+                {
                     _palette._references.Add(this);
+                }
             }
         }
         [Browsable(true), TypeConverter(typeof(DropDownListTextures))]
         public string Palette
         {
-            get { return _palette == null ? null : _palette.Name; }
-            set { PaletteNode = String.IsNullOrEmpty(value) ? null : Model.FindOrCreatePalette(value); SignalPropertyChange(); UpdateCurrentControl(); }
+            get => _palette == null ? null : _palette.Name;
+            set { PaletteNode = string.IsNullOrEmpty(value) ? null : Model.FindOrCreatePalette(value); SignalPropertyChange(); UpdateCurrentControl(); }
         }
         #endregion
 
@@ -468,15 +500,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 if ((int)Coordinates >= (int)TexSourceRow.TexCoord0)
+                {
                     return (int)Coordinates - (int)TexSourceRow.TexCoord0;
+                }
                 else
+                {
                     return -1 - (int)Coordinates;
+                }
             }
         }
         public bool CheckIfMetal()
         {
             if (Material != null && Material.CheckIfMetal())
+            {
                 return true;
+            }
 
             return false;
         }
@@ -497,13 +535,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (header->_texOffset != 0)
             {
                 if (_replaced && header->_texOffset >= Parent.WorkingUncompressed.Length)
+                {
                     Name = null;
+                }
                 else
                 {
                     if (_replaced)
+                    {
                         Name = header->TextureName;
+                    }
                     else
+                    {
                         _name = header->TextureName;
+                    }
+
                     _texture = Model.FindOrCreateTexture(_name);
                     _texture._references.Add(this);
                 }
@@ -511,7 +556,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (header->_pltOffset != 0)
             {
                 if (_replaced && header->_pltOffset >= Parent.WorkingUncompressed.Length)
+                {
                     _palette = null;
+                }
                 else
                 {
                     string name = header->PaletteName;
@@ -554,7 +601,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             table.Add(Name);
             if (_palette != null)
+            {
                 table.Add(_palette.Name);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -593,30 +642,39 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_maxAniso = _maxAniso;
             header->_clampBias = (byte)(_clampBias ? 1 : 0);
             header->_texelInterp = (byte)(_texelInterp ? 1 : 0);
-            header->_pad = (short)0;
+            header->_pad = 0;
         }
 
         internal void Bind(int prog)
         {
-            if (!String.IsNullOrEmpty(PAT0Texture))
+            if (!string.IsNullOrEmpty(PAT0Texture))
             {
                 if (!PAT0Textures.ContainsKey(PAT0Texture))
-                    PAT0Textures[PAT0Texture] = new MDL0TextureNode(PAT0Texture) { Source = null, _palette = !String.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceNodes.ResourceType.PLT0) as PLT0Node : null };
+                {
+                    PAT0Textures[PAT0Texture] = new MDL0TextureNode(PAT0Texture) { Source = null, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceNodes.ResourceType.PLT0) as PLT0Node : null };
+                }
+
                 MDL0TextureNode t = PAT0Textures[PAT0Texture];
                 t.Bind();
                 t.Prepare(this, prog, PAT0Palette);
             }
             else if (_texture != null)
+            {
                 _texture.Prepare(this, prog);
+            }
         }
 
         internal override void Unbind()
         {
             if (_texture != null)
+            {
                 _texture.Unbind();
-            
+            }
+
             foreach (MDL0TextureNode t in PAT0Textures.Values)
+            {
                 t.Unbind();
+            }
         }
 
         public TextureFrameState _frameState, _bindState;
@@ -630,15 +688,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     float* f = (float*)v;
                     for (int i = 0; i < 5; i++)
+                    {
                         if (node.Keyframes[i]._keyCount > 0)
+                        {
                             f[i] = node.GetFrameValue(i, index - 1);
+                        }
+                    }
+
                     _frameState.MatrixMode = matrixMode;
                     _frameState.CalcTransforms();
                 }
             }
         }
 
-        public Dictionary<string, MDL0TextureNode> PAT0Textures = new Dictionary<string, MDL0TextureNode>(); 
+        public Dictionary<string, MDL0TextureNode> PAT0Textures = new Dictionary<string, MDL0TextureNode>();
         public string PAT0Texture, PAT0Palette;
         internal void ApplyPAT0Texture(PAT0TextureNode node, float index)
         {
@@ -653,7 +716,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                         continue;
                     }
                     if (prev._frame <= index - 1 && next._frame > index - 1)
+                    {
                         break;
+                    }
+
                     prev = next;
                 }
 
@@ -663,11 +729,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     TEX0Node texture = RootNode.FindChildByType(PAT0Texture, true, ResourceNodes.ResourceType.TEX0) as TEX0Node;
                     if (texture != null)
-                        PAT0Textures[PAT0Texture] = new MDL0TextureNode(texture.Name) { Source = texture, _palette = !String.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceNodes.ResourceType.PLT0) as PLT0Node : null };
+                    {
+                        PAT0Textures[PAT0Texture] = new MDL0TextureNode(texture.Name) { Source = texture, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceNodes.ResourceType.PLT0) as PLT0Node : null };
+                    }
                 }
                 return;
             }
-            else PAT0Texture = PAT0Palette = null;
+            else
+            {
+                PAT0Texture = PAT0Palette = null;
+            }
         }
 
         public void SetEffectMatrix(SCN0Node node, ModelPanelViewport v, float frame)
@@ -694,16 +765,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
             else
+            {
                 _effectMatrix = Matrix.Identity;
+            }
         }
 
-        Matrix _effectMatrix = Matrix.Identity;
+        private Matrix _effectMatrix = Matrix.Identity;
         public Matrix GetTransform(bool useEffectMtx)
         {
             if (!useEffectMtx || _effectMatrix == Matrix.Identity)
+            {
                 return _frameState._transform;
+            }
             else
+            {
                 return _frameState._transform * _effectMatrix;
+            }
         }
 
         public void Default()
@@ -747,14 +824,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool MoveUp()
         {
             if (Parent == null)
+            {
                 return false;
+            }
 
             if (CheckIfMetal())
+            {
                 return false;
+            }
 
             int index = Index - 1;
             if (index < 0)
+            {
                 return false;
+            }
 
             Parent.Children.Remove(this);
             Parent.Children.Insert(index, this);
@@ -766,14 +849,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool MoveDown()
         {
             if (Parent == null)
+            {
                 return false;
+            }
 
             if (CheckIfMetal())
+            {
                 return false;
+            }
 
             int index = Index + 1;
             if (index >= Parent.Children.Count)
+            {
                 return false;
+            }
 
             Parent.Children.Remove(this);
             Parent.Children.Insert(index, this);

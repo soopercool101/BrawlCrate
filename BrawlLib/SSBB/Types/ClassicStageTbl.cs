@@ -13,11 +13,12 @@ namespace BrawlLib.SSBB.Types
         public AllstarFighterData _opponent2;
         public AllstarFighterData _opponent3;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ClassicStageBlockStageData {
+    public unsafe struct ClassicStageBlockStageData
+    {
         public const int Size = 20;
 
         public bint _unknown00;
@@ -26,6 +27,6 @@ namespace BrawlLib.SSBB.Types
         public bint _stageID3;
         public bint _stageID4;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

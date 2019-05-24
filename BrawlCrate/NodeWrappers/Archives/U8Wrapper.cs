@@ -1,9 +1,9 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
-using System.ComponentModel;
 using BrawlLib.SSBBTypes;
-using BrawlLib;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -12,7 +12,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static U8Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -69,15 +69,9 @@ namespace BrawlCrate.NodeWrappers
         }
         #endregion
 
-        public override string ExportFilter
-        {
-            get
-            {
-                return "U8 Archive (*.arc)|*.arc|" +
+        public override string ExportFilter => "U8 Archive (*.arc)|*.arc|" +
                     "Compressed U8 Archive (*.szs)|*.szs|" +
                     "Archive Pair (*.pair)|*.pair";
-            }
-        }
 
         public U8Wrapper() { ContextMenuStrip = _menu; }
 
@@ -86,7 +80,7 @@ namespace BrawlCrate.NodeWrappers
             U8FolderNode node = new U8FolderNode() { Name = _resource.FindName("NewFolder") };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -96,7 +90,7 @@ namespace BrawlCrate.NodeWrappers
             ARCNode node = new ARCNode() { Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -106,7 +100,7 @@ namespace BrawlCrate.NodeWrappers
             BRRESNode node = new BRRESNode() { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -116,7 +110,7 @@ namespace BrawlCrate.NodeWrappers
             MSBinNode node = new MSBinNode() { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -124,23 +118,26 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            string path;
-            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out path) > 0)
+            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out string path) > 0)
+            {
                 NewARC().Replace(path);
+            }
         }
         public void ImportBRES()
         {
-            string path;
-            if (Program.OpenFile(FileFilters.BRES, out path) > 0)
+            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
+            {
                 NewBRES().Replace(path);
+            }
         }
         public void ImportMSBin()
         {
-            string path;
-            if (Program.OpenFile(FileFilters.MSBin, out path) > 0)
+            if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
+            {
                 NewMSBin().Replace(path);
+            }
         }
-        
+
         public override void OnExport(string outPath, int filterIndex)
         {
             switch (filterIndex)
@@ -159,31 +156,41 @@ namespace BrawlCrate.NodeWrappers
         {
             string path = Program.ChooseFolder();
             if (path == null)
+            {
                 return;
+            }
 
             bool hasModels = false;
             bool hasTextures = false;
             foreach (ResourceNode r in _resource.Children)
             {
                 if (hasModels && hasTextures)
+                {
                     break;
+                }
+
                 if (r is BRRESNode)
                 {
                     foreach (BRESGroupNode e in r.Children)
                     {
                         if (e.Type == BRESGroupNode.BRESGroupType.Textures)
+                        {
                             hasTextures = true;
+                        }
                         else if (e.Type == BRESGroupNode.BRESGroupType.Models)
+                        {
                             hasModels = true;
+                        }
+
                         if (hasModels && hasTextures)
+                        {
                             break;
+                        }
                     }
                 }
                 else if (r is U8FolderNode)
                 {
-                    bool hasModelsTemp = false;
-                    bool hasTexturesTemp = false;
-                    searchU8Folder((U8FolderNode)r, out hasModelsTemp, out hasTexturesTemp);
+                    searchU8Folder((U8FolderNode)r, out bool hasModelsTemp, out bool hasTexturesTemp);
                     hasModels = (hasModels || hasModelsTemp);
                     hasTextures = (hasTextures || hasTexturesTemp);
                 }
@@ -197,18 +204,26 @@ namespace BrawlCrate.NodeWrappers
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog();
 
                 if (dialog.ShowDialog() == DialogResult.OK)
+                {
                     extensionTEX0 = dialog.SelectedExtension;
+                }
                 else
+                {
                     return;
+                }
             }
             if (hasModels)
             {
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog(true);
 
                 if (dialog.ShowDialog() == DialogResult.OK)
+                {
                     extensionMDL0 = dialog.SelectedExtension;
+                }
                 else
+                {
                     return;
+                }
             }
             ((U8Node)_resource).ExtractToFolder(path, extensionTEX0, extensionMDL0);
         }
@@ -220,24 +235,32 @@ namespace BrawlCrate.NodeWrappers
             foreach (ResourceNode r in u8.Children)
             {
                 if (hasModels && hasTextures)
+                {
                     break;
+                }
+
                 if (r is BRRESNode)
                 {
                     foreach (BRESGroupNode e in r.Children)
                     {
                         if (e.Type == BRESGroupNode.BRESGroupType.Textures)
+                        {
                             hasTextures = true;
+                        }
                         else if (e.Type == BRESGroupNode.BRESGroupType.Models)
+                        {
                             hasModels = true;
+                        }
+
                         if (hasModels && hasTextures)
+                        {
                             break;
+                        }
                     }
                 }
                 else if (r is U8FolderNode)
                 {
-                    bool hasModelsTemp = false;
-                    bool hasTexturesTemp = false;
-                    searchU8Folder((U8FolderNode)r, out hasModelsTemp, out hasTexturesTemp);
+                    searchU8Folder((U8FolderNode)r, out bool hasModelsTemp, out bool hasTexturesTemp);
                     hasModels = (hasModels || hasModelsTemp);
                     hasTextures = (hasTextures || hasTexturesTemp);
                 }
@@ -248,9 +271,9 @@ namespace BrawlCrate.NodeWrappers
         {
             string path = Program.ChooseFolder();
             if (path == null)
+            {
                 return;
-
-            ((ARCNode)_resource).ReplaceFromFolder(path);
+            } ((ARCNode)_resource).ReplaceFromFolder(path);
         }
     }
 }

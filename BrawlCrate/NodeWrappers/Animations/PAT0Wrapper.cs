@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     public class PAT0Wrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static PAT0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -53,7 +53,7 @@ namespace BrawlCrate.NodeWrappers
 
         public PAT0Wrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.PAT0; } }
+        public override string ExportFilter => FileFilters.PAT0;
 
         public void NewEntry() { ((PAT0Node)_resource).CreateEntry(); }
         private void Merge()
@@ -63,14 +63,14 @@ namespace BrawlCrate.NodeWrappers
         private void Append()
         {
             ((PAT0Node)_resource).Append();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
         private void Resize()
         {
             ((PAT0Node)_resource).Resize();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
@@ -80,7 +80,7 @@ namespace BrawlCrate.NodeWrappers
     public class PAT0EntryWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static PAT0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -127,7 +127,7 @@ namespace BrawlCrate.NodeWrappers
     public class PAT0TextureWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static PAT0TextureWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -167,7 +167,7 @@ namespace BrawlCrate.NodeWrappers
     public class PAT0TextureEntryWrapper : GenericWrapper
     {
         #region Menu
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static PAT0TextureEntryWrapper()
         {
             _menu = new ContextMenuStrip();

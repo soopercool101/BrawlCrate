@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Platform;
-using OpenTK.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace BrawlLib.OpenGL
 {
@@ -11,12 +11,12 @@ namespace BrawlLib.OpenGL
 
     public unsafe class TKContext : IDisposable
     {
-        IGraphicsContext _context;
+        private IGraphicsContext _context;
         private IWindowInfo _winInfo = null;
-        public IWindowInfo WindowInfo { get { return _winInfo; } }
+        public IWindowInfo WindowInfo => _winInfo;
 
         //These provide a way to manage which context is in use to avoid errors
-        public static List<TKContext> BoundContexts { get { return _boundContexts == null ? _boundContexts = new List<TKContext>() : _boundContexts; } }
+        public static List<TKContext> BoundContexts => _boundContexts == null ? _boundContexts = new List<TKContext>() : _boundContexts;
         public static List<TKContext> _boundContexts;
         public static TKContext CurrentContext = null;
 
@@ -24,10 +24,15 @@ namespace BrawlLib.OpenGL
         public static T FindOrCreate<T>(string name, GLCreateHandler<T> handler)
         {
             if (CurrentContext == null)
+            {
                 return default(T);
+            }
 
             if (CurrentContext._states.ContainsKey(name))
+            {
                 return (T)CurrentContext._states[name];
+            }
+
             T obj = handler();
             CurrentContext._states[name] = obj;
             return obj;
@@ -40,9 +45,13 @@ namespace BrawlLib.OpenGL
                 foreach (object o in _states.Values)
                 {
                     if (o is GLDisplayList)
+                    {
                         (o as GLDisplayList).Delete();
+                    }
                     else if (o is GLTexture)
+                    {
                         (o as GLTexture).Delete();
+                    }
                 }
             }
             catch { }
@@ -74,28 +83,35 @@ namespace BrawlLib.OpenGL
                 _shadersSupported = !(_versionMax < 2 || (_versionMax == 2 && _versionMin < 1));
                 _anyContextInitialized = true;
             }
-            
+
             BoundContexts.Add(this);
         }
 
         public delegate void ContextChangedEventHandler(bool isCurrent);
         public event ContextChangedEventHandler ContextChanged;
         public event EventHandler ResetOccured;
-        
+
         public void Dispose()
         {
             Release();
             if (_context != null)
+            {
                 _context.Dispose();
+            }
+
             if (BoundContexts.Contains(this))
+            {
                 BoundContexts.Remove(this);
+            }
         }
 
         public void CheckErrors()
-        { 
+        {
             ErrorCode code = GL.GetError();
             if (code == ErrorCode.NoError)
+            {
                 return;
+            }
 
             //throw new Exception(code.ToString());
             Reset();
@@ -110,15 +126,21 @@ namespace BrawlLib.OpenGL
                 {
                     //Release the current context if it exists
                     if (CurrentContext != null)
+                    {
                         CurrentContext.Release();
+                    }
 
                     //Make this context the current one
                     CurrentContext = this;
                     if (!_context.IsCurrent)
+                    {
                         _context.MakeCurrent(WindowInfo);
+                    }
 
                     if (ContextChanged != null)
+                    {
                         ContextChanged(true);
+                    }
                 }
             }
             catch //(Exception x)
@@ -127,7 +149,7 @@ namespace BrawlLib.OpenGL
                 Reset();
             }
         }
-        public void Swap() 
+        public void Swap()
         {
             try
             {
@@ -135,7 +157,9 @@ namespace BrawlLib.OpenGL
                     _context != null &&
                     _context.IsCurrent &&
                     !_context.IsDisposed)
+                {
                     _context.SwapBuffers();
+                }
             }
             catch //(Exception x)
             {
@@ -144,13 +168,15 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public bool Resetting { get { return _resetting; } }
+        public bool Resetting => _resetting;
         private bool _resetting = false;
 
         public void Reset()
         {
             if (_resetting) //Prevent a possible infinite loop
+            {
                 return;
+            }
 
             _resetting = true;
             _window.Reset();
@@ -163,7 +189,9 @@ namespace BrawlLib.OpenGL
             Update();
 
             if (ResetOccured != null)
+            {
                 ResetOccured(this, EventArgs.Empty);
+            }
 
             _resetting = false;
         }
@@ -175,21 +203,31 @@ namespace BrawlLib.OpenGL
                 _context.MakeCurrent(null);
 
                 if (ContextChanged != null)
+                {
                     ContextChanged(false);
+                }
             }
         }
         public void Update()
         {
             if (CurrentContext == this)
-                _context.Update(WindowInfo); 
+            {
+                _context.Update(WindowInfo);
+            }
         }
 
         public static void InvalidateModelPanels(IRenderedObject obj)
         {
             if (_boundContexts != null)
-                foreach (var x in _boundContexts)
+            {
+                foreach (TKContext x in _boundContexts)
+                {
                     if (x._window is ModelPanel/* && ((ModelPanel)x._window)._renderList.Contains(obj)*/)
+                    {
                         x._window.Invalidate();
+                    }
+                }
+            }
         }
 
         public static unsafe void DrawWireframeBox(Box value) { DrawWireframeBox(value.Min, value.Max); }
@@ -257,7 +295,7 @@ namespace BrawlLib.OpenGL
             GL.End();
         }
         public static unsafe void DrawInvertedBox(Box value) { DrawInvertedBox(value.Min, value.Max); }
-        public unsafe static void DrawInvertedBox(Vector3 p1, Vector3 p2)
+        public static unsafe void DrawInvertedBox(Vector3 p1, Vector3 p2)
         {
             GL.Begin(BeginMode.QuadStrip);
 
@@ -336,7 +374,9 @@ namespace BrawlLib.OpenGL
 
             float angle = 0.0f;
             for (int i = 0; i < 360; i++, angle = i * Maths._deg2radf)
+            {
                 GL.Vertex2(Math.Cos(angle), Math.Sin(angle));
+            }
 
             GL.End();
 
@@ -458,7 +498,9 @@ namespace BrawlLib.OpenGL
 
             float angle = 0.0f;
             for (int i = 0; i < 361; i++, angle = i * Maths._deg2radf)
+            {
                 GL.Vertex2(Math.Cos(angle), Math.Sin(angle));
+            }
 
             GL.End();
 
@@ -487,13 +529,19 @@ namespace BrawlLib.OpenGL
         public static void DrawSphere(Vector3 center, float radius, uint precision)
         {
             if (radius < 0.0f)
+            {
                 radius = -radius;
+            }
 
             if (radius == 0.0f)
+            {
                 throw new DivideByZeroException("DrawSphere: Radius cannot be zero.");
-            
+            }
+
             if (precision == 0)
+            {
                 throw new DivideByZeroException("DrawSphere: Precision of 8 or greater is required.");
+            }
 
             float halfPI = (float)(Math.PI * 0.5);
             float oneThroughPrecision = 1.0f / precision;

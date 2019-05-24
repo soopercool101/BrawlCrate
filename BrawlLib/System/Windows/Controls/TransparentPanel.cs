@@ -4,7 +4,7 @@
     {
         public TransparentPanel() { SetStyle(ControlStyles.UserPaint, true); }
 
-        bool _transparent = true;
+        private readonly bool _transparent = true;
 
         protected override CreateParams CreateParams
         {
@@ -16,16 +16,23 @@
                     createParams.ExStyle |= 0x00000020; // WS_EX_TRANSPARENT
                     return createParams;
                 }
-                else return base.CreateParams;
+                else
+                {
+                    return base.CreateParams;
+                }
             }
         }
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == (int)0x84)
+            if (m.Msg == 0x84)
+            {
                 m.Result = (IntPtr)(-1);
+            }
             else
+            {
                 base.WndProc(ref m);
+            }
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)

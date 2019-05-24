@@ -1,21 +1,21 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
 using BrawlLib.SSBBTypes;
-using System.ComponentModel;
 using BrawlLib.Wii.Textures;
-using System.Drawing.Imaging;
-using BrawlLib.Imaging;
+using System;
+using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class PLT0Node : BRESEntryNode, IColorSource
     {
-        internal PLT0v1* Header1 { get { return (PLT0v1*)WorkingUncompressed.Address; } }
-        internal PLT0v3* Header3 { get { return (PLT0v3*)WorkingUncompressed.Address; } }
-        internal BRESCommonHeader* Header { get { return (BRESCommonHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.PLT0; } }
-        public override int DataAlign { get { return 0x20; } }
-        public override int[] SupportedVersions { get { return new int[] { 1, 3 }; } }
+        internal PLT0v1* Header1 => (PLT0v1*)WorkingUncompressed.Address;
+        internal PLT0v3* Header3 => (PLT0v3*)WorkingUncompressed.Address;
+        internal BRESCommonHeader* Header => (BRESCommonHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.PLT0;
+        public override int DataAlign => 0x20;
+        public override int[] SupportedVersions => new int[] { 1, 3 };
 
         public PLT0Node() { _version = 1; }
 
@@ -25,13 +25,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public ColorPalette Palette
         {
-            get { return _palette == null ? _palette = TextureConverter.DecodePalette(Header1) : _palette; }
+            get => _palette == null ? _palette = TextureConverter.DecodePalette(Header1) : _palette;
             set { _palette = value; SignalPropertyChange(); }
         }
         [Category("G3D Palette")]
-        public int Colors { get { return Palette.Entries.Length; } }// set { _numColors = value; } }
+        public int Colors => Palette.Entries.Length; // set { _numColors = value; } }
         [Category("G3D Palette")]
-        public WiiPaletteFormat Format { get { return _format; } set { _format = value; SignalPropertyChange(); } }
+        public WiiPaletteFormat Format { get => _format; set { _format = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
@@ -40,12 +40,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             _palette = null;
 
             if ((_name == null) && (Header1->_stringOffset != 0))
+            {
                 _name = Header1->ResourceString;
+            }
 
             _format = Header1->PaletteFormat;
 
             if (_version == 3)
+            {
                 (_userEntries = new UserDataCollection()).Read(Header3->UserData);
+            }
 
             return false;
         }
@@ -55,10 +59,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             table.Add(Name);
 
             if (_version == 3)
+            {
                 _userEntries.GetStrings(table);
+            }
 
-            if (!String.IsNullOrEmpty(_originalPath))
+            if (!string.IsNullOrEmpty(_originalPath))
+            {
                 table.Add(_originalPath);
+            }
         }
 
         public override int OnCalculateSize(bool force)
@@ -80,9 +88,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.PostProcess(bresAddress, dataAddress, dataLength, stringTable);
 
             PLT0v1* header = (PLT0v1*)dataAddress;
-            header->ResourceStringAddress = stringTable[Name] + 4; 
-            if (!String.IsNullOrEmpty(_originalPath))
+            header->ResourceStringAddress = stringTable[Name] + 4;
+            if (!string.IsNullOrEmpty(_originalPath))
+            {
                 header->OrigPathAddress = stringTable[_originalPath] + 4;
+            }
         }
 
         #region IColorSource Members
@@ -93,7 +103,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public string PrimaryColorName(int id) { return null; }
         [Browsable(false)]
-        public int TypeCount { get { return 1; } }
+        public int TypeCount => 1;
         [Browsable(false)]
         public int ColorCount(int id) { return Palette.Entries.Length; }
         public ARGBPixel GetColor(int index, int id) { return (ARGBPixel)Palette.Entries[index]; }

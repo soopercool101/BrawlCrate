@@ -1,26 +1,26 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARPlayerInfoNode : RSAREntryNode
     {
-        internal INFOPlayerInfoEntry* Header { get { return (INFOPlayerInfoEntry*)WorkingUncompressed.Address; } }
+        internal INFOPlayerInfoEntry* Header => (INFOPlayerInfoEntry*)WorkingUncompressed.Address;
 
 #if DEBUG
         [Browsable(true), Category("DEBUG")]
 #else
         [Browsable(false)]
 #endif
-        public override int StringId { get { return Header == null ? -1 : (int)Header->_stringId; } }
+        public override int StringId => Header == null ? -1 : (int)Header->_stringId;
 
-        public override ResourceType ResourceType { get { return ResourceType.RSARType; } }
+        public override ResourceType ResourceType => ResourceType.RSARType;
 
         private byte _playableSoundCount;
 
         [Category("Player Info")]
-        public byte PlayableSoundCount { get { return _playableSoundCount; } set { _playableSoundCount = value; SignalPropertyChange(); } }
+        public byte PlayableSoundCount { get => _playableSoundCount; set { _playableSoundCount = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {

@@ -11,7 +11,7 @@ namespace System.Windows.Forms
             InitializeComponent();
         }
 
-        RSARGroupNode _targetGroup;
+        private RSARGroupNode _targetGroup;
         public void LoadGroup(RSARGroupNode group)
         {
             if ((_targetGroup = group) != null)
@@ -84,19 +84,27 @@ namespace System.Windows.Forms
             {
                 RSARExtFileNode m = file as RSARExtFileNode;
                 if (File.Exists(m.FullExtPath))
+                {
                     Process.Start(m.FullExtPath);
+                }
                 else
+                {
                     using (SoundPathChanger dlg = new SoundPathChanger())
                     {
                         RSARNode rsar = m.RSARNode;
                         dlg.FilePath = m.FullExtPath;
                         dlg.dlg.InitialDirectory = rsar._origPath.Substring(0, rsar._origPath.LastIndexOf('\\'));
                         if (dlg.ShowDialog() == DialogResult.OK)
+                        {
                             m.FullExtPath = dlg.FilePath;
+                        }
                     }
+                }
             }
             else
+            {
                 new EditRSARFileDialog().ShowDialog(this, file);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RSARHeader
+    internal unsafe struct RSARHeader
     {
         public const int Size = 0x40;
         public const uint Tag = 0x52415352;
@@ -18,7 +18,7 @@ namespace BrawlLib.SSBBTypes
         public bint _infoLength;
         public bint _fileOffset;
         public bint _fileLength;
-        private int _pad1, _pad2, _pad3, _pad4, _pad5, _pad6;
+        private readonly int _pad1, _pad2, _pad3, _pad4, _pad5, _pad6;
 
         public void Set(int symbLen, int infoLen, int fileLen, byte vMinor)
         {
@@ -40,11 +40,11 @@ namespace BrawlLib.SSBBTypes
             _header._length = offset + fileLen;
         }
 
-        private VoidPtr Address { get { fixed (RSARHeader* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (RSARHeader* ptr = &this) { return ptr; } } }
 
-        public SYMBHeader* SYMBBlock { get { return (SYMBHeader*)_header.Entries[0].Address; } }
-        public INFOHeader* INFOBlock { get { return (INFOHeader*)_header.Entries[1].Address; } }
-        public FILEHeader* FILEBlock { get { return (FILEHeader*)_header.Entries[2].Address; } }
+        public SYMBHeader* SYMBBlock => (SYMBHeader*)_header.Entries[0].Address;
+        public INFOHeader* INFOBlock => (INFOHeader*)_header.Entries[1].Address;
+        public FILEHeader* FILEBlock => (FILEHeader*)_header.Entries[2].Address;
     }
 
     #region SYMB
@@ -70,23 +70,26 @@ namespace BrawlLib.SSBBTypes
             _maskOffset1 = _maskOffset2 = _maskOffset3 = _maskOffset4 = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         //public VoidPtr StringData { get { return Address + 8 + _stringOffset; } }
-        public SYMBMaskHeader* MaskData1 { get { return (SYMBMaskHeader*)(Address + 8 + _maskOffset1); } }
-        public SYMBMaskHeader* MaskData2 { get { return (SYMBMaskHeader*)(Address + 8 + _maskOffset2); } }
-        public SYMBMaskHeader* MaskData3 { get { return (SYMBMaskHeader*)(Address + 8 + _maskOffset3); } }
-        public SYMBMaskHeader* MaskData4 { get { return (SYMBMaskHeader*)(Address + 8 + _maskOffset4); } }
+        public SYMBMaskHeader* MaskData1 => (SYMBMaskHeader*)(Address + 8 + _maskOffset1);
+        public SYMBMaskHeader* MaskData2 => (SYMBMaskHeader*)(Address + 8 + _maskOffset2);
+        public SYMBMaskHeader* MaskData3 => (SYMBMaskHeader*)(Address + 8 + _maskOffset3);
+        public SYMBMaskHeader* MaskData4 => (SYMBMaskHeader*)(Address + 8 + _maskOffset4);
 
-        public uint StringCount { get { return StringOffsets[-1]; } }
-        public buint* StringOffsets { get { return (buint*)(Address + 8 + _stringOffset + 4); } }
+        public uint StringCount => StringOffsets[-1];
+        public buint* StringOffsets => (buint*)(Address + 8 + _stringOffset + 4);
 
         //Gets names of file paths seperated by an underscore
         public string GetStringEntry(int index)
         {
             if (index < 0)
+            {
                 return "<null>";
-            return new String(GetStringEntryAddr(index));
+            }
+
+            return new string(GetStringEntryAddr(index));
         }
         public sbyte* GetStringEntryAddr(int index)
         {
@@ -102,8 +105,8 @@ namespace BrawlLib.SSBBTypes
         public bint _rootId; //index of the first entry non leafed entry with the lowest bit value
         public bint _numEntries;
 
-        private VoidPtr Address { get { fixed (SYMBMaskHeader* ptr = &this)return ptr; } }
-        public SYMBMaskEntry* Entries { get { return (SYMBMaskEntry*)(Address + 8); } }
+        private VoidPtr Address { get { fixed (SYMBMaskHeader* ptr = &this) { return ptr; } } }
+        public SYMBMaskEntry* Entries => (SYMBMaskEntry*)(Address + 8);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -129,14 +132,18 @@ namespace BrawlLib.SSBBTypes
             _index = index;
         }
 
-        private SYMBMaskEntry* Address { get { fixed (SYMBMaskEntry* ptr = &this) return ptr; } }
+        private SYMBMaskEntry* Address { get { fixed (SYMBMaskEntry* ptr = &this) { return ptr; } } }
 
         public SYMBMaskHeader* Parent
         {
             get
             {
                 SYMBMaskEntry* entry = Address;
-                while (entry->_flags != 1 && entry[-1]._flags != 1) entry--;
+                while (entry->_flags != 1 && entry[-1]._flags != 1)
+                {
+                    entry--;
+                }
+
                 return (SYMBMaskHeader*)((VoidPtr)(--entry) - 8);
             }
         }
@@ -150,13 +157,15 @@ namespace BrawlLib.SSBBTypes
 
             //Loop over indicies and add them.  This seems to be roughly how the file is normally built, as it has the same resulting leaf-node-leaf-node pattern
             foreach (int id in indices)
+            {
                 AddToTrie(entries, maskHeader, id, header);
+            }
         }
 
         private static bool CheckBit(string val, int bit)
         {
             //Returns true if the given bit in the string is 1 and false if the bit is 0
-            return (((int)val[bit / 8]) & ((1 << 7) >> (bit % 8))) != 0;
+            return (val[bit / 8] & ((1 << 7) >> (bit % 8))) != 0;
         }
 
         //Lookup table to compute the 
@@ -190,11 +199,16 @@ namespace BrawlLib.SSBBTypes
             string value = table->GetStringEntry(id);
 
             //String.IsNullOrEmpty(value)
-            if ((value ?? "") == "") throw new ArgumentException("String is null or whitespace");
+            if ((value ?? "") == "")
+            {
+                throw new ArgumentException("String is null or whitespace");
+            }
 
             SYMBMaskEntry search = trie[head->_rootId];
-            List<int> path = new List<int>();
-            path.Add(head->_rootId);
+            List<int> path = new List<int>
+            {
+                head->_rootId
+            };
 
             //Find the string that matches the current string in the trie.  Needs to be done in order to determine where the important bit is in the string
             while (search._flags == 0)
@@ -223,7 +237,10 @@ namespace BrawlLib.SSBBTypes
             string searchVal = table->GetStringEntry(search._stringId);
 
             //Can't add duplicate strings
-            if (searchVal == value) throw new ArgumentException("Duplicate string");
+            if (searchVal == value)
+            {
+                throw new ArgumentException("Duplicate string");
+            }
 
             bool mismatch = false;
             int minLength = Math.Min(searchVal.Length, value.Length);
@@ -428,21 +445,21 @@ namespace BrawlLib.SSBBTypes
     #region INFO
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOHeader
+    internal unsafe struct INFOHeader
     {
         public const uint Tag = 0x4F464E49;
 
         public SSBBEntryHeader _header;
         public RuintCollection _collection;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public RuintList* Sounds { get { return (RuintList*)_collection[0]; } } //INFOSoundEntry
-        public RuintList* Banks { get { return (RuintList*)_collection[1]; } } //INFOBankEntry
-        public RuintList* PlayerInfo { get { return (RuintList*)_collection[2]; } } //INFOPlayerInfoEntry
-        public RuintList* Files { get { return (RuintList*)_collection[3]; } } //INFOFileEntry
-        public RuintList* Groups { get { return (RuintList*)_collection[4]; } } //INFOGroupHeader
-        public INFOFooter* Footer { get { return (INFOFooter*)_collection[5]; } }
+        public RuintList* Sounds => (RuintList*)_collection[0];  //INFOSoundEntry
+        public RuintList* Banks => (RuintList*)_collection[1];  //INFOBankEntry
+        public RuintList* PlayerInfo => (RuintList*)_collection[2];  //INFOPlayerInfoEntry
+        public RuintList* Files => (RuintList*)_collection[3];  //INFOFileEntry
+        public RuintList* Groups => (RuintList*)_collection[4];  //INFOGroupHeader
+        public INFOFooter* Footer => (INFOFooter*)_collection[5];
 
         public INFOSoundEntry* GetSound(int i) { return (INFOSoundEntry*)(_collection.Address + (*Sounds)[i]); }
         public INFOBankEntry* GetBank(int i) { return (INFOBankEntry*)(_collection.Address + (*Banks)[i]); }
@@ -452,7 +469,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOFooter
+    internal unsafe struct INFOFooter
     {
         public const int Size = 0x10;
 
@@ -469,7 +486,7 @@ namespace BrawlLib.SSBBTypes
 
     #region Sounds
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOSoundEntry
+    internal unsafe struct INFOSoundEntry
     {
         public const int Size = 0x2C;
 
@@ -546,7 +563,7 @@ namespace BrawlLib.SSBBTypes
 
     #region Banks
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOBankEntry
+    internal unsafe struct INFOBankEntry
     {
         public const int Size = 0xC;
 
@@ -558,7 +575,7 @@ namespace BrawlLib.SSBBTypes
 
     #region Player Info
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOPlayerInfoEntry
+    internal unsafe struct INFOPlayerInfoEntry
     {
         public const int Size = 0x10;
 
@@ -583,7 +600,7 @@ namespace BrawlLib.SSBBTypes
     //When a file is referenced by a group, it is copied to each group's header and data block.
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOFileHeader
+    internal unsafe struct INFOFileHeader
     {
         public const int Size = 0x1C;
 
@@ -595,24 +612,24 @@ namespace BrawlLib.SSBBTypes
 
         public RuintList* GetList(VoidPtr baseAddr) { return (RuintList*)(baseAddr + _listOffset); }
 
-        public string GetPath(VoidPtr baseAddr) { return (_stringOffset == 0) ? null : new String((sbyte*)(baseAddr + _stringOffset)); }
+        public string GetPath(VoidPtr baseAddr) { return (_stringOffset == 0) ? null : new string((sbyte*)(baseAddr + _stringOffset)); }
     }
 
     //Attached to a RuintList from INFOSetHeader
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOFileEntry
+    internal unsafe struct INFOFileEntry
     {
         public const int Size = 0x8;
 
         public bint _groupId;
         public bint _index;
 
-        public int GroupId { get { return _groupId; } set { _groupId = value; } }
-        public int Index { get { return _index; } set { _index = value; } }
+        public int GroupId { get => _groupId; set => _groupId = value; }
+        public int Index { get => _index; set => _index = value; }
 
         public override string ToString()
         {
-            return String.Format("[{0}, {1}]", GroupId, Index);
+            return string.Format("[{0}, {1}]", GroupId, Index);
         }
     }
 
@@ -629,7 +646,7 @@ namespace BrawlLib.SSBBTypes
     //This means that the headers/data can simply be copied without changing anything.
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOGroupHeader
+    internal unsafe struct INFOGroupHeader
     {
         public const int Size = 0x28;
 
@@ -646,7 +663,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct INFOGroupEntry
+    internal unsafe struct INFOGroupEntry
     {
         public const int Size = 0x18;
 
@@ -659,7 +676,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return String.Format("[{0:X}]", (uint)_fileId);
+            return string.Format("[{0:X}]", (uint)_fileId);
         }
     }
 
@@ -670,7 +687,7 @@ namespace BrawlLib.SSBBTypes
     #region FILE
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct FILEHeader //Holds all files directly after this header
+    internal unsafe struct FILEHeader //Holds all files directly after this header
     {
         public const uint Tag = 0x454C4946;
         public const int Size = 0x20;

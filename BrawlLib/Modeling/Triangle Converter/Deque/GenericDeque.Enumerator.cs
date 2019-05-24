@@ -7,7 +7,7 @@ namespace System.Collections.Generic
         [Serializable()]
         private class Enumerator : IEnumerator<T>
         {
-            private Deque<T> owner;
+            private readonly Deque<T> owner;
 
             private Node currentNode;
 
@@ -15,7 +15,7 @@ namespace System.Collections.Generic
 
             private bool moveResult = false;
 
-            private long version;
+            private readonly long version;
 
             // A value indicating whether the enumerator has been disposed.
             private bool disposed = false;
@@ -24,7 +24,7 @@ namespace System.Collections.Generic
             {
                 this.owner = owner;
                 currentNode = owner.front;
-                this.version = owner.version;
+                version = owner.version;
             }
 
             #region IEnumerator Members
@@ -33,11 +33,11 @@ namespace System.Collections.Generic
             {
                 #region Require
 
-                if(disposed)
+                if (disposed)
                 {
-                    throw new ObjectDisposedException(this.GetType().Name);
+                    throw new ObjectDisposedException(GetType().Name);
                 }
-                else if(version != owner.version)
+                else if (version != owner.version)
                 {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
@@ -55,11 +55,11 @@ namespace System.Collections.Generic
                 {
                     #region Require
 
-                    if(disposed)
+                    if (disposed)
                     {
-                        throw new ObjectDisposedException(this.GetType().Name);
+                        throw new ObjectDisposedException(GetType().Name);
                     }
-                    else if(!moveResult)
+                    else if (!moveResult)
                     {
                         throw new InvalidOperationException(
                             "The enumerator is positioned before the first " +
@@ -76,11 +76,11 @@ namespace System.Collections.Generic
             {
                 #region Require
 
-                if(disposed)
+                if (disposed)
                 {
-                    throw new ObjectDisposedException(this.GetType().Name);
+                    throw new ObjectDisposedException(GetType().Name);
                 }
-                else if(version != owner.version)
+                else if (version != owner.version)
                 {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
@@ -88,7 +88,7 @@ namespace System.Collections.Generic
 
                 #endregion
 
-                if(currentNode != null)
+                if (currentNode != null)
                 {
                     current = currentNode.Value;
                     currentNode = currentNode.Next;
@@ -113,11 +113,11 @@ namespace System.Collections.Generic
                 {
                     #region Require
 
-                    if(disposed)
+                    if (disposed)
                     {
-                        throw new ObjectDisposedException(this.GetType().Name);
+                        throw new ObjectDisposedException(GetType().Name);
                     }
-                    else if(!moveResult)
+                    else if (!moveResult)
                     {
                         throw new InvalidOperationException(
                             "The enumerator is positioned before the first " +

@@ -1,10 +1,10 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using BrawlLib.Wii.Textures;
-using BrawlLib.Imaging;
-using System.Drawing;
+﻿using BrawlLib.Imaging;
 using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Textures;
+using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
@@ -12,8 +12,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class REFTNode : NW4RArcEntryNode
     {
-        internal REFT* Header { get { return (REFT*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.REFT; } }
+        internal REFT* Header => (REFT*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.REFT;
 
         public override bool OnInitialize()
         {
@@ -22,12 +22,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFT* header = Header;
 
             if (_name == null)
+            {
                 _name = header->IdString;
+            }
 
             return header->Table->_entries > 0;
         }
 
-        int _tableLen = 0;
+        private int _tableLen = 0;
         public override int OnCalculateSize(bool force)
         {
             int size = 0x60;
@@ -45,7 +47,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFTypeObjectTable* table = Header->Table;
             REFTypeObjectEntry* Entry = table->First;
             for (int i = 0; i < table->_entries; i++, Entry = Entry->Next)
-                new REFTEntryNode() { _name = Entry->Name, _offset = (int)Entry->DataOffset, _length = (int)Entry->DataLength + 0x20 }.Initialize(this, new DataSource((byte*)table->Address + Entry->DataOffset, (int)Entry->DataLength + 0x20));
+            {
+                new REFTEntryNode() { _name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength + 0x20 }.Initialize(this, new DataSource((byte*)table->Address + Entry->DataOffset, Entry->DataLength + 0x20));
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -86,65 +90,69 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class REFTEntryNode : ResourceNode, IImageSource, IColorSource
     {
-        internal REFTImageHeader* Header { get { return (REFTImageHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.REFTImage; } }
+        internal REFTImageHeader* Header => (REFTImageHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.REFTImage;
 
         public int _offset;
         public int _length;
 
         private WiiPixelFormat _format;
         private WiiPaletteFormat _pltFormat;
-        int numColors, _imgLen, _pltLen;
-        int _width, _height;
-        uint _unk;
-        int _lod;
-        float _lodBias;
+        private int numColors, _imgLen, _pltLen;
+        private int _width, _height;
+        private uint _unk;
+        private int _lod;
+        private float _lodBias;
         internal uint _minFltr;
         internal uint _magFltr;
 
         [Browsable(false)]
-        public bool HasPlt { get { return Header->_colorCount > 0; } }
+        public bool HasPlt => Header->_colorCount > 0;
 
         //[Category("REFT Image")]
         //public uint Unknown { get { return _unk; } }
         [Category("REFT Image")]
-        public WiiPixelFormat TextureFormat { get { return _format; } }
+        public WiiPixelFormat TextureFormat => _format;
         [Category("REFT Image")]
-        public WiiPaletteFormat PaletteFormat { get { return _pltFormat; } }
+        public WiiPaletteFormat PaletteFormat => _pltFormat;
         [Category("REFT Image")]
-        public int Colors { get { return numColors; } }
+        public int Colors => numColors;
         [Category("REFT Image")]
-        public int Width { get { return _width; } }
+        public int Width => _width;
         [Category("REFT Image")]
-        public int Height { get { return _height; } }
+        public int Height => _height;
         [Category("REFT Image")]
-        public int ImageLength { get { return _imgLen; } }
+        public int ImageLength => _imgLen;
         [Category("REFT Image")]
-        public int PaletteLength { get { return _pltLen; } }
+        public int PaletteLength => _pltLen;
         [Category("REFT Image")]
-        public int LevelOfDetail { get { return _lod; } }
+        public int LevelOfDetail => _lod;
         [Category("REFT Image")]
-        public MatTextureMinFilter MinFilter { get { return (MatTextureMinFilter)_minFltr; } set { _minFltr = (uint)value; SignalPropertyChange(); } }
+        public MatTextureMinFilter MinFilter { get => (MatTextureMinFilter)_minFltr; set { _minFltr = (uint)value; SignalPropertyChange(); } }
         [Category("REFT Image")]
-        public MatTextureMagFilter MagFilter { get { return (MatTextureMagFilter)_magFltr; } set { _magFltr = (uint)value; SignalPropertyChange(); } }
+        public MatTextureMagFilter MagFilter { get => (MatTextureMagFilter)_magFltr; set { _magFltr = (uint)value; SignalPropertyChange(); } }
         [Category("REFT Image")]
-        public float LODBias { get { return _lodBias; } set { _lodBias = value; SignalPropertyChange(); } }
+        public float LODBias { get => _lodBias; set { _lodBias = value; SignalPropertyChange(); } }
 
         [Category("REFT Entry")]
-        public int REFTOffset { get { return _offset; } }
+        public int REFTOffset => _offset;
         [Category("REFT Entry")]
-        public int DataLength { get { return _length; } }
+        public int DataLength => _length;
 
         [Browsable(false)]
-        public int ImageCount { get { return LevelOfDetail; } }
+        public int ImageCount => LevelOfDetail;
         public Bitmap GetImage(int index)
         {
             try
             {
                 if (HasPlt == true)
+                {
                     return TextureConverter.DecodeIndexed((byte*)Header + 0x20, Width, Height, Palette, index + 1, _format);
+                }
                 else
+                {
                     return TextureConverter.Decode((byte*)Header + 0x20, Width, Height, index + 1, _format);
+                }
             }
             catch
             {
@@ -156,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public ColorPalette Palette
         {
-            get { return HasPlt ? _palette == null ? _palette = TextureConverter.DecodePalette((VoidPtr)((byte*)Header + 0x20 + Header->_imagelen), Colors, _pltFormat) : _palette : null; }
+            get => HasPlt ? _palette == null ? _palette = TextureConverter.DecodePalette((byte*)Header + 0x20 + Header->_imagelen, Colors, _pltFormat) : _palette : null;
             set { _palette = value; SignalPropertyChange(); }
         }
 
@@ -168,7 +176,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public string PrimaryColorName(int id) { return null; }
         [Browsable(false)]
-        public int TypeCount { get { return 1; } }
+        public int TypeCount => 1;
         [Browsable(false)]
         public int ColorCount(int id) { return Palette != null ? Palette.Entries.Length : 0; }
         public ARGBPixel GetColor(int index, int id) { return Palette != null ? (ARGBPixel)Palette.Entries[index] : new ARGBPixel(); }
@@ -214,9 +222,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             FileMap tMap;
             if (HasPlt)
+            {
                 tMap = TextureConverter.Get(_format).EncodeREFTTextureIndexed(bmp, LevelOfDetail, Palette.Entries.Length, PaletteFormat, QuantizationAlgorithm.MedianCut);
+            }
             else
+            {
                 tMap = TextureConverter.Get(_format).EncodeREFTTexture(bmp, LevelOfDetail, WiiPaletteFormat.IA8);
+            }
+
             ReplaceRaw(tMap);
         }
 
@@ -224,17 +237,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             string ext = Path.GetExtension(fileName);
             Bitmap bmp;
-            if (String.Equals(ext, ".tga", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(ext, ".tga", StringComparison.OrdinalIgnoreCase))
+            {
                 bmp = TGA.FromFile(fileName);
+            }
             else if (
-                String.Equals(ext, ".png", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".tif", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".tiff", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".bmp", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".jpg", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".jpeg", StringComparison.OrdinalIgnoreCase) ||
-                String.Equals(ext, ".gif", StringComparison.OrdinalIgnoreCase))
+                string.Equals(ext, ".png", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".tif", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".tiff", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".bmp", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".jpg", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".jpeg", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(ext, ".gif", StringComparison.OrdinalIgnoreCase))
+            {
                 bmp = (Bitmap)Bitmap.FromFile(fileName);
+            }
             else
             {
                 base.Replace(fileName);
@@ -242,25 +259,59 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             using (Bitmap b = bmp)
+            {
                 Replace(b);
+            }
         }
 
         public override void Export(string outPath)
         {
             if (outPath.EndsWith(".png"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Png);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Png);
+                }
+            }
             else if (outPath.EndsWith(".tga"))
-                using (Bitmap bmp = GetImage(0)) bmp.SaveTGA(outPath);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.SaveTGA(outPath);
+                }
+            }
             else if (outPath.EndsWith(".tiff") || outPath.EndsWith(".tif"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Tiff);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Tiff);
+                }
+            }
             else if (outPath.EndsWith(".bmp"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Bmp);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Bmp);
+                }
+            }
             else if (outPath.EndsWith(".jpg") || outPath.EndsWith(".jpeg"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Jpeg);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Jpeg);
+                }
+            }
             else if (outPath.EndsWith(".gif"))
-                using (Bitmap bmp = GetImage(0)) bmp.Save(outPath, ImageFormat.Gif);
+            {
+                using (Bitmap bmp = GetImage(0))
+                {
+                    bmp.Save(outPath, ImageFormat.Gif);
+                }
+            }
             else
+            {
                 base.Export(outPath);
+            }
         }
     }
 }

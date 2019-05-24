@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib;
-using System.Windows.Forms;
-using System.ComponentModel;
 using BrawlLib.Wii.Animations;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -14,7 +14,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu, _multiSelectMenu;
+        private static readonly ContextMenuStrip _menu, _multiSelectMenu;
         static CHR0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -63,15 +63,15 @@ namespace BrawlCrate.NodeWrappers
 
         public CHR0Wrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.CHR0Export; } }
-        public override string ImportFilter { get { return FileFilters.CHR0Import; } }
+        public override string ExportFilter => FileFilters.CHR0Export;
+        public override string ImportFilter => FileFilters.CHR0Import;
 
-        public ContextMenuStrip MultiSelectMenuStrip { get { return _multiSelectMenu; } }
+        public ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
 
         public void NewBone()
         {
             CHR0EntryNode node = ((CHR0Node)_resource).CreateEntry();
-            BaseWrapper res = this.FindResource(node, false);
+            BaseWrapper res = FindResource(node, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
@@ -79,7 +79,7 @@ namespace BrawlCrate.NodeWrappers
         public void Merge()
         {
             ((CHR0Node)_resource).MergeWith();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
@@ -87,15 +87,15 @@ namespace BrawlCrate.NodeWrappers
         public void Resize()
         {
             ((CHR0Node)_resource).Resize();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
-        
+
         public void Append()
         {
             ((CHR0Node)_resource).Append();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
@@ -112,7 +112,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu, _multiSelectMenu;
+        private static readonly ContextMenuStrip _menu, _multiSelectMenu;
         static CHR0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -142,7 +142,9 @@ namespace BrawlCrate.NodeWrappers
             {
                 InterpolationEditor e = f._interpolationEditor;
                 if (e != null)
+                {
                     e.SetTarget(_resource as IKeyframeSource);
+                }
             }
         }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -163,7 +165,7 @@ namespace BrawlCrate.NodeWrappers
         public CHR0EntryWrapper(IWin32Window owner) { _owner = owner; ContextMenuStrip = _menu; }
         public CHR0EntryWrapper() { _owner = null; ContextMenuStrip = _menu; }
 
-        public ContextMenuStrip MultiSelectMenuStrip { get { return _multiSelectMenu; } }
+        public ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
 
         private static void EditAll(IEnumerable<BaseWrapper> wrappers)
         {

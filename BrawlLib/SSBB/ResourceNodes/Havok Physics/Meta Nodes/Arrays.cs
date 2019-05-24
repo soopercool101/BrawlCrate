@@ -49,7 +49,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             hkClassMember.Type tempType = _memberType;
                             if (tempType == hkClassMember.Type.TYPE_POINTER)
+                            {
                                 tempType = hkClassMember.Type.TYPE_STRUCT; //Pointer to class object
+                            }
 
                             instance._isZero = false;
                             instance._name = "Entry" + i;
@@ -69,7 +71,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int size = GetSize();
             foreach (HavokEntryNode e in Children)
+            {
                 size += e.CalculateSize(force);
+            }
+
             return size;
         }
 
@@ -84,7 +89,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 HavokClassNode c2 = c;
                 if (c is cmPointerNode && c.Children.Count > 0)
+                {
                     c2 = c.Children[0] as HavokClassNode;
+                }
 
                 if (c2 is HavokMetaObjectNode || c2 is hkClassNode)
                 {
@@ -96,7 +103,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         writer.WriteEndElement();
                     }
                     else
+                    {
                         writer.WriteString(HavokXML.GetObjectName(classNodes, c2));
+                    }
                 }
                 else if (c2 is cmStringNode)
                 {
@@ -105,7 +114,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     writer.WriteEndElement();
                 }
                 else
+                {
                     c2.WriteParams(writer, classNodes);
+                }
 
                 writer.WriteString(" ");
             }
@@ -127,13 +138,13 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public override int GetSize() { return 12; }
 
-        hkArray.FlagsEnum _flags;
-        int _capacity;
+        private hkArray.FlagsEnum _flags;
+        private int _capacity;
 
         [Category("Array")]
-        public hkArray.FlagsEnum Flags { get { return _flags; } }
+        public hkArray.FlagsEnum Flags => _flags;
         [Category("Array")]
-        public int Capacity { get { return _capacity; } }
+        public int Capacity => _capacity;
 
         public override bool OnInitialize()
         {

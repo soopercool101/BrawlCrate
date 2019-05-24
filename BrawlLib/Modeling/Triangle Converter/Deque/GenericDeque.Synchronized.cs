@@ -1,7 +1,7 @@
 namespace System.Collections.Generic
 {
     public partial class Deque<T>
-	{
+    {
         #region SynchronizedDeque Class
 
         // Implements a synchronization wrapper around a deque.
@@ -13,10 +13,10 @@ namespace System.Collections.Generic
             #region Fields
 
             // The wrapped deque.
-            private Deque<T> deque;
+            private readonly Deque<T> deque;
 
             // The object to lock on.
-            private object root;
+            private readonly object root;
 
             #endregion
 
@@ -26,7 +26,7 @@ namespace System.Collections.Generic
             {
                 #region Require
 
-                if(deque == null)
+                if (deque == null)
                 {
                     throw new ArgumentNullException("deque");
                 }
@@ -34,7 +34,7 @@ namespace System.Collections.Generic
                 #endregion
 
                 this.deque = deque;
-                this.root = deque.SyncRoot;
+                root = deque.SyncRoot;
             }
 
             #endregion
@@ -43,7 +43,7 @@ namespace System.Collections.Generic
 
             public override void Clear()
             {
-                lock(root)
+                lock (root)
                 {
                     deque.Clear();
                 }
@@ -51,7 +51,7 @@ namespace System.Collections.Generic
 
             public override bool Contains(T item)
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.Contains(item);
                 }
@@ -59,7 +59,7 @@ namespace System.Collections.Generic
 
             public override void PushFront(T item)
             {
-                lock(root)
+                lock (root)
                 {
                     deque.PushFront(item);
                 }
@@ -67,7 +67,7 @@ namespace System.Collections.Generic
 
             public override void PushBack(T item)
             {
-                lock(root)
+                lock (root)
                 {
                     deque.PushBack(item);
                 }
@@ -75,7 +75,7 @@ namespace System.Collections.Generic
 
             public override T PopFront()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.PopFront();
                 }
@@ -83,7 +83,7 @@ namespace System.Collections.Generic
 
             public override T PopBack()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.PopBack();
                 }
@@ -91,7 +91,7 @@ namespace System.Collections.Generic
 
             public override T PeekFront()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.PeekFront();
                 }
@@ -99,7 +99,7 @@ namespace System.Collections.Generic
 
             public override T PeekBack()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.PeekBack();
                 }
@@ -107,7 +107,7 @@ namespace System.Collections.Generic
 
             public override T[] ToArray()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.ToArray();
                 }
@@ -115,7 +115,7 @@ namespace System.Collections.Generic
 
             public override object Clone()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.Clone();
                 }
@@ -123,7 +123,7 @@ namespace System.Collections.Generic
 
             public override void CopyTo(Array array, int index)
             {
-                lock(root)
+                lock (root)
                 {
                     deque.CopyTo(array, index);
                 }
@@ -131,7 +131,7 @@ namespace System.Collections.Generic
 
             public override IEnumerator<T> GetEnumerator()
             {
-                lock(root)
+                lock (root)
                 {
                     return deque.GetEnumerator();
                 }
@@ -145,7 +145,7 @@ namespace System.Collections.Generic
             /// </returns>
             IEnumerator IEnumerable.GetEnumerator()
             {
-                lock(root)
+                lock (root)
                 {
                     return ((IEnumerable)deque).GetEnumerator();
                 }
@@ -159,26 +159,20 @@ namespace System.Collections.Generic
             {
                 get
                 {
-                    lock(root)
+                    lock (root)
                     {
                         return deque.Count;
                     }
                 }
             }
 
-            public override bool IsSynchronized
-            {
-                get
-                {
-                    return true;
-                }
-            }
+            public override bool IsSynchronized => true;
 
             #endregion
 
             #endregion
         }
 
-        #endregion	
-	}
+        #endregion
+    }
 }

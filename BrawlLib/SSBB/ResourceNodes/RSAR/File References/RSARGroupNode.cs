@@ -1,20 +1,20 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARGroupNode : RSAREntryNode
     {
-        internal INFOGroupHeader* Header { get { return (INFOGroupHeader*)WorkingUncompressed.Address; } }
+        internal INFOGroupHeader* Header => (INFOGroupHeader*)WorkingUncompressed.Address;
 #if DEBUG
         [Browsable(true), Category("DEBUG")]
 #else
         [Browsable(false)]
 #endif
-        public override int StringId { get { return Header == null ? -1 : (int)Header->_stringId; } }
+        public override int StringId => Header == null ? -1 : (int)Header->_stringId;
 
-        public override ResourceType ResourceType { get { return ResourceType.RSARGroup; } }
+        public override ResourceType ResourceType => ResourceType.RSARGroup;
 
         public BindingList<RSARFileNode> _files = new BindingList<RSARFileNode>();
 
@@ -59,12 +59,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_extFilePathRef = new ruint(ruint.RefType.Address, 0, 0);
 
             header->_stringId = _rebuildStringId;
-            header->_listOffset = (uint)((VoidPtr)list - _rebuildBase);
+            header->_listOffset = (uint)(list - _rebuildBase);
 
             list->_numEntries = _files.Count;
             for (int i = 0; i < _files.Count; ++i)
             {
-                list->Entries[i] = (uint)((VoidPtr)(&entries[i]) - _rebuildBase);
+                list->Entries[i] = (uint)(&entries[i] - _rebuildBase);
                 entries[i]._fileId = _files[i]._fileIndex;
             }
         }

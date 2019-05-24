@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace System
 {
@@ -9,9 +9,9 @@ namespace System
         internal int[] _impTable;
         internal int[] _remapTable;
 
-        public int[] ImplementationTable { get { return _impTable; } }
-        public int[] RemapTable { get { return _remapTable; } }
-        public int ImplementationLength { get { return _impTable.Length; } }
+        public int[] ImplementationTable => _impTable;
+        public int[] RemapTable => _remapTable;
+        public int ImplementationLength => _impTable.Length;
 
         public void Remap<T>(IList<T> source, Comparison<T> comp)
         {
@@ -29,7 +29,9 @@ namespace System
             {
                 T t = source[i];
                 if (cache.ContainsKey(t))
+                {
                     _remapTable[i] = (int)cache[t];
+                }
                 else
                 {
                     _impTable[impIndex] = i;
@@ -61,7 +63,7 @@ namespace System
                             sorted[y] = i;
 
                             //Rotate right
-                            for (int z = y; z++ < impIndex; )
+                            for (int z = y; z++ < impIndex;)
                             {
                                 ind = sorted[z];
                                 sorted[z] = tmp;
@@ -85,13 +87,17 @@ namespace System
 
                 //Re-index remap
                 for (int i = 0; i < count; i++)
+                {
                     _remapTable[i] = _impTable[_remapTable[i]];
+                }
 
                 //Swap tables
                 _impTable = sorted;
             }
             else
+            {
                 Array.Resize<int>(ref _impTable, impCount);
+            }
         }
     }
 }

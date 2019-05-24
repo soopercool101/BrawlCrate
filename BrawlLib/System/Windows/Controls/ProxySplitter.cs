@@ -4,7 +4,7 @@
     {
         public override DockStyle Dock
         {
-            get { return base.Dock; }
+            get => base.Dock;
             set
             {
                 base.Dock = value;
@@ -25,8 +25,8 @@
 
         public event SplitterEventHandler Dragged;
 
-        public ProxySplitter() 
-        { 
+        public ProxySplitter()
+        {
             Size = new Drawing.Size(5, 5);
             Dock = DockStyle.Left;
         }
@@ -37,13 +37,19 @@
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 _dragging = true;
+            }
+
             base.OnMouseDown(e);
         }
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 _dragging = false;
+            }
+
             base.OnMouseUp(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -56,8 +62,12 @@
             _lastY = y;
 
             if (_dragging)
+            {
                 if (Dragged != null)
+                {
                     Dragged(this, new SplitterEventArgs(xDiff, yDiff, Left, Top));
+                }
+            }
 
             base.OnMouseMove(e);
         }

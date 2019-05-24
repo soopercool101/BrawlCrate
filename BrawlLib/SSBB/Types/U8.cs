@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -13,10 +13,10 @@ namespace BrawlLib.SSBBTypes
         public buint _entriesOffset;
         public buint _entriesLength;
         public buint _firstOffset;
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
 
-        public U8Entry* Entries { get { return (U8Entry*)(Address + _entriesOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+
+        public U8Entry* Entries => (U8Entry*)(Address + _entriesOffset);
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -28,10 +28,10 @@ namespace BrawlLib.SSBBTypes
         public BUInt24 _stringOffset; //Base is string table
         public buint _dataOffset; //Folder == Parent entry index
         public buint _dataLength; //Folder == Index of first entry that's not a child
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
 
-        public bool isFolder { get { return _type == 1; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+
+        public bool isFolder => _type == 1;
 
         //Align string table to 0x20
     }

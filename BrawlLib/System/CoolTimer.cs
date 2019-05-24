@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace System
 {
@@ -9,17 +9,16 @@ namespace System
     /// </summary>
     public class CoolTimer
     {
-        double
-            _updatePeriod, 
+        private double
+            _updatePeriod,
             _renderPeriod,
-            _targetUpdatePeriod, 
+            _targetUpdatePeriod,
             _targetRenderPeriod,
-            _updateTime, 
+            _updateTime,
             _renderTime,
-            _nextRender = 0.0, 
+            _nextRender = 0.0,
             _nextUpdate = 0.0;
-
-        Stopwatch _updateWatch = new Stopwatch(), _renderWatch = new Stopwatch();
+        private readonly Stopwatch _updateWatch = new Stopwatch(), _renderWatch = new Stopwatch();
 
         public event EventHandler<FrameEventArgs> RenderFrame;
         public event EventHandler<FrameEventArgs> UpdateFrame;
@@ -37,7 +36,11 @@ namespace System
         {
             get
             {
-                if (TargetRenderPeriod == 0.0) return 0.0;
+                if (TargetRenderPeriod == 0.0)
+                {
+                    return 0.0;
+                }
+
                 return 1.0 / TargetRenderPeriod;
             }
             set
@@ -45,9 +48,13 @@ namespace System
                 double v = value.Clamp(0.0, 200.0);
 
                 if (v < 1.0)
+                {
                     TargetRenderPeriod = 0.0;
+                }
                 else
+                {
                     TargetRenderPeriod = 1.0 / v;
+                }
             }
         }
 
@@ -60,15 +67,19 @@ namespace System
         /// </remarks>
         public double TargetRenderPeriod
         {
-            get { return _targetRenderPeriod; }
+            get => _targetRenderPeriod;
             set
             {
                 double v = value.Clamp(0.0, 1.0);
 
                 if (v < 0.001)
+                {
                     _targetRenderPeriod = 0.0;
+                }
                 else
+                {
                     _targetRenderPeriod = v;
+                }
             }
         }
 
@@ -79,7 +90,11 @@ namespace System
         {
             get
             {
-                if (_renderPeriod == 0.0) return 1.0;
+                if (_renderPeriod == 0.0)
+                {
+                    return 1.0;
+                }
+
                 return 1.0 / _renderPeriod;
             }
         }
@@ -87,15 +102,15 @@ namespace System
         /// <summary>
         /// Gets a double representing the period of RenderFrame events, in seconds.
         /// </summary>
-        public double RenderPeriod { get { return _renderPeriod; } }
+        public double RenderPeriod => _renderPeriod;
 
         /// <summary>
         /// Gets a double representing the time spent in the RenderFrame function, in seconds.
         /// </summary>
         public double RenderTime
         {
-            get { return _renderTime; }
-            protected set { _renderTime = value; }
+            get => _renderTime;
+            protected set => _renderTime = value;
         }
 
         #endregion
@@ -113,7 +128,11 @@ namespace System
         {
             get
             {
-                if (TargetUpdatePeriod == 0.0) return 0.0;
+                if (TargetUpdatePeriod == 0.0)
+                {
+                    return 0.0;
+                }
+
                 return 1.0 / TargetUpdatePeriod;
             }
             set
@@ -121,9 +140,13 @@ namespace System
                 double v = value.Clamp(0.0, 200.0);
 
                 if (v < 1.0)
+                {
                     TargetUpdatePeriod = 0.0;
+                }
                 else
+                {
                     TargetUpdatePeriod = 1.0 / v;
+                }
             }
         }
 
@@ -136,15 +159,19 @@ namespace System
         /// </remarks>
         public double TargetUpdatePeriod
         {
-            get { return _targetUpdatePeriod; }
+            get => _targetUpdatePeriod;
             set
             {
                 double v = value.Clamp(0.0, 1.0);
 
                 if (v <= 0.005)
+                {
                     _targetUpdatePeriod = 0.0;
+                }
                 else
+                {
                     _targetUpdatePeriod = v;
+                }
             }
         }
 
@@ -155,7 +182,11 @@ namespace System
         {
             get
             {
-                if (_updatePeriod == 0.0) return 1.0;
+                if (_updatePeriod == 0.0)
+                {
+                    return 1.0;
+                }
+
                 return 1.0 / _updatePeriod;
             }
         }
@@ -163,12 +194,12 @@ namespace System
         /// <summary>
         /// Gets a double representing the period of UpdateFrame events, in seconds.
         /// </summary>
-        public double UpdatePeriod { get { return _updatePeriod; } }
+        public double UpdatePeriod => _updatePeriod;
 
         /// <summary>
         /// Gets a double representing the time spent in the UpdateFrame function, in seconds.
         /// </summary>
-        public double UpdateTime { get { return _updateTime; } }
+        public double UpdateTime => _updateTime;
 
         #endregion
 
@@ -186,21 +217,32 @@ namespace System
             //{
             //Action<object, DoWorkEventArgs> work = (object sender, DoWorkEventArgs e) =>
             //{
-                TargetUpdateFrequency = updatesPerSec;
-                TargetRenderFrequency = framesPerSec;
+            TargetUpdateFrequency = updatesPerSec;
+            TargetRenderFrequency = framesPerSec;
 
-                _updateWatch.Reset();
-                _renderWatch.Reset();
+            _updateWatch.Reset();
+            _renderWatch.Reset();
 
-                if (TargetUpdateFrequency != 0) _updateWatch.Start();
-                if (TargetRenderFrequency != 0) _renderWatch.Start();
+            if (TargetUpdateFrequency != 0)
+            {
+                _updateWatch.Start();
+            }
 
-                while (true)
+            if (TargetRenderFrequency != 0)
+            {
+                _renderWatch.Start();
+            }
+
+            while (true)
+            {
+                ProcessEvents();
+                if (!_running)
                 {
-                    ProcessEvents();
-                    if (!_running) return;
-                    UpdateAndRenderFrame();
+                    return;
                 }
+
+                UpdateAndRenderFrame();
+            }
             //};
             //using (BackgroundWorker b = new BackgroundWorker())
             //{
@@ -216,21 +258,28 @@ namespace System
             //}
         }
 
-        void UpdateAndRenderFrame()
+        private void UpdateAndRenderFrame()
         {
             RaiseUpdateFrame();
             RaiseRenderFrame();
         }
 
-        void RaiseUpdateFrame()
+        private void RaiseUpdateFrame()
         {
             int numUpdates = 0;
             double totalUpdateTime = 0;
 
             // Cap the maximum time drift to 1 second (e.g. when the process is suspended).
             double time = _updateWatch.Elapsed.TotalSeconds;
-            if (time <= 0) return;
-            if (time > 1.0) time = 1.0;
+            if (time <= 0)
+            {
+                return;
+            }
+
+            if (time > 1.0)
+            {
+                time = 1.0;
+            }
 
             // Raise UpdateFrame events until we catch up with our target update rate.
             while (_nextUpdate - time <= 0 && time > 0)
@@ -258,20 +307,31 @@ namespace System
                 // application from "hanging" when the hardware cannot keep up
                 // with the requested update rate.
                 if (++numUpdates >= 10 || TargetUpdateFrequency == 0.0)
+                {
                     break;
+                }
             }
 
             // Calculate statistics 
             if (numUpdates > 0)
-                _updatePeriod = totalUpdateTime / (double)numUpdates;
+            {
+                _updatePeriod = totalUpdateTime / numUpdates;
+            }
         }
 
-        void RaiseRenderFrame()
+        private void RaiseRenderFrame()
         {
             // Cap the maximum time drift to 1 second (e.g. when the process is suspended).
             double time = _renderWatch.Elapsed.TotalSeconds;
-            if (time <= 0) return;
-            if (time > 1.0) time = 1.0;
+            if (time <= 0)
+            {
+                return;
+            }
+
+            if (time > 1.0)
+            {
+                time = 1.0;
+            }
 
             double timeLeft = _nextRender - time;
 
@@ -281,7 +341,9 @@ namespace System
                 // the process does not appear to hang.
                 _nextRender = timeLeft + TargetRenderPeriod;
                 if (_nextRender < -1.0)
+                {
                     _nextRender = -1.0;
+                }
 
                 _renderWatch.Reset();
                 _renderWatch.Start();
@@ -295,26 +357,43 @@ namespace System
             }
         }
 
-        void OnRenderFrameInternal(FrameEventArgs e) { if (_running) OnRenderFrame(e); }
-        void OnUpdateFrameInternal(FrameEventArgs e) { if (_running) OnUpdateFrame(e); }
-
-        void OnRenderFrame(FrameEventArgs e)
+        private void OnRenderFrameInternal(FrameEventArgs e)
         {
-            if (RenderFrame != null) 
+            if (_running)
+            {
+                OnRenderFrame(e);
+            }
+        }
+
+        private void OnUpdateFrameInternal(FrameEventArgs e)
+        {
+            if (_running)
+            {
+                OnUpdateFrame(e);
+            }
+        }
+
+        private void OnRenderFrame(FrameEventArgs e)
+        {
+            if (RenderFrame != null)
+            {
                 RenderFrame(this, e);
+            }
         }
 
-        void OnUpdateFrame(FrameEventArgs e)
+        private void OnUpdateFrame(FrameEventArgs e)
         {
-            if (UpdateFrame != null) 
+            if (UpdateFrame != null)
+            {
                 UpdateFrame(this, e);
+            }
         }
 
-        bool _running = false;
-        public bool IsRunning { get { return _running; } }
+        private bool _running = false;
+        public bool IsRunning => _running;
         public void Stop() { _running = false; }
 
-        void ProcessEvents()
+        private void ProcessEvents()
         {
             Application.DoEvents();
             Thread.Sleep(0);
@@ -323,7 +402,7 @@ namespace System
 
     public class FrameEventArgs : EventArgs
     {
-        double elapsed;
+        private double elapsed;
 
         public FrameEventArgs() { }
 
@@ -338,8 +417,8 @@ namespace System
         /// </summary>
         public double Time
         {
-            get { return elapsed; }
-            set { elapsed = value; }
+            get => elapsed;
+            set => elapsed = value;
         }
     }
 }

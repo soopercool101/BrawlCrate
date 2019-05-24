@@ -4,17 +4,17 @@
     {
         public class PPCOperand
         {
-            private PPCOpCode _owner = null;
+            private readonly PPCOpCode _owner = null;
 
-            private OperandType _opType = OperandType.VAL;
-            private int _bitShift = 0;
-            private uint _bitMask = 0;
-            private uint _negBit = 0;
-            private string _name;
+            private readonly OperandType _opType = OperandType.VAL;
+            private readonly int _bitShift = 0;
+            private readonly uint _bitMask = 0;
+            private readonly uint _negBit = 0;
+            private readonly string _name;
 
-            public int Value { get { return Get(); } set { Set(value); } }
-            public string Name { get { return _name; } }
-            
+            public int Value { get => Get(); set => Set(value); }
+            public string Name => _name;
+
             public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask) : this(owner, type, shift, mask, 0x0) { }
             public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask, uint negBit) : this(owner, type, shift, mask, negBit, "") { }
             public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask, uint negBit, string name)
@@ -22,7 +22,7 @@
                 _owner = owner;
                 _opType = type;
                 _bitShift = shift;
-                _bitMask = mask & ~(uint)negBit;
+                _bitMask = mask & ~negBit;
                 _negBit = negBit;
                 _name = name;
             }
@@ -34,7 +34,9 @@
                 int result = (int)((baseVal >> _bitShift) & _bitMask);
 
                 if ((baseVal & _negBit) != 0)
+                {
                     result -= (int)_negBit;
+                }
 
                 return result;
             }
@@ -45,14 +47,14 @@
 
                 switch (_opType)
                 {
-                    case OperandType.VAL: return (val < 0 ? "-" : "") + String.Format("0x{0:X}", Math.Abs(val));
-                    case OperandType.UVAL: return String.Format("0x{0:X}", val);
-                    case OperandType.OFFSET: return (val < 0 ? "-" : "") + String.Format("0x{0:X}", Math.Abs(val));
-                    case OperandType.UOFFSET: return String.Format("0x{0:X}", val);
-                    case OperandType.REGISTER: return String.Format("r{0}", val);
-                    case OperandType.FREGISTER: return String.Format("f{0}", val);
-                    case OperandType.CREGISTER: return String.Format("cr{0}", val);
-                    case OperandType.VREGISTER: return String.Format("v{0}", val);
+                    case OperandType.VAL: return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
+                    case OperandType.UVAL: return string.Format("0x{0:X}", val);
+                    case OperandType.OFFSET: return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
+                    case OperandType.UOFFSET: return string.Format("0x{0:X}", val);
+                    case OperandType.REGISTER: return string.Format("r{0}", val);
+                    case OperandType.FREGISTER: return string.Format("f{0}", val);
+                    case OperandType.CREGISTER: return string.Format("cr{0}", val);
+                    case OperandType.VREGISTER: return string.Format("v{0}", val);
                     case OperandType.SREGISTER:
                         switch (val)
                         {
@@ -87,7 +89,7 @@
                 else
                 {
                     _owner._data |= (uint)(((value + _negBit) & _bitMask) << _bitShift);
-                    _owner._data |= (uint)_negBit;
+                    _owner._data |= _negBit;
                 }
             }
         }

@@ -1,19 +1,19 @@
-﻿using System;
+﻿using BrawlLib.IO;
+using System;
 using System.ComponentModel;
 using System.IO;
-using BrawlLib.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ModuleSectionNode : ModuleDataNode
     {
-        ObjectParser _parser;
+        private ObjectParser _parser;
 
-        internal VoidPtr Header { get { return WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RELSection; } }
-        
+        internal VoidPtr Header => WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RELSection;
+
         [Browsable(false)]
-        public override uint ASMOffset { get { return (uint)_dataOffset; } }
+        public override uint ASMOffset => (uint)_dataOffset;
 
         public bool _isCodeSection = false;
         public bool _isBSSSection = false;
@@ -22,16 +22,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         public uint _dataSize;
         public int _dataAlign;
 
-        public string DataAlign { get { return "0x" + _dataAlign.ToString("X"); } }
-        
-        public string EndBufferSize { get { return "0x" + _endBufferSize.ToString("X"); } }
+        public string DataAlign => "0x" + _dataAlign.ToString("X");
+
+        public string EndBufferSize => "0x" + _endBufferSize.ToString("X");
 
         [Category("REL Section")]
-        public bool HasCommands { get { return _manager._commands.Count > 0; } }
+        public bool HasCommands => _manager._commands.Count > 0;
         [Category("REL Section"), Browsable(true)]
-        public override bool HasCode { get { return _isCodeSection; } }
+        public override bool HasCode => _isCodeSection;
         [Category("REL Section")]
-        public bool IsBSS { get { return _isBSSSection; } }
+        public bool IsBSS => _isBSSSection;
 
         public ModuleSectionNode() { }
         public ModuleSectionNode(uint size) { InitBuffer(size); }
@@ -39,10 +39,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             if (_name == null)
+            {
                 if (_dataSize > 0)
-                    _name = String.Format("[{0}] Section ", Index);
+                {
+                    _name = string.Format("[{0}] Section ", Index);
+                }
                 else
-                    _name = String.Format("[{0}] null", Index);
+                {
+                    _name = string.Format("[{0}] null", Index);
+                }
+            }
 
             if (_dataOffset == 0 && WorkingUncompressed.Length != 0)
             {
@@ -54,7 +60,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _isBSSSection = false;
                 InitBuffer(_dataSize, Header);
                 if (Index == 5)
+                {
                     _parser = new ObjectParser(this);
+                }
             }
 
             return _parser != null;
@@ -73,14 +81,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Memory.Move(address, _dataBuffer.Address, (uint)length);
             address += _dataBuffer.Length;
-            if(_endBufferSize > 0)
+            if (_endBufferSize > 0)
+            {
                 Memory.Fill(address, (uint)_endBufferSize, 0x00);
+            }
         }
 
         public override void Dispose()
         {
             if (_dataBuffer != null)
+            {
                 _dataBuffer.Dispose();
+            }
 
             base.Dispose();
         }
@@ -105,7 +117,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 stream.SetLength(_dataBuffer.Length);
                 using (FileMap map = FileMap.FromStream(stream))
+                {
                     Memory.Move(map.Address, _dataBuffer.Address, (uint)_dataBuffer.Length);
+                }
             }
         }
     }
@@ -153,17 +167,17 @@ namespace BrawlLib.SSBB.ResourceNodes
     //            _values[i] = values[i];
     //    }
 
-        //public override int OnCalculateSize(bool force)
-        //{
-        //    return _values.Length * 4;
-        //}
+    //public override int OnCalculateSize(bool force)
+    //{
+    //    return _values.Length * 4;
+    //}
 
-        //public override void OnRebuild(VoidPtr address, int length, bool force)
-        //{
-        //    bfloat* values = (bfloat*)address;
-        //    for (int i = 0; i < _values.Length; i++)
-        //        values[i] = _values[i];
-        //}
+    //public override void OnRebuild(VoidPtr address, int length, bool force)
+    //{
+    //    bfloat* values = (bfloat*)address;
+    //    for (int i = 0; i < _values.Length; i++)
+    //        values[i] = _values[i];
+    //}
     //}
 
     //public class RELStructorSectionNode : ModuleSectionNode

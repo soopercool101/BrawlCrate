@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Scripting;
-using IronPython.Runtime.Exceptions;
-using IronPython.Hosting;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using Microsoft.Scripting.Hosting;
-using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 
 namespace BrawlCrate.API
@@ -35,13 +28,18 @@ namespace BrawlCrate.API
         internal static ResourceNode TryParse(DataSource source)
         {
             ResourceNode n = null;
-            foreach (var ldr in bboxapi.Loaders)
+            foreach (PluginLoader ldr in bboxapi.Loaders)
+            {
                 if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint)source.Length))) != null)
+                {
                     break;
+                }
+            }
+
             return n;
 
         }
 
-        virtual public ResourceNode TryParse(Stream stream) { return null; }
+        public virtual ResourceNode TryParse(Stream stream) { return null; }
     }
 }

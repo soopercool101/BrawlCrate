@@ -1,13 +1,13 @@
-﻿using System;
+﻿using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using BrawlLib.Wii.Models;
 
 namespace BrawlLib.Modeling
 {
     public unsafe partial class Collada
     {
-        static PrimitiveManager DecodePrimitivesWeighted(
+        private static PrimitiveManager DecodePrimitivesWeighted(
             Matrix bindMatrix,
             GeometryEntry geo,
             SkinEntry skin,
@@ -37,39 +37,49 @@ namespace BrawlLib.Modeling
             ushort* pRemap = (ushort*)remap.Address;
 
             if (manager._faceData[1] != null)
+            {
                 pNorms = (Vector3*)manager._faceData[1].Address;
+            }
 
             manager._vertices = vertList;
 
             //Find vertex source
             foreach (SourceEntry s in geo._sources)
+            {
                 if (s._id == geo._verticesInput._source)
                 {
                     pVert = (Vector3*)((UnsafeBuffer)s._arrayData).Address;
                     break;
                 }
+            }
 
             //Find joint source
             foreach (InputEntry inp in skin._jointInputs)
+            {
                 if (inp._semantic == SemanticType.JOINT)
                 {
                     foreach (SourceEntry src in skin._sources)
+                    {
                         if (src._id == inp._source)
                         {
                             jointStringArray = src._arrayData as string[];
                             jointString = src._arrayDataString;
                             break;
                         }
+                    }
                 }
                 else if (inp._semantic == SemanticType.INV_BIND_MATRIX)
                 {
                     foreach (SourceEntry src in skin._sources)
+                    {
                         if (src._id == inp._source)
                         {
                             pMatrix = (Matrix*)((UnsafeBuffer)src._arrayData).Address;
                             break;
                         }
+                    }
                 }
+            }
 
             Error = "There was a problem creating the list of bones for geometry entry " + geo._name;
 
@@ -78,9 +88,11 @@ namespace BrawlLib.Modeling
             boneList = new IBoneNode[boneCount];
             for (int i = 0; i < boneCount; i++)
             {
-                NodeEntry entry =  scene.FindNode(jointStringArray[i]);
+                NodeEntry entry = scene.FindNode(jointStringArray[i]);
                 if (entry != null && entry._node != null)
+                {
                     boneList[i] = entry._node as IBoneNode;
+                }
                 else
                 {
                     //Search in reverse!
@@ -89,14 +101,19 @@ namespace BrawlLib.Modeling
                         if ((entry = RecursiveTestNode(jointString, node)) != null)
                         {
                             if (entry._node != null)
+                            {
                                 boneList[i] = entry._node as IBoneNode;
+                            }
+
                             break;
                         }
                     }
-                    
+
                     //Couldn't find the bone
                     if (boneList[i] == null)
+                    {
                         boneList[i] = Activator.CreateInstance(boneType) as IBoneNode;
+                    }
                 }
             }
 
@@ -114,11 +131,13 @@ namespace BrawlLib.Modeling
 
                         //Get weight source
                         foreach (SourceEntry src in skin._sources)
+                        {
                             if (src._id == inp._source)
                             {
                                 pWeights = (float*)((UnsafeBuffer)src._arrayData).Address;
                                 break;
                             }
+                        }
 
                         break;
 
@@ -142,10 +161,17 @@ namespace BrawlLib.Modeling
                     for (int x = 0; x < iCount; x++)
                     {
                         for (int z = 0; z < cmdCount; z++, iPtr++)
+                        {
                             if (pCmd[z] == 1)
+                            {
                                 bone = boneList[*iPtr];
+                            }
                             else if (pCmd[z] == 2)
+                            {
                                 weight = pWeights[*iPtr];
+                            }
+                        }
+
                         inf.AddWeight(new BoneWeight(bone, weight));
                     }
                 }
@@ -171,11 +197,17 @@ namespace BrawlLib.Modeling
                 ushort index = 0;
                 while (index < vertList.Count)
                 {
-                    if (v.Equals(vertList[index])) break;
+                    if (v.Equals(vertList[index]))
+                    {
+                        break;
+                    }
+
                     index++;
                 }
                 if (index == vertList.Count)
+                {
                     vertList.Add(v);
+                }
 
                 pRemap[i] = index;
             }
@@ -191,43 +223,63 @@ namespace BrawlLib.Modeling
                 {
                     Vertex3 v = null;
                     if (*pVInd < vertList.Count)
+                    {
                         v = vertList[*pVInd];
+                    }
+
                     if (v != null && v.MatrixNode != null)
+                    {
                         if (v.MatrixNode.Weights.Count > 1)
+                        {
                             pNorms[i] =
-                                (bindMatrix * 
-                                skin._bindMatrix).GetRotationMatrix() * 
+                                (bindMatrix *
+                                skin._bindMatrix).GetRotationMatrix() *
                                 pNorms[i];
+                        }
                         else
+                        {
                             pNorms[i] =
                                 (v.MatrixNode.Weights[0].Bone.InverseBindMatrix *
-                                bindMatrix * 
-                                skin._bindMatrix).GetRotationMatrix() * 
+                                bindMatrix *
+                                skin._bindMatrix).GetRotationMatrix() *
                                 pNorms[i];
+                        }
+                    }
                 }
             }
 
             remap.Dispose();
             return manager;
         }
-        static NodeEntry RecursiveTestNode(string jointStrings, NodeEntry node)
+
+        private static NodeEntry RecursiveTestNode(string jointStrings, NodeEntry node)
         {
             if (jointStrings.IndexOf(node._name) >= 0)
+            {
                 return node;
+            }
             else if (jointStrings.IndexOf(node._sid) >= 0)
+            {
                 return node;
+            }
             else if (jointStrings.IndexOf(node._id) >= 0)
+            {
                 return node;
+            }
 
             NodeEntry e;
             foreach (NodeEntry n in node._children)
+            {
                 if ((e = RecursiveTestNode(jointStrings, n)) != null)
+                {
                     return e;
+                }
+            }
 
             return null;
         }
 
-        static PrimitiveManager DecodePrimitivesUnweighted(Matrix bindMatrix, GeometryEntry geo)
+        private static PrimitiveManager DecodePrimitivesUnweighted(Matrix bindMatrix, GeometryEntry geo)
         {
             PrimitiveManager manager = DecodePrimitives(geo);
 
@@ -239,10 +291,13 @@ namespace BrawlLib.Modeling
             manager._vertices = vertList;
 
             if (manager._faceData[1] != null)
+            {
                 pNorms = (Vector3*)manager._faceData[1].Address;
+            }
 
             //Find vertex source
             foreach (SourceEntry s in geo._sources)
+            {
                 if (s._id == geo._verticesInput._source)
                 {
                     UnsafeBuffer b = s._arrayData as UnsafeBuffer;
@@ -250,6 +305,7 @@ namespace BrawlLib.Modeling
                     vCount = b.Length / 12;
                     break;
                 }
+            }
 
             UnsafeBuffer remap = new UnsafeBuffer(vCount * 2);
             ushort* pRemap = (ushort*)remap.Address;
@@ -264,11 +320,16 @@ namespace BrawlLib.Modeling
                 while (index < vertList.Count)
                 {
                     if (v.Equals(vertList[index]))
+                    {
                         break;
+                    }
+
                     index++;
                 }
                 if (index == vertList.Count)
+                {
                     vertList.Add(v);
+                }
 
                 pRemap[i] = (ushort)index;
             }
@@ -279,7 +340,9 @@ namespace BrawlLib.Modeling
                 *pVInd = pRemap[*pVInd];
 
                 if (pNorms != null)
+                {
                     pNorms[i] = bindMatrix.GetRotationMatrix() * pNorms[i];
+                }
             }
 
             remap.Dispose();
@@ -287,7 +350,7 @@ namespace BrawlLib.Modeling
             return manager;
         }
 
-        static PrimitiveManager DecodePrimitives(GeometryEntry geo)
+        private static PrimitiveManager DecodePrimitives(GeometryEntry geo)
         {
             uint[] pTriarr = null, pLinarr = null;
             uint pTri = 0, pLin = 0;
@@ -305,19 +368,25 @@ namespace BrawlLib.Modeling
 
             //Assign vertex source
             foreach (SourceEntry s in geo._sources)
+            {
                 if (s._id == geo._verticesInput._source)
                 {
                     pInData[0] = (byte*)((UnsafeBuffer)s._arrayData).Address;
                     break;
                 }
+            }
 
             foreach (PrimitiveEntry prim in geo._primitives)
             {
                 //Get face/line count
                 if (prim._type == ColladaPrimitiveType.lines || prim._type == ColladaPrimitiveType.linestrips)
+                {
                     lines += prim._faceCount;
+                }
                 else
+                {
                     faces += prim._faceCount;
+                }
 
                 //Get point total
                 points += prim._pointCount;
@@ -331,12 +400,14 @@ namespace BrawlLib.Modeling
                     {
                         case SemanticType.VERTEX: offset = 0; break;
                         case SemanticType.NORMAL: offset = 1; break;
-                        case SemanticType.COLOR: if (inp._set < 2) offset = 2 + inp._set; break;
-                        case SemanticType.TEXCOORD: if (inp._set < 8) offset = 4 + inp._set; break;
+                        case SemanticType.COLOR: if (inp._set < 2) { offset = 2 + inp._set; } break;
+                        case SemanticType.TEXCOORD: if (inp._set < 8) { offset = 4 + inp._set; } break;
                     }
 
                     if (offset != -1)
+                    {
                         manager._dirty[offset] = true;
+                    }
 
                     inp._outputOffset = offset;
                 }
@@ -358,19 +429,38 @@ namespace BrawlLib.Modeling
             manager._indices = new UnsafeBuffer(points * 2);
             //Create face buffers and assign output pointers
             for (int i = 0; i < 12; i++)
+            {
                 if (manager._dirty[i])
                 {
                     int stride;
-                    if (i == 0) stride = 2;
-                    else if (i == 1) stride = 12;
-                    else if (i < 4) stride = 4;
-                    else stride = 8;
+                    if (i == 0)
+                    {
+                        stride = 2;
+                    }
+                    else if (i == 1)
+                    {
+                        stride = 12;
+                    }
+                    else if (i < 4)
+                    {
+                        stride = 4;
+                    }
+                    else
+                    {
+                        stride = 8;
+                    }
+
                     manager._faceData[i] = new UnsafeBuffer(points * stride);
                     if (i == 0)
+                    {
                         pOutData[i] = (byte*)manager._indices.Address;
+                    }
                     else
+                    {
                         pOutData[i] = (byte*)manager._faceData[i].Address;
+                    }
                 }
+            }
 
             //Decode primitives
             foreach (PrimitiveEntry prim in geo._primitives)
@@ -380,7 +470,9 @@ namespace BrawlLib.Modeling
                 foreach (InputEntry inp in prim._inputs)
                 {
                     if (inp._outputOffset == -1)
+                    {
                         pCmd[inp._offset].Cmd = 0;
+                    }
                     else
                     {
                         pCmd[inp._offset].Cmd = (byte)inp._semantic;
@@ -388,18 +480,24 @@ namespace BrawlLib.Modeling
 
                         //Assign input buffer
                         foreach (SourceEntry src in geo._sources)
+                        {
                             if (src._id == inp._source)
                             {
                                 pInData[inp._outputOffset] = (byte*)((UnsafeBuffer)src._arrayData).Address;
                                 break;
                             }
+                        }
                     }
                 }
 
                 //Decode face data using command list
                 foreach (PrimitiveFace f in prim._faces)
+                {
                     fixed (ushort* p = f._pointIndices)
+                    {
                         RunPrimitiveCmd(pInData, pOutData, pCmd, count, p, f._pointCount);
+                    }
+                }
 
                 //Process point indices
                 switch (prim._type)
@@ -407,7 +505,10 @@ namespace BrawlLib.Modeling
                     case ColladaPrimitiveType.triangles:
                         count = prim._faceCount * 3;
                         while (count-- > 0)
+                        {
                             pTriarr[pTri++] = fIndex++;
+                        }
+
                         break;
                     case ColladaPrimitiveType.trifans:
                     case ColladaPrimitiveType.polygons:
@@ -466,7 +567,9 @@ namespace BrawlLib.Modeling
                         {
                             count = f._pointCount;
                             while (count-- > 0)
+                            {
                                 pLinarr[pLin++] = lIndex++;
+                            }
                         }
                         break;
                 }
@@ -478,6 +581,7 @@ namespace BrawlLib.Modeling
         {
             int buffer;
             while (count-- > 0)
+            {
                 for (int i = 0; i < cmdCount; i++)
                 {
                     buffer = pCmd[i].Index;
@@ -502,7 +606,10 @@ namespace BrawlLib.Modeling
                             float* p = (float*)(pIn[buffer] + (*pIndex++ * 16));
                             byte* p2 = pOut[buffer];
                             for (int x = 0; x < 4; x++)
+                            {
                                 *p2++ = (byte)(*p++ * 255.0f + 0.5f);
+                            }
+
                             pOut[buffer] = p2;
                             break;
 
@@ -515,10 +622,11 @@ namespace BrawlLib.Modeling
                             break;
                     }
                 }
+            }
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        struct PrimitiveDecodeCommand
+        private struct PrimitiveDecodeCommand
         {
             public byte Cmd;
             public byte Index;

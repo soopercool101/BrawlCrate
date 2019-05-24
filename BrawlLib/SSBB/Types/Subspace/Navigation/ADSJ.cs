@@ -21,21 +21,20 @@ namespace BrawlLib.SSBBTypes
             _pad0 = _pad1 = 0;
         }
 
-        public VoidPtr this[int index] { get { return (VoidPtr)((byte*)Address + Offsets(index)); } }
+        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
         public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x10 + (index * 4)); }
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
     public unsafe struct ADSJEntry
     {
         public const int Size = 0x2C;
-
-        fixed byte _doorID[4];
+        private readonly byte _doorID[4];
         public byte _unk0;
         public byte _unk1;
         public byte _unk2;
         public byte _unk3;
-        fixed byte _sendingID[4];
-        fixed sbyte _jumpBone[0x20];
+        private readonly byte _sendingID[4];
+        private readonly sbyte _jumpBone[0x20];
 
         public string DoorID
         {
@@ -45,7 +44,7 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)((VoidPtr)Address + i);
+                    bytes[i] = *(byte*)(Address + i);
                     if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
                     { s1 += bytes[i].ToString("x").ToUpper(); }
@@ -57,7 +56,9 @@ namespace BrawlLib.SSBBTypes
             {
 
                 if (value == null)
+                {
                     value = "";
+                }
 
                 fixed (byte* ptr = _doorID)
                 {
@@ -76,7 +77,7 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)((VoidPtr)Address + 0x08 + i);
+                    bytes[i] = *(byte*)(Address + 0x08 + i);
                     if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
                     { s1 += bytes[i].ToString("x").ToUpper(); }
@@ -88,7 +89,9 @@ namespace BrawlLib.SSBBTypes
             {
 
                 if (value == null)
+                {
                     value = "";
+                }
 
                 fixed (byte* ptr = _sendingID)
                 {
@@ -101,31 +104,38 @@ namespace BrawlLib.SSBBTypes
         }
         public string JumpBone
         {
-            get { return new String((sbyte*)Address + 0x0C); }
+            get => new string((sbyte*)Address + 0x0C);
             set
             {
                 if (value == null)
+                {
                     value = "";
+                }
 
                 fixed (sbyte* ptr = _jumpBone)
                 {
                     int i = 0;
                     while ((i < 0x19) && (i < value.Length))
+                    {
                         ptr[i] = (sbyte)value[i++];
+                    }
 
-                    while (i < 0x20) ptr[i++] = 0;
+                    while (i < 0x20)
+                    {
+                        ptr[i++] = 0;
+                    }
                 }
             }
         }
 
         public ADSJEntry(string Stage, string SendingID, string Bone)
-        {         
+        {
             _unk0 = _unk1 = _unk2 = _unk3 = 0;
             DoorID = Stage;
             SendStage = SendingID;
-            JumpBone = Bone;         
+            JumpBone = Bone;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

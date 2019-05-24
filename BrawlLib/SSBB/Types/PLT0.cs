@@ -1,7 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
-using BrawlLib.SSBB.ResourceNodes;
+using System;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -20,26 +20,26 @@ namespace BrawlLib.SSBBTypes
         public bint _origPathOffset;
         private fixed byte padding[28];
 
-        private PLT0v1* Address { get { fixed (PLT0v1* ptr = &this)return ptr; } }
+        private PLT0v1* Address { get { fixed (PLT0v1* ptr = &this) { return ptr; } } }
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (uint)value - (uint)this.Address; }
+            get => (VoidPtr)Address + _stringOffset;
+            set => _stringOffset = (uint)value - (uint)Address;
         }
-        public VoidPtr PaletteData { get { return (VoidPtr)this.Address + _headerLen; } }
-        public int PaletteDataLength { get { return _bresEntry._size - Size; } }
+        public VoidPtr PaletteData => (VoidPtr)Address + _headerLen;
+        public int PaletteDataLength => _bresEntry._size - Size;
         public WiiPaletteFormat PaletteFormat
         {
-            get { return (WiiPaletteFormat)(uint)_pixelFormat; }
-            set { _pixelFormat = (uint)value; }
+            get => (WiiPaletteFormat)(uint)_pixelFormat;
+            set => _pixelFormat = (uint)value;
         }
 
         public PLT0v1(int length, WiiPaletteFormat format)
@@ -76,32 +76,32 @@ namespace BrawlLib.SSBBTypes
 
         //User Data comes before palette data. Align to 0x20
 
-        private PLT0v3* Address { get { fixed (PLT0v3* ptr = &this)return ptr; } }
+        private PLT0v3* Address { get { fixed (PLT0v3* ptr = &this) { return ptr; } } }
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
         public UserData* UserData
         {
-            get { return _userDataOffset == 0 ? null : (UserData*)(Address + _userDataOffset); }
-            set { _userDataOffset = (int)(VoidPtr)value - (int)Address; }
+            get => _userDataOffset == 0 ? null : (UserData*)(Address + _userDataOffset);
+            set => _userDataOffset = (int)(VoidPtr)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (uint)value - (uint)this.Address; }
+            get => (VoidPtr)Address + _stringOffset;
+            set => _stringOffset = (uint)value - (uint)Address;
         }
-        public VoidPtr PaletteData { get { return (VoidPtr)this.Address + _headerLen; } }
-        public int PaletteDataLength { get { return _bresEntry._size - Size; } }
+        public VoidPtr PaletteData => (VoidPtr)Address + _headerLen;
+        public int PaletteDataLength => _bresEntry._size - Size;
         public WiiPaletteFormat PaletteFormat
         {
-            get { return (WiiPaletteFormat)(uint)_pixelFormat; }
-            set { _pixelFormat = (uint)value; }
+            get => (WiiPaletteFormat)(uint)_pixelFormat;
+            set => _pixelFormat = (uint)value;
         }
 
         public PLT0v3(int length, WiiPaletteFormat format)

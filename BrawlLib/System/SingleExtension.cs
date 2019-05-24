@@ -2,7 +2,7 @@
 {
     public static class SingleExtension
     {
-        public static unsafe Single Reverse(this Single value)
+        public static unsafe float Reverse(this float value)
         {
             *(uint*)(&value) = ((uint*)&value)->Reverse();
             return value;
@@ -15,7 +15,7 @@
         //    return *((int*)&v) >> 16; 
         //}
 
-        public static Single Clamp(this Single value, Single min, Single max)
+        public static float Clamp(this float value, float min, float max)
         {
             return value <= min ? min : value >= max ? max : value;
         }
@@ -26,11 +26,13 @@
         /// For example, -128 (0xFF) vs 127 (0x7F).
         /// Because of this, the max value is non-inclusive while the min value is.
         /// </summary>
-        public static Single RemapToRange(this Single value, Single min, Single max)
+        public static float RemapToRange(this float value, float min, float max)
         {
             //Check if the value is already in the range
             if (value < max && value >= min)
+            {
                 return value;
+            }
 
             //Get the distance between max and min
             float range = max - min;
@@ -47,7 +49,9 @@
 
             //Max value is non-inclusive
             if (value == max)
+            {
                 value = min;
+            }
 
             return value;
         }

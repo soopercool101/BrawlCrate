@@ -1,31 +1,25 @@
-﻿using System;
+﻿using BrawlLib.IO;
 using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Compression;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using BrawlLib.IO;
-using BrawlLib.Wii.Compression;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class U8Node : ResourceNode
     {
-        internal U8* Header { get { return (U8*)WorkingUncompressed.Address; } }
-        
-        public override ResourceType ResourceType { get { return ResourceType.U8; } }
-        public override Type[] AllowedChildTypes
-        {
-            get
-            {
-                return new Type[] { typeof(U8EntryNode) };
-            }
-        }
+        internal U8* Header => (U8*)WorkingUncompressed.Address;
+
+        public override ResourceType ResourceType => ResourceType.U8;
+        public override Type[] AllowedChildTypes => new Type[] { typeof(U8EntryNode) };
 
         [Browsable(true), TypeConverter(typeof(DropDownListCompression))]
         public override string Compression
         {
-            get { return base.Compression; }
-            set { base.Compression = value; }
+            get => base.Compression;
+            set => base.Compression = value;
         }
 
         public override void OnPopulate()
@@ -40,14 +34,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (entry->isFolder)
                 {
-                    e = new U8FolderNode() { _u8Index = i, _name = new String(table + (int)entry->_stringOffset) };
-                    
-                    e._name = new String(table + (int)entry->_stringOffset);
+                    e = new U8FolderNode() { _u8Index = i, _name = new string(table + entry->_stringOffset) };
+
+                    e._name = new string(table + entry->_stringOffset);
                     e._u8Index = i;
                     e._u8Parent = (int)entry->_dataOffset;
                     e._u8FirstNotChild = (int)entry->_dataLength;
-                    e._u8Type = (int)entry->_type;
-                    
+                    e._u8Type = entry->_type;
+
                     e.Initialize(this, entry, 12);
 
                     nodes.Add(e);
@@ -57,13 +51,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                     DataSource source = new DataSource((VoidPtr)Header + entry->_dataOffset, (int)entry->_dataLength);
 
                     if ((entry->_dataLength == 0) || (e = NodeFactory.FromSource(this, source) as U8EntryNode) == null)
+                    {
                         e = new ARCEntryNode();
+                    }
 
-                    e._name = new String(table + (int)entry->_stringOffset);
+                    e._name = new string(table + entry->_stringOffset);
                     e._u8Index = i;
                     e._u8Parent = -1;
                     e._u8FirstNotChild = -1;
-                    e._u8Type = (int)entry->_type;
+                    e._u8Type = entry->_type;
 
                     e.Initialize(this, source);
 
@@ -76,19 +72,31 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (x._u8Type == 1)
                 {
                     if (x._u8Parent == 0)
+                    {
                         x.Parent = this;
+                    }
                     else if (x._u8Parent < nodes.Count)
+                    {
                         x.Parent = nodes[x._u8Parent - 1];
+                    }
+
                     U8EntryNode t = null;
                     if (x._u8Index + 1 < nodes.Count)
+                    {
                         t = nodes[x._u8Index + 1];
+                    }
+
                     while (t != null)
                     {
                         t.Parent = x;
                         if (t._u8Index + 1 < nodes.Count && t.ChildEndIndex != nodes[t._u8Index + 1]._u8Index)
+                        {
                             t = nodes[t._u8Index + 1];
+                        }
                         else
+                        {
                             t = null;
+                        }
                     }
                 }
             }
@@ -100,8 +108,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        int _entrySize;
-        OrderedStringTable _stringTable;
+        private int _entrySize;
+        private OrderedStringTable _stringTable;
         private int GetEntrySize(U8EntryNode node, bool force, ref int id)
         {
             node._u8Index = id++;
@@ -111,15 +119,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             int size = node is U8FolderNode ? 0 : node.CalculateSize(force).Align(0x20);
             foreach (ResourceNode r in node.Children)
+            {
                 if (r is U8EntryNode)
+                {
                     size += GetEntrySize(r as U8EntryNode, force, ref id);
+                }
+            }
 
             return size;
         }
 
         public override int OnCalculateSize(bool force)
         {
-            _entrySize = 12; 
+            _entrySize = 12;
             int id = 1;
 
             _stringTable = new OrderedStringTable();
@@ -127,8 +139,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             int childSize = 0;
             foreach (ResourceNode e in Children)
+            {
                 if (e is U8EntryNode)
+                {
                     childSize += GetEntrySize(e as U8EntryNode, force, ref id);
+                }
+            }
 
             return 0x20 + childSize + (entryLength = (_stringTable.TotalSize + _entrySize)).Align(0x20);
         }
@@ -142,17 +158,26 @@ namespace BrawlLib.SSBB.ResourceNodes
                 int index = node.Index + 1, parentIndex = 0, endIndex = _entrySize / 12;
 
                 if (node.Parent != this && node.Parent != null)
+                {
                     parentIndex = ((U8EntryNode)node.Parent)._u8Index;
+                }
+
                 if (index < node.Parent.Children.Count)
+                {
                     endIndex = (node.Parent.Children[index] as U8EntryNode)._u8Index;
+                }
 
                 entry->_dataLength = (uint)endIndex;
                 entry->_dataOffset = (uint)parentIndex;
                 entry++;
 
                 foreach (ResourceNode b in node.Children)
+                {
                     if (b is U8EntryNode)
+                    {
                         RebuildNode(header, b as U8EntryNode, ref entry, sTableStart, ref dataAddr, force);
+                    }
+                }
             }
             else
             {
@@ -165,7 +190,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        int entryLength = 0;
+        private int entryLength = 0;
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             U8* header = (U8*)address;
@@ -185,7 +210,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             entries++;
 
             foreach (U8EntryNode b in Children)
+            {
                 RebuildNode(address, b, ref entries, tableAddr, ref dataAddress, force);
+            }
         }
 
         public override unsafe void Export(string outPath)
@@ -201,7 +228,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void ExportPair(string outPath)
         {
             if (Path.HasExtension(outPath))
+            {
                 outPath = outPath.Substring(0, outPath.LastIndexOf('.'));
+            }
 
             ExportNonYaz0(outPath + ".arc");
             ExportCompressed(outPath + ".szs");
@@ -214,7 +243,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void ExportCompressed(string outPath)
         {
             if (_compression != CompressionType.None)
+            {
                 base.Export(outPath);
+            }
             else
             {
                 using (FileStream inStream = new FileStream(Path.GetTempFileName(), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 0x8, FileOptions.SequentialScan | FileOptions.DeleteOnClose))
@@ -224,44 +255,60 @@ namespace BrawlLib.SSBB.ResourceNodes
                     outStream.SetLength(inStream.Length);
                     using (FileMap map = FileMap.FromStream(inStream))
                     using (FileMap outMap = FileMap.FromStream(outStream))
+                    {
                         Memory.Move(outMap.Address, map.Address, (uint)map.Length);
+                    }
                 }
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) 
+        internal static ResourceNode TryParse(DataSource source)
         {
             return ((U8*)source.Address)->_tag == U8.Tag ? new U8Node() : null;
         }
-        
+
         public void ExtractToFolder(string outFolder) { ExtractToFolder(outFolder, ".tex0", ".mdl0"); }
         public void ExtractToFolder(string outFolder, string imageExtension) { ExtractToFolder(outFolder, imageExtension, ".mdl0"); }
         public void ExtractToFolder(string outFolder, string imageExtension, string modelExtension)
         {
             if (!Directory.Exists(outFolder))
+            {
                 Directory.CreateDirectory(outFolder);
+            }
 
             List<string> directChildrenExportedPaths = new List<string>();
             foreach (ResourceNode entry in Children)
             {
                 if (entry is ARCNode)
+                {
                     ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else if (entry is BRRESNode)
+                {
                     ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else if (entry is U8Node)
+                {
                     ((U8Node)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else if (entry is U8FolderNode)
+                {
                     ((U8FolderNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else
                 {
                     if (entry.WorkingSource.Length == 0)
+                    {
                         continue;
+                    }
 
                     string ext = FileFilters.GetDefaultExportAllExtension(entry.GetType());
                     string path = Path.Combine(outFolder, entry.Name + ext);
 
                     if (directChildrenExportedPaths.Contains(path))
-                        throw new Exception($"There is more than one node underneath {this.Name} with the name {entry.Name}.");
+                    {
+                        throw new Exception($"There is more than one node underneath {Name} with the name {entry.Name}.");
+                    }
                     else
                     {
                         directChildrenExportedPaths.Add(path);
@@ -273,18 +320,18 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class U8EntryNode : ResourceNode
     {
-        internal U8Entry* U8EntryHeader { get { return (U8Entry*)WorkingSource.Address; } }
+        internal U8Entry* U8EntryHeader => (U8Entry*)WorkingSource.Address;
 
         public int _u8Parent, _u8FirstNotChild, _u8Type, _u8Index;
 
         [Browsable(false)]
-        public int ParentIndex { get { return _u8Parent; } }
+        public int ParentIndex => _u8Parent;
         [Browsable(false)]
-        public int ChildEndIndex { get { return _u8FirstNotChild; } }
+        public int ChildEndIndex => _u8FirstNotChild;
         [Browsable(false)]
-        public int Type { get { return _u8Type; } }
+        public int Type => _u8Type;
         [Browsable(false)]
-        public int ID { get { return _u8Index; } }
+        public int ID => _u8Index;
 
         public override bool OnInitialize()
         {
@@ -294,14 +341,8 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class U8FolderNode : U8EntryNode
     {
-        public override ResourceType ResourceType { get { return ResourceType.U8Folder; } }
-        public override Type[] AllowedChildTypes
-        {
-            get
-            {
-                return new Type[] { typeof(U8EntryNode) };
-            }
-        }
+        public override ResourceType ResourceType => ResourceType.U8Folder;
+        public override Type[] AllowedChildTypes => new Type[] { typeof(U8EntryNode) };
 
         public override bool OnInitialize()
         {
@@ -327,29 +368,43 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void ExportToFolder(string outFolder, string imageExtension, string modelExtension)
         {
             if (!Directory.Exists(outFolder))
+            {
                 Directory.CreateDirectory(outFolder);
+            }
 
             List<string> directChildrenExportedPaths = new List<string>();
             foreach (ResourceNode entry in Children)
             {
                 if (entry is ARCNode)
+                {
                     ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else if (entry is BRRESNode)
+                {
                     ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else if (entry is U8Node)
+                {
                     ((U8Node)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else if (entry is U8FolderNode)
+                {
                     ((U8FolderNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                }
                 else
                 {
                     if (entry.WorkingSource.Length == 0)
+                    {
                         continue;
+                    }
 
                     string ext = FileFilters.GetDefaultExportAllExtension(entry.GetType());
                     string path = Path.Combine(outFolder, entry.Name + ext);
 
                     if (directChildrenExportedPaths.Contains(path))
-                        throw new Exception($"There is more than one node underneath {this.Name} with the name {entry.Name}.");
+                    {
+                        throw new Exception($"There is more than one node underneath {Name} with the name {entry.Name}.");
+                    }
                     else
                     {
                         directChildrenExportedPaths.Add(path);
@@ -380,7 +435,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 int len = 0;
                 foreach (string s in _keys)
+                {
                     len += (s.Length + 1);
+                }
+
                 return len;
             }
         }
@@ -391,7 +449,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _values.Clear();
         }
 
-        public VoidPtr this[string s] { get { return _values[_keys.IndexOf(s)]; } }
+        public VoidPtr this[string s] => _values[_keys.IndexOf(s)];
 
         public void WriteTable(VoidPtr address)
         {

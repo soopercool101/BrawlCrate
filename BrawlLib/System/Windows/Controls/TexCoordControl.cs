@@ -1,6 +1,6 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.OpenGL;
+using BrawlLib.SSBB.ResourceNodes;
 using OpenTK.Graphics.OpenGL;
-using BrawlLib.OpenGL;
 
 namespace System.Windows.Forms
 {
@@ -14,11 +14,14 @@ namespace System.Windows.Forms
             texCoordRenderer1.ObjIndexChanged += texCoordRenderer1_ObjIndexChanged;
         }
 
-        bool _updating;
-        void texCoordRenderer1_ObjIndexChanged(object sender, EventArgs e)
+        private bool _updating;
+
+        private void texCoordRenderer1_ObjIndexChanged(object sender, EventArgs e)
         {
             if (comboObj.Items.Count == 1)
+            {
                 return;
+            }
 
             if (comboObj.SelectedIndex != texCoordRenderer1._objIndex + 1 && comboObj.Items.Count != 0)
             {
@@ -28,10 +31,12 @@ namespace System.Windows.Forms
             }
         }
 
-        void texCoordRenderer1_UVIndexChanged(object sender, EventArgs e)
+        private void texCoordRenderer1_UVIndexChanged(object sender, EventArgs e)
         {
             if (comboUVs.Items.Count == 1)
+            {
                 return;
+            }
 
             if (comboUVs.SelectedIndex != texCoordRenderer1._uvIndex + 1 && comboUVs.Items.Count != 0)
             {
@@ -43,7 +48,7 @@ namespace System.Windows.Forms
 
         public MDL0MaterialRefNode TargetNode
         {
-            get { return texCoordRenderer1.TargetNode; }
+            get => texCoordRenderer1.TargetNode;
             set
             {
                 if ((texCoordRenderer1.TargetNode = value) != null)
@@ -64,12 +69,10 @@ namespace System.Windows.Forms
             int height = 512; //temporary - need to calculate width
             int width = 512; //temporary - need to calculate height
 
-            uint bufferHandle;
-            uint colorTex;
 
             texCoordRenderer1.Capture();
 
-            GL.GenTextures(1, out colorTex);
+            GL.GenTextures(1, out uint colorTex);
             GL.BindTexture(TextureTarget.Texture2D, colorTex);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
@@ -79,7 +82,7 @@ namespace System.Windows.Forms
 
             GL.BindTexture(TextureTarget.Texture2D, 0);
 
-            GL.Ext.GenFramebuffers(1, out bufferHandle);
+            GL.Ext.GenFramebuffers(1, out uint bufferHandle);
             GL.Ext.BindFramebuffer(FramebufferTarget.FramebufferExt, bufferHandle);
             GL.Ext.FramebufferTexture2D(FramebufferTarget.FramebufferExt, FramebufferAttachment.ColorAttachment0Ext, TextureTarget.Texture2D, colorTex, 0);
 
@@ -106,13 +109,17 @@ namespace System.Windows.Forms
         private void comboObj_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 texCoordRenderer1.SetObjectIndex(comboObj.SelectedIndex - 1);
+            }
         }
 
         private void comboUVs_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!_updating)
+            {
                 texCoordRenderer1.SetUVIndex(comboUVs.SelectedIndex - 1);
+            }
         }
     }
 }

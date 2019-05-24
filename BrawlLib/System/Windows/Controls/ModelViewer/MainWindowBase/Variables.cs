@@ -50,8 +50,11 @@ namespace System.Windows.Forms
         {
             get
             {
-                if (_targetModel is MDL0Node) 
+                if (_targetModel is MDL0Node)
+                {
                     return ((MDL0Node)_targetModel).VIS0Indices;
+                }
+
                 return null;
             }
         }
@@ -99,8 +102,8 @@ namespace System.Windows.Forms
                 return _hiX || _hiY || _hiZ || _hiCirc || _hiSphere;
             }
             public void Update(
-                TransformType type, 
-                Vector3 worldPoint, 
+                TransformType type,
+                Vector3 worldPoint,
                 Vector3 localPoint,
                 Vector3 oldAngles,
                 Vector3 oldPosition,
@@ -132,8 +135,8 @@ namespace System.Windows.Forms
             }
         }
 
-        public SelectionParams 
-            _boneSelection = new SelectionParams(), 
+        public SelectionParams
+            _boneSelection = new SelectionParams(),
             _vertexSelection = new SelectionParams();
 
         public bool _resetCamera = true;
@@ -172,7 +175,7 @@ namespace System.Windows.Forms
 
         #region Delegates
 
-        protected delegate void DelegateOpenFile(String s);
+        protected delegate void DelegateOpenFile(string s);
         protected DelegateOpenFile _openFileDelegate;
 
         #endregion

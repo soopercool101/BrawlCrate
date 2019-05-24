@@ -11,7 +11,7 @@ namespace System.Windows.Forms
 
         private int _currentPage = 1;
         private SRTAnimationFrame _currentFrame = SRTAnimationFrame.Identity;
-        private NumericInputBox[] _boxes = new NumericInputBox[5];
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[5];
         private Panel panel1;
         private Label label6;
         private Label label5;
@@ -22,18 +22,20 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SRT0TextureNode TargetSequence
         {
-            get { return _target; }
+            get => _target;
             set
             {
                 if (_target == value)
+                {
                     return;
+                }
 
                 _target = value;
                 UpdateTarget();
             }
         }
 
-        public TexAnimEditControl() 
+        public TexAnimEditControl()
         {
             InitializeComponent();
             _boxes[0] = numScaleX;
@@ -41,9 +43,11 @@ namespace System.Windows.Forms
             _boxes[2] = numRot;
             _boxes[3] = numTransX;
             _boxes[4] = numTransY;
-            
+
             for (int i = 0; i < 5; i++)
+            {
                 _boxes[i].Tag = i;
+            }
         }
 
         private void UpdateTarget()
@@ -82,10 +86,12 @@ namespace System.Windows.Forms
                     _currentPage = 0;
                     numFrame.Value = 1;
                     numFrame.Maximum = _numFrames;
-                    lblFrameCount.Text = String.Format("/ {0}", _numFrames);
+                    lblFrameCount.Text = string.Format("/ {0}", _numFrames);
                 }
                 else
+                {
                     numFrame.Value = 1;
+                }
             }
             listKeyframes.EndUpdate();
 
@@ -117,7 +123,9 @@ namespace System.Windows.Forms
                 numTransY.Value = _currentFrame.Translation._y;
 
                 for (int i = 0; i < 5; i++)
+                {
                     UpdateBox(i);
+                }
 
                 btnPrev.Enabled = _currentPage > 0;
                 btnNext.Enabled = _currentPage < (_numFrames - 1);
@@ -130,17 +138,26 @@ namespace System.Windows.Forms
         {
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
+            {
                 if (((SRTAnimationFrame)listKeyframes.Items[i]).Index == index)
+                {
                     return i;
+                }
+            }
+
             return -1;
         }
 
         private void UpdateBox(int index)
         {
             if (_target.GetKeyframe(index, _currentPage) != null)
+            {
                 _boxes[index].BackColor = Color.Yellow;
+            }
             else
+            {
                 _boxes[index].BackColor = Color.White;
+            }
         }
 
         private unsafe void BoxChanged(object sender, EventArgs e)
@@ -164,14 +181,20 @@ namespace System.Windows.Forms
                         kf = (SRTAnimationFrame)listKeyframes.Items[kfIndex];
                         kf.SetBool(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 5) && float.IsNaN(pkf[x]); x++) ;
+                        for (x = 0; (x < 5) && float.IsNaN(pkf[x]); x++)
+                        {
+                            ;
+                        }
+
                         if (x == 5)
                         {
                             listKeyframes.Items.RemoveAt(kfIndex);
                             listKeyframes.SelectedIndex = -1;
                         }
                         else
+                        {
                             listKeyframes.Items[kfIndex] = kf;
+                        }
                     }
 
                     _target.RemoveKeyframe(index, _currentPage);
@@ -195,7 +218,10 @@ namespace System.Windows.Forms
                         pkf[index] = val;
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((SRTAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++) ;
+                        for (x = 0; (x < count) && (((SRTAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        {
+                            ;
+                        }
 
                         listKeyframes.Items.Insert(x, kf);
                         listKeyframes.SelectedIndex = x;
@@ -215,7 +241,7 @@ namespace System.Windows.Forms
             if (index >= 0)
             {
                 SRTAnimationFrame f = (SRTAnimationFrame)listKeyframes.SelectedItem;
-                numFrame.Value = (decimal)(f.Index + 1);
+                numFrame.Value = f.Index + 1;
             }
         }
 
@@ -242,283 +268,283 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numScaleY = new System.Windows.Forms.NumericInputBox();
-            this.numRot = new System.Windows.Forms.NumericInputBox();
-            this.numTransX = new System.Windows.Forms.NumericInputBox();
-            this.numTransY = new System.Windows.Forms.NumericInputBox();
-            this.numScaleX = new System.Windows.Forms.NumericInputBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numFrame = new System.Windows.Forms.NumericUpDown();
-            this.lblFrameCount = new System.Windows.Forms.Label();
-            this.btnPrev = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.listKeyframes = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numFrame)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            numScaleY = new System.Windows.Forms.NumericInputBox();
+            numRot = new System.Windows.Forms.NumericInputBox();
+            numTransX = new System.Windows.Forms.NumericInputBox();
+            numTransY = new System.Windows.Forms.NumericInputBox();
+            numScaleX = new System.Windows.Forms.NumericInputBox();
+            label7 = new System.Windows.Forms.Label();
+            numFrame = new System.Windows.Forms.NumericUpDown();
+            lblFrameCount = new System.Windows.Forms.Label();
+            btnPrev = new System.Windows.Forms.Button();
+            btnNext = new System.Windows.Forms.Button();
+            listKeyframes = new System.Windows.Forms.ListBox();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            panel1 = new System.Windows.Forms.Panel();
+            label9 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(numFrame)).BeginInit();
+            groupBox1.SuspendLayout();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(10, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Scale";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.Location = new System.Drawing.Point(10, 30);
+            label1.Margin = new System.Windows.Forms.Padding(0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(70, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Scale";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(10, 49);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Translation";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.Location = new System.Drawing.Point(10, 49);
+            label2.Margin = new System.Windows.Forms.Padding(0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(70, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Translation";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(10, 68);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Rotation";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.Location = new System.Drawing.Point(10, 68);
+            label3.Margin = new System.Windows.Forms.Padding(0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(88, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Rotation";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numScaleY
             // 
-            this.numScaleY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numScaleY.Location = new System.Drawing.Point(184, 30);
-            this.numScaleY.Margin = new System.Windows.Forms.Padding(0);
-            this.numScaleY.Name = "numScaleY";
-            this.numScaleY.Size = new System.Drawing.Size(70, 20);
-            this.numScaleY.TabIndex = 3;
-            this.numScaleY.Text = "0";
-            this.numScaleY.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numScaleY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleY.Location = new System.Drawing.Point(184, 30);
+            numScaleY.Margin = new System.Windows.Forms.Padding(0);
+            numScaleY.Name = "numScaleY";
+            numScaleY.Size = new System.Drawing.Size(70, 20);
+            numScaleY.TabIndex = 3;
+            numScaleY.Text = "0";
+            numScaleY.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numRot
             // 
-            this.numRot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numRot.Location = new System.Drawing.Point(97, 68);
-            this.numRot.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numRot.Name = "numRot";
-            this.numRot.Size = new System.Drawing.Size(70, 20);
-            this.numRot.TabIndex = 6;
-            this.numRot.Text = "0";
-            this.numRot.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numRot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRot.Location = new System.Drawing.Point(97, 68);
+            numRot.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numRot.Name = "numRot";
+            numRot.Size = new System.Drawing.Size(70, 20);
+            numRot.TabIndex = 6;
+            numRot.Text = "0";
+            numRot.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numTransX
             // 
-            this.numTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numTransX.Location = new System.Drawing.Point(97, 49);
-            this.numTransX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numTransX.Name = "numTransX";
-            this.numTransX.Size = new System.Drawing.Size(70, 20);
-            this.numTransX.TabIndex = 9;
-            this.numTransX.Text = "0";
-            this.numTransX.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransX.Location = new System.Drawing.Point(97, 49);
+            numTransX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numTransX.Name = "numTransX";
+            numTransX.Size = new System.Drawing.Size(70, 20);
+            numTransX.TabIndex = 9;
+            numTransX.Text = "0";
+            numTransX.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numTransY
             // 
-            this.numTransY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numTransY.Location = new System.Drawing.Point(184, 49);
-            this.numTransY.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numTransY.Name = "numTransY";
-            this.numTransY.Size = new System.Drawing.Size(70, 20);
-            this.numTransY.TabIndex = 10;
-            this.numTransY.Text = "0";
-            this.numTransY.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numTransY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransY.Location = new System.Drawing.Point(184, 49);
+            numTransY.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numTransY.Name = "numTransY";
+            numTransY.Size = new System.Drawing.Size(70, 20);
+            numTransY.TabIndex = 10;
+            numTransY.Text = "0";
+            numTransY.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // numScaleX
             // 
-            this.numScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numScaleX.Location = new System.Drawing.Point(97, 30);
-            this.numScaleX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.numScaleX.Name = "numScaleX";
-            this.numScaleX.Size = new System.Drawing.Size(70, 20);
-            this.numScaleX.TabIndex = 11;
-            this.numScaleX.Text = "0";
-            this.numScaleX.ValueChanged += new System.EventHandler(this.BoxChanged);
+            numScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleX.Location = new System.Drawing.Point(97, 30);
+            numScaleX.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numScaleX.Name = "numScaleX";
+            numScaleX.Size = new System.Drawing.Size(70, 20);
+            numScaleX.TabIndex = 11;
+            numScaleX.Text = "0";
+            numScaleX.ValueChanged += new System.EventHandler(BoxChanged);
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(37, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 20);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Frame:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label7.Location = new System.Drawing.Point(37, 5);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(61, 20);
+            label7.TabIndex = 15;
+            label7.Text = "Frame:";
+            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numFrame
             // 
-            this.numFrame.Location = new System.Drawing.Point(104, 5);
-            this.numFrame.Minimum = new decimal(new int[] {
+            numFrame.Location = new System.Drawing.Point(104, 5);
+            numFrame.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numFrame.Name = "numFrame";
-            this.numFrame.Size = new System.Drawing.Size(58, 20);
-            this.numFrame.TabIndex = 0;
-            this.numFrame.Value = new decimal(new int[] {
+            numFrame.Name = "numFrame";
+            numFrame.Size = new System.Drawing.Size(58, 20);
+            numFrame.TabIndex = 0;
+            numFrame.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numFrame.ValueChanged += new System.EventHandler(this.numFrame_ValueChanged);
+            numFrame.ValueChanged += new System.EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
             // 
-            this.lblFrameCount.Location = new System.Drawing.Point(168, 5);
-            this.lblFrameCount.Name = "lblFrameCount";
-            this.lblFrameCount.Size = new System.Drawing.Size(45, 20);
-            this.lblFrameCount.TabIndex = 17;
-            this.lblFrameCount.Text = "/ 10";
-            this.lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrameCount.Location = new System.Drawing.Point(168, 5);
+            lblFrameCount.Name = "lblFrameCount";
+            lblFrameCount.Size = new System.Drawing.Size(45, 20);
+            lblFrameCount.TabIndex = 17;
+            lblFrameCount.Text = "/ 10";
+            lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnPrev
             // 
-            this.btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrev.Location = new System.Drawing.Point(219, 4);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(23, 23);
-            this.btnPrev.TabIndex = 1;
-            this.btnPrev.Text = "<";
-            this.btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Location = new System.Drawing.Point(219, 4);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new System.Drawing.Size(23, 23);
+            btnPrev.TabIndex = 1;
+            btnPrev.Text = "<";
+            btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += new System.EventHandler(btnPrev_Click);
             // 
             // btnNext
             // 
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(244, 4);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(23, 23);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = ">";
-            this.btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Location = new System.Drawing.Point(244, 4);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new System.Drawing.Size(23, 23);
+            btnNext.TabIndex = 2;
+            btnNext.Text = ">";
+            btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += new System.EventHandler(btnNext_Click);
             // 
             // listKeyframes
             // 
-            this.listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listKeyframes.FormattingEnabled = true;
-            this.listKeyframes.IntegralHeight = false;
-            this.listKeyframes.ItemHeight = 14;
-            this.listKeyframes.Location = new System.Drawing.Point(3, 16);
-            this.listKeyframes.Name = "listKeyframes";
-            this.listKeyframes.Size = new System.Drawing.Size(294, 96);
-            this.listKeyframes.TabIndex = 18;
-            this.listKeyframes.SelectedIndexChanged += new System.EventHandler(this.listKeyframes_SelectedIndexChanged);
+            listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
+            listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.FormattingEnabled = true;
+            listKeyframes.IntegralHeight = false;
+            listKeyframes.ItemHeight = 14;
+            listKeyframes.Location = new System.Drawing.Point(3, 16);
+            listKeyframes.Name = "listKeyframes";
+            listKeyframes.Size = new System.Drawing.Size(294, 96);
+            listKeyframes.TabIndex = 18;
+            listKeyframes.SelectedIndexChanged += new System.EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listKeyframes);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 115);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Keyframes";
+            groupBox1.Controls.Add(listKeyframes);
+            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(300, 115);
+            groupBox1.TabIndex = 21;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Keyframes";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.btnNext);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.numTransY);
-            this.panel1.Controls.Add(this.btnPrev);
-            this.panel1.Controls.Add(this.numScaleY);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.lblFrameCount);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.numFrame);
-            this.panel1.Controls.Add(this.numScaleX);
-            this.panel1.Controls.Add(this.numRot);
-            this.panel1.Controls.Add(this.numTransX);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 115);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 97);
-            this.panel1.TabIndex = 23;
+            panel1.Controls.Add(label9);
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(label6);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label7);
+            panel1.Controls.Add(btnNext);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(numTransY);
+            panel1.Controls.Add(btnPrev);
+            panel1.Controls.Add(numScaleY);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lblFrameCount);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(numFrame);
+            panel1.Controls.Add(numScaleX);
+            panel1.Controls.Add(numRot);
+            panel1.Controls.Add(numTransX);
+            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Location = new System.Drawing.Point(0, 115);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(300, 97);
+            panel1.TabIndex = 23;
             // 
             // label9
             // 
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label9.Location = new System.Drawing.Point(166, 30);
-            this.label9.Margin = new System.Windows.Forms.Padding(0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 20);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Y";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label9.Location = new System.Drawing.Point(166, 30);
+            label9.Margin = new System.Windows.Forms.Padding(0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(19, 20);
+            label9.TabIndex = 22;
+            label9.Text = "Y";
+            label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label8.Location = new System.Drawing.Point(79, 30);
-            this.label8.Margin = new System.Windows.Forms.Padding(0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 20);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "X";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label8.Location = new System.Drawing.Point(79, 30);
+            label8.Margin = new System.Windows.Forms.Padding(0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(19, 20);
+            label8.TabIndex = 21;
+            label8.Text = "X";
+            label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(166, 49);
-            this.label6.Margin = new System.Windows.Forms.Padding(0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(19, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Y";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label6.Location = new System.Drawing.Point(166, 49);
+            label6.Margin = new System.Windows.Forms.Padding(0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(19, 20);
+            label6.TabIndex = 20;
+            label6.Text = "Y";
+            label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(79, 49);
-            this.label5.Margin = new System.Windows.Forms.Padding(0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 20);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "X";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label5.Location = new System.Drawing.Point(79, 49);
+            label5.Margin = new System.Windows.Forms.Padding(0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(19, 20);
+            label5.TabIndex = 19;
+            label5.Text = "X";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TexAnimEditControl
             // 
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel1);
-            this.Name = "TexAnimEditControl";
-            this.Size = new System.Drawing.Size(300, 212);
-            ((System.ComponentModel.ISupportInitialize)(this.numFrame)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
+            Controls.Add(groupBox1);
+            Controls.Add(panel1);
+            Name = "TexAnimEditControl";
+            Size = new System.Drawing.Size(300, 212);
+            ((System.ComponentModel.ISupportInitialize)(numFrame)).EndInit();
+            groupBox1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
 
         }
 

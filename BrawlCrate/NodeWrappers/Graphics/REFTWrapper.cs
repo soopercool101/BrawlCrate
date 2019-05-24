@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static REFTWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -27,7 +27,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
-            _menu.Closing += MenuClosing; 
+            _menu.Closing += MenuClosing;
         }
         protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<REFTWrapper>().ImportTexture(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -47,23 +47,24 @@ namespace BrawlCrate.NodeWrappers
 
         public REFTWrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.REFT; } }
+        public override string ExportFilter => FileFilters.REFT;
 
         public void ImportTexture()
         {
-            string path;
-            int index = Program.OpenFile(FileFilters.Images, out path);
+            int index = Program.OpenFile(FileFilters.Images, out string path);
             if (index > 0)
+            {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = path;
                     if (dlg.ShowDialog(MainForm.Instance, Resource as REFTNode) == DialogResult.OK)
                     {
-                        BaseWrapper w = this.FindResource(dlg.REFTTextureNode, true);
+                        BaseWrapper w = FindResource(dlg.REFTTextureNode, true);
                         w.EnsureVisible();
                         w.TreeView.SelectedNode = w;
                     }
                 }
+            }
         }
     }
 }

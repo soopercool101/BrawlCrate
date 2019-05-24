@@ -9,12 +9,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public RelocationManager _manager;
 
         [Browsable(false)]
-        public virtual bool HasCode { get { return true; } }
+        public virtual bool HasCode => true;
         [Browsable(false)]
-        public virtual uint ASMOffset { get { return RootOffset; } }
+        public virtual uint ASMOffset => RootOffset;
 
         [DisplayName("Size")]
-        public string DataSize { get { return "0x" + (_dataBuffer != null ? _dataBuffer.Length.ToString("X") : "0"); } }
+        public string DataSize => "0x" + (_dataBuffer != null ? _dataBuffer.Length.ToString("X") : "0");
 
         public UnsafeBuffer _dataBuffer;
         public SectionEditor _linkedEditor = null;
@@ -30,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)]
-        public buint* BufferAddress { get { return (buint*)_dataBuffer.Address; } }
+        public buint* BufferAddress => (buint*)_dataBuffer.Address;
 
         //public Relocation this[int index] 
         //{
@@ -168,7 +168,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //        _relocations.Add(new Relocation(this, _relocations.Count));
             //else if (diff < 0)
             //    _relocations.RemoveRange(_relocations.Count + diff, -diff);
-            
+
             //UnsafeBuffer newBuffer = new UnsafeBuffer(newSize);
             //int max = Math.Min(_dataBuffer.Length, newBuffer.Length);
             //if (max > 0)

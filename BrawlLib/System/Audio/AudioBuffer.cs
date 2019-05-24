@@ -7,60 +7,60 @@
         internal const int DefaultBufferSpan = 2;
 
         internal AudioProvider _owner;
-        public AudioProvider Owner { get { return _owner; } }
+        public AudioProvider Owner => _owner;
 
         internal IAudioStream _source;
-        public IAudioStream Source { get { return _source; } }
+        public IAudioStream Source => _source;
 
         internal WaveFormatTag _format;
-        public WaveFormatTag Format { get { return _format; } }
+        public WaveFormatTag Format => _format;
 
         internal int _frequency;
-        public int Frequency { get { return _frequency; } }
+        public int Frequency => _frequency;
 
         internal int _channels;
-        public int Channels { get { return _channels; } }
+        public int Channels => _channels;
 
         internal int _bitsPerSample;
-        public int BitsPerSample { get { return _bitsPerSample; } }
+        public int BitsPerSample => _bitsPerSample;
 
         //Number of samples that can be stored inside the buffer.
         internal int _sampleLength;
-        public int SampleLength { get { return _sampleLength; } }
+        public int SampleLength => _sampleLength;
 
         //Total byte length of the buffer.
         internal int _dataLength;
-        public int DataLength { get { return _dataLength; } }
+        public int DataLength => _dataLength;
 
         //Number of bytes in each sample. (_bitsPerSample * _channels / 8)
         internal int _blockAlign;
-        public int BlockAlign { get { return _blockAlign; } }
+        public int BlockAlign => _blockAlign;
 
         //Byte offset within buffer in which to continue writing.
         //Read-only. It is the responsibility of the application to update the audio data in a timely manner.
         //As data is written, this is updated automatically.
         internal int _writeOffset;
-        public int WriteOffset { get { return _writeOffset; } }
+        public int WriteOffset => _writeOffset;
 
         //Byte offset within buffer in which reading is currently commencing.
         //The application must call Update (or Fill) to update this value.
         internal int _readOffset;
-        public int ReadOffset { get { return _readOffset; } }
+        public int ReadOffset => _readOffset;
 
         //Cumulative sample position in which to continue writing.
         //This value is updated automatically when fill is called.
         internal int _writeSample;
-        public int WriteSample { get { return _writeSample; } }
+        public int WriteSample => _writeSample;
 
         //Cumulative sample position in which the buffer is currently reading.
         //This value is updated as Update is called.
         internal int _readSample;
-        public int ReadSample { get { return _readSample; } }
+        public int ReadSample => _readSample;
 
         //Sets whether the buffer manages looping.
         //Use this with Source.
         internal bool _loop = false;
-        public bool Loop { get { return _loop; } set { _loop = value; } }
+        public bool Loop { get => _loop; set => _loop = value; }
 
         //internal bool _playing = false;
         //public bool IsPlaying { get { return _playing; } }
@@ -94,7 +94,9 @@
             _readSample = _writeSample = samplePos;
 
             if (_source != null)
+            {
                 _source.SamplePosition = samplePos;
+            }
         }
         public void Reset()
         {
@@ -114,7 +116,9 @@
 
             //If no change, why continue?
             if (sampleDifference == 0)
+            {
                 return;
+            }
 
             //Set new read offset.
             _readOffset = byteOffset;
@@ -129,9 +133,13 @@
                     int newSample = _readSample + sampleDifference;
 
                     if ((newSample >= end) && (_writeSample < _readSample))
+                    {
                         _readSample = start + ((newSample - start) % (end - start));
+                    }
                     else
+                    {
                         _readSample = Math.Min(newSample, _source.Samples);
+                    }
                 }
                 else
                 {
@@ -141,14 +149,18 @@
                 }
             }
             else
+            {
                 _readSample += sampleDifference;
+            }
         }
 
         public virtual void Fill()
         {
             //This only works if a source has been assigned!
             if (_source == null)
+            {
                 return;
+            }
 
             //Update read position
             Update();

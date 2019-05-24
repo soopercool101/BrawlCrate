@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
-using System.ComponentModel;
-using BrawlLib.SSBBTypes;
-using BrawlLib;
+﻿using BrawlLib;
 using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBBTypes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -14,7 +14,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static ARCWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -68,24 +68,18 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             ARCWrapper w = GetInstance<ARCWrapper>();
-                _menu.Items[8].Enabled = _menu.Items[15].Enabled = w.Parent != null;
-                _menu.Items[9].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
-                _menu.Items[11].Enabled = w.PrevNode != null;
-                _menu.Items[12].Enabled = w.NextNode != null;
+            _menu.Items[8].Enabled = _menu.Items[15].Enabled = w.Parent != null;
+            _menu.Items[9].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[11].Enabled = w.PrevNode != null;
+            _menu.Items[12].Enabled = w.NextNode != null;
         }
         #endregion
 
-        public override string ExportFilter
-        {
-            get
-            {
-                return "PAC Archive (*.pac)|*.pac|" +
+        public override string ExportFilter => "PAC Archive (*.pac)|*.pac|" +
                     "Compressed PAC Archive (*.pcs)|*.pcs|" +
                     "Archive Pair (*.pair)|*.pair|" +
                     "Multiple Resource Group (*.mrg)|*.mrg|" +
                     "Compressed MRG (*.mrgc)|*.mrgc";
-            }
-        }
 
         public ARCWrapper() { ContextMenuStrip = _menu; }
 
@@ -94,7 +88,7 @@ namespace BrawlCrate.NodeWrappers
             ARCNode node = new ARCNode() { Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -104,7 +98,7 @@ namespace BrawlCrate.NodeWrappers
             BRRESNode node = new BRRESNode() { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -114,7 +108,7 @@ namespace BrawlCrate.NodeWrappers
             CollisionNode node = new CollisionNode() { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -124,7 +118,7 @@ namespace BrawlCrate.NodeWrappers
             BLOCNode node = new BLOCNode() { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -134,7 +128,7 @@ namespace BrawlCrate.NodeWrappers
             MSBinNode node = new MSBinNode() { FileType = ARCFileType.MiscData };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -142,35 +136,40 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            string path;
-            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out path) > 0)
+            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out string path) > 0)
+            {
                 NewARC().Replace(path);
+            }
         }
         public void ImportBRES()
         {
-            string path;
-            if (Program.OpenFile(FileFilters.BRES, out path) > 0)
+            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
+            {
                 NewBRES().Replace(path);
+            }
         }
         public void ImportBLOC()
         {
-            string path;
-            if (Program.OpenFile(FileFilters.BLOC, out path) > 0)
+            if (Program.OpenFile(FileFilters.BLOC, out string path) > 0)
+            {
                 NewBLOC().Replace(path);
+            }
         }
         public void ImportCollision()
         {
-            string path;
-            if (Program.OpenFile(FileFilters.CollisionDef, out path) > 0)
+            if (Program.OpenFile(FileFilters.CollisionDef, out string path) > 0)
+            {
                 NewBRES().Replace(path);
+            }
         }
         public void ImportMSBin()
         {
-            string path;
-            if (Program.OpenFile(FileFilters.MSBin, out path) > 0)
+            if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
+            {
                 NewMSBin().Replace(path);
+            }
         }
-        
+
         public override void OnExport(string outPath, int filterIndex)
         {
             switch (filterIndex)
@@ -193,7 +192,10 @@ namespace BrawlCrate.NodeWrappers
                 case ResourceType.BRES:
                 case ResourceType.BRESGroup:
                     foreach (ResourceNode n in node.Children)
+                    {
                         LoadModels(n, models, collisions);
+                    }
+
                     break;
                 case ResourceType.MDL0:
                     models.Add((IModel)node);
@@ -216,18 +218,18 @@ namespace BrawlCrate.NodeWrappers
         {
             string path = Program.ChooseFolder();
             if (path == null)
+            {
                 return;
-
-            ((ARCNode)_resource).ExtractToFolder(path);
+            } ((ARCNode)_resource).ExtractToFolder(path);
         }
 
         public void ReplaceAll()
         {
             string path = Program.ChooseFolder();
             if (path == null)
+            {
                 return;
-
-            ((ARCNode)_resource).ReplaceFromFolder(path);
+            } ((ARCNode)_resource).ReplaceFromFolder(path);
         }
     }
 }

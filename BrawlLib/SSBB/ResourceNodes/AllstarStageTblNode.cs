@@ -9,27 +9,29 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         private AllstarDifficultyData data;
 
-        public byte Unknown00 { get { return data._unknown00; } set { data._unknown00 = value; SignalPropertyChange(); } }
-        public byte Unknown01 { get { return data._unknown01; } set { data._unknown01 = value; SignalPropertyChange(); } }
-        public byte Unknown02 { get { return data._unknown02; } set { data._unknown02 = value; SignalPropertyChange(); } }
-        public byte Unknown03 { get { return data._unknown03; } set { data._unknown03 = value; SignalPropertyChange(); } }
+        public byte Unknown00 { get => data._unknown00; set { data._unknown00 = value; SignalPropertyChange(); } }
+        public byte Unknown01 { get => data._unknown01; set { data._unknown01 = value; SignalPropertyChange(); } }
+        public byte Unknown02 { get => data._unknown02; set { data._unknown02 = value; SignalPropertyChange(); } }
+        public byte Unknown03 { get => data._unknown03; set { data._unknown03 = value; SignalPropertyChange(); } }
 
-        public short OffenseRatio { get { return data._offenseRatio; } set { data._offenseRatio = value; SignalPropertyChange(); } }
-        public short DefenseRatio { get { return data._defenseRatio; } set { data._defenseRatio = value; SignalPropertyChange(); } }
+        public short OffenseRatio { get => data._offenseRatio; set { data._offenseRatio = value; SignalPropertyChange(); } }
+        public short DefenseRatio { get => data._defenseRatio; set { data._defenseRatio = value; SignalPropertyChange(); } }
 
-        public byte Unknown08 { get { return data._unknown08; } set { data._unknown08 = value; SignalPropertyChange(); } }
-        public byte Color     { get { return data._color; }     set { data._color = value;     SignalPropertyChange(); } }
-        public byte Stock     { get { return data._stock; }     set { data._stock = value;     SignalPropertyChange(); } }
-        public byte Unknown0b { get { return data._unknown0b; } set { data._unknown0b = value; SignalPropertyChange(); } }
+        public byte Unknown08 { get => data._unknown08; set { data._unknown08 = value; SignalPropertyChange(); } }
+        public byte Color { get => data._color; set { data._color = value; SignalPropertyChange(); } }
+        public byte Stock { get => data._stock; set { data._stock = value; SignalPropertyChange(); } }
+        public byte Unknown0b { get => data._unknown0b; set { data._unknown0b = value; SignalPropertyChange(); } }
 
-        public short Unknown0c { get { return data._unknown0c; } set { data._unknown0c = value; SignalPropertyChange(); } }
+        public short Unknown0c { get => data._unknown0c; set { data._unknown0c = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
             if (WorkingUncompressed.Length != sizeof(AllstarDifficultyData))
+            {
                 throw new Exception("Wrong size for AllstarDifficultyNode");
+            }
 
             // Copy the data from the address
             data = *(AllstarDifficultyData*)WorkingUncompressed.Address;
@@ -53,15 +55,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         private float _unknown04;
 
         [TypeConverter(typeof(DropDownListFighterIDs))]
-        public byte FighterID { get { return _fighterID; } set { _fighterID = value; SignalPropertyChange(); } }
-        public float Unknown04 { get { return _unknown04; } set { _unknown04 = value; SignalPropertyChange(); } }
+        public byte FighterID { get => _fighterID; set { _fighterID = value; SignalPropertyChange(); } }
+        public float Unknown04 { get => _unknown04; set { _unknown04 = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
             if (WorkingUncompressed.Length != sizeof(AllstarFighterData))
+            {
                 throw new Exception("Wrong size for AllstarFighterNode");
+            }
 
             // Copy the data from the address
             AllstarFighterData* ptr = (AllstarFighterData*)WorkingUncompressed.Address;
@@ -73,7 +77,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                var fighter = Fighter.Fighters.Where(s => s.ID == FighterID).FirstOrDefault();
+                Fighter fighter = Fighter.Fighters.Where(s => s.ID == FighterID).FirstOrDefault();
                 _name = "Fighter: 0x" + FighterID.ToString("X2") + (fighter == null ? "" : (" - " + fighter.Name));
             }
 
@@ -86,7 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (string s in new string[] { "Easy", "Normal", "Hard", "Very Hard", "Intense" })
             {
                 DataSource source = new DataSource(ptr, sizeof(AllstarDifficultyData));
-                var node = new AllstarDifficultyNode();
+                AllstarDifficultyNode node = new AllstarDifficultyNode();
                 node.Initialize(this, source);
                 node.Name = s;
                 node.IsDirty = false;
@@ -123,18 +127,18 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         private int _stage1, _stage2, _stage3, _stage4, _stage5;
 
-        public override ResourceType ResourceType { get { return ResourceType.Container; } }
+        public override ResourceType ResourceType => ResourceType.Container;
 
         [TypeConverter(typeof(DropDownListStageIDs))]
-        public int Stage1 { get { return _stage1; } set { _stage1 = value; SignalPropertyChange(); } }
+        public int Stage1 { get => _stage1; set { _stage1 = value; SignalPropertyChange(); } }
         [TypeConverter(typeof(DropDownListStageIDs))]
-        public int Stage2 { get { return _stage2; } set { _stage2 = value; SignalPropertyChange(); } }
+        public int Stage2 { get => _stage2; set { _stage2 = value; SignalPropertyChange(); } }
         [TypeConverter(typeof(DropDownListStageIDs))]
-        public int Stage3 { get { return _stage3; } set { _stage3 = value; SignalPropertyChange(); } }
+        public int Stage3 { get => _stage3; set { _stage3 = value; SignalPropertyChange(); } }
         [TypeConverter(typeof(DropDownListStageIDs))]
-        public int Stage4 { get { return _stage4; } set { _stage4 = value; SignalPropertyChange(); } }
+        public int Stage4 { get => _stage4; set { _stage4 = value; SignalPropertyChange(); } }
         [TypeConverter(typeof(DropDownListStageIDs))]
-        public int Stage5 { get { return _stage5; } set { _stage5 = value; SignalPropertyChange(); } }
+        public int Stage5 { get => _stage5; set { _stage5 = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {

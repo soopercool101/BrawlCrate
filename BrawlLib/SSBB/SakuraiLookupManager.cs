@@ -8,27 +8,36 @@ namespace BrawlLib.SSBBTypes
     /// </summary>
     public class LookupManager : IEnumerable<VoidPtr>
     {
-        private List<VoidPtr> _values = new List<VoidPtr>();
-        public int Count { get { return _values.Count; } }
+        private readonly List<VoidPtr> _values = new List<VoidPtr>();
+        public int Count => _values.Count;
         public VoidPtr this[int index]
         {
             get
             {
                 if (index >= 0 && index < _values.Count)
+                {
                     return _values[index];
+                }
+
                 return null;
             }
             set
             {
                 if (index >= 0 && index < _values.Count)
+                {
                     _values[index] = value;
+                }
             }
         }
         public void Add(params VoidPtr[] valueAddrs)
         {
             foreach (VoidPtr value in valueAddrs)
+            {
                 if (!_values.Contains(value))
+                {
                     _values.Add(value);
+                }
+            }
         }
 
         public void Sort()
@@ -42,7 +51,9 @@ namespace BrawlLib.SSBBTypes
 
             bint* values = (bint*)address;
             foreach (int offset in this)
+            {
                 *values++ = offset;
+            }
 
             return (int)values - (int)address;
         }
@@ -52,6 +63,6 @@ namespace BrawlLib.SSBBTypes
         }
 
         public IEnumerator<VoidPtr> GetEnumerator() { return _values.GetEnumerator(); }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
 }

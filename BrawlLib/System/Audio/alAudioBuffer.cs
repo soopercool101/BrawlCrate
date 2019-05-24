@@ -1,6 +1,5 @@
 ﻿using OpenTK.Audio.OpenAL;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace System.Audio
 {
@@ -9,7 +8,7 @@ namespace System.Audio
     /// to hold the whole IAudioSource, while maintaining OpenAL's buffers
     /// internally.
     /// </summary>
-    unsafe class alAudioBuffer : AudioBuffer
+    internal unsafe class alAudioBuffer : AudioBuffer
     {
         // This class stores the source id and the length of discarded buffers.
         private class alSourceLock
@@ -19,13 +18,13 @@ namespace System.Audio
             public int addToCursor;
         }
 
-        alAudioProvider _parent;
+        private readonly alAudioProvider _parent;
 
         //Lock on this before using what's inside of it.
-        alSourceLock sourceLock;
+        private readonly alSourceLock sourceLock;
 
         // Buffers that need to be added to the stream once it starts playing.
-        List<int> buffersToQueue;
+        private readonly List<int> buffersToQueue;
 
         private UnsafeBuffer _internalBuffer;
 
@@ -36,9 +35,11 @@ namespace System.Audio
                 lock (sourceLock)
                 {
                     if (sourceLock.currentSource == 0)
+                    {
                         return 0;
-                    int v;
-                    AL.GetSource(sourceLock.currentSource, ALGetSourcei.SampleOffset, out v);
+                    }
+
+                    AL.GetSource(sourceLock.currentSource, ALGetSourcei.SampleOffset, out int v);
                     return 4 * v + sourceLock.addToCursor;
                 }
             }
@@ -47,8 +48,11 @@ namespace System.Audio
                 lock (sourceLock)
                 {
                     if (sourceLock.currentSource == 0)
+                    {
                         return;
-                    AL.Source(sourceLock.currentSource, ALSourcei.SampleOffset, value - sourceLock.addToCursor  );
+                    }
+
+                    AL.Source(sourceLock.currentSource, ALSourcei.SampleOffset, value - sourceLock.addToCursor);
                 }
             }
         }
@@ -60,9 +64,12 @@ namespace System.Audio
             {
                 lock (sourceLock)
                 {
-                    if (sourceLock.currentSource == 0) return _volume;
-                    float v;
-                    AL.GetSource((uint)sourceLock.currentSource, ALSourcef.Gain, out v);
+                    if (sourceLock.currentSource == 0)
+                    {
+                        return _volume;
+                    }
+
+                    AL.GetSource((uint)sourceLock.currentSource, ALSourcef.Gain, out float v);
                     return Math.Max(-10000, (int)(Math.Log10(v) * 2000));
                 }
             }
@@ -71,7 +78,11 @@ namespace System.Audio
                 lock (sourceLock)
                 {
                     _volume = value;
-                    if (sourceLock.currentSource == 0) return;
+                    if (sourceLock.currentSource == 0)
+                    {
+                        return;
+                    }
+
                     double pct = Math.Pow(10, (double)value / 2000);
                     AL.Source(sourceLock.currentSource, ALSourcef.Gain, (float)pct);
                 }
@@ -80,10 +91,10 @@ namespace System.Audio
 
         public override int Pan
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
-        
+
         internal alAudioBuffer(alAudioProvider parent, WaveFormatEx fmt, int sampleSize)
         {
             _parent = parent;
@@ -93,7 +104,9 @@ namespace System.Audio
 
             int size = sampleSize * fmt.nChannels * fmt.wBitsPerSample / 8;
             if (size == 0)
+            {
                 return;
+            }
 
             _internalBuffer = new UnsafeBuffer(size);
 
@@ -119,7 +132,7 @@ namespace System.Audio
 
             offset = offset.Align(_blockAlign);
             length = length.Align(_blockAlign);
-            
+
             data._dataOffset = offset;
             data._dataLength = length;
             data._sampleOffset = offset / _blockAlign;
@@ -142,7 +155,7 @@ namespace System.Audio
                 data._part2Length = 0;
                 data._part2Samples = 0;
             }
-            
+
             return data;
         }
         public override void Unlock(BufferData data)
@@ -151,7 +164,7 @@ namespace System.Audio
             AL.BufferData(buffer, GetSoundFormat(_channels, _bitsPerSample), data.Part1Address, data.Part1Length, _frequency);
 
             lock (sourceLock)
-                {
+            {
                 if (sourceLock.currentSource != 0)
                 {
                     // Already playing - add buffer to source
@@ -166,7 +179,7 @@ namespace System.Audio
                     }
                 }
             }
-            
+
             Dequeue();
         }
 
@@ -174,16 +187,14 @@ namespace System.Audio
         {
             lock (sourceLock)
             {
-                int dequeuedBuffers;
-                AL.GetSource(sourceLock.currentSource, ALGetSourcei.BuffersProcessed, out dequeuedBuffers);
+                AL.GetSource(sourceLock.currentSource, ALGetSourcei.BuffersProcessed, out int dequeuedBuffers);
                 if (dequeuedBuffers > 0)
                 {
                     int[] bufferids = new int[dequeuedBuffers];
                     AL.SourceUnqueueBuffers(sourceLock.currentSource, dequeuedBuffers, bufferids);
                     foreach (int id in bufferids)
                     {
-                        int length = 0;
-                        AL.GetBuffer(id, ALGetBufferi.Size, out length);
+                        AL.GetBuffer(id, ALGetBufferi.Size, out int length);
                         sourceLock.addToCursor += length;
                         AL.DeleteBuffer(id);
                     }
@@ -200,31 +211,38 @@ namespace System.Audio
                 default: throw new NotSupportedException("The specified sound format is not supported.");
             }
         }
-        
+
         public override void Play()
         {
             lock (sourceLock)
             {
                 if (sourceLock.currentSource != 0)
+                {
                     throw new Exception("Cannot start when already playing");
+                }
 
                 sourceLock.currentSource = AL.GenSource();
                 lock (buffersToQueue)
                 {
                     foreach (int buffer in buffersToQueue)
+                    {
                         AL.SourceQueueBuffer(sourceLock.currentSource, buffer);
+                    }
+
                     buffersToQueue.Clear();
                 }
                 Volume = _volume;
                 AL.SourcePlay(sourceLock.currentSource);
             }
         }
-        public override void Stop() 
+        public override void Stop()
         {
             lock (sourceLock)
             {
                 if (sourceLock.currentSource == 0)
+                {
                     return;
+                }
 
                 AL.SourceStop(sourceLock.currentSource);
 

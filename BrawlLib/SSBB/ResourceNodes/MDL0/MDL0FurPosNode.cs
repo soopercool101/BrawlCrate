@@ -1,54 +1,53 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
+﻿using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0FurPosNode : MDL0EntryNode
     {
-        internal MDL0FurPosData* Header { get { return (MDL0FurPosData*)WorkingUncompressed.Address; } }
+        internal MDL0FurPosData* Header => (MDL0FurPosData*)WorkingUncompressed.Address;
 
-        public MDL0ObjectNode[] Objects { get { return _objects.ToArray(); } }
+        public MDL0ObjectNode[] Objects => _objects.ToArray();
         internal List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-
-        MDL0FurPosData hdr = new MDL0FurPosData();
-
-        [Category("Fur Layer Vertex Data")]
-        public int TotalLen { get { return hdr._dataLen; } }
-        [Category("Fur Layer Vertex Data")]
-        public int MDL0Offset { get { return hdr._mdl0Offset; } }
-        [Category("Fur Layer Vertex Data")]
-        public int DataOffset { get { return hdr._dataOffset; } }
-        [Category("Fur Layer Vertex Data")]
-        public int StringOffset { get { return hdr._stringOffset; } }
+        private MDL0FurPosData hdr = new MDL0FurPosData();
 
         [Category("Fur Layer Vertex Data")]
-        public int ID { get { return hdr._index; } }
+        public int TotalLen => hdr._dataLen;
         [Category("Fur Layer Vertex Data")]
-        public bool IsXYZ { get { return hdr._isXYZ != 0; } }
+        public int MDL0Offset => hdr._mdl0Offset;
         [Category("Fur Layer Vertex Data")]
-        public WiiVertexComponentType Format { get { return (WiiVertexComponentType)(int)hdr._type; } }
+        public int DataOffset => hdr._dataOffset;
         [Category("Fur Layer Vertex Data")]
-        public byte Divisor { get { return hdr._divisor; } }
-        [Category("Fur Layer Vertex Data")]
-        public byte EntryStride { get { return hdr._entryStride; } }
-        [Category("Fur Layer Vertex Data")]
-        public short NumVertices { get { return hdr._numVertices; } }
+        public int StringOffset => hdr._stringOffset;
 
         [Category("Fur Layer Vertex Data")]
-        public int NumLayers { get { return hdr._numLayers; } }
+        public int ID => hdr._index;
         [Category("Fur Layer Vertex Data")]
-        public int LayerOffset { get { return hdr._offsetOfLayer; } }
+        public bool IsXYZ => hdr._isXYZ != 0;
+        [Category("Fur Layer Vertex Data")]
+        public WiiVertexComponentType Format => (WiiVertexComponentType)(int)hdr._type;
+        [Category("Fur Layer Vertex Data")]
+        public byte Divisor => hdr._divisor;
+        [Category("Fur Layer Vertex Data")]
+        public byte EntryStride => hdr._entryStride;
+        [Category("Fur Layer Vertex Data")]
+        public short NumVertices => hdr._numVertices;
 
-        public bool ForceRebuild { get { return _forceRebuild; } set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
-        public bool ForceFloat { get { return _forceFloat; } set { if (_forceFloat != value) { _forceFloat = value; } } }
-        
+        [Category("Fur Layer Vertex Data")]
+        public int NumLayers => hdr._numLayers;
+        [Category("Fur Layer Vertex Data")]
+        public int LayerOffset => hdr._offsetOfLayer;
+
+        public bool ForceRebuild { get => _forceRebuild; set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
+        public bool ForceFloat { get => _forceFloat; set { if (_forceFloat != value) { _forceFloat = value; } } }
+
         public Vector3[] _vertices;
         public Vector3[] Vertices
         {
-            get { return _vertices == null ? _vertices = VertexCodec.ExtractVertices(Header) : _vertices; }
+            get => _vertices == null ? _vertices = VertexCodec.ExtractVertices(Header) : _vertices;
             set { _vertices = value; SignalPropertyChange(); }
         }
 
@@ -60,7 +59,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             SetSizeInternal(hdr._dataLen);
 
             if ((_name == null) && (Header->_stringOffset != 0))
+            {
                 _name = Header->ResourceString;
+            }
 
             return false;
         }
@@ -75,7 +76,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enc = new VertexCodec(Vertices, false, _forceFloat);
                 return _enc._dataLen.Align(0x20) + 0x40;
             }
-            else return base.OnCalculateSize(force);
+            else
+            {
+                return base.OnCalculateSize(force);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -104,7 +108,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _forceRebuild = false;
             }
             else
+            {
                 base.OnRebuild(address, length, force);
+            }
         }
 
         public override unsafe void Export(string outPath)

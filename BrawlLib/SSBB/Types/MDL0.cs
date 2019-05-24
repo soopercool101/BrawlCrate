@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Wii.Graphics;
+using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using BrawlLib.Wii.Models;
-using BrawlLib.Wii.Graphics;
-using BrawlLib.Imaging;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.Modeling;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -25,26 +25,29 @@ namespace BrawlLib.SSBBTypes
             _header._bresOffset = 0;
         }
 
-        internal byte* Address { get { fixed (void* ptr = &this)return (byte*)ptr; } }
+        internal byte* Address { get { fixed (void* ptr = &this) { return (byte*)ptr; } } }
 
-        public bint* Offsets { get { return (bint*)(Address + 0x10); } }
+        public bint* Offsets => (bint*)(Address + 0x10);
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return Address + StringOffset; }
-            set { StringOffset = (int)value - (int)Address; }
+            get => Address + StringOffset;
+            set => StringOffset = (int)value - (int)Address;
         }
 
         public ResourceGroup* GetEntry(int index)
         {
             int offset = Offsets[index];
             if (offset == 0)
+            {
                 return null;
+            }
+
             return (ResourceGroup*)(Address + offset);
         }
 
-        public VoidPtr UserData { get { return (UserDataOffset > 0) ? Address + UserDataOffset : null; } }
+        public VoidPtr UserData => (UserDataOffset > 0) ? Address + UserDataOffset : null;
 
         public int UserDataOffset
         {
@@ -144,15 +147,22 @@ namespace BrawlLib.SSBBTypes
         public void* GetResource(MDLResourceType type, int entryId)
         {
             if (entryId < 0)
+            {
                 return null;
+            }
 
             int groupId = ModelLinker.IndexBank[_header._version].IndexOf(type);
             if (groupId < 0)
+            {
                 return null;
+            }
 
             byte* addr;
             fixed (void* p = &this)
+            {
                 addr = (byte*)p;
+            }
+
             int offset = *((bint*)addr + 4 + groupId);
             if (offset > 0)
             {
@@ -169,7 +179,7 @@ namespace BrawlLib.SSBBTypes
         SoftImage = 1,
         Maya = 2
     }
-    
+
     public enum TexMatrixMode
     {
         MatrixMaya = 0,
@@ -210,9 +220,14 @@ namespace BrawlLib.SSBBTypes
         {
             _headerLen = 0x40;
             if (version == 9 || version == 8)
+            {
                 _mdl0Offset = -64;
+            }
             else
+            {
                 _mdl0Offset = -76;
+            }
+
             _scalingRule = scalingRule;
             _texMatrixMode = texMtxMode;
             _numVertices = vertices;
@@ -227,18 +242,18 @@ namespace BrawlLib.SSBBTypes
             _extents = new BBox(min, max);
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public MDL0Header* MDL0 { get { return (MDL0Header*)(Address + _mdl0Offset); } }
+        public MDL0Header* MDL0 => (MDL0Header*)(Address + _mdl0Offset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public MDL0NodeTable* IndexTable { get { return (MDL0NodeTable*)((VoidPtr)Address + _dataOffset); } }
+        public MDL0NodeTable* IndexTable => (MDL0NodeTable*)(Address + _dataOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -247,8 +262,8 @@ namespace BrawlLib.SSBBTypes
         public bint _size;
         public bint _mdlOffset;
 
-        internal void* Address { get { fixed (void* p = &this)return p; } }
-        public MDL0Header* MDL0Header { get { return (MDL0Header*)((byte*)Address + _mdlOffset); } }
+        internal void* Address { get { fixed (void* p = &this) { return p; } } }
+        public MDL0Header* MDL0Header => (MDL0Header*)((byte*)Address + _mdlOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -256,9 +271,9 @@ namespace BrawlLib.SSBBTypes
     {
         public bint _numEntries;
 
-        private void* Address { get { fixed (void* ptr = &this)return ptr; } }
+        private void* Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public bint* First { get { return (bint*)Address + 1; } }
+        public bint* First => (bint*)Address + 1;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -266,12 +281,12 @@ namespace BrawlLib.SSBBTypes
     {
         public byte _type;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public MDL0NodeType2* Type2Data { get { return (MDL0NodeType2*)(Address + 1); } }
-        public MDL0NodeType3* Type3Data { get { return (MDL0NodeType3*)(Address + 1); } }
-        public MDL0NodeType4* Type4Data { get { return (MDL0NodeType4*)(Address + 1); } }
-        public MDL0NodeType5* Type5Data { get { return (MDL0NodeType5*)(Address + 1); } }
+        public MDL0NodeType2* Type2Data => (MDL0NodeType2*)(Address + 1);
+        public MDL0NodeType3* Type3Data => (MDL0NodeType3*)(Address + 1);
+        public MDL0NodeType4* Type4Data => (MDL0NodeType4*)(Address + 1);
+        public MDL0NodeType5* Type5Data => (MDL0NodeType5*)(Address + 1);
 
         public MDL0DefEntry* Next
         {
@@ -290,7 +305,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe abstract class MDL0NodeClass
+    public abstract unsafe class MDL0NodeClass
     {
         public static object Create(ref VoidPtr addr)
         {
@@ -315,9 +330,9 @@ namespace BrawlLib.SSBBTypes
         public bushort _boneIndex;
         public bushort _parentNodeIndex;
 
-        public ushort BoneIndex { get { return _boneIndex; } set { _boneIndex = value; } }
-        public ushort ParentNodeIndex { get { return _parentNodeIndex; } set { _parentNodeIndex = value; } }
-        
+        public ushort BoneIndex { get => _boneIndex; set => _boneIndex = value; }
+        public ushort ParentNodeIndex { get => _parentNodeIndex; set => _parentNodeIndex = value; }
+
         public override string ToString()
         {
             return string.Format("Node (Bone Index:{0}, Parent Node Index:{1})", BoneIndex, ParentNodeIndex);
@@ -333,11 +348,13 @@ namespace BrawlLib.SSBBTypes
         {
             _id = ptr->_id;
             for (int i = 0; i < ptr->_numEntries; i++)
+            {
                 _entries.Add(ptr->Entries[i]);
+            }
         }
 
-        public ushort Id { get { return _id; } set { _id = value; } }
-        public MDL0NodeType3Entry[] Entries { get { return _entries.ToArray(); } }
+        public ushort Id { get => _id; set => _id = value; }
+        public MDL0NodeType3Entry[] Entries => _entries.ToArray();
 
         public int GetSize() { return 3 + (_entries.Count * MDL0NodeType3Entry.Size); }
 
@@ -355,8 +372,8 @@ namespace BrawlLib.SSBBTypes
         public bushort _index;
         public bushort _parentId;
 
-        public ushort Index { get { return _index; } set { _index = value; } }
-        public ushort ParentId { get { return _parentId; } set { _parentId = value; } }
+        public ushort Index { get => _index; set => _index = value; }
+        public ushort ParentId { get => _parentId; set => _parentId = value; }
 
         public override string ToString()
         {
@@ -372,16 +389,16 @@ namespace BrawlLib.SSBBTypes
         public bushort _id;
         public byte _numEntries;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public MDL0NodeType3Entry* Entries { get { return (MDL0NodeType3Entry*)(Address + 3); } }
+        public MDL0NodeType3Entry* Entries => (MDL0NodeType3Entry*)(Address + 3);
 
-        public ushort Id { get { return _id; } set { _id = value; } }
-        public byte NumEntries { get { return _numEntries; } set { _numEntries = value; } }
+        public ushort Id { get => _id; set => _id = value; }
+        public byte NumEntries { get => _numEntries; set => _numEntries = value; }
 
         public override string ToString()
         {
-            return String.Format("NodeMix (ID:{0},Entries:{1})", Id, NumEntries);
+            return string.Format("NodeMix (ID:{0},Entries:{1})", Id, NumEntries);
         }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -392,12 +409,12 @@ namespace BrawlLib.SSBBTypes
         public bushort _id;
         public bfloat _value;
 
-        public ushort Id { get { return _id; } set { _id = value; } }
-        public float Value { get { return _value; } set { _value = value; } }
+        public ushort Id { get => _id; set => _id = value; }
+        public float Value { get => _value; set => _value = value; }
 
         public override string ToString()
         {
-            return String.Format("NodeWeight (ID:{0},Weight:{1})", Id, Value);
+            return string.Format("NodeWeight (ID:{0},Weight:{1})", Id, Value);
         }
     }
 
@@ -411,10 +428,10 @@ namespace BrawlLib.SSBBTypes
         public bushort _boneIndex;
         public byte _zIndex;
 
-        public ushort MaterialId { get { return _materialIndex; } set { _materialIndex = value; } }
-        public ushort PolygonId { get { return _polygonIndex; } set { _polygonIndex = value; } }
-        public ushort BoneIndex { get { return _boneIndex; } set { _boneIndex = value; } }
-        public byte ZIndex { get { return _zIndex; } set { _zIndex = value; } }
+        public ushort MaterialId { get => _materialIndex; set => _materialIndex = value; }
+        public ushort PolygonId { get => _polygonIndex; set => _polygonIndex = value; }
+        public ushort BoneIndex { get => _boneIndex; set => _boneIndex = value; }
+        public byte ZIndex { get => _zIndex; set => _zIndex = value; }
 
         public override string ToString()
         {
@@ -431,8 +448,8 @@ namespace BrawlLib.SSBBTypes
         public bushort _id; //Node Id
         public bushort _index; //Node Index
 
-        public int Id { get { return _id; } set { _id = (ushort)value; } }
-        public int Index { get { return _index; } set { _index = (ushort)value; } }
+        public int Id { get => _id; set => _id = (ushort)value; }
+        public int Index { get => _index; set => _index = (ushort)value; }
 
         public override string ToString()
         {
@@ -443,18 +460,18 @@ namespace BrawlLib.SSBBTypes
     [Flags]
     public enum BoneFlags : uint
     {
-        None              = 0x0,
-        NoTransform       = 0x1,
-        FixedTranslation  = 0x2,
-        FixedRotation     = 0x4,
-        FixedScale        = 0x8,
-        ScaleEqual        = 0x10,
+        None = 0x0,
+        NoTransform = 0x1,
+        FixedTranslation = 0x2,
+        FixedRotation = 0x4,
+        FixedScale = 0x8,
+        ScaleEqual = 0x10,
         SegScaleCompApply = 0x20,
-        SegScaleCompParent= 0x40,
-        ClassicScaleOff   = 0x80,
-        Visible           = 0x100,
-        HasGeometry       = 0x200,
-        HasBillboardParent= 0x400,
+        SegScaleCompParent = 0x40,
+        ClassicScaleOff = 0x80,
+        Visible = 0x100,
+        HasGeometry = 0x200,
+        HasBillboardParent = 0x400,
     }
 
     public enum BillboardFlags : uint
@@ -495,23 +512,23 @@ namespace BrawlLib.SSBBTypes
         public bMatrix43 _transform;
         public bMatrix43 _transformInv;
 
-        public MDL0Bone* Next { get { return (MDL0Bone*)(Address + _headerLen); } }
+        public MDL0Bone* Next => (MDL0Bone*)(Address + _headerLen);
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public UserData* UserDataAddress { get { if (_userDataOffset <= 0) return null; return (UserData*)(Address + _userDataOffset); } }
+        public UserData* UserDataAddress { get { if (_userDataOffset <= 0) { return null; } return (UserData*)(Address + _userDataOffset); } }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
 
         public VoidPtr MDL0Address
         {
-            get { return (VoidPtr)Address + _mdl0Offset; }
-            set { _mdl0Offset = (int)value - (int)Address; }
+            get => Address + _mdl0Offset;
+            set => _mdl0Offset = (int)value - (int)Address;
         }
     }
 
@@ -533,25 +550,20 @@ namespace BrawlLib.SSBBTypes
         public bint _pad1;
         public bint _pad2;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data 
-        { 
-            get
-            {
-                //if (_dataOffset != null)
-                //    return Address + _dataOffset;
-                //else
-                    return Address + 0x40;
-            } 
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data =>
+                    //if (_dataOffset != null)
+                    //    return Address + _dataOffset;
+                    //else
+                    Address + 0x40;
 
-        public WiiVertexComponentType Type { get { return (WiiVertexComponentType)(int)_type; } }
+        public WiiVertexComponentType Type => (WiiVertexComponentType)(int)_type;
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -569,16 +581,16 @@ namespace BrawlLib.SSBBTypes
         public byte _entryStride;
         public bushort _numVertices;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + _dataOffset; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + _dataOffset;
 
-        public WiiVertexComponentType Type { get { return (WiiVertexComponentType)(int)_type; } }
+        public WiiVertexComponentType Type => (WiiVertexComponentType)(int)_type;
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -596,16 +608,16 @@ namespace BrawlLib.SSBBTypes
         public byte _pad;
         public bushort _numEntries;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + _dataOffset; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + _dataOffset;
 
-        public WiiColorComponentType Type { get { return (WiiColorComponentType)(int)_format; } }
+        public WiiColorComponentType Type => (WiiColorComponentType)(int)_format;
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -626,16 +638,16 @@ namespace BrawlLib.SSBBTypes
         public BVec2 _max;
         public int _pad1, _pad2, _pad3, _pad4;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public BVec2* Entries { get { return (BVec2*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public BVec2* Entries => (BVec2*)(Address + _dataOffset);
 
-        public WiiVertexComponentType Type { get { return (WiiVertexComponentType)(int)_format; } }
+        public WiiVertexComponentType Type => (WiiVertexComponentType)(int)_format;
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -651,14 +663,14 @@ namespace BrawlLib.SSBBTypes
         public bushort _numEntries;
         public fixed byte pad[10];
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public BVec3* Entries { get { return (BVec3*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public BVec3* Entries => (BVec3*)(Address + _dataOffset);
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -681,16 +693,16 @@ namespace BrawlLib.SSBBTypes
         public bint _offsetOfLayer;
         public fixed byte pad[24];
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + _dataOffset; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + _dataOffset;
 
-        public WiiVertexComponentType Type { get { return (WiiVertexComponentType)(int)_type; } }
+        public WiiVertexComponentType Type => (WiiVertexComponentType)(int)_type;
 
-        public string ResourceString { get { return new String((sbyte*)this.ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)this.Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -731,11 +743,11 @@ namespace BrawlLib.SSBBTypes
         private byte _identity;
         private bMatrix43 _texMtx;
 
-        public MappingMethod MapMode { get { return (MappingMethod)_mapMode; } set { _mapMode = (byte)value; } }
-        private bool IdentityMatrix { get { return _identity == 0 ? false : true; } set { _identity = (byte)(value ? 1 : 0); } }
+        public MappingMethod MapMode { get => (MappingMethod)_mapMode; set => _mapMode = (byte)value; }
+        private bool IdentityMatrix { get => _identity == 0 ? false : true; set => _identity = (byte)(value ? 1 : 0); }
         public Matrix34 TextureMatrix
         {
-            get { return _texMtx; }
+            get => _texMtx;
             set
             {
                 _texMtx = value;
@@ -808,11 +820,11 @@ namespace BrawlLib.SSBBTypes
         public TexMtxEffect Tex7Matrices;
         public TexMtxEffect Tex8Matrices;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public TextureSRT GetTexSRT(int Index) { return *(TextureSRT*)((byte*)Address + 8 + (Index * 20)); }
         public void SetTexSRT(TextureSRT value, int Index) { *(TextureSRT*)((byte*)Address + 8 + (Index * 20)) = value; }
-        
+
         public TexMtxEffect GetTexMatrices(int Index) { return *(TexMtxEffect*)((byte*)Address + 168 + (Index * 52)); }
         public void SetTexMatrices(TexMtxEffect value, int Index) { *(TexMtxEffect*)((byte*)Address + 168 + (Index * 52)) = value; }
     }
@@ -825,16 +837,16 @@ namespace BrawlLib.SSBBTypes
         public RGBAPixel c01;
         public buint _colorCtrl00;
         public buint _colorCtrl01;
-        
+
         public buint flags1;
         public RGBAPixel c10;
         public RGBAPixel c11;
         public buint _colorCtrl10;
         public buint _colorCtrl11;
-        
-        public LightChannel Channel1 
-        { 
-            get { return new LightChannel(flags0, c00, c01, _colorCtrl00, _colorCtrl01, null); }
+
+        public LightChannel Channel1
+        {
+            get => new LightChannel(flags0, c00, c01, _colorCtrl00, _colorCtrl01, null);
             set
             {
                 flags0 = (uint)value._flags;
@@ -844,9 +856,9 @@ namespace BrawlLib.SSBBTypes
                 _colorCtrl01 = value._alpha._binary._data;
             }
         }
-        public LightChannel Channel2 
-        { 
-            get { return new LightChannel(flags1, c10, c11, _colorCtrl10, _colorCtrl11, null); }
+        public LightChannel Channel2
+        {
+            get => new LightChannel(flags1, c10, c11, _colorCtrl10, _colorCtrl11, null);
             set
             {
                 flags1 = (uint)value._flags;
@@ -915,9 +927,9 @@ namespace BrawlLib.SSBBTypes
         internal bint _dataOffset1;
         internal bint _dataOffset2;
         internal bint _dataOffset3; //Not here in v9 MDL0 or lower
-        
-        public MDL0Header* Parent { get { return (MDL0Header*)(Address + _mdl0Offset); } }
-        public MDL0TextureRef* First { get { return (_matRefOffset != 0) ? (MDL0TextureRef*)(Address + _matRefOffset) : null; } }
+
+        public MDL0Header* Parent => (MDL0Header*)(Address + _mdl0Offset);
+        public MDL0TextureRef* First => (_matRefOffset != 0) ? (MDL0TextureRef*)(Address + _matRefOffset) : null;
 
         public int DisplayListOffset(int version)
         {
@@ -950,27 +962,37 @@ namespace BrawlLib.SSBBTypes
                 case 10:
                 case 11:
                     return _dataOffset1;
-                default: 
+                default:
                     return 0;
             }
         }
 
         public MDL0TexSRTData* TexMatrices(int version) { return (MDL0TexSRTData*)(Address + 0x1A0 + (_matRefOffset == 0 ? (version < 10 ? 4 : 8) : (_matRefOffset & 0xF))); }
         public MDL0MaterialLighting* Light(int version) { return (MDL0MaterialLighting*)(Address + 0x3E8 + (_matRefOffset == 0 ? (version < 10 ? 4 : 8) : (_matRefOffset & 0xF))); }
-        public UserData* UserData(int version) { if (UserDataOffset(version) > 0) return (UserData*)(Address + UserDataOffset(version)); else return null; }
+        public UserData* UserData(int version)
+        {
+            if (UserDataOffset(version) > 0)
+            {
+                return (UserData*)(Address + UserDataOffset(version));
+            }
+            else
+            {
+                return null;
+            }
+        }
         public MatModeBlock* DisplayLists(int version) { return (MatModeBlock*)(Address + DisplayListOffset(version)); }
         public MatTevColorBlock* TevColorBlock(int version) { return (MatTevColorBlock*)(Address + DisplayListOffset(version) + MatModeBlock.Size); }
         public MatTevKonstBlock* TevKonstBlock(int version) { return (MatTevKonstBlock*)(Address + DisplayListOffset(version) + MatModeBlock.Size + MatTevColorBlock.Size); }
         public MatIndMtxBlock* IndMtxBlock(int version) { return (MatIndMtxBlock*)(Address + DisplayListOffset(version) + MatModeBlock.Size + MatTevColorBlock.Size + MatTevKonstBlock.Size); }
-        
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MatDLData
@@ -1032,8 +1054,8 @@ namespace BrawlLib.SSBBTypes
         //Whether or not to load texture objects is determined by looking at this bitmap.
         //This decides whether or not GXTexObj is enabled.
         //Set during initialization.
-        buint _flagUsedTexMapID;
-        
+        private buint _flagUsedTexMapID;
+
         //sizeof(GXTexObj) == 32 is assumed
         //32 * 8 = 256
         public fixed byte _texObj[256];
@@ -1052,8 +1074,8 @@ namespace BrawlLib.SSBBTypes
         //Whether or not to load TLUTs is determined by looking at this bitmap.
         //This decides whether or not GXTlutObj is enabled.
         //Set during initialization.
-        buint _flagUsedTlutID;
-        
+        private buint _flagUsedTlutID;
+
         //sizeof(GXTlutObj) == 12 is assumed
         //12 * 8 = 96
         public fixed byte _tlutObj[96];
@@ -1083,7 +1105,9 @@ namespace BrawlLib.SSBBTypes
         private ushort _zmodeCmd;
         public ZMode ZMode;
         private ushort _maskCmd;
-        private byte _mask0, _mask1, _mask2;
+        private readonly byte _mask0;
+        private byte _mask1;
+        private byte _mask2;
         private ushort _blendmodeCmd;
         public BlendMode BlendMode;
         private ushort _constAlphaCmd;
@@ -1248,7 +1272,7 @@ namespace BrawlLib.SSBBTypes
         public byte Reg00; //0x61
         public BPMemory Mem00;
         public BUInt24 _Value00; //KSel Mask - Swap Mode
-        
+
         public byte Reg01; //0x61
         public BPMemory Mem01;
         public KSel _Value01; //KSel 0 - RG
@@ -1304,14 +1328,14 @@ namespace BrawlLib.SSBBTypes
         public byte Reg14; //0x61
         public BPMemory Mem14;
         public BUInt24 _Value14; //KSel Mask - Swap Mode
-        
+
         public byte Reg15; //0x61
         public BPMemory Mem15;
         public KSel _Value15; //KSel 7 - BA
-        
+
         public byte Reg16; //0x61
         public BPMemory Mem16; //IREF
-        public RAS1_IRef _Value16; 
+        public RAS1_IRef _Value16;
 
         private fixed byte _pad[11];
     }
@@ -1324,7 +1348,7 @@ namespace BrawlLib.SSBBTypes
         //The odd stage does not need to be used.
 
         public const int Size = 0x30;
-        
+
         public BPCommand _mask; //KSel Mask - Selection Mode (XRB = 0, XGA = 0)
         public BPCommand _ksel; //KSel
         public BPCommand _tref; //TRef
@@ -1351,10 +1375,10 @@ namespace BrawlLib.SSBBTypes
         public void SetGroup(int index)
         {
             _ksel.Mem = (BPMemory)((int)BPMemory.BPMEM_TEV_KSEL0 + index);
-            _tref.Mem = (BPMemory)((int)BPMemory.BPMEM_TREF0 + index);    
+            _tref.Mem = (BPMemory)((int)BPMemory.BPMEM_TREF0 + index);
         }
 
-        public void SetStage(int index) 
+        public void SetStage(int index)
         {
             BPCommand* clrEnv, alphaEnv, cmd;
             if ((index & 1) == 0) //Even
@@ -1365,8 +1389,8 @@ namespace BrawlLib.SSBBTypes
             }
             else //Odd
             {
-                _oddColorEnv.Reg = 
-                _oddAlphaEnv.Reg = 
+                _oddColorEnv.Reg =
+                _oddAlphaEnv.Reg =
                 _oddCmd.Reg = 0x61;
 
                 clrEnv = (BPCommand*)_oddColorEnv.Address;
@@ -1379,8 +1403,8 @@ namespace BrawlLib.SSBBTypes
             cmd->Mem = (BPMemory)((int)BPMemory.BPMEM_IND_CMD0 + index);
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public StageGroup* Next { get { return (StageGroup*)(Address + 0x30); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public StageGroup* Next => (StageGroup*)(Address + 0x30);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -1403,21 +1427,21 @@ namespace BrawlLib.SSBBTypes
         public byte _clampBias;
         public byte _texelInterp;
         public bshort _pad;
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
 
-        public string TextureName { get { return (_texOffset == 0) ? null : new String((sbyte*)this.TextureNameAddress); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+
+        public string TextureName => (_texOffset == 0) ? null : new string((sbyte*)TextureNameAddress);
         public VoidPtr TextureNameAddress
         {
-            get { return (VoidPtr)this.Address + _texOffset; }
-            set { _texOffset = (int)value - (int)Address; }
+            get => Address + _texOffset;
+            set => _texOffset = (int)value - (int)Address;
         }
 
-        public string PaletteName { get { return (_pltOffset == 0) ? null : new String((sbyte*)this.PaletteNameAddress); } }
+        public string PaletteName => (_pltOffset == 0) ? null : new string((sbyte*)PaletteNameAddress);
         public VoidPtr PaletteNameAddress
         {
-            get { return Address + _pltOffset; }
-            set { _pltOffset = (int)value - (int)Address; }
+            get => Address + _pltOffset;
+            set => _pltOffset = (int)value - (int)Address;
         }
     }
 
@@ -1433,13 +1457,13 @@ namespace BrawlLib.SSBBTypes
         public byte _pad0, _pad1, _pad2;
         public sbyte _ref0, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6, _ref7;
         public int _pad3, _pad4;
-        
-        public KSelSwapBlock* SwapBlock { get { return (KSelSwapBlock*)(Address + Size); } }
+
+        public KSelSwapBlock* SwapBlock => (KSelSwapBlock*)(Address + Size);
 
         //There are 8 groups max following the display list, each 0x30 in length.
-        public StageGroup* First { get { return (StageGroup*)(Address + 0x80); } }
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public StageGroup* First => (StageGroup*)(Address + 0x80);
+
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -1449,9 +1473,9 @@ namespace BrawlLib.SSBBTypes
         public bint _size; //The amount of bytes actually used
         public bint _offset; //Offset to the data. Relative to this struct
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public VoidPtr Data { get { return Address + _offset; } }
+        public VoidPtr Data => Address + _offset;
     }
 
     [Flags]
@@ -1487,38 +1511,42 @@ namespace BrawlLib.SSBBTypes
         public bint _numVertices;
         public bint _numFaces;
 
-        public bshort _vertexId; 
-        public bshort _normalId; 
-        public fixed short _colorIds[2];        
+        public bshort _vertexId;
+        public bshort _normalId;
+        public fixed short _colorIds[2];
         public fixed short _uids[8];
 
         //ids used in v10+ only
-        public short _furVectorId { get { return *(bshort*)(Address + 0x60); } set { *(bshort*)(Address + 0x60) = value; } }
-        public short _furLayerCoordId { get { return *(bshort*)(Address + 0x62); } set { *(bshort*)(Address + 0x62) = value; } }
+        public short _furVectorId { get => *(bshort*)(Address + 0x60); set => *(bshort*)(Address + 0x60) = value; }
+        public short _furLayerCoordId { get => *(bshort*)(Address + 0x62); set => *(bshort*)(Address + 0x62) = value; }
 
         public bint _nodeTableOffset;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public MDL0Header* Parent { get { return (MDL0Header*)(Address + _mdl0Offset); } }
-        public bshort* ColorIds { get { return (bshort*)(Address + 0x4C); } }
-        public bshort* UVIds { get { return (bshort*)(Address + 0x50); } }
+        public MDL0Header* Parent => (MDL0Header*)(Address + _mdl0Offset);
+        public bshort* ColorIds => (bshort*)(Address + 0x4C);
+        public bshort* UVIds => (bshort*)(Address + 0x50);
 
-        public MDL0PolygonDefs* DefList { get { return (MDL0PolygonDefs*)_defintions.Data; } }
+        public MDL0PolygonDefs* DefList => (MDL0PolygonDefs*)_defintions.Data;
         public bushort* WeightIndices(int version)
         {
             if (version <= 9)
+            {
                 return (bushort*)(Address + 0x64);
+            }
             else
+            {
                 return (bushort*)(Address + 0x68);
+            }
         }
-        public VoidPtr PrimitiveData { get { return _primitives.Data; } }
+        public VoidPtr PrimitiveData => _primitives.Data;
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -1532,7 +1560,7 @@ namespace BrawlLib.SSBBTypes
         public buint VtxFmtLo;
         private bushort CPSetFmtHi; //0x0860
         public buint VtxFmtHi;
-        
+
         //XF Vertex Specs
         public byte XFCmd; //0x10
         public bushort Length; //0x0000
@@ -1565,8 +1593,8 @@ namespace BrawlLib.SSBBTypes
     {
         public bint _numEntries;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public MDL0TextureEntry* Entries { get { return (MDL0TextureEntry*)(Address + 4); } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public MDL0TextureEntry* Entries => (MDL0TextureEntry*)(Address + 4);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -1574,10 +1602,10 @@ namespace BrawlLib.SSBBTypes
     {
         public bint _mat; //Material offset
         public bint _ref; //Reference offset
-        
+
         public override string ToString()
         {
-            return String.Format("(Material: 0x{0:X}, MatRef: 0x{1:X})", (int)_mat, (int)_ref);
+            return string.Format("(Material: 0x{0:X}, MatRef: 0x{1:X})", (int)_mat, (int)_ref);
         }
     }
 }

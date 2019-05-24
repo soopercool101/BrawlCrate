@@ -7,15 +7,15 @@ namespace System.Windows.Forms
     public partial class ModelEditorBase : UserControl
     {
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Ctrl { get { return ModifierKeys.HasFlag(Keys.Control); } }
+        public bool Ctrl => ModifierKeys.HasFlag(Keys.Control);
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Alt { get { return ModifierKeys.HasFlag(Keys.Alt); } }
+        public bool Alt => ModifierKeys.HasFlag(Keys.Alt);
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Shift { get { return ModifierKeys.HasFlag(Keys.Shift); } }
+        public bool Shift => ModifierKeys.HasFlag(Keys.Shift);
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool CtrlAlt { get { return Ctrl && Alt; } }
+        public bool CtrlAlt => Ctrl && Alt;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool NotCtrlAlt { get { return !Ctrl && !Alt; } }
+        public bool NotCtrlAlt => !Ctrl && !Alt;
 
         private Dictionary<Keys, Func<bool>> _hotKeysDown;
         private Dictionary<Keys, Func<bool>> _hotKeysUp;
@@ -42,27 +42,41 @@ namespace System.Windows.Forms
             {
                 Keys key;
                 if (m.Msg == WM_SYSKEYDOWN || m.Msg == WM_SYSKEYUP)
+                {
                     key = ModifierKeys;
+                }
                 else
                 {
                     key = (Keys)m.WParam;
                     if (Ctrl)
+                    {
                         key |= Keys.Control;
+                    }
+
                     if (Alt)
+                    {
                         key |= Keys.Alt;
+                    }
+
                     if (Shift)
+                    {
                         key |= Keys.Shift;
+                    }
                 }
 
                 if (down && _hotKeysDown.ContainsKey(key))
                 {
                     if ((bool)_hotKeysDown[key].DynamicInvoke())
+                    {
                         return true;
+                    }
                 }
                 else if (_hotKeysUp.ContainsKey(key))
                 {
                     if ((bool)_hotKeysUp[key].DynamicInvoke())
+                    {
                         return true;
+                    }
                 }
             }
 
@@ -81,11 +95,20 @@ namespace System.Windows.Forms
                 {
                     Keys key = _baseKey;
                     if (_ctrl)
+                    {
                         key |= Keys.Control;
+                    }
+
                     if (_shift)
+                    {
                         key |= Keys.Shift;
+                    }
+
                     if (_alt)
+                    {
                         key |= Keys.Alt;
+                    }
+
                     return key;
                 }
             }
@@ -349,7 +372,9 @@ namespace System.Windows.Forms
         private bool HotkeyCancelChange()
         {
             if (!AwaitingRedoSave)
+            {
                 return false;
+            }
 
             //Undo transformations, make sure to reset keyframes
             if (VertexLoc.HasValue && _currentUndo is VertexState)
@@ -357,7 +382,9 @@ namespace System.Windows.Forms
                 VertexState v = _currentUndo as VertexState;
 
                 for (int i = 0; i < v._vertices.Count; i++)
+                {
                     v._vertices[i].WeightedPosition = v._weightedPositions[i];
+                }
 
                 _vertexSelection.ResetActions();
                 CancelChangeState();
@@ -404,25 +431,37 @@ namespace System.Windows.Forms
         private bool HotkeyLastFrame()
         {
             if (PlaybackPanel != null)
+            {
                 PlaybackPanel.btnLast_Click(this, null);
+            }
+
             return true;
         }
         private bool HotkeyNextFrame()
         {
             if (PlaybackPanel != null)
+            {
                 PlaybackPanel.btnNextFrame_Click(this, null);
+            }
+
             return true;
         }
         private bool HotkeyFirstFrame()
         {
             if (PlaybackPanel != null)
+            {
                 PlaybackPanel.btnFirst_Click(this, null);
+            }
+
             return true;
         }
         private bool HotkeyPrevFrame()
         {
             if (PlaybackPanel != null)
+            {
                 PlaybackPanel.btnPrevFrame_Click(this, null);
+            }
+
             return true;
         }
     }

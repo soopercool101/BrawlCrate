@@ -1,40 +1,42 @@
-﻿using System;
+﻿using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Models;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using BrawlLib.Wii.Models;
-using BrawlLib.SSBBTypes;
-using BrawlLib.Modeling;
-using BrawlLib.OpenGL;
 using System.Drawing;
-using System.Windows.Forms;
-using OpenTK.Graphics.OpenGL;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0BoneNode : MDL0EntryNode, IBoneNode
     {
-        internal MDL0Bone* Header { get { return (MDL0Bone*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.MDL0Bone; } }
-        public override bool AllowDuplicateNames { get { return true; } }
-        public override bool RetainChildrenOnReplace { get { return true; } }
+        internal MDL0Bone* Header => (MDL0Bone*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.MDL0Bone;
+        public override bool AllowDuplicateNames => true;
+        public override bool RetainChildrenOnReplace => true;
 
         private MDL0BoneNode _overrideBone;
         [Browsable(false)]
         public MDL0BoneNode OverrideBone
         {
-            get { return _overrideBone; }
-            set { _overrideBone = value; }
+            get => _overrideBone;
+            set => _overrideBone = value;
         }
-        
-        public MDL0BoneNode Clone() 
+
+        public MDL0BoneNode Clone()
         {
-            MDL0BoneNode b = new MDL0BoneNode();
-            b._name = _name;
-            b._bindState = new FrameState(_bindState._scale, _bindState._rotate, _bindState._translate);
-            b._billboardFlags = _billboardFlags;
-            b._boneFlags = _boneFlags;
-            b._extents = _extents;
+            MDL0BoneNode b = new MDL0BoneNode
+            {
+                _name = _name,
+                _bindState = new FrameState(_bindState._scale, _bindState._rotate, _bindState._translate),
+                _billboardFlags = _billboardFlags,
+                _boneFlags = _boneFlags,
+                _extents = _extents
+            };
             return b;
         }
 
@@ -58,50 +60,50 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region IBoneNode Implementation
 
         [Browsable(false)]
-        public IModel IModel { get { return Model; } }
+        public IModel IModel => Model;
         [Browsable(false)]
-        public FrameState FrameState { get { return _frameState; } set { _frameState = value; } }
+        public FrameState FrameState { get => _frameState; set => _frameState = value; }
         [Browsable(false)]
-        public FrameState BindState { get { return _bindState; } set { _bindState = value; } }
+        public FrameState BindState { get => _bindState; set => _bindState = value; }
 
         [Browsable(false)]
-        public Color BoneColor { get { return _boneColor; } set { _boneColor = value; } }
+        public Color BoneColor { get => _boneColor; set => _boneColor = value; }
         [Browsable(false)]
-        public Color NodeColor { get { return _nodeColor; } set { _nodeColor = value; } }
+        public Color NodeColor { get => _nodeColor; set => _nodeColor = value; }
 
         [Browsable(false)]
-        public int WeightCount { get { return _weightCount; } set { _weightCount = value; } }
+        public int WeightCount { get => _weightCount; set => _weightCount = value; }
 
         [Browsable(false)]
         public bool Locked
         {
-            get { return _locked; }
-            set { _locked = value; }
+            get => _locked;
+            set => _locked = value;
         }
 
         [Category("Bone"), Browsable(false), TypeConverter(typeof(MatrixStringConverter))]
-        public Matrix BindMatrix { get { return _bindMatrix; } set { _bindMatrix = value; SignalPropertyChange(); } }
+        public Matrix BindMatrix { get => _bindMatrix; set { _bindMatrix = value; SignalPropertyChange(); } }
         [Category("Bone"), Browsable(false), TypeConverter(typeof(MatrixStringConverter))]
-        public Matrix InverseBindMatrix { get { return _inverseBindMatrix; } set { _inverseBindMatrix = value; SignalPropertyChange(); } }
+        public Matrix InverseBindMatrix { get => _inverseBindMatrix; set { _inverseBindMatrix = value; SignalPropertyChange(); } }
 
         #region IMatrixNode Implementation
 
         [Category("Bone"), Browsable(false)]
-        public Matrix Matrix { get { return _frameMatrix; } }
+        public Matrix Matrix => _frameMatrix;
         [Category("Bone"), Browsable(false)]
-        public Matrix InverseMatrix { get { return _inverseFrameMatrix; } }
-        
+        public Matrix InverseMatrix => _inverseFrameMatrix;
+
         [Browsable(false)]
-        public int NodeIndex { get { return _nodeIndex; } }
+        public int NodeIndex => _nodeIndex;
         [Browsable(false)]
-        public bool IsPrimaryNode { get { return true; } }
+        public bool IsPrimaryNode => true;
 
         private List<BoneWeight> _weightRef;
         [Browsable(false)]
-        public List<BoneWeight> Weights { get { return _weightRef == null ? _weightRef = new List<BoneWeight> { new BoneWeight(this, 1.0f) } : _weightRef; } }
+        public List<BoneWeight> Weights => _weightRef == null ? _weightRef = new List<BoneWeight> { new BoneWeight(this, 1.0f) } : _weightRef;
 
         [Browsable(false)]
-        public List<IMatrixNodeUser> Users { get { return _users; } set { _users = value; } }
+        public List<IMatrixNodeUser> Users { get => _users; set => _users = value; }
         internal List<IMatrixNodeUser> _users = new List<IMatrixNodeUser>();
 
         #endregion
@@ -111,70 +113,92 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Properties
 
         [Category("Bone"), Description("These draw calls use this bone to control their visibility.")]
-        public string[] VisibilityDrawCalls { get { return _visDrawCalls.Select(x => x._parentObject.ToString() + " " + x.ToString()).ToArray(); } }
+        public string[] VisibilityDrawCalls => _visDrawCalls.Select(x => x._parentObject.ToString() + " " + x.ToString()).ToArray();
         [Category("Bone"), Description("These objects use this bone as a single-bind influence (the only bone they're rigged to).")]
-        public MDL0ObjectNode[] SingleBindObjects { get { return _singleBindObjects.ToArray(); } }
+        public MDL0ObjectNode[] SingleBindObjects => _singleBindObjects.ToArray();
 
         [Category("Bone"), Description("Determines if any objects that use this bone for visibility should be visible by default.")]
         public bool Visible
         {
-            get { return _boneFlags.HasFlag(BoneFlags.Visible); }
+            get => _boneFlags.HasFlag(BoneFlags.Visible);
             set
             {
                 if (value)
+                {
                     _boneFlags |= BoneFlags.Visible;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.Visible;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Bone")]
         public bool SegScaleCompApply
         {
-            get { return _boneFlags.HasFlag(BoneFlags.SegScaleCompApply); }
+            get => _boneFlags.HasFlag(BoneFlags.SegScaleCompApply);
             set
             {
                 if (value)
+                {
                     _boneFlags |= BoneFlags.SegScaleCompApply;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.SegScaleCompApply;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Bone")]
         public bool SegScaleCompParent
         {
-            get { return _boneFlags.HasFlag(BoneFlags.SegScaleCompParent); }
+            get => _boneFlags.HasFlag(BoneFlags.SegScaleCompParent);
             set
             {
                 if (value)
+                {
                     _boneFlags |= BoneFlags.SegScaleCompParent;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.SegScaleCompParent;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Bone")]
         public bool ClassicScale
         {
-            get { return !_boneFlags.HasFlag(BoneFlags.ClassicScaleOff); }
+            get => !_boneFlags.HasFlag(BoneFlags.ClassicScaleOff);
             set
             {
                 if (!value)
+                {
                     _boneFlags |= BoneFlags.ClassicScaleOff;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.ClassicScaleOff;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Bone"), Description("The index of this bone in the raw array of bones in the file.")]
         public int BoneIndex
         {
-            get { return _entryIndex; }
+            get => _entryIndex;
             set
             {
                 if (_entryIndex == value)
+                {
                     return;
+                }
 
                 bool down = value < _entryIndex;
 
@@ -184,10 +208,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (model != null && model._linker != null && model._linker.BoneCache != null)
                 {
                     if (down)
+                    {
                         foreach (MDL0BoneNode b in model._linker.BoneCache)
+                        {
                             if (b._entryIndex >= _entryIndex && b != this)
+                            {
                                 b._entryIndex++;
-                    
+                            }
+                        }
+                    }
+
                     model._linker.RegenerateBoneCache();
                     UpdateProperties();
                 }
@@ -202,20 +232,26 @@ Otherwise, the bone's Z axis is parallel to the camera's Z axis.
 Standard: Default; no rotation restrictions. Is affected by the parent bone's rotation.
 Rotation: The bone's Y axis is parallel to the camera's Y axis. Is NOT affected by the parent bone's rotation.
 Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotation.")]
-        public BillboardFlags BillboardSetting 
+        public BillboardFlags BillboardSetting
         {
-            get { return _billboardFlags; } 
-            set 
+            get => _billboardFlags;
+            set
             {
                 if (_billboardFlags == value)
+                {
                     return;
+                }
 
                 MDL0Node model = Model;
                 if (_billboardFlags != BillboardFlags.Off && model._billboardBones.Contains(this))
+                {
                     model._billboardBones.Remove(this);
+                }
 
                 if ((_billboardFlags = value) != BillboardFlags.Off && !model._billboardBones.Contains(this))
+                {
                     model._billboardBones.Add(this);
+                }
 
                 OnBillboardModeChanged();
                 SignalPropertyChange();
@@ -228,27 +264,37 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             {
                 MDL0BoneNode n = this;
                 while ((n = n.Parent as MDL0BoneNode) != null)
+                {
                     if (n.BillboardSetting != BillboardFlags.Off)
+                    {
                         break;
-                    
+                    }
+                }
+
                 if (n != null)
                 {
                     BBRefNode = n;
                     foreach (MDL0BoneNode b in Children)
+                    {
                         b.RecursiveSetBillboard(BBRefNode);
+                    }
                 }
                 else
                 {
                     BBRefNode = null;
                     foreach (MDL0BoneNode b in Children)
+                    {
                         b.RecursiveSetBillboard(null);
+                    }
                 }
             }
             else
             {
                 BBRefNode = null;
                 foreach (MDL0BoneNode b in Children)
+                {
                     b.RecursiveSetBillboard(this);
+                }
             }
         }
 
@@ -258,137 +304,184 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             {
                 BBRefNode = node;
                 foreach (MDL0BoneNode b in Children)
+                {
                     b.RecursiveSetBillboard(node);
+                }
             }
         }
 
         [Category("Bone"), TypeConverter(typeof(DropDownListBones))]
         public string BillboardRefBone
         {
-            get { return _bbRefNode == null ? String.Empty : _bbRefNode.Name; }
+            get => _bbRefNode == null ? string.Empty : _bbRefNode.Name;
             set
             {
-                BBRefNode = String.IsNullOrEmpty(value) ? null : Model.FindBone(value);
+                BBRefNode = string.IsNullOrEmpty(value) ? null : Model.FindBone(value);
                 SignalPropertyChange();
             }
         }
-        
+
         [Browsable(false)]
         public MDL0BoneNode BBRefNode
         {
-            get { return _bbRefNode; }
+            get => _bbRefNode;
             set
             {
                 _bbRefNode = value;
 
                 if (_bbRefNode != null)
+                {
                     _boneFlags |= BoneFlags.HasBillboardParent;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.HasBillboardParent;
+                }
+
                 SignalPropertyChange();
             }
         }
 
         [Category("Bone"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 Scale 
+        public Vector3 Scale
         {
-            get { return _bindState._scale; } 
-            set 
+            get => _bindState._scale;
+            set
             {
                 _bindState.Scale = value;
 
                 if (value == new Vector3(1))
+                {
                     _boneFlags |= BoneFlags.FixedScale;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.FixedScale;
+                }
 
                 if (value._x == value._y && value._y == value._z)
+                {
                     _boneFlags |= BoneFlags.ScaleEqual;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.ScaleEqual;
+                }
 
                 //RecalcBindState();
-                
+
                 if (Parent is MDL0BoneNode)
                 {
                     if ((BindMatrix == ((MDL0BoneNode)Parent).BindMatrix) && (InverseBindMatrix == ((MDL0BoneNode)Parent).InverseBindMatrix))
+                    {
                         _boneFlags |= BoneFlags.NoTransform;
+                    }
                     else
+                    {
                         _boneFlags &= ~BoneFlags.NoTransform;
+                    }
                 }
                 else if (BindMatrix == Matrix.Identity && InverseBindMatrix == Matrix.Identity)
+                {
                     _boneFlags |= BoneFlags.NoTransform;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.NoTransform;
+                }
 
                 SignalPropertyChange();
             }
         }
         [Category("Bone"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 Rotation 
+        public Vector3 Rotation
         {
-            get { return _bindState._rotate; }
+            get => _bindState._rotate;
             set
             {
                 _bindState.Rotate = value;
 
                 if (value == new Vector3())
+                {
                     _boneFlags |= BoneFlags.FixedRotation;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.FixedRotation;
+                }
 
                 //RecalcBindState();
 
                 if (Parent is MDL0BoneNode)
                 {
                     if ((BindMatrix == ((MDL0BoneNode)Parent).BindMatrix) && (InverseBindMatrix == ((MDL0BoneNode)Parent).InverseBindMatrix))
+                    {
                         _boneFlags |= BoneFlags.NoTransform;
+                    }
                     else
+                    {
                         _boneFlags &= ~BoneFlags.NoTransform;
+                    }
                 }
                 else if (BindMatrix == Matrix.Identity && InverseBindMatrix == Matrix.Identity)
+                {
                     _boneFlags |= BoneFlags.NoTransform;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.NoTransform;
+                }
 
                 SignalPropertyChange();
             }
         }
         [Category("Bone"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 Translation 
+        public Vector3 Translation
         {
-            get { return _bindState._translate; }
+            get => _bindState._translate;
             set
             {
                 _bindState.Translate = value;
 
                 if (value == new Vector3())
+                {
                     _boneFlags |= BoneFlags.FixedTranslation;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.FixedTranslation;
+                }
 
                 //RecalcBindState();
 
                 if (Parent is MDL0BoneNode)
                 {
                     if ((BindMatrix == ((MDL0BoneNode)Parent).BindMatrix) && (InverseBindMatrix == ((MDL0BoneNode)Parent).InverseBindMatrix))
+                    {
                         _boneFlags |= BoneFlags.NoTransform;
+                    }
                     else
+                    {
                         _boneFlags &= ~BoneFlags.NoTransform;
+                    }
                 }
                 else if (BindMatrix == Matrix.Identity && InverseBindMatrix == Matrix.Identity)
+                {
                     _boneFlags |= BoneFlags.NoTransform;
+                }
                 else
+                {
                     _boneFlags &= ~BoneFlags.NoTransform;
+                }
 
-                SignalPropertyChange(); 
+                SignalPropertyChange();
             }
         }
 
         [Category("Bone"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 BoxMin { get { return _extents.Min; } set { _extents.Min = value; SignalPropertyChange(); } }
+        public Vector3 BoxMin { get => _extents.Min; set { _extents.Min = value; SignalPropertyChange(); } }
         [Category("Bone"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 BoxMax { get { return _extents.Max; } set { _extents.Max = value; SignalPropertyChange(); } }
+        public Vector3 BoxMax { get => _extents.Max; set { _extents.Max = value; SignalPropertyChange(); } }
 
         //[Category("Kinect Settings"), Browsable(true)]
         //public SkeletonJoint Joint
@@ -399,7 +492,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
         //public SkeletonJoint _joint;
 
         [Category("User Data"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public UserDataCollection UserEntries { get { return _userEntries; } set { _userEntries = value; SignalPropertyChange(); } }
+        public UserDataCollection UserEntries { get => _userEntries; set { _userEntries = value; SignalPropertyChange(); } }
         internal UserDataCollection _userEntries = new UserDataCollection();
 
         #endregion
@@ -415,7 +508,9 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             table.Add(Name);
 
             foreach (MDL0BoneNode n in Children)
+            {
                 n.GetStrings(table);
+            }
 
             _userEntries.GetStrings(table);
         }
@@ -430,7 +525,9 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             //Conditional name assignment
             if (_name == null && header->_stringOffset != 0)
+            {
                 _name = header->ResourceString;
+            }
 
             //Assign fields
             _boneFlags = (BoneFlags)(uint)header->_flags;
@@ -441,16 +538,18 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             //Bone cache isn't done parsing yet, so set billboard ref node later
 
             if (_billboardFlags != BillboardFlags.Off)
+            {
                 Model._billboardBones.Add(this); //Update mesh in T-Pose
+            }
 
-            _bindState = _frameState = new FrameState(header->_scale, (Vector3)header->_rotation, header->_translation);
+            _bindState = _frameState = new FrameState(header->_scale, header->_rotation, header->_translation);
             _bindMatrix = _frameMatrix = header->_transform;
             _inverseBindMatrix = _inverseFrameMatrix = header->_transformInv;
 
             _extents = header->_extents;
 
             (_userEntries = new UserDataCollection()).Read(header->UserDataAddress);
-            
+
             //We don't want to process children because not all have been parsed yet.
             //Child assignments will be handled by the parent group.
             return false;
@@ -500,18 +599,18 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 int index = Index;
 
                 //Parent
-                header->_parentOffset = Parent is MDL0BoneNode ? 
-                    (int)Parent.WorkingUncompressed.Address - (int)header : 
+                header->_parentOffset = Parent is MDL0BoneNode ?
+                    (int)Parent.WorkingUncompressed.Address - (int)header :
                     0;
 
                 //Previous sibling
-                header->_prevOffset = index == 0 ? 
-                    0 : 
+                header->_prevOffset = index == 0 ?
+                    0 :
                     (int)Parent._children[index - 1].WorkingUncompressed.Address - (int)header;
 
                 //Next sibling
-                header->_nextOffset = index == (Parent._children.Count - 1) ? 
-                    0 : 
+                header->_nextOffset = index == (Parent._children.Count - 1) ?
+                    0 :
                     (int)Parent._children[index + 1].WorkingUncompressed.Address - (int)header;
             }
         }
@@ -521,23 +620,41 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             _boneFlags = BoneFlags.Visible;
 
             if ((Scale._x == Scale._y) && (Scale._y == Scale._z))
+            {
                 _boneFlags |= BoneFlags.ScaleEqual;
+            }
+
             if (Users.Count > 0)
+            {
                 _boneFlags |= BoneFlags.HasGeometry;
+            }
+
             if (Scale == new Vector3(1))
+            {
                 _boneFlags |= BoneFlags.FixedScale;
+            }
+
             if (Rotation == new Vector3(0))
+            {
                 _boneFlags |= BoneFlags.FixedRotation;
+            }
+
             if (Translation == new Vector3(0))
+            {
                 _boneFlags |= BoneFlags.FixedTranslation;
+            }
 
             if (Parent is MDL0BoneNode)
             {
                 if ((BindMatrix == ((MDL0BoneNode)Parent).BindMatrix) && (InverseBindMatrix == ((MDL0BoneNode)Parent).InverseBindMatrix))
+                {
                     _boneFlags |= BoneFlags.NoTransform;
+                }
             }
             else if (BindMatrix == Matrix.Identity && InverseBindMatrix == Matrix.Identity)
+            {
                 _boneFlags |= BoneFlags.NoTransform;
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -545,9 +662,13 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             MDL0Bone* header = (MDL0Bone*)address;
 
             if (Users.Count > 0 || SingleBindObjects.Length > 0)
+            {
                 _boneFlags |= BoneFlags.HasGeometry;
+            }
             else
+            {
                 _boneFlags &= ~BoneFlags.HasGeometry;
+            }
 
             header->_headerLen = length;
             header->_index = _entryIndex;
@@ -559,8 +680,8 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             header->_rotation = _bindState._rotate;
             header->_translation = _bindState._translate;
             header->_extents = _extents;
-            header->_transform = (bMatrix43)_bindMatrix;
-            header->_transformInv = (bMatrix43)_inverseBindMatrix;
+            header->_transform = _bindMatrix;
+            header->_transformInv = _inverseBindMatrix;
 
             if (_userEntries.Count > 0)
             {
@@ -568,7 +689,9 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 _userEntries.Write(address + 0xD0);
             }
             else
+            {
                 header->_userDataOffset = 0;
+            }
         }
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
@@ -588,21 +711,28 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             Matrix rm = m.GetRotationMatrix();
             foreach (IMatrixNodeUser user in Users)
+            {
                 if (user is MDL0ObjectNode)
                 {
                     Vector3* pData = null;
                     MDL0ObjectNode o = user as MDL0ObjectNode;
 
                     if (o._manager._faceData[1] != null)
+                    {
                         pData = (Vector3*)o._manager._faceData[1].Address;
+                    }
 
                     foreach (Vertex3 v in o._manager._vertices)
                     {
                         v.Position *= m;
 
                         if (pData != null)
+                        {
                             foreach (int i in v._faceDataIndices)
+                            {
                                 pData[i] *= rm;
+                            }
+                        }
                     }
                 }
                 else if (user is Vertex3)
@@ -616,22 +746,32 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                     {
                         Vector3* pData = (Vector3*)o._manager._faceData[1].Address;
                         foreach (int i in v._faceDataIndices)
+                        {
                             pData[i] *= rm;
+                        }
                     }
                 }
+            }
+
             foreach (MDL0ObjectNode o in _singleBindObjects)
             {
                 Vector3* pData = null;
                 if (o._manager._faceData[1] != null)
+                {
                     pData = (Vector3*)o._manager._faceData[1].Address;
+                }
 
                 foreach (Vertex3 v in o._manager._vertices)
                 {
                     v.Position *= m;
 
                     if (pData != null)
+                    {
                         foreach (int i in v._faceDataIndices)
+                        {
                             pData[i] *= rm;
+                        }
+                    }
                 }
             }
         }
@@ -640,16 +780,22 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
         public void RecalcBindState(bool updateMesh, bool moveMeshWithBone, bool updateAssetLists = true)
         {
             if (!updateMesh)
+            {
                 RecursiveRecalcBindState(true, false);
+            }
             else
             {
                 //Get all objects that are influenced by these bones
                 List<MDL0ObjectNode> changed = new List<MDL0ObjectNode>();
                 if (moveMeshWithBone || updateAssetLists)
+                {
                     RecursiveGetInfluencedObjects(ref changed);
+                }
 
                 if (!moveMeshWithBone) //Need to stop vertices rigged to one bone from moving
+                {
                     RecursiveRecalcBindState(false, false);
+                }
                 else //Need to move vertices rigged to influences to the new position
                 {
                     //Note: vertex position precision goes down over time for influences
@@ -657,6 +803,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
                     Model.ApplyCHR(null, 0);
                     foreach (MDL0ObjectNode o in changed)
+                    {
                         if (o._manager != null)
                         {
                             Vector3* pData = (Vector3*)o._manager._faceData[1].Address;
@@ -669,26 +816,38 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                                     {
                                         v._position *= inf.Matrix;
                                         foreach (int i in v._faceDataIndices)
+                                        {
                                             pData[i] *= inf.Matrix.GetRotationMatrix();
+                                        }
                                     }
                                 }
                             }
                             else
+                            {
                                 foreach (Vertex3 v in o._manager._vertices)
+                                {
                                     if (v.MatrixNode is Influence)
                                     {
                                         Influence inf = (Influence)v.MatrixNode;
                                         v._position *= inf.Matrix;
                                         foreach (int i in v._faceDataIndices)
+                                        {
                                             pData[i] *= inf.Matrix.GetRotationMatrix();
+                                        }
                                     }
+                                }
+                            }
                         }
+                    }
 
                     RecursiveRecalcBindState(true, false);
                     foreach (Influence inf in Model._influences._influences)
+                    {
                         inf.CalcMatrix();
+                    }
 
                     foreach (MDL0ObjectNode o in changed)
+                    {
                         if (o._manager != null)
                         {
                             Vector3* pData = (Vector3*)o._manager._faceData[1].Address;
@@ -701,38 +860,54 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                                     {
                                         v._position *= inf.InverseMatrix;
                                         foreach (int i in v._faceDataIndices)
+                                        {
                                             pData[i] *= inf.InverseMatrix.GetRotationMatrix();
+                                        }
                                     }
                                 }
                             }
                             else
+                            {
                                 foreach (Vertex3 v in o._manager._vertices)
+                                {
                                     if (v.MatrixNode is Influence)
                                     {
                                         Influence inf = (Influence)v.MatrixNode;
                                         v._position *= inf.InverseMatrix;
                                         foreach (int i in v._faceDataIndices)
+                                        {
                                             pData[i] *= inf.InverseMatrix.GetRotationMatrix();
+                                        }
                                     }
+                                }
+                            }
                         }
+                    }
                 }
 
                 //Update the external arrays with the new unweighted vertices and normals
                 if (updateAssetLists)
+                {
                     foreach (MDL0ObjectNode o in changed)
+                    {
                         o.SetEditedAssets(false, true, true);
+                    }
+                }
             }
         }
 
         private void RecursiveGetInfluencedObjects(ref List<MDL0ObjectNode> changed)
         {
             foreach (IMatrixNodeUser user in Users)
+            {
                 if (user is MDL0ObjectNode)
                 {
                     MDL0ObjectNode o = user as MDL0ObjectNode;
 
                     if (!changed.Contains(o))
+                    {
                         changed.Add(o);
+                    }
                 }
                 else if (user is Vertex3)
                 {
@@ -740,21 +915,32 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                     MDL0ObjectNode o = v.Parent as MDL0ObjectNode;
 
                     if (!changed.Contains(o))
+                    {
                         changed.Add(o);
+                    }
                 }
+            }
 
             foreach (MDL0ObjectNode o in _singleBindObjects)
+            {
                 if (!changed.Contains(o))
+                {
                     changed.Add(o);
+                }
+            }
 
             foreach (MDL0BoneNode bone in Children)
+            {
                 bone.RecursiveGetInfluencedObjects(ref changed);
+            }
         }
 
         private void RecursiveRecalcBindState(bool updateMesh, bool animPose)
         {
             if (!updateMesh)
+            {
                 InfluenceAssets(false);
+            }
 
             if (_parent is MDL0BoneNode)
             {
@@ -768,10 +954,14 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             }
 
             if (!updateMesh)
+            {
                 InfluenceAssets(true);
+            }
 
             foreach (MDL0BoneNode bone in Children)
+            {
                 bone.RecursiveRecalcBindState(updateMesh, animPose);
+            }
 
             SignalPropertyChange();
         }
@@ -787,7 +977,9 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             else
             {
                 if (_overrideLocalTranslate != new Vector3())
+                {
                     _frameState = new FrameState(_frameState.Scale, _frameState.Rotate, _frameState.Translate + _overrideLocalTranslate);
+                }
 
                 if (_parent is MDL0BoneNode)
                 {
@@ -801,19 +993,25 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 }
             }
 
-            if (BillboardSetting != BillboardFlags.Off && 
-                v != null && 
+            if (BillboardSetting != BillboardFlags.Off &&
+                v != null &&
                 v.ApplyBillboardBones)
+            {
                 ApplyBillboard(v.Camera);
+            }
 
             foreach (MDL0BoneNode bone in Children)
+            {
                 bone.RecalcFrameState(v);
+            }
         }
 
         public void ApplyBillboard(GLCamera camera)
         {
             if (BillboardSetting == BillboardFlags.Off)
+            {
                 return;
+            }
 
             Vector3 camPoint = camera.GetPoint();
             Vector3 camRot = camera._rotation;
@@ -840,7 +1038,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
                 case BillboardFlags.Rotation:
                 case BillboardFlags.RotationPerspective:
-                    
+
                     //Is not affected by parent rotation
                     m = Matrix.RotationMatrix(_frameState.Rotate);
                     mInv = Matrix.ReverseRotationMatrix(_frameState.Rotate);
@@ -858,7 +1056,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                     //Only Y is allowed to rotate automatically
                     rot._x = 0;
                     rot._z = 0;
-                    
+
                     break;
 
                 default: //Not a valid billboard type
@@ -880,27 +1078,39 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 GL.MatrixMode(MatrixMode.Modelview);
                 GL.PushMatrix();
                 fixed (Matrix* m = &_frameMatrix)
+                {
                     GL.MultMatrix((float*)m);
+                }
             }
-            
+
             TKContext.DrawWireframeBox(box);
 
             if (bindBox)
+            {
                 GL.PopMatrix();
-            
+            }
+
             if (drawChildren)
+            {
                 foreach (MDL0BoneNode b in Children)
+                {
                     b.DrawBox(true, bindBox);
+                }
+            }
         }
 
         public Box GetBox()
         {
             if (_visDrawCalls.Count == 0)
+            {
                 return new Box();
+            }
 
             Box box = Box.ExpandableVolume;
             foreach (DrawCall o in _visDrawCalls)
+            {
                 box.ExpandVolume(o._parentObject.GetBox());
+            }
 
             return box;
         }
@@ -909,21 +1119,26 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
         {
             _extents = GetBox();
             foreach (MDL0BoneNode b in Children)
+            {
                 b.SetBox();
+            }
         }
 
         public unsafe List<MDL0BoneNode> ChildTree(List<MDL0BoneNode> list)
         {
             list.Add(this);
             foreach (MDL0BoneNode c in _children)
+            {
                 c.ChildTree(list);
-            
+            }
+
             return list;
         }
 
         [Browsable(false)]
-        public List<Influence> LinkedInfluences { get { return _linkedInfluences; } }
-        List<Influence> _linkedInfluences = new List<Influence>();
+        public List<Influence> LinkedInfluences => _linkedInfluences;
+
+        private readonly List<Influence> _linkedInfluences = new List<Influence>();
 
         #region Rendering
 
@@ -941,20 +1156,28 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             CHR0EntryNode e;
 
             _frameState = _bindState;
-            
+
             if (node != null && index >= 1 && (e = node.FindChild(Name, false) as CHR0EntryNode) != null) //Set to anim pose
+            {
                 fixed (FrameState* v = &_frameState)
                 {
                     float* f = (float*)v;
                     for (int i = 0; i < 9; i++)
+                    {
                         if (e.Keyframes[i]._keyCount > 0)
+                        {
                             f[i] = e.GetFrameValue(i, index - 1);
+                        }
+                    }
 
                     _frameState.CalcTransforms();
                 }
+            }
 
             foreach (MDL0BoneNode b in Children)
+            {
                 b.ApplyCHR0(node, index);
+            }
         }
 
         internal override void Bind()
@@ -965,13 +1188,15 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
         }
 
         [Browsable(false)]
-        public bool IsRendering { get { return _render; } set { _render = value; } }
+        public bool IsRendering { get => _render; set => _render = value; }
         public bool _render = true;
 
         public void Render(bool targetModel, ModelPanelViewport viewport, Vector3 parentPos = new Vector3())
         {
             if (!_render)
+            {
                 return;
+            }
 
             //Draw name if selected
             if (_nodeColor != Color.Transparent && viewport != null)
@@ -984,9 +1209,13 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             //Set bone line color
             if (_boneColor != Color.Transparent)
+            {
                 GL.Color4(_boneColor.R / 255.0f, _boneColor.G / 255.0f, _boneColor.B / 255.0f, alpha);
+            }
             else
+            {
                 GL.Color4(targetModel ? DefaultLineColor : DefaultLineDeselectedColor);
+            }
 
             //Draw bone line
             Vector3 currentPos = _frameMatrix.GetPoint();
@@ -997,9 +1226,13 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             //Set bone orb color
             if (_nodeColor != Color.Transparent)
+            {
                 GL.Color4(_nodeColor.R / 255.0f, _nodeColor.G / 255.0f, _nodeColor.B / 255.0f, alpha);
+            }
             else
+            {
                 GL.Color4(DefaultNodeColor.R / 255.0f, DefaultNodeColor.G / 255.0f, DefaultNodeColor.B / 255.0f, alpha);
+            }
 
             //Draw bone orb
             GL.PushMatrix();
@@ -1008,18 +1241,24 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             bool scaleBones = viewport != null && viewport._renderAttrib._scaleBones;
             Matrix transform = _frameMatrix;
             if (ignoreBoneScale)
-                transform = Matrix.TranslationMatrix(currentPos) * 
-                    _frameMatrix.GetRotationMatrix() * 
+            {
+                transform = Matrix.TranslationMatrix(currentPos) *
+                    _frameMatrix.GetRotationMatrix() *
                     Matrix.ScaleMatrix(new Vector3(1.0f));
+            }
 
             if (viewport._renderAttrib._renderBonesAsPoints)
             {
                 GL.MultMatrix((float*)&transform);
 
                 if (!scaleBones)
+                {
                     GL.PointSize(1.0f / (ModelEditorBase.OrbRadius(this, viewport.Camera)) * 10.0f);
+                }
                 else
+                {
                     GL.PointSize(10.0f);
+                }
 
                 GL.Enable(EnableCap.PointSmooth);
                 GL.Begin(BeginMode.Points);
@@ -1029,7 +1268,9 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             else
             {
                 if (scaleBones)
+                {
                     transform.Scale(new Vector3(ModelEditorBase.OrbRadius(this, viewport.Camera)));
+                }
 
                 GL.MultMatrix((float*)&transform);
 
@@ -1044,7 +1285,9 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
             //Render children
             foreach (MDL0BoneNode n in Children)
+            {
                 n.Render(targetModel, viewport, currentPos);
+            }
         }
 
         public static GLDisplayList CreateNodeOrb()

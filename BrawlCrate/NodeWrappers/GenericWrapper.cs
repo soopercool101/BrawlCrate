@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static GenericWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -48,14 +48,16 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public GenericWrapper(IWin32Window owner) { _owner = owner;  ContextMenuStrip = _menu; }
+        public GenericWrapper(IWin32Window owner) { _owner = owner; ContextMenuStrip = _menu; }
         public GenericWrapper() { _owner = null; ContextMenuStrip = _menu; }
 
         public void MoveUp() { MoveUp(true); }
         public virtual void MoveUp(bool select)
         {
             if (PrevVisibleNode == null)
+            {
                 return;
+            }
 
             if (_resource.MoveUp())
             {
@@ -66,7 +68,10 @@ namespace BrawlCrate.NodeWrappers
                 parent.Nodes.Insert(index, this);
                 _resource.OnMoved();
                 if (select)
+                {
                     TreeView.SelectedNode = this;
+                }
+
                 TreeView.EndUpdate();
             }
         }
@@ -75,7 +80,9 @@ namespace BrawlCrate.NodeWrappers
         public virtual void MoveDown(bool select)
         {
             if (NextVisibleNode == null)
+            {
                 return;
+            }
 
             if (_resource.MoveDown())
             {
@@ -86,14 +93,17 @@ namespace BrawlCrate.NodeWrappers
                 parent.Nodes.Insert(index, this);
                 _resource.OnMoved();
                 if (select)
+                {
                     TreeView.SelectedNode = this;
+                }
+
                 TreeView.EndUpdate();
             }
         }
 
-        public virtual string ExportFilter { get { return BrawlLib.FileFilters.Raw; } }
-        public virtual string ImportFilter { get { return ExportFilter; } }
-        public virtual string ReplaceFilter { get { return ImportFilter; } }
+        public virtual string ExportFilter => BrawlLib.FileFilters.Raw;
+        public virtual string ImportFilter => ExportFilter;
+        public virtual string ReplaceFilter => ImportFilter;
 
         public static int CategorizeFilter(string path, string filter)
         {
@@ -101,20 +111,29 @@ namespace BrawlCrate.NodeWrappers
 
             string[] split = filter.Split('|');
             for (int i = 3; i < split.Length; i += 2)
+            {
                 foreach (string s in split[i].Split(';'))
+                {
                     if (s.Equals(ext, StringComparison.OrdinalIgnoreCase))
+                    {
                         return (i + 1) / 2;
+                    }
+                }
+            }
+
             return 1;
         }
 
         public virtual string Export()
         {
-            string outPath;
-            int index = Program.SaveFile(ExportFilter, Text, out outPath);
+            int index = Program.SaveFile(ExportFilter, Text, out string outPath);
             if (index != 0)
             {
                 if (Parent == null)
+                {
                     _resource.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
+                }
+
                 OnExport(outPath, index);
             }
             return outPath;
@@ -124,14 +143,15 @@ namespace BrawlCrate.NodeWrappers
         public virtual void Replace()
         {
             if (Parent == null)
+            {
                 return;
+            }
 
-            string inPath;
-            int index = Program.OpenFile(ReplaceFilter, out inPath);
+            int index = Program.OpenFile(ReplaceFilter, out string inPath);
             if (index != 0)
             {
                 OnReplace(inPath, index);
-                this.Link(_resource);
+                Link(_resource);
             }
         }
 
@@ -145,7 +165,9 @@ namespace BrawlCrate.NodeWrappers
         public void Delete()
         {
             if (Parent == null)
+            {
                 return;
+            }
 
             _resource.Dispose();
             _resource.Remove();

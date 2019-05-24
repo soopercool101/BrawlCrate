@@ -19,6 +19,6 @@ namespace BrawlLib.SSBB.Types
         public bint _unknown28;
         public bint _unknown2c;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

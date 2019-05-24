@@ -17,13 +17,13 @@ namespace System.Windows.Forms
         private Image _target;
         public Image Picture
         {
-            get { return _target; }
+            get => _target;
             set { _target = value; Invalidate(); }
         }
 
         public GoodPictureBox()
         {
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.Opaque | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.Opaque | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -32,10 +32,12 @@ namespace System.Windows.Forms
             g.Clear(BackColor);
 
             if (_target == null)
+            {
                 return;
+            }
 
             int w = _target.Width, h = _target.Height;
-            Rectangle client = this.ClientRectangle;
+            Rectangle client = ClientRectangle;
             Rectangle bounds = new Rectangle(0, 0, w, h);
 
             float aspect = (float)w / h;
@@ -53,7 +55,7 @@ namespace System.Windows.Forms
             g.CompositingMode = CompositingMode.SourceOver;
             g.PixelOffsetMode = PixelOffsetMode.HighQuality;
             g.CompositingQuality = CompositingQuality.AssumeLinear;
-            
+
             //g.SetClip(bounds);
 
             g.FillRectangle(_brush, bounds);

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Threading;
-using OpenTK.Graphics.OpenGL;
-using System.Drawing.Imaging;
+﻿using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.Reflection;
 using System.Security.Permissions;
-using System.ComponentModel;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace BrawlLib.OpenGL
 {
@@ -29,13 +29,16 @@ namespace BrawlLib.OpenGL
             get
             {
                 if (_currentPanel == null && TKContext.CurrentContext != null)
+                {
                     TKContext.CurrentContext.Capture(true);
+                }
+
                 return _currentPanel;
             }
         }
         private static GLPanel _currentPanel = null;
 
-        public TKContext Context { get { return _ctx; } }
+        public TKContext Context => _ctx;
         protected TKContext _ctx;
 
         public event ViewportAction OnCurrentViewportChanged;
@@ -46,17 +49,11 @@ namespace BrawlLib.OpenGL
         protected List<GLViewport> _viewports = new List<GLViewport>();
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public GLViewport HighlightedViewport
-        {
-            get
-            {
-                return _viewports.Count > 1 ?
+        public GLViewport HighlightedViewport => _viewports.Count > 1 ?
                     _highlightedViewport :
                     _viewports.Count > 0 ?
                     _viewports[0] :
                     CurrentViewport;
-            }
-        }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public GLViewport CurrentViewport
@@ -66,13 +63,17 @@ namespace BrawlLib.OpenGL
                 if (_currentViewport == null)
                 {
                     if (_viewports.Count == 0)
+                    {
                         CreateDefaultViewport();
+                    }
 
                     _currentViewport = _viewports[0];
                 }
 
                 if (_currentViewport._owner != this)
+                {
                     _currentViewport._owner = this;
+                }
 
                 return _currentViewport;
             }
@@ -81,10 +82,14 @@ namespace BrawlLib.OpenGL
                 _currentViewport = value;
 
                 if (OnCurrentViewportChanged != null)
+                {
                     OnCurrentViewportChanged(_currentViewport);
+                }
 
                 if (!_viewports.Contains(_currentViewport) && _currentViewport != null)
+                {
                     AddViewport(_currentViewport);
+                }
             }
         }
 
@@ -130,7 +135,9 @@ namespace BrawlLib.OpenGL
         public void RemoveViewport(int index)
         {
             if (index < 0 || index >= _viewports.Count)
+            {
                 return;
+            }
 
             GLViewport v = _viewports[index];
             v._owner = null;
@@ -165,7 +172,9 @@ namespace BrawlLib.OpenGL
                 foreach (GLViewport v2 in _viewports)
                 {
                     if (v2 == v)
+                    {
                         continue;
+                    }
 
                     float diff2 = Math.Abs(p._x - v2.Percentages._x);
                     if (diff2 <= diff._x)
@@ -218,7 +227,13 @@ namespace BrawlLib.OpenGL
         }
 
         public void BeginUpdate() { _updateCounter++; }
-        public void EndUpdate() { if ((_updateCounter = Math.Max(_updateCounter - 1, 0)) == 0) Invalidate(); }
+        public void EndUpdate()
+        {
+            if ((_updateCounter = Math.Max(_updateCounter - 1, 0)) == 0)
+            {
+                Invalidate();
+            }
+        }
 
         public new void Capture()
         {
@@ -229,11 +244,19 @@ namespace BrawlLib.OpenGL
             }
 
             if (_ctx == null)
+            {
                 _ctx = new TKContext(this);
+            }
 
             _ctx.Capture();
         }
-        public void Release() { if (_ctx != null) _ctx.Release(); }
+        public void Release()
+        {
+            if (_ctx != null)
+            {
+                _ctx.Release();
+            }
+        }
 
         protected override void OnLoad(EventArgs e)
         {
@@ -244,7 +267,7 @@ namespace BrawlLib.OpenGL
             Vector3 v = (Vector3)BackColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);
             GL.ClearDepth(1.0);
-            
+
             OnInit(_ctx);
 
             _ctx.ContextChanged += OnContextChanged;
@@ -258,7 +281,9 @@ namespace BrawlLib.OpenGL
         {
             //Don't update anything if this context has just been released
             if (isNowCurrent)
+            {
                 OnResize(EventArgs.Empty);
+            }
 
             _currentPanel = isNowCurrent ? this : null;
         }
@@ -280,20 +305,28 @@ namespace BrawlLib.OpenGL
         public GLViewport GetViewport(int x, int y)
         {
             if (_viewports.Count == 1)
+            {
                 return _viewports[0];
+            }
 
             x = x.Clamp(0, Width);
             y = Height - y.Clamp(0, Height);
 
             foreach (GLViewport w in _viewports)
+            {
                 if (x >= w.Region.X &&
                     x <= w.Region.X + w.Region.Width &&
                     y >= w.Region.Y &&
                     y <= w.Region.Y + w.Region.Height)
+                {
                     return w;
+                }
+            }
 
             if (_viewports.Count == 0)
+            {
                 CreateDefaultViewport();
+            }
 
             return _viewports[0];
         }
@@ -304,7 +337,7 @@ namespace BrawlLib.OpenGL
         }
 
         public float GetDepth(Vector2 v) { return GetDepth((int)(v._x + 0.5f), (int)(v._y + 0.5f)); }
-        
+
         public virtual float GetDepth(int x, int y)
         {
             float val = 0;
@@ -315,10 +348,14 @@ namespace BrawlLib.OpenGL
         protected override void OnPaint(PaintEventArgs e)
         {
             if (_updateCounter > 0)
+            {
                 return;
+            }
 
             if (_ctx == null)
+            {
                 base.OnPaint(e);
+            }
             else if (Monitor.TryEnter(_ctx))
             {
                 try
@@ -330,22 +367,26 @@ namespace BrawlLib.OpenGL
 
                     //Display newly rendered back buffer
                     _ctx.Swap();
-                    
+
                     //Check for errors
                     ErrorCode code = GL.GetError();
                     if (code != ErrorCode.NoError)
+                    {
                         this.Reset(); //Stops the red X of death in its tracks
+                    }
                 }
                 finally { Monitor.Exit(_ctx); }
             }
         }
 
         internal virtual void OnInit(TKContext ctx) { }
-        
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (_viewports.Count > 1)
+            {
                 _highlightedViewport = GetViewport(e.X, e.Y);
+            }
 
             base.OnMouseMove(e);
         }
@@ -354,7 +395,9 @@ namespace BrawlLib.OpenGL
         {
             GLCamera camera = CurrentViewport.Camera;
             if (camera == null)
+            {
                 return new Vector3();
+            }
 
             double a = point._z - z;
             //Perform trig functions, using camera for angles
@@ -364,29 +407,43 @@ namespace BrawlLib.OpenGL
 
             double angleX = Math.IEEERemainder(-camera._rotation._y, 180.0);
             if (angleX < -90.0f)
+            {
                 angleX = -180.0f - angleX;
+            }
+
             if (angleX > 90.0f)
+            {
                 angleX = 180.0f - angleX;
+            }
 
             double angleY = Math.IEEERemainder(camera._rotation._x, 180.0);
             if (angleY < -90.0f)
+            {
                 angleY = -180.0f - angleY;
+            }
+
             if (angleY > 90.0f)
+            {
                 angleY = 180.0f - angleY;
+            }
 
             float lenX = (float)(Math.Tan(angleX * Math.PI / 180.0) * a);
             float lenY = (float)(Math.Tan(angleY * Math.PI / 180.0) * a);
 
             return new Vector3(point._x + lenX, point._y + lenY, z);
         }
-        
+
         protected override void OnResize(EventArgs e)
         {
             if (_ctx != null)
+            {
                 _ctx.Update();
+            }
 
             foreach (GLViewport v in _viewports)
+            {
                 v.Resize();
+            }
 
             Invalidate();
         }
@@ -395,7 +452,10 @@ namespace BrawlLib.OpenGL
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             foreach (GLViewport v in _viewports)
+            {
                 OnRenderViewport(e, v);
+            }
+
             Wii.Graphics.ShaderGenerator._forceRecompile = false;
         }
 
@@ -403,15 +463,15 @@ namespace BrawlLib.OpenGL
 
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            SuspendLayout();
             // 
             // GLPanel
             // 
-            this.Name = "GLPanel";
-            this.ResumeLayout(false);
+            Name = "GLPanel";
+            ResumeLayout(false);
         }
 
         public IEnumerator<GLViewport> GetEnumerator() { return _viewports.GetEnumerator(); }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return this.GetEnumerator(); }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
 }

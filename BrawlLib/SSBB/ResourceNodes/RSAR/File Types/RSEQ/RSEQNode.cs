@@ -1,17 +1,17 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSEQNode : RSARFileNode
     {
-        internal RSEQHeader* Header { get { return (RSEQHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RSEQ; } }
+        internal RSEQHeader* Header => (RSEQHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RSEQ;
 
         public MMLCommand[] _cmds;
-        public MMLCommand[] Commands { get { return _cmds; } }
+        public MMLCommand[] Commands => _cmds;
 
-        UnsafeBuffer _dataBuffer;
+        private UnsafeBuffer _dataBuffer;
 
         public override bool OnInitialize()
         {
@@ -28,14 +28,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            for (int i = 0; i < ((LABLHeader*)Header->Labl)->_numEntries; i++)
-                new RSEQLabelNode().Initialize(this, ((LABLHeader*)Header->Labl)->Get(i), 0);
+            for (int i = 0; i < Header->Labl->_numEntries; i++)
+            {
+                new RSEQLabelNode().Initialize(this, Header->Labl->Get(i), 0);
+            }
         }
 
         protected override void GetStrings(LabelBuilder builder)
         {
             foreach (RSEQLabelNode node in Children)
+            {
                 builder.Add(node.Id, node._name);
+            }
         }
 
         private LabelBuilder builder;
@@ -43,7 +47,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             builder = new LabelBuilder();
             foreach (RSEQLabelNode node in Children)
+            {
                 builder.Add(node.Id, node._name);
+            }
+
             _audioLen = 0;
             return _headerLen = 0x20 + _dataBuffer.Length + builder.GetSize();
         }
@@ -64,14 +71,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //MML Parser is not complete yet, so copy raw data over
             Memory.Move((VoidPtr)header + header->_dataOffset, _dataBuffer.Address, (uint)_dataBuffer.Length);
-            
+
             builder.Write((VoidPtr)header + header->_lablOffset);
         }
 
         public override void Remove()
         {
             if (RSARNode != null)
+            {
                 RSARNode.Files.Remove(this);
+            }
+
             base.Remove();
         }
 

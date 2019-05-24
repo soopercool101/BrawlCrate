@@ -5,15 +5,25 @@
         public static unsafe PPCOpCode[] Disassemble(VoidPtr ptr, int count, bool bigEndian)
         {
             if (count < 0)
+            {
                 throw new ArgumentException();
+            }
 
             PPCOpCode[] result = new PPCOpCode[count];
             if (bigEndian)
+            {
                 for (int i = 0; i < count; i++)
+                {
                     result[i] = Disassemble(((buint*)ptr)[i]);
+                }
+            }
             else
+            {
                 for (int i = 0; i < count; i++)
+                {
                     result[i] = Disassemble(((uint*)ptr)[i]);
+                }
+            }
 
             return result;
         }

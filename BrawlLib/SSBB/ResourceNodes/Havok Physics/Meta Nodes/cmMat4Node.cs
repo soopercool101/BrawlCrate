@@ -11,12 +11,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int GetSize() { return 64; }
 
         public bool _isTransform;
-        public bool IsTransformMatrix { get { return _isTransform; } }
+        public bool IsTransformMatrix => _isTransform;
 
         public Matrix _value;
 
         [TypeConverter(typeof(MatrixStringConverter))]
-        public Matrix Value { get { return _value; } set { _value = value; SignalPropertyChange(); } }
+        public Matrix Value { get => _value; set { _value = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
@@ -33,7 +33,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
             float* p = _value.Data;
-            writer.WriteString(String.Format("({0} {1} {2} {3})({4} {5} {6} {7})({8} {9} {10} {11})({12} {13} {14} {15})",
+            writer.WriteString(string.Format("({0} {1} {2} {3})({4} {5} {6} {7})({8} {9} {10} {11})({12} {13} {14} {15})",
                 p[0].ToString("0.000000", CultureInfo.InvariantCulture),
                 p[1].ToString("0.000000", CultureInfo.InvariantCulture),
                 p[2].ToString("0.000000", CultureInfo.InvariantCulture),

@@ -18,7 +18,9 @@ namespace System.Windows.Forms
             else
             {
                 if (vertexEditor.Visible)
+                {
                     ToggleVertexEditor();
+                }
 
                 prevHeight = animEditors.Height;
                 prevWidth = animCtrlPnl.Width;
@@ -43,7 +45,9 @@ namespace System.Windows.Forms
             else
             {
                 if (weightEditor.Visible)
+                {
                     ToggleWeightEditor();
+                }
 
                 prevHeight = animEditors.Height;
                 prevWidth = animCtrlPnl.Width;
@@ -56,7 +60,7 @@ namespace System.Windows.Forms
             CheckDimensions();
         }
 
-        bool _retainAspect = true;
+        private readonly bool _retainAspect = true;
 
         /// <summary>
         /// Call this after the frame is set.
@@ -64,7 +68,9 @@ namespace System.Windows.Forms
         private void HandleFirstPersonCamera()
         {
             if (FirstPersonCamera && _scn0 != null && scn0Editor._camera != null)
+            {
                 scn0Editor._camera.SetCamera(ModelPanel.CurrentViewport, CurrentFrame - 1, _retainAspect);
+            }
         }
 
         public override void OnAnimationChanged()
@@ -80,14 +86,14 @@ namespace System.Windows.Forms
 
             int i = -1;
             bool hasKeys = node != null && !(node is SCN0Node) && (i = Array.IndexOf(Interpolated, node.GetType())) >= 0;
-            string s = 
+            string s =
                 i == 0 ? (SelectedBone != null ? SelectedBone.Name : "entry") :
                 i == 1 ? (TargetTexRef != null ? TargetTexRef.Name : "entry") :
                 i == 2 ? (shp0Editor.VertexSetDest != null ? shp0Editor.VertexSetDest.Name : "entry") :
             "entry";
 
             averageboneStartendTangentsToolStripMenuItem.Enabled = hasKeys && s != "entry";
-            averageboneStartendTangentsToolStripMenuItem.Text = String.Format("Average {0} start/end keyframes", s);
+            averageboneStartendTangentsToolStripMenuItem.Text = string.Format("Average {0} start/end keyframes", s);
 
             averageAllStartEndTangentsToolStripMenuItem.Enabled = node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
             //syncStartendTangentsToolStripMenuItem.Enabled = node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;

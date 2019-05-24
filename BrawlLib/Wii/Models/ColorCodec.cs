@@ -1,7 +1,7 @@
-﻿using System;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Textures;
+using System;
 using System.Runtime.InteropServices;
 
 namespace BrawlLib.Wii.Models
@@ -43,7 +43,9 @@ namespace BrawlLib.Wii.Models
 
             int i = 16;
             while ((i -= 4) >= 0)
+            {
                 data |= (*pIn++ >> 4) << i;
+            }
 
             *pOut++ = p[1];
             *pOut++ = p[0];
@@ -55,7 +57,9 @@ namespace BrawlLib.Wii.Models
 
             int i = 24;
             while ((i -= 6) >= 0)
+            {
                 data |= (*pIn++ >> 2) << i;
+            }
 
             *pOut++ = p[2];
             *pOut++ = p[1];
@@ -108,7 +112,7 @@ namespace BrawlLib.Wii.Models
         }
         private static void Color_wRGBA6_RGBA(ref byte* pIn, ref byte* pOut)
         {
-            *(RGBAPixel*)pOut = (RGBAPixel)(ARGBPixel)(*(wRGBA6Pixel*)pIn);
+            *(RGBAPixel*)pOut = (ARGBPixel)(*(wRGBA6Pixel*)pIn);
 
             pIn += 3;
             pOut += 4;
@@ -153,7 +157,10 @@ namespace BrawlLib.Wii.Models
         public void Dispose()
         {
             if (_handle.IsAllocated)
+            {
                 _handle.Free();
+            }
+
             _pData = null;
             GC.SuppressFinalize(this);
         }
@@ -171,15 +178,22 @@ namespace BrawlLib.Wii.Models
 
             //Do we have alpha?
             int i = 0;
-            while ((i < _dstCount) && (_pData[imp[i]].A == 255)) i++;
+            while ((i < _dstCount) && (_pData[imp[i]].A == 255))
+            {
+                i++;
+            }
 
             _hasAlpha = i < _srcCount;
 
             //Determine format
             if (_hasAlpha)
+            {
                 _outType = WiiColorComponentType.RGBA8;
+            }
             else
+            {
                 _outType = WiiColorComponentType.RGB8;
+            }
 
             switch (_outType)
             {
@@ -199,7 +213,7 @@ namespace BrawlLib.Wii.Models
             GetEncoder();
         }
 
-        ColorCodecConverter enc;
+        private ColorCodecConverter enc;
         public void GetEncoder()
         {
             switch (_outType)
@@ -228,7 +242,9 @@ namespace BrawlLib.Wii.Models
 
                 //Zero-fill
                 for (int x = _dataLen; (x & 0x1F) != 0; x++)
+                {
                     *pOut++ = 0;
+                }
             }
             finally
             {
@@ -262,7 +278,9 @@ namespace BrawlLib.Wii.Models
             }
 
             while (count-- > 0)
+            {
                 dec(ref pIn, ref pOut);
+            }
 
             return buffer;
         }
@@ -289,7 +307,9 @@ namespace BrawlLib.Wii.Models
             byte* pOut = (byte*)buffer.Address;
 
             while (count-- > 0)
+            {
                 dec(ref pIn, ref pOut);
+            }
 
             return buffer;
         }
@@ -309,42 +329,60 @@ namespace BrawlLib.Wii.Models
                         {
                             wRGB565Pixel* sPtr = (wRGB565Pixel*)colors->Data;
                             for (int i = 0; i < count; i++)
+                            {
                                 *dPtr++ = (ARGBPixel)(*sPtr++);
+                            }
+
                             break;
                         }
                     case WiiColorComponentType.RGB8:
                         {
                             wRGBPixel* sPtr = (wRGBPixel*)colors->Data;
                             for (int i = 0; i < count; i++)
+                            {
                                 *dPtr++ = (ARGBPixel)(*sPtr++);
+                            }
+
                             break;
                         }
                     case WiiColorComponentType.RGBX8:
                         {
                             wRGBXPixel* sPtr = (wRGBXPixel*)colors->Data;
                             for (int i = 0; i < count; i++)
+                            {
                                 *dPtr++ = (ARGBPixel)(*sPtr++);
+                            }
+
                             break;
                         }
                     case WiiColorComponentType.RGBA4:
                         {
                             wRGBA4Pixel* sPtr = (wRGBA4Pixel*)colors->Data;
                             for (int i = 0; i < count; i++)
+                            {
                                 *dPtr++ = (ARGBPixel)(*sPtr++);
+                            }
+
                             break;
                         }
                     case WiiColorComponentType.RGBA6:
                         {
                             wRGBA6Pixel* sPtr = (wRGBA6Pixel*)colors->Data;
                             for (int i = 0; i < count; i++)
+                            {
                                 *dPtr++ = (ARGBPixel)(*sPtr++);
+                            }
+
                             break;
                         }
                     case WiiColorComponentType.RGBA8:
                         {
                             wRGBAPixel* sPtr = (wRGBAPixel*)colors->Data;
                             for (int i = 0; i < count; i++)
+                            {
                                 *dPtr++ = (ARGBPixel)(*sPtr++);
+                            }
+
                             break;
                         }
                 }

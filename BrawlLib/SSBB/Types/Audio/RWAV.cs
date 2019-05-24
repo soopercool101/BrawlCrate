@@ -4,37 +4,37 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RWAV
+    internal unsafe struct RWAV
     {
         public const string Tag = "RWAV";
         public const int Size = 0x20;
-        
+
         public NW4RCommonHeader _header;
-        
+
         public bint _infoOffset;
         public bint _infoLength;
         public bint _dataOffset;
         public bint _dataLength;
 
-        public RWAVInfo* Info { get { return (RWAVInfo*)(Address + _infoOffset); } }
-        public RWAVData* Data { get { return (RWAVData*)(Address + _dataOffset); } }
+        public RWAVInfo* Info => (RWAVInfo*)(Address + _infoOffset);
+        public RWAVData* Data => (RWAVData*)(Address + _dataOffset);
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RWAVInfo
+    internal unsafe struct RWAVInfo
     {
         public const string Tag = "INFO";
 
         public SSBBEntryHeader _header;
         public WaveInfo _info;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RWAVData
+    internal unsafe struct RWAVData
     {
         public const string Tag = "DATA";
 
@@ -42,11 +42,11 @@ namespace BrawlLib.SSBBTypes
 
         //Audio Samples, align to 0x20
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + 8; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + 8;
     }
 
-    enum WaveDataLocationType
+    internal enum WaveDataLocationType
     {
         Offset = 0,
         Address = 1
@@ -68,31 +68,31 @@ namespace BrawlLib.SSBBTypes
         public buint _dataLocation;
         public buint _reserved; //0
 
-        public buint* OffsetTable { get { return (buint*)(Address + _channelInfoTableOffset); } }
+        public buint* OffsetTable => (buint*)(Address + _channelInfoTableOffset);
         public ChannelInfo* GetChannelInfo(int index) { return (ChannelInfo*)(Address + OffsetTable[index]); }
         public ADPCMInfo* GetADPCMInfo(int index) { return (ADPCMInfo*)(Address + GetChannelInfo(index)->_adpcmInfoOffset); }
 
         public int NumSamples
         {
-            get { return Get(_nibbles); }
-            set { _nibbles = Set(value); }
+            get => Get(_nibbles);
+            set => _nibbles = Set(value);
         }
-        public int LoopSample 
+        public int LoopSample
         {
-            get { return Get(_loopStartSample); }
-            set { _loopStartSample = Set(value); }
+            get => Get(_loopStartSample);
+            set => _loopStartSample = Set(value);
         }
 
         public int Get(int value)
         {
-            return _format._encoding == 2 ? (value / 16 * 14) + ((value % 16) - 2) : value; 
+            return _format._encoding == 2 ? (value / 16 * 14) + ((value % 16) - 2) : value;
         }
         public int Set(int value)
         {
             return _format._encoding == 2 ? ((8 * value) + 16) / 7 : value;
         }
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public int GetSize() { return Size + _format._channels * (0x20 + _format._encoding == 2 ? 0x30 : 0); }
     }
@@ -110,7 +110,7 @@ namespace BrawlLib.SSBBTypes
         public int _volBackRight; //1
         public bint _reserved; //0
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     public enum WaveEncoding
@@ -154,7 +154,9 @@ namespace BrawlLib.SSBBTypes
             {
                 bshort* swap_ptr = (bshort*)ptr;
                 for (int i = 0; i < 16; i++)
+                {
                     swap_ptr[i] = o._coefs[i];
+                }
             }
 
             _gain = gain;
@@ -167,11 +169,14 @@ namespace BrawlLib.SSBBTypes
             _pad = o._pad;
         }
 
-        public unsafe ADPCMInfo(FSTMADPCMInfo o, ushort gain = 0) {
+        public unsafe ADPCMInfo(FSTMADPCMInfo o, ushort gain = 0)
+        {
             fixed (short* ptr = _coefs)
             {
                 for (int i = 0; i < 16; i++)
+                {
                     ptr[i] = o._coefs[i];
+                }
             }
 
             _gain = gain;
@@ -193,7 +198,9 @@ namespace BrawlLib.SSBBTypes
                 {
                     bshort* sPtr = (bshort*)ptr;
                     for (int i = 0; i < 16; i++)
+                    {
                         arr[i] = sPtr[i];
+                    }
                 }
                 return arr;
             }

@@ -1,12 +1,12 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RASDNode : BRESEntryNode
     {
-        internal RASD* Header { get { return (RASD*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.Unknown; } }
+        internal RASD* Header => (RASD*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.Unknown;
 
         //[Category("RASD")]
         //public int Entries { get { return Header->_numEntries; } }
@@ -41,7 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     //public unsafe class RASDEntryNode : ResourceNode
     //{
     //    internal RASDDataEntry* Header { get { return (RASDDataEntry*)WorkingUncompressed.Address; } }
-        
+
     //    public override bool OnInitialize()
     //    {
     //        return false;

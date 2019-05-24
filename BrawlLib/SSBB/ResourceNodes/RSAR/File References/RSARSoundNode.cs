@@ -1,14 +1,14 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Audio;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARSoundNode : RSAREntryNode, IAudioSource
     {
-        internal INFOSoundEntry* Header { get { return (INFOSoundEntry*)WorkingUncompressed.Address; } }
-        
+        internal INFOSoundEntry* Header => (INFOSoundEntry*)WorkingUncompressed.Address;
+
         public RSARSoundNode()
         {
             _volume = 50;
@@ -30,9 +30,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 #else
         [Browsable(false)]
 #endif
-        public override int StringId { get { return Header == null ? -1 : (int)Header->_stringId; } }
+        public override int StringId => Header == null ? -1 : (int)Header->_stringId;
 
-        public override ResourceType ResourceType { get { return ResourceType.RSARSound; } }
+        public override ResourceType ResourceType => ResourceType.RSARSound;
 
         public Sound3DParam _sound3dParam;
         public WaveSoundInfo _waveInfo = new WaveSoundInfo();
@@ -48,7 +48,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 if (_seqInfo._bankId < RSARNode._infoCache[1].Count)
+                {
                     return RSARNode._infoCache[1][_seqInfo._bankId] as RSARBankNode;
+                }
+
                 return null;
             }
         }
@@ -72,11 +75,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             STRM = 2,
             WAVE = 3
         }
-        
+
         [Browsable(false)]
         public RSARFileNode SoundFileNode
         {
-            get { return _soundFileNode; }
+            get => _soundFileNode;
             set
             {
                 if (_soundFileNode != value)
@@ -101,11 +104,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("RSAR Sound"), Browsable(true), TypeConverter(typeof(DropDownListNonBankFiles))]
         public string SoundFile
         {
-            get { return _soundFileNode == null ? "<null>" : _soundFileNode._name; }
+            get => _soundFileNode == null ? "<null>" : _soundFileNode._name;
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
+                {
                     SoundFileNode = null;
+                }
                 else
                 {
                     Type e;
@@ -142,25 +147,25 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Category("RSAR Sound")]
-        public int PlayerId { get { return _playerId; } set { _playerId = value; SignalPropertyChange(); } }
+        public int PlayerId { get => _playerId; set { _playerId = value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public byte Volume { get { return _volume; } set { _volume = value; SignalPropertyChange(); } }
+        public byte Volume { get => _volume; set { _volume = value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public byte PlayerPriority { get { return _playerPriority; } set { _playerPriority = value; SignalPropertyChange(); } }
+        public byte PlayerPriority { get => _playerPriority; set { _playerPriority = value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public SndType SoundType { get { return (SndType)_soundType; } set { _soundType = ((byte)value).Clamp(1, 3); SignalPropertyChange(); } }
+        public SndType SoundType { get => (SndType)_soundType; set { _soundType = ((byte)value).Clamp(1, 3); SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public byte RemoteFilter { get { return _remoteFilter; } set { _remoteFilter = value; SignalPropertyChange(); } }
+        public byte RemoteFilter { get => _remoteFilter; set { _remoteFilter = value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public PanMode PanMode { get { return (PanMode)_panMode; } set { _panMode = (byte)value; SignalPropertyChange(); } }
+        public PanMode PanMode { get => (PanMode)_panMode; set { _panMode = (byte)value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public PanCurve PanCurve { get { return (PanCurve)_panCurve; } set { _panCurve = (byte)value; SignalPropertyChange(); } }
+        public PanCurve PanCurve { get => (PanCurve)_panCurve; set { _panCurve = (byte)value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public byte ActorPlayerId { get { return _actorPlayerId; } set { _actorPlayerId = value; SignalPropertyChange(); } }
+        public byte ActorPlayerId { get => _actorPlayerId; set { _actorPlayerId = value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public int UserParam1 { get { return _p1; } set { _p1 = value; SignalPropertyChange(); } }
+        public int UserParam1 { get => _p1; set { _p1 = value; SignalPropertyChange(); } }
         [Category("RSAR Sound")]
-        public int UserParam2 { get { return _p2; } set { _p2 = value; SignalPropertyChange(); } }
+        public int UserParam2 { get => _p2; set { _p2 = value; SignalPropertyChange(); } }
 
         [Flags]
         public enum Sound3DFlags
@@ -173,42 +178,46 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Sound 3D Param")]
-        public Sound3DFlags Flags { get { return (Sound3DFlags)(uint)_sound3dParam._flags; } set { _sound3dParam._flags = (uint)value; SignalPropertyChange(); } }
+        public Sound3DFlags Flags { get => (Sound3DFlags)(uint)_sound3dParam._flags; set { _sound3dParam._flags = (uint)value; SignalPropertyChange(); } }
         [Category("Sound 3D Param")]
-        public DecayCurve DecayCurve { get { return (DecayCurve)_sound3dParam._decayCurve; } set { _sound3dParam._decayCurve = (byte)value; SignalPropertyChange(); } }
+        public DecayCurve DecayCurve { get => (DecayCurve)_sound3dParam._decayCurve; set { _sound3dParam._decayCurve = (byte)value; SignalPropertyChange(); } }
         [Category("Sound 3D Param")]
-        public byte DecayRatio { get { return _sound3dParam._decayRatio; } set { _sound3dParam._decayRatio = value; SignalPropertyChange(); } }
+        public byte DecayRatio { get => _sound3dParam._decayRatio; set { _sound3dParam._decayRatio = value; SignalPropertyChange(); } }
         [Category("Sound 3D Param")]
-        public byte DopplerFactor { get { return _sound3dParam._dopplerFactor; } set { _sound3dParam._dopplerFactor = value; SignalPropertyChange(); } }
+        public byte DopplerFactor { get => _sound3dParam._dopplerFactor; set { _sound3dParam._dopplerFactor = value; SignalPropertyChange(); } }
 
         [Category("SEQ Params"), Browsable(true), TypeConverter(typeof(DropDownListRSARInfoSeqLabls))]
         public string SeqLabelEntry
         {
-            get
-            {
-                return _seqLabl == null ? 
-                    (_soundFileNode is RSARExtFileNode && SoundType == SndType.SEQ) ? "<null>" : 
+            get => _seqLabl == null ?
+                    (_soundFileNode is RSARExtFileNode && SoundType == SndType.SEQ) ? "<null>" :
                     _seqInfo._dataID.ToString() : _seqLabl._name;
-            }
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
+                {
                     _seqInfo._dataID = 0;
+                }
                 else
                 {
                     if (SoundFileNode is RSEQNode)
+                    {
                         foreach (RSEQLabelNode r in SoundFileNode.Children)
+                        {
                             if (r.Name == value)
                             {
                                 _seqInfo._dataID = r.Id;
-                                SignalPropertyChange(); 
+                                SignalPropertyChange();
                                 break;
                             }
-                    else if (SoundFileNode is RSARExtFileNode)
-                    {
-                        uint id;
-                        if (uint.TryParse(value, out id))
-                            _seqInfo._dataID = id;
+                            else if (SoundFileNode is RSARExtFileNode)
+                            {
+                                if (uint.TryParse(value, out uint id))
+                                {
+                                    _seqInfo._dataID = id;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -216,11 +225,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("SEQ Params"), Browsable(true), TypeConverter(typeof(DropDownListRSARBankRefFiles))]
         public string BankFile
         {
-            get { return RBNKNode == null ? "<null>" : RBNKNode.TreePath; }
+            get => RBNKNode == null ? "<null>" : RBNKNode.TreePath;
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
+                {
                     _seqInfo._bankId = -1;
+                }
                 else
                 {
                     RSARBankNode node = null;
@@ -264,26 +275,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             Track16 = 0x8000,
         }
         [Category("SEQ Params")]
-        public AllocTrackEnum RSEQAllocTrack { get { return (AllocTrackEnum)(uint)_seqInfo._allocTrack; } set { _seqInfo._allocTrack = (uint)value; SignalPropertyChange(); } }
+        public AllocTrackEnum RSEQAllocTrack { get => (AllocTrackEnum)(uint)_seqInfo._allocTrack; set { _seqInfo._allocTrack = (uint)value; SignalPropertyChange(); } }
         [Category("SEQ Params")]
-        public byte SeqChannelPriority { get { return _seqInfo._channelPriority; } set { _seqInfo._channelPriority = value; SignalPropertyChange(); } }
+        public byte SeqChannelPriority { get => _seqInfo._channelPriority; set { _seqInfo._channelPriority = value; SignalPropertyChange(); } }
         [Category("SEQ Params")]
-        public byte SeqReleasePriorityFix { get { return _seqInfo._releasePriorityFix; } set { _seqInfo._releasePriorityFix = value; SignalPropertyChange(); } }
-        
+        public byte SeqReleasePriorityFix { get => _seqInfo._releasePriorityFix; set { _seqInfo._releasePriorityFix = value; SignalPropertyChange(); } }
+
         [Category("STRM Params")]
-        public uint StartPosition { get { return _strmInfo._startPosition; } set { _strmInfo._startPosition = value; SignalPropertyChange(); } }
+        public uint StartPosition { get => _strmInfo._startPosition; set { _strmInfo._startPosition = value; SignalPropertyChange(); } }
         [Category("STRM Params")]
-        public ushort AllocChannelCount { get { return _strmInfo._allocChannelCount; } set { _strmInfo._allocChannelCount = value; SignalPropertyChange(); } }
+        public ushort AllocChannelCount { get => _strmInfo._allocChannelCount; set { _strmInfo._allocChannelCount = value; SignalPropertyChange(); } }
         [Category("STRM Params")]
-        public AllocTrackEnum RSTMAllocTrack { get { return (AllocTrackEnum)(ushort)_strmInfo._allocTrackFlag; } set { _strmInfo._allocTrackFlag = (ushort)value; SignalPropertyChange(); } }
+        public AllocTrackEnum RSTMAllocTrack { get => (AllocTrackEnum)(ushort)_strmInfo._allocTrackFlag; set { _strmInfo._allocTrackFlag = (ushort)value; SignalPropertyChange(); } }
 
         [Category("WAVE Params"), Browsable(true), TypeConverter(typeof(DropDownListRSARInfoSound))]
         public string SoundDataNode
         {
-            get { return _waveDataNode == null ? "<null>" : _waveDataNode._name; }
+            get => _waveDataNode == null ? "<null>" : _waveDataNode._name;
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     _waveInfo._soundIndex = -1;
                     if (_waveDataNode != null)
@@ -296,12 +307,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else
                 {
                     if (SoundFileNode == null || SoundType != SndType.WAVE)
+                    {
                         return;
+                    }
 
                     RWSDDataNode node = null;
                     int t = 0;
 
                     if (value != null)
+                    {
                         foreach (RWSDDataNode r in SoundFileNode.Children[0].Children)
                         {
                             if (r.Name == value)
@@ -311,6 +325,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             }
                             t++;
                         }
+                    }
 
                     if (node != null)
                     {
@@ -338,24 +353,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("WAVE Params")]
         //public int PackIndex { get { return _waveInfo._soundIndex; } set { _waveInfo._soundIndex = value; SignalPropertyChange(); } }
         [Category("WAVE Params")]
-        public AllocTrackEnum RWSDAllocTrack { get { return (AllocTrackEnum)(uint)_waveInfo._allocTrack; } set { _waveInfo._allocTrack = (uint)value; SignalPropertyChange(); } }
+        public AllocTrackEnum RWSDAllocTrack { get => (AllocTrackEnum)(uint)_waveInfo._allocTrack; set { _waveInfo._allocTrack = (uint)value; SignalPropertyChange(); } }
         [Category("WAVE Params")]
-        public byte ChannelPriority { get { return _waveInfo._channelPriority; } set { _waveInfo._channelPriority = value; SignalPropertyChange(); } }
+        public byte ChannelPriority { get => _waveInfo._channelPriority; set { _waveInfo._channelPriority = value; SignalPropertyChange(); } }
         [Category("WAVE Params")]
-        public byte ReleasePriorityFix { get { return _waveInfo._releasePriorityFix; } set { _waveInfo._releasePriorityFix = value; SignalPropertyChange(); } }
+        public byte ReleasePriorityFix { get => _waveInfo._releasePriorityFix; set { _waveInfo._releasePriorityFix = value; SignalPropertyChange(); } }
 
         [Category("Audio Stream")]
-        public WaveEncoding Encoding { get { return _waveDataNode == null ? WaveEncoding.ADPCM : _waveDataNode.Encoding; } }
+        public WaveEncoding Encoding => _waveDataNode == null ? WaveEncoding.ADPCM : _waveDataNode.Encoding;
         [Category("Audio Stream")]
-        public int Channels { get { return _waveDataNode == null ? 0 : _waveDataNode.Channels; } }
+        public int Channels => _waveDataNode == null ? 0 : _waveDataNode.Channels;
         [Category("Audio Stream")]
-        public bool IsLooped { get { return _waveDataNode == null ? false : _waveDataNode.IsLooped; } }
+        public bool IsLooped => _waveDataNode == null ? false : _waveDataNode.IsLooped;
         [Category("Audio Stream")]
-        public int SampleRate { get { return _waveDataNode == null ? 0 : _waveDataNode.SampleRate; } }
+        public int SampleRate => _waveDataNode == null ? 0 : _waveDataNode.SampleRate;
         [Category("Audio Stream")]
-        public int LoopStartSample { get { return _waveDataNode == null ? 0 : _waveDataNode.LoopStartSample; } }
+        public int LoopStartSample => _waveDataNode == null ? 0 : _waveDataNode.LoopStartSample;
         [Category("Audio Stream")]
-        public int NumSamples { get { return _waveDataNode == null ? 0 : _waveDataNode.NumSamples; } }
+        public int NumSamples => _waveDataNode == null ? 0 : _waveDataNode.NumSamples;
 
         public override bool OnInitialize()
         {
@@ -388,12 +403,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             _soundFileNode.AddSoundRef(this);
 
             if (_soundFileNode is RSEQNode)
+            {
                 foreach (RSEQLabelNode r in _soundFileNode.Children)
+                {
                     if (_seqInfo._dataID == r.Id)
                     {
                         _seqLabl = r;
                         break;
                     }
+                }
+            }
 
             if (_waveInfo._soundIndex >= 0 &&
                 _soundFileNode is RWSDNode &&
@@ -402,12 +421,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _waveDataNode = _soundFileNode.Children[0].Children[_waveInfo._soundIndex] as RWSDDataNode;
                 if (_waveDataNode != null)
+                {
                     _waveDataNode._refs.Add(this);
+                }
             }
 
             return false;
         }
-        
+
         public IAudioStream _stream;
         public IAudioStream[] CreateStreams()
         {
@@ -416,7 +437,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 RWSDDataNode d = _waveDataNode as RWSDDataNode;
                 if (d != null && _soundFileNode.Children.Count > 1 && _soundFileNode.Children[1].Children.Count > d._part3._waveIndex && d._part3._waveIndex >= 0)
+                {
                     _stream = (_soundFileNode.Children[1].Children[d._part3._waveIndex] as RSARFileAudioNode).CreateStreams()[0];
+                }
             }
             return new IAudioStream[] { _stream };
         }
@@ -482,13 +505,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (outPath.EndsWith(".wav"))
             {
-                var stream = CreateStreams()[0];
+                IAudioStream stream = CreateStreams()[0];
                 if (stream == null)
-                    throw new Exception($"{this.GetType().Name} cannot be exported to WAV.");
+                {
+                    throw new Exception($"{GetType().Name} cannot be exported to WAV.");
+                }
+
                 WAV.ToFile(stream, outPath);
             }
             else
+            {
                 base.Export(outPath);
+            }
         }
     }
 }

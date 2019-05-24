@@ -7,8 +7,10 @@ namespace BrawlLib.SSBBTypes
     /// A type/offset pair similar to ruint.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct CSTMReference {
-        public enum RefType : short {
+    public unsafe struct CSTMReference
+    {
+        public enum RefType : short
+        {
             ByteTable = 0x0100,
             ReferenceTable = 0x0101,
             SampleData = 0x1F00,
@@ -30,15 +32,16 @@ namespace BrawlLib.SSBBTypes
     /// A list of CSTMReferences, beginning with a length value. Similar to RuintList.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct CSTMReferenceList {
+    public unsafe struct CSTMReferenceList
+    {
         public int _numEntries;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) return ptr; } }
-        public CSTMReference* Entries { get { return (CSTMReference*)(Address + 4); } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public CSTMReference* Entries => (CSTMReference*)(Address + 4);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct CSTMHeader
+    internal unsafe struct CSTMHeader
     {
         public const uint Tag = 0x4D545343;
 
@@ -56,9 +59,9 @@ namespace BrawlLib.SSBBTypes
         public CSTMReference _dataBlockRef;
         public int _dataBlockSize;
 
-        public Endian Endian { get { return (Endian)(short)_endian; } private set { _endian = (ushort)value; } }
+        public Endian Endian { get => (Endian)(short)_endian; private set => _endian = (ushort)value; }
 
-        private VoidPtr Address{get{fixed(void* ptr = &this)return ptr;}}
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public void Set(int infoLen, int seekLen, int dataLen)
         {
@@ -86,16 +89,17 @@ namespace BrawlLib.SSBBTypes
             _length = len + dataLen;
         }
 
-        public CSTMINFOHeader* INFOData { get { return (CSTMINFOHeader*)(Address + _infoBlockRef._dataOffset); } }
-        public CSTMSEEKHeader* SEEKData { get { return (CSTMSEEKHeader*)(Address + _seekBlockRef._dataOffset); } }
-        public CSTMDATAHeader* DATAData { get { return (CSTMDATAHeader*)(Address + _dataBlockRef._dataOffset); } }
+        public CSTMINFOHeader* INFOData => (CSTMINFOHeader*)(Address + _infoBlockRef._dataOffset);
+        public CSTMSEEKHeader* SEEKData => (CSTMSEEKHeader*)(Address + _seekBlockRef._dataOffset);
+        public CSTMDATAHeader* DATAData => (CSTMDATAHeader*)(Address + _dataBlockRef._dataOffset);
     }
 
     /// <summary>
     /// Represents a single TrackInfo segment (with the assumption that there will be only one in a file.) Some unknown data (the Byte Table) is hardcoded in the constructor.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct CSTMTrackInfoStub {
+    public unsafe struct CSTMTrackInfoStub
+    {
         public byte _volume;
         public byte _pan;
         public short _padding;
@@ -103,7 +107,8 @@ namespace BrawlLib.SSBBTypes
         public int _byteTableCount;
         public bint _byteTable;
 
-        public CSTMTrackInfoStub(byte volume, byte pan) {
+        public CSTMTrackInfoStub(byte volume, byte pan)
+        {
             _volume = volume;
             _pan = pan;
             _padding = 0;
@@ -116,7 +121,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct CSTMINFOHeader
+    internal unsafe struct CSTMINFOHeader
     {
         public const uint Tag = 0x4F464E49;
 
@@ -127,8 +132,10 @@ namespace BrawlLib.SSBBTypes
         public CSTMReference _channelInfoRefTableRef;
         public CSTMDataInfo _dataInfo;
 
-        private VoidPtr DataInfoEnd {
-            get {
+        private VoidPtr DataInfoEnd
+        {
+            get
+            {
                 fixed (CSTMDataInfo* dataInfoPtr = &_dataInfo)
                 {
                     byte* endptr = (byte*)(dataInfoPtr + 1);
@@ -139,21 +146,21 @@ namespace BrawlLib.SSBBTypes
 
         // Below properties will find different parts of the INFO header, assuming that there are zero or one TrackInfo structures.
 
-        public CSTMReferenceList* TrackInfoRefTable {
-            get {
-                return (CSTMReferenceList*)DataInfoEnd;
-            }
-        }
-        public CSTMReferenceList* ChannelInfoRefTable {
-            get {
-                if (_trackInfoRefTableRef._dataOffset == -1) {
+        public CSTMReferenceList* TrackInfoRefTable => (CSTMReferenceList*)DataInfoEnd;
+        public CSTMReferenceList* ChannelInfoRefTable
+        {
+            get
+            {
+                if (_trackInfoRefTableRef._dataOffset == -1)
+                {
                     fixed (CSTMReference* x = &_streamInfoRef)
                     {
                         // Look to see what the _channelInfoRefTableRef says - but if it's a file we're building, it may not have been filled in yet.
                         CSTMReferenceList* fromRef = (CSTMReferenceList*)((VoidPtr)x + _channelInfoRefTableRef._dataOffset);
                         // If it's not filled in, give a 0x0C gap to allow for the TrackInfoRefTable.
                         CSTMReferenceList* guess = (CSTMReferenceList*)(DataInfoEnd + 0x0C);
-                        if (fromRef > guess) {
+                        if (fromRef > guess)
+                        {
                             Console.Error.WriteLine("There is extra data between the DataInfo and ChannelInfoRefTable that will be discarded.");
                             return fromRef;
                         }
@@ -164,53 +171,87 @@ namespace BrawlLib.SSBBTypes
                 CSTMReferenceList* prevTable = TrackInfoRefTable;
                 int* ptr = (int*)prevTable;
                 int count = prevTable->_numEntries;
-                if (count == 0) throw new Exception("Track info's ref table must be populated before channel info's ref table can be accessed.");
-                if (count == 16777216) {
+                if (count == 0)
+                {
+                    throw new Exception("Track info's ref table must be populated before channel info's ref table can be accessed.");
+                }
+
+                if (count == 16777216)
+                {
                     count = 1;
                 }
-                if (count != 1) throw new Exception("BCSTM files with more than one track data section are not supported.");
+                if (count != 1)
+                {
+                    throw new Exception("BCSTM files with more than one track data section are not supported.");
+                }
+
                 ptr += 1 + count * 2;
                 return (CSTMReferenceList*)ptr;
             }
         }
 
-        private VoidPtr ChannelInfoRefTableEnd {
-            get {
+        private VoidPtr ChannelInfoRefTableEnd
+        {
+            get
+            {
                 CSTMReferenceList* prevTable = ChannelInfoRefTable;
                 int count = prevTable->_numEntries;
-                if (count == 0) throw new Exception("Channel info's ref table must be populated before track info can be accessed.");
-                if (count > 255 || count < 0) throw new Exception("This file seems to have an absurd number of channels");
+                if (count == 0)
+                {
+                    throw new Exception("Channel info's ref table must be populated before track info can be accessed.");
+                }
+
+                if (count > 255 || count < 0)
+                {
+                    throw new Exception("This file seems to have an absurd number of channels");
+                }
+
                 int* ptr = (int*)prevTable;
                 ptr += 1 + count * 2;
                 return ptr;
             }
         }
 
-        public CSTMTrackInfoStub* TrackInfo {
-            get {
-                if (_trackInfoRefTableRef._dataOffset == -1) return null;
+        public CSTMTrackInfoStub* TrackInfo
+        {
+            get
+            {
+                if (_trackInfoRefTableRef._dataOffset == -1)
+                {
+                    return null;
+                }
 
                 return (CSTMTrackInfoStub*)ChannelInfoRefTableEnd;
             }
         }
 
-        public CSTMReference* ChannelInfoEntries {
-            get {
-                if (_trackInfoRefTableRef._dataOffset == -1) {
+        public CSTMReference* ChannelInfoEntries
+        {
+            get
+            {
+                if (_trackInfoRefTableRef._dataOffset == -1)
+                {
                     return (CSTMReference*)ChannelInfoRefTableEnd;
-                } else {
+                }
+                else
+                {
                     int* ptr = (int*)(TrackInfo + 1);
                     return (CSTMReference*)ptr;
                 }
             }
         }
 
-        public CSTMADPCMInfo* GetChannelInfo(int index) {
-            if (ChannelInfoEntries[index]._dataOffset == 0) throw new Exception("Channel info entries must be populated with references to ADPCM data before ADPCM data can be accessed.");
+        public CSTMADPCMInfo* GetChannelInfo(int index)
+        {
+            if (ChannelInfoEntries[index]._dataOffset == 0)
+            {
+                throw new Exception("Channel info entries must be populated with references to ADPCM data before ADPCM data can be accessed.");
+            }
+
             return (CSTMADPCMInfo*)((byte*)(ChannelInfoEntries + index) + ChannelInfoEntries[index]._dataOffset);
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public void Set(int size, int channels)
         {
@@ -233,19 +274,20 @@ namespace BrawlLib.SSBBTypes
             TrackInfoRefTable->Entries[0]._dataOffset = ((VoidPtr)TrackInfo - TrackInfoRefTable);
 
             //Set adpcm infos
-            for (int i = 0; i < channels; i++) {
+            for (int i = 0; i < channels; i++)
+            {
                 ChannelInfoEntries[i]._dataOffset = 0x8 * channels + 0x26 * i;
                 ChannelInfoEntries[i]._type = CSTMReference.RefType.DSPADPCMInfo;
 
                 //Set initial pointer
-                ChannelInfoRefTable->Entries[i]._dataOffset = ((VoidPtr)(ChannelInfoEntries + i) - (VoidPtr)ChannelInfoRefTable);
+                ChannelInfoRefTable->Entries[i]._dataOffset = (ChannelInfoEntries + i - (VoidPtr)ChannelInfoRefTable);
                 ChannelInfoRefTable->Entries[i]._type = CSTMReference.RefType.ChannelInfo;
             }
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct CSTMDataInfo
+    internal unsafe struct CSTMDataInfo
     {
         public AudioFormatInfo _format;
         public int _sampleRate;
@@ -288,13 +330,13 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct CSTMSEEKHeader
+    internal unsafe struct CSTMSEEKHeader
     {
         public const uint Tag = 0x4B454553;
 
         public uint _tag;
         public int _length;
-        int _pad1, _pad2;
+        private int _pad1, _pad2;
 
         public void Set(int length)
         {
@@ -303,12 +345,12 @@ namespace BrawlLib.SSBBTypes
             _pad1 = _pad2 = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + 0x10; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + 0x10;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct CSTMDATAHeader
+    internal unsafe struct CSTMDATAHeader
     {
         public const int Size = 0x20;
         public const uint Tag = 0x41544144;
@@ -328,8 +370,8 @@ namespace BrawlLib.SSBBTypes
             _pad1 = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + 0x20; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + 0x20;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -352,8 +394,12 @@ namespace BrawlLib.SSBBTypes
         {
             short[] c = o.Coefs;
             fixed (short* ptr = _coefs)
+            {
                 for (int i = 0; i < 16; i++)
+                {
                     ptr[i] = c[i];
+                }
+            }
 
             _gain = o._gain;
             _ps = o._ps;

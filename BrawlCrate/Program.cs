@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Windows.Forms;
+﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.IO;
 using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
-using System.Diagnostics;
 using Microsoft.Win32;
-using BrawlCrate.NodeWrappers;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace BrawlCrate
 {
-    static class Program
+    internal static class Program
     {
         //Make sure this matches the tag name of the release on github exactly
         public static readonly string TagName = "BrawlCrate_v0.26Hotfix1";
@@ -22,14 +22,14 @@ namespace BrawlCrate
         public static readonly string FullPath;
         public static readonly string BrawlLibTitle;
 
-        private static OpenFileDialog _openDlg;
-        private static SaveFileDialog _saveDlg;
-        private static FolderBrowserDialog _folderDlg;
+        private static readonly OpenFileDialog _openDlg;
+        private static readonly SaveFileDialog _saveDlg;
+        private static readonly FolderBrowserDialog _folderDlg;
 
         internal static ResourceNode _rootNode;
-        public static ResourceNode RootNode { get { return _rootNode; } set { _rootNode = value; MainForm.Instance.Reset(); } }
+        public static ResourceNode RootNode { get => _rootNode; set { _rootNode = value; MainForm.Instance.Reset(); } }
         internal static string _rootPath;
-        public static string RootPath { get { return _rootPath; } }
+        public static string RootPath => _rootPath;
 
         static Program()
         {
@@ -50,7 +50,7 @@ namespace BrawlCrate
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
         }
 
-        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             List<ResourceNode> dirty = GetDirtyFiles();
             Exception ex = e.Exception;
@@ -58,7 +58,7 @@ namespace BrawlCrate
             d.ShowDialog();
         }
 
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             if (e.ExceptionObject is Exception)
             {
@@ -73,13 +73,21 @@ namespace BrawlCrate
         {
             List<ResourceNode> dirty = new List<ResourceNode>();
 
-            foreach (var control in ModelEditControl.Instances)
+            foreach (ModelEditControl control in ModelEditControl.Instances)
+            {
                 foreach (ResourceNode r in control.rightPanel.pnlOpenedFiles.OpenedFiles)
+                {
                     if (r.IsDirty && !dirty.Contains(r))
+                    {
                         dirty.Add(r);
+                    }
+                }
+            }
 
             if (_rootNode != null && _rootNode.IsDirty && !dirty.Contains(_rootNode))
+            {
                 dirty.Add(_rootNode);
+            }
 
             return dirty;
         }
@@ -92,14 +100,20 @@ namespace BrawlCrate
                 if (args[0].Equals("/gct", StringComparison.InvariantCultureIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor();
-                    if (args.Length >= 2) editor.TargetNode = GCTEditor.LoadGCT(args[1]);
+                    if (args.Length >= 2)
+                    {
+                        editor.TargetNode = GCTEditor.LoadGCT(args[1]);
+                    }
+
                     Application.Run(editor);
                     return;
                 }
                 else if (args[0].EndsWith(".gct", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    GCTEditor editor = new GCTEditor();
-                    editor.TargetNode = GCTEditor.LoadGCT(args[0]);
+                    GCTEditor editor = new GCTEditor
+                    {
+                        TargetNode = GCTEditor.LoadGCT(args[0])
+                    };
                     Application.Run(editor);
                     return;
                 }
@@ -109,28 +123,42 @@ namespace BrawlCrate
             foreach (string a in args)
             {
                 if (a.Equals("/audio:directsound", StringComparison.InvariantCultureIgnoreCase))
+                {
                     System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.DirectSound;
+                }
                 else if (a.Equals("/audio:openal", StringComparison.InvariantCultureIgnoreCase))
+                {
                     System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.OpenAL;
+                }
                 else if (a.Equals("/audio:none", StringComparison.InvariantCultureIgnoreCase))
+                {
                     System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.None;
+                }
                 else
+                {
                     remainingArgs.Add(a);
+                }
             }
             args = remainingArgs.ToArray();
 
             try
             {
                 if (args.Length >= 1)
+                {
                     Open(args[0]);
+                }
 
                 if (args.Length >= 2)
                 {
                     ResourceNode target = ResourceNode.FindNode(RootNode, args[1], true);
                     if (target != null)
+                    {
                         MainForm.Instance.TargetResource(target);
+                    }
                     else
-                        Say(String.Format("Error: Unable to find node or path '{0}'!", args[1]));
+                    {
+                        Say(string.Format("Error: Unable to find node or path '{0}'!", args[1]));
+                    }
                 }
 
                 Application.Run(MainForm.Instance);
@@ -157,7 +185,9 @@ namespace BrawlCrate
         public static bool New<T>() where T : ResourceNode
         {
             if (!Close())
+            {
                 return false;
+            }
 
             _rootNode = Activator.CreateInstance<T>();
             _rootNode.Name = "NewTree";
@@ -172,15 +202,19 @@ namespace BrawlCrate
             //Have to close external files before the root file
             while (ModelEditControl.Instances.Count > 0)
             {
-                var control = ModelEditControl.Instances[0];
+                ModelEditControl control = ModelEditControl.Instances[0];
                 if (control.ParentForm != null)
                 {
                     control.ParentForm.Close();
                     if (!control.IsDisposed)
+                    {
                         return false;
+                    }
                 }
                 else if (!control.Close())
+                {
                     return false;
+                }
             }
 
             if (_rootNode != null)
@@ -189,7 +223,9 @@ namespace BrawlCrate
                 {
                     DialogResult res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
                     if ((res == DialogResult.Yes && !Save()) || res == DialogResult.Cancel)
+                    {
                         return false;
+                    }
                 }
 
                 _rootNode.Dispose();
@@ -205,8 +241,10 @@ namespace BrawlCrate
 
         public static bool Open(string path)
         {
-            if (String.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path))
+            {
                 return false;
+            }
 
             if (!File.Exists(path))
             {
@@ -216,14 +254,18 @@ namespace BrawlCrate
 
             if (path.EndsWith(".gct", StringComparison.InvariantCultureIgnoreCase))
             {
-                GCTEditor editor = new GCTEditor();
-                editor.TargetNode = GCTEditor.LoadGCT(path);
+                GCTEditor editor = new GCTEditor
+                {
+                    TargetNode = GCTEditor.LoadGCT(path)
+                };
                 editor.Show();
                 return true;
             }
 
             if (!Close())
+            {
                 return false;
+            }
 
 #if !DEBUG
             try
@@ -296,7 +338,9 @@ namespace BrawlCrate
 #endif
 
                     if (_rootPath == null)
+                    {
                         return SaveAs();
+                    }
 
                     bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
                     if (!force && !_rootNode.IsDirty)
@@ -322,7 +366,10 @@ namespace BrawlCrate
         public static string ChooseFolder()
         {
             if (_folderDlg.ShowDialog() == DialogResult.OK)
+            {
                 return _folderDlg.SelectedPath;
+            }
+
             return null;
         }
 
@@ -339,9 +386,13 @@ namespace BrawlCrate
                 {
                     fileName = _openDlg.FileName;
                     if ((categorize) && (_openDlg.FilterIndex == 1))
+                    {
                         return CategorizeFilter(_openDlg.FileName, filter);
+                    }
                     else
+                    {
                         return _openDlg.FilterIndex;
+                    }
                 }
 #if !DEBUG
             }
@@ -362,9 +413,13 @@ namespace BrawlCrate
             if (_saveDlg.ShowDialog() == DialogResult.OK)
             {
                 if ((categorize) && (_saveDlg.FilterIndex == 1) && (Path.HasExtension(_saveDlg.FileName)))
+                {
                     fIndex = CategorizeFilter(_saveDlg.FileName, filter);
+                }
                 else
+                {
                     fIndex = _saveDlg.FilterIndex;
+                }
 
                 //Fix extension
                 fileName = ApplyExtension(_saveDlg.FileName, filter, fIndex - 1);
@@ -378,20 +433,30 @@ namespace BrawlCrate
 
             string[] split = filter.Split('|');
             for (int i = 3; i < split.Length; i += 2)
+            {
                 foreach (string s in split[i].Split(';'))
+                {
                     if (s.Equals(ext, StringComparison.OrdinalIgnoreCase))
+                    {
                         return (i + 1) / 2;
+                    }
+                }
+            }
+
             return 1;
         }
         public static string ApplyExtension(string path, string filter, int filterIndex)
         {
-            int tmp;
-            if ((Path.HasExtension(path)) && (!int.TryParse(Path.GetExtension(path), out tmp)))
+            if ((Path.HasExtension(path)) && (!int.TryParse(Path.GetExtension(path), out int tmp)))
+            {
                 return path;
+            }
 
             int index = filter.IndexOfOccurance('|', filterIndex * 2);
             if (index == -1)
+            {
                 return path;
+            }
 
             index = filter.IndexOf('.', index);
             int len = Math.Max(filter.Length, filter.IndexOfAny(new char[] { ';', '|' })) - index;
@@ -399,7 +464,9 @@ namespace BrawlCrate
             string ext = filter.Substring(index, len);
 
             if (ext.IndexOf('*') >= 0)
+            {
                 return path;
+            }
 
             return path + ext;
         }
@@ -436,7 +503,10 @@ namespace BrawlCrate
             if (!File.Exists(path))
             {
                 if (showMessages)
+                {
                     MessageBox.Show("Could not find " + path);
+                }
+
                 return false;
             }
 
@@ -445,11 +515,15 @@ namespace BrawlCrate
             {
                 object o = ndpKey.GetValue("Release");
                 if (o == null)
+                {
                     return false;
+                }
 
                 int releaseKey = Convert.ToInt32(o);
                 if (releaseKey < 378389)
+                {
                     return false;
+                }
             }
             return true;
         }

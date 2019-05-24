@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BrawlLib.Imaging;
 using BrawlLib.SSBBTypes;
-using System.ComponentModel;
-using BrawlLib.Imaging;
-using BrawlLib.Wii.Graphics;
-using System.Runtime.InteropServices;
 using BrawlLib.Wii.Animations;
+using BrawlLib.Wii.Graphics;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0LightNode : SCN0EntryNode, IBoolArraySource, IColorSource, IKeyframeSource
     {
-        internal SCN0Light* Data { get { return (SCN0Light*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.SCN0Light; } }
+        internal SCN0Light* Data => (SCN0Light*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.SCN0Light;
 
         #region Variables
 
@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region User Editable Variables
         [Category("User Data"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public UserDataCollection UserEntries { get { return _userEntries; } set { _userEntries = value; SignalPropertyChange(); } }
+        public UserDataCollection UserEntries { get => _userEntries; set { _userEntries = value; SignalPropertyChange(); } }
         internal UserDataCollection _userEntries = new UserDataCollection();
         [Category("SCN0 Entry")]
         public int NonSpecularLightID
@@ -45,77 +45,103 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 if (!SpecularEnabled)
+                {
                     return 0;
+                }
 
                 int i = 0;
                 foreach (SCN0LightNode n in Parent.Children)
                 {
                     if (n.Index == Index)
+                    {
                         return Parent.Children.Count + i;
+                    }
+
                     if (n.SpecularEnabled && n.Index != Index)
+                    {
                         i++;
+                    }
                 }
                 return 0;
             }
         }
         [Category("Light")]
-        public LightType LightType { get { return (LightType)_typeUsageFlags[0, 2]; } set { _typeUsageFlags[0, 2] = (ushort)value; SignalPropertyChange(); } }
+        public LightType LightType { get => (LightType)_typeUsageFlags[0, 2]; set { _typeUsageFlags[0, 2] = (ushort)value; SignalPropertyChange(); } }
         [Category("Light")]
         public bool ColorEnabled
         {
-            get { return UsageFlags.HasFlag(UsageFlags.ColorEnabled); }
+            get => UsageFlags.HasFlag(UsageFlags.ColorEnabled);
             set
             {
                 if (value)
+                {
                     UsageFlags |= UsageFlags.ColorEnabled;
+                }
                 else
+                {
                     UsageFlags &= ~UsageFlags.ColorEnabled;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Light")]
         public bool AlphaEnabled
         {
-            get { return UsageFlags.HasFlag(UsageFlags.AlphaEnabled); }
+            get => UsageFlags.HasFlag(UsageFlags.AlphaEnabled);
             set
             {
                 if (value)
+                {
                     UsageFlags |= UsageFlags.AlphaEnabled;
+                }
                 else
+                {
                     UsageFlags &= ~UsageFlags.AlphaEnabled;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Light")]
         public bool SpecularEnabled
         {
-            get { return UsageFlags.HasFlag(UsageFlags.SpecularEnabled); }
+            get => UsageFlags.HasFlag(UsageFlags.SpecularEnabled);
             set
             {
                 if (value)
+                {
                     UsageFlags |= UsageFlags.SpecularEnabled;
+                }
                 else
+                {
                     UsageFlags &= ~UsageFlags.SpecularEnabled;
+                }
+
                 SignalPropertyChange();
             }
         }
         [Category("Source Light")]
-        public DistAttnFn DistanceFunction { get { return (DistAttnFn)_distFunc; } set { _distFunc = (int)value; SignalPropertyChange(); } }
+        public DistAttnFn DistanceFunction { get => (DistAttnFn)_distFunc; set { _distFunc = (int)value; SignalPropertyChange(); } }
         [Category("Spotlight")]
-        public SpotFn SpotFunction { get { return (SpotFn)_spotFunc; } set { _spotFunc = (int)value; SignalPropertyChange(); } }
+        public SpotFn SpotFunction { get => (SpotFn)_spotFunc; set { _spotFunc = (int)value; SignalPropertyChange(); } }
         [Category("Light Colors")]
         public bool ConstantColor
         {
-            get { return _constants[0]; }
+            get => _constants[0];
             set
             {
                 if (_constants[0] != value)
                 {
                     _constants[0] = value;
                     if (_constants[0])
+                    {
                         MakeSolid(new ARGBPixel(), 0);
+                    }
                     else
+                    {
                         MakeList(0);
+                    }
 
                     UpdateCurrentControl();
                 }
@@ -124,16 +150,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Light Colors")]
         public bool ConstantSpecular
         {
-            get { return _constants[1]; }
+            get => _constants[1];
             set
             {
                 if (_constants[1] != value)
                 {
                     _constants[1] = value;
                     if (_constants[1])
+                    {
                         MakeSolid(new ARGBPixel(), 1);
+                    }
                     else
+                    {
                         MakeList(1);
+                    }
 
                     UpdateCurrentControl();
                 }
@@ -142,15 +172,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Light Enable")]
         public bool Constant
         {
-            get { return ConstantVisibility; }
+            get => ConstantVisibility;
             set
             {
                 if (value != ConstantVisibility)
                 {
                     if (value)
+                    {
                         MakeConstant(true);
+                    }
                     else
+                    {
                         MakeAnimated();
+                    }
 
                     UpdateCurrentControl();
                 }
@@ -159,39 +193,47 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Light Enable")]
         public bool Enabled
         {
-            get { return VisibilityEnabled; }
+            get => VisibilityEnabled;
             set { VisibilityEnabled = value; SignalPropertyChange(); }
         }
         #endregion
 
         #region Flags
         [Browsable(false)]
-        public UsageFlags UsageFlags { get { return (UsageFlags)_typeUsageFlags[2, 4]; } set { _typeUsageFlags[2, 4] = (ushort)value; SignalPropertyChange(); } }
+        public UsageFlags UsageFlags { get => (UsageFlags)_typeUsageFlags[2, 4]; set { _typeUsageFlags[2, 4] = (ushort)value; SignalPropertyChange(); } }
         [Browsable(false)]
         public bool ConstantVisibility
         {
-            get { return _fixedFlags.HasFlag(FixedFlags.EnabledConstant); }
+            get => _fixedFlags.HasFlag(FixedFlags.EnabledConstant);
             set
             {
                 if (value)
+                {
                     _fixedFlags |= FixedFlags.EnabledConstant;
+                }
                 else
+                {
                     _fixedFlags &= ~FixedFlags.EnabledConstant;
+                }
             }
         }
         [Browsable(false)]
         public bool VisibilityEnabled
         {
-            get { return UsageFlags.HasFlag(UsageFlags.Enabled); }
+            get => UsageFlags.HasFlag(UsageFlags.Enabled);
             set
             {
                 if (value)
+                {
                     UsageFlags |= UsageFlags.Enabled;
+                }
                 else
+                {
                     UsageFlags &= ~UsageFlags.Enabled;
+                }
             }
         }
-        private static readonly FixedFlags[] _ordered = new FixedFlags[] 
+        private static readonly FixedFlags[] _ordered = new FixedFlags[]
         {
             FixedFlags.StartXConstant,
             FixedFlags.StartYConstant,
@@ -246,7 +288,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _numEntries[id] = 0;
             _constants[id] = true;
-            _solidColors[id] = (RGBAPixel)color;
+            _solidColors[id] = color;
             SignalPropertyChange();
         }
         public void MakeList(int id)
@@ -266,11 +308,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (value > _numEntries[id])
             {
                 ARGBPixel p = _numEntries[id] > 0 ? (ARGBPixel)GetColors(id)[_numEntries[id] - 1] : new ARGBPixel(255, 0, 0, 0);
-                for (int i = value - _numEntries[id]; i-- > 0; )
-                    GetColors(id).Add((RGBAPixel)p);
+                for (int i = value - _numEntries[id]; i-- > 0;)
+                {
+                    GetColors(id).Add(p);
+                }
             }
             else if (value < GetColors(id).Count)
+            {
                 GetColors(id).RemoveRange(value, GetColors(id).Count - value);
+            }
 
             _numEntries[id] = value;
         }
@@ -279,7 +325,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         #endregion
 
         [Browsable(false)]
-        public int FrameCount { get { return Keyframes.FrameLimit; } }
+        public int FrameCount => Keyframes.FrameLimit;
 
         internal void SetSize(int numFrames, bool looped)
         {
@@ -289,8 +335,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             SetNumEntries(0, numFrames);
             SetNumEntries(1, numFrames);
 
-            if (_constants[0]) _numEntries[0] = 0;
-            if (_constants[1]) _numEntries[1] = 0;
+            if (_constants[0])
+            {
+                _numEntries[0] = 0;
+            }
+
+            if (_constants[1])
+            {
+                _numEntries[1] = 0;
+            }
 
             Keyframes.FrameLimit = numFrames + (looped ? 1 : 0);
 
@@ -321,7 +374,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Don't bother reading data if the entry is null
             if (Name == "<null>")
+            {
                 return false;
+            }
 
             //Read light visibility array
             if (!_fixedFlags.HasFlag(FixedFlags.EnabledConstant) && !_replaced)
@@ -369,43 +424,57 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        SCN0LightNode[] _matches = { null, null };
+        private readonly SCN0LightNode[] _matches = { null, null };
         public override int OnCalculateSize(bool force)
         {
             _matches[0] = null;
             _matches[1] = null;
 
             for (int i = 0; i < 3; i++)
+            {
                 _dataLengths[i] = 0;
+            }
 
             if (_name == "<null>")
+            {
                 return SCN0Light.Size;
+            }
 
             for (int i = 0; i < Keyframes.ArrayCount; i++)
+            {
                 CalcKeyLen(Keyframes[i]);
+            }
 
             for (int i = 0; i < 2; i++)
             {
                 if (i == 1 && !SpecularEnabled)
+                {
                     break;
+                }
 
                 _matches[i] = FindColorMatch(_constants[i], Scene.FrameCount, i) as SCN0LightNode;
                 if (_matches[i] == null && !_constants[i])
+                {
                     _dataLengths[1] += 4 * (FrameCount + 1);
+                }
             }
 
             if (!ConstantVisibility)
+            {
                 _dataLengths[2] += _entryCount.Align(32) / 8;
+            }
 
             //If this light uses specular lighting, 
             //increment SCN0 specular light count
             if (SpecularEnabled && Scene != null)
+            {
                 Scene._specLights++;
+            }
 
             return SCN0Light.Size;
         }
 
-        VoidPtr _lightAddress, _specularAddress;
+        private VoidPtr _lightAddress, _specularAddress;
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             //Build common header
@@ -417,7 +486,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Don't write anything if this node is null
             if (_name == "<null>")
+            {
                 return;
+            }
 
             //Write header information
             SCN0Light* header = (SCN0Light*)address;
@@ -430,13 +501,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Encode keyframe data
             for (int i = 0, index = 0; i < 14; i++)
+            {
                 if (!(i == 3 || i == 7 || i == 10 || i == 12))
+                {
                     _dataAddrs[0] += EncodeKeyframes(
                         Keyframes[index],
                         _dataAddrs[0],
                         header->_startPoint._x.Address + i * 4,
                         ref newFlags,
                         (int)_ordered[index++]);
+                }
+            }
 
             _dataAddrs[1] += WriteColors(
                 ref newFlags,
@@ -452,6 +527,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Only bother writing if specular is enabled
             if (SpecularEnabled)
+            {
                 _dataAddrs[1] += WriteColors(
                     ref newFlags,
                     (int)FixedFlags.SpecColorConstant,
@@ -463,6 +539,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     ref _specularAddress,
                     _matches[1] == null ? null : _matches[1]._specularAddress,
                     (RGBAPixel*)_dataAddrs[1]);
+            }
             else
             {
                 //The value is set to 0
@@ -470,19 +547,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 //The flag, while unused, seems to be set to the same state as the color constant flag
                 if (_constants[0])
+                {
                     newFlags |= (int)FixedFlags.SpecColorConstant;
+                }
                 else
+                {
                     newFlags &= (int)~FixedFlags.SpecColorConstant;
+                }
             }
 
             if (!ConstantVisibility && _entryCount != 0)
             {
                 header->_visOffset = (int)_dataAddrs[2] - (int)header->_visOffset.Address;
-                Marshal.Copy(_data, 0, (IntPtr)_dataAddrs[2], _data.Length);
-                _dataAddrs[2] = ((VoidPtr)_dataAddrs[2] + EntryCount.Align(32) / 8);
+                Marshal.Copy(_data, 0, _dataAddrs[2], _data.Length);
+                _dataAddrs[2] = (_dataAddrs[2] + EntryCount.Align(32) / 8);
             }
             else
+            {
                 newFlags |= (int)FixedFlags.EnabledConstant;
+            }
 
             //Set newly calculated flags
             header->_fixedFlags = (ushort)(_fixedFlags = (FixedFlags)newFlags);
@@ -502,16 +585,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public string PrimaryColorName(int id) { return null; }
         [Browsable(false)]
-        public int TypeCount { get { return _numEntries.Length; } }
+        public int TypeCount => _numEntries.Length;
         [Browsable(false)]
         public int ColorCount(int id) { return (_numEntries[id] == 0) ? 1 : _numEntries[id]; }
         public ARGBPixel GetColor(int index, int id) { return (_numEntries[id] == 0) ? (ARGBPixel)_solidColors[id] : (ARGBPixel)GetColors(id)[index]; }
         public void SetColor(int index, int id, ARGBPixel color)
         {
             if (_numEntries[id] == 0)
-                _solidColors[id] = (RGBAPixel)color;
+            {
+                _solidColors[id] = color;
+            }
             else
-                GetColors(id)[index] = (RGBAPixel)color;
+            {
+                GetColors(id)[index] = color;
+            }
+
             SignalPropertyChange();
         }
         public bool GetColorConstant(int id)
@@ -539,11 +627,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public int EntryCount
         {
-            get { return _entryCount; }
+            get => _entryCount;
             set
             {
                 if (_entryCount == 0)
+                {
                     return;
+                }
 
                 _entryCount = value;
                 int len = value.Align(32) / 8;
@@ -561,7 +651,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool GetEntry(int index)
         {
             if (_data.Length == 0)
+            {
                 return Enabled;
+            }
 
             int i = index >> 3;
             int bit = 1 << (7 - (index & 0x7));
@@ -595,8 +687,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             EntryCount = FrameCount + 1;
 
             if (enabled)
+            {
                 for (int i = 0; i < _entryCount; i++)
+                {
                     SetEntry(i, true);
+                }
+            }
 
             SignalPropertyChange();
         }
@@ -613,55 +709,61 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //No point calculating anything if the light isn't used
             if (!enabled)
+            {
                 return new GLSLLightFrame();
+            }
 
             Vector4 color = new Vector4(0.0f),
                 specColor = new Vector4(0.0f);
-            Vector3 
+            Vector3
                 pos = GetStart(index),
                 aim = GetEnd(index),
 
-                diffAttnK = LightType != SSBBTypes.LightType.Directional ? 
+                diffAttnK = LightType != SSBBTypes.LightType.Directional ?
                 GetLightDistCoefs(index) : new Vector3(1.0f, 0.0f, 0.0f),
 
-                diffAttnA = LightType == SSBBTypes.LightType.Spotlight ? 
+                diffAttnA = LightType == SSBBTypes.LightType.Spotlight ?
                 GetLightSpotCoefs(index) : new Vector3(1.0f, 0.0f, 0.0f),
 
-                specAttnK = SpecularEnabled ? 
+                specAttnK = SpecularEnabled ?
                 GetSpecDistCoefs(index) : new Vector3(1.0f, 0.0f, 0.0f);
 
             //No point calculating colors if neither color nor alpha is used
             if (ColorEnabled || AlphaEnabled)
             {
                 if (ConstantColor)
-                    color = (Vector4)_solidColors[0];
+                {
+                    color = _solidColors[0];
+                }
                 else
                 {
                     //Interpolate the color, in case the index isn't an integer
 
                     int colorIndex = (int)Math.Truncate(index);
-                    color = (Vector4)_lightColor[colorIndex.Clamp(0, _lightColor.Count - 1)];
+                    color = _lightColor[colorIndex.Clamp(0, _lightColor.Count - 1)];
                     if (colorIndex + 1 < _lightColor.Count)
                     {
                         float frac = index - colorIndex;
-                        Vector4 interp = (Vector4)_lightColor[colorIndex + 1];
+                        Vector4 interp = _lightColor[colorIndex + 1];
                         color += (interp - color) * frac;
                     }
                 }
                 if (SpecularEnabled)
                 {
                     if (ConstantSpecular)
-                        specColor = (Vector4)_solidColors[1];
+                    {
+                        specColor = _solidColors[1];
+                    }
                     else
                     {
                         //Interpolate the color, in case the index isn't an integer
 
                         int specIndex = (int)Math.Truncate(index);
-                        specColor = (Vector4)_specColor[specIndex.Clamp(0, _specColor.Count - 1)];
+                        specColor = _specColor[specIndex.Clamp(0, _specColor.Count - 1)];
                         if (specIndex + 1 < _specColor.Count)
                         {
                             float frac = index - specIndex;
-                            Vector4 interp = (Vector4)_specColor[specIndex + 1];
+                            Vector4 interp = _specColor[specIndex + 1];
                             specColor += (interp - specColor) * frac;
                         }
                     }
@@ -717,15 +819,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             frame.Enabled = GetEnabled(index);
 
             if (ConstantColor)
-                frame.Color = (Vector4)_solidColors[0];
+            {
+                frame.Color = _solidColors[0];
+            }
             else if (_lightColor.Count > 0)
             {
                 int colorIndex = ((int)Math.Truncate(index)).Clamp(0, _lightColor.Count - 1);
-                Vector4 color = (Vector4)_lightColor[colorIndex];
+                Vector4 color = _lightColor[colorIndex];
                 if (colorIndex + 1 < _lightColor.Count)
                 {
                     float frac = index - colorIndex;
-                    Vector4 interp = (Vector4)_lightColor[colorIndex + 1];
+                    Vector4 interp = _lightColor[colorIndex + 1];
                     color += (interp - color) * frac;
                 }
                 frame.Color = color;
@@ -734,15 +838,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (SpecularEnabled)
             {
                 if (ConstantSpecular)
-                    frame.SpecularColor = (Vector4)_solidColors[1];
+                {
+                    frame.SpecularColor = _solidColors[1];
+                }
                 else if (_specColor.Count > 0)
                 {
                     int specIndex = ((int)Math.Truncate(index)).Clamp(0, _specColor.Count - 1);
-                    Vector4 specColor = (Vector4)_specColor[specIndex];
+                    Vector4 specColor = _specColor[specIndex];
                     if (specIndex + 1 < _specColor.Count)
                     {
                         float frac = index - specIndex;
-                        Vector4 interp = (Vector4)_specColor[specIndex + 1];
+                        Vector4 interp = _specColor[specIndex + 1];
                         specColor += (interp - specColor) * frac;
                     }
                     frame.SpecularColor = specColor;
@@ -776,7 +882,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             KeyframeEntry k = keys.SetFrameValue(index, value);
 
             if (!exists && !_generateTangents)
+            {
                 k.GenerateTangent();
+            }
 
             if (_generateTangents)
             {
@@ -811,7 +919,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             float a0, a1, a2, d, cr = (float)Math.Cos(cutoff * Maths._deg2radf);
 
             if (cutoff <= 0.0f || cutoff > 90.0f)
+            {
                 spotFunc = SpotFn.Off;
+            }
 
             switch (spotFunc)
             {
@@ -877,7 +987,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             float k0, k1, k2;
 
             if (distance < 0.0F || brightness <= 0.0F || brightness >= 1.0F)
+            {
                 distFunc = DistAttnFn.Off;
+            }
 
             switch (distFunc)
             {
@@ -908,25 +1020,25 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)]
-        public KeyframeArray StartX { get { return Keyframes[0]; } }
+        public KeyframeArray StartX => Keyframes[0];
         [Browsable(false)]
-        public KeyframeArray StartY { get { return Keyframes[1]; } }
+        public KeyframeArray StartY => Keyframes[1];
         [Browsable(false)]
-        public KeyframeArray StartZ { get { return Keyframes[2]; } }
+        public KeyframeArray StartZ => Keyframes[2];
         [Browsable(false)]
-        public KeyframeArray EndX { get { return Keyframes[3]; } }
+        public KeyframeArray EndX => Keyframes[3];
         [Browsable(false)]
-        public KeyframeArray EndY { get { return Keyframes[4]; } }
+        public KeyframeArray EndY => Keyframes[4];
         [Browsable(false)]
-        public KeyframeArray EndZ { get { return Keyframes[5]; } }
+        public KeyframeArray EndZ => Keyframes[5];
         [Browsable(false)]
-        public KeyframeArray RefDist { get { return Keyframes[6]; } }
+        public KeyframeArray RefDist => Keyframes[6];
         [Browsable(false)]
-        public KeyframeArray RefBright { get { return Keyframes[7]; } }
+        public KeyframeArray RefBright => Keyframes[7];
         [Browsable(false)]
-        public KeyframeArray SpotCut { get { return Keyframes[8]; } }
+        public KeyframeArray SpotCut => Keyframes[8];
         [Browsable(false)]
-        public KeyframeArray SpecShininess { get { return Keyframes[9]; } }
+        public KeyframeArray SpecShininess => Keyframes[9];
 
         private KeyframeCollection _keyframes = null;
         [Browsable(false)]
@@ -938,21 +1050,26 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     _keyframes = new KeyframeCollection(10, Scene == null ? 1 : Scene.FrameCount + (Scene.Loop ? 1 : 0));
                     if (Data != null && _name != "<null>")
+                    {
                         for (int i = 0, index = 0; i < 14; i++)
+                        {
                             if (!(i == 3 || i == 7 || i == 10 || i == 12))
+                            {
                                 DecodeKeyframes(
                                     Keyframes[index],
                                     Data->_startPoint._x.Address + i * 4,
                                     (int)_fixedFlags,
                                     (int)_ordered[index++]);
-
+                            }
+                        }
+                    }
                 }
                 return _keyframes;
             }
         }
 
         [Browsable(false)]
-        public KeyframeArray[] KeyArrays { get { return Keyframes._keyArrays; } }
+        public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
 
         #endregion
     }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static CLR0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -46,18 +46,20 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter { get { return FileFilters.CLR0; } }
+        public override string ExportFilter => FileFilters.CLR0;
 
         public CLR0Wrapper() { ContextMenuStrip = _menu; }
 
         private void NewCLR()
         {
-            CLR0MaterialEntryNode n = ((CLR0Node)this._resource).CreateEntry();
+            CLR0MaterialEntryNode n = ((CLR0Node)_resource).CreateEntry();
             if (n != null)
             {
                 BaseWrapper b = FindResource(n, true);
                 if (b != null)
+                {
                     b.EnsureVisible();
+                }
             }
         }
     }
@@ -67,7 +69,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static CLR0MaterialWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -106,12 +108,14 @@ namespace BrawlCrate.NodeWrappers
 
         private void NewCLR()
         {
-            CLR0MaterialEntryNode n = ((CLR0MaterialNode)this._resource).CreateEntry();
+            CLR0MaterialEntryNode n = ((CLR0MaterialNode)_resource).CreateEntry();
             if (n != null)
             {
                 BaseWrapper b = FindResource(n, true);
                 if (b != null)
+                {
                     b.EnsureVisible();
+                }
             }
         }
     }
@@ -121,7 +125,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static CLR0MaterialEntryWrapper()
         {
             _menu = new ContextMenuStrip();

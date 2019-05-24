@@ -1,10 +1,10 @@
-﻿using System.Windows.Forms;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using DS = System.Win32.DirectSound;
 
 namespace System.Audio
 {
-    unsafe class wAudioProvider : AudioProvider
+    internal unsafe class wAudioProvider : AudioProvider
     {
         internal Win32.DirectSound.IDirectSound8 _ds8;
 
@@ -35,7 +35,7 @@ namespace System.Audio
             int size = AudioBuffer.DefaultBufferSpan * target.Frequency * target.Channels * target.BitsPerSample / 8;
 
             WaveFormatEx fmt = new WaveFormatEx(target.Format, target.Channels, target.Frequency, target.BitsPerSample);
-            
+
             DS.DSBufferCapsFlags flags = DS.DSBufferCapsFlags.CtrlVolume | DS.DSBufferCapsFlags.LocDefer | DS.DSBufferCapsFlags.GlobalFocus | DS.DSBufferCapsFlags.GetCurrentPosition2;
             DS.DSBufferDesc desc = new DS.DSBufferDesc((uint)size, flags, &fmt, Guid.Empty);
 

@@ -1,26 +1,26 @@
 using System;
 using System.Collections;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DequeTest
-{	
-	class Tester
-	{
+{
+    internal class Tester
+    {
         private const int ElementCount = 100;
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main(string[] args)
-		{ 
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        private static void Main(string[] args)
+        {
             TestDeque(new Deque());
             TestDeque(Deque.Synchronized(new Deque()));
 
             GenericTester.TestDeque(new Deque<int>());
             GenericTester.TestDeque(Deque<int>.Synchronized(new Deque<int>()));
-		}
+        }
 
         private static void TestDeque(Deque deque)
         {
@@ -28,7 +28,7 @@ namespace DequeTest
             Debug.Assert(deque.Count == 0);
 
             PopulateDequePushFront(deque);
-            PopulateDequePushBack(deque);   
+            PopulateDequePushBack(deque);
             TestPopFront(deque);
             TestPopBack(deque);
             TestContains(deque);
@@ -42,7 +42,7 @@ namespace DequeTest
         {
             deque.Clear();
 
-            for(int i = 0; i < ElementCount; i++)
+            for (int i = 0; i < ElementCount; i++)
             {
                 deque.PushFront(i);
             }
@@ -51,7 +51,7 @@ namespace DequeTest
 
             int j = ElementCount - 1;
 
-            foreach(int i in deque)
+            foreach (int i in deque)
             {
                 Debug.Assert(i == j);
                 j--;
@@ -62,7 +62,7 @@ namespace DequeTest
         {
             deque.Clear();
 
-            for(int i = 0; i < ElementCount; i++)
+            for (int i = 0; i < ElementCount; i++)
             {
                 deque.PushBack(i);
             }
@@ -71,7 +71,7 @@ namespace DequeTest
 
             int j = 0;
 
-            foreach(int i in deque)
+            foreach (int i in deque)
             {
                 Debug.Assert(i == j);
                 j++;
@@ -86,7 +86,7 @@ namespace DequeTest
 
             int j;
 
-            for(int i = 0; i < ElementCount; i++)
+            for (int i = 0; i < ElementCount; i++)
             {
                 j = (int)deque.PopFront();
 
@@ -104,7 +104,7 @@ namespace DequeTest
 
             int j;
 
-            for(int i = 0; i < ElementCount; i++)
+            for (int i = 0; i < ElementCount; i++)
             {
                 j = (int)deque.PopBack();
 
@@ -120,7 +120,7 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            for(int i = 0; i < deque.Count; i++)
+            for (int i = 0; i < deque.Count; i++)
             {
                 Debug.Assert(deque.Contains(i));
             }
@@ -138,7 +138,7 @@ namespace DequeTest
 
             deque.CopyTo(array, 0);
 
-            foreach(int i in deque)
+            foreach (int i in deque)
             {
                 Debug.Assert(array[i] == i);
             }
@@ -147,7 +147,7 @@ namespace DequeTest
 
             deque.CopyTo(array, deque.Count);
 
-            foreach(int i in deque)
+            foreach (int i in deque)
             {
                 Debug.Assert(array[i + deque.Count] == i);
             }
@@ -160,7 +160,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -171,7 +171,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -182,7 +182,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -193,7 +193,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -204,10 +204,10 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }            
+            }
         }
 
         private static void TestToArray(Deque deque)
@@ -215,11 +215,11 @@ namespace DequeTest
             deque.Clear();
 
             PopulateDequePushBack(deque);
-            
+
             object[] array = deque.ToArray();
             int i = 0;
 
-            foreach(object obj in deque)
+            foreach (object obj in deque)
             {
                 Debug.Assert(obj.Equals(array[i]));
                 i++;
@@ -232,7 +232,7 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            Deque deque2 = (Deque)deque.Clone(); 
+            Deque deque2 = (Deque)deque.Clone();
 
             Debug.Assert(deque.Count == deque2.Count);
 
@@ -240,7 +240,7 @@ namespace DequeTest
 
             d2.MoveNext();
 
-            foreach(object obj in deque)
+            foreach (object obj in deque)
             {
                 Debug.Assert(obj.Equals(d2.Current));
 
@@ -262,14 +262,14 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
             try
             {
-                foreach(object obj in deque)
+                foreach (object obj in deque)
                 {
                     Debug.Assert(e.MoveNext());
                 }
@@ -280,7 +280,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -289,7 +289,7 @@ namespace DequeTest
             {
                 e.Reset();
 
-                foreach(object obj in deque)
+                foreach (object obj in deque)
                 {
                     Debug.Assert(e.MoveNext());
                 }
@@ -300,7 +300,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -313,7 +313,7 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -324,10 +324,10 @@ namespace DequeTest
 
                 Debug.Fail("Exception failed");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-	}
+    }
 }

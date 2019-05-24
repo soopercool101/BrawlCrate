@@ -15,11 +15,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public Vector3 _scale;
 
         [Category("Transform"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 Translation { get { return _translation; } set { _translation = value; SignalPropertyChange(); } }
+        public Vector3 Translation { get => _translation; set { _translation = value; SignalPropertyChange(); } }
         [Category("Transform"), TypeConverter(typeof(Vector4StringConverter))]
-        public Vector4 Quaternion { get { return _quaternion; } set { _quaternion = value; SignalPropertyChange(); } }
+        public Vector4 Quaternion { get => _quaternion; set { _quaternion = value; SignalPropertyChange(); } }
         [Category("Transform"), TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 Scale { get { return _scale; } set { _scale = value; SignalPropertyChange(); } }
+        public Vector3 Scale { get => _scale; set { _scale = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
@@ -40,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
-            writer.WriteString(String.Format("({0} {1} {2})({3} {4} {5} {6})({7} {8} {9})",
+            writer.WriteString(string.Format("({0} {1} {2})({3} {4} {5} {6})({7} {8} {9})",
                 _translation._x.ToString("0.000000", CultureInfo.InvariantCulture),
                 _translation._y.ToString("0.000000", CultureInfo.InvariantCulture),
                 _translation._z.ToString("0.000000", CultureInfo.InvariantCulture),

@@ -6,22 +6,22 @@ namespace BrawlLib.SSBBTypes
     public class SakuraiArchiveBuilder
     {
         //Modifyable behavior!
-        const bool AddUnreferencedReferences = true;
+        private const bool AddUnreferencedReferences = true;
 
         public SakuraiArchiveBuilder(SakuraiArchiveNode node)
         {
             _rootNode = node;
         }
 
-        public SakuraiArchiveNode RootNode { get { return _rootNode; } }
-        public bool IsCalculatingSize { get { return _calculatingSize; } }
-        public bool IsRebuilding { get { return _rebuilding; } }
+        public SakuraiArchiveNode RootNode => _rootNode;
+        public bool IsCalculatingSize => _calculatingSize;
+        public bool IsRebuilding => _rebuilding;
 
-        int _size;
-
-        SakuraiArchiveNode _rootNode;
-        bool _rebuilding, _calculatingSize;
-        CompactStringTable _referenceStringTable;
+        private int _size;
+        private readonly SakuraiArchiveNode _rootNode;
+        private readonly bool _rebuilding;
+        private bool _calculatingSize;
+        private CompactStringTable _referenceStringTable;
 
         public List<SakuraiEntryNode> _postProcessNodes;
         public VoidPtr _baseAddress, _currentAddress;
@@ -47,14 +47,13 @@ namespace BrawlLib.SSBBTypes
             VoidPtr origBase = hdr->BaseAddress;
 
             _size = _rootNode.WorkingUncompressed.Length;
-            foreach (var entry in _rootNode.RebuildEntries)
+            foreach (SakuraiEntryNode entry in _rootNode.RebuildEntries)
             {
                 int newSize = entry.GetSize();
                 int oldSize = entry._initSize;
                 int diff = newSize - oldSize;
 
                 int lookupCount = entry.GetLookupCount();
-                int prevLookupCount = 0;
 
                 int minOffset = entry._offset;
                 int maxOffset = minOffset + oldSize;
@@ -91,10 +90,10 @@ namespace BrawlLib.SSBBTypes
             SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*)origAddr;
             VoidPtr origBase = hdr->BaseAddress;
 
-            var changed = _rootNode.RebuildEntries;
+            System.ComponentModel.BindingList<SakuraiEntryNode> changed = _rootNode.RebuildEntries;
             if (changed.Count != 0)
             {
-                foreach (var entry in changed)
+                foreach (SakuraiEntryNode entry in changed)
                 {
                     int eOffset = entry._offset;
                     bint* lookup = hdr->LookupEntries;
@@ -142,7 +141,9 @@ namespace BrawlLib.SSBBTypes
                 //An example of an exception to this is the 'AnimCmd' section
                 //If a reference exists, calculate the size of that reference instead
                 if (section.References.Count > 0)
+                {
                     entry = section.References[0];
+                }
 
                 //Add the size of the entry's data, and the entry itself
                 _size += entry.GetSize() + 8;
@@ -194,7 +195,7 @@ namespace BrawlLib.SSBBTypes
             hdr->_pad1 = hdr->_pad2 = hdr->_pad3 = 0;
 
             List<int> _sectionOffsets = new List<int>();
-            
+
             //Write section data
             foreach (TableEntryNode section in node.SectionList)
             {
@@ -203,7 +204,9 @@ namespace BrawlLib.SSBBTypes
                 //If this section is referenced from an entry,
                 //write that entry instead
                 if (section.References.Count > 0)
+                {
                     entry = section.References[0];
+                }
 
                 _sectionOffsets.Add(entry.Write(_currentAddress));
                 _currentAddress += entry.TotalSize;

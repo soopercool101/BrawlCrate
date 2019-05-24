@@ -26,7 +26,7 @@ namespace System.Audio
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    struct WaveFormatExtensible
+    internal struct WaveFormatExtensible
     {
         public WaveFormatEx Format;
         public ushort wValidBitsPerSample;

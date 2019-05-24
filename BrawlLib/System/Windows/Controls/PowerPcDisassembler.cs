@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
-using BrawlLib.SSBB.ResourceNodes;
 using System.PowerPcAssembly;
+using System.Text;
 
 namespace System.Windows.Forms
 {
@@ -27,7 +27,9 @@ namespace System.Windows.Forms
             {
                 _codes = new List<PPCOpCode>();
                 for (int i = 0; i < node._codeLen / 4; i++)
+                {
                     _codes.Add(node._manager.GetCode(i));
+                }
 
                 _sectionOffset = 0;
                 _baseOffset = (int)node._cmd._addend;
@@ -43,7 +45,9 @@ namespace System.Windows.Forms
             {
                 int startIndex = _sectionOffset / 4;
                 for (int i = 0; i < _codes.Count; i++)
+                {
                     _manager.ClearColor(startIndex + i);
+                }
             }
 
             _codes = relocations;
@@ -55,7 +59,9 @@ namespace System.Windows.Forms
                 Color c = Color.FromArgb(255, 155, 200, 200);
                 int startIndex = _sectionOffset / 4;
                 for (int i = 0; i < _codes.Count; i++)
+                {
                     _manager.SetColor(startIndex + i, c);
+                }
             }
 
             Display();
@@ -67,7 +73,7 @@ namespace System.Windows.Forms
             ppcOpCodeEditControl1.OnOpChanged += ppcOpCodeEditControl1_OnOpChanged;
         }
 
-        void ppcOpCodeEditControl1_OnOpChanged()
+        private void ppcOpCodeEditControl1_OnOpChanged()
         {
             if (_editor != null && grdDisassembler.SelectedRows.Count > 0)
             {
@@ -81,7 +87,9 @@ namespace System.Windows.Forms
         public void UpdateRow(int i)
         {
             if (_codes == null)
+            {
                 return;
+            }
 
             DataGridViewRow row = grdDisassembler.Rows[i];
             PPCOpCode opcode = _codes[i];
@@ -92,21 +100,23 @@ namespace System.Windows.Forms
             row.Cells[1].Value = opcode.Name;
             row.Cells[2].Value = opcode.GetFormattedOperands();
 
-            var s = _manager.GetTags(index);
-            row.Cells[3].Value = s == null ? "" : String.Join("; ", s);
+            List<string> s = _manager.GetTags(index);
+            row.Cells[3].Value = s == null ? "" : string.Join("; ", s);
 
             row.DefaultCellStyle.BackColor = _manager.GetStatusColorFromIndex(index);
         }
 
-        void Display()
+        private void Display()
         {
             grdDisassembler.Rows.Clear();
             if (_codes != null)
+            {
                 for (int i = 0; i < _codes.Count; i++)
                 {
                     grdDisassembler.Rows.Add();
                     UpdateRow(i);
                 }
+            }
         }
 
         private void grdDisassembler_DoubleClick(object sender, EventArgs e)
@@ -117,23 +127,32 @@ namespace System.Windows.Forms
         private void grdDisassembler_SelectionChanged(object sender, EventArgs e)
         {
             if (grdDisassembler.SelectedRows.Count == 0)
+            {
                 return;
+            }
 
             int index = grdDisassembler.SelectedRows[0].Index;
             if (index >= 0 && index < _codes.Count)
+            {
                 ppcOpCodeEditControl1.SetCode(_codes[index]);
+            }
         }
 
         private void grdDisassembler_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (_updating || _editor == null || grdDisassembler.SelectedRows.Count == 0)
+            {
                 return;
+            }
 
             _updating = true;
             int index = grdDisassembler.SelectedRows[0].Index;
             long offset = (long)_sectionOffset + index * 4;
             if (_editor.Position.RoundDown(4) != offset)
+            {
                 _editor.Position = offset;
+            }
+
             _updating = false;
         }
 
@@ -170,7 +189,9 @@ namespace System.Windows.Forms
                     }
                 }
                 else
+                {
                     splitter.IsSplitterFixed = false;
+                }
             }
         }
 
@@ -182,14 +203,16 @@ namespace System.Windows.Forms
                 StringBuilder b = new StringBuilder();
                 for (int i = 0; i < grdDisassembler.SelectedRows.Count; i++)
                 {
-                    b.Append(grdDisassembler.Rows[i].Cells[1].Value+" ");
+                    b.Append(grdDisassembler.Rows[i].Cells[1].Value + " ");
                     b.Append(grdDisassembler.Rows[i].Cells[2].Value + "\n");
                 }
                 Clipboard.SetText(b.ToString());
                 handled = true;
             }
-            if(!handled)
+            if (!handled)
+            {
                 return base.ProcessCmdKey(ref msg, keyData);
+            }
 
             return handled;
         }

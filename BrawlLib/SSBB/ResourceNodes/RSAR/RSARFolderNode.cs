@@ -1,20 +1,16 @@
-﻿using BrawlLib.Wii.Audio;
-using BrawlLib.SSBBTypes;
-using System.ComponentModel;
+﻿using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Audio;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARFolderNode : ResourceNode
     {
-        internal RSARHeader* Header { get { return (RSARHeader*)WorkingSource.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RSARFolder; } }
-        public override Type[] AllowedChildTypes
-        {
-            get
-            {
-                return new Type[]
+        internal RSARHeader* Header => (RSARHeader*)WorkingSource.Address;
+        public override ResourceType ResourceType => ResourceType.RSARFolder;
+        public override Type[] AllowedChildTypes => new Type[]
                 {
                     typeof(RSARFolderNode),
                     typeof(RSARSoundNode),
@@ -22,9 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     typeof(RSARGroupNode),
                     typeof(RSARPlayerInfoNode),
                 };
-            }
-        }
-        
+
         public int _listIndex;
 
         [Browsable(false)]
@@ -33,7 +27,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is RSARNode)) ;
+                while (((n = n.Parent) != null) && !(n is RSARNode))
+                {
+                    ;
+                }
+
                 return n as RSARNode;
             }
         }
@@ -43,7 +41,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             int len = _name.Length;
             int i = 0;
             if (len == 0)
+            {
                 return;
+            }
 
             len += pathLen + ((pathLen != 0) ? 1 : 0);
 
@@ -52,24 +52,39 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (pathLen > 0)
             {
                 while (i < pathLen)
+                {
                     chars[i++] = *path++;
+                }
+
                 chars[i++] = (sbyte)'_';
             }
 
             fixed (char* s = _name)
-                for (int x = 0; i < len; )
+            {
+                for (int x = 0; i < len;)
+                {
                     chars[i++] = (sbyte)s[x++];
+                }
+            }
 
             if (Children.Count == 0)
-                unusedFolders.Add(len != 0 ? new String(chars, 0, len).Replace("_", "/") : "");
+            {
+                unusedFolders.Add(len != 0 ? new string(chars, 0, len).Replace("_", "/") : "");
+            }
             else
+            {
                 foreach (ResourceNode n in Children)
                 {
                     if (n is RSARFolderNode)
+                    {
                         ((RSARFolderNode)n).GetStrings(chars, len, list, ref unusedFolders);
+                    }
                     else if (n is RSAREntryNode)
+                    {
                         ((RSAREntryNode)n).GetStrings(chars, len, list);
+                    }
                 }
+            }
         }
     }
 }

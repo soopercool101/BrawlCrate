@@ -9,17 +9,20 @@ namespace BrawlLib.SSBB.ResourceNodes
     //is placed in the overall class list directly after the class it first appears in
     public unsafe class hkClassEnumNode : HavokClassNode
     {
-        internal hkClassEnum* Header { get { return (hkClassEnum*)WorkingUncompressed.Address; } }
+        internal hkClassEnum* Header => (hkClassEnum*)WorkingUncompressed.Address;
 
         public override bool OnInitialize()
         {
             _className = "hkClassEnum";
-            _name = new String((sbyte*)Header->_namePtr.OffsetAddress);
+            _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
 
             int size = 16;
             HavokClassEnumEntry* entry = (HavokClassEnumEntry*)Header->_entriesPtr.OffsetAddress;
             for (int i = 0; i < Header->_enumCount; i++, entry++)
-                size += 8 + (new String((sbyte*)entry->_namePtr.OffsetAddress).Length + 1).Align(0x10);
+            {
+                size += 8 + (new string((sbyte*)entry->_namePtr.OffsetAddress).Length + 1).Align(0x10);
+            }
+
             SetSizeInternal(size);
 
             return Header->_enumCount > 0;
@@ -29,7 +32,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             HavokClassEnumEntry* entry = (HavokClassEnumEntry*)Header->_entriesPtr.OffsetAddress;
             for (int i = 0; i < Header->_enumCount; i++, entry++)
+            {
                 new hkClassEnumEntryNode().Initialize(this, entry, 8);
+            }
         }
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
@@ -65,14 +70,14 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class hkClassEnumEntryNode : HavokEntryNode
     {
-        internal HavokClassEnumEntry* Header { get { return (HavokClassEnumEntry*)WorkingUncompressed.Address; } }
+        internal HavokClassEnumEntry* Header => (HavokClassEnumEntry*)WorkingUncompressed.Address;
 
         private int _value;
-        public int Value { get { return _value; } }
+        public int Value => _value;
 
         public override bool OnInitialize()
         {
-            _name = new String((sbyte*)Header->_namePtr.OffsetAddress);
+            _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
             _value = Header->_value;
 
             return false;

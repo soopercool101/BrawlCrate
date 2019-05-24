@@ -1,17 +1,16 @@
-﻿using IronPython.Hosting;
+﻿using BrawlCrate.NodeWrappers;
+using BrawlLib.SSBB.ResourceNodes;
+using IronPython.Hosting;
+using IronPython.Runtime.Exceptions;
+using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Microsoft.Scripting;
-using IronPython.Runtime.Exceptions;
 using System.Reflection;
-using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
-using BrawlCrate.NodeWrappers;
-using System.Diagnostics;
 
 namespace BrawlCrate.API
 {
@@ -34,7 +33,7 @@ namespace BrawlCrate.API
 
             Runtime.LoadAssembly(mainAssembly);
             Runtime.LoadAssembly(brawllib);
-            Runtime.LoadAssembly(typeof(String).Assembly);
+            Runtime.LoadAssembly(typeof(string).Assembly);
             Runtime.LoadAssembly(typeof(Uri).Assembly);
             Runtime.LoadAssembly(typeof(Form).Assembly);
 
@@ -70,23 +69,30 @@ namespace BrawlCrate.API
                         : new string[0])
                     .FirstOrDefault(s => File.Exists(s));
 
-                if (fsi_path == null) {
-                    if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio?", "BrawlCrate", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)) {
+                if (fsi_path == null)
+                {
+                    if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio?", "BrawlCrate", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
+                    {
                         Process.Start("https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
                     }
-                } else {
+                }
+                else
+                {
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
-                    using (var srIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read)))
-                    using (var swOut = new StreamWriter(new FileStream(tempPath, FileMode.Create, FileAccess.Write))) {
+                    using (StreamReader srIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read)))
+                    using (StreamWriter swOut = new StreamWriter(new FileStream(tempPath, FileMode.Create, FileAccess.Write)))
+                    {
                         swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(NodeFactory)).Location.Replace('\\', '/')}\"");
                         swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(MainForm)).Location.Replace('\\', '/')}\"");
                         string line;
-                        while ((line = srIn.ReadLine()) != null) {
+                        while ((line = srIn.ReadLine()) != null)
+                        {
                             swOut.WriteLine(line);
                         }
                     }
 
-                    var p = Process.Start(new ProcessStartInfo {
+                    Process p = Process.Start(new ProcessStartInfo
+                    {
                         FileName = fsi_path,
                         Arguments = $"--noninteractive \"{tempPath}\"",
                         UseShellExecute = false,
@@ -101,9 +107,13 @@ namespace BrawlCrate.API
                         {
                             string err = p.StandardError.ReadToEnd().Trim();
                             if (!string.IsNullOrWhiteSpace(err))
+                            {
                                 MessageBox.Show(err);
+                            }
                             else
+                            {
                                 MessageBox.Show($"fsi.exe quit with exit code {p.ExitCode}");
+                            }
                         }
                     };
                 }
@@ -144,9 +154,13 @@ namespace BrawlCrate.API
                 CompiledCode code = script.Compile();
                 ScriptScope scope = Engine.CreateScope();
                 if (!loader)
+                {
                     Plugins.Add(new PluginScript(Path.GetFileNameWithoutExtension(path), script, scope));
+                }
                 else
+                {
                     script.Execute();
+                }
             }
             catch (SyntaxErrorException e)
             {
@@ -168,35 +182,23 @@ namespace BrawlCrate.API
 
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
         {
-            var resourceTree = (TreeView)sender;
+            TreeView resourceTree = (TreeView)sender;
             if ((resourceTree.SelectedNode is BaseWrapper))
             {
-                var wrapper = (BaseWrapper)resourceTree.SelectedNode;
-                var type = wrapper.GetType();
+                BaseWrapper wrapper = (BaseWrapper)resourceTree.SelectedNode;
+                Type type = wrapper.GetType();
 
                 if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
                 {
-                    if(wrapper.ContextMenuStrip.Items.Count == 0 || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
+                    if (wrapper.ContextMenuStrip.Items.Count == 0 || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
                     {
-                        if(wrapper.ContextMenuStrip.Items.Count != 0)
+                        if (wrapper.ContextMenuStrip.Items.Count != 0)
                         {
                             wrapper.ContextMenuStrip.Items.Add(new ToolStripSeparator());
                         }
                         wrapper.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Plugins"));
                     }
                     (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.AddRange(ContextMenuHooks[type]);
-                }
-                else if(!ContextMenuHooks.ContainsKey(type) || (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length <= 0))
-                {
-                    while(wrapper.ContextMenuStrip.Items.Count != 0 && (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins"))
-                    {
-                        if(wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripMenuItem)
-                        {
-                            while((wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.Count > 0)
-                                (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.RemoveAt(0);
-                        }
-                        wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
-                    }
                 }
             }
         }
@@ -207,25 +209,17 @@ namespace BrawlCrate.API
             get
             {
                 if (MainForm.Instance.RootNode != null)
+                {
                     return MainForm.Instance.RootNode.Resource;
+                }
                 else
+                {
                     return null;
+                }
             }
         }
-        public static ResourceNode SelectedNode
-        {
-            get
-            {
-                return ((BaseWrapper)MainForm.Instance.resourceTree.SelectedNode).Resource;
-            }
-        }
-        public static BaseWrapper SelectedNodeWrapper
-        {
-            get
-            {
-                return (BaseWrapper)MainForm.Instance.resourceTree.SelectedNode;
-            }
-        }
+        public static ResourceNode SelectedNode => ((BaseWrapper)MainForm.Instance.resourceTree.SelectedNode).Resource;
+        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper)MainForm.Instance.resourceTree.SelectedNode;
 
         public static void ShowMessage(string msg, string title)
         {
@@ -252,39 +246,55 @@ namespace BrawlCrate.API
         public static void AddContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
             if (ContextMenuHooks.ContainsKey(wrapper))
+            {
                 ContextMenuHooks[wrapper].Append(items);
+            }
             else
+            {
                 ContextMenuHooks.Add(wrapper, items);
+            }
         }
 
         public static string OpenFileDialog()
         {
-            using (var dlg = new OpenFileDialog())
+            using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
+                {
                     return dlg.FileName;
+                }
                 else
+                {
                     return string.Empty;
+                }
             }
         }
         public static string OpenFolderDialog()
         {
-            using (var dlg = new FolderBrowserDialog())
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
+                {
                     return dlg.SelectedPath;
+                }
                 else
+                {
                     return string.Empty;
+                }
             }
         }
         public static string SaveFileDialog()
         {
-            using (var dlg = new SaveFileDialog())
+            using (SaveFileDialog dlg = new SaveFileDialog())
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
+                {
                     return dlg.FileName;
+                }
                 else
+                {
                     return string.Empty;
+                }
             }
         }
         #endregion

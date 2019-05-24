@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     [NodeWrapper(ResourceType.SharedTEX0)]
     public class TEX0Wrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static TEX0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -44,18 +44,22 @@ namespace BrawlCrate.NodeWrappers
 
         public TEX0Wrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.TEX0; } }
+        public override string ExportFilter => FileFilters.TEX0;
 
         public override void OnReplace(string inStream, int filterIndex)
         {
             if (filterIndex == 8)
+            {
                 base.OnReplace(inStream, filterIndex);
+            }
             else
+            {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = inStream;
                     dlg.ShowDialog(MainForm.Instance, Resource as TEX0Node);
                 }
+            }
         }
 
         public void ReEncode()
@@ -67,7 +71,7 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        internal protected override void OnPropertyChanged(ResourceNode node)
+        protected internal override void OnPropertyChanged(ResourceNode node)
         {
             RefreshView(node);
         }

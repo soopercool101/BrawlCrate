@@ -16,7 +16,7 @@ namespace BrawlLib.SSBBTypes
         public bushort _rootOffset; //Offset to root entry
         public bushort _numSections;
 
-        public ROOTHeader* First { get { fixed (BRESHeader* p = &this) return (ROOTHeader*)((uint)p + _rootOffset); } }
+        public ROOTHeader* First { get { fixed (BRESHeader* p = &this) { return (ROOTHeader*)((uint)p + _rootOffset); } } }
 
         public BRESHeader(int size, int numSections)
         {
@@ -72,11 +72,11 @@ namespace BrawlLib.SSBBTypes
         public bint _version;
         public bint _bresOffset;
 
-        BRESCommonHeader* Address { get { fixed (BRESCommonHeader* ptr = &this) return ptr; } }
+        private BRESCommonHeader* Address { get { fixed (BRESCommonHeader* ptr = &this) { return ptr; } } }
         public BRESHeader* BRESHeader
         {
-            get { return (BRESHeader*)((uint)this.Address + _bresOffset); }
-            set { _bresOffset = (int)value - (int)this.Address; }
+            get => (BRESHeader*)((uint)Address + _bresOffset);
+            set => _bresOffset = (int)value - (int)Address;
         }
 
         public ResourceEntry* GetRootEntry()
@@ -92,7 +92,9 @@ namespace BrawlLib.SSBBTypes
                 for (int y = 0; y < group->_numEntries; y++)
                 {
                     if (addr == group->First[y].DataAddress)
+                    {
                         return &group->First[y];
+                    }
                 }
             }
             return null;
@@ -105,18 +107,20 @@ namespace BrawlLib.SSBBTypes
         public bint _length;
         public sbyte _data;
 
-        private void* Address { get { fixed (void* p = &this)return p; } }
-        public sbyte* Data { get { return (sbyte*)Address + 4; } }
+        private void* Address { get { fixed (void* p = &this) { return p; } } }
+        public sbyte* Data => (sbyte*)Address + 4;
 
-        public int Length { get { return _length; } }
+        public int Length => _length;
 
         public string Value
         {
-            get { return new String(Data); }
+            get => new string(Data);
             set
             {
                 if (value == null)
+                {
                     value = "";
+                }
 
                 int len = _length = value.Length;
                 int ceil = (len + 1).Align(4);
@@ -124,11 +128,13 @@ namespace BrawlLib.SSBBTypes
                 sbyte* ptr = Data;
                 value.Write(ptr);
 
-                for (int i = len; i < ceil; )
+                for (int i = len; i < ceil;)
+                {
                     ptr[i++] = 0;
+                }
             }
         }
-        public BRESString* Next { get { return (BRESString*)((byte*)Address + (_length + 5).Align(4)); } }
-        public BRESString* End { get { BRESString* p = (BRESString*)Address; while (p->_length != 0) p = p->Next; return p; } }
+        public BRESString* Next => (BRESString*)((byte*)Address + (_length + 5).Align(4));
+        public BRESString* End { get { BRESString* p = (BRESString*)Address; while (p->_length != 0) { p = p->Next; } return p; } }
     }
 }

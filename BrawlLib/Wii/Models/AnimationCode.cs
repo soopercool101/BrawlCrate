@@ -52,44 +52,44 @@ namespace BrawlLib.Wii.Animations
         //0011 1000 0000 0000 0000 0000 0000 0000		Rotation format
         //1100 0000 0000 0000 0000 0000 0000 0000		Translation format
 
-        public bool AlwaysSet { get { return _data[0]; } set { _data[0] = value; } }
+        public bool AlwaysSet { get => _data[0]; set => _data[0] = value; }
 
-        public bool Identity { get { return _data[1]; } set { _data[1] = value; } }
-        public bool IgnoreRotAndTrans { get { return _data[2]; } set { _data[2] = value; } }
-        public bool IgnoreScale { get { return _data[3]; } set { _data[3] = value; } }
-        
-        public bool IsScaleIsotropic { get { return _data[4]; } set { _data[4] = value; } }
-        public bool IsRotationIsotropic { get { return _data[5]; } set { _data[5] = value; } }
-        public bool IsTranslationIsotropic { get { return _data[6]; } set { _data[6] = value; } }
-        
-        public bool UseModelScale { get { return _data[7]; } set { _data[7] = value; } }
-        public bool UseModelRot { get { return _data[8]; } set { _data[8] = value; } }
-        public bool UseModelTrans { get { return _data[9]; } set { _data[9] = value; } }
+        public bool Identity { get => _data[1]; set => _data[1] = value; }
+        public bool IgnoreRotAndTrans { get => _data[2]; set => _data[2] = value; }
+        public bool IgnoreScale { get => _data[3]; set => _data[3] = value; }
 
-        public bool ScaleCompApply { get { return _data[10]; } set { _data[10] = value; } }
-        public bool ScaleCompParent { get { return _data[11]; } set { _data[11] = value; } }
-        public bool ClassicScaleOff { get { return _data[12]; } set { _data[12] = value; } }
+        public bool IsScaleIsotropic { get => _data[4]; set => _data[4] = value; }
+        public bool IsRotationIsotropic { get => _data[5]; set => _data[5] = value; }
+        public bool IsTranslationIsotropic { get => _data[6]; set => _data[6] = value; }
 
-        public bool IsScaleXFixed { get { return _data[13]; } set { _data[13] = value; } }
-        public bool IsScaleYFixed { get { return _data[14]; } set { _data[14] = value; } }
-        public bool IsScaleZFixed { get { return _data[15]; } set { _data[15] = value; } }
+        public bool UseModelScale { get => _data[7]; set => _data[7] = value; }
+        public bool UseModelRot { get => _data[8]; set => _data[8] = value; }
+        public bool UseModelTrans { get => _data[9]; set => _data[9] = value; }
 
-        public bool IsRotationXFixed { get { return _data[16]; } set { _data[16] = value; } }
-        public bool IsRotationYFixed { get { return _data[17]; } set { _data[17] = value; } }
-        public bool IsRotationZFixed { get { return _data[18]; } set { _data[18] = value; } }
-        
-        public bool IsTranslationXFixed { get { return _data[19]; } set { _data[19] = value; } }
-        public bool IsTranslationYFixed { get { return _data[20]; } set { _data[20] = value; } }
-        public bool IsTranslationZFixed { get { return _data[21]; } set { _data[21] = value; } }
-        
-        public bool HasScale { get { return _data[22]; } set { _data[22] = value; } }
-        public bool HasRotation { get { return _data[23]; } set { _data[23] = value; } }
-        public bool HasTranslation { get { return _data[24]; } set { _data[24] = value; } }
-        
-        public AnimDataFormat ScaleDataFormat { get { return (AnimDataFormat)_data[25, 2]; } set { _data[25, 2] = (uint)value; } }
-        public AnimDataFormat RotationDataFormat { get { return (AnimDataFormat)_data[27, 3]; } set { _data[27, 3] = (uint)value; } }
-        public AnimDataFormat TranslationDataFormat { get { return (AnimDataFormat)_data[30, 2]; } set { _data[30, 2] = (uint)value; } }
-        
+        public bool ScaleCompApply { get => _data[10]; set => _data[10] = value; }
+        public bool ScaleCompParent { get => _data[11]; set => _data[11] = value; }
+        public bool ClassicScaleOff { get => _data[12]; set => _data[12] = value; }
+
+        public bool IsScaleXFixed { get => _data[13]; set => _data[13] = value; }
+        public bool IsScaleYFixed { get => _data[14]; set => _data[14] = value; }
+        public bool IsScaleZFixed { get => _data[15]; set => _data[15] = value; }
+
+        public bool IsRotationXFixed { get => _data[16]; set => _data[16] = value; }
+        public bool IsRotationYFixed { get => _data[17]; set => _data[17] = value; }
+        public bool IsRotationZFixed { get => _data[18]; set => _data[18] = value; }
+
+        public bool IsTranslationXFixed { get => _data[19]; set => _data[19] = value; }
+        public bool IsTranslationYFixed { get => _data[20]; set => _data[20] = value; }
+        public bool IsTranslationZFixed { get => _data[21]; set => _data[21] = value; }
+
+        public bool HasScale { get => _data[22]; set => _data[22] = value; }
+        public bool HasRotation { get => _data[23]; set => _data[23] = value; }
+        public bool HasTranslation { get => _data[24]; set => _data[24] = value; }
+
+        public AnimDataFormat ScaleDataFormat { get => (AnimDataFormat)_data[25, 2]; set => _data[25, 2] = (uint)value; }
+        public AnimDataFormat RotationDataFormat { get => (AnimDataFormat)_data[27, 3]; set => _data[27, 3] = (uint)value; }
+        public AnimDataFormat TranslationDataFormat { get => (AnimDataFormat)_data[30, 2]; set => _data[30, 2] = (uint)value; }
+
         //public bool HasScale { get { return (_data & 0x400000) != 0; } set { _data = (_data & 0xFFBFFFFF) | (value ? (uint)0x400000 : 0); } }
         //public bool IsScaleIsotropic { get { return (_data & 0x10) != 0; } set { _data = (_data & 0xFFFFFFEF) | (value ? (uint)0x10 : 0); } }
         ////public bool IsIsotropicFixed { get { return (_data & 0xE000) != 0; } }
@@ -123,7 +123,7 @@ namespace BrawlLib.Wii.Animations
         public bool GetIsFixed(int i) { return _data[13 + i]; }
         public void SetIsFixed(int i, bool p) { _data[13 + i] = p; }
 
-        public bool GetIsIsotropic(int i)  { return _data[4 + i]; }
+        public bool GetIsIsotropic(int i) { return _data[4 + i]; }
         public void SetIsIsotropic(int i, bool p) { _data[4 + i] = p; }
 
         public bool GetExists(int i) { return _data[22 + i]; }
@@ -149,7 +149,7 @@ namespace BrawlLib.Wii.Animations
             }
         }
 
-        public unsafe override string ToString()
+        public override unsafe string ToString()
         {
             //sbyte* buffer = stackalloc sbyte[39];
 

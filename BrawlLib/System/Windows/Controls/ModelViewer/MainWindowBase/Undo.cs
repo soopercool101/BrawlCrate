@@ -11,12 +11,12 @@ namespace System.Windows.Forms
         public List<SaveState> _undoSaves = new List<SaveState>();
         public List<SaveState> _redoSaves = new List<SaveState>();
         public int _saveIndex = 0;
-        public bool AwaitingRedoSave { get { return _currentUndo != null; } }
+        public bool AwaitingRedoSave => _currentUndo != null;
         public bool _undoing = false;
 
         public SaveState _currentUndo;
 
-        void AddUndo(SaveState save)
+        private void AddUndo(SaveState save)
         {
             if (AwaitingRedoSave)
             {
@@ -30,7 +30,8 @@ namespace System.Windows.Forms
             save._isUndo = true;
             _currentUndo = save;
         }
-        void AddRedo(SaveState save)
+
+        private void AddRedo(SaveState save)
         {
             if (!AwaitingRedoSave)
             {
@@ -63,18 +64,24 @@ namespace System.Windows.Forms
                 _redoSaves.RemoveAt(0);
             }
             else //Otherwise, move the save index to the current saves
+            {
                 _saveIndex++;
+            }
 
             _currentUndo = null;
             UpdateUndoButtons();
         }
 
-        void AddState(SaveState state)
+        private void AddState(SaveState state)
         {
             if (!AwaitingRedoSave)
+            {
                 AddUndo(state);
+            }
             else
+            {
                 AddRedo(state);
+            }
         }
 
         /// <summary>
@@ -125,8 +132,8 @@ namespace System.Windows.Forms
             _currentUndo = null;
         }
 
-        public bool CanUndo { get { return _saveIndex >= 0; } }
-        public bool CanRedo { get { return _saveIndex < _undoSaves.Count; } }
+        public bool CanUndo => _saveIndex >= 0;
+        public bool CanRedo => _saveIndex < _undoSaves.Count;
 
         public void Undo()
         {
@@ -134,17 +141,24 @@ namespace System.Windows.Forms
             _vertexSelection.ResetActions();
 
             if (AwaitingRedoSave)
+            {
                 CancelChangeState();
+            }
             else if (CanUndo)
             {
                 ModelPanel.BeginUpdate();
 
                 if (!_undoing)
+                {
                     _saveIndex--;
+                }
+
                 _undoing = true;
 
                 if (_saveIndex < _undoSaves.Count && _saveIndex >= 0)
+                {
                     ApplyState();
+                }
 
                 //Decrement index after applying save
                 _saveIndex--;
@@ -160,18 +174,25 @@ namespace System.Windows.Forms
             _vertexSelection.ResetActions();
 
             if (AwaitingRedoSave)
+            {
                 CancelChangeState();
+            }
 
             if (CanRedo)
             {
                 ModelPanel.BeginUpdate();
 
                 if (_undoing)
+                {
                     _saveIndex++;
+                }
+
                 _undoing = false;
 
                 if (_saveIndex < _redoSaves.Count && _saveIndex >= 0)
+                {
                     ApplyState();
+                }
 
                 //Increment index after applying save
                 _saveIndex++;
@@ -182,7 +203,7 @@ namespace System.Windows.Forms
             }
         }
 
-        void ApplyBoneState(BoneState state)
+        private void ApplyBoneState(BoneState state)
         {
             if (TargetModel != state._targetModel)
             {
@@ -200,7 +221,7 @@ namespace System.Windows.Forms
             }
         }
 
-        void ApplyVertexState(VertexState state)
+        private void ApplyVertexState(VertexState state)
         {
             IModel model = TargetModel;
             CHR0Node n = _chr0;
@@ -216,7 +237,9 @@ namespace System.Windows.Forms
             CurrentFrame = state._animFrame;
 
             for (int i = 0; i < state._vertices.Count; i++)
+            {
                 state._vertices[i].WeightedPosition = state._weightedPositions[i];
+            }
 
             SetSelectedVertices(state._vertices);
 
@@ -233,17 +256,21 @@ namespace System.Windows.Forms
             UpdateModel();
         }
 
-        public SaveState RedoSave { get { return _saveIndex < _redoSaves.Count && _saveIndex >= 0 ? _redoSaves[_saveIndex] : null; } }
-        public SaveState UndoSave { get { return _saveIndex < _undoSaves.Count && _saveIndex >= 0 ? _undoSaves[_saveIndex] : null; } }
-        
+        public SaveState RedoSave => _saveIndex < _redoSaves.Count && _saveIndex >= 0 ? _redoSaves[_saveIndex] : null;
+        public SaveState UndoSave => _saveIndex < _undoSaves.Count && _saveIndex >= 0 ? _undoSaves[_saveIndex] : null;
+
         private void ApplyState()
         {
             SaveState current = _undoing ? UndoSave : RedoSave;
 
             if (current is BoneState)
+            {
                 ApplyBoneState((BoneState)current);
+            }
             else if (current is VertexState)
+            {
                 ApplyVertexState((VertexState)current);
+            }
         }
 
         public virtual void UpdateUndoButtons() { }

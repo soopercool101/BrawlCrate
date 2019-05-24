@@ -1,8 +1,8 @@
-﻿using System;
-using BrawlLib;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static VIS0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -55,12 +55,12 @@ namespace BrawlCrate.NodeWrappers
 
         public VIS0Wrapper() { ContextMenuStrip = _menu; }
 
-        public override string ExportFilter { get { return FileFilters.VIS0; } }
+        public override string ExportFilter => FileFilters.VIS0;
 
         public void NewBone()
         {
             VIS0EntryNode node = ((VIS0Node)_resource).CreateEntry();
-            BaseWrapper res = this.FindResource(node, false);
+            BaseWrapper res = FindResource(node, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
@@ -71,14 +71,14 @@ namespace BrawlCrate.NodeWrappers
         private void Append()
         {
             ((VIS0Node)_resource).Append();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }
         private void Resize()
         {
             ((VIS0Node)_resource).Resize();
-            BaseWrapper res = this.FindResource(_resource, false);
+            BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
         }

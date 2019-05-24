@@ -1,15 +1,15 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using System;
 using System.ComponentModel;
-using BrawlLib;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.REFTImage)]
     public class REFTImageWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static REFTImageWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -52,18 +52,22 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public override string ExportFilter { get { return FileFilters.Images; } }
+        public override string ExportFilter => FileFilters.Images;
 
         public override void OnReplace(string inStream, int filterIndex)
         {
             if (filterIndex == 8)
+            {
                 base.OnReplace(inStream, filterIndex);
+            }
             else
+            {
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = inStream;
                     dlg.ShowDialog(MainForm.Instance, (REFTEntryNode)_resource);
                 }
+            }
         }
     }
 }

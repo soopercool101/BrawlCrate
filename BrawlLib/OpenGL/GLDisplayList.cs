@@ -1,9 +1,9 @@
-﻿using System.Runtime.InteropServices;
-using OpenTK.Graphics.OpenGL;
+﻿using OpenTK.Graphics.OpenGL;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.OpenGL
 {
-    [StructLayout(LayoutKind.Sequential, Pack=1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class GLDisplayList
     {
         public int _id = -1;

@@ -22,20 +22,26 @@ namespace System
             {
                 val += (_data >> (32 - i)) & 1;
                 if (i % 4 == 0 && i != 32)
+                {
                     val += " ";
+                }
             }
             return val;
         }
 
         public bool this[int index]
         {
-            get { return (_data >> index & 1) != 0; }
+            get => (_data >> index & 1) != 0;
             set
             {
                 if (value)
+                {
                     _data |= (uint)(1 << index);
+                }
                 else
+                {
                     _data &= ~(uint)(1 << index);
+                }
             }
         }
 
@@ -51,14 +57,20 @@ namespace System
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 return (uint)((_data >> shift) & mask);
             }
             set
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 _data = (uint)((_data & ~(mask << shift)) | ((value & mask) << shift));
             }
         }
@@ -92,9 +104,9 @@ namespace System
 
         public Bin24(BUInt24 val) { _data = val; }
 
-        public static implicit operator int(Bin24 val) { return (int)val._data; }
-        public static implicit operator uint(Bin24 val) { return (uint)val._data; }
-        public static implicit operator Bin24(uint val) { return new Bin24((BUInt24)val); }
+        public static implicit operator int(Bin24 val) { return val._data; }
+        public static implicit operator uint(Bin24 val) { return val._data; }
+        public static implicit operator Bin24(uint val) { return new Bin24(val); }
         public static implicit operator BUInt24(Bin24 val) { return val._data; }
         public static implicit operator Bin24(BUInt24 val) { return new Bin24(val); }
 
@@ -102,25 +114,31 @@ namespace System
         {
             int i = 0;
             string val = "";
-            uint data = (uint)_data;
+            uint data = _data;
             while (i++ < 24)
             {
                 val += (data >> (24 - i)) & 1;
                 if (i % 4 == 0 && i != 24)
+                {
                     val += " ";
+                }
             }
             return val;
         }
 
         public bool this[int index]
         {
-            get { return ((uint)_data >> index & 1) != 0; }
+            get => ((uint)_data >> index & 1) != 0;
             set
             {
                 if (value)
-                    _data = (BUInt24)((uint)_data | (uint)(1 << index));
+                {
+                    _data = _data | (uint)(1 << index);
+                }
                 else
-                    _data = (BUInt24)((uint)_data & ~(uint)(1 << index));
+                {
+                    _data = _data & ~(uint)(1 << index);
+                }
             }
         }
 
@@ -136,15 +154,21 @@ namespace System
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 return (int)(((uint)_data >> shift) & mask);
             }
             set
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
-                _data = (BUInt24)(uint)(((uint)_data & ~(mask << shift)) | (((uint)value & mask) << shift));
+                }
+
+                _data = (uint)(((uint)_data & ~(mask << shift)) | (((uint)value & mask) << shift));
             }
         }
 
@@ -167,7 +191,7 @@ namespace System
                 }
             }
 
-            return new Bin24((BUInt24)b);
+            return new Bin24(b);
         }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -190,20 +214,26 @@ namespace System
             {
                 val += (_data >> (16 - i)) & 1;
                 if (i % 4 == 0 && i != 16)
+                {
                     val += " ";
+                }
             }
             return val;
         }
 
         public bool this[int index]
         {
-            get { return (_data >> index & 1) != 0; }
+            get => (_data >> index & 1) != 0;
             set
             {
                 if (value)
-                    _data = (ushort)((ushort)_data | (ushort)(1 << index));
+                {
+                    _data = (ushort)(_data | (ushort)(1 << index));
+                }
                 else
-                    _data = (ushort)((ushort)_data & ~(ushort)(1 << index));
+                {
+                    _data = (ushort)(_data & ~(ushort)(1 << index));
+                }
             }
         }
 
@@ -219,14 +249,20 @@ namespace System
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 return (ushort)((_data >> shift) & mask);
             }
             set
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 _data = (ushort)((_data & ~(mask << shift)) | ((value & mask) << shift));
             }
         }
@@ -273,20 +309,26 @@ namespace System
             {
                 val += (_data >> (8 - i)) & 1;
                 if (i % 4 == 0 && i != 8)
+                {
                     val += " ";
+                }
             }
             return val;
         }
 
         public bool this[int index]
         {
-            get { return (_data >> index & 1) != 0; }
+            get => (_data >> index & 1) != 0;
             set
             {
                 if (value)
+                {
                     _data |= (byte)(1 << index);
+                }
                 else
+                {
                     _data &= (byte)~(1 << index);
+                }
             }
         }
 
@@ -302,14 +344,20 @@ namespace System
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 return (byte)((_data >> shift) & mask);
             }
             set
             {
                 int mask = 0;
                 for (int i = 0; i < bitCount; i++)
+                {
                     mask |= 1 << i;
+                }
+
                 _data = (byte)((_data & ~(mask << shift)) | ((value & mask) << shift));
             }
         }

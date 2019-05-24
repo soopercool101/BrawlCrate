@@ -14,10 +14,10 @@ namespace System.Windows.Forms
             InitializeComponent();
         }
 
-        ResourceNode _target;
-        int _originalPointCount, _newPointCount;
-        List<ObjectOptimization> _results = new List<ObjectOptimization>();
-        bool _processPending = false, _endPending = false;
+        private ResourceNode _target;
+        private int _originalPointCount, _newPointCount;
+        private readonly List<ObjectOptimization> _results = new List<ObjectOptimization>();
+        private bool _processPending = false, _endPending = false;
 
         public DialogResult ShowDialog(ResourceNode o)
         {
@@ -38,8 +38,13 @@ namespace System.Windows.Forms
             if (_target is MDL0Node)
             {
                 if (((MDL0Node)_target)._objList != null)
+                {
                     foreach (MDL0ObjectNode w in ((MDL0Node)_target)._objList)
+                    {
                         _results.Add(new ObjectOptimization(w));
+                    }
+                }
+
                 lblOldCount.Text = (_originalPointCount = ((MDL0Node)o)._numFacepoints).ToString();
             }
             else
@@ -56,9 +61,13 @@ namespace System.Windows.Forms
             return base.ShowDialog();
         }
 
-        void b_DoWork(object sender, DoWorkEventArgs e)
+        private void b_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (e == null) return;
+            if (e == null)
+            {
+                return;
+            }
+
             ObjectOptimizerForm form = e.Argument as ObjectOptimizerForm;
             form._newPointCount = 0;
 
@@ -69,7 +78,9 @@ namespace System.Windows.Forms
                     a._object._manager == null ||
                     a._object._manager._triangles == null ||
                     a._facepoints == null)
+                {
                     return;
+                }
 
                 TriangleConverter triConverter = new TriangleConverter(chkUseStrips.Checked, (uint)numCacheSize.Value, (uint)numMinStripLen.Value, chkPushCacheHits.Checked);
                 Facepoint[] points = new Facepoint[a._object._manager._triangles._indices.Length];
@@ -79,10 +90,11 @@ namespace System.Windows.Forms
                 //Indices are written in reverse for each triangle, 
                 //so they need to be set to a triangle in reverse if not CCW
                 for (int t = 0; t < a._object._manager._triangles._indices.Length; t++)
+                {
                     points[ccw ? t : (t - (t % 3)) + (2 - (t % 3))] = a._facepoints[indices[t]];
+                }
 
-                int pc, fc;
-                List<PrimitiveGroup> p = triConverter.GroupPrimitives(points, out pc, out fc);
+                List<PrimitiveGroup> p = triConverter.GroupPrimitives(points, out int pc, out int fc);
 
                 if (chkAllowIncrease.Checked || pc < a._pointCount)
                 {
@@ -96,10 +108,10 @@ namespace System.Windows.Forms
             e.Result = form;
         }
 
-        void b_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void b_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            float percentChange = 100.0f - ((float)_newPointCount / (float)_originalPointCount) * 100.0f;
-            lblPercentChange.Text = String.Format("{0}% {1}", Math.Round(Math.Abs(percentChange), 3), percentChange < 0 ? "Increase" : "Decrease");
+            float percentChange = 100.0f - (_newPointCount / (float)_originalPointCount) * 100.0f;
+            lblPercentChange.Text = string.Format("{0}% {1}", Math.Round(Math.Abs(percentChange), 3), percentChange < 0 ? "Increase" : "Decrease");
             lblNewCount.Text = _newPointCount.ToString();
 
             if (_processPending)
@@ -108,10 +120,12 @@ namespace System.Windows.Forms
                 Optimize();
             }
             else if (_endPending)
+            {
                 btnOkay_Click(null, null);
+            }
         }
 
-        class ObjectOptimization
+        private class ObjectOptimization
         {
             public ObjectOptimization(MDL0ObjectNode o)
             {
@@ -132,9 +146,13 @@ namespace System.Windows.Forms
         {
             lblPercentChange.Text = "Working...";
             if (b.IsBusy)
+            {
                 _processPending = true;
+            }
             else
+            {
                 b.RunWorkerAsync(this);
+            }
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
@@ -148,7 +166,9 @@ namespace System.Windows.Forms
             foreach (ObjectOptimization a in _results)
             {
                 if (a._groups == null)
+                {
                     continue;
+                }
 
                 a._object._manager._primGroups = a._groups;
                 a._object._numFacepoints = a._pointCount;
@@ -157,11 +177,15 @@ namespace System.Windows.Forms
                 a._object.SignalPropertyChange();
 
                 if (a._object._vertexNode.Format != WiiVertexComponentType.Float)
+                {
                     a._object._vertexNode._forceRebuild = a._object._vertexNode._forceFloat = chkUseStrips.Checked;
+                }
             }
 
             if (_target is MDL0Node)
+            {
                 ((MDL0Node)_target)._numFacepoints = _newPointCount;
+            }
 
             _target.SignalPropertyChange();
             _target.UpdateProperties();
@@ -176,18 +200,26 @@ namespace System.Windows.Forms
             Close();
         }
 
-        bool _updating = false;
-        BackgroundWorker b;
+        private bool _updating = false;
+        private BackgroundWorker b;
         private void Update(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
 
             _updating = true;
             if (numCacheSize.Value < 0)
+            {
                 numCacheSize.Value = 0;
+            }
+
             if (numMinStripLen.Value < 2)
+            {
                 numMinStripLen.Value = 2;
+            }
+
             _updating = false;
 
             BrawlLib.Properties.Settings.Default.ColladaImportOptions._cacheSize = (uint)numCacheSize.Value;

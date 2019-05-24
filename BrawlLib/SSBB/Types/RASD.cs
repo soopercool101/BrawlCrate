@@ -3,8 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
-    [StructLayout(LayoutKind.Sequential, Pack=1)]
-    unsafe struct RASD //Align all data to 0x20
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    internal unsafe struct RASD //Align all data to 0x20
     {
         public const uint Tag = 0x44534152;
         public const uint Size = 0x10;
@@ -12,17 +12,17 @@ namespace BrawlLib.SSBBTypes
         public NW4RCommonHeader _header;
         public buint _dataBlockOffset;
         public buint _dataBlockSize;
-        
+
         //Align to 0x20
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
-        public DataBlock DataBlock { get { return new DataBlock(Address, Size); } }
-        public DataBlockCollection Entries { get { return new DataBlockCollection(DataBlock); } }
+        public DataBlock DataBlock => new DataBlock(Address, Size);
+        public DataBlockCollection Entries => new DataBlockCollection(DataBlock);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RASDDataBlock
+    internal unsafe struct RASDDataBlock
     {
         public const uint Tag = 0x41544144;
 
@@ -31,30 +31,30 @@ namespace BrawlLib.SSBBTypes
         public bint _frameSize;
         public ruint _eventTableOffset;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct RASDEventTable
+    internal unsafe struct RASDEventTable
     {
         public buint _count;
 
-        AnimEventRef* Entries { get { return (AnimEventRef*)(Address + 4); } }
+        private AnimEventRef* Entries => (AnimEventRef*)(Address + 4);
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct AnimEventRef
+    internal unsafe struct AnimEventRef
     {
-        AnimEventFrameInfo _frameInfo;
+        private AnimEventFrameInfo _frameInfo;
         public ruint _animEventOffset;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct AnimEvent
+    internal unsafe struct AnimEvent
     {
         public buint _optionFlag;
         public buint _soundId;
@@ -64,12 +64,12 @@ namespace BrawlLib.SSBBTypes
         public bfloat _pitch;
         public buint _reserved2;
         public buint _userParam;
-        
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct AnimEventFrameInfo
+    internal unsafe struct AnimEventFrameInfo
     {
         public int _startFrame;     // event start frame
         public int _endFrame;       // event end frame
@@ -78,7 +78,7 @@ namespace BrawlLib.SSBBTypes
         public byte _loopInterval;  // playback loop interval after loopCount
         public byte _reserved;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [Flags]

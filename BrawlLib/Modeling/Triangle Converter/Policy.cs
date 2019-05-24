@@ -13,17 +13,21 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_Cache = Cache;
         }
 
-        public Strip BestStrip { get { return m_Strip; } }
+        public Strip BestStrip => m_Strip;
         public void Challenge(Strip Strip, uint Degree, uint CacheHits)
         {
             if (Strip.Size < m_MinStripSize)
+            {
                 return;
+            }
 
             if (!m_Cache)
             {
                 //Cache is disabled, take the longest strip
                 if (Strip.Size > m_Strip.Size)
+                {
                     m_Strip = Strip;
+                }
             }
             else
             {
@@ -49,7 +53,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
         private uint m_Degree;
         private uint m_CacheHits;
 
-        private uint m_MinStripSize;
-        private bool m_Cache;
+        private readonly uint m_MinStripSize;
+        private readonly bool m_Cache;
     }
 }

@@ -2,7 +2,8 @@
 
 namespace BrawlLib.SSBB
 {
-    public class Stage {
+    public class Stage
+    {
         /// <summary>
         /// The stage ID, as used by the module files and the Custom SSS code.
         /// </summary>
@@ -21,25 +22,32 @@ namespace BrawlLib.SSBB
         /// </summary>
         public string PacBasename { get; private set; }
 
-        public bool ContainsPac(string filename) {
+        public bool ContainsPac(string filename)
+        {
             int i = filename.IndexOfAny(new char[] { '.', '_' });
-            if (filename.Length < 3 || i < 0) return false;
+            if (filename.Length < 3 || i < 0)
+            {
+                return false;
+            }
 
             string input_basename = filename.Substring(3, i - 3);
-            return String.Equals(input_basename.ToLower(), PacBasename.ToLower(), StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(input_basename.ToLower(), PacBasename.ToLower(), StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public Stage(byte id, string name, string relname, string pac_basename) {
-            this.ID = id;
-            this.Name = name;
-            this.RelName = relname;
-            this.PacBasename = pac_basename;
+        public Stage(byte id, string name, string relname, string pac_basename)
+        {
+            ID = id;
+            Name = name;
+            RelName = relname;
+            PacBasename = pac_basename;
         }
 
         public override string ToString() { return Name; }
 
-        public string[] PacNames {
-            get {
+        public string[] PacNames
+        {
+            get
+            {
                 string s = PacBasename;
                 return s == "starfox" ? new string[] { "STGSTARFOX_GDIFF.pac" } :
                         s == "emblem" ? new string[] {
@@ -68,7 +76,7 @@ namespace BrawlLib.SSBB
             }
         }
 
-        public readonly static Stage[] Stages = new Stage[] {
+        public static readonly Stage[] Stages = new Stage[] {
             //        ID    Display Name              .rel filename        Name without STG
             new Stage(0x00, "STGCUSTOM##.pac",        "st_custom##.rel",   "custom"),
             new Stage(0x01, "Battlefield",            "st_battle.rel",     "battlefield"),

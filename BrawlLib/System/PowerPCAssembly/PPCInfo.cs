@@ -25,9 +25,9 @@ namespace System.PowerPcAssembly
 
     public class PPCInfo
     {
-        private static List<PPCOpCodeInfo> info = new List<PPCOpCodeInfo>();
-        private static List<PPCOpCodeInfo> info4C = new List<PPCOpCodeInfo>();
-        private static List<PPCOpCodeInfo> info7C = new List<PPCOpCodeInfo>();
+        private static readonly List<PPCOpCodeInfo> info = new List<PPCOpCodeInfo>();
+        private static readonly List<PPCOpCodeInfo> info4C = new List<PPCOpCodeInfo>();
+        private static readonly List<PPCOpCodeInfo> info7C = new List<PPCOpCodeInfo>();
 
         #region OpCode Info Initialization
         static PPCInfo()
@@ -698,11 +698,15 @@ namespace System.PowerPcAssembly
                     found = true;
                 }
                 else if (found == true)
+                {
                     break;
+                }
             }
 
             if (result.Count == 0)
+            {
                 result.Add(info[0]);
+            }
 
             return result;
         }
@@ -744,7 +748,10 @@ namespace System.PowerPcAssembly
             foreach (char c in secondaryBinary)
             {
                 if (c == '1')
+                {
                     _mask |= (1u << i);
+                }
+
                 i++;
             }
         }
@@ -825,12 +832,12 @@ namespace System.PowerPcAssembly
 
         addc = 0x7C000014, //addc.
         addc_D = 0x7C000015,
-        
+
         mulhwu = 0x7C000016, //mulhwu.
         mulhwu_D = 0x7C000017,
         mulhw = 0x7C000096, //mulhw.
         mulhw_D = 0x7C000097,
-        
+
         mfcr = 0x7C000023,
         lwarx = 0x7C000028,
         lwzx = 0x7C00002E,
@@ -840,12 +847,12 @@ namespace System.PowerPcAssembly
 
         cntlzw = 0x7C000034, //cntlzw.
         cntlzw_D = 0x7C000035,
-        
+
 
 
         cmplw = 0x7C000040,
         sub = 0x7C000050,
-        
+
         cntlzd = 0x7C000074,
         addze = 0x7C000194,
         addme = 0x7C0001D4,
@@ -863,7 +870,7 @@ namespace System.PowerPcAssembly
         tlbie = 0x7C000000,
         eciwx = 0x7C000000,
         lhzux = 0x7C000000,
-        
+
         xor = 0x7C000278, //xor.
         xor_D = 0x7C000279,
 
@@ -897,7 +904,7 @@ namespace System.PowerPcAssembly
 
         eieio = 0x7C0006AC, //oald mcdonald had a faaaaaaaaaaauuurm
         sthbrx = 0x7C00072C,
-        
+
         extsh = 0x7C000734, //extsh.
         extsh_D = 0x7C000735,
 

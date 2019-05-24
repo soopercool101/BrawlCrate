@@ -32,7 +32,7 @@ namespace BrawlLib.SSBBTypes
         //Relative to class names data section start
         //This is the offset of the root class name
         public buint _rootClassNameOffset;
-        
+
         public fixed byte _contentsVersion[0x10];
 
         public bint _flags;
@@ -43,22 +43,22 @@ namespace BrawlLib.SSBBTypes
         //__data__
         //__types__
 
-        public PhysicsOffsetSection* OffsetSections { get { return (PhysicsOffsetSection*)(Address + 0x40); } }
+        public PhysicsOffsetSection* OffsetSections => (PhysicsOffsetSection*)(Address + 0x40);
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
-        public String Name { get { return new String((sbyte*)Address + 0x28); } }
+        public string Name => new string((sbyte*)Address + 0x28);
 
-        public VoidPtr ClassNamesData { get { return Address + *(buint*)(Address + 0x54); } }
-        public VoidPtr DataData { get { return Address + *(buint*)(Address + 0x84); } }
-        public VoidPtr TypesData { get { return Address + *(buint*)(Address + 0xB4); } }
+        public VoidPtr ClassNamesData => Address + *(buint*)(Address + 0x54);
+        public VoidPtr DataData => Address + *(buint*)(Address + 0x84);
+        public VoidPtr TypesData => Address + *(buint*)(Address + 0xB4);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct PhysicsOffsetSection
     {
         public fixed byte _name[19];
-        
+
         public byte _pad; //0xFF
         public bint _dataOffset; //Main header is the base
 
@@ -70,16 +70,16 @@ namespace BrawlLib.SSBBTypes
         public bint _importsOffset;
         public bint _totalLength; //This is the length of data + patches
 
-        public int DataLength { get { return _localPatchesOffset; } }
-        public int LocalPatchesLength { get { return _globalPatchesOffset - _localPatchesOffset; } }
-        public int GlobalPatchesLength { get { return _classNamePatchesOffset - _globalPatchesOffset; } }
-        public int ClassNamePatchesLength { get { return _exportsOffset - _classNamePatchesOffset; } }
-        public int ExportsLength { get { return _importsOffset - _exportsOffset; } }
-        public int ImportsLength { get { return _totalLength - _importsOffset; } }
+        public int DataLength => _localPatchesOffset;
+        public int LocalPatchesLength => _globalPatchesOffset - _localPatchesOffset;
+        public int GlobalPatchesLength => _classNamePatchesOffset - _globalPatchesOffset;
+        public int ClassNamePatchesLength => _exportsOffset - _classNamePatchesOffset;
+        public int ExportsLength => _importsOffset - _exportsOffset;
+        public int ImportsLength => _totalLength - _importsOffset;
 
-        public String Name { get { return new String((sbyte*)Address); } }
+        public string Name => new string((sbyte*)Address);
 
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -88,8 +88,8 @@ namespace BrawlLib.SSBBTypes
         public buint _signature; //How to calculate?
         public byte _nine; //9
 
-        public String Name { get { return new String((sbyte*)Address + 5); } }
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public string Name => new string((sbyte*)Address + 5);
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         //Align string table to 0x10 with 0xFF
     }
@@ -100,7 +100,7 @@ namespace BrawlLib.SSBBTypes
         public bint _pointerOffset; //Offset to a uint pointer
         public bint _dataOffset; //Offset to the pointer's data
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GlobalPatch
@@ -109,7 +109,7 @@ namespace BrawlLib.SSBBTypes
         public bint _sectionIndex;
         public bint _dataOffset;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ClassNamePatch
@@ -121,7 +121,7 @@ namespace BrawlLib.SSBBTypes
         //points directly to string
         public bint _classNameOffset;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkVariant
@@ -129,7 +129,7 @@ namespace BrawlLib.SSBBTypes
         public bint _objectPtr; //void*
         public bint _classPtr; //hkClass*
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkClass
@@ -146,16 +146,16 @@ namespace BrawlLib.SSBBTypes
         public bint _attribPtr; //hkCustomAttributes*
         public bint _flags; //0 = none, 1 = not serializable
         public bint _version;
-        
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkCustomAttributes
     {
         public bint _attribPtr; //HavokAttribute*
         public bint _count;
-        
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct HavokAttribute
@@ -163,7 +163,7 @@ namespace BrawlLib.SSBBTypes
         public bint _namePtr; //char*
         public hkVariant _value;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct HavokQSTransform
@@ -176,7 +176,7 @@ namespace BrawlLib.SSBBTypes
         public BVec3 _scale;
         public bint _pad2;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkArray
@@ -185,17 +185,17 @@ namespace BrawlLib.SSBBTypes
         public bint _count;
         public Bin32 _capacityAndFlags;
 
-        public int Capacity { get { return (int)_capacityAndFlags[0, 30]; } }
-        public FlagsEnum Flags { get { return (FlagsEnum)_capacityAndFlags[30, 2]; } }
+        public int Capacity => (int)_capacityAndFlags[0, 30];
+        public FlagsEnum Flags => (FlagsEnum)_capacityAndFlags[30, 2];
         [Flags]
         public enum FlagsEnum
-		{
-			DONT_DEALLOCATE_FLAG = 2, // Indicates that the storage is not the array's to delete
-			LOCKED_FLAG = 1,  // Indicates that the array will never have its destructor called (read in from packfile for instance)
-		    None = 0
+        {
+            DONT_DEALLOCATE_FLAG = 2, // Indicates that the storage is not the array's to delete
+            LOCKED_FLAG = 1,  // Indicates that the array will never have its destructor called (read in from packfile for instance)
+            None = 0
         }
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct HomogeneousArray
@@ -204,7 +204,7 @@ namespace BrawlLib.SSBBTypes
         public bint _dataPtr; //void*
         public bint _count;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkClassEnum
@@ -213,7 +213,7 @@ namespace BrawlLib.SSBBTypes
         public bint _entriesPtr; //HavokClassEnumEntry*
         public bint _enumCount;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct HavokClassEnumEntry
@@ -221,7 +221,7 @@ namespace BrawlLib.SSBBTypes
         public bint _value; //The number the string represents
         public bint _namePtr; //char*
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkClassMember
@@ -235,7 +235,7 @@ namespace BrawlLib.SSBBTypes
         public bushort _flags;
         public bushort _structOffset; //Offset of this member in the class struct
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public enum Type
         {
@@ -334,7 +334,7 @@ namespace BrawlLib.SSBBTypes
         public buint _userData1;
         public bint _type;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkSphereShape
@@ -342,7 +342,7 @@ namespace BrawlLib.SSBBTypes
         public hkShape _shapeData;
         public bfloat _radius;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkCapsuleShape
@@ -351,7 +351,7 @@ namespace BrawlLib.SSBBTypes
         public BVec4 _point1;
         public BVec4 _point2;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkConvexTranslateShape
@@ -361,7 +361,7 @@ namespace BrawlLib.SSBBTypes
         public bint _childShapeSize;
         public BVec4 _translation;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkRootLevelContainer
@@ -369,7 +369,7 @@ namespace BrawlLib.SSBBTypes
         public bint _namedVariantPtr; //hkNamedVariant*, Align data start to 0x10
         public bint _count;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkReferencedObject
@@ -377,7 +377,7 @@ namespace BrawlLib.SSBBTypes
         public bushort _size;
         public bshort _referenceCount;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkNamedVariant
@@ -386,7 +386,7 @@ namespace BrawlLib.SSBBTypes
         public bint _classNamePtr; //char*
         public hkVariant _variantInfo;
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkxScene
@@ -396,7 +396,7 @@ namespace BrawlLib.SSBBTypes
         public bfloat _sceneLength; //Time in seconds
         public bint _rootNodePtr; //hkxNode*
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkxNode
@@ -421,7 +421,7 @@ namespace BrawlLib.SSBBTypes
 
         public fixed byte _pad[3];
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct HavokAnnotation
@@ -429,6 +429,6 @@ namespace BrawlLib.SSBBTypes
         public bfloat _time;
         public bint _descriptionPtr; //char*
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 }

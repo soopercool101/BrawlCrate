@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Text;
-using System.Collections;
 
 namespace System
 {
@@ -13,7 +13,10 @@ namespace System
             foreach (object x in a)
             {
                 if (x == o)
+                {
                     l.Add(i);
+                }
+
                 i++;
             }
             return l.ToArray();

@@ -11,7 +11,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             if (_name == null || _name == "<null>")
+            {
                 _name = "Pointer" + Index;
+            }
+
             return *(bint*)Data != 0;
         }
 
@@ -63,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            
+
         }
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
@@ -72,9 +75,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 HavokClassNode n = Children[0] as HavokClassNode;
                 if (n is HavokMetaObjectNode || n is hkClassNode)
+                {
                     writer.WriteString(HavokXML.GetObjectName(classNodes, n));
+                }
                 else
+                {
                     n.WriteParams(writer, classNodes);
+                }
             }
         }
     }

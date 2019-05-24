@@ -1,27 +1,33 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWSDNode : RSARFileNode
     {
-        internal RWSDHeader* Header { get { return (RWSDHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.RWSD; } }
+        internal RWSDHeader* Header => (RWSDHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.RWSD;
 
         public void InitGroups()
         {
-            RWSDDataGroupNode group0 = new RWSDDataGroupNode();
-            group0.Parent = this;
-            RWSDSoundGroupNode group1 = new RWSDSoundGroupNode();
-            group1.Parent = this;
+            RWSDDataGroupNode group0 = new RWSDDataGroupNode
+            {
+                Parent = this
+            };
+            RWSDSoundGroupNode group1 = new RWSDSoundGroupNode
+            {
+                Parent = this
+            };
         }
 
         protected override void GetStrings(LabelBuilder builder)
         {
             foreach (RWSDDataNode node in Children[0].Children)
+            {
                 builder.Add((uint)node.Index, node._name);
+            }
         }
-        
+
         private void ParseBlocks()
         {
             VoidPtr dataAddr = Header;
@@ -47,7 +53,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Set data source
             if (total > len)
+            {
                 _audioSource = new DataSource(dataAddr + len, total - len);
+            }
         }
 
         public override void GetName()
@@ -94,9 +102,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             new RWSDDataGroupNode().Initialize(this, Header->Data, Header->_dataLength);
             if (Header->_waveOffset > 0 && VersionMinor < 3)
+            {
                 new RWSDSoundGroupNode().Initialize(this, Header->Wave, Header->_waveLength);
+            }
             else if (VersionMinor >= 3)
+            {
                 new RWARNode() { _name = "Audio" }.Initialize(this, _audioSource.Address, _audioSource.Length);
+            }
 
             //Get labels
             RSARNode parent;
@@ -114,19 +126,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 INFOSoundEntry* entry;
                 for (uint i = 0; i < count2; i++)
+                {
                     if ((entry = (INFOSoundEntry*)soundList->Get(offset, (int)i))->_fileId == _fileIndex)
                     {
                         int x = ((WaveSoundInfo*)entry->GetSoundInfoRef(offset))->_soundIndex;
                         if (x >= 0 && x < count2)
+                        {
                             _labels[x] = new LabelItem() { Tag = i, String = symb2->GetStringEntry(entry->_stringId) };
+                        }
                     }
+                }
             }
 
             for (int i = 0; i < count; i++)
             {
                 string name = "Entry" + i;
                 if (_labels != null && i < _labels.Length)
+                {
                     name = _labels[i].String;
+                }
 
                 RWSD_DATAEntry* entry = (RWSD_DATAEntry*)list->Get(list, i);
                 RWSDDataNode node = new RWSDDataNode() { _name = name };
@@ -147,9 +165,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             else
             {
                 foreach (ResourceNode g in Children)
+                {
                     _headerLen += g.CalculateSize(true);
+                }
+
                 foreach (WAVESoundNode s in Children[1].Children)
+                {
                     _audioLen += s._streamBuffer.Length;
+                }
             }
 
             return _headerLen + _audioLen;
@@ -182,11 +205,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 VoidPtr audio = addr;
                 if (RSARNode == null)
+                {
                     audio += Children[1]._calcSize;
-                else 
+                }
+                else
+                {
                     audio = _rebuildAudioAddr;
-
-                (Children[1] as RWSDSoundGroupNode)._audioAddr = audio;
+                } (Children[1] as RWSDSoundGroupNode)._audioAddr = audio;
                 _audioSource = new DataSource(audio, _audioLen);
 
                 Children[1].Rebuild(addr, Children[1]._calcSize, true);
@@ -199,7 +224,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 VoidPtr audio = addr;
                 if (RSARNode != null)
+                {
                     audio = _rebuildAudioAddr;
+                }
 
                 _audioSource = new DataSource(audio, _audioLen);
                 Children[1].Rebuild(audio, Children[1]._calcSize, true);
@@ -209,7 +236,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void Remove()
         {
             if (RSARNode != null)
+            {
                 RSARNode.Files.Remove(this);
+            }
+
             base.Remove();
         }
 

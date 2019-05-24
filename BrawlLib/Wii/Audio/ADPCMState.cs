@@ -63,15 +63,23 @@ namespace BrawlLib.Wii.Audio
             int outSample, scale, cIndex;
 
             if (_sampleIndex % 14 == 0)
+            {
                 _cps = *_srcPtr++;
+            }
 
             if ((_sampleIndex++ & 1) == 0)
+            {
                 outSample = *_srcPtr >> 4;
+            }
             else
+            {
                 outSample = *_srcPtr++ & 0x0F;
+            }
 
             if (outSample >= 8)
+            {
                 outSample -= 16;
+            }
 
             scale = 1 << (_cps & 0x0F);
             cIndex = (_cps >> 4) << 1;

@@ -4,8 +4,8 @@ namespace Be.Windows.Forms
 {
     internal sealed class FileDataBlock : DataBlock
     {
-        long _length;
-        long _fileOffset;
+        private long _length;
+        private long _fileOffset;
 
         public FileDataBlock(long fileOffset, long length)
         {
@@ -13,21 +13,9 @@ namespace Be.Windows.Forms
             _length = length;
         }
 
-        public long FileOffset
-        {
-            get
-            {
-                return _fileOffset;
-            }
-        }
+        public long FileOffset => _fileOffset;
 
-        public override long Length
-        {
-            get
-            {
-                return _length;
-            }
-        }
+        public override long Length => _length;
 
         public void SetFileOffset(long value)
         {

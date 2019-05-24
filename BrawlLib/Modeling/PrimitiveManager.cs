@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
-using BrawlLib.Wii.Models;
-using BrawlLib.Imaging;
-using BrawlLib.Wii.Graphics;
-using BrawlLib.OpenGL;
-using System.Drawing;
-using BrawlLib.SSBB.ResourceNodes;
-using OpenTK.Graphics.OpenGL;
+﻿using BrawlLib.Imaging;
 using BrawlLib.Modeling.Triangle_Converter;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Graphics;
+using BrawlLib.Wii.Models;
+using OpenTK.Graphics.OpenGL;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace BrawlLib.Modeling
 {
@@ -21,19 +21,25 @@ namespace BrawlLib.Modeling
             get
             {
                 foreach (bool b in _changed)
+                {
                     if (b)
+                    {
                         return true;
+                    }
+                }
 
                 return false;
             }
             set
             {
                 for (int i = 0; i < _changed.Length; i++)
+                {
                     _changed[i] = false;
+                }
             }
         }
 
-        IObject _owner;
+        private readonly IObject _owner;
 
         public List<Vertex3> _vertices;
         public UnsafeBuffer _indices;
@@ -48,7 +54,7 @@ namespace BrawlLib.Modeling
         //The primitives indices match up to these values
         public UnsafeBuffer[] _faceData = new UnsafeBuffer[12];
         public bool[] _dirty = new bool[12];
-        private bool[] _changed = new bool[12];
+        private readonly bool[] _changed = new bool[12];
 
         public void SetAssetChanged(int index)
         {
@@ -72,8 +78,13 @@ namespace BrawlLib.Modeling
             get
             {
                 for (int i = 0; i < 8; i++)
+                {
                     if (HasTextureMatrix[i])
+                    {
                         return true;
+                    }
+                }
+
                 return false;
             }
         }
@@ -120,17 +131,28 @@ namespace BrawlLib.Modeling
             {
                 UnsafeBuffer b = _faceData[i];
                 if (b == null)
+                {
                     continue;
+                }
 
                 p._faceData[i] = new UnsafeBuffer(b.Length);
                 Memory.Move(p._faceData[i].Address, b.Address, (uint)b.Length);
             }
             if (p._triangles != null)
+            {
                 _triangles._indices.CopyTo(p._triangles._indices, 0);
+            }
+
             if (p._lines != null)
+            {
                 _lines._indices.CopyTo(p._lines._indices, 0);
+            }
+
             if (p._points != null)
+            {
                 _points._indices.CopyTo(p._points._indices, 0);
+            }
+
             p.HasTextureMatrix = new bool[8];
             HasTextureMatrix.CopyTo(p.HasTextureMatrix, 0);
             return p;
@@ -147,12 +169,16 @@ namespace BrawlLib.Modeling
         public Vector3[] GetVertices(bool force)
         {
             if (_rawVertices != null && _rawVertices.Length != 0 && !force)
+            {
                 return _rawVertices;
+            }
 
             int i = 0;
             _rawVertices = new Vector3[_vertices.Count];
             foreach (Vertex3 v in _vertices)
+            {
                 _rawVertices[i++] = v.Position;
+            }
 
             return _rawVertices;
         }
@@ -165,14 +191,18 @@ namespace BrawlLib.Modeling
         public Vector3[] GetNormals(bool force)
         {
             if (_rawNormals != null && _rawNormals.Length != 0 && !force)
+            {
                 return _rawNormals;
+            }
 
             HashSet<Vector3> list = new HashSet<Vector3>();
             if (_faceData[1] != null)
             {
                 Vector3* pIn = (Vector3*)_faceData[1].Address;
                 for (int i = 0; i < _pointCount; i++)
+                {
                     list.Add(*pIn++);
+                }
             }
 
             _rawNormals = new Vector3[list.Count];
@@ -191,15 +221,19 @@ namespace BrawlLib.Modeling
         {
             index = index.Clamp(0, 7);
 
-            if (_uvs[index] != null && _uvs[index].Length != 0 && !force) 
+            if (_uvs[index] != null && _uvs[index].Length != 0 && !force)
+            {
                 return _uvs[index];
+            }
 
             HashSet<Vector2> list = new HashSet<Vector2>();
             if (_faceData[index + 4] != null)
             {
                 Vector2* pIn = (Vector2*)_faceData[index + 4].Address;
                 for (int i = 0; i < _pointCount; i++)
+                {
                     list.Add(*pIn++);
+                }
             }
 
             _uvs[index] = new Vector2[list.Count];
@@ -207,7 +241,7 @@ namespace BrawlLib.Modeling
 
             return _uvs[index];
         }
-        private Vector2[][] _uvs = new Vector2[8][];
+        private readonly Vector2[][] _uvs = new Vector2[8][];
         /// <summary>
         /// Retrieves color values from raw facedata in a remapped array.
         /// </summary>
@@ -218,15 +252,19 @@ namespace BrawlLib.Modeling
         {
             index = index.Clamp(0, 1);
 
-            if (_colors[index] != null && _colors[index].Length != 0 && !force) 
+            if (_colors[index] != null && _colors[index].Length != 0 && !force)
+            {
                 return _colors[index];
+            }
 
             HashSet<RGBAPixel> list = new HashSet<RGBAPixel>();
             if (_faceData[index + 2] != null)
             {
                 RGBAPixel* pIn = (RGBAPixel*)_faceData[index + 2].Address;
                 for (int i = 0; i < _pointCount; i++)
+                {
                     list.Add(*pIn++);
+                }
             }
 
             _colors[index] = new RGBAPixel[list.Count];
@@ -234,7 +272,7 @@ namespace BrawlLib.Modeling
 
             return _colors[index];
         }
-        private RGBAPixel[][] _colors = new RGBAPixel[2][];
+        private readonly RGBAPixel[][] _colors = new RGBAPixel[2][];
         #endregion
 
         #region Reading
@@ -258,7 +296,7 @@ namespace BrawlLib.Modeling
 
         //    for (int i = 0; i < entry->_groupCount; i++)
         //        _pointCount += FindPointCount((byte*)header->Primitives + grp[i]._offset, desc.Stride, grp[i]._size);
-            
+
         //    _indices = new UnsafeBuffer(_pointCount * 2);
 
         //    byte*[] pAssetList = new byte*[12];
@@ -319,7 +357,9 @@ namespace BrawlLib.Modeling
 
             _arrayFlags = polygon->_arrayFlags;
             for (int i = 0; i < 8; i++)
+            {
                 HasTextureMatrix[i] = _arrayFlags.GetHasTexMatrix(i);
+            }
 
             //Compile decode script by reading the polygon def list
             //This sets how to read the facepoints
@@ -338,24 +378,31 @@ namespace BrawlLib.Modeling
                 pAssetList[1] = (byte*)assets.Assets[1][id].Address;
             }
             for (int i = 0, x = 2; i < 2; i++, x++)
+            {
                 if ((id = ((bshort*)polygon->_colorIds)[i]) >= 0 && desc.HasData[x] && assets.Assets[2] != null)
                 {
                     pFaceBuffers[x] = (byte*)(_faceData[x] = new UnsafeBuffer(4 * _pointCount)).Address;
                     pAssetList[x] = (byte*)assets.Assets[2][id].Address;
                 }
+            }
+
             for (int i = 0, x = 4; i < 8; i++, x++)
+            {
                 if ((id = ((bshort*)polygon->_uids)[i]) >= 0 && desc.HasData[x] && assets.Assets[3] != null)
                 {
                     pFaceBuffers[x] = (byte*)(_faceData[x] = new UnsafeBuffer(8 * _pointCount)).Address;
                     pAssetList[x] = (byte*)assets.Assets[3][id].Address;
                 }
+            }
 
             int triCount = 0, lineCount = 0, pointCount = 0;
             byte* pData = (byte*)polygon->PrimitiveData;
 
             fixed (byte** pOut = pFaceBuffers)
             fixed (byte** pAssets = pAssetList)
+            {
                 _primGroups = ReadPrimitives(pData, ref desc, pOut, pAssets, nodes, ref triCount, ref lineCount, ref pointCount);
+            }
 
             CreateGLPrimitives(triCount, lineCount, pointCount);
 
@@ -367,30 +414,39 @@ namespace BrawlLib.Modeling
 
             ushort* pIndex = (ushort*)_indices.Address;
             for (int x = 0; x < _pointCount; x++, pIndex++)
+            {
                 if (*pIndex >= 0 && *pIndex < _vertices.Count)
+                {
                     _vertices[*pIndex]._faceDataIndices.Add(x);
+                }
+            }
 
             foreach (Vertex3 v in _vertices)
+            {
                 v.Parent = _owner as IMatrixNodeUser;
+            }
         }
-        
+
         ~PrimitiveManager() { Dispose(); }
         public void Dispose()
         {
             if (_graphicsBuffer != null)
             {
-                _graphicsBuffer.Dispose(); 
-                _graphicsBuffer = null; 
+                _graphicsBuffer.Dispose();
+                _graphicsBuffer = null;
             }
 
             if (_faceData != null)
             {
                 for (int i = 0; i < _faceData.Length; i++)
+                {
                     if (_faceData[i] != null)
                     {
                         _faceData[i].Dispose();
                         _faceData[i] = null;
                     }
+                }
+
                 _faceData = null;
             }
 
@@ -432,7 +488,9 @@ namespace BrawlLib.Modeling
                 pData += 2 + count * stride;
 
                 if (length > 0 && pData > pEnd)
+                {
                     return pointCount;
+                }
             }
         }
 
@@ -469,17 +527,26 @@ namespace BrawlLib.Modeling
                         newGroup = true;
                     }
                     if (!group._nodes.Contains(value) && value != ushort.MaxValue)
+                    {
                         group._nodes.Add(value);
+                    }
 
                     if (cmd != GXListCommand.LoadIndexD) //How does the light command work? Never seen it used
                     {
                         if (value < cache.Length && value >= 0)
+                        {
                             group._nodeOffsets.Add(new NodeOffset((uint)(pData - pStart) - group._offset, cache[value]));
+                        }
+
                         if (cmd == GXListCommand.LoadIndexA)
+                        {
                             desc.SetNode(pData); //Set weight
+                        }
                     }
                     else
+                    {
                         Console.WriteLine("There are lights in here!");
+                    }
 
                     pData += 4;
                     goto Next;
@@ -517,7 +584,9 @@ namespace BrawlLib.Modeling
                 }
 
                 if (newGroup == true)
+                {
                     newGroup = false;
+                }
 
                 group._headers.Add(new PrimitiveHeader() { Type = (WiiPrimitiveType)cmd, Entries = value });
 
@@ -526,12 +595,14 @@ namespace BrawlLib.Modeling
                 //Extract facepoints here!
                 desc.Run(ref pData, pAssets, pOut, value, group, ref indices, cache, UseIdentityTexMtx);
 
-                Next:
+            Next:
                 if (length > 0 && pData >= pEnd)
+                {
                     break;
+                }
             }
 
-            Finish:
+        Finish:
             groups.Add(group);
             return groups;
         }
@@ -550,11 +621,19 @@ namespace BrawlLib.Modeling
             uint index = 0, temp;
 
             if (_points != null)
+            {
                 p1arr = _points._indices;
+            }
+
             if (_lines != null)
+            {
                 p2arr = _lines._indices;
+            }
+
             if (_triangles != null)
+            {
                 p3arr = _triangles._indices;
+            }
 
             byte* pEnd = pData + length;
 
@@ -617,7 +696,10 @@ namespace BrawlLib.Modeling
                     case GXListCommand.DrawLines:
                         count = *(bushort*)pData;
                         for (int i = 0; i < count; i++)
+                        {
                             p2arr[p2++] = index++;
+                        }
+
                         break;
                     case GXListCommand.DrawLineStrip:
                         count = *(bushort*)pData;
@@ -631,14 +713,19 @@ namespace BrawlLib.Modeling
                     case GXListCommand.DrawPoints:
                         count = *(bushort*)pData;
                         for (int i = 0; i < count; i++)
+                        {
                             p1arr[p1++] = index++;
+                        }
+
                         break;
                     default: return;
                 }
                 pData += 2 + count * stride;
 
                 if (length > 0 && pData >= pEnd)
+                {
                     return;
+                }
             }
         }
 
@@ -655,31 +742,49 @@ namespace BrawlLib.Modeling
                 if (_remakePrimitives)
                 {
                     if (g._tristrips.Count != 0)
+                    {
                         foreach (PointTriangleStrip strip in g._tristrips)
+                        {
                             _primitiveSize += 3 + strip._points.Count * _fpStride;
+                        }
+                    }
 
                     if (g._triangles.Count != 0)
+                    {
                         _primitiveSize += 3 + g._triangles.Count * 3 * _fpStride;
+                    }
 
                     if (g._linestrips.Count != 0)
+                    {
                         foreach (PointLineStrip strip in g._linestrips)
+                        {
                             _primitiveSize += 3 + strip._points.Count * _fpStride;
+                        }
+                    }
 
                     if (g._lines.Count != 0)
+                    {
                         _primitiveSize += 3 + g._lines.Count * 2 * _fpStride;
+                    }
                 }
                 else
                 {
                     g.RegroupNodes();
                     for (int i = 0; i < g._headers.Count; i++)
+                    {
                         _primitiveSize += 3 + g._facePoints[i].Count * _fpStride;
+                    }
                 }
 
                 if (g._nodes.Count == 1 && g._nodes[0] == 0xFFFF)
+                {
                     _isWeighted = false;
+                }
 
                 if (_isWeighted)
+                {
                     _primitiveSize += 5 * g._nodes.Count * (HasTexMtx ? 3 : 2); //Add total matrices size
+                }
             }
 
             return _primitiveSize;
@@ -718,10 +823,16 @@ namespace BrawlLib.Modeling
                     uint index = indices[t];
                     int pointIndex = forceCCW ? t : (t - (t % 3)) + (2 - (t % 3));
                     if (pointIndex < points.Length)
+                    {
                         if (index >= facepoints.Length)
+                        {
                             points[pointIndex] = new Facepoint();
+                        }
                         else
+                        {
                             points[pointIndex] = facepoints[index];
+                        }
+                    }
                 }
 
                 _primGroups.AddRange(converter.GroupPrimitives(points, out newPointCount, out newFaceCount));
@@ -733,7 +844,9 @@ namespace BrawlLib.Modeling
                 Facepoint[] points = new Facepoint[_lines._indices.Length];
                 uint[] indices = _lines._indices;
                 for (int t = 0; t < indices.Length; t++)
+                {
                     points[t] = facepoints[indices[t]];
+                }
 
                 List<PrimitiveGroup> groups = new List<PrimitiveGroup>();
 
@@ -743,8 +856,13 @@ namespace BrawlLib.Modeling
 
                     bool added = false;
                     foreach (PrimitiveGroup g in groups)
+                    {
                         if (added = g.TryAdd(line))
+                        {
                             break;
+                        }
+                    }
+
                     if (!added)
                     {
                         PrimitiveGroup g = new PrimitiveGroup();
@@ -760,7 +878,9 @@ namespace BrawlLib.Modeling
                 Facepoint[] points = new Facepoint[_points._indices.Length];
                 uint[] indices = _points._indices;
                 for (int t = 0; t < indices.Length; t++)
+                {
                     points[t] = facepoints[indices[t]];
+                }
 
                 List<PrimitiveGroup> groups = new List<PrimitiveGroup>();
 
@@ -770,8 +890,13 @@ namespace BrawlLib.Modeling
 
                     bool added = false;
                     foreach (PrimitiveGroup g in groups)
+                    {
                         if (added = g.TryAdd(p))
+                        {
                             break;
+                        }
+                    }
+
                     if (!added)
                     {
                         PrimitiveGroup g = new PrimitiveGroup();
@@ -783,12 +908,12 @@ namespace BrawlLib.Modeling
                 _primGroups.AddRange(groups);
             }
         }
-        
+
         internal void WritePrimitives(MDL0Object* header, IMatrixNode[] cache)
         {
             VoidPtr start = header->PrimitiveData;
             VoidPtr address = header->PrimitiveData;
- 
+
             foreach (PrimitiveGroup g in _primGroups)
             {
                 g._nodes.Sort();
@@ -802,6 +927,7 @@ namespace BrawlLib.Modeling
 
                     //Texture Matrices
                     if (HasTexMtx)
+                    {
                         for (int i = 0; i < g._nodes.Count; i++)
                         {
                             node = g._nodes[i];
@@ -809,12 +935,15 @@ namespace BrawlLib.Modeling
                             *(byte*)address++ = 0x30;
 
                             if (node < cache.Length)
+                            {
                                 g._nodeOffsets.Add(new NodeOffset((uint)(address - start) - g._offset, cache[node]));
+                            }
 
                             *(bushort*)address = node; address += 2;
                             *(byte*)address++ = 0xB0;
                             *(byte*)address++ = (byte)(0x78 + (12 * i));
                         }
+                    }
 
                     //Position Matrices
                     for (int i = 0; i < g._nodes.Count; i++)
@@ -824,7 +953,9 @@ namespace BrawlLib.Modeling
                         *(byte*)address++ = 0x20;
 
                         if (node < cache.Length)
+                        {
                             g._nodeOffsets.Add(new NodeOffset((uint)(address - start) - g._offset, cache[node]));
+                        }
 
                         *(bushort*)address = g._nodes[i]; address += 2;
                         *(byte*)address++ = 0xB0;
@@ -839,7 +970,9 @@ namespace BrawlLib.Modeling
                         *(byte*)address++ = 0x28;
 
                         if (node < cache.Length)
+                        {
                             g._nodeOffsets.Add(new NodeOffset((uint)(address - start) - g._offset, cache[node]));
+                        }
 
                         *(bushort*)address = g._nodes[i]; address += 2;
                         *(byte*)address++ = 0x84;
@@ -850,12 +983,17 @@ namespace BrawlLib.Modeling
                 if (_remakePrimitives)
                 {
                     if (g._tristrips.Count != 0)
+                    {
                         foreach (PointTriangleStrip strip in g._tristrips)
                         {
                             *(PrimitiveHeader*)address = strip.Header; address += 3;
                             foreach (Facepoint f in strip._points)
+                            {
                                 WriteFacepoint(f, g, ref address);
+                            }
                         }
+                    }
+
                     if (g._triangles.Count != 0)
                     {
                         *(PrimitiveHeader*)address = g.TriangleHeader; address += 3;
@@ -867,12 +1005,17 @@ namespace BrawlLib.Modeling
                         }
                     }
                     if (g._linestrips.Count != 0)
+                    {
                         foreach (PointLineStrip strip in g._linestrips)
                         {
                             *(PrimitiveHeader*)address = strip.Header; address += 3;
                             foreach (Facepoint f in strip._points)
+                            {
                                 WriteFacepoint(f, g, ref address);
+                            }
                         }
+                    }
+
                     if (g._lines.Count != 0)
                     {
                         *(PrimitiveHeader*)address = g.LineHeader; address += 3;
@@ -884,13 +1027,17 @@ namespace BrawlLib.Modeling
                     }
                 }
                 else //Write the original primitives read from the model
+                {
                     for (int i = 0; i < g._headers.Count; i++)
                     {
                         *(PrimitiveHeader*)address = g._headers[i];
                         address += 3;
                         foreach (Facepoint point in g._facePoints[i])
+                        {
                             WriteFacepoint(point, g, ref address);
+                        }
                     }
+                }
             }
         }
 
@@ -900,11 +1047,15 @@ namespace BrawlLib.Modeling
         internal void WriteFacepoint(Facepoint f, PrimitiveGroup g, ref VoidPtr address)
         {
             foreach (FacepointAttribute d in _descList)
+            {
                 switch (d._attr)
                 {
                     case GXAttribute.PosNrmMtxId:
                         if (d._type == XFDataFormat.Direct)
+                        {
                             *(byte*)address++ = (byte)(3 * g._nodes.IndexOf(f.NodeID));
+                        }
+
                         break;
                     case GXAttribute.Tex0MtxId:
                     case GXAttribute.Tex1MtxId:
@@ -919,7 +1070,10 @@ namespace BrawlLib.Modeling
                             int texId = d._attr - GXAttribute.Tex0MtxId;
                             byte value = (byte)(3 * g._nodes.IndexOf(f.NodeID));
                             if (!UseIdentityTexMtx[texId])
+                            {
                                 value += 30;
+                            }
+
                             *(byte*)address++ = value;
                         }
                         break;
@@ -1002,6 +1156,7 @@ namespace BrawlLib.Modeling
                         }
                         break;
                 }
+            }
         }
 
         #endregion
@@ -1030,12 +1185,14 @@ namespace BrawlLib.Modeling
 
                 //There are no texture matrices without a position/normal matrix also
                 for (int i = 0; i < 8; i++)
+                {
                     if (HasTextureMatrix[i])
                     {
                         _descList.Add(new FacepointAttribute((GXAttribute)(i + 1), XFDataFormat.Direct));
                         _fpStride++;
                         _arrayFlags.SetHasTexMatrix(i, true);
                     }
+                }
             }
             if (indices[0] > -1 && _faceData[0] != null) //Positions
             {
@@ -1048,7 +1205,7 @@ namespace BrawlLib.Modeling
                 //    _fpStride += linker._vertices[indices[0]]._dstStride;
                 //}
                 //else
-                    _fpStride += (int)fmt - 1;
+                _fpStride += (int)fmt - 1;
             }
             if (indices[1] > -1 && _faceData[1] != null) //Normals
             {
@@ -1061,9 +1218,10 @@ namespace BrawlLib.Modeling
                 //    _fpStride += linker._normals[indices[1]]._dstStride;
                 //}
                 //else
-                    _fpStride += (int)fmt - 1;
+                _fpStride += (int)fmt - 1;
             }
             for (int i = 2; i < 4; i++)
+            {
                 if (indices[i] > -1 && _faceData[i] != null) //Colors
                 {
                     _arrayFlags.SetHasColor(i - 2, true);
@@ -1077,9 +1235,12 @@ namespace BrawlLib.Modeling
                     //    _fpStride +=  linker._colors[indices[i]]._dstStride;
                     //}
                     //else
-                        _fpStride += (int)fmt - 1;
+                    _fpStride += (int)fmt - 1;
                 }
+            }
+
             for (int i = 4; i < 12; i++)
+            {
                 if (indices[i] > -1 && _faceData[i] != null) //UVs
                 {
                     _arrayFlags.SetHasUVs(i - 4, true);
@@ -1091,8 +1252,9 @@ namespace BrawlLib.Modeling
                     //    _fpStride += linker._uvs[indices[i]]._dstStride;
                     //}
                     //else
-                        _fpStride += (int)fmt - 1;
+                    _fpStride += (int)fmt - 1;
                 }
+            }
         }
 
         /// <summary>
@@ -1122,6 +1284,7 @@ namespace BrawlLib.Modeling
             uint tex7 = 0;
 
             foreach (FacepointAttribute attrPtr in _descList)
+            {
                 switch (attrPtr._attr)
                 {
                     case GXAttribute.PosNrmMtxId:
@@ -1159,18 +1322,18 @@ namespace BrawlLib.Modeling
 
                     case GXAttribute.Normal:
                         if (attrPtr._type != XFDataFormat.None)
-                        { 
+                        {
                             nrm = (uint)attrPtr._type;
-                            nrmFmt = XFNormalFormat.XYZ; 
-                        } 
+                            nrmFmt = XFNormalFormat.XYZ;
+                        }
                         break;
 
                     case GXAttribute.NBT:
                         if (attrPtr._type != XFDataFormat.None)
                         {
-                            nrm = (uint)attrPtr._type; 
-                            nrmFmt = XFNormalFormat.NBT; 
-                        } 
+                            nrm = (uint)attrPtr._type;
+                            nrmFmt = XFNormalFormat.NBT;
+                        }
                         break;
 
                     case GXAttribute.Color0: col0 = (uint)attrPtr._type; numColors += (col0 != 0 ? 1 : 0); break;
@@ -1185,6 +1348,7 @@ namespace BrawlLib.Modeling
                     case GXAttribute.Tex6: tex6 = (uint)attrPtr._type; numUVs += (tex6 != 0 ? 1 : 0); break;
                     case GXAttribute.Tex7: tex7 = (uint)attrPtr._type; numUVs += (tex7 != 0 ? 1 : 0); break;
                 }
+            }
 
             vertexSpecs = new XFVertexSpecs(numColors, numUVs, nrmFmt);
             vertexFormat = new CPVertexFormat(
@@ -1201,36 +1365,50 @@ namespace BrawlLib.Modeling
             for (int i = 0; i < 12; i++)
             {
                 if (polygon._manager._faceData[i] != null)
+                {
                     switch (i)
                     {
                         case 0: //Positions
                             if (linker._vertices != null && linker._vertices.Count != 0 && polygon._elementIndices[0] != -1)
+                            {
                                 if ((vert = linker._vertices[polygon._elementIndices[0]]) != null)
+                                {
                                     _fmtList.Add(new VertexAttributeFormat(
                                         GXAttribute.Position,
                                         (GXCompType)vert._type,
                                         (GXCompCnt)(vert._hasZ ? 1 : 0),
                                         (byte)vert._scale));
+                                }
+                            }
+
                             break;
                         case 1: //Normals
                             vert = null;
                             if (linker._normals != null && linker._normals.Count != 0 && polygon._elementIndices[1] != -1)
+                            {
                                 if ((vert = linker._normals[polygon._elementIndices[1]]) != null)
+                                {
                                     _fmtList.Add(new VertexAttributeFormat(
                                         GXAttribute.Normal,
                                         (GXCompType)vert._type,
                                         GXCompCnt.NrmXYZ,
                                         (byte)vert._scale));
+                                }
+                            }
+
                             break;
                         case 2: //Color 1
                         case 3: //Color 2
                             col = null;
                             if (linker._colors != null && linker._colors.Count != 0 && polygon._elementIndices[i] != -1 && (col = linker._colors[polygon._elementIndices[i]]) != null)
+                            {
                                 _fmtList.Add(new VertexAttributeFormat(
                                     (GXAttribute)((int)GXAttribute.Color0 + (i - 2)),
                                     (GXCompType)col._outType,
                                     (GXCompCnt)(col._hasAlpha ? 1 : 0),
                                     0));
+                            }
+
                             break;
                         case 4: //Tex 1
                         case 5: //Tex 2
@@ -1242,14 +1420,20 @@ namespace BrawlLib.Modeling
                         case 11: //Tex 8
                             vert = null;
                             if (linker._uvs != null && linker._uvs.Count != 0 && polygon._elementIndices[i] != -1)
+                            {
                                 if ((vert = linker._uvs[polygon._elementIndices[i]]) != null)
+                                {
                                     _fmtList.Add(new VertexAttributeFormat(
                                         (GXAttribute)((int)GXAttribute.Tex0 + (i - 4)),
                                         (GXCompType)vert._type,
                                         GXCompCnt.TexST,
                                         (byte)vert._scale));
+                                }
+                            }
+
                             break;
                     }
+                }
             }
         }
 
@@ -1296,7 +1480,9 @@ namespace BrawlLib.Modeling
             uint tx7Frac = 0;
 
             if (_fmtList != null)
+            {
                 foreach (VertexAttributeFormat list in _fmtList)
+                {
                     switch (list._attr)
                     {
                         case GXAttribute.Position:
@@ -1367,11 +1553,13 @@ namespace BrawlLib.Modeling
                             tx7Frac = list._frac;
                             break;
                     }
-            
-            MDL0PolygonDefs* Defs = (MDL0PolygonDefs*)polygon->DefList;
-            Defs->UVATA = (uint)ShiftUVATA(posCnt, posType, posFrac, nrmCnt, nrmType, c0Cnt, c0Type, c1Cnt, c1Type, tx0Cnt, tx0Type, tx0Frac, nrmId3);
-            Defs->UVATB = (uint)ShiftUVATB(tx1Cnt, tx1Type, tx1Frac, tx2Cnt, tx2Type, tx2Frac, tx3Cnt, tx3Type, tx3Frac, tx4Cnt, tx4Type);
-            Defs->UVATC = (uint)ShiftUVATC(tx4Frac, tx5Cnt, tx5Type, tx5Frac, tx6Cnt, tx6Type, tx6Frac, tx7Cnt, tx7Type, tx7Frac);
+                }
+            }
+
+            MDL0PolygonDefs* Defs = polygon->DefList;
+            Defs->UVATA = ShiftUVATA(posCnt, posType, posFrac, nrmCnt, nrmType, c0Cnt, c0Type, c1Cnt, c1Type, tx0Cnt, tx0Type, tx0Frac, nrmId3);
+            Defs->UVATB = ShiftUVATB(tx1Cnt, tx1Type, tx1Frac, tx2Cnt, tx2Type, tx2Frac, tx3Cnt, tx3Type, tx3Frac, tx4Cnt, tx4Type);
+            Defs->UVATC = ShiftUVATC(tx4Frac, tx5Cnt, tx5Type, tx5Frac, tx6Cnt, tx6Type, tx6Frac, tx7Cnt, tx7Type, tx7Frac);
         }
 
         #endregion
@@ -1381,84 +1569,84 @@ namespace BrawlLib.Modeling
         //Vertex Format Lo Shift
         public uint ShiftVtxLo(uint pmidx, uint t76543210midx, uint pos, uint nrm, uint col0, uint col1)
         {
-            return ((((uint)(pmidx)) << 0) |
-                    (((uint)(t76543210midx)) << 1) |
-                    (((uint)(pos)) << 9) |
-                    (((uint)(nrm)) << 11) |
-                    (((uint)(col0)) << 13) |
-                    (((uint)(col1)) << 15));
+            return ((pmidx << 0) |
+                    (t76543210midx << 1) |
+                    (pos << 9) |
+                    (nrm << 11) |
+                    (col0 << 13) |
+                    (col1 << 15));
         }
 
         //Vertex Format Hi Shift
         public uint ShiftVtxHi(uint tex0, uint tex1, uint tex2, uint tex3, uint tex4, uint tex5, uint tex6, uint tex7)
         {
-            return ((((uint)(tex0)) << 0) |
-                    (((uint)(tex1)) << 2) |
-                    (((uint)(tex2)) << 4) |
-                    (((uint)(tex3)) << 6) |
-                    (((uint)(tex4)) << 8) |
-                    (((uint)(tex5)) << 10) |
-                    (((uint)(tex6)) << 12) |
-                    (((uint)(tex7)) << 14));
+            return ((tex0 << 0) |
+                    (tex1 << 2) |
+                    (tex2 << 4) |
+                    (tex3 << 6) |
+                    (tex4 << 8) |
+                    (tex5 << 10) |
+                    (tex6 << 12) |
+                    (tex7 << 14));
         }
 
         //XF Specs Shift
         public uint ShiftXFSpecs(uint host_colors, uint host_normal, uint host_textures)
         {
-            return ((((uint)(host_colors)) << 0) |
-                    (((uint)(host_normal)) << 2) |
-                    (((uint)(host_textures)) << 4));
+            return ((host_colors << 0) |
+                    (host_normal << 2) |
+                    (host_textures << 4));
         }
 
         //UVAT Group A Shift
         public uint ShiftUVATA(uint posCnt, uint posFmt, uint posShft, uint nrmCnt, uint nrmFmt, uint Col0Cnt, uint Col0Fmt, uint Col1Cnt, uint Col1Fmt, uint tex0Cnt, uint tex0Fmt, uint tex0Shft, uint normalIndex3)
         {
-            return ((((uint)(posCnt)) << 0) |
-                    (((uint)(posFmt)) << 1) |
-                    (((uint)(posShft)) << 4) |
-                    (((uint)(nrmCnt)) << 9) |
-                    (((uint)(nrmFmt)) << 10) |
-                    (((uint)(Col0Cnt)) << 13) |
-                    (((uint)(Col0Fmt)) << 14) |
-                    (((uint)(Col1Cnt)) << 17) |
-                    (((uint)(Col1Fmt)) << 18) |
-                    (((uint)(tex0Cnt)) << 21) |
-                    (((uint)(tex0Fmt)) << 22) |
-                    (((uint)(tex0Shft)) << 25) |
+            return ((posCnt << 0) |
+                    (posFmt << 1) |
+                    (posShft << 4) |
+                    (nrmCnt << 9) |
+                    (nrmFmt << 10) |
+                    (Col0Cnt << 13) |
+                    (Col0Fmt << 14) |
+                    (Col1Cnt << 17) |
+                    (Col1Fmt << 18) |
+                    (tex0Cnt << 21) |
+                    (tex0Fmt << 22) |
+                    (tex0Shft << 25) |
                     (((uint)(1)) << 30) | //Should always be 1
-                    (((uint)(normalIndex3)) << 31));
+                    (normalIndex3 << 31));
         }
 
         //UVAT Group B Shift
         public uint ShiftUVATB(uint tex1Cnt, uint tex1Fmt, uint tex1Shft, uint tex2Cnt, uint tex2Fmt, uint tex2Shft, uint tex3Cnt, uint tex3Fmt, uint tex3Shft, uint tex4Cnt, uint tex4Fmt)
         {
-            return ((((uint)(tex1Cnt)) << 0) |
-                    (((uint)(tex1Fmt)) << 1) |
-                    (((uint)(tex1Shft)) << 4) |
-                    (((uint)(tex2Cnt)) << 9) |
-                    (((uint)(tex2Fmt)) << 10) |
-                    (((uint)(tex2Shft)) << 13) |
-                    (((uint)(tex3Cnt)) << 18) |
-                    (((uint)(tex3Fmt)) << 19) |
-                    (((uint)(tex3Shft)) << 22) |
-                    (((uint)(tex4Cnt)) << 27) |
-                    (((uint)(tex4Fmt)) << 28) |
+            return ((tex1Cnt << 0) |
+                    (tex1Fmt << 1) |
+                    (tex1Shft << 4) |
+                    (tex2Cnt << 9) |
+                    (tex2Fmt << 10) |
+                    (tex2Shft << 13) |
+                    (tex3Cnt << 18) |
+                    (tex3Fmt << 19) |
+                    (tex3Shft << 22) |
+                    (tex4Cnt << 27) |
+                    (tex4Fmt << 28) |
                     (((uint)(1)) << 31)); //Should always be 1
         }
 
         //UVAT Group C Shift
         public uint ShiftUVATC(uint tex4Shft, uint tex5Cnt, uint tex5Fmt, uint tex5Shft, uint tex6Cnt, uint tex6Fmt, uint tex6Shft, uint tex7Cnt, uint tex7Fmt, uint tex7Shft)
         {
-            return ((((uint)(tex4Shft)) << 0) |
-                    (((uint)(tex5Cnt)) << 5) |
-                    (((uint)(tex5Fmt)) << 6) |
-                    (((uint)(tex5Shft)) << 9) |
-                    (((uint)(tex6Cnt)) << 14) |
-                    (((uint)(tex6Fmt)) << 15) |
-                    (((uint)(tex6Shft)) << 18) |
-                    (((uint)(tex7Cnt)) << 23) |
-                    (((uint)(tex7Fmt)) << 24) |
-                    (((uint)(tex7Shft)) << 27));
+            return ((tex4Shft << 0) |
+                    (tex5Cnt << 5) |
+                    (tex5Fmt << 6) |
+                    (tex5Shft << 9) |
+                    (tex6Cnt << 14) |
+                    (tex6Fmt << 15) |
+                    (tex6Shft << 18) |
+                    (tex7Cnt << 23) |
+                    (tex7Fmt << 24) |
+                    (tex7Shft << 27));
         }
         #endregion
 
@@ -1468,14 +1656,28 @@ namespace BrawlLib.Modeling
         {
             _renderStride = 0;
             for (int i = 0; i < 2; i++)
+            {
                 if (_faceData[i] != null)
+                {
                     _renderStride += 12;
+                }
+            }
+
             for (int i = 2; i < 4; i++)
+            {
                 if (_faceData[i] != null)
+                {
                     _renderStride += 4;
+                }
+            }
+
             for (int i = 4; i < 12; i++)
+            {
                 if (_faceData[i] != null)
+                {
                     _renderStride += 8;
+                }
+            }
         }
 
         /// <summary>
@@ -1489,7 +1691,9 @@ namespace BrawlLib.Modeling
             for (int x = 0; x < 12; x++)
             {
                 if (poly._elementIndices[x] < 0 && x != 0)
+                {
                     continue;
+                }
 
                 switch (x)
                 {
@@ -1502,7 +1706,10 @@ namespace BrawlLib.Modeling
                             {
                                 ushort id = *pIndex++;
                                 if (id < _vertices.Count && id >= 0)
+                                {
                                     f._vertex = _vertices[id];
+                                }
+
                                 f._vertexIndex = f._vertex._facepoints[0]._vertexIndex;
                             }
                         }
@@ -1510,18 +1717,27 @@ namespace BrawlLib.Modeling
                     case 1:
                         Vector3* pIn1 = (Vector3*)_faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
+                        {
                             _facepoints[i]._normalIndex = Array.IndexOf(poly._normalNode.Normals, *pIn1++);
+                        }
+
                         break;
                     case 2:
                     case 3:
                         RGBAPixel* pIn2 = (RGBAPixel*)_faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
+                        {
                             _facepoints[i]._colorIndices[x - 2] = Array.IndexOf(poly._colorSet[x - 2].Colors, *pIn2++);
+                        }
+
                         break;
                     default:
                         Vector2* pIn3 = (Vector2*)_faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
+                        {
                             _facepoints[i]._UVIndices[x - 4] = Array.IndexOf(poly._uvSet[x - 4].Points, *pIn3++);
+                        }
+
                         break;
                 }
             }
@@ -1544,25 +1760,38 @@ namespace BrawlLib.Modeling
                     Facepoint f = _facepoints[i] = new Facepoint() { _index = i };
                     f._vertexIndex = *pIndex++;
                     if (f._vertexIndex < _vertices.Count && f._vertexIndex >= 0)
+                    {
                         f._vertex = _vertices[f._vertexIndex];
+                    }
                 }
             }
             else if (_vertices != null)
+            {
                 foreach (Vertex3 v in _vertices)
+                {
                     for (int i = 0; i < v._faceDataIndices.Count; i++)
+                    {
                         _facepoints[v._faceDataIndices[i]] = v._facepoints[i];
+                    }
+                }
+            }
 
             for (int x = 1; x < 12; x++)
             {
                 if (_faceData[x] == null || (!isModelImport && !_changed[x]))
+                {
                     continue;
+                }
 
                 switch (x)
                 {
                     case 1:
                         Vector3* pIn1 = (Vector3*)_faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
+                        {
                             _facepoints[i]._normalIndex = Array.IndexOf(GetNormals(false), *pIn1++);
+                        }
+
                         break;
                     case 2:
                     case 3:
@@ -1570,22 +1799,35 @@ namespace BrawlLib.Modeling
                         if (isModelImport)
                         {
                             if (Collada._importOptions._useOneNode)
+                            {
                                 for (int i = 0; i < _pointCount; i++)
+                                {
                                     _facepoints[i]._colorIndices[x - 2] = Array.IndexOf(Collada._importOptions._singleColorNodeEntries, *pIn2++);
+                                }
+                            }
                             else
+                            {
                                 for (int i = 0; i < _pointCount; i++)
+                                {
                                     _facepoints[i]._colorIndices[x - 2] = Array.IndexOf(((MDL0ObjectNode)((MDL0Node)Collada.CurrentModel)._objList[_newClrObj[x - 2]])._manager.GetColors(x - 2, false), *pIn2++).ClampMin(0);
+                                }
+                            }
                         }
                         else
                         {
                             for (int i = 0; i < _pointCount; i++)
+                            {
                                 _facepoints[i]._colorIndices[x - 2] = Array.IndexOf(GetColors(x - 2, false), *pIn2++).ClampMin(0);
+                            }
                         }
                         break;
                     default:
                         Vector2* pIn3 = (Vector2*)_faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
+                        {
                             _facepoints[i]._UVIndices[x - 4] = Array.IndexOf(GetUVs(x - 4, false), *pIn3++);
+                        }
+
                         break;
                 }
             }
@@ -1595,16 +1837,24 @@ namespace BrawlLib.Modeling
         public void Unweight(bool updateAssets)
         {
             if (_vertices != null)
+            {
                 foreach (Vertex3 v in _vertices)
+                {
                     v.Unweight(updateAssets);
+                }
+            }
         }
 
         public void Weight()
         {
             //Weight vertices
             if (_vertices != null)
+            {
                 foreach (Vertex3 v in _vertices)
+                {
                     v.Weight();
+                }
+            }
 
             //Update graphics buffer with weighted data on next render
             _dirty[0] = true;
@@ -1616,48 +1866,74 @@ namespace BrawlLib.Modeling
             _dirty[index] = false;
 
             if (_faceData[index] == null || _vertices == null || _vertices.Count == 0)
+            {
                 return;
+            }
 
             //Set starting address
             byte* pOut = (byte*)_graphicsBuffer.Address;
             for (int i = 0; i < index; i++)
+            {
                 if (_faceData[i] != null)
+                {
                     if (i < 2)
+                    {
                         pOut += 12;
+                    }
                     else if (i < 4)
+                    {
                         pOut += 4;
+                    }
                     else
+                    {
                         pOut += 8;
+                    }
+                }
+            }
 
             int v;
             if (index == 0) //Vertices
             {
                 ushort* pIndex = (ushort*)_indices.Address;
                 for (int i = 0; i < _pointCount; i++, pOut += _renderStride)
+                {
                     if ((v = *pIndex++) < _vertices.Count && v >= 0)
+                    {
                         *(Vector3*)pOut = _vertices[v].WeightedPosition;
+                    }
+                }
             }
             else if (index == 1) //Normals
             {
                 ushort* pIndex = (ushort*)_indices.Address;
                 Vector3* pIn = (Vector3*)_faceData[index].Address;
                 for (int i = 0; i < _pointCount; i++, pOut += _renderStride)
+                {
                     if ((v = *pIndex++) < _vertices.Count && v >= 0)
+                    {
                         *(Vector3*)pOut = *pIn++ * _vertices[v].GetMatrix().GetRotationMatrix();
+                    }
                     else
+                    {
                         *(Vector3*)pOut = *pIn++;
+                    }
+                }
             }
             else if (index < 4) //Colors
             {
                 RGBAPixel* pIn = (RGBAPixel*)_faceData[index].Address;
                 for (int i = 0; i < _pointCount; i++, pOut += _renderStride)
+                {
                     *(RGBAPixel*)pOut = *pIn++;
+                }
             }
             else //UVs
             {
                 Vector2* pIn = (Vector2*)_faceData[index].Address;
                 for (int i = 0; i < _pointCount; i++, pOut += _renderStride)
+                {
                     *(Vector2*)pOut = *pIn++;
+                }
             }
         }
 
@@ -1678,20 +1954,28 @@ namespace BrawlLib.Modeling
             {
                 _graphicsBuffer = new UnsafeBuffer(bufferSize);
                 for (int i = 0; i < 12; i++)
+                {
                     _dirty[i] = true;
+                }
             }
 
             //Update streams before binding
             for (int i = 0; i < 12; i++)
+            {
                 if (_dirty[i])
+                {
                     UpdateStream(i);
+                }
+            }
         }
 
         public unsafe void BindStream()
         {
             byte* pData = (byte*)_graphicsBuffer.Address;
             for (int i = 0; i < 12; i++)
+            {
                 if (_faceData[i] != null)
+                {
                     switch (i)
                     {
                         case 0:
@@ -1718,6 +2002,8 @@ namespace BrawlLib.Modeling
                             pData += 8;
                             break;
                     }
+                }
+            }
         }
 
         internal unsafe void DetachStreams()
@@ -1736,7 +2022,7 @@ namespace BrawlLib.Modeling
             GL.DisableClientState(ArrayCap.NormalArray);
             GL.DisableClientState(ArrayCap.ColorArray);
         }
-        
+
         public void DisableTextures()
         {
             GL.DisableClientState(ArrayCap.TextureCoordArray);
@@ -1745,20 +2031,30 @@ namespace BrawlLib.Modeling
 
         public void ApplyTexture(TexSourceRow source)
         {
-            int texId = source >= TexSourceRow.TexCoord0 ? (int)(source - TexSourceRow.TexCoord0) : -1 - (int)source;
+            int texId = source >= TexSourceRow.TexCoord0 ? source - TexSourceRow.TexCoord0 : -1 - (int)source;
             texId = texId < 0 ? 0 : texId;
 
             if ((texId >= 0) && (_faceData[texId + 4] != null))
             {
                 byte* pData = (byte*)_graphicsBuffer.Address;
                 for (int i = 0; i < texId + 4; i++)
+                {
                     if (_faceData[i] != null)
+                    {
                         if (i < 2)
+                        {
                             pData += 12;
+                        }
                         else if (i < 4)
+                        {
                             pData += 4;
+                        }
                         else
+                        {
                             pData += 8;
+                        }
+                    }
+                }
 
                 GL.EnableClientState(ArrayCap.TextureCoordArray);
                 GL.TexCoordPointer(2, TexCoordPointerType.Float, _renderStride, (IntPtr)pData);
@@ -1768,11 +2064,19 @@ namespace BrawlLib.Modeling
         public void RenderMesh()
         {
             if (_triangles != null)
+            {
                 _triangles.Render();
+            }
+
             if (_lines != null)
+            {
                 _lines.Render();
+            }
+
             if (_points != null)
+            {
                 _points.Render();
+            }
         }
 
         public static Color DefaultVertColor = Color.FromArgb(0, 128, 0);
@@ -1784,23 +2088,29 @@ namespace BrawlLib.Modeling
         public static float NormalLength = 0.5f;
 
         public const float _nodeRadius = 0.05f;
-        const float _nodeAdj = 0.01f;
+        private const float _nodeAdj = 0.01f;
 
         public bool _render = true;
         public bool _renderNormals = true;
-        
+
         internal unsafe void RenderVertices(IMatrixNode singleBind, IBoneNode weightTarget, bool depthPass, GLCamera camera)
         {
             if (!_render)
+            {
                 return;
+            }
 
             foreach (Vertex3 v in _vertices)
             {
                 Color w = v._highlightColor != Color.Transparent ? v._highlightColor : (singleBind != null && singleBind == weightTarget) ? Color.Red : v.GetWeightColor(weightTarget);
                 if (w != Color.Transparent)
+                {
                     GL.Color4(w);
+                }
                 else
+                {
                     GL.Color4(DefaultVertColor);
+                }
 
                 float d = camera.GetPoint().DistanceTo(v.WeightedPosition);
                 GL.PointSize(d <= 0 ? 1 : (3000.0f / d).Clamp(1.0f, depthPass ? 8.0f : 5.0f) * (depthPass ? 1.5f : 1.2f));
@@ -1813,15 +2123,21 @@ namespace BrawlLib.Modeling
         internal unsafe void RenderNormals()
         {
             if (!_render || _faceData[1] == null)
+            {
                 return;
+            }
 
             ushort* indices = (ushort*)_indices.Address;
             Vector3* normals = (Vector3*)_faceData[1].Address;
 
             if (_normColor != Color.Transparent)
+            {
                 GL.Color4(_normColor);
+            }
             else
+            {
                 GL.Color4(DefaultNormColor);
+            }
 
             for (int i = 0; i < _pointCount; i++)
             {
@@ -1831,7 +2147,7 @@ namespace BrawlLib.Modeling
 
                 Vertex3 n = _vertices[indices[i]];
                 Vector3 w = normals[i] * n.GetMatrix().GetRotationMatrix();
-                
+
                 Matrix m = Matrix.TransformMatrix(new Vector3(NormalLength), new Vector3(), n.WeightedPosition);
                 GL.MultMatrix((float*)&m);
 
@@ -1852,7 +2168,9 @@ namespace BrawlLib.Modeling
         public unsafe void PositionsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
             if (obj == null || _vertices == null)
+            {
                 return;
+            }
 
             SetAssetChanged(0);
             obj._forceRebuild = true;
@@ -1862,14 +2180,19 @@ namespace BrawlLib.Modeling
             if (obj._vertexNode != null)
             {
                 if (obj._vertexNode._objects.Count == 1 && !forceNewNode)
+                {
                     node = obj._vertexNode;
+                }
                 else
                 {
                     node = new MDL0VertexNode();
                     obj.Model.VertexGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._vertexNode._objects.Contains(obj))
+                    {
                         obj._vertexNode._objects.Remove(obj);
+                    }
+
                     obj._vertexNode = node;
                     obj._vertexNode._objects.Add(obj);
                     obj._elementIndices[0] = (short)obj._vertexNode.Index;
@@ -1908,7 +2231,9 @@ namespace BrawlLib.Modeling
         public unsafe void NormalsChanged(MDL0ObjectNode obj, bool forceNewNode = false)
         {
             if (obj == null || _faceData[1] == null)
+            {
                 return;
+            }
 
             SetAssetChanged(1);
             obj._forceRebuild = true;
@@ -1918,14 +2243,19 @@ namespace BrawlLib.Modeling
             if (obj._normalNode != null)
             {
                 if (obj._normalNode._objects.Count == 1 && !forceNewNode)
+                {
                     node = obj._normalNode;
+                }
                 else
                 {
                     node = new MDL0NormalNode();
                     obj.Model.NormalGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._normalNode._objects.Contains(obj))
+                    {
                         obj._normalNode._objects.Remove(obj);
+                    }
+
                     obj._normalNode = node;
                     obj._normalNode._objects.Add(obj);
                     obj._elementIndices[1] = (short)obj._normalNode.Index;
@@ -1951,8 +2281,12 @@ namespace BrawlLib.Modeling
             node.Normals = GetNormals(true);
             Vector3* pData = (Vector3*)_faceData[1].Address;
             foreach (Vertex3 v in _vertices)
+            {
                 for (int i = 0; i < v._faceDataIndices.Count; i++)
+                {
                     v._facepoints[i]._normalIndex = Array.IndexOf(node.Normals, pData[v._faceDataIndices[i]]);
+                }
+            }
         }
 
         public unsafe void ColorsChanged(MDL0ObjectNode obj, int id, bool forceNewNode = false)
@@ -1960,7 +2294,9 @@ namespace BrawlLib.Modeling
             id = id.Clamp(0, 1);
 
             if (obj == null || _faceData[id + 2] == null)
+            {
                 return;
+            }
 
             SetAssetChanged(id + 2);
             obj._forceRebuild = true;
@@ -1970,14 +2306,19 @@ namespace BrawlLib.Modeling
             if (obj._colorSet[id] != null)
             {
                 if (obj._colorSet[id]._objects.Count == 1 && !forceNewNode)
+                {
                     node = obj._colorSet[id];
+                }
                 else
                 {
                     node = new MDL0ColorNode();
                     obj.Model.ColorGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._colorSet[id]._objects.Contains(obj))
+                    {
                         obj._colorSet[id]._objects.Remove(obj);
+                    }
+
                     obj._colorSet[id] = node;
                     obj._colorSet[id]._objects.Add(obj);
                     obj._elementIndices[id + 2] = (short)obj._colorSet[id].Index;
@@ -2003,8 +2344,12 @@ namespace BrawlLib.Modeling
             node.Colors = GetColors(id, true);
             RGBAPixel* pData = (RGBAPixel*)_faceData[id + 2].Address;
             foreach (Vertex3 v in _vertices)
+            {
                 for (int i = 0; i < v._faceDataIndices.Count; i++)
+                {
                     v._facepoints[i]._colorIndices[id] = Array.IndexOf(node.Colors, pData[v._faceDataIndices[i]]);
+                }
+            }
         }
 
         public unsafe void UVsChanged(MDL0ObjectNode obj, int id, bool forceNewNode = false)
@@ -2012,7 +2357,9 @@ namespace BrawlLib.Modeling
             id = id.Clamp(0, 7);
 
             if (obj == null || _faceData[id + 4] == null)
+            {
                 return;
+            }
 
             SetAssetChanged(id + 4);
             obj._forceRebuild = true;
@@ -2022,14 +2369,19 @@ namespace BrawlLib.Modeling
             if (obj._uvSet[id] != null)
             {
                 if (obj._uvSet[id]._objects.Count == 1 && !forceNewNode)
+                {
                     node = obj._uvSet[id];
+                }
                 else
                 {
                     node = new MDL0UVNode();
                     obj.Model.UVGroup.AddChild(node);
                     node.Name = node.FindName("Regenerated");
                     if (obj._uvSet[id]._objects.Contains(obj))
+                    {
                         obj._uvSet[id]._objects.Remove(obj);
+                    }
+
                     obj._uvSet[id] = node;
                     obj._uvSet[id]._objects.Add(obj);
                     obj._elementIndices[id + 4] = (short)obj._uvSet[id].Index;
@@ -2055,8 +2407,12 @@ namespace BrawlLib.Modeling
             node.Points = GetUVs(id, true);
             Vector2* pData = (Vector2*)_faceData[id + 4].Address;
             foreach (Vertex3 v in _vertices)
+            {
                 for (int i = 0; i < v._faceDataIndices.Count; i++)
+                {
                     v._facepoints[i]._UVIndices[id] = Array.IndexOf(node.Points, pData[v._faceDataIndices[i]]);
+                }
+            }
         }
     }
 

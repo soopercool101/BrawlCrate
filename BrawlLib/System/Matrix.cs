@@ -1,8 +1,8 @@
-﻿using System.Runtime.InteropServices;
-using BrawlLib.Modeling;
-using System.Runtime.Serialization;
+﻿using BrawlLib.Modeling;
 using BrawlLib.Wii.Models;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 
 namespace System
 {
@@ -13,40 +13,44 @@ namespace System
         public static readonly Matrix Identity = ScaleMatrix(1.0f, 1.0f, 1.0f);
 
         [NonSerialized]
-        fixed float _values[16];
+        private readonly float _values[16];
 
         public Matrix(SerializationInfo info, StreamingContext ctxt)
         {
             for (int i = 0; i < 16; i++)
-                Data[i] = info.GetSingle(String.Format("_values[{0}]", i));
+            {
+                Data[i] = info.GetSingle(string.Format("_values[{0}]", i));
+            }
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             for (int i = 0; i < 16; i++)
-                info.AddValue(String.Format("_values[{0}]", i), Data[i]);
+            {
+                info.AddValue(string.Format("_values[{0}]", i), Data[i]);
+            }
         }
 
         #region Value Management
 
-        public Vector4 Row0 { get { return *(Vector4*)&Data[0]; } set { *(Vector4*)&Data[0] = value; } }
-        public Vector4 Row1 { get { return *(Vector4*)&Data[4]; } set { *(Vector4*)&Data[4] = value; } }
-        public Vector4 Row2 { get { return *(Vector4*)&Data[8]; } set { *(Vector4*)&Data[8] = value; } }
-        public Vector4 Row3 { get { return *(Vector4*)&Data[12]; } set { *(Vector4*)&Data[12] = value; } }
+        public Vector4 Row0 { get => *(Vector4*)&Data[0]; set => *(Vector4*)&Data[0] = value; }
+        public Vector4 Row1 { get => *(Vector4*)&Data[4]; set => *(Vector4*)&Data[4] = value; }
+        public Vector4 Row2 { get => *(Vector4*)&Data[8]; set => *(Vector4*)&Data[8] = value; }
+        public Vector4 Row3 { get => *(Vector4*)&Data[12]; set => *(Vector4*)&Data[12] = value; }
 
-        public Vector4 Col0 
+        public Vector4 Col0
         {
-            get { return new Vector4(Data[0], Data[4], Data[8], Data[12]); } 
-            set 
+            get => new Vector4(Data[0], Data[4], Data[8], Data[12]);
+            set
             {
                 Data[0] = value._x;
                 Data[4] = value._y;
                 Data[8] = value._z;
                 Data[12] = value._w;
-            } 
+            }
         }
         public Vector4 Col1
         {
-            get { return new Vector4(Data[1], Data[5], Data[9], Data[13]); } 
+            get => new Vector4(Data[1], Data[5], Data[9], Data[13]);
             set
             {
                 Data[1] = value._x;
@@ -57,7 +61,7 @@ namespace System
         }
         public Vector4 Col2
         {
-            get { return new Vector4(Data[2], Data[6], Data[10], Data[14]); } 
+            get => new Vector4(Data[2], Data[6], Data[10], Data[14]);
             set
             {
                 Data[2] = value._x;
@@ -68,7 +72,7 @@ namespace System
         }
         public Vector4 Col3
         {
-            get { return new Vector4(Data[3], Data[7], Data[11], Data[15]); } 
+            get => new Vector4(Data[3], Data[7], Data[11], Data[15]);
             set
             {
                 Data[3] = value._x;
@@ -81,82 +85,82 @@ namespace System
         /// <summary>
         /// Row 1, Column 1
         /// </summary>
-        public float M11 { get { return Data[0]; } set { Data[0] = value; } }
+        public float M11 { get => Data[0]; set => Data[0] = value; }
         /// <summary>
         /// Row 1, Column 2
         /// </summary>
-        public float M12 { get { return Data[1]; } set { Data[1] = value; } }
+        public float M12 { get => Data[1]; set => Data[1] = value; }
         /// <summary>
         /// Row 1, Column 3
         /// </summary>
-        public float M13 { get { return Data[2]; } set { Data[2] = value; } }
+        public float M13 { get => Data[2]; set => Data[2] = value; }
         /// <summary>
         /// Row 1, Column 4
         /// </summary>
-        public float M14 { get { return Data[3]; } set { Data[3] = value; } }
+        public float M14 { get => Data[3]; set => Data[3] = value; }
 
         /// <summary>
         /// Row 2, Column 1
         /// </summary>
-        public float M21 { get { return Data[4]; } set { Data[4] = value; } }
+        public float M21 { get => Data[4]; set => Data[4] = value; }
         /// <summary>
         /// Row 2, Column 2
         /// </summary>
-        public float M22 { get { return Data[5]; } set { Data[5] = value; } }
+        public float M22 { get => Data[5]; set => Data[5] = value; }
         /// <summary>
         /// Row 2, Column 3
         /// </summary>
-        public float M23 { get { return Data[6]; } set { Data[6] = value; } }
+        public float M23 { get => Data[6]; set => Data[6] = value; }
         /// <summary>
         /// Row 2, Column 4
         /// </summary>
-        public float M24 { get { return Data[7]; } set { Data[7] = value; } }
+        public float M24 { get => Data[7]; set => Data[7] = value; }
 
         /// <summary>
         /// Row 3, Column 1
         /// </summary>
-        public float M31 { get { return Data[8]; } set { Data[8] = value; } }
+        public float M31 { get => Data[8]; set => Data[8] = value; }
         /// <summary>
         /// Row 3, Column 2
         /// </summary>
-        public float M32 { get { return Data[9]; } set { Data[9] = value; } }
+        public float M32 { get => Data[9]; set => Data[9] = value; }
         /// <summary>
         /// Row 3, Column 3
         /// </summary>
-        public float M33 { get { return Data[10]; } set { Data[10] = value; } }
+        public float M33 { get => Data[10]; set => Data[10] = value; }
         /// <summary>
         /// Row 3, Column 4
         /// </summary>
-        public float M34 { get { return Data[11]; } set { Data[11] = value; } }
+        public float M34 { get => Data[11]; set => Data[11] = value; }
 
         /// <summary>
         /// Row 4, Column 1
         /// </summary>
-        public float M41 { get { return Data[12]; } set { Data[12] = value; } }
+        public float M41 { get => Data[12]; set => Data[12] = value; }
         /// <summary>
         /// Row 4, Column 2
         /// </summary>
-        public float M42 { get { return Data[13]; } set { Data[13] = value; } }
+        public float M42 { get => Data[13]; set => Data[13] = value; }
         /// <summary>
         /// Row 4, Column 3
         /// </summary>
-        public float M43 { get { return Data[14]; } set { Data[14] = value; } }
+        public float M43 { get => Data[14]; set => Data[14] = value; }
         /// <summary>
         /// Row 4, Column 4
         /// </summary>
-        public float M44 { get { return Data[15]; } set { Data[15] = value; } }
+        public float M44 { get => Data[15]; set => Data[15] = value; }
 
-        public float* Data { get { fixed (float* ptr = _values)return ptr; } }
+        public float* Data { get { fixed (float* ptr = _values) { return ptr; } } }
 
         public float this[int x, int y]
         {
-            get { return Data[(y << 2) + x]; }
-            set { Data[(y << 2) + x] = value; }
+            get => Data[(y << 2) + x];
+            set => Data[(y << 2) + x] = value;
         }
         public float this[int index]
         {
-            get { return Data[index]; }
-            set { Data[index] = value; }
+            get => Data[index];
+            set => Data[index] = value;
         }
 
         #endregion
@@ -171,7 +175,9 @@ namespace System
             Matrix m = this;
             float* p = (float*)&m;
             for (int i = 0; i < 16; i++)
+            {
                 p[i] = values[i];
+            }
         }
 
         public Matrix(params float[] values)
@@ -179,7 +185,9 @@ namespace System
             Matrix m = this;
             float* p = (float*)&m;
             for (int i = 0; i < 16; i++)
+            {
                 p[i] = values[i];
+            }
         }
 
         public Matrix Reverse()
@@ -187,22 +195,33 @@ namespace System
             Matrix m;
             float* pOut = (float*)&m;
             fixed (float* p = _values)
+            {
                 for (int y = 0; y < 4; y++)
+                {
                     for (int x = 0; x < 4; x++)
+                    {
                         *pOut++ = p[(x << 2) + y];
+                    }
+                }
+            }
+
             return m;
         }
 
         public Vector3 GetPoint()
         {
             fixed (float* p = _values)
+            {
                 return new Vector3(p[12], p[13], p[14]);
+            }
         }
 
         public Vector3 GetScale()
         {
             fixed (float* p = _values)
+            {
                 return new Vector3(p[0], p[5], p[10]);
+            }
         }
 
         public static Matrix ScaleMatrix(Vector3 scale) { return ScaleMatrix(scale._x, scale._y, scale._z); }
@@ -241,16 +260,26 @@ namespace System
         {
             Matrix m = new Matrix();
             foreach (BoneWeight w in weights)
+            {
                 if (w.Bone != null)
+                {
                     m += (w.Bone.Matrix * w.Bone.InverseBindMatrix) * w.Weight;
+                }
+            }
+
             return m;
         }
         public static Matrix ReverseInfluenceMatrix(List<BoneWeight> weights)
         {
             Matrix m = new Matrix();
             foreach (BoneWeight w in weights)
+            {
                 if (w.Bone != null)
+                {
                     m += (w.Bone.InverseMatrix * w.Bone.BindMatrix) * w.Weight;
+                }
+            }
+
             return m;
         }
 
@@ -355,7 +384,7 @@ namespace System
             p[8] = -siny;
             p[9] = sinx * cosy;
             p[10] = cosx * cosy;
-        
+
             return m;
         }
 
@@ -425,7 +454,10 @@ namespace System
             float* dPtr = (float*)&nv;
             float* p0 = (float*)&m, p1 = p0 + 4, p2 = p0 + 8, p3 = p0 + 12;
             for (int i = 0; i < 4; i++)
+            {
                 dPtr[i] = (p0[i] * v._x) + (p1[i] * v._y) + (p2[i] * v._z) + (p3[i] * v._w);
+            }
+
             return nv;
         }
 
@@ -434,7 +466,9 @@ namespace System
             fixed (float* dPtr = _values)
             {
                 for (int i = 0; i < 16; i++)
+                {
                     dPtr[i] *= p;
+                }
             }
         }
 
@@ -451,13 +485,18 @@ namespace System
             int index = 0;
             float val;
             for (int b = 0; b < 16; b += 4)
+            {
                 for (int a = 0; a < 4; a++)
                 {
                     val = 0.0f;
                     for (int x = b, y = a; y < 16; y += 4)
+                    {
                         val += s1[x++] * s2[y];
+                    }
+
                     d[index++] = val;
                 }
+            }
 
             return dm;
         }
@@ -467,7 +506,10 @@ namespace System
             float* dPtr = (float*)&m1;
             float* sPtr = (float*)&m2;
             for (int i = 0; i < 16; i++)
+            {
                 *dPtr++ += *sPtr++;
+            }
+
             return m1;
         }
         public static Matrix operator -(Matrix m1, Matrix m2)
@@ -475,7 +517,10 @@ namespace System
             float* dPtr = (float*)&m1;
             float* sPtr = (float*)&m2;
             for (int i = 0; i < 16; i++)
+            {
                 *dPtr++ -= *sPtr++;
+            }
+
             return m1;
         }
         //public static Matrix operator /(Matrix m1, Matrix m2)
@@ -490,35 +535,49 @@ namespace System
         {
             float* p = (float*)&m;
             for (int i = 0; i < 16; i++)
+            {
                 *p++ *= f;
+            }
+
             return m;
         }
         public static Matrix operator /(Matrix m, float f)
         {
             float* p = (float*)&m;
             for (int i = 0; i < 16; i++)
+            {
                 *p++ /= f;
+            }
+
             return m;
         }
-        public static bool operator ==(Matrix m1, Matrix m2) 
+        public static bool operator ==(Matrix m1, Matrix m2)
         {
             float* p1 = (float*)&m1;
             float* p2 = (float*)&m2;
 
             for (int i = 0; i < 16; i++)
+            {
                 if (*p1++ != *p2++)
+                {
                     return false;
+                }
+            }
 
             return true;
         }
-        public static bool operator !=(Matrix m1, Matrix m2) 
+        public static bool operator !=(Matrix m1, Matrix m2)
         {
             float* p1 = (float*)&m1;
             float* p2 = (float*)&m2;
 
             for (int i = 0; i < 16; i++)
+            {
                 if (*p1++ != *p2++)
+                {
                     return true;
+                }
+            }
 
             return false;
         }
@@ -526,7 +585,11 @@ namespace System
         {
             float* p = (float*)&m;
             int i = 0;
-            while (i++ < 16) *p = -*p++;
+            while (i++ < 16)
+            {
+                *p = -*p++;
+            }
+
             return m;
         }
 
@@ -627,7 +690,7 @@ namespace System
 
             if (scale > 0.0f)
             {
-                sqrt = 0.5f / (float)Math.Sqrt((double)scale);
+                sqrt = 0.5f / (float)Math.Sqrt(scale);
 
                 result._x = (p[9] - p[6]) * sqrt;
                 result._y = (p[2] - p[8]) * sqrt;
@@ -724,12 +787,13 @@ namespace System
         public Vector4 GetQuaternion3()
         {
             Matrix m = this;
-            Vector4 q = new Vector4();
-
-            q._w = (float)Math.Sqrt(Math.Max(0, 1 + m[0, 0] + m[1, 1] + m[2, 2])) / 2;
-            q._x = (float)Math.Sqrt(Math.Max(0, 1 + m[0, 0] - m[1, 1] - m[2, 2])) / 2;
-            q._y = (float)Math.Sqrt(Math.Max(0, 1 - m[0, 0] + m[1, 1] - m[2, 2])) / 2;
-            q._z = (float)Math.Sqrt(Math.Max(0, 1 - m[0, 0] - m[1, 1] + m[2, 2])) / 2;
+            Vector4 q = new Vector4
+            {
+                _w = (float)Math.Sqrt(Math.Max(0, 1 + m[0, 0] + m[1, 1] + m[2, 2])) / 2,
+                _x = (float)Math.Sqrt(Math.Max(0, 1 + m[0, 0] - m[1, 1] - m[2, 2])) / 2,
+                _y = (float)Math.Sqrt(Math.Max(0, 1 - m[0, 0] + m[1, 1] - m[2, 2])) / 2,
+                _z = (float)Math.Sqrt(Math.Max(0, 1 - m[0, 0] - m[1, 1] + m[2, 2])) / 2
+            };
             q._x *= Math.Sign(q._x * (m[2, 1] - m[1, 2]));
             q._y *= Math.Sign(q._y * (m[0, 2] - m[2, 0]));
             q._z *= Math.Sign(q._z * (m[1, 0] - m[0, 1]));
@@ -744,14 +808,18 @@ namespace System
             fixed (float* p = _values)
             {
                 y = (float)Math.Asin(-p[2]);
-                if ((Maths._halfPif - (float)Math.Abs(y)) < 0.0001f)
+                if ((Maths._halfPif - Math.Abs(y)) < 0.0001f)
                 {
                     //Gimbal lock, occurs when the y rotation falls on pi/2 or -pi/2
                     z = 0.0f;
                     if (y > 0)
+                    {
                         x = (float)Math.Atan2(p[4], p[8]);
+                    }
                     else
+                    {
                         x = (float)Math.Atan2(p[4], -p[8]);
+                    }
                 }
                 else
                 {
@@ -796,14 +864,14 @@ namespace System
         internal void Scale(float x, float y, float z)
         {
             Matrix m = ScaleMatrix(x, y, z);
-            this.Multiply(m);
+            Multiply(m);
         }
 
         internal void Rotate(Vector3 v) { Rotate(v._x, v._y, v._z); }
         internal void Rotate(float x, float y, float z)
         {
             Matrix m = RotationMatrix(x, y, z);
-            this.Multiply(m);
+            Multiply(m);
         }
 
         public static explicit operator Matrix(Matrix34 m)
@@ -1202,9 +1270,9 @@ namespace System
             int[] pivotIdx = { -1, -1, -1, -1 };
 
             // convert the matrix to an array for easy looping
-            float[,] inverse = { { mat.Row0._x, mat.Row0._y, mat.Row0._z, mat.Row0._w }, 
-                                 { mat.Row1._x, mat.Row1._y, mat.Row1._z, mat.Row1._w }, 
-                                 { mat.Row2._x, mat.Row2._y, mat.Row2._z, mat.Row2._w }, 
+            float[,] inverse = { { mat.Row0._x, mat.Row0._y, mat.Row0._z, mat.Row0._w },
+                                 { mat.Row1._x, mat.Row1._y, mat.Row1._z, mat.Row1._w },
+                                 { mat.Row2._x, mat.Row2._y, mat.Row2._z, mat.Row2._w },
                                  { mat.Row3._x, mat.Row3._y, mat.Row3._z, mat.Row3._w } };
             int icol = 0;
             int irow = 0;
@@ -1213,8 +1281,11 @@ namespace System
                 // Find the largest pivot value
                 float maxPivot = 0.0f;
                 for (int j = 0; j < 4; j++)
+                {
                     if (pivotIdx[j] != 0)
+                    {
                         for (int k = 0; k < 4; ++k)
+                        {
                             if (pivotIdx[k] == -1)
                             {
                                 float absVal = System.Math.Abs(inverse[j, k]);
@@ -1226,18 +1297,25 @@ namespace System
                                 }
                             }
                             else if (pivotIdx[k] > 0)
+                            {
                                 return mat;
+                            }
+                        }
+                    }
+                }
 
                 ++(pivotIdx[icol]);
 
                 // Swap rows over so pivot is on diagonal
                 if (irow != icol)
+                {
                     for (int k = 0; k < 4; ++k)
                     {
                         float f = inverse[irow, k];
                         inverse[irow, k] = inverse[icol, k];
                         inverse[icol, k] = f;
                     }
+                }
 
                 rowIdx[i] = irow;
                 colIdx[i] = icol;
@@ -1254,18 +1332,24 @@ namespace System
                 float oneOverPivot = 1.0f / pivot;
                 inverse[icol, icol] = 1.0f;
                 for (int k = 0; k < 4; ++k)
+                {
                     inverse[icol, k] *= oneOverPivot;
+                }
 
                 // Do elimination of non-diagonal elements
                 for (int j = 0; j < 4; ++j)
+                {
                     // check this isn't on the diagonal
                     if (icol != j)
                     {
                         float f = inverse[j, icol];
                         inverse[j, icol] = 0.0f;
                         for (int k = 0; k < 4; ++k)
+                        {
                             inverse[j, k] -= inverse[icol, k] * f;
+                        }
                     }
+                }
             }
 
             for (int j = 3; j >= 0; --j)
@@ -1284,14 +1368,17 @@ namespace System
             mat.Row1 = new Vector4(inverse[1, 0], inverse[1, 1], inverse[1, 2], inverse[1, 3]);
             mat.Row2 = new Vector4(inverse[2, 0], inverse[2, 1], inverse[2, 2], inverse[2, 3]);
             mat.Row3 = new Vector4(inverse[3, 0], inverse[3, 1], inverse[3, 2], inverse[3, 3]);
-            
+
             return mat;
         }
 
         public override bool Equals(object obj)
         {
             if (obj is Matrix)
+            {
                 return ((Matrix)obj == this);
+            }
+
             return false;
         }
 
@@ -1302,7 +1389,7 @@ namespace System
 
         public override string ToString()
         {
-            return String.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11], this[12], this[13], this[14], this[15]);
+            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11], this[12], this[13], this[14], this[15]);
         }
     }
 }

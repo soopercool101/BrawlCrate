@@ -12,7 +12,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct VIS0v3
+    internal unsafe struct VIS0v3
     {
         public const string Tag = "VIS0";
         public const int Size = 0x24;
@@ -39,26 +39,26 @@ namespace BrawlLib.SSBBTypes
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct VIS0v4
+    internal unsafe struct VIS0v4
     {
         public const string Tag = "VIS0";
         public const int Size = 0x28;
@@ -71,7 +71,7 @@ namespace BrawlLib.SSBBTypes
         public bushort _numFrames;
         public bushort _numEntries;
         public bint _loop;
-        
+
         public VIS0v4(int size, ushort frameCount, ushort numEntries, bool loop)
         {
             _header._tag = Tag;
@@ -86,32 +86,32 @@ namespace BrawlLib.SSBBTypes
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
         public VoidPtr UserData
         {
-            get { return _userDataOffset == 0 ? null : Address + _userDataOffset; }
-            set { _userDataOffset = (int)(VoidPtr)value - (int)Address; }
+            get => _userDataOffset == 0 ? null : Address + _userDataOffset;
+            set => _userDataOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct VIS0Entry
+    internal unsafe struct VIS0Entry
     {
         public const int Size = 8;
 
@@ -124,17 +124,17 @@ namespace BrawlLib.SSBBTypes
             _flags = (int)flags;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public VoidPtr Data { get { return Address + 8; } }
+        public VoidPtr Data => Address + 8;
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
 
-        public VIS0Flags Flags { get { return (VIS0Flags)(int)_flags; } set { _flags = (int)value; } }
+        public VIS0Flags Flags { get => (VIS0Flags)(int)_flags; set => _flags = (int)value; }
     }
 }

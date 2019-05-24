@@ -25,18 +25,18 @@ namespace BrawlLib.OpenGL
         public bool _scrolling = false;
         public int _lastX, _lastY;
 
-        public bool Enabled { get { return _enabled; } set { _enabled = value; } }
+        public bool Enabled { get => _enabled; set => _enabled = value; }
         public ViewportProjection ViewType
         {
-            get { return _type; }
-            set { SetProjectionType(value); }
+            get => _type;
+            set => SetProjectionType(value);
         }
-        public Vector4 Percentages { get { return _percentages; } }
-        public BGImageType BackgroundImageType { get { return _bgType; } set { _bgType = value; Invalidate(); } }
-        public GLCamera Camera { get { return _camera; } set { _camera = value; } }
+        public Vector4 Percentages => _percentages;
+        public BGImageType BackgroundImageType { get => _bgType; set { _bgType = value; Invalidate(); } }
+        public GLCamera Camera { get => _camera; set => _camera = value; }
         public Rectangle Region
         {
-            get { return _region; }
+            get => _region;
             set
             {
                 _region = value;
@@ -46,11 +46,13 @@ namespace BrawlLib.OpenGL
         }
         public Image BackgroundImage
         {
-            get { return _backImg; }
+            get => _backImg;
             set
             {
                 if (_backImg != null)
+                {
                     _backImg.Dispose();
+                }
 
                 _backImg = value;
                 _updateImage = true;
@@ -60,7 +62,7 @@ namespace BrawlLib.OpenGL
         }
         public Color BackgroundColor
         {
-            get { return _backColor; }
+            get => _backColor;
             set { _backColor = Color.FromArgb(0, value.R, value.G, value.B); Invalidate(); }
         }
 
@@ -73,14 +75,18 @@ namespace BrawlLib.OpenGL
             _percentages = new Vector4(xMin.Clamp(0.0f, 1.0f), yMin.Clamp(0.0f, 1.0f), xMax.Clamp(0.0f, 1.0f), yMax.Clamp(0.0f, 1.0f));
 
             if (resize)
+            {
                 Resize();
+            }
         }
         internal void SetPercentageIndex(int p, float v, bool resize = true)
         {
             _percentages[p.Clamp(0, 3)] = v.Clamp(0.0f, 1.0f);
 
             if (resize)
+            {
                 Resize();
+            }
         }
 
         public void ResetCamera() { _camera.Reset(); }
@@ -129,19 +135,23 @@ namespace BrawlLib.OpenGL
         public void Invalidate()
         {
             if (OnInvalidate != null)
+            {
                 OnInvalidate();
+            }
         }
         public void Resize()
         {
             if (_owner != null)
+            {
                 Resize(_owner.Width, _owner.Height);
+            }
         }
         public void Resize(int width, int height)
         {
-            int xMin = (int)((float)width  * _percentages[0] + 0.5f),
-                yMin = (int)((float)height * _percentages[1] + 0.5f),
-                xMax = (int)((float)width  * _percentages[2] + 0.5f),
-                yMax = (int)((float)height * _percentages[3] + 0.5f);
+            int xMin = (int)(width * _percentages[0] + 0.5f),
+                yMin = (int)(height * _percentages[1] + 0.5f),
+                xMax = (int)(width * _percentages[2] + 0.5f),
+                yMax = (int)(height * _percentages[3] + 0.5f);
 
             _region = new Rectangle(xMin, yMin, xMax - xMin, yMax - yMin);
             _camera.SetDimensions(_region.Width, _region.Height);
@@ -169,47 +179,38 @@ namespace BrawlLib.OpenGL
                 Camera._nearZ = -100000;
                 Camera._farZ = 100000;
                 Camera._ortho = true;
-                Camera._restrictXRot = 
+                Camera._restrictXRot =
                 Camera._restrictYRot = _type != ViewportProjection.Orthographic;
                 Camera._defaultScale = GetDefaultScale();
                 Camera._defaultRotate = GetDefaultRotate();
             }
             if (!diff)
+            {
                 Camera.Reset();
+            }
+
             Camera.CalculateProjection();
             Invalidate();
         }
 
-        public static GLViewport DefaultPerspective
+        public static GLViewport DefaultPerspective => new GLViewport()
         {
-            get
-            {
-                return new GLViewport()
-                {
-                    _type = ViewportProjection.Perspective,
-                    _camera = new GLCamera(),
-                    _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
-                };
-            }
-        }
-        public static GLViewport BaseOrtho
+            _type = ViewportProjection.Perspective,
+            _camera = new GLCamera(),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+        };
+        public static GLViewport BaseOrtho => new GLViewport()
         {
-            get
+            _type = ViewportProjection.Orthographic,
+            _camera = new GLCamera()
             {
-                return new GLViewport()
-                {
-                    _type = ViewportProjection.Orthographic,
-                    _camera = new GLCamera()
-                    {
-                        _ortho = true,
-                        _nearZ = -10000.0f,
-                        _farZ = 10000.0f,
-                        _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
-                    },
-                    _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
-                };
-            }
-        }
+                _ortho = true,
+                _nearZ = -10000.0f,
+                _farZ = 10000.0f,
+                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
+            },
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+        };
         public static GLViewport DefaultOrtho
         {
             get

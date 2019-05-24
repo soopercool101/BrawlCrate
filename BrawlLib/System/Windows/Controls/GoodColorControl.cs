@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using BrawlLib.Imaging;
+using System.Drawing;
 using System.Drawing.Drawing2D;
-using BrawlLib.Imaging;
 using System.Text;
 
 namespace System.Windows.Forms
@@ -33,187 +33,187 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.lblR = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numB = new System.Windows.Forms.NumericUpDown();
-            this.numG = new System.Windows.Forms.NumericUpDown();
-            this.numR = new System.Windows.Forms.NumericUpDown();
-            this.numH = new System.Windows.Forms.NumericUpDown();
-            this.numS = new System.Windows.Forms.NumericUpDown();
-            this.numV = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numA = new System.Windows.Forms.NumericUpDown();
-            this.lblA = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlColorBox = new System.Windows.Forms.BufferedPanel();
-            this.pnlColorBar = new System.Windows.Forms.BufferedPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnlAlpha = new System.Windows.Forms.BufferedPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtColorCode = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numA)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.SuspendLayout();
+            lblR = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            numB = new System.Windows.Forms.NumericUpDown();
+            numG = new System.Windows.Forms.NumericUpDown();
+            numR = new System.Windows.Forms.NumericUpDown();
+            numH = new System.Windows.Forms.NumericUpDown();
+            numS = new System.Windows.Forms.NumericUpDown();
+            numV = new System.Windows.Forms.NumericUpDown();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            numA = new System.Windows.Forms.NumericUpDown();
+            lblA = new System.Windows.Forms.Label();
+            panel1 = new System.Windows.Forms.Panel();
+            pnlColorBox = new System.Windows.Forms.BufferedPanel();
+            pnlColorBar = new System.Windows.Forms.BufferedPanel();
+            panel2 = new System.Windows.Forms.Panel();
+            pnlAlpha = new System.Windows.Forms.BufferedPanel();
+            panel3 = new System.Windows.Forms.Panel();
+            txtColorCode = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(numB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numA)).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            SuspendLayout();
             // 
             // lblR
             // 
-            this.lblR.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblR.Location = new System.Drawing.Point(3, 77);
-            this.lblR.Name = "lblR";
-            this.lblR.Size = new System.Drawing.Size(19, 20);
-            this.lblR.TabIndex = 2;
-            this.lblR.Text = "R";
-            this.lblR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblR.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblR.Location = new System.Drawing.Point(3, 77);
+            lblR.Name = "lblR";
+            lblR.Size = new System.Drawing.Size(19, 20);
+            lblR.TabIndex = 2;
+            lblR.Text = "R";
+            lblR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "B";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(3, 115);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(19, 20);
+            label1.TabIndex = 3;
+            label1.Text = "B";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "G";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(3, 96);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(19, 20);
+            label2.TabIndex = 4;
+            label2.Text = "G";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numB
             // 
-            this.numB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numB.Location = new System.Drawing.Point(23, 116);
-            this.numB.Maximum = new decimal(new int[] {
+            numB.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numB.Location = new System.Drawing.Point(23, 116);
+            numB.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numB.Name = "numB";
-            this.numB.Size = new System.Drawing.Size(47, 20);
-            this.numB.TabIndex = 5;
+            numB.Name = "numB";
+            numB.Size = new System.Drawing.Size(47, 20);
+            numB.TabIndex = 5;
             // 
             // numG
             // 
-            this.numG.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numG.Location = new System.Drawing.Point(23, 97);
-            this.numG.Maximum = new decimal(new int[] {
+            numG.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numG.Location = new System.Drawing.Point(23, 97);
+            numG.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numG.Name = "numG";
-            this.numG.Size = new System.Drawing.Size(47, 20);
-            this.numG.TabIndex = 6;
+            numG.Name = "numG";
+            numG.Size = new System.Drawing.Size(47, 20);
+            numG.TabIndex = 6;
             // 
             // numR
             // 
-            this.numR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numR.Location = new System.Drawing.Point(23, 78);
-            this.numR.Maximum = new decimal(new int[] {
+            numR.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numR.Location = new System.Drawing.Point(23, 78);
+            numR.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numR.Name = "numR";
-            this.numR.Size = new System.Drawing.Size(47, 20);
-            this.numR.TabIndex = 7;
+            numR.Name = "numR";
+            numR.Size = new System.Drawing.Size(47, 20);
+            numR.TabIndex = 7;
             // 
             // numH
             // 
-            this.numH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numH.Location = new System.Drawing.Point(23, 6);
-            this.numH.Maximum = new decimal(new int[] {
+            numH.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numH.Location = new System.Drawing.Point(23, 6);
+            numH.Maximum = new decimal(new int[] {
             360,
             0,
             0,
             0});
-            this.numH.Name = "numH";
-            this.numH.Size = new System.Drawing.Size(47, 20);
-            this.numH.TabIndex = 13;
+            numH.Name = "numH";
+            numH.Size = new System.Drawing.Size(47, 20);
+            numH.TabIndex = 13;
             // 
             // numS
             // 
-            this.numS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numS.Location = new System.Drawing.Point(23, 25);
-            this.numS.Name = "numS";
-            this.numS.Size = new System.Drawing.Size(47, 20);
-            this.numS.TabIndex = 12;
+            numS.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numS.Location = new System.Drawing.Point(23, 25);
+            numS.Name = "numS";
+            numS.Size = new System.Drawing.Size(47, 20);
+            numS.TabIndex = 12;
             // 
             // numV
             // 
-            this.numV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numV.Location = new System.Drawing.Point(23, 44);
-            this.numV.Name = "numV";
-            this.numV.Size = new System.Drawing.Size(47, 20);
-            this.numV.TabIndex = 11;
+            numV.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numV.Location = new System.Drawing.Point(23, 44);
+            numV.Name = "numV";
+            numV.Size = new System.Drawing.Size(47, 20);
+            numV.TabIndex = 11;
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "S";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Location = new System.Drawing.Point(3, 24);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(19, 20);
+            label3.TabIndex = 10;
+            label3.Text = "S";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "V";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label4.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new System.Drawing.Point(3, 43);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(19, 20);
+            label4.TabIndex = 9;
+            label4.Text = "V";
+            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "H";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label5.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Location = new System.Drawing.Point(3, 5);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(19, 20);
+            label5.TabIndex = 8;
+            label5.Text = "H";
+            label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // numA
             // 
-            this.numA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.numA.Location = new System.Drawing.Point(23, 135);
-            this.numA.Maximum = new decimal(new int[] {
+            numA.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            numA.Location = new System.Drawing.Point(23, 135);
+            numA.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numA.Name = "numA";
-            this.numA.Size = new System.Drawing.Size(47, 20);
-            this.numA.TabIndex = 15;
-            this.numA.Value = new decimal(new int[] {
+            numA.Name = "numA";
+            numA.Size = new System.Drawing.Size(47, 20);
+            numA.TabIndex = 15;
+            numA.Value = new decimal(new int[] {
             255,
             0,
             0,
@@ -221,125 +221,125 @@ namespace System.Windows.Forms
             // 
             // lblA
             // 
-            this.lblA.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblA.Location = new System.Drawing.Point(3, 134);
-            this.lblA.Name = "lblA";
-            this.lblA.Size = new System.Drawing.Size(19, 20);
-            this.lblA.TabIndex = 14;
-            this.lblA.Text = "A";
-            this.lblA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblA.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblA.Location = new System.Drawing.Point(3, 134);
+            lblA.Name = "lblA";
+            lblA.Size = new System.Drawing.Size(19, 20);
+            lblA.TabIndex = 14;
+            lblA.Text = "A";
+            lblA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pnlColorBox);
-            this.panel1.Controls.Add(this.pnlColorBar);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 187);
-            this.panel1.TabIndex = 16;
+            panel1.Controls.Add(pnlColorBox);
+            panel1.Controls.Add(pnlColorBar);
+            panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(217, 187);
+            panel1.TabIndex = 16;
             // 
             // pnlColorBox
             // 
-            this.pnlColorBox.BackColor = System.Drawing.Color.Transparent;
-            this.pnlColorBox.Location = new System.Drawing.Point(3, 3);
-            this.pnlColorBox.Name = "pnlColorBox";
-            this.pnlColorBox.Size = new System.Drawing.Size(180, 180);
-            this.pnlColorBox.TabIndex = 0;
-            this.pnlColorBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlColorBox_Paint);
-            this.pnlColorBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlColorBox_MouseDown);
-            this.pnlColorBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlColorBox_MouseMove);
-            this.pnlColorBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlColorBox_MouseUp);
+            pnlColorBox.BackColor = System.Drawing.Color.Transparent;
+            pnlColorBox.Location = new System.Drawing.Point(3, 3);
+            pnlColorBox.Name = "pnlColorBox";
+            pnlColorBox.Size = new System.Drawing.Size(180, 180);
+            pnlColorBox.TabIndex = 0;
+            pnlColorBox.Paint += new System.Windows.Forms.PaintEventHandler(pnlColorBox_Paint);
+            pnlColorBox.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlColorBox_MouseDown);
+            pnlColorBox.MouseMove += new System.Windows.Forms.MouseEventHandler(pnlColorBox_MouseMove);
+            pnlColorBox.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlColorBox_MouseUp);
             // 
             // pnlColorBar
             // 
-            this.pnlColorBar.BackColor = System.Drawing.Color.Transparent;
-            this.pnlColorBar.Location = new System.Drawing.Point(189, 3);
-            this.pnlColorBar.Name = "pnlColorBar";
-            this.pnlColorBar.Size = new System.Drawing.Size(25, 180);
-            this.pnlColorBar.TabIndex = 1;
-            this.pnlColorBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlColorBar_Paint);
-            this.pnlColorBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlColorBar_MouseDown);
-            this.pnlColorBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlColorBar_MouseMove);
-            this.pnlColorBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlColorBar_MouseUp);
+            pnlColorBar.BackColor = System.Drawing.Color.Transparent;
+            pnlColorBar.Location = new System.Drawing.Point(189, 3);
+            pnlColorBar.Name = "pnlColorBar";
+            pnlColorBar.Size = new System.Drawing.Size(25, 180);
+            pnlColorBar.TabIndex = 1;
+            pnlColorBar.Paint += new System.Windows.Forms.PaintEventHandler(pnlColorBar_Paint);
+            pnlColorBar.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlColorBar_MouseDown);
+            pnlColorBar.MouseMove += new System.Windows.Forms.MouseEventHandler(pnlColorBar_MouseMove);
+            pnlColorBar.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlColorBar_MouseUp);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pnlAlpha);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(217, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(20, 187);
-            this.panel2.TabIndex = 17;
+            panel2.Controls.Add(pnlAlpha);
+            panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            panel2.Location = new System.Drawing.Point(217, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(20, 187);
+            panel2.TabIndex = 17;
             // 
             // pnlAlpha
             // 
-            this.pnlAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlAlpha.BackColor = System.Drawing.Color.Transparent;
-            this.pnlAlpha.Location = new System.Drawing.Point(3, 3);
-            this.pnlAlpha.Name = "pnlAlpha";
-            this.pnlAlpha.Size = new System.Drawing.Size(14, 180);
-            this.pnlAlpha.TabIndex = 2;
-            this.pnlAlpha.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlAlpha_Paint);
-            this.pnlAlpha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlAlpha_MouseDown);
-            this.pnlAlpha.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlAlpha_MouseMove);
-            this.pnlAlpha.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlAlpha_MouseUp);
+            pnlAlpha.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right);
+            pnlAlpha.BackColor = System.Drawing.Color.Transparent;
+            pnlAlpha.Location = new System.Drawing.Point(3, 3);
+            pnlAlpha.Name = "pnlAlpha";
+            pnlAlpha.Size = new System.Drawing.Size(14, 180);
+            pnlAlpha.TabIndex = 2;
+            pnlAlpha.Paint += new System.Windows.Forms.PaintEventHandler(pnlAlpha_Paint);
+            pnlAlpha.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlAlpha_MouseDown);
+            pnlAlpha.MouseMove += new System.Windows.Forms.MouseEventHandler(pnlAlpha_MouseMove);
+            pnlAlpha.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlAlpha_MouseUp);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtColorCode);
-            this.panel3.Controls.Add(this.numH);
-            this.panel3.Controls.Add(this.lblR);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.numA);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.lblA);
-            this.panel3.Controls.Add(this.numB);
-            this.panel3.Controls.Add(this.numG);
-            this.panel3.Controls.Add(this.numS);
-            this.panel3.Controls.Add(this.numR);
-            this.panel3.Controls.Add(this.numV);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(237, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(77, 187);
-            this.panel3.TabIndex = 18;
+            panel3.Controls.Add(txtColorCode);
+            panel3.Controls.Add(numH);
+            panel3.Controls.Add(lblR);
+            panel3.Controls.Add(label1);
+            panel3.Controls.Add(numA);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(lblA);
+            panel3.Controls.Add(numB);
+            panel3.Controls.Add(numG);
+            panel3.Controls.Add(numS);
+            panel3.Controls.Add(numR);
+            panel3.Controls.Add(numV);
+            panel3.Controls.Add(label5);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(label4);
+            panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Location = new System.Drawing.Point(237, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new System.Drawing.Size(77, 187);
+            panel3.TabIndex = 18;
             // 
             // txtColorCode
             // 
-            this.txtColorCode.Location = new System.Drawing.Point(6, 161);
-            this.txtColorCode.Name = "txtColorCode";
-            this.txtColorCode.Size = new System.Drawing.Size(64, 20);
-            this.txtColorCode.TabIndex = 16;
-            this.txtColorCode.Text = "000000FF";
-            this.txtColorCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtColorCode.TextChanged += new System.EventHandler(this.txtColorCode_TextChanged);
-            this.txtColorCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtColorCode_KeyPress);
+            txtColorCode.Location = new System.Drawing.Point(6, 161);
+            txtColorCode.Name = "txtColorCode";
+            txtColorCode.Size = new System.Drawing.Size(64, 20);
+            txtColorCode.TabIndex = 16;
+            txtColorCode.Text = "000000FF";
+            txtColorCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            txtColorCode.TextChanged += new System.EventHandler(txtColorCode_TextChanged);
+            txtColorCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtColorCode_KeyPress);
             // 
             // GoodColorControl
             // 
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(310, 187);
-            this.Name = "GoodColorControl";
-            this.Size = new System.Drawing.Size(314, 187);
-            ((System.ComponentModel.ISupportInitialize)(this.numB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numA)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.ResumeLayout(false);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            MinimumSize = new System.Drawing.Size(310, 187);
+            Name = "GoodColorControl";
+            Size = new System.Drawing.Size(314, 187);
+            ((System.ComponentModel.ISupportInitialize)(numB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numA)).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ResumeLayout(false);
 
         }
 
@@ -350,41 +350,37 @@ namespace System.Windows.Forms
 
         //private int _alpha = 255;
         private ARGBPixel _rgba;
+        private bool _squareGrabbing;
+        private int _squareX, _squareY;
+        private bool _barGrabbing;
+        private int _barY;
+        private bool _alphaGrabbing;
+        private int _alphaY;
+        private bool _updating;
 
-        bool _squareGrabbing;
-        int _squareX, _squareY;
-
-        bool _barGrabbing;
-        int _barY;
-
-        bool _alphaGrabbing;
-        int _alphaY;
-
-        bool _updating;
-
-        private NumericUpDown[] _boxes;
+        private readonly NumericUpDown[] _boxes;
 
         private int _brushH = -1;
-        private PathGradientBrush _squareBrush;
+        private readonly PathGradientBrush _squareBrush;
         //private GraphicsPath _squarePath;
-        private Color[] _boxColors = new Color[]{Color.Black, Color.White, Color.Black, Color.Black, Color.Black};
+        private readonly Color[] _boxColors = new Color[] { Color.Black, Color.White, Color.Black, Color.Black, Color.Black };
 
-        private LinearGradientBrush _barBrush;
-        private LinearGradientBrush _alphaBrush;
+        private readonly LinearGradientBrush _barBrush;
+        private readonly LinearGradientBrush _alphaBrush;
 
         public event EventHandler ColorChanged;
 
         private bool _showAlpha = true;
         public bool ShowAlpha
         {
-            get { return _showAlpha; }
-            set { panel2.Visible = numA.Visible = lblA.Visible = _showAlpha = value; }
+            get => _showAlpha;
+            set => panel2.Visible = numA.Visible = lblA.Visible = _showAlpha = value;
         }
 
         public Color Color
         {
-            get { return (Color)_rgba; }
-            set 
+            get => (Color)_rgba;
+            set
             {
                 _rgba = (ARGBPixel)value;
                 OnColorChanged(false);
@@ -408,20 +404,24 @@ namespace System.Windows.Forms
             //_squarePath.AddRectangle(r);
             //_squareBrush = new PathGradientBrush(_squarePath);
 
-            _squareBrush = new PathGradientBrush(new PointF[] { 
+            _squareBrush = new PathGradientBrush(new PointF[] {
                 new PointF(r.Width, 0),
                 new PointF(r.Width, r.Height),
                 new PointF(0, r.Height),
                 new PointF(0,0),
-                new PointF(r.Width, 0)});
-            _squareBrush.CenterPoint = new PointF(r.Width / 2, r.Height / 2);
+                new PointF(r.Width, 0)})
+            {
+                CenterPoint = new PointF(r.Width / 2, r.Height / 2)
+            };
 
             float p = r.Height / 6.0f / r.Height;
             _barBrush = new LinearGradientBrush(new Rectangle(0, 0, r.Width, r.Height), Color.Red, Color.Red, LinearGradientMode.Vertical);
 
-            ColorBlend blend = new ColorBlend();
-            blend.Colors = new Color[] { Color.Red, Color.Yellow, Color.Lime, Color.Cyan, Color.Blue, Color.Magenta, Color.Red };
-            blend.Positions = new float[] { 0, p, p * 2, p * 3, p * 4, p * 5, 1.0f };
+            ColorBlend blend = new ColorBlend
+            {
+                Colors = new Color[] { Color.Red, Color.Yellow, Color.Lime, Color.Cyan, Color.Blue, Color.Magenta, Color.Red },
+                Positions = new float[] { 0, p, p * 2, p * 3, p * 4, p * 5, 1.0f }
+            };
 
             _barBrush.InterpolationColors = blend;
 
@@ -431,7 +431,9 @@ namespace System.Windows.Forms
         protected void OnBoxChanged(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
 
             NumericUpDown box = sender as NumericUpDown;
             int value = (int)box.Value;
@@ -453,10 +455,14 @@ namespace System.Windows.Forms
                 _rgba.A = (byte)value;
                 txtColorCode.Text = _rgba.ToRGBAColorCode();
                 if (ColorChanged != null)
+                {
                     ColorChanged(this, null);
+                }
             }
             else
+            {
                 OnColorChanged(index >= 0 && index < 3);
+            }
         }
 
         protected virtual void OnColorChanged(bool hsvToRgb)
@@ -469,7 +475,9 @@ namespace System.Windows.Forms
                 _rgba.A = (byte)numA.Value;
             }
             else
+            {
                 _hsv = (HSVPixel)_rgba;
+            }
 
             numH.Value = _hsv.H;
             numS.Value = _hsv.S;
@@ -487,7 +495,9 @@ namespace System.Windows.Forms
             pnlColorBar.Invalidate();
 
             if (ColorChanged != null)
+            {
                 ColorChanged(this, null);
+            }
         }
 
         #region ColorBox
@@ -502,7 +512,9 @@ namespace System.Windows.Forms
         private void pnlColorBox_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 _squareGrabbing = false;
+            }
         }
         private void pnlColorBox_MouseMove(object sender, MouseEventArgs e)
         {
@@ -547,7 +559,9 @@ namespace System.Windows.Forms
             p.A = 255;
 
             using (Pen pen = new Pen((Color)p))
+            {
                 g.DrawEllipse(pen, r);
+            }
 
             r.X -= 1;
             r.Y -= 1;
@@ -556,7 +570,9 @@ namespace System.Windows.Forms
             p = p.Lighten(64);
 
             using (Pen pen = new Pen((Color)p))
+            {
                 g.DrawEllipse(pen, r);
+            }
         }
         #endregion
 
@@ -572,7 +588,9 @@ namespace System.Windows.Forms
         private void pnlColorBar_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
+            {
                 _barGrabbing = false;
+            }
         }
         private void pnlColorBar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -601,14 +619,18 @@ namespace System.Windows.Forms
             Rectangle r = new Rectangle(-1, y - 2, pnlColorBar.Width + 1, 4);
 
             using (Pen pen = new Pen((Color)p))
+            {
                 g.DrawRectangle(pen, r);
+            }
 
             r.Y += 1;
             r.Height -= 2;
             p = p.Lighten(64);
 
             using (Pen pen = new Pen((Color)p))
+            {
                 g.DrawRectangle(pen, r);
+            }
         }
         #endregion
 
@@ -625,7 +647,9 @@ namespace System.Windows.Forms
         private void pnlAlpha_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-            _alphaGrabbing = false;
+            {
+                _alphaGrabbing = false;
+            }
         }
         private void pnlAlpha_MouseMove(object sender, MouseEventArgs e)
         {
@@ -640,7 +664,9 @@ namespace System.Windows.Forms
                     txtColorCode.Text = _rgba.ToRGBAColorCode();
                     _updating = false;
                     if (ColorChanged != null)
+                    {
                         ColorChanged(this, null);
+                    }
                 }
             }
         }
@@ -658,7 +684,9 @@ namespace System.Windows.Forms
             Rectangle r = new Rectangle(-1, y - 2, pnlAlpha.Width + 1, 4);
 
             using (Pen pen = new Pen((Color)p))
+            {
                 g.DrawRectangle(pen, r);
+            }
 
             p.Lighten(64);
 
@@ -666,21 +694,30 @@ namespace System.Windows.Forms
             r.Height -= 2;
 
             using (Pen pen = new Pen((Color)p))
+            {
                 g.DrawRectangle(pen, r);
+            }
         }
 
         #endregion
 
-        readonly string _allowed = "0123456789abcdefABCDEF";
+        private readonly string _allowed = "0123456789abcdefABCDEF";
         private void txtColorCode_TextChanged(object sender, EventArgs e)
         {
             if (_updating)
+            {
                 return;
+            }
 
             string s = "";
             foreach (char c in txtColorCode.Text)
+            {
                 if (_allowed.IndexOf(c) >= 0)
+                {
                     s += c;
+                }
+            }
+
             s = s.Substring(0, s.Length.Clamp(0, 8));
 
             bool focused = txtColorCode.Focused;
@@ -689,7 +726,10 @@ namespace System.Windows.Forms
 
             _updating = true;
             if (txtColorCode.Text != s)
+            {
                 txtColorCode.Text = s;
+            }
+
             _rgba.R = s.Length >= 2 ? byte.Parse(s.Substring(0, 2), Globalization.NumberStyles.HexNumber) : (byte)0;
             _rgba.G = s.Length >= 4 ? byte.Parse(s.Substring(2, 2), Globalization.NumberStyles.HexNumber) : (byte)0;
             _rgba.B = s.Length >= 6 ? byte.Parse(s.Substring(4, 2), Globalization.NumberStyles.HexNumber) : (byte)0;
@@ -701,12 +741,14 @@ namespace System.Windows.Forms
             txtColorCode.SelectionStart = start;
             txtColorCode.SelectionLength = len;
             if (focused)
+            {
                 txtColorCode.Select();
+            }
         }
 
         private void txtColorCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char c = (char)e.KeyChar;
+            char c = e.KeyChar;
             TextBox box = txtColorCode;
 
             if (e.KeyChar == (char)Keys.Back && box.SelectionStart > 0)
@@ -718,7 +760,7 @@ namespace System.Windows.Forms
                 box.SelectionStart = start - 1;
                 e.Handled = true;
             }
-            else if ((!Char.IsControl(c) || e.KeyChar == (char)Keys.Delete) && box.SelectionStart < box.TextLength)
+            else if ((!char.IsControl(c) || e.KeyChar == (char)Keys.Delete) && box.SelectionStart < box.TextLength)
             {
                 if (_allowed.IndexOf(c) >= 0 || e.KeyChar == (char)Keys.Delete)
                 {

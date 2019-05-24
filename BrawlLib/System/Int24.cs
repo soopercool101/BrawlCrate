@@ -32,13 +32,16 @@ namespace System
 
         public int Value
         {
-            get { return ((((int)(_dat0 & 0x7F) << 16) | ((int)_dat1 << 8) | ((int)_dat2)) * (((_dat0 & 0x80) == 0x80) ? -1 : 1)); }
+            get => ((((_dat0 & 0x7F) << 16) | (_dat1 << 8) | _dat2) * (((_dat0 & 0x80) == 0x80) ? -1 : 1));
             set
             {
                 _dat2 = (byte)((value) & 0xFF);
                 _dat1 = (byte)((value >> 8) & 0xFF);
                 _dat0 = (byte)((value >> 16) & 0x7F);
-                if (value < 0) _dat0 |= 0x80;
+                if (value < 0)
+                {
+                    _dat0 |= 0x80;
+                }
             }
         }
 
@@ -52,7 +55,10 @@ namespace System
             _dat2 = (byte)((value) & 0xFF);
             _dat1 = (byte)((value >> 8) & 0xFF);
             _dat0 = (byte)((value >> 16) & 0x7F);
-            if (value < 0) _dat0 |= 0x80;
+            if (value < 0)
+            {
+                _dat0 |= 0x80;
+            }
         }
 
         public BInt24(byte v0, byte v1, byte v2)
@@ -62,6 +68,6 @@ namespace System
             _dat0 = v0;
         }
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

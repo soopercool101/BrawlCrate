@@ -11,10 +11,10 @@ namespace BrawlLib.Modeling.Triangle_Converter
         public uint _minStripLen;
         public bool _backwardSearch;
         public bool _pushCacheHits;
-        private bool useStrips;
-        private uint cacheSize;
-        private uint minStripLen;
-        private bool pushCacheHits;
+        private readonly bool useStrips;
+        private readonly uint cacheSize;
+        private readonly uint minStripLen;
+        private readonly bool pushCacheHits;
 
         public TriangleConverter(bool useStrips, uint cacheSize, uint minStripLen, bool pushCacheHits)
         {
@@ -61,10 +61,12 @@ namespace BrawlLib.Modeling.Triangle_Converter
                         int count = p.Indices.Count / 3;
                         faceCount += count;
                         for (int r = 0; r < count; r++)
+                        {
                             fpPrimitives.Add(new PointTriangle(
                                 points[remapData._impTable[p.Indices[r * 3 + 0]]],
                                 points[remapData._impTable[p.Indices[r * 3 + 1]]],
                                 points[remapData._impTable[p.Indices[r * 3 + 2]]]));
+                        }
                     }
                     else
                     {
@@ -78,12 +80,14 @@ namespace BrawlLib.Modeling.Triangle_Converter
             {
                 faceCount = (pointCount = points.Length) / 3;
                 for (int r = 0; r < faceCount; r++)
+                {
                     fpPrimitives.Add(new PointTriangle(
                         points[r * 3 + 0],
                         points[r * 3 + 1],
                         points[r * 3 + 2]));
+                }
             }
-             
+
             //Group primitives by each point's influence id
             fpPrimitives.Sort(PrimitiveClass.Compare);
             List<PrimitiveGroup> groups = new List<PrimitiveGroup>();
@@ -91,8 +95,13 @@ namespace BrawlLib.Modeling.Triangle_Converter
             {
                 bool added = false;
                 foreach (PrimitiveGroup g in groups)
+                {
                     if (added = g.TryAdd(p))
+                    {
                         break;
+                    }
+                }
+
                 if (!added)
                 {
                     PrimitiveGroup g = new PrimitiveGroup();

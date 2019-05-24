@@ -1,7 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RWSDSoundGroupWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -40,20 +40,23 @@ namespace BrawlCrate.NodeWrappers
         }
         private unsafe void Import()
         {
-            string path;
-            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out path) > 0)
+            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path) > 0)
             {
                 RSARFileAudioNode n;
 
                 if ((_resource.Parent as NW4RNode).VersionMinor >= 3)
+                {
                     n = new RWAVNode();
+                }
                 else
+                {
                     n = new WAVESoundNode();
+                }
 
                 _resource.AddChild(n);
                 n.Replace(path);
-                
-                BaseWrapper res = this.FindResource(n, true);
+
+                BaseWrapper res = FindResource(n, true);
                 res.EnsureVisible();
                 res.TreeView.SelectedNode = res;
             }

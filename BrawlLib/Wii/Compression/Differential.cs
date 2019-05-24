@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.Wii.Compression
 {
@@ -16,11 +16,13 @@ namespace BrawlLib.Wii.Compression
         {
             return 0;
         }
-        
+
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r, bool extendedFormat)
         {
-            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "Differential", String.Format("Compressing {0}, please wait...", r.Name), false))
+            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "Differential", string.Format("Compressing {0}, please wait...", r.Name), false))
+            {
                 return new Differential().Compress(srcAddr, srcLen, outStream, prog);
+            }
         }
         public static void Expand(CompressionHeader* header, VoidPtr dstAddress, int dstLen)
         {

@@ -1,13 +1,13 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.NoEditEntry)]
     public class NoEditEntryWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static NoEditEntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -18,7 +18,7 @@ namespace BrawlCrate.NodeWrappers
         }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            
+
         }
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
@@ -30,7 +30,7 @@ namespace BrawlCrate.NodeWrappers
     [NodeWrapper(ResourceType.NoEditFolder)]
     public class NoEditFolderWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static NoEditFolderWrapper()
         {
             _menu = new ContextMenuStrip();

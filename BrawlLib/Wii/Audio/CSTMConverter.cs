@@ -1,8 +1,5 @@
-﻿using System;
-using System.Audio;
-using BrawlLib.SSBBTypes;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBBTypes;
+using System;
 
 namespace BrawlLib.Wii.Audio
 {
@@ -22,7 +19,9 @@ namespace BrawlLib.Wii.Audio
             int channels = strmDataInfo._format._channels;
 
             if (strmDataInfo._format._encoding != (byte)WaveEncoding.ADPCM)
+            {
                 throw new NotImplementedException("CSTM export only supports ADPCM encoding.");
+            }
 
             // Get section sizes from the BRSTM - BCSTM is such a similar format that we can assume the sizes will match.
             int rstmSize = 0x40;
@@ -33,7 +32,8 @@ namespace BrawlLib.Wii.Audio
             //Create byte array
             byte[] array = new byte[rstmSize + infoSize + seekSize + dataSize];
 
-            fixed (byte* address = array) {
+            fixed (byte* address = array)
+            {
                 //Get section pointers
                 CSTMHeader* cstm = (CSTMHeader*)address;
                 CSTMINFOHeader* info = (CSTMINFOHeader*)((byte*)cstm + rstmSize);
@@ -53,7 +53,9 @@ namespace BrawlLib.Wii.Audio
                 IntPtr* adpcData = stackalloc IntPtr[channels];
                 CSTMADPCMInfo** pAdpcm = (CSTMADPCMInfo**)adpcData;
                 for (int i = 0; i < channels; i++)
+                {
                     *(pAdpcm[i] = info->GetChannelInfo(i)) = new CSTMADPCMInfo(*rstm->HEADData->GetChannelInfo(i));
+                }
 
                 bshort* seekFrom = (bshort*)rstm->ADPCData->Data;
                 short* seekTo = (short*)seek->Data;
@@ -117,7 +119,9 @@ namespace BrawlLib.Wii.Audio
                 IntPtr* adpcData = stackalloc IntPtr[channels];
                 ADPCMInfo** pAdpcm = (ADPCMInfo**)adpcData;
                 for (int i = 0; i < channels; i++)
+                {
                     *(pAdpcm[i] = info->GetChannelInfo(i)) = new ADPCMInfo(*cstm->INFOData->GetChannelInfo(i));
+                }
 
                 bshort* seekFrom = (bshort*)cstm->SEEKData->Data;
                 short* seekTo = (short*)seek->Data;

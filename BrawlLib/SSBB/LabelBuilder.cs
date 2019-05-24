@@ -1,14 +1,14 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB
 {
     public unsafe class LabelBuilder
     {
-        private List<LabelItem> _labels = new List<LabelItem>();
+        private readonly List<LabelItem> _labels = new List<LabelItem>();
 
-        public int Count { get { return _labels.Count; } }
+        public int Count => _labels.Count;
 
         public void Clear() { _labels.Clear(); }
 
@@ -18,7 +18,10 @@ namespace BrawlLib.SSBB
         {
             int len = 12;
             foreach (LabelItem label in _labels)
+            {
                 len += label.DataLen + 4;
+            }
+
             return len.Align(0x20);
         }
 
@@ -32,7 +35,7 @@ namespace BrawlLib.SSBB
             int size;
             byte* pad;
 
-            for (int i = 0; i < count; )
+            for (int i = 0; i < count;)
             {
                 label = _labels[i++];
                 list[i] = (int)dataAddr - (int)list;
@@ -42,7 +45,9 @@ namespace BrawlLib.SSBB
 
             pad = (byte*)dataAddr;
             for (size = dataAddr - address; (size & 0x1F) != 0; size++)
+            {
                 *pad++ = 0;
+            }
 
             header->Set(size, count);
         }
@@ -53,6 +58,6 @@ namespace BrawlLib.SSBB
         public uint Tag;
         public string String;
 
-        public int DataLen { get { return (String.Length + 9).Align(4); } }
+        public int DataLen => (String.Length + 9).Align(4);
     }
 }

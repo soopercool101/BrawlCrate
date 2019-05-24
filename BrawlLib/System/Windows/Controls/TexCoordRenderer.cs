@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB.ResourceNodes;
+using OpenTK.Graphics.OpenGL;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using BrawlLib.OpenGL;
-using OpenTK.Graphics.OpenGL;
-using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
@@ -19,53 +19,69 @@ namespace System.Windows.Forms
         internal bool _updating = false;
 
         private List<ResourceNode> _attached;
-        
+
         private List<RenderInfo> _renderInfo;
         private List<int> _uvSetIndices, _objIndices;
         public int _uvIndex = -1, _objIndex = -1;
 
         private MDL0MaterialRefNode _targetMatRef = null;
-        private MDL0TextureNode Tex0 { get { return _targetMatRef == null ? null : _targetMatRef.TextureNode; } }
-        private GLTexture GLTex { get { return Tex0 == null ? null : Tex0.Texture; } }
-        
-        public BindingList<string> UVSetNames { get { return _uvSetNames; } }
-        private BindingList<string> _uvSetNames = new BindingList<string>();
-        public BindingList<string> ObjectNames { get { return _objNames; } }
-        private BindingList<string> _objNames = new BindingList<string>();
+        private MDL0TextureNode Tex0 => _targetMatRef == null ? null : _targetMatRef.TextureNode;
+        private GLTexture GLTex => Tex0 == null ? null : Tex0.Texture;
+
+        public BindingList<string> UVSetNames => _uvSetNames;
+        private readonly BindingList<string> _uvSetNames = new BindingList<string>();
+        public BindingList<string> ObjectNames => _objNames;
+        private readonly BindingList<string> _objNames = new BindingList<string>();
 
         public MDL0MaterialRefNode TargetNode
         {
-            get { return _targetMatRef; }
-            set { SetTarget(value); }
+            get => _targetMatRef;
+            set => SetTarget(value);
         }
 
         private void SetTarget(MDL0MaterialRefNode texture)
         {
             if (_targetMatRef != texture && texture != null)
+            {
                 CurrentViewport.Camera.Reset();
+            }
 
             if (_attached == null)
+            {
                 _attached = new List<ResourceNode>();
+            }
 
             if (Tex0 != null)
+            {
                 Tex0.Unbind();
+            }
 
             _attached.Clear();
 
             _targetMatRef = texture;
             if (_targetMatRef == null)
+            {
                 return;
+            }
 
             _attached.Add(_targetMatRef);
 
             if (Tex0 != null)
+            {
                 Tex0.Prepare(_targetMatRef, -1);
+            }
 
             //Dispose of all old UV buffers
             if (_renderInfo != null)
+            {
                 foreach (RenderInfo info in _renderInfo)
+                {
                     if (info._renderBuffer != null)
+                    {
                         info._renderBuffer.Dispose();
+                    }
+                }
+            }
 
             //Recreate lists
             _objIndices = new List<int>();
@@ -156,7 +172,10 @@ namespace System.Windows.Forms
         {
             _uvIndex = _uvSetNames.Count == 1 ? 0 : index >= 0 ? index.Clamp(0, _uvSetNames.Count - 2) : -1;
             if (UVIndexChanged != null)
+            {
                 UVIndexChanged(this, EventArgs.Empty);
+            }
+
             UpdateDisplay();
         }
 
@@ -166,16 +185,28 @@ namespace System.Windows.Forms
             if ((_objIndex = _objNames.Count == 1 ? 0 : index >= 0 ? index.Clamp(0, _objNames.Count - 2) : -1) >= 0)
             {
                 if (_targetMatRef.Material.Objects.Length != 0)
+                {
                     foreach (MDL0UVNode uv in _targetMatRef.Material.Objects[_objIndex]._uvSet)
+                    {
                         if (uv != null)
+                        {
                             _uvSetIndices.Add(uv.Index);
+                        }
+                    }
+                }
             }
             else
             {
                 foreach (MDL0ObjectNode obj in _targetMatRef.Material.Objects)
+                {
                     foreach (MDL0UVNode uv in obj._uvSet)
+                    {
                         if (uv != null)
+                        {
                             _uvSetIndices.Add(uv.Index);
+                        }
+                    }
+                }
             }
 
             if (_targetMatRef != null)
@@ -183,19 +214,27 @@ namespace System.Windows.Forms
                 MDL0Node model = _targetMatRef.Model;
                 string name = null;
                 if (_uvSetNames.Count > 0 && _uvIndex >= 0 && _uvIndex < _uvSetNames.Count)
+                {
                     name = _uvSetNames[_uvIndex];
+                }
 
                 _uvSetNames.Clear();
                 _uvSetNames.Add(_uvSetIndices.Count == 1 ? model._uvList[_uvSetIndices[0]].Name : "All");
                 if (model != null && model._uvList != null && _uvSetIndices.Count != 1)
+                {
                     foreach (int i in _uvSetIndices)
+                    {
                         _uvSetNames.Add(model._uvList[i].Name);
+                    }
+                }
 
-                SetUVIndex(String.IsNullOrEmpty(name) ? _uvSetNames.IndexOf(name) : -1);
+                SetUVIndex(string.IsNullOrEmpty(name) ? _uvSetNames.IndexOf(name) : -1);
             }
 
             if (ObjIndexChanged != null)
+            {
                 ObjIndexChanged(this, EventArgs.Empty);
+            }
         }
 
         public void UpdateDisplay()
@@ -219,8 +258,12 @@ namespace System.Windows.Forms
                         info._isEnabled = true;
                         info._enabled = new bool[8];
                         for (int x = 0; x < 8; x++)
+                        {
                             if (info._manager != null && info._manager._faceData[x + 4] != null)
+                            {
                                 info._enabled[x] = !singleUV || _uvIndex == x;
+                            }
+                        }
                     }
                 }
                 else
@@ -228,14 +271,18 @@ namespace System.Windows.Forms
                     info._isEnabled = true;
                     info._enabled = new bool[8];
                     for (int x = 0; x < 8; x++)
+                    {
                         if (info._manager != null && info._manager._faceData[x + 4] != null)
+                        {
                             info._enabled[x] = !singleUV || _uvIndex == r++;
+                        }
+                    }
                 }
             }
             Invalidate();
         }
 
-        unsafe internal override void OnInit(TKContext ctx)
+        internal override unsafe void OnInit(TKContext ctx)
         {
             //Set caps
             GL.Enable(EnableCap.Blend);
@@ -257,8 +304,8 @@ namespace System.Windows.Forms
             GL.Enable(EnableCap.Texture2D);
 
             float
-                halfW = (float)Width / 2.0f,
-                halfH = (float)Height / 2.0f;
+                halfW = Width / 2.0f,
+                halfH = Height / 2.0f;
 
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
@@ -278,8 +325,8 @@ namespace System.Windows.Forms
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
 
                 float
-                    s = (float)Width / (float)bgTex.Width,
-                    t = (float)Height / (float)bgTex.Height;
+                    s = Width / (float)bgTex.Width,
+                    t = Height / (float)bgTex.Height;
 
                 GL.Begin(BeginMode.Quads);
 
@@ -298,11 +345,16 @@ namespace System.Windows.Forms
             }
 
             if (Tex0 == null)
+            {
                 return;
+            }
+
             Tex0.Prepare(_targetMatRef, -1);
             GLTexture texture = GLTex;
             if (texture == null || texture._texId <= 0)
+            {
                 return;
+            }
 
             MDL0TextureNode.ApplyGLTextureParameters(_targetMatRef);
 
@@ -313,7 +365,7 @@ namespace System.Windows.Forms
             float texWidth = texture.Width;
             float texHeight = texture.Height;
 
-            float tAspect = (float)texWidth / texHeight;
+            float tAspect = texWidth / texHeight;
             float wAspect = (float)Width / Height;
 
             float[] texCoord = new float[8];
@@ -333,7 +385,7 @@ namespace System.Windows.Forms
                 texCoord[1] = texCoord[3] = (yCorrect = tAspect / wAspect) / 2.0f + 0.5f;
                 texCoord[5] = texCoord[7] = 1.0f - texCoord[1];
 
-                bottomRight = new Vector2(halfW, (((float)Height - ((float)Width / texWidth * texHeight)) / (float)Height / 2.0f - 0.5f) * (float)Height);
+                bottomRight = new Vector2(halfW, ((Height - (Width / texWidth * texHeight)) / Height / 2.0f - 0.5f) * Height);
                 topLeft = new Vector2(-halfW, -bottomRight._y);
             }
             else
@@ -349,7 +401,7 @@ namespace System.Windows.Forms
                 texCoord[2] = texCoord[4] = (xCorrect = wAspect / tAspect) / 2.0f + 0.5f;
                 texCoord[0] = texCoord[6] = 1.0f - texCoord[2];
 
-                bottomRight = new Vector2(1.0f - (((float)Width - ((float)Height / texHeight * texWidth)) / Width / 2.0f - 0.5f) * (float)Width, -halfH);
+                bottomRight = new Vector2(1.0f - ((Width - (Height / texHeight * texWidth)) / Width / 2.0f - 0.5f) * Width, -halfH);
                 topLeft = new Vector2(-bottomRight._x, halfH);
             }
 
@@ -405,7 +457,9 @@ namespace System.Windows.Forms
 
             //Render texture coordinates as vertex points
             foreach (RenderInfo info in _renderInfo)
+            {
                 info.PrepareStream();
+            }
         }
 
         protected override void OnRender(PaintEventArgs e)
@@ -421,17 +475,19 @@ namespace System.Windows.Forms
             GL.Disable(EnableCap.ScissorTest);
         }
 
-        bool _grabbing = false;
-        int _lastX = 0, _lastY = 0;
-        float _transFactor = 0.05f;
-        float _zoomFactor = 2.5f;
+        private bool _grabbing = false;
+        private int _lastX = 0, _lastY = 0;
+        private readonly float _transFactor = 0.05f;
+        private readonly float _zoomFactor = 2.5f;
 
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             if (!Enabled)
+            {
                 return;
+            }
 
-            Zoom(-(float)e.Delta / 120.0f * _zoomFactor, e.X, e.Y);
+            Zoom(-e.Delta / 120.0f * _zoomFactor, e.X, e.Y);
 
             base.OnMouseWheel(e);
         }
@@ -439,6 +495,7 @@ namespace System.Windows.Forms
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (_ctx != null && _grabbing)
+            {
                 lock (_ctx)
                 {
                     int xDiff = e.X - _lastX;
@@ -449,6 +506,7 @@ namespace System.Windows.Forms
                         yDiff * _transFactor,
                         0.0f);
                 }
+            }
 
             _lastX = e.X;
             _lastY = e.Y;
@@ -457,7 +515,9 @@ namespace System.Windows.Forms
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
+            {
                 _grabbing = true;
+            }
 
             base.OnMouseDown(e);
         }
@@ -498,7 +558,9 @@ namespace System.Windows.Forms
         protected override bool ProcessKeyMessage(ref Message m)
         {
             if (!Enabled)
+            {
                 return false;
+            }
 
             if (m.Msg == 0x100)
             {
@@ -556,7 +618,10 @@ namespace System.Windows.Forms
             {
                 _manager = manager;
                 for (int i = 0; i < 8; i++)
+                {
                     _enabled[i] = true;
+                }
+
                 _isEnabled = true;
                 CalcMinMax();
             }
@@ -574,7 +639,9 @@ namespace System.Windows.Forms
                 _min = new Vector2(float.MaxValue);
                 _max = new Vector2(float.MinValue);
                 if (_manager != null && _manager._faceData != null)
+                {
                     for (int i = 4; i < _manager._faceData.Length; i++)
+                    {
                         if (_manager._faceData[i] != null && _enabled[i - 4])
                         {
                             Vector2* pSrc = (Vector2*)_manager._faceData[i].Address;
@@ -584,21 +651,31 @@ namespace System.Windows.Forms
                                 _max.Max(*pSrc);
                             }
                         }
+                    }
+                }
             }
 
             public void CalcStride()
             {
                 _stride = 0;
                 if (_isEnabled)
+                {
                     for (int i = 0; i < 8; i++)
+                    {
                         if (_manager._faceData[i + 4] != null && _enabled[i])
+                        {
                             _stride += 8;
+                        }
+                    }
+                }
             }
 
             public unsafe void PrepareStream()
             {
                 if (!_isEnabled)
+                {
                     return;
+                }
 
                 CalcStride();
                 int bufferSize = _manager._pointCount * _stride;
@@ -610,7 +687,9 @@ namespace System.Windows.Forms
                 }
 
                 if (bufferSize <= 0)
+                {
                     return;
+                }
 
                 if (_renderBuffer == null)
                 {
@@ -622,22 +701,36 @@ namespace System.Windows.Forms
                 {
                     _dirty = false;
                     for (int i = 0; i < 8; i++)
+                    {
                         UpdateStream(i);
+                    }
                 }
 
                 GL.EnableClientState(ArrayCap.VertexArray);
 
                 Vector2* pData = (Vector2*)_renderBuffer.Address;
                 for (int i = 4; i < _manager._faceData.Length; i++)
+                {
                     if (_manager._faceData[i] != null && _enabled[i - 4])
+                    {
                         GL.VertexPointer(2, VertexPointerType.Float, _stride, (IntPtr)(pData++));
+                    }
+                }
 
                 if (_manager._triangles != null)
+                {
                     _manager._triangles.Render();
+                }
+
                 if (_manager._lines != null)
+                {
                     _manager._lines.Render();
+                }
+
                 if (_manager._points != null)
+                {
                     _manager._points.Render();
+                }
 
                 GL.DisableClientState(ArrayCap.VertexArray);
             }
@@ -646,17 +739,25 @@ namespace System.Windows.Forms
             {
                 index += 4;
                 if (_manager._faceData[index] == null || !_enabled[index - 4])
+                {
                     return;
+                }
 
                 //Set starting address
                 byte* pDst = (byte*)_renderBuffer.Address;
                 for (int i = 4; i < index; i++)
+                {
                     if (_manager._faceData[i] != null && _enabled[i - 4])
+                    {
                         pDst += 8;
+                    }
+                }
 
                 Vector2* pSrc = (Vector2*)_manager._faceData[index].Address;
                 for (int i = 0; i < _manager._pointCount; i++, pDst += _stride)
+                {
                     *(Vector2*)pDst = *pSrc++;
+                }
             }
         }
     }

@@ -1,20 +1,19 @@
-﻿using System.Windows.Forms;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace System.Audio
 {
     public abstract class AudioProvider : IDisposable
     {
         internal AudioDevice _device;
-        public AudioDevice Device { get { return _device; } }
+        public AudioDevice Device => _device;
 
         internal List<AudioBuffer> _buffers = new List<AudioBuffer>();
-        public List<AudioBuffer> Buffers { get { return _buffers; } }
+        public List<AudioBuffer> Buffers => _buffers;
 
         [Flags]
-        public enum AudioProviderType {
+        public enum AudioProviderType
+        {
             None = 0,
             DirectSound = 1,
             OpenAL = 2,
@@ -29,11 +28,15 @@ namespace System.Audio
                 switch (Environment.OSVersion.Platform)
                 {
                     case PlatformID.Win32NT:
-                        if (IntPtr.Size <= 4) return new wAudioProvider(device);
+                        if (IntPtr.Size <= 4)
+                        {
+                            return new wAudioProvider(device);
+                        }
+
                         break;
                 }
             }
-            
+
             if (device == null && AvailableTypes.HasFlag(AudioProviderType.OpenAL))
             {
                 try
@@ -50,7 +53,10 @@ namespace System.Audio
         public virtual void Dispose()
         {
             foreach (AudioBuffer buffer in _buffers)
+            {
                 buffer.Dispose();
+            }
+
             _buffers.Clear();
             GC.SuppressFinalize(this);
         }

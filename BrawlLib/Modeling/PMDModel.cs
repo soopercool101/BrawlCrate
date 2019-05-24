@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
+﻿using BrawlLib.Imaging;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+using BrawlLib.Wii.Graphics;
 using BrawlLib.Wii.Models;
 using OpenTK.Graphics.OpenGL;
-using BrawlLib.Imaging;
-using BrawlLib.Wii.Graphics;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {
@@ -20,7 +20,9 @@ namespace BrawlLib.Modeling
         {
             filepath = Path.GetFullPath(filepath);
             if (!File.Exists(filepath))
+            {
                 throw new FileNotFoundException("PMD model file " + filepath + " not found.");
+            }
 
             MDL0Node model = null;
             using (FileStream fs = new FileStream(filepath, FileMode.Open))
@@ -28,13 +30,19 @@ namespace BrawlLib.Modeling
                 BinaryReader reader = new BinaryReader(fs);
                 string magic = encoder.GetString(reader.ReadBytes(3));
                 if (magic != "Pmd")
+                {
                     throw new FileLoadException("Model format not recognized.");
+                }
 
                 float version = BitConverter.ToSingle(reader.ReadBytes(4), 0);
                 if (version == 1.0f)
+                {
                     model = new MDL0Node();
+                }
                 else
+                {
                     throw new Exception("Version " + version.ToString() + " models are not supported.");
+                }
 
                 if (model != null)
                 {
@@ -68,28 +76,53 @@ namespace BrawlLib.Modeling
         {
             int i;
             for (i = 0; i < bytes.Length; i++)
+            {
                 if (bytes[i] == 0)
+                {
                     break;
+                }
+            }
+
             if (i < bytes.Length)
+            {
                 return encoder.GetString(bytes, 0, i);
+            }
+
             return encoder.GetString(bytes);
         }
         internal static byte[] GetBytes(string input, long size)
         {
             byte[] result = new byte[size];
             for (long i = 0; i < size; i++)
+            {
                 result[i] = 0;
+            }
+
             if (input == "")
+            {
                 return result;
+            }
+
             byte[] strs = encoder.GetBytes(input);
             for (long i = 0; i < strs.LongLength; i++)
+            {
                 if (i < result.LongLength)
+                {
                     result[i] = strs[i];
+                }
+            }
+
             if (result.LongLength <= strs.LongLength)
+            {
                 return result;
+            }
+
             result[strs.LongLength] = 0;
             for (long i = strs.LongLength + 1; i < result.Length; i++)
+            {
                 result[i] = 0xFD;
+            }
+
             return result;
         }
         public enum CoordinateType
@@ -106,12 +139,12 @@ namespace BrawlLib.Modeling
         public static float _version = 1.0f;
         public static ModelHeader _header;
         public static ModelVertex[] _vertices;
-        public static UInt16[] _faceIndices;
+        public static ushort[] _faceIndices;
         public static ModelMaterial[] _materials;
         public static ModelBone[] _bones;
         public static ModelIK[] _IKs;
         public static ModelSkin[] _skins;
-        public static UInt16[] _skinIndex;
+        public static ushort[] _skinIndex;
         public static ModelBoneDispName[] _boneDispNames;
         public static ModelBoneDisp[] _boneDisps;
         public static bool _expansion;
@@ -122,8 +155,8 @@ namespace BrawlLib.Modeling
         public static ModelRigidBody[] _rigidBodies;
         public static ModelJoint[] _joints;
         public static CoordinateType _coordinate;
-        
-        public static float CoordZ { get { return (float)_coordinate; } }
+
+        public static float CoordZ => (float)_coordinate;
 
         #endregion
 
@@ -136,51 +169,53 @@ namespace BrawlLib.Modeling
             _header.Read(reader);
 
             //Read Vertices
-            UInt32 num_vertex = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+            uint num_vertex = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             _vertices = new ModelVertex[num_vertex];
-            for (UInt32 i = 0; i < num_vertex; i++)
+            for (uint i = 0; i < num_vertex; i++)
             {
                 _vertices[i] = new ModelVertex();
                 _vertices[i].Read(reader, CoordZ);
             }
 
             //Read Primitives
-            UInt32 face_vert_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
-            _faceIndices = new UInt16[face_vert_count];
-            for (UInt32 i = 0; i < face_vert_count; i++)
+            uint face_vert_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+            _faceIndices = new ushort[face_vert_count];
+            for (uint i = 0; i < face_vert_count; i++)
+            {
                 _faceIndices[i] = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
-            
+            }
+
             //Read Materials
-            UInt32 material_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+            uint material_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             _materials = new ModelMaterial[material_count];
-            for (UInt32 i = 0; i < material_count; i++)
+            for (uint i = 0; i < material_count; i++)
             {
                 _materials[i] = new ModelMaterial();
                 _materials[i].Read(reader);
             }
 
             //Read Bones
-            UInt16 bone_count = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+            ushort bone_count = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
             _bones = new ModelBone[bone_count];
-            for (UInt16 i = 0; i < bone_count; i++)
+            for (ushort i = 0; i < bone_count; i++)
             {
                 _bones[i] = new ModelBone();
                 _bones[i].Read(reader, CoordZ);
             }
 
             //Read IK Bones
-            UInt16 ik_count = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+            ushort ik_count = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
             _IKs = new ModelIK[ik_count];
-            for (UInt16 i = 0; i < ik_count; i++)
+            for (ushort i = 0; i < ik_count; i++)
             {
                 _IKs[i] = new ModelIK();
                 _IKs[i].Read(reader);
             }
 
             //Read Face Morphs
-            UInt16 skin_count = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+            ushort skin_count = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
             _skins = new ModelSkin[skin_count];
-            for (UInt16 i = 0; i < skin_count; i++)
+            for (ushort i = 0; i < skin_count; i++)
             {
                 _skins[i] = new ModelSkin();
                 _skins[i].Read(reader, CoordZ);
@@ -188,9 +223,11 @@ namespace BrawlLib.Modeling
 
             //Read face morph indices
             byte skin_disp_count = reader.ReadByte();
-            _skinIndex = new UInt16[skin_disp_count];
+            _skinIndex = new ushort[skin_disp_count];
             for (byte i = 0; i < _skinIndex.Length; i++)
+            {
                 _skinIndex[i] = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+            }
 
             //Read bone morph names
             byte bone_disp_name_count = reader.ReadByte();
@@ -202,9 +239,9 @@ namespace BrawlLib.Modeling
             }
 
             //Read bone morphs
-            UInt32 bone_disp_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+            uint bone_disp_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             _boneDisps = new ModelBoneDisp[bone_disp_count];
-            for (UInt32 i = 0; i < _boneDisps.Length; i++)
+            for (uint i = 0; i < _boneDisps.Length; i++)
             {
                 _boneDisps[i] = new ModelBoneDisp();
                 _boneDisps[i].Read(reader);
@@ -217,21 +254,25 @@ namespace BrawlLib.Modeling
                 if (_expansion)
                 {
                     _header.ReadExpansion(reader);
-                    for (UInt16 i = 0; i < bone_count; i++)
+                    for (ushort i = 0; i < bone_count; i++)
                     {
                         _bones[i].ReadExpansion(reader);
                     }
-                    for (UInt16 i = 0; i < skin_count; i++)
+                    for (ushort i = 0; i < skin_count; i++)
                     {
                         if (_skins[i]._skinType != 0)
+                        {
                             _skins[i].ReadExpansion(reader);
+                        }
                     }
                     for (byte i = 0; i < _boneDispNames.Length; i++)
                     {
                         _boneDispNames[i].ReadExpansion(reader);
                     }
                     if (reader.BaseStream.Position >= reader.BaseStream.Length)
+                    {
                         _toonExpansion = false;
+                    }
                     else
                     {
                         _toonExpansion = true;
@@ -242,20 +283,22 @@ namespace BrawlLib.Modeling
                         }
                     }
                     if (reader.BaseStream.Position >= reader.BaseStream.Length)
+                    {
                         _physicsExpansion = false;
+                    }
                     else
                     {
                         _physicsExpansion = true;
-                        UInt32 rididbody_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+                        uint rididbody_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
                         _rigidBodies = new ModelRigidBody[rididbody_count];
-                        for (UInt32 i = 0; i < rididbody_count; i++)
+                        for (uint i = 0; i < rididbody_count; i++)
                         {
                             _rigidBodies[i] = new ModelRigidBody();
                             _rigidBodies[i].ReadExpansion(reader, CoordZ);
                         }
-                        UInt32 joint_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+                        uint joint_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
                         _joints = new ModelJoint[joint_count];
-                        for (UInt32 i = 0; i < joint_count; i++)
+                        for (uint i = 0; i < joint_count; i++)
                         {
                             _joints[i] = new ModelJoint();
                             _joints[i].ReadExpansion(reader, CoordZ);
@@ -268,77 +311,111 @@ namespace BrawlLib.Modeling
         public static void Write(BinaryWriter writer)
         {
             if (_header != null)
+            {
                 _header.Write(writer);
+            }
+
             if (_vertices == null)
-                writer.Write((UInt32)0);
+            {
+                writer.Write((uint)0);
+            }
             else
             {
-                writer.Write((UInt32)_vertices.LongLength);
-                for (UInt32 i = 0; i < _vertices.LongLength; i++)
+                writer.Write((uint)_vertices.LongLength);
+                for (uint i = 0; i < _vertices.LongLength; i++)
                 {
                     if (_vertices[i] == null)
+                    {
                         throw new ArgumentNullException("Vertexes[" + i.ToString() + "] is null!");
+                    }
+
                     _vertices[i].Write(writer, CoordZ);
                 }
             }
             if (_faceIndices == null)
-                writer.Write((UInt32)0);
+            {
+                writer.Write((uint)0);
+            }
             else
             {
-                writer.Write((UInt32)_faceIndices.LongLength);
-                for (UInt32 i = 0; i < _faceIndices.LongLength; i++)
+                writer.Write((uint)_faceIndices.LongLength);
+                for (uint i = 0; i < _faceIndices.LongLength; i++)
+                {
                     writer.Write(_faceIndices[i]);
+                }
             }
             if (_materials == null)
-                writer.Write((UInt32)0);
+            {
+                writer.Write((uint)0);
+            }
             else
             {
-                writer.Write((UInt32)_materials.LongLength);
-                for (UInt32 i = 0; i < _materials.LongLength; i++)
+                writer.Write((uint)_materials.LongLength);
+                for (uint i = 0; i < _materials.LongLength; i++)
                 {
                     if (_materials[i] == null)
+                    {
                         throw new ArgumentNullException("Materials[" + i.ToString() + "] is null!");
+                    }
+
                     _materials[i].Write(writer);
                 }
             }
             if (_bones == null)
-                writer.Write((UInt16)0);
+            {
+                writer.Write((ushort)0);
+            }
             else
             {
-                writer.Write((UInt16)_bones.Length);
-                for (UInt16 i = 0; i < _bones.Length; i++)
+                writer.Write((ushort)_bones.Length);
+                for (ushort i = 0; i < _bones.Length; i++)
                 {
                     if (_bones[i] == null)
+                    {
                         throw new ArgumentNullException("Bones[" + i.ToString() + "] is null!");
+                    }
+
                     _bones[i].Write(writer, CoordZ);
                 }
             }
             if (_IKs == null)
-                writer.Write((UInt16)0);
+            {
+                writer.Write((ushort)0);
+            }
             else
             {
-                writer.Write((UInt16)_IKs.Length);
-                for (UInt16 i = 0; i < _IKs.Length; i++)
+                writer.Write((ushort)_IKs.Length);
+                for (ushort i = 0; i < _IKs.Length; i++)
                 {
                     if (_IKs[i] == null)
+                    {
                         throw new ArgumentNullException("IKs[" + i.ToString() + "] is null!");
+                    }
+
                     _IKs[i].Write(writer);
                 }
             }
             if (_skins == null)
-                writer.Write((UInt16)0);
+            {
+                writer.Write((ushort)0);
+            }
             else
             {
-                writer.Write((UInt16)_skins.Length);
-                for (UInt16 i = 0; i < _skins.Length; i++)
+                writer.Write((ushort)_skins.Length);
+                for (ushort i = 0; i < _skins.Length; i++)
                 {
                     if (_skins[i] == null)
+                    {
                         throw new ArgumentNullException("Skins[" + i.ToString() + "] is null!");
+                    }
+
                     _skins[i].Write(writer, CoordZ);
                 }
             }
             if (_skinIndex == null)
+            {
                 writer.Write((byte)0);
+            }
             else
             {
                 writer.Write((byte)_skinIndex.Length);
@@ -349,26 +426,36 @@ namespace BrawlLib.Modeling
                 }
             }
             if (_boneDispNames == null)
+            {
                 writer.Write((byte)0);
+            }
             else
             {
                 writer.Write((byte)_boneDispNames.Length);
                 for (byte i = 0; i < _boneDispNames.Length; i++)
                 {
                     if (_boneDispNames[i] == null)
+                    {
                         throw new ArgumentNullException("BoneDispNames[" + i.ToString() + "] is null!");
+                    }
+
                     _boneDispNames[i].Write(writer);
                 }
             }
             if (_boneDisps == null)
-                writer.Write((UInt32)0);
+            {
+                writer.Write((uint)0);
+            }
             else
             {
-                writer.Write((UInt32)_boneDisps.Length);
-                for (UInt32 i = 0; i < _boneDisps.Length; i++)
+                writer.Write((uint)_boneDisps.Length);
+                for (uint i = 0; i < _boneDisps.Length; i++)
                 {
                     if (_boneDisps[i] == null)
+                    {
                         throw new ArgumentNullException("BoneDisps[" + i.ToString() + "] is null!");
+                    }
+
                     _boneDisps[i].Write(writer);
                 }
             }
@@ -377,46 +464,72 @@ namespace BrawlLib.Modeling
             {
                 _header.WriteExpansion(writer);
                 if (_bones != null)
-                    for (UInt16 i = 0; i < _bones.Length; i++)
+                {
+                    for (ushort i = 0; i < _bones.Length; i++)
+                    {
                         _bones[i].WriteExpansion(writer);
-                
+                    }
+                }
+
                 if (_skins != null)
-                    for (UInt16 i = 0; i < _skins.Length; i++)
+                {
+                    for (ushort i = 0; i < _skins.Length; i++)
+                    {
                         if (_skins[i]._skinType != 0)
+                        {
                             _skins[i].WriteExpansion(writer);
-                
+                        }
+                    }
+                }
+
                 if (_boneDispNames != null)
+                {
                     for (byte i = 0; i < _boneDispNames.Length; i++)
+                    {
                         _boneDispNames[i].WriteExpansion(writer);
-                
+                    }
+                }
+
                 if (_toonExpansion)
                 {
                     for (int i = 0; i < _toonFileNames.Length; i++)
+                    {
                         writer.Write(GetBytes(_toonFileNames[i], 100));
-                    
+                    }
+
                     if (_physicsExpansion)
                     {
                         if (_rigidBodies == null)
-                            writer.Write((UInt32)0);
+                        {
+                            writer.Write((uint)0);
+                        }
                         else
                         {
-                            writer.Write((UInt32)_rigidBodies.LongLength);
+                            writer.Write((uint)_rigidBodies.LongLength);
                             for (long i = 0; i < _rigidBodies.LongLength; i++)
                             {
                                 if (_rigidBodies[i] == null)
+                                {
                                     throw new ArgumentNullException("RididBodies[" + i.ToString() + "] is null!");
+                                }
+
                                 _rigidBodies[i].WriteExpansion(writer, CoordZ);
                             }
                         }
                         if (_joints == null)
-                            writer.Write((UInt32)0);
+                        {
+                            writer.Write((uint)0);
+                        }
                         else
                         {
-                            writer.Write((UInt32)_joints.LongLength);
+                            writer.Write((uint)_joints.LongLength);
                             for (long i = 0; i < _joints.LongLength; i++)
                             {
                                 if (_joints[i] == null)
+                                {
                                     throw new ArgumentNullException("Joints[" + i.ToString() + "] is null!");
+                                }
+
                                 _joints[i].WriteExpansion(writer, CoordZ);
                             }
                         }
@@ -442,25 +555,37 @@ namespace BrawlLib.Modeling
             List<MDL0BoneNode> BoneCache = new List<MDL0BoneNode>();
 
             int index = 0;
-            if (!String.IsNullOrWhiteSpace(_header._modelNameEnglish))
+            if (!string.IsNullOrWhiteSpace(_header._modelNameEnglish))
+            {
                 model.Name = _header._modelNameEnglish;
+            }
             else
+            {
                 model.Name = _header._modelName;
+            }
 
-            if (!String.IsNullOrWhiteSpace(_header._commentEnglish))
+            if (!string.IsNullOrWhiteSpace(_header._commentEnglish))
+            {
                 MessageBox.Show(_header._commentEnglish);
+            }
             else
+            {
                 MessageBox.Show(_header._comment);
+            }
 
             ModelBone parent = null;
             foreach (ModelBone b in _bones)
             {
                 MDL0BoneNode bone = new MDL0BoneNode();
 
-                if (!String.IsNullOrWhiteSpace(b._boneNameEnglish))
+                if (!string.IsNullOrWhiteSpace(b._boneNameEnglish))
+                {
                     bone._name = b._boneNameEnglish;
+                }
                 else
+                {
                     bone._name = b._boneName;
+                }
 
                 bone._entryIndex = index++;
 
@@ -468,7 +593,9 @@ namespace BrawlLib.Modeling
                 {
                     parent = _bones[b._parentBoneIndex];
                     foreach (MDL0BoneNode v in model._boneGroup._children)
+                    {
                         AssignParent(v, b, bone, parent);
+                    }
                 }
                 else
                 {
@@ -487,40 +614,50 @@ namespace BrawlLib.Modeling
             index = 0;
             foreach (ModelMaterial m in _materials)
             {
-                MDL0MaterialNode mn = new MDL0MaterialNode();
-                mn.Name = "Material" + index++;
+                MDL0MaterialNode mn = new MDL0MaterialNode
+                {
+                    Name = "Material" + index++
+                };
 
                 MDL0MaterialRefNode texRef = null;
                 MDL0MaterialRefNode spaRef = null;
 
-                if (!String.IsNullOrEmpty(m._textureFileName))
+                if (!string.IsNullOrEmpty(m._textureFileName))
+                {
                     if (m._textureFileName.Contains('*'))
                     {
                         string[] names = m._textureFileName.Split('*');
-                        if (!String.IsNullOrEmpty(names[0]))
+                        if (!string.IsNullOrEmpty(names[0]))
                         {
-                            texRef = new MDL0MaterialRefNode();
-                            texRef.Name = names[0].Substring(0, names[0].IndexOf('.'));
+                            texRef = new MDL0MaterialRefNode
+                            {
+                                Name = names[0].Substring(0, names[0].IndexOf('.'))
+                            };
                         }
-                        if (!String.IsNullOrEmpty(names[1]))
+                        if (!string.IsNullOrEmpty(names[1]))
                         {
-                            spaRef = new MDL0MaterialRefNode();
-                            spaRef.Name = names[1].Substring(0, names[1].IndexOf('.'));
-                            spaRef.MapMode = MappingMethod.EnvCamera;
-                            spaRef.UWrapMode = MatWrapMode.Clamp;
-                            spaRef.VWrapMode = MatWrapMode.Clamp;
-                            spaRef.Projection = Wii.Graphics.TexProjection.STQ;
-                            spaRef.InputForm = Wii.Graphics.TexInputForm.ABC1;
-                            spaRef.Coordinates = Wii.Graphics.TexSourceRow.Normals;
-                            spaRef.Normalize = true;
+                            spaRef = new MDL0MaterialRefNode
+                            {
+                                Name = names[1].Substring(0, names[1].IndexOf('.')),
+                                MapMode = MappingMethod.EnvCamera,
+                                UWrapMode = MatWrapMode.Clamp,
+                                VWrapMode = MatWrapMode.Clamp,
+                                Projection = Wii.Graphics.TexProjection.STQ,
+                                InputForm = Wii.Graphics.TexInputForm.ABC1,
+                                Coordinates = Wii.Graphics.TexSourceRow.Normals,
+                                Normalize = true
+                            };
                         }
                     }
                     else
                     {
-                        texRef = new MDL0MaterialRefNode();
-                        texRef.Name = m._textureFileName.Substring(0, m._textureFileName.IndexOf('.'));
-                        texRef.Coordinates = Wii.Graphics.TexSourceRow.TexCoord0;
+                        texRef = new MDL0MaterialRefNode
+                        {
+                            Name = m._textureFileName.Substring(0, m._textureFileName.IndexOf('.')),
+                            Coordinates = Wii.Graphics.TexSourceRow.TexCoord0
+                        };
                     }
+                }
 
                 if (texRef != null)
                 {
@@ -642,7 +779,7 @@ namespace BrawlLib.Modeling
                         Influence inf;
                         BoneWeight weight1 = null, weight2 = null;
 
-                        float weight = ((float)mv._boneWeight / 100.0f).Clamp(0.0f, 1.0f);
+                        float weight = (mv._boneWeight / 100.0f).Clamp(0.0f, 1.0f);
 
                         if (weight > 0.0f && weight < 1.0f)
                         {
@@ -650,14 +787,22 @@ namespace BrawlLib.Modeling
                             weight2 = new BoneWeight(BoneCache[mv._boneIndex[1]], 1.0f - weight);
                         }
                         else if (weight == 0.0f)
+                        {
                             weight1 = new BoneWeight(BoneCache[mv._boneIndex[1]]);
+                        }
                         else
+                        {
                             weight1 = new BoneWeight(BoneCache[mv._boneIndex[0]]);
+                        }
 
                         if (weight2 != null)
+                        {
                             inf = new Influence(new List<BoneWeight> { weight1, weight2 });
+                        }
                         else
+                        {
                             inf = new Influence(new List<BoneWeight> { weight1 });
+                        }
 
                         Vector3 t = new Vector3();
                         Vertex3 v;
@@ -682,7 +827,9 @@ namespace BrawlLib.Modeling
                         j = (ushort)(usedVertices.Count - 1);
                     }
                     else
+                    {
                         j = (ushort)vertexIndices[usedVertices.IndexOf(i)];
+                    }
 
                     *Indices++ = j;
                     pTriarr[pTri++] = (uint)l;
@@ -696,16 +843,20 @@ namespace BrawlLib.Modeling
 
             //Check each polygon to see if it can be rigged to a single influence
             if (model._objList != null && model._objList.Count != 0)
+            {
                 foreach (MDL0ObjectNode p in model._objList)
                 {
                     IMatrixNode node = null;
                     bool singlebind = true;
 
                     foreach (Vertex3 v in p._manager._vertices)
+                    {
                         if (v.MatrixNode != null)
                         {
                             if (node == null)
+                            {
                                 node = v.MatrixNode;
+                            }
 
                             if (v.MatrixNode != node)
                             {
@@ -713,22 +864,30 @@ namespace BrawlLib.Modeling
                                 break;
                             }
                         }
+                    }
 
                     if (singlebind && p._matrixNode == null)
                     {
                         //Increase reference count ahead of time for rebuild
                         if (p._manager._vertices[0].MatrixNode != null)
+                        {
                             //p._manager._vertices[0].MatrixNode.ReferenceCount++;
                             p._manager._vertices[0].MatrixNode.Users.Add(p);
+                        }
 
                         foreach (Vertex3 v in p._manager._vertices)
+                        {
                             if (v.MatrixNode != null)
+                            {
                                 //v.MatrixNode.ReferenceCount--;
                                 v.MatrixNode.Users.Remove(v);
+                            }
+                        }
 
                         p._nodeId = -2; //Continued on polygon rebuild
                     }
                 }
+            }
 
             //foreach (MDL0ObjectNode p in model._objList)
             //    foreach (MDL0MaterialNode m in model._matList)
@@ -767,17 +926,23 @@ namespace BrawlLib.Modeling
                 cBone.RecalcBindState(false, false);
             }
             else //Parent not found, continue searching children.
+            {
                 foreach (MDL0BoneNode pMatch in pBone._children)
+                {
                     AssignParent(pMatch, child, cBone, parent);
+                }
+            }
         }
 
         public static MDL0ShaderNode TexSpaShader
         {
             get
             {
-                MDL0ShaderNode shader = new MDL0ShaderNode();
-                shader.TextureRef0 = true;
-                shader.TextureRef1 = true;
+                MDL0ShaderNode shader = new MDL0ShaderNode
+                {
+                    TextureRef0 = true,
+                    TextureRef1 = true
+                };
 
                 MDL0TEVStageNode s = new MDL0TEVStageNode();
                 shader.AddChild(s);
@@ -846,8 +1011,10 @@ namespace BrawlLib.Modeling
         {
             get
             {
-                MDL0ShaderNode shader = new MDL0ShaderNode();
-                shader.TextureRef0 = true;
+                MDL0ShaderNode shader = new MDL0ShaderNode
+                {
+                    TextureRef0 = true
+                };
 
                 MDL0TEVStageNode s = new MDL0TEVStageNode();
                 shader.AddChild(s);
@@ -860,7 +1027,7 @@ namespace BrawlLib.Modeling
                 s.TextureCoordID = TexCoordID.TexCoord7;
                 s.TextureEnabled = false;
                 s.RasterColor = ColorSelChan.LightChannel0;
-                
+
                 s = new MDL0TEVStageNode();
                 shader.AddChild(s);
 
@@ -916,8 +1083,10 @@ namespace BrawlLib.Modeling
         {
             get
             {
-                MDL0ShaderNode shader = new MDL0ShaderNode();
-                shader.TextureRef0 = true;
+                MDL0ShaderNode shader = new MDL0ShaderNode
+                {
+                    TextureRef0 = true
+                };
 
                 MDL0TEVStageNode s = new MDL0TEVStageNode();
                 shader.AddChild(s);
@@ -1009,30 +1178,34 @@ namespace BrawlLib.Modeling
         #region MDL0 to PMD
         public static unsafe void MDL02PMD(MDL0Node model)
         {
-            _header = new ModelHeader();
-            _header._modelName = model.Name;
+            _header = new ModelHeader
+            {
+                _modelName = model.Name,
 
-            //To do: Add the ability to change the comment
-            _header._comment = "MDL0 model converted to PMD by BrawlCrate.";
+                //To do: Add the ability to change the comment
+                _comment = "MDL0 model converted to PMD by BrawlCrate."
+            };
 
             foreach (MDL0MaterialNode m in model._matList)
             {
-                ModelMaterial mat = new ModelMaterial();
-                mat._textureFileName = m.Children[0].Name;
-                
+                ModelMaterial mat = new ModelMaterial
+                {
+                    _textureFileName = m.Children[0].Name
+                };
+
             }
 
             _bones = new ModelBone[model._linker.BoneCache.Length];
             for (int i = 0; i < model._linker.BoneCache.Length; i++)
             {
                 ModelBone bone = new ModelBone();
-                MDL0BoneNode mBone = (MDL0BoneNode)model._linker.BoneCache[i];
+                MDL0BoneNode mBone = model._linker.BoneCache[i];
 
                 Vector3 wPos = mBone._bindMatrix.GetPoint();
                 bone._wPos[0] = wPos._x;
                 bone._wPos[1] = wPos._y;
                 bone._wPos[2] = wPos._z;
-              
+
                 bone._boneName = mBone.Name;
 
                 bone._boneType = 0;
@@ -1095,7 +1268,7 @@ namespace BrawlLib.Modeling
         public Vector3 _position;
         public Vector3 _normal;
         public Vector2 _texCoord;
-        public UInt16[] _boneIndex;
+        public ushort[] _boneIndex;
         public byte _boneWeight;
         public byte _edgeFlag;
 
@@ -1104,7 +1277,7 @@ namespace BrawlLib.Modeling
             _position = new Vector3();
             _normal = new Vector3();
             _texCoord = new Vector2();
-            _boneIndex = new UInt16[2];
+            _boneIndex = new ushort[2];
             _boneWeight = 0;
             _edgeFlag = 0;
         }
@@ -1114,12 +1287,15 @@ namespace BrawlLib.Modeling
             _position = new Vector3();
             _normal = new Vector3();
             _texCoord = new Vector2();
-            _boneIndex = new UInt16[2];
+            _boneIndex = new ushort[2];
             _position = new Vector3(BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0));
             _normal = new Vector3(BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0));
             _texCoord = new Vector2(BitConverter.ToSingle(reader.ReadBytes(4), 0), BitConverter.ToSingle(reader.ReadBytes(4), 0));
             for (int i = 0; i < _boneIndex.Length; i++)
+            {
                 _boneIndex[i] = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+            }
+
             _boneWeight = reader.ReadByte();
             _edgeFlag = reader.ReadByte();
             _position[2] = _position[2] * CoordZ;
@@ -1139,7 +1315,10 @@ namespace BrawlLib.Modeling
             writer.Write(_texCoord._x);
             writer.Write(_texCoord._y);
             for (int i = 0; i < _boneIndex.Length; i++)
+            {
                 writer.Write(_boneIndex[i]);
+            }
+
             writer.Write(_boneWeight);
             writer.Write(_edgeFlag);
         }
@@ -1156,7 +1335,7 @@ namespace BrawlLib.Modeling
         public float[] _mirrorColor;
         public byte _toonIndex;
         public byte _edgeFlag;
-        public UInt32 _faceVertCount;
+        public uint _faceVertCount;
         public string _textureFileName;
 
         public ModelMaterial()
@@ -1172,13 +1351,22 @@ namespace BrawlLib.Modeling
             _specularColor = new float[3];
             _mirrorColor = new float[3];
             for (int i = 0; i < _diffuseColor.Length; i++)
+            {
                 _diffuseColor[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             _alpha = BitConverter.ToSingle(reader.ReadBytes(4), 0);
             _specularity = BitConverter.ToSingle(reader.ReadBytes(4), 0);
             for (int i = 0; i < _specularColor.Length; i++)
+            {
                 _specularColor[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _mirrorColor.Length; i++)
+            {
                 _mirrorColor[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             _toonIndex = reader.ReadByte();
             _edgeFlag = reader.ReadByte();
             _faceVertCount = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
@@ -1188,13 +1376,22 @@ namespace BrawlLib.Modeling
         internal void Write(BinaryWriter writer)
         {
             for (int i = 0; i < _diffuseColor.Length; i++)
+            {
                 writer.Write(_diffuseColor[i]);
+            }
+
             writer.Write(_alpha);
             writer.Write(_specularity);
             for (int i = 0; i < _specularColor.Length; i++)
+            {
                 writer.Write(_specularColor[i]);
+            }
+
             for (int i = 0; i < _mirrorColor.Length; i++)
+            {
                 writer.Write(_mirrorColor[i]);
+            }
+
             writer.Write(_toonIndex);
             writer.Write(_edgeFlag);
             writer.Write(_faceVertCount);
@@ -1207,10 +1404,10 @@ namespace BrawlLib.Modeling
     public class ModelBone
     {
         public string _boneName;
-        public UInt16 _parentBoneIndex;
-        public UInt16 _tailPosBoneIndex;
+        public ushort _parentBoneIndex;
+        public ushort _tailPosBoneIndex;
         public byte _boneType;
-        public UInt16 _IKParentBoneIndex;
+        public ushort _IKParentBoneIndex;
         public Vector3 _wPos;
         public string _boneNameEnglish;
 
@@ -1248,7 +1445,7 @@ namespace BrawlLib.Modeling
             writer.Write(_wPos._y);
             writer.Write(_wPos._z);
         }
-        
+
         internal void WriteExpansion(BinaryWriter writer)
         {
             writer.Write(PMDModel.GetBytes(_boneNameEnglish, 20));
@@ -1256,7 +1453,7 @@ namespace BrawlLib.Modeling
     }
     public class ModelBoneDisp
     {
-        public UInt16 _boneIndex;
+        public ushort _boneIndex;
         public byte _boneDispFrameIndex;
 
         internal void Read(BinaryReader reader)
@@ -1302,8 +1499,8 @@ namespace BrawlLib.Modeling
         //Rotations in radians
 
         public string _name;
-        public UInt32 _rigidBodyA;
-        public UInt32 _rigidBodyB;
+        public uint _rigidBodyA;
+        public uint _rigidBodyB;
         public float[] _position;
         public float[] _rotation;
         public float[] _constrainPosition1;
@@ -1331,21 +1528,45 @@ namespace BrawlLib.Modeling
             _rigidBodyA = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             _rigidBodyB = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             for (int i = 0; i < _position.Length; i++)
+            {
                 _position[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _rotation.Length; i++)
+            {
                 _rotation[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _constrainPosition1.Length; i++)
+            {
                 _constrainPosition1[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _constrainPosition2.Length; i++)
+            {
                 _constrainPosition2[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _constrainRotation1.Length; i++)
+            {
                 _constrainRotation1[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _constrainRotation2.Length; i++)
+            {
                 _constrainRotation2[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _springPosition.Length; i++)
+            {
                 _springPosition[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _springRotation.Length; i++)
+            {
                 _springRotation[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             _position[2] *= CoordZ;
             _rotation[0] *= CoordZ;
             _rotation[1] *= CoordZ;
@@ -1374,21 +1595,44 @@ namespace BrawlLib.Modeling
             writer.Write(_rigidBodyA);
             writer.Write(_rigidBodyB);
             for (int i = 0; i < _position.Length; i++)
+            {
                 writer.Write(_position[i]);
+            }
+
             for (int i = 0; i < _rotation.Length; i++)
+            {
                 writer.Write(_rotation[i]);
+            }
+
             for (int i = 0; i < _constrainPosition1.Length; i++)
+            {
                 writer.Write(_constrainPosition1[i]);
+            }
+
             for (int i = 0; i < _constrainPosition2.Length; i++)
+            {
                 writer.Write(_constrainPosition2[i]);
+            }
+
             for (int i = 0; i < _constrainRotation1.Length; i++)
+            {
                 writer.Write(_constrainRotation1[i]);
+            }
+
             for (int i = 0; i < _constrainRotation2.Length; i++)
+            {
                 writer.Write(_constrainRotation2[i]);
+            }
+
             for (int i = 0; i < _springPosition.Length; i++)
+            {
                 writer.Write(_springPosition[i]);
+            }
+
             for (int i = 0; i < _springRotation.Length; i++)
+            {
                 writer.Write(_springRotation[i]);
+            }
         }
     }
     #endregion
@@ -1396,11 +1640,11 @@ namespace BrawlLib.Modeling
     #region Model IK
     public class ModelIK
     {
-        public UInt16 _IKBoneIndex;
-        public UInt16 _IKTargetBoneIndex;
-        public UInt16 _iterations;
+        public ushort _IKBoneIndex;
+        public ushort _IKTargetBoneIndex;
+        public ushort _iterations;
         public float _angleLimit;
-        public UInt16[] _IKChildBoneIndex;
+        public ushort[] _IKChildBoneIndex;
 
         internal void Read(BinaryReader reader)
         {
@@ -1409,9 +1653,11 @@ namespace BrawlLib.Modeling
             byte ik_chain_length = reader.ReadByte();
             _iterations = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
             _angleLimit = BitConverter.ToSingle(reader.ReadBytes(4), 0);
-            _IKChildBoneIndex = new UInt16[ik_chain_length];
+            _IKChildBoneIndex = new ushort[ik_chain_length];
             for (int i = 0; i < ik_chain_length; i++)
+            {
                 _IKChildBoneIndex[i] = BitConverter.ToUInt16(reader.ReadBytes(2), 0);
+            }
         }
 
         internal void Write(BinaryWriter writer)
@@ -1422,7 +1668,9 @@ namespace BrawlLib.Modeling
             writer.Write(_iterations);
             writer.Write(_angleLimit);
             for (int i = 0; i < _IKChildBoneIndex.Length; i++)
+            {
                 writer.Write(_IKChildBoneIndex[i]);
+            }
         }
     }
     #endregion
@@ -1430,7 +1678,7 @@ namespace BrawlLib.Modeling
     #region Model Skin Etc
     public class ModelSkinVertexData
     {
-        public UInt32 _skinVertIndex;
+        public uint _skinVertIndex;
         public float[] _skinVertPos;
 
         public ModelSkinVertexData()
@@ -1442,7 +1690,10 @@ namespace BrawlLib.Modeling
         {
             _skinVertIndex = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             for (int i = 0; i < _skinVertPos.Length; i++)
+            {
                 _skinVertPos[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             _skinVertPos[2] *= CoordZ;
         }
 
@@ -1451,12 +1702,14 @@ namespace BrawlLib.Modeling
             _skinVertPos[2] *= CoordZ;
             writer.Write(_skinVertIndex);
             for (int i = 0; i < _skinVertPos.Length; i++)
+            {
                 writer.Write(_skinVertPos[i]);
+            }
         }
     }
 
     //Face & Other Morphs
-    public class ModelSkin 
+    public class ModelSkin
     {
         public string _skinName;
         public byte _skinType;
@@ -1466,7 +1719,7 @@ namespace BrawlLib.Modeling
         internal void Read(BinaryReader reader, float CoordZ)
         {
             _skinName = PMDModel.GetString(reader.ReadBytes(20));
-            UInt32 skin_vert_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
+            uint skin_vert_count = BitConverter.ToUInt32(reader.ReadBytes(4), 0);
             _skinType = reader.ReadByte();
             _skinVertDatas = new ModelSkinVertexData[skin_vert_count];
             for (int i = 0; i < _skinVertDatas.Length; i++)
@@ -1485,10 +1738,12 @@ namespace BrawlLib.Modeling
         internal void Write(BinaryWriter writer, float CoordZ)
         {
             writer.Write(PMDModel.GetBytes(_skinName, 20));
-            writer.Write((UInt32)_skinVertDatas.Length);
+            writer.Write((uint)_skinVertDatas.Length);
             writer.Write(_skinType);
             for (int i = 0; i < _skinVertDatas.Length; i++)
+            {
                 _skinVertDatas[i].Write(writer, CoordZ);
+            }
         }
 
         internal void WriteExpansion(BinaryWriter writer)
@@ -1502,9 +1757,9 @@ namespace BrawlLib.Modeling
     public class ModelRigidBody
     {
         public string _name;
-        public UInt16 _relatedBoneIndex;
+        public ushort _relatedBoneIndex;
         public byte _groupIndex;
-        public UInt16 _groupTarget;
+        public ushort _groupTarget;
         public byte _shapeType;
         public float _shapeWidth;
         public float _shapeHeight;
@@ -1535,9 +1790,15 @@ namespace BrawlLib.Modeling
             _shapeHeight = BitConverter.ToSingle(reader.ReadBytes(4), 0);
             _shapeDepth = BitConverter.ToSingle(reader.ReadBytes(4), 0);
             for (int i = 0; i < _position.Length; i++)
+            {
                 _position[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             for (int i = 0; i < _rotation.Length; i++)
+            {
                 _rotation[i] = BitConverter.ToSingle(reader.ReadBytes(4), 0);
+            }
+
             _weight = BitConverter.ToSingle(reader.ReadBytes(4), 0);
             _linearDamping = BitConverter.ToSingle(reader.ReadBytes(4), 0);
             _angularDamping = BitConverter.ToSingle(reader.ReadBytes(4), 0);
@@ -1563,9 +1824,15 @@ namespace BrawlLib.Modeling
             writer.Write(_shapeHeight);
             writer.Write(_shapeDepth);
             for (int i = 0; i < _position.Length; i++)
+            {
                 writer.Write(_position[i]);
+            }
+
             for (int i = 0; i < _rotation.Length; i++)
+            {
                 writer.Write(_rotation[i]);
+            }
+
             writer.Write(_weight);
             writer.Write(_linearDamping);
             writer.Write(_angularDamping);

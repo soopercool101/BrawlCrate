@@ -12,270 +12,316 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool FirstPersonCamera
         {
-            get { return ModelPanel.FirstPersonCamera; }
-            set { ModelPanel.FirstPersonCamera = value; }
+            get => ModelPanel.FirstPersonCamera;
+            set => ModelPanel.FirstPersonCamera = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderFloor
         {
-            get { return ModelPanel.RenderFloor; }
-            set { ModelPanel.RenderFloor = value; }
+            get => ModelPanel.RenderFloor;
+            set => ModelPanel.RenderFloor = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderBones
         {
-            get { return ModelPanel.RenderBones; }
-            set { ModelPanel.RenderBones = value; }
+            get => ModelPanel.RenderBones;
+            set => ModelPanel.RenderBones = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ApplyBillboardBones
         {
-            get { return ModelPanel.ApplyBillboardBones; }
-            set { ModelPanel.ApplyBillboardBones = value; }
+            get => ModelPanel.ApplyBillboardBones;
+            set => ModelPanel.ApplyBillboardBones = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderVertices
         {
-            get { return ModelPanel.RenderVertices; }
-            set { ModelPanel.RenderVertices = value; }
+            get => ModelPanel.RenderVertices;
+            set => ModelPanel.RenderVertices = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderNormals
         {
-            get { return ModelPanel.RenderNormals; }
-            set { ModelPanel.RenderNormals = value; }
+            get => ModelPanel.RenderNormals;
+            set => ModelPanel.RenderNormals = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderPolygons
         {
-            get { return ModelPanel.RenderPolygons; }
-            set { ModelPanel.RenderPolygons = value; }
+            get => ModelPanel.RenderPolygons;
+            set => ModelPanel.RenderPolygons = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderWireframe
         {
-            get { return ModelPanel.RenderWireframe; }
-            set { ModelPanel.RenderWireframe = value; }
+            get => ModelPanel.RenderWireframe;
+            set => ModelPanel.RenderWireframe = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderShaders
         {
-            get { return ModelPanel.RenderShaders; }
-            set { ModelPanel.RenderShaders = value; }
+            get => ModelPanel.RenderShaders;
+            set => ModelPanel.RenderShaders = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderModelBox
         {
-            get { return ModelPanel.RenderModelBox; }
-            set { ModelPanel.RenderModelBox = value; }
+            get => ModelPanel.RenderModelBox;
+            set => ModelPanel.RenderModelBox = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderObjectBox
         {
-            get { return ModelPanel.RenderObjectBox; }
-            set { ModelPanel.RenderObjectBox = value; }
+            get => ModelPanel.RenderObjectBox;
+            set => ModelPanel.RenderObjectBox = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderVisBoneBox
         {
-            get { return ModelPanel.RenderVisBoneBox; }
-            set { ModelPanel.RenderVisBoneBox = value; }
+            get => ModelPanel.RenderVisBoneBox;
+            set => ModelPanel.RenderVisBoneBox = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseBindStateBoxes
         {
-            get { return ModelPanel.UseBindStateBoxes; }
-            set { ModelPanel.UseBindStateBoxes = value; }
+            get => ModelPanel.UseBindStateBoxes;
+            set => ModelPanel.UseBindStateBoxes = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool DontRenderOffscreen
         {
-            get { return ModelPanel.DontRenderOffscreen; }
-            set { ModelPanel.DontRenderOffscreen = value; }
+            get => ModelPanel.DontRenderOffscreen;
+            set => ModelPanel.DontRenderOffscreen = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ScaleBones
         {
-            get { return ModelPanel.ScaleBones; }
-            set { ModelPanel.ScaleBones = value; }
+            get => ModelPanel.ScaleBones;
+            set => ModelPanel.ScaleBones = value;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderLightDisplay
         {
-            get { return _renderLightDisplay; }
+            get => _renderLightDisplay;
             set { _renderLightDisplay = value; ModelPanel.Invalidate(); }
         }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int MaxFrame { get { return _maxFrame; } set { _maxFrame = value; } }
+        public int MaxFrame { get => _maxFrame; set => _maxFrame = value; }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Updating { get { return _updating; } set { _updating = value; } }
+        public bool Updating { get => _updating; set => _updating = value; }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Loop { get { return _loop; } set { _loop = value; } }
+        public bool Loop { get => _loop; set => _loop = value; }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Playing { get { return _playing; } set { _playing = value; } }
+        public bool Playing { get => _playing; set => _playing = value; }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual CHR0Editor CHR0Editor { get { return null; } }
+        public virtual CHR0Editor CHR0Editor => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual SRT0Editor SRT0Editor { get { return null; } }
+        public virtual SRT0Editor SRT0Editor => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual SHP0Editor SHP0Editor { get { return null; } }
+        public virtual SHP0Editor SHP0Editor => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual VIS0Editor VIS0Editor { get { return null; } }
+        public virtual VIS0Editor VIS0Editor => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual PAT0Editor PAT0Editor { get { return null; } }
+        public virtual PAT0Editor PAT0Editor => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual SCN0Editor SCN0Editor { get { return null; } }
+        public virtual SCN0Editor SCN0Editor => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual CLR0Editor CLR0Editor { get { return null; } }
+        public virtual CLR0Editor CLR0Editor => null;
 
         //TODO: make all playback panel values individual and virtual and inherit them with the playback panel values
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual ModelPlaybackPanel PlaybackPanel { get { return null; } }
-        
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual ModelPanel ModelPanel { get { return _viewerForm == null ? null : _viewerForm.modelPanel1; } }
+        public virtual ModelPlaybackPanel PlaybackPanel => null;
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ModelViewerForm ModelViewerForm { get { return _viewerForm; } }
+        public virtual ModelPanel ModelPanel => _viewerForm == null ? null : _viewerForm.modelPanel1;
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IModel TargetModel { get { return _targetModel; } set { ModelChanged(value); } }
+        public ModelViewerForm ModelViewerForm => _viewerForm;
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IModel TargetModel { get => _targetModel; set => ModelChanged(value); }
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CHR0Node SelectedCHR0
         {
-            get { return _chr0; }
+            get => _chr0;
             set
             {
                 _chr0 = value;
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.CHR);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SRT0Node SelectedSRT0
         {
-            get { return _srt0; }
+            get => _srt0;
             set
             {
                 _srt0 = value;
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.SRT);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SHP0Node SelectedSHP0
         {
-            get { return _shp0; }
+            get => _shp0;
             set
             {
                 _shp0 = value;
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.SHP);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PAT0Node SelectedPAT0
         {
-            get { return _pat0; }
+            get => _pat0;
             set
             {
                 _pat0 = value;
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.PAT);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public VIS0Node SelectedVIS0
         {
-            get { return _vis0; }
+            get => _vis0;
             set
             {
                 _vis0 = value;
 
                 if (_updating)
+                {
                     return;
+                }
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.VIS);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SCN0Node SelectedSCN0
         {
-            get { return _scn0; }
+            get => _scn0;
             set
             {
                 _scn0 = value;
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.SCN);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CLR0Node SelectedCLR0
         {
-            get { return _clr0; }
+            get => _clr0;
             set
             {
                 _clr0 = value;
 
                 if (!_updating)
+                {
                     AnimChanged(NW4RAnimType.CLR);
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool AllowZoomExtents { get { return _selectedBone != null; } }
+        public bool AllowZoomExtents => _selectedBone != null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool EnableTransformEdit
         {
-            get { return _enableTransform; }
+            get => _enableTransform;
             set
             {
                 if (_enableTransform == value)
+                {
                     return;
+                }
 
                 _enableTransform = value;
 
                 if (CHR0Editor != null)
+                {
                     CHR0Editor.Enabled = value;
+                }
+
                 if (SRT0Editor != null)
+                {
                     SRT0Editor.Enabled = value;
+                }
+
                 if (SHP0Editor != null)
+                {
                     SHP0Editor.Enabled = value;
+                }
+
                 if (VIS0Editor != null)
+                {
                     VIS0Editor.Enabled = value;
+                }
+
                 if (PAT0Editor != null)
+                {
                     PAT0Editor.Enabled = value;
+                }
+
                 if (SCN0Editor != null)
+                {
                     SCN0Editor.Enabled = value;
+                }
+
                 if (CLR0Editor != null)
+                {
                     CLR0Editor.Enabled = value;
+                }
+
                 if (KeyframePanel != null)
+                {
                     KeyframePanel.Enabled = value;
+                }
+
                 if (InterpolationEditor != null && InterpolationEditor.Visible)
+                {
                     InterpolationEditor.Enabled = value;
+                }
 
                 if (value)
+                {
                     UpdatePropDisplay();
+                }
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public uint AllowedUndos { get { return _allowedUndos; } set { _allowedUndos = value; } }
+        public uint AllowedUndos { get => _allowedUndos; set => _allowedUndos = value; }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public InterpolationEditor InterpolationEditor { get { return _interpolationEditor.Visible ? _interpolationEditor : _interpolationForm != null ? _interpolationForm._interpolationEditor : null; } }
+        public InterpolationEditor InterpolationEditor => _interpolationEditor.Visible ? _interpolationEditor : _interpolationForm != null ? _interpolationForm._interpolationEditor : null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef { get { return _targetTexRef; } set { _targetTexRef = value; UpdatePropDisplay(); } }
+        public MDL0MaterialRefNode TargetTexRef { get => _targetTexRef; set { _targetTexRef = value; UpdatePropDisplay(); } }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public VIS0EntryNode TargetVisEntry
         {
-            get { return _targetVisEntry; }
+            get => _targetVisEntry;
             set
             {
                 _targetVisEntry = value;
@@ -292,11 +338,13 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual NW4RAnimType TargetAnimType
         {
-            get { return _targetAnimType; }
+            get => _targetAnimType;
             set
             {
                 if (_targetAnimType == value)
+                {
                     return;
+                }
 
                 _targetAnimType = value;
             }
@@ -309,9 +357,13 @@ namespace System.Windows.Forms
         public static float CamDistance(Vector3 v, GLCamera cam, float radius = _orbRadius)
         {
             if (!cam.Orthographic)
+            {
                 return v.TrueDistance(cam.GetPoint()) / radius * (cam.VerticalFieldOfView / 45.0f) * 0.1f;
+            }
             else
+            {
                 return cam._scale._x * 80.0f;
+            }
         }
         public static float OrbRadius(IBoneNode b, GLViewport viewport, float radius = _orbRadius) { return CamDistance(BoneLoc(b), viewport.Camera, radius); }
         public static float OrbRadius(Vector3 b, GLViewport viewport, float radius = _orbRadius) { return CamDistance(b, viewport.Camera, radius); }
@@ -324,41 +376,54 @@ namespace System.Windows.Forms
         public static Matrix CameraFacingRotationMatrix(GLCamera camera, Vector3 pos = new Vector3()) { return Matrix.RotationMatrix(CameraFacingRotation(camera, pos)); }
         public static Vector3 CameraFacingRotation(GLViewport viewport, Vector3 pos = new Vector3()) { return CameraFacingRotation(viewport.Camera, pos); }
         public static Vector3 CameraFacingRotation(GLCamera camera, Vector3 pos = new Vector3()) { return camera.Orthographic ? camera._rotation : pos.LookatAngles(CamLoc(camera)) * Maths._rad2degf; }
-        
+
         public static Vector3 CamLoc(GLCamera cam) { return cam == null ? new Vector3() : cam.GetPoint(); }
         public static Vector3 BoneLoc(IBoneNode b) { return b == null ? new Vector3() : b.Matrix.GetPoint(); }
 
-        bool _moveVerticesWithVertexLoc = false;
+        private readonly bool _moveVerticesWithVertexLoc = false;
         public Vector3? VertexLoc
         {
             get
             {
                 if (_selectedVertices == null || _selectedVertices.Count == 0)
+                {
                     return null;
+                }
 
                 if (_vertexLoc != null)
+                {
                     return _vertexLoc;
+                }
 
                 Vector3 average = new Vector3();
                 foreach (Vertex3 v in _selectedVertices)
+                {
                     average += v.WeightedPosition;
+                }
+
                 average /= _selectedVertices.Count;
                 return _vertexLoc = average;
             }
             set
             {
                 if (VertexLoc == null)
+                {
                     return;
+                }
 
                 if (value == null)
+                {
                     return;
+                }
 
                 if (_moveVerticesWithVertexLoc)
                 {
                     Vector3 previous = VertexLoc.Value;
                     Vector3 diff = value.Value - previous;
                     foreach (Vertex3 v in _selectedVertices)
+                    {
                         v.WeightedPosition += diff;
+                    }
                 }
 
                 _vertexLoc = value;
@@ -379,18 +444,20 @@ namespace System.Windows.Forms
             set;
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual KeyframePanel KeyframePanel { get { return null; } }
+        public virtual KeyframePanel KeyframePanel => null;
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public virtual BonesPanel BonesPanel { get { return null; } }
+        public virtual BonesPanel BonesPanel => null;
 
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual IBoneNode SelectedBone
         {
-            get { return _selectedBone; }
+            get => _selectedBone;
             set
             {
                 if (_selectedBone != null)
+                {
                     _selectedBone.BoneColor = _selectedBone.NodeColor = Color.Transparent;
+                }
 
                 bool boneSelected = (_selectedBone = value) != null;
                 if (boneSelected)
@@ -407,13 +474,17 @@ namespace System.Windows.Forms
                 }
 
                 if (BonesPanel != null)
+                {
                     BonesPanel.SetSelectedBone(_selectedBone);
+                }
 
                 if (TargetAnimType == NW4RAnimType.CHR && KeyframePanel != null)
+                {
                     KeyframePanel.TargetSequence =
                         _chr0 != null && _selectedBone != null ?
                         _chr0.FindChild(_selectedBone.Name, false) :
                         null;
+                }
 
                 OnSelectedBoneChanged();
                 UpdatePropDisplay();
@@ -422,7 +493,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public virtual int CurrentFrame
         {
-            get { return _animFrame; }
+            get => _animFrame;
             set
             {
                 _animFrame = value;
@@ -464,7 +535,7 @@ namespace System.Windows.Forms
         public virtual bool PlaySCN0 { get; set; }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), DefaultValue(true)]
         public virtual bool PlaySHP0 { get; set; }
-        
+
         #endregion
     }
 }

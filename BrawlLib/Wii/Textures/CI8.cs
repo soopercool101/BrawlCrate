@@ -1,15 +1,15 @@
-﻿using System;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
+using System;
 
 namespace BrawlLib.Wii.Textures
 {
-    unsafe class CI8 : TextureConverter
+    internal unsafe class CI8 : TextureConverter
     {
-        public override int BitsPerPixel { get { return 8; } }
-        public override int BlockWidth { get { return 8; } }
-        public override int BlockHeight { get { return 4; } }
+        public override int BitsPerPixel => 8;
+        public override int BlockWidth => 8;
+        public override int BlockHeight => 4;
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format8bppIndexed; } }
-        public override WiiPixelFormat RawFormat { get { return WiiPixelFormat.CI8; } }
+        public override WiiPixelFormat RawFormat => WiiPixelFormat.CI8;
 
         protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
         {
@@ -17,20 +17,30 @@ namespace BrawlLib.Wii.Textures
             if (_workingPalette != null)
             {
                 for (int y = 0; y < BlockHeight; y++, dPtr += width)
+                {
                     for (int x = 0; x < BlockWidth; x++)
                     {
                         byte b = *sPtr++;
                         if (b >= _workingPalette.Entries.Length)
+                        {
                             dPtr[x] = new ARGBPixel();
+                        }
                         else
+                        {
                             dPtr[x] = (ARGBPixel)_workingPalette.Entries[b];
+                        }
                     }
+                }
             }
             else
             {
                 for (int y = 0; y < BlockHeight; y++, dPtr += width)
+                {
                     for (int x = 0; x < BlockWidth; x++)
+                    {
                         dPtr[x] = new ARGBPixel(*sPtr++);
+                    }
+                }
             }
         }
 
@@ -39,8 +49,12 @@ namespace BrawlLib.Wii.Textures
             byte* stPtr = (byte*)sPtr;
             byte* dPtr = (byte*)blockAddr;
             for (int y = 0; y < BlockHeight; y++, stPtr += width)
-                for (int x = 0; x < BlockWidth; )
+            {
+                for (int x = 0; x < BlockWidth;)
+                {
                     *dPtr++ = stPtr[x++];
+                }
+            }
         }
     }
 }

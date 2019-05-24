@@ -8,17 +8,20 @@ namespace System.IO
         private const int _valueMax = 384;
 
         internal byte* _base, _ptr, _ceil;
-        private int _length, _position, _depth;
+        private readonly int _length;
+        private int _position;
+        private readonly int _depth;
+
         //private byte[] _buffer = new byte[512];
         internal bool _inTag, _inString;
         //private string _nameBuffer = new string(' ', _nameMax);
         //private string _valueBuffer = new string(' ', _valueMax);
 
         private UnsafeBuffer _stringBuffer;// = new UnsafeBuffer(_nameMax + _valueMax);
-        private byte* _namePtr, _valPtr;
+        private readonly byte* _namePtr, _valPtr;
 
-        public PString Name { get { return _namePtr; } }
-        public PString Value { get { return _valPtr; } }
+        public PString Name => _namePtr;
+        public PString Value => _valPtr;
 
         public XmlReader(void* pSource, int length)
         {
@@ -34,12 +37,17 @@ namespace System.IO
             //Find start of Xml file
             if (BeginElement() && Name.Equals("?xml"))
             {
-                while ((_ptr < _ceil) && (*_ptr++ != '>')) ;
+                while ((_ptr < _ceil) && (*_ptr++ != '>'))
+                {
+                    ;
+                }
+
                 _inTag = false;
             }
             else
+            {
                 throw new IOException("File is not a valid XML file.");
-
+            }
         }
         ~XmlReader() { Dispose(); }
         public void Dispose()
@@ -62,7 +70,9 @@ namespace System.IO
                 if (*_ptr <= 0x20)
                 {
                     if (inStr)
+                    {
                         break;
+                    }
 
                     inStr = true;
                     continue;
@@ -70,12 +80,16 @@ namespace System.IO
                 else if ((*_ptr == '<') || (*_ptr == '>') || (*_ptr == '/'))
                 {
                     if (!inStr)
+                    {
                         break;
+                    }
                 }
                 else
                 {
                     if (!inStr)
+                    {
                         inStr = true;
+                    }
                 }
                 pOut[len++] = *_ptr++;
             }
@@ -98,7 +112,9 @@ namespace System.IO
                 {
                     b = *_ptr++;
                     if (b == '"')
+                    {
                         break;
+                    }
                     //if (b < 0x20)
                     //    continue;
                 }
@@ -107,7 +123,9 @@ namespace System.IO
                     b = *_ptr;
 
                     if ((b <= 0x20) || (b == '<') || (b == '>') || (b == '/') || (b == '='))
+                    {
                         break;
+                    }
 
                     if (b == '"')
                     {
@@ -131,7 +149,10 @@ namespace System.IO
 
         private void SkipWhitespace()
         {
-            while ((_ptr < _ceil) && (*_ptr <= 0x20)) _ptr++;
+            while ((_ptr < _ceil) && (*_ptr <= 0x20))
+            {
+                _ptr++;
+            }
         }
 
         //Read next non-whitespace byte. Returns 0 on EOF
@@ -142,7 +163,9 @@ namespace System.IO
             {
                 b = _base[_position++];
                 if (b >= 0x20)
+                {
                     return b;
+                }
             }
             return -1;
 
@@ -181,9 +204,13 @@ namespace System.IO
                         if (ReadString(_namePtr, _nameMax)) //Will fail on delimiter
                         {
                             if ((_namePtr[0] == '!') && (_namePtr[1] == '-') && (_namePtr[2] == '-'))
+                            {
                                 comment = true;
+                            }
                             else
+                            {
                                 return true;
+                            }
                         }
                     }
                 }
@@ -193,7 +220,10 @@ namespace System.IO
                     if (literal)
                     {
                         if (*_ptr++ == '"')
+                        {
                             literal = false;
+                        }
+
                         continue;
                     }
 
@@ -210,13 +240,19 @@ namespace System.IO
                     }
 
                     if (*_ptr == '/')
+                    {
                         return false;
+                    }
 
                     b = *_ptr++;
                     if (b == '"')
+                    {
                         literal = true;
+                    }
                     else if (b == '>')
+                    {
                         _inTag = false;
+                    }
                 }
 
                 //if ((*_ptr == '/') && _inTag)
@@ -254,19 +290,30 @@ namespace System.IO
         public void EndElement()
         {
             //Guarantees that we are in the end tag, sitting on the delimiter. If not, something is wrong!
-            while (BeginElement()) EndElement();
+            while (BeginElement())
+            {
+                EndElement();
+            }
 
             if (!_inTag || (_ptr >= _ceil) || (*_ptr != '/'))
+            {
                 return;
+            }
 
-            while ((_ptr < _ceil) && (*_ptr++ != '>')) ;
+            while ((_ptr < _ceil) && (*_ptr++ != '>'))
+            {
+                ;
+            }
+
             _inTag = false;
         }
 
         public bool ReadAttribute()
         {
             if (!_inTag)
+            {
                 return false;
+            }
 
             SkipWhitespace();
             if (ReadString(_namePtr, _nameMax))
@@ -276,7 +323,9 @@ namespace System.IO
                 {
                     _ptr++;
                     if (ReadString(_valPtr, _valueMax))
+                    {
                         return true;
+                    }
                 }
             }
 
@@ -285,12 +334,16 @@ namespace System.IO
         private unsafe bool LeaveTag()
         {
             if (!_inTag)
+            {
                 return true;
+            }
 
             while (_ptr < _ceil)
             {
                 if (*_ptr == '/')
+                {
                     return false;
+                }
 
                 if (*_ptr++ == '>')
                 {
@@ -305,12 +358,13 @@ namespace System.IO
         public unsafe bool ReadValue(float* pOut)
         {
             if (!LeaveTag())
+            {
                 return false;
+            }
 
             if (ReadString(_valPtr, _valueMax))
             {
-                float f;
-                if (float.TryParse((string)Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out f))
+                if (float.TryParse((string)Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out float f))
                 {
                     *pOut = f;
                     return true;
@@ -322,12 +376,13 @@ namespace System.IO
         public unsafe bool ReadValue(float* pOut, float scale)
         {
             if (!LeaveTag())
+            {
                 return false;
+            }
 
             if (ReadString(_valPtr, _valueMax))
             {
-                float f;
-                if (float.TryParse((string)Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out f))
+                if (float.TryParse((string)Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out float f))
                 {
                     *pOut = f * scale;
                     return true;
@@ -339,12 +394,13 @@ namespace System.IO
         public unsafe bool ReadValue(int* pOut)
         {
             if (!LeaveTag())
+            {
                 return false;
+            }
 
             if (ReadString(_valPtr, _valueMax))
             {
-                int f;
-                if (int.TryParse((string)Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out f))
+                if (int.TryParse((string)Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out int f))
                 {
                     *pOut = f;
                     return true;
@@ -357,10 +413,14 @@ namespace System.IO
         public bool ReadStringSingle()
         {
             if (!LeaveTag())
+            {
                 return false;
+            }
 
             if (ReadString(_valPtr, _valueMax))
+            {
                 return true;
+            }
 
             return false;
         }
@@ -368,14 +428,18 @@ namespace System.IO
         public string ReadElementString()
         {
             if (!LeaveTag())
+            {
                 return null;
+            }
 
             int len = 0;
             while ((len < _valueMax) && (_ptr < _ceil) && (*_ptr != '<'))
+            {
                 _valPtr[len++] = *_ptr++;
+            }
 
             _valPtr[len] = 0;
-            return new String((sbyte*)_valPtr);
+            return new string((sbyte*)_valPtr);
         }
     }
 }

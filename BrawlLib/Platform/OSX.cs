@@ -2,7 +2,7 @@
 
 namespace System
 {
-    static unsafe class OSX
+    internal static unsafe class OSX
     {
 
         public const string libmName = "libc.dylib";

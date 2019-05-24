@@ -10,32 +10,32 @@ namespace System.Audio
         private IntPtr _allocatedHGlobal = IntPtr.Zero;
         private BrawlLib.IO.FileMap _sourceMap;
 
-        private short* _source;
+        private readonly short* _source;
 
-        private int _bps;
-        private int _numSamples;
-        private int _numChannels;
-        private int _frequency;
+        private readonly int _bps;
+        private readonly int _numSamples;
+        private readonly int _numChannels;
+        private readonly int _frequency;
         private int _samplePos;
 
         private bool _looped;
         private int _loopStart;
         private int _loopEnd;
 
-        public WaveFormatTag Format { get { return WaveFormatTag.WAVE_FORMAT_PCM; } }
-        public int BitsPerSample { get { return _bps; } }
-        public int Samples { get { return _numSamples; } }
-        public int Channels { get { return _numChannels; } }
-        public int Frequency { get { return _frequency; } }
+        public WaveFormatTag Format => WaveFormatTag.WAVE_FORMAT_PCM;
+        public int BitsPerSample => _bps;
+        public int Samples => _numSamples;
+        public int Channels => _numChannels;
+        public int Frequency => _frequency;
 
-        public bool IsLooping { get { return _looped; } set { _looped = value; } }
-        public int LoopStartSample { get { return _loopStart; } set { _loopStart = value; } }
-        public int LoopEndSample { get { return _loopEnd; } set { _loopEnd = value; } }
+        public bool IsLooping { get => _looped; set => _looped = value; }
+        public int LoopStartSample { get => _loopStart; set => _loopStart = value; }
+        public int LoopEndSample { get => _loopEnd; set => _loopEnd = value; }
 
         public int SamplePosition
         {
-            get { return _samplePos; }
-            set { _samplePos = Math.Max(Math.Min(value, _numSamples), 0); }
+            get => _samplePos;
+            set => _samplePos = Math.Max(Math.Min(value, _numSamples), 0);
         }
 
         public PCMStream(byte[] wavData)
@@ -64,7 +64,7 @@ namespace System.Audio
                 _loopEnd = (int)loops[0]._dwEnd;
             }
         }
-        
+
         internal PCMStream(short* source, int samples, int sampleRate, int channels, int bps)
         {
             _sourceMap = null;
@@ -86,22 +86,27 @@ namespace System.Audio
 
             _bps = pWAVE->_format._encoding == 0 ? 8 : 16;
 
-            if (_numSamples <= 0) return;
+            if (_numSamples <= 0)
+            {
+                return;
+            }
 
-            _loopStart = (int)pWAVE->LoopSample;
+            _loopStart = pWAVE->LoopSample;
             _loopEnd = _numSamples;
 
             _source = (short*)dataAddr;
             _samplePos = 0;
         }
 
-        internal static PCMStream[] GetStreams(RSTMHeader* pRSTM, VoidPtr dataAddr) {
+        internal static PCMStream[] GetStreams(RSTMHeader* pRSTM, VoidPtr dataAddr)
+        {
             HEADHeader* pHeader = pRSTM->HEADData;
             StrmDataInfo* part1 = pHeader->Part1;
             int c = part1->_format._channels;
             PCMStream[] streams = new PCMStream[c.RoundUpToEven() / 2];
 
-            for (int i = 0; i < streams.Length; i++) {
+            for (int i = 0; i < streams.Length; i++)
+            {
                 int x = (i + 1) * 2 <= c ? 2 : 1;
                 streams[i] = new PCMStream(pRSTM, x, i * 2, dataAddr);
             }
@@ -109,12 +114,16 @@ namespace System.Audio
             return streams;
         }
 
-        internal PCMStream(RSTMHeader* header, int channels, int startChannel, void* audioSource) {
+        internal PCMStream(RSTMHeader* header, int channels, int startChannel, void* audioSource)
+        {
             StrmDataInfo* info = header->HEADData->Part1;
-            if (info->_format._channels < startChannel + channels) throw new Exception("Not enough channels");
+            if (info->_format._channels < startChannel + channels)
+            {
+                throw new Exception("Not enough channels");
+            }
 
             List<short[]>[] blocksByChannel = new List<short[]>[info->_format._channels];
-            for (int i=0; i<blocksByChannel.Length; i++)
+            for (int i = 0; i < blocksByChannel.Length; i++)
             {
                 blocksByChannel[i] = new List<short[]>();
             }
@@ -130,7 +139,8 @@ namespace System.Audio
                     ? info->_lastBlockTotal
                     : info->_blockSize;
 
-                for (int channel = 0; channel < info->_format._channels; channel++) {
+                for (int channel = 0; channel < info->_format._channels; channel++)
+                {
                     short[] b = new short[blockSize / sizeof(short)];
                     Marshal.Copy((IntPtr)from, b, 0, b.Length);
                     from += blockTotal;
@@ -190,15 +200,19 @@ namespace System.Audio
             int max = Math.Min(numSamples, _numSamples - _samplePos);
 
             for (int i = 0; i < max; i++)
+            {
                 for (int x = 0; x < _numChannels; x++)
+                {
                     *dPtr++ = *sPtr++;
+                }
+            }
 
             _samplePos += max;
 
             return max;
         }
 
-        public void Wrap() 
+        public void Wrap()
         {
             SamplePosition = _loopStart;
         }

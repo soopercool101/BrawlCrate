@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
-using BrawlLib;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static MDL0PolygonWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -43,8 +43,8 @@ namespace BrawlCrate.NodeWrappers
         protected static void DuplicateAction(object sender, EventArgs e) { GetInstance<MDL0PolygonWrapper>().Duplicate(); }
         #endregion
 
-        public override string ExportFilter { get { return FileFilters.Object; } }
-        public override string ImportFilter { get { return FileFilters.Raw; } }
+        public override string ExportFilter => FileFilters.Object;
+        public override string ImportFilter => FileFilters.Raw;
 
         public MDL0PolygonWrapper() { ContextMenuStrip = _menu; }
 

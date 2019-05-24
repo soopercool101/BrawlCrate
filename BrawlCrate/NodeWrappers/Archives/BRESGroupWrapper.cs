@@ -1,15 +1,15 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.BRESGroup)]
     public class BRESGroupWrapper : GenericWrapper
     {
-        private static ContextMenuStrip _menu;
-        static BRESGroupWrapper() 
+        private static readonly ContextMenuStrip _menu;
+        static BRESGroupWrapper()
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));

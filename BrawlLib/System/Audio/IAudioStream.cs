@@ -1,6 +1,6 @@
 ﻿namespace System.Audio
 {
-    public interface IAudioStream: IDisposable
+    public interface IAudioStream : IDisposable
     {
         WaveFormatTag Format { get; }
         int BitsPerSample { get; }
@@ -11,7 +11,7 @@
         int LoopStartSample { get; set; }
         int LoopEndSample { get; set; }
         int SamplePosition { get; set; }
-        
+
         /// <summary>
         /// Reads numSamples audio samples into the address specified by destAddr.
         /// This method does not observe loop points and does not loop automatically.

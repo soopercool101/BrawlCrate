@@ -1,13 +1,13 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class REFFNode : NW4RArcEntryNode
     {
-        internal REFF* Header { get { return (REFF*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.REFF; } }
+        internal REFF* Header => (REFF*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.REFF;
 
         public override bool OnInitialize()
         {
@@ -16,7 +16,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFF* header = Header;
 
             if (_name == null)
+            {
                 _name = header->IdString;
+            }
 
             return header->Table->_entries > 0;
         }
@@ -26,10 +28,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFTypeObjectTable* table = Header->Table;
             REFTypeObjectEntry* Entry = table->First;
             for (int i = 0; i < table->_entries; i++, Entry = Entry->Next)
-                new REFFEntryNode() { _name = Entry->Name, _offset = (int)Entry->DataOffset, _length = (int)Entry->DataLength }.Initialize(this, new DataSource((byte*)table->Address + Entry->DataOffset, (int)Entry->DataLength));
+            {
+                new REFFEntryNode() { _name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength }.Initialize(this, new DataSource((byte*)table->Address + Entry->DataOffset, Entry->DataLength));
+            }
         }
 
-        int _tableLen = 0;
+        private int _tableLen = 0;
         public override int OnCalculateSize(bool force)
         {
             int size = 0x28 + (Name.Length + 1).Align(4);
@@ -78,18 +82,12 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class REFFEntryNode : ResourceNode
     {
-        internal REFFDataHeader* Header { get { return (REFFDataHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType
-        {
-            get
-            {
-                return ResourceType.REFFEntry;
-            }
-        }
+        internal REFFDataHeader* Header => (REFFDataHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.REFFEntry;
         [Category("REFF Entry")]
-        public int REFFOffset { get { return _offset; } }
+        public int REFFOffset => _offset;
         [Category("REFF Entry")]
-        public int DataLength { get { return _length; } }
+        public int DataLength => _length;
 
         public int _offset;
         public int _length;
@@ -113,8 +111,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     new REFFEmitterNode9().Initialize(this, (VoidPtr)Header + 8, (int)Header->_headerSize);
                     break;
             }
-                
-            new REFFParticleNode().Initialize(this, (VoidPtr)Header->Params, (int)Header->Params->headersize);
+
+            new REFFParticleNode().Initialize(this, Header->Params, (int)Header->Params->headersize);
             new REFFAnimationListNode()
             {
                 _ptclTrackCount = *Header->PtclTrackCount,
@@ -131,7 +129,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int size = 8;
             foreach (ResourceNode r in Children)
+            {
                 size += r.CalculateSize(true);
+            }
+
             return size;
         }
 

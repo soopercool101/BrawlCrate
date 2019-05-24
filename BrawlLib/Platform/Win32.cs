@@ -1,21 +1,27 @@
-﻿using System.Runtime.InteropServices;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace System
 {
-    static partial class Win32
+    internal static partial class Win32
     {
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public class SafeHandle : IDisposable
         {
             private uint _handle;
-            public VoidPtr Handle { get { return _handle; } }
+            public VoidPtr Handle => _handle;
 
             public SafeHandle(VoidPtr handle) { _handle = handle; }
 
             ~SafeHandle() { Dispose(); }
             public void Dispose() { if (_handle != 0) { CloseHandle(_handle); _handle = 0; } }
-            public void ErrorCheck() { if (_handle == 0)  Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error()); }
+            public void ErrorCheck()
+            {
+                if (_handle == 0)
+                {
+                    Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                }
+            }
 
             public static implicit operator SafeHandle(VoidPtr handle) { return new SafeHandle(handle); }
 
@@ -23,14 +29,17 @@ namespace System
             {
                 VoidPtr hProc = Process.GetCurrentProcess().Handle;
                 if (!DuplicateHandle(hProc, hFile, hProc, out hFile, 0, false, 2))
+                {
                     Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
+                }
+
                 return new SafeHandle(hFile);
             }
         }
 
         [DllImport("Kernel32.dll", CharSet = CharSet.Unicode)]
         public static extern bool CloseHandle(VoidPtr hObject);
-        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode, SetLastError=true)]
+        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern bool DuplicateHandle(VoidPtr hSourceProcessHandle, VoidPtr hSourceHandle, VoidPtr hTargetProcessHandle, out VoidPtr lpTargetHandle, uint dwDesiredAccess, bool bInheritHandle, uint dwOptions);
 
 
@@ -39,7 +48,7 @@ namespace System
         [DllImport("Kernel32.dll", EntryPoint = "RtlFillMemory", SetLastError = false)]
         public static extern void FillMemory(VoidPtr dest, uint length, byte value);
 
-        [DllImport("user32.dll", SetLastError=true)]
+        [DllImport("user32.dll", SetLastError = true)]
         public static extern VoidPtr GetDC(VoidPtr hWnd);
         [DllImport("user32.dll")]
         public static extern int ReleaseDC(VoidPtr hWnd, VoidPtr hDC);

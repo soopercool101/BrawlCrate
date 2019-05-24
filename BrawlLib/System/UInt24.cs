@@ -9,7 +9,7 @@ namespace System
 
         public uint Value
         {
-            get { return ((uint)_dat0 << 16) | ((uint)_dat1 << 8) | ((uint)_dat2); }
+            get => ((uint)_dat0 << 16) | ((uint)_dat1 << 8) | _dat2;
             set
             {
                 _dat2 = (byte)((value) & 0xFF);
@@ -20,7 +20,7 @@ namespace System
 
         public static implicit operator int(BUInt24 val) { return (int)val.Value; }
         public static implicit operator BUInt24(int val) { return new BUInt24((uint)val); }
-        public static implicit operator uint(BUInt24 val) { return (uint)val.Value; }
+        public static implicit operator uint(BUInt24 val) { return val.Value; }
         public static implicit operator BUInt24(uint val) { return new BUInt24(val); }
 
         public BUInt24(uint value)
@@ -37,16 +37,16 @@ namespace System
             _dat0 = v0;
         }
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct UInt24
     {
         public byte _dat2, _dat1, _dat0;
-        
+
         public uint Value
         {
-            get { return ((uint)_dat0 << 16) | ((uint)_dat1 << 8) | ((uint)_dat2); }
+            get => ((uint)_dat0 << 16) | ((uint)_dat1 << 8) | _dat2;
             set
             {
                 _dat2 = (byte)((value) & 0xFF);
@@ -57,7 +57,7 @@ namespace System
 
         public static implicit operator int(UInt24 val) { return (int)val.Value; }
         public static implicit operator UInt24(int val) { return new UInt24((uint)val); }
-        public static implicit operator uint(UInt24 val) { return (uint)val.Value; }
+        public static implicit operator uint(UInt24 val) { return val.Value; }
         public static implicit operator UInt24(uint val) { return new UInt24(val); }
 
         public UInt24(uint value)
@@ -74,6 +74,6 @@ namespace System
             _dat0 = v0;
         }
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

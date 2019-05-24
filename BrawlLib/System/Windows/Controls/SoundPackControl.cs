@@ -1,11 +1,11 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System.IO;
-using System.Diagnostics;
-using System.Collections;
-using BrawlLib;
-using System.ComponentModel;
+﻿using BrawlLib;
 using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 
 namespace System.Windows.Forms
 {
@@ -40,238 +40,238 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.clmIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstSets = new System.Windows.Forms.ListView();
-            this.clmType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmDataOffset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmAudioOffset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmEntryOffset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuPath = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuReplace = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rWSDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rSEQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rBNKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.externalReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.audioPlaybackPanel1 = new System.Windows.Forms.AudioPlaybackPanel();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.makeAllExternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.makeAllInternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            clmIndex = new System.Windows.Forms.ColumnHeader();
+            clmName = new System.Windows.Forms.ColumnHeader();
+            lstSets = new System.Windows.Forms.ListView();
+            clmType = new System.Windows.Forms.ColumnHeader();
+            clmDataOffset = new System.Windows.Forms.ColumnHeader();
+            clmAudioOffset = new System.Windows.Forms.ColumnHeader();
+            clmEntryOffset = new System.Windows.Forms.ColumnHeader();
+            contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
+            mnuPath = new System.Windows.Forms.ToolStripMenuItem();
+            mnuExport = new System.Windows.Forms.ToolStripMenuItem();
+            mnuReplace = new System.Windows.Forms.ToolStripMenuItem();
+            deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            rWSDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            rSEQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            rBNKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            rSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            externalReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            audioPlaybackPanel1 = new System.Windows.Forms.AudioPlaybackPanel();
+            editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            makeAllExternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            makeAllInternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            contextMenuStrip1.SuspendLayout();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // clmIndex
             // 
-            this.clmIndex.Text = "Index";
-            this.clmIndex.Width = 40;
+            clmIndex.Text = "Index";
+            clmIndex.Width = 40;
             // 
             // clmName
             // 
-            this.clmName.Text = "Name";
-            this.clmName.Width = 40;
+            clmName.Text = "Name";
+            clmName.Width = 40;
             // 
             // lstSets
             // 
-            this.lstSets.AutoArrange = false;
-            this.lstSets.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lstSets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmIndex,
-            this.clmType,
-            this.clmName,
-            this.clmDataOffset,
-            this.clmAudioOffset,
-            this.clmEntryOffset});
-            this.lstSets.ContextMenuStrip = this.contextMenuStrip1;
-            this.lstSets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstSets.FullRowSelect = true;
-            this.lstSets.GridLines = true;
-            this.lstSets.HideSelection = false;
-            this.lstSets.LabelWrap = false;
-            this.lstSets.Location = new System.Drawing.Point(0, 28);
-            this.lstSets.MultiSelect = false;
-            this.lstSets.Name = "lstSets";
-            this.lstSets.Size = new System.Drawing.Size(389, 105);
-            this.lstSets.TabIndex = 0;
-            this.lstSets.UseCompatibleStateImageBehavior = false;
-            this.lstSets.View = System.Windows.Forms.View.Details;
-            this.lstSets.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstSets_ColumnClick);
-            this.lstSets.SelectedIndexChanged += new System.EventHandler(this.lstSets_SelectedIndexChanged);
-            this.lstSets.DoubleClick += new System.EventHandler(this.lstSets_DoubleClick);
-            this.lstSets.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSets_KeyDown);
+            lstSets.AutoArrange = false;
+            lstSets.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lstSets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            clmIndex,
+            clmType,
+            clmName,
+            clmDataOffset,
+            clmAudioOffset,
+            clmEntryOffset});
+            lstSets.ContextMenuStrip = contextMenuStrip1;
+            lstSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstSets.FullRowSelect = true;
+            lstSets.GridLines = true;
+            lstSets.HideSelection = false;
+            lstSets.LabelWrap = false;
+            lstSets.Location = new System.Drawing.Point(0, 28);
+            lstSets.MultiSelect = false;
+            lstSets.Name = "lstSets";
+            lstSets.Size = new System.Drawing.Size(389, 105);
+            lstSets.TabIndex = 0;
+            lstSets.UseCompatibleStateImageBehavior = false;
+            lstSets.View = System.Windows.Forms.View.Details;
+            lstSets.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(lstSets_ColumnClick);
+            lstSets.SelectedIndexChanged += new System.EventHandler(lstSets_SelectedIndexChanged);
+            lstSets.DoubleClick += new System.EventHandler(lstSets_DoubleClick);
+            lstSets.KeyDown += new System.Windows.Forms.KeyEventHandler(lstSets_KeyDown);
             // 
             // clmType
             // 
-            this.clmType.Text = "Type";
+            clmType.Text = "Type";
             // 
             // clmDataOffset
             // 
-            this.clmDataOffset.Text = "Data Offset";
-            this.clmDataOffset.Width = 70;
+            clmDataOffset.Text = "Data Offset";
+            clmDataOffset.Width = 70;
             // 
             // clmAudioOffset
             // 
-            this.clmAudioOffset.Text = "Audio Offset";
-            this.clmAudioOffset.Width = 70;
+            clmAudioOffset.Text = "Audio Offset";
+            clmAudioOffset.Width = 70;
             // 
             // clmEntryOffset
             // 
-            this.clmEntryOffset.Text = "Entry Offset";
-            this.clmEntryOffset.Width = 80;
+            clmEntryOffset.Text = "Entry Offset";
+            clmEntryOffset.Width = 80;
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuPath,
-            this.mnuExport,
-            this.mnuReplace,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(138, 108);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            mnuPath,
+            mnuExport,
+            mnuReplace,
+            deleteToolStripMenuItem});
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new System.Drawing.Size(138, 108);
+            contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(contextMenuStrip1_Opening);
             // 
             // mnuPath
             // 
-            this.mnuPath.Name = "mnuPath";
-            this.mnuPath.Size = new System.Drawing.Size(137, 26);
-            this.mnuPath.Text = "Path...";
-            this.mnuPath.Click += new System.EventHandler(this.mnuPath_Click);
+            mnuPath.Name = "mnuPath";
+            mnuPath.Size = new System.Drawing.Size(137, 26);
+            mnuPath.Text = "Path...";
+            mnuPath.Click += new System.EventHandler(mnuPath_Click);
             // 
             // mnuExport
             // 
-            this.mnuExport.Name = "mnuExport";
-            this.mnuExport.Size = new System.Drawing.Size(137, 26);
-            this.mnuExport.Text = "Export";
-            this.mnuExport.Click += new System.EventHandler(this.mnuExport_Click);
+            mnuExport.Name = "mnuExport";
+            mnuExport.Size = new System.Drawing.Size(137, 26);
+            mnuExport.Text = "Export";
+            mnuExport.Click += new System.EventHandler(mnuExport_Click);
             // 
             // mnuReplace
             // 
-            this.mnuReplace.Name = "mnuReplace";
-            this.mnuReplace.Size = new System.Drawing.Size(137, 26);
-            this.mnuReplace.Text = "Replace";
-            this.mnuReplace.Click += new System.EventHandler(this.mnuReplace_Click);
+            mnuReplace.Name = "mnuReplace";
+            mnuReplace.Size = new System.Drawing.Size(137, 26);
+            mnuReplace.Text = "Replace";
+            mnuReplace.Click += new System.EventHandler(mnuReplace_Click);
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            deleteToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+            deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += new System.EventHandler(deleteToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newFileToolStripMenuItem,
-            this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(389, 28);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            newFileToolStripMenuItem,
+            editToolStripMenuItem});
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new System.Drawing.Size(389, 28);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
             // 
             // newFileToolStripMenuItem
             // 
-            this.newFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rWSDToolStripMenuItem,
-            this.rSEQToolStripMenuItem,
-            this.rBNKToolStripMenuItem,
-            this.rSTMToolStripMenuItem,
-            this.externalReferenceToolStripMenuItem});
-            this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.newFileToolStripMenuItem.Text = "New File";
+            newFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            rWSDToolStripMenuItem,
+            rSEQToolStripMenuItem,
+            rBNKToolStripMenuItem,
+            rSTMToolStripMenuItem,
+            externalReferenceToolStripMenuItem});
+            newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
+            newFileToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            newFileToolStripMenuItem.Text = "New File";
             // 
             // rWSDToolStripMenuItem
             // 
-            this.rWSDToolStripMenuItem.Name = "rWSDToolStripMenuItem";
-            this.rWSDToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-            this.rWSDToolStripMenuItem.Text = "RWSD";
-            this.rWSDToolStripMenuItem.Click += new System.EventHandler(this.rWSDToolStripMenuItem_Click);
+            rWSDToolStripMenuItem.Name = "rWSDToolStripMenuItem";
+            rWSDToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rWSDToolStripMenuItem.Text = "RWSD";
+            rWSDToolStripMenuItem.Click += new System.EventHandler(rWSDToolStripMenuItem_Click);
             // 
             // rSEQToolStripMenuItem
             // 
-            this.rSEQToolStripMenuItem.Name = "rSEQToolStripMenuItem";
-            this.rSEQToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-            this.rSEQToolStripMenuItem.Text = "RSEQ";
-            this.rSEQToolStripMenuItem.Click += new System.EventHandler(this.rSEQToolStripMenuItem_Click);
+            rSEQToolStripMenuItem.Name = "rSEQToolStripMenuItem";
+            rSEQToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rSEQToolStripMenuItem.Text = "RSEQ";
+            rSEQToolStripMenuItem.Click += new System.EventHandler(rSEQToolStripMenuItem_Click);
             // 
             // rBNKToolStripMenuItem
             // 
-            this.rBNKToolStripMenuItem.Name = "rBNKToolStripMenuItem";
-            this.rBNKToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-            this.rBNKToolStripMenuItem.Text = "RBNK";
-            this.rBNKToolStripMenuItem.Click += new System.EventHandler(this.rBNKToolStripMenuItem_Click);
+            rBNKToolStripMenuItem.Name = "rBNKToolStripMenuItem";
+            rBNKToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rBNKToolStripMenuItem.Text = "RBNK";
+            rBNKToolStripMenuItem.Click += new System.EventHandler(rBNKToolStripMenuItem_Click);
             // 
             // rSTMToolStripMenuItem
             // 
-            this.rSTMToolStripMenuItem.Name = "rSTMToolStripMenuItem";
-            this.rSTMToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-            this.rSTMToolStripMenuItem.Text = "RSTM";
-            this.rSTMToolStripMenuItem.Click += new System.EventHandler(this.rSTMToolStripMenuItem_Click);
+            rSTMToolStripMenuItem.Name = "rSTMToolStripMenuItem";
+            rSTMToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rSTMToolStripMenuItem.Text = "RSTM";
+            rSTMToolStripMenuItem.Click += new System.EventHandler(rSTMToolStripMenuItem_Click);
             // 
             // externalReferenceToolStripMenuItem
             // 
-            this.externalReferenceToolStripMenuItem.Name = "externalReferenceToolStripMenuItem";
-            this.externalReferenceToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
-            this.externalReferenceToolStripMenuItem.Text = "External Reference";
-            this.externalReferenceToolStripMenuItem.Click += new System.EventHandler(this.externalReferenceToolStripMenuItem_Click);
+            externalReferenceToolStripMenuItem.Name = "externalReferenceToolStripMenuItem";
+            externalReferenceToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            externalReferenceToolStripMenuItem.Text = "External Reference";
+            externalReferenceToolStripMenuItem.Click += new System.EventHandler(externalReferenceToolStripMenuItem_Click);
             // 
             // audioPlaybackPanel1
             // 
-            this.audioPlaybackPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.audioPlaybackPanel1.Location = new System.Drawing.Point(0, 133);
-            this.audioPlaybackPanel1.Name = "audioPlaybackPanel1";
-            this.audioPlaybackPanel1.Size = new System.Drawing.Size(389, 120);
-            this.audioPlaybackPanel1.TabIndex = 2;
-            this.audioPlaybackPanel1.TargetStreams = null;
-            this.audioPlaybackPanel1.Visible = false;
-            this.audioPlaybackPanel1.Volume = 0;
+            audioPlaybackPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            audioPlaybackPanel1.Location = new System.Drawing.Point(0, 133);
+            audioPlaybackPanel1.Name = "audioPlaybackPanel1";
+            audioPlaybackPanel1.Size = new System.Drawing.Size(389, 120);
+            audioPlaybackPanel1.TabIndex = 2;
+            audioPlaybackPanel1.TargetStreams = null;
+            audioPlaybackPanel1.Visible = false;
+            audioPlaybackPanel1.Volume = 0;
             // 
             // editToolStripMenuItem
             // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.makeAllExternalToolStripMenuItem,
-            this.makeAllInternalToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
-            this.editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            makeAllExternalToolStripMenuItem,
+            makeAllInternalToolStripMenuItem});
+            editToolStripMenuItem.Name = "editToolStripMenuItem";
+            editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            editToolStripMenuItem.Text = "Edit";
             // 
             // makeAllExternalToolStripMenuItem
             // 
-            this.makeAllExternalToolStripMenuItem.Name = "makeAllExternalToolStripMenuItem";
-            this.makeAllExternalToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.makeAllExternalToolStripMenuItem.Text = "Make all external";
-            this.makeAllExternalToolStripMenuItem.Click += new System.EventHandler(this.makeAllExternalToolStripMenuItem_Click);
+            makeAllExternalToolStripMenuItem.Name = "makeAllExternalToolStripMenuItem";
+            makeAllExternalToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            makeAllExternalToolStripMenuItem.Text = "Make all external";
+            makeAllExternalToolStripMenuItem.Click += new System.EventHandler(makeAllExternalToolStripMenuItem_Click);
             // 
             // makeAllInternalToolStripMenuItem
             // 
-            this.makeAllInternalToolStripMenuItem.Name = "makeAllInternalToolStripMenuItem";
-            this.makeAllInternalToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.makeAllInternalToolStripMenuItem.Text = "Make all internal";
-            this.makeAllInternalToolStripMenuItem.Click += new System.EventHandler(this.makeAllInternalToolStripMenuItem_Click);
+            makeAllInternalToolStripMenuItem.Name = "makeAllInternalToolStripMenuItem";
+            makeAllInternalToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            makeAllInternalToolStripMenuItem.Text = "Make all internal";
+            makeAllInternalToolStripMenuItem.Click += new System.EventHandler(makeAllInternalToolStripMenuItem_Click);
             // 
             // SoundPackControl
             // 
-            this.Controls.Add(this.lstSets);
-            this.Controls.Add(this.audioPlaybackPanel1);
-            this.Controls.Add(this.menuStrip1);
-            this.Name = "SoundPackControl";
-            this.Size = new System.Drawing.Size(389, 253);
-            this.DoubleClick += new System.EventHandler(this.lstSets_DoubleClick);
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            Controls.Add(lstSets);
+            Controls.Add(audioPlaybackPanel1);
+            Controls.Add(menuStrip1);
+            Name = "SoundPackControl";
+            Size = new System.Drawing.Size(389, 253);
+            DoubleClick += new System.EventHandler(lstSets_DoubleClick);
+            contextMenuStrip1.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -282,12 +282,12 @@ namespace System.Windows.Forms
         private RSARNode _targetNode;
         public RSARNode TargetNode
         {
-            get { return _targetNode; }
-            set { if (value == _targetNode) return; _targetNode = value; NodeChanged(); }
+            get => _targetNode;
+            set { if (value == _targetNode) { return; } _targetNode = value; NodeChanged(); }
         }
 
         private SoundPackItem _selectedItem;
-        private ListViewColumnSorter lvwColumnSorter;
+        private readonly ListViewColumnSorter lvwColumnSorter;
 
         public SoundPackControl()
         {
@@ -296,9 +296,11 @@ namespace System.Windows.Forms
             lvwColumnSorter = new ListViewColumnSorter();
             lstSets.ListViewItemSorter = lvwColumnSorter;
 
-            backgroundWorker1 = new BackgroundWorker();
-            backgroundWorker1.WorkerReportsProgress = false;
-            backgroundWorker1.WorkerSupportsCancellation = false;
+            backgroundWorker1 = new BackgroundWorker
+            {
+                WorkerReportsProgress = false,
+                WorkerSupportsCancellation = false
+            };
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
         }
 
@@ -307,14 +309,18 @@ namespace System.Windows.Forms
             list.BeginUpdate();
             list.Items.Clear();
             if (_targetNode != null)
+            {
                 foreach (RSARFileNode file in _targetNode.Files)
+                {
                     list.Items.Add(new SoundPackItem(file));
+                }
+            }
 
             list.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             list.EndUpdate();
         }
 
-        delegate void delUpdate(ListView list);
+        private delegate void delUpdate(ListView list);
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -322,13 +328,15 @@ namespace System.Windows.Forms
             if (lstSets.InvokeRequired)
             {
                 delUpdate callbackMethod = new delUpdate(Update);
-                this.Invoke(callbackMethod, lstSets);
+                Invoke(callbackMethod, lstSets);
             }
             else
+            {
                 Update(lstSets);
+            }
         }
 
-        BackgroundWorker backgroundWorker1;
+        private readonly BackgroundWorker backgroundWorker1;
         private void NodeChanged()
         {
             //if (backgroundWorker1.IsBusy != true && _targetNode != null)
@@ -339,9 +347,13 @@ namespace System.Windows.Forms
         private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (_selectedItem == null)
+            {
                 e.Cancel = true;
+            }
             else
+            {
                 mnuExport.Enabled = !(_selectedItem._node is RSARExtFileNode);
+            }
         }
 
         private void mnuPath_Click(object sender, EventArgs e)
@@ -362,22 +374,33 @@ namespace System.Windows.Forms
         private void lstSets_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstSets.SelectedIndices.Count == 0)
+            {
                 _selectedItem = null;
+            }
             else
+            {
                 _selectedItem = lstSets.SelectedItems[0] as SoundPackItem;
+            }
 
             if (_selectedItem != null && (audioPlaybackPanel1.Visible = _selectedItem._node is RSTMNode))
+            {
                 audioPlaybackPanel1.TargetSource = _selectedItem._node as RSTMNode;
+            }
             else if (audioPlaybackPanel1.TargetSource != null)
+            {
                 audioPlaybackPanel1.TargetSource = null;
+            }
 
             if (_grid != null && _selectedItem != null)
+            {
                 _grid.SelectedObject = _selectedItem._node;
+            }
         }
 
         private void mnuExport_Click(object sender, EventArgs e)
         {
             if (_selectedItem.SubItems[1].Text != "External")
+            {
                 using (SaveFileDialog dlg = new SaveFileDialog())
                 {
                     dlg.FileName = _selectedItem.SubItems[2].Text.Replace('/', '_');
@@ -389,8 +412,11 @@ namespace System.Windows.Forms
                         case "RSAR": dlg.Filter = FileFilters.RSAR; break;
                     }
                     if (dlg.ShowDialog(this) == DialogResult.OK)
+                    {
                         _selectedItem._node.Export(dlg.FileName);
+                    }
                 }
+            }
         }
 
         private void lstSets_DoubleClick(object sender, EventArgs e)
@@ -399,23 +425,35 @@ namespace System.Windows.Forms
             {
                 RSARExtFileNode ext = _selectedItem._node as RSARExtFileNode;
                 if (File.Exists(ext.FullExtPath))
+                {
                     Process.Start(ext.FullExtPath);
+                }
                 else
+                {
                     mnuPath_Click(this, null);
+                }
             }
             else if (!(_selectedItem._node is RSTMNode))
+            {
                 new EditRSARFileDialog().ShowDialog(this, _selectedItem._node);
+            }
         }
 
         private void lstSets_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             // Determine if clicked column is already the column that is being sorted.
             if (e.Column == lvwColumnSorter.SortColumn)
+            {
                 // Reverse the current sort direction for this column.
                 if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
                     lvwColumnSorter.Order = SortOrder.Descending;
+                }
                 else
+                {
                     lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
             else
             {
                 // Set the column number that is to be sorted; default to ascending.
@@ -433,7 +471,9 @@ namespace System.Windows.Forms
             {
                 lstSets.SelectedItems.Clear();
                 if (_grid != null)
+                {
                     _grid.SelectedObject = _targetNode;
+                }
             }
         }
 
@@ -443,7 +483,9 @@ namespace System.Windows.Forms
             {
                 dlg.Filter = SupportedFilesHandler.GetCompleteFilter("brwsd", "brbnk", "brseq", "brstm");
                 if (dlg.ShowDialog() == DialogResult.OK)
+                {
                     _selectedItem._node.Replace(dlg.FileName);
+                }
             }
         }
 
@@ -457,7 +499,7 @@ namespace System.Windows.Forms
         {
             RWSDNode node = new RWSDNode()
             {
-                _name = String.Format("[{0}] RWSD", _targetNode.Files.Count),
+                _name = string.Format("[{0}] RWSD", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
             };
             node.InitGroups();
@@ -471,7 +513,7 @@ namespace System.Windows.Forms
         {
             RSEQNode node = new RSEQNode()
             {
-                _name = String.Format("[{0}] RSEQ", _targetNode.Files.Count),
+                _name = string.Format("[{0}] RSEQ", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
             };
             node._parent = _targetNode;
@@ -484,7 +526,7 @@ namespace System.Windows.Forms
         {
             RBNKNode node = new RBNKNode()
             {
-                _name = String.Format("[{0}] RBNK", _targetNode.Files.Count),
+                _name = string.Format("[{0}] RBNK", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
             };
             node.InitGroups();
@@ -498,7 +540,7 @@ namespace System.Windows.Forms
         {
             RSARExtFileNode node = new RSARExtFileNode()
             {
-                _name = String.Format("[{0}] External", _targetNode.Files.Count),
+                _name = string.Format("[{0}] External", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
             };
             node._parent = _targetNode;
@@ -510,6 +552,7 @@ namespace System.Windows.Forms
         private void rSTMToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog() { Filter = SupportedFilesHandler.GetCompleteFilter("wav") })
+            {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     RSTMNode r = new RSTMNode() { _fileIndex = _targetNode.Files.Count };
@@ -518,7 +561,7 @@ namespace System.Windows.Forms
                         dlg.AudioSource = ofd.FileName;
                         if (dlg.ShowDialog(this) == DialogResult.OK)
                         {
-                            r.Name = String.Format("[{0}] {1}",
+                            r.Name = string.Format("[{0}] {1}",
                                 _targetNode.Files.Count,
                                 Path.GetFileNameWithoutExtension(dlg.AudioSource));
                             r.ReplaceRaw(dlg.AudioData);
@@ -529,6 +572,7 @@ namespace System.Windows.Forms
                     r.SignalPropertyChange();
                     Update(lstSets);
                 }
+            }
         }
 
         private void makeAllExternalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -536,7 +580,9 @@ namespace System.Windows.Forms
             foreach (SoundPackItem i in lstSets.Items)
             {
                 if (i._node is RSARExtFileNode)
+                {
                     continue;
+                }
 
                 ListViewItem v = i as ListViewItem;
                 string type = v.SubItems[1].Text;
@@ -545,7 +591,10 @@ namespace System.Windows.Forms
 
                 string newPath = _targetNode._origPath.Substring(0, _targetNode._origPath.LastIndexOf('\\')) + dir;
                 if (!Directory.Exists(newPath))
+                {
                     Directory.CreateDirectory(newPath);
+                }
+
                 i._node.Export(newPath + fileName);
 
                 RSARGroupNode[] groups = i._node.GroupRefNodes;
@@ -559,11 +608,13 @@ namespace System.Windows.Forms
                     refs[n] = new List<int>();
                     RSARGroupNode g = groups[n];
                     for (int m = 0; m < g._files.Count; ++m)
+                    {
                         if (g._files[m] == i._node)
                         {
                             refs[n].Add(m);
                             g._files.RemoveAt(m--);
                         }
+                    }
                 }
                 //if (i._node is RWSDNode)
                 //{
@@ -603,19 +654,23 @@ namespace System.Windows.Forms
 
                 _targetNode.Files.RemoveAt(i.Index);
 
-                RSARExtFileNode ext = new RSARExtFileNode();
-                ext._fileIndex = i.Index;
-                ext._parent = _targetNode;
+                RSARExtFileNode ext = new RSARExtFileNode
+                {
+                    _fileIndex = i.Index,
+                    _parent = _targetNode
+                };
                 _targetNode.Files.Insert(i.Index, ext);
 
                 ext.ExtPath = (dir + fileName).Replace('\\', '/');
-                ext.Name = String.Format("[{0}] {1}", i.Index, ext.ExtPath);
+                ext.Name = string.Format("[{0}] {1}", i.Index, ext.ExtPath);
 
                 if ((i._node is RBNKNode || i._node is RSARExtFileNode) && rbnkRefs != null)
                 {
                     RBNKNode rbnk = i._node as RBNKNode;
                     foreach (RSARBankNode b in rbnkRefs)
+                    {
                         b.BankNode = ext;
+                    }
                 }
 
                 //Remake references
@@ -624,8 +679,10 @@ namespace System.Windows.Forms
                     int r = 0;
                     RSARGroupNode group = groups[groupID];
                     foreach (int occurrence in refs[groupID])
+                    {
                         group._files.Insert(occurrence + r++, ext);
-                    
+                    }
+
                     ext._groupRefs.Add(group);
                 }
 
@@ -640,14 +697,22 @@ namespace System.Windows.Forms
             foreach (SoundPackItem i in lstSets.Items)
             {
                 if (!(i._node is RSARExtFileNode))
+                {
                     continue;
+                }
+
                 RSARExtFileNode w = i._node as RSARExtFileNode;
                 string path = w.FullExtPath;
                 if (!File.Exists(path))
+                {
                     continue;
+                }
+
                 RSARFileNode ext = NodeFactory.FromFile(null, path) as RSARFileNode;
                 if (ext == null)
+                {
                     continue;
+                }
 
                 ListViewItem v = i as ListViewItem;
                 string type = v.SubItems[1].ToString();
@@ -677,7 +742,10 @@ namespace System.Windows.Forms
 
             string s = file.ResourceType.ToString();
             if (file is RSARExtFileNode)
+            {
                 s = "External";
+            }
+
             SubItems.Add(s);
             int i = Helpers.FindFirst(file.Name, 0, ']');
             SubItems.Add(file.Name.Substring(i + 1));
@@ -693,86 +761,97 @@ namespace System.Windows.Forms
     /// </summary>
     public class ListViewColumnSorter : IComparer
     {
-	    /// <summary>
-	    /// Specifies the column to be sorted
-	    /// </summary>
-	    private int ColumnToSort;
-	    /// <summary>
-	    /// Specifies the order in which to sort (i.e. 'Ascending').
-	    /// </summary>
-	    private SortOrder OrderOfSort;
-	    /// <summary>
-	    /// Case insensitive comparer object
-	    /// </summary>
-	    private CaseInsensitiveComparer ObjectCompare;
+        /// <summary>
+        /// Specifies the column to be sorted
+        /// </summary>
+        private int ColumnToSort;
+        /// <summary>
+        /// Specifies the order in which to sort (i.e. 'Ascending').
+        /// </summary>
+        private SortOrder OrderOfSort;
+        /// <summary>
+        /// Case insensitive comparer object
+        /// </summary>
+        private readonly CaseInsensitiveComparer ObjectCompare;
 
-	    /// <summary>
-	    /// Class constructor.  Initializes various elements
-	    /// </summary>
-	    public ListViewColumnSorter()
-	    {
-		    // Initialize the column to '0'
-		    ColumnToSort = 0;
+        /// <summary>
+        /// Class constructor.  Initializes various elements
+        /// </summary>
+        public ListViewColumnSorter()
+        {
+            // Initialize the column to '0'
+            ColumnToSort = 0;
 
-		    // Initialize the sort order to 'none'
-		    OrderOfSort = SortOrder.None;
+            // Initialize the sort order to 'none'
+            OrderOfSort = SortOrder.None;
 
-		    // Initialize the CaseInsensitiveComparer object
-		    ObjectCompare = new CaseInsensitiveComparer();
-	    }
+            // Initialize the CaseInsensitiveComparer object
+            ObjectCompare = new CaseInsensitiveComparer();
+        }
 
-	    /// <summary>
-	    /// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
-	    /// </summary>
-	    /// <param name="x">First object to be compared</param>
-	    /// <param name="y">Second object to be compared</param>
-	    /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
-	    public int Compare(object x, object y)
-	    {
-		    int compareResult;
-		    ListViewItem listviewX, listviewY;
+        /// <summary>
+        /// This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
+        /// </summary>
+        /// <param name="x">First object to be compared</param>
+        /// <param name="y">Second object to be compared</param>
+        /// <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
+        public int Compare(object x, object y)
+        {
+            int compareResult;
+            ListViewItem listviewX, listviewY;
 
-		    // Cast the objects to be compared to ListViewItem objects
-		    listviewX = (ListViewItem)x;
-		    listviewY = (ListViewItem)y;
+            // Cast the objects to be compared to ListViewItem objects
+            listviewX = (ListViewItem)x;
+            listviewY = (ListViewItem)y;
 
-		    // Compare the two items
+            // Compare the two items
             if (ColumnToSort == 0)
+            {
                 compareResult = ObjectCompare.Compare(int.Parse(listviewX.SubItems[ColumnToSort].Text), int.Parse(listviewY.SubItems[ColumnToSort].Text));
+            }
             else if (ColumnToSort >= 4)
+            {
                 compareResult = ObjectCompare.Compare(int.Parse(listviewX.SubItems[ColumnToSort].Text.Substring(2), Globalization.NumberStyles.HexNumber), int.Parse(listviewY.SubItems[ColumnToSort].Text.Substring(2), Globalization.NumberStyles.HexNumber));
-            else 
-		        compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text,listviewY.SubItems[ColumnToSort].Text);
-			
-		    // Calculate correct return value based on object comparison
-		    if (OrderOfSort == SortOrder.Ascending)
-			    // Ascending sort is selected, return normal result of compare operation
-			    return compareResult;
-		    else if (OrderOfSort == SortOrder.Descending)
-			    // Descending sort is selected, return negative result of compare operation
-			    return (-compareResult);
-		    else
-			    // Return '0' to indicate they are equal
-			    return 0;
-		    
-	    }
-    
-	    /// <summary>
-	    /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
-	    /// </summary>
-	    public int SortColumn
-	    {
-		    set { ColumnToSort = value; }
-		    get { return ColumnToSort; }
-	    }
+            }
+            else
+            {
+                compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+            }
 
-	    /// <summary>
-	    /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
-	    /// </summary>
-	    public SortOrder Order
-	    {
-		    set { OrderOfSort = value; }
-		    get { return OrderOfSort; }
-	    }
+            // Calculate correct return value based on object comparison
+            if (OrderOfSort == SortOrder.Ascending)
+            {
+                // Ascending sort is selected, return normal result of compare operation
+                return compareResult;
+            }
+            else if (OrderOfSort == SortOrder.Descending)
+            {
+                // Descending sort is selected, return negative result of compare operation
+                return (-compareResult);
+            }
+            else
+            {
+                // Return '0' to indicate they are equal
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+        /// </summary>
+        public int SortColumn
+        {
+            set => ColumnToSort = value;
+            get => ColumnToSort;
+        }
+
+        /// <summary>
+        /// Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
+        /// </summary>
+        public SortOrder Order
+        {
+            set => OrderOfSort = value;
+            get => OrderOfSort;
+        }
     }
 }

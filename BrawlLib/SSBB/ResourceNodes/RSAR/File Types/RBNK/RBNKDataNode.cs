@@ -1,34 +1,37 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RBNKDataInstParamNode : RBNKDataEntryNode
     {
-        internal RBNKInstParam* Header { get { return (RBNKInstParam*)WorkingUncompressed.Address; } }
+        internal RBNKInstParam* Header => (RBNKInstParam*)WorkingUncompressed.Address;
 
         public RBNKInstParam hdr = new RBNKInstParam();
-
-        RSARFileAudioNode _soundNode;
+        private RSARFileAudioNode _soundNode;
         [Browsable(false)]
         public RSARFileAudioNode Sound
         {
-            get { return _soundNode; }
+            get => _soundNode;
             set
             {
                 if (_soundNode != value)
+                {
                     _soundNode = value;
+                }
             }
         }
         [Category("Bank Data Entry"), Browsable(true), TypeConverter(typeof(DropDownListRBNKSounds))]
         public string Wave
         {
-            get { return _soundNode == null ? null : _soundNode._name; }
+            get => _soundNode == null ? null : _soundNode._name;
             set
             {
-                if (String.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
+                {
                     Sound = null;
+                }
                 else
                 {
                     WAVESoundNode node = null;
@@ -51,56 +54,60 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("Bank Data Entry")]
         //public int WaveIndex { get { return hdr._waveIndex; } set { hdr._waveIndex = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Attack { get { return hdr._attack; } set { hdr._attack = value; SignalPropertyChange(); } }
+        public byte Attack { get => hdr._attack; set { hdr._attack = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Decay { get { return hdr._decay; } set { hdr._decay = value; SignalPropertyChange(); } }
+        public byte Decay { get => hdr._decay; set { hdr._decay = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Sustain { get { return hdr._sustain; } set { hdr._sustain = value; SignalPropertyChange(); } }
+        public byte Sustain { get => hdr._sustain; set { hdr._sustain = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Release { get { return hdr._release; } set { hdr._release = value; SignalPropertyChange(); } }
+        public byte Release { get => hdr._release; set { hdr._release = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Hold { get { return hdr._hold; } set { hdr._hold = value; SignalPropertyChange(); } }
+        public byte Hold { get => hdr._hold; set { hdr._hold = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public WaveDataLocation WaveDataLocationType { get { return (WaveDataLocation)hdr._waveDataLocationType; } set { hdr._waveDataLocationType = (byte)value; SignalPropertyChange(); } }
+        public WaveDataLocation WaveDataLocationType { get => (WaveDataLocation)hdr._waveDataLocationType; set { hdr._waveDataLocationType = (byte)value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public NoteOffType NoteOffType { get { return (NoteOffType)hdr._noteOffType; } set { hdr._noteOffType = (byte)value; SignalPropertyChange(); } }
+        public NoteOffType NoteOffType { get => (NoteOffType)hdr._noteOffType; set { hdr._noteOffType = (byte)value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte AlternateAssign { get { return hdr._alternateAssign; } set { hdr._alternateAssign = value; SignalPropertyChange(); } }
+        public byte AlternateAssign { get => hdr._alternateAssign; set { hdr._alternateAssign = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte OriginalKey { get { return hdr._originalKey; } set { hdr._originalKey = value; SignalPropertyChange(); } }
+        public byte OriginalKey { get => hdr._originalKey; set { hdr._originalKey = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Volume { get { return hdr._volume; } set { hdr._volume = value; SignalPropertyChange(); } }
+        public byte Volume { get => hdr._volume; set { hdr._volume = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte Pan { get { return hdr._pan; } set { hdr._pan = value; SignalPropertyChange(); } }
+        public byte Pan { get => hdr._pan; set { hdr._pan = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public byte SurroundPan { get { return hdr._surroundPan; } set { hdr._surroundPan = value; SignalPropertyChange(); } }
+        public byte SurroundPan { get => hdr._surroundPan; set { hdr._surroundPan = value; SignalPropertyChange(); } }
         [Category("Bank Data Entry")]
-        public float Pitch { get { return hdr._pitch; } set { hdr._pitch = value; SignalPropertyChange(); } }
+        public float Pitch { get => hdr._pitch; set { hdr._pitch = value; SignalPropertyChange(); } }
 
         [Category("Audio Stream")]
-        public WaveEncoding Encoding { get { return _soundNode == null ? WaveEncoding.ADPCM : _soundNode.Encoding; } }
+        public WaveEncoding Encoding => _soundNode == null ? WaveEncoding.ADPCM : _soundNode.Encoding;
         [Category("Audio Stream")]
-        public int Channels { get { return _soundNode == null ? 0 : _soundNode.Channels; } }
+        public int Channels => _soundNode == null ? 0 : _soundNode.Channels;
         [Category("Audio Stream")]
-        public bool IsLooped { get { return _soundNode == null ? false : _soundNode.IsLooped; } }
+        public bool IsLooped => _soundNode == null ? false : _soundNode.IsLooped;
         [Category("Audio Stream")]
-        public int SampleRate { get { return _soundNode == null ? 0 : _soundNode.SampleRate; } }
+        public int SampleRate => _soundNode == null ? 0 : _soundNode.SampleRate;
         [Category("Audio Stream")]
-        public int LoopStartSample { get { return _soundNode == null ? 0 : _soundNode.LoopStartSample; } }
+        public int LoopStartSample => _soundNode == null ? 0 : _soundNode.LoopStartSample;
         [Category("Audio Stream")]
-        public int NumSamples { get { return _soundNode == null ? 0 : _soundNode.NumSamples; } }
+        public int NumSamples => _soundNode == null ? 0 : _soundNode.NumSamples;
 
         public override bool OnInitialize()
         {
             hdr = *Header;
 
             if (_name == null)
-                _name = String.Format("[{0}] InstParams", Index);
+            {
+                _name = string.Format("[{0}] InstParams", Index);
+            }
 
             SetSizeInternal(0x30);
 
             if (RBNKNode.Children.Count > 1 && hdr._waveIndex < RBNKNode.Children[1].Children.Count)
+            {
                 _soundNode = RBNKNode.Children[1].Children[hdr._waveIndex] as RSARFileAudioNode;
+            }
 
             return false;
         }
@@ -118,19 +125,23 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RBNKDataRangeTableNode : RBNKTableNode
     {
-        internal RangeTable* Header { get { return (RangeTable*)WorkingUncompressed.Address; } }
-        
+        internal RangeTable* Header => (RangeTable*)WorkingUncompressed.Address;
+
         public override bool OnInitialize()
         {
             if (_name == null)
-                _name = String.Format("[{0}] Group", Index);
+            {
+                _name = string.Format("[{0}] Group", Index);
+            }
 
             _keys = new byte[Header->_tableCount];
 
             SetSizeInternal((1 + _keys.Length).Align(4) + _keys.Length * 8);
 
             for (int i = 0; i < _keys.Length; i++)
+            {
                 _keys[i] = Header->GetKey(i);
+            }
 
             return _keys.Length > 0;
         }
@@ -165,28 +176,32 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                 }
                 if (e != null)
+                {
                     e.Initialize(this, addr, 0);
+                }
             }
         }
     }
 
     public unsafe class RBNKDataIndexTableNode : RBNKTableNode
     {
-        internal IndexTable* Header { get { return (IndexTable*)WorkingUncompressed.Address; } }
+        internal IndexTable* Header => (IndexTable*)WorkingUncompressed.Address;
 
-        IndexTable hdr = new IndexTable();
+        private IndexTable hdr = new IndexTable();
 
         [Browsable(false)]
-        public byte Min { get { return hdr._min; } set { hdr._min = value; SignalPropertyChange(); } }
+        public byte Min { get => hdr._min; set { hdr._min = value; SignalPropertyChange(); } }
         [Browsable(false)]
-        public byte Max { get { return hdr._max; } set { hdr._max = value; SignalPropertyChange(); } }
-        
+        public byte Max { get => hdr._max; set { hdr._max = value; SignalPropertyChange(); } }
+
         public override bool OnInitialize()
         {
             hdr = *Header;
 
             if (_name == null)
-                _name = String.Format("[{0}] Group", Index);
+            {
+                _name = string.Format("[{0}] Group", Index);
+            }
 
             SetSizeInternal(4 + (Max - Min + 1) * 8);
 
@@ -222,7 +237,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                 }
                 if (e != null)
+                {
                     e.Initialize(this, addr, 0);
+                }
             }
         }
     }
@@ -230,16 +247,15 @@ namespace BrawlLib.SSBB.ResourceNodes
     public class RBNKDataEntryNode : RBNKEntryNode
     {
         public byte _key;
-        public byte Key { get { return _key; } set { _key = value; SignalPropertyChange(); } }
+        public byte Key { get => _key; set { _key = value; SignalPropertyChange(); } }
     }
 
     public unsafe class RBNKTableNode : RBNKEntryNode
     {
         [Browsable(false)]
-        public byte[] Keys { get { return _keys; } }
+        public byte[] Keys => _keys;
         public byte[] _keys = new byte[0];
-        
-        bool _rebuildType = false; //true is range, false is index
+        private bool _rebuildType = false; //true is range, false is index
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
@@ -249,7 +265,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 *addr = (byte)_keys.Length;
                 for (int i = 0; i < _keys.Length; i++)
-                    addr[i + 1] = (byte)_keys[i];
+                {
+                    addr[i + 1] = _keys[i];
+                }
+
                 addr += (1 + _keys.Length).Align(4);
                 collection = (RuintCollection*)addr;
             }
@@ -264,13 +283,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr = (byte*)collection + 8 * Children.Count;
             foreach (RBNKDataEntryNode e in Children)
             {
-                collection->Entries[e.Index] = (uint)((VoidPtr)addr - _rebuildBase);
+                collection->Entries[e.Index] = (uint)(addr - _rebuildBase);
                 if (e is RBNKNullNode)
+                {
                     collection->Entries[e.Index]._dataType = 4;
+                }
                 else
                 {
                     collection->Entries[e.Index]._dataType = 1;
-                    
+
                     e.Rebuild(addr, e._calcSize, true);
                     addr += e._calcSize;
                 }
@@ -298,18 +319,26 @@ namespace BrawlLib.SSBB.ResourceNodes
                 currKey = e._key;
 
                 if (currKey != prevKey + 1)
+                {
                     _rebuildType = true;
+                }
 
-                prevKey = e._key; 
+                prevKey = e._key;
             }
 
             if (_rebuildType)
+            {
                 size = (1 + _keys.Length).Align(4) + _keys.Length * 8;
+            }
             else
+            {
                 size = 4 + _keys.Length * 8;
+            }
 
             foreach (RBNKEntryNode e in Children)
+            {
                 size += e.CalculateSize(true);
+            }
 
             return size;
         }
@@ -332,7 +361,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            
+
         }
     }
 }

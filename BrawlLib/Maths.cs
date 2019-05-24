@@ -68,7 +68,9 @@
                     float dist2 = (-b - magnitude) / a;
 
                     if (dist2 < scale)
+                    {
                         scale = dist2;
+                    }
 
                     result = start + (diff * scale);
                     return true;
@@ -166,7 +168,11 @@
         {
             int i = 0;
             float result = 1;
-            for (i = 0; i < amount; i++) result *= value;
+            for (i = 0; i < amount; i++)
+            {
+                result *= value;
+            }
+
             return value;
         }
         public static float Bezier(float p0, float p1, float p2, float p3, float t)
@@ -182,112 +188,182 @@
         {
             float v = values[0];
             if (values.Length > 1)
-            for (int i = 1; i < values.Length; i++)
-                v = Math.Max(v, values[i]);
+            {
+                for (int i = 1; i < values.Length; i++)
+                {
+                    v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static int Max(params int[] values)
         {
             int v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static uint Max(params uint[] values)
         {
             uint v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static short Max(params short[] values)
         {
             short v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static ushort Max(params ushort[] values)
         {
             ushort v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static byte Max(params byte[] values)
         {
             byte v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static sbyte Max(params sbyte[] values)
         {
             sbyte v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Max(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static float Min(params float[] values)
         {
             float v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static int Min(params int[] values)
         {
             int v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static uint Min(params uint[] values)
         {
             uint v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static short Min(params short[] values)
         {
             short v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static ushort Min(params ushort[] values)
         {
             ushort v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static byte Min(params byte[] values)
         {
             byte v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
         public static sbyte Min(params sbyte[] values)
         {
             sbyte v = values[0];
             if (values.Length > 1)
+            {
                 for (int i = 1; i < values.Length; i++)
+                {
                     v = Math.Min(v, values[i]);
+                }
+            }
+
             return v;
         }
     }

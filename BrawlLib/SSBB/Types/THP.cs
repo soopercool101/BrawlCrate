@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct THPHeader
+    internal unsafe struct THPHeader
     {
         public const uint Size = 0x30;
         public const uint Tag = 0x00504854;
@@ -23,13 +23,13 @@ namespace BrawlLib.SSBBTypes
         public buint _offsetDataOffsets;      // offset to array of frame offsets
         public buint _movieDataOffsets;       // offset to first frame (start of movie data) 
         public buint _finalFrameDataOffsets;  // offset to final frame
-        
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
-        public VoidPtr FirstFrame { get { return Address + _movieDataOffsets; } } 
+
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public VoidPtr FirstFrame => Address + _movieDataOffsets;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct THPAudioInfo
+    internal unsafe struct THPAudioInfo
     {
         public buint _sndChannels;
         public buint _sndFrequency;
@@ -38,7 +38,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct THPVideoInfo
+    internal unsafe struct THPVideoInfo
     {
         public buint _xSize;      // width  of video
         public buint _ySize;      // height of video
@@ -53,7 +53,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct THPFrameCompInfo
+    internal unsafe struct THPFrameCompInfo
     {
         public buint _numComponents;        // a number of Components in a frame
         public fixed byte _frameComp[16];   // kind of Components
@@ -66,20 +66,23 @@ namespace BrawlLib.SSBBTypes
         public buint _frameSizePrevious;
         public buint _firstComp; //up to 16
 
-        public buint* CompAddr { get { return (buint*)_firstComp.Address; } }
-        public VoidPtr GetComp(int numComp, int index) 
+        public buint* CompAddr => (buint*)_firstComp.Address;
+        public VoidPtr GetComp(int numComp, int index)
         {
             uint offset = 8 + 4 * (uint)numComp.Clamp(0, 15);
             for (int i = 0; i < index; i++)
+            {
                 offset += CompAddr[i];
+            }
+
             return Address + offset;
         }
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-    
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct THPFile
+    internal unsafe struct THPFile
     {
         public THPHeader _header;
         public THPFrameCompInfo _frameCompInfo;
@@ -96,14 +99,14 @@ namespace BrawlLib.SSBBTypes
 
         public fixed short _chan1Coefs[16];
         public fixed short _chan2Coefs[16];
-        
+
         public bshort _c1yn1;
         public bshort _c1yn2;
         public bshort _c2yn1;
         public bshort _c2yn2;
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        internal VoidPtr Audio { get { return Address + 0x50; } }
+        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        internal VoidPtr Audio => Address + 0x50;
         public byte* GetAudioChannel(int channel) { return (byte*)Audio + (uint)(channel * _blockSize); }
 
         public short[] Coefs1
@@ -115,7 +118,9 @@ namespace BrawlLib.SSBBTypes
                 {
                     bshort* sPtr = (bshort*)ptr;
                     for (int i = 0; i < 16; i++)
+                    {
                         arr[i] = sPtr[i];
+                    }
                 }
                 return arr;
             }
@@ -129,7 +134,9 @@ namespace BrawlLib.SSBBTypes
                 {
                     bshort* sPtr = (bshort*)ptr;
                     for (int i = 0; i < 16; i++)
+                    {
                         arr[i] = sPtr[i];
+                    }
                 }
                 return arr;
             }

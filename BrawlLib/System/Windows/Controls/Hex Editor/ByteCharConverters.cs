@@ -66,7 +66,7 @@ namespace Be.Windows.Forms
         /// The IBM EBCDIC code page 500 encoding. Note that this is not always supported by .NET,
         /// the underlying platform has to provide support for it.
         /// </summary>
-        private Encoding _ebcdicEncoding = Encoding.GetEncoding(500);
+        private readonly Encoding _ebcdicEncoding = Encoding.GetEncoding(500);
 
         /// <summary>
         /// Returns the EBCDIC character corresponding to the byte passed across.

@@ -6,8 +6,16 @@ namespace System
     {
         public static string TruncateLeft(string strIn, int totalWidth)
         {
-            if (totalWidth <= 0) return "";
-            if (totalWidth > strIn.Length) return strIn;
+            if (totalWidth <= 0)
+            {
+                return "";
+            }
+
+            if (totalWidth > strIn.Length)
+            {
+                return strIn;
+            }
+
             return strIn.Substring(strIn.Length - totalWidth);
         }
 
@@ -19,29 +27,46 @@ namespace System
 
         public static string WordH(string val, int wordNum)
         {
-            if (wordNum >= 2) return "";
+            if (wordNum >= 2)
+            {
+                return "";
+            }
+
             return TruncateLeft(val, 8).PadLeft(8, '0').Substring(wordNum * 4, 4);
         }
 
         public static string WordB(string val, int byteNum)
         {
-            if (byteNum >= 4) return "";
+            if (byteNum >= 4)
+            {
+                return "";
+            }
+
             return TruncateLeft(val, 8).PadLeft(8, '0').Substring(byteNum * 2, 2);
         }
 
         public static long Float(float val)
         {
-            if (val == 0) return 0;
+            if (val == 0)
+            {
+                return 0;
+            }
+
             long sign = (val >= 0 ? 0 : 8);
             long exponent = 0x7F;
             float mantissa = Math.Abs(val);
 
             if (mantissa > 1)
+            {
                 while (mantissa > 2)
                 { mantissa /= 2; exponent++; }
+            }
             else
+            {
                 while (mantissa < 1)
                 { mantissa *= 2; exponent--; }
+            }
+
             mantissa -= 1;
             mantissa *= (float)Math.Pow(2, 23);
 
@@ -52,15 +77,22 @@ namespace System
         }
         public static float UnFloat(long val)
         {
-            if (val == 0) return 0;
+            if (val == 0)
+            {
+                return 0;
+            }
+
             float sign = ((val & 0x80000000) == 0 ? 1 : -1);
             int exponent = ((int)(val & 0x7F800000) / 0x800000) - 0x7F;
             float mantissa = (val & 0x7FFFFF);
             long mantissaBits = 23;
 
             if (mantissa != 0)
+            {
                 while (((long)mantissa & 0x1) != 1)
                 { mantissa /= 2; mantissaBits--; }
+            }
+
             mantissa /= (float)Math.Pow(2, mantissaBits);
             mantissa += 1;
 
@@ -75,7 +107,13 @@ namespace System
         public static int FindFirst(string str, int begin, char chr)
         {
             for (int i = begin; i < str.Length; i++)
-                if (str[i] == chr) return i;
+            {
+                if (str[i] == chr)
+                {
+                    return i;
+                }
+            }
+
             return -1;
         }
 
@@ -83,7 +121,13 @@ namespace System
         public static int FindLast(string str, int begin, char chr)
         {
             for (int i = str.Length - 1; i >= begin; i--)
-                if (str[i] == chr) return i;
+            {
+                if (str[i] == chr)
+                {
+                    return i;
+                }
+            }
+
             return -1;
         }
 
@@ -92,7 +136,13 @@ namespace System
         {
             int x = 0;
             for (int i = begin; i < str.Length; i++)
-                if (str[i] == chr) x++;
+            {
+                if (str[i] == chr)
+                {
+                    x++;
+                }
+            }
+
             return x;
         }
 
@@ -101,7 +151,13 @@ namespace System
         {
             List<int> indices = new List<int>();
             for (int i = begin; i < str.Length; i++)
-                if (str[i] == chr) indices.Add(i);
+            {
+                if (str[i] == chr)
+                {
+                    indices.Add(i);
+                }
+            }
+
             return indices.ToArray();
         }
 
@@ -126,7 +182,11 @@ namespace System
         //FindFirst ignoring any pairs of () and anything contained inside.
         public static int FindFirstIgnoreNest(string str, int begin, char chr)
         {
-            if (chr == '(') return FindFirst(str, begin, chr);
+            if (chr == '(')
+            {
+                return FindFirst(str, begin, chr);
+            }
+
             char[] searchCharacters = { chr, '(', ')' };
             char chrResult = '\0';
             int searchResult = begin;
@@ -134,9 +194,17 @@ namespace System
 
             do
             {
-                if (chrResult == ')' && nested > 0) nested--;
+                if (chrResult == ')' && nested > 0)
+                {
+                    nested--;
+                }
+
                 searchResult = FindFirstOf(str, searchResult, searchCharacters, ref chrResult);
-                if (chrResult == '(') nested++;
+                if (chrResult == '(')
+                {
+                    nested++;
+                }
+
                 searchResult++;
             } while ((nested > 0 || chrResult != chr) && chrResult != '\0');
             searchResult--;
@@ -166,7 +234,12 @@ namespace System
         public static int FindFirstNot(string str, int begin, char chr)
         {
             for (int i = begin; i < str.Length; i++)
-                if (str[i] != chr) return i;
+            {
+                if (str[i] != chr)
+                {
+                    return i;
+                }
+            }
 
             return -1;
         }
@@ -175,7 +248,12 @@ namespace System
         public static int FindFirstNotDual(string str, int begin, char chr1, char chr2)
         {
             for (int i = begin; i < str.Length; i++)
-                if (str[i] != chr1 && str[i] != chr2) return i;
+            {
+                if (str[i] != chr1 && str[i] != chr2)
+                {
+                    return i;
+                }
+            }
 
             return -1;
         }
@@ -197,20 +275,33 @@ namespace System
         {
             int whiteSpace = FindFirstNot(str, 0, ' ');
             if (whiteSpace > 0)
+            {
                 str = DelSubstring(str, 0, whiteSpace);
+            }
 
             whiteSpace = -1;
             for (int i = str.Length - 1; i >= 0; i--)
-                if (str[i] == ' ') whiteSpace = i;
-                else break;
+            {
+                if (str[i] == ' ')
+                {
+                    whiteSpace = i;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             if (whiteSpace != -1)
+            {
                 str = DelSubstring(str, whiteSpace, str.Length - whiteSpace);
+            }
 
             return str;
         }
     }
 
-    public class ReferenceEqualityComparer : EqualityComparer<Object>
+    public class ReferenceEqualityComparer : EqualityComparer<object>
     {
         public override bool Equals(object x, object y)
         {
@@ -219,7 +310,11 @@ namespace System
 
         public override int GetHashCode(object obj)
         {
-            if (obj == null) return 0;
+            if (obj == null)
+            {
+                return 0;
+            }
+
             return obj.GetHashCode();
         }
     }

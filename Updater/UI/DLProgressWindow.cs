@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel;
-using System.Threading;
 using System.Net;
+using System.Threading;
 
 namespace System.Windows.Forms
 {
     public partial class DLProgressWindow : Form, DLProgressTracker
     {
         private bool _canCancel = false, _cancelled = false;
-        public bool CanCancel { get { return _canCancel; } set { btnCancel.Visible = btnCancel.Enabled = _canCancel = value; } }
-        public string Caption { get { return label1.Text; } set { label1.Text = value; } }
+        public bool CanCancel { get => _canCancel; set => btnCancel.Visible = btnCancel.Enabled = _canCancel = value; }
+        public string Caption { get => label1.Text; set => label1.Text = value; }
         public static bool started = false;
         public static bool finished = false;
         public string Version;
@@ -35,7 +35,9 @@ namespace System.Windows.Forms
             Show();
             Focus();
             while (!finished)
+            {
                 Update(0);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e) { Cancel(); }
@@ -47,15 +49,23 @@ namespace System.Windows.Forms
             progressBar1.CurrentValue = current;
 
             if (Owner != null)
+            {
                 if (Owner.InvokeRequired)
+                {
                     Invoke(new MethodInvoker(() => Owner.Enabled = false));
+                }
                 else
+                {
                     Owner.Enabled = false;
+                }
+            }
 
             Show();
 
             if (Owner != null)
+            {
                 CenterToParent();
+            }
 
             Application.DoEvents();
         }
@@ -64,15 +74,19 @@ namespace System.Windows.Forms
             progressBar1.CurrentValue = CurrentValue;
             progressBar1.MaxValue = MaxValue;
             if (!Caption.Equals("Download Completed"))
+            {
                 Caption = "Downloading " + Version + ": " + (CurrentValue / 1048576.0).ToString("0.##") + "MB of " + (MaxValue / 1048576.0).ToString("0.##") + "MB";
+            }
+
             Application.DoEvents();
             Thread.Sleep(0);
         }
         public void Finish()
         {
             if (Owner != null)
+            {
                 Owner.Enabled = true;
-            
+            }
         }
         private void startDownload(string AppPath, string dlLink)
         {
@@ -97,9 +111,9 @@ namespace System.Windows.Forms
             thread.Start();
         }
 
-        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            this.BeginInvoke((MethodInvoker)delegate
+            BeginInvoke((MethodInvoker)delegate
             {
                 if (MaxValue == 1)
                 {
@@ -109,9 +123,10 @@ namespace System.Windows.Forms
                 CurrentValue = float.Parse(e.BytesReceived.ToString());
             });
         }
-        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+
+        private void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            this.BeginInvoke((MethodInvoker)delegate
+            BeginInvoke((MethodInvoker)delegate
             {
                 Caption = "Download Completed";
                 Thread.Sleep(10);
@@ -122,6 +137,6 @@ namespace System.Windows.Forms
         public static float MinValue = 0;
         public static float MaxValue = 1;
         public static float CurrentValue = 0;
-        public bool Cancelled { get { return _cancelled; } set { _cancelled = true; } }
+        public bool Cancelled { get => _cancelled; set => _cancelled = true; }
     }
 }

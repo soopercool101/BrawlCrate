@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlLib.Wii.Animations;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Wii.Animations;
 
 namespace BrawlLib.SSBBTypes
 {
-    [StructLayout( LayoutKind.Sequential, Pack=1)]
-    unsafe struct SRT0v4
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    internal unsafe struct SRT0v4
     {
         public const string Tag = "SRT0";
         public const int Size = 0x28;
@@ -18,7 +18,7 @@ namespace BrawlLib.SSBBTypes
         public bushort _numEntries;
         public bint _matrixMode;
         public bint _loop;
-        
+
         public SRT0v4(ushort frames, bool loop, ushort entries, int matrixMode)
         {
             _header._tag = Tag;
@@ -35,26 +35,26 @@ namespace BrawlLib.SSBBTypes
             _numEntries = entries;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SRT0v5
+    internal unsafe struct SRT0v5
     {
         public const string Tag = "SRT0";
         public const int Size = 0x2C;
@@ -85,32 +85,32 @@ namespace BrawlLib.SSBBTypes
             _numEntries = entries;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public ResourceGroup* Group { get { return (ResourceGroup*)(Address + _dataOffset); } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public VoidPtr UserData 
+        public VoidPtr UserData
         {
-            get { return _userDataOffset == 0 ? null : Address + _userDataOffset; }
-            set { _userDataOffset = (int)(VoidPtr)value - (int)Address; }
+            get => _userDataOffset == 0 ? null : Address + _userDataOffset;
+            set => _userDataOffset = (int)value - (int)Address;
         }
 
-        public string OrigPath { get { return new String((sbyte*)OrigPathAddress); } }
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
-            get { return Address + _origPathOffset; }
-            set { _origPathOffset = (int)value - (int)Address; }
+            get => Address + _origPathOffset;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SRT0Entry
+    internal unsafe struct SRT0Entry
     {
         public bint _stringOffset;
         public bint _textureIndices; //Sets which of the 8 texure references to animate with bits
@@ -129,27 +129,37 @@ namespace BrawlLib.SSBBTypes
         {
             int size = 12, index = 0;
             for (int i = 0; i < 8; i++)
+            {
                 if (((_textureIndices >> i) & 1) != 0)
+                {
                     size += 4 + GetEntry(index++)->Code.DataSize();
+                }
+            }
+
             for (int i = 0; i < 3; i++)
+            {
                 if (((_indirectIndices >> i) & 1) != 0)
+                {
                     size += 4 + GetEntry(index++)->Code.DataSize();
+                }
+            }
+
             return size;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public SRT0TextureEntry* GetEntry(int index) { return (SRT0TextureEntry*)(Address + GetOffset(index)); }
-        public void SetEntry(int index, SRT0TextureEntry value) { *(SRT0TextureEntry*)(Address + GetOffset(index)) = value; } 
-        
+        public void SetEntry(int index, SRT0TextureEntry value) { *(SRT0TextureEntry*)(Address + GetOffset(index)) = value; }
+
         public int GetOffset(int index) { return *(bint*)(Address + 12 + index * 4); }
         public void SetOffset(int index, int value) { *(bint*)(Address + 12 + index * 4) = value; }
 
-        public string ResourceString { get { return new String((sbyte*)ResourceStringAddress); } }
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
-            get { return (VoidPtr)Address + _stringOffset; }
-            set { _stringOffset = (int)value - (int)Address; }
+            get => Address + _stringOffset;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 
@@ -173,7 +183,7 @@ namespace BrawlLib.SSBBTypes
         Indirect1 = 0x02,
         Indirect2 = 0x04,
     }
-    
+
     [Flags]
     public enum IndTextureIndices
     {
@@ -183,13 +193,13 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SRT0EntryType2
+    internal unsafe struct SRT0EntryType2
     {
-        bint _unk1; //entry count?
+        private bint _unk1; //entry count?
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct SRT0TextureEntry
+    internal unsafe struct SRT0TextureEntry
     {
         public buint _code;
 
@@ -199,17 +209,17 @@ namespace BrawlLib.SSBBTypes
         //Rotation
         //X Trans
         //Y Trans
-        
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
-        public VoidPtr Data { get { return Address + 4; } }
-        public SRT0Code Code { get { return new SRT0Code() { _data = (uint)_code }; } set { _code = (uint)value._data; } }
+
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => Address + 4;
+        public SRT0Code Code { get => new SRT0Code() { _data = (uint)_code }; set => _code = (uint)value._data; }
 
         //Uses same header as CHR0 animations
         public I12Header* Entry(int index) { return (I12Header*)(Address + 4 + 4 * index + GetOffset(index)); }
-        
+
         public float GetValue(int index) { return *(bfloat*)(Address + 4 + 4 * index); }
         public void SetValue(int index, float value) { *(bfloat*)(Address + 4 + 4 * index) = value; }
-        
+
         public int GetOffset(int index) { return *(bint*)(Address + 4 + 4 * index); }
         public void SetOffset(int index, int value) { *(bint*)(Address + 4 + 4 * index) = value; }
     }
@@ -233,72 +243,143 @@ namespace BrawlLib.SSBBTypes
 
         public Bin32 _data;
 
-        public bool AlwaysOn { get { return _data[0]; } set { _data[0] = value; } }
-        public bool NoScale { get { return _data[1]; } set { _data[1] = value; } }
-        public bool NoRotation { get { return _data[2]; } set { _data[2] = value; } }
-        public bool NoTranslation { get { return _data[3]; } set { _data[3] = value; } }
-        public bool ScaleIsotropic { get { return _data[4]; } set { _data[4] = value; } }
-        public bool FixedScaleX { get { return _data[5]; } set { _data[5] = value; } }
-        public bool FixedScaleY { get { return _data[6]; } set { _data[6] = value; } }
-        public bool FixedRotation { get { return _data[7]; } set { _data[7] = value; } }
-        public bool FixedX { get { return _data[8]; } set { _data[8] = value; } }
-        public bool FixedY { get { return _data[9]; } set { _data[9] = value; } }
+        public bool AlwaysOn { get => _data[0]; set => _data[0] = value; }
+        public bool NoScale { get => _data[1]; set => _data[1] = value; }
+        public bool NoRotation { get => _data[2]; set => _data[2] = value; }
+        public bool NoTranslation { get => _data[3]; set => _data[3] = value; }
+        public bool ScaleIsotropic { get => _data[4]; set => _data[4] = value; }
+        public bool FixedScaleX { get => _data[5]; set => _data[5] = value; }
+        public bool FixedScaleY { get => _data[6]; set => _data[6] = value; }
+        public bool FixedRotation { get => _data[7]; set => _data[7] = value; }
+        public bool FixedX { get => _data[8]; set => _data[8] = value; }
+        public bool FixedY { get => _data[9]; set => _data[9] = value; }
 
         public bool GetHas(int i) { return _data[i + 1] != true; }
         public void SetHas(int index, bool p) { _data[index + 1] = !p; }
 
         public bool GetFixed(int i) { return _data[i + 5] != false; }
         public void SetFixed(int index, bool p) { _data[index + 5] = p; }
-        
+
         public int DataSize()
         {
             int val = 4;
             for (int i = 0; i < 3; i++)
+            {
                 if (GetHas(i))
+                {
                     if ((i == 1) || (i == 2 && ScaleIsotropic))
+                    {
                         val += 4;
+                    }
                     else
+                    {
                         val += 8;
+                    }
+                }
+            }
+
             return val;
         }
 
         public override string ToString()
         {
             string val = "None";
-            if (AlwaysOn) val = "Enabled";
+            if (AlwaysOn)
+            {
+                val = "Enabled";
+            }
 
-            if (!NoScale) val += ", Has ";
-            else val += ", No ";
+            if (!NoScale)
+            {
+                val += ", Has ";
+            }
+            else
+            {
+                val += ", No ";
+            }
+
             val += "Scale";
 
-            if (!NoRotation) val += ", Has ";
-            else val += ", No ";
+            if (!NoRotation)
+            {
+                val += ", Has ";
+            }
+            else
+            {
+                val += ", No ";
+            }
+
             val += "Rotation";
 
-            if (!NoTranslation) val += ", Has ";
-            else val += ", No ";
+            if (!NoTranslation)
+            {
+                val += ", Has ";
+            }
+            else
+            {
+                val += ", No ";
+            }
+
             val += "Translation";
 
-            if (ScaleIsotropic) val += ", Scale is isotropic";
+            if (ScaleIsotropic)
+            {
+                val += ", Scale is isotropic";
+            }
 
-            if (FixedScaleX) val += ", Fixed ";
-            else val += ", Unfixed ";
+            if (FixedScaleX)
+            {
+                val += ", Fixed ";
+            }
+            else
+            {
+                val += ", Unfixed ";
+            }
+
             val += "Scale X";
 
-            if (FixedScaleY) val += ", Fixed ";
-            else val += ", Unfixed ";
+            if (FixedScaleY)
+            {
+                val += ", Fixed ";
+            }
+            else
+            {
+                val += ", Unfixed ";
+            }
+
             val += "Scale Y";
 
-            if (FixedRotation) val += ", Fixed ";
-            else val += ", Unfixed ";
+            if (FixedRotation)
+            {
+                val += ", Fixed ";
+            }
+            else
+            {
+                val += ", Unfixed ";
+            }
+
             val += "Rotation";
 
-            if (FixedX) val += ", Fixed ";
-            else val += ", Unfixed ";
+            if (FixedX)
+            {
+                val += ", Fixed ";
+            }
+            else
+            {
+                val += ", Unfixed ";
+            }
+
             val += "X";
 
-            if (FixedY) val += ", Fixed ";
-            else val += ", Unfixed ";
+            if (FixedY)
+            {
+                val += ", Fixed ";
+            }
+            else
+            {
+                val += ", Unfixed ";
+            }
+
             val += "Y";
 
             return val;

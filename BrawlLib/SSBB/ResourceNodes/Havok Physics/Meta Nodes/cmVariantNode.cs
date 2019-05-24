@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             hkVariant* v = (hkVariant*)Data;
             hkClass* classData = (hkClass*)v->_classPtr.OffsetAddress;
-            HavokClassNode entry = HavokNode.GetClassNode(new String((sbyte*)classData->_namePtr.OffsetAddress), true);
+            HavokClassNode entry = HavokNode.GetClassNode(new string((sbyte*)classData->_namePtr.OffsetAddress), true);
             if (entry != null)
             {
                 new HavokMetaObjectNode(entry as hkClassNode)
@@ -27,14 +27,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            hkVariant*  v = (hkVariant*)address;
-            
+            hkVariant* v = (hkVariant*)address;
+
         }
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
             if (Children.Count > 0)
+            {
                 writer.WriteString(HavokXML.GetObjectName(classNodes, Children[0] as HavokClassNode));
+            }
         }
     }
 }

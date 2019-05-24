@@ -1,7 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static RSARFolderWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -53,22 +53,26 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public RSARFolderWrapper() 
+        public RSARFolderWrapper()
         {
-            ContextMenuStrip = _menu; 
+            ContextMenuStrip = _menu;
         }
 
         public void NewFolder()
         {
-            RSARFolderNode node = new RSARFolderNode();
-            node.Name = _resource.FindName("NewFolder");
+            RSARFolderNode node = new RSARFolderNode
+            {
+                Name = _resource.FindName("NewFolder")
+            };
             _resource.AddChild(node);
         }
 
         public void NewSound()
         {
-            RSARSoundNode node = new RSARSoundNode();
-            node.Name = _resource.FindName("NewSound");
+            RSARSoundNode node = new RSARSoundNode
+            {
+                Name = _resource.FindName("NewSound")
+            };
             RSARFolderNode folder = _resource as RSARFolderNode;
             RSARNode rsar = folder.RSARNode;
             if (rsar != null)
@@ -82,13 +86,17 @@ namespace BrawlCrate.NodeWrappers
         public void CopySound()
         {
             using (CloneSoundDialog dlg = new CloneSoundDialog())
+            {
                 dlg.ShowDialog(null, Resource as RSARFolderNode);
+            }
         }
 
         public void NewBank()
         {
-            RSARBankNode node = new RSARBankNode();
-            node.Name = _resource.FindName("NewBank");
+            RSARBankNode node = new RSARBankNode
+            {
+                Name = _resource.FindName("NewBank")
+            };
             RSARFolderNode folder = _resource as RSARFolderNode;
             RSARNode rsar = folder.RSARNode;
             if (rsar != null)
@@ -101,8 +109,10 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewType()
         {
-            RSARPlayerInfoNode node = new RSARPlayerInfoNode();
-            node.Name = _resource.FindName("NewPlayerInfo");
+            RSARPlayerInfoNode node = new RSARPlayerInfoNode
+            {
+                Name = _resource.FindName("NewPlayerInfo")
+            };
             RSARFolderNode folder = _resource as RSARFolderNode;
             RSARNode rsar = folder.RSARNode;
             if (rsar != null)
@@ -115,8 +125,10 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewGroup()
         {
-            RSARGroupNode node = new RSARGroupNode();
-            node.Name = _resource.FindName("NewGroup");
+            RSARGroupNode node = new RSARGroupNode
+            {
+                Name = _resource.FindName("NewGroup")
+            };
             RSARFolderNode folder = _resource as RSARFolderNode;
             RSARNode rsar = folder.RSARNode;
             if (rsar != null)

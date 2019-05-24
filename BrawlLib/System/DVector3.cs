@@ -13,8 +13,20 @@ namespace System
 
         public unsafe double this[int index]
         {
-            get { fixed (DVector3* p = &this) return ((double*)p)[index]; }
-            set { fixed (DVector3* p = &this) ((double*)p)[index] = value; }
+            get
+            {
+                fixed (DVector3* p = &this)
+                {
+                    return ((double*)p)[index];
+                }
+            }
+            set
+            {
+                fixed (DVector3* p = &this)
+                {
+                    ((double*)p)[index] = value;
+                }
+            }
         }
     }
 }

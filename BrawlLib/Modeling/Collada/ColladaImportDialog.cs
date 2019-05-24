@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {
@@ -32,16 +32,16 @@ namespace BrawlLib.Modeling
         {
             base.OnShown(e);
 
-            var info = propertyGrid1.GetType().GetProperty("Controls");
-            var collection = (Control.ControlCollection)info.GetValue(propertyGrid1, null);
+            PropertyInfo info = propertyGrid1.GetType().GetProperty("Controls");
+            Control.ControlCollection collection = (Control.ControlCollection)info.GetValue(propertyGrid1, null);
 
-            foreach (var control in collection)
+            foreach (object control in collection)
             {
-                var type = control.GetType();
+                Type type = control.GetType();
                 if ("DocComment" == type.Name)
                 {
                     const BindingFlags Flags = BindingFlags.Instance | BindingFlags.NonPublic;
-                    var field = type.BaseType.GetField("userSized", Flags);
+                    FieldInfo field = type.BaseType.GetField("userSized", Flags);
                     field.SetValue(control, true);
 
                     info = type.GetProperty("Lines");
@@ -90,94 +90,94 @@ namespace BrawlLib.Modeling
 
         private void InitializeComponent()
         {
-            this.Status = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.SuspendLayout();
+            Status = new System.Windows.Forms.Label();
+            button1 = new System.Windows.Forms.Button();
+            button2 = new System.Windows.Forms.Button();
+            panel1 = new System.Windows.Forms.Panel();
+            propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            panel2 = new System.Windows.Forms.Panel();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            SuspendLayout();
             // 
             // Status
             // 
-            this.Status.AutoSize = true;
-            this.Status.Location = new System.Drawing.Point(12, 9);
-            this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(107, 13);
-            this.Status.TabIndex = 0;
-            this.Status.Text = "Parsing DAE model...";
-            this.Status.UseWaitCursor = true;
+            Status.AutoSize = true;
+            Status.Location = new System.Drawing.Point(12, 9);
+            Status.Name = "Status";
+            Status.Size = new System.Drawing.Size(107, 13);
+            Status.TabIndex = 0;
+            Status.Text = "Parsing DAE model...";
+            Status.UseWaitCursor = true;
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(231, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Okay";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            button1.Location = new System.Drawing.Point(231, 6);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(65, 23);
+            button1.TabIndex = 9;
+            button1.Text = "Okay";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += new System.EventHandler(button1_Click);
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(302, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            button2.Location = new System.Drawing.Point(302, 6);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(65, 23);
+            button2.TabIndex = 10;
+            button2.Text = "Cancel";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += new System.EventHandler(button2_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.propertyGrid1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(379, 464);
-            this.panel1.TabIndex = 11;
+            panel1.Controls.Add(propertyGrid1);
+            panel1.Controls.Add(panel2);
+            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(379, 464);
+            panel1.TabIndex = 11;
             // 
             // propertyGrid1
             // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(379, 429);
-            this.propertyGrid1.TabIndex = 11;
-            this.propertyGrid1.ToolbarVisible = false;
+            propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            propertyGrid1.Location = new System.Drawing.Point(0, 0);
+            propertyGrid1.Name = "propertyGrid1";
+            propertyGrid1.Size = new System.Drawing.Size(379, 429);
+            propertyGrid1.TabIndex = 11;
+            propertyGrid1.ToolbarVisible = false;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 429);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(379, 35);
-            this.panel2.TabIndex = 12;
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(button2);
+            panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel2.Location = new System.Drawing.Point(0, 429);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(379, 35);
+            panel2.TabIndex = 12;
             // 
             // Collada
             // 
-            this.AcceptButton = this.button1;
-            this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(379, 464);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.Status);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MaximizeBox = false;
-            this.Name = "Collada";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Import Settings";
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = button1;
+            CancelButton = button2;
+            ClientSize = new System.Drawing.Size(379, 464);
+            Controls.Add(panel1);
+            Controls.Add(Status);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            MaximizeBox = false;
+            Name = "Collada";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Import Settings";
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
     }

@@ -2,7 +2,7 @@
 {
     public static class Int16Extension
     {
-        public static Int16 Reverse(this Int16 value)
+        public static short Reverse(this short value)
         {
             return (short)(((value >> 8) & 0xFF) | (value << 8));
         }

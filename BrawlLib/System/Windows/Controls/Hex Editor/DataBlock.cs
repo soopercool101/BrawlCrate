@@ -11,29 +11,11 @@ namespace Be.Windows.Forms
             get;
         }
 
-        public DataMap Map
-        {
-            get
-            {
-                return _map;
-            }
-        }
+        public DataMap Map => _map;
 
-        public DataBlock NextBlock
-        {
-            get
-            {
-                return _nextBlock;
-            }
-        }
+        public DataBlock NextBlock => _nextBlock;
 
-        public DataBlock PreviousBlock
-        {
-            get
-            {
-                return _previousBlock;
-            }
-        }
+        public DataBlock PreviousBlock => _previousBlock;
 
         public abstract void RemoveBytes(long position, long count);
     }

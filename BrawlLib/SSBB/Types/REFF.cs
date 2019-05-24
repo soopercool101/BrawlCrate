@@ -1,11 +1,11 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Imaging;
 
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct REFF
+    internal unsafe struct REFF
     {
         //Header + string is aligned to 4 bytes
 
@@ -20,11 +20,11 @@ namespace BrawlLib.SSBBTypes
         public bshort _stringLen;
         public bshort _padding; //0
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public string IdString
         {
-            get { return new String((sbyte*)Address + 0x28); }
+            get => new string((sbyte*)Address + 0x28);
             set
             {
                 int len = value.Length + 1;
@@ -34,19 +34,23 @@ namespace BrawlLib.SSBBTypes
                 fixed (char* sPtr = value)
                 {
                     for (int i = 0; i < len; i++)
+                    {
                         *dPtr++ = (byte)sPtr[i];
+                    }
                 }
 
                 //Align to 4 bytes
                 while ((len++ & 3) != 0)
+                {
                     *dPtr++ = 0;
+                }
 
                 //Set data offset
                 _dataOffset = 0x10 + len - 1;
             }
         }
 
-        public REFTypeObjectTable* Table { get { return (REFTypeObjectTable*)(Address + 0x18 + _dataOffset); } }
+        public REFTypeObjectTable* Table => (REFTypeObjectTable*)(Address + 0x18 + _dataOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -57,19 +61,19 @@ namespace BrawlLib.SSBBTypes
 
         public EmitterDesc _descriptor;
 
-        public ParticleParameterHeader* Params { get { return (ParticleParameterHeader*)(Address + _headerSize + 8); } }
+        public ParticleParameterHeader* Params => (ParticleParameterHeader*)(Address + _headerSize + 8);
 
-        public bushort* PtclTrackCount { get { return (bushort*)((VoidPtr)Params + Params->headersize + 4); } }
-        public bushort* PtclInitTrackCount { get { return PtclTrackCount + 1; } }
-        public bushort* EmitTrackCount { get { return (bushort*)((VoidPtr)PtclTrackCount + 4 + *PtclTrackCount * 8); } }
-        public bushort* EmitInitTrackCount { get { return EmitTrackCount + 1; } }
+        public bushort* PtclTrackCount => (bushort*)((VoidPtr)Params + Params->headersize + 4);
+        public bushort* PtclInitTrackCount => PtclTrackCount + 1;
+        public bushort* EmitTrackCount => (bushort*)((VoidPtr)PtclTrackCount + 4 + *PtclTrackCount * 8);
+        public bushort* EmitInitTrackCount => EmitTrackCount + 1;
 
-        public buint* PtclTrack { get { return (buint*)((VoidPtr)PtclTrackCount + 4); } }
-        public buint* EmitTrack { get { return (buint*)((VoidPtr)EmitTrackCount + 4); } }
+        public buint* PtclTrack => (buint*)((VoidPtr)PtclTrackCount + 4);
+        public buint* EmitTrack => (buint*)((VoidPtr)EmitTrackCount + 4);
 
-        public VoidPtr Animations { get { return (VoidPtr)EmitTrackCount + 4 + *EmitTrackCount * 8; } }
-        
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Animations => (VoidPtr)EmitTrackCount + 4 + *EmitTrackCount * 8;
+
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EmitterDesc
@@ -155,12 +159,12 @@ namespace BrawlLib.SSBBTypes
         //0x94
         public EmitterDrawSetting9 _drawSetting;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EmitterDrawSetting7
     {
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public bushort mFlags; // DrawFlag
 
@@ -249,7 +253,7 @@ namespace BrawlLib.SSBBTypes
         //   enum BillboardAhead
 
         public byte typeAxis;                   // enum RotateAxis
-        
+
         public byte typeOption0;                // Various types of parameters corresponding to the particle shapes
         // Directional:
         //   Change vertical (Y) based on speed : 0=off, 1=on
@@ -276,7 +280,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EmitterDrawSetting9
     {
-        public VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public bushort mFlags;     // DrawFlag
 
@@ -427,7 +431,7 @@ namespace BrawlLib.SSBBTypes
         public byte mC;         // GXTevColorArg / GXTevAlphaArg
         public byte mD;         // GXTevColorArg / GXTevAlphaArg
 
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct TevStageColorOp
@@ -438,7 +442,7 @@ namespace BrawlLib.SSBBTypes
         public byte mClamp;     // GXBool
         public byte mOutReg;    // GXTevRegID
 
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -1014,9 +1018,9 @@ namespace BrawlLib.SSBBTypes
         public bushort _count;
         public bushort _pad;
 
-        public AnimCurveKeyHeader* First { get { return (AnimCurveKeyHeader*)(Address + 4); } }
+        public AnimCurveKeyHeader* First => (AnimCurveKeyHeader*)(Address + 4);
 
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct AnimCurveKeyHeader
@@ -1024,12 +1028,12 @@ namespace BrawlLib.SSBBTypes
         public bushort _count;
         public bushort _pad;
 
-        public VoidPtr Data { get { return Address + 8; } }
-        
+        public VoidPtr Data => Address + 8;
+
         public AnimCurveKeyHeader* Next(int typeCount, int typeSize) { return (AnimCurveKeyHeader*)(Data + typeCount * typeSize + 4); }
         public uint GetFrameIndex(int typeCount, int typeSize) { return *(buint*)(Data + typeCount * typeSize); }
 
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct PostFieldInfo
@@ -1112,7 +1116,7 @@ namespace BrawlLib.SSBBTypes
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct ChildOption
         {
-            EmitterInheritSetting mInheritSetting;
+            private EmitterInheritSetting mInheritSetting;
             public bushort mNameIdx;
         }
         public ChildOption mChildOption;
@@ -1121,7 +1125,7 @@ namespace BrawlLib.SSBBTypes
         public enum WrapOption
         {
             Enable = 1, // If 0, the Wrap feature is not used
-            
+
             CenterOrigin = 0 << 1, // Center of the global origin
             CenterEmitter = 1 << 1 // Emitter center
         }

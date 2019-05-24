@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBBTypes
 {
-    [StructLayout(LayoutKind.Sequential, Pack=1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EFLSHeader
     {
         public const uint Tag = 0x534C4645;
@@ -24,21 +24,24 @@ namespace BrawlLib.SSBBTypes
             _unk2 = unk2;
         }
 
-        private VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         //First entry is always empty?
-        public EFLSEntry* Entries { get { return (EFLSEntry*)(Address + 0x10); } }
+        public EFLSEntry* Entries => (EFLSEntry*)(Address + 0x10);
 
         public string GetString(int index)
         {
             EFLSEntry* entry = &Entries[index];
             if (entry->_stringOffset == 0)
+            {
                 return "<null>";
-            return new String((sbyte*)Address + entry->_stringOffset);
+            }
+
+            return new string((sbyte*)Address + entry->_stringOffset);
         }
     }
 
-    [StructLayout( LayoutKind.Sequential, Pack=1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EFLSEntry
     {
         public const int Size = 0x10;
@@ -64,7 +67,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const uint Tag = 0x44334552;
         public const int Size = 0x10;
-        
+
         public uint _tag;
         public byte _numEntries;
         public fixed byte pad[11];
@@ -79,6 +82,6 @@ namespace BrawlLib.SSBBTypes
         public bshort _unk3;
         public bint _effectNameOffset;
 
-        internal byte* Address { get { fixed (void* ptr = &this)return (byte*)ptr; } }
+        internal byte* Address { get { fixed (void* ptr = &this) { return (byte*)ptr; } } }
     }
 }

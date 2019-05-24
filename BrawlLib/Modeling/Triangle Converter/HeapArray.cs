@@ -7,13 +7,13 @@ using System.Diagnostics;
 
 namespace BrawlLib.Modeling.Triangle_Converter
 {
-    enum CompareType
+    internal enum CompareType
     {
         Greater,
         Less,
     }
 
-    class HeapArray
+    internal class HeapArray
     {
         protected class Linker
         {
@@ -53,9 +53,9 @@ namespace BrawlLib.Modeling.Triangle_Converter
             //m_Heap.Capacity = (int)Size;
             //m_Finder.Capacity = (int)Size;
         }
-        public uint Size { get { return (uint)m_Heap.Count; } }
-        public bool Empty { get { return m_Heap.Count == 0; } }
-        public bool Locked { get { return m_Locked; } }
+        public uint Size => (uint)m_Heap.Count;
+        public bool Empty => m_Heap.Count == 0;
+        public bool Locked => m_Locked;
         public bool Removed(uint i)	// Pre: (valid(i))
         {
             Debug.Assert(Valid(i));
@@ -112,7 +112,9 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_Heap.RemoveAt(m_Heap.Count - 1);
 
             if (!Empty)
+            {
                 Adjust(0);
+            }
         }
 
         public void Erase(uint i) // Pre: (locked() && ! removed(i))
@@ -125,7 +127,9 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_Heap.RemoveAt(m_Heap.Count - 1);
 
             if (j != Size)
+            {
                 Adjust(j);
+            }
         }
         public void Update(uint i, uint Elem) // Pre: (locked() && ! removed(i))
         {
@@ -147,16 +151,22 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
             // Check the upper part of the heap
             for (j = i; (j > 0) && (Comp(m_Heap[(j - 1) / 2], m_Heap[j])); j = ((j - 1) / 2))
+            {
                 Swap(j, (j - 1) / 2);
+            }
 
             // Check the lower part of the heap
             for (i = j; (j = 2 * i + 1) < Size; i = j)
             {
                 if ((j + 1 < Size) && (Comp(m_Heap[j], m_Heap[j + 1])))
+                {
                     ++j;
+                }
 
                 if (Comp(m_Heap[j], m_Heap[i]))
+                {
                     return;
+                }
 
                 Swap(i, j);
             }

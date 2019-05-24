@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Drawing;
 using System.ComponentModel;
-using System.Windows.Forms;
+using System.Drawing;
 using System.Drawing.Design;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using System.Windows.Forms;
 
 namespace BrawlLib.Imaging
 {
@@ -78,28 +78,32 @@ namespace BrawlLib.Imaging
 
         public override string ToString()
         {
-            return String.Format("A:{0} R:{1} G:{2} B:{3}", A, R, G, B);
+            return string.Format("A:{0} R:{1} G:{2} B:{3}", A, R, G, B);
         }
         public string ToHexString()
         {
-            return String.Format("A:{0:X2} R:{1:X2} G:{2:X2} B:{3:X2}", A, R, G, B);
+            return string.Format("A:{0:X2} R:{1:X2} G:{2:X2} B:{3:X2}", A, R, G, B);
         }
         public string ToPaddedString()
         {
-            return String.Format("A:{0,3} R:{1,3} G:{2,3} B:{3,3}", A, R, G, B);
+            return string.Format("A:{0,3} R:{1,3} G:{2,3} B:{3,3}", A, R, G, B);
         }
         public string ToARGBColorCode()
         {
-            return String.Format("{0:X2}{1:X2}{2:X2}{3:X2}", A, R, G, B);
+            return string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", A, R, G, B);
         }
         public string ToRGBAColorCode()
         {
-            return String.Format("{0:X2}{1:X2}{2:X2}{3:X2}", R, G, B, A);
+            return string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", R, G, B, A);
         }
         public override int GetHashCode() { return (int)this; }
         public override bool Equals(object obj)
         {
-            if (obj is ARGBPixel) return (ARGBPixel)obj == this;
+            if (obj is ARGBPixel)
+            {
+                return (ARGBPixel)obj == this;
+            }
+
             return false;
         }
 
@@ -149,16 +153,26 @@ namespace BrawlLib.Imaging
             else
             {
                 if (max == p.R)
+                {
                     outp.H = (ushort)((60 * ((float)(p.G - p.B) / diff) + 360) % 360);
+                }
                 else if (max == p.G)
+                {
                     outp.H = (ushort)(60 * ((float)(p.B - p.R) / diff) + 120);
+                }
                 else
+                {
                     outp.H = (ushort)(60 * ((float)(p.R - p.G) / diff) + 240);
+                }
 
                 if (max == 0)
+                {
                     outp.S = 0;
+                }
                 else
+                {
                     outp.S = (byte)(diff * 100 / max);
+                }
             }
 
             outp.V = (byte)(max * 100 / 255);
@@ -171,7 +185,9 @@ namespace BrawlLib.Imaging
 
             byte v = (byte)(pixel.V * 255 / 100);
             if (pixel.S == 0)
+            {
                 newPixel = new ARGBPixel(255, v, v, v);
+            }
             else
             {
                 int h = (pixel.H / 60) % 6;
@@ -209,15 +225,15 @@ namespace BrawlLib.Imaging
     public unsafe struct RGBAPixel : IComparable//, ICustomTypeDescriptor
     {
         public const float ColorFactor = 1.0f / 255.0f;
-        
+
         public byte R, G, B, A;
 
         public static implicit operator RGBAPixel(ARGBPixel p) { return new RGBAPixel() { A = p.A, B = p.B, G = p.G, R = p.R }; }
         public static implicit operator ARGBPixel(RGBAPixel p) { return new ARGBPixel() { A = p.A, B = p.B, G = p.G, R = p.R }; }
-        public static explicit operator Color(RGBAPixel p) 
+        public static explicit operator Color(RGBAPixel p)
         {
-            ARGBPixel a = (ARGBPixel)p;
-            return Color.FromArgb((int)a); 
+            ARGBPixel a = p;
+            return Color.FromArgb((int)a);
         }
         public static implicit operator RGBAPixel(Vector4 p) { return new RGBAPixel((byte)(p._x * 255.0f), (byte)(p._y * 255.0f), (byte)(p._z * 255.0f), (byte)(p._w * 255.0f)); }
         public static implicit operator Vector4(RGBAPixel p) { return new Vector4(p.R / 255.0f, p.G / 255.0f, p.B / 255.0f, p.A / 255.0f); }
@@ -226,31 +242,36 @@ namespace BrawlLib.Imaging
         public RGBAPixel(byte r, byte g, byte b, byte a) { R = r; G = g; B = b; A = a; }
 
         [Category("RGBA Pixel")]
-        public byte Red { get { return R; } set { R = value; } }
+        public byte Red { get => R; set => R = value; }
         [Category("RGBA Pixel")]
-        public byte Green { get { return G; } set { G = value; } }
+        public byte Green { get => G; set => G = value; }
         [Category("RGBA Pixel")]
-        public byte Blue { get { return B; } set { B = value; } }
+        public byte Blue { get => B; set => B = value; }
         [Category("RGBA Pixel")]
-        public byte Alpha { get { return A; } set { A = value; } }
+        public byte Alpha { get => A; set => A = value; }
         //[Category("RGBA Pixel"), TypeConverter(typeof(RGBAStringConverter))]
         //public RGBAPixel Value { get { return this; } set { this = value; } }
 
         public override string ToString()
         {
             //return String.Format("R:{0:X2} G:{1:X2} B:{2:X2} A:{3:X2}", R, G, B, A);
-            return String.Format("R:{0} G:{1} B:{2} A:{3}", R, G, B, A);
+            return string.Format("R:{0} G:{1} B:{2} A:{3}", R, G, B, A);
         }
 
         public override int GetHashCode()
         {
             fixed (RGBAPixel* p = &this)
+            {
                 return *(int*)p;
+            }
         }
         public override bool Equals(object obj)
         {
             if (obj is RGBAPixel)
+            {
                 return this == (RGBAPixel)obj;
+            }
+
             return false;
         }
 
@@ -260,21 +281,38 @@ namespace BrawlLib.Imaging
             {
                 RGBAPixel o = (RGBAPixel)obj;
                 if (A > o.A)
+                {
                     return 1;
+                }
                 else if (A < o.A)
+                {
                     return -1;
+                }
                 else if (R > o.R)
+                {
                     return 1;
+                }
                 else if (R < o.R)
+                {
                     return -1;
+                }
                 else if (G > o.G)
+                {
                     return 1;
+                }
                 else if (G < o.G)
+                {
                     return -1;
+                }
                 else if (B > o.B)
+                {
                     return 1;
+                }
                 else if (B < o.B)
+                {
                     return -1;
+                }
+
                 return 0;
             }
             return 1;
@@ -294,21 +332,30 @@ namespace BrawlLib.Imaging
             int v2 = *(int*)&p2;
 
             if (v1 > v2)
+            {
                 return 1;
+            }
+
             if (v1 < v2)
+            {
                 return -1;
+            }
+
             return 1;
         }
 
         [Browsable(false)]
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public static unsafe RGBAPixel Parse(string s)
         {
             RGBAPixel p;
             byte* ptr = (byte*)&p;
             for (int i = 0; i < 8; i += 2)
+            {
                 *ptr++ = s.Length >= i + 2 ? byte.Parse(s.Substring(i, 2), System.Globalization.NumberStyles.HexNumber) : (byte)(i == 6 ? 0xFF : 0);
+            }
+
             return p;
         }
     }
@@ -328,7 +375,7 @@ namespace BrawlLib.Imaging
 
         public override string ToString()
         {
-            return String.Format("R:{0:X2} G:{1:X2} B:{2:X2}", R, G, B);
+            return string.Format("R:{0:X2} G:{1:X2} B:{2:X2}", R, G, B);
         }
     }
 
@@ -345,7 +392,7 @@ namespace BrawlLib.Imaging
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct ColorF4
+    internal unsafe struct ColorF4
     {
         private const float ColorFactor = 1.0f / 255.0f;
 
@@ -411,7 +458,10 @@ namespace BrawlLib.Imaging
         public override bool Equals(object obj)
         {
             if (obj is ColorF4)
+            {
                 return this == (ColorF4)obj;
+            }
+
             return base.Equals(obj);
         }
         public override int GetHashCode() { return base.GetHashCode(); }
@@ -433,18 +483,18 @@ namespace BrawlLib.Imaging
         public GXColorS10(short a, short r, short g, short b) { A = a; R = r; G = g; B = b; }
 
         [Category("RGBA Pixel")]
-        public short Red { get { return R; } set { R = value; } }
+        public short Red { get => R; set => R = value; }
         [Category("RGBA Pixel")]
-        public short Green { get { return G; } set { G = value; } }
+        public short Green { get => G; set => G = value; }
         [Category("RGBA Pixel")]
-        public short Blue { get { return B; } set { B = value; } }
+        public short Blue { get => B; set => B = value; }
         [Category("RGBA Pixel")]
-        public short Alpha { get { return A; } set { A = value; } }
+        public short Alpha { get => A; set => A = value; }
 
         public override string ToString()
         {
             //return String.Format("R:{0:X2} G:{1:X2} B:{2:X2} A:{3:X2}", R, G, B, A);
-            return String.Format("R:{0} G:{1} B:{2} A:{3}", R, G, B, A);
+            return string.Format("R:{0} G:{1} B:{2} A:{3}", R, G, B, A);
         }
 
         public static bool operator ==(GXColorS10 p1, GXColorS10 p2) { return (p1.A == p2.A) && (p1.R == p2.R) && (p1.G == p2.G) && (p1.B == p2.B); }
@@ -484,12 +534,15 @@ namespace BrawlLib.Imaging
         }
 
         [Browsable(false)]
-        public VoidPtr Address { get { fixed (void* p = &this)return p; } }
+        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public override bool Equals(object obj)
         {
             if (obj is GXColorS10)
+            {
                 return this == (GXColorS10)obj;
+            }
+
             return false;
         }
         public override int GetHashCode() { return base.GetHashCode(); }

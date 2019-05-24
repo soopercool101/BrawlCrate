@@ -1,19 +1,19 @@
-﻿using System;
-using System.IO;
-using System.Xml;
+﻿using BrawlLib.Imaging;
 using BrawlLib.SSBB.ResourceNodes;
-using System.Collections.Generic;
-using BrawlLib.Imaging;
-using BrawlLib.Wii.Models;
-using System.Windows.Forms;
-using System.Globalization;
 using BrawlLib.Wii.Animations;
+using BrawlLib.Wii.Models;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace BrawlLib.Modeling
 {
     public unsafe partial class Collada
     {
-        static XmlWriterSettings _writerSettings = new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace };
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace };
         public static void Serialize(MDL0Node model, string outFile)
         {
             model.Populate();
@@ -103,7 +103,9 @@ namespace BrawlLib.Modeling
         private static void WriteImages(MDL0Node model, XmlWriter writer)
         {
             if (model._texList == null)
+            {
                 return;
+            }
 
             writer.WriteStartElement("library_images");
             {
@@ -117,7 +119,7 @@ namespace BrawlLib.Modeling
                         {
                             writer.WriteStartElement("ref");
                             {
-                                writer.WriteString(String.Format("{0}.png", tex.Name));
+                                writer.WriteString(string.Format("{0}.png", tex.Name));
                             }
                             writer.WriteEndElement(); //ref
                         }
@@ -133,21 +135,25 @@ namespace BrawlLib.Modeling
         {
             ResourceNode node = model._matGroup;
             if (node == null)
+            {
                 return;
+            }
 
             writer.WriteStartElement("library_materials");
             {
                 foreach (MDL0MaterialNode mat in node.Children)
                 {
                     if (mat._objects.Count == 0)
+                    {
                         continue;
+                    }
 
                     writer.WriteStartElement("material");
                     {
                         writer.WriteAttributeString("id", mat._name);
 
                         writer.WriteStartElement("instance_effect");
-                        writer.WriteAttributeString("url", String.Format("#{0}-fx", mat._name));
+                        writer.WriteAttributeString("url", string.Format("#{0}-fx", mat._name));
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -160,7 +166,9 @@ namespace BrawlLib.Modeling
         {
             ResourceNode node = model._matGroup;
             if (node == null)
+            {
                 return;
+            }
 
             writer.WriteStartElement("library_effects");
 
@@ -295,7 +303,9 @@ namespace BrawlLib.Modeling
         {
             ResourceNode grp = model._objGroup;
             if (grp == null)
+            {
                 return;
+            }
 
             writer.WriteStartElement("library_geometries");
 
@@ -318,7 +328,9 @@ namespace BrawlLib.Modeling
                 for (int i = 0; i < 12; i++)
                 {
                     if (manager._faceData[i] == null)
+                    {
                         continue;
+                    }
 
                     switch (i)
                     {
@@ -353,11 +365,19 @@ namespace BrawlLib.Modeling
                 foreach (DrawCall c in poly._drawCalls)
                 {
                     if (manager._triangles != null)
+                    {
                         WritePrimitive(poly, c.MaterialNode, manager._triangles, writer);
+                    }
+
                     if (manager._lines != null)
+                    {
                         WritePrimitive(poly, c.MaterialNode, manager._lines, writer);
+                    }
+
                     if (manager._points != null)
+                    {
                         WritePrimitive(poly, c.MaterialNode, manager._points, writer);
+                    }
                 }
                 writer.WriteEndElement(); //mesh
                 writer.WriteEndElement(); //geometry
@@ -382,12 +402,16 @@ namespace BrawlLib.Modeling
             foreach (Vertex3 v in vertices)
             {
                 if (first)
+                {
                     first = false;
+                }
                 else
+                {
                     writer.WriteString(" ");
+                }
 
                 Vector3 p = v.WeightedPosition;
-                writer.WriteString(String.Format("{0} {1} {2}", p._x.ToString(CultureInfo.InvariantCulture.NumberFormat), p._y.ToString(CultureInfo.InvariantCulture.NumberFormat), p._z.ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(string.Format("{0} {1} {2}", p._x.ToString(CultureInfo.InvariantCulture.NumberFormat), p._y.ToString(CultureInfo.InvariantCulture.NumberFormat), p._z.ToString(CultureInfo.InvariantCulture.NumberFormat)));
             }
 
             writer.WriteEndElement(); //float_array
@@ -419,8 +443,8 @@ namespace BrawlLib.Modeling
             writer.WriteEndElement(); //source
         }
 
-        static Vector3[] _normals;
-        static List<int> _normRemap;
+        private static Vector3[] _normals;
+        private static List<int> _normRemap;
         private static void WriteNormals(string name, XmlWriter writer, PrimitiveManager p)
         {
             bool first = true;
@@ -430,11 +454,17 @@ namespace BrawlLib.Modeling
 
             HashSet<Vector3> list = new HashSet<Vector3>();
             for (int i = 0; i < p._pointCount; i++)
-                if(pIndex[i] != null && p._vertices.Count > pIndex[i] && pData[i] != null)
+            {
+                if (pIndex[i] != null && p._vertices.Count > pIndex[i] && pData[i] != null)
+                {
                     list.Add(p._vertices[pIndex[i]].GetMatrix().GetRotationMatrix() * pData[i]);
+                }
+            }
 
             if (list.Count <= 0)
+            {
                 return; // No normals to write; This likely should never happen, but prevents crashes if it does
+            }
 
             _normals = new Vector3[list.Count];
             list.CopyTo(_normals);
@@ -442,8 +472,12 @@ namespace BrawlLib.Modeling
             int count = _normals.Length;
             _normRemap = new List<int>();
             for (int i = 0; i < p._pointCount; i++)
-                if(p._vertices.Count > pIndex[i])
+            {
+                if (p._vertices.Count > pIndex[i])
+                {
                     _normRemap.Add(Array.IndexOf(_normals, p._vertices[pIndex[i]].GetMatrix().GetRotationMatrix() * pData[i]));
+                }
+            }
 
             //Position source
             writer.WriteStartElement("source");
@@ -457,13 +491,17 @@ namespace BrawlLib.Modeling
             for (int i = 0; i < count; i++)
             {
                 if (first)
+                {
                     first = false;
+                }
                 else
+                {
                     writer.WriteString(" ");
+                }
 
                 v = _normals[i];
 
-                writer.WriteString(String.Format("{0} {1} {2}", v._x.ToString(CultureInfo.InvariantCulture.NumberFormat), v._y.ToString(CultureInfo.InvariantCulture.NumberFormat), v._z.ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(string.Format("{0} {1} {2}", v._x.ToString(CultureInfo.InvariantCulture.NumberFormat), v._y.ToString(CultureInfo.InvariantCulture.NumberFormat), v._z.ToString(CultureInfo.InvariantCulture.NumberFormat)));
             }
 
             writer.WriteEndElement(); //float_array
@@ -494,9 +532,10 @@ namespace BrawlLib.Modeling
 
             writer.WriteEndElement(); //source
         }
-        static RGBAPixel[][] _colors = new RGBAPixel[2][];
-        static List<int>[] _colorRemap = new List<int>[2];
-        const float cFactor = 1.0f / 255.0f;
+
+        private static readonly RGBAPixel[][] _colors = new RGBAPixel[2][];
+        private static readonly List<int>[] _colorRemap = new List<int>[2];
+        private const float cFactor = 1.0f / 255.0f;
         private static void WriteColors(string name, PrimitiveManager p, int set, XmlWriter writer)
         {
             bool first = true;
@@ -506,7 +545,9 @@ namespace BrawlLib.Modeling
             _colorRemap[set] = new List<int>();
             RGBAPixel* ptr = (RGBAPixel*)p._faceData[set + 2].Address;
             for (int i = 0; i < p._pointCount; i++)
+            {
                 _colorRemap[set].Add(Array.IndexOf(_colors[set], ptr[i]));
+            }
 
             //Position source
             writer.WriteStartElement("source");
@@ -520,13 +561,17 @@ namespace BrawlLib.Modeling
             for (int i = 0; i < count; i++)
             {
                 if (first)
+                {
                     first = false;
+                }
                 else
+                {
                     writer.WriteString(" ");
-                
+                }
+
                 RGBAPixel r = _colors[set][i];
 
-                writer.WriteString(String.Format("{0} {1} {2} {3}",
+                writer.WriteString(string.Format("{0} {1} {2} {3}",
                     (r.R * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat),
                     (r.G * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat),
                     (r.B * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat),
@@ -566,8 +611,8 @@ namespace BrawlLib.Modeling
             writer.WriteEndElement(); //source
         }
 
-        static Vector2[][] _uvs = new Vector2[8][];
-        static List<int>[] _uvRemap = new List<int>[8];
+        private static readonly Vector2[][] _uvs = new Vector2[8][];
+        private static readonly List<int>[] _uvRemap = new List<int>[8];
         private static void WriteUVs(string name, PrimitiveManager p, int set, XmlWriter writer)
         {
             bool first = true;
@@ -577,7 +622,9 @@ namespace BrawlLib.Modeling
             _uvRemap[set] = new List<int>();
             Vector2* ptr = (Vector2*)p._faceData[set + 4].Address;
             for (int i = 0; i < p._pointCount; i++)
+            {
                 _uvRemap[set].Add(Array.IndexOf(_uvs[set], ptr[i]));
+            }
 
             //Position source
             writer.WriteStartElement("source");
@@ -591,14 +638,18 @@ namespace BrawlLib.Modeling
             for (int i = 0; i < count; i++)
             {
                 if (first)
+                {
                     first = false;
+                }
                 else
+                {
                     writer.WriteString(" ");
+                }
 
                 //Reverse T component to a top-down form
                 //writer.WriteString(String.Format("{0} {1}", pData->_x, 1.0 - pData->_y));
                 //pData++;
-                writer.WriteString(String.Format("{0} {1}", _uvs[set][i]._x.ToString(CultureInfo.InvariantCulture.NumberFormat), (1.0f - _uvs[set][i]._y).ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(string.Format("{0} {1}", _uvs[set][i]._x.ToString(CultureInfo.InvariantCulture.NumberFormat), (1.0f - _uvs[set][i]._y).ToString(CultureInfo.InvariantCulture.NumberFormat)));
             }
 
             writer.WriteEndElement(); //int_array
@@ -657,7 +708,9 @@ namespace BrawlLib.Modeling
             count = prim._indices.Length / stride;
 
             if (mat != null)
+            {
                 writer.WriteAttributeString("material", mat.Name);
+            }
 
             writer.WriteAttributeString("count", count.ToString());
 
@@ -665,7 +718,9 @@ namespace BrawlLib.Modeling
             for (int i = 0; i < 12; i++)
             {
                 if (manager._faceData[i] == null)
+                {
                     continue;
+                }
 
                 writer.WriteStartElement("input");
 
@@ -714,20 +769,36 @@ namespace BrawlLib.Modeling
                     for (int y = 0; y < elements; y++)
                     {
                         if (first)
+                        {
                             first = false;
+                        }
                         else
+                        {
                             writer.WriteString(" ");
+                        }
 
                         if (elementType[y] < 4)
+                        {
                             if (elementType[y] < 2)
+                            {
                                 if (elementType[y] == 0)
+                                {
                                     writer.WriteString(pVert[index].ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                }
                                 else
+                                {
                                     writer.WriteString(_normRemap[index].ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                }
+                            }
                             else
+                            {
                                 writer.WriteString(_colorRemap[elementType[y] - 2][index].ToString(CultureInfo.InvariantCulture.NumberFormat));
+                            }
+                        }
                         else
+                        {
                             writer.WriteString(_uvRemap[elementType[y] - 4][index].ToString(CultureInfo.InvariantCulture.NumberFormat));
+                        }
                     }
                 }
             }
@@ -738,7 +809,9 @@ namespace BrawlLib.Modeling
         private static unsafe void WriteControllers(MDL0Node model, XmlWriter writer)
         {
             if (model._objList == null)
+            {
                 return;
+            }
 
             writer.WriteStartElement("library_controllers");
 
@@ -763,7 +836,7 @@ namespace BrawlLib.Modeling
                 //if (poly._singleBind != null)
                 //    m = poly._singleBind.Matrix;
                 //else
-                    m = Matrix.Identity;
+                m = Matrix.Identity;
 
                 writer.WriteString(WriteMatrix(m));
 
@@ -771,12 +844,22 @@ namespace BrawlLib.Modeling
 
                 //Get list of used bones and weights
                 if (poly._matrixNode != null)
+                {
                     foreach (BoneWeight w in poly._matrixNode.Weights)
+                    {
                         tempWeights.Add(w.Weight);
+                    }
+                }
                 else
+                {
                     foreach (Vertex3 v in verts)
+                    {
                         foreach (BoneWeight w in v.MatrixNode.Weights)
+                        {
                             tempWeights.Add(w.Weight);
+                        }
+                    }
+                }
 
                 float[] weightSet = new float[tempWeights.Count];
                 tempWeights.CopyTo(weightSet);
@@ -794,9 +877,14 @@ namespace BrawlLib.Modeling
                 foreach (MDL0BoneNode b in bones)
                 {
                     if (first)
+                    {
                         first = false;
+                    }
                     else
+                    {
                         writer.WriteString(" ");
+                    }
+
                     writer.WriteString(b.Name);
                 }
                 writer.WriteEndElement(); //Name_array
@@ -804,7 +892,7 @@ namespace BrawlLib.Modeling
                 //Technique
                 writer.WriteStartElement("technique_common");
                 writer.WriteStartElement("accessor");
-                writer.WriteAttributeString("source", String.Format("#{0}_JointArr", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_JointArr", poly.Name));
                 writer.WriteAttributeString("count", bones.Length.ToString());
                 writer.WriteStartElement("param");
                 writer.WriteAttributeString("name", "JOINT");
@@ -827,9 +915,14 @@ namespace BrawlLib.Modeling
                 foreach (MDL0BoneNode b in bones)
                 {
                     if (first)
+                    {
                         first = false;
+                    }
                     else
+                    {
                         writer.WriteString(" ");
+                    }
+
                     writer.WriteString(WriteMatrix(b.InverseBindMatrix));
                 }
                 writer.WriteEndElement(); //float_array
@@ -837,7 +930,7 @@ namespace BrawlLib.Modeling
                 //Technique
                 writer.WriteStartElement("technique_common");
                 writer.WriteStartElement("accessor");
-                writer.WriteAttributeString("source", String.Format("#{0}_MatArr", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_MatArr", poly.Name));
                 writer.WriteAttributeString("count", bones.Length.ToString());
                 writer.WriteAttributeString("stride", "16");
                 writer.WriteStartElement("param");
@@ -860,9 +953,14 @@ namespace BrawlLib.Modeling
                 foreach (float f in weightSet)
                 {
                     if (first)
+                    {
                         first = false;
+                    }
                     else
+                    {
                         writer.WriteString(" ");
+                    }
+
                     writer.WriteValue(f);
                 }
                 writer.WriteEndElement();
@@ -870,7 +968,7 @@ namespace BrawlLib.Modeling
                 //Technique
                 writer.WriteStartElement("technique_common");
                 writer.WriteStartElement("accessor");
-                writer.WriteAttributeString("source", String.Format("#{0}_WeightArr", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_WeightArr", poly.Name));
                 writer.WriteAttributeString("count", weightSet.Length.ToString());
                 writer.WriteStartElement("param");
                 writer.WriteAttributeString("type", "float");
@@ -884,11 +982,11 @@ namespace BrawlLib.Modeling
                 writer.WriteStartElement("joints");
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "JOINT");
-                writer.WriteAttributeString("source", String.Format("#{0}_Joints", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_Joints", poly.Name));
                 writer.WriteEndElement(); //input
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "INV_BIND_MATRIX");
-                writer.WriteAttributeString("source", String.Format("#{0}_Matrices", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_Matrices", poly.Name));
                 writer.WriteEndElement(); //input
                 writer.WriteEndElement(); //joints
 
@@ -898,64 +996,96 @@ namespace BrawlLib.Modeling
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "JOINT");
                 writer.WriteAttributeString("offset", "0");
-                writer.WriteAttributeString("source", String.Format("#{0}_Joints", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_Joints", poly.Name));
                 writer.WriteEndElement(); //input
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "WEIGHT");
                 writer.WriteAttributeString("offset", "1");
-                writer.WriteAttributeString("source", String.Format("#{0}_Weights", poly.Name));
+                writer.WriteAttributeString("source", string.Format("#{0}_Weights", poly.Name));
                 writer.WriteEndElement(); //input
 
                 writer.WriteStartElement("vcount");
                 first = true;
                 if (poly._matrixNode != null)
+                {
                     for (int i = 0; i < verts.Count; i++)
                     {
                         if (first)
+                        {
                             first = false;
+                        }
                         else
+                        {
                             writer.WriteString(" ");
+                        }
+
                         writer.WriteString(poly._matrixNode.Weights.Count.ToString(CultureInfo.InvariantCulture.NumberFormat));
                     }
+                }
                 else
+                {
                     foreach (Vertex3 v in verts)
                     {
                         if (first)
+                        {
                             first = false;
+                        }
                         else
+                        {
                             writer.WriteString(" ");
+                        }
+
                         writer.WriteString(v.MatrixNode.Weights.Count.ToString(CultureInfo.InvariantCulture.NumberFormat));
                     }
-                
+                }
+
                 writer.WriteEndElement(); //vcount
 
                 writer.WriteStartElement("v");
 
                 first = true;
                 if (poly._matrixNode != null)
+                {
                     for (int i = 0; i < verts.Count; i++)
+                    {
                         foreach (BoneWeight w in poly._matrixNode.Weights)
                         {
                             if (first)
+                            {
                                 first = false;
+                            }
                             else
+                            {
                                 writer.WriteString(" ");
+                            }
+
                             writer.WriteString(Array.IndexOf(bones, w.Bone).ToString(CultureInfo.InvariantCulture.NumberFormat));
                             writer.WriteString(" ");
                             writer.WriteString(Array.IndexOf(weightSet, w.Weight).ToString(CultureInfo.InvariantCulture.NumberFormat));
                         }
+                    }
+                }
                 else
+                {
                     foreach (Vertex3 v in verts)
+                    {
                         foreach (BoneWeight w in v.MatrixNode.Weights)
                         {
                             if (first)
+                            {
                                 first = false;
+                            }
                             else
+                            {
                                 writer.WriteString(" ");
+                            }
+
                             writer.WriteString(Array.IndexOf(bones, w.Bone).ToString(CultureInfo.InvariantCulture.NumberFormat));
                             writer.WriteString(" ");
                             writer.WriteString(Array.IndexOf(weightSet, w.Weight).ToString(CultureInfo.InvariantCulture.NumberFormat));
                         }
+                    }
+                }
 
                 writer.WriteEndElement(); //v
                 writer.WriteEndElement(); //vertex_weights
@@ -969,14 +1099,24 @@ namespace BrawlLib.Modeling
         private static unsafe void WriteNodes(MDL0Node model, XmlWriter writer)
         {
             if (model._boneList != null)
+            {
                 foreach (MDL0BoneNode bone in model._boneList)
+                {
                     WriteBone(bone, writer);
+                }
+            }
 
             if (model._objList != null)
+            {
                 foreach (MDL0ObjectNode poly in model._objList)
+                {
                     //if (poly._singleBind == null)
                     foreach (DrawCall c in poly._drawCalls)
+                    {
                         WritePolyInstance(c, writer);
+                    }
+                }
+            }
         }
 
         private static unsafe void WriteBone(MDL0BoneNode bone, XmlWriter writer, bool useMatrix = false)
@@ -1041,7 +1181,9 @@ namespace BrawlLib.Modeling
             //    WritePolyInstance(poly, writer);
 
             foreach (MDL0BoneNode b in bone.Children)
+            {
                 WriteBone(b, writer);
+            }
 
             writer.WriteEndElement(); //node
         }
@@ -1056,8 +1198,8 @@ namespace BrawlLib.Modeling
             writer.WriteAttributeString("type", "NODE");
 
             writer.WriteStartElement("instance_controller");
-            writer.WriteAttributeString("url", String.Format("#{0}_Controller", obj.Name));
-            
+            writer.WriteAttributeString("url", string.Format("#{0}_Controller", obj.Name));
+
             writer.WriteStartElement("skeleton");
             writer.WriteString("#" + obj.Model._linker.BoneCache[0].Name);
             writer.WriteEndElement();
@@ -1093,12 +1235,18 @@ namespace BrawlLib.Modeling
             string s = "";
             float* p = (float*)&m;
             for (int y = 0; y < 4; y++)
+            {
                 for (int x = 0; x < 4; x++)
                 {
                     if ((x != 0) || (y != 0))
+                    {
                         s += " ";
+                    }
+
                     s += p[(x << 2) + y].ToString(CultureInfo.InvariantCulture.NumberFormat);
                 }
+            }
+
             return s;
         }
 
@@ -1129,7 +1277,7 @@ namespace BrawlLib.Modeling
                     foreach (CHR0Node animation in animations)
                     {
                         string animName = animation.Name;
-                        
+
                         writer.WriteStartElement("animation");
                         writer.WriteAttributeString("name", animName);
                         writer.WriteAttributeString("id", animName);
@@ -1145,12 +1293,14 @@ namespace BrawlLib.Modeling
                                     KeyframeEntry root = keyframes._keyArrays[index]._keyRoot;
 
                                     if (keyFrameCount <= 0)
+                                    {
                                         continue;
+                                    }
 
                                     string type = types[index / 3];
                                     string axis = axes[index % 3];
 
-                                    string name = String.Format("{0}_{1}{2}", bone, type, axis);
+                                    string name = string.Format("{0}_{1}{2}", bone, type, axis);
 
                                     //writer.WriteStartElement("animation");
                                     //writer.WriteAttributeString("id", name);
@@ -1167,10 +1317,15 @@ namespace BrawlLib.Modeling
                                                 for (KeyframeEntry entry = root._next; entry != root; entry = entry._next)
                                                 {
                                                     if (first)
+                                                    {
                                                         first = false;
+                                                    }
                                                     else
+                                                    {
                                                         writer.WriteString(" ");
-                                                    writer.WriteString(((float)entry._index / fps).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                                    }
+
+                                                    writer.WriteString((entry._index / fps).ToString(CultureInfo.InvariantCulture.NumberFormat));
                                                 }
                                             }
                                             writer.WriteEndElement(); //float_array
@@ -1219,10 +1374,15 @@ namespace BrawlLib.Modeling
                                                 for (KeyframeEntry entry = root._next; entry != root; entry = entry._next)
                                                 {
                                                     if (first)
+                                                    {
                                                         first = false;
+                                                    }
                                                     else
+                                                    {
                                                         writer.WriteString(" ");
-                                                    writer.WriteString(((float)entry._value).ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                                    }
+
+                                                    writer.WriteString(entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat));
                                                 }
                                             }
                                             writer.WriteEndElement(); //float_array
@@ -1258,9 +1418,14 @@ namespace BrawlLib.Modeling
                                                 for (KeyframeEntry entry = root._next; entry != root; entry = entry._next)
                                                 {
                                                     if (first)
+                                                    {
                                                         first = false;
+                                                    }
                                                     else
+                                                    {
                                                         writer.WriteString(" ");
+                                                    }
+
                                                     writer.WriteString(entry._tangent.ToString(CultureInfo.InvariantCulture.NumberFormat));
                                                 }
                                             }
@@ -1297,9 +1462,14 @@ namespace BrawlLib.Modeling
                                                 for (KeyframeEntry entry = root._next; entry != root; entry = entry._next)
                                                 {
                                                     if (first)
+                                                    {
                                                         first = false;
+                                                    }
                                                     else
+                                                    {
                                                         writer.WriteString(" ");
+                                                    }
+
                                                     writer.WriteString(entry._tangent.ToString(CultureInfo.InvariantCulture.NumberFormat));
                                                 }
                                             }
@@ -1336,9 +1506,14 @@ namespace BrawlLib.Modeling
                                                 for (KeyframeEntry entry = root._next; entry != root; entry = entry._next)
                                                 {
                                                     if (first)
+                                                    {
                                                         first = false;
+                                                    }
                                                     else
+                                                    {
                                                         writer.WriteString(" ");
+                                                    }
+
                                                     writer.WriteString("HERMITE");
                                                 }
                                             }
@@ -1397,7 +1572,7 @@ namespace BrawlLib.Modeling
 
                                         writer.WriteStartElement("channel");
                                         writer.WriteAttributeString("source", "#" + name + "_sampler");
-                                        writer.WriteAttributeString("target", String.Format("{0}/{1}.{2}", bone, type, axis));
+                                        writer.WriteAttributeString("target", string.Format("{0}/{1}.{2}", bone, type, axis));
                                         writer.WriteEndElement(); //channel
                                     }
                                     //writer.WriteEndElement(); //animation

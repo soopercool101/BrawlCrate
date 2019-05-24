@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using BrawlLib.Imaging;
 using BrawlLib.IO;
-using System.Windows.Forms;
-using BrawlLib.Imaging;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {
@@ -26,13 +26,17 @@ namespace BrawlLib.Modeling
             {
                 using (FileMap map = FileMap.FromFile(path))
                 using (XmlReader reader = new XmlReader(map.Address, map.Length))
+                {
                     return new DecoderShell(reader);
+                }
             }
             ~DecoderShell() { Dispose(); }
             public void Dispose()
             {
                 foreach (GeometryEntry geo in _geometry)
+                {
                     geo.Dispose();
+                }
             }
 
             private void Output(string message)
@@ -47,7 +51,9 @@ namespace BrawlLib.Modeling
                 while (reader.BeginElement())
                 {
                     if (reader.Name.Equals("COLLADA", true))
+                    {
                         ParseMain();
+                    }
 
                     reader.EndElement();
                 }
@@ -59,9 +65,16 @@ namespace BrawlLib.Modeling
             {
                 NodeEntry n;
                 foreach (SceneEntry scene in _scenes)
+                {
                     foreach (NodeEntry node in scene._nodes)
+                    {
                         if ((n = FindNodeInternal(name, node)) != null)
+                        {
                             return n;
+                        }
+                    }
+                }
+
                 return null;
             }
             internal static NodeEntry FindNodeInternal(string name, NodeEntry node)
@@ -69,11 +82,17 @@ namespace BrawlLib.Modeling
                 NodeEntry e;
 
                 if (node._name == name || node._sid == name || node._id == name)
+                {
                     return node;
+                }
 
                 foreach (NodeEntry n in node._children)
+                {
                     if ((e = FindNodeInternal(name, n)) != null)
+                    {
                         return e;
+                    }
+                }
 
                 return null;
             }
@@ -81,6 +100,7 @@ namespace BrawlLib.Modeling
             private void ParseMain()
             {
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("version", true))
                     {
                         string v = (string)_reader.Value;
@@ -89,38 +109,63 @@ namespace BrawlLib.Modeling
                         int.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture.NumberFormat, out _v2);
                         int.TryParse(s[2], NumberStyles.Number, CultureInfo.InvariantCulture.NumberFormat, out _v3);
                     }
+                }
+
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("asset", true))
+                    {
                         ParseAsset();
+                    }
                     else if (_reader.Name.Equals("library_images", true))
+                    {
                         ParseLibImages();
+                    }
                     else if (_reader.Name.Equals("library_materials", true))
+                    {
                         ParseLibMaterials();
+                    }
                     else if (_reader.Name.Equals("library_effects", true))
+                    {
                         ParseLibEffects();
+                    }
                     else if (_reader.Name.Equals("library_geometries", true))
+                    {
                         ParseLibGeometry();
+                    }
                     else if (_reader.Name.Equals("library_controllers", true))
+                    {
                         ParseLibControllers();
+                    }
                     else if (_reader.Name.Equals("library_visual_scenes", true))
+                    {
                         ParseLibScenes();
+                    }
                     else if (_reader.Name.Equals("library_nodes", true))
+                    {
                         ParseLibNodes();
+                    }
 
                     _reader.EndElement();
                 }
             }
-            
+
             public float _scale = 1;
             private void ParseAsset()
             {
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("unit", true))
+                    {
                         while (_reader.ReadAttribute())
+                        {
                             if (_reader.Name.Equals("meter", true))
+                            {
                                 float.TryParse((string)_reader.Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out _scale);
+                            }
+                        }
+                    }
+
                     _reader.EndElement();
                 }
             }
@@ -136,9 +181,13 @@ namespace BrawlLib.Modeling
                         while (_reader.ReadAttribute())
                         {
                             if (_reader.Name.Equals("id", true))
+                            {
                                 img._id = (string)_reader.Value;
+                            }
                             else if (_reader.Name.Equals("name", true))
+                            {
                                 img._name = (string)_reader.Value;
+                            }
                         }
 
                         while (_reader.BeginElement())
@@ -147,14 +196,21 @@ namespace BrawlLib.Modeling
                             if (_reader.Name.Equals("init_from", true))
                             {
                                 if (_v2 < 5)
+                                {
                                     img._path = _reader.ReadElementString();
+                                }
                                 else
+                                {
                                     while (_reader.BeginElement())
                                     {
                                         if (_reader.Name.Equals("ref", true))
+                                        {
                                             img._path = _reader.ReadElementString();
+                                        }
+
                                         _reader.EndElement();
                                     }
+                                }
                             }
 
                             _reader.EndElement();
@@ -176,17 +232,27 @@ namespace BrawlLib.Modeling
                         while (_reader.ReadAttribute())
                         {
                             if (_reader.Name.Equals("id", true))
+                            {
                                 mat._id = (string)_reader.Value;
+                            }
                             else if (_reader.Name.Equals("name", true))
+                            {
                                 mat._name = (string)_reader.Value;
+                            }
                         }
 
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("instance_effect", true))
+                            {
                                 while (_reader.ReadAttribute())
+                                {
                                     if (_reader.Name.Equals("url", true))
+                                    {
                                         mat._effect = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                                    }
+                                }
+                            }
 
                             _reader.EndElement();
                         }
@@ -202,7 +268,10 @@ namespace BrawlLib.Modeling
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("effect", true))
+                    {
                         _effects.Add(ParseEffect());
+                    }
+
                     _reader.EndElement();
                 }
             }
@@ -213,35 +282,49 @@ namespace BrawlLib.Modeling
                 while (_reader.ReadAttribute())
                 {
                     if (_reader.Name.Equals("id", true))
+                    {
                         eff._id = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("name", true))
+                    {
                         eff._name = (string)_reader.Value;
+                    }
                 }
 
                 while (_reader.BeginElement())
                 {
                     //Only common is supported
                     if (_reader.Name.Equals("profile_COMMON", true))
+                    {
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("newparam", true))
+                            {
                                 eff._newParams.Add(ParseNewParam());
+                            }
                             else if (_reader.Name.Equals("technique", true))
                             {
                                 while (_reader.BeginElement())
                                 {
                                     if (_reader.Name.Equals("phong", true))
+                                    {
                                         eff._shader = ParseShader(ShaderType.phong);
+                                    }
                                     else if (_reader.Name.Equals("lambert", true))
+                                    {
                                         eff._shader = ParseShader(ShaderType.lambert);
+                                    }
                                     else if (_reader.Name.Equals("blinn", true))
+                                    {
                                         eff._shader = ParseShader(ShaderType.blinn);
+                                    }
 
                                     _reader.EndElement();
                                 }
                             }
                             _reader.EndElement();
                         }
+                    }
 
                     _reader.EndElement();
                 }
@@ -254,9 +337,13 @@ namespace BrawlLib.Modeling
                 while (_reader.ReadAttribute())
                 {
                     if (_reader.Name.Equals("sid", true))
+                    {
                         p._sid = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("id", true))
+                    {
                         p._id = (string)_reader.Value;
+                    }
                 }
                 while (_reader.BeginElement())
                 {
@@ -268,21 +355,30 @@ namespace BrawlLib.Modeling
                             if (_reader.Name.Equals("init_from", true))
                             {
                                 if (_v2 < 5)
+                                {
                                     p._path = _reader.ReadElementString();
+                                }
                                 else
+                                {
                                     while (_reader.BeginElement())
                                     {
                                         if (_reader.Name.Equals("ref", true))
+                                        {
                                             p._path = _reader.ReadElementString();
+                                        }
+
                                         _reader.EndElement();
                                     }
+                                }
                             }
                             _reader.EndElement();
                         }
                     }
                     else if (_reader.Name.Equals("sampler2D", true))
+                    {
                         p._sampler2D = ParseSampler2D();
-                    
+                    }
+
                     _reader.EndElement();
                 }
 
@@ -295,23 +391,35 @@ namespace BrawlLib.Modeling
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("source", true))
+                    {
                         s._source = _reader.ReadElementString();
+                    }
                     else if (_reader.Name.Equals("instance_image", true))
                     {
                         while (_reader.ReadAttribute())
                         {
                             if (_reader.Name.Equals("url", true))
+                            {
                                 s._url = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                            }
                         }
                     }
                     else if (_reader.Name.Equals("wrap_s", true))
+                    {
                         s._wrapS = _reader.ReadElementString();
+                    }
                     else if (_reader.Name.Equals("wrap_t", true))
+                    {
                         s._wrapT = _reader.ReadElementString();
+                    }
                     else if (_reader.Name.Equals("minfilter", true))
+                    {
                         s._minFilter = _reader.ReadElementString();
+                    }
                     else if (_reader.Name.Equals("magfilter", true))
+                    {
                         s._magFilter = _reader.ReadElementString();
+                    }
 
                     _reader.EndElement();
                 }
@@ -320,31 +428,50 @@ namespace BrawlLib.Modeling
             }
             private EffectShaderEntry ParseShader(ShaderType type)
             {
-                EffectShaderEntry s = new EffectShaderEntry();
-                s._type = type;
+                EffectShaderEntry s = new EffectShaderEntry
+                {
+                    _type = type
+                };
                 float v;
 
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("ambient", true))
+                    {
                         s._effects.Add(ParseLightEffect(LightEffectType.ambient));
+                    }
                     else if (_reader.Name.Equals("diffuse", true))
+                    {
                         s._effects.Add(ParseLightEffect(LightEffectType.diffuse));
+                    }
                     else if (_reader.Name.Equals("emission", true))
+                    {
                         s._effects.Add(ParseLightEffect(LightEffectType.emission));
+                    }
                     else if (_reader.Name.Equals("reflective", true))
+                    {
                         s._effects.Add(ParseLightEffect(LightEffectType.reflective));
+                    }
                     else if (_reader.Name.Equals("specular", true))
+                    {
                         s._effects.Add(ParseLightEffect(LightEffectType.specular));
+                    }
                     else if (_reader.Name.Equals("transparent", true))
+                    {
                         s._effects.Add(ParseLightEffect(LightEffectType.transparent));
+                    }
                     else if (_reader.Name.Equals("shininess", true))
                     {
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("float", true))
+                            {
                                 if (_reader.ReadValue(&v))
+                                {
                                     s._shininess = v;
+                                }
+                            }
+
                             _reader.EndElement();
                         }
                     }
@@ -353,8 +480,13 @@ namespace BrawlLib.Modeling
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("float", true))
+                            {
                                 if (_reader.ReadValue(&v))
+                                {
                                     s._reflectivity = v;
+                                }
+                            }
+
                             _reader.EndElement();
                         }
                     }
@@ -363,8 +495,13 @@ namespace BrawlLib.Modeling
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("float", true))
+                            {
                                 if (_reader.ReadValue(&v))
+                                {
                                     s._transparency = v;
+                                }
+                            }
+
                             _reader.EndElement();
                         }
                     }
@@ -376,20 +513,30 @@ namespace BrawlLib.Modeling
             }
             private LightEffectEntry ParseLightEffect(LightEffectType type)
             {
-                LightEffectEntry eff = new LightEffectEntry();
-                eff._type = type;
+                LightEffectEntry eff = new LightEffectEntry
+                {
+                    _type = type
+                };
 
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("color", true))
+                    {
                         eff._color = ParseColor();
+                    }
                     else if (_reader.Name.Equals("texture", true))
                     {
                         while (_reader.ReadAttribute())
+                        {
                             if (_reader.Name.Equals("texture", true))
+                            {
                                 eff._texture = (string)_reader.Value;
+                            }
                             else if (_reader.Name.Equals("texcoord", true))
+                            {
                                 eff._texCoord = (string)_reader.Value;
+                            }
+                        }
                     }
 
                     _reader.EndElement();
@@ -408,9 +555,13 @@ namespace BrawlLib.Modeling
                         while (_reader.ReadAttribute())
                         {
                             if (_reader.Name.Equals("id", true))
+                            {
                                 geo._id = (string)_reader.Value;
+                            }
                             else if (_reader.Name.Equals("name", true))
+                            {
                                 geo._name = (string)_reader.Value;
+                            }
                         }
 
                         while (_reader.BeginElement())
@@ -420,35 +571,57 @@ namespace BrawlLib.Modeling
                                 while (_reader.BeginElement())
                                 {
                                     if (_reader.Name.Equals("source", true))
+                                    {
                                         geo._sources.Add(ParseSource());
+                                    }
                                     else if (_reader.Name.Equals("vertices", true))
                                     {
                                         while (_reader.ReadAttribute())
+                                        {
                                             if (_reader.Name.Equals("id", true))
+                                            {
                                                 geo._verticesId = (string)_reader.Value;
+                                            }
+                                        }
 
                                         while (_reader.BeginElement())
                                         {
                                             if (_reader.Name.Equals("input", true))
+                                            {
                                                 geo._verticesInput = ParseInput();
+                                            }
 
                                             _reader.EndElement();
                                         }
                                     }
                                     else if (_reader.Name.Equals("polygons", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.polygons));
+                                    }
                                     else if (_reader.Name.Equals("polylist", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.polylist));
+                                    }
                                     else if (_reader.Name.Equals("triangles", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.triangles));
+                                    }
                                     else if (_reader.Name.Equals("tristrips", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.tristrips));
+                                    }
                                     else if (_reader.Name.Equals("trifans", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.trifans));
+                                    }
                                     else if (_reader.Name.Equals("lines", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.lines));
+                                    }
                                     else if (_reader.Name.Equals("linestrips", true))
+                                    {
                                         geo._primitives.Add(ParsePrimitive(ColladaPrimitiveType.linestrips));
+                                    }
 
                                     _reader.EndElement();
                                 }
@@ -486,10 +659,16 @@ namespace BrawlLib.Modeling
                 }
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("material", true))
+                    {
                         prim._material = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("count", true))
+                    {
                         prim._entryCount = int.Parse((string)_reader.Value);
+                    }
+                }
 
                 prim._faces.Capacity = prim._entryCount;
 
@@ -507,7 +686,9 @@ namespace BrawlLib.Modeling
                         p = new PrimitiveFace();
                         //p._pointIndices.Capacity = stride * elements;
                         while (_reader.ReadValue(&val))
+                        {
                             indices.Add((ushort)val);
+                        }
 
                         p._pointCount = indices.Count / elements;
                         p._pointIndices = indices.ToArray();
@@ -551,18 +732,32 @@ namespace BrawlLib.Modeling
                 InputEntry inp = new InputEntry();
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("id", true))
+                    {
                         inp._id = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("name", true))
+                    {
                         inp._name = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("semantic", true))
+                    {
                         inp._semantic = (SemanticType)Enum.Parse(typeof(SemanticType), (string)_reader.Value, true);
+                    }
                     else if (_reader.Name.Equals("set", true))
+                    {
                         inp._set = int.Parse((string)_reader.Value);
+                    }
                     else if (_reader.Name.Equals("offset", true))
+                    {
                         inp._offset = int.Parse((string)_reader.Value);
+                    }
                     else if (_reader.Name.Equals("source", true))
+                    {
                         inp._source = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                    }
+                }
 
                 return inp;
             }
@@ -571,8 +766,12 @@ namespace BrawlLib.Modeling
                 SourceEntry src = new SourceEntry();
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("id", true))
+                    {
                         src._id = (string)_reader.Value;
+                    }
+                }
 
                 while (_reader.BeginElement())
                 {
@@ -583,18 +782,28 @@ namespace BrawlLib.Modeling
                             src._arrayType = SourceType.Float;
 
                             while (_reader.ReadAttribute())
+                            {
                                 if (_reader.Name.Equals("id", true))
+                                {
                                     src._arrayId = (string)_reader.Value;
+                                }
                                 else if (_reader.Name.Equals("count", true))
+                                {
                                     src._arrayCount = int.Parse((string)_reader.Value);
+                                }
+                            }
 
                             UnsafeBuffer buffer = new UnsafeBuffer(src._arrayCount * 4);
                             src._arrayData = buffer;
 
                             float* pOut = (float*)buffer.Address;
                             for (int i = 0; i < src._arrayCount; i++)
+                            {
                                 if (!_reader.ReadValue(pOut++))
+                                {
                                     break;
+                                }
+                            }
                         }
                     }
                     else if (_reader.Name.Equals("int_array", true))
@@ -604,18 +813,28 @@ namespace BrawlLib.Modeling
                             src._arrayType = SourceType.Int;
 
                             while (_reader.ReadAttribute())
+                            {
                                 if (_reader.Name.Equals("id", true))
+                                {
                                     src._arrayId = (string)_reader.Value;
+                                }
                                 else if (_reader.Name.Equals("count", true))
+                                {
                                     src._arrayCount = int.Parse((string)_reader.Value);
+                                }
+                            }
 
                             UnsafeBuffer buffer = new UnsafeBuffer(src._arrayCount * 4);
                             src._arrayData = buffer;
 
                             int* pOut = (int*)buffer.Address;
                             for (int i = 0; i < src._arrayCount; i++)
+                            {
                                 if (!_reader.ReadValue(pOut++))
+                                {
                                     break;
+                                }
+                            }
                         }
                     }
                     else if (_reader.Name.Equals("Name_array", true))
@@ -625,10 +844,16 @@ namespace BrawlLib.Modeling
                             src._arrayType = SourceType.Name;
 
                             while (_reader.ReadAttribute())
+                            {
                                 if (_reader.Name.Equals("id", true))
+                                {
                                     src._arrayId = (string)_reader.Value;
+                                }
                                 else if (_reader.Name.Equals("count", true))
+                                {
                                     src._arrayCount = int.Parse((string)_reader.Value);
+                                }
+                            }
 
                             string[] list = new string[src._arrayCount];
                             src._arrayData = list;
@@ -640,10 +865,16 @@ namespace BrawlLib.Modeling
                             _reader._inTag = tempInTag;
 
                             for (int i = 0; i < src._arrayCount; i++)
+                            {
                                 if (!_reader.ReadStringSingle())
+                                {
                                     break;
+                                }
                                 else
+                                {
                                     list[i] = (string)_reader.Value;
+                                }
+                            }
                         }
                     }
                     else if (_reader.Name.Equals("technique_common", true))
@@ -653,12 +884,20 @@ namespace BrawlLib.Modeling
                             if (_reader.Name.Equals("accessor", true))
                             {
                                 while (_reader.ReadAttribute())
+                                {
                                     if (_reader.Name.Equals("source", true))
+                                    {
                                         src._accessorSource = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                                    }
                                     else if (_reader.Name.Equals("count", true))
+                                    {
                                         src._accessorCount = int.Parse((string)_reader.Value);
+                                    }
                                     else if (_reader.Name.Equals("stride", true))
+                                    {
                                         src._accessorStride = int.Parse((string)_reader.Value);
+                                    }
+                                }
 
                                 //Ignore params
                             }
@@ -681,13 +920,19 @@ namespace BrawlLib.Modeling
                     {
                         string id = null;
                         while (_reader.ReadAttribute())
+                        {
                             if (_reader.Name.Equals("id", false))
+                            {
                                 id = (string)_reader.Value;
+                            }
+                        }
 
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("skin", false))
+                            {
                                 _skins.Add(ParseSkin(id));
+                            }
 
                             _reader.EndElement();
                         }
@@ -698,39 +943,59 @@ namespace BrawlLib.Modeling
 
             private SkinEntry ParseSkin(string id)
             {
-                SkinEntry skin = new SkinEntry();
-                skin._id = id;
+                SkinEntry skin = new SkinEntry
+                {
+                    _id = id
+                };
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("source", false))
+                    {
                         skin._skinSource = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                    }
+                }
 
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("bind_shape_matrix", false))
+                    {
                         skin._bindMatrix = ParseMatrix();
+                    }
                     else if (_reader.Name.Equals("source", false))
+                    {
                         skin._sources.Add(ParseSource());
+                    }
                     else if (_reader.Name.Equals("joints", false))
+                    {
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("input", false))
+                            {
                                 skin._jointInputs.Add(ParseInput());
+                            }
 
                             _reader.EndElement();
                         }
+                    }
                     else if (_reader.Name.Equals("vertex_weights", false))
                     {
                         while (_reader.ReadAttribute())
+                        {
                             if (_reader.Name.Equals("count", false))
+                            {
                                 skin._weightCount = int.Parse((string)_reader.Value);
+                            }
+                        }
 
                         skin._weights = new int[skin._weightCount][];
 
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("input", false))
+                            {
                                 skin._weightInputs.Add(ParseInput());
+                            }
                             else if (_reader.Name.Equals("vcount", false))
                             {
                                 for (int i = 0; i < skin._weightCount; i++)
@@ -746,8 +1011,12 @@ namespace BrawlLib.Modeling
                                 {
                                     int[] weights = skin._weights[i];
                                     fixed (int* p = weights)
+                                    {
                                         for (int x = 0; x < weights.Length; x++)
+                                        {
                                             _reader.ReadValue(&p[x]);
+                                        }
+                                    }
                                 }
                             }
                             _reader.EndElement();
@@ -765,7 +1034,9 @@ namespace BrawlLib.Modeling
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("node", true))
+                    {
                         _nodes.Add(ParseNode());
+                    }
 
                     _reader.EndElement();
                 }
@@ -776,7 +1047,9 @@ namespace BrawlLib.Modeling
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("visual_scene", true))
+                    {
                         _scenes.Add(ParseScene());
+                    }
 
                     _reader.EndElement();
                 }
@@ -787,17 +1060,27 @@ namespace BrawlLib.Modeling
                 SceneEntry sc = new SceneEntry();
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("id", true))
+                    {
                         sc._id = (string)_reader.Value;
+                    }
+                }
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("name", true))
+                    {
                         sc._name = (string)_reader.Value;
+                    }
+                }
 
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("node", true))
+                    {
                         sc._nodes.Add(ParseNode());
+                    }
 
                     _reader.EndElement();
                 }
@@ -810,14 +1093,24 @@ namespace BrawlLib.Modeling
                 NodeEntry node = new NodeEntry();
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("id", true))
+                    {
                         node._id = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("name", true))
+                    {
                         node._name = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("sid", true))
+                    {
                         node._sid = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("type", true))
+                    {
                         node._type = (NodeType)Enum.Parse(typeof(NodeType), (string)_reader.Value, true);
+                    }
+                }
 
                 Matrix m = Matrix.Identity;
                 Matrix mInv = Matrix.Identity;
@@ -848,13 +1141,21 @@ namespace BrawlLib.Modeling
                         //mInv *= Matrix.TranslationMatrix(-translate);
                     }
                     else if (_reader.Name.Equals("node", true))
+                    {
                         node._children.Add(ParseNode());
+                    }
                     else if (_reader.Name.Equals("instance_controller", true))
+                    {
                         node._instances.Add(ParseInstance(InstanceType.Controller));
+                    }
                     else if (_reader.Name.Equals("instance_geometry", true))
+                    {
                         node._instances.Add(ParseInstance(InstanceType.Geometry));
+                    }
                     else if (_reader.Name.Equals("instance_node", true))
+                    {
                         node._instances.Add(ParseInstance(InstanceType.Node));
+                    }
                     else if (_reader.Name.Equals("extra", true))
                     {
                         while (_reader.BeginElement())
@@ -883,30 +1184,46 @@ namespace BrawlLib.Modeling
 
             private InstanceEntry ParseInstance(InstanceType type)
             {
-                InstanceEntry c = new InstanceEntry();
-                c._type = type;
+                InstanceEntry c = new InstanceEntry
+                {
+                    _type = type
+                };
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("url", true))
+                    {
                         c._url = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                    }
+                }
 
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("skeleton", true))
+                    {
                         c.skeletons.Add(_reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value);
+                    }
 
                     if (_reader.Name.Equals("bind_material", true))
+                    {
                         while (_reader.BeginElement())
                         {
                             if (_reader.Name.Equals("technique_common", true))
+                            {
                                 while (_reader.BeginElement())
                                 {
                                     if (_reader.Name.Equals("instance_material", true))
+                                    {
                                         c._material = ParseMatInstance();
+                                    }
+
                                     _reader.EndElement();
                                 }
+                            }
+
                             _reader.EndElement();
                         }
+                    }
 
                     _reader.EndElement();
                 }
@@ -919,15 +1236,24 @@ namespace BrawlLib.Modeling
                 InstanceMaterial mat = new InstanceMaterial();
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("symbol", true))
+                    {
                         mat._symbol = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("target", true))
+                    {
                         mat._target = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                    }
+                }
 
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("bind_vertex_input", true))
+                    {
                         mat._vertexBinds.Add(ParseVertexInput());
+                    }
+
                     _reader.EndElement();
                 }
                 return mat;
@@ -937,12 +1263,20 @@ namespace BrawlLib.Modeling
                 VertexBind v = new VertexBind();
 
                 while (_reader.ReadAttribute())
+                {
                     if (_reader.Name.Equals("semantic", true))
+                    {
                         v._semantic = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("input_semantic", true))
+                    {
                         v._inputSemantic = (string)_reader.Value;
+                    }
                     else if (_reader.Name.Equals("input_set", true))
+                    {
                         v._inputSet = int.Parse((string)_reader.Value);
+                    }
+                }
 
                 return v;
             }
@@ -952,8 +1286,13 @@ namespace BrawlLib.Modeling
                 Matrix m;
                 float* pM = (float*)&m;
                 for (int y = 0; y < 4; y++)
+                {
                     for (int x = 0; x < 4; x++)
+                    {
                         _reader.ReadValue(&pM[x * 4 + y]);
+                    }
+                }
+
                 return m;
             }
             private RGBAPixel ParseColor()
@@ -964,9 +1303,13 @@ namespace BrawlLib.Modeling
                 for (int i = 0; i < 4; i++)
                 {
                     if (!_reader.ReadValue(&f))
+                    {
                         p[i] = 255;
+                    }
                     else
+                    {
                         p[i] = (byte)(f * 255.0f + 0.5f);
+                    }
                 }
                 return c;
             }
@@ -978,9 +1321,13 @@ namespace BrawlLib.Modeling
                 for (int i = 0; i < 3; i++)
                 {
                     if (!_reader.ReadValue(&f))
+                    {
                         p[i] = 0;
+                    }
                     else
+                    {
                         p[i] = f;
+                    }
                 }
                 return c;
             }
@@ -992,9 +1339,13 @@ namespace BrawlLib.Modeling
                 for (int i = 0; i < 4; i++)
                 {
                     if (!_reader.ReadValue(&f))
+                    {
                         p[i] = 0;
+                    }
                     else
+                    {
                         p[i] = f;
+                    }
                 }
                 return c;
             }
@@ -1034,7 +1385,10 @@ namespace BrawlLib.Modeling
             public override void Dispose()
             {
                 foreach (SourceEntry p in _sources)
+                {
                     p.Dispose();
+                }
+
                 GC.SuppressFinalize(this);
             }
         }
@@ -1053,7 +1407,10 @@ namespace BrawlLib.Modeling
             public override void Dispose()
             {
                 if (_arrayData is UnsafeBuffer)
+                {
                     ((UnsafeBuffer)_arrayData).Dispose();
+                }
+
                 _arrayData = null;
                 GC.SuppressFinalize(this);
             }
@@ -1101,7 +1458,10 @@ namespace BrawlLib.Modeling
             public override void Dispose()
             {
                 foreach (SourceEntry src in _sources)
+                {
                     src.Dispose();
+                }
+
                 GC.SuppressFinalize(this);
             }
         }
@@ -1113,8 +1473,13 @@ namespace BrawlLib.Modeling
             {
                 NodeEntry n;
                 foreach (NodeEntry node in _nodes)
+                {
                     if ((n = DecoderShell.FindNodeInternal(name, node)) != null)
+                    {
                         return n;
+                    }
+                }
+
                 return null;
             }
         }

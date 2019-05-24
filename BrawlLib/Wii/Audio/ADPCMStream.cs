@@ -1,27 +1,26 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Audio;
-using BrawlLib.SSBBTypes;
 using System.IO;
 
 namespace BrawlLib.Wii.Audio
 {
-    unsafe class ADPCMStream : IAudioStream
+    internal unsafe class ADPCMStream : IAudioStream
     {
-        private int _sampleRate;
-        private int _numSamples;
-        private int _numChannels;
-        private int _blockLen;
+        private readonly int _sampleRate;
+        private readonly int _numSamples;
+        private readonly int _numChannels;
+        private readonly int _blockLen;
         private int _samplesPerBlock;
         private int _lastBlockSamples, _lastBlockSize;
         private int _numBlocks;
-        private int _loopStartSample, _loopEndSample;
-        //private int _bitsPerSample = 4;
-        private bool _isLooped, _useLoop;
-
+        private readonly int _loopStartSample, _loopEndSample;
+        private readonly bool _isLooped;
+        private bool _useLoop;
         private int _samplePos = 0;
 
-        private ADPCMState[,] _blockStates;
-        private ADPCMState[] _loopStates;
+        private readonly ADPCMState[,] _blockStates;
+        private readonly ADPCMState[] _loopStates;
         internal ADPCMState[] _currentStates;
 
         public static ADPCMStream[] GetStreams(RSTMHeader* pRSTM, VoidPtr dataAddr)
@@ -84,7 +83,8 @@ namespace BrawlLib.Wii.Audio
                 sPtr += _blockLen;
             }
 
-            for (int cIndex = 0; cIndex < _numChannels; cIndex++) {
+            for (int cIndex = 0; cIndex < _numChannels; cIndex++)
+            {
                 yn1 = *ynCache++;
                 yn2 = *ynCache++;
             }
@@ -92,6 +92,7 @@ namespace BrawlLib.Wii.Audio
             //Fill block states in a linear fashion
             sPtr = (byte*)dataAddr;
             for (int sIndex = 0, bIndex = 0; sIndex < _numSamples; sIndex += _samplesPerBlock, bIndex++)
+            {
                 for (int cIndex = 0; cIndex < _numChannels; cIndex++)
                 {
                     if (bIndex > 0) //yn values will be zero if first block
@@ -104,11 +105,12 @@ namespace BrawlLib.Wii.Audio
                     //Advance address
                     sPtr += (bIndex == _numBlocks - 1) ? _lastBlockSize : _blockLen;
                 }
+            }
 
             _numChannels = channels;
             _startChannel = startChannel;
         }
-        
+
         public ADPCMStream(RSTMHeader* pRSTM, VoidPtr dataAddr)
         {
             HEADHeader* pHeader = pRSTM->HEADData;
@@ -156,6 +158,7 @@ namespace BrawlLib.Wii.Audio
             //Fill block states in a linear fashion
             sPtr = (byte*)dataAddr;
             for (int sIndex = 0, bIndex = 0; sIndex < _numSamples; sIndex += _samplesPerBlock, bIndex++)
+            {
                 for (int cIndex = 0; cIndex < _numChannels; cIndex++)
                 {
                     if (bIndex > 0) //yn values will be zero if first block
@@ -168,6 +171,7 @@ namespace BrawlLib.Wii.Audio
                     //Advance address
                     sPtr += (bIndex == _numBlocks - 1) ? _lastBlockSize : _blockLen;
                 }
+            }
         }
 
         public void Init()
@@ -184,9 +188,13 @@ namespace BrawlLib.Wii.Audio
                 _numBlocks = _numSamples.Align(_samplesPerBlock) / _samplesPerBlock;
 
                 if ((_numSamples % _samplesPerBlock) != 0)
+                {
                     _lastBlockSamples = _numSamples % _samplesPerBlock;
+                }
                 else
+                {
                     _lastBlockSamples = _samplesPerBlock;
+                }
             }
             _lastBlockSize = _lastBlockSamples.Align(14) / 14 * 8;
         }
@@ -207,14 +215,17 @@ namespace BrawlLib.Wii.Audio
             _sampleRate = pWAVE->_sampleRate;
             _numSamples = pWAVE->NumSamples;
 
-            if (_numSamples <= 0) return;
+            if (_numSamples <= 0)
+            {
+                return;
+            }
 
             _blockLen = (_numSamples.Align(14) / 14 * 8).Align(0x20);
-            _loopStartSample = (int)pWAVE->LoopSample;
+            _loopStartSample = pWAVE->LoopSample;
             _loopEndSample = _numSamples;
 
             Init();
-            
+
             _blockStates = new ADPCMState[_numChannels, _numBlocks];
 
             loopBlock = _loopStartSample / _samplesPerBlock;
@@ -226,9 +237,11 @@ namespace BrawlLib.Wii.Audio
 
             //Get channel info
             for (int i = 0; i < _numChannels; i++)
-            //{
-            //    //sPtr = (byte*)dataAddr + pWAVE->GetChannelInfo(i)->_channelDataOffset + loopStart;
+            {
+                //{
+                //    //sPtr = (byte*)dataAddr + pWAVE->GetChannelInfo(i)->_channelDataOffset + loopStart;
                 info[i] = pWAVE->GetADPCMInfo(i);
+            }
             //    //Fill loop state
             //    _loopStates[i] = new ADPCMState(sPtr, info[i]->_lps, info[i]->_lyn1, info[i]->_lyn2, info[i]->Coefs);
             //    //Advance source pointer for next channel
@@ -238,6 +251,7 @@ namespace BrawlLib.Wii.Audio
             //Fill block states in a linear fashion
             sPtr = (byte*)dataAddr;
             for (int sIndex = 0, bIndex = 0; sIndex < _numSamples; sIndex += _samplesPerBlock, bIndex++)
+            {
                 for (int cIndex = 0; cIndex < _numChannels; cIndex++)
                 {
                     //sPtr = (byte*)dataAddr + pWAVE->GetChannelInfo(cIndex)->_channelDataOffset;
@@ -247,9 +261,10 @@ namespace BrawlLib.Wii.Audio
                     //Advance address
                     sPtr += (bIndex == _numBlocks - 1) ? _lastBlockSize : _blockLen;
                 }
+            }
         }
 
-        int _startChannel = 0;
+        private readonly int _startChannel = 0;
         private void RefreshStates()
         {
             int blockId = _samplePos / _samplesPerBlock;
@@ -259,12 +274,18 @@ namespace BrawlLib.Wii.Audio
                 _currentStates[i] = _blockStates[i + _startChannel, blockId];
 
                 if (_useLoop)
+                {
                     _currentStates[i].InitLoop();
+                }
                 else
+                {
                     _currentStates[i].InitBlock();
+                }
 
                 for (int x = samplePos; x < _samplePos; x++)
+                {
                     _currentStates[i].ReadSample();
+                }
             }
             _useLoop = false;
         }
@@ -288,7 +309,7 @@ namespace BrawlLib.Wii.Audio
         //    }
         //    _useLoop = false;
         //}
-        
+
         public RIFFHeader GetPCMHeader()
         {
             return new RIFFHeader(1, _numChannels, 16, _sampleRate, _numSamples);
@@ -303,7 +324,9 @@ namespace BrawlLib.Wii.Audio
             for (_samplePos = 0; _samplePos < _numSamples; _samplePos++)
             {
                 if (_samplePos % _samplesPerBlock == 0)
+                {
                     RefreshStates();
+                }
 
                 foreach (ADPCMState state in _currentStates)
                 {
@@ -317,29 +340,33 @@ namespace BrawlLib.Wii.Audio
 
         #region IAudioStream Members
 
-        public WaveFormatTag Format { get { return WaveFormatTag.WAVE_FORMAT_PCM; } }
-        public int BitsPerSample { get { return 16; } }
-        public int Samples { get { return _numSamples; } }
-        public int Channels { get { return _numChannels; } }
-        public int Frequency { get { return _sampleRate; } }
-        public bool IsLooping { get { return _isLooped; } set { } }
-        public int LoopStartSample { get { return _loopStartSample; } set { } }
-        public int LoopEndSample { get { return _loopEndSample; } set { } }
+        public WaveFormatTag Format => WaveFormatTag.WAVE_FORMAT_PCM;
+        public int BitsPerSample => 16;
+        public int Samples => _numSamples;
+        public int Channels => _numChannels;
+        public int Frequency => _sampleRate;
+        public bool IsLooping { get => _isLooped; set { } }
+        public int LoopStartSample { get => _loopStartSample; set { } }
+        public int LoopEndSample { get => _loopEndSample; set { } }
 
         public int SamplePosition
         {
-            get { return _samplePos; }
+            get => _samplePos;
             set
             {
                 value = Math.Min(Math.Max(value, 0), _numSamples);
                 if (_samplePos == value)
+                {
                     return;
+                }
 
                 _samplePos = value;
 
                 //Refresh states up to sample pos. If first in block, will be updated on next read.
                 if (_samplePos % _samplesPerBlock != 0)
+                {
                     RefreshStates();
+                }
             }
         }
 
@@ -351,10 +378,14 @@ namespace BrawlLib.Wii.Audio
             for (int i = 0; i < samples; i++, _samplePos++)
             {
                 if (_samplePos % _samplesPerBlock == 0)
+                {
                     RefreshStates();
+                }
 
                 for (int x = 0; x < _numChannels; x++)
+                {
                     *dPtr++ = _currentStates[x].ReadSample();
+                }
             }
 
             return samples;
@@ -364,12 +395,15 @@ namespace BrawlLib.Wii.Audio
         {
             _useLoop = true;
             if (SamplePosition == _loopStartSample)
+            {
                 return;
+            }
+
             SamplePosition = _loopStartSample;
         }
 
         public void Dispose() { }
 
-#endregion
+        #endregion
     }
 }

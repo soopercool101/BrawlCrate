@@ -1,14 +1,14 @@
-﻿using System.Runtime.InteropServices;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace System
 {
-    [StructLayout(LayoutKind.Sequential, Pack=1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct Vector2 : IComparable
     {
         public float _x;
         public float _y;
-        
+
         public Vector2(float x, float y) { _x = x; _y = y; }
         public Vector2(float s) { _x = s; _y = s; }
 
@@ -34,16 +34,38 @@ namespace System
         public float Dot(Vector2 v) { return (_x * v._x) + (_y * v._y); }
 
         public static Vector2 Clamp(Vector2 v1, float min, float max) { v1.Clamp(min, max); return v1; }
-        public void Clamp(float min, float max) { this.Max(min); this.Min(max); }
+        public void Clamp(float min, float max) { Max(min); Min(max); }
 
         public static Vector2 Min(Vector2 v1, Vector2 v2) { return new Vector2(Math.Min(v1._x, v2._x), Math.Min(v1._y, v2._y)); }
         public static Vector2 Min(Vector2 v1, float f) { return new Vector2(Math.Min(v1._x, f), Math.Min(v1._y, f)); }
-        public void Min(Vector2 v) { if (_x > v._x) _x = v._x; if (_y > v._y) _y = v._y; }
+        public void Min(Vector2 v)
+        {
+            if (_x > v._x)
+            {
+                _x = v._x;
+            }
+
+            if (_y > v._y)
+            {
+                _y = v._y;
+            }
+        }
         public void Min(float f) { _x = Math.Min(_x, f); _y = Math.Min(_y, f); }
 
         public static Vector2 Max(Vector2 v1, Vector2 v2) { return new Vector2(Math.Max(v1._x, v2._x), Math.Max(v1._y, v2._y)); }
         public static Vector2 Max(Vector2 v1, float f) { return new Vector2(Math.Max(v1._x, f), Math.Max(v1._y, f)); }
-        public void Max(Vector2 v) { if (_x < v._x)_x = v._x; if (_y < v._y) _y = v._y; }
+        public void Max(Vector2 v)
+        {
+            if (_x < v._x)
+            {
+                _x = v._x;
+            }
+
+            if (_y < v._y)
+            {
+                _y = v._y;
+            }
+        }
         public void Max(float f) { _x = Math.Max(_x, f); _y = Math.Max(_y, f); }
 
         public float DistanceTo(Vector2 v) { Vector2 v1 = this - v; return Vector2.Dot(v1, v1); }
@@ -55,7 +77,7 @@ namespace System
         public static explicit operator Vector2(PointF v) { return new Vector2(v.X, v.Y); }
         public static explicit operator Point(Vector2 v) { Vector2 t = Truncate(v); return new Point((int)t._x, (int)t._y); }
         public static explicit operator Vector2(Point v) { return new Vector2(v.X, v.Y); }
-        
+
         public static Vector2 Truncate(Vector2 v)
         {
             return new Vector2(
@@ -65,7 +87,7 @@ namespace System
 
         public override string ToString()
         {
-            return String.Format("({0},{1})", _x, _y);
+            return string.Format("({0},{1})", _x, _y);
         }
 
         public bool Contained(Vector2 start, Vector2 end, float expansion) { return Contained(this, start, end, expansion); }
@@ -80,7 +102,9 @@ namespace System
                 { temp = s1; s1 = s2; s2 = temp; }
 
                 if ((sPtr[i] < (s1[i] - expansion)) || (sPtr[i] > (s2[i] + expansion)))
+                {
                     return false;
+                }
             }
             return true;
         }
@@ -91,11 +115,17 @@ namespace System
             float lenY = Math.Abs(p._y - _y);
 
             if (lenX == 0.0f)
+            {
                 return lenY;
+            }
             else if (lenY == 0.0f)
+            {
                 return lenX;
+            }
             else
+            {
                 return (float)(lenX / Math.Cos(Math.Atan(lenY / lenX)));
+            }
         }
 
         public void RemapToRange(float min, float max)
@@ -119,7 +149,10 @@ namespace System
         public override bool Equals(object obj)
         {
             if (obj is Vector2)
+            {
                 return this == (Vector2)obj;
+            }
+
             return false;
         }
 
@@ -129,13 +162,22 @@ namespace System
             {
                 Vector2 o = (Vector2)obj;
                 if (_x > o._x)
+                {
                     return 1;
+                }
                 else if (_x < o._x)
+                {
                     return -1;
+                }
                 else if (_y > o._y)
+                {
                     return 1;
+                }
                 else if (_y < o._y)
+                {
                     return -1;
+                }
+
                 return 0;
             }
             return 1;

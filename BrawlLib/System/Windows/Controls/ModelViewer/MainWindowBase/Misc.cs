@@ -44,20 +44,24 @@ namespace System.Windows.Forms
                 KeyframePanel.visEditor.IndexChanged += new EventHandler(VISIndexChanged);
             }
 
-            ModelPanel.PreRender += (EventPreRender = new GLRenderEventHandler(this.modelPanel1_PreRender));
-            ModelPanel.PostRender += (EventPostRender = new GLRenderEventHandler(this.modelPanel1_PostRender));
-            ModelPanel.MouseDown += (EventMouseDown = new System.Windows.Forms.MouseEventHandler(this.modelPanel1_MouseDown));
-            ModelPanel.MouseMove += (EventMouseMove = new System.Windows.Forms.MouseEventHandler(this.modelPanel1_MouseMove));
-            ModelPanel.MouseUp += (EventMouseUp = new System.Windows.Forms.MouseEventHandler(this.modelPanel1_MouseUp));
+            ModelPanel.PreRender += (EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender));
+            ModelPanel.PostRender += (EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender));
+            ModelPanel.MouseDown += (EventMouseDown = new System.Windows.Forms.MouseEventHandler(modelPanel1_MouseDown));
+            ModelPanel.MouseMove += (EventMouseMove = new System.Windows.Forms.MouseEventHandler(modelPanel1_MouseMove));
+            ModelPanel.MouseUp += (EventMouseUp = new System.Windows.Forms.MouseEventHandler(modelPanel1_MouseUp));
 
             if (PlaybackPanel != null)
+            {
                 if (PlaybackPanel.Width <= PlaybackPanel.MinimumSize.Width)
                 {
                     PlaybackPanel.Dock = DockStyle.Left;
                     PlaybackPanel.Width = PlaybackPanel.MinimumSize.Width;
                 }
                 else
+                {
                     PlaybackPanel.Dock = DockStyle.Fill;
+                }
+            }
 
             InitHotkeyList();
 
@@ -66,9 +70,14 @@ namespace System.Windows.Forms
             foreach (HotKeyInfo key in _hotkeyList)
             {
                 if (key._keyDown)
+                {
                     _hotKeysDown.Add(key.KeyCode, key._function);
+                }
+
                 if (key._keyUp)
+                {
                     _hotKeysUp.Add(key.KeyCode, key._function);
+                }
             }
         }
 
@@ -92,7 +101,9 @@ namespace System.Windows.Forms
         public virtual void OnModelPanelChanged()
         {
             if (ModelViewerChanged != null)
+            {
                 ModelViewerChanged(this, null);
+            }
         }
 
         #endregion
@@ -101,7 +112,9 @@ namespace System.Windows.Forms
         public virtual void AppendTarget(IModel model)
         {
             if (!_targetModels.Contains(model))
+            {
                 _targetModels.Add(model);
+            }
 
             ModelPanel.AddTarget(model);
             model.ResetToBindState();
@@ -110,10 +123,14 @@ namespace System.Windows.Forms
         protected virtual void ModelChanged(IModel newModel)
         {
             if (newModel != null && !_targetModels.Contains(newModel))
+            {
                 _targetModels.Add(newModel);
+            }
 
             if (_targetModel != null)
+            {
                 _targetModel.IsTargetModel = false;
+            }
 
             if ((_targetModel = newModel) != null)
             {
@@ -122,7 +139,9 @@ namespace System.Windows.Forms
                 ClearSelectedVertices();
             }
             else
+            {
                 EditingAll = true; //No target model so all is the only option
+            }
 
             if (_resetCamera)
             {
@@ -130,12 +149,16 @@ namespace System.Windows.Forms
                 SetFrame(0);
             }
             else
+            {
                 _resetCamera = true;
+            }
 
             OnModelChanged();
 
             if (TargetModelChanged != null)
+            {
                 TargetModelChanged(this, null);
+            }
         }
 
         protected virtual void OnModelChanged() { }
@@ -151,27 +174,35 @@ namespace System.Windows.Forms
 
         #region Viewer Background
 
-        public virtual ColorDialog ColorDialog { get { return null; } }
+        public virtual ColorDialog ColorDialog => null;
 
         public virtual void ChooseBackgroundColor()
         {
             if (ColorDialog != null && ColorDialog.ShowDialog(this) == DialogResult.OK)
+            {
                 ModelPanel.CurrentViewport.BackgroundColor = ColorDialog.Color;
+            }
         }
 
         public void ChooseOrClearBackgroundImage()
         {
             if (ModelPanel.CurrentViewport.BackgroundImage == null)
             {
-                OpenFileDialog d = new OpenFileDialog();
-                d.Filter = FileFilters.Images;
-                d.Title = "Select an image to load";
+                OpenFileDialog d = new OpenFileDialog
+                {
+                    Filter = FileFilters.Images,
+                    Title = "Select an image to load"
+                };
 
                 if (d.ShowDialog() == DialogResult.OK)
+                {
                     ModelPanel.CurrentViewport.BackgroundImage = Image.FromFile(d.FileName);
+                }
             }
             else
+            {
                 ModelPanel.CurrentViewport.BackgroundImage = null;
+            }
         }
 
         #endregion
@@ -185,7 +216,9 @@ namespace System.Windows.Forms
                 PlaybackPanel.Width = PlaybackPanel.MinimumSize.Width;
             }
             else
+            {
                 PlaybackPanel.Dock = DockStyle.Fill;
+            }
         }
 
         public virtual void numFrameIndex_ValueChanged(object sender, EventArgs e)
@@ -195,7 +228,9 @@ namespace System.Windows.Forms
             {
                 int difference = val - _animFrame;
                 if (TargetAnimation != null)
+                {
                     SetFrame(_animFrame + difference);
+                }
             }
         }
         public virtual void numFPS_ValueChanged(object sender, EventArgs e)
@@ -211,13 +246,17 @@ namespace System.Windows.Forms
         public virtual void numTotalFrames_ValueChanged(object sender, EventArgs e)
         {
             if ((TargetAnimation == null) || (_updating))
+            {
                 return;
+            }
 
             int max = (int)PlaybackPanel.numTotalFrames.Value;
             PlaybackPanel.numFrameIndex.Maximum = max;
 
             if (Interpolated.Contains(TargetAnimation.GetType()) && TargetAnimation.Loop)
+            {
                 max--;
+            }
 
             _maxFrame = max;
             TargetAnimation.FrameCount = max;
@@ -227,9 +266,13 @@ namespace System.Windows.Forms
         public virtual void TogglePlay()
         {
             if (_timer.IsRunning)
+            {
                 StopAnim();
+            }
             else
+            {
                 PlayAnim();
+            }
         }
         #endregion
 
@@ -238,15 +281,19 @@ namespace System.Windows.Forms
 
         private void RenderToGIF(List<Image> images, string path)
         {
-            if (String.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path))
+            {
                 return;
+            }
 
             string outPath = "";
             try
             {
                 outPath = path;
                 if (!Directory.Exists(outPath))
+                {
                     Directory.CreateDirectory(outPath);
+                }
 
                 DirectoryInfo dir = new DirectoryInfo(outPath);
                 FileInfo[] files = dir.GetFiles();
@@ -254,11 +301,14 @@ namespace System.Windows.Forms
                 string name = "Animation";
             Top:
                 foreach (FileInfo f in files)
+                {
                     if (f.Name == name + i + ".gif")
                     {
                         i++;
                         goto Top;
                     }
+                }
+
                 outPath += "\\" + name + i + ".gif";
             }
             catch { }
@@ -275,7 +325,9 @@ namespace System.Windows.Forms
                 for (int i = 0, count = images.Count; i < count; i++)
                 {
                     if (progress.Cancelled)
+                    {
                         break;
+                    }
 
                     //GIF transparency support is pretty poor, flickers a lot
                     //e.SetTransparent(ModelPanel.CurrentViewport.BackgroundColor);
@@ -288,23 +340,31 @@ namespace System.Windows.Forms
             }
 
             if (MessageBox.Show(this, "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?", "GIF saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
                 Process.Start("explorer.exe", path);
+            }
         }
         protected void SaveBitmap(Bitmap bmp, string path, string extension)
         {
-            if (String.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path))
+            {
                 path = Application.StartupPath + "\\ScreenCaptures";
+            }
 
-            if (String.IsNullOrEmpty(extension))
+            if (string.IsNullOrEmpty(extension))
+            {
                 extension = ".png";
+            }
 
-            if (!String.IsNullOrEmpty(path) && !String.IsNullOrEmpty(extension))
+            if (!string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(extension))
             {
                 try
                 {
                     string outPath = path;
                     if (!Directory.Exists(outPath))
+                    {
                         Directory.CreateDirectory(outPath);
+                    }
 
                     DirectoryInfo dir = new DirectoryInfo(outPath);
                     FileInfo[] files = dir.GetFiles();
@@ -312,29 +372,48 @@ namespace System.Windows.Forms
                     string name = "ScreenCapture";
                 Top:
                     foreach (FileInfo f in files)
+                    {
                         if (f.Name == name + i + extension)
                         {
                             i++;
                             goto Top;
                         }
-                outPath += "\\" + name + i + extension;
+                    }
+
+                    outPath += "\\" + name + i + extension;
                     bool okay = true;
                     if (extension.Equals(".png"))
+                    {
                         bmp.Save(outPath, ImageFormat.Png);
+                    }
                     else if (extension.Equals(".tga"))
+                    {
                         bmp.SaveTGA(outPath);
+                    }
                     else if (extension.Equals(".tiff") || extension.Equals(".tif"))
+                    {
                         bmp.Save(outPath, ImageFormat.Tiff);
+                    }
                     else if (extension.Equals(".bmp"))
+                    {
                         bmp.Save(outPath, ImageFormat.Bmp);
+                    }
                     else if (extension.Equals(".jpg") || outPath.EndsWith(".jpeg"))
+                    {
                         bmp.Save(outPath, ImageFormat.Jpeg);
+                    }
                     else if (extension.Equals(".gif"))
+                    {
                         bmp.Save(outPath, ImageFormat.Gif);
+                    }
                     else { okay = false; }
                     if (okay)
+                    {
                         if (MessageBox.Show(this, "Screenshot successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder containing the screenshot now?", "Screenshot saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
                             Process.Start("explorer.exe", path);
+                        }
+                    }
                 }
                 catch { }
             }
@@ -344,15 +423,22 @@ namespace System.Windows.Forms
         public virtual void LoadModels(ResourceNode node)
         {
             if (_targetModels == null)
+            {
                 _targetModels = new List<IModel>();
+            }
 
             List<IModel> modelList = ModelPanel.CollectModels(node);
             foreach (IModel m in modelList)
+            {
                 AppendTarget(m);
+            }
+
             ModelPanel.RefreshReferences();
 
             if (TargetModel == null && _targetModels.Count > 0)
+            {
                 TargetModel = _targetModels[0];
+            }
         }
         public virtual void LoadAnimations(ResourceNode node) { }
         public virtual void LoadEtc(ResourceNode node) { }
@@ -369,14 +455,24 @@ namespace System.Windows.Forms
                     ModelPanel.AddReference(node);
 
                     if (models)
+                    {
                         LoadModels(node);
+                    }
+
                     if (animations)
+                    {
                         LoadAnimations(node);
+                    }
+
                     if (etc)
+                    {
                         LoadEtc(node);
+                    }
                 }
                 else
+                {
                     MessageBox.Show(this, "Unable to recognize input file.");
+                }
             }
             catch (Exception ex) { MessageBox.Show(this, ex.Message, "Error loading from file."); }
         }

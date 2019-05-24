@@ -4,15 +4,15 @@ namespace System.Windows.Forms
 {
     public class GLTextureWindow : Form
     {
-        private GLTexturePanel panel;
+        private readonly GLTexturePanel panel;
 
         public GLTextureWindow()
         {
-            this.Controls.Add(panel = new GLTexturePanel() { Dock = DockStyle.Fill });
-            this.FormBorderStyle = Forms.FormBorderStyle.SizableToolWindow;
-            this.Text = "Texture Preview";
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.ShowInTaskbar = false;
+            Controls.Add(panel = new GLTexturePanel() { Dock = DockStyle.Fill });
+            FormBorderStyle = Forms.FormBorderStyle.SizableToolWindow;
+            Text = "Texture Preview";
+            StartPosition = FormStartPosition.CenterParent;
+            ShowInTaskbar = false;
         }
 
         public DialogResult ShowDialog(IWin32Window owner, GLTexture texture)

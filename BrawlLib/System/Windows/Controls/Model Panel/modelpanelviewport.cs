@@ -77,11 +77,10 @@ namespace System.Windows.Forms
         public bool _lightEnabled = true;
         internal Vector4 _posLight, _spotDirLight;
         private Vector4 _lightPosition;
-
-        const float v = 1.0f / 255.0f;
-        const float amb = 90.0f;
-        const float diff = 70.0f;
-        const float emi = 160.0f;
+        private const float v = 1.0f / 255.0f;
+        private const float amb = 90.0f;
+        private const float diff = 70.0f;
+        private const float emi = 160.0f;
 
         public Vector4 _ambient = new Vector4(amb * v, amb * v, amb * v, 1.0f);
         public Vector4 _diffuse = new Vector4(diff * v, diff * v, diff * v, 1.0f);
@@ -97,13 +96,13 @@ namespace System.Windows.Forms
         public bool _shiftSelecting;
         public Drawing.Point _selStart, _selEnd;
 
-        private ScreenTextHandler _text;
+        private readonly ScreenTextHandler _text;
 
         public bool _textEnabled = false;
         public bool _allowSelection = false;
         public bool _selecting = false;
         public bool _showCamCoords = false;
-        
+
         public delegate void ZoomDel(float amt, bool invoked);
         public delegate void ScaleDel(float x, float y, float z, bool invoked);
         public delegate void TranslateDel(float x, float y, float z, bool invoked);
@@ -118,33 +117,33 @@ namespace System.Windows.Forms
 
         #region Properties
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool Selecting { get { return _selecting; } }
+        public bool Selecting => _selecting;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public ScreenTextHandler ScreenText { get { return _text; } }
+        public ScreenTextHandler ScreenText => _text;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Drawing.Point SelectionStart { get { return _selStart; } set { _selStart = value; } }
+        public Drawing.Point SelectionStart { get => _selStart; set => _selStart = value; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Drawing.Point SelectionEnd { get { return _selEnd; } set { _selEnd = value; } }
+        public Drawing.Point SelectionEnd { get => _selEnd; set => _selEnd = value; }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool AllowSelection { get { return _allowSelection; } set { _allowSelection = value; } }
+        public bool AllowSelection { get => _allowSelection; set => _allowSelection = value; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool TextOverlaysEnabled { get { return _textEnabled; } set { _textEnabled = value; Invalidate(); } }
+        public bool TextOverlaysEnabled { get => _textEnabled; set { _textEnabled = value; Invalidate(); } }
 
-        public float RotationScale { get { return _rotFactor; } set { _rotFactor = value; } }
-        public float TranslationScale { get { return _transFactor; } set { _transFactor = value; } }
-        public float ZoomScale { get { return _zoomFactor; } set { _zoomFactor = value; } }
+        public float RotationScale { get => _rotFactor; set => _rotFactor = value; }
+        public float TranslationScale { get => _transFactor; set => _transFactor = value; }
+        public float ZoomScale { get => _zoomFactor; set => _zoomFactor = value; }
 
-        public int Width { get { return Region.Width; } }
-        public int Height { get { return Region.Height; } }
-        public Rectangle RegionNoBorder { get { return new Rectangle(Region.X + 1, Region.Y + 1, Region.Width - 2, Region.Height - 2); } }
+        public int Width => Region.Width;
+        public int Height => Region.Height;
+        public Rectangle RegionNoBorder => new Rectangle(Region.X + 1, Region.Y + 1, Region.Width - 2, Region.Height - 2);
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [TypeConverter(typeof(Vector3StringConverter))]
-        public Vector3 DefaultTranslate { get { return Camera._defaultTranslate; } set { Camera._defaultTranslate = value; } }
+        public Vector3 DefaultTranslate { get => Camera._defaultTranslate; set => Camera._defaultTranslate = value; }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [TypeConverter(typeof(Vector2StringConverter))]
-        public Vector3 DefaultRotate { get { return Camera._defaultRotate; } set { Camera._defaultRotate = value; } }
+        public Vector3 DefaultRotate { get => Camera._defaultRotate; set => Camera._defaultRotate = value; }
 
         #endregion
 
@@ -153,7 +152,7 @@ namespace System.Windows.Forms
         [TypeConverter(typeof(Vector4StringConverter))]
         public Vector4 Emission
         {
-            get { return _emission; }
+            get => _emission;
             set
             {
                 _emission = value;
@@ -164,7 +163,7 @@ namespace System.Windows.Forms
         [TypeConverter(typeof(Vector4StringConverter))]
         public Vector4 Ambient
         {
-            get { return _ambient; }
+            get => _ambient;
             set
             {
                 _ambient = value;
@@ -173,15 +172,15 @@ namespace System.Windows.Forms
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool LightDirectional { get { return _posLight._w == 0.0f; } set { _posLight._w = value ? 0.0f : 1.0f; Invalidate(); } }
+        public bool LightDirectional { get => _posLight._w == 0.0f; set { _posLight._w = value ? 0.0f : 1.0f; Invalidate(); } }
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public bool LightEnabled { get { return _lightEnabled; } set { _lightEnabled = value; Invalidate(); } }
+        public bool LightEnabled { get => _lightEnabled; set { _lightEnabled = value; Invalidate(); } }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [TypeConverter(typeof(Vector4StringConverter))]
         public Vector4 LightPosition
         {
-            get { return _lightPosition; }
+            get => _lightPosition;
             set
             {
                 _lightPosition = value;
@@ -206,7 +205,7 @@ namespace System.Windows.Forms
         [TypeConverter(typeof(Vector4StringConverter))]
         public Vector4 Diffuse
         {
-            get { return _diffuse; }
+            get => _diffuse;
             set
             {
                 _diffuse = value;
@@ -217,7 +216,7 @@ namespace System.Windows.Forms
         [TypeConverter(typeof(Vector4StringConverter))]
         public Vector4 Specular
         {
-            get { return _specular; }
+            get => _specular;
             set
             {
                 _specular = value;
@@ -228,7 +227,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderFloor
         {
-            get { return _renderFloor; }
+            get => _renderFloor;
             set
             {
                 _renderFloor = value;
@@ -241,7 +240,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderSCN0Controls
         {
-            get { return _renderSCN0Controls; }
+            get => _renderSCN0Controls;
             set
             {
                 _renderSCN0Controls = value;
@@ -251,7 +250,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderBones
         {
-            get { return _renderAttrib._renderBones; }
+            get => _renderAttrib._renderBones;
             set
             {
                 _renderAttrib._renderBones = value;
@@ -261,7 +260,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderVertices
         {
-            get { return _renderAttrib._renderVertices; }
+            get => _renderAttrib._renderVertices;
             set
             {
                 _renderAttrib._renderVertices = value;
@@ -271,7 +270,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderNormals
         {
-            get { return _renderAttrib._renderNormals; }
+            get => _renderAttrib._renderNormals;
             set
             {
                 _renderAttrib._renderNormals = value;
@@ -281,7 +280,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderPolygons
         {
-            get { return _renderAttrib._renderPolygons; }
+            get => _renderAttrib._renderPolygons;
             set
             {
                 _renderAttrib._renderPolygons = value;
@@ -291,7 +290,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderWireframe
         {
-            get { return _renderAttrib._renderWireframe; }
+            get => _renderAttrib._renderWireframe;
             set
             {
                 _renderAttrib._renderWireframe = value;
@@ -301,7 +300,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderModelBox
         {
-            get { return _renderAttrib._renderModelBox; }
+            get => _renderAttrib._renderModelBox;
             set
             {
                 _renderAttrib._renderModelBox = value;
@@ -311,7 +310,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderObjectBox
         {
-            get { return _renderAttrib._renderObjectBoxes; }
+            get => _renderAttrib._renderObjectBoxes;
             set
             {
                 _renderAttrib._renderObjectBoxes = value;
@@ -321,7 +320,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderVisBoneBox
         {
-            get { return _renderAttrib._renderBoneBoxes; }
+            get => _renderAttrib._renderBoneBoxes;
             set
             {
                 _renderAttrib._renderBoneBoxes = value;
@@ -331,7 +330,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool UseBindStateBoxes
         {
-            get { return _renderAttrib._useBindStateBoxes; }
+            get => _renderAttrib._useBindStateBoxes;
             set
             {
                 _renderAttrib._useBindStateBoxes = value;
@@ -341,7 +340,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool DontRenderOffscreen
         {
-            get { return _renderAttrib._dontRenderOffscreen; }
+            get => _renderAttrib._dontRenderOffscreen;
             set
             {
                 _renderAttrib._dontRenderOffscreen = value;
@@ -351,7 +350,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ApplyBillboardBones
         {
-            get { return _renderAttrib._applyBillboardBones; }
+            get => _renderAttrib._applyBillboardBones;
             set
             {
                 _renderAttrib._applyBillboardBones = value;
@@ -361,7 +360,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool ScaleBones
         {
-            get { return _renderAttrib._scaleBones; }
+            get => _renderAttrib._scaleBones;
             set
             {
                 _renderAttrib._scaleBones = value;
@@ -371,7 +370,7 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderBonesAsPoints
         {
-            get { return _renderAttrib._renderBonesAsPoints; }
+            get => _renderAttrib._renderBonesAsPoints;
             set
             {
                 _renderAttrib._renderBonesAsPoints = value;
@@ -408,7 +407,9 @@ namespace System.Windows.Forms
 
             //Apply image
             if (BackgroundImage != null)
+            {
                 RenderBackgroundImage();
+            }
             else if (_updateImage && _bgImage != null)
             {
                 _bgImage.Delete();
@@ -423,7 +424,7 @@ namespace System.Windows.Forms
             {
                 Vector3 point = Camera.GetPoint().Round(3);
                 Vector3 rot = Camera._rotation.Round(3);
-                _text[String.Format("Position\nX: {0}\nY: {1}\nZ: {2}\n\nRotation\nX: {3}\nY: {4}\nZ: {5}", point._x, point._y, point._z, rot._x, rot._y, rot._z)] = new Vector3(5.0f, 5.0f, 0.5f);
+                _text[string.Format("Position\nX: {0}\nY: {1}\nZ: {2}\n\nRotation\nX: {3}\nY: {4}\nZ: {5}", point._x, point._y, point._z, rot._x, rot._y, rot._z)] = new Vector3(5.0f, 5.0f, 0.5f);
             }
 
             //Render selection overlay and/or text overlays
@@ -462,10 +463,14 @@ namespace System.Windows.Forms
 
                             GL.Color4(Color.White);
                             if (_text.Count != 0 && _textEnabled)
+                            {
                                 _text.Draw();
+                            }
 
                             if (_selecting && _allowSelection)
+                            {
                                 RenderSelection();
+                            }
                         }
                         GL.PopMatrix();
                     }
@@ -541,11 +546,13 @@ namespace System.Windows.Forms
                         _updateImage = false;
                     }
                     else
+                    {
                         GL.BindTexture(TextureTarget.Texture2D, _bgImage._texId);
+                    }
 
                     float* points = stackalloc float[8];
-                    float tAspect = (float)_bgImage.Width / (float)_bgImage.Height;
-                    float wAspect = (float)Width / (float)Height;
+                    float tAspect = _bgImage.Width / (float)_bgImage.Height;
+                    float wAspect = Width / (float)Height;
 
                     switch (_bgType)
                     {
@@ -636,9 +643,14 @@ namespace System.Windows.Forms
             GL.Light(LightName.Light0, LightParameter.SpotExponent, _spotExponent);
 
             fixed (Vector4* pos = &_posLight)
+            {
                 GL.Light(LightName.Light0, LightParameter.Position, (float*)pos);
+            }
+
             fixed (Vector4* pos = &_spotDirLight)
+            {
                 GL.Light(LightName.Light0, LightParameter.SpotDirection, (float*)pos);
+            }
 
             fixed (Vector4* pos = &_ambient)
             {
@@ -686,9 +698,9 @@ namespace System.Windows.Forms
 
         public void HandleLeftMouseUp(MouseEventArgs e)
         {
-            if (_selecting && 
-                !(Control.ModifierKeys == Keys.ShiftKey || 
-                Control.ModifierKeys == Keys.Shift || 
+            if (_selecting &&
+                !(Control.ModifierKeys == Keys.ShiftKey ||
+                Control.ModifierKeys == Keys.Shift ||
                 _shiftSelecting))
             {
                 _selEnd = new Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
@@ -699,12 +711,15 @@ namespace System.Windows.Forms
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
             if (_selecting)
+            {
                 _selEnd = new Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
+            }
 
             int x = e.X - Region.X;
             int y = e.Y - Region.Y;
 
             if (ctx != null && (_grabbing || _scrolling))
+            {
                 lock (ctx)
                 {
                     int xDiff = x - _lastX;
@@ -728,21 +743,34 @@ namespace System.Windows.Forms
                     }
 
                     if (_scrolling)
-                        Translate(0, 0, (float)yDiff * 0.01f);
+                    {
+                        Translate(0, 0, yDiff * 0.01f);
+                    }
                     else if (ctrl)
+                    {
                         if (alt)
+                        {
                             Rotate(0, 0, -yDiff * RotationScale);
+                        }
                         else
+                        {
                             Pivot(yDiff * RotationScale, -xDiff * RotationScale);
+                        }
+                    }
                     else
+                    {
                         Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
+                    }
                 }
+            }
 
             _lastX = x;
             _lastY = y;
 
             if (_selecting)
+            {
                 Invalidate();
+            }
         }
 
         public void HandleKeyUp(KeyEventArgs e)
@@ -765,64 +793,107 @@ namespace System.Windows.Forms
                 case Keys.Shift:
                 case Keys.ShiftKey:
                     if (_selecting)
+                    {
                         _shiftSelecting = true;
+                    }
+
                     break;
 
                 case Keys.NumPad8:
                 case Keys.Up:
                     {
                         if (alt)
+                        {
                             break;
+                        }
+
                         if (ctrl)
+                        {
                             Pivot(-RotationScale * (shift ? 32 : 4), 0.0f);
+                        }
                         else
+                        {
                             Translate(0.0f, TranslationScale * (shift ? 128 : 8), 0.0f);
+                        }
+
                         return true;
                     }
                 case Keys.NumPad2:
                 case Keys.Down:
                     {
                         if (alt)
+                        {
                             break;
+                        }
+
                         if (ctrl)
+                        {
                             Pivot(RotationScale * (shift ? 32 : 4), 0.0f);
+                        }
                         else
+                        {
                             Translate(0.0f, -TranslationScale * (shift ? 128 : 8), 0.0f);
+                        }
+
                         return true;
                     }
                 case Keys.NumPad6:
                 case Keys.Right:
                     {
                         if (alt)
+                        {
                             break;
+                        }
+
                         if (ctrl)
+                        {
                             Pivot(0.0f, RotationScale * (shift ? 32 : 4));
+                        }
                         else
+                        {
                             Translate(TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
+                        }
+
                         return true;
                     }
                 case Keys.NumPad4:
                 case Keys.Left:
                     {
                         if (alt)
+                        {
                             break;
+                        }
+
                         if (ctrl)
+                        {
                             Pivot(0.0f, -RotationScale * (shift ? 32 : 4));
+                        }
                         else
+                        {
                             Translate(-TranslationScale * (shift ? 128 : 8), 0.0f, 0.0f);
+                        }
+
                         return true;
                     }
                 case Keys.Add:
                 case Keys.Oemplus:
                     {
-                        if (alt) break;
+                        if (alt)
+                        {
+                            break;
+                        }
+
                         Zoom(-ZoomScale * (shift ? 32 : 2));
                         return true;
                     }
                 case Keys.Subtract:
                 case Keys.OemMinus:
                     {
-                        if (alt) break;
+                        if (alt)
+                        {
+                            break;
+                        }
+
                         Zoom(ZoomScale * (shift ? 32 : 2));
                         return true;
                     }
@@ -839,7 +910,9 @@ namespace System.Windows.Forms
             if (!invoked)
             {
                 if (Zoomed != null)
+                {
                     Zoomed(amt, true);
+                }
 
                 Invalidate();
             }
@@ -855,7 +928,9 @@ namespace System.Windows.Forms
             if (!invoked)
             {
                 if (Scaled != null)
+                {
                     Scaled(x, y, z, true);
+                }
 
                 Invalidate();
             }
@@ -871,7 +946,9 @@ namespace System.Windows.Forms
             if (!invoked)
             {
                 if (Translated != null)
+                {
                     Translated(x, y, z, true);
+                }
 
                 Invalidate();
             }
@@ -884,9 +961,13 @@ namespace System.Windows.Forms
             Camera.Pivot(_viewDistance, x, y);
 
             if (Pivoted != null)
+            {
                 Pivoted(x, y);
+            }
             else
+            {
                 Invalidate();
+            }
         }
         public void Rotate(float x, float y, float z)
         {
@@ -897,16 +978,20 @@ namespace System.Windows.Forms
             Camera.Rotate(x, y, z);
 
             if (Rotated != null)
+            {
                 Rotated(x, y, z);
+            }
             else
+            {
                 Invalidate();
+            }
         }
 
         public Vector3 ProjectCameraSphere(Vector2 mousePoint, Vector3 center, float radius, bool clamp)
         {
             return Camera.ProjectCameraSphere(new Vector2(mousePoint._x - Region.X, WorldToLocalYf(mousePoint._y)), center, radius, clamp);
         }
-        
+
         public void ProjectCameraPlanes(Vector2 mousePoint, Matrix transform, out Vector3 xy, out Vector3 yz, out Vector3 xz)
         {
             Camera.ProjectCameraPlanes(new Vector2(mousePoint._x - Region.X, WorldToLocalYf(mousePoint._y)), transform, out xy, out yz, out xz);
@@ -916,36 +1001,24 @@ namespace System.Windows.Forms
         #endregion
 
         #region Default Viewports
-        public static new ModelPanelViewport DefaultPerspective
+        public static new ModelPanelViewport DefaultPerspective => new ModelPanelViewport()
         {
-            get
-            {
-                return new ModelPanelViewport()
-                {
-                    _type = ViewportProjection.Perspective,
-                    _camera = new GLCamera(),
-                    _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
-                };
-            }
-        }
-        private static new ModelPanelViewport BaseOrtho
+            _type = ViewportProjection.Perspective,
+            _camera = new GLCamera(),
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+        };
+        private static new ModelPanelViewport BaseOrtho => new ModelPanelViewport()
         {
-            get
+            _type = ViewportProjection.Orthographic,
+            _camera = new GLCamera()
             {
-                return new ModelPanelViewport()
-                {
-                    _type = ViewportProjection.Orthographic,
-                    _camera = new GLCamera()
-                    {
-                        _ortho = true,
-                        _nearZ = -10000.0f,
-                        _farZ = 10000.0f,
-                        _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
-                    },
-                    _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
-                };
-            }
-        }
+                _ortho = true,
+                _nearZ = -10000.0f,
+                _farZ = 10000.0f,
+                _defaultScale = new Vector3(0.035f, 0.035f, 0.035f),
+            },
+            _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
+        };
         public static new ModelPanelViewport DefaultOrtho
         {
             get
@@ -1088,10 +1161,10 @@ namespace System.Windows.Forms
         public float _viewDistance = 5.0f;
         public float _spotCutoff = 180.0f;
         public float _spotExponent = 100.0f;
-        const float v = 1.0f / 255.0f;
-        const float amb = 90.0f;
-        const float diff = 70.0f;
-        const float emi = 160.0f;
+        private const float v = 1.0f / 255.0f;
+        private const float amb = 90.0f;
+        private const float diff = 70.0f;
+        private const float emi = 160.0f;
         public Vector4 _ambient = new Vector4(amb * v, amb * v, amb * v, 1.0f);
         public Vector4 _diffuse = new Vector4(diff * v, diff * v, diff * v, 1.0f);
         public Vector4 _specular = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);

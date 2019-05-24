@@ -1,14 +1,14 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using BrawlLib.IO;
+using System;
 using System.Drawing;
-using System.IO;
 using System.Drawing.Imaging;
-using BrawlLib.IO;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.Imaging
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct TGAHeader
+    internal unsafe struct TGAHeader
     {
         public const int Size = 18;
 
@@ -18,28 +18,25 @@ namespace BrawlLib.Imaging
         public TGAColorMapSpecification colorMapSpecification;
         public TGAImageSpecification imageSpecification;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this)return ptr; } }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public byte* ImageId { get { return (byte*)(Address + Size); } }
-        public byte* ColorMapData { get { return ImageId + idLength; } }
-        public byte* ImageData { get { return ColorMapData + colorMapSpecification.DataLength; } }
+        public byte* ImageId => (byte*)(Address + Size);
+        public byte* ColorMapData => ImageId + idLength;
+        public byte* ImageData => ColorMapData + colorMapSpecification.DataLength;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    struct TGAColorMapSpecification
+    internal struct TGAColorMapSpecification
     {
         public ushort firstEntryIndex;
         public ushort length;
         public byte entrySize;
 
-        public int DataLength
-        {
-            get { return (((int)entrySize).Align(4) * length).Align(8) >> 3; }
-        }
+        public int DataLength => (((int)entrySize).Align(4) * length).Align(8) >> 3;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    struct TGAImageSpecification
+    internal struct TGAImageSpecification
     {
         public ushort xOrigin;
         public ushort yOrigin;
@@ -50,30 +47,27 @@ namespace BrawlLib.Imaging
 
         public byte AlphaBits
         {
-            get { return (byte)(imageDescriptor & 0xF); }
-            set { imageDescriptor = (byte)((value & 0xF) | (imageDescriptor & 0x30)); }
+            get => (byte)(imageDescriptor & 0xF);
+            set => imageDescriptor = (byte)((value & 0xF) | (imageDescriptor & 0x30));
         }
         public TGAOrigin ImageOrigin
         {
-            get { return (TGAOrigin)((imageDescriptor >> 4) & 0x3); }
-            set { imageDescriptor = (byte)(((byte)value << 4) | (imageDescriptor & 0xF)); }
+            get => (TGAOrigin)((imageDescriptor >> 4) & 0x3);
+            set => imageDescriptor = (byte)(((byte)value << 4) | (imageDescriptor & 0xF));
         }
 
-        public int DataLength
-        {
-            get { return ((((int)pixelDepth).Align(4) * width).Align(8) >> 3) * height; }
-        }
+        public int DataLength => ((((int)pixelDepth).Align(4) * width).Align(8) >> 3) * height;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    unsafe struct TGAFooter
+    internal unsafe struct TGAFooter
     {
         public const int Size = 26;
         public const string Signature = "TRUEVISION-XFILE.";
 
         public uint extensionAreaOffset;
         public uint developerDirectoryOffset;
-        fixed byte signature[18]; //"TRUEVISION-XFILE.\0"
+        private readonly byte signature[18]; //"TRUEVISION-XFILE.\0"
 
         public TGAFooter(uint extOffset, uint devOffset)
         {
@@ -82,13 +76,16 @@ namespace BrawlLib.Imaging
             fixed (byte* ptr = signature)
             {
                 for (int i = 0; i < Signature.Length; i++)
+                {
                     ptr[i] = (byte)Signature[i];
+                }
+
                 ptr[18] = 0;
             }
         }
     }
 
-    enum TGAOrigin : byte
+    internal enum TGAOrigin : byte
     {
         BottomLeft = 0,
         BottomRight = 1,
@@ -96,7 +93,7 @@ namespace BrawlLib.Imaging
         TopRight = 3
     }
 
-    enum TGAImageType : byte
+    internal enum TGAImageType : byte
     {
         None = 0,
         UncompressedColorMapped = 1,
@@ -132,16 +129,25 @@ namespace BrawlLib.Imaging
                 if ((pControl & 0x80) != 0)
                 {
                     for (int x = 0; x < pCount; x++)
+                    {
                         for (int y = 0; y < entryLen; y++)
+                        {
                             *dPtr++ = sPtr[y];
+                        }
+                    }
+
                     sLen += entryLen;
                     sPtr += entryLen;
                 }
                 else
                 {
                     for (int x = 0; x < pCount; x++)
+                    {
                         for (int y = 0; y < entryLen; y++, sLen++)
+                        {
                             *dPtr++ = *sPtr++;
+                        }
+                    }
                 }
             }
             return sLen;
@@ -168,7 +174,7 @@ namespace BrawlLib.Imaging
                             if (entryBpp == 4)
                             {
                                 format = PixelFormat.Format4bppIndexed;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 {
                                     byte val = ((byte*)sPtr)[sIndex >> 1], val2 = ((byte*)dPtr)[dIndex >> 1];
                                     val = ((sIndex & 1) == 0) ? (byte)(val >> 4) : (byte)(val & 0xF);
@@ -178,11 +184,13 @@ namespace BrawlLib.Imaging
                             else if (entryBpp == 8)
                             {
                                 format = PixelFormat.Format8bppIndexed;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 { ((byte*)dPtr)[dIndex] = ((byte*)sPtr)[sIndex]; };
                             }
                             else
+                            {
                                 throw new InvalidDataException("Invalid TGA color map format.");
+                            }
 
                             int firstIndex = header->colorMapSpecification.firstEntryIndex;
                             int palSize = firstIndex + header->colorMapSpecification.length;
@@ -190,15 +198,23 @@ namespace BrawlLib.Imaging
 
                             PaletteParser pParser;
                             if (mapBpp == 32)
+                            {
                                 pParser = (ref VoidPtr x) => { Color c = (Color)(*(ARGBPixel*)x); x += 4; return c; };
+                            }
                             else if (mapBpp == 24)
+                            {
                                 pParser = (ref VoidPtr x) => { Color c = (Color)(*(RGBPixel*)x); x += 3; return c; };
+                            }
                             else
+                            {
                                 throw new InvalidDataException("Invalid TGA color map format.");
+                            }
 
                             VoidPtr palData = header->ColorMapData;
                             for (int i = firstIndex; i < palSize; i++)
+                            {
                                 palette.Entries[i] = pParser(ref palData);
+                            }
 
                             break;
                         }
@@ -207,29 +223,31 @@ namespace BrawlLib.Imaging
                             if ((entryBpp == 15) || ((entryBpp == 16) && (alphaBits == 0)))
                             {
                                 format = PixelFormat.Format16bppRgb555;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
                             }
                             else if (entryBpp == 16)
                             {
                                 format = PixelFormat.Format16bppArgb1555;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
                             }
                             else if (entryBpp == 24)
                             {
                                 format = PixelFormat.Format24bppRgb;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 { ((RGBPixel*)dPtr)[dIndex] = ((RGBPixel*)sPtr)[sIndex]; };
                             }
                             else if (entryBpp == 32)
                             {
                                 format = (alphaBits == 8) ? PixelFormat.Format32bppArgb : PixelFormat.Format32bppRgb;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 { ((ARGBPixel*)dPtr)[dIndex] = ((ARGBPixel*)sPtr)[sIndex]; };
                             }
                             else
+                            {
                                 throw new InvalidDataException("Unknown TGA file format.");
+                            }
 
                             break;
                         }
@@ -238,18 +256,25 @@ namespace BrawlLib.Imaging
                             if (entryBpp == 8)
                             {
                                 format = PixelFormat.Format24bppRgb;
-                                cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                                 { ((RGBPixel*)dPtr)[dIndex] = RGBPixel.FromIntensity(((byte*)sPtr)[sIndex]); };
                             }
                             else
+                            {
                                 throw new InvalidDataException("Unknown TGA file format.");
+                            }
+
                             break;
                         }
                     default: throw new InvalidDataException("Unknown TGA file format.");
                 }
 
                 Bitmap bmp = new Bitmap(w, h, format);
-                if (palette != null) bmp.Palette = palette;
+                if (palette != null)
+                {
+                    bmp.Palette = palette;
+                }
+
                 BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, format);
 
                 bool rle = ((int)header->imageType & 0x8) != 0;
@@ -267,12 +292,19 @@ namespace BrawlLib.Imaging
                     VoidPtr imgDst = (VoidPtr)data.Scan0 + (data.Stride * dY);
 
                     if (rle)
+                    {
                         imgSrc += DecodeRLE(imgSrc, buffer, srcStride, entryBpp);
+                    }
 
                     for (int dX = (xStep == 1) ? 0 : w - 1, sX = 0; sX < w; dX += xStep, sX++)
+                    {
                         cParser((rle) ? buffer : imgSrc, sX, imgDst, dX);
+                    }
 
-                    if (!rle) imgSrc += srcStride;
+                    if (!rle)
+                    {
+                        imgSrc += srcStride;
+                    }
                 }
 
                 bmp.UnlockBits(data);
@@ -310,11 +342,15 @@ namespace BrawlLib.Imaging
                         pEnc = (ref VoidPtr ptr, Color c) => { *(RGBPixel*)ptr = (RGBPixel)c; ptr += 3; };
 
                         if (bmp.PixelFormat == PixelFormat.Format4bppIndexed)
-                            cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        {
+                            cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                             { ((byte*)dPtr)[dIndex] = ((sIndex & 1) == 0) ? (byte)(((byte*)sPtr)[sIndex >> 1] >> 4) : (byte)(((byte*)sPtr)[sIndex >> 1] & 0xF); };
+                        }
                         else
-                            cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        {
+                            cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                             { ((byte*)dPtr)[dIndex] = ((byte*)sPtr)[sIndex]; };
+                        }
 
                         break;
                     }
@@ -324,7 +360,7 @@ namespace BrawlLib.Imaging
                         header.imageSpecification.pixelDepth = 32;
                         header.imageSpecification.AlphaBits = (bmp.PixelFormat == PixelFormat.Format32bppArgb) ? (byte)8 : (byte)0;
 
-                        cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                         { ((ARGBPixel*)dPtr)[dIndex] = ((ARGBPixel*)sPtr)[sIndex]; };
                         break;
                     }
@@ -333,7 +369,7 @@ namespace BrawlLib.Imaging
                     {
                         header.imageSpecification.pixelDepth = 24;
 
-                        cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                         { ((RGBPixel*)dPtr)[dIndex] = ((RGBPixel*)sPtr)[sIndex]; };
                         break;
                     }
@@ -341,7 +377,7 @@ namespace BrawlLib.Imaging
                 case PixelFormat.Format16bppRgb555:
                     {
                         header.imageSpecification.pixelDepth = 15;
-                        cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                         { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
                         break;
                     }
@@ -349,7 +385,7 @@ namespace BrawlLib.Imaging
                     {
                         header.imageSpecification.pixelDepth = 16;
                         header.imageSpecification.AlphaBits = 1;
-                        cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                         { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
                         break;
                     }
@@ -379,7 +415,9 @@ namespace BrawlLib.Imaging
                 {
                     VoidPtr pMap = pHeader->ColorMapData;
                     for (int i = 0; i < pal.Entries.Length; i++)
+                    {
                         pEnc(ref pMap, pal.Entries[i]);
+                    }
                 }
 
                 //Write color data
@@ -395,7 +433,9 @@ namespace BrawlLib.Imaging
                     //Do RLE encoding
 
                     for (int sX = (xStep == 1) ? 0 : w - 1, dX = 0; dX < w; sX += xStep, dX++)
+                    {
                         cEnc(imgSrc, sX, imgDst, dX);
+                    }
 
                     imgDst += dstStride;
                 }
@@ -410,7 +450,9 @@ namespace BrawlLib.Imaging
         public static unsafe void ToFile(Bitmap bmp, string path)
         {
             using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
+            {
                 ToStream(bmp, stream);
+            }
         }
     }
 }

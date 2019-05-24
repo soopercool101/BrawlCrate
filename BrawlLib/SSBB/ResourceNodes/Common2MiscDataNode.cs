@@ -9,11 +9,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class Common2MiscDataNode : ARCEntryNode
     {
-        public override ResourceType ResourceType { get { return ResourceType.Container; } }
-        internal Common2TblHeader* Header { get { return (Common2TblHeader*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceType => ResourceType.Container;
+        internal Common2TblHeader* Header => (Common2TblHeader*)WorkingUncompressed.Address;
 
         // Header variables
-        bint _offCount = 0;
+        private bint _offCount = 0;
 
         public override bool OnInitialize()
         {
@@ -48,9 +48,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* ptr = (bint*)offsetTable;
             for (int i = 0; i < Header->_DataTable; i++)
             {
-                OffsetPair o = new OffsetPair();
-                o.dataOffset = *(ptr++);
-                o.nameOffset = *(ptr++);
+                OffsetPair o = new OffsetPair
+                {
+                    dataOffset = *(ptr++),
+                    nameOffset = *(ptr++)
+                };
                 offsets.Add(o);
             }
 
@@ -64,7 +66,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (OffsetPair o in offsets)
             {
                 if (o.dataEnd <= o.dataOffset)
+                {
                     throw new Exception("Invalid data length (less than data offset) in common2 data");
+                }
 
                 DataSource source = new DataSource(baseAddress + o.dataOffset, o.dataEnd - o.dataOffset);
                 string name = new string((sbyte*)stringList + o.nameOffset);
@@ -96,27 +100,31 @@ namespace BrawlLib.SSBB.ResourceNodes
             Dictionary<ResourceNode, VoidPtr> dataLocations = new Dictionary<ResourceNode, VoidPtr>();
 
             VoidPtr ptr = baseAddress;
-            foreach (var child in Children)
+            foreach (ResourceNode child in Children)
             {
                 int size = child.CalculateSize(false);
                 dataLocations.Add(child, ptr);
-                if (child is ClassicStageTblSizeTblNode && size == 48) {
+                if (child is ClassicStageTblSizeTblNode && size == 48)
+                {
                     // Rebuild
-                    Dictionary<string, int> sizes = Children.ToDictionary(c => c.Name, c => {
+                    Dictionary<string, int> sizes = Children.ToDictionary(c => c.Name, c =>
+                    {
                         int fullSize = c.CalculateSize(false);
                         int paddingInts = (c as ClassicStageTblNode)?.Padding?.Length ?? 0;
                         return fullSize - sizeof(bint) * paddingInts;
                     });
 
                     bint[] newTbl = new bint[12];
-                    fixed (bint* newTblPtr = newTbl) {
+                    fixed (bint* newTblPtr = newTbl)
+                    {
                         foreach (string key in new[] {
                             "simpleStageB1Tbl",
                             "simpleStageB2Tbl",
                             "simpleStage11Tbl"
-                        }) {
-                            int s;
-                            if (!sizes.TryGetValue(key, out s) || s != 0x104) {
+                        })
+                        {
+                            if (!sizes.TryGetValue(key, out int s) || s != 0x104)
+                            {
                                 MessageBox.Show($"Changing the size of {key} may not work properly (BrawlCrate doesn't know yet which size entry to update)");
                             }
                         }
@@ -135,11 +143,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                             "simpleStage9Tbl",
                             "simpleStage10Tbl",
                             "simpleStageB2Tbl"
-                        }) {
-                            int s;
-                            if (sizes.TryGetValue(key, out s)) {
+                        })
+                        {
+                            if (sizes.TryGetValue(key, out int s))
+                            {
                                 *bptr = s;
-                            } else {
+                            }
+                            else
+                            {
                                 MessageBox.Show($"Cannot get size of {key}");
                             }
                             bptr++;
@@ -151,16 +162,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 child.Rebuild(ptr, size, false);
                 ptr += size;
             }
-            Header->_DataLength = (int)(ptr - baseAddress);
+            Header->_DataLength = ptr - baseAddress;
 
             bint* dataPointers = (bint*)ptr;
             bint* stringPointers = dataPointers + 1;
             byte* strings = (byte*)(dataPointers + Children.Count + Children.Count);
             byte* currentString = strings;
 
-            foreach (var child in Children)
+            foreach (ResourceNode child in Children)
             {
-                *dataPointers = (int)(dataLocations[child] - baseAddress);
+                *dataPointers = dataLocations[child] - baseAddress;
                 dataPointers += 2;
                 *stringPointers = (int)(currentString - strings);
                 stringPointers += 2;
@@ -175,7 +186,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            Header->_Length = (int)(currentString - address);
+            Header->_Length = currentString - address;
 
             if (Header->_Length != length)
             {

@@ -1,8 +1,8 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
-using System.ComponentModel;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,7 +11,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static MDL0GroupWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -32,7 +32,7 @@ namespace BrawlCrate.NodeWrappers
         {
             MDL0GroupNode group = _resource as MDL0GroupNode;
             MDL0Node model = group.Parent as MDL0Node;
-            
+
             switch (group._type.ToString("g"))
             {
                 case "Bones":

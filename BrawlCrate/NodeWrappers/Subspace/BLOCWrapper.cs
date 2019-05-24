@@ -1,7 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
-using System.Windows.Forms;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -10,7 +10,7 @@ namespace BrawlCrate.NodeWrappers
     {
         #region Menu
 
-        private static ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _menu;
         static BLOCWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -47,15 +47,15 @@ namespace BrawlCrate.NodeWrappers
         }
         #endregion
 
-        public override string ExportFilter { get { return "BLOC Adventure Archive (*.BLOC)|*.bloc"; } }
+        public override string ExportFilter => "BLOC Adventure Archive (*.BLOC)|*.bloc";
 
         public BLOCWrapper() { ContextMenuStrip = _menu; }
         public GSNDNode NewGSND()
         {
-            GSNDNode node = new GSNDNode() { Name = _resource.FindName("NewGSND")};
+            GSNDNode node = new GSNDNode() { Name = _resource.FindName("NewGSND") };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -65,7 +65,7 @@ namespace BrawlCrate.NodeWrappers
             ADSJNode node = new ADSJNode() { Name = _resource.FindName("NewADSJ") };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
@@ -75,14 +75,14 @@ namespace BrawlCrate.NodeWrappers
             GDORNode node = new GDORNode() { Name = _resource.FindName("NewGDOR") };
             _resource.AddChild(node);
 
-            BaseWrapper w = this.FindResource(node, false);
+            BaseWrapper w = FindResource(node, false);
             w.EnsureVisible();
             w.TreeView.SelectedNode = w;
             return node;
         }
 
         public override void OnExport(string outPath, int filterIndex)
-        { 
+        {
             ((BLOCNode)_resource).Export(outPath);
         }
     }

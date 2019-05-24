@@ -1,20 +1,19 @@
-﻿using System;
-using System.ComponentModel;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0NormalNode : MDL0EntryNode
     {
-        internal MDL0NormalData* Header { get { return (MDL0NormalData*)WorkingUncompressed.Address; } }
+        internal MDL0NormalData* Header => (MDL0NormalData*)WorkingUncompressed.Address;
         //protected override int DataLength { get { return Header->_dataLen; } }
 
-        public MDL0ObjectNode[] Objects { get { return _objects.ToArray(); } }
+        public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-
-        MDL0NormalData _hdr = new MDL0NormalData() { _type = (int)WiiVertexComponentType.Float };
+        private MDL0NormalData _hdr = new MDL0NormalData() { _type = (int)WiiVertexComponentType.Float };
 
         public enum NormalType
         {
@@ -24,32 +23,34 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Normal Data")]
-        public int ID { get { return _hdr._index; } }
+        public int ID => _hdr._index;
         [Category("Normal Data")]
-        public NormalType Type { get { return (NormalType)(int)_hdr._isNBT; } }
+        public NormalType Type => (NormalType)(int)_hdr._isNBT;
         [Category("Normal Data")]
-        public WiiVertexComponentType Format { get { return (WiiVertexComponentType)(int)_hdr._type; } }
+        public WiiVertexComponentType Format => (WiiVertexComponentType)(int)_hdr._type;
         [Category("Normal Data")]
-        public int Divisor { get { return _hdr._divisor; } }
+        public int Divisor => _hdr._divisor;
         [Category("Normal Data")]
-        public int EntryStride { get { return _hdr._entryStride; } }
+        public int EntryStride => _hdr._entryStride;
         [Category("Normal Data")]
-        public int NumEntries { get { return _hdr._numVertices; } }
+        public int NumEntries => _hdr._numVertices;
 
-        public bool ForceRebuild { get { return _forceRebuild; } set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
-        public bool ForceFloat { get { return _forceFloat; } set { if (_forceFloat != value) { _forceFloat = value; } } }
+        public bool ForceRebuild { get => _forceRebuild; set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
+        public bool ForceFloat { get => _forceFloat; set { if (_forceFloat != value) { _forceFloat = value; } } }
 
         private Vector3[] _normals;
         public Vector3[] Normals
         {
-            get { return _normals == null ? _normals = VertexCodec.ExtractNormals(Header) : _normals; }
+            get => _normals == null ? _normals = VertexCodec.ExtractNormals(Header) : _normals;
             set
             {
                 _normals = value;
 
                 _forceRebuild = true;
                 if (Format == WiiVertexComponentType.Float)
+                {
                     _forceFloat = true;
+                }
 
                 SignalPropertyChange();
             }
@@ -66,7 +67,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             //SetSizeInternal(_hdr._dataLen);
 
             if ((_name == null) && (Header->_stringOffset != 0))
+            {
                 _name = Header->ResourceString;
+            }
 
             return false;
         }
@@ -81,7 +84,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enc = new VertexCodec(Normals, false, _forceFloat);
                 return _enc._dataLen.Align(0x20) + 0x20;
             }
-            else return base.OnCalculateSize(force);
+            else
+            {
+                return base.OnCalculateSize(force);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -106,7 +112,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _forceRebuild = false;
             }
             else
+            {
                 base.OnRebuild(address, length, force);
+            }
         }
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)

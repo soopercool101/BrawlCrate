@@ -1,21 +1,25 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MRGNode : ResourceNode
     {
-        internal MRGHeader* Header { get { return (MRGHeader*)WorkingUncompressed.Address; } }
-        public override ResourceType ResourceType { get { return ResourceType.MRG; } }
+        internal MRGHeader* Header => (MRGHeader*)WorkingUncompressed.Address;
+        public override ResourceType ResourceType => ResourceType.MRG;
 
         public override void OnPopulate()
         {
             uint numFiles = 0;
             MRGFileHeader* entry = Header->First;
-            for (int i = 0; i < (numFiles = Header->_numFiles); i++, entry = entry->Next)      
-                if (NodeFactory.FromAddress(this, (VoidPtr)Header + entry->Data, entry->Length) == null)
-                    new ARCEntryNode().Initialize(this, (VoidPtr)Header + entry->Data, entry->Length);
+            for (int i = 0; i < (numFiles = Header->_numFiles); i++, entry = entry->Next)
+            {
+                if (NodeFactory.FromAddress(this, Header + entry->Data, entry->Length) == null)
+                {
+                    new ARCEntryNode().Initialize(this, Header + entry->Data, entry->Length);
+                }
+            }
         }
 
         public override void Initialize(ResourceNode parent, DataSource origSource, DataSource uncompSource)
@@ -33,14 +37,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void ExtractToFolder(string outFolder)
         {
             if (!Directory.Exists(outFolder))
+            {
                 Directory.CreateDirectory(outFolder);
+            }
 
             foreach (ARCEntryNode entry in Children)
             {
                 if (entry is ARCNode)
+                {
                     ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, entry.Name));
+                }
                 else if (entry is BRRESNode)
+                {
                     ((BRRESNode)entry).ExportToFolder(outFolder);
+                }
             }
         }
 
@@ -79,7 +89,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int size = offset = 0x20 + (Children.Count * 0x20);
             foreach (ResourceNode node in Children)
+            {
                 size += node.CalculateSize(force);
+            }
+
             return size;
         }
 
@@ -92,7 +105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (ARCEntryNode node in Children)
             {
                 *entry = new MRGFileHeader(node._calcSize, offset);
-                node.Rebuild((VoidPtr)header + entry->Data, node._calcSize, force);
+                node.Rebuild(header + entry->Data, node._calcSize, force);
                 offset += node._calcSize;
                 entry = entry->Next;
             }
@@ -100,20 +113,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void ExportAsARC(string path)
         {
-            ARCNode node = new ARCNode();
-            node._children = _children;
-            node.Name = _name;
+            ARCNode node = new ARCNode
+            {
+                _children = _children,
+                Name = _name
+            };
             node.Export(path);
         }
 
         public override unsafe void Export(string outPath)
         {
-            if (outPath.EndsWith(".pac", StringComparison.OrdinalIgnoreCase) || 
-                outPath.EndsWith(".pcs", StringComparison.OrdinalIgnoreCase) || 
+            if (outPath.EndsWith(".pac", StringComparison.OrdinalIgnoreCase) ||
+                outPath.EndsWith(".pcs", StringComparison.OrdinalIgnoreCase) ||
                 outPath.EndsWith(".pair", StringComparison.OrdinalIgnoreCase))
+            {
                 ExportAsARC(outPath);
+            }
             else
+            {
                 base.Export(outPath);
+            }
         }
 
         //internal static ResourceNode TryParse(DataSource source) 

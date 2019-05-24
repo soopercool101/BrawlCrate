@@ -1,16 +1,16 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Collections.Generic;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib
 {
     public unsafe class BinaryStringTable
     {
-        private List<BinaryStringEntry> _entries = new List<BinaryStringEntry>();
-        private BinaryStringEntry _root = new BinaryStringEntry("", 0);
+        private readonly List<BinaryStringEntry> _entries = new List<BinaryStringEntry>();
+        private readonly BinaryStringEntry _root = new BinaryStringEntry("", 0);
 
-        public List<BinaryStringEntry> Entries { get { return _entries; } }
-        public BinaryStringEntry RootEntry { get { return _root; } }
+        public List<BinaryStringEntry> Entries => _entries;
+        public BinaryStringEntry RootEntry => _root;
 
         public BinaryStringTable() { _entries.Add(_root); }
 
@@ -29,7 +29,9 @@ namespace BrawlLib
             while (entry._id <= current._id)
             {
                 if (entry._id == current._id)
+                {
                     entry.GenerateId(current);
+                }
 
                 isRight = current.IsRight(entry);
 
@@ -37,13 +39,19 @@ namespace BrawlLib
                 current = (isRight) ? current._right : current._left;
 
                 if (prev._id <= current._id)
+                {
                     break;
+                }
             }
 
             if (isRight)
+            {
                 prev.InsertRight(entry);
+            }
             else
+            {
                 prev.InsertLeft(entry);
+            }
         }
 
         public int GetTotalSize() { return (_entries.Count * 0x10) + 8; }
@@ -55,7 +63,9 @@ namespace BrawlLib
 
             ResourceEntry* pEntry = &group->_first;
             foreach (BinaryStringEntry e in _entries)
+            {
                 *pEntry++ = e.GetEntry();
+            }
         }
     }
 
@@ -76,9 +86,13 @@ namespace BrawlLib
         public void InsertLeft(BinaryStringEntry entry)
         {
             if (entry.IsRight(_left))
+            {
                 entry._right = _left;
+            }
             else
+            {
                 entry._left = _left;
+            }
 
             _left = entry;
         }
@@ -86,16 +100,21 @@ namespace BrawlLib
         public void InsertRight(BinaryStringEntry entry)
         {
             if (entry.IsRight(_right))
+            {
                 entry._right = _right;
+            }
             else
+            {
                 entry._left = _right;
+            }
 
             _right = entry;
         }
 
         public int GenerateId(BinaryStringEntry comparison)
         {
-            for (int i = _name.Length; i-- > 0; )
+            for (int i = _name.Length; i-- > 0;)
+            {
                 if (_name[i] != comparison._name[i])
                 {
                     _id = (i << 3) | CompareBits(_name[i], comparison._name[i]);
@@ -111,6 +130,7 @@ namespace BrawlLib
                     }
                     return _id;
                 }
+            }
 
             return 0;
         }
@@ -122,8 +142,13 @@ namespace BrawlLib
         private static int CompareBits(int b1, int b2)
         {
             for (int i = 8, b = 0x80; i-- != 0; b >>= 1)
+            {
                 if ((b1 & b) != (b2 & b))
+                {
                     return i;
+                }
+            }
+
             return 0;
         }
     }

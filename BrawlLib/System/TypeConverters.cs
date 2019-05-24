@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System.ComponentModel;
 using System.Globalization;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace System
 {
@@ -9,7 +9,10 @@ namespace System
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destType)
         {
             if (destType == typeof(string) && value is UserDataClass)
+            {
                 return ((UserDataClass)value).ToString();
+            }
+
             return base.ConvertTo(context, culture, value, destType);
         }
 
@@ -23,11 +26,15 @@ namespace System
                     string[] s2 = s.Split(':');
                     string[] s3 = s2[1].Split(',');
 
-                    UserDataClass d = new UserDataClass();
-
-                    d.Name = s2[0];
+                    UserDataClass d = new UserDataClass
+                    {
+                        Name = s2[0]
+                    };
                     foreach (string i in s3)
+                    {
                         d._entries.Add(i);
+                    }
+
                     return d;
                 }
                 catch { }

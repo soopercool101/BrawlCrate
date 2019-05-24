@@ -1,5 +1,5 @@
-﻿using System;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -7,30 +7,29 @@ namespace BrawlLib.SSBB.ResourceNodes
     [TypeConverter(typeof(ExpandableObjectCustomConverter))]
     public unsafe class RelCommand
     {
-        ModuleDataNode _section;
+        private readonly ModuleDataNode _section;
 
-        ModuleSectionNode[] Sections { get { return (_section.Root as ModuleNode).Sections; } }
+        private ModuleSectionNode[] Sections => (_section.Root as ModuleNode).Sections;
 
         [Category("Relocation Command"), Browsable(false)]
-        public bool IsBranchSet { get { return (_command >= RELCommandType.SetBranchDestination && _command <= RELCommandType.SetBranchConditionDestination3); } }
+        public bool IsBranchSet => (_command >= RELCommandType.SetBranchDestination && _command <= RELCommandType.SetBranchConditionDestination3);
         [Category("Relocation Command"), Browsable(false)]
-        public bool IsHalf { get { return (_command >= RELCommandType.WriteLowerHalf1 && _command <= RELCommandType.WriteUpperHalfandBit1); } }
+        public bool IsHalf => (_command >= RELCommandType.WriteLowerHalf1 && _command <= RELCommandType.WriteUpperHalfandBit1);
 
         [Category("Relocation Command"), Description("The offset relative to the start of the target section.")]
-        public string TargetOffset 
+        public string TargetOffset
         {
-            get { return "0x" + _addend.ToString("X"); }
+            get => "0x" + _addend.ToString("X");
             set
             {
                 string s = (value.StartsWith("0x") ? value.Substring(2, Math.Min(value.Length - 2, 8)) : value.Substring(0, Math.Min(value.Length, 8)));
-                uint offset;
-                if (uint.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out offset))
+                if (uint.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out uint offset))
                 {
                     if ((_section.Root as ModuleNode).ID == _moduleID)
                     {
                         ModuleSectionNode section = Sections[TargetSectionID];
                         int x = section._dataBuffer.Length - 2;
-                        offset = offset.Clamp(0, (uint)(x < 0 ? 0 : x)); 
+                        offset = offset.Clamp(0, (uint)(x < 0 ? 0 : x));
                     }
                     _addend = offset;
                     _section.SignalPropertyChange();
@@ -38,13 +37,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Category("Relocation Command"), Description("Determines how the offset should be written.")]
-        public RELCommandType Command { get { return _command; } set { _command = value; _section.SignalPropertyChange(); } }
+        public RELCommandType Command { get => _command; set { _command = value; _section.SignalPropertyChange(); } }
 
         [Category("Relocation Command"), Description("The index of the section to offset into.")]
-        public uint TargetSectionID 
+        public uint TargetSectionID
         {
-            get { return _targetSectionId; } 
-            set 
+            get => _targetSectionId;
+            set
             {
                 if ((_section.Root as ModuleNode).ID == _moduleID)
                 {
@@ -54,19 +53,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _addend = _addend.Clamp(0, (uint)(x < 0 ? 0 : x));
                 }
                 else
+                {
                     _targetSectionId = value;
+                }
+
                 _section.SignalPropertyChange();
-            } 
+            }
         }
         [Category("Relocation Command"), Description("The ID of the target module."), TypeConverter(typeof(DropDownListRELModuleIDs))]
         public string TargetModuleID
         {
-            get { return RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : _moduleID.ToString(); }
+            get => RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : _moduleID.ToString();
             set
             {
-                uint id = 0;
-                if (!uint.TryParse(value, out id) && RELNode._idNames.ContainsValue(value))
-                    id = (uint)RELNode._idNames.Keys[RELNode._idNames.IndexOfValue(value)];
+                if (!uint.TryParse(value, out uint id) && RELNode._idNames.ContainsValue(value))
+                {
+                    id = RELNode._idNames.Keys[RELNode._idNames.IndexOfValue(value)];
+                }
 
                 _moduleID = id;
                 _section.SignalPropertyChange();
@@ -100,7 +103,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void SetTargetRelocation(RelocationTarget e)
         {
             if (e == null)
+            {
                 return;
+            }
 
             _addend = (uint)e._index * 4;
         }
