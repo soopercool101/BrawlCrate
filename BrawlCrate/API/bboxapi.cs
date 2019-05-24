@@ -174,9 +174,30 @@ namespace BrawlCrate.API
                 var wrapper = (BaseWrapper)resourceTree.SelectedNode;
                 var type = wrapper.GetType();
 
-                if (ContextMenuHooks.ContainsKey(type))
-                    wrapper.ContextMenuStrip.Items.AddRange(ContextMenuHooks[type]);
-
+                if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
+                {
+                    if(wrapper.ContextMenuStrip.Items.Count == 0 || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
+                    {
+                        if(wrapper.ContextMenuStrip.Items.Count != 0)
+                        {
+                            wrapper.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+                        }
+                        wrapper.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Plugins"));
+                    }
+                    (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.AddRange(ContextMenuHooks[type]);
+                }
+                else if(!ContextMenuHooks.ContainsKey(type) || (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length <= 0))
+                {
+                    while(wrapper.ContextMenuStrip.Items.Count != 0 && (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins"))
+                    {
+                        if(wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripMenuItem)
+                        {
+                            while((wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.Count > 0)
+                                (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.RemoveAt(0);
+                        }
+                        wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
+                    }
+                }
             }
         }
 
