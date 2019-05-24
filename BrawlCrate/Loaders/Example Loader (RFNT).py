@@ -35,4 +35,4 @@ node = RFNTNode()
 bboxapi.AddLoader(node)
 
 # Add a button to our right click menu
-bboxapi.AddContextMenuItem(ARCWrapper, ToolStripMenuItem("Do Something", None, doSomething_handler))
+#bboxapi.AddContextMenuItem(ARCWrapper, ToolStripMenuItem("Do Something", None, doSomething_handler))
