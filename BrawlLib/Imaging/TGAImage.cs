@@ -67,7 +67,7 @@ namespace BrawlLib.Imaging
 
         public uint extensionAreaOffset;
         public uint developerDirectoryOffset;
-        private readonly byte signature[18]; //"TRUEVISION-XFILE.\0"
+        private fixed byte signature[18]; //"TRUEVISION-XFILE.\0"
 
         public TGAFooter(uint extOffset, uint devOffset)
         {

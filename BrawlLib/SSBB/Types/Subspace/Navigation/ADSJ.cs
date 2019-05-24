@@ -28,13 +28,13 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct ADSJEntry
     {
         public const int Size = 0x2C;
-        private readonly byte _doorID[4];
+        private fixed byte _doorID[4];
         public byte _unk0;
         public byte _unk1;
         public byte _unk2;
         public byte _unk3;
-        private readonly byte _sendingID[4];
-        private readonly sbyte _jumpBone[0x20];
+        private fixed byte _sendingID[4];
+        private fixed sbyte _jumpBone[0x20];
 
         public string DoorID
         {

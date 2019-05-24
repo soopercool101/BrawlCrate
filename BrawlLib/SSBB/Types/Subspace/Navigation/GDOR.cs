@@ -36,13 +36,13 @@ namespace BrawlLib.SSBBTypes
 
         public int _pad1;
         public bint _unkInt;
-        private readonly byte _pad2[20];
+        private fixed byte _pad2[20];
 
         // Most likely the z, y, and z override coordinates for the door.
         public bfloat _xOverride;
         public bfloat _yOverride;
         public bfloat _zOverride;
-        private readonly byte _stageID[3];
+        private fixed byte _stageID[3];
         public byte _doorIndex;
 
         // Specifies model index to use, among other unknown things.
@@ -56,19 +56,19 @@ namespace BrawlLib.SSBBTypes
         public bfloat _unkFloat1;
 
         // Triggers and padding
-        private readonly byte _trigger0[4];
+        private fixed byte _trigger0[4];
         public byte _unk7;
         public byte _unk8;
         public byte _unk9;
         public byte _unk10;
         public uint _nulls;
-        private readonly byte _trigger1[4];
-        private readonly byte _trigger2[4];
+        private fixed byte _trigger1[4];
+        private fixed byte _trigger2[4];
 
         // Brawl's SSE files use float values of 1.0 (3f800000) as padding to ensure
         // commonly interfacing files will match. The choice to use a float is unknown,
         // however it could have been a debugging failsafe.
-        private readonly byte _pad4[60];
+        private fixed byte _pad4[60];
 
         public string DoorID
         {

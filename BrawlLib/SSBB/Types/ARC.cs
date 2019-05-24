@@ -14,7 +14,7 @@ namespace BrawlLib.SSBBTypes
         public bushort _numFiles;
         private readonly uint _unk1;
         private readonly uint _unk2;
-        private readonly sbyte _name[48];
+        private fixed sbyte _name[48];
 
         internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 

@@ -13,7 +13,7 @@ namespace System
         public static readonly Matrix Identity = ScaleMatrix(1.0f, 1.0f, 1.0f);
 
         [NonSerialized]
-        private readonly float _values[16];
+        private fixed float _values[16];
 
         public Matrix(SerializationInfo info, StreamingContext ctxt)
         {

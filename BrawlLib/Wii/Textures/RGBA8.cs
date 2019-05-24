@@ -53,7 +53,7 @@ namespace BrawlLib.Wii.Textures
     {
         public byte A;
         public byte R;
-        private readonly byte _padding[30];
+        private fixed byte _padding[30];
         public byte G;
         public byte B;
 

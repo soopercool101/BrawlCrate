@@ -31,9 +31,9 @@ namespace BrawlLib.SSBBTypes
         public bfloat _unkFloat0;
         public bfloat _unkFloat1;
         public int _pad2;
-        private readonly sbyte _name[32];
-        private readonly byte _Trigger[4];
-        private readonly int _pad4[16];
+        private fixed sbyte _name[32];
+        private fixed byte _Trigger[4];
+        private fixed int _pad4[16];
 
         public GSNDEntry(float UnkFloat0, float UnkFloat1, string trigger, string name)
         {

@@ -32,7 +32,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct BGMGEntry
     {
         public const int Size = 0x10;
-        private readonly byte _stageID[4];
+        private fixed byte _stageID[4];
         public bint _infoIndex;
         public bint _volume;
         public int _pad;
