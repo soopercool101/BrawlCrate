@@ -75,7 +75,7 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <DefineConstants />
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -117,9 +117,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <Compile Update="UI\TreeViewMS.cs">
       <SubType>Component</SubType>
     </Compile>
-    <None Include="NodeWrappers\BMDWrapper.cs" />
-    <None Include="NodeWrappers\RARCWrapper.cs" />
-    <None Include="NodeWrappers\FMDLWrapper.cs" />
     <None Include="NodeWrappers\MDefWrapper.cs" />
     <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -370,14 +367,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrawlLib\BrawlLib.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="NodeWrappers\BMDWrapper.cs" />
-    <Compile Remove="NodeWrappers\RARCWrapper.cs" />
-    <Compile Remove="NodeWrappers\FMDLWrapper.cs" />
-    <Compile Remove="NodeWrappers\MDefWrapper.cs" />
-    <Compile Remove="NodeWrappers\ItmFreqWrapper.cs" />
-    <Compile Remove="UI\Model Previewer\ModelEditControl\BRRESNodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Loaders\Example Loader %28RFNT%29.py">

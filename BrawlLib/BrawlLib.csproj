@@ -59,7 +59,7 @@
     <DefineConstants />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DefineConstants />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,11 +88,6 @@
     <PostBuildEvent />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="WiiU\**" />
-    <EmbeddedResource Remove="WiiU\**" />
-    <None Remove="WiiU\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="OpenTK" Version="3.0.1" />
     <PackageReference Include="System.DirectoryServices" Version="4.5.0" />
   </ItemGroup>
@@ -120,34 +115,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="SSBB\ResourceNodes\Archives\RARCNode.cs" />
-    <None Include="SSBB\ResourceNodes\BMD\BMDBoneNode.cs" />
-    <None Include="SSBB\ResourceNodes\BMD\BMDGroupNode.cs" />
-    <None Include="SSBB\ResourceNodes\BMD\BMDMaterialRefNode.cs" />
-    <None Include="SSBB\ResourceNodes\BMD\BMDNode.cs" />
-    <None Include="SSBB\ResourceNodes\BMD\BMDObjectNode.cs" />
-    <None Include="SSBB\ResourceNodes\BMD\BMDMaterialNode.cs" />
-    <None Include="SSBB\ResourceNodes\Archives\BFRESNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLBoneNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLGroupNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLBufferNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLMaterialNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLObjectNode.cs" />
-    <None Include="SSBB\ResourceNodes\FMDL\FMDLUniformNode.cs" />
     <None Include="SSBB\ResourceNodes\Graphics\FTEXNode.cs" />
-    <None Include="SSBB\ResourceNodes\Archives\SARCNode.cs" />
-    <None Include="SSBB\Types\Wii U\BFRES.cs" />
-    <None Include="SSBB\Types\Wii U\Embedded.cs" />
-    <None Include="SSBB\Types\Wii U\FMDL.cs" />
-    <None Include="SSBB\ResourceNodes\J3DNode.cs" />
     <None Include="SSBB\ResourceNodes\Graphics\BTINode.cs" />
-    <None Include="SSBB\Types\BMD.cs" />
-    <None Include="SSBB\Types\BTI.cs" />
-    <None Include="SSBB\Types\RARC.cs" />
-    <None Include="SSBB\Types\Wii U\FSAR.cs" />
-    <None Include="SSBB\Types\Wii U\FTEX.cs" />
-    <None Include="SSBB\Types\Wii U\SARC.cs" />
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
@@ -699,7 +668,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="System\Windows\Controls\Hex Editor\HexBox.bmp" />
     <Content Include="BrawlLib.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -709,33 +677,14 @@
     <Compile Remove="System\ComponentModel\DelegatePropertyDescriptor.cs" />
     <Compile Remove="Modeling\XMLExporter.cs" />
     <Compile Remove="SSBB\ResourceNodes\Archives\RARCNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\BMD\BMDBoneNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\BMD\BMDGroupNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\BMD\BMDMaterialRefNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\BMD\BMDNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\BMD\BMDObjectNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\BMD\BMDMaterialNode.cs" />
     <Compile Remove="SSBB\ResourceNodes\Archives\BFRESNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLBoneNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLGroupNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLBufferNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLMaterialNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLObjectNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\FMDL\FMDLUniformNode.cs" />
     <Compile Remove="SSBB\ResourceNodes\Graphics\FTEXNode.cs" />
     <Compile Remove="SSBB\ResourceNodes\Archives\SARCNode.cs" />
-    <Compile Remove="SSBB\Types\Wii U\BFRES.cs" />
-    <Compile Remove="SSBB\Types\Wii U\Embedded.cs" />
-    <Compile Remove="SSBB\Types\Wii U\FMDL.cs" />
     <Compile Remove="SSBB\ResourceNodes\J3DNode.cs" />
     <Compile Remove="SSBB\ResourceNodes\Graphics\BTINode.cs" />
     <Compile Remove="SSBB\Types\BMD.cs" />
     <Compile Remove="SSBB\Types\BTI.cs" />
     <Compile Remove="SSBB\Types\RARC.cs" />
-    <Compile Remove="SSBB\Types\Wii U\FSAR.cs" />
-    <Compile Remove="SSBB\Types\Wii U\FTEX.cs" />
-    <Compile Remove="SSBB\Types\Wii U\SARC.cs" />
     <Compile Remove="SSBB\ResourceNodes\Modules\Relocation.cs" />
     <Compile Remove="SSBB\Types\RLYT.cs" />
     <Compile Remove="System\PowerPCAssembly\PPCData.cs" />
