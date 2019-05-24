@@ -417,12 +417,12 @@ namespace BrawlLib.Modeling
             //Create primitives
             if (faces > 0)
             {
-                manager._triangles = new GLPrimitive(faces * 3, OpenTK.Graphics.OpenGL.BeginMode.Triangles);
+                manager._triangles = new GLPrimitive(faces * 3, OpenTK.Graphics.OpenGL.PrimitiveType.Triangles);
                 pTriarr = manager._triangles._indices;
             }
             if (lines > 0)
             {
-                manager._lines = new GLPrimitive(lines * 2, OpenTK.Graphics.OpenGL.BeginMode.Lines);
+                manager._lines = new GLPrimitive(lines * 2, OpenTK.Graphics.OpenGL.PrimitiveType.Lines);
                 pLinarr = manager._lines._indices;
             }
 

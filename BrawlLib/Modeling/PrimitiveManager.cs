@@ -120,9 +120,9 @@ namespace BrawlLib.Modeling
                 _pointCount = _pointCount,
                 _faceCount = _faceCount,
                 _faceData = new UnsafeBuffer[12],
-                _triangles = _triangles == null ? null : new GLPrimitive(_triangles._indices.Length, BeginMode.Triangles),
-                _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, BeginMode.Lines),
-                _points = _points == null ? null : new GLPrimitive(_points._indices.Length, BeginMode.Points),
+                _triangles = _triangles == null ? null : new GLPrimitive(_triangles._indices.Length, PrimitiveType.Triangles),
+                _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, PrimitiveType.Lines),
+                _points = _points == null ? null : new GLPrimitive(_points._indices.Length, PrimitiveType.Points),
                 _dirty = new bool[] { true, true, true, true, true, true, true, true, true, true, true, true },
                 _primGroups = _primGroups,
             };
@@ -609,9 +609,9 @@ namespace BrawlLib.Modeling
 
         private void CreateGLPrimitives(int triCount, int lineCount, int pointCount)
         {
-            _triangles = triCount > 0 ? new GLPrimitive(triCount, BeginMode.Triangles) : null;
-            _lines = lineCount > 0 ? new GLPrimitive(lineCount, BeginMode.Lines) : null;
-            _points = pointCount > 0 ? new GLPrimitive(pointCount, BeginMode.Points) : null;
+            _triangles = triCount > 0 ? new GLPrimitive(triCount, PrimitiveType.Triangles) : null;
+            _lines = lineCount > 0 ? new GLPrimitive(lineCount, PrimitiveType.Lines) : null;
+            _points = pointCount > 0 ? new GLPrimitive(pointCount, PrimitiveType.Points) : null;
         }
 
         private void ExtractIndices(byte* pData, int stride, ref uint p3, ref uint p2, ref uint p1, uint length = 0)
@@ -2115,7 +2115,7 @@ namespace BrawlLib.Modeling
                 float d = camera.GetPoint().DistanceTo(v.WeightedPosition);
                 GL.PointSize(d <= 0 ? 1 : (3000.0f / d).Clamp(1.0f, depthPass ? 8.0f : 5.0f) * (depthPass ? 1.5f : 1.2f));
 
-                GL.Begin(BeginMode.Points);
+                GL.Begin(PrimitiveType.Points);
                 GL.Vertex3(v.WeightedPosition._x, v.WeightedPosition._y, v.WeightedPosition._z);
                 GL.End();
             }
@@ -2151,7 +2151,7 @@ namespace BrawlLib.Modeling
                 Matrix m = Matrix.TransformMatrix(new Vector3(NormalLength), new Vector3(), n.WeightedPosition);
                 GL.MultMatrix((float*)&m);
 
-                GL.Begin(BeginMode.Lines);
+                GL.Begin(PrimitiveType.Lines);
                 GL.Vertex3(0, 0, 0);
                 GL.Vertex3(w._x, w._y, w._z);
                 GL.End();
@@ -2418,10 +2418,10 @@ namespace BrawlLib.Modeling
 
     public unsafe class GLPrimitive
     {
-        public BeginMode _type;
+        public PrimitiveType _type;
         public uint[] _indices;
 
-        public GLPrimitive(int elements, BeginMode type)
+        public GLPrimitive(int elements, PrimitiveType type)
         {
             _type = type;
             _indices = new uint[elements];

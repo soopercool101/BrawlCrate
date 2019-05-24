@@ -903,7 +903,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             /*if (p.HasUnknownFlag) { GL.Color4(0.0f, 0.0f, 0.0f, 0.8f); }
             else if (p.IsUnknownStageBox) { GL.Color4(1.0f, 1.0f, 1.0f, 0.6f); }*/
 
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);
             GL.Vertex3(r._x, r._y, -10.0f);
@@ -927,7 +927,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             else if (p._type == CollisionPlaneType.None && p.IsFallThrough && lev == 0) { GL.Color4(0.65f, 0.65f, 0.35f, 0.6f); }
             else if (p._type != CollisionPlaneType.None && p.IsFallThrough && lev == 0) { GL.Color4(0.5f, 0.5f, 0.0f, 0.8f); }
 
-            GL.Begin(BeginMode.Lines);
+            GL.Begin(PrimitiveType.Lines);
             GL.Vertex3(l._x, l._y, 10.0f);
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.Vertex3(l._x, l._y, -10.0f);

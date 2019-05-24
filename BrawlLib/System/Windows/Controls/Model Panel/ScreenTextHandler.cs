@@ -115,7 +115,7 @@ namespace System.Windows.Forms
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, _bitmap.Width, _bitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
             _bitmap.UnlockBits(data);
 
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
 
             GL.TexCoord2(0.0f, 0.0f);
             GL.Vertex2(0.0f, 0.0f);
