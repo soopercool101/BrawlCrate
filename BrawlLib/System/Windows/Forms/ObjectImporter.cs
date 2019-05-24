@@ -450,7 +450,7 @@ namespace System.Windows.Forms
             ClientSize = new System.Drawing.Size(429, 166);
             Controls.Add(modelPanel1);
             Controls.Add(panel1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = BrawlLib.Properties.Resources.Icon;
             MinimumSize = new System.Drawing.Size(242, 204);
             Name = "ObjectImporter";
             ShowIcon = false;

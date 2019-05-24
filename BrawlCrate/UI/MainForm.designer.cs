@@ -669,7 +669,7 @@ namespace BrawlCrate
             this.ClientSize = new System.Drawing.Size(617, 411);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = BrawlLib.Properties.Resources.Icon;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);

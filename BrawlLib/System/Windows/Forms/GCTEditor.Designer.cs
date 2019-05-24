@@ -493,7 +493,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel3);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = BrawlLib.Properties.Resources.Icon;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GCTEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

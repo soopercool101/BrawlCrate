@@ -39,7 +39,7 @@ namespace BrawlCrate
             BackColor = System.Drawing.Color.PowderBlue;
             ClientSize = new System.Drawing.Size(639, 528);
             Controls.Add(modelEditControl1);
-            Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            Icon = BrawlLib.Properties.Resources.Icon;
             Name = "ModelForm";
             FormClosing += new System.Windows.Forms.FormClosingEventHandler(ModelForm_FormClosing);
             ResumeLayout(false);

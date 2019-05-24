@@ -34,7 +34,7 @@
             // InterpolationForm
             // 
             this.ClientSize = new System.Drawing.Size(574, 261);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = BrawlLib.Properties.Resources.Icon;
             this.MinimumSize = new System.Drawing.Size(571, 266);
             this.Name = "InterpolationForm";
             this.Text = "Interpolation Editor";

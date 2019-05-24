@@ -84,7 +84,7 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>BrawlBox.ico</ApplicationIcon>
+    <ApplicationIcon>BrawlCrate.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BrawlCrate.Program</StartupObject>

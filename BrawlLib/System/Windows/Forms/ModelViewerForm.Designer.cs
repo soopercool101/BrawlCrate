@@ -47,7 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 439);
             this.Controls.Add(this.modelPanel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = BrawlLib.Properties.Resources.Icon;
             this.Name = "ModelViewerForm";
             this.Text = "Model Viewer";
             this.ResumeLayout(false);
