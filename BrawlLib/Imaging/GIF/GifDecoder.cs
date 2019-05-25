@@ -678,9 +678,9 @@ namespace Gif.Components
                 int j = 0;
                 while (i < ncolors)
                 {
-                    int r = c[j++] & 0xff;
-                    int g = c[j++] & 0xff;
-                    int b = c[j++] & 0xff;
+                    uint r = (uint)(c[j++] & 0xff);
+                    uint g = (uint)(c[j++] & 0xff);
+                    uint b = (uint)(c[j++] & 0xff);
                     tab[i++] = (int)(0xff000000 | (r << 16) | (g << 8) | b);
                 }
             }

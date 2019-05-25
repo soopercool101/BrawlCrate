@@ -87,6 +87,8 @@ namespace BrawlLib.Wii.Textures
         public static bool operator ==(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data._data == p2._data._data; }
         public static bool operator !=(wRGB565Pixel p1, wRGB565Pixel p2) { return p1._data._data != p2._data._data; }
 
+        public override bool Equals(Object o) { return (o is wRGB565Pixel && (wRGB565Pixel)o == this); }
+        public override int GetHashCode() { return base.GetHashCode(); }
 
         public static explicit operator ARGBPixel(wRGB565Pixel p)
         {

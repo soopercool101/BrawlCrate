@@ -30,7 +30,7 @@ namespace System.Windows.Forms
             ControlPaint.DrawBorder(e.Graphics, ClientRectangle, _borderColor, ButtonBorderStyle.Solid);
         }
 
-        public event EventHandler TextChanged;
+        public new event EventHandler TextChanged;
         private void textBox_TextChanged(object sender, EventArgs e)
         {
             if (TextChanged != null)

@@ -1469,7 +1469,7 @@ namespace BrawlLib.Wii.Graphics
         private static string HandleProblem(string message)
         {
 #if DEBUG
-            MessageBox.Show(_material.RootNode._mainForm, message, String.Format("Handled error compiling {0} shader", _vertex ? "vertex" : "fragment"), MessageBoxButtons.OK);
+            System.Windows.Forms.MessageBox.Show(_material.RootNode._mainForm, message, String.Format("Handled error compiling {0} shader", _vertex ? "vertex" : "fragment"), System.Windows.Forms.MessageBoxButtons.OK);
 #endif
             return "Error";
         }
@@ -1482,7 +1482,7 @@ namespace BrawlLib.Wii.Graphics
 #if DEBUG
             int status;
             GL.GetShader(shaderHandle, OpenTK.Graphics.OpenGL.ShaderParameter.CompileStatus, out status);
-            if (status == 0 || AlwaysOutputShader || Control.ModifierKeys == (Keys.Control))
+            if (status == 0 || AlwaysOutputShader || System.Windows.Forms.Control.ModifierKeys == (System.Windows.Forms.Keys.Control))
             {
                 string info;
                 GL.GetShaderInfoLog(shaderHandle, out info);

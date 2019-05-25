@@ -15,7 +15,7 @@ namespace System.Audio
             _driver = driver;
         }
 
-        internal static AudioDevice[] PlaybackDevices
+        internal static new AudioDevice[] PlaybackDevices
         {
             get
             {
@@ -26,7 +26,7 @@ namespace System.Audio
                 return list.ToArray();
             }
         }
-        internal static AudioDevice DefaultPlaybackDevice
+        internal static new AudioDevice DefaultPlaybackDevice
         {
             get
             {
@@ -40,7 +40,7 @@ namespace System.Audio
                 return dev;
             }
         }
-        public static AudioDevice DefaultVoicePlaybackDevice
+        public static new AudioDevice DefaultVoicePlaybackDevice
         {
             get
             {
