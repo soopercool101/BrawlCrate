@@ -9,7 +9,6 @@ namespace System.Windows.Forms
         private CHR0Node[] _nodes;
         private CHR0EntryNode[] _entries;
         private EditAllCHR0Editor editAllCHR0Editor1;
-        private readonly CHR0EntryNode _copyNode = null;
 
         public EditAllDialog() { InitializeComponent(); }
 

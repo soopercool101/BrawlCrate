@@ -19,7 +19,7 @@ namespace BrawlLib.SSBBTypes
 
         private int _size;
         private readonly SakuraiArchiveNode _rootNode;
-        private readonly bool _rebuilding;
+        private readonly bool _rebuilding = false;
         private bool _calculatingSize;
         private CompactStringTable _referenceStringTable;
 

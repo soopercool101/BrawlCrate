@@ -319,7 +319,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceType => ResourceType.Unknown;
 
         private int _id;
-        private readonly Item _item;
+        //private readonly Item _item;
         [Category("Item")]
         [DisplayName("Item ID")]
         [Description("The ID of the item to spawn.")]

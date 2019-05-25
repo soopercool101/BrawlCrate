@@ -89,7 +89,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private uint _cachedBlock = uint.MaxValue;
         private PartitionInfo _info;
         private byte[] _titleKey, _iv;
-        private ISOPartitionHeader _header;
+        //private ISOPartitionHeader _header;
 
         [Category("TMD")]
         public RSAType RSA => _rsaType;

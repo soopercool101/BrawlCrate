@@ -11,8 +11,6 @@ namespace System.Windows.Forms
     public class WeightEditor : UserControl
     {
         #region Designer
-
-        private readonly System.ComponentModel.IContainer components;
         private void InitializeComponent()
         {
             btnSetWeight = new System.Windows.Forms.Button();
@@ -241,7 +239,7 @@ namespace System.Windows.Forms
         #endregion
 
         public WeightEditor() { InitializeComponent(); }
-        private readonly BindingList<BoneWeight> _targetWeights;
+        private readonly BindingList<BoneWeight> _targetWeights = null;
 
         public IBoneNode[] Bones => _targetWeights.Select(x => x.Bone).ToArray();
         public float[] Weights => _targetWeights.Select(x => x.Weight).ToArray();
@@ -270,7 +268,6 @@ namespace System.Windows.Forms
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IBoneNode SelectedBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
 
-        private readonly Vertex3 _vertex = null;
         private Button btnLock;
         private Button btnPaste;
         private Button btnCopy;
@@ -824,8 +821,10 @@ namespace System.Windows.Forms
 
         private void splitter2_MouseMove(object sender, MouseEventArgs e)
         {
-            //if (_resizing)
-            //    _mainWindow.AnimEditors.Height += o - e.Y; 
+            if (_resizing)
+            {
+                //    _mainWindow.AnimEditors.Height += o - e.Y; 
+            }
         }
 
         private void splitter2_MouseUp(object sender, MouseEventArgs e)

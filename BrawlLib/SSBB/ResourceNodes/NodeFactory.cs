@@ -77,10 +77,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.Initialize(parent, source);
                         }
                     }
-                    else if (UseRawDataNode)
-                    {
-                        (node = new RawDataNode(Path.GetFileNameWithoutExtension(path))).Initialize(parent, source);
-                    }
+                    //else if (UseRawDataNode)
+                    //{
+                    //    (node = new RawDataNode(Path.GetFileNameWithoutExtension(path))).Initialize(parent, source);
+                    //}
                 }
             }
             finally

@@ -9,8 +9,6 @@ namespace System.Windows.Forms
     public class VertexEditor : UserControl
     {
         #region Designer
-
-        private readonly System.ComponentModel.IContainer components;
         private void InitializeComponent()
         {
             label3 = new System.Windows.Forms.Label();
@@ -346,7 +344,6 @@ namespace System.Windows.Forms
         public NumericInputBox numPosY;
         private Label label1;
         public NumericInputBox numPosX;
-        private readonly int _uvIndex = 0;
         private int _colorIndex = 0;
         private GroupBox groupBox1;
         private GroupBox groupBox2;

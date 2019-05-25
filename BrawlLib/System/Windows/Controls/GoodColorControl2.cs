@@ -193,7 +193,6 @@ namespace System.Windows.Forms
         public GoodColorControl2() { InitializeComponent(); }
 
         public event EventHandler Closed;
-        public event ColorChanged ColorChanged;
 
         public DialogResult DialogResult;
 

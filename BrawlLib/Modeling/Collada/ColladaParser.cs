@@ -1377,7 +1377,7 @@ namespace BrawlLib.Modeling
             internal List<SourceEntry> _sources = new List<SourceEntry>();
             internal List<PrimitiveEntry> _primitives = new List<PrimitiveEntry>();
 
-            internal int _faces, _lines;
+            internal int _faces = 0, _lines = 0;
 
             internal string _verticesId;
             internal InputEntry _verticesInput;

@@ -455,7 +455,7 @@ namespace BrawlLib.Modeling
             HashSet<Vector3> list = new HashSet<Vector3>();
             for (int i = 0; i < p._pointCount; i++)
             {
-                if (pIndex[i] != null && p._vertices.Count > pIndex[i] && pData[i] != null)
+                if (p._vertices.Count > pIndex[i] && pData[i] != null)
                 {
                     list.Add(p._vertices[pIndex[i]].GetMatrix().GetRotationMatrix() * pData[i]);
                 }

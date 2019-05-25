@@ -1118,7 +1118,7 @@ namespace System.Windows.Forms
 
         private void chkConstructor_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating || SelectedRelocationIndex == null)
+            if (_updating)
             {
                 return;
             }
@@ -1146,7 +1146,7 @@ namespace System.Windows.Forms
 
         private void chkDestructor_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating || SelectedRelocationIndex == null)
+            if (_updating)
             {
                 return;
             }
@@ -1174,7 +1174,7 @@ namespace System.Windows.Forms
 
         private void chkUnresolved_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating || SelectedRelocationIndex == null)
+            if (_updating)
             {
                 return;
             }

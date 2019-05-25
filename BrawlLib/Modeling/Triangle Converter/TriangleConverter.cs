@@ -11,10 +11,6 @@ namespace BrawlLib.Modeling.Triangle_Converter
         public uint _minStripLen;
         public bool _backwardSearch;
         public bool _pushCacheHits;
-        private readonly bool useStrips;
-        private readonly uint cacheSize;
-        private readonly uint minStripLen;
-        private readonly bool pushCacheHits;
 
         public TriangleConverter(bool useStrips, uint cacheSize, uint minStripLen, bool pushCacheHits)
         {

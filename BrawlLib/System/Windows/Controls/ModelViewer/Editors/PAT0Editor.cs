@@ -124,7 +124,6 @@ namespace System.Windows.Forms
         #endregion
 
         private Label label1;
-        private readonly System.ComponentModel.IContainer components;
         private StringInputComboBox texBox;
         private StringInputComboBox pltBox;
         private Label label2;
@@ -134,7 +133,6 @@ namespace System.Windows.Forms
         private Button btnCut;
 
         public ModelEditorBase _mainWindow;
-        private readonly StringInputComboBox texture, palette;
 
         public PAT0Editor() { InitializeComponent(); }
 

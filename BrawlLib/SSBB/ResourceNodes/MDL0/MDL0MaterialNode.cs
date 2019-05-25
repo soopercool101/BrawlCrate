@@ -1786,7 +1786,7 @@ For example, if the shader has two stages but this number is 1, the second stage
 
 #if DEBUG
                     int status;
-                    GL.GetProgram(_programHandle, ProgramParameter.LinkStatus, out status);
+                    GL.GetProgram(_programHandle, GetProgramParameterName.LinkStatus, out status);
                     if (status == 0)
                     {
                         string log = GL.GetProgramInfoLog(_programHandle);

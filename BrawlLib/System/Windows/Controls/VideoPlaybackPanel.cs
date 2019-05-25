@@ -12,7 +12,6 @@ namespace System.Windows.Forms
         private Button btnPlay;
         private Button btnRewind;
         private Label lblProgress;
-        private readonly System.ComponentModel.IContainer components;
         private PreviewPanel previewPanel1;
         private CheckBox chkLoop;
 

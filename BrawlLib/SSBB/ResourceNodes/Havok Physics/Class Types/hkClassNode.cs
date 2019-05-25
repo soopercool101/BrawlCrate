@@ -147,15 +147,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     current = current.Parent;
                 }
-                else if (!string.IsNullOrEmpty(cNode.ParentClass))
-                {
-                    current = null;
-                    HavokClassNode parent = HavokNode.GetClassNode(cNode.ParentClass);
-                    if (parent is hkClassNode)
-                    {
-                        current = parent;
-                    }
-                }
+                //else if (!string.IsNullOrEmpty(cNode.ParentClass))
+                //{
+                //    current = null;
+                //    HavokClassNode parent = HavokNode.GetClassNode(cNode.ParentClass);
+                //    if (parent is hkClassNode)
+                //    {
+                //        current = parent;
+                //    }
+                //}
             }
 
             //Start with the eldest class, added last

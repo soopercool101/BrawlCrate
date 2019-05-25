@@ -10,10 +10,11 @@ namespace System.IO
         internal byte* _base, _ptr, _ceil;
         private readonly int _length;
         private int _position;
-        private readonly int _depth;
+        //private readonly int _depth;
 
         //private byte[] _buffer = new byte[512];
-        internal bool _inTag, _inString;
+        internal bool _inTag;
+        internal bool _inString = false;
         //private string _nameBuffer = new string(' ', _nameMax);
         //private string _valueBuffer = new string(' ', _valueMax);
 

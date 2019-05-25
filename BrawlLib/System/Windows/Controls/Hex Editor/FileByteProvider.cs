@@ -213,7 +213,6 @@ namespace Be.Windows.Forms
             {
                 _writes.Add(index, value);
             }
-
             OnChanged(EventArgs.Empty);
         }
 
@@ -222,6 +221,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public void DeleteBytes(long index, long length)
         {
+            LengthChanged(this, EventArgs.Empty);
             throw new NotSupportedException("FileByteProvider.DeleteBytes");
         }
 
@@ -230,6 +230,7 @@ namespace Be.Windows.Forms
         /// </summary>
         public void InsertBytes(long index, byte[] bs)
         {
+            LengthChanged(this, EventArgs.Empty);
             throw new NotSupportedException("FileByteProvider.InsertBytes");
         }
 

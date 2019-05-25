@@ -7,8 +7,6 @@ namespace System.Windows.Forms
     public class CLR0Editor : UserControl
     {
         #region Designer
-
-        private readonly System.ComponentModel.IContainer components;
         private void InitializeComponent()
         {
             label1 = new System.Windows.Forms.Label();
