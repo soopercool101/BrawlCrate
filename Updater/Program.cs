@@ -33,13 +33,6 @@ namespace Net
                 }
 
                 return mainRepo;
-                string temp = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Branch")[1];
-                if (temp == null || temp == "")
-                {
-                    throw (new ArgumentNullException());
-                }
-
-                return temp;
             }
             catch
             {
@@ -57,13 +50,6 @@ namespace Net
                 }
 
                 return mainBranch;
-                string temp = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Branch")[0];
-                if (temp == null || temp == "")
-                {
-                    throw (new ArgumentNullException());
-                }
-
-                return temp;
             }
             catch
             {
