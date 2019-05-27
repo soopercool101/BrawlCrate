@@ -16,7 +16,7 @@ namespace BrawlLib.OpenGL
         public IWindowInfo WindowInfo => _winInfo;
 
         //These provide a way to manage which context is in use to avoid errors
-        public static List<TKContext> BoundContexts => _boundContexts == null ? _boundContexts = new List<TKContext>() : _boundContexts;
+        public static List<TKContext> BoundContexts => _boundContexts ?? (_boundContexts = new List<TKContext>());
         public static List<TKContext> _boundContexts;
         public static TKContext CurrentContext = null;
 

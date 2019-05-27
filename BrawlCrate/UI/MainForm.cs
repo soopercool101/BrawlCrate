@@ -20,13 +20,13 @@ namespace BrawlCrate
     public partial class MainForm : Form
     {
         private static MainForm _instance;
-        public static MainForm Instance => _instance == null ? _instance = new MainForm() : _instance;
+        public static MainForm Instance => _instance ?? (_instance = new MainForm());
 
         private BaseWrapper _root;
         public BaseWrapper RootNode => _root;
 
         private SettingsDialog _settings;
-        private SettingsDialog Settings => _settings == null ? _settings = new SettingsDialog() : _settings;
+        private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
 
         private readonly RecentFileHandler RecentFileHandler;
 
@@ -121,7 +121,7 @@ namespace BrawlCrate
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
                         Arguments = string.Format("-bu {0} {1} {2} {3} \"{4}\"",
-                            Program.TagName, manual ? "1" : "0", _docUpdates ? "1" : "0", automatic ? "1" : "0", Program.RootPath == null ? "<null>" : Program.RootPath),
+                            Program.TagName, manual ? "1" : "0", _docUpdates ? "1" : "0", automatic ? "1" : "0", Program.RootPath ?? "<null>"),
                     });
                 }
                 else

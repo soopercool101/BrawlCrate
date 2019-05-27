@@ -100,7 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private List<BoneWeight> _weightRef;
         [Browsable(false)]
-        public List<BoneWeight> Weights => _weightRef == null ? _weightRef = new List<BoneWeight> { new BoneWeight(this, 1.0f) } : _weightRef;
+        public List<BoneWeight> Weights => _weightRef ?? (_weightRef = new List<BoneWeight> { new BoneWeight(this, 1.0f) });
 
         [Browsable(false)]
         public List<IMatrixNodeUser> Users { get => _users; set => _users = value; }

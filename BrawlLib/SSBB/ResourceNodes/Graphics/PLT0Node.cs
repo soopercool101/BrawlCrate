@@ -25,7 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public ColorPalette Palette
         {
-            get => _palette == null ? _palette = TextureConverter.DecodePalette(Header1) : _palette;
+            get => _palette ?? (_palette = TextureConverter.DecodePalette(Header1));
             set { _palette = value; SignalPropertyChange(); }
         }
         [Category("G3D Palette")]

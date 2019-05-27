@@ -41,7 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private Vector3[] _normals;
         public Vector3[] Normals
         {
-            get => _normals == null ? _normals = VertexCodec.ExtractNormals(Header) : _normals;
+            get => _normals ?? (_normals = VertexCodec.ExtractNormals(Header));
             set
             {
                 _normals = value;

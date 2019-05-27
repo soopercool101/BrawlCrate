@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public Vector3[] _vertices;
         public Vector3[] Vertices
         {
-            get => _vertices == null ? _vertices = VertexCodec.ExtractVertices(Header) : _vertices;
+            get => _vertices ?? (_vertices = VertexCodec.ExtractVertices(Header));
             set
             {
                 _vertices = value;

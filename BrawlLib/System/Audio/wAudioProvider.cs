@@ -10,7 +10,7 @@ namespace System.Audio
 
         internal wAudioProvider(AudioDevice device)
         {
-            _device = device == null ? wAudioDevice.DefaultPlaybackDevice : device;
+            _device = device ?? wAudioDevice.DefaultPlaybackDevice;
 
             Guid guid = ((wAudioDevice)_device)._guid;
             Win32.DirectSound.DirectSoundCreate8(&guid, out _ds8, IntPtr.Zero);

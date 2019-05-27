@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private Vector2[] _points;
         public Vector2[] Points
         {
-            get => _points == null ? _points = VertexCodec.ExtractUVs(Header) : _points;
+            get => _points ?? (_points = VertexCodec.ExtractUVs(Header));
             set
             {
                 _points = value;

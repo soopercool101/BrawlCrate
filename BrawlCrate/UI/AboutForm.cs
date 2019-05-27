@@ -7,7 +7,7 @@ namespace BrawlCrate
     public partial class AboutForm : Form
     {
         private static AboutForm _instance;
-        public static AboutForm Instance => _instance == null ? _instance = new AboutForm() : _instance;
+        public static AboutForm Instance => _instance ?? (_instance = new AboutForm());
 
         public AboutForm()
         {

@@ -1243,7 +1243,7 @@ namespace Net
                 GitHubCommit result;
                 DateTimeOffset commitDate;
                 branch = await github.Repository.Branch.Get("soopercool101", "BrawlCrate", mainBranch);
-                result = await github.Repository.Commit.Get("soopercool101", "BrawlCrate", commitid == null ? branch.Commit.Sha : commitid);
+                result = await github.Repository.Commit.Get("soopercool101", "BrawlCrate", commitid ?? branch.Commit.Sha);
                 commitDate = result.Commit.Author.Date;
                 currentBranch = mainBranch;
                 commitDate = commitDate.ToUniversalTime();

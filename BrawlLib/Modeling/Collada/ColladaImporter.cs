@@ -70,7 +70,7 @@ namespace BrawlLib.Modeling
                     {
                         string name = img._path != null ?
                             Path.GetFileNameWithoutExtension(img._path) :
-                            img._name != null ? img._name : img._id;
+                            img._name ?? img._id;
 
                         switch (type)
                         {
@@ -281,7 +281,7 @@ namespace BrawlLib.Modeling
                                 matNode._parent = m._matGroup;
                                 m._matList.Add(matNode);
 
-                                matNode._name = mat._name != null ? mat._name : mat._id;
+                                matNode._name = mat._name ?? mat._id;
                                 matNode.ShaderNode = shader as MDL0ShaderNode;
 
                                 mat._node = matNode;
@@ -348,7 +348,7 @@ namespace BrawlLib.Modeling
                         NodeEntry node = obj._node;
                         string w = obj._weighted ? "" : "un";
                         string w2 = obj._weighted ? "\nOne or more vertices may not be weighted correctly." : "";
-                        string n = node._name != null ? node._name : node._id;
+                        string n = node._name ?? node._id;
 
                         Error = string.Format("There was a problem decoding {0}weighted primitives for the object {1}.{2}", w, n, w2);
 
@@ -507,7 +507,7 @@ namespace BrawlLib.Modeling
                     case ImportType.MDL0:
                         MDL0BoneNode bone = new MDL0BoneNode
                         {
-                            _name = node._name != null ? node._name : node._id,
+                            _name = node._name ?? node._id,
 
                             _bindState = node._matrix.Derive()
                         };
@@ -644,12 +644,12 @@ namespace BrawlLib.Modeling
         {
             if (manager != null)
             {
-                Error = "There was a problem creating a new object for " + (node._name != null ? node._name : node._id);
+                Error = "There was a problem creating a new object for " + (node._name ?? node._id);
 
                 MDL0ObjectNode poly = new MDL0ObjectNode()
                 {
                     _manager = manager,
-                    _name = node._name != null ? node._name : node._id,
+                    _name = node._name ?? node._id,
                     _drawCalls = new BindingList<DrawCall>()
                 };
 

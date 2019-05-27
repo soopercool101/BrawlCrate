@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => _name == null ? string.Format("TPL{0}", Index) : _name;
+            get => _name ?? string.Format("TPL{0}", Index);
             set => base.Name = value;
         }
 
@@ -383,7 +383,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public ColorPalette Palette
         {
-            get => _palette == null ? _palette = TextureConverter.DecodePalette(_dataAddr, Header->_numEntries, Format) : _palette;
+            get => _palette ?? (_palette = TextureConverter.DecodePalette(_dataAddr, Header->_numEntries, Format));
             set { _palette = value; SignalPropertyChange(); }
         }
 

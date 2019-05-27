@@ -231,7 +231,7 @@ namespace System.Windows.Forms
                 hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
             }
 
-            byte[] hex = _findOptions.Hex != null ? _findOptions.Hex : new byte[0];
+            byte[] hex = _findOptions.Hex ?? (new byte[0]);
             hexFind.ByteProvider = new DynamicByteProvider(hex);
             hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
         }

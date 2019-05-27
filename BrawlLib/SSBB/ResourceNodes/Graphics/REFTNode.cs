@@ -164,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public ColorPalette Palette
         {
-            get => HasPlt ? _palette == null ? _palette = TextureConverter.DecodePalette((byte*)Header + 0x20 + Header->_imagelen, Colors, _pltFormat) : _palette : null;
+            get => HasPlt ? _palette ?? (_palette = TextureConverter.DecodePalette((byte*)Header + 0x20 + Header->_imagelen, Colors, _pltFormat)) : null;
             set { _palette = value; SignalPropertyChange(); }
         }
 

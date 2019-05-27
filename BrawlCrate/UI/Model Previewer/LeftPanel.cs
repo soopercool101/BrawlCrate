@@ -855,7 +855,7 @@ namespace System.Windows.Forms
                 (contains && node.Name.Contains(compare, StringComparison.OrdinalIgnoreCase)) ||
                 node.Name.StartsWith(compare, StringComparison.OrdinalIgnoreCase))
             {
-                ListViewGroup u = externalGroup != null ? externalGroup : ib ? _AnimGroupBRRES : _AnimGroupNotBRRES;
+                ListViewGroup u = externalGroup ?? (ib ? _AnimGroupBRRES : _AnimGroupNotBRRES);
                 if (u == null)
                 {
                     Console.WriteLine();
