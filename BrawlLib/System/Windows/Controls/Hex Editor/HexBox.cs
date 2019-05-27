@@ -1506,7 +1506,7 @@ namespace Be.Windows.Forms
         public HexBox()
         {
             _vScrollBar = new VScrollBar();
-            _vScrollBar.Scroll += new ScrollEventHandler(_vScrollBar_Scroll);
+            _vScrollBar.Scroll += new ScrollEventHandler(vScrollBar_Scroll);
             _vScrollBar.Cursor = Cursors.Default;
 
             _builtInContextMenu = new BuiltInContextMenu(this);
@@ -1532,7 +1532,7 @@ namespace Be.Windows.Forms
         #endregion
 
         #region Scroll methods
-        private void _vScrollBar_Scroll(object sender, ScrollEventArgs e)
+        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             switch (e.Type)
             {
@@ -3658,13 +3658,13 @@ namespace Be.Windows.Forms
 
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged -= new EventHandler(_byteProvider_LengthChanged);
+                    _byteProvider.LengthChanged -= new EventHandler(byteProvider_LengthChanged);
                 }
 
                 _byteProvider = value;
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged += new EventHandler(_byteProvider_LengthChanged);
+                    _byteProvider.LengthChanged += new EventHandler(byteProvider_LengthChanged);
                 }
 
                 OnByteProviderChanged(EventArgs.Empty);
@@ -4392,10 +4392,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnInsertActiveChanged(EventArgs e)
         {
-            if (InsertActiveChanged != null)
-            {
-                InsertActiveChanged(this, e);
-            }
+            InsertActiveChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4404,10 +4401,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnReadOnlyChanged(EventArgs e)
         {
-            if (ReadOnlyChanged != null)
-            {
-                ReadOnlyChanged(this, e);
-            }
+            ReadOnlyChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4416,10 +4410,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnByteProviderChanged(EventArgs e)
         {
-            if (ByteProviderChanged != null)
-            {
-                ByteProviderChanged(this, e);
-            }
+            ByteProviderChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4428,10 +4419,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnSelectionStartChanged(EventArgs e)
         {
-            if (SelectionStartChanged != null)
-            {
-                SelectionStartChanged(this, e);
-            }
+            SelectionStartChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4440,10 +4428,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnSelectionLengthChanged(EventArgs e)
         {
-            if (SelectionLengthChanged != null)
-            {
-                SelectionLengthChanged(this, e);
-            }
+            SelectionLengthChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4452,10 +4437,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnLineInfoVisibleChanged(EventArgs e)
         {
-            if (LineInfoVisibleChanged != null)
-            {
-                LineInfoVisibleChanged(this, e);
-            }
+            LineInfoVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4464,10 +4446,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnColumnInfoVisibleChanged(EventArgs e)
         {
-            if (ColumnInfoVisibleChanged != null)
-            {
-                ColumnInfoVisibleChanged(this, e);
-            }
+            ColumnInfoVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4476,10 +4455,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnGroupSeparatorVisibleChanged(EventArgs e)
         {
-            if (GroupSeparatorVisibleChanged != null)
-            {
-                GroupSeparatorVisibleChanged(this, e);
-            }
+            GroupSeparatorVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4488,10 +4464,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnStringViewVisibleChanged(EventArgs e)
         {
-            if (StringViewVisibleChanged != null)
-            {
-                StringViewVisibleChanged(this, e);
-            }
+            StringViewVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4500,10 +4473,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnBorderStyleChanged(EventArgs e)
         {
-            if (BorderStyleChanged != null)
-            {
-                BorderStyleChanged(this, e);
-            }
+            BorderStyleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4512,10 +4482,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnUseFixedBytesPerLineChanged(EventArgs e)
         {
-            if (UseFixedBytesPerLineChanged != null)
-            {
-                UseFixedBytesPerLineChanged(this, e);
-            }
+            UseFixedBytesPerLineChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4524,10 +4491,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnGroupSizeChanged(EventArgs e)
         {
-            if (GroupSizeChanged != null)
-            {
-                GroupSizeChanged(this, e);
-            }
+            GroupSizeChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4536,10 +4500,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnBytesPerLineChanged(EventArgs e)
         {
-            if (BytesPerLineChanged != null)
-            {
-                BytesPerLineChanged(this, e);
-            }
+            BytesPerLineChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4548,10 +4509,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnVScrollBarVisibleChanged(EventArgs e)
         {
-            if (VScrollBarVisibleChanged != null)
-            {
-                VScrollBarVisibleChanged(this, e);
-            }
+            VScrollBarVisibleChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4560,10 +4518,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnHexCasingChanged(EventArgs e)
         {
-            if (HexCasingChanged != null)
-            {
-                HexCasingChanged(this, e);
-            }
+            HexCasingChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4572,10 +4527,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnHorizontalByteCountChanged(EventArgs e)
         {
-            if (HorizontalByteCountChanged != null)
-            {
-                HorizontalByteCountChanged(this, e);
-            }
+            HorizontalByteCountChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4584,10 +4536,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnVerticalByteCountChanged(EventArgs e)
         {
-            if (VerticalByteCountChanged != null)
-            {
-                VerticalByteCountChanged(this, e);
-            }
+            VerticalByteCountChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4596,10 +4545,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCurrentLineChanged(EventArgs e)
         {
-            if (CurrentLineChanged != null)
-            {
-                CurrentLineChanged(this, e);
-            }
+            CurrentLineChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4608,10 +4554,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCurrentPositionInLineChanged(EventArgs e)
         {
-            if (CurrentPositionInLineChanged != null)
-            {
-                CurrentPositionInLineChanged(this, e);
-            }
+            CurrentPositionInLineChanged?.Invoke(this, e);
         }
 
 
@@ -4621,10 +4564,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCopied(EventArgs e)
         {
-            if (Copied != null)
-            {
-                Copied(this, e);
-            }
+            Copied?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4633,10 +4573,7 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCopiedHex(EventArgs e)
         {
-            if (CopiedHex != null)
-            {
-                CopiedHex(this, e);
-            }
+            CopiedHex?.Invoke(this, e);
         }
 
         /// <summary>
@@ -4702,7 +4639,7 @@ namespace Be.Windows.Forms
             DestroyCaret();
         }
 
-        private void _byteProvider_LengthChanged(object sender, EventArgs e)
+        private void byteProvider_LengthChanged(object sender, EventArgs e)
         {
             UpdateScrollSize();
         }

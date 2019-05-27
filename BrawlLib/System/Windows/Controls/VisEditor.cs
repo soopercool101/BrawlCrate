@@ -174,10 +174,7 @@ namespace System.Windows.Forms
 
             listBox1.EndUpdate();
 
-            if (EntryChanged != null)
-            {
-                EntryChanged(this, null);
-            }
+            EntryChanged?.Invoke(this, null);
         }
         private void Clear()
         {
@@ -197,10 +194,7 @@ namespace System.Windows.Forms
 
             listBox1.EndUpdate();
 
-            if (EntryChanged != null)
-            {
-                EntryChanged(this, null);
-            }
+            EntryChanged?.Invoke(this, null);
         }
         private void Set()
         {
@@ -220,10 +214,7 @@ namespace System.Windows.Forms
 
             listBox1.EndUpdate();
 
-            if (EntryChanged != null)
-            {
-                EntryChanged(this, null);
-            }
+            EntryChanged?.Invoke(this, null);
         }
         private void SelectAll()
         {
@@ -325,10 +316,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (IndexChanged != null)
-            {
-                IndexChanged(this, null);
-            }
+            IndexChanged?.Invoke(this, null);
             //if (_mainWindow != null && !_updating)
             //    _mainWindow._mainWindow.SetFrame(listBox1.SelectedIndex);
         }

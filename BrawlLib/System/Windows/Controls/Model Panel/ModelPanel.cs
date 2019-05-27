@@ -592,10 +592,7 @@ namespace System.Windows.Forms
 
             viewport.RecalcLight();
 
-            if (PreRender != null)
-            {
-                PreRender(viewport);
-            }
+            PreRender?.Invoke(viewport);
 
             GL.PushAttrib(AttribMask.AllAttribBits);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -627,10 +624,7 @@ namespace System.Windows.Forms
 
             GL.PopAttrib();
 
-            if (PostRender != null)
-            {
-                PostRender(viewport);
-            }
+            PostRender?.Invoke(viewport);
 
             viewport.RenderForeground(v == CurrentViewport, _viewports.Count == 1);
 
@@ -715,10 +709,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (FirstPersonCameraChanged != null)
-                {
-                    FirstPersonCameraChanged(this, value);
-                }
+                FirstPersonCameraChanged?.Invoke(this, value);
             }
         }
 
@@ -732,10 +723,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderFloorChanged != null)
-                {
-                    RenderFloorChanged(this, value);
-                }
+                RenderFloorChanged?.Invoke(this, value);
             }
         }
 
@@ -749,10 +737,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderBonesChanged != null)
-                {
-                    RenderBonesChanged(this, value);
-                }
+                RenderBonesChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -765,10 +750,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderVerticesChanged != null)
-                {
-                    RenderVerticesChanged(this, value);
-                }
+                RenderVerticesChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -781,10 +763,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderNormalsChanged != null)
-                {
-                    RenderNormalsChanged(this, value);
-                }
+                RenderNormalsChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -797,10 +776,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderPolygonsChanged != null)
-                {
-                    RenderPolygonsChanged(this, value);
-                }
+                RenderPolygonsChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -813,10 +789,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderWireframeChanged != null)
-                {
-                    RenderWireframeChanged(this, value);
-                }
+                RenderWireframeChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -829,10 +802,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderShadersChanged != null)
-                {
-                    RenderShadersChanged(this, value);
-                }
+                RenderShadersChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -845,10 +815,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderModelBoxChanged != null)
-                {
-                    RenderModelBoxChanged(this, value);
-                }
+                RenderModelBoxChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -861,10 +828,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderObjectBoxChanged != null)
-                {
-                    RenderObjectBoxChanged(this, value);
-                }
+                RenderObjectBoxChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -877,10 +841,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderVisBoneBoxChanged != null)
-                {
-                    RenderVisBoneBoxChanged(this, value);
-                }
+                RenderVisBoneBoxChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -893,10 +854,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (UseBindStateBoxesChanged != null)
-                {
-                    UseBindStateBoxesChanged(this, value);
-                }
+                UseBindStateBoxesChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -909,10 +867,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (RenderOffscreenChanged != null)
-                {
-                    RenderOffscreenChanged(this, value);
-                }
+                RenderOffscreenChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -925,10 +880,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (ApplyBillboardBonesChanged != null)
-                {
-                    ApplyBillboardBonesChanged(this, value);
-                }
+                ApplyBillboardBonesChanged?.Invoke(this, value);
             }
         }
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -941,10 +893,7 @@ namespace System.Windows.Forms
 
                 Invalidate();
 
-                if (ScaleBonesChanged != null)
-                {
-                    ScaleBonesChanged(this, value);
-                }
+                ScaleBonesChanged?.Invoke(this, value);
             }
         }
 

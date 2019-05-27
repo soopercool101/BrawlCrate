@@ -375,18 +375,12 @@ namespace System
 
         private void OnRenderFrame(FrameEventArgs e)
         {
-            if (RenderFrame != null)
-            {
-                RenderFrame(this, e);
-            }
+            RenderFrame?.Invoke(this, e);
         }
 
         private void OnUpdateFrame(FrameEventArgs e)
         {
-            if (UpdateFrame != null)
-            {
-                UpdateFrame(this, e);
-            }
+            UpdateFrame?.Invoke(this, e);
         }
 
         private bool _running = false;

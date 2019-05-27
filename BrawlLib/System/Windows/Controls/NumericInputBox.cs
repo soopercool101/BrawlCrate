@@ -248,10 +248,7 @@ namespace System.Windows.Forms
                 {
                     _previousValue = _value ?? 0.0f;
                     _value = val;
-                    if (ValueChanged != null)
-                    {
-                        ValueChanged(this, null);
-                    }
+                    ValueChanged?.Invoke(this, null);
                 }
             }
             else
@@ -260,10 +257,7 @@ namespace System.Windows.Forms
                 {
                     _previousValue = _value ?? 0.0f;
                     _value = val2;
-                    if (ValueChanged != null)
-                    {
-                        ValueChanged(this, null);
-                    }
+                    ValueChanged?.Invoke(this, null);
                 }
             }
 

@@ -1735,10 +1735,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             _drawCalls.Clear();
 
-            if (DrawCallsChanged != null)
-            {
-                DrawCallsChanged(null, null);
-            }
+            DrawCallsChanged?.Invoke(null, null);
 
             if (_manager != null)
             {
@@ -1780,10 +1777,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_attached)
             {
-                if (DrawCallsChanged != null)
-                {
-                    DrawCallsChanged(this, null);
-                }
+                DrawCallsChanged?.Invoke(this, null);
             }
             else if (Model != null && Model.Attached)
             {

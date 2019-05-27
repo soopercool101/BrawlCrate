@@ -63,10 +63,7 @@
 
             if (_dragging)
             {
-                if (Dragged != null)
-                {
-                    Dragged(this, new SplitterEventArgs(xDiff, yDiff, Left, Top));
-                }
+                Dragged?.Invoke(this, new SplitterEventArgs(xDiff, yDiff, Left, Top));
             }
 
             base.OnMouseMove(e);

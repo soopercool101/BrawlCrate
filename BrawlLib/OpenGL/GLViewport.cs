@@ -134,10 +134,7 @@ namespace BrawlLib.OpenGL
 
         public void Invalidate()
         {
-            if (OnInvalidate != null)
-            {
-                OnInvalidate();
-            }
+            OnInvalidate?.Invoke();
         }
         public void Resize()
         {

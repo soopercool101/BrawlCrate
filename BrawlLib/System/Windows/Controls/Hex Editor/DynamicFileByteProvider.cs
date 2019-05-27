@@ -456,18 +456,12 @@ namespace Be.Windows.Forms
 
         private void OnLengthChanged(EventArgs e)
         {
-            if (LengthChanged != null)
-            {
-                LengthChanged(this, e);
-            }
+            LengthChanged?.Invoke(this, e);
         }
 
         private void OnChanged(EventArgs e)
         {
-            if (Changed != null)
-            {
-                Changed(this, e);
-            }
+            Changed?.Invoke(this, e);
         }
 
         private DataBlock GetDataBlock(long findOffset, out long blockOffset)

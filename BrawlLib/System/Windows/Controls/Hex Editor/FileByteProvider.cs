@@ -110,10 +110,7 @@ namespace Be.Windows.Forms
         /// <remarks>Never used.</remarks>
         private void OnChanged(EventArgs e)
         {
-            if (Changed != null)
-            {
-                Changed(this, e);
-            }
+            Changed?.Invoke(this, e);
         }
 
         /// <summary>

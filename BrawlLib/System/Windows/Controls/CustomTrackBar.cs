@@ -68,10 +68,7 @@
             if (_isScrolling)
             {
                 _isScrolling = false;
-                if (UserSeek != null)
-                {
-                    UserSeek(this, null);
-                }
+                UserSeek?.Invoke(this, null);
             }
         }
     }

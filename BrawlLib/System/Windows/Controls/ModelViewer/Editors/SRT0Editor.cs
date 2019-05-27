@@ -628,10 +628,7 @@ namespace System.Windows.Forms
         }
         internal unsafe void BoxChangedCreateUndo(object sender, EventArgs e)
         {
-            if (CreateUndo != null)
-            {
-                CreateUndo(sender, null);
-            }
+            CreateUndo?.Invoke(sender, null);
 
             //Only update for input boxes: Methods affecting multiple values call BoxChanged on their own.
             if (sender.GetType() == typeof(NumericInputBox))

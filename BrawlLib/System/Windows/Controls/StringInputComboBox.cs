@@ -122,10 +122,7 @@ namespace System.Windows.Forms
             if (_value != val)
             {
                 _value = val;
-                if (ValueChanged != null)
-                {
-                    ValueChanged(this, null);
-                }
+                ValueChanged?.Invoke(this, null);
             }
             UpdateText();
         }

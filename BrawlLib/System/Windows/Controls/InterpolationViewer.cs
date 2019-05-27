@@ -552,15 +552,9 @@ namespace System.Windows.Forms
 
                     Invalidate();
 
-                    if (SelectedKeyframeChanged != null)
-                    {
-                        SelectedKeyframeChanged(this, null);
-                    }
+                    SelectedKeyframeChanged?.Invoke(this, null);
 
-                    if (SignalChange != null)
-                    {
-                        SignalChange(this, null);
-                    }
+                    SignalChange?.Invoke(this, null);
                 }
                 else if (_keyDraggingAllowed)
                 {
@@ -631,15 +625,9 @@ namespace System.Windows.Forms
 
                     Invalidate();
 
-                    if (SelectedKeyframeChanged != null)
-                    {
-                        SelectedKeyframeChanged(this, null);
-                    }
+                    SelectedKeyframeChanged?.Invoke(this, null);
 
-                    if (SignalChange != null)
-                    {
-                        SignalChange(this, null);
-                    }
+                    SignalChange?.Invoke(this, null);
                 }
             }
             else if (frameVal >= 0 && frameVal < _frameLimit && _selKey == null)
@@ -713,19 +701,13 @@ namespace System.Windows.Forms
                     Invalidate();
                 }
 
-                if (SignalChange != null)
-                {
-                    SignalChange(this, null);
-                }
+                SignalChange?.Invoke(this, null);
             }
 
             if (keyChanged)
             {
                 Invalidate();
-                if (SelectedKeyframeChanged != null)
-                {
-                    SelectedKeyframeChanged(this, null);
-                }
+                SelectedKeyframeChanged?.Invoke(this, null);
             }
         }
 

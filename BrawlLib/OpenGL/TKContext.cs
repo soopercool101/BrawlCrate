@@ -137,10 +137,7 @@ namespace BrawlLib.OpenGL
                         _context.MakeCurrent(WindowInfo);
                     }
 
-                    if (ContextChanged != null)
-                    {
-                        ContextChanged(true);
-                    }
+                    ContextChanged?.Invoke(true);
                 }
             }
             catch //(Exception x)
@@ -188,10 +185,7 @@ namespace BrawlLib.OpenGL
             _context.LoadAll();
             Update();
 
-            if (ResetOccured != null)
-            {
-                ResetOccured(this, EventArgs.Empty);
-            }
+            ResetOccured?.Invoke(this, EventArgs.Empty);
 
             _resetting = false;
         }
@@ -202,10 +196,7 @@ namespace BrawlLib.OpenGL
                 CurrentContext = null;
                 _context.MakeCurrent(null);
 
-                if (ContextChanged != null)
-                {
-                    ContextChanged(false);
-                }
+                ContextChanged?.Invoke(false);
             }
         }
         public void Update()

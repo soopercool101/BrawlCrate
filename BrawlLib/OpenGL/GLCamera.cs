@@ -198,10 +198,7 @@ namespace BrawlLib.OpenGL
 
             CalculateProjection();
 
-            if (OnDimensionsChanged != null)
-            {
-                OnDimensionsChanged();
-            }
+            OnDimensionsChanged?.Invoke();
         }
         /// <summary>
         /// Projects a screen point to world coordinates.

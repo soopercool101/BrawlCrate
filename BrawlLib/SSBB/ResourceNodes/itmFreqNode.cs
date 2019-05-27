@@ -437,7 +437,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
         [Browsable(false)]
-        public int _FileOffset
+        public int File_Offset
         {
             get
             {
@@ -454,7 +454,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(true)]
         [Category("Entry")]
-        public string FileOffset => _FileOffset.ToString("x");
+        public string FileOffset => File_Offset.ToString("x");
 
         [Browsable(true)]
         [Category("Entry")]

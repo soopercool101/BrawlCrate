@@ -306,10 +306,7 @@ namespace System.Windows.Forms
                 lstColors.Items[tempIndex] = p;
                 _colorSource.SetColor(tempIndex, _colorId, p);
 
-                if (CurrentColorChanged != null)
-                {
-                    CurrentColorChanged(this, EventArgs.Empty);
-                }
+                CurrentColorChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         private void lstColors_DoubleClick(object sender, EventArgs e)
@@ -334,10 +331,7 @@ namespace System.Windows.Forms
                         lstColors.Items[tempIndex] = prev;
                         _colorSource.SetColor(tempIndex, _colorId, prev);
 
-                        if (CurrentColorChanged != null)
-                        {
-                            CurrentColorChanged(this, EventArgs.Empty);
-                        }
+                        CurrentColorChanged?.Invoke(this, EventArgs.Empty);
                     }
                 }
                 _dlgColor.OnColorChanged -= _dlgColor_OnColorChanged;

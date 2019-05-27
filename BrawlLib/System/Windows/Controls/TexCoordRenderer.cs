@@ -171,10 +171,7 @@ namespace System.Windows.Forms
         public void SetUVIndex(int index)
         {
             _uvIndex = _uvSetNames.Count == 1 ? 0 : index >= 0 ? index.Clamp(0, _uvSetNames.Count - 2) : -1;
-            if (UVIndexChanged != null)
-            {
-                UVIndexChanged(this, EventArgs.Empty);
-            }
+            UVIndexChanged?.Invoke(this, EventArgs.Empty);
 
             UpdateDisplay();
         }
@@ -231,10 +228,7 @@ namespace System.Windows.Forms
                 SetUVIndex(string.IsNullOrEmpty(name) ? _uvSetNames.IndexOf(name) : -1);
             }
 
-            if (ObjIndexChanged != null)
-            {
-                ObjIndexChanged(this, EventArgs.Empty);
-            }
+            ObjIndexChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public void UpdateDisplay()

@@ -33,10 +33,7 @@ namespace System.Windows.Forms
         public new event EventHandler TextChanged;
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            if (TextChanged != null)
-            {
-                TextChanged(sender, e);
-            }
+            TextChanged?.Invoke(sender, e);
         }
     }
 }

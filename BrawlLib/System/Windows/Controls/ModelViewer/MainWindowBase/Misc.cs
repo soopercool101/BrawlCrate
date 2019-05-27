@@ -100,10 +100,7 @@ namespace System.Windows.Forms
 
         public virtual void OnModelPanelChanged()
         {
-            if (ModelViewerChanged != null)
-            {
-                ModelViewerChanged(this, null);
-            }
+            ModelViewerChanged?.Invoke(this, null);
         }
 
         #endregion
@@ -155,10 +152,7 @@ namespace System.Windows.Forms
 
             OnModelChanged();
 
-            if (TargetModelChanged != null)
-            {
-                TargetModelChanged(this, null);
-            }
+            TargetModelChanged?.Invoke(this, null);
         }
 
         protected virtual void OnModelChanged() { }

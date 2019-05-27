@@ -2513,10 +2513,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void OnDrawCallsChanged()
         {
-            if (DrawCallsChanged != null)
-            {
-                DrawCallsChanged(this, null);
-            }
+            DrawCallsChanged?.Invoke(this, null);
         }
 
         public event EventHandler DrawCallsChanged;

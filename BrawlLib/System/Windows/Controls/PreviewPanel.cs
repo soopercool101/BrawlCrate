@@ -128,17 +128,13 @@ namespace System.Windows.Forms
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
-            CurrentIndex--; if (LeftClicked != null)
-            {
-                LeftClicked(null, null);
-            }
+            CurrentIndex--;
+            LeftClicked?.Invoke(null, null);
         }
         private void btnRight_Click(object sender, EventArgs e)
         {
-            CurrentIndex++; if (RightClicked != null)
-            {
-                RightClicked(null, null);
-            }
+            CurrentIndex++;
+            RightClicked?.Invoke(null, null);
         }
     }
 }

@@ -113,10 +113,7 @@ namespace BrawlCrate
                 }
 
                 _selected = base.SelectedNode = value;
-                if (SelectionChanged != null)
-                {
-                    SelectionChanged(this, null);
-                }
+                SelectionChanged?.Invoke(this, null);
             }
         }
 

@@ -909,10 +909,7 @@ namespace System.Windows.Forms
 
             if (!invoked)
             {
-                if (Zoomed != null)
-                {
-                    Zoomed(amt, true);
-                }
+                Zoomed?.Invoke(amt, true);
 
                 Invalidate();
             }
@@ -927,10 +924,7 @@ namespace System.Windows.Forms
 
             if (!invoked)
             {
-                if (Scaled != null)
-                {
-                    Scaled(x, y, z, true);
-                }
+                Scaled?.Invoke(x, y, z, true);
 
                 Invalidate();
             }
@@ -945,10 +939,7 @@ namespace System.Windows.Forms
 
             if (!invoked)
             {
-                if (Translated != null)
-                {
-                    Translated(x, y, z, true);
-                }
+                Translated?.Invoke(x, y, z, true);
 
                 Invalidate();
             }

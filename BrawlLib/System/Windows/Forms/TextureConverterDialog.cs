@@ -1589,10 +1589,7 @@ namespace System.Windows.Forms
             FixImportPaletteFields();
             UpdatePreview();
 
-            if (Resized != null)
-            {
-                Resized(w, h);
-            }
+            Resized?.Invoke(w, h);
 
             _updating = false;
         }

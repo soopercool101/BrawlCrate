@@ -27,18 +27,12 @@ namespace System.Windows.Forms
 
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
-            if (OnOpChanged != null)
-            {
-                OnOpChanged();
-            }
+            OnOpChanged?.Invoke();
         }
 
         private void btnGoToBranch_Click(object sender, EventArgs e)
         {
-            if (OnBranchFollowed != null)
-            {
-                OnBranchFollowed();
-            }
+            OnBranchFollowed?.Invoke();
         }
 
         private void cboOpCode_SelectedIndexChanged(object sender, EventArgs e)

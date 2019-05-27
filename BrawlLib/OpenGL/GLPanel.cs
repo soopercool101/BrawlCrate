@@ -81,10 +81,7 @@ namespace BrawlLib.OpenGL
             {
                 _currentViewport = value;
 
-                if (OnCurrentViewportChanged != null)
-                {
-                    OnCurrentViewportChanged(_currentViewport);
-                }
+                OnCurrentViewportChanged?.Invoke(_currentViewport);
 
                 if (!_viewports.Contains(_currentViewport) && _currentViewport != null)
                 {

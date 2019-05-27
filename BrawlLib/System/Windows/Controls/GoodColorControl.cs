@@ -454,10 +454,7 @@ namespace System.Windows.Forms
             {
                 _rgba.A = (byte)value;
                 txtColorCode.Text = _rgba.ToRGBAColorCode();
-                if (ColorChanged != null)
-                {
-                    ColorChanged(this, null);
-                }
+                ColorChanged?.Invoke(this, null);
             }
             else
             {
@@ -494,10 +491,7 @@ namespace System.Windows.Forms
             pnlColorBox.Invalidate();
             pnlColorBar.Invalidate();
 
-            if (ColorChanged != null)
-            {
-                ColorChanged(this, null);
-            }
+            ColorChanged?.Invoke(this, null);
         }
 
         #region ColorBox
@@ -663,10 +657,7 @@ namespace System.Windows.Forms
                     _updating = true;
                     txtColorCode.Text = _rgba.ToRGBAColorCode();
                     _updating = false;
-                    if (ColorChanged != null)
-                    {
-                        ColorChanged(this, null);
-                    }
+                    ColorChanged?.Invoke(this, null);
                 }
             }
         }

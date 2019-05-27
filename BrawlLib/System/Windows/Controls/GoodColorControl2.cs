@@ -199,20 +199,14 @@ namespace System.Windows.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            if (Closed != null)
-            {
-                Closed(this, EventArgs.Empty);
-            }
+            Closed?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             _color = _newColor;
-            if (Closed != null)
-            {
-                Closed(this, EventArgs.Empty);
-            }
+            Closed?.Invoke(this, EventArgs.Empty);
         }
 
         private void pnlOld_Paint(object sender, PaintEventArgs e)
@@ -263,10 +257,7 @@ namespace System.Windows.Forms
         {
             _newColor = goodColorControl1.Color;
             pnlNew.Invalidate();
-            if (OnColorChanged != null)
-            {
-                OnColorChanged(_newColor);
-            }
+            OnColorChanged?.Invoke(_newColor);
         }
 
         private void chkAlpha_CheckedChanged(object sender, EventArgs e)
