@@ -68,7 +68,6 @@ namespace BrawlCrate.API
                         ? Directory.GetFiles(dir, "fsi.exe", SearchOption.AllDirectories)
                         : new string[0])
                     .FirstOrDefault(s => File.Exists(s));
-
                 if (fsi_path == null)
                 {
                     if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio?", "BrawlCrate", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
@@ -120,7 +119,6 @@ namespace BrawlCrate.API
             }
             else
             {
-
                 try
                 {
                     ScriptSource script = Engine.CreateScriptSourceFromFile(path);
@@ -138,7 +136,6 @@ namespace BrawlCrate.API
                     string msg = $"SystemExit in \"{Path.GetFileName(path)}\"\n{e.Message}";
                     ShowMessage(msg, Path.GetFileName(path));
                 }
-
                 catch (Exception e)
                 {
                     string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
