@@ -138,8 +138,17 @@ namespace BrawlCrate.API
                 }
                 catch (Exception e)
                 {
-                    string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
-                    ShowMessage(msg, Path.GetFileName(path));
+                    if (e.Message.Contains("BrawlBox") ||
+                        e.Message.Contains("bboxapi"))
+                    {
+                        ConvertPlugin(path);
+                        RunScript(path);
+                    }
+                    else
+                    {
+                        string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
+                        ShowMessage(msg, Path.GetFileName(path));
+                    }
                 }
             }
         }
@@ -172,8 +181,8 @@ namespace BrawlCrate.API
 
             catch (Exception e)
             {
-                if (e.Message.Contains("BrawlBox", StringComparison.OrdinalIgnoreCase) ||
-                    e.Message.Contains("bboxapi", StringComparison.OrdinalIgnoreCase))
+                if (e.Message.Contains("BrawlBox") ||
+                    e.Message.Contains("bboxapi"))
                 {
                     ConvertPlugin(path);
                     CreatePlugin(path, loader);
