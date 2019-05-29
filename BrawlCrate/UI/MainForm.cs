@@ -708,12 +708,27 @@ namespace BrawlCrate
 
         private void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            API.BrawlAPI.Plugins.Clear();
+            BrawlAPI.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
-            foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles($"{Application.StartupPath}/Plugins", p)))
+            AddPlugins(pluginToolStripMenuItem, $"{Application.StartupPath}/Plugins");
+        }
+
+        private void AddPlugins(ToolStripMenuItem menu, string path)
+        {
+            DirectoryInfo dir = Directory.CreateDirectory(path);
+            foreach(DirectoryInfo d in dir.GetDirectories())
             {
-                API.BrawlAPI.CreatePlugin(str, false);
-                pluginToolStripMenuItem.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
+                ToolStripMenuItem folder = new ToolStripMenuItem();
+                folder.Name = folder.Text = d.Name;
+                AddPlugins(folder, d.FullName);
+                if (folder.DropDownItems.Count == 0)
+                    continue;
+                menu.DropDownItems.Add(folder);
+            }
+            foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles(path, p)))
+            {
+                BrawlAPI.CreatePlugin(str, false);
+                menu.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
             }
         }
     }
