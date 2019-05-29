@@ -11,9 +11,10 @@ def tex_search(node): #Recursive function to scan for all TEX0 nodes in the file
 
 if bboxapi.RootNode != None:
     root = bboxapi.RootNode
-    for item in tex_search(root):
-        print item.Name
-        item.Export(item.Name + ".png") #We already know everything in this list is a TEX0, so we can export it to a #PNG
-    print("    Done!")
+    folder = bboxapi.OpenFolderDialog()
+    if folder:
+        for item in tex_search(root):
+            item.Export(folder + "/" + item.Name + ".png") #We already know everything in this list is a TEX0, so we can export it to a #PNG
+        bboxapi.ShowMessage("Textures successfully exported to " + folder, "Success")
 else:
     bboxapi.ShowMessage('Cannot find Root Node (is a file open?)','Error')
