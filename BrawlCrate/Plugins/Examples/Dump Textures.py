@@ -13,8 +13,13 @@ if BrawlAPI.RootNode != None:
     root = BrawlAPI.RootNode
     folder = BrawlAPI.OpenFolderDialog()
     if folder:
+        count = 0;
         for item in tex_search(root):
             item.Export(folder + "/" + item.Name + ".png") #We already know everything in this list is a TEX0 or REFTEntry, so we can export it to a .png
-        BrawlAPI.ShowMessage("Textures successfully exported to " + folder, "Success")
+            count += 1
+        if count:
+            BrawlAPI.ShowMessage(str(count) + " textures were successfully exported to " + folder, "Success")
+        else:
+            BrawlAPI.ShowMessage('No textures were found in the open file','Error')
 else:
     BrawlAPI.ShowMessage('Cannot find Root Node (is a file open?)','Error')
