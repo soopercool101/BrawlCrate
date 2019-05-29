@@ -368,7 +368,7 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <None Update="Loaders\Example Loader %28RFNT%29.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Plugins\Example %28tex0 export%29.py">
+    <None Update="Plugins\Dump Textures.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
