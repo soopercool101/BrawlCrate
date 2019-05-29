@@ -19,7 +19,23 @@ namespace BrawlCrate.API
 
         public void Execute()
         {
-            Script.Execute(Scope);
+            try
+            {
+                Script.Execute(Scope);
+            }
+            catch (System.Exception e)
+            {
+                if (e.Message.StartsWith("No module named BrawlBox", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    bboxapi.ConvertPlugin(Script.Path);
+                    Execute();
+                }
+                else
+                {
+                    string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
+                    bboxapi.ShowMessage(msg, Path.GetFileName(Script.Path));
+                }
+            }
         }
     }
 

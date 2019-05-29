@@ -172,9 +172,23 @@ namespace BrawlCrate.API
 
             catch (Exception e)
             {
-                string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
-                ShowMessage(msg, Path.GetFileName(path));
+                if(e.Message.StartsWith("No module named BrawlBox", StringComparison.OrdinalIgnoreCase))
+                {
+                    ConvertPlugin(path);
+                    CreatePlugin(path, loader);
+                }
+                else
+                {
+                    string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
+                    ShowMessage(msg, Path.GetFileName(path));
+                }
             }
+        }
+        internal static void ConvertPlugin(string path)
+        {
+            string text = File.ReadAllText(path);
+            text = text.Replace("BrawlBox", "BrawlCrate");
+            File.WriteAllText(path, text);
         }
 
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
