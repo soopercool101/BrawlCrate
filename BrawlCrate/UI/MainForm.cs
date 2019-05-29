@@ -254,6 +254,7 @@ namespace BrawlCrate
 
         public Control _currentControl = null;
         private Control _secondaryControl = null;
+        private Type selectedType = null;
         public unsafe void resourceTree_SelectionChanged(object sender, EventArgs e)
         {
             audioPlaybackPanel1.TargetSource = null;
@@ -285,19 +286,31 @@ namespace BrawlCrate
             if ((resourceTree.SelectedNode is BaseWrapper) && ((node = (w = resourceTree.SelectedNode as BaseWrapper).Resource) != null))
             {
                 Action setScrollOffset = null;
-                foreach (Control c in propertyGrid1.Controls)
+                if (selectedType == resourceTree.SelectedNode.GetType())
                 {
-                    if (c.GetType().Name == "PropertyGridView")
+                    foreach (Control c in propertyGrid1.Controls)
                     {
-                        object scrollOffset = c.GetType().GetMethod("GetScrollOffset").Invoke(c, null);
-                        setScrollOffset = () => c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] { scrollOffset });
-                        break;
+                        if (c.GetType().Name == "PropertyGridView")
+                        {
+                            object scrollOffset = c.GetType().GetMethod("GetScrollOffset").Invoke(c, null);
+                            setScrollOffset = () => c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] { scrollOffset });
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Control c in propertyGrid1.Controls)
+                    {
+                        if (c.GetType().Name == "PropertyGridView")
+                        {
+                            setScrollOffset = () => c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] { 0 });
+                            break;
+                        }
                     }
                 }
 
                 propertyGrid1.SelectedObject = node;
-                propertyGrid1.ExpandAllGridItems();
-
                 setScrollOffset?.Invoke();
 
 #if DEBUG
@@ -523,6 +536,7 @@ namespace BrawlCrate
             {
                 texCoordControl1.TargetNode = ((MDL0MaterialRefNode)node);
             }
+            selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
         protected override void OnClosing(CancelEventArgs e)
