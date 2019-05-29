@@ -89,8 +89,8 @@ namespace BrawlCrate
             string plugins = $"{Application.StartupPath}/Plugins";
             string loaders = $"{Application.StartupPath}/Loaders";
 
-            API.bboxapi.Plugins.Clear();
-            API.bboxapi.Loaders.Clear();
+            API.BrawlAPI.Plugins.Clear();
+            API.BrawlAPI.Loaders.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
             if (Directory.Exists(plugins))
             {
@@ -100,7 +100,7 @@ namespace BrawlCrate
             {
                 foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
                 {
-                    API.bboxapi.CreatePlugin(str, true);
+                    API.BrawlAPI.CreatePlugin(str, true);
                 }
             }
         }
@@ -691,7 +691,7 @@ namespace BrawlCrate
 
         private void onPluginClicked(object sender, EventArgs e)
         {
-            PluginScript plg = API.bboxapi.Plugins.Find(x => x.Name == ((ToolStripItem)sender).Text);
+            PluginScript plg = API.BrawlAPI.Plugins.Find(x => x.Name == ((ToolStripItem)sender).Text);
             plg?.Execute();
         }
 
@@ -701,18 +701,18 @@ namespace BrawlCrate
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    bboxapi.RunScript(dlg.FileName);
+                    BrawlAPI.RunScript(dlg.FileName);
                 }
             }
         }
 
         private void reloadPluginsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            API.bboxapi.Plugins.Clear();
+            API.BrawlAPI.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
             foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles($"{Application.StartupPath}/Plugins", p)))
             {
-                API.bboxapi.CreatePlugin(str, false);
+                API.BrawlAPI.CreatePlugin(str, false);
                 pluginToolStripMenuItem.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
             }
         }

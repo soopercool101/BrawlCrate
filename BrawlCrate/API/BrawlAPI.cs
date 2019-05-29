@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace BrawlCrate.API
 {
-    public static class bboxapi
+    public static class BrawlAPI
     {
-        static bboxapi()
+        static BrawlAPI()
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
             Plugins = new List<PluginScript>();
@@ -172,7 +172,8 @@ namespace BrawlCrate.API
 
             catch (Exception e)
             {
-                if(e.Message.StartsWith("No module named BrawlBox", StringComparison.OrdinalIgnoreCase))
+                if (e.Message.Contains("BrawlBox", StringComparison.OrdinalIgnoreCase) ||
+                    e.Message.Contains("bboxapi", StringComparison.OrdinalIgnoreCase))
                 {
                     ConvertPlugin(path);
                     CreatePlugin(path, loader);
@@ -188,6 +189,7 @@ namespace BrawlCrate.API
         {
             string text = File.ReadAllText(path);
             text = text.Replace("BrawlBox", "BrawlCrate");
+            text = text.Replace("bboxapi", "BrawlAPI");
             File.WriteAllText(path, text);
         }
 

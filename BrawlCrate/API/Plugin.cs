@@ -1,5 +1,6 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
 using Microsoft.Scripting.Hosting;
+using System;
 using System.IO;
 
 namespace BrawlCrate.API
@@ -23,17 +24,18 @@ namespace BrawlCrate.API
             {
                 Script.Execute(Scope);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
-                if (e.Message.StartsWith("No module named BrawlBox", System.StringComparison.OrdinalIgnoreCase))
+                if (e.Message.Contains("BrawlBox", StringComparison.OrdinalIgnoreCase) ||
+                    e.Message.Contains("bboxapi", StringComparison.OrdinalIgnoreCase))
                 {
-                    bboxapi.ConvertPlugin(Script.Path);
+                    BrawlAPI.ConvertPlugin(Script.Path);
                     Execute();
                 }
                 else
                 {
                     string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
-                    bboxapi.ShowMessage(msg, Path.GetFileName(Script.Path));
+                    BrawlAPI.ShowMessage(msg, Path.GetFileName(Script.Path));
                 }
             }
         }
@@ -44,7 +46,7 @@ namespace BrawlCrate.API
         internal static ResourceNode TryParse(DataSource source)
         {
             ResourceNode n = null;
-            foreach (PluginLoader ldr in bboxapi.Loaders)
+            foreach (PluginLoader ldr in BrawlAPI.Loaders)
             {
                 if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint)source.Length))) != null)
                 {

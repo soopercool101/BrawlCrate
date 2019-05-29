@@ -28,11 +28,11 @@ class RFNTNode(PluginLoader):
         return False
 
 def doSomething_handler(sender, event_args):
-    bboxapi.ShowMessage("doing something","title")
+    BrawlAPI.ShowMessage("doing something","title")
 
 # Create an instance of our node class and add it to the API loader cache
 node = RFNTNode()
-bboxapi.AddLoader(node)
+BrawlAPI.AddLoader(node)
 
 # Add a button to our right click menu
-#bboxapi.AddContextMenuItem(ARCWrapper, ToolStripMenuItem("Do Something", None, doSomething_handler))
+#BrawlAPI.AddContextMenuItem(ARCWrapper, ToolStripMenuItem("Do Something", None, doSomething_handler))
