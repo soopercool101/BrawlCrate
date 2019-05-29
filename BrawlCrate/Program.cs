@@ -509,22 +509,6 @@ namespace BrawlCrate
 
                 return false;
             }
-
-            using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).
-                OpenSubKey("SOFTWARE\\Microsoft\\NET Framework Setup\\NDP\\v4\\Full\\"))
-            {
-                object o = ndpKey.GetValue("Release");
-                if (o == null)
-                {
-                    return false;
-                }
-
-                int releaseKey = Convert.ToInt32(o);
-                if (releaseKey < 378389)
-                {
-                    return false;
-                }
-            }
             return true;
         }
     }

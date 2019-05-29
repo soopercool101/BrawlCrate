@@ -69,14 +69,13 @@ namespace Net
         public static readonly string BaseURL = "https://github.com/soopercool101/BrawlCrate/releases/download/";
         public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
+        private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = new Credentials(System.Text.Encoding.Default.GetString(_rawData)) };
 
         public static async Task CheckUpdate() { await CheckUpdate(true, ""); }
 
         // Used to check for and download non-canary releases (including documentation updates)
         public static async Task CheckUpdate(bool Overwrite, string releaseTag = "", bool manual = false, string openFile = null, bool checkDocumentation = false, bool Automatic = false)
         {
-            Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
-
             // If canary is active, disable it
             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Active"))
             {
@@ -109,7 +108,6 @@ namespace Net
                     throw new System.Net.Http.HttpRequestException();
                 }
                 // Initiate the github client.
-                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = cr };
 
                 // get Release
                 IReadOnlyList<Release> AllReleases = await github.Repository.Release.GetAll("soopercool101", "BrawlCrate");
@@ -124,8 +122,9 @@ namespace Net
                     goto UpdateDL;
                 }
 
-                if (checkDocumentation && AllReleases[0].Prerelease)
+                if (checkDocumentation)
                 {
+                    // Figure out what documentation version you're on
                     string docVer = "";
                     try
                     {
@@ -148,27 +147,31 @@ namespace Net
                             MessageBox.Show("ERROR: Documentation Version still could not be found. Please report this on Discord or Github.\n" + e2.Message);
                         }
                     }
-                    // This track is shared by canary updates. Ensure that a documentation release is found.
-                    foreach (Release r in AllReleases)
+                    // Don't need to check for update unless the latest release is a prerelease (documentation is included in full releases)
+                    if (AllReleases[0].Prerelease)
                     {
-                        if (r.TagName == releaseTag || r.TagName == docVer)
+                        // This track is shared by canary updates. Ensure that a documentation release is found.
+                        foreach (Release r in AllReleases)
                         {
-                            // Documentation is already up-to-date if the latest release (either of documentation or the full program) has been downloaded
-                            release = null;
-                            break;
-                        }
-                        else if (r.Prerelease && r.Name.ToLower().Contains("documentation"))
-                        {
-                            release = r;
-                            documentation = true;
-                            break;
+                            if (r.TagName == releaseTag || r.TagName == docVer)
+                            {
+                                // Documentation is already up-to-date if the latest release (either of documentation or the full program) has been downloaded
+                                release = null;
+                                break;
+                            }
+                            else if (r.Prerelease && r.Name.ToLower().Contains("documentation"))
+                            {
+                                release = r;
+                                documentation = true;
+                                break;
+                            }
                         }
                     }
                 }
 
                 UpdateDL:
                 // If there are no releases available, download will fail.
-                if (release == null)
+                if (release == null || release.Assets.Count == 0)
                 {
                     if (manual)
                     {
@@ -206,10 +209,33 @@ namespace Net
                         return;
                     }
                 }
+
+                await DownloadRelease(release, Overwrite, Automatic, manual, documentation, openFile);
+            }
+            catch (System.Net.Http.HttpRequestException)
+            {
+                if (manual)
+                {
+                    MessageBox.Show("Unable to connect to the internet.");
+                }
+            }
+            catch (Exception e)
+            {
+                if (manual)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
+        }
+
+        public static async Task DownloadRelease(Release release, bool Overwrite, bool Automatic, bool manual, bool Documentation, string openFile)
+        {
+            try
+            {
                 ReleaseAsset Asset = (await github.Repository.Release.GetAllAssets("soopercool101", "BrawlCrate", release.Id))[0];
 
                 // If open windows need to be closed, ensure they are all properly closed
-                if (Overwrite && !documentation)
+                if (Overwrite && !Documentation)
                 {
                     await KillOpenWindows();
                 }
@@ -254,13 +280,13 @@ namespace Net
                     return;
                 }
                 // Case 1: Cross-platform (Batch files won't work, so user will have to ), documentation update, or non-overwriting update
-                if (Process.GetProcessesByName("winlogon").Count() == 0 || documentation || !Overwrite)
+                if (Process.GetProcessesByName("winlogon").Count() == 0 || Documentation || !Overwrite)
                 {
                     try
                     {
                         Process update = Process.Start(AppPath + "/temp.exe", "-o\"" + AppPath + "\"" + " -y");
                         // For documentation updates, ensure temp.exe is properly deleted and show changelog if the download was automated.
-                        if (documentation)
+                        if (Documentation)
                         {
                             update.WaitForExit();
                             if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "temp.exe"))
@@ -302,11 +328,6 @@ namespace Net
 
         public static async Task ForceDownloadDocumentation()
         {
-            Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
-
-            // Initiate the github client.
-            GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = cr };
-
             // get Release
             IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll("soopercool101", "BrawlCrate")).Where(r => r.Prerelease).ToList();
             Release release = null;
@@ -319,6 +340,11 @@ namespace Net
                     release = r;
                     break;
                 }
+            }
+
+            if(release != null)
+            {
+                await DownloadRelease(release, true, true, false, true, "<null>");
             }
         }
 
