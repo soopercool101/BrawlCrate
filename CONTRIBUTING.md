@@ -1,16 +1,11 @@
-# Contributing to BrawlLib / BrawlCrate
+# Contributing to BrawlCrateLib / BrawlCrate
 
 ## Requirements
 
 There are some software requirements to set up the solution:
 
 1. [Visual Studio](https://visualstudio.microsoft.com/vs/)
-2. .NET Framework v4.0 targeting pack
-3. .NET Framework v4.5.1 targeting pack
-4. .NET Framework v4.5.2 targeting pack
-5. .NET Framework v4.6.1 targeting pack
-
-The .NET Framework targeting packs required can be installed through the Visual Studio installer or downloaded from [this link](https://dotnet.microsoft.com/download/visual-studio-sdks).
+2. [.NET Framework v4.8 Developer Pack](https://dotnet.microsoft.com/download/thank-you/net48-developer-pack)
 
 Building the project on non-Windows operating systems is not officially supported at this time.
 
