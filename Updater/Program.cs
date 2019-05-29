@@ -18,8 +18,8 @@ namespace Net
 {
     public static class Updater
     {
-        public static readonly string mainRepo = "soopercool101/BrawlCrate";
-        public static readonly string mainBranch = "brawlcrate-master";
+        public static readonly string mainRepo = "soopercool101/BrawlCrateNext";
+        public static readonly string mainBranch = "master";
         public static string currentRepo = GetCurrentRepo();
         public static string currentBranch = GetCurrentBranch();
 
@@ -66,7 +66,6 @@ namespace Net
             0x39, 0x32, 0x66, 0x63, 0x20
         };
 
-        public static readonly string BaseURL = "https://github.com/soopercool101/BrawlCrate/releases/download/";
         public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
         private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = new Credentials(System.Text.Encoding.Default.GetString(_rawData)) };
@@ -81,6 +80,9 @@ namespace Net
             {
                 File.Delete(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Active");
             }
+
+            string repoOwner = mainRepo.Split('/')[0];
+            string repoName = mainRepo.Split('/')[1];
 
             try
             {
@@ -110,12 +112,16 @@ namespace Net
                 // Initiate the github client.
 
                 // get Release
-                IReadOnlyList<Release> AllReleases = await github.Repository.Release.GetAll("soopercool101", "BrawlCrate");
+                IReadOnlyList<Release> AllReleases = await github.Repository.Release.GetAll(repoOwner, repoName);
                 IReadOnlyList<Release> releases = null;
                 Release release = null;
+                bool documentation = false;
+                if (AllReleases.Count == 0)
+                {
+                    goto UpdateDL;
+                }
                 // Remove all pre-release versions from the list (Prerelease versions are exclusively documentation updates)
                 releases = AllReleases.Where(r => !r.Prerelease).ToList();
-                bool documentation = false;
                 if (releases[0].TagName != releaseTag)
                 {
                     release = releases[0];
@@ -232,7 +238,7 @@ namespace Net
         {
             try
             {
-                ReleaseAsset Asset = (await github.Repository.Release.GetAllAssets("soopercool101", "BrawlCrate", release.Id))[0];
+                ReleaseAsset Asset = release.Assets[0];
 
                 // If open windows need to be closed, ensure they are all properly closed
                 if (Overwrite && !Documentation)
@@ -256,7 +262,8 @@ namespace Net
                     string html = client.DownloadString(Asset.Url);
 
                     // The browser download link to the self extracting archive, hosted on github
-                    string URL = html.Substring(html.IndexOf(BaseURL)).TrimEnd(new char[] { '}', '"' });
+                    string URL = html.Substring(html.IndexOf("browser_download_url\":\"")).TrimEnd(new char[] { '}', '"' });
+                    URL = URL.Substring(URL.IndexOf("http"));
 
                     // Download the update, using a download tracker
                     DLProgressWindow.finished = false;
@@ -328,8 +335,10 @@ namespace Net
 
         public static async Task ForceDownloadDocumentation()
         {
+            string repoOwner = mainRepo.Split('/')[0];
+            string repoName = mainRepo.Split('/')[1];
             // get Release
-            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll("soopercool101", "BrawlCrate")).Where(r => r.Prerelease).ToList();
+            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName)).Where(r => r.Prerelease).ToList();
             Release release = null;
 
             // This track is shared by canary updates. Ensure that a documentation release is found.
@@ -470,13 +479,14 @@ namespace Net
                     Console.WriteLine("Attempting to set Canary using sha: " + commitid);
                 }
 
-                Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
-                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = cr };
+                string repoOwner = mainRepo.Split('/')[0];
+                string repoName = mainRepo.Split('/')[1];
+
                 Branch branch;
                 GitHubCommit result;
                 DateTimeOffset commitDate;
-                branch = await github.Repository.Branch.Get("soopercool101", "BrawlCrate", mainBranch);
-                result = await github.Repository.Commit.Get("soopercool101", "BrawlCrate", commitid ?? branch.Commit.Sha);
+                branch = await github.Repository.Branch.Get(repoOwner, repoName, mainBranch);
+                result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
                 commitDate = result.Commit.Author.Date;
                 currentBranch = mainBranch;
                 commitDate = commitDate.ToUniversalTime();
