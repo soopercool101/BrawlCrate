@@ -471,21 +471,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="OpenGL\GLPanel.resx">
-      <DependentUpon>GLPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\AttributeGrid.resx">
-      <DependentUpon>AttributeGrid.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\Hex Editor\HexBox.resx">
       <DependentUpon>HexBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\EditAllDialog\SRT0.resx">
-      <DependentUpon>SRT0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\MDL0ObjectControl.resx">
       <DependentUpon>MDL0ObjectControl.cs</DependentUpon>
@@ -493,125 +484,32 @@
     <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\CHR0Editor.resx">
       <DependentUpon>CHR0Editor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\CLR0Editor.resx">
-      <DependentUpon>CLR0Editor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\PAT0Editor.resx">
-      <DependentUpon>PAT0Editor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\SCN0Editor.resx">
-      <DependentUpon>SCN0Editor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\SHP0Editor.resx">
-      <DependentUpon>SHP0Editor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\SRT0Editor.resx">
       <DependentUpon>SRT0Editor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\VertexEditor.resx">
-      <DependentUpon>VertexEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\VIS0Editor.resx">
-      <DependentUpon>VIS0Editor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Editors\WeightEditor.resx">
-      <DependentUpon>WeightEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\BonesPanel.resx">
       <DependentUpon>BonesPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\KeyframePanel.resx">
-      <DependentUpon>KeyframePanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\OpenedFilesPanel.resx">
       <DependentUpon>OpenedFilesPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\PlaybackPanel.resx">
-      <DependentUpon>PlaybackPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ModelViewer\Panels\RightPanel.resx">
-      <DependentUpon>RightPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\PPCOpCodeEditControl.resx">
-      <DependentUpon>PPCOpCodeEditControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\PreviewPanel.resx">
-      <DependentUpon>PreviewPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\RichTextBoxBordered.resx">
-      <DependentUpon>RichTextBoxBordered.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\InterpolationEditor.resx">
       <DependentUpon>InterpolationEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\RSARGroupEditor.resx">
-      <DependentUpon>RSARGroupEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\TexCoordControl.resx">
-      <DependentUpon>TexCoordControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\TransformAttributesControl.resx">
-      <DependentUpon>TransformAttributesControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\VideoPlaybackPanel.resx">
-      <DependentUpon>VideoPlaybackPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\GoodColorControl2.resx">
-      <DependentUpon>GoodColorControl2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\ObjectOptimizerForm.resx">
-      <DependentUpon>ObjectOptimizerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\ModelViewerForm.resx">
-      <DependentUpon>ModelViewerForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\PowerPcDisassembler.resx">
       <DependentUpon>PowerPcDisassembler.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\EditAllDialog\CHR0.resx">
-      <DependentUpon>CHR0.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\VisEditor.resx">
-      <DependentUpon>VisEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Forms\EditRSARFileDialog.resx">
       <DependentUpon>EditRSARFileDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\SCN0FogEditControl.resx">
-      <DependentUpon>SCN0FogEditControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\SCN0CameraEditControl.resx">
-      <DependentUpon>SCN0CameraEditControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\SCN0LightEditControl.resx">
-      <DependentUpon>SCN0LightEditControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\FrameCountChanger.resx">
-      <DependentUpon>FrameCountChanger.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Forms\Section Editor\FormFind.resx">
       <DependentUpon>FormFind.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\Section Editor\FormGoTo.resx">
-      <DependentUpon>FormGoTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Forms\Section Editor\SectionEditor.resx">
       <DependentUpon>SectionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Forms\GCTEditor.resx">
       <DependentUpon>GCTEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\InterpolationForm.resx">
-      <DependentUpon>InterpolationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\GradientDialog2.resx">
-      <DependentUpon>GradientDialog2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\ExportAllAskFormat.resx">
-      <DependentUpon>ExportAllAskFormat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\AnimEditControl.resx">
-      <DependentUpon>AnimEditControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\AudioPlaybackPanel.resx">
       <DependentUpon>AudioPlaybackPanel.cs</DependentUpon>
@@ -623,48 +521,11 @@
       <DependentUpon>CLRControl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\EditAllDialog.resx">
-      <DependentUpon>EditAllDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\ShpAnimEditControl.resx">
-      <DependentUpon>ShpAnimEditControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\TexAnimEditControl.resx">
-      <DependentUpon>TexAnimEditControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\EditAllKeyframesDialog.resx">
-      <DependentUpon>EditAllKeyframesDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\GoodColorControl.resx">
-      <DependentUpon>GoodColorControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\GoodColorDialog.resx">
-      <DependentUpon>GoodColorDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\GradientDialog.resx">
-      <DependentUpon>GradientDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Controls\MSBinEditor.resx">
-      <DependentUpon>MSBinEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\ProgressWindow.resx">
-      <DependentUpon>ProgressWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\RenameDialog.resx">
-      <DependentUpon>RenameDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Controls\SoundPackControl.resx">
       <DependentUpon>SoundPackControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\SoundPathChanger.resx">
-      <DependentUpon>SoundPathChanger.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="System\Windows\Forms\TextureConverterDialog.resx">
       <DependentUpon>TextureConverterDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="System\Windows\Forms\TransformAttributesForm.resx">
-      <DependentUpon>TransformAttributesForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
