@@ -175,7 +175,7 @@ namespace Net
                     }
                 }
 
-                UpdateDL:
+            UpdateDL:
                 // If there are no releases available, download will fail.
                 if (release == null || release.Assets.Count == 0)
                 {
@@ -214,7 +214,7 @@ namespace Net
                 }
                 else // Allow the user to choose whether or not to download a release if not using the automatic updater
                 {
-                    if(MessageBox.Show(release.Name + " is available!\n\nThis release:\n\n" + release.Body + "\n\nUpdate now?" + (manual ? "\n\nThe program will be closed, and changes will not be saved!" : ""), "Update", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    if (MessageBox.Show(release.Name + " is available!\n\nThis release:\n\n" + release.Body + "\n\nUpdate now?" + (manual ? "\n\nThe program will be closed, and changes will not be saved!" : ""), "Update", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         return;
                     }
@@ -247,7 +247,7 @@ namespace Net
                 char[] slashes = { '\\', '/' };
                 string[] repoData = currentRepo.Split(slashes);
                 Release release = await github.Repository.Release.Get(repoData[0], repoData[1], "Canary" + (currentBranch.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) ? "" : "-" + currentBranch));
-                if(!force)
+                if (!force)
                 {
                     string newID = release.TargetCommitish;
                     if (oldID.Equals(newID, StringComparison.OrdinalIgnoreCase))
@@ -259,11 +259,11 @@ namespace Net
                         return;
                     }
                 }
-                if(release == null)
+                if (release == null || release.Assets.Count == 0)
                 {
                     throw new Exception();
                 }
-                if((manual || GetOpenWindowsCount() > 1) && MessageBox.Show("Update to #" + release.TargetCommitish + " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!", "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                if ((manual || GetOpenWindowsCount() > 1) && MessageBox.Show("Update to #" + release.TargetCommitish + " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!", "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     return;
                 }
@@ -274,7 +274,7 @@ namespace Net
             {
                 Console.WriteLine(e.Message);
                 MessageBox.Show("ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
-                await ForceDownloadRelease(openFile);
+                await ForceDownloadStable(openFile);
             }
         }
 
@@ -395,12 +395,12 @@ namespace Net
                 }
             }
 
-            if(release != null)
+            if (release != null)
             {
                 await DownloadRelease(release, true, true, false, true, "<null>");
             }
         }
-        public static async Task ForceDownloadRelease(string openFile = null)
+        public static async Task ForceDownloadStable(string openFile = null)
         {
             await SetCanaryInactive();
             string repoOwner = mainRepo.Split('/')[0];
@@ -524,7 +524,7 @@ namespace Net
                 sw.Close();
             }
         }
-        
+
         // Used when building for releases
         public static async Task WriteCanaryTime(string commitid = null, string branchName = null, string repo = null)
         {
@@ -537,13 +537,13 @@ namespace Net
 
                 branchName = branchName ?? mainBranch;
                 repo = repo ?? mainRepo;
-                
-                if(!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
+
+                if (!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                 {
                     Directory.CreateDirectory(AppPath + '\\' + "Canary");
                     using (var sw = new StreamWriter(AppPath + '\\' + "Canary" + '\\' + "Branch"))
                     {
-                        if(!repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
+                        if (!repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                         {
                             sw.WriteLine(branchName);
                             sw.Write(repo);
@@ -999,10 +999,10 @@ namespace Net
                         if (args.Length > 1)
                         {
                             t4arg1 = args[1];
-                            if(args.Length > 2)
+                            if (args.Length > 2)
                             {
                                 t4arg2 = args[2];
-                                if(args.Length > 3)
+                                if (args.Length > 3)
                                 {
                                     t4arg3 = args[3];
                                 }
@@ -1018,7 +1018,7 @@ namespace Net
                         break;
                     case "-dlStable": // Force download the latest Stable build
                         somethingDone = true;
-                        Task t6 = Updater.ForceDownloadRelease(args[1]);
+                        Task t6 = Updater.ForceDownloadStable(args[1]);
                         t6.Wait();
                         break;
                     case "-dlDoc": // Force download the latest Documentation build
