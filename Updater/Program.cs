@@ -242,13 +242,12 @@ namespace Net
         {
             try
             {
-                string oldID = "";
-                oldID = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[2];
                 char[] slashes = { '\\', '/' };
                 string[] repoData = currentRepo.Split(slashes);
                 Release release = await github.Repository.Release.Get(repoData[0], repoData[1], "Canary" + (currentBranch.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) ? "" : "-" + currentBranch));
                 if (!force)
                 {
+                    string oldID = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[2];
                     string newID = release.TargetCommitish;
                     if (oldID.Equals(newID, StringComparison.OrdinalIgnoreCase))
                     {
@@ -267,7 +266,7 @@ namespace Net
                 {
                     return;
                 }
-                if (!File.Exists(AppPath + '\\' + "Canary" + '\\' + "Old"))
+                if (!File.Exists(AppPath + '\\' + "Canary" + '\\' + "Old") && File.Exists(AppPath + '\\' + "Canary" + '\\' + "New"))
                 {
                     File.Move(AppPath + '\\' + "Canary" + '\\' + "New", AppPath + '\\' + "Canary" + '\\' + "Old");
                 }
