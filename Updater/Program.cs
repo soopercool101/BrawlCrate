@@ -540,9 +540,11 @@ namespace Net
                 branchName = branchName ?? mainBranch;
                 repo = repo ?? mainRepo;
 
+                DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + '\\' + "Canary");
+                CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+
                 if (!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                 {
-                    Directory.CreateDirectory(AppPath + '\\' + "Canary");
                     using (var sw = new StreamWriter(AppPath + '\\' + "Canary" + '\\' + "Branch"))
                     {
                         if (!repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
@@ -568,8 +570,6 @@ namespace Net
                 result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
                 commitDate = result.Commit.Author.Date;
                 commitDate = commitDate.ToUniversalTime();
-                DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + '\\' + "Canary");
-                CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 string Filename = AppPath + '\\' + "Canary" + '\\' + "New";
                 if (File.Exists(Filename))
                 {
@@ -602,7 +602,7 @@ namespace Net
             {
                 File.Create(AppPath + '\\' + "Canary" + '\\' + "Active");
             }
-
+            Console.WriteLine("Canary Active");
             await Task.Delay(1);
         }
 

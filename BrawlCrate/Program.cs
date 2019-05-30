@@ -30,7 +30,7 @@ namespace BrawlCrate
         public static ResourceNode RootNode { get => _rootNode; set { _rootNode = value; MainForm.Instance.Reset(); } }
         internal static string _rootPath;
 
-        public static string AppPath = Assembly.GetExecutingAssembly().Location;
+        public static string AppPath;
         public static string RootPath => _rootPath;
 
         public static bool Canary;
@@ -38,11 +38,12 @@ namespace BrawlCrate
         static Program()
         {
             Application.EnableVisualStyles();
+            FullPath = Process.GetCurrentProcess().MainModule.FileName;
+            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
             Canary = Directory.Exists(AppPath + "\\Canary") && File.Exists(AppPath + "\\Canary\\Active") && File.Exists(AppPath + "\\Canary\\New");
             AssemblyTitle = Canary ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[1] : ((AssemblyTitleAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
             AssemblyDescription = ((AssemblyDescriptionAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0]).Description;
             AssemblyCopyright = ((AssemblyCopyrightAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
-            FullPath = Process.GetCurrentProcess().MainModule.FileName;
             BrawlLibTitle = ((AssemblyTitleAttribute)Assembly.GetAssembly(typeof(ResourceNode)).GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
 
             _openDlg = new OpenFileDialog();
