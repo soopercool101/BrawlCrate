@@ -267,7 +267,10 @@ namespace Net
                 {
                     return;
                 }
-                File.Move(AppPath + '\\' + "Canary" + '\\' + "New", AppPath + '\\' + "Canary" + '\\' + "Old");
+                if (!File.Exists(AppPath + '\\' + "Canary" + '\\' + "Old"))
+                {
+                    File.Move(AppPath + '\\' + "Canary" + '\\' + "New", AppPath + '\\' + "Canary" + '\\' + "Old");
+                }
                 await DownloadRelease(release, true, true, manual, false, openFile);
             }
             catch (Exception e)
