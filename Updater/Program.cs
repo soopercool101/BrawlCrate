@@ -70,7 +70,7 @@ namespace Net
 
         private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = new Credentials(System.Text.Encoding.Default.GetString(_rawData)) };
 
-        public static async Task CheckUpdate() { await CheckUpdate(true, ""); }
+        public static async Task CheckUpdate() { await CheckUpdate(true); }
 
         // Used to check for and download non-canary releases (including documentation updates)
         public static async Task CheckUpdate(bool Overwrite, string releaseTag = "", bool manual = false, string openFile = null, bool checkDocumentation = false, bool Automatic = false)
@@ -207,6 +207,10 @@ namespace Net
                             }
                         }
                     }
+                    if ((GetOpenWindowsCount() > 1) && MessageBox.Show("Update to " + release.Name + " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!", "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    {
+                        return;
+                    }
                 }
                 else // Allow the user to choose whether or not to download a release if not using the automatic updater
                 {
@@ -231,6 +235,48 @@ namespace Net
                 {
                     MessageBox.Show(e.Message);
                 }
+            }
+        }
+
+        public static async Task CheckCanaryUpdate(string openFile = null, bool manual = false, bool force = false)
+        {
+            // Ensure that canary is active
+            await SetCanaryActive();
+
+            try
+            {
+                string oldID = "";
+                oldID = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "New")[2];
+                char[] slashes = { '\\', '/' };
+                string[] repoData = currentRepo.Split(slashes);
+                Release release = await github.Repository.Release.Get(repoData[0], repoData[1], "Canary" + (currentBranch.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) ? "" : "-" + currentBranch));
+                if(!force)
+                {
+                    string newID = release.TargetCommitish;
+                    if (oldID.Equals(newID, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (manual)
+                        {
+                            MessageBox.Show("No updates found.");
+                        }
+                        return;
+                    }
+                }
+                if(release == null)
+                {
+                    throw new Exception();
+                }
+                if((manual || GetOpenWindowsCount() > 1) && MessageBox.Show("Update to #" + release.TargetCommitish + " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!", "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    return;
+                }
+                await DownloadRelease(release, true, true, manual, false, openFile);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                MessageBox.Show("ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
+                await ForceDownloadRelease(openFile);
             }
         }
 
@@ -267,7 +313,7 @@ namespace Net
 
                     // Download the update, using a download tracker
                     DLProgressWindow.finished = false;
-                    DLProgressWindow dlTrack = new DLProgressWindow(release.Name, AppPath, URL);
+                    DLProgressWindow dlTrack = new DLProgressWindow(release.Name + (release.Name.ToLower().Contains("canary") ? " #" + release.TargetCommitish.Substring(0, 7) : ""), AppPath, URL);
                     while (!DLProgressWindow.finished)
                     {
                         // do nothing
@@ -354,6 +400,18 @@ namespace Net
             if(release != null)
             {
                 await DownloadRelease(release, true, true, false, true, "<null>");
+            }
+        }
+        public static async Task ForceDownloadRelease(string openFile = null)
+        {
+            await SetCanaryInactive();
+            string repoOwner = mainRepo.Split('/')[0];
+            string repoName = mainRepo.Split('/')[1];
+            // get Release
+            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName)).Where(r => !r.Prerelease).ToList();
+            if (releases.Count > 0)
+            {
+                await DownloadRelease(releases[0], true, true, false, true, openFile);
             }
         }
 
@@ -470,7 +528,7 @@ namespace Net
         }
         
         // Used when building for releases
-        public static async Task WriteCanaryTime(string commitid)
+        public static async Task WriteCanaryTime(string commitid, string branchName, string repo)
         {
             try
             {
@@ -479,16 +537,36 @@ namespace Net
                     Console.WriteLine("Attempting to set Canary using sha: " + commitid);
                 }
 
-                string repoOwner = mainRepo.Split('/')[0];
-                string repoName = mainRepo.Split('/')[1];
+                branchName = branchName ?? mainBranch;
+                repo = repo ?? mainRepo;
+                
+                if(!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
+                {
+                    Directory.CreateDirectory(AppPath + '\\' + "Canary");
+                    using (var sw = new StreamWriter(AppPath + '\\' + "Canary" + '\\' + "Branch"))
+                    {
+                        if(!repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
+                        {
+                            sw.WriteLine(branchName);
+                            sw.Write(repo);
+                        }
+                        else
+                        {
+                            sw.Write(branchName);
+                        }
+                        sw.Close();
+                    }
+                }
+
+                string repoOwner = repo.Split('/')[0];
+                string repoName = repo.Split('/')[1];
 
                 Branch branch;
                 GitHubCommit result;
                 DateTimeOffset commitDate;
-                branch = await github.Repository.Branch.Get(repoOwner, repoName, mainBranch);
+                branch = await github.Repository.Branch.Get(repoOwner, repoName, branchName);
                 result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
                 commitDate = result.Commit.Author.Date;
-                currentBranch = mainBranch;
                 commitDate = commitDate.ToUniversalTime();
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
@@ -503,7 +581,7 @@ namespace Net
                     sw.WriteLine(commitDate.ToString("O"));
                     sw.WriteLine(result.Sha.ToString().Substring(0, 7));
                     sw.WriteLine(result.Sha.ToString());
-                    sw.WriteLine(currentBranch);
+                    sw.WriteLine(branchName);
                     sw.Write(currentRepo);
                     sw.Close();
                 }
@@ -745,6 +823,13 @@ namespace Net
                 p.Kill();
             }
         }
+
+        public static int GetOpenWindowsCount()
+        {
+            Process[] px = Process.GetProcessesByName("BrawlCrate");
+            Process[] pToFind = px.Where(x => x.MainModule.FileName.Equals(AppPath + "\\BrawlCrate.exe")).ToArray();
+            return pToFind.Length;
+        }
     }
 
     public static class BugSquish
@@ -902,8 +987,8 @@ namespace Net
                         break;
                     case "-buc": //BrawlCrate Canary update call
                         somethingDone = true;
-                        //Task t2c = Updater.CheckCanaryUpdate(args[2], args[1] != "0");
-                        //t2c.Wait();
+                        Task t2c = Updater.CheckCanaryUpdate(args[1], args[2] != "0", false);
+                        t2c.Wait();
                         break;
                     case "-bi": //BrawlCrate issue call
                         somethingDone = true;
@@ -912,24 +997,36 @@ namespace Net
                         break;
                     case "-bcommitTime": //Called on build to ensure time is saved
                         somethingDone = true;
-                        string t4arg = null;
+                        string t4arg1 = null, t4arg2 = null, t4arg3 = null;
                         if (args.Length > 1)
                         {
-                            t4arg = args[1];
+                            t4arg1 = args[1];
+                            if(args.Length > 2)
+                            {
+                                t4arg2 = args[2];
+                                if(args.Length > 3)
+                                {
+                                    t4arg3 = args[3];
+                                }
+                            }
                         }
-
-                        Task t4 = Updater.WriteCanaryTime(t4arg);
+                        Task t4 = Updater.WriteCanaryTime(t4arg1, t4arg2, t4arg3);
                         t4.Wait();
                         break;
                     case "-dlCanary": // Force download the latest Canary build
                         somethingDone = true;
-                        //Task t5 = Updater.ForceDownloadCanary(args[1]);
-                        //t5.Wait();
+                        Task t5 = Updater.CheckCanaryUpdate(args[1], false, true);
+                        t5.Wait();
                         break;
                     case "-dlStable": // Force download the latest Stable build
                         somethingDone = true;
-                        //Task t6 = Updater.ForceDownloadRelease(args[1]);
-                        //t6.Wait();
+                        Task t6 = Updater.ForceDownloadRelease(args[1]);
+                        t6.Wait();
+                        break;
+                    case "-dlDoc": // Force download the latest Documentation build
+                        somethingDone = true;
+                        Task t6d = Updater.ForceDownloadDocumentation();
+                        t6d.Wait();
                         break;
                     case "-canarylog": // Show changelog for canary
                         somethingDone = true;
