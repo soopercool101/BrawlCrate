@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected override string GetName()
         {
-            return base.GetName("STDT");
+            return base.GetName("Stage Trap Data Table");
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
