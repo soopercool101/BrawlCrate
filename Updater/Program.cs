@@ -20,10 +20,10 @@ namespace Net
     {
         public static readonly string mainRepo = "soopercool101/BrawlCrate";
         public static readonly string mainBranch = "brawlcrate-master";
-        public static string currentRepo = GetCurrentRepo();
-        public static string currentBranch = GetCurrentBranch();
+        public static string currentRepo;
+        public static string currentBranch;
 
-        private static string GetCurrentRepo()
+        public static string GetCurrentRepo()
         {
             try
             {
@@ -41,7 +41,7 @@ namespace Net
             }
         }
 
-        private static string GetCurrentBranch()
+        public static string GetCurrentBranch()
         {
             try
             {
@@ -965,7 +965,8 @@ namespace Net
             }
 
             bool somethingDone = false;
-
+            Updater.currentRepo = Updater.GetCurrentRepo();
+            Updater.currentBranch = Updater.GetCurrentBranch();
             if (args.Length > 0)
             {
                 switch (args[0])
