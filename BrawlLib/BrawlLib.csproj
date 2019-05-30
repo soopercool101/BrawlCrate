@@ -17,7 +17,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>BrawlLib v0.24</AssemblyTitle>
     <Product>BrawlLib</Product>
     <Copyright>Copyright © 2009 - 2017 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky</Copyright>

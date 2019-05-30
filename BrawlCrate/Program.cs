@@ -29,13 +29,17 @@ namespace BrawlCrate
         internal static ResourceNode _rootNode;
         public static ResourceNode RootNode { get => _rootNode; set { _rootNode = value; MainForm.Instance.Reset(); } }
         internal static string _rootPath;
+
+        public static string AppPath = Assembly.GetExecutingAssembly().Location;
         public static string RootPath => _rootPath;
+
+        public static bool Canary;
 
         static Program()
         {
             Application.EnableVisualStyles();
-
-            AssemblyTitle = ((AssemblyTitleAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+            Canary = Directory.Exists(AppPath + "\\Canary") && File.Exists(AppPath + "\\Canary\\Active") && File.Exists(AppPath + "\\Canary\\New");
+            AssemblyTitle = Canary ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[1] : ((AssemblyTitleAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
             AssemblyDescription = ((AssemblyDescriptionAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0]).Description;
             AssemblyCopyright = ((AssemblyCopyrightAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
             FullPath = Process.GetCurrentProcess().MainModule.FileName;

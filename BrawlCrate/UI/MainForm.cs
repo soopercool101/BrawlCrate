@@ -116,13 +116,35 @@ namespace BrawlCrate
                 if (Program.CanRunGithubApp(manual, out string path))
                 {
                     bool _docUpdates = false;
-                    Process.Start(new ProcessStartInfo()
+                    if (Program.Canary)
                     {
-                        FileName = path,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = string.Format("-bu 1 \"{0}\" {1} \"{2}\" {3} {4}",
-                            Program.TagName, manual ? "1" : "0", Program.RootPath ?? "<null>", _docUpdates ? "1" : "0", automatic ? "1" : "0"),
-                    });
+                        Process git = Process.Start(new ProcessStartInfo()
+                        {
+                            FileName = path,
+                            WindowStyle = ProcessWindowStyle.Hidden,
+                            Arguments = string.Format("-buc \"{0}\" {1}", Program.RootPath ?? "<null>", manual ? "1" : "0"),
+                        });
+                        git.WaitForExit();
+                        if(File.Exists(Program.AppPath + "\\Canary\\Old"))
+                        {
+                            Process changelog = Process.Start(new ProcessStartInfo()
+                            {
+                                FileName = path,
+                                WindowStyle = ProcessWindowStyle.Hidden,
+                                Arguments = string.Format("-canarylog"),
+                            });
+                        }
+                    }
+                    else
+                    {
+                        Process.Start(new ProcessStartInfo()
+                        {
+                            FileName = path,
+                            WindowStyle = ProcessWindowStyle.Hidden,
+                            Arguments = string.Format("-bu 1 \"{0}\" {1} \"{2}\" {3} {4}",
+                                Program.TagName, manual ? "1" : "0", Program.RootPath ?? "<null>", _docUpdates ? "1" : "0", automatic ? "1" : "0"),
+                        });
+                    }
                 }
                 else
                 {
