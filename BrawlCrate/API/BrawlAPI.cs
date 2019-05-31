@@ -115,7 +115,7 @@ namespace BrawlCrate.API
 
             fsi_path = BrawlCrate.Properties.Settings.Default.FSharpInstallationPath;
 
-            if (fsi_path == null || fsi_path == "")
+            if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (fsi_path == null || fsi_path == ""))
             {
                 FSharpInstall(out fsi_path);
                 if (fsi_path != null && fsi_path != "")
