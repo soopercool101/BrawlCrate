@@ -548,8 +548,8 @@
     <Compile Remove="SSBB\Types\RARC.cs" />
     <Compile Remove="SSBB\ResourceNodes\Modules\Relocation.cs" />
     <Compile Remove="SSBB\Types\RLYT.cs" />
-    <Compile Remove="System\PowerPCAssembly\PPCData.cs" />
     <Compile Remove="System\PowerPCAssembly\Assembly.cs" />
+    <Compile Remove="System\PowerPCAssembly\PPCData.cs" />
     <Compile Remove="System\Windows\Forms\GradientDialog2.cs" />
     <Compile Remove="System\Audio\G726.cs" />
     <Compile Remove="SSBB\ResourceNodes\Subspace\ADSJNode.cs" />

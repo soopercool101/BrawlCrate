@@ -208,7 +208,10 @@ namespace System.PowerPcAssembly
             set
             {
                 uint baseAddr = Address;
-                if (Absolute) baseAddr = AbsoluteAddr;
+                if (Absolute)
+                {
+                    baseAddr = AbsoluteAddr;
+                }
 
                 _dest = (VoidPtr)(((uint)value).RoundDown(4));
                 _badDest = false;
