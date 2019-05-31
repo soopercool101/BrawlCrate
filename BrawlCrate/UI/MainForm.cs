@@ -125,7 +125,7 @@ namespace BrawlCrate
                             Arguments = string.Format("-buc \"{0}\" {1}", Program.RootPath ?? "<null>", manual ? "1" : "0"),
                         });
                         git.WaitForExit();
-                        if(File.Exists(Program.AppPath + "\\Canary\\Old"))
+                        if (File.Exists(Program.AppPath + "\\Canary\\Old"))
                         {
                             Process changelog = Process.Start(new ProcessStartInfo()
                             {
@@ -738,13 +738,16 @@ namespace BrawlCrate
         private void AddPlugins(ToolStripMenuItem menu, string path)
         {
             DirectoryInfo dir = Directory.CreateDirectory(path);
-            foreach(DirectoryInfo d in dir.GetDirectories())
+            foreach (DirectoryInfo d in dir.GetDirectories())
             {
                 ToolStripMenuItem folder = new ToolStripMenuItem();
                 folder.Name = folder.Text = d.Name;
                 AddPlugins(folder, d.FullName);
                 if (folder.DropDownItems.Count == 0)
+                {
                     continue;
+                }
+
                 menu.DropDownItems.Add(folder);
             }
             foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles(path, p)))

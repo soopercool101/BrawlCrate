@@ -322,7 +322,7 @@ namespace Net
                     dlTrack.Dispose();
                 }
                 // If the update didn't download properly, throw an error
-                if (!File.Exists(AppPath + "/temp.exe") || (new FileInfo(AppPath + "/temp.exe")).Length != (long)DLProgressWindow.MaxValue || (new FileInfo(AppPath + "/temp.exe")).Length == 0)
+                if (!File.Exists(AppPath + "/temp.exe") || (new FileInfo(AppPath + "/temp.exe")).Length != DLProgressWindow.MaxValue || (new FileInfo(AppPath + "/temp.exe")).Length == 0)
                 {
                     MessageBox.Show("Error downloading update");
                     if (File.Exists(AppPath + "/temp.exe"))
@@ -545,7 +545,7 @@ namespace Net
 
                 if (!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                 {
-                    using (var sw = new StreamWriter(AppPath + '\\' + "Canary" + '\\' + "Branch"))
+                    using (StreamWriter sw = new StreamWriter(AppPath + '\\' + "Canary" + '\\' + "Branch"))
                     {
                         if (!repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                         {

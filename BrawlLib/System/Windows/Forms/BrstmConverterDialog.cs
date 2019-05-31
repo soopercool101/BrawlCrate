@@ -31,7 +31,8 @@ namespace System.Windows.Forms
             public int LoopStartSample { get; set; }
             public int LoopEndSample { get; set; }
 
-            public int SamplePosition {
+            public int SamplePosition
+            {
                 get => BaseStream.SamplePosition;
                 set => BaseStream.SamplePosition = value;
             }

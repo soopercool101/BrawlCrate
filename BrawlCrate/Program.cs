@@ -1,7 +1,6 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.IO;
 using BrawlLib.SSBB.ResourceNodes;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

@@ -57,7 +57,9 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (IsDouble)
+            {
                 return _names[1];
+            }
 
             return _names[0];
         }
@@ -80,7 +82,9 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (IsDouble)
+            {
                 return _names[1];
+            }
 
             return _names[0];
         }
@@ -124,10 +128,16 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (_data[1] != 0)
+            {
                 if (_data[2] < 0)
+                {
                     return _names[1];
+                }
                 else
+                {
                     return _names[0];
+                }
+            }
 
             return _names[Math.Min(2, _names.Count - 1)];
         }
@@ -135,8 +145,10 @@ namespace System.PowerPcAssembly
         public override string FormOps()
         {
             if (_data[1] == 0)
+            {
                 return _data.Formal(0) + "," + _data.Formal(2);
                 //return _data.Formal(0) + " = " + _data.Formal(2);
+            }
 
             //if (_data.Formal(0) == _data.Formal(1))
             //{
@@ -179,12 +191,19 @@ namespace System.PowerPcAssembly
             get
             {
                 uint baseAddr = Address;
-                if (Absolute) baseAddr = AbsoluteAddr;
+                if (Absolute)
+                {
+                    baseAddr = AbsoluteAddr;
+                }
 
                 if (BadDestination)
+                {
                     return _dest;
+                }
                 else
+                {
                     return (uint)(baseAddr + _data[0]);
+                }
             }
             set
             {
@@ -195,7 +214,9 @@ namespace System.PowerPcAssembly
                 _badDest = false;
 
                 if (_dest < baseAddr + MaxDistance && _dest >= baseAddr - MaxDistance)
+                {
                     _data[0] = (int)_dest - (int)baseAddr;
+                }
                 else
                 {
                     _badDest = true;
@@ -237,21 +258,31 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (Unknown)
+            {
                 return base.FormName();
+            }
 
             if (!ValCompare)
+            {
                 return _names[1 + (CRCNot ? 1 : 0)] + (Not ? "t" : "f") + (_data[0] < 0 ^ Reverse ? "+" : "-");
+            }
             else
+            {
                 return _names[3 + (ValCmpType * 2) + (Not ? 1 : 0)] + (_data[0] < 0 ^ Reverse ? "+" : "-");
+            }
         }
 
         public override string FormOps()
         {
             if (Unknown)
+            {
                 return "0x" + PPCFormat.Word(this);
+            }
 
             if (/*Address == 0 && */!Absolute)
+            {
                 return (_data.Formal(1) != "" ? _data.Formal(1) + "," : "") + PPCFormat.SOffset((int)Destination);
+            }
 
             return (_data.Formal(1) != "" ? _data.Formal(1) + "," : "") + PPCFormat.Offset(Destination);
         }
@@ -277,7 +308,9 @@ namespace System.PowerPcAssembly
         public override string FormOps()
         {
             if (/*Address == 0 && */!Absolute)
+            {
                 return PPCFormat.SOffset((int)Destination);
+            }
 
             return PPCFormat.Offset(Destination);
         }
@@ -354,8 +387,12 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (!Exclusive)
+            {
                 if (_data[1] == _data[2])
+                {
                     return _names[1];
+                }
+            }
 
             return base.FormName();
         }
@@ -363,8 +400,12 @@ namespace System.PowerPcAssembly
         public override string FormOps()
         {
             if (!Exclusive)
+            {
                 if (_data[1] == _data[2])
+                {
                     return _data.Formal(0) + "," + _data.Formal(1);
+                }
+            }
 
             return base.FormOps();
         }
@@ -386,8 +427,12 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (!Exclusive)
+            {
                 if (_data[0] == 0 && _data[1] == 0 && _data[2] == 0)
+                {
                     return _names[1];
+                }
+            }
 
             return base.FormName();
         }
@@ -395,8 +440,12 @@ namespace System.PowerPcAssembly
         public override string FormOps()
         {
             if (!Exclusive)
+            {
                 if (_data[0] == 0 && _data[1] == 0 && _data[2] == 0)
+                {
                     return "";
+                }
+            }
 
             return base.FormOps();
         }
@@ -467,9 +516,13 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (!SetCr)
+            {
                 return _names[0];
+            }
             else
+            {
                 return _names[1];
+            }
         }
     }
 
@@ -488,9 +541,13 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (!SetCr)
+            {
                 return _names[0];
+            }
             else
+            {
                 return _names[1];
+            }
         }
     }
 

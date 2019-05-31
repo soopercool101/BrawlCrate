@@ -33,7 +33,8 @@ namespace System.Windows.Forms
             }
         }
 
-        public float this[int index] {
+        public float this[int index]
+        {
             get => _boxes[index].Value;
             set => _boxes[index].Value = value;
         }

@@ -593,7 +593,7 @@ namespace BrawlLib.Wii.Graphics
                         wl("vec4 {0} = {1};", lightColorName, vec4One);
                         wl();
 
-#region Diffuse Attenuation
+                        #region Diffuse Attenuation
 
                         //Initialize attenuation value with diffuse attenuation
                         string cAttn = string.Format("float {0}{1} = ", attnName, colorPassSuffix) + "{0};";
@@ -610,7 +610,7 @@ namespace BrawlLib.Wii.Graphics
                             case GXDiffuseFn.Enabled: wl(aAttn, NdotLName); break;
                             case GXDiffuseFn.Clamped: wl(aAttn, "satlf(" + NdotLName + ")"); break;
                         }
-#endregion
+                        #endregion
 
                         wl();
 
@@ -1150,7 +1150,7 @@ namespace BrawlLib.Wii.Graphics
             }
         }
 
-#region String Helpers
+        #region String Helpers
 
         private static string Tabs
         {
@@ -1243,9 +1243,9 @@ namespace BrawlLib.Wii.Graphics
         {
             wl("}");
         }
-#endregion
+        #endregion
 
-#region Uniform Types
+        #region Uniform Types
         private static void Uniform(int pHandle, string name, params Vector4[] p)
         {
             int u = GL.GetUniformLocation(pHandle, name);
@@ -1307,9 +1307,9 @@ namespace BrawlLib.Wii.Graphics
                 Uniform(pHandle, x + LightDistCoefsSpecName, frame.SpecK);
             }
         }
-#endregion
+        #endregion
 
-#region Light
+        #region Light
         private const string LightStructName = "LightFrame";
         private const string LightEnabledName = "enabled";
         private const string LightSpecEnabledName = "hasSpecular";
@@ -1342,9 +1342,9 @@ namespace BrawlLib.Wii.Graphics
             wl("};");
             wl();
         }
-#endregion
+        #endregion
 
-#region Variable Names
+        #region Variable Names
 
         private const string Trunc1Name = "truncc1";
         private const string Trunc3Name = "truncc3";
@@ -1473,9 +1473,9 @@ namespace BrawlLib.Wii.Graphics
             "(({0}) && (!({1}))) || ((!({0})) && ({1}))",
             "(({0}) && ({1})) || ((!({0})) && (!({1})))"
         };
-#endregion
+        #endregion
 
-#region Other Functions
+        #region Other Functions
         private static string HandleProblem(string message)
         {
 #if DEBUG
@@ -1522,7 +1522,7 @@ namespace BrawlLib.Wii.Graphics
             _material = null;
             _shaderNode = null;
         }
-#endregion
+        #endregion
 
         public static string CombineFragShader(string matSource, string[] shaderStages, int stageCount)
         {
