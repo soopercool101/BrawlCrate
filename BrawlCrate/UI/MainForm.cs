@@ -87,36 +87,43 @@ namespace BrawlCrate
                 RecentFileToolStripItem = recentFilesToolStripMenuItem
             };
 
-            // Load plugins in a seperate work thread to prevent startup lag
-            using (BackgroundWorker b = new BackgroundWorker())
+            if (BrawlCrate.Properties.Settings.Default.APIEnabled)
             {
-                b.DoWork += new DoWorkEventHandler((object sender, DoWorkEventArgs e) =>
+                // Load plugins in a seperate work thread to prevent startup lag
+                using (BackgroundWorker b = new BackgroundWorker())
                 {
-                    string plugins = $"{Application.StartupPath}/Plugins";
-                    string loaders = $"{Application.StartupPath}/Loaders";
+                    b.DoWork += new DoWorkEventHandler((object sender, DoWorkEventArgs e) =>
+                    {
+                        string plugins = $"{Application.StartupPath}/Plugins";
+                        string loaders = $"{Application.StartupPath}/Loaders";
 
-                    if (!Directory.Exists(loaders) || Directory.CreateDirectory(loaders).GetFiles().Count() <= 0)
-                    {
-                        LoadersLoaded = true;
-                    }
-
-                    API.BrawlAPI.Plugins.Clear();
-                    API.BrawlAPI.Loaders.Clear();
-                    pluginToolStripMenuItem.DropDown.Items.Clear();
-                    if (Directory.Exists(plugins))
-                    {
-                        reloadPluginsToolStripMenuItem_Click(null, null);
-                    }
-                    if (Directory.Exists(loaders))
-                    {
-                        foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
+                        if (!Directory.Exists(loaders) || Directory.CreateDirectory(loaders).GetFiles().Count() <= 0)
                         {
-                            API.BrawlAPI.CreatePlugin(str, true);
+                            LoadersLoaded = true;
                         }
-                    }
-                    LoadersLoaded = true;
-                });
-                b.RunWorkerAsync();
+
+                        API.BrawlAPI.Plugins.Clear();
+                        API.BrawlAPI.Loaders.Clear();
+                        pluginToolStripMenuItem.DropDown.Items.Clear();
+                        if (Directory.Exists(plugins))
+                        {
+                            reloadPluginsToolStripMenuItem_Click(null, null);
+                        }
+                        if (Directory.Exists(loaders))
+                        {
+                            foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
+                            {
+                                API.BrawlAPI.CreatePlugin(str, true);
+                            }
+                        }
+                        LoadersLoaded = true;
+                    });
+                    b.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                // TO-DO: Delete plugin-centric toolbar items
             }
         }
 
@@ -767,7 +774,7 @@ namespace BrawlCrate
             }
             foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles(path, p)))
             {
-                if(BrawlAPI.CreatePlugin(str, false))
+                if (BrawlAPI.CreatePlugin(str, false))
                 {
                     menu.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
                 }

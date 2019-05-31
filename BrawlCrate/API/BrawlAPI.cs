@@ -28,11 +28,9 @@ namespace BrawlCrate.API
         {
             get
             {
-                return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && _fsharpPathFound;
+                return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && fsi_path.Equals("(none)") && fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
             }
         }
-        private static bool _fsharpPathFound = true;
-
         private static string fsi_path;
 
         static BrawlAPI()
@@ -115,6 +113,18 @@ namespace BrawlCrate.API
             // If any python installations are found, add them to the search pathsp
             Engine.SetSearchPaths(searchPaths.ToArray());
 
+            fsi_path = BrawlCrate.Properties.Settings.Default.FSharpInstallationPath;
+
+            if (fsi_path == null || fsi_path == "")
+            {
+                FSharpInstall(out fsi_path);
+                if (fsi_path != null && fsi_path != "")
+                {
+                    BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = fsi_path;
+                    BrawlCrate.Properties.Settings.Default.Save();
+                }
+            }
+
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
             Assembly brawllib = Assembly.GetAssembly(typeof(ResourceNode));
@@ -138,12 +148,8 @@ namespace BrawlCrate.API
 
         internal static void RunScript(string path)
         {
-            if (Path.GetExtension(path) == ".fsx")
+            if (Path.GetExtension(path).Equals(".fsx", StringComparison.OrdinalIgnoreCase))
             {
-                if(fsi_path != null)
-                {
-                    _fsharpPathFound = FSharpEnabled && FSharpInstall(out fsi_path);
-                }
                 if (FSharpEnabled)
                 {
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
@@ -229,10 +235,6 @@ namespace BrawlCrate.API
         {
             try
             {
-                if (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && FSharpEnabled && fsi_path == null)
-                {
-                    _fsharpPathFound = FSharpEnabled && FSharpInstall(out fsi_path);
-                }
                 if ((path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled) || (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled))
                 {
                     return false;
@@ -307,6 +309,10 @@ namespace BrawlCrate.API
                 if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio? You may have to restart the program for changes to take effect.", "BrawlAPI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
                 {
                     Process.Start("https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
+                }
+                else
+                {
+                    fsi_path = "(none)";
                 }
                 return false;
             }

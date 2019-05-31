@@ -116,5 +116,29 @@ namespace BrawlCrate.Properties {
                 this["PythonInstallationPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FSharpInstallationPath {
+            get {
+                return ((string)(this["FSharpInstallationPath"]));
+            }
+            set {
+                this["FSharpInstallationPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APIEnabled {
+            get {
+                return ((bool)(this["APIEnabled"]));
+            }
+            set {
+                this["APIEnabled"] = value;
+            }
+        }
     }
 }
