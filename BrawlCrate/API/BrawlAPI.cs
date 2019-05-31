@@ -140,7 +140,10 @@ namespace BrawlCrate.API
         {
             if (Path.GetExtension(path) == ".fsx")
             {
-                _fsharpPathFound = FSharpEnabled && FSharpInstall(out fsi_path);
+                if(fsi_path != null)
+                {
+                    _fsharpPathFound = FSharpEnabled && FSharpInstall(out fsi_path);
+                }
                 if (FSharpEnabled)
                 {
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
