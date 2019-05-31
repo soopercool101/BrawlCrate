@@ -16,6 +16,13 @@ namespace BrawlCrate.API
 {
     public static class BrawlAPI
     {
+        public static bool PythonEnabled
+        {
+            get
+            {
+                return Engine.GetSearchPaths().Count > 0;
+            }
+        }
         static BrawlAPI()
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
@@ -25,7 +32,76 @@ namespace BrawlCrate.API
             Runtime = Engine.Runtime;
 
             // Setup IronPython engine
-            Engine.SetSearchPaths(new string[] { $"{ Application.StartupPath }/Python" });
+            string settingPath = BrawlCrate.Properties.Settings.Default.PythonInstallationPath;
+            List<string> searchPaths = new List<string>();
+            // First, search the directory found in the settings
+            if (!settingPath.Equals("") && Directory.Exists(settingPath))
+            {
+                if (Directory.Exists(settingPath + "/Lib"))
+                {
+                    searchPaths.Add($"{ settingPath }/Lib");
+                }
+                else
+                {
+                    searchPaths.Add(settingPath);
+                }
+            }
+            // Then check for Python 2.7 (The recommended version for iron python) in its default installation directory
+            else if (Directory.Exists("C:/Python27/Lib"))
+            {
+                searchPaths.Add("C:/Python27/Lib");
+            }
+            // Finally, search for any other Python installations in their default directories
+            else
+            {
+                foreach (DirectoryInfo d in Directory.CreateDirectory("C:/").GetDirectories().Reverse())
+                {
+                    if (d.FullName.StartsWith("C:/Python") && Directory.Exists(d.FullName + "/Lib"))
+                    {
+                        searchPaths.Add($"{ d.FullName }/Lib");
+                        break;
+                    }
+                }
+            }
+            // Then see if there's a directory included in the installation (This can also be used for additional modules or a primary install, so add it in addition)
+            if (Directory.Exists($"{ Application.StartupPath }/Python"))
+            {
+                if(!searchPaths.Contains($"{ Application.StartupPath }/Python"))
+                {
+                    searchPaths.Add($"{ Application.StartupPath }/Python");
+                }
+            }
+
+            if(settingPath.Equals("") || settingPath.Equals("(none)"))
+            {
+                if(searchPaths.Count > 0)
+                {
+                    MessageBox.Show("Python primary installation path was detected to be: " + searchPaths[0] + "\n\nThis can be changed anytime in the settings.", "BrawlAPI");
+                    BrawlCrate.Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
+                    BrawlCrate.Properties.Settings.Default.Save();
+                }
+                else if (!settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
+                {
+                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    {
+                        if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
+                            && dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            searchPaths.Add(BrawlCrate.Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath);
+                            BrawlCrate.Properties.Settings.Default.Save();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.");
+                            BrawlCrate.Properties.Settings.Default.PythonInstallationPath = "(none)";
+                            BrawlCrate.Properties.Settings.Default.Save();
+                        }
+                    }
+                }
+            }
+
+            // If any python installations are found, add them to the search pathsp
+            Engine.SetSearchPaths(searchPaths.ToArray());
 
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
@@ -117,7 +193,7 @@ namespace BrawlCrate.API
                     };
                 }
             }
-            else
+            else if (PythonEnabled)
             {
                 try
                 {
@@ -152,10 +228,14 @@ namespace BrawlCrate.API
                 }
             }
         }
-        internal static void CreatePlugin(string path, bool loader)
+        internal static bool CreatePlugin(string path, bool loader)
         {
             try
             {
+                if(path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled)
+                {
+                    return false;
+                }
                 ScriptSource script = Engine.CreateScriptSourceFromFile(path);
                 CompiledCode code = script.Compile();
                 ScriptScope scope = Engine.CreateScope();
@@ -167,6 +247,7 @@ namespace BrawlCrate.API
                 {
                     script.Execute();
                 }
+                return true;
             }
             catch (SyntaxErrorException e)
             {
@@ -193,6 +274,7 @@ namespace BrawlCrate.API
                     ShowMessage(msg, Path.GetFileName(path));
                 }
             }
+            return false;
         }
         internal static void ConvertPlugin(string path)
         {

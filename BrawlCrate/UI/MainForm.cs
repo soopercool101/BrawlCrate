@@ -752,8 +752,10 @@ namespace BrawlCrate
             }
             foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles(path, p)))
             {
-                BrawlAPI.CreatePlugin(str, false);
-                menu.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
+                if(BrawlAPI.CreatePlugin(str, false))
+                {
+                    menu.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
+                }
             }
         }
     }

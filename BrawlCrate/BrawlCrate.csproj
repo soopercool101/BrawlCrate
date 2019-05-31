@@ -119,6 +119,11 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="UI\TreeViewMS.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -126,11 +131,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Update="UI\AboutForm.cs">
       <SubType>Form</SubType>
@@ -220,10 +220,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Resources\ARC.png" />
   </ItemGroup>
   <ItemGroup>
@@ -357,11 +353,15 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <None Update="Plugins\Examples\Dump Textures.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="if EXIST &quot;$(TargetDir)Updater.exe&quot; (&#xD;&#xA;  &quot;$(TargetDir)Updater.exe&quot; -killAll&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)" />
   </Target>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;mkdir Python&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)$(ProjectName)\Lib\*&quot; &quot;$(TargetDir)\Python\&quot; /Y /I /E&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)" />
+    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)" />
   </Target>
 </Project>

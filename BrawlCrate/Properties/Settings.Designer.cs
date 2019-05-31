@@ -8,186 +8,112 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-namespace BrawlCrate.Properties
-{
+namespace BrawlCrate.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.1.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public ModelEditorSettings ViewerSettings
-        {
-            get
-            {
-                return ((ModelEditorSettings)(this["ViewerSettings"]));
+        public global::System.ModelEditorSettings ViewerSettings {
+            get {
+                return ((global::System.ModelEditorSettings)(this["ViewerSettings"]));
             }
-            set
-            {
+            set {
                 this["ViewerSettings"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("false")]
-        public bool ViewerSettingsSet
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ViewerSettingsSet {
+            get {
                 return ((bool)(this["ViewerSettingsSet"]));
             }
-            set
-            {
+            set {
                 this["ViewerSettingsSet"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection RecentFiles
-        {
-            get
-            {
+        public global::System.Collections.Specialized.StringCollection RecentFiles {
+            get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["RecentFiles"]));
             }
-            set
-            {
+            set {
                 this["RecentFiles"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int RecentFilesMax
-        {
-            get
-            {
+        public int RecentFilesMax {
+            get {
                 return ((int)(this["RecentFilesMax"]));
             }
-            set
-            {
+            set {
                 this["RecentFilesMax"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("false")]
-        public bool DisplayPropertyDescriptionWhenAvailable
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DisplayPropertyDescriptionWhenAvailable {
+            get {
                 return ((bool)(this["DisplayPropertyDescriptionWhenAvailable"]));
             }
-            set
-            {
+            set {
                 this["DisplayPropertyDescriptionWhenAvailable"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("true")]
-        public bool CheckUpdatesAtStartup
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckUpdatesAtStartup {
+            get {
                 return ((bool)(this["CheckUpdatesAtStartup"]));
             }
-            set
-            {
+            set {
                 this["CheckUpdatesAtStartup"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("true")]
-        public bool UpdateAutomatically
-        {
-            get
-            {
-                return ((bool)(this["UpdateAutomatically"]));
-            }
-            set
-            {
-                this["UpdateAutomatically"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("false")]
-        public bool GetDocumentationUpdates
-        {
-            get
-            {
-                return ((bool)(this["GetDocumentationUpdates"]));
-            }
-            set
-            {
-                this["GetDocumentationUpdates"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("false")]
-        public bool DownloadCanaryBuilds
-        {
-            get
-            {
-                return ((bool)(this["DownloadCanaryBuilds"]));
-            }
-            set
-            {
-                this["DownloadCanaryBuilds"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("false")]
-        public bool PixelLighting
-        {
-            get
-            {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PixelLighting {
+            get {
                 return ((bool)(this["PixelLighting"]));
             }
-            set
-            {
+            set {
                 this["PixelLighting"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("true")]
-        public bool UpdateSettings
-        {
-            get
-            {
-                return ((bool)(this["UpdateSettings"]));
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PythonInstallationPath {
+            get {
+                return ((string)(this["PythonInstallationPath"]));
             }
-            set
-            {
-                this["UpdateSettings"] = value;
+            set {
+                this["PythonInstallationPath"] = value;
             }
         }
     }
