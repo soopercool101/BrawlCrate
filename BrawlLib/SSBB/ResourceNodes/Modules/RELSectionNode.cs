@@ -18,8 +18,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool _isCodeSection = false;
         public bool _isBSSSection = false;
-        public int _dataOffset = 0;
-        public uint _endBufferSize = 0x0;
+        public int _dataOffset;
+        public uint _endBufferSize;
         public uint _dataSize;
         public int _dataAlign;
 
