@@ -95,7 +95,7 @@ namespace BrawlCrate
                     string plugins = $"{Application.StartupPath}/Plugins";
                     string loaders = $"{Application.StartupPath}/Loaders";
 
-                    if (!Directory.Exists(loaders))
+                    if (!Directory.Exists(loaders) || Directory.CreateDirectory(loaders).GetFiles().Count() <= 0)
                     {
                         LoadersLoaded = true;
                     }
