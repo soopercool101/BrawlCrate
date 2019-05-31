@@ -31,7 +31,7 @@ namespace BrawlCrate.API
                 return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && _fsharpPathFound;
             }
         }
-        private static bool _fsharpPathFound;
+        private static bool _fsharpPathFound = true;
 
         private static string fsi_path;
 
