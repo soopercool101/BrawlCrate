@@ -28,7 +28,7 @@ namespace BrawlCrate.API
         {
             get
             {
-                return Environment.OSVersion.Platform.ToString().Contains("windows", StringComparison.OrdinalIgnoreCase) && _fsharpPathFound;
+                return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && _fsharpPathFound;
             }
         }
         private static bool _fsharpPathFound;
@@ -88,7 +88,6 @@ namespace BrawlCrate.API
             {
                 if(searchPaths.Count > 0)
                 {
-                    //MessageBox.Show("Python primary installation path was detected to be: " + searchPaths[0] + "\n\nThis can be changed anytime in the settings.", "BrawlAPI");
                     BrawlCrate.Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
                     BrawlCrate.Properties.Settings.Default.Save();
                 }
