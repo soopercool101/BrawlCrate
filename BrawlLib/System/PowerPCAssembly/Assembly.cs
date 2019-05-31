@@ -107,7 +107,9 @@ namespace System.PowerPcAssembly
         public override string FormName()
         {
             if (_data[2] < 0)
+            {
                 return _names[1];
+            }
 
             return _names[0];
         }
