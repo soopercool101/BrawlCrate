@@ -5,6 +5,15 @@ namespace System
 {
     public static class StringExtension
     {
+        public static bool Contains(this string source, char value)
+        {
+            return source.IndexOf(value) >= 0;
+        }
+        public static bool Contains(this string source, char value, StringComparison comp)
+        {
+            return source.IndexOf(value.ToString(), comp) >= 0;
+        }
+
         public static bool Contains(this string source, string value, StringComparison comp)
         {
             return source.IndexOf(value, comp) >= 0;

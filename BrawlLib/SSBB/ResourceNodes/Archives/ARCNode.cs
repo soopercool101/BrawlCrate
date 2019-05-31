@@ -331,7 +331,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected virtual string GetName(string fileType)
         {
-            fileType = System.Text.RegularExpressions.Regex.Replace(fileType, "(\\B[A-Z])", " $1");
+            if (fileType.Length > 4 && !fileType.Contains(' '))
+            {
+                fileType = System.Text.RegularExpressions.Regex.Replace(fileType, "(\\B[A-Z])", " $1");
+            }
             string s = string.Format("{0} [{1}]", fileType, _fileIndex);
             if (_group != 0)
             {
