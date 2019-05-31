@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public ModuleNode _module;
         public ModuleDataNode _data;
 
-        public ModuleDataNode DataNode => _reference ?? _data;
+        public ModuleDataNode DataNode => _reference == null ? _data : _reference;
 
         public SortedList<int, List<RelocationTarget>> _linkedCommands;
         private readonly Dictionary<int, List<RelocationTarget>> _linkedBranches;

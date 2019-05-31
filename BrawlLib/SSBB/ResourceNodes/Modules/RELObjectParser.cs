@@ -57,7 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             uint relOffset = cmd.Apply(Manager.GetUint(index), 0);
-            if (_objectSection._dataOffset + relOffset > _objectSection._dataSize)
+            if (relOffset > _objectSection._dataOffset + _objectSection._dataSize)
             {
                 return null;
             }

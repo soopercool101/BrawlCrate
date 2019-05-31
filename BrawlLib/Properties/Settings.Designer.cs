@@ -80,5 +80,17 @@ namespace BrawlLib.Properties {
                 this["AudioVolumePercent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoCompressModules {
+            get {
+                return ((bool)(this["AutoCompressModules"]));
+            }
+            set {
+                this["AutoCompressModules"] = value;
+            }
+        }
     }
 }
