@@ -271,6 +271,11 @@ namespace BrawlCrate
                 return false;
             }
 
+            // Wait for the loaders to be loaded
+            while (!MainForm.LoadersLoaded)
+            {
+                // Do nothing
+            }
 #if !DEBUG
             try
             {

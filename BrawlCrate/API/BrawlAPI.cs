@@ -87,12 +87,13 @@ namespace BrawlCrate.API
                         if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
                             && dlg.ShowDialog() == DialogResult.OK)
                         {
-                            searchPaths.Add(BrawlCrate.Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath);
+                            searchPaths.Add(dlg.SelectedPath);
+                            BrawlCrate.Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
                             BrawlCrate.Properties.Settings.Default.Save();
                         }
                         else
                         {
-                            MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.");
+                            MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
                             BrawlCrate.Properties.Settings.Default.PythonInstallationPath = "(none)";
                             BrawlCrate.Properties.Settings.Default.Save();
                         }

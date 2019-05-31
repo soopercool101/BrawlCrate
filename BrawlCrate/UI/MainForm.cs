@@ -50,6 +50,7 @@ namespace BrawlCrate
             _interpolationForm = null;
         }
 
+        public static bool LoadersLoaded;
         public MainForm()
         {
             InitializeComponent();
@@ -86,22 +87,36 @@ namespace BrawlCrate
                 RecentFileToolStripItem = recentFilesToolStripMenuItem
             };
 
-            string plugins = $"{Application.StartupPath}/Plugins";
-            string loaders = $"{Application.StartupPath}/Loaders";
-
-            API.BrawlAPI.Plugins.Clear();
-            API.BrawlAPI.Loaders.Clear();
-            pluginToolStripMenuItem.DropDown.Items.Clear();
-            if (Directory.Exists(plugins))
+            // Load plugins in a seperate work thread to prevent startup lag
+            using (BackgroundWorker b = new BackgroundWorker())
             {
-                reloadPluginsToolStripMenuItem_Click(null, null);
-            }
-            if (Directory.Exists(loaders))
-            {
-                foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
+                b.DoWork += new DoWorkEventHandler((object sender, DoWorkEventArgs e) =>
                 {
-                    API.BrawlAPI.CreatePlugin(str, true);
-                }
+                    string plugins = $"{Application.StartupPath}/Plugins";
+                    string loaders = $"{Application.StartupPath}/Loaders";
+
+                    if (Directory.Exists(loaders))
+                    {
+                        LoadersLoaded = true;
+                    }
+
+                    API.BrawlAPI.Plugins.Clear();
+                    API.BrawlAPI.Loaders.Clear();
+                    pluginToolStripMenuItem.DropDown.Items.Clear();
+                    if (Directory.Exists(plugins))
+                    {
+                        reloadPluginsToolStripMenuItem_Click(null, null);
+                    }
+                    if (Directory.Exists(loaders))
+                    {
+                        foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
+                        {
+                            API.BrawlAPI.CreatePlugin(str, true);
+                        }
+                    }
+                    LoadersLoaded = true;
+                });
+                b.RunWorkerAsync();
             }
         }
 
