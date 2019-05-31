@@ -23,6 +23,18 @@ namespace BrawlCrate.API
                 return Engine.GetSearchPaths().Count > 0;
             }
         }
+
+        public static bool FSharpEnabled
+        {
+            get
+            {
+                return Environment.OSVersion.Platform.ToString().Contains("windows", StringComparison.OrdinalIgnoreCase) && _fsharpPathFound;
+            }
+        }
+        private static bool _fsharpPathFound;
+
+        private static string fsi_path;
+
         static BrawlAPI()
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
@@ -76,7 +88,7 @@ namespace BrawlCrate.API
             {
                 if(searchPaths.Count > 0)
                 {
-                    MessageBox.Show("Python primary installation path was detected to be: " + searchPaths[0] + "\n\nThis can be changed anytime in the settings.", "BrawlAPI");
+                    //MessageBox.Show("Python primary installation path was detected to be: " + searchPaths[0] + "\n\nThis can be changed anytime in the settings.", "BrawlAPI");
                     BrawlCrate.Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
                     BrawlCrate.Properties.Settings.Default.Save();
                 }
@@ -116,7 +128,6 @@ namespace BrawlCrate.API
 
             // Hook the main form's resourceTree selection changed event to add contextMenu items to nodewrapper
             MainForm.Instance.resourceTree.SelectionChanged += ResourceTree_SelectionChanged;
-
         }
         internal static ScriptEngine Engine { get; set; }
         internal static ScriptRuntime Runtime { get; set; }
@@ -130,29 +141,8 @@ namespace BrawlCrate.API
         {
             if (Path.GetExtension(path) == ".fsx")
             {
-                string fsi_path =
-                    new[] {
-                        ".",
-                        Environment.GetEnvironmentVariable("ProgramFiles"),
-                        Environment.GetEnvironmentVariable("ProgramFiles(x86)")
-                    }
-                    .Where(s => s != null)
-                    .SelectMany(s => new[] {
-                        Path.Combine(s, "Microsoft SDKs", "F#"),
-                        Path.Combine(s, "Microsoft Visual Studio")
-                    })
-                    .SelectMany(dir => Directory.Exists(dir)
-                        ? Directory.GetFiles(dir, "fsi.exe", SearchOption.AllDirectories)
-                        : new string[0])
-                    .FirstOrDefault(s => File.Exists(s));
-                if (fsi_path == null)
-                {
-                    if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio?", "BrawlCrate", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
-                    {
-                        Process.Start("https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
-                    }
-                }
-                else
+                _fsharpPathFound = FSharpEnabled && FSharpInstall(out fsi_path);
+                if (FSharpEnabled)
                 {
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
                     using (StreamReader srIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read)))
@@ -192,6 +182,10 @@ namespace BrawlCrate.API
                             }
                         }
                     };
+                }
+                else
+                {
+                    MessageBox.Show("F# was not found to be properly installed on this system. Please install F# and try again.", "BrawlAPI");
                 }
             }
             else if (PythonEnabled)
@@ -233,7 +227,11 @@ namespace BrawlCrate.API
         {
             try
             {
-                if(path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled)
+                if (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && FSharpEnabled && fsi_path == null)
+                {
+                    _fsharpPathFound = FSharpEnabled && FSharpInstall(out fsi_path);
+                }
+                if ((path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled) || (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled))
                 {
                     return false;
                 }
@@ -283,6 +281,37 @@ namespace BrawlCrate.API
             text = text.Replace("BrawlBox", "BrawlCrate");
             text = text.Replace("bboxapi", "BrawlAPI");
             File.WriteAllText(path, text);
+        }
+
+        internal static bool FSharpInstall(out string fsi_path)
+        {
+            fsi_path =
+                    new[] {
+                        ".",
+                        Environment.GetEnvironmentVariable("ProgramFiles"),
+                        Environment.GetEnvironmentVariable("ProgramFiles(x86)")
+                    }
+                    .Where(s => s != null)
+                    .SelectMany(s => new[] {
+                        Path.Combine(s, "Microsoft SDKs", "F#"),
+                        Path.Combine(s, "Microsoft Visual Studio")
+                    })
+                    .SelectMany(dir => Directory.Exists(dir)
+                        ? Directory.GetFiles(dir, "fsi.exe", SearchOption.AllDirectories)
+                        : new string[0])
+                    .FirstOrDefault(s => File.Exists(s));
+            if (fsi_path == null)
+            {
+                if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio? You may have to restart the program for changes to take effect.", "BrawlAPI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
+                {
+                    Process.Start("https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
+                }
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
