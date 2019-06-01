@@ -56,8 +56,8 @@
     <Setting Name="DiscordRPCEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DiscordRPCNameType" Type="BrawlCrate.Discord.DiscordSettings.ModNameType" Scope="User">
-      <Value Profile="(Default)">BrawlCrate.Discord.DiscordSettings.ModNameType.Disabled</Value>
+    <Setting Name="DiscordRPCNameType" Type="System.Nullable&lt;BrawlCrate.Discord.DiscordSettings.ModNameType&gt;" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DiscordRPCNameCustom" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

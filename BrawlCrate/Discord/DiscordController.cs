@@ -3,18 +3,19 @@ using System.IO;
 
 namespace BrawlCrate.Discord
 {
-    public class DiscordController
+    public static class DiscordController
     {
-        public DiscordRpc.RichPresence presence;
-        private DiscordRpc.EventHandlers handlers;
-        public string applicationId = (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Active")) ? "545788780980994078" : "545732315658059801";
-        public string optionalSteamId;
+        public static DiscordRpc.RichPresence presence;
+        private static DiscordRpc.EventHandlers handlers;
+        private static readonly string applicationId = (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Active")) ? "545788780980994078" : "545732315658059801";
 
         /// <summary>
         ///     Initializes Discord RPC
         /// </summary>
-        public void Initialize()
+        public static void Initialize()
         {
+            DiscordRpc.ClearPresence();
+            DiscordRpc.Shutdown();
             presence = new DiscordRpc.RichPresence();
             handlers = new DiscordRpc.EventHandlers
             {
@@ -22,22 +23,22 @@ namespace BrawlCrate.Discord
             };
             handlers.disconnectedCallback += DisconnectedCallback;
             handlers.errorCallback += ErrorCallback;
-            DiscordRpc.Initialize(applicationId, ref handlers, true, optionalSteamId);
+            DiscordRpc.Initialize(applicationId, ref handlers, true, "");
         }
 
-        public void ReadyCallback()
+        public static void ReadyCallback()
         {
             Console.WriteLine("Discord RPC is ready!");
         }
 
-        public void DisconnectedCallback(int errorCode, string message)
+        public static void DisconnectedCallback(int errorCode, string message)
         {
-            Console.WriteLine($"Error: {errorCode} - {message}");
+            Console.WriteLine($"Disconnected Error: {errorCode} - {message}");
         }
 
-        public void ErrorCallback(int errorCode, string message)
+        public static void ErrorCallback(int errorCode, string message)
         {
-            Console.WriteLine($"Error: {errorCode} - {message}");
+            System.Windows.Forms.MessageBox.Show("Discord Rich Presence Error " + errorCode + "\n\n" + message, "Discord Rich Presence", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
     }
 }

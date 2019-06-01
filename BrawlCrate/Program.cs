@@ -32,14 +32,13 @@ namespace BrawlCrate
         public static string AppPath;
         public static string RootPath => _rootPath;
 
-        public static bool Canary;
+        public static bool Canary => Directory.Exists(AppPath + "\\Canary") && File.Exists(AppPath + "\\Canary\\Active") && File.Exists(AppPath + "\\Canary\\New");
 
         static Program()
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
-            Canary = Directory.Exists(AppPath + "\\Canary") && File.Exists(AppPath + "\\Canary\\Active") && File.Exists(AppPath + "\\Canary\\New");
             AssemblyTitle = Canary ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[1] : ((AssemblyTitleAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
             AssemblyDescription = ((AssemblyDescriptionAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0]).Description;
             AssemblyCopyright = ((AssemblyCopyrightAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
@@ -178,7 +177,15 @@ namespace BrawlCrate
                     throw x;
                 }
             }
-            finally { Close(true); }
+            finally
+            {
+                Close(true);
+                if (CanRunDiscordRPC())
+                {
+                    Discord.DiscordRpc.ClearPresence();
+                    Discord.DiscordRpc.Shutdown();
+                }
+            }
         }
 
         public static void Say(string msg)
@@ -269,12 +276,6 @@ namespace BrawlCrate
             if (!Close())
             {
                 return false;
-            }
-
-            // Wait for the loaders to be loaded
-            while (!MainForm.LoadersLoaded)
-            {
-                // Do nothing
             }
 #if !DEBUG
             try
@@ -519,6 +520,12 @@ namespace BrawlCrate
                 return false;
             }
             return true;
+        }
+
+        public static bool CanRunDiscordRPC()
+        {
+            string path = $"{Application.StartupPath}\\discord-rpc.dll";
+            return File.Exists(path);
         }
     }
 }

@@ -19,11 +19,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         private bool _isPair;
 
         [Browsable(false)]
-        public bool IsStage { get => (Parent == null && _name.StartsWith("STG", StringComparison.OrdinalIgnoreCase)); }
+        public bool IsStage => (Parent == null && _name.StartsWith("STG", StringComparison.OrdinalIgnoreCase));
 
 
         [Browsable(false)]
-        public bool IsFighter { get => (Parent == null && _name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase)); }
+        public bool IsFighter => (Parent == null && _name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase));
 
         private readonly Dictionary<ResourceNode, ARCFileHeader> _originalHeaders = new Dictionary<ResourceNode, ARCFileHeader>();
 

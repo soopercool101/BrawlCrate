@@ -50,7 +50,6 @@ namespace BrawlCrate
             _interpolationForm = null;
         }
 
-        public static bool LoadersLoaded;
         public MainForm()
         {
             InitializeComponent();
@@ -89,36 +88,22 @@ namespace BrawlCrate
 
             if (BrawlCrate.Properties.Settings.Default.APIEnabled)
             {
-                // Load plugins in a seperate work thread to prevent startup lag
-                using (BackgroundWorker b = new BackgroundWorker())
+                API.BrawlAPI.Plugins.Clear();
+                API.BrawlAPI.Loaders.Clear();
+                string plugins = $"{Application.StartupPath}/Plugins";
+                string loaders = $"{Application.StartupPath}/Loaders";
+
+                pluginToolStripMenuItem.DropDown.Items.Clear();
+                if (Directory.Exists(plugins))
                 {
-                    b.DoWork += new DoWorkEventHandler((object sender, DoWorkEventArgs e) =>
+                    reloadPluginsToolStripMenuItem_Click(null, null);
+                }
+                if (Directory.Exists(loaders))
+                {
+                    foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
                     {
-                        string plugins = $"{Application.StartupPath}/Plugins";
-                        string loaders = $"{Application.StartupPath}/Loaders";
-
-                        if (!Directory.Exists(loaders) || Directory.CreateDirectory(loaders).GetFiles().Count() <= 0)
-                        {
-                            LoadersLoaded = true;
-                        }
-
-                        API.BrawlAPI.Plugins.Clear();
-                        API.BrawlAPI.Loaders.Clear();
-                        pluginToolStripMenuItem.DropDown.Items.Clear();
-                        if (Directory.Exists(plugins))
-                        {
-                            reloadPluginsToolStripMenuItem_Click(null, null);
-                        }
-                        if (Directory.Exists(loaders))
-                        {
-                            foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
-                            {
-                                API.BrawlAPI.CreatePlugin(str, true);
-                            }
-                        }
-                        LoadersLoaded = true;
-                    });
-                    b.RunWorkerAsync();
+                        API.BrawlAPI.CreatePlugin(str, true);
+                    }
                 }
             }
             else
@@ -270,6 +255,7 @@ namespace BrawlCrate
             resourceTree_SelectionChanged(null, null);
 
             UpdateName();
+            UpdateDiscordRPC();
         }
 
         public void UpdateName()
@@ -581,6 +567,33 @@ namespace BrawlCrate
                 texCoordControl1.TargetNode = ((MDL0MaterialRefNode)node);
             }
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
+        }
+
+        public void UpdateDiscordRPC()
+        {
+            if (Program.CanRunDiscordRPC())
+            {
+                if (Discord.DiscordSettings.DiscordControllerSet)
+                {
+                    Discord.DiscordSettings.Update();
+                }
+                else
+                {
+                    Process[] px = Process.GetProcessesByName("BrawlCrate");
+                    if (px.Length == 1)
+                    {
+                        Discord.DiscordRpc.ClearPresence();
+                    }
+
+                    Discord.DiscordSettings.LoadSettings(true);
+                }
+            }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            UpdateDiscordRPC();
         }
 
         protected override void OnClosing(CancelEventArgs e)

@@ -347,6 +347,9 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <ProjectReference Include="..\BrawlLib\BrawlLib.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="discord-rpc.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Loaders\Example Loader %28RFNT%29.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

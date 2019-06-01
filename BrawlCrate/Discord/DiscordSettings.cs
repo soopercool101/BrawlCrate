@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BrawlCrate.Discord
 {
-    internal class DiscordSettings
+    internal static class DiscordSettings
     {
         public enum ModNameType
         {
@@ -21,7 +21,10 @@ namespace BrawlCrate.Discord
         public static string workString = "Working on";
         public static string userNamedMod = "My Mod";
         public static bool showTimeElapsed = true;
-        public static DiscordController DiscordController;
+        public static bool DiscordControllerSet;
+
+        // Should be initialized when the program starts
+        public static readonly long startTime = (long)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 
         public static void Update()
         {
@@ -32,10 +35,10 @@ namespace BrawlCrate.Discord
                 return;
             }
 
-            if (enabled && DiscordController == null)
+            if (!DiscordControllerSet)
             {
-                DiscordController = new BrawlCrate.Discord.DiscordController();
                 DiscordController.Initialize();
+                DiscordControllerSet = true;
             }
             DiscordController.presence = new DiscordRpc.RichPresence()
             {
@@ -197,27 +200,29 @@ namespace BrawlCrate.Discord
 
         public static void LoadSettings(bool update = false)
         {
-            if (BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled && DiscordController == null)
+            if (BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled && !DiscordControllerSet)
             {
-                DiscordController = new BrawlCrate.Discord.DiscordController();
                 DiscordController.Initialize();
+                DiscordControllerSet = true;
             }
             else if ((enabled != BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled && enabled == false))
             {
                 DiscordController.Initialize();
+                DiscordControllerSet = true;
             }
 
             enabled = BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled;
-            modNameType = BrawlCrate.Properties.Settings.Default.DiscordRPCNameType;
+            if (BrawlCrate.Properties.Settings.Default.DiscordRPCNameType == null)
+            {
+                BrawlCrate.Properties.Settings.Default.DiscordRPCNameType = ModNameType.Disabled;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+            modNameType = BrawlCrate.Properties.Settings.Default.DiscordRPCNameType ?? ModNameType.Disabled;
             userNamedMod = BrawlCrate.Properties.Settings.Default.DiscordRPCNameCustom;
             if (update)
             {
                 Update();
             }
         }
-
-        //Temporary, don't save to config
-        public static string lastFileOpened = null;
-        public static long startTime;
     }
 }

@@ -239,10 +239,9 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("BrawlCrate.Discord.DiscordSettings.ModNameType.Disabled")]
-        public global::BrawlCrate.Discord.DiscordSettings.ModNameType DiscordRPCNameType {
+        public global::System.Nullable<BrawlCrate.Discord.DiscordSettings.ModNameType> DiscordRPCNameType {
             get {
-                return ((global::BrawlCrate.Discord.DiscordSettings.ModNameType)(this["DiscordRPCNameType"]));
+                return ((global::System.Nullable<BrawlCrate.Discord.DiscordSettings.ModNameType>)(this["DiscordRPCNameType"]));
             }
             set {
                 this["DiscordRPCNameType"] = value;

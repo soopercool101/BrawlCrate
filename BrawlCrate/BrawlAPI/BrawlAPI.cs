@@ -16,22 +16,10 @@ namespace BrawlCrate.API
 {
     public static class BrawlAPI
     {
-        public static bool PythonEnabled
-        {
-            get
-            {
-                return Engine.GetSearchPaths().Count > 0;
-            }
-        }
+        public static bool PythonEnabled => Engine.GetSearchPaths().Count > 0;
 
-        public static bool FSharpEnabled
-        {
-            get
-            {
-                return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
+        public static bool FSharpEnabled => Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
                     fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
-            }
-        }
         private static string fsi_path;
 
         static BrawlAPI()
