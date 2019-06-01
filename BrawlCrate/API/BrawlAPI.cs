@@ -28,7 +28,8 @@ namespace BrawlCrate.API
         {
             get
             {
-                return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
+                return Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
+                    fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
             }
         }
         private static string fsi_path;
