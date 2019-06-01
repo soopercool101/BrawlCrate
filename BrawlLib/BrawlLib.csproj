@@ -115,8 +115,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="SSBB\ResourceNodes\Graphics\FTEXNode.cs" />
-    <None Include="SSBB\ResourceNodes\Graphics\BTINode.cs" />
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
