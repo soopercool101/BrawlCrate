@@ -25,29 +25,6 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::BrawlLib.Modeling.Collada.ImportOptions ColladaImportOptions {
-            get {
-                return ((global::BrawlLib.Modeling.Collada.ImportOptions)(this["ColladaImportOptions"]));
-            }
-            set {
-                this["ColladaImportOptions"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HideMDL0Errors {
-            get {
-                return ((bool)(this["HideMDL0Errors"]));
-            }
-            set {
-                this["HideMDL0Errors"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Collections.Generic.List<BrawlLib.SSBB.ResourceNodes.CodeStorage> Codes {
             get {
                 return ((global::System.Collections.Generic.List<BrawlLib.SSBB.ResourceNodes.CodeStorage>)(this["Codes"]));
@@ -71,6 +48,41 @@ namespace BrawlLib.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::BrawlLib.Modeling.Collada.ImportOptions ColladaImportOptions {
+            get {
+                return ((global::BrawlLib.Modeling.Collada.ImportOptions)(this["ColladaImportOptions"]));
+            }
+            set {
+                this["ColladaImportOptions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CompatibilityMode {
+            get {
+                return ((bool)(this["CompatibilityMode"]));
+            }
+            set {
+                this["CompatibilityMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideMDL0Errors {
+            get {
+                return ((bool)(this["HideMDL0Errors"]));
+            }
+            set {
+                this["HideMDL0Errors"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public global::System.Nullable<System.Double> AudioVolumePercent {
             get {
@@ -78,6 +90,42 @@ namespace BrawlLib.Properties {
             }
             set {
                 this["AudioVolumePercent"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoDecompressFighterPAC {
+            get {
+                return ((bool)(this["AutoDecompressFighterPAC"]));
+            }
+            set {
+                this["AutoDecompressFighterPAC"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoCompressFighterPCS {
+            get {
+                return ((bool)(this["AutoCompressFighterPCS"]));
+            }
+            set {
+                this["AutoCompressFighterPCS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoCompressStages {
+            get {
+                return ((bool)(this["AutoCompressStages"]));
+            }
+            set {
+                this["AutoCompressStages"] = value;
             }
         }
         

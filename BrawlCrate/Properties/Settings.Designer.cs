@@ -25,24 +25,25 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.ModelEditorSettings ViewerSettings {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UpdateSettings {
             get {
-                return ((global::System.ModelEditorSettings)(this["ViewerSettings"]));
+                return ((bool)(this["UpdateSettings"]));
             }
             set {
-                this["ViewerSettings"] = value;
+                this["UpdateSettings"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ViewerSettingsSet {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowFullPath {
             get {
-                return ((bool)(this["ViewerSettingsSet"]));
+                return ((bool)(this["ShowFullPath"]));
             }
             set {
-                this["ViewerSettingsSet"] = value;
+                this["ShowFullPath"] = value;
             }
         }
         
@@ -83,13 +84,36 @@ namespace BrawlCrate.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CheckUpdatesAtStartup {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowHex {
             get {
-                return ((bool)(this["CheckUpdatesAtStartup"]));
+                return ((bool)(this["ShowHex"]));
             }
             set {
-                this["CheckUpdatesAtStartup"] = value;
+                this["ShowHex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.ModelEditorSettings ViewerSettings {
+            get {
+                return ((global::System.ModelEditorSettings)(this["ViewerSettings"]));
+            }
+            set {
+                this["ViewerSettings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ViewerSettingsSet {
+            get {
+                return ((bool)(this["ViewerSettingsSet"]));
+            }
+            set {
+                this["ViewerSettingsSet"] = value;
             }
         }
         
@@ -102,6 +126,42 @@ namespace BrawlCrate.Properties {
             }
             set {
                 this["PixelLighting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ContextualLoop {
+            get {
+                return ((bool)(this["ContextualLoop"]));
+            }
+            set {
+                this["ContextualLoop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoPlayAudio {
+            get {
+                return ((bool)(this["AutoPlayAudio"]));
+            }
+            set {
+                this["AutoPlayAudio"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APIEnabled {
+            get {
+                return ((bool)(this["APIEnabled"]));
+            }
+            set {
+                this["APIEnabled"] = value;
             }
         }
         
@@ -132,12 +192,72 @@ namespace BrawlCrate.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool APIEnabled {
+        public bool CheckUpdatesAtStartup {
             get {
-                return ((bool)(this["APIEnabled"]));
+                return ((bool)(this["CheckUpdatesAtStartup"]));
             }
             set {
-                this["APIEnabled"] = value;
+                this["CheckUpdatesAtStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GetDocumentationUpdates {
+            get {
+                return ((bool)(this["GetDocumentationUpdates"]));
+            }
+            set {
+                this["GetDocumentationUpdates"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UpdateAutomatically {
+            get {
+                return ((bool)(this["UpdateAutomatically"]));
+            }
+            set {
+                this["UpdateAutomatically"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool DiscordRPCEnabled {
+            get {
+                return ((bool)(this["DiscordRPCEnabled"]));
+            }
+            set {
+                this["DiscordRPCEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BrawlCrate.Discord.DiscordSettings.ModNameType.Disabled")]
+        public global::BrawlCrate.Discord.DiscordSettings.ModNameType DiscordRPCNameType {
+            get {
+                return ((global::BrawlCrate.Discord.DiscordSettings.ModNameType)(this["DiscordRPCNameType"]));
+            }
+            set {
+                this["DiscordRPCNameType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DiscordRPCNameCustom {
+            get {
+                return ((string)(this["DiscordRPCNameCustom"]));
+            }
+            set {
+                this["DiscordRPCNameCustom"] = value;
             }
         }
     }

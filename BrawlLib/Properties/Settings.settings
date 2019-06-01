@@ -2,20 +2,32 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BrawlLib.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ColladaImportOptions" Type="BrawlLib.Modeling.Collada.ImportOptions" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="HideMDL0Errors" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="Codes" Type="System.Collections.Generic.List&lt;BrawlLib.SSBB.ResourceNodes.CodeStorage&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SaveGCTWithInfo" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ColladaImportOptions" Type="BrawlLib.Modeling.Collada.ImportOptions" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CompatibilityMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HideMDL0Errors" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="AudioVolumePercent" Type="System.Nullable&lt;System.Double&gt;" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="AutoDecompressFighterPAC" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AutoCompressFighterPCS" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AutoCompressStages" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AutoCompressModules" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
