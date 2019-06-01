@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SCLANode : ARCEntryNode
     {
         internal SCLA* Header => (SCLA*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.SCLA;
+        public override ResourceType ResourceFileType => ResourceType.SCLA;
 
         public SCLANode() { }
 
@@ -97,7 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SCLAEntryNode : ResourceNode
     {
         internal SCLAEntry* Header => (SCLAEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         public int getSCLAIndex()
         {
             if (_index > 255)

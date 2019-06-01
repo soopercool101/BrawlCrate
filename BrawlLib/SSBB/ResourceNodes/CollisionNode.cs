@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CollisionNode : ARCEntryNode
     {
         internal CollisionHeader* Header => (CollisionHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CollisionDef;
+        public override ResourceType ResourceFileType => ResourceType.CollisionDef;
 
         public List<CollisionObject> _objects = new List<CollisionObject>();
 

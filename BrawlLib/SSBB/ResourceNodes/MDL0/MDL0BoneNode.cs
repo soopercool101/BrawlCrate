@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MDL0BoneNode : MDL0EntryNode, IBoneNode
     {
         internal MDL0Bone* Header => (MDL0Bone*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDL0Bone;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Bone;
         public override bool AllowDuplicateNames => true;
         public override bool RetainChildrenOnReplace => true;
 

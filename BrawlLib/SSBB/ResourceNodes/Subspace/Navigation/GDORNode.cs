@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GDORNode : ResourceNode
     {
         internal GDOR* Header => (GDOR*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.GDOR;
+        public override ResourceType ResourceFileType => ResourceType.GDOR;
 
         private int _doors;
         [Category("GDOR")]
@@ -67,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GDOREntryNode : ResourceNode
     {
         internal GDOREntry* Header => (GDOREntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private string _doorID;
         [Category("Door Info")]

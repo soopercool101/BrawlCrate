@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFAnimationListNode : ResourceNode
     {
         internal VoidPtr First => WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Container;
+        public override ResourceType ResourceFileType => ResourceType.Container;
         public ushort _ptclTrackCount, _ptclInitTrackCount, _emitTrackCount, _emitInitTrackCount;
         public buint* _ptclTrackAddr, _emitTrackAddr;
         public List<uint> _ptclTrack, _emitTrack;
@@ -119,7 +119,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFAnimationNode : ResourceNode
     {
         internal AnimCurveHeader* Header => (AnimCurveHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.REFFAnimationList;
+        public override ResourceType ResourceFileType => ResourceType.REFFAnimationList;
 
         internal AnimCurveHeader _hdr = new AnimCurveHeader();
 

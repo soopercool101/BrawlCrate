@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ROOTHeader* RootHeader => Header->First;
         internal ResourceGroup* Group => &RootHeader->_master;
 
-        public override ResourceType ResourceType => ResourceType.BRES;
+        public override ResourceType ResourceFileType => ResourceType.BRES;
 
         public override Type[] AllowedChildTypes => new Type[] { typeof(BRESGroupNode) };
 
@@ -545,7 +545,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BRESGroupNode : ResourceNode
     {
         internal ResourceGroup* Group => (ResourceGroup*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.BRESGroup;
+        public override ResourceType ResourceFileType => ResourceType.BRESGroup;
         public override Type[] AllowedChildTypes
         {
             get

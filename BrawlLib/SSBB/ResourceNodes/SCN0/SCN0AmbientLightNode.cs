@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SCN0AmbientLightNode : SCN0EntryNode, IColorSource
     {
         internal SCN0AmbientLight* Data => (SCN0AmbientLight*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.SCN0Ambient;
+        public override ResourceType ResourceFileType => ResourceType.SCN0Ambient;
 
         private byte _fixedFlags, _usageFlags = 3;
 

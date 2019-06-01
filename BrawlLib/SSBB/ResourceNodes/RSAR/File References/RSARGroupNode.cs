@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 #endif
         public override int StringId => Header == null ? -1 : (int)Header->_stringId;
 
-        public override ResourceType ResourceType => ResourceType.RSARGroup;
+        public override ResourceType ResourceFileType => ResourceType.RSARGroup;
 
         public BindingList<RSARFileNode> _files = new BindingList<RSARFileNode>();
 

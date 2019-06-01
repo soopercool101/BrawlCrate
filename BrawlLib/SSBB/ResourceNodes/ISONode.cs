@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal static byte[] LoadedKey = null;
 
         internal ISOPartitionHeader* Header => (ISOPartitionHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override string DataSize => "0x" + WorkingUncompressed.Map.BaseStream.Length.ToString("X");
 
         private string _gameName;

@@ -164,7 +164,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    _name = string.Format("[{0}] {1}", _fileIndex, ResourceType.ToString());
+                    _name = string.Format("[{0}] {1}", _fileIndex, ResourceFileType.ToString());
                 }
             }
 

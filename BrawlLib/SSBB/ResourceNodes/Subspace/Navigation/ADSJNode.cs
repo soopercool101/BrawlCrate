@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class ADSJNode : ARCEntryNode
     {
         internal ADSJ* Header => (ADSJ*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.ADSJ;
+        public override ResourceType ResourceFileType => ResourceType.ADSJ;
 
         private int _count;
         [Category("ADSJ")]
@@ -67,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class ADSJEntryNode : ResourceNode
     {
         internal ADSJEntry* Header => (ADSJEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private string _doorID;
         [Category("Jump Info")]

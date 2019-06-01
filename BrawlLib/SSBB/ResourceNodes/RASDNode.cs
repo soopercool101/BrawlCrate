@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RASDNode : BRESEntryNode
     {
         internal RASD* Header => (RASD*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         //[Category("RASD")]
         //public int Entries { get { return Header->_numEntries; } }

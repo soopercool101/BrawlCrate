@@ -90,7 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override ResourceType ResourceType => ResourceType.RSARBank;
+        public override ResourceType ResourceFileType => ResourceType.RSARBank;
 
         public int _fileId;
 

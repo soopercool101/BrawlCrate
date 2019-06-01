@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class TPLNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.TPL;
+        public override ResourceType ResourceFileType => ResourceType.TPL;
         internal TPLHeader* Header => (TPLHeader*)WorkingUncompressed.Address;
 
         public override string Name
@@ -147,7 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TPLTextureNode : ResourceNode, IImageSource
     {
-        public override ResourceType ResourceType => ResourceType.TPLTexture;
+        public override ResourceType ResourceFileType => ResourceType.TPLTexture;
         internal TPLTextureHeader* Header => (TPLTextureHeader*)WorkingUncompressed.Address;
 
         internal VoidPtr _dataAddr;
@@ -371,7 +371,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TPLPaletteNode : ResourceNode, IColorSource
     {
-        public override ResourceType ResourceType => ResourceType.TPLPalette;
+        public override ResourceType ResourceFileType => ResourceType.TPLPalette;
         internal TPLPaletteHeader* Header => (TPLPaletteHeader*)WorkingUncompressed.Address;
 
         //private int _numColors;

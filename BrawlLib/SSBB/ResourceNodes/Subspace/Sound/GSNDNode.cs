@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GSNDNode : ResourceNode
     {
         internal GSND* Header => (GSND*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.GSND;
+        public override ResourceType ResourceFileType => ResourceType.GSND;
 
         [Category("GSND")]
         [DisplayName("Entries")]
@@ -64,7 +64,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GSNDEntryNode : ResourceNode
     {
         internal GSNDEntry* Header => (GSNDEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal string _Bname;
         [Category("Sound")]

@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class AIPDNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.AIPD;
+        public override ResourceType ResourceFileType => ResourceType.AIPD;
         internal AIPD* Header => (AIPD*)WorkingUncompressed.Address;
 
         public override bool OnInitialize()

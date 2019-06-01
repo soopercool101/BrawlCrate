@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SCN0CameraNode : SCN0EntryNode, IKeyframeSource
     {
         internal SCN0Camera* Data => (SCN0Camera*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.SCN0Camera;
+        public override ResourceType ResourceFileType => ResourceType.SCN0Camera;
 
         [Category("User Data"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public UserDataCollection UserEntries { get => _userEntries; set { _userEntries = value; SignalPropertyChange(); } }

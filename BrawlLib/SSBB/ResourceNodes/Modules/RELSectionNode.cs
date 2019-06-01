@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private ObjectParser _parser;
 
         internal VoidPtr Header => WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RELSection;
+        public override ResourceType ResourceFileType => ResourceType.RELSection;
 
         [Browsable(false)]
         public override uint ASMOffset => (uint)_dataOffset;

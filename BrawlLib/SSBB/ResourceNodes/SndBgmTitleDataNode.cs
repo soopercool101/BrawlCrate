@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SndBgmTitleDataNode : ResourceNode
     {
-        public override ResourceType ResourceType => ResourceType.SndBgmTitleDataFolder;
+        public override ResourceType ResourceFileType => ResourceType.SndBgmTitleDataFolder;
 
         public override bool OnInitialize()
         {
@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //internal SndBgmTitleEntry* Header { get { return (SndBgmTitleEntry*)WorkingUncompressed.Address; } }
         public SndBgmTitleEntry Data;
 
-        public override ResourceType ResourceType => ResourceType.SndBgmTitleDataEntry;
+        public override ResourceType ResourceFileType => ResourceType.SndBgmTitleDataEntry;
 
         [Category("Song")]
         [DisplayName("Song ID")]

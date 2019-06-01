@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ItmFreqNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEditFolder;
+        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
         internal ItmFreqHeader* Header => (ItmFreqHeader*)WorkingUncompressed.Address;
         internal ItmFreqTableList* TList => (ItmFreqTableList*)(WorkingUncompressed.Address + Header->_DataLength - 0x08);
 
@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class TableNode : ItmFreqBaseNode
     {
         internal ItmFreqOffEntry* Header => (ItmFreqOffEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.NoEditFolder;
+        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
 
         private int _entryOffset;
         [Browsable(false)]
@@ -231,7 +231,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class TableGroupNode : ItmFreqBaseNode
     {
         internal ItmFreqGroup* Header => (ItmFreqGroup*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.NoEditFolder;
+        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
 
         private bint _unk0;
         [Category("Group Node")]
@@ -316,7 +316,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class ItmFreqEntryNode : ItmFreqBaseNode
     {
         internal ItmFreqEntry* Header => (ItmFreqEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int _id;
         //private readonly Item _item;

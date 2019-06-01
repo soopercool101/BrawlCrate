@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MDL0ShaderNode : MDL0EntryNode
     {
         internal MDL0Shader* Header => (MDL0Shader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDL0Shader;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Shader;
 
         [Browsable(false)]
         public byte Stages => (byte)Children.Count;

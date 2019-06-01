@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SCN0LightNode : SCN0EntryNode, IBoolArraySource, IColorSource, IKeyframeSource
     {
         internal SCN0Light* Data => (SCN0Light*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.SCN0Light;
+        public override ResourceType ResourceFileType => ResourceType.SCN0Light;
 
         #region Variables
 

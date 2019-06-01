@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RELNode : ARCEntryNode, ModuleNode
     {
         internal RELHeader* Header => (RELHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.REL;
+        public override ResourceType ResourceFileType => ResourceType.REL;
 
         [Browsable(false)]
         public ModuleSectionNode[] Sections

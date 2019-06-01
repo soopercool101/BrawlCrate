@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RSARFolderNode : ResourceNode
     {
         internal RSARHeader* Header => (RSARHeader*)WorkingSource.Address;
-        public override ResourceType ResourceType => ResourceType.RSARFolder;
+        public override ResourceType ResourceFileType => ResourceType.RSARFolder;
         public override Type[] AllowedChildTypes => new Type[]
                 {
                     typeof(RSARFolderNode),

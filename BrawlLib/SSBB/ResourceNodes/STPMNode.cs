@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class STPMNode : ARCEntryNode
     {
         internal STPM* Header => (STPM*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.STPM;
+        public override ResourceType ResourceFileType => ResourceType.STPM;
 
         public override bool OnInitialize()
         {
@@ -57,7 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class STPMEntryNode : ResourceNode
     {
         internal STPMEntry* Header => (STPMEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public byte echo, id2;
         public ushort id;

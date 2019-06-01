@@ -5,12 +5,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class RELGroupNode : RELEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEditFolder;
+        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
     }
 
     public unsafe class RELEntryNode : ResourceNode
     {
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal VoidPtr Data => WorkingUncompressed.Address;
 
         [Browsable(false)]

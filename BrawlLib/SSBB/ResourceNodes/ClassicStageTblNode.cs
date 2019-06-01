@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         private ClassicStageBlockStageData data;
 
-        public override ResourceType ResourceType => ResourceType.Container;
+        public override ResourceType ResourceFileType => ResourceType.Container;
 
         [TypeConverter(typeof(DropDownListStageIDs))]
         public int StageID1 { get => data._stageID1; set { data._stageID1 = (ushort)value; SignalPropertyChange(); } }
@@ -90,7 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ClassicStageTblNode : ResourceNode
     {
-        public override ResourceType ResourceType => ResourceType.ClassicStageTbl;
+        public override ResourceType ResourceFileType => ResourceType.ClassicStageTbl;
 
         private List<int> _padding;
 

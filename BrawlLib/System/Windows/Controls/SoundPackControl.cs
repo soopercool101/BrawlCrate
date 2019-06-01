@@ -734,13 +734,13 @@ namespace System.Windows.Forms
 
         public SoundPackItem(RSARFileNode file)
         {
-            ImageIndex = (byte)file.ResourceType;
+            ImageIndex = (byte)file.ResourceFileType;
 
             Text = file.FileNodeIndex.ToString();
 
             _node = file;
 
-            string s = file.ResourceType.ToString();
+            string s = file.ResourceFileType.ToString();
             if (file is RSARExtFileNode)
             {
                 s = "External";

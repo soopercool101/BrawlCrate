@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RBNKNode : RSARFileNode
     {
         internal RBNKHeader* Header => (RBNKHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RBNK;
+        public override ResourceType ResourceFileType => ResourceType.RBNK;
 
         public void InitGroups()
         {

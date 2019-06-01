@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal CLR0v3* Header3 => (CLR0v3*)WorkingUncompressed.Address;
         internal CLR0v4* Header4 => (CLR0v4*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CLR0;
+        public override ResourceType ResourceFileType => ResourceType.CLR0;
         public override Type[] AllowedChildTypes => new Type[] { typeof(CLR0MaterialNode) };
         public override int[] SupportedVersions => new int[] { 3, 4 };
 
@@ -312,7 +312,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CLR0MaterialNode : ResourceNode
     {
         internal CLR0Material* Header => (CLR0Material*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CLR0Material;
+        public override ResourceType ResourceFileType => ResourceType.CLR0Material;
         public override Type[] AllowedChildTypes => new Type[] { typeof(CLR0MaterialEntryNode) };
 
         internal CLR0EntryFlags _flags;
@@ -393,7 +393,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CLR0MaterialEntryNode : ResourceNode, IColorSource
     {
         internal CLR0MaterialEntry* Header => (CLR0MaterialEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CLR0MaterialEntry;
+        public override ResourceType ResourceFileType => ResourceType.CLR0MaterialEntry;
 
         public bool _constant = false;
         [Category("CLR0 Material Entry")]

@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal U8* Header => (U8*)WorkingUncompressed.Address;
 
-        public override ResourceType ResourceType => ResourceType.U8;
+        public override ResourceType ResourceFileType => ResourceType.U8;
         public override Type[] AllowedChildTypes => new Type[] { typeof(U8EntryNode) };
 
         [Browsable(true), TypeConverter(typeof(DropDownListCompression))]
@@ -341,7 +341,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class U8FolderNode : U8EntryNode
     {
-        public override ResourceType ResourceType => ResourceType.U8Folder;
+        public override ResourceType ResourceFileType => ResourceType.U8Folder;
         public override Type[] AllowedChildTypes => new Type[] { typeof(U8EntryNode) };
 
         public override bool OnInitialize()

@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class BGMGNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.BGMG;
+        public override ResourceType ResourceFileType => ResourceType.BGMG;
         internal BGMG* Header => (BGMG*)WorkingUncompressed.Address;
 
         private int _entries;
@@ -71,7 +71,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BGMGEntryNode : ResourceNode
     {
         internal BGMGEntry* Header => (BGMGEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         public int Entries { get; private set; }
 
 

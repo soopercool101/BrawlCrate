@@ -909,7 +909,7 @@ namespace System.Windows.Forms
 
         private static void GetModelsRecursive(ResourceNode node, List<IModel> models)
         {
-            switch (node.ResourceType)
+            switch (node.ResourceFileType)
             {
                 case ResourceType.ARC:
                 case ResourceType.RARC:

@@ -32,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 #endif
         public override int StringId => Header == null ? -1 : (int)Header->_stringId;
 
-        public override ResourceType ResourceType => ResourceType.RSARSound;
+        public override ResourceType ResourceFileType => ResourceType.RSARSound;
 
         public Sound3DParam _sound3dParam;
         public WaveSoundInfo _waveInfo = new WaveSoundInfo();

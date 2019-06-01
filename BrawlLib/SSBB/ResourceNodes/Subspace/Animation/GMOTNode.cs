@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GMOTNode : ResourceNode
     {
         internal GMOT* Header => (GMOT*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.GMOT;
+        public override ResourceType ResourceFileType => ResourceType.GMOT;
 
         [Category("GMOT")]
         [DisplayName("Entries")]
@@ -40,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GMOTEntryNode : ResourceNode
     {
         internal GMOTEntry* Header => (GMOTEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         [Category("Animated Object")]
         [DisplayName("Model Index")]
         public int MID => *(byte*)(WorkingUncompressed.Address + 0x3C);

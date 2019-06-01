@@ -183,7 +183,7 @@ namespace BrawlCrate.NodeWrappers
 
         private void LoadModels(ResourceNode node, List<IModel> models, List<CollisionNode> collisions)
         {
-            switch (node.ResourceType)
+            switch (node.ResourceFileType)
             {
                 case ResourceType.ARC:
                 case ResourceType.MRG:

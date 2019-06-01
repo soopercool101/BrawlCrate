@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal ResourceGroup* Group => (ResourceGroup*)WorkingUncompressed.Address;
 
-        public override ResourceType ResourceType => ResourceType.MDL0Group;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Group;
 
         public GroupType _type;
         public enum GroupType

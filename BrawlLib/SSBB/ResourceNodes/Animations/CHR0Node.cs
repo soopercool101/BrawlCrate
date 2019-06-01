@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal CHR0v4_3* Header4_3 => (CHR0v4_3*)WorkingUncompressed.Address;
         internal CHR0v5* Header5 => (CHR0v5*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CHR0;
+        public override ResourceType ResourceFileType => ResourceType.CHR0;
         public override Type[] AllowedChildTypes => new Type[] { typeof(CHR0EntryNode) };
         public override int[] SupportedVersions => new int[] { 4, 5 };
 
@@ -795,7 +795,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CHR0EntryNode : ResourceNode, IKeyframeSource
     {
         internal CHR0Entry* Header => (CHR0Entry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CHR0Entry;
+        public override ResourceType ResourceFileType => ResourceType.CHR0Entry;
 
         [Browsable(false)]
         public int FrameCount => Keyframes.FrameLimit;

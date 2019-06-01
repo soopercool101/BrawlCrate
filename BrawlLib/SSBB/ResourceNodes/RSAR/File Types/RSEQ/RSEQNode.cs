@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RSEQNode : RSARFileNode
     {
         internal RSEQHeader* Header => (RSEQHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RSEQ;
+        public override ResourceType ResourceFileType => ResourceType.RSEQ;
 
         public MMLCommand[] _cmds;
         public MMLCommand[] Commands => _cmds;

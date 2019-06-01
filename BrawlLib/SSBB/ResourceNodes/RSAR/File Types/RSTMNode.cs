@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RSTMNode : RSARFileNode, IAudioSource
     {
         internal RSTMHeader* Header => (RSTMHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RSTM;
+        public override ResourceType ResourceFileType => ResourceType.RSTM;
 
         private int _encoding;
         private int _channels;

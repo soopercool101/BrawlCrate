@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GMPSNode : ResourceNode
     {
         internal GMPS* Header => (GMPS*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.GMPS;
+        public override ResourceType ResourceFileType => ResourceType.GMPS;
 
         [Category("GMPS")]
         [DisplayName("Entries")]
@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GMPSEntryNode : ResourceNode
     {
         internal GMPSEntry* Header => (GMPSEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         //[Category("Animated Object")]
         //[DisplayName("Model Index")]
         //public int MID { get { return *(byte*)(WorkingUncompressed.Address + 0x3C); } }

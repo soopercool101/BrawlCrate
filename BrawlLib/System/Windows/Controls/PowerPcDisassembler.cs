@@ -16,7 +16,7 @@ namespace System.Windows.Forms
 
         public void SetTarget(RELMethodNode node)
         {
-            if (node.ResourceType == ResourceType.RELExternalMethod)
+            if (node.ResourceFileType == ResourceType.RELExternalMethod)
             {
                 _codes = null;
                 _sectionOffset = 0;

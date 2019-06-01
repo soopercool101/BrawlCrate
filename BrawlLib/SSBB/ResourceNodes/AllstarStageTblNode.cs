@@ -127,7 +127,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         private int _stage1, _stage2, _stage3, _stage4, _stage5;
 
-        public override ResourceType ResourceType => ResourceType.Container;
+        public override ResourceType ResourceFileType => ResourceType.Container;
 
         [TypeConverter(typeof(DropDownListStageIDs))]
         public int Stage1 { get => _stage1; set { _stage1 = value; SignalPropertyChange(); } }

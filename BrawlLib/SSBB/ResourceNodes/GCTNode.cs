@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GCTNode : ResourceNode
     {
         internal byte* Data => (byte*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override bool AllowNullNames => true;
         public override bool AllowDuplicateNames => true;
 
@@ -407,7 +407,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GCTCodeEntryNode : ResourceNode
     {
         internal GCTCodeLine* Header => (GCTCodeLine*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override bool AllowNullNames => true;
         public override bool AllowDuplicateNames => true;
 

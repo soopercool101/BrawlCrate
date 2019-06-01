@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFEmitterNode9 : ResourceNode
     {
         internal EmitterDesc* Descriptor => (EmitterDesc*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private EmitterDesc _desc;
         private EmitterDrawSetting9 _drawSetting;

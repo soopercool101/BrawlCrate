@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RWSDNode : RSARFileNode
     {
         internal RWSDHeader* Header => (RWSDHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RWSD;
+        public override ResourceType ResourceFileType => ResourceType.RWSD;
 
         public void InitGroups()
         {

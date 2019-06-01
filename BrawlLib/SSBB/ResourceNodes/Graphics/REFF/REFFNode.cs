@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFNode : NW4RArcEntryNode
     {
         internal REFF* Header => (REFF*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.REFF;
+        public override ResourceType ResourceFileType => ResourceType.REFF;
 
         public override bool OnInitialize()
         {
@@ -83,7 +83,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFEntryNode : ResourceNode
     {
         internal REFFDataHeader* Header => (REFFDataHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.REFFEntry;
+        public override ResourceType ResourceFileType => ResourceType.REFFEntry;
         [Category("REFF Entry")]
         public int REFFOffset => _offset;
         [Category("REFF Entry")]

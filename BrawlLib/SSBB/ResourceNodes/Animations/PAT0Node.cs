@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal PAT0v3* Header3 => (PAT0v3*)WorkingUncompressed.Address;
         internal PAT0v4* Header4 => (PAT0v4*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.PAT0;
+        public override ResourceType ResourceFileType => ResourceType.PAT0;
         public override Type[] AllowedChildTypes => new Type[] { typeof(PAT0EntryNode) };
         public override int[] SupportedVersions => new int[] { 3, 4 };
 
@@ -541,7 +541,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class PAT0EntryNode : ResourceNode
     {
         internal PAT0Pattern* Header => (PAT0Pattern*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.PAT0Entry;
+        public override ResourceType ResourceFileType => ResourceType.PAT0Entry;
         public override Type[] AllowedChildTypes => new Type[] { typeof(PAT0TextureNode) };
 
         internal PAT0Flags[] texFlags = new PAT0Flags[8];
@@ -769,7 +769,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class PAT0TextureNode : ResourceNode, IVideo
     {
         internal PAT0TextureTable* Header => (PAT0TextureTable*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.PAT0Texture;
+        public override ResourceType ResourceFileType => ResourceType.PAT0Texture;
         public override Type[] AllowedChildTypes => new Type[] { typeof(PAT0TextureEntryNode) };
 
         public PAT0Flags _texFlags;
@@ -1145,7 +1145,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string _tex = null, _plt = null;
 
-        public override ResourceType ResourceType => ResourceType.PAT0TextureEntry;
+        public override ResourceType ResourceFileType => ResourceType.PAT0TextureEntry;
         public override bool AllowDuplicateNames => true;
 
         [Category("PAT0 Texture Entry")]

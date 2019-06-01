@@ -2,7 +2,7 @@
 {
     public unsafe class RELDeConStructorNode : RELMethodNode
     {
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public bool _destruct;
         public int _index;

@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal MDL0Object* Header => (MDL0Object*)WorkingUncompressed.Address;
 
-        public override ResourceType ResourceType => ResourceType.MDL0Object;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Object;
 
         #region Attributes
 

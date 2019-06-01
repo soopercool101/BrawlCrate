@@ -16,7 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe partial class MDL0MaterialNode : MDL0EntryNode
     {
         internal MDL0Material* Header => (MDL0Material*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDL0Material;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Material;
         public override bool AllowDuplicateNames => true;
 
         public bool _updating = false;

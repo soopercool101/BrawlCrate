@@ -25,7 +25,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RBNKDataGroupNode : ResourceNode
     {
         internal RBNK_DATAHeader* Header => (RBNK_DATAHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RBNKGroup;
+        public override ResourceType ResourceFileType => ResourceType.RBNKGroup;
 
         public override bool OnInitialize()
         {
@@ -148,7 +148,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RBNKSoundGroupNode : ResourceNode
     {
         internal RBNK_WAVEHeader* Header => (RBNK_WAVEHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.RSARFileSoundGroup;
+        public override ResourceType ResourceFileType => ResourceType.RSARFileSoundGroup;
 
         public VoidPtr _audioAddr;
 

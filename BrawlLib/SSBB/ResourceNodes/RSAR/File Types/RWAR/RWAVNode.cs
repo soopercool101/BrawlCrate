@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARFileAudioNode : RSARFileEntryNode, IAudioSource, IDisposable
     {
-        public override ResourceType ResourceType => ResourceType.RSARFileAudioEntry;
+        public override ResourceType ResourceFileType => ResourceType.RSARFileAudioEntry;
 
         [Browsable(false)]
         public WaveInfo Info

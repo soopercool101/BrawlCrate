@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MDL0Node : BRESEntryNode, IModel
     {
         internal MDL0Header* Header => (MDL0Header*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDL0;
+        public override ResourceType ResourceFileType => ResourceType.MDL0;
         public override int DataAlign => 0x20;
         public override int[] SupportedVersions => new int[] { 8, 9, 10, 11 };
 

@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFTNode : NW4RArcEntryNode
     {
         internal REFT* Header => (REFT*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.REFT;
+        public override ResourceType ResourceFileType => ResourceType.REFT;
 
         public override bool OnInitialize()
         {
@@ -91,7 +91,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFTEntryNode : ResourceNode, IImageSource, IColorSource
     {
         internal REFTImageHeader* Header => (REFTImageHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.REFTImage;
+        public override ResourceType ResourceFileType => ResourceType.REFTImage;
 
         public int _offset;
         public int _length;

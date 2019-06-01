@@ -102,7 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public class InheritanceItemNode : RELEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.RELInheritance;
+        public override ResourceType ResourceFileType => ResourceType.RELInheritance;
 
         public RELType _type;
         public uint _unknown;

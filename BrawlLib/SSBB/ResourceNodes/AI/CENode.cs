@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal int unk1, unk2, unk3;
 
-        public override ResourceType ResourceType => ResourceType.CE;
+        public override ResourceType ResourceFileType => ResourceType.CE;
 
         [Category("Offensive AI Node")]
         public int NumEntries => Children.Count;
@@ -220,7 +220,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int id, EventsOffset, part2Offset, unknown;
         public VoidPtr NextAddress = 0;
 
-        public override ResourceType ResourceType => ResourceType.CEEntry;
+        public override ResourceType ResourceFileType => ResourceType.CEEntry;
 
         [Category("CEEntry")]
         public string ID { get => id.ToString("X"); set { id = Convert.ToInt32(value, 16); SignalPropertyChange(); } }
@@ -365,7 +365,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private readonly List<float> param = new List<float>();
         private sbyte type;
 
-        public override ResourceType ResourceType => ResourceType.CEEvent;
+        public override ResourceType ResourceFileType => ResourceType.CEEvent;
 
         [Category("CE Event"), Description("Entry Type")]
         public sbyte Type { get => type; set { type = value; SignalPropertyChange(); } }
@@ -476,7 +476,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal string[] strings;
         internal int unk1, unk2, unk3;
 
-        public override ResourceType ResourceType => ResourceType.CEString;
+        public override ResourceType ResourceFileType => ResourceType.CEString;
 
         [Category("AI StringNode Entry"), Description("Each entries are related to Strings")]
         public int[][] Entries { get => entries; set { entries = value; SignalPropertyChange(); } }

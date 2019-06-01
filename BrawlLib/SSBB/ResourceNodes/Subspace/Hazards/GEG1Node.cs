@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GEG1Node : ResourceNode
     {
         internal GEG1* Header => (GEG1*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.GEG1;
+        public override ResourceType ResourceFileType => ResourceType.GEG1;
 
         [Category("GEG1")]
         [DisplayName("Enemy Count")]
@@ -40,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class GEG1EntryNode : ResourceNode
     {
         internal GEG1Entry* Header => (GEG1Entry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.ENEMY;
+        public override ResourceType ResourceFileType => ResourceType.ENEMY;
 
         [Browsable(true), TypeConverter(typeof(DropDownListEnemies))]
         [Category("Enemy Info")]

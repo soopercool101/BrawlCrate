@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class ARCNode : ARCEntryNode
     {
         internal ARCHeader* Header => (ARCHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.ARC;
+        public override ResourceType ResourceFileType => ResourceType.ARC;
         public override Type[] AllowedChildTypes => new Type[] { typeof(ARCEntryNode) };
 
         [Browsable(false)]
@@ -280,7 +280,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ARCEntryNode : U8EntryNode
     {
-        public override ResourceType ResourceType => _resourceType;
+        public override ResourceType ResourceFileType => _resourceType;
         public ResourceType _resourceType = ResourceType.ARCEntry;
 
         [Browsable(true), TypeConverter(typeof(DropDownListCompression))]

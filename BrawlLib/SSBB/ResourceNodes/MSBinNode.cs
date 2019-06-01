@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MSBinNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.MSBin;
+        public override ResourceType ResourceFileType => ResourceType.MSBin;
         public List<string> _strings = new List<string>();
 
         public override bool OnInitialize()

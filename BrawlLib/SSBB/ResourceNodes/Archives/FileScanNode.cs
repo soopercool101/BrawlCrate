@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class FileScanNode : ResourceNode
     {
         internal byte* Data => (byte*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public List<ResourceNode> _list;
         public override void OnPopulate()

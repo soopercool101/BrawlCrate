@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     //Parses instance data with class meta
     public unsafe class HavokMetaObjectNode : ClassMemberInstanceNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEditFolder;
+        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
 
         private List<hkClassMemberNode> _memberArray = null;
 

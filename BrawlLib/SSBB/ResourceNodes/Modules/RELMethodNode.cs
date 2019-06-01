@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RELMethodNode : RELEntryNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
-        public override ResourceType ResourceType => WorkingUncompressed.Address ?
+        public override ResourceType ResourceFileType => WorkingUncompressed.Address ?
                     ResourceType.RELMethod :
                     ResourceType.RELExternalMethod;
 

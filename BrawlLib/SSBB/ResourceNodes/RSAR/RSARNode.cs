@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class RSARNode : NW4RNode
     {
         internal RSARHeader* Header => (RSARHeader*)WorkingSource.Address;
-        public override ResourceType ResourceType => ResourceType.RSAR;
+        public override ResourceType ResourceFileType => ResourceType.RSAR;
 
         [Category("Sound Archive")]
         public ushort SeqSoundCount { get => _ftr._seqSoundCount; set { _ftr._seqSoundCount = value; SignalPropertyChange(); } }

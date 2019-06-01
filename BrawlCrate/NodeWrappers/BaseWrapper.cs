@@ -116,7 +116,7 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
 
-                SelectedImageIndex = ImageIndex = (int)res.ResourceType & 0xFF;
+                SelectedImageIndex = ImageIndex = (int)res.ResourceFileType & 0xFF;
 
                 res.SelectChild += OnSelectChild;
                 res.ChildAdded += OnChildAdded;
@@ -285,13 +285,13 @@ namespace BrawlCrate.NodeWrappers
         {
             _owner = owner;
             BaseWrapper w;
-            if (!NodeWrapperAttribute.Wrappers.ContainsKey(node.ResourceType))
+            if (!NodeWrapperAttribute.Wrappers.ContainsKey(node.ResourceFileType))
             {
                 w = new GenericWrapper();
             }
             else
             {
-                w = Activator.CreateInstance(NodeWrapperAttribute.Wrappers[node.ResourceType]) as BaseWrapper;
+                w = Activator.CreateInstance(NodeWrapperAttribute.Wrappers[node.ResourceFileType]) as BaseWrapper;
             }
 
             w.Link(node);

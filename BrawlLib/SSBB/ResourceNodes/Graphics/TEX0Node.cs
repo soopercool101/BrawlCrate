@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal TEX0v1* Header1 => (TEX0v1*)WorkingUncompressed.Address;
         internal TEX0v2* Header2 => (TEX0v2*)WorkingUncompressed.Address;
         internal TEX0v3* Header3 => (TEX0v3*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => SharesData ? ResourceType.SharedTEX0 : ResourceType.TEX0;
+        public override ResourceType ResourceFileType => SharesData ? ResourceType.SharedTEX0 : ResourceType.TEX0;
         public override int DataAlign => 0x20;
         public override int[] SupportedVersions => new int[] { 1, 2, 3 };
 

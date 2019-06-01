@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class STDTNode : ARCEntryNode, IAttributeList
     {
-        public override ResourceType ResourceType => ResourceType.STDT;
+        public override ResourceType ResourceFileType => ResourceType.STDT;
         internal STDT* Header => (STDT*)WorkingUncompressed.Address;
         internal int version, unk1, unk2;
 

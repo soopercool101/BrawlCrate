@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SCN0LightSetNode : SCN0EntryNode
     {
         internal SCN0LightSet* Data => (SCN0LightSet*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.SCN0LightSet;
+        public override ResourceType ResourceFileType => ResourceType.SCN0LightSet;
 
         public SCN0LightNode[] _lights = new SCN0LightNode[8];
         public SCN0AmbientLightNode _ambient;

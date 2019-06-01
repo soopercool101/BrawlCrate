@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public const bool AssignClassParents = true;
 
         internal HKXHeader* Header => (HKXHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Havok;
+        public override ResourceType ResourceFileType => ResourceType.Havok;
 
         protected override string GetName()
         {
@@ -427,7 +427,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public abstract unsafe class HavokEntryNode : ResourceNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEditEntry;
+        public override ResourceType ResourceFileType => ResourceType.NoEditEntry;
 
         [Browsable(false)]
         public HavokNode HavokNode
@@ -478,7 +478,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     }
     public unsafe class HavokGroupNode : HavokEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEditFolder;
+        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
     }
 
     public abstract unsafe class HavokClassNode : HavokEntryNode
@@ -493,7 +493,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class HavokSectionNode : HavokEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.HavokGroup;
+        public override ResourceType ResourceFileType => ResourceType.HavokGroup;
 
         public List<HavokClassNode> _classCache;
         public HavokClassNode[] ClassCache => _classCache.ToArray();

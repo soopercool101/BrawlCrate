@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class ATKDNode : ARCEntryNode
     {
         internal ATKD* Header => (ATKD*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.ATKD;
+        public override ResourceType ResourceFileType => ResourceType.ATKD;
 
         [Category("ATKD Property")]
         public int Entries => Header->_numEntries;

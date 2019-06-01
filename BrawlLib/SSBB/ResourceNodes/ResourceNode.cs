@@ -107,7 +107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public virtual bool HasChildren => (_children == null) || (_children.Count != 0);
         [Browsable(false)]
-        public virtual ResourceType ResourceType => ResourceType.Unknown;
+        public virtual ResourceType ResourceFileType => ResourceType.Unknown;
         [Browsable(false)]
         public virtual string TreePathAbsolute => _parent == null ? Name : _parent.TreePathAbsolute + "/" + Name;
         [Browsable(false)]
@@ -1030,7 +1030,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (n.Name != null && n.Name.Equals(next, StringComparison.OrdinalIgnoreCase))
                     {
-                        if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren)) != null && node.ResourceType == type)
+                        if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren)) != null && node.ResourceFileType == type)
                         {
                             return node;
                         }
@@ -1042,7 +1042,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //Search direct children first
                 foreach (ResourceNode n in Children)
                 {
-                    if (n.Name != null && n.Name.Equals(path, StringComparison.OrdinalIgnoreCase) && n.ResourceType == type)
+                    if (n.Name != null && n.Name.Equals(path, StringComparison.OrdinalIgnoreCase) && n.ResourceFileType == type)
                     {
                         return n;
                     }
@@ -1052,7 +1052,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach (ResourceNode n in Children)
                 {
-                    if ((node = n.FindChildByType(path, true, type)) != null && node.ResourceType == type)
+                    if ((node = n.FindChildByType(path, true, type)) != null && node.ResourceFileType == type)
                     {
                         return node;
                     }
@@ -1154,7 +1154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
         private void EnumTypeInternal(List<ResourceNode> list, ResourceType type)
         {
-            if (ResourceType == type)
+            if (ResourceFileType == type)
             {
                 list.Add(this);
             }

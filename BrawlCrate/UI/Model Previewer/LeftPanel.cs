@@ -826,7 +826,7 @@ namespace System.Windows.Forms
             }
 
             bool found = false;
-            switch (node.ResourceType)
+            switch (node.ResourceFileType)
             {
                 case ResourceType.ARC:
                 case ResourceType.MRG:
@@ -861,7 +861,7 @@ namespace System.Windows.Forms
                     Console.WriteLine();
                 }
 
-                listAnims.Items.Add(new ListViewItem(node.Name, (int)node.ResourceType, u) { Tag = node });
+                listAnims.Items.Add(new ListViewItem(node.Name, (int)node.ResourceFileType, u) { Tag = node });
             }
             return found;
         }

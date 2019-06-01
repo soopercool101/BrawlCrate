@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class Common2MiscDataNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.Container;
+        public override ResourceType ResourceFileType => ResourceType.Container;
         internal Common2TblHeader* Header => (Common2TblHeader*)WorkingUncompressed.Address;
 
         // Header variables

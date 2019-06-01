@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFTEVStage : ResourceNode
     {
         public REFFTEVStage(int index) { _name = string.Format("Stage{0}", index); }
-        public override ResourceType ResourceType => ResourceType.TEVStage;
+        public override ResourceType ResourceFileType => ResourceType.TEVStage;
 
         [Category("c TEV Color Env"), Browsable(true)]
         public string ColorOutput

@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class EFLSNode : ARCEntryNode
     {
         internal EFLSHeader* Header => (EFLSHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.EFLS;
+        public override ResourceType ResourceFileType => ResourceType.EFLS;
 
         private int _brresCount, _unk1, _unk2;
 
@@ -139,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal EFLSEntry* Header => (EFLSEntry*)WorkingUncompressed.Address;
         public override bool AllowNullNames => true;
-        public override ResourceType ResourceType => ResourceType.EFLSEntry;
+        public override ResourceType ResourceFileType => ResourceType.EFLSEntry;
 
         internal int _brresID1, _brresID2, _re3dOffset, _unk;
 

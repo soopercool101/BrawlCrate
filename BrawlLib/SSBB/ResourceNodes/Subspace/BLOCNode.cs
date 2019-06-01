@@ -5,7 +5,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class BLOCNode : ARCEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.BLOC;
+        public override ResourceType ResourceFileType => ResourceType.BLOC;
         internal BLOC* Header => (BLOC*)WorkingUncompressed.Address;
 
         public override bool OnInitialize()
@@ -63,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class BLOCEntryNode : ResourceNode
     {
         internal BLOCEntry* Header => (BLOCEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
         public int Entries { get; private set; }
 
         public override bool OnInitialize()

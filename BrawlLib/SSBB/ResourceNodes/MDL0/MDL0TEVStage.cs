@@ -5,7 +5,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe partial class MDL0TEVStageNode : MDL0EntryNode
     {
-        public override ResourceType ResourceType => ResourceType.TEVStage;
+        public override ResourceType ResourceFileType => ResourceType.TEVStage;
         public override string Name
         {
             get => string.Format("Stage{0}", Index);

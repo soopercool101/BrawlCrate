@@ -62,7 +62,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal ResourceGroup* Header => (ResourceGroup*)WorkingUncompressed.Address;
 
-        public override ResourceType ResourceType => ResourceType.MDL0Group;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Group;
 
         public MDLResourceType _type;
         internal int _index;

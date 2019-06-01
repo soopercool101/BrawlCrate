@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MRGNode : ResourceNode
     {
         internal MRGHeader* Header => (MRGHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MRG;
+        public override ResourceType ResourceFileType => ResourceType.MRG;
 
         public override void OnPopulate()
         {

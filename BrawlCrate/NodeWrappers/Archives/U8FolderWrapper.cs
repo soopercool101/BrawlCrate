@@ -380,7 +380,7 @@ namespace BrawlCrate.NodeWrappers
 
         private void LoadModels(ResourceNode node, List<MDL0Node> models)
         {
-            switch (node.ResourceType)
+            switch (node.ResourceFileType)
             {
                 case ResourceType.ARC:
                 case ResourceType.U8:

@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class REFFParticleNode : ResourceNode
     {
         internal ParticleParameterHeader* Params => (ParticleParameterHeader*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private ParticleParameterHeader hdr = new ParticleParameterHeader();
         private ParticleParameterDesc desc = new ParticleParameterDesc();

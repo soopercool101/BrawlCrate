@@ -135,7 +135,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class EventMatchNode : ResourceNode
     {
-        public override ResourceType ResourceType => ResourceType.Container;
+        public override ResourceType ResourceFileType => ResourceType.Container;
 
         public enum ItemLevelEnum : short
         {
