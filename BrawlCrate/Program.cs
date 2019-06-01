@@ -180,7 +180,7 @@ namespace BrawlCrate
             finally
             {
                 Close(true);
-                if (CanRunDiscordRPC())
+                if (CanRunDiscordRPC)
                 {
                     Discord.DiscordRpc.ClearPresence();
                     Discord.DiscordRpc.Shutdown();
@@ -522,10 +522,6 @@ namespace BrawlCrate
             return true;
         }
 
-        public static bool CanRunDiscordRPC()
-        {
-            string path = $"{Application.StartupPath}\\discord-rpc.dll";
-            return File.Exists(path);
-        }
+        public static bool CanRunDiscordRPC => File.Exists($"{Application.StartupPath}\\discord-rpc.dll");
     }
 }

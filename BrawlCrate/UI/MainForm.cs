@@ -571,7 +571,7 @@ namespace BrawlCrate
 
         public void UpdateDiscordRPC()
         {
-            if (Program.CanRunDiscordRPC())
+            if (Program.CanRunDiscordRPC)
             {
                 if (Discord.DiscordSettings.DiscordControllerSet)
                 {
