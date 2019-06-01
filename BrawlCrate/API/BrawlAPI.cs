@@ -116,16 +116,6 @@ namespace BrawlCrate.API
 
             fsi_path = BrawlCrate.Properties.Settings.Default.FSharpInstallationPath;
 
-            if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (fsi_path == null || fsi_path == ""))
-            {
-                FSharpInstall(out fsi_path);
-                if (fsi_path != null && fsi_path != "")
-                {
-                    BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = fsi_path;
-                    BrawlCrate.Properties.Settings.Default.Save();
-                }
-            }
-
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
             Assembly brawllib = Assembly.GetAssembly(typeof(ResourceNode));
@@ -151,6 +141,15 @@ namespace BrawlCrate.API
         {
             if (Path.GetExtension(path).Equals(".fsx", StringComparison.OrdinalIgnoreCase))
             {
+                if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (fsi_path == null || fsi_path == ""))
+                {
+                    FSharpInstall(out fsi_path);
+                    if (fsi_path != null && fsi_path != "")
+                    {
+                        BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = fsi_path;
+                        BrawlCrate.Properties.Settings.Default.Save();
+                    }
+                }
                 if (FSharpEnabled)
                 {
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
@@ -236,6 +235,18 @@ namespace BrawlCrate.API
         {
             try
             {
+                if (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled)
+                {
+                    if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (fsi_path == null || fsi_path == ""))
+                    {
+                        FSharpInstall(out fsi_path);
+                        if (fsi_path != null && fsi_path != "")
+                        {
+                            BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = fsi_path;
+                            BrawlCrate.Properties.Settings.Default.Save();
+                        }
+                    }
+                }
                 if ((path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled) || (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled))
                 {
                     return false;
