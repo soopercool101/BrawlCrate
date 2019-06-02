@@ -1,0 +1,26 @@
+st_tengan Section [1]: 0x000004BC
+Stage Slot 1 File Type
+
+Changes the file structure required and hazards associated when loading STGTENGAN_1
+
+Default (Byte): 0 (Dialga) (0x00)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_tengan Section [1]: 0x000004C8
+Stage Slot 2 File Type
+
+Changes the file structure required and hazards associated when loading STGTENGAN_2
+
+Default (Byte): 1 (Palkia) (0x01)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_tengan Section [1]: 0x000004D4
+Stage Slot 3 File Type
+
+Changes the file structure required and hazards associated when loading STGTENGAN_3
+
+Default (Byte): 2 (Cresselia) (0x02)
+	/EndDescription
+0001    // Flags for which bytes are underlined

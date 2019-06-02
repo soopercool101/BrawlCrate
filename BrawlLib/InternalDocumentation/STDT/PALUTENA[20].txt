@@ -1,0 +1,170 @@
+Platform Health
+(Float) The amount of damage that a breakable platform can take before breaking
+
+Default (Float): 38 (0x42180000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x020
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 0.7 (0x3F333333)
+*Seems that any value higher than the original causes the platforms not to break after you have broken them once
+	/EndDescription
+0
+
+0x028
+Default (Float): 0.5 (0x3F000000)
+*Seems that any value higher than the original causes the platforms not to break after you have broken them once
+	/EndDescription
+0
+
+0x02C
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x030
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 4 (0x40800000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 840 (0x44520000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x044
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 3600 (0x45610000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x050
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x058
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 15 (0x41700000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 0.9 (0x3F666666)
+	/EndDescription
+0
+
+0x068
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x074
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+Platform Respawn Timer
+The amount of frames it takes for broken platforms to respawn (May be delayed by about a second or 2)
+
+Default (Float): 480 (0x43F00000)
+	/EndDescription
+0
+
+0x080
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x084
+Default (Float): 0.56 (0x3F0F5C29)
+	/EndDescription
+0
+
+0x088
+Default (Float): 3600 (0x45610000)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x090
+Default (Float): 2700 (0x4528C000)
+	/EndDescription
+0
+
+0x094
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0

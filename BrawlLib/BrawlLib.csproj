@@ -568,6 +568,105 @@
     <Compile Remove="SSBB\Types\Subspace\GSND.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="InternalDocumentation\Module\st_donkey\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_donkey\Section [4].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_dxpstadium\Section [4].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_dxrcruise\Section [4].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_dxzebes\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_famicom\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_mariopast\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_plankton\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_tbreak\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_tbreak\Section [4].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\Module\st_tengan\Section [1].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\CRAYON[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\DOLPIC[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\DONKEY[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\DXBIGBLUE[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\DXGARDEN[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\DXGREENS[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\DXONETT[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\FAMICOM[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\GREENHILL[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\HALBERD[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\HOMERUN[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\MANSION[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\MARIOPAST[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\METALGEAR[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\NORFAIR[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\PALUTENA[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\PICTCHAT[4].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\PLANKTON[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\STADIUM[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\TENGAN[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\STDT\VILLAGE[20].txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="InternalDocumentation\version.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

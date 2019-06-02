@@ -1,0 +1,36 @@
+st_dxrcruise Section [4]: 0x00000008
+PAC Model Data Scale
+
+For certain specific Model Data files, all MDL0 files contained within are scaled by this amount.
+(Needs further investigation to determine which Model Data indices are affected)
+
+Default (Float): 0.66 (0x3F28F5C3)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxrcruise Section [4]: 0x0000000C
+Seesaw Return Speed
+
+How fast the Seesaw gimmick returns to its default position when no players are stood on top.
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxrcruise Section [4]: 0x0000009C
+Seesaw Tilt Speed (LHS)
+
+How fast the Seesaw gimmick tilts when players are standing on the Left-Hand Side.
+
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxrcruise Section [4]: 0x000000BC
+Seesaw Tilt Speed (RHS)
+
+How fast the Seesaw gimmick tilts when players are standing on the Right-Hand Side.
+
+Default (Float): -0.3 (0xBE99999A)
+	/EndDescription
+1111    // Flags for which bytes are underlined

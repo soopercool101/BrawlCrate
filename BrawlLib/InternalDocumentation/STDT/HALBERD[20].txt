@@ -1,0 +1,229 @@
+0x014
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Hazard Minimum Timer
+(Float) The minimum time between hazard activation while on the ship
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+Hazard Maximum Timer
+(Float) The maximum time between hazard activation while on the ship
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+0x028
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 0.35 (0x3EB33333)
+	/EndDescription
+0
+
+0x030
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Warning Sign Visibility Timer
+(Float) The number of frames the warning sign stays out for
+
+Default (Float): 780 (0x44430000)
+	/EndDescription
+0
+
+Main Platform Minimum Timer
+(Float) The minimum number of frames that the main platform can stay out for
+
+Default (Float): 3600 (0x45610000)
+	/EndDescription
+0
+
+Main Platform Maximum Timer
+(Float) The maximum number of frames the main platform can stay out for
+
+Default (Float): 7200 (0x45E10000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.35 (0x3EB33333)
+	/EndDescription
+0
+
+0x044
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x048
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x050
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 3 (0x40400000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 360 (0x43B40000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+0x068
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x070
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 0.35 (0x3EB33333)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x080
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+0x084
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x088
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 270 (0x43870000)
+	/EndDescription
+0
+
+0x090
+Default (Float): 330 (0x43A50000)
+	/EndDescription
+0
+
+0x094
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x098
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x09C
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+0x0A0
+Default (Float): 1.25 (0x3FA00000)
+	/EndDescription
+0
+
+0x0A4
+Default (Float): 3 (0x40400000)
+	/EndDescription
+0
+
+0x0A8
+Default (Float): 45 (0x42340000)
+	/EndDescription
+0
+
+0x0AC
+Default (Float): 75 (0x42960000)
+	/EndDescription
+0
+
+0x0B0
+Default (Float): 70 (0x428C0000)
+	/EndDescription
+0
+
+0x0B4
+Default (Float): 25 (0x41C80000)
+	/EndDescription
+0
+
+0x0B8
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x0BC
+Default (Float): 3 (0x40400000)
+	/EndDescription
+0
+
+0x0C0
+Default (Float): 360 (0x43B40000)
+	/EndDescription
+0

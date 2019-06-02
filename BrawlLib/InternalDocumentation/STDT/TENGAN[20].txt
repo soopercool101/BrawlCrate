@@ -1,0 +1,444 @@
+0x014
+Default (Float): 0.01 (0x3C23D70A)
+*Speculation: related to the moving platforms (Changing to 0 freezes the platforms)
+	/EndDescription
+0
+
+0x018
+Default (Float): 0.3 (0x3E99999A)
+*Speculation: related to the moving platforms
+	/EndDescription
+0
+
+Platform Pause Chance
+(Float) The chance that the platforms will pause when reaching the end of their animation
+
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+Platform Pause Minimum Timer
+(Float) The minimum number of frames that the platforms will pause for
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+Platform Pause Maximum Timer
+(Float) The maximum number of frames that the platforms will pause for
+
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 0.08 (0x3DA3D70A)
+*Speculation: related to the moving platforms
+	/EndDescription
+0
+
+Floor Rebuild Minimum Timer
+(Float) The minimum number of frames before the floor is rebuilt when broken
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Floor Rebuild Maximum Timer
+(Float) The maximum number of frames before the floor is rebuilt when broken
+
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 3600 (0x45610000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x044
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x048
+Default (Float): 0.01 (0x3C23D70A)
+	/EndDescription
+0
+
+Pokémon Action Minimum Timer
+(Float) The minimum number of frames before Dialga, Palkia, or Cresselia will perform an action such as attack or appear/reappear when not on stage
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+Pokémon Action Maximum Timer
+(Float) The maximum number of frames before Dialga, Palkia, or Cresselia will perform an action such as attack or appear/reappear when not on stage
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+Pokémon On-Stage Minimum Timer
+(Float) The minimum number of frames that Dialga, Palkia, or Cresselia will stay on-stage after spawning
+
+Default (Float): 5400 (0x45A8C000)
+	/EndDescription
+0
+
+Pokémon On-Stage Maximum Timer
+(Float) The maximum number of frames that Dialga, Palkia, or Cresselia will stay on-stage after spawning
+
+Default (Float): 7200 (0x45E10000)
+	/EndDescription
+0
+
+Lake Guardians Minimum Timer
+(Float) The minimum number of frames before one the lake guardians/emotion trio (Azelf, Uxie, and Mespirit) will appear
+
+Default (Float): 5400 (0x45A8C000)
+	/EndDescription
+0
+
+Lake Guardians Maximum Timer
+(Float) The maximum number of frames before one the lake guardians/emotion trio (Azelf, Uxie, and Mespirit) will appear
+
+Default (Float): 10800 (0x4628C000)
+	/EndDescription
+0
+
+No Lake Guardian Chance
+(Float) The chance that no lake guardian will appear
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Mesprit Spawn Chance
+(Float) The chance that Mesprit will be the lake guardian to appear
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Uxie Spawn Chance
+(Float) The chance that Uxie will be the lake guardian to appear
+
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+Azelf Spawn Chance
+(Float) The chance that Azelf will be the lake guardian to appear
+
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+Mesprit Minimum Frames
+(Float) The minimum number of frames that Mespirit will remain on stage before flying away
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+Mesprit Maximum Frames
+(Float) The maximum number of frames that Mespirit will remain on stage before flying away
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+Azelf and Uxie Minimum Frames
+(Float) The minimum number of frames that Azelf or Uxie will remain on stage after spawning
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+Azelf and Uxie Maximum Frames
+(Float) The maximum number of frames that Azelf or Uxie will remain on stage after spawning
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Camera Minimum Tilt
+(Float) The minimum angle that the camera can be tilted during Dialga or Palkia's stage tilt hazard
+
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+Camera Maximum Tilt
+(Float) The maximum angle that the camera can be tilted during Dialga or Palkia's stage tilt hazard
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Camera Tilt Reduction Speed
+(Float) Reduces the tilt every frame (?) by this value. Higher values return the stage to normal quicker
+
+Default (Float): 0.02 (0x3CA3D70A)
+	/EndDescription
+0
+
+Stage Break Rumble Duration
+(Float) How many frames the screen will shake for when Dialga or Palkia breaks the floor. Setting this too high can result in a chain of additional stage breaks
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+Stage Break Minimum Delay
+(Float) The minimum number of frames between Dialga or Palkia roaring and the floor breaking when the stage break hazard is activated
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Stage Break Maximum Delay
+(Float) The maximum number of frames between Dialga or Palkia roaring and the floor breaking when the stage break hazard is activated
+
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+0x09C
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x0A0
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x0A4
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+0x0A8
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+Dialga Hazard Variable 1
+(Float) Setting to -1 disables all of Dialga's hazards. Possibly a percent chance of a hazard activating when checked?
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+Dialga Stage Break Frequency
+(Float) How often Dialga will break the stage. Setting to 0 will disable the hazard
+
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+Dialga Laser Beam Frequency (1)
+(Float) How often Dialga fires lasers. Setting both of these to 0 will disable the hazard
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Dialga Laser Beam Frequency (2)
+(Float) How often Dialga fires lasers. Setting both of these to 0 will disable the hazard
+
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+Dialga Time Slow Frequency
+(Float) How often Dialga slows the flow of time. Setting to 0 will disable the hazard
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+Dialga Stage Attack Frequency
+(Float) How often Dialga goes into the foreground to attack fighters. Setting to 0 will disable the hazard
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x0C4
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x0C8
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x0CC
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Dialga Time Slow Minimum Timer
+(Float) The minimum number of frames Dialga will slow down time for
+
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Dialga Time Slow Maximum Timer
+(Float) The maximum number of frames Dialga will slow down time for
+
+Default (Float): 720 (0x44340000)
+	/EndDescription
+0
+
+0x0D8
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+0x0DC
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Palkia Hazard Variable 1
+(Float) Setting to -1 disables all of Palkia's hazards. Possibly a percent chance of a hazard activating when checked?
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+Palkia Stage Break Frequency
+(Float) How often Palkia will break the stage. Setting to 0 will disable the hazard
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Palkia Laser Beam Frequency (1)
+(Float) How often Palkia fires lasers. Setting both of these to 0 will disable the hazard
+
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+Palkia Laser Beam Frequency (2)
+(Float) How often Palkia fires lasers. Setting both of these to 0 will disable the hazard
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Palkia Gravity Shift Frequency
+(Float) How often Palkia manipulates gravity. Setting to 0 will disable the hazard
+
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+Palkia Vertical Camera Flip Frequency
+(Float) How often Palkia will flip the camera vertically. Setting to 0 will disable the hazard
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+Palkia Horizontal Camera Flip Frequency
+(Float) How often Palkia will flip the camera horizontally. Setting to 0 will disable the hazard
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+Palkia Gravity Shift Minimum Timer
+(Float) The minimum number of frames Palkia will manipulate gravity for.
+
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Palkia Gravity Shift Maximum Timer
+(Float) The maximum number of frames Palkia will manipulate gravity for.
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Palkia Vertical Camera Flip Minimum Timer
+(Float) The minimum number of frames Palkia will flip the camera vertically for.
+
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Palkia Vertical Camera Flip Maximum Timer
+(Float) The maximum number of frames Palkia will flip the camera vertically for.
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Palkia Horizontal Camera Flip Minimum Timer
+(Float) The minimum number of frames Palkia will flip the camera horizontally for.
+
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Palkia Horizontal Camera Flip Maximum Timer
+(Float) The maximum number of frames Palkia will flip the camera horizontally for.
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x114
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x118
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x11C
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x120
+Default (Float): 15 (0x41700000)
+	/EndDescription
+0
+
+0x124
+Default (Float): 4 (0x40800000)
+	/EndDescription
+0
+
+0x128
+Default (Float): 4 (0x40800000)
+	/EndDescription
+0

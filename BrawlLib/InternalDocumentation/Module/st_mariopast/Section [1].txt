@@ -1,0 +1,26 @@
+st_mariopast Section [1]: 0x0000036F
+Stage Slot 1 File Type
+
+Changes the file structure required and hazards associated when loading STGMARIOPAST_00
+
+Default (Byte): 0 (World 1-1) (0x00)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_mariopast Section [1]: 0x0000037B
+Stage Slot 2 File Type
+
+Changes the file structure required and hazards associated when loading STGMARIOPAST_01
+
+Default (Byte): 1 (World 1-2) (0x01)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_mariopast Section [1]: 0x00000387
+Stage Slot 3 (unused) File Type
+
+Changes the file structure required and hazards associated when loading STGMARIOPAST_02(?)
+
+Default (Byte): 0 (World 1-1) (0x00)
+	/EndDescription
+0001    // Flags for which bytes are underlined

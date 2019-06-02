@@ -1,0 +1,45 @@
+st_dxpstadium Section [4]: 0x00000004
+Stage Size
+
+(Float) Affects the scale of the transfomations.
+See: https://i.imgur.com/3qO7M.png and https://i.imgur.com/bfxT9.png
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxpstadium Section [4]: 0x00000024
+Normal Form Timer
+
+(Float) Frame timer for how long the stage stays on the normal transformation
+
+Default (Float): 2400 (0x45160000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxpstadium Section [4]: 0x00000028
+Info Screen Timer
+
+(Float) How many frames before info screen shows up
+
+Default (Float): 3000 (0x453B8000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxpstadium Section [4]: 0x0000002C
+Info Screen Duration Timer
+
+(Float) How many frames the info screen stays out for
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_dxpstadium Section [4]: 0x00000054
+Stage Rising/Falling Speed
+
+Affects the speed at which transformations transform
+
+Default (Float): 0.01 (0x3C23D70A)
+	/EndDescription
+1111    // Flags for which bytes are underlined

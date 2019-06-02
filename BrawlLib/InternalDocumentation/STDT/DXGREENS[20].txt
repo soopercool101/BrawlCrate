@@ -1,0 +1,179 @@
+Block Spawn Minimum Timer
+(Float) Minimum frame count before a block can spawn
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Block Spawn Maximum Timer
+(Float) Maximum frame count before a block will spawn
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+Block Spawn Percentage
+(Float) Percentage to spawn some type of block
+
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+0x020
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x024
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 0.85 (0x3F59999A)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+Bomb Block Percentage
+(Float) Percent chance that a spawned block is a bomb
+
+Default (Float): 0.12 (0x3DF5C28F)
+	/EndDescription
+0
+
+0x034
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 9 (0x41100000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.02 (0x3CA3D70A)
+	/EndDescription
+0
+
+Wind Activation Minimum Timer
+(Float) Minimum frame count before wind can activate
+
+Default (Float): 800 (0x44480000)
+	/EndDescription
+0
+
+Wind Activation Maximum Timer
+(Float) Maximum frame count before wind will activate
+
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+Wind Push Force
+(Float) Increasing this increases the force the wind has on players when active
+
+Default (Float): 0.24 (0x3E75C28F)
+	/EndDescription
+0
+
+0x050
+Default: 0 (Could be int or float - be careful)
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+0
+
+Wind Area Width
+(Float) The width (in the direction the wind is blowing) of the wind's area of effect
+
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+Wind Area Height
+(Float) The highest y-value that the wind will affect the players at
+
+Default (Float): 40 (0x42200000)
+	/EndDescription
+0
+
+Wind Area Depth
+(Float) The lowest y-value that the wind will affect the players at
+
+Default (Float): -10 (0xC1200000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+Minimum Wind Frames
+(Float) The minimum number of frames the wind will be active for
+
+Default (Float): 35 (0x420C0000)
+	/EndDescription
+0
+
+Maximum Wind Frames
+(Float) The maximum number of frames the wind will be active for
+
+Default (Float): 70 (0x428C0000)
+	/EndDescription
+0
+
+Minimum Apples
+(Float) The minimum number of Apples to spawn
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+Maximum Apples
+(Float) The maximum number of Apples to spawn
+
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 40 (0x42200000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 16 (0x41800000)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 25 (0x41C80000)
+	/EndDescription
+0
+
+0x080
+Default (Float): 35 (0x420C0000)
+	/EndDescription
+0
+
+0x084
+Default (Float): 0.7 (0x3F333333)
+	/EndDescription
+0
+
+0x088
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0

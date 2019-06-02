@@ -1,0 +1,96 @@
+0x014
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x020
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+~0x024
+Default (Unknown Type): (0x05070000)
+	/EndDescription
+4
+
+0x028
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 500 (0x43FA0000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 3 (0x40400000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+Car Timer
+(Float) The number of frames before cars appear. (Setting to infinity disables the hazard. Setting too low can cause crashes)
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 100 (0x42C80000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x044
+Default (Float): 16 (0x41800000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 0.75 (0x3F400000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 24 (0x41C00000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 320 (0x43A00000)
+	/EndDescription
+0

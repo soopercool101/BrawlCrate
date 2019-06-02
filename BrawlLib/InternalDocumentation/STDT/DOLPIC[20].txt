@@ -1,0 +1,50 @@
+Ground Frames
+(Float) The number of frames that a transformation will stay grounded before returning to the air
+
+Default (Float): 1020 (0x447F0000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x01C
+Default: 0 (Could be int or float - be careful)
+	/EndDescription
+0
+
+Platform Sustain Timer
+(Float) Frames until platforms disappear. Odd glitch where platforms do not disappear and no time is spent on the ground if you set this somewhere below 300
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+Platform Fade Timer
+(Float) Frames it takes for the platforms to fade away/appear and move in/out of position
+
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 80 (0x42A00000)
+	/EndDescription
+0
+
+~0x02C
+Default (Unknown Type): (0x01040302)
+	/EndDescription
+4
+
+~0x030
+Default (Unknown Type): (0x02020101)
+	/EndDescription
+4
+
+~0x034
+Default (Unknown Type): (0x04030000)
+	/EndDescription
+4

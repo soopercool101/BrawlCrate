@@ -1,0 +1,28 @@
+First Drawing Timer
+(Float) The number of frames before the first drawing is drawn.
+
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 480 (0x43F00000)
+	/EndDescription
+0
+
+0x020
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Drawing Erase Timer
+(Float) The number of frames before each drawing is erased.
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0

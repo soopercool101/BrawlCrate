@@ -1,0 +1,189 @@
+st_famicom Section [1]: 0x0000EA40
+Shellcreeper Stage 1 Damage
+
+The amount of damage that a Green Shellcreeper hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 11 (0x000B)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0000EA48
+Shellcreeper Stage 2 Damage
+
+The amount of damage that a Purple Shellcreeper hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 13 (0x000D)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0000EA50
+Shellcreeper Stage 3 Damage
+
+The amount of damage that a Red Shellcreeper hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 15 (0x000F)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0000EAAC
+Shellcreeper Knockback Angle
+
+The angle at which a Shellcreeper hazard sends the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback angle.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 0 (0x0000)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0000EAB4
+Shellcreeper Knockback Growth
+
+The knockback growth from the Shellcreeper hazards.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback growth.
+
+Default (Short): 100 (0x0064)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0000EABC
+Shellcreeper Base Knockback
+
+The base knockback from the Shellcreeper hazards.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your base knockback.
+
+Default (Short): 30 (0x001E)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00010318
+Sidestepper Stage 1 Damage
+
+The amount of damage that a Red Sidestepper hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 13 (0x000D)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00010320
+Sidestepper Stage 2 Damage
+
+The amount of damage that a Blue Sidestepper hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 15 (0x000F)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00010328
+Sidestepper Stage 3 Damage
+
+The amount of damage that a Pink Sidestepper hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 17 (0x0011)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0001038C
+Sidestepper Knockback Angle
+
+The angle at which a Sidestepper hazard sends the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback angle.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 0 (0x0000)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00010390
+Sidestepper Knockback Growth
+
+The knockback growth from the Sidestepper hazards.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback growth.
+
+Default (Short): 100 (0x0064)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0001039C
+Sidestepper Base Knockback
+
+The base knockback from the Sidestepper hazards.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your base knockback.
+
+Default (Short): 30 (0x001E)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x000124FC
+Fireball Hitbox Effect
+
+The hitbox type used by the fireball hazard.
+To edit, select the italicized value and use the menu on the right in 1-Byte mode. The byte value will be your hitbox effect.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_28-32_.28Effect.29
+
+Default (Byte): 5 (Flame) (0x05)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00012504
+Fireball Sound Effect
+
+The sound made by the fireball hazard on a successful hit.
+To edit, select the italicized values and use the menu on the right in 1-Byte mode. The byte value will be your hitbox sound effect.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_19-23_.28Sound.29
+
+Default (Byte): 8 (Burn) (0x08)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x0001252C
+Fireball Damage
+
+The amount of damage the Fireball hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 20 (0x0014)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00012530
+Fireball Knockback Angle
+
+The angle at which the Fireball hazard sends the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback angle.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 30 (0x001E)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00012538
+Fireball Knockback Growth
+
+The knockback growth from the Fireball hazard.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback growth.
+
+Default (Short): 50 (0x0032)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_famicom Section [1]: 0x00012540
+Fireball Base Knockback
+
+The base knockback from the Fireball hazard.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your base knockback.
+
+Default (Short): 70 (0x0046)
+	/EndDescription
+0011    // Flags for which bytes are underlined

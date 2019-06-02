@@ -1,0 +1,146 @@
+0x014
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 45 (0x42340000)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+POW Block Respawn Timer
+(Float) The number of frames before a POW Block will respawn after being completely used
+
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+POW Block Knockback
+(Float) Increases how high the POW Block will cause grounded players to jump
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+Enemy Initial Timer
+(Float) Number of frames it takes to spawn the first enemy
+
+Default (Float): 480 (0x43F00000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 720 (0x44340000)
+	/EndDescription
+0
+
+Shellcreeper Spawn Rate
+(Float) Controls the spawn rate for Shellcreepers (appears to be relative to the Sidestepper Spawn Rate)
+
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+Sidestepper Spawn Rate
+(Float) Controls the spawn rate for Sidesteppers (appears to be relative to the Shellcreeper Spawn Rate)
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+~0x03C
+Default (Unknown Type): (0x04000000)
+	/EndDescription
+4
+
+Shellcreeper Base Speed
+(Float) The speed at which Shellcreepers move at Level 1 (and multiplied for Levels 2 and 3). Setting to negative causes them to move backwards (which causes them to despawn when they go offscreen)
+
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+Sidestepper Base Speed
+(Float) The speed at which Sidesteppers move at Level 1 (and multiplied for Levels 2 and 3). Setting to negative causes them to move backwards (which causes them to despawn when they go offscreen)
+
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+Enemy Fall Speed
+(Float) The speed at which enemies fall. Setting too high will make them fall through floors
+
+Default (Float): 0.125 (0x3E000000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 480 (0x43F00000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+Enemy Level 2 Speed Multiplier
+(Float) Multiplied by the base speed when an enemy reaches Level 2
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+Enemy Level 3 Speed Multiplier
+(Float) Multiplied by the base speed when an enemy reaches Level 3
+
+Default (Float): 4 (0x40800000)
+	/EndDescription
+0
+
+Enemy Loop Speed
+(Float) The number of frames that the enemies take to loop back to a top pipe after entering a bottom one
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+0x068
+Default (Float): 2400 (0x45160000)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 1.2 (0x3F99999A)
+	/EndDescription
+0
+
+0x070
+Default (Float): 2400 (0x45160000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0

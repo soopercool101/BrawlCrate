@@ -1,0 +1,415 @@
+0x014
+Default (Float): -30 (0xC1F00000)
+*Has something to do with the position of cars. 1000 makes them fall into the void, -50 makes them clip into each other
+	/EndDescription
+0
+
+0x018
+Default (Float): 2500 (0x451C4000)
+*Seems to affect the behavior of floating platforms
+	/EndDescription
+0
+
+0x01C
+Default: 0 (Could be int or float - be careful)
+	/EndDescription
+0
+
+0x020
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 400 (0x43C80000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+Initial Number of Cars
+(Integer) How many cars are onstage at the beginning of the match. Freezes if too high
+
+Default (Integer): 4 (0x00000004)
+	/EndDescription
+1
+
+0x030
+Default (Float): 200 (0x43480000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 45 (0x42340000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 0.45 (0x3EE66666)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 0.015 (0x3C75C28F)
+	/EndDescription
+0
+
+0x040
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x044
+Default: 0 (Could be int or float - be careful)
+	/EndDescription
+0
+
+0x048
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x054
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 0.007 (0x3BE56042)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 0.35 (0x3EB33333)
+	/EndDescription
+0
+
+0x060
+Default (Float): 3.5 (0x40600000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+0x068
+Default (Float): 0.03 (0x3CF5C28F)
+	/EndDescription
+0
+
+0x06C
+Default (Float): -10 (0xC1200000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 960 (0x44700000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 50 (0x42480000)
+	/EndDescription
+0
+
+Track Speed
+(Float) The track's movement speed. Not used when in the loop section.
+Setting this value to negative will make the stage fall into an endless void.
+
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x084
+Default (Float): 0.9 (0x3F666666)
+	/EndDescription
+0
+
+Car Leave Timer
+(Float) Affects how much time is taken before the cars and Falcon Flyer start leaving.
+
+Default (Float): 0.03125 (0x3D000000)
+	/EndDescription
+0
+
+Track Landing Timer
+(Float) Affects how much time is required for the track to fall back down after the jump section.
+
+Default (Float): 0.02 (0x3CA3D70A)
+	/EndDescription
+0
+
+0x090
+Default (Float): 3 (0x40400000)
+	/EndDescription
+0
+
+0x094
+Default (Float): 0.03 (0x3CF5C28F)
+	/EndDescription
+0
+
+0x098
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x09C
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x0A0
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x0A4
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x0A8
+Default (Float): 40 (0x42200000)
+	/EndDescription
+0
+
+0x0AC
+Default (Float): 0.14 (0x3E0F5C29)
+	/EndDescription
+0
+
+0x0B0
+Default (Float): 0.025 (0x3CCCCCCD)
+	/EndDescription
+0
+
+0x0B4
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+0x0B8
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x0BC
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+0x0C0
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+0x0C4
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x0C8
+Default (Float): 15 (0x41700000)
+	/EndDescription
+0
+
+0x0CC
+Default (Float): 0.06 (0x3D75C28F)
+	/EndDescription
+0
+
+0x0D0
+Default (Float): 0.08 (0x3DA3D70A)
+	/EndDescription
+0
+
+0x0D4
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x0D8
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x0DC
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x0E0
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x0E4
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x0E8
+Default (Float): 0.025 (0x3CCCCCCD)
+	/EndDescription
+0
+
+0x0EC
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+*0x0F0
+Default (Integer): 7 (0x00000007)
+	/EndDescription
+1
+
+*0x0F4
+Default (Integer): 10 (0x0000000A)
+	/EndDescription
+1
+
+0x0F8
+Default (Float): 0.08 (0x3DA3D70A)
+	/EndDescription
+0
+
+0x0FC
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x100
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x104
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x108
+Default (Float): 45 (0x42340000)
+	/EndDescription
+0
+
+0x10C
+Default (Float): 50 (0x42480000)
+	/EndDescription
+0
+
+0x110
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x114
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x118
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x11C
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x120
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x124
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x128
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x12C
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+*0x130
+Default (Integer): 3 (0x00000003)
+	/EndDescription
+1
+
+*0x134
+Default (Integer): 6 (0x00000006)
+	/EndDescription
+1
+
+0x138
+Default (Float): 0.08 (0x3DA3D70A)
+	/EndDescription
+0
+
+0x13C
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x140
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x144
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x148
+Default: 0 (Could be int or float - be careful)
+	/EndDescription
+0
+
+0x14C
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x150
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x154
+Default (Float): 0.8 (0x3F4CCCCD)
+	/EndDescription
+0

@@ -1,0 +1,144 @@
+0x014
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x018
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+Lava Floor Speed
+(Float) The speed at which the lava floor rises and falls
+
+Default (Float): 0.01 (0x3C23D70A)
+	/EndDescription
+0
+
+0x024
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 0.015 (0x3C75C28F)
+	/EndDescription
+0
+
+Lava Wall Velocity (Inverse)
+(Float) Lower value increases speed and distance they travel
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x030
+Default: 0 (Could be int or float - be careful)
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+0
+
+Lava Wall Pause Minimum Timer
+(Float) The minimum number of frames the lava wall will stay out for
+
+Default (Float): 90 (0x42B40000)
+	/EndDescription
+0
+
+Lava Wall Pause Maximum Timer
+(Float) The maximum number of frames the lava wall will stay out for
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x044
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+0x048
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+0x050
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 400 (0x43C80000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 410 (0x43CD0000)
+	/EndDescription
+0
+
+0x068
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x078
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0

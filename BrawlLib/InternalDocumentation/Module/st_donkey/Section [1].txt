@@ -1,0 +1,119 @@
+st_donkey Section [1]: 0x00004CDC
+Donkey Kong Sound Effect
+
+The sound made by the DK hazard on a successful hit.
+To edit, select the italicized values and use the menu on the right in 1-Byte mode. The byte value will be your hitbox sound effect.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_19-23_.28Sound.29
+
+Default (Byte): 2 (Kick) (0x02)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x00004D04
+Donkey Kong Damage
+
+The amount of damage the DK hazard deals to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 20 (0x0014)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x00004D08
+Donkey Kong Knockback Angle
+
+The angle at which the DK hazard sends the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback angle.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 361 (0x0169)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x00004D10
+Donkey Kong Knockback Growth
+
+The knockback growth from the DK hazard.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback growth.
+
+Default (Short): 50 (0x0032)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x00004D18
+Donkey Kong Base Knockback
+
+The base knockback from the DK hazard.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your base knockback.
+
+Default (Short): 78 (0x004E)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x0000AB00
+Fireball Hitbox Effect
+
+The hitbox type used by the fireball hazard.
+To edit, select the italicized value and use the menu on the right in 1-Byte mode. The byte value will be your hitbox effect.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_28-32_.28Effect.29
+
+Default (Byte): 5 (Flame) (0x05)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x0000AB0C
+Fireball Sound Effect
+
+The sound made by the fireball hazard on a successful hit.
+To edit, select the italicized values and use the menu on the right in 1-Byte mode. The byte value will be your hitbox sound effect.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_19-23_.28Sound.29
+
+Default (Byte): 8 (Burn) (0x08)
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x0000AB2C
+Fireball Damage
+
+The amount of damage the Fireball hazards deal to the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your damage.
+
+Default (Short): 10 (0x000A)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x0000AB34
+Fireball Knockback Angle
+
+The angle at which the Fireball hazards send the players.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback angle.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 20 (0x0014)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x0000AB38
+Fireball Knockback Growth
+
+The knockback growth from the Fireball hazards.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your knockback growth.
+
+Default (Short): 28 (0x001C)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_donkey Section [1]: 0x0000AB44
+Fireball Base Knockback
+
+The base knockback from the Fireball hazards.
+To edit, select the italicized values and use the menu on the right in 2-Byte mode. The short value will be your base knockback.
+
+Default (Short): 90 (0x005A)
+	/EndDescription
+0011    // Flags for which bytes are underlined

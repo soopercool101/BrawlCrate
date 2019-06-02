@@ -1,0 +1,13 @@
+Shield Damage Tolerance
+(Float) Number of weak hits needed to shatter the shield (Setting to 0 causes it to shatter as soon as Sandbag hits it)
+
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+0
+
+Shield Damage Tolerance Multiplier
+(Float) Multiplier for shield damage tolerance. Number of weak hits needed to shatter the shield is calculated by Tolerance*Multiplier
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0

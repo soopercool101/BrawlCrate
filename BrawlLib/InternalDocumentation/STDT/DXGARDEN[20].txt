@@ -1,0 +1,40 @@
+Water Height
+(Float) The height of the swimmable water
+
+Default (Float): -40 (0xC2200000)
+	/EndDescription
+0
+
+Water Velocity
+(Float) The speed (and direction) in which the swimmable water carries players
+
+Default (Float): -4.5 (0xC0900000)
+	/EndDescription
+0
+
+~0x01C
+Default (Unknown Type): (0x02080000)
+	/EndDescription
+4
+
+0x020
+Default (Float): 80 (0x42A00000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 640 (0x44200000)
+	/EndDescription
+0
+
+0x028
+Default (Float): -30 (0xC1F00000)
+	/EndDescription
+0
+
+Klap Trap Rate
+(Float) The rate (in seconds) at which Klap Trap will appear
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0

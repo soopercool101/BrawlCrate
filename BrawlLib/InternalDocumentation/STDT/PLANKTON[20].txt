@@ -1,0 +1,340 @@
+~0x014
+Default (Unknown Type): (0x06080A00)
+	/EndDescription
+4
+
+0x018
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+0x01C
+Default: 0 (Could be int or float - be careful)
+	/EndDescription
+0
+
+0x020
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Leaves: Damage angle
+(Float) How much angle is increased/decreased when the leaves are damaged. Doesn't affect the leaf on the left.
+
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+Leaves: Maximum angle (Top)
+(Float) The maximum angle the leaves can reach upwards. Doesn't affect the leaf on the left.
+
+Default (Float): 24 (0x41C00000)
+	/EndDescription
+0
+
+Leaves: Maximum angle (Bottom)
+(Float) The maximum angle the leaves can reach downwards. Doesn't affect the leaf on the left.
+
+Default (Float): -10 (0xC1200000)
+	/EndDescription
+0
+
+Leaves: Restore frames
+(Float) How many frames have to pass after damage to make the leaf restore. Doesn't affect the leaf on the left.
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+Leaves: Restore angle
+(Float) How much angle is increased/decreased when the leaves restore over time. Doesn't affect the leaf on the left.
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Left Leaf: Initial angle
+(Float) The angle the left leaf spawns at.
+
+Default (Float): 52 (0x42500000)
+	/EndDescription
+0
+
+0x044
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Left Leaf: Damage angle
+(Float) How much angle is increased/decreased when the left leaf is damaged.
+
+Default (Float): 8 (0x41000000)
+	/EndDescription
+0
+
+Left Leaf: Maximum angle (Top)
+(Float) The maximum angle the left leaf can reach upwards.
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+Left Leaf: Maximum angle (Bottom)
+(Float) The maximum angle the left leaf can reach downwards.
+
+Default (Float): 25 (0x41C80000)
+	/EndDescription
+0
+
+Left Leaf: Restore frames
+(Float) How many frames have to pass after damage to make the left leaf restore.
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+Left Leaf: Restore angle
+(Float) How much angle is increased/decreased when the left leaf restores over time.
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+Plankton: Initial speed
+(Float) How much speed the plankton gain when they spawn.
+
+Default (Float): 5.885 (0x40BC51EC)
+	/EndDescription
+0
+
+Plankton: Gravity
+(Float) How much downwards force the planktons get every frame.
+
+Default (Float): 0.09825 (0x3DC9374C)
+	/EndDescription
+0
+
+Plankton: Gravity in water
+(Float) How much downwards force the planktons get every frame while they're in water.
+
+Default (Float): 0.006 (0x3BC49BA6)
+	/EndDescription
+0
+
+Plankton: Spawn delay (Order 1)
+(Float) How many frames have to pass for a plankton to spawn. Only affects the first order.
+
+Default (Float): 274 (0x43890000)
+	/EndDescription
+0
+
+0x070
+Default (Color): R:66 G:180 B:0 A:0 (0x42B40000)
+	/EndDescription
+3
+
+Plankton: Initial order percentage
+(Float) The chance that the initial order is the first order (from 0 to 1000).
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+Plankton: Order percentage
+(Float) The chance that the second order is repeated after the second order (from 0 to 30).
+
+Default (Float): 25 (0x41C80000)
+	/EndDescription
+0
+
+Plankton: Something related to the order
+(Integer) Unknown: changing the value will force the first order and never change.
+
+Default (Integer): 30 (0x0000001E)
+	/EndDescription
+1
+
+~0x080
+Default (Unknown Type): (0x05080800)
+	/EndDescription
+4
+
+0x084
+Default (Float): 3.75 (0x40700000)
+	/EndDescription
+0
+
+0x088
+Default (Float): 1.9 (0x3FF33333)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 0.75 (0x3F400000)
+	/EndDescription
+0
+
+0x090
+Default (Color): R:0 G:50 B:0 A:0 (0x00320000)
+	/EndDescription
+3
+
+0x094
+Default (Color): R:0 G:50 B:0 A:0 (0x00320000)
+	/EndDescription
+3
+
+0x098
+Default (Color): R:0 G:50 B:0 A:0 (0x00320000)
+	/EndDescription
+3
+
+0x09C
+Default (Color): R:0 G:50 B:0 A:0 (0x00320000)
+	/EndDescription
+3
+
+0x0A0
+Default (Color): R:0 G:50 B:0 A:0 (0x00320000)
+	/EndDescription
+3
+
+0x0A4
+Default (Color): R:25 G:50 B:0 A:0 (0x19320000)
+	/EndDescription
+3
+
+0x0A8
+Default (Color): R:50 G:50 B:0 A:0 (0x32320000)
+	/EndDescription
+3
+
+0x0AC
+Default (Color): R:75 G:45 B:0 A:0 (0x4B2D0000)
+	/EndDescription
+3
+
+0x0B0
+Default (Color): R:100 G:40 B:0 A:0 (0x64280000)
+	/EndDescription
+3
+
+0x0B4
+Default (Color): R:100 G:40 B:0 A:0 (0x64280000)
+	/EndDescription
+3
+
+0x0B8
+Default (Color): R:100 G:40 B:0 A:0 (0x64280000)
+	/EndDescription
+3
+
+0x0BC
+Default (Color): R:100 G:33 B:0 A:0 (0x64210000)
+	/EndDescription
+3
+
+0x0C0
+Default (Color): R:100 G:25 B:0 A:0 (0x64190000)
+	/EndDescription
+3
+
+0x0C4
+Default (Color): R:100 G:25 B:0 A:0 (0x64190000)
+	/EndDescription
+3
+
+0x0C8
+Default (Color): R:100 G:25 B:0 A:0 (0x64190000)
+	/EndDescription
+3
+
+0x0CC
+Default (Color): R:70 G:190 B:0 A:0 (0x46BE0000)
+	/EndDescription
+3
+
+0x0D0
+Default (Color): R:75 G:185 B:0 A:0 (0x4BB90000)
+	/EndDescription
+3
+
+0x0D4
+Default (Color): R:85 G:180 B:30 A:0 (0x55B41E00)
+	/EndDescription
+3
+
+0x0D8
+Default (Color): R:95 G:190 B:0 A:0 (0x5FBE0000)
+	/EndDescription
+3
+
+0x0DC
+Default (Color): R:100 G:200 B:40 A:0 (0x64C82800)
+	/EndDescription
+3
+
+0x0E0
+Default (Color): R:125 G:190 B:0 A:0 (0x7DBE0000)
+	/EndDescription
+3
+
+0x0E4
+Default (Color): R:150 G:180 B:0 A:0 (0x96B40000)
+	/EndDescription
+3
+
+0x0E8
+Default (Color): R:160 G:150 B:0 A:0 (0xA0960000)
+	/EndDescription
+3
+
+0x0EC
+Default (Color): R:165 G:120 B:0 A:0 (0xA5780000)
+	/EndDescription
+3
+
+0x0F0
+Default (Color): R:145 G:110 B:0 A:0 (0x916E0000)
+	/EndDescription
+3
+
+0x0F4
+Default (Color): R:135 G:100 B:0 A:0 (0x87640000)
+	/EndDescription
+3
+
+0x0F8
+Default (Color): R:130 G:85 B:0 A:0 (0x82550000)
+	/EndDescription
+3
+
+0x0FC
+Default (Color): R:120 G:65 B:0 A:0 (0x78410000)
+	/EndDescription
+3
+
+0x100
+Default (Color): R:120 G:50 B:0 A:0 (0x78320000)
+	/EndDescription
+3
+
+0x104
+Default (Color): R:120 G:30 B:0 A:0 (0x781E0000)
+	/EndDescription
+3

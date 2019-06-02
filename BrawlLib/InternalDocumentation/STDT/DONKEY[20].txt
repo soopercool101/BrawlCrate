@@ -1,0 +1,176 @@
+DK Frame Timer (Initial)
+(Float) Frame timer before DK’s first activation check (Setting to 0 causes instant activation at the start of the match, setting high makes him never activate)
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+DK Frame Timer
+(Float) Frame timer for subsequent DK activation checks after the first one
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+DK Activation Percentage
+(Float) Percent chance DK will activate at the activation checks (Setting to 0 makes him never activate, setting to 1 will make him activate consistently on every frame timer activation)
+
+Default (Float): 0.8 (0x3F4CCCCD)
+	/EndDescription
+0
+
+DK Activate Wait Timer
+(Float) Frame timer to move DK in and out of the background (Speed and final positition are constant, so changes starting position instead)
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+DK End Minimum Timer
+(Float) Minimum frame timer before DK leaves (Setting to 0 makes him leave quickly, setting high makes him never leave)
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+DK End Maximum Timer
+(Float) Maximum frame timer before DK leaves (Setting this and 0x024 to 0 will cause him to instantly leave soon as he appears (and also doesn’t allow time for springs to spawn))
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+DK Wait Minimum Timer
+(Float) Minimum frames that DK remains in waiting stance after activation before running an activation check to go into the throwing springs state (Setting high makes springs never spawn, setting to 0 makes him not wait)
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+DK Wait Maximum Timer
+(Float) Maximum frames that DK remains in waiting stance after activation before running an activation check to go into the throwing springs state (Setting high makes springs never spawn, setting to 0 makes him not wait)
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+DK Wait Escape Percentage
+(Float) A percentage chance for an activated DK to swap out of waiting stance at the minimum timer
+
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x044
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+Minimum Spring Spawn Timer
+(Float) Minimum time between spring spawns when DK is throwing them (A maximum of 2 springs can be out at any given time)
+
+Default (Float): 190 (0x433E0000)
+	/EndDescription
+0
+
+Maximum Spring Spawn Timer
+(Float) Maximum time between spring spawns when DK is throwing them (A maximum of 2 springs can be out at any given time)
+
+Default (Float): 190 (0x433E0000)
+	/EndDescription
+0
+
+Spring Animation X-Variance
+(Float) X-value variation for the spring animation
+
+Default (Float): 30 (0x41F00000)
+	/EndDescription
+0
+
+Elevator Speed
+(Float) The speed at which the two sets of infinite elevators move (Setting to negative will cause the elevators to no longer spawn)
+
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+Fireball Speed
+(Float) Speed at which the two fireballs will move along their respective paths (Setting to negative will cause the fireballs to fly into space as they won’t follow their path behavior)
+
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x05C
+Default (float): 2 (40000000)
+	/EndDescription
+0
+
+Fireball Pathing Variable 1
+(Float) Something to do with fireball pathing (How often they change course? Setting to 0 causes the left fireball to endlessly loop between its first two points and causes the right fireball to stay in place; setting high causes them to constantly spasm out)
+
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+Fireball Pathing Variable 2
+(Float) Something to do with fireball pathing (Setting to 0 causes them to constantly spasm out; setting high causes the left fireball to endlessly loop between its first two points and causes the right fireball to stay in place)
+
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x068
+Default (float): 5 (40A00000)
+	/EndDescription
+0
+
+Fireball Indecisiveness
+(Float) Setting high causes the fireballs to wait longer before changing course
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+Power-up Spawn Minimum Timer
+(Float) Minimum frame timer before initial power-up spawn
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+0
+
+Power-up Spawn Maximum Timer
+(Float) Maximum frame timer before initial power-up spawn
+
+Default (Float): 0 (0x00000000)
+	/EndDescription
+0
+
+Power-up Respawn Minimum Timer
+(Float) Minimum frame timer before power-up respawn
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+Power-up Respawn Maximum Timer
+(Float) Maximum frame timer before power-up respawn
+
+Default (Float): 1600 (0x44C80000)
+	/EndDescription
+0

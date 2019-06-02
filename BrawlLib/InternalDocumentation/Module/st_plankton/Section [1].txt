@@ -1,0 +1,62 @@
+st_plankton Section [1]: 0x00003B38
+grPlanktonAshiba Plankton Hurtbox Generation and Rotation function caller Function
+
+This function controls the generation of the plankton-only hurtboxes for all color-changing leaves and the rotation function caller (grPlanktonAshiba Function[0][118]).
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00003BB4
+grPlanktonAshiba Hurtbox Generation and Plankton interactions functions Caller
+
+This function calls the Hurtbox Generation function (function[0][112]) and the Plankton on touch Stem glow (function[0][115]) and color changing (function[0][114]) functions.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00003CC8
+grPlanktonAshiba Hurtbox Generation Function
+
+This function controls the generation of hurtboxes for all color-changing leaves.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x000044C8
+grPlanktonAshiba Plankton touch Color changer Function
+
+This function controls the color change for all color-changing leaves when touched by a plankton. Hamon's color and player landing sfx not affected. Linked by grPlanktonAshiba Function[0][117].
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00004734
+grPlanktonAshiba Stem Glow function
+
+This function controls the glow of the stem of all color-changing leaves when touched by a plankton. Linked by grPlanktonAshiba Function[0][117].
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00004994
+grPlanktonAshiba Plankton on touch function
+
+This function controls all functions when a Plankton hits a color-changing leaf.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00004AAC
+grPlanktonAshiba Rotation function
+
+This function controls the rotation of all color-changing leaves when hit by a player.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00004B64
+grPlanktonAshiba Hurtbox generator functions Caller
+
+This function calls all hurtbox generator functions for all-color changing leaves.
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_plankton Section [1]: 0x00004F98
+grPlanktonAshiba Hamon Generator function
+
+This function controls the generation of the grPlanktonHamon when a player lands on the leaf. Associated SFX affected.
+	/EndDescription
+1111    // Flags for which bytes are underlined

@@ -1,0 +1,30 @@
+st_dxzebes Section [1]: 0x00000798
+Acid Damage
+
+The amount of damage the Acid hazard deals to the players.
+
+Default (Short): 14 (0x000E)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_dxzebes Section [1]: 0x0000079C
+Acid Knockback Angle
+
+The angle at which the Acid hazard sends the players.
+
+Resource on Knockback Angles: https://cdn.discordapp.com/attachments/309574190556774402/372782979644129282/unknown-2.png
+
+Default (Short): 90 (0x005A)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_dxzebes Section [1]: 0x000007A8
+Acid Hitbox Effect
+
+The hitbox type used by the Acid hazard.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_28-32_.28Effect.29
+
+Default (Byte): 5 (Flame) (0x05)
+	/EndDescription
+0001    // Flags for which bytes are underlined

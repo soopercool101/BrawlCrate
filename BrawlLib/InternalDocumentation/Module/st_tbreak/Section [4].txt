@@ -1,0 +1,57 @@
+st_tbreak Section [4]: 0x00000000
+Spikes Collision Damage
+
+The amount of damage the spike hazard collisions deal to the players.
+
+Default (Float): 10 (0x41200000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_tbreak Section [4]: 0x00000018
+Spikes Collision Knockback Growth
+
+The knockback growth from the spikes hazard collisions.
+
+Default (Integer): 50 (0x00000032)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_tbreak Section [4]: 0x00000020
+Spikes Collision Base Knockback
+
+The base knockback from the spikes hazard collisions.
+
+Default (Integer): 100 (0x00000064)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_tbreak Section [4]: 0x00000028
+Spikes Collision Hitbox Effect
+
+The hitbox type used by the spikes hazard collisions.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_28-32_.28Effect.29
+
+Default (Integer): 2 (Slash) (0x00000002)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_tbreak Section [4]: 0x00000044
+Spikes Collision Sound Effect
+
+The sound made by the spike hazard collisions on a successful hit.
+
+See this table for a list of proper values: http://opensa.dantarion.com/wiki/Hitbox_Flags_(Brawl)#Bits_19-23_.28Sound.29
+
+Default (Integer): 3 (Slash) (0x00000003)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_tbreak Section [4]: 0x00000068
+Target Z-Value
+
+The location of each target on the z-axis.
+
+Default (Float): -10 (0xC1200000)
+	/EndDescription
+1111    // Flags for which bytes are underlined

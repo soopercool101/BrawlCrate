@@ -1,0 +1,123 @@
+Checkpoint Active Frames
+(Float) The time a checkpoint will remain spinning (frames). The chr0 will still be set for 240 frames unless otherwise set
+
+Default (Float): 240 (0x43700000)
+	/EndDescription
+0
+
+Checkpoint Above-Ground Minimum Timer
+(Float) The minimum number of frames the poles will remain above ground. These timers will continue while the pole is spinning
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+Checkpoint Above-Ground Maximum Timer
+(Float) The maximum number of frames the poles will remain above ground. These timers will continue while the pole is spinning
+
+Default (Float): 1500 (0x44BB8000)
+	/EndDescription
+0
+
+Checkpoint (Re)spawn Timer
+(Float) How many frames before a pole pops up
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+Floor Health
+(Float) The amount of damage necessary to break any given breakable section of the floor
+
+Default (Float): 125 (0x42FA0000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+Floor Lifetime Minimum Timer
+(Float) The minimum number of frames before the floor will destroy itself, regardless of damage. If both minimum and maximum timers are set too low, respawn hitboxes will never disappear, causing a trampoline-like effect
+
+Default (Float): 5400 (0x45A8C000)
+	/EndDescription
+0
+
+Floor Lifetime Maximum Timer
+(Float) The maximum number of frames before the floor will destroy itself, regardless of damage. If both minimum and maximum timers are set too low, respawn hitboxes will never disappear, causing a trampoline-like effect
+
+Default (Float): 9000 (0x460CA000)
+	/EndDescription
+0
+
+Floor Respawn Timer
+(Float) Frames before the floor regenerates after being destroyed
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+0
+
+Floor Respawn Animation Timer
+(Float) How long the floor respawn animation lasts.
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+Background Character Run Wait Timer
+(Float) The wait between each character's background run. 0x04C and 0x050 may have similar effects? They're probably parameters.
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 3200 (0x45480000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 0.025 (0x3CCCCCCD)
+	/EndDescription
+0
+
+Background Character Run Speed
+(Float) The speed at which Tails/Knuckles/Silver travel
+
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+Background Character Group Chance
+(Float) The percent chance of Tails, Knuckles, and Silver appearing together
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+*0x060
+Default (Integer): 10 (0x0000000A)
+	/EndDescription
+1

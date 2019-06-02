@@ -1,0 +1,205 @@
+0x014
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x018
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x020
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+Upper Tower HP
+(Float) The damage required to break the upper layer of either tower
+
+Default (Float): 50 (0x42480000)
+	/EndDescription
+0
+
+Lower Tower HP
+(Float) The damage required to break the lower layer of either tower (upper layer must be broken beforehand)
+
+Default (Float): 65 (0x42820000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x030
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 0.7 (0x3F333333)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 0.3 (0x3E99999A)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+Tower Respawn Timer
+(Float) The number of frames that the tower will take before rebuilding itself after having both layers broken
+
+Default (Float): 2220 (0x450AC000)
+	/EndDescription
+0
+
+0x048
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 0.85 (0x3F59999A)
+	/EndDescription
+0
+
+0x050
+Default (Float): 100 (0x42C80000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 150 (0x43160000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 2700 (0x4528C000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+0x068
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x070
+Default (Float): 450 (0x43E10000)
+	/EndDescription
+0
+
+0x074
+Default (Float): 0.25 (0x3E800000)
+	/EndDescription
+0
+
+0x078
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x07C
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+0x080
+Default (Float): 0.4 (0x3ECCCCCD)
+	/EndDescription
+0
+
+0x084
+Default (Float): 0.2 (0x3E4CCCCD)
+	/EndDescription
+0
+
+0x088
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x08C
+Default (Float): 3200 (0x45480000)
+	/EndDescription
+0
+
+0x090
+Default (Float): 2400 (0x45160000)
+	/EndDescription
+0
+
+0x094
+Default (Float): 3200 (0x45480000)
+	/EndDescription
+0
+
+0x098
+Default (Float): 1 (0x3F800000)
+	/EndDescription
+0
+
+0x09C
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x0A0
+Default (Float): 20 (0x41A00000)
+	/EndDescription
+0
+
+0x0A4
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x0A8
+Default (Float): 480 (0x43F00000)
+	/EndDescription
+0
+
+0x0AC
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x0B0
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0

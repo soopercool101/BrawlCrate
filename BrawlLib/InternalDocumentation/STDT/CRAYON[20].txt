@@ -1,0 +1,64 @@
+Platform Movement Timer 1
+Changes the time it takes for the top platform to switch to a new angle.
+For example, when these 3 values are set to 6, 6 and 9, the platform will continuously switch position.
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Platform Movement Timer 2
+Changes the time it takes for the top platform to switch to a new angle.
+For example, when these 3 values are set to 6, 6 and 9, the platform will continuously switch position.
+
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+Platform Movement Timer 3
+Changes the time it takes for the top platform to switch to a new angle.
+For example, when these 3 values are set to 6, 6 and 9, the platform will continuously switch position.
+
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+Platform Tilt Speed
+(Float) The speed at which the top platform tilts
+
+Default (Float): 0.1 (0x3DCCCCCD)
+	/EndDescription
+0
+
+0x024
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x028
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 420 (0x43D20000)
+	/EndDescription
+0
+
+Support Ghost Duration
+(Float) How many frames a support ghost will stay in the idle animation before going off-stage again
+
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+Season Duration
+(Float) How many frames each season lasts before changing
+
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0

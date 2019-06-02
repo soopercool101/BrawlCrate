@@ -1,0 +1,35 @@
+st_tbreak Section [1]: 0x00000B6C
+Catapult Sound Effect 1
+
+The sound made by the Catapult gimmick when it grabs a player.
+
+Default (Short): 7905 (0x1EE1)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_tbreak Section [1]: 0x00000B74
+Catapult Sound Effect 2
+
+The sound made by the Catapult gimmick when it begins to move.
+
+Default (Short): 7906 (0x1EE2)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_tbreak Section [1]: 0x00000B7C
+Catapult Sound Effect 3
+
+The sound made by the Catapult gimmick when it releases a player.
+
+Default (Short): 7907 (0x1EE3)
+	/EndDescription
+0011    // Flags for which bytes are underlined
+
+st_tbreak Section [1]: 0x00001880
+Spring Sound Effect
+
+The sound made by the Spring gimmick.
+
+Default (Short): 7904 (0x1EE0)
+	/EndDescription
+0011    // Flags for which bytes are underlined
