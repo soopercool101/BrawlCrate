@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB
             }
 
             string input_basename = filename.Substring(3, i - 3);
-            return string.Equals(input_basename.ToLower(), PacBasename.ToLower(), StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(input_basename.ToLower(), PacBasename.ToLower(), StringComparison.OrdinalIgnoreCase);
         }
 
         public Stage(byte id, string name, string relname, string pac_basename)

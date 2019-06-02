@@ -281,19 +281,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (entry is ARCNode)
                 {
-                    ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is BRRESNode)
                 {
-                    ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is U8Node)
                 {
-                    ((U8Node)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((U8Node)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is U8FolderNode)
                 {
-                    ((U8FolderNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((U8FolderNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else
                 {
@@ -377,19 +377,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (entry is ARCNode)
                 {
-                    ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is BRRESNode)
                 {
-                    ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is U8Node)
                 {
-                    ((U8Node)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((U8Node)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is U8FolderNode)
                 {
-                    ((U8FolderNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((U8FolderNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.OrdinalIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
                 }
                 else
                 {

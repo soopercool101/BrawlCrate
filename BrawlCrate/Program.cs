@@ -100,7 +100,7 @@ namespace BrawlCrate
         {
             if (args.Length >= 1)
             {
-                if (args[0].Equals("/gct", StringComparison.InvariantCultureIgnoreCase))
+                if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor();
                     if (args.Length >= 2)
@@ -111,7 +111,7 @@ namespace BrawlCrate
                     Application.Run(editor);
                     return;
                 }
-                else if (args[0].EndsWith(".gct", StringComparison.InvariantCultureIgnoreCase))
+                else if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor
                     {
@@ -125,15 +125,15 @@ namespace BrawlCrate
             List<string> remainingArgs = new List<string>();
             foreach (string a in args)
             {
-                if (a.Equals("/audio:directsound", StringComparison.InvariantCultureIgnoreCase))
+                if (a.Equals("/audio:directsound", StringComparison.OrdinalIgnoreCase))
                 {
                     System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.DirectSound;
                 }
-                else if (a.Equals("/audio:openal", StringComparison.InvariantCultureIgnoreCase))
+                else if (a.Equals("/audio:openal", StringComparison.OrdinalIgnoreCase))
                 {
                     System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.OpenAL;
                 }
-                else if (a.Equals("/audio:none", StringComparison.InvariantCultureIgnoreCase))
+                else if (a.Equals("/audio:none", StringComparison.OrdinalIgnoreCase))
                 {
                     System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.None;
                 }
@@ -263,7 +263,7 @@ namespace BrawlCrate
                 return false;
             }
 
-            if (path.EndsWith(".gct", StringComparison.InvariantCultureIgnoreCase))
+            if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
             {
                 GCTEditor editor = new GCTEditor
                 {

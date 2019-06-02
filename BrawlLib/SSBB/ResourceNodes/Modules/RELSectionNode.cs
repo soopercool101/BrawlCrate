@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 string field0 = (value.ToString() ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
+                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase) ? 16 : 10;
                 if (Convert.ToByte(field0, fromBase) % 4 != 0 && MessageBox.Show("Buffers should generally be multiples of 0x4, are you sure you want to set this? (It may make the module unreadable!)", "", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     return;

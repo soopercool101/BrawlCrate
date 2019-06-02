@@ -100,7 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bool any_match_name = q.Any(f => string.Equals(
                 Path.GetFileNameWithoutExtension(f.Filename),
                 root.Name.Replace("STG", ""),
-                StringComparison.InvariantCultureIgnoreCase));
+                StringComparison.OrdinalIgnoreCase));
             if (!any_match_name)
             {
                 q = q.Concat(new AttributeInterpretation[] { GenerateDefaultInterpretation() });
@@ -109,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             q = q.OrderBy(f => !string.Equals(
                 Path.GetFileNameWithoutExtension(f.Filename),
                 root.Name.Replace("STG", ""),
-                StringComparison.InvariantCultureIgnoreCase));
+                StringComparison.OrdinalIgnoreCase));
 
             return q;
         }

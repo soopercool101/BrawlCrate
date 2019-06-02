@@ -560,7 +560,7 @@ namespace System
             if (value.GetType() == typeof(string))
             {
                 string field0 = (value.ToString() ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase)
+                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
                     ? 16
                     : 10;
                 return Convert.ToInt32(field0, fromBase);
@@ -593,7 +593,7 @@ namespace System
             if (value.GetType() == typeof(string))
             {
                 string field0 = (value.ToString() ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase)
+                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
                     ? 16
                     : 10;
                 return Convert.ToInt32(field0, fromBase);
@@ -626,7 +626,7 @@ namespace System
             if (value.GetType() == typeof(string))
             {
                 string field0 = (value.ToString() ?? "").Split(' ')[0];
-                int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase)
+                int fromBase = field0.StartsWith("0x", StringComparison.OrdinalIgnoreCase)
                     ? 16
                     : 10;
                 return Convert.ToByte(field0, fromBase);
