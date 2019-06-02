@@ -22,7 +22,7 @@ namespace System
     {
         public AttributeInfo[] Array { get; private set; }
         public string Filename { get; private set; }
-        public int NumEntries => Array.Length;
+        public int NumEntries => Array != null ? Array.Length : 0;
 
         public AttributeInterpretation(AttributeInfo[] array, string saveToFile)
         {
@@ -47,11 +47,15 @@ namespace System
                             _description = ""
                         };
                         string temp = sr.ReadLine();
-                        while (!temp.Equals("\t/EndDescription"))
+                        while (temp != null && !temp.Equals("\t/EndDescription"))
                         {
                             attr._description += temp;
                             attr._description += '\n';
                             temp = sr.ReadLine();
+                        }
+                        if (temp == null)
+                        {
+                            return;
                         }
                         if (attr._description.EndsWith("\n"))
                         {
