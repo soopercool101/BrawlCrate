@@ -240,13 +240,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             public int SFXFlag { get => _index1; set { _index1 = value; _index2 = value; _index3 = value; _index4 = value; _parent.SignalPropertyChange(); } }
 #if DEBUG
             [Category("SCLA Sub Entry")]
-            public int Index1 { get { return _index1; } set { _index1 = value; _parent.SignalPropertyChange(); } }
+            public int Index1 { get => _index1; set { _index1 = value; _parent.SignalPropertyChange(); } }
             [Category("SCLA Sub Entry")]
-            public int Index2 { get { return _index2; } set { _index2 = value; _parent.SignalPropertyChange(); } }
+            public int Index2 { get => _index2; set { _index2 = value; _parent.SignalPropertyChange(); } }
             [Category("SCLA Sub Entry")]
-            public int Index3 { get { return _index3; } set { _index3 = value; _parent.SignalPropertyChange(); } }
+            public int Index3 { get => _index3; set { _index3 = value; _parent.SignalPropertyChange(); } }
             [Category("SCLA Sub Entry")]
-            public int Index4 { get { return _index4; } set { _index4 = value; _parent.SignalPropertyChange(); } }
+            public int Index4 { get => _index4; set { _index4 = value; _parent.SignalPropertyChange(); } }
 #endif
 
             public byte _unk1;

@@ -408,7 +408,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
 #if DEBUG
             if (CurveFlag == AnimCurveType.EmitterFloat || CurveFlag == AnimCurveType.PostField)
+            {
                 System.Windows.Forms.MessageBox.Show(TreePath);
+            }
 #endif
 
             switch (CurveFlag)

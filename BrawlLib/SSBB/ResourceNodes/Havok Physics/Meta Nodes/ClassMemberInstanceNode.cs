@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool SerializedAsZero => _isZero;
 #if DEBUG
         [Category("Class Member Instance")]
-        public string TypeName { get { return GetType().ToString(); } }
+        public string TypeName => GetType().ToString();
 #endif
 
         //Size of this member in bytes

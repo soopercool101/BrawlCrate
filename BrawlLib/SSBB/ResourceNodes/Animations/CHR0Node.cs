@@ -827,7 +827,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool ClassicScaleOff { get => _classicScaleOff; set { _classicScaleOff = value; SignalPropertyChange(); } }
 
 #if DEBUG
-        public AnimationCode Flags { get { return _code; } }
+        public AnimationCode Flags => _code;
 #endif
 
         private AnimationCode _code;

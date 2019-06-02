@@ -1479,7 +1479,7 @@ namespace BrawlLib.Wii.Graphics
         private static string HandleProblem(string message)
         {
 #if DEBUG
-            System.Windows.Forms.MessageBox.Show(_material.RootNode._mainForm, message, String.Format("Handled error compiling {0} shader", _vertex ? "vertex" : "fragment"), System.Windows.Forms.MessageBoxButtons.OK);
+            System.Windows.Forms.MessageBox.Show(_material.RootNode._mainForm, message, string.Format("Handled error compiling {0} shader", _vertex ? "vertex" : "fragment"), System.Windows.Forms.MessageBoxButtons.OK);
 #endif
             return "Error";
         }
@@ -1490,12 +1490,10 @@ namespace BrawlLib.Wii.Graphics
             GL.CompileShader(shaderHandle);
 
 #if DEBUG
-            int status;
-            GL.GetShader(shaderHandle, OpenTK.Graphics.OpenGL.ShaderParameter.CompileStatus, out status);
+            GL.GetShader(shaderHandle, OpenTK.Graphics.OpenGL.ShaderParameter.CompileStatus, out int status);
             if (status == 0 || AlwaysOutputShader || System.Windows.Forms.Control.ModifierKeys == (System.Windows.Forms.Keys.Control))
             {
-                string info;
-                GL.GetShaderInfoLog(shaderHandle, out info);
+                GL.GetShaderInfoLog(shaderHandle, out string info);
                 Console.WriteLine(info + "\n\n");
 
                 //Split the source by new lines
@@ -1504,7 +1502,9 @@ namespace BrawlLib.Wii.Graphics
                 //Add the line number to the source so we can go right to errors on specific lines
                 int lineNumber = 1;
                 foreach (string line in s)
-                    Console.WriteLine(String.Format("{0}: {1}", (lineNumber++).ToString().PadLeft(s.Length.ToString().Length, '0'), line));
+                {
+                    Console.WriteLine(string.Format("{0}: {1}", (lineNumber++).ToString().PadLeft(s.Length.ToString().Length, '0'), line));
+                }
 
                 Console.WriteLine("\n\n");
             }

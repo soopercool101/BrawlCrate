@@ -171,7 +171,7 @@ namespace System.Windows.Forms
                 ModelPanel.Invalidate();
                 return true;
             }
-            return false; 
+            return false;
         }
         private bool HotkeyRenderDepthReleased()
         {
@@ -181,7 +181,7 @@ namespace System.Windows.Forms
                 ModelPanel.Invalidate();
                 return true;
             }
-            return false; 
+            return false;
         }
 #endif
 

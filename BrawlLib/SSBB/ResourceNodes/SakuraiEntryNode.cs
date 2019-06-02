@@ -62,7 +62,9 @@ namespace BrawlLib.SSBBTypes
                 }
 #if DEBUG
                 else
+                {
                     throw new Exception("Can't set rebuild address when the file isn't being rebuilt.");
+                }
 #endif
             }
         }
@@ -241,12 +243,16 @@ namespace BrawlLib.SSBBTypes
 
 #if DEBUG
             if (_lookupAddresses.Count != _lookupCount)
+            {
                 throw new Exception("Number of actual lookup offsets does not match the calculated count.");
+            }
 
             //We could just set the rebuild address to the address the node was written at by default
             //But I'm going to through an exception anyway just to be sure everything is coded properly
             if (!RebuildAddress)
+            {
                 throw new Exception("RebuildAddress was not set.");
+            }
 #endif
 
             //Reset for next calc size
@@ -272,7 +278,9 @@ namespace BrawlLib.SSBBTypes
         {
 #if DEBUG
             if ((int)address < (int)BaseAddress)
+            {
                 throw new Exception("Offset value set in lookup, not the address of the offset value.");
+            }
 
             //TODO: check if the added address is within the node's header + data start and end addresses?
 #endif

@@ -662,7 +662,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
 #if DEBUG
         [Category("SRT0 Texture Entry")]
-        public SRT0Code Flags { get { return _code; } }
+        public SRT0Code Flags => _code;
 #endif
 
         public bool _indirect = false;

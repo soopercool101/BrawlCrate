@@ -111,7 +111,9 @@ namespace BrawlLib.SSBBTypes
             {
                 int value = (&hdr->_pad1)[i];
                 if (value != 0)
+                {
                     Console.WriteLine("MovesetNode InitData " + i);
+                }
             }
 #endif
 
@@ -371,7 +373,9 @@ namespace BrawlLib.SSBBTypes
         {
 #if DEBUG
             if (!_initializing && _currentlyBuilding != this)
-                throw new Exception("Not initializing or rebuilding."); 
+            {
+                throw new Exception("Not initializing or rebuilding.");
+            }
 #endif
             return address - BaseAddress;
         }
@@ -383,7 +387,9 @@ namespace BrawlLib.SSBBTypes
         {
 #if DEBUG
             if (!_initializing && _currentlyBuilding != this)
+            {
                 throw new Exception("Not initializing or rebuilding.");
+            }
 #endif
             return BaseAddress + offset;
         }
@@ -395,7 +401,9 @@ namespace BrawlLib.SSBBTypes
         {
 #if DEBUG
             if (!_initializing)
+            {
                 throw new Exception("Not initializing.");
+            }
 #endif
             if (_lookupSizes.ContainsKey(offset))
             {
@@ -412,7 +420,9 @@ namespace BrawlLib.SSBBTypes
         {
 #if DEBUG
             if (!_initializing)
-                throw new Exception("Not initializing."); 
+            {
+                throw new Exception("Not initializing.");
+            }
 #endif
             foreach (TableEntryNode e in _referenceList)
             {
@@ -443,7 +453,9 @@ namespace BrawlLib.SSBBTypes
         {
 #if DEBUG
             if (!_initializing)
-                throw new Exception("Not initializing."); 
+            {
+                throw new Exception("Not initializing.");
+            }
 #endif
             if (_entryCache.ContainsKey(offset))
             {

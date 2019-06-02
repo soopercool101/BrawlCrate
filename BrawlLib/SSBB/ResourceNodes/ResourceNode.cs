@@ -698,10 +698,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
 #endif
-                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
-                {
-                    Export(stream);
-                }
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            {
+                Export(stream);
+            }
 #if !DEBUG
             }
             catch { MessageBox.Show("Unable to open file for write access."); }
