@@ -7,7 +7,7 @@ namespace BrawlCrate.Discord
     {
         public static DiscordRpc.RichPresence presence;
         private static DiscordRpc.EventHandlers handlers;
-        private static readonly string applicationId = (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + '\\' + "Canary" + '\\' + "Active")) ? "545788780980994078" : "545732315658059801";
+        private static readonly string applicationId = (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary\\Active")) ? "545788780980994078" : "545732315658059801";
 
         /// <summary>
         ///     Initializes Discord RPC

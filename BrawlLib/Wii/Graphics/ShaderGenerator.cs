@@ -985,7 +985,7 @@ namespace BrawlLib.Wii.Graphics
                 //255 divided down to 1 has an accuracy of ~0.00392 between values
                 //use abs() < 0.005 to compare equality of floats that may not be accurate
                 string comp = greater ?
-                    ca + ".{0}" + " > " + cb + ".{0}" :
+                    ca + ".{0} > " + cb + ".{0}" :
                     "abs(" + ca + ".{0} - " + cb + ".{0}) < 0.005";
 
                 string compAdd = "if ({0}) " + reg + ".{1} += " + cc + ".{1};";
@@ -1067,7 +1067,7 @@ namespace BrawlLib.Wii.Graphics
                 if (iaOp > 13)
                 {
                     string comp = greater ?
-                        aa + ".{0}" + " > " + ab + ".{0}" :
+                        aa + ".{0} > " + ab + ".{0}" :
                         "abs(" + aa + ".{0} - " + ab + ".{0}) < 0.005";
 
                     wl(compAdd, string.Format(comp, "a"), "a");
@@ -1076,7 +1076,7 @@ namespace BrawlLib.Wii.Graphics
                 {
                     //This actually compares color values, not a typo
                     string comp = greater ?
-                        ca + ".{0}" + " > " + cb + ".{0}" :
+                        ca + ".{0} > " + cb + ".{0}" :
                         "abs(" + ca + ".{0} - " + cb + ".{0}) < 0.005";
 
                     switch (iaOp / 2 - 4)

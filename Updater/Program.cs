@@ -27,7 +27,7 @@ namespace Net
         {
             try
             {
-                string temp = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "Branch")[1];
+                string temp = File.ReadAllLines(AppPath + "\\Canary\\Branch")[1];
                 if (temp == null || temp == "")
                 {
                     throw (new ArgumentNullException());
@@ -45,7 +45,7 @@ namespace Net
         {
             try
             {
-                string temp = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "Branch")[0];
+                string temp = File.ReadAllLines(AppPath + "\\Canary\\Branch")[0];
                 if (temp == null || temp == "")
                 {
                     throw (new ArgumentNullException());
@@ -76,9 +76,9 @@ namespace Net
         public static async Task CheckUpdate(bool Overwrite, string releaseTag = "", bool manual = false, string openFile = null, bool checkDocumentation = false, bool Automatic = false)
         {
             // If canary is active, disable it
-            if (File.Exists(AppPath + '\\' + "Canary" + '\\' + "Active"))
+            if (File.Exists(AppPath + "\\Canary\\Active"))
             {
-                File.Delete(AppPath + '\\' + "Canary" + '\\' + "Active");
+                File.Delete(AppPath + "\\Canary\\Active");
             }
 
             string repoOwner = mainRepo.Split('/')[0];
@@ -134,7 +134,7 @@ namespace Net
                     string docVer = "";
                     try
                     {
-                        docVer = File.ReadAllLines(AppPath + '\\' + "InternalDocumentation" + '\\' + "version.txt")[0];
+                        docVer = File.ReadAllLines(AppPath + "\\InternalDocumentation\\version.txt")[0];
                     }
                     catch (Exception e)
                     {
@@ -143,7 +143,7 @@ namespace Net
                         await ForceDownloadDocumentation();
                         try
                         {
-                            docVer = File.ReadAllLines(AppPath + '\\' + "InternalDocumentation" + '\\' + "version.txt")[0];
+                            docVer = File.ReadAllLines(AppPath + "\\InternalDocumentation\\version.txt")[0];
                             // Documentation has already been updated, no need to check again.
                             checkDocumentation = false;
                         }
@@ -247,7 +247,7 @@ namespace Net
                 Release release = await github.Repository.Release.Get(repoData[0], repoData[1], "Canary" + (currentBranch.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) ? "" : "-" + currentBranch));
                 if (!force)
                 {
-                    string oldID = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[2];
+                    string oldID = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
                     string newID = release.TargetCommitish;
                     if (oldID.Equals(newID, StringComparison.OrdinalIgnoreCase))
                     {
@@ -266,9 +266,9 @@ namespace Net
                 {
                     return;
                 }
-                if (!File.Exists(AppPath + '\\' + "Canary" + '\\' + "Old") && File.Exists(AppPath + '\\' + "Canary" + '\\' + "New"))
+                if (!File.Exists(AppPath + "\\Canary\\Old") && File.Exists(AppPath + "\\Canary\\New"))
                 {
-                    File.Move(AppPath + '\\' + "Canary" + '\\' + "New", AppPath + '\\' + "Canary" + '\\' + "Old");
+                    File.Move(AppPath + "\\Canary\\New", AppPath + "\\Canary\\Old");
                 }
                 await DownloadRelease(release, true, true, manual, false, openFile);
             }
@@ -337,14 +337,14 @@ namespace Net
                 {
                     try
                     {
-                        Process update = Process.Start(AppPath + "/temp.exe", "-o\"" + AppPath + "\"" + " -y");
+                        Process update = Process.Start(AppPath + "/temp.exe", "-o\"" + AppPath + "\" -y");
                         // For documentation updates, ensure temp.exe is properly deleted and show changelog if the download was automated.
                         if (Documentation)
                         {
                             update.WaitForExit();
-                            if (File.Exists(AppPath + '\\' + "temp.exe"))
+                            if (File.Exists(AppPath + "\\temp.exe"))
                             {
-                                File.Delete(AppPath + '\\' + "temp.exe");
+                                File.Delete(AppPath + "\\temp.exe");
                             }
                             MessageBox.Show("Documentation was successfully updated to " + ((release.Name.StartsWith("BrawlCrate Documentation", StringComparison.OrdinalIgnoreCase) && release.Name.Length > 26) ? release.Name.Substring(25) : release.Name) + (Automatic ? "\nThis documentation release:\n" + release.Body : ""));
                         }
@@ -540,12 +540,12 @@ namespace Net
                 branchName = branchName ?? mainBranch;
                 repo = repo ?? mainRepo;
 
-                DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + '\\' + "Canary");
+                DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
 
                 if (!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                 {
-                    using (StreamWriter sw = new StreamWriter(AppPath + '\\' + "Canary" + '\\' + "Branch"))
+                    using (StreamWriter sw = new StreamWriter(AppPath + "\\Canary\\Branch"))
                     {
                         if (!repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                         {
@@ -570,7 +570,7 @@ namespace Net
                 result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
                 commitDate = result.Commit.Author.Date;
                 commitDate = commitDate.ToUniversalTime();
-                string Filename = AppPath + '\\' + "Canary" + '\\' + "New";
+                string Filename = AppPath + "\\Canary\\New";
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
@@ -596,11 +596,11 @@ namespace Net
 
         public static async Task SetCanaryActive()
         {
-            DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + '\\' + "Canary");
+            DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
             CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
-            if (!File.Exists(AppPath + '\\' + "Canary" + '\\' + "Active"))
+            if (!File.Exists(AppPath + "\\Canary\\Active"))
             {
-                File.Create(AppPath + '\\' + "Canary" + '\\' + "Active");
+                File.Create(AppPath + "\\Canary\\Active");
             }
             Console.WriteLine("Canary Active");
             await Task.Delay(1);
@@ -608,9 +608,9 @@ namespace Net
 
         public static async Task SetCanaryInactive()
         {
-            if (File.Exists(AppPath + '\\' + "Canary" + '\\' + "Active"))
+            if (File.Exists(AppPath + "\\Canary\\Active"))
             {
-                File.Delete(AppPath + '\\' + "Canary" + '\\' + "Active");
+                File.Delete(AppPath + "\\Canary\\Active");
             }
 
             await Task.Delay(1);
@@ -625,15 +625,15 @@ namespace Net
             string oldBranch;
             string newRepo;
             string oldRepo;
-            string Filename = AppPath + '\\' + "Canary" + '\\' + "Old";
+            string Filename = AppPath + "\\Canary\\Old";
             try
             {
-                newSha = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[2];
-                oldSha = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "Old")[2];
+                newSha = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+                oldSha = File.ReadAllLines(AppPath + "\\Canary\\Old")[2];
                 try
                 {
-                    newBranch = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[3];
-                    oldBranch = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "Old")[3];
+                    newBranch = File.ReadAllLines(AppPath + "\\Canary\\New")[3];
+                    oldBranch = File.ReadAllLines(AppPath + "\\Canary\\Old")[3];
                 }
                 catch
                 {
@@ -642,8 +642,8 @@ namespace Net
                 }
                 try
                 {
-                    newRepo = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "New")[4];
-                    oldRepo = File.ReadAllLines(AppPath + '\\' + "Canary" + '\\' + "Old")[4];
+                    newRepo = File.ReadAllLines(AppPath + "\\Canary\\New")[4];
+                    oldRepo = File.ReadAllLines(AppPath + "\\Canary\\Old")[4];
                 }
                 catch
                 {
@@ -780,7 +780,7 @@ namespace Net
                 MessageBox.Show("Canary successfully updated from #" + oldSha.Substring(0, 7) + " to #" + newSha.Substring(0, 7)); // For some reason, without this, the changelog window never shows.
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
                 logWindow.ShowDialog();
-                DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + '\\' + "Canary");
+                DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 if (File.Exists(Filename))
                 {
@@ -848,7 +848,7 @@ namespace Net
             string Title,
             string Description)
         {
-            if (File.Exists(Updater.AppPath + '\\' + "Canary" + '\\' + "Active") && !Updater.currentRepo.Equals(Updater.mainRepo, StringComparison.OrdinalIgnoreCase))
+            if (File.Exists(Updater.AppPath + "\\Canary\\Active") && !Updater.currentRepo.Equals(Updater.mainRepo, StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Issue reporter does not allow reporting issues from forks. Please contact the owner of the repository to report your issue.");
                 return;

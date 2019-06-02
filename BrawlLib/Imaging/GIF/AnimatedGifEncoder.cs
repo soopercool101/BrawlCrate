@@ -539,7 +539,7 @@ namespace Gif.Components
             fs.WriteByte(0x21); // extension introducer
             fs.WriteByte(0xff); // app extension label
             fs.WriteByte(11); // block size
-            WriteString("NETSCAPE" + "2.0"); // app id + auth code
+            WriteString("NETSCAPE2.0"); // app id + auth code
             fs.WriteByte(3); // sub-block size
             fs.WriteByte(1); // loop sub-block id
             WriteShort(repeat); // loop count (extra iterations, 0=repeat forever)
