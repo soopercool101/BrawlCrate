@@ -240,6 +240,14 @@ namespace BrawlLib.Imaging
         public static implicit operator Vector3(RGBAPixel p) { return new Vector3(p.R / 255.0f, p.G / 255.0f, p.B / 255.0f); }
 
         public RGBAPixel(byte r, byte g, byte b, byte a) { R = r; G = g; B = b; A = a; }
+        public RGBAPixel(uint u)
+        {
+            string temp = u.ToString("X8");
+            R = Convert.ToByte(temp.Substring(0, 2), 16);
+            G = Convert.ToByte(temp.Substring(2, 2), 16);
+            B = Convert.ToByte(temp.Substring(4, 2), 16);
+            A = Convert.ToByte(temp.Substring(6, 2), 16);
+        }
 
         [Category("RGBA Pixel")]
         public byte Red { get => R; set => R = value; }
