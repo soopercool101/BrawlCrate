@@ -18,13 +18,13 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            listBox1 = new System.Windows.Forms.ListBox();
-            panel1 = new System.Windows.Forms.Panel();
-            btnToggle = new System.Windows.Forms.Button();
-            btnSet = new System.Windows.Forms.Button();
-            btnClear = new System.Windows.Forms.Button();
-            btnInvert = new System.Windows.Forms.Button();
-            btnAll = new System.Windows.Forms.Button();
+            listBox1 = new ListBox();
+            panel1 = new Panel();
+            btnToggle = new Button();
+            btnSet = new Button();
+            btnClear = new Button();
+            btnInvert = new Button();
+            btnAll = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -35,15 +35,15 @@ namespace System.Windows.Forms
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
             listBox1.ItemHeight = 10;
-            listBox1.Location = new System.Drawing.Point(0, 20);
+            listBox1.Location = new Drawing.Point(0, 20);
             listBox1.Name = "listBox1";
             listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            listBox1.Size = new System.Drawing.Size(310, 264);
+            listBox1.Size = new Drawing.Size(310, 264);
             listBox1.TabIndex = 0;
-            listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(listBox1_DrawItem);
-            listBox1.SelectedIndexChanged += new System.EventHandler(listBox1_SelectedIndexChanged);
-            listBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(listBox1_KeyDown);
-            listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(listBox1_MouseDoubleClick);
+            listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            listBox1.KeyDown += new KeyEventHandler(listBox1_KeyDown);
+            listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_MouseDoubleClick);
             // 
             // panel1
             // 
@@ -53,70 +53,70 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnInvert);
             panel1.Controls.Add(btnAll);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(310, 20);
+            panel1.Size = new Drawing.Size(310, 20);
             panel1.TabIndex = 1;
             // 
             // btnToggle
             // 
             btnToggle.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnToggle.Location = new System.Drawing.Point(257, 0);
+            btnToggle.Location = new Drawing.Point(257, 0);
             btnToggle.Name = "btnToggle";
-            btnToggle.Size = new System.Drawing.Size(50, 20);
+            btnToggle.Size = new Drawing.Size(50, 20);
             btnToggle.TabIndex = 5;
             btnToggle.Text = "&Toggle";
             btnToggle.UseVisualStyleBackColor = true;
-            btnToggle.Click += new System.EventHandler(btnToggle_Click);
+            btnToggle.Click += new EventHandler(btnToggle_Click);
             // 
             // btnSet
             // 
             btnSet.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnSet.Location = new System.Drawing.Point(206, 0);
+            btnSet.Location = new Drawing.Point(206, 0);
             btnSet.Name = "btnSet";
-            btnSet.Size = new System.Drawing.Size(50, 20);
+            btnSet.Size = new Drawing.Size(50, 20);
             btnSet.TabIndex = 4;
             btnSet.Text = "&Set";
             btnSet.UseVisualStyleBackColor = true;
-            btnSet.Click += new System.EventHandler(btnSet_Click);
+            btnSet.Click += new EventHandler(btnSet_Click);
             // 
             // btnClear
             // 
             btnClear.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnClear.Location = new System.Drawing.Point(155, 0);
+            btnClear.Location = new Drawing.Point(155, 0);
             btnClear.Name = "btnClear";
-            btnClear.Size = new System.Drawing.Size(50, 20);
+            btnClear.Size = new Drawing.Size(50, 20);
             btnClear.TabIndex = 3;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += new System.EventHandler(btnClear_Click);
+            btnClear.Click += new EventHandler(btnClear_Click);
             // 
             // btnInvert
             // 
-            btnInvert.Location = new System.Drawing.Point(64, 0);
+            btnInvert.Location = new Drawing.Point(64, 0);
             btnInvert.Name = "btnInvert";
-            btnInvert.Size = new System.Drawing.Size(50, 20);
+            btnInvert.Size = new Drawing.Size(50, 20);
             btnInvert.TabIndex = 2;
             btnInvert.Text = "&Invert";
             btnInvert.UseVisualStyleBackColor = true;
-            btnInvert.Click += new System.EventHandler(btnInvert_Click);
+            btnInvert.Click += new EventHandler(btnInvert_Click);
             // 
             // btnAll
             // 
-            btnAll.Location = new System.Drawing.Point(3, 0);
+            btnAll.Location = new Drawing.Point(3, 0);
             btnAll.Name = "btnAll";
-            btnAll.Size = new System.Drawing.Size(60, 20);
+            btnAll.Size = new Drawing.Size(60, 20);
             btnAll.TabIndex = 1;
             btnAll.Text = "Select &All";
             btnAll.UseVisualStyleBackColor = true;
-            btnAll.Click += new System.EventHandler(btnAll_Click);
+            btnAll.Click += new EventHandler(btnAll_Click);
             // 
             // VisEditor
             // 
             Controls.Add(listBox1);
             Controls.Add(panel1);
             Name = "VisEditor";
-            Size = new System.Drawing.Size(310, 284);
+            Size = new Drawing.Size(310, 284);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
 

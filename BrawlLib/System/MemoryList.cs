@@ -19,7 +19,7 @@ namespace System
 
         public T Current => (T)Marshal.PtrToStructure((IntPtr)_current, typeof(T));
         public void Dispose() { }
-        object global::System.Collections.IEnumerator.Current => Current;
+        object Collections.IEnumerator.Current => Current;
         public bool MoveNext() { return (_current += _stride) < _ceil; }
         public void Reset() { _current = _base; }
     }
@@ -166,7 +166,7 @@ namespace System
         }
 
         public IEnumerator<T> GetEnumerator() { return new MemoryEnumerator<T>(_base, _count); }
-        global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        Collections.IEnumerator Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
     }
 
 }

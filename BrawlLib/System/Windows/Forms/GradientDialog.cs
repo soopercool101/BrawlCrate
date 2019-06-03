@@ -22,35 +22,35 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            lblStartText = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            lblStartColor = new System.Windows.Forms.Label();
-            lblEndText = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            lblEndColor = new System.Windows.Forms.Label();
-            btnOkay = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            btnCopy = new System.Windows.Forms.Button();
-            pnlPreview = new System.Windows.Forms.BufferedPanel();
+            lblStartText = new Label();
+            label2 = new Label();
+            lblStartColor = new Label();
+            lblEndText = new Label();
+            label4 = new Label();
+            lblEndColor = new Label();
+            btnOkay = new Button();
+            btnCancel = new Button();
+            btnCopy = new Button();
+            pnlPreview = new BufferedPanel();
             SuspendLayout();
             // 
             // lblStartText
             // 
             lblStartText.BackColor = System.Drawing.Color.White;
             lblStartText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblStartText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblStartText.Location = new System.Drawing.Point(69, 8);
+            lblStartText.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblStartText.Location = new Drawing.Point(69, 8);
             lblStartText.Name = "lblStartText";
-            lblStartText.Size = new System.Drawing.Size(154, 20);
+            lblStartText.Size = new Drawing.Size(154, 20);
             lblStartText.TabIndex = 4;
             lblStartText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            lblStartText.Click += new System.EventHandler(lblStartText_Click);
+            lblStartText.Click += new EventHandler(lblStartText_Click);
             // 
             // label2
             // 
-            label2.Location = new System.Drawing.Point(-1, 8);
+            label2.Location = new Drawing.Point(-1, 8);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(71, 20);
+            label2.Size = new Drawing.Size(71, 20);
             label2.TabIndex = 3;
             label2.Text = "Start Color:";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -58,29 +58,29 @@ namespace System.Windows.Forms
             // lblStartColor
             // 
             lblStartColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblStartColor.Location = new System.Drawing.Point(222, 8);
+            lblStartColor.Location = new Drawing.Point(222, 8);
             lblStartColor.Name = "lblStartColor";
-            lblStartColor.Size = new System.Drawing.Size(40, 20);
+            lblStartColor.Size = new Drawing.Size(40, 20);
             lblStartColor.TabIndex = 2;
-            lblStartColor.Click += new System.EventHandler(lblStartText_Click);
+            lblStartColor.Click += new EventHandler(lblStartText_Click);
             // 
             // lblEndText
             // 
             lblEndText.BackColor = System.Drawing.Color.White;
             lblEndText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblEndText.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblEndText.Location = new System.Drawing.Point(69, 52);
+            lblEndText.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblEndText.Location = new Drawing.Point(69, 52);
             lblEndText.Name = "lblEndText";
-            lblEndText.Size = new System.Drawing.Size(154, 20);
+            lblEndText.Size = new Drawing.Size(154, 20);
             lblEndText.TabIndex = 4;
             lblEndText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            lblEndText.Click += new System.EventHandler(lblEndText_Click);
+            lblEndText.Click += new EventHandler(lblEndText_Click);
             // 
             // label4
             // 
-            label4.Location = new System.Drawing.Point(2, 52);
+            label4.Location = new Drawing.Point(2, 52);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(68, 20);
+            label4.Size = new Drawing.Size(68, 20);
             label4.TabIndex = 3;
             label4.Text = "End Color:";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -88,56 +88,56 @@ namespace System.Windows.Forms
             // lblEndColor
             // 
             lblEndColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblEndColor.Location = new System.Drawing.Point(222, 52);
+            lblEndColor.Location = new Drawing.Point(222, 52);
             lblEndColor.Name = "lblEndColor";
-            lblEndColor.Size = new System.Drawing.Size(40, 20);
+            lblEndColor.Size = new Drawing.Size(40, 20);
             lblEndColor.TabIndex = 2;
-            lblEndColor.Click += new System.EventHandler(lblEndText_Click);
+            lblEndColor.Click += new EventHandler(lblEndText_Click);
             // 
             // btnOkay
             // 
             btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnOkay.Location = new System.Drawing.Point(70, 119);
+            btnOkay.Location = new Drawing.Point(70, 119);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(65, 23);
+            btnOkay.Size = new Drawing.Size(65, 23);
             btnOkay.TabIndex = 6;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
             btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnCancel.Location = new System.Drawing.Point(141, 119);
+            btnCancel.Location = new Drawing.Point(141, 119);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(65, 23);
+            btnCancel.Size = new Drawing.Size(65, 23);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnCopy
             // 
-            btnCopy.Location = new System.Drawing.Point(113, 30);
+            btnCopy.Location = new Drawing.Point(113, 30);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(50, 20);
+            btnCopy.Size = new Drawing.Size(50, 20);
             btnCopy.TabIndex = 9;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += new System.EventHandler(btnCopy_Click);
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // pnlPreview
             // 
             pnlPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pnlPreview.Location = new System.Drawing.Point(12, 81);
+            pnlPreview.Location = new Drawing.Point(12, 81);
             pnlPreview.Name = "pnlPreview";
-            pnlPreview.Size = new System.Drawing.Size(250, 27);
+            pnlPreview.Size = new Drawing.Size(250, 27);
             pnlPreview.TabIndex = 8;
-            pnlPreview.Paint += new System.Windows.Forms.PaintEventHandler(pnlPreview_Paint);
+            pnlPreview.Paint += new PaintEventHandler(pnlPreview_Paint);
             // 
             // GradientDialog
             // 
-            ClientSize = new System.Drawing.Size(276, 154);
+            ClientSize = new Drawing.Size(276, 154);
             Controls.Add(lblStartColor);
             Controls.Add(lblStartText);
             Controls.Add(lblEndText);

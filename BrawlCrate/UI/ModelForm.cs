@@ -16,7 +16,7 @@ namespace BrawlCrate
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
-            modelEditControl1 = new System.Windows.Forms.ModelEditControl();
+            modelEditControl1 = new ModelEditControl();
             SuspendLayout();
             // 
             // modelEditControl1
@@ -25,23 +25,23 @@ namespace BrawlCrate
             modelEditControl1.BackColor = System.Drawing.Color.Lavender;
             modelEditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             modelEditControl1.ScreenCaptureType = 0;
-            modelEditControl1.Location = new System.Drawing.Point(0, 0);
+            modelEditControl1.Location = new Point(0, 0);
             modelEditControl1.Name = "modelEditControl1";
-            modelEditControl1.Size = new System.Drawing.Size(639, 528);
+            modelEditControl1.Size = new Size(639, 528);
             modelEditControl1.TabIndex = 0;
             modelEditControl1.TargetAnimation = null;
             modelEditControl1.TargetAnimType = System.Windows.Forms.NW4RAnimType.CHR;
-            modelEditControl1.TargetModelChanged += new System.EventHandler(TargetModelChanged);
-            modelEditControl1.ModelViewerChanged += new System.EventHandler(ModelViewerChanged);
+            modelEditControl1.TargetModelChanged += new EventHandler(TargetModelChanged);
+            modelEditControl1.ModelViewerChanged += new EventHandler(ModelViewerChanged);
             // 
             // ModelForm
             // 
             BackColor = System.Drawing.Color.PowderBlue;
-            ClientSize = new System.Drawing.Size(639, 528);
+            ClientSize = new Size(639, 528);
             Controls.Add(modelEditControl1);
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "ModelForm";
-            FormClosing += new System.Windows.Forms.FormClosingEventHandler(ModelForm_FormClosing);
+            FormClosing += new FormClosingEventHandler(ModelForm_FormClosing);
             ResumeLayout(false);
 
         }
@@ -92,7 +92,7 @@ namespace BrawlCrate
 
         public unsafe void ReadSettings()
         {
-            BrawlCrate.Properties.Settings settings = BrawlCrate.Properties.Settings.Default;
+            Properties.Settings settings = BrawlCrate.Properties.Settings.Default;
 
             ModelEditorSettings viewerSettings = settings.ViewerSettingsSet ? settings.ViewerSettings : ModelEditorSettings.Default();
 

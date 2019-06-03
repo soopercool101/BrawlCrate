@@ -15,8 +15,8 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
             txtCode.TextChanged += txtCode_TextChanged;
-            lstCodes.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(lstCodes_ItemChecked);
-            lstCodes.SelectedIndexChanged += new System.EventHandler(lstCodes_SelectedIndexChanged);
+            lstCodes.ItemChecked += new ItemCheckedEventHandler(lstCodes_ItemChecked);
+            lstCodes.SelectedIndexChanged += new EventHandler(lstCodes_SelectedIndexChanged);
 
             string title =
                 ((AssemblyTitleAttribute)Attribute.GetCustomAttribute(

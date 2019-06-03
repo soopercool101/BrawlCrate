@@ -36,39 +36,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelViewerHelp));
-            btnOkay = new System.Windows.Forms.Button();
-            richTextBox1 = new System.Windows.Forms.RichTextBox();
+            btnOkay = new Button();
+            richTextBox1 = new RichTextBox();
             SuspendLayout();
             // 
             // btnOkay
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnOkay.Location = new System.Drawing.Point(594, 575);
+            btnOkay.Location = new Drawing.Point(594, 575);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // richTextBox1
             // 
             richTextBox1.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            richTextBox1.Font = new Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             richTextBox1.ForeColor = System.Drawing.Color.Black;
-            richTextBox1.Location = new System.Drawing.Point(12, 12);
+            richTextBox1.Location = new Drawing.Point(12, 12);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            richTextBox1.Size = new System.Drawing.Size(657, 557);
+            richTextBox1.Size = new Drawing.Size(657, 557);
             richTextBox1.TabIndex = 2;
             // 
             // ModelViewerHelp
             // 
             AcceptButton = btnOkay;
-            ClientSize = new System.Drawing.Size(681, 610);
+            ClientSize = new Drawing.Size(681, 610);
             Controls.Add(richTextBox1);
             Controls.Add(btnOkay);
             Name = "ModelViewerHelp";

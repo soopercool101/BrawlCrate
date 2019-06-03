@@ -19,11 +19,11 @@ namespace BrawlCrate
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            label1 = new System.Windows.Forms.Label();
-            txtName = new System.Windows.Forms.TextBox();
-            btnOk = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            treeResource = new BrawlCrate.ResourceTree();
+            label1 = new Label();
+            txtName = new TextBox();
+            btnOk = new Button();
+            btnCancel = new Button();
+            treeResource = new ResourceTree();
             SuspendLayout();
             // 
             // label1
@@ -43,7 +43,7 @@ namespace BrawlCrate
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(99, 20);
             txtName.TabIndex = 2;
-            txtName.TextChanged += new System.EventHandler(txtName_TextChanged);
+            txtName.TextChanged += new EventHandler(txtName_TextChanged);
             // 
             // btnOk
             // 
@@ -54,7 +54,7 @@ namespace BrawlCrate
             btnOk.TabIndex = 3;
             btnOk.Text = "Okay";
             btnOk.UseVisualStyleBackColor = true;
-            btnOk.Click += new System.EventHandler(btnOk_Click);
+            btnOk.Click += new EventHandler(btnOk_Click);
             // 
             // btnCancel
             // 
@@ -65,7 +65,7 @@ namespace BrawlCrate
             btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // treeResource
             // 
@@ -81,7 +81,7 @@ namespace BrawlCrate
             treeResource.ShowIcons = true;
             treeResource.Size = new System.Drawing.Size(291, 200);
             treeResource.TabIndex = 0;
-            treeResource.SelectionChanged += new System.EventHandler(treeResource_SelectionChanged);
+            treeResource.SelectionChanged += new EventHandler(treeResource_SelectionChanged);
             // 
             // CloneSoundDialog
             // 

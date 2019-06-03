@@ -22,39 +22,39 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            btnOkay = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            pnlColors = new System.Windows.Forms.Panel();
-            lblOld = new System.Windows.Forms.Label();
-            lblNew = new System.Windows.Forms.Label();
-            chkAlpha = new System.Windows.Forms.CheckBox();
-            pnlNew = new System.Windows.Forms.BufferedPanel();
-            pnlOld = new System.Windows.Forms.BufferedPanel();
-            goodColorControl1 = new System.Windows.Forms.GoodColorControl();
+            btnOkay = new Button();
+            btnCancel = new Button();
+            pnlColors = new Panel();
+            lblOld = new Label();
+            lblNew = new Label();
+            chkAlpha = new CheckBox();
+            pnlNew = new BufferedPanel();
+            pnlOld = new BufferedPanel();
+            goodColorControl1 = new GoodColorControl();
             pnlColors.SuspendLayout();
             SuspendLayout();
             // 
             // btnOkay
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnOkay.Location = new System.Drawing.Point(200, 221);
+            btnOkay.Location = new Drawing.Point(200, 221);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(59, 24);
+            btnOkay.Size = new Drawing.Size(59, 24);
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.Location = new System.Drawing.Point(267, 221);
+            btnCancel.Location = new Drawing.Point(267, 221);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(59, 24);
+            btnCancel.Size = new Drawing.Size(59, 24);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // pnlColors
             // 
@@ -62,18 +62,18 @@ namespace System.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Left);
             pnlColors.Controls.Add(pnlNew);
             pnlColors.Controls.Add(pnlOld);
-            pnlColors.Location = new System.Drawing.Point(14, 207);
+            pnlColors.Location = new Drawing.Point(14, 207);
             pnlColors.Name = "pnlColors";
-            pnlColors.Size = new System.Drawing.Size(180, 37);
+            pnlColors.Size = new Drawing.Size(180, 37);
             pnlColors.TabIndex = 3;
             // 
             // lblOld
             // 
             lblOld.BackColor = System.Drawing.Color.White;
             lblOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblOld.Location = new System.Drawing.Point(9, 198);
+            lblOld.Location = new Drawing.Point(9, 198);
             lblOld.Name = "lblOld";
-            lblOld.Size = new System.Drawing.Size(35, 15);
+            lblOld.Size = new Drawing.Size(35, 15);
             lblOld.TabIndex = 4;
             lblOld.Text = "Old";
             lblOld.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -82,9 +82,9 @@ namespace System.Windows.Forms
             // 
             lblNew.BackColor = System.Drawing.Color.White;
             lblNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblNew.Location = new System.Drawing.Point(99, 198);
+            lblNew.Location = new Drawing.Point(99, 198);
             lblNew.Name = "lblNew";
-            lblNew.Size = new System.Drawing.Size(35, 15);
+            lblNew.Size = new Drawing.Size(35, 15);
             lblNew.TabIndex = 5;
             lblNew.Text = "New";
             lblNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,42 +93,42 @@ namespace System.Windows.Forms
             // 
             chkAlpha.Checked = true;
             chkAlpha.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkAlpha.Location = new System.Drawing.Point(221, 200);
+            chkAlpha.Location = new Drawing.Point(221, 200);
             chkAlpha.Name = "chkAlpha";
-            chkAlpha.Size = new System.Drawing.Size(90, 18);
+            chkAlpha.Size = new Drawing.Size(90, 18);
             chkAlpha.TabIndex = 6;
             chkAlpha.Text = "Show Alpha";
             chkAlpha.UseVisualStyleBackColor = true;
-            chkAlpha.CheckedChanged += new System.EventHandler(chkAlpha_CheckedChanged);
+            chkAlpha.CheckedChanged += new EventHandler(chkAlpha_CheckedChanged);
             // 
             // pnlNew
             // 
             pnlNew.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnlNew.Location = new System.Drawing.Point(90, 0);
+            pnlNew.Location = new Drawing.Point(90, 0);
             pnlNew.Name = "pnlNew";
-            pnlNew.Size = new System.Drawing.Size(90, 37);
+            pnlNew.Size = new Drawing.Size(90, 37);
             pnlNew.TabIndex = 6;
-            pnlNew.Paint += new System.Windows.Forms.PaintEventHandler(pnlNew_Paint);
+            pnlNew.Paint += new PaintEventHandler(pnlNew_Paint);
             // 
             // pnlOld
             // 
             pnlOld.Dock = System.Windows.Forms.DockStyle.Left;
-            pnlOld.Location = new System.Drawing.Point(0, 0);
+            pnlOld.Location = new Drawing.Point(0, 0);
             pnlOld.Name = "pnlOld";
-            pnlOld.Size = new System.Drawing.Size(90, 37);
+            pnlOld.Size = new Drawing.Size(90, 37);
             pnlOld.TabIndex = 5;
-            pnlOld.Paint += new System.Windows.Forms.PaintEventHandler(pnlOld_Paint);
+            pnlOld.Paint += new PaintEventHandler(pnlOld_Paint);
             // 
             // goodColorControl1
             // 
             goodColorControl1.Color = System.Drawing.Color.FromArgb(0, 0, 0, 0);
-            goodColorControl1.Location = new System.Drawing.Point(12, 10);
-            goodColorControl1.MinimumSize = new System.Drawing.Size(310, 186);
+            goodColorControl1.Location = new Drawing.Point(12, 10);
+            goodColorControl1.MinimumSize = new Drawing.Size(310, 186);
             goodColorControl1.Name = "goodColorControl1";
             goodColorControl1.ShowAlpha = true;
-            goodColorControl1.Size = new System.Drawing.Size(314, 186);
+            goodColorControl1.Size = new Drawing.Size(314, 186);
             goodColorControl1.TabIndex = 2;
-            goodColorControl1.ColorChanged += new System.EventHandler(goodColorControl1_ColorChanged);
+            goodColorControl1.ColorChanged += new EventHandler(goodColorControl1_ColorChanged);
             // 
             // GoodColorControl2
             // 
@@ -140,7 +140,7 @@ namespace System.Windows.Forms
             Controls.Add(btnCancel);
             Controls.Add(btnOkay);
             Name = "GoodColorControl2";
-            Size = new System.Drawing.Size(335, 253);
+            Size = new Drawing.Size(335, 253);
             pnlColors.ResumeLayout(false);
             ResumeLayout(false);
 

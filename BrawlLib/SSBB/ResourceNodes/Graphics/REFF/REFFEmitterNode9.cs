@@ -120,7 +120,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Draw Settings
 
         [Category("Draw Settings")]
-        public DrawFlag mFlags { get => (SSBBTypes.DrawFlag)(ushort)_drawSetting.mFlags; set { _drawSetting.mFlags = (ushort)value; SignalPropertyChange(); } }
+        public DrawFlag mFlags { get => (DrawFlag)(ushort)_drawSetting.mFlags; set { _drawSetting.mFlags = (ushort)value; SignalPropertyChange(); } }
         [Category("Draw Settings")]
         public AlphaCompare AlphaComparison0 { get => (AlphaCompare)_drawSetting.mACmpComp0; set { _drawSetting.mACmpComp0 = (byte)value; SignalPropertyChange(); } }
         [Category("Draw Settings")]
@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Draw Settings")]
         public bool FlagClamp { get => _drawSetting.mFlagClamp != 0; set { _drawSetting.mFlagClamp = (byte)(value ? 1 : 0); SignalPropertyChange(); } }
         [Category("Draw Settings")]
-        public IndirectTargetStage IndirectTargetStage { get => (SSBBTypes.IndirectTargetStage)_drawSetting.mIndirectTargetStage; set { _drawSetting.mIndirectTargetStage = (byte)value; SignalPropertyChange(); } }
+        public IndirectTargetStage IndirectTargetStage { get => (IndirectTargetStage)_drawSetting.mIndirectTargetStage; set { _drawSetting.mIndirectTargetStage = (byte)value; SignalPropertyChange(); } }
 
         [Category("TEV")]
         public byte mTevTexture1 { get => _drawSetting.mTevTexture1; set { _drawSetting.mTevTexture1 = value; SignalPropertyChange(); } }
@@ -155,44 +155,44 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         //Color
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.RasColor RasterColor { get => (SSBBTypes.ColorInput.RasColor)_drawSetting.mColorInput.mRasColor; set { _drawSetting.mColorInput.mRasColor = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.RasColor RasterColor { get => (ColorInput.RasColor)_drawSetting.mColorInput.mRasColor; set { _drawSetting.mColorInput.mRasColor = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevColor1 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevColor1; set { _drawSetting.mColorInput.mTevColor1 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevColor1 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevColor1; set { _drawSetting.mColorInput.mTevColor1 = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevColor2 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevColor2; set { _drawSetting.mColorInput.mTevColor2 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevColor2 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevColor2; set { _drawSetting.mColorInput.mTevColor2 = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevColor3 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevColor3; set { _drawSetting.mColorInput.mTevColor3 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevColor3 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevColor3; set { _drawSetting.mColorInput.mTevColor3 = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevKColor1 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor1; set { _drawSetting.mColorInput.mTevKColor1 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevKColor1 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor1; set { _drawSetting.mColorInput.mTevKColor1 = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevKColor2 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor2; set { _drawSetting.mColorInput.mTevKColor2 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevKColor2 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor2; set { _drawSetting.mColorInput.mTevKColor2 = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevKColor3 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor3; set { _drawSetting.mColorInput.mTevKColor3 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevKColor3 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor3; set { _drawSetting.mColorInput.mTevKColor3 = (byte)value; SignalPropertyChange(); } }
         [Category("Color Input")]
-        public SSBBTypes.ColorInput.TevColor TevKColor4 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor4; set { _drawSetting.mColorInput.mTevKColor4 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor TevKColor4 { get => (ColorInput.TevColor)_drawSetting.mColorInput.mTevKColor4; set { _drawSetting.mColorInput.mTevKColor4 = (byte)value; SignalPropertyChange(); } }
 
         //Alpha
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.RasColor AlphaRasColor { get => (SSBBTypes.ColorInput.RasColor)_drawSetting.mAlphaInput.mRasColor; set { _drawSetting.mAlphaInput.mRasColor = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.RasColor AlphaRasColor { get => (ColorInput.RasColor)_drawSetting.mAlphaInput.mRasColor; set { _drawSetting.mAlphaInput.mRasColor = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevColor1 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevColor1; set { _drawSetting.mAlphaInput.mTevColor1 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevColor1 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevColor1; set { _drawSetting.mAlphaInput.mTevColor1 = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevColor2 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevColor2; set { _drawSetting.mAlphaInput.mTevColor2 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevColor2 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevColor2; set { _drawSetting.mAlphaInput.mTevColor2 = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevColor3 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevColor3; set { _drawSetting.mAlphaInput.mTevColor3 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevColor3 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevColor3; set { _drawSetting.mAlphaInput.mTevColor3 = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevKColor1 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor1; set { _drawSetting.mAlphaInput.mTevKColor1 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevKColor1 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor1; set { _drawSetting.mAlphaInput.mTevKColor1 = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevKColor2 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor2; set { _drawSetting.mAlphaInput.mTevKColor2 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevKColor2 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor2; set { _drawSetting.mAlphaInput.mTevKColor2 = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevKColor3 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor3; set { _drawSetting.mAlphaInput.mTevKColor3 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevKColor3 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor3; set { _drawSetting.mAlphaInput.mTevKColor3 = (byte)value; SignalPropertyChange(); } }
         [Category("Alpha Input")]
-        public SSBBTypes.ColorInput.TevColor AlphaTevKColor4 { get => (SSBBTypes.ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor4; set { _drawSetting.mAlphaInput.mTevKColor4 = (byte)value; SignalPropertyChange(); } }
+        public ColorInput.TevColor AlphaTevKColor4 { get => (ColorInput.TevColor)_drawSetting.mAlphaInput.mTevKColor4; set { _drawSetting.mAlphaInput.mTevKColor4 = (byte)value; SignalPropertyChange(); } }
 
         [Category("Draw Settings")]
         public GXCompare ZCompareFunc { get => (GXCompare)_drawSetting.mZCompareFunc; set { _drawSetting.mZCompareFunc = (byte)value; SignalPropertyChange(); } }
         [Category("Draw Settings")]
-        public SSBBTypes.AlphaFlickType AlphaFlickType { get => (SSBBTypes.AlphaFlickType)_drawSetting.mAlphaFlickType; set { _drawSetting.mAlphaFlickType = (byte)value; SignalPropertyChange(); } }
+        public AlphaFlickType AlphaFlickType { get => (AlphaFlickType)_drawSetting.mAlphaFlickType; set { _drawSetting.mAlphaFlickType = (byte)value; SignalPropertyChange(); } }
         [Category("Draw Settings")]
         public ushort AlphaFlickCycle { get => _drawSetting.mAlphaFlickCycle; set { _drawSetting.mAlphaFlickCycle = value; SignalPropertyChange(); } }
         [Category("Draw Settings")]
@@ -202,9 +202,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         //mLighting 
         [Category("Lighting")]
-        public SSBBTypes.Lighting.Mode Mode { get => (SSBBTypes.Lighting.Mode)_drawSetting.mLighting.mMode; set { _drawSetting.mLighting.mMode = (byte)value; SignalPropertyChange(); } }
+        public Lighting.Mode Mode { get => (Lighting.Mode)_drawSetting.mLighting.mMode; set { _drawSetting.mLighting.mMode = (byte)value; SignalPropertyChange(); } }
         [Category("Lighting")]
-        public SSBBTypes.Lighting.Type LightType { get => (SSBBTypes.Lighting.Type)_drawSetting.mLighting.mType; set { _drawSetting.mLighting.mMode = (byte)value; SignalPropertyChange(); } }
+        public Lighting.Type LightType { get => (Lighting.Type)_drawSetting.mLighting.mType; set { _drawSetting.mLighting.mMode = (byte)value; SignalPropertyChange(); } }
         [Category("Lighting"), TypeConverter(typeof(RGBAStringConverter))]
         public RGBAPixel Ambient { get => _drawSetting.mLighting.mAmbient; set { _drawSetting.mLighting.mAmbient = value; SignalPropertyChange(); } }
         [Category("Lighting"), TypeConverter(typeof(RGBAStringConverter))]
@@ -225,9 +225,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("Draw Settings")]
         //public byte padding { get { return drawSetting.padding; } set { drawSetting.padding = value; SignalPropertyChange(); } }
         [Category("Particle Settings")]
-        public SSBBTypes.ReffType ParticleType
+        public ReffType ParticleType
         {
-            get => (SSBBTypes.ReffType)_drawSetting.ptcltype;
+            get => (ReffType)_drawSetting.ptcltype;
             set
             {
                 if (!(ParticleType >= SSBBTypes.ReffType.Stripe && value >= SSBBTypes.ReffType.Stripe))
@@ -248,7 +248,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Billboard)
                 {
-                    return ((SSBBTypes.BillboardAssist)_drawSetting.typeOption).ToString();
+                    return ((BillboardAssist)_drawSetting.typeOption).ToString();
                 }
                 else
                 {
@@ -259,7 +259,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeOption = (byte)(SSBBTypes.BillboardAssist)Enum.Parse(typeof(SSBBTypes.BillboardAssist), value);
+                    _drawSetting.typeOption = (byte)(BillboardAssist)Enum.Parse(typeof(BillboardAssist), value);
                     SignalPropertyChange();
                 }
             }
@@ -271,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe)
                 {
-                    return ((SSBBTypes.StripeAssist)_drawSetting.typeOption).ToString();
+                    return ((StripeAssist)_drawSetting.typeOption).ToString();
                 }
                 else
                 {
@@ -282,7 +282,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeOption = (byte)(SSBBTypes.StripeAssist)Enum.Parse(typeof(SSBBTypes.StripeAssist), value);
+                    _drawSetting.typeOption = (byte)(StripeAssist)Enum.Parse(typeof(StripeAssist), value);
                     SignalPropertyChange();
                 }
             }
@@ -294,7 +294,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType != SSBBTypes.ReffType.Billboard)
                 {
-                    return ((SSBBTypes.Assist)_drawSetting.typeOption).ToString();
+                    return ((Assist)_drawSetting.typeOption).ToString();
                 }
                 else
                 {
@@ -305,7 +305,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType != SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeOption = (byte)(SSBBTypes.Assist)Enum.Parse(typeof(SSBBTypes.Assist), value);
+                    _drawSetting.typeOption = (byte)(Assist)Enum.Parse(typeof(Assist), value);
                     SignalPropertyChange();
                 }
             }
@@ -317,7 +317,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Billboard)
                 {
-                    return ((SSBBTypes.BillboardAhead)_drawSetting.typeDir).ToString();
+                    return ((BillboardAhead)_drawSetting.typeDir).ToString();
                 }
                 else
                 {
@@ -328,7 +328,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeDir = (byte)(SSBBTypes.BillboardAhead)Enum.Parse(typeof(SSBBTypes.BillboardAhead), value);
+                    _drawSetting.typeDir = (byte)(BillboardAhead)Enum.Parse(typeof(BillboardAhead), value);
                     SignalPropertyChange();
                 }
             }
@@ -340,7 +340,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType != SSBBTypes.ReffType.Billboard)
                 {
-                    return ((SSBBTypes.Ahead)_drawSetting.typeOption).ToString();
+                    return ((Ahead)_drawSetting.typeOption).ToString();
                 }
                 else
                 {
@@ -351,14 +351,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType != SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeOption = (byte)(SSBBTypes.Ahead)Enum.Parse(typeof(SSBBTypes.Ahead), value);
+                    _drawSetting.typeOption = (byte)(Ahead)Enum.Parse(typeof(Ahead), value);
                     SignalPropertyChange();
                 }
             }
         }
 
         [Category("Particle Settings")]
-        public SSBBTypes.RotateAxis TypeAxis { get => (SSBBTypes.RotateAxis)_drawSetting.typeAxis; set { _drawSetting.typeAxis = (byte)value; SignalPropertyChange(); } }
+        public RotateAxis TypeAxis { get => (RotateAxis)_drawSetting.typeAxis; set { _drawSetting.typeAxis = (byte)value; SignalPropertyChange(); } }
 
         private Bin8 typeOption2;
 
@@ -369,7 +369,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe)
                 {
-                    return ((SSBBTypes.StripeConnect)typeOption2[0, 3]).ToString();
+                    return ((StripeConnect)typeOption2[0, 3]).ToString();
                 }
                 else
                 {
@@ -380,7 +380,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
-                    typeOption2[0, 3] = (byte)(SSBBTypes.StripeConnect)Enum.Parse(typeof(SSBBTypes.StripeConnect), value);
+                    typeOption2[0, 3] = (byte)(StripeConnect)Enum.Parse(typeof(StripeConnect), value);
                     SignalPropertyChange();
                 }
             }
@@ -392,7 +392,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe)
                 {
-                    return ((SSBBTypes.StripeInitialPrevAxis)typeOption2[3, 3]).ToString();
+                    return ((StripeInitialPrevAxis)typeOption2[3, 3]).ToString();
                 }
                 else
                 {
@@ -403,7 +403,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
-                    typeOption2[3, 3] = (byte)(SSBBTypes.StripeInitialPrevAxis)Enum.Parse(typeof(SSBBTypes.StripeInitialPrevAxis), value);
+                    typeOption2[3, 3] = (byte)(StripeInitialPrevAxis)Enum.Parse(typeof(StripeInitialPrevAxis), value);
                     SignalPropertyChange();
                 }
             }
@@ -415,7 +415,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe)
                 {
-                    return ((SSBBTypes.StripeTexmapType)typeOption2[6, 1]).ToString();
+                    return ((StripeTexmapType)typeOption2[6, 1]).ToString();
                 }
                 else
                 {
@@ -426,7 +426,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
-                    typeOption2[6, 1] = (byte)(SSBBTypes.StripeTexmapType)Enum.Parse(typeof(SSBBTypes.StripeTexmapType), value);
+                    typeOption2[6, 1] = (byte)(StripeTexmapType)Enum.Parse(typeof(StripeTexmapType), value);
                     SignalPropertyChange();
                 }
             }
@@ -438,7 +438,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Directional)
                 {
-                    return ((SSBBTypes.DirectionalPivot)typeOption2._data).ToString();
+                    return ((DirectionalPivot)typeOption2._data).ToString();
                 }
                 else
                 {
@@ -449,7 +449,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Directional && !string.IsNullOrEmpty(value))
                 {
-                    typeOption2._data = (byte)(SSBBTypes.DirectionalPivot)Enum.Parse(typeof(SSBBTypes.StripeTexmapType), value);
+                    typeOption2._data = (byte)(DirectionalPivot)Enum.Parse(typeof(StripeTexmapType), value);
                     SignalPropertyChange();
                 }
             }
@@ -515,7 +515,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Directional)
                 {
-                    return ((SSBBTypes.Face)_drawSetting.typeOption1).ToString();
+                    return ((Face)_drawSetting.typeOption1).ToString();
                 }
                 else
                 {
@@ -526,7 +526,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (ParticleType == SSBBTypes.ReffType.Directional && !string.IsNullOrEmpty(value))
                 {
-                    _drawSetting.typeOption1 = (byte)(SSBBTypes.Face)Enum.Parse(typeof(SSBBTypes.Face), value);
+                    _drawSetting.typeOption1 = (byte)(Face)Enum.Parse(typeof(Face), value);
                     SignalPropertyChange();
                 }
             }

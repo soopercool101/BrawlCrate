@@ -6,7 +6,7 @@ namespace System
 {
     internal class UserDataConverter : ExpandableObjectConverter
     {
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destType)
         {
             if (destType == typeof(string) && value is UserDataClass)
             {
@@ -55,7 +55,7 @@ namespace System
 
     internal class ExpandableObjectCustomConverter : ExpandableObjectConverter
     {
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destType)
         {
             string s = (string)base.ConvertTo(context, culture, value, destType);
             return s.Substring(s.LastIndexOf('.') + 1);

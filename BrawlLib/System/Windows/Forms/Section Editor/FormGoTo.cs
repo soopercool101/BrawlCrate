@@ -3,10 +3,10 @@ namespace System.Windows.Forms
     /// <summary>
     /// Summary description for FormGoTo.
     /// </summary>
-    public class FormGoTo : System.Windows.Forms.Form
+    public class FormGoTo : Form
     {
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
+        private Button btnCancel;
+        private Button btnOK;
         private GroupBox groupBox2;
         private RadioButton chkEnd;
         private RadioButton chkCurrent;
@@ -55,17 +55,17 @@ namespace System.Windows.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            btnCancel = new System.Windows.Forms.Button();
-            btnOK = new System.Windows.Forms.Button();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            chkEnd = new System.Windows.Forms.RadioButton();
-            chkCurrent = new System.Windows.Forms.RadioButton();
-            chkBegin = new System.Windows.Forms.RadioButton();
-            groupBox3 = new System.Windows.Forms.GroupBox();
-            chkDec = new System.Windows.Forms.RadioButton();
-            chkHex = new System.Windows.Forms.RadioButton();
-            label1 = new System.Windows.Forms.Label();
-            txtOffset = new System.Windows.Forms.TextBox();
+            btnCancel = new Button();
+            btnOK = new Button();
+            groupBox2 = new GroupBox();
+            chkEnd = new RadioButton();
+            chkCurrent = new RadioButton();
+            chkBegin = new RadioButton();
+            groupBox3 = new GroupBox();
+            chkDec = new RadioButton();
+            chkHex = new RadioButton();
+            label1 = new Label();
+            txtOffset = new TextBox();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             SuspendLayout();
@@ -74,32 +74,32 @@ namespace System.Windows.Forms
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            btnCancel.Location = new System.Drawing.Point(164, 188);
+            btnCancel.Location = new Drawing.Point(164, 188);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOK
             // 
             btnOK.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            btnOK.Location = new System.Drawing.Point(84, 188);
+            btnOK.Location = new Drawing.Point(84, 188);
             btnOK.Name = "btnOK";
-            btnOK.Size = new System.Drawing.Size(75, 23);
+            btnOK.Size = new Drawing.Size(75, 23);
             btnOK.TabIndex = 2;
             btnOK.Text = "OK";
-            btnOK.Click += new System.EventHandler(btnOK_Click);
+            btnOK.Click += new EventHandler(btnOK_Click);
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(chkEnd);
             groupBox2.Controls.Add(chkCurrent);
             groupBox2.Controls.Add(chkBegin);
-            groupBox2.Location = new System.Drawing.Point(11, 89);
+            groupBox2.Location = new Drawing.Point(11, 89);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(225, 93);
+            groupBox2.Size = new Drawing.Size(225, 93);
             groupBox2.TabIndex = 12;
             groupBox2.TabStop = false;
             groupBox2.Text = "Offset relative to";
@@ -107,9 +107,9 @@ namespace System.Windows.Forms
             // chkEnd
             // 
             chkEnd.AutoSize = true;
-            chkEnd.Location = new System.Drawing.Point(7, 68);
+            chkEnd.Location = new Drawing.Point(7, 68);
             chkEnd.Name = "chkEnd";
-            chkEnd.Size = new System.Drawing.Size(109, 17);
+            chkEnd.Size = new Drawing.Size(109, 17);
             chkEnd.TabIndex = 2;
             chkEnd.Text = "End (Backwards)";
             chkEnd.UseVisualStyleBackColor = true;
@@ -117,9 +117,9 @@ namespace System.Windows.Forms
             // chkCurrent
             // 
             chkCurrent.AutoSize = true;
-            chkCurrent.Location = new System.Drawing.Point(7, 45);
+            chkCurrent.Location = new Drawing.Point(7, 45);
             chkCurrent.Name = "chkCurrent";
-            chkCurrent.Size = new System.Drawing.Size(97, 17);
+            chkCurrent.Size = new Drawing.Size(97, 17);
             chkCurrent.TabIndex = 1;
             chkCurrent.Text = "Current offset";
             chkCurrent.UseVisualStyleBackColor = true;
@@ -128,9 +128,9 @@ namespace System.Windows.Forms
             // 
             chkBegin.AutoSize = true;
             chkBegin.Checked = true;
-            chkBegin.Location = new System.Drawing.Point(7, 22);
+            chkBegin.Location = new Drawing.Point(7, 22);
             chkBegin.Name = "chkBegin";
-            chkBegin.Size = new System.Drawing.Size(55, 17);
+            chkBegin.Size = new Drawing.Size(55, 17);
             chkBegin.TabIndex = 0;
             chkBegin.TabStop = true;
             chkBegin.Text = "Begin";
@@ -140,18 +140,18 @@ namespace System.Windows.Forms
             // 
             groupBox3.Controls.Add(chkDec);
             groupBox3.Controls.Add(chkHex);
-            groupBox3.Location = new System.Drawing.Point(12, 47);
+            groupBox3.Location = new Drawing.Point(12, 47);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(224, 36);
+            groupBox3.Size = new Drawing.Size(224, 36);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
             // 
             // chkDec
             // 
             chkDec.AutoSize = true;
-            chkDec.Location = new System.Drawing.Point(56, 12);
+            chkDec.Location = new Drawing.Point(56, 12);
             chkDec.Name = "chkDec";
-            chkDec.Size = new System.Drawing.Size(65, 17);
+            chkDec.Size = new Drawing.Size(65, 17);
             chkDec.TabIndex = 4;
             chkDec.Text = "Decimal";
             chkDec.UseVisualStyleBackColor = true;
@@ -160,44 +160,44 @@ namespace System.Windows.Forms
             // 
             chkHex.AutoSize = true;
             chkHex.Checked = true;
-            chkHex.Location = new System.Drawing.Point(6, 12);
+            chkHex.Location = new Drawing.Point(6, 12);
             chkHex.Name = "chkHex";
-            chkHex.Size = new System.Drawing.Size(44, 17);
+            chkHex.Size = new Drawing.Size(44, 17);
             chkHex.TabIndex = 3;
             chkHex.TabStop = true;
             chkHex.Text = "Hex";
             chkHex.UseVisualStyleBackColor = true;
-            chkHex.CheckedChanged += new System.EventHandler(chkHex_CheckedChanged);
+            chkHex.CheckedChanged += new EventHandler(chkHex_CheckedChanged);
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(13, 9);
+            label1.Location = new Drawing.Point(13, 9);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 13);
+            label1.Size = new Drawing.Size(42, 13);
             label1.TabIndex = 14;
             label1.Text = "Offset:";
             // 
             // txtOffset
             // 
-            txtOffset.Location = new System.Drawing.Point(12, 25);
+            txtOffset.Location = new Drawing.Point(12, 25);
             txtOffset.Name = "txtOffset";
-            txtOffset.Size = new System.Drawing.Size(224, 22);
+            txtOffset.Size = new Drawing.Size(224, 22);
             txtOffset.TabIndex = 15;
-            txtOffset.TextChanged += new System.EventHandler(textBox1_TextChanged);
+            txtOffset.TextChanged += new EventHandler(textBox1_TextChanged);
             // 
             // FormGoTo
             // 
-            AutoScaleBaseSize = new System.Drawing.Size(5, 15);
+            AutoScaleBaseSize = new Drawing.Size(5, 15);
             BackColor = System.Drawing.SystemColors.Control;
-            ClientSize = new System.Drawing.Size(248, 218);
+            ClientSize = new Drawing.Size(248, 218);
             Controls.Add(txtOffset);
             Controls.Add(label1);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(btnOK);
             Controls.Add(btnCancel);
-            Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            Font = new Drawing.Font("Segoe UI", 8.25F);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -205,7 +205,7 @@ namespace System.Windows.Forms
             ShowInTaskbar = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Goto";
-            Activated += new System.EventHandler(FormGoTo_Activated);
+            Activated += new EventHandler(FormGoTo_Activated);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -235,17 +235,17 @@ namespace System.Windows.Forms
             return (chkBegin.Checked ? v : chkCurrent.Checked ? current + v : _maxVal - v).Clamp(0, _maxVal);
         }
 
-        private void FormGoTo_Activated(object sender, System.EventArgs e)
+        private void FormGoTo_Activated(object sender, EventArgs e)
         {
             txtOffset.Focus();
         }
 
-        private void btnOK_Click(object sender, System.EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }
 
-        private void btnCancel_Click(object sender, System.EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }

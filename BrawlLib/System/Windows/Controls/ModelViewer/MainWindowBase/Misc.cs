@@ -18,7 +18,7 @@ namespace System.Windows.Forms
 
         protected void PreConstruct()
         {
-            _interpolationEditor = new Forms.InterpolationEditor(this);
+            _interpolationEditor = new InterpolationEditor(this);
 
             _boneTransform = new ApplyLocalBoneTransformFunc[]
             {
@@ -46,9 +46,9 @@ namespace System.Windows.Forms
 
             ModelPanel.PreRender += (EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender));
             ModelPanel.PostRender += (EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender));
-            ModelPanel.MouseDown += (EventMouseDown = new System.Windows.Forms.MouseEventHandler(modelPanel1_MouseDown));
-            ModelPanel.MouseMove += (EventMouseMove = new System.Windows.Forms.MouseEventHandler(modelPanel1_MouseMove));
-            ModelPanel.MouseUp += (EventMouseUp = new System.Windows.Forms.MouseEventHandler(modelPanel1_MouseUp));
+            ModelPanel.MouseDown += (EventMouseDown = new MouseEventHandler(modelPanel1_MouseDown));
+            ModelPanel.MouseMove += (EventMouseMove = new MouseEventHandler(modelPanel1_MouseMove));
+            ModelPanel.MouseUp += (EventMouseUp = new MouseEventHandler(modelPanel1_MouseUp));
 
             if (PlaybackPanel != null)
             {

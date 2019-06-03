@@ -12,21 +12,21 @@ namespace System.Windows.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollisionForm));
-            collisionEditor1 = new System.Windows.Forms.CollisionEditor();
+            collisionEditor1 = new CollisionEditor();
             SuspendLayout();
             // 
             // collisionEditor1
             // 
             collisionEditor1.BackColor = System.Drawing.Color.Lavender;
             collisionEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
-            collisionEditor1.Location = new System.Drawing.Point(0, 0);
+            collisionEditor1.Location = new Drawing.Point(0, 0);
             collisionEditor1.Name = "collisionEditor1";
-            collisionEditor1.Size = new System.Drawing.Size(800, 600);
+            collisionEditor1.Size = new Drawing.Size(800, 600);
             collisionEditor1.TabIndex = 0;
             // 
             // CollisionForm
             // 
-            ClientSize = new System.Drawing.Size(800, 600);
+            ClientSize = new Drawing.Size(800, 600);
             Controls.Add(collisionEditor1);
             Icon = BrawlLib.Properties.Resources.Icon;
             MinimizeBox = false;

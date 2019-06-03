@@ -100,97 +100,97 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollisionEditor));
-            undoToolStrip = new System.Windows.Forms.SplitContainer();
-            redoToolStrip = new System.Windows.Forms.SplitContainer();
-            modelTree = new System.Windows.Forms.TreeView();
-            contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(components);
-            assignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            snapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            panel2 = new System.Windows.Forms.Panel();
-            chkBones = new System.Windows.Forms.CheckBox();
-            chkPoly = new System.Windows.Forms.CheckBox();
-            chkAllModels = new System.Windows.Forms.CheckBox();
-            lstObjects = new System.Windows.Forms.CheckedListBox();
-            contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
-            newObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            snapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            panel3 = new System.Windows.Forms.Panel();
-            pnlObjProps = new System.Windows.Forms.Panel();
-            chkObjSSEUnk = new System.Windows.Forms.CheckBox();
-            chkObjModule = new System.Windows.Forms.CheckBox();
-            chkObjUnk = new System.Windows.Forms.CheckBox();
-            btnUnlink = new System.Windows.Forms.Button();
-            btnRelink = new System.Windows.Forms.Button();
-            txtBone = new System.Windows.Forms.TextBox();
-            label4 = new System.Windows.Forms.Label();
-            txtModel = new System.Windows.Forms.TextBox();
-            label3 = new System.Windows.Forms.Label();
-            pnlPointProps = new System.Windows.Forms.Panel();
-            label2 = new System.Windows.Forms.Label();
-            numY = new System.Windows.Forms.NumericInputBox();
-            label1 = new System.Windows.Forms.Label();
-            numX = new System.Windows.Forms.NumericInputBox();
-            pnlPlaneProps = new System.Windows.Forms.Panel();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            cboType = new System.Windows.Forms.ComboBox();
-            chkTypeItems = new System.Windows.Forms.CheckBox();
-            chkTypeCharacters = new System.Windows.Forms.CheckBox();
-            chkTypePokemonTrainer = new System.Windows.Forms.CheckBox();
-            chkTypeRotating = new System.Windows.Forms.CheckBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            chkLeftLedge = new System.Windows.Forms.CheckBox();
-            chkNoWalljump = new System.Windows.Forms.CheckBox();
-            chkRightLedge = new System.Windows.Forms.CheckBox();
-            chkFallThrough = new System.Windows.Forms.CheckBox();
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(CollisionEditor));
+            undoToolStrip = new SplitContainer();
+            redoToolStrip = new SplitContainer();
+            modelTree = new TreeView();
+            contextMenuStrip2 = new ContextMenuStrip(components);
+            assignToolStripMenuItem = new ToolStripMenuItem();
+            snapToolStripMenuItem1 = new ToolStripMenuItem();
+            panel2 = new Panel();
+            chkBones = new CheckBox();
+            chkPoly = new CheckBox();
+            chkAllModels = new CheckBox();
+            lstObjects = new CheckedListBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            newObjectToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripSeparator();
+            snapToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripSeparator();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            panel3 = new Panel();
+            pnlObjProps = new Panel();
+            chkObjSSEUnk = new CheckBox();
+            chkObjModule = new CheckBox();
+            chkObjUnk = new CheckBox();
+            btnUnlink = new Button();
+            btnRelink = new Button();
+            txtBone = new TextBox();
+            label4 = new Label();
+            txtModel = new TextBox();
+            label3 = new Label();
+            pnlPointProps = new Panel();
+            label2 = new Label();
+            numY = new NumericInputBox();
+            label1 = new Label();
+            numX = new NumericInputBox();
+            pnlPlaneProps = new Panel();
+            groupBox2 = new GroupBox();
+            cboType = new ComboBox();
+            chkTypeItems = new CheckBox();
+            chkTypeCharacters = new CheckBox();
+            chkTypePokemonTrainer = new CheckBox();
+            chkTypeRotating = new CheckBox();
+            groupBox1 = new GroupBox();
+            chkLeftLedge = new CheckBox();
+            chkNoWalljump = new CheckBox();
+            chkRightLedge = new CheckBox();
+            chkFallThrough = new CheckBox();
 
             // Advanced flags
-            groupBoxUnknownFlags = new System.Windows.Forms.GroupBox();
-            chkFlagUnknown1 = new System.Windows.Forms.CheckBox();
-            chkFlagUnknown2 = new System.Windows.Forms.CheckBox();
-            chkFlagUnknown3 = new System.Windows.Forms.CheckBox();
-            chkFlagUnknown4 = new System.Windows.Forms.CheckBox();
+            groupBoxUnknownFlags = new GroupBox();
+            chkFlagUnknown1 = new CheckBox();
+            chkFlagUnknown2 = new CheckBox();
+            chkFlagUnknown3 = new CheckBox();
+            chkFlagUnknown4 = new CheckBox();
 
-            cboMaterial = new System.Windows.Forms.ComboBox();
-            label5 = new System.Windows.Forms.Label();
-            labelType = new System.Windows.Forms.Label();
-            panel4 = new System.Windows.Forms.Panel();
-            btnPlayAnims = new System.Windows.Forms.Button();
-            btnPrevFrame = new System.Windows.Forms.Button();
-            btnNextFrame = new System.Windows.Forms.Button();
-            _modelPanel = new System.Windows.Forms.ModelPanel();
-            panel1 = new System.Windows.Forms.Panel();
-            toolStrip1 = new System.Windows.Forms.ToolStrip();
-            btnUndo = new System.Windows.Forms.ToolStripButton();
-            btnRedo = new System.Windows.Forms.ToolStripButton();
-            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            btnSplit = new System.Windows.Forms.ToolStripButton();
-            btnMerge = new System.Windows.Forms.ToolStripButton();
-            btnDelete = new System.Windows.Forms.ToolStripButton();
-            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            btnSameX = new System.Windows.Forms.ToolStripButton();
-            btnSameY = new System.Windows.Forms.ToolStripButton();
-            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            cboMaterial = new ComboBox();
+            label5 = new Label();
+            labelType = new Label();
+            panel4 = new Panel();
+            btnPlayAnims = new Button();
+            btnPrevFrame = new Button();
+            btnNextFrame = new Button();
+            _modelPanel = new ModelPanel();
+            panel1 = new Panel();
+            toolStrip1 = new ToolStrip();
+            btnUndo = new ToolStripButton();
+            btnRedo = new ToolStripButton();
+            toolStripSeparator3 = new ToolStripSeparator();
+            btnSplit = new ToolStripButton();
+            btnMerge = new ToolStripButton();
+            btnDelete = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
+            btnSameX = new ToolStripButton();
+            btnSameY = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
 
             // StageBox Camera Modes
-            btnPerspectiveCam = new System.Windows.Forms.ToolStripButton();
-            btnOrthographicCam = new System.Windows.Forms.ToolStripButton();
-            toolStripSeparatorCamera = new System.Windows.Forms.ToolStripSeparator();
+            btnPerspectiveCam = new ToolStripButton();
+            btnOrthographicCam = new ToolStripButton();
+            toolStripSeparatorCamera = new ToolStripSeparator();
 
-            btnResetCam = new System.Windows.Forms.ToolStripButton();
-            btnResetSnap = new System.Windows.Forms.ToolStripButton();
-            btnHelp = new System.Windows.Forms.ToolStripButton();
-            btnResetRot = new System.Windows.Forms.Button();
-            trackBar1 = new System.Windows.Forms.TrackBar();
-            ((System.ComponentModel.ISupportInitialize)(undoToolStrip)).BeginInit();
+            btnResetCam = new ToolStripButton();
+            btnResetSnap = new ToolStripButton();
+            btnHelp = new ToolStripButton();
+            btnResetRot = new Button();
+            trackBar1 = new TrackBar();
+            ((ISupportInitialize)(undoToolStrip)).BeginInit();
             undoToolStrip.Panel1.SuspendLayout();
             undoToolStrip.Panel2.SuspendLayout();
             undoToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(redoToolStrip)).BeginInit();
+            ((ISupportInitialize)(redoToolStrip)).BeginInit();
             redoToolStrip.Panel1.SuspendLayout();
             redoToolStrip.Panel2.SuspendLayout();
             redoToolStrip.SuspendLayout();
@@ -207,14 +207,14 @@ namespace System.Windows.Forms
             panel4.SuspendLayout();
             panel1.SuspendLayout();
             toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(trackBar1)).BeginInit();
+            ((ISupportInitialize)(trackBar1)).BeginInit();
             SuspendLayout();
             // 
             // undoToolStrip
             // 
             undoToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
             undoToolStrip.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            undoToolStrip.Location = new System.Drawing.Point(0, 0);
+            undoToolStrip.Location = new Drawing.Point(0, 0);
             undoToolStrip.Name = "undoToolStrip";
             // 
             // undoToolStrip.Panel1
@@ -225,14 +225,14 @@ namespace System.Windows.Forms
             // 
             undoToolStrip.Panel2.Controls.Add(_modelPanel);
             undoToolStrip.Panel2.Controls.Add(panel1);
-            undoToolStrip.Size = new System.Drawing.Size(694, 467);
+            undoToolStrip.Size = new Drawing.Size(694, 467);
             undoToolStrip.SplitterDistance = 209;
             undoToolStrip.TabIndex = 1;
             // 
             // redoToolStrip
             // 
             redoToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            redoToolStrip.Location = new System.Drawing.Point(0, 0);
+            redoToolStrip.Location = new Drawing.Point(0, 0);
             redoToolStrip.Name = "redoToolStrip";
             redoToolStrip.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -246,7 +246,7 @@ namespace System.Windows.Forms
             redoToolStrip.Panel2.Controls.Add(lstObjects);
             redoToolStrip.Panel2.Controls.Add(panel3);
             redoToolStrip.Panel2.Controls.Add(panel4);
-            redoToolStrip.Size = new System.Drawing.Size(209, 467);
+            redoToolStrip.Size = new Drawing.Size(209, 467);
             redoToolStrip.SplitterDistance = 242;
             redoToolStrip.TabIndex = 2;
             // 
@@ -257,36 +257,36 @@ namespace System.Windows.Forms
             modelTree.ContextMenuStrip = contextMenuStrip2;
             modelTree.Dock = System.Windows.Forms.DockStyle.Fill;
             modelTree.HideSelection = false;
-            modelTree.Location = new System.Drawing.Point(0, 17);
+            modelTree.Location = new Drawing.Point(0, 17);
             modelTree.Name = "modelTree";
-            modelTree.Size = new System.Drawing.Size(209, 225);
+            modelTree.Size = new Drawing.Size(209, 225);
             modelTree.TabIndex = 4;
-            modelTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(modelTree_AfterCheck);
-            modelTree.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(modelTree_BeforeSelect);
-            modelTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(modelTree_AfterSelect);
+            modelTree.AfterCheck += new TreeViewEventHandler(modelTree_AfterCheck);
+            modelTree.BeforeSelect += new TreeViewCancelEventHandler(modelTree_BeforeSelect);
+            modelTree.AfterSelect += new TreeViewEventHandler(modelTree_AfterSelect);
             // 
             // contextMenuStrip2
             // 
-            contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            contextMenuStrip2.Items.AddRange(new ToolStripItem[] {
             assignToolStripMenuItem,
             snapToolStripMenuItem1});
             contextMenuStrip2.Name = "contextMenuStrip2";
-            contextMenuStrip2.Size = new System.Drawing.Size(110, 48);
-            contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(contextMenuStrip2_Opening);
+            contextMenuStrip2.Size = new Drawing.Size(110, 48);
+            contextMenuStrip2.Opening += new CancelEventHandler(contextMenuStrip2_Opening);
             // 
             // assignToolStripMenuItem
             // 
             assignToolStripMenuItem.Name = "assignToolStripMenuItem";
-            assignToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            assignToolStripMenuItem.Size = new Drawing.Size(109, 22);
             assignToolStripMenuItem.Text = "Assign";
-            assignToolStripMenuItem.Click += new System.EventHandler(btnRelink_Click);
+            assignToolStripMenuItem.Click += new EventHandler(btnRelink_Click);
             // 
             // snapToolStripMenuItem1
             // 
             snapToolStripMenuItem1.Name = "snapToolStripMenuItem1";
-            snapToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            snapToolStripMenuItem1.Size = new Drawing.Size(109, 22);
             snapToolStripMenuItem1.Text = "Snap";
-            snapToolStripMenuItem1.Click += new System.EventHandler(snapToolStripMenuItem1_Click);
+            snapToolStripMenuItem1.Click += new EventHandler(snapToolStripMenuItem1_Click);
             // 
             // panel2
             // 
@@ -294,48 +294,48 @@ namespace System.Windows.Forms
             panel2.Controls.Add(chkPoly);
             panel2.Controls.Add(chkAllModels);
             panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 0);
+            panel2.Location = new Drawing.Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(209, 17);
+            panel2.Size = new Drawing.Size(209, 17);
             panel2.TabIndex = 3;
             // 
             // chkBones
             // 
-            chkBones.Location = new System.Drawing.Point(100, 0);
+            chkBones.Location = new Drawing.Point(100, 0);
             chkBones.Name = "chkBones";
-            chkBones.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkBones.Size = new System.Drawing.Size(67, 17);
+            chkBones.Padding = new Padding(1, 0, 0, 0);
+            chkBones.Size = new Drawing.Size(67, 17);
             chkBones.TabIndex = 4;
             chkBones.Text = "Bones";
             chkBones.UseVisualStyleBackColor = true;
-            chkBones.CheckedChanged += new System.EventHandler(chkBones_CheckedChanged);
+            chkBones.CheckedChanged += new EventHandler(chkBones_CheckedChanged);
             // 
             // chkPoly
             // 
             chkPoly.Checked = true;
             chkPoly.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkPoly.Location = new System.Drawing.Point(44, 0);
+            chkPoly.Location = new Drawing.Point(44, 0);
             chkPoly.Name = "chkPoly";
-            chkPoly.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkPoly.Size = new System.Drawing.Size(54, 17);
+            chkPoly.Padding = new Padding(1, 0, 0, 0);
+            chkPoly.Size = new Drawing.Size(54, 17);
             chkPoly.TabIndex = 3;
             chkPoly.Text = "Poly";
             chkPoly.ThreeState = true;
             chkPoly.UseVisualStyleBackColor = true;
-            chkPoly.CheckStateChanged += new System.EventHandler(chkPoly_CheckStateChanged);
+            chkPoly.CheckStateChanged += new EventHandler(chkPoly_CheckStateChanged);
             // 
             // chkAllModels
             // 
             chkAllModels.Checked = true;
             chkAllModels.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkAllModels.Location = new System.Drawing.Point(0, 0);
+            chkAllModels.Location = new Drawing.Point(0, 0);
             chkAllModels.Name = "chkAllModels";
-            chkAllModels.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkAllModels.Size = new System.Drawing.Size(41, 17);
+            chkAllModels.Padding = new Padding(1, 0, 0, 0);
+            chkAllModels.Size = new Drawing.Size(41, 17);
             chkAllModels.TabIndex = 2;
             chkAllModels.Text = "All";
             chkAllModels.UseVisualStyleBackColor = true;
-            chkAllModels.CheckedChanged += new System.EventHandler(chkAllModels_CheckedChanged);
+            chkAllModels.CheckedChanged += new EventHandler(chkAllModels_CheckedChanged);
             // 
             // lstObjects
             // 
@@ -344,55 +344,55 @@ namespace System.Windows.Forms
             lstObjects.Dock = System.Windows.Forms.DockStyle.Fill;
             lstObjects.FormattingEnabled = true;
             lstObjects.IntegralHeight = false;
-            lstObjects.Location = new System.Drawing.Point(0, 0);
+            lstObjects.Location = new Drawing.Point(0, 0);
             lstObjects.Name = "lstObjects";
-            lstObjects.Size = new System.Drawing.Size(209, 82);
+            lstObjects.Size = new Drawing.Size(209, 82);
             lstObjects.TabIndex = 1;
-            lstObjects.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(lstObjects_ItemCheck);
-            lstObjects.SelectedValueChanged += new System.EventHandler(lstObjects_SelectedValueChanged);
-            lstObjects.MouseDown += new System.Windows.Forms.MouseEventHandler(lstObjects_MouseDown);
+            lstObjects.ItemCheck += new ItemCheckEventHandler(lstObjects_ItemCheck);
+            lstObjects.SelectedValueChanged += new EventHandler(lstObjects_SelectedValueChanged);
+            lstObjects.MouseDown += new MouseEventHandler(lstObjects_MouseDown);
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] {
             newObjectToolStripMenuItem,
             toolStripMenuItem2,
             snapToolStripMenuItem,
             toolStripMenuItem1,
             deleteToolStripMenuItem});
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new System.Drawing.Size(137, 82);
+            contextMenuStrip1.Size = new Drawing.Size(137, 82);
             // 
             // newObjectToolStripMenuItem
             // 
             newObjectToolStripMenuItem.Name = "newObjectToolStripMenuItem";
-            newObjectToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            newObjectToolStripMenuItem.Size = new Drawing.Size(136, 22);
             newObjectToolStripMenuItem.Text = "New Object";
-            newObjectToolStripMenuItem.Click += new System.EventHandler(newObjectToolStripMenuItem_Click);
+            newObjectToolStripMenuItem.Click += new EventHandler(newObjectToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new System.Drawing.Size(133, 6);
+            toolStripMenuItem2.Size = new Drawing.Size(133, 6);
             // 
             // snapToolStripMenuItem
             // 
             snapToolStripMenuItem.Name = "snapToolStripMenuItem";
-            snapToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            snapToolStripMenuItem.Size = new Drawing.Size(136, 22);
             snapToolStripMenuItem.Text = "Snap";
-            snapToolStripMenuItem.Click += new System.EventHandler(snapToolStripMenuItem_Click);
+            snapToolStripMenuItem.Click += new EventHandler(snapToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new System.Drawing.Size(133, 6);
+            toolStripMenuItem1.Size = new Drawing.Size(133, 6);
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            deleteToolStripMenuItem.Size = new Drawing.Size(136, 22);
             deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += new System.EventHandler(deleteToolStripMenuItem_Click);
+            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
             deleteToolStripMenuItem.ShortcutKeys = Keys.Shift | Keys.Delete;
             // 
             // panel3
@@ -401,9 +401,9 @@ namespace System.Windows.Forms
             panel3.Controls.Add(pnlPointProps);
             panel3.Controls.Add(pnlObjProps);
             panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panel3.Location = new System.Drawing.Point(0, 82);
+            panel3.Location = new Drawing.Point(0, 82);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(209, 115);
+            panel3.Size = new Drawing.Size(209, 115);
             panel3.TabIndex = 16;
             // 
             // pnlObjProps
@@ -418,95 +418,95 @@ namespace System.Windows.Forms
             pnlObjProps.Controls.Add(txtModel);
             pnlObjProps.Controls.Add(label3);
             pnlObjProps.Dock = System.Windows.Forms.DockStyle.Bottom;
-            pnlObjProps.Location = new System.Drawing.Point(0, -15);
+            pnlObjProps.Location = new Drawing.Point(0, -15);
             pnlObjProps.Name = "pnlObjProps";
-            pnlObjProps.Size = new System.Drawing.Size(209, 130);
+            pnlObjProps.Size = new Drawing.Size(209, 130);
             pnlObjProps.TabIndex = 1;
             pnlObjProps.Visible = false;
             // 
             // chkObjSSEUnk
             // 
             chkObjSSEUnk.AutoSize = true;
-            chkObjSSEUnk.Location = new System.Drawing.Point(10, 102);
+            chkObjSSEUnk.Location = new Drawing.Point(10, 102);
             chkObjSSEUnk.Name = "chkObjSSEUnk";
-            chkObjSSEUnk.Size = new System.Drawing.Size(96, 17);
+            chkObjSSEUnk.Size = new Drawing.Size(96, 17);
             chkObjSSEUnk.TabIndex = 15;
             chkObjSSEUnk.Text = "SSE Unknown";
             chkObjSSEUnk.UseVisualStyleBackColor = true;
-            chkObjSSEUnk.CheckedChanged += new System.EventHandler(chkObjSSEUnk_CheckedChanged);
+            chkObjSSEUnk.CheckedChanged += new EventHandler(chkObjSSEUnk_CheckedChanged);
             // 
             // chkObjModule
             // 
             chkObjModule.AutoSize = true;
-            chkObjModule.Location = new System.Drawing.Point(10, 79);
+            chkObjModule.Location = new Drawing.Point(10, 79);
             chkObjModule.Name = "chkObjModule";
-            chkObjModule.Size = new System.Drawing.Size(111, 17);
+            chkObjModule.Size = new Drawing.Size(111, 17);
             chkObjModule.TabIndex = 14;
             chkObjModule.Text = "Module Controlled";
             chkObjModule.UseVisualStyleBackColor = true;
-            chkObjModule.CheckedChanged += new System.EventHandler(chkObjModule_CheckedChanged);
+            chkObjModule.CheckedChanged += new EventHandler(chkObjModule_CheckedChanged);
             // 
             // chkObjUnk
             // 
             chkObjUnk.AutoSize = true;
-            chkObjUnk.Location = new System.Drawing.Point(10, 56);
+            chkObjUnk.Location = new Drawing.Point(10, 56);
             chkObjUnk.Name = "chkObjUnk";
-            chkObjUnk.Size = new System.Drawing.Size(72, 17);
+            chkObjUnk.Size = new Drawing.Size(72, 17);
             chkObjUnk.TabIndex = 13;
             chkObjUnk.Text = "Unknown";
             chkObjUnk.UseVisualStyleBackColor = true;
-            chkObjUnk.CheckedChanged += new System.EventHandler(chkObjUnk_CheckedChanged);
+            chkObjUnk.CheckedChanged += new EventHandler(chkObjUnk_CheckedChanged);
             // 
             // btnUnlink
             // 
-            btnUnlink.Location = new System.Drawing.Point(177, 22);
+            btnUnlink.Location = new Drawing.Point(177, 22);
             btnUnlink.Name = "btnUnlink";
-            btnUnlink.Size = new System.Drawing.Size(28, 21);
+            btnUnlink.Size = new Drawing.Size(28, 21);
             btnUnlink.TabIndex = 12;
             btnUnlink.Text = "-";
             btnUnlink.UseVisualStyleBackColor = true;
-            btnUnlink.Click += new System.EventHandler(btnUnlink_Click);
+            btnUnlink.Click += new EventHandler(btnUnlink_Click);
             // 
             // btnRelink
             // 
-            btnRelink.Location = new System.Drawing.Point(177, 2);
+            btnRelink.Location = new Drawing.Point(177, 2);
             btnRelink.Name = "btnRelink";
-            btnRelink.Size = new System.Drawing.Size(28, 21);
+            btnRelink.Size = new Drawing.Size(28, 21);
             btnRelink.TabIndex = 4;
             btnRelink.Text = "+";
             btnRelink.UseVisualStyleBackColor = true;
-            btnRelink.Click += new System.EventHandler(btnRelink_Click);
+            btnRelink.Click += new EventHandler(btnRelink_Click);
             // 
             // txtBone
             // 
-            txtBone.Location = new System.Drawing.Point(49, 23);
+            txtBone.Location = new Drawing.Point(49, 23);
             txtBone.Name = "txtBone";
             txtBone.ReadOnly = true;
-            txtBone.Size = new System.Drawing.Size(126, 20);
+            txtBone.Size = new Drawing.Size(126, 20);
             txtBone.TabIndex = 3;
             // 
             // label4
             // 
-            label4.Location = new System.Drawing.Point(4, 23);
+            label4.Location = new Drawing.Point(4, 23);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(42, 20);
+            label4.Size = new Drawing.Size(42, 20);
             label4.TabIndex = 2;
             label4.Text = "Bone:";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtModel
             // 
-            txtModel.Location = new System.Drawing.Point(49, 3);
+            txtModel.Location = new Drawing.Point(49, 3);
             txtModel.Name = "txtModel";
             txtModel.ReadOnly = true;
-            txtModel.Size = new System.Drawing.Size(126, 20);
+            txtModel.Size = new Drawing.Size(126, 20);
             txtModel.TabIndex = 1;
             // 
             // label3
             // 
-            label3.Location = new System.Drawing.Point(4, 3);
+            label3.Location = new Drawing.Point(4, 3);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(42, 20);
+            label3.Size = new Drawing.Size(42, 20);
             label3.TabIndex = 0;
             label3.Text = "Model:";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -518,18 +518,18 @@ namespace System.Windows.Forms
             pnlPointProps.Controls.Add(label1);
             pnlPointProps.Controls.Add(numX);
             pnlPointProps.Dock = System.Windows.Forms.DockStyle.Bottom;
-            pnlPointProps.Location = new System.Drawing.Point(0, -85);
+            pnlPointProps.Location = new Drawing.Point(0, -85);
             pnlPointProps.Name = "pnlPointProps";
-            pnlPointProps.Size = new System.Drawing.Size(209, 70);
+            pnlPointProps.Size = new Drawing.Size(209, 70);
             pnlPointProps.TabIndex = 15;
             pnlPointProps.Visible = false;
             // 
             // label2
             // 
             label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label2.Location = new System.Drawing.Point(18, 32);
+            label2.Location = new Drawing.Point(18, 32);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(42, 20);
+            label2.Size = new Drawing.Size(42, 20);
             label2.TabIndex = 3;
             label2.Text = "Y";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -538,21 +538,21 @@ namespace System.Windows.Forms
             // 
             numY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numY.Integral = false;
-            numY.Location = new System.Drawing.Point(59, 32);
+            numY.Location = new Drawing.Point(59, 32);
             numY.MaximumValue = 3.402823E+38F;
             numY.MinimumValue = -3.402823E+38F;
             numY.Name = "numY";
-            numY.Size = new System.Drawing.Size(100, 20);
+            numY.Size = new Drawing.Size(100, 20);
             numY.TabIndex = 2;
             numY.Text = "0";
-            numY.ValueChanged += new System.EventHandler(numY_ValueChanged);
+            numY.ValueChanged += new EventHandler(numY_ValueChanged);
             // 
             // label1
             // 
             label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(18, 13);
+            label1.Location = new Drawing.Point(18, 13);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(42, 20);
+            label1.Size = new Drawing.Size(42, 20);
             label1.TabIndex = 1;
             label1.Text = "X";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -561,14 +561,14 @@ namespace System.Windows.Forms
             // 
             numX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numX.Integral = false;
-            numX.Location = new System.Drawing.Point(59, 13);
+            numX.Location = new Drawing.Point(59, 13);
             numX.MaximumValue = 3.402823E+38F;
             numX.MinimumValue = -3.402823E+38F;
             numX.Name = "numX";
-            numX.Size = new System.Drawing.Size(100, 20);
+            numX.Size = new Drawing.Size(100, 20);
             numX.TabIndex = 0;
             numX.Text = "0";
-            numX.ValueChanged += new System.EventHandler(numX_ValueChanged);
+            numX.ValueChanged += new EventHandler(numX_ValueChanged);
             // 
             // pnlPlaneProps
             // 
@@ -580,9 +580,9 @@ namespace System.Windows.Forms
             pnlPlaneProps.Controls.Add(label5);
             pnlPlaneProps.Controls.Add(labelType);
             pnlPlaneProps.Dock = System.Windows.Forms.DockStyle.Bottom;
-            pnlPlaneProps.Location = new System.Drawing.Point(0, -199);
+            pnlPlaneProps.Location = new Drawing.Point(0, -199);
             pnlPlaneProps.Name = "pnlPlaneProps";
-            pnlPlaneProps.Size = new System.Drawing.Size(209, 114);
+            pnlPlaneProps.Size = new Drawing.Size(209, 114);
             pnlPlaneProps.TabIndex = 0;
             pnlPlaneProps.Visible = false;
             // 
@@ -594,11 +594,11 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(chkTypeItems);
             groupBox2.Controls.Add(chkTypePokemonTrainer);
             groupBox2.Controls.Add(chkTypeRotating);
-            groupBox2.Location = new System.Drawing.Point(101, 49);
-            groupBox2.Margin = new System.Windows.Forms.Padding(0);
+            groupBox2.Location = new Drawing.Point(101, 49);
+            groupBox2.Margin = new Padding(0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new System.Windows.Forms.Padding(0);
-            groupBox2.Size = new System.Drawing.Size(105, 86);
+            groupBox2.Padding = new Padding(0);
+            groupBox2.Size = new Drawing.Size(105, 86);
             groupBox2.TabIndex = 14;
             groupBox2.TabStop = false;
             // 
@@ -606,11 +606,11 @@ namespace System.Windows.Forms
             // 
             cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboType.FormattingEnabled = true;
-            cboType.Location = new System.Drawing.Point(66, 4);
+            cboType.Location = new Drawing.Point(66, 4);
             cboType.Name = "cboType";
-            cboType.Size = new System.Drawing.Size(139, 21);
+            cboType.Size = new Drawing.Size(139, 21);
             cboType.TabIndex = 5;
-            cboType.SelectedIndexChanged += new System.EventHandler(cboType_SelectedIndexChanged);
+            cboType.SelectedIndexChanged += new EventHandler(cboType_SelectedIndexChanged);
             // 
             // groupBoxUnknownFlags
             // 
@@ -620,102 +620,102 @@ namespace System.Windows.Forms
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown3);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown2);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown1);
-            groupBoxUnknownFlags.Location = new System.Drawing.Point(0, 135);
-            groupBoxUnknownFlags.Margin = new System.Windows.Forms.Padding(0);
+            groupBoxUnknownFlags.Location = new Drawing.Point(0, 135);
+            groupBoxUnknownFlags.Margin = new Padding(0);
             groupBoxUnknownFlags.Name = "groupBoxUnknownFlags";
-            groupBoxUnknownFlags.Padding = new System.Windows.Forms.Padding(0);
-            groupBoxUnknownFlags.Size = new System.Drawing.Size(205, 59);
+            groupBoxUnknownFlags.Padding = new Padding(0);
+            groupBoxUnknownFlags.Size = new Drawing.Size(205, 59);
             groupBoxUnknownFlags.TabIndex = 14;
             groupBoxUnknownFlags.TabStop = false;
             groupBoxUnknownFlags.Text = "Unknown Flags";
             // 
             // chkFlagUnknown1
             // 
-            chkFlagUnknown1.Location = new System.Drawing.Point(8, 17);
-            chkFlagUnknown1.Margin = new System.Windows.Forms.Padding(0);
+            chkFlagUnknown1.Location = new Drawing.Point(8, 17);
+            chkFlagUnknown1.Margin = new Padding(0);
             chkFlagUnknown1.Name = "chkFlagUnknown1";
-            chkFlagUnknown1.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown1.Size = new Drawing.Size(86, 18);
             chkFlagUnknown1.TabIndex = 3;
             chkFlagUnknown1.Text = "1";
             chkFlagUnknown1.UseVisualStyleBackColor = true;
-            chkFlagUnknown1.CheckedChanged += new System.EventHandler(chkFlagUnknown1_CheckedChanged);
+            chkFlagUnknown1.CheckedChanged += new EventHandler(chkFlagUnknown1_CheckedChanged);
             // 
             // chkFlagUnknown2
             // 
-            chkFlagUnknown2.Location = new System.Drawing.Point(60, 17);
-            chkFlagUnknown2.Margin = new System.Windows.Forms.Padding(0);
+            chkFlagUnknown2.Location = new Drawing.Point(60, 17);
+            chkFlagUnknown2.Margin = new Padding(0);
             chkFlagUnknown2.Name = "chkFlagUnknown2";
-            chkFlagUnknown2.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown2.Size = new Drawing.Size(86, 18);
             chkFlagUnknown2.TabIndex = 3;
             chkFlagUnknown2.Text = "2";
             chkFlagUnknown2.UseVisualStyleBackColor = true;
-            chkFlagUnknown2.CheckedChanged += new System.EventHandler(chkFlagUnknown2_CheckedChanged);
+            chkFlagUnknown2.CheckedChanged += new EventHandler(chkFlagUnknown2_CheckedChanged);
             // 
             // chkFlagUnknown3
             // 
-            chkFlagUnknown3.Location = new System.Drawing.Point(112, 17);
-            chkFlagUnknown3.Margin = new System.Windows.Forms.Padding(0);
+            chkFlagUnknown3.Location = new Drawing.Point(112, 17);
+            chkFlagUnknown3.Margin = new Padding(0);
             chkFlagUnknown3.Name = "chkFlagUnknown3";
-            chkFlagUnknown3.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown3.Size = new Drawing.Size(86, 18);
             chkFlagUnknown3.TabIndex = 3;
             chkFlagUnknown3.Text = "3";
             chkFlagUnknown3.UseVisualStyleBackColor = true;
-            chkFlagUnknown3.CheckedChanged += new System.EventHandler(chkFlagUnknown3_CheckedChanged);
+            chkFlagUnknown3.CheckedChanged += new EventHandler(chkFlagUnknown3_CheckedChanged);
             // 
             // chkFlagUnknown4
             // 
-            chkFlagUnknown4.Location = new System.Drawing.Point(164, 17);
-            chkFlagUnknown4.Margin = new System.Windows.Forms.Padding(0);
+            chkFlagUnknown4.Location = new Drawing.Point(164, 17);
+            chkFlagUnknown4.Margin = new Padding(0);
             chkFlagUnknown4.Name = "chkFlagUnknown4";
-            chkFlagUnknown4.Size = new System.Drawing.Size(86, 18);
+            chkFlagUnknown4.Size = new Drawing.Size(86, 18);
             chkFlagUnknown4.TabIndex = 3;
             chkFlagUnknown4.Text = "4";
             chkFlagUnknown4.UseVisualStyleBackColor = true;
-            chkFlagUnknown4.CheckedChanged += new System.EventHandler(chkFlagUnknown4_CheckedChanged);
+            chkFlagUnknown4.CheckedChanged += new EventHandler(chkFlagUnknown4_CheckedChanged);
             // 
             // chkTypeCharacters
             // 
-            chkTypeCharacters.Location = new System.Drawing.Point(8, 17);
-            chkTypeCharacters.Margin = new System.Windows.Forms.Padding(0);
+            chkTypeCharacters.Location = new Drawing.Point(8, 17);
+            chkTypeCharacters.Margin = new Padding(0);
             chkTypeCharacters.Name = "chkTypeCharacters";
-            chkTypeCharacters.Size = new System.Drawing.Size(86, 18);
+            chkTypeCharacters.Size = new Drawing.Size(86, 18);
             chkTypeCharacters.TabIndex = 4;
             chkTypeCharacters.Text = "Characters";
             chkTypeCharacters.UseVisualStyleBackColor = true;
-            chkTypeCharacters.CheckedChanged += new System.EventHandler(chkTypeCharacters_CheckedChanged);
+            chkTypeCharacters.CheckedChanged += new EventHandler(chkTypeCharacters_CheckedChanged);
             // 
             // chkTypeItems
             // 
-            chkTypeItems.Location = new System.Drawing.Point(8, 33);
-            chkTypeItems.Margin = new System.Windows.Forms.Padding(0);
+            chkTypeItems.Location = new Drawing.Point(8, 33);
+            chkTypeItems.Margin = new Padding(0);
             chkTypeItems.Name = "chkTypeItems";
-            chkTypeItems.Size = new System.Drawing.Size(86, 18);
+            chkTypeItems.Size = new Drawing.Size(86, 18);
             chkTypeItems.TabIndex = 3;
             chkTypeItems.Text = "Items";
             chkTypeItems.UseVisualStyleBackColor = true;
-            chkTypeItems.CheckedChanged += new System.EventHandler(chkTypeItems_CheckedChanged);
+            chkTypeItems.CheckedChanged += new EventHandler(chkTypeItems_CheckedChanged);
             // 
             // chkTypePokemonTrainer
             // 
-            chkTypePokemonTrainer.Location = new System.Drawing.Point(8, 49);
-            chkTypePokemonTrainer.Margin = new System.Windows.Forms.Padding(0);
+            chkTypePokemonTrainer.Location = new Drawing.Point(8, 49);
+            chkTypePokemonTrainer.Margin = new Padding(0);
             chkTypePokemonTrainer.Name = "chkTypePokemonTrainer";
-            chkTypePokemonTrainer.Size = new System.Drawing.Size(86, 18);
+            chkTypePokemonTrainer.Size = new Drawing.Size(86, 18);
             chkTypePokemonTrainer.TabIndex = 3;
             chkTypePokemonTrainer.Text = "PokéTrainer";
             chkTypePokemonTrainer.UseVisualStyleBackColor = true;
-            chkTypePokemonTrainer.CheckedChanged += new System.EventHandler(chkTypePokemonTrainer_CheckedChanged);
+            chkTypePokemonTrainer.CheckedChanged += new EventHandler(chkTypePokemonTrainer_CheckedChanged);
             // 
             // chkTypeRotating
             // 
-            chkTypeRotating.Location = new System.Drawing.Point(8, 65);
-            chkTypeRotating.Margin = new System.Windows.Forms.Padding(0);
+            chkTypeRotating.Location = new Drawing.Point(8, 65);
+            chkTypeRotating.Margin = new Padding(0);
             chkTypeRotating.Name = "chkTypeRotating";
-            chkTypeRotating.Size = new System.Drawing.Size(86, 18);
+            chkTypeRotating.Size = new Drawing.Size(86, 18);
             chkTypeRotating.TabIndex = 4;
             chkTypeRotating.Text = "Rotating";
             chkTypeRotating.UseVisualStyleBackColor = true;
-            chkTypeRotating.CheckedChanged += new System.EventHandler(chkTypeRotating_CheckedChanged);
+            chkTypeRotating.CheckedChanged += new EventHandler(chkTypeRotating_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -725,74 +725,74 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(chkNoWalljump);
             groupBox1.Controls.Add(chkRightLedge);
             groupBox1.Controls.Add(chkFallThrough);
-            groupBox1.Location = new System.Drawing.Point(-3, 49);
-            groupBox1.Margin = new System.Windows.Forms.Padding(0);
+            groupBox1.Location = new Drawing.Point(-3, 49);
+            groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new System.Windows.Forms.Padding(0);
-            groupBox1.Size = new System.Drawing.Size(104, 86);
+            groupBox1.Padding = new Padding(0);
+            groupBox1.Size = new Drawing.Size(104, 86);
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             groupBox1.Text = "Flags";
             // 
             // chkLeftLedge
             // 
-            chkLeftLedge.Location = new System.Drawing.Point(8, 33);
-            chkLeftLedge.Margin = new System.Windows.Forms.Padding(0);
+            chkLeftLedge.Location = new Drawing.Point(8, 33);
+            chkLeftLedge.Margin = new Padding(0);
             chkLeftLedge.Name = "chkLeftLedge";
-            chkLeftLedge.Size = new System.Drawing.Size(86, 18);
+            chkLeftLedge.Size = new Drawing.Size(86, 18);
             chkLeftLedge.TabIndex = 4;
             chkLeftLedge.Text = "Left Ledge";
             chkLeftLedge.UseVisualStyleBackColor = true;
-            chkLeftLedge.CheckedChanged += new System.EventHandler(chkLeftLedge_CheckedChanged);
+            chkLeftLedge.CheckedChanged += new EventHandler(chkLeftLedge_CheckedChanged);
             // 
             // chkNoWalljump
             // 
-            chkNoWalljump.Location = new System.Drawing.Point(8, 65);
-            chkNoWalljump.Margin = new System.Windows.Forms.Padding(0);
+            chkNoWalljump.Location = new Drawing.Point(8, 65);
+            chkNoWalljump.Margin = new Padding(0);
             chkNoWalljump.Name = "chkNoWalljump";
-            chkNoWalljump.Size = new System.Drawing.Size(90, 18);
+            chkNoWalljump.Size = new Drawing.Size(90, 18);
             chkNoWalljump.TabIndex = 2;
             chkNoWalljump.Text = "No Walljump";
             chkNoWalljump.UseVisualStyleBackColor = true;
-            chkNoWalljump.CheckedChanged += new System.EventHandler(chkNoWalljump_CheckedChanged);
+            chkNoWalljump.CheckedChanged += new EventHandler(chkNoWalljump_CheckedChanged);
             // 
             // chkRightLedge
             // 
-            chkRightLedge.Location = new System.Drawing.Point(8, 49);
-            chkRightLedge.Margin = new System.Windows.Forms.Padding(0);
+            chkRightLedge.Location = new Drawing.Point(8, 49);
+            chkRightLedge.Margin = new Padding(0);
             chkRightLedge.Name = "chkRightLedge";
-            chkRightLedge.Size = new System.Drawing.Size(86, 18);
+            chkRightLedge.Size = new Drawing.Size(86, 18);
             chkRightLedge.TabIndex = 1;
             chkRightLedge.Text = "Right Ledge";
             chkRightLedge.UseVisualStyleBackColor = true;
-            chkRightLedge.CheckedChanged += new System.EventHandler(chkRightLedge_CheckedChanged);
+            chkRightLedge.CheckedChanged += new EventHandler(chkRightLedge_CheckedChanged);
             // 
             // chkFallThrough
             // 
-            chkFallThrough.Location = new System.Drawing.Point(8, 17);
-            chkFallThrough.Margin = new System.Windows.Forms.Padding(0);
+            chkFallThrough.Location = new Drawing.Point(8, 17);
+            chkFallThrough.Margin = new Padding(0);
             chkFallThrough.Name = "chkFallThrough";
-            chkFallThrough.Size = new System.Drawing.Size(90, 18);
+            chkFallThrough.Size = new Drawing.Size(90, 18);
             chkFallThrough.TabIndex = 0;
             chkFallThrough.Text = "Fall-Through";
             chkFallThrough.UseVisualStyleBackColor = true;
-            chkFallThrough.CheckedChanged += new System.EventHandler(chkFallThrough_CheckedChanged);
+            chkFallThrough.CheckedChanged += new EventHandler(chkFallThrough_CheckedChanged);
             // 
             // cboMaterial
             // 
             cboMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboMaterial.FormattingEnabled = true;
-            cboMaterial.Location = new System.Drawing.Point(66, 25);
+            cboMaterial.Location = new Drawing.Point(66, 25);
             cboMaterial.Name = "cboMaterial";
-            cboMaterial.Size = new System.Drawing.Size(139, 21);
+            cboMaterial.Size = new Drawing.Size(139, 21);
             cboMaterial.TabIndex = 12;
-            cboMaterial.SelectedIndexChanged += new System.EventHandler(cboMaterial_SelectedIndexChanged);
+            cboMaterial.SelectedIndexChanged += new EventHandler(cboMaterial_SelectedIndexChanged);
             // 
             // label5
             // 
-            label5.Location = new System.Drawing.Point(7, 25);
+            label5.Location = new Drawing.Point(7, 25);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(53, 21);
+            label5.Size = new Drawing.Size(53, 21);
             label5.TabIndex = 8;
             label5.Text = "Material:";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -800,9 +800,9 @@ namespace System.Windows.Forms
             // 
             // labelType
             // 
-            labelType.Location = new System.Drawing.Point(7, 4);
+            labelType.Location = new Drawing.Point(7, 4);
             labelType.Name = "labelType";
-            labelType.Size = new System.Drawing.Size(53, 21);
+            labelType.Size = new Drawing.Size(53, 21);
             labelType.TabIndex = 8;
             labelType.Text = "Type:";
             labelType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -814,58 +814,58 @@ namespace System.Windows.Forms
             panel4.Controls.Add(btnNextFrame);
             panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             panel4.Enabled = false;
-            panel4.Location = new System.Drawing.Point(0, 197);
+            panel4.Location = new Drawing.Point(0, 197);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(209, 24);
+            panel4.Size = new Drawing.Size(209, 24);
             panel4.TabIndex = 17;
             panel4.Visible = false;
             // 
             // btnPlayAnims
             // 
             btnPlayAnims.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnPlayAnims.Location = new System.Drawing.Point(35, 0);
+            btnPlayAnims.Location = new Drawing.Point(35, 0);
             btnPlayAnims.Name = "btnPlayAnims";
-            btnPlayAnims.Size = new System.Drawing.Size(139, 24);
+            btnPlayAnims.Size = new Drawing.Size(139, 24);
             btnPlayAnims.TabIndex = 16;
             btnPlayAnims.Text = "Play Animations";
             btnPlayAnims.UseVisualStyleBackColor = true;
-            btnPlayAnims.Click += new System.EventHandler(btnPlayAnims_Click);
+            btnPlayAnims.Click += new EventHandler(btnPlayAnims_Click);
             // 
             // btnPrevFrame
             // 
             btnPrevFrame.Dock = System.Windows.Forms.DockStyle.Left;
-            btnPrevFrame.Location = new System.Drawing.Point(0, 0);
+            btnPrevFrame.Location = new Drawing.Point(0, 0);
             btnPrevFrame.Name = "btnPrevFrame";
-            btnPrevFrame.Size = new System.Drawing.Size(35, 24);
+            btnPrevFrame.Size = new Drawing.Size(35, 24);
             btnPrevFrame.TabIndex = 18;
             btnPrevFrame.Text = "<";
             btnPrevFrame.UseVisualStyleBackColor = true;
-            btnPrevFrame.Click += new System.EventHandler(btnPrevFrame_Click);
+            btnPrevFrame.Click += new EventHandler(btnPrevFrame_Click);
             // 
             // btnNextFrame
             // 
             btnNextFrame.Dock = System.Windows.Forms.DockStyle.Right;
-            btnNextFrame.Location = new System.Drawing.Point(174, 0);
+            btnNextFrame.Location = new Drawing.Point(174, 0);
             btnNextFrame.Name = "btnNextFrame";
-            btnNextFrame.Size = new System.Drawing.Size(35, 24);
+            btnNextFrame.Size = new Drawing.Size(35, 24);
             btnNextFrame.TabIndex = 17;
             btnNextFrame.Text = ">";
             btnNextFrame.UseVisualStyleBackColor = true;
-            btnNextFrame.Click += new System.EventHandler(btnNextFrame_Click);
+            btnNextFrame.Click += new EventHandler(btnNextFrame_Click);
             // 
             // _modelPanel
             // 
             _modelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            _modelPanel.Location = new System.Drawing.Point(0, 25);
+            _modelPanel.Location = new Drawing.Point(0, 25);
             _modelPanel.Name = "_modelPanel";
-            _modelPanel.Size = new System.Drawing.Size(481, 442);
+            _modelPanel.Size = new Drawing.Size(481, 442);
             _modelPanel.TabIndex = 0;
-            _modelPanel.PreRender += new System.Windows.Forms.GLRenderEventHandler(_modelPanel_PreRender);
-            _modelPanel.PostRender += new System.Windows.Forms.GLRenderEventHandler(_modelPanel_PostRender);
-            _modelPanel.KeyDown += new System.Windows.Forms.KeyEventHandler(_modelPanel_KeyDown);
-            _modelPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(_modelPanel_MouseDown);
-            _modelPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(_modelPanel_MouseMove);
-            _modelPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(_modelPanel_MouseUp);
+            _modelPanel.PreRender += new GLRenderEventHandler(_modelPanel_PreRender);
+            _modelPanel.PostRender += new GLRenderEventHandler(_modelPanel_PostRender);
+            _modelPanel.KeyDown += new KeyEventHandler(_modelPanel_KeyDown);
+            _modelPanel.MouseDown += new MouseEventHandler(_modelPanel_MouseDown);
+            _modelPanel.MouseMove += new MouseEventHandler(_modelPanel_MouseMove);
+            _modelPanel.MouseUp += new MouseEventHandler(_modelPanel_MouseUp);
             // 
             // panel1
             // 
@@ -874,9 +874,9 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnResetRot);
             panel1.Controls.Add(trackBar1);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(481, 25);
+            panel1.Size = new Drawing.Size(481, 25);
             panel1.TabIndex = 2;
             // 
             // toolStrip1
@@ -884,7 +884,7 @@ namespace System.Windows.Forms
             toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStrip1.Items.AddRange(new ToolStripItem[] {
             btnUndo,
             btnRedo,
             toolStripSeparator3,
@@ -903,9 +903,9 @@ namespace System.Windows.Forms
             btnResetCam,
             btnResetSnap,
             btnHelp});
-            toolStrip1.Location = new System.Drawing.Point(0, 0);
+            toolStrip1.Location = new Drawing.Point(0, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new System.Drawing.Size(335, 25);
+            toolStrip1.Size = new Drawing.Size(335, 25);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -915,9 +915,9 @@ namespace System.Windows.Forms
             btnUndo.Enabled = false;
             btnUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnUndo.Name = "btnUndo";
-            btnUndo.Size = new System.Drawing.Size(40, 22);
+            btnUndo.Size = new Drawing.Size(40, 22);
             btnUndo.Text = "Undo";
-            btnUndo.Click += new System.EventHandler(Undo);
+            btnUndo.Click += new EventHandler(Undo);
             // 
             // btnRedo
             // 
@@ -925,14 +925,14 @@ namespace System.Windows.Forms
             btnRedo.Enabled = false;
             btnRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnRedo.Name = "btnRedo";
-            btnRedo.Size = new System.Drawing.Size(38, 22);
+            btnRedo.Size = new Drawing.Size(38, 22);
             btnRedo.Text = "Redo";
-            btnRedo.Click += new System.EventHandler(Redo);
+            btnRedo.Click += new EventHandler(Redo);
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator3.Size = new Drawing.Size(6, 25);
             // 
             // btnSplit
             // 
@@ -940,9 +940,9 @@ namespace System.Windows.Forms
             btnSplit.Enabled = false;
             btnSplit.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnSplit.Name = "btnSplit";
-            btnSplit.Size = new System.Drawing.Size(34, 22);
+            btnSplit.Size = new Drawing.Size(34, 22);
             btnSplit.Text = "Split";
-            btnSplit.Click += new System.EventHandler(btnSplit_Click);
+            btnSplit.Click += new EventHandler(btnSplit_Click);
             // 
             // btnMerge
             // 
@@ -950,9 +950,9 @@ namespace System.Windows.Forms
             btnMerge.Enabled = false;
             btnMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnMerge.Name = "btnMerge";
-            btnMerge.Size = new System.Drawing.Size(45, 22);
+            btnMerge.Size = new Drawing.Size(45, 22);
             btnMerge.Text = "Merge";
-            btnMerge.Click += new System.EventHandler(btnMerge_Click);
+            btnMerge.Click += new EventHandler(btnMerge_Click);
             // 
             // btnDelete
             // 
@@ -960,87 +960,87 @@ namespace System.Windows.Forms
             btnDelete.Enabled = false;
             btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new System.Drawing.Size(44, 22);
+            btnDelete.Size = new Drawing.Size(44, 22);
             btnDelete.Text = "Delete";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator2.Size = new Drawing.Size(6, 25);
             // 
             // btnSameX
             // 
             btnSameX.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             btnSameX.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnSameX.Name = "btnSameX";
-            btnSameX.Size = new System.Drawing.Size(49, 22);
+            btnSameX.Size = new Drawing.Size(49, 22);
             btnSameX.Text = "Align X";
-            btnSameX.Click += new System.EventHandler(btnSameX_Click);
+            btnSameX.Click += new EventHandler(btnSameX_Click);
             // 
             // btnSameY
             // 
             btnSameY.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             btnSameY.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnSameY.Name = "btnSameY";
-            btnSameY.Size = new System.Drawing.Size(49, 22);
+            btnSameY.Size = new Drawing.Size(49, 22);
             btnSameY.Text = "Align Y";
-            btnSameY.Click += new System.EventHandler(btnSameY_Click);
+            btnSameY.Click += new EventHandler(btnSameY_Click);
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator1.Size = new Drawing.Size(6, 25);
             // 
             // btnPerspectiveCam
             // 
             btnPerspectiveCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             btnPerspectiveCam.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnPerspectiveCam.Name = "btnPerspectiveCam";
-            btnPerspectiveCam.Size = new System.Drawing.Size(83, 19);
+            btnPerspectiveCam.Size = new Drawing.Size(83, 19);
             btnPerspectiveCam.Text = "Perspective";
-            btnPerspectiveCam.Click += new System.EventHandler(btnPerspectiveCam_Click);
+            btnPerspectiveCam.Click += new EventHandler(btnPerspectiveCam_Click);
             // 
             // btnOrthographicCam
             // 
             btnOrthographicCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             btnOrthographicCam.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnOrthographicCam.Name = "btnOrthographicCam";
-            btnOrthographicCam.Size = new System.Drawing.Size(83, 19);
+            btnOrthographicCam.Size = new Drawing.Size(83, 19);
             btnOrthographicCam.Text = "Orthographic";
-            btnOrthographicCam.Click += new System.EventHandler(btnOrthographicCam_Click);
+            btnOrthographicCam.Click += new EventHandler(btnOrthographicCam_Click);
             // 
             // toolStripSeparatorCamera (StageBox)
             // 
             toolStripSeparator1.Name = "toolStripSeparatorCamera";
-            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator1.Size = new Drawing.Size(6, 25);
             // 
             // btnResetCam
             // 
             btnResetCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             btnResetCam.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnResetCam.Name = "btnResetCam";
-            btnResetCam.Size = new System.Drawing.Size(83, 19);
+            btnResetCam.Size = new Drawing.Size(83, 19);
             btnResetCam.Text = "Reset Camera";
-            btnResetCam.Click += new System.EventHandler(btnResetCam_Click);
+            btnResetCam.Click += new EventHandler(btnResetCam_Click);
             // 
             // btnResetSnap
             // 
             btnResetSnap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             btnResetSnap.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnResetSnap.Name = "btnResetSnap";
-            btnResetSnap.Size = new System.Drawing.Size(57, 19);
+            btnResetSnap.Size = new Drawing.Size(57, 19);
             btnResetSnap.Text = "Un-Snap";
-            btnResetSnap.Click += new System.EventHandler(btnResetSnap_Click);
+            btnResetSnap.Click += new EventHandler(btnResetSnap_Click);
             // 
             // btnHelp
             // 
             btnHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnHelp.Image = ((System.Drawing.Image)(resources.GetObject("btnHelp.Image")));
+            btnHelp.Image = ((Image)(resources.GetObject("btnHelp.Image")));
             btnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             btnHelp.Name = "btnHelp";
-            btnHelp.Size = new System.Drawing.Size(36, 19);
+            btnHelp.Size = new Drawing.Size(36, 19);
             btnHelp.Text = "Help";
-            btnHelp.Click += new System.EventHandler(btnHelp_Click);
+            btnHelp.Click += new EventHandler(btnHelp_Click);
             // 
             // btnResetRot
             // 
@@ -1048,42 +1048,42 @@ namespace System.Windows.Forms
             btnResetRot.Enabled = false;
             btnResetRot.FlatAppearance.BorderSize = 0;
             btnResetRot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnResetRot.Location = new System.Drawing.Point(335, 0);
+            btnResetRot.Location = new Drawing.Point(335, 0);
             btnResetRot.Name = "btnResetRot";
-            btnResetRot.Size = new System.Drawing.Size(16, 25);
+            btnResetRot.Size = new Drawing.Size(16, 25);
             btnResetRot.TabIndex = 4;
             btnResetRot.Text = "*";
             btnResetRot.UseVisualStyleBackColor = true;
             btnResetRot.Visible = false;
-            btnResetRot.Click += new System.EventHandler(btnResetRot_Click);
+            btnResetRot.Click += new EventHandler(btnResetRot_Click);
             // 
             // trackBar1
             // 
             trackBar1.Dock = System.Windows.Forms.DockStyle.Right;
             trackBar1.Enabled = false;
-            trackBar1.Location = new System.Drawing.Point(351, 0);
+            trackBar1.Location = new Drawing.Point(351, 0);
             trackBar1.Maximum = 180;
             trackBar1.Minimum = -180;
             trackBar1.Name = "trackBar1";
-            trackBar1.Size = new System.Drawing.Size(130, 25);
+            trackBar1.Size = new Drawing.Size(130, 25);
             trackBar1.TabIndex = 3;
             trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             trackBar1.Visible = false;
-            trackBar1.Scroll += new System.EventHandler(trackBar1_Scroll);
+            trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
             // 
             // CollisionEditor
             // 
             BackColor = System.Drawing.Color.Lavender;
             Controls.Add(undoToolStrip);
             Name = "CollisionEditor";
-            Size = new System.Drawing.Size(694, 467);
+            Size = new Drawing.Size(694, 467);
             undoToolStrip.Panel1.ResumeLayout(false);
             undoToolStrip.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(undoToolStrip)).EndInit();
+            ((ISupportInitialize)(undoToolStrip)).EndInit();
             undoToolStrip.ResumeLayout(false);
             redoToolStrip.Panel1.ResumeLayout(false);
             redoToolStrip.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(redoToolStrip)).EndInit();
+            ((ISupportInitialize)(redoToolStrip)).EndInit();
             redoToolStrip.ResumeLayout(false);
             contextMenuStrip2.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -1102,7 +1102,7 @@ namespace System.Windows.Forms
             panel1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(trackBar1)).EndInit();
+            ((ISupportInitialize)(trackBar1)).EndInit();
             ResumeLayout(false);
         }
 

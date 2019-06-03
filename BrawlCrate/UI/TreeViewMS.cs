@@ -7,7 +7,7 @@ namespace BrawlCrate
     /// <summary>
     /// http://www.arstdesign.com/articles/treeviewms.html
     /// </summary>
-    public class TreeViewMS : System.Windows.Forms.TreeView
+    public class TreeViewMS : TreeView
     {
         protected List<TreeNode> m_coll;
         protected TreeNode m_lastNode, m_firstNode;

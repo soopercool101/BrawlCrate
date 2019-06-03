@@ -51,7 +51,7 @@ namespace BrawlLib.SSBBTypes
         public bint _index3;
         public bint _index4;
 
-        public SCLASubEntry(BrawlLib.SSBB.ResourceNodes.SCLAEntryNode.SCLASubEntryClass e)
+        public SCLASubEntry(SSBB.ResourceNodes.SCLAEntryNode.SCLASubEntryClass e)
         {
             _unk1 = e._unk1;
             _unk2 = e._unk2;

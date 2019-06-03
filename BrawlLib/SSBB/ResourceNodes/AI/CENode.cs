@@ -247,7 +247,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             bfloat* part2 = Header->part2;
-            while (part2 < (System.bfloat*)((VoidPtr)Header) + WorkingUncompressed.Length)
+            while (part2 < (bfloat*)((VoidPtr)Header) + WorkingUncompressed.Length)
             {
                 entries.Add(*part2);
                 part2++;
@@ -265,7 +265,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             CEEvent* currentEvent = null;
             VoidPtr current = Header->Event;
-            while ((System.bfloat*)current < Header->part2)
+            while ((bfloat*)current < Header->part2)
             {
                 currentEvent = (CEEvent*)current;
                 CEEventNode temp = new CEEventNode();

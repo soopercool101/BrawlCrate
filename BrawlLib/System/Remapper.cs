@@ -96,7 +96,7 @@ namespace System
             }
             else
             {
-                Array.Resize<int>(ref _impTable, impCount);
+                Array.Resize(ref _impTable, impCount);
             }
         }
     }

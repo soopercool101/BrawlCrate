@@ -11,27 +11,27 @@ namespace System.Windows.Forms
         #region Designer
         private void InitializeComponent()
         {
-            label3 = new System.Windows.Forms.Label();
-            numPosZ = new System.Windows.Forms.NumericInputBox();
-            label2 = new System.Windows.Forms.Label();
-            numPosY = new System.Windows.Forms.NumericInputBox();
-            label1 = new System.Windows.Forms.Label();
-            numPosX = new System.Windows.Forms.NumericInputBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            numNormZ = new System.Windows.Forms.NumericInputBox();
-            label4 = new System.Windows.Forms.Label();
-            numNormX = new System.Windows.Forms.NumericInputBox();
-            label5 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            numNormY = new System.Windows.Forms.NumericInputBox();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            colorBox = new System.Windows.Forms.Label();
-            colorIndex = new System.Windows.Forms.ComboBox();
-            btnAverage = new System.Windows.Forms.Button();
-            label7 = new System.Windows.Forms.Label();
-            comboBox1 = new System.Windows.Forms.ComboBox();
-            label8 = new System.Windows.Forms.Label();
+            label3 = new Label();
+            numPosZ = new NumericInputBox();
+            label2 = new Label();
+            numPosY = new NumericInputBox();
+            label1 = new Label();
+            numPosX = new NumericInputBox();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
+            numNormZ = new NumericInputBox();
+            label4 = new Label();
+            numNormX = new NumericInputBox();
+            label5 = new Label();
+            label6 = new Label();
+            numNormY = new NumericInputBox();
+            groupBox4 = new GroupBox();
+            colorBox = new Label();
+            colorIndex = new ComboBox();
+            btnAverage = new Button();
+            label7 = new Label();
+            comboBox1 = new ComboBox();
+            label8 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -40,9 +40,9 @@ namespace System.Windows.Forms
             // label3
             // 
             label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label3.Location = new System.Drawing.Point(6, 54);
+            label3.Location = new Drawing.Point(6, 54);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(22, 20);
+            label3.Size = new Drawing.Size(22, 20);
             label3.TabIndex = 7;
             label3.Text = "Z: ";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -51,21 +51,21 @@ namespace System.Windows.Forms
             // 
             numPosZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numPosZ.Integral = false;
-            numPosZ.Location = new System.Drawing.Point(27, 54);
+            numPosZ.Location = new Drawing.Point(27, 54);
             numPosZ.MaximumValue = 3.402823E+38F;
             numPosZ.MinimumValue = -3.402823E+38F;
             numPosZ.Name = "numPosZ";
-            numPosZ.Size = new System.Drawing.Size(78, 20);
+            numPosZ.Size = new Drawing.Size(78, 20);
             numPosZ.TabIndex = 6;
             numPosZ.Text = "0";
-            numPosZ.ValueChanged += new System.EventHandler(numPosZ_TextChanged);
+            numPosZ.ValueChanged += new EventHandler(numPosZ_TextChanged);
             // 
             // label2
             // 
             label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label2.Location = new System.Drawing.Point(6, 35);
+            label2.Location = new Drawing.Point(6, 35);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(22, 20);
+            label2.Size = new Drawing.Size(22, 20);
             label2.TabIndex = 5;
             label2.Text = "Y: ";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -74,21 +74,21 @@ namespace System.Windows.Forms
             // 
             numPosY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numPosY.Integral = false;
-            numPosY.Location = new System.Drawing.Point(27, 35);
+            numPosY.Location = new Drawing.Point(27, 35);
             numPosY.MaximumValue = 3.402823E+38F;
             numPosY.MinimumValue = -3.402823E+38F;
             numPosY.Name = "numPosY";
-            numPosY.Size = new System.Drawing.Size(78, 20);
+            numPosY.Size = new Drawing.Size(78, 20);
             numPosY.TabIndex = 4;
             numPosY.Text = "0";
-            numPosY.ValueChanged += new System.EventHandler(numPosY_TextChanged);
+            numPosY.ValueChanged += new EventHandler(numPosY_TextChanged);
             // 
             // label1
             // 
             label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(6, 16);
+            label1.Location = new Drawing.Point(6, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(22, 20);
+            label1.Size = new Drawing.Size(22, 20);
             label1.TabIndex = 3;
             label1.Text = "X: ";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -97,14 +97,14 @@ namespace System.Windows.Forms
             // 
             numPosX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numPosX.Integral = false;
-            numPosX.Location = new System.Drawing.Point(27, 16);
+            numPosX.Location = new Drawing.Point(27, 16);
             numPosX.MaximumValue = 3.402823E+38F;
             numPosX.MinimumValue = -3.402823E+38F;
             numPosX.Name = "numPosX";
-            numPosX.Size = new System.Drawing.Size(78, 20);
+            numPosX.Size = new Drawing.Size(78, 20);
             numPosX.TabIndex = 0;
             numPosX.Text = "0";
-            numPosX.ValueChanged += new System.EventHandler(numPosX_TextChanged);
+            numPosX.ValueChanged += new EventHandler(numPosX_TextChanged);
             // 
             // groupBox1
             // 
@@ -116,9 +116,9 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(numPosY);
             groupBox1.Enabled = false;
-            groupBox1.Location = new System.Drawing.Point(3, 3);
+            groupBox1.Location = new Drawing.Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(111, 82);
+            groupBox1.Size = new Drawing.Size(111, 82);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Position";
@@ -132,9 +132,9 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(numNormY);
-            groupBox2.Location = new System.Drawing.Point(231, 3);
+            groupBox2.Location = new Drawing.Point(231, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(111, 82);
+            groupBox2.Size = new Drawing.Size(111, 82);
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "Normal";
@@ -144,21 +144,21 @@ namespace System.Windows.Forms
             // 
             numNormZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numNormZ.Integral = false;
-            numNormZ.Location = new System.Drawing.Point(27, 54);
+            numNormZ.Location = new Drawing.Point(27, 54);
             numNormZ.MaximumValue = 3.402823E+38F;
             numNormZ.MinimumValue = -3.402823E+38F;
             numNormZ.Name = "numNormZ";
-            numNormZ.Size = new System.Drawing.Size(78, 20);
+            numNormZ.Size = new Drawing.Size(78, 20);
             numNormZ.TabIndex = 6;
             numNormZ.Text = "0";
-            numNormZ.ValueChanged += new System.EventHandler(numNormZ_ValueChanged);
+            numNormZ.ValueChanged += new EventHandler(numNormZ_ValueChanged);
             // 
             // label4
             // 
             label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label4.Location = new System.Drawing.Point(6, 54);
+            label4.Location = new Drawing.Point(6, 54);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(22, 20);
+            label4.Size = new Drawing.Size(22, 20);
             label4.TabIndex = 7;
             label4.Text = "Z: ";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,21 +167,21 @@ namespace System.Windows.Forms
             // 
             numNormX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numNormX.Integral = false;
-            numNormX.Location = new System.Drawing.Point(27, 16);
+            numNormX.Location = new Drawing.Point(27, 16);
             numNormX.MaximumValue = 3.402823E+38F;
             numNormX.MinimumValue = -3.402823E+38F;
             numNormX.Name = "numNormX";
-            numNormX.Size = new System.Drawing.Size(78, 20);
+            numNormX.Size = new Drawing.Size(78, 20);
             numNormX.TabIndex = 0;
             numNormX.Text = "0";
-            numNormX.ValueChanged += new System.EventHandler(numNormX_ValueChanged);
+            numNormX.ValueChanged += new EventHandler(numNormX_ValueChanged);
             // 
             // label5
             // 
             label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label5.Location = new System.Drawing.Point(6, 16);
+            label5.Location = new Drawing.Point(6, 16);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(22, 20);
+            label5.Size = new Drawing.Size(22, 20);
             label5.TabIndex = 3;
             label5.Text = "X: ";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -189,9 +189,9 @@ namespace System.Windows.Forms
             // label6
             // 
             label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label6.Location = new System.Drawing.Point(6, 35);
+            label6.Location = new Drawing.Point(6, 35);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(22, 20);
+            label6.Size = new Drawing.Size(22, 20);
             label6.TabIndex = 5;
             label6.Text = "Y: ";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -200,23 +200,23 @@ namespace System.Windows.Forms
             // 
             numNormY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numNormY.Integral = false;
-            numNormY.Location = new System.Drawing.Point(27, 35);
+            numNormY.Location = new Drawing.Point(27, 35);
             numNormY.MaximumValue = 3.402823E+38F;
             numNormY.MinimumValue = -3.402823E+38F;
             numNormY.Name = "numNormY";
-            numNormY.Size = new System.Drawing.Size(78, 20);
+            numNormY.Size = new Drawing.Size(78, 20);
             numNormY.TabIndex = 4;
             numNormY.Text = "0";
-            numNormY.ValueChanged += new System.EventHandler(numNormY_ValueChanged);
+            numNormY.ValueChanged += new EventHandler(numNormY_ValueChanged);
             // 
             // groupBox4
             // 
             groupBox4.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             groupBox4.Controls.Add(colorBox);
             groupBox4.Controls.Add(colorIndex);
-            groupBox4.Location = new System.Drawing.Point(348, 3);
+            groupBox4.Location = new Drawing.Point(348, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(111, 82);
+            groupBox4.Size = new Drawing.Size(111, 82);
             groupBox4.TabIndex = 11;
             groupBox4.TabStop = false;
             groupBox4.Text = "Color";
@@ -227,11 +227,11 @@ namespace System.Windows.Forms
             colorBox.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             colorBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             colorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            colorBox.Location = new System.Drawing.Point(6, 36);
+            colorBox.Location = new Drawing.Point(6, 36);
             colorBox.Name = "colorBox";
-            colorBox.Size = new System.Drawing.Size(99, 38);
+            colorBox.Size = new Drawing.Size(99, 38);
             colorBox.TabIndex = 12;
-            colorBox.DoubleClick += new System.EventHandler(colorBox_Click);
+            colorBox.DoubleClick += new EventHandler(colorBox_Click);
             // 
             // colorIndex
             // 
@@ -240,31 +240,31 @@ namespace System.Windows.Forms
             colorIndex.Items.AddRange(new object[] {
             "Color 0",
             "Color 1"});
-            colorIndex.Location = new System.Drawing.Point(6, 14);
+            colorIndex.Location = new Drawing.Point(6, 14);
             colorIndex.Name = "colorIndex";
-            colorIndex.Size = new System.Drawing.Size(99, 21);
+            colorIndex.Size = new Drawing.Size(99, 21);
             colorIndex.TabIndex = 7;
-            colorIndex.SelectedIndexChanged += new System.EventHandler(colorIndex_SelectedIndexChanged);
+            colorIndex.SelectedIndexChanged += new EventHandler(colorIndex_SelectedIndexChanged);
             // 
             // btnAverage
             // 
             btnAverage.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             btnAverage.Enabled = false;
-            btnAverage.Location = new System.Drawing.Point(120, 54);
+            btnAverage.Location = new Drawing.Point(120, 54);
             btnAverage.Name = "btnAverage";
-            btnAverage.Size = new System.Drawing.Size(105, 23);
+            btnAverage.Size = new Drawing.Size(105, 23);
             btnAverage.TabIndex = 12;
             btnAverage.Text = "Average";
             btnAverage.UseVisualStyleBackColor = true;
-            btnAverage.Click += new System.EventHandler(btnAverage_Click);
+            btnAverage.Click += new EventHandler(btnAverage_Click);
             // 
             // label7
             // 
             label7.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(120, 38);
+            label7.Location = new Drawing.Point(120, 38);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(104, 13);
+            label7.Size = new Drawing.Size(104, 13);
             label7.TabIndex = 13;
             label7.Text = "No vertices selected";
             // 
@@ -273,18 +273,18 @@ namespace System.Windows.Forms
             comboBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new System.Drawing.Point(98, -22);
+            comboBox1.Location = new Drawing.Point(98, -22);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new System.Drawing.Size(121, 21);
+            comboBox1.Size = new Drawing.Size(121, 21);
             comboBox1.TabIndex = 14;
             // 
             // label8
             // 
             label8.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left);
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(6, -19);
+            label8.Location = new Drawing.Point(6, -19);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(86, 13);
+            label8.Size = new Drawing.Size(86, 13);
             label8.TabIndex = 15;
             label8.Text = "Facepoint Index:";
             // 
@@ -297,9 +297,9 @@ namespace System.Windows.Forms
             Controls.Add(groupBox4);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            MinimumSize = new System.Drawing.Size(230, 85);
+            MinimumSize = new Drawing.Size(230, 85);
             Name = "VertexEditor";
-            Size = new System.Drawing.Size(230, 85);
+            Size = new Drawing.Size(230, 85);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

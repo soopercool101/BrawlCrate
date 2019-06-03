@@ -70,60 +70,60 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Animations", System.Windows.Forms.HorizontalAlignment.Left);
-            pnlObjects = new System.Windows.Forms.Panel();
-            lstObjects = new System.Windows.Forms.CheckedListBox();
-            spltDrawCalls = new System.Windows.Forms.Splitter();
-            lstDrawCalls = new System.Windows.Forms.CheckedListBox();
-            chkAllObj = new System.Windows.Forms.CheckBox();
-            chkSyncVis = new System.Windows.Forms.CheckBox();
-            btnObjects = new System.Windows.Forms.Button();
-            pnlAnims = new System.Windows.Forms.Panel();
-            listAnims = new System.Windows.Forms.ListView();
-            nameColumn = new System.Windows.Forms.ColumnHeader();
-            ctxAnimList = new System.Windows.Forms.ContextMenuStrip(components);
-            AnimListNewAnim = new System.Windows.Forms.ToolStripMenuItem();
-            inModelsBRRESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            inExternalFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            panel2 = new System.Windows.Forms.Panel();
-            txtSearchAnim = new System.Windows.Forms.TextBox();
-            chkContains = new System.Windows.Forms.CheckBox();
-            panel1 = new System.Windows.Forms.Panel();
-            btnSaveAnims = new System.Windows.Forms.Button();
-            btnLoad = new System.Windows.Forms.Button();
-            fileType = new System.Windows.Forms.ComboBox();
-            btnAnims = new System.Windows.Forms.Button();
-            ctxTextures = new System.Windows.Forms.ContextMenuStrip(components);
-            sourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            exportTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            replaceTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            renameTextureTextureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            pnlTextures = new System.Windows.Forms.Panel();
-            lstTextures = new System.Windows.Forms.CheckedListBox();
-            chkAllTextures = new System.Windows.Forms.CheckBox();
-            btnTextures = new System.Windows.Forms.Button();
-            ctxAnim = new System.Windows.Forms.ContextMenuStrip(components);
-            toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            chkLoop = new System.Windows.Forms.ToolStripMenuItem();
-            matrixModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            chkMtxMaya = new System.Windows.Forms.ToolStripMenuItem();
-            chkMtxXSI = new System.Windows.Forms.ToolStripMenuItem();
-            chkMtxMax = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            overObjPnl = new System.Windows.Forms.TransparentPanel();
-            spltObjTex = new System.Windows.Forms.ProxySplitter();
-            spltAnimObj = new System.Windows.Forms.ProxySplitter();
-            overTexPnl = new System.Windows.Forms.TransparentPanel();
+            components = new Container();
+            ListViewGroup listViewGroup2 = new ListViewGroup("Animations", System.Windows.Forms.HorizontalAlignment.Left);
+            pnlObjects = new Panel();
+            lstObjects = new CheckedListBox();
+            spltDrawCalls = new Splitter();
+            lstDrawCalls = new CheckedListBox();
+            chkAllObj = new CheckBox();
+            chkSyncVis = new CheckBox();
+            btnObjects = new Button();
+            pnlAnims = new Panel();
+            listAnims = new ListView();
+            nameColumn = new ColumnHeader();
+            ctxAnimList = new ContextMenuStrip(components);
+            AnimListNewAnim = new ToolStripMenuItem();
+            inModelsBRRESToolStripMenuItem = new ToolStripMenuItem();
+            inExternalFileToolStripMenuItem = new ToolStripMenuItem();
+            panel2 = new Panel();
+            txtSearchAnim = new TextBox();
+            chkContains = new CheckBox();
+            panel1 = new Panel();
+            btnSaveAnims = new Button();
+            btnLoad = new Button();
+            fileType = new ComboBox();
+            btnAnims = new Button();
+            ctxTextures = new ContextMenuStrip(components);
+            sourceToolStripMenuItem = new ToolStripMenuItem();
+            sizeToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripSeparator();
+            viewToolStripMenuItem = new ToolStripMenuItem();
+            exportTextureToolStripMenuItem = new ToolStripMenuItem();
+            replaceTextureToolStripMenuItem = new ToolStripMenuItem();
+            renameTextureTextureToolStripMenuItem = new ToolStripMenuItem();
+            resetToolStripMenuItem = new ToolStripMenuItem();
+            pnlTextures = new Panel();
+            lstTextures = new CheckedListBox();
+            chkAllTextures = new CheckBox();
+            btnTextures = new Button();
+            ctxAnim = new ContextMenuStrip(components);
+            toolStripMenuItem2 = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            chkLoop = new ToolStripMenuItem();
+            matrixModeToolStripMenuItem = new ToolStripMenuItem();
+            chkMtxMaya = new ToolStripMenuItem();
+            chkMtxXSI = new ToolStripMenuItem();
+            chkMtxMax = new ToolStripMenuItem();
+            toolStripMenuItem3 = new ToolStripMenuItem();
+            toolStripMenuItem4 = new ToolStripMenuItem();
+            renameToolStripMenuItem = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            createNewToolStripMenuItem = new ToolStripMenuItem();
+            overObjPnl = new TransparentPanel();
+            spltObjTex = new ProxySplitter();
+            spltAnimObj = new ProxySplitter();
+            overTexPnl = new TransparentPanel();
             pnlObjects.SuspendLayout();
             pnlAnims.SuspendLayout();
             ctxAnimList.SuspendLayout();
@@ -145,10 +145,10 @@ namespace System.Windows.Forms
             pnlObjects.Controls.Add(chkSyncVis);
             pnlObjects.Controls.Add(btnObjects);
             pnlObjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnlObjects.Location = new System.Drawing.Point(0, 182);
-            pnlObjects.MinimumSize = new System.Drawing.Size(0, 21);
+            pnlObjects.Location = new Drawing.Point(0, 182);
+            pnlObjects.MinimumSize = new Drawing.Size(0, 21);
             pnlObjects.Name = "pnlObjects";
-            pnlObjects.Size = new System.Drawing.Size(172, 150);
+            pnlObjects.Size = new Drawing.Size(172, 150);
             pnlObjects.TabIndex = 0;
             // 
             // lstObjects
@@ -157,22 +157,22 @@ namespace System.Windows.Forms
             lstObjects.CausesValidation = false;
             lstObjects.Dock = System.Windows.Forms.DockStyle.Fill;
             lstObjects.IntegralHeight = false;
-            lstObjects.Location = new System.Drawing.Point(0, 66);
-            lstObjects.Margin = new System.Windows.Forms.Padding(0);
+            lstObjects.Location = new Drawing.Point(0, 66);
+            lstObjects.Margin = new Padding(0);
             lstObjects.Name = "lstObjects";
-            lstObjects.Size = new System.Drawing.Size(170, 45);
+            lstObjects.Size = new Drawing.Size(170, 45);
             lstObjects.TabIndex = 4;
-            lstObjects.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(lstPolygons_ItemCheck);
-            lstObjects.SelectedValueChanged += new System.EventHandler(lstPolygons_SelectedValueChanged);
-            lstObjects.KeyDown += new System.Windows.Forms.KeyEventHandler(lstPolygons_KeyDown);
-            lstObjects.Leave += new System.EventHandler(lstObjects_Leave);
+            lstObjects.ItemCheck += new ItemCheckEventHandler(lstPolygons_ItemCheck);
+            lstObjects.SelectedValueChanged += new EventHandler(lstPolygons_SelectedValueChanged);
+            lstObjects.KeyDown += new KeyEventHandler(lstPolygons_KeyDown);
+            lstObjects.Leave += new EventHandler(lstObjects_Leave);
             // 
             // spltDrawCalls
             // 
             spltDrawCalls.Dock = System.Windows.Forms.DockStyle.Bottom;
-            spltDrawCalls.Location = new System.Drawing.Point(0, 111);
+            spltDrawCalls.Location = new Drawing.Point(0, 111);
             spltDrawCalls.Name = "spltDrawCalls";
-            spltDrawCalls.Size = new System.Drawing.Size(170, 3);
+            spltDrawCalls.Size = new Drawing.Size(170, 3);
             spltDrawCalls.TabIndex = 9;
             spltDrawCalls.TabStop = false;
             spltDrawCalls.Visible = false;
@@ -182,38 +182,38 @@ namespace System.Windows.Forms
             lstDrawCalls.Dock = System.Windows.Forms.DockStyle.Bottom;
             lstDrawCalls.FormattingEnabled = true;
             lstDrawCalls.IntegralHeight = false;
-            lstDrawCalls.Location = new System.Drawing.Point(0, 114);
+            lstDrawCalls.Location = new Drawing.Point(0, 114);
             lstDrawCalls.Name = "lstDrawCalls";
-            lstDrawCalls.Size = new System.Drawing.Size(170, 34);
+            lstDrawCalls.Size = new Drawing.Size(170, 34);
             lstDrawCalls.TabIndex = 0;
             lstDrawCalls.Visible = false;
-            lstDrawCalls.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(lstDrawCalls_ItemCheck);
-            lstDrawCalls.SelectedIndexChanged += new System.EventHandler(lstDrawCalls_SelectedIndexChanged);
-            lstDrawCalls.DoubleClick += new System.EventHandler(lstDrawCalls_DoubleClick);
+            lstDrawCalls.ItemCheck += new ItemCheckEventHandler(lstDrawCalls_ItemCheck);
+            lstDrawCalls.SelectedIndexChanged += new EventHandler(lstDrawCalls_SelectedIndexChanged);
+            lstDrawCalls.DoubleClick += new EventHandler(lstDrawCalls_DoubleClick);
             // 
             // chkAllObj
             // 
             chkAllObj.Checked = true;
             chkAllObj.CheckState = System.Windows.Forms.CheckState.Checked;
             chkAllObj.Dock = System.Windows.Forms.DockStyle.Top;
-            chkAllObj.Location = new System.Drawing.Point(0, 46);
-            chkAllObj.Margin = new System.Windows.Forms.Padding(0);
+            chkAllObj.Location = new Drawing.Point(0, 46);
+            chkAllObj.Margin = new Padding(0);
             chkAllObj.Name = "chkAllObj";
-            chkAllObj.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkAllObj.Size = new System.Drawing.Size(170, 20);
+            chkAllObj.Padding = new Padding(1, 0, 0, 0);
+            chkAllObj.Size = new Drawing.Size(170, 20);
             chkAllObj.TabIndex = 5;
             chkAllObj.Text = "All";
             chkAllObj.UseVisualStyleBackColor = false;
-            chkAllObj.CheckStateChanged += new System.EventHandler(chkAllPoly_CheckStateChanged);
+            chkAllObj.CheckStateChanged += new EventHandler(chkAllPoly_CheckStateChanged);
             // 
             // chkSyncVis
             // 
             chkSyncVis.Dock = System.Windows.Forms.DockStyle.Top;
-            chkSyncVis.Location = new System.Drawing.Point(0, 26);
-            chkSyncVis.Margin = new System.Windows.Forms.Padding(0);
+            chkSyncVis.Location = new Drawing.Point(0, 26);
+            chkSyncVis.Margin = new Padding(0);
             chkSyncVis.Name = "chkSyncVis";
-            chkSyncVis.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkSyncVis.Size = new System.Drawing.Size(170, 20);
+            chkSyncVis.Padding = new Padding(1, 0, 0, 0);
+            chkSyncVis.Size = new Drawing.Size(170, 20);
             chkSyncVis.TabIndex = 7;
             chkSyncVis.Text = "Sync VIS0";
             chkSyncVis.UseVisualStyleBackColor = false;
@@ -221,13 +221,13 @@ namespace System.Windows.Forms
             // btnObjects
             // 
             btnObjects.Dock = System.Windows.Forms.DockStyle.Top;
-            btnObjects.Location = new System.Drawing.Point(0, 0);
+            btnObjects.Location = new Drawing.Point(0, 0);
             btnObjects.Name = "btnObjects";
-            btnObjects.Size = new System.Drawing.Size(170, 26);
+            btnObjects.Size = new Drawing.Size(170, 26);
             btnObjects.TabIndex = 6;
             btnObjects.Text = "Objects";
             btnObjects.UseVisualStyleBackColor = true;
-            btnObjects.Click += new System.EventHandler(btnObjects_Click);
+            btnObjects.Click += new EventHandler(btnObjects_Click);
             // 
             // pnlAnims
             // 
@@ -237,36 +237,36 @@ namespace System.Windows.Forms
             pnlAnims.Controls.Add(panel1);
             pnlAnims.Controls.Add(btnAnims);
             pnlAnims.Dock = System.Windows.Forms.DockStyle.Top;
-            pnlAnims.Location = new System.Drawing.Point(0, 0);
-            pnlAnims.MinimumSize = new System.Drawing.Size(0, 21);
+            pnlAnims.Location = new Drawing.Point(0, 0);
+            pnlAnims.MinimumSize = new Drawing.Size(0, 21);
             pnlAnims.Name = "pnlAnims";
-            pnlAnims.Size = new System.Drawing.Size(172, 178);
+            pnlAnims.Size = new Drawing.Size(172, 178);
             pnlAnims.TabIndex = 2;
             // 
             // listAnims
             // 
             listAnims.AutoArrange = false;
-            listAnims.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            listAnims.Columns.AddRange(new ColumnHeader[] {
             nameColumn});
             listAnims.ContextMenuStrip = ctxAnimList;
             listAnims.Cursor = System.Windows.Forms.Cursors.Default;
             listAnims.Dock = System.Windows.Forms.DockStyle.Fill;
             listViewGroup2.Header = "Animations";
             listViewGroup2.Name = "grpAnims";
-            listAnims.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listAnims.Groups.AddRange(new ListViewGroup[] {
             listViewGroup2});
             listAnims.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             listAnims.HideSelection = false;
-            listAnims.Location = new System.Drawing.Point(0, 73);
+            listAnims.Location = new Drawing.Point(0, 73);
             listAnims.MultiSelect = false;
             listAnims.Name = "listAnims";
-            listAnims.Size = new System.Drawing.Size(170, 103);
+            listAnims.Size = new Drawing.Size(170, 103);
             listAnims.TabIndex = 25;
             listAnims.UseCompatibleStateImageBehavior = false;
             listAnims.View = System.Windows.Forms.View.Details;
-            listAnims.SelectedIndexChanged += new System.EventHandler(listAnims_SelectedIndexChanged);
-            listAnims.KeyDown += new System.Windows.Forms.KeyEventHandler(listAnims_KeyDown);
-            listAnims.MouseDown += new System.Windows.Forms.MouseEventHandler(listAnims_MouseDown);
+            listAnims.SelectedIndexChanged += new EventHandler(listAnims_SelectedIndexChanged);
+            listAnims.KeyDown += new KeyEventHandler(listAnims_KeyDown);
+            listAnims.MouseDown += new MouseEventHandler(listAnims_MouseDown);
             // 
             // nameColumn
             // 
@@ -275,77 +275,77 @@ namespace System.Windows.Forms
             // 
             // ctxAnimList
             // 
-            ctxAnimList.ImageScalingSize = new System.Drawing.Size(20, 20);
-            ctxAnimList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ctxAnimList.ImageScalingSize = new Drawing.Size(20, 20);
+            ctxAnimList.Items.AddRange(new ToolStripItem[] {
             AnimListNewAnim});
             ctxAnimList.Name = "ctxAnim";
-            ctxAnimList.Size = new System.Drawing.Size(235, 30);
-            ctxAnimList.Opening += new System.ComponentModel.CancelEventHandler(ctxAnimList_Opening);
+            ctxAnimList.Size = new Drawing.Size(235, 30);
+            ctxAnimList.Opening += new CancelEventHandler(ctxAnimList_Opening);
             // 
             // AnimListNewAnim
             // 
-            AnimListNewAnim.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            AnimListNewAnim.DropDownItems.AddRange(new ToolStripItem[] {
             inModelsBRRESToolStripMenuItem,
             inExternalFileToolStripMenuItem});
             AnimListNewAnim.Name = "AnimListNewAnim";
-            AnimListNewAnim.Size = new System.Drawing.Size(234, 26);
+            AnimListNewAnim.Size = new Drawing.Size(234, 26);
             AnimListNewAnim.Text = "Create New Animation";
-            AnimListNewAnim.Click += new System.EventHandler(inModelsBRRESToolStripMenuItem_Click);
+            AnimListNewAnim.Click += new EventHandler(inModelsBRRESToolStripMenuItem_Click);
             // 
             // inModelsBRRESToolStripMenuItem
             // 
             inModelsBRRESToolStripMenuItem.Enabled = false;
             inModelsBRRESToolStripMenuItem.Name = "inModelsBRRESToolStripMenuItem";
-            inModelsBRRESToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            inModelsBRRESToolStripMenuItem.Size = new Drawing.Size(199, 26);
             inModelsBRRESToolStripMenuItem.Text = "In Model\'s BRRES";
             inModelsBRRESToolStripMenuItem.Visible = false;
-            inModelsBRRESToolStripMenuItem.Click += new System.EventHandler(inModelsBRRESToolStripMenuItem_Click);
+            inModelsBRRESToolStripMenuItem.Click += new EventHandler(inModelsBRRESToolStripMenuItem_Click);
             // 
             // inExternalFileToolStripMenuItem
             // 
             inExternalFileToolStripMenuItem.Enabled = false;
             inExternalFileToolStripMenuItem.Name = "inExternalFileToolStripMenuItem";
-            inExternalFileToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            inExternalFileToolStripMenuItem.Size = new Drawing.Size(199, 26);
             inExternalFileToolStripMenuItem.Text = "In External File";
             inExternalFileToolStripMenuItem.Visible = false;
-            inExternalFileToolStripMenuItem.Click += new System.EventHandler(inExternalFileToolStripMenuItem_Click);
+            inExternalFileToolStripMenuItem.Click += new EventHandler(inExternalFileToolStripMenuItem_Click);
             // 
             // panel2
             // 
             panel2.Controls.Add(txtSearchAnim);
             panel2.Controls.Add(chkContains);
             panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 52);
+            panel2.Location = new Drawing.Point(0, 52);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(170, 21);
+            panel2.Size = new Drawing.Size(170, 21);
             panel2.TabIndex = 32;
             // 
             // txtSearchAnim
             // 
             txtSearchAnim.Dock = System.Windows.Forms.DockStyle.Fill;
             txtSearchAnim.ForeColor = System.Drawing.Color.Gray;
-            txtSearchAnim.Location = new System.Drawing.Point(0, 0);
+            txtSearchAnim.Location = new Drawing.Point(0, 0);
             txtSearchAnim.Name = "txtSearchAnim";
-            txtSearchAnim.Size = new System.Drawing.Size(82, 22);
+            txtSearchAnim.Size = new Drawing.Size(82, 22);
             txtSearchAnim.TabIndex = 30;
             txtSearchAnim.Text = "Search for an animation...";
-            txtSearchAnim.TextChanged += new System.EventHandler(txtSearchAnim_TextChanged);
-            txtSearchAnim.Enter += new System.EventHandler(txtSearchAnim_Enter);
-            txtSearchAnim.Leave += new System.EventHandler(txtSearchAnim_Leave);
+            txtSearchAnim.TextChanged += new EventHandler(txtSearchAnim_TextChanged);
+            txtSearchAnim.Enter += new EventHandler(txtSearchAnim_Enter);
+            txtSearchAnim.Leave += new EventHandler(txtSearchAnim_Leave);
             // 
             // chkContains
             // 
             chkContains.AutoSize = true;
             chkContains.Dock = System.Windows.Forms.DockStyle.Right;
-            chkContains.Location = new System.Drawing.Point(82, 0);
-            chkContains.Margin = new System.Windows.Forms.Padding(0);
+            chkContains.Location = new Drawing.Point(82, 0);
+            chkContains.Margin = new Padding(0);
             chkContains.Name = "chkContains";
-            chkContains.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            chkContains.Size = new System.Drawing.Size(88, 21);
+            chkContains.Padding = new Padding(3, 0, 0, 0);
+            chkContains.Size = new Drawing.Size(88, 21);
             chkContains.TabIndex = 32;
             chkContains.Text = "Contains";
             chkContains.UseVisualStyleBackColor = true;
-            chkContains.CheckedChanged += new System.EventHandler(chkContains_CheckedChanged);
+            chkContains.CheckedChanged += new EventHandler(chkContains_CheckedChanged);
             // 
             // panel1
             // 
@@ -353,59 +353,59 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnSaveAnims);
             panel1.Controls.Add(fileType);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 26);
+            panel1.Location = new Drawing.Point(0, 26);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(170, 26);
+            panel1.Size = new Drawing.Size(170, 26);
             panel1.TabIndex = 27;
             // 
             // btnSaveAnims
             // 
             btnSaveAnims.Dock = System.Windows.Forms.DockStyle.Right;
-            btnSaveAnims.Location = new System.Drawing.Point(51, 0);
+            btnSaveAnims.Location = new Drawing.Point(51, 0);
             btnSaveAnims.Name = "btnSaveAnims";
-            btnSaveAnims.Size = new System.Drawing.Size(60, 26);
+            btnSaveAnims.Size = new Drawing.Size(60, 26);
             btnSaveAnims.TabIndex = 28;
             btnSaveAnims.Text = "Save";
             btnSaveAnims.UseVisualStyleBackColor = true;
-            btnSaveAnims.Click += new System.EventHandler(button2_Click);
+            btnSaveAnims.Click += new EventHandler(button2_Click);
             // 
             // btnLoad
             // 
             btnLoad.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnLoad.Location = new System.Drawing.Point(0, 0);
+            btnLoad.Location = new Drawing.Point(0, 0);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new System.Drawing.Size(51, 26);
+            btnLoad.Size = new Drawing.Size(51, 26);
             btnLoad.TabIndex = 27;
             btnLoad.Text = "Load";
             btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += new System.EventHandler(button1_Click);
+            btnLoad.Click += new EventHandler(button1_Click);
             // 
             // fileType
             // 
             fileType.Dock = System.Windows.Forms.DockStyle.Right;
             fileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             fileType.FormattingEnabled = true;
-            fileType.Location = new System.Drawing.Point(111, 0);
+            fileType.Location = new Drawing.Point(111, 0);
             fileType.Name = "fileType";
-            fileType.Size = new System.Drawing.Size(59, 24);
+            fileType.Size = new Drawing.Size(59, 24);
             fileType.TabIndex = 26;
-            fileType.SelectedIndexChanged += new System.EventHandler(fileType_SelectedIndexChanged);
+            fileType.SelectedIndexChanged += new EventHandler(fileType_SelectedIndexChanged);
             // 
             // btnAnims
             // 
             btnAnims.Dock = System.Windows.Forms.DockStyle.Top;
-            btnAnims.Location = new System.Drawing.Point(0, 0);
+            btnAnims.Location = new Drawing.Point(0, 0);
             btnAnims.Name = "btnAnims";
-            btnAnims.Size = new System.Drawing.Size(170, 26);
+            btnAnims.Size = new Drawing.Size(170, 26);
             btnAnims.TabIndex = 7;
             btnAnims.Text = "Animations";
             btnAnims.UseVisualStyleBackColor = true;
-            btnAnims.Click += new System.EventHandler(btnAnims_Click);
+            btnAnims.Click += new EventHandler(btnAnims_Click);
             // 
             // ctxTextures
             // 
-            ctxTextures.ImageScalingSize = new System.Drawing.Size(20, 20);
-            ctxTextures.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ctxTextures.ImageScalingSize = new Drawing.Size(20, 20);
+            ctxTextures.Items.AddRange(new ToolStripItem[] {
             sourceToolStripMenuItem,
             sizeToolStripMenuItem,
             toolStripMenuItem1,
@@ -415,62 +415,62 @@ namespace System.Windows.Forms
             renameTextureTextureToolStripMenuItem,
             resetToolStripMenuItem});
             ctxTextures.Name = "ctxTextures";
-            ctxTextures.Size = new System.Drawing.Size(147, 192);
-            ctxTextures.Opening += new System.ComponentModel.CancelEventHandler(ctxTextures_Opening);
+            ctxTextures.Size = new Drawing.Size(147, 192);
+            ctxTextures.Opening += new CancelEventHandler(ctxTextures_Opening);
             // 
             // sourceToolStripMenuItem
             // 
             sourceToolStripMenuItem.Enabled = false;
             sourceToolStripMenuItem.Name = "sourceToolStripMenuItem";
-            sourceToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            sourceToolStripMenuItem.Size = new Drawing.Size(146, 26);
             sourceToolStripMenuItem.Text = "Source";
             // 
             // sizeToolStripMenuItem
             // 
             sizeToolStripMenuItem.Enabled = false;
             sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
-            sizeToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            sizeToolStripMenuItem.Size = new Drawing.Size(146, 26);
             sizeToolStripMenuItem.Text = "Size";
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
+            toolStripMenuItem1.Size = new Drawing.Size(143, 6);
             // 
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            viewToolStripMenuItem.Size = new Drawing.Size(146, 26);
             viewToolStripMenuItem.Text = "View...";
-            viewToolStripMenuItem.Click += new System.EventHandler(viewToolStripMenuItem_Click);
+            viewToolStripMenuItem.Click += new EventHandler(viewToolStripMenuItem_Click);
             // 
             // exportTextureToolStripMenuItem
             // 
             exportTextureToolStripMenuItem.Name = "exportTextureToolStripMenuItem";
-            exportTextureToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            exportTextureToolStripMenuItem.Size = new Drawing.Size(146, 26);
             exportTextureToolStripMenuItem.Text = "Export...";
-            exportTextureToolStripMenuItem.Click += new System.EventHandler(exportTextureToolStripMenuItem_Click);
+            exportTextureToolStripMenuItem.Click += new EventHandler(exportTextureToolStripMenuItem_Click);
             // 
             // replaceTextureToolStripMenuItem
             // 
             replaceTextureToolStripMenuItem.Name = "replaceTextureToolStripMenuItem";
-            replaceTextureToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            replaceTextureToolStripMenuItem.Size = new Drawing.Size(146, 26);
             replaceTextureToolStripMenuItem.Text = "Replace...";
-            replaceTextureToolStripMenuItem.Click += new System.EventHandler(replaceTextureToolStripMenuItem_Click);
+            replaceTextureToolStripMenuItem.Click += new EventHandler(replaceTextureToolStripMenuItem_Click);
             // 
             // renameTextureTextureToolStripMenuItem
             // 
             renameTextureTextureToolStripMenuItem.Name = "renameTextureTextureToolStripMenuItem";
-            renameTextureTextureToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            renameTextureTextureToolStripMenuItem.Size = new Drawing.Size(146, 26);
             renameTextureTextureToolStripMenuItem.Text = "Rename";
-            renameTextureTextureToolStripMenuItem.Click += new System.EventHandler(renameTextureToolStripMenuItem_Click);
+            renameTextureTextureToolStripMenuItem.Click += new EventHandler(renameTextureToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            resetToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            resetToolStripMenuItem.Size = new Drawing.Size(146, 26);
             resetToolStripMenuItem.Text = "Reload";
-            resetToolStripMenuItem.Click += new System.EventHandler(resetToolStripMenuItem_Click);
+            resetToolStripMenuItem.Click += new EventHandler(resetToolStripMenuItem_Click);
             // 
             // pnlTextures
             // 
@@ -480,10 +480,10 @@ namespace System.Windows.Forms
             pnlTextures.Controls.Add(chkAllTextures);
             pnlTextures.Controls.Add(btnTextures);
             pnlTextures.Dock = System.Windows.Forms.DockStyle.Bottom;
-            pnlTextures.Location = new System.Drawing.Point(0, 336);
-            pnlTextures.MinimumSize = new System.Drawing.Size(0, 21);
+            pnlTextures.Location = new Drawing.Point(0, 336);
+            pnlTextures.MinimumSize = new Drawing.Size(0, 21);
             pnlTextures.Name = "pnlTextures";
-            pnlTextures.Size = new System.Drawing.Size(172, 164);
+            pnlTextures.Size = new Drawing.Size(172, 164);
             pnlTextures.TabIndex = 3;
             // 
             // lstTextures
@@ -493,47 +493,47 @@ namespace System.Windows.Forms
             lstTextures.ContextMenuStrip = ctxTextures;
             lstTextures.Dock = System.Windows.Forms.DockStyle.Fill;
             lstTextures.IntegralHeight = false;
-            lstTextures.Location = new System.Drawing.Point(0, 46);
-            lstTextures.Margin = new System.Windows.Forms.Padding(0);
+            lstTextures.Location = new Drawing.Point(0, 46);
+            lstTextures.Margin = new Padding(0);
             lstTextures.Name = "lstTextures";
-            lstTextures.Size = new System.Drawing.Size(170, 116);
+            lstTextures.Size = new Drawing.Size(170, 116);
             lstTextures.TabIndex = 7;
-            lstTextures.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(lstTextures_ItemCheck);
-            lstTextures.SelectedValueChanged += new System.EventHandler(lstTextures_SelectedValueChanged);
-            lstTextures.KeyDown += new System.Windows.Forms.KeyEventHandler(lstTextures_KeyDown);
-            lstTextures.Leave += new System.EventHandler(lstTextures_Leave);
-            lstTextures.MouseDown += new System.Windows.Forms.MouseEventHandler(lstTextures_MouseDown);
+            lstTextures.ItemCheck += new ItemCheckEventHandler(lstTextures_ItemCheck);
+            lstTextures.SelectedValueChanged += new EventHandler(lstTextures_SelectedValueChanged);
+            lstTextures.KeyDown += new KeyEventHandler(lstTextures_KeyDown);
+            lstTextures.Leave += new EventHandler(lstTextures_Leave);
+            lstTextures.MouseDown += new MouseEventHandler(lstTextures_MouseDown);
             // 
             // chkAllTextures
             // 
             chkAllTextures.Checked = true;
             chkAllTextures.CheckState = System.Windows.Forms.CheckState.Checked;
             chkAllTextures.Dock = System.Windows.Forms.DockStyle.Top;
-            chkAllTextures.Location = new System.Drawing.Point(0, 26);
-            chkAllTextures.Margin = new System.Windows.Forms.Padding(0);
+            chkAllTextures.Location = new Drawing.Point(0, 26);
+            chkAllTextures.Margin = new Padding(0);
             chkAllTextures.Name = "chkAllTextures";
-            chkAllTextures.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkAllTextures.Size = new System.Drawing.Size(170, 20);
+            chkAllTextures.Padding = new Padding(1, 0, 0, 0);
+            chkAllTextures.Size = new Drawing.Size(170, 20);
             chkAllTextures.TabIndex = 8;
             chkAllTextures.Text = "All";
             chkAllTextures.UseVisualStyleBackColor = false;
-            chkAllTextures.CheckStateChanged += new System.EventHandler(chkAllTextures_CheckStateChanged);
+            chkAllTextures.CheckStateChanged += new EventHandler(chkAllTextures_CheckStateChanged);
             // 
             // btnTextures
             // 
             btnTextures.Dock = System.Windows.Forms.DockStyle.Top;
-            btnTextures.Location = new System.Drawing.Point(0, 0);
+            btnTextures.Location = new Drawing.Point(0, 0);
             btnTextures.Name = "btnTextures";
-            btnTextures.Size = new System.Drawing.Size(170, 26);
+            btnTextures.Size = new Drawing.Size(170, 26);
             btnTextures.TabIndex = 9;
             btnTextures.Text = "Textures";
             btnTextures.UseVisualStyleBackColor = true;
-            btnTextures.Click += new System.EventHandler(btnTextures_Click);
+            btnTextures.Click += new EventHandler(btnTextures_Click);
             // 
             // ctxAnim
             // 
-            ctxAnim.ImageScalingSize = new System.Drawing.Size(20, 20);
-            ctxAnim.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ctxAnim.ImageScalingSize = new Drawing.Size(20, 20);
+            ctxAnim.Items.AddRange(new ToolStripItem[] {
             toolStripMenuItem2,
             toolStripSeparator1,
             chkLoop,
@@ -544,37 +544,37 @@ namespace System.Windows.Forms
             deleteToolStripMenuItem,
             createNewToolStripMenuItem});
             ctxAnim.Name = "ctxAnim";
-            ctxAnim.Size = new System.Drawing.Size(235, 218);
-            ctxAnim.Opening += new System.ComponentModel.CancelEventHandler(ctxAnim_Opening);
+            ctxAnim.Size = new Drawing.Size(235, 218);
+            ctxAnim.Opening += new CancelEventHandler(ctxAnim_Opening);
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Enabled = false;
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new System.Drawing.Size(234, 26);
+            toolStripMenuItem2.Size = new Drawing.Size(234, 26);
             toolStripMenuItem2.Text = "Source";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(231, 6);
+            toolStripSeparator1.Size = new Drawing.Size(231, 6);
             // 
             // chkLoop
             // 
             chkLoop.CheckOnClick = true;
             chkLoop.Name = "chkLoop";
-            chkLoop.Size = new System.Drawing.Size(234, 26);
+            chkLoop.Size = new Drawing.Size(234, 26);
             chkLoop.Text = "Loop";
-            chkLoop.CheckedChanged += new System.EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
             // 
             // matrixModeToolStripMenuItem
             // 
-            matrixModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            matrixModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             chkMtxMaya,
             chkMtxXSI,
             chkMtxMax});
             matrixModeToolStripMenuItem.Name = "matrixModeToolStripMenuItem";
-            matrixModeToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            matrixModeToolStripMenuItem.Size = new Drawing.Size(234, 26);
             matrixModeToolStripMenuItem.Text = "Matrix Mode";
             matrixModeToolStripMenuItem.Visible = false;
             // 
@@ -582,98 +582,98 @@ namespace System.Windows.Forms
             // 
             chkMtxMaya.CheckOnClick = true;
             chkMtxMaya.Name = "chkMtxMaya";
-            chkMtxMaya.Size = new System.Drawing.Size(139, 26);
+            chkMtxMaya.Size = new Drawing.Size(139, 26);
             chkMtxMaya.Text = "Maya";
-            chkMtxMaya.CheckedChanged += new System.EventHandler(chkMtxMaya_CheckedChanged);
+            chkMtxMaya.CheckedChanged += new EventHandler(chkMtxMaya_CheckedChanged);
             // 
             // chkMtxXSI
             // 
             chkMtxXSI.CheckOnClick = true;
             chkMtxXSI.Name = "chkMtxXSI";
-            chkMtxXSI.Size = new System.Drawing.Size(139, 26);
+            chkMtxXSI.Size = new Drawing.Size(139, 26);
             chkMtxXSI.Text = "XSI";
-            chkMtxXSI.CheckedChanged += new System.EventHandler(chkMtxXSI_CheckedChanged);
+            chkMtxXSI.CheckedChanged += new EventHandler(chkMtxXSI_CheckedChanged);
             // 
             // chkMtxMax
             // 
             chkMtxMax.CheckOnClick = true;
             chkMtxMax.Name = "chkMtxMax";
-            chkMtxMax.Size = new System.Drawing.Size(139, 26);
+            chkMtxMax.Size = new Drawing.Size(139, 26);
             chkMtxMax.Text = "3ds Max";
-            chkMtxMax.CheckedChanged += new System.EventHandler(chkMtxMax_CheckedChanged);
+            chkMtxMax.CheckedChanged += new EventHandler(chkMtxMax_CheckedChanged);
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(234, 26);
+            toolStripMenuItem3.Size = new Drawing.Size(234, 26);
             toolStripMenuItem3.Text = "Export...";
-            toolStripMenuItem3.Click += new System.EventHandler(exportToolStripMenuItem_Click);
+            toolStripMenuItem3.Click += new EventHandler(exportToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new System.Drawing.Size(234, 26);
+            toolStripMenuItem4.Size = new Drawing.Size(234, 26);
             toolStripMenuItem4.Text = "Replace...";
-            toolStripMenuItem4.Click += new System.EventHandler(replaceToolStripMenuItem_Click);
+            toolStripMenuItem4.Click += new EventHandler(replaceToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            renameToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            renameToolStripMenuItem.Size = new Drawing.Size(234, 26);
             renameToolStripMenuItem.Text = "Rename";
-            renameToolStripMenuItem.Click += new System.EventHandler(renameToolStripMenuItem_Click);
+            renameToolStripMenuItem.Click += new EventHandler(renameToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            deleteToolStripMenuItem.Size = new Drawing.Size(234, 26);
             deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += new System.EventHandler(deleteToolStripMenuItem_Click);
+            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
             // 
             // createNewToolStripMenuItem
             // 
             createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            createNewToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            createNewToolStripMenuItem.Size = new Drawing.Size(234, 26);
             createNewToolStripMenuItem.Text = "Create New Animation";
-            createNewToolStripMenuItem.Click += new System.EventHandler(createNewToolStripMenuItem_Click);
+            createNewToolStripMenuItem.Click += new EventHandler(createNewToolStripMenuItem_Click);
             // 
             // overObjPnl
             // 
             overObjPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            overObjPnl.Location = new System.Drawing.Point(0, 66);
+            overObjPnl.Location = new Drawing.Point(0, 66);
             overObjPnl.Name = "overObjPnl";
-            overObjPnl.Size = new System.Drawing.Size(170, 45);
+            overObjPnl.Size = new Drawing.Size(170, 45);
             overObjPnl.TabIndex = 8;
-            overObjPnl.Paint += new System.Windows.Forms.PaintEventHandler(overObjPnl_Paint);
+            overObjPnl.Paint += new PaintEventHandler(overObjPnl_Paint);
             // 
             // spltObjTex
             // 
             spltObjTex.Cursor = System.Windows.Forms.Cursors.HSplit;
             spltObjTex.Dock = System.Windows.Forms.DockStyle.Bottom;
-            spltObjTex.Location = new System.Drawing.Point(0, 332);
+            spltObjTex.Location = new Drawing.Point(0, 332);
             spltObjTex.Name = "spltObjTex";
-            spltObjTex.Size = new System.Drawing.Size(172, 4);
+            spltObjTex.Size = new Drawing.Size(172, 4);
             spltObjTex.TabIndex = 4;
-            spltObjTex.Dragged += new System.Windows.Forms.SplitterEventHandler(spltObjTex_Dragged);
+            spltObjTex.Dragged += new SplitterEventHandler(spltObjTex_Dragged);
             // 
             // spltAnimObj
             // 
             spltAnimObj.Cursor = System.Windows.Forms.Cursors.HSplit;
             spltAnimObj.Dock = System.Windows.Forms.DockStyle.Top;
-            spltAnimObj.Location = new System.Drawing.Point(0, 178);
+            spltAnimObj.Location = new Drawing.Point(0, 178);
             spltAnimObj.Name = "spltAnimObj";
-            spltAnimObj.Size = new System.Drawing.Size(172, 4);
+            spltAnimObj.Size = new Drawing.Size(172, 4);
             spltAnimObj.TabIndex = 1;
-            spltAnimObj.Dragged += new System.Windows.Forms.SplitterEventHandler(spltAnimObj_Dragged);
+            spltAnimObj.Dragged += new SplitterEventHandler(spltAnimObj_Dragged);
             // 
             // overTexPnl
             // 
             overTexPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            overTexPnl.Location = new System.Drawing.Point(0, 46);
+            overTexPnl.Location = new Drawing.Point(0, 46);
             overTexPnl.Name = "overTexPnl";
-            overTexPnl.Size = new System.Drawing.Size(170, 116);
+            overTexPnl.Size = new Drawing.Size(170, 116);
             overTexPnl.TabIndex = 9;
-            overTexPnl.Paint += new System.Windows.Forms.PaintEventHandler(overTexPnl_Paint);
+            overTexPnl.Paint += new PaintEventHandler(overTexPnl_Paint);
             // 
             // LeftPanel
             // 
@@ -683,7 +683,7 @@ namespace System.Windows.Forms
             Controls.Add(pnlAnims);
             Controls.Add(pnlTextures);
             Name = "LeftPanel";
-            Size = new System.Drawing.Size(172, 500);
+            Size = new Drawing.Size(172, 500);
             pnlObjects.ResumeLayout(false);
             pnlAnims.ResumeLayout(false);
             ctxAnimList.ResumeLayout(false);

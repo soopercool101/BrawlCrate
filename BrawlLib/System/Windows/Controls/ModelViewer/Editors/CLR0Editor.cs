@@ -9,19 +9,19 @@ namespace System.Windows.Forms
         #region Designer
         private void InitializeComponent()
         {
-            label1 = new System.Windows.Forms.Label();
-            lstTarget = new System.Windows.Forms.ComboBox();
-            listBox1 = new System.Windows.Forms.ListBox();
-            panel1 = new System.Windows.Forms.Panel();
+            label1 = new Label();
+            lstTarget = new ComboBox();
+            listBox1 = new ListBox();
+            panel1 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(-1, 0);
+            label1.Location = new Drawing.Point(-1, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(100, 20);
+            label1.Size = new Drawing.Size(100, 20);
             label1.TabIndex = 1;
             label1.Text = "Target:";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -42,40 +42,40 @@ namespace System.Windows.Forms
             "TevKonstReg1",
             "TevKonstReg2",
             "TevKonstReg3"});
-            lstTarget.Location = new System.Drawing.Point(-1, 18);
+            lstTarget.Location = new Drawing.Point(-1, 18);
             lstTarget.Name = "lstTarget";
-            lstTarget.Size = new System.Drawing.Size(100, 21);
+            lstTarget.Size = new Drawing.Size(100, 21);
             lstTarget.TabIndex = 2;
-            lstTarget.SelectedIndexChanged += new System.EventHandler(lstTarget_SelectedIndexChanged);
+            lstTarget.SelectedIndexChanged += new EventHandler(lstTarget_SelectedIndexChanged);
             // 
             // listBox1
             // 
             listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
-            listBox1.Location = new System.Drawing.Point(0, 0);
+            listBox1.Location = new Drawing.Point(0, 0);
             listBox1.Name = "listBox1";
-            listBox1.Size = new System.Drawing.Size(156, 74);
+            listBox1.Size = new Drawing.Size(156, 74);
             listBox1.TabIndex = 4;
-            listBox1.SelectedIndexChanged += new System.EventHandler(listBox1_SelectedIndexChanged);
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
             // 
             // panel1
             // 
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lstTarget);
             panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            panel1.Location = new System.Drawing.Point(156, 0);
+            panel1.Location = new Drawing.Point(156, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(100, 74);
+            panel1.Size = new Drawing.Size(100, 74);
             panel1.TabIndex = 5;
             // 
             // CLR0Editor
             // 
             Controls.Add(listBox1);
             Controls.Add(panel1);
-            MinimumSize = new System.Drawing.Size(256, 74);
+            MinimumSize = new Drawing.Size(256, 74);
             Name = "CLR0Editor";
-            Size = new System.Drawing.Size(256, 74);
+            Size = new Drawing.Size(256, 74);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
 

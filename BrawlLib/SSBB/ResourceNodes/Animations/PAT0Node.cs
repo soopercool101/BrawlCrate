@@ -1124,7 +1124,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public int ImageCount => Children.Count;
         [Browsable(false)]
-        public System.Drawing.Bitmap GetImage(int index)
+        public Bitmap GetImage(int index)
         {
             if (index < 0 || index >= Children.Count)
             {

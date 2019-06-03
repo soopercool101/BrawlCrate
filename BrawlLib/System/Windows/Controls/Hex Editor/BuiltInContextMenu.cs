@@ -8,7 +8,7 @@ namespace Be.Windows.Forms
     /// <summary>
     /// Defines a build-in ContextMenuStrip manager for HexBox control to show Copy, Cut, Paste menu in contextmenu of the control.
     /// </summary>
-    [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public sealed class BuiltInContextMenu : Component
     {
         /// <summary>

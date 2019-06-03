@@ -30,7 +30,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             {
                 //Remap points so there is only one id per individual point
                 Remapper remapData = new Remapper();
-                remapData.Remap<Facepoint>(points, null);
+                remapData.Remap(points, null);
 
                 //Set up tristripper with remapped point ids
                 TriStripper stripper = new TriStripper(

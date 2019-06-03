@@ -9,7 +9,7 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            goodColorControl21 = new System.Windows.Forms.GoodColorControl2();
+            goodColorControl21 = new GoodColorControl2();
             SuspendLayout();
             // 
             // goodColorControl21
@@ -17,15 +17,15 @@ namespace System.Windows.Forms
             goodColorControl21.Color = System.Drawing.Color.Empty;
             goodColorControl21.Dock = System.Windows.Forms.DockStyle.Fill;
             goodColorControl21.EditAlpha = true;
-            goodColorControl21.Location = new System.Drawing.Point(0, 0);
+            goodColorControl21.Location = new Drawing.Point(0, 0);
             goodColorControl21.Name = "goodColorControl21";
             //this.goodColorControl21.ShowOldColor = false;
-            goodColorControl21.Size = new System.Drawing.Size(335, 253);
+            goodColorControl21.Size = new Drawing.Size(335, 253);
             goodColorControl21.TabIndex = 7;
             // 
             // GoodColorDialog
             // 
-            ClientSize = new System.Drawing.Size(335, 253);
+            ClientSize = new Drawing.Size(335, 253);
             Controls.Add(goodColorControl21);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;

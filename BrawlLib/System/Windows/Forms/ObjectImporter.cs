@@ -275,19 +275,19 @@ namespace System.Windows.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ObjectImporter));
-            btnCancel = new System.Windows.Forms.Button();
-            btnOkay = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            comboBox1 = new System.Windows.Forms.ComboBox();
-            label2 = new System.Windows.Forms.Label();
-            comboBox2 = new System.Windows.Forms.ComboBox();
-            comboBox3 = new System.Windows.Forms.ComboBox();
-            checkBox1 = new System.Windows.Forms.CheckBox();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            baseBone = new System.Windows.Forms.Label();
-            modelPanel1 = new System.Windows.Forms.ModelPanel();
-            panel1 = new System.Windows.Forms.Panel();
+            btnCancel = new Button();
+            btnOkay = new Button();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
+            comboBox2 = new ComboBox();
+            comboBox3 = new ComboBox();
+            checkBox1 = new CheckBox();
+            label3 = new Label();
+            label4 = new Label();
+            baseBone = new Label();
+            modelPanel1 = new ModelPanel();
+            panel1 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -295,32 +295,32 @@ namespace System.Windows.Forms
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            btnCancel.Location = new System.Drawing.Point(139, 131);
+            btnCancel.Location = new Drawing.Point(139, 131);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnOkay.Location = new System.Drawing.Point(58, 131);
+            btnOkay.Location = new Drawing.Point(58, 131);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // label1
             // 
             label1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(47, 12);
+            label1.Location = new Drawing.Point(47, 12);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(39, 13);
+            label1.Size = new Drawing.Size(39, 13);
             label1.TabIndex = 3;
             label1.Text = "Import:";
             label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -330,18 +330,18 @@ namespace System.Windows.Forms
             comboBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new System.Drawing.Point(92, 9);
+            comboBox1.Location = new Drawing.Point(92, 9);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new System.Drawing.Size(121, 21);
+            comboBox1.Size = new Drawing.Size(121, 21);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += new System.EventHandler(comboBox1_SelectedIndexChanged);
+            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
             label2.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            label2.Location = new System.Drawing.Point(3, 58);
+            label2.Location = new Drawing.Point(3, 58);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(83, 18);
+            label2.Size = new Drawing.Size(83, 18);
             label2.TabIndex = 5;
             label2.Text = "Skeleton Root:";
             label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -351,11 +351,11 @@ namespace System.Windows.Forms
             comboBox2.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new System.Drawing.Point(92, 55);
+            comboBox2.Location = new Drawing.Point(92, 55);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new System.Drawing.Size(121, 21);
+            comboBox2.Size = new Drawing.Size(121, 21);
             comboBox2.TabIndex = 6;
-            comboBox2.SelectedIndexChanged += new System.EventHandler(comboBox2_SelectedIndexChanged);
+            comboBox2.SelectedIndexChanged += new EventHandler(comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -366,30 +366,30 @@ namespace System.Windows.Forms
             "Merge",
             "Replace",
             "Add As Child"});
-            comboBox3.Location = new System.Drawing.Point(92, 82);
+            comboBox3.Location = new Drawing.Point(92, 82);
             comboBox3.Name = "comboBox3";
-            comboBox3.Size = new System.Drawing.Size(121, 21);
+            comboBox3.Size = new Drawing.Size(121, 21);
             comboBox3.TabIndex = 7;
             // 
             // checkBox1
             // 
             checkBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             checkBox1.AutoSize = true;
-            checkBox1.Location = new System.Drawing.Point(92, 109);
+            checkBox1.Location = new Drawing.Point(92, 109);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new System.Drawing.Size(116, 17);
+            checkBox1.Size = new Drawing.Size(116, 17);
             checkBox1.TabIndex = 8;
             checkBox1.Text = "Merge both models";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += new System.EventHandler(checkBox1_CheckedChanged);
+            checkBox1.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
             // 
             // label3
             // 
             label3.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(7, 85);
+            label3.Location = new Drawing.Point(7, 85);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(79, 13);
+            label3.Size = new Drawing.Size(79, 13);
             label3.TabIndex = 9;
             label3.Text = "Base Skeleton:";
             label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -398,9 +398,9 @@ namespace System.Windows.Forms
             // 
             label4.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(24, 35);
+            label4.Location = new Drawing.Point(24, 35);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(62, 13);
+            label4.Size = new Drawing.Size(62, 13);
             label4.TabIndex = 10;
             label4.Text = "Base Bone:";
             label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -409,9 +409,9 @@ namespace System.Windows.Forms
             // 
             baseBone.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             baseBone.AutoSize = true;
-            baseBone.Location = new System.Drawing.Point(92, 35);
+            baseBone.Location = new Drawing.Point(92, 35);
             baseBone.Name = "baseBone";
-            baseBone.Size = new System.Drawing.Size(37, 13);
+            baseBone.Size = new Drawing.Size(37, 13);
             baseBone.TabIndex = 11;
             baseBone.Text = "(none)";
             baseBone.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -419,9 +419,9 @@ namespace System.Windows.Forms
             // modelPanel1
             // 
             modelPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            modelPanel1.Location = new System.Drawing.Point(0, 0);
+            modelPanel1.Location = new Drawing.Point(0, 0);
             modelPanel1.Name = "modelPanel1";
-            modelPanel1.Size = new System.Drawing.Size(203, 166);
+            modelPanel1.Size = new Drawing.Size(203, 166);
             modelPanel1.TabIndex = 12;
             // 
             // panel1
@@ -438,20 +438,20 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnOkay);
             panel1.Controls.Add(btnCancel);
             panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            panel1.Location = new System.Drawing.Point(203, 0);
+            panel1.Location = new Drawing.Point(203, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(226, 166);
+            panel1.Size = new Drawing.Size(226, 166);
             panel1.TabIndex = 13;
             // 
             // ObjectImporter
             // 
             AcceptButton = btnOkay;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(429, 166);
+            ClientSize = new Drawing.Size(429, 166);
             Controls.Add(modelPanel1);
             Controls.Add(panel1);
             //this.Icon = BrawlLib.Properties.Resources.Icon;
-            MinimumSize = new System.Drawing.Size(242, 204);
+            MinimumSize = new Drawing.Size(242, 204);
             Name = "ObjectImporter";
             ShowIcon = false;
             ShowInTaskbar = false;

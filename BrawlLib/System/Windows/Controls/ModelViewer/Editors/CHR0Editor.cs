@@ -41,7 +41,7 @@ namespace System.Windows.Forms
         private CheckBox FrameRot;
         private CheckBox FrameTrans;
         private ContextMenuStrip ctxBox;
-        private System.ComponentModel.IContainer components;
+        private IContainer components;
         private ToolStripMenuItem Source;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem add;
@@ -60,53 +60,53 @@ namespace System.Windows.Forms
         private ToolStripMenuItem addCustomAmountToolStripMenuItem;
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            grpTransform = new System.Windows.Forms.GroupBox();
-            FrameScale = new System.Windows.Forms.CheckBox();
-            btnPaste = new System.Windows.Forms.Button();
-            chkUpdateBindPose = new System.Windows.Forms.CheckBox();
-            FrameRot = new System.Windows.Forms.CheckBox();
-            btnCopy = new System.Windows.Forms.Button();
-            FrameTrans = new System.Windows.Forms.CheckBox();
-            btnCut = new System.Windows.Forms.Button();
-            lblTrans = new System.Windows.Forms.Label();
-            lblRot = new System.Windows.Forms.Label();
-            lblScale = new System.Windows.Forms.Label();
-            chkMoveBoneOnly = new System.Windows.Forms.CheckBox();
-            grpTransAll = new System.Windows.Forms.GroupBox();
-            btnInsert = new System.Windows.Forms.Button();
-            btnClean = new System.Windows.Forms.Button();
-            btnPasteAll = new System.Windows.Forms.Button();
-            btnCopyAll = new System.Windows.Forms.Button();
-            btnClearAll = new System.Windows.Forms.Button();
-            btnDelete = new System.Windows.Forms.Button();
-            AllScale = new System.Windows.Forms.CheckBox();
-            AllRot = new System.Windows.Forms.CheckBox();
-            AllTrans = new System.Windows.Forms.CheckBox();
-            ctxTools = new System.Windows.Forms.ContextMenuStrip(components);
-            bakeVertexPositionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ctxBox = new System.Windows.Forms.ContextMenuStrip(components);
-            Source = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            add = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            subtract = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            removeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            addCustomAmountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            numScaleX = new System.Windows.Forms.NumericInputBox();
-            numScaleY = new System.Windows.Forms.NumericInputBox();
-            numScaleZ = new System.Windows.Forms.NumericInputBox();
-            numRotX = new System.Windows.Forms.NumericInputBox();
-            numRotY = new System.Windows.Forms.NumericInputBox();
-            numRotZ = new System.Windows.Forms.NumericInputBox();
-            numTransX = new System.Windows.Forms.NumericInputBox();
-            numTransY = new System.Windows.Forms.NumericInputBox();
-            numTransZ = new System.Windows.Forms.NumericInputBox();
+            components = new Container();
+            grpTransform = new GroupBox();
+            FrameScale = new CheckBox();
+            btnPaste = new Button();
+            chkUpdateBindPose = new CheckBox();
+            FrameRot = new CheckBox();
+            btnCopy = new Button();
+            FrameTrans = new CheckBox();
+            btnCut = new Button();
+            lblTrans = new Label();
+            lblRot = new Label();
+            lblScale = new Label();
+            chkMoveBoneOnly = new CheckBox();
+            grpTransAll = new GroupBox();
+            btnInsert = new Button();
+            btnClean = new Button();
+            btnPasteAll = new Button();
+            btnCopyAll = new Button();
+            btnClearAll = new Button();
+            btnDelete = new Button();
+            AllScale = new CheckBox();
+            AllRot = new CheckBox();
+            AllTrans = new CheckBox();
+            ctxTools = new ContextMenuStrip(components);
+            bakeVertexPositionsToolStripMenuItem = new ToolStripMenuItem();
+            ctxBox = new ContextMenuStrip(components);
+            Source = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            add = new ToolStripMenuItem();
+            toolStripMenuItem3 = new ToolStripMenuItem();
+            toolStripMenuItem4 = new ToolStripMenuItem();
+            toolStripMenuItem7 = new ToolStripMenuItem();
+            subtract = new ToolStripMenuItem();
+            toolStripMenuItem5 = new ToolStripMenuItem();
+            toolStripMenuItem6 = new ToolStripMenuItem();
+            toolStripMenuItem8 = new ToolStripMenuItem();
+            removeAllToolStripMenuItem = new ToolStripMenuItem();
+            addCustomAmountToolStripMenuItem = new ToolStripMenuItem();
+            numScaleX = new NumericInputBox();
+            numScaleY = new NumericInputBox();
+            numScaleZ = new NumericInputBox();
+            numRotX = new NumericInputBox();
+            numRotY = new NumericInputBox();
+            numRotZ = new NumericInputBox();
+            numTransX = new NumericInputBox();
+            numTransY = new NumericInputBox();
+            numTransZ = new NumericInputBox();
             grpTransform.SuspendLayout();
             grpTransAll.SuspendLayout();
             ctxTools.SuspendLayout();
@@ -137,10 +137,10 @@ namespace System.Windows.Forms
             grpTransform.Controls.Add(lblScale);
             grpTransform.Dock = System.Windows.Forms.DockStyle.Left;
             grpTransform.Enabled = false;
-            grpTransform.Location = new System.Drawing.Point(0, 0);
+            grpTransform.Location = new Drawing.Point(0, 0);
             grpTransform.Name = "grpTransform";
-            grpTransform.Padding = new System.Windows.Forms.Padding(0);
-            grpTransform.Size = new System.Drawing.Size(422, 78);
+            grpTransform.Padding = new Padding(0);
+            grpTransform.Size = new Drawing.Size(422, 78);
             grpTransform.TabIndex = 23;
             grpTransform.TabStop = false;
             grpTransform.Text = "Transform Frame";
@@ -150,63 +150,63 @@ namespace System.Windows.Forms
             FrameScale.AutoSize = true;
             FrameScale.Checked = true;
             FrameScale.CheckState = System.Windows.Forms.CheckState.Checked;
-            FrameScale.Location = new System.Drawing.Point(367, 56);
+            FrameScale.Location = new Drawing.Point(367, 56);
             FrameScale.Name = "FrameScale";
-            FrameScale.Size = new System.Drawing.Size(53, 17);
+            FrameScale.Size = new Drawing.Size(53, 17);
             FrameScale.TabIndex = 35;
             FrameScale.Text = "Scale";
             FrameScale.UseVisualStyleBackColor = true;
             // 
             // btnPaste
             // 
-            btnPaste.Location = new System.Drawing.Point(318, 54);
+            btnPaste.Location = new Drawing.Point(318, 54);
             btnPaste.Name = "btnPaste";
-            btnPaste.Size = new System.Drawing.Size(48, 20);
+            btnPaste.Size = new Drawing.Size(48, 20);
             btnPaste.TabIndex = 23;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += new System.EventHandler(btnPaste_Click);
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // chkUpdateBindPose
             // 
-            chkUpdateBindPose.Location = new System.Drawing.Point(154, -1);
+            chkUpdateBindPose.Location = new Drawing.Point(154, -1);
             chkUpdateBindPose.Name = "chkUpdateBindPose";
-            chkUpdateBindPose.Size = new System.Drawing.Size(146, 17);
+            chkUpdateBindPose.Size = new Drawing.Size(146, 17);
             chkUpdateBindPose.TabIndex = 37;
             chkUpdateBindPose.Text = "Update Mesh Bind Pose";
             chkUpdateBindPose.UseVisualStyleBackColor = true;
-            chkUpdateBindPose.CheckedChanged += new System.EventHandler(chkUpdateBindPose_CheckedChanged);
+            chkUpdateBindPose.CheckedChanged += new EventHandler(chkUpdateBindPose_CheckedChanged);
             // 
             // FrameRot
             // 
             FrameRot.AutoSize = true;
             FrameRot.Checked = true;
             FrameRot.CheckState = System.Windows.Forms.CheckState.Checked;
-            FrameRot.Location = new System.Drawing.Point(367, 38);
+            FrameRot.Location = new Drawing.Point(367, 38);
             FrameRot.Name = "FrameRot";
-            FrameRot.Size = new System.Drawing.Size(43, 17);
+            FrameRot.Size = new Drawing.Size(43, 17);
             FrameRot.TabIndex = 34;
             FrameRot.Text = "Rot";
             FrameRot.UseVisualStyleBackColor = true;
             // 
             // btnCopy
             // 
-            btnCopy.Location = new System.Drawing.Point(318, 35);
+            btnCopy.Location = new Drawing.Point(318, 35);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(48, 20);
+            btnCopy.Size = new Drawing.Size(48, 20);
             btnCopy.TabIndex = 22;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += new System.EventHandler(btnCopy_Click);
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // FrameTrans
             // 
             FrameTrans.AutoSize = true;
             FrameTrans.Checked = true;
             FrameTrans.CheckState = System.Windows.Forms.CheckState.Checked;
-            FrameTrans.Location = new System.Drawing.Point(367, 20);
+            FrameTrans.Location = new Drawing.Point(367, 20);
             FrameTrans.Name = "FrameTrans";
-            FrameTrans.Size = new System.Drawing.Size(53, 17);
+            FrameTrans.Size = new Drawing.Size(53, 17);
             FrameTrans.TabIndex = 33;
             FrameTrans.Text = "Trans";
             FrameTrans.UseVisualStyleBackColor = true;
@@ -214,20 +214,20 @@ namespace System.Windows.Forms
             // btnCut
             // 
             btnCut.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            btnCut.Location = new System.Drawing.Point(318, 16);
+            btnCut.Location = new Drawing.Point(318, 16);
             btnCut.Name = "btnCut";
-            btnCut.Size = new System.Drawing.Size(48, 20);
+            btnCut.Size = new Drawing.Size(48, 20);
             btnCut.TabIndex = 21;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += new System.EventHandler(btnCut_Click);
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // lblTrans
             // 
             lblTrans.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblTrans.Location = new System.Drawing.Point(4, 16);
+            lblTrans.Location = new Drawing.Point(4, 16);
             lblTrans.Name = "lblTrans";
-            lblTrans.Size = new System.Drawing.Size(70, 20);
+            lblTrans.Size = new Drawing.Size(70, 20);
             lblTrans.TabIndex = 4;
             lblTrans.Text = "Translation:";
             lblTrans.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -235,9 +235,9 @@ namespace System.Windows.Forms
             // lblRot
             // 
             lblRot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblRot.Location = new System.Drawing.Point(4, 35);
+            lblRot.Location = new Drawing.Point(4, 35);
             lblRot.Name = "lblRot";
-            lblRot.Size = new System.Drawing.Size(70, 20);
+            lblRot.Size = new Drawing.Size(70, 20);
             lblRot.TabIndex = 5;
             lblRot.Text = "Rotation:";
             lblRot.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -245,9 +245,9 @@ namespace System.Windows.Forms
             // lblScale
             // 
             lblScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblScale.Location = new System.Drawing.Point(4, 54);
+            lblScale.Location = new Drawing.Point(4, 54);
             lblScale.Name = "lblScale";
-            lblScale.Size = new System.Drawing.Size(70, 20);
+            lblScale.Size = new Drawing.Size(70, 20);
             lblScale.TabIndex = 6;
             lblScale.Text = "Scale:";
             lblScale.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -255,13 +255,13 @@ namespace System.Windows.Forms
             // chkMoveBoneOnly
             // 
             chkMoveBoneOnly.Enabled = false;
-            chkMoveBoneOnly.Location = new System.Drawing.Point(302, -1);
+            chkMoveBoneOnly.Location = new Drawing.Point(302, -1);
             chkMoveBoneOnly.Name = "chkMoveBoneOnly";
-            chkMoveBoneOnly.Size = new System.Drawing.Size(113, 17);
+            chkMoveBoneOnly.Size = new Drawing.Size(113, 17);
             chkMoveBoneOnly.TabIndex = 36;
             chkMoveBoneOnly.Text = "Move Bone Only";
             chkMoveBoneOnly.UseVisualStyleBackColor = true;
-            chkMoveBoneOnly.CheckedChanged += new System.EventHandler(chkBoneEdit_CheckedChanged);
+            chkMoveBoneOnly.CheckedChanged += new EventHandler(chkBoneEdit_CheckedChanged);
             // 
             // grpTransAll
             // 
@@ -276,83 +276,83 @@ namespace System.Windows.Forms
             grpTransAll.Controls.Add(AllTrans);
             grpTransAll.Dock = System.Windows.Forms.DockStyle.Fill;
             grpTransAll.Enabled = false;
-            grpTransAll.Location = new System.Drawing.Point(422, 0);
+            grpTransAll.Location = new Drawing.Point(422, 0);
             grpTransAll.Name = "grpTransAll";
-            grpTransAll.Size = new System.Drawing.Size(160, 78);
+            grpTransAll.Size = new Drawing.Size(160, 78);
             grpTransAll.TabIndex = 26;
             grpTransAll.TabStop = false;
             grpTransAll.Text = "Transform All";
             // 
             // btnInsert
             // 
-            btnInsert.Location = new System.Drawing.Point(106, 54);
+            btnInsert.Location = new Drawing.Point(106, 54);
             btnInsert.Name = "btnInsert";
-            btnInsert.Size = new System.Drawing.Size(50, 20);
+            btnInsert.Size = new Drawing.Size(50, 20);
             btnInsert.TabIndex = 24;
             btnInsert.Text = "Insert";
             btnInsert.UseVisualStyleBackColor = true;
-            btnInsert.Click += new System.EventHandler(btnInsert_Click);
+            btnInsert.Click += new EventHandler(btnInsert_Click);
             // 
             // btnClean
             // 
-            btnClean.Location = new System.Drawing.Point(106, 35);
+            btnClean.Location = new Drawing.Point(106, 35);
             btnClean.Name = "btnClean";
-            btnClean.Size = new System.Drawing.Size(50, 20);
+            btnClean.Size = new Drawing.Size(50, 20);
             btnClean.TabIndex = 29;
             btnClean.Text = "Clean";
             btnClean.UseVisualStyleBackColor = true;
-            btnClean.Click += new System.EventHandler(btnClean_Click);
+            btnClean.Click += new EventHandler(btnClean_Click);
             // 
             // btnPasteAll
             // 
             btnPasteAll.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            btnPasteAll.Location = new System.Drawing.Point(57, 35);
+            btnPasteAll.Location = new Drawing.Point(57, 35);
             btnPasteAll.Name = "btnPasteAll";
-            btnPasteAll.Size = new System.Drawing.Size(50, 20);
+            btnPasteAll.Size = new Drawing.Size(50, 20);
             btnPasteAll.TabIndex = 28;
             btnPasteAll.Text = "Paste";
             btnPasteAll.UseVisualStyleBackColor = true;
-            btnPasteAll.Click += new System.EventHandler(btnPasteAll_Click);
+            btnPasteAll.Click += new EventHandler(btnPasteAll_Click);
             // 
             // btnCopyAll
             // 
-            btnCopyAll.Location = new System.Drawing.Point(57, 54);
+            btnCopyAll.Location = new Drawing.Point(57, 54);
             btnCopyAll.Name = "btnCopyAll";
-            btnCopyAll.Size = new System.Drawing.Size(50, 20);
+            btnCopyAll.Size = new Drawing.Size(50, 20);
             btnCopyAll.TabIndex = 27;
             btnCopyAll.Text = "Copy";
             btnCopyAll.UseVisualStyleBackColor = true;
-            btnCopyAll.Click += new System.EventHandler(btnCopyAll_Click);
+            btnCopyAll.Click += new EventHandler(btnCopyAll_Click);
             // 
             // btnClearAll
             // 
-            btnClearAll.Location = new System.Drawing.Point(106, 16);
+            btnClearAll.Location = new Drawing.Point(106, 16);
             btnClearAll.Name = "btnClearAll";
-            btnClearAll.Size = new System.Drawing.Size(50, 20);
+            btnClearAll.Size = new Drawing.Size(50, 20);
             btnClearAll.TabIndex = 26;
             btnClearAll.Text = "Clear";
             btnClearAll.UseVisualStyleBackColor = true;
-            btnClearAll.Click += new System.EventHandler(btnClear_Click);
+            btnClearAll.Click += new EventHandler(btnClear_Click);
             // 
             // btnDelete
             // 
             btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            btnDelete.Location = new System.Drawing.Point(57, 16);
+            btnDelete.Location = new Drawing.Point(57, 16);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new System.Drawing.Size(50, 20);
+            btnDelete.Size = new Drawing.Size(50, 20);
             btnDelete.TabIndex = 25;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += new System.EventHandler(btnDelete_Click);
+            btnDelete.Click += new EventHandler(btnDelete_Click);
             // 
             // AllScale
             // 
             AllScale.AutoSize = true;
             AllScale.Checked = true;
             AllScale.CheckState = System.Windows.Forms.CheckState.Checked;
-            AllScale.Location = new System.Drawing.Point(6, 56);
+            AllScale.Location = new Drawing.Point(6, 56);
             AllScale.Name = "AllScale";
-            AllScale.Size = new System.Drawing.Size(53, 17);
+            AllScale.Size = new Drawing.Size(53, 17);
             AllScale.TabIndex = 32;
             AllScale.Text = "Scale";
             AllScale.UseVisualStyleBackColor = true;
@@ -362,9 +362,9 @@ namespace System.Windows.Forms
             AllRot.AutoSize = true;
             AllRot.Checked = true;
             AllRot.CheckState = System.Windows.Forms.CheckState.Checked;
-            AllRot.Location = new System.Drawing.Point(6, 38);
+            AllRot.Location = new Drawing.Point(6, 38);
             AllRot.Name = "AllRot";
-            AllRot.Size = new System.Drawing.Size(43, 17);
+            AllRot.Size = new Drawing.Size(43, 17);
             AllRot.TabIndex = 31;
             AllRot.Text = "Rot";
             AllRot.UseVisualStyleBackColor = true;
@@ -374,30 +374,30 @@ namespace System.Windows.Forms
             AllTrans.AutoSize = true;
             AllTrans.Checked = true;
             AllTrans.CheckState = System.Windows.Forms.CheckState.Checked;
-            AllTrans.Location = new System.Drawing.Point(6, 20);
+            AllTrans.Location = new Drawing.Point(6, 20);
             AllTrans.Name = "AllTrans";
-            AllTrans.Size = new System.Drawing.Size(53, 17);
+            AllTrans.Size = new Drawing.Size(53, 17);
             AllTrans.TabIndex = 30;
             AllTrans.Text = "Trans";
             AllTrans.UseVisualStyleBackColor = true;
             // 
             // ctxTools
             // 
-            ctxTools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ctxTools.Items.AddRange(new ToolStripItem[] {
             bakeVertexPositionsToolStripMenuItem});
             ctxTools.Name = "ctxBox";
-            ctxTools.Size = new System.Drawing.Size(186, 26);
+            ctxTools.Size = new Drawing.Size(186, 26);
             // 
             // bakeVertexPositionsToolStripMenuItem
             // 
             bakeVertexPositionsToolStripMenuItem.Name = "bakeVertexPositionsToolStripMenuItem";
-            bakeVertexPositionsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            bakeVertexPositionsToolStripMenuItem.Size = new Drawing.Size(185, 22);
             bakeVertexPositionsToolStripMenuItem.Text = "Bake Vertex Positions";
-            bakeVertexPositionsToolStripMenuItem.Click += new System.EventHandler(bakeVertexPositionsToolStripMenuItem_Click);
+            bakeVertexPositionsToolStripMenuItem.Click += new EventHandler(bakeVertexPositionsToolStripMenuItem_Click);
             // 
             // ctxBox
             // 
-            ctxBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ctxBox.Items.AddRange(new ToolStripItem[] {
             Source,
             toolStripSeparator1,
             add,
@@ -405,229 +405,229 @@ namespace System.Windows.Forms
             removeAllToolStripMenuItem,
             addCustomAmountToolStripMenuItem});
             ctxBox.Name = "ctxBox";
-            ctxBox.Size = new System.Drawing.Size(167, 120);
+            ctxBox.Size = new Drawing.Size(167, 120);
             // 
             // Source
             // 
             Source.Enabled = false;
             Source.Name = "Source";
-            Source.Size = new System.Drawing.Size(166, 22);
+            Source.Size = new Drawing.Size(166, 22);
             Source.Text = "Source";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
+            toolStripSeparator1.Size = new Drawing.Size(163, 6);
             // 
             // add
             // 
-            add.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            add.DropDownItems.AddRange(new ToolStripItem[] {
             toolStripMenuItem3,
             toolStripMenuItem4,
             toolStripMenuItem7});
             add.Name = "add";
-            add.Size = new System.Drawing.Size(166, 22);
+            add.Size = new Drawing.Size(166, 22);
             add.Text = "Add To All";
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new System.Drawing.Size(100, 22);
+            toolStripMenuItem3.Size = new Drawing.Size(100, 22);
             toolStripMenuItem3.Text = "+180";
-            toolStripMenuItem3.Click += new System.EventHandler(toolStripMenuItem3_Click);
+            toolStripMenuItem3.Click += new EventHandler(toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new System.Drawing.Size(100, 22);
+            toolStripMenuItem4.Size = new Drawing.Size(100, 22);
             toolStripMenuItem4.Text = "+90";
-            toolStripMenuItem4.Click += new System.EventHandler(toolStripMenuItem4_Click);
+            toolStripMenuItem4.Click += new EventHandler(toolStripMenuItem4_Click);
             // 
             // toolStripMenuItem7
             // 
             toolStripMenuItem7.Name = "toolStripMenuItem7";
-            toolStripMenuItem7.Size = new System.Drawing.Size(100, 22);
+            toolStripMenuItem7.Size = new Drawing.Size(100, 22);
             toolStripMenuItem7.Text = "+45";
-            toolStripMenuItem7.Click += new System.EventHandler(toolStripMenuItem7_Click);
+            toolStripMenuItem7.Click += new EventHandler(toolStripMenuItem7_Click);
             // 
             // subtract
             // 
-            subtract.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            subtract.DropDownItems.AddRange(new ToolStripItem[] {
             toolStripMenuItem5,
             toolStripMenuItem6,
             toolStripMenuItem8});
             subtract.Name = "subtract";
-            subtract.Size = new System.Drawing.Size(166, 22);
+            subtract.Size = new Drawing.Size(166, 22);
             subtract.Text = "Subtract From All";
             // 
             // toolStripMenuItem5
             // 
             toolStripMenuItem5.Name = "toolStripMenuItem5";
-            toolStripMenuItem5.Size = new System.Drawing.Size(97, 22);
+            toolStripMenuItem5.Size = new Drawing.Size(97, 22);
             toolStripMenuItem5.Text = "-180";
-            toolStripMenuItem5.Click += new System.EventHandler(toolStripMenuItem5_Click);
+            toolStripMenuItem5.Click += new EventHandler(toolStripMenuItem5_Click);
             // 
             // toolStripMenuItem6
             // 
             toolStripMenuItem6.Name = "toolStripMenuItem6";
-            toolStripMenuItem6.Size = new System.Drawing.Size(97, 22);
+            toolStripMenuItem6.Size = new Drawing.Size(97, 22);
             toolStripMenuItem6.Text = "-90";
-            toolStripMenuItem6.Click += new System.EventHandler(toolStripMenuItem6_Click);
+            toolStripMenuItem6.Click += new EventHandler(toolStripMenuItem6_Click);
             // 
             // toolStripMenuItem8
             // 
             toolStripMenuItem8.Name = "toolStripMenuItem8";
-            toolStripMenuItem8.Size = new System.Drawing.Size(97, 22);
+            toolStripMenuItem8.Size = new Drawing.Size(97, 22);
             toolStripMenuItem8.Text = "-45";
-            toolStripMenuItem8.Click += new System.EventHandler(toolStripMenuItem8_Click);
+            toolStripMenuItem8.Click += new EventHandler(toolStripMenuItem8_Click);
             // 
             // removeAllToolStripMenuItem
             // 
             removeAllToolStripMenuItem.Name = "removeAllToolStripMenuItem";
-            removeAllToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            removeAllToolStripMenuItem.Size = new Drawing.Size(166, 22);
             removeAllToolStripMenuItem.Text = "Remove All";
-            removeAllToolStripMenuItem.Click += new System.EventHandler(removeAllToolStripMenuItem_Click);
+            removeAllToolStripMenuItem.Click += new EventHandler(removeAllToolStripMenuItem_Click);
             // 
             // addCustomAmountToolStripMenuItem
             // 
             addCustomAmountToolStripMenuItem.Name = "addCustomAmountToolStripMenuItem";
-            addCustomAmountToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            addCustomAmountToolStripMenuItem.Size = new Drawing.Size(166, 22);
             addCustomAmountToolStripMenuItem.Text = "Edit All...";
-            addCustomAmountToolStripMenuItem.Click += new System.EventHandler(addCustomAmountToolStripMenuItem_Click);
+            addCustomAmountToolStripMenuItem.Click += new EventHandler(addCustomAmountToolStripMenuItem_Click);
             // 
             // numScaleX
             // 
             numScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numScaleX.Integral = false;
-            numScaleX.Location = new System.Drawing.Point(73, 54);
+            numScaleX.Location = new Drawing.Point(73, 54);
             numScaleX.MaximumValue = 3.402823E+38F;
             numScaleX.MinimumValue = -3.402823E+38F;
             numScaleX.Name = "numScaleX";
-            numScaleX.Size = new System.Drawing.Size(82, 20);
+            numScaleX.Size = new Drawing.Size(82, 20);
             numScaleX.TabIndex = 18;
             numScaleX.Text = "0";
-            numScaleX.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numScaleX.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numScaleX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numScaleX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numScaleY
             // 
             numScaleY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numScaleY.Integral = false;
-            numScaleY.Location = new System.Drawing.Point(154, 54);
+            numScaleY.Location = new Drawing.Point(154, 54);
             numScaleY.MaximumValue = 3.402823E+38F;
             numScaleY.MinimumValue = -3.402823E+38F;
             numScaleY.Name = "numScaleY";
-            numScaleY.Size = new System.Drawing.Size(82, 20);
+            numScaleY.Size = new Drawing.Size(82, 20);
             numScaleY.TabIndex = 19;
             numScaleY.Text = "0";
-            numScaleY.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numScaleY.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numScaleY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numScaleY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numScaleZ
             // 
             numScaleZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numScaleZ.Integral = false;
-            numScaleZ.Location = new System.Drawing.Point(235, 54);
+            numScaleZ.Location = new Drawing.Point(235, 54);
             numScaleZ.MaximumValue = 3.402823E+38F;
             numScaleZ.MinimumValue = -3.402823E+38F;
             numScaleZ.Name = "numScaleZ";
-            numScaleZ.Size = new System.Drawing.Size(82, 20);
+            numScaleZ.Size = new Drawing.Size(82, 20);
             numScaleZ.TabIndex = 20;
             numScaleZ.Text = "0";
-            numScaleZ.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numScaleZ.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numScaleZ.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numScaleZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotX
             // 
             numRotX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numRotX.Integral = false;
-            numRotX.Location = new System.Drawing.Point(73, 35);
+            numRotX.Location = new Drawing.Point(73, 35);
             numRotX.MaximumValue = 3.402823E+38F;
             numRotX.MinimumValue = -3.402823E+38F;
             numRotX.Name = "numRotX";
-            numRotX.Size = new System.Drawing.Size(82, 20);
+            numRotX.Size = new Drawing.Size(82, 20);
             numRotX.TabIndex = 15;
             numRotX.Text = "0";
-            numRotX.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numRotX.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numRotX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numRotX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotY
             // 
             numRotY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numRotY.Integral = false;
-            numRotY.Location = new System.Drawing.Point(154, 35);
+            numRotY.Location = new Drawing.Point(154, 35);
             numRotY.MaximumValue = 3.402823E+38F;
             numRotY.MinimumValue = -3.402823E+38F;
             numRotY.Name = "numRotY";
-            numRotY.Size = new System.Drawing.Size(82, 20);
+            numRotY.Size = new Drawing.Size(82, 20);
             numRotY.TabIndex = 16;
             numRotY.Text = "0";
-            numRotY.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numRotY.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numRotY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numRotY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotZ
             // 
             numRotZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numRotZ.Integral = false;
-            numRotZ.Location = new System.Drawing.Point(235, 35);
+            numRotZ.Location = new Drawing.Point(235, 35);
             numRotZ.MaximumValue = 3.402823E+38F;
             numRotZ.MinimumValue = -3.402823E+38F;
             numRotZ.Name = "numRotZ";
-            numRotZ.Size = new System.Drawing.Size(82, 20);
+            numRotZ.Size = new Drawing.Size(82, 20);
             numRotZ.TabIndex = 17;
             numRotZ.Text = "0";
-            numRotZ.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numRotZ.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numRotZ.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numRotZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransX
             // 
             numTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numTransX.Integral = false;
-            numTransX.Location = new System.Drawing.Point(73, 16);
+            numTransX.Location = new Drawing.Point(73, 16);
             numTransX.MaximumValue = 3.402823E+38F;
             numTransX.MinimumValue = -3.402823E+38F;
             numTransX.Name = "numTransX";
-            numTransX.Size = new System.Drawing.Size(82, 20);
+            numTransX.Size = new Drawing.Size(82, 20);
             numTransX.TabIndex = 3;
             numTransX.Text = "0";
-            numTransX.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numTransX.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numTransX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numTransX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransY
             // 
             numTransY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numTransY.Integral = false;
-            numTransY.Location = new System.Drawing.Point(154, 16);
+            numTransY.Location = new Drawing.Point(154, 16);
             numTransY.MaximumValue = 3.402823E+38F;
             numTransY.MinimumValue = -3.402823E+38F;
             numTransY.Name = "numTransY";
-            numTransY.Size = new System.Drawing.Size(82, 20);
+            numTransY.Size = new Drawing.Size(82, 20);
             numTransY.TabIndex = 13;
             numTransY.Text = "0";
-            numTransY.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numTransY.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numTransY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numTransY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransZ
             // 
             numTransZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             numTransZ.Integral = false;
-            numTransZ.Location = new System.Drawing.Point(235, 16);
+            numTransZ.Location = new Drawing.Point(235, 16);
             numTransZ.MaximumValue = 3.402823E+38F;
             numTransZ.MinimumValue = -3.402823E+38F;
             numTransZ.Name = "numTransZ";
-            numTransZ.Size = new System.Drawing.Size(82, 20);
+            numTransZ.Size = new Drawing.Size(82, 20);
             numTransZ.TabIndex = 14;
             numTransZ.Text = "0";
-            numTransZ.ValueChanged += new System.EventHandler(BoxChangedCreateUndo);
-            numTransZ.MouseDown += new System.Windows.Forms.MouseEventHandler(box_MouseDown);
+            numTransZ.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numTransZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // CHR0Editor
             // 
             Controls.Add(grpTransAll);
             Controls.Add(grpTransform);
-            MinimumSize = new System.Drawing.Size(582, 78);
+            MinimumSize = new Drawing.Size(582, 78);
             Name = "CHR0Editor";
-            Size = new System.Drawing.Size(582, 78);
+            Size = new Drawing.Size(582, 78);
             grpTransform.ResumeLayout(false);
             grpTransform.PerformLayout();
             grpTransAll.ResumeLayout(false);

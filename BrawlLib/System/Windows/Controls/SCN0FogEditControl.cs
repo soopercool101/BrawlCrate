@@ -245,29 +245,29 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            panel1 = new System.Windows.Forms.Panel();
-            tabControl1 = new System.Windows.Forms.TabControl();
-            tabPage1 = new System.Windows.Forms.TabPage();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            listKeyframes = new System.Windows.Forms.ListBox();
-            panel2 = new System.Windows.Forms.Panel();
-            label7 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            btnNext = new System.Windows.Forms.Button();
-            btnPrev = new System.Windows.Forms.Button();
-            lblFrameCount = new System.Windows.Forms.Label();
-            numStart = new System.Windows.Forms.NumericInputBox();
-            numEnd = new System.Windows.Forms.NumericInputBox();
-            numFrame = new System.Windows.Forms.NumericUpDown();
-            label1 = new System.Windows.Forms.Label();
-            tabPage3 = new System.Windows.Forms.TabPage();
-            lightCtrl = new System.Windows.Forms.CLRControl();
+            panel1 = new Panel();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            groupBox1 = new GroupBox();
+            listKeyframes = new ListBox();
+            panel2 = new Panel();
+            label7 = new Label();
+            label3 = new Label();
+            btnNext = new Button();
+            btnPrev = new Button();
+            lblFrameCount = new Label();
+            numStart = new NumericInputBox();
+            numEnd = new NumericInputBox();
+            numFrame = new NumericUpDown();
+            label1 = new Label();
+            tabPage3 = new TabPage();
+            lightCtrl = new CLRControl();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize)(numFrame)).BeginInit();
             tabPage3.SuspendLayout();
             SuspendLayout();
             // 
@@ -275,9 +275,9 @@ namespace System.Windows.Forms
             // 
             panel1.Controls.Add(tabControl1);
             panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(221, 200);
+            panel1.Size = new Drawing.Size(221, 200);
             panel1.TabIndex = 23;
             // 
             // tabControl1
@@ -285,19 +285,19 @@ namespace System.Windows.Forms
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabControl1.Location = new System.Drawing.Point(0, 0);
+            tabControl1.Location = new Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(221, 200);
+            tabControl1.Size = new Drawing.Size(221, 200);
             tabControl1.TabIndex = 18;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Controls.Add(panel2);
-            tabPage1.Location = new System.Drawing.Point(4, 22);
+            tabPage1.Location = new Drawing.Point(4, 22);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new System.Drawing.Size(213, 174);
+            tabPage1.Size = new Drawing.Size(213, 174);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Lighting";
             tabPage1.UseVisualStyleBackColor = true;
@@ -306,9 +306,9 @@ namespace System.Windows.Forms
             // 
             groupBox1.Controls.Add(listKeyframes);
             groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(213, 102);
+            groupBox1.Size = new Drawing.Size(213, 102);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Keyframes";
@@ -316,15 +316,15 @@ namespace System.Windows.Forms
             // listKeyframes
             // 
             listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            listKeyframes.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.Font = new Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             listKeyframes.FormattingEnabled = true;
             listKeyframes.IntegralHeight = false;
             listKeyframes.ItemHeight = 14;
-            listKeyframes.Location = new System.Drawing.Point(3, 16);
+            listKeyframes.Location = new Drawing.Point(3, 16);
             listKeyframes.Name = "listKeyframes";
-            listKeyframes.Size = new System.Drawing.Size(207, 83);
+            listKeyframes.Size = new Drawing.Size(207, 83);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += new System.EventHandler(listKeyframes_SelectedIndexChanged);
+            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -339,16 +339,16 @@ namespace System.Windows.Forms
             panel2.Controls.Add(numFrame);
             panel2.Controls.Add(label1);
             panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panel2.Location = new System.Drawing.Point(0, 102);
+            panel2.Location = new Drawing.Point(0, 102);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(213, 72);
+            panel2.Size = new Drawing.Size(213, 72);
             panel2.TabIndex = 22;
             // 
             // label7
             // 
-            label7.Location = new System.Drawing.Point(3, 3);
+            label7.Location = new Drawing.Point(3, 3);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(41, 20);
+            label7.Size = new Drawing.Size(41, 20);
             label7.TabIndex = 15;
             label7.Text = "Frame:";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -356,43 +356,43 @@ namespace System.Windows.Forms
             // label3
             // 
             label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label3.Location = new System.Drawing.Point(6, 45);
-            label3.Margin = new System.Windows.Forms.Padding(0);
+            label3.Location = new Drawing.Point(6, 45);
+            label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(70, 20);
+            label3.Size = new Drawing.Size(70, 20);
             label3.TabIndex = 2;
             label3.Text = "End Point Z";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnNext
             // 
-            btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnNext.Location = new System.Drawing.Point(187, 1);
+            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Location = new Drawing.Point(187, 1);
             btnNext.Name = "btnNext";
-            btnNext.Size = new System.Drawing.Size(23, 23);
+            btnNext.Size = new Drawing.Size(23, 23);
             btnNext.TabIndex = 2;
             btnNext.Text = ">";
             btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += new System.EventHandler(btnNext_Click);
+            btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // btnPrev
             // 
-            btnPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnPrev.Location = new System.Drawing.Point(162, 1);
+            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Location = new Drawing.Point(162, 1);
             btnPrev.Name = "btnPrev";
-            btnPrev.Size = new System.Drawing.Size(23, 23);
+            btnPrev.Size = new Drawing.Size(23, 23);
             btnPrev.TabIndex = 1;
             btnPrev.Text = "<";
             btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += new System.EventHandler(btnPrev_Click);
+            btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
             // lblFrameCount
             // 
-            lblFrameCount.Location = new System.Drawing.Point(114, 3);
+            lblFrameCount.Location = new Drawing.Point(114, 3);
             lblFrameCount.Name = "lblFrameCount";
-            lblFrameCount.Size = new System.Drawing.Size(51, 20);
+            lblFrameCount.Size = new Drawing.Size(51, 20);
             lblFrameCount.TabIndex = 17;
             lblFrameCount.Text = "/ 10";
             lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -400,50 +400,50 @@ namespace System.Windows.Forms
             // numStart
             // 
             numStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            numStart.Location = new System.Drawing.Point(75, 26);
-            numStart.Margin = new System.Windows.Forms.Padding(0);
+            numStart.Location = new Drawing.Point(75, 26);
+            numStart.Margin = new Padding(0);
             numStart.Name = "numStart";
-            numStart.Size = new System.Drawing.Size(70, 20);
+            numStart.Size = new Drawing.Size(70, 20);
             numStart.TabIndex = 3;
             numStart.Text = "0";
-            numStart.ValueChanged += new System.EventHandler(BoxChanged);
+            numStart.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numEnd
             // 
             numEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            numEnd.Location = new System.Drawing.Point(75, 45);
-            numEnd.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            numEnd.Location = new Drawing.Point(75, 45);
+            numEnd.Margin = new Padding(0, 10, 0, 10);
             numEnd.Name = "numEnd";
-            numEnd.Size = new System.Drawing.Size(70, 20);
+            numEnd.Size = new Drawing.Size(70, 20);
             numEnd.TabIndex = 6;
             numEnd.Text = "0";
-            numEnd.ValueChanged += new System.EventHandler(BoxChanged);
+            numEnd.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numFrame
             // 
-            numFrame.Location = new System.Drawing.Point(50, 3);
+            numFrame.Location = new Drawing.Point(50, 3);
             numFrame.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             numFrame.Name = "numFrame";
-            numFrame.Size = new System.Drawing.Size(58, 20);
+            numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
             numFrame.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            numFrame.ValueChanged += new System.EventHandler(numFrame_ValueChanged);
+            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // label1
             // 
             label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label1.Location = new System.Drawing.Point(6, 26);
-            label1.Margin = new System.Windows.Forms.Padding(0);
+            label1.Location = new Drawing.Point(6, 26);
+            label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(70, 20);
+            label1.Size = new Drawing.Size(70, 20);
             label1.TabIndex = 0;
             label1.Text = "Start Point Z";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -451,9 +451,9 @@ namespace System.Windows.Forms
             // tabPage3
             // 
             tabPage3.Controls.Add(lightCtrl);
-            tabPage3.Location = new System.Drawing.Point(4, 22);
+            tabPage3.Location = new Drawing.Point(4, 22);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new System.Drawing.Size(213, 174);
+            tabPage3.Size = new Drawing.Size(213, 174);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Light Color";
             tabPage3.UseVisualStyleBackColor = true;
@@ -461,23 +461,23 @@ namespace System.Windows.Forms
             // lightCtrl
             // 
             lightCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            lightCtrl.Location = new System.Drawing.Point(0, 0);
+            lightCtrl.Location = new Drawing.Point(0, 0);
             lightCtrl.Name = "lightCtrl";
-            lightCtrl.Size = new System.Drawing.Size(213, 174);
+            lightCtrl.Size = new Drawing.Size(213, 174);
             lightCtrl.TabIndex = 0;
             // 
             // SCN0FogEditControl
             // 
             Controls.Add(panel1);
             Name = "SCN0FogEditControl";
-            Size = new System.Drawing.Size(221, 200);
+            Size = new Drawing.Size(221, 200);
             panel1.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize)(numFrame)).EndInit();
             tabPage3.ResumeLayout(false);
             ResumeLayout(false);
 

@@ -10,16 +10,16 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            dtgrdAttributes = new System.Windows.Forms.DataGridView();
-            description = new System.Windows.Forms.RichTextBox();
-            splitter1 = new System.Windows.Forms.Splitter();
-            panel1 = new System.Windows.Forms.Panel();
-            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            rdoDegrees = new System.Windows.Forms.RadioButton();
-            rdoInt = new System.Windows.Forms.RadioButton();
-            rdoFloat = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(dtgrdAttributes)).BeginInit();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            dtgrdAttributes = new DataGridView();
+            description = new RichTextBox();
+            splitter1 = new Splitter();
+            panel1 = new Panel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            rdoDegrees = new RadioButton();
+            rdoInt = new RadioButton();
+            rdoFloat = new RadioButton();
+            ((ISupportInitialize)(dtgrdAttributes)).BeginInit();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -36,7 +36,7 @@ namespace System.Windows.Forms
             dtgrdAttributes.ColumnHeadersVisible = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.Format = "N4";
             dataGridViewCellStyle1.NullValue = null;
@@ -48,7 +48,7 @@ namespace System.Windows.Forms
             dtgrdAttributes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             dtgrdAttributes.EnableHeadersVisualStyles = false;
             dtgrdAttributes.GridColor = System.Drawing.SystemColors.ControlLight;
-            dtgrdAttributes.Location = new System.Drawing.Point(0, 0);
+            dtgrdAttributes.Location = new Drawing.Point(0, 0);
             dtgrdAttributes.MultiSelect = false;
             dtgrdAttributes.Name = "dtgrdAttributes";
             dtgrdAttributes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -57,10 +57,10 @@ namespace System.Windows.Forms
             dtgrdAttributes.RowTemplate.Height = 16;
             dtgrdAttributes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             dtgrdAttributes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dtgrdAttributes.Size = new System.Drawing.Size(479, 239);
+            dtgrdAttributes.Size = new Drawing.Size(479, 239);
             dtgrdAttributes.TabIndex = 5;
-            dtgrdAttributes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(dtgrdAttributes_CellEndEdit);
-            dtgrdAttributes.CurrentCellChanged += new System.EventHandler(dtgrdAttributes_CurrentCellChanged);
+            dtgrdAttributes.CellEndEdit += new DataGridViewCellEventHandler(dtgrdAttributes_CellEndEdit);
+            dtgrdAttributes.CurrentCellChanged += new EventHandler(dtgrdAttributes_CurrentCellChanged);
             // 
             // description
             // 
@@ -68,22 +68,22 @@ namespace System.Windows.Forms
             description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             description.Cursor = System.Windows.Forms.Cursors.Default;
             description.Dock = System.Windows.Forms.DockStyle.Fill;
-            description.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            description.Font = new Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             description.ForeColor = System.Drawing.Color.Black;
-            description.Location = new System.Drawing.Point(0, 0);
+            description.Location = new Drawing.Point(0, 0);
             description.Name = "description";
             description.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            description.Size = new System.Drawing.Size(479, 63);
+            description.Size = new Drawing.Size(479, 63);
             description.TabIndex = 6;
             description.Text = "No Description Available.";
-            description.TextChanged += new System.EventHandler(description_TextChanged);
+            description.TextChanged += new EventHandler(description_TextChanged);
             // 
             // splitter1
             // 
             splitter1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            splitter1.Location = new System.Drawing.Point(0, 239);
+            splitter1.Location = new Drawing.Point(0, 239);
             splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(479, 3);
+            splitter1.Size = new Drawing.Size(479, 3);
             splitter1.TabIndex = 7;
             splitter1.TabStop = false;
             // 
@@ -92,27 +92,27 @@ namespace System.Windows.Forms
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(description);
             panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panel1.Location = new System.Drawing.Point(0, 242);
+            panel1.Location = new Drawing.Point(0, 242);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(479, 63);
+            panel1.Size = new Drawing.Size(479, 63);
             panel1.TabIndex = 8;
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(rdoDegrees, 0, 2);
             tableLayoutPanel1.Controls.Add(rdoInt, 0, 1);
             tableLayoutPanel1.Controls.Add(rdoFloat, 0, 0);
             tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            tableLayoutPanel1.Location = new System.Drawing.Point(458, 0);
+            tableLayoutPanel1.Location = new Drawing.Point(458, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(21, 63);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Drawing.Size(21, 63);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // rdoDegrees
@@ -120,48 +120,48 @@ namespace System.Windows.Forms
             rdoDegrees.Appearance = System.Windows.Forms.Appearance.Button;
             rdoDegrees.AutoSize = true;
             rdoDegrees.Dock = System.Windows.Forms.DockStyle.Fill;
-            rdoDegrees.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rdoDegrees.Location = new System.Drawing.Point(0, 42);
-            rdoDegrees.Margin = new System.Windows.Forms.Padding(0);
+            rdoDegrees.Font = new Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rdoDegrees.Location = new Drawing.Point(0, 42);
+            rdoDegrees.Margin = new Padding(0);
             rdoDegrees.Name = "rdoDegrees";
-            rdoDegrees.Size = new System.Drawing.Size(21, 21);
+            rdoDegrees.Size = new Drawing.Size(21, 21);
             rdoDegrees.TabIndex = 2;
             rdoDegrees.TabStop = true;
             rdoDegrees.Text = "D";
             rdoDegrees.UseVisualStyleBackColor = true;
-            rdoDegrees.CheckedChanged += new System.EventHandler(radioButtonsChanged);
+            rdoDegrees.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoInt
             // 
             rdoInt.Appearance = System.Windows.Forms.Appearance.Button;
             rdoInt.AutoSize = true;
             rdoInt.Dock = System.Windows.Forms.DockStyle.Fill;
-            rdoInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rdoInt.Location = new System.Drawing.Point(0, 21);
-            rdoInt.Margin = new System.Windows.Forms.Padding(0);
+            rdoInt.Font = new Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rdoInt.Location = new Drawing.Point(0, 21);
+            rdoInt.Margin = new Padding(0);
             rdoInt.Name = "rdoInt";
-            rdoInt.Size = new System.Drawing.Size(21, 21);
+            rdoInt.Size = new Drawing.Size(21, 21);
             rdoInt.TabIndex = 1;
             rdoInt.TabStop = true;
             rdoInt.Text = "I";
             rdoInt.UseVisualStyleBackColor = true;
-            rdoInt.CheckedChanged += new System.EventHandler(radioButtonsChanged);
+            rdoInt.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // rdoFloat
             // 
             rdoFloat.Appearance = System.Windows.Forms.Appearance.Button;
             rdoFloat.AutoSize = true;
             rdoFloat.Dock = System.Windows.Forms.DockStyle.Fill;
-            rdoFloat.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rdoFloat.Location = new System.Drawing.Point(0, 0);
-            rdoFloat.Margin = new System.Windows.Forms.Padding(0);
+            rdoFloat.Font = new Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rdoFloat.Location = new Drawing.Point(0, 0);
+            rdoFloat.Margin = new Padding(0);
             rdoFloat.Name = "rdoFloat";
-            rdoFloat.Size = new System.Drawing.Size(21, 21);
+            rdoFloat.Size = new Drawing.Size(21, 21);
             rdoFloat.TabIndex = 0;
             rdoFloat.TabStop = true;
             rdoFloat.Text = "F";
             rdoFloat.UseVisualStyleBackColor = true;
-            rdoFloat.CheckedChanged += new System.EventHandler(radioButtonsChanged);
+            rdoFloat.CheckedChanged += new EventHandler(radioButtonsChanged);
             // 
             // AttributeGrid
             // 
@@ -169,8 +169,8 @@ namespace System.Windows.Forms
             Controls.Add(splitter1);
             Controls.Add(panel1);
             Name = "AttributeGrid";
-            Size = new System.Drawing.Size(479, 305);
-            ((System.ComponentModel.ISupportInitialize)(dtgrdAttributes)).EndInit();
+            Size = new Drawing.Size(479, 305);
+            ((ISupportInitialize)(dtgrdAttributes)).EndInit();
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

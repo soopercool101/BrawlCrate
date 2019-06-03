@@ -38,30 +38,30 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            dlgSave = new System.Windows.Forms.SaveFileDialog();
-            folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            pnlKeyframes = new System.Windows.Forms.Panel();
-            pnlBones = new System.Windows.Forms.Panel();
-            lstBones = new System.Windows.Forms.CheckedListBox();
-            boneTree = new System.Windows.Forms.TreeView();
-            panel1 = new System.Windows.Forms.Panel();
-            txtSearchBone = new System.Windows.Forms.TextBox();
-            chkContains = new System.Windows.Forms.CheckBox();
-            chkFlat = new System.Windows.Forms.CheckBox();
-            ctxBones = new System.Windows.Forms.ContextMenuStrip(components);
-            nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            boneIndex = new System.Windows.Forms.ToolStripMenuItem();
-            renameBoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ctxBonesDivider1 = new System.Windows.Forms.ToolStripSeparator();
-            addToParentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            addToNextUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            addToNextDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ctxBonesDivider2 = new System.Windows.Forms.ToolStripSeparator();
-            moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            imageList1 = new System.Windows.Forms.ImageList(components);
+            components = new Container();
+            dlgOpen = new OpenFileDialog();
+            dlgSave = new SaveFileDialog();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            pnlKeyframes = new Panel();
+            pnlBones = new Panel();
+            lstBones = new CheckedListBox();
+            boneTree = new TreeView();
+            panel1 = new Panel();
+            txtSearchBone = new TextBox();
+            chkContains = new CheckBox();
+            chkFlat = new CheckBox();
+            ctxBones = new ContextMenuStrip(components);
+            nameToolStripMenuItem = new ToolStripMenuItem();
+            boneIndex = new ToolStripMenuItem();
+            renameBoneToolStripMenuItem = new ToolStripMenuItem();
+            ctxBonesDivider1 = new ToolStripSeparator();
+            addToParentToolStripMenuItem = new ToolStripMenuItem();
+            addToNextUpToolStripMenuItem = new ToolStripMenuItem();
+            addToNextDownToolStripMenuItem = new ToolStripMenuItem();
+            ctxBonesDivider2 = new ToolStripSeparator();
+            moveUpToolStripMenuItem = new ToolStripMenuItem();
+            moveDownToolStripMenuItem = new ToolStripMenuItem();
+            imageList1 = new ImageList(components);
             pnlKeyframes.SuspendLayout();
             pnlBones.SuspendLayout();
             panel1.SuspendLayout();
@@ -74,9 +74,9 @@ namespace System.Windows.Forms
             pnlKeyframes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             pnlKeyframes.Controls.Add(pnlBones);
             pnlKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnlKeyframes.Location = new System.Drawing.Point(0, 0);
+            pnlKeyframes.Location = new Drawing.Point(0, 0);
             pnlKeyframes.Name = "pnlKeyframes";
-            pnlKeyframes.Size = new System.Drawing.Size(164, 398);
+            pnlKeyframes.Size = new Drawing.Size(164, 398);
             pnlKeyframes.TabIndex = 26;
             // 
             // pnlBones
@@ -85,9 +85,9 @@ namespace System.Windows.Forms
             pnlBones.Controls.Add(boneTree);
             pnlBones.Controls.Add(panel1);
             pnlBones.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnlBones.Location = new System.Drawing.Point(0, 0);
+            pnlBones.Location = new Drawing.Point(0, 0);
             pnlBones.Name = "pnlBones";
-            pnlBones.Size = new System.Drawing.Size(160, 394);
+            pnlBones.Size = new Drawing.Size(160, 394);
             pnlBones.TabIndex = 10;
             // 
             // lstBones
@@ -95,14 +95,14 @@ namespace System.Windows.Forms
             lstBones.Dock = System.Windows.Forms.DockStyle.Fill;
             lstBones.FormattingEnabled = true;
             lstBones.IntegralHeight = false;
-            lstBones.Location = new System.Drawing.Point(0, 21);
+            lstBones.Location = new Drawing.Point(0, 21);
             lstBones.Name = "lstBones";
-            lstBones.Size = new System.Drawing.Size(160, 373);
+            lstBones.Size = new Drawing.Size(160, 373);
             lstBones.TabIndex = 32;
-            lstBones.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(lstBones_ItemCheck);
-            lstBones.SelectedValueChanged += new System.EventHandler(lstBones_SelectedValueChanged);
-            lstBones.KeyDown += new System.Windows.Forms.KeyEventHandler(lstBones_KeyDown);
-            lstBones.MouseDown += new System.Windows.Forms.MouseEventHandler(lstBones_MouseDown);
+            lstBones.ItemCheck += new ItemCheckEventHandler(lstBones_ItemCheck);
+            lstBones.SelectedValueChanged += new EventHandler(lstBones_SelectedValueChanged);
+            lstBones.KeyDown += new KeyEventHandler(lstBones_KeyDown);
+            lstBones.MouseDown += new MouseEventHandler(lstBones_MouseDown);
             // 
             // boneTree
             // 
@@ -113,14 +113,14 @@ namespace System.Windows.Forms
             boneTree.HotTracking = true;
             boneTree.Indent = 14;
             boneTree.ItemHeight = 16;
-            boneTree.Location = new System.Drawing.Point(0, 21);
+            boneTree.Location = new Drawing.Point(0, 21);
             boneTree.Name = "boneTree";
-            boneTree.Size = new System.Drawing.Size(160, 373);
+            boneTree.Size = new Drawing.Size(160, 373);
             boneTree.TabIndex = 29;
             boneTree.Visible = false;
-            boneTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(boneTree_AfterCheck);
-            boneTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(boneTree_AfterSelect);
-            boneTree.MouseDown += new System.Windows.Forms.MouseEventHandler(lstBones_MouseDown);
+            boneTree.AfterCheck += new TreeViewEventHandler(boneTree_AfterCheck);
+            boneTree.AfterSelect += new TreeViewEventHandler(boneTree_AfterSelect);
+            boneTree.MouseDown += new MouseEventHandler(lstBones_MouseDown);
             // 
             // panel1
             // 
@@ -128,39 +128,39 @@ namespace System.Windows.Forms
             panel1.Controls.Add(chkContains);
             panel1.Controls.Add(chkFlat);
             panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(160, 21);
+            panel1.Size = new Drawing.Size(160, 21);
             panel1.TabIndex = 31;
             // 
             // txtSearchBone
             // 
             txtSearchBone.Dock = System.Windows.Forms.DockStyle.Fill;
             txtSearchBone.ForeColor = System.Drawing.Color.Gray;
-            txtSearchBone.Location = new System.Drawing.Point(44, 0);
+            txtSearchBone.Location = new Drawing.Point(44, 0);
             txtSearchBone.Name = "txtSearchBone";
-            txtSearchBone.Size = new System.Drawing.Size(46, 20);
+            txtSearchBone.Size = new Drawing.Size(46, 20);
             txtSearchBone.TabIndex = 30;
             txtSearchBone.Text = "Search for a bone...";
             txtSearchBone.Visible = false;
-            txtSearchBone.TextChanged += new System.EventHandler(textBox1_TextChanged);
-            txtSearchBone.Enter += new System.EventHandler(textBox1_Enter);
-            txtSearchBone.Leave += new System.EventHandler(textBox1_Leave);
+            txtSearchBone.TextChanged += new EventHandler(textBox1_TextChanged);
+            txtSearchBone.Enter += new EventHandler(textBox1_Enter);
+            txtSearchBone.Leave += new EventHandler(textBox1_Leave);
             // 
             // chkContains
             // 
             chkContains.AutoSize = true;
             chkContains.Dock = System.Windows.Forms.DockStyle.Right;
-            chkContains.Location = new System.Drawing.Point(90, 0);
-            chkContains.Margin = new System.Windows.Forms.Padding(0);
+            chkContains.Location = new Drawing.Point(90, 0);
+            chkContains.Margin = new Padding(0);
             chkContains.Name = "chkContains";
-            chkContains.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            chkContains.Size = new System.Drawing.Size(70, 21);
+            chkContains.Padding = new Padding(3, 0, 0, 0);
+            chkContains.Size = new Drawing.Size(70, 21);
             chkContains.TabIndex = 32;
             chkContains.Text = "Contains";
             chkContains.UseVisualStyleBackColor = false;
             chkContains.Visible = false;
-            chkContains.CheckedChanged += new System.EventHandler(chkContains_CheckedChanged);
+            chkContains.CheckedChanged += new EventHandler(chkContains_CheckedChanged);
             // 
             // chkFlat
             // 
@@ -168,19 +168,19 @@ namespace System.Windows.Forms
             chkFlat.Checked = true;
             chkFlat.CheckState = System.Windows.Forms.CheckState.Checked;
             chkFlat.Dock = System.Windows.Forms.DockStyle.Left;
-            chkFlat.Location = new System.Drawing.Point(0, 0);
-            chkFlat.Margin = new System.Windows.Forms.Padding(0);
+            chkFlat.Location = new Drawing.Point(0, 0);
+            chkFlat.Margin = new Padding(0);
             chkFlat.Name = "chkFlat";
-            chkFlat.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            chkFlat.Size = new System.Drawing.Size(44, 21);
+            chkFlat.Padding = new Padding(1, 0, 0, 0);
+            chkFlat.Size = new Drawing.Size(44, 21);
             chkFlat.TabIndex = 31;
             chkFlat.Text = "Flat";
             chkFlat.UseVisualStyleBackColor = false;
-            chkFlat.CheckedChanged += new System.EventHandler(chkFlat_CheckedChanged);
+            chkFlat.CheckedChanged += new EventHandler(chkFlat_CheckedChanged);
             // 
             // ctxBones
             // 
-            ctxBones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            ctxBones.Items.AddRange(new ToolStripItem[] {
             nameToolStripMenuItem,
             boneIndex,
             renameBoneToolStripMenuItem,
@@ -192,86 +192,86 @@ namespace System.Windows.Forms
             moveUpToolStripMenuItem,
             moveDownToolStripMenuItem});
             ctxBones.Name = "ctxBones";
-            ctxBones.Size = new System.Drawing.Size(175, 192);
+            ctxBones.Size = new Drawing.Size(175, 192);
             // 
             // nameToolStripMenuItem
             // 
             nameToolStripMenuItem.Enabled = false;
             nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            nameToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            nameToolStripMenuItem.Size = new Drawing.Size(174, 22);
             nameToolStripMenuItem.Text = "<name>";
             // 
             // boneIndex
             // 
             boneIndex.Enabled = false;
             boneIndex.Name = "boneIndex";
-            boneIndex.Size = new System.Drawing.Size(174, 22);
+            boneIndex.Size = new Drawing.Size(174, 22);
             boneIndex.Text = "Bone Index";
             // 
             // renameBoneToolStripMenuItem
             // 
             renameBoneToolStripMenuItem.Name = "renameBoneToolStripMenuItem";
-            renameBoneToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            renameBoneToolStripMenuItem.Size = new Drawing.Size(174, 22);
             renameBoneToolStripMenuItem.Text = "Rename";
-            renameBoneToolStripMenuItem.Click += new System.EventHandler(renameBoneToolStripMenuItem_Click);
+            renameBoneToolStripMenuItem.Click += new EventHandler(renameBoneToolStripMenuItem_Click);
             // 
             // ctxBonesDivider1
             // 
             ctxBonesDivider1.Name = "ctxBonesDivider1";
-            ctxBonesDivider1.Size = new System.Drawing.Size(171, 6);
+            ctxBonesDivider1.Size = new Drawing.Size(171, 6);
             // 
             // addToParentToolStripMenuItem
             // 
             addToParentToolStripMenuItem.Name = "addToParentToolStripMenuItem";
-            addToParentToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            addToParentToolStripMenuItem.Size = new Drawing.Size(174, 22);
             addToParentToolStripMenuItem.Text = "Add To Parent";
-            addToParentToolStripMenuItem.Click += new System.EventHandler(addToParentToolStripMenuItem_Click);
+            addToParentToolStripMenuItem.Click += new EventHandler(addToParentToolStripMenuItem_Click);
             // 
             // addToNextUpToolStripMenuItem
             // 
             addToNextUpToolStripMenuItem.Name = "addToNextUpToolStripMenuItem";
-            addToNextUpToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            addToNextUpToolStripMenuItem.Size = new Drawing.Size(174, 22);
             addToNextUpToolStripMenuItem.Text = "Add To Next Up";
-            addToNextUpToolStripMenuItem.Click += new System.EventHandler(addToNextUpToolStripMenuItem_Click);
+            addToNextUpToolStripMenuItem.Click += new EventHandler(addToNextUpToolStripMenuItem_Click);
             // 
             // addToNextDownToolStripMenuItem
             // 
             addToNextDownToolStripMenuItem.Name = "addToNextDownToolStripMenuItem";
-            addToNextDownToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            addToNextDownToolStripMenuItem.Size = new Drawing.Size(174, 22);
             addToNextDownToolStripMenuItem.Text = "Add To Next Down";
-            addToNextDownToolStripMenuItem.Click += new System.EventHandler(addToNextDownToolStripMenuItem_Click);
+            addToNextDownToolStripMenuItem.Click += new EventHandler(addToNextDownToolStripMenuItem_Click);
             // 
             // ctxBonesDivider2
             // 
             ctxBonesDivider2.Name = "ctxBonesDivider2";
-            ctxBonesDivider2.Size = new System.Drawing.Size(171, 6);
+            ctxBonesDivider2.Size = new Drawing.Size(171, 6);
             // 
             // moveUpToolStripMenuItem
             // 
             moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            moveUpToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            moveUpToolStripMenuItem.Size = new Drawing.Size(174, 22);
             moveUpToolStripMenuItem.Text = "Move Up";
-            moveUpToolStripMenuItem.Click += new System.EventHandler(moveUpToolStripMenuItem_Click);
+            moveUpToolStripMenuItem.Click += new EventHandler(moveUpToolStripMenuItem_Click);
             // 
             // moveDownToolStripMenuItem
             // 
             moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            moveDownToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            moveDownToolStripMenuItem.Size = new Drawing.Size(174, 22);
             moveDownToolStripMenuItem.Text = "Move Down";
-            moveDownToolStripMenuItem.Click += new System.EventHandler(moveDownToolStripMenuItem_Click);
+            moveDownToolStripMenuItem.Click += new EventHandler(moveDownToolStripMenuItem_Click);
             // 
             // imageList1
             // 
             imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            imageList1.ImageSize = new Drawing.Size(16, 16);
             imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // BonesPanel
             // 
             Controls.Add(pnlKeyframes);
             Name = "BonesPanel";
-            Size = new System.Drawing.Size(164, 398);
-            SizeChanged += new System.EventHandler(BonesPanel_SizeChanged);
+            Size = new Drawing.Size(164, 398);
+            SizeChanged += new EventHandler(BonesPanel_SizeChanged);
             pnlKeyframes.ResumeLayout(false);
             pnlBones.ResumeLayout(false);
             panel1.ResumeLayout(false);

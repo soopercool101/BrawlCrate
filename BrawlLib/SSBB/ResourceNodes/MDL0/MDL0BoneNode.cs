@@ -1275,7 +1275,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                 GL.MultMatrix((float*)&transform);
 
                 //Orb
-                TKContext.FindOrCreate<GLDisplayList>("BoneNodeOrb", CreateNodeOrb).Call();
+                TKContext.FindOrCreate("BoneNodeOrb", CreateNodeOrb).Call();
 
                 //Axes
                 DrawNodeOrients(alpha);

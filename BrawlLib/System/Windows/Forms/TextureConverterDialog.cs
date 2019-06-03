@@ -922,74 +922,74 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            chkPreview = new System.Windows.Forms.CheckBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            numLOD = new System.Windows.Forms.NumericUpDown();
-            label5 = new System.Windows.Forms.Label();
-            cboFormat = new System.Windows.Forms.ComboBox();
-            label4 = new System.Windows.Forms.Label();
-            btnRecommend = new System.Windows.Forms.Button();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            label9 = new System.Windows.Forms.Label();
-            lblTransparencies = new System.Windows.Forms.Label();
-            lblDataSize = new System.Windows.Forms.Label();
-            lblColors = new System.Windows.Forms.Label();
-            lblSize = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            btnOkay = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            grpPalette = new System.Windows.Forms.GroupBox();
-            chkImportPalette = new System.Windows.Forms.CheckBox();
-            cboAlgorithm = new System.Windows.Forms.ComboBox();
-            label8 = new System.Windows.Forms.Label();
-            numPaletteCount = new System.Windows.Forms.NumericUpDown();
-            label7 = new System.Windows.Forms.Label();
-            cboPaletteFormat = new System.Windows.Forms.ComboBox();
-            label6 = new System.Windows.Forms.Label();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            chkSwapRGB = new System.Windows.Forms.CheckBox();
-            chkSwapAlpha = new System.Windows.Forms.CheckBox();
-            chkConstrainProps = new System.Windows.Forms.CheckBox();
-            btnApplyDims = new System.Windows.Forms.Button();
-            label11 = new System.Windows.Forms.Label();
-            numH = new System.Windows.Forms.NumericUpDown();
-            numW = new System.Windows.Forms.NumericUpDown();
-            label10 = new System.Windows.Forms.Label();
-            panel1 = new System.Windows.Forms.Panel();
-            txtPath = new System.Windows.Forms.TextBox();
-            panel2 = new System.Windows.Forms.Panel();
-            numMIPPreview = new System.Windows.Forms.NumericUpDown();
-            label12 = new System.Windows.Forms.Label();
-            button1 = new System.Windows.Forms.Button();
-            dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            pictureBox1 = new System.Windows.Forms.GoodPictureBox();
-            chkSwapAlphaRGB = new System.Windows.Forms.CheckBox();
+            chkPreview = new CheckBox();
+            groupBox1 = new GroupBox();
+            numLOD = new NumericUpDown();
+            label5 = new Label();
+            cboFormat = new ComboBox();
+            label4 = new Label();
+            btnRecommend = new Button();
+            groupBox2 = new GroupBox();
+            label9 = new Label();
+            lblTransparencies = new Label();
+            lblDataSize = new Label();
+            lblColors = new Label();
+            lblSize = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            btnOkay = new Button();
+            btnCancel = new Button();
+            grpPalette = new GroupBox();
+            chkImportPalette = new CheckBox();
+            cboAlgorithm = new ComboBox();
+            label8 = new Label();
+            numPaletteCount = new NumericUpDown();
+            label7 = new Label();
+            cboPaletteFormat = new ComboBox();
+            label6 = new Label();
+            groupBox4 = new GroupBox();
+            chkSwapRGB = new CheckBox();
+            chkSwapAlpha = new CheckBox();
+            chkConstrainProps = new CheckBox();
+            btnApplyDims = new Button();
+            label11 = new Label();
+            numH = new NumericUpDown();
+            numW = new NumericUpDown();
+            label10 = new Label();
+            panel1 = new Panel();
+            txtPath = new TextBox();
+            panel2 = new Panel();
+            numMIPPreview = new NumericUpDown();
+            label12 = new Label();
+            button1 = new Button();
+            dlgOpen = new OpenFileDialog();
+            pictureBox1 = new GoodPictureBox();
+            chkSwapAlphaRGB = new CheckBox();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(numLOD)).BeginInit();
+            ((ISupportInitialize)(numLOD)).BeginInit();
             groupBox2.SuspendLayout();
             grpPalette.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(numPaletteCount)).BeginInit();
+            ((ISupportInitialize)(numPaletteCount)).BeginInit();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(numH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(numW)).BeginInit();
+            ((ISupportInitialize)(numH)).BeginInit();
+            ((ISupportInitialize)(numW)).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(numMIPPreview)).BeginInit();
+            ((ISupportInitialize)(numMIPPreview)).BeginInit();
             SuspendLayout();
             // 
             // chkPreview
             // 
             chkPreview.Checked = true;
             chkPreview.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkPreview.Location = new System.Drawing.Point(9, 15);
+            chkPreview.Location = new Drawing.Point(9, 15);
             chkPreview.Name = "chkPreview";
-            chkPreview.Size = new System.Drawing.Size(66, 21);
+            chkPreview.Size = new Drawing.Size(66, 21);
             chkPreview.TabIndex = 0;
             chkPreview.Text = "Preview";
             chkPreview.UseVisualStyleBackColor = true;
-            chkPreview.CheckedChanged += new System.EventHandler(chkPreview_CheckedChanged);
+            chkPreview.CheckedChanged += new EventHandler(chkPreview_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -999,9 +999,9 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(cboFormat);
             groupBox1.Controls.Add(label4);
-            groupBox1.Location = new System.Drawing.Point(3, 108);
+            groupBox1.Location = new Drawing.Point(3, 108);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(179, 71);
+            groupBox1.Size = new Drawing.Size(179, 71);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Image";
@@ -1010,27 +1010,27 @@ namespace System.Windows.Forms
             // 
             numLOD.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numLOD.Location = new System.Drawing.Point(75, 42);
+            numLOD.Location = new Drawing.Point(75, 42);
             numLOD.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             numLOD.Name = "numLOD";
-            numLOD.Size = new System.Drawing.Size(98, 20);
+            numLOD.Size = new Drawing.Size(98, 20);
             numLOD.TabIndex = 3;
             numLOD.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            numLOD.ValueChanged += new System.EventHandler(numLOD_ValueChanged);
+            numLOD.ValueChanged += new EventHandler(numLOD_ValueChanged);
             // 
             // label5
             // 
-            label5.Location = new System.Drawing.Point(6, 42);
+            label5.Location = new Drawing.Point(6, 42);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(63, 20);
+            label5.Size = new Drawing.Size(63, 20);
             label5.TabIndex = 2;
             label5.Text = "MIP Levels:";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1041,17 +1041,17 @@ namespace System.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Right);
             cboFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboFormat.FormattingEnabled = true;
-            cboFormat.Location = new System.Drawing.Point(75, 15);
+            cboFormat.Location = new Drawing.Point(75, 15);
             cboFormat.Name = "cboFormat";
-            cboFormat.Size = new System.Drawing.Size(98, 21);
+            cboFormat.Size = new Drawing.Size(98, 21);
             cboFormat.TabIndex = 1;
-            cboFormat.SelectedIndexChanged += new System.EventHandler(cboFormat_SelectedIndexChanged);
+            cboFormat.SelectedIndexChanged += new EventHandler(cboFormat_SelectedIndexChanged);
             // 
             // label4
             // 
-            label4.Location = new System.Drawing.Point(6, 16);
+            label4.Location = new Drawing.Point(6, 16);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(63, 20);
+            label4.Size = new Drawing.Size(63, 20);
             label4.TabIndex = 0;
             label4.Text = "Format:";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1060,13 +1060,13 @@ namespace System.Windows.Forms
             // 
             btnRecommend.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            btnRecommend.Location = new System.Drawing.Point(75, 14);
+            btnRecommend.Location = new Drawing.Point(75, 14);
             btnRecommend.Name = "btnRecommend";
-            btnRecommend.Size = new System.Drawing.Size(98, 21);
+            btnRecommend.Size = new Drawing.Size(98, 21);
             btnRecommend.TabIndex = 1;
             btnRecommend.Text = "Recommend";
             btnRecommend.UseVisualStyleBackColor = true;
-            btnRecommend.Click += new System.EventHandler(btnRecommend_Click);
+            btnRecommend.Click += new EventHandler(btnRecommend_Click);
             // 
             // groupBox2
             // 
@@ -1080,18 +1080,18 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
-            groupBox2.Location = new System.Drawing.Point(3, 3);
+            groupBox2.Location = new Drawing.Point(3, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(179, 99);
+            groupBox2.Size = new Drawing.Size(179, 99);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Info";
             // 
             // label9
             // 
-            label9.Location = new System.Drawing.Point(6, 71);
+            label9.Location = new Drawing.Point(6, 71);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(85, 20);
+            label9.Size = new Drawing.Size(85, 20);
             label9.TabIndex = 6;
             label9.Text = "Data Size:";
             label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1100,9 +1100,9 @@ namespace System.Windows.Forms
             // 
             lblTransparencies.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblTransparencies.Location = new System.Drawing.Point(97, 51);
+            lblTransparencies.Location = new Drawing.Point(97, 51);
             lblTransparencies.Name = "lblTransparencies";
-            lblTransparencies.Size = new System.Drawing.Size(76, 20);
+            lblTransparencies.Size = new Drawing.Size(76, 20);
             lblTransparencies.TabIndex = 5;
             lblTransparencies.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1110,9 +1110,9 @@ namespace System.Windows.Forms
             // 
             lblDataSize.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblDataSize.Location = new System.Drawing.Point(97, 71);
+            lblDataSize.Location = new Drawing.Point(97, 71);
             lblDataSize.Name = "lblDataSize";
-            lblDataSize.Size = new System.Drawing.Size(76, 20);
+            lblDataSize.Size = new Drawing.Size(76, 20);
             lblDataSize.TabIndex = 7;
             lblDataSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1120,9 +1120,9 @@ namespace System.Windows.Forms
             // 
             lblColors.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblColors.Location = new System.Drawing.Point(97, 31);
+            lblColors.Location = new Drawing.Point(97, 31);
             lblColors.Name = "lblColors";
-            lblColors.Size = new System.Drawing.Size(76, 20);
+            lblColors.Size = new Drawing.Size(76, 20);
             lblColors.TabIndex = 3;
             lblColors.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1130,35 +1130,35 @@ namespace System.Windows.Forms
             // 
             lblSize.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblSize.Location = new System.Drawing.Point(94, 11);
+            lblSize.Location = new Drawing.Point(94, 11);
             lblSize.Name = "lblSize";
-            lblSize.Size = new System.Drawing.Size(79, 20);
+            lblSize.Size = new Drawing.Size(79, 20);
             lblSize.TabIndex = 1;
             lblSize.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            label3.Location = new System.Drawing.Point(6, 51);
+            label3.Location = new Drawing.Point(6, 51);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(85, 20);
+            label3.Size = new Drawing.Size(85, 20);
             label3.TabIndex = 4;
             label3.Text = "Transparent:";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            label2.Location = new System.Drawing.Point(6, 31);
+            label2.Location = new Drawing.Point(6, 31);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(85, 20);
+            label2.Size = new Drawing.Size(85, 20);
             label2.TabIndex = 2;
             label2.Text = "Colors:";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.Location = new System.Drawing.Point(6, 11);
+            label1.Location = new Drawing.Point(6, 11);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(85, 20);
+            label1.Size = new Drawing.Size(85, 20);
             label1.TabIndex = 0;
             label1.Text = "Size:";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1166,24 +1166,24 @@ namespace System.Windows.Forms
             // btnOkay
             // 
             btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnOkay.Location = new System.Drawing.Point(8, 157);
+            btnOkay.Location = new Drawing.Point(8, 157);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(80, 23);
+            btnOkay.Size = new Drawing.Size(80, 23);
             btnOkay.TabIndex = 11;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
             btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnCancel.Location = new System.Drawing.Point(94, 157);
+            btnCancel.Location = new Drawing.Point(94, 157);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(80, 23);
+            btnCancel.Size = new Drawing.Size(80, 23);
             btnCancel.TabIndex = 12;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // grpPalette
             // 
@@ -1196,23 +1196,23 @@ namespace System.Windows.Forms
             grpPalette.Controls.Add(label7);
             grpPalette.Controls.Add(cboPaletteFormat);
             grpPalette.Controls.Add(label6);
-            grpPalette.Location = new System.Drawing.Point(3, 185);
+            grpPalette.Location = new Drawing.Point(3, 185);
             grpPalette.Name = "grpPalette";
             grpPalette.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            grpPalette.Size = new System.Drawing.Size(179, 118);
+            grpPalette.Size = new Drawing.Size(179, 118);
             grpPalette.TabIndex = 5;
             grpPalette.TabStop = false;
             grpPalette.Text = "Palette";
             // 
             // chkImportPalette
             // 
-            chkImportPalette.Location = new System.Drawing.Point(9, 95);
+            chkImportPalette.Location = new Drawing.Point(9, 95);
             chkImportPalette.Name = "chkImportPalette";
-            chkImportPalette.Size = new System.Drawing.Size(164, 17);
+            chkImportPalette.Size = new Drawing.Size(164, 17);
             chkImportPalette.TabIndex = 6;
             chkImportPalette.Text = "Import Palette";
             chkImportPalette.UseVisualStyleBackColor = true;
-            chkImportPalette.CheckedChanged += new System.EventHandler(chkImportPalette_CheckedChanged);
+            chkImportPalette.CheckedChanged += new EventHandler(chkImportPalette_CheckedChanged);
             // 
             // cboAlgorithm
             // 
@@ -1220,17 +1220,17 @@ namespace System.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Right);
             cboAlgorithm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboAlgorithm.FormattingEnabled = true;
-            cboAlgorithm.Location = new System.Drawing.Point(75, 68);
+            cboAlgorithm.Location = new Drawing.Point(75, 68);
             cboAlgorithm.Name = "cboAlgorithm";
-            cboAlgorithm.Size = new System.Drawing.Size(98, 21);
+            cboAlgorithm.Size = new Drawing.Size(98, 21);
             cboAlgorithm.TabIndex = 5;
-            cboAlgorithm.SelectedIndexChanged += new System.EventHandler(formatChanged);
+            cboAlgorithm.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label8
             // 
-            label8.Location = new System.Drawing.Point(6, 69);
+            label8.Location = new Drawing.Point(6, 69);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(63, 20);
+            label8.Size = new Drawing.Size(63, 20);
             label8.TabIndex = 4;
             label8.Text = "Algorithm:";
             label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1244,7 +1244,7 @@ namespace System.Windows.Forms
             0,
             0,
             0});
-            numPaletteCount.Location = new System.Drawing.Point(75, 42);
+            numPaletteCount.Location = new Drawing.Point(75, 42);
             numPaletteCount.Maximum = new decimal(new int[] {
             256,
             0,
@@ -1256,20 +1256,20 @@ namespace System.Windows.Forms
             0,
             0});
             numPaletteCount.Name = "numPaletteCount";
-            numPaletteCount.Size = new System.Drawing.Size(97, 20);
+            numPaletteCount.Size = new Drawing.Size(97, 20);
             numPaletteCount.TabIndex = 3;
             numPaletteCount.Value = new decimal(new int[] {
             16,
             0,
             0,
             0});
-            numPaletteCount.ValueChanged += new System.EventHandler(formatChanged);
+            numPaletteCount.ValueChanged += new EventHandler(formatChanged);
             // 
             // label7
             // 
-            label7.Location = new System.Drawing.Point(6, 42);
+            label7.Location = new Drawing.Point(6, 42);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(63, 20);
+            label7.Size = new Drawing.Size(63, 20);
             label7.TabIndex = 2;
             label7.Text = "Colors:";
             label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1280,17 +1280,17 @@ namespace System.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Right);
             cboPaletteFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboPaletteFormat.FormattingEnabled = true;
-            cboPaletteFormat.Location = new System.Drawing.Point(75, 15);
+            cboPaletteFormat.Location = new Drawing.Point(75, 15);
             cboPaletteFormat.Name = "cboPaletteFormat";
-            cboPaletteFormat.Size = new System.Drawing.Size(98, 21);
+            cboPaletteFormat.Size = new Drawing.Size(98, 21);
             cboPaletteFormat.TabIndex = 1;
-            cboPaletteFormat.SelectedIndexChanged += new System.EventHandler(formatChanged);
+            cboPaletteFormat.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label6
             // 
-            label6.Location = new System.Drawing.Point(6, 16);
+            label6.Location = new Drawing.Point(6, 16);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(63, 20);
+            label6.Size = new Drawing.Size(63, 20);
             label6.TabIndex = 0;
             label6.Text = "Format:";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1313,64 +1313,64 @@ namespace System.Windows.Forms
             groupBox4.Controls.Add(btnRecommend);
             groupBox4.Controls.Add(chkPreview);
             groupBox4.Controls.Add(btnCancel);
-            groupBox4.Location = new System.Drawing.Point(3, 309);
+            groupBox4.Location = new Drawing.Point(3, 309);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(179, 189);
+            groupBox4.Size = new Drawing.Size(179, 189);
             groupBox4.TabIndex = 7;
             groupBox4.TabStop = false;
             // 
             // chkSwapRGB
             // 
             chkSwapRGB.AutoSize = true;
-            chkSwapRGB.Location = new System.Drawing.Point(9, 110);
+            chkSwapRGB.Location = new Drawing.Point(9, 110);
             chkSwapRGB.Name = "chkSwapRGB";
-            chkSwapRGB.Size = new System.Drawing.Size(79, 17);
+            chkSwapRGB.Size = new Drawing.Size(79, 17);
             chkSwapRGB.TabIndex = 8;
             chkSwapRGB.Text = "Swap RGB";
             chkSwapRGB.UseVisualStyleBackColor = true;
-            chkSwapRGB.CheckedChanged += new System.EventHandler(chkSwapRGB_CheckedChanged);
+            chkSwapRGB.CheckedChanged += new EventHandler(chkSwapRGB_CheckedChanged);
             // 
             // chkSwapAlpha
             // 
             chkSwapAlpha.AutoSize = true;
-            chkSwapAlpha.Location = new System.Drawing.Point(94, 110);
+            chkSwapAlpha.Location = new Drawing.Point(94, 110);
             chkSwapAlpha.Name = "chkSwapAlpha";
-            chkSwapAlpha.Size = new System.Drawing.Size(83, 17);
+            chkSwapAlpha.Size = new Drawing.Size(83, 17);
             chkSwapAlpha.TabIndex = 9;
             chkSwapAlpha.Text = "Swap Alpha";
             chkSwapAlpha.UseVisualStyleBackColor = true;
-            chkSwapAlpha.CheckedChanged += new System.EventHandler(chkSwapAlpha_CheckedChanged);
+            chkSwapAlpha.CheckedChanged += new EventHandler(chkSwapAlpha_CheckedChanged);
             // 
             // chkConstrainProps
             // 
             chkConstrainProps.AutoSize = true;
             chkConstrainProps.Checked = true;
             chkConstrainProps.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkConstrainProps.Location = new System.Drawing.Point(9, 87);
+            chkConstrainProps.Location = new Drawing.Point(9, 87);
             chkConstrainProps.Name = "chkConstrainProps";
-            chkConstrainProps.Size = new System.Drawing.Size(126, 17);
+            chkConstrainProps.Size = new Drawing.Size(126, 17);
             chkConstrainProps.TabIndex = 7;
             chkConstrainProps.Text = "Constrain Proportions";
             chkConstrainProps.UseVisualStyleBackColor = true;
-            chkConstrainProps.CheckedChanged += new System.EventHandler(chkConstrainProps_CheckedChanged);
+            chkConstrainProps.CheckedChanged += new EventHandler(chkConstrainProps_CheckedChanged);
             // 
             // btnApplyDims
             // 
             btnApplyDims.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            btnApplyDims.Location = new System.Drawing.Point(125, 60);
+            btnApplyDims.Location = new Drawing.Point(125, 60);
             btnApplyDims.Name = "btnApplyDims";
-            btnApplyDims.Size = new System.Drawing.Size(48, 21);
+            btnApplyDims.Size = new Drawing.Size(48, 21);
             btnApplyDims.TabIndex = 6;
             btnApplyDims.Text = "Apply";
             btnApplyDims.UseVisualStyleBackColor = true;
-            btnApplyDims.Click += new System.EventHandler(btnApplyDims_Click);
+            btnApplyDims.Click += new EventHandler(btnApplyDims_Click);
             // 
             // label11
             // 
-            label11.Location = new System.Drawing.Point(58, 60);
+            label11.Location = new Drawing.Point(58, 60);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(15, 21);
+            label11.Size = new Drawing.Size(15, 21);
             label11.TabIndex = 4;
             label11.Text = "X";
             label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1379,7 +1379,7 @@ namespace System.Windows.Forms
             // 
             numH.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numH.Location = new System.Drawing.Point(73, 60);
+            numH.Location = new Drawing.Point(73, 60);
             numH.Maximum = new decimal(new int[] {
             1024,
             0,
@@ -1391,20 +1391,20 @@ namespace System.Windows.Forms
             0,
             0});
             numH.Name = "numH";
-            numH.Size = new System.Drawing.Size(46, 20);
+            numH.Size = new Drawing.Size(46, 20);
             numH.TabIndex = 5;
             numH.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            numH.ValueChanged += new System.EventHandler(numH_ValueChanged);
+            numH.ValueChanged += new EventHandler(numH_ValueChanged);
             // 
             // numW
             // 
             numW.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numW.Location = new System.Drawing.Point(9, 61);
+            numW.Location = new Drawing.Point(9, 61);
             numW.Maximum = new decimal(new int[] {
             1024,
             0,
@@ -1416,20 +1416,20 @@ namespace System.Windows.Forms
             0,
             0});
             numW.Name = "numW";
-            numW.Size = new System.Drawing.Size(46, 20);
+            numW.Size = new Drawing.Size(46, 20);
             numW.TabIndex = 3;
             numW.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            numW.ValueChanged += new System.EventHandler(numW_ValueChanged);
+            numW.ValueChanged += new EventHandler(numW_ValueChanged);
             // 
             // label10
             // 
-            label10.Location = new System.Drawing.Point(6, 38);
+            label10.Location = new Drawing.Point(6, 38);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(81, 20);
+            label10.Size = new Drawing.Size(81, 20);
             label10.TabIndex = 2;
             label10.Text = "Dimensions:";
             label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1441,19 +1441,19 @@ namespace System.Windows.Forms
             panel1.Controls.Add(groupBox4);
             panel1.Controls.Add(grpPalette);
             panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            panel1.Location = new System.Drawing.Point(379, 0);
-            panel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            panel1.Location = new Drawing.Point(379, 0);
+            panel1.Margin = new Padding(3, 3, 0, 3);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(185, 501);
+            panel1.Size = new Drawing.Size(185, 501);
             panel1.TabIndex = 9;
             // 
             // txtPath
             // 
             txtPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            txtPath.Location = new System.Drawing.Point(92, 0);
+            txtPath.Location = new Drawing.Point(92, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
-            txtPath.Size = new System.Drawing.Size(212, 20);
+            txtPath.Size = new Drawing.Size(212, 20);
             txtPath.TabIndex = 2;
             // 
             // panel2
@@ -1463,22 +1463,22 @@ namespace System.Windows.Forms
             panel2.Controls.Add(label12);
             panel2.Controls.Add(button1);
             panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            panel2.Location = new System.Drawing.Point(0, 0);
+            panel2.Location = new Drawing.Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(379, 20);
+            panel2.Size = new Drawing.Size(379, 20);
             panel2.TabIndex = 1;
             // 
             // numMIPPreview
             // 
             numMIPPreview.Dock = System.Windows.Forms.DockStyle.Left;
-            numMIPPreview.Location = new System.Drawing.Point(41, 0);
+            numMIPPreview.Location = new Drawing.Point(41, 0);
             numMIPPreview.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             numMIPPreview.Name = "numMIPPreview";
-            numMIPPreview.Size = new System.Drawing.Size(51, 20);
+            numMIPPreview.Size = new Drawing.Size(51, 20);
             numMIPPreview.TabIndex = 1;
             numMIPPreview.Value = new decimal(new int[] {
             1,
@@ -1486,14 +1486,14 @@ namespace System.Windows.Forms
             0,
             0});
             numMIPPreview.Visible = false;
-            numMIPPreview.ValueChanged += new System.EventHandler(numMIPPreview_ValueChanged);
+            numMIPPreview.ValueChanged += new EventHandler(numMIPPreview_ValueChanged);
             // 
             // label12
             // 
             label12.Dock = System.Windows.Forms.DockStyle.Left;
-            label12.Location = new System.Drawing.Point(0, 0);
+            label12.Location = new Drawing.Point(0, 0);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(41, 20);
+            label12.Size = new Drawing.Size(41, 20);
             label12.TabIndex = 0;
             label12.Text = "MIP:";
             label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1502,62 +1502,62 @@ namespace System.Windows.Forms
             // button1
             // 
             button1.Dock = System.Windows.Forms.DockStyle.Right;
-            button1.Location = new System.Drawing.Point(304, 0);
+            button1.Location = new Drawing.Point(304, 0);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(75, 20);
+            button1.Size = new Drawing.Size(75, 20);
             button1.TabIndex = 3;
             button1.Text = "Browse...";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += new System.EventHandler(button1_Click);
+            button1.Click += new EventHandler(button1_Click);
             // 
             // pictureBox1
             // 
             pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            pictureBox1.Location = new System.Drawing.Point(0, 20);
-            pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            pictureBox1.Location = new Drawing.Point(0, 20);
+            pictureBox1.Margin = new Padding(0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Picture = null;
-            pictureBox1.Size = new System.Drawing.Size(379, 481);
+            pictureBox1.Size = new Drawing.Size(379, 481);
             pictureBox1.TabIndex = 0;
             // 
             // chkSwapAlphaRGB
             // 
             chkSwapAlphaRGB.AutoSize = true;
-            chkSwapAlphaRGB.Location = new System.Drawing.Point(9, 133);
+            chkSwapAlphaRGB.Location = new Drawing.Point(9, 133);
             chkSwapAlphaRGB.Name = "chkSwapAlphaRGB";
-            chkSwapAlphaRGB.Size = new System.Drawing.Size(131, 17);
+            chkSwapAlphaRGB.Size = new Drawing.Size(131, 17);
             chkSwapAlphaRGB.TabIndex = 10;
             chkSwapAlphaRGB.Text = "Swap Alpha with RGB";
             chkSwapAlphaRGB.UseVisualStyleBackColor = true;
-            chkSwapAlphaRGB.CheckedChanged += new System.EventHandler(chkSwapAlphaRGB_CheckedChanged);
+            chkSwapAlphaRGB.CheckedChanged += new EventHandler(chkSwapAlphaRGB_CheckedChanged);
             // 
             // TextureConverterDialog
             // 
             AcceptButton = btnOkay;
-            ClientSize = new System.Drawing.Size(564, 501);
+            ClientSize = new Drawing.Size(564, 501);
             Controls.Add(pictureBox1);
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            MinimumSize = new System.Drawing.Size(0, 470);
+            MinimumSize = new Drawing.Size(0, 470);
             Name = "TextureConverterDialog";
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Advanced Texture Converter";
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(numLOD)).EndInit();
+            ((ISupportInitialize)(numLOD)).EndInit();
             groupBox2.ResumeLayout(false);
             grpPalette.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(numPaletteCount)).EndInit();
+            ((ISupportInitialize)(numPaletteCount)).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(numH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(numW)).EndInit();
+            ((ISupportInitialize)(numH)).EndInit();
+            ((ISupportInitialize)(numW)).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(numMIPPreview)).EndInit();
+            ((ISupportInitialize)(numMIPPreview)).EndInit();
             ResumeLayout(false);
 
         }

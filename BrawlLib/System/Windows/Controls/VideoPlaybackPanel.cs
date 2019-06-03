@@ -17,66 +17,66 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            trackBar1 = new System.Windows.Forms.CustomTrackBar();
-            btnPlay = new System.Windows.Forms.Button();
-            btnRewind = new System.Windows.Forms.Button();
-            chkLoop = new System.Windows.Forms.CheckBox();
-            lblProgress = new System.Windows.Forms.Label();
-            previewPanel1 = new System.Windows.Forms.PreviewPanel();
-            ((System.ComponentModel.ISupportInitialize)(trackBar1)).BeginInit();
+            trackBar1 = new CustomTrackBar();
+            btnPlay = new Button();
+            btnRewind = new Button();
+            chkLoop = new CheckBox();
+            lblProgress = new Label();
+            previewPanel1 = new PreviewPanel();
+            ((ISupportInitialize)(trackBar1)).BeginInit();
             SuspendLayout();
             // 
             // trackBar1
             // 
             trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            trackBar1.Location = new System.Drawing.Point(0, 212);
+            trackBar1.Location = new Drawing.Point(0, 212);
             trackBar1.Name = "trackBar1";
-            trackBar1.Size = new System.Drawing.Size(378, 45);
+            trackBar1.Size = new Drawing.Size(378, 45);
             trackBar1.TabIndex = 0;
             trackBar1.TickFrequency = 2;
-            trackBar1.UserSeek += new System.EventHandler(trackBar1_UserSeek);
-            trackBar1.ValueChanged += new System.EventHandler(trackBar1_ValueChanged);
+            trackBar1.UserSeek += new EventHandler(trackBar1_UserSeek);
+            trackBar1.ValueChanged += new EventHandler(trackBar1_ValueChanged);
             // 
             // btnPlay
             // 
             btnPlay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnPlay.Location = new System.Drawing.Point(152, 263);
+            btnPlay.Location = new Drawing.Point(152, 263);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new System.Drawing.Size(75, 20);
+            btnPlay.Size = new Drawing.Size(75, 20);
             btnPlay.TabIndex = 1;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += new System.EventHandler(btnPlay_Click);
+            btnPlay.Click += new EventHandler(btnPlay_Click);
             // 
             // btnRewind
             // 
             btnRewind.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnRewind.Location = new System.Drawing.Point(122, 263);
+            btnRewind.Location = new Drawing.Point(122, 263);
             btnRewind.Name = "btnRewind";
-            btnRewind.Size = new System.Drawing.Size(24, 20);
+            btnRewind.Size = new Drawing.Size(24, 20);
             btnRewind.TabIndex = 2;
             btnRewind.Text = "|<";
             btnRewind.UseVisualStyleBackColor = true;
-            btnRewind.Click += new System.EventHandler(btnRewind_Click);
+            btnRewind.Click += new EventHandler(btnRewind_Click);
             // 
             // chkLoop
             // 
             chkLoop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            chkLoop.Location = new System.Drawing.Point(54, 263);
+            chkLoop.Location = new Drawing.Point(54, 263);
             chkLoop.Name = "chkLoop";
-            chkLoop.Size = new System.Drawing.Size(62, 20);
+            chkLoop.Size = new Drawing.Size(62, 20);
             chkLoop.TabIndex = 3;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += new System.EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
             // 
             // lblProgress
             // 
             lblProgress.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            lblProgress.Location = new System.Drawing.Point(-79, 239);
+            lblProgress.Location = new Drawing.Point(-79, 239);
             lblProgress.Name = "lblProgress";
-            lblProgress.Size = new System.Drawing.Size(536, 23);
+            lblProgress.Size = new Drawing.Size(536, 23);
             lblProgress.TabIndex = 4;
             lblProgress.Text = "0/0";
             lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,10 +88,10 @@ namespace System.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Right);
             previewPanel1.CurrentIndex = 0;
             previewPanel1.DisposeImage = true;
-            previewPanel1.Location = new System.Drawing.Point(3, 3);
+            previewPanel1.Location = new Drawing.Point(3, 3);
             previewPanel1.Name = "previewPanel1";
             previewPanel1.RenderingTarget = null;
-            previewPanel1.Size = new System.Drawing.Size(372, 203);
+            previewPanel1.Size = new Drawing.Size(372, 203);
             previewPanel1.TabIndex = 5;
             // 
             // VideoPlaybackPanel
@@ -103,8 +103,8 @@ namespace System.Windows.Forms
             Controls.Add(btnPlay);
             Controls.Add(trackBar1);
             Name = "VideoPlaybackPanel";
-            Size = new System.Drawing.Size(378, 289);
-            ((System.ComponentModel.ISupportInitialize)(trackBar1)).EndInit();
+            Size = new Drawing.Size(378, 289);
+            ((ISupportInitialize)(trackBar1)).EndInit();
             ResumeLayout(false);
             PerformLayout();
 

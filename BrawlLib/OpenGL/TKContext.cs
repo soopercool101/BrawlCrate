@@ -340,7 +340,7 @@ namespace BrawlLib.OpenGL
             GL.PopMatrix();
         }
 
-        public GLDisplayList GetLine() { return FindOrCreate<GLDisplayList>("Line", CreateLine); }
+        public GLDisplayList GetLine() { return FindOrCreate("Line", CreateLine); }
         private static GLDisplayList CreateLine()
         {
             GLDisplayList list = new GLDisplayList();
@@ -355,7 +355,7 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetRingList() { return FindOrCreate<GLDisplayList>("Ring", CreateRing); }
+        public static GLDisplayList GetRingList() { return FindOrCreate("Ring", CreateRing); }
         private static GLDisplayList CreateRing()
         {
             GLDisplayList list = new GLDisplayList();
@@ -375,7 +375,7 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetSquareList() { return FindOrCreate<GLDisplayList>("Square", CreateSquare); }
+        public static GLDisplayList GetSquareList() { return FindOrCreate("Square", CreateSquare); }
         private static GLDisplayList CreateSquare()
         {
             GLDisplayList list = new GLDisplayList();
@@ -395,7 +395,7 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetAxisList() { return FindOrCreate<GLDisplayList>("Axes", CreateAxes); }
+        public static GLDisplayList GetAxisList() { return FindOrCreate("Axes", CreateAxes); }
         private static GLDisplayList CreateAxes()
         {
             GLDisplayList list = new GLDisplayList();
@@ -435,7 +435,7 @@ namespace BrawlLib.OpenGL
             list.End();
             return list;
         }
-        public static GLDisplayList GetCubeList() { return FindOrCreate<GLDisplayList>("Cube", CreateCube); }
+        public static GLDisplayList GetCubeList() { return FindOrCreate("Cube", CreateCube); }
         private static GLDisplayList CreateCube()
         {
             GLDisplayList list = new GLDisplayList();
@@ -477,7 +477,7 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetCircleList() { return FindOrCreate<GLDisplayList>("Circle", CreateCircle); }
+        public static GLDisplayList GetCircleList() { return FindOrCreate("Circle", CreateCircle); }
         private static GLDisplayList CreateCircle()
         {
             GLDisplayList list = new GLDisplayList();
@@ -506,7 +506,7 @@ namespace BrawlLib.OpenGL
             GetSphereList().Call();
             GL.PopMatrix();
         }
-        public static GLDisplayList GetSphereList() { return FindOrCreate<GLDisplayList>("Sphere", CreateSphere); }
+        public static GLDisplayList GetSphereList() { return FindOrCreate("Sphere", CreateSphere); }
         public static GLDisplayList CreateSphere()
         {
             GLDisplayList dl = new GLDisplayList();

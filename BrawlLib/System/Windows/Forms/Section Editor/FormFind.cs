@@ -6,16 +6,16 @@ namespace System.Windows.Forms
     /// <summary>
     /// Summary description for FormFind.
     /// </summary>
-    public class FormFind : System.Windows.Forms.Form
+    public class FormFind : Form
     {
-        private Be.Windows.Forms.HexBox hexFind;
-        private System.Windows.Forms.TextBox txtFind;
-        private System.Windows.Forms.RadioButton rbString;
-        private System.Windows.Forms.RadioButton rbHex;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private HexBox hexFind;
+        private TextBox txtFind;
+        private RadioButton rbString;
+        private RadioButton rbHex;
+        private Label label1;
+        private Button btnOK;
+        private Button btnCancel;
+        private GroupBox groupBox1;
         private Label lblPercent;
         private Label lblFinding;
         private CheckBox chkMatchCase;
@@ -61,22 +61,22 @@ namespace System.Windows.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFind));
-            txtFind = new System.Windows.Forms.TextBox();
-            rbString = new System.Windows.Forms.RadioButton();
-            rbHex = new System.Windows.Forms.RadioButton();
-            label1 = new System.Windows.Forms.Label();
-            btnOK = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            lblPercent = new System.Windows.Forms.Label();
-            lblFinding = new System.Windows.Forms.Label();
-            chkMatchCase = new System.Windows.Forms.CheckBox();
-            timerPercent = new System.Windows.Forms.Timer(components);
-            timer = new System.Windows.Forms.Timer(components);
-            hexFind = new Be.Windows.Forms.HexBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            components = new Container();
+            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormFind));
+            txtFind = new TextBox();
+            rbString = new RadioButton();
+            rbHex = new RadioButton();
+            label1 = new Label();
+            btnOK = new Button();
+            btnCancel = new Button();
+            groupBox1 = new GroupBox();
+            lblPercent = new Label();
+            lblFinding = new Label();
+            chkMatchCase = new CheckBox();
+            timerPercent = new Timer(components);
+            timer = new Timer(components);
+            hexFind = new HexBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -84,7 +84,7 @@ namespace System.Windows.Forms
             // 
             resources.ApplyResources(txtFind, "txtFind");
             txtFind.Name = "txtFind";
-            txtFind.TextChanged += new System.EventHandler(txtString_TextChanged);
+            txtFind.TextChanged += new EventHandler(txtString_TextChanged);
             // 
             // rbString
             // 
@@ -108,14 +108,14 @@ namespace System.Windows.Forms
             // 
             resources.ApplyResources(btnOK, "btnOK");
             btnOK.Name = "btnOK";
-            btnOK.Click += new System.EventHandler(btnOK_Click);
+            btnOK.Click += new EventHandler(btnOK_Click);
             // 
             // btnCancel
             // 
             resources.ApplyResources(btnCancel, "btnCancel");
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             btnCancel.Name = "btnCancel";
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // groupBox1
             // 
@@ -142,12 +142,12 @@ namespace System.Windows.Forms
             // 
             // timerPercent
             // 
-            timerPercent.Tick += new System.EventHandler(timerPercent_Tick);
+            timerPercent.Tick += new EventHandler(timerPercent_Tick);
             // 
             // timer
             // 
             timer.Interval = 50;
-            timer.Tick += new System.EventHandler(timer_Tick);
+            timer.Tick += new EventHandler(timer_Tick);
             // 
             // hexFind
             // 
@@ -195,7 +195,7 @@ namespace System.Windows.Forms
             Name = "FormFind";
             ShowIcon = false;
             ShowInTaskbar = false;
-            Activated += new System.EventHandler(FormFind_Activated);
+            Activated += new EventHandler(FormFind_Activated);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -236,7 +236,7 @@ namespace System.Windows.Forms
             hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
         }
 
-        private void rb_CheckedChanged(object sender, System.EventArgs e)
+        private void rb_CheckedChanged(object sender, EventArgs e)
         {
             txtFind.Enabled = rbString.Checked;
             hexFind.Enabled = !txtFind.Enabled;
@@ -261,7 +261,7 @@ namespace System.Windows.Forms
             hexFind.Focus();
         }
 
-        private void FormFind_Activated(object sender, System.EventArgs e)
+        private void FormFind_Activated(object sender, EventArgs e)
         {
             if (rbString.Checked)
             {
@@ -273,7 +273,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void btnOK_Click(object sender, System.EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
             _findOptions.MatchCase = chkMatchCase.Checked;
 
@@ -315,7 +315,7 @@ namespace System.Windows.Forms
                 = hexFind.Enabled = btnOK.Enabled = false;
         }
 
-        private void btnCancel_Click(object sender, System.EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             if (_finding)
             {
@@ -364,8 +364,8 @@ namespace System.Windows.Forms
             long length = HexBox.ByteProvider.Length;
             double percent = pos / (double)length * 100;
 
-            System.Globalization.NumberFormatInfo nfi =
-                new System.Globalization.CultureInfo("en-US").NumberFormat;
+            Globalization.NumberFormatInfo nfi =
+                new Globalization.CultureInfo("en-US").NumberFormat;
 
             string text = percent.ToString("0.00", nfi) + " %";
             lblPercent.Text = text;

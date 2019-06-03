@@ -17,7 +17,7 @@ namespace System.Windows.Forms
         private ColumnHeader clmIndex;
         private ColumnHeader clmName;
         private ContextMenuStrip contextMenuStrip1;
-        private System.ComponentModel.IContainer components;
+        private IContainer components;
         private ToolStripMenuItem mnuExport;
         private ToolStripMenuItem mnuReplace;
         private ToolStripMenuItem mnuPath;
@@ -40,30 +40,30 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            clmIndex = new System.Windows.Forms.ColumnHeader();
-            clmName = new System.Windows.Forms.ColumnHeader();
-            lstSets = new System.Windows.Forms.ListView();
-            clmType = new System.Windows.Forms.ColumnHeader();
-            clmDataOffset = new System.Windows.Forms.ColumnHeader();
-            clmAudioOffset = new System.Windows.Forms.ColumnHeader();
-            clmEntryOffset = new System.Windows.Forms.ColumnHeader();
-            contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
-            mnuPath = new System.Windows.Forms.ToolStripMenuItem();
-            mnuExport = new System.Windows.Forms.ToolStripMenuItem();
-            mnuReplace = new System.Windows.Forms.ToolStripMenuItem();
-            deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            menuStrip1 = new System.Windows.Forms.MenuStrip();
-            newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            rWSDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            rSEQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            rBNKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            rSTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            externalReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            audioPlaybackPanel1 = new System.Windows.Forms.AudioPlaybackPanel();
-            editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            makeAllExternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            makeAllInternalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            components = new Container();
+            clmIndex = new ColumnHeader();
+            clmName = new ColumnHeader();
+            lstSets = new ListView();
+            clmType = new ColumnHeader();
+            clmDataOffset = new ColumnHeader();
+            clmAudioOffset = new ColumnHeader();
+            clmEntryOffset = new ColumnHeader();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            mnuPath = new ToolStripMenuItem();
+            mnuExport = new ToolStripMenuItem();
+            mnuReplace = new ToolStripMenuItem();
+            deleteToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
+            newFileToolStripMenuItem = new ToolStripMenuItem();
+            rWSDToolStripMenuItem = new ToolStripMenuItem();
+            rSEQToolStripMenuItem = new ToolStripMenuItem();
+            rBNKToolStripMenuItem = new ToolStripMenuItem();
+            rSTMToolStripMenuItem = new ToolStripMenuItem();
+            externalReferenceToolStripMenuItem = new ToolStripMenuItem();
+            audioPlaybackPanel1 = new AudioPlaybackPanel();
+            editToolStripMenuItem = new ToolStripMenuItem();
+            makeAllExternalToolStripMenuItem = new ToolStripMenuItem();
+            makeAllInternalToolStripMenuItem = new ToolStripMenuItem();
             contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             // 
             lstSets.AutoArrange = false;
             lstSets.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lstSets.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            lstSets.Columns.AddRange(new ColumnHeader[] {
             clmIndex,
             clmType,
             clmName,
@@ -95,17 +95,17 @@ namespace System.Windows.Forms
             lstSets.GridLines = true;
             lstSets.HideSelection = false;
             lstSets.LabelWrap = false;
-            lstSets.Location = new System.Drawing.Point(0, 28);
+            lstSets.Location = new Drawing.Point(0, 28);
             lstSets.MultiSelect = false;
             lstSets.Name = "lstSets";
-            lstSets.Size = new System.Drawing.Size(389, 105);
+            lstSets.Size = new Drawing.Size(389, 105);
             lstSets.TabIndex = 0;
             lstSets.UseCompatibleStateImageBehavior = false;
             lstSets.View = System.Windows.Forms.View.Details;
-            lstSets.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(lstSets_ColumnClick);
-            lstSets.SelectedIndexChanged += new System.EventHandler(lstSets_SelectedIndexChanged);
-            lstSets.DoubleClick += new System.EventHandler(lstSets_DoubleClick);
-            lstSets.KeyDown += new System.Windows.Forms.KeyEventHandler(lstSets_KeyDown);
+            lstSets.ColumnClick += new ColumnClickEventHandler(lstSets_ColumnClick);
+            lstSets.SelectedIndexChanged += new EventHandler(lstSets_SelectedIndexChanged);
+            lstSets.DoubleClick += new EventHandler(lstSets_DoubleClick);
+            lstSets.KeyDown += new KeyEventHandler(lstSets_KeyDown);
             // 
             // clmType
             // 
@@ -128,109 +128,109 @@ namespace System.Windows.Forms
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            contextMenuStrip1.ImageScalingSize = new Drawing.Size(20, 20);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] {
             mnuPath,
             mnuExport,
             mnuReplace,
             deleteToolStripMenuItem});
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new System.Drawing.Size(138, 108);
-            contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(contextMenuStrip1_Opening);
+            contextMenuStrip1.Size = new Drawing.Size(138, 108);
+            contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
             // 
             // mnuPath
             // 
             mnuPath.Name = "mnuPath";
-            mnuPath.Size = new System.Drawing.Size(137, 26);
+            mnuPath.Size = new Drawing.Size(137, 26);
             mnuPath.Text = "Path...";
-            mnuPath.Click += new System.EventHandler(mnuPath_Click);
+            mnuPath.Click += new EventHandler(mnuPath_Click);
             // 
             // mnuExport
             // 
             mnuExport.Name = "mnuExport";
-            mnuExport.Size = new System.Drawing.Size(137, 26);
+            mnuExport.Size = new Drawing.Size(137, 26);
             mnuExport.Text = "Export";
-            mnuExport.Click += new System.EventHandler(mnuExport_Click);
+            mnuExport.Click += new EventHandler(mnuExport_Click);
             // 
             // mnuReplace
             // 
             mnuReplace.Name = "mnuReplace";
-            mnuReplace.Size = new System.Drawing.Size(137, 26);
+            mnuReplace.Size = new Drawing.Size(137, 26);
             mnuReplace.Text = "Replace";
-            mnuReplace.Click += new System.EventHandler(mnuReplace_Click);
+            mnuReplace.Click += new EventHandler(mnuReplace_Click);
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new System.Drawing.Size(137, 26);
+            deleteToolStripMenuItem.Size = new Drawing.Size(137, 26);
             deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += new System.EventHandler(deleteToolStripMenuItem_Click);
+            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
-            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            menuStrip1.ImageScalingSize = new Drawing.Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] {
             newFileToolStripMenuItem,
             editToolStripMenuItem});
-            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Location = new Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(389, 28);
+            menuStrip1.Size = new Drawing.Size(389, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // newFileToolStripMenuItem
             // 
-            newFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            newFileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             rWSDToolStripMenuItem,
             rSEQToolStripMenuItem,
             rBNKToolStripMenuItem,
             rSTMToolStripMenuItem,
             externalReferenceToolStripMenuItem});
             newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            newFileToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            newFileToolStripMenuItem.Size = new Drawing.Size(78, 24);
             newFileToolStripMenuItem.Text = "New File";
             // 
             // rWSDToolStripMenuItem
             // 
             rWSDToolStripMenuItem.Name = "rWSDToolStripMenuItem";
-            rWSDToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rWSDToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rWSDToolStripMenuItem.Text = "RWSD";
-            rWSDToolStripMenuItem.Click += new System.EventHandler(rWSDToolStripMenuItem_Click);
+            rWSDToolStripMenuItem.Click += new EventHandler(rWSDToolStripMenuItem_Click);
             // 
             // rSEQToolStripMenuItem
             // 
             rSEQToolStripMenuItem.Name = "rSEQToolStripMenuItem";
-            rSEQToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rSEQToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rSEQToolStripMenuItem.Text = "RSEQ";
-            rSEQToolStripMenuItem.Click += new System.EventHandler(rSEQToolStripMenuItem_Click);
+            rSEQToolStripMenuItem.Click += new EventHandler(rSEQToolStripMenuItem_Click);
             // 
             // rBNKToolStripMenuItem
             // 
             rBNKToolStripMenuItem.Name = "rBNKToolStripMenuItem";
-            rBNKToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rBNKToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rBNKToolStripMenuItem.Text = "RBNK";
-            rBNKToolStripMenuItem.Click += new System.EventHandler(rBNKToolStripMenuItem_Click);
+            rBNKToolStripMenuItem.Click += new EventHandler(rBNKToolStripMenuItem_Click);
             // 
             // rSTMToolStripMenuItem
             // 
             rSTMToolStripMenuItem.Name = "rSTMToolStripMenuItem";
-            rSTMToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            rSTMToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rSTMToolStripMenuItem.Text = "RSTM";
-            rSTMToolStripMenuItem.Click += new System.EventHandler(rSTMToolStripMenuItem_Click);
+            rSTMToolStripMenuItem.Click += new EventHandler(rSTMToolStripMenuItem_Click);
             // 
             // externalReferenceToolStripMenuItem
             // 
             externalReferenceToolStripMenuItem.Name = "externalReferenceToolStripMenuItem";
-            externalReferenceToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            externalReferenceToolStripMenuItem.Size = new Drawing.Size(207, 26);
             externalReferenceToolStripMenuItem.Text = "External Reference";
-            externalReferenceToolStripMenuItem.Click += new System.EventHandler(externalReferenceToolStripMenuItem_Click);
+            externalReferenceToolStripMenuItem.Click += new EventHandler(externalReferenceToolStripMenuItem_Click);
             // 
             // audioPlaybackPanel1
             // 
             audioPlaybackPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            audioPlaybackPanel1.Location = new System.Drawing.Point(0, 133);
+            audioPlaybackPanel1.Location = new Drawing.Point(0, 133);
             audioPlaybackPanel1.Name = "audioPlaybackPanel1";
-            audioPlaybackPanel1.Size = new System.Drawing.Size(389, 120);
+            audioPlaybackPanel1.Size = new Drawing.Size(389, 120);
             audioPlaybackPanel1.TabIndex = 2;
             audioPlaybackPanel1.TargetStreams = null;
             audioPlaybackPanel1.Visible = false;
@@ -238,26 +238,26 @@ namespace System.Windows.Forms
             // 
             // editToolStripMenuItem
             // 
-            editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             makeAllExternalToolStripMenuItem,
             makeAllInternalToolStripMenuItem});
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            editToolStripMenuItem.Size = new Drawing.Size(47, 24);
             editToolStripMenuItem.Text = "Edit";
             // 
             // makeAllExternalToolStripMenuItem
             // 
             makeAllExternalToolStripMenuItem.Name = "makeAllExternalToolStripMenuItem";
-            makeAllExternalToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            makeAllExternalToolStripMenuItem.Size = new Drawing.Size(197, 26);
             makeAllExternalToolStripMenuItem.Text = "Make all external";
-            makeAllExternalToolStripMenuItem.Click += new System.EventHandler(makeAllExternalToolStripMenuItem_Click);
+            makeAllExternalToolStripMenuItem.Click += new EventHandler(makeAllExternalToolStripMenuItem_Click);
             // 
             // makeAllInternalToolStripMenuItem
             // 
             makeAllInternalToolStripMenuItem.Name = "makeAllInternalToolStripMenuItem";
-            makeAllInternalToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            makeAllInternalToolStripMenuItem.Size = new Drawing.Size(197, 26);
             makeAllInternalToolStripMenuItem.Text = "Make all internal";
-            makeAllInternalToolStripMenuItem.Click += new System.EventHandler(makeAllInternalToolStripMenuItem_Click);
+            makeAllInternalToolStripMenuItem.Click += new EventHandler(makeAllInternalToolStripMenuItem_Click);
             // 
             // SoundPackControl
             // 
@@ -265,8 +265,8 @@ namespace System.Windows.Forms
             Controls.Add(audioPlaybackPanel1);
             Controls.Add(menuStrip1);
             Name = "SoundPackControl";
-            Size = new System.Drawing.Size(389, 253);
-            DoubleClick += new System.EventHandler(lstSets_DoubleClick);
+            Size = new Drawing.Size(389, 253);
+            DoubleClick += new EventHandler(lstSets_DoubleClick);
             contextMenuStrip1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -344,7 +344,7 @@ namespace System.Windows.Forms
             Update(lstSets);
         }
 
-        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             if (_selectedItem == null)
             {

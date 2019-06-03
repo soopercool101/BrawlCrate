@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace BrawlLib.Imaging
 {
     [Serializable]
-    [EditorAttribute(typeof(PropertyGridColorEditor), typeof(UITypeEditor))]
+    [Editor(typeof(PropertyGridColorEditor), typeof(UITypeEditor))]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ARGBPixel : ISerializable
     {
@@ -220,7 +220,7 @@ namespace BrawlLib.Imaging
         }
     }
 
-    [EditorAttribute(typeof(PropertyGridColorEditor), typeof(UITypeEditor))]
+    [Editor(typeof(PropertyGridColorEditor), typeof(UITypeEditor))]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct RGBAPixel : IComparable//, ICustomTypeDescriptor
     {
@@ -475,7 +475,7 @@ namespace BrawlLib.Imaging
         public override int GetHashCode() { return base.GetHashCode(); }
     }
 
-    [EditorAttribute(typeof(PropertyGridColorEditor), typeof(UITypeEditor))]
+    [Editor(typeof(PropertyGridColorEditor), typeof(UITypeEditor))]
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GXColorS10
     {

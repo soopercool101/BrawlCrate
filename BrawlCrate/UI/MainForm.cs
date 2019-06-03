@@ -957,7 +957,7 @@ namespace BrawlCrate
 
     public class RecentFileHandler : Component
     {
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -968,7 +968,7 @@ namespace BrawlCrate
         }
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            components = new Container();
         }
         public class FileMenuItem : ToolStripMenuItem
         {

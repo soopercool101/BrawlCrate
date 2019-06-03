@@ -33,27 +33,27 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            lblR = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            numB = new System.Windows.Forms.NumericUpDown();
-            numG = new System.Windows.Forms.NumericUpDown();
-            numR = new System.Windows.Forms.NumericUpDown();
-            numH = new System.Windows.Forms.NumericUpDown();
-            numS = new System.Windows.Forms.NumericUpDown();
-            numV = new System.Windows.Forms.NumericUpDown();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            numA = new System.Windows.Forms.NumericUpDown();
-            lblA = new System.Windows.Forms.Label();
-            panel1 = new System.Windows.Forms.Panel();
-            pnlColorBox = new System.Windows.Forms.BufferedPanel();
-            pnlColorBar = new System.Windows.Forms.BufferedPanel();
-            panel2 = new System.Windows.Forms.Panel();
-            pnlAlpha = new System.Windows.Forms.BufferedPanel();
-            panel3 = new System.Windows.Forms.Panel();
-            txtColorCode = new System.Windows.Forms.TextBox();
+            lblR = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            numB = new NumericUpDown();
+            numG = new NumericUpDown();
+            numR = new NumericUpDown();
+            numH = new NumericUpDown();
+            numS = new NumericUpDown();
+            numV = new NumericUpDown();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            numA = new NumericUpDown();
+            lblA = new Label();
+            panel1 = new Panel();
+            pnlColorBox = new BufferedPanel();
+            pnlColorBar = new BufferedPanel();
+            panel2 = new Panel();
+            pnlAlpha = new BufferedPanel();
+            panel3 = new Panel();
+            txtColorCode = new TextBox();
             ((System.ComponentModel.ISupportInitialize)(numB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(numR)).BeginInit();
@@ -68,30 +68,30 @@ namespace System.Windows.Forms
             // 
             // lblR
             // 
-            lblR.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblR.Location = new System.Drawing.Point(3, 77);
+            lblR.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblR.Location = new Drawing.Point(3, 77);
             lblR.Name = "lblR";
-            lblR.Size = new System.Drawing.Size(19, 20);
+            lblR.Size = new Drawing.Size(19, 20);
             lblR.TabIndex = 2;
             lblR.Text = "R";
             lblR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(3, 115);
+            label1.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new Drawing.Point(3, 115);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(19, 20);
+            label1.Size = new Drawing.Size(19, 20);
             label1.TabIndex = 3;
             label1.Text = "B";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            label2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(3, 96);
+            label2.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new Drawing.Point(3, 96);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(19, 20);
+            label2.Size = new Drawing.Size(19, 20);
             label2.TabIndex = 4;
             label2.Text = "G";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -100,102 +100,102 @@ namespace System.Windows.Forms
             // 
             numB.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numB.Location = new System.Drawing.Point(23, 116);
+            numB.Location = new Drawing.Point(23, 116);
             numB.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             numB.Name = "numB";
-            numB.Size = new System.Drawing.Size(47, 20);
+            numB.Size = new Drawing.Size(47, 20);
             numB.TabIndex = 5;
             // 
             // numG
             // 
             numG.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numG.Location = new System.Drawing.Point(23, 97);
+            numG.Location = new Drawing.Point(23, 97);
             numG.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             numG.Name = "numG";
-            numG.Size = new System.Drawing.Size(47, 20);
+            numG.Size = new Drawing.Size(47, 20);
             numG.TabIndex = 6;
             // 
             // numR
             // 
             numR.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numR.Location = new System.Drawing.Point(23, 78);
+            numR.Location = new Drawing.Point(23, 78);
             numR.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             numR.Name = "numR";
-            numR.Size = new System.Drawing.Size(47, 20);
+            numR.Size = new Drawing.Size(47, 20);
             numR.TabIndex = 7;
             // 
             // numH
             // 
             numH.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numH.Location = new System.Drawing.Point(23, 6);
+            numH.Location = new Drawing.Point(23, 6);
             numH.Maximum = new decimal(new int[] {
             360,
             0,
             0,
             0});
             numH.Name = "numH";
-            numH.Size = new System.Drawing.Size(47, 20);
+            numH.Size = new Drawing.Size(47, 20);
             numH.TabIndex = 13;
             // 
             // numS
             // 
             numS.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numS.Location = new System.Drawing.Point(23, 25);
+            numS.Location = new Drawing.Point(23, 25);
             numS.Name = "numS";
-            numS.Size = new System.Drawing.Size(47, 20);
+            numS.Size = new Drawing.Size(47, 20);
             numS.TabIndex = 12;
             // 
             // numV
             // 
             numV.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numV.Location = new System.Drawing.Point(23, 44);
+            numV.Location = new Drawing.Point(23, 44);
             numV.Name = "numV";
-            numV.Size = new System.Drawing.Size(47, 20);
+            numV.Size = new Drawing.Size(47, 20);
             numV.TabIndex = 11;
             // 
             // label3
             // 
-            label3.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(3, 24);
+            label3.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Location = new Drawing.Point(3, 24);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(19, 20);
+            label3.Size = new Drawing.Size(19, 20);
             label3.TabIndex = 10;
             label3.Text = "S";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            label4.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label4.Location = new System.Drawing.Point(3, 43);
+            label4.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new Drawing.Point(3, 43);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(19, 20);
+            label4.Size = new Drawing.Size(19, 20);
             label4.TabIndex = 9;
             label4.Text = "V";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            label5.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(3, 5);
+            label5.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Location = new Drawing.Point(3, 5);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(19, 20);
+            label5.Size = new Drawing.Size(19, 20);
             label5.TabIndex = 8;
             label5.Text = "H";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -204,14 +204,14 @@ namespace System.Windows.Forms
             // 
             numA.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            numA.Location = new System.Drawing.Point(23, 135);
+            numA.Location = new Drawing.Point(23, 135);
             numA.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             numA.Name = "numA";
-            numA.Size = new System.Drawing.Size(47, 20);
+            numA.Size = new Drawing.Size(47, 20);
             numA.TabIndex = 15;
             numA.Value = new decimal(new int[] {
             255,
@@ -221,10 +221,10 @@ namespace System.Windows.Forms
             // 
             // lblA
             // 
-            lblA.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblA.Location = new System.Drawing.Point(3, 134);
+            lblA.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblA.Location = new Drawing.Point(3, 134);
             lblA.Name = "lblA";
-            lblA.Size = new System.Drawing.Size(19, 20);
+            lblA.Size = new Drawing.Size(19, 20);
             lblA.TabIndex = 14;
             lblA.Text = "A";
             lblA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -234,42 +234,42 @@ namespace System.Windows.Forms
             panel1.Controls.Add(pnlColorBox);
             panel1.Controls.Add(pnlColorBar);
             panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(217, 187);
+            panel1.Size = new Drawing.Size(217, 187);
             panel1.TabIndex = 16;
             // 
             // pnlColorBox
             // 
             pnlColorBox.BackColor = System.Drawing.Color.Transparent;
-            pnlColorBox.Location = new System.Drawing.Point(3, 3);
+            pnlColorBox.Location = new Drawing.Point(3, 3);
             pnlColorBox.Name = "pnlColorBox";
-            pnlColorBox.Size = new System.Drawing.Size(180, 180);
+            pnlColorBox.Size = new Drawing.Size(180, 180);
             pnlColorBox.TabIndex = 0;
-            pnlColorBox.Paint += new System.Windows.Forms.PaintEventHandler(pnlColorBox_Paint);
-            pnlColorBox.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlColorBox_MouseDown);
-            pnlColorBox.MouseMove += new System.Windows.Forms.MouseEventHandler(pnlColorBox_MouseMove);
-            pnlColorBox.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlColorBox_MouseUp);
+            pnlColorBox.Paint += new PaintEventHandler(pnlColorBox_Paint);
+            pnlColorBox.MouseDown += new MouseEventHandler(pnlColorBox_MouseDown);
+            pnlColorBox.MouseMove += new MouseEventHandler(pnlColorBox_MouseMove);
+            pnlColorBox.MouseUp += new MouseEventHandler(pnlColorBox_MouseUp);
             // 
             // pnlColorBar
             // 
             pnlColorBar.BackColor = System.Drawing.Color.Transparent;
-            pnlColorBar.Location = new System.Drawing.Point(189, 3);
+            pnlColorBar.Location = new Drawing.Point(189, 3);
             pnlColorBar.Name = "pnlColorBar";
-            pnlColorBar.Size = new System.Drawing.Size(25, 180);
+            pnlColorBar.Size = new Drawing.Size(25, 180);
             pnlColorBar.TabIndex = 1;
-            pnlColorBar.Paint += new System.Windows.Forms.PaintEventHandler(pnlColorBar_Paint);
-            pnlColorBar.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlColorBar_MouseDown);
-            pnlColorBar.MouseMove += new System.Windows.Forms.MouseEventHandler(pnlColorBar_MouseMove);
-            pnlColorBar.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlColorBar_MouseUp);
+            pnlColorBar.Paint += new PaintEventHandler(pnlColorBar_Paint);
+            pnlColorBar.MouseDown += new MouseEventHandler(pnlColorBar_MouseDown);
+            pnlColorBar.MouseMove += new MouseEventHandler(pnlColorBar_MouseMove);
+            pnlColorBar.MouseUp += new MouseEventHandler(pnlColorBar_MouseUp);
             // 
             // panel2
             // 
             panel2.Controls.Add(pnlAlpha);
             panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            panel2.Location = new System.Drawing.Point(217, 0);
+            panel2.Location = new Drawing.Point(217, 0);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(20, 187);
+            panel2.Size = new Drawing.Size(20, 187);
             panel2.TabIndex = 17;
             // 
             // pnlAlpha
@@ -277,14 +277,14 @@ namespace System.Windows.Forms
             pnlAlpha.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
             pnlAlpha.BackColor = System.Drawing.Color.Transparent;
-            pnlAlpha.Location = new System.Drawing.Point(3, 3);
+            pnlAlpha.Location = new Drawing.Point(3, 3);
             pnlAlpha.Name = "pnlAlpha";
-            pnlAlpha.Size = new System.Drawing.Size(14, 180);
+            pnlAlpha.Size = new Drawing.Size(14, 180);
             pnlAlpha.TabIndex = 2;
-            pnlAlpha.Paint += new System.Windows.Forms.PaintEventHandler(pnlAlpha_Paint);
-            pnlAlpha.MouseDown += new System.Windows.Forms.MouseEventHandler(pnlAlpha_MouseDown);
-            pnlAlpha.MouseMove += new System.Windows.Forms.MouseEventHandler(pnlAlpha_MouseMove);
-            pnlAlpha.MouseUp += new System.Windows.Forms.MouseEventHandler(pnlAlpha_MouseUp);
+            pnlAlpha.Paint += new PaintEventHandler(pnlAlpha_Paint);
+            pnlAlpha.MouseDown += new MouseEventHandler(pnlAlpha_MouseDown);
+            pnlAlpha.MouseMove += new MouseEventHandler(pnlAlpha_MouseMove);
+            pnlAlpha.MouseUp += new MouseEventHandler(pnlAlpha_MouseUp);
             // 
             // panel3
             // 
@@ -304,30 +304,30 @@ namespace System.Windows.Forms
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label4);
             panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            panel3.Location = new System.Drawing.Point(237, 0);
+            panel3.Location = new Drawing.Point(237, 0);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(77, 187);
+            panel3.Size = new Drawing.Size(77, 187);
             panel3.TabIndex = 18;
             // 
             // txtColorCode
             // 
-            txtColorCode.Location = new System.Drawing.Point(6, 161);
+            txtColorCode.Location = new Drawing.Point(6, 161);
             txtColorCode.Name = "txtColorCode";
-            txtColorCode.Size = new System.Drawing.Size(64, 20);
+            txtColorCode.Size = new Drawing.Size(64, 20);
             txtColorCode.TabIndex = 16;
             txtColorCode.Text = "000000FF";
             txtColorCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            txtColorCode.TextChanged += new System.EventHandler(txtColorCode_TextChanged);
-            txtColorCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txtColorCode_KeyPress);
+            txtColorCode.TextChanged += new EventHandler(txtColorCode_TextChanged);
+            txtColorCode.KeyPress += new KeyPressEventHandler(txtColorCode_KeyPress);
             // 
             // GoodColorControl
             // 
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            MinimumSize = new System.Drawing.Size(310, 187);
+            MinimumSize = new Drawing.Size(310, 187);
             Name = "GoodColorControl";
-            Size = new System.Drawing.Size(314, 187);
+            Size = new Drawing.Size(314, 187);
             ((System.ComponentModel.ISupportInitialize)(numB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(numR)).EndInit();

@@ -14,69 +14,69 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            txtPath = new System.Windows.Forms.TextBox();
-            btnOkay = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            btnBrowse = new System.Windows.Forms.Button();
+            txtPath = new TextBox();
+            btnOkay = new Button();
+            btnCancel = new Button();
+            label1 = new Label();
+            btnBrowse = new Button();
             SuspendLayout();
             // 
             // txtPath
             // 
             txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            txtPath.Location = new System.Drawing.Point(12, 34);
+            txtPath.Location = new Drawing.Point(12, 34);
             txtPath.Name = "txtPath";
-            txtPath.Size = new System.Drawing.Size(330, 20);
+            txtPath.Size = new Drawing.Size(330, 20);
             txtPath.TabIndex = 0;
-            txtPath.TextChanged += new System.EventHandler(txtPath_TextChanged);
+            txtPath.TextChanged += new EventHandler(txtPath_TextChanged);
             // 
             // btnOkay
             // 
             btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnOkay.Location = new System.Drawing.Point(117, 65);
+            btnOkay.Location = new Drawing.Point(117, 65);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
             btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            btnCancel.Location = new System.Drawing.Point(198, 65);
+            btnCancel.Location = new Drawing.Point(198, 65);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // label1
             // 
             label1.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Location = new Drawing.Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(367, 21);
+            label1.Size = new Drawing.Size(367, 21);
             label1.TabIndex = 3;
             label1.Text = "*Changing the path on an internal file will remove it from the RSAR*";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBrowse
             // 
-            btnBrowse.Location = new System.Drawing.Point(348, 34);
+            btnBrowse.Location = new Drawing.Point(348, 34);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new System.Drawing.Size(31, 20);
+            btnBrowse.Size = new Drawing.Size(31, 20);
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += new System.EventHandler(btnBrowse_Click);
+            btnBrowse.Click += new EventHandler(btnBrowse_Click);
             // 
             // SoundPathChanger
             // 
-            ClientSize = new System.Drawing.Size(391, 100);
+            ClientSize = new Drawing.Size(391, 100);
             Controls.Add(btnBrowse);
             Controls.Add(label1);
             Controls.Add(btnCancel);

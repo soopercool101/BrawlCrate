@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.Wii.Compression
 {
-    [global::System.Serializable]
+    [Serializable]
     public class InvalidCompressionException : Exception
     {
         public InvalidCompressionException() { }

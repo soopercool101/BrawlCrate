@@ -199,7 +199,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         case AnimCurveType.ParticleByte:
                         case AnimCurveType.ParticleFloat:
                             v9AnimCurveTargetByteFloat a;
-                            if (Enum.TryParse<v9AnimCurveTargetByteFloat>(value, true, out a))
+                            if (Enum.TryParse(value, true, out a))
                             {
                                 _hdr.kindType = (byte)a;
                             }
@@ -211,7 +211,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                         case AnimCurveType.ParticleRotate:
                             v9AnimCurveTargetRotateFloat b;
-                            if (Enum.TryParse<v9AnimCurveTargetRotateFloat>(value, true, out b))
+                            if (Enum.TryParse(value, true, out b))
                             {
                                 _hdr.kindType = (byte)b;
                             }
@@ -223,7 +223,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                         case AnimCurveType.ParticleTexture:
                             v9AnimCurveTargetPtclTex c;
-                            if (Enum.TryParse<v9AnimCurveTargetPtclTex>(value, true, out c))
+                            if (Enum.TryParse(value, true, out c))
                             {
                                 _hdr.kindType = (byte)c;
                             }
@@ -235,7 +235,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                         case AnimCurveType.Child:
                             v9AnimCurveTargetChild d;
-                            if (Enum.TryParse<v9AnimCurveTargetChild>(value, true, out d))
+                            if (Enum.TryParse(value, true, out d))
                             {
                                 _hdr.kindType = (byte)d;
                             }
@@ -247,7 +247,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                         case AnimCurveType.Field:
                             v9AnimCurveTargetField e;
-                            if (Enum.TryParse<v9AnimCurveTargetField>(value, true, out e))
+                            if (Enum.TryParse(value, true, out e))
                             {
                                 _hdr.kindType = (byte)e;
                             }
@@ -259,7 +259,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                         case AnimCurveType.PostField:
                             v9AnimCurveTargetPostField f;
-                            if (Enum.TryParse<v9AnimCurveTargetPostField>(value, true, out f))
+                            if (Enum.TryParse(value, true, out f))
                             {
                                 _hdr.kindType = (byte)f;
                             }
@@ -271,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                         case AnimCurveType.EmitterFloat:
                             v9AnimCurveTargetEmitterFloat g;
-                            if (Enum.TryParse<v9AnimCurveTargetEmitterFloat>(value, true, out g))
+                            if (Enum.TryParse(value, true, out g))
                             {
                                 _hdr.kindType = (byte)g;
                             }
@@ -323,7 +323,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private Random _random = null;
 
         [Category("Name Table")]
-        public string[] Names { get => _names.ToArray(); set { _names = value.ToList<string>(); SignalPropertyChange(); } }
+        public string[] Names { get => _names.ToArray(); set { _names = value.ToList(); SignalPropertyChange(); } }
         public List<string> _names = new List<string>();
 
         public override bool OnInitialize()

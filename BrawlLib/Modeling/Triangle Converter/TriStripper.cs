@@ -705,7 +705,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             //See if there are any other edges that are equal
             //(if so, it means that more than 2 triangles are sharing the same edge,
             //which is unlikely but not impossible)
-            for (int i = BinarySearch<TriEdge>(EdgeMap, Edge, EdgeComp);
+            for (int i = BinarySearch(EdgeMap, Edge, EdgeComp);
                 i < EdgeMap.Count && Edge == EdgeMap[i]; i++)
             {
                 Triangles.InsertArc(Edge.TriPos, EdgeMap[i].TriPos);

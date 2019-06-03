@@ -21,47 +21,47 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            btnCancel = new System.Windows.Forms.Button();
-            btnOkay = new System.Windows.Forms.Button();
-            editAllCHR0Editor1 = new System.Windows.Forms.EditAllCHR0Editor();
+            btnCancel = new Button();
+            btnOkay = new Button();
+            editAllCHR0Editor1 = new EditAllCHR0Editor();
             SuspendLayout();
             // 
             // btnCancel
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            btnCancel.Location = new System.Drawing.Point(325, 344);
+            btnCancel.Location = new Drawing.Point(325, 344);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnOkay.Location = new System.Drawing.Point(244, 344);
+            btnOkay.Location = new Drawing.Point(244, 344);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // editAllCHR0Editor1
             // 
             editAllCHR0Editor1.Dock = System.Windows.Forms.DockStyle.Top;
-            editAllCHR0Editor1.Location = new System.Drawing.Point(0, 0);
+            editAllCHR0Editor1.Location = new Drawing.Point(0, 0);
             editAllCHR0Editor1.Name = "editAllCHR0Editor1";
-            editAllCHR0Editor1.Size = new System.Drawing.Size(404, 338);
+            editAllCHR0Editor1.Size = new Drawing.Size(404, 338);
             editAllCHR0Editor1.TabIndex = 3;
             // 
             // EditAllDialog
             // 
             AcceptButton = btnOkay;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(404, 374);
+            ClientSize = new Drawing.Size(404, 374);
             Controls.Add(editAllCHR0Editor1);
             Controls.Add(btnCancel);
             Controls.Add(btnOkay);

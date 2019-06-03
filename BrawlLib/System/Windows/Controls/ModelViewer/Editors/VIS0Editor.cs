@@ -9,7 +9,7 @@ namespace System.Windows.Forms
         #region Designer
         private void InitializeComponent()
         {
-            listBox1 = new System.Windows.Forms.ListBox();
+            listBox1 = new ListBox();
             SuspendLayout();
             // 
             // listBox1
@@ -17,19 +17,19 @@ namespace System.Windows.Forms
             listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
-            listBox1.Location = new System.Drawing.Point(4, 4);
+            listBox1.Location = new Drawing.Point(4, 4);
             listBox1.Name = "listBox1";
-            listBox1.Size = new System.Drawing.Size(202, 47);
+            listBox1.Size = new Drawing.Size(202, 47);
             listBox1.TabIndex = 3;
-            listBox1.SelectedIndexChanged += new System.EventHandler(listBox1_SelectedIndexChanged);
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
             // 
             // VIS0Editor
             // 
             Controls.Add(listBox1);
-            MinimumSize = new System.Drawing.Size(210, 55);
+            MinimumSize = new Drawing.Size(210, 55);
             Name = "VIS0Editor";
-            Padding = new System.Windows.Forms.Padding(4);
-            Size = new System.Drawing.Size(210, 55);
+            Padding = new Padding(4);
+            Size = new Drawing.Size(210, 55);
             ResumeLayout(false);
 
         }

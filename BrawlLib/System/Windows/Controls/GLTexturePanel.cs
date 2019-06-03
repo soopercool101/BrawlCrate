@@ -70,7 +70,7 @@ namespace System.Windows.Forms
         }
         public static unsafe void RenderBGTexture(int width, int height, GLTexture texture, ref float[] points)
         {
-            GLTexture bgTex = TKContext.FindOrCreate<GLTexture>("TexBG", CreateBG);
+            GLTexture bgTex = TKContext.FindOrCreate("TexBG", CreateBG);
             bgTex.Bind();
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);

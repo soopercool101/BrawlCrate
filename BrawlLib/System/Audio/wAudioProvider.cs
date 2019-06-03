@@ -6,7 +6,7 @@ namespace System.Audio
 {
     internal unsafe class wAudioProvider : AudioProvider
     {
-        internal Win32.DirectSound.IDirectSound8 _ds8;
+        internal DS.IDirectSound8 _ds8;
 
         internal wAudioProvider(AudioDevice device)
         {

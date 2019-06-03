@@ -90,12 +90,12 @@ namespace BrawlLib.Modeling
 
         private void InitializeComponent()
         {
-            Status = new System.Windows.Forms.Label();
-            button1 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
-            panel1 = new System.Windows.Forms.Panel();
-            propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            panel2 = new System.Windows.Forms.Panel();
+            Status = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            panel1 = new Panel();
+            propertyGrid1 = new PropertyGrid();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -119,7 +119,7 @@ namespace BrawlLib.Modeling
             button1.TabIndex = 9;
             button1.Text = "Okay";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += new System.EventHandler(button1_Click);
+            button1.Click += new EventHandler(button1_Click);
             // 
             // button2
             // 
@@ -131,7 +131,7 @@ namespace BrawlLib.Modeling
             button2.TabIndex = 10;
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += new System.EventHandler(button2_Click);
+            button2.Click += new EventHandler(button2_Click);
             // 
             // panel1
             // 

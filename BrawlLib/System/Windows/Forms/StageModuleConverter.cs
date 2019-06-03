@@ -126,33 +126,33 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            btnOkay = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            txtPath = new System.Windows.Forms.TextBox();
-            btnBrowse = new System.Windows.Forms.Button();
-            lblOffsetValue = new System.Windows.Forms.Label();
-            lblOffsetDesc = new System.Windows.Forms.Label();
-            lblNameValue = new System.Windows.Forms.Label();
-            lblSizeValue = new System.Windows.Forms.Label();
-            lblSizeDesc = new System.Windows.Forms.Label();
-            pnlInfo = new System.Windows.Forms.Panel();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            lblIDValue = new System.Windows.Forms.Label();
-            lblIDDesc = new System.Windows.Forms.Label();
-            panel4 = new System.Windows.Forms.Panel();
-            pnlEdit = new System.Windows.Forms.Panel();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            itemSelection = new System.Windows.Forms.ComboBox();
-            lblItemDesc = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            lblCurrentStage = new System.Windows.Forms.Label();
-            lblNewStageDesc = new System.Windows.Forms.Label();
-            stageSelection = new System.Windows.Forms.ComboBox();
-            lblCurrentStageDesc = new System.Windows.Forms.Label();
-            panel3 = new System.Windows.Forms.Panel();
-            dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            tmrUpdate = new System.Windows.Forms.Timer(components);
+            components = new Container();
+            btnOkay = new Button();
+            btnCancel = new Button();
+            txtPath = new TextBox();
+            btnBrowse = new Button();
+            lblOffsetValue = new Label();
+            lblOffsetDesc = new Label();
+            lblNameValue = new Label();
+            lblSizeValue = new Label();
+            lblSizeDesc = new Label();
+            pnlInfo = new Panel();
+            groupBox1 = new GroupBox();
+            lblIDValue = new Label();
+            lblIDDesc = new Label();
+            panel4 = new Panel();
+            pnlEdit = new Panel();
+            groupBox2 = new GroupBox();
+            itemSelection = new ComboBox();
+            lblItemDesc = new Label();
+            label3 = new Label();
+            lblCurrentStage = new Label();
+            lblNewStageDesc = new Label();
+            stageSelection = new ComboBox();
+            lblCurrentStageDesc = new Label();
+            panel3 = new Panel();
+            dlgOpen = new OpenFileDialog();
+            tmrUpdate = new Timer(components);
             pnlInfo.SuspendLayout();
             groupBox1.SuspendLayout();
             panel4.SuspendLayout();
@@ -165,87 +165,87 @@ namespace System.Windows.Forms
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             btnOkay.Enabled = false;
-            btnOkay.Location = new System.Drawing.Point(3, 3);
+            btnOkay.Location = new Drawing.Point(3, 3);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.Location = new System.Drawing.Point(80, 3);
+            btnCancel.Location = new Drawing.Point(80, 3);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // txtPath
             // 
             txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right);
-            txtPath.Location = new System.Drawing.Point(0, 0);
+            txtPath.Location = new Drawing.Point(0, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
-            txtPath.Size = new System.Drawing.Size(222, 20);
+            txtPath.Size = new Drawing.Size(222, 20);
             txtPath.TabIndex = 2;
             // 
             // btnBrowse
             // 
             btnBrowse.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnBrowse.Location = new System.Drawing.Point(227, 0);
+            btnBrowse.Location = new Drawing.Point(227, 0);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new System.Drawing.Size(25, 20);
+            btnBrowse.Size = new Drawing.Size(25, 20);
             btnBrowse.TabIndex = 3;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += new System.EventHandler(btnBrowse_Click);
+            btnBrowse.Click += new EventHandler(btnBrowse_Click);
             // 
             // lblOffsetValue
             // 
-            lblOffsetValue.Location = new System.Drawing.Point(56, 56);
+            lblOffsetValue.Location = new Drawing.Point(56, 56);
             lblOffsetValue.Name = "lblOffsetValue";
-            lblOffsetValue.Size = new System.Drawing.Size(96, 20);
+            lblOffsetValue.Size = new Drawing.Size(96, 20);
             lblOffsetValue.TabIndex = 5;
             lblOffsetValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblOffsetDesc
             // 
-            lblOffsetDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblOffsetDesc.Location = new System.Drawing.Point(6, 56);
+            lblOffsetDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblOffsetDesc.Location = new Drawing.Point(6, 56);
             lblOffsetDesc.Name = "lblOffsetDesc";
-            lblOffsetDesc.Size = new System.Drawing.Size(48, 20);
+            lblOffsetDesc.Size = new Drawing.Size(48, 20);
             lblOffsetDesc.TabIndex = 4;
             lblOffsetDesc.Text = "Offset:";
             lblOffsetDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblNameValue
             // 
-            lblNameValue.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblNameValue.Location = new System.Drawing.Point(7, 16);
+            lblNameValue.Font = new Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblNameValue.Location = new Drawing.Point(7, 16);
             lblNameValue.Name = "lblNameValue";
-            lblNameValue.Size = new System.Drawing.Size(145, 20);
+            lblNameValue.Size = new Drawing.Size(145, 20);
             lblNameValue.TabIndex = 3;
             lblNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSizeValue
             // 
-            lblSizeValue.Location = new System.Drawing.Point(56, 36);
+            lblSizeValue.Location = new Drawing.Point(56, 36);
             lblSizeValue.Name = "lblSizeValue";
-            lblSizeValue.Size = new System.Drawing.Size(96, 20);
+            lblSizeValue.Size = new Drawing.Size(96, 20);
             lblSizeValue.TabIndex = 1;
             lblSizeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSizeDesc
             // 
-            lblSizeDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblSizeDesc.Location = new System.Drawing.Point(6, 36);
+            lblSizeDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblSizeDesc.Location = new Drawing.Point(6, 36);
             lblSizeDesc.Name = "lblSizeDesc";
-            lblSizeDesc.Size = new System.Drawing.Size(48, 20);
+            lblSizeDesc.Size = new Drawing.Size(48, 20);
             lblSizeDesc.TabIndex = 0;
             lblSizeDesc.Text = "Size:";
             lblSizeDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -255,9 +255,9 @@ namespace System.Windows.Forms
             pnlInfo.Controls.Add(groupBox1);
             pnlInfo.Controls.Add(panel4);
             pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            pnlInfo.Location = new System.Drawing.Point(256, 0);
+            pnlInfo.Location = new Drawing.Point(256, 0);
             pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new System.Drawing.Size(158, 132);
+            pnlInfo.Size = new Drawing.Size(158, 132);
             pnlInfo.TabIndex = 9;
             // 
             // groupBox1
@@ -270,27 +270,27 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(lblSizeValue);
             groupBox1.Controls.Add(lblSizeDesc);
             groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(158, 103);
+            groupBox1.Size = new Drawing.Size(158, 103);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "File Info";
             // 
             // lblIDValue
             // 
-            lblIDValue.Location = new System.Drawing.Point(56, 76);
+            lblIDValue.Location = new Drawing.Point(56, 76);
             lblIDValue.Name = "lblIDValue";
-            lblIDValue.Size = new System.Drawing.Size(96, 20);
+            lblIDValue.Size = new Drawing.Size(96, 20);
             lblIDValue.TabIndex = 7;
             lblIDValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblIDDesc
             // 
-            lblIDDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblIDDesc.Location = new System.Drawing.Point(6, 76);
+            lblIDDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblIDDesc.Location = new Drawing.Point(6, 76);
             lblIDDesc.Name = "lblIDDesc";
-            lblIDDesc.Size = new System.Drawing.Size(48, 20);
+            lblIDDesc.Size = new Drawing.Size(48, 20);
             lblIDDesc.TabIndex = 6;
             lblIDDesc.Text = "ID:";
             lblIDDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -300,9 +300,9 @@ namespace System.Windows.Forms
             panel4.Controls.Add(btnOkay);
             panel4.Controls.Add(btnCancel);
             panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panel4.Location = new System.Drawing.Point(0, 103);
+            panel4.Location = new Drawing.Point(0, 103);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(158, 29);
+            panel4.Size = new Drawing.Size(158, 29);
             panel4.TabIndex = 6;
             // 
             // pnlEdit
@@ -310,9 +310,9 @@ namespace System.Windows.Forms
             pnlEdit.Controls.Add(groupBox2);
             pnlEdit.Controls.Add(panel3);
             pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnlEdit.Location = new System.Drawing.Point(0, 0);
+            pnlEdit.Location = new Drawing.Point(0, 0);
             pnlEdit.Name = "pnlEdit";
-            pnlEdit.Size = new System.Drawing.Size(256, 132);
+            pnlEdit.Size = new Drawing.Size(256, 132);
             pnlEdit.TabIndex = 10;
             // 
             // groupBox2
@@ -325,9 +325,9 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(stageSelection);
             groupBox2.Controls.Add(lblCurrentStageDesc);
             groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox2.Location = new System.Drawing.Point(0, 20);
+            groupBox2.Location = new Drawing.Point(0, 20);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(256, 112);
+            groupBox2.Size = new Drawing.Size(256, 112);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Options";
@@ -408,17 +408,17 @@ namespace System.Windows.Forms
             "Unira",
             "Bunny Hood",
             "Warpstar"});
-            itemSelection.Location = new System.Drawing.Point(84, 62);
+            itemSelection.Location = new Drawing.Point(84, 62);
             itemSelection.Name = "itemSelection";
-            itemSelection.Size = new System.Drawing.Size(166, 21);
+            itemSelection.Size = new Drawing.Size(166, 21);
             itemSelection.TabIndex = 6;
             // 
             // lblItemDesc
             // 
-            lblItemDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblItemDesc.Location = new System.Drawing.Point(6, 62);
+            lblItemDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblItemDesc.Location = new Drawing.Point(6, 62);
             lblItemDesc.Name = "lblItemDesc";
-            lblItemDesc.Size = new System.Drawing.Size(72, 21);
+            lblItemDesc.Size = new Drawing.Size(72, 21);
             lblItemDesc.TabIndex = 5;
             lblItemDesc.Text = "Item:";
             lblItemDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -427,26 +427,26 @@ namespace System.Windows.Forms
             // 
             label3.AutoSize = true;
             label3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            label3.Location = new System.Drawing.Point(4, 93);
+            label3.Location = new Drawing.Point(4, 93);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(209, 13);
+            label3.Size = new Drawing.Size(209, 13);
             label3.TabIndex = 4;
             label3.Text = "Mouse over the labels for more information.";
             // 
             // lblCurrentStage
             // 
-            lblCurrentStage.Location = new System.Drawing.Point(84, 14);
+            lblCurrentStage.Location = new Drawing.Point(84, 14);
             lblCurrentStage.Name = "lblCurrentStage";
-            lblCurrentStage.Size = new System.Drawing.Size(166, 21);
+            lblCurrentStage.Size = new Drawing.Size(166, 21);
             lblCurrentStage.TabIndex = 3;
             lblCurrentStage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblNewStageDesc
             // 
-            lblNewStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblNewStageDesc.Location = new System.Drawing.Point(6, 38);
+            lblNewStageDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblNewStageDesc.Location = new Drawing.Point(6, 38);
             lblNewStageDesc.Name = "lblNewStageDesc";
-            lblNewStageDesc.Size = new System.Drawing.Size(72, 21);
+            lblNewStageDesc.Size = new Drawing.Size(72, 21);
             lblNewStageDesc.TabIndex = 2;
             lblNewStageDesc.Text = "New stage:";
             lblNewStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -456,17 +456,17 @@ namespace System.Windows.Forms
             stageSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             stageSelection.Enabled = false;
             stageSelection.FormattingEnabled = true;
-            stageSelection.Location = new System.Drawing.Point(84, 38);
+            stageSelection.Location = new Drawing.Point(84, 38);
             stageSelection.Name = "stageSelection";
-            stageSelection.Size = new System.Drawing.Size(166, 21);
+            stageSelection.Size = new Drawing.Size(166, 21);
             stageSelection.TabIndex = 1;
             // 
             // lblCurrentStageDesc
             // 
-            lblCurrentStageDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            lblCurrentStageDesc.Location = new System.Drawing.Point(6, 14);
+            lblCurrentStageDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblCurrentStageDesc.Location = new Drawing.Point(6, 14);
             lblCurrentStageDesc.Name = "lblCurrentStageDesc";
-            lblCurrentStageDesc.Size = new System.Drawing.Size(72, 21);
+            lblCurrentStageDesc.Size = new Drawing.Size(72, 21);
             lblCurrentStageDesc.TabIndex = 0;
             lblCurrentStageDesc.Text = "Current:";
             lblCurrentStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -476,9 +476,9 @@ namespace System.Windows.Forms
             panel3.Controls.Add(txtPath);
             panel3.Controls.Add(btnBrowse);
             panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            panel3.Location = new System.Drawing.Point(0, 0);
+            panel3.Location = new Drawing.Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(256, 20);
+            panel3.Size = new Drawing.Size(256, 20);
             panel3.TabIndex = 14;
             // 
             // tmrUpdate
@@ -487,7 +487,7 @@ namespace System.Windows.Forms
             // 
             // StageRelSwitcherDialog
             // 
-            ClientSize = new System.Drawing.Size(414, 132);
+            ClientSize = new Drawing.Size(414, 132);
             Controls.Add(pnlEdit);
             Controls.Add(pnlInfo);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -610,8 +610,8 @@ namespace System.Windows.Forms
             _path = path;
 
             txtPath.Text = _path;
-            _data = new byte[new IO.FileInfo(_path).Length];
-            FileStream input = new IO.FileStream(_path, FileMode.Open,
+            _data = new byte[new FileInfo(_path).Length];
+            FileStream input = new FileStream(_path, FileMode.Open,
                 FileAccess.Read, FileShare.Read, 8, FileOptions.SequentialScan);
             input.Read(_data, 0, _data.Length);
             input.Dispose();

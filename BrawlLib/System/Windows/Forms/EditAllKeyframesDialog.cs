@@ -62,67 +62,67 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            amount = new System.Windows.Forms.TextBox();
-            btnCancel = new System.Windows.Forms.Button();
-            btnOkay = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            comboBox1 = new System.Windows.Forms.ComboBox();
+            amount = new TextBox();
+            btnCancel = new Button();
+            btnOkay = new Button();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // amount
             // 
             amount.HideSelection = false;
-            amount.Location = new System.Drawing.Point(116, 12);
+            amount.Location = new Drawing.Point(116, 12);
             amount.Name = "amount";
-            amount.Size = new System.Drawing.Size(107, 20);
+            amount.Size = new Drawing.Size(107, 20);
             amount.TabIndex = 0;
             // 
             // btnCancel
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            btnCancel.Location = new System.Drawing.Point(197, 38);
+            btnCancel.Location = new Drawing.Point(197, 38);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnOkay.Location = new System.Drawing.Point(116, 38);
+            btnOkay.Location = new Drawing.Point(116, 38);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(229, 15);
+            label1.Location = new Drawing.Point(229, 15);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(43, 13);
+            label1.Size = new Drawing.Size(43, 13);
             label1.TabIndex = 3;
             label1.Text = "from all.";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new System.Drawing.Point(12, 11);
+            comboBox1.Location = new Drawing.Point(12, 11);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new System.Drawing.Size(98, 21);
+            comboBox1.Size = new Drawing.Size(98, 21);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += new System.EventHandler(comboBox1_SelectedIndexChanged);
+            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
             // 
             // EditDialog
             // 
             AcceptButton = btnOkay;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(284, 69);
+            ClientSize = new Drawing.Size(284, 69);
             Controls.Add(comboBox1);
             Controls.Add(label1);
             Controls.Add(btnOkay);

@@ -169,7 +169,7 @@ namespace BrawlLib.Wii.Models
         {
             //Colors will almost always need remapping
             _remapData = new Remapper();
-            _remapData.Remap<RGBAPixel>(new MemoryList<RGBAPixel>(_pData, _srcCount), null); //Don't bother sorting
+            _remapData.Remap(new MemoryList<RGBAPixel>(_pData, _srcCount), null); //Don't bother sorting
 
             int[] imp = _remapData._impTable;
             int impLen = imp.Length;

@@ -282,7 +282,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _entries.ToArray();
             set
             {
-                _entries = value.ToList<string>();
+                _entries = value.ToList();
                 if (DataType != UserValueType.String)
                 {
                     for (int i = 0; i < _entries.Count; i++)

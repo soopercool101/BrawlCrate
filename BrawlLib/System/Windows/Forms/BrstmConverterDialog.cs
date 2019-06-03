@@ -96,47 +96,47 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            btnOkay = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
-            txtPath = new System.Windows.Forms.TextBox();
-            btnBrowse = new System.Windows.Forms.Button();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            lblSamples = new System.Windows.Forms.Label();
-            lblFrequency = new System.Windows.Forms.Label();
-            lblText2 = new System.Windows.Forms.Label();
-            lblText1 = new System.Windows.Forms.Label();
-            lblPlayTime = new System.Windows.Forms.Label();
-            btnPlay = new System.Windows.Forms.Button();
-            btnRewind = new System.Windows.Forms.Button();
-            pnlInfo = new System.Windows.Forms.Panel();
-            panel4 = new System.Windows.Forms.Panel();
-            pnlEdit = new System.Windows.Forms.Panel();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            btnSeekEnd = new System.Windows.Forms.Button();
-            btnLoopRW = new System.Windows.Forms.Button();
-            btnFFwd = new System.Windows.Forms.Button();
-            chkLoop = new System.Windows.Forms.CheckBox();
-            pnlLoop = new System.Windows.Forms.Panel();
-            spltEnd = new System.Windows.Forms.Splitter();
-            pnlLoopEnd = new System.Windows.Forms.Panel();
-            spltStart = new System.Windows.Forms.Splitter();
-            pnlLoopStart = new System.Windows.Forms.Panel();
-            grpLoop = new System.Windows.Forms.GroupBox();
-            btnEndSet = new System.Windows.Forms.Button();
-            btnStartSet = new System.Windows.Forms.Button();
-            numLoopStart = new System.Windows.Forms.NumericUpDown();
-            numLoopEnd = new System.Windows.Forms.NumericUpDown();
-            lblEnd = new System.Windows.Forms.Label();
-            lblStart = new System.Windows.Forms.Label();
-            panel3 = new System.Windows.Forms.Panel();
-            chkLoopEnable = new System.Windows.Forms.CheckBox();
-            dlgOpen = new System.Windows.Forms.OpenFileDialog();
-            tmrUpdate = new System.Windows.Forms.Timer(components);
-            customTrackBar1 = new System.Windows.Forms.CustomTrackBar();
-            groupBox3 = new System.Windows.Forms.GroupBox();
-            label1 = new System.Windows.Forms.Label();
-            ddlEncoding = new System.Windows.Forms.ComboBox();
+            components = new Container();
+            btnOkay = new Button();
+            btnCancel = new Button();
+            txtPath = new TextBox();
+            btnBrowse = new Button();
+            groupBox1 = new GroupBox();
+            lblSamples = new Label();
+            lblFrequency = new Label();
+            lblText2 = new Label();
+            lblText1 = new Label();
+            lblPlayTime = new Label();
+            btnPlay = new Button();
+            btnRewind = new Button();
+            pnlInfo = new Panel();
+            panel4 = new Panel();
+            pnlEdit = new Panel();
+            groupBox2 = new GroupBox();
+            btnSeekEnd = new Button();
+            btnLoopRW = new Button();
+            btnFFwd = new Button();
+            chkLoop = new CheckBox();
+            pnlLoop = new Panel();
+            spltEnd = new Splitter();
+            pnlLoopEnd = new Panel();
+            spltStart = new Splitter();
+            pnlLoopStart = new Panel();
+            grpLoop = new GroupBox();
+            btnEndSet = new Button();
+            btnStartSet = new Button();
+            numLoopStart = new NumericUpDown();
+            numLoopEnd = new NumericUpDown();
+            lblEnd = new Label();
+            lblStart = new Label();
+            panel3 = new Panel();
+            chkLoopEnable = new CheckBox();
+            dlgOpen = new OpenFileDialog();
+            tmrUpdate = new Timer(components);
+            customTrackBar1 = new CustomTrackBar();
+            groupBox3 = new GroupBox();
+            label1 = new Label();
+            ddlEncoding = new ComboBox();
             groupBox1.SuspendLayout();
             pnlInfo.SuspendLayout();
             panel4.SuspendLayout();
@@ -144,10 +144,10 @@ namespace System.Windows.Forms
             groupBox2.SuspendLayout();
             pnlLoop.SuspendLayout();
             grpLoop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(numLoopStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(numLoopEnd)).BeginInit();
+            ((ISupportInitialize)(numLoopStart)).BeginInit();
+            ((ISupportInitialize)(numLoopEnd)).BeginInit();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(customTrackBar1)).BeginInit();
+            ((ISupportInitialize)(customTrackBar1)).BeginInit();
             groupBox3.SuspendLayout();
             SuspendLayout();
             // 
@@ -155,45 +155,45 @@ namespace System.Windows.Forms
             // 
             btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
             btnOkay.Enabled = false;
-            btnOkay.Location = new System.Drawing.Point(3, 3);
+            btnOkay.Location = new Drawing.Point(3, 3);
             btnOkay.Name = "btnOkay";
-            btnOkay.Size = new System.Drawing.Size(75, 23);
+            btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new System.EventHandler(btnOkay_Click);
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
             btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.Location = new System.Drawing.Point(80, 3);
+            btnCancel.Location = new Drawing.Point(80, 3);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(75, 23);
+            btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new System.EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // txtPath
             // 
             txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            txtPath.Location = new System.Drawing.Point(0, 0);
+            txtPath.Location = new Drawing.Point(0, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
-            txtPath.Size = new System.Drawing.Size(292, 20);
+            txtPath.Size = new Drawing.Size(292, 20);
             txtPath.TabIndex = 2;
             // 
             // btnBrowse
             // 
             btnBrowse.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnBrowse.Location = new System.Drawing.Point(297, 0);
+            btnBrowse.Location = new Drawing.Point(297, 0);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new System.Drawing.Size(25, 20);
+            btnBrowse.Size = new Drawing.Size(25, 20);
             btnBrowse.TabIndex = 3;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += new System.EventHandler(btnBrowse_Click);
+            btnBrowse.Click += new EventHandler(btnBrowse_Click);
             // 
             // groupBox1
             // 
@@ -202,9 +202,9 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(lblText2);
             groupBox1.Controls.Add(lblText1);
             groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(0, 57);
+            groupBox1.Location = new Drawing.Point(0, 57);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(158, 96);
+            groupBox1.Size = new Drawing.Size(158, 96);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "File Info";
@@ -213,9 +213,9 @@ namespace System.Windows.Forms
             // 
             lblSamples.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblSamples.Location = new System.Drawing.Point(84, 36);
+            lblSamples.Location = new Drawing.Point(84, 36);
             lblSamples.Name = "lblSamples";
-            lblSamples.Size = new System.Drawing.Size(68, 20);
+            lblSamples.Size = new Drawing.Size(68, 20);
             lblSamples.TabIndex = 3;
             lblSamples.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -223,26 +223,26 @@ namespace System.Windows.Forms
             // 
             lblFrequency.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblFrequency.Location = new System.Drawing.Point(84, 16);
+            lblFrequency.Location = new Drawing.Point(84, 16);
             lblFrequency.Name = "lblFrequency";
-            lblFrequency.Size = new System.Drawing.Size(68, 20);
+            lblFrequency.Size = new Drawing.Size(68, 20);
             lblFrequency.TabIndex = 2;
             lblFrequency.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblText2
             // 
-            lblText2.Location = new System.Drawing.Point(6, 36);
+            lblText2.Location = new Drawing.Point(6, 36);
             lblText2.Name = "lblText2";
-            lblText2.Size = new System.Drawing.Size(72, 20);
+            lblText2.Size = new Drawing.Size(72, 20);
             lblText2.TabIndex = 1;
             lblText2.Text = "Samples :";
             lblText2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblText1
             // 
-            lblText1.Location = new System.Drawing.Point(6, 16);
+            lblText1.Location = new Drawing.Point(6, 16);
             lblText1.Name = "lblText1";
-            lblText1.Size = new System.Drawing.Size(72, 20);
+            lblText1.Size = new Drawing.Size(72, 20);
             lblText1.TabIndex = 0;
             lblText1.Text = "Frequency :";
             lblText1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -251,9 +251,9 @@ namespace System.Windows.Forms
             // 
             lblPlayTime.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            lblPlayTime.Location = new System.Drawing.Point(6, 63);
+            lblPlayTime.Location = new Drawing.Point(6, 63);
             lblPlayTime.Name = "lblPlayTime";
-            lblPlayTime.Size = new System.Drawing.Size(314, 20);
+            lblPlayTime.Size = new Drawing.Size(314, 20);
             lblPlayTime.TabIndex = 6;
             lblPlayTime.Text = "0 / 0";
             lblPlayTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -261,24 +261,24 @@ namespace System.Windows.Forms
             // btnPlay
             // 
             btnPlay.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            btnPlay.Location = new System.Drawing.Point(126, 86);
+            btnPlay.Location = new Drawing.Point(126, 86);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new System.Drawing.Size(75, 20);
+            btnPlay.Size = new Drawing.Size(75, 20);
             btnPlay.TabIndex = 7;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += new System.EventHandler(btnPlay_Click);
+            btnPlay.Click += new EventHandler(btnPlay_Click);
             // 
             // btnRewind
             // 
             btnRewind.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            btnRewind.Location = new System.Drawing.Point(72, 86);
+            btnRewind.Location = new Drawing.Point(72, 86);
             btnRewind.Name = "btnRewind";
-            btnRewind.Size = new System.Drawing.Size(26, 20);
+            btnRewind.Size = new Drawing.Size(26, 20);
             btnRewind.TabIndex = 8;
             btnRewind.Text = "|<";
             btnRewind.UseVisualStyleBackColor = true;
-            btnRewind.Click += new System.EventHandler(btnRewind_Click);
+            btnRewind.Click += new EventHandler(btnRewind_Click);
             // 
             // pnlInfo
             // 
@@ -286,9 +286,9 @@ namespace System.Windows.Forms
             pnlInfo.Controls.Add(groupBox3);
             pnlInfo.Controls.Add(panel4);
             pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
-            pnlInfo.Location = new System.Drawing.Point(326, 0);
+            pnlInfo.Location = new Drawing.Point(326, 0);
             pnlInfo.Name = "pnlInfo";
-            pnlInfo.Size = new System.Drawing.Size(158, 182);
+            pnlInfo.Size = new Drawing.Size(158, 182);
             pnlInfo.TabIndex = 9;
             // 
             // panel4
@@ -296,9 +296,9 @@ namespace System.Windows.Forms
             panel4.Controls.Add(btnOkay);
             panel4.Controls.Add(btnCancel);
             panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panel4.Location = new System.Drawing.Point(0, 153);
+            panel4.Location = new Drawing.Point(0, 153);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(158, 29);
+            panel4.Size = new Drawing.Size(158, 29);
             panel4.TabIndex = 6;
             // 
             // pnlEdit
@@ -307,9 +307,9 @@ namespace System.Windows.Forms
             pnlEdit.Controls.Add(grpLoop);
             pnlEdit.Controls.Add(panel3);
             pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            pnlEdit.Location = new System.Drawing.Point(0, 0);
+            pnlEdit.Location = new Drawing.Point(0, 0);
             pnlEdit.Name = "pnlEdit";
-            pnlEdit.Size = new System.Drawing.Size(326, 182);
+            pnlEdit.Size = new Drawing.Size(326, 182);
             pnlEdit.TabIndex = 10;
             // 
             // groupBox2
@@ -324,9 +324,9 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(btnPlay);
             groupBox2.Controls.Add(customTrackBar1);
             groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox2.Location = new System.Drawing.Point(0, 65);
+            groupBox2.Location = new Drawing.Point(0, 65);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(326, 117);
+            groupBox2.Size = new Drawing.Size(326, 117);
             groupBox2.TabIndex = 13;
             groupBox2.TabStop = false;
             groupBox2.Text = "Playback";
@@ -334,48 +334,48 @@ namespace System.Windows.Forms
             // btnSeekEnd
             // 
             btnSeekEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            btnSeekEnd.Location = new System.Drawing.Point(229, 86);
+            btnSeekEnd.Location = new Drawing.Point(229, 86);
             btnSeekEnd.Name = "btnSeekEnd";
-            btnSeekEnd.Size = new System.Drawing.Size(26, 20);
+            btnSeekEnd.Size = new Drawing.Size(26, 20);
             btnSeekEnd.TabIndex = 13;
             btnSeekEnd.Text = ">|";
             btnSeekEnd.UseVisualStyleBackColor = true;
-            btnSeekEnd.Click += new System.EventHandler(btnSeekEnd_Click);
+            btnSeekEnd.Click += new EventHandler(btnSeekEnd_Click);
             // 
             // btnLoopRW
             // 
             btnLoopRW.Anchor = System.Windows.Forms.AnchorStyles.Top;
             btnLoopRW.Enabled = false;
-            btnLoopRW.Location = new System.Drawing.Point(99, 86);
+            btnLoopRW.Location = new Drawing.Point(99, 86);
             btnLoopRW.Name = "btnLoopRW";
-            btnLoopRW.Size = new System.Drawing.Size(26, 20);
+            btnLoopRW.Size = new Drawing.Size(26, 20);
             btnLoopRW.TabIndex = 12;
             btnLoopRW.Text = "<";
             btnLoopRW.UseVisualStyleBackColor = true;
-            btnLoopRW.Click += new System.EventHandler(btnLoopRW_Click);
+            btnLoopRW.Click += new EventHandler(btnLoopRW_Click);
             // 
             // btnFFwd
             // 
             btnFFwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             btnFFwd.Enabled = false;
-            btnFFwd.Location = new System.Drawing.Point(202, 86);
+            btnFFwd.Location = new Drawing.Point(202, 86);
             btnFFwd.Name = "btnFFwd";
-            btnFFwd.Size = new System.Drawing.Size(26, 20);
+            btnFFwd.Size = new Drawing.Size(26, 20);
             btnFFwd.TabIndex = 11;
             btnFFwd.Text = ">";
             btnFFwd.UseVisualStyleBackColor = true;
-            btnFFwd.Click += new System.EventHandler(btnFFwd_Click);
+            btnFFwd.Click += new EventHandler(btnFFwd_Click);
             // 
             // chkLoop
             // 
             chkLoop.Enabled = false;
-            chkLoop.Location = new System.Drawing.Point(10, 86);
+            chkLoop.Location = new Drawing.Point(10, 86);
             chkLoop.Name = "chkLoop";
-            chkLoop.Size = new System.Drawing.Size(52, 20);
+            chkLoop.Size = new Drawing.Size(52, 20);
             chkLoop.TabIndex = 10;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += new System.EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
             // 
             // pnlLoop
             // 
@@ -386,9 +386,9 @@ namespace System.Windows.Forms
             pnlLoop.Controls.Add(pnlLoopEnd);
             pnlLoop.Controls.Add(spltStart);
             pnlLoop.Controls.Add(pnlLoopStart);
-            pnlLoop.Location = new System.Drawing.Point(18, 50);
+            pnlLoop.Location = new Drawing.Point(18, 50);
             pnlLoop.Name = "pnlLoop";
-            pnlLoop.Size = new System.Drawing.Size(290, 12);
+            pnlLoop.Size = new Drawing.Size(290, 12);
             pnlLoop.TabIndex = 9;
             pnlLoop.Visible = false;
             // 
@@ -396,11 +396,11 @@ namespace System.Windows.Forms
             // 
             spltEnd.BackColor = System.Drawing.Color.Red;
             spltEnd.Dock = System.Windows.Forms.DockStyle.Right;
-            spltEnd.Location = new System.Drawing.Point(287, 0);
+            spltEnd.Location = new Drawing.Point(287, 0);
             spltEnd.MinExtra = 0;
             spltEnd.MinSize = 0;
             spltEnd.Name = "spltEnd";
-            spltEnd.Size = new System.Drawing.Size(3, 12);
+            spltEnd.Size = new Drawing.Size(3, 12);
             spltEnd.TabIndex = 3;
             spltEnd.TabStop = false;
             // 
@@ -408,20 +408,20 @@ namespace System.Windows.Forms
             // 
             pnlLoopEnd.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
             pnlLoopEnd.Dock = System.Windows.Forms.DockStyle.Right;
-            pnlLoopEnd.Location = new System.Drawing.Point(290, 0);
+            pnlLoopEnd.Location = new Drawing.Point(290, 0);
             pnlLoopEnd.Name = "pnlLoopEnd";
-            pnlLoopEnd.Size = new System.Drawing.Size(0, 12);
+            pnlLoopEnd.Size = new Drawing.Size(0, 12);
             pnlLoopEnd.TabIndex = 2;
-            pnlLoopEnd.SizeChanged += new System.EventHandler(pnlLoopEnd_SizeChanged);
+            pnlLoopEnd.SizeChanged += new EventHandler(pnlLoopEnd_SizeChanged);
             // 
             // spltStart
             // 
             spltStart.BackColor = System.Drawing.Color.Yellow;
-            spltStart.Location = new System.Drawing.Point(0, 0);
+            spltStart.Location = new Drawing.Point(0, 0);
             spltStart.MinExtra = 0;
             spltStart.MinSize = 0;
             spltStart.Name = "spltStart";
-            spltStart.Size = new System.Drawing.Size(3, 12);
+            spltStart.Size = new Drawing.Size(3, 12);
             spltStart.TabIndex = 0;
             spltStart.TabStop = false;
             // 
@@ -429,11 +429,11 @@ namespace System.Windows.Forms
             // 
             pnlLoopStart.BackColor = System.Drawing.Color.YellowGreen;
             pnlLoopStart.Dock = System.Windows.Forms.DockStyle.Left;
-            pnlLoopStart.Location = new System.Drawing.Point(0, 0);
+            pnlLoopStart.Location = new Drawing.Point(0, 0);
             pnlLoopStart.Name = "pnlLoopStart";
-            pnlLoopStart.Size = new System.Drawing.Size(0, 12);
+            pnlLoopStart.Size = new Drawing.Size(0, 12);
             pnlLoopStart.TabIndex = 1;
-            pnlLoopStart.SizeChanged += new System.EventHandler(pnlLoopStart_SizeChanged);
+            pnlLoopStart.SizeChanged += new EventHandler(pnlLoopStart_SizeChanged);
             // 
             // grpLoop
             // 
@@ -445,32 +445,32 @@ namespace System.Windows.Forms
             grpLoop.Controls.Add(lblStart);
             grpLoop.Dock = System.Windows.Forms.DockStyle.Top;
             grpLoop.Enabled = false;
-            grpLoop.Location = new System.Drawing.Point(0, 20);
+            grpLoop.Location = new Drawing.Point(0, 20);
             grpLoop.Name = "grpLoop";
-            grpLoop.Size = new System.Drawing.Size(326, 45);
+            grpLoop.Size = new Drawing.Size(326, 45);
             grpLoop.TabIndex = 15;
             grpLoop.TabStop = false;
             grpLoop.Text = "Loop";
             // 
             // btnEndSet
             // 
-            btnEndSet.Location = new System.Drawing.Point(289, 19);
+            btnEndSet.Location = new Drawing.Point(289, 19);
             btnEndSet.Name = "btnEndSet";
-            btnEndSet.Size = new System.Drawing.Size(15, 20);
+            btnEndSet.Size = new Drawing.Size(15, 20);
             btnEndSet.TabIndex = 13;
             btnEndSet.Text = "*";
             btnEndSet.UseVisualStyleBackColor = true;
-            btnEndSet.Click += new System.EventHandler(btnEndSet_Click);
+            btnEndSet.Click += new EventHandler(btnEndSet_Click);
             // 
             // btnStartSet
             // 
-            btnStartSet.Location = new System.Drawing.Point(141, 19);
+            btnStartSet.Location = new Drawing.Point(141, 19);
             btnStartSet.Name = "btnStartSet";
-            btnStartSet.Size = new System.Drawing.Size(15, 20);
+            btnStartSet.Size = new Drawing.Size(15, 20);
             btnStartSet.TabIndex = 4;
             btnStartSet.Text = "*";
             btnStartSet.UseVisualStyleBackColor = true;
-            btnStartSet.Click += new System.EventHandler(btnStartSet_Click);
+            btnStartSet.Click += new EventHandler(btnStartSet_Click);
             // 
             // numLoopStart
             // 
@@ -479,11 +479,11 @@ namespace System.Windows.Forms
             0,
             0,
             0});
-            numLoopStart.Location = new System.Drawing.Point(59, 19);
+            numLoopStart.Location = new Drawing.Point(59, 19);
             numLoopStart.Name = "numLoopStart";
-            numLoopStart.Size = new System.Drawing.Size(81, 20);
+            numLoopStart.Size = new Drawing.Size(81, 20);
             numLoopStart.TabIndex = 10;
-            numLoopStart.ValueChanged += new System.EventHandler(numLoopStart_ValueChanged);
+            numLoopStart.ValueChanged += new EventHandler(numLoopStart_ValueChanged);
             // 
             // numLoopEnd
             // 
@@ -492,26 +492,26 @@ namespace System.Windows.Forms
             0,
             0,
             0});
-            numLoopEnd.Location = new System.Drawing.Point(207, 19);
+            numLoopEnd.Location = new Drawing.Point(207, 19);
             numLoopEnd.Name = "numLoopEnd";
-            numLoopEnd.Size = new System.Drawing.Size(81, 20);
+            numLoopEnd.Size = new Drawing.Size(81, 20);
             numLoopEnd.TabIndex = 11;
-            numLoopEnd.ValueChanged += new System.EventHandler(numLoopEnd_ValueChanged);
+            numLoopEnd.ValueChanged += new EventHandler(numLoopEnd_ValueChanged);
             // 
             // lblEnd
             // 
-            lblEnd.Location = new System.Drawing.Point(160, 19);
+            lblEnd.Location = new Drawing.Point(160, 19);
             lblEnd.Name = "lblEnd";
-            lblEnd.Size = new System.Drawing.Size(41, 20);
+            lblEnd.Size = new Drawing.Size(41, 20);
             lblEnd.TabIndex = 2;
             lblEnd.Text = "End:";
             lblEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblStart
             // 
-            lblStart.Location = new System.Drawing.Point(13, 19);
+            lblStart.Location = new Drawing.Point(13, 19);
             lblStart.Name = "lblStart";
-            lblStart.Size = new System.Drawing.Size(40, 20);
+            lblStart.Size = new Drawing.Size(40, 20);
             lblStart.TabIndex = 12;
             lblStart.Text = "Start:";
             lblStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -521,36 +521,36 @@ namespace System.Windows.Forms
             panel3.Controls.Add(txtPath);
             panel3.Controls.Add(btnBrowse);
             panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            panel3.Location = new System.Drawing.Point(0, 0);
+            panel3.Location = new Drawing.Point(0, 0);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(326, 20);
+            panel3.Size = new Drawing.Size(326, 20);
             panel3.TabIndex = 14;
             // 
             // chkLoopEnable
             // 
-            chkLoopEnable.Location = new System.Drawing.Point(49, 18);
+            chkLoopEnable.Location = new Drawing.Point(49, 18);
             chkLoopEnable.Name = "chkLoopEnable";
-            chkLoopEnable.Size = new System.Drawing.Size(64, 20);
+            chkLoopEnable.Size = new Drawing.Size(64, 20);
             chkLoopEnable.TabIndex = 13;
             chkLoopEnable.Text = "Enable";
             chkLoopEnable.UseVisualStyleBackColor = true;
-            chkLoopEnable.CheckedChanged += new System.EventHandler(chkLoopEnable_CheckedChanged);
+            chkLoopEnable.CheckedChanged += new EventHandler(chkLoopEnable_CheckedChanged);
             // 
             // tmrUpdate
             // 
             tmrUpdate.Interval = 17;
-            tmrUpdate.Tick += new System.EventHandler(tmrUpdate_Tick);
+            tmrUpdate.Tick += new EventHandler(tmrUpdate_Tick);
             // 
             // customTrackBar1
             // 
             customTrackBar1.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
-            customTrackBar1.Location = new System.Drawing.Point(6, 19);
+            customTrackBar1.Location = new Drawing.Point(6, 19);
             customTrackBar1.Name = "customTrackBar1";
-            customTrackBar1.Size = new System.Drawing.Size(314, 45);
+            customTrackBar1.Size = new Drawing.Size(314, 45);
             customTrackBar1.TabIndex = 4;
-            customTrackBar1.UserSeek += new System.EventHandler(customTrackBar1_UserSeek);
-            customTrackBar1.ValueChanged += new System.EventHandler(customTrackBar1_ValueChanged);
+            customTrackBar1.UserSeek += new EventHandler(customTrackBar1_UserSeek);
+            customTrackBar1.ValueChanged += new EventHandler(customTrackBar1_ValueChanged);
             // 
             // groupBox3
             // 
@@ -558,18 +558,18 @@ namespace System.Windows.Forms
             groupBox3.Controls.Add(ddlEncoding);
             groupBox3.Controls.Add(label1);
             groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox3.Location = new System.Drawing.Point(0, 0);
+            groupBox3.Location = new Drawing.Point(0, 0);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(158, 57);
+            groupBox3.Size = new Drawing.Size(158, 57);
             groupBox3.TabIndex = 4;
             groupBox3.TabStop = false;
             groupBox3.Text = "Parameters";
             // 
             // label1
             // 
-            label1.Location = new System.Drawing.Point(6, 16);
+            label1.Location = new Drawing.Point(6, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(64, 20);
+            label1.Size = new Drawing.Size(64, 20);
             label1.TabIndex = 13;
             label1.Text = "Encoding:";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -578,20 +578,20 @@ namespace System.Windows.Forms
             // 
             ddlEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             ddlEncoding.FormattingEnabled = true;
-            ddlEncoding.Location = new System.Drawing.Point(76, 17);
+            ddlEncoding.Location = new Drawing.Point(76, 17);
             ddlEncoding.Name = "ddlEncoding";
-            ddlEncoding.Size = new System.Drawing.Size(70, 21);
+            ddlEncoding.Size = new Drawing.Size(70, 21);
             ddlEncoding.TabIndex = 14;
             // 
             // BrstmConverterDialog
             // 
-            ClientSize = new System.Drawing.Size(484, 182);
+            ClientSize = new Drawing.Size(484, 182);
             Controls.Add(chkLoopEnable);
             Controls.Add(pnlEdit);
             Controls.Add(pnlInfo);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             MaximizeBox = false;
-            MinimumSize = new System.Drawing.Size(500, 216);
+            MinimumSize = new Drawing.Size(500, 216);
             Name = "BrstmConverterDialog";
             ShowIcon = false;
             ShowInTaskbar = false;
@@ -605,11 +605,11 @@ namespace System.Windows.Forms
             groupBox2.PerformLayout();
             pnlLoop.ResumeLayout(false);
             grpLoop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(numLoopStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(numLoopEnd)).EndInit();
+            ((ISupportInitialize)(numLoopStart)).EndInit();
+            ((ISupportInitialize)(numLoopEnd)).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(customTrackBar1)).EndInit();
+            ((ISupportInitialize)(customTrackBar1)).EndInit();
             groupBox3.ResumeLayout(false);
             ResumeLayout(false);
 

@@ -1366,7 +1366,7 @@ namespace System.Windows.Forms
             GL.MatrixMode(MatrixMode.Texture);
             GL.LoadIdentity();
 
-            GLTexture bgTex = TKContext.FindOrCreate<GLTexture>("TexBG", GLTexturePanel.CreateBG);
+            GLTexture bgTex = TKContext.FindOrCreate("TexBG", GLTexturePanel.CreateBG);
             bgTex.Bind();
 
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);

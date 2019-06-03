@@ -10,23 +10,23 @@ namespace System.Windows.Forms
         #region Designer
         private void InitializeComponent()
         {
-            label1 = new System.Windows.Forms.Label();
-            texBox = new System.Windows.Forms.StringInputComboBox();
-            pltBox = new System.Windows.Forms.StringInputComboBox();
-            label2 = new System.Windows.Forms.Label();
-            grpEdit = new System.Windows.Forms.GroupBox();
-            btnPaste = new System.Windows.Forms.Button();
-            btnCopy = new System.Windows.Forms.Button();
-            btnCut = new System.Windows.Forms.Button();
+            label1 = new Label();
+            texBox = new StringInputComboBox();
+            pltBox = new StringInputComboBox();
+            label2 = new Label();
+            grpEdit = new GroupBox();
+            btnPaste = new Button();
+            btnCopy = new Button();
+            btnCut = new Button();
             grpEdit.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(56, 23);
+            label1.Location = new Drawing.Point(56, 23);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(46, 13);
+            label1.Size = new Drawing.Size(46, 13);
             label1.TabIndex = 1;
             label1.Text = "Texture:";
             // 
@@ -35,11 +35,11 @@ namespace System.Windows.Forms
             texBox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right);
             texBox.FormattingEnabled = true;
-            texBox.Location = new System.Drawing.Point(108, 20);
+            texBox.Location = new Drawing.Point(108, 20);
             texBox.Name = "texBox";
-            texBox.Size = new System.Drawing.Size(288, 21);
+            texBox.Size = new Drawing.Size(288, 21);
             texBox.TabIndex = 2;
-            texBox.ValueChanged += new System.EventHandler(TexChanged);
+            texBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // pltBox
             // 
@@ -47,18 +47,18 @@ namespace System.Windows.Forms
             | System.Windows.Forms.AnchorStyles.Right);
             pltBox.BackColor = System.Drawing.SystemColors.Window;
             pltBox.FormattingEnabled = true;
-            pltBox.Location = new System.Drawing.Point(108, 47);
+            pltBox.Location = new Drawing.Point(108, 47);
             pltBox.Name = "pltBox";
-            pltBox.Size = new System.Drawing.Size(288, 21);
+            pltBox.Size = new Drawing.Size(288, 21);
             pltBox.TabIndex = 4;
-            pltBox.ValueChanged += new System.EventHandler(TexChanged);
+            pltBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(59, 50);
+            label2.Location = new Drawing.Point(59, 50);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(43, 13);
+            label2.Size = new Drawing.Size(43, 13);
             label2.TabIndex = 3;
             label2.Text = "Palette:";
             // 
@@ -72,49 +72,49 @@ namespace System.Windows.Forms
             grpEdit.Controls.Add(btnCut);
             grpEdit.Controls.Add(label2);
             grpEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            grpEdit.Location = new System.Drawing.Point(0, 0);
+            grpEdit.Location = new Drawing.Point(0, 0);
             grpEdit.Name = "grpEdit";
-            grpEdit.Size = new System.Drawing.Size(402, 77);
+            grpEdit.Size = new Drawing.Size(402, 77);
             grpEdit.TabIndex = 28;
             grpEdit.TabStop = false;
             grpEdit.Text = "Edit Frame";
             // 
             // btnPaste
             // 
-            btnPaste.Location = new System.Drawing.Point(3, 54);
+            btnPaste.Location = new Drawing.Point(3, 54);
             btnPaste.Name = "btnPaste";
-            btnPaste.Size = new System.Drawing.Size(50, 20);
+            btnPaste.Size = new Drawing.Size(50, 20);
             btnPaste.TabIndex = 26;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += new System.EventHandler(btnPaste_Click);
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // btnCopy
             // 
-            btnCopy.Location = new System.Drawing.Point(3, 35);
+            btnCopy.Location = new Drawing.Point(3, 35);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(50, 20);
+            btnCopy.Size = new Drawing.Size(50, 20);
             btnCopy.TabIndex = 25;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += new System.EventHandler(btnCopy_Click);
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // btnCut
             // 
-            btnCut.Location = new System.Drawing.Point(3, 16);
+            btnCut.Location = new Drawing.Point(3, 16);
             btnCut.Name = "btnCut";
-            btnCut.Size = new System.Drawing.Size(50, 20);
+            btnCut.Size = new Drawing.Size(50, 20);
             btnCut.TabIndex = 24;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += new System.EventHandler(btnCut_Click);
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // PAT0Editor
             // 
             Controls.Add(grpEdit);
-            MinimumSize = new System.Drawing.Size(402, 77);
+            MinimumSize = new Drawing.Size(402, 77);
             Name = "PAT0Editor";
-            Size = new System.Drawing.Size(402, 77);
+            Size = new Drawing.Size(402, 77);
             grpEdit.ResumeLayout(false);
             grpEdit.PerformLayout();
             ResumeLayout(false);
