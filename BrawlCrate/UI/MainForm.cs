@@ -65,6 +65,7 @@ namespace BrawlCrate
             _autoDecompressPAC = BrawlLib.Properties.Settings.Default.AutoDecompressFighterPAC;
             _autoCompressStages = BrawlLib.Properties.Settings.Default.AutoCompressStages;
             _autoPlayAudio = BrawlCrate.Properties.Settings.Default.AutoPlayAudio;
+            _showFullPath = BrawlCrate.Properties.Settings.Default.ShowFullPath;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
             if (CheckUpdatesOnStartup)
@@ -410,7 +411,7 @@ namespace BrawlCrate
         {
             if (Program.RootPath != null)
             {
-                Text = string.Format("{0} - {1}", Program.AssemblyTitle, Program.RootPath);
+                Text = string.Format("{0} - {1}", Program.AssemblyTitle, ShowFullPath ? Program.RootPath : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1));
             }
             else
             {
