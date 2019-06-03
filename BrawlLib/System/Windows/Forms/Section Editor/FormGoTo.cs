@@ -72,8 +72,8 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(164, 188);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -83,8 +83,8 @@ namespace System.Windows.Forms
             // 
             // btnOK
             // 
-            btnOK.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            btnOK.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOK.DialogResult = DialogResult.OK;
             btnOK.Location = new Drawing.Point(84, 188);
             btnOK.Name = "btnOK";
             btnOK.Size = new Drawing.Size(75, 23);
@@ -189,7 +189,7 @@ namespace System.Windows.Forms
             // FormGoTo
             // 
             AutoScaleBaseSize = new Drawing.Size(5, 15);
-            BackColor = System.Drawing.SystemColors.Control;
+            BackColor = Drawing.SystemColors.Control;
             ClientSize = new Drawing.Size(248, 218);
             Controls.Add(txtOffset);
             Controls.Add(label1);
@@ -198,12 +198,12 @@ namespace System.Windows.Forms
             Controls.Add(btnOK);
             Controls.Add(btnCancel);
             Font = new Drawing.Font("Segoe UI", 8.25F);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormGoTo";
             ShowInTaskbar = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Goto";
             Activated += new EventHandler(FormGoTo_Activated);
             groupBox2.ResumeLayout(false);

@@ -30,14 +30,14 @@ namespace System.Windows.Forms
             // 
             // listBox1
             // 
-            listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            listBox1.Dock = DockStyle.Fill;
+            listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
             listBox1.ItemHeight = 10;
             listBox1.Location = new Drawing.Point(0, 20);
             listBox1.Name = "listBox1";
-            listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            listBox1.SelectionMode = SelectionMode.MultiExtended;
             listBox1.Size = new Drawing.Size(310, 264);
             listBox1.TabIndex = 0;
             listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
@@ -52,7 +52,7 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnClear);
             panel1.Controls.Add(btnInvert);
             panel1.Controls.Add(btnAll);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(310, 20);
@@ -60,7 +60,7 @@ namespace System.Windows.Forms
             // 
             // btnToggle
             // 
-            btnToggle.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnToggle.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnToggle.Location = new Drawing.Point(257, 0);
             btnToggle.Name = "btnToggle";
             btnToggle.Size = new Drawing.Size(50, 20);
@@ -71,7 +71,7 @@ namespace System.Windows.Forms
             // 
             // btnSet
             // 
-            btnSet.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnSet.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnSet.Location = new Drawing.Point(206, 0);
             btnSet.Name = "btnSet";
             btnSet.Size = new Drawing.Size(50, 20);
@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             // 
             // btnClear
             // 
-            btnClear.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnClear.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnClear.Location = new Drawing.Point(155, 0);
             btnClear.Name = "btnClear";
             btnClear.Size = new Drawing.Size(50, 20);

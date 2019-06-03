@@ -449,13 +449,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = INFOSoundEntry.Size + Sound3DParam.Size;
             switch (SoundType)
             {
-                case RSARSoundNode.SndType.SEQ:
+                case SndType.SEQ:
                     size += SeqSoundInfo.Size;
                     break;
-                case RSARSoundNode.SndType.STRM:
+                case SndType.STRM:
                     size += StrmSoundInfo.Size;
                     break;
-                case RSARSoundNode.SndType.WAVE:
+                case SndType.WAVE:
                     size += WaveSoundInfo.Size;
                     break;
             }
@@ -481,17 +481,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_userParam2 = _p2;
             switch (SoundType)
             {
-                case RSARSoundNode.SndType.SEQ:
+                case SndType.SEQ:
                     *(SeqSoundInfo*)addr = _seqInfo;
                     header->_soundInfoRef._dataType = 1;
                     addr += SeqSoundInfo.Size;
                     break;
-                case RSARSoundNode.SndType.STRM:
+                case SndType.STRM:
                     *(StrmSoundInfo*)addr = _strmInfo;
                     header->_soundInfoRef._dataType = 2;
                     addr += StrmSoundInfo.Size;
                     break;
-                case RSARSoundNode.SndType.WAVE:
+                case SndType.WAVE:
                     *(WaveSoundInfo*)addr = _waveInfo;
                     header->_soundInfoRef._dataType = 3;
                     addr += WaveSoundInfo.Size;

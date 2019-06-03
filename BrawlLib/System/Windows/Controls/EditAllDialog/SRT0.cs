@@ -108,7 +108,7 @@
             groupBox1.Controls.Add(chkSrtVersion);
             groupBox1.Controls.Add(srtVersion);
             groupBox1.Controls.Add(srtEditLoop);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(396, 243);

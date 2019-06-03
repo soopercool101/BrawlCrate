@@ -651,7 +651,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!PAT0Textures.ContainsKey(PAT0Texture))
                 {
-                    PAT0Textures[PAT0Texture] = new MDL0TextureNode(PAT0Texture) { Source = null, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceNodes.ResourceType.PLT0) as PLT0Node : null };
+                    PAT0Textures[PAT0Texture] = new MDL0TextureNode(PAT0Texture) { Source = null, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceType.PLT0) as PLT0Node : null };
                 }
 
                 MDL0TextureNode t = PAT0Textures[PAT0Texture];
@@ -727,10 +727,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 PAT0Palette = prev.Palette;
                 if (PAT0Texture != null && !PAT0Textures.ContainsKey(PAT0Texture))
                 {
-                    TEX0Node texture = RootNode.FindChildByType(PAT0Texture, true, ResourceNodes.ResourceType.TEX0) as TEX0Node;
+                    TEX0Node texture = RootNode.FindChildByType(PAT0Texture, true, ResourceType.TEX0) as TEX0Node;
                     if (texture != null)
                     {
-                        PAT0Textures[PAT0Texture] = new MDL0TextureNode(texture.Name) { Source = texture, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceNodes.ResourceType.PLT0) as PLT0Node : null };
+                        PAT0Textures[PAT0Texture] = new MDL0TextureNode(texture.Name) { Source = texture, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceType.PLT0) as PLT0Node : null };
                     }
                 }
                 return;

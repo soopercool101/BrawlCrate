@@ -274,7 +274,7 @@ namespace System.Windows.Forms
             // panel1
             // 
             panel1.Controls.Add(tabControl1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(221, 200);
@@ -284,7 +284,7 @@ namespace System.Windows.Forms
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -305,7 +305,7 @@ namespace System.Windows.Forms
             // groupBox1
             // 
             groupBox1.Controls.Add(listKeyframes);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(213, 102);
@@ -315,8 +315,8 @@ namespace System.Windows.Forms
             // 
             // listKeyframes
             // 
-            listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            listKeyframes.Font = new Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.Dock = DockStyle.Fill;
+            listKeyframes.Font = new Font("Courier New", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             listKeyframes.FormattingEnabled = true;
             listKeyframes.IntegralHeight = false;
             listKeyframes.ItemHeight = 14;
@@ -328,7 +328,7 @@ namespace System.Windows.Forms
             // 
             // panel2
             // 
-            panel2.BackColor = System.Drawing.SystemColors.Control;
+            panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(btnNext);
@@ -338,7 +338,7 @@ namespace System.Windows.Forms
             panel2.Controls.Add(numEnd);
             panel2.Controls.Add(numFrame);
             panel2.Controls.Add(label1);
-            panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Drawing.Point(0, 102);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(213, 72);
@@ -351,40 +351,40 @@ namespace System.Windows.Forms
             label7.Size = new Drawing.Size(41, 20);
             label7.TabIndex = 15;
             label7.Text = "Frame:";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label7.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label3
             // 
-            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Location = new Drawing.Point(6, 45);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(70, 20);
             label3.TabIndex = 2;
             label3.Text = "End Point Z";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNext.Location = new Drawing.Point(187, 1);
             btnNext.Name = "btnNext";
             btnNext.Size = new Drawing.Size(23, 23);
             btnNext.TabIndex = 2;
             btnNext.Text = ">";
-            btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // btnPrev
             // 
-            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPrev.Location = new Drawing.Point(162, 1);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Drawing.Size(23, 23);
             btnPrev.TabIndex = 1;
             btnPrev.Text = "<";
-            btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
             btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
@@ -395,11 +395,11 @@ namespace System.Windows.Forms
             lblFrameCount.Size = new Drawing.Size(51, 20);
             lblFrameCount.TabIndex = 17;
             lblFrameCount.Text = "/ 10";
-            lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrameCount.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // numStart
             // 
-            numStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStart.BorderStyle = BorderStyle.FixedSingle;
             numStart.Location = new Drawing.Point(75, 26);
             numStart.Margin = new Padding(0);
             numStart.Name = "numStart";
@@ -410,7 +410,7 @@ namespace System.Windows.Forms
             // 
             // numEnd
             // 
-            numEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEnd.BorderStyle = BorderStyle.FixedSingle;
             numEnd.Location = new Drawing.Point(75, 45);
             numEnd.Margin = new Padding(0, 10, 0, 10);
             numEnd.Name = "numEnd";
@@ -439,14 +439,14 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(6, 26);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(70, 20);
             label1.TabIndex = 0;
             label1.Text = "Start Point Z";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // tabPage3
             // 
@@ -460,7 +460,7 @@ namespace System.Windows.Forms
             // 
             // lightCtrl
             // 
-            lightCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            lightCtrl.Dock = DockStyle.Fill;
             lightCtrl.Location = new Drawing.Point(0, 0);
             lightCtrl.Name = "lightCtrl";
             lightCtrl.Size = new Drawing.Size(213, 174);

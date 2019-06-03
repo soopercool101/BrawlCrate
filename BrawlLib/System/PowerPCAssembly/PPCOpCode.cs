@@ -350,7 +350,7 @@ namespace System.PowerPcAssembly
                 }
 
                 s = (s.StartsWith("0x") ? s.Substring(2, Math.Min(s.Length - 2, 8)) : s.Substring(0, Math.Min(s.Length, 8)));
-                if (int.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out int offset))
+                if (int.TryParse(s, Globalization.NumberStyles.HexNumber, null, out int offset))
                 {
                     DataOffset = (offset * (neg ? -1 : 1));
                 }

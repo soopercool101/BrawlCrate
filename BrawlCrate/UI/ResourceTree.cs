@@ -286,7 +286,7 @@ namespace BrawlCrate
 
             imageListDrag.Images.Add(bmp);
 
-            Point p = PointToClient(Control.MousePosition);
+            Point p = PointToClient(MousePosition);
 
             int dx = p.X + Indent - _dragNode.Bounds.Left;
             int dy = p.Y - _dragNode.Bounds.Top - 25;
@@ -629,7 +629,7 @@ namespace BrawlCrate
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            Point pt = PointToClient(Control.MousePosition);
+            Point pt = PointToClient(MousePosition);
             TreeNode node = GetNodeAt(pt);
 
             if (node == null)

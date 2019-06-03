@@ -51,15 +51,15 @@ namespace System.Windows.Forms
             AttributeInterpretation item = (AttributeInterpretation)chooser.SelectedItem;
             if (item != null)
             {
-                base.AttributeArray = item.Array;
-                base.TargetChanged();
+                AttributeArray = item.Array;
+                TargetChanged();
             }
         }
 
         public int Add(AttributeInterpretation arr)
         {
             int i = chooser.Items.Add(arr);
-            if (base.AttributeArray == null)
+            if (AttributeArray == null)
             {
                 chooser.SelectedIndex = i;
             }
@@ -75,15 +75,15 @@ namespace System.Windows.Forms
         public void Remove(AttributeInterpretation arr)
         {
             chooser.Items.Remove(arr);
-            if (base.AttributeArray == null)
+            if (AttributeArray == null)
             {
-                base.AttributeArray = null;
+                AttributeArray = null;
             }
         }
         public void Clear()
         {
             chooser.Items.Clear();
-            base.AttributeArray = null;
+            AttributeArray = null;
         }
     }
 }

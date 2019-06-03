@@ -15,7 +15,7 @@
 
             fixed (byte* ptr = arr)
             {
-                System.Memory.Move(dstAddr, ptr, (uint)numRead);
+                Memory.Move(dstAddr, ptr, (uint)numRead);
             }
 
             return numRead;
@@ -27,7 +27,7 @@
 
             fixed (byte* ptr = arr)
             {
-                System.Memory.Move(ptr, srcAddr, (uint)length);
+                Memory.Move(ptr, srcAddr, (uint)length);
             }
 
             stream.Write(arr, 0, length);

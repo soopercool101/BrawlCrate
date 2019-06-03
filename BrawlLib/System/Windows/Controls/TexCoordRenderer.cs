@@ -558,7 +558,7 @@ namespace System.Windows.Forms
 
             if (m.Msg == 0x100)
             {
-                Keys mod = Control.ModifierKeys;
+                Keys mod = ModifierKeys;
                 bool ctrl = (mod & Keys.Control) != 0;
                 bool shift = (mod & Keys.Shift) != 0;
                 bool alt = (mod & Keys.Alt) != 0;

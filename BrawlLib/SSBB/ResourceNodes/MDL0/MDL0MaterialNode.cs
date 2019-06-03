@@ -72,7 +72,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public GXAlphaFunction _alphaFunc = GXAlphaFunction.Default;
         public ZMode _zMode = ZMode.Default;
-        public BlendMode _blendMode = Wii.Graphics.BlendMode.Default;
+        public BlendMode _blendMode = BlendMode.Default;
         public ConstantAlpha _constantAlpha = ConstantAlpha.Default;
         public MatTevColorBlock _tevColorBlock = MatTevColorBlock.Default;
         public MatTevKonstBlock _tevKonstBlock = MatTevKonstBlock.Default;

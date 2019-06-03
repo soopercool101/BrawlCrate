@@ -163,7 +163,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Enabled = false;
             btnOkay.Location = new Drawing.Point(3, 3);
             btnOkay.Name = "btnOkay";
@@ -175,7 +175,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnCancel.Location = new Drawing.Point(80, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -186,8 +186,8 @@ namespace System.Windows.Forms
             // 
             // txtPath
             // 
-            txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right);
+            txtPath.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+                        | AnchorStyles.Right);
             txtPath.Location = new Drawing.Point(0, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
@@ -196,7 +196,7 @@ namespace System.Windows.Forms
             // 
             // btnBrowse
             // 
-            btnBrowse.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnBrowse.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnBrowse.Location = new Drawing.Point(227, 0);
             btnBrowse.Name = "btnBrowse";
             btnBrowse.Size = new Drawing.Size(25, 20);
@@ -211,26 +211,26 @@ namespace System.Windows.Forms
             lblOffsetValue.Name = "lblOffsetValue";
             lblOffsetValue.Size = new Drawing.Size(96, 20);
             lblOffsetValue.TabIndex = 5;
-            lblOffsetValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblOffsetValue.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblOffsetDesc
             // 
-            lblOffsetDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblOffsetDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point, 0);
             lblOffsetDesc.Location = new Drawing.Point(6, 56);
             lblOffsetDesc.Name = "lblOffsetDesc";
             lblOffsetDesc.Size = new Drawing.Size(48, 20);
             lblOffsetDesc.TabIndex = 4;
             lblOffsetDesc.Text = "Offset:";
-            lblOffsetDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblOffsetDesc.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // lblNameValue
             // 
-            lblNameValue.Font = new Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblNameValue.Font = new Drawing.Font("Lucida Console", 8.25F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point, 0);
             lblNameValue.Location = new Drawing.Point(7, 16);
             lblNameValue.Name = "lblNameValue";
             lblNameValue.Size = new Drawing.Size(145, 20);
             lblNameValue.TabIndex = 3;
-            lblNameValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblNameValue.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSizeValue
             // 
@@ -238,23 +238,23 @@ namespace System.Windows.Forms
             lblSizeValue.Name = "lblSizeValue";
             lblSizeValue.Size = new Drawing.Size(96, 20);
             lblSizeValue.TabIndex = 1;
-            lblSizeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblSizeValue.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblSizeDesc
             // 
-            lblSizeDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblSizeDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point, 0);
             lblSizeDesc.Location = new Drawing.Point(6, 36);
             lblSizeDesc.Name = "lblSizeDesc";
             lblSizeDesc.Size = new Drawing.Size(48, 20);
             lblSizeDesc.TabIndex = 0;
             lblSizeDesc.Text = "Size:";
-            lblSizeDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblSizeDesc.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlInfo
             // 
             pnlInfo.Controls.Add(groupBox1);
             pnlInfo.Controls.Add(panel4);
-            pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
+            pnlInfo.Dock = DockStyle.Right;
             pnlInfo.Location = new Drawing.Point(256, 0);
             pnlInfo.Name = "pnlInfo";
             pnlInfo.Size = new Drawing.Size(158, 132);
@@ -269,7 +269,7 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(lblNameValue);
             groupBox1.Controls.Add(lblSizeValue);
             groupBox1.Controls.Add(lblSizeDesc);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(158, 103);
@@ -283,23 +283,23 @@ namespace System.Windows.Forms
             lblIDValue.Name = "lblIDValue";
             lblIDValue.Size = new Drawing.Size(96, 20);
             lblIDValue.TabIndex = 7;
-            lblIDValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblIDValue.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblIDDesc
             // 
-            lblIDDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblIDDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point, 0);
             lblIDDesc.Location = new Drawing.Point(6, 76);
             lblIDDesc.Name = "lblIDDesc";
             lblIDDesc.Size = new Drawing.Size(48, 20);
             lblIDDesc.TabIndex = 6;
             lblIDDesc.Text = "ID:";
-            lblIDDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblIDDesc.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // panel4
             // 
             panel4.Controls.Add(btnOkay);
             panel4.Controls.Add(btnCancel);
-            panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Drawing.Point(0, 103);
             panel4.Name = "panel4";
             panel4.Size = new Drawing.Size(158, 29);
@@ -309,7 +309,7 @@ namespace System.Windows.Forms
             // 
             pnlEdit.Controls.Add(groupBox2);
             pnlEdit.Controls.Add(panel3);
-            pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlEdit.Dock = DockStyle.Fill;
             pnlEdit.Location = new Drawing.Point(0, 0);
             pnlEdit.Name = "pnlEdit";
             pnlEdit.Size = new Drawing.Size(256, 132);
@@ -324,7 +324,7 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(lblNewStageDesc);
             groupBox2.Controls.Add(stageSelection);
             groupBox2.Controls.Add(lblCurrentStageDesc);
-            groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Drawing.Point(0, 20);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Drawing.Size(256, 112);
@@ -334,7 +334,7 @@ namespace System.Windows.Forms
             // 
             // itemSelection
             // 
-            itemSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            itemSelection.DropDownStyle = ComboBoxStyle.DropDownList;
             itemSelection.Enabled = false;
             itemSelection.FormattingEnabled = true;
             itemSelection.Items.AddRange(new object[] {
@@ -415,18 +415,18 @@ namespace System.Windows.Forms
             // 
             // lblItemDesc
             // 
-            lblItemDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblItemDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point, 0);
             lblItemDesc.Location = new Drawing.Point(6, 62);
             lblItemDesc.Name = "lblItemDesc";
             lblItemDesc.Size = new Drawing.Size(72, 21);
             lblItemDesc.TabIndex = 5;
             lblItemDesc.Text = "Item:";
-            lblItemDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblItemDesc.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.SystemColors.ControlDark;
+            label3.ForeColor = Drawing.SystemColors.ControlDark;
             label3.Location = new Drawing.Point(4, 93);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(209, 13);
@@ -439,21 +439,21 @@ namespace System.Windows.Forms
             lblCurrentStage.Name = "lblCurrentStage";
             lblCurrentStage.Size = new Drawing.Size(166, 21);
             lblCurrentStage.TabIndex = 3;
-            lblCurrentStage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblCurrentStage.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblNewStageDesc
             // 
-            lblNewStageDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblNewStageDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point, 0);
             lblNewStageDesc.Location = new Drawing.Point(6, 38);
             lblNewStageDesc.Name = "lblNewStageDesc";
             lblNewStageDesc.Size = new Drawing.Size(72, 21);
             lblNewStageDesc.TabIndex = 2;
             lblNewStageDesc.Text = "New stage:";
-            lblNewStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblNewStageDesc.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // stageSelection
             // 
-            stageSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            stageSelection.DropDownStyle = ComboBoxStyle.DropDownList;
             stageSelection.Enabled = false;
             stageSelection.FormattingEnabled = true;
             stageSelection.Location = new Drawing.Point(84, 38);
@@ -463,19 +463,19 @@ namespace System.Windows.Forms
             // 
             // lblCurrentStageDesc
             // 
-            lblCurrentStageDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblCurrentStageDesc.Font = new Drawing.Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Bold, Drawing.GraphicsUnit.Point, 0);
             lblCurrentStageDesc.Location = new Drawing.Point(6, 14);
             lblCurrentStageDesc.Name = "lblCurrentStageDesc";
             lblCurrentStageDesc.Size = new Drawing.Size(72, 21);
             lblCurrentStageDesc.TabIndex = 0;
             lblCurrentStageDesc.Text = "Current:";
-            lblCurrentStageDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblCurrentStageDesc.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // panel3
             // 
             panel3.Controls.Add(txtPath);
             panel3.Controls.Add(btnBrowse);
-            panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            panel3.Dock = DockStyle.Top;
             panel3.Location = new Drawing.Point(0, 0);
             panel3.Name = "panel3";
             panel3.Size = new Drawing.Size(256, 20);
@@ -490,7 +490,7 @@ namespace System.Windows.Forms
             ClientSize = new Drawing.Size(414, 132);
             Controls.Add(pnlEdit);
             Controls.Add(pnlInfo);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "StageRelSwitcherDialog";
             Text = "Stage REL Switcher";
             pnlInfo.ResumeLayout(false);

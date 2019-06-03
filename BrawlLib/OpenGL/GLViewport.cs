@@ -19,7 +19,7 @@ namespace BrawlLib.OpenGL
         protected bool _updateImage = false;
         protected BGImageType _bgType = BGImageType.Stretch;
         protected Image _backImg;
-        protected Color _backColor = System.Drawing.Color.FromKnownColor(KnownColor.Control);
+        protected Color _backColor = Color.FromKnownColor(KnownColor.Control);
 
         public bool _grabbing = false;
         public bool _scrolling = false;

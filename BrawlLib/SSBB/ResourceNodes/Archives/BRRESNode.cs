@@ -804,7 +804,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 stream.SetLength(size);
                 using (FileMap map = FileMap.FromStream(stream))
                 {
-                    System.Memory.Move(map.Address, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
+                    Memory.Move(map.Address, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
                     table.WriteTable(map.Address + dataLen);
                     PostProcess(null, map.Address, WorkingUncompressed.Length, table);
                 }
@@ -853,12 +853,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             byte[] datacopy = new byte[size];
             fixed (byte* ptr = datacopy)
             {
-                System.Memory.Move(ptr, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
+                Memory.Move(ptr, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
                 table.WriteTable(ptr + dataLen);
                 PostProcess(null, ptr, WorkingUncompressed.Length, table);
             }
 
-            return ResourceNode.MD5Provider.ComputeHash(datacopy);
+            return MD5Provider.ComputeHash(datacopy);
         }
     }
 }

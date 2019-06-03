@@ -23,7 +23,7 @@ namespace System
         public static string Hex(long val) { return TruncateLeft(val.ToString("X"), 8); }
         public static string Hex8(int val) { return TruncateLeft(val.ToString("X"), 8).PadLeft(8, '0'); }
         public static string Hex8(long val) { return TruncateLeft(val.ToString("X"), 8).PadLeft(8, '0'); }
-        public static int UnHex(string val) { return int.Parse(val, System.Globalization.NumberStyles.HexNumber); }
+        public static int UnHex(string val) { return int.Parse(val, Globalization.NumberStyles.HexNumber); }
 
         public static string WordH(string val, int wordNum)
         {

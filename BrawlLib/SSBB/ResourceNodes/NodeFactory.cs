@@ -107,7 +107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 FileMap uncomp = Compressor.TryExpand(ref source);
                 DataSource d;
-                if (uncomp != null && (n = NodeFactory.GetRaw(d = new DataSource(uncomp))) != null)
+                if (uncomp != null && (n = GetRaw(d = new DataSource(uncomp))) != null)
                 {
                     n.Initialize(parent, source, d);
                 }

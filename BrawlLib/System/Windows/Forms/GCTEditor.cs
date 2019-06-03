@@ -441,7 +441,7 @@ namespace System.Windows.Forms
             _updating = true;
             if (!checkBox1.Checked)
             {
-                if (MessageBox.Show(this, "Are you sure you don't want the info written in the GCT?\nOnly codes you have set to remember will be readable.", "Are you sure?", MessageBoxButtons.YesNo) == Forms.DialogResult.No)
+                if (MessageBox.Show(this, "Are you sure you don't want the info written in the GCT?\nOnly codes you have set to remember will be readable.", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     checkBox1.Checked = true;
                 }
@@ -533,9 +533,9 @@ namespace System.Windows.Forms
 
         private void forgetAllCodesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to forget all codes?", "Are you sure?", MessageBoxButtons.YesNo) == Forms.DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to forget all codes?", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (MessageBox.Show("Are you really sure?", "Are you sure?", MessageBoxButtons.YesNo) == Forms.DialogResult.Yes)
+                if (MessageBox.Show("Are you really sure?", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     BrawlLib.Properties.Settings.Default.Codes.Clear();
                 }

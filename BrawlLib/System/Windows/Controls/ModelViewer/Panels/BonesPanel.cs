@@ -71,9 +71,9 @@ namespace System.Windows.Forms
             // pnlKeyframes
             // 
             pnlKeyframes.AutoScroll = true;
-            pnlKeyframes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            pnlKeyframes.BorderStyle = BorderStyle.Fixed3D;
             pnlKeyframes.Controls.Add(pnlBones);
-            pnlKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlKeyframes.Dock = DockStyle.Fill;
             pnlKeyframes.Location = new Drawing.Point(0, 0);
             pnlKeyframes.Name = "pnlKeyframes";
             pnlKeyframes.Size = new Drawing.Size(164, 398);
@@ -84,7 +84,7 @@ namespace System.Windows.Forms
             pnlBones.Controls.Add(lstBones);
             pnlBones.Controls.Add(boneTree);
             pnlBones.Controls.Add(panel1);
-            pnlBones.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlBones.Dock = DockStyle.Fill;
             pnlBones.Location = new Drawing.Point(0, 0);
             pnlBones.Name = "pnlBones";
             pnlBones.Size = new Drawing.Size(160, 394);
@@ -92,7 +92,7 @@ namespace System.Windows.Forms
             // 
             // lstBones
             // 
-            lstBones.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstBones.Dock = DockStyle.Fill;
             lstBones.FormattingEnabled = true;
             lstBones.IntegralHeight = false;
             lstBones.Location = new Drawing.Point(0, 21);
@@ -107,7 +107,7 @@ namespace System.Windows.Forms
             // boneTree
             // 
             boneTree.CheckBoxes = true;
-            boneTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            boneTree.Dock = DockStyle.Fill;
             boneTree.FullRowSelect = true;
             boneTree.HideSelection = false;
             boneTree.HotTracking = true;
@@ -127,7 +127,7 @@ namespace System.Windows.Forms
             panel1.Controls.Add(txtSearchBone);
             panel1.Controls.Add(chkContains);
             panel1.Controls.Add(chkFlat);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(160, 21);
@@ -135,8 +135,8 @@ namespace System.Windows.Forms
             // 
             // txtSearchBone
             // 
-            txtSearchBone.Dock = System.Windows.Forms.DockStyle.Fill;
-            txtSearchBone.ForeColor = System.Drawing.Color.Gray;
+            txtSearchBone.Dock = DockStyle.Fill;
+            txtSearchBone.ForeColor = Color.Gray;
             txtSearchBone.Location = new Drawing.Point(44, 0);
             txtSearchBone.Name = "txtSearchBone";
             txtSearchBone.Size = new Drawing.Size(46, 20);
@@ -150,7 +150,7 @@ namespace System.Windows.Forms
             // chkContains
             // 
             chkContains.AutoSize = true;
-            chkContains.Dock = System.Windows.Forms.DockStyle.Right;
+            chkContains.Dock = DockStyle.Right;
             chkContains.Location = new Drawing.Point(90, 0);
             chkContains.Margin = new Padding(0);
             chkContains.Name = "chkContains";
@@ -166,8 +166,8 @@ namespace System.Windows.Forms
             // 
             chkFlat.AutoSize = true;
             chkFlat.Checked = true;
-            chkFlat.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkFlat.Dock = System.Windows.Forms.DockStyle.Left;
+            chkFlat.CheckState = CheckState.Checked;
+            chkFlat.Dock = DockStyle.Left;
             chkFlat.Location = new Drawing.Point(0, 0);
             chkFlat.Margin = new Padding(0);
             chkFlat.Name = "chkFlat";
@@ -262,9 +262,9 @@ namespace System.Windows.Forms
             // 
             // imageList1
             // 
-            imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            imageList1.ColorDepth = ColorDepth.Depth8Bit;
             imageList1.ImageSize = new Drawing.Size(16, 16);
-            imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            imageList1.TransparentColor = Color.Transparent;
             // 
             // BonesPanel
             // 

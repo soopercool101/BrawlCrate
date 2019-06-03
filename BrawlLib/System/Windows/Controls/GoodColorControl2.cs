@@ -36,7 +36,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(200, 221);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(59, 24);
@@ -47,7 +47,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnCancel.Location = new Drawing.Point(267, 221);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(59, 24);
@@ -58,8 +58,8 @@ namespace System.Windows.Forms
             // 
             // pnlColors
             // 
-            pnlColors.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            pnlColors.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             pnlColors.Controls.Add(pnlNew);
             pnlColors.Controls.Add(pnlOld);
             pnlColors.Location = new Drawing.Point(14, 207);
@@ -69,30 +69,30 @@ namespace System.Windows.Forms
             // 
             // lblOld
             // 
-            lblOld.BackColor = System.Drawing.Color.White;
-            lblOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblOld.BackColor = Color.White;
+            lblOld.BorderStyle = BorderStyle.FixedSingle;
             lblOld.Location = new Drawing.Point(9, 198);
             lblOld.Name = "lblOld";
             lblOld.Size = new Drawing.Size(35, 15);
             lblOld.TabIndex = 4;
             lblOld.Text = "Old";
-            lblOld.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblOld.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblNew
             // 
-            lblNew.BackColor = System.Drawing.Color.White;
-            lblNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblNew.BackColor = Color.White;
+            lblNew.BorderStyle = BorderStyle.FixedSingle;
             lblNew.Location = new Drawing.Point(99, 198);
             lblNew.Name = "lblNew";
             lblNew.Size = new Drawing.Size(35, 15);
             lblNew.TabIndex = 5;
             lblNew.Text = "New";
-            lblNew.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblNew.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // chkAlpha
             // 
             chkAlpha.Checked = true;
-            chkAlpha.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkAlpha.CheckState = CheckState.Checked;
             chkAlpha.Location = new Drawing.Point(221, 200);
             chkAlpha.Name = "chkAlpha";
             chkAlpha.Size = new Drawing.Size(90, 18);
@@ -103,7 +103,7 @@ namespace System.Windows.Forms
             // 
             // pnlNew
             // 
-            pnlNew.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlNew.Dock = DockStyle.Fill;
             pnlNew.Location = new Drawing.Point(90, 0);
             pnlNew.Name = "pnlNew";
             pnlNew.Size = new Drawing.Size(90, 37);
@@ -112,7 +112,7 @@ namespace System.Windows.Forms
             // 
             // pnlOld
             // 
-            pnlOld.Dock = System.Windows.Forms.DockStyle.Left;
+            pnlOld.Dock = DockStyle.Left;
             pnlOld.Location = new Drawing.Point(0, 0);
             pnlOld.Name = "pnlOld";
             pnlOld.Size = new Drawing.Size(90, 37);
@@ -121,7 +121,7 @@ namespace System.Windows.Forms
             // 
             // goodColorControl1
             // 
-            goodColorControl1.Color = System.Drawing.Color.FromArgb(0, 0, 0, 0);
+            goodColorControl1.Color = Color.FromArgb(0, 0, 0, 0);
             goodColorControl1.Location = new Drawing.Point(12, 10);
             goodColorControl1.MinimumSize = new Drawing.Size(310, 186);
             goodColorControl1.Name = "goodColorControl1";

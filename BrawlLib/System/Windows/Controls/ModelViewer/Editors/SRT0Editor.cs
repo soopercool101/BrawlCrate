@@ -60,7 +60,7 @@ namespace System.Windows.Forms
             // 
             FrameScale.AutoSize = true;
             FrameScale.Checked = true;
-            FrameScale.CheckState = System.Windows.Forms.CheckState.Checked;
+            FrameScale.CheckState = CheckState.Checked;
             FrameScale.Location = new Drawing.Point(249, 58);
             FrameScale.Name = "FrameScale";
             FrameScale.Size = new Drawing.Size(53, 17);
@@ -94,7 +94,7 @@ namespace System.Windows.Forms
             // 
             FrameRot.AutoSize = true;
             FrameRot.Checked = true;
-            FrameRot.CheckState = System.Windows.Forms.CheckState.Checked;
+            FrameRot.CheckState = CheckState.Checked;
             FrameRot.Location = new Drawing.Point(208, 58);
             FrameRot.Name = "FrameRot";
             FrameRot.Size = new Drawing.Size(43, 17);
@@ -160,7 +160,7 @@ namespace System.Windows.Forms
             // 
             FrameTrans.AutoSize = true;
             FrameTrans.Checked = true;
-            FrameTrans.CheckState = System.Windows.Forms.CheckState.Checked;
+            FrameTrans.CheckState = CheckState.Checked;
             FrameTrans.Location = new Drawing.Point(155, 58);
             FrameTrans.Name = "FrameTrans";
             FrameTrans.Size = new Drawing.Size(53, 17);
@@ -170,7 +170,7 @@ namespace System.Windows.Forms
             // 
             // numScaleY
             // 
-            numScaleY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleY.BorderStyle = BorderStyle.FixedSingle;
             numScaleY.Integral = false;
             numScaleY.Location = new Drawing.Point(154, 35);
             numScaleY.MaximumValue = 3.402823E+38F;
@@ -194,7 +194,7 @@ namespace System.Windows.Forms
             // 
             // numRot
             // 
-            numRot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRot.BorderStyle = BorderStyle.FixedSingle;
             numRot.Integral = false;
             numRot.Location = new Drawing.Point(235, 35);
             numRot.MaximumValue = 3.402823E+38F;
@@ -220,7 +220,7 @@ namespace System.Windows.Forms
             // 
             // numTransX
             // 
-            numTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransX.BorderStyle = BorderStyle.FixedSingle;
             numTransX.Integral = false;
             numTransX.Location = new Drawing.Point(73, 16);
             numTransX.MaximumValue = 3.402823E+38F;
@@ -234,7 +234,7 @@ namespace System.Windows.Forms
             // 
             // numTransY
             // 
-            numTransY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTransY.BorderStyle = BorderStyle.FixedSingle;
             numTransY.Integral = false;
             numTransY.Location = new Drawing.Point(154, 16);
             numTransY.MaximumValue = 3.402823E+38F;
@@ -248,13 +248,13 @@ namespace System.Windows.Forms
             // 
             // lblTransX
             // 
-            lblTransX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblTransX.BorderStyle = BorderStyle.FixedSingle;
             lblTransX.Location = new Drawing.Point(4, 16);
             lblTransX.Name = "lblTransX";
             lblTransX.Size = new Drawing.Size(70, 20);
             lblTransX.TabIndex = 4;
             lblTransX.Text = "Translation:";
-            lblTransX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblTransX.TextAlign = ContentAlignment.MiddleRight;
             // 
             // removeAllToolStripMenuItem
             // 
@@ -264,13 +264,13 @@ namespace System.Windows.Forms
             // 
             // lblRot
             // 
-            lblRot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblRot.BorderStyle = BorderStyle.FixedSingle;
             lblRot.Location = new Drawing.Point(235, 16);
             lblRot.Name = "lblRot";
             lblRot.Size = new Drawing.Size(82, 20);
             lblRot.TabIndex = 7;
             lblRot.Text = "Rotation:";
-            lblRot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblRot.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ctxBox
             // 
@@ -317,7 +317,7 @@ namespace System.Windows.Forms
             grpTransform.Controls.Add(numTransY);
             grpTransform.Controls.Add(lblTransX);
             grpTransform.Controls.Add(lblRot);
-            grpTransform.Dock = System.Windows.Forms.DockStyle.Left;
+            grpTransform.Dock = DockStyle.Left;
             grpTransform.Enabled = false;
             grpTransform.Location = new Drawing.Point(0, 0);
             grpTransform.Name = "grpTransform";
@@ -328,17 +328,17 @@ namespace System.Windows.Forms
             // 
             // lblScaleX
             // 
-            lblScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblScaleX.BorderStyle = BorderStyle.FixedSingle;
             lblScaleX.Location = new Drawing.Point(4, 35);
             lblScaleX.Name = "lblScaleX";
             lblScaleX.Size = new Drawing.Size(70, 20);
             lblScaleX.TabIndex = 37;
             lblScaleX.Text = "Scale:";
-            lblScaleX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblScaleX.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numScaleX
             // 
-            numScaleX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScaleX.BorderStyle = BorderStyle.FixedSingle;
             numScaleX.Integral = false;
             numScaleX.Location = new Drawing.Point(73, 35);
             numScaleX.MaximumValue = 3.402823E+38F;
@@ -354,7 +354,7 @@ namespace System.Windows.Forms
             // 
             AllScale.AutoSize = true;
             AllScale.Checked = true;
-            AllScale.CheckState = System.Windows.Forms.CheckState.Checked;
+            AllScale.CheckState = CheckState.Checked;
             AllScale.Location = new Drawing.Point(108, 57);
             AllScale.Name = "AllScale";
             AllScale.Size = new Drawing.Size(53, 17);
@@ -373,7 +373,7 @@ namespace System.Windows.Forms
             grpTransAll.Controls.Add(btnClear);
             grpTransAll.Controls.Add(btnInsert);
             grpTransAll.Controls.Add(btnDelete);
-            grpTransAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            grpTransAll.Dock = DockStyle.Fill;
             grpTransAll.Enabled = false;
             grpTransAll.Location = new Drawing.Point(321, 0);
             grpTransAll.Name = "grpTransAll";
@@ -386,7 +386,7 @@ namespace System.Windows.Forms
             // 
             AllRot.AutoSize = true;
             AllRot.Checked = true;
-            AllRot.CheckState = System.Windows.Forms.CheckState.Checked;
+            AllRot.CheckState = CheckState.Checked;
             AllRot.Location = new Drawing.Point(108, 38);
             AllRot.Name = "AllRot";
             AllRot.Size = new Drawing.Size(43, 17);
@@ -398,7 +398,7 @@ namespace System.Windows.Forms
             // 
             AllTrans.AutoSize = true;
             AllTrans.Checked = true;
-            AllTrans.CheckState = System.Windows.Forms.CheckState.Checked;
+            AllTrans.CheckState = CheckState.Checked;
             AllTrans.Location = new Drawing.Point(108, 19);
             AllTrans.Name = "AllTrans";
             AllTrans.Size = new Drawing.Size(53, 17);
@@ -956,7 +956,7 @@ namespace System.Windows.Forms
                 UpdateInterpolationEditor(box);
             }
 
-            if (e.Button == Forms.MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 if (box.Enabled == true)
                 {

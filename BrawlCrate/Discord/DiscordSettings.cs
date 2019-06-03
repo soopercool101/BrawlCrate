@@ -200,25 +200,25 @@ namespace BrawlCrate.Discord
 
         public static void LoadSettings(bool update = false)
         {
-            if (BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled && !DiscordControllerSet)
+            if (Properties.Settings.Default.DiscordRPCEnabled && !DiscordControllerSet)
             {
                 DiscordController.Initialize();
                 DiscordControllerSet = true;
             }
-            else if ((enabled != BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled && enabled == false))
+            else if ((enabled != Properties.Settings.Default.DiscordRPCEnabled && enabled == false))
             {
                 DiscordController.Initialize();
                 DiscordControllerSet = true;
             }
 
-            enabled = BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled;
-            if (BrawlCrate.Properties.Settings.Default.DiscordRPCNameType == null)
+            enabled = Properties.Settings.Default.DiscordRPCEnabled;
+            if (Properties.Settings.Default.DiscordRPCNameType == null)
             {
-                BrawlCrate.Properties.Settings.Default.DiscordRPCNameType = ModNameType.Disabled;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.DiscordRPCNameType = ModNameType.Disabled;
+                Properties.Settings.Default.Save();
             }
-            modNameType = BrawlCrate.Properties.Settings.Default.DiscordRPCNameType ?? ModNameType.Disabled;
-            userNamedMod = BrawlCrate.Properties.Settings.Default.DiscordRPCNameCustom;
+            modNameType = Properties.Settings.Default.DiscordRPCNameType ?? ModNameType.Disabled;
+            userNamedMod = Properties.Settings.Default.DiscordRPCNameCustom;
             if (update)
             {
                 Update();

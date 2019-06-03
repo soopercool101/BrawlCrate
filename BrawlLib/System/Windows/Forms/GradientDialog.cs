@@ -36,14 +36,14 @@ namespace System.Windows.Forms
             // 
             // lblStartText
             // 
-            lblStartText.BackColor = System.Drawing.Color.White;
-            lblStartText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblStartText.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblStartText.BackColor = Color.White;
+            lblStartText.BorderStyle = BorderStyle.FixedSingle;
+            lblStartText.Font = new Font("Courier New", 9F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStartText.Location = new Drawing.Point(69, 8);
             lblStartText.Name = "lblStartText";
             lblStartText.Size = new Drawing.Size(154, 20);
             lblStartText.TabIndex = 4;
-            lblStartText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblStartText.TextAlign = ContentAlignment.MiddleCenter;
             lblStartText.Click += new EventHandler(lblStartText_Click);
             // 
             // label2
@@ -53,11 +53,11 @@ namespace System.Windows.Forms
             label2.Size = new Drawing.Size(71, 20);
             label2.TabIndex = 3;
             label2.Text = "Start Color:";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblStartColor
             // 
-            lblStartColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblStartColor.BorderStyle = BorderStyle.FixedSingle;
             lblStartColor.Location = new Drawing.Point(222, 8);
             lblStartColor.Name = "lblStartColor";
             lblStartColor.Size = new Drawing.Size(40, 20);
@@ -66,14 +66,14 @@ namespace System.Windows.Forms
             // 
             // lblEndText
             // 
-            lblEndText.BackColor = System.Drawing.Color.White;
-            lblEndText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            lblEndText.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblEndText.BackColor = Color.White;
+            lblEndText.BorderStyle = BorderStyle.FixedSingle;
+            lblEndText.Font = new Font("Courier New", 9F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             lblEndText.Location = new Drawing.Point(69, 52);
             lblEndText.Name = "lblEndText";
             lblEndText.Size = new Drawing.Size(154, 20);
             lblEndText.TabIndex = 4;
-            lblEndText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblEndText.TextAlign = ContentAlignment.MiddleCenter;
             lblEndText.Click += new EventHandler(lblEndText_Click);
             // 
             // label4
@@ -83,11 +83,11 @@ namespace System.Windows.Forms
             label4.Size = new Drawing.Size(68, 20);
             label4.TabIndex = 3;
             label4.Text = "End Color:";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label4.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblEndColor
             // 
-            lblEndColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblEndColor.BorderStyle = BorderStyle.FixedSingle;
             lblEndColor.Location = new Drawing.Point(222, 52);
             lblEndColor.Name = "lblEndColor";
             lblEndColor.Size = new Drawing.Size(40, 20);
@@ -96,7 +96,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnOkay.Anchor = AnchorStyles.Bottom;
             btnOkay.Location = new Drawing.Point(70, 119);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(65, 23);
@@ -107,7 +107,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnCancel.Anchor = AnchorStyles.Bottom;
             btnCancel.Location = new Drawing.Point(141, 119);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(65, 23);
@@ -128,7 +128,7 @@ namespace System.Windows.Forms
             // 
             // pnlPreview
             // 
-            pnlPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlPreview.BorderStyle = BorderStyle.FixedSingle;
             pnlPreview.Location = new Drawing.Point(12, 81);
             pnlPreview.Name = "pnlPreview";
             pnlPreview.Size = new Drawing.Size(250, 27);
@@ -148,7 +148,7 @@ namespace System.Windows.Forms
             Controls.Add(pnlPreview);
             Controls.Add(btnCancel);
             Controls.Add(btnOkay);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "GradientDialog";

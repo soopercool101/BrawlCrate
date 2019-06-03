@@ -238,7 +238,7 @@ namespace System.Windows.Forms
             }
 
             float z = e.Delta / 120.0f;
-            if (Control.ModifierKeys == Keys.Shift)
+            if (ModifierKeys == Keys.Shift)
             {
                 z *= 32;
             }
@@ -246,7 +246,7 @@ namespace System.Windows.Forms
             ModelPanelViewport v = HighlightedViewport;
             v.Zoom(-z * v._zoomFactor);
 
-            if (Control.ModifierKeys == Keys.Alt)
+            if (ModifierKeys == Keys.Alt)
             {
                 if (z < 0)
                 {
@@ -278,7 +278,7 @@ namespace System.Windows.Forms
 
             switch (e.Button)
             {
-                case Forms.MouseButtons.Left:
+                case MouseButtons.Left:
                     _mouseDown = true;
                     if (_dragging.Count > 0 && _viewports.Count > 1)
                     {
@@ -291,11 +291,11 @@ namespace System.Windows.Forms
 
                     break;
 
-                case Forms.MouseButtons.Right:
+                case MouseButtons.Right:
                     CurrentViewport._grabbing = true;
                     break;
 
-                case Forms.MouseButtons.Middle:
+                case MouseButtons.Middle:
                     CurrentViewport._scrolling = true;
                     break;
             }
@@ -308,7 +308,7 @@ namespace System.Windows.Forms
         {
             switch (e.Button)
             {
-                case Forms.MouseButtons.Left:
+                case MouseButtons.Left:
                     _mouseDown = false;
                     if (_draggingViewports)
                     {
@@ -331,11 +331,11 @@ namespace System.Windows.Forms
 
                     break;
 
-                case Forms.MouseButtons.Right:
+                case MouseButtons.Right:
                     CurrentViewport._grabbing = false;
                     break;
 
-                case Forms.MouseButtons.Middle:
+                case MouseButtons.Middle:
                     CurrentViewport._scrolling = false;
                     break;
 
@@ -524,7 +524,7 @@ namespace System.Windows.Forms
             }
             else if (Enabled && m.Msg == 0x100)
             {
-                if (CurrentViewport.ProcessKeys((Keys)m.WParam, Control.ModifierKeys))
+                if (CurrentViewport.ProcessKeys((Keys)m.WParam, ModifierKeys))
                 {
                     return true;
                 }

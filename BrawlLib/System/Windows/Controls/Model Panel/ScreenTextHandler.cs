@@ -89,7 +89,7 @@ namespace System.Windows.Forms
             using (Graphics g = Graphics.FromImage(_bitmap))
             {
                 g.Clear(Color.Transparent);
-                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                g.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias;
 
                 List<Vector2> _used = new List<Vector2>();
 
@@ -102,7 +102,7 @@ namespace System.Windows.Forms
                             v._z > 0 && v._z < 1 && //near and far depth values
                             !_used.Contains(new Vector2(v._x, v._y)))
                         {
-                            g.DrawString(d._string, ScreenTextHandler._textFont, Brushes.Black, new PointF(v._x, v._y));
+                            g.DrawString(d._string, _textFont, Brushes.Black, new PointF(v._x, v._y));
                             _used.Add(new Vector2(v._x, v._y));
                         }
                     }
@@ -111,7 +111,7 @@ namespace System.Windows.Forms
 
             GL.BindTexture(TextureTarget.Texture2D, _texId);
 
-            BitmapData data = _bitmap.LockBits(new Rectangle(0, 0, _bitmap.Width, _bitmap.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            BitmapData data = _bitmap.LockBits(new Rectangle(0, 0, _bitmap.Width, _bitmap.Height), ImageLockMode.ReadOnly, Drawing.Imaging.PixelFormat.Format32bppArgb);
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, _bitmap.Width, _bitmap.Height, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
             _bitmap.UnlockBits(data);
 

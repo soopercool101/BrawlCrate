@@ -925,7 +925,7 @@ namespace System
         public static Matrix OrthographicMatrix(float w, float h, float nearZ, float farZ) { return OrthographicMatrix(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ); }
         public static Matrix OrthographicMatrix(float left, float right, float top, float bottom, float nearZ, float farZ)
         {
-            Matrix m = Matrix.Identity;
+            Matrix m = Identity;
 
             float* p = (float*)&m;
 
@@ -948,7 +948,7 @@ namespace System
         public static Matrix ReverseOrthographicMatrix(float w, float h, float nearZ, float farZ) { return ReverseOrthographicMatrix(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ); }
         public static Matrix ReverseOrthographicMatrix(float left, float right, float top, float bottom, float nearZ, float farZ)
         {
-            Matrix m = Matrix.Identity;
+            Matrix m = Identity;
 
             float* p = (float*)&m;
 
@@ -1164,7 +1164,7 @@ namespace System
 
         public static Matrix AxisAngleMatrix(Vector3 point1, Vector3 point2)
         {
-            Matrix m = Matrix.Identity;
+            Matrix m = Identity;
             //Equal points will cause a corrupt matrix
             if (point1 != point2)
             {
@@ -1205,7 +1205,7 @@ namespace System
             Vector3 xaxis = up.Cross(zaxis).Normalize();
             Vector3 yaxis = zaxis.Cross(xaxis).Normalize();
 
-            Matrix m = Matrix.Identity;
+            Matrix m = Identity;
             float* pOut = (float*)&m;
 
             pOut[0] = xaxis._x;
@@ -1235,7 +1235,7 @@ namespace System
             Vector3 xaxis = up.Cross(zaxis).Normalize();
             Vector3 yaxis = xaxis.Cross(zaxis).Normalize();
 
-            Matrix m = Matrix.Identity;
+            Matrix m = Identity;
             float* pOut = (float*)&m;
 
             pOut[0] = xaxis._x;
@@ -1288,7 +1288,7 @@ namespace System
                         {
                             if (pivotIdx[k] == -1)
                             {
-                                float absVal = System.Math.Abs(inverse[j, k]);
+                                float absVal = Math.Abs(inverse[j, k]);
                                 if (absVal > maxPivot)
                                 {
                                     maxPivot = absVal;

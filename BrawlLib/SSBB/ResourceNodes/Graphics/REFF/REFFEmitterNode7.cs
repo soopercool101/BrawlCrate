@@ -221,7 +221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => (ReffType)_drawSetting.ptcltype;
             set
             {
-                if (!(ParticleType >= SSBBTypes.ReffType.Stripe && value >= SSBBTypes.ReffType.Stripe))
+                if (!(ParticleType >= ReffType.Stripe && value >= ReffType.Stripe))
                 {
                     typeOption2._data = 0;
                 }
@@ -237,7 +237,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType == SSBBTypes.ReffType.Billboard)
+                if (ParticleType == ReffType.Billboard)
                 {
                     return ((BillboardAssist)_drawSetting.typeOption).ToString();
                 }
@@ -248,7 +248,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType == SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
+                if (ParticleType == ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
                     _drawSetting.typeOption = (byte)(BillboardAssist)Enum.Parse(typeof(BillboardAssist), value);
                     SignalPropertyChange();
@@ -260,7 +260,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe)
+                if (ParticleType >= ReffType.Stripe)
                 {
                     return ((StripeAssist)_drawSetting.typeOption).ToString();
                 }
@@ -271,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
+                if (ParticleType >= ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
                     _drawSetting.typeOption = (byte)(StripeAssist)Enum.Parse(typeof(StripeAssist), value);
                     SignalPropertyChange();
@@ -283,7 +283,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType != SSBBTypes.ReffType.Billboard)
+                if (ParticleType != ReffType.Billboard)
                 {
                     return ((Assist)_drawSetting.typeOption).ToString();
                 }
@@ -294,7 +294,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType != SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
+                if (ParticleType != ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
                     _drawSetting.typeOption = (byte)(Assist)Enum.Parse(typeof(Assist), value);
                     SignalPropertyChange();
@@ -306,7 +306,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType == SSBBTypes.ReffType.Billboard)
+                if (ParticleType == ReffType.Billboard)
                 {
                     return ((BillboardAhead)_drawSetting.typeDir).ToString();
                 }
@@ -317,7 +317,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType == SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
+                if (ParticleType == ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
                     _drawSetting.typeDir = (byte)(BillboardAhead)Enum.Parse(typeof(BillboardAhead), value);
                     SignalPropertyChange();
@@ -329,7 +329,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType != SSBBTypes.ReffType.Billboard)
+                if (ParticleType != ReffType.Billboard)
                 {
                     return ((Ahead)_drawSetting.typeOption).ToString();
                 }
@@ -340,7 +340,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType != SSBBTypes.ReffType.Billboard && !string.IsNullOrEmpty(value))
+                if (ParticleType != ReffType.Billboard && !string.IsNullOrEmpty(value))
                 {
                     _drawSetting.typeOption = (byte)(Ahead)Enum.Parse(typeof(Ahead), value);
                     SignalPropertyChange();
@@ -358,7 +358,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe)
+                if (ParticleType >= ReffType.Stripe)
                 {
                     return ((StripeConnect)typeOption2[0, 3]).ToString();
                 }
@@ -369,7 +369,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
+                if (ParticleType >= ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
                     typeOption2[0, 3] = (byte)(StripeConnect)Enum.Parse(typeof(StripeConnect), value);
                     SignalPropertyChange();
@@ -381,7 +381,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe)
+                if (ParticleType >= ReffType.Stripe)
                 {
                     return ((StripeInitialPrevAxis)typeOption2[3, 3]).ToString();
                 }
@@ -392,7 +392,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
+                if (ParticleType >= ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
                     typeOption2[3, 3] = (byte)(StripeInitialPrevAxis)Enum.Parse(typeof(StripeInitialPrevAxis), value);
                     SignalPropertyChange();
@@ -404,7 +404,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe)
+                if (ParticleType >= ReffType.Stripe)
                 {
                     return ((StripeTexmapType)typeOption2[6, 1]).ToString();
                 }
@@ -415,7 +415,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
+                if (ParticleType >= ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
                     typeOption2[6, 1] = (byte)(StripeTexmapType)Enum.Parse(typeof(StripeTexmapType), value);
                     SignalPropertyChange();
@@ -427,7 +427,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType == SSBBTypes.ReffType.Directional)
+                if (ParticleType == ReffType.Directional)
                 {
                     return ((DirectionalPivot)typeOption2._data).ToString();
                 }
@@ -438,7 +438,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType == SSBBTypes.ReffType.Directional && !string.IsNullOrEmpty(value))
+                if (ParticleType == ReffType.Directional && !string.IsNullOrEmpty(value))
                 {
                     typeOption2._data = (byte)(DirectionalPivot)Enum.Parse(typeof(StripeTexmapType), value);
                     SignalPropertyChange();
@@ -451,7 +451,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType == SSBBTypes.ReffType.Directional)
+                if (ParticleType == ReffType.Directional)
                 {
                     return (_drawSetting.typeOption0 != 0).ToString();
                 }
@@ -462,7 +462,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType == SSBBTypes.ReffType.Directional && !string.IsNullOrEmpty(value))
+                if (ParticleType == ReffType.Directional && !string.IsNullOrEmpty(value))
                 {
                     bool.TryParse(value, out bool b);
                     _drawSetting.typeOption0 = (byte)(b ? 1 : 0);
@@ -475,7 +475,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe)
+                if (ParticleType >= ReffType.Stripe)
                 {
                     return _drawSetting.typeOption0.ToString();
                 }
@@ -486,7 +486,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType >= SSBBTypes.ReffType.Stripe && !string.IsNullOrEmpty(value))
+                if (ParticleType >= ReffType.Stripe && !string.IsNullOrEmpty(value))
                 {
                     byte.TryParse(value, out byte b);
                     if (b >= 3)
@@ -504,7 +504,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType == SSBBTypes.ReffType.Directional)
+                if (ParticleType == ReffType.Directional)
                 {
                     return ((Face)_drawSetting.typeOption1).ToString();
                 }
@@ -515,7 +515,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType == SSBBTypes.ReffType.Directional && !string.IsNullOrEmpty(value))
+                if (ParticleType == ReffType.Directional && !string.IsNullOrEmpty(value))
                 {
                     _drawSetting.typeOption1 = (byte)(Face)Enum.Parse(typeof(Face), value);
                     SignalPropertyChange();
@@ -528,7 +528,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (ParticleType == SSBBTypes.ReffType.SmoothStripe)
+                if (ParticleType == ReffType.SmoothStripe)
                 {
                     return _drawSetting.typeOption1.ToString();
                 }
@@ -539,7 +539,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (ParticleType == SSBBTypes.ReffType.SmoothStripe && !string.IsNullOrEmpty(value))
+                if (ParticleType == ReffType.SmoothStripe && !string.IsNullOrEmpty(value))
                 {
                     byte.TryParse(value, out byte b);
                     if (b >= 1)

@@ -640,7 +640,7 @@ namespace System
 
         public static Matrix34 EnvironmentTexMtx()
         {
-            Matrix34 m = Matrix34.Identity;
+            Matrix34 m = Identity;
             m[0] = 0.5f;
             m[3] = 0.5f;
             m[5] = -0.5f;
@@ -715,10 +715,10 @@ namespace System
             {
                 SCN0CameraNode camNode = (SCN0CameraNode)node.CameraGroup.Children[refCam];
                 camNode.GetModelViewMatrix(frame, out Matrix cm, out Matrix cmInv);
-                return (Matrix)Matrix34.EnvironmentTexMtx() * cm.GetRotationMatrix();
+                return (Matrix)EnvironmentTexMtx() * cm.GetRotationMatrix();
             }
 
-            return (Matrix)Matrix34.EnvironmentTexMtx() * v.Camera._matrix.GetRotationMatrix();
+            return (Matrix)EnvironmentTexMtx() * v.Camera._matrix.GetRotationMatrix();
         }
 
         public static Matrix EnvLightMap(int refLight, SCN0Node node, ModelPanelViewport v, float frame)

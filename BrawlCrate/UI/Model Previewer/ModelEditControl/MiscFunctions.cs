@@ -525,7 +525,7 @@ namespace System.Windows.Forms
                     {
                         foreach (CollisionPlane plane in obj._planes)
                         {
-                            if (plane._type == BrawlLib.SSBBTypes.CollisionPlaneType.Floor)
+                            if (plane._type == CollisionPlaneType.Floor)
                             {
                                 if (plane.PointLeft._x < v2._x && plane.PointRight._x > v2._x)
                                 {
@@ -658,7 +658,7 @@ namespace System.Windows.Forms
             SCN0FogNode._generateTangents = settings.GenTansFog;
             SCN0CameraNode._generateTangents = settings.GenTansCam;
 
-            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder = IO.Path.GetDirectoryName(Reflection.Assembly.GetEntryAssembly().Location);
 
             string t = settings._screenCapPath;
             ScreenCapBgLocText.Text = !string.IsNullOrEmpty(t) ? t : applicationFolder + "\\ScreenCaptures";

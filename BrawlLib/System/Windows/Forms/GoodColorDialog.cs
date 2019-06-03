@@ -14,8 +14,8 @@ namespace System.Windows.Forms
             // 
             // goodColorControl21
             // 
-            goodColorControl21.Color = System.Drawing.Color.Empty;
-            goodColorControl21.Dock = System.Windows.Forms.DockStyle.Fill;
+            goodColorControl21.Color = Color.Empty;
+            goodColorControl21.Dock = DockStyle.Fill;
             goodColorControl21.EditAlpha = true;
             goodColorControl21.Location = new Drawing.Point(0, 0);
             goodColorControl21.Name = "goodColorControl21";
@@ -27,7 +27,7 @@ namespace System.Windows.Forms
             // 
             ClientSize = new Drawing.Size(335, 253);
             Controls.Add(goodColorControl21);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "GoodColorDialog";

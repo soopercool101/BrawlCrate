@@ -38,7 +38,7 @@ namespace System.Windows.Forms
             // 
             // listBox1
             // 
-            listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBox1.Dock = DockStyle.Fill;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
             listBox1.Location = new Drawing.Point(0, 0);
@@ -58,7 +58,7 @@ namespace System.Windows.Forms
             // 
             // listBox2
             // 
-            listBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBox2.Dock = DockStyle.Fill;
             listBox2.FormattingEnabled = true;
             listBox2.IntegralHeight = false;
             listBox2.Location = new Drawing.Point(3, 0);
@@ -103,7 +103,7 @@ namespace System.Windows.Forms
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Drawing.Size(204, 45);
             trackBar1.TabIndex = 6;
-            trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            trackBar1.TickStyle = TickStyle.None;
             trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
             // 
             // label4
@@ -186,7 +186,7 @@ namespace System.Windows.Forms
             // 
             panel1.Controls.Add(listBox2);
             panel1.Controls.Add(splitter1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            panel1.Dock = DockStyle.Right;
             panel1.Location = new Drawing.Point(256, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(264, 49);

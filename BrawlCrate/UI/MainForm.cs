@@ -55,17 +55,17 @@ namespace BrawlCrate
             InitializeComponent();
             Text = Program.AssemblyTitle;
 
-            _autoUpdate = BrawlCrate.Properties.Settings.Default.UpdateAutomatically;
-            _displayPropertyDescription = BrawlCrate.Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable;
-            _updatesOnStartup = BrawlCrate.Properties.Settings.Default.CheckUpdatesAtStartup;
-            _docUpdates = BrawlCrate.Properties.Settings.Default.GetDocumentationUpdates;
-            _showHex = BrawlCrate.Properties.Settings.Default.ShowHex;
+            _autoUpdate = Properties.Settings.Default.UpdateAutomatically;
+            _displayPropertyDescription = Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable;
+            _updatesOnStartup = Properties.Settings.Default.CheckUpdatesAtStartup;
+            _docUpdates = Properties.Settings.Default.GetDocumentationUpdates;
+            _showHex = Properties.Settings.Default.ShowHex;
             _autoCompressModules = BrawlLib.Properties.Settings.Default.AutoCompressModules;
             _autoCompressPCS = BrawlLib.Properties.Settings.Default.AutoCompressFighterPCS;
             _autoDecompressPAC = BrawlLib.Properties.Settings.Default.AutoDecompressFighterPAC;
             _autoCompressStages = BrawlLib.Properties.Settings.Default.AutoCompressStages;
-            _autoPlayAudio = BrawlCrate.Properties.Settings.Default.AutoPlayAudio;
-            _showFullPath = BrawlCrate.Properties.Settings.Default.ShowFullPath;
+            _autoPlayAudio = Properties.Settings.Default.AutoPlayAudio;
+            _showFullPath = Properties.Settings.Default.ShowFullPath;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
             if (CheckUpdatesOnStartup)
@@ -95,10 +95,10 @@ namespace BrawlCrate
                 RecentFileToolStripItem = recentFilesToolStripMenuItem
             };
 
-            if (BrawlCrate.Properties.Settings.Default.APIEnabled)
+            if (Properties.Settings.Default.APIEnabled)
             {
-                API.BrawlAPI.Plugins.Clear();
-                API.BrawlAPI.Loaders.Clear();
+                BrawlAPI.Plugins.Clear();
+                BrawlAPI.Loaders.Clear();
                 string plugins = $"{Application.StartupPath}/Plugins";
                 string loaders = $"{Application.StartupPath}/Loaders";
 
@@ -111,7 +111,7 @@ namespace BrawlCrate
                 {
                     foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
                     {
-                        API.BrawlAPI.CreatePlugin(str, true);
+                        BrawlAPI.CreatePlugin(str, true);
                     }
                 }
             }
@@ -187,8 +187,8 @@ namespace BrawlCrate
             {
                 _displayPropertyDescription = value;
 
-                BrawlCrate.Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable = _displayPropertyDescription;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable = _displayPropertyDescription;
+                Properties.Settings.Default.Save();
                 UpdatePropertyDescriptionBox(propertyGrid1.SelectedGridItem);
             }
         }
@@ -202,8 +202,8 @@ namespace BrawlCrate
             {
                 _updatesOnStartup = value;
 
-                BrawlCrate.Properties.Settings.Default.CheckUpdatesAtStartup = _updatesOnStartup;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.CheckUpdatesAtStartup = _updatesOnStartup;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -216,8 +216,8 @@ namespace BrawlCrate
             {
                 _docUpdates = value;
 
-                BrawlCrate.Properties.Settings.Default.GetDocumentationUpdates = _docUpdates;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.GetDocumentationUpdates = _docUpdates;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -286,8 +286,8 @@ namespace BrawlCrate
             {
                 _autoPlayAudio = value;
 
-                BrawlCrate.Properties.Settings.Default.AutoPlayAudio = _autoPlayAudio;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.AutoPlayAudio = _autoPlayAudio;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -301,8 +301,8 @@ namespace BrawlCrate
             {
                 _autoUpdate = value;
 
-                BrawlCrate.Properties.Settings.Default.UpdateAutomatically = _autoUpdate;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.UpdateAutomatically = _autoUpdate;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -315,8 +315,8 @@ namespace BrawlCrate
             {
                 _showHex = value;
 
-                BrawlCrate.Properties.Settings.Default.ShowHex = _showHex;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.ShowHex = _showHex;
+                Properties.Settings.Default.Save();
                 resourceTree_SelectionChanged(null, null);
             }
         }
@@ -344,8 +344,8 @@ namespace BrawlCrate
             {
                 _showFullPath = value;
 
-                BrawlCrate.Properties.Settings.Default.ShowFullPath = _showFullPath;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.ShowFullPath = _showFullPath;
+                Properties.Settings.Default.Save();
                 UpdateName();
             }
         }
@@ -620,7 +620,7 @@ namespace BrawlCrate
                     }
                 }
 
-                if (newControl == null && MainForm.Instance.ShowHex && !(node is RELEntryNode || node is RELNode))
+                if (newControl == null && Instance.ShowHex && !(node is RELEntryNode || node is RELNode))
                 {
                     if (node.WorkingUncompressed.Length > 0)
                     {
@@ -908,7 +908,7 @@ namespace BrawlCrate
 
         private void onPluginClicked(object sender, EventArgs e)
         {
-            PluginScript plg = API.BrawlAPI.Plugins.Find(x => x.Name == ((ToolStripItem)sender).Text);
+            PluginScript plg = BrawlAPI.Plugins.Find(x => x.Name == ((ToolStripItem)sender).Text);
             plg?.Execute();
         }
 

@@ -116,7 +116,7 @@ namespace System.Windows.Forms
                 return SaveAs(r);
             }
 
-            r.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
+            r.Merge(ModifierKeys == (Keys.Control | Keys.Shift));
             r.Export(r._origPath);
             r.IsDirty = false;
             return true;
@@ -184,7 +184,7 @@ namespace System.Windows.Forms
 
         private void txtDescription_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(e.LinkText);
+            Process.Start(e.LinkText);
         }
 
         private void txtDescription_MouseUp(object sender, MouseEventArgs e)

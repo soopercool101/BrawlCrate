@@ -236,7 +236,7 @@ namespace Be.Windows.Forms
             {
                 Keys vc = (Keys)m.WParam.ToInt32();
 
-                Keys keyData = vc | Control.ModifierKeys;
+                Keys keyData = vc | ModifierKeys;
 
                 // detect whether key down event should be raised
                 bool hasMessageHandler = MessageHandlers.ContainsKey(keyData);
@@ -731,7 +731,7 @@ namespace Be.Windows.Forms
             #region PreProcessWmChar methods
             public virtual bool PreProcessWmChar(ref Message m)
             {
-                if (Control.ModifierKeys == Keys.Control)
+                if (ModifierKeys == Keys.Control)
                 {
                     return _hexBox.BasePreProcessMessage(ref m);
                 }
@@ -809,7 +809,7 @@ namespace Be.Windows.Forms
                         sNewCb = sCb.Substring(0, 1) + sNewCb;
                     }
 
-                    byte newcb = byte.Parse(sNewCb, System.Globalization.NumberStyles.AllowHexSpecifier, System.Threading.Thread.CurrentThread.CurrentCulture);
+                    byte newcb = byte.Parse(sNewCb, NumberStyles.AllowHexSpecifier, System.Threading.Thread.CurrentThread.CurrentCulture);
 
                     if (isInsertMode)
                     {
@@ -844,7 +844,7 @@ namespace Be.Windows.Forms
             {
                 Keys vc = (Keys)m.WParam.ToInt32();
 
-                Keys keyData = vc | Control.ModifierKeys;
+                Keys keyData = vc | ModifierKeys;
 
                 switch (keyData)
                 {
@@ -1086,7 +1086,7 @@ namespace Be.Windows.Forms
             {
                 Keys vc = (Keys)m.WParam.ToInt32();
 
-                Keys keyData = vc | Control.ModifierKeys;
+                Keys keyData = vc | ModifierKeys;
 
                 switch (keyData)
                 {
@@ -1126,7 +1126,7 @@ namespace Be.Windows.Forms
             #region PreProcessWmChar methods
             public override bool PreProcessWmChar(ref Message m)
             {
-                if (Control.ModifierKeys == Keys.Control)
+                if (ModifierKeys == Keys.Control)
                 {
                     return _hexBox.BasePreProcessMessage(ref m);
                 }
@@ -1564,7 +1564,7 @@ namespace Be.Windows.Forms
                     }
 
                     // perform scroll immediately only if last refresh is very old
-                    int currentThumbTrack = System.Environment.TickCount;
+                    int currentThumbTrack = Environment.TickCount;
                     if (currentThumbTrack - _lastThumbtrack > THUMPTRACKDELAY)
                     {
                         PerformScrollThumbTrack(null, null);
@@ -2383,7 +2383,7 @@ namespace Be.Windows.Forms
             string text;
             if (inStringArea)
             {
-                text = System.Text.Encoding.ASCII.GetString(buffer, 0, buffer.Length);
+                text = Encoding.ASCII.GetString(buffer, 0, buffer.Length);
             }
             else
             {
@@ -2508,7 +2508,7 @@ namespace Be.Windows.Forms
 
             if (inStringArea)
             {
-                buffer = System.Text.Encoding.ASCII.GetBytes(s);
+                buffer = Encoding.ASCII.GetBytes(s);
             }
             else
             {
@@ -2523,7 +2523,7 @@ namespace Be.Windows.Forms
 
                     if (byteString.Length == 2)
                     {
-                        b.Add(byte.Parse(byteString, System.Globalization.NumberStyles.HexNumber, CultureInfo.InvariantCulture));
+                        b.Add(byte.Parse(byteString, NumberStyles.HexNumber, CultureInfo.InvariantCulture));
                         byteString = "";
                     }
                 }
@@ -4299,7 +4299,7 @@ namespace Be.Windows.Forms
 
         private bool ConvertHexToByte(string hex, out byte b)
         {
-            bool isByte = byte.TryParse(hex, System.Globalization.NumberStyles.HexNumber, System.Threading.Thread.CurrentThread.CurrentCulture, out b);
+            bool isByte = byte.TryParse(hex, NumberStyles.HexNumber, System.Threading.Thread.CurrentThread.CurrentCulture, out b);
             return isByte;
         }
 

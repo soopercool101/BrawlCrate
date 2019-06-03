@@ -29,12 +29,12 @@ namespace System.Windows.Forms
             return new ModelPanelViewportInfo()
             {
                 _ambient = _ambient,
-                _backColor = (ARGBPixel)base.BackgroundColor,
+                _backColor = (ARGBPixel)BackgroundColor,
                 _bgImagePath = "",
-                _bgType = base.BackgroundImageType,
+                _bgType = BackgroundImageType,
                 _diffuse = _diffuse,
                 _emission = _emission,
-                _enabled = base.Enabled,
+                _enabled = Enabled,
                 _lightPosition = _lightPosition,
                 _percentages = _percentages,
                 _renderAttrib = _renderAttrib,

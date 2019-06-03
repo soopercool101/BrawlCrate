@@ -123,7 +123,7 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnLock);
             panel1.Controls.Add(lblBoneName);
             panel1.Controls.Add(btnRemove);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Drawing.Point(130, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(130, 103);
@@ -212,8 +212,8 @@ namespace System.Windows.Forms
             // 
             // lstBoneWeights
             // 
-            lstBoneWeights.Dock = System.Windows.Forms.DockStyle.Left;
-            lstBoneWeights.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            lstBoneWeights.Dock = DockStyle.Left;
+            lstBoneWeights.DrawMode = DrawMode.OwnerDrawFixed;
             lstBoneWeights.FormattingEnabled = true;
             lstBoneWeights.IntegralHeight = false;
             lstBoneWeights.Location = new Drawing.Point(0, 0);

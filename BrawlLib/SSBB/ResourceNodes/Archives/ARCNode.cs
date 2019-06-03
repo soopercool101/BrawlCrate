@@ -303,7 +303,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public byte GroupID { get => _group; set { _group = value; SignalPropertyChange(); UpdateName(); } }
 
         [Category("ARC Entry"), Browsable(true)]
-        public int AbsoluteIndex => base.Index;
+        public int AbsoluteIndex => Index;
 
         internal short _redirectIndex = -1;
 

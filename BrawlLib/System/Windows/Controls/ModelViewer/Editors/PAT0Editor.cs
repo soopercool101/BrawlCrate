@@ -32,8 +32,8 @@ namespace System.Windows.Forms
             // 
             // texBox
             // 
-            texBox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            texBox.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             texBox.FormattingEnabled = true;
             texBox.Location = new Drawing.Point(108, 20);
             texBox.Name = "texBox";
@@ -43,9 +43,9 @@ namespace System.Windows.Forms
             // 
             // pltBox
             // 
-            pltBox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            pltBox.BackColor = System.Drawing.SystemColors.Window;
+            pltBox.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            pltBox.BackColor = SystemColors.Window;
             pltBox.FormattingEnabled = true;
             pltBox.Location = new Drawing.Point(108, 47);
             pltBox.Name = "pltBox";
@@ -71,7 +71,7 @@ namespace System.Windows.Forms
             grpEdit.Controls.Add(texBox);
             grpEdit.Controls.Add(btnCut);
             grpEdit.Controls.Add(label2);
-            grpEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            grpEdit.Dock = DockStyle.Fill;
             grpEdit.Location = new Drawing.Point(0, 0);
             grpEdit.Name = "grpEdit";
             grpEdit.Size = new Drawing.Size(402, 77);

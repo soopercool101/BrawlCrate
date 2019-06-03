@@ -719,10 +719,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 pos = GetStart(index),
                 aim = GetEnd(index),
 
-                diffAttnK = LightType != SSBBTypes.LightType.Directional ?
+                diffAttnK = LightType != LightType.Directional ?
                 GetLightDistCoefs(index) : new Vector3(1.0f, 0.0f, 0.0f),
 
-                diffAttnA = LightType == SSBBTypes.LightType.Spotlight ?
+                diffAttnA = LightType == LightType.Spotlight ?
                 GetLightSpotCoefs(index) : new Vector3(1.0f, 0.0f, 0.0f),
 
                 specAttnK = SpecularEnabled ?

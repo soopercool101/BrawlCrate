@@ -87,9 +87,9 @@ namespace Be.Windows.Forms
         private void UpdateFindBuffer()
         {
             string text = Text ?? string.Empty;
-            FindBuffer = ASCIIEncoding.ASCII.GetBytes(text);
-            FindBufferLowerCase = ASCIIEncoding.ASCII.GetBytes(text.ToLower());
-            FindBufferUpperCase = ASCIIEncoding.ASCII.GetBytes(text.ToUpper());
+            FindBuffer = Encoding.ASCII.GetBytes(text);
+            FindBufferLowerCase = Encoding.ASCII.GetBytes(text.ToLower());
+            FindBufferUpperCase = Encoding.ASCII.GetBytes(text.ToUpper());
         }
     }
 }

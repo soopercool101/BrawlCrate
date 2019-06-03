@@ -67,14 +67,14 @@ namespace System.Windows.Forms
             // 
             // lblProgress
             // 
-            lblProgress.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            lblProgress.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             lblProgress.Location = new Drawing.Point(0, 31);
             lblProgress.Name = "lblProgress";
             lblProgress.Size = new Drawing.Size(377, 23);
             lblProgress.TabIndex = 4;
             lblProgress.Text = "0/0";
-            lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblProgress.TextAlign = Drawing.ContentAlignment.MiddleCenter;
             // 
             // tmrUpdate
             // 
@@ -83,8 +83,8 @@ namespace System.Windows.Forms
             // 
             // lstStreams
             // 
-            lstStreams.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom);
-            lstStreams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            lstStreams.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom);
+            lstStreams.DropDownStyle = ComboBoxStyle.DropDownList;
             lstStreams.FormattingEnabled = true;
             lstStreams.Location = new Drawing.Point(219, 34);
             lstStreams.Name = "lstStreams";
@@ -94,7 +94,7 @@ namespace System.Windows.Forms
             // 
             // panel2
             // 
-            panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            panel2.Anchor = AnchorStyles.Top;
             panel2.Controls.Add(btnPlay);
             panel2.Controls.Add(btnRewind);
             panel2.Controls.Add(chkLoop);
@@ -105,12 +105,12 @@ namespace System.Windows.Forms
             // 
             // trackBarVolume
             // 
-            trackBarVolume.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            trackBarVolume.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Right);
             trackBarVolume.Location = new Drawing.Point(329, 31);
             trackBarVolume.Maximum = 100;
             trackBarVolume.Name = "trackBarVolume";
-            trackBarVolume.Orientation = System.Windows.Forms.Orientation.Vertical;
+            trackBarVolume.Orientation = Orientation.Vertical;
             trackBarVolume.Size = new Drawing.Size(45, 89);
             trackBarVolume.TabIndex = 6;
             trackBarVolume.TickFrequency = 25;
@@ -119,8 +119,8 @@ namespace System.Windows.Forms
             // 
             // trackBarPosition
             // 
-            trackBarPosition.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            trackBarPosition.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             trackBarPosition.Location = new Drawing.Point(0, 4);
             trackBarPosition.Name = "trackBarPosition";
             trackBarPosition.Size = new Drawing.Size(377, 45);

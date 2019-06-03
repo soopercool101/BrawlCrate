@@ -160,7 +160,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (e.Button == Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 if (DoNotHighlightOnMouseMove)
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using System;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -17,6 +18,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         float GetFloat(int index);
         void SetInt(int index, int value);
         int GetInt(int index);
+        void SetRGBAPixel(int index, string value);
+        RGBAPixel GetRGBAPixel(int index);
+        void SetHex(int index, string value);
+        string GetHex(int index);
 
         void SignalPropertyChange();
     }

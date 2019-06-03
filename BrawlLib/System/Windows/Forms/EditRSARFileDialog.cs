@@ -39,7 +39,7 @@ namespace System.Windows.Forms
         {
             TargetNode = node;
             TargetNode.UpdateControl += OnUpdateCurrControl;
-            return base.ShowDialog();
+            return ShowDialog();
         }
 
         private unsafe void btnOkay_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(369, 3);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -125,7 +125,7 @@ namespace System.Windows.Forms
             // panel1
             // 
             panel1.Controls.Add(btnOkay);
-            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Drawing.Point(0, 320);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(447, 31);
@@ -136,7 +136,7 @@ namespace System.Windows.Forms
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(splitter2);
             panel2.Controls.Add(panel4);
-            panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            panel2.Dock = DockStyle.Left;
             panel2.Location = new Drawing.Point(0, 0);
             panel2.MinimumSize = new Drawing.Size(54, 0);
             panel2.Name = "panel2";
@@ -147,7 +147,7 @@ namespace System.Windows.Forms
             // 
             panel3.Controls.Add(dataListBox);
             panel3.Controls.Add(label1);
-            panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Dock = DockStyle.Fill;
             panel3.Location = new Drawing.Point(0, 0);
             panel3.Margin = new Padding(0);
             panel3.MinimumSize = new Drawing.Size(0, 15);
@@ -158,7 +158,7 @@ namespace System.Windows.Forms
             // dataListBox
             // 
             dataListBox.ContextMenuStrip = ctxData;
-            dataListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataListBox.Dock = DockStyle.Fill;
             dataListBox.FormattingEnabled = true;
             dataListBox.IntegralHeight = false;
             dataListBox.ItemHeight = 16;
@@ -242,19 +242,19 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label1.Dock = System.Windows.Forms.DockStyle.Top;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Dock = DockStyle.Top;
             label1.Location = new Drawing.Point(0, 0);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(107, 21);
             label1.TabIndex = 2;
             label1.Text = "Data";
-            label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            label1.TextAlign = Drawing.ContentAlignment.TopCenter;
             // 
             // splitter2
             // 
-            splitter2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            splitter2.Dock = DockStyle.Bottom;
             splitter2.Location = new Drawing.Point(0, 160);
             splitter2.Name = "splitter2";
             splitter2.Size = new Drawing.Size(107, 3);
@@ -266,7 +266,7 @@ namespace System.Windows.Forms
             // 
             panel4.Controls.Add(soundsListBox);
             panel4.Controls.Add(label2);
-            panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Drawing.Point(0, 163);
             panel4.Margin = new Padding(0);
             panel4.MinimumSize = new Drawing.Size(0, 15);
@@ -277,7 +277,7 @@ namespace System.Windows.Forms
             // soundsListBox
             // 
             soundsListBox.ContextMenuStrip = ctxSounds;
-            soundsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            soundsListBox.Dock = DockStyle.Fill;
             soundsListBox.FormattingEnabled = true;
             soundsListBox.IntegralHeight = false;
             soundsListBox.ItemHeight = 16;
@@ -328,15 +328,15 @@ namespace System.Windows.Forms
             // 
             // label2
             // 
-            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label2.Dock = System.Windows.Forms.DockStyle.Top;
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Dock = DockStyle.Top;
             label2.Location = new Drawing.Point(0, 0);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(107, 21);
             label2.TabIndex = 1;
             label2.Text = "Sounds";
-            label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            label2.TextAlign = Drawing.ContentAlignment.TopCenter;
             // 
             // splitter1
             // 
@@ -348,7 +348,7 @@ namespace System.Windows.Forms
             // 
             // propertyGrid
             // 
-            propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            propertyGrid.Dock = DockStyle.Fill;
             propertyGrid.HelpVisible = false;
             propertyGrid.Location = new Drawing.Point(110, 24);
             propertyGrid.Name = "propertyGrid";
@@ -357,7 +357,7 @@ namespace System.Windows.Forms
             // 
             // audioPlaybackPanel1
             // 
-            audioPlaybackPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            audioPlaybackPanel1.Dock = DockStyle.Bottom;
             audioPlaybackPanel1.Location = new Drawing.Point(110, 209);
             audioPlaybackPanel1.Name = "audioPlaybackPanel1";
             audioPlaybackPanel1.Size = new Drawing.Size(337, 111);
@@ -367,7 +367,7 @@ namespace System.Windows.Forms
             // 
             // button1
             // 
-            button1.Dock = System.Windows.Forms.DockStyle.Top;
+            button1.Dock = DockStyle.Top;
             button1.Location = new Drawing.Point(110, 0);
             button1.Name = "button1";
             button1.Size = new Drawing.Size(337, 24);
@@ -389,7 +389,7 @@ namespace System.Windows.Forms
             Name = "EditRSARFileDialog";
             ShowIcon = false;
             ShowInTaskbar = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Edit RSAR File";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

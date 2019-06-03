@@ -128,14 +128,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             AlphaSelectionB = AlphaArg.Zero;
             AlphaSelectionC = AlphaArg.Zero;
             AlphaSelectionD = AlphaArg.Zero;
-            AlphaBias = Wii.Graphics.Bias.Zero;
+            AlphaBias = Bias.Zero;
             AlphaClamp = true;
 
             ColorSelectionA = ColorArg.Zero;
             ColorSelectionB = ColorArg.Zero;
             ColorSelectionC = ColorArg.Zero;
             ColorSelectionD = ColorArg.Zero;
-            ColorBias = Wii.Graphics.Bias.Zero;
+            ColorBias = Bias.Zero;
             ColorClamp = true;
 
             //TextureMapID = TexMapID.TexMap7;

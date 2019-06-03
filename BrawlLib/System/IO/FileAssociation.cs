@@ -51,7 +51,7 @@ namespace System.IO
 
         public static bool operator ==(FileType t1, FileType t2)
         {
-            return Object.Equals(t1, t2);
+            return object.Equals(t1, t2);
         }
         public static bool operator !=(FileType t1, FileType t2) { return !(t1 == t2); }
 

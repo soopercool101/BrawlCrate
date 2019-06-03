@@ -85,7 +85,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal void Initialize(ResourceNode parent, DataSource source, int index)
         {
             _index = index;
-            base.Initialize(parent, source);
+            Initialize(parent, source);
         }
 
         public override void RemoveChild(ResourceNode child)

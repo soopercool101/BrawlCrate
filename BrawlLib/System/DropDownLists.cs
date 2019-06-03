@@ -354,7 +354,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Billboard)
+            if (node.ParticleType == ReffType.Billboard)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BillboardAssist)));
             }
@@ -368,7 +368,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            if (node.ParticleType >= ReffType.Stripe)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(StripeAssist)));
             }
@@ -382,7 +382,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType != BrawlLib.SSBBTypes.ReffType.Billboard)
+            if (node.ParticleType != ReffType.Billboard)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(Assist)));
             }
@@ -396,7 +396,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Billboard)
+            if (node.ParticleType == ReffType.Billboard)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(BillboardAhead)));
             }
@@ -410,7 +410,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType != BrawlLib.SSBBTypes.ReffType.Billboard)
+            if (node.ParticleType != ReffType.Billboard)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(Ahead)));
             }
@@ -424,7 +424,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            if (node.ParticleType >= ReffType.Stripe)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(StripeConnect)));
             }
@@ -438,7 +438,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            if (node.ParticleType >= ReffType.Stripe)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(StripeInitialPrevAxis)));
             }
@@ -452,7 +452,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType >= BrawlLib.SSBBTypes.ReffType.Stripe)
+            if (node.ParticleType >= ReffType.Stripe)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(StripeTexmapType)));
             }
@@ -466,7 +466,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Directional)
+            if (node.ParticleType == ReffType.Directional)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(DirectionalPivot)));
             }
@@ -480,7 +480,7 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             REFFEmitterNode9 node = context.Instance as REFFEmitterNode9;
-            if (node.ParticleType == BrawlLib.SSBBTypes.ReffType.Directional)
+            if (node.ParticleType == ReffType.Directional)
             {
                 return new StandardValuesCollection(Enum.GetNames(typeof(Face)));
             }

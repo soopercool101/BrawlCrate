@@ -146,13 +146,13 @@ namespace System.Windows.Forms
             // 
             // tabControl1
             // 
-            tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.Controls.Add(LightSets);
             tabControl1.Controls.Add(AmbLights);
             tabControl1.Controls.Add(Lights);
             tabControl1.Controls.Add(Fog);
             tabControl1.Controls.Add(Cameras);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -190,7 +190,7 @@ namespace System.Windows.Forms
             // 
             // cboLight7
             // 
-            cboLight7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight7.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight7.FormattingEnabled = true;
             cboLight7.Location = new Drawing.Point(536, 20);
             cboLight7.Name = "cboLight7";
@@ -200,7 +200,7 @@ namespace System.Windows.Forms
             // 
             // cboLight6
             // 
-            cboLight6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight6.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight6.FormattingEnabled = true;
             cboLight6.Location = new Drawing.Point(536, 0);
             cboLight6.Name = "cboLight6";
@@ -210,7 +210,7 @@ namespace System.Windows.Forms
             // 
             // cboLight5
             // 
-            cboLight5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight5.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight5.FormattingEnabled = true;
             cboLight5.Location = new Drawing.Point(402, 20);
             cboLight5.Name = "cboLight5";
@@ -220,7 +220,7 @@ namespace System.Windows.Forms
             // 
             // cboLight4
             // 
-            cboLight4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight4.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight4.FormattingEnabled = true;
             cboLight4.Location = new Drawing.Point(402, 0);
             cboLight4.Name = "cboLight4";
@@ -230,7 +230,7 @@ namespace System.Windows.Forms
             // 
             // cboLight3
             // 
-            cboLight3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight3.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight3.FormattingEnabled = true;
             cboLight3.Location = new Drawing.Point(268, 20);
             cboLight3.Name = "cboLight3";
@@ -240,7 +240,7 @@ namespace System.Windows.Forms
             // 
             // cboLight2
             // 
-            cboLight2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight2.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight2.FormattingEnabled = true;
             cboLight2.Location = new Drawing.Point(268, 0);
             cboLight2.Name = "cboLight2";
@@ -250,7 +250,7 @@ namespace System.Windows.Forms
             // 
             // cboLight1
             // 
-            cboLight1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight1.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight1.FormattingEnabled = true;
             cboLight1.Location = new Drawing.Point(134, 20);
             cboLight1.Name = "cboLight1";
@@ -260,7 +260,7 @@ namespace System.Windows.Forms
             // 
             // cboLight0
             // 
-            cboLight0.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLight0.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLight0.FormattingEnabled = true;
             cboLight0.Location = new Drawing.Point(134, 0);
             cboLight0.Name = "cboLight0";
@@ -270,97 +270,97 @@ namespace System.Windows.Forms
             // 
             // label38
             // 
-            label38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label38.BorderStyle = BorderStyle.FixedSingle;
             label38.Location = new Drawing.Point(483, 20);
             label38.Name = "label38";
             label38.Size = new Drawing.Size(54, 21);
             label38.TabIndex = 10;
             label38.Text = "Light 7:";
-            label38.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label38.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label37
             // 
-            label37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label37.BorderStyle = BorderStyle.FixedSingle;
             label37.Location = new Drawing.Point(483, 0);
             label37.Name = "label37";
             label37.Size = new Drawing.Size(54, 21);
             label37.TabIndex = 9;
             label37.Text = "Light 6:";
-            label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label37.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label34
             // 
-            label34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label34.BorderStyle = BorderStyle.FixedSingle;
             label34.Location = new Drawing.Point(349, 20);
             label34.Name = "label34";
             label34.Size = new Drawing.Size(54, 21);
             label34.TabIndex = 8;
             label34.Text = "Light 5:";
-            label34.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label34.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label35
             // 
-            label35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label35.BorderStyle = BorderStyle.FixedSingle;
             label35.Location = new Drawing.Point(349, 0);
             label35.Name = "label35";
             label35.Size = new Drawing.Size(54, 21);
             label35.TabIndex = 7;
             label35.Text = "Light 4:";
-            label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label35.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label36
             // 
-            label36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label36.BorderStyle = BorderStyle.FixedSingle;
             label36.Location = new Drawing.Point(215, 20);
             label36.Name = "label36";
             label36.Size = new Drawing.Size(54, 21);
             label36.TabIndex = 6;
             label36.Text = "Light 3:";
-            label36.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label36.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label32
             // 
-            label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label32.BorderStyle = BorderStyle.FixedSingle;
             label32.Location = new Drawing.Point(215, 0);
             label32.Name = "label32";
             label32.Size = new Drawing.Size(54, 21);
             label32.TabIndex = 5;
             label32.Text = "Light 2:";
-            label32.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label32.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label31
             // 
-            label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label31.BorderStyle = BorderStyle.FixedSingle;
             label31.Location = new Drawing.Point(81, 20);
             label31.Name = "label31";
             label31.Size = new Drawing.Size(54, 21);
             label31.TabIndex = 4;
             label31.Text = "Light 1:";
-            label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label31.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label33
             // 
-            label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label33.BorderStyle = BorderStyle.FixedSingle;
             label33.Location = new Drawing.Point(81, 0);
             label33.Name = "label33";
             label33.Size = new Drawing.Size(54, 21);
             label33.TabIndex = 3;
             label33.Text = "Light 0:";
-            label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label33.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label30
             // 
-            label30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label30.BorderStyle = BorderStyle.FixedSingle;
             label30.Location = new Drawing.Point(0, 0);
             label30.Name = "label30";
             label30.Size = new Drawing.Size(82, 21);
             label30.TabIndex = 0;
             label30.Text = "Ambient: ";
-            label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label30.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // cboAmb
             // 
-            cboAmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboAmb.DropDownStyle = ComboBoxStyle.DropDownList;
             cboAmb.FormattingEnabled = true;
             cboAmb.Location = new Drawing.Point(0, 20);
             cboAmb.Name = "cboAmb";
@@ -438,7 +438,7 @@ namespace System.Windows.Forms
             groupBox6.Controls.Add(numStartY);
             groupBox6.Controls.Add(numEndZ);
             groupBox6.Controls.Add(label23);
-            groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox6.Dock = DockStyle.Fill;
             groupBox6.Location = new Drawing.Point(204, 0);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Drawing.Size(447, 97);
@@ -448,7 +448,7 @@ namespace System.Windows.Forms
             // 
             // lightCut
             // 
-            lightCut.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            lightCut.FlatAppearance.BorderColor = Color.DimGray;
             lightCut.Location = new Drawing.Point(162, 73);
             lightCut.Name = "lightCut";
             lightCut.Size = new Drawing.Size(59, 20);
@@ -489,30 +489,30 @@ namespace System.Windows.Forms
             // 
             // label25
             // 
-            label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label25.BorderStyle = BorderStyle.FixedSingle;
             label25.Location = new Drawing.Point(3, 34);
             label25.Margin = new Padding(0);
             label25.Name = "label25";
             label25.Size = new Drawing.Size(70, 20);
             label25.TabIndex = 20;
             label25.Text = "Start Points";
-            label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label25.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label26
             // 
-            label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label26.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label26.BorderStyle = BorderStyle.FixedSingle;
+            label26.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label26.Location = new Drawing.Point(279, 53);
             label26.Margin = new Padding(0);
             label26.Name = "label26";
             label26.Size = new Drawing.Size(70, 20);
             label26.TabIndex = 32;
             label26.Text = "Ref Dist";
-            label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label26.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numSpotBright
             // 
-            numSpotBright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numSpotBright.BorderStyle = BorderStyle.FixedSingle;
             numSpotBright.Integral = false;
             numSpotBright.Location = new Drawing.Point(348, 34);
             numSpotBright.Margin = new Padding(0, 10, 0, 10);
@@ -527,30 +527,30 @@ namespace System.Windows.Forms
             // 
             // label24
             // 
-            label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label24.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label24.BorderStyle = BorderStyle.FixedSingle;
+            label24.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label24.Location = new Drawing.Point(279, 72);
             label24.Margin = new Padding(0);
             label24.Name = "label24";
             label24.Size = new Drawing.Size(70, 20);
             label24.TabIndex = 33;
             label24.Text = "Ref Bright";
-            label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label24.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label18
             // 
-            label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label18.BorderStyle = BorderStyle.FixedSingle;
             label18.Location = new Drawing.Point(210, 15);
             label18.Margin = new Padding(0);
             label18.Name = "label18";
             label18.Size = new Drawing.Size(70, 20);
             label18.TabIndex = 31;
             label18.Text = "Z";
-            label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label18.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numStartZ
             // 
-            numStartZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStartZ.BorderStyle = BorderStyle.FixedSingle;
             numStartZ.Integral = false;
             numStartZ.Location = new Drawing.Point(210, 34);
             numStartZ.Margin = new Padding(0);
@@ -565,7 +565,7 @@ namespace System.Windows.Forms
             // 
             // numRefBright
             // 
-            numRefBright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRefBright.BorderStyle = BorderStyle.FixedSingle;
             numRefBright.Integral = false;
             numRefBright.Location = new Drawing.Point(348, 72);
             numRefBright.Margin = new Padding(0, 10, 0, 10);
@@ -580,7 +580,7 @@ namespace System.Windows.Forms
             // 
             // numSpotCut
             // 
-            numSpotCut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numSpotCut.BorderStyle = BorderStyle.FixedSingle;
             numSpotCut.Integral = false;
             numSpotCut.Location = new Drawing.Point(348, 15);
             numSpotCut.Margin = new Padding(0, 10, 0, 10);
@@ -595,18 +595,18 @@ namespace System.Windows.Forms
             // 
             // label19
             // 
-            label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label19.BorderStyle = BorderStyle.FixedSingle;
             label19.Location = new Drawing.Point(3, 53);
             label19.Margin = new Padding(0);
             label19.Name = "label19";
             label19.Size = new Drawing.Size(70, 20);
             label19.TabIndex = 22;
             label19.Text = "End Points";
-            label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label19.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numEndY
             // 
-            numEndY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEndY.BorderStyle = BorderStyle.FixedSingle;
             numEndY.Integral = false;
             numEndY.Location = new Drawing.Point(141, 53);
             numEndY.Margin = new Padding(0, 10, 0, 10);
@@ -621,18 +621,18 @@ namespace System.Windows.Forms
             // 
             // label20
             // 
-            label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label20.BorderStyle = BorderStyle.FixedSingle;
             label20.Location = new Drawing.Point(279, 15);
             label20.Margin = new Padding(0);
             label20.Name = "label20";
             label20.Size = new Drawing.Size(70, 20);
             label20.TabIndex = 21;
             label20.Text = "Spot Cutoff";
-            label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label20.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numEndX
             // 
-            numEndX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEndX.BorderStyle = BorderStyle.FixedSingle;
             numEndX.Integral = false;
             numEndX.Location = new Drawing.Point(72, 53);
             numEndX.Margin = new Padding(0, 10, 0, 10);
@@ -647,18 +647,18 @@ namespace System.Windows.Forms
             // 
             // label21
             // 
-            label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label21.BorderStyle = BorderStyle.FixedSingle;
             label21.Location = new Drawing.Point(141, 15);
             label21.Margin = new Padding(0);
             label21.Name = "label21";
             label21.Size = new Drawing.Size(70, 20);
             label21.TabIndex = 29;
             label21.Text = "Y";
-            label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label21.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numRefDist
             // 
-            numRefDist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRefDist.BorderStyle = BorderStyle.FixedSingle;
             numRefDist.Integral = false;
             numRefDist.Location = new Drawing.Point(348, 53);
             numRefDist.Margin = new Padding(0, 10, 0, 10);
@@ -673,18 +673,18 @@ namespace System.Windows.Forms
             // 
             // label22
             // 
-            label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label22.BorderStyle = BorderStyle.FixedSingle;
             label22.Location = new Drawing.Point(72, 15);
             label22.Margin = new Padding(0);
             label22.Name = "label22";
             label22.Size = new Drawing.Size(70, 20);
             label22.TabIndex = 24;
             label22.Text = "X";
-            label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label22.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numStartX
             // 
-            numStartX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStartX.BorderStyle = BorderStyle.FixedSingle;
             numStartX.Integral = false;
             numStartX.Location = new Drawing.Point(72, 34);
             numStartX.Margin = new Padding(0);
@@ -699,7 +699,7 @@ namespace System.Windows.Forms
             // 
             // numStartY
             // 
-            numStartY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStartY.BorderStyle = BorderStyle.FixedSingle;
             numStartY.Integral = false;
             numStartY.Location = new Drawing.Point(141, 34);
             numStartY.Margin = new Padding(0);
@@ -714,7 +714,7 @@ namespace System.Windows.Forms
             // 
             // numEndZ
             // 
-            numEndZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEndZ.BorderStyle = BorderStyle.FixedSingle;
             numEndZ.Integral = false;
             numEndZ.Location = new Drawing.Point(210, 53);
             numEndZ.Margin = new Padding(0, 10, 0, 10);
@@ -729,15 +729,15 @@ namespace System.Windows.Forms
             // 
             // label23
             // 
-            label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label23.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label23.BorderStyle = BorderStyle.FixedSingle;
+            label23.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label23.Location = new Drawing.Point(279, 34);
             label23.Margin = new Padding(0);
             label23.Name = "label23";
             label23.Size = new Drawing.Size(70, 20);
             label23.TabIndex = 37;
             label23.Text = "Spec Bright";
-            label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label23.TextAlign = ContentAlignment.MiddleRight;
             // 
             // groupBox5
             // 
@@ -750,7 +750,7 @@ namespace System.Windows.Forms
             groupBox5.Controls.Add(chkLightClr);
             groupBox5.Controls.Add(label27);
             groupBox5.Controls.Add(cboLightType);
-            groupBox5.Dock = System.Windows.Forms.DockStyle.Left;
+            groupBox5.Dock = DockStyle.Left;
             groupBox5.Location = new Drawing.Point(0, 0);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Drawing.Size(204, 97);
@@ -760,7 +760,7 @@ namespace System.Windows.Forms
             // 
             // cboSpotFunc
             // 
-            cboSpotFunc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboSpotFunc.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSpotFunc.FormattingEnabled = true;
             cboSpotFunc.Location = new Drawing.Point(128, 72);
             cboSpotFunc.Name = "cboSpotFunc";
@@ -770,7 +770,7 @@ namespace System.Windows.Forms
             // 
             // cboDistFunc
             // 
-            cboDistFunc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboDistFunc.DropDownStyle = ComboBoxStyle.DropDownList;
             cboDistFunc.FormattingEnabled = true;
             cboDistFunc.Location = new Drawing.Point(128, 34);
             cboDistFunc.Name = "cboDistFunc";
@@ -780,23 +780,23 @@ namespace System.Windows.Forms
             // 
             // label29
             // 
-            label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label29.BorderStyle = BorderStyle.FixedSingle;
             label29.Location = new Drawing.Point(128, 53);
             label29.Name = "label29";
             label29.Size = new Drawing.Size(70, 20);
             label29.TabIndex = 7;
             label29.Text = "Spot Func:";
-            label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label29.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label28
             // 
-            label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label28.BorderStyle = BorderStyle.FixedSingle;
             label28.Location = new Drawing.Point(128, 15);
             label28.Name = "label28";
             label28.Size = new Drawing.Size(70, 20);
             label28.TabIndex = 6;
             label28.Text = "Dist Func:";
-            label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label28.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // chkLightSpec
             // 
@@ -833,17 +833,17 @@ namespace System.Windows.Forms
             // 
             // label27
             // 
-            label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label27.BorderStyle = BorderStyle.FixedSingle;
             label27.Location = new Drawing.Point(6, 15);
             label27.Name = "label27";
             label27.Size = new Drawing.Size(46, 21);
             label27.TabIndex = 2;
             label27.Text = "Type:";
-            label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label27.TextAlign = ContentAlignment.MiddleRight;
             // 
             // cboLightType
             // 
-            cboLightType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboLightType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboLightType.FormattingEnabled = true;
             cboLightType.Location = new Drawing.Point(51, 15);
             cboLightType.Name = "cboLightType";
@@ -870,7 +870,7 @@ namespace System.Windows.Forms
             groupBox4.Controls.Add(numFogEndZ);
             groupBox4.Controls.Add(numFogStartZ);
             groupBox4.Controls.Add(label17);
-            groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Drawing.Point(185, 0);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Drawing.Size(466, 97);
@@ -900,18 +900,18 @@ namespace System.Windows.Forms
             // 
             // label16
             // 
-            label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label16.BorderStyle = BorderStyle.FixedSingle;
             label16.Location = new Drawing.Point(6, 15);
             label16.Margin = new Padding(0);
             label16.Name = "label16";
             label16.Size = new Drawing.Size(55, 20);
             label16.TabIndex = 7;
             label16.Text = "Start Z:";
-            label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label16.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numFogEndZ
             // 
-            numFogEndZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numFogEndZ.BorderStyle = BorderStyle.FixedSingle;
             numFogEndZ.Integral = false;
             numFogEndZ.Location = new Drawing.Point(183, 15);
             numFogEndZ.Margin = new Padding(0, 10, 0, 10);
@@ -926,7 +926,7 @@ namespace System.Windows.Forms
             // 
             // numFogStartZ
             // 
-            numFogStartZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numFogStartZ.BorderStyle = BorderStyle.FixedSingle;
             numFogStartZ.Integral = false;
             numFogStartZ.Location = new Drawing.Point(60, 15);
             numFogStartZ.Margin = new Padding(0);
@@ -941,20 +941,20 @@ namespace System.Windows.Forms
             // 
             // label17
             // 
-            label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label17.BorderStyle = BorderStyle.FixedSingle;
             label17.Location = new Drawing.Point(129, 15);
             label17.Margin = new Padding(0);
             label17.Name = "label17";
             label17.Size = new Drawing.Size(55, 20);
             label17.TabIndex = 8;
             label17.Text = "End Z:";
-            label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label17.TextAlign = ContentAlignment.MiddleRight;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(label15);
             groupBox3.Controls.Add(cboFogType);
-            groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            groupBox3.Dock = DockStyle.Left;
             groupBox3.Location = new Drawing.Point(0, 0);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Drawing.Size(185, 97);
@@ -964,21 +964,21 @@ namespace System.Windows.Forms
             // 
             // label15
             // 
-            label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label15.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label15.BorderStyle = BorderStyle.FixedSingle;
+            label15.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label15.Location = new Drawing.Point(6, 15);
             label15.Margin = new Padding(0);
             label15.Name = "label15";
             label15.Size = new Drawing.Size(42, 21);
             label15.TabIndex = 38;
             label15.Text = "Type:";
-            label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label15.TextAlign = ContentAlignment.MiddleRight;
             // 
             // cboFogType
             // 
-            cboFogType.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            cboFogType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboFogType.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            cboFogType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFogType.FormattingEnabled = true;
             cboFogType.Location = new Drawing.Point(47, 15);
             cboFogType.Name = "cboFogType";
@@ -1000,7 +1000,7 @@ namespace System.Windows.Forms
             // 
             panel2.Controls.Add(groupBox2);
             panel2.Controls.Add(panel1);
-            panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel2.Dock = DockStyle.Fill;
             panel2.Location = new Drawing.Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(651, 97);
@@ -1039,7 +1039,7 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(numFovY);
-            groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Drawing.Point(149, 0);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Drawing.Size(502, 97);
@@ -1049,54 +1049,54 @@ namespace System.Windows.Forms
             // 
             // label11
             // 
-            label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label11.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label11.BorderStyle = BorderStyle.FixedSingle;
+            label11.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.Location = new Drawing.Point(266, 49);
             label11.Margin = new Padding(0);
             label11.Name = "label11";
             label11.Size = new Drawing.Size(47, 20);
             label11.TabIndex = 22;
             label11.Text = "Height:";
-            label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label11.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label8
             // 
-            label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label8.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label8.BorderStyle = BorderStyle.FixedSingle;
+            label8.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Drawing.Point(266, 11);
             label8.Margin = new Padding(0);
             label8.Name = "label8";
             label8.Size = new Drawing.Size(47, 20);
             label8.TabIndex = 9;
             label8.Text = "Twist:";
-            label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label8.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(5, 30);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(55, 20);
             label1.TabIndex = 0;
             label1.Text = "Position:";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label9
             // 
-            label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label9.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label9.BorderStyle = BorderStyle.FixedSingle;
+            label9.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.Location = new Drawing.Point(266, 30);
             label9.Margin = new Padding(0);
             label9.Name = "label9";
             label9.Size = new Drawing.Size(47, 20);
             label9.TabIndex = 10;
             label9.Text = "Fov Y:";
-            label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label9.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numPosZ
             // 
-            numPosZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosZ.BorderStyle = BorderStyle.FixedSingle;
             numPosZ.Integral = false;
             numPosZ.Location = new Drawing.Point(197, 30);
             numPosZ.Margin = new Padding(0);
@@ -1111,7 +1111,7 @@ namespace System.Windows.Forms
             // 
             // btnCut
             // 
-            btnCut.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            btnCut.FlatAppearance.BorderColor = Color.DimGray;
             btnCut.Location = new Drawing.Point(382, 50);
             btnCut.Name = "btnCut";
             btnCut.Size = new Drawing.Size(59, 20);
@@ -1152,7 +1152,7 @@ namespace System.Windows.Forms
             // 
             // numAimX
             // 
-            numAimX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numAimX.BorderStyle = BorderStyle.FixedSingle;
             numAimX.Integral = false;
             numAimX.Location = new Drawing.Point(59, 68);
             numAimX.Margin = new Padding(0, 10, 0, 10);
@@ -1167,7 +1167,7 @@ namespace System.Windows.Forms
             // 
             // numFarZ
             // 
-            numFarZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numFarZ.BorderStyle = BorderStyle.FixedSingle;
             numFarZ.Integral = false;
             numFarZ.Location = new Drawing.Point(428, 30);
             numFarZ.Margin = new Padding(0, 10, 0, 10);
@@ -1182,7 +1182,7 @@ namespace System.Windows.Forms
             // 
             // numRotY
             // 
-            numRotY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRotY.BorderStyle = BorderStyle.FixedSingle;
             numRotY.Integral = false;
             numRotY.Location = new Drawing.Point(128, 49);
             numRotY.Margin = new Padding(0, 10, 0, 10);
@@ -1197,7 +1197,7 @@ namespace System.Windows.Forms
             // 
             // numNearZ
             // 
-            numNearZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numNearZ.BorderStyle = BorderStyle.FixedSingle;
             numNearZ.Integral = false;
             numNearZ.Location = new Drawing.Point(428, 11);
             numNearZ.Margin = new Padding(0, 10, 0, 10);
@@ -1212,7 +1212,7 @@ namespace System.Windows.Forms
             // 
             // numRotX
             // 
-            numRotX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRotX.BorderStyle = BorderStyle.FixedSingle;
             numRotX.Integral = false;
             numRotX.Location = new Drawing.Point(59, 49);
             numRotX.Margin = new Padding(0, 10, 0, 10);
@@ -1227,19 +1227,19 @@ namespace System.Windows.Forms
             // 
             // label12
             // 
-            label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label12.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label12.BorderStyle = BorderStyle.FixedSingle;
+            label12.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label12.Location = new Drawing.Point(381, 30);
             label12.Margin = new Padding(0);
             label12.Name = "label12";
             label12.Size = new Drawing.Size(48, 20);
             label12.TabIndex = 27;
             label12.Text = "Far Z:";
-            label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label12.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numTwist
             // 
-            numTwist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numTwist.BorderStyle = BorderStyle.FixedSingle;
             numTwist.Integral = false;
             numTwist.Location = new Drawing.Point(312, 11);
             numTwist.Margin = new Padding(0, 10, 0, 10);
@@ -1254,19 +1254,19 @@ namespace System.Windows.Forms
             // 
             // label13
             // 
-            label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label13.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label13.BorderStyle = BorderStyle.FixedSingle;
+            label13.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label13.Location = new Drawing.Point(381, 11);
             label13.Margin = new Padding(0);
             label13.Name = "label13";
             label13.Size = new Drawing.Size(48, 20);
             label13.TabIndex = 26;
             label13.Text = "Near Z:";
-            label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label13.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numPosX
             // 
-            numPosX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosX.BorderStyle = BorderStyle.FixedSingle;
             numPosX.Integral = false;
             numPosX.Location = new Drawing.Point(59, 30);
             numPosX.Margin = new Padding(0);
@@ -1281,7 +1281,7 @@ namespace System.Windows.Forms
             // 
             // numAspect
             // 
-            numAspect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numAspect.BorderStyle = BorderStyle.FixedSingle;
             numAspect.Integral = false;
             numAspect.Location = new Drawing.Point(312, 68);
             numAspect.Margin = new Padding(0, 10, 0, 10);
@@ -1296,7 +1296,7 @@ namespace System.Windows.Forms
             // 
             // numRotZ
             // 
-            numRotZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRotZ.BorderStyle = BorderStyle.FixedSingle;
             numRotZ.Integral = false;
             numRotZ.Location = new Drawing.Point(197, 49);
             numRotZ.Margin = new Padding(0, 10, 0, 10);
@@ -1311,7 +1311,7 @@ namespace System.Windows.Forms
             // 
             // numHeight
             // 
-            numHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numHeight.BorderStyle = BorderStyle.FixedSingle;
             numHeight.Integral = false;
             numHeight.Location = new Drawing.Point(312, 49);
             numHeight.Margin = new Padding(0, 10, 0, 10);
@@ -1326,7 +1326,7 @@ namespace System.Windows.Forms
             // 
             // numPosY
             // 
-            numPosY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numPosY.BorderStyle = BorderStyle.FixedSingle;
             numPosY.Integral = false;
             numPosY.Location = new Drawing.Point(128, 30);
             numPosY.Margin = new Padding(0);
@@ -1341,41 +1341,41 @@ namespace System.Windows.Forms
             // 
             // label10
             // 
-            label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label10.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label10.BorderStyle = BorderStyle.FixedSingle;
+            label10.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.Location = new Drawing.Point(266, 68);
             label10.Margin = new Padding(0);
             label10.Name = "label10";
             label10.Size = new Drawing.Size(47, 20);
             label10.TabIndex = 23;
             label10.Text = "Aspect:";
-            label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label10.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Location = new Drawing.Point(59, 11);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
             label4.Size = new Drawing.Size(70, 20);
             label4.TabIndex = 4;
             label4.Text = "X";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
-            label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Location = new Drawing.Point(128, 11);
             label5.Margin = new Padding(0);
             label5.Name = "label5";
             label5.Size = new Drawing.Size(70, 20);
             label5.TabIndex = 7;
             label5.Text = "Y";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numAimY
             // 
-            numAimY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numAimY.BorderStyle = BorderStyle.FixedSingle;
             numAimY.Integral = false;
             numAimY.Location = new Drawing.Point(128, 68);
             numAimY.Margin = new Padding(0, 10, 0, 10);
@@ -1390,18 +1390,18 @@ namespace System.Windows.Forms
             // 
             // label2
             // 
-            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Location = new Drawing.Point(5, 68);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(55, 20);
             label2.TabIndex = 1;
             label2.Text = "Aim:";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numAimZ
             // 
-            numAimZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numAimZ.BorderStyle = BorderStyle.FixedSingle;
             numAimZ.Integral = false;
             numAimZ.Location = new Drawing.Point(197, 68);
             numAimZ.Margin = new Padding(0, 10, 0, 10);
@@ -1416,29 +1416,29 @@ namespace System.Windows.Forms
             // 
             // label3
             // 
-            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Location = new Drawing.Point(5, 49);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(55, 20);
             label3.TabIndex = 2;
             label3.Text = "Rotation:";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label6
             // 
-            label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label6.BorderStyle = BorderStyle.FixedSingle;
             label6.Location = new Drawing.Point(197, 11);
             label6.Margin = new Padding(0);
             label6.Name = "label6";
             label6.Size = new Drawing.Size(70, 20);
             label6.TabIndex = 8;
             label6.Text = "Z";
-            label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numFovY
             // 
-            numFovY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numFovY.BorderStyle = BorderStyle.FixedSingle;
             numFovY.Integral = false;
             numFovY.Location = new Drawing.Point(312, 30);
             numFovY.Margin = new Padding(0, 10, 0, 10);
@@ -1455,7 +1455,7 @@ namespace System.Windows.Forms
             // 
             panel1.Controls.Add(btnUseCamera);
             panel1.Controls.Add(groupBox1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            panel1.Dock = DockStyle.Left;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(149, 97);
@@ -1486,7 +1486,7 @@ namespace System.Windows.Forms
             // 
             // cboCamProj
             // 
-            cboCamProj.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboCamProj.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCamProj.FormattingEnabled = true;
             cboCamProj.Location = new Drawing.Point(72, 35);
             cboCamProj.Name = "cboCamProj";
@@ -1496,19 +1496,19 @@ namespace System.Windows.Forms
             // 
             // label14
             // 
-            label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label14.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label14.BorderStyle = BorderStyle.FixedSingle;
+            label14.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label14.Location = new Drawing.Point(72, 16);
             label14.Margin = new Padding(0);
             label14.Name = "label14";
             label14.Size = new Drawing.Size(70, 20);
             label14.TabIndex = 37;
             label14.Text = "Projection";
-            label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label14.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // cboCamType
             // 
-            cboCamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboCamType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCamType.FormattingEnabled = true;
             cboCamType.Location = new Drawing.Point(3, 35);
             cboCamType.Name = "cboCamType";
@@ -1518,30 +1518,30 @@ namespace System.Windows.Forms
             // 
             // label7
             // 
-            label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label7.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label7.BorderStyle = BorderStyle.FixedSingle;
+            label7.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Drawing.Point(3, 16);
             label7.Margin = new Padding(0);
             label7.Name = "label7";
             label7.Size = new Drawing.Size(70, 20);
             label7.TabIndex = 36;
             label7.Text = "Type";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // nodeType
             // 
             nodeType.AutoSize = true;
-            nodeType.BackColor = System.Drawing.SystemColors.Control;
+            nodeType.BackColor = SystemColors.Control;
             nodeType.Location = new Drawing.Point(310, 3);
             nodeType.Name = "nodeType";
             nodeType.Size = new Drawing.Size(49, 13);
             nodeType.TabIndex = 0;
             nodeType.Text = "LightSet:";
-            nodeType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            nodeType.TextAlign = ContentAlignment.MiddleRight;
             // 
             // cboNodeList
             // 
-            cboNodeList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboNodeList.DropDownStyle = ComboBoxStyle.DropDownList;
             cboNodeList.FormattingEnabled = true;
             cboNodeList.Location = new Drawing.Point(359, 1);
             cboNodeList.Name = "cboNodeList";

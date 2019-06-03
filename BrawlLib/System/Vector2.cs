@@ -68,7 +68,7 @@ namespace System
         }
         public void Max(float f) { _x = Math.Max(_x, f); _y = Math.Max(_y, f); }
 
-        public float DistanceTo(Vector2 v) { Vector2 v1 = this - v; return Vector2.Dot(v1, v1); }
+        public float DistanceTo(Vector2 v) { Vector2 v1 = this - v; return Dot(v1, v1); }
         public static Vector2 Lerp(Vector2 v1, Vector2 v2, float median) { return (v1 * median) + (v2 * (1.0f - median)); }
 
         public static explicit operator Vector2(Vector3 v) { return new Vector2(v._x, v._y); }

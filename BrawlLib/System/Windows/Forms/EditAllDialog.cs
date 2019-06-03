@@ -28,8 +28,8 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(325, 344);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -40,7 +40,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(244, 344);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -51,7 +51,7 @@ namespace System.Windows.Forms
             // 
             // editAllCHR0Editor1
             // 
-            editAllCHR0Editor1.Dock = System.Windows.Forms.DockStyle.Top;
+            editAllCHR0Editor1.Dock = DockStyle.Top;
             editAllCHR0Editor1.Location = new Drawing.Point(0, 0);
             editAllCHR0Editor1.Name = "editAllCHR0Editor1";
             editAllCHR0Editor1.Size = new Drawing.Size(404, 338);
@@ -65,11 +65,11 @@ namespace System.Windows.Forms
             Controls.Add(editAllCHR0Editor1);
             Controls.Add(btnCancel);
             Controls.Add(btnOkay);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "EditAllDialog";
             ShowIcon = false;
             ShowInTaskbar = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Edit All Animations";
             ResumeLayout(false);
 
@@ -114,7 +114,7 @@ namespace System.Windows.Forms
                     .ToArray();
             }
             _enabled = new bool[5];
-            base.ShowDialog(owner);
+            ShowDialog(owner);
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

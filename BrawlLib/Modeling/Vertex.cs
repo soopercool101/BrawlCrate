@@ -337,7 +337,7 @@ namespace BrawlLib.Modeling
 
         public bool Equals(Vertex3 v)
         {
-            if (object.ReferenceEquals(this, v))
+            if (ReferenceEquals(this, v))
             {
                 return true;
             }

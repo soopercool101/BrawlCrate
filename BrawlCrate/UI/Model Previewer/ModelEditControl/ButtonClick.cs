@@ -333,7 +333,7 @@ namespace System.Windows.Forms
             }
             if (string.IsNullOrEmpty(LiveTextureFolderPath.Text))
             {
-                LiveTextureFolderPath.Text = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+                LiveTextureFolderPath.Text = IO.Path.GetDirectoryName(Reflection.Assembly.GetEntryAssembly().Location);
             }
 
             modelPanel.RefreshReferences();

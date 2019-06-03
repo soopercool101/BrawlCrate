@@ -61,10 +61,10 @@ namespace BrawlLib.Modeling
             using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
                 BinaryWriter writer = new BinaryWriter(fs);
-                writer.Write(PMDModel.encoder.GetBytes("Pmd"));
+                writer.Write(encoder.GetBytes("Pmd"));
                 writer.Write(1.0f); //Version
-                PMDModel.MDL02PMD(model);
-                PMDModel.Write(writer);
+                MDL02PMD(model);
+                Write(writer);
             }
         }
         #endregion
@@ -542,7 +542,7 @@ namespace BrawlLib.Modeling
         #region PMD to MDL0
         public static unsafe void PMD2MDL0(MDL0Node model)
         {
-            Collada._importOptions = BrawlLib.Properties.Settings.Default.ColladaImportOptions;
+            Collada._importOptions = Properties.Settings.Default.ColladaImportOptions;
             Collada._importOptions._forceCCW = true;
             Collada._importOptions._fltVerts = true;
             Collada._importOptions._fltNrms = true;
@@ -642,9 +642,9 @@ namespace BrawlLib.Modeling
                                 MapMode = MappingMethod.EnvCamera,
                                 UWrapMode = MatWrapMode.Clamp,
                                 VWrapMode = MatWrapMode.Clamp,
-                                Projection = Wii.Graphics.TexProjection.STQ,
-                                InputForm = Wii.Graphics.TexInputForm.ABC1,
-                                Coordinates = Wii.Graphics.TexSourceRow.Normals,
+                                Projection = TexProjection.STQ,
+                                InputForm = TexInputForm.ABC1,
+                                Coordinates = TexSourceRow.Normals,
                                 Normalize = true
                             };
                         }
@@ -654,7 +654,7 @@ namespace BrawlLib.Modeling
                         texRef = new MDL0MaterialRefNode
                         {
                             Name = m._textureFileName.Substring(0, m._textureFileName.IndexOf('.')),
-                            Coordinates = Wii.Graphics.TexSourceRow.TexCoord0
+                            Coordinates = TexSourceRow.TexCoord0
                         };
                     }
                 }

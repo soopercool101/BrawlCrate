@@ -41,7 +41,7 @@ namespace System.Windows.Forms
             comboBox1.SelectedIndex = comboBox2.SelectedIndex = comboBox3.SelectedIndex = 0;
             _parent = (MDL0BoneNode)comboBox2.SelectedItem;
 
-            return base.ShowDialog(null);
+            return ShowDialog(null);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -293,8 +293,8 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(139, 131);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -305,7 +305,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(58, 131);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -316,19 +316,19 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            label1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label1.AutoSize = true;
             label1.Location = new Drawing.Point(47, 12);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(39, 13);
             label1.TabIndex = 3;
             label1.Text = "Import:";
-            label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            label1.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // comboBox1
             // 
-            comboBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Drawing.Point(92, 9);
             comboBox1.Name = "comboBox1";
@@ -338,18 +338,18 @@ namespace System.Windows.Forms
             // 
             // label2
             // 
-            label2.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            label2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label2.Location = new Drawing.Point(3, 58);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(83, 18);
             label2.TabIndex = 5;
             label2.Text = "Skeleton Root:";
-            label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            label2.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // comboBox2
             // 
-            comboBox2.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Drawing.Point(92, 55);
             comboBox2.Name = "comboBox2";
@@ -359,8 +359,8 @@ namespace System.Windows.Forms
             // 
             // comboBox3
             // 
-            comboBox3.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
-            comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox3.FormattingEnabled = true;
             comboBox3.Items.AddRange(new object[] {
             "Merge",
@@ -373,7 +373,7 @@ namespace System.Windows.Forms
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            checkBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             checkBox1.AutoSize = true;
             checkBox1.Location = new Drawing.Point(92, 109);
             checkBox1.Name = "checkBox1";
@@ -385,40 +385,40 @@ namespace System.Windows.Forms
             // 
             // label3
             // 
-            label3.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            label3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label3.AutoSize = true;
             label3.Location = new Drawing.Point(7, 85);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(79, 13);
             label3.TabIndex = 9;
             label3.Text = "Base Skeleton:";
-            label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            label3.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // label4
             // 
-            label4.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            label4.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label4.AutoSize = true;
             label4.Location = new Drawing.Point(24, 35);
             label4.Name = "label4";
             label4.Size = new Drawing.Size(62, 13);
             label4.TabIndex = 10;
             label4.Text = "Base Bone:";
-            label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            label4.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // baseBone
             // 
-            baseBone.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            baseBone.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             baseBone.AutoSize = true;
             baseBone.Location = new Drawing.Point(92, 35);
             baseBone.Name = "baseBone";
             baseBone.Size = new Drawing.Size(37, 13);
             baseBone.TabIndex = 11;
             baseBone.Text = "(none)";
-            baseBone.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            baseBone.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // modelPanel1
             // 
-            modelPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            modelPanel1.Dock = DockStyle.Fill;
             modelPanel1.Location = new Drawing.Point(0, 0);
             modelPanel1.Name = "modelPanel1";
             modelPanel1.Size = new Drawing.Size(203, 166);
@@ -437,7 +437,7 @@ namespace System.Windows.Forms
             panel1.Controls.Add(label1);
             panel1.Controls.Add(btnOkay);
             panel1.Controls.Add(btnCancel);
-            panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            panel1.Dock = DockStyle.Right;
             panel1.Location = new Drawing.Point(203, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(226, 166);
@@ -455,7 +455,7 @@ namespace System.Windows.Forms
             Name = "ObjectImporter";
             ShowIcon = false;
             ShowInTaskbar = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Import Object";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

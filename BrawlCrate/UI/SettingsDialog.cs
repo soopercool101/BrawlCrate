@@ -233,7 +233,7 @@ namespace BrawlCrate
             chkBoxModuleCompress.Checked = MainForm.Instance.AutoCompressModules;
             chkBoxAutoPlayAudio.Checked = MainForm.Instance.AutoPlayAudio;
             chkBoxMDL0Compatibility.Checked = MainForm.Instance.CompatibilityMode;
-            recentFileCountBox.Value = BrawlCrate.Properties.Settings.Default.RecentFilesMax;
+            recentFileCountBox.Value = Properties.Settings.Default.RecentFilesMax;
 
             Discord.DiscordSettings.LoadSettings();
             grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked = Discord.DiscordSettings.enabled;
@@ -462,7 +462,7 @@ namespace BrawlCrate
             tabControl1.Controls.Add(tabFileAssociations);
             tabControl1.Controls.Add(tabDiscord);
             tabControl1.Controls.Add(tabUpdater);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -484,8 +484,8 @@ namespace BrawlCrate
             // 
             // grpBoxMDL0General
             // 
-            grpBoxMDL0General.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxMDL0General.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             grpBoxMDL0General.Controls.Add(chkBoxMDL0Compatibility);
             grpBoxMDL0General.Location = new System.Drawing.Point(8, 241);
             grpBoxMDL0General.Name = "grpBoxMDL0General";
@@ -507,8 +507,8 @@ namespace BrawlCrate
             // 
             // grpBoxAudioGeneral
             // 
-            grpBoxAudioGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxAudioGeneral.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             grpBoxAudioGeneral.Controls.Add(chkBoxAutoPlayAudio);
             grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 182);
             grpBoxAudioGeneral.Name = "grpBoxAudioGeneral";
@@ -530,8 +530,8 @@ namespace BrawlCrate
             // 
             // grpBoxMainFormGeneral
             // 
-            grpBoxMainFormGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxMainFormGeneral.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             grpBoxMainFormGeneral.Controls.Add(lblRecentFiles);
             grpBoxMainFormGeneral.Controls.Add(recentFileCountBox);
             grpBoxMainFormGeneral.Controls.Add(grpBoxFileNameDisplayGeneral);
@@ -568,8 +568,8 @@ namespace BrawlCrate
             // 
             // grpBoxFileNameDisplayGeneral
             // 
-            grpBoxFileNameDisplayGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxFileNameDisplayGeneral.Anchor = ((AnchorStyles.Bottom | AnchorStyles.Left)
+            | AnchorStyles.Right);
             grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowShortName);
             grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowFullPath);
             grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 89);
@@ -618,8 +618,8 @@ namespace BrawlCrate
             // 
             // groupBoxModuleCompression
             // 
-            groupBoxModuleCompression.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            groupBoxModuleCompression.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             groupBoxModuleCompression.Controls.Add(chkBoxModuleCompress);
             groupBoxModuleCompression.Location = new System.Drawing.Point(8, 146);
             groupBoxModuleCompression.Name = "groupBoxModuleCompression";
@@ -641,8 +641,8 @@ namespace BrawlCrate
             // 
             // groupBoxStageCompression
             // 
-            groupBoxStageCompression.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            groupBoxStageCompression.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             groupBoxStageCompression.Controls.Add(chkBoxStageCompress);
             groupBoxStageCompression.Location = new System.Drawing.Point(8, 87);
             groupBoxStageCompression.Name = "groupBoxStageCompression";
@@ -664,8 +664,8 @@ namespace BrawlCrate
             // 
             // groupBoxFighterCompression
             // 
-            groupBoxFighterCompression.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            groupBoxFighterCompression.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             groupBoxFighterCompression.Controls.Add(chkBoxFighterPacDecompress);
             groupBoxFighterCompression.Controls.Add(chkBoxFighterPcsCompress);
             groupBoxFighterCompression.Location = new System.Drawing.Point(8, 6);
@@ -711,8 +711,8 @@ namespace BrawlCrate
             // 
             // genericFileAssociationBox
             // 
-            genericFileAssociationBox.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            genericFileAssociationBox.Anchor = ((AnchorStyles.Bottom | AnchorStyles.Left)
+            | AnchorStyles.Right);
             genericFileAssociationBox.Controls.Add(binFileAssociation);
             genericFileAssociationBox.Controls.Add(datFileAssociation);
             genericFileAssociationBox.Location = new System.Drawing.Point(8, 290);
@@ -746,8 +746,8 @@ namespace BrawlCrate
             // 
             // lblAdminApproval
             // 
-            lblAdminApproval.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            lblAdminApproval.Anchor = ((AnchorStyles.Bottom | AnchorStyles.Left)
+            | AnchorStyles.Right);
             lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             lblAdminApproval.ForeColor = System.Drawing.Color.Red;
             lblAdminApproval.Location = new System.Drawing.Point(3, 375);
@@ -759,7 +759,7 @@ namespace BrawlCrate
             // 
             // btnApply
             // 
-            btnApply.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnApply.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnApply.Location = new System.Drawing.Point(240, 373);
             btnApply.Name = "btnApply";
             btnApply.Size = new System.Drawing.Size(75, 23);
@@ -770,9 +770,9 @@ namespace BrawlCrate
             // 
             // associatiedFilesBox
             // 
-            associatiedFilesBox.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            associatiedFilesBox.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left)
+            | AnchorStyles.Right);
             associatiedFilesBox.Controls.Add(checkBox1);
             associatiedFilesBox.Controls.Add(listView1);
             associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
@@ -784,10 +784,10 @@ namespace BrawlCrate
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            checkBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             checkBox1.Location = new System.Drawing.Point(195, 252);
             checkBox1.Name = "checkBox1";
-            checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            checkBox1.RightToLeft = RightToLeft.Yes;
             checkBox1.Size = new System.Drawing.Size(104, 20);
             checkBox1.TabIndex = 5;
             checkBox1.Text = "Check All";
@@ -796,15 +796,15 @@ namespace BrawlCrate
             // 
             // listView1
             // 
-            listView1.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            listView1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left)
+            | AnchorStyles.Right);
             listView1.AutoArrange = false;
-            listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            listView1.BorderStyle = BorderStyle.FixedSingle;
             listView1.CheckBoxes = true;
             listView1.Columns.AddRange(new ColumnHeader[] {
             columnHeader1});
-            listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            listView1.HeaderStyle = ColumnHeaderStyle.None;
             listView1.HideSelection = false;
             listViewItem1.StateImageIndex = 0;
             listViewItem1.Tag = "";
@@ -875,7 +875,7 @@ namespace BrawlCrate
             listView1.Size = new System.Drawing.Size(290, 227);
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = System.Windows.Forms.View.Details;
+            listView1.View = View.Details;
             listView1.ItemChecked += new ItemCheckedEventHandler(listView1_ItemChecked);
             // 
             // columnHeader1
@@ -896,8 +896,8 @@ namespace BrawlCrate
             // 
             // grpBoxDiscordRPC
             // 
-            grpBoxDiscordRPC.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxDiscordRPC.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             grpBoxDiscordRPC.Controls.Add(chkBoxEnableDiscordRPC);
             grpBoxDiscordRPC.Controls.Add(grpBoxDiscordRPCType);
             grpBoxDiscordRPC.Location = new System.Drawing.Point(8, 6);
@@ -934,8 +934,8 @@ namespace BrawlCrate
             // 
             // DiscordRPCCustomName
             // 
-            DiscordRPCCustomName.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            DiscordRPCCustomName.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             DiscordRPCCustomName.Location = new System.Drawing.Point(30, 88);
             DiscordRPCCustomName.Name = "DiscordRPCCustomName";
             DiscordRPCCustomName.Size = new System.Drawing.Size(254, 20);
@@ -1003,8 +1003,8 @@ namespace BrawlCrate
             // 
             // grpBoxCanary
             // 
-            grpBoxCanary.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxCanary.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             grpBoxCanary.Controls.Add(chkCanary);
             grpBoxCanary.Location = new System.Drawing.Point(8, 132);
             grpBoxCanary.Name = "grpBoxCanary";
@@ -1015,8 +1015,8 @@ namespace BrawlCrate
             // 
             // updaterBehaviorGroupbox
             // 
-            updaterBehaviorGroupbox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            updaterBehaviorGroupbox.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             updaterBehaviorGroupbox.Controls.Add(rdoAutoUpdate);
             updaterBehaviorGroupbox.Controls.Add(rdoCheckManual);
             updaterBehaviorGroupbox.Controls.Add(rdoCheckStartup);
@@ -1067,7 +1067,7 @@ namespace BrawlCrate
             // 
             ClientSize = new System.Drawing.Size(326, 427);
             Controls.Add(tabControl1);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "SettingsDialog";
             Text = "Settings";
@@ -1277,10 +1277,10 @@ namespace BrawlCrate
         {
             if (!_updating)
             {
-                BrawlCrate.Properties.Settings.Default.DiscordRPCEnabled = chkBoxEnableDiscordRPC.Checked;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.DiscordRPCEnabled = chkBoxEnableDiscordRPC.Checked;
+                Properties.Settings.Default.Save();
                 grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked;
-                BrawlCrate.Discord.DiscordSettings.LoadSettings(true);
+                Discord.DiscordSettings.LoadSettings(true);
             }
         }
 
@@ -1290,32 +1290,32 @@ namespace BrawlCrate
             {
                 if (rdoDiscordRPCNameDisabled.Checked)
                 {
-                    BrawlCrate.Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.Disabled;
+                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.Disabled;
                 }
                 else if (rdoDiscordRPCNameInternal.Checked)
                 {
-                    BrawlCrate.Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.AutoInternal;
+                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.AutoInternal;
                 }
                 else if (rdoDiscordRPCNameExternal.Checked)
                 {
-                    BrawlCrate.Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.AutoExternal;
+                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.AutoExternal;
                 }
                 else if (rdoDiscordRPCNameCustom.Checked)
                 {
-                    BrawlCrate.Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.UserDefined;
+                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.UserDefined;
                 }
 
                 DiscordRPCCustomName.Enabled = rdoDiscordRPCNameCustom.Checked;
                 DiscordRPCCustomName.ReadOnly = !rdoDiscordRPCNameCustom.Checked;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.Save();
                 Discord.DiscordSettings.LoadSettings(true);
             }
         }
 
         private void DiscordRPCCustomName_TextChanged(object sender, EventArgs e)
         {
-            BrawlCrate.Properties.Settings.Default.DiscordRPCNameCustom = DiscordRPCCustomName.Text;
-            BrawlCrate.Properties.Settings.Default.Save();
+            Properties.Settings.Default.DiscordRPCNameCustom = DiscordRPCCustomName.Text;
+            Properties.Settings.Default.Save();
             if (rdoDiscordRPCNameCustom.Checked)
             {
                 Discord.DiscordSettings.LoadSettings(true);
@@ -1361,8 +1361,8 @@ namespace BrawlCrate
 
             if (int.TryParse(recentFileCountBox.Text, out int i))
             {
-                BrawlCrate.Properties.Settings.Default.RecentFilesMax = i;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.RecentFilesMax = i;
+                Properties.Settings.Default.Save();
             }
         }
     }

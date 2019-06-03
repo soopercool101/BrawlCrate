@@ -36,11 +36,11 @@ namespace BrawlLib.Modeling
                     writer.WriteEndElement();
 
                     writer.WriteStartElement("created");
-                    writer.WriteString(DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture) + "Z");
+                    writer.WriteString(DateTime.UtcNow.ToString("s", CultureInfo.InvariantCulture) + "Z");
                     writer.WriteEndElement();
 
                     writer.WriteStartElement("modified");
-                    writer.WriteString(DateTime.UtcNow.ToString("s", System.Globalization.CultureInfo.InvariantCulture) + "Z");
+                    writer.WriteString(DateTime.UtcNow.ToString("s", CultureInfo.InvariantCulture) + "Z");
                     writer.WriteEndElement();
 
                     writer.WriteStartElement("unit");

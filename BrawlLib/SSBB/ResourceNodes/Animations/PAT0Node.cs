@@ -1339,7 +1339,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_textureNode == null)
                 {
-                    _textureNode = RootNode.FindChildByType(_tex, true, ResourceNodes.ResourceType.TEX0) as TEX0Node;
+                    _textureNode = RootNode.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
                     if (_textureNode == null)
                     {
                         return 0;
@@ -1357,7 +1357,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_textureNode == null)
             {
-                _textureNode = RootNode.FindChildByType(_tex, true, ResourceNodes.ResourceType.TEX0) as TEX0Node;
+                _textureNode = RootNode.FindChildByType(_tex, true, ResourceType.TEX0) as TEX0Node;
                 if (_textureNode == null)
                 {
                     return null;
@@ -1366,7 +1366,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (!string.IsNullOrEmpty(_plt) && _paletteNode == null)
             {
-                _paletteNode = RootNode.FindChildByType(_plt, true, ResourceNodes.ResourceType.PLT0) as PLT0Node;
+                _paletteNode = RootNode.FindChildByType(_plt, true, ResourceType.PLT0) as PLT0Node;
             }
 
             return _textureNode.GetImage(index, _paletteNode);

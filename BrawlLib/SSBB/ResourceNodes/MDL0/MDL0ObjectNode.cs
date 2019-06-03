@@ -2020,7 +2020,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _render = _visBoneNode._boneFlags.HasFlag(BoneFlags.Visible);
             }
 
-            if (DrawPass == DrawCall.DrawPassType.Transparent &&
+            if (DrawPass == DrawPassType.Transparent &&
                 MaterialNode != null &&
                 MaterialNode.Children.Count != 0 &&
                 MaterialNode.Children[0].Name == "TShadow1")

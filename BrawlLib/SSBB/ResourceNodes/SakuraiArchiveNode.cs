@@ -23,7 +23,7 @@ namespace BrawlLib.SSBBTypes
         /// This should only be used when parsing or writing.
         /// </summary>
         [Browsable(false)]
-        public VoidPtr BaseAddress => SakuraiArchiveNode.Builder == null ? WorkingUncompressed.Address + SakuraiArchiveHeader.Size : SakuraiArchiveNode.Builder._baseAddress;
+        public VoidPtr BaseAddress => Builder == null ? WorkingUncompressed.Address + SakuraiArchiveHeader.Size : Builder._baseAddress;
 
         /// <summary>
         /// Returns all entries in the moveset that have had a property changed.

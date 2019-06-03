@@ -23,8 +23,8 @@ namespace System.Windows.Forms
             // 
             // txtPath
             // 
-            txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            txtPath.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             txtPath.Location = new Drawing.Point(12, 34);
             txtPath.Name = "txtPath";
             txtPath.Size = new Drawing.Size(330, 20);
@@ -33,7 +33,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnOkay.Anchor = AnchorStyles.Bottom;
             btnOkay.Location = new Drawing.Point(117, 65);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -44,7 +44,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnCancel.Anchor = AnchorStyles.Bottom;
             btnCancel.Location = new Drawing.Point(198, 65);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -55,14 +55,14 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            label1.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             label1.Location = new Drawing.Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(367, 21);
             label1.TabIndex = 3;
             label1.Text = "*Changing the path on an internal file will remove it from the RSAR*";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.TextAlign = Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBrowse
             // 
@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             Controls.Add(btnCancel);
             Controls.Add(btnOkay);
             Controls.Add(txtPath);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "SoundPathChanger";
             Text = "File Path";
             ResumeLayout(false);

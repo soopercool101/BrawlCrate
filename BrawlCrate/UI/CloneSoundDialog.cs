@@ -37,8 +37,8 @@ namespace BrawlCrate
             // 
             // txtName
             // 
-            txtName.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right);
+            txtName.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+                        | AnchorStyles.Right);
             txtName.Location = new System.Drawing.Point(66, 9);
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(99, 20);
@@ -47,7 +47,7 @@ namespace BrawlCrate
             // 
             // btnOk
             // 
-            btnOk.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnOk.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnOk.Location = new System.Drawing.Point(171, 8);
             btnOk.Name = "btnOk";
             btnOk.Size = new System.Drawing.Size(63, 20);
@@ -58,7 +58,7 @@ namespace BrawlCrate
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnCancel.Location = new System.Drawing.Point(240, 8);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(63, 20);
@@ -70,9 +70,9 @@ namespace BrawlCrate
             // treeResource
             // 
             treeResource.AllowContextMenus = false;
-            treeResource.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right);
+            treeResource.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+                        | AnchorStyles.Left)
+                        | AnchorStyles.Right);
             treeResource.HideSelection = false;
             treeResource.ImageIndex = 0;
             treeResource.Location = new System.Drawing.Point(12, 35);
@@ -91,7 +91,7 @@ namespace BrawlCrate
             Controls.Add(txtName);
             Controls.Add(label1);
             Controls.Add(treeResource);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "CloneSoundDialog";
             Text = "Sound Cloner";
             ResumeLayout(false);
@@ -124,7 +124,7 @@ namespace BrawlCrate
 
             treeResource.EndUpdate();
 
-            try { return base.ShowDialog(owner); }
+            try { return ShowDialog(owner); }
             finally { _parentNode = null; treeResource.Clear(); }
         }
 

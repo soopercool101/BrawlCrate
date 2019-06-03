@@ -17,8 +17,8 @@ namespace System.Windows.Forms
             // 
             // collisionEditor1
             // 
-            collisionEditor1.BackColor = System.Drawing.Color.Lavender;
-            collisionEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            collisionEditor1.BackColor = Drawing.Color.Lavender;
+            collisionEditor1.Dock = DockStyle.Fill;
             collisionEditor1.Location = new Drawing.Point(0, 0);
             collisionEditor1.Name = "collisionEditor1";
             collisionEditor1.Size = new Drawing.Size(800, 600);

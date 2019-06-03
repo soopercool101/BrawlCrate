@@ -38,7 +38,7 @@ namespace BrawlLib.Wii.Models
         {
             for (int i = 0; i < Count; i++)
             {
-                if (object.ReferenceEquals(_influences[i], inf) && inf.Users.Contains(user))
+                if (ReferenceEquals(_influences[i], inf) && inf.Users.Contains(user))
                 {
                     inf.Users.Remove(user);
                     if (inf.Users.Count <= 0)
@@ -313,12 +313,12 @@ namespace BrawlLib.Wii.Models
         {
             bool found;
 
-            if (object.ReferenceEquals(this, inf))
+            if (ReferenceEquals(this, inf))
             {
                 return true;
             }
 
-            if (object.ReferenceEquals(inf, null))
+            if (ReferenceEquals(inf, null))
             {
                 return false;
             }
@@ -358,7 +358,7 @@ namespace BrawlLib.Wii.Models
 
         public static bool operator ==(BoneWeight b1, BoneWeight b2)
         {
-            if (System.Object.ReferenceEquals(b1, b2))
+            if (object.ReferenceEquals(b1, b2))
             {
                 return true;
             }

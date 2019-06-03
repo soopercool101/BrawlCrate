@@ -16,7 +16,7 @@ namespace System.Windows.Forms
             comboBox1.Items.Add("Add");
             comboBox1.Items.Add("Subtract");
             comboBox1.SelectedIndex = 0;
-            return base.ShowDialog(owner);
+            return ShowDialog(owner);
         }
 
         private unsafe void btnOkay_Click(object sender, EventArgs e)
@@ -79,8 +79,8 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(197, 38);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -91,7 +91,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(116, 38);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -128,11 +128,11 @@ namespace System.Windows.Forms
             Controls.Add(btnOkay);
             Controls.Add(btnCancel);
             Controls.Add(amount);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "EditDialog";
             ShowIcon = false;
             ShowInTaskbar = false;
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Edit All Keyframes";
             ResumeLayout(false);
             PerformLayout();

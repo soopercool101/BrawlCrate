@@ -28,8 +28,8 @@ namespace BrawlCrate.API
             set
             {
                 Engine.SetSearchPaths(Engine.GetSearchPaths().Append(value).ToArray());
-                BrawlCrate.Properties.Settings.Default.PythonInstallationPath = value;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.PythonInstallationPath = value;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -39,8 +39,8 @@ namespace BrawlCrate.API
             set
             {
                 fsi_path = value;
-                BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = value;
-                BrawlCrate.Properties.Settings.Default.Save();
+                Properties.Settings.Default.FSharpInstallationPath = value;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -53,7 +53,7 @@ namespace BrawlCrate.API
             Runtime = Engine.Runtime;
 
             // Setup IronPython engine
-            string settingPath = BrawlCrate.Properties.Settings.Default.PythonInstallationPath;
+            string settingPath = Properties.Settings.Default.PythonInstallationPath;
             List<string> searchPaths = new List<string>();
             // First, search the directory found in the settings
             if (!settingPath.Equals("") && Directory.Exists(settingPath))
@@ -97,8 +97,8 @@ namespace BrawlCrate.API
             {
                 if (searchPaths.Count > 0)
                 {
-                    BrawlCrate.Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
-                    BrawlCrate.Properties.Settings.Default.Save();
+                    Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
+                    Properties.Settings.Default.Save();
                 }
                 else if (!settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
                 {
@@ -108,14 +108,14 @@ namespace BrawlCrate.API
                             && dlg.ShowDialog() == DialogResult.OK)
                         {
                             searchPaths.Add(dlg.SelectedPath);
-                            BrawlCrate.Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
-                            BrawlCrate.Properties.Settings.Default.Save();
+                            Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
+                            Properties.Settings.Default.Save();
                         }
                         else
                         {
                             MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
-                            BrawlCrate.Properties.Settings.Default.PythonInstallationPath = "(none)";
-                            BrawlCrate.Properties.Settings.Default.Save();
+                            Properties.Settings.Default.PythonInstallationPath = "(none)";
+                            Properties.Settings.Default.Save();
                         }
                     }
                 }
@@ -124,7 +124,7 @@ namespace BrawlCrate.API
             // If any python installations are found, add them to the search pathsp
             Engine.SetSearchPaths(searchPaths.ToArray());
 
-            fsi_path = BrawlCrate.Properties.Settings.Default.FSharpInstallationPath;
+            fsi_path = Properties.Settings.Default.FSharpInstallationPath;
 
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
@@ -325,8 +325,8 @@ namespace BrawlCrate.API
                 }
                 if (fsi_path != null && fsi_path != "")
                 {
-                    BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = fsi_path;
-                    BrawlCrate.Properties.Settings.Default.Save();
+                    Properties.Settings.Default.FSharpInstallationPath = fsi_path;
+                    Properties.Settings.Default.Save();
                 }
             }
         }

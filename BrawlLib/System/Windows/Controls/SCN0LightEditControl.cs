@@ -340,7 +340,7 @@ namespace System.Windows.Forms
             label7.Size = new Drawing.Size(41, 20);
             label7.TabIndex = 15;
             label7.Text = "Frame:";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label7.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numFrame
             // 
@@ -367,36 +367,36 @@ namespace System.Windows.Forms
             lblFrameCount.Size = new Drawing.Size(51, 20);
             lblFrameCount.TabIndex = 17;
             lblFrameCount.Text = "/ 10";
-            lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrameCount.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnPrev
             // 
-            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPrev.Location = new Drawing.Point(192, 3);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Drawing.Size(23, 23);
             btnPrev.TabIndex = 1;
             btnPrev.Text = "<";
-            btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
             btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNext.Location = new Drawing.Point(217, 3);
             btnNext.Name = "btnNext";
             btnNext.Size = new Drawing.Size(23, 23);
             btnNext.TabIndex = 2;
             btnNext.Text = ">";
-            btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // listKeyframes
             // 
-            listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            listKeyframes.Font = new Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.Dock = DockStyle.Fill;
+            listKeyframes.Font = new Font("Courier New", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             listKeyframes.FormattingEnabled = true;
             listKeyframes.IntegralHeight = false;
             listKeyframes.ItemHeight = 14;
@@ -409,7 +409,7 @@ namespace System.Windows.Forms
             // groupBox1
             // 
             groupBox1.Controls.Add(listKeyframes);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(285, 123);
@@ -420,7 +420,7 @@ namespace System.Windows.Forms
             // panel1
             // 
             panel1.Controls.Add(tabControl1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(293, 276);
@@ -432,7 +432,7 @@ namespace System.Windows.Forms
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -452,7 +452,7 @@ namespace System.Windows.Forms
             // 
             // panel2
             // 
-            panel2.BackColor = System.Drawing.SystemColors.Control;
+            panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(numSpotBright);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label6);
@@ -477,7 +477,7 @@ namespace System.Windows.Forms
             panel2.Controls.Add(label9);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(label8);
-            panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Drawing.Point(0, 123);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(285, 127);
@@ -485,7 +485,7 @@ namespace System.Windows.Forms
             // 
             // numSpotBright
             // 
-            numSpotBright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numSpotBright.BorderStyle = BorderStyle.FixedSingle;
             numSpotBright.Integral = false;
             numSpotBright.Location = new Drawing.Point(211, 84);
             numSpotBright.Margin = new Padding(0, 10, 0, 10);
@@ -499,18 +499,18 @@ namespace System.Windows.Forms
             // 
             // label6
             // 
-            label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label6.BorderStyle = BorderStyle.FixedSingle;
             label6.Location = new Drawing.Point(211, 27);
             label6.Margin = new Padding(0);
             label6.Name = "label6";
             label6.Size = new Drawing.Size(70, 20);
             label6.TabIndex = 8;
             label6.Text = "Z";
-            label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numRefBright
             // 
-            numRefBright.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRefBright.BorderStyle = BorderStyle.FixedSingle;
             numRefBright.Integral = false;
             numRefBright.Location = new Drawing.Point(211, 103);
             numRefBright.Margin = new Padding(0, 10, 0, 10);
@@ -524,51 +524,51 @@ namespace System.Windows.Forms
             // 
             // label3
             // 
-            label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Location = new Drawing.Point(4, 65);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(70, 20);
             label3.TabIndex = 2;
             label3.Text = "End Points";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Location = new Drawing.Point(4, 84);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(70, 20);
             label2.TabIndex = 1;
             label2.Text = "Spot Cutoff";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Location = new Drawing.Point(142, 27);
             label5.Margin = new Padding(0);
             label5.Name = "label5";
             label5.Size = new Drawing.Size(70, 20);
             label5.TabIndex = 7;
             label5.Text = "Y";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
-            label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Location = new Drawing.Point(73, 27);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
             label4.Size = new Drawing.Size(70, 20);
             label4.TabIndex = 4;
             label4.Text = "X";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // numStartY
             // 
-            numStartY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStartY.BorderStyle = BorderStyle.FixedSingle;
             numStartY.Integral = false;
             numStartY.Location = new Drawing.Point(142, 46);
             numStartY.Margin = new Padding(0);
@@ -582,19 +582,19 @@ namespace System.Windows.Forms
             // 
             // label10
             // 
-            label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label10.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label10.BorderStyle = BorderStyle.FixedSingle;
+            label10.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.Location = new Drawing.Point(142, 84);
             label10.Margin = new Padding(0);
             label10.Name = "label10";
             label10.Size = new Drawing.Size(70, 20);
             label10.TabIndex = 14;
             label10.Text = "Spec Shine";
-            label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label10.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numEndZ
             // 
-            numEndZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEndZ.BorderStyle = BorderStyle.FixedSingle;
             numEndZ.Integral = false;
             numEndZ.Location = new Drawing.Point(211, 65);
             numEndZ.Margin = new Padding(0, 10, 0, 10);
@@ -608,7 +608,7 @@ namespace System.Windows.Forms
             // 
             // numStartX
             // 
-            numStartX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStartX.BorderStyle = BorderStyle.FixedSingle;
             numStartX.Integral = false;
             numStartX.Location = new Drawing.Point(73, 46);
             numStartX.Margin = new Padding(0);
@@ -622,7 +622,7 @@ namespace System.Windows.Forms
             // 
             // numRefDist
             // 
-            numRefDist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numRefDist.BorderStyle = BorderStyle.FixedSingle;
             numRefDist.Integral = false;
             numRefDist.Location = new Drawing.Point(73, 103);
             numRefDist.Margin = new Padding(0, 10, 0, 10);
@@ -636,7 +636,7 @@ namespace System.Windows.Forms
             // 
             // numEndX
             // 
-            numEndX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEndX.BorderStyle = BorderStyle.FixedSingle;
             numEndX.Integral = false;
             numEndX.Location = new Drawing.Point(73, 65);
             numEndX.Margin = new Padding(0, 10, 0, 10);
@@ -650,7 +650,7 @@ namespace System.Windows.Forms
             // 
             // numEndY
             // 
-            numEndY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numEndY.BorderStyle = BorderStyle.FixedSingle;
             numEndY.Integral = false;
             numEndY.Location = new Drawing.Point(142, 65);
             numEndY.Margin = new Padding(0, 10, 0, 10);
@@ -664,7 +664,7 @@ namespace System.Windows.Forms
             // 
             // numSpotCut
             // 
-            numSpotCut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numSpotCut.BorderStyle = BorderStyle.FixedSingle;
             numSpotCut.Integral = false;
             numSpotCut.Location = new Drawing.Point(73, 84);
             numSpotCut.Margin = new Padding(0, 10, 0, 10);
@@ -678,7 +678,7 @@ namespace System.Windows.Forms
             // 
             // numStartZ
             // 
-            numStartZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numStartZ.BorderStyle = BorderStyle.FixedSingle;
             numStartZ.Integral = false;
             numStartZ.Location = new Drawing.Point(211, 46);
             numStartZ.Margin = new Padding(0);
@@ -692,38 +692,38 @@ namespace System.Windows.Forms
             // 
             // label9
             // 
-            label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label9.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label9.BorderStyle = BorderStyle.FixedSingle;
+            label9.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.Location = new Drawing.Point(142, 103);
             label9.Margin = new Padding(0);
             label9.Name = "label9";
             label9.Size = new Drawing.Size(70, 20);
             label9.TabIndex = 10;
             label9.Text = "Ref Bright";
-            label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label9.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(4, 46);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(70, 20);
             label1.TabIndex = 0;
             label1.Text = "Start Points";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label8
             // 
-            label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            label8.Font = new Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label8.BorderStyle = BorderStyle.FixedSingle;
+            label8.Font = new Font("Microsoft Sans Serif", 8F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Drawing.Point(4, 103);
             label8.Margin = new Padding(0);
             label8.Name = "label8";
             label8.Size = new Drawing.Size(70, 20);
             label8.TabIndex = 9;
             label8.Text = "Ref Dist";
-            label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label8.TextAlign = ContentAlignment.MiddleRight;
             // 
             // tabPage2
             // 
@@ -737,7 +737,7 @@ namespace System.Windows.Forms
             // 
             // visEditor1
             // 
-            visEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            visEditor1.Dock = DockStyle.Fill;
             visEditor1.Location = new Drawing.Point(0, 0);
             visEditor1.Name = "visEditor1";
             visEditor1.Size = new Drawing.Size(285, 250);
@@ -756,7 +756,7 @@ namespace System.Windows.Forms
             // lightCtrl
             // 
             lightCtrl.ColorID = 0;
-            lightCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            lightCtrl.Dock = DockStyle.Fill;
             lightCtrl.Location = new Drawing.Point(0, 0);
             lightCtrl.Name = "lightCtrl";
             lightCtrl.Size = new Drawing.Size(285, 250);
@@ -775,7 +775,7 @@ namespace System.Windows.Forms
             // specCtrl
             // 
             specCtrl.ColorID = 0;
-            specCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            specCtrl.Dock = DockStyle.Fill;
             specCtrl.Location = new Drawing.Point(0, 0);
             specCtrl.Name = "specCtrl";
             specCtrl.Size = new Drawing.Size(285, 250);

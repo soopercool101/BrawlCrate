@@ -130,9 +130,9 @@ namespace System
 
             Vector4 result = new Vector4
             {
-                _w = 2.0f * (float)System.Math.Acos(q._w)
+                _w = 2.0f * (float)Math.Acos(q._w)
             };
-            float den = (float)System.Math.Sqrt(1.0 - q._w * q._w);
+            float den = (float)Math.Sqrt(1.0 - q._w * q._w);
             if (den > 0.0001f)
             {
                 result._x = q._x / den;
@@ -158,10 +158,10 @@ namespace System
 
             angle *= 0.5f;
             axis.Normalize();
-            result._x = axis._x * (float)System.Math.Sin(angle);
-            result._y = axis._y * (float)System.Math.Sin(angle);
-            result._z = axis._z * (float)System.Math.Sin(angle);
-            result._w = (float)System.Math.Cos(angle);
+            result._x = axis._x * (float)Math.Sin(angle);
+            result._y = axis._y * (float)Math.Sin(angle);
+            result._z = axis._z * (float)Math.Sin(angle);
+            result._w = (float)Math.Cos(angle);
 
             return result.Normalize();
         }

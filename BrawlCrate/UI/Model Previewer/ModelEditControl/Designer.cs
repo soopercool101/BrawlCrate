@@ -356,7 +356,7 @@ namespace System.Windows.Forms
             // 
             // btnLeftToggle
             // 
-            btnLeftToggle.Dock = System.Windows.Forms.DockStyle.Left;
+            btnLeftToggle.Dock = DockStyle.Left;
             btnLeftToggle.Location = new Drawing.Point(174, 26);
             btnLeftToggle.Name = "btnLeftToggle";
             btnLeftToggle.Size = new Drawing.Size(15, 389);
@@ -368,7 +368,7 @@ namespace System.Windows.Forms
             // 
             // btnRightToggle
             // 
-            btnRightToggle.Dock = System.Windows.Forms.DockStyle.Right;
+            btnRightToggle.Dock = DockStyle.Right;
             btnRightToggle.Location = new Drawing.Point(586, 26);
             btnRightToggle.Name = "btnRightToggle";
             btnRightToggle.Size = new Drawing.Size(15, 389);
@@ -380,7 +380,7 @@ namespace System.Windows.Forms
             // 
             // btnBottomToggle
             // 
-            btnBottomToggle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            btnBottomToggle.Dock = DockStyle.Bottom;
             btnBottomToggle.Location = new Drawing.Point(189, 400);
             btnBottomToggle.Name = "btnBottomToggle";
             btnBottomToggle.Size = new Drawing.Size(397, 15);
@@ -391,7 +391,7 @@ namespace System.Windows.Forms
             // 
             // spltLeft
             // 
-            spltLeft.BackColor = System.Drawing.SystemColors.Control;
+            spltLeft.BackColor = Drawing.SystemColors.Control;
             spltLeft.Location = new Drawing.Point(170, 26);
             spltLeft.Name = "spltLeft";
             spltLeft.Size = new Drawing.Size(4, 389);
@@ -401,7 +401,7 @@ namespace System.Windows.Forms
             // 
             // btnTopToggle
             // 
-            btnTopToggle.Dock = System.Windows.Forms.DockStyle.Top;
+            btnTopToggle.Dock = DockStyle.Top;
             btnTopToggle.Location = new Drawing.Point(189, 26);
             btnTopToggle.Name = "btnTopToggle";
             btnTopToggle.Size = new Drawing.Size(397, 15);
@@ -412,8 +412,8 @@ namespace System.Windows.Forms
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            menuStrip1.BackColor = Drawing.SystemColors.Control;
+            menuStrip1.Dock = DockStyle.None;
             menuStrip1.ImageScalingSize = new Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] {
             fileToolStripMenuItem,
@@ -443,7 +443,7 @@ namespace System.Windows.Forms
             // newSceneToolStripMenuItem
             // 
             newSceneToolStripMenuItem.Name = "newSceneToolStripMenuItem";
-            newSceneToolStripMenuItem.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N);
+            newSceneToolStripMenuItem.ShortcutKeys = (Keys.Control | Keys.N);
             newSceneToolStripMenuItem.Size = new Drawing.Size(210, 26);
             newSceneToolStripMenuItem.Text = "New Scene";
             newSceneToolStripMenuItem.Click += new EventHandler(newSceneToolStripMenuItem_Click);
@@ -468,7 +468,7 @@ namespace System.Windows.Forms
             // btnOpenClose
             // 
             btnOpenClose.Name = "btnOpenClose";
-            btnOpenClose.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O);
+            btnOpenClose.ShortcutKeys = (Keys.Control | Keys.O);
             btnOpenClose.Size = new Drawing.Size(225, 26);
             btnOpenClose.Text = "Load";
             btnOpenClose.Click += new EventHandler(btnLoadAnimations_Click);
@@ -476,7 +476,7 @@ namespace System.Windows.Forms
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S);
+            saveToolStripMenuItem.ShortcutKeys = (Keys.Control | Keys.S);
             saveToolStripMenuItem.Size = new Drawing.Size(225, 26);
             saveToolStripMenuItem.Text = "Save ";
             saveToolStripMenuItem.Click += new EventHandler(btnSave_Click);
@@ -484,8 +484,8 @@ namespace System.Windows.Forms
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-            | System.Windows.Forms.Keys.S);
+            saveAsToolStripMenuItem.ShortcutKeys = ((Keys.Control | Keys.Shift)
+            | Keys.S);
             saveAsToolStripMenuItem.Size = new Drawing.Size(225, 26);
             saveAsToolStripMenuItem.Text = "Save As";
             saveAsToolStripMenuItem.Click += new EventHandler(btnSaveAs_Click);
@@ -519,7 +519,7 @@ namespace System.Windows.Forms
             // 
             btnUndo.Enabled = false;
             btnUndo.Name = "btnUndo";
-            btnUndo.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z);
+            btnUndo.ShortcutKeys = (Keys.Control | Keys.Z);
             btnUndo.Size = new Drawing.Size(189, 26);
             btnUndo.Text = "Undo";
             btnUndo.Click += new EventHandler(btnUndo_Click);
@@ -528,7 +528,7 @@ namespace System.Windows.Forms
             // 
             btnRedo.Enabled = false;
             btnRedo.Name = "btnRedo";
-            btnRedo.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y);
+            btnRedo.ShortcutKeys = (Keys.Control | Keys.Y);
             btnRedo.Size = new Drawing.Size(189, 26);
             btnRedo.Text = "Redo";
             btnRedo.Click += new EventHandler(btnRedo_Click);
@@ -714,7 +714,7 @@ namespace System.Windows.Forms
             // 
             stretchToolStripMenuItem1.Checked = true;
             stretchToolStripMenuItem1.CheckOnClick = true;
-            stretchToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
+            stretchToolStripMenuItem1.CheckState = CheckState.Checked;
             stretchToolStripMenuItem1.Name = "stretchToolStripMenuItem1";
             stretchToolStripMenuItem1.Size = new Drawing.Size(130, 26);
             stretchToolStripMenuItem1.Text = "Stretch";
@@ -762,7 +762,7 @@ namespace System.Windows.Forms
             // SLocalToolStripMenuItem
             // 
             SLocalToolStripMenuItem.Checked = true;
-            SLocalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            SLocalToolStripMenuItem.CheckState = CheckState.Checked;
             SLocalToolStripMenuItem.Name = "SLocalToolStripMenuItem";
             SLocalToolStripMenuItem.Size = new Drawing.Size(128, 26);
             SLocalToolStripMenuItem.Text = "Local";
@@ -788,7 +788,7 @@ namespace System.Windows.Forms
             // 
             rotationToolStripMenuItem.Checked = true;
             rotationToolStripMenuItem.CheckOnClick = true;
-            rotationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            rotationToolStripMenuItem.CheckState = CheckState.Checked;
             rotationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
             RLocalToolStripMenuItem,
             RWorldToolStripMenuItem,
@@ -802,7 +802,7 @@ namespace System.Windows.Forms
             // RLocalToolStripMenuItem
             // 
             RLocalToolStripMenuItem.Checked = true;
-            RLocalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            RLocalToolStripMenuItem.CheckState = CheckState.Checked;
             RLocalToolStripMenuItem.Name = "RLocalToolStripMenuItem";
             RLocalToolStripMenuItem.Size = new Drawing.Size(128, 26);
             RLocalToolStripMenuItem.Text = "Local";
@@ -841,7 +841,7 @@ namespace System.Windows.Forms
             // TLocalToolStripMenuItem
             // 
             TLocalToolStripMenuItem.Checked = true;
-            TLocalToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            TLocalToolStripMenuItem.CheckState = CheckState.Checked;
             TLocalToolStripMenuItem.Name = "TLocalToolStripMenuItem";
             TLocalToolStripMenuItem.Size = new Drawing.Size(178, 26);
             TLocalToolStripMenuItem.Text = "Local";
@@ -888,7 +888,7 @@ namespace System.Windows.Forms
             // perspectiveToolStripMenuItem
             // 
             perspectiveToolStripMenuItem.Checked = true;
-            perspectiveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            perspectiveToolStripMenuItem.CheckState = CheckState.Checked;
             perspectiveToolStripMenuItem.Name = "perspectiveToolStripMenuItem";
             perspectiveToolStripMenuItem.Size = new Drawing.Size(172, 26);
             perspectiveToolStripMenuItem.Text = "Perspective";
@@ -1022,7 +1022,7 @@ namespace System.Windows.Forms
             // toggleBones
             // 
             toggleBones.Checked = true;
-            toggleBones.CheckState = System.Windows.Forms.CheckState.Checked;
+            toggleBones.CheckState = CheckState.Checked;
             toggleBones.Name = "toggleBones";
             toggleBones.ShortcutKeyDisplayString = "B Key";
             toggleBones.Size = new Drawing.Size(189, 26);
@@ -1032,7 +1032,7 @@ namespace System.Windows.Forms
             // togglePolygons
             // 
             togglePolygons.Checked = true;
-            togglePolygons.CheckState = System.Windows.Forms.CheckState.Checked;
+            togglePolygons.CheckState = CheckState.Checked;
             togglePolygons.Name = "togglePolygons";
             togglePolygons.ShortcutKeyDisplayString = "P Key";
             togglePolygons.Size = new Drawing.Size(189, 26);
@@ -1042,7 +1042,7 @@ namespace System.Windows.Forms
             // toggleVertices
             // 
             toggleVertices.Checked = true;
-            toggleVertices.CheckState = System.Windows.Forms.CheckState.Checked;
+            toggleVertices.CheckState = CheckState.Checked;
             toggleVertices.Name = "toggleVertices";
             toggleVertices.ShortcutKeyDisplayString = "V Key";
             toggleVertices.Size = new Drawing.Size(189, 26);
@@ -1052,7 +1052,7 @@ namespace System.Windows.Forms
             // toggleCollisions
             // 
             toggleCollisions.Checked = true;
-            toggleCollisions.CheckState = System.Windows.Forms.CheckState.Checked;
+            toggleCollisions.CheckState = CheckState.Checked;
             toggleCollisions.Name = "toggleCollisions";
             toggleCollisions.Size = new Drawing.Size(189, 26);
             toggleCollisions.Text = "Collisions";
@@ -1107,7 +1107,7 @@ namespace System.Windows.Forms
             // shadersToolStripMenuItem
             // 
             shadersToolStripMenuItem.Checked = true;
-            shadersToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            shadersToolStripMenuItem.CheckState = CheckState.Checked;
             shadersToolStripMenuItem.Name = "shadersToolStripMenuItem";
             shadersToolStripMenuItem.Size = new Drawing.Size(189, 26);
             shadersToolStripMenuItem.Text = "Shaders";
@@ -1116,7 +1116,7 @@ namespace System.Windows.Forms
             // chkBillboardBones
             // 
             chkBillboardBones.Checked = true;
-            chkBillboardBones.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkBillboardBones.CheckState = CheckState.Checked;
             chkBillboardBones.Name = "chkBillboardBones";
             chkBillboardBones.Size = new Drawing.Size(189, 26);
             chkBillboardBones.Text = "Billboard Bones";
@@ -1149,7 +1149,7 @@ namespace System.Windows.Forms
             // 
             playCHR0ToolStripMenuItem.Checked = true;
             playCHR0ToolStripMenuItem.CheckOnClick = true;
-            playCHR0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playCHR0ToolStripMenuItem.CheckState = CheckState.Checked;
             playCHR0ToolStripMenuItem.Name = "playCHR0ToolStripMenuItem";
             playCHR0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playCHR0ToolStripMenuItem.Text = "CHR0";
@@ -1159,7 +1159,7 @@ namespace System.Windows.Forms
             // 
             playSRT0ToolStripMenuItem.Checked = true;
             playSRT0ToolStripMenuItem.CheckOnClick = true;
-            playSRT0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playSRT0ToolStripMenuItem.CheckState = CheckState.Checked;
             playSRT0ToolStripMenuItem.Name = "playSRT0ToolStripMenuItem";
             playSRT0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playSRT0ToolStripMenuItem.Text = "SRT0";
@@ -1169,7 +1169,7 @@ namespace System.Windows.Forms
             // 
             playSHP0ToolStripMenuItem.Checked = true;
             playSHP0ToolStripMenuItem.CheckOnClick = true;
-            playSHP0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playSHP0ToolStripMenuItem.CheckState = CheckState.Checked;
             playSHP0ToolStripMenuItem.Name = "playSHP0ToolStripMenuItem";
             playSHP0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playSHP0ToolStripMenuItem.Text = "SHP0";
@@ -1179,7 +1179,7 @@ namespace System.Windows.Forms
             // 
             playPAT0ToolStripMenuItem.Checked = true;
             playPAT0ToolStripMenuItem.CheckOnClick = true;
-            playPAT0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playPAT0ToolStripMenuItem.CheckState = CheckState.Checked;
             playPAT0ToolStripMenuItem.Name = "playPAT0ToolStripMenuItem";
             playPAT0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playPAT0ToolStripMenuItem.Text = "PAT0";
@@ -1189,7 +1189,7 @@ namespace System.Windows.Forms
             // 
             playVIS0ToolStripMenuItem.Checked = true;
             playVIS0ToolStripMenuItem.CheckOnClick = true;
-            playVIS0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playVIS0ToolStripMenuItem.CheckState = CheckState.Checked;
             playVIS0ToolStripMenuItem.Name = "playVIS0ToolStripMenuItem";
             playVIS0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playVIS0ToolStripMenuItem.Text = "VIS0";
@@ -1198,7 +1198,7 @@ namespace System.Windows.Forms
             // playCLR0ToolStripMenuItem
             // 
             playCLR0ToolStripMenuItem.Checked = true;
-            playCLR0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playCLR0ToolStripMenuItem.CheckState = CheckState.Checked;
             playCLR0ToolStripMenuItem.Name = "playCLR0ToolStripMenuItem";
             playCLR0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playCLR0ToolStripMenuItem.Text = "CLR0";
@@ -1207,7 +1207,7 @@ namespace System.Windows.Forms
             // playSCN0ToolStripMenuItem
             // 
             playSCN0ToolStripMenuItem.Checked = true;
-            playSCN0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            playSCN0ToolStripMenuItem.CheckState = CheckState.Checked;
             playSCN0ToolStripMenuItem.Name = "playSCN0ToolStripMenuItem";
             playSCN0ToolStripMenuItem.Size = new Drawing.Size(121, 26);
             playSCN0ToolStripMenuItem.Text = "SCN0";
@@ -1216,7 +1216,7 @@ namespace System.Windows.Forms
             // sCN0ToolStripMenuItem
             // 
             sCN0ToolStripMenuItem.Checked = true;
-            sCN0ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            sCN0ToolStripMenuItem.CheckState = CheckState.Checked;
             sCN0ToolStripMenuItem.Name = "sCN0ToolStripMenuItem";
             sCN0ToolStripMenuItem.Size = new Drawing.Size(266, 26);
             sCN0ToolStripMenuItem.Text = "Show SCN0 Lights/Cameras";
@@ -1410,7 +1410,7 @@ namespace System.Windows.Forms
             // 
             chkExternalAnims.Checked = true;
             chkExternalAnims.CheckOnClick = true;
-            chkExternalAnims.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkExternalAnims.CheckState = CheckState.Checked;
             chkExternalAnims.Name = "chkExternalAnims";
             chkExternalAnims.Size = new Drawing.Size(299, 26);
             chkExternalAnims.Text = "Display external animations";
@@ -1420,7 +1420,7 @@ namespace System.Windows.Forms
             // 
             chkBRRESAnims.Checked = true;
             chkBRRESAnims.CheckOnClick = true;
-            chkBRRESAnims.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkBRRESAnims.CheckState = CheckState.Checked;
             chkBRRESAnims.Name = "chkBRRESAnims";
             chkBRRESAnims.Size = new Drawing.Size(299, 26);
             chkBRRESAnims.Text = "Display animations in BRRES";
@@ -1430,7 +1430,7 @@ namespace System.Windows.Forms
             // 
             chkNonBRRESAnims.Checked = true;
             chkNonBRRESAnims.CheckOnClick = true;
-            chkNonBRRESAnims.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkNonBRRESAnims.CheckState = CheckState.Checked;
             chkNonBRRESAnims.Name = "chkNonBRRESAnims";
             chkNonBRRESAnims.Size = new Drawing.Size(299, 26);
             chkNonBRRESAnims.Text = "Display animations not in BRRES";
@@ -1458,9 +1458,9 @@ namespace System.Windows.Forms
             // 
             // models
             // 
-            models.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            models.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            models.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            models.DropDownStyle = ComboBoxStyle.DropDownList;
             models.FormattingEnabled = true;
             models.Items.AddRange(new object[] {
             "All"});
@@ -1475,7 +1475,7 @@ namespace System.Windows.Forms
             controlPanel.Controls.Add(splitter1);
             controlPanel.Controls.Add(toolStrip1);
             controlPanel.Controls.Add(panel2);
-            controlPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            controlPanel.Dock = DockStyle.Top;
             controlPanel.Location = new Drawing.Point(0, 0);
             controlPanel.Name = "controlPanel";
             controlPanel.Size = new Drawing.Size(805, 26);
@@ -1492,8 +1492,8 @@ namespace System.Windows.Forms
             // 
             // toolStrip1
             // 
-            toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStrip1.Dock = DockStyle.Fill;
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Drawing.Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] {
             chkBones,
@@ -1518,9 +1518,9 @@ namespace System.Windows.Forms
             // chkBones
             // 
             chkBones.Checked = true;
-            chkBones.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkBones.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            chkBones.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkBones.CheckState = CheckState.Checked;
+            chkBones.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkBones.ImageTransparentColor = Drawing.Color.Magenta;
             chkBones.Name = "chkBones";
             chkBones.Size = new Drawing.Size(53, 23);
             chkBones.Text = "Bones";
@@ -1529,9 +1529,9 @@ namespace System.Windows.Forms
             // chkPolygons
             // 
             chkPolygons.Checked = true;
-            chkPolygons.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkPolygons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            chkPolygons.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkPolygons.CheckState = CheckState.Checked;
+            chkPolygons.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkPolygons.ImageTransparentColor = Drawing.Color.Magenta;
             chkPolygons.Name = "chkPolygons";
             chkPolygons.Size = new Drawing.Size(72, 23);
             chkPolygons.Text = "Polygons";
@@ -1539,8 +1539,8 @@ namespace System.Windows.Forms
             // 
             // chkVertices
             // 
-            chkVertices.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            chkVertices.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkVertices.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkVertices.ImageTransparentColor = Drawing.Color.Magenta;
             chkVertices.Name = "chkVertices";
             chkVertices.Size = new Drawing.Size(64, 23);
             chkVertices.Text = "Vertices";
@@ -1549,9 +1549,9 @@ namespace System.Windows.Forms
             // chkCollisions
             // 
             chkCollisions.Checked = true;
-            chkCollisions.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkCollisions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            chkCollisions.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkCollisions.CheckState = CheckState.Checked;
+            chkCollisions.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkCollisions.ImageTransparentColor = Drawing.Color.Magenta;
             chkCollisions.Name = "chkCollisions";
             chkCollisions.Size = new Drawing.Size(76, 21);
             chkCollisions.Text = "Collisions";
@@ -1560,12 +1560,12 @@ namespace System.Windows.Forms
             // 
             // dropdownOverlays
             // 
-            dropdownOverlays.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            dropdownOverlays.DisplayStyle = ToolStripItemDisplayStyle.Text;
             dropdownOverlays.DropDownItems.AddRange(new ToolStripItem[] {
             chkBoundaries,
             chkSpawns,
             chkItems});
-            dropdownOverlays.ImageTransparentColor = System.Drawing.Color.Magenta;
+            dropdownOverlays.ImageTransparentColor = Drawing.Color.Magenta;
             dropdownOverlays.Name = "dropdownOverlays";
             dropdownOverlays.Size = new Drawing.Size(79, 23);
             dropdownOverlays.Text = "Overlays";
@@ -1601,8 +1601,8 @@ namespace System.Windows.Forms
             // 
             // chkFloor
             // 
-            chkFloor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            chkFloor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkFloor.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkFloor.ImageTransparentColor = Drawing.Color.Magenta;
             chkFloor.Name = "chkFloor";
             chkFloor.Size = new Drawing.Size(47, 24);
             chkFloor.Text = "Floor";
@@ -1610,8 +1610,8 @@ namespace System.Windows.Forms
             // 
             // button1
             // 
-            button1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            button1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            button1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            button1.ImageTransparentColor = Drawing.Color.Magenta;
             button1.Name = "button1";
             button1.Size = new Drawing.Size(104, 24);
             button1.Text = "Reset Camera";
@@ -1619,8 +1619,8 @@ namespace System.Windows.Forms
             // 
             // chkZoomExtents
             // 
-            chkZoomExtents.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            chkZoomExtents.ImageTransparentColor = System.Drawing.Color.Magenta;
+            chkZoomExtents.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            chkZoomExtents.ImageTransparentColor = Drawing.Color.Magenta;
             chkZoomExtents.Name = "chkZoomExtents";
             chkZoomExtents.Size = new Drawing.Size(104, 24);
             chkZoomExtents.Text = "Zoom Extents";
@@ -1628,8 +1628,8 @@ namespace System.Windows.Forms
             // 
             // btnSaveCam
             // 
-            btnSaveCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnSaveCam.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnSaveCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnSaveCam.ImageTransparentColor = Drawing.Color.Magenta;
             btnSaveCam.Name = "btnSaveCam";
             btnSaveCam.Size = new Drawing.Size(99, 24);
             btnSaveCam.Text = "Save Camera";
@@ -1642,8 +1642,8 @@ namespace System.Windows.Forms
             // 
             // cboToolSelect
             // 
-            cboToolSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            cboToolSelect.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            cboToolSelect.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboToolSelect.FlatStyle = FlatStyle.Standard;
             cboToolSelect.Items.AddRange(new object[] {
             "Translation",
             "Rotation",
@@ -1657,7 +1657,7 @@ namespace System.Windows.Forms
             // 
             panel2.Controls.Add(models);
             panel2.Controls.Add(menuStrip1);
-            panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            panel2.Dock = DockStyle.Left;
             panel2.Location = new Drawing.Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(464, 26);
@@ -1665,7 +1665,7 @@ namespace System.Windows.Forms
             // 
             // spltRight
             // 
-            spltRight.Dock = System.Windows.Forms.DockStyle.Right;
+            spltRight.Dock = DockStyle.Right;
             spltRight.Location = new Drawing.Point(601, 26);
             spltRight.Name = "spltRight";
             spltRight.Size = new Drawing.Size(4, 389);
@@ -1676,7 +1676,7 @@ namespace System.Windows.Forms
             // panel1
             // 
             panel1.Controls.Add(modelPanel);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Drawing.Point(189, 41);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(397, 359);
@@ -1684,10 +1684,10 @@ namespace System.Windows.Forms
             // 
             // modelPanel
             // 
-            modelPanel.BackColor = System.Drawing.Color.Lavender;
-            modelPanelViewport1.BackgroundColor = System.Drawing.Color.FromArgb(0, 240, 240, 240);
+            modelPanel.BackColor = Drawing.Color.Lavender;
+            modelPanelViewport1.BackgroundColor = Drawing.Color.FromArgb(0, 240, 240, 240);
             modelPanelViewport1.BackgroundImage = null;
-            modelPanelViewport1.BackgroundImageType = BrawlLib.OpenGL.BGImageType.Stretch;
+            modelPanelViewport1.BackgroundImageType = BGImageType.Stretch;
             glCamera1.Aspect = 1.10585F;
             glCamera1.FarDepth = 200000F;
             glCamera1.Height = 359F;
@@ -1700,10 +1700,10 @@ namespace System.Windows.Forms
             modelPanelViewport1.Region = new Drawing.Rectangle(0, 0, 397, 359);
             modelPanelViewport1.RotationScale = 0.4F;
             modelPanelViewport1.TranslationScale = 0.05F;
-            modelPanelViewport1.ViewType = BrawlLib.OpenGL.ViewportProjection.Perspective;
+            modelPanelViewport1.ViewType = ViewportProjection.Perspective;
             modelPanelViewport1.ZoomScale = 2.5F;
             modelPanel.CurrentViewport = modelPanelViewport1;
-            modelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            modelPanel.Dock = DockStyle.Fill;
             modelPanel.Location = new Drawing.Point(0, 0);
             modelPanel.Name = "modelPanel";
             modelPanel.Size = new Drawing.Size(397, 359);
@@ -1739,7 +1739,7 @@ namespace System.Windows.Forms
             animEditors.AutoScroll = true;
             animEditors.Controls.Add(pnlPlayback);
             animEditors.Controls.Add(animCtrlPnl);
-            animEditors.Dock = System.Windows.Forms.DockStyle.Bottom;
+            animEditors.Dock = DockStyle.Bottom;
             animEditors.Location = new Drawing.Point(0, 415);
             animEditors.Name = "animEditors";
             animEditors.Size = new Drawing.Size(805, 60);
@@ -1748,7 +1748,7 @@ namespace System.Windows.Forms
             // 
             // pnlPlayback
             // 
-            pnlPlayback.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlPlayback.Dock = DockStyle.Fill;
             pnlPlayback.Enabled = false;
             pnlPlayback.Location = new Drawing.Point(264, 0);
             pnlPlayback.MinimumSize = new Drawing.Size(290, 54);
@@ -1768,7 +1768,7 @@ namespace System.Windows.Forms
             animCtrlPnl.Controls.Add(clr0Editor);
             animCtrlPnl.Controls.Add(weightEditor);
             animCtrlPnl.Controls.Add(vertexEditor);
-            animCtrlPnl.Dock = System.Windows.Forms.DockStyle.Left;
+            animCtrlPnl.Dock = DockStyle.Left;
             animCtrlPnl.Location = new Drawing.Point(0, 0);
             animCtrlPnl.Name = "animCtrlPnl";
             animCtrlPnl.Size = new Drawing.Size(264, 60);
@@ -1776,7 +1776,7 @@ namespace System.Windows.Forms
             // 
             // vis0Editor
             // 
-            vis0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            vis0Editor.Dock = DockStyle.Fill;
             vis0Editor.Location = new Drawing.Point(0, 0);
             vis0Editor.MinimumSize = new Drawing.Size(210, 55);
             vis0Editor.Name = "vis0Editor";
@@ -1787,7 +1787,7 @@ namespace System.Windows.Forms
             // 
             // pat0Editor
             // 
-            pat0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            pat0Editor.Dock = DockStyle.Fill;
             pat0Editor.Location = new Drawing.Point(0, 0);
             pat0Editor.MinimumSize = new Drawing.Size(402, 77);
             pat0Editor.Name = "pat0Editor";
@@ -1797,7 +1797,7 @@ namespace System.Windows.Forms
             // 
             // shp0Editor
             // 
-            shp0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            shp0Editor.Dock = DockStyle.Fill;
             shp0Editor.Location = new Drawing.Point(0, 0);
             shp0Editor.MinimumSize = new Drawing.Size(533, 106);
             shp0Editor.Name = "shp0Editor";
@@ -1807,7 +1807,7 @@ namespace System.Windows.Forms
             // 
             // srt0Editor
             // 
-            srt0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            srt0Editor.Dock = DockStyle.Fill;
             srt0Editor.Location = new Drawing.Point(0, 0);
             srt0Editor.MinimumSize = new Drawing.Size(483, 78);
             srt0Editor.Name = "srt0Editor";
@@ -1817,7 +1817,7 @@ namespace System.Windows.Forms
             // 
             // chr0Editor
             // 
-            chr0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            chr0Editor.Dock = DockStyle.Fill;
             chr0Editor.Location = new Drawing.Point(0, 0);
             chr0Editor.MinimumSize = new Drawing.Size(582, 78);
             chr0Editor.Name = "chr0Editor";
@@ -1827,7 +1827,7 @@ namespace System.Windows.Forms
             // 
             // scn0Editor
             // 
-            scn0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            scn0Editor.Dock = DockStyle.Fill;
             scn0Editor.Location = new Drawing.Point(0, 0);
             scn0Editor.Name = "scn0Editor";
             scn0Editor.Size = new Drawing.Size(264, 60);
@@ -1836,7 +1836,7 @@ namespace System.Windows.Forms
             // 
             // clr0Editor
             // 
-            clr0Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            clr0Editor.Dock = DockStyle.Fill;
             clr0Editor.Location = new Drawing.Point(0, 0);
             clr0Editor.MinimumSize = new Drawing.Size(256, 40);
             clr0Editor.Name = "clr0Editor";
@@ -1846,7 +1846,7 @@ namespace System.Windows.Forms
             // 
             // weightEditor
             // 
-            weightEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            weightEditor.Dock = DockStyle.Fill;
             weightEditor.Location = new Drawing.Point(0, 0);
             weightEditor.MinimumSize = new Drawing.Size(260, 103);
             weightEditor.Name = "weightEditor";
@@ -1856,7 +1856,7 @@ namespace System.Windows.Forms
             // 
             // vertexEditor
             // 
-            vertexEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            vertexEditor.Dock = DockStyle.Fill;
             vertexEditor.Enabled = false;
             vertexEditor.Location = new Drawing.Point(0, 0);
             vertexEditor.MinimumSize = new Drawing.Size(230, 85);
@@ -1867,7 +1867,7 @@ namespace System.Windows.Forms
             // 
             // rightPanel
             // 
-            rightPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            rightPanel.Dock = DockStyle.Right;
             rightPanel.Location = new Drawing.Point(605, 26);
             rightPanel.Name = "rightPanel";
             rightPanel.Size = new Drawing.Size(200, 389);
@@ -1876,7 +1876,7 @@ namespace System.Windows.Forms
             // 
             // leftPanel
             // 
-            leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            leftPanel.Dock = DockStyle.Left;
             leftPanel.Location = new Drawing.Point(0, 26);
             leftPanel.Name = "leftPanel";
             leftPanel.Size = new Drawing.Size(170, 389);
@@ -1955,7 +1955,7 @@ namespace System.Windows.Forms
 
             animEditors.HorizontalScroll.Enabled = (!(animEditors.Width - animCtrlPnl.Width >= pnlPlayback.MinimumSize.Width));
 
-            string applicationFolder = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+            string applicationFolder = IO.Path.GetDirectoryName(Reflection.Assembly.GetEntryAssembly().Location);
             ScreenCapBgLocText.Text = applicationFolder + "\\ScreenCaptures";
             MDL0TextureNode.TextureOverrideDirectory =
                 LiveTextureFolderPath.Text =
@@ -2173,7 +2173,7 @@ namespace System.Windows.Forms
 
         protected override void modelPanel1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == Forms.MouseButtons.Left &&
+            if (e.Button == MouseButtons.Left &&
                 !_vertexSelection.IsMoving())
             {
                 weightEditor.TargetVertices = _selectedVertices;

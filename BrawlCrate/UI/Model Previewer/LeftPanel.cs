@@ -71,7 +71,7 @@ namespace System.Windows.Forms
         private void InitializeComponent()
         {
             components = new Container();
-            ListViewGroup listViewGroup2 = new ListViewGroup("Animations", System.Windows.Forms.HorizontalAlignment.Left);
+            ListViewGroup listViewGroup2 = new ListViewGroup("Animations", HorizontalAlignment.Left);
             pnlObjects = new Panel();
             lstObjects = new CheckedListBox();
             spltDrawCalls = new Splitter();
@@ -136,7 +136,7 @@ namespace System.Windows.Forms
             // 
             // pnlObjects
             // 
-            pnlObjects.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlObjects.BorderStyle = BorderStyle.FixedSingle;
             pnlObjects.Controls.Add(overObjPnl);
             pnlObjects.Controls.Add(lstObjects);
             pnlObjects.Controls.Add(spltDrawCalls);
@@ -144,7 +144,7 @@ namespace System.Windows.Forms
             pnlObjects.Controls.Add(chkAllObj);
             pnlObjects.Controls.Add(chkSyncVis);
             pnlObjects.Controls.Add(btnObjects);
-            pnlObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlObjects.Dock = DockStyle.Fill;
             pnlObjects.Location = new Drawing.Point(0, 182);
             pnlObjects.MinimumSize = new Drawing.Size(0, 21);
             pnlObjects.Name = "pnlObjects";
@@ -153,9 +153,9 @@ namespace System.Windows.Forms
             // 
             // lstObjects
             // 
-            lstObjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lstObjects.BorderStyle = BorderStyle.None;
             lstObjects.CausesValidation = false;
-            lstObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstObjects.Dock = DockStyle.Fill;
             lstObjects.IntegralHeight = false;
             lstObjects.Location = new Drawing.Point(0, 66);
             lstObjects.Margin = new Padding(0);
@@ -169,7 +169,7 @@ namespace System.Windows.Forms
             // 
             // spltDrawCalls
             // 
-            spltDrawCalls.Dock = System.Windows.Forms.DockStyle.Bottom;
+            spltDrawCalls.Dock = DockStyle.Bottom;
             spltDrawCalls.Location = new Drawing.Point(0, 111);
             spltDrawCalls.Name = "spltDrawCalls";
             spltDrawCalls.Size = new Drawing.Size(170, 3);
@@ -179,7 +179,7 @@ namespace System.Windows.Forms
             // 
             // lstDrawCalls
             // 
-            lstDrawCalls.Dock = System.Windows.Forms.DockStyle.Bottom;
+            lstDrawCalls.Dock = DockStyle.Bottom;
             lstDrawCalls.FormattingEnabled = true;
             lstDrawCalls.IntegralHeight = false;
             lstDrawCalls.Location = new Drawing.Point(0, 114);
@@ -194,8 +194,8 @@ namespace System.Windows.Forms
             // chkAllObj
             // 
             chkAllObj.Checked = true;
-            chkAllObj.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkAllObj.Dock = System.Windows.Forms.DockStyle.Top;
+            chkAllObj.CheckState = CheckState.Checked;
+            chkAllObj.Dock = DockStyle.Top;
             chkAllObj.Location = new Drawing.Point(0, 46);
             chkAllObj.Margin = new Padding(0);
             chkAllObj.Name = "chkAllObj";
@@ -208,7 +208,7 @@ namespace System.Windows.Forms
             // 
             // chkSyncVis
             // 
-            chkSyncVis.Dock = System.Windows.Forms.DockStyle.Top;
+            chkSyncVis.Dock = DockStyle.Top;
             chkSyncVis.Location = new Drawing.Point(0, 26);
             chkSyncVis.Margin = new Padding(0);
             chkSyncVis.Name = "chkSyncVis";
@@ -220,7 +220,7 @@ namespace System.Windows.Forms
             // 
             // btnObjects
             // 
-            btnObjects.Dock = System.Windows.Forms.DockStyle.Top;
+            btnObjects.Dock = DockStyle.Top;
             btnObjects.Location = new Drawing.Point(0, 0);
             btnObjects.Name = "btnObjects";
             btnObjects.Size = new Drawing.Size(170, 26);
@@ -231,12 +231,12 @@ namespace System.Windows.Forms
             // 
             // pnlAnims
             // 
-            pnlAnims.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlAnims.BorderStyle = BorderStyle.FixedSingle;
             pnlAnims.Controls.Add(listAnims);
             pnlAnims.Controls.Add(panel2);
             pnlAnims.Controls.Add(panel1);
             pnlAnims.Controls.Add(btnAnims);
-            pnlAnims.Dock = System.Windows.Forms.DockStyle.Top;
+            pnlAnims.Dock = DockStyle.Top;
             pnlAnims.Location = new Drawing.Point(0, 0);
             pnlAnims.MinimumSize = new Drawing.Size(0, 21);
             pnlAnims.Name = "pnlAnims";
@@ -249,13 +249,13 @@ namespace System.Windows.Forms
             listAnims.Columns.AddRange(new ColumnHeader[] {
             nameColumn});
             listAnims.ContextMenuStrip = ctxAnimList;
-            listAnims.Cursor = System.Windows.Forms.Cursors.Default;
-            listAnims.Dock = System.Windows.Forms.DockStyle.Fill;
+            listAnims.Cursor = Cursors.Default;
+            listAnims.Dock = DockStyle.Fill;
             listViewGroup2.Header = "Animations";
             listViewGroup2.Name = "grpAnims";
             listAnims.Groups.AddRange(new ListViewGroup[] {
             listViewGroup2});
-            listAnims.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            listAnims.HeaderStyle = ColumnHeaderStyle.None;
             listAnims.HideSelection = false;
             listAnims.Location = new Drawing.Point(0, 73);
             listAnims.MultiSelect = false;
@@ -263,7 +263,7 @@ namespace System.Windows.Forms
             listAnims.Size = new Drawing.Size(170, 103);
             listAnims.TabIndex = 25;
             listAnims.UseCompatibleStateImageBehavior = false;
-            listAnims.View = System.Windows.Forms.View.Details;
+            listAnims.View = View.Details;
             listAnims.SelectedIndexChanged += new EventHandler(listAnims_SelectedIndexChanged);
             listAnims.KeyDown += new KeyEventHandler(listAnims_KeyDown);
             listAnims.MouseDown += new MouseEventHandler(listAnims_MouseDown);
@@ -314,7 +314,7 @@ namespace System.Windows.Forms
             // 
             panel2.Controls.Add(txtSearchAnim);
             panel2.Controls.Add(chkContains);
-            panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            panel2.Dock = DockStyle.Top;
             panel2.Location = new Drawing.Point(0, 52);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(170, 21);
@@ -322,8 +322,8 @@ namespace System.Windows.Forms
             // 
             // txtSearchAnim
             // 
-            txtSearchAnim.Dock = System.Windows.Forms.DockStyle.Fill;
-            txtSearchAnim.ForeColor = System.Drawing.Color.Gray;
+            txtSearchAnim.Dock = DockStyle.Fill;
+            txtSearchAnim.ForeColor = Color.Gray;
             txtSearchAnim.Location = new Drawing.Point(0, 0);
             txtSearchAnim.Name = "txtSearchAnim";
             txtSearchAnim.Size = new Drawing.Size(82, 22);
@@ -336,7 +336,7 @@ namespace System.Windows.Forms
             // chkContains
             // 
             chkContains.AutoSize = true;
-            chkContains.Dock = System.Windows.Forms.DockStyle.Right;
+            chkContains.Dock = DockStyle.Right;
             chkContains.Location = new Drawing.Point(82, 0);
             chkContains.Margin = new Padding(0);
             chkContains.Name = "chkContains";
@@ -352,7 +352,7 @@ namespace System.Windows.Forms
             panel1.Controls.Add(btnLoad);
             panel1.Controls.Add(btnSaveAnims);
             panel1.Controls.Add(fileType);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Drawing.Point(0, 26);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(170, 26);
@@ -360,7 +360,7 @@ namespace System.Windows.Forms
             // 
             // btnSaveAnims
             // 
-            btnSaveAnims.Dock = System.Windows.Forms.DockStyle.Right;
+            btnSaveAnims.Dock = DockStyle.Right;
             btnSaveAnims.Location = new Drawing.Point(51, 0);
             btnSaveAnims.Name = "btnSaveAnims";
             btnSaveAnims.Size = new Drawing.Size(60, 26);
@@ -371,7 +371,7 @@ namespace System.Windows.Forms
             // 
             // btnLoad
             // 
-            btnLoad.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnLoad.Dock = DockStyle.Fill;
             btnLoad.Location = new Drawing.Point(0, 0);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Drawing.Size(51, 26);
@@ -382,8 +382,8 @@ namespace System.Windows.Forms
             // 
             // fileType
             // 
-            fileType.Dock = System.Windows.Forms.DockStyle.Right;
-            fileType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            fileType.Dock = DockStyle.Right;
+            fileType.DropDownStyle = ComboBoxStyle.DropDownList;
             fileType.FormattingEnabled = true;
             fileType.Location = new Drawing.Point(111, 0);
             fileType.Name = "fileType";
@@ -393,7 +393,7 @@ namespace System.Windows.Forms
             // 
             // btnAnims
             // 
-            btnAnims.Dock = System.Windows.Forms.DockStyle.Top;
+            btnAnims.Dock = DockStyle.Top;
             btnAnims.Location = new Drawing.Point(0, 0);
             btnAnims.Name = "btnAnims";
             btnAnims.Size = new Drawing.Size(170, 26);
@@ -474,12 +474,12 @@ namespace System.Windows.Forms
             // 
             // pnlTextures
             // 
-            pnlTextures.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlTextures.BorderStyle = BorderStyle.FixedSingle;
             pnlTextures.Controls.Add(overTexPnl);
             pnlTextures.Controls.Add(lstTextures);
             pnlTextures.Controls.Add(chkAllTextures);
             pnlTextures.Controls.Add(btnTextures);
-            pnlTextures.Dock = System.Windows.Forms.DockStyle.Bottom;
+            pnlTextures.Dock = DockStyle.Bottom;
             pnlTextures.Location = new Drawing.Point(0, 336);
             pnlTextures.MinimumSize = new Drawing.Size(0, 21);
             pnlTextures.Name = "pnlTextures";
@@ -488,10 +488,10 @@ namespace System.Windows.Forms
             // 
             // lstTextures
             // 
-            lstTextures.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lstTextures.BorderStyle = BorderStyle.None;
             lstTextures.CausesValidation = false;
             lstTextures.ContextMenuStrip = ctxTextures;
-            lstTextures.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstTextures.Dock = DockStyle.Fill;
             lstTextures.IntegralHeight = false;
             lstTextures.Location = new Drawing.Point(0, 46);
             lstTextures.Margin = new Padding(0);
@@ -507,8 +507,8 @@ namespace System.Windows.Forms
             // chkAllTextures
             // 
             chkAllTextures.Checked = true;
-            chkAllTextures.CheckState = System.Windows.Forms.CheckState.Checked;
-            chkAllTextures.Dock = System.Windows.Forms.DockStyle.Top;
+            chkAllTextures.CheckState = CheckState.Checked;
+            chkAllTextures.Dock = DockStyle.Top;
             chkAllTextures.Location = new Drawing.Point(0, 26);
             chkAllTextures.Margin = new Padding(0);
             chkAllTextures.Name = "chkAllTextures";
@@ -521,7 +521,7 @@ namespace System.Windows.Forms
             // 
             // btnTextures
             // 
-            btnTextures.Dock = System.Windows.Forms.DockStyle.Top;
+            btnTextures.Dock = DockStyle.Top;
             btnTextures.Location = new Drawing.Point(0, 0);
             btnTextures.Name = "btnTextures";
             btnTextures.Size = new Drawing.Size(170, 26);
@@ -639,7 +639,7 @@ namespace System.Windows.Forms
             // 
             // overObjPnl
             // 
-            overObjPnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            overObjPnl.Dock = DockStyle.Fill;
             overObjPnl.Location = new Drawing.Point(0, 66);
             overObjPnl.Name = "overObjPnl";
             overObjPnl.Size = new Drawing.Size(170, 45);
@@ -648,8 +648,8 @@ namespace System.Windows.Forms
             // 
             // spltObjTex
             // 
-            spltObjTex.Cursor = System.Windows.Forms.Cursors.HSplit;
-            spltObjTex.Dock = System.Windows.Forms.DockStyle.Bottom;
+            spltObjTex.Cursor = Cursors.HSplit;
+            spltObjTex.Dock = DockStyle.Bottom;
             spltObjTex.Location = new Drawing.Point(0, 332);
             spltObjTex.Name = "spltObjTex";
             spltObjTex.Size = new Drawing.Size(172, 4);
@@ -658,8 +658,8 @@ namespace System.Windows.Forms
             // 
             // spltAnimObj
             // 
-            spltAnimObj.Cursor = System.Windows.Forms.Cursors.HSplit;
-            spltAnimObj.Dock = System.Windows.Forms.DockStyle.Top;
+            spltAnimObj.Cursor = Cursors.HSplit;
+            spltAnimObj.Dock = DockStyle.Top;
             spltAnimObj.Location = new Drawing.Point(0, 178);
             spltAnimObj.Name = "spltAnimObj";
             spltAnimObj.Size = new Drawing.Size(172, 4);
@@ -668,7 +668,7 @@ namespace System.Windows.Forms
             // 
             // overTexPnl
             // 
-            overTexPnl.Dock = System.Windows.Forms.DockStyle.Fill;
+            overTexPnl.Dock = DockStyle.Fill;
             overTexPnl.Location = new Drawing.Point(0, 46);
             overTexPnl.Name = "overTexPnl";
             overTexPnl.Size = new Drawing.Size(170, 116);
@@ -1866,7 +1866,7 @@ namespace System.Windows.Forms
             NW4RAnimationNode n = _mainWindow.TargetAnimation;
             if (n != null)
             {
-                if (ModelEditControl.Interpolated.Contains(n.GetType()))
+                if (ModelEditorBase.Interpolated.Contains(n.GetType()))
                 {
                     _mainWindow.Updating = true;
                     bool loopPrev = n.Loop;
@@ -2016,7 +2016,7 @@ namespace System.Windows.Forms
             if (txtSearchAnim.ForeColor == Color.Gray)
             {
                 txtSearchAnim.Text = "";
-                txtSearchAnim.Font = new Font(txtSearchAnim.Font, Drawing.FontStyle.Regular);
+                txtSearchAnim.Font = new Font(txtSearchAnim.Font, FontStyle.Regular);
                 txtSearchAnim.ForeColor = Color.Black;
             }
         }
@@ -2025,7 +2025,7 @@ namespace System.Windows.Forms
         {
             if (txtSearchAnim.Text == string.Empty)
             {
-                txtSearchAnim.Font = new Font(txtSearchAnim.Font, Drawing.FontStyle.Italic);
+                txtSearchAnim.Font = new Font(txtSearchAnim.Font, FontStyle.Italic);
                 txtSearchAnim.ForeColor = Color.Gray;
                 txtSearchAnim.Text = "Search for an animation...";
             }

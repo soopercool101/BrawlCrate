@@ -693,7 +693,7 @@ namespace System.Windows.Forms
                 d.Filter = "Raw Data (*.*)|*.*";
                 d.FileName = _section.Name;
                 d.Title = "Choose a place to export to.";
-                if (d.ShowDialog() == Forms.DialogResult.OK)
+                if (d.ShowDialog() == DialogResult.OK)
                 {
                     _section.Export(d.FileName);
                 }
@@ -705,7 +705,7 @@ namespace System.Windows.Forms
             using (OpenFileDialog d = new OpenFileDialog())
             {
                 d.Filter = "Raw Data (*.*)|*.*";
-                if (d.ShowDialog() == Forms.DialogResult.OK)
+                if (d.ShowDialog() == DialogResult.OK)
                 {
                     _section.Replace(d.FileName);
                     Init();

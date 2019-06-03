@@ -55,10 +55,10 @@ namespace BrawlLib.Modeling
 
         public IModel ShowDialog(string filePath, ImportType type)
         {
-            _importOptions = BrawlLib.Properties.Settings.Default.ColladaImportOptions;
+            _importOptions = Properties.Settings.Default.ColladaImportOptions;
             propertyGrid1.SelectedObject = _importOptions;
 
-            if (base.ShowDialog() == DialogResult.OK)
+            if (ShowDialog() == DialogResult.OK)
             {
                 panel1.Visible = false;
                 Height = 70;
@@ -67,7 +67,7 @@ namespace BrawlLib.Modeling
                 Show();
                 Update();
                 IModel model = ImportModel(filePath, type);
-                BrawlLib.Properties.Settings.Default.Save();
+                Properties.Settings.Default.Save();
                 Close();
                 _importOptions = new ImportOptions();
                 return model;
@@ -112,7 +112,7 @@ namespace BrawlLib.Modeling
             // 
             // button1
             // 
-            button1.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            button1.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             button1.Location = new System.Drawing.Point(231, 6);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(65, 23);
@@ -123,8 +123,8 @@ namespace BrawlLib.Modeling
             // 
             // button2
             // 
-            button2.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            button2.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            button2.DialogResult = DialogResult.Cancel;
             button2.Location = new System.Drawing.Point(302, 6);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(65, 23);
@@ -137,7 +137,7 @@ namespace BrawlLib.Modeling
             // 
             panel1.Controls.Add(propertyGrid1);
             panel1.Controls.Add(panel2);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new System.Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(379, 464);
@@ -145,7 +145,7 @@ namespace BrawlLib.Modeling
             // 
             // propertyGrid1
             // 
-            propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            propertyGrid1.Dock = DockStyle.Fill;
             propertyGrid1.Location = new System.Drawing.Point(0, 0);
             propertyGrid1.Name = "propertyGrid1";
             propertyGrid1.Size = new System.Drawing.Size(379, 429);
@@ -156,7 +156,7 @@ namespace BrawlLib.Modeling
             // 
             panel2.Controls.Add(button1);
             panel2.Controls.Add(button2);
-            panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel2.Dock = DockStyle.Bottom;
             panel2.Location = new System.Drawing.Point(0, 429);
             panel2.Name = "panel2";
             panel2.Size = new System.Drawing.Size(379, 35);
@@ -169,10 +169,10 @@ namespace BrawlLib.Modeling
             ClientSize = new System.Drawing.Size(379, 464);
             Controls.Add(panel1);
             Controls.Add(Status);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             MaximizeBox = false;
             Name = "Collada";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Import Settings";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

@@ -1490,14 +1490,14 @@ namespace BrawlLib.Wii.Graphics
             GL.CompileShader(shaderHandle);
 
 #if DEBUG
-            GL.GetShader(shaderHandle, OpenTK.Graphics.OpenGL.ShaderParameter.CompileStatus, out int status);
+            GL.GetShader(shaderHandle, ShaderParameter.CompileStatus, out int status);
             if (status == 0 || AlwaysOutputShader || System.Windows.Forms.Control.ModifierKeys == (System.Windows.Forms.Keys.Control))
             {
                 GL.GetShaderInfoLog(shaderHandle, out string info);
                 Console.WriteLine(info + "\n\n");
 
                 //Split the source by new lines
-                string[] s = source.Split(new string[] { ShaderGenerator.NewLine }, StringSplitOptions.None);
+                string[] s = source.Split(new string[] { NewLine }, StringSplitOptions.None);
 
                 //Add the line number to the source so we can go right to errors on specific lines
                 int lineNumber = 1;
@@ -1559,12 +1559,12 @@ namespace BrawlLib.Wii.Graphics
                         }
 
                         string[] shadSplit = shaderStages[i].Split(
-                            new string[] { ShaderGenerator.NewLine },
+                            new string[] { NewLine },
                             StringSplitOptions.None);
 
                         foreach (string line in shadSplit)
                         {
-                            combineFrag += tabs + line + ShaderGenerator.NewLine;
+                            combineFrag += tabs + line + NewLine;
                         }
                     }
                 }

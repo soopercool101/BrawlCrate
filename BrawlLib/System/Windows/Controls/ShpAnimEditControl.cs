@@ -228,18 +228,18 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(10, 32);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(67, 20);
             label1.TabIndex = 0;
             label1.Text = "Percentage:";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numScale
             // 
-            numScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numScale.BorderStyle = BorderStyle.FixedSingle;
             numScale.Integral = false;
             numScale.Location = new Drawing.Point(76, 32);
             numScale.Margin = new Padding(0);
@@ -249,7 +249,7 @@ namespace System.Windows.Forms
             numScale.Size = new Drawing.Size(37, 20);
             numScale.TabIndex = 3;
             numScale.Text = "0";
-            numScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            numScale.TextAlign = HorizontalAlignment.Right;
             numScale.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label7
@@ -259,7 +259,7 @@ namespace System.Windows.Forms
             label7.Size = new Drawing.Size(42, 20);
             label7.TabIndex = 15;
             label7.Text = "Frame:";
-            label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label7.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numFrame
             // 
@@ -286,36 +286,36 @@ namespace System.Windows.Forms
             lblFrameCount.Size = new Drawing.Size(49, 20);
             lblFrameCount.TabIndex = 17;
             lblFrameCount.Text = "/ 10";
-            lblFrameCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrameCount.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // btnPrev
             // 
-            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrev.Font = new Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPrev.Location = new Drawing.Point(166, 2);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Drawing.Size(23, 23);
             btnPrev.TabIndex = 1;
             btnPrev.Text = "<";
-            btnPrev.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
             btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
             // btnNext
             // 
-            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnNext.Font = new Font("Microsoft Sans Serif", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             btnNext.Location = new Drawing.Point(191, 2);
             btnNext.Name = "btnNext";
             btnNext.Size = new Drawing.Size(23, 23);
             btnNext.TabIndex = 2;
             btnNext.Text = ">";
-            btnNext.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // listKeyframes
             // 
-            listKeyframes.Dock = System.Windows.Forms.DockStyle.Fill;
-            listKeyframes.Font = new Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            listKeyframes.Dock = DockStyle.Fill;
+            listKeyframes.Font = new Font("Courier New", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             listKeyframes.FormattingEnabled = true;
             listKeyframes.IntegralHeight = false;
             listKeyframes.ItemHeight = 14;
@@ -328,7 +328,7 @@ namespace System.Windows.Forms
             // groupBox1
             // 
             groupBox1.Controls.Add(listKeyframes);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(230, 138);
@@ -346,7 +346,7 @@ namespace System.Windows.Forms
             panel1.Controls.Add(numScale);
             panel1.Controls.Add(lblFrameCount);
             panel1.Controls.Add(numFrame);
-            panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Drawing.Point(0, 138);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(230, 64);
@@ -354,14 +354,14 @@ namespace System.Windows.Forms
             // 
             // label2
             // 
-            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Location = new Drawing.Point(112, 32);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(19, 20);
             label2.TabIndex = 18;
             label2.Text = "%";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // ShpAnimEditControl
             // 

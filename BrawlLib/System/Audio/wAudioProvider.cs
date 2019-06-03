@@ -13,7 +13,7 @@ namespace System.Audio
             _device = device ?? wAudioDevice.DefaultPlaybackDevice;
 
             Guid guid = ((wAudioDevice)_device)._guid;
-            Win32.DirectSound.DirectSoundCreate8(&guid, out _ds8, IntPtr.Zero);
+            DS.DirectSoundCreate8(&guid, out _ds8, IntPtr.Zero);
         }
         public override void Dispose()
         {
@@ -27,7 +27,7 @@ namespace System.Audio
 
         public override void Attach(Control owner)
         {
-            _ds8.SetCooperativeLevel(owner.Handle, Win32.DirectSound.DSCooperativeLevel.Normal);
+            _ds8.SetCooperativeLevel(owner.Handle, DS.DSCooperativeLevel.Normal);
         }
 
         public override AudioBuffer CreateBuffer(IAudioStream target)

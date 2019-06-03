@@ -82,7 +82,7 @@ namespace System.Windows.Forms
                 return SaveAs(r);
             }
 
-            r.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
+            r.Merge(ModifierKeys == (Keys.Control | Keys.Shift));
             r.Export(r._origPath);
             r.IsDirty = false;
             return true;
@@ -91,7 +91,7 @@ namespace System.Windows.Forms
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResourceNode r = SelectedFile;
-            if (MessageBox.Show(this, string.Format("Are you sure you want to save {0}?", Path.GetFileName(r._origPath)), "Are you sure?", MessageBoxButtons.OKCancel) != Forms.DialogResult.OK)
+            if (MessageBox.Show(this, string.Format("Are you sure you want to save {0}?", Path.GetFileName(r._origPath)), "Are you sure?", MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 return;
             }

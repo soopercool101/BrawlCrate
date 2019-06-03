@@ -141,7 +141,7 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(copyKeyframes);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(name);
-            groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Drawing.Point(0, 89);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Drawing.Size(405, 250);
@@ -151,8 +151,8 @@ namespace System.Windows.Forms
             // 
             // groupBox4
             // 
-            groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            groupBox4.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             groupBox4.Controls.Add(TranslateDoNotChange);
             groupBox4.Controls.Add(TranslateDivide);
             groupBox4.Controls.Add(TranslateMultiply);
@@ -305,8 +305,8 @@ namespace System.Windows.Forms
             // 
             // groupBox3
             // 
-            groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            groupBox3.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             groupBox3.Controls.Add(RotateDoNotChange);
             groupBox3.Controls.Add(RotateDivide);
             groupBox3.Controls.Add(RotateMultiply);
@@ -459,8 +459,8 @@ namespace System.Windows.Forms
             // 
             // groupBox5
             // 
-            groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            groupBox5.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             groupBox5.Controls.Add(ScaleDoNotChange);
             groupBox5.Controls.Add(ScaleDivide);
             groupBox5.Controls.Add(ScaleMultiply);
@@ -657,7 +657,7 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(Port);
             groupBox1.Controls.Add(Version);
             groupBox1.Controls.Add(ChangeVersion);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(405, 89);
@@ -737,7 +737,7 @@ namespace System.Windows.Forms
             // 
             // Version
             // 
-            Version.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            Version.DropDownStyle = ComboBoxStyle.DropDownList;
             Version.Enabled = false;
             Version.FormattingEnabled = true;
             Version.Items.AddRange(new object[] {

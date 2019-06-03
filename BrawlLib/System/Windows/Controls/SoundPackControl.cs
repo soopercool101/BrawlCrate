@@ -81,7 +81,7 @@ namespace System.Windows.Forms
             // lstSets
             // 
             lstSets.AutoArrange = false;
-            lstSets.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lstSets.BorderStyle = BorderStyle.None;
             lstSets.Columns.AddRange(new ColumnHeader[] {
             clmIndex,
             clmType,
@@ -90,7 +90,7 @@ namespace System.Windows.Forms
             clmAudioOffset,
             clmEntryOffset});
             lstSets.ContextMenuStrip = contextMenuStrip1;
-            lstSets.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstSets.Dock = DockStyle.Fill;
             lstSets.FullRowSelect = true;
             lstSets.GridLines = true;
             lstSets.HideSelection = false;
@@ -101,7 +101,7 @@ namespace System.Windows.Forms
             lstSets.Size = new Drawing.Size(389, 105);
             lstSets.TabIndex = 0;
             lstSets.UseCompatibleStateImageBehavior = false;
-            lstSets.View = System.Windows.Forms.View.Details;
+            lstSets.View = View.Details;
             lstSets.ColumnClick += new ColumnClickEventHandler(lstSets_ColumnClick);
             lstSets.SelectedIndexChanged += new EventHandler(lstSets_SelectedIndexChanged);
             lstSets.DoubleClick += new EventHandler(lstSets_DoubleClick);
@@ -227,7 +227,7 @@ namespace System.Windows.Forms
             // 
             // audioPlaybackPanel1
             // 
-            audioPlaybackPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            audioPlaybackPanel1.Dock = DockStyle.Bottom;
             audioPlaybackPanel1.Location = new Drawing.Point(0, 133);
             audioPlaybackPanel1.Name = "audioPlaybackPanel1";
             audioPlaybackPanel1.Size = new Drawing.Size(389, 120);

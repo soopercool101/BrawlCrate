@@ -270,7 +270,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 string.Equals(ext, ".jpeg", StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(ext, ".gif", StringComparison.OrdinalIgnoreCase))
             {
-                bmp = (Bitmap)Bitmap.FromFile(fileName);
+                bmp = (Bitmap)Image.FromFile(fileName);
             }
             else
             {

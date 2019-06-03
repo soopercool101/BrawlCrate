@@ -58,18 +58,18 @@ namespace System.Windows.Forms
             lblPrimary.Size = new Drawing.Size(61, 20);
             lblPrimary.TabIndex = 0;
             lblPrimary.Text = "Base Color:";
-            lblPrimary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblPrimary.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lstColors
             // 
             lstColors.ContextMenuStrip = ctxMenu;
-            lstColors.Dock = System.Windows.Forms.DockStyle.Fill;
-            lstColors.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            lstColors.Dock = DockStyle.Fill;
+            lstColors.DrawMode = DrawMode.OwnerDrawFixed;
             lstColors.FormattingEnabled = true;
             lstColors.IntegralHeight = false;
             lstColors.Location = new Drawing.Point(0, 24);
             lstColors.Name = "lstColors";
-            lstColors.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            lstColors.SelectionMode = SelectionMode.MultiExtended;
             lstColors.Size = new Drawing.Size(334, 218);
             lstColors.TabIndex = 1;
             lstColors.DrawItem += new DrawItemEventHandler(lstColors_DrawItem);
@@ -92,7 +92,7 @@ namespace System.Windows.Forms
             // selectAllToolStripMenuItem
             // 
             selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            selectAllToolStripMenuItem.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A);
+            selectAllToolStripMenuItem.ShortcutKeys = (Keys.Control | Keys.A);
             selectAllToolStripMenuItem.Size = new Drawing.Size(164, 22);
             selectAllToolStripMenuItem.Text = "Select All";
             selectAllToolStripMenuItem.Click += new EventHandler(selectAllToolStripMenuItem_Click);
@@ -105,7 +105,7 @@ namespace System.Windows.Forms
             // copyToolStripMenuItem
             // 
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C);
+            copyToolStripMenuItem.ShortcutKeys = (Keys.Control | Keys.C);
             copyToolStripMenuItem.Size = new Drawing.Size(164, 22);
             copyToolStripMenuItem.Text = "Copy";
             copyToolStripMenuItem.Click += new EventHandler(copyToolStripMenuItem_Click);
@@ -117,7 +117,7 @@ namespace System.Windows.Forms
             colorToolStripMenuItem1,
             alphaToolStripMenuItem1});
             pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            pasteToolStripMenuItem.ShortcutKeys = (System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V);
+            pasteToolStripMenuItem.ShortcutKeys = (Keys.Control | Keys.V);
             pasteToolStripMenuItem.Size = new Drawing.Size(164, 22);
             pasteToolStripMenuItem.Text = "Paste";
             // 
@@ -135,21 +135,21 @@ namespace System.Windows.Forms
             // 
             // lblBase
             // 
-            lblBase.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            lblBase.BackColor = System.Drawing.Color.Transparent;
-            lblBase.Font = new Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblBase.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            lblBase.BackColor = Color.Transparent;
+            lblBase.Font = new Font("Courier New", 9F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             lblBase.Location = new Drawing.Point(72, 2);
             lblBase.Name = "lblBase";
             lblBase.Size = new Drawing.Size(149, 20);
             lblBase.TabIndex = 2;
-            lblBase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblBase.TextAlign = ContentAlignment.MiddleLeft;
             lblBase.Click += new EventHandler(lblBase_Click);
             // 
             // lblColor
             // 
-            lblColor.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblColor.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lblColor.BorderStyle = BorderStyle.FixedSingle;
             lblColor.Location = new Drawing.Point(231, 5);
             lblColor.Name = "lblColor";
             lblColor.Size = new Drawing.Size(41, 14);
@@ -158,13 +158,13 @@ namespace System.Windows.Forms
             // 
             // pnlPrimary
             // 
-            pnlPrimary.BackColor = System.Drawing.Color.White;
-            pnlPrimary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pnlPrimary.BackColor = Color.White;
+            pnlPrimary.BorderStyle = BorderStyle.FixedSingle;
             pnlPrimary.Controls.Add(lblColor);
             pnlPrimary.Controls.Add(lblCNoA);
             pnlPrimary.Controls.Add(lblPrimary);
             pnlPrimary.Controls.Add(lblBase);
-            pnlPrimary.Dock = System.Windows.Forms.DockStyle.Top;
+            pnlPrimary.Dock = DockStyle.Top;
             pnlPrimary.Location = new Drawing.Point(0, 0);
             pnlPrimary.Name = "pnlPrimary";
             pnlPrimary.Size = new Drawing.Size(334, 24);
@@ -172,8 +172,8 @@ namespace System.Windows.Forms
             // 
             // lblCNoA
             // 
-            lblCNoA.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
-            lblCNoA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            lblCNoA.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lblCNoA.BorderStyle = BorderStyle.FixedSingle;
             lblCNoA.Location = new Drawing.Point(271, 5);
             lblCNoA.Name = "lblCNoA";
             lblCNoA.Size = new Drawing.Size(41, 14);

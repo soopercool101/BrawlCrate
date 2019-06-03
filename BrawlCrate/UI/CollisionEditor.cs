@@ -212,8 +212,8 @@ namespace System.Windows.Forms
             // 
             // undoToolStrip
             // 
-            undoToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            undoToolStrip.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            undoToolStrip.Dock = DockStyle.Fill;
+            undoToolStrip.FixedPanel = FixedPanel.Panel1;
             undoToolStrip.Location = new Drawing.Point(0, 0);
             undoToolStrip.Name = "undoToolStrip";
             // 
@@ -231,10 +231,10 @@ namespace System.Windows.Forms
             // 
             // redoToolStrip
             // 
-            redoToolStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            redoToolStrip.Dock = DockStyle.Fill;
             redoToolStrip.Location = new Drawing.Point(0, 0);
             redoToolStrip.Name = "redoToolStrip";
-            redoToolStrip.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            redoToolStrip.Orientation = Orientation.Horizontal;
             // 
             // redoToolStrip.Panel1
             // 
@@ -252,10 +252,10 @@ namespace System.Windows.Forms
             // 
             // modelTree
             // 
-            modelTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            modelTree.BorderStyle = BorderStyle.None;
             modelTree.CheckBoxes = true;
             modelTree.ContextMenuStrip = contextMenuStrip2;
-            modelTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            modelTree.Dock = DockStyle.Fill;
             modelTree.HideSelection = false;
             modelTree.Location = new Drawing.Point(0, 17);
             modelTree.Name = "modelTree";
@@ -293,7 +293,7 @@ namespace System.Windows.Forms
             panel2.Controls.Add(chkBones);
             panel2.Controls.Add(chkPoly);
             panel2.Controls.Add(chkAllModels);
-            panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            panel2.Dock = DockStyle.Top;
             panel2.Location = new Drawing.Point(0, 0);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(209, 17);
@@ -313,7 +313,7 @@ namespace System.Windows.Forms
             // chkPoly
             // 
             chkPoly.Checked = true;
-            chkPoly.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkPoly.CheckState = CheckState.Checked;
             chkPoly.Location = new Drawing.Point(44, 0);
             chkPoly.Name = "chkPoly";
             chkPoly.Padding = new Padding(1, 0, 0, 0);
@@ -327,7 +327,7 @@ namespace System.Windows.Forms
             // chkAllModels
             // 
             chkAllModels.Checked = true;
-            chkAllModels.CheckState = System.Windows.Forms.CheckState.Checked;
+            chkAllModels.CheckState = CheckState.Checked;
             chkAllModels.Location = new Drawing.Point(0, 0);
             chkAllModels.Name = "chkAllModels";
             chkAllModels.Padding = new Padding(1, 0, 0, 0);
@@ -339,9 +339,9 @@ namespace System.Windows.Forms
             // 
             // lstObjects
             // 
-            lstObjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lstObjects.BorderStyle = BorderStyle.None;
             lstObjects.ContextMenuStrip = contextMenuStrip1;
-            lstObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            lstObjects.Dock = DockStyle.Fill;
             lstObjects.FormattingEnabled = true;
             lstObjects.IntegralHeight = false;
             lstObjects.Location = new Drawing.Point(0, 0);
@@ -400,7 +400,7 @@ namespace System.Windows.Forms
             panel3.Controls.Add(pnlPlaneProps);
             panel3.Controls.Add(pnlPointProps);
             panel3.Controls.Add(pnlObjProps);
-            panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Drawing.Point(0, 82);
             panel3.Name = "panel3";
             panel3.Size = new Drawing.Size(209, 115);
@@ -417,7 +417,7 @@ namespace System.Windows.Forms
             pnlObjProps.Controls.Add(label4);
             pnlObjProps.Controls.Add(txtModel);
             pnlObjProps.Controls.Add(label3);
-            pnlObjProps.Dock = System.Windows.Forms.DockStyle.Bottom;
+            pnlObjProps.Dock = DockStyle.Bottom;
             pnlObjProps.Location = new Drawing.Point(0, -15);
             pnlObjProps.Name = "pnlObjProps";
             pnlObjProps.Size = new Drawing.Size(209, 130);
@@ -492,7 +492,7 @@ namespace System.Windows.Forms
             label4.Size = new Drawing.Size(42, 20);
             label4.TabIndex = 2;
             label4.Text = "Bone:";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label4.TextAlign = ContentAlignment.MiddleRight;
             // 
             // txtModel
             // 
@@ -509,7 +509,7 @@ namespace System.Windows.Forms
             label3.Size = new Drawing.Size(42, 20);
             label3.TabIndex = 0;
             label3.Text = "Model:";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // pnlPointProps
             // 
@@ -517,7 +517,7 @@ namespace System.Windows.Forms
             pnlPointProps.Controls.Add(numY);
             pnlPointProps.Controls.Add(label1);
             pnlPointProps.Controls.Add(numX);
-            pnlPointProps.Dock = System.Windows.Forms.DockStyle.Bottom;
+            pnlPointProps.Dock = DockStyle.Bottom;
             pnlPointProps.Location = new Drawing.Point(0, -85);
             pnlPointProps.Name = "pnlPointProps";
             pnlPointProps.Size = new Drawing.Size(209, 70);
@@ -526,17 +526,17 @@ namespace System.Windows.Forms
             // 
             // label2
             // 
-            label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Location = new Drawing.Point(18, 32);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(42, 20);
             label2.TabIndex = 3;
             label2.Text = "Y";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numY
             // 
-            numY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numY.BorderStyle = BorderStyle.FixedSingle;
             numY.Integral = false;
             numY.Location = new Drawing.Point(59, 32);
             numY.MaximumValue = 3.402823E+38F;
@@ -549,17 +549,17 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(18, 13);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(42, 20);
             label1.TabIndex = 1;
             label1.Text = "X";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numX
             // 
-            numX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            numX.BorderStyle = BorderStyle.FixedSingle;
             numX.Integral = false;
             numX.Location = new Drawing.Point(59, 13);
             numX.MaximumValue = 3.402823E+38F;
@@ -579,7 +579,7 @@ namespace System.Windows.Forms
             pnlPlaneProps.Controls.Add(cboType);
             pnlPlaneProps.Controls.Add(label5);
             pnlPlaneProps.Controls.Add(labelType);
-            pnlPlaneProps.Dock = System.Windows.Forms.DockStyle.Bottom;
+            pnlPlaneProps.Dock = DockStyle.Bottom;
             pnlPlaneProps.Location = new Drawing.Point(0, -199);
             pnlPlaneProps.Name = "pnlPlaneProps";
             pnlPlaneProps.Size = new Drawing.Size(209, 114);
@@ -588,8 +588,8 @@ namespace System.Windows.Forms
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            groupBox2.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             groupBox2.Controls.Add(chkTypeCharacters);
             groupBox2.Controls.Add(chkTypeItems);
             groupBox2.Controls.Add(chkTypePokemonTrainer);
@@ -604,7 +604,7 @@ namespace System.Windows.Forms
             // 
             // cboType
             // 
-            cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboType.FormattingEnabled = true;
             cboType.Location = new Drawing.Point(66, 4);
             cboType.Name = "cboType";
@@ -614,8 +614,8 @@ namespace System.Windows.Forms
             // 
             // groupBoxUnknownFlags
             // 
-            groupBoxUnknownFlags.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            groupBoxUnknownFlags.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown4);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown3);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown2);
@@ -719,8 +719,8 @@ namespace System.Windows.Forms
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            groupBox1.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             groupBox1.Controls.Add(chkLeftLedge);
             groupBox1.Controls.Add(chkNoWalljump);
             groupBox1.Controls.Add(chkRightLedge);
@@ -780,7 +780,7 @@ namespace System.Windows.Forms
             // 
             // cboMaterial
             // 
-            cboMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboMaterial.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMaterial.FormattingEnabled = true;
             cboMaterial.Location = new Drawing.Point(66, 25);
             cboMaterial.Name = "cboMaterial";
@@ -795,7 +795,7 @@ namespace System.Windows.Forms
             label5.Size = new Drawing.Size(53, 21);
             label5.TabIndex = 8;
             label5.Text = "Material:";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label5.TextAlign = ContentAlignment.MiddleRight;
 
             // 
             // labelType
@@ -805,14 +805,14 @@ namespace System.Windows.Forms
             labelType.Size = new Drawing.Size(53, 21);
             labelType.TabIndex = 8;
             labelType.Text = "Type:";
-            labelType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            labelType.TextAlign = ContentAlignment.MiddleRight;
             // 
             // panel4
             // 
             panel4.Controls.Add(btnPlayAnims);
             panel4.Controls.Add(btnPrevFrame);
             panel4.Controls.Add(btnNextFrame);
-            panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel4.Dock = DockStyle.Bottom;
             panel4.Enabled = false;
             panel4.Location = new Drawing.Point(0, 197);
             panel4.Name = "panel4";
@@ -822,7 +822,7 @@ namespace System.Windows.Forms
             // 
             // btnPlayAnims
             // 
-            btnPlayAnims.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnPlayAnims.Dock = DockStyle.Fill;
             btnPlayAnims.Location = new Drawing.Point(35, 0);
             btnPlayAnims.Name = "btnPlayAnims";
             btnPlayAnims.Size = new Drawing.Size(139, 24);
@@ -833,7 +833,7 @@ namespace System.Windows.Forms
             // 
             // btnPrevFrame
             // 
-            btnPrevFrame.Dock = System.Windows.Forms.DockStyle.Left;
+            btnPrevFrame.Dock = DockStyle.Left;
             btnPrevFrame.Location = new Drawing.Point(0, 0);
             btnPrevFrame.Name = "btnPrevFrame";
             btnPrevFrame.Size = new Drawing.Size(35, 24);
@@ -844,7 +844,7 @@ namespace System.Windows.Forms
             // 
             // btnNextFrame
             // 
-            btnNextFrame.Dock = System.Windows.Forms.DockStyle.Right;
+            btnNextFrame.Dock = DockStyle.Right;
             btnNextFrame.Location = new Drawing.Point(174, 0);
             btnNextFrame.Name = "btnNextFrame";
             btnNextFrame.Size = new Drawing.Size(35, 24);
@@ -855,7 +855,7 @@ namespace System.Windows.Forms
             // 
             // _modelPanel
             // 
-            _modelPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            _modelPanel.Dock = DockStyle.Fill;
             _modelPanel.Location = new Drawing.Point(0, 25);
             _modelPanel.Name = "_modelPanel";
             _modelPanel.Size = new Drawing.Size(481, 442);
@@ -869,11 +869,11 @@ namespace System.Windows.Forms
             // 
             // panel1
             // 
-            panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            panel1.BackColor = Color.WhiteSmoke;
             panel1.Controls.Add(toolStrip1);
             panel1.Controls.Add(btnResetRot);
             panel1.Controls.Add(trackBar1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(481, 25);
@@ -881,9 +881,9 @@ namespace System.Windows.Forms
             // 
             // toolStrip1
             // 
-            toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
-            toolStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStrip1.BackColor = Color.WhiteSmoke;
+            toolStrip1.Dock = DockStyle.Fill;
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.Items.AddRange(new ToolStripItem[] {
             btnUndo,
             btnRedo,
@@ -911,9 +911,9 @@ namespace System.Windows.Forms
             // 
             // btnUndo
             // 
-            btnUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btnUndo.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnUndo.Enabled = false;
-            btnUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnUndo.ImageTransparentColor = Color.Magenta;
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Drawing.Size(40, 22);
             btnUndo.Text = "Undo";
@@ -921,9 +921,9 @@ namespace System.Windows.Forms
             // 
             // btnRedo
             // 
-            btnRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btnRedo.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnRedo.Enabled = false;
-            btnRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnRedo.ImageTransparentColor = Color.Magenta;
             btnRedo.Name = "btnRedo";
             btnRedo.Size = new Drawing.Size(38, 22);
             btnRedo.Text = "Redo";
@@ -936,9 +936,9 @@ namespace System.Windows.Forms
             // 
             // btnSplit
             // 
-            btnSplit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btnSplit.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnSplit.Enabled = false;
-            btnSplit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnSplit.ImageTransparentColor = Color.Magenta;
             btnSplit.Name = "btnSplit";
             btnSplit.Size = new Drawing.Size(34, 22);
             btnSplit.Text = "Split";
@@ -946,9 +946,9 @@ namespace System.Windows.Forms
             // 
             // btnMerge
             // 
-            btnMerge.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btnMerge.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnMerge.Enabled = false;
-            btnMerge.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnMerge.ImageTransparentColor = Color.Magenta;
             btnMerge.Name = "btnMerge";
             btnMerge.Size = new Drawing.Size(45, 22);
             btnMerge.Text = "Merge";
@@ -956,9 +956,9 @@ namespace System.Windows.Forms
             // 
             // btnDelete
             // 
-            btnDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btnDelete.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnDelete.Enabled = false;
-            btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnDelete.ImageTransparentColor = Color.Magenta;
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Drawing.Size(44, 22);
             btnDelete.Text = "Delete";
@@ -970,8 +970,8 @@ namespace System.Windows.Forms
             // 
             // btnSameX
             // 
-            btnSameX.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnSameX.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnSameX.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnSameX.ImageTransparentColor = Color.Magenta;
             btnSameX.Name = "btnSameX";
             btnSameX.Size = new Drawing.Size(49, 22);
             btnSameX.Text = "Align X";
@@ -979,8 +979,8 @@ namespace System.Windows.Forms
             // 
             // btnSameY
             // 
-            btnSameY.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnSameY.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnSameY.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnSameY.ImageTransparentColor = Color.Magenta;
             btnSameY.Name = "btnSameY";
             btnSameY.Size = new Drawing.Size(49, 22);
             btnSameY.Text = "Align Y";
@@ -993,8 +993,8 @@ namespace System.Windows.Forms
             // 
             // btnPerspectiveCam
             // 
-            btnPerspectiveCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnPerspectiveCam.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnPerspectiveCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnPerspectiveCam.ImageTransparentColor = Color.Magenta;
             btnPerspectiveCam.Name = "btnPerspectiveCam";
             btnPerspectiveCam.Size = new Drawing.Size(83, 19);
             btnPerspectiveCam.Text = "Perspective";
@@ -1002,8 +1002,8 @@ namespace System.Windows.Forms
             // 
             // btnOrthographicCam
             // 
-            btnOrthographicCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnOrthographicCam.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnOrthographicCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnOrthographicCam.ImageTransparentColor = Color.Magenta;
             btnOrthographicCam.Name = "btnOrthographicCam";
             btnOrthographicCam.Size = new Drawing.Size(83, 19);
             btnOrthographicCam.Text = "Orthographic";
@@ -1016,8 +1016,8 @@ namespace System.Windows.Forms
             // 
             // btnResetCam
             // 
-            btnResetCam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnResetCam.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnResetCam.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnResetCam.ImageTransparentColor = Color.Magenta;
             btnResetCam.Name = "btnResetCam";
             btnResetCam.Size = new Drawing.Size(83, 19);
             btnResetCam.Text = "Reset Camera";
@@ -1025,8 +1025,8 @@ namespace System.Windows.Forms
             // 
             // btnResetSnap
             // 
-            btnResetSnap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            btnResetSnap.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnResetSnap.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            btnResetSnap.ImageTransparentColor = Color.Magenta;
             btnResetSnap.Name = "btnResetSnap";
             btnResetSnap.Size = new Drawing.Size(57, 19);
             btnResetSnap.Text = "Un-Snap";
@@ -1034,9 +1034,9 @@ namespace System.Windows.Forms
             // 
             // btnHelp
             // 
-            btnHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            btnHelp.DisplayStyle = ToolStripItemDisplayStyle.Text;
             btnHelp.Image = ((Image)(resources.GetObject("btnHelp.Image")));
-            btnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            btnHelp.ImageTransparentColor = Color.Magenta;
             btnHelp.Name = "btnHelp";
             btnHelp.Size = new Drawing.Size(36, 19);
             btnHelp.Text = "Help";
@@ -1044,10 +1044,10 @@ namespace System.Windows.Forms
             // 
             // btnResetRot
             // 
-            btnResetRot.Dock = System.Windows.Forms.DockStyle.Right;
+            btnResetRot.Dock = DockStyle.Right;
             btnResetRot.Enabled = false;
             btnResetRot.FlatAppearance.BorderSize = 0;
-            btnResetRot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnResetRot.FlatStyle = FlatStyle.Flat;
             btnResetRot.Location = new Drawing.Point(335, 0);
             btnResetRot.Name = "btnResetRot";
             btnResetRot.Size = new Drawing.Size(16, 25);
@@ -1059,7 +1059,7 @@ namespace System.Windows.Forms
             // 
             // trackBar1
             // 
-            trackBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            trackBar1.Dock = DockStyle.Right;
             trackBar1.Enabled = false;
             trackBar1.Location = new Drawing.Point(351, 0);
             trackBar1.Maximum = 180;
@@ -1067,13 +1067,13 @@ namespace System.Windows.Forms
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Drawing.Size(130, 25);
             trackBar1.TabIndex = 3;
-            trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+            trackBar1.TickStyle = TickStyle.None;
             trackBar1.Visible = false;
             trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
             // 
             // CollisionEditor
             // 
-            BackColor = System.Drawing.Color.Lavender;
+            BackColor = Color.Lavender;
             Controls.Add(undoToolStrip);
             Name = "CollisionEditor";
             Size = new Drawing.Size(694, 467);
@@ -1662,10 +1662,10 @@ namespace System.Windows.Forms
         {
             if (e.Button == MouseButtons.Left)
             {
-                bool create = Control.ModifierKeys == Keys.Alt;
-                bool add = Control.ModifierKeys == Keys.Shift;
-                bool subtract = Control.ModifierKeys == Keys.Control;
-                bool move = Control.ModifierKeys == (Keys.Control | Keys.Shift);
+                bool create = ModifierKeys == Keys.Alt;
+                bool add = ModifierKeys == Keys.Shift;
+                bool subtract = ModifierKeys == Keys.Control;
+                bool move = ModifierKeys == (Keys.Control | Keys.Shift);
 
                 float depth = _modelPanel.GetDepth(e.X, e.Y);
                 Vector3 target = _modelPanel.CurrentViewport.UnProject(e.X, e.Y, depth);
@@ -2089,7 +2089,7 @@ namespace System.Windows.Forms
                 SelectionModified();
                 _modelPanel.Invalidate();
             }
-            else if (Control.ModifierKeys == Keys.Control)
+            else if (ModifierKeys == Keys.Control)
             {
                 if (e.KeyCode == Keys.Z)
                 {
@@ -2193,7 +2193,7 @@ namespace System.Windows.Forms
             else if (e.KeyCode == Keys.W)
             {
                 CreateUndo();
-                float amount = Control.ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
+                float amount = ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
                 foreach (CollisionLink link in _selectedLinks)
                 {
                     link._rawValue._y += amount;
@@ -2206,7 +2206,7 @@ namespace System.Windows.Forms
             else if (e.KeyCode == Keys.S)
             {
                 CreateUndo();
-                float amount = Control.ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
+                float amount = ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
                 foreach (CollisionLink link in _selectedLinks)
                 {
                     link._rawValue._y -= amount;
@@ -2219,7 +2219,7 @@ namespace System.Windows.Forms
             else if (e.KeyCode == Keys.A)
             {
                 CreateUndo();
-                float amount = Control.ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
+                float amount = ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
                 foreach (CollisionLink link in _selectedLinks)
                 {
                     link._rawValue._x -= amount;
@@ -2232,7 +2232,7 @@ namespace System.Windows.Forms
             else if (e.KeyCode == Keys.D)
             {
                 CreateUndo();
-                float amount = Control.ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
+                float amount = ModifierKeys == Keys.Shift ? LargeIncrement : SmallIncrement;
                 foreach (CollisionLink link in _selectedLinks)
                 {
                     link._rawValue._x += amount;

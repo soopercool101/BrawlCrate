@@ -18,17 +18,17 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(-1, 0);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(100, 20);
             label1.TabIndex = 1;
             label1.Text = "Target:";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label1.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lstTarget
             // 
-            lstTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            lstTarget.DropDownStyle = ComboBoxStyle.DropDownList;
             lstTarget.FormattingEnabled = true;
             lstTarget.Items.AddRange(new object[] {
             "Color0",
@@ -50,7 +50,7 @@ namespace System.Windows.Forms
             // 
             // listBox1
             // 
-            listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBox1.Dock = DockStyle.Fill;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
             listBox1.Location = new Drawing.Point(0, 0);
@@ -63,7 +63,7 @@ namespace System.Windows.Forms
             // 
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lstTarget);
-            panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            panel1.Dock = DockStyle.Right;
             panel1.Location = new Drawing.Point(156, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(100, 74);

@@ -58,7 +58,7 @@ namespace System.Windows.Forms
 
             Optimize();
 
-            return base.ShowDialog();
+            return ShowDialog();
         }
 
         private void b_DoWork(object sender, DoWorkEventArgs e)
@@ -190,13 +190,13 @@ namespace System.Windows.Forms
             _target.SignalPropertyChange();
             _target.UpdateProperties();
             BrawlLib.Properties.Settings.Default.Save();
-            DialogResult = Forms.DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = Forms.DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 

@@ -190,7 +190,7 @@ namespace System.Windows.Forms
             // 
             // listBox1
             // 
-            listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBox1.Dock = DockStyle.Fill;
             listBox1.FormattingEnabled = true;
             listBox1.IntegralHeight = false;
             listBox1.Location = new Drawing.Point(0, 0);
@@ -204,7 +204,7 @@ namespace System.Windows.Forms
             // 
             panel2.Controls.Add(btnRemove);
             panel2.Controls.Add(btnAdd);
-            panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            panel2.Dock = DockStyle.Right;
             panel2.Location = new Drawing.Point(256, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
@@ -233,13 +233,13 @@ namespace System.Windows.Forms
             // 
             // txtEditor
             // 
-            txtEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            txtEditor.Font = new Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtEditor.Dock = DockStyle.Fill;
+            txtEditor.Font = new Drawing.Font("Courier New", 8.25F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point, 0);
             txtEditor.Location = new Drawing.Point(0, 0);
             txtEditor.Margin = new Padding(0);
             txtEditor.Multiline = true;
             txtEditor.Name = "txtEditor";
-            txtEditor.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            txtEditor.ScrollBars = ScrollBars.Both;
             txtEditor.Size = new Drawing.Size(285, 122);
             txtEditor.TabIndex = 3;
             txtEditor.TextChanged += new EventHandler(txtEditor_TextChanged);
@@ -247,10 +247,10 @@ namespace System.Windows.Forms
             // 
             // splitContainer1
             // 
-            splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Drawing.Point(0, 0);
             splitContainer1.Name = "splitContainer1";
-            splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainer1.Orientation = Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
@@ -266,10 +266,10 @@ namespace System.Windows.Forms
             // 
             // splitContainer2
             // 
-            splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainer2.Dock = DockStyle.Fill;
             splitContainer2.Location = new Drawing.Point(0, 0);
             splitContainer2.Name = "splitContainer2";
-            splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            splitContainer2.Orientation = Orientation.Horizontal;
             // 
             // splitContainer2.Panel1
             // 

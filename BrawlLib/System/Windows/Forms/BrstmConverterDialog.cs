@@ -153,7 +153,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Enabled = false;
             btnOkay.Location = new Drawing.Point(3, 3);
             btnOkay.Name = "btnOkay";
@@ -165,7 +165,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnCancel.Location = new Drawing.Point(80, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -176,8 +176,8 @@ namespace System.Windows.Forms
             // 
             // txtPath
             // 
-            txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            txtPath.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             txtPath.Location = new Drawing.Point(0, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
@@ -186,7 +186,7 @@ namespace System.Windows.Forms
             // 
             // btnBrowse
             // 
-            btnBrowse.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            btnBrowse.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnBrowse.Location = new Drawing.Point(297, 0);
             btnBrowse.Name = "btnBrowse";
             btnBrowse.Size = new Drawing.Size(25, 20);
@@ -201,7 +201,7 @@ namespace System.Windows.Forms
             groupBox1.Controls.Add(lblFrequency);
             groupBox1.Controls.Add(lblText2);
             groupBox1.Controls.Add(lblText1);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Drawing.Point(0, 57);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Drawing.Size(158, 96);
@@ -211,23 +211,23 @@ namespace System.Windows.Forms
             // 
             // lblSamples
             // 
-            lblSamples.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            lblSamples.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             lblSamples.Location = new Drawing.Point(84, 36);
             lblSamples.Name = "lblSamples";
             lblSamples.Size = new Drawing.Size(68, 20);
             lblSamples.TabIndex = 3;
-            lblSamples.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblSamples.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblFrequency
             // 
-            lblFrequency.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            lblFrequency.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             lblFrequency.Location = new Drawing.Point(84, 16);
             lblFrequency.Name = "lblFrequency";
             lblFrequency.Size = new Drawing.Size(68, 20);
             lblFrequency.TabIndex = 2;
-            lblFrequency.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblFrequency.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblText2
             // 
@@ -236,7 +236,7 @@ namespace System.Windows.Forms
             lblText2.Size = new Drawing.Size(72, 20);
             lblText2.TabIndex = 1;
             lblText2.Text = "Samples :";
-            lblText2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblText2.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // lblText1
             // 
@@ -245,22 +245,22 @@ namespace System.Windows.Forms
             lblText1.Size = new Drawing.Size(72, 20);
             lblText1.TabIndex = 0;
             lblText1.Text = "Frequency :";
-            lblText1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblText1.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // lblPlayTime
             // 
-            lblPlayTime.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            lblPlayTime.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             lblPlayTime.Location = new Drawing.Point(6, 63);
             lblPlayTime.Name = "lblPlayTime";
             lblPlayTime.Size = new Drawing.Size(314, 20);
             lblPlayTime.TabIndex = 6;
             lblPlayTime.Text = "0 / 0";
-            lblPlayTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblPlayTime.TextAlign = Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnPlay
             // 
-            btnPlay.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnPlay.Anchor = AnchorStyles.Top;
             btnPlay.Location = new Drawing.Point(126, 86);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Drawing.Size(75, 20);
@@ -271,7 +271,7 @@ namespace System.Windows.Forms
             // 
             // btnRewind
             // 
-            btnRewind.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnRewind.Anchor = AnchorStyles.Top;
             btnRewind.Location = new Drawing.Point(72, 86);
             btnRewind.Name = "btnRewind";
             btnRewind.Size = new Drawing.Size(26, 20);
@@ -285,7 +285,7 @@ namespace System.Windows.Forms
             pnlInfo.Controls.Add(groupBox1);
             pnlInfo.Controls.Add(groupBox3);
             pnlInfo.Controls.Add(panel4);
-            pnlInfo.Dock = System.Windows.Forms.DockStyle.Right;
+            pnlInfo.Dock = DockStyle.Right;
             pnlInfo.Location = new Drawing.Point(326, 0);
             pnlInfo.Name = "pnlInfo";
             pnlInfo.Size = new Drawing.Size(158, 182);
@@ -295,7 +295,7 @@ namespace System.Windows.Forms
             // 
             panel4.Controls.Add(btnOkay);
             panel4.Controls.Add(btnCancel);
-            panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Drawing.Point(0, 153);
             panel4.Name = "panel4";
             panel4.Size = new Drawing.Size(158, 29);
@@ -306,7 +306,7 @@ namespace System.Windows.Forms
             pnlEdit.Controls.Add(groupBox2);
             pnlEdit.Controls.Add(grpLoop);
             pnlEdit.Controls.Add(panel3);
-            pnlEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            pnlEdit.Dock = DockStyle.Fill;
             pnlEdit.Location = new Drawing.Point(0, 0);
             pnlEdit.Name = "pnlEdit";
             pnlEdit.Size = new Drawing.Size(326, 182);
@@ -323,7 +323,7 @@ namespace System.Windows.Forms
             groupBox2.Controls.Add(btnRewind);
             groupBox2.Controls.Add(btnPlay);
             groupBox2.Controls.Add(customTrackBar1);
-            groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Drawing.Point(0, 65);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Drawing.Size(326, 117);
@@ -333,7 +333,7 @@ namespace System.Windows.Forms
             // 
             // btnSeekEnd
             // 
-            btnSeekEnd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnSeekEnd.Anchor = AnchorStyles.Top;
             btnSeekEnd.Location = new Drawing.Point(229, 86);
             btnSeekEnd.Name = "btnSeekEnd";
             btnSeekEnd.Size = new Drawing.Size(26, 20);
@@ -344,7 +344,7 @@ namespace System.Windows.Forms
             // 
             // btnLoopRW
             // 
-            btnLoopRW.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnLoopRW.Anchor = AnchorStyles.Top;
             btnLoopRW.Enabled = false;
             btnLoopRW.Location = new Drawing.Point(99, 86);
             btnLoopRW.Name = "btnLoopRW";
@@ -356,7 +356,7 @@ namespace System.Windows.Forms
             // 
             // btnFFwd
             // 
-            btnFFwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnFFwd.Anchor = AnchorStyles.Top;
             btnFFwd.Enabled = false;
             btnFFwd.Location = new Drawing.Point(202, 86);
             btnFFwd.Name = "btnFFwd";
@@ -379,9 +379,9 @@ namespace System.Windows.Forms
             // 
             // pnlLoop
             // 
-            pnlLoop.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            pnlLoop.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
+            pnlLoop.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            pnlLoop.BackColor = Drawing.Color.FromArgb(192, 192, 255);
             pnlLoop.Controls.Add(spltEnd);
             pnlLoop.Controls.Add(pnlLoopEnd);
             pnlLoop.Controls.Add(spltStart);
@@ -394,8 +394,8 @@ namespace System.Windows.Forms
             // 
             // spltEnd
             // 
-            spltEnd.BackColor = System.Drawing.Color.Red;
-            spltEnd.Dock = System.Windows.Forms.DockStyle.Right;
+            spltEnd.BackColor = Drawing.Color.Red;
+            spltEnd.Dock = DockStyle.Right;
             spltEnd.Location = new Drawing.Point(287, 0);
             spltEnd.MinExtra = 0;
             spltEnd.MinSize = 0;
@@ -406,8 +406,8 @@ namespace System.Windows.Forms
             // 
             // pnlLoopEnd
             // 
-            pnlLoopEnd.BackColor = System.Drawing.Color.FromArgb(255, 192, 128);
-            pnlLoopEnd.Dock = System.Windows.Forms.DockStyle.Right;
+            pnlLoopEnd.BackColor = Drawing.Color.FromArgb(255, 192, 128);
+            pnlLoopEnd.Dock = DockStyle.Right;
             pnlLoopEnd.Location = new Drawing.Point(290, 0);
             pnlLoopEnd.Name = "pnlLoopEnd";
             pnlLoopEnd.Size = new Drawing.Size(0, 12);
@@ -416,7 +416,7 @@ namespace System.Windows.Forms
             // 
             // spltStart
             // 
-            spltStart.BackColor = System.Drawing.Color.Yellow;
+            spltStart.BackColor = Drawing.Color.Yellow;
             spltStart.Location = new Drawing.Point(0, 0);
             spltStart.MinExtra = 0;
             spltStart.MinSize = 0;
@@ -427,8 +427,8 @@ namespace System.Windows.Forms
             // 
             // pnlLoopStart
             // 
-            pnlLoopStart.BackColor = System.Drawing.Color.YellowGreen;
-            pnlLoopStart.Dock = System.Windows.Forms.DockStyle.Left;
+            pnlLoopStart.BackColor = Drawing.Color.YellowGreen;
+            pnlLoopStart.Dock = DockStyle.Left;
             pnlLoopStart.Location = new Drawing.Point(0, 0);
             pnlLoopStart.Name = "pnlLoopStart";
             pnlLoopStart.Size = new Drawing.Size(0, 12);
@@ -443,7 +443,7 @@ namespace System.Windows.Forms
             grpLoop.Controls.Add(numLoopEnd);
             grpLoop.Controls.Add(lblEnd);
             grpLoop.Controls.Add(lblStart);
-            grpLoop.Dock = System.Windows.Forms.DockStyle.Top;
+            grpLoop.Dock = DockStyle.Top;
             grpLoop.Enabled = false;
             grpLoop.Location = new Drawing.Point(0, 20);
             grpLoop.Name = "grpLoop";
@@ -505,7 +505,7 @@ namespace System.Windows.Forms
             lblEnd.Size = new Drawing.Size(41, 20);
             lblEnd.TabIndex = 2;
             lblEnd.Text = "End:";
-            lblEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblEnd.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // lblStart
             // 
@@ -514,13 +514,13 @@ namespace System.Windows.Forms
             lblStart.Size = new Drawing.Size(40, 20);
             lblStart.TabIndex = 12;
             lblStart.Text = "Start:";
-            lblStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblStart.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // panel3
             // 
             panel3.Controls.Add(txtPath);
             panel3.Controls.Add(btnBrowse);
-            panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            panel3.Dock = DockStyle.Top;
             panel3.Location = new Drawing.Point(0, 0);
             panel3.Name = "panel3";
             panel3.Size = new Drawing.Size(326, 20);
@@ -543,8 +543,8 @@ namespace System.Windows.Forms
             // 
             // customTrackBar1
             // 
-            customTrackBar1.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            customTrackBar1.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             customTrackBar1.Location = new Drawing.Point(6, 19);
             customTrackBar1.Name = "customTrackBar1";
             customTrackBar1.Size = new Drawing.Size(314, 45);
@@ -557,7 +557,7 @@ namespace System.Windows.Forms
             groupBox3.AutoSize = true;
             groupBox3.Controls.Add(ddlEncoding);
             groupBox3.Controls.Add(label1);
-            groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Drawing.Point(0, 0);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Drawing.Size(158, 57);
@@ -572,11 +572,11 @@ namespace System.Windows.Forms
             label1.Size = new Drawing.Size(64, 20);
             label1.TabIndex = 13;
             label1.Text = "Encoding:";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = Drawing.ContentAlignment.MiddleRight;
             // 
             // ddlEncoding
             // 
-            ddlEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ddlEncoding.DropDownStyle = ComboBoxStyle.DropDownList;
             ddlEncoding.FormattingEnabled = true;
             ddlEncoding.Location = new Drawing.Point(76, 17);
             ddlEncoding.Name = "ddlEncoding";
@@ -589,7 +589,7 @@ namespace System.Windows.Forms
             Controls.Add(chkLoopEnable);
             Controls.Add(pnlEdit);
             Controls.Add(pnlInfo);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             MaximizeBox = false;
             MinimumSize = new Drawing.Size(500, 216);
             Name = "BrstmConverterDialog";

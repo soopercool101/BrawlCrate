@@ -28,8 +28,8 @@ namespace System.Windows.Forms
             // 
             // trackBar1
             // 
-            trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            trackBar1.Anchor = ((AnchorStyles.Bottom | AnchorStyles.Left)
+            | AnchorStyles.Right);
             trackBar1.Location = new Drawing.Point(0, 212);
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Drawing.Size(378, 45);
@@ -40,7 +40,7 @@ namespace System.Windows.Forms
             // 
             // btnPlay
             // 
-            btnPlay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnPlay.Anchor = AnchorStyles.Bottom;
             btnPlay.Location = new Drawing.Point(152, 263);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Drawing.Size(75, 20);
@@ -51,7 +51,7 @@ namespace System.Windows.Forms
             // 
             // btnRewind
             // 
-            btnRewind.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            btnRewind.Anchor = AnchorStyles.Bottom;
             btnRewind.Location = new Drawing.Point(122, 263);
             btnRewind.Name = "btnRewind";
             btnRewind.Size = new Drawing.Size(24, 20);
@@ -62,7 +62,7 @@ namespace System.Windows.Forms
             // 
             // chkLoop
             // 
-            chkLoop.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            chkLoop.Anchor = AnchorStyles.Bottom;
             chkLoop.Location = new Drawing.Point(54, 263);
             chkLoop.Name = "chkLoop";
             chkLoop.Size = new Drawing.Size(62, 20);
@@ -73,19 +73,19 @@ namespace System.Windows.Forms
             // 
             // lblProgress
             // 
-            lblProgress.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            lblProgress.Anchor = AnchorStyles.Bottom;
             lblProgress.Location = new Drawing.Point(-79, 239);
             lblProgress.Name = "lblProgress";
             lblProgress.Size = new Drawing.Size(536, 23);
             lblProgress.TabIndex = 4;
             lblProgress.Text = "0/0";
-            lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblProgress.TextAlign = Drawing.ContentAlignment.MiddleCenter;
             // 
             // previewPanel1
             // 
-            previewPanel1.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            previewPanel1.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left)
+            | AnchorStyles.Right);
             previewPanel1.CurrentIndex = 0;
             previewPanel1.DisposeImage = true;
             previewPanel1.Location = new Drawing.Point(3, 3);

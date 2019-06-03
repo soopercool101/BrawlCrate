@@ -101,7 +101,7 @@ namespace System.Windows.Forms
             // label1
             // 
             resources.ApplyResources(label1, "label1");
-            label1.ForeColor = System.Drawing.Color.Blue;
+            label1.ForeColor = Drawing.Color.Blue;
             label1.Name = "label1";
             // 
             // btnOK
@@ -113,7 +113,7 @@ namespace System.Windows.Forms
             // btnCancel
             // 
             resources.ApplyResources(btnCancel, "btnCancel");
-            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Name = "btnCancel";
             btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
@@ -131,7 +131,7 @@ namespace System.Windows.Forms
             // lblFinding
             // 
             resources.ApplyResources(lblFinding, "lblFinding");
-            lblFinding.ForeColor = System.Drawing.Color.Blue;
+            lblFinding.ForeColor = Drawing.Color.Blue;
             lblFinding.Name = "lblFinding";
             // 
             // chkMatchCase
@@ -162,9 +162,9 @@ namespace System.Windows.Forms
             //this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.images.PasteHS;
             //this.hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
             //this.hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
-            hexFind.InfoForeColor = System.Drawing.Color.Empty;
+            hexFind.InfoForeColor = Drawing.Color.Empty;
             hexFind.Name = "hexFind";
-            hexFind.ShadowSelectionColor = System.Drawing.Color.FromArgb(100, 60, 188, 255);
+            hexFind.ShadowSelectionColor = Drawing.Color.FromArgb(100, 60, 188, 255);
             // 
             // flowLayoutPanel1
             // 
@@ -177,7 +177,7 @@ namespace System.Windows.Forms
             // 
             AcceptButton = btnOK;
             resources.ApplyResources(this, "$this");
-            BackColor = System.Drawing.SystemColors.Control;
+            BackColor = Drawing.SystemColors.Control;
             CancelButton = btnCancel;
             Controls.Add(flowLayoutPanel1);
             Controls.Add(chkMatchCase);
@@ -189,7 +189,7 @@ namespace System.Windows.Forms
             Controls.Add(rbString);
             Controls.Add(txtFind);
             Controls.Add(hexFind);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormFind";

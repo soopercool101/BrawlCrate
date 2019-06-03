@@ -68,38 +68,38 @@ namespace System.Windows.Forms
             // 
             // lblR
             // 
-            lblR.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblR.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             lblR.Location = new Drawing.Point(3, 77);
             lblR.Name = "lblR";
             lblR.Size = new Drawing.Size(19, 20);
             lblR.TabIndex = 2;
             lblR.Text = "R";
-            lblR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblR.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
             // 
-            label1.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Drawing.Point(3, 115);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(19, 20);
             label1.TabIndex = 3;
             label1.Text = "B";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label2
             // 
-            label2.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.Location = new Drawing.Point(3, 96);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(19, 20);
             label2.TabIndex = 4;
             label2.Text = "G";
-            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numB
             // 
-            numB.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numB.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numB.Location = new Drawing.Point(23, 116);
             numB.Maximum = new decimal(new int[] {
             255,
@@ -112,8 +112,8 @@ namespace System.Windows.Forms
             // 
             // numG
             // 
-            numG.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numG.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numG.Location = new Drawing.Point(23, 97);
             numG.Maximum = new decimal(new int[] {
             255,
@@ -126,8 +126,8 @@ namespace System.Windows.Forms
             // 
             // numR
             // 
-            numR.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numR.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numR.Location = new Drawing.Point(23, 78);
             numR.Maximum = new decimal(new int[] {
             255,
@@ -140,8 +140,8 @@ namespace System.Windows.Forms
             // 
             // numH
             // 
-            numH.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numH.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numH.Location = new Drawing.Point(23, 6);
             numH.Maximum = new decimal(new int[] {
             360,
@@ -154,8 +154,8 @@ namespace System.Windows.Forms
             // 
             // numS
             // 
-            numS.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numS.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numS.Location = new Drawing.Point(23, 25);
             numS.Name = "numS";
             numS.Size = new Drawing.Size(47, 20);
@@ -163,8 +163,8 @@ namespace System.Windows.Forms
             // 
             // numV
             // 
-            numV.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numV.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numV.Location = new Drawing.Point(23, 44);
             numV.Name = "numV";
             numV.Size = new Drawing.Size(47, 20);
@@ -172,38 +172,38 @@ namespace System.Windows.Forms
             // 
             // label3
             // 
-            label3.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Drawing.Point(3, 24);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(19, 20);
             label3.TabIndex = 10;
             label3.Text = "S";
-            label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label3.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
-            label4.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.Location = new Drawing.Point(3, 43);
             label4.Name = "label4";
             label4.Size = new Drawing.Size(19, 20);
             label4.TabIndex = 9;
             label4.Text = "V";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label4.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label5
             // 
-            label5.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Drawing.Point(3, 5);
             label5.Name = "label5";
             label5.Size = new Drawing.Size(19, 20);
             label5.TabIndex = 8;
             label5.Text = "H";
-            label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label5.TextAlign = ContentAlignment.MiddleRight;
             // 
             // numA
             // 
-            numA.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            numA.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             numA.Location = new Drawing.Point(23, 135);
             numA.Maximum = new decimal(new int[] {
             255,
@@ -221,19 +221,19 @@ namespace System.Windows.Forms
             // 
             // lblA
             // 
-            lblA.Font = new Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblA.Font = new Font("Lucida Console", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
             lblA.Location = new Drawing.Point(3, 134);
             lblA.Name = "lblA";
             lblA.Size = new Drawing.Size(19, 20);
             lblA.TabIndex = 14;
             lblA.Text = "A";
-            lblA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            lblA.TextAlign = ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
             panel1.Controls.Add(pnlColorBox);
             panel1.Controls.Add(pnlColorBar);
-            panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            panel1.Dock = DockStyle.Left;
             panel1.Location = new Drawing.Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Drawing.Size(217, 187);
@@ -241,7 +241,7 @@ namespace System.Windows.Forms
             // 
             // pnlColorBox
             // 
-            pnlColorBox.BackColor = System.Drawing.Color.Transparent;
+            pnlColorBox.BackColor = Color.Transparent;
             pnlColorBox.Location = new Drawing.Point(3, 3);
             pnlColorBox.Name = "pnlColorBox";
             pnlColorBox.Size = new Drawing.Size(180, 180);
@@ -253,7 +253,7 @@ namespace System.Windows.Forms
             // 
             // pnlColorBar
             // 
-            pnlColorBar.BackColor = System.Drawing.Color.Transparent;
+            pnlColorBar.BackColor = Color.Transparent;
             pnlColorBar.Location = new Drawing.Point(189, 3);
             pnlColorBar.Name = "pnlColorBar";
             pnlColorBar.Size = new Drawing.Size(25, 180);
@@ -266,7 +266,7 @@ namespace System.Windows.Forms
             // panel2
             // 
             panel2.Controls.Add(pnlAlpha);
-            panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            panel2.Dock = DockStyle.Left;
             panel2.Location = new Drawing.Point(217, 0);
             panel2.Name = "panel2";
             panel2.Size = new Drawing.Size(20, 187);
@@ -274,9 +274,9 @@ namespace System.Windows.Forms
             // 
             // pnlAlpha
             // 
-            pnlAlpha.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            pnlAlpha.BackColor = System.Drawing.Color.Transparent;
+            pnlAlpha.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            pnlAlpha.BackColor = Color.Transparent;
             pnlAlpha.Location = new Drawing.Point(3, 3);
             pnlAlpha.Name = "pnlAlpha";
             pnlAlpha.Size = new Drawing.Size(14, 180);
@@ -303,7 +303,7 @@ namespace System.Windows.Forms
             panel3.Controls.Add(label5);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label4);
-            panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel3.Dock = DockStyle.Fill;
             panel3.Location = new Drawing.Point(237, 0);
             panel3.Name = "panel3";
             panel3.Size = new Drawing.Size(77, 187);
@@ -316,7 +316,7 @@ namespace System.Windows.Forms
             txtColorCode.Size = new Drawing.Size(64, 20);
             txtColorCode.TabIndex = 16;
             txtColorCode.Text = "000000FF";
-            txtColorCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            txtColorCode.TextAlign = HorizontalAlignment.Center;
             txtColorCode.TextChanged += new EventHandler(txtColorCode_TextChanged);
             txtColorCode.KeyPress += new KeyPressEventHandler(txtColorCode_KeyPress);
             // 

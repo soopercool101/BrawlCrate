@@ -40,9 +40,9 @@
             // 
             // btnPlay
             // 
-            btnPlay.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnPlay.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left)
+            | AnchorStyles.Right);
             btnPlay.Location = new Drawing.Point(69, 28);
             btnPlay.Margin = new Padding(1);
             btnPlay.Name = "btnPlay";
@@ -54,7 +54,7 @@
             // 
             // numTotalFrames
             // 
-            numTotalFrames.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            numTotalFrames.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             numTotalFrames.Enabled = false;
             numTotalFrames.Location = new Drawing.Point(397, 5);
             numTotalFrames.Maximum = new decimal(new int[] {
@@ -97,7 +97,7 @@
             label14.Size = new Drawing.Size(65, 20);
             label14.TabIndex = 17;
             label14.Text = "Speed:";
-            label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label14.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // chkLoop
             // 
@@ -111,7 +111,7 @@
             // 
             // numFrameIndex
             // 
-            numFrameIndex.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            numFrameIndex.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             numFrameIndex.Location = new Drawing.Point(334, 5);
             numFrameIndex.Maximum = new decimal(new int[] {
             0,
@@ -125,8 +125,8 @@
             // 
             // btnPrevFrame
             // 
-            btnPrevFrame.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            btnPrevFrame.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             btnPrevFrame.Enabled = false;
             btnPrevFrame.Location = new Drawing.Point(36, 28);
             btnPrevFrame.Margin = new Padding(1);
@@ -139,8 +139,8 @@
             // 
             // btnNextFrame
             // 
-            btnNextFrame.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnNextFrame.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Right);
             btnNextFrame.Enabled = false;
             btnNextFrame.Location = new Drawing.Point(384, 28);
             btnNextFrame.Margin = new Padding(1);
@@ -153,8 +153,8 @@
             // 
             // btnFirst
             // 
-            btnFirst.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left);
+            btnFirst.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Left);
             btnFirst.Enabled = false;
             btnFirst.Location = new Drawing.Point(3, 28);
             btnFirst.Margin = new Padding(1);
@@ -167,8 +167,8 @@
             // 
             // btnLast
             // 
-            btnLast.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnLast.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Right);
             btnLast.Enabled = false;
             btnLast.Location = new Drawing.Point(417, 28);
             btnLast.Margin = new Padding(1);
@@ -181,29 +181,29 @@
             // 
             // label15
             // 
-            label15.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            label15.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             label15.Location = new Drawing.Point(281, 5);
             label15.Name = "label15";
             label15.Size = new Drawing.Size(55, 20);
             label15.TabIndex = 23;
             label15.Text = "Frame: ";
-            label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label15.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
-            label1.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            label1.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             label1.Location = new Drawing.Point(386, 4);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(14, 20);
             label1.TabIndex = 24;
             label1.Text = "/";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label1.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblLoopFrame
             // 
-            lblLoopFrame.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+            lblLoopFrame.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             lblLoopFrame.AutoSize = true;
-            lblLoopFrame.ForeColor = System.Drawing.Color.DarkRed;
+            lblLoopFrame.ForeColor = Drawing.Color.DarkRed;
             lblLoopFrame.Location = new Drawing.Point(194, 7);
             lblLoopFrame.Name = "lblLoopFrame";
             lblLoopFrame.Size = new Drawing.Size(84, 17);
