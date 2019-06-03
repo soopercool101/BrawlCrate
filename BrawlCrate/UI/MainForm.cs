@@ -317,6 +317,7 @@ namespace BrawlCrate
 
                 BrawlCrate.Properties.Settings.Default.ShowHex = _showHex;
                 BrawlCrate.Properties.Settings.Default.Save();
+                resourceTree_SelectionChanged(null, null);
             }
         }
 
@@ -432,7 +433,7 @@ namespace BrawlCrate
         }
 
         public Control _currentControl = null;
-        private Control _secondaryControl = null;
+        public Control _secondaryControl = null;
         private Type selectedType = null;
         public unsafe void resourceTree_SelectionChanged(object sender, EventArgs e)
         {
@@ -492,8 +493,7 @@ namespace BrawlCrate
                 propertyGrid1.SelectedObject = node;
                 setScrollOffset?.Invoke();
 
-#if DEBUG
-                if (node is IBufferNode)
+                if (node is IBufferNode && ShowHex)
                 {
                     IBufferNode d = node as IBufferNode;
                     if (d.IsValid())
@@ -507,9 +507,7 @@ namespace BrawlCrate
                         newControl = hexBox1;
                     }
                 }
-                else
-#endif
-                if (node is RSARGroupNode)
+                else if (node is RSARGroupNode)
                 {
                     rsarGroupEditor.LoadGroup(node as RSARGroupNode);
                     newControl = rsarGroupEditor;
@@ -620,6 +618,20 @@ namespace BrawlCrate
                         {
                             newControl = clrControl;
                         }
+                    }
+                }
+
+                if (newControl == null && MainForm.Instance.ShowHex && !(node is RELEntryNode || node is RELNode))
+                {
+                    if (node.WorkingUncompressed.Length > 0)
+                    {
+                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                                (byte*)node.WorkingUncompressed.Address,
+                                node.WorkingUncompressed.Length,
+                                node.WorkingUncompressed.Length,
+                                FileAccess.ReadWrite))
+                        { _supportsInsDel = false };
+                        newControl = hexBox1;
                     }
                 }
 
