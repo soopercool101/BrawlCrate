@@ -418,7 +418,6 @@ namespace BrawlCrate
             {
                 Text = Program.AssemblyTitle;
             }
-
 #if DEBUG
             Text += " DEBUG";
 #endif
@@ -433,7 +432,7 @@ namespace BrawlCrate
         }
 
         public Control _currentControl;
-        public Control _secondaryControl;
+        private Control _secondaryControl;
         private Type selectedType;
         public unsafe void resourceTree_SelectionChanged(object sender, EventArgs e)
         {

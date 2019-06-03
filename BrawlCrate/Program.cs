@@ -385,7 +385,6 @@ namespace BrawlCrate
         public static int OpenFile(string filter, out string fileName, bool categorize)
         {
             _openDlg.Filter = filter;
-            //_openDlg.AutoUpgradeEnabled = false;
 #if !DEBUG
             try
             {
