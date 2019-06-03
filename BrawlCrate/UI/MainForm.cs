@@ -127,10 +127,8 @@ namespace BrawlCrate
         {
             try
             {
-                bool automatic = false;//(!manual && _autoUpdate) || (!manual && _canary);
                 if (Program.CanRunGithubApp(manual, out string path))
                 {
-                    bool _docUpdates = false;
                     if (Program.Canary)
                     {
                         Process git = Process.Start(new ProcessStartInfo()
@@ -157,7 +155,7 @@ namespace BrawlCrate
                             FileName = path,
                             WindowStyle = ProcessWindowStyle.Hidden,
                             Arguments = string.Format("-bu 1 \"{0}\" {1} \"{2}\" {3} {4}",
-                                Program.TagName, manual ? "1" : "0", Program.RootPath ?? "<null>", _docUpdates ? "1" : "0", automatic ? "1" : "0"),
+                                Program.TagName, manual ? "1" : "0", Program.RootPath ?? "<null>", _docUpdates ? "1" : "0", (!manual && _autoUpdate) ? "1" : "0"),
                         });
                     }
                 }
@@ -989,8 +987,6 @@ namespace BrawlCrate
             }
         }
 
-        public const int MaxRecentFiles = 24;
-
         public RecentFileHandler()
         {
             InitializeComponent();
@@ -1025,11 +1021,8 @@ namespace BrawlCrate
                 int alreadyIn = GetIndexOfRecentFile(fileName);
                 if (alreadyIn != -1) // remove it
                 {
+                    recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);
                     Settings.Default.RecentFiles.RemoveAt(alreadyIn);
-                    if (recentFileToolStripItem.DropDownItems.Count > alreadyIn)
-                    {
-                        recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);
-                    }
                 }
                 else if (alreadyIn == 0) // it´s the latest file so return
                 {
@@ -1041,14 +1034,10 @@ namespace BrawlCrate
                 recentFileToolStripItem.DropDownItems.Insert(0, new FileMenuItem(fileName));
 
                 // remove the last one, if max size is reached
-                if (Settings.Default.RecentFiles.Count > MaxRecentFiles)
-                {
-                    Settings.Default.RecentFiles.RemoveAt(MaxRecentFiles);
-                }
-
                 if (Settings.Default.RecentFiles.Count > Settings.Default.RecentFilesMax)
                 {
                     recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);
+                    Settings.Default.RecentFiles.RemoveAt(Settings.Default.RecentFilesMax);
                 }
 
                 // enable the menu item if it´s disabled
