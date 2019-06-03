@@ -351,10 +351,10 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Loaders\Example Loader %28RFNT%29.py">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Plugins\Examples\Dump Textures.py">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -365,6 +365,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <Exec Command="if EXIST &quot;$(TargetDir)Updater.exe&quot; (&#xD;&#xA;  &quot;$(TargetDir)Updater.exe&quot; -killAll&#xD;&#xA;)&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  RD /S /Q &quot;$(TargetDir)&quot;&#xD;&#xA;)" />
   </Target>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;mkdir InternalDocumentation&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)BrawlLib\InternalDocumentation\*&quot; &quot;$(TargetDir)\InternalDocumentation\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)" />
+    <Exec Command="cd &quot;$(TargetDir)&quot;&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)BrawlLib\InternalDocumentation\*&quot; &quot;$(TargetDir)\InternalDocumentation\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)$(ProjectName)\Plugins\*&quot; &quot;$(TargetDir)\Plugins\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)$(ProjectName)\Loaders\*&quot; &quot;$(TargetDir)\Loaders\&quot; /Y /I /S&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.dll&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;%25windir%25\system32\xcopy &quot;$(SolutionDir)Updater\$(OutDir)*.exe&quot; &quot;$(TargetDir)&quot; /Y /I&#xD;&#xA;if not '$(ConfigurationName)' == 'Debug' (&#xD;&#xA;  del *.pdb&#xD;&#xA;  del *.config&#xD;&#xA;)" />
   </Target>
 </Project>
