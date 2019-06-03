@@ -55,8 +55,16 @@ namespace BrawlCrate
             InitializeComponent();
             Text = Program.AssemblyTitle;
 
+            _autoUpdate = BrawlCrate.Properties.Settings.Default.UpdateAutomatically;
             _displayPropertyDescription = BrawlCrate.Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable;
             _updatesOnStartup = BrawlCrate.Properties.Settings.Default.CheckUpdatesAtStartup;
+            _docUpdates = BrawlCrate.Properties.Settings.Default.GetDocumentationUpdates;
+            _showHex = BrawlCrate.Properties.Settings.Default.ShowHex;
+            _autoCompressModules = BrawlLib.Properties.Settings.Default.AutoCompressModules;
+            _autoCompressPCS = BrawlLib.Properties.Settings.Default.AutoCompressFighterPCS;
+            _autoDecompressPAC = BrawlLib.Properties.Settings.Default.AutoDecompressFighterPAC;
+            _autoCompressStages = BrawlLib.Properties.Settings.Default.AutoCompressStages;
+            _autoPlayAudio = BrawlCrate.Properties.Settings.Default.AutoPlayAudio;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
             if (CheckUpdatesOnStartup)
@@ -201,6 +209,148 @@ namespace BrawlCrate
         }
 
         private bool _updatesOnStartup;
+
+        public bool GetDocumentationUpdates
+        {
+            get => _docUpdates;
+            set
+            {
+                _docUpdates = value;
+
+                BrawlCrate.Properties.Settings.Default.GetDocumentationUpdates = _docUpdates;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _docUpdates;
+
+        public bool AutoCompressPCS
+        {
+            get => _autoCompressPCS;
+            set
+            {
+                _autoCompressPCS = value;
+
+                BrawlLib.Properties.Settings.Default.AutoCompressFighterPCS = _autoCompressPCS;
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _autoCompressPCS;
+
+        public bool AutoDecompressFighterPAC
+        {
+            get => _autoDecompressPAC;
+            set
+            {
+                _autoDecompressPAC = value;
+
+                BrawlLib.Properties.Settings.Default.AutoDecompressFighterPAC = _autoDecompressPAC;
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _autoDecompressPAC;
+
+        public bool AutoCompressStages
+        {
+            get => _autoCompressStages;
+            set
+            {
+                _autoCompressStages = value;
+
+                BrawlLib.Properties.Settings.Default.AutoCompressStages = _autoCompressStages;
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _autoCompressStages;
+
+        public bool AutoCompressModules
+        {
+            get => _autoCompressModules;
+            set
+            {
+                _autoCompressModules = value;
+
+                BrawlLib.Properties.Settings.Default.AutoCompressStages = _autoCompressModules;
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _autoCompressModules;
+
+        public bool AutoPlayAudio
+        {
+            get => _autoPlayAudio;
+            set
+            {
+                _autoPlayAudio = value;
+
+                BrawlCrate.Properties.Settings.Default.AutoPlayAudio = _autoPlayAudio;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _autoPlayAudio;
+
+        public bool UpdateAutomatically
+
+        {
+            get => _autoUpdate;
+            set
+            {
+                _autoUpdate = value;
+
+                BrawlCrate.Properties.Settings.Default.UpdateAutomatically = _autoUpdate;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _autoUpdate;
+
+        public bool ShowHex
+        {
+            get => _showHex;
+            set
+            {
+                _showHex = value;
+
+                BrawlCrate.Properties.Settings.Default.ShowHex = _showHex;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _showHex;
+
+        public bool CompatibilityMode
+        {
+            get => _compatibilityMode;
+            set
+            {
+                _compatibilityMode = value;
+
+                BrawlLib.Properties.Settings.Default.HideMDL0Errors = BrawlLib.Properties.Settings.Default.CompatibilityMode = _compatibilityMode;
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+        }
+
+        private bool _compatibilityMode;
+
+        public bool ShowFullPath
+        {
+            get => _showFullPath;
+            set
+            {
+                _showFullPath = value;
+
+                BrawlCrate.Properties.Settings.Default.ShowFullPath = _showFullPath;
+                BrawlCrate.Properties.Settings.Default.Save();
+                UpdateName();
+            }
+        }
+
+        private bool _showFullPath;
 
         private void UpdatePropertyDescriptionBox(GridItem item)
         {

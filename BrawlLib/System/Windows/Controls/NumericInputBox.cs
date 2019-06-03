@@ -30,10 +30,12 @@ namespace System.Windows.Forms
         public float MinimumValue { get => _minValue; set => _minValue = value; }
         public float MaximumValue { get => _maxValue; set => _maxValue = value; }
         public bool Integral { get => _integral; set => _integral = value; }
+        public bool Integer { get => _integer; set => _integer = value; }
 
         public float _minValue = float.MinValue;
         public float _maxValue = float.MaxValue;
         public bool _integral = false;
+        public bool _integer = false;
 
         public event EventHandler ValueChanged;
 
@@ -158,7 +160,7 @@ namespace System.Windows.Forms
 
                 case Keys.Decimal:
                 case Keys.OemPeriod:
-                    if (Text.IndexOf('.') != -1)
+                    if (Text.IndexOf('.') != -1 || Integer == true)
                     {
                         e.SuppressKeyPress = true;
                     }
@@ -196,7 +198,8 @@ namespace System.Windows.Forms
                     }
 
                     break;
-
+                case Keys.Delete:
+                    break;
                 default:
                     e.Handled = true;
                     e.SuppressKeyPress = true;

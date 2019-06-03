@@ -60,7 +60,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DiscordRPCNameCustom" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">My Mod</Value>
     </Setting>
   </Settings>
 </SettingsFile>
