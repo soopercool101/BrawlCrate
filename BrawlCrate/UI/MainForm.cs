@@ -432,9 +432,9 @@ namespace BrawlCrate
             }
         }
 
-        public Control _currentControl = null;
-        public Control _secondaryControl = null;
-        private Type selectedType = null;
+        public Control _currentControl;
+        public Control _secondaryControl;
+        private Type selectedType;
         public unsafe void resourceTree_SelectionChanged(object sender, EventArgs e)
         {
             audioPlaybackPanel1.TargetSource = null;

@@ -346,7 +346,6 @@ namespace BrawlCrate
                 try
                 {
 #endif
-
                     if (_rootPath == null)
                     {
                         return SaveAs();
@@ -364,7 +363,6 @@ namespace BrawlCrate
                     _rootNode.IsDirty = false;
 
                     return true;
-
 #if !DEBUG
                 }
                 catch (Exception x) { Say(x.Message); }
