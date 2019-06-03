@@ -22,6 +22,28 @@ namespace BrawlCrate.API
                     fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
         private static string fsi_path;
 
+        public static string PythonPath
+        {
+            get => Engine.GetSearchPaths().Count > 0 ? Engine.GetSearchPaths().ElementAt(0) : "(none)";
+            set
+            {
+                Engine.SetSearchPaths(Engine.GetSearchPaths().Append(value).ToArray());
+                BrawlCrate.Properties.Settings.Default.PythonInstallationPath = value;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+        }
+
+        public static string FSIPath
+        {
+            get => fsi_path;
+            set
+            {
+                fsi_path = value;
+                BrawlCrate.Properties.Settings.Default.FSharpInstallationPath = value;
+                BrawlCrate.Properties.Settings.Default.Save();
+            }
+        }
+
         static BrawlAPI()
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
