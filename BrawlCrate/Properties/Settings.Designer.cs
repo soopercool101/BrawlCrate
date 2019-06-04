@@ -259,5 +259,17 @@ namespace BrawlCrate.Properties {
                 this["DiscordRPCNameCustom"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APILoadersEnabled {
+            get {
+                return ((bool)(this["APILoadersEnabled"]));
+            }
+            set {
+                this["APILoadersEnabled"] = value;
+            }
+        }
     }
 }

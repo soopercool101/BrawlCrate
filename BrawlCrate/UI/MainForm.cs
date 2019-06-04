@@ -107,7 +107,7 @@ namespace BrawlCrate
                 {
                     reloadPluginsToolStripMenuItem_Click(null, null);
                 }
-                if (Directory.Exists(loaders))
+                if (Directory.Exists(loaders) && Properties.Settings.Default.APILoadersEnabled)
                 {
                     foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
                     {

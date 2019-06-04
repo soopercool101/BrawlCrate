@@ -53,76 +53,7 @@ namespace BrawlCrate.API
             Runtime = Engine.Runtime;
 
             // Setup IronPython engine
-            string settingPath = Properties.Settings.Default.PythonInstallationPath;
-            List<string> searchPaths = new List<string>();
-            // First, search the directory found in the settings
-            if (!settingPath.Equals("") && Directory.Exists(settingPath))
-            {
-                if (Directory.Exists(settingPath + "/Lib"))
-                {
-                    searchPaths.Add($"{ settingPath }/Lib");
-                }
-                else
-                {
-                    searchPaths.Add(settingPath);
-                }
-            }
-            // Then check for Python 2.7 (The recommended version for iron python) in its default installation directory
-            else if (Directory.Exists("C:/Python27/Lib"))
-            {
-                searchPaths.Add("C:/Python27/Lib");
-            }
-            // Finally, search for any other Python installations in their default directories
-            else
-            {
-                foreach (DirectoryInfo d in Directory.CreateDirectory("C:/").GetDirectories().Reverse())
-                {
-                    if (d.FullName.StartsWith("C:/Python") && Directory.Exists(d.FullName + "/Lib"))
-                    {
-                        searchPaths.Add($"{ d.FullName }/Lib");
-                        break;
-                    }
-                }
-            }
-            // Then see if there's a directory included in the installation (This can also be used for additional modules or a primary install, so add it in addition)
-            if (Directory.Exists($"{ Application.StartupPath }/Python"))
-            {
-                if (!searchPaths.Contains($"{ Application.StartupPath }/Python"))
-                {
-                    searchPaths.Add($"{ Application.StartupPath }/Python");
-                }
-            }
-
-            if (settingPath.Equals("") || settingPath.Equals("(none)"))
-            {
-                if (searchPaths.Count > 0)
-                {
-                    Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
-                    Properties.Settings.Default.Save();
-                }
-                else if (!settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
-                {
-                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
-                    {
-                        if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
-                            && dlg.ShowDialog() == DialogResult.OK)
-                        {
-                            searchPaths.Add(dlg.SelectedPath);
-                            Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
-                            Properties.Settings.Default.Save();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
-                            Properties.Settings.Default.PythonInstallationPath = "(none)";
-                            Properties.Settings.Default.Save();
-                        }
-                    }
-                }
-            }
-
-            // If any python installations are found, add them to the search pathsp
-            Engine.SetSearchPaths(searchPaths.ToArray());
+            PythonInstall();
 
             fsi_path = Properties.Settings.Default.FSharpInstallationPath;
 
@@ -293,9 +224,91 @@ namespace BrawlCrate.API
             File.WriteAllText(path, text);
         }
 
-        internal static void FSharpInstall()
+        public static void PythonInstall(bool manual = false, bool force = false)
         {
-            if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (fsi_path == null || fsi_path == ""))
+            string settingPath = Properties.Settings.Default.PythonInstallationPath;
+            List<string> searchPaths = new List<string>();
+
+            // First, search the directory found in the settings (unless force is active)
+            if (!force && !settingPath.Equals("") && Directory.Exists(settingPath))
+            {
+                if (Directory.Exists(settingPath + "\\Lib"))
+                {
+                    searchPaths.Add($"{ settingPath }\\Lib");
+                }
+                else
+                {
+                    searchPaths.Add(settingPath);
+                }
+            }
+            // Then check for Python 2.7 (The recommended version for iron python) in its default installation directory
+            else if (Directory.Exists("C:\\Python27\\Lib"))
+            {
+                searchPaths.Add("C:\\Python27\\Lib");
+            }
+            // Finally, search for any other Python installations in their default directories
+            else
+            {
+                foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
+                {
+                    if (d.FullName.StartsWith("C:\\Python") && Directory.Exists(d.FullName + "\\Lib"))
+                    {
+                        searchPaths.Add($"{ d.FullName }\\Lib");
+                        break;
+                    }
+                }
+            }
+            // Then see if there's a directory included in the installation (This can also be used for additional modules or a primary install, so add it in addition)
+            if (Directory.Exists($"{ Application.StartupPath }\\Python"))
+            {
+                if (!searchPaths.Contains($"{ Application.StartupPath }\\Python"))
+                {
+                    searchPaths.Add($"{ Application.StartupPath }\\Python");
+                }
+            }
+
+            if (force || settingPath.Equals("") || settingPath.Equals("(none)"))
+            {
+                if (searchPaths.Count > 0)
+                {
+                    if (manual)
+                    {
+                        MessageBox.Show("Python was found to be installed in: \n" + searchPaths[0] + "\nAdditional modules can be installed in this path or by placing them in the \"Python\" folder in your BrawlCrate installation.", "BrawlAPI");
+                    }
+                    Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
+                    Properties.Settings.Default.Save();
+                }
+                else if (!settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
+                {
+                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    {
+                        if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
+                            && dlg.ShowDialog() == DialogResult.OK)
+                        {
+                            searchPaths.Add(dlg.SelectedPath);
+                            Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
+                            Properties.Settings.Default.Save();
+                        }
+                        else if (!force)
+                        {
+                            MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
+                            Properties.Settings.Default.PythonInstallationPath = "(none)";
+                            Properties.Settings.Default.Save();
+                        }
+                    }
+                }
+            }
+
+            // If any python installations are found, set them as the search paths
+            if(searchPaths.Count > 0)
+            {
+                Engine.SetSearchPaths(searchPaths.ToArray());
+            }
+        }
+
+        internal static void FSharpInstall(bool manual = false, bool force = false)
+        {
+            if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (force || fsi_path == null || fsi_path == ""))
             {
                 fsi_path =
                         new[] {
@@ -327,6 +340,10 @@ namespace BrawlCrate.API
                 {
                     Properties.Settings.Default.FSharpInstallationPath = fsi_path;
                     Properties.Settings.Default.Save();
+                    if (manual)
+                    {
+                        MessageBox.Show("F# was found to be installed in:\n" + fsi_path);
+                    }
                 }
             }
         }

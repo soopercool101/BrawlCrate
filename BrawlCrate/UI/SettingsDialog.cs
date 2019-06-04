@@ -80,7 +80,6 @@ namespace BrawlCrate
         private NumericInputBox recentFileCountBox;
         private TabPage tabBrawlAPI;
         private GroupBox grpBoxAPIGeneral;
-        private CheckBox chkBoxAPIEnablePlugins;
         private CheckBox chkBoxAPIEnableLoaders;
         private CheckBox chkBoxEnableAPI;
         private GroupBox grpBoxFSharpAPI;
@@ -249,6 +248,10 @@ namespace BrawlCrate
             chkBoxAutoPlayAudio.Checked = MainForm.Instance.AutoPlayAudio;
             chkBoxMDL0Compatibility.Checked = MainForm.Instance.CompatibilityMode;
             recentFileCountBox.Value = Properties.Settings.Default.RecentFilesMax;
+            chkBoxEnableAPI.Checked = Properties.Settings.Default.APIEnabled;
+            chkBoxAPIEnableLoaders.Checked = Properties.Settings.Default.APILoadersEnabled;
+            txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
+            txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
 
             Discord.DiscordSettings.LoadSettings();
             grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked = Discord.DiscordSettings.enabled;
@@ -355,7 +358,6 @@ namespace BrawlCrate
             System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Static Module (*.dol)");
             System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Relocatable Module (*.rel)");
             System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Texture Archive (*.tpl)");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsDialog));
             this.chkShowPropDesc = new System.Windows.Forms.CheckBox();
             this.chkShowHex = new System.Windows.Forms.CheckBox();
             this.chkDocUpdates = new System.Windows.Forms.CheckBox();
@@ -391,8 +393,17 @@ namespace BrawlCrate
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabBrawlAPI = new System.Windows.Forms.TabPage();
+            this.grpBoxFSharpAPI = new System.Windows.Forms.GroupBox();
+            this.txtBoxFSharpPath = new System.Windows.Forms.TextBox();
+            this.btnFSharpBrowse = new System.Windows.Forms.Button();
+            this.btnFSharpDetect = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grpBoxPythonAPI = new System.Windows.Forms.GroupBox();
+            this.txtBoxPythonPath = new System.Windows.Forms.TextBox();
+            this.btnPythonBrowse = new System.Windows.Forms.Button();
+            this.btnPythonDetect = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpBoxAPIGeneral = new System.Windows.Forms.GroupBox();
-            this.chkBoxAPIEnablePlugins = new System.Windows.Forms.CheckBox();
             this.chkBoxAPIEnableLoaders = new System.Windows.Forms.CheckBox();
             this.chkBoxEnableAPI = new System.Windows.Forms.CheckBox();
             this.tabDiscord = new System.Windows.Forms.TabPage();
@@ -410,16 +421,6 @@ namespace BrawlCrate
             this.rdoAutoUpdate = new System.Windows.Forms.RadioButton();
             this.rdoCheckManual = new System.Windows.Forms.RadioButton();
             this.rdoCheckStartup = new System.Windows.Forms.RadioButton();
-            this.grpBoxPythonAPI = new System.Windows.Forms.GroupBox();
-            this.txtBoxPythonPath = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPythonDetect = new System.Windows.Forms.Button();
-            this.btnPythonBrowse = new System.Windows.Forms.Button();
-            this.grpBoxFSharpAPI = new System.Windows.Forms.GroupBox();
-            this.btnFSharpBrowse = new System.Windows.Forms.Button();
-            this.btnFSharpDetect = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBoxFSharpPath = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.grpBoxMDL0General.SuspendLayout();
@@ -434,6 +435,8 @@ namespace BrawlCrate
             this.genericFileAssociationBox.SuspendLayout();
             this.associatiedFilesBox.SuspendLayout();
             this.tabBrawlAPI.SuspendLayout();
+            this.grpBoxFSharpAPI.SuspendLayout();
+            this.grpBoxPythonAPI.SuspendLayout();
             this.grpBoxAPIGeneral.SuspendLayout();
             this.tabDiscord.SuspendLayout();
             this.grpBoxDiscordRPC.SuspendLayout();
@@ -441,8 +444,6 @@ namespace BrawlCrate
             this.tabUpdater.SuspendLayout();
             this.grpBoxCanary.SuspendLayout();
             this.updaterBehaviorGroupbox.SuspendLayout();
-            this.grpBoxPythonAPI.SuspendLayout();
-            this.grpBoxFSharpAPI.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkShowPropDesc
@@ -931,29 +932,128 @@ namespace BrawlCrate
             this.tabBrawlAPI.TabIndex = 5;
             this.tabBrawlAPI.Text = "BrawlAPI";
             // 
+            // grpBoxFSharpAPI
+            // 
+            this.grpBoxFSharpAPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxFSharpAPI.Controls.Add(this.txtBoxFSharpPath);
+            this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpBrowse);
+            this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpDetect);
+            this.grpBoxFSharpAPI.Controls.Add(this.label2);
+            this.grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 166);
+            this.grpBoxFSharpAPI.Name = "grpBoxFSharpAPI";
+            this.grpBoxFSharpAPI.Size = new System.Drawing.Size(349, 73);
+            this.grpBoxFSharpAPI.TabIndex = 23;
+            this.grpBoxFSharpAPI.TabStop = false;
+            this.grpBoxFSharpAPI.Text = "F#";
+            // 
+            // txtBoxFSharpPath
+            // 
+            this.txtBoxFSharpPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxFSharpPath.Location = new System.Drawing.Point(11, 38);
+            this.txtBoxFSharpPath.Name = "txtBoxFSharpPath";
+            this.txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
+            this.txtBoxFSharpPath.TabIndex = 3;
+            this.txtBoxFSharpPath.Text = "(none)";
+            this.txtBoxFSharpPath.TextChanged += new System.EventHandler(this.TxtBoxFSharpPath_TextChanged);
+            // 
+            // btnFSharpBrowse
+            // 
+            this.btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
+            this.btnFSharpBrowse.Name = "btnFSharpBrowse";
+            this.btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
+            this.btnFSharpBrowse.TabIndex = 21;
+            this.btnFSharpBrowse.Text = "...";
+            this.btnFSharpBrowse.UseVisualStyleBackColor = true;
+            this.btnFSharpBrowse.Click += new System.EventHandler(this.BtnFSharpBrowse_Click);
+            // 
+            // btnFSharpDetect
+            // 
+            this.btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
+            this.btnFSharpDetect.Name = "btnFSharpDetect";
+            this.btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
+            this.btnFSharpDetect.TabIndex = 22;
+            this.btnFSharpDetect.Text = "Auto-Detect";
+            this.btnFSharpDetect.UseVisualStyleBackColor = true;
+            this.btnFSharpDetect.Click += new System.EventHandler(this.BtnFSharpDetect_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Installation Path:";
+            // 
+            // grpBoxPythonAPI
+            // 
+            this.grpBoxPythonAPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxPythonAPI.Controls.Add(this.txtBoxPythonPath);
+            this.grpBoxPythonAPI.Controls.Add(this.btnPythonBrowse);
+            this.grpBoxPythonAPI.Controls.Add(this.btnPythonDetect);
+            this.grpBoxPythonAPI.Controls.Add(this.label1);
+            this.grpBoxPythonAPI.Location = new System.Drawing.Point(8, 87);
+            this.grpBoxPythonAPI.Name = "grpBoxPythonAPI";
+            this.grpBoxPythonAPI.Size = new System.Drawing.Size(349, 73);
+            this.grpBoxPythonAPI.TabIndex = 20;
+            this.grpBoxPythonAPI.TabStop = false;
+            this.grpBoxPythonAPI.Text = "Python";
+            // 
+            // txtBoxPythonPath
+            // 
+            this.txtBoxPythonPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
+            this.txtBoxPythonPath.Name = "txtBoxPythonPath";
+            this.txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
+            this.txtBoxPythonPath.TabIndex = 3;
+            this.txtBoxPythonPath.Text = "(none)";
+            this.txtBoxPythonPath.TextChanged += new System.EventHandler(this.TxtBoxPythonPath_TextChanged);
+            // 
+            // btnPythonBrowse
+            // 
+            this.btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
+            this.btnPythonBrowse.Name = "btnPythonBrowse";
+            this.btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
+            this.btnPythonBrowse.TabIndex = 21;
+            this.btnPythonBrowse.Text = "...";
+            this.btnPythonBrowse.UseVisualStyleBackColor = true;
+            this.btnPythonBrowse.Click += new System.EventHandler(this.BtnPythonBrowse_Click);
+            // 
+            // btnPythonDetect
+            // 
+            this.btnPythonDetect.Location = new System.Drawing.Point(266, 36);
+            this.btnPythonDetect.Name = "btnPythonDetect";
+            this.btnPythonDetect.Size = new System.Drawing.Size(75, 24);
+            this.btnPythonDetect.TabIndex = 22;
+            this.btnPythonDetect.Text = "Auto-Detect";
+            this.btnPythonDetect.UseVisualStyleBackColor = true;
+            this.btnPythonDetect.Click += new System.EventHandler(this.BtnPythonDetect_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Installation Path:";
+            // 
             // grpBoxAPIGeneral
             // 
             this.grpBoxAPIGeneral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxAPIGeneral.Controls.Add(this.chkBoxAPIEnablePlugins);
             this.grpBoxAPIGeneral.Controls.Add(this.chkBoxAPIEnableLoaders);
             this.grpBoxAPIGeneral.Controls.Add(this.chkBoxEnableAPI);
             this.grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
             this.grpBoxAPIGeneral.Name = "grpBoxAPIGeneral";
-            this.grpBoxAPIGeneral.Size = new System.Drawing.Size(349, 99);
+            this.grpBoxAPIGeneral.Size = new System.Drawing.Size(349, 75);
             this.grpBoxAPIGeneral.TabIndex = 19;
             this.grpBoxAPIGeneral.TabStop = false;
             this.grpBoxAPIGeneral.Text = "BrawlAPI";
-            // 
-            // chkBoxAPIEnablePlugins
-            // 
-            this.chkBoxAPIEnablePlugins.AutoSize = true;
-            this.chkBoxAPIEnablePlugins.Location = new System.Drawing.Point(10, 68);
-            this.chkBoxAPIEnablePlugins.Name = "chkBoxAPIEnablePlugins";
-            this.chkBoxAPIEnablePlugins.Size = new System.Drawing.Size(96, 17);
-            this.chkBoxAPIEnablePlugins.TabIndex = 9;
-            this.chkBoxAPIEnablePlugins.Text = "Enable Plugins";
-            this.chkBoxAPIEnablePlugins.UseVisualStyleBackColor = true;
             // 
             // chkBoxAPIEnableLoaders
             // 
@@ -964,6 +1064,7 @@ namespace BrawlCrate
             this.chkBoxAPIEnableLoaders.TabIndex = 8;
             this.chkBoxAPIEnableLoaders.Text = "Enable Loaders";
             this.chkBoxAPIEnableLoaders.UseVisualStyleBackColor = true;
+            this.chkBoxAPIEnableLoaders.CheckedChanged += new System.EventHandler(this.ChkBoxAPIEnableLoaders_CheckedChanged);
             // 
             // chkBoxEnableAPI
             // 
@@ -974,6 +1075,7 @@ namespace BrawlCrate
             this.chkBoxEnableAPI.TabIndex = 7;
             this.chkBoxEnableAPI.Text = "Enable BrawlAPI";
             this.chkBoxEnableAPI.UseVisualStyleBackColor = true;
+            this.chkBoxEnableAPI.CheckedChanged += new System.EventHandler(this.ChkBoxEnableAPI_CheckedChanged);
             // 
             // tabDiscord
             // 
@@ -1157,116 +1259,11 @@ namespace BrawlCrate
             this.rdoCheckStartup.Text = "Manual, but check for updates on startup";
             this.rdoCheckStartup.UseVisualStyleBackColor = true;
             // 
-            // grpBoxPythonAPI
-            // 
-            this.grpBoxPythonAPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxPythonAPI.Controls.Add(this.btnPythonBrowse);
-            this.grpBoxPythonAPI.Controls.Add(this.btnPythonDetect);
-            this.grpBoxPythonAPI.Controls.Add(this.label1);
-            this.grpBoxPythonAPI.Controls.Add(this.txtBoxPythonPath);
-            this.grpBoxPythonAPI.Location = new System.Drawing.Point(8, 111);
-            this.grpBoxPythonAPI.Name = "grpBoxPythonAPI";
-            this.grpBoxPythonAPI.Size = new System.Drawing.Size(349, 70);
-            this.grpBoxPythonAPI.TabIndex = 20;
-            this.grpBoxPythonAPI.TabStop = false;
-            this.grpBoxPythonAPI.Text = "Python";
-            // 
-            // txtBoxPythonPath
-            // 
-            this.txtBoxPythonPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
-            this.txtBoxPythonPath.Name = "txtBoxPythonPath";
-            this.txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
-            this.txtBoxPythonPath.TabIndex = 3;
-            this.txtBoxPythonPath.Text = "(none)";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Installation Path:";
-            // 
-            // btnPythonDetect
-            // 
-            this.btnPythonDetect.Location = new System.Drawing.Point(266, 36);
-            this.btnPythonDetect.Name = "btnPythonDetect";
-            this.btnPythonDetect.Size = new System.Drawing.Size(75, 24);
-            this.btnPythonDetect.TabIndex = 22;
-            this.btnPythonDetect.Text = "Auto-Detect";
-            this.btnPythonDetect.UseVisualStyleBackColor = true;
-            // 
-            // btnPythonBrowse
-            // 
-            this.btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
-            this.btnPythonBrowse.Name = "btnPythonBrowse";
-            this.btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
-            this.btnPythonBrowse.TabIndex = 21;
-            this.btnPythonBrowse.Text = "...";
-            this.btnPythonBrowse.UseVisualStyleBackColor = true;
-            // 
-            // grpBoxFSharpAPI
-            // 
-            this.grpBoxFSharpAPI.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpBrowse);
-            this.grpBoxFSharpAPI.Controls.Add(this.btnFSharpDetect);
-            this.grpBoxFSharpAPI.Controls.Add(this.label2);
-            this.grpBoxFSharpAPI.Controls.Add(this.txtBoxFSharpPath);
-            this.grpBoxFSharpAPI.Location = new System.Drawing.Point(8, 187);
-            this.grpBoxFSharpAPI.Name = "grpBoxFSharpAPI";
-            this.grpBoxFSharpAPI.Size = new System.Drawing.Size(349, 70);
-            this.grpBoxFSharpAPI.TabIndex = 23;
-            this.grpBoxFSharpAPI.TabStop = false;
-            this.grpBoxFSharpAPI.Text = "F#";
-            // 
-            // btnFSharpBrowse
-            // 
-            this.btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
-            this.btnFSharpBrowse.Name = "btnFSharpBrowse";
-            this.btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
-            this.btnFSharpBrowse.TabIndex = 21;
-            this.btnFSharpBrowse.Text = "...";
-            this.btnFSharpBrowse.UseVisualStyleBackColor = true;
-            // 
-            // btnFSharpDetect
-            // 
-            this.btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
-            this.btnFSharpDetect.Name = "btnFSharpDetect";
-            this.btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
-            this.btnFSharpDetect.TabIndex = 22;
-            this.btnFSharpDetect.Text = "Auto-Detect";
-            this.btnFSharpDetect.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Installation Path:";
-            // 
-            // txtBoxFSharpPath
-            // 
-            this.txtBoxFSharpPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxFSharpPath.Location = new System.Drawing.Point(11, 38);
-            this.txtBoxFSharpPath.Name = "txtBoxFSharpPath";
-            this.txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
-            this.txtBoxFSharpPath.TabIndex = 3;
-            this.txtBoxFSharpPath.Text = "(none)";
-            // 
             // SettingsDialog
             // 
             this.ClientSize = new System.Drawing.Size(373, 478);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsDialog";
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.SettingsDialog_Load);
@@ -1293,6 +1290,10 @@ namespace BrawlCrate
             this.genericFileAssociationBox.PerformLayout();
             this.associatiedFilesBox.ResumeLayout(false);
             this.tabBrawlAPI.ResumeLayout(false);
+            this.grpBoxFSharpAPI.ResumeLayout(false);
+            this.grpBoxFSharpAPI.PerformLayout();
+            this.grpBoxPythonAPI.ResumeLayout(false);
+            this.grpBoxPythonAPI.PerformLayout();
             this.grpBoxAPIGeneral.ResumeLayout(false);
             this.grpBoxAPIGeneral.PerformLayout();
             this.tabDiscord.ResumeLayout(false);
@@ -1305,10 +1306,6 @@ namespace BrawlCrate
             this.grpBoxCanary.PerformLayout();
             this.updaterBehaviorGroupbox.ResumeLayout(false);
             this.updaterBehaviorGroupbox.PerformLayout();
-            this.grpBoxPythonAPI.ResumeLayout(false);
-            this.grpBoxPythonAPI.PerformLayout();
-            this.grpBoxFSharpAPI.ResumeLayout(false);
-            this.grpBoxFSharpAPI.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1568,6 +1565,112 @@ namespace BrawlCrate
             {
                 Properties.Settings.Default.RecentFilesMax = i;
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        private void ChkBoxEnableAPI_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            Properties.Settings.Default.APIEnabled = chkBoxEnableAPI.Checked;
+            Properties.Settings.Default.Save();
+            chkBoxAPIEnableLoaders.Enabled = chkBoxEnableAPI.Checked;
+            grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
+            grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
+        }
+
+        private void TxtBoxPythonPath_TextChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            Properties.Settings.Default.PythonInstallationPath = txtBoxPythonPath.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void BtnPythonBrowse_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog f = new FolderBrowserDialog())
+            {
+                f.Description = "Python Installation Path (2.7 preferred)";
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    txtBoxPythonPath.Text = f.SelectedPath;
+                }
+            }
+        }
+        private void BtnPythonDetect_Click(object sender, EventArgs e)
+        {
+            _updating = true;
+            API.BrawlAPI.PythonInstall(true, true);
+            txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
+            _updating = false;
+        }
+
+        private void TxtBoxFSharpPath_TextChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            Properties.Settings.Default.FSharpInstallationPath = txtBoxFSharpPath.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void BtnFSharpBrowse_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog f = new OpenFileDialog())
+            {
+                f.Filter = "F# Executable (*.exe)|*.exe";
+                f.Title = "F# Installation";
+                try
+                {
+                    if (Directory.Exists(txtBoxFSharpPath.Text.Substring(0, txtBoxFSharpPath.Text.LastIndexOf('\\'))))
+                    {
+                        f.InitialDirectory = txtBoxFSharpPath.Text.Substring(0, txtBoxFSharpPath.Text.LastIndexOf('\\'));
+                    }
+                }
+                catch { }
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    txtBoxFSharpPath.Text = f.FileName;
+                }
+            }
+        }
+
+        private void BtnFSharpDetect_Click(object sender, EventArgs e)
+        {
+            _updating = true;
+            API.BrawlAPI.FSharpInstall(true, true);
+            txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
+            _updating = false;
+        }
+
+        private void ChkBoxAPIEnableLoaders_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+            bool value = chkBoxAPIEnableLoaders.Checked;
+
+            Properties.Settings.Default.APILoadersEnabled = value;
+            Properties.Settings.Default.Save();
+
+            API.BrawlAPI.Loaders.Clear();
+
+            if (value)
+            {
+                foreach (string str in Directory.EnumerateFiles($"{Application.StartupPath}/Loaders", "*.py"))
+                {
+                    API.BrawlAPI.CreatePlugin(str, true);
+                }
             }
         }
     }

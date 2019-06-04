@@ -38,6 +38,9 @@
     <Setting Name="APIEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="APILoadersEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
     <Setting Name="PythonInstallationPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
