@@ -238,6 +238,8 @@ namespace BrawlLib.Imaging
         public static implicit operator RGBAPixel(Vector4 p) { return new RGBAPixel((byte)(p._x * 255.0f), (byte)(p._y * 255.0f), (byte)(p._z * 255.0f), (byte)(p._w * 255.0f)); }
         public static implicit operator Vector4(RGBAPixel p) { return new Vector4(p.R / 255.0f, p.G / 255.0f, p.B / 255.0f, p.A / 255.0f); }
         public static implicit operator Vector3(RGBAPixel p) { return new Vector3(p.R / 255.0f, p.G / 255.0f, p.B / 255.0f); }
+        public static implicit operator RGBAPixel(uint u) { return new RGBAPixel(u); }
+        public static implicit operator uint(RGBAPixel p) { return BitConverter.ToUInt32(new byte[] { p.R, p.G, p.B, p.A }, 0); }
 
         public RGBAPixel(byte r, byte g, byte b, byte a) { R = r; G = g; B = b; A = a; }
         public RGBAPixel(uint u)

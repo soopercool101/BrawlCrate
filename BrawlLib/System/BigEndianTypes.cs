@@ -56,6 +56,7 @@ namespace System
         public float _data;
         public static implicit operator float(bfloat val) { return val._data.Reverse(); }
         public static implicit operator bfloat(float val) { return new bfloat { _data = val.Reverse() }; }
+        public static implicit operator bfloat(byte[] val) { return new bfloat { _data = BitConverter.ToSingle(val, 0) }; }
 
         public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
