@@ -1266,6 +1266,7 @@ namespace BrawlCrate
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "SettingsDialog";
             this.Text = "Settings";
+            this.Icon = BrawlLib.Properties.Resources.Icon;
             this.Load += new System.EventHandler(this.SettingsDialog_Load);
             this.Shown += new System.EventHandler(this.SettingsDialog_Shown);
             this.tabControl1.ResumeLayout(false);

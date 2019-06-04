@@ -164,7 +164,22 @@ namespace BrawlCrate.Properties {
                 this["APIEnabled"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool APILoadersEnabled
+        {
+            get
+            {
+                return ((bool)(this["APILoadersEnabled"]));
+            }
+            set
+            {
+                this["APILoadersEnabled"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -257,18 +272,6 @@ namespace BrawlCrate.Properties {
             }
             set {
                 this["DiscordRPCNameCustom"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool APILoadersEnabled {
-            get {
-                return ((bool)(this["APILoadersEnabled"]));
-            }
-            set {
-                this["APILoadersEnabled"] = value;
             }
         }
     }
