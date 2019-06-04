@@ -388,29 +388,29 @@ namespace System.Windows.Forms
         {
             if (AttributeArray.Length <= i || AttributeArray[i]._type == 2)
             {
-                attributes.Rows[i][1] = ((bfloat*)TargetNode.AttributeAddress)[i] * Maths._rad2degf;
+                attributes.Rows[i][1] = TargetNode.GetDegrees(i);
             }
             else if (AttributeArray[i]._type == 1)
             {
-                attributes.Rows[i][1] = (int)((bint*)TargetNode.AttributeAddress)[i];
+                attributes.Rows[i][1] = TargetNode.GetInt(i);
             }
             else if (AttributeArray[i]._type == 3)
             {
-                attributes.Rows[i][1] = ((RGBAPixel*)TargetNode.AttributeAddress)[i];
-                lblColor.BackColor = (Color)(((RGBAPixel*)TargetNode.AttributeAddress)[i]);
-                lblCNoA.BackColor = Color.FromArgb((((RGBAPixel*)TargetNode.AttributeAddress)[i]).R, (((RGBAPixel*)TargetNode.AttributeAddress)[i]).G, (((RGBAPixel*)TargetNode.AttributeAddress)[i]).B);
+                attributes.Rows[i][1] = TargetNode.GetRGBAPixel(i);
+                lblColor.BackColor = (Color)TargetNode.GetRGBAPixel(i);
+                lblCNoA.BackColor = Color.FromArgb(TargetNode.GetRGBAPixel(i).R, TargetNode.GetRGBAPixel(i).G, TargetNode.GetRGBAPixel(i).B);
             }
             else if (AttributeArray[i]._type == 4)
             {
-                attributes.Rows[i][1] = "0x" + ((int)((bint*)TargetNode.AttributeAddress)[i]).ToString("X8");
+                attributes.Rows[i][1] = TargetNode.GetHex(i);
             }
             else if (AttributeArray[i]._type == 5)
             {
-                attributes.Rows[i][1] = Convert.ToString(((bint*)TargetNode.AttributeAddress)[i], 2).PadLeft(32, '0'); //attributes.Rows[i][1] = String.Join(" ", Regex.Split(Convert.ToString((int)((bint*)TargetNode.AttributeAddress)[i], 2).PadLeft(16, '0'), "(?<=^(.{4})+)"));
+                attributes.Rows[i][1] = Convert.ToString(TargetNode.GetInt(i), 2).PadLeft(32, '0'); //attributes.Rows[i][1] = String.Join(" ", Regex.Split(Convert.ToString((int)((bint*)TargetNode.AttributeAddress)[i], 2).PadLeft(16, '0'), "(?<=^(.{4})+)"));
             }
             else
             {
-                attributes.Rows[i][1] = (float)((bfloat*)TargetNode.AttributeAddress)[i];
+                attributes.Rows[i][1] = TargetNode.GetFloat(i);
             }
         }
 
@@ -419,6 +419,7 @@ namespace System.Windows.Forms
         public void SetInt(int index, int value) { TargetNode.SetInt(index, value); }
         public int GetInt(int index) { return TargetNode.GetInt(index); }
         public void SetRGBAPixel(int index, string value) { TargetNode.SetRGBAPixel(index, value); }
+        public void SetRGBAPixel(int index, RGBAPixel value) { TargetNode.SetRGBAPixel(index, value); }
         public RGBAPixel GetRGBAPixel(int index) { return TargetNode.GetRGBAPixel(index); }
         public void SetHex(int index, string value) { TargetNode.SetHex(index, value); }
         public string GetHex(int index) { return TargetNode.GetHex(index); }
@@ -445,15 +446,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            byte* buffer = (byte*)TargetNode.AttributeAddress;
             lblColor.Visible = false;
             lblCNoA.Visible = false;
             btnInf.Visible = btnMinusInf.Visible = false;
             if (AttributeArray[index]._type == 5) // Binary
             {
                 string field0 = value.ToString().Replace(" ", string.Empty);
-                ((bint*)buffer)[index] = Convert.ToInt32(field0, 2);
-                //MessageBox.Show(((int)((bint*)buffer)[index]).ToString("X8"));
+                TargetNode.SetInt(index, Convert.ToInt32(field0, 2));
                 TargetNode.SignalPropertyChange();
             }
             else if (AttributeArray[index]._type == 4) // Hex
@@ -461,10 +460,9 @@ namespace System.Windows.Forms
                 string field0 = (value.ToString() ?? "").Split(' ')[0];
                 int fromBase = field0.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase) ? 16 : 10;
                 int temp = Convert.ToInt32(field0, fromBase);
-                if (((bint*)buffer)[index] != temp)
+                if (TargetNode.GetInt(index) != temp)
                 {
-                    ((bint*)buffer)[index] = temp;
-                    TargetNode.SignalPropertyChange();
+                    TargetNode.SetInt(index, temp);
                 }
                 if (fromBase == 10)
                 {
@@ -483,48 +481,60 @@ namespace System.Windows.Forms
 
                 if (arr.Length == 4)
                 {
-                    byte.TryParse(arr[0], out p.R);
-                    byte.TryParse(arr[1], out p.G);
-                    byte.TryParse(arr[2], out p.B);
-                    byte.TryParse(arr[3], out p.A);
-
-                    if (((RGBAPixel*)buffer)[index] != p)
+                    if (byte.TryParse(arr[0], out p.R) &&
+                        byte.TryParse(arr[1], out p.G) &&
+                        byte.TryParse(arr[2], out p.B) &&
+                        byte.TryParse(arr[3], out p.A))
                     {
-                        ((RGBAPixel*)buffer)[index] = p;
-                        TargetNode.SignalPropertyChange();
+                        TargetNode.SetRGBAPixel(index, p);
+                        lblColor.BackColor = (Color)p;
+                        lblCNoA.BackColor = Color.FromArgb(p.R, p.G, p.B);
                     }
-                    lblColor.BackColor = (Color)p;
-                    lblCNoA.BackColor = Color.FromArgb(p.R, p.G, p.B);
+                }
+                else if (arr.Length == 3)
+                {
+                    if (byte.TryParse(arr[0], out p.R) &&
+                        byte.TryParse(arr[1], out p.G) &&
+                        byte.TryParse(arr[2], out p.B))
+                    {
+                        TargetNode.SetRGBAPixel(index, p);
+                        lblColor.BackColor = (Color)p;
+                        lblCNoA.BackColor = Color.FromArgb(p.R, p.G, p.B);
+                    }
+                }
+                else if (arr.Length == 1)
+                {
+                    if (byte.TryParse(arr[0], out p.R) &&
+                        byte.TryParse(arr[0], out p.G) &&
+                        byte.TryParse(arr[0], out p.B) &&
+                        byte.TryParse(arr[0], out p.A))
+                    {
+                        TargetNode.SetRGBAPixel(index, p);
+                        lblColor.BackColor = (Color)p;
+                        lblCNoA.BackColor = Color.FromArgb(p.R, p.G, p.B);
+                    }
                 }
             }
             else if (AttributeArray[index]._type == 2) //degrees
             {
                 if (!float.TryParse(value, out float val))
                 {
-                    value = ((float)(((bfloat*)buffer)[index])).ToString();
+                    value = TargetNode.GetDegrees(index).ToString();
                 }
                 else
                 {
-                    if (((bfloat*)buffer)[index] != val * Maths._deg2radf)
-                    {
-                        ((bfloat*)buffer)[index] = val * Maths._deg2radf;
-                        TargetNode.SignalPropertyChange();
-                    }
+                    TargetNode.SetDegrees(index, val);
                 }
             }
             else if (AttributeArray[index]._type == 1) //int
             {
                 if (!int.TryParse(value, out int val))
                 {
-                    value = ((int)(((bint*)buffer)[index])).ToString();
+                    value = TargetNode.GetInt(index).ToString(); //((int)(((bint*)buffer)[index])).ToString();
                 }
                 else
                 {
-                    if (((bint*)buffer)[index] != val)
-                    {
-                        ((bint*)buffer)[index] = val;
-                        TargetNode.SignalPropertyChange();
-                    }
+                    TargetNode.SetInt(index, val);
                 }
             }
             else //float/radians
@@ -532,22 +542,18 @@ namespace System.Windows.Forms
                 btnInf.Visible = btnMinusInf.Visible = true;
                 if (!float.TryParse(value, out float val))
                 {
-                    value = ((float)(((bfloat*)buffer)[index])).ToString();
+                    value = TargetNode.GetFloat(index).ToString();
                 }
                 else
                 {
-                    if (((bfloat*)buffer)[index] != val)
-                    {
-                        ((bfloat*)buffer)[index] = val;
-                        TargetNode.SignalPropertyChange();
-                    }
+                    TargetNode.SetFloat(index, val);
                 }
             }
 
             attributes.Rows[index][1] = value;
             if (AttributeArray[index]._type == 3)
             {
-                attributes.Rows[index][1] = ((RGBAPixel*)buffer)[index].ToString();
+                attributes.Rows[index][1] = GetRGBAPixel(index).ToString();
             }
 
             if (CellEdited != null)
@@ -560,7 +566,8 @@ namespace System.Windows.Forms
         {
             lblColor.Visible = false;
             lblCNoA.Visible = false;
-            btnInf.Visible = btnMinusInf.Visible = false;
+            btnInf.Visible = false;
+            btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
@@ -589,8 +596,8 @@ namespace System.Windows.Forms
             {
                 lblColor.Visible = true;
                 lblCNoA.Visible = true;
-                lblColor.BackColor = (Color)(((RGBAPixel*)TargetNode.AttributeAddress)[index]);
-                lblCNoA.BackColor = Color.FromArgb((((RGBAPixel*)TargetNode.AttributeAddress)[index]).R, (((RGBAPixel*)TargetNode.AttributeAddress)[index]).G, (((RGBAPixel*)TargetNode.AttributeAddress)[index]).B);
+                lblColor.BackColor = (Color)TargetNode.GetRGBAPixel(index);
+                lblCNoA.BackColor = Color.FromArgb(TargetNode.GetRGBAPixel(index).R, TargetNode.GetRGBAPixel(index).G, TargetNode.GetRGBAPixel(index).B);
             }
             else if (AttributeArray[index]._type == 0)
             {
@@ -670,10 +677,10 @@ namespace System.Windows.Forms
             }
 
             int index = dtgrdAttributes.CurrentCell.RowIndex;
-            _dlgColor.Color = (Color)(((RGBAPixel*)TargetNode.AttributeAddress)[index]);
+            _dlgColor.Color = (Color)TargetNode.GetRGBAPixel(index);
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
-                ((RGBAPixel*)TargetNode.AttributeAddress)[index] = (ARGBPixel)_dlgColor.Color;
+                TargetNode.SetRGBAPixel(index, (RGBAPixel)((ARGBPixel)_dlgColor.Color));
                 TargetNode.SignalPropertyChange();
                 RefreshRow(index);
             }
@@ -689,8 +696,7 @@ namespace System.Windows.Forms
             int index = dtgrdAttributes.CurrentCell.RowIndex;
             if (AttributeArray[index]._type == 0)
             {
-                ((bfloat*)TargetNode.AttributeAddress)[index] = float.NegativeInfinity;
-                TargetNode.SignalPropertyChange();
+                TargetNode.SetFloat(index, float.NegativeInfinity);
                 RefreshRow(index);
             }
         }
@@ -705,8 +711,7 @@ namespace System.Windows.Forms
             int index = dtgrdAttributes.CurrentCell.RowIndex;
             if (AttributeArray[index]._type == 0)
             {
-                ((bfloat*)TargetNode.AttributeAddress)[index] = float.PositiveInfinity;
-                TargetNode.SignalPropertyChange();
+                TargetNode.SetFloat(index, float.PositiveInfinity);
                 RefreshRow(index);
             }
         }

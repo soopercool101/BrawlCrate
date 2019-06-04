@@ -16,9 +16,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         void SetFloat(int index, float value);
         float GetFloat(int index);
+        void SetDegrees(int index, float value);
+        float GetDegrees(int index);
         void SetInt(int index, int value);
         int GetInt(int index);
         void SetRGBAPixel(int index, string value);
+        void SetRGBAPixel(int index, RGBAPixel value);
         RGBAPixel GetRGBAPixel(int index);
         void SetHex(int index, string value);
         string GetHex(int index);

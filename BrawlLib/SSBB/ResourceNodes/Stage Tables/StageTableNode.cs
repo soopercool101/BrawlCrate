@@ -52,6 +52,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             return ((bfloat*)AttributeAddress)[index];
         }
+        public void SetDegrees(int index, float value)
+        {
+            if (((bfloat*)AttributeAddress)[index] != value * Maths._deg2radf)
+            {
+                ((bfloat*)AttributeAddress)[index] = value * Maths._deg2radf;
+                SignalPropertyChange();
+            }
+        }
+        public float GetDegrees(int index)
+        {
+            return ((bfloat*)AttributeAddress)[index] * Maths._rad2degf;
+        }
         public void SetInt(int index, int value)
         {
             if (((bint*)AttributeAddress)[index] != value)
@@ -83,6 +95,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (((RGBAPixel*)AttributeAddress)[index] != p)
             {
                 ((RGBAPixel*)AttributeAddress)[index] = p;
+                SignalPropertyChange();
+            }
+        }
+
+        public void SetRGBAPixel(int index, RGBAPixel value)
+        {
+            if (((RGBAPixel*)AttributeAddress)[index] != value)
+            {
+                ((RGBAPixel*)AttributeAddress)[index] = value;
                 SignalPropertyChange();
             }
         }
