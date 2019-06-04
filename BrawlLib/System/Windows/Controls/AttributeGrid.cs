@@ -414,16 +414,6 @@ namespace System.Windows.Forms
             }
         }
 
-        public void SetFloat(int index, float value) { TargetNode.SetFloat(index, value); }
-        public float GetFloat(int index) { return TargetNode.GetFloat(index); }
-        public void SetInt(int index, int value) { TargetNode.SetInt(index, value); }
-        public int GetInt(int index) { return TargetNode.GetInt(index); }
-        public void SetRGBAPixel(int index, string value) { TargetNode.SetRGBAPixel(index, value); }
-        public void SetRGBAPixel(int index, RGBAPixel value) { TargetNode.SetRGBAPixel(index, value); }
-        public RGBAPixel GetRGBAPixel(int index) { return TargetNode.GetRGBAPixel(index); }
-        public void SetHex(int index, string value) { TargetNode.SetHex(index, value); }
-        public string GetHex(int index) { return TargetNode.GetHex(index); }
-
         private unsafe void dtgrdAttributes_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgrdAttributes.CurrentCell == null)
@@ -553,7 +543,7 @@ namespace System.Windows.Forms
             attributes.Rows[index][1] = value;
             if (AttributeArray[index]._type == 3)
             {
-                attributes.Rows[index][1] = GetRGBAPixel(index).ToString();
+                attributes.Rows[index][1] = TargetNode.GetRGBAPixel(index).ToString();
             }
 
             if (CellEdited != null)
