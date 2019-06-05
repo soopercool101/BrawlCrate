@@ -102,6 +102,11 @@ namespace BrawlCrate
             {
                 if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))
                 {
+                    if (BrawlLib.Properties.Settings.Default.Codes == null)
+                    {
+                        BrawlLib.Properties.Settings.Default.Codes = new List<CodeStorage>();
+                        BrawlLib.Properties.Settings.Default.Save();
+                    }
                     GCTEditor editor = new GCTEditor();
                     if (args.Length >= 2)
                     {
@@ -113,6 +118,11 @@ namespace BrawlCrate
                 }
                 else if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
                 {
+                    if (BrawlLib.Properties.Settings.Default.Codes == null)
+                    {
+                        BrawlLib.Properties.Settings.Default.Codes = new List<CodeStorage>();
+                        BrawlLib.Properties.Settings.Default.Save();
+                    }
                     GCTEditor editor = new GCTEditor
                     {
                         TargetNode = GCTEditor.LoadGCT(args[0])

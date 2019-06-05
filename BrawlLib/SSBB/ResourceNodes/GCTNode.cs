@@ -352,19 +352,22 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 List<string> _unrecognized = new List<string>();
 
-                foreach (CodeStorage c in Properties.Settings.Default.Codes)
+                if (Properties.Settings.Default.Codes != null)
                 {
-                    int index = -1;
-                    if ((index = s.IndexOf(c._code)) >= 0)
+                    foreach (CodeStorage c in Properties.Settings.Default.Codes)
                     {
-                        g.AddChild(new GCTCodeEntryNode()
+                        int index = -1;
+                        if ((index = s.IndexOf(c._code)) >= 0)
                         {
-                            _name = c._name,
-                            _description = c._description,
-                            LinesNoSpaces = s.Substring(index, c._code.Length),
-                            _enabled = true
-                        }, false);
-                        s = s.Remove(index, c._code.Length);
+                            g.AddChild(new GCTCodeEntryNode()
+                            {
+                                _name = c._name,
+                                _description = c._description,
+                                LinesNoSpaces = s.Substring(index, c._code.Length),
+                                _enabled = true
+                            }, false);
+                            s = s.Remove(index, c._code.Length);
+                        }
                     }
                 }
 

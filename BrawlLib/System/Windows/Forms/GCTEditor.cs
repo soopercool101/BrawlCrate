@@ -206,15 +206,18 @@ namespace System.Windows.Forms
                 string s = _codeEntry.LinesNoSpaces;
                 int i = 0;
                 _codeEntrySavedIndex = -1;
-                foreach (CodeStorage c in BrawlLib.Properties.Settings.Default.Codes)
+                if (BrawlLib.Properties.Settings.Default.Codes != null)
                 {
-                    if (c._code == s)
+                    foreach (CodeStorage c in BrawlLib.Properties.Settings.Default.Codes)
                     {
-                        btnAddRemoveCode.Text = "Forget Code";
-                        _codeEntrySavedIndex = i;
-                        break;
+                        if (c._code == s)
+                        {
+                            btnAddRemoveCode.Text = "Forget Code";
+                            _codeEntrySavedIndex = i;
+                            break;
+                        }
+                        i++;
                     }
-                    i++;
                 }
                 if (_codeEntrySavedIndex == -1)
                 {
