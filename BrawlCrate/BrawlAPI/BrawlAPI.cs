@@ -300,7 +300,7 @@ namespace BrawlCrate.API
             }
 
             // If any python installations are found, set them as the search paths
-            if(searchPaths.Count > 0)
+            if (searchPaths.Count > 0)
             {
                 Engine.SetSearchPaths(searchPaths.ToArray());
             }

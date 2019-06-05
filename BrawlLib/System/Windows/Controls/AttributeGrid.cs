@@ -520,7 +520,7 @@ namespace System.Windows.Forms
             {
                 if (!int.TryParse(value, out int val))
                 {
-                    value = TargetNode.GetInt(index).ToString(); //((int)(((bint*)buffer)[index])).ToString();
+                    value = TargetNode.GetInt(index).ToString();
                 }
                 else
                 {
@@ -670,7 +670,7 @@ namespace System.Windows.Forms
             _dlgColor.Color = (Color)TargetNode.GetRGBAPixel(index);
             if (_dlgColor.ShowDialog(this) == DialogResult.OK)
             {
-                TargetNode.SetRGBAPixel(index, (RGBAPixel)((ARGBPixel)_dlgColor.Color));
+                TargetNode.SetRGBAPixel(index, (ARGBPixel)_dlgColor.Color);
                 TargetNode.SignalPropertyChange();
                 RefreshRow(index);
             }
