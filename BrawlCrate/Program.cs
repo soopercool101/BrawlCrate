@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using BrawlLib.Modeling;
 
 namespace BrawlCrate
 {
@@ -51,6 +52,24 @@ namespace BrawlCrate
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            if (BrawlLib.Properties.Settings.Default.Codes == null)
+            {
+                BrawlLib.Properties.Settings.Default.Codes = new List<CodeStorage>();
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+
+            if (BrawlLib.Properties.Settings.Default.ColladaImportOptions == null)
+            {
+                BrawlLib.Properties.Settings.Default.ColladaImportOptions = new Collada.ImportOptions();
+                BrawlLib.Properties.Settings.Default.Save();
+            }
+
+            if (Properties.Settings.Default.ViewerSettings == null)
+            {
+                Properties.Settings.Default.ViewerSettings = ModelEditorSettings.Default();
+                Properties.Settings.Default.ViewerSettingsSet = true;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
@@ -98,11 +117,6 @@ namespace BrawlCrate
         [STAThread]
         public static void Main(string[] args)
         {
-            if (BrawlLib.Properties.Settings.Default.Codes == null)
-            {
-                BrawlLib.Properties.Settings.Default.Codes = new List<CodeStorage>();
-                BrawlLib.Properties.Settings.Default.Save();
-            }
             if (args.Length >= 1)
             {
                 if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))

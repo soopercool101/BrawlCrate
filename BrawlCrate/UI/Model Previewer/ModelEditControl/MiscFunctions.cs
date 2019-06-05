@@ -38,25 +38,25 @@ namespace System.Windows.Forms
             _updating = true;
             switch (ControlType)
             {
-                case TransformType.None:
-                    rotationToolStripMenuItem.Checked =
-                    translationToolStripMenuItem.Checked =
-                    scaleToolStripMenuItem.Checked = false;
-                    break;
                 case TransformType.Scale:
-                    rotationToolStripMenuItem.Checked =
+                    rotationToolStripMenuItem.Checked = false;
                     translationToolStripMenuItem.Checked = false;
                     scaleToolStripMenuItem.Checked = true;
                     break;
                 case TransformType.Rotation:
-                    translationToolStripMenuItem.Checked =
+                    translationToolStripMenuItem.Checked = false;
                     scaleToolStripMenuItem.Checked = false;
                     rotationToolStripMenuItem.Checked = true;
                     break;
                 case TransformType.Translation:
-                    rotationToolStripMenuItem.Checked =
+                    rotationToolStripMenuItem.Checked = false;
                     scaleToolStripMenuItem.Checked = false;
                     translationToolStripMenuItem.Checked = true;
+                    break;
+                default: //TransformType.None
+                    rotationToolStripMenuItem.Checked = false;
+                    translationToolStripMenuItem.Checked = false;
+                    scaleToolStripMenuItem.Checked = false;
                     break;
             }
             _updating = false;
@@ -90,15 +90,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            //Leave the target model and collision alone if just switching to edit all
-            //if (!EditingAll)
-            //{
+
             object item = models.SelectedItem;
 
             _resetCamera = false;
-            TargetModel = item is IModel ? (IModel)item : null;
-            TargetCollision = item is CollisionNode ? (CollisionNode)item : null;
-            //}
+            TargetModel = item is IModel model ? model : null;
+            TargetCollision = item is CollisionNode node ? node : null;
+
             _undoSaves.Clear();
             _redoSaves.Clear();
             _saveIndex = -1;
@@ -144,16 +142,9 @@ namespace System.Windows.Forms
                 animEditors.HorizontalScroll.Visible = false;
             }
 
-            //Don't update the width and height every time, only if need be
-            if (animCtrlPnl.Width != s.Width)
-            {
-                animCtrlPnl.Width = s.Width;
-            }
 
-            if (animEditors.Height != s.Height + addedHeight)
-            {
-                animEditors.Height = s.Height + addedHeight;
-            }
+            animCtrlPnl.Width = s.Width;
+            animEditors.Height = s.Height + addedHeight;
 
             //Dock playback panel if it reaches its minimum size
             if (pnlPlayback.Width <= pnlPlayback.MinimumSize.Width)
@@ -190,22 +181,13 @@ namespace System.Windows.Forms
             ResetBoneColors();
             SaveSettings();
 
-            if (_viewerForm != null)
-            {
-                _viewerForm.Close();
-            }
+            _viewerForm?.Close();
 
-            if (_interpolationForm != null)
-            {
-                _interpolationForm.Close();
-            }
+            _interpolationForm?.Close();
 
             MDL0TextureNode._folderWatcher.SynchronizingObject = null;
 
-            if (TargetModel != null)
-            {
-                TargetModel = null;
-            }
+            TargetModel = null;
 
             _targetModels.Clear();
             ModelPanel.ClearAll();
@@ -241,17 +223,34 @@ namespace System.Windows.Forms
 
         public void SetCurrentControl()
         {
-            Control newControl = null;
+            Control newControl;
             SyncTexturesToObjectList = (TargetAnimType == NW4RAnimType.SRT || TargetAnimType == NW4RAnimType.PAT);
             switch (TargetAnimType)
             {
-                case NW4RAnimType.CHR: newControl = chr0Editor; break;
-                case NW4RAnimType.SHP: newControl = shp0Editor; break;
-                case NW4RAnimType.VIS: newControl = vis0Editor; break;
-                case NW4RAnimType.SCN: newControl = scn0Editor; break;
-                case NW4RAnimType.CLR: newControl = clr0Editor; break;
-                case NW4RAnimType.SRT: newControl = srt0Editor; break;
-                case NW4RAnimType.PAT: newControl = pat0Editor; break;
+                case NW4RAnimType.CHR:
+                    newControl = chr0Editor;
+                    break;
+                case NW4RAnimType.SHP:
+                    newControl = shp0Editor;
+                    break;
+                case NW4RAnimType.VIS:
+                    newControl = vis0Editor;
+                    break;
+                case NW4RAnimType.SCN:
+                    newControl = scn0Editor;
+                    break;
+                case NW4RAnimType.CLR:
+                    newControl = clr0Editor;
+                    break;
+                case NW4RAnimType.SRT:
+                    newControl = srt0Editor;
+                    break;
+                case NW4RAnimType.PAT:
+                    newControl = pat0Editor;
+                    break;
+                default:
+                    newControl = null;
+                    break;
             }
             if (_currentControl != newControl)
             {
