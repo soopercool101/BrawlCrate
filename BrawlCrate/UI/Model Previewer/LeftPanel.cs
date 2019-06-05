@@ -850,7 +850,7 @@ namespace System.Windows.Forms
             }
             return found;
 
-        Add:
+            Add:
             if (string.IsNullOrEmpty(compare) ||
                 (contains && node.Name.Contains(compare, StringComparison.OrdinalIgnoreCase)) ||
                 node.Name.StartsWith(compare, StringComparison.OrdinalIgnoreCase))

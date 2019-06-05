@@ -293,7 +293,7 @@ namespace System.Windows.Forms
                 FileInfo[] files = dir.GetFiles();
                 int i = 0;
                 string name = "Animation";
-            Top:
+                Top:
                 foreach (FileInfo f in files)
                 {
                     if (f.Name == name + i + ".gif")
@@ -364,7 +364,7 @@ namespace System.Windows.Forms
                     FileInfo[] files = dir.GetFiles();
                     int i = 0;
                     string name = "ScreenCapture";
-                Top:
+                    Top:
                     foreach (FileInfo f in files)
                     {
                         if (f.Name == name + i + extension)

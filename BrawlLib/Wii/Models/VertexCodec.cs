@@ -248,26 +248,26 @@ namespace BrawlLib.Wii.Models
                             }
                         }
 
-                    //for (fPtr = sPtr; fPtr < fCeil; )
-                    //{
-                    //    if ((val = *fPtr++) == 0)
-                    //        continue;
+                        //for (fPtr = sPtr; fPtr < fCeil; )
+                        //{
+                        //    if ((val = *fPtr++) == 0)
+                        //        continue;
 
-                    //    val *= scale;
-                    //    if (val > rMax) val = rMax;
-                    //    else if (val < rMin) val = rMin;
+                        //    val *= scale;
+                        //    if (val > rMax) val = rMax;
+                        //    else if (val < rMin) val = rMin;
 
-                    //    int step = (int)((val * scale);// + (val > 0 ? 0.5f : -0.5f));
-                    //    float error = Math.Abs((step / scale) - val);
+                        //    int step = (int)((val * scale);// + (val > 0 ? 0.5f : -0.5f));
+                        //    float error = Math.Abs((step / scale) - val);
 
-                    //    if (error > worstError)
-                    //        worstError = error;
+                        //    if (error > worstError)
+                        //        worstError = error;
 
-                    //    if (error > bestError)
-                    //        break;
-                    //}
+                        //    if (error > bestError)
+                        //        break;
+                        //}
 
-                    Check:
+                        Check:
 
                         if (worstError < bestError)
                         {
@@ -294,7 +294,7 @@ namespace BrawlLib.Wii.Models
             _type = WiiVertexComponentType.Float;
             _scale = 0;
 
-        Next:
+            Next:
 
             _scale = bestScale;
             _dstStride = _dstElements << ((int)_type >> 1);

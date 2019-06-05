@@ -708,7 +708,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-        Start:
+            Start:
             if (_vis0 != null)
             {
                 if (objectIndex < 0 || objectIndex >= TargetModel.Objects.Length)
@@ -742,7 +742,7 @@ namespace System.Windows.Forms
                 bool ANIMval = value;
 
                 bool nowAnimated = false, alreadyConstant = false;
-            Top:
+                Top:
                 if (node != null)
                 {
                     if (node._entryCount != 0) //Node is animated

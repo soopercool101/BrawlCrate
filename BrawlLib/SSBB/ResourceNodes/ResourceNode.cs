@@ -1202,7 +1202,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 charList[i] = (sbyte)name[i];
             }
 
-        Top:
+            Top:
 
             if (index < 0)
             {

@@ -668,7 +668,7 @@ namespace System.Collections.Generic
 
         internal void Sort(Comparison<T> comp)
         {
-        Top:
+            Top:
             bool f = true;
 
             Node next = front, prev = front;

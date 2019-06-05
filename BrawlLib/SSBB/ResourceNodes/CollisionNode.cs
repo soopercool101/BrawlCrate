@@ -90,7 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     current = next = plane;
 
-                Top:
+                    Top:
                     //Update variables, moving to next plane and links
                     llink = current._encodeIndex;
                     current = next;

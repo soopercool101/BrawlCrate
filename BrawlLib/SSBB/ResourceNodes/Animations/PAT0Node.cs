@@ -1086,7 +1086,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </summary>
         public void SortChildren()
         {
-        Top:
+            Top:
             for (int i = 0; i < Children.Count; i++)
             {
                 PAT0TextureEntryNode t = Children[i] as PAT0TextureEntryNode;

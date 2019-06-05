@@ -193,7 +193,7 @@ namespace System.IO
             bool literal = false;
             byte b;
 
-        Top:
+            Top:
             SkipWhitespace();
             while (_ptr < _ceil)
             {

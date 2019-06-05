@@ -377,7 +377,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                     }
                 }
-            Next:
+                Next:
                 bool found = false;
                 foreach (MDL0ShaderNode s in _shadGroup.Children)
                 {
@@ -401,12 +401,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.ShaderNode = s;
                             found = true;
                             goto End;
-                        NotFound:
+                            NotFound:
                             continue;
                         }
                     }
                 }
-            End:
+                End:
                 if (!found)
                 {
                     MDL0ShaderNode shader = new MDL0ShaderNode();
@@ -430,7 +430,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     MDL0TextureNode texture = (MDL0TextureNode)_texList[i];
 
-                at1:
+                    at1:
                     foreach (MDL0MaterialRefNode r in texture._references)
                     {
                         if (_matList.IndexOf(r.Parent) == -1)
@@ -458,7 +458,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     MDL0TextureNode palette = (MDL0TextureNode)_pltList[i];
 
-                bt1:
+                    bt1:
                     foreach (MDL0MaterialRefNode r in palette._references)
                     {
                         if (_matList.IndexOf(r.Parent) == -1)

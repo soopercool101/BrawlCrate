@@ -1163,12 +1163,12 @@ For example, if the shader has two stages but this number is 1, the second stage
                             ShaderNode = s;
                             found = true;
                             goto End;
-                        NotFound:
+                            NotFound:
                             continue;
                         }
                     }
                 }
-            End:
+                End:
                 if (!found)
                 {
                     MDL0ShaderNode shader = new MDL0ShaderNode();

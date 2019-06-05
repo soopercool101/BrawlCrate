@@ -187,7 +187,7 @@ namespace BrawlLib.Wii.Models
                             aLen = 1; //Offset count
                         }
 
-                    EvalAssets:
+                        EvalAssets:
 
                         List<ResourceNode> polyList = model._objList;
                         if (polyList == null)

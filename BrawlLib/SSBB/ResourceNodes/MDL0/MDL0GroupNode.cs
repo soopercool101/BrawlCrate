@@ -204,7 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         List<MDL0BoneNode> bones = linker.BoneCache.ToList();
 
-                    STop:
+                        STop:
                         if (*pData == 2)
                         {
                             bone = linker.BoneCache[*(bushort*)(pData + 1)] as MDL0BoneNode;
@@ -254,7 +254,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         //Use node mix to create weight groups
                         byte* pData = (byte*)p.Data;
                         bool fixCS0159 = false;
-                    TTop:
+                        TTop:
                         switch (*pData)
                         {
                             //Type 3 is for weighted influences

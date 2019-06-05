@@ -173,7 +173,7 @@ namespace BrawlCrate.NodeWrappers
             int id = 1;
             string name = "NewBone0";
             MDL0Node model = ((MDL0BoneNode)_resource).Model;
-        Top:
+            Top:
             foreach (MDL0BoneNode b in model._linker.BoneCache)
             {
                 if (b.Name == name)

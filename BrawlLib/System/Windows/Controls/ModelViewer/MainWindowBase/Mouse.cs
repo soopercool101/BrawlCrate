@@ -43,7 +43,7 @@ namespace System.Windows.Forms
                 }
             }
 
-        GetBone:
+            GetBone:
 
             //Try selecting new bone
             if (SelectedBone == null && panel.RenderBones)
@@ -93,7 +93,7 @@ namespace System.Windows.Forms
                 return true;
             }
 
-        GetVertex:
+            GetVertex:
 
             bool verticesChanged = false;
             if (ok)
@@ -473,7 +473,7 @@ namespace System.Windows.Forms
                         {
                             name += "0";
                             int id = 1;
-                        Top:
+                            Top:
                             foreach (MDL0BoneNode x in model._linker.BoneCache)
                             {
                                 if (x.Name == name)

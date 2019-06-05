@@ -412,7 +412,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     DialogResult result = MessageBox.Show(null, "A bone entry with the name " + _extTarget.Name + " already exists.\nDo you want to rename this entry?\nOtherwise, you will have the option to merge the keyframes.", "Rename Entry?", MessageBoxButtons.YesNoCancel);
                     if (result == DialogResult.Yes)
                     {
-                    Top:
+                        Top:
                         RenameDialog d = new RenameDialog();
                         if (d.ShowDialog(null, entry) == DialogResult.OK)
                         {

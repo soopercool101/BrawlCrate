@@ -595,7 +595,7 @@ namespace BrawlCrate
                         }
                     }
 
-                End:
+                    End:
                     _dragNode = null;
                     _timer.Enabled = false;
                 }

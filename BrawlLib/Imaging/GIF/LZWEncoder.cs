@@ -209,7 +209,7 @@ namespace Gif.Components
 
             Output(ClearCode, outs);
 
-        outer_loop: while ((c = NextPixel()) != EOF)
+            outer_loop: while ((c = NextPixel()) != EOF)
             {
                 fcode = (c << maxbits) + ent;
                 i = (c << hshift) ^ ent; // xor hashing

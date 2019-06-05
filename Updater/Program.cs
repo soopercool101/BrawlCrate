@@ -175,7 +175,7 @@ namespace Net
                     }
                 }
 
-            UpdateDL:
+                UpdateDL:
                 // If there are no releases available, download will fail.
                 if (release == null || release.Assets.Count == 0)
                 {
@@ -796,8 +796,8 @@ namespace Net
 
         public static async Task KillOpenWindows()
         {
-        //Find and close all windows of the BrawlCrate application that will be overwritten
-        TRY_AGAIN:
+            //Find and close all windows of the BrawlCrate application that will be overwritten
+            TRY_AGAIN:
             Process[] px = Process.GetProcessesByName("BrawlCrate");
             Process[] pToClose = px.Where(x => x.MainModule.FileName.Equals(AppPath + "\\BrawlCrate.exe")).ToArray();
             Process p = px.FirstOrDefault(x => x.MainModule.FileName.Equals(AppPath + "\\BrawlCrate.exe"));

@@ -363,7 +363,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             int value = 0;
 
-        Top:
+            Top:
             foreach (CLR0MaterialEntryNode t in Children)
             {
                 if ((int)t._target == value)

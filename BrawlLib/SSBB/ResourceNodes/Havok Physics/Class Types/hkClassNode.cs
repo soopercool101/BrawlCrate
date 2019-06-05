@@ -100,8 +100,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _inheritance = new List<hkClassNode>();
             ResourceNode current = this;
 
-        //First, get classes inheriting this one
-        TOP:
+            //First, get classes inheriting this one
+            TOP:
             bool found = false;
             if (current != null)
             {

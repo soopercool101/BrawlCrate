@@ -90,8 +90,8 @@ namespace BrawlLib.Wii.Animations
 
                                 for (line = reader.ReadLine(); line != null && line.CompareTo("End of Keyframe Data") != 0; line = reader.ReadLine())
                                 {
-                                //Use goto to retry the loop without advancing the reader, when it returns from getCoords it will have the next line we need from it.
-                                retry:
+                                    //Use goto to retry the loop without advancing the reader, when it returns from getCoords it will have the next line we need from it.
+                                    retry:
                                     if (line.CompareTo("Translation") == 0)
                                     {
                                         reader.ReadLine(); //Skip first blank line

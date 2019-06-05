@@ -558,10 +558,10 @@ namespace BrawlLib.Wii.Animations
                     range = ceil[i] - basev;
 
 
-                //Evaluate spans until we reach a success.
-                //A success means that compression using that span is possible. 
-                //No further evaluation necessary.
-                SpanBegin:
+                    //Evaluate spans until we reach a success.
+                    //A success means that compression using that span is possible. 
+                    //No further evaluation necessary.
+                    SpanBegin:
                     int span = scaleSpan;
                     int spanEval = scaleSpan - 32;
 
@@ -590,7 +590,7 @@ namespace BrawlLib.Wii.Animations
                         continue;
                     }
 
-                SpanStep:
+                    SpanStep:
                     if (span > spanEval)
                     {
                         step = range / span;
@@ -1135,7 +1135,7 @@ namespace BrawlLib.Wii.Animations
                     bestError = worstError;
                     bestSpan = maxSpan;
                 }
-            Next:
+                Next:
                 maxSpan--;
             }
 

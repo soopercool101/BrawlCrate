@@ -54,7 +54,7 @@ namespace BrawlLib.Wii.Graphics
         {
             List<XFData> XFCmds = new List<XFData>();
             byte* pData = (byte*)address;
-        Top:
+            Top:
             if (*pData++ == 0x10)
             {
                 XFData dat = new XFData();

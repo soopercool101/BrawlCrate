@@ -595,14 +595,14 @@ namespace BrawlLib.Modeling
                 //Extract facepoints here!
                 desc.Run(ref pData, pAssets, pOut, value, group, ref indices, cache, UseIdentityTexMtx);
 
-            Next:
+                Next:
                 if (length > 0 && pData >= pEnd)
                 {
                     break;
                 }
             }
 
-        Finish:
+            Finish:
             groups.Add(group);
             return groups;
         }

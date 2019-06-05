@@ -588,7 +588,7 @@ namespace BrawlLib.Wii.Models
 
                     Facepoint f = new Facepoint();
 
-                Continue:
+                    Continue:
                     o = (DecodeOp)(*p++);
                     switch (o)
                     {
