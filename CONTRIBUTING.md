@@ -4,8 +4,8 @@
 
 There are some software requirements to set up the solution:
 
-1. [Visual Studio](https://visualstudio.microsoft.com/vs/)
-2. [.NET Framework v4.8 Developer Pack](https://dotnet.microsoft.com/download/thank-you/net48-developer-pack)
+1.  [Visual Studio](https://visualstudio.microsoft.com/vs/)
+2.  [.NET Framework v4.8 Developer Pack](https://dotnet.microsoft.com/download/thank-you/net48-developer-pack)
 
 Building the project on non-Windows operating systems is not officially supported at this time.
 
