@@ -87,14 +87,16 @@ namespace BrawlCrate.API
                 {
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
                     using (StreamReader srIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read)))
-                    using (StreamWriter swOut = new StreamWriter(new FileStream(tempPath, FileMode.Create, FileAccess.Write)))
                     {
-                        swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(NodeFactory)).Location.Replace('\\', '/')}\"");
-                        swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(MainForm)).Location.Replace('\\', '/')}\"");
-                        string line;
-                        while ((line = srIn.ReadLine()) != null)
+                        using (StreamWriter swOut = new StreamWriter(new FileStream(tempPath, FileMode.Create, FileAccess.Write)))
                         {
-                            swOut.WriteLine(line);
+                            swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(NodeFactory)).Location.Replace('\\', '/')}\"");
+                            swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(MainForm)).Location.Replace('\\', '/')}\"");
+                            string line;
+                            while ((line = srIn.ReadLine()) != null)
+                            {
+                                swOut.WriteLine(line);
+                            }
                         }
                     }
 
@@ -278,36 +280,46 @@ namespace BrawlCrate.API
                     Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
                     Properties.Settings.Default.Save();
                 }
-                else if (!settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
+                else if (force || !settingPath.Equals("(none)", StringComparison.OrdinalIgnoreCase))
                 {
-                    using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                    if (force && manual)
                     {
-                        if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
-                            && dlg.ShowDialog() == DialogResult.OK)
+                        if (settingPath.Equals(""))
                         {
-                            searchPaths.Add(dlg.SelectedPath);
-                            Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
-                            Properties.Settings.Default.Save();
-                        }
-                        else if (!force)
-                        {
-                            MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
                             Properties.Settings.Default.PythonInstallationPath = "(none)";
                             Properties.Settings.Default.Save();
+                        }
+                        MessageBox.Show("Python installation could not be automatically detected. Install the latest version of Python 2.7 and try again, or browse manually to your Python installation directory.", "BrawlAPI");
+                    }
+                    else
+                    {
+                        using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                        {
+                            if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
+                                && dlg.ShowDialog() == DialogResult.OK)
+                            {
+                                searchPaths.Add(dlg.SelectedPath);
+                                Properties.Settings.Default.PythonInstallationPath = dlg.SelectedPath;
+                                Properties.Settings.Default.Save();
+                            }
+                            else if (!force)
+                            {
+                                MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
+                                Properties.Settings.Default.PythonInstallationPath = "(none)";
+                                Properties.Settings.Default.Save();
+                            }
                         }
                     }
                 }
             }
 
             // If any python installations are found, set them as the search paths
-            if (searchPaths.Count > 0)
-            {
-                Engine.SetSearchPaths(searchPaths.ToArray());
-            }
+            Engine.SetSearchPaths(searchPaths.ToArray());
         }
 
         internal static void FSharpInstall(bool manual = false, bool force = false)
         {
+            fsi_path = Properties.Settings.Default.FSharpInstallationPath;
             if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (force || fsi_path == null || fsi_path == ""))
             {
                 fsi_path =
@@ -366,7 +378,7 @@ namespace BrawlCrate.API
                         }
                         wrapper.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Plugins"));
                     }
-                    (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem).DropDown.Items.AddRange(ContextMenuHooks[type]);
+                    (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem)?.DropDown.Items.AddRange(ContextMenuHooks[type]);
                 }
             }
         }
