@@ -4,13 +4,10 @@ namespace System.Windows.Forms
 {
     public class EditAllKeyframesDialog : Form
     {
-        private IKeyframeSource _target;
         private int _type;
+        private IKeyframeSource _target;
 
-        public EditAllKeyframesDialog()
-        {
-            InitializeComponent();
-        }
+        public EditAllKeyframesDialog() { InitializeComponent(); }
 
         public DialogResult ShowDialog(IWin32Window owner, int type, IKeyframeSource target)
         {
@@ -22,38 +19,38 @@ namespace System.Windows.Forms
             return ShowDialog(owner);
         }
 
-        private void btnOkay_Click(object sender, EventArgs e)
+        private unsafe void btnOkay_Click(object sender, EventArgs e)
         {
             KeyframeEntry kfe;
             if (amount.Text != null)
             {
                 if (comboBox1.SelectedIndex == 0)
-                    for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+                {
+                    for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+                    {
                         if ((kfe = _target.KeyArrays[_type].GetKeyframe(x)) != null) //Check for a keyframe
+                        {
                             kfe._value += Convert.ToSingle(amount.Text);
+                        }
+                    }
+                }
 
                 if (comboBox1.SelectedIndex == 1)
-                    for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+                {
+                    for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+                    {
                         if ((kfe = _target.KeyArrays[_type].GetKeyframe(x)) != null) //Check for a keyframe
+                        {
                             kfe._value -= Convert.ToSingle(amount.Text);
+                        }
+                    }
+                }
             }
-
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedIndex == 0) label1.Text = "to all.";
-
-            if (comboBox1.SelectedIndex == 1) label1.Text = "from all.";
-        }
+        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
 
         #region Designer
 
@@ -82,7 +79,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(197, 38);
             btnCancel.Name = "btnCancel";
@@ -90,18 +87,18 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnOkay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(116, 38);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // label1
             // 
@@ -119,7 +116,7 @@ namespace System.Windows.Forms
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Drawing.Size(98, 21);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
             // 
             // EditDialog
             // 
@@ -139,8 +136,21 @@ namespace System.Windows.Forms
             Text = "Edit All Keyframes";
             ResumeLayout(false);
             PerformLayout();
-        }
 
+        }
         #endregion
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0)
+            {
+                label1.Text = "to all.";
+            }
+
+            if (comboBox1.SelectedIndex == 1)
+            {
+                label1.Text = "from all.";
+            }
+        }
     }
 }

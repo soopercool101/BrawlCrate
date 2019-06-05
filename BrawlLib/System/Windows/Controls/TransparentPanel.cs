@@ -2,12 +2,9 @@
 {
     public class TransparentPanel : Panel
     {
-        private readonly bool _transparent = true;
+        public TransparentPanel() { SetStyle(ControlStyles.UserPaint, true); }
 
-        public TransparentPanel()
-        {
-            SetStyle(ControlStyles.UserPaint, true);
-        }
+        private readonly bool _transparent = true;
 
         protected override CreateParams CreateParams
         {
@@ -15,21 +12,27 @@
             {
                 if (_transparent)
                 {
-                    var createParams = base.CreateParams;
+                    CreateParams createParams = base.CreateParams;
                     createParams.ExStyle |= 0x00000020; // WS_EX_TRANSPARENT
                     return createParams;
                 }
-
-                return base.CreateParams;
+                else
+                {
+                    return base.CreateParams;
+                }
             }
         }
 
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x84)
-                m.Result = (IntPtr) (-1);
+            {
+                m.Result = (IntPtr)(-1);
+            }
             else
+            {
                 base.WndProc(ref m);
+            }
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)

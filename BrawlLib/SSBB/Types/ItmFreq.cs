@@ -18,18 +18,8 @@ namespace BrawlLib.SSBBTypes
         public int _pad3;
 
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public string Str => new string((sbyte*) Address + _DataLength + _OffCount * 4 + 0x20 + _DataTable * 8);
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public string Str => new string((sbyte*)Address + _DataLength + (_OffCount * 4) + 0x20 + (_DataTable * 8));
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -43,16 +33,7 @@ namespace BrawlLib.SSBBTypes
         public bshort _action;
         public bshort _subaction;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -66,18 +47,8 @@ namespace BrawlLib.SSBBTypes
         public ItmFreqOffEntry _table4;
         public ItmFreqOffEntry _table5;
 
-        public ItmFreqOffEntry* Entries => (ItmFreqOffEntry*) Address;
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public ItmFreqOffEntry* Entries => (ItmFreqOffEntry*)Address;
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -92,16 +63,7 @@ namespace BrawlLib.SSBBTypes
         public bint _entryCount;
         public bint _unknown3;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -112,16 +74,7 @@ namespace BrawlLib.SSBBTypes
         public bint _offset;
         public bint _count;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -138,15 +91,6 @@ namespace BrawlLib.SSBBTypes
             _offset2 = off2;
         }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

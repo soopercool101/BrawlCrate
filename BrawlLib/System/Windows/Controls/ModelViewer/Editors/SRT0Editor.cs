@@ -1,131 +1,15 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using BrawlLib.Modeling;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
     public class SRT0Editor : UserControl
     {
-        private static readonly Dictionary<string, SRTAnimationFrame> _copyAllState =
-            new Dictionary<string, SRTAnimationFrame>();
-
-        public ModelEditorBase _mainWindow;
-
-        internal NumericInputBox[] _transBoxes = new NumericInputBox[5];
-        private ToolStripMenuItem add;
-        private ToolStripMenuItem addCustomAmountToolStripMenuItem;
-        private CheckBox AllRot;
-        private CheckBox AllScale;
-        private CheckBox AllTrans;
-        public Button btnClean;
-        public Button btnClear;
-        private Button btnCopy;
-        public Button btnCopyAll;
-        private Button btnCut;
-        public Button btnDelete;
-        public Button btnInsert;
-        private Button btnPaste;
-        public Button btnPasteAll;
-        private IContainer components;
-        private ContextMenuStrip ctxBox;
-        private CheckBox FrameRot;
-
-        private CheckBox FrameScale;
-        private CheckBox FrameTrans;
-        private GroupBox grpTransAll;
-        private GroupBox grpTransform;
-        private Label lblRot;
-        private Label lblScaleX;
-        private Label lblTransX;
-        internal NumericInputBox numRot;
-        private NumericInputBox numScaleX;
-        private NumericInputBox numScaleY;
-        internal NumericInputBox numTransX;
-        internal NumericInputBox numTransY;
-        private ToolStripMenuItem removeAllToolStripMenuItem;
-        private ToolStripMenuItem Source;
-        private ToolStripMenuItem subtract;
-        private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem toolStripMenuItem4;
-        private ToolStripMenuItem toolStripMenuItem5;
-        private ToolStripMenuItem toolStripMenuItem6;
-        private ToolStripMenuItem toolStripMenuItem7;
-        private ToolStripMenuItem toolStripMenuItem8;
-        private ToolStripSeparator toolStripSeparator1;
-
-        public int type;
-
-        public SRT0Editor()
-        {
-            InitializeComponent();
-            _transBoxes[0] = numScaleX;
-            numScaleX.Tag = 0;
-            _transBoxes[1] = numScaleY;
-            numScaleY.Tag = 1;
-            _transBoxes[2] = numRot;
-            numRot.Tag = 2;
-            _transBoxes[3] = numTransX;
-            numTransX.Tag = 3;
-            _transBoxes[4] = numTransY;
-            numTransY.Tag = 4;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoneNode TargetBone
-        {
-            get => _mainWindow.SelectedBone;
-            set => _mainWindow.SelectedBone = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef
-        {
-            get => _mainWindow.TargetTexRef;
-            set => _mainWindow.TargetTexRef = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int CurrentFrame
-        {
-            get => _mainWindow.CurrentFrame;
-            set => _mainWindow.CurrentFrame = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IModel TargetModel
-        {
-            get => _mainWindow.TargetModel;
-            set => _mainWindow.TargetModel = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SRT0Node SelectedAnimation
-        {
-            get => _mainWindow.SelectedSRT0;
-            set => _mainWindow.SelectedSRT0 = value;
-        }
-
-        public SRT0TextureNode TexEntry
-        {
-            get
-            {
-                var mr = TargetTexRef;
-                if (mr != null && SelectedAnimation != null)
-                    return SelectedAnimation.FindChild(mr.Parent.Name + "/Texture" + mr.Index, true) as SRT0TextureNode;
-                return null;
-            }
-        }
-
         #region Designer
-
         private void InitializeComponent()
         {
             components = new Container();
@@ -198,7 +82,7 @@ namespace System.Windows.Forms
             btnPaste.TabIndex = 23;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += btnPaste_Click;
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -226,7 +110,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 22;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -242,16 +126,14 @@ namespace System.Windows.Forms
             btnCut.TabIndex = 21;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += btnCut_Click;
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // subtract
             // 
-            subtract.DropDownItems.AddRange(new ToolStripItem[]
-            {
-                toolStripMenuItem5,
-                toolStripMenuItem6,
-                toolStripMenuItem8
-            });
+            subtract.DropDownItems.AddRange(new ToolStripItem[] {
+            toolStripMenuItem5,
+            toolStripMenuItem6,
+            toolStripMenuItem8});
             subtract.Name = "subtract";
             subtract.Size = new Drawing.Size(166, 22);
             subtract.Text = "Subtract From All";
@@ -297,17 +179,15 @@ namespace System.Windows.Forms
             numScaleY.Size = new Drawing.Size(82, 20);
             numScaleY.TabIndex = 18;
             numScaleY.Text = "0";
-            numScaleY.ValueChanged += BoxChangedCreateUndo;
-            numScaleY.MouseDown += box_MouseDown;
+            numScaleY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numScaleY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // add
             // 
-            add.DropDownItems.AddRange(new ToolStripItem[]
-            {
-                toolStripMenuItem3,
-                toolStripMenuItem4,
-                toolStripMenuItem7
-            });
+            add.DropDownItems.AddRange(new ToolStripItem[] {
+            toolStripMenuItem3,
+            toolStripMenuItem4,
+            toolStripMenuItem7});
             add.Name = "add";
             add.Size = new Drawing.Size(166, 22);
             add.Text = "Add To All";
@@ -323,8 +203,8 @@ namespace System.Windows.Forms
             numRot.Size = new Drawing.Size(82, 20);
             numRot.TabIndex = 15;
             numRot.Text = "0";
-            numRot.ValueChanged += BoxChangedCreateUndo;
-            numRot.MouseDown += box_MouseDown;
+            numRot.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numRot.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // toolStripSeparator1
             // 
@@ -349,8 +229,8 @@ namespace System.Windows.Forms
             numTransX.Size = new Drawing.Size(82, 20);
             numTransX.TabIndex = 3;
             numTransX.Text = "0";
-            numTransX.ValueChanged += BoxChangedCreateUndo;
-            numTransX.MouseDown += box_MouseDown;
+            numTransX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numTransX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransY
             // 
@@ -363,8 +243,8 @@ namespace System.Windows.Forms
             numTransY.Size = new Drawing.Size(82, 20);
             numTransY.TabIndex = 13;
             numTransY.Text = "0";
-            numTransY.ValueChanged += BoxChangedCreateUndo;
-            numTransY.MouseDown += box_MouseDown;
+            numTransY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numTransY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // lblTransX
             // 
@@ -394,15 +274,13 @@ namespace System.Windows.Forms
             // 
             // ctxBox
             // 
-            ctxBox.Items.AddRange(new ToolStripItem[]
-            {
-                Source,
-                toolStripSeparator1,
-                add,
-                subtract,
-                removeAllToolStripMenuItem,
-                addCustomAmountToolStripMenuItem
-            });
+            ctxBox.Items.AddRange(new ToolStripItem[] {
+            Source,
+            toolStripSeparator1,
+            add,
+            subtract,
+            removeAllToolStripMenuItem,
+            addCustomAmountToolStripMenuItem});
             ctxBox.Name = "ctxBox";
             ctxBox.Size = new Drawing.Size(167, 120);
             // 
@@ -411,7 +289,7 @@ namespace System.Windows.Forms
             addCustomAmountToolStripMenuItem.Name = "addCustomAmountToolStripMenuItem";
             addCustomAmountToolStripMenuItem.Size = new Drawing.Size(166, 22);
             addCustomAmountToolStripMenuItem.Text = "Edit All...";
-            addCustomAmountToolStripMenuItem.Click += addCustomAmountToolStripMenuItem_Click_1;
+            addCustomAmountToolStripMenuItem.Click += new EventHandler(addCustomAmountToolStripMenuItem_Click_1);
             // 
             // btnDelete
             // 
@@ -421,7 +299,7 @@ namespace System.Windows.Forms
             btnDelete.TabIndex = 25;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            btnDelete.Click += new EventHandler(btnDelete_Click);
             // 
             // grpTransform
             // 
@@ -469,8 +347,8 @@ namespace System.Windows.Forms
             numScaleX.Size = new Drawing.Size(82, 20);
             numScaleX.TabIndex = 36;
             numScaleX.Text = "0";
-            numScaleX.ValueChanged += BoxChangedCreateUndo;
-            numScaleX.MouseDown += box_MouseDown;
+            numScaleX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
+            numScaleX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // AllScale
             // 
@@ -536,7 +414,7 @@ namespace System.Windows.Forms
             btnClean.TabIndex = 29;
             btnClean.Text = "Clean";
             btnClean.UseVisualStyleBackColor = true;
-            btnClean.Click += btnClean_Click;
+            btnClean.Click += new EventHandler(btnClean_Click);
             // 
             // btnPasteAll
             // 
@@ -546,7 +424,7 @@ namespace System.Windows.Forms
             btnPasteAll.TabIndex = 28;
             btnPasteAll.Text = "Paste";
             btnPasteAll.UseVisualStyleBackColor = true;
-            btnPasteAll.Click += btnPasteAll_Click;
+            btnPasteAll.Click += new EventHandler(btnPasteAll_Click);
             // 
             // btnCopyAll
             // 
@@ -556,7 +434,7 @@ namespace System.Windows.Forms
             btnCopyAll.TabIndex = 27;
             btnCopyAll.Text = "Copy";
             btnCopyAll.UseVisualStyleBackColor = true;
-            btnCopyAll.Click += btnCopyAll_Click;
+            btnCopyAll.Click += new EventHandler(btnCopyAll_Click);
             // 
             // btnClear
             // 
@@ -566,7 +444,7 @@ namespace System.Windows.Forms
             btnClear.TabIndex = 26;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
+            btnClear.Click += new EventHandler(btnClear_Click);
             // 
             // btnInsert
             // 
@@ -576,7 +454,7 @@ namespace System.Windows.Forms
             btnInsert.TabIndex = 24;
             btnInsert.Text = "Insert";
             btnInsert.UseVisualStyleBackColor = true;
-            btnInsert.Click += btnInsert_Click;
+            btnInsert.Click += new EventHandler(btnInsert_Click);
             // 
             // SRT0Editor
             // 
@@ -591,21 +469,122 @@ namespace System.Windows.Forms
             grpTransAll.ResumeLayout(false);
             grpTransAll.PerformLayout();
             ResumeLayout(false);
+
         }
 
         #endregion
 
+        private CheckBox FrameScale;
+        private ToolStripMenuItem toolStripMenuItem7;
+        private Button btnPaste;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private CheckBox FrameRot;
+        private Button btnCopy;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private Button btnCut;
+        private ToolStripMenuItem subtract;
+        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripMenuItem toolStripMenuItem6;
+        private ToolStripMenuItem toolStripMenuItem8;
+        private CheckBox FrameTrans;
+        private NumericInputBox numScaleY;
+        private ToolStripMenuItem add;
+        internal NumericInputBox numRot;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem Source;
+        internal NumericInputBox numTransX;
+        internal NumericInputBox numTransY;
+        private Label lblTransX;
+        private ToolStripMenuItem removeAllToolStripMenuItem;
+        private Label lblRot;
+        private ContextMenuStrip ctxBox;
+        private IContainer components;
+        private ToolStripMenuItem addCustomAmountToolStripMenuItem;
+        public Button btnDelete;
+        private GroupBox grpTransform;
+        private CheckBox AllScale;
+        private GroupBox grpTransAll;
+        private CheckBox AllRot;
+        private CheckBox AllTrans;
+        public Button btnClean;
+        public Button btnPasteAll;
+        public Button btnCopyAll;
+        public Button btnClear;
+        public Button btnInsert;
+        private Label lblScaleX;
+        private NumericInputBox numScaleX;
+
+        public ModelEditorBase _mainWindow;
+
         public event EventHandler CreateUndo;
 
+        internal NumericInputBox[] _transBoxes = new NumericInputBox[5];
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IBoneNode TargetBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MDL0MaterialRefNode TargetTexRef { get => _mainWindow.TargetTexRef; set => _mainWindow.TargetTexRef = value; }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int CurrentFrame
+        {
+            get => _mainWindow.CurrentFrame;
+            set => _mainWindow.CurrentFrame = value;
+        }
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IModel TargetModel
+        {
+            get => _mainWindow.TargetModel;
+            set => _mainWindow.TargetModel = value;
+        }
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public SRT0Node SelectedAnimation
+        {
+            get => _mainWindow.SelectedSRT0;
+            set => _mainWindow.SelectedSRT0 = value;
+        }
+
+        public SRT0TextureNode TexEntry
+        {
+            get
+            {
+                MDL0MaterialRefNode mr = TargetTexRef;
+                if (mr != null && SelectedAnimation != null)
+                {
+                    return SelectedAnimation.FindChild(mr.Parent.Name + "/Texture" + mr.Index, true) as SRT0TextureNode;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public SRT0Editor()
+        {
+            InitializeComponent();
+            _transBoxes[0] = numScaleX; numScaleX.Tag = 0;
+            _transBoxes[1] = numScaleY; numScaleY.Tag = 1;
+            _transBoxes[2] = numRot; numRot.Tag = 2;
+            _transBoxes[3] = numTransX; numTransX.Tag = 3;
+            _transBoxes[4] = numTransY; numTransY.Tag = 4;
+        }
         public void UpdatePropDisplay()
         {
-            if (!Enabled) return;
+            if (!Enabled)
+            {
+                return;
+            }
 
             grpTransAll.Enabled = SelectedAnimation != null;
             btnInsert.Enabled = btnDelete.Enabled = btnClear.Enabled = CurrentFrame >= 1 && SelectedAnimation != null;
             grpTransform.Enabled = TargetTexRef != null;
 
-            for (var i = 0; i < 5; i++) ResetBox(i);
+            for (int i = 0; i < 5; i++)
+            {
+                ResetBox(i);
+            }
 
             if (_mainWindow.InterpolationEditor != null &&
                 _mainWindow.InterpolationEditor.Visible &&
@@ -614,17 +593,21 @@ namespace System.Windows.Forms
                 SelectedAnimation != null &&
                 CurrentFrame >= 1 &&
                 _mainWindow.InterpolationEditor._targetNode != TexEntry)
+            {
                 _mainWindow.InterpolationEditor.SetTarget(TexEntry);
+            }
         }
-
         public unsafe void ResetBox(int index)
         {
-            if (TargetTexRef == null) return;
+            if (TargetTexRef == null)
+            {
+                return;
+            }
 
-            var box = _transBoxes[index];
+            NumericInputBox box = _transBoxes[index];
             if (SelectedAnimation != null && CurrentFrame >= 1 && TexEntry != null)
             {
-                var e = TexEntry.Keyframes.GetKeyframe(index, CurrentFrame - 1);
+                KeyframeEntry e = TexEntry.Keyframes.GetKeyframe(index, CurrentFrame - 1);
                 if (e == null)
                 {
                     box.Value = TexEntry.Keyframes[CurrentFrame - 1, index];
@@ -638,54 +621,67 @@ namespace System.Windows.Forms
             }
             else
             {
-                var state = TargetTexRef._bindState;
-                box.Value = ((float*) &state)[index];
+                TextureFrameState state = TargetTexRef._bindState;
+                box.Value = ((float*)&state)[index];
                 box.BackColor = Color.White;
             }
         }
-
-        internal void BoxChangedCreateUndo(object sender, EventArgs e)
+        internal unsafe void BoxChangedCreateUndo(object sender, EventArgs e)
         {
             CreateUndo?.Invoke(sender, null);
 
             //Only update for input boxes: Methods affecting multiple values call BoxChanged on their own.
-            if (sender.GetType() == typeof(NumericInputBox)) BoxChanged(sender, null);
+            if (sender.GetType() == typeof(NumericInputBox))
+            {
+                BoxChanged(sender, null);
+            }
         }
 
         internal unsafe void BoxChanged(object sender, EventArgs e)
         {
-            if (TargetTexRef == null || sender == null) return;
+            if (TargetTexRef == null || sender == null)
+            {
+                return;
+            }
 
-            var box = sender as NumericInputBox;
-            var index = (int) box.Tag;
+            NumericInputBox box = sender as NumericInputBox;
+            int index = (int)box.Tag;
 
             SRTAnimationFrame kf;
-            var pkf = (float*) &kf;
+            float* pkf = (float*)&kf;
 
-            if (SelectedAnimation != null && CurrentFrame >= 1)
+            if ((SelectedAnimation != null) && (CurrentFrame >= 1))
             {
                 if (TexEntry == null)
                 {
                     if (!float.IsNaN(box.Value))
                     {
-                        var newEntry =
-                            SelectedAnimation.FindOrCreateEntry(TargetTexRef.Parent.Name, TargetTexRef.Index, false);
+                        SRT0TextureNode newEntry = SelectedAnimation.FindOrCreateEntry(TargetTexRef.Parent.Name, TargetTexRef.Index, false);
 
                         //Set initial values
-                        var state = TargetTexRef._bindState;
-                        var p = (float*) &state;
-                        for (var i = 0; i < 2; i++)
+                        TextureFrameState state = TargetTexRef._bindState;
+                        float* p = (float*)&state;
+                        for (int i = 0; i < 2; i++)
+                        {
                             if (p[i] != 1.0f)
+                            {
                                 newEntry.SetKeyframe(i, 0, p[i]);
+                            }
+                        }
 
-                        for (var i = 2; i < 5; i++)
+                        for (int i = 2; i < 5; i++)
+                        {
                             if (p[i] != 0.0f)
+                            {
                                 newEntry.SetKeyframe(i, 0, p[i]);
+                            }
+                        }
 
                         newEntry.SetKeyframe(index, CurrentFrame - 1, box.Value);
                     }
                 }
-                else if (float.IsNaN(box.Value))
+                else
+                    if (float.IsNaN(box.Value))
                 {
                     TexEntry.RemoveKeyframe(index, CurrentFrame - 1);
                 }
@@ -701,14 +697,16 @@ namespace System.Windows.Forms
                     SelectedAnimation != null &&
                     CurrentFrame >= 1 &&
                     _mainWindow.InterpolationEditor._targetNode != TexEntry)
+                {
                     _mainWindow.InterpolationEditor.SetTarget(TexEntry);
+                }
             }
             else
             {
                 //Change base transform
-                var state = TargetTexRef._bindState;
-                var p = (float*) &state;
-                p[index] = float.IsNaN(box.Value) ? index > 1 ? 0.0f : 1.0f : box.Value;
+                TextureFrameState state = TargetTexRef._bindState;
+                float* p = (float*)&state;
+                p[index] = float.IsNaN(box.Value) ? (index > 1 ? 0.0f : 1.0f) : box.Value;
                 state.CalcTransforms();
                 TargetTexRef._bindState = state;
                 TargetTexRef.SignalPropertyChange();
@@ -723,6 +721,8 @@ namespace System.Windows.Forms
             _mainWindow.KeyframePanel._updating = false;
         }
 
+        private static readonly Dictionary<string, SRTAnimationFrame> _copyAllState = new Dictionary<string, SRTAnimationFrame>();
+
         private void btnCopyAll_Click(object sender, EventArgs e)
         {
             _copyAllState.Clear();
@@ -730,57 +730,91 @@ namespace System.Windows.Forms
             if (CurrentFrame < 1)
             {
                 if (TargetModel is MDL0Node)
-                    foreach (MDL0MaterialNode mat in ((MDL0Node) TargetModel).MaterialList)
-                    foreach (MDL0MaterialRefNode mr in mat.Children)
-                        _copyAllState[mr.Parent.Name + mr.Index] = (SRTAnimationFrame) mr._bindState;
+                {
+                    foreach (MDL0MaterialNode mat in ((MDL0Node)TargetModel).MaterialList)
+                    {
+                        foreach (MDL0MaterialRefNode mr in mat.Children)
+                        {
+                            _copyAllState[mr.Parent.Name + mr.Index] = (SRTAnimationFrame)mr._bindState;
+                        }
+                    }
+                }
             }
             else
             {
                 foreach (SRT0EntryNode entry in SelectedAnimation.Children)
-                foreach (SRT0TextureNode tex in entry.Children)
-                    _copyAllState[tex.Parent.Name + tex.TextureIndex] = tex.GetAnimFrame(CurrentFrame - 1);
+                {
+                    foreach (SRT0TextureNode tex in entry.Children)
+                    {
+                        _copyAllState[tex.Parent.Name + tex.TextureIndex] = tex.GetAnimFrame(CurrentFrame - 1);
+                    }
+                }
             }
         }
 
         private void btnPasteAll_Click(object sender, EventArgs e)
         {
-            if (_copyAllState.Count == 0) return;
+            if (_copyAllState.Count == 0)
+            {
+                return;
+            }
 
             if (CurrentFrame == 0)
             {
                 if (TargetModel is MDL0Node)
-                    foreach (MDL0MaterialNode mat in ((MDL0Node) TargetModel).MaterialList)
-                    foreach (MDL0MaterialRefNode mr in mat.Children)
-                        if (_copyAllState.ContainsKey(mr.Parent.Name + mr.Index))
+                {
+                    foreach (MDL0MaterialNode mat in ((MDL0Node)TargetModel).MaterialList)
+                    {
+                        foreach (MDL0MaterialRefNode mr in mat.Children)
                         {
-                            if (AllTrans.Checked)
-                                mr._bindState.Translate = _copyAllState[mr.Parent.Name + mr.Index].Translation;
+                            if (_copyAllState.ContainsKey(mr.Parent.Name + mr.Index))
+                            {
+                                if (AllTrans.Checked)
+                                {
+                                    mr._bindState.Translate = _copyAllState[mr.Parent.Name + mr.Index].Translation;
+                                }
 
-                            if (AllRot.Checked)
-                                mr._bindState.Rotate = _copyAllState[mr.Parent.Name + mr.Index].Rotation;
+                                if (AllRot.Checked)
+                                {
+                                    mr._bindState.Rotate = _copyAllState[mr.Parent.Name + mr.Index].Rotation;
+                                }
 
-                            if (AllScale.Checked) mr._bindState.Scale = _copyAllState[mr.Parent.Name + mr.Index].Scale;
+                                if (AllScale.Checked)
+                                {
+                                    mr._bindState.Scale = _copyAllState[mr.Parent.Name + mr.Index].Scale;
+                                }
 
-                            mr.SignalPropertyChange();
+                                mr.SignalPropertyChange();
+                            }
                         }
+                    }
+                }
             }
             else
             {
                 foreach (SRT0EntryNode entry in SelectedAnimation.Children)
-                foreach (SRT0TextureNode tex in entry.Children)
-                    if (_copyAllState.ContainsKey(tex.Parent.Name + tex.TextureIndex))
+                {
+                    foreach (SRT0TextureNode tex in entry.Children)
                     {
-                        if (AllTrans.Checked)
-                            tex.SetKeyframeOnlyTrans(CurrentFrame - 1,
-                                _copyAllState[tex.Parent.Name + tex.TextureIndex]);
+                        if (_copyAllState.ContainsKey(tex.Parent.Name + tex.TextureIndex))
+                        {
+                            if (AllTrans.Checked)
+                            {
+                                tex.SetKeyframeOnlyTrans(CurrentFrame - 1, _copyAllState[tex.Parent.Name + tex.TextureIndex]);
+                            }
 
-                        if (AllRot.Checked)
-                            tex.SetKeyframeOnlyRot(CurrentFrame - 1, _copyAllState[tex.Parent.Name + tex.TextureIndex]);
+                            if (AllRot.Checked)
+                            {
+                                tex.SetKeyframeOnlyRot(CurrentFrame - 1, _copyAllState[tex.Parent.Name + tex.TextureIndex]);
+                            }
 
-                        if (AllScale.Checked)
-                            tex.SetKeyframeOnlyScale(CurrentFrame - 1,
-                                _copyAllState[tex.Parent.Name + tex.TextureIndex]);
+                            if (AllScale.Checked)
+                            {
+                                tex.SetKeyframeOnlyScale(CurrentFrame - 1, _copyAllState[tex.Parent.Name + tex.TextureIndex]);
+                            }
+                        }
                     }
+                }
             }
 
             _mainWindow.UpdateModel();
@@ -788,16 +822,30 @@ namespace System.Windows.Forms
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if (CurrentFrame < 1) return;
+            if (CurrentFrame < 1)
+            {
+                return;
+            }
 
             foreach (SRT0EntryNode entry in SelectedAnimation.Children)
-            foreach (SRT0TextureNode tex in entry.Children)
             {
-                if (AllTrans.Checked) tex.RemoveKeyframeOnlyTrans(CurrentFrame - 1);
+                foreach (SRT0TextureNode tex in entry.Children)
+                {
+                    if (AllTrans.Checked)
+                    {
+                        tex.RemoveKeyframeOnlyTrans(CurrentFrame - 1);
+                    }
 
-                if (AllRot.Checked) tex.RemoveKeyframeOnlyRot(CurrentFrame - 1);
+                    if (AllRot.Checked)
+                    {
+                        tex.RemoveKeyframeOnlyRot(CurrentFrame - 1);
+                    }
 
-                if (AllScale.Checked) tex.RemoveKeyframeOnlyScale(CurrentFrame - 1);
+                    if (AllScale.Checked)
+                    {
+                        tex.RemoveKeyframeOnlyScale(CurrentFrame - 1);
+                    }
+                }
             }
 
             _mainWindow.UpdateModel();
@@ -805,24 +853,32 @@ namespace System.Windows.Forms
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-            if (!(TargetModel is MDL0Node)) return;
+            if (!(TargetModel is MDL0Node))
+            {
+                return;
+            }
 
-            ResourceNode group = ((MDL0Node) TargetModel)._matGroup;
+            ResourceNode group = ((MDL0Node)TargetModel)._matGroup;
             ResourceNode mat = null;
-            if (group == null) return;
+            if (group == null)
+            {
+                return;
+            }
 
-            var badMaterials = new List<SRT0EntryNode>();
-            var badTextures = new List<SRT0TextureNode>();
+            List<SRT0EntryNode> badMaterials = new List<SRT0EntryNode>();
+            List<SRT0TextureNode> badTextures = new List<SRT0TextureNode>();
             foreach (SRT0EntryNode entry in SelectedAnimation.Children)
+            {
                 if ((mat = group.FindChild(entry._name, true)) == null)
                 {
                     badMaterials.Add(entry);
                 }
                 else
                 {
-                    var count = 0;
+                    int count = 0;
                     foreach (SRT0TextureNode tex in entry.Children)
-                        if ((mat = group.FindChild(entry._name, true)) == null || mat.Children.Count < tex.TextureIndex)
+                    {
+                        if (((mat = group.FindChild(entry._name, true)) == null) || mat.Children.Count < tex.TextureIndex)
                         {
                             badTextures.Add(tex);
                             count++;
@@ -831,41 +887,51 @@ namespace System.Windows.Forms
                         {
                             tex.Keyframes.Clean();
                         }
-
-                    if (count == entry.Children.Count) badMaterials.Add(entry);
+                    }
+                    if (count == entry.Children.Count)
+                    {
+                        badMaterials.Add(entry);
+                    }
                 }
-
-            var temp0 = badMaterials.Count;
-            var temp1 = badTextures.Count;
-            foreach (var n in badTextures)
+            }
+            int temp0 = badMaterials.Count;
+            int temp1 = badTextures.Count;
+            foreach (SRT0TextureNode n in badTextures)
             {
                 n.Remove();
                 n.Dispose();
             }
-
-            foreach (var n in badMaterials)
+            foreach (SRT0EntryNode n in badMaterials)
             {
                 n.Remove();
                 n.Dispose();
             }
-
             MessageBox.Show(temp0 + " unused material entries and\n" + temp1 + " unused texture entries removed.");
             UpdatePropDisplay();
         }
 
         private void ctxBox_Opening(object sender, CancelEventArgs e)
         {
-            if (SelectedAnimation == null) e.Cancel = true;
+            if (SelectedAnimation == null)
+            {
+                e.Cancel = true;
+            }
         }
 
         public void UpdateInterpolationEditor(NumericInputBox box)
         {
-            if (_mainWindow.InterpolationEditor == null || !_mainWindow.InterpolationEditor.Visible) return;
+            if (_mainWindow.InterpolationEditor == null || !_mainWindow.InterpolationEditor.Visible)
+            {
+                return;
+            }
 
             if (box.BackColor == Color.Yellow)
             {
-                var kfe = TexEntry.GetKeyframe(type, CurrentFrame - 1);
-                if (kfe != null) _mainWindow.InterpolationEditor.SelectedKeyframe = kfe;
+                KeyframeEntry kfe = TexEntry.GetKeyframe(type, CurrentFrame - 1);
+                if (kfe != null)
+                {
+                    _mainWindow.InterpolationEditor.SelectedKeyframe = kfe;
+                }
             }
             else
             {
@@ -873,23 +939,26 @@ namespace System.Windows.Forms
             }
         }
 
+        public int type = 0;
         private void box_MouseDown(object sender, MouseEventArgs e)
         {
-            var box = sender as NumericInputBox;
+            NumericInputBox box = sender as NumericInputBox;
 
-            type = (int) box.Tag;
+            type = (int)box.Tag;
 
             if (_mainWindow.InterpolationEditor != null && _mainWindow.InterpolationEditor.Visible)
             {
                 if (_mainWindow.InterpolationEditor.SelectedMode != type)
+                {
                     _mainWindow.InterpolationEditor.SelectedMode = type;
+                }
 
                 UpdateInterpolationEditor(box);
             }
 
             if (e.Button == MouseButtons.Right)
             {
-                if (box.Enabled)
+                if (box.Enabled == true)
                 {
                     box.ContextMenuStrip = ctxBox;
                     Source.Text = box.Text;
@@ -903,13 +972,20 @@ namespace System.Windows.Forms
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
             KeyframeEntry kfe;
-            var _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name, false) as CHR0EntryNode;
-            for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            CHR0EntryNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name, false) as CHR0EntryNode;
+            for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            {
                 if ((kfe = _target.GetKeyframe(type, x)) != null) //Check for a keyframe
+                {
                     kfe._value += 180;
+                }
+            }
 
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -917,15 +993,20 @@ namespace System.Windows.Forms
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
             KeyframeEntry kfe;
-            var _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
-            for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            SRT0TextureNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
+            for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            {
                 if ((kfe = _target.GetKeyframe(type, x)) != null) //Check for a keyframe
+                {
                     kfe._value += 90;
+                }
+            }
 
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -933,15 +1014,20 @@ namespace System.Windows.Forms
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
             KeyframeEntry kfe;
-            var _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
-            for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            SRT0TextureNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
+            for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            {
                 if ((kfe = _target.GetKeyframe(type, x)) != null) //Check for a keyframe
+                {
                     kfe._value -= 180;
+                }
+            }
 
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -949,15 +1035,20 @@ namespace System.Windows.Forms
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
             KeyframeEntry kfe;
-            var _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
-            for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            SRT0TextureNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
+            for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            {
                 if ((kfe = _target.GetKeyframe(type, x)) != null) //Check for a keyframe
+                {
                     kfe._value -= 90;
+                }
+            }
 
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -965,15 +1056,20 @@ namespace System.Windows.Forms
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
             KeyframeEntry kfe;
-            var _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
-            for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            SRT0TextureNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
+            for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            {
                 if ((kfe = _target.GetKeyframe(type, x)) != null) //Check for a keyframe
+                {
                     kfe._value += 45;
+                }
+            }
 
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -981,15 +1077,20 @@ namespace System.Windows.Forms
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
             KeyframeEntry kfe;
-            var _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
-            for (var x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            SRT0TextureNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
+            for (int x = 0; x < _target.FrameCount; x++) //Loop thru each frame
+            {
                 if ((kfe = _target.GetKeyframe(type, x)) != null) //Check for a keyframe
+                {
                     kfe._value -= 45;
+                }
+            }
 
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -997,11 +1098,12 @@ namespace System.Windows.Forms
 
         private void removeAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
-            var _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
+            SRT0TextureNode _target = SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
             if (_target != null)
             {
                 _target.Keyframes._keyArrays[type]._keyRoot = new KeyframeEntry(-1, type < 2 ? 1 : 0);
@@ -1014,9 +1116,12 @@ namespace System.Windows.Forms
 
         private void addCustomAmountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null) return;
+            if (SelectedAnimation == null)
+            {
+                return;
+            }
 
-            var ed = new EditAllKeyframesDialog();
+            EditAllKeyframesDialog ed = new EditAllKeyframesDialog();
             //ed.ShowDialog(null, type, SelectedAnimation.FindChild(TargetTexRef.Name, false) as IKeyframeSource);
             ResetBox(type);
             _mainWindow.UpdateModel();
@@ -1025,25 +1130,29 @@ namespace System.Windows.Forms
         private unsafe void btnCut_Click(object sender, EventArgs e)
         {
             SRTAnimationFrame frame;
-            var p = (float*) &frame;
+            float* p = (float*)&frame;
 
             BoxChangedCreateUndo(this, null);
 
-            for (var i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if (!FrameScale.Checked && i < 2)
+                if ((!FrameScale.Checked && i < 2))
+                {
                     p[i] = 1;
+                }
                 else if (
-                    FrameScale.Checked && i < 2 ||
-                    FrameRot.Checked && i == 2 ||
-                    FrameTrans.Checked && i > 2)
+                    (FrameScale.Checked && i < 2) ||
+                    (FrameRot.Checked && i == 2) ||
+                    (FrameTrans.Checked && i > 2))
+                {
                     p[i] = _transBoxes[i].Value;
+                }
 
                 _transBoxes[i].Value = float.NaN;
                 BoxChanged(_transBoxes[i], null);
             }
 
-            var da = new DataObject();
+            DataObject da = new DataObject();
             da.SetData("SRTAnimationFrame", frame);
             Clipboard.SetDataObject(da, true);
         }
@@ -1051,42 +1160,50 @@ namespace System.Windows.Forms
         private unsafe void btnCopy_Click(object sender, EventArgs e)
         {
             SRTAnimationFrame frame;
-            var p = (float*) &frame;
+            float* p = (float*)&frame;
 
-            for (var i = 0; i < 5; i++)
-                if (!FrameScale.Checked && i < 2)
+            for (int i = 0; i < 5; i++)
+            {
+                if ((!FrameScale.Checked && i < 2))
+                {
                     p[i] = 1;
+                }
                 else if (
-                    FrameScale.Checked && i < 2 ||
-                    FrameRot.Checked && i == 2 ||
-                    FrameTrans.Checked && i > 2)
+                    (FrameScale.Checked && i < 2) ||
+                    (FrameRot.Checked && i == 2) ||
+                    (FrameTrans.Checked && i > 2))
+                {
                     p[i] = _transBoxes[i].Value;
+                }
+            }
 
-            var da = new DataObject();
+            DataObject da = new DataObject();
             da.SetData("SRTAnimationFrame", frame);
             Clipboard.SetDataObject(da, true);
         }
 
         private unsafe void btnPaste_Click(object sender, EventArgs e)
         {
-            var da = Clipboard.GetDataObject();
+            IDataObject da = Clipboard.GetDataObject();
             if (da.GetDataPresent("SRTAnimationFrame"))
             {
-                var o = da.GetData("SRTAnimationFrame");
+                object o = da.GetData("SRTAnimationFrame");
                 if (o != null && o is SRTAnimationFrame)
                 {
-                    var frame = (SRTAnimationFrame) o;
+                    SRTAnimationFrame frame = (SRTAnimationFrame)o;
 
-                    var p = (float*) &frame;
+                    float* p = (float*)&frame;
 
                     BoxChangedCreateUndo(this, null);
 
-                    for (var i = 0; i < 5; i++)
+                    for (int i = 0; i < 5; i++)
                     {
-                        if (FrameScale.Checked && i < 2 ||
-                            FrameRot.Checked && i == 2 ||
-                            FrameTrans.Checked && i > 2)
+                        if ((FrameScale.Checked && i < 2) ||
+                            (FrameRot.Checked && i == 2) ||
+                            (FrameTrans.Checked && i > 2))
+                        {
                             _transBoxes[i].Value = p[i];
+                        }
                         //_transBoxes[i].Value = p[i];
                         BoxChanged(_transBoxes[i], null);
                     }
@@ -1096,7 +1213,10 @@ namespace System.Windows.Forms
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null || CurrentFrame < 1) return;
+            if ((SelectedAnimation == null) || (CurrentFrame < 1))
+            {
+                return;
+            }
 
             SelectedAnimation.InsertKeyframe(CurrentFrame - 1);
             //_mainWindow.SRT0StateChanged(this, null);
@@ -1104,7 +1224,10 @@ namespace System.Windows.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null || CurrentFrame < 1) return;
+            if ((SelectedAnimation == null) || (CurrentFrame < 1))
+            {
+                return;
+            }
 
             SelectedAnimation.DeleteKeyframe(CurrentFrame - 1);
             //_mainWindow.SRT0StateChanged(this, null);
@@ -1114,9 +1237,12 @@ namespace System.Windows.Forms
         {
             BoxChangedCreateUndo(this, null);
 
-            for (var i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
-                if (i == 2 || i == 4 || i == 5 || i == 8) continue;
+                if (i == 2 || i == 4 || i == 5 || i == 8)
+                {
+                    continue;
+                }
 
                 _transBoxes[i].Value = float.NaN;
                 BoxChanged(_transBoxes[i], null);
@@ -1125,9 +1251,12 @@ namespace System.Windows.Forms
 
         private void addCustomAmountToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null || TexEntry == null) return;
+            if (SelectedAnimation == null || TexEntry == null)
+            {
+                return;
+            }
 
-            var ed = new EditAllKeyframesDialog();
+            EditAllKeyframesDialog ed = new EditAllKeyframesDialog();
             //ed.ShowDialog(null, type, TexEntry);
             ResetBox(type);
             _mainWindow.UpdateModel();

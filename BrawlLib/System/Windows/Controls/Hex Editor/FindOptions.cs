@@ -3,60 +3,48 @@
 namespace Be.Windows.Forms
 {
     /// <summary>
-    ///     Defines the type of the Find operation.
+    /// Defines the type of the Find operation.
     /// </summary>
     public enum FindType
     {
         /// <summary>
-        ///     Used for Text Find operations
+        /// Used for Text Find operations
         /// </summary>
         Text,
-
         /// <summary>
-        ///     Used for Hex Find operations
+        /// Used for Hex Find operations
         /// </summary>
         Hex
     }
 
     /// <summary>
-    ///     Defines all state information nee
+    /// Defines all state information nee
     /// </summary>
     public class FindOptions
     {
         /// <summary>
-        ///     Contains the MatchCase value
-        /// </summary>
-        private bool _matchCase;
-
-        /// <summary>
-        ///     Contains the text that should be found.
-        /// </summary>
-        private string _text;
-
-        /// <summary>
-        ///     Gets or sets whether the Find options are valid
+        /// Gets or sets whether the Find options are valid
         /// </summary>
         public bool IsValid { get; set; }
-
         /// <summary>
-        ///     Gets the Find buffer used for case insensitive Find operations. This is the binary representation of Text.
+        /// Gets the Find buffer used for case insensitive Find operations. This is the binary representation of Text.
         /// </summary>
         internal byte[] FindBuffer { get; private set; }
-
         /// <summary>
-        ///     Gets the Find buffer used for case sensitive Find operations. This is the binary representation of Text in lower
-        ///     case format.
+        /// Gets the Find buffer used for case sensitive Find operations. This is the binary representation of Text in lower case format.
         /// </summary>
         internal byte[] FindBufferLowerCase { get; private set; }
-
         /// <summary>
-        ///     Gets the Find buffer used for case sensitive Find operations. This is the binary representation of Text in upper
-        ///     case format.
+        /// Gets the Find buffer used for case sensitive Find operations. This is the binary representation of Text in upper case format.
         /// </summary>
         internal byte[] FindBufferUpperCase { get; private set; }
 
         /// <summary>
-        ///     Gets or sets the value, whether the Find operation is case sensitive or not.
+        /// Contains the MatchCase value
+        /// </summary>
+        private bool _matchCase;
+        /// <summary>
+        /// Gets or sets the value, whether the Find operation is case sensitive or not.
         /// </summary>
         public bool MatchCase
         {
@@ -69,7 +57,11 @@ namespace Be.Windows.Forms
         }
 
         /// <summary>
-        ///     Gets or sets the text that should be found. Only used, when Type is FindType.Hex.
+        /// Contains the text that should be found.
+        /// </summary>
+        private string _text;
+        /// <summary>
+        /// Gets or sets the text that should be found. Only used, when Type is FindType.Hex.
         /// </summary>
         public string Text
         {
@@ -80,23 +72,21 @@ namespace Be.Windows.Forms
                 UpdateFindBuffer();
             }
         }
-
         /// <summary>
-        ///     Gets or sets the hex buffer that should be found. Only used, when Type is FindType.Hex.
+        /// Gets or sets the hex buffer that should be found. Only used, when Type is FindType.Hex.
         /// </summary>
         public byte[] Hex { get; set; }
-
         /// <summary>
-        ///     Gets or sets the type what should be searched.
+        /// Gets or sets the type what should be searched.
         /// </summary>
         public FindType Type { get; set; }
 
         /// <summary>
-        ///     Updates the find buffer.
+        /// Updates the find buffer.
         /// </summary>
         private void UpdateFindBuffer()
         {
-            var text = Text ?? string.Empty;
+            string text = Text ?? string.Empty;
             FindBuffer = Encoding.ASCII.GetBytes(text);
             FindBufferLowerCase = Encoding.ASCII.GetBytes(text.ToLower());
             FindBufferUpperCase = Encoding.ASCII.GetBytes(text.ToUpper());

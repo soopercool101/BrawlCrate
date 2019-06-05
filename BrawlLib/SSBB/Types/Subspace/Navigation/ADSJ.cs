@@ -21,25 +21,10 @@ namespace BrawlLib.SSBBTypes
             _pad0 = _pad1 = 0;
         }
 
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x10 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
+        public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x10 + (index * 4)); }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     public unsafe struct ADSJEntry
     {
         public const int Size = 0x2C;
@@ -55,63 +40,91 @@ namespace BrawlLib.SSBBTypes
         {
             get
             {
-                var bytes = new byte[4];
-                var s1 = "";
-                for (var i = 0; i < 4; i++)
+                byte[] bytes = new byte[4];
+                string s1 = "";
+                for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*) (Address + i);
-                    if (bytes[i].ToString("x").Length < 2)
-                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    bytes[i] = *(byte*)(Address + i);
+                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
-                        s1 += bytes[i].ToString("x").ToUpper();
+                    { s1 += bytes[i].ToString("x").ToUpper(); }
                 }
-
                 return s1;
+
             }
             set
             {
-                if (value == null) value = "";
 
-                for (var i = 0; i < value.Length; i++) _doorID[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                if (value == null)
+                {
+                    value = "";
+                }
+
+                fixed (byte* ptr = _doorID)
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        ptr[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                    }
+                }
             }
         }
-
         public string SendStage
         {
             get
             {
-                var bytes = new byte[4];
-                var s1 = "";
-                for (var i = 0; i < 4; i++)
+                byte[] bytes = new byte[4];
+                string s1 = "";
+                for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*) (Address + 0x08 + i);
-                    if (bytes[i].ToString("x").Length < 2)
-                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    bytes[i] = *(byte*)(Address + 0x08 + i);
+                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
-                        s1 += bytes[i].ToString("x").ToUpper();
+                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                }
+                return s1;
+
+            }
+            set
+            {
+
+                if (value == null)
+                {
+                    value = "";
                 }
 
-                return s1;
-            }
-            set
-            {
-                if (value == null) value = "";
-
-                for (var i = 0; i < value.Length; i++) _sendingID[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                fixed (byte* ptr = _sendingID)
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        ptr[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                    }
+                }
             }
         }
-
         public string JumpBone
         {
-            get => new string((sbyte*) Address + 0x0C);
+            get => new string((sbyte*)Address + 0x0C);
             set
             {
-                if (value == null) value = "";
+                if (value == null)
+                {
+                    value = "";
+                }
 
-                var i = 0;
-                while (i < 0x19 && i < value.Length) _jumpBone[i] = (sbyte) value[i++];
+                fixed (sbyte* ptr = _jumpBone)
+                {
+                    int i = 0;
+                    while ((i < 0x19) && (i < value.Length))
+                    {
+                        ptr[i] = (sbyte)value[i++];
+                    }
 
-                while (i < 0x20) _jumpBone[i++] = 0;
+                    while (i < 0x20)
+                    {
+                        ptr[i++] = 0;
+                    }
+                }
             }
         }
 
@@ -123,15 +136,6 @@ namespace BrawlLib.SSBBTypes
             JumpBone = Bone;
         }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

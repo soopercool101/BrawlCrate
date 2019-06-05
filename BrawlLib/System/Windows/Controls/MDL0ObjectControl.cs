@@ -1,17 +1,11 @@
-﻿using System.Linq;
-using BrawlLib.OpenGL;
+﻿using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
+using System.Linq;
 
 namespace System.Windows.Forms
 {
     public partial class MDL0ObjectControl : UserControl
     {
-        private float _prevDrawOrder;
-
-        private MDL0ObjectNode _targetObject;
-
-        private bool _updating;
-
         public MDL0ObjectControl()
         {
             InitializeComponent();
@@ -20,6 +14,8 @@ namespace System.Windows.Forms
             modelPanel.RenderBonesChanged += modelPanel_RenderBonesChanged;
             modelPanel.RenderShadersChanged += modelPanel_RenderShadersChanged;
         }
+
+        private MDL0ObjectNode _targetObject = null;
 
         private void modelPanel_RenderShadersChanged(ModelPanel panel, bool value)
         {
@@ -61,20 +57,21 @@ namespace System.Windows.Forms
             }
         }
 
+        private bool _updating = false;
+
         private void lstDrawCalls_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var drawCall = lstDrawCalls.SelectedItem as DrawCall;
+            DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
             if (drawCall != null)
             {
                 _updating = true;
 
                 cboMaterial.SelectedIndex = drawCall.MaterialNode != null ? drawCall.MaterialNode.Index : -1;
-                cboVisBone.SelectedIndex =
-                    drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : -1;
+                cboVisBone.SelectedIndex = drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : -1;
 
                 _prevDrawOrder = numDrawOrder.Value = drawCall.DrawPriority;
                 numDrawOrder.Enabled = !(chkDoesntMatter.Checked = drawCall.DrawPriority == 0);
-                cboDrawPass.SelectedIndex = (int) drawCall.DrawPass;
+                cboDrawPass.SelectedIndex = (int)drawCall.DrawPass;
                 lstDrawCalls.SetItemChecked(lstDrawCalls.SelectedIndex, drawCall._render);
 
                 _updating = false;
@@ -85,9 +82,12 @@ namespace System.Windows.Forms
 
         private void cboMaterial_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
-            var drawCall = lstDrawCalls.SelectedItem as DrawCall;
+            DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
             if (drawCall != null)
             {
                 drawCall.MaterialNode = cboMaterial.SelectedItem as MDL0MaterialNode;
@@ -103,9 +103,12 @@ namespace System.Windows.Forms
 
         private void cboVisBone_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
-            var drawCall = lstDrawCalls.SelectedItem as DrawCall;
+            DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
             if (drawCall != null)
             {
                 drawCall.VisibilityBoneNode = cboVisBone.SelectedItem as MDL0BoneNode;
@@ -116,17 +119,23 @@ namespace System.Windows.Forms
 
         private void numDrawOrder_ValueChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
-            var drawCall = lstDrawCalls.SelectedItem as DrawCall;
-            if (drawCall != null) drawCall.DrawPriority = (byte) numDrawOrder.Value;
+            DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
+            if (drawCall != null)
+            {
+                drawCall.DrawPriority = (byte)numDrawOrder.Value;
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             if (_targetObject != null)
             {
-                var d = new DrawCall(_targetObject);
+                DrawCall d = new DrawCall(_targetObject);
                 _targetObject._drawCalls.Add(d);
                 _targetObject.OnDrawCallsChanged();
                 _targetObject.Model.RegenerateVIS0Indices();
@@ -137,12 +146,13 @@ namespace System.Windows.Forms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (lstDrawCalls.SelectedIndices != null)
-                for (var x = lstDrawCalls.SelectedIndices.Count - 1; x >= 0; x--)
+            {
+                for (int x = lstDrawCalls.SelectedIndices.Count - 1; x >= 0; x--)
                 {
-                    var drawCall = lstDrawCalls.Items[lstDrawCalls.SelectedIndices[x]] as DrawCall;
+                    DrawCall drawCall = lstDrawCalls.Items[lstDrawCalls.SelectedIndices[x]] as DrawCall;
                     if (drawCall != null)
                     {
-                        var o = drawCall._parentObject;
+                        MDL0ObjectNode o = drawCall._parentObject;
 
                         o._drawCalls.Remove(drawCall);
                         o.OnDrawCallsChanged();
@@ -150,6 +160,7 @@ namespace System.Windows.Forms
                         o.SignalPropertyChange();
                     }
                 }
+            }
         }
 
         private void floorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -167,9 +178,14 @@ namespace System.Windows.Forms
             modelPanel.RenderBones = !modelPanel.RenderBones;
         }
 
+        private float _prevDrawOrder = 0;
+
         private void chkDoesntMatter_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
             if (!(numDrawOrder.Enabled = !chkDoesntMatter.Checked))
             {
@@ -186,24 +202,35 @@ namespace System.Windows.Forms
 
         private void cboDrawPass_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
-            var drawCall = lstDrawCalls.SelectedItem as DrawCall;
-            if (drawCall != null) drawCall.DrawPass = (DrawCall.DrawPassType) cboDrawPass.SelectedIndex;
+            DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
+            if (drawCall != null)
+            {
+                drawCall.DrawPass = (DrawCall.DrawPassType)cboDrawPass.SelectedIndex;
+            }
         }
 
         private void lstDrawCalls_DoubleClick(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
-            var drawCall = lstDrawCalls.SelectedItem as DrawCall;
+            DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
             if (drawCall != null)
             {
                 drawCall._render = !drawCall._render;
                 lstDrawCalls.SetItemChecked(lstDrawCalls.SelectedIndex, drawCall._render);
 
                 if (_targetObject != null && _targetObject.Model != null)
+                {
                     TKContext.InvalidateModelPanels(_targetObject.Model);
+                }
             }
         }
     }

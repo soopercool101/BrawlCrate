@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using System.Windows.Media;
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -10,4 +9,4 @@ using System.Windows.Media;
 [assembly: Guid("84b5ec46-630b-4225-beec-6082c28f85e6")]
 
 // This prevents resizes on monitors with different DPIs
-[assembly: DisableDpiAwareness]
+[assembly: System.Windows.Media.DisableDpiAwareness]

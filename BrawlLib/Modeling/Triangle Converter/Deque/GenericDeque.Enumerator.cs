@@ -4,21 +4,21 @@ namespace System.Collections.Generic
     {
         #region Enumerator Class
 
-        [Serializable]
+        [Serializable()]
         private class Enumerator : IEnumerator<T>
         {
             private readonly Deque<T> owner;
 
-            private readonly long version;
-
-            private T current;
-
             private Node currentNode;
 
-            // A value indicating whether the enumerator has been disposed.
-            private bool disposed;
+            private T current = default(T);
 
-            private bool moveResult;
+            private bool moveResult = false;
+
+            private readonly long version;
+
+            // A value indicating whether the enumerator has been disposed.
+            private bool disposed = false;
 
             public Enumerator(Deque<T> owner)
             {
@@ -27,38 +27,6 @@ namespace System.Collections.Generic
                 version = owner.version;
             }
 
-            #region IEnumerator<T> Members
-
-            T IEnumerator<T>.Current
-            {
-                get
-                {
-                    #region Require
-
-                    if (disposed)
-                        throw new ObjectDisposedException(GetType().Name);
-                    if (!moveResult)
-                        throw new InvalidOperationException(
-                            "The enumerator is positioned before the first " +
-                            "element of the Deque or after the last element.");
-
-                    #endregion
-
-                    return current;
-                }
-            }
-
-            #endregion
-
-            #region IDisposable Members
-
-            public void Dispose()
-            {
-                disposed = true;
-            }
-
-            #endregion
-
             #region IEnumerator Members
 
             public void Reset()
@@ -66,10 +34,14 @@ namespace System.Collections.Generic
                 #region Require
 
                 if (disposed)
+                {
                     throw new ObjectDisposedException(GetType().Name);
-                if (version != owner.version)
+                }
+                else if (version != owner.version)
+                {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
+                }
 
                 #endregion
 
@@ -84,11 +56,15 @@ namespace System.Collections.Generic
                     #region Require
 
                     if (disposed)
+                    {
                         throw new ObjectDisposedException(GetType().Name);
-                    if (!moveResult)
+                    }
+                    else if (!moveResult)
+                    {
                         throw new InvalidOperationException(
                             "The enumerator is positioned before the first " +
                             "element of the Deque or after the last element.");
+                    }
 
                     #endregion
 
@@ -101,10 +77,14 @@ namespace System.Collections.Generic
                 #region Require
 
                 if (disposed)
+                {
                     throw new ObjectDisposedException(GetType().Name);
-                if (version != owner.version)
+                }
+                else if (version != owner.version)
+                {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
+                }
 
                 #endregion
 
@@ -121,6 +101,42 @@ namespace System.Collections.Generic
                 }
 
                 return moveResult;
+            }
+
+            #endregion
+
+            #region IEnumerator<T> Members
+
+            T IEnumerator<T>.Current
+            {
+                get
+                {
+                    #region Require
+
+                    if (disposed)
+                    {
+                        throw new ObjectDisposedException(GetType().Name);
+                    }
+                    else if (!moveResult)
+                    {
+                        throw new InvalidOperationException(
+                            "The enumerator is positioned before the first " +
+                            "element of the Deque or after the last element.");
+                    }
+
+                    #endregion
+
+                    return current;
+                }
+            }
+
+            #endregion
+
+            #region IDisposable Members
+
+            public void Dispose()
+            {
+                disposed = true;
             }
 
             #endregion

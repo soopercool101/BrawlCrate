@@ -34,24 +34,15 @@ namespace BrawlLib.SSBBTypes
         public buint _unk19; //0
         public buint _unk20; //0
 
-        public LMBinTexture* Textures => (LMBinTexture*) (Address + _textureOffset);
+        public LMBinTexture* Textures => (LMBinTexture*)(Address + _textureOffset);
 
-        public string Name => new string((sbyte*) Address + 1);
+        public string Name => new string((sbyte*)Address + 1);
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct LMBinTexture
+    public unsafe struct LMBinTexture
     {
         public const int Size = 0xC;
 
@@ -86,16 +77,7 @@ namespace BrawlLib.SSBBTypes
         public bint _num2;
         public fixed uint _pad4[7];
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [Flags]
@@ -108,7 +90,7 @@ namespace BrawlLib.SSBBTypes
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct LMBinPart
+    public unsafe struct LMBinPart
     {
         public const int Size = 4;
 

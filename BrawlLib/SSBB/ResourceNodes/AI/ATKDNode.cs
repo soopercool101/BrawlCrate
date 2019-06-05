@@ -1,28 +1,32 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ATKDNode : ARCEntryNode
     {
-        internal ATKD* Header => (ATKD*) WorkingUncompressed.Address;
+        internal ATKD* Header => (ATKD*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ATKD;
 
-        [Category("ATKD Property")] public int Entries => Header->_numEntries;
+        [Category("ATKD Property")]
+        public int Entries => Header->_numEntries;
 
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            if (_name == null) _name = "ATKD " + Parent.Name.Replace("ai_", ""); //Naming this node
+            if (_name == null)
+            {
+                _name = "ATKD " + Parent.Name.Replace("ai_", "");//Naming this node
+            }
 
             return Header->_numEntries > 0;
         }
 
         public override void OnPopulate()
         {
-            var entry = Header->entries;
-            for (var i = 0; i < Header->_numEntries; i++)
+            ATKDEntry* entry = Header->entries;
+            for (int i = 0; i < Header->_numEntries; i++)
             {
                 new ATKDEntryNode().Initialize(this, new DataSource(entry, 0x18));
                 entry++;
@@ -31,139 +35,60 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            var header = 0x10;
-            var entries = 0;
-            for (var i = 0; i < Children.Count; i++) entries += (int) ATKDEntry.Size;
+            int header = 0x10;
+            int entries = 0;
+            for (int i = 0; i < Children.Count; i++)
+            {
+                entries += (int)ATKDEntry.Size;
+            }
 
-            return header + entries;
+            return (header + entries);
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var atkd = (ATKD*) address;
+            ATKD* atkd = (ATKD*)address;
             atkd->_numEntries = Header->_numEntries;
             atkd->_tag = Header->_tag;
             atkd->_unk1 = Header->_unk1;
             atkd->_unk2 = Header->_unk2;
-            var entries = (ATKDEntry*) ((VoidPtr) atkd + 0x10);
+            ATKDEntry* entries = (ATKDEntry*)((VoidPtr)atkd + 0x10);
             foreach (ATKDEntryNode node in Children)
-            {
-                node.Rebuild(entries, 0x24, true);
-                entries++;
-            }
+            { node.Rebuild(entries, 0x24, true); entries++; }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
-        {
-            return ((ATKD*) source.Address)->_tag == ATKD.Tag ? new ATKDNode() : null;
-        }
+        internal static ResourceNode TryParse(DataSource source) { return ((ATKD*)source.Address)->_tag == ATKD.Tag ? new ATKDNode() : null; }
     }
 
     public unsafe class ATKDEntryNode : ResourceNode
     {
+        internal ATKDEntry* Header => (ATKDEntry*)WorkingUncompressed.Address;
+
         private short SubActID, unk1, unk2, unk3;
         private float xMinRange, xMaxRange, yMinRange, yMaxRange;
-        internal ATKDEntry* Header => (ATKDEntry*) WorkingUncompressed.Address;
-
-        [Category("ATKD Entry")]
-        [Description("ID of Sub Action. This is same to PSA's")]
-        public SubActionID SubActionName
-        {
-            get => (SubActionID) SubActID;
-            set
-            {
-                SubActID = (short) value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Always 0")]
-        public string Unknown1
-        {
-            get => "0x" + unk1.ToString("X");
-            set
-            {
-                unk1 = (short) Convert.ToInt32(value, 16);
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Beginning frame of Danger Box")]
-        public string StartFrame
-        {
-            get => "0x" + unk2.ToString("X");
-            set
-            {
-                unk2 = (short) Convert.ToInt32(value, 16);
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Ending Frame of Danger Box")]
-        public string EndFrame
-        {
-            get => "0x" + unk3.ToString("X");
-            set
-            {
-                unk3 = (short) Convert.ToInt32(value, 16);
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Minimum offensive collision range in direction of X")]
-        public float XMinRange
-        {
-            get => xMinRange;
-            set
-            {
-                xMinRange = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Maximum offensive collision range in direction of X")]
-        public float XMaxRange
-        {
-            get => xMaxRange;
-            set
-            {
-                xMaxRange = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Minimum offensive collision range in direction of Y")]
-        public float YMinRange
-        {
-            get => yMinRange;
-            set
-            {
-                yMinRange = value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("ATKD Entry")]
-        [Description("Maximum offensive collision range in direction of Y")]
-        public float YMaxRange
-        {
-            get => yMaxRange;
-            set
-            {
-                yMaxRange = value;
-                SignalPropertyChange();
-            }
-        }
+        [Category("ATKD Entry"), Description("ID of Sub Action. This is same to PSA's")]
+        public SubActionID SubActionName { get => (SubActionID)SubActID; set { SubActID = (short)value; SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Always 0")]
+        public string Unknown1 { get => "0x" + unk1.ToString("X"); set { unk1 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Beginning frame of Danger Box")]
+        public string StartFrame { get => "0x" + unk2.ToString("X"); set { unk2 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Ending Frame of Danger Box")]
+        public string EndFrame { get => "0x" + unk3.ToString("X"); set { unk3 = (short)Convert.ToInt32(value, 16); SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Minimum offensive collision range in direction of X")]
+        public float XMinRange { get => xMinRange; set { xMinRange = value; SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Maximum offensive collision range in direction of X")]
+        public float XMaxRange { get => xMaxRange; set { xMaxRange = value; SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Minimum offensive collision range in direction of Y")]
+        public float YMinRange { get => yMinRange; set { yMinRange = value; SignalPropertyChange(); } }
+        [Category("ATKD Entry"), Description("Maximum offensive collision range in direction of Y")]
+        public float YMaxRange { get => yMaxRange; set { yMaxRange = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
-            if (_name == null) _name = ((SubActionID) (short) Header->_SubActID).ToString();
+            if (_name == null)
+            {
+                _name = ((SubActionID)(short)Header->_SubActID).ToString();
+            }
 
             SubActID = Header->_SubActID;
             unk1 = Header->_unk1;
@@ -178,7 +103,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var atkdEntry = (ATKDEntry*) address;
+            ATKDEntry* atkdEntry = (ATKDEntry*)address;
             atkdEntry->_SubActID = SubActID;
             atkdEntry->_unk1 = unk1;
             atkdEntry->_StartFrame = unk2;

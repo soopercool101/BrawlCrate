@@ -2,53 +2,68 @@
 {
     public class CustomTrackBar : TrackBar
     {
-        private bool _isScrolling;
+        private bool _isScrolling = false;
+
+        public event EventHandler UserSeek;
 
         public new int Value
         {
             get => base.Value;
             set
             {
-                if (!_isScrolling) base.Value = value;
+                if (!_isScrolling)
+                {
+                    base.Value = value;
+                }
             }
         }
-
-        public event EventHandler UserSeek;
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
             base.OnMouseDown(e);
 
-            if (_isScrolling || e.Button != MouseButtons.Left) return;
+            if (_isScrolling || (e.Button != MouseButtons.Left))
+            {
+                return;
+            }
 
             int x = 12, w = Width - 15;
             int y = 4, h = 20;
 
-            if (e.X < x || e.X > w || e.Y < y || e.Y > h) return;
+            if ((e.X < x) || (e.X > w) || (e.Y < y) || (e.Y > h))
+            {
+                return;
+            }
 
-            var scale = ((float) e.X - x) / (w - x);
-            var pos = (int) (Maximum * scale);
+            float scale = ((float)e.X - x) / (w - x);
+            int pos = (int)(Maximum * scale);
 
             _isScrolling = true;
 
-            if (base.Value > pos - 10 && base.Value < pos + 10) return;
+            if ((base.Value > (pos - 10)) && (base.Value < (pos + 10)))
+            {
+                return;
+            }
 
             base.Value = pos;
 
             //Send MouseDown message so we can capture the slider.
-            var msg = new Message
+            Message msg = new Message
             {
                 HWnd = Handle,
                 Msg = 0x201,
-                WParam = (IntPtr) 1,
-                LParam = (IntPtr) (((e.Y & 0xFFFF) << 16) | (e.X & 0xFFFF))
+                WParam = (IntPtr)1,
+                LParam = (IntPtr)((e.Y & 0xFFFF) << 16 | (e.X & 0xFFFF))
             };
             base.WndProc(ref msg);
         }
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
+            if (e.Button != MouseButtons.Left)
+            {
+                return;
+            }
 
             if (_isScrolling)
             {

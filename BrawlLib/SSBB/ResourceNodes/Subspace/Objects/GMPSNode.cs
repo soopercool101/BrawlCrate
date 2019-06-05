@@ -1,49 +1,44 @@
-﻿using System.ComponentModel;
-using BrawlLib.SSBBTypes;
+﻿using BrawlLib.SSBBTypes;
+using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GMPSNode : ResourceNode
     {
-        internal GMPS* Header => (GMPS*) WorkingUncompressed.Address;
+        internal GMPS* Header => (GMPS*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GMPS;
 
         [Category("GMPS")]
         [DisplayName("Entries")]
         public int count => Header->_count;
-
         public override void OnPopulate()
         {
-            for (var i = 0; i < Header->_count; i++)
+            for (int i = 0; i < Header->_count; i++)
             {
                 DataSource source;
                 if (i == Header->_count - 1)
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                else
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
+                { source = new DataSource((*Header)[i], WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]); }
+                else { source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]); }
                 new GMPSEntryNode().Initialize(this, source);
             }
         }
-
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            if (_name == null) _name = "Punch Sliders";
+            if (_name == null)
+            {
+                _name = "Punch Sliders";
+            }
 
             return Header->_count > 0;
         }
 
-        internal static ResourceNode TryParse(DataSource source)
-        {
-            return ((GMPS*) source.Address)->_tag == GMPS.Tag ? new GMPSNode() : null;
-        }
+        internal static ResourceNode TryParse(DataSource source) { return ((GMPS*)source.Address)->_tag == GMPS.Tag ? new GMPSNode() : null; }
     }
 
     public unsafe class GMPSEntryNode : ResourceNode
     {
-        internal GMPSEntry* Header => (GMPSEntry*) WorkingUncompressed.Address;
-
+        internal GMPSEntry* Header => (GMPSEntry*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         //[Category("Animated Object")]
         //[DisplayName("Model Index")]
@@ -69,7 +64,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             base.OnInitialize();
-            if (_name == null) _name = new string((sbyte*) (Header + 0xFC));
+            if (_name == null)
+            {
+                _name = new string((sbyte*)(Header + 0xFC));
+            }
 
             return false;
         }

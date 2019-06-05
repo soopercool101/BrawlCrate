@@ -1,34 +1,37 @@
-﻿using System;
+﻿using BrawlLib.Imaging;
+using BrawlLib.IO;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using BrawlLib.Imaging;
-using BrawlLib.IO;
 
 namespace BrawlLib.Wii.Textures
 {
     public unsafe class CMPR : TextureConverter
     {
-        private UnsafeBuffer _blockBuffer;
         public override int BitsPerPixel => 4;
         public override int BlockWidth => 8;
-
         public override int BlockHeight => 8;
-
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format32bppArgb; } }
         public override WiiPixelFormat RawFormat => WiiPixelFormat.CMPR;
+
+        private UnsafeBuffer _blockBuffer;
         //private List<CMPBlock> _blockCache = new List<CMPBlock>();
         //private int _blockIndex;
 
         protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
         {
-            var sPtr = (CMPRBlock*) blockAddr;
+            CMPRBlock* sPtr = (CMPRBlock*)blockAddr;
             //ARGBPixel* dPtr = (ARGBPixel*)destAddr;
 
             //int index = 0;
-            for (var y = 0; y < 8; y += 4)
-            for (var x = 0; x < 8; x += 4, sPtr++)
-                sPtr->Decode(&dPtr[y * width + x], width);
+            for (int y = 0; y < 8; y += 4)
+            {
+                for (int x = 0; x < 8; x += 4, sPtr++)
+                {
+                    sPtr->Decode(&dPtr[(y * width) + x], width);
+                }
+            }
             //DXT1.DecodeBlock(&sPtr[index++], &dPtr[(y * width) + x], width);
         }
 
@@ -40,40 +43,20 @@ namespace BrawlLib.Wii.Textures
         internal FileMap EncodeTPLTextureCached(Bitmap src, int mipLevels, UnsafeBuffer blockBuffer)
         {
             _blockBuffer = blockBuffer;
-            try
-            {
-                return base.EncodeTPLTexture(src, mipLevels);
-            }
-            finally
-            {
-                _blockBuffer = null;
-            }
+            try { return base.EncodeTPLTexture(src, mipLevels); }
+            finally { _blockBuffer = null; }
         }
-
         public FileMap EncodeREFTTextureCached(Bitmap src, int mipLevels, UnsafeBuffer blockBuffer)
         {
             _blockBuffer = blockBuffer;
-            try
-            {
-                return base.EncodeREFTTexture(src, mipLevels, WiiPaletteFormat.IA8);
-            }
-            finally
-            {
-                _blockBuffer = null;
-            }
+            try { return base.EncodeREFTTexture(src, mipLevels, WiiPaletteFormat.IA8); }
+            finally { _blockBuffer = null; }
         }
-
         public FileMap EncodeTEX0TextureCached(Bitmap src, int mipLevels, UnsafeBuffer blockBuffer)
         {
             _blockBuffer = blockBuffer;
-            try
-            {
-                return base.EncodeTEX0Texture(src, mipLevels);
-            }
-            finally
-            {
-                _blockBuffer = null;
-            }
+            try { return base.EncodeTEX0Texture(src, mipLevels); }
+            finally { _blockBuffer = null; }
         }
 
         public UnsafeBuffer GeneratePreview(Bitmap bmp)
@@ -82,8 +65,8 @@ namespace BrawlLib.Wii.Textures
             int w = bmp.Width, h = bmp.Height;
             int aw = w.Align(BlockWidth), ah = h.Align(BlockHeight);
 
-            var buffer = new UnsafeBuffer(aw / 4 * (ah / 4) * 8);
-            var bPtr = (CMPRBlock*) buffer.Address;
+            UnsafeBuffer buffer = new UnsafeBuffer((aw / 4) * (ah / 4) * 8);
+            CMPRBlock* bPtr = (CMPRBlock*)buffer.Address;
 
             //using (Bitmap bmp = src.Clone(new Rectangle(0, 0, aw, ah), PixelFormat.Format32bppArgb))
             //{
@@ -101,17 +84,23 @@ namespace BrawlLib.Wii.Textures
             //                }
             //}
 
-            using (var dib = DIB.FromBitmap(bmp, BlockWidth, BlockHeight, PixelFormat.Format32bppArgb))
+            using (DIB dib = DIB.FromBitmap(bmp, BlockWidth, BlockHeight, PixelFormat.Format32bppArgb))
             {
-                var img = (ARGBPixel*) dib.Scan0;
-                for (var y1 = 0; y1 < ah; y1 += 8)
-                for (var x1 = 0; x1 < aw; x1 += 8)
-                for (var y = 0; y < 8; y += 4)
-                for (var x = 0; x < 8; x += 4)
+                ARGBPixel* img = (ARGBPixel*)dib.Scan0;
+                for (int y1 = 0; y1 < ah; y1 += 8)
                 {
-                    *bPtr = NVDXT.compressDXT1a(img, x1 + x, y1 + y, aw, ah);
-                    bPtr->Decode(img, x1 + x, y1 + y, aw, ah);
-                    bPtr++;
+                    for (int x1 = 0; x1 < aw; x1 += 8)
+                    {
+                        for (int y = 0; y < 8; y += 4)
+                        {
+                            for (int x = 0; x < 8; x += 4)
+                            {
+                                *bPtr = NVDXT.compressDXT1a(img, x1 + x, y1 + y, aw, ah);
+                                bPtr->Decode(img, x1 + x, y1 + y, aw, ah);
+                                bPtr++;
+                            }
+                        }
+                    }
                 }
 
                 dib.WriteBitmap(bmp, w, h);
@@ -137,13 +126,16 @@ namespace BrawlLib.Wii.Textures
 
         internal override void EncodeLevel(VoidPtr addr, DIB dib, Bitmap src, int dStep, int sStep, int level)
         {
-            if (level == 1 && _blockBuffer != null)
+            if ((level == 1) && (_blockBuffer != null))
             {
-                var sPtr = (CMPRBlock*) _blockBuffer.Address;
-                var dPtr = (CMPRBlock*) addr;
+                CMPRBlock* sPtr = (CMPRBlock*)_blockBuffer.Address;
+                CMPRBlock* dPtr = (CMPRBlock*)addr;
 
-                var blocks = _blockBuffer.Length / 8;
-                for (var i = 0; i < blocks; i++) dPtr[i] = sPtr[i];
+                int blocks = _blockBuffer.Length / 8;
+                for (int i = 0; i < blocks; i++)
+                {
+                    dPtr[i] = sPtr[i];
+                }
             }
             else
             {
@@ -153,10 +145,14 @@ namespace BrawlLib.Wii.Textures
 
         protected override void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width)
         {
-            var dPtr = (CMPRBlock*) blockAddr;
-            for (var y = 0; y < 2; y++, sPtr += width * 4)
-            for (var x = 0; x < 8; x += 4)
-                *dPtr++ = CMPRBlock.Encode(&sPtr[x], width, false);
+            CMPRBlock* dPtr = (CMPRBlock*)blockAddr;
+            for (int y = 0; y < 2; y++, sPtr += (width * 4))
+            {
+                for (int x = 0; x < 8; x += 4)
+                {
+                    *dPtr++ = CMPRBlock.Encode(&sPtr[x], width, false);
+                }
+            }
         }
     }
 
@@ -169,55 +165,63 @@ namespace BrawlLib.Wii.Textures
 
         public void Decode(ARGBPixel* image, int imgX, int imgY, int imgW, int imgH)
         {
-            Decode(image + (imgX + imgY * imgW), imgW);
+            Decode(image + (imgX + (imgY * imgW)), imgW);
         }
-
         public void Decode(ARGBPixel* block, int width)
         {
-            var pixelData = stackalloc uint[4];
-            var pixel = (ARGBPixel*) pixelData;
+            uint* pixelData = stackalloc uint[4];
+            ARGBPixel* pixel = (ARGBPixel*)pixelData;
 
-            pixel[0] = (ARGBPixel) _root0;
-            pixel[1] = (ARGBPixel) _root1;
+            pixel[0] = (ARGBPixel)_root0;
+            pixel[1] = (ARGBPixel)_root1;
             if (_root0._data > _root1._data)
             {
-                pixel[2] = new ARGBPixel(255, (byte) (((pixel[0].R << 1) + pixel[1].R) / 3),
-                    (byte) (((pixel[0].G << 1) + pixel[1].G) / 3), (byte) (((pixel[0].B << 1) + pixel[1].B) / 3));
-                pixel[3] = new ARGBPixel(255, (byte) (((pixel[1].R << 1) + pixel[0].R) / 3),
-                    (byte) (((pixel[1].G << 1) + pixel[0].G) / 3), (byte) (((pixel[1].B << 1) + pixel[0].B) / 3));
+                pixel[2] = new ARGBPixel(255, (byte)(((pixel[0].R << 1) + pixel[1].R) / 3), (byte)(((pixel[0].G << 1) + pixel[1].G) / 3), (byte)(((pixel[0].B << 1) + pixel[1].B) / 3));
+                pixel[3] = new ARGBPixel(255, (byte)(((pixel[1].R << 1) + pixel[0].R) / 3), (byte)(((pixel[1].G << 1) + pixel[0].G) / 3), (byte)(((pixel[1].B << 1) + pixel[0].B) / 3));
             }
             else
             {
-                pixel[2] = new ARGBPixel(255, (byte) ((pixel[0].R + pixel[1].R) >> 1),
-                    (byte) ((pixel[0].G + pixel[1].G) >> 1), (byte) ((pixel[0].B + pixel[1].B) >> 1));
+                pixel[2] = new ARGBPixel(255, (byte)((pixel[0].R + pixel[1].R) >> 1), (byte)((pixel[0].G + pixel[1].G) >> 1), (byte)((pixel[0].B + pixel[1].B) >> 1));
                 pixel[3] = new ARGBPixel();
             }
 
             uint lookup = _lookup;
 
             for (int y = 0, shift = 30; y < 4; y++, block += width)
-            for (var x = 0; x < 4; shift -= 2)
-                block[x++] = pixel[(lookup >> shift) & 0x03];
+            {
+                for (int x = 0; x < 4; shift -= 2)
+                {
+                    block[x++] = pixel[(lookup >> shift) & 0x03];
+                }
+            }
         }
 
 
         public static CMPRBlock Encode(ARGBPixel* block, int width, bool fast)
         {
-            var p = new CMPRBlock();
+            CMPRBlock p = new CMPRBlock();
 
-            var pData = stackalloc uint[16];
-            var pColor = (ARGBPixel*) pData;
+            uint* pData = stackalloc uint[16];
+            ARGBPixel* pColor = (ARGBPixel*)pData;
 
-            var hasAlpha = false;
+            bool hasAlpha = false;
             for (int y = 0, i = 0; y < 4; y++, block += width)
-            for (var x = 0; x < 4; i++)
             {
-                pColor[i] = block[x++];
-                if (pData[i] != pData[0])
+                for (int x = 0; x < 4; i++)
                 {
-                }
+                    pColor[i] = block[x++];
+                    if (pData[i] != pData[0])
+                    {
+                    }
 
-                if (pColor[i].A < 0x80) hasAlpha = true;
+                    if (pColor[i].A < 0x80)
+                    {
+                        hasAlpha = true;
+                    }
+                    else
+                    {
+                    }
+                }
             }
 
             /*
@@ -273,17 +277,17 @@ namespace BrawlLib.Wii.Textures
             //}
             //else
             //{
-            var palData = stackalloc uint[4];
-            var palCol = (ARGBPixel*) palData;
+            uint* palData = stackalloc uint[4];
+            ARGBPixel* palCol = (ARGBPixel*)palData;
 
-            var bestDist = -1;
-            for (var i = 0; i < 16; i++)
+            int bestDist = -1;
+            for (int i = 0; i < 16; i++)
             {
-                var p1 = pColor[i];
-                for (var x = i + 1; x < 16; x++)
+                ARGBPixel p1 = pColor[i];
+                for (int x = i + 1; x < 16; x++)
                 {
-                    var p2 = pColor[x];
-                    var d = p1.DistanceTo(p2);
+                    ARGBPixel p2 = pColor[x];
+                    int d = p1.DistanceTo(p2);
                     if (d > bestDist)
                     {
                         bestDist = d;
@@ -293,35 +297,31 @@ namespace BrawlLib.Wii.Textures
                 }
             }
 
-            var smax = (wRGB565Pixel) palCol[2];
-            var smin = (wRGB565Pixel) palCol[3];
+            wRGB565Pixel smax = (wRGB565Pixel)palCol[2];
+            wRGB565Pixel smin = (wRGB565Pixel)palCol[3];
 
             if (smax < smin)
             {
-                smax = (wRGB565Pixel) palCol[3];
-                smin = (wRGB565Pixel) palCol[2];
+                smax = (wRGB565Pixel)palCol[3]; smin = (wRGB565Pixel)palCol[2];
             }
 
             if (hasAlpha)
             {
                 p._root0 = smin;
                 p._root1 = smax;
-                palCol[0] = (ARGBPixel) smin;
-                palCol[1] = (ARGBPixel) smax;
-                palCol[2] = new ARGBPixel(255, (byte) ((palCol[0].R + palCol[1].R) >> 1),
-                    (byte) ((palCol[0].G + palCol[1].G) >> 1), (byte) ((palCol[0].B + palCol[1].B) >> 1));
+                palCol[0] = (ARGBPixel)smin;
+                palCol[1] = (ARGBPixel)smax;
+                palCol[2] = new ARGBPixel(255, (byte)((palCol[0].R + palCol[1].R) >> 1), (byte)((palCol[0].G + palCol[1].G) >> 1), (byte)((palCol[0].B + palCol[1].B) >> 1));
                 palCol[3] = new ARGBPixel();
             }
             else
             {
                 p._root0 = smax;
                 p._root1 = smin;
-                palCol[0] = (ARGBPixel) smax;
-                palCol[1] = (ARGBPixel) smin;
-                palCol[2] = new ARGBPixel(255, (byte) (((palCol[0].R << 1) + palCol[1].R) / 3),
-                    (byte) (((palCol[0].G << 1) + palCol[1].G) / 3), (byte) (((palCol[0].B << 1) + palCol[1].B) / 3));
-                palCol[3] = new ARGBPixel(255, (byte) (((palCol[1].R << 1) + palCol[0].R) / 3),
-                    (byte) (((palCol[1].G << 1) + palCol[0].G) / 3), (byte) (((palCol[1].B << 1) + palCol[0].B) / 3));
+                palCol[0] = (ARGBPixel)smax;
+                palCol[1] = (ARGBPixel)smin;
+                palCol[2] = new ARGBPixel(255, (byte)(((palCol[0].R << 1) + palCol[1].R) / 3), (byte)(((palCol[0].G << 1) + palCol[1].G) / 3), (byte)(((palCol[0].B << 1) + palCol[1].B) / 3));
+                palCol[3] = new ARGBPixel(255, (byte)(((palCol[1].R << 1) + palCol[0].R) / 3), (byte)(((palCol[1].G << 1) + palCol[0].G) / 3), (byte)(((palCol[1].B << 1) + palCol[0].B) / 3));
             }
 
             uint indicies = 0;
@@ -330,21 +330,15 @@ namespace BrawlLib.Wii.Textures
                 uint index = 3;
                 if (pColor[i].A >= 0x80)
                 {
-                    var bd = int.MaxValue;
-                    for (var x = 0; x < (hasAlpha ? 4 : 3); x++)
+                    int bd = int.MaxValue;
+                    for (int x = 0; x < ((hasAlpha) ? 4 : 3); x++)
                     {
-                        var dist = palCol[x].DistanceTo(pColor[i]);
-                        if (dist < bd)
-                        {
-                            bd = dist;
-                            index = (uint) x;
-                        }
+                        int dist = palCol[x].DistanceTo(pColor[i]);
+                        if (dist < bd) { bd = dist; index = (uint)x; }
                     }
                 }
-
                 indicies |= index << shift;
             }
-
             p._lookup = indicies;
 
             //p = DXT1Fast.Compress(pColor);

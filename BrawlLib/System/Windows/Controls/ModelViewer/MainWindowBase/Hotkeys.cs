@@ -1,38 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using BrawlLib.Modeling;
+using System.Collections.Generic;
 using System.ComponentModel;
-using BrawlLib.Modeling;
 
 namespace System.Windows.Forms
 {
     public partial class ModelEditorBase : UserControl
     {
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Ctrl => ModifierKeys.HasFlag(Keys.Control);
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Alt => ModifierKeys.HasFlag(Keys.Alt);
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool Shift => ModifierKeys.HasFlag(Keys.Shift);
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool CtrlAlt => Ctrl && Alt;
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool NotCtrlAlt => !Ctrl && !Alt;
 
         private Dictionary<Keys, Func<bool>> _hotKeysDown;
         private Dictionary<Keys, Func<bool>> _hotKeysUp;
 
         /// <summary>
-        ///     This handles all key input in the main control instead of through child controls.
-        ///     If you want a hotkey to work only when a specific control is focused,
-        ///     use the control's 'Focused' bool in the hotkey's function.
+        /// This handles all key input in the main control instead of through child controls.
+        /// If you want a hotkey to work only when a specific control is focused,
+        /// use the control's 'Focused' bool in the hotkey's function.
         /// </summary>
         protected override bool ProcessKeyPreview(ref Message m)
         {
@@ -44,8 +35,8 @@ namespace System.Windows.Forms
             const int WM_SYSKEYUP = 0x105;
             //const int WM_IME_CHAR = 0x286;
 
-            var down = m.Msg == WM_KEYDOWN || m.Msg == WM_SYSKEYDOWN;
-            var up = m.Msg == WM_KEYUP || m.Msg == WM_SYSKEYUP;
+            bool down = m.Msg == WM_KEYDOWN || m.Msg == WM_SYSKEYDOWN;
+            bool up = m.Msg == WM_KEYUP || m.Msg == WM_SYSKEYUP;
 
             if (down || up)
             {
@@ -56,21 +47,36 @@ namespace System.Windows.Forms
                 }
                 else
                 {
-                    key = (Keys) m.WParam;
-                    if (Ctrl) key |= Keys.Control;
+                    key = (Keys)m.WParam;
+                    if (Ctrl)
+                    {
+                        key |= Keys.Control;
+                    }
 
-                    if (Alt) key |= Keys.Alt;
+                    if (Alt)
+                    {
+                        key |= Keys.Alt;
+                    }
 
-                    if (Shift) key |= Keys.Shift;
+                    if (Shift)
+                    {
+                        key |= Keys.Shift;
+                    }
                 }
 
                 if (down && _hotKeysDown.ContainsKey(key))
                 {
-                    if ((bool) _hotKeysDown[key].DynamicInvoke()) return true;
+                    if ((bool)_hotKeysDown[key].DynamicInvoke())
+                    {
+                        return true;
+                    }
                 }
                 else if (_hotKeysUp.ContainsKey(key))
                 {
-                    if ((bool) _hotKeysUp[key].DynamicInvoke()) return true;
+                    if ((bool)_hotKeysUp[key].DynamicInvoke())
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -83,8 +89,31 @@ namespace System.Windows.Forms
             public bool _ctrl, _alt, _shift, _keyDown, _keyUp;
             public Func<bool> _function;
 
-            public HotKeyInfo(Keys baseKey, bool ctrl, bool alt, bool shift, Func<bool> function, bool keydown = true,
-                bool keyup = false)
+            public Keys KeyCode
+            {
+                get
+                {
+                    Keys key = _baseKey;
+                    if (_ctrl)
+                    {
+                        key |= Keys.Control;
+                    }
+
+                    if (_shift)
+                    {
+                        key |= Keys.Shift;
+                    }
+
+                    if (_alt)
+                    {
+                        key |= Keys.Alt;
+                    }
+
+                    return key;
+                }
+            }
+
+            public HotKeyInfo(Keys baseKey, bool ctrl, bool alt, bool shift, Func<bool> function, bool keydown = true, bool keyup = false)
             {
                 _baseKey = baseKey;
                 _ctrl = ctrl;
@@ -94,26 +123,11 @@ namespace System.Windows.Forms
                 _keyDown = keydown;
                 _keyUp = keyup;
             }
-
-            public Keys KeyCode
-            {
-                get
-                {
-                    var key = _baseKey;
-                    if (_ctrl) key |= Keys.Control;
-
-                    if (_shift) key |= Keys.Shift;
-
-                    if (_alt) key |= Keys.Alt;
-
-                    return key;
-                }
-            }
         }
 
         public virtual void InitHotkeyList()
         {
-            _hotkeyList = new List<HotKeyInfo>
+            _hotkeyList = new List<HotKeyInfo>()
             {
                 new HotKeyInfo(Keys.G, false, false, false, HotkeyRefreshReferences),
                 new HotKeyInfo(Keys.U, false, false, false, HotkeyResetCamera),
@@ -175,26 +189,20 @@ namespace System.Windows.Forms
         {
             if (ModelPanel.Focused)
             {
-                SaveBitmap(ModelPanel.GetScreenshot(ModelPanel.ClientRectangle, true), ScreenCaptureFolder,
-                    "." + ScreenCaptureType);
+                SaveBitmap(ModelPanel.GetScreenshot(ModelPanel.ClientRectangle, true), ScreenCaptureFolder, "." + ScreenCaptureType.ToString());
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyCaptureScreenshot()
         {
             if (ModelPanel.Focused)
             {
-                SaveBitmap(ModelPanel.GetScreenshot(ModelPanel.ClientRectangle, false), ScreenCaptureFolder,
-                    "." + ScreenCaptureType);
+                SaveBitmap(ModelPanel.GetScreenshot(ModelPanel.ClientRectangle, false), ScreenCaptureFolder, "." + ScreenCaptureType.ToString());
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyUndo()
         {
             if (ModelPanel.Focused)
@@ -202,10 +210,8 @@ namespace System.Windows.Forms
                 Undo();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyRedo()
         {
             if (ModelPanel.Focused)
@@ -213,10 +219,8 @@ namespace System.Windows.Forms
                 Redo();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyCopyWholeFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -224,10 +228,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnCopyAll.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyCopyEntryFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -235,10 +237,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnCopy.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyPasteWholeFrameKeyframesOnly()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -247,10 +247,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnPasteAll.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyPasteWholeFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -259,10 +257,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnPasteAll.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyPasteEntryFrameKeyframesOnly()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -271,10 +267,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnPaste.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyPasteEntryFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -283,10 +277,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnPaste.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyResetCamera()
         {
             if (Ctrl)
@@ -294,10 +286,8 @@ namespace System.Windows.Forms
                 ModelPanel.ResetCamera();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyRefreshReferences()
         {
             if (ModelPanel.Focused)
@@ -305,10 +295,8 @@ namespace System.Windows.Forms
                 ModelPanel.RefreshReferences();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyRenderVertices()
         {
             if (ModelPanel.Focused)
@@ -316,10 +304,8 @@ namespace System.Windows.Forms
                 RenderVertices = !RenderVertices;
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyPlayAnim()
         {
             if (ModelPanel.Focused)
@@ -327,10 +313,8 @@ namespace System.Windows.Forms
                 TogglePlay();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyRenderFloor()
         {
             if (ModelPanel.Focused)
@@ -338,10 +322,8 @@ namespace System.Windows.Forms
                 RenderFloor = !RenderFloor;
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyRenderBones()
         {
             if (ModelPanel.Focused)
@@ -349,10 +331,8 @@ namespace System.Windows.Forms
                 RenderBones = !RenderBones;
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyRenderPolygons()
         {
             if (ModelPanel.Focused)
@@ -360,10 +340,8 @@ namespace System.Windows.Forms
                 RenderPolygons = !RenderPolygons;
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyClearWholeFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -371,10 +349,8 @@ namespace System.Windows.Forms
                 CHR0Editor.btnClearAll.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyClearEntryFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -382,10 +358,8 @@ namespace System.Windows.Forms
                 CHR0Editor.ClearEntry();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyDeleteFrame()
         {
             if (ModelPanel.Focused && _currentControl is CHR0Editor)
@@ -393,24 +367,29 @@ namespace System.Windows.Forms
                 CHR0Editor.btnDelete.PerformClick();
                 return true;
             }
-
             return false;
         }
-
         private bool HotkeyCancelChange()
         {
-            if (!AwaitingRedoSave) return false;
+            if (!AwaitingRedoSave)
+            {
+                return false;
+            }
 
             //Undo transformations, make sure to reset keyframes
             if (VertexLoc.HasValue && _currentUndo is VertexState)
             {
-                var v = _currentUndo as VertexState;
+                VertexState v = _currentUndo as VertexState;
 
-                for (var i = 0; i < v._vertices.Count; i++) v._vertices[i].WeightedPosition = v._weightedPositions[i];
+                for (int i = 0; i < v._vertices.Count; i++)
+                {
+                    v._vertices[i].WeightedPosition = v._weightedPositions[i];
+                }
 
                 _vertexSelection.ResetActions();
                 CancelChangeState();
                 UpdateModel();
+
             }
             else if (_boneSelection.IsMoving())
             {
@@ -423,7 +402,6 @@ namespace System.Windows.Forms
                     CHR0Editor.BoxChanged(CHR0Editor.numRotY, null);
                     CHR0Editor.BoxChanged(CHR0Editor.numRotZ, null);
                 }
-
                 if (_boneSelection._translating)
                 {
                     CHR0Editor.numTransX.Value = _boneSelection._oldPosition._x;
@@ -433,7 +411,6 @@ namespace System.Windows.Forms
                     CHR0Editor.BoxChanged(CHR0Editor.numTransY, null);
                     CHR0Editor.BoxChanged(CHR0Editor.numTransZ, null);
                 }
-
                 if (_boneSelection._scaling)
                 {
                     CHR0Editor.numScaleX.Value = _boneSelection._oldScale._x;
@@ -451,31 +428,39 @@ namespace System.Windows.Forms
             ModelPanel.CurrentViewport.AllowSelection = true;
             return false;
         }
-
         private bool HotkeyLastFrame()
         {
-            if (PlaybackPanel != null) PlaybackPanel.btnLast_Click(this, null);
+            if (PlaybackPanel != null)
+            {
+                PlaybackPanel.btnLast_Click(this, null);
+            }
 
             return true;
         }
-
         private bool HotkeyNextFrame()
         {
-            if (PlaybackPanel != null) PlaybackPanel.btnNextFrame_Click(this, null);
+            if (PlaybackPanel != null)
+            {
+                PlaybackPanel.btnNextFrame_Click(this, null);
+            }
 
             return true;
         }
-
         private bool HotkeyFirstFrame()
         {
-            if (PlaybackPanel != null) PlaybackPanel.btnFirst_Click(this, null);
+            if (PlaybackPanel != null)
+            {
+                PlaybackPanel.btnFirst_Click(this, null);
+            }
 
             return true;
         }
-
         private bool HotkeyPrevFrame()
         {
-            if (PlaybackPanel != null) PlaybackPanel.btnPrevFrame_Click(this, null);
+            if (PlaybackPanel != null)
+            {
+                PlaybackPanel.btnPrevFrame_Click(this, null);
+            }
 
             return true;
         }

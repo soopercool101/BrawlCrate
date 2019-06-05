@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Windows.Forms;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
 using BrawlLib.IO;
 using BrawlLib.Modeling;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Animations;
 using BrawlLib.Wii.Graphics;
 using OpenTK.Graphics.OpenGL;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0MaterialNode : MDL0EntryNode
+    public unsafe partial class MDL0MaterialNode : MDL0EntryNode
     {
-        public bool _updating;
+        internal MDL0Material* Header => (MDL0Material*)WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.MDL0Material;
+        public override bool AllowDuplicateNames => true;
+
+        public bool _updating = false;
 
         public MDL0MaterialNode()
         {
@@ -23,10 +27,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 63,
                 new RGBAPixel(128, 128, 128, 255),
                 new RGBAPixel(255, 255, 255, 255),
-                new LightChannelControl(true, GXColorSrc.Register, GXColorSrc.Register, GXDiffuseFn.Clamped,
-                    GXAttnFn.Spotlight),
-                new LightChannelControl(true, GXColorSrc.Register, GXColorSrc.Register, GXDiffuseFn.Clamped,
-                    GXAttnFn.Spotlight),
+                new LightChannelControl(true, GXColorSrc.Register, GXColorSrc.Register, GXDiffuseFn.Clamped, GXAttnFn.Spotlight),
+                new LightChannelControl(true, GXColorSrc.Register, GXColorSrc.Register, GXDiffuseFn.Clamped, GXAttnFn.Spotlight),
                 this);
             _chan2 = new LightChannel(
                 15,
@@ -37,49 +39,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 this);
         }
 
-        internal MDL0Material* Header => (MDL0Material*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.MDL0Material;
-        public override bool AllowDuplicateNames => true;
-
-        public override void Replace(string fileName)
-        {
-            base.Replace(fileName);
-
-            Model.CheckTextures();
-        }
-
-        public override void Remove()
-        {
-            if (Parent != null)
-            {
-                ShaderNode = null;
-
-                foreach (MDL0MaterialRefNode r in Children)
-                {
-                    r.TextureNode = null;
-                    r.PaletteNode = null;
-                }
-
-                Model.CheckTextures();
-            }
-
-            base.Remove();
-        }
-
         #region Variables
 
-        [Category("User Data")]
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public UserDataCollection UserEntries
-        {
-            get => _userEntries;
-            set
-            {
-                _userEntries = value;
-                SignalPropertyChange();
-            }
-        }
-
+        [Category("User Data"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public UserDataCollection UserEntries { get => _userEntries; set { _userEntries = value; SignalPropertyChange(); } }
         internal UserDataCollection _userEntries = new UserDataCollection();
 
         public byte
@@ -99,7 +62,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _lightSetIndex = 20,
             _fogIndex = 4;
 
-        private Bin32 _usageFlags;
+        private Bin32 _usageFlags = new Bin32();
         public CullMode _cull = CullMode.Cull_None;
         public uint _texMtxFlags;
 
@@ -124,8 +87,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 if (!IsMetal)
+                {
                     return _objects.ToArray();
-                return MetalMaterial == null ? null : MetalMaterial._objects.ToArray();
+                }
+                else
+                {
+                    return MetalMaterial == null ? null : MetalMaterial._objects.ToArray();
+                }
             }
         }
 
@@ -136,101 +104,62 @@ This color is used by the linked shader.
 In each shader stage, there are properties called ConstantColorSelection and ConstantAlphaSelection.
 Those properties can use this color as an argument. This color is referred to as ";
 
-        [Category("Shader Constant Color Block")]
-        [DisplayName("Constant Color 0")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(KonstDesc + "KSel_0.")]
+        [Category("Shader Constant Color Block"), DisplayName("Constant Color 0"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(KonstDesc + "KSel_0.")]
         public GXColorS10 ConstantColor0
         {
-            get => new GXColorS10
-            {
-                R = _tevKonstBlock.TevReg0Lo.RB, A = _tevKonstBlock.TevReg0Lo.AG, B = _tevKonstBlock.TevReg0Hi.RB,
-                G = _tevKonstBlock.TevReg0Hi.AG
-            };
+            get => new GXColorS10() { R = _tevKonstBlock.TevReg0Lo.RB, A = _tevKonstBlock.TevReg0Lo.AG, B = _tevKonstBlock.TevReg0Hi.RB, G = _tevKonstBlock.TevReg0Hi.AG };
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _tevKonstBlock.TevReg0Lo.RB = value.R;
-                    _tevKonstBlock.TevReg0Lo.AG = value.A;
-                    _tevKonstBlock.TevReg0Hi.RB = value.B;
-                    _tevKonstBlock.TevReg0Hi.AG = value.G;
-                    k1 = value;
+                    _tevKonstBlock.TevReg0Lo.RB = value.R; _tevKonstBlock.TevReg0Lo.AG = value.A; _tevKonstBlock.TevReg0Hi.RB = value.B; _tevKonstBlock.TevReg0Hi.AG = value.G; k1 = value;
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Shader Constant Color Block")]
-        [DisplayName("Constant Color 1")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(KonstDesc + "KSel_1.")]
+        [Category("Shader Constant Color Block"), DisplayName("Constant Color 1"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(KonstDesc + "KSel_1.")]
         public GXColorS10 ConstantColor1
         {
-            get => new GXColorS10
-            {
-                R = _tevKonstBlock.TevReg1Lo.RB, A = _tevKonstBlock.TevReg1Lo.AG, B = _tevKonstBlock.TevReg1Hi.RB,
-                G = _tevKonstBlock.TevReg1Hi.AG
-            };
+            get => new GXColorS10() { R = _tevKonstBlock.TevReg1Lo.RB, A = _tevKonstBlock.TevReg1Lo.AG, B = _tevKonstBlock.TevReg1Hi.RB, G = _tevKonstBlock.TevReg1Hi.AG };
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _tevKonstBlock.TevReg1Lo.RB = value.R;
-                    _tevKonstBlock.TevReg1Lo.AG = value.A;
-                    _tevKonstBlock.TevReg1Hi.RB = value.B;
-                    _tevKonstBlock.TevReg1Hi.AG = value.G;
-                    k2 = value;
+                    _tevKonstBlock.TevReg1Lo.RB = value.R; _tevKonstBlock.TevReg1Lo.AG = value.A; _tevKonstBlock.TevReg1Hi.RB = value.B; _tevKonstBlock.TevReg1Hi.AG = value.G; k2 = value;
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Shader Constant Color Block")]
-        [DisplayName("Constant Color 2")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(KonstDesc + "KSel_2.")]
+        [Category("Shader Constant Color Block"), DisplayName("Constant Color 2"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(KonstDesc + "KSel_2.")]
         public GXColorS10 ConstantColor2
         {
-            get => new GXColorS10
-            {
-                R = _tevKonstBlock.TevReg2Lo.RB, A = _tevKonstBlock.TevReg2Lo.AG, B = _tevKonstBlock.TevReg2Hi.RB,
-                G = _tevKonstBlock.TevReg2Hi.AG
-            };
+            get => new GXColorS10() { R = _tevKonstBlock.TevReg2Lo.RB, A = _tevKonstBlock.TevReg2Lo.AG, B = _tevKonstBlock.TevReg2Hi.RB, G = _tevKonstBlock.TevReg2Hi.AG };
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _tevKonstBlock.TevReg2Lo.RB = value.R;
-                    _tevKonstBlock.TevReg2Lo.AG = value.A;
-                    _tevKonstBlock.TevReg2Hi.RB = value.B;
-                    _tevKonstBlock.TevReg2Hi.AG = value.G;
-                    k3 = value;
+                    _tevKonstBlock.TevReg2Lo.RB = value.R; _tevKonstBlock.TevReg2Lo.AG = value.A; _tevKonstBlock.TevReg2Hi.RB = value.B; _tevKonstBlock.TevReg2Hi.AG = value.G; k3 = value;
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Shader Constant Color Block")]
-        [DisplayName("Constant Color 3")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(KonstDesc + "KSel_3.")]
+        [Category("Shader Constant Color Block"), DisplayName("Constant Color 3"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(KonstDesc + "KSel_3.")]
         public GXColorS10 ConstantColor3
         {
-            get => new GXColorS10
-            {
-                R = _tevKonstBlock.TevReg3Lo.RB, A = _tevKonstBlock.TevReg3Lo.AG, B = _tevKonstBlock.TevReg3Hi.RB,
-                G = _tevKonstBlock.TevReg3Hi.AG
-            };
+            get => new GXColorS10() { R = _tevKonstBlock.TevReg3Lo.RB, A = _tevKonstBlock.TevReg3Lo.AG, B = _tevKonstBlock.TevReg3Hi.RB, G = _tevKonstBlock.TevReg3Hi.AG };
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _tevKonstBlock.TevReg3Lo.RB = value.R;
-                    _tevKonstBlock.TevReg3Lo.AG = value.A;
-                    _tevKonstBlock.TevReg3Hi.RB = value.B;
-                    _tevKonstBlock.TevReg3Hi.AG = value.G;
-                    k4 = value;
+                    _tevKonstBlock.TevReg3Lo.RB = value.R; _tevKonstBlock.TevReg3Lo.AG = value.A; _tevKonstBlock.TevReg3Hi.RB = value.B; _tevKonstBlock.TevReg3Hi.AG = value.G; k4 = value;
                     SignalPropertyChange();
                 }
             }
@@ -245,17 +174,12 @@ This color is used by the linked shader.
 In each shader stage, there are properties called Color/Alpha Selection A, B, C and D.
 Those properties can use this color as an argument. This color is referred to as ";
 
-        [Category("Shader Color Block")]
-        [DisplayName("Color 0")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(ColorDesc + "Color0 and Alpha0.")]
+        [Category("Shader Color Block"), DisplayName("Color 0"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(ColorDesc + "Color0 and Alpha0.")]
         public GXColorS10 Color0
         {
-            get => new GXColorS10
-            {
-                R = _tevColorBlock.TevReg1Lo.RB, A = _tevColorBlock.TevReg1Lo.AG, B = _tevColorBlock.TevReg1Hi0.RB,
-                G = _tevColorBlock.TevReg1Hi0.AG
-            };
+            get => new GXColorS10() { R = _tevColorBlock.TevReg1Lo.RB, A = _tevColorBlock.TevReg1Lo.AG, B = _tevColorBlock.TevReg1Hi0.RB, G = _tevColorBlock.TevReg1Hi0.AG };
             set
             {
                 if (!CheckIfMetal())
@@ -265,11 +189,11 @@ Those properties can use this color as an argument. This color is referred to as
 
                     //High values are always the same...
                     _tevColorBlock.TevReg1Hi0.RB =
-                        _tevColorBlock.TevReg1Hi1.RB =
-                            _tevColorBlock.TevReg1Hi2.RB = value.B;
+                    _tevColorBlock.TevReg1Hi1.RB =
+                    _tevColorBlock.TevReg1Hi2.RB = value.B;
                     _tevColorBlock.TevReg1Hi0.AG =
-                        _tevColorBlock.TevReg1Hi1.AG =
-                            _tevColorBlock.TevReg1Hi2.AG = value.G;
+                    _tevColorBlock.TevReg1Hi1.AG =
+                    _tevColorBlock.TevReg1Hi2.AG = value.G;
 
                     c1 = value;
 
@@ -277,18 +201,12 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
-        [Category("Shader Color Block")]
-        [DisplayName("Color 1")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(ColorDesc + "Color1 and Alpha1.")]
+        [Category("Shader Color Block"), DisplayName("Color 1"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(ColorDesc + "Color1 and Alpha1.")]
         public GXColorS10 Color1
         {
-            get => new GXColorS10
-            {
-                R = _tevColorBlock.TevReg2Lo.RB, A = _tevColorBlock.TevReg2Lo.AG, B = _tevColorBlock.TevReg2Hi0.RB,
-                G = _tevColorBlock.TevReg2Hi0.AG
-            };
+            get => new GXColorS10() { R = _tevColorBlock.TevReg2Lo.RB, A = _tevColorBlock.TevReg2Lo.AG, B = _tevColorBlock.TevReg2Hi0.RB, G = _tevColorBlock.TevReg2Hi0.AG };
             set
             {
                 if (!CheckIfMetal())
@@ -298,11 +216,11 @@ Those properties can use this color as an argument. This color is referred to as
 
                     //High values are always the same...
                     _tevColorBlock.TevReg2Hi0.RB =
-                        _tevColorBlock.TevReg2Hi1.RB =
-                            _tevColorBlock.TevReg2Hi2.RB = value.B;
+                    _tevColorBlock.TevReg2Hi1.RB =
+                    _tevColorBlock.TevReg2Hi2.RB = value.B;
                     _tevColorBlock.TevReg2Hi0.AG =
-                        _tevColorBlock.TevReg2Hi1.AG =
-                            _tevColorBlock.TevReg2Hi2.AG = value.G;
+                    _tevColorBlock.TevReg2Hi1.AG =
+                    _tevColorBlock.TevReg2Hi2.AG = value.G;
 
                     c2 = value;
 
@@ -310,18 +228,12 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
-        [Category("Shader Color Block")]
-        [DisplayName("Color 2")]
-        [TypeConverter(typeof(GXColorS10StringConverter))]
-        [Description(ColorDesc + "Color2 and Alpha2.")]
+        [Category("Shader Color Block"), DisplayName("Color 2"),
+        TypeConverter(typeof(GXColorS10StringConverter)),
+        Description(ColorDesc + "Color2 and Alpha2.")]
         public GXColorS10 Color2
         {
-            get => new GXColorS10
-            {
-                R = _tevColorBlock.TevReg3Lo.RB, A = _tevColorBlock.TevReg3Lo.AG, B = _tevColorBlock.TevReg3Hi0.RB,
-                G = _tevColorBlock.TevReg3Hi0.AG
-            };
+            get => new GXColorS10() { R = _tevColorBlock.TevReg3Lo.RB, A = _tevColorBlock.TevReg3Lo.AG, B = _tevColorBlock.TevReg3Hi0.RB, G = _tevColorBlock.TevReg3Hi0.AG };
             set
             {
                 if (!CheckIfMetal())
@@ -331,11 +243,11 @@ Those properties can use this color as an argument. This color is referred to as
 
                     //High values are always the same...
                     _tevColorBlock.TevReg3Hi0.RB =
-                        _tevColorBlock.TevReg3Hi1.RB =
-                            _tevColorBlock.TevReg3Hi2.RB = value.B;
+                    _tevColorBlock.TevReg3Hi1.RB =
+                    _tevColorBlock.TevReg3Hi2.RB = value.B;
                     _tevColorBlock.TevReg3Hi0.AG =
-                        _tevColorBlock.TevReg3Hi1.AG =
-                            _tevColorBlock.TevReg3Hi2.AG = value.G;
+                    _tevColorBlock.TevReg3Hi1.AG =
+                    _tevColorBlock.TevReg3Hi2.AG = value.G;
 
                     c3 = value;
 
@@ -347,18 +259,22 @@ Those properties can use this color as an argument. This color is referred to as
         #endregion
 
         #region Shader linkage
-
         internal MDL0ShaderNode _shader;
-
         [Browsable(false)]
         public MDL0ShaderNode ShaderNode
         {
             get => _shader;
             set
             {
-                if (_shader == value) return;
+                if (_shader == value)
+                {
+                    return;
+                }
 
-                if (_shader != null) _shader._materials.Remove(this);
+                if (_shader != null)
+                {
+                    _shader._materials.Remove(this);
+                }
 
                 if ((_shader = value) != null)
                 {
@@ -367,15 +283,16 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
-        [Browsable(true)]
-        [TypeConverter(typeof(DropDownListShaders))]
+        [Browsable(true), TypeConverter(typeof(DropDownListShaders))]
         public string Shader
         {
             get => _shader == null ? null : _shader.Name;
             set
             {
-                if (CheckIfMetal()) return;
+                if (CheckIfMetal())
+                {
+                    return;
+                }
 
                 if (string.IsNullOrEmpty(value))
                 {
@@ -383,14 +300,16 @@ Those properties can use this color as an argument. This color is referred to as
                 }
                 else
                 {
-                    var node = Model.FindChild(string.Format("Shaders/{0}", value), false) as MDL0ShaderNode;
-                    if (node != null) ShaderNode = node;
+                    MDL0ShaderNode node = Model.FindChild(string.Format("Shaders/{0}", value), false) as MDL0ShaderNode;
+                    if (node != null)
+                    {
+                        ShaderNode = node;
+                    }
                 }
 
                 SignalPropertyChange();
             }
         }
-
         #endregion
 
         #region Alpha Func
@@ -408,7 +327,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Alpha Function")]
         public AlphaCompare Comp0
         {
@@ -422,7 +340,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Alpha Function")]
         public AlphaOp Logic
         {
@@ -436,7 +353,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Alpha Function")]
         public byte Ref1
         {
@@ -450,7 +366,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Alpha Function")]
         public AlphaCompare Comp1
         {
@@ -469,9 +384,7 @@ Those properties can use this color as an argument. This color is referred to as
 
         #region Depth Func
 
-        [Category("Z Mode")]
-        [Description(
-            "Generally this should be false if using alpha function (transparency), as transparent pixels will change the depth.")]
+        [Category("Z Mode"), Description("Generally this should be false if using alpha function (transparency), as transparent pixels will change the depth.")]
         public bool CompareBeforeTexture
         {
             get => _depthTestBeforeTexture != 0;
@@ -479,15 +392,12 @@ Those properties can use this color as an argument. This color is referred to as
             {
                 if (!CheckIfMetal())
                 {
-                    _depthTestBeforeTexture = (byte) (value ? 1 : 0);
+                    _depthTestBeforeTexture = (byte)(value ? 1 : 0);
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Z Mode")]
-        [Description(
-            "Determines if this material's pixels should be compared to other pixels in order to obscure or be obscured.")]
+        [Category("Z Mode"), Description("Determines if this material's pixels should be compared to other pixels in order to obscure or be obscured.")]
         public bool EnableDepthTest
         {
             get => _zMode.EnableDepthTest;
@@ -500,7 +410,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Z Mode")]
         public bool EnableDepthUpdate
         {
@@ -514,9 +423,7 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
-        [Category("Z Mode")]
-        [Description("How this material should be compared to other materials.")]
+        [Category("Z Mode"), Description("How this material should be compared to other materials.")]
         public GXCompare DepthFunction
         {
             get => _zMode.DepthFunction;
@@ -534,8 +441,7 @@ Those properties can use this color as an argument. This color is referred to as
 
         #region Blend Mode
 
-        [Category("Blend Mode")]
-        [Description("This allows the textures to be semi-transparent. Cannot be used with alpha function.")]
+        [Category("Blend Mode"), Description("This allows the textures to be semi-transparent. Cannot be used with alpha function.")]
         public bool EnableBlend
         {
             get => _blendMode.EnableBlend;
@@ -548,7 +454,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Blend Mode")]
         public bool EnableBlendLogic
         {
@@ -584,7 +489,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Blend Mode")]
         public GXLogicOp BlendLogicOp
         {
@@ -598,7 +502,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Blend Mode")]
         public BlendFactor DstFactor
         {
@@ -631,8 +534,7 @@ Those properties can use this color as an argument. This color is referred to as
 
         #region Constant Alpha
 
-        [Category("Constant Alpha")]
-        [DisplayName("Enabled")]
+        [Category("Constant Alpha"), DisplayName("Enabled")]
         public bool ConstantAlphaEnabled
         {
             get => _constantAlpha.Enable != 0;
@@ -640,14 +542,12 @@ Those properties can use this color as an argument. This color is referred to as
             {
                 if (!CheckIfMetal())
                 {
-                    _constantAlpha.Enable = (byte) (value ? 1 : 0);
+                    _constantAlpha.Enable = (byte)(value ? 1 : 0);
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Constant Alpha")]
-        [DisplayName("Value")]
+        [Category("Constant Alpha"), DisplayName("Value")]
         public byte ConstantAlphaValue
         {
             get => _constantAlpha.Value;
@@ -668,54 +568,51 @@ Those properties can use this color as an argument. This color is referred to as
         [Category("Indirect Texturing")]
         public IndirectMethod IndirectMethodTex1
         {
-            get => (IndirectMethod) _indirectMethod1;
+            get => (IndirectMethod)_indirectMethod1;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _indirectMethod1 = (byte) value;
+                    _indirectMethod1 = (byte)value;
                     SignalPropertyChange();
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndirectMethod IndirectMethodTex2
         {
-            get => (IndirectMethod) _indirectMethod2;
+            get => (IndirectMethod)_indirectMethod2;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _indirectMethod2 = (byte) value;
+                    _indirectMethod2 = (byte)value;
                     SignalPropertyChange();
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndirectMethod IndirectMethodTex3
         {
-            get => (IndirectMethod) _indirectMethod3;
+            get => (IndirectMethod)_indirectMethod3;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _indirectMethod3 = (byte) value;
+                    _indirectMethod3 = (byte)value;
                     SignalPropertyChange();
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndirectMethod IndirectMethodTex4
         {
-            get => (IndirectMethod) _indirectMethod4;
+            get => (IndirectMethod)_indirectMethod4;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _indirectMethod4 = (byte) value;
+                    _indirectMethod4 = (byte)value;
                     SignalPropertyChange();
                 }
             }
@@ -734,7 +631,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndTexScale IndirectTex1ScaleT
         {
@@ -748,7 +644,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndTexScale IndirectTex2ScaleS
         {
@@ -762,7 +657,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndTexScale IndirectTex2ScaleT
         {
@@ -790,7 +684,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndTexScale IndirectTex3ScaleT
         {
@@ -804,7 +697,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndTexScale IndirectTex4ScaleS
         {
@@ -818,7 +710,6 @@ Those properties can use this color as an argument. This color is referred to as
                 }
             }
         }
-
         [Category("Indirect Texturing")]
         public IndTexScale IndirectTex4ScaleT
         {
@@ -855,256 +746,169 @@ Those properties can use this color as an argument. This color is referred to as
         //If this number is 1, only Light Channel 1 is applied. 
         //If this number is 2, both channels are applied.")]
         //        public int ActiveLightChannels { get { return _numLights; } set { if (!CheckIfMetal()) _numLights = (byte)value.Clamp(0, 2); } }
-        [Category("Lighting Channels")]
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        [Description(
-            @"Takes light input from the SCN0 and blends it with color input taken from the Material Source (if register) or from color nodes attached to the object (if vertex), then passes it to ColorChannel0 in each shader stage.")]
+        [Category("Lighting Channels"), TypeConverter(typeof(ExpandableObjectCustomConverter)), Description(
+@"Takes light input from the SCN0 and blends it with color input taken from the Material Source (if register) or from color nodes attached to the object (if vertex), then passes it to ColorChannel0 in each shader stage.")]
         public LightChannel LightChannel0 => _chan1;
-
-        [Category("Lighting Channels")]
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        [Description(
-            @"Takes light input from the SCN0 and blends it with color input taken from the Material Source (if register) or from color nodes attached to the object (if vertex), then passes it to ColorChannel1 in each shader stage.")]
+        [Category("Lighting Channels"), TypeConverter(typeof(ExpandableObjectCustomConverter)), Description(
+@"Takes light input from the SCN0 and blends it with color input taken from the Material Source (if register) or from color nodes attached to the object (if vertex), then passes it to ColorChannel1 in each shader stage.")]
         public LightChannel LightChannel1 => _chan2;
 
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
-        public LightingChannelFlags C1Flags
-        {
-            get => _chan1.Flags;
-            set => _chan1.Flags = value;
-        }
+        [Category("Lighting Channel 1"), Browsable(false)]
+        public LightingChannelFlags C1Flags { get => _chan1.Flags; set => _chan1.Flags = value; }
+        [Category("Lighting Channel 1"), Browsable(false), TypeConverter(typeof(RGBAStringConverter))]
+        public RGBAPixel C1MaterialColor { get => _chan1.MaterialColor; set => _chan1.MaterialColor = value; }
+        [Category("Lighting Channel 1"), Browsable(false), TypeConverter(typeof(RGBAStringConverter))]
+        public RGBAPixel C1AmbientColor { get => _chan1.AmbientColor; set => _chan1.AmbientColor = value; }
 
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
-        [TypeConverter(typeof(RGBAStringConverter))]
-        public RGBAPixel C1MaterialColor
-        {
-            get => _chan1.MaterialColor;
-            set => _chan1.MaterialColor = value;
-        }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
-        [TypeConverter(typeof(RGBAStringConverter))]
-        public RGBAPixel C1AmbientColor
-        {
-            get => _chan1.AmbientColor;
-            set => _chan1.AmbientColor = value;
-        }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXColorSrc C1ColorMaterialSource
         {
             get => _chan1.ColorMaterialSource;
             set => _chan1.ColorMaterialSource = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public bool C1ColorEnabled
         {
             get => _chan1.ColorEnabled;
             set => _chan1.ColorEnabled = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXColorSrc C1ColorAmbientSource
         {
             get => _chan1.ColorAmbientSource;
             set => _chan1.ColorAmbientSource = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXDiffuseFn C1ColorDiffuseFunction
         {
             get => _chan1.ColorDiffuseFunction;
             set => _chan1.ColorDiffuseFunction = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXAttnFn C1ColorAttenuation
         {
             get => _chan1.ColorAttenuation;
             set => _chan1.ColorAttenuation = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public MatChanLights C1ColorLights
         {
             get => _chan1.ColorLights;
             set => _chan1.ColorLights = value;
         }
 
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXColorSrc C1AlphaMaterialSource
         {
             get => _chan1.AlphaMaterialSource;
             set => _chan1.AlphaMaterialSource = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public bool C1AlphaEnabled
         {
             get => _chan1.AlphaEnabled;
             set => _chan1.AlphaEnabled = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXColorSrc C1AlphaAmbientSource
         {
             get => _chan1.AlphaAmbientSource;
             set => _chan1.AlphaAmbientSource = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXDiffuseFn C1AlphaDiffuseFunction
         {
             get => _chan1.AlphaDiffuseFunction;
             set => _chan1.AlphaDiffuseFunction = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public GXAttnFn C1AlphaAttenuation
         {
             get => _chan1.AlphaAttenuation;
             set => _chan1.AlphaAttenuation = value;
         }
-
-        [Category("Lighting Channel 1")]
-        [Browsable(false)]
+        [Category("Lighting Channel 1"), Browsable(false)]
         public MatChanLights C1AlphaLights
         {
             get => _chan1.AlphaLights;
             set => _chan1.AlphaLights = value;
         }
 
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
-        public LightingChannelFlags C2Flags
-        {
-            get => _chan2.Flags;
-            set => _chan2.Flags = value;
-        }
+        [Category("Lighting Channel 2"), Browsable(false)]
+        public LightingChannelFlags C2Flags { get => _chan2.Flags; set => _chan2.Flags = value; }
+        [Category("Lighting Channel 2"), Browsable(false), TypeConverter(typeof(RGBAStringConverter))]
+        public RGBAPixel C2MaterialColor { get => _chan2.MaterialColor; set => _chan2.MaterialColor = value; }
+        [Category("Lighting Channel 2"), Browsable(false), TypeConverter(typeof(RGBAStringConverter))]
+        public RGBAPixel C2AmbientColor { get => _chan2.AmbientColor; set => _chan2.AmbientColor = value; }
 
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
-        [TypeConverter(typeof(RGBAStringConverter))]
-        public RGBAPixel C2MaterialColor
-        {
-            get => _chan2.MaterialColor;
-            set => _chan2.MaterialColor = value;
-        }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
-        [TypeConverter(typeof(RGBAStringConverter))]
-        public RGBAPixel C2AmbientColor
-        {
-            get => _chan2.AmbientColor;
-            set => _chan2.AmbientColor = value;
-        }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXColorSrc C2ColorMaterialSource
         {
             get => _chan2.ColorMaterialSource;
             set => _chan2.ColorMaterialSource = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public bool C2ColorEnabled
         {
             get => _chan2.ColorEnabled;
             set => _chan2.ColorEnabled = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXColorSrc C2ColorAmbientSource
         {
             get => _chan2.ColorAmbientSource;
             set => _chan2.ColorAmbientSource = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXDiffuseFn C2ColorDiffuseFunction
         {
             get => _chan2.ColorDiffuseFunction;
             set => _chan2.ColorDiffuseFunction = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXAttnFn C2ColorAttenuation
         {
             get => _chan2.ColorAttenuation;
             set => _chan2.ColorAttenuation = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public MatChanLights C2ColorLights
         {
             get => _chan2.ColorLights;
             set => _chan2.ColorLights = value;
         }
 
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXColorSrc C2AlphaMaterialSource
         {
             get => _chan2.AlphaMaterialSource;
             set => _chan2.AlphaMaterialSource = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public bool C2AlphaEnabled
         {
             get => _chan2.AlphaEnabled;
             set => _chan2.AlphaEnabled = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXColorSrc C2AlphaAmbientSource
         {
             get => _chan2.AlphaAmbientSource;
             set => _chan2.AlphaAmbientSource = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXDiffuseFn C2AlphaDiffuseFunction
         {
             get => _chan2.AlphaDiffuseFunction;
             set => _chan2.AlphaDiffuseFunction = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public GXAttnFn C2AlphaAttenuation
         {
             get => _chan2.AlphaAttenuation;
             set => _chan2.AlphaAttenuation = value;
         }
-
-        [Category("Lighting Channel 2")]
-        [Browsable(false)]
+        [Category("Lighting Channel 2"), Browsable(false)]
         public MatChanLights C2AlphaLights
         {
             get => _chan2.AlphaLights;
@@ -1115,26 +919,26 @@ Those properties can use this color as an argument. This color is referred to as
 
         #region General Material
 
-        [Category("Material")]
-        [Description(MDL0Node._textureMatrixModeDescription)]
+        [Category("Material"), Description(MDL0Node._textureMatrixModeDescription)]
         public TexMatrixMode TextureMatrixMode
         {
-            get => (TexMatrixMode) _texMtxFlags;
+            get => (TexMatrixMode)_texMtxFlags;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _texMtxFlags = (uint) value;
+                    _texMtxFlags = (uint)value;
                     foreach (MDL0MaterialRefNode r in Children)
+                    {
                         r._bindState.MatrixMode = r._frameState.MatrixMode = value;
+                    }
 
                     SignalPropertyChange();
                 }
             }
         }
 
-        [Category("Material")]
-        [Description("True if this material has transparency (alpha function) enabled.")]
+        [Category("Material"), Description("True if this material has transparency (alpha function) enabled.")]
         public bool XLUMaterial
         {
             get => _usageFlags[31];
@@ -1173,10 +977,9 @@ Those properties can use this color as an argument. This color is referred to as
             }
         }
 
-        [Category("Material")] public int ID => Index;
-
         [Category("Material")]
-        [Description(@"
+        public int ID => Index;
+        [Category("Material"), Description(@"
 This dictates how many consecutive stages in the attached shader should be applied to produce the final output color.
 For example, if the shader has two stages but this number is 1, the second stage in the shader will be ignored.")]
         public int ActiveShaderStages
@@ -1186,14 +989,12 @@ For example, if the shader has two stages but this number is 1, the second stage
             {
                 if (!CheckIfMetal())
                 {
-                    _activeStages = (byte) (value > ShaderNode.Stages ? ShaderNode.Stages : value < 1 ? 1 : value);
+                    _activeStages = (byte)(value > ShaderNode.Stages ? ShaderNode.Stages : value < 1 ? 1 : value);
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Material")]
-        [Description("The number of active indirect textures in the shader.")]
+        [Category("Material"), Description("The number of active indirect textures in the shader.")]
         public int IndirectShaderStages
         {
             get => _activeIndStages;
@@ -1201,14 +1002,12 @@ For example, if the shader has two stages but this number is 1, the second stage
             {
                 if (!CheckIfMetal())
                 {
-                    _activeIndStages = (byte) (value > 4 ? 4 : value < 0 ? 0 : value);
+                    _activeIndStages = (byte)(value > 4 ? 4 : value < 0 ? 0 : value);
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("Material")]
-        [Description("This will make one, neither or both sides of the linked objects' mesh invisible.")]
+        [Category("Material"), Description("This will make one, neither or both sides of the linked objects' mesh invisible.")]
         public CullMode CullMode
         {
             get => _cull;
@@ -1226,9 +1025,8 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         #region SCN0 References
 
-        [Category("SCN0 References")]
-        [Description(
-            "This is the index of the SCN0 LightSet that should be applied to this model. Set to -1 if unused.")]
+        [Category("SCN0 References"),
+        Description("This is the index of the SCN0 LightSet that should be applied to this model. Set to -1 if unused.")]
         public sbyte LightSetIndex
         {
             get => _lightSetIndex;
@@ -1238,15 +1036,17 @@ For example, if the shader has two stages but this number is 1, the second stage
                 {
                     _lightSetIndex = value;
 
-                    if (MetalMaterial != null) MetalMaterial.UpdateAsMetal();
+                    if (MetalMaterial != null)
+                    {
+                        MetalMaterial.UpdateAsMetal();
+                    }
 
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("SCN0 References")]
-        [Description("This is the index of the SCN0 Fog that should be applied to this model. Set to -1 if unused.")]
+        [Category("SCN0 References"),
+        Description("This is the index of the SCN0 Fog that should be applied to this model. Set to -1 if unused.")]
         public sbyte FogIndex
         {
             get => _fogIndex;
@@ -1254,17 +1054,17 @@ For example, if the shader has two stages but this number is 1, the second stage
             {
                 if (!CheckIfMetal())
                 {
-                    _fogIndex = value;
-                    if (MetalMaterial != null) MetalMaterial.UpdateAsMetal();
+                    _fogIndex = value; if (MetalMaterial != null)
+                    {
+                        MetalMaterial.UpdateAsMetal();
+                    }
 
                     SignalPropertyChange();
                 }
             }
         }
-
-        [Category("SCN0 References")]
-        [Description(
-            "This is the index of the SCN0 Light that should be used for indirect texture 1 if it is a normal map. Set to -1 if unused.")]
+        [Category("SCN0 References"),
+        Description("This is the index of the SCN0 Light that should be used for indirect texture 1 if it is a normal map. Set to -1 if unused.")]
         public sbyte NormMapRefLight1
         {
             get => _normMapRefLight1;
@@ -1277,10 +1077,8 @@ For example, if the shader has two stages but this number is 1, the second stage
                 }
             }
         }
-
-        [Category("SCN0 References")]
-        [Description(
-            "This is the index of the SCN0 Light that should be used for indirect texture 2 if it is a normal map. Set to -1 if unused.")]
+        [Category("SCN0 References"),
+        Description("This is the index of the SCN0 Light that should be used for indirect texture 2 if it is a normal map. Set to -1 if unused.")]
         public sbyte NormMapRefLight2
         {
             get => _normMapRefLight2;
@@ -1293,10 +1091,8 @@ For example, if the shader has two stages but this number is 1, the second stage
                 }
             }
         }
-
-        [Category("SCN0 References")]
-        [Description(
-            "This is the index of the SCN0 Light that should be used for indirect texture 3 if it is a normal map. Set to -1 if unused.")]
+        [Category("SCN0 References"),
+        Description("This is the index of the SCN0 Light that should be used for indirect texture 3 if it is a normal map. Set to -1 if unused.")]
         public sbyte NormMapRefLight3
         {
             get => _normMapRefLight3;
@@ -1309,10 +1105,8 @@ For example, if the shader has two stages but this number is 1, the second stage
                 }
             }
         }
-
-        [Category("SCN0 References")]
-        [Description(
-            "This is the index of the SCN0 Light that should be used for indirect texture 4 if it is a normal map. Set to -1 if unused.")]
+        [Category("SCN0 References"),
+        Description("This is the index of the SCN0 Light that should be used for indirect texture 4 if it is a normal map. Set to -1 if unused.")]
         public sbyte NormMapRefLight4
         {
             get => _normMapRefLight4;
@@ -1334,7 +1128,10 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         public void UpdateAsMetal()
         {
-            if (!IsMetal) return;
+            if (!IsMetal)
+            {
+                return;
+            }
 
             _updating = true;
             if (ShaderNode != null && ShaderNode._autoMetal && ShaderNode._texCount == Children.Count)
@@ -1343,8 +1140,9 @@ For example, if the shader has two stages but this number is 1, the second stage
             }
             else
             {
-                var found = false;
+                bool found = false;
                 foreach (MDL0ShaderNode s in Model._shadList)
+                {
                     if (s._autoMetal && s._texCount == Children.Count)
                     {
                         ShaderNode = s;
@@ -1354,21 +1152,26 @@ For example, if the shader has two stages but this number is 1, the second stage
                     {
                         if (s.Stages == 4)
                         {
-                            foreach (var y in s._materials)
+                            foreach (MDL0MaterialNode y in s._materials)
+                            {
                                 if (!y.IsMetal || y.Children.Count != Children.Count)
+                                {
                                     goto NotFound;
+                                }
+                            }
 
                             ShaderNode = s;
                             found = true;
                             goto End;
-                            NotFound: ;
+                        NotFound:
+                            continue;
                         }
                     }
-
-                End:
+                }
+            End:
                 if (!found)
                 {
-                    var shader = new MDL0ShaderNode();
+                    MDL0ShaderNode shader = new MDL0ShaderNode();
                     Model._shadGroup.AddChild(shader);
                     shader.DefaultAsMetal(Children.Count);
                     ShaderNode = shader;
@@ -1383,17 +1186,17 @@ For example, if the shader has two stages but this number is 1, the second stage
                 if (Children.Count - 1 != MetalMaterial.Children.Count)
                 {
                     //Remove all children
-                    for (var i = 0; i < Children.Count; i++)
+                    for (int i = 0; i < Children.Count; i++)
                     {
-                        ((MDL0MaterialRefNode) Children[i]).TextureNode = null;
-                        ((MDL0MaterialRefNode) Children[i]).PaletteNode = null;
+                        ((MDL0MaterialRefNode)Children[i]).TextureNode = null;
+                        ((MDL0MaterialRefNode)Children[i]).PaletteNode = null;
                         RemoveChild(Children[i--]);
                     }
 
                     //Start over
-                    for (var i = 0; i <= MetalMaterial.Children.Count; i++)
+                    for (int i = 0; i <= MetalMaterial.Children.Count; i++)
                     {
-                        var mr = new MDL0MaterialRefNode();
+                        MDL0MaterialRefNode mr = new MDL0MaterialRefNode();
 
                         AddChild(mr);
                         mr.Texture = "metal00";
@@ -1403,14 +1206,14 @@ For example, if the shader has two stages but this number is 1, the second stage
                         mr._texMatrixEffect.SCNCamera = -1;
                         mr._texMatrixEffect.SCNLight = -1;
 
-                        var info = new XFTexMtxInfo
+                        XFTexMtxInfo info = new XFTexMtxInfo()
                         {
                             Projection = TexProjection.STQ,
                             InputForm = TexInputForm.ABC1,
                             TexGenType = TexTexgenType.Regular,
                             SourceRow = TexSourceRow.Normals,
                             EmbossSource = 5,
-                            EmbossLight = 0
+                            EmbossLight = 0,
                         };
 
                         if (i == MetalMaterial.Children.Count)
@@ -1441,8 +1244,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                         mr._texMtxFlags = info;
                     }
 
-                    _chan1 = new LightChannel(63, new RGBAPixel(128, 128, 128, 255), new RGBAPixel(255, 255, 255, 255),
-                        0, 0, this);
+                    _chan1 = new LightChannel(63, new RGBAPixel(128, 128, 128, 255), new RGBAPixel(255, 255, 255, 255), 0, 0, this);
                     C1ColorEnabled = true;
                     C1ColorDiffuseFunction = GXDiffuseFn.Clamped;
                     C1ColorAttenuation = GXAttnFn.Spotlight;
@@ -1464,14 +1266,13 @@ For example, if the shader has two stages but this number is 1, the second stage
                     //_numLights = 2;
                     CompareBeforeTexture = true;
                     _normMapRefLight1 =
-                        _normMapRefLight2 =
-                            _normMapRefLight3 =
-                                _normMapRefLight4 = -1;
+                    _normMapRefLight2 =
+                    _normMapRefLight3 =
+                    _normMapRefLight4 = -1;
 
                     SignalPropertyChange();
                 }
             }
-
             _updating = false;
         }
 
@@ -1492,7 +1293,8 @@ For example, if the shader has two stages but this number is 1, the second stage
             return false;
         }
 
-        [Browsable(false)] public bool IsMetal => Name.EndsWith("_ExtMtl");
+        [Browsable(false)]
+        public bool IsMetal => Name.EndsWith("_ExtMtl");
 
         [Browsable(false)]
         public MDL0MaterialNode MetalMaterial
@@ -1500,15 +1302,19 @@ For example, if the shader has two stages but this number is 1, the second stage
             get
             {
                 foreach (MDL0MaterialNode t in Model._matList)
+                {
                     if (!IsMetal)
                     {
-                        if (t.Name.StartsWith(Name) && t.IsMetal && Name.Length + 7 == t.Name.Length) return t;
+                        if (t.Name.StartsWith(Name) && t.IsMetal && (Name.Length + 7 == t.Name.Length))
+                        {
+                            return t;
+                        }
                     }
-                    else if (Name.StartsWith(t.Name) && !t.IsMetal && t.Name.Length + 7 == Name.Length)
+                    else if (Name.StartsWith(t.Name) && !t.IsMetal && (t.Name.Length + 7 == Name.Length))
                     {
                         return t;
                     }
-
+                }
                 return null;
             }
         }
@@ -1516,19 +1322,20 @@ For example, if the shader has two stages but this number is 1, the second stage
         #endregion
 
         #region Reading & Writing
-
         internal int _initVersion;
-
         public override bool OnInitialize()
         {
-            var header = Header;
+            MDL0Material* header = Header;
 
             _initVersion = header->_pad != 0 && _replaced ? header->_pad : Model._version;
 
-            if (_name == null && header->_stringOffset != 0) _name = header->ResourceString;
+            if ((_name == null) && (header->_stringOffset != 0))
+            {
+                _name = header->ResourceString;
+            }
 
             //Get XF Commands
-            XFCmds = XFData.Parse((byte*) header->DisplayLists(_initVersion) + 0xE0);
+            XFCmds = XFData.Parse((byte*)header->DisplayLists(_initVersion) + 0xE0);
 
             _usageFlags = header->_usageFlags;
 
@@ -1549,12 +1356,14 @@ For example, if the shader has two stages but this number is 1, the second stage
             _lightSetIndex = header->_lightSet;
             _fogIndex = header->_fogSet;
 
-            _cull = (CullMode) (int) header->_cull;
+            _cull = (CullMode)(int)header->_cull;
 
             if (!_replaced && (-header->_mdl0Offset + header->DisplayListOffset(_initVersion)) % 0x20 != 0)
+            {
                 Model._errors.Add("Material " + Index + " has an improper align offset.");
+            }
 
-            var mode = header->DisplayLists(_initVersion);
+            MatModeBlock* mode = header->DisplayLists(_initVersion);
             _alphaFunc = mode->AlphaFunction;
             _zMode = mode->ZMode;
             _blendMode = mode->BlendMode;
@@ -1564,10 +1373,10 @@ For example, if the shader has two stages but this number is 1, the second stage
             _tevKonstBlock = *header->TevKonstBlock(_initVersion);
             _indMtx = *header->IndMtxBlock(_initVersion);
 
-            var TexMatrices = header->TexMatrices(_initVersion);
+            MDL0TexSRTData* TexMatrices = header->TexMatrices(_initVersion);
             _texMtxFlags = TexMatrices->_mtxFlags;
 
-            var Light = header->Light(_initVersion);
+            MDL0MaterialLighting* Light = header->Light(_initVersion);
 
             (_chan1 = Light->Channel1)._parent = this;
             (_chan2 = Light->Channel2)._parent = this;
@@ -1579,9 +1388,11 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         public override void OnPopulate()
         {
-            var first = Header->First;
-            for (var i = 0; i < Header->_numTextures; i++)
+            MDL0TextureRef* first = Header->First;
+            for (int i = 0; i < Header->_numTextures; i++)
+            {
                 new MDL0MaterialRefNode().Initialize(this, first++, MDL0TextureRef.Size);
+            }
         }
 
         internal override void GetStrings(StringTable table)
@@ -1591,14 +1402,19 @@ For example, if the shader has two stages but this number is 1, the second stage
             foreach (UserDataClass s in _userEntries)
             {
                 table.Add(s._name);
-                if (s._type == UserValueType.String && s._entries.Count > 0) table.Add(s._entries[0]);
+                if (s._type == UserValueType.String && s._entries.Count > 0)
+                {
+                    table.Add(s._entries[0]);
+                }
             }
 
-            foreach (MDL0MaterialRefNode n in Children) n.GetStrings(table);
+            foreach (MDL0MaterialRefNode n in Children)
+            {
+                n.GetStrings(table);
+            }
         }
 
-        internal int _dataAlign, _mdlOffset = 0;
-
+        internal int _dataAlign = 0, _mdlOffset = 0;
         public override int OnCalculateSize(bool force)
         {
             int temp, size;
@@ -1617,7 +1433,10 @@ For example, if the shader has two stages but this number is 1, the second stage
 
             //Align data to an offset divisible by 0x20 using data length.
             size = size.Align(0x10) + _dataAlign;
-            if ((size + _mdlOffset) % 0x20 != 0) size += size - 0x10 >= temp ? -0x10 : 0x10;
+            if ((size + _mdlOffset) % 0x20 != 0)
+            {
+                size += ((size - 0x10 >= temp) ? -0x10 : 0x10);
+            }
 
             //Reset data alignment
             _dataAlign = 0;
@@ -1630,8 +1449,8 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var model = Model;
-            var header = (MDL0Material*) address;
+            MDL0Node model = Model;
+            MDL0Material* header = (MDL0Material*)address;
 
             //Set offsets
             header->_dataLen = length;
@@ -1656,9 +1475,13 @@ For example, if the shader has two stages but this number is 1, the second stage
             {
                 addr += Children.Count * 0x34;
                 if (model._version >= 10)
+                {
                     header->_dataOffset2 = addr;
+                }
                 else
+                {
                     header->_dataOffset1 = addr;
+                }
 
                 _userEntries.Write(header->UserData(model._version));
             }
@@ -1669,10 +1492,11 @@ For example, if the shader has two stages but this number is 1, the second stage
 
             ushort i1 = 0x1040, i2 = 0x1050, mtx = 0;
             if (Model._isImport)
+            {
                 //Set default texgen flags
-                for (var i = 0; i < Children.Count; i++, mtx += 3, i1++, i2++)
+                for (int i = 0; i < Children.Count; i++, mtx += 3, i1++, i2++)
                 {
-                    var node = (MDL0MaterialRefNode) Children[i];
+                    MDL0MaterialRefNode node = ((MDL0MaterialRefNode)Children[i]);
 
                     node._bindState = TextureFrameState.Neutral;
                     node._texMatrixEffect.TextureMatrix = Matrix34.Identity;
@@ -1691,19 +1515,26 @@ For example, if the shader has two stages but this number is 1, the second stage
                     XFCmds.Add(new XFData(i1, node._texMtxFlags._data));
                     XFCmds.Add(new XFData(i2, node._dualTexFlags.Value));
                 }
+            }
 
             //Set header values
             header->_numTextures = Children.Count;
-            header->_numTexGens = (byte) Children.Count;
+            header->_numTexGens = (byte)Children.Count;
             header->_index = Index;
             header->_activeTEVStages = _activeStages;
             header->_numIndTexStages = _activeIndStages;
             header->_depthTestBeforeTexture = _depthTestBeforeTexture;
 
             byte lights = 0;
-            if (_chan1.RasterColorEnabled || _chan1.RasterAlphaEnabled) lights++;
+            if (_chan1.RasterColorEnabled || _chan1.RasterAlphaEnabled)
+            {
+                lights++;
+            }
 
-            if (_chan2.RasterColorEnabled || _chan2.RasterAlphaEnabled) lights++;
+            if (_chan2.RasterColorEnabled || _chan2.RasterAlphaEnabled)
+            {
+                lights++;
+            }
 
             header->_numLightChans = lights;
 
@@ -1711,7 +1542,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             header->_fogSet = _fogIndex;
             header->_pad = 0;
 
-            header->_cull = (int) _cull;
+            header->_cull = (int)_cull;
             header->_usageFlags = _usageFlags;
 
             header->_indirectMethod1 = _indirectMethod1;
@@ -1725,37 +1556,46 @@ For example, if the shader has two stages but this number is 1, the second stage
             header->_normMapRefLight4 = _normMapRefLight4;
 
             //Generate layer flags and write texture matrices
-            var TexSettings = header->TexMatrices(model._version);
+            MDL0TexSRTData* TexSettings = header->TexMatrices(model._version);
             *TexSettings = MDL0TexSRTData.Default;
 
             //Usage flags. Each set of 4 bits represents one texture layer.
             uint layerFlags = 0;
 
             //Loop through references in reverse so that layerflags is set in the right order
-            for (var i = Children.Count - 1; i >= 0; i--)
+            for (int i = Children.Count - 1; i >= 0; i--)
             {
-                var node = (MDL0MaterialRefNode) Children[i];
+                MDL0MaterialRefNode node = (MDL0MaterialRefNode)Children[i];
 
-                var flags = TexFlags.Enabled;
+                TexFlags flags = TexFlags.Enabled;
 
                 //Check for non-default values
-                if (node._bindState.Scale == new Vector2(1)) flags |= TexFlags.FixedScale;
+                if (node._bindState.Scale == new Vector2(1))
+                {
+                    flags |= TexFlags.FixedScale;
+                }
 
-                if (node._bindState.Rotate == 0) flags |= TexFlags.FixedRot;
+                if (node._bindState.Rotate == 0)
+                {
+                    flags |= TexFlags.FixedRot;
+                }
 
-                if (node._bindState.Translate == new Vector2(0)) flags |= TexFlags.FixedTrans;
+                if (node._bindState.Translate == new Vector2(0))
+                {
+                    flags |= TexFlags.FixedTrans;
+                }
 
                 TexSettings->SetTexSRT(node._bindState, node.Index);
                 TexSettings->SetTexMatrices(node._texMatrixEffect, node.Index);
 
-                layerFlags = (layerFlags << 4) | (byte) flags;
+                layerFlags = ((layerFlags << 4) | (byte)flags);
             }
 
             TexSettings->_layerFlags = layerFlags;
             TexSettings->_mtxFlags = _texMtxFlags;
 
             //Write lighting flags
-            var Light = header->Light(model._version);
+            MDL0MaterialLighting* Light = header->Light(model._version);
 
             Light->Channel1 = _chan1;
             Light->Channel2 = _chan2;
@@ -1763,15 +1603,18 @@ For example, if the shader has two stages but this number is 1, the second stage
             //The shader offset will be written later
 
             //Rebuild references
-            var mRefs = header->First;
-            foreach (MDL0MaterialRefNode n in Children) n.Rebuild(mRefs++, MDL0TextureRef.Size, true);
+            MDL0TextureRef* mRefs = header->First;
+            foreach (MDL0MaterialRefNode n in Children)
+            {
+                n.Rebuild(mRefs++, MDL0TextureRef.Size, true);
+            }
 
             //Set Display Lists
             *header->TevKonstBlock(model._version) = _tevKonstBlock;
             *header->TevColorBlock(model._version) = _tevColorBlock;
             *header->IndMtxBlock(model._version) = _indMtx;
 
-            var mode = header->DisplayLists(model._version);
+            MatModeBlock* mode = header->DisplayLists(model._version);
             *mode = MatModeBlock.Default;
             if (model._isImport)
             {
@@ -1789,68 +1632,59 @@ For example, if the shader has two stages but this number is 1, the second stage
             }
 
             //Write XF flags
-            i1 = 0x1040;
-            i2 = 0x1050;
-            mtx = 0;
-            var xfData = (byte*) header->DisplayLists(model._version) + 0xE0;
+            i1 = 0x1040; i2 = 0x1050; mtx = 0;
+            byte* xfData = (byte*)header->DisplayLists(model._version) + 0xE0;
             foreach (MDL0MaterialRefNode mr in Children)
             {
                 //Tex Mtx
                 *xfData++ = 0x10;
-                *(bushort*) xfData = 0;
-                xfData += 2;
-                *(bushort*) xfData = i1++;
-                xfData += 2;
-                *(buint*) xfData = mr._texMtxFlags._data._data;
-                xfData += 4;
+                *(bushort*)xfData = 0; xfData += 2;
+                *(bushort*)xfData = i1++; xfData += 2;
+                *(buint*)xfData = mr._texMtxFlags._data._data; xfData += 4;
 
                 //Dual Tex
                 *xfData++ = 0x10;
-                *(bushort*) xfData = 0;
-                xfData += 2;
-                *(bushort*) xfData = i2++;
-                xfData += 2;
-                *(buint*) xfData = new XFDualTex(mtx, mr._dualTexFlags._normalEnable).Value;
-                xfData += 4;
+                *(bushort*)xfData = 0; xfData += 2;
+                *(bushort*)xfData = i2++; xfData += 2;
+                *(buint*)xfData = new XFDualTex(mtx, mr._dualTexFlags._normalEnable).Value; xfData += 4;
 
                 mtx += 3;
             }
         }
-
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
         {
-            var header = (MDL0Material*) dataAddress;
-            header->_mdl0Offset = (int) mdlAddress - (int) dataAddress;
-            header->_stringOffset = (int) stringTable[Name] + 4 - (int) dataAddress;
+            MDL0Material* header = (MDL0Material*)dataAddress;
+            header->_mdl0Offset = (int)mdlAddress - (int)dataAddress;
+            header->_stringOffset = (int)stringTable[Name] + 4 - (int)dataAddress;
             header->_index = Index;
 
             _userEntries.PostProcess(header->UserData(Model._version), stringTable);
 
-            var first = header->First;
-            foreach (MDL0MaterialRefNode n in Children) n.PostProcess(mdlAddress, first++, stringTable);
+            MDL0TextureRef* first = header->First;
+            foreach (MDL0MaterialRefNode n in Children)
+            {
+                n.PostProcess(mdlAddress, first++, stringTable);
+            }
         }
-
-        public override void Export(string outPath)
+        public override unsafe void Export(string outPath)
         {
-            var table = new StringTable();
+            StringTable table = new StringTable();
             GetStrings(table);
-            var dataLen = CalculateSize(false);
-            var totalLen = dataLen + table.GetTotalSize();
+            int dataLen = CalculateSize(false);
+            int totalLen = dataLen + table.GetTotalSize();
 
-            using (var stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8,
-                FileOptions.RandomAccess))
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
             {
                 stream.SetLength(totalLen);
-                using (var map = FileMap.FromStream(stream))
+                using (FileMap map = FileMap.FromStream(stream))
                 {
                     Rebuild(map.Address, dataLen, false);
                     table.WriteTable(map.Address + dataLen);
                     PostProcess(map.Address, map.Address, table);
-                    ((MDL0Material*) map.Address)->_pad = (byte) Model._version;
+                    ((MDL0Material*)map.Address)->_pad = (byte)Model._version;
                 }
             }
         }
-
         #endregion
 
         #region Rendering
@@ -1865,28 +1699,32 @@ For example, if the shader has two stages but this number is 1, the second stage
         }
 
         public string _vertexShaderSource;
-        public int _vertexShaderHandle;
+        public int _vertexShaderHandle = 0;
         public string _fragShaderSource;
-        public int _fragShaderHandle;
-        public int _programHandle;
-        public bool _internalForceRemake;
+        public int _fragShaderHandle = 0;
+        public int _programHandle = 0;
+        public bool _internalForceRemake = false;
 
         public void UseProgram(MDL0ObjectNode node, bool forceRemake = false)
         {
             forceRemake = forceRemake || ShaderGenerator._forceRecompile;
 
             //If a rendering property has been changed, the shaders need to be regenerated
-            var updateVert = string.IsNullOrEmpty(_vertexShaderSource) || forceRemake;
-            var updateMatFrag = string.IsNullOrEmpty(_fragShaderSource) || forceRemake;
-            var updateShaderFrag = ShaderNode != null && ShaderNode._fragShaderSource == null || forceRemake;
-            var updateProgram = _programHandle <= 0 ||
-                                updateVert || _vertexShaderHandle <= 0 ||
-                                updateMatFrag || updateShaderFrag || _fragShaderHandle <= 0 ||
-                                _internalForceRemake;
+            bool updateVert = string.IsNullOrEmpty(_vertexShaderSource) || forceRemake;
+            bool updateMatFrag = string.IsNullOrEmpty(_fragShaderSource) || forceRemake;
+            bool updateShaderFrag = (ShaderNode != null && ShaderNode._fragShaderSource == null) || forceRemake;
+            bool updateProgram = _programHandle <= 0 ||
+                updateVert || _vertexShaderHandle <= 0 ||
+                updateMatFrag || updateShaderFrag || _fragShaderHandle <= 0 ||
+                _internalForceRemake;
 
             if (updateShaderFrag)
-                foreach (var m in ShaderNode.Materials)
+            {
+                foreach (MDL0MaterialNode m in ShaderNode.Materials)
+                {
                     m._internalForceRemake = true;
+                }
+            }
 
             _internalForceRemake = false;
 
@@ -1898,9 +1736,15 @@ For example, if the shader has two stages but this number is 1, the second stage
 #endif
                     if (_programHandle > 0)
                     {
-                        if (_vertexShaderHandle > 0) DeleteShader(ref _vertexShaderHandle);
+                        if (_vertexShaderHandle > 0)
+                        {
+                            DeleteShader(ref _vertexShaderHandle);
+                        }
 
-                        if (_fragShaderHandle > 0) DeleteShader(ref _fragShaderHandle);
+                        if (_fragShaderHandle > 0)
+                        {
+                            DeleteShader(ref _fragShaderHandle);
+                        }
 
                         GL.DeleteProgram(_programHandle);
                         _programHandle = 0;
@@ -1908,13 +1752,22 @@ For example, if the shader has two stages but this number is 1, the second stage
 
                     ShaderGenerator.SetTarget(this);
 
-                    if (updateShaderFrag) ShaderNode._fragShaderSource = ShaderGenerator.GenTEVFragShader();
+                    if (updateShaderFrag)
+                    {
+                        ShaderNode._fragShaderSource = ShaderGenerator.GenTEVFragShader();
+                    }
 
-                    if (updateVert) _vertexShaderSource = ShaderGenerator.GenVertexShader();
+                    if (updateVert)
+                    {
+                        _vertexShaderSource = ShaderGenerator.GenVertexShader();
+                    }
 
-                    if (updateMatFrag) _fragShaderSource = ShaderGenerator.GenMaterialFragShader();
+                    if (updateMatFrag)
+                    {
+                        _fragShaderSource = ShaderGenerator.GenMaterialFragShader();
+                    }
 
-                    var combineFrag = ShaderGenerator.CombineFragShader(
+                    string combineFrag = ShaderGenerator.CombineFragShader(
                         _fragShaderSource,
                         ShaderNode == null ? null : ShaderNode._fragShaderSource,
                         ActiveShaderStages);
@@ -1959,7 +1812,10 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         private void DeleteShader(ref int handle)
         {
-            if (handle <= 0) return;
+            if (handle <= 0)
+            {
+                return;
+            }
 
             GL.DetachShader(_programHandle, handle);
             GL.DeleteShader(handle);
@@ -1969,6 +1825,7 @@ For example, if the shader has two stages but this number is 1, the second stage
 
         internal override void Bind()
         {
+
         }
 
         internal override void Unbind()
@@ -1976,11 +1833,17 @@ For example, if the shader has two stages but this number is 1, the second stage
             DeleteShader(ref _vertexShaderHandle);
             DeleteShader(ref _fragShaderHandle);
 
-            if (_programHandle > 0) GL.DeleteProgram(_programHandle);
+            if (_programHandle > 0)
+            {
+                GL.DeleteProgram(_programHandle);
+            }
 
             _programHandle = 0;
 
-            foreach (MDL0MaterialRefNode m in Children) m.Unbind();
+            foreach (MDL0MaterialRefNode m in Children)
+            {
+                m.Unbind();
+            }
         }
 
         //public override void Dispose()
@@ -2004,15 +1867,22 @@ For example, if the shader has two stages but this number is 1, the second stage
             SRT0EntryNode e;
 
             if (node == null || index < 1)
+            {
                 foreach (MDL0MaterialRefNode r in Children)
+                {
                     r.ApplySRT0Texture(null);
+                }
+            }
             else if ((e = node.FindChild(Name, false) as SRT0EntryNode) != null)
+            {
                 foreach (SRT0TextureNode t in e.Children)
+                {
                     if (!t.Indirect)
                     {
                         if (t._textureIndex < Children.Count)
-                            ((MDL0MaterialRefNode) Children[t._textureIndex]).ApplySRT0Texture(t, index,
-                                node.MatrixMode);
+                        {
+                            ((MDL0MaterialRefNode)Children[t._textureIndex]).ApplySRT0Texture(t, index, node.MatrixMode);
+                        }
                     }
                     else if (t._textureIndex < _indirectFrameStates.Length)
                     {
@@ -2020,10 +1890,14 @@ For example, if the shader has two stages but this number is 1, the second stage
                         {
                             if (node != null && index >= 1)
                             {
-                                var f = (float*) state;
-                                for (var i = 0; i < 5; i++)
+                                float* f = (float*)state;
+                                for (int i = 0; i < 5; i++)
+                                {
                                     if (t.Keyframes[i]._keyCount > 0)
+                                    {
                                         f[i] = t.GetFrameValue(i, index - 1);
+                                    }
+                                }
 
                                 state->MatrixMode = node.MatrixMode;
                                 state->CalcTransforms();
@@ -2034,9 +1908,15 @@ For example, if the shader has two stages but this number is 1, the second stage
                             }
                         }
                     }
+                }
+            }
             else
+            {
                 foreach (MDL0MaterialRefNode r in Children)
+                {
                     r.ApplySRT0Texture(null);
+                }
+            }
         }
 
         //Use these for streaming values into the shader
@@ -2060,75 +1940,67 @@ For example, if the shader has two stages but this number is 1, the second stage
                 return;
             }
 
-            var mat = node.FindChild(Name, false) as CLR0MaterialNode;
+            CLR0MaterialNode mat = node.FindChild(Name, false) as CLR0MaterialNode;
             if (mat != null)
+            {
                 foreach (CLR0MaterialEntryNode e in mat.Children)
                 {
-                    RGBAPixel color = e.Constant
-                        ? e.SolidColor
-                        : e.Colors[((int) Math.Truncate(index - 1)).Clamp(0, e.Colors.Count - 1)];
+                    RGBAPixel color = e.Constant ? e.SolidColor : e.Colors[((int)Math.Truncate(index - 1)).Clamp(0, e.Colors.Count - 1)];
                     RGBAPixel mask = e.ColorMask;
                     switch (e.Target)
                     {
-                        case EntryTarget.LightChannel0AmbientColor:
-                            amb1 = (C1AmbientColor & mask) | color;
-                            break;
-                        case EntryTarget.LightChannel1AmbientColor:
-                            amb2 = (C2AmbientColor & mask) | color;
-                            break;
-                        case EntryTarget.LightChannel0MaterialColor:
-                            clr1 = (C1MaterialColor & mask) | color;
-                            break;
-                        case EntryTarget.LightChannel1MaterialColor:
-                            clr2 = (C2MaterialColor & mask) | color;
-                            break;
-                        case EntryTarget.ColorRegister0:
-                            c1 = ((RGBAPixel) Color0 & mask) | color;
-                            break;
-                        case EntryTarget.ColorRegister1:
-                            c2 = ((RGBAPixel) Color1 & mask) | color;
-                            break;
-                        case EntryTarget.ColorRegister2:
-                            c3 = ((RGBAPixel) Color2 & mask) | color;
-                            break;
-                        case EntryTarget.ConstantColorRegister0:
-                            k1 = ((RGBAPixel) ConstantColor0 & mask) | color;
-                            break;
-                        case EntryTarget.ConstantColorRegister1:
-                            k2 = ((RGBAPixel) ConstantColor1 & mask) | color;
-                            break;
-                        case EntryTarget.ConstantColorRegister2:
-                            k3 = ((RGBAPixel) ConstantColor2 & mask) | color;
-                            break;
-                        case EntryTarget.ConstantColorRegister3:
-                            k4 = ((RGBAPixel) ConstantColor3 & mask) | color;
-                            break;
+                        case EntryTarget.LightChannel0AmbientColor: amb1 = (C1AmbientColor & mask) | color; break;
+                        case EntryTarget.LightChannel1AmbientColor: amb2 = (C2AmbientColor & mask) | color; break;
+                        case EntryTarget.LightChannel0MaterialColor: clr1 = (C1MaterialColor & mask) | color; break;
+                        case EntryTarget.LightChannel1MaterialColor: clr2 = (C2MaterialColor & mask) | color; break;
+                        case EntryTarget.ColorRegister0: c1 = ((RGBAPixel)Color0 & mask) | color; break;
+                        case EntryTarget.ColorRegister1: c2 = ((RGBAPixel)Color1 & mask) | color; break;
+                        case EntryTarget.ColorRegister2: c3 = ((RGBAPixel)Color2 & mask) | color; break;
+                        case EntryTarget.ConstantColorRegister0: k1 = ((RGBAPixel)ConstantColor0 & mask) | color; break;
+                        case EntryTarget.ConstantColorRegister1: k2 = ((RGBAPixel)ConstantColor1 & mask) | color; break;
+                        case EntryTarget.ConstantColorRegister2: k3 = ((RGBAPixel)ConstantColor2 & mask) | color; break;
+                        case EntryTarget.ConstantColorRegister3: k4 = ((RGBAPixel)ConstantColor3 & mask) | color; break;
                     }
                 }
+            }
         }
 
-        internal void ApplyPAT0(PAT0Node node, float index)
+        internal unsafe void ApplyPAT0(PAT0Node node, float index)
         {
             PAT0EntryNode e;
 
             if (node == null || index < 1)
+            {
                 foreach (MDL0MaterialRefNode r in Children)
+                {
                     r.ApplyPAT0Texture(null, 0);
+                }
+            }
             else if ((e = node.FindChild(Name, false) as PAT0EntryNode) != null)
+            {
                 foreach (PAT0TextureNode t in e.Children)
+                {
                     if (t._textureIndex < Children.Count)
-                        ((MDL0MaterialRefNode) Children[t._textureIndex]).ApplyPAT0Texture(t, index);
+                    {
+                        ((MDL0MaterialRefNode)Children[t._textureIndex]).ApplyPAT0Texture(t, index);
+                    }
+                }
+            }
             else
+            {
                 foreach (MDL0MaterialRefNode r in Children)
+                {
                     r.ApplyPAT0Texture(null, 0);
+                }
+            }
         }
 
-        public bool _scn0Applied;
+        public bool _scn0Applied = false;
         public Vector4 _ambientLight;
         public FogAnimationFrame _fog;
         public GLSLLightFrame[] _lights = new GLSLLightFrame[8];
 
-        internal void ApplySCN(SCN0Node node, float index)
+        internal unsafe void ApplySCN(SCN0Node node, float index)
         {
             if (node == null || index <= 0)
             {
@@ -2145,35 +2017,40 @@ For example, if the shader has two stages but this number is 1, the second stage
 
                 _scn0Applied = true;
 
-                var lightSetGroup = node.LightSetGroup;
-                var lightGroup = node.LightGroup;
-                var fogGroup = node.FogGroup;
-                var cameraGroup = node.CameraGroup;
+                SCN0GroupNode lightSetGroup = node.LightSetGroup;
+                SCN0GroupNode lightGroup = node.LightGroup;
+                SCN0GroupNode fogGroup = node.FogGroup;
+                SCN0GroupNode cameraGroup = node.CameraGroup;
 
                 if (lightSetGroup != null)
                 {
-                    var lightSet = LightSetIndex < lightSetGroup.Children.Count && LightSetIndex >= 0
-                        ? lightSetGroup.Children[LightSetIndex] as SCN0LightSetNode
-                        : null;
+                    SCN0LightSetNode lightSet = LightSetIndex < lightSetGroup.Children.Count && LightSetIndex >= 0 ? lightSetGroup.Children[LightSetIndex] as SCN0LightSetNode : null;
                     if (lightSet != null)
                     {
-                        var ambLight = lightSet._ambient;
-                        if (ambLight != null) _ambientLight = ambLight.GetAmbientColorFrame(index);
-
-                        for (var i = 0; i < lightSet._lights.Length; i++)
+                        SCN0AmbientLightNode ambLight = lightSet._ambient;
+                        if (ambLight != null)
                         {
-                            var light = lightSet._lights[i];
-                            if (light != null) _lights[i] = light.GetGLSLAnimFrame(index);
+                            _ambientLight = ambLight.GetAmbientColorFrame(index);
+                        }
+
+                        for (int i = 0; i < lightSet._lights.Length; i++)
+                        {
+                            SCN0LightNode light = lightSet._lights[i];
+                            if (light != null)
+                            {
+                                _lights[i] = light.GetGLSLAnimFrame(index);
+                            }
                         }
                     }
                 }
 
                 if (fogGroup != null)
                 {
-                    var fog = FogIndex < fogGroup.Children.Count && FogIndex >= 0
-                        ? fogGroup.Children[FogIndex] as SCN0FogNode
-                        : null;
-                    if (fog != null) _fog = fog.GetAnimFrame(index);
+                    SCN0FogNode fog = FogIndex < fogGroup.Children.Count && FogIndex >= 0 ? fogGroup.Children[FogIndex] as SCN0FogNode : null;
+                    if (fog != null)
+                    {
+                        _fog = fog.GetAnimFrame(index);
+                    }
                 }
             }
         }
@@ -2184,16 +2061,18 @@ For example, if the shader has two stages but this number is 1, the second stage
             //(like an SCN0 built into the program)
             if (!_scn0Applied)
             {
-                var pointLight = viewport._posLight._w != 0.0f;
+                bool pointLight = viewport._posLight._w != 0.0f;
                 _lights[0] = new GLSLLightFrame(
                     viewport._lightEnabled,
                     pointLight ? LightType.Point : LightType.Directional,
                     new Vector3(viewport._posLight._x, viewport._posLight._y, viewport._posLight._z),
                     new Vector3(),
                     viewport.Diffuse,
-                    pointLight
-                        ? SCN0LightNode.GetLightDistCoefs(viewport.LightPosition._x, 0.5f, DistAttnFn.Medium)
-                        : new Vector3(1.0f, 0.0f, 0.0f),
+
+                    pointLight ?
+                    SCN0LightNode.GetLightDistCoefs(viewport.LightPosition._x, 0.5f, DistAttnFn.Medium) :
+                    new Vector3(1.0f, 0.0f, 0.0f),
+
                     new Vector3(1.0f, 0.0f, 0.0f),
                     true,
                     viewport.Specular,
@@ -2203,6 +2082,30 @@ For example, if the shader has two stages but this number is 1, the second stage
         }
 
         #endregion
+
+        public override unsafe void Replace(string fileName)
+        {
+            base.Replace(fileName);
+
+            Model.CheckTextures();
+        }
+
+        public override void Remove()
+        {
+            if (Parent != null)
+            {
+                ShaderNode = null;
+
+                foreach (MDL0MaterialRefNode r in Children)
+                {
+                    r.TextureNode = null;
+                    r.PaletteNode = null;
+                }
+
+                Model.CheckTextures();
+            }
+            base.Remove();
+        }
 
         //public override void RemoveChild(ResourceNode child)
         //{
@@ -2217,28 +2120,19 @@ For example, if the shader has two stages but this number is 1, the second stage
 
     public class LightChannel
     {
-        public LightChannelControl _color, _alpha;
+        public MDL0MaterialNode _parent = null;
         public LightingChannelFlags _flags;
         public RGBAPixel _matColor, _ambColor;
-        public MDL0MaterialNode _parent;
+        public LightChannelControl _color, _alpha;
 
         public LightChannel(uint flags, RGBAPixel mat, RGBAPixel amb, uint color, uint alpha, MDL0MaterialNode material)
-            : this((LightingChannelFlags) flags, mat, amb, color, alpha, material)
-        {
-        }
+            : this((LightingChannelFlags)flags, mat, amb, color, alpha, material) { }
 
-        public LightChannel(LightingChannelFlags flags, RGBAPixel mat, RGBAPixel amb, uint color, uint alpha,
-            MDL0MaterialNode material)
-            : this(flags, mat, amb, new LightChannelControl(color, null), new LightChannelControl(alpha, null),
-                material)
-        {
-        }
+        public LightChannel(LightingChannelFlags flags, RGBAPixel mat, RGBAPixel amb, uint color, uint alpha, MDL0MaterialNode material)
+            : this(flags, mat, amb, new LightChannelControl(color, null), new LightChannelControl(alpha, null), material) { }
 
-        public LightChannel(uint flags, RGBAPixel mat, RGBAPixel amb, LightChannelControl color,
-            LightChannelControl alpha, MDL0MaterialNode material)
-            : this((LightingChannelFlags) flags, mat, amb, color, alpha, material)
-        {
-        }
+        public LightChannel(uint flags, RGBAPixel mat, RGBAPixel amb, LightChannelControl color, LightChannelControl alpha, MDL0MaterialNode material)
+            : this((LightingChannelFlags)flags, mat, amb, color, alpha, material) { }
 
         public LightChannel(
             LightingChannelFlags flags,
@@ -2258,312 +2152,209 @@ For example, if the shader has two stages but this number is 1, the second stage
             _alpha._parent = this;
         }
 
-        [Category("Lighting Channel")]
-        [Description(
-            "Determines if this channel should pass a color value to the LightChannel property in shader stages.")]
+        [Category("Lighting Channel"), Description("Determines if this channel should pass a color value to the LightChannel property in shader stages.")]
         public bool RasterColorEnabled
         {
             get => _flags.HasFlag(LightingChannelFlags.UseChanColor);
             set
             {
                 if (value)
+                {
                     _flags |= LightingChannelFlags.UseChanColor;
+                }
                 else
+                {
                     _flags &= ~LightingChannelFlags.UseChanColor;
+                }
 
                 _parent.SignalPropertyChange();
             }
         }
-
-        [Category("Lighting Channel")]
-        [Description(
-            "Determines if this channel should pass a color value to the LightChannel property in shader stages.")]
+        [Category("Lighting Channel"), Description("Determines if this channel should pass a color value to the LightChannel property in shader stages.")]
         public bool RasterAlphaEnabled
         {
             get => _flags.HasFlag(LightingChannelFlags.UseChanAlpha);
             set
             {
                 if (value)
+                {
                     _flags |= LightingChannelFlags.UseChanAlpha;
+                }
                 else
+                {
                     _flags &= ~LightingChannelFlags.UseChanAlpha;
+                }
 
                 _parent.SignalPropertyChange();
             }
         }
-
-        [Category("Lighting Channel")]
-        [Description(
-            "Determines if this channel should multiply the ambient color by the attached SCN0 lightset's ambient color.")]
+        [Category("Lighting Channel"), Description("Determines if this channel should multiply the ambient color by the attached SCN0 lightset's ambient color.")]
         public bool AmbientColorEnabled
         {
             get => _flags.HasFlag(LightingChannelFlags.UseAmbColor);
             set
             {
                 if (value)
+                {
                     _flags |= LightingChannelFlags.UseAmbColor;
+                }
                 else
+                {
                     _flags &= ~LightingChannelFlags.UseAmbColor;
+                }
 
                 _parent.SignalPropertyChange();
             }
         }
-
-        [Category("Lighting Channel")]
-        [Description(
-            "Determines if this channel should multiply the ambient alpha by the attached SCN0 lightset's ambient alpha.")]
+        [Category("Lighting Channel"), Description("Determines if this channel should multiply the ambient alpha by the attached SCN0 lightset's ambient alpha.")]
         public bool AmbientAlphaEnabled
         {
             get => _flags.HasFlag(LightingChannelFlags.UseAmbAlpha);
             set
             {
                 if (value)
+                {
                     _flags |= LightingChannelFlags.UseAmbAlpha;
+                }
                 else
+                {
                     _flags &= ~LightingChannelFlags.UseAmbAlpha;
+                }
 
                 _parent.SignalPropertyChange();
             }
         }
-
-        [Category("Lighting Channel")]
-        [Description(
-            "Determines if this channel should multiply the material color by the attached SCN0 lightset's final lighting color.")]
+        [Category("Lighting Channel"), Description("Determines if this channel should multiply the material color by the attached SCN0 lightset's final lighting color.")]
         public bool MaterialColorEnabled
         {
             get => _flags.HasFlag(LightingChannelFlags.UseMatColor);
             set
             {
                 if (value)
+                {
                     _flags |= LightingChannelFlags.UseMatColor;
+                }
                 else
+                {
                     _flags &= ~LightingChannelFlags.UseMatColor;
+                }
 
                 _parent.SignalPropertyChange();
             }
         }
-
-        [Category("Lighting Channel")]
-        [Description(
-            "Determines if this channel should multiply the material alpha by the attached SCN0 lightset's final lighting alpha.")]
+        [Category("Lighting Channel"), Description("Determines if this channel should multiply the material alpha by the attached SCN0 lightset's final lighting alpha.")]
         public bool MaterialAlphaEnabled
         {
             get => _flags.HasFlag(LightingChannelFlags.UseMatAlpha);
             set
             {
                 if (value)
+                {
                     _flags |= LightingChannelFlags.UseMatAlpha;
+                }
                 else
+                {
                     _flags &= ~LightingChannelFlags.UseMatAlpha;
+                }
 
                 _parent.SignalPropertyChange();
             }
         }
 
-        [Category("Lighting Channel")]
-        [Browsable(false)]
-        public LightingChannelFlags Flags
-        {
-            get => _flags;
-            set
-            {
-                _flags = value;
-                _parent.SignalPropertyChange();
-            }
-        }
+        [Category("Lighting Channel"), Browsable(false)]
+        public LightingChannelFlags Flags { get => _flags; set { _flags = value; _parent.SignalPropertyChange(); } }
 
-        [Category("Lighting Channel")]
-        [TypeConverter(typeof(RGBAStringConverter))]
-        public RGBAPixel MaterialColor
-        {
-            get => _matColor;
-            set
-            {
-                _matColor = value;
-                _parent.SignalPropertyChange();
-            }
-        }
+        [Category("Lighting Channel"), TypeConverter(typeof(RGBAStringConverter))]
+        public RGBAPixel MaterialColor { get => _matColor; set { _matColor = value; _parent.SignalPropertyChange(); } }
 
-        [Category("Lighting Channel")]
-        [TypeConverter(typeof(RGBAStringConverter))]
-        public RGBAPixel AmbientColor
-        {
-            get => _ambColor;
-            set
-            {
-                _ambColor = value;
-                _parent.SignalPropertyChange();
-            }
-        }
+        [Category("Lighting Channel"), TypeConverter(typeof(RGBAStringConverter))]
+        public RGBAPixel AmbientColor { get => _ambColor; set { _ambColor = value; _parent.SignalPropertyChange(); } }
 
-        [Category("Lighting Channel")]
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [Category("Lighting Channel"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public LightChannelControl Color
         {
             get => _color;
-            set
-            {
-                _color = value;
-                _color._parent = this;
-                _parent.SignalPropertyChange();
-            }
+            set { _color = value; _color._parent = this; _parent.SignalPropertyChange(); }
         }
 
-        [Category("Lighting Channel")]
-        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        [Category("Lighting Channel"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public LightChannelControl Alpha
         {
             get => _alpha;
-            set
-            {
-                _alpha = value;
-                _alpha._parent = this;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha = value; _alpha._parent = this; _parent.SignalPropertyChange(); }
         }
 
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXColorSrc ColorMaterialSource
         {
             get => _color.MaterialSource;
-            set
-            {
-                _color.MaterialSource = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _color.MaterialSource = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public bool ColorEnabled
         {
             get => _color.Enabled;
-            set
-            {
-                _color.Enabled = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _color.Enabled = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXColorSrc ColorAmbientSource
         {
             get => _color.AmbientSource;
-            set
-            {
-                _color.AmbientSource = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _color.AmbientSource = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXDiffuseFn ColorDiffuseFunction
         {
             get => _color.DiffuseFunction;
-            set
-            {
-                _color.DiffuseFunction = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _color.DiffuseFunction = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXAttnFn ColorAttenuation
         {
             get => _color.Attenuation;
-            set
-            {
-                _color.Attenuation = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _color.Attenuation = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public MatChanLights ColorLights
         {
             get => _color.Lights;
-            set
-            {
-                _color.Lights = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _color.Lights = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXColorSrc AlphaMaterialSource
         {
             get => _alpha.MaterialSource;
-            set
-            {
-                _alpha.MaterialSource = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha.MaterialSource = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public bool AlphaEnabled
         {
             get => _alpha.Enabled;
-            set
-            {
-                _alpha.Enabled = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha.Enabled = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXColorSrc AlphaAmbientSource
         {
             get => _alpha.AmbientSource;
-            set
-            {
-                _alpha.AmbientSource = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha.AmbientSource = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXDiffuseFn AlphaDiffuseFunction
         {
             get => _alpha.DiffuseFunction;
-            set
-            {
-                _alpha.DiffuseFunction = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha.DiffuseFunction = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public GXAttnFn AlphaAttenuation
         {
             get => _alpha.Attenuation;
-            set
-            {
-                _alpha.Attenuation = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha.Attenuation = value; _parent.SignalPropertyChange(); }
         }
-
-        [Category("Lighting Channel")]
-        [Browsable(false)]
+        [Category("Lighting Channel"), Browsable(false)]
         public MatChanLights AlphaLights
         {
             get => _alpha.Lights;
-            set
-            {
-                _alpha.Lights = value;
-                _parent.SignalPropertyChange();
-            }
+            set { _alpha.Lights = value; _parent.SignalPropertyChange(); }
         }
     }
 
@@ -2584,7 +2375,7 @@ For example, if the shader has two stages but this number is 1, the second stage
         Light4 = 0x10,
         Light5 = 0x20,
         Light6 = 0x40,
-        Light7 = 0x80
+        Light7 = 0x80,
     }
 
     public enum GXDiffuseFn
@@ -2614,7 +2405,6 @@ For example, if the shader has two stages but this number is 1, the second stage
 
     public class LightChannelControl
     {
-        public Bin32 _binary;
         internal LightChannel _parent;
 
         public LightChannelControl(uint ctrl)
@@ -2622,13 +2412,11 @@ For example, if the shader has two stages but this number is 1, the second stage
             _parent = null;
             _binary = new Bin32(ctrl);
         }
-
         public LightChannelControl(uint ctrl, LightChannel parent)
         {
             _parent = parent;
             _binary = new Bin32(ctrl);
         }
-
         public LightChannelControl(
             bool enabled,
             GXColorSrc matSource,
@@ -2644,6 +2432,8 @@ For example, if the shader has two stages but this number is 1, the second stage
             Attenuation = atten;
         }
 
+        public Bin32 _binary;
+
         //0000 0000 0000 0000 0000 0000 0000 0001   Material Source (GXColorSrc)
         //0000 0000 0000 0000 0000 0000 0000 0010   Light Enabled
         //0000 0000 0000 0000 0000 0000 0011 1100   Light 0123
@@ -2654,57 +2444,26 @@ For example, if the shader has two stages but this number is 1, the second stage
         //0000 0000 0000 0000 0111 1000 0000 0000   Light 4567
 
         [Category("Lighting Control")]
-        public bool Enabled
-        {
-            get => _binary[1];
-            set
-            {
-                _binary[1] = value;
-                if (_parent != null) _parent._parent.SignalPropertyChange();
-            }
-        }
-
+        public bool Enabled { get => _binary[1]; set { _binary[1] = value; if (_parent != null) { _parent._parent.SignalPropertyChange(); } } }
         [Category("Lighting Control")]
-        public GXColorSrc MaterialSource
-        {
-            get => (GXColorSrc) (_binary[0] ? 1 : 0);
-            set
-            {
-                _binary[0] = value != 0;
-                if (_parent != null) _parent._parent.SignalPropertyChange();
-            }
-        }
-
+        public GXColorSrc MaterialSource { get => (GXColorSrc)(_binary[0] ? 1 : 0); set { _binary[0] = (value != 0); if (_parent != null) { _parent._parent.SignalPropertyChange(); } } }
         [Category("Lighting Control")]
-        public GXColorSrc AmbientSource
-        {
-            get => (GXColorSrc) (_binary[6] ? 1 : 0);
-            set
-            {
-                _binary[6] = value != 0;
-                if (_parent != null) _parent._parent.SignalPropertyChange();
-            }
-        }
-
+        public GXColorSrc AmbientSource { get => (GXColorSrc)(_binary[6] ? 1 : 0); set { _binary[6] = (value != 0); if (_parent != null) { _parent._parent.SignalPropertyChange(); } } }
         [Category("Lighting Control")]
-        public GXDiffuseFn DiffuseFunction
-        {
-            get => (GXDiffuseFn) _binary[7, 2];
-            set
-            {
-                _binary[7, 2] = (uint) value;
-                if (_parent != null) _parent._parent.SignalPropertyChange();
-            }
-        }
-
+        public GXDiffuseFn DiffuseFunction { get => (GXDiffuseFn)(_binary[7, 2]); set { _binary[7, 2] = ((uint)value); if (_parent != null) { _parent._parent.SignalPropertyChange(); } } }
         [Category("Lighting Control")]
         public GXAttnFn Attenuation
         {
             get
             {
                 if (!_binary[9])
+                {
                     return GXAttnFn.None;
-                return (GXAttnFn) (_binary[10] ? 1 : 0);
+                }
+                else
+                {
+                    return (GXAttnFn)(_binary[10] ? 1 : 0);
+                }
             }
             set
             {
@@ -2719,26 +2478,30 @@ For example, if the shader has two stages but this number is 1, the second stage
                     _binary[10] = false;
                 }
 
-                if (_parent != null) _parent._parent.SignalPropertyChange();
+                if (_parent != null)
+                {
+                    _parent._parent.SignalPropertyChange();
+                }
             }
         }
 
         //These bits are dynamically set at runtime by the SCN0
-        [Category("Lighting Control")]
-        [Browsable(false)]
+        [Category("Lighting Control"), Browsable(false)]
         public MatChanLights Lights
         {
-            get => (MatChanLights) (_binary[11, 4] | (_binary[2, 4] << 4));
+            get => (MatChanLights)(_binary[11, 4] | (_binary[2, 4] << 4));
             set
             {
-                var val = (uint) value;
-                _binary[11, 4] = val & 0xF;
-                _binary[2, 4] = (val >> 4) & 0xF;
+                uint val = (uint)value;
+                _binary[11, 4] = (val & 0xF);
+                _binary[2, 4] = ((val >> 4) & 0xF);
 
-                if (_parent != null) _parent._parent.SignalPropertyChange();
+                if (_parent != null)
+                {
+                    _parent._parent.SignalPropertyChange();
+                }
             }
         }
     }
-
     #endregion
 }

@@ -4,9 +4,7 @@ namespace System.Windows.Forms
 {
     public partial class ModelEditControl : ModelEditorBase
     {
-        private readonly bool _retainAspect = true;
-        public int prevHeight, prevWidth;
-
+        public int prevHeight = 0, prevWidth = 0;
         public void ToggleWeightEditor()
         {
             animEditors.Visible = true;
@@ -19,7 +17,10 @@ namespace System.Windows.Forms
             }
             else
             {
-                if (vertexEditor.Visible) ToggleVertexEditor();
+                if (vertexEditor.Visible)
+                {
+                    ToggleVertexEditor();
+                }
 
                 prevHeight = animEditors.Height;
                 prevWidth = animCtrlPnl.Width;
@@ -31,7 +32,6 @@ namespace System.Windows.Forms
 
             CheckDimensions();
         }
-
         public void ToggleVertexEditor()
         {
             animEditors.Visible = true;
@@ -44,7 +44,10 @@ namespace System.Windows.Forms
             }
             else
             {
-                if (weightEditor.Visible) ToggleWeightEditor();
+                if (weightEditor.Visible)
+                {
+                    ToggleWeightEditor();
+                }
 
                 prevHeight = animEditors.Height;
                 prevWidth = animCtrlPnl.Width;
@@ -57,18 +60,22 @@ namespace System.Windows.Forms
             CheckDimensions();
         }
 
+        private readonly bool _retainAspect = true;
+
         /// <summary>
-        ///     Call this after the frame is set.
+        /// Call this after the frame is set.
         /// </summary>
         private void HandleFirstPersonCamera()
         {
             if (FirstPersonCamera && _scn0 != null && scn0Editor._camera != null)
+            {
                 scn0Editor._camera.SetCamera(ModelPanel.CurrentViewport, CurrentFrame - 1, _retainAspect);
+            }
         }
 
         public override void OnAnimationChanged()
         {
-            var node = TargetAnimation;
+            NW4RAnimationNode node = TargetAnimation;
 
             selectedAnimationToolStripMenuItem.Enabled = node != null;
 
@@ -77,19 +84,18 @@ namespace System.Windows.Forms
             resizeToolStripMenuItem.Enabled = node != null && Array.IndexOf(Resizable, node.GetType()) >= 0;
             appendToolStripMenuItem.Enabled = node != null && Array.IndexOf(Appendable, node.GetType()) >= 0;
 
-            var i = -1;
-            var hasKeys = node != null && !(node is SCN0Node) && (i = Array.IndexOf(Interpolated, node.GetType())) >= 0;
-            var s =
-                i == 0 ? SelectedBone != null ? SelectedBone.Name : "entry" :
-                i == 1 ? TargetTexRef != null ? TargetTexRef.Name : "entry" :
-                i == 2 ? shp0Editor.VertexSetDest != null ? shp0Editor.VertexSetDest.Name : "entry" :
-                "entry";
+            int i = -1;
+            bool hasKeys = node != null && !(node is SCN0Node) && (i = Array.IndexOf(Interpolated, node.GetType())) >= 0;
+            string s =
+                i == 0 ? (SelectedBone != null ? SelectedBone.Name : "entry") :
+                i == 1 ? (TargetTexRef != null ? TargetTexRef.Name : "entry") :
+                i == 2 ? (shp0Editor.VertexSetDest != null ? shp0Editor.VertexSetDest.Name : "entry") :
+            "entry";
 
             averageboneStartendTangentsToolStripMenuItem.Enabled = hasKeys && s != "entry";
             averageboneStartendTangentsToolStripMenuItem.Text = string.Format("Average {0} start/end keyframes", s);
 
-            averageAllStartEndTangentsToolStripMenuItem.Enabled =
-                node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
+            averageAllStartEndTangentsToolStripMenuItem.Enabled = node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
             //syncStartendTangentsToolStripMenuItem.Enabled = node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
         }
     }

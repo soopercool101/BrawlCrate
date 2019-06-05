@@ -1,28 +1,16 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.GSND)]
     public class GSNDWrapper : GenericWrapper
     {
-        public GSNDWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
-        public void NewEntry()
-        {
-            var node = new GSNDEntryNode {Name = "NewEntry", Trigger = "00000100"};
-            _resource.AddChild(node);
-        }
-
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static GSNDWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -42,24 +30,25 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        protected static void NewEntryAction(object sender, EventArgs e)
-        {
-            GetInstance<GSNDWrapper>().NewEntry();
-        }
-
+        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<GSNDWrapper>().NewEntry(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[6].Enabled = _menu.Items[7].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<GSNDWrapper>();
+            GSNDWrapper w = GetInstance<GSNDWrapper>();
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
-
         #endregion
+
+        public void NewEntry()
+        {
+            GSNDEntryNode node = new GSNDEntryNode() { Name = "NewEntry", Trigger = "00000100" };
+            _resource.AddChild(node);
+        }
+
+        public GSNDWrapper() { ContextMenuStrip = _menu; }
     }
 }

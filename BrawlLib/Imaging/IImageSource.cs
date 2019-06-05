@@ -13,9 +13,9 @@ namespace BrawlLib.Imaging
     {
         uint NumFrames { get; }
         float FrameRate { get; }
+        int GetImageIndexAtFrame(int frame);
 
         IAudioStream Audio { get; }
         uint Frequency { get; }
-        int GetImageIndexAtFrame(int frame);
     }
 }

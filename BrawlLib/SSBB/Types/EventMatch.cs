@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBB.Types
 {
     /// <summary>
-    ///     See: http://opensa.dantarion.com/wiki/Event_Match_Files
+    /// See: http://opensa.dantarion.com/wiki/Event_Match_Files
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EventMatchTblHeader
@@ -40,16 +40,7 @@ namespace BrawlLib.SSBB.Types
         public bshort _globalDefenseRatio;
         public bint _unknown4c;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public EventMatchFighterData* FighterDataPtr
         {
@@ -57,13 +48,13 @@ namespace BrawlLib.SSBB.Types
             {
                 fixed (EventMatchTblHeader* ptr = &this)
                 {
-                    return (EventMatchFighterData*) (ptr + 1);
+                    return (EventMatchFighterData*)(ptr + 1);
                 }
             }
         }
     }
 
-    public struct EventMatchFighterData
+    public unsafe struct EventMatchFighterData
     {
         public const int Size = 0x36;
 
@@ -73,7 +64,7 @@ namespace BrawlLib.SSBB.Types
         public EventMatchDifficultyData _hard;
     }
 
-    public struct EventMatchFighterHeader
+    public unsafe struct EventMatchFighterHeader
     {
         public const int Size = 0x0C;
 
@@ -88,7 +79,7 @@ namespace BrawlLib.SSBB.Types
         public byte _unknown0b;
     }
 
-    public struct EventMatchDifficultyData
+    public unsafe struct EventMatchDifficultyData
     {
         public const int Size = 0x0E;
 

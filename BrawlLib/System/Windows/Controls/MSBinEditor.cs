@@ -1,31 +1,31 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System.ComponentModel;
 
 namespace System.Windows.Forms
 {
     public class MSBinEditor : UserControl
     {
         private MSBinNode _node;
-
-        public MSBinEditor()
-        {
-            InitializeComponent();
-            txtEditor.LostFocus += txtEditor_Leave;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MSBinNode CurrentNode
         {
             get => _node;
             set
             {
-                if (_node == value) return;
+                if (_node == value)
+                {
+                    return;
+                }
 
                 _node = value;
                 InitNode();
             }
+        }
+
+        public MSBinEditor()
+        {
+            InitializeComponent();
+            txtEditor.LostFocus += txtEditor_Leave;
         }
 
         private void InitNode()
@@ -37,7 +37,10 @@ namespace System.Windows.Forms
 
             if (_node != null)
             {
-                foreach (var s in _node._strings) listBox1.Items.Add(s);
+                foreach (string s in _node._strings)
+                {
+                    listBox1.Items.Add(s);
+                }
 
                 txtEditor.Enabled = false;
             }
@@ -51,14 +54,23 @@ namespace System.Windows.Forms
 
         private void Apply()
         {
-            if (_node == null) return;
+            if (_node == null)
+            {
+                return;
+            }
 
-            var s1 = txtEditor.Text;
-            var s2 = listBox1.SelectedItem as string;
-            if (s2 == null || s1 == s2) return;
+            string s1 = txtEditor.Text;
+            string s2 = listBox1.SelectedItem as string;
+            if ((s2 == null) || (s1 == s2))
+            {
+                return;
+            }
 
-            var index = listBox1.SelectedIndex;
-            if (index < 0) return;
+            int index = listBox1.SelectedIndex;
+            if (index < 0)
+            {
+                return;
+            }
 
             _node._strings[index] = s1;
             _node.SignalPropertyChange();
@@ -67,36 +79,48 @@ namespace System.Windows.Forms
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
-        }
 
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (_node == null) return;
+            if (_node == null)
+            {
+                return;
+            }
 
-            var s = "";
-            var index = listBox1.Items.Count;
+            string s = "";
+            int index = listBox1.Items.Count;
 
             _node._strings.Add(s);
             _node.SignalPropertyChange();
             listBox1.Items.Add(s);
             listBox1.SelectedIndex = index;
         }
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (_node == null) return;
+            if (_node == null)
+            {
+                return;
+            }
 
-            var index = listBox1.SelectedIndex;
-            if (index < 0) return;
+            int index = listBox1.SelectedIndex;
+            if (index < 0)
+            {
+                return;
+            }
 
             _node._strings.RemoveAt(index);
             _node.SignalPropertyChange();
             listBox1.Items.RemoveAt(index);
 
             if (listBox1.Items.Count == index)
+            {
                 listBox1.SelectedIndex = index - 1;
+            }
             else
+            {
                 listBox1.SelectedIndex = index;
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,7 +144,10 @@ namespace System.Windows.Forms
 
         private void txtEditor_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_node == null) return;
+            if (_node == null)
+            {
+                return;
+            }
 
             if (e.KeyCode == Keys.Escape)
             {
@@ -129,7 +156,6 @@ namespace System.Windows.Forms
                 e.Handled = true;
             }
         }
-
         private void txtEditor_Leave(object sender, EventArgs e)
         {
             Apply();
@@ -172,7 +198,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new Drawing.Size(256, 85);
             listBox1.TabIndex = 1;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -193,7 +219,7 @@ namespace System.Windows.Forms
             btnRemove.TabIndex = 4;
             btnRemove.Text = "-";
             btnRemove.UseVisualStyleBackColor = true;
-            btnRemove.Click += btnRemove_Click;
+            btnRemove.Click += new EventHandler(btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -203,12 +229,12 @@ namespace System.Windows.Forms
             btnAdd.TabIndex = 3;
             btnAdd.Text = "+";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += btnAdd_Click;
+            btnAdd.Click += new EventHandler(btnAdd_Click);
             // 
             // txtEditor
             // 
             txtEditor.Dock = DockStyle.Fill;
-            txtEditor.Font = new Font("Courier New", 8.25F, Drawing.FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEditor.Font = new Drawing.Font("Courier New", 8.25F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point, 0);
             txtEditor.Location = new Drawing.Point(0, 0);
             txtEditor.Margin = new Padding(0);
             txtEditor.Multiline = true;
@@ -216,8 +242,8 @@ namespace System.Windows.Forms
             txtEditor.ScrollBars = ScrollBars.Both;
             txtEditor.Size = new Drawing.Size(285, 122);
             txtEditor.TabIndex = 3;
-            txtEditor.TextChanged += txtEditor_TextChanged;
-            txtEditor.KeyDown += txtEditor_KeyDown;
+            txtEditor.TextChanged += new EventHandler(txtEditor_TextChanged);
+            txtEditor.KeyDown += new KeyEventHandler(txtEditor_KeyDown);
             // 
             // splitContainer1
             // 
@@ -232,7 +258,7 @@ namespace System.Windows.Forms
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
+            splitContainer1.Panel2.Paint += new PaintEventHandler(splitContainer1_Panel2_Paint);
             splitContainer1.Panel2Collapsed = true;
             splitContainer1.Size = new Drawing.Size(285, 122);
             splitContainer1.SplitterDistance = 74;
@@ -270,6 +296,7 @@ namespace System.Windows.Forms
             splitContainer2.Panel2.ResumeLayout(false);
             splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
+
         }
 
         #endregion

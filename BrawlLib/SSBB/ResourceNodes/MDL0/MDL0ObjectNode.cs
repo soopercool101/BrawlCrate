@@ -1,48 +1,43 @@
-﻿using System;
+﻿using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Graphics;
+using BrawlLib.Wii.Models;
+using OpenTK.Graphics.OpenGL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using BrawlLib.Modeling;
-using BrawlLib.OpenGL;
-using BrawlLib.SSBBTypes;
-using BrawlLib.Wii.Graphics;
-using OpenTK.Graphics.OpenGL;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0ObjectNode : MDL0EntryNode, IMatrixNodeUser, IObject
+    public unsafe partial class MDL0ObjectNode : MDL0EntryNode, IMatrixNodeUser, IObject
     {
-        internal MDL0Object* Header => (MDL0Object*) WorkingUncompressed.Address;
+        internal MDL0Object* Header => (MDL0Object*)WorkingUncompressed.Address;
 
         public override ResourceType ResourceFileType => ResourceType.MDL0Object;
-
-        public event EventHandler DrawCallsChanged;
-
-        [Browsable(false)] public List<DrawCallBase> DrawCalls => _drawCalls.Select(x => x as DrawCallBase).ToList();
-
-        public void OnDrawCallsChanged()
-        {
-            if (_attached)
-                DrawCallsChanged?.Invoke(this, null);
-            else if (Model != null && Model.Attached) Model.OnDrawCallsChanged();
-        }
 
         #region Attributes
 
         public List<Vertex3> Vertices => _manager != null ? _manager._vertices : null;
 
         internal bool Weighted => _nodeId == -1 || _matrixNode == null;
-
         internal bool HasTexMtx
         {
             get
             {
                 if (_manager != null)
-                    for (var i = 0; i < 8; i++)
+                {
+                    for (int i = 0; i < 8; i++)
+                    {
                         if (_manager.HasTextureMatrix[i])
+                        {
                             return true;
+                        }
+                    }
+                }
 
                 return false;
             }
@@ -52,129 +47,56 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal XFVertexSpecs _vertexSpecs;
 
         [Category("Texture Matrices")]
-        public bool TextureMatrix0Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[0];
-            set => SetTexMtx(0, value);
-        }
+        public bool TextureMatrix0Enabled { get => _manager != null && _manager.HasTextureMatrix[0]; set => SetTexMtx(0, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix1Enabled { get => _manager != null && _manager.HasTextureMatrix[1]; set => SetTexMtx(1, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix2Enabled { get => _manager != null && _manager.HasTextureMatrix[2]; set => SetTexMtx(2, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix3Enabled { get => _manager != null && _manager.HasTextureMatrix[3]; set => SetTexMtx(3, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix4Enabled { get => _manager != null && _manager.HasTextureMatrix[4]; set => SetTexMtx(4, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix5Enabled { get => _manager != null && _manager.HasTextureMatrix[5]; set => SetTexMtx(5, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix6Enabled { get => _manager != null && _manager.HasTextureMatrix[6]; set => SetTexMtx(6, value); }
+        [Category("Texture Matrices")]
+        public bool TextureMatrix7Enabled { get => _manager != null && _manager.HasTextureMatrix[7]; set => SetTexMtx(7, value); }
 
         [Category("Texture Matrices")]
-        public bool TextureMatrix1Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[1];
-            set => SetTexMtx(1, value);
-        }
-
+        public bool TextureMatrix0Identity { get => _manager != null && _manager.UseIdentityTexMtx[0]; set => SetTexMtxIdentity(0, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix2Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[2];
-            set => SetTexMtx(2, value);
-        }
-
+        public bool TextureMatrix1Identity { get => _manager != null && _manager.UseIdentityTexMtx[1]; set => SetTexMtxIdentity(1, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix3Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[3];
-            set => SetTexMtx(3, value);
-        }
-
+        public bool TextureMatrix2Identity { get => _manager != null && _manager.UseIdentityTexMtx[2]; set => SetTexMtxIdentity(2, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix4Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[4];
-            set => SetTexMtx(4, value);
-        }
-
+        public bool TextureMatrix3Identity { get => _manager != null && _manager.UseIdentityTexMtx[3]; set => SetTexMtxIdentity(3, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix5Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[5];
-            set => SetTexMtx(5, value);
-        }
-
+        public bool TextureMatrix4Identity { get => _manager != null && _manager.UseIdentityTexMtx[4]; set => SetTexMtxIdentity(4, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix6Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[6];
-            set => SetTexMtx(6, value);
-        }
-
+        public bool TextureMatrix5Identity { get => _manager != null && _manager.UseIdentityTexMtx[5]; set => SetTexMtxIdentity(5, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix7Enabled
-        {
-            get => _manager != null && _manager.HasTextureMatrix[7];
-            set => SetTexMtx(7, value);
-        }
-
+        public bool TextureMatrix6Identity { get => _manager != null && _manager.UseIdentityTexMtx[6]; set => SetTexMtxIdentity(6, value); }
         [Category("Texture Matrices")]
-        public bool TextureMatrix0Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[0];
-            set => SetTexMtxIdentity(0, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix1Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[1];
-            set => SetTexMtxIdentity(1, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix2Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[2];
-            set => SetTexMtxIdentity(2, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix3Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[3];
-            set => SetTexMtxIdentity(3, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix4Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[4];
-            set => SetTexMtxIdentity(4, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix5Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[5];
-            set => SetTexMtxIdentity(5, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix6Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[6];
-            set => SetTexMtxIdentity(6, value);
-        }
-
-        [Category("Texture Matrices")]
-        public bool TextureMatrix7Identity
-        {
-            get => _manager != null && _manager.UseIdentityTexMtx[7];
-            set => SetTexMtxIdentity(7, value);
-        }
+        public bool TextureMatrix7Identity { get => _manager != null && _manager.UseIdentityTexMtx[7]; set => SetTexMtxIdentity(7, value); }
 
         private void SetTexMtx(int index, bool value)
         {
-            if (!Weighted || _manager == null) return;
+            if (!Weighted || _manager == null)
+            {
+                return;
+            }
 
             _manager.HasTextureMatrix[index] = value;
             SignalPropertyChange();
             _forceRebuild = true;
         }
-
         private void SetTexMtxIdentity(int index, bool value)
         {
-            if (!Weighted || _manager == null) return;
+            if (!Weighted || _manager == null)
+            {
+                return;
+            }
 
             _manager.UseIdentityTexMtx[index] = value;
             SignalPropertyChange();
@@ -182,26 +104,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Object Data")]
-        public ObjFlag Flags
-        {
-            get => (ObjFlag) _flag;
-            set
-            {
-                _flag = (int) value;
-                SignalPropertyChange();
-            }
-        }
-
-        [Category("Object Data")] public int ID => _entryIndex;
-
-        [Category("Object Data")] public int FacepointCount => _numFacepoints;
-
+        public ObjFlag Flags { get => (ObjFlag)_flag; set { _flag = (int)value; SignalPropertyChange(); } }
+        [Category("Object Data")]
+        public int ID => _entryIndex;
+        [Category("Object Data")]
+        public int FacepointCount => _numFacepoints;
         [Category("Object Data")]
         public int VertexCount => _manager == null || _manager._vertices == null ? 0 : _manager._vertices.Count;
+        [Category("Object Data")]
+        public int FaceCount => _numFaces;
 
-        [Category("Object Data")] public int FaceCount => _numFaces;
-
-        [Browsable(false)] public List<IMatrixNode> Influences => _influences;
+        [Browsable(false)]
+        public List<IMatrixNode> Influences => _influences;
 
         #endregion
 
@@ -223,23 +137,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //Do nothing if attempting to set to null
                 if (!string.IsNullOrEmpty(value))
                 {
-                    var newNode = Model.FindChild(string.Format("Vertices/{0}", value), false) as MDL0VertexNode;
+                    MDL0VertexNode newNode = Model.FindChild(string.Format("Vertices/{0}", value), false) as MDL0VertexNode;
                     if (newNode != null)
                     {
                         if (_vertexNode != null)
                         {
                             if (newNode.NumVertices < _vertexNode.NumVertices)
                             {
-                                MessageBox.Show(string.Format("Not enough vertices.\nNeeds: {0}\nSelection: {1}",
-                                    _vertexNode.NumVertices, newNode.NumVertices));
+                                MessageBox.Show(string.Format("Not enough vertices.\nNeeds: {0}\nSelection: {1}", _vertexNode.NumVertices, newNode.NumVertices));
                                 return;
                             }
 
-                            if (_vertexNode._objects.Contains(this)) _vertexNode._objects.Remove(this);
+                            if (_vertexNode._objects.Contains(this))
+                            {
+                                _vertexNode._objects.Remove(this);
+                            }
                         }
 
                         (_vertexNode = newNode)._objects.Add(this);
-                        _elementIndices[0] = (short) newNode.Index;
+                        _elementIndices[0] = (short)newNode.Index;
                     }
                     else
                     {
@@ -247,7 +163,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                         return;
                     }
                 }
-
                 SignalPropertyChange();
             }
         }
@@ -259,14 +174,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _normalNode == null ? null : _normalNode._name;
             set
             {
-                var oldNode = _normalNode;
+                MDL0NormalNode oldNode = _normalNode;
                 if (string.IsNullOrEmpty(value))
                 {
-                    if (oldNode != null && MessageBox.Show(RootNode._mainForm,
-                            "Are you sure you want to remove this reference?", "Continue?",
-                            MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    if (oldNode != null && MessageBox.Show(RootNode._mainForm, "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        if (oldNode._objects.Contains(this)) oldNode._objects.Remove(this);
+                        if (oldNode._objects.Contains(this))
+                        {
+                            oldNode._objects.Remove(this);
+                        }
 
                         _normalNode = null;
                         _elementIndices[1] = -1;
@@ -279,23 +195,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    var newNode = Model.FindChild(string.Format("Normals/{0}", value), false) as MDL0NormalNode;
+                    MDL0NormalNode newNode = Model.FindChild(string.Format("Normals/{0}", value), false) as MDL0NormalNode;
                     if (newNode != null)
                     {
                         if (_normalNode != null)
                         {
                             if (newNode.NumEntries < _normalNode.NumEntries)
                             {
-                                MessageBox.Show(string.Format("Not enough normals.\nNeeds: {0}\nSelection: {1}",
-                                    _normalNode.NumEntries, newNode.NumEntries));
+                                MessageBox.Show(string.Format("Not enough normals.\nNeeds: {0}\nSelection: {1}", _normalNode.NumEntries, newNode.NumEntries));
                                 return;
                             }
 
-                            if (_normalNode._objects.Contains(this)) _normalNode._objects.Remove(this);
+                            if (_normalNode._objects.Contains(this))
+                            {
+                                _normalNode._objects.Remove(this);
+                            }
                         }
 
                         (_normalNode = newNode)._objects.Add(this);
-                        _elementIndices[1] = (short) newNode.Index;
+                        _elementIndices[1] = (short)newNode.Index;
                     }
                     else
                     {
@@ -303,7 +221,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                         return;
                     }
                 }
-
                 SignalPropertyChange();
             }
         }
@@ -313,17 +230,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Colors
 
         public MDL0ColorNode[] _colorSet = new MDL0ColorNode[2];
-
         private void SetColors(int id, string value)
         {
-            var oldNode = _colorSet[id];
+            MDL0ColorNode oldNode = _colorSet[id];
             if (string.IsNullOrEmpty(value))
             {
-                if (oldNode != null && MessageBox.Show(RootNode._mainForm,
-                        "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) ==
-                    DialogResult.OK)
+                if (oldNode != null && MessageBox.Show(RootNode._mainForm, "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    if (oldNode._objects.Contains(this)) oldNode._objects.Remove(this);
+                    if (oldNode._objects.Contains(this))
+                    {
+                        oldNode._objects.Remove(this);
+                    }
 
                     _colorSet[id] = null;
                     _elementIndices[id + 2] = -1;
@@ -336,25 +253,29 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                var newNode = Model.FindChild(string.Format("Colors/{0}", value), false) as MDL0ColorNode;
+                MDL0ColorNode newNode = Model.FindChild(string.Format("Colors/{0}", value), false) as MDL0ColorNode;
                 if (newNode != null)
                 {
                     if (oldNode != null)
                     {
                         if (newNode.NumEntries < oldNode.NumEntries)
                         {
-                            if (MessageBox.Show(null,
-                                    "This node has less colors than in the originally linked color node.\nAny colors that cannot be found will use the first color instead.\nIs this okay?",
-                                    "", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                            if (MessageBox.Show(null, "This node has less colors than in the originally linked color node.\nAny colors that cannot be found will use the first color instead.\nIs this okay?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                            {
+                                return;
+                            }
 
                             _forceRebuild = true;
                         }
 
-                        if (oldNode._objects.Contains(this)) oldNode._objects.Remove(this);
+                        if (oldNode._objects.Contains(this))
+                        {
+                            oldNode._objects.Remove(this);
+                        }
                     }
 
                     (_colorSet[id] = newNode)._objects.Add(this);
-                    _elementIndices[id + 2] = (short) newNode.Index;
+                    _elementIndices[id + 2] = (short)newNode.Index;
                 }
                 else
                 {
@@ -362,10 +283,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
             }
-
             SignalPropertyChange();
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListColors))]
         public string ColorNode0
@@ -373,7 +292,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _colorSet[0] == null ? null : _colorSet[0]._name;
             set => SetColors(0, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListColors))]
         public string ColorNode1
@@ -387,17 +305,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region UVs
 
         public MDL0UVNode[] _uvSet = new MDL0UVNode[8];
-
         private void SetUVs(int id, string value)
         {
-            var oldNode = _uvSet[id];
+            MDL0UVNode oldNode = _uvSet[id];
             if (string.IsNullOrEmpty(value))
             {
-                if (oldNode != null && MessageBox.Show(RootNode._mainForm,
-                        "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) ==
-                    DialogResult.OK)
+                if (oldNode != null && MessageBox.Show(RootNode._mainForm, "Are you sure you want to remove this reference?", "Continue?", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    if (oldNode._objects.Contains(this)) oldNode._objects.Remove(this);
+                    if (oldNode._objects.Contains(this))
+                    {
+                        oldNode._objects.Remove(this);
+                    }
 
                     _uvSet[id] = null;
                     _elementIndices[id + 4] = -1;
@@ -410,33 +328,33 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                var newNode = Model.FindChild(string.Format("UVs/{0}", value), false) as MDL0UVNode;
+                MDL0UVNode newNode = Model.FindChild(string.Format("UVs/{0}", value), false) as MDL0UVNode;
                 if (newNode != null)
                 {
                     if (oldNode != null)
                     {
                         if (newNode.NumEntries < oldNode.NumEntries)
                         {
-                            MessageBox.Show(string.Format("Not enough UVs.\nNeeds: {0}\nSelection: {1}",
-                                oldNode.NumEntries, newNode.NumEntries));
+                            MessageBox.Show(string.Format("Not enough UVs.\nNeeds: {0}\nSelection: {1}", oldNode.NumEntries, newNode.NumEntries));
                             return;
                         }
 
-                        if (oldNode._objects.Contains(this)) oldNode._objects.Remove(this);
+                        if (oldNode._objects.Contains(this))
+                        {
+                            oldNode._objects.Remove(this);
+                        }
                     }
 
                     (_uvSet[id] = newNode)._objects.Add(this);
-                    _elementIndices[id + 4] = (short) newNode.Index;
+                    _elementIndices[id + 4] = (short)newNode.Index;
                 }
                 else
                 {
                     return;
                 }
             }
-
             SignalPropertyChange();
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord0
@@ -444,7 +362,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[0] == null ? null : _uvSet[0]._name;
             set => SetUVs(0, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord1
@@ -452,7 +369,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[1] == null ? null : _uvSet[1]._name;
             set => SetUVs(1, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord2
@@ -460,7 +376,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[2] == null ? null : _uvSet[2]._name;
             set => SetUVs(2, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord3
@@ -468,7 +383,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[3] == null ? null : _uvSet[3]._name;
             set => SetUVs(3, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord4
@@ -476,7 +390,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[4] == null ? null : _uvSet[4]._name;
             set => SetUVs(4, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord5
@@ -484,7 +397,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[5] == null ? null : _uvSet[5]._name;
             set => SetUVs(5, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord6
@@ -492,7 +404,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _uvSet[6] == null ? null : _uvSet[6]._name;
             set => SetUVs(6, value);
         }
-
         [Category("Mesh Assets")]
         [TypeConverter(typeof(DropDownListUVs))]
         public string TexCoord7
@@ -517,16 +428,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    var node = Model.FindChild(string.Format("FurLayerCoords/{0}", value), false) as MDL0FurPosNode;
+                    MDL0FurPosNode node = Model.FindChild(string.Format("FurLayerCoords/{0}", value), false) as MDL0FurPosNode;
                     if (node != null && _furPosNode != null && node.NumVertices >= _furPosNode.NumVertices)
                     {
                         if (_furPosNode != null && _furPosNode._objects.Contains(this))
+                        {
                             _furPosNode._objects.Remove(this);
-                        (_furPosNode = node)._objects.Add(this);
-                        _elementIndices[12] = (short) node.Index;
+                        } (_furPosNode = node)._objects.Add(this);
+                        _elementIndices[12] = (short)node.Index;
                     }
                 }
-
                 SignalPropertyChange();
             }
         }
@@ -540,16 +451,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    var node = Model.FindChild(string.Format("FurVectors/{0}", value), false) as MDL0FurVecNode;
+                    MDL0FurVecNode node = Model.FindChild(string.Format("FurVectors/{0}", value), false) as MDL0FurVecNode;
                     if (node != null && _furVecNode != null && node.NumEntries >= _furVecNode.NumEntries)
                     {
                         if (_furVecNode != null && _furVecNode._objects.Contains(this))
+                        {
                             _furVecNode._objects.Remove(this);
-                        (_furVecNode = node)._objects.Add(this);
-                        _elementIndices[13] = (short) node.Index;
+                        } (_furVecNode = node)._objects.Add(this);
+                        _elementIndices[13] = (short)node.Index;
                     }
                 }
-
                 SignalPropertyChange();
             }
         }
@@ -564,13 +475,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int _numFaces;
         public int _nodeId;
         public int _defBufferSize = 0xE0;
-        public int _flag;
+        public int _flag = 0;
 
         public int[] _nodeCache;
-        private int _tableLen;
+        private int _tableLen = 0;
 
         internal short[] _elementIndices = new short[14];
-        public bool _forceRebuild, _reOptimized;
+        public bool _forceRebuild = false, _reOptimized = false;
 
         internal List<IMatrixNode> _influences;
         public BindingList<DrawCall> _drawCalls = new BindingList<DrawCall>();
@@ -583,57 +494,70 @@ namespace BrawlLib.SSBB.ResourceNodes
         [TypeConverter(typeof(DropDownListBones))]
         public string SingleBind
         {
-            get => _matrixNode == null ? "(none)" :
-                _matrixNode.IsPrimaryNode ? ((MDL0BoneNode) _matrixNode)._name : "(multiple)";
+            get => _matrixNode == null ? "(none)" : _matrixNode.IsPrimaryNode ? ((MDL0BoneNode)_matrixNode)._name : "(multiple)";
             set
             {
                 MatrixNode = string.IsNullOrEmpty(value) ? null : Model.FindBone(value);
                 Model.SignalPropertyChange();
             }
         }
-
         internal IMatrixNode _matrixNode;
-
         [Browsable(false)]
         public IMatrixNode MatrixNode
         {
             get => _matrixNode;
             set
             {
-                if (_matrixNode == value) return;
+                if (_matrixNode == value)
+                {
+                    return;
+                }
 
                 if (_manager != null)
                 {
-                    foreach (var v in _manager._vertices)
+                    foreach (Vertex3 v in _manager._vertices)
                     {
                         v.DeferUpdateAssets();
                         v.ChangeInfluence(value);
 
-                        if (v._matrixNode != null && v._matrixNode.Users.Contains(v)) v._matrixNode.Users.Remove(v);
+                        if (v._matrixNode != null && v._matrixNode.Users.Contains(v))
+                        {
+                            v._matrixNode.Users.Remove(v);
+                        }
                     }
-
-                    if (_updateAssets) SetEditedAssets(false, true, true);
+                    if (_updateAssets)
+                    {
+                        SetEditedAssets(false, true, true);
+                    }
                 }
 
                 if (_matrixNode != null)
                 {
-                    if (_matrixNode is MDL0BoneNode && ((MDL0BoneNode) _matrixNode)._singleBindObjects.Contains(this))
-                        ((MDL0BoneNode) _matrixNode)._singleBindObjects.Remove(this);
-                    else if (_matrixNode.Users.Contains(this)) _matrixNode.Users.Remove(this);
+                    if (_matrixNode is MDL0BoneNode && ((MDL0BoneNode)_matrixNode)._singleBindObjects.Contains(this))
+                    {
+                        ((MDL0BoneNode)_matrixNode)._singleBindObjects.Remove(this);
+                    }
+                    else if (_matrixNode.Users.Contains(this))
+                    {
+                        _matrixNode.Users.Remove(this);
+                    }
                 }
-
                 if ((_matrixNode = value) != null)
                 {
                     //Singlebind bones aren't added to NodeMix, but its node id is still built as influenced
-                    if (_matrixNode is MDL0BoneNode && !((MDL0BoneNode) _matrixNode)._singleBindObjects.Contains(this))
-                        ((MDL0BoneNode) _matrixNode)._singleBindObjects.Add(this);
-                    else if (!_matrixNode.Users.Contains(this)) _matrixNode.Users.Add(this);
+                    if (_matrixNode is MDL0BoneNode && !((MDL0BoneNode)_matrixNode)._singleBindObjects.Contains(this))
+                    {
+                        ((MDL0BoneNode)_matrixNode)._singleBindObjects.Add(this);
+                    }
+                    else if (!_matrixNode.Users.Contains(this))
+                    {
+                        _matrixNode.Users.Add(this);
+                    }
                 }
 
                 _updateAssets = true;
             }
         }
-
         #endregion
 
         #region Reading & Writing
@@ -647,22 +571,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _manager.Dispose();
                 _manager = null;
             }
-
             base.Dispose();
         }
 
         public override bool OnInitialize()
         {
-            var header = Header;
+            MDL0Object* header = Header;
             _nodeId = header->_nodeId;
 
             SetSizeInternal(header->_totalLength);
 
-            var linker = Model._linker;
+            ModelLinker linker = Model._linker;
 
-            MatrixNode = _nodeId >= 0 && _nodeId < Model._linker.NodeCache.Length
-                ? Model._linker.NodeCache[_nodeId]
-                : null;
+            MatrixNode = (_nodeId >= 0 && _nodeId < Model._linker.NodeCache.Length) ? Model._linker.NodeCache[_nodeId] : null;
 
             _vertexFormat = header->_vertexFormat;
             _vertexSpecs = header->_vertexSpecs;
@@ -673,80 +594,116 @@ namespace BrawlLib.SSBB.ResourceNodes
             _entryIndex = header->_index;
 
             //Conditional name assignment
-            if (_name == null && header->_stringOffset != 0)
+            if ((_name == null) && (header->_stringOffset != 0))
             {
                 if (!_replaced)
+                {
                     _name = header->ResourceString;
+                }
                 else
+                {
                     _name = "polygon" + Index;
+                }
             }
 
             //Link nodes
             if (header->_vertexId >= 0 && Model._vertList != null)
+            {
                 foreach (MDL0VertexNode v in Model._vertList)
+                {
                     if (header->_vertexId == v.ID)
                     {
                         (_vertexNode = v)._objects.Add(this);
                         break;
                     }
+                }
+            }
 
             if (header->_normalId >= 0 && Model._normList != null)
+            {
                 foreach (MDL0NormalNode n in Model._normList)
+                {
                     if (header->_normalId == n.ID)
                     {
                         (_normalNode = n)._objects.Add(this);
                         break;
                     }
+                }
+            }
 
             int id;
-            for (var i = 0; i < 2; i++)
-                if ((id = ((bshort*) header->_colorIds)[i]) >= 0 && Model._colorList != null)
+            for (int i = 0; i < 2; i++)
+            {
+                if ((id = ((bshort*)header->_colorIds)[i]) >= 0 && Model._colorList != null)
+                {
                     foreach (MDL0ColorNode c in Model._colorList)
+                    {
                         if (id == c.ID)
                         {
                             (_colorSet[i] = c)._objects.Add(this);
                             break;
                         }
+                    }
+                }
+            }
 
-            for (var i = 0; i < 8; i++)
-                if ((id = ((bshort*) header->_uids)[i]) >= 0 && Model._uvList != null)
+            for (int i = 0; i < 8; i++)
+            {
+                if ((id = ((bshort*)header->_uids)[i]) >= 0 && Model._uvList != null)
+                {
                     foreach (MDL0UVNode u in Model._uvList)
+                    {
                         if (id == u.ID)
                         {
                             (_uvSet[i] = u)._objects.Add(this);
                             break;
                         }
+                    }
+                }
+            }
 
             if (Model._version > 9)
             {
                 if (header->_furVectorId >= 0)
+                {
                     foreach (MDL0FurVecNode v in Model._furVecList)
+                    {
                         if (header->_furVectorId == v.ID)
                         {
                             (_furVecNode = v)._objects.Add(this);
                             break;
                         }
+                    }
+                }
 
                 if (header->_furLayerCoordId >= 0)
+                {
                     foreach (MDL0FurPosNode n in Model._furPosList)
+                    {
                         if (header->_furLayerCoordId == n.ID)
                         {
                             (_furPosNode = n)._objects.Add(this);
                             break;
                         }
+                    }
+                }
             }
 
             //Link element indices for rebuild
-            _elementIndices[0] = (short) (_vertexNode != null ? _vertexNode.Index : -1);
-            _elementIndices[1] = (short) (_normalNode != null ? _normalNode.Index : -1);
-            for (var i = 2; i < 4; i++)
-                _elementIndices[i] = (short) (_colorSet[i - 2] != null ? _colorSet[i - 2].Index : -1);
+            _elementIndices[0] = (short)(_vertexNode != null ? _vertexNode.Index : -1);
+            _elementIndices[1] = (short)(_normalNode != null ? _normalNode.Index : -1);
+            for (int i = 2; i < 4; i++)
+            {
+                _elementIndices[i] = (short)(_colorSet[i - 2] != null ? _colorSet[i - 2].Index : -1);
+            }
 
-            for (var i = 4; i < 12; i++)
-                _elementIndices[i] = (short) (_uvSet[i - 4] != null ? _uvSet[i - 4].Index : -1);
+            for (int i = 4; i < 12; i++)
+            {
+                _elementIndices[i] = (short)(_uvSet[i - 4] != null ? _uvSet[i - 4].Index : -1);
+            }
 
-            _elementIndices[12] = (short) (_furVecNode != null ? _furVecNode.Index : -1);
-            _elementIndices[13] = (short) (_furPosNode != null ? _furPosNode.Index : -1);
+            _elementIndices[12] = (short)(_furVecNode != null ? _furVecNode.Index : -1);
+            _elementIndices[13] = (short)(_furPosNode != null ? _furPosNode.Index : -1);
 
             //Create primitive manager
             _manager = new PrimitiveManager(header, Model._assets, linker.NodeCache, this);
@@ -755,12 +712,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (Model._linker.NodeCache != null && _matrixNode == null)
             {
                 _influences = new List<IMatrixNode>();
-                var weights = header->WeightIndices(Model._version);
-                int count = *(bint*) weights;
-                weights += 2;
-                for (var i = 0; i < count; i++, weights++)
+                bushort* weights = header->WeightIndices(Model._version);
+                int count = *(bint*)weights; weights += 2;
+                for (int i = 0; i < count; i++, weights++)
+                {
                     if (*weights < Model._linker.NodeCache.Length)
+                    {
                         _influences.Add(Model._linker.NodeCache[*weights]);
+                    }
+                }
             }
 
             //Check for errors
@@ -770,30 +730,33 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
                 _forceRebuild = true;
             }
-
             if ((0x24 + header->_primitives._offset) % 0x20 != 0)
             {
                 Model._errors.Add("Object " + Index + " has an improper primitives start offset.");
                 SignalPropertyChange();
                 _forceRebuild = true;
             }
-
             if (CheckVertexFormat())
             {
-                Model._errors.Add("Object " + Index +
-                                  " has a facepoint descriptor that does not match its linked nodes.");
+                Model._errors.Add("Object " + Index + " has a facepoint descriptor that does not match its linked nodes.");
                 SignalPropertyChange();
                 _forceRebuild = true;
 
-                for (var i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
+                {
                     if (_colorSet[i] != null && _manager._faceData[i + 2] == null)
+                    {
                         _manager._faceData[i + 2] = new UnsafeBuffer(_manager._pointCount * 4);
+                    }
+                }
             }
-
             if (HasTexMtx && !Weighted)
             {
                 Model._errors.Add("Object " + Index + " has texture matrices but is not weighted.");
-                for (var i = 0; i < 8; i++) _manager.HasTextureMatrix[i] = false;
+                for (int i = 0; i < 8; i++)
+                {
+                    _manager.HasTextureMatrix[i] = false;
+                }
 
                 SignalPropertyChange();
                 _forceRebuild = true;
@@ -836,43 +799,59 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void RecalcIndices()
         {
-            _elementIndices[0] = (short) (_vertexNode != null ? _vertexNode.Index : _elementIndices[0]);
-            _elementIndices[1] = (short) (_normalNode != null ? _normalNode.Index : _elementIndices[1]);
-            for (var i = 2; i < 4; i++)
-                _elementIndices[i] = (short) (_colorSet[i - 2] != null ? _colorSet[i - 2].Index : _elementIndices[i]);
+            _elementIndices[0] = (short)(_vertexNode != null ? _vertexNode.Index : _elementIndices[0]);
+            _elementIndices[1] = (short)(_normalNode != null ? _normalNode.Index : _elementIndices[1]);
+            for (int i = 2; i < 4; i++)
+            {
+                _elementIndices[i] = (short)(_colorSet[i - 2] != null ? _colorSet[i - 2].Index : _elementIndices[i]);
+            }
 
-            for (var i = 4; i < 12; i++)
-                _elementIndices[i] = (short) (_uvSet[i - 4] != null ? _uvSet[i - 4].Index : _elementIndices[i]);
+            for (int i = 4; i < 12; i++)
+            {
+                _elementIndices[i] = (short)(_uvSet[i - 4] != null ? _uvSet[i - 4].Index : _elementIndices[i]);
+            }
 
-            _elementIndices[12] = (short) (_furVecNode != null ? _furVecNode.Index : _elementIndices[0]);
-            _elementIndices[13] = (short) (_furPosNode != null ? _furPosNode.Index : _elementIndices[1]);
+            _elementIndices[12] = (short)(_furVecNode != null ? _furVecNode.Index : _elementIndices[0]);
+            _elementIndices[13] = (short)(_furPosNode != null ? _furPosNode.Index : _elementIndices[1]);
         }
 
         /// <summary>
-        ///     Returns true if the facepoint descriptor does not match the linked nodes, meaning this object must be rebuilt.
+        /// Returns true if the facepoint descriptor does not match the linked nodes, meaning this object must be rebuilt.
         /// </summary>
         public bool CheckVertexFormat()
         {
-            var b1 = _vertexFormat.PosFormat != XFDataFormat.None;
-            var b2 = _elementIndices[0] != -1;
-            if (b1 != b2) return true;
+            bool b1 = _vertexFormat.PosFormat != XFDataFormat.None;
+            bool b2 = _elementIndices[0] != -1;
+            if (b1 != b2)
+            {
+                return true;
+            }
 
             b1 = _vertexFormat.NormalFormat != XFDataFormat.None;
             b2 = _elementIndices[1] != -1;
-            if (b1 != b2) return true;
+            if (b1 != b2)
+            {
+                return true;
+            }
 
-            for (var i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 b1 = _vertexFormat.GetColorFormat(i) != XFDataFormat.None;
                 b2 = _elementIndices[i + 2] != -1;
-                if (b1 != b2) return true;
+                if (b1 != b2)
+                {
+                    return true;
+                }
             }
 
-            for (var i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 b1 = _vertexFormat.GetUVFormat(i) != XFDataFormat.None;
                 b2 = _elementIndices[i + 4] != -1;
-                if (b1 != b2) return true;
+                if (b1 != b2)
+                {
+                    return true;
+                }
             }
 
             return false;
@@ -887,10 +866,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             //Create node table
-            var nodes = new HashSet<int>();
-            foreach (var v in _manager._vertices)
+            HashSet<int> nodes = new HashSet<int>();
+            foreach (Vertex3 v in _manager._vertices)
+            {
                 if (v.MatrixNode != null)
+                {
                     nodes.Add(v.MatrixNode.NodeIndex);
+                }
+            }
 
             //Copy to array and sort
             _nodeCache = new int[nodes.Count];
@@ -901,13 +884,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         //This should be done after node indices have been assigned
         public override int OnCalculateSize(bool force)
         {
-            var model = Model;
+            MDL0Node model = Model;
             if (model._isImport)
+            {
                 //Continue checking for single bind
                 if (_nodeId == -2 && MatrixNode == null)
                 {
-                    var first = true;
-                    foreach (var v in _manager._vertices)
+                    bool first = true;
+                    foreach (Vertex3 v in _manager._vertices)
                     {
                         if (first)
                         {
@@ -919,7 +903,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                             first = false;
                         }
-
                         v.MatrixNode = null;
                     }
 
@@ -927,16 +910,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if (MatrixNode == null)
                     {
                         if (model._boneList != null && model._boneList.Count > 0)
+                        {
                             MatrixNode = model._boneList[0] as IMatrixNode;
+                        }
                         else if (model._linker.BoneCache != null && model._linker.BoneCache.Length > 0)
-                            MatrixNode = model._linker.BoneCache[0];
+                        {
+                            MatrixNode = model._linker.BoneCache[0] as IMatrixNode;
+                        }
                         else if (model._linker.NodeCache != null && model._linker.NodeCache.Length > 0)
-                            MatrixNode = model._linker.NodeCache[0];
+                        {
+                            MatrixNode = model._linker.NodeCache[0] as IMatrixNode;
+                        }
 
                         //At this point, if a single bind still hasn't been found
                         //it doesn't even matter because the model doesn't have any matrices at all
                     }
                 }
+            }
 
             //Collect vertex node ids
             GenerateNodeCache();
@@ -945,7 +935,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             RecalcIndices();
 
             //Check that the facepoint descriptor matches the linked nodes
-            if (!_forceRebuild) _forceRebuild = CheckVertexFormat();
+            if (!_forceRebuild)
+            {
+                _forceRebuild = CheckVertexFormat();
+            }
 
             //Primitives need to be 
             _manager._remakePrimitives = model._isImport || _reOptimized || _manager.AssetsChanged;
@@ -955,8 +948,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _manager._isWeighted = Weighted;
 
-                var size = (int) MDL0Object.Size;
-                if (model._version >= 10) size += 4; //Add extra -1 value
+                int size = (int)MDL0Object.Size;
+                if (model._version >= 10)
+                {
+                    size += 4; //Add extra -1 value
+                }
 
                 //Set vertex descriptor
                 _manager.SetVertexDescList(
@@ -967,7 +963,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 //Add table length
                 size += _nodeCache.Length * 2 + 4;
-                _tableLen = (size.Align(0x10) + 0xE0) % 0x20 == 0 ? size.Align(0x10) : size.Align(0x20);
+                _tableLen = ((size.Align(0x10) + 0xE0) % 0x20 == 0) ? size.Align(0x10) : size.Align(0x20);
 
                 //Add def length
                 size = _tableLen + 0xE0;
@@ -976,6 +972,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //This will merge internally stored face data buffers into facepoints,
                 //then group them and store the groups in _primGroups
                 if (model._isImport || _manager.AssetsChanged)
+                {
                     _manager.GroupPrimitives(
                         Collada._importOptions._useTristrips,
                         Collada._importOptions._cacheSize,
@@ -984,33 +981,32 @@ namespace BrawlLib.SSBB.ResourceNodes
                         !model._isImport ? false : Collada._importOptions._forceCCW,
                         out _numFacepoints,
                         out _numFaces);
+                }
 
                 size += _manager.GetDisplayListSize();
-                var align = size.Align(0x10) % 0x20 == 0 ? 0x10 : 0x20;
-                var diff = size.Align(align) - size;
+                int align = ((size.Align(0x10)) % 0x20 == 0) ? 0x10 : 0x20;
+                int diff = size.Align(align) - size;
                 size += diff;
                 _manager._primitiveSize += diff;
 
                 return size;
             }
-
-            return base.OnCalculateSize(force);
+            else
+            {
+                return base.OnCalculateSize(force);
+            }
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var header = (MDL0Object*) address;
+            MDL0Object* header = (MDL0Object*)address;
 
-            var model = Model;
+            MDL0Node model = Model;
 
             header->_defintions._size = 0x80 +
-                                        (_uvSet[2] == null
-                                            ? 0
-                                            : 0x20 +
-                                              (_uvSet[5] == null
-                                                  ? 0
-                                                  : 0x20 +
-                                                    (_uvSet[7] == null ? 0 : 0x20)));
+                (_uvSet[2] == null ? 0 : 0x20 +
+                (_uvSet[5] == null ? 0 : 0x20 +
+                (_uvSet[7] == null ? 0 : 0x20)));
 
             if (_manager._remakePrimitives || _forceRebuild)
             {
@@ -1035,31 +1031,27 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     header->_furVectorId = _elementIndices[12];
                     header->_furLayerCoordId = _elementIndices[13];
-                    *((byte*) header + 0x67) = 0x68;
+                    *((byte*)header + 0x67) = 0x68;
                 }
 
                 //Set the node id
                 header->_nodeId = _nodeId = _matrixNode != null ? _matrixNode.NodeIndex : -1;
 
                 //Set asset ids
-                header->_vertexId = model._isImport && model._linker._forceDirectAssets[0]
-                    ? (short) -1
-                    : (short) (_elementIndices[0] >= 0 ? _elementIndices[0] : -1);
-                header->_normalId = model._isImport && model._linker._forceDirectAssets[1]
-                    ? (short) -1
-                    : (short) (_elementIndices[1] >= 0 ? _elementIndices[1] : -1);
-                for (var i = 2; i < 4; i++)
-                    *(bshort*) &header->_colorIds[i - 2] = model._isImport && model._linker._forceDirectAssets[i]
-                        ? (short) -1
-                        : (short) (_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                header->_vertexId = model._isImport && model._linker._forceDirectAssets[0] ? (short)-1 : (short)(_elementIndices[0] >= 0 ? _elementIndices[0] : -1);
+                header->_normalId = model._isImport && model._linker._forceDirectAssets[1] ? (short)-1 : (short)(_elementIndices[1] >= 0 ? _elementIndices[1] : -1);
+                for (int i = 2; i < 4; i++)
+                {
+                    *(bshort*)&header->_colorIds[i - 2] = model._isImport && model._linker._forceDirectAssets[i] ? (short)-1 : (short)(_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                }
 
-                for (var i = 4; i < 12; i++)
-                    *(bshort*) &header->_uids[i - 4] = model._isImport && model._linker._forceDirectAssets[i]
-                        ? (short) -1
-                        : (short) (_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                for (int i = 4; i < 12; i++)
+                {
+                    *(bshort*)&header->_uids[i - 4] = model._isImport && model._linker._forceDirectAssets[i] ? (short)-1 : (short)(_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                }
 
                 //Write def list
-                var Defs = header->DefList;
+                MDL0PolygonDefs* Defs = header->DefList;
                 *Defs = MDL0PolygonDefs.Default;
 
                 //Array flags are already set
@@ -1077,7 +1069,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 header->_vertexSpecs = Defs->VtxSpecs = _vertexSpecs;
 
                 //Write weight table only if the object is weighted
-                if (_matrixNode == null) WriteWeightTable(header->WeightIndices(model._version));
+                if (_matrixNode == null)
+                {
+                    WriteWeightTable(header->WeightIndices(model._version));
+                }
 
                 //Write primitives
                 _manager.WritePrimitives(header, model._linker.NodeCache);
@@ -1093,30 +1088,38 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 header->_vertexId = _elementIndices[0];
                 header->_normalId = _elementIndices[1];
-                for (var i = 2; i < 4; i++)
-                    *(bshort*) &header->_colorIds[i - 2] = (short) (_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                for (int i = 2; i < 4; i++)
+                {
+                    *(bshort*)&header->_colorIds[i - 2] = (short)(_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                }
 
-                for (var i = 4; i < 12; i++)
-                    *(bshort*) &header->_uids[i - 4] = (short) (_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                for (int i = 4; i < 12; i++)
+                {
+                    *(bshort*)&header->_uids[i - 4] = (short)(_elementIndices[i] >= 0 ? _elementIndices[i] : -1);
+                }
 
                 if (model._version >= 10)
                 {
-                    *(bshort*) ((byte*) header + 0x60) = _elementIndices[12];
-                    *(bshort*) ((byte*) header + 0x62) = _elementIndices[13];
+                    *(bshort*)((byte*)header + 0x60) = _elementIndices[12];
+                    *(bshort*)((byte*)header + 0x62) = _elementIndices[13];
                 }
             }
-
             _forceRebuild = _reOptimized = false;
         }
 
         private void WriteWeightTable(VoidPtr addr)
         {
-            if (_nodeCache == null) GenerateNodeCache();
+            if (_nodeCache == null)
+            {
+                GenerateNodeCache();
+            }
 
-            var ptr = (bushort*) addr;
-            *(buint*) ptr = (uint) _nodeCache.Length;
-            ptr += 2;
-            foreach (var n in _nodeCache) *ptr++ = (ushort) n;
+            bushort* ptr = (bushort*)addr;
+            *(buint*)ptr = (uint)_nodeCache.Length; ptr += 2;
+            foreach (int n in _nodeCache)
+            {
+                *ptr++ = (ushort)n;
+            }
         }
 
         private void CorrectNodeIds(MDL0Object* header)
@@ -1125,30 +1128,37 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_matrixNode != null)
             {
-                header->_nodeId = _nodeId = (ushort) _matrixNode.NodeIndex;
+                header->_nodeId = _nodeId = (ushort)_matrixNode.NodeIndex;
             }
             else
             {
                 header->_nodeId = _nodeId = -1;
 
-                var primAddr = header->PrimitiveData;
-                foreach (var p in _manager._primGroups) p.SetNodeIds(primAddr);
+                VoidPtr primAddr = header->PrimitiveData;
+                foreach (PrimitiveGroup p in _manager._primGroups)
+                {
+                    p.SetNodeIds(primAddr);
+                }
             }
         }
 
-        public override void Export(string outPath)
+        public override unsafe void Export(string outPath)
         {
             if (outPath.EndsWith(".obj"))
+            {
                 Wavefront.Serialize(outPath, this);
+            }
             else
+            {
                 base.Export(outPath);
+            }
         }
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
         {
-            var header = (MDL0Object*) dataAddress;
-            header->_mdl0Offset = (int) mdlAddress - (int) dataAddress;
-            header->_stringOffset = (int) stringTable[Name] + 4 - (int) dataAddress;
+            MDL0Object* header = (MDL0Object*)dataAddress;
+            header->_mdl0Offset = (int)mdlAddress - (int)dataAddress;
+            header->_stringOffset = (int)stringTable[Name] + 4 - (int)dataAddress;
             header->_index = Index;
         }
 
@@ -1163,33 +1173,41 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                foreach (var c in _drawCalls)
+                foreach (DrawCall c in _drawCalls)
+                {
                     if (c._render)
+                    {
                         return true;
+                    }
+                }
 
                 return false;
             }
             set
             {
-                foreach (var c in _drawCalls) c._render = value;
+                foreach (DrawCall c in _drawCalls)
+                {
+                    c._render = value;
+                }
             }
         }
 
         [Browsable(false)]
-        public bool Attached
-        {
-            get => _attached;
-            set => _attached = value;
-        }
-
-        public bool _attached;
+        public bool Attached { get => _attached; set => _attached = value; }
+        public bool _attached = false;
 
         public Box GetBox()
         {
-            if (_manager == null || _manager._vertices == null) return new Box();
+            if (_manager == null || _manager._vertices == null)
+            {
+                return new Box();
+            }
 
-            var box = Box.ExpandableVolume;
-            foreach (var vertex in _manager._vertices) box.ExpandVolume(vertex.WeightedPosition);
+            Box box = Box.ExpandableVolume;
+            foreach (Vertex3 vertex in _manager._vertices)
+            {
+                box.ExpandVolume(vertex.WeightedPosition);
+            }
 
             return box;
         }
@@ -1201,7 +1219,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
             BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
         };
-
         private readonly BlendingFactor[] _blendDst =
         {
             BlendingFactor.Zero, BlendingFactor.One,
@@ -1209,7 +1226,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha,
             BlendingFactor.DstAlpha, BlendingFactor.OneMinusDstAlpha
         };
-
         private readonly LogicOp[] _logicOp =
         {
             LogicOp.Clear, LogicOp.And, LogicOp.AndReverse, LogicOp.Copy,
@@ -1217,14 +1233,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             LogicOp.Nor, LogicOp.Equiv, LogicOp.Invert, LogicOp.OrReverse,
             LogicOp.CopyInverted, LogicOp.OrInverted, LogicOp.Nand, LogicOp.Set
         };
-
         private readonly CullFaceMode[] _cullMode =
         {
             CullFaceMode.Front,
             CullFaceMode.Back,
             CullFaceMode.FrontAndBack
         };
-
         private readonly DepthFunction[] _depthFunc =
         {
             DepthFunction.Never,
@@ -1236,7 +1250,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             DepthFunction.Gequal,
             DepthFunction.Always
         };
-
         private readonly AlphaFunction[] _alphaFunc =
         {
             AlphaFunction.Never,
@@ -1251,9 +1264,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal void Render(bool wireframe, bool useShaders, MDL0MaterialNode material)
         {
-            if (_manager == null) return;
+            if (_manager == null)
+            {
+                return;
+            }
 
-            if (!TKContext._shadersSupported) useShaders = false;
+            if (!TKContext._shadersSupported)
+            {
+                useShaders = false;
+            }
 
             _manager.PrepareStream();
 
@@ -1273,7 +1292,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             GL.MatrixMode(MatrixMode.Texture);
 
-            var anyRendered = false;
+            bool anyRendered = false;
             if (material != null)
             {
                 if (!useShaders)
@@ -1292,7 +1311,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (useShaders)
                 {
-                    for (var i = 0; i < 8; i++)
+                    for (int i = 0; i < 8; i++)
                     {
                         GL.ClientActiveTexture(TextureUnit.Texture0 + i);
                         GL.ActiveTexture(TextureUnit.Texture0 + i);
@@ -1303,19 +1322,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                             GL.Disable(EnableCap.Texture2D);
                             continue;
                         }
+                        else
+                        {
+                            GL.Enable(EnableCap.Texture2D);
+                        }
 
-                        GL.Enable(EnableCap.Texture2D);
+                        MDL0MaterialRefNode mr = (MDL0MaterialRefNode)material.Children[i];
+                        if (mr._texture == null || !mr._texture.Enabled)
+                        {
+                            continue;
+                        }
 
-                        var mr = (MDL0MaterialRefNode) material.Children[i];
-                        if (mr._texture == null || !mr._texture.Enabled) continue;
-
-                        var m = mr.GetTransform(_matrixNode != null || _manager.HasTextureMatrix[i]);
-                        GL.LoadMatrix((float*) &m);
+                        Matrix m = mr.GetTransform(_matrixNode != null || _manager.HasTextureMatrix[i]);
+                        GL.LoadMatrix((float*)&m);
 
                         mr.Bind(material._programHandle);
                         _manager.ApplyTexture(mr.Coordinates);
                     }
-
                     anyRendered = true;
                     _manager.BindStream();
                     _manager.RenderMesh();
@@ -1325,16 +1348,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                     GL.Enable(EnableCap.Texture2D);
 
                     _manager.BindStream();
-                    for (var i = material.Children.Count - 1; i >= 0; i--)
+                    for (int i = material.Children.Count - 1; i >= 0; i--)
                     {
-                        var mr = (MDL0MaterialRefNode) material.Children[i];
-                        if (mr._texture == null || !mr._texture.Enabled) continue;
+                        MDL0MaterialRefNode mr = (MDL0MaterialRefNode)material.Children[i];
+                        if (mr._texture == null || !mr._texture.Enabled)
+                        {
+                            continue;
+                        }
 
                         anyRendered = true;
 
                         fixed (Matrix* m = &mr._frameState._transform)
                         {
-                            GL.LoadMatrix((float*) m);
+                            GL.LoadMatrix((float*)m);
                         }
 
                         mr.Bind(material._programHandle);
@@ -1356,21 +1382,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private void AlphaTest(MDL0MaterialNode material)
         {
-            var alpha = material._alphaFunc;
+            GXAlphaFunction alpha = material._alphaFunc;
 
-            var logic = alpha.Logic;
-            var func0 = alpha.Comp0;
-            var func1 = alpha.Comp1;
+            AlphaOp logic = alpha.Logic;
+            AlphaCompare func0 = alpha.Comp0;
+            AlphaCompare func1 = alpha.Comp1;
 
             GL.Enable(EnableCap.AlphaTest);
-            if (logic == AlphaOp.Or && (func0 == AlphaCompare.Always || func1 == AlphaCompare.Always) ||
-                logic == AlphaOp.And && func0 == AlphaCompare.Always && func1 == AlphaCompare.Always)
+            if ((logic == AlphaOp.Or && (func0 == AlphaCompare.Always || func1 == AlphaCompare.Always)) ||
+                (logic == AlphaOp.And && (func0 == AlphaCompare.Always && func1 == AlphaCompare.Always)))
             {
                 GL.AlphaFunc(AlphaFunction.Always, 0.0f);
                 GL.Disable(EnableCap.AlphaTest);
             }
-            else if (logic == AlphaOp.And && (func0 == AlphaCompare.Never || func0 == AlphaCompare.Never) ||
-                     logic == AlphaOp.Or && func0 == AlphaCompare.Never && func0 == AlphaCompare.Never)
+            else if ((logic == AlphaOp.And && (func0 == AlphaCompare.Never || func0 == AlphaCompare.Never)) ||
+                (logic == AlphaOp.Or && (func0 == AlphaCompare.Never && func0 == AlphaCompare.Never)))
             {
                 GL.Enable(EnableCap.AlphaTest);
                 GL.AlphaFunc(AlphaFunction.Never, 0.0f);
@@ -1378,26 +1404,34 @@ namespace BrawlLib.SSBB.ResourceNodes
             else
             {
                 GL.Enable(EnableCap.AlphaTest);
-                if (logic == AlphaOp.Or && func0 == AlphaCompare.Never ||
-                    logic == AlphaOp.And && func0 == AlphaCompare.Always)
-                    GL.AlphaFunc(_alphaFunc[(int) func1], alpha._ref1 / 255.0f);
+                if ((logic == AlphaOp.Or && func0 == AlphaCompare.Never) ||
+                    (logic == AlphaOp.And && func0 == AlphaCompare.Always))
+                {
+                    GL.AlphaFunc(_alphaFunc[(int)func1], alpha._ref1 / 255.0f);
+                }
                 else
-                    GL.AlphaFunc(_alphaFunc[(int) func0], alpha._ref0 / 255.0f);
+                {
+                    GL.AlphaFunc(_alphaFunc[(int)func0], alpha._ref0 / 255.0f);
+                }
             }
         }
 
         private void Blend(MDL0MaterialNode material)
         {
-            var b = material._blendMode;
-            if (b.EnableBlend /* && !b.EnableLogicOp*/)
+            BlendMode b = material._blendMode;
+            if (b.EnableBlend/* && !b.EnableLogicOp*/)
             {
                 GL.Enable(EnableCap.Blend);
                 if (b.Subtract)
+                {
                     GL.BlendEquation(BlendEquationMode.FuncSubtract);
+                }
                 else
+                {
                     GL.BlendEquation(BlendEquationMode.FuncAdd);
+                }
 
-                GL.BlendFunc(_blendSrc[(int) b.SrcFactor], _blendDst[(int) b.DstFactor]);
+                GL.BlendFunc(_blendSrc[(int)b.SrcFactor], _blendDst[(int)b.DstFactor]);
             }
             else
             {
@@ -1407,7 +1441,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (b.EnableLogicOp /*&& !b.EnableBlend*/)
             {
                 GL.Enable(EnableCap.ColorLogicOp);
-                GL.LogicOp(_logicOp[(int) b.LogicOp]);
+                GL.LogicOp(_logicOp[(int)b.LogicOp]);
             }
             else
             {
@@ -1424,7 +1458,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             else
             {
                 GL.Enable(EnableCap.CullFace);
-                GL.CullFace(_cullMode[(int) material.CullMode - 1]);
+                GL.CullFace(_cullMode[(int)material.CullMode - 1]);
             }
         }
 
@@ -1433,7 +1467,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (material._zMode.EnableDepthTest)
             {
                 GL.Enable(EnableCap.DepthTest);
-                GL.DepthFunc(_depthFunc[(int) material._zMode.DepthFunction]);
+                GL.DepthFunc(_depthFunc[(int)material._zMode.DepthFunction]);
                 GL.DepthMask(material._zMode.EnableDepthUpdate);
             }
             else
@@ -1449,12 +1483,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal void Weight()
         {
-            if (_manager != null) _manager.Weight();
+            if (_manager != null)
+            {
+                _manager.Weight();
+            }
         }
-
         internal void Unweight(bool updateAssets)
         {
-            if (_manager != null) _manager.Unweight(updateAssets);
+            if (_manager != null)
+            {
+                _manager.Unweight(updateAssets);
+            }
         }
 
         internal override void Bind()
@@ -1462,32 +1501,37 @@ namespace BrawlLib.SSBB.ResourceNodes
             //foreach (DrawCall c in _drawCalls)
             //    c.Bind();
         }
-
-        internal override void Unbind()
-        {
-        }
+        internal override void Unbind() { }
 
         public void Attach()
         {
             _attached = true;
             Model.Attach();
         }
-
         public void Detach()
         {
             _attached = false;
 
-            if (Model != null) Model.Detach();
+            if (Model != null)
+            {
+                Model.Detach();
+            }
         }
 
         public void Refresh()
         {
-            if (Model != null) Model.Refresh();
+            if (Model != null)
+            {
+                Model.Refresh();
+            }
         }
 
         public void PreRender(ModelPanelViewport v)
         {
-            if (Model != null) Model.PreRender(v);
+            if (Model != null)
+            {
+                Model.PreRender(v);
+            }
         }
 
         #endregion
@@ -1505,30 +1549,32 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_matrixNode != null)
             {
-                var m = MatrixNode;
+                IMatrixNode m = MatrixNode;
                 DeferUpdateAssets();
                 MatrixNode = null;
-                foreach (var v in _manager._vertices)
+                foreach (Vertex3 v in _manager._vertices)
                 {
                     v.DeferUpdateAssets();
                     v.MatrixNode = m;
                 }
             }
         }
-
         public void TryConvertMatrixToObject()
         {
             if (_matrixNode == null)
             {
                 IMatrixNode mtxNode = null;
-                var singlebind = true;
+                bool singlebind = true;
 
-                var i = 0;
-                foreach (var v in _manager._vertices)
+                int i = 0;
+                foreach (Vertex3 v in _manager._vertices)
                 {
                     i++;
 
-                    if (mtxNode == null) mtxNode = v.MatrixNode;
+                    if (mtxNode == null)
+                    {
+                        mtxNode = v.MatrixNode;
+                    }
 
                     if (v.MatrixNode != mtxNode)
                     {
@@ -1544,52 +1590,46 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-
         private bool _updateAssets = true;
-
-        public void DeferUpdateAssets()
-        {
-            _updateAssets = false;
-        }
-
+        public void DeferUpdateAssets() { _updateAssets = false; }
         public void SetEditedAssets(bool forceNewNode, params bool[] types)
         {
-            if (types.Length > 0 && types[0]) SetEditedVertices(forceNewNode);
+            if (types.Length > 0 && types[0])
+            {
+                SetEditedVertices(forceNewNode);
+            }
 
-            if (types.Length > 1 && types[1]) SetEditedNormals(forceNewNode);
+            if (types.Length > 1 && types[1])
+            {
+                SetEditedNormals(forceNewNode);
+            }
 
-            if (types.Length > 2 && types[2]) SetEditedColors(0, forceNewNode);
+            if (types.Length > 2 && types[2])
+            {
+                SetEditedColors(0, forceNewNode);
+            }
 
-            if (types.Length > 3 && types[3]) SetEditedColors(1, forceNewNode);
+            if (types.Length > 3 && types[3])
+            {
+                SetEditedColors(1, forceNewNode);
+            }
 
-            for (var i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
+            {
                 if (types.Length > i + 4 && types[i + 4])
+                {
                     SetEditedUVs(i, forceNewNode);
+                }
+            }
         }
-
-        public void SetEditedVertices(bool forceNewNode = false)
-        {
-            _manager.PositionsChanged(this, forceNewNode);
-        }
-
-        public void SetEditedNormals(bool forceNewNode = false)
-        {
-            _manager.NormalsChanged(this, forceNewNode);
-        }
-
-        public void SetEditedColors(int id, bool forceNewNode = false)
-        {
-            _manager.ColorsChanged(this, id, forceNewNode);
-        }
-
-        public void SetEditedUVs(int id, bool forceNewNode = false)
-        {
-            _manager.UVsChanged(this, id, forceNewNode);
-        }
+        public void SetEditedVertices(bool forceNewNode = false) { _manager.PositionsChanged(this, forceNewNode); }
+        public void SetEditedNormals(bool forceNewNode = false) { _manager.NormalsChanged(this, forceNewNode); }
+        public void SetEditedColors(int id, bool forceNewNode = false) { _manager.ColorsChanged(this, id, forceNewNode); }
+        public void SetEditedUVs(int id, bool forceNewNode = false) { _manager.UVsChanged(this, id, forceNewNode); }
 
         public MDL0ObjectNode HardCopy()
         {
-            var o = new MDL0ObjectNode
+            MDL0ObjectNode o = new MDL0ObjectNode()
             {
                 _manager = _manager.HardCopy(),
                 Name = Name,
@@ -1603,11 +1643,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _numFaces = _numFaces,
                 _drawCalls = new BindingList<DrawCall>()
             };
-            for (var i = 0; i < 2; i++) o._colorSet[i] = _colorSet[i];
+            for (int i = 0; i < 2; i++)
+            {
+                o._colorSet[i] = _colorSet[i];
+            }
 
-            for (var i = 0; i < 8; i++) o._uvSet[i] = _uvSet[i];
+            for (int i = 0; i < 8; i++)
+            {
+                o._uvSet[i] = _uvSet[i];
+            }
 
-            foreach (var c in _drawCalls)
+            foreach (DrawCall c in _drawCalls)
+            {
                 o._drawCalls.Add(new DrawCall(o)
                 {
                     MaterialNode = c.MaterialNode,
@@ -1615,6 +1662,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     DrawPriority = c.DrawPriority,
                     DrawPass = c.DrawPass
                 });
+            }
 
             o.SignalPropertyChange();
             return o;
@@ -1627,7 +1675,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void Remove(bool v, bool n, bool c1, bool c2, params bool[] uv)
         {
-            var node = Model;
+            MDL0Node node = Model;
 
             if (node == null)
             {
@@ -1638,32 +1686,48 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_vertexNode != null)
             {
                 _vertexNode._objects.Remove(this);
-                if (_vertexNode._objects.Count == 0 && v) _vertexNode.Remove();
+                if (_vertexNode._objects.Count == 0 && v)
+                {
+                    _vertexNode.Remove();
+                }
             }
 
             if (_normalNode != null)
             {
                 _normalNode._objects.Remove(this);
-                if (_normalNode._objects.Count == 0 && n) _normalNode.Remove();
+                if (_normalNode._objects.Count == 0 && n)
+                {
+                    _normalNode.Remove();
+                }
             }
 
-            for (var i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
+            {
                 if (_colorSet[i] != null)
                 {
                     _colorSet[i]._objects.Remove(this);
-                    if (_colorSet[i]._objects.Count == 0 && (i == 0 ? c1 : c2)) _colorSet[i].Remove();
+                    if (_colorSet[i]._objects.Count == 0 && (i == 0 ? c1 : c2))
+                    {
+                        _colorSet[i].Remove();
+                    }
                 }
+            }
 
-            for (var i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
+            {
                 if (_uvSet[i] != null)
                 {
                     _uvSet[i]._objects.Remove(this);
-                    if (_uvSet[i]._objects.Count == 0 && uv[i]) _uvSet[i].Remove();
+                    if (_uvSet[i]._objects.Count == 0 && uv[i])
+                    {
+                        _uvSet[i].Remove();
+                    }
                 }
+            }
 
             MatrixNode = null;
 
-            foreach (var c in _drawCalls)
+            foreach (DrawCall c in _drawCalls)
             {
                 c.VisibilityBoneNode = null;
                 c.MaterialNode = null;
@@ -1674,9 +1738,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             DrawCallsChanged?.Invoke(null, null);
 
             if (_manager != null)
-                foreach (var vertex in _manager._vertices)
+            {
+                foreach (Vertex3 vertex in _manager._vertices)
+                {
                     if (vertex.MatrixNode != null)
+                    {
                         vertex.MatrixNode.Users.Remove(vertex);
+                    }
+                }
+            }
 
             Dispose();
             base.Remove();
@@ -1685,87 +1755,77 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void Remove()
         {
             Remove(
-                _vertexNode != null && _vertexNode._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's vertex node?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _normalNode != null && _normalNode._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's normal node?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _colorSet[0] != null && _colorSet[0]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's color node 1?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _colorSet[1] != null && _colorSet[1]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's color node 2?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[0] != null && _uvSet[0]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 1?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[1] != null && _uvSet[1]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 2?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[2] != null && _uvSet[2]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 3?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[3] != null && _uvSet[3]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 4?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[4] != null && _uvSet[4]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 5?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[5] != null && _uvSet[5]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 6?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[6] != null && _uvSet[6]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 7?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes,
-                _uvSet[7] != null && _uvSet[7]._objects.Count == 1 &&
-                MessageBox.Show("Do you want to remove this object's uv node 8?", "", MessageBoxButtons.YesNo) ==
-                DialogResult.Yes);
+                _vertexNode != null && _vertexNode._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's vertex node?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _normalNode != null && _normalNode._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's normal node?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _colorSet[0] != null && _colorSet[0]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's color node 1?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _colorSet[1] != null && _colorSet[1]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's color node 2?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[0] != null && _uvSet[0]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 1?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[1] != null && _uvSet[1]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 2?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[2] != null && _uvSet[2]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 3?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[3] != null && _uvSet[3]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 4?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[4] != null && _uvSet[4]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 5?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[5] != null && _uvSet[5]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 6?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[6] != null && _uvSet[6]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 7?", "", MessageBoxButtons.YesNo) == DialogResult.Yes,
+                _uvSet[7] != null && _uvSet[7]._objects.Count == 1 && MessageBox.Show("Do you want to remove this object's uv node 8?", "", MessageBoxButtons.YesNo) == DialogResult.Yes);
         }
 
         #endregion
+
+        public event EventHandler DrawCallsChanged;
+
+        public void OnDrawCallsChanged()
+        {
+            if (_attached)
+            {
+                DrawCallsChanged?.Invoke(this, null);
+            }
+            else if (Model != null && Model.Attached)
+            {
+                Model.OnDrawCallsChanged();
+            }
+        }
+
+        [Browsable(false)]
+        public List<DrawCallBase> DrawCalls => _drawCalls.Select(x => x as DrawCallBase).ToList();
     }
 
     public unsafe class DrawCall : DrawCallBase
     {
-        public enum DrawPassType
-        {
-            Opaque,
-            Transparent
-        }
+        public DrawCall(MDL0ObjectNode parent) { _parentObject = parent; }
 
-        internal byte _drawOrder;
-        internal bool _isXLU;
-        internal MDL0MaterialNode _material;
+        [Browsable(false)]
+        public override IObject Parent => _parentObject;
 
         public MDL0ObjectNode _parentObject;
 
-        //Data stored in actual MDL0 opa/xlu draw call
-        internal MDL0BoneNode _visBoneNode;
-
-        public DrawCall(MDL0ObjectNode parent)
+        public override string ToString()
         {
-            _parentObject = parent;
+            return string.Format("{0} {1}: {2} {3}",
+                _isXLU ? "XLU" : "OPA",
+                _drawOrder.ToString(),
+                _material == null ? "(null)" : _material.Name,
+                _visBoneNode == null ? "(null)" : _visBoneNode.Name);
         }
 
-        [Browsable(false)] public override IObject Parent => _parentObject;
+        //Data stored in actual MDL0 opa/xlu draw call
+        internal MDL0BoneNode _visBoneNode;
+        internal MDL0MaterialNode _material;
+        internal bool _isXLU;
+        internal byte _drawOrder = 0;
 
-        [Category("Object Draw Call")]
-        [TypeConverter(typeof(DropDownListMaterialsDrawCall))]
+        [Category("Object Draw Call"), TypeConverter(typeof(DropDownListMaterialsDrawCall))]
         public string Material
         {
             get => _material == null ? null : _material._name;
             set
             {
                 MaterialNode = string.IsNullOrEmpty(value) ? null :
-                    _isXLU ? _parentObject.Model.FindOrCreateXluMaterial(value) :
-                    _parentObject.Model.FindOrCreateOpaMaterial(value);
+                    _isXLU ? _parentObject.Model.FindOrCreateXluMaterial(value) : _parentObject.Model.FindOrCreateOpaMaterial(value);
                 _parentObject.SignalPropertyChange();
             }
         }
 
-        [Category("Object Draw Call")]
-        [TypeConverter(typeof(DropDownListBonesDrawCall))]
+        [Category("Object Draw Call"), TypeConverter(typeof(DropDownListBonesDrawCall))]
         public string VisibilityBone //This attaches the object to a bone controlled by a VIS0
         {
             get => _visBoneNode == null ? null : _visBoneNode._name;
@@ -1774,6 +1834,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 VisibilityBoneNode = string.IsNullOrEmpty(value) ? null : _parentObject.Model.FindBone(value);
                 _parentObject.Model.SignalPropertyChange();
             }
+        }
+
+        public enum DrawPassType
+        {
+            Opaque,
+            Transparent
         }
 
         [Category("Object Draw Call")]
@@ -1799,7 +1865,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         /// <summary>
-        ///     Does not signal a property change!
+        /// Does not signal a property change!
         /// </summary>
         [Browsable(false)]
         public MDL0MaterialNode MaterialNode
@@ -1807,16 +1873,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _material;
             set
             {
-                if (_material == value) return;
+                if (_material == value)
+                {
+                    return;
+                }
 
-                if (_material != null) _material._objects.Remove(_parentObject);
+                if (_material != null)
+                {
+                    _material._objects.Remove(_parentObject);
+                }
 
-                if ((_material = value) != null) _material._objects.Add(_parentObject);
+                if ((_material = value) != null)
+                {
+                    _material._objects.Add(_parentObject);
+                }
             }
         }
-
         /// <summary>
-        ///     Does not signal a property change!
+        /// Does not signal a property change!
         /// </summary>
         [Browsable(false)]
         public MDL0BoneNode VisibilityBoneNode
@@ -1824,27 +1898,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _visBoneNode;
             set
             {
-                if (_visBoneNode == value) return;
+                if (_visBoneNode == value)
+                {
+                    return;
+                }
 
                 if (_visBoneNode != null && _visBoneNode._visDrawCalls.Contains(this))
+                {
                     _visBoneNode._visDrawCalls.Remove(this);
+                }
 
                 if ((_visBoneNode = value) != null)
                 {
-                    if (!_visBoneNode._visDrawCalls.Contains(this)) _visBoneNode._visDrawCalls.Add(this);
+                    if (!_visBoneNode._visDrawCalls.Contains(this))
+                    {
+                        _visBoneNode._visDrawCalls.Add(this);
+                    }
 
                     _render = _visBoneNode._boneFlags.HasFlag(BoneFlags.Visible);
                 }
             }
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0} {1}: {2} {3}",
-                _isXLU ? "XLU" : "OPA",
-                _drawOrder.ToString(),
-                _material == null ? "(null)" : _material.Name,
-                _visBoneNode == null ? "(null)" : _visBoneNode.Name);
         }
 
         public override int CompareTo(DrawCallBase y)
@@ -1856,37 +1929,76 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             //First compare with render pass
             if ((n1.DrawPass == DrawPassType.Opaque || n1.MaterialNode == null) &&
-                n2.DrawPass == DrawPassType.Transparent && n2.MaterialNode != null) return -1;
+                (n2.DrawPass == DrawPassType.Transparent && n2.MaterialNode != null))
+            {
+                return -1;
+            }
 
             if ((n2.DrawPass == DrawPassType.Opaque || n2.MaterialNode == null) &&
-                n1.DrawPass == DrawPassType.Transparent && n1.MaterialNode != null) return 1;
+                (n1.DrawPass == DrawPassType.Transparent && n1.MaterialNode != null))
+            {
+                return 1;
+            }
 
             //Compare draw priorities
-            if (n1.DrawPriority > n2.DrawPriority) return 1;
+            if (n1.DrawPriority > n2.DrawPriority)
+            {
+                return 1;
+            }
 
-            if (n1.DrawPriority < n2.DrawPriority) return -1;
+            if (n1.DrawPriority < n2.DrawPriority)
+            {
+                return -1;
+            }
 
             //Make sure the node isn't null
-            if (n1.MaterialNode != null && n2.MaterialNode == null) return 1;
+            if (n1.MaterialNode != null && n2.MaterialNode == null)
+            {
+                return 1;
+            }
 
-            if (n1.MaterialNode == null && n2.MaterialNode != null) return -1;
+            if (n1.MaterialNode == null && n2.MaterialNode != null)
+            {
+                return -1;
+            }
 
-            if (n1.MaterialNode == null && n2.MaterialNode == null) return 0;
+            if (n1.MaterialNode == null && n2.MaterialNode == null)
+            {
+                return 0;
+            }
 
             //Now check material draw index
-            if (n1.MaterialNode.Index > n2.MaterialNode.Index) return 1;
+            if (n1.MaterialNode.Index > n2.MaterialNode.Index)
+            {
+                return 1;
+            }
 
-            if (n1.MaterialNode.Index < n2.MaterialNode.Index) return -1;
+            if (n1.MaterialNode.Index < n2.MaterialNode.Index)
+            {
+                return -1;
+            }
 
             //Compare the object index
-            if (n1._parentObject.Index > n2._parentObject.Index) return 1;
+            if (n1._parentObject.Index > n2._parentObject.Index)
+            {
+                return 1;
+            }
 
-            if (n1._parentObject.Index < n2._parentObject.Index) return -1;
+            if (n1._parentObject.Index < n2._parentObject.Index)
+            {
+                return -1;
+            }
 
             //Same object, so compare draw call index
-            if (n1._parentObject._drawCalls.IndexOf(n1) > n2._parentObject._drawCalls.IndexOf(n2)) return 1;
+            if (n1._parentObject._drawCalls.IndexOf(n1) > n2._parentObject._drawCalls.IndexOf(n2))
+            {
+                return 1;
+            }
 
-            if (n1._parentObject._drawCalls.IndexOf(n1) < n2._parentObject._drawCalls.IndexOf(n2)) return -1;
+            if (n1._parentObject._drawCalls.IndexOf(n1) < n2._parentObject._drawCalls.IndexOf(n2))
+            {
+                return -1;
+            }
 
             //Should never return equal
             return 0;
@@ -1895,41 +2007,59 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void Bind()
         {
             if (_visBoneNode == null)
+            {
                 _render = true;
-            else if (_visBoneNode._name == "EyeYellowM")
-                _render = false;
+            }
             else
+                if (_visBoneNode._name == "EyeYellowM")
+            {
+                _render = false;
+            }
+            else
+            {
                 _render = _visBoneNode._boneFlags.HasFlag(BoneFlags.Visible);
+            }
 
             if (DrawPass == DrawPassType.Transparent &&
                 MaterialNode != null &&
                 MaterialNode.Children.Count != 0 &&
                 MaterialNode.Children[0].Name == "TShadow1")
+            {
                 _render = false;
+            }
         }
 
         public override void Render(ModelPanelViewport viewport)
         {
-            if (!_render || _parentObject == null) return;
+            if (!_render || _parentObject == null)
+            {
+                return;
+            }
 
-            var model = _parentObject.Model;
-            var usesOffset = model != null && model._matrixOffset != null;
+            MDL0Node model = _parentObject.Model;
+            bool usesOffset = model != null && model._matrixOffset != null;
             if (usesOffset)
             {
                 GL.PushMatrix();
-                var m = model._matrixOffset.Value;
-                GL.MultMatrix((float*) &m);
+                Matrix m = model._matrixOffset.Value;
+                GL.MultMatrix((float*)&m);
             }
 
-            var attrib = viewport._renderAttrib;
-            var mat = MaterialNode;
+            ModelRenderAttributes attrib = viewport._renderAttrib;
+            MDL0MaterialNode mat = MaterialNode;
             if (attrib._renderPolygons)
             {
-                var shaders = attrib._renderShaders && mat != null;
-                if (shaders && !mat._scn0Applied) mat.ApplyViewportLighting(viewport);
+                bool shaders = attrib._renderShaders && mat != null;
+                if (shaders && !mat._scn0Applied)
+                {
+                    mat.ApplyViewportLighting(viewport);
+                }
 
                 float polyOffset = DrawPriority;
-                if (attrib._renderWireframe) polyOffset -= 1.0f;
+                if (attrib._renderWireframe)
+                {
+                    polyOffset -= 1.0f;
+                }
 
                 if (polyOffset != 0.0f)
                 {
@@ -1944,7 +2074,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Fill);
                 _parentObject.Render(false, shaders, mat);
             }
-
             if (attrib._renderWireframe)
             {
                 GL.Disable(EnableCap.PolygonOffsetFill);
@@ -1953,17 +2082,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _parentObject.Render(true, false, mat);
             }
 
-            if (usesOffset) GL.PopMatrix();
+            if (usesOffset)
+            {
+                GL.PopMatrix();
+            }
         }
     }
 
     public interface IMatrixNodeUser //Objects and Vertices
     {
-        IMatrixNode MatrixNode { get; set; }
-
         //The next time MatrixNode is set, vertices and normals will not be updated.
         //This is so that assets aren't updated until after vertex loops complete.
         //Resets after MatrixNode is set.
         void DeferUpdateAssets();
+        IMatrixNode MatrixNode { get; set; }
     }
 }

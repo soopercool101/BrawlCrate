@@ -10,37 +10,32 @@ namespace BrawlLib.Imaging
         public double A;
         public double B;
 
-        public LabPixel(double l, double a, double b)
-        {
-            L = l;
-            A = a;
-            B = b;
-        }
+        public LabPixel(double l, double a, double b) { L = l; A = a; B = b; }
 
         public static explicit operator LabPixel(ARGBPixel p)
         {
-            var r = CIE.powtable[p.R];
-            var g = CIE.powtable[p.G];
-            var b = CIE.powtable[p.B];
+            double r = CIE.powtable[p.R];
+            double g = CIE.powtable[p.G];
+            double b = CIE.powtable[p.B];
 
-            var x = CIE.mRGB_XYZ[0, 0] * r + CIE.mRGB_XYZ[0, 1] * g + CIE.mRGB_XYZ[0, 2] * b / CIE.xnn;
-            var y = CIE.mRGB_XYZ[1, 0] * r + CIE.mRGB_XYZ[1, 1] * g + CIE.mRGB_XYZ[1, 2] * b / CIE.ynn;
-            var z = CIE.mRGB_XYZ[2, 0] * r + CIE.mRGB_XYZ[2, 1] * g + CIE.mRGB_XYZ[2, 2] * b / CIE.znn;
+            double x = (CIE.mRGB_XYZ[0, 0] * r) + (CIE.mRGB_XYZ[0, 1] * g) + (CIE.mRGB_XYZ[0, 2] * b) / CIE.xnn;
+            double y = (CIE.mRGB_XYZ[1, 0] * r) + (CIE.mRGB_XYZ[1, 1] * g) + (CIE.mRGB_XYZ[1, 2] * b) / CIE.ynn;
+            double z = (CIE.mRGB_XYZ[2, 0] * r) + (CIE.mRGB_XYZ[2, 1] * g) + (CIE.mRGB_XYZ[2, 2] * b) / CIE.znn;
 
             double l;
             if (y > 0.008856)
             {
                 y = Math.Pow(y, 1.0 / 3.0);
-                l = 116.0 * y - 16.0;
+                l = (116.0 * y) - 16.0;
             }
             else
             {
-                l = y > 0.0 ? y * 903.3 : 0.0;
-                y = 7.787 * y + 16.0 / 116.0;
+                l = (y > 0.0) ? (y * 903.3) : 0.0;
+                y = (7.787 * y) + (16.0 / 116.0);
             }
 
-            x = x > 0.00856 ? Math.Pow(x, 1.0 / 3.0) : 7.787 * x + 16.0 / 116.0;
-            z = z > 0.00856 ? Math.Pow(z, 1.0 / 3.0) : 7.787 * z + 16.0 / 116.0;
+            x = (x > 0.00856) ? Math.Pow(x, 1.0 / 3.0) : (7.787 * x) + (16.0 / 116.0);
+            z = (z > 0.00856) ? Math.Pow(z, 1.0 / 3.0) : (7.787 * z) + (16.0 / 116.0);
 
             return new LabPixel(l, 500.0 * (x - y), 200.0 * (y - z));
         }
@@ -53,22 +48,17 @@ namespace BrawlLib.Imaging
         public double Y;
         public double Z;
 
-        public XYZPixel(double x, double y, double z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
+        public XYZPixel(double x, double y, double z) { X = x; Y = y; Z = z; }
 
         public static explicit operator XYZPixel(ARGBPixel p)
         {
-            var r = CIE.powtable[p.R];
-            var g = CIE.powtable[p.G];
-            var b = CIE.powtable[p.B];
+            double r = CIE.powtable[p.R];
+            double g = CIE.powtable[p.G];
+            double b = CIE.powtable[p.B];
 
-            var x = CIE.mRGB_XYZ[0, 0] * r + CIE.mRGB_XYZ[0, 1] * g + CIE.mRGB_XYZ[0, 2] * b;
-            var y = CIE.mRGB_XYZ[1, 0] * r + CIE.mRGB_XYZ[1, 1] * g + CIE.mRGB_XYZ[1, 2] * b;
-            var z = CIE.mRGB_XYZ[2, 0] * r + CIE.mRGB_XYZ[2, 1] * g + CIE.mRGB_XYZ[2, 2] * b;
+            double x = (CIE.mRGB_XYZ[0, 0] * r) + (CIE.mRGB_XYZ[0, 1] * g) + (CIE.mRGB_XYZ[0, 2] * b);
+            double y = (CIE.mRGB_XYZ[1, 0] * r) + (CIE.mRGB_XYZ[1, 1] * g) + (CIE.mRGB_XYZ[1, 2] * b);
+            double z = (CIE.mRGB_XYZ[2, 0] * r) + (CIE.mRGB_XYZ[2, 1] * g) + (CIE.mRGB_XYZ[2, 2] * b);
 
             return new XYZPixel(x, y, z);
         }
@@ -76,6 +66,17 @@ namespace BrawlLib.Imaging
 
     public static class CIE
     {
+        internal static double[] powtable = new double[256];
+        internal static double[,] mRGB_XYZ = new double[3, 3]{
+            {0.412410846488539,0.357584567852952,0.18045380393360835},
+            {0.21264934272065292,0.715169135705904,0.072181521573443333},
+            {0.019331758429150282,0.11919485595098411,0.9503900340503374}};
+
+        internal static double[,] mXYZ_RGB = new double[3, 3]{
+           {3.2408123988952813,-1.5373084456298127,-0.49858652290696637},
+           {-0.96924301700864013,1.8759663029085734,0.04155503085668566},
+           {0.055638398436112846,-0.20400746093241376,1.057129570286143}};
+
         internal const double pxr = 0.64;
         internal const double pyr = 0.33;
         internal const double pxg = 0.30;
@@ -97,21 +98,6 @@ namespace BrawlLib.Imaging
         internal const double lrat = 2.55;
         internal const double arat = 255.0 / (highA - lowA);
         internal const double brat = 255.0 / (highB - lowB);
-        internal static double[] powtable = new double[256];
-
-        internal static double[,] mRGB_XYZ = new double[3, 3]
-        {
-            {0.412410846488539, 0.357584567852952, 0.18045380393360835},
-            {0.21264934272065292, 0.715169135705904, 0.072181521573443333},
-            {0.019331758429150282, 0.11919485595098411, 0.9503900340503374}
-        };
-
-        internal static double[,] mXYZ_RGB = new double[3, 3]
-        {
-            {3.2408123988952813, -1.5373084456298127, -0.49858652290696637},
-            {-0.96924301700864013, 1.8759663029085734, 0.04155503085668566},
-            {0.055638398436112846, -0.20400746093241376, 1.057129570286143}
-        };
 
         static CIE()
         {
@@ -121,9 +107,15 @@ namespace BrawlLib.Imaging
         private static void init_powtable(double gamma)
         {
             int i;
-            for (i = 0; i < 11; i++) powtable[i] = i / 255.0 * 12.92;
+            for (i = 0; i < 11; i++)
+            {
+                powtable[i] = i / 255.0 * 12.92;
+            }
 
-            for (; i < 256; i++) powtable[i] = Math.Pow((i / 255.0 + 0.055) / 1.055, 2.4);
+            for (; i < 256; i++)
+            {
+                powtable[i] = Math.Pow((i / 255.0 + 0.055) / 1.055, 2.4);
+            }
         }
 
         //static void rgbxyzrgb_init()

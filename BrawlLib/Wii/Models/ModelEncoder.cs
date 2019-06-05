@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using BrawlLib.Imaging;
+﻿using BrawlLib.Imaging;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BrawlLib.Wii.Models
 {
@@ -14,49 +14,57 @@ namespace BrawlLib.Wii.Models
         //This assumes influence list has already been cleaned
         public static void AssignNodeIndices(ModelLinker linker)
         {
-            var model = linker.Model;
-            var index = 0;
+            MDL0Node model = linker.Model;
+            int index = 0;
 
-            var count = model._influences.Count + linker.BoneCache.Length;
+            int count = model._influences.Count + linker.BoneCache.Length;
 
             linker._nodeCount = count;
             linker.Model._numNodes = count;
             linker.NodeCache = new IMatrixNode[count];
 
             //Add referenced primaries
-            foreach (var bone in linker.BoneCache)
+            foreach (MDL0BoneNode bone in linker.BoneCache)
             {
                 if (bone.Users.Count > 0 || bone._singleBindObjects.Count > 0)
+                {
                     linker.NodeCache[bone._nodeIndex = index++] = bone;
+                }
                 else
+                {
                     bone._nodeIndex = -1;
+                }
 
                 bone._weightCount = 0;
             }
 
             //Add weight groups
-            foreach (var i in model._influences._influences)
+            foreach (Influence i in model._influences._influences)
             {
                 linker.NodeCache[i._index = index++] = i;
-                foreach (var b in i.Weights)
+                foreach (BoneWeight b in i.Weights)
+                {
                     if (b.Bone != null)
+                    {
                         b.Bone.WeightCount++;
+                    }
+                }
             }
 
             //Add remaining bones
-            foreach (var bone in linker.BoneCache)
+            foreach (MDL0BoneNode bone in linker.BoneCache)
+            {
                 if (bone._nodeIndex == -1)
+                {
                     linker.NodeCache[bone._nodeIndex = index++] = bone;
+                }
+            }
         }
 
-        public static int CalcSize(ModelLinker linker)
-        {
-            return CalcSize(null, linker);
-        }
-
+        public static int CalcSize(ModelLinker linker) { return CalcSize(null, linker); }
         public static int CalcSize(Collada form, ModelLinker linker)
         {
-            var model = linker.Model;
+            MDL0Node model = linker.Model;
             model._needsNrmMtxArray = model._needsTexMtxArray = false;
             model._numFacepoints = model._numTriangles = 0;
 
@@ -79,20 +87,13 @@ namespace BrawlLib.Wii.Models
             switch (linker.Version)
             {
                 case 0x08:
-                case 0x09:
-                    headerLen = 0x80;
-                    break;
-                case 0x0A:
-                    headerLen = 0x88;
-                    break;
-                case 0x0B:
-                    headerLen = 0x8C;
-                    break;
+                case 0x09: headerLen = 0x80; break;
+                case 0x0A: headerLen = 0x88; break;
+                case 0x0B: headerLen = 0x8C; break;
                 default:
                     headerLen = 0x80;
                     //Unsupported version. Change to 9 as default.
-                    linker.Version = 9;
-                    break;
+                    linker.Version = 9; break;
             }
 
             //Assign node indices
@@ -102,11 +103,11 @@ namespace BrawlLib.Wii.Models
             tableLen = (linker._nodeCount + 1) << 2;
 
             //Get group/data length
-            var iList = ModelLinker.IndexBank[linker.Version];
-            foreach (var resType in iList)
+            List<MDLResourceType> iList = ModelLinker.IndexBank[linker.Version];
+            foreach (MDLResourceType resType in iList)
             {
                 IEnumerable entryList = null;
-                var entries = 0;
+                int entries = 0;
 
                 switch (resType)
                 {
@@ -116,65 +117,58 @@ namespace BrawlLib.Wii.Models
                         treeLen = linker.BoneCache.Length * 5;
 
                         //NodeMix
-                        foreach (var i in model._influences._influences)
+                        foreach (Influence i in model._influences._influences)
                         {
                             mixLen += 4;
-                            foreach (var w in i.Weights)
+                            foreach (BoneWeight w in i.Weights)
                             {
-                                var bone = w.Bone as MDL0BoneNode;
-                                if (bone != null && w.Weight != 0 && bone._nodeIndex < linker.NodeCache.Length &&
-                                    bone._nodeIndex >= 0 &&
-                                    linker.NodeCache[bone._nodeIndex] is MDL0BoneNode) mixLen += 6;
+                                MDL0BoneNode bone = w.Bone as MDL0BoneNode;
+                                if (bone != null && w.Weight != 0 && bone._nodeIndex < linker.NodeCache.Length && bone._nodeIndex >= 0 && linker.NodeCache[bone._nodeIndex] is MDL0BoneNode)
+                                {
+                                    mixLen += 6;
+                                }
                             }
                         }
-
-                        foreach (var b in linker.BoneCache)
+                        foreach (MDL0BoneNode b in linker.BoneCache)
+                        {
                             if (b._weightCount > 0)
+                            {
                                 mixLen += 5;
+                            }
+                        }
 
                         //DrawOpa and DrawXlu
                         //Get assigned materials and categorize
                         if (model._objList != null)
-                            for (var i = 0; i < model._objList.Count; i++)
+                        {
+                            for (int i = 0; i < model._objList.Count; i++)
                             {
                                 //Entries are ordered by material, not by polygon.
                                 //Using the material's attached polygon list is untrustable if the definitions were corrupt on parse.
-                                var poly = model._objList[i] as MDL0ObjectNode;
+                                MDL0ObjectNode poly = model._objList[i] as MDL0ObjectNode;
 
                                 model._numTriangles += poly._numFaces;
                                 model._numFacepoints += poly._numFacepoints;
 
-                                foreach (var c in poly._drawCalls)
+                                foreach (DrawCall c in poly._drawCalls)
+                                {
                                     if (c.DrawPass == DrawCall.DrawPassType.Opaque)
+                                    {
                                         opaLen += 8;
+                                    }
                                     else
+                                    {
                                         xluLen += 8;
+                                    }
+                                }
                             }
+                        }
 
                         //Add terminate byte and set model def flags
-                        if (model._hasTree = treeLen > 0)
-                        {
-                            treeLen++;
-                            entries++;
-                        }
-
-                        if (model._hasMix = mixLen > 0)
-                        {
-                            mixLen++;
-                            entries++;
-                        }
-
-                        if (model._hasOpa = opaLen > 0)
-                        {
-                            opaLen++;
-                            entries++;
-                        }
-
-                        if (model._hasXlu = xluLen > 0)
-                        {
-                            xluLen++;
-                            entries++;
-                        }
+                        if (model._hasTree = (treeLen > 0)) { treeLen++; entries++; }
+                        if (model._hasMix = (mixLen > 0)) { mixLen++; entries++; }
+                        if (model._hasOpa = (opaLen > 0)) { opaLen++; entries++; }
+                        if (model._hasXlu = (xluLen > 0)) { xluLen++; entries++; }
 
                         //Align data
                         defLen += (treeLen + mixLen + opaLen + xluLen).Align(4);
@@ -193,73 +187,75 @@ namespace BrawlLib.Wii.Models
                             aLen = 1; //Offset count
                         }
 
-                        EvalAssets:
+                    EvalAssets:
 
-                        var polyList = model._objList;
-                        if (polyList == null) break;
+                        List<ResourceNode> polyList = model._objList;
+                        if (polyList == null)
+                        {
+                            break;
+                        }
 
-                        var str = "";
+                        string str = "";
 
-                        var direct = linker._forceDirectAssets[aInd];
+                        bool direct = linker._forceDirectAssets[aInd];
 
                         //Create asset lists
                         IList aList;
                         switch (aInd) //Switch by the set ID
                         {
-                            case 0:
-                                aList = linker._vertices = new List<VertexCodec>(polyList.Count);
-                                str = "Vertices ";
-                                break;
-                            case 1:
-                                aList = linker._normals = new List<VertexCodec>(polyList.Count);
-                                str = "Normals ";
-                                break;
-                            case 2:
-                                aList = linker._colors = new List<ColorCodec>(polyList.Count);
-                                str = "Colors ";
-                                break;
-                            default:
-                                aList = linker._uvs = new List<VertexCodec>(polyList.Count);
-                                str = "UVs ";
-                                break;
+                            case 0: aList = linker._vertices = new List<VertexCodec>(polyList.Count); str = "Vertices "; break;
+                            case 1: aList = linker._normals = new List<VertexCodec>(polyList.Count); str = "Normals "; break;
+                            case 2: aList = linker._colors = new List<ColorCodec>(polyList.Count); str = "Colors "; break;
+                            default: aList = linker._uvs = new List<VertexCodec>(polyList.Count); str = "UVs "; break;
                         }
 
                         aLen += aInd;
-                        for (var i = 0; i < polyList.Count; i++)
+                        for (int i = 0; i < polyList.Count; i++)
                         {
-                            var obj = polyList[i] as MDL0ObjectNode;
-                            for (var x = aInd; x < aLen; x++)
+                            MDL0ObjectNode obj = polyList[i] as MDL0ObjectNode;
+                            for (int x = aInd; x < aLen; x++)
+                            {
                                 if (obj._manager._faceData[x] != null)
                                 {
                                     //Remap color nodes
-                                    if (x == 2 || x == 3)
+                                    if ((x == 2 || x == 3))
                                     {
                                         if (Collada._importOptions._rmpClrs)
                                         {
                                             obj._elementIndices[x] = -1;
-                                            foreach (MDL0ObjectNode thatObj in polyList.OrderBy(c =>
-                                                -((MDL0ObjectNode) c)._manager.GetColors(x - 2, false).Length))
+                                            foreach (MDL0ObjectNode thatObj in polyList.OrderBy(c => -((MDL0ObjectNode)c)._manager.GetColors(x - 2, false).Length))
                                             {
                                                 //Only compare up to the current object
-                                                if (thatObj == obj) break;
+                                                if (thatObj == obj)
+                                                {
+                                                    break;
+                                                }
 
-                                                var thatArr = thatObj._manager.GetColors(x - 2, false);
-                                                var thisArr = obj._manager.GetColors(x - 2, false);
-                                                var equals = true;
+                                                RGBAPixel[] thatArr = thatObj._manager.GetColors(x - 2, false);
+                                                RGBAPixel[] thisArr = obj._manager.GetColors(x - 2, false);
+                                                bool equals = true;
                                                 if (thisArr.Length == thatArr.Length)
-                                                    for (var n = 0; n < thisArr.Length; n++)
+                                                {
+                                                    for (int n = 0; n < thisArr.Length; n++)
+                                                    {
                                                         if (thisArr[n] != thatArr[n])
                                                         {
                                                             equals = false;
                                                             break;
                                                         }
+                                                    }
+                                                }
                                                 else
-                                                    foreach (var px in thisArr)
+                                                {
+                                                    foreach (RGBAPixel px in thisArr)
+                                                    {
                                                         if (Array.IndexOf(thatArr, px) < 0)
                                                         {
                                                             equals = false;
                                                             break;
                                                         }
+                                                    }
+                                                }
 
                                                 if (equals)
                                                 {
@@ -269,8 +265,10 @@ namespace BrawlLib.Wii.Models
                                                     break;
                                                 }
                                             }
-
-                                            if (obj._elementIndices[x] != -1) continue;
+                                            if (obj._elementIndices[x] != -1)
+                                            {
+                                                continue;
+                                            }
                                         }
                                         else
                                         {
@@ -278,39 +276,50 @@ namespace BrawlLib.Wii.Models
                                         }
                                     }
 
-                                    obj._elementIndices[x] = (short) aList.Count;
+                                    obj._elementIndices[x] = (short)aList.Count;
 
                                     if (form != null)
+                                    {
                                         form.Say("Encoding " + str + (x - aInd) + " for Object " + i + ": " + obj.Name);
+                                    }
 
                                     VertexCodec vert;
                                     switch (aInd)
                                     {
                                         case 0:
-                                            vert = new VertexCodec(obj._manager.GetVertices(false), false,
-                                                Collada._importOptions._fltVerts);
+                                            vert = new VertexCodec(obj._manager.GetVertices(false), false, Collada._importOptions._fltVerts);
                                             aList.Add(vert);
-                                            if (!direct) assetLen += vert._dataLen.Align(0x20) + 0x40;
+                                            if (!direct)
+                                            {
+                                                assetLen += vert._dataLen.Align(0x20) + 0x40;
+                                            }
 
                                             break;
                                         case 1:
-                                            vert = new VertexCodec(obj._manager.GetNormals(false), false,
-                                                Collada._importOptions._fltNrms);
+                                            vert = new VertexCodec(obj._manager.GetNormals(false), false, Collada._importOptions._fltNrms);
                                             aList.Add(vert);
-                                            if (!direct) assetLen += vert._dataLen.Align(0x20) + 0x20;
+                                            if (!direct)
+                                            {
+                                                assetLen += vert._dataLen.Align(0x20) + 0x20;
+                                            }
 
                                             break;
                                         case 2:
-                                            var col = new ColorCodec(obj._manager.GetColors(x - 2, false));
+                                            ColorCodec col = new ColorCodec(obj._manager.GetColors(x - 2, false));
                                             aList.Add(col);
-                                            if (!direct) assetLen += col._dataLen.Align(0x20) + 0x20;
+                                            if (!direct)
+                                            {
+                                                assetLen += col._dataLen.Align(0x20) + 0x20;
+                                            }
 
                                             break;
                                         default:
-                                            vert = new VertexCodec(obj._manager.GetUVs(x - 4, false),
-                                                Collada._importOptions._fltUVs);
+                                            vert = new VertexCodec(obj._manager.GetUVs(x - 4, false), Collada._importOptions._fltUVs);
                                             aList.Add(vert);
-                                            if (!direct) assetLen += vert._dataLen.Align(0x20) + 0x40;
+                                            if (!direct)
+                                            {
+                                                assetLen += vert._dataLen.Align(0x20) + 0x40;
+                                            }
 
                                             break;
                                     }
@@ -319,9 +328,12 @@ namespace BrawlLib.Wii.Models
                                 {
                                     obj._elementIndices[x] = -1;
                                 }
+                            }
                         }
-
-                        if (!direct) entries = aList.Count;
+                        if (!direct)
+                        {
+                            entries = aList.Count;
+                        }
 
                         break;
                     case MDLResourceType.Normals:
@@ -335,7 +347,6 @@ namespace BrawlLib.Wii.Models
                             aLen = 1; //Offset count
                             goto EvalAssets;
                         }
-
                         break;
                     case MDLResourceType.Colors:
                         if (model._colorList != null)
@@ -346,32 +357,42 @@ namespace BrawlLib.Wii.Models
                         {
                             if (Collada._importOptions._useOneNode)
                             {
-                                var pixels = new HashSet<RGBAPixel>();
+                                HashSet<RGBAPixel> pixels = new HashSet<RGBAPixel>();
                                 if (model._objList != null)
+                                {
                                     foreach (MDL0ObjectNode obj in model._objList)
-                                        for (var i = 0; i < 2; i++)
+                                    {
+                                        for (int i = 0; i < 2; i++)
                                         {
-                                            var arr = obj._manager.GetColors(i, false);
+                                            RGBAPixel[] arr = obj._manager.GetColors(i, false);
                                             if (arr.Length > 0)
                                             {
                                                 obj._elementIndices[i + 2] = 0;
-                                                foreach (var p in arr) pixels.Add(p);
+                                                foreach (RGBAPixel p in arr)
+                                                {
+                                                    pixels.Add(p);
+                                                }
                                             }
                                             else
                                             {
                                                 obj._elementIndices[i + 2] = -1;
                                             }
                                         }
+                                    }
+                                }
 
-                                var le = pixels.ToList();
+                                List<RGBAPixel> le = pixels.ToList();
                                 le.Sort();
 
-                                if (le.Count == 0) break;
+                                if (le.Count == 0)
+                                {
+                                    break;
+                                }
 
                                 Collada._importOptions._singleColorNodeEntries = le.ToArray();
 
-                                var col = new ColorCodec(Collada._importOptions._singleColorNodeEntries);
-                                linker._colors = new List<ColorCodec> {col};
+                                ColorCodec col = new ColorCodec(Collada._importOptions._singleColorNodeEntries);
+                                linker._colors = new List<ColorCodec>() { col };
                                 assetLen += col._dataLen.Align(0x20) + 0x20;
                                 entries = 1;
                             }
@@ -382,7 +403,6 @@ namespace BrawlLib.Wii.Models
                                 goto EvalAssets;
                             }
                         }
-
                         break;
                     case MDLResourceType.UVs:
                         if (model._uvList != null)
@@ -395,24 +415,28 @@ namespace BrawlLib.Wii.Models
                             aLen = 8; //Offset count
                             goto EvalAssets;
                         }
-
                         break;
 
                     case MDLResourceType.Bones:
-                        var index = 0;
-                        foreach (var b in linker.BoneCache)
+                        int index = 0;
+                        foreach (MDL0BoneNode b in linker.BoneCache)
                         {
-                            if (form != null) form.Say("Calculating the size of the Bones - " + b.Name);
+                            if (form != null)
+                            {
+                                form.Say("Calculating the size of the Bones - " + b.Name);
+                            }
 
                             b._entryIndex = index++;
                             boneLen += b.CalculateSize(true);
                         }
-
                         entries = linker.BoneCache.Length;
                         break;
 
                     case MDLResourceType.Materials:
-                        if (model._matList != null) entries = model._matList.Count;
+                        if (model._matList != null)
+                        {
+                            entries = model._matList.Count;
+                        }
 
                         break;
 
@@ -423,90 +447,106 @@ namespace BrawlLib.Wii.Models
                             foreach (MDL0ObjectNode n in model._objList)
                             {
                                 if (n.NormalNode != null || n._manager._faceData[1] != null)
+                                {
                                     model._needsNrmMtxArray = true;
+                                }
 
-                                if (n.HasTexMtx) model._needsTexMtxArray = true;
+                                if (n.HasTexMtx)
+                                {
+                                    model._needsTexMtxArray = true;
+                                }
                             }
                         }
-
                         break;
 
                     case MDLResourceType.Shaders:
                         if (model._matList != null && (entryList = model.GetUsedShaders()) != null)
+                        {
                             entries = model._matList.Count;
+                        }
 
                         break;
 
                     case MDLResourceType.Textures:
                         if (model._texList != null)
                         {
-                            var texNodes = new List<MDL0TextureNode>();
+                            List<MDL0TextureNode> texNodes = new List<MDL0TextureNode>();
                             foreach (MDL0TextureNode tex in model._texList)
                             {
                                 texNodes.Add(tex);
-                                texLen += tex._references.Count * 8 + 4;
+                                texLen += (tex._references.Count * 8) + 4;
                             }
-
                             entries = (linker._texList = texNodes).Count;
                         }
-
                         break;
 
                     case MDLResourceType.Palettes:
                         if (model._pltList != null)
                         {
-                            var pltNodes = new List<MDL0TextureNode>();
+                            List<MDL0TextureNode> pltNodes = new List<MDL0TextureNode>();
                             foreach (MDL0TextureNode plt in model._pltList)
                             {
                                 pltNodes.Add(plt);
-                                texLen += plt._references.Count * 8 + 4;
+                                texLen += (plt._references.Count * 8) + 4;
                             }
-
                             entries = (linker._pltList = pltNodes).Count;
                         }
-
                         break;
                 }
 
                 if (entryList != null)
                 {
-                    var index = 0;
+                    int index = 0;
                     foreach (MDL0EntryNode e in entryList)
                     {
                         if (form != null)
                         {
                             if (resType == MDLResourceType.Objects)
-                                form.Say("Encoding the " + resType + " - " + e.Name);
+                            {
+                                form.Say("Encoding the " + resType.ToString() + " - " + e.Name);
+                            }
                             else
-                                form.Say("Calculating the size of the " + resType + " - " + e.Name);
+                            {
+                                form.Say("Calculating the size of the " + resType.ToString() + " - " + e.Name);
+                            }
                         }
 
                         e._entryIndex = index++;
                         dataLen += e.CalculateSize(true);
                     }
-
-                    if (entries == 0) entries = index;
+                    if (entries == 0)
+                    {
+                        entries = index;
+                    }
                 }
 
-                if (entries > 0) groupLen += entries * 0x10 + 0x18;
+                if (entries > 0)
+                {
+                    groupLen += (entries * 0x10) + 0x18;
+                }
             }
 
             //Align the materials perfectly using the data length
-            var temp = 0;
+            int temp = 0;
             if (model._matList != null && iList.IndexOf(MDLResourceType.Materials) != -1)
             {
-                var index = 0;
+                int index = 0;
                 MDL0MaterialNode prev = null;
                 foreach (MDL0MaterialNode e in model._matList)
                 {
-                    if (form != null) form.Say("Calculating the size of the Materials - " + e.Name);
+                    if (form != null)
+                    {
+                        form.Say("Calculating the size of the Materials - " + e.Name);
+                    }
 
                     if (index != 0)
-                        e._mdlOffset = (prev = (MDL0MaterialNode) model._matList[index - 1])._mdlOffset +
-                                       prev._calcSize;
-                    else if ((temp =
-                                 (e._mdlOffset = headerLen + tableLen + groupLen + texLen + defLen + boneLen).Align(
-                                     0x10)) != e._mdlOffset) e._dataAlign = temp - e._mdlOffset;
+                    {
+                        e._mdlOffset = (prev = ((MDL0MaterialNode)model._matList[index - 1]))._mdlOffset + prev._calcSize;
+                    }
+                    else if ((temp = (e._mdlOffset = headerLen + tableLen + groupLen + texLen + defLen + boneLen).Align(0x10)) != e._mdlOffset)
+                    {
+                        e._dataAlign = temp - e._mdlOffset;
+                    }
 
                     e._entryIndex = index++;
                     dataLen += e.CalculateSize(true);
@@ -514,12 +554,19 @@ namespace BrawlLib.Wii.Models
             }
 
             if (model._isImport && model._objList != null)
+            {
                 foreach (MDL0ObjectNode obj1 in model._objList)
                 {
-                    if (obj1 == null || obj1._drawCalls == null || obj1._drawCalls.Count == 0) continue;
+                    if (obj1 == null || obj1._drawCalls == null || obj1._drawCalls.Count == 0)
+                    {
+                        continue;
+                    }
 
-                    var p = obj1._drawCalls[0].MaterialNode;
-                    if (p == null) continue;
+                    MDL0MaterialNode p = obj1._drawCalls[0].MaterialNode;
+                    if (p == null)
+                    {
+                        continue;
+                    }
 
                     //Set materials to use register color if option set
                     if (!Collada._importOptions._useReg &&
@@ -536,43 +583,49 @@ namespace BrawlLib.Wii.Models
                         p.C1AlphaMaterialSource = GXColorSrc.Register;
                     }
                 }
+            }
 
             return
-                (linker._headerLen = headerLen) +
-                (linker._tableLen = tableLen) +
-                (linker._groupLen = groupLen) +
-                (linker._texLen = texLen) +
-                (linker._defLen = defLen) +
-                (linker._boneLen = boneLen) +
-                (linker._assetLen = assetLen) +
-                (linker._dataLen = dataLen) +
-                (linker.Version > 9 ? model._userEntries.GetSize() : 0);
+            (linker._headerLen = headerLen) +
+            (linker._tableLen = tableLen) +
+            (linker._groupLen = groupLen) +
+            (linker._texLen = texLen) +
+            (linker._defLen = defLen) +
+            (linker._boneLen = boneLen) +
+            (linker._assetLen = assetLen) +
+            (linker._dataLen = dataLen) +
+            (linker.Version > 9 ? model._userEntries.GetSize() : 0);
         }
 
-        internal static void Build(ModelLinker linker, MDL0Header* header, int length, bool force)
+        internal static unsafe void Build(ModelLinker linker, MDL0Header* header, int length, bool force) { Build(null, linker, header, length, force); }
+        internal static unsafe void Build(Collada form, ModelLinker linker, MDL0Header* header, int length, bool force)
         {
-            Build(null, linker, header, length, force);
-        }
-
-        internal static void Build(Collada form, ModelLinker linker, MDL0Header* header, int length, bool force)
-        {
-            var groupAddr = (byte*) header + linker._headerLen + linker._tableLen;
-            var dataAddr = groupAddr + linker._groupLen + linker._texLen; //Definitions start here
-            var assetAddr = dataAddr + linker._defLen + linker._boneLen + linker._dataLen;
+            byte* groupAddr = (byte*)header + linker._headerLen + linker._tableLen;
+            byte* dataAddr = groupAddr + linker._groupLen + linker._texLen; //Definitions start here
+            byte* assetAddr = dataAddr + linker._defLen + linker._boneLen + linker._dataLen;
 
             linker.Header = header;
 
-            if (form != null) form.Say("Writing header...");
+            if (form != null)
+            {
+                form.Say("Writing header...");
+            }
 
             //Create new model header
             *header = new MDL0Header(length, linker.Version);
 
-            if (form != null) form.Say("Writing node table...");
+            if (form != null)
+            {
+                form.Say("Writing node table...");
+            }
 
             //Write node table, assign node ids
             WriteNodeTable(linker);
 
-            if (form != null) form.Say("Writing definitions...");
+            if (form != null)
+            {
+                form.Say("Writing definitions...");
+            }
 
             //Write def table
             WriteDefs(linker, ref groupAddr, ref dataAddr);
@@ -581,7 +634,10 @@ namespace BrawlLib.Wii.Models
             SetFormatLists(linker);
 
             //Write assets first, but only if the model is an import
-            if (linker.Model._isImport) WriteAssets(form, linker, ref assetAddr);
+            if (linker.Model._isImport)
+            {
+                WriteAssets(form, linker, ref assetAddr);
+            }
 
             //Write groups
             linker.Write(form, ref groupAddr, ref dataAddr, force);
@@ -589,7 +645,7 @@ namespace BrawlLib.Wii.Models
             //Write user entries
             if (linker.Model._userEntries.Count > 0 && linker.Version > 9)
             {
-                header->UserDataOffset = (int) dataAddr - (int) header;
+                header->UserDataOffset = (int)dataAddr - (int)header;
                 linker.Model._userEntries.Write(header->UserData);
             }
             else
@@ -601,23 +657,23 @@ namespace BrawlLib.Wii.Models
             WriteTextures(linker, ref groupAddr);
 
             //Set box min and box max
-            if (linker.Model._isImport) SetBox(linker);
+            if (linker.Model._isImport)
+            {
+                SetBox(linker);
+            }
 
             //Store group offsets
             linker.Finish();
 
             //Set new properties
-            *header->Properties = new MDL0Props(linker.Version, linker.Model._numFacepoints, linker.Model._numTriangles,
-                linker.Model._numNodes, linker.Model._scalingRule, linker.Model._texMtxMode,
-                linker.Model._needsNrmMtxArray, linker.Model._needsTexMtxArray, linker.Model._enableExtents,
-                linker.Model._envMtxMode, linker.Model._extents.Min, linker.Model._extents.Max);
+            *header->Properties = new MDL0Props(linker.Version, linker.Model._numFacepoints, linker.Model._numTriangles, linker.Model._numNodes, linker.Model._scalingRule, linker.Model._texMtxMode, linker.Model._needsNrmMtxArray, linker.Model._needsTexMtxArray, linker.Model._enableExtents, linker.Model._envMtxMode, linker.Model._extents.Min, linker.Model._extents.Max);
         }
 
         private static void WriteNodeTable(ModelLinker linker)
         {
-            var ptr = (bint*) ((byte*) linker.Header + linker._headerLen);
-            var len = linker._nodeCount;
-            var i = 0;
+            bint* ptr = (bint*)((byte*)linker.Header + linker._headerLen);
+            int len = linker._nodeCount;
+            int i = 0;
 
             //Set length
             *ptr++ = len;
@@ -625,20 +681,27 @@ namespace BrawlLib.Wii.Models
             //Write indices
             while (i < len)
             {
-                var n = linker.NodeCache[i++];
+                IMatrixNode n = linker.NodeCache[i++];
                 if (n.IsPrimaryNode)
-                    *ptr++ = ((MDL0BoneNode) n)._entryIndex;
+                {
+                    *ptr++ = ((MDL0BoneNode)n)._entryIndex;
+                }
                 else
+                {
                     *ptr++ = -1;
+                }
             }
         }
 
         private static void WriteDefs(ModelLinker linker, ref byte* pGroup, ref byte* pData)
         {
-            var mdl = linker.Model;
+            MDL0Node mdl = linker.Model;
 
             //This should never happen!
-            if (!mdl._hasMix && !mdl._hasOpa && !mdl._hasTree && !mdl._hasXlu) return;
+            if (!mdl._hasMix && !mdl._hasOpa && !mdl._hasTree && !mdl._hasXlu)
+            {
+                return;
+            }
 
             ResourceNode[] polyList = null;
             if (mdl._objList != null)
@@ -646,30 +709,28 @@ namespace BrawlLib.Wii.Models
                 polyList = new ResourceNode[mdl._objList.Count];
                 Array.Copy(mdl._objList.ToArray(), polyList, mdl._objList.Count);
             }
-
             DrawCall drawCall;
-            var entryCount = 0;
-            var floor = pData;
+            int entryCount = 0;
+            byte* floor = pData;
             int dataLen;
 
-            var group = linker.Defs = (ResourceGroup*) pGroup;
-            var entry = &group->_first + 1;
+            ResourceGroup* group = linker.Defs = (ResourceGroup*)pGroup;
+            ResourceEntry* entry = &group->_first + 1;
 
             //NodeTree
             if (mdl._hasTree)
             {
                 //Write group entry
-                entry[entryCount++]._dataOffset = (int) (pData - pGroup);
+                entry[entryCount++]._dataOffset = (int)(pData - pGroup);
 
-                var bCount = linker.BoneCache.Length;
-                for (var i = 0; i < bCount; i++)
+                int bCount = linker.BoneCache.Length;
+                for (int i = 0; i < bCount; i++)
                 {
-                    var bone = linker.BoneCache[i];
+                    MDL0BoneNode bone = linker.BoneCache[i] as MDL0BoneNode;
 
                     *pData = 2; //Entry tag
-                    *(bushort*) (pData + 1) = (ushort) bone._entryIndex;
-                    *(bushort*) (pData + 3) =
-                        (ushort) (bone._parent is MDL0BoneNode ? ((MDL0BoneNode) bone._parent)._nodeIndex : 0);
+                    *(bushort*)(pData + 1) = (ushort)bone._entryIndex;
+                    *(bushort*)(pData + 3) = (ushort)(bone._parent is MDL0BoneNode ? ((MDL0BoneNode)bone._parent)._nodeIndex : 0);
                     pData += 5; //Advance
                 }
 
@@ -683,40 +744,46 @@ namespace BrawlLib.Wii.Models
             if (mdl._hasMix)
             {
                 //Write group entry
-                entry[entryCount++]._dataOffset = (int) (pData - pGroup);
+                entry[entryCount++]._dataOffset = (int)(pData - pGroup);
 
                 //Add bones first (using flat bone list)
-                foreach (var b in linker.BoneCache)
+                foreach (MDL0BoneNode b in linker.BoneCache)
+                {
                     if (b._weightCount > 0)
                     {
                         *pData = 5; //Tag
-                        *(bushort*) (pData + 1) = (ushort) b._nodeIndex;
-                        *(bushort*) (pData + 3) = (ushort) b._entryIndex;
+                        *(bushort*)(pData + 1) = (ushort)b._nodeIndex;
+                        *(bushort*)(pData + 3) = (ushort)b._entryIndex;
                         pData += 5; //Advance
                     }
+                }
 
                 //Add weight groups (using sorted influence list)
-                foreach (var i in mdl._influences._influences)
+                foreach (Influence i in mdl._influences._influences)
                 {
                     *pData++ = 3; //Tag
-                    *(bushort*) pData = (ushort) i._index;
+                    *(bushort*)pData = (ushort)i._index;
                     pData += 2;
 
-                    var countAddr = pData++;
+                    byte* countAddr = pData++;
                     byte count = 0;
-                    foreach (var w in i.Weights)
+                    foreach (BoneWeight w in i.Weights)
                     {
-                        var bone = w.Bone as MDL0BoneNode;
-                        if (bone == null || w.Weight == 0 || bone._nodeIndex >= linker.NodeCache.Length ||
-                            bone._nodeIndex < 0) continue;
+                        MDL0BoneNode bone = w.Bone as MDL0BoneNode;
+                        if (bone == null || w.Weight == 0 || bone._nodeIndex >= linker.NodeCache.Length || bone._nodeIndex < 0)
+                        {
+                            continue;
+                        }
 
-                        *(bushort*) pData = (ushort) bone._nodeIndex;
-                        *(bfloat*) (pData + 2) = w.Weight;
+                        *(bushort*)pData = (ushort)bone._nodeIndex;
+                        *(bfloat*)(pData + 2) = w.Weight;
                         pData += 6; //Advance
 
-                        if (linker.NodeCache[bone._nodeIndex] is MDL0BoneNode) count++;
+                        if (linker.NodeCache[bone._nodeIndex] is MDL0BoneNode)
+                        {
+                            count++;
+                        }
                     }
-
                     *countAddr = count;
                 }
 
@@ -726,23 +793,24 @@ namespace BrawlLib.Wii.Models
             //DrawOpa
             if (mdl._hasOpa && polyList != null)
             {
-                var objects = polyList.SelectMany(x => ((MDL0ObjectNode) x)._drawCalls)
-                    .Where(x => x.DrawPass == DrawCall.DrawPassType.Opaque).ToArray();
+                DrawCall[] objects = polyList.
+                    SelectMany(x => ((MDL0ObjectNode)x)._drawCalls).
+                    Where(x => x.DrawPass == DrawCall.DrawPassType.Opaque).
+                    ToArray();
 
                 Array.Sort(objects, DrawCall.DrawCompare);
 
                 //Write group entry
-                entry[entryCount++]._dataOffset = (int) (pData - pGroup);
+                entry[entryCount++]._dataOffset = (int)(pData - pGroup);
 
-                for (var i = 0; i < objects.Length; i++)
+                for (int i = 0; i < objects.Length; i++)
                 {
                     drawCall = objects[i];
 
                     *pData = 4; //Tag
-                    *(bushort*) (pData + 1) = (ushort) drawCall.MaterialNode._entryIndex;
-                    *(bushort*) (pData + 3) = (ushort) drawCall._parentObject._entryIndex;
-                    *(bushort*) (pData + 5) =
-                        (ushort) (drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : 0);
+                    *(bushort*)(pData + 1) = (ushort)drawCall.MaterialNode._entryIndex;
+                    *(bushort*)(pData + 3) = (ushort)drawCall._parentObject._entryIndex;
+                    *(bushort*)(pData + 5) = (ushort)(drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : 0);
                     pData[7] = drawCall.DrawPriority;
                     pData += 8; //Advance
                 }
@@ -753,23 +821,24 @@ namespace BrawlLib.Wii.Models
             //DrawXlu
             if (mdl._hasXlu && polyList != null)
             {
-                var objects = polyList.SelectMany(x => ((MDL0ObjectNode) x)._drawCalls)
-                    .Where(x => x.DrawPass == DrawCall.DrawPassType.Transparent).ToArray();
+                DrawCall[] objects = polyList.
+                    SelectMany(x => ((MDL0ObjectNode)x)._drawCalls).
+                    Where(x => x.DrawPass == DrawCall.DrawPassType.Transparent).
+                    ToArray();
 
                 Array.Sort(objects, DrawCall.DrawCompare);
 
                 //Write group entry
-                entry[entryCount++]._dataOffset = (int) (pData - pGroup);
+                entry[entryCount++]._dataOffset = (int)(pData - pGroup);
 
-                for (var i = 0; i < objects.Length; i++)
+                for (int i = 0; i < objects.Length; i++)
                 {
                     drawCall = objects[i];
 
                     *pData = 4; //Tag
-                    *(bushort*) (pData + 1) = (ushort) drawCall.MaterialNode._entryIndex;
-                    *(bushort*) (pData + 3) = (ushort) drawCall._parentObject._entryIndex;
-                    *(bushort*) (pData + 5) =
-                        (ushort) (drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : 0);
+                    *(bushort*)(pData + 1) = (ushort)drawCall.MaterialNode._entryIndex;
+                    *(bushort*)(pData + 3) = (ushort)drawCall._parentObject._entryIndex;
+                    *(bushort*)(pData + 5) = (ushort)(drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : 0);
                     pData[7] = drawCall.DrawPriority;
                     pData += 8; //Advance
                 }
@@ -778,8 +847,11 @@ namespace BrawlLib.Wii.Models
             }
 
             //Align data
-            dataLen = (int) (pData - floor);
-            while ((dataLen++ & 3) != 0) *pData++ = 0;
+            dataLen = (int)(pData - floor);
+            while ((dataLen++ & 3) != 0)
+            {
+                *pData++ = 0;
+            }
 
             //Set header
             *group = new ResourceGroup(entryCount);
@@ -792,7 +864,7 @@ namespace BrawlLib.Wii.Models
         private static void WriteAssets(Collada form, ModelLinker linker, ref byte* pData)
         {
             int index;
-            var model = linker.Model;
+            MDL0Node model = linker.Model;
 
             if (linker._vertices != null && linker._vertices.Count != 0)
             {
@@ -800,28 +872,33 @@ namespace BrawlLib.Wii.Models
                 model._vertGroup._parent = model;
 
                 index = 0;
-                foreach (var c in linker._vertices)
+                foreach (VertexCodec c in linker._vertices)
                 {
-                    var node = new MDL0VertexNode
+                    MDL0VertexNode node = new MDL0VertexNode
                     {
                         _name = model.Name + "_" + model._objList[index]._name
                     };
 
-                    var n = (MDL0ObjectNode) model._objList[index];
+                    MDL0ObjectNode n = (MDL0ObjectNode)model._objList[index];
                     if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
-                        node._name += "_" + ((MDL0ObjectNode) model._objList[index])._drawCalls[0].MaterialNode._name;
+                    {
+                        node._name += "_" + ((MDL0ObjectNode)model._objList[index])._drawCalls[0].MaterialNode._name;
+                    }
 
-                    if (form != null) form.Say("Writing Vertices - " + node.Name);
+                    if (form != null)
+                    {
+                        form.Say("Writing Vertices - " + node.Name);
+                    }
 
-                    var header = (MDL0VertexData*) pData;
+                    MDL0VertexData* header = (MDL0VertexData*)pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x40;
                     header->_dataOffset = 0x40;
                     header->_index = index++;
                     header->_isXYZ = c._hasZ ? 1 : 0;
-                    header->_type = (int) c._type;
-                    header->_divisor = (byte) c._scale;
-                    header->_entryStride = (byte) c._dstStride;
-                    header->_numVertices = (ushort) c._dstCount;
+                    header->_type = (int)c._type;
+                    header->_divisor = (byte)c._scale;
+                    header->_entryStride = (byte)c._dstStride;
+                    header->_numVertices = (ushort)c._dstCount;
                     header->_eMin = c._min;
                     header->_eMax = c._max;
                     header->_pad1 = header->_pad2 = 0;
@@ -841,27 +918,32 @@ namespace BrawlLib.Wii.Models
                 model._normGroup._parent = model;
 
                 index = 0;
-                foreach (var c in linker._normals)
+                foreach (VertexCodec c in linker._normals)
                 {
-                    var node = new MDL0NormalNode
+                    MDL0NormalNode node = new MDL0NormalNode
                     {
                         _name = model.Name + "_" + model._objList[index]._name
                     };
-                    var n = (MDL0ObjectNode) model._objList[index];
+                    MDL0ObjectNode n = (MDL0ObjectNode)model._objList[index];
                     if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
-                        node._name += "_" + ((MDL0ObjectNode) model._objList[index])._drawCalls[0].MaterialNode._name;
+                    {
+                        node._name += "_" + ((MDL0ObjectNode)model._objList[index])._drawCalls[0].MaterialNode._name;
+                    }
 
-                    if (form != null) form.Say("Writing Normals - " + node.Name);
+                    if (form != null)
+                    {
+                        form.Say("Writing Normals - " + node.Name);
+                    }
 
-                    var header = (MDL0NormalData*) pData;
+                    MDL0NormalData* header = (MDL0NormalData*)pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x20;
                     header->_dataOffset = 0x20;
                     header->_index = index++;
                     header->_isNBT = 0;
-                    header->_type = (int) c._type;
-                    header->_divisor = (byte) c._scale;
-                    header->_entryStride = (byte) c._dstStride;
-                    header->_numVertices = (ushort) c._dstCount;
+                    header->_type = (int)c._type;
+                    header->_divisor = (byte)c._scale;
+                    header->_entryStride = (byte)c._dstStride;
+                    header->_numVertices = (ushort)c._dstCount;
 
                     c.Write(pData + 0x20);
 
@@ -878,27 +960,32 @@ namespace BrawlLib.Wii.Models
                 model._colorGroup._parent = model;
 
                 index = 0;
-                foreach (var c in linker._colors)
+                foreach (ColorCodec c in linker._colors)
                 {
-                    var node = new MDL0ColorNode
+                    MDL0ColorNode node = new MDL0ColorNode
                     {
                         _name = model.Name + "_" + model._objList[index]._name
                     };
-                    var n = (MDL0ObjectNode) model._objList[index];
+                    MDL0ObjectNode n = (MDL0ObjectNode)model._objList[index];
                     if (n._drawCalls.Count > 0 && n._drawCalls[0].MaterialNode != null)
-                        node._name += "_" + ((MDL0ObjectNode) model._objList[index])._drawCalls[0].MaterialNode._name;
+                    {
+                        node._name += "_" + ((MDL0ObjectNode)model._objList[index])._drawCalls[0].MaterialNode._name;
+                    }
 
-                    if (form != null) form.Say("Writing Colors - " + node.Name);
+                    if (form != null)
+                    {
+                        form.Say("Writing Colors - " + node.Name);
+                    }
 
-                    var header = (MDL0ColorData*) pData;
+                    MDL0ColorData* header = (MDL0ColorData*)pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x20;
                     header->_dataOffset = 0x20;
                     header->_index = index++;
                     header->_isRGBA = c._hasAlpha ? 1 : 0;
-                    header->_format = (int) c._outType;
-                    header->_entryStride = (byte) c._dstStride;
+                    header->_format = (int)c._outType;
+                    header->_entryStride = (byte)c._dstStride;
                     header->_pad = 0;
-                    header->_numEntries = (ushort) c._dstCount;
+                    header->_numEntries = (ushort)c._dstCount;
 
                     c.Write(pData + 0x20);
 
@@ -915,23 +1002,26 @@ namespace BrawlLib.Wii.Models
                 model._uvGroup._parent = model;
 
                 index = 0;
-                foreach (var c in linker._uvs)
+                foreach (VertexCodec c in linker._uvs)
                 {
-                    var node = new MDL0UVNode {_name = "#" + index};
+                    MDL0UVNode node = new MDL0UVNode() { _name = "#" + index };
 
-                    if (form != null) form.Say("Writing UVs - " + node.Name);
+                    if (form != null)
+                    {
+                        form.Say("Writing UVs - " + node.Name);
+                    }
 
-                    var header = (MDL0UVData*) pData;
+                    MDL0UVData* header = (MDL0UVData*)pData;
                     header->_dataLen = c._dataLen.Align(0x20) + 0x40;
                     header->_dataOffset = 0x40;
                     header->_index = index++;
-                    header->_format = (int) c._type;
-                    header->_divisor = (byte) c._scale;
+                    header->_format = (int)c._type;
+                    header->_divisor = (byte)c._scale;
                     header->_isST = 1;
-                    header->_entryStride = (byte) c._dstStride;
-                    header->_numEntries = (ushort) c._dstCount;
-                    header->_min = (Vector2) c._min;
-                    header->_max = (Vector2) c._max;
+                    header->_entryStride = (byte)c._dstStride;
+                    header->_numEntries = (ushort)c._dstCount;
+                    header->_min = (Vector2)c._min;
+                    header->_max = (Vector2)c._max;
                     header->_pad1 = header->_pad2 = header->_pad3 = header->_pad4 = 0;
 
                     c.Write(pData + 0x40);
@@ -947,8 +1037,7 @@ namespace BrawlLib.Wii.Models
             if (model._vertList != null && model._vertList.Count > 0)
             {
                 model._children.Add(model._vertGroup);
-                linker.Groups[(int) (MDLResourceType) Enum.Parse(typeof(MDLResourceType), model._vertGroup.Name)] =
-                    model._vertGroup;
+                linker.Groups[(int)(MDLResourceType)Enum.Parse(typeof(MDLResourceType), model._vertGroup.Name)] = model._vertGroup;
             }
             else
             {
@@ -958,8 +1047,7 @@ namespace BrawlLib.Wii.Models
             if (model._normList != null && model._normList.Count > 0)
             {
                 model._children.Add(model._normGroup);
-                linker.Groups[(int) (MDLResourceType) Enum.Parse(typeof(MDLResourceType), model._normGroup.Name)] =
-                    model._normGroup;
+                linker.Groups[(int)(MDLResourceType)Enum.Parse(typeof(MDLResourceType), model._normGroup.Name)] = model._normGroup;
             }
             else
             {
@@ -969,8 +1057,7 @@ namespace BrawlLib.Wii.Models
             if (model._uvList != null && model._uvList.Count > 0)
             {
                 model._children.Add(model._uvGroup);
-                linker.Groups[(int) (MDLResourceType) Enum.Parse(typeof(MDLResourceType), model._uvGroup.Name)] =
-                    model._uvGroup;
+                linker.Groups[(int)(MDLResourceType)Enum.Parse(typeof(MDLResourceType), model._uvGroup.Name)] = model._uvGroup;
             }
             else
             {
@@ -980,8 +1067,7 @@ namespace BrawlLib.Wii.Models
             if (model._colorList != null && model._colorList.Count > 0)
             {
                 model._children.Add(model._colorGroup);
-                linker.Groups[(int) (MDLResourceType) Enum.Parse(typeof(MDLResourceType), model._colorGroup.Name)] =
-                    model._colorGroup;
+                linker.Groups[(int)(MDLResourceType)Enum.Parse(typeof(MDLResourceType), model._colorGroup.Name)] = model._colorGroup;
             }
             else
             {
@@ -990,27 +1076,36 @@ namespace BrawlLib.Wii.Models
 
             //Link sets
             if (model._objList != null)
+            {
                 foreach (MDL0ObjectNode poly in model._objList)
                 {
-                    if (poly._elementIndices[0] != -1 && model._vertList != null &&
-                        model._vertList.Count > poly._elementIndices[0])
-                        poly._vertexNode = (MDL0VertexNode) model._vertGroup._children[poly._elementIndices[0]];
+                    if (poly._elementIndices[0] != -1 && model._vertList != null && model._vertList.Count > poly._elementIndices[0])
+                    {
+                        poly._vertexNode = (MDL0VertexNode)model._vertGroup._children[poly._elementIndices[0]];
+                    }
 
-                    if (poly._elementIndices[1] != -1 && model._normList != null &&
-                        model._normList.Count > poly._elementIndices[1])
-                        poly._normalNode = (MDL0NormalNode) model._normGroup._children[poly._elementIndices[1]];
+                    if (poly._elementIndices[1] != -1 && model._normList != null && model._normList.Count > poly._elementIndices[1])
+                    {
+                        poly._normalNode = (MDL0NormalNode)model._normGroup._children[poly._elementIndices[1]];
+                    }
 
-                    for (var i = 2; i < 4; i++)
-                        if (poly._elementIndices[i] != -1 && model._colorList != null &&
-                            model._colorList.Count > poly._elementIndices[i])
-                            poly._colorSet[i - 2] =
-                                (MDL0ColorNode) model._colorGroup._children[poly._elementIndices[i]];
+                    for (int i = 2; i < 4; i++)
+                    {
+                        if (poly._elementIndices[i] != -1 && model._colorList != null && model._colorList.Count > poly._elementIndices[i])
+                        {
+                            poly._colorSet[i - 2] = (MDL0ColorNode)model._colorGroup._children[poly._elementIndices[i]];
+                        }
+                    }
 
-                    for (var i = 4; i < 12; i++)
-                        if (poly._elementIndices[i] != -1 && model._uvList != null &&
-                            model._uvList.Count > poly._elementIndices[i])
-                            poly._uvSet[i - 4] = (MDL0UVNode) model._uvGroup._children[poly._elementIndices[i]];
+                    for (int i = 4; i < 12; i++)
+                    {
+                        if (poly._elementIndices[i] != -1 && model._uvList != null && model._uvList.Count > poly._elementIndices[i])
+                        {
+                            poly._uvSet[i - 4] = (MDL0UVNode)model._uvGroup._children[poly._elementIndices[i]];
+                        }
+                    }
                 }
+            }
         }
 
         //Materials must already be written. Do this last!
@@ -1022,7 +1117,7 @@ namespace BrawlLib.Wii.Models
             ResourceEntry* pTexEntry = null;
             if (linker._texList != null && linker._texList.Count > 0)
             {
-                linker.Textures = pTexGroup = (ResourceGroup*) pGroup;
+                linker.Textures = pTexGroup = (ResourceGroup*)pGroup;
                 *pTexGroup = new ResourceGroup(linker._texList.Count);
                 pTexEntry = &pTexGroup->_first + 1;
                 pGroup += pTexGroup->_totalSize;
@@ -1032,32 +1127,34 @@ namespace BrawlLib.Wii.Models
             ResourceEntry* pPltEntry = null;
             if (linker._pltList != null && linker._pltList.Count > 0)
             {
-                linker.Palettes = pPltGroup = (ResourceGroup*) pGroup;
+                linker.Palettes = pPltGroup = (ResourceGroup*)pGroup;
                 *pPltGroup = new ResourceGroup(linker._pltList.Count);
                 pPltEntry = &pPltGroup->_first + 1;
                 pGroup += pPltGroup->_totalSize;
             }
 
-            var pData = (bint*) pGroup;
+            bint* pData = (bint*)pGroup;
             int offset;
 
             //Textures
-            var list = linker._texList;
+            List<MDL0TextureNode> list = linker._texList;
             if (list != null)
             {
                 list.Sort(); //Alphabetical order
                 if (pTexGroup != null)
-                    foreach (var t in list)
+                {
+                    foreach (MDL0TextureNode t in list)
                     {
-                        offset = (int) pData;
-                        (pTexEntry++)->_dataOffset = offset - (int) pTexGroup;
+                        offset = (int)pData;
+                        (pTexEntry++)->_dataOffset = offset - (int)pTexGroup;
                         *pData++ = t._references.Count;
-                        foreach (var mat in t._references)
+                        foreach (MDL0MaterialRefNode mat in t._references)
                         {
-                            *pData++ = (int) mat.Material.WorkingUncompressed.Address - offset;
-                            *pData++ = (int) mat.WorkingUncompressed.Address - offset;
+                            *pData++ = (int)mat.Material.WorkingUncompressed.Address - offset;
+                            *pData++ = (int)mat.WorkingUncompressed.Address - offset;
                         }
                     }
+                }
             }
 
             //Palettes
@@ -1066,17 +1163,19 @@ namespace BrawlLib.Wii.Models
             {
                 list.Sort(); //Alphabetical order
                 if (pPltGroup != null)
-                    foreach (var t in list)
+                {
+                    foreach (MDL0TextureNode t in list)
                     {
-                        offset = (int) pData;
-                        (pPltEntry++)->_dataOffset = offset - (int) pPltGroup;
+                        offset = (int)pData;
+                        (pPltEntry++)->_dataOffset = offset - (int)pPltGroup;
                         *pData++ = t._references.Count;
-                        foreach (var mat in t._references)
+                        foreach (MDL0MaterialRefNode mat in t._references)
                         {
-                            *pData++ = (int) mat.Material.WorkingUncompressed.Address - offset;
-                            *pData++ = (int) mat.WorkingUncompressed.Address - offset;
+                            *pData++ = (int)mat.Material.WorkingUncompressed.Address - offset;
+                            *pData++ = (int)mat.WorkingUncompressed.Address - offset;
                         }
                     }
+                }
             }
         }
 
@@ -1098,11 +1197,13 @@ namespace BrawlLib.Wii.Models
         private static void SetFormatLists(ModelLinker linker)
         {
             if (linker.Model._objList != null)
-                for (var i = 0; i < linker.Model._objList.Count; i++)
+            {
+                for (int i = 0; i < linker.Model._objList.Count; i++)
                 {
-                    var poly = (MDL0ObjectNode) linker.Model._objList[i];
+                    MDL0ObjectNode poly = (MDL0ObjectNode)linker.Model._objList[i];
                     poly._manager.SetFormatList(poly, linker);
                 }
+            }
         }
     }
 }

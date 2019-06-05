@@ -2,10 +2,26 @@
 {
     public class Item
     {
-        public static readonly Item[] Items =
+        /// <summary>
+        /// The Item ID, as used by the module files, PSA script, and the item frequency tables.
+        /// </summary>
+        public int ID { get; private set; }
+        /// <summary>
+        /// The Item name (e.g. "Heart Container").
+        /// </summary>
+        public string Name { get; private set; }
+
+        public Item(int id, string name)
         {
+            ID = id;
+            Name = name;
+        }
+
+        public override string ToString() { return Name; }
+
+        public static readonly Item[] Items = new Item[] {
             //        ID    Display Name     
-            new Item(0x00, "Assist Trophy"),
+			new Item(0x00, "Assist Trophy"),
             new Item(0x01, "Franklin Badge"),
             new Item(0x02, "Banana Peel"),
             new Item(0x03, "Barrel"),
@@ -187,28 +203,7 @@
             new Item(0x7D2, "Unknown"),
             new Item(0x7D3, "Unknown"),
             new Item(0x7D4, "Unknown"),
-            new Item(0x7D5, "Unknown")
+            new Item(0x7D5, "Unknown"),
         };
-
-        public Item(int id, string name)
-        {
-            ID = id;
-            Name = name;
-        }
-
-        /// <summary>
-        ///     The Item ID, as used by the module files, PSA script, and the item frequency tables.
-        /// </summary>
-        public int ID { get; }
-
-        /// <summary>
-        ///     The Item name (e.g. "Heart Container").
-        /// </summary>
-        public string Name { get; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }

@@ -1,66 +1,21 @@
-﻿using System;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSARSound)]
     public class RSARSoundWrapper : GenericWrapper
     {
-        public RSARSoundWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
         public override string ExportFilter => FileFilters.WAV;
-
-        public void ChangeSound()
-        {
-            var n = _resource as RSARSoundNode;
-            if (n._waveDataNode != null)
-            {
-                if (n._waveDataNode._refs.Count > 1)
-                {
-                    var s = "The following entries also use this sound:\n";
-                    foreach (var x in n._waveDataNode._refs) s += x.TreePath + "\n";
-
-                    s += "\nDo you still want to replace this sound?";
-                    if (MessageBox.Show(s, "Continue?", MessageBoxButtons.YesNo) == DialogResult.No) return;
-                }
-
-                var index = Program.OpenFile(ReplaceFilter, out var inPath);
-                if (index != 0)
-                {
-                    n._waveDataNode.Sound.Replace(inPath);
-                    MainForm.Instance.resourceTree_SelectionChanged(null, null);
-                }
-            }
-        }
-
-        public void ViewFile()
-        {
-            RSARFileNode n;
-            if ((n = (_resource as RSARSoundNode).SoundFileNode) == null) return;
-
-            if (n is RSARExtFileNode)
-            {
-                var ext = n as RSARExtFileNode;
-                if (File.Exists(ext.FullExtPath)) Process.Start(ext.FullExtPath);
-            }
-            else
-            {
-                new EditRSARFileDialog().ShowDialog(MainForm.Instance, n);
-            }
-        }
 
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static RSARSoundWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -79,32 +34,73 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        protected static void ChangeSoundAction(object sender, EventArgs e)
-        {
-            GetInstance<RSARSoundWrapper>().ChangeSound();
-        }
-
-        protected static void ViewFileAction(object sender, EventArgs e)
-        {
-            GetInstance<RSARSoundWrapper>().ViewFile();
-        }
-
+        protected static void ChangeSoundAction(object sender, EventArgs e) { GetInstance<RSARSoundWrapper>().ChangeSound(); }
+        protected static void ViewFileAction(object sender, EventArgs e) { GetInstance<RSARSoundWrapper>().ViewFile(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[0].Enabled = _menu.Items[1].Enabled = _menu.Items[3].Enabled = _menu.Items[5].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<RSARSoundWrapper>();
-            var n = w._resource as RSARSoundNode;
+            RSARSoundWrapper w = GetInstance<RSARSoundWrapper>();
+            RSARSoundNode n = w._resource as RSARSoundNode;
             _menu.Items[0].Enabled = n._waveDataNode != null;
             _menu.Items[1].Enabled = n.SoundFileNode != null;
             _menu.Items[3].Enabled = w.Parent != null;
-            _menu.Items[5].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _menu.Items[5].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
         }
 
         #endregion
+
+        public RSARSoundWrapper() { ContextMenuStrip = _menu; }
+
+        public void ChangeSound()
+        {
+            RSARSoundNode n = _resource as RSARSoundNode;
+            if (n._waveDataNode != null)
+            {
+                if (n._waveDataNode._refs.Count > 1)
+                {
+                    string s = "The following entries also use this sound:\n";
+                    foreach (RSARSoundNode x in n._waveDataNode._refs)
+                    {
+                        s += x.TreePath + "\n";
+                    }
+
+                    s += "\nDo you still want to replace this sound?";
+                    if (MessageBox.Show(s, "Continue?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                int index = Program.OpenFile(ReplaceFilter, out string inPath);
+                if (index != 0)
+                {
+                    n._waveDataNode.Sound.Replace(inPath);
+                    MainForm.Instance.resourceTree_SelectionChanged(null, null);
+                }
+            }
+        }
+        public void ViewFile()
+        {
+            RSARFileNode n;
+            if ((n = (_resource as RSARSoundNode).SoundFileNode) == null)
+            {
+                return;
+            }
+
+            if (n is RSARExtFileNode)
+            {
+                RSARExtFileNode ext = n as RSARExtFileNode;
+                if (File.Exists(ext.FullExtPath))
+                {
+                    Process.Start(ext.FullExtPath);
+                }
+            }
+            else
+            {
+                new EditRSARFileDialog().ShowDialog(MainForm.Instance, n);
+            }
+        }
     }
 }

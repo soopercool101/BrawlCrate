@@ -1,9 +1,9 @@
-﻿using System.Windows.Forms;
-using OpenTK.Audio;
+﻿using OpenTK.Audio;
+using System.Windows.Forms;
 
 namespace System.Audio
 {
-    internal class alAudioProvider : AudioProvider
+    internal unsafe class alAudioProvider : AudioProvider
     {
         private AudioContext context;
 
@@ -11,26 +11,26 @@ namespace System.Audio
         {
             context = new AudioContext();
         }
-
         public override void Dispose()
         {
             base.Dispose();
-            if (context != null) context.Dispose();
+            if (context != null)
+            {
+                context.Dispose();
+            }
 
             context = null;
         }
 
-        public override void Attach(Control owner)
-        {
-        }
+        public override void Attach(Control owner) { }
 
         public override AudioBuffer CreateBuffer(IAudioStream target)
         {
-            var size = AudioBuffer.DefaultBufferSpan * target.Frequency * target.Channels * target.BitsPerSample / 8;
+            int size = AudioBuffer.DefaultBufferSpan * target.Frequency * target.Channels * target.BitsPerSample / 8;
 
-            var fmt = new WaveFormatEx(target.Format, target.Channels, target.Frequency, target.BitsPerSample);
+            WaveFormatEx fmt = new WaveFormatEx(target.Format, target.Channels, target.Frequency, target.BitsPerSample);
 
-            return new alAudioBuffer(this, fmt, target.Samples) {_source = target, _owner = this};
+            return new alAudioBuffer(this, fmt, target.Samples) { _source = target, _owner = this };
         }
 
         public override string ToString()

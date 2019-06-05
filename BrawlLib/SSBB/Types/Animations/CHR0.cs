@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.Wii.Animations;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Wii.Animations;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -19,33 +19,21 @@ namespace BrawlLib.SSBBTypes
         public bint _loop;
         public bint _scalingRule;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
-        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
-
-        public string OrigPath => new string((sbyte*) OrigPathAddress);
-
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int) value - (int) Address;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString => new string((sbyte*) ResourceStringAddress);
-
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int) value - (int) Address;
+            set => _stringOffset = (int)value - (int)Address;
         }
 
         public CHR0v4_3(int version, int size, int frames, int entries, bool loop)
@@ -58,8 +46,8 @@ namespace BrawlLib.SSBBTypes
             _dataOffset = Size;
             _stringOffset = 0;
             _origPathOffset = _scalingRule = 0;
-            _numFrames = (ushort) frames;
-            _numEntries = (ushort) entries;
+            _numFrames = (ushort)frames;
+            _numEntries = (ushort)entries;
             _loop = loop ? 1 : 0;
         }
     }
@@ -80,39 +68,27 @@ namespace BrawlLib.SSBBTypes
         public bint _loop;
         public bint _scalingRule;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
 
         public VoidPtr UserData
         {
             get => _userDataOffset == 0 ? null : Address + _userDataOffset;
-            set => _userDataOffset = (int) value - (int) Address;
+            set => _userDataOffset = (int)value - (int)Address;
         }
 
-        public string OrigPath => new string((sbyte*) OrigPathAddress);
-
+        public string OrigPath => new string((sbyte*)OrigPathAddress);
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int) value - (int) Address;
+            set => _origPathOffset = (int)value - (int)Address;
         }
 
-        public string ResourceString => new string((sbyte*) ResourceStringAddress);
-
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int) value - (int) Address;
+            set => _stringOffset = (int)value - (int)Address;
         }
 
         public CHR0v5(int version, int size, int frames, int entries, bool loop)
@@ -126,8 +102,8 @@ namespace BrawlLib.SSBBTypes
             _stringOffset = 0;
             _userDataOffset = 0;
             _origPathOffset = _scalingRule = 0;
-            _numFrames = (ushort) frames;
-            _numEntries = (ushort) entries;
+            _numFrames = (ushort)frames;
+            _numEntries = (ushort)entries;
             _loop = loop ? 1 : 0;
         }
     }
@@ -138,31 +114,17 @@ namespace BrawlLib.SSBBTypes
         public bint _stringOffset;
         public buint _code;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public VoidPtr Data => Address + 8;
 
-        public AnimationCode Code
-        {
-            get => (uint) _code;
-            set => _code = (uint) value;
-        }
+        public AnimationCode Code { get => (uint)_code; set => _code = (uint)value; }
 
-        public string ResourceString => new string((sbyte*) ResourceStringAddress);
-
+        public string ResourceString => new string((sbyte*)ResourceStringAddress);
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int) value - (int) Address;
+            set => _stringOffset = (int)value - (int)Address;
         }
     }
 }

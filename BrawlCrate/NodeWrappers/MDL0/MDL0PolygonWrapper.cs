@@ -1,39 +1,17 @@
-﻿using System;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.MDL0Object)]
     public class MDL0PolygonWrapper : GenericWrapper
     {
-        public MDL0PolygonWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
-        public override string ExportFilter => FileFilters.Object;
-        public override string ImportFilter => FileFilters.Raw;
-
-        public void Duplicate()
-        {
-            var node = ((MDL0ObjectNode) _resource).HardCopy();
-            node.Name += " - Copy";
-            ((MDL0ObjectNode) _resource).Model._objGroup.AddChild(node);
-            //((MDL0ObjectNode)_resource).Model.Rebuild(true);
-        }
-
-        public void Optimize()
-        {
-            new ObjectOptimizerForm().ShowDialog((MDL0ObjectNode) _resource);
-        }
-
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static MDL0PolygonWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -54,24 +32,33 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu.Items[7].Enabled = _menu.Items[8].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<MDL0PolygonWrapper>();
+            MDL0PolygonWrapper w = GetInstance<MDL0PolygonWrapper>();
             _menu.Items[7].Enabled = w.PrevNode != null;
             _menu.Items[8].Enabled = w.NextNode != null;
         }
 
-        protected static void OptimizeAction(object sender, EventArgs e)
-        {
-            GetInstance<MDL0PolygonWrapper>().Optimize();
-        }
-
-        protected static void DuplicateAction(object sender, EventArgs e)
-        {
-            GetInstance<MDL0PolygonWrapper>().Duplicate();
-        }
-
+        protected static void OptimizeAction(object sender, EventArgs e) { GetInstance<MDL0PolygonWrapper>().Optimize(); }
+        protected static void DuplicateAction(object sender, EventArgs e) { GetInstance<MDL0PolygonWrapper>().Duplicate(); }
         #endregion
+
+        public override string ExportFilter => FileFilters.Object;
+        public override string ImportFilter => FileFilters.Raw;
+
+        public MDL0PolygonWrapper() { ContextMenuStrip = _menu; }
+
+        public void Duplicate()
+        {
+            MDL0ObjectNode node = ((MDL0ObjectNode)_resource).HardCopy();
+            node.Name += " - Copy";
+            ((MDL0ObjectNode)_resource).Model._objGroup.AddChild(node);
+            //((MDL0ObjectNode)_resource).Model.Rebuild(true);
+        }
+
+        public void Optimize()
+        {
+            new ObjectOptimizerForm().ShowDialog((MDL0ObjectNode)_resource);
+        }
     }
 }

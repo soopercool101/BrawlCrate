@@ -9,13 +9,13 @@
 
         public static int Read(this Stream stream, VoidPtr dstAddr, int length)
         {
-            var arr = new byte[length];
+            byte[] arr = new byte[length];
 
-            var numRead = stream.Read(arr, 0, length);
+            int numRead = stream.Read(arr, 0, length);
 
             fixed (byte* ptr = arr)
             {
-                Memory.Move(dstAddr, ptr, (uint) numRead);
+                Memory.Move(dstAddr, ptr, (uint)numRead);
             }
 
             return numRead;
@@ -23,11 +23,11 @@
 
         public static void Write(this Stream stream, VoidPtr srcAddr, int length)
         {
-            var arr = new byte[length];
+            byte[] arr = new byte[length];
 
             fixed (byte* ptr = arr)
             {
-                Memory.Move(ptr, srcAddr, (uint) length);
+                Memory.Move(ptr, srcAddr, (uint)length);
             }
 
             stream.Write(arr, 0, length);
@@ -113,5 +113,6 @@
 
         //[DllImport("Kernel32.dll", SetLastError = true)]
         //private static extern bool ReadFile(SafeFileHandle hFile, void* lpBuffer, uint nNumberOfBytesToRead, uint* lpNumberOfBytesRead, void* lpOverlapped);
+
     }
 }

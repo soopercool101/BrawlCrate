@@ -1,34 +1,25 @@
-using System.ComponentModel;
-
 namespace System.Windows.Forms
 {
     /// <summary>
-    ///     Summary description for FormGoTo.
+    /// Summary description for FormGoTo.
     /// </summary>
     public class FormGoTo : Form
     {
-        /// <summary>
-        ///     Required designer variable.
-        /// </summary>
-        private readonly Container components = null;
-
-        public char[] _decChars = "0123456789".ToCharArray();
-
-        public char[] _hexChars = "0123456789ABCDEFabcdef".ToCharArray();
-
-        private long _maxVal = long.MaxValue;
         private Button btnCancel;
         private Button btnOK;
-        private RadioButton chkBegin;
-        private RadioButton chkCurrent;
-        private RadioButton chkDec;
-        private RadioButton chkEnd;
-        private RadioButton chkHex;
-        private long current;
         private GroupBox groupBox2;
+        private RadioButton chkEnd;
+        private RadioButton chkCurrent;
+        private RadioButton chkBegin;
         private GroupBox groupBox3;
+        private RadioButton chkDec;
+        private RadioButton chkHex;
         private Label label1;
         private TextBox txtOffset;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private readonly System.ComponentModel.Container components = null;
 
         public FormGoTo()
         {
@@ -43,21 +34,24 @@ namespace System.Windows.Forms
         }
 
         /// <summary>
-        ///     Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
+            {
                 if (components != null)
+                {
                     components.Dispose();
+                }
+            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
         /// <summary>
-        ///     Required method for Designer support - do not modify
-        ///     the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -218,10 +212,12 @@ namespace System.Windows.Forms
             groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-        }
 
+        }
         #endregion
 
+        private long _maxVal = long.MaxValue;
+        private long current;
         public void SetDefaultValue(long byteIndex)
         {
             current = byteIndex;
@@ -235,7 +231,7 @@ namespace System.Windows.Forms
 
         public long GetByteIndex()
         {
-            var v = Convert.ToInt64(txtOffset.Text, chkHex.Checked ? 16 : 10);
+            long v = Convert.ToInt64(txtOffset.Text, chkHex.Checked ? 16 : 10);
             return (chkBegin.Checked ? v : chkCurrent.Checked ? current + v : _maxVal - v).Clamp(0, _maxVal);
         }
 
@@ -254,38 +250,49 @@ namespace System.Windows.Forms
             DialogResult = DialogResult.Cancel;
         }
 
+        public char[] _hexChars = "0123456789ABCDEFabcdef".ToCharArray();
+        public char[] _decChars = "0123456789".ToCharArray();
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var arr = chkHex.Checked ? _hexChars : _decChars;
+            char[] arr = chkHex.Checked ? _hexChars : _decChars;
 
-            var t = "";
-            foreach (var c in txtOffset.Text)
+            string t = "";
+            foreach (char c in txtOffset.Text)
+            {
                 if (Array.IndexOf(arr, c) != -1)
+                {
                     t += c;
+                }
+            }
 
             if (txtOffset.Text != t)
             {
-                var i = txtOffset.SelectionStart;
+                int i = txtOffset.SelectionStart;
                 txtOffset.Text = t;
-                if (!string.IsNullOrEmpty(t)) txtOffset.Select(i.Clamp(0, txtOffset.TextLength), 0);
+                if (!string.IsNullOrEmpty(t))
+                {
+                    txtOffset.Select(i.Clamp(0, txtOffset.TextLength), 0);
+                }
             }
         }
 
         private void chkHex_CheckedChanged(object sender, EventArgs e)
         {
-            var i = txtOffset.SelectionStart;
+            int i = txtOffset.SelectionStart;
             if (chkHex.Checked)
             {
-                var v = Convert.ToInt64(txtOffset.Text, 10);
+                long v = Convert.ToInt64(txtOffset.Text, 10);
                 txtOffset.Text = v.ToString("X");
             }
             else
             {
-                var v = Convert.ToInt64(txtOffset.Text, 16);
+                long v = Convert.ToInt64(txtOffset.Text, 16);
                 txtOffset.Text = v.ToString();
             }
-
-            if (!string.IsNullOrEmpty(txtOffset.Text)) txtOffset.Select(i.Clamp(0, txtOffset.TextLength), 0);
+            if (!string.IsNullOrEmpty(txtOffset.Text))
+            {
+                txtOffset.Select(i.Clamp(0, txtOffset.TextLength), 0);
+            }
         }
     }
 }

@@ -1,31 +1,32 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0FurVecNode : MDL0EntryNode
     {
-        public Vector3[] _entries;
-        internal List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0FurVecData hdr;
-        internal MDL0FurVecData* Header => (MDL0FurVecData*) WorkingUncompressed.Address;
+        internal MDL0FurVecData* Header => (MDL0FurVecData*)WorkingUncompressed.Address;
 
         public MDL0ObjectNode[] Objects => _objects.ToArray();
+        internal List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
+        private MDL0FurVecData hdr = new MDL0FurVecData();
 
-        [Category("Fur Vector Data")] public int TotalLen => hdr._dataLen;
+        [Category("Fur Vector Data")]
+        public int TotalLen => hdr._dataLen;
+        [Category("Fur Vector Data")]
+        public int MDL0Offset => hdr._mdl0Offset;
+        [Category("Fur Vector Data")]
+        public int DataOffset => hdr._dataOffset;
+        [Category("Fur Vector Data")]
+        public int StringOffset => hdr._stringOffset;
+        [Category("Fur Vector Data")]
+        public int ID => hdr._index;
+        [Category("Fur Vector Data")]
+        public ushort NumEntries => hdr._numEntries;
 
-        [Category("Fur Vector Data")] public int MDL0Offset => hdr._mdl0Offset;
-
-        [Category("Fur Vector Data")] public int DataOffset => hdr._dataOffset;
-
-        [Category("Fur Vector Data")] public int StringOffset => hdr._stringOffset;
-
-        [Category("Fur Vector Data")] public int ID => hdr._index;
-
-        [Category("Fur Vector Data")] public ushort NumEntries => hdr._numEntries;
-
+        public Vector3[] _entries;
         public Vector3[] Vertices
         {
             get => _entries;
@@ -39,10 +40,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             SetSizeInternal(hdr._dataLen);
 
-            if (_name == null && Header->_stringOffset != 0) _name = Header->ResourceString;
+            if ((_name == null) && (Header->_stringOffset != 0))
+            {
+                _name = Header->ResourceString;
+            }
 
             _entries = new Vector3[NumEntries];
-            for (var i = 0; i < NumEntries; i++) _entries[i] = Header->Entries[i];
+            for (int i = 0; i < NumEntries; i++)
+            {
+                _entries[i] = Header->Entries[i];
+            }
 
             return false;
         }
@@ -57,16 +64,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnRebuild(address, length, force);
         }
 
-        public override void Export(string outPath)
+        public override unsafe void Export(string outPath)
         {
             base.Export(outPath);
         }
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
         {
-            var header = (MDL0FurVecData*) dataAddress;
-            header->_mdl0Offset = (int) mdlAddress - (int) dataAddress;
-            header->_stringOffset = (int) stringTable[Name] + 4 - (int) dataAddress;
+            MDL0FurVecData* header = (MDL0FurVecData*)dataAddress;
+            header->_mdl0Offset = (int)mdlAddress - (int)dataAddress;
+            header->_stringOffset = (int)stringTable[Name] + 4 - (int)dataAddress;
             header->_index = Index;
         }
     }

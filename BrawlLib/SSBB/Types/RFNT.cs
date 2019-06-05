@@ -3,8 +3,8 @@
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct RFNT
+    public unsafe struct RFNT
     {
-        private readonly NW4RCommonHeader _header;
+        private NW4RCommonHeader _header;
     }
 }

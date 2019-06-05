@@ -1,26 +1,22 @@
 ﻿namespace System.PowerPcAssembly
 {
-    public abstract partial class PPCOpCode
+    public abstract unsafe partial class PPCOpCode
     {
         public class PPCOperand
         {
-            private readonly uint _bitMask;
-            private readonly int _bitShift;
-            private readonly uint _negBit;
+            private readonly PPCOpCode _owner = null;
 
             private readonly OperandType _opType = OperandType.VAL;
-            private readonly PPCOpCode _owner;
+            private readonly int _bitShift = 0;
+            private readonly uint _bitMask = 0;
+            private readonly uint _negBit = 0;
+            private readonly string _name;
 
-            public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask) : this(owner, type, shift, mask,
-                0x0)
-            {
-            }
+            public int Value { get => Get(); set => Set(value); }
+            public string Name => _name;
 
-            public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask, uint negBit) : this(owner, type,
-                shift, mask, negBit, "")
-            {
-            }
-
+            public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask) : this(owner, type, shift, mask, 0x0) { }
+            public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask, uint negBit) : this(owner, type, shift, mask, negBit, "") { }
             public PPCOperand(PPCOpCode owner, OperandType type, int shift, uint mask, uint negBit, string name)
             {
                 _owner = owner;
@@ -28,31 +24,26 @@
                 _bitShift = shift;
                 _bitMask = mask & ~negBit;
                 _negBit = negBit;
-                Name = name;
+                _name = name;
             }
-
-            public int Value
-            {
-                get => Get();
-                set => Set(value);
-            }
-
-            public string Name { get; }
 
             public int Get()
             {
                 uint baseVal = _owner._data;
 
-                var result = (int) ((baseVal >> _bitShift) & _bitMask);
+                int result = (int)((baseVal >> _bitShift) & _bitMask);
 
-                if ((baseVal & _negBit) != 0) result -= (int) _negBit;
+                if ((baseVal & _negBit) != 0)
+                {
+                    result -= (int)_negBit;
+                }
 
                 return result;
             }
 
             public string GetFormatted()
             {
-                var val = Get();
+                int val = Get();
 
                 switch (_opType)
                 {
@@ -81,7 +72,6 @@
                             case 27: return "srr1";
                             default: return "sp" + val;
                         }
-
                     default:
                         return "";
                 }
@@ -93,12 +83,12 @@
 
                 if (value > 0)
                 {
-                    _owner._data |= (uint) ((value & _bitMask) << _bitShift);
+                    _owner._data |= (uint)((value & _bitMask) << _bitShift);
                     _owner._data &= ~_negBit;
                 }
                 else
                 {
-                    _owner._data |= (uint) (((value + _negBit) & _bitMask) << _bitShift);
+                    _owner._data |= (uint)(((value + _negBit) & _bitMask) << _bitShift);
                     _owner._data |= _negBit;
                 }
             }

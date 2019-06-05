@@ -5,40 +5,39 @@ namespace System.Windows.Forms
     public class StringInputComboBox : ComboBox
     {
         public string _oldValue;
-        public string _value;
         private bool check = true;
-
-        public StringInputComboBox()
-        {
-            UpdateText();
-        }
-
+        public string _value;
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Value
         {
             get => _value;
             set
             {
-                if (_value == value) return;
+                if (_value == value)
+                {
+                    return;
+                }
 
-                if (check == false) _oldValue = Text;
+                if (check == false)
+                {
+                    _oldValue = Text;
+                }
 
                 _value = value;
 
                 UpdateText();
 
-                if (check)
-                {
-                    _oldValue = Text;
-                    check = false;
-                }
+                if (check == true) { _oldValue = Text; check = false; }
 
                 Apply();
             }
         }
 
+        public StringInputComboBox() { UpdateText(); }
+
         protected override void OnTextUpdate(EventArgs e)
         {
+
             base.OnTextUpdate(e);
         }
 
@@ -81,7 +80,6 @@ namespace System.Windows.Forms
                         Text = null;
                         Apply();
                     }
-
                     break;
 
                 //case Keys.V:
@@ -89,24 +87,35 @@ namespace System.Windows.Forms
                 //    if (!e.Control)
                 //        goto default;
                 //    break;
-            }
 
+                default:
+                    //e.Handled = true;
+                    //e.SuppressKeyPress = true;
+                    break;
+            }
             base.OnKeyDown(e);
         }
 
         private void UpdateText()
         {
             if (string.IsNullOrEmpty(_value))
+            {
                 Text = "";
+            }
             else
+            {
                 Text = _value;
+            }
         }
 
         private void Apply()
         {
-            var val = _value;
+            string val = _value;
 
-            if (val == Text) return;
+            if (val == Text)
+            {
+                return;
+            }
 
             val = Text;
 
@@ -115,7 +124,6 @@ namespace System.Windows.Forms
                 _value = val;
                 ValueChanged?.Invoke(this, null);
             }
-
             UpdateText();
         }
     }

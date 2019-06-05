@@ -1,9 +1,10 @@
-﻿using System;
-using System.Runtime.Serialization;
-using System.Windows.Forms;
-using BrawlLib.OpenGL;
+﻿using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
+using System;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Windows.Forms;
 
 namespace BrawlLib.Modeling
 {
@@ -34,41 +35,37 @@ namespace BrawlLib.Modeling
     [Serializable]
     public class ModelRenderAttributes : ISerializable
     {
-        public bool _applyBillboardBones = true;
-        public bool _dontRenderOffscreen = false;
-        public bool _renderBoneBoxes = false;
-        public bool _renderBones = false;
-        public bool _renderBonesAsPoints = false;
-        public bool _renderModelBox = false;
-        public bool _renderNormals = false;
-        public bool _renderObjectBoxes = false;
         public bool _renderPolygons = true;
-        public bool _renderShaders = true;
-        public bool _renderVertices = false;
         public bool _renderWireframe = false;
-        public bool _scaleBones = false;
+        public bool _renderBones = false;
+        public bool _renderVertices = false;
+        public bool _renderNormals = false;
+        public bool _dontRenderOffscreen = false;
+        public bool _renderModelBox = false;
+        public bool _renderObjectBoxes = false;
+        public bool _renderBoneBoxes = false;
         public bool _useBindStateBoxes = true;
+        public bool _applyBillboardBones = true;
+        public bool _renderShaders = true;
+        public bool _scaleBones = false;
+        public bool _renderBonesAsPoints = false;
 
-        public ModelRenderAttributes()
-        {
-        }
-
+        public ModelRenderAttributes() { }
         public ModelRenderAttributes(SerializationInfo info, StreamingContext ctxt)
         {
-            var fields = GetType().GetFields();
-            foreach (var f in fields)
+            FieldInfo[] fields = GetType().GetFields();
+            foreach (FieldInfo f in fields)
             {
-                var t = f.FieldType;
+                Type t = f.FieldType;
                 f.SetValue(this, info.GetValue(f.Name, t));
             }
         }
-
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            var fields = GetType().GetFields();
-            foreach (var f in fields)
+            FieldInfo[] fields = GetType().GetFields();
+            foreach (FieldInfo f in fields)
             {
-                var t = f.FieldType;
+                Type t = f.FieldType;
                 info.AddValue(f.Name, f.GetValue(this));
             }
         }

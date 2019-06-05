@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BrawlLib.Wii.Textures;
+using System;
 using System.Runtime.InteropServices;
-using BrawlLib.Wii.Textures;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -14,41 +14,21 @@ namespace BrawlLib.SSBBTypes
         public buint _numEntries;
         public buint _dataOffset;
 
-        public TPLTableOffset* Offsets => (TPLTableOffset*) (Address + _dataOffset);
+        public TPLTableOffset* Offsets => (TPLTableOffset*)(Address + _dataOffset);
 
-        public TPLTextureHeader* GetTextureEntry(int index)
-        {
-            if (Offsets[index]._textureOffset > 0) return (TPLTextureHeader*) (Address + Offsets[index]._textureOffset);
-            return null;
-        }
+        public TPLTextureHeader* GetTextureEntry(int index) { if (Offsets[index]._textureOffset > 0) { return (TPLTextureHeader*)(Address + Offsets[index]._textureOffset); } return null; }
+        public TPLPaletteHeader* GetPaletteEntry(int index) { if (Offsets[index]._paletteOffset > 0) { return (TPLPaletteHeader*)(Address + Offsets[index]._paletteOffset); } return null; }
 
-        public TPLPaletteHeader* GetPaletteEntry(int index)
-        {
-            if (Offsets[index]._paletteOffset > 0) return (TPLPaletteHeader*) (Address + Offsets[index]._paletteOffset);
-            return null;
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct TPLTableOffset
+    internal unsafe struct TPLTableOffset
     {
         public const int Size = 8;
 
         public buint _textureOffset;
         public buint _paletteOffset;
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct TPLTextureHeader
     {
@@ -70,24 +50,10 @@ namespace BrawlLib.SSBBTypes
         public byte _maxLOD;
         public byte _pad;
 
-        public WiiPixelFormat PixelFormat
-        {
-            get => (WiiPixelFormat) (uint) _format;
-            set => _format = (uint) value;
-        }
+        public WiiPixelFormat PixelFormat { get => (WiiPixelFormat)(uint)_format; set => _format = (uint)value; }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct TPLPaletteHeader
     {
@@ -99,21 +65,8 @@ namespace BrawlLib.SSBBTypes
         public buint _format;
         public buint _data;
 
-        public WiiPaletteFormat PaletteFormat
-        {
-            get => (WiiPaletteFormat) (uint) _format;
-            set => _format = (uint) value;
-        }
+        public WiiPaletteFormat PaletteFormat { get => (WiiPaletteFormat)(uint)_format; set => _format = (uint)value; }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 }

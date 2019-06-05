@@ -1,34 +1,94 @@
-﻿using System.Collections.Generic;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System.Collections.Generic;
 using System.Linq;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
     public class EditAllDialog : Form
     {
-        public bool[] _enabled = new bool[5];
-        private CHR0EntryNode[] _entries;
         private CHR0Node[] _nodes;
+        private CHR0EntryNode[] _entries;
         private EditAllCHR0Editor editAllCHR0Editor1;
 
-        public EditAllDialog()
-        {
-            InitializeComponent();
-        }
+        public EditAllDialog() { InitializeComponent(); }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
+
+        #region Designer
+
+        private Button btnCancel;
+        private Button btnOkay;
+
+        private void InitializeComponent()
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            btnCancel = new Button();
+            btnOkay = new Button();
+            editAllCHR0Editor1 = new EditAllCHR0Editor();
+            SuspendLayout();
+            // 
+            // btnCancel
+            // 
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.Location = new Drawing.Point(325, 344);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Drawing.Size(75, 23);
+            btnCancel.TabIndex = 2;
+            btnCancel.Text = "&Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
+            // 
+            // btnOkay
+            // 
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Location = new Drawing.Point(244, 344);
+            btnOkay.Name = "btnOkay";
+            btnOkay.Size = new Drawing.Size(75, 23);
+            btnOkay.TabIndex = 1;
+            btnOkay.Text = "&Okay";
+            btnOkay.UseVisualStyleBackColor = true;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
+            // 
+            // editAllCHR0Editor1
+            // 
+            editAllCHR0Editor1.Dock = DockStyle.Top;
+            editAllCHR0Editor1.Location = new Drawing.Point(0, 0);
+            editAllCHR0Editor1.Name = "editAllCHR0Editor1";
+            editAllCHR0Editor1.Size = new Drawing.Size(404, 338);
+            editAllCHR0Editor1.TabIndex = 3;
+            // 
+            // EditAllDialog
+            // 
+            AcceptButton = btnOkay;
+            CancelButton = btnCancel;
+            ClientSize = new Drawing.Size(404, 374);
+            Controls.Add(editAllCHR0Editor1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOkay);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Name = "EditAllDialog";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Edit All Animations";
+            ResumeLayout(false);
+
         }
+        #endregion
+
+        public bool[] _enabled = new bool[5];
 
         private void btnOkay_Click(object sender, EventArgs e)
         {
             //if (_enabled[0])
             if (_entries != null)
+            {
                 editAllCHR0Editor1.Apply(_entries);
+            }
             else
+            {
                 editAllCHR0Editor1.Apply(_nodes);
+            }
 
             DialogResult = DialogResult.OK;
             Close();
@@ -53,7 +113,6 @@ namespace System.Windows.Forms
                     .Where(n => n != null)
                     .ToArray();
             }
-
             _enabled = new bool[5];
             ShowDialog(owner);
         }
@@ -86,67 +145,5 @@ namespace System.Windows.Forms
             //_enabled[tabControl1.SelectedIndex] = checkBox1.Checked;
             //tabControl1_SelectedIndexChanged(null, null);
         }
-
-        #region Designer
-
-        private Button btnCancel;
-        private Button btnOkay;
-
-        private void InitializeComponent()
-        {
-            btnCancel = new Button();
-            btnOkay = new Button();
-            editAllCHR0Editor1 = new EditAllCHR0Editor();
-            SuspendLayout();
-            // 
-            // btnCancel
-            // 
-            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Drawing.Point(325, 344);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Drawing.Size(75, 23);
-            btnCancel.TabIndex = 2;
-            btnCancel.Text = "&Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
-            // 
-            // btnOkay
-            // 
-            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnOkay.Location = new Drawing.Point(244, 344);
-            btnOkay.Name = "btnOkay";
-            btnOkay.Size = new Drawing.Size(75, 23);
-            btnOkay.TabIndex = 1;
-            btnOkay.Text = "&Okay";
-            btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
-            // 
-            // editAllCHR0Editor1
-            // 
-            editAllCHR0Editor1.Dock = DockStyle.Top;
-            editAllCHR0Editor1.Location = new Drawing.Point(0, 0);
-            editAllCHR0Editor1.Name = "editAllCHR0Editor1";
-            editAllCHR0Editor1.Size = new Drawing.Size(404, 338);
-            editAllCHR0Editor1.TabIndex = 3;
-            // 
-            // EditAllDialog
-            // 
-            AcceptButton = btnOkay;
-            CancelButton = btnCancel;
-            ClientSize = new Drawing.Size(404, 374);
-            Controls.Add(editAllCHR0Editor1);
-            Controls.Add(btnCancel);
-            Controls.Add(btnOkay);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Name = "EditAllDialog";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "Edit All Animations";
-            ResumeLayout(false);
-        }
-
-        #endregion
     }
 }

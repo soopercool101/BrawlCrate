@@ -1,104 +1,14 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using BrawlLib.Modeling;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 namespace System.Windows.Forms
 {
     public class VertexEditor : UserControl
     {
-        private readonly GoodColorDialog _dlgColor;
-        private int _colorIndex;
-
-        public ModelEditorBase _mainWindow;
-        public MDL0BoneNode _targetBone;
-        public List<Vertex3> _targetVertices;
-
-        public bool _updating;
-        private Button btnAverage;
-        private Label colorBox;
-        private ComboBox colorIndex;
-        private ComboBox comboBox1;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private GroupBox groupBox4;
-        private Label label1;
-        private Label label2;
-
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        public NumericInputBox numNormX;
-        public NumericInputBox numNormY;
-        public NumericInputBox numNormZ;
-        public NumericInputBox numPosX;
-        public NumericInputBox numPosY;
-        public NumericInputBox numPosZ;
-
-        public VertexEditor()
-        {
-            InitializeComponent();
-            //uvIndex.SelectedIndex = 0; 
-            colorIndex.SelectedIndex = 0;
-            _dlgColor = new GoodColorDialog();
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int CurrentFrame
-        {
-            get => _mainWindow.CurrentFrame;
-            set => _mainWindow.CurrentFrame = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IModel TargetModel
-        {
-            get => _mainWindow.TargetModel;
-            set => _mainWindow.TargetModel = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoneNode TargetBone
-        {
-            get => _mainWindow.SelectedBone;
-            set => _mainWindow.SelectedBone = value;
-        }
-
-        public Vertex3 TargetVertex
-        {
-            get
-            {
-                if (_targetVertices != null && _targetVertices.Count != 0) return _targetVertices[0];
-
-                return null;
-            }
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<Vertex3> TargetVertices
-        {
-            get => _targetVertices;
-            set
-            {
-                if (_targetVertices != value)
-                {
-                    _targetVertices = value.ToList();
-                    UpdatePropDisplay();
-                }
-            }
-        }
-
         #region Designer
-
         private void InitializeComponent()
         {
             label3 = new Label();
@@ -135,7 +45,7 @@ namespace System.Windows.Forms
             label3.Size = new Drawing.Size(22, 20);
             label3.TabIndex = 7;
             label3.Text = "Z: ";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
+            label3.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // numPosZ
             // 
@@ -148,7 +58,7 @@ namespace System.Windows.Forms
             numPosZ.Size = new Drawing.Size(78, 20);
             numPosZ.TabIndex = 6;
             numPosZ.Text = "0";
-            numPosZ.ValueChanged += numPosZ_TextChanged;
+            numPosZ.ValueChanged += new EventHandler(numPosZ_TextChanged);
             // 
             // label2
             // 
@@ -158,7 +68,7 @@ namespace System.Windows.Forms
             label2.Size = new Drawing.Size(22, 20);
             label2.TabIndex = 5;
             label2.Text = "Y: ";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
+            label2.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // numPosY
             // 
@@ -171,7 +81,7 @@ namespace System.Windows.Forms
             numPosY.Size = new Drawing.Size(78, 20);
             numPosY.TabIndex = 4;
             numPosY.Text = "0";
-            numPosY.ValueChanged += numPosY_TextChanged;
+            numPosY.ValueChanged += new EventHandler(numPosY_TextChanged);
             // 
             // label1
             // 
@@ -181,7 +91,7 @@ namespace System.Windows.Forms
             label1.Size = new Drawing.Size(22, 20);
             label1.TabIndex = 3;
             label1.Text = "X: ";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
+            label1.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // numPosX
             // 
@@ -194,11 +104,11 @@ namespace System.Windows.Forms
             numPosX.Size = new Drawing.Size(78, 20);
             numPosX.TabIndex = 0;
             numPosX.Text = "0";
-            numPosX.ValueChanged += numPosX_TextChanged;
+            numPosX.ValueChanged += new EventHandler(numPosX_TextChanged);
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             groupBox1.Controls.Add(numPosZ);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(numPosX);
@@ -215,7 +125,7 @@ namespace System.Windows.Forms
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             groupBox2.Controls.Add(numNormZ);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(numNormX);
@@ -241,7 +151,7 @@ namespace System.Windows.Forms
             numNormZ.Size = new Drawing.Size(78, 20);
             numNormZ.TabIndex = 6;
             numNormZ.Text = "0";
-            numNormZ.ValueChanged += numNormZ_ValueChanged;
+            numNormZ.ValueChanged += new EventHandler(numNormZ_ValueChanged);
             // 
             // label4
             // 
@@ -251,7 +161,7 @@ namespace System.Windows.Forms
             label4.Size = new Drawing.Size(22, 20);
             label4.TabIndex = 7;
             label4.Text = "Z: ";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
+            label4.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // numNormX
             // 
@@ -264,7 +174,7 @@ namespace System.Windows.Forms
             numNormX.Size = new Drawing.Size(78, 20);
             numNormX.TabIndex = 0;
             numNormX.Text = "0";
-            numNormX.ValueChanged += numNormX_ValueChanged;
+            numNormX.ValueChanged += new EventHandler(numNormX_ValueChanged);
             // 
             // label5
             // 
@@ -274,7 +184,7 @@ namespace System.Windows.Forms
             label5.Size = new Drawing.Size(22, 20);
             label5.TabIndex = 3;
             label5.Text = "X: ";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
+            label5.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
@@ -284,7 +194,7 @@ namespace System.Windows.Forms
             label6.Size = new Drawing.Size(22, 20);
             label6.TabIndex = 5;
             label6.Text = "Y: ";
-            label6.TextAlign = ContentAlignment.MiddleLeft;
+            label6.TextAlign = Drawing.ContentAlignment.MiddleLeft;
             // 
             // numNormY
             // 
@@ -297,11 +207,11 @@ namespace System.Windows.Forms
             numNormY.Size = new Drawing.Size(78, 20);
             numNormY.TabIndex = 4;
             numNormY.Text = "0";
-            numNormY.ValueChanged += numNormY_ValueChanged;
+            numNormY.ValueChanged += new EventHandler(numNormY_ValueChanged);
             // 
             // groupBox4
             // 
-            groupBox4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            groupBox4.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             groupBox4.Controls.Add(colorBox);
             groupBox4.Controls.Add(colorIndex);
             groupBox4.Location = new Drawing.Point(348, 3);
@@ -314,33 +224,31 @@ namespace System.Windows.Forms
             // 
             // colorBox
             // 
-            colorBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            colorBox.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
             colorBox.BorderStyle = BorderStyle.FixedSingle;
             colorBox.Cursor = Cursors.Hand;
             colorBox.Location = new Drawing.Point(6, 36);
             colorBox.Name = "colorBox";
             colorBox.Size = new Drawing.Size(99, 38);
             colorBox.TabIndex = 12;
-            colorBox.DoubleClick += colorBox_Click;
+            colorBox.DoubleClick += new EventHandler(colorBox_Click);
             // 
             // colorIndex
             // 
             colorIndex.DropDownStyle = ComboBoxStyle.DropDownList;
             colorIndex.FormattingEnabled = true;
-            colorIndex.Items.AddRange(new object[]
-            {
-                "Color 0",
-                "Color 1"
-            });
+            colorIndex.Items.AddRange(new object[] {
+            "Color 0",
+            "Color 1"});
             colorIndex.Location = new Drawing.Point(6, 14);
             colorIndex.Name = "colorIndex";
             colorIndex.Size = new Drawing.Size(99, 21);
             colorIndex.TabIndex = 7;
-            colorIndex.SelectedIndexChanged += colorIndex_SelectedIndexChanged;
+            colorIndex.SelectedIndexChanged += new EventHandler(colorIndex_SelectedIndexChanged);
             // 
             // btnAverage
             // 
-            btnAverage.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAverage.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             btnAverage.Enabled = false;
             btnAverage.Location = new Drawing.Point(120, 54);
             btnAverage.Name = "btnAverage";
@@ -348,11 +256,11 @@ namespace System.Windows.Forms
             btnAverage.TabIndex = 12;
             btnAverage.Text = "Average";
             btnAverage.UseVisualStyleBackColor = true;
-            btnAverage.Click += btnAverage_Click;
+            btnAverage.Click += new EventHandler(btnAverage_Click);
             // 
             // label7
             // 
-            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label7.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             label7.AutoSize = true;
             label7.Location = new Drawing.Point(120, 38);
             label7.Name = "label7";
@@ -362,7 +270,7 @@ namespace System.Windows.Forms
             // 
             // comboBox1
             // 
-            comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            comboBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Drawing.Point(98, -22);
@@ -372,7 +280,7 @@ namespace System.Windows.Forms
             // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label8.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
             label8.AutoSize = true;
             label8.Location = new Drawing.Point(6, -19);
             label8.Name = "label8";
@@ -399,13 +307,70 @@ namespace System.Windows.Forms
             groupBox4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
+
         }
 
         #endregion
 
+        public VertexEditor()
+        {
+            InitializeComponent();
+            //uvIndex.SelectedIndex = 0; 
+            colorIndex.SelectedIndex = 0;
+            _dlgColor = new GoodColorDialog();
+        }
+
+        public ModelEditorBase _mainWindow;
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int CurrentFrame
+        {
+            get => _mainWindow.CurrentFrame;
+            set => _mainWindow.CurrentFrame = value;
+        }
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IModel TargetModel
+        {
+            get => _mainWindow.TargetModel;
+            set => _mainWindow.TargetModel = value;
+        }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IBoneNode TargetBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
+
+        private Label label3;
+        public NumericInputBox numPosZ;
+        private Label label2;
+        public NumericInputBox numPosY;
+        private Label label1;
+        public NumericInputBox numPosX;
+        private int _colorIndex = 0;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        public NumericInputBox numNormZ;
+        private Label label4;
+        public NumericInputBox numNormX;
+        private Label label5;
+        private Label label6;
+        public NumericInputBox numNormY;
+        private GroupBox groupBox4;
+        private ComboBox colorIndex;
+        private Label colorBox;
+        public MDL0BoneNode _targetBone;
+
+        public bool _updating = false;
+        private Button btnAverage;
+        private Label label7;
+        private ComboBox comboBox1;
+        private Label label8;
+
+        private readonly GoodColorDialog _dlgColor;
         private void colorBox_Click(object sender, EventArgs e)
         {
-            if (TargetVertex == null) return;
+            if (TargetVertex == null)
+            {
+                return;
+            }
 
             //RGBAPixel p = TargetVertex._colors[_colorIndex];
             //_dlgColor.Color = (Color)(ARGBPixel)p;
@@ -419,6 +384,19 @@ namespace System.Windows.Forms
             //    TargetVertex._object._manager._dirty[_colorIndex + 2] = true;
             //    _mainWindow.UpdateModel();
             //}
+        }
+
+        public Vertex3 TargetVertex
+        {
+            get
+            {
+                if (_targetVertices != null && _targetVertices.Count != 0)
+                {
+                    return _targetVertices[0];
+                }
+
+                return null;
+            }
         }
 
         private void colorIndex_SelectedIndexChanged(object sender, EventArgs e)
@@ -439,29 +417,39 @@ namespace System.Windows.Forms
 
             if (_targetVertices != null && _targetVertices.Count != 0)
             {
-                if (Enabled != true) Enabled = true;
+                if (Enabled != true)
+                {
+                    Enabled = true;
+                }
             }
             else
             {
-                if (Enabled) Enabled = false;
+                if (Enabled != false)
+                {
+                    Enabled = false;
+                }
             }
 
-            var vertex = TargetVertex;
+            Vertex3 vertex = TargetVertex;
             if (vertex == null || _targetVertices.Count > 1)
             {
                 numPosX.Value = 0;
                 numPosY.Value = 0;
                 numPosZ.Value = 0;
 
-                var nonNull = vertex != null;
+                bool nonNull = vertex != null;
                 btnAverage.Enabled = groupBox1.Enabled = nonNull;
 
                 groupBox1.Text = nonNull ? "Offset" : "Position";
 
                 if (nonNull)
+                {
                     label7.Text = string.Format("{0} vertices selected", _targetVertices.Count);
+                }
                 else
+                {
                     label7.Text = "No vertices selected";
+                }
 
                 //numNormX.Value = 0;
                 //numNormY.Value = 0;
@@ -474,7 +462,7 @@ namespace System.Windows.Forms
             }
             else
             {
-                var v3 = vertex.WeightedPosition;
+                Vector3 v3 = vertex.WeightedPosition;
                 numPosX.Value = v3._x;
                 numPosY.Value = v3._y;
                 numPosZ.Value = v3._z;
@@ -501,9 +489,27 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<Vertex3> TargetVertices
+        {
+            get => _targetVertices;
+            set
+            {
+                if (_targetVertices != value)
+                {
+                    _targetVertices = value.ToList();
+                    UpdatePropDisplay();
+                }
+            }
+        }
+        public List<Vertex3> _targetVertices;
+
         private void numPosX_TextChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
             if (_targetVertices != null)
             {
@@ -515,13 +521,12 @@ namespace System.Windows.Forms
                 }
                 else
                 {
-                    foreach (var v in _targetVertices)
+                    foreach (Vertex3 v in _targetVertices)
                     {
                         v._weightedPosition._x += numPosX.Value - numPosX._previousValue;
                         v.Unweight();
                     }
                 }
-
                 _mainWindow.VertexChange(_targetVertices);
                 _mainWindow.UpdateModel();
             }
@@ -529,7 +534,10 @@ namespace System.Windows.Forms
 
         private void numPosY_TextChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
             if (_targetVertices != null)
             {
@@ -541,13 +549,12 @@ namespace System.Windows.Forms
                 }
                 else
                 {
-                    foreach (var v in _targetVertices)
+                    foreach (Vertex3 v in _targetVertices)
                     {
                         v._weightedPosition._y += numPosY.Value - numPosY._previousValue;
                         v.Unweight();
                     }
                 }
-
                 _mainWindow.VertexChange(_targetVertices);
                 _mainWindow.UpdateModel();
             }
@@ -555,7 +562,10 @@ namespace System.Windows.Forms
 
         private void numPosZ_TextChanged(object sender, EventArgs e)
         {
-            if (_updating) return;
+            if (_updating)
+            {
+                return;
+            }
 
             if (_targetVertices != null)
             {
@@ -567,13 +577,12 @@ namespace System.Windows.Forms
                 }
                 else
                 {
-                    foreach (var v in _targetVertices)
+                    foreach (Vertex3 v in _targetVertices)
                     {
                         v._weightedPosition._z += numPosZ.Value - numPosZ._previousValue;
                         v.Unweight();
                     }
                 }
-
                 _mainWindow.VertexChange(_targetVertices);
                 _mainWindow.UpdateModel();
             }
@@ -624,11 +633,17 @@ namespace System.Windows.Forms
         private void btnAverage_Click(object sender, EventArgs e)
         {
             _mainWindow.VertexChange(_targetVertices);
-            var point = new Vector3();
-            foreach (var v in _targetVertices) point += v.WeightedPosition;
+            Vector3 point = new Vector3();
+            foreach (Vertex3 v in _targetVertices)
+            {
+                point += v.WeightedPosition;
+            }
 
             point /= _targetVertices.Count;
-            foreach (var v in _targetVertices) v.WeightedPosition = point;
+            foreach (Vertex3 v in _targetVertices)
+            {
+                v.WeightedPosition = point;
+            }
 
             _mainWindow.VertexChange(_targetVertices);
             _mainWindow.UpdateModel();

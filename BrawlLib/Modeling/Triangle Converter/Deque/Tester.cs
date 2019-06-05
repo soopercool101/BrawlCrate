@@ -10,7 +10,7 @@ namespace DequeTest
         private const int ElementCount = 100;
 
         /// <summary>
-        ///     The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         private static void Main(string[] args)
@@ -42,11 +42,14 @@ namespace DequeTest
         {
             deque.Clear();
 
-            for (var i = 0; i < ElementCount; i++) deque.PushFront(i);
+            for (int i = 0; i < ElementCount; i++)
+            {
+                deque.PushFront(i);
+            }
 
             Debug.Assert(deque.Count == ElementCount);
 
-            var j = ElementCount - 1;
+            int j = ElementCount - 1;
 
             foreach (int i in deque)
             {
@@ -59,11 +62,14 @@ namespace DequeTest
         {
             deque.Clear();
 
-            for (var i = 0; i < ElementCount; i++) deque.PushBack(i);
+            for (int i = 0; i < ElementCount; i++)
+            {
+                deque.PushBack(i);
+            }
 
             Debug.Assert(deque.Count == ElementCount);
 
-            var j = 0;
+            int j = 0;
 
             foreach (int i in deque)
             {
@@ -80,9 +86,9 @@ namespace DequeTest
 
             int j;
 
-            for (var i = 0; i < ElementCount; i++)
+            for (int i = 0; i < ElementCount; i++)
             {
-                j = (int) deque.PopFront();
+                j = (int)deque.PopFront();
 
                 Debug.Assert(j == i);
             }
@@ -98,9 +104,9 @@ namespace DequeTest
 
             int j;
 
-            for (var i = 0; i < ElementCount; i++)
+            for (int i = 0; i < ElementCount; i++)
             {
-                j = (int) deque.PopBack();
+                j = (int)deque.PopBack();
 
                 Debug.Assert(j == ElementCount - 1 - i);
             }
@@ -114,7 +120,10 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            for (var i = 0; i < deque.Count; i++) Debug.Assert(deque.Contains(i));
+            for (int i = 0; i < deque.Count; i++)
+            {
+                Debug.Assert(deque.Contains(i));
+            }
 
             Debug.Assert(!deque.Contains(ElementCount));
         }
@@ -125,17 +134,23 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            var array = new int[deque.Count];
+            int[] array = new int[deque.Count];
 
             deque.CopyTo(array, 0);
 
-            foreach (int i in deque) Debug.Assert(array[i] == i);
+            foreach (int i in deque)
+            {
+                Debug.Assert(array[i] == i);
+            }
 
             array = new int[deque.Count * 2];
 
             deque.CopyTo(array, deque.Count);
 
-            foreach (int i in deque) Debug.Assert(array[i + deque.Count] == i);
+            foreach (int i in deque)
+            {
+                Debug.Assert(array[i + deque.Count] == i);
+            }
 
             array = new int[deque.Count];
 
@@ -201,10 +216,10 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            var array = deque.ToArray();
-            var i = 0;
+            object[] array = deque.ToArray();
+            int i = 0;
 
-            foreach (var obj in deque)
+            foreach (object obj in deque)
             {
                 Debug.Assert(obj.Equals(array[i]));
                 i++;
@@ -217,15 +232,15 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            var deque2 = (Deque) deque.Clone();
+            Deque deque2 = (Deque)deque.Clone();
 
             Debug.Assert(deque.Count == deque2.Count);
 
-            var d2 = deque2.GetEnumerator();
+            IEnumerator d2 = deque2.GetEnumerator();
 
             d2.MoveNext();
 
-            foreach (var obj in deque)
+            foreach (object obj in deque)
             {
                 Debug.Assert(obj.Equals(d2.Current));
 
@@ -239,11 +254,11 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            var e = deque.GetEnumerator();
+            IEnumerator e = deque.GetEnumerator();
 
             try
             {
-                var obj = e.Current;
+                object obj = e.Current;
 
                 Debug.Fail("Exception failed");
             }
@@ -254,11 +269,14 @@ namespace DequeTest
 
             try
             {
-                foreach (var obj in deque) Debug.Assert(e.MoveNext());
+                foreach (object obj in deque)
+                {
+                    Debug.Assert(e.MoveNext());
+                }
 
                 Debug.Assert(!e.MoveNext());
 
-                var o = e.Current;
+                object o = e.Current;
 
                 Debug.Fail("Exception failed");
             }
@@ -271,11 +289,14 @@ namespace DequeTest
             {
                 e.Reset();
 
-                foreach (var obj in deque) Debug.Assert(e.MoveNext());
+                foreach (object obj in deque)
+                {
+                    Debug.Assert(e.MoveNext());
+                }
 
                 Debug.Assert(!e.MoveNext());
 
-                var o = e.Current;
+                object o = e.Current;
 
                 Debug.Fail("Exception failed");
             }

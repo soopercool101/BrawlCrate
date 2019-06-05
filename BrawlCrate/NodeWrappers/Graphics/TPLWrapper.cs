@@ -1,53 +1,17 @@
-﻿using System;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.TPL)]
     public class TPLWrapper : GenericWrapper
     {
-        public TPLWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
-        public override string ExportFilter => FileFilters.TPL;
-
-        public void ImportTexture()
-        {
-            var index = Program.OpenFile(FileFilters.Images, out var path);
-            if (index == 8)
-            {
-                var t = new TPLTextureNode {Name = "Texture"};
-                _resource.AddChild(t);
-                t.Replace(path);
-
-                var w = FindResource(t, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
-            }
-            else if (index > 0)
-            {
-                using (var dlg = new TextureConverterDialog())
-                {
-                    dlg.ImageSource = path;
-                    if (dlg.ShowDialog(MainForm.Instance, Resource as TPLNode) == DialogResult.OK)
-                    {
-                        var w = FindResource(dlg.TPLTextureNode, true);
-                        w.EnsureVisible();
-                        w.TreeView.SelectedNode = w;
-                    }
-                }
-            }
-        }
-
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static TPLWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -64,35 +28,59 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        protected static void NewEntryAction(object sender, EventArgs e)
-        {
-            GetInstance<TPLWrapper>().ImportTexture();
-        }
-
+        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<TPLWrapper>().ImportTexture(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
-                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<TPLWrapper>();
+            TPLWrapper w = GetInstance<TPLWrapper>();
             _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
+
+        public TPLWrapper() { ContextMenuStrip = _menu; }
+
+        public override string ExportFilter => FileFilters.TPL;
+
+        public void ImportTexture()
+        {
+            int index = Program.OpenFile(FileFilters.Images, out string path);
+            if (index == 8)
+            {
+                TPLTextureNode t = new TPLTextureNode() { Name = "Texture" };
+                _resource.AddChild(t);
+                t.Replace(path);
+
+                BaseWrapper w = FindResource(t, true);
+                w.EnsureVisible();
+                w.TreeView.SelectedNode = w;
+            }
+            else if (index > 0)
+            {
+                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                {
+                    dlg.ImageSource = path;
+                    if (dlg.ShowDialog(MainForm.Instance, Resource as TPLNode) == DialogResult.OK)
+                    {
+                        BaseWrapper w = FindResource(dlg.TPLTextureNode, true);
+                        w.EnsureVisible();
+                        w.TreeView.SelectedNode = w;
+                    }
+                }
+            }
+        }
     }
 
     [NodeWrapper(ResourceType.TPLTexture)]
     public class TPLTextureNodeWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
-
         static TPLTextureNodeWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -109,53 +97,47 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        public TPLTextureNodeWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
-        public override string ExportFilter => FileFilters.Images;
-
-        protected static void ReEncodeAction(object sender, EventArgs e)
-        {
-            GetInstance<TPLTextureNodeWrapper>().ReEncode();
-        }
-
+        protected static void ReEncodeAction(object sender, EventArgs e) { GetInstance<TPLTextureNodeWrapper>().ReEncode(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
-                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<TPLTextureNodeWrapper>();
+            TPLTextureNodeWrapper w = GetInstance<TPLTextureNodeWrapper>();
             _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
+        public TPLTextureNodeWrapper() { ContextMenuStrip = _menu; }
+
         public void ReEncode()
         {
-            using (var dlg = new TextureConverterDialog())
+            using (TextureConverterDialog dlg = new TextureConverterDialog())
             {
                 dlg.LoadImages((Resource as TPLTextureNode).GetImage(0));
                 dlg.ShowDialog(MainForm.Instance, Resource as TPLTextureNode);
             }
         }
 
+        public override string ExportFilter => FileFilters.Images;
+
         public override void OnReplace(string inStream, int filterIndex)
         {
             if (filterIndex == 8)
+            {
                 base.OnReplace(inStream, filterIndex);
+            }
             else
-                using (var dlg = new TextureConverterDialog())
+            {
+                using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = inStream;
-                    dlg.ShowDialog(MainForm.Instance, (TPLTextureNode) _resource);
+                    dlg.ShowDialog(MainForm.Instance, (TPLTextureNode)_resource);
                 }
+            }
         }
     }
 }

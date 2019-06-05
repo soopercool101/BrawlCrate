@@ -5,11 +5,6 @@ namespace System.PowerPcAssembly
 {
     public class PPCOpCodeInfo
     {
-        public string _description;
-        public uint _id;
-
-        public string _name;
-
         public PPCOpCodeInfo(uint id, string name)
         {
             _name = name;
@@ -22,6 +17,10 @@ namespace System.PowerPcAssembly
             _description = description;
             _id = id;
         }
+
+        public string _name;
+        public string _description;
+        public uint _id;
     }
 
     public class PPCInfo
@@ -31,7 +30,6 @@ namespace System.PowerPcAssembly
         private static readonly List<PPCOpCodeInfo> info7C = new List<PPCOpCodeInfo>();
 
         #region OpCode Info Initialization
-
         static PPCInfo()
         {
             #region Regular
@@ -110,10 +108,8 @@ namespace System.PowerPcAssembly
 
             #region 0x4C
 
-            info4C.Add(new PPCOpCodeInfo(0x020, "blr",
-                "Branch on Link Register: returns to the address stored in the link register. Used to end subroutines."));
-            info4C.Add(new PPCOpCodeInfo(0x420, "bctr",
-                "Branch on Counter Register: returns to the address stored in the counter register."));
+            info4C.Add(new PPCOpCodeInfo(0x020, "blr", "Branch on Link Register: returns to the address stored in the link register. Used to end subroutines."));
+            info4C.Add(new PPCOpCodeInfo(0x420, "bctr", "Branch on Counter Register: returns to the address stored in the counter register."));
 
             #endregion
 
@@ -121,13 +117,11 @@ namespace System.PowerPcAssembly
 
             info7C.Add(new PPCOpCodeInfo(0x194, "addze", "Add to Zero Extended"));
             info7C.Add(new PPCOpCodeInfo(0x1D4, "addme", "Add to Negative One Extended"));
-            info7C.Add(new PPCOpCodeInfo(0x2A6, "mfspr",
-                "Move From Special Register: moves a special register value to a register."));
+            info7C.Add(new PPCOpCodeInfo(0x2A6, "mfspr", "Move From Special Register: moves a special register value to a register."));
             info7C.Add(new PPCOpCodeInfo(0x278, "xor", "Bit-wise Exclusive OR"));
             info7C.Add(new PPCOpCodeInfo(0x378, "or", "Bit-wise OR"));
             info7C.Add(new PPCOpCodeInfo(0x378, "mr", "Move Register: moves data from register to register."));
-            info7C.Add(new PPCOpCodeInfo(0x3A6, "mtspr",
-                "Move To Special Register: moves a register value to a special register."));
+            info7C.Add(new PPCOpCodeInfo(0x3A6, "mtspr", "Move To Special Register: moves a register value to a special register."));
             info7C.Add(new PPCOpCodeInfo(0x734, "extsh"));
             info7C.Add(new PPCOpCodeInfo(0x734, "extsh."));
             info7C.Add(new PPCOpCodeInfo(0x774, "extsb"));
@@ -407,7 +401,6 @@ namespace System.PowerPcAssembly
 
             #endregion
         }
-
         #endregion
 
         //public const uint abs = new ppcId(31, 360);
@@ -676,39 +669,44 @@ namespace System.PowerPcAssembly
 
         public static List<PPCOpCodeInfo> InfoFor(uint value)
         {
-            var result = new List<PPCOpCodeInfo>();
-            var search = info;
+            List<PPCOpCodeInfo> result = new List<PPCOpCodeInfo>();
+            List<PPCOpCodeInfo> search = info;
 
             uint compare = 0xFC;
-            var shift = 24;
+            int shift = 24;
 
-            if ((value & 0xFC000000) == (uint) PPCMnemonic.grp4C)
+            if ((value & 0xFC000000) == (uint)PPCMnemonic.grp4C)
             {
                 search = info4C;
                 compare = 0x7FE;
                 shift = 0;
             }
 
-            if ((value & 0xFC000000) == (uint) PPCMnemonic.grp7C)
+            if ((value & 0xFC000000) == (uint)PPCMnemonic.grp7C)
             {
                 search = info7C;
                 compare = 0x7FE;
                 shift = 0;
             }
 
-            var found = false;
-            for (var i = 0; i < search.Count; i++)
+            bool found = false;
+            for (int i = 0; i < search.Count; i++)
+            {
                 if (((value >> shift) & compare) == search[i]._id)
                 {
                     result.Add(search[i]);
                     found = true;
                 }
-                else if (found)
+                else if (found == true)
                 {
                     break;
                 }
+            }
 
-            if (result.Count == 0) result.Add(info[0]);
+            if (result.Count == 0)
+            {
+                result.Add(info[0]);
+            }
 
             return result;
         }
@@ -730,10 +728,7 @@ namespace System.PowerPcAssembly
 
         //1111 1100 0000 0000 0000 0000 0000 0000 Primary Op Code
 
-        public PPCID()
-        {
-        }
-
+        public PPCID() { }
         public PPCID(uint primaryOp)
         {
             _mask = (primaryOp & 0x3F) << 26;
@@ -749,24 +744,20 @@ namespace System.PowerPcAssembly
         public PPCID(uint primaryOp, string secondaryBinary)
         {
             _mask = (primaryOp & 0x3F) << 26;
-            var i = 0;
-            foreach (var c in secondaryBinary)
+            int i = 0;
+            foreach (char c in secondaryBinary)
             {
-                if (c == '1') _mask |= 1u << i;
+                if (c == '1')
+                {
+                    _mask |= (1u << i);
+                }
 
                 i++;
             }
         }
 
-        public static implicit operator uint(PPCID o)
-        {
-            return o._mask;
-        }
-
-        public static implicit operator PPCID(uint u)
-        {
-            return new PPCID {_mask = u};
-        }
+        public static implicit operator uint(PPCID o) { return o._mask; }
+        public static implicit operator PPCID(uint u) { return new PPCID() { _mask = u }; }
     }
 
     public enum PPCMnemonic : uint
@@ -796,7 +787,6 @@ namespace System.PowerPcAssembly
         bla = 0x48000003,
 
         #region 0x4C
-
         grp4C = 0x4C000000,
 
         mcrf = 0x4C000000,
@@ -812,7 +802,6 @@ namespace System.PowerPcAssembly
         crorc = 0x4C000342,
         cror = 0x4C000382,
         bcctr = 0x4C000420, //bcctrl
-
         #endregion
 
         rlwimi = 0x50000000, //rlwimi.
@@ -833,7 +822,6 @@ namespace System.PowerPcAssembly
         rldicl = 0x78000000,
 
         #region 0x7C
-
         grp7C = 0x7C000000,
 
         cmp = 0x7C000000,
@@ -859,6 +847,7 @@ namespace System.PowerPcAssembly
 
         cntlzw = 0x7C000034, //cntlzw.
         cntlzw_D = 0x7C000035,
+
 
 
         cmplw = 0x7C000040,
@@ -959,6 +948,6 @@ namespace System.PowerPcAssembly
         stfdu = 0xDC000000,
         ld = 0xE8000000,
         std = 0xF8000000,
-        fcmpu = 0xFC000000
+        fcmpu = 0xFC000000,
     }
 }

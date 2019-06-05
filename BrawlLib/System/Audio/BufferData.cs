@@ -32,32 +32,32 @@
 
         public void Fill(IAudioStream stream, bool loop)
         {
-            var blockAlign = stream.BitsPerSample * stream.Channels / 8;
-            var samplePos = stream.SamplePosition;
-            var sampleCount = _sampleLength;
+            int blockAlign = stream.BitsPerSample * stream.Channels / 8;
+            int samplePos = stream.SamplePosition;
+            int sampleCount = _sampleLength;
             int samplesRead;
-            var end = false;
+            bool end = false;
 
             loop = loop && stream.IsLooping;
-            var lastSample = loop ? stream.LoopEndSample : stream.Samples;
+            int lastSample = loop ? stream.LoopEndSample : stream.Samples;
 
             VoidPtr blockAddr = _part1Address;
-            var blockRemaining = _part1Samples;
+            int blockRemaining = _part1Samples;
 
             while (sampleCount > 0)
             {
                 //Get current block sample count
-                var blockSamples = Math.Min(blockRemaining, sampleCount);
+                int blockSamples = Math.Min(blockRemaining, sampleCount);
 
                 //Fill zeros
                 if (end)
                 {
-                    Memory.Fill(blockAddr, (uint) (blockSamples * blockAlign), 0);
+                    Memory.Fill(blockAddr, (uint)(blockSamples * blockAlign), 0);
                 }
                 else
                 {
                     //Do we extend within last sample range?
-                    if (samplePos <= lastSample && lastSample < samplePos + blockSamples)
+                    if ((samplePos <= lastSample) && (lastSample < (samplePos + blockSamples)))
                     {
                         blockSamples = lastSample - samplePos;
                         end = true;
@@ -79,7 +79,6 @@
                             samplePos = -1;
                             break;
                         }
-
                         samplePos = stream.SamplePosition;
                         end = false;
                     }

@@ -1,5 +1,4 @@
 #region .NET Disclaimer/Info
-
 //===============================================================================
 //
 // gOODiDEA, uland.com
@@ -12,11 +11,9 @@
 // $History:		$  
 //  
 //===============================================================================
-
-#endregion
+#endregion 
 
 #region Java
-
 /**
  * Class GifDecoder - Decodes a GIF file into one or more frames.
  * <br><pre>
@@ -38,9 +35,7 @@
  * @version 1.03 November 2003
  *
  */
-
 #endregion
-
 using System;
 using System.Collections;
 using System.Drawing;
@@ -51,6 +46,7 @@ namespace Gif.Components
 {
     public class GifDecoder
     {
+
         /**
 		 * File read status: No errors.
 		 */
@@ -66,61 +62,67 @@ namespace Gif.Components
 		 */
         public static readonly int STATUS_OPEN_ERROR = 2;
 
-        protected static readonly int MaxStackSize = 4096;
-        protected int[] act; // active color table
-        protected int bgColor; // background color
+        protected Stream inStream;
+        protected int status;
 
-        protected int bgIndex; // background color index
-        protected Bitmap bitmap;
-
-        protected byte[] block = new byte[256]; // current data block
-        protected int blockSize; // block size
-        protected int delay; // delay in milliseconds
-
-        // last graphic control extension info
-        protected int dispose;
-        protected int frameCount, currentFrame;
-
-        protected ArrayList frames; // frames read from current file
-
-        protected int[] gct; // global color table
+        protected int width; // full image width
+        protected int height; // full image height
         protected bool gctFlag; // global color table used
         protected int gctSize; // size of global color table
-        protected int height; // full image height
-        protected Image image; // current frame
-
-        protected Stream inStream;
-        protected bool interlace; // interlace flag
-
-        protected int ix, iy, iw, ih; // current image rectangle
-
-        protected int lastBgColor; // previous bg color
-
-        // 0=no action; 1=leave in place; 2=restore to bg; 3=restore to prev
-        protected int lastDispose;
-        protected Image lastImage; // previous frame
-        protected Rectangle lastRect; // last image rect
-        protected int[] lct; // local color table
-
-        protected bool lctFlag; // local color table flag
-        protected int lctSize; // local color table size
         protected int loopCount = 1; // iterations; 0 = repeat forever
 
-        private Form owner;
-        protected int pixelAspect; // pixel aspect ratio
-        protected byte[] pixels;
+        protected int[] gct; // global color table
+        protected int[] lct; // local color table
+        protected int[] act; // active color table
 
-        protected byte[] pixelStack;
+        protected int bgIndex; // background color index
+        protected int bgColor; // background color
+        protected int lastBgColor; // previous bg color
+        protected int pixelAspect; // pixel aspect ratio
+
+        protected bool lctFlag; // local color table flag
+        protected bool interlace; // interlace flag
+        protected int lctSize; // local color table size
+
+        protected int ix, iy, iw, ih; // current image rectangle
+        protected Rectangle lastRect; // last image rect
+        protected Image image; // current frame
+        protected Bitmap bitmap;
+        protected Image lastImage; // previous frame
+
+        protected byte[] block = new byte[256]; // current data block
+        protected int blockSize = 0; // block size
+
+        // last graphic control extension info
+        protected int dispose = 0;
+        // 0=no action; 1=leave in place; 2=restore to bg; 3=restore to prev
+        protected int lastDispose = 0;
+        protected bool transparency = false; // use transparent color
+        protected int delay = 0; // delay in milliseconds
+        protected int transIndex; // transparent color index
+
+        protected static readonly int MaxStackSize = 4096;
         // max decoder pixel stack size
 
         // LZW decoder working arrays
         protected short[] prefix;
-        protected int status;
         protected byte[] suffix;
-        protected int transIndex; // transparent color index
-        protected bool transparency; // use transparent color
+        protected byte[] pixelStack;
+        protected byte[] pixels;
 
-        protected int width; // full image width
+        protected ArrayList frames; // frames read from current file
+        protected int frameCount, currentFrame;
+
+        public class GifFrame
+        {
+            public GifFrame(Image im, int del)
+            {
+                image = im;
+                delay = del;
+            }
+            public Image image;
+            public int delay;
+        }
 
         /**
 		 * Gets display duration for specified frame.
@@ -132,7 +134,10 @@ namespace Gif.Components
         {
             //
             delay = -1;
-            if (n >= 0 && n < frameCount) delay = ((GifFrame) frames[n]).delay;
+            if ((n >= 0) && (n < frameCount))
+            {
+                delay = ((GifFrame)frames[n]).delay;
+            }
             return delay;
         }
 
@@ -172,31 +177,34 @@ namespace Gif.Components
 		 */
         private int[] GetPixels(Bitmap bitmap)
         {
-            var pixels = new int[3 * image.Width * image.Height];
-            var count = 0;
-            for (var th = 0; th < image.Height; th++)
-            for (var tw = 0; tw < image.Width; tw++)
+            int[] pixels = new int[3 * image.Width * image.Height];
+            int count = 0;
+            for (int th = 0; th < image.Height; th++)
             {
-                var color = bitmap.GetPixel(tw, th);
-                pixels[count] = color.R;
-                count++;
-                pixels[count] = color.G;
-                count++;
-                pixels[count] = color.B;
-                count++;
+                for (int tw = 0; tw < image.Width; tw++)
+                {
+                    Color color = bitmap.GetPixel(tw, th);
+                    pixels[count] = color.R;
+                    count++;
+                    pixels[count] = color.G;
+                    count++;
+                    pixels[count] = color.B;
+                    count++;
+                }
             }
-
             return pixels;
         }
 
         private void SetPixels(int[] pixels)
         {
-            var count = 0;
-            for (var th = 0; th < image.Height; th++)
-            for (var tw = 0; tw < image.Width; tw++)
+            int count = 0;
+            for (int th = 0; th < image.Height; th++)
             {
-                var color = Color.FromArgb(pixels[count++]);
-                bitmap.SetPixel(tw, th, color);
+                for (int tw = 0; tw < image.Width; tw++)
+                {
+                    Color color = Color.FromArgb(pixels[count++]);
+                    bitmap.SetPixel(tw, th, color);
+                }
             }
         }
 
@@ -205,7 +213,7 @@ namespace Gif.Components
             // expose destination image's pixels as int array
             //		int[] dest =
             //			(( int ) image.getRaster().getDataBuffer()).getData();
-            var dest = GetPixels(bitmap);
+            int[] dest = GetPixels(bitmap);
 
             // fill in starting image contents based on last image's dispose code
             if (lastDispose > 0)
@@ -213,31 +221,39 @@ namespace Gif.Components
                 if (lastDispose == 3)
                 {
                     // use image before last
-                    var n = currentFrame - 2;
+                    int n = currentFrame - 2;
                     if (n > 0)
+                    {
                         lastImage = GetFrame(n - 1);
+                    }
                     else
+                    {
                         lastImage = null;
+                    }
                 }
 
                 if (lastImage != null)
                 {
                     //				int[] prev =
                     //					((DataBufferInt) lastImage.getRaster().getDataBuffer()).getData();
-                    var prev = GetPixels(new Bitmap(lastImage));
+                    int[] prev = GetPixels(new Bitmap(lastImage));
                     Array.Copy(prev, 0, dest, 0, width * height);
                     // copy pixels
 
                     if (lastDispose == 2)
                     {
                         // fill last image rect area with background color
-                        var g = Graphics.FromImage(image);
-                        var c = Color.Empty;
+                        Graphics g = Graphics.FromImage(image);
+                        Color c = Color.Empty;
                         if (transparency)
-                            c = Color.FromArgb(0, 0, 0, 0); // assume background is transparent
+                        {
+                            c = Color.FromArgb(0, 0, 0, 0);     // assume background is transparent
+                        }
                         else
+                        {
                             c = Color.FromArgb(lastBgColor);
-                        //						c = new Color(lastBgColor); // use given background color
+                            //						c = new Color(lastBgColor); // use given background color
+                        }
                         Brush brush = new SolidBrush(c);
                         g.FillRectangle(brush, lastRect);
                         brush.Dispose();
@@ -247,12 +263,12 @@ namespace Gif.Components
             }
 
             // copy each source line to the appropriate place in the destination
-            var pass = 1;
-            var inc = 8;
-            var iline = 0;
-            for (var i = 0; i < ih; i++)
+            int pass = 1;
+            int inc = 8;
+            int iline = 0;
+            for (int i = 0; i < ih; i++)
             {
-                var line = i;
+                int line = i;
                 if (interlace)
                 {
                     if (iline >= ih)
@@ -273,30 +289,33 @@ namespace Gif.Components
                                 break;
                         }
                     }
-
                     line = iline;
                     iline += inc;
                 }
-
                 line += iy;
                 if (line < height)
                 {
-                    var k = line * width;
-                    var dx = k + ix; // start of line in dest
-                    var dlim = dx + iw; // end of dest line
-                    if (k + width < dlim) dlim = k + width; // past dest edge
-                    var sx = i * iw; // start of line in source
+                    int k = line * width;
+                    int dx = k + ix; // start of line in dest
+                    int dlim = dx + iw; // end of dest line
+                    if ((k + width) < dlim)
+                    {
+                        dlim = k + width; // past dest edge
+                    }
+                    int sx = i * iw; // start of line in source
                     while (dx < dlim)
                     {
                         // map color and insert in destination
-                        var index = pixels[sx++] & 0xff;
-                        var c = act[index];
-                        if (c != 0) dest[dx] = c;
+                        int index = pixels[sx++] & 0xff;
+                        int c = act[index];
+                        if (c != 0)
+                        {
+                            dest[dx] = c;
+                        }
                         dx++;
                     }
                 }
             }
-
             SetPixels(dest);
         }
 
@@ -308,7 +327,10 @@ namespace Gif.Components
         public Image GetFrame(int n)
         {
             Image im = null;
-            if (n >= 0 && n < frameCount) im = ((GifFrame) frames[n]).image;
+            if ((n >= 0) && (n < frameCount))
+            {
+                im = ((GifFrame)frames[n]).image;
+            }
             return im;
         }
 
@@ -338,16 +360,17 @@ namespace Gif.Components
                 if (!Error())
                 {
                     ReadContents();
-                    if (currentFrame < 0 || frameCount < 0) status = STATUS_FORMAT_ERROR;
+                    if (currentFrame < 0 || frameCount < 0)
+                    {
+                        status = STATUS_FORMAT_ERROR;
+                    }
                 }
-
                 inStream.Close();
             }
             else
             {
                 status = STATUS_OPEN_ERROR;
             }
-
             return status;
         }
 
@@ -377,12 +400,13 @@ namespace Gif.Components
 
         protected void SkipImageData()
         {
-            var data_size = Read();
-            var count = 0;
+            int data_size = Read();
+            int count = 0;
             do
             {
                 count = ReadBlock();
-            } while (count > 0);
+            }
+            while (count > 0);
         }
 
         /**
@@ -391,8 +415,8 @@ namespace Gif.Components
 		 */
         protected void DecodeImageData()
         {
-            var NullCode = -1;
-            var npix = iw * ih;
+            int NullCode = -1;
+            int npix = iw * ih;
             int available,
                 clear,
                 code_mask,
@@ -411,12 +435,24 @@ namespace Gif.Components
                 bi,
                 pi;
 
-            if (pixels == null || pixels.Length < npix) pixels = new byte[npix]; // allocate new pixel array
-            if (prefix == null) prefix = new short[MaxStackSize];
+            if ((pixels == null) || (pixels.Length < npix))
+            {
+                pixels = new byte[npix]; // allocate new pixel array
+            }
+            if (prefix == null)
+            {
+                prefix = new short[MaxStackSize];
+            }
 
-            if (suffix == null) suffix = new byte[MaxStackSize];
+            if (suffix == null)
+            {
+                suffix = new byte[MaxStackSize];
+            }
 
-            if (pixelStack == null) pixelStack = new byte[MaxStackSize + 1];
+            if (pixelStack == null)
+            {
+                pixelStack = new byte[MaxStackSize + 1];
+            }
 
             //  Initialize GIF data stream decoder.
 
@@ -430,7 +466,7 @@ namespace Gif.Components
             for (code = 0; code < clear; code++)
             {
                 prefix[code] = 0;
-                suffix[code] = (byte) code;
+                suffix[code] = (byte)code;
             }
 
             //  Decode GIF pixel stream.
@@ -448,11 +484,13 @@ namespace Gif.Components
                         {
                             // Read a new data block.
                             count = ReadBlock();
-                            if (count <= 0) break;
+                            if (count <= 0)
+                            {
+                                break;
+                            }
 
                             bi = 0;
                         }
-
                         datum += (block[bi] & 0xff) << bits;
                         bits += 8;
                         bi++;
@@ -468,7 +506,10 @@ namespace Gif.Components
 
                     //  Interpret the code
 
-                    if (code > available || code == end_of_information) break;
+                    if ((code > available) || (code == end_of_information))
+                    {
+                        break;
+                    }
 
                     if (code == clear)
                     {
@@ -479,7 +520,6 @@ namespace Gif.Components
                         old_code = NullCode;
                         continue;
                     }
-
                     if (old_code == NullCode)
                     {
                         pixelStack[top++] = suffix[code];
@@ -487,37 +527,36 @@ namespace Gif.Components
                         first = code;
                         continue;
                     }
-
                     in_code = code;
                     if (code == available)
                     {
-                        pixelStack[top++] = (byte) first;
+                        pixelStack[top++] = (byte)first;
                         code = old_code;
                     }
-
                     while (code > clear)
                     {
                         pixelStack[top++] = suffix[code];
                         code = prefix[code];
                     }
-
                     first = suffix[code] & 0xff;
 
                     //  Add a new string to the string table,
 
-                    if (available >= MaxStackSize) break;
+                    if (available >= MaxStackSize)
+                    {
+                        break;
+                    }
 
-                    pixelStack[top++] = (byte) first;
-                    prefix[available] = (short) old_code;
-                    suffix[available] = (byte) first;
+                    pixelStack[top++] = (byte)first;
+                    prefix[available] = (short)old_code;
+                    suffix[available] = (byte)first;
                     available++;
-                    if ((available & code_mask) == 0
-                        && available < MaxStackSize)
+                    if (((available & code_mask) == 0)
+                        && (available < MaxStackSize))
                     {
                         code_size++;
                         code_mask += available;
                     }
-
                     old_code = in_code;
                 }
 
@@ -528,7 +567,10 @@ namespace Gif.Components
                 i++;
             }
 
-            for (i = pi; i < npix; i++) pixels[i] = 0; // clear missing pixels
+            for (i = pi; i < npix; i++)
+            {
+                pixels[i] = 0; // clear missing pixels
+            }
         }
 
         /**
@@ -557,7 +599,7 @@ namespace Gif.Components
 		 */
         protected int Read()
         {
-            var curByte = 0;
+            int curByte = 0;
             try
             {
                 curByte = inStream.ReadByte();
@@ -566,7 +608,6 @@ namespace Gif.Components
             {
                 status = STATUS_FORMAT_ERROR;
             }
-
             return curByte;
         }
 
@@ -578,16 +619,19 @@ namespace Gif.Components
         protected int ReadBlock()
         {
             blockSize = Read();
-            var n = 0;
+            int n = 0;
             if (blockSize > 0)
             {
                 try
                 {
-                    var count = 0;
+                    int count = 0;
                     while (n < blockSize)
                     {
                         count = inStream.Read(block, n, blockSize - n);
-                        if (count == -1) break;
+                        if (count == -1)
+                        {
+                            break;
+                        }
 
                         n += count;
                     }
@@ -596,9 +640,11 @@ namespace Gif.Components
                 {
                 }
 
-                if (n < blockSize) status = STATUS_FORMAT_ERROR;
+                if (n < blockSize)
+                {
+                    status = STATUS_FORMAT_ERROR;
+                }
             }
-
             return n;
         }
 
@@ -610,10 +656,10 @@ namespace Gif.Components
 		 */
         protected int[] ReadColorTable(int ncolors)
         {
-            var nbytes = 3 * ncolors;
+            int nbytes = 3 * ncolors;
             int[] tab = null;
-            var c = new byte[nbytes];
-            var n = 0;
+            byte[] c = new byte[nbytes];
+            int n = 0;
             try
             {
                 n = inStream.Read(c, 0, c.Length);
@@ -621,7 +667,6 @@ namespace Gif.Components
             catch (IOException)
             {
             }
-
             if (n < nbytes)
             {
                 status = STATUS_FORMAT_ERROR;
@@ -629,35 +674,36 @@ namespace Gif.Components
             else
             {
                 tab = new int[256]; // max size to avoid bounds checks
-                var i = 0;
-                var j = 0;
+                int i = 0;
+                int j = 0;
                 while (i < ncolors)
                 {
-                    var r = (uint) (c[j++] & 0xff);
-                    var g = (uint) (c[j++] & 0xff);
-                    var b = (uint) (c[j++] & 0xff);
-                    tab[i++] = (int) (0xff000000 | (r << 16) | (g << 8) | b);
+                    uint r = (uint)(c[j++] & 0xff);
+                    uint g = (uint)(c[j++] & 0xff);
+                    uint b = (uint)(c[j++] & 0xff);
+                    tab[i++] = (int)(0xff000000 | (r << 16) | (g << 8) | b);
                 }
             }
-
             return tab;
         }
+
+        private Form owner = null;
 
         /**
 		 * Main file parser.  Reads GIF content blocks.
 		 */
         protected void ReadContents()
         {
-            var offset = inStream.Position;
+            long offset = inStream.Position;
 
             //Scan through file and get the frame count
             frameCount = 0;
 
             // read GIF file content blocks
-            var done = false;
+            bool done = false;
             while (!(done || Error()))
             {
-                var code = Read();
+                int code = Read();
                 switch (code)
                 {
                     case 0x2C: // image separator
@@ -673,19 +719,25 @@ namespace Gif.Components
                                 break;
                             case 0xff: // application extension
                                 ReadBlock();
-                                var app = "";
-                                for (var i = 0; i < 11; i++) app += (char) block[i];
+                                string app = "";
+                                for (int i = 0; i < 11; i++)
+                                {
+                                    app += (char)block[i];
+                                }
                                 if (app.Equals("NETSCAPE2.0"))
+                                {
                                     ReadNetscapeExt();
+                                }
                                 else
+                                {
                                     Skip(); // don't care
+                                }
 
                                 break;
                             default:
                                 Skip();
                                 break;
                         }
-
                         break;
                     case 0x3b:
                         done = true;
@@ -700,13 +752,13 @@ namespace Gif.Components
 
             inStream.Position = offset;
 
-            using (var p = new ProgressWindow(owner, "Decoding Image...", "Reading file, please wait...", false))
+            using (ProgressWindow p = new ProgressWindow(owner, "Decoding Image...", "Reading file, please wait...", false))
             {
                 p.Begin(0, frameCount, 0);
                 done = false;
                 while (!(done || Error()))
                 {
-                    var code = Read();
+                    int code = Read();
                     switch (code)
                     {
                         case 0x2C: // image separator
@@ -724,12 +776,19 @@ namespace Gif.Components
 
                                 case 0xff: // application extension
                                     ReadBlock();
-                                    var app = "";
-                                    for (var i = 0; i < 11; i++) app += (char) block[i];
+                                    string app = "";
+                                    for (int i = 0; i < 11; i++)
+                                    {
+                                        app += (char)block[i];
+                                    }
                                     if (app.Equals("NETSCAPE2.0"))
+                                    {
                                         ReadNetscapeExt();
+                                    }
                                     else
+                                    {
                                         Skip(); // don't care
+                                    }
 
                                     break;
 
@@ -737,7 +796,6 @@ namespace Gif.Components
                                     Skip();
                                     break;
                             }
-
                             break;
 
                         case 0x3b: // terminator
@@ -752,7 +810,6 @@ namespace Gif.Components
                             break;
                     }
                 }
-
                 p.Finish();
             }
         }
@@ -763,9 +820,12 @@ namespace Gif.Components
         protected void ReadGraphicControlExt()
         {
             Read(); // block size
-            var packed = Read(); // packed fields
+            int packed = Read(); // packed fields
             dispose = (packed & 0x1c) >> 2; // disposal method
-            if (dispose == 0) dispose = 1; // elect to keep old image if discretionary
+            if (dispose == 0)
+            {
+                dispose = 1; // elect to keep old image if discretionary
+            }
             transparency = (packed & 1) != 0;
             delay = ReadShort() * 10; // delay in milliseconds
             transIndex = Read(); // transparent color index
@@ -777,8 +837,11 @@ namespace Gif.Components
 		 */
         protected void ReadHeader()
         {
-            var id = "";
-            for (var i = 0; i < 6; i++) id += (char) Read();
+            string id = "";
+            for (int i = 0; i < 6; i++)
+            {
+                id += (char)Read();
+            }
             if (!id.StartsWith("GIF"))
             {
                 status = STATUS_FORMAT_ERROR;
@@ -796,10 +859,13 @@ namespace Gif.Components
         protected void SkipImage()
         {
             inStream.Seek(8, SeekOrigin.Current);
-            var packed = Read();
+            int packed = Read();
             lctFlag = (packed & 0x80) != 0;
             lctSize = 2 << (packed & 7);
-            if (lctFlag) inStream.Seek(lctSize * 3, SeekOrigin.Current);
+            if (lctFlag)
+            {
+                inStream.Seek(lctSize * 3, SeekOrigin.Current);
+            }
 
             DecodeImageData();
             Skip();
@@ -815,11 +881,11 @@ namespace Gif.Components
             iw = ReadShort();
             ih = ReadShort();
 
-            var packed = Read();
+            int packed = Read();
             lctFlag = (packed & 0x80) != 0; // 1 - local color table flag
             interlace = (packed & 0x40) != 0; // 2 - interlace flag
-            // 3 - sort flag
-            // 4-5 - reserved
+                                              // 3 - sort flag
+                                              // 4-5 - reserved
             lctSize = 2 << (packed & 7); // 6-8 - local color table size
 
             if (lctFlag)
@@ -830,24 +896,35 @@ namespace Gif.Components
             else
             {
                 act = gct; // make global table active
-                if (bgIndex == transIndex) bgColor = 0;
+                if (bgIndex == transIndex)
+                {
+                    bgColor = 0;
+                }
             }
-
-            var save = 0;
+            int save = 0;
             if (transparency)
             {
                 save = act[transIndex];
                 act[transIndex] = 0; // set transparent color if specified
             }
 
-            if (act == null) status = STATUS_FORMAT_ERROR; // no color table defined
+            if (act == null)
+            {
+                status = STATUS_FORMAT_ERROR; // no color table defined
+            }
 
-            if (Error()) return;
+            if (Error())
+            {
+                return;
+            }
 
             DecodeImageData(); // decode pixel data
             Skip();
 
-            if (Error()) return;
+            if (Error())
+            {
+                return;
+            }
 
             currentFrame++;
 
@@ -861,8 +938,12 @@ namespace Gif.Components
 
             frames.Add(new GifFrame(bitmap, delay)); // add image to frame list
 
-            if (transparency) act[transIndex] = save;
+            if (transparency)
+            {
+                act[transIndex] = save;
+            }
             ResetFrame();
+
         }
 
         /**
@@ -870,15 +951,16 @@ namespace Gif.Components
 		 */
         protected void ReadLSD()
         {
+
             // logical screen size
             width = ReadShort();
             height = ReadShort();
 
             // packed fields
-            var packed = Read();
+            int packed = Read();
             gctFlag = (packed & 0x80) != 0; // 1   : global color table flag
-            // 2-4 : color resolution
-            // 5   : gct sort flag
+                                            // 2-4 : color resolution
+                                            // 5   : gct sort flag
             gctSize = 2 << (packed & 7); // 6-8 : gct size
 
             bgIndex = Read(); // background color index
@@ -896,11 +978,11 @@ namespace Gif.Components
                 if (block[0] == 1)
                 {
                     // loop count sub-block
-                    var b1 = block[1] & 0xff;
-                    var b2 = block[2] & 0xff;
+                    int b1 = block[1] & 0xff;
+                    int b2 = block[2] & 0xff;
                     loopCount = (b2 << 8) | b1;
                 }
-            } while (blockSize > 0 && !Error());
+            } while ((blockSize > 0) && !Error());
         }
 
         /**
@@ -936,19 +1018,7 @@ namespace Gif.Components
             do
             {
                 ReadBlock();
-            } while (blockSize > 0 && !Error());
-        }
-
-        public class GifFrame
-        {
-            public int delay;
-            public Image image;
-
-            public GifFrame(Image im, int del)
-            {
-                image = im;
-                delay = del;
-            }
+            } while ((blockSize > 0) && !Error());
         }
     }
 }

@@ -1,24 +1,20 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     internal sealed class NodeWrapperAttribute : Attribute
     {
+        private readonly ResourceType _type;
+        public NodeWrapperAttribute(ResourceType type) { _type = type; }
+        public ResourceType WrappedType => _type;
+
         private static Dictionary<ResourceType, Type> _wrappers;
-
-        public NodeWrapperAttribute(ResourceType type)
-        {
-            WrappedType = type;
-        }
-
-        public ResourceType WrappedType { get; }
-
         public static Dictionary<ResourceType, Type> Wrappers
         {
             get
@@ -26,39 +22,33 @@ namespace BrawlCrate.NodeWrappers
                 if (_wrappers == null)
                 {
                     _wrappers = new Dictionary<ResourceType, Type>();
-                    foreach (var t in Assembly.GetExecutingAssembly().GetTypes())
-                    foreach (NodeWrapperAttribute attr in t.GetCustomAttributes(typeof(NodeWrapperAttribute), true))
-                        _wrappers[attr.WrappedType] = t;
+                    foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
+                    {
+                        foreach (NodeWrapperAttribute attr in t.GetCustomAttributes(typeof(NodeWrapperAttribute), true))
+                        {
+                            _wrappers[attr._type] = t;
+                        }
+                    }
                 }
-
                 return _wrappers;
             }
         }
     }
-
     [Serializable]
     public abstract class BaseWrapper : TreeNode
     {
         protected static readonly ContextMenuStrip _emptyMenu = new ContextMenuStrip();
 
-        public static IWin32Window _owner;
-
-        protected bool _discovered;
+        protected bool _discovered = false;
 
         protected ResourceNode _resource;
-
         public ResourceNode Resource => _resource;
+
+        protected BaseWrapper() { }
         //protected BaseWrapper(ResourceNode resourceNode) { Link(resourceNode); }
 
-        protected static T GetInstance<T>() where T : BaseWrapper
-        {
-            return MainForm.Instance.resourceTree.SelectedNode as T;
-        }
-
-        protected static IEnumerable<T> GetInstances<T>() where T : BaseWrapper
-        {
-            return MainForm.Instance.resourceTree.SelectedNodes.Select(n => n as T).Where(n => n != null);
-        }
+        protected static T GetInstance<T>() where T : BaseWrapper { return MainForm.Instance.resourceTree.SelectedNode as T; }
+        protected static IEnumerable<T> GetInstances<T>() where T : BaseWrapper { return MainForm.Instance.resourceTree.SelectedNodes.Select(n => n as T).Where(n => n != null); }
 
         public void Link(ResourceNode res)
         {
@@ -66,16 +56,17 @@ namespace BrawlCrate.NodeWrappers
             if (res != null)
             {
                 Text = res.Name;
-                var nodes = Nodes;
+                TreeNodeCollection nodes = Nodes;
 
                 //Should we continue down the tree?
-                if (IsExpanded && res.HasChildren)
+                if ((IsExpanded) && (res.HasChildren))
                 {
                     //Add/link each resource node
-                    foreach (var n in res.Children)
+                    foreach (ResourceNode n in res.Children)
                     {
-                        var found = false;
+                        bool found = false;
                         foreach (BaseWrapper tn in nodes)
+                        {
                             if (tn.Text == n.Name)
                             {
                                 tn.Link(n);
@@ -85,18 +76,26 @@ namespace BrawlCrate.NodeWrappers
                                 nodes.Add(tn);
                                 break;
                             }
+                        }
 
-                        if (!found) nodes.Add(Wrap(_owner, n));
+                        if (!found)
+                        {
+                            nodes.Add(Wrap(_owner, n));
+                        }
                     }
 
                     //Remove empty nodes
-                    for (var i = 0; i < nodes.Count;)
+                    for (int i = 0; i < nodes.Count;)
                     {
-                        var n = nodes[i] as BaseWrapper;
+                        BaseWrapper n = nodes[i] as BaseWrapper;
                         if (n._resource == null)
+                        {
                             n.Remove();
+                        }
                         else
+                        {
                             i++;
+                        }
                     }
 
                     _discovered = true;
@@ -117,7 +116,7 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
 
-                SelectedImageIndex = ImageIndex = (int) res.ResourceFileType & 0xFF;
+                SelectedImageIndex = ImageIndex = (int)res.ResourceFileType & 0xFF;
 
                 res.SelectChild += OnSelectChild;
                 res.ChildAdded += OnChildAdded;
@@ -132,10 +131,8 @@ namespace BrawlCrate.NodeWrappers
                 res.UpdateProps += OnUpdateProperties;
                 res.UpdateControl += OnUpdateCurrentControl;
             }
-
             _resource = res;
         }
-
         public void Unlink()
         {
             if (_resource != null)
@@ -155,93 +152,86 @@ namespace BrawlCrate.NodeWrappers
                 _resource = null;
             }
 
-            foreach (BaseWrapper n in Nodes) n.Unlink();
+            foreach (BaseWrapper n in Nodes)
+            {
+                n.Unlink();
+            }
         }
-
         protected internal virtual void OnSelectChild(int index)
         {
-            if (!(Nodes == null || index < 0 || index >= Nodes.Count)) TreeView.SelectedNode = Nodes[index];
+            if (!(Nodes == null || index < 0 || index >= Nodes.Count))
+            {
+                TreeView.SelectedNode = Nodes[index];
+            }
         }
-
         protected internal virtual void OnUpdateProperties(object sender, EventArgs e)
         {
             MainForm.Instance.propertyGrid1.Refresh();
         }
-
         protected internal virtual void OnUpdateCurrentControl(object sender, EventArgs e)
         {
-            var form = MainForm.Instance;
+            MainForm form = MainForm.Instance;
             //var g = form.propertyGrid1.SelectedGridItem;
             form._currentControl = null;
             form.resourceTree_SelectionChanged(this, null);
         }
-
         protected internal virtual void OnChildAdded(ResourceNode parent, ResourceNode child)
         {
             Nodes.Add(Wrap(_owner, child));
         }
-
         protected internal virtual void OnChildInserted(int index, ResourceNode parent, ResourceNode child)
         {
             Nodes.Insert(index, Wrap(_owner, child));
         }
-
         protected internal virtual void OnChildRemoved(ResourceNode parent, ResourceNode child)
         {
             foreach (BaseWrapper w in Nodes)
+            {
                 if (w != null)
+                {
                     if (w._resource == child)
                     {
                         w.Unlink();
                         w.Remove();
                     }
+                }
+            }
         }
-
         protected internal void RefreshView(ResourceNode node)
         {
             Link(node);
 
-            if (TreeView != null && TreeView.SelectedNode == this)
+            if ((TreeView != null) && (TreeView.SelectedNode == this))
             {
-                ((ResourceTree) TreeView).SelectedNode = null;
+                ((ResourceTree)TreeView).SelectedNode = null;
                 TreeView.SelectedNode = this;
             }
         }
-
         protected internal virtual void OnRestored(ResourceNode node)
         {
             RefreshView(node);
         }
-
         protected internal virtual void OnReplaced(ResourceNode node)
         {
             RefreshView(node);
         }
-
-        protected internal virtual void OnRenamed(ResourceNode node)
-        {
-            Text = node.Name;
-        }
+        protected internal virtual void OnRenamed(ResourceNode node) { Text = node.Name; }
 
         protected internal virtual void OnMovedUp(ResourceNode node, bool select)
         {
-            var res = FindResource(node, false) as GenericWrapper;
+            GenericWrapper res = FindResource(node, false) as GenericWrapper;
             res.MoveUp(select);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
         }
-
         protected internal virtual void OnMovedDown(ResourceNode node, bool select)
         {
-            var res = FindResource(node, false) as GenericWrapper;
+            GenericWrapper res = FindResource(node, false) as GenericWrapper;
             res.MoveDown(select);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
         }
-
-        protected internal virtual void OnPropertyChanged(ResourceNode node)
-        {
-        }
+        protected internal virtual void OnPropertyChanged(ResourceNode node) { }
 
         protected internal virtual void OnExpand()
         {
@@ -250,45 +240,59 @@ namespace BrawlCrate.NodeWrappers
                 Nodes.Clear();
 
                 if (_resource._isPopulating)
-                    while (_resource._isPopulating)
-                        Application.DoEvents();
+                {
+                    while (_resource._isPopulating) { Application.DoEvents(); }
+                }
 
-                foreach (var n in _resource.Children) Nodes.Add(Wrap(_owner, n));
+                foreach (ResourceNode n in _resource.Children)
+                {
+                    Nodes.Add(Wrap(_owner, n));
+                }
 
                 _discovered = true;
             }
         }
-
-        protected internal virtual void OnDoubleClick()
-        {
-        }
+        protected internal virtual void OnDoubleClick() { }
 
         internal BaseWrapper FindResource(ResourceNode n, bool searchChildren)
         {
             BaseWrapper node;
-            if (_resource == n) return this;
-
-            OnExpand();
-            foreach (BaseWrapper c in Nodes)
-                if (c._resource == n)
-                    return c;
-                else if (searchChildren && (node = c.FindResource(n, true)) != null) return node;
+            if (_resource == n)
+            {
+                return this;
+            }
+            else
+            {
+                OnExpand();
+                foreach (BaseWrapper c in Nodes)
+                {
+                    if (c._resource == n)
+                    {
+                        return c;
+                    }
+                    else if ((searchChildren) && ((node = c.FindResource(n, true)) != null))
+                    {
+                        return node;
+                    }
+                }
+            }
             return null;
         }
 
-        public static BaseWrapper Wrap(ResourceNode node)
-        {
-            return Wrap(null, node);
-        }
-
+        public static IWin32Window _owner;
+        public static BaseWrapper Wrap(ResourceNode node) { return Wrap(null, node); }
         public static BaseWrapper Wrap(IWin32Window owner, ResourceNode node)
         {
             _owner = owner;
             BaseWrapper w;
             if (!NodeWrapperAttribute.Wrappers.ContainsKey(node.ResourceFileType))
+            {
                 w = new GenericWrapper();
+            }
             else
+            {
                 w = Activator.CreateInstance(NodeWrapperAttribute.Wrappers[node.ResourceFileType]) as BaseWrapper;
+            }
 
             w.Link(node);
             return w;

@@ -15,16 +15,7 @@ namespace BrawlLib.SSBBTypes
 
         //Align to 0x20
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
 
         public DataBlock DataBlock => new DataBlock(Address, Size);
         public DataBlockCollection Entries => new DataBlockCollection(DataBlock);
@@ -40,16 +31,7 @@ namespace BrawlLib.SSBBTypes
         public bint _frameSize;
         public ruint _eventTableOffset;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -57,36 +39,18 @@ namespace BrawlLib.SSBBTypes
     {
         public buint _count;
 
-        private AnimEventRef* Entries => (AnimEventRef*) (Address + 4);
+        private AnimEventRef* Entries => (AnimEventRef*)(Address + 4);
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct AnimEventRef
     {
-        private readonly AnimEventFrameInfo _frameInfo;
+        private AnimEventFrameInfo _frameInfo;
         public ruint _animEventOffset;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -101,38 +65,20 @@ namespace BrawlLib.SSBBTypes
         public buint _reserved2;
         public buint _userParam;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct AnimEventFrameInfo
     {
-        public int _startFrame; // event start frame
-        public int _endFrame; // event end frame
-        public byte _frameFlag; // frame processing option flag
-        public sbyte _loopOffset; // number of playback loops
-        public byte _loopInterval; // playback loop interval after loopCount
+        public int _startFrame;     // event start frame
+        public int _endFrame;       // event end frame
+        public byte _frameFlag;     // frame processing option flag
+        public sbyte _loopOffset;   // number of playback loops
+        public byte _loopInterval;  // playback loop interval after loopCount
         public byte _reserved;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* p = &this)
-                {
-                    return p;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
     }
 
     [Flags]

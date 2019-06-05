@@ -1,19 +1,19 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARBankNode : RSAREntryNode
     {
-        internal INFOBankEntry* Header => (INFOBankEntry*) WorkingUncompressed.Address;
+        internal INFOBankEntry* Header => (INFOBankEntry*)WorkingUncompressed.Address;
 
 #if DEBUG
         [Browsable(true), Category("DEBUG")]
 #else
         [Browsable(false)]
 #endif
-        public override int StringId => Header == null ? -1 : (int) Header->_stringId;
+        public override int StringId => Header == null ? -1 : (int)Header->_stringId;
 
         private RSARFileNode _rbnk;
 
@@ -29,15 +29,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         if (_rbnk is RSARExtFileNode)
                         {
-                            var ext = _rbnk as RSARExtFileNode;
+                            RSARExtFileNode ext = _rbnk as RSARExtFileNode;
                             ext.RemoveBankRef(this);
                         }
                         else if (_rbnk is RBNKNode)
                         {
-                            var ext = _rbnk as RBNKNode;
+                            RBNKNode ext = _rbnk as RBNKNode;
                             ext.RemoveBankRef(this);
                         }
-
                         _rbnk = null;
                     }
 
@@ -46,24 +45,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                         _rbnk = value;
                         if (_rbnk is RSARExtFileNode)
                         {
-                            var ext = _rbnk as RSARExtFileNode;
+                            RSARExtFileNode ext = _rbnk as RSARExtFileNode;
                             ext.AddBankRef(this);
                         }
                         else if (_rbnk is RBNKNode)
                         {
-                            var ext = _rbnk as RBNKNode;
+                            RBNKNode ext = _rbnk as RBNKNode;
                             ext.AddBankRef(this);
                         }
                     }
                 }
-
                 SignalPropertyChange();
             }
         }
-
-        [Category("INFO Bank")]
-        [Browsable(true)]
-        [TypeConverter(typeof(DropDownListBankFiles))]
+        [Category("INFO Bank"), Browsable(true), TypeConverter(typeof(DropDownListBankFiles))]
         public string BankFile
         {
             get => _rbnk == null ? null : _rbnk._name;
@@ -75,19 +70,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    var t = 0;
+                    int t = 0;
                     RSARFileNode node = null;
-                    foreach (var r in RSARNode.Files)
+                    foreach (RSARFileNode r in RSARNode.Files)
                     {
                         if (r.Name == value && (r is RBNKNode || r is RSARExtFileNode))
                         {
                             node = r;
                             break;
                         }
-
                         t++;
                     }
-
                     if (node != null)
                     {
                         BankNode = node;
@@ -112,12 +105,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _rbnk = RSARNode.Files[_fileId];
                 if (_rbnk is RSARExtFileNode)
                 {
-                    var ext = _rbnk as RSARExtFileNode;
+                    RSARExtFileNode ext = _rbnk as RSARExtFileNode;
                     ext.AddBankRef(this);
                 }
                 else if (_rbnk is RBNKNode)
                 {
-                    var ext = _rbnk as RBNKNode;
+                    RBNKNode ext = _rbnk as RBNKNode;
                     ext.AddBankRef(this);
                 }
             }
@@ -132,7 +125,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var header = (INFOBankEntry*) address;
+            INFOBankEntry* header = (INFOBankEntry*)address;
             header->_stringId = _rebuildStringId;
             header->_fileId = _fileId;
             header->_padding = 0;

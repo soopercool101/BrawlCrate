@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using BrawlCrate;
+using BrawlLib.SSBB.ResourceNodes;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using BrawlCrate;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
@@ -22,16 +22,19 @@ namespace System.Windows.Forms
             txtStack.Text = e.Message + "\n" + e.StackTrace;
 
             lstChangedFiles.Visible =
-                lblChangedFiles.Visible =
-                    spltChangedFiles.Visible =
-                        edited != null && edited.Count > 0;
+            lblChangedFiles.Visible =
+            spltChangedFiles.Visible =
+            edited != null && edited.Count > 0;
 
             lstChangedFiles.Items.AddRange(edited.ToArray());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (chkForceClose.Checked) Environment.Exit(0);
+            if (chkForceClose.Checked)
+            {
+                Environment.Exit(0);
+            }
 
             Close();
         }
@@ -45,31 +48,31 @@ namespace System.Windows.Forms
             }
 
             //Send the issue to the repository
-            if (Program.CanRunGithubApp(true, out var path))
+            if (Program.CanRunGithubApp(true, out string path))
             {
-                var args = string.Format("-bi {0} \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
+                string args = string.Format("-bi {0} \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
                     Program.TagName,
                     _exception.Message.Replace("\"", "\\\""),
                     _exception.StackTrace.Replace("\"", "\\\""),
                     txtTitle.Text.Replace("\"", "\\\""),
-                    string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray
-                        ? ""
-                        : txtDescription.Text.Replace("\"", "\\\""));
+                    (string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray) ? "" : txtDescription.Text.Replace("\"", "\\\""));
 
-                Process.Start(new ProcessStartInfo
+                Process.Start(new ProcessStartInfo()
                 {
                     FileName = path,
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    Arguments = args
+                    Arguments = args,
                 });
             }
             else
             {
-                MessageBox.Show(
-                    ".NET version 4.5 is required to run the updater, which is used to submit the bug report.");
+                MessageBox.Show(".NET version 4.5 is required to run the updater, which is used to submit the bug report.");
             }
 
-            if (chkForceClose.Checked) Environment.Exit(0);
+            if (chkForceClose.Checked)
+            {
+                Environment.Exit(0);
+            }
 
             Close();
         }
@@ -94,6 +97,7 @@ namespace System.Windows.Forms
 
         private void txtDescription_Enter(object sender, EventArgs e)
         {
+
         }
 
         private void txtDescription_Leave(object sender, EventArgs e)
@@ -101,14 +105,16 @@ namespace System.Windows.Forms
             if (string.IsNullOrEmpty(txtDescription.Text))
             {
                 txtDescription.ForeColor = Color.Gray;
-                txtDescription.Text =
-                    "Explain what you were doing that caused the bug. This will be posted publicly at https://github.com/BrawlCrate/BrawlCrateIssues/issues, so do not put any personal information here. It may be beneficial to you to sign your report with a username unless you wish to stay anonymous.";
+                txtDescription.Text = "Explain what you were doing that caused the bug. This will be posted publicly at https://github.com/BrawlCrate/BrawlCrateIssues/issues, so do not put any personal information here. It may be beneficial to you to sign your report with a username unless you wish to stay anonymous.";
             }
         }
 
         private bool Save(ResourceNode r)
         {
-            if (r._origPath == null) return SaveAs(r);
+            if (r._origPath == null)
+            {
+                return SaveAs(r);
+            }
 
             r.Merge(ModifierKeys == (Keys.Control | Keys.Shift));
             r.Export(r._origPath);
@@ -118,17 +124,22 @@ namespace System.Windows.Forms
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var r = lstChangedFiles.SelectedItem as ResourceNode;
+            ResourceNode r = lstChangedFiles.SelectedItem as ResourceNode;
             if (r != null && Save(r))
+            {
                 MessageBox.Show("Successfully saved " + r.Name);
+            }
             else
+            {
                 MessageBox.Show(r.Name + " was not saved successfully.");
+            }
         }
 
         private bool SaveAs(ResourceNode r)
         {
             if (r != null)
-                using (var d = new SaveFileDialog())
+            {
+                using (SaveFileDialog d = new SaveFileDialog())
                 {
                     d.InitialDirectory = r._origPath.Substring(0, r._origPath.LastIndexOf('\\'));
                     d.Filter = string.Format("(*{0})|*{0}", Path.GetExtension(r._origPath));
@@ -140,26 +151,35 @@ namespace System.Windows.Forms
                         return true;
                     }
                 }
+            }
 
             return false;
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var r = lstChangedFiles.SelectedItem as ResourceNode;
+            ResourceNode r = lstChangedFiles.SelectedItem as ResourceNode;
             if (r != null && SaveAs(r))
+            {
                 MessageBox.Show("Successfully saved " + r.Name);
+            }
             else
+            {
                 MessageBox.Show(r.Name + " was not saved successfully.");
+            }
         }
 
         private void ctxFile_Opening(object sender, CancelEventArgs e)
         {
-            var file = lstChangedFiles.SelectedItem as ResourceNode;
+            ResourceNode file = lstChangedFiles.SelectedItem as ResourceNode;
             if (file != null)
+            {
                 saveToolStripMenuItem.Enabled = file.IsDirty;
+            }
             else
+            {
                 e.Cancel = true;
+            }
         }
 
         private void txtDescription_LinkClicked(object sender, LinkClickedEventArgs e)

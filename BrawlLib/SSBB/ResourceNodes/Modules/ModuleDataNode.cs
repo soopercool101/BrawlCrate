@@ -6,18 +6,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ModuleDataNode : RELEntryNode
     {
-        public UnsafeBuffer _dataBuffer;
-        public SectionEditor _linkedEditor = null;
         public RelocationManager _manager;
 
-        [Browsable(false)] public virtual bool HasCode => true;
-
-        [Browsable(false)] public virtual uint ASMOffset => RootOffset;
+        [Browsable(false)]
+        public virtual bool HasCode => true;
+        [Browsable(false)]
+        public virtual uint ASMOffset => RootOffset;
 
         [DisplayName("Size")]
         public string DataSize => "0x" + (_dataBuffer != null ? _dataBuffer.Length.ToString("X") : "0");
 
-        [Browsable(false)] public buint* BufferAddress => (buint*) _dataBuffer.Address;
+        public UnsafeBuffer _dataBuffer;
+        public SectionEditor _linkedEditor = null;
 
         public override void Dispose()
         {
@@ -26,9 +26,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _dataBuffer.Dispose();
                 _dataBuffer = null;
             }
-
             base.Dispose();
         }
+
+        [Browsable(false)]
+        public buint* BufferAddress => (buint*)_dataBuffer.Address;
 
         //public Relocation this[int index] 
         //{
@@ -50,21 +52,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         //}
 
         /// <summary>
-        ///     Fills the data buffer with the specified amount of data from an address.
+        /// Fills the data buffer with the specified amount of data from an address.
         /// </summary>
         public void InitBuffer(uint size, VoidPtr address)
         {
-            _dataBuffer = new UnsafeBuffer((int) size.RoundUp(4));
+            _dataBuffer = new UnsafeBuffer((int)size.RoundUp(4));
             Memory.Move(_dataBuffer.Address, address, size);
             _manager = new RelocationManager(this);
         }
-
         /// <summary>
-        ///     Fills the data buffer with the specified amount of zerobytes.
+        /// Fills the data buffer with the specified amount of zerobytes.
         /// </summary>
         public void InitBuffer(uint size)
         {
-            _dataBuffer = new UnsafeBuffer((int) size.RoundUp(4));
+            _dataBuffer = new UnsafeBuffer((int)size.RoundUp(4));
             Memory.Fill(_dataBuffer.Address, size, 0);
             _manager = new RelocationManager(this);
         }

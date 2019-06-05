@@ -32,41 +32,27 @@ namespace BrawlLib.SSBBTypes
 
         public string GameName
         {
-            get => new string((sbyte*) Address + 0x20);
-            set => value.Write((sbyte*) Address + 0x20);
+            get => new string((sbyte*)Address + 0x20);
+            set => value.Write((sbyte*)Address + 0x20);
         }
-
         public string GameID
         {
-            get => *(BinTag*) Address;
-            set => *(BinTag*) Address = value;
+            get => *(BinTag*)Address;
+            set => *(BinTag*)Address = value;
         }
-
         public bool IsWii => _console == 'R' ||
-                             _console == '_' ||
-                             _console == 'H' ||
-                             _console == '0' ||
-                             _console == '4';
-
+                    _console == '_' ||
+                    _console == 'H' ||
+                    _console == '0' ||
+                    _console == '4';
         public bool IsGC => _console == 'G' ||
-                            _console == 'D' ||
-                            _console == 'P' ||
-                            _console == 'U';
+                  _console == 'D' ||
+                  _console == 'P' ||
+                  _console == 'U';
 
-        public ISOPartLists* Partitions => (ISOPartLists*) (Address + 0x40000);
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public ISOPartLists* Partitions => (ISOPartLists*)(Address + 0x40000);
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ISOCommonPartInfo
     {
@@ -90,18 +76,8 @@ namespace BrawlLib.SSBBTypes
         public buint _unk8; //1
         public buint _unk9; //1
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ISOPartLists
     {
@@ -115,23 +91,13 @@ namespace BrawlLib.SSBBTypes
             get => _partitionOffset * 4;
             set => _partitionOffset = value.Align(4) / 4;
         }
-
         public uint ChannelOffset
         {
             get => _channelOffset * 4;
             set => _channelOffset = value.Align(4) / 4;
         }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -145,33 +111,18 @@ namespace BrawlLib.SSBBTypes
             Data = 0,
             Update = 1,
             Installer = 2,
-            VirtualConsole = 3
+            VirtualConsole = 3,
         }
 
-        public Type PartitionType
-        {
-            get => (Type) (int) _type;
-            set => _type = (int) value;
-        }
-
+        public Type PartitionType { get => (Type)(int)_type; set => _type = (int)value; }
         public string GameID
         {
-            get => *(BinTag*) _type.Address;
-            set => *(BinTag*) _type.Address = value;
+            get => *(BinTag*)_type.Address;
+            set => *(BinTag*)_type.Address = value;
         }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct PartitionInfo
     {
@@ -184,18 +135,8 @@ namespace BrawlLib.SSBBTypes
         public buint _dataOffset;
         public buint _dataLength;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct TMDInfo
     {
@@ -220,18 +161,8 @@ namespace BrawlLib.SSBBTypes
         public bshort _bootIndex;
         public bshort _pad2;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     public unsafe struct TMDEntry
     {
         public const int Size = 0x30;
@@ -243,15 +174,6 @@ namespace BrawlLib.SSBBTypes
         public fixed byte _hash[0x14];
         public fixed byte _pad[0xC];
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 }

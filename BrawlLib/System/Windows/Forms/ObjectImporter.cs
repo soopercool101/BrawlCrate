@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using BrawlLib.Modeling;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
 
@@ -8,23 +6,23 @@ namespace System.Windows.Forms
 {
     public class ObjectImporter : Form
     {
-        private IMatrixNode _baseInf;
-        private MDL0Node _externalModel;
         private MDL0Node _internalModel;
-        private bool _mergeModels;
-        private MDL0ObjectNode _node;
-        private MDL0BoneNode _parent;
-        private Label baseBone;
-        private CheckBox checkBox1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
         private Label label1;
+        private ComboBox comboBox1;
         private Label label2;
+        private ComboBox comboBox2;
+        private MDL0Node _externalModel;
+        private MDL0ObjectNode _node;
+        private IMatrixNode _baseInf;
+        private ComboBox comboBox3;
+        private CheckBox checkBox1;
+        private MDL0BoneNode _parent;
         private Label label3;
         private Label label4;
+        private Label baseBone;
         private ModelPanel modelPanel1;
         private Panel panel1;
+        private bool _mergeModels = false;
 
         public ObjectImporter()
         {
@@ -41,7 +39,7 @@ namespace System.Windows.Forms
             comboBox2.Items.AddRange(_internalModel._linker.BoneCache);
 
             comboBox1.SelectedIndex = comboBox2.SelectedIndex = comboBox3.SelectedIndex = 0;
-            _parent = (MDL0BoneNode) comboBox2.SelectedItem;
+            _parent = (MDL0BoneNode)comboBox2.SelectedItem;
 
             return ShowDialog(null);
         }
@@ -59,21 +57,26 @@ namespace System.Windows.Forms
 
         private void MergeChildren(MDL0BoneNode parent, MDL0BoneNode child, ResourceNode res)
         {
-            var found = false;
+            bool found = false;
             MDL0BoneNode bone = null;
             foreach (MDL0BoneNode b1 in parent.Children)
+            {
                 if (b1.Name == child.Name)
                 {
                     found = true;
                     bone = b1;
-                    foreach (MDL0BoneNode b in child.Children) MergeChildren(b1, b, res);
+                    foreach (MDL0BoneNode b in child.Children)
+                    {
+                        MergeChildren(b1, b, res);
+                    }
 
                     break;
                 }
+            }
 
             if (!found)
             {
-                var b = child.Clone();
+                MDL0BoneNode b = child.Clone();
                 parent.InsertChild(b, true, child.Index);
                 bone = b;
             }
@@ -84,18 +87,28 @@ namespace System.Windows.Forms
 
             if (res is MDL0ObjectNode)
             {
-                var poly = res as MDL0ObjectNode;
-                foreach (var v in poly._manager._vertices)
+                MDL0ObjectNode poly = res as MDL0ObjectNode;
+                foreach (Vertex3 v in poly._manager._vertices)
+                {
                     if (v.MatrixNode == child)
+                    {
                         v.MatrixNode = bone;
+                    }
+                }
             }
             else if (res is MDL0Node)
             {
-                var mdl = res as MDL0Node;
+                MDL0Node mdl = res as MDL0Node;
                 foreach (MDL0ObjectNode poly in mdl.FindChild("Objects", true).Children)
-                foreach (var v in poly._manager._vertices)
-                    if (v.MatrixNode == child)
-                        v.MatrixNode = bone;
+                {
+                    foreach (Vertex3 v in poly._manager._vertices)
+                    {
+                        if (v.MatrixNode == child)
+                        {
+                            v.MatrixNode = bone;
+                        }
+                    }
+                }
             }
         }
 
@@ -104,21 +117,23 @@ namespace System.Windows.Forms
             _internalModel.ReplaceOrAddMesh(node, false, false, true);
         }
 
-        private void btnOkay_Click(object sender, EventArgs e)
+        private unsafe void btnOkay_Click(object sender, EventArgs e)
         {
             switch (comboBox3.SelectedIndex)
             {
                 case 0:
                     foreach (MDL0BoneNode b in (_baseInf as MDL0BoneNode).Children)
-                        MergeChildren(_parent, b, _mergeModels ? _externalModel : (ResourceNode) _node);
+                    {
+                        MergeChildren(_parent, b, _mergeModels ? _externalModel : (ResourceNode)_node);
+                    }
 
                     break;
                 case 1:
-                    _parent.Parent.InsertChild((ResourceNode) _baseInf, true, _parent.Index);
+                    _parent.Parent.InsertChild((ResourceNode)_baseInf, true, _parent.Index);
                     _parent.Remove();
                     break;
                 case 2:
-                    _parent.AddChild((ResourceNode) _baseInf);
+                    _parent.AddChild((ResourceNode)_baseInf);
                     break;
             }
 
@@ -126,7 +141,10 @@ namespace System.Windows.Forms
             if (_mergeModels)
             {
                 _externalModel.ApplyCHR(null, 0);
-                foreach (MDL0ObjectNode poly in _externalModel.FindChild("Objects", true).Children) ImportObject(poly);
+                foreach (MDL0ObjectNode poly in _externalModel.FindChild("Objects", true).Children)
+                {
+                    ImportObject(poly);
+                }
             }
             else
             {
@@ -140,28 +158,31 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
+        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
 
         private void GetBaseInfluence()
         {
-            if (_node != null) modelPanel1.RemoveReference(_node);
-
-            var boneCache = _externalModel._linker.BoneCache;
-            if ((_node = (MDL0ObjectNode) comboBox1.SelectedItem).Weighted)
+            if (_node != null)
             {
-                var least = int.MaxValue;
-                foreach (var inf in _node.Influences)
-                    if (inf is MDL0BoneNode && ((MDL0BoneNode) inf).BoneIndex < least)
-                        least = ((MDL0BoneNode) inf).BoneIndex;
+                modelPanel1.RemoveReference(_node);
+            }
+
+            MDL0BoneNode[] boneCache = _externalModel._linker.BoneCache;
+            if ((_node = (MDL0ObjectNode)comboBox1.SelectedItem).Weighted)
+            {
+                int least = int.MaxValue;
+                foreach (IMatrixNode inf in _node.Influences)
+                {
+                    if (inf is MDL0BoneNode && ((MDL0BoneNode)inf).BoneIndex < least)
+                    {
+                        least = ((MDL0BoneNode)inf).BoneIndex;
+                    }
+                }
 
                 if (least != int.MaxValue)
                 {
-                    var temp = boneCache[least];
-                    _baseInf = (IMatrixNode) temp.Parent;
+                    MDL0BoneNode temp = boneCache[least];
+                    _baseInf = (IMatrixNode)temp.Parent;
                 }
             }
             else
@@ -184,7 +205,7 @@ namespace System.Windows.Forms
 
             if (comboBox3.SelectedIndex == 0 && _baseInf is MDL0BoneNode)
             {
-                var i = 0;
+                int i = 0;
                 foreach (MDL0BoneNode s in comboBox2.Items)
                 {
                     if (s.Name == baseBone.Text)
@@ -192,7 +213,6 @@ namespace System.Windows.Forms
                         comboBox2.SelectedIndex = i;
                         break;
                     }
-
                     i++;
                 }
             }
@@ -205,7 +225,10 @@ namespace System.Windows.Forms
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null) return;
+            if (comboBox1.SelectedItem == null)
+            {
+                return;
+            }
 
             modelPanel1.ClearTargets();
             GetBaseInfluence();
@@ -213,9 +236,12 @@ namespace System.Windows.Forms
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null) return;
+            if (comboBox1.SelectedItem == null)
+            {
+                return;
+            }
 
-            _parent = (MDL0BoneNode) comboBox2.SelectedItem;
+            _parent = (MDL0BoneNode)comboBox2.SelectedItem;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -248,7 +274,7 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            var resources = new ComponentResourceManager(typeof(ObjectImporter));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ObjectImporter));
             btnCancel = new Button();
             btnOkay = new Button();
             label1 = new Label();
@@ -267,7 +293,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(139, 131);
             btnCancel.Name = "btnCancel";
@@ -275,73 +301,71 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             btnOkay.Location = new Drawing.Point(58, 131);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label1.AutoSize = true;
             label1.Location = new Drawing.Point(47, 12);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(39, 13);
             label1.TabIndex = 3;
             label1.Text = "Import:";
-            label1.TextAlign = ContentAlignment.TopRight;
+            label1.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // comboBox1
             // 
-            comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            comboBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Drawing.Point(92, 9);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Drawing.Size(121, 21);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label2.Location = new Drawing.Point(3, 58);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(83, 18);
             label2.TabIndex = 5;
             label2.Text = "Skeleton Root:";
-            label2.TextAlign = ContentAlignment.TopRight;
+            label2.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // comboBox2
             // 
-            comboBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            comboBox2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Drawing.Point(92, 55);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Drawing.Size(121, 21);
             comboBox2.TabIndex = 6;
-            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
+            comboBox2.SelectedIndexChanged += new EventHandler(comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
-            comboBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            comboBox3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[]
-            {
-                "Merge",
-                "Replace",
-                "Add As Child"
-            });
+            comboBox3.Items.AddRange(new object[] {
+            "Merge",
+            "Replace",
+            "Add As Child"});
             comboBox3.Location = new Drawing.Point(92, 82);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Drawing.Size(121, 21);
@@ -349,7 +373,7 @@ namespace System.Windows.Forms
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            checkBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             checkBox1.AutoSize = true;
             checkBox1.Location = new Drawing.Point(92, 109);
             checkBox1.Name = "checkBox1";
@@ -357,40 +381,40 @@ namespace System.Windows.Forms
             checkBox1.TabIndex = 8;
             checkBox1.Text = "Merge both models";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            checkBox1.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label3.AutoSize = true;
             label3.Location = new Drawing.Point(7, 85);
             label3.Name = "label3";
             label3.Size = new Drawing.Size(79, 13);
             label3.TabIndex = 9;
             label3.Text = "Base Skeleton:";
-            label3.TextAlign = ContentAlignment.TopRight;
+            label3.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label4.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             label4.AutoSize = true;
             label4.Location = new Drawing.Point(24, 35);
             label4.Name = "label4";
             label4.Size = new Drawing.Size(62, 13);
             label4.TabIndex = 10;
             label4.Text = "Base Bone:";
-            label4.TextAlign = ContentAlignment.TopRight;
+            label4.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // baseBone
             // 
-            baseBone.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            baseBone.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
             baseBone.AutoSize = true;
             baseBone.Location = new Drawing.Point(92, 35);
             baseBone.Name = "baseBone";
             baseBone.Size = new Drawing.Size(37, 13);
             baseBone.TabIndex = 11;
             baseBone.Text = "(none)";
-            baseBone.TextAlign = ContentAlignment.TopRight;
+            baseBone.TextAlign = Drawing.ContentAlignment.TopRight;
             // 
             // modelPanel1
             // 
@@ -436,8 +460,8 @@ namespace System.Windows.Forms
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-        }
 
+        }
         #endregion
     }
 }

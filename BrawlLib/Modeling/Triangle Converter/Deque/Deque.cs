@@ -37,89 +37,60 @@ using System.Diagnostics;
 namespace System.Collections
 {
     /// <summary>
-    ///     Represents a simple double-ended-queue collection of objects.
+    /// Represents a simple double-ended-queue collection of objects.
     /// </summary>
-    [Serializable]
+    [Serializable()]
     public class Deque : ICollection, IEnumerable, ICloneable
     {
-        #region ICloneable Members
-
-        /// <summary>
-        ///     Creates a shallow copy of the Deque.
-        /// </summary>
-        /// <returns>
-        ///     A shallow copy of the Deque.
-        /// </returns>
-        public virtual object Clone()
-        {
-            var clone = new Deque(this)
-            {
-                version = version
-            };
-
-            return clone;
-        }
-
-        #endregion
-
-        #region IEnumerable Members
-
-        /// <summary>
-        ///     Returns an enumerator that can iterate through the Deque.
-        /// </summary>
-        /// <returns>
-        ///     An IEnumerator for the Deque.
-        /// </returns>
-        public virtual IEnumerator GetEnumerator()
-        {
-            return new DequeEnumerator(this);
-        }
-
-        #endregion
-
         #region Deque Members
 
         #region Fields
 
         // The node at the front of the deque.
-        private Node front;
+        private Node front = null;
 
         // The node at the back of the deque.
-        private Node back;
+        private Node back = null;
 
         // The number of elements in the deque.
-        private int count;
+        private int count = 0;
 
         // The version of the deque.
-        private long version;
+        private long version = 0;
 
         #endregion
 
         #region Construction
 
         /// <summary>
-        ///     Initializes a new instance of the Deque class.
+        /// Initializes a new instance of the Deque class.
         /// </summary>
-        public Deque()
+		public Deque()
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the Deque class that contains
-        ///     elements copied from the specified collection.
+        /// Initializes a new instance of the Deque class that contains 
+        /// elements copied from the specified collection.
         /// </summary>
         /// <param name="col">
-        ///     The ICollection to copy elements from.
+        /// The ICollection to copy elements from.
         /// </param>
         public Deque(ICollection col)
         {
             #region Require
 
-            if (col == null) throw new ArgumentNullException("col");
+            if (col == null)
+            {
+                throw new ArgumentNullException("col");
+            }
 
             #endregion
 
-            foreach (var obj in col) PushBack(obj);
+            foreach (object obj in col)
+            {
+                PushBack(obj);
+            }
         }
 
         #endregion
@@ -127,7 +98,7 @@ namespace System.Collections
         #region Methods
 
         /// <summary>
-        ///     Removes all objects from the Deque.
+        /// Removes all objects from the Deque.
         /// </summary>
         public virtual void Clear()
         {
@@ -145,36 +116,44 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Determines whether or not an element is in the Deque.
+        /// Determines whether or not an element is in the Deque.
         /// </summary>
         /// <param name="obj">
-        ///     The Object to locate in the Deque.
+        /// The Object to locate in the Deque.
         /// </param>
         /// <returns>
-        ///     <b>true</b> if <i>obj</i> if found in the Deque; otherwise,
-        ///     <b>false</b>.
+        /// <b>true</b> if <i>obj</i> if found in the Deque; otherwise, 
+        /// <b>false</b>.
         /// </returns>
         public virtual bool Contains(object obj)
         {
-            foreach (var o in this)
+            foreach (object o in this)
+            {
                 if (o == null && obj == null)
+                {
                     return true;
-                else if (o.Equals(obj)) return true;
+                }
+                else if (o.Equals(obj))
+                {
+                    return true;
+                }
+            }
 
             return false;
         }
 
         /// <summary>
-        ///     Inserts an object at the front of the Deque.
+        /// Inserts an object at the front of the Deque.
         /// </summary>
         /// <param name="obj">
-        ///     The object to push onto the deque;
+        /// The object to push onto the deque;
         /// </param>
         public virtual void PushFront(object obj)
         {
             // The new node to add to the front of the deque.
-            var newNode = new Node(obj)
+            Node newNode = new Node(obj)
             {
+
                 // Link the new node to the front node. The current front node at 
                 // the front of the deque is now the second node in the deque.
                 Next = front
@@ -182,8 +161,10 @@ namespace System.Collections
 
             // If the deque isn't empty.
             if (Count > 0)
+            {
                 // Link the current front to the new node.
                 front.Previous = newNode;
+            }
 
             // Make the new node the front of the deque.
             front = newNode;
@@ -193,8 +174,10 @@ namespace System.Collections
 
             // If this is the first element in the deque.
             if (Count == 1)
+            {
                 // The front and back nodes are the same.
                 back = front;
+            }
 
             version++;
 
@@ -206,16 +189,17 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Inserts an object at the back of the Deque.
+        /// Inserts an object at the back of the Deque.
         /// </summary>
         /// <param name="obj">
-        ///     The object to push onto the deque;
+        /// The object to push onto the deque;
         /// </param>
         public virtual void PushBack(object obj)
         {
             // The new node to add to the back of the deque.
-            var newNode = new Node(obj)
+            Node newNode = new Node(obj)
             {
+
                 // Link the new node to the back node. The current back node at 
                 // the back of the deque is now the second to the last node in the
                 // deque.
@@ -224,8 +208,10 @@ namespace System.Collections
 
             // If the deque is not empty.
             if (Count > 0)
+            {
                 // Link the current back node to the new node.
                 back.Next = newNode;
+            }
 
             // Make the new node the back of the deque.
             back = newNode;
@@ -235,8 +221,10 @@ namespace System.Collections
 
             // If this is the first element in the deque.
             if (Count == 1)
+            {
                 // The front and back nodes are the same.
                 front = back;
+            }
 
             version++;
 
@@ -248,24 +236,27 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Removes and returns the object at the front of the Deque.
+        /// Removes and returns the object at the front of the Deque.
         /// </summary>
         /// <returns>
-        ///     The object at the front of the Deque.
+        /// The object at the front of the Deque.
         /// </returns>
         /// <exception cref="InvalidOperationException">
-        ///     The Deque is empty.
+        /// The Deque is empty.
         /// </exception>
         public virtual object PopFront()
         {
             #region Require
 
-            if (Count == 0) throw new InvalidOperationException("Deque is empty.");
+            if (Count == 0)
+            {
+                throw new InvalidOperationException("Deque is empty.");
+            }
 
             #endregion
 
             // Get the object at the front of the deque.
-            var obj = front.Value;
+            object obj = front.Value;
 
             // Move the front back one node.
             front = front.Next;
@@ -275,12 +266,16 @@ namespace System.Collections
 
             // If the deque is not empty.
             if (Count > 0)
+            {
                 // Tie off the previous link in the front node.
                 front.Previous = null;
+            }
             // Else the deque is empty.
             else
+            {
                 // Indicate that there is no back node.
                 back = null;
+            }
 
             version++;
 
@@ -294,24 +289,27 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Removes and returns the object at the back of the Deque.
+        /// Removes and returns the object at the back of the Deque.
         /// </summary>
         /// <returns>
-        ///     The object at the back of the Deque.
+        /// The object at the back of the Deque.
         /// </returns>
         /// <exception cref="InvalidOperationException">
-        ///     The Deque is empty.
+        /// The Deque is empty.
         /// </exception>
         public virtual object PopBack()
         {
             #region Require
 
-            if (Count == 0) throw new InvalidOperationException("Deque is empty.");
+            if (Count == 0)
+            {
+                throw new InvalidOperationException("Deque is empty.");
+            }
 
             #endregion
 
             // Get the object at the back of the deque.
-            var obj = back.Value;
+            object obj = back.Value;
 
             // Move back node forward one node.
             back = back.Previous;
@@ -321,12 +319,16 @@ namespace System.Collections
 
             // If the deque is not empty.
             if (Count > 0)
+            {
                 // Tie off the next link in the back node.
                 back.Next = null;
+            }
             // Else the deque is empty.
             else
+            {
                 // Indicate that there is no front node.
                 front = null;
+            }
 
             version++;
 
@@ -340,19 +342,22 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Returns the object at the front of the Deque without removing it.
+        /// Returns the object at the front of the Deque without removing it.
         /// </summary>
         /// <returns>
-        ///     The object at the front of the Deque.
+        /// The object at the front of the Deque.
         /// </returns>
         /// <exception cref="InvalidOperationException">
-        ///     The Deque is empty.
+        /// The Deque is empty.
         /// </exception>
         public virtual object PeekFront()
         {
             #region Require
 
-            if (Count == 0) throw new InvalidOperationException("Deque is empty.");
+            if (Count == 0)
+            {
+                throw new InvalidOperationException("Deque is empty.");
+            }
 
             #endregion
 
@@ -360,19 +365,22 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Returns the object at the back of the Deque without removing it.
+        /// Returns the object at the back of the Deque without removing it.
         /// </summary>
         /// <returns>
-        ///     The object at the back of the Deque.
+        /// The object at the back of the Deque.
         /// </returns>
         /// <exception cref="InvalidOperationException">
-        ///     The Deque is empty.
+        /// The Deque is empty.
         /// </exception>
         public virtual object PeekBack()
         {
             #region Require
 
-            if (Count == 0) throw new InvalidOperationException("Deque is empty.");
+            if (Count == 0)
+            {
+                throw new InvalidOperationException("Deque is empty.");
+            }
 
             #endregion
 
@@ -380,17 +388,17 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Copies the Deque to a new array.
+        /// Copies the Deque to a new array.
         /// </summary>
         /// <returns>
-        ///     A new array containing copies of the elements of the Deque.
+        /// A new array containing copies of the elements of the Deque.
         /// </returns>
         public virtual object[] ToArray()
         {
-            var array = new object[Count];
-            var index = 0;
+            object[] array = new object[Count];
+            int index = 0;
 
-            foreach (var obj in this)
+            foreach (object obj in this)
             {
                 array[index] = obj;
                 index++;
@@ -400,19 +408,22 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Returns a synchronized (thread-safe) wrapper for the Deque.
+        /// Returns a synchronized (thread-safe) wrapper for the Deque.
         /// </summary>
         /// <param name="deque">
-        ///     The Deque to synchronize.
+        /// The Deque to synchronize.
         /// </param>
         /// <returns>
-        ///     A synchronized wrapper around the Deque.
+        /// A synchronized wrapper around the Deque.
         /// </returns>
         public static Deque Synchronized(Deque deque)
         {
             #region Require
 
-            if (deque == null) throw new ArgumentNullException("deque");
+            if (deque == null)
+            {
+                throw new ArgumentNullException("deque");
+            }
 
             #endregion
 
@@ -422,8 +433,8 @@ namespace System.Collections
         [Conditional("DEBUG")]
         private void AssertValid()
         {
-            var n = 0;
-            var current = front;
+            int n = 0;
+            Node current = front;
 
             while (current != null)
             {
@@ -437,8 +448,8 @@ namespace System.Collections
             {
                 Debug.Assert(front != null && back != null, "Front/Back Null Test - Count > 0");
 
-                var f = front;
-                var b = back;
+                Node f = front;
+                Node b = back;
 
                 while (f.Next != null && b.Previous != null)
                 {
@@ -460,19 +471,21 @@ namespace System.Collections
         #region Node Class
 
         // Represents a node in the deque.
-        [Serializable]
+        [Serializable()]
         private class Node
         {
-            private Node next;
+            private readonly object value;
 
-            private Node previous;
+            private Node previous = null;
+
+            private Node next = null;
 
             public Node(object value)
             {
-                Value = value;
+                this.value = value;
             }
 
-            public object Value { get; }
+            public object Value => value;
 
             public Node Previous
             {
@@ -491,18 +504,18 @@ namespace System.Collections
 
         #region DequeEnumerator Class
 
-        [Serializable]
+        [Serializable()]
         private class DequeEnumerator : IEnumerator
         {
             private readonly Deque owner;
 
-            private readonly long version;
-
-            private object current;
-
             private Node currentNode;
 
-            private bool moveResult;
+            private object current = null;
+
+            private bool moveResult = false;
+
+            private readonly long version;
 
             public DequeEnumerator(Deque owner)
             {
@@ -518,8 +531,10 @@ namespace System.Collections
                 #region Require
 
                 if (version != owner.version)
+                {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
+                }
 
                 #endregion
 
@@ -534,9 +549,11 @@ namespace System.Collections
                     #region Require
 
                     if (!moveResult)
+                    {
                         throw new InvalidOperationException(
                             "The enumerator is positioned before the first " +
                             "element of the Deque or after the last element.");
+                    }
 
                     #endregion
 
@@ -549,8 +566,10 @@ namespace System.Collections
                 #region Require
 
                 if (version != owner.version)
+                {
                     throw new InvalidOperationException(
                         "The Deque was modified after the enumerator was created.");
+                }
 
                 #endregion
 
@@ -577,7 +596,7 @@ namespace System.Collections
         #region SynchronizedDeque Class
 
         // Implements a synchronization wrapper around a deque.
-        [Serializable]
+        [Serializable()]
         private class SynchronizedDeque : Deque
         {
             #region SynchronziedDeque Members
@@ -598,7 +617,10 @@ namespace System.Collections
             {
                 #region Require
 
-                if (deque == null) throw new ArgumentNullException("deque");
+                if (deque == null)
+                {
+                    throw new ArgumentNullException("deque");
+                }
 
                 #endregion
 
@@ -767,52 +789,62 @@ namespace System.Collections
         #region ICollection Members
 
         /// <summary>
-        ///     Gets a value indicating whether access to the Deque is synchronized
-        ///     (thread-safe).
+        /// Gets a value indicating whether access to the Deque is synchronized 
+        /// (thread-safe).
         /// </summary>
         public virtual bool IsSynchronized => false;
 
         /// <summary>
-        ///     Gets the number of elements contained in the Deque.
+        /// Gets the number of elements contained in the Deque.
         /// </summary>
         public virtual int Count => count;
 
         /// <summary>
-        ///     Copies the Deque elements to an existing one-dimensional Array,
-        ///     starting at the specified array index.
+        /// Copies the Deque elements to an existing one-dimensional Array, 
+        /// starting at the specified array index.
         /// </summary>
         /// <param name="array">
-        ///     The one-dimensional Array that is the destination of the elements
-        ///     copied from Deque. The Array must have zero-based indexing.
+        /// The one-dimensional Array that is the destination of the elements 
+        /// copied from Deque. The Array must have zero-based indexing. 
         /// </param>
         /// <param name="index">
-        ///     The zero-based index in array at which copying begins.
+        /// The zero-based index in array at which copying begins. 
         /// </param>
         public virtual void CopyTo(Array array, int index)
         {
             #region Require
 
             if (array == null)
+            {
                 throw new ArgumentNullException("array");
-            if (index < 0)
+            }
+            else if (index < 0)
+            {
                 throw new ArgumentOutOfRangeException("index", index,
                     "Index is less than zero.");
-            if (array.Rank > 1)
+            }
+            else if (array.Rank > 1)
+            {
                 throw new ArgumentException("Array is multidimensional.");
-            if (index >= array.Length)
+            }
+            else if (index >= array.Length)
+            {
                 throw new ArgumentException("Index is equal to or greater " +
-                                            "than the length of array.");
-            if (Count > array.Length - index)
+                    "than the length of array.");
+            }
+            else if (Count > array.Length - index)
+            {
                 throw new ArgumentException(
                     "The number of elements in the source Deque is greater " +
                     "than the available space from index to the end of the " +
                     "destination array.");
+            }
 
             #endregion
 
-            var i = index;
+            int i = index;
 
-            foreach (var obj in this)
+            foreach (object obj in this)
             {
                 array.SetValue(obj, i);
                 i++;
@@ -820,9 +852,44 @@ namespace System.Collections
         }
 
         /// <summary>
-        ///     Gets an object that can be used to synchronize access to the Deque.
+        /// Gets an object that can be used to synchronize access to the Deque.
         /// </summary>
         public virtual object SyncRoot => this;
+
+        #endregion
+
+        #region IEnumerable Members
+
+        /// <summary>
+        /// Returns an enumerator that can iterate through the Deque.
+        /// </summary>
+        /// <returns>
+        /// An IEnumerator for the Deque.
+        /// </returns>
+        public virtual IEnumerator GetEnumerator()
+        {
+            return new DequeEnumerator(this);
+        }
+
+        #endregion
+
+        #region ICloneable Members
+
+        /// <summary>
+        /// Creates a shallow copy of the Deque.
+        /// </summary>
+        /// <returns>
+        /// A shallow copy of the Deque.
+        /// </returns>
+        public virtual object Clone()
+        {
+            Deque clone = new Deque(this)
+            {
+                version = version
+            };
+
+            return clone;
+        }
 
         #endregion
     }

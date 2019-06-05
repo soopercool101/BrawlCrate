@@ -14,18 +14,9 @@ namespace BrawlLib.SSBBTypes
         public buint _entriesLength;
         public buint _firstOffset;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public U8Entry* Entries => (U8Entry*) (Address + _entriesOffset);
+        public U8Entry* Entries => (U8Entry*)(Address + _entriesOffset);
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -38,16 +29,7 @@ namespace BrawlLib.SSBBTypes
         public buint _dataOffset; //Folder == Parent entry index
         public buint _dataLength; //Folder == Index of first entry that's not a child
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public bool isFolder => _type == 1;
 

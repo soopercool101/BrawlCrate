@@ -1,5 +1,4 @@
 #region .NET Disclaimer/Info
-
 //===============================================================================
 //
 // gOODiDEA, uland.com
@@ -12,17 +11,13 @@
 // $History:		$  
 //  
 //===============================================================================
-
-#endregion
+#endregion 
 
 #region Java
-
 //==============================================================================
 //  Adapted from Jef Poskanzer's Java port by way of J. M. G. Elliott.
 //  K Weiner 12/00
-
 #endregion
-
 using System;
 using System.IO;
 
@@ -30,7 +25,14 @@ namespace Gif.Components
 {
     public class LZWEncoder
     {
+
         private static readonly int EOF = -1;
+
+        private readonly int imgW, imgH;
+        private readonly byte[] pixAry;
+        private readonly int initCodeSize;
+        private int remaining;
+        private int curPixel;
 
         // GIFCOMPR.C       - GIF Image compression routines
         //
@@ -42,16 +44,65 @@ namespace Gif.Components
         private static readonly int BITS = 12;
         private static readonly int HSIZE = 5003; // 80% occupancy
 
-        // Define the storage for the packet accumulator
-        private readonly byte[] accum = new byte[256];
+        // GIF Image compression - modified 'compress'
+        //
+        // Based on: compress.c - File compression ala IEEE Computer, June 1984.
+        //
+        // By Authors:  Spencer W. Thomas      (decvax!harpo!utah-cs!utah-gr!thomas)
+        //              Jim McKie              (decvax!mcvax!jim)
+        //              Steve Davies           (decvax!vax135!petsd!peora!srd)
+        //              Ken Turkowski          (decvax!decwrl!turtlevax!ken)
+        //              James A. Woods         (decvax!ihnp4!ames!jaw)
+        //              Joe Orost              (decvax!vax135!petsd!joe)
+
+        private int n_bits; // number of bits/code
+        private readonly int maxbits = BITS; // user settable max # bits/code
+        private int maxcode; // maximum code, given n_bits
+        private readonly int maxmaxcode = 1 << BITS; // should NEVER generate this code
+
+        private readonly int[] htab = new int[HSIZE];
         private readonly int[] codetab = new int[HSIZE];
         private readonly int hsize = HSIZE; // for dynamic table sizing
 
-        private readonly int[] htab = new int[HSIZE];
+        private int free_ent = 0; // first unused entry
 
-        private readonly int imgW, imgH;
-        private readonly int initCodeSize;
+        // block compression parameters -- after all codes are used up,
+        // and compression rate changes, start over.
+        private bool clear_flg = false;
 
+        // Algorithm:  use open addressing double hashing (no chaining) on the
+        // prefix code / next character combination.  We do a variant of Knuth's
+        // algorithm D (vol. 3, sec. 6.4) along with G. Knott's relatively-prime
+        // secondary probe.  Here, the modular division first probe is gives way
+        // to a faster exclusive-or manipulation.  Also do block compression with
+        // an adaptive reset, whereby the code table is cleared when the compression
+        // ratio decreases, but after the table fills.  The variable-length output
+        // codes are re-sized at this point, and a special CLEAR code is generated
+        // for the decompressor.  Late addition:  construct the table according to
+        // file size for noticeable speed improvement on small files.  Please direct
+        // questions about this implementation to ames!jaw.
+
+        private int g_init_bits;
+        private int ClearCode;
+        private int EOFCode;
+
+        // output
+        //
+        // Output the given code.
+        // Inputs:
+        //      code:   A n_bits-bit integer.  If == -1, then EOF.  This assumes
+        //              that n_bits =< wordsize - 1.
+        // Outputs:
+        //      Outputs code to the file.
+        // Assumptions:
+        //      Chars are 8 bits long.
+        // Algorithm:
+        //      Maintain a BITS character long buffer (so that 8 codes will
+        // fit in it exactly).  Use the VAX insv instruction to insert each
+        // code in turn.  When the buffer fills up empty it and start over.
+
+        private int cur_accum = 0;
+        private int cur_bits = 0;
         private readonly int[] masks =
         {
             0x0000,
@@ -70,71 +121,13 @@ namespace Gif.Components
             0x1FFF,
             0x3FFF,
             0x7FFF,
-            0xFFFF
-        };
-
-        private readonly int maxbits = BITS; // user settable max # bits/code
-        private readonly int maxmaxcode = 1 << BITS; // should NEVER generate this code
-        private readonly byte[] pixAry;
+            0xFFFF };
 
         // Number of characters so far in this 'packet'
         private int a_count;
 
-        // block compression parameters -- after all codes are used up,
-        // and compression rate changes, start over.
-        private bool clear_flg;
-        private int ClearCode;
-
-        // output
-        //
-        // Output the given code.
-        // Inputs:
-        //      code:   A n_bits-bit integer.  If == -1, then EOF.  This assumes
-        //              that n_bits =< wordsize - 1.
-        // Outputs:
-        //      Outputs code to the file.
-        // Assumptions:
-        //      Chars are 8 bits long.
-        // Algorithm:
-        //      Maintain a BITS character long buffer (so that 8 codes will
-        // fit in it exactly).  Use the VAX insv instruction to insert each
-        // code in turn.  When the buffer fills up empty it and start over.
-
-        private int cur_accum;
-        private int cur_bits;
-        private int curPixel;
-        private int EOFCode;
-
-        private int free_ent; // first unused entry
-
-        // Algorithm:  use open addressing double hashing (no chaining) on the
-        // prefix code / next character combination.  We do a variant of Knuth's
-        // algorithm D (vol. 3, sec. 6.4) along with G. Knott's relatively-prime
-        // secondary probe.  Here, the modular division first probe is gives way
-        // to a faster exclusive-or manipulation.  Also do block compression with
-        // an adaptive reset, whereby the code table is cleared when the compression
-        // ratio decreases, but after the table fills.  The variable-length output
-        // codes are re-sized at this point, and a special CLEAR code is generated
-        // for the decompressor.  Late addition:  construct the table according to
-        // file size for noticeable speed improvement on small files.  Please direct
-        // questions about this implementation to ames!jaw.
-
-        private int g_init_bits;
-        private int maxcode; // maximum code, given n_bits
-
-        // GIF Image compression - modified 'compress'
-        //
-        // Based on: compress.c - File compression ala IEEE Computer, June 1984.
-        //
-        // By Authors:  Spencer W. Thomas      (decvax!harpo!utah-cs!utah-gr!thomas)
-        //              Jim McKie              (decvax!mcvax!jim)
-        //              Steve Davies           (decvax!vax135!petsd!peora!srd)
-        //              Ken Turkowski          (decvax!decwrl!turtlevax!ken)
-        //              James A. Woods         (decvax!ihnp4!ames!jaw)
-        //              Joe Orost              (decvax!vax135!petsd!joe)
-
-        private int n_bits; // number of bits/code
-        private int remaining;
+        // Define the storage for the packet accumulator
+        private readonly byte[] accum = new byte[256];
 
         //----------------------------------------------------------------------------
         public LZWEncoder(int width, int height, byte[] pixels, int color_depth)
@@ -150,7 +143,10 @@ namespace Gif.Components
         private void Add(byte c, Stream outs)
         {
             accum[a_count++] = c;
-            if (a_count >= 254) Flush(outs);
+            if (a_count >= 254)
+            {
+                Flush(outs);
+            }
         }
 
         // Clear out the hash table
@@ -168,7 +164,10 @@ namespace Gif.Components
         // reset code table
         private void ResetCodeTable(int hsize)
         {
-            for (var i = 0; i < hsize; ++i) htab[i] = -1;
+            for (int i = 0; i < hsize; ++i)
+            {
+                htab[i] = -1;
+            }
         }
 
         private void Compress(int init_bits, Stream outs)
@@ -198,7 +197,10 @@ namespace Gif.Components
             ent = NextPixel();
 
             hshift = 0;
-            for (fcode = hsize; fcode < 65536; fcode *= 2) ++hshift;
+            for (fcode = hsize; fcode < 65536; fcode *= 2)
+            {
+                ++hshift;
+            }
 
             hshift = 8 - hshift; // set hash code range bound
 
@@ -207,8 +209,7 @@ namespace Gif.Components
 
             Output(ClearCode, outs);
 
-            outer_loop:
-            while ((c = NextPixel()) != EOF)
+        outer_loop: while ((c = NextPixel()) != EOF)
             {
                 fcode = (c << maxbits) + ent;
                 i = (c << hshift) ^ ent; // xor hashing
@@ -218,15 +219,20 @@ namespace Gif.Components
                     ent = codetab[i];
                     continue;
                 }
-
-                if (htab[i] >= 0) // non-empty slot
+                else if (htab[i] >= 0) // non-empty slot
                 {
                     disp = hsize_reg - i; // secondary hash (after G. Knott)
-                    if (i == 0) disp = 1;
+                    if (i == 0)
+                    {
+                        disp = 1;
+                    }
 
                     do
                     {
-                        if ((i -= disp) < 0) i += hsize_reg;
+                        if ((i -= disp) < 0)
+                        {
+                            i += hsize_reg;
+                        }
 
                         if (htab[i] == fcode)
                         {
@@ -235,7 +241,6 @@ namespace Gif.Components
                         }
                     } while (htab[i] >= 0);
                 }
-
                 Output(ent, outs);
                 ent = c;
                 if (free_ent < maxmaxcode)
@@ -248,7 +253,6 @@ namespace Gif.Components
                     ClearTable(outs);
                 }
             }
-
             // Put out the final code.
             Output(ent, outs);
             Output(EOFCode, outs);
@@ -288,18 +292,20 @@ namespace Gif.Components
         //----------------------------------------------------------------------------
         private int NextPixel()
         {
-            if (remaining == 0) return EOF;
+            if (remaining == 0)
+            {
+                return EOF;
+            }
 
             --remaining;
 
-            var temp = curPixel + 1;
+            int temp = curPixel + 1;
             if (temp < pixAry.GetUpperBound(0))
             {
-                var pix = pixAry[curPixel++];
+                byte pix = pixAry[curPixel++];
 
                 return pix & 0xff;
             }
-
             return 0xff;
         }
 
@@ -308,15 +314,19 @@ namespace Gif.Components
             cur_accum &= masks[cur_bits];
 
             if (cur_bits > 0)
-                cur_accum |= code << cur_bits;
+            {
+                cur_accum |= (code << cur_bits);
+            }
             else
+            {
                 cur_accum = code;
+            }
 
             cur_bits += n_bits;
 
             while (cur_bits >= 8)
             {
-                Add((byte) (cur_accum & 0xff), outs);
+                Add((byte)(cur_accum & 0xff), outs);
                 cur_accum >>= 8;
                 cur_bits -= 8;
             }
@@ -334,9 +344,13 @@ namespace Gif.Components
                 {
                     ++n_bits;
                     if (n_bits == maxbits)
+                    {
                         maxcode = maxmaxcode;
+                    }
                     else
+                    {
                         maxcode = MaxCode(n_bits);
+                    }
                 }
             }
 
@@ -345,7 +359,7 @@ namespace Gif.Components
                 // At EOF, write the rest of the buffer.
                 while (cur_bits > 0)
                 {
-                    Add((byte) (cur_accum & 0xff), outs);
+                    Add((byte)(cur_accum & 0xff), outs);
                     cur_accum >>= 8;
                     cur_bits -= 8;
                 }

@@ -11,21 +11,11 @@ namespace BrawlLib.SSBBTypes
 
         public uint _tag;
         public bint _numEntries;
-        public bint _unk1; //0x1CE
+        public bint _unk1;//0x1CE
         public bint _unk2;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public ATKDEntry* entries => (ATKDEntry*) (Address + 0x10);
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public ATKDEntry* entries => (ATKDEntry*)(Address + 0x10);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -33,7 +23,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const uint Size = 0x24;
 
-        public bshort _SubActID; //ID of Sub Action
+        public bshort _SubActID;//ID of Sub Action
         public bshort _unk1;
         public bshort _StartFrame;
         public bshort _EndFrame;
@@ -42,46 +32,22 @@ namespace BrawlLib.SSBBTypes
         public bfloat _yMinRange;
         public bfloat _yMaxRange;
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
         public BVec2 MinimumRange => new BVec2(_xMinRange, _yMinRange);
         public BVec2 MaximumRange => new BVec2(_xMaxRange, _yMaxRange);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal unsafe struct CEHeader //stands for Condition Evaluation
+    internal unsafe struct CEHeader//stands for Condition Evaluation
     {
         public bint _unk1;
-        public bint _numEntries; //number of offsets
-        public bint _unk2; //0x1
+        public bint _numEntries;//number of offsets
+        public bint _unk2;//0x1
         public bint _unk3;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public bint* entryOffsets =>
-            (bint*) (Address + 0x10); //contains entry offset. each offset is distance from Address
-
-        public bint* stringOffsets =>
-            (bint*) Address +
-            0x10 * _numEntries; //contains string offset but there seems to be other entries on that address
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public bint* entryOffsets => (bint*)(Address + 0x10); //contains entry offset. each offset is distance from Address
+        public bint* stringOffsets => (bint*)Address + 0x10 * _numEntries; //contains string offset but there seems to be other entries on that address
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -92,46 +58,26 @@ namespace BrawlLib.SSBBTypes
         public bint _part2Offset;
         public bint _unknown;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public VoidPtr Event => Address + _EventsOffset;
-        public bfloat* part2 => (bfloat*) (Address + _part2Offset);
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Event => (Address + _EventsOffset);
+        public bfloat* part2 => (bfloat*)(Address + _part2Offset);
     }
 
     public unsafe struct CEEvent
     {
         public sbyte _type;
-        public sbyte _numEntries; //sometimes, it is 0
+        public sbyte _numEntries;//sometimes, it is 0
         public bshort _entrySize;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public bint* Entries => (bint*) (Address + 0x4);
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public bint* Entries => (bint*)(Address + 0x4);
     }
 
     public enum CEEventType
     {
         SetReaction = 0x1,
         If = 0x6,
-        EndIf = 0x9
+        EndIf = 0x9,
     }
 
     public unsafe struct CEString
@@ -141,18 +87,8 @@ namespace BrawlLib.SSBBTypes
         public bint _unk2;
         public bint _unk3;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public bint* Entries => (bint*) (Address + 0x10);
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public bint* Entries => (bint*)(Address + 0x10);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -162,21 +98,11 @@ namespace BrawlLib.SSBBTypes
         public const int Size = 0xF;
 
         public uint _tag;
-        public bint DataOffset; //0000000C
+        public bint DataOffset;//0000000C
         public bint _unk1;
         public bint _unk2;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
         public VoidPtr DefBlock1 => Address + 0x10;
         public VoidPtr DefBlock2 => Address + 0x70;
         public VoidPtr SubBlock1 => Address + 0xD0;
@@ -223,16 +149,7 @@ namespace BrawlLib.SSBBTypes
         public byte _byte3;
         public byte _byte4;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -260,16 +177,7 @@ namespace BrawlLib.SSBBTypes
         public bint _int2;
         public bint _int3;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -277,23 +185,14 @@ namespace BrawlLib.SSBBTypes
     {
         public const int numEntries = 64;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
         public byte[] Padding
         {
             get
             {
-                var entries = new byte[numEntries];
-                for (var i = 0; i < numEntries; i++) entries[i] = ((byte*) Address)[i];
+                byte[] entries = new byte[numEntries];
+                for (int i = 0; i < numEntries; i++)
+                { entries[i] = ((byte*)Address)[i]; }
                 return entries;
             }
         }
@@ -304,34 +203,25 @@ namespace BrawlLib.SSBBTypes
     {
         public const int _numEntries = 28;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public bint* Offsets => (bint*) Address;
-
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public bint* Offsets => (bint*)Address;
         public List<VoidPtr> Entries
         {
             get
             {
                 VoidPtr entry = null;
-                var ptrs = new List<VoidPtr>();
-                for (var i = 0; i < _numEntries - 4; i++)
+                List<VoidPtr> ptrs = new List<VoidPtr>();
+                for (int i = 0; i < _numEntries - 4; i++)
                 {
-                    entry = Address - 0x170 + Offsets[i];
-                    if (Offsets[i] > 0)
+                    entry = Address - 0x170 + Offsets[i]; if (Offsets[i] > 0)
+                    {
                         ptrs.Add(entry);
+                    }
                     else
+                    {
                         ptrs.Add(0x0);
+                    }
                 }
-
                 return ptrs;
             }
         }
@@ -340,29 +230,15 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct AIPDType1
     {
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
         public List<VoidPtr> Entries
         {
             get
             {
-                var ptrs = new List<VoidPtr>();
-                var entry = (AIPDType1Entry*) Address;
+                List<VoidPtr> ptrs = new List<VoidPtr>();
+                AIPDType1Entry* entry = (AIPDType1Entry*)Address;
                 while (entry->_command != 0)
-                {
-                    ptrs.Add(entry);
-                    entry++;
-                }
-
+                { ptrs.Add(entry); entry++; }
                 return ptrs;
             }
         }
@@ -375,46 +251,22 @@ namespace BrawlLib.SSBBTypes
         public byte _control1;
         public byte _control2;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct AIPDType2Offsets
     {
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public bint* Offsets => (bint*) Address;
-
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public bint* Offsets => (bint*)Address;
         public List<VoidPtr> Entries
         {
             get
             {
                 AIPDType2* entry = null;
-                var ptrs = new List<VoidPtr>();
-                for (var i = 0; Offsets[i] < 0xFFFF; i++)
-                {
-                    entry = (AIPDType2*) (Address - 0x1E0 + Offsets[i]);
-                    ptrs.Add(entry);
-                }
-
+                List<VoidPtr> ptrs = new List<VoidPtr>();
+                for (int i = 0; Offsets[i] < 0xFFFF; i++)
+                { entry = (AIPDType2*)(Address - 0x1E0 + Offsets[i]); ptrs.Add(entry); }
                 return ptrs;
             }
         }
@@ -427,29 +279,15 @@ namespace BrawlLib.SSBBTypes
         public byte _flag;
         public byte _numEntries;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
         public List<VoidPtr> Entries
         {
             get
             {
-                var entry = (AIPDType2Entry*) (Address + 0x4);
-                var ptrs = new List<VoidPtr>();
-                for (var i = 0; i < _numEntries; i++)
-                {
-                    ptrs.Add(entry);
-                    entry++;
-                }
-
+                AIPDType2Entry* entry = (AIPDType2Entry*)(Address + 0x4);
+                List<VoidPtr> ptrs = new List<VoidPtr>();
+                for (int i = 0; i < _numEntries; i++)
+                { ptrs.Add(entry); entry++; }
                 return ptrs;
             }
         }
@@ -463,34 +301,13 @@ namespace BrawlLib.SSBBTypes
         public byte _unk3;
         public byte _unk4;
         public bshort _unk5;
-
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
-
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct AIUnkDef1
     {
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public AIUnkDef1Entry* Entries => (AIUnkDef1Entry*) Address;
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public AIUnkDef1Entry* Entries => (AIUnkDef1Entry*)Address;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -500,26 +317,17 @@ namespace BrawlLib.SSBBTypes
         public bfloat _unk2;
         public bfloat _unk3;
         public bfloat _unk4;
-        public byte _unk5; //seems to be always 0F
-        public byte _unk6; //usually 14 but 1E,0A sometimes
+        public byte _unk5;//seems to be always 0F
+        public byte _unk6;//usually 14 but 1E,0A sometimes
         public bint padding;
         public bfloat _unk7;
         public bfloat _unk8;
 
-        public VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct AIUnkDef2
+    internal unsafe struct AIUnkDef2
     {
         public bfloat _unk1;
         public bfloat _unk2;
@@ -527,7 +335,6 @@ namespace BrawlLib.SSBBTypes
         public bint _pad1;
         public bint _pad2;
         public bint _pad3;
-
         public bint _pad4;
         //I haven't finished this yet.
     }
@@ -995,6 +802,6 @@ namespace BrawlLib.SSBBTypes
         Lose = 0x1CA,
         DamageFace = 0x1CB,
         Dark = 0x1CC,
-        Spycloak = 0x1CD
+        Spycloak = 0x1CD,
     }
 }

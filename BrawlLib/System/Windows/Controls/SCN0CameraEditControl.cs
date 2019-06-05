@@ -1,54 +1,69 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
     public class SCN0CameraEditControl : UserControl
     {
-        private readonly NumericInputBox[] _boxes = new NumericInputBox[15];
-        private CameraAnimationFrame _currentFrame = CameraAnimationFrame.Empty;
-
-        private int _currentPage = 1;
         private int _numFrames;
 
-        private SCN0CameraNode _target;
-        private Button btnNext;
-        private Button btnPrev;
+        private int _currentPage = 1;
+        private CameraAnimationFrame _currentFrame = CameraAnimationFrame.Empty;
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[15];
         private GroupBox groupBox1;
+        private ListBox listKeyframes;
+        private Panel panel2;
+        private NumericInputBox numAimZ;
+        private Label label7;
+        private Label label6;
+        private NumericInputBox numFovY;
+        private Label label3;
+        private Label label2;
+        private Button btnNext;
+        private Label label5;
+        private Label label4;
+        private Button btnPrev;
+        private NumericInputBox numPosY;
+        private NumericInputBox numRotZ;
+        private Label lblFrameCount;
+        private NumericInputBox numPosX;
+        private NumericInputBox numTwist;
+        private NumericInputBox numRotX;
+        private NumericUpDown numFrame;
+        private NumericInputBox numRotY;
+        private NumericInputBox numAimX;
+        private NumericInputBox numPosZ;
+        private Label label9;
         private Label label1;
+        private Label label8;
+        private NumericInputBox numAimY;
+        private NumericInputBox numAspect;
+        private NumericInputBox numHeight;
         private Label label10;
         private Label label11;
+        private NumericInputBox numFarZ;
+        private NumericInputBox numNearZ;
         private Label label12;
         private Label label13;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Label lblFrameCount;
-        private ListBox listKeyframes;
-        private NumericInputBox numAimX;
-        private NumericInputBox numAimY;
-        private NumericInputBox numAimZ;
-        private NumericInputBox numAspect;
-        private NumericInputBox numFarZ;
-        private NumericInputBox numFovY;
-        private NumericUpDown numFrame;
-        private NumericInputBox numHeight;
-        private NumericInputBox numNearZ;
-        private NumericInputBox numPosX;
-        private NumericInputBox numPosY;
-        private NumericInputBox numPosZ;
-        private NumericInputBox numRotX;
-        private NumericInputBox numRotY;
-        private NumericInputBox numRotZ;
-        private NumericInputBox numTwist;
-        private Panel panel2;
+
+        private SCN0CameraNode _target;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public SCN0CameraNode TargetSequence
+        {
+            get => _target;
+            set
+            {
+                if (_target == value)
+                {
+                    return;
+                }
+
+                _target = value;
+                UpdateTarget();
+            }
+        }
 
         public SCN0CameraEditControl()
         {
@@ -69,20 +84,9 @@ namespace System.Windows.Forms
             _boxes[13] = numFovY;
             _boxes[14] = numHeight;
 
-            for (var i = 0; i < 15; i++) _boxes[i].Tag = i;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SCN0CameraNode TargetSequence
-        {
-            get => _target;
-            set
+            for (int i = 0; i < 15; i++)
             {
-                if (_target == value) return;
-
-                _target = value;
-                UpdateTarget();
+                _boxes[i].Tag = i;
             }
         }
 
@@ -95,9 +99,13 @@ namespace System.Windows.Forms
                 if (_target.FrameCount > 0)
                 {
                     CameraAnimationFrame a;
-                    for (var x = 0; x < _target.FrameCount; x++)
+                    for (int x = 0; x < _target.FrameCount; x++)
+                    {
                         if ((a = _target.GetAnimFrame(x)).HasKeys)
+                        {
                             listKeyframes.Items.Add(a);
+                        }
+                    }
 
                     _numFrames = _target.FrameCount;
 
@@ -111,7 +119,6 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
-
             listKeyframes.EndUpdate();
 
             RefreshPage();
@@ -119,7 +126,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            var page = (int) numFrame.Value - 1;
+            int page = (int)numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -152,10 +159,13 @@ namespace System.Windows.Forms
                 numNearZ.Value = _currentFrame.NearZ;
                 numFarZ.Value = _currentFrame.FarZ;
 
-                for (var i = 0; i < 15; i++) UpdateBox(i);
+                for (int i = 0; i < 15; i++)
+                {
+                    UpdateBox(i);
+                }
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < _numFrames - 1;
+                btnNext.Enabled = _currentPage < (_numFrames - 1);
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -163,44 +173,55 @@ namespace System.Windows.Forms
 
         private int FindKeyframe(int index)
         {
-            var count = listKeyframes.Items.Count;
-            for (var i = 0; i < count; i++)
-                if (((CameraAnimationFrame) listKeyframes.Items[i]).Index == index)
+            int count = listKeyframes.Items.Count;
+            for (int i = 0; i < count; i++)
+            {
+                if (((CameraAnimationFrame)listKeyframes.Items[i]).Index == index)
+                {
                     return i;
+                }
+            }
 
             return -1;
         }
 
         private void UpdateBox(int index)
         {
-            if (_target.GetKeyframe((CameraKeyframeMode) index, _currentPage) != null)
+            if (_target.GetKeyframe((CameraKeyframeMode)index, _currentPage) != null)
+            {
                 _boxes[index].BackColor = Color.Yellow;
+            }
             else
+            {
                 _boxes[index].BackColor = Color.White;
+            }
         }
 
         private unsafe void BoxChanged(object sender, EventArgs e)
         {
-            var box = sender as NumericInputBox;
+            NumericInputBox box = sender as NumericInputBox;
             CameraAnimationFrame kf;
-            var pkf = (float*) &kf;
-            var val = box.Value;
-            var index = (int) box.Tag;
+            float* pkf = (float*)&kf;
+            float val = box.Value;
+            int index = (int)box.Tag;
             int x;
 
             if (val != _currentFrame[index])
             {
-                var kfIndex = FindKeyframe(_currentPage);
+                int kfIndex = FindKeyframe(_currentPage);
 
                 if (float.IsNaN(val))
                 {
                     //Value removed find keyframe and zero it out
                     if (kfIndex >= 0)
                     {
-                        kf = (CameraAnimationFrame) listKeyframes.Items[kfIndex];
+                        kf = (CameraAnimationFrame)listKeyframes.Items[kfIndex];
                         kf.SetBools(index, false);
                         pkf[index] = val;
-                        for (x = 0; x < 15 && float.IsNaN(pkf[x]); x++) ;
+                        for (x = 0; (x < 15) && float.IsNaN(pkf[x]); x++)
+                        {
+                            ;
+                        }
 
                         if (x == 15)
                         {
@@ -213,7 +234,7 @@ namespace System.Windows.Forms
                         }
                     }
 
-                    _target.RemoveKeyframe((CameraKeyframeMode) index, _currentPage);
+                    _target.RemoveKeyframe((CameraKeyframeMode)index, _currentPage);
                     val = _target.GetAnimFrame(_currentPage)[index];
                     box.Value = val;
                 }
@@ -221,7 +242,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (CameraAnimationFrame) listKeyframes.Items[kfIndex];
+                        kf = (CameraAnimationFrame)listKeyframes.Items[kfIndex];
                         kf.SetBools(index, true);
                         pkf[index] = val;
                         listKeyframes.Items[kfIndex] = kf;
@@ -233,16 +254,17 @@ namespace System.Windows.Forms
                         kf.Index = _currentPage;
                         pkf[index] = val;
 
-                        var count = listKeyframes.Items.Count;
-                        for (x = 0;
-                            x < count && ((CameraAnimationFrame) listKeyframes.Items[x]).Index < _currentPage;
-                            x++) ;
+                        int count = listKeyframes.Items.Count;
+                        for (x = 0; (x < count) && (((CameraAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        {
+                            ;
+                        }
 
                         listKeyframes.Items.Insert(x, kf);
                         listKeyframes.SelectedIndex = x;
                     }
 
-                    _target.SetKeyframe((CameraKeyframeMode) index, _currentPage, val);
+                    _target.SetKeyframe((CameraKeyframeMode)index, _currentPage, val);
                 }
 
                 _currentFrame[index] = val;
@@ -252,26 +274,18 @@ namespace System.Windows.Forms
 
         private void listKeyframes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var index = listKeyframes.SelectedIndex;
+            int index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                var f = (CameraAnimationFrame) listKeyframes.SelectedItem;
-                numFrame.Value = (decimal) (f.Index + 1);
+                CameraAnimationFrame f = (CameraAnimationFrame)listKeyframes.SelectedItem;
+                numFrame.Value = (decimal)(f.Index + 1);
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e)
-        {
-            numFrame.Value--;
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            numFrame.Value++;
-        }
+        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value--; }
+        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value++; }
 
         #region Designer
-
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
@@ -311,7 +325,7 @@ namespace System.Windows.Forms
             label8 = new Label();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
-            ((ISupportInitialize) numFrame).BeginInit();
+            ((ISupportInitialize)(numFrame)).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -337,7 +351,7 @@ namespace System.Windows.Forms
             listKeyframes.Name = "listKeyframes";
             listKeyframes.Size = new Drawing.Size(280, 90);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += listKeyframes_SelectedIndexChanged;
+            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -388,7 +402,7 @@ namespace System.Windows.Forms
             numFarZ.Size = new Drawing.Size(70, 20);
             numFarZ.TabIndex = 29;
             numFarZ.Text = "0";
-            numFarZ.ValueChanged += BoxChanged;
+            numFarZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numNearZ
             // 
@@ -399,7 +413,7 @@ namespace System.Windows.Forms
             numNearZ.Size = new Drawing.Size(70, 20);
             numNearZ.TabIndex = 28;
             numNearZ.Text = "0";
-            numNearZ.ValueChanged += BoxChanged;
+            numNearZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label12
             // 
@@ -434,7 +448,7 @@ namespace System.Windows.Forms
             numAspect.Size = new Drawing.Size(70, 20);
             numAspect.TabIndex = 25;
             numAspect.Text = "0";
-            numAspect.ValueChanged += BoxChanged;
+            numAspect.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numHeight
             // 
@@ -445,7 +459,7 @@ namespace System.Windows.Forms
             numHeight.Size = new Drawing.Size(70, 20);
             numHeight.TabIndex = 24;
             numHeight.Text = "0";
-            numHeight.ValueChanged += BoxChanged;
+            numHeight.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label10
             // 
@@ -480,7 +494,7 @@ namespace System.Windows.Forms
             numAimY.Size = new Drawing.Size(70, 20);
             numAimY.TabIndex = 21;
             numAimY.Text = "0";
-            numAimY.ValueChanged += BoxChanged;
+            numAimY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numAimZ
             // 
@@ -491,7 +505,7 @@ namespace System.Windows.Forms
             numAimZ.Size = new Drawing.Size(70, 20);
             numAimZ.TabIndex = 19;
             numAimZ.Text = "0";
-            numAimZ.ValueChanged += BoxChanged;
+            numAimZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label7
             // 
@@ -522,7 +536,7 @@ namespace System.Windows.Forms
             numFovY.Size = new Drawing.Size(70, 20);
             numFovY.TabIndex = 13;
             numFovY.Text = "0";
-            numFovY.ValueChanged += BoxChanged;
+            numFovY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label3
             // 
@@ -556,7 +570,7 @@ namespace System.Windows.Forms
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += btnNext_Click;
+            btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // label5
             // 
@@ -590,7 +604,7 @@ namespace System.Windows.Forms
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += btnPrev_Click;
+            btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
             // numPosY
             // 
@@ -601,7 +615,7 @@ namespace System.Windows.Forms
             numPosY.Size = new Drawing.Size(70, 20);
             numPosY.TabIndex = 4;
             numPosY.Text = "0";
-            numPosY.ValueChanged += BoxChanged;
+            numPosY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numRotZ
             // 
@@ -612,7 +626,7 @@ namespace System.Windows.Forms
             numRotZ.Size = new Drawing.Size(70, 20);
             numRotZ.TabIndex = 8;
             numRotZ.Text = "0";
-            numRotZ.ValueChanged += BoxChanged;
+            numRotZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // lblFrameCount
             // 
@@ -632,7 +646,7 @@ namespace System.Windows.Forms
             numPosX.Size = new Drawing.Size(70, 20);
             numPosX.TabIndex = 3;
             numPosX.Text = "0";
-            numPosX.ValueChanged += BoxChanged;
+            numPosX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numTwist
             // 
@@ -643,7 +657,7 @@ namespace System.Windows.Forms
             numTwist.Size = new Drawing.Size(70, 20);
             numTwist.TabIndex = 12;
             numTwist.Text = "0";
-            numTwist.ValueChanged += BoxChanged;
+            numTwist.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numRotX
             // 
@@ -654,29 +668,25 @@ namespace System.Windows.Forms
             numRotX.Size = new Drawing.Size(70, 20);
             numRotX.TabIndex = 6;
             numRotX.Text = "0";
-            numRotX.ValueChanged += BoxChanged;
+            numRotX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(117, 4);
-            numFrame.Minimum = new decimal(new[]
-            {
-                1,
-                0,
-                0,
-                0
-            });
+            numFrame.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new[]
-            {
-                1,
-                0,
-                0,
-                0
-            });
-            numFrame.ValueChanged += numFrame_ValueChanged;
+            numFrame.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // numRotY
             // 
@@ -687,7 +697,7 @@ namespace System.Windows.Forms
             numRotY.Size = new Drawing.Size(70, 20);
             numRotY.TabIndex = 7;
             numRotY.Text = "0";
-            numRotY.ValueChanged += BoxChanged;
+            numRotY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numAimX
             // 
@@ -698,7 +708,7 @@ namespace System.Windows.Forms
             numAimX.Size = new Drawing.Size(70, 20);
             numAimX.TabIndex = 11;
             numAimX.Text = "0";
-            numAimX.ValueChanged += BoxChanged;
+            numAimX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numPosZ
             // 
@@ -709,7 +719,7 @@ namespace System.Windows.Forms
             numPosZ.Size = new Drawing.Size(70, 20);
             numPosZ.TabIndex = 5;
             numPosZ.Text = "0";
-            numPosZ.ValueChanged += BoxChanged;
+            numPosZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label9
             // 
@@ -755,8 +765,9 @@ namespace System.Windows.Forms
             groupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((ISupportInitialize) numFrame).EndInit();
+            ((ISupportInitialize)(numFrame)).EndInit();
             ResumeLayout(false);
+
         }
 
         #endregion

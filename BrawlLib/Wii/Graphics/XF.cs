@@ -26,81 +26,71 @@ namespace BrawlLib.Wii.Graphics
         public XFMemoryAddr _addr;
         public List<uint> _values = new List<uint>();
 
-        public XFData()
-        {
-        }
-
-        public XFData(XFMemoryAddr mem)
-        {
-            _addr = mem;
-        }
-
-        public XFData(ushort mem)
-        {
-            _addr = (XFMemoryAddr) mem;
-        }
-
+        public XFData() { }
+        public XFData(XFMemoryAddr mem) { _addr = mem; }
+        public XFData(ushort mem) { _addr = (XFMemoryAddr)mem; }
         public XFData(XFMemoryAddr mem, List<uint> values)
         {
             _addr = mem;
             _values = values;
         }
-
         public XFData(ushort mem, List<uint> values)
         {
-            _addr = (XFMemoryAddr) mem;
+            _addr = (XFMemoryAddr)mem;
             _values = values;
         }
-
         public XFData(XFMemoryAddr mem, params uint[] values)
         {
             _addr = mem;
             _values = values.ToList();
         }
-
         public XFData(ushort mem, params uint[] values)
         {
-            _addr = (XFMemoryAddr) mem;
+            _addr = (XFMemoryAddr)mem;
             _values = values.ToList();
+        }
+
+        public static unsafe List<XFData> Parse(VoidPtr address)
+        {
+            List<XFData> XFCmds = new List<XFData>();
+            byte* pData = (byte*)address;
+        Top:
+            if (*pData++ == 0x10)
+            {
+                XFData dat = new XFData();
+                int count = *(bushort*)pData; pData += 2;
+                dat._addr = (XFMemoryAddr)(ushort)*(bushort*)pData; pData += 2;
+                dat._values = new List<uint>();
+                for (int i = 0; i < count + 1; i++)
+                {
+                    dat._values.Add(*(buint*)pData);
+                    pData += 4;
+                }
+                XFCmds.Add(dat);
+                goto Top;
+            }
+            return XFCmds;
         }
 
         public int Size => 5 + _values.Count * 4;
 
-        public static unsafe List<XFData> Parse(VoidPtr address)
-        {
-            var XFCmds = new List<XFData>();
-            var pData = (byte*) address;
-            Top:
-            if (*pData++ == 0x10)
-            {
-                var dat = new XFData();
-                int count = *(bushort*) pData;
-                pData += 2;
-                dat._addr = (XFMemoryAddr) (ushort) *(bushort*) pData;
-                pData += 2;
-                dat._values = new List<uint>();
-                for (var i = 0; i < count + 1; i++)
-                {
-                    dat._values.Add(*(buint*) pData);
-                    pData += 4;
-                }
-
-                XFCmds.Add(dat);
-                goto Top;
-            }
-
-            return XFCmds;
-        }
-
         public override string ToString()
         {
-            var str = "Address: " + _addr;
+            string str = "Address: " + _addr;
             if (_values != null)
-                for (var i = 0; i < _values.Count; i++)
+            {
+                for (int i = 0; i < _values.Count; i++)
+                {
                     if (_addr >= XFMemoryAddr.XF_TEX0_ID && _addr <= XFMemoryAddr.XF_TEX7_ID)
+                    {
                         str += " | Value " + i + ": (" + new XFTexMtxInfo(_values[i]) + ")";
+                    }
                     else if (_addr >= XFMemoryAddr.XF_DUALTEX0_ID && _addr <= XFMemoryAddr.XF_DUALTEX7_ID)
+                    {
                         str += " | Value " + i + ": (" + new XFDualTex(_values[i]) + ")";
+                    }
+                }
+            }
 
             return str;
         }
@@ -120,47 +110,14 @@ namespace BrawlLib.Wii.Graphics
     {
         internal Bin32 _data;
 
-        public TexProjection Projection
-        {
-            get => (TexProjection) (_data[1] ? 1 : 0);
-            set => _data[1] = (uint) value != 0;
-        }
+        public TexProjection Projection { get => (TexProjection)(_data[1] ? 1 : 0); set => _data[1] = (uint)value != 0; }
+        public TexInputForm InputForm { get => (TexInputForm)_data[2, 2]; set => _data[2, 2] = (uint)value; }
+        public TexTexgenType TexGenType { get => (TexTexgenType)_data[4, 3]; set => _data[4, 3] = (uint)value; }
+        public TexSourceRow SourceRow { get => (TexSourceRow)_data[7, 5]; set => _data[7, 5] = (uint)value; }
+        public int EmbossSource { get => (int)_data[12, 3]; set => _data[12, 3] = (uint)value; }
+        public int EmbossLight { get => (int)_data[15, 17]; set => _data[15, 17] = (uint)value; }
 
-        public TexInputForm InputForm
-        {
-            get => (TexInputForm) _data[2, 2];
-            set => _data[2, 2] = (uint) value;
-        }
-
-        public TexTexgenType TexGenType
-        {
-            get => (TexTexgenType) _data[4, 3];
-            set => _data[4, 3] = (uint) value;
-        }
-
-        public TexSourceRow SourceRow
-        {
-            get => (TexSourceRow) _data[7, 5];
-            set => _data[7, 5] = (uint) value;
-        }
-
-        public int EmbossSource
-        {
-            get => (int) _data[12, 3];
-            set => _data[12, 3] = (uint) value;
-        }
-
-        public int EmbossLight
-        {
-            get => (int) _data[15, 17];
-            set => _data[15, 17] = (uint) value;
-        }
-
-        public XFTexMtxInfo(uint value)
-        {
-            _data = value;
-        }
-
+        public XFTexMtxInfo(uint value) { _data = value; }
         public XFTexMtxInfo(
             TexProjection projection,
             TexInputForm inputForm,
@@ -180,9 +137,7 @@ namespace BrawlLib.Wii.Graphics
 
         public override string ToString()
         {
-            return string.Format(
-                "Projection: {0} | Input Form: {1} | Texgen Type: {2} | Source Row: {3} | Emboss Source: {4} | Emboss Light: {5}",
-                Projection, InputForm, TexGenType, SourceRow, EmbossSource, EmbossLight);
+            return string.Format("Projection: {0} | Input Form: {1} | Texgen Type: {2} | Source Row: {3} | Emboss Source: {4} | Emboss Light: {5}", Projection, InputForm, TexGenType, SourceRow, EmbossSource, EmbossLight);
         }
     }
 
@@ -201,23 +156,22 @@ namespace BrawlLib.Wii.Graphics
         public XFDualTex(uint value)
         {
             _pad0 = _pad1 = 0;
-            _dualMtx = (byte) (value & 0xFF);
-            _normalEnable = (byte) ((value >> 8) & 0xFF);
+            _dualMtx = (byte)(value & 0xFF);
+            _normalEnable = (byte)((value >> 8) & 0xFF);
         }
 
         public XFDualTex(int mtx, int norm)
         {
             _pad0 = _pad1 = 0;
-            _dualMtx = (byte) mtx;
-            _normalEnable = (byte) norm;
+            _dualMtx = (byte)mtx;
+            _normalEnable = (byte)norm;
         }
 
-        public uint Value => (uint) ((_normalEnable << 8) | _dualMtx);
+        public uint Value => (uint)((_normalEnable << 8) | _dualMtx);
 
         public override string ToString()
         {
-            return string.Format("Normal Enable: {0} | Dual Matrix: {1}", _normalEnable != 0 ? "True" : "False",
-                _dualMtx);
+            return string.Format("Normal Enable: {0} | Dual Matrix: {1}", _normalEnable != 0 ? "True" : "False", _dualMtx);
         }
     }
 
@@ -294,45 +248,23 @@ namespace BrawlLib.Wii.Graphics
     {
         internal buint _data;
 
-        public int ColorCount
-        {
-            get => (int) (_data & 3);
-            set => _data = (_data & 0xFFFFFFFC) | ((uint) value & 3);
-        }
+        public int ColorCount { get => (int)(_data & 3); set => _data = _data & 0xFFFFFFFC | ((uint)value & 3); }
+        public int TextureCount { get => (int)(_data >> 4 & 0xF); set => _data = _data & 0xFFFFFF0F | (((uint)value & 0xF) << 4); }
+        public XFNormalFormat NormalFormat { get => (XFNormalFormat)(_data >> 2 & 3); set => _data = _data & 0xFFFFFFF3 | (((uint)value & 3) << 2); }
 
-        public int TextureCount
-        {
-            get => (int) ((_data >> 4) & 0xF);
-            set => _data = (_data & 0xFFFFFF0F) | (((uint) value & 0xF) << 4);
-        }
-
-        public XFNormalFormat NormalFormat
-        {
-            get => (XFNormalFormat) ((_data >> 2) & 3);
-            set => _data = (_data & 0xFFFFFFF3) | (((uint) value & 3) << 2);
-        }
-
-        public XFVertexSpecs(uint raw)
-        {
-            _data = raw;
-        }
-
+        public XFVertexSpecs(uint raw) { _data = raw; }
         public XFVertexSpecs(int colors, int textures, XFNormalFormat normalFormat)
-        {
-            _data = (((uint) textures & 0xF) << 4) | (((uint) normalFormat & 3) << 2) | ((uint) colors & 3);
-        }
+        { _data = (((uint)textures & 0xF) << 4) | (((uint)normalFormat & 3) << 2) | ((uint)colors & 3); }
 
         public override string ToString()
         {
-            return string.Format("ColorCount: {0} | TextureCount: {1} | Normal Format: {2} [Data: {3}] ",
-                ColorCount.ToString(), TextureCount.ToString(), NormalFormat.ToString(), (int) _data);
+            return string.Format("ColorCount: {0} | TextureCount: {1} | Normal Format: {2} [Data: {3}] ", ColorCount.ToString(), TextureCount.ToString(), NormalFormat.ToString(), (int)_data);
         }
     }
 
     //This is used by polygons to enable element arrays (I believe)
     //There doesn't seem to be a native spec for this
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [Serializable, StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct XFArrayFlags
     {
         internal Bin32 _data;
@@ -359,86 +291,55 @@ namespace BrawlLib.Wii.Graphics
         //0000 1000 0000 0000 0000 0000 Tex6
         //0001 0000 0000 0000 0000 0000 Tex7
 
-        public bool HasPosMatrix
-        {
-            get => _data[0];
-            set => _data[0] = value;
-        }
+        public bool HasPosMatrix { get => _data[0]; set => _data[0] = value; }
+        public bool HasPositions { get => _data[9]; set => _data[9] = value; }
+        public bool HasNormals { get => _data[10]; set => _data[10] = value; }
 
-        public bool HasPositions
-        {
-            get => _data[9];
-            set => _data[9] = value;
-        }
+        public bool GetHasTexMatrix(int index) { return _data[index + 1]; }
+        public void SetHasTexMatrix(int index, bool exists) { _data[index + 1] = exists; }
 
-        public bool HasNormals
-        {
-            get => _data[10];
-            set => _data[10] = value;
-        }
+        public bool GetHasColor(int index) { return _data[index + 11]; }
+        public void SetHasColor(int index, bool exists) { _data[index + 11] = exists; }
 
-        public bool GetHasTexMatrix(int index)
-        {
-            return _data[index + 1];
-        }
-
-        public void SetHasTexMatrix(int index, bool exists)
-        {
-            _data[index + 1] = exists;
-        }
-
-        public bool GetHasColor(int index)
-        {
-            return _data[index + 11];
-        }
-
-        public void SetHasColor(int index, bool exists)
-        {
-            _data[index + 11] = exists;
-        }
-
-        public bool GetHasUVs(int index)
-        {
-            return _data[index + 13];
-        }
-
-        public void SetHasUVs(int index, bool exists)
-        {
-            _data[index + 13] = exists;
-        }
+        public bool GetHasUVs(int index) { return _data[index + 13]; }
+        public void SetHasUVs(int index, bool exists) { _data[index + 13] = exists; }
 
         public override string ToString()
         {
-            var texmtx = "";
-            var hasTex = false;
-            for (var i = 0; i < 8; i++)
+            string texmtx = "";
+            bool hasTex = false;
+            for (int i = 0; i < 8; i++)
+            {
                 if (GetHasTexMatrix(i))
                 {
                     hasTex = true;
-                    texmtx += i + " ";
+                    texmtx += i.ToString() + " ";
                 }
+            }
 
-            var uvs = "";
-            var hasUVs = false;
-            for (var i = 0; i < 8; i++)
-                if (GetHasUVs(i))
+            string uvs = "";
+            bool hasUVs = false;
+            for (int i = 0; i < 8; i++)
+            {
+                if (GetHasUVs(i) == true)
                 {
                     hasUVs = true;
-                    uvs += i + " ";
+                    uvs += i.ToString() + " ";
                 }
+            }
 
-            var colors = "";
-            var hasColors = false;
-            for (var i = 0; i < 2; i++)
-                if (GetHasUVs(i))
+            string colors = "";
+            bool hasColors = false;
+            for (int i = 0; i < 2; i++)
+            {
+                if (GetHasUVs(i) == true)
                 {
                     hasColors = true;
-                    colors += i + " ";
+                    colors += i.ToString() + " ";
                 }
+            }
 
-            return string.Format("PosMtx: {0} | TexMtx: {1}| Positions: {2} | Normals: {3} | Colors: {5} | UVs: {4}",
-                HasPosMatrix ? "True" : "False", hasTex ? texmtx : "False ", HasPositions ? "True" : "False",
-                HasNormals ? "True" : "False", hasUVs ? uvs : "False ", hasColors ? colors : "False ");
+            return string.Format("PosMtx: {0} | TexMtx: {1}| Positions: {2} | Normals: {3} | Colors: {5} | UVs: {4}", HasPosMatrix ? "True" : "False", hasTex ? texmtx : "False ", HasPositions ? "True" : "False", HasNormals ? "True" : "False", hasUVs ? uvs : "False ", hasColors ? colors : "False ");
         }
     }
 

@@ -4,25 +4,17 @@ namespace System.Windows.Forms
 {
     public class NumericInputBox : TextBox
     {
-        public bool _integer;
-        public bool _integral;
-        public float _maxValue = float.MaxValue;
-
-        public float _minValue = float.MinValue;
-        public float _previousValue;
+        public float _previousValue = 0.0f;
         public float? _value;
-
-        public NumericInputBox()
-        {
-            UpdateText();
-        }
-
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float Value
         {
             get
             {
-                if (_value == null) Apply();
+                if (_value == null)
+                {
+                    Apply();
+                }
 
                 return _value.Value;
             }
@@ -33,29 +25,17 @@ namespace System.Windows.Forms
             }
         }
 
-        public float MinimumValue
-        {
-            get => _minValue;
-            set => _minValue = value;
-        }
+        public NumericInputBox() { UpdateText(); }
 
-        public float MaximumValue
-        {
-            get => _maxValue;
-            set => _maxValue = value;
-        }
+        public float MinimumValue { get => _minValue; set => _minValue = value; }
+        public float MaximumValue { get => _maxValue; set => _maxValue = value; }
+        public bool Integral { get => _integral; set => _integral = value; }
+        public bool Integer { get => _integer; set => _integer = value; }
 
-        public bool Integral
-        {
-            get => _integral;
-            set => _integral = value;
-        }
-
-        public bool Integer
-        {
-            get => _integer;
-            set => _integer = value;
-        }
+        public float _minValue = float.MinValue;
+        public float _maxValue = float.MaxValue;
+        public bool _integral = false;
+        public bool _integer = false;
 
         public event EventHandler ValueChanged;
 
@@ -103,7 +83,6 @@ namespace System.Windows.Forms
                             e.Handled = true;
                             e.SuppressKeyPress = true;
                         }
-
                         if (e.Shift)
                         {
                             Text = (val - 180f).Clamp(_minValue, _maxValue).ToString();
@@ -112,7 +91,6 @@ namespace System.Windows.Forms
                             e.SuppressKeyPress = true;
                         }
                     }
-
                     break;
 
                 case Keys.Right:
@@ -125,7 +103,6 @@ namespace System.Windows.Forms
                             e.Handled = true;
                             e.SuppressKeyPress = true;
                         }
-
                         if (e.Shift)
                         {
                             Text = (val + 180f).Clamp(_minValue, _maxValue).ToString();
@@ -134,20 +111,22 @@ namespace System.Windows.Forms
                             e.SuppressKeyPress = true;
                         }
                     }
-
                     break;
 
                 case Keys.Up:
                     if (float.TryParse(Text, out val))
                     {
                         if (e.Shift || _integral)
+                        {
                             Text = (val + 1.0f).Clamp(_minValue, _maxValue).ToString();
+                        }
                         else
+                        {
                             Text = (val + 0.1f).Clamp(_minValue, _maxValue).ToString();
+                        }
 
                         Apply();
                     }
-
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                     break;
@@ -156,26 +135,35 @@ namespace System.Windows.Forms
                     if (float.TryParse(Text, out val))
                     {
                         if (e.Shift || _integral)
+                        {
                             Text = (val - 1.0f).Clamp(_minValue, _maxValue).ToString();
+                        }
                         else
+                        {
                             Text = (val - 0.1f).Clamp(_minValue, _maxValue).ToString();
+                        }
 
                         Apply();
                     }
-
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.Subtract:
                 case Keys.OemMinus:
-                    if (SelectionStart != 0 || Text.IndexOf('-') != -1) e.SuppressKeyPress = true;
+                    if ((SelectionStart != 0) || (Text.IndexOf('-') != -1))
+                    {
+                        e.SuppressKeyPress = true;
+                    }
 
                     break;
 
                 case Keys.Decimal:
                 case Keys.OemPeriod:
-                    if (Text.IndexOf('.') != -1 || Integer) e.SuppressKeyPress = true;
+                    if (Text.IndexOf('.') != -1 || Integer == true)
+                    {
+                        e.SuppressKeyPress = true;
+                    }
 
                     break;
 
@@ -192,18 +180,22 @@ namespace System.Windows.Forms
 
                 case Keys.X:
                     if (e.Control)
+                    {
                         if (float.TryParse(Text, out val))
                         {
                             val = float.NaN;
                             Text = val.ToString();
                             Apply();
                         }
-
+                    }
                     break;
 
                 case Keys.V:
                 case Keys.C:
-                    if (!e.Control) goto default;
+                    if (!e.Control)
+                    {
+                        goto default;
+                    }
 
                     break;
                 case Keys.Delete:
@@ -213,24 +205,30 @@ namespace System.Windows.Forms
                     e.SuppressKeyPress = true;
                     break;
             }
-
             base.OnKeyDown(e);
         }
 
         private void UpdateText()
         {
             if (_value == float.NaN)
+            {
                 Text = "";
+            }
             else
+            {
                 Text = _value.ToString();
+            }
         }
 
         private void Apply()
         {
-            var val = _value ?? 0.0f;
-            var val2 = (int) val;
+            float val = _value ?? 0.0f;
+            int val2 = (int)val;
 
-            if (_value != null && val.ToString() == Text) return;
+            if (_value != null && val.ToString() == Text)
+            {
+                return;
+            }
 
             if (Text == "")
             {

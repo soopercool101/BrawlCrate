@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.SSBBTypes
 {
@@ -10,67 +10,71 @@ namespace BrawlLib.SSBBTypes
     {
         #region Variables & Properties
 
-        [Browsable(true)]
-        [Category("Sakurai Archive Node")]
+        [Browsable(true), Category("Sakurai Archive Node")]
         public int DataSize => _dataSize;
-
         public int _dataSize;
 
-        [Browsable(false)] public bool Initializing => _initializing;
-
-        public bool _initializing;
+        [Browsable(false)]
+        public bool Initializing => _initializing;
+        public bool _initializing = false;
 
         /// <summary>
-        ///     Returns the address after the moveset header that all offsets use as a base.
-        ///     This should only be used when parsing or writing.
+        /// Returns the address after the moveset header that all offsets use as a base.
+        /// This should only be used when parsing or writing.
         /// </summary>
         [Browsable(false)]
-        public VoidPtr BaseAddress =>
-            Builder == null ? WorkingUncompressed.Address + SakuraiArchiveHeader.Size : Builder._baseAddress;
+        public VoidPtr BaseAddress => Builder == null ? WorkingUncompressed.Address + SakuraiArchiveHeader.Size : Builder._baseAddress;
 
         /// <summary>
-        ///     Returns all entries in the moveset that have had a property changed.
-        ///     Changed entries do not necessarily mean that a rebuild is needed.
+        /// Returns all entries in the moveset that have had a property changed.
+        /// Changed entries do not necessarily mean that a rebuild is needed.
         /// </summary>
         [Browsable(false)]
-        public BindingList<SakuraiEntryNode> ChangedEntries { get; private set; } = new BindingList<SakuraiEntryNode>();
+        public BindingList<SakuraiEntryNode> ChangedEntries => _changedEntries;
+        private BindingList<SakuraiEntryNode> _changedEntries = new BindingList<SakuraiEntryNode>();
 
         /// <summary>
-        ///     Returns all entries in the moveset that have have had a data size change
-        ///     A rebuild is needed. Can perform an inject, or can rebuild entire moveset.
+        /// Returns all entries in the moveset that have have had a data size change
+        /// A rebuild is needed. Can perform an inject, or can rebuild entire moveset.
         /// </summary>
         [Browsable(false)]
-        public BindingList<SakuraiEntryNode> RebuildEntries { get; private set; } = new BindingList<SakuraiEntryNode>();
+        public BindingList<SakuraiEntryNode> RebuildEntries => _rebuildEntries;
+        private BindingList<SakuraiEntryNode> _rebuildEntries = new BindingList<SakuraiEntryNode>();
 
         /// <summary>
-        ///     True if the moveset file has had something added or removed and must be rebuilt.
+        /// True if the moveset file has had something added or removed and must be rebuilt.
         /// </summary>
         [Browsable(false)]
-        public bool RebuildNeeded { get; set; } = false;
+        public bool RebuildNeeded { get => _rebuildNeeded; set => _rebuildNeeded = value; }
+        private bool _rebuildNeeded = false;
 
         /// <summary>
-        ///     List of external subroutines located in Fighter.pac.
+        /// List of external subroutines located in Fighter.pac.
         /// </summary>
         [Browsable(false)]
-        public BindingList<TableEntryNode> ReferenceList { get; private set; }
+        public BindingList<TableEntryNode> ReferenceList => _referenceList;
+        private BindingList<TableEntryNode> _referenceList;
 
         /// <summary>
-        ///     List of important entries located in this moveset file.
+        /// List of important entries located in this moveset file.
         /// </summary>
         [Browsable(false)]
-        public BindingList<TableEntryNode> SectionList { get; private set; }
+        public BindingList<TableEntryNode> SectionList => _sectionList;
+        private BindingList<TableEntryNode> _sectionList;
 
         /// <summary>
-        ///     Provides the size of any entry based on its offset.
+        /// Provides the size of any entry based on its offset.
         /// </summary>
         [Browsable(false)]
-        public SortedList<int, int> LookupSizes { get; private set; }
+        public SortedList<int, int> LookupSizes => _lookupSizes;
+        private SortedList<int, int> _lookupSizes;
 
         /// <summary>
-        ///     Provides easy access to any entry in the moveset using its original offset.
-        ///     Use only when parsing.
+        /// Provides easy access to any entry in the moveset using its original offset.
+        /// Use only when parsing.
         /// </summary>
-        public SortedDictionary<int, SakuraiEntryNode> EntryCache { get; private set; }
+        public SortedDictionary<int, SakuraiEntryNode> EntryCache => _entryCache;
+        private SortedDictionary<int, SakuraiEntryNode> _entryCache;
 
         public List<SakuraiEntryNode> _postParseEntries;
 
@@ -84,7 +88,7 @@ namespace BrawlLib.SSBBTypes
             //This enables some functions for use.
             _initializing = true;
 
-            var hdr = (SakuraiArchiveHeader*) WorkingUncompressed.Address;
+            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*)WorkingUncompressed.Address;
 
             InitData(hdr);
             GetLookupSizes(hdr);
@@ -94,9 +98,8 @@ namespace BrawlLib.SSBBTypes
 
             return _initializing = false;
         }
-
         /// <summary>
-        ///     Initializes all variables.
+        /// Initializes all variables.
         /// </summary>
         protected virtual void InitData(SakuraiArchiveHeader* hdr)
         {
@@ -115,89 +118,91 @@ namespace BrawlLib.SSBBTypes
 #endif
 
             //Create lists
-            ChangedEntries = new BindingList<SakuraiEntryNode>();
-            RebuildEntries = new BindingList<SakuraiEntryNode>();
-            ReferenceList = new BindingList<TableEntryNode>();
-            SectionList = new BindingList<TableEntryNode>();
-            LookupSizes = new SortedList<int, int>();
-            EntryCache = new SortedDictionary<int, SakuraiEntryNode>();
+            _changedEntries = new BindingList<SakuraiEntryNode>();
+            _rebuildEntries = new BindingList<SakuraiEntryNode>();
+            _referenceList = new BindingList<TableEntryNode>();
+            _sectionList = new BindingList<TableEntryNode>();
+            _lookupSizes = new SortedList<int, int>();
+            _entryCache = new SortedDictionary<int, SakuraiEntryNode>();
             _postParseEntries = new List<SakuraiEntryNode>();
         }
-
         /// <summary>
-        ///     Creates a table of offsets with a corresponding data size at each offset.
+        /// Creates a table of offsets with a corresponding data size at each offset.
         /// </summary>
         private void GetLookupSizes(SakuraiArchiveHeader* hdr)
         {
             //Read lookup offsets first and use them to get entry sizes at each offset.
-            var lookup = hdr->LookupEntries;
+            bint* lookup = hdr->LookupEntries;
             //First add each offset to the dictionary with size of 0.
             //The dictionary will sort the offsets automatically, in case they aren't already.
-            for (var i = 0; i < hdr->_lookupEntryCount; i++)
+            for (int i = 0; i < hdr->_lookupEntryCount; i++)
             {
-                int w = *(bint*) Address(lookup[i]);
-                if (!LookupSizes.ContainsKey(w)) LookupSizes.Add(w, 0);
+                int w = *(bint*)Address(lookup[i]);
+                if (!_lookupSizes.ContainsKey(w))
+                {
+                    _lookupSizes.Add(w, 0);
+                }
             }
-
             //Now go through each offset and calculate the size with the offset difference.
-            var prev = 0;
-            var first = true;
-            var t = LookupSizes.Keys.ToArray();
-            for (var i = 0; i < t.Length; i++)
+            int prev = 0; bool first = true;
+            int[] t = _lookupSizes.Keys.ToArray();
+            for (int i = 0; i < t.Length; i++)
             {
-                var off = t[i];
+                int off = t[i];
                 if (first)
+                {
                     first = false;
+                }
                 else
-                    LookupSizes[prev] = off - prev;
+                {
+                    _lookupSizes[prev] = off - prev;
+                }
 
                 prev = off;
             }
-
             //The last entry in the moveset file goes right up to the lookup offsets.
-            LookupSizes[prev] = Offset(lookup) - prev;
+            _lookupSizes[prev] = Offset(lookup) - prev;
         }
-
         /// <summary>
-        ///     Reads external subroutine references
+        /// Reads external subroutine references
         /// </summary>
         private void ParseExternals(SakuraiArchiveHeader* hdr)
         {
-            var stringTable = hdr->StringTable;
+            sStringTable* stringTable = hdr->StringTable;
 
             //Parse references
             int numRefs = hdr->_externalSubRoutineCount;
             if (numRefs > 0)
             {
-                var entries = hdr->ExternalSubRoutines;
-                for (var i = 0; i < numRefs; i++)
+                sStringEntry* entries = hdr->ExternalSubRoutines;
+                for (int i = 0; i < numRefs; i++)
                 {
-                    var e = Parse<TableEntryNode>(entries[i]._dataOffset);
+                    TableEntryNode e = Parse<TableEntryNode>(entries[i]._dataOffset);
                     e._name = stringTable->GetString(entries[i]._stringOffset);
-                    ReferenceList.Add(e);
+                    _referenceList.Add(e);
                 }
             }
         }
 
         protected virtual void ParseInternals(SakuraiArchiveHeader* hdr)
         {
-            var stringTable = hdr->StringTable;
+            sStringTable* stringTable = hdr->StringTable;
 
-            SectionList = new BindingList<TableEntryNode>();
+            _sectionList = new BindingList<TableEntryNode>();
 
             //Parse sections
             int numSections = hdr->_sectionCount;
             if (numSections > 0)
             {
-                var entries = hdr->Sections;
+                sStringEntry* entries = hdr->Sections;
 
-                var _specialSections = new List<TableEntryNode>();
-                for (var i = 0; i < numSections; i++)
+                List<TableEntryNode> _specialSections = new List<TableEntryNode>();
+                for (int i = 0; i < numSections; i++)
                 {
                     int offset = entries[i]._dataOffset;
-                    var name = stringTable->GetString(entries[i]._stringOffset);
+                    string name = stringTable->GetString(entries[i]._stringOffset);
 
-                    var section = TableEntryNode.GetRaw(name);
+                    TableEntryNode section = TableEntryNode.GetRaw(name);
 
                     //If null, this type of section doesn't have a dedicated class
                     if (section == null)
@@ -207,7 +212,10 @@ namespace BrawlLib.SSBBTypes
                         section = GetTableEntryNode(name, i);
 
                         //Still unhandled, so initialize as raw
-                        if (section == null) section = Parse<RawDataNode>(offset);
+                        if (section == null)
+                        {
+                            section = Parse<RawDataNode>(offset);
+                        }
                     }
                     else
                     {
@@ -218,11 +226,14 @@ namespace BrawlLib.SSBBTypes
                     section._index = i;
                     section.DataOffsets.Add(offset);
 
-                    SectionList.Add(section);
+                    _sectionList.Add(section);
                 }
 
                 //Now parse any dedicated-class nodes that may reference other sections.
-                foreach (var section in _specialSections) section.ParseSelf(this, null, section.DataOffsets[0]);
+                foreach (TableEntryNode section in _specialSections)
+                {
+                    section.ParseSelf(this, null, section.DataOffsets[0]);
+                }
 
                 HandleSpecialSections(_specialSections);
             }
@@ -235,6 +246,7 @@ namespace BrawlLib.SSBBTypes
 
         protected virtual void HandleSpecialSections(List<TableEntryNode> sections)
         {
+
         }
 
         protected virtual void PostParse()
@@ -242,12 +254,15 @@ namespace BrawlLib.SSBBTypes
             while (_postParseEntries.Count > 0)
             {
                 //Make a copy of the post process nodes
-                var arr = _postParseEntries.ToArray();
+                SakuraiEntryNode[] arr = _postParseEntries.ToArray();
                 //Clear the original array so it can be repopulated
                 _postParseEntries.Clear();
                 //Parse subroutines, etc.
                 //May add more entries to post process
-                foreach (var e in arr) e.PostParse();
+                foreach (SakuraiEntryNode e in arr)
+                {
+                    e.PostParse();
+                }
             }
         }
 
@@ -255,7 +270,6 @@ namespace BrawlLib.SSBBTypes
         {
             public int _offset;
             public int _size;
-
             public Temp(int offset, int size)
             {
                 _offset = offset;
@@ -269,34 +283,47 @@ namespace BrawlLib.SSBBTypes
         //This will allow for sorted offsets and easy indexing of the same entries.
         public static int[] CalculateSizes(int end, bint* hdr, int count, bool data, params int[] ignore)
         {
-            var t = new Temp[count];
-            for (var i = 0; i < count; i++)
+            Temp[] t = new Temp[count];
+            for (int i = 0; i < count; i++)
+            {
                 if (Array.IndexOf(ignore, i) < 0)
+                {
                     t[i] = new Temp(hdr[i], 0);
+                }
                 else
+                {
                     t[i] = null;
+                }
+            }
 
-            if (data) t[2]._offset = 1;
+            if (data)
+            {
+                t[2]._offset = 1;
+            }
 
-            var sorted = t.Where(x => x != null).OrderBy(x => x._offset).ToArray();
-            if (data) t[2]._offset -= 1;
+            Temp[] sorted = t.Where(x => x != null).OrderBy(x => x._offset).ToArray();
+            if (data)
+            {
+                t[2]._offset -= 1;
+            }
 
-            for (var i = 0; i < sorted.Length; i++)
-                sorted[i]._size = (i < sorted.Length - 1 ? sorted[i + 1]._offset : end) - sorted[i]._offset;
+            for (int i = 0; i < sorted.Length; i++)
+            {
+                sorted[i]._size = ((i < sorted.Length - 1) ? sorted[i + 1]._offset : end) - sorted[i]._offset;
+            }
 
             return t.Select(x => x._size).ToArray();
         }
 
         /// <summary>
-        ///     Returns a node of the given type at an offset in the moveset file.
+        /// Returns a node of the given type at an offset in the moveset file.
         /// </summary>
         public T Parse<T>(int offset) where T : SakuraiEntryNode
         {
             return SakuraiEntryNode.Parse<T>(this, null, Address(offset));
         }
-
         /// <summary>
-        ///     Returns a node of the given type at an address in the moveset file.
+        /// Returns a node of the given type at an address in the moveset file.
         /// </summary>
         public T Parse<T>(VoidPtr address) where T : SakuraiEntryNode
         {
@@ -308,43 +335,39 @@ namespace BrawlLib.SSBBTypes
         #region Saving
 
         /// <summary>
-        ///     Returns the moveset builder of the moveset currently being written.
-        ///     This can only be used while calculating the size or rebuilding a moveset.
+        /// Returns the moveset builder of the moveset currently being written.
+        /// This can only be used while calculating the size or rebuilding a moveset.
         /// </summary>
         public static SakuraiArchiveBuilder Builder => _currentlyBuilding == null ? null : _currentlyBuilding._builder;
-
-        public static SakuraiArchiveNode _currentlyBuilding;
+        public static SakuraiArchiveNode _currentlyBuilding = null;
 
         public bool IsRebuilding => _builder != null && _builder.IsRebuilding;
         public bool IsCalculatingSize => _builder != null && _builder.IsCalculatingSize;
 
         internal SakuraiArchiveBuilder _builder;
-
         public override int OnCalculateSize(bool force)
         {
             _currentlyBuilding = this;
-            var size = (_builder = new SakuraiArchiveBuilder(this)).GetSize();
+            int size = (_builder = new SakuraiArchiveBuilder(this)).GetSize();
             _currentlyBuilding = null;
             return size;
         }
-
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _currentlyBuilding = this;
             _builder.Write(this, address, length);
             _currentlyBuilding = null;
             _builder = null;
-            ChangedEntries.Clear();
-            RebuildEntries.Clear();
+            _changedEntries.Clear();
+            _rebuildEntries.Clear();
         }
 
         #endregion
 
         #region Parse functions
-
         /// <summary>
-        ///     Returns the offset of the given address from the base address.
-        ///     Use this only when parsing or writing.
+        /// Returns the offset of the given address from the base address.
+        /// Use this only when parsing or writing.
         /// </summary>
         public int Offset(VoidPtr address)
         {
@@ -356,10 +379,9 @@ namespace BrawlLib.SSBBTypes
 #endif
             return address - BaseAddress;
         }
-
         /// <summary>
-        ///     Returns the address at the given offset from the base address.
-        ///     Use this only when parsing or writing.
+        /// Returns the address at the given offset from the base address.
+        /// Use this only when parsing or writing.
         /// </summary>
         public VoidPtr Address(int offset)
         {
@@ -371,10 +393,9 @@ namespace BrawlLib.SSBBTypes
 #endif
             return BaseAddress + offset;
         }
-
         /// <summary>
-        ///     Returns the (assumed) size of the data at the given offset.
-        ///     Use this only when parsing.
+        /// Returns the (assumed) size of the data at the given offset.
+        /// Use this only when parsing.
         /// </summary>
         public int GetSize(int offset)
         {
@@ -384,18 +405,16 @@ namespace BrawlLib.SSBBTypes
                 throw new Exception("Not initializing.");
             }
 #endif
-            if (LookupSizes.ContainsKey(offset))
+            if (_lookupSizes.ContainsKey(offset))
             {
-                var size = LookupSizes[offset];
-                LookupSizes.Remove(offset);
+                int size = _lookupSizes[offset];
+                _lookupSizes.Remove(offset);
                 return size;
             }
-
             return -1;
         }
-
         /// <summary>
-        ///     Use this only when parsing.
+        /// Use this only when parsing.
         /// </summary>
         public TableEntryNode TryGetExternal(int offset)
         {
@@ -405,21 +424,30 @@ namespace BrawlLib.SSBBTypes
                 throw new Exception("Not initializing.");
             }
 #endif
-            foreach (var e in ReferenceList)
-            foreach (var i in e.DataOffsets)
-                if (i == offset)
-                    return e;
+            foreach (TableEntryNode e in _referenceList)
+            {
+                foreach (int i in e.DataOffsets)
+                {
+                    if (i == offset)
+                    {
+                        return e;
+                    }
+                }
+            }
 
-            foreach (var e in SectionList)
+            foreach (TableEntryNode e in _sectionList)
+            {
                 if (e != null && e.DataOffsets.Count > 0 && e.DataOffsets[0] == offset)
+                {
                     return e;
+                }
+            }
 
             return null;
         }
-
         /// <summary>
-        ///     Returns any entry at the given offset that has been parsed already.
-        ///     Use this only when parsing.
+        /// Returns any entry at the given offset that has been parsed already.
+        /// Use this only when parsing.
         /// </summary>
         public SakuraiEntryNode GetEntry(int offset)
         {
@@ -429,11 +457,13 @@ namespace BrawlLib.SSBBTypes
                 throw new Exception("Not initializing.");
             }
 #endif
-            if (EntryCache.ContainsKey(offset)) return EntryCache[offset];
+            if (_entryCache.ContainsKey(offset))
+            {
+                return _entryCache[offset];
+            }
 
             return null;
         }
-
         #endregion
     }
 
@@ -456,6 +486,6 @@ namespace BrawlLib.SSBBTypes
         SFX = 2,
         Other = 3,
         Entry = 0,
-        Exit = 1
+        Exit = 1,
     }
 }

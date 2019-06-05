@@ -1,7 +1,6 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Collections.Generic;
-using System.Xml;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -10,17 +9,19 @@ namespace BrawlLib.SSBB.ResourceNodes
     //is placed in the overall class list directly after the class it first appears in
     public unsafe class hkClassEnumNode : HavokClassNode
     {
-        internal hkClassEnum* Header => (hkClassEnum*) WorkingUncompressed.Address;
+        internal hkClassEnum* Header => (hkClassEnum*)WorkingUncompressed.Address;
 
         public override bool OnInitialize()
         {
             _className = "hkClassEnum";
-            _name = new string((sbyte*) Header->_namePtr.OffsetAddress);
+            _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
 
-            var size = 16;
-            var entry = (HavokClassEnumEntry*) Header->_entriesPtr.OffsetAddress;
-            for (var i = 0; i < Header->_enumCount; i++, entry++)
-                size += 8 + (new string((sbyte*) entry->_namePtr.OffsetAddress).Length + 1).Align(0x10);
+            int size = 16;
+            HavokClassEnumEntry* entry = (HavokClassEnumEntry*)Header->_entriesPtr.OffsetAddress;
+            for (int i = 0; i < Header->_enumCount; i++, entry++)
+            {
+                size += 8 + (new string((sbyte*)entry->_namePtr.OffsetAddress).Length + 1).Align(0x10);
+            }
 
             SetSizeInternal(size);
 
@@ -29,11 +30,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            var entry = (HavokClassEnumEntry*) Header->_entriesPtr.OffsetAddress;
-            for (var i = 0; i < Header->_enumCount; i++, entry++) new hkClassEnumEntryNode().Initialize(this, entry, 8);
+            HavokClassEnumEntry* entry = (HavokClassEnumEntry*)Header->_entriesPtr.OffsetAddress;
+            for (int i = 0; i < Header->_enumCount; i++, entry++)
+            {
+                new hkClassEnumEntryNode().Initialize(this, entry, 8);
+            }
         }
 
-        public override void WriteParams(XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
+        public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
             writer.WriteStartElement("hkparam");
             writer.WriteAttributeString("name", "name");
@@ -55,7 +59,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         writer.WriteStartElement("hkparam");
                         writer.WriteAttributeString("name", "name");
-                        writer.WriteString(e.Name);
+                        writer.WriteString(e.Name.ToString());
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -64,16 +68,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             writer.WriteEndElement();
         }
     }
-
     public unsafe class hkClassEnumEntryNode : HavokEntryNode
     {
-        internal HavokClassEnumEntry* Header => (HavokClassEnumEntry*) WorkingUncompressed.Address;
-        public int Value { get; private set; }
+        internal HavokClassEnumEntry* Header => (HavokClassEnumEntry*)WorkingUncompressed.Address;
+
+        private int _value;
+        public int Value => _value;
 
         public override bool OnInitialize()
         {
-            _name = new string((sbyte*) Header->_namePtr.OffsetAddress);
-            Value = Header->_value;
+            _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
+            _value = Header->_value;
 
             return false;
         }

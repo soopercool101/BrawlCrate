@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using BrawlLib.Modeling;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Graphics;
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace BrawlLib.Wii.Models
 {
     public unsafe delegate void ElementDecoder(ref byte* pIn, ref byte* pOut, float scale);
-
     public unsafe class ElementCodec
     {
-        public enum CodecType
+        public enum CodecType : int
         {
             S = 0,
             ST = 5,
@@ -21,7 +20,7 @@ namespace BrawlLib.Wii.Models
 
         #region Decoders
 
-        public static ElementDecoder[] Decoders =
+        public static ElementDecoder[] Decoders = new ElementDecoder[]
         {
             //Element_Input_Output
             Element_Byte_Float2, //S
@@ -48,97 +47,88 @@ namespace BrawlLib.Wii.Models
 
         public static void Element_Byte_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = *pIn++ * scale;
-            ((float*) pOut)[1] = 0.0f;
+            ((float*)pOut)[0] = *pIn++ * scale;
+            ((float*)pOut)[1] = 0.0f;
             pOut += 8;
         }
-
         public static void Element_SByte_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = *(sbyte*) pIn++ * scale;
-            ((float*) pOut)[1] = 0.0f;
+            ((float*)pOut)[0] = *(sbyte*)pIn++ * scale;
+            ((float*)pOut)[1] = 0.0f;
             pOut += 8;
         }
-
         public static void Element_wUShort_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = (ushort) ((*pIn++ << 8) | *pIn++) * scale;
-            ((float*) pOut)[1] = 0.0f;
+            ((float*)pOut)[0] = (ushort)((*pIn++ << 8) | *pIn++) * scale;
+            ((float*)pOut)[1] = 0.0f;
             pOut += 8;
         }
-
         public static void Element_wShort_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = (short) ((*pIn++ << 8) | *pIn++) * scale;
-            ((float*) pOut)[1] = 0.0f;
+            ((float*)pOut)[0] = (short)((*pIn++ << 8) | *pIn++) * scale;
+            ((float*)pOut)[1] = 0.0f;
             pOut += 8;
         }
-
         public static void Element_wFloat_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
             float val;
-            var p = (byte*) &val;
+            byte* p = (byte*)&val;
             p[3] = *pIn++;
             p[2] = *pIn++;
             p[1] = *pIn++;
             p[0] = *pIn++;
 
-            ((float*) pOut)[0] = val * scale;
-            ((float*) pOut)[1] = 0.0f;
+            ((float*)pOut)[0] = val * scale;
+            ((float*)pOut)[1] = 0.0f;
             pOut += 8;
         }
 
         public static void Element_Byte2_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = *pIn++ * scale;
-            ((float*) pOut)[1] = *pIn++ * scale;
+            ((float*)pOut)[0] = *pIn++ * scale;
+            ((float*)pOut)[1] = *pIn++ * scale;
             pOut += 8;
         }
-
         public static void Element_SByte2_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = *(sbyte*) pIn++ * scale;
-            ((float*) pOut)[1] = *(sbyte*) pIn++ * scale;
+            ((float*)pOut)[0] = *(sbyte*)pIn++ * scale;
+            ((float*)pOut)[1] = *(sbyte*)pIn++ * scale;
             pOut += 8;
         }
-
         public static void Element_wUShort2_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = (ushort) ((*pIn++ << 8) | *pIn++) * scale;
-            ((float*) pOut)[1] = (ushort) ((*pIn++ << 8) | *pIn++) * scale;
+            ((float*)pOut)[0] = (ushort)((*pIn++ << 8) | *pIn++) * scale;
+            ((float*)pOut)[1] = (ushort)((*pIn++ << 8) | *pIn++) * scale;
             pOut += 8;
         }
-
         public static void Element_wShort2_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
-            ((float*) pOut)[0] = (short) ((*pIn++ << 8) | *pIn++) * scale;
-            ((float*) pOut)[1] = (short) ((*pIn++ << 8) | *pIn++) * scale;
+            ((float*)pOut)[0] = (short)((*pIn++ << 8) | *pIn++) * scale;
+            ((float*)pOut)[1] = (short)((*pIn++ << 8) | *pIn++) * scale;
             pOut += 8;
         }
-
         public static void Element_wFloat2_Float2(ref byte* pIn, ref byte* pOut, float scale)
         {
             float val;
-            var p = (byte*) &val;
+            byte* p = (byte*)&val;
 
-            for (var i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 p[3] = *pIn++;
                 p[2] = *pIn++;
                 p[1] = *pIn++;
                 p[0] = *pIn++;
-                ((float*) pOut)[i] = val * scale;
+                ((float*)pOut)[i] = val * scale;
             }
-
             pOut += 8;
         }
 
         public static void Element_wShort2_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
-            var f = (float*) pOut;
+            float* f = (float*)pOut;
 
-            *f++ = (short) ((*pIn++ << 8) | *pIn++) * scale;
-            *f++ = (short) ((*pIn++ << 8) | *pIn++) * scale;
+            *f++ = (short)((*pIn++ << 8) | *pIn++) * scale;
+            *f++ = (short)((*pIn++ << 8) | *pIn++) * scale;
             *f = 0.0f;
 
             pOut += 12;
@@ -147,95 +137,87 @@ namespace BrawlLib.Wii.Models
         public static void Element_wShort3_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
             short temp;
-            var p = (byte*) &temp;
-            for (var i = 0; i < 3; i++)
+            byte* p = (byte*)&temp;
+            for (int i = 0; i < 3; i++)
             {
                 p[1] = *pIn++;
                 p[0] = *pIn++;
-                *(float*) pOut = temp * scale;
+                *(float*)pOut = temp * scale;
                 pOut += 4;
             }
         }
-
         public static void Element_wUShort2_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
             ushort temp;
-            var p = (byte*) &temp;
-            for (var i = 0; i < 3; i++)
+            byte* p = (byte*)&temp;
+            for (int i = 0; i < 3; i++)
             {
                 if (i == 2)
                 {
-                    *(float*) pOut = 0.0f;
+                    *(float*)pOut = 0.0f;
                 }
                 else
                 {
                     p[1] = *pIn++;
                     p[0] = *pIn++;
-                    *(float*) pOut = temp * scale;
+                    *(float*)pOut = temp * scale;
                 }
-
                 pOut += 4;
             }
         }
-
         public static void Element_wUShort3_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
             ushort temp;
-            var p = (byte*) &temp;
-            for (var i = 0; i < 3; i++)
+            byte* p = (byte*)&temp;
+            for (int i = 0; i < 3; i++)
             {
                 p[1] = *pIn++;
                 p[0] = *pIn++;
-                *(float*) pOut = temp * scale;
+                *(float*)pOut = temp * scale;
                 pOut += 4;
             }
         }
-
         public static void Element_Byte2_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
-            for (var i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                *(float*) pOut = i == 2 ? 0.0f : *pIn++ * scale;
+                *(float*)pOut = (i == 2) ? 0.0f : *pIn++ * scale;
                 pOut += 4;
             }
         }
-
         public static void Element_Byte3_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
-            for (var i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                *(float*) pOut = *pIn++ * scale;
+                *(float*)pOut = *pIn++ * scale;
                 pOut += 4;
             }
         }
-
         public static void Element_SByte2_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
-            for (var i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                *(float*) pOut = i == 2 ? 0.0f : *(sbyte*) pIn++ * scale;
+                *(float*)pOut = (i == 2) ? 0.0f : *(sbyte*)pIn++ * scale;
                 pOut += 4;
             }
         }
-
         public static void Element_SByte3_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
-            for (var i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
-                *(float*) pOut = *(sbyte*) pIn++ * scale;
+                *(float*)pOut = *(sbyte*)pIn++ * scale;
                 pOut += 4;
             }
         }
-
         public static void Element_wFloat2_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
             float temp;
-            var p = (byte*) &temp;
-            for (var i = 0; i < 3; i++)
+            byte* p = (byte*)&temp;
+            for (int i = 0; i < 3; i++)
             {
                 if (i == 2)
                 {
-                    *(float*) pOut = 0.0f;
+                    *(float*)pOut = 0.0f;
                 }
                 else
                 {
@@ -243,58 +225,41 @@ namespace BrawlLib.Wii.Models
                     p[2] = *pIn++;
                     p[1] = *pIn++;
                     p[0] = *pIn++;
-                    *(float*) pOut = temp;
+                    *(float*)pOut = temp;
                 }
-
                 pOut += 4;
             }
         }
-
         public static void Element_wFloat3_Float3(ref byte* pIn, ref byte* pOut, float scale)
         {
             float val;
-            var p = (byte*) &val;
-            for (var i = 0; i < 3; i++)
+            byte* p = (byte*)&val;
+            for (int i = 0; i < 3; i++)
             {
                 p[3] = *pIn++;
                 p[2] = *pIn++;
                 p[1] = *pIn++;
                 p[0] = *pIn++;
-                *(float*) pOut = val;
+                *(float*)pOut = val;
                 pOut += 4;
             }
         }
 
         #endregion
+
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe class ElementDescriptor
     {
-        public enum DecodeOp
-        {
-            End = 0,
-            PosWeight,
-            TexMtx0,
-            TexMtx1,
-            TexMtx2,
-            TexMtx3,
-            TexMtx4,
-            TexMtx5,
-            TexMtx6,
-            TexMtx7,
-            ElementDirect,
-            ElementIndexed
-        }
-
-        private readonly ushort[] Nodes;
-        public List<List<Facepoint>> _points;
-        public byte[] Commands;
-        public int[] Defs;
-        public bool[] HasData;
-        public List<int> RemapTable;
         public int Stride;
         public bool Weighted;
+        public bool[] HasData;
+        public byte[] Commands;
+        public int[] Defs;
+        private readonly ushort[] Nodes;
+        public List<int> RemapTable;
+        public List<List<Facepoint>> _points;
 
         public ElementDescriptor()
         {
@@ -399,10 +364,10 @@ namespace BrawlLib.Wii.Models
             int format; //0 for direct, 1 for byte, 2 for short
 
             //Read element descriptor from polygon display list
-            var Definitons = polygon->DefList;
+            MDL0PolygonDefs* Definitons = polygon->DefList;
 
-            var fmtLo = (int) Definitons->VtxFmtLo;
-            var fmtHi = (int) Definitons->VtxFmtHi;
+            int fmtLo = (int)Definitons->VtxFmtLo;
+            int fmtHi = (int)Definitons->VtxFmtHi;
 
             UVATGroups = new CPElementSpec(
                 Definitons->UVATA,
@@ -417,24 +382,26 @@ namespace BrawlLib.Wii.Models
             fixed (byte* pComData = Commands)
             {
                 pCom = pComData;
-                pDef = (ElementDef*) pDefData;
+                pDef = (ElementDef*)pDefData;
 
                 //Pos/Norm weight
                 if (Weighted = (fmtLo & 1) != 0)
                 {
                     //Set the first command as the weight
-                    *pCom++ = (byte) DecodeOp.PosWeight;
+                    *pCom++ = (byte)DecodeOp.PosWeight;
                     Stride++; //Increment stride by a byte (the length of the facepoints)
                 }
 
                 //Tex matrix
-                for (var i = 0; i < 8; i++)
+                for (int i = 0; i < 8; i++)
+                {
                     if (((fmtLo >> (i + 1)) & 1) != 0)
                     {
                         //Set the command for each texture matrix
-                        *pCom++ = (byte) (DecodeOp.TexMtx0 + i);
+                        *pCom++ = (byte)(DecodeOp.TexMtx0 + i);
                         Stride++; //Increment stride by a byte (the length of the facepoints)
                     }
+                }
 
                 //Positions
                 format = ((fmtLo >> 9) & 3) - 1;
@@ -443,30 +410,26 @@ namespace BrawlLib.Wii.Models
                     HasData[0] = true;
 
                     //Set the definitions input
-                    pDef->Format = (byte) format;
+                    pDef->Format = (byte)format;
                     //Set the type to Positions
                     pDef->Type = 0;
                     if (format == 0)
                     {
-                        var f = (int) UVATGroups.PositionDef.DataFormat;
+                        int f = (int)UVATGroups.PositionDef.DataFormat;
 
                         //Clamp format to even value and add length to stride
                         Stride += f.RoundDownToEven().Clamp(1, 4) * (!UVATGroups.PositionDef.IsSpecial ? 2 : 3);
 
-                        pDef->Scale = (byte) UVATGroups.PositionDef.Scale;
-                        pDef->Output =
-                            (byte) ((!UVATGroups.PositionDef.IsSpecial
-                                        ? (int) ElementCodec.CodecType.XY
-                                        : (int) ElementCodec.CodecType.XYZ) + (byte) UVATGroups.PositionDef.DataFormat);
-                        *pCom++ = (byte) DecodeOp.ElementDirect;
+                        pDef->Scale = (byte)UVATGroups.PositionDef.Scale;
+                        pDef->Output = (byte)((!UVATGroups.PositionDef.IsSpecial ? (int)ElementCodec.CodecType.XY : (int)ElementCodec.CodecType.XYZ) + (byte)UVATGroups.PositionDef.DataFormat);
+                        *pCom++ = (byte)DecodeOp.ElementDirect;
                     }
                     else
                     {
                         Stride += format; //Add to stride (the length of the facepoints)
                         pDef->Output = 12; //Set the output
-                        *pCom++ = (byte) DecodeOp.ElementIndexed;
+                        *pCom++ = (byte)DecodeOp.ElementIndexed;
                     }
-
                     pDef++;
                 }
 
@@ -477,31 +440,29 @@ namespace BrawlLib.Wii.Models
                     HasData[1] = true;
 
                     //Set the definitions input
-                    pDef->Format = (byte) format;
+                    pDef->Format = (byte)format;
                     //Set the type to Normals
                     pDef->Type = 1;
                     if (format == 0)
                     {
-                        var f = (int) UVATGroups.NormalDef.DataFormat;
+                        int f = (int)UVATGroups.NormalDef.DataFormat;
                         Stride += f.RoundDownToEven().Clamp(1, 4) * 3;
 
-                        pDef->Scale = (byte) UVATGroups.NormalDef.Scale;
-                        pDef->Output =
-                            (byte) ((int) ElementCodec.CodecType.XYZ + (byte) UVATGroups.NormalDef.DataFormat);
-                        *pCom++ = (byte) DecodeOp.ElementDirect;
+                        pDef->Scale = (byte)UVATGroups.NormalDef.Scale;
+                        pDef->Output = (byte)(((int)ElementCodec.CodecType.XYZ) + (byte)UVATGroups.NormalDef.DataFormat);
+                        *pCom++ = (byte)DecodeOp.ElementDirect;
                     }
                     else
                     {
                         Stride += format; //Add to stride (the length of the facepoints)
                         pDef->Output = 12; //Set the output
-                        *pCom++ = (byte) DecodeOp.ElementIndexed;
+                        *pCom++ = (byte)DecodeOp.ElementIndexed;
                     }
-
                     pDef++;
                 }
 
                 //Colors
-                for (var i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     format = ((fmtLo >> (i * 2 + 13)) & 3) - 1;
                     if (format >= 0)
@@ -509,28 +470,27 @@ namespace BrawlLib.Wii.Models
                         HasData[i + 2] = true;
 
                         //Set the definitions input
-                        pDef->Format = (byte) format;
+                        pDef->Format = (byte)format;
                         //Set the type to Colors
-                        pDef->Type = (byte) (i + 2);
+                        pDef->Type = (byte)(i + 2);
                         if (format == 0)
                         {
                             //pDef->Output = 
                             pDef->Scale = 0;
-                            *pCom++ = (byte) DecodeOp.ElementDirect;
+                            *pCom++ = (byte)DecodeOp.ElementDirect;
                         }
                         else
                         {
                             Stride += format; //Add to stride (the length of the facepoints)
                             pDef->Output = 4; //Set the output
-                            *pCom++ = (byte) DecodeOp.ElementIndexed;
+                            *pCom++ = (byte)DecodeOp.ElementIndexed;
                         }
-
                         pDef++;
                     }
                 }
 
                 //UVs
-                for (var i = 0; i < 8; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     format = ((fmtHi >> (i * 2)) & 3) - 1;
                     if (format >= 0)
@@ -538,33 +498,27 @@ namespace BrawlLib.Wii.Models
                         HasData[i + 4] = true;
 
                         //Set the definitions input
-                        pDef->Format = (byte) format;
+                        pDef->Format = (byte)format;
                         //Set the type to UVs
-                        pDef->Type = (byte) (i + 4);
+                        pDef->Type = (byte)(i + 4);
                         if (format == 0)
                         {
-                            var f = (int) UVATGroups.GetUVDef(i).DataFormat;
+                            int f = (int)UVATGroups.GetUVDef(i).DataFormat;
                             Stride += f.RoundDownToEven().Clamp(1, 4);
 
-                            pDef->Output =
-                                (byte) ((!UVATGroups.GetUVDef(i).IsSpecial
-                                            ? (int) ElementCodec.CodecType.S
-                                            : (int) ElementCodec.CodecType.ST) +
-                                        (byte) UVATGroups.GetUVDef(i).DataFormat);
-                            pDef->Scale = (byte) UVATGroups.GetUVDef(i).Scale;
-                            *pCom++ = (byte) DecodeOp.ElementDirect;
+                            pDef->Output = (byte)((!UVATGroups.GetUVDef(i).IsSpecial ? (int)ElementCodec.CodecType.S : (int)ElementCodec.CodecType.ST) + (byte)UVATGroups.GetUVDef(i).DataFormat);
+                            pDef->Scale = (byte)UVATGroups.GetUVDef(i).Scale;
+                            *pCom++ = (byte)DecodeOp.ElementDirect;
                         }
                         else
                         {
                             Stride += format; //Add to stride (the length of the facepoints)
                             pDef->Output = 8; //Set the output
-                            *pCom++ = (byte) DecodeOp.ElementIndexed;
+                            *pCom++ = (byte)DecodeOp.ElementIndexed;
                         }
-
                         pDef++;
                     }
                 }
-
                 *pCom = 0;
             }
         }
@@ -573,21 +527,20 @@ namespace BrawlLib.Wii.Models
         public void SetNode(byte* pIn)
         {
             //Get node ID
-            ushort node = *(bushort*) pIn;
+            ushort node = *(bushort*)pIn;
 
             //Get cache index.
             //Wii memory assigns data using offsets of 4-byte values.
             //In this case, each matrix takes up 12 floats (4 bytes each)
 
             //Divide by 12, the number of float values per 4x3 matrix, to get the actual index
-            var index = (*(bushort*) (pIn + 2) & 0xFFF) / 12;
+            int index = (*(bushort*)(pIn + 2) & 0xFFF) / 12;
             //Assign node ID to cache, using index
             fixed (ushort* n = Nodes)
             {
                 n[index] = node;
             }
         }
-
         public void SetNode(ushort index, ushort node)
         {
             fixed (ushort* n = Nodes)
@@ -611,13 +564,13 @@ namespace BrawlLib.Wii.Models
             //pOut is address of the face data buffers
             //pAssets is the address of the raw asset buffers
 
-            var weight = 0;
+            int weight = 0;
 
             int index = 0, outSize;
             DecodeOp o;
             ElementDef* pDef;
             byte* p;
-            var pTexMtx = new byte[8];
+            byte[] pTexMtx = new byte[8];
 
             byte* tIn, tOut;
 
@@ -628,15 +581,15 @@ namespace BrawlLib.Wii.Models
             fixed (int* pDefData = Defs)
             fixed (byte* pCmd = Commands)
             {
-                for (var i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                 {
-                    pDef = (ElementDef*) pDefData;
+                    pDef = (ElementDef*)pDefData;
                     p = pCmd;
 
-                    var f = new Facepoint();
+                    Facepoint f = new Facepoint();
 
-                    Continue:
-                    o = (DecodeOp) (*p++);
+                Continue:
+                    o = (DecodeOp)(*p++);
                     switch (o)
                     {
                         //Process weight using cache
@@ -652,8 +605,8 @@ namespace BrawlLib.Wii.Models
                         case DecodeOp.TexMtx5:
                         case DecodeOp.TexMtx6:
                         case DecodeOp.TexMtx7:
-                            index = (int) o - (int) DecodeOp.TexMtx0;
-                            var value = *pIn++;
+                            index = (int)o - (int)DecodeOp.TexMtx0;
+                            byte value = *pIn++;
                             if (value % 3 != 0)
                             {
                                 Console.WriteLine("Raw texture matrix value is 0x{0}", value.ToString());
@@ -672,16 +625,14 @@ namespace BrawlLib.Wii.Models
                                 }
                                 else
                                 {
-                                    pTexMtx[index] = (byte) (value - 10);
+                                    pTexMtx[index] = (byte)(value - 10);
                                     textureMatrixIdentity[index] = false;
                                 }
                             }
-
                             goto Continue;
 
                         case DecodeOp.ElementDirect:
-                            ElementCodec.Decoders[pDef->Output](ref pIn, ref pOut[pDef->Type],
-                                VQuant.DeQuantTable[pDef->Scale]);
+                            ElementCodec.Decoders[pDef->Output](ref pIn, ref pOut[pDef->Type], VQuant.DeQuantTable[pDef->Scale]);
                             goto Continue;
 
                         case DecodeOp.ElementIndexed:
@@ -689,7 +640,7 @@ namespace BrawlLib.Wii.Models
                             //Get asset index
                             if (pDef->Format == 2)
                             {
-                                index = *(bushort*) pIn;
+                                index = *(bushort*)pIn;
                                 pIn += 2;
                             }
                             else
@@ -717,12 +668,15 @@ namespace BrawlLib.Wii.Models
                             if (pDef->Type == 0) //Special processing for vertices
                             {
                                 //Match weight and index with remap table
-                                var mapEntry = (weight << 16) | index;
+                                int mapEntry = (weight << 16) | index;
 
                                 //Find matching index, starting at end of list
                                 //Lower index until a match is found at that index or index is less than 0
                                 index = RemapTable.Count;
-                                while (--index >= 0 && RemapTable[index] != mapEntry) ;
+                                while ((--index >= 0) && (RemapTable[index] != mapEntry))
+                                {
+                                    ;
+                                }
 
                                 //No match, create new entry
                                 //Will be processed into vertices at the end!
@@ -734,7 +688,7 @@ namespace BrawlLib.Wii.Models
                                 }
 
                                 //Write index
-                                *indices++ = (ushort) index;
+                                *indices++ = (ushort)index;
 
                                 _points[index].Add(f);
                             }
@@ -744,13 +698,16 @@ namespace BrawlLib.Wii.Models
                                 outSize = pDef->Output;
 
                                 //Input data from asset cache
-                                tIn = pAssets[pDef->Type] + index * outSize;
+                                tIn = pAssets[pDef->Type] + (index * outSize);
                                 tOut = pOut[pDef->Type];
 
                                 if (tIn != null && tOut != null)
                                 {
                                     //Copy data to output
-                                    while (outSize-- > 0) *tOut++ = *tIn++;
+                                    while (outSize-- > 0)
+                                    {
+                                        *tOut++ = *tIn++;
+                                    }
 
                                     //Increment element output pointer
                                     pOut[pDef->Type] = tOut;
@@ -759,6 +716,8 @@ namespace BrawlLib.Wii.Models
 
                             pDef++;
                             goto Continue;
+
+                        default: break; //End
                     }
 
                     group._facePoints[group._facePoints.Count - 1].Add(f);
@@ -766,45 +725,74 @@ namespace BrawlLib.Wii.Models
             }
         }
 
-        internal List<Vertex3> Finish(Vector3* pVert, IMatrixNode[] nodeTable)
-        {
-            //Create vertex list from remap table
-            var list = new List<Vertex3>(RemapTable.Count);
-
-            if (!Weighted)
-                //Add vertex to list using raw value.
-                for (var i = 0; i < RemapTable.Count; i++)
-                {
-                    var v = new Vertex3(pVert[RemapTable[i]]) {_facepoints = _points[i]};
-                    foreach (var f in v._facepoints) f._vertex = v;
-
-                    list.Add(v);
-                }
-            else if (nodeTable != null)
-                for (var i = 0; i < RemapTable.Count; i++)
-                {
-                    var x = RemapTable[i];
-                    //Create new vertex, assigning the value + influence from the remap table
-                    var node = (x >> 16) & 0xFFFF;
-                    IMatrixNode mtx = null;
-                    if (node < nodeTable.Length && node >= 0) mtx = nodeTable[node];
-
-                    var v = new Vertex3(pVert[x & 0xFFFF], mtx) {_facepoints = _points[i]};
-                    foreach (var f in v._facepoints) f._vertex = v;
-                    //Add vertex to list
-                    list.Add(v);
-                }
-
-            return list;
-        }
-
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct ElementDef
+        public unsafe struct ElementDef
         {
             public byte Format; //Input format
             public byte Output; //Output size/decoder
             public byte Type;
             public byte Scale;
+        }
+
+        public enum DecodeOp : int
+        {
+            End = 0,
+            PosWeight,
+            TexMtx0,
+            TexMtx1,
+            TexMtx2,
+            TexMtx3,
+            TexMtx4,
+            TexMtx5,
+            TexMtx6,
+            TexMtx7,
+            ElementDirect,
+            ElementIndexed
+        }
+
+        internal unsafe List<Vertex3> Finish(Vector3* pVert, IMatrixNode[] nodeTable)
+        {
+            //Create vertex list from remap table
+            List<Vertex3> list = new List<Vertex3>(RemapTable.Count);
+
+            if (!Weighted)
+            {
+                //Add vertex to list using raw value.
+                for (int i = 0; i < RemapTable.Count; i++)
+                {
+                    Vertex3 v = new Vertex3(pVert[RemapTable[i]]) { _facepoints = _points[i] };
+                    foreach (Facepoint f in v._facepoints)
+                    {
+                        f._vertex = v;
+                    }
+
+                    list.Add(v);
+                }
+            }
+            else if (nodeTable != null)
+            {
+                for (int i = 0; i < RemapTable.Count; i++)
+                {
+                    int x = RemapTable[i];
+                    //Create new vertex, assigning the value + influence from the remap table
+                    int node = (x >> 16) & 0xFFFF;
+                    IMatrixNode mtx = null;
+                    if (node < nodeTable.Length && node >= 0)
+                    {
+                        mtx = nodeTable[node];
+                    }
+
+                    Vertex3 v = new Vertex3(pVert[x & 0xFFFF], mtx) { _facepoints = _points[i] };
+                    foreach (Facepoint f in v._facepoints)
+                    {
+                        f._vertex = v;
+                    }
+                    //Add vertex to list
+                    list.Add(v);
+                }
+            }
+
+            return list;
         }
     }
 }

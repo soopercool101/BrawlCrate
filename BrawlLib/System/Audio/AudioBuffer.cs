@@ -6,66 +6,61 @@
         //This is plenty of time, as timer updates should occur every 10 - 100 ms.
         internal const int DefaultBufferSpan = 2;
 
-        internal int _bitsPerSample;
+        internal AudioProvider _owner;
+        public AudioProvider Owner => _owner;
 
-        //Number of bytes in each sample. (_bitsPerSample * _channels / 8)
-        internal int _blockAlign;
-
-        internal int _channels;
-
-        //Total byte length of the buffer.
-        internal int _dataLength;
+        internal IAudioStream _source;
+        public IAudioStream Source => _source;
 
         internal WaveFormatTag _format;
+        public WaveFormatTag Format => _format;
 
         internal int _frequency;
+        public int Frequency => _frequency;
 
-        //Sets whether the buffer manages looping.
-        //Use this with Source.
-        internal bool _loop;
+        internal int _channels;
+        public int Channels => _channels;
 
-        internal AudioProvider _owner;
-
-        //Byte offset within buffer in which reading is currently commencing.
-        //The application must call Update (or Fill) to update this value.
-        internal int _readOffset;
-
-        //Cumulative sample position in which the buffer is currently reading.
-        //This value is updated as Update is called.
-        internal int _readSample;
+        internal int _bitsPerSample;
+        public int BitsPerSample => _bitsPerSample;
 
         //Number of samples that can be stored inside the buffer.
         internal int _sampleLength;
+        public int SampleLength => _sampleLength;
 
-        internal IAudioStream _source;
+        //Total byte length of the buffer.
+        internal int _dataLength;
+        public int DataLength => _dataLength;
+
+        //Number of bytes in each sample. (_bitsPerSample * _channels / 8)
+        internal int _blockAlign;
+        public int BlockAlign => _blockAlign;
 
         //Byte offset within buffer in which to continue writing.
         //Read-only. It is the responsibility of the application to update the audio data in a timely manner.
         //As data is written, this is updated automatically.
         internal int _writeOffset;
+        public int WriteOffset => _writeOffset;
+
+        //Byte offset within buffer in which reading is currently commencing.
+        //The application must call Update (or Fill) to update this value.
+        internal int _readOffset;
+        public int ReadOffset => _readOffset;
 
         //Cumulative sample position in which to continue writing.
         //This value is updated automatically when fill is called.
         internal int _writeSample;
-        public AudioProvider Owner => _owner;
-        public IAudioStream Source => _source;
-        public WaveFormatTag Format => _format;
-        public int Frequency => _frequency;
-        public int Channels => _channels;
-        public int BitsPerSample => _bitsPerSample;
-        public int SampleLength => _sampleLength;
-        public int DataLength => _dataLength;
-        public int BlockAlign => _blockAlign;
-        public int WriteOffset => _writeOffset;
-        public int ReadOffset => _readOffset;
         public int WriteSample => _writeSample;
+
+        //Cumulative sample position in which the buffer is currently reading.
+        //This value is updated as Update is called.
+        internal int _readSample;
         public int ReadSample => _readSample;
 
-        public bool Loop
-        {
-            get => _loop;
-            set => _loop = value;
-        }
+        //Sets whether the buffer manages looping.
+        //Use this with Source.
+        internal bool _loop = false;
+        public bool Loop { get => _loop; set => _loop = value; }
 
         //internal bool _playing = false;
         //public bool IsPlaying { get { return _playing; } }
@@ -76,6 +71,7 @@
         public abstract int Volume { get; set; }
         public abstract int Pan { get; set; }
 
+        ~AudioBuffer() { Dispose(); }
         public virtual void Dispose()
         {
             if (_owner != null)
@@ -83,13 +79,7 @@
                 _owner._buffers.Remove(this);
                 _owner = null;
             }
-
             GC.SuppressFinalize(this);
-        }
-
-        ~AudioBuffer()
-        {
-            Dispose();
         }
 
         public abstract void Play();
@@ -103,9 +93,11 @@
             _readOffset = _writeOffset = PlayCursor;
             _readSample = _writeSample = samplePos;
 
-            if (_source != null) _source.SamplePosition = samplePos;
+            if (_source != null)
+            {
+                _source.SamplePosition = samplePos;
+            }
         }
-
         public void Reset()
         {
             _readOffset = _writeOffset = PlayCursor;
@@ -114,17 +106,19 @@
         public virtual void Update()
         {
             //Get current sample offset.
-            var sampleOffset = PlayCursor / _blockAlign;
+            int sampleOffset = PlayCursor / _blockAlign;
             //Get current byte offset
-            var byteOffset = sampleOffset * _blockAlign;
+            int byteOffset = sampleOffset * _blockAlign;
             //Get sample difference since last update, taking into account circular wrapping.
-            var sampleDifference = ((byteOffset < _readOffset ? byteOffset + _dataLength : byteOffset) - _readOffset) /
-                                   _blockAlign;
+            int sampleDifference = (((byteOffset < _readOffset) ? (byteOffset + _dataLength) : byteOffset) - _readOffset) / _blockAlign;
             //Get byte difference
             //int byteDifference = sampleDifference * _blockAlign;
 
             //If no change, why continue?
-            if (sampleDifference == 0) return;
+            if (sampleDifference == 0)
+            {
+                return;
+            }
 
             //Set new read offset.
             _readOffset = byteOffset;
@@ -132,16 +126,20 @@
             //Update looping
             if (_source != null)
             {
-                if (_loop && _source.IsLooping)
+                if ((_loop) && (_source.IsLooping))
                 {
-                    var start = _source.LoopStartSample;
-                    var end = _source.LoopEndSample;
-                    var newSample = _readSample + sampleDifference;
+                    int start = _source.LoopStartSample;
+                    int end = _source.LoopEndSample;
+                    int newSample = _readSample + sampleDifference;
 
-                    if (newSample >= end && _writeSample < _readSample)
-                        _readSample = start + (newSample - start) % (end - start);
+                    if ((newSample >= end) && (_writeSample < _readSample))
+                    {
+                        _readSample = start + ((newSample - start) % (end - start));
+                    }
                     else
+                    {
                         _readSample = Math.Min(newSample, _source.Samples);
+                    }
                 }
                 else
                 {
@@ -159,33 +157,28 @@
         public virtual void Fill()
         {
             //This only works if a source has been assigned!
-            if (_source == null) return;
+            if (_source == null)
+            {
+                return;
+            }
 
             //Update read position
             Update();
 
             //Get number of samples available for writing. 
-            var sampleCount = ((_readOffset <= _writeOffset ? _readOffset + _dataLength : _readOffset) - _writeOffset) /
-                              _blockAlign / 8;
+            int sampleCount = (((_readOffset <= _writeOffset) ? (_readOffset + _dataLength) : _readOffset) - _writeOffset) / _blockAlign / 8;
 
             //Fill samples
             Fill(_source, sampleCount, _loop);
         }
-
         public virtual void Fill(IAudioStream source, int samples, bool loop)
         {
-            var byteCount = samples * _blockAlign;
+            int byteCount = samples * _blockAlign;
 
             //Lock buffer and fill
-            var data = Lock(_writeOffset, byteCount);
-            try
-            {
-                data.Fill(source, loop);
-            }
-            finally
-            {
-                Unlock(data);
-            }
+            BufferData data = Lock(_writeOffset, byteCount);
+            try { data.Fill(source, loop); }
+            finally { Unlock(data); }
 
             //Advance offsets
             _writeOffset = (_writeOffset + byteCount) % _dataLength;

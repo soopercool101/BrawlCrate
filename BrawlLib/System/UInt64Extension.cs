@@ -2,7 +2,7 @@
 {
     public static class UInt64Extension
     {
-        public static ulong Reverse(this ulong value)
+        public static unsafe ulong Reverse(this ulong value)
         {
             return
                 ((value >> 56) & 0xFF) | ((value & 0xFF) << 56) |
@@ -13,21 +13,35 @@
 
         public static ulong Align(this ulong value, uint align)
         {
-            if (value < 0) return 0;
+            if (value < 0)
+            {
+                return 0;
+            }
 
-            if (align <= 1) return value;
+            if (align <= 1)
+            {
+                return value;
+            }
 
-            var temp = value % align;
-            if (temp != 0) value += align - temp;
+            ulong temp = value % align;
+            if (temp != 0)
+            {
+                value += align - temp;
+            }
 
             return value;
         }
-
         public static ulong Clamp(this ulong value, ulong min, ulong max)
         {
-            if (value <= min) return min;
+            if (value <= min)
+            {
+                return min;
+            }
 
-            if (value >= max) return max;
+            if (value >= max)
+            {
+                return max;
+            }
 
             return value;
         }

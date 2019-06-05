@@ -11,18 +11,9 @@ namespace BrawlLib.SSBBTypes
         public buint _numFiles;
         public fixed int padding[7];
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
-        public MRGFileHeader* First => (MRGFileHeader*) ((byte*) Address + Size);
+        public MRGFileHeader* First => (MRGFileHeader*)((byte*)Address + Size);
 
         public MRGHeader(uint numFiles)
         {
@@ -45,19 +36,9 @@ namespace BrawlLib.SSBBTypes
             _fileSize = size;
         }
 
-        private MRGFileHeader* Address
-        {
-            get
-            {
-                fixed (MRGFileHeader* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
-
-        public VoidPtr Data => (int) _fileOffset;
+        private MRGFileHeader* Address { get { fixed (MRGFileHeader* ptr = &this) { return ptr; } } }
+        public VoidPtr Data => (int)_fileOffset;
         public int Length => _fileSize;
-        public MRGFileHeader* Next => (MRGFileHeader*) ((byte*) Address + Size);
+        public MRGFileHeader* Next => (MRGFileHeader*)((byte*)Address + Size);
     }
 }

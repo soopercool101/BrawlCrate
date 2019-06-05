@@ -1,8 +1,8 @@
-﻿using System;
+﻿using BrawlLib.Wii.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using BrawlLib.Wii.Models;
 
 namespace BrawlLib.Modeling
 {

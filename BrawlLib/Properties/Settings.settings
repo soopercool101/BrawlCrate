@@ -1,11 +1,8 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
-              GeneratedClassNamespace="BrawlLib.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BrawlLib.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Codes" Type="System.Collections.Generic.List&lt;BrawlLib.SSBB.ResourceNodes.CodeStorage&gt;"
-             Scope="User">
+    <Setting Name="Codes" Type="System.Collections.Generic.List&lt;BrawlLib.SSBB.ResourceNodes.CodeStorage&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SaveGCTWithInfo" Type="System.Boolean" Scope="User">

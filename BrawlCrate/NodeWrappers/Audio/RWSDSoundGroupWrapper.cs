@@ -1,22 +1,16 @@
-﻿using System;
+﻿using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.RSARFileSoundGroup)]
     public class RWSDSoundGroupWrapper : GenericWrapper
     {
-        public RWSDSoundGroupWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static RWSDSoundGroupWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -33,44 +27,42 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        protected static void CreateAction(object sender, EventArgs e)
-        {
-            GetInstance<RWSDSoundGroupWrapper>().Import();
-        }
-
+        protected static void CreateAction(object sender, EventArgs e) { GetInstance<RWSDSoundGroupWrapper>().Import(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[6].Enabled = _menu.Items[7].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<RWSDSoundGroupWrapper>();
+            RWSDSoundGroupWrapper w = GetInstance<RWSDSoundGroupWrapper>();
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
-
-        private void Import()
+        private unsafe void Import()
         {
-            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out var path) > 0)
+            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path) > 0)
             {
                 RSARFileAudioNode n;
 
                 if ((_resource.Parent as NW4RNode).VersionMinor >= 3)
+                {
                     n = new RWAVNode();
+                }
                 else
+                {
                     n = new WAVESoundNode();
+                }
 
                 _resource.AddChild(n);
                 n.Replace(path);
 
-                var res = FindResource(n, true);
+                BaseWrapper res = FindResource(n, true);
                 res.EnsureVisible();
                 res.TreeView.SelectedNode = res;
             }
         }
-
         #endregion
+
+        public RWSDSoundGroupWrapper() { ContextMenuStrip = _menu; }
     }
 }

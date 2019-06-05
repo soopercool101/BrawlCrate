@@ -1,41 +1,17 @@
-﻿using System;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.REFT)]
     public class REFTWrapper : GenericWrapper
     {
-        public REFTWrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
-        public override string ExportFilter => FileFilters.REFT;
-
-        public void ImportTexture()
-        {
-            var index = Program.OpenFile(FileFilters.Images, out var path);
-            if (index > 0)
-                using (var dlg = new TextureConverterDialog())
-                {
-                    dlg.ImageSource = path;
-                    if (dlg.ShowDialog(MainForm.Instance, Resource as REFTNode) == DialogResult.OK)
-                    {
-                        var w = FindResource(dlg.REFTTextureNode, true);
-                        w.EnsureVisible();
-                        w.TreeView.SelectedNode = w;
-                    }
-                }
-        }
-
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static REFTWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -53,27 +29,42 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        protected static void NewEntryAction(object sender, EventArgs e)
-        {
-            GetInstance<REFTWrapper>().ImportTexture();
-        }
-
+        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<REFTWrapper>().ImportTexture(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
-                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<REFTWrapper>();
+            REFTWrapper w = GetInstance<REFTWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
+
+        public REFTWrapper() { ContextMenuStrip = _menu; }
+
+        public override string ExportFilter => FileFilters.REFT;
+
+        public void ImportTexture()
+        {
+            int index = Program.OpenFile(FileFilters.Images, out string path);
+            if (index > 0)
+            {
+                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                {
+                    dlg.ImageSource = path;
+                    if (dlg.ShowDialog(MainForm.Instance, Resource as REFTNode) == DialogResult.OK)
+                    {
+                        BaseWrapper w = FindResource(dlg.REFTTextureNode, true);
+                        w.EnsureVisible();
+                        w.TreeView.SelectedNode = w;
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@
 {
     //Lower byte is resource type (used for icon index)
     //Upper byte is entry type/flags
-    public enum ResourceType
+    public enum ResourceType : int
     {
         //Base types
         Unknown = 0x0000,
@@ -174,6 +174,6 @@
         FMDL = 0x6D00,
 
         Havok = 0x8500,
-        HavokGroup = 0x8501
+        HavokGroup = 0x8501,
     }
 }

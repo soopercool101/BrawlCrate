@@ -1,16 +1,14 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
-using System.Xml;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public class HavokCommonArrayNode : ClassMemberInstanceNode
+    public unsafe class HavokCommonArrayNode : ClassMemberInstanceNode
     {
-        protected int count;
         protected VoidPtr dataAddr = null;
+        protected int count = 0;
 
         public override bool OnInitialize()
         {
@@ -19,22 +17,23 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            var dataPtr = dataAddr;
-            var size = 0;
-            for (var i = 0; i < count; i++, dataPtr += size)
+            VoidPtr dataPtr = dataAddr;
+            int size = 0;
+            for (int i = 0; i < count; i++, dataPtr += size)
+            {
                 switch (_memberType)
                 {
                     case hkClassMember.Type.TYPE_STRUCT:
                         new HavokMetaObjectNode(_classNode)
-                            .Initialize(this, dataPtr, size = _classNode == null ? 0 : _classNode.Size);
+                        .Initialize(this, dataPtr, size = _classNode == null ? 0 : _classNode.Size);
                         break;
                     case hkClassMember.Type.TYPE_ENUM:
                     case hkClassMember.Type.TYPE_FLAGS:
-                        new cmEnumNode
-                            {
-                                _enumNode = _enumNode
-                            }
-                            .Initialize(this, dataPtr, size = (int) _memberFlags & 0x3F);
+                        new cmEnumNode()
+                        {
+                            _enumNode = _enumNode
+                        }
+                        .Initialize(this, dataPtr, size = (int)_memberFlags & 0x3F);
                         break;
                     case hkClassMember.Type.TYPE_ARRAY:
                     case hkClassMember.Type.TYPE_HOMOGENEOUSARRAY:
@@ -45,12 +44,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                         Console.WriteLine("This shouldn't happen");
                         break;
                     default:
-                        var instance = HavokMetaObjectNode.TryGetMember(_memberType);
+                        ClassMemberInstanceNode instance = HavokMetaObjectNode.TryGetMember(_memberType);
                         if (instance != null)
                         {
-                            var tempType = _memberType;
+                            hkClassMember.Type tempType = _memberType;
                             if (tempType == hkClassMember.Type.TYPE_POINTER)
+                            {
                                 tempType = hkClassMember.Type.TYPE_STRUCT; //Pointer to class object
+                            }
 
                             instance._isZero = false;
                             instance._name = "Entry" + i;
@@ -61,34 +62,40 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                             instance.Initialize(this, dataPtr, size = instance.GetSize());
                         }
-
                         break;
                 }
+            }
         }
 
         public override int OnCalculateSize(bool force)
         {
-            var size = GetSize();
-            foreach (HavokEntryNode e in Children) size += e.CalculateSize(force);
+            int size = GetSize();
+            foreach (HavokEntryNode e in Children)
+            {
+                size += e.CalculateSize(force);
+            }
 
             return size;
         }
 
-        public override void WriteParams(XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
+        public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
-            writer.WriteAttributeString("numelements", Children.Count.ToString(CultureInfo.InvariantCulture));
+            writer.WriteAttributeString("numelements", Children.Count.ToString(System.Globalization.CultureInfo.InvariantCulture));
 
             writer.WriteString(" ");
             foreach (HavokClassNode c in Children)
             {
                 //Arrays embed parameters instead of pointing to an object containing them elsewhere
 
-                var c2 = c;
-                if (c is cmPointerNode && c.Children.Count > 0) c2 = c.Children[0] as HavokClassNode;
+                HavokClassNode c2 = c;
+                if (c is cmPointerNode && c.Children.Count > 0)
+                {
+                    c2 = c.Children[0] as HavokClassNode;
+                }
 
                 if (c2 is HavokMetaObjectNode || c2 is hkClassNode)
                 {
-                    var nodes = c2.FindChildrenByClassType(null, typeof(HavokMetaObjectNode));
+                    ResourceNode[] nodes = c2.FindChildrenByClassType(null, typeof(HavokMetaObjectNode));
                     if (nodes == null && nodes.Length == 0)
                     {
                         writer.WriteStartElement("hkobject");
@@ -115,41 +122,37 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
     }
-
     public unsafe class cmSimpleArrayNode : HavokCommonArrayNode
     {
-        public override int GetSize()
-        {
-            return 8;
-        }
+        public override int GetSize() { return 8; }
 
         public override bool OnInitialize()
         {
-            var addr = (bint*) Data;
+            bint* addr = (bint*)Data;
             dataAddr = addr[0].OffsetAddress;
             count = addr[1];
             return base.OnInitialize();
         }
     }
-
     public unsafe class cmArrayNode : HavokCommonArrayNode
     {
-        [Category("Array")] public hkArray.FlagsEnum Flags { get; private set; }
+        public override int GetSize() { return 12; }
 
-        [Category("Array")] public int Capacity { get; private set; }
+        private hkArray.FlagsEnum _flags;
+        private int _capacity;
 
-        public override int GetSize()
-        {
-            return 12;
-        }
+        [Category("Array")]
+        public hkArray.FlagsEnum Flags => _flags;
+        [Category("Array")]
+        public int Capacity => _capacity;
 
         public override bool OnInitialize()
         {
-            var addr = (hkArray*) Data;
+            hkArray* addr = (hkArray*)Data;
             dataAddr = addr->_dataPtr.OffsetAddress;
             count = addr->_count;
-            Flags = addr->Flags;
-            Capacity = addr->Capacity;
+            _flags = addr->Flags;
+            _capacity = addr->Capacity;
             return base.OnInitialize();
         }
     }

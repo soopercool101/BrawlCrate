@@ -1,53 +1,17 @@
-﻿using System;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.VIS0)]
     public class VIS0Wrapper : GenericWrapper
     {
-        public VIS0Wrapper()
-        {
-            ContextMenuStrip = _menu;
-        }
-
-        public override string ExportFilter => FileFilters.VIS0;
-
-        public void NewBone()
-        {
-            var node = ((VIS0Node) _resource).CreateEntry();
-            var res = FindResource(node, false);
-            res.EnsureVisible();
-            res.TreeView.SelectedNode = res;
-        }
-
-        private void Merge()
-        {
-        }
-
-        private void Append()
-        {
-            ((VIS0Node) _resource).Append();
-            var res = FindResource(_resource, false);
-            res.EnsureVisible();
-            res.TreeView.SelectedNode = res;
-        }
-
-        private void Resize()
-        {
-            ((VIS0Node) _resource).Resize();
-            var res = FindResource(_resource, false);
-            res.EnsureVisible();
-            res.TreeView.SelectedNode = res;
-        }
-
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-
         static VIS0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -70,42 +34,53 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-
-        protected static void NewBoneAction(object sender, EventArgs e)
-        {
-            GetInstance<VIS0Wrapper>().NewBone();
-        }
-
-        protected static void MergeAction(object sender, EventArgs e)
-        {
-            GetInstance<VIS0Wrapper>().Merge();
-        }
-
-        protected static void AppendAction(object sender, EventArgs e)
-        {
-            GetInstance<VIS0Wrapper>().Append();
-        }
-
-        protected static void ResizeAction(object sender, EventArgs e)
-        {
-            GetInstance<VIS0Wrapper>().Resize();
-        }
-
+        protected static void NewBoneAction(object sender, EventArgs e) { GetInstance<VIS0Wrapper>().NewBone(); }
+        protected static void MergeAction(object sender, EventArgs e) { GetInstance<VIS0Wrapper>().Merge(); }
+        protected static void AppendAction(object sender, EventArgs e) { GetInstance<VIS0Wrapper>().Append(); }
+        protected static void ResizeAction(object sender, EventArgs e) { GetInstance<VIS0Wrapper>().Resize(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[5].Enabled = _menu.Items[6].Enabled =
-                _menu.Items[8].Enabled = _menu.Items[9].Enabled = _menu.Items[12].Enabled = true;
+            _menu.Items[5].Enabled = _menu.Items[6].Enabled = _menu.Items[8].Enabled = _menu.Items[9].Enabled = _menu.Items[12].Enabled = true;
         }
-
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            var w = GetInstance<VIS0Wrapper>();
+            VIS0Wrapper w = GetInstance<VIS0Wrapper>();
             _menu.Items[5].Enabled = _menu.Items[12].Enabled = w.Parent != null;
-            _menu.Items[6].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _menu.Items[6].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
             _menu.Items[8].Enabled = w.PrevNode != null;
             _menu.Items[9].Enabled = w.NextNode != null;
         }
 
         #endregion
+
+        public VIS0Wrapper() { ContextMenuStrip = _menu; }
+
+        public override string ExportFilter => FileFilters.VIS0;
+
+        public void NewBone()
+        {
+            VIS0EntryNode node = ((VIS0Node)_resource).CreateEntry();
+            BaseWrapper res = FindResource(node, false);
+            res.EnsureVisible();
+            res.TreeView.SelectedNode = res;
+        }
+        private void Merge()
+        {
+
+        }
+        private void Append()
+        {
+            ((VIS0Node)_resource).Append();
+            BaseWrapper res = FindResource(_resource, false);
+            res.EnsureVisible();
+            res.TreeView.SelectedNode = res;
+        }
+        private void Resize()
+        {
+            ((VIS0Node)_resource).Resize();
+            BaseWrapper res = FindResource(_resource, false);
+            res.EnsureVisible();
+            res.TreeView.SelectedNode = res;
+        }
     }
 }

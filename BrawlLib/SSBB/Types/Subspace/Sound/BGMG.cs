@@ -23,23 +23,9 @@ namespace BrawlLib.SSBBTypes
             _pad1 = 0x00;
         }
 
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x10 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
+        public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x10 + (index * 4)); }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -53,45 +39,46 @@ namespace BrawlLib.SSBBTypes
 
         public BGMGEntry(string ID, int InfoIndex, int Volume)
         {
+
             _infoIndex = InfoIndex;
             _volume = Volume;
             _pad = 0;
             StageID = ID;
         }
 
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public string StageID
         {
             get
             {
-                var bytes = new byte[4];
-                var s1 = "";
-                for (var i = 0; i < 4; i++)
+                byte[] bytes = new byte[4];
+                string s1 = "";
+                for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*) (Address + i);
-                    if (bytes[i].ToString("x").Length < 2)
-                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    bytes[i] = *(byte*)(Address + i);
+                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
-                        s1 += bytes[i].ToString("x").ToUpper();
+                    { s1 += bytes[i].ToString("x").ToUpper(); }
                 }
-
                 return s1;
+
             }
             set
             {
-                if (value == null) value = "";
 
-                for (var i = 0; i < value.Length; i++) _stageID[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                if (value == null)
+                {
+                    value = "";
+                }
+
+                fixed (byte* ptr = _stageID)
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        ptr[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                    }
+                }
             }
         }
     }

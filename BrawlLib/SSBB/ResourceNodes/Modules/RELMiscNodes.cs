@@ -8,15 +8,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
     }
 
-    public class RELEntryNode : ResourceNode
+    public unsafe class RELEntryNode : ResourceNode
     {
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal VoidPtr Data => WorkingUncompressed.Address;
 
-        [Browsable(false)] public uint ModuleID => ((ModuleNode) Root).ID;
+        [Browsable(false)]
+        public uint ModuleID => ((ModuleNode)Root).ID;
 
-        [Browsable(false)] public uint RootOffset => Root != null && Data != 0 ? (uint) Data - (uint) BaseAddress : 0;
-
+        [Browsable(false)]
+        public uint RootOffset => Root != null && Data != 0 ? ((uint)Data - (uint)BaseAddress) : 0;
         public string FileOffset => "0x" + RootOffset.ToString("X");
 
         [Browsable(false)]
@@ -25,8 +26,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 if (Root != null)
+                {
                     return Root.WorkingUncompressed.Address;
-                return null;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
@@ -35,8 +41,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                var n = _parent;
-                while (!(n is ModuleNode) && n != null) n = n._parent;
+                ResourceNode n = _parent;
+                while (!(n is ModuleNode) && (n != null))
+                {
+                    n = n._parent;
+                }
 
                 return n;
             }
@@ -48,9 +57,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 if (Root is RELNode)
-                    foreach (var s in (Root as RELNode)._sections)
+                {
+                    foreach (ModuleSectionNode s in (Root as RELNode)._sections)
+                    {
                         if (s.RootOffset <= RootOffset && s.RootOffset + s._dataSize > RootOffset)
+                        {
                             return s;
+                        }
+                    }
+                }
 
                 return null;
             }

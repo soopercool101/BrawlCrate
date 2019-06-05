@@ -11,23 +11,9 @@ namespace BrawlLib.SSBBTypes
         public uint _tag;
         public bint _count;
 
-        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
-
-        public uint Offsets(int index)
-        {
-            return *(buint*) ((byte*) Address + 0x08 + index * 4);
-        }
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
-                {
-                    return ptr;
-                }
-            }
-        }
+        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
+        public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x08 + (index * 4)); }
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
 
         public GSND(int count)
         {
@@ -63,61 +49,78 @@ namespace BrawlLib.SSBBTypes
 
         public string Name
         {
-            get => new string((sbyte*) Address + 0x1C);
+            get => new string((sbyte*)Address + 0x1C);
             set
             {
-                if (value == null) value = "";
+                if (value == null)
+                {
+                    value = "";
+                }
 
-                var i = 0;
-                while (i < 31 && i < value.Length) _name[i] = (sbyte) value[i++];
+                fixed (sbyte* ptr = _name)
+                {
+                    int i = 0;
+                    while ((i < 31) && (i < value.Length))
+                    {
+                        ptr[i] = (sbyte)value[i++];
+                    }
 
-                while (i < 32) _name[i++] = 0;
+                    while (i < 32)
+                    {
+                        ptr[i++] = 0;
+                    }
+                }
             }
         }
-
         public string Trigger
         {
             get
             {
-                var bytes = new byte[4];
-                var s1 = "";
-                for (var i = 0; i < 4; i++)
+                byte[] bytes = new byte[4];
+                string s1 = "";
+                for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*) (Address + 0x3C + i);
-                    if (bytes[i].ToString("x").Length < 2)
-                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    bytes[i] = *(byte*)(Address + 0x3C + i);
+                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
                     else
-                        s1 += bytes[i].ToString("x").ToUpper();
+                    { s1 += bytes[i].ToString("x").ToUpper(); }
                 }
-
                 return s1;
+
             }
             set
             {
-                if (value == null) value = "";
 
-                for (var i = 0; i < value.Length; i++) _Trigger[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                if (value == null)
+                {
+                    value = "";
+                }
+
+                fixed (byte* ptr = _Trigger)
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        ptr[i / 2] = Convert.ToByte(value.Substring(i++, 2), 16);
+                    }
+                }
             }
         }
-
         public int Pad4
         {
             set
             {
-                for (var i = 0; i <= 16; i++) _pad4[i] = 0;
-            }
-        }
-
-
-        private VoidPtr Address
-        {
-            get
-            {
-                fixed (void* ptr = &this)
+                fixed (int* ptr = _pad4)
                 {
-                    return ptr;
+                    for (int i = 0; i <= 16; i++)
+                    {
+                        ptr[i] = 0;
+                    }
                 }
             }
         }
+
+
+        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+
     }
 }

@@ -1,74 +1,13 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using BrawlLib.Modeling;
+﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
     public class PAT0Editor : UserControl
     {
-        public ModelEditorBase _mainWindow;
-
-        private bool _updating;
-        private Button btnCopy;
-        private Button btnCut;
-        private Button btnPaste;
-        private GroupBox grpEdit;
-
-        private Label label1;
-        private Label label2;
-        private StringInputComboBox pltBox;
-        private StringInputComboBox texBox;
-
-        private string Texture, Palette;
-
-        public PAT0Editor()
-        {
-            InitializeComponent();
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoneNode TargetBone
-        {
-            get => _mainWindow.SelectedBone;
-            set => _mainWindow.SelectedBone = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef
-        {
-            get => _mainWindow.TargetTexRef;
-            set => _mainWindow.TargetTexRef = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int CurrentFrame
-        {
-            get => _mainWindow.CurrentFrame;
-            set => _mainWindow.CurrentFrame = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IModel TargetModel
-        {
-            get => _mainWindow.TargetModel;
-            set => _mainWindow.TargetModel = value;
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public PAT0Node SelectedAnimation
-        {
-            get => _mainWindow.SelectedPAT0;
-            set => _mainWindow.SelectedPAT0 = value;
-        }
-
         #region Designer
-
         private void InitializeComponent()
         {
             label1 = new Label();
@@ -93,26 +32,26 @@ namespace System.Windows.Forms
             // 
             // texBox
             // 
-            texBox.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                             | AnchorStyles.Right;
+            texBox.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             texBox.FormattingEnabled = true;
             texBox.Location = new Drawing.Point(108, 20);
             texBox.Name = "texBox";
             texBox.Size = new Drawing.Size(288, 21);
             texBox.TabIndex = 2;
-            texBox.ValueChanged += TexChanged;
+            texBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // pltBox
             // 
-            pltBox.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                             | AnchorStyles.Right;
+            pltBox.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right);
             pltBox.BackColor = SystemColors.Window;
             pltBox.FormattingEnabled = true;
             pltBox.Location = new Drawing.Point(108, 47);
             pltBox.Name = "pltBox";
             pltBox.Size = new Drawing.Size(288, 21);
             pltBox.TabIndex = 4;
-            pltBox.ValueChanged += TexChanged;
+            pltBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // label2
             // 
@@ -148,7 +87,7 @@ namespace System.Windows.Forms
             btnPaste.TabIndex = 26;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += btnPaste_Click;
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // btnCopy
             // 
@@ -158,7 +97,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 25;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // btnCut
             // 
@@ -168,7 +107,7 @@ namespace System.Windows.Forms
             btnCut.TabIndex = 24;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += btnCut_Click;
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // PAT0Editor
             // 
@@ -179,13 +118,54 @@ namespace System.Windows.Forms
             grpEdit.ResumeLayout(false);
             grpEdit.PerformLayout();
             ResumeLayout(false);
+
         }
 
         #endregion
 
+        private Label label1;
+        private StringInputComboBox texBox;
+        private StringInputComboBox pltBox;
+        private Label label2;
+        private GroupBox grpEdit;
+        private Button btnPaste;
+        private Button btnCopy;
+        private Button btnCut;
+
+        public ModelEditorBase _mainWindow;
+
+        public PAT0Editor() { InitializeComponent(); }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IBoneNode TargetBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MDL0MaterialRefNode TargetTexRef { get => _mainWindow.TargetTexRef; set => _mainWindow.TargetTexRef = value; }
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int CurrentFrame
+        {
+            get => _mainWindow.CurrentFrame;
+            set => _mainWindow.CurrentFrame = value;
+        }
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IModel TargetModel
+        {
+            get => _mainWindow.TargetModel;
+            set => _mainWindow.TargetModel = value;
+        }
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public PAT0Node SelectedAnimation
+        {
+            get => _mainWindow.SelectedPAT0;
+            set => _mainWindow.SelectedPAT0 = value;
+        }
         public void UpdatePropDisplay()
         {
-            if (!Enabled) return;
+            if (!Enabled)
+            {
+                return;
+            }
 
             ResetTexture();
             ResetPalette();
@@ -193,66 +173,78 @@ namespace System.Windows.Forms
 
         private void ResetPalette()
         {
-            var mr = TargetTexRef;
+            MDL0MaterialRefNode mr = TargetTexRef;
             PAT0TextureNode node;
 
-            if (mr == null) return;
+            if (mr == null)
+            {
+                return;
+            }
 
             _updating = true;
-            if (SelectedAnimation != null && CurrentFrame > 0 &&
-                (node = SelectedAnimation.FindChild(mr._parent.Name + "/Texture" + mr.Index,
-                    true) as PAT0TextureNode) != null)
+            if ((SelectedAnimation != null) && (CurrentFrame > 0) && ((node = SelectedAnimation.FindChild(mr._parent.Name + "/Texture" + mr.Index, true) as PAT0TextureNode) != null))
             {
-                var e = node.GetPalette(CurrentFrame - 1, out var kf);
+                string e = node.GetPalette(CurrentFrame - 1, out bool kf);
                 pltBox.Value = e;
                 if (!kf)
+                {
                     pltBox.BackColor = Color.White;
+                }
                 else
+                {
                     pltBox.BackColor = Color.Yellow;
+                }
             }
             else
             {
                 pltBox.Value = null;
                 pltBox.BackColor = Color.White;
             }
-
             _updating = false;
         }
 
         private void ResetTexture()
         {
-            var mr = TargetTexRef;
+            MDL0MaterialRefNode mr = TargetTexRef;
             PAT0TextureNode node;
 
-            if (mr == null) return;
+            if (mr == null)
+            {
+                return;
+            }
 
             _updating = true;
-            if (SelectedAnimation != null && CurrentFrame > 0 &&
-                (node = SelectedAnimation.FindChild(mr._parent.Name + "/Texture" + mr.Index,
-                    true) as PAT0TextureNode) != null)
+            if ((SelectedAnimation != null) && (CurrentFrame > 0) && ((node = SelectedAnimation.FindChild(mr._parent.Name + "/Texture" + mr.Index, true) as PAT0TextureNode) != null))
             {
-                var e = node.GetTexture(CurrentFrame - 1, out var kf);
+                string e = node.GetTexture(CurrentFrame - 1, out bool kf);
                 texBox.Value = e;
                 if (!kf)
+                {
                     texBox.BackColor = Color.White;
+                }
                 else
+                {
                     texBox.BackColor = Color.Yellow;
+                }
             }
             else
             {
                 texBox.Value = null;
                 texBox.BackColor = Color.White;
             }
-
             _updating = false;
         }
 
-        internal void TexChanged(object sender, EventArgs e)
+        private bool _updating = false;
+        internal unsafe void TexChanged(object sender, EventArgs e)
         {
-            var mr = TargetTexRef;
+            MDL0MaterialRefNode mr = TargetTexRef;
             PAT0TextureNode node;
 
-            if (mr == null || _updating) return;
+            if (mr == null || _updating)
+            {
+                return;
+            }
 
             if (SelectedAnimation != null && CurrentFrame > 0)
             {
@@ -260,7 +252,7 @@ namespace System.Windows.Forms
 
                 if (node != null)
                 {
-                    var tex = node.GetEntry(CurrentFrame - 1);
+                    PAT0TextureEntryNode tex = node.GetEntry(CurrentFrame - 1);
                     if (tex == null)
                     {
                         if (!string.IsNullOrEmpty(texBox.Text) || !string.IsNullOrEmpty(pltBox.Text))
@@ -270,9 +262,13 @@ namespace System.Windows.Forms
                                 _frame = CurrentFrame - 1
                             };
                             if (node.Children.Count > 0)
+                            {
                                 node.InsertChild(tex, true, node.GetPrevious(CurrentFrame - 1).Index + 1);
+                            }
                             else
+                            {
                                 node.AddChild(tex, true);
+                            }
 
                             tex.Texture = texBox.Text;
                             tex.Palette = pltBox.Text;
@@ -301,28 +297,41 @@ namespace System.Windows.Forms
 
         public void UpdateBoxes()
         {
-            if (TargetModel == null) return;
+            if (TargetModel == null)
+            {
+                return;
+            }
 
             texBox.Items.Clear();
             pltBox.Items.Clear();
 
             if (TargetModel != null)
             {
-                foreach (var s in ((ResourceNode) TargetModel).RootNode.FindChildrenByType(null, ResourceType.TEX0))
+                foreach (ResourceNode s in ((ResourceNode)TargetModel).RootNode.FindChildrenByType(null, ResourceType.TEX0))
+                {
                     texBox.Items.Add(s.Name);
+                }
 
-                foreach (var s in ((ResourceNode) TargetModel).RootNode.FindChildrenByType(null, ResourceType.PLT0))
+                foreach (ResourceNode s in ((ResourceNode)TargetModel).RootNode.FindChildrenByType(null, ResourceType.PLT0))
+                {
                     pltBox.Items.Add(s.Name);
+                }
             }
-
-            foreach (var r in _mainWindow._openedFiles)
+            foreach (ResourceNode r in _mainWindow._openedFiles)
             {
-                foreach (var s in r.FindChildrenByType(null, ResourceType.TEX0)) texBox.Items.Add(s.Name);
+                foreach (ResourceNode s in r.FindChildrenByType(null, ResourceType.TEX0))
+                {
+                    texBox.Items.Add(s.Name);
+                }
 
-                foreach (var s in r.FindChildrenByType(null, ResourceType.PLT0)) pltBox.Items.Add(s.Name);
+                foreach (ResourceNode s in r.FindChildrenByType(null, ResourceType.PLT0))
+                {
+                    pltBox.Items.Add(s.Name);
+                }
             }
         }
 
+        private string Texture, Palette;
         private void btnCut_Click(object sender, EventArgs e)
         {
             Texture = texBox.Text;

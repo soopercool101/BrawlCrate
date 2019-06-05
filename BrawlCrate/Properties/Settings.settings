@@ -1,7 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
-              GeneratedClassNamespace="BrawlCrate.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BrawlCrate.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="UpdateSettings" Type="System.Boolean" Scope="User">
@@ -61,8 +59,7 @@
     <Setting Name="DiscordRPCEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DiscordRPCNameType" Type="System.Nullable&lt;BrawlCrate.Discord.DiscordSettings.ModNameType&gt;"
-             Scope="User">
+    <Setting Name="DiscordRPCNameType" Type="System.Nullable&lt;BrawlCrate.Discord.DiscordSettings.ModNameType&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DiscordRPCNameCustom" Type="System.String" Scope="User">

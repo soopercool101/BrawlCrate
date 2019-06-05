@@ -8,7 +8,7 @@ namespace System.Windows.Forms
 
         public GLTextureWindow()
         {
-            Controls.Add(panel = new GLTexturePanel {Dock = DockStyle.Fill});
+            Controls.Add(panel = new GLTexturePanel() { Dock = DockStyle.Fill });
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Text = "Texture Preview";
             StartPosition = FormStartPosition.CenterParent;

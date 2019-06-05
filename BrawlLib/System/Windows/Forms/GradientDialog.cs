@@ -1,152 +1,12 @@
-﻿using System.ComponentModel;
+﻿using BrawlLib.Imaging;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using BrawlLib.Imaging;
 
 namespace System.Windows.Forms
 {
     public class GradientDialog : Form
     {
-        //private int _startIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int StartIndex
-        //{
-        //    get { return _startIndex; }
-        //    set { numStart.Value = _startIndex = value; }
-        //}
-
-        //private int _endIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int EndIndex
-        //{
-        //    get { return _endIndex; }
-        //    set { numStart.Value = _endIndex = value; }
-        //}
-
-        //private int _maxIndex;
-        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        //public int MaxIndex
-        //{
-        //    get { return _maxIndex; }
-        //    set { numStart.Maximum = numEnd.Maximum = _maxIndex = value; }
-        //}
-
-        private readonly GoodColorDialog _dlgColor;
-        private readonly LinearGradientBrush _gradBrush;
-
-        private Color _endColor;
-
-        private Color _startColor;
-
-        public GradientDialog()
-        {
-            InitializeComponent();
-
-            _dlgColor = new GoodColorDialog();
-            _gradBrush =
-                new LinearGradientBrush(
-                    new Rectangle(0, 0, pnlPreview.ClientRectangle.Width, pnlPreview.ClientRectangle.Height),
-                    Color.White, Color.Black, LinearGradientMode.Horizontal);
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color StartColor
-        {
-            get => _startColor;
-            set
-            {
-                _startColor = value;
-                UpdateStart();
-            }
-        }
-
-        [Browsable(false)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color EndColor
-        {
-            get => _endColor;
-            set
-            {
-                _endColor = value;
-                UpdateEnd();
-            }
-        }
-
-        private void UpdateStart()
-        {
-            lblStartText.Text = ((ARGBPixel) _startColor).ToString();
-            lblStartColor.BackColor = Color.FromArgb(_startColor.R, _startColor.G, _startColor.B);
-            UpdateBrush();
-        }
-
-        private void UpdateEnd()
-        {
-            lblEndText.Text = ((ARGBPixel) _endColor).ToString();
-            lblEndColor.BackColor = Color.FromArgb(_endColor.R, _endColor.G, _endColor.B);
-            UpdateBrush();
-        }
-
-        private void UpdateBrush()
-        {
-            _gradBrush.LinearColors = new[] {_startColor, _endColor};
-            pnlPreview.Invalidate();
-        }
-
-        private void numStart_ValueChanged(object sender, EventArgs e)
-        {
-        } // _startIndex = (int)numStart.Value; }
-
-        private void lblStartText_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = _startColor;
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                _startColor = _dlgColor.Color;
-                UpdateStart();
-            }
-        }
-
-        private void numEnd_ValueChanged(object sender, EventArgs e)
-        {
-        } // _endIndex = (int)numEnd.Value; }
-
-        private void lblEndText_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = _endColor;
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                _endColor = _dlgColor.Color;
-                UpdateEnd();
-            }
-        }
-
-        private void btnCopy_Click(object sender, EventArgs e)
-        {
-            _endColor = _startColor;
-            UpdateEnd();
-        }
-
-        private void btnOkay_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
-        private void pnlPreview_Paint(object sender, PaintEventArgs e)
-        {
-            var g = e.Graphics;
-
-            g.FillRectangle(GoodPictureBox._brush, pnlPreview.ClientRectangle);
-            g.FillRectangle(_gradBrush, pnlPreview.ClientRectangle);
-        }
-
         #region Designer
 
         private Label lblStartText;
@@ -184,7 +44,7 @@ namespace System.Windows.Forms
             lblStartText.Size = new Drawing.Size(154, 20);
             lblStartText.TabIndex = 4;
             lblStartText.TextAlign = ContentAlignment.MiddleCenter;
-            lblStartText.Click += lblStartText_Click;
+            lblStartText.Click += new EventHandler(lblStartText_Click);
             // 
             // label2
             // 
@@ -202,7 +62,7 @@ namespace System.Windows.Forms
             lblStartColor.Name = "lblStartColor";
             lblStartColor.Size = new Drawing.Size(40, 20);
             lblStartColor.TabIndex = 2;
-            lblStartColor.Click += lblStartText_Click;
+            lblStartColor.Click += new EventHandler(lblStartText_Click);
             // 
             // lblEndText
             // 
@@ -214,7 +74,7 @@ namespace System.Windows.Forms
             lblEndText.Size = new Drawing.Size(154, 20);
             lblEndText.TabIndex = 4;
             lblEndText.TextAlign = ContentAlignment.MiddleCenter;
-            lblEndText.Click += lblEndText_Click;
+            lblEndText.Click += new EventHandler(lblEndText_Click);
             // 
             // label4
             // 
@@ -232,7 +92,7 @@ namespace System.Windows.Forms
             lblEndColor.Name = "lblEndColor";
             lblEndColor.Size = new Drawing.Size(40, 20);
             lblEndColor.TabIndex = 2;
-            lblEndColor.Click += lblEndText_Click;
+            lblEndColor.Click += new EventHandler(lblEndText_Click);
             // 
             // btnOkay
             // 
@@ -243,7 +103,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 6;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -254,7 +114,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnCopy
             // 
@@ -264,7 +124,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 9;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // pnlPreview
             // 
@@ -273,7 +133,7 @@ namespace System.Windows.Forms
             pnlPreview.Name = "pnlPreview";
             pnlPreview.Size = new Drawing.Size(250, 27);
             pnlPreview.TabIndex = 8;
-            pnlPreview.Paint += pnlPreview_Paint;
+            pnlPreview.Paint += new PaintEventHandler(pnlPreview_Paint);
             // 
             // GradientDialog
             // 
@@ -296,8 +156,127 @@ namespace System.Windows.Forms
             ShowInTaskbar = false;
             Text = "Gradient Fill";
             ResumeLayout(false);
+
         }
 
         #endregion
+
+        private Color _startColor;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Color StartColor
+        {
+            get => _startColor;
+            set { _startColor = value; UpdateStart(); }
+        }
+
+        private Color _endColor;
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Color EndColor
+        {
+            get => _endColor;
+            set { _endColor = value; UpdateEnd(); }
+        }
+
+        //private int _startIndex;
+        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        //public int StartIndex
+        //{
+        //    get { return _startIndex; }
+        //    set { numStart.Value = _startIndex = value; }
+        //}
+
+        //private int _endIndex;
+        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        //public int EndIndex
+        //{
+        //    get { return _endIndex; }
+        //    set { numStart.Value = _endIndex = value; }
+        //}
+
+        //private int _maxIndex;
+        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        //public int MaxIndex
+        //{
+        //    get { return _maxIndex; }
+        //    set { numStart.Maximum = numEnd.Maximum = _maxIndex = value; }
+        //}
+
+        private readonly GoodColorDialog _dlgColor;
+        private readonly LinearGradientBrush _gradBrush;
+
+        public GradientDialog()
+        {
+            InitializeComponent();
+
+            _dlgColor = new GoodColorDialog();
+            _gradBrush = new LinearGradientBrush(new Rectangle(0, 0, pnlPreview.ClientRectangle.Width, pnlPreview.ClientRectangle.Height), Color.White, Color.Black, LinearGradientMode.Horizontal);
+        }
+
+        private void UpdateStart()
+        {
+            lblStartText.Text = ((ARGBPixel)_startColor).ToString();
+            lblStartColor.BackColor = Color.FromArgb(_startColor.R, _startColor.G, _startColor.B);
+            UpdateBrush();
+        }
+        private void UpdateEnd()
+        {
+            lblEndText.Text = ((ARGBPixel)_endColor).ToString();
+            lblEndColor.BackColor = Color.FromArgb(_endColor.R, _endColor.G, _endColor.B);
+            UpdateBrush();
+        }
+        private void UpdateBrush()
+        {
+            _gradBrush.LinearColors = new Color[] { _startColor, _endColor };
+            pnlPreview.Invalidate();
+        }
+
+        private void numStart_ValueChanged(object sender, EventArgs e) { } // _startIndex = (int)numStart.Value; }
+        private void lblStartText_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = _startColor;
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                _startColor = _dlgColor.Color;
+                UpdateStart();
+            }
+        }
+
+        private void numEnd_ValueChanged(object sender, EventArgs e) { } // _endIndex = (int)numEnd.Value; }
+        private void lblEndText_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = _endColor;
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                _endColor = _dlgColor.Color;
+                UpdateEnd();
+            }
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            _endColor = _startColor;
+            UpdateEnd();
+        }
+
+        private void btnOkay_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void pnlPreview_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            g.FillRectangle(GoodPictureBox._brush, pnlPreview.ClientRectangle);
+            g.FillRectangle(_gradBrush, pnlPreview.ClientRectangle);
+
+        }
     }
 }

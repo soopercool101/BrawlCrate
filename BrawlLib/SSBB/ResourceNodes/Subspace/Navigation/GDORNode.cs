@@ -1,352 +1,176 @@
-﻿using System;
+﻿using BrawlLib.SSBBTypes;
+using System;
 using System.ComponentModel;
-using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GDORNode : ResourceNode
     {
-        internal GDOR* Header => (GDOR*) WorkingUncompressed.Address;
+        internal GDOR* Header => (GDOR*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.GDOR;
 
-        [Category("GDOR")] public int Doors { get; private set; }
+        private int _doors;
+        [Category("GDOR")]
+        public int Doors => _doors;
 
         public override void OnPopulate()
         {
-            for (var i = 0; i < Header->_count; i++)
+            for (int i = 0; i < Header->_count; i++)
             {
                 DataSource source;
                 if (i == Header->_count - 1)
-                    source = new DataSource((*Header)[i],
-                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
-                else
-                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
+                { source = new DataSource((*Header)[i], WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]); }
+                else { source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]); }
                 new GDOREntryNode().Initialize(this, source);
+
             }
         }
-
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
-            if (_name == null) _name = "Adventure Doors";
+            if (_name == null)
+            {
+                _name = "Adventure Doors";
+            }
 
-            Doors = Header->_count;
+            _doors = Header->_count;
 
             return Header->_count > 0;
         }
-
         public override int OnCalculateSize(bool force)
         {
-            var size = GDOR.Size + Children.Count * 4;
-            foreach (var node in Children) size += node.CalculateSize(force);
+            int size = GDOR.Size + (Children.Count * 4);
+            foreach (ResourceNode node in Children)
+            {
+                size += node.CalculateSize(force);
+            }
 
             return size;
         }
-
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var header = (GDOR*) address;
+            GDOR* header = (GDOR*)address;
             *header = new GDOR(Children.Count);
-            var offset = (uint) (0x08 + Children.Count * 4);
-            for (var i = 0; i < Children.Count; i++)
+            uint offset = (uint)(0x08 + (Children.Count * 4));
+            for (int i = 0; i < Children.Count; i++)
             {
-                if (i > 0) offset += (uint) Children[i - 1].CalculateSize(false);
-                *(buint*) (address + 0x08 + i * 4) = offset;
+                if (i > 0) { offset += (uint)(Children[i - 1].CalculateSize(false)); }
+                *(buint*)(address + 0x08 + i * 4) = offset;
                 _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source)
-        {
-            return ((GDOR*) source.Address)->_tag == GDOR.Tag ? new GDORNode() : null;
-        }
+        internal static ResourceNode TryParse(DataSource source) { return ((GDOR*)source.Address)->_tag == GDOR.Tag ? new GDORNode() : null; }
     }
 
     public unsafe class GDOREntryNode : ResourceNode
     {
-        private string _doorID;
-
-        public int _doorIndex;
-
-        private int _mdlIndex;
-
-        private string _trigger0;
-
-        private string _trigger1;
-
-        private string _trigger2;
-
-        private int _unk;
-
-        private int _unk0;
-
-        private int _unk1;
-
-        private int _unk2;
-
-        private int _unk3;
-
-        private int _unk4;
-
-        private int _unk5;
-
-        private int _unk6;
-
-        private float _unkFloat0;
-
-        private float _unkFloat1;
-
-        private int _unkInt;
-
-        private float _xOverride;
-
-        private float _yOverride;
-
-        private float _zOverride;
-        internal GDOREntry* Header => (GDOREntry*) WorkingUncompressed.Address;
+        internal GDOREntry* Header => (GDOREntry*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
+        private string _doorID;
         [Category("Door Info")]
         [DisplayName("Door ID (File)")]
-        public string DoorID
-        {
-            get => _doorID;
-            set
-            {
-                _doorID = value;
-                SignalPropertyChange();
-            }
-        }
+        public string DoorID { get => _doorID; set { _doorID = value; SignalPropertyChange(); } }
 
+        public int _doorIndex;
         [Category("Door Info")]
         [DisplayName("Door Index")]
-        public int DoorIndex
-        {
-            get => _doorIndex;
-            set
-            {
-                _doorIndex = value;
-                SignalPropertyChange();
-            }
-        }
+        public int DoorIndex { get => _doorIndex; set { _doorIndex = value; SignalPropertyChange(); } }
 
+        private float _xOverride;
         [Category("Position Info")]
         [DisplayName("X Translation override")]
-        public float XOverride
-        {
-            get => _xOverride;
-            set
-            {
-                _xOverride = value;
-                SignalPropertyChange();
-            }
-        }
+        public float XOverride { get => _xOverride; set { _xOverride = value; SignalPropertyChange(); } }
 
+        private float _yOverride;
         [Category("Position Info")]
         [DisplayName("Y Translation override")]
-        public float YOverride
-        {
-            get => _yOverride;
-            set
-            {
-                _yOverride = value;
-                SignalPropertyChange();
-            }
-        }
+        public float YOverride { get => _yOverride; set { _yOverride = value; SignalPropertyChange(); } }
 
+        private float _zOverride;
         [Category("Position Info")]
         [DisplayName("Z Translation override")]
-        public float ZOverride
-        {
-            get => _zOverride;
-            set
-            {
-                _zOverride = value;
-                SignalPropertyChange();
-            }
-        }
+        public float ZOverride { get => _zOverride; set { _zOverride = value; SignalPropertyChange(); } }
 
+        private float _unkFloat0;
         [Category("Position Info")]
         [DisplayName("X Rotation override?")]
-        public float UnkFloat0
-        {
-            get => _unkFloat0;
-            set
-            {
-                _unkFloat0 = value;
-                SignalPropertyChange();
-            }
-        }
+        public float UnkFloat0 { get => _unkFloat0; set { _unkFloat0 = value; SignalPropertyChange(); } }
 
+        private float _unkFloat1;
         [Category("Position Info")]
         [DisplayName("Y Rotation override?")]
-        public float UnkFloat1
-        {
-            get => _unkFloat1;
-            set
-            {
-                _unkFloat1 = value;
-                SignalPropertyChange();
-            }
-        }
+        public float UnkFloat1 { get => _unkFloat1; set { _unkFloat1 = value; SignalPropertyChange(); } }
 
+        private int _unkInt;
         [Category("Door Info")]
         [DisplayName("Unknown")]
-        public int UnkInt
-        {
-            get => _unkInt;
-            set
-            {
-                _unkInt = value;
-                SignalPropertyChange();
-            }
-        }
+        public int UnkInt { get => _unkInt; set { _unkInt = value; SignalPropertyChange(); } }
 
+        private int _unk0;
         [Category("Unknown Field")]
         [DisplayName("Unknown 0")]
-        public int Unknown0
-        {
-            get => _unk0;
-            set
-            {
-                _unk0 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int Unknown0 { get => _unk0; set { _unk0 = value; SignalPropertyChange(); } }
 
+        private int _unk1;
         [Category("Unknown Field")]
         [DisplayName("Unknown 1")]
-        public int Unknown1
-        {
-            get => _unk1;
-            set
-            {
-                _unk1 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int Unknown1 { get => _unk1; set { _unk1 = value; SignalPropertyChange(); } }
 
+        private int _unk2;
         [Category("Unknown Field")]
         [DisplayName("Unknown 2")]
-        public int Unknown2
-        {
-            get => _unk2;
-            set
-            {
-                _unk2 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int Unknown2 { get => _unk2; set { _unk2 = value; SignalPropertyChange(); } }
 
+        private int _unk3;
         [Category("Unknown Field")]
         [DisplayName("Unknown 3")]
-        public int Unknown3
-        {
-            get => _unk3;
-            set
-            {
-                _unk3 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int Unknown3 { get => _unk3; set { _unk3 = value; SignalPropertyChange(); } }
 
+        private int _unk4;
         [Category("Model Field")]
         [DisplayName("Unknown 0")]
-        public int UnkMdlField0
-        {
-            get => _unk4;
-            set
-            {
-                _unk4 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int UnkMdlField0 { get => _unk4; set { _unk4 = value; SignalPropertyChange(); } }
 
+        private int _unk5;
         [Category("Model Field")]
         [DisplayName("Unknown 1")]
-        public int UnkMdlField1
-        {
-            get => _unk5;
-            set
-            {
-                _unk5 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int UnkMdlField1 { get => _unk5; set { _unk5 = value; SignalPropertyChange(); } }
 
+        private int _mdlIndex;
         [Category("Model Field")]
         [DisplayName("Model Index")]
-        public int MdlIndex
-        {
-            get => _mdlIndex;
-            set
-            {
-                _mdlIndex = value;
-                SignalPropertyChange();
-            }
-        }
+        public int MdlIndex { get => _mdlIndex; set { _mdlIndex = value; SignalPropertyChange(); } }
 
+        private int _unk6;
         [Category("Model Field")]
         [DisplayName("Unknown 2")]
-        public int UnkMdlField2
-        {
-            get => _unk6;
-            set
-            {
-                _unk6 = value;
-                SignalPropertyChange();
-            }
-        }
+        public int UnkMdlField2 { get => _unk6; set { _unk6 = value; SignalPropertyChange(); } }
 
+        private string _trigger0;
         [Category("Event info")]
         [DisplayName("Trigger 1")]
-        public string Trigger0
-        {
-            get => _trigger0;
-            set
-            {
-                _trigger0 = value;
-                SignalPropertyChange();
-            }
-        }
+        public string Trigger0 { get => _trigger0; set { _trigger0 = value; SignalPropertyChange(); } }
 
+        private string _trigger1;
         [Category("Event info")]
         [DisplayName("Trigger 2")]
-        public string Trigger1
-        {
-            get => _trigger1;
-            set
-            {
-                _trigger1 = value;
-                SignalPropertyChange();
-            }
-        }
+        public string Trigger1 { get => _trigger1; set { _trigger1 = value; SignalPropertyChange(); } }
 
+        private string _trigger2;
         [Category("Event info")]
         [DisplayName("Trigger 3")]
-        public string Trigger2
-        {
-            get => _trigger2;
-            set
-            {
-                _trigger2 = value;
-                SignalPropertyChange();
-            }
-        }
+        public string Trigger2 { get => _trigger2; set { _trigger2 = value; SignalPropertyChange(); } }
 
-        public int Unk
-        {
-            get => _unk;
-            set
-            {
-                _unk = value;
-                SignalPropertyChange();
-            }
-        }
+        private int _unk;
+        public int Unk { get => _unk; set { _unk = value; SignalPropertyChange(); } }
 
         public override bool OnInitialize()
         {
+
+
             _doorID = Header->DoorID;
             _doorIndex = Header->_doorIndex;
             _xOverride = Header->_xOverride;
@@ -367,35 +191,37 @@ namespace BrawlLib.SSBB.ResourceNodes
             _trigger0 = Header->Trigger0;
             _trigger1 = Header->Trigger1;
             _trigger2 = Header->Trigger2;
-            if (_name == null) _name = string.Format("Door[{0}]", _doorIndex);
+            if (_name == null)
+            {
+                _name = string.Format("Door[{0}]", _doorIndex);
+            }
 
             return false;
         }
-
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            var header = (GDOREntry*) address;
+            GDOREntry* header = (GDOREntry*)address;
             *header = new GDOREntry();
 
             header->DoorID = _doorID;
-            header->_doorIndex = (byte) _doorIndex;
+            header->_doorIndex = (byte)_doorIndex;
             header->_xOverride = _xOverride;
             header->_yOverride = _yOverride;
             header->_zOverride = _zOverride;
             header->_unkFloat0 = _unkFloat0;
             header->_unkFloat1 = _unkFloat1;
             header->_unkInt = _unkInt;
-            header->_unk7 = (byte) _unk;
-            header->_unk0 = (byte) _unk0;
-            header->_unk1 = (byte) _unk1;
-            header->_unk2 = (byte) _unk2;
-            header->_unk3 = (byte) _unk3;
-            header->_unk4 = (byte) _unk4;
-            header->_unk5 = (byte) _unk5;
-            header->_unk6 = (byte) _unk6;
+            header->_unk7 = (byte)_unk;
+            header->_unk0 = (byte)_unk0;
+            header->_unk1 = (byte)_unk1;
+            header->_unk2 = (byte)_unk2;
+            header->_unk3 = (byte)_unk3;
+            header->_unk4 = (byte)_unk4;
+            header->_unk5 = (byte)_unk5;
+            header->_unk6 = (byte)_unk6;
             header->_unk8 = header->_unk9 = header->_unk10 = 0;
             header->_nulls = 0xFFFFFFFF;
-            header->_mdlIndex = (byte) _mdlIndex;
+            header->_mdlIndex = (byte)_mdlIndex;
             header->Trigger0 = _trigger0;
             header->Trigger1 = _trigger1;
             header->Trigger2 = _trigger2;
@@ -403,8 +229,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_pad1 = header->Pad2 = 0;
 
             header->Pad4 = 1.0f;
-        }
 
+        }
         public override int OnCalculateSize(bool force)
         {
             return GDOREntry.Size;

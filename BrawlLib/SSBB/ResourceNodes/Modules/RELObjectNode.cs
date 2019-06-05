@@ -4,19 +4,22 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class RELObjectNode : RELEntryNode
     {
+        private readonly RELType _type = null;
+
+        [Browsable(false)]
+        public RELType Type => _type;
+
+        public int InheritanceCount => _type.Inheritance.Count;
+
         public RELObjectNode(RELType type)
         {
-            Type = type;
-            _name = Type.FullName;
+            _type = type;
+            _name = _type.FullName;
         }
-
-        [Browsable(false)] public RELType Type { get; }
-
-        public int InheritanceCount => Type.Inheritance.Count;
 
         public override string ToString()
         {
-            return Type.ToString();
+            return _type.ToString();
         }
     }
 }
