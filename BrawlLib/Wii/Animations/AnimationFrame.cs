@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBBTypes;
-using BrawlLib.Wii.Graphics;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Graphics;
 
 namespace BrawlLib.Wii.Animations
 {
@@ -9,8 +9,10 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct CHRAnimationFrame
     {
-        public static readonly CHRAnimationFrame Identity = new CHRAnimationFrame(new Vector3(1.0f), new Vector3(), new Vector3());
-        public static readonly CHRAnimationFrame Empty = new CHRAnimationFrame();
+        public static readonly CHRAnimationFrame Identity =
+            new CHRAnimationFrame(new Vector3(1.0f), new Vector3(), new Vector3());
+
+        public static readonly CHRAnimationFrame Empty;
 
         public Vector3 Scale;
         public Vector3 Rotation;
@@ -35,25 +37,35 @@ namespace BrawlLib.Wii.Animations
             switch (index)
             {
                 case 0:
-                    hasSx = val; break;
+                    hasSx = val;
+                    break;
                 case 1:
-                    hasSy = val; break;
+                    hasSy = val;
+                    break;
                 case 2:
-                    hasSz = val; break;
+                    hasSz = val;
+                    break;
                 case 3:
-                    hasRx = val; break;
+                    hasRx = val;
+                    break;
                 case 4:
-                    hasRy = val; break;
+                    hasRy = val;
+                    break;
                 case 5:
-                    hasRz = val; break;
+                    hasRz = val;
+                    break;
                 case 6:
-                    hasTx = val; break;
+                    hasTx = val;
+                    break;
                 case 7:
-                    hasTy = val; break;
+                    hasTy = val;
+                    break;
                 case 8:
-                    hasTz = val; break;
+                    hasTz = val;
+                    break;
             }
         }
+
         public bool GetBool(int index)
         {
             switch (index)
@@ -77,14 +89,15 @@ namespace BrawlLib.Wii.Animations
                 case 8:
                     return hasTz;
             }
+
             return false;
         }
 
         public void ResetBools()
         {
             hasRx = hasRy = hasRz =
-            hasSx = hasSy = hasSz =
-            hasTx = hasTy = hasTz = false;
+                hasSx = hasSy = hasSz =
+                    hasTx = hasTy = hasTz = false;
         }
 
         public float this[int index]
@@ -109,40 +122,64 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: Scale._x = value; break;
-                    case 1: Scale._y = value; break;
-                    case 2: Scale._z = value; break;
-                    case 3: Rotation._x = value; break;
-                    case 4: Rotation._y = value; break;
-                    case 5: Rotation._z = value; break;
-                    case 6: Translation._x = value; break;
-                    case 7: Translation._y = value; break;
-                    case 8: Translation._z = value; break;
+                    case 0:
+                        Scale._x = value;
+                        break;
+                    case 1:
+                        Scale._y = value;
+                        break;
+                    case 2:
+                        Scale._z = value;
+                        break;
+                    case 3:
+                        Rotation._x = value;
+                        break;
+                    case 4:
+                        Rotation._y = value;
+                        break;
+                    case 5:
+                        Rotation._z = value;
+                        break;
+                    case 6:
+                        Translation._x = value;
+                        break;
+                    case 7:
+                        Translation._y = value;
+                        break;
+                    case 8:
+                        Translation._z = value;
+                        break;
                 }
             }
         }
 
         public CHRAnimationFrame(Vector3 scale, Vector3 rotation, Vector3 translation)
         {
-            Scale = scale; Rotation = rotation; Translation = translation; Index = 0;
+            Scale = scale;
+            Rotation = rotation;
+            Translation = translation;
+            Index = 0;
             hasSx = hasSy = hasSz = hasRx = hasRy = hasRz = hasTx = hasTy = hasTz = false;
         }
+
         public int Index;
         private const int len = 6;
         private static readonly string empty = new string('_', len);
+
         public override string ToString()
         {
             return string.Format("[{0}]({1},{2},{3})({4},{5},{6})({7},{8},{9})", (Index + 1).ToString().PadLeft(5),
-            !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
-            !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
-            !hasSz ? empty : Scale._z.ToString().TruncateAndFill(len, ' '),
-            !hasRx ? empty : Rotation._x.ToString().TruncateAndFill(len, ' '),
-            !hasRy ? empty : Rotation._y.ToString().TruncateAndFill(len, ' '),
-            !hasRz ? empty : Rotation._z.ToString().TruncateAndFill(len, ' '),
-            !hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '),
-            !hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '),
-            !hasTz ? empty : Translation._z.ToString().TruncateAndFill(len, ' '));
+                !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
+                !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
+                !hasSz ? empty : Scale._z.ToString().TruncateAndFill(len, ' '),
+                !hasRx ? empty : Rotation._x.ToString().TruncateAndFill(len, ' '),
+                !hasRy ? empty : Rotation._y.ToString().TruncateAndFill(len, ' '),
+                !hasRz ? empty : Rotation._z.ToString().TruncateAndFill(len, ' '),
+                !hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '),
+                !hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '),
+                !hasTz ? empty : Translation._z.ToString().TruncateAndFill(len, ' '));
         }
+
         //public override string ToString()
         //{
         //    return String.Format("{0}\r\n{1}\r\n{2}", Scale, Rotation, Translation);
@@ -154,7 +191,7 @@ namespace BrawlLib.Wii.Animations
     public struct SRTAnimationFrame
     {
         public static readonly SRTAnimationFrame Identity = new SRTAnimationFrame(new Vector2(1.0f), 0, new Vector2());
-        public static readonly SRTAnimationFrame Empty = new SRTAnimationFrame();
+        public static readonly SRTAnimationFrame Empty;
 
         public Vector2 Scale;
         public float Rotation;
@@ -172,13 +209,24 @@ namespace BrawlLib.Wii.Animations
         {
             switch (index)
             {
-                case 0: hasSx = val; break;
-                case 1: hasSy = val; break;
-                case 2: hasRx = val; break;
-                case 3: hasTx = val; break;
-                case 4: hasTy = val; break;
+                case 0:
+                    hasSx = val;
+                    break;
+                case 1:
+                    hasSy = val;
+                    break;
+                case 2:
+                    hasRx = val;
+                    break;
+                case 3:
+                    hasTx = val;
+                    break;
+                case 4:
+                    hasTy = val;
+                    break;
             }
         }
+
         public bool GetBool(int index)
         {
             switch (index)
@@ -189,6 +237,7 @@ namespace BrawlLib.Wii.Animations
                 case 3: return hasTx;
                 case 4: return hasTy;
             }
+
             return false;
         }
 
@@ -215,11 +264,21 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: Scale._x = value; break;
-                    case 1: Scale._y = value; break;
-                    case 2: Rotation = value; break;
-                    case 3: Translation._x = value; break;
-                    case 4: Translation._y = value; break;
+                    case 0:
+                        Scale._x = value;
+                        break;
+                    case 1:
+                        Scale._y = value;
+                        break;
+                    case 2:
+                        Rotation = value;
+                        break;
+                    case 3:
+                        Translation._x = value;
+                        break;
+                    case 4:
+                        Translation._y = value;
+                        break;
                 }
             }
         }
@@ -232,18 +291,21 @@ namespace BrawlLib.Wii.Animations
             Index = 0;
             hasSx = hasSy = hasRx = hasTx = hasTy = false;
         }
+
         public int Index;
         private const int len = 6;
         private static readonly string empty = new string('_', len);
+
         public override string ToString()
         {
             return string.Format("[{0}]({1},{2})({3})({4},{5})", (Index + 1).ToString().PadLeft(5),
-            !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
-            !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
-            !hasRx ? empty : Rotation.ToString().TruncateAndFill(len, ' '),
-            !hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '),
-            !hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '));
+                !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
+                !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
+                !hasRx ? empty : Rotation.ToString().TruncateAndFill(len, ' '),
+                !hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '),
+                !hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '));
         }
+
         //public override string ToString()
         //{
         //    return String.Format("{0}\r\n{1}\r\n{2}", Scale, Rotation, Translation);
@@ -253,7 +315,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FogAnimationFrame
     {
-        public static readonly FogAnimationFrame Empty = new FogAnimationFrame();
+        public static readonly FogAnimationFrame Empty;
 
         public float Start;
         public float End;
@@ -270,9 +332,11 @@ namespace BrawlLib.Wii.Animations
             switch (index)
             {
                 case 0:
-                    hasS = val; break;
+                    hasS = val;
+                    break;
                 case 1:
-                    hasE = val; break;
+                    hasE = val;
+                    break;
             }
         }
 
@@ -296,8 +360,12 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: Start = value; break;
-                    case 1: End = value; break;
+                    case 0:
+                        Start = value;
+                        break;
+                    case 1:
+                        End = value;
+                        break;
                 }
             }
         }
@@ -319,15 +387,15 @@ namespace BrawlLib.Wii.Animations
         public override string ToString()
         {
             return string.Format("[{0}] StartZ={1}, EndZ={2}", (Index + 1).ToString().PadLeft(5),
-            !hasS ? empty : Start.ToString().TruncateAndFill(len, ' '),
-            !hasE ? empty : End.ToString().TruncateAndFill(len, ' '));
+                !hasS ? empty : Start.ToString().TruncateAndFill(len, ' '),
+                !hasE ? empty : End.ToString().TruncateAndFill(len, ' '));
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GLSLLightFrame
     {
-        public static readonly GLSLLightFrame Empty = new GLSLLightFrame();
+        public static readonly GLSLLightFrame Empty;
 
         //These three vars are used by both specular and diffuse
         public int Enabled; //Don't apply this light if 0
@@ -341,6 +409,7 @@ namespace BrawlLib.Wii.Animations
 
         //Specular (a different light, but uses the same start, direction, enable, and color/alpha enable)
         public int SpecEnabled;
+
         //public Vector3 SpecA; //Attenuation A = constant 0,0,1
         public Vector3 SpecK; //Attenuation K
         public Vector4 SpecColor;
@@ -391,7 +460,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct LightAnimationFrame
     {
-        public static readonly LightAnimationFrame Empty = new LightAnimationFrame();
+        public static readonly LightAnimationFrame Empty;
 
         public Vector3 Start;
         public Vector3 End;
@@ -424,24 +493,44 @@ namespace BrawlLib.Wii.Animations
         {
             switch (index)
             {
-                case 0: hasSx = val; break;
-                case 1: hasSy = val; break;
-                case 2: hasSz = val; break;
-                case 3: hasEx = val; break;
-                case 4: hasEy = val; break;
-                case 5: hasEz = val; break;
-                case 6: hasRD = val; break;
-                case 7: hasRB = val; break;
-                case 8: hasSC = val; break;
-                case 9: hasSB = val; break;
+                case 0:
+                    hasSx = val;
+                    break;
+                case 1:
+                    hasSy = val;
+                    break;
+                case 2:
+                    hasSz = val;
+                    break;
+                case 3:
+                    hasEx = val;
+                    break;
+                case 4:
+                    hasEy = val;
+                    break;
+                case 5:
+                    hasEz = val;
+                    break;
+                case 6:
+                    hasRD = val;
+                    break;
+                case 7:
+                    hasRB = val;
+                    break;
+                case 8:
+                    hasSC = val;
+                    break;
+                case 9:
+                    hasSB = val;
+                    break;
             }
         }
 
         public void ResetBools()
         {
             hasEx = hasEy = hasEz =
-            hasSx = hasSy = hasSz =
-            hasSC = hasSB = hasRD = hasRB = false;
+                hasSx = hasSy = hasSz =
+                    hasSC = hasSB = hasRD = hasRB = false;
         }
 
         public float this[int index]
@@ -467,16 +556,36 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: Start._x = value; break;
-                    case 1: Start._y = value; break;
-                    case 2: Start._z = value; break;
-                    case 3: End._x = value; break;
-                    case 4: End._y = value; break;
-                    case 5: End._z = value; break;
-                    case 6: RefDist = value; break;
-                    case 7: RefBright = value; break;
-                    case 8: SpotCutoff = value; break;
-                    case 9: SpotBright = value; break;
+                    case 0:
+                        Start._x = value;
+                        break;
+                    case 1:
+                        Start._y = value;
+                        break;
+                    case 2:
+                        Start._z = value;
+                        break;
+                    case 3:
+                        End._x = value;
+                        break;
+                    case 4:
+                        End._y = value;
+                        break;
+                    case 5:
+                        End._z = value;
+                        break;
+                    case 6:
+                        RefDist = value;
+                        break;
+                    case 7:
+                        RefBright = value;
+                        break;
+                    case 8:
+                        SpotCutoff = value;
+                        break;
+                    case 9:
+                        SpotBright = value;
+                        break;
                 }
             }
         }
@@ -495,29 +604,32 @@ namespace BrawlLib.Wii.Animations
             Index = 0;
             hasSx = hasSy = hasSz = hasEx = hasEy = hasEz = hasSC = hasSB = hasRD = hasRB = false;
         }
+
         public float Index;
         private const int len = 6;
         private static readonly string empty = new string('_', len);
+
         public override string ToString()
         {
-            return string.Format("[{0}] Start=({1},{2},{3}), End=({4},{5},{6}), SC={7}, SB={8} RD={9}, RB={10}", (Index + 1).ToString().PadLeft(5),
-            !hasSx ? empty : Start._x.ToString().TruncateAndFill(len, ' '),
-            !hasSy ? empty : Start._y.ToString().TruncateAndFill(len, ' '),
-            !hasSz ? empty : Start._z.ToString().TruncateAndFill(len, ' '),
-            !hasEx ? empty : End._x.ToString().TruncateAndFill(len, ' '),
-            !hasEy ? empty : End._y.ToString().TruncateAndFill(len, ' '),
-            !hasEz ? empty : End._z.ToString().TruncateAndFill(len, ' '),
-            !hasSC ? empty : SpotCutoff.ToString().TruncateAndFill(len, ' '),
-            !hasSB ? empty : SpotBright.ToString().TruncateAndFill(len, ' '),
-            !hasRD ? empty : RefDist.ToString().TruncateAndFill(len, ' '),
-            !hasRB ? empty : RefBright.ToString().TruncateAndFill(len, ' '));
+            return string.Format("[{0}] Start=({1},{2},{3}), End=({4},{5},{6}), SC={7}, SB={8} RD={9}, RB={10}",
+                (Index + 1).ToString().PadLeft(5),
+                !hasSx ? empty : Start._x.ToString().TruncateAndFill(len, ' '),
+                !hasSy ? empty : Start._y.ToString().TruncateAndFill(len, ' '),
+                !hasSz ? empty : Start._z.ToString().TruncateAndFill(len, ' '),
+                !hasEx ? empty : End._x.ToString().TruncateAndFill(len, ' '),
+                !hasEy ? empty : End._y.ToString().TruncateAndFill(len, ' '),
+                !hasEz ? empty : End._z.ToString().TruncateAndFill(len, ' '),
+                !hasSC ? empty : SpotCutoff.ToString().TruncateAndFill(len, ' '),
+                !hasSB ? empty : SpotBright.ToString().TruncateAndFill(len, ' '),
+                !hasRD ? empty : RefDist.ToString().TruncateAndFill(len, ' '),
+                !hasRB ? empty : RefBright.ToString().TruncateAndFill(len, ' '));
         }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct CameraAnimationFrame
     {
-        public static readonly CameraAnimationFrame Empty = new CameraAnimationFrame();
+        public static readonly CameraAnimationFrame Empty;
 
         public Vector3 Pos;
         public float Aspect;
@@ -548,37 +660,68 @@ namespace BrawlLib.Wii.Animations
         public bool hasNz;
         public bool hasFz;
 
-        public bool HasKeys => hasPx || hasPy || hasPz || hasRx || hasRy || hasRz || hasAx || hasAy || hasAz || hasT || hasF || hasH || hasA || hasNz || hasFz;
+        public bool HasKeys => hasPx || hasPy || hasPz || hasRx || hasRy || hasRz || hasAx || hasAy || hasAz || hasT ||
+                               hasF || hasH || hasA || hasNz || hasFz;
 
         public void SetBools(int index, bool val)
         {
             switch (index)
             {
-                case 0: hasPx = val; break;
-                case 1: hasPy = val; break;
-                case 2: hasPz = val; break;
-                case 3: hasA = val; break;
-                case 4: hasNz = val; break;
-                case 5: hasFz = val; break;
-                case 6: hasRx = val; break;
-                case 7: hasRy = val; break;
-                case 8: hasRz = val; break;
-                case 9: hasAx = val; break;
-                case 10: hasAy = val; break;
-                case 11: hasAz = val; break;
-                case 12: hasT = val; break;
-                case 13: hasF = val; break;
-                case 14: hasH = val; break;
+                case 0:
+                    hasPx = val;
+                    break;
+                case 1:
+                    hasPy = val;
+                    break;
+                case 2:
+                    hasPz = val;
+                    break;
+                case 3:
+                    hasA = val;
+                    break;
+                case 4:
+                    hasNz = val;
+                    break;
+                case 5:
+                    hasFz = val;
+                    break;
+                case 6:
+                    hasRx = val;
+                    break;
+                case 7:
+                    hasRy = val;
+                    break;
+                case 8:
+                    hasRz = val;
+                    break;
+                case 9:
+                    hasAx = val;
+                    break;
+                case 10:
+                    hasAy = val;
+                    break;
+                case 11:
+                    hasAz = val;
+                    break;
+                case 12:
+                    hasT = val;
+                    break;
+                case 13:
+                    hasF = val;
+                    break;
+                case 14:
+                    hasH = val;
+                    break;
             }
         }
 
         public void ResetBools()
         {
             hasRx = hasRy = hasRz =
-            hasPx = hasPy = hasPz =
-            hasAx = hasAy = hasAz =
-            hasT = hasF = hasH =
-            hasA = hasNz = hasFz = false;
+                hasPx = hasPy = hasPz =
+                    hasAx = hasAy = hasAz =
+                        hasT = hasF = hasH =
+                            hasA = hasNz = hasFz = false;
         }
 
         public float this[int index]
@@ -609,21 +752,51 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: Pos._x = value; break;
-                    case 1: Pos._y = value; break;
-                    case 2: Pos._z = value; break;
-                    case 3: Aspect = value; break;
-                    case 4: NearZ = value; break;
-                    case 5: FarZ = value; break;
-                    case 6: Rot._x = value; break;
-                    case 7: Rot._y = value; break;
-                    case 8: Rot._z = value; break;
-                    case 9: Aim._x = value; break;
-                    case 10: Aim._y = value; break;
-                    case 11: Aim._z = value; break;
-                    case 12: Twist = value; break;
-                    case 13: FovY = value; break;
-                    case 14: Height = value; break;
+                    case 0:
+                        Pos._x = value;
+                        break;
+                    case 1:
+                        Pos._y = value;
+                        break;
+                    case 2:
+                        Pos._z = value;
+                        break;
+                    case 3:
+                        Aspect = value;
+                        break;
+                    case 4:
+                        NearZ = value;
+                        break;
+                    case 5:
+                        FarZ = value;
+                        break;
+                    case 6:
+                        Rot._x = value;
+                        break;
+                    case 7:
+                        Rot._y = value;
+                        break;
+                    case 8:
+                        Rot._z = value;
+                        break;
+                    case 9:
+                        Aim._x = value;
+                        break;
+                    case 10:
+                        Aim._y = value;
+                        break;
+                    case 11:
+                        Aim._z = value;
+                        break;
+                    case 12:
+                        Twist = value;
+                        break;
+                    case 13:
+                        FovY = value;
+                        break;
+                    case 14:
+                        Height = value;
+                        break;
                 }
             }
         }
@@ -631,27 +804,19 @@ namespace BrawlLib.Wii.Animations
         public Vector3 GetRotation(SCN0CameraType type)
         {
             if (type == SCN0CameraType.Rotate)
-            {
                 return Rot;
-            }
-            else //Aim - calculate rotation facing the position
-            {
-                return GetRotationMatrix(type).GetAngles();
-            }
+            return GetRotationMatrix(type).GetAngles();
         }
+
         public Matrix GetRotationMatrix(SCN0CameraType type)
         {
             if (type == SCN0CameraType.Rotate)
-            {
                 return Matrix.RotationMatrix(Rot);
-            }
-            else //Aim - calculate rotation facing the position
-            {
-                return Matrix.RotationMatrix(Aim.LookatAngles(Pos) * Maths._rad2degf) * Matrix.RotationAboutZ(Twist);
-            }
+            return Matrix.RotationMatrix(Aim.LookatAngles(Pos) * Maths._rad2degf) * Matrix.RotationAboutZ(Twist);
         }
 
-        public CameraAnimationFrame(Vector3 pos, Vector3 rot, Vector3 aim, float t, float f, float h, float a, float nz, float fz)
+        public CameraAnimationFrame(Vector3 pos, Vector3 rot, Vector3 aim, float t, float f, float h, float a, float nz,
+            float fz)
         {
             Pos = pos;
             Rot = rot;
@@ -664,32 +829,36 @@ namespace BrawlLib.Wii.Animations
             FarZ = fz;
             Index = 0;
             hasRx = hasRy = hasRz =
-            hasPx = hasPy = hasPz =
-            hasAx = hasAy = hasAz =
-            hasT = hasF = hasH =
-            hasA = hasNz = hasFz = false;
+                hasPx = hasPy = hasPz =
+                    hasAx = hasAy = hasAz =
+                        hasT = hasF = hasH =
+                            hasA = hasNz = hasFz = false;
         }
+
         public float Index;
         private const int len = 6;
         private static readonly string empty = new string('_', len);
+
         public override string ToString()
         {
-            return string.Format("[{0}] Pos=({1},{2},{3}), Rot=({4},{5},{6}), Aim=({7},{8},{9}), Twist={10}, FovY={11}, Height={12}, Aspect={13}, NearZ={14}, FarZ={15}", (Index + 1).ToString().PadLeft(5),
-            !hasPx ? empty : Pos._x.ToString().TruncateAndFill(len, ' '),
-            !hasPy ? empty : Pos._y.ToString().TruncateAndFill(len, ' '),
-            !hasPz ? empty : Pos._z.ToString().TruncateAndFill(len, ' '),
-            !hasRx ? empty : Rot._x.ToString().TruncateAndFill(len, ' '),
-            !hasRy ? empty : Rot._y.ToString().TruncateAndFill(len, ' '),
-            !hasRz ? empty : Rot._z.ToString().TruncateAndFill(len, ' '),
-            !hasAx ? empty : Aim._x.ToString().TruncateAndFill(len, ' '),
-            !hasAy ? empty : Aim._y.ToString().TruncateAndFill(len, ' '),
-            !hasAz ? empty : Aim._z.ToString().TruncateAndFill(len, ' '),
-            !hasT ? empty : Twist.ToString().TruncateAndFill(len, ' '),
-            !hasF ? empty : FovY.ToString().TruncateAndFill(len, ' '),
-            !hasH ? empty : Height.ToString().TruncateAndFill(len, ' '),
-            !hasA ? empty : Aspect.ToString().TruncateAndFill(len, ' '),
-            !hasNz ? empty : NearZ.ToString().TruncateAndFill(len, ' '),
-            !hasFz ? empty : FarZ.ToString().TruncateAndFill(len, ' '));
+            return string.Format(
+                "[{0}] Pos=({1},{2},{3}), Rot=({4},{5},{6}), Aim=({7},{8},{9}), Twist={10}, FovY={11}, Height={12}, Aspect={13}, NearZ={14}, FarZ={15}",
+                (Index + 1).ToString().PadLeft(5),
+                !hasPx ? empty : Pos._x.ToString().TruncateAndFill(len, ' '),
+                !hasPy ? empty : Pos._y.ToString().TruncateAndFill(len, ' '),
+                !hasPz ? empty : Pos._z.ToString().TruncateAndFill(len, ' '),
+                !hasRx ? empty : Rot._x.ToString().TruncateAndFill(len, ' '),
+                !hasRy ? empty : Rot._y.ToString().TruncateAndFill(len, ' '),
+                !hasRz ? empty : Rot._z.ToString().TruncateAndFill(len, ' '),
+                !hasAx ? empty : Aim._x.ToString().TruncateAndFill(len, ' '),
+                !hasAy ? empty : Aim._y.ToString().TruncateAndFill(len, ' '),
+                !hasAz ? empty : Aim._z.ToString().TruncateAndFill(len, ' '),
+                !hasT ? empty : Twist.ToString().TruncateAndFill(len, ' '),
+                !hasF ? empty : FovY.ToString().TruncateAndFill(len, ' '),
+                !hasH ? empty : Height.ToString().TruncateAndFill(len, ' '),
+                !hasA ? empty : Aspect.ToString().TruncateAndFill(len, ' '),
+                !hasNz ? empty : NearZ.ToString().TruncateAndFill(len, ' '),
+                !hasFz ? empty : FarZ.ToString().TruncateAndFill(len, ' '));
         }
     }
 }

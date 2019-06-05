@@ -1,5 +1,5 @@
-﻿using BrawlLib.OpenGL;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BrawlLib.OpenGL;
 
 namespace BrawlLib.Modeling
 {

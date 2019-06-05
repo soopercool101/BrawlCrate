@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace BrawlCrate
 {
     /// <summary>
-    /// http://www.arstdesign.com/articles/treeviewms.html
+    ///     http://www.arstdesign.com/articles/treeviewms.html
     /// </summary>
     public class TreeViewMS : TreeView
     {
@@ -15,14 +15,6 @@ namespace BrawlCrate
         public TreeViewMS()
         {
             m_coll = new List<TreeNode>();
-        }
-
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            // TODO: Add custom paint code here
-
-            // Calling the base class OnPaint
-            base.OnPaint(pe);
         }
 
 
@@ -38,6 +30,13 @@ namespace BrawlCrate
             }
         }
 
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            // TODO: Add custom paint code here
+
+            // Calling the base class OnPaint
+            base.OnPaint(pe);
+        }
 
 
         // Triggers
@@ -51,8 +50,8 @@ namespace BrawlCrate
 
             if (e.Action == TreeViewAction.ByMouse)
             {
-                bool bControl = (ModifierKeys == Keys.Control);
-                bool bShift = (ModifierKeys == Keys.Shift);
+                var bControl = ModifierKeys == Keys.Control;
+                var bShift = ModifierKeys == Keys.Shift;
 
                 // selecting twice the node while pressing CTRL ?
                 if (bControl && m_coll.Contains(e.Node))
@@ -68,10 +67,7 @@ namespace BrawlCrate
                 }
 
                 m_lastNode = e.Node;
-                if (!bShift)
-                {
-                    m_firstNode = e.Node; // store begin of shift sequence
-                }
+                if (!bShift) m_firstNode = e.Node; // store begin of shift sequence
             }
             else
             {
@@ -90,8 +86,8 @@ namespace BrawlCrate
 
             if (e.Action == TreeViewAction.ByMouse)
             {
-                bool bControl = (ModifierKeys == Keys.Control);
-                bool bShift = (ModifierKeys == Keys.Shift);
+                var bControl = ModifierKeys == Keys.Control;
+                var bShift = ModifierKeys == Keys.Shift;
 
                 if (bControl)
                 {
@@ -99,11 +95,12 @@ namespace BrawlCrate
                     {
                         m_coll.Add(e.Node);
                     }
-                    else  // not new, remove it from the collection
+                    else // not new, remove it from the collection
                     {
                         removePaintFromNodes();
                         m_coll.Remove(e.Node);
                     }
+
                     paintSelectedNodes();
                 }
                 else
@@ -111,31 +108,30 @@ namespace BrawlCrate
                     // SHIFT is pressed
                     if (bShift)
                     {
-                        Queue<TreeNode> myQueue = new Queue<TreeNode>();
+                        var myQueue = new Queue<TreeNode>();
 
-                        TreeNode uppernode = m_firstNode;
-                        TreeNode bottomnode = e.Node;
+                        var uppernode = m_firstNode;
+                        var bottomnode = e.Node;
                         // case 1 : begin and end nodes are parent
-                        bool bParent = isParent(m_firstNode, e.Node); // is m_firstNode parent (direct or not) of e.Node
+                        var bParent = isParent(m_firstNode, e.Node); // is m_firstNode parent (direct or not) of e.Node
                         if (!bParent)
                         {
                             bParent = isParent(bottomnode, uppernode);
                             if (bParent) // swap nodes
                             {
-                                TreeNode t = uppernode;
+                                var t = uppernode;
                                 uppernode = bottomnode;
                                 bottomnode = t;
                             }
                         }
+
                         if (bParent)
                         {
-                            TreeNode n = bottomnode;
+                            var n = bottomnode;
                             while (n != uppernode.Parent)
                             {
                                 if (!m_coll.Contains(n)) // new node ?
-                                {
                                     myQueue.Enqueue(n);
-                                }
 
                                 n = n.Parent;
                             }
@@ -143,44 +139,36 @@ namespace BrawlCrate
                         // case 2 : nor the begin nor the end node are descendant one another
                         else
                         {
-                            if ((uppernode.Parent == null && bottomnode.Parent == null) || (uppernode.Parent != null && uppernode.Parent.Nodes.Contains(bottomnode))) // are they siblings ?
+                            if (uppernode.Parent == null && bottomnode.Parent == null || uppernode.Parent != null &&
+                                uppernode.Parent.Nodes.Contains(bottomnode)) // are they siblings ?
                             {
-                                int nIndexUpper = uppernode.Index;
-                                int nIndexBottom = bottomnode.Index;
+                                var nIndexUpper = uppernode.Index;
+                                var nIndexBottom = bottomnode.Index;
                                 if (nIndexBottom < nIndexUpper) // reversed?
                                 {
-                                    TreeNode t = uppernode;
+                                    var t = uppernode;
                                     uppernode = bottomnode;
                                     bottomnode = t;
                                     nIndexUpper = uppernode.Index;
                                     nIndexBottom = bottomnode.Index;
                                 }
 
-                                TreeNode n = uppernode;
+                                var n = uppernode;
                                 while (nIndexUpper <= nIndexBottom)
                                 {
                                     if (!m_coll.Contains(n)) // new node ?
-                                    {
                                         myQueue.Enqueue(n);
-                                    }
 
                                     n = n.NextNode;
 
                                     nIndexUpper++;
                                 } // end while
-
                             }
                             else
                             {
-                                if (!m_coll.Contains(uppernode))
-                                {
-                                    myQueue.Enqueue(uppernode);
-                                }
+                                if (!m_coll.Contains(uppernode)) myQueue.Enqueue(uppernode);
 
-                                if (!m_coll.Contains(bottomnode))
-                                {
-                                    myQueue.Enqueue(bottomnode);
-                                }
+                                if (!m_coll.Contains(bottomnode)) myQueue.Enqueue(bottomnode);
                             }
                         }
 
@@ -197,12 +185,12 @@ namespace BrawlCrate
                             removePaintFromNodes();
                             m_coll.Clear();
                         }
+
                         m_coll.Add(e.Node);
                     }
                 }
             }
         }
-
 
 
         // Helpers
@@ -212,24 +200,22 @@ namespace BrawlCrate
 
         protected bool isParent(TreeNode parentNode, TreeNode childNode)
         {
-            if (parentNode == childNode)
-            {
-                return true;
-            }
+            if (parentNode == childNode) return true;
 
-            TreeNode n = childNode;
-            bool bFound = false;
+            var n = childNode;
+            var bFound = false;
             while (!bFound && n != null)
             {
                 n = n.Parent;
-                bFound = (n == parentNode);
+                bFound = n == parentNode;
             }
+
             return bFound;
         }
 
         protected void paintSelectedNodes()
         {
-            foreach (TreeNode n in m_coll)
+            foreach (var n in m_coll)
             {
                 n.BackColor = SystemColors.Highlight;
                 n.ForeColor = SystemColors.HighlightText;
@@ -238,27 +224,19 @@ namespace BrawlCrate
 
         protected void removePaintFromNodes()
         {
-            if (m_coll.Count == 0)
-            {
-                return;
-            }
+            if (m_coll.Count == 0) return;
 
-            TreeNode n0 = m_coll[0];
-            if (n0.TreeView == null)
-            {
-                return;
-            }
+            var n0 = m_coll[0];
+            if (n0.TreeView == null) return;
 
-            Color back = n0.TreeView.BackColor;
-            Color fore = n0.TreeView.ForeColor;
+            var back = n0.TreeView.BackColor;
+            var fore = n0.TreeView.ForeColor;
 
-            foreach (TreeNode n in m_coll)
+            foreach (var n in m_coll)
             {
                 n.BackColor = back;
                 n.ForeColor = fore;
             }
-
         }
-
     }
 }

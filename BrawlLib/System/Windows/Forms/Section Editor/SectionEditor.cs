@@ -1,21 +1,31 @@
-﻿using Be.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.PowerPcAssembly;
+using Be.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBBTypes;
 
 namespace System.Windows.Forms
 {
     public unsafe partial class SectionEditor : Form
     {
-        public ModuleSectionNode _section = null;
+        public static List<SectionEditor> _openedSections = new List<SectionEditor>();
+
+        private readonly FormGoTo _formGoto = new FormGoTo();
+
+        internal FindOptions _findOptions = new FindOptions();
+        private FormFind _formFind;
         public RelocationManager _manager;
 
-        public static List<SectionEditor> _openedSections = new List<SectionEditor>();
+        public bool _relocationsChanged;
+        public ModuleSectionNode _section;
+        private int _selectedRelocationIndex;
+        private int _startIndex, _endIndex;
+
+        private bool _updating;
 
         public SectionEditor(ModuleSectionNode section)
         {
@@ -33,6 +43,7 @@ namespace System.Windows.Forms
                 _section._linkedEditor = this;
                 _manager = new RelocationManager(_section);
             }
+
             _openedSections.Add(this);
 
             Text = string.Format("Module Section Editor - {0}", _section.Name);
@@ -43,26 +54,122 @@ namespace System.Windows.Forms
 
             if (section.Root is RELNode)
             {
-                RELNode r = (RELNode)section.Root;
-                if (r.PrologSection == section.Index)
-                {
-                    _manager._constructorIndex = (int)r._prologOffset / 4;
-                }
+                var r = (RELNode) section.Root;
+                if (r.PrologSection == section.Index) _manager._constructorIndex = (int) r._prologOffset / 4;
 
-                if (r.EpilogSection == section.Index)
-                {
-                    _manager._destructorIndex = (int)r._epilogOffset / 4;
-                }
+                if (r.EpilogSection == section.Index) _manager._destructorIndex = (int) r._epilogOffset / 4;
 
-                if (r.UnresolvedSection == section.Index)
-                {
-                    _manager._unresolvedIndex = (int)r._unresolvedOffset / 4;
-                }
+                if (r.UnresolvedSection == section.Index) _manager._unresolvedIndex = (int) r._unresolvedOffset / 4;
                 //if (r._nameReloc != null && r._nameReloc._section == section)
                 //    _nameReloc = r._nameReloc;
             }
 
             panel5.Enabled = true;
+        }
+
+        public long Position
+        {
+            get => hexBox1.SelectionStart;
+            set
+            {
+                if (hexBox1.SelectionStart == value)
+                {
+                    if (!_updating) PosChanged();
+                }
+                else
+                {
+                    hexBox1.SelectionStart = value;
+                }
+            }
+        }
+
+        public PPCBranch TargetBranch { get; private set; }
+
+        public RelocationTarget TargetBranchOffsetRelocation { get; private set; }
+
+        public int SelectedRelocationIndex
+        {
+            get => _selectedRelocationIndex;
+            set
+            {
+                lstLinked.Items.Clear();
+                TargetBranch = null;
+
+                _selectedRelocationIndex = value;
+
+                var index = _selectedRelocationIndex;
+
+                lstLinked.Items.Clear();
+                var linked = _manager.GetLinked(index);
+                if (linked != null) lstLinked.Items.AddRange(linked.ToArray());
+
+                var branched = _manager.GetBranched(index);
+                if (branched != null) lstLinked.Items.AddRange(branched.ToArray());
+
+                if (_section.HasCode && ppcDisassembler1.Visible)
+                {
+                    //Get the method that the cursor lies in and display it
+                    if (index < 0 || index > _section._dataBuffer.Length / 4 - 1)
+                    {
+                        ppcDisassembler1.SetTarget(null, 0, null);
+                    }
+                    else if (index < _startIndex || index > _endIndex)
+                    {
+                        int
+                            startIndex = index,
+                            endIndex = index;
+
+                        //TODO: Branch to new relocation and continue adding codes until blr/bctr
+
+                        //Backtrack setting the method start index until we hit a branch.
+                        //Do not include this branch, as it is not part of the method.
+                        while (startIndex > 0 && !(_manager.GetCode(startIndex - 1) is PPCblr)) startIndex--;
+
+                        //Now iterate down the code until we hit a branch to set the end.
+                        //Include this branch, because it ends the method.
+                        while (endIndex < _section._dataBuffer.Length / 4 - 1 &&
+                               !(_manager.GetCode(endIndex) is PPCblr)) endIndex++;
+
+                        _startIndex = startIndex;
+                        _endIndex = endIndex;
+                        var w = new List<PPCOpCode>();
+                        for (var i = startIndex; i <= endIndex; i++) w.Add(_manager.GetCode(i));
+
+                        //ppcDisassembler1._baseOffset = (int)_section.RootOffset;
+                        ppcDisassembler1.SetTarget(w, startIndex * 4, _manager);
+                    }
+
+                    if (_section.Root is RELNode)
+                    {
+                        var r = (RELNode) _section.Root;
+                        var u = _updating;
+                        _updating = true;
+                        chkConstructor.Checked =
+                            _selectedRelocationIndex == _manager._constructorIndex &&
+                            _section.Index == r._prologSection;
+                        chkDestructor.Checked =
+                            _selectedRelocationIndex == _manager._destructorIndex && _section.Index == r._epilogSection;
+                        chkUnresolved.Checked =
+                            _selectedRelocationIndex == _manager._unresolvedIndex &&
+                            _section.Index == r._unresolvedSection;
+                        _updating = u;
+                    }
+
+                    //Set the target branch code
+                    var code = _manager.GetCode(_selectedRelocationIndex);
+                    if (code is PPCBranch && !(code is PPCblr))
+                    {
+                        TargetBranch = (PPCBranch) code;
+                        TargetBranchOffsetRelocation = GetBranchOffsetRelocation();
+                    }
+                    else if (TargetBranchOffsetRelocation != null)
+                    {
+                        TargetBranchOffsetRelocation = null;
+                    }
+                }
+
+                CommandChanged();
+            }
         }
 
         private void ppcOpCodeEditControl1_OnBranchFollowed()
@@ -92,10 +199,7 @@ namespace System.Windows.Forms
             Apply();
 
             _openedSections.Remove(this);
-            if (_section != null)
-            {
-                _section._linkedEditor = null;
-            }
+            if (_section != null) _section._linkedEditor = null;
 
             SelectedRelocationIndex = -1;
 
@@ -117,12 +221,12 @@ namespace System.Windows.Forms
 
         private void SetByteProvider()
         {
-            if (hexBox1.ByteProvider != null)
-            {
-                ((DynamicFileByteProvider)hexBox1.ByteProvider).Dispose();
-            }
+            if (hexBox1.ByteProvider != null) ((DynamicFileByteProvider) hexBox1.ByteProvider).Dispose();
 
-            hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream((byte*)_section._dataBuffer.Address, _section._dataBuffer.Length, _section._dataBuffer.Length, FileAccess.ReadWrite)) { _supportsInsDel = false };
+            hexBox1.ByteProvider =
+                new DynamicFileByteProvider(new UnmanagedMemoryStream((byte*) _section._dataBuffer.Address,
+                        _section._dataBuffer.Length, _section._dataBuffer.Length, FileAccess.ReadWrite))
+                    {_supportsInsDel = false};
             //hexBox1.ByteProvider.LengthChanged += ByteProvider_LengthChanged;
             hexBox1.InsertActiveChanged += hexBox1_InsertActiveChanged;
         }
@@ -140,22 +244,18 @@ namespace System.Windows.Forms
         private void UpdateSelectedBytesStatus()
         {
             if (hexBox1.ByteProvider == null)
-            {
                 selectedBytesToolStripStatusLabel.Text = string.Empty;
-            }
             else
-            {
                 selectedBytesToolStripStatusLabel.Text = "Selected: 0x" + hexBox1.SelectionLength.ToString("X");
-            }
         }
 
         private string GetDisplayBytes(long size)
         {
             const long multi = 1024;
-            long kb = multi;
-            long mb = kb * multi;
-            long gb = mb * multi;
-            long tb = gb * multi;
+            var kb = multi;
+            var mb = kb * multi;
+            var gb = mb * multi;
+            var tb = gb * multi;
 
             const string BYTES = "Bytes";
             const string KB = "KB";
@@ -165,29 +265,19 @@ namespace System.Windows.Forms
 
             string result;
             if (size < kb)
-            {
                 result = string.Format("{0} {1}", size, BYTES);
-            }
             else if (size < mb)
-            {
                 result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, kb), KB, ConvertBytesDisplay(size));
-            }
             else if (size < gb)
-            {
                 result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, mb), MB, ConvertBytesDisplay(size));
-            }
             else if (size < tb)
-            {
                 result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, gb), GB, ConvertBytesDisplay(size));
-            }
             else
-            {
                 result = string.Format("{0} {1} ({2} Bytes)",
                     ConvertToOneDigit(size, tb), TB, ConvertBytesDisplay(size));
-            }
 
             return result;
         }
@@ -199,8 +289,8 @@ namespace System.Windows.Forms
 
         private string ConvertToOneDigit(long size, long quan)
         {
-            double quotient = size / (double)quan;
-            string result = quotient.ToString("0.#", CultureInfo.CurrentCulture);
+            var quotient = size / (double) quan;
+            var result = quotient.ToString("0.#", CultureInfo.CurrentCulture);
             return result;
         }
 
@@ -229,31 +319,27 @@ namespace System.Windows.Forms
             toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
                 hexBox1.CurrentLine, hexBox1.CurrentPositionInLine);
 
-            long offset = hexBox1.SelectionStart;
-            long t = offset.RoundDown(4);
+            var offset = hexBox1.SelectionStart;
+            var t = offset.RoundDown(4);
 
             _updating = true;
 
             if (offset < hexBox1.ByteProvider.Length && offset >= 0)
-            {
-                SelectedRelocationIndex = (int)(offset.RoundDown(4) / 4);
-            }
+                SelectedRelocationIndex = (int) (offset.RoundDown(4) / 4);
             else
-            {
                 SelectedRelocationIndex = -1;
-            }
 
             grpValue.Text = "Value @ 0x" + t.ToString("X");
             if (t + 3 < hexBox1.ByteProvider.Length)
             {
                 grpValue.Enabled = !_section._isBSSSection;
-                byte[] bytes = new byte[]
+                byte[] bytes =
                 {
                     //Read in little endian
                     hexBox1.ByteProvider.ReadByte(t + 3),
                     hexBox1.ByteProvider.ReadByte(t + 2),
                     hexBox1.ByteProvider.ReadByte(t + 1),
-                    hexBox1.ByteProvider.ReadByte(t + 0),
+                    hexBox1.ByteProvider.ReadByte(t + 0)
                 };
 
                 //Reverse byte order to big endian
@@ -263,36 +349,31 @@ namespace System.Windows.Forms
                 txtByte4.Text = bytes[0].ToString("X2");
 
                 //BitConverter converts from little endian
-                float f = BitConverter.ToSingle(bytes, 0);
-                if (float.TryParse(txtFloat.Text, out float z))
+                var f = BitConverter.ToSingle(bytes, 0);
+                if (float.TryParse(txtFloat.Text, out var z))
                 {
-                    if (z != f)
-                    {
-                        txtFloat.Text = f.ToString();
-                    }
+                    if (z != f) txtFloat.Text = f.ToString();
                 }
                 else
                 {
                     txtFloat.Text = f.ToString();
                 }
 
-                int i = BitConverter.ToInt32(bytes, 0);
-                if (int.TryParse(txtInt.Text, out int w))
+                var i = BitConverter.ToInt32(bytes, 0);
+                if (int.TryParse(txtInt.Text, out var w))
                 {
                     if (w != i)
-                    {
                         txtInt.Text = i.ToString();
-                        //if (_section.HasCode && ppcDisassembler1.Visible)
-                        //    ppcDisassembler1.UpdateRow(SelectedRelocationIndex - _startIndex);
-                    }
+                    //if (_section.HasCode && ppcDisassembler1.Visible)
+                    //    ppcDisassembler1.UpdateRow(SelectedRelocationIndex - _startIndex);
                 }
                 else
                 {
                     txtInt.Text = i.ToString();
                 }
 
-                string bin = ((Bin32)(uint)i).ToString();
-                string[] bins = bin.Split(' ');
+                var bin = ((Bin32) (uint) i).ToString();
+                var bins = bin.Split(' ');
 
                 txtBin1.Text = bins[0];
                 txtBin2.Text = bins[1];
@@ -312,11 +393,11 @@ namespace System.Windows.Forms
 
             if (_section.HasCode && ppcDisassembler1.Visible && !ppcDisassembler1._updating)
             {
-                int i = SelectedRelocationIndex - _startIndex;
+                var i = SelectedRelocationIndex - _startIndex;
                 if (i >= 0 &&
                     i < ppcDisassembler1.grdDisassembler.Rows.Count &&
                     !(ppcDisassembler1.grdDisassembler.SelectedRows.Count > 0 &&
-                    ppcDisassembler1.grdDisassembler.SelectedRows[0].Index == i))
+                      ppcDisassembler1.grdDisassembler.SelectedRows[0].Index == i))
                 {
                     ppcDisassembler1.grdDisassembler.ClearSelection();
                     ppcDisassembler1.grdDisassembler.Rows[i].Selected = true;
@@ -325,131 +406,6 @@ namespace System.Windows.Forms
             }
 
             _updating = false;
-        }
-
-        public long Position
-        {
-            get => hexBox1.SelectionStart;
-            set
-            {
-                if (hexBox1.SelectionStart == value)
-                {
-                    if (!_updating)
-                    {
-                        PosChanged();
-                    }
-                }
-                else
-                {
-                    hexBox1.SelectionStart = value;
-                }
-            }
-        }
-
-        public PPCBranch TargetBranch => _targetBranch;
-
-        private PPCBranch _targetBranch;
-
-        public RelocationTarget TargetBranchOffsetRelocation => _targetBranchOffsetRelocation;
-
-        private RelocationTarget _targetBranchOffsetRelocation;
-        private int _selectedRelocationIndex;
-        private int _startIndex, _endIndex;
-        public int SelectedRelocationIndex
-        {
-            get => _selectedRelocationIndex;
-            set
-            {
-                lstLinked.Items.Clear();
-                _targetBranch = null;
-
-                _selectedRelocationIndex = value;
-
-                int index = _selectedRelocationIndex;
-
-                lstLinked.Items.Clear();
-                List<RelocationTarget> linked = _manager.GetLinked(index);
-                if (linked != null)
-                {
-                    lstLinked.Items.AddRange(linked.ToArray());
-                }
-
-                List<RelocationTarget> branched = _manager.GetBranched(index);
-                if (branched != null)
-                {
-                    lstLinked.Items.AddRange(branched.ToArray());
-                }
-
-                if (_section.HasCode && ppcDisassembler1.Visible)
-                {
-                    //Get the method that the cursor lies in and display it
-                    if (index < 0 || index > _section._dataBuffer.Length / 4 - 1)
-                    {
-                        ppcDisassembler1.SetTarget(null, 0, null);
-                    }
-                    else if (index < _startIndex || index > _endIndex)
-                    {
-                        int
-                            startIndex = index,
-                            endIndex = index;
-
-                        //TODO: Branch to new relocation and continue adding codes until blr/bctr
-
-                        //Backtrack setting the method start index until we hit a branch.
-                        //Do not include this branch, as it is not part of the method.
-                        while (startIndex > 0 && !(_manager.GetCode(startIndex - 1) is PPCblr))
-                        {
-                            startIndex--;
-                        }
-
-                        //Now iterate down the code until we hit a branch to set the end.
-                        //Include this branch, because it ends the method.
-                        while (endIndex < _section._dataBuffer.Length / 4 - 1 && !(_manager.GetCode(endIndex) is PPCblr))
-                        {
-                            endIndex++;
-                        }
-
-                        _startIndex = startIndex;
-                        _endIndex = endIndex;
-                        List<PPCOpCode> w = new List<PPCOpCode>();
-                        for (int i = startIndex; i <= endIndex; i++)
-                        {
-                            w.Add(_manager.GetCode(i));
-                        }
-
-                        //ppcDisassembler1._baseOffset = (int)_section.RootOffset;
-                        ppcDisassembler1.SetTarget(w, startIndex * 4, _manager);
-                    }
-
-                    if (_section.Root is RELNode)
-                    {
-                        RELNode r = (RELNode)_section.Root;
-                        bool u = _updating;
-                        _updating = true;
-                        chkConstructor.Checked =
-                            _selectedRelocationIndex == _manager._constructorIndex && _section.Index == r._prologSection;
-                        chkDestructor.Checked =
-                            _selectedRelocationIndex == _manager._destructorIndex && _section.Index == r._epilogSection;
-                        chkUnresolved.Checked =
-                            _selectedRelocationIndex == _manager._unresolvedIndex && _section.Index == r._unresolvedSection;
-                        _updating = u;
-                    }
-
-                    //Set the target branch code
-                    PPCOpCode code = _manager.GetCode(_selectedRelocationIndex);
-                    if (code is PPCBranch && !(code is PPCblr))
-                    {
-                        _targetBranch = (PPCBranch)code;
-                        _targetBranchOffsetRelocation = GetBranchOffsetRelocation();
-                    }
-                    else if (_targetBranchOffsetRelocation != null)
-                    {
-                        _targetBranchOffsetRelocation = null;
-                    }
-                }
-
-                CommandChanged();
-            }
         }
 
         private void CommandChanged()
@@ -525,9 +481,6 @@ namespace System.Windows.Forms
             hexBox1.Delete();
         }
 
-        internal FindOptions _findOptions = new FindOptions();
-        private FormFind _formFind = null;
-
         private FormFind ShowFind()
         {
             if (_formFind == null || _formFind.IsDisposed)
@@ -543,7 +496,6 @@ namespace System.Windows.Forms
             return _formFind;
         }
 
-        private readonly FormGoTo _formGoto = new FormGoTo();
         private void gotoToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             _formGoto.SetMaxByteIndex(hexBox1.ByteProvider.Length);
@@ -572,33 +524,23 @@ namespace System.Windows.Forms
 
         public void Find(bool backwards)
         {
-            if (!_findOptions.IsValid)
-            {
-                return;
-            }
+            if (!_findOptions.IsValid) return;
 
-            long res = backwards ? hexBox1.FindPrev(_findOptions) : hexBox1.FindNext(_findOptions);
+            var res = backwards ? hexBox1.FindPrev(_findOptions) : hexBox1.FindNext(_findOptions);
 
             if (res == -1) // -1 = no match
-            {
                 MessageBox.Show("Unable to find a match.", "Find", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else if (res == -2) // -2 = find was aborted
-            {
                 return;
-            }
-            else if (!hexBox1.Focused)
-            {
-                hexBox1.Focus();
-            }
+            else if (!hexBox1.Focused) hexBox1.Focus();
 
-            Message m = new Message() { WParam = (IntPtr)(16 | 65536) };
+            var m = new Message {WParam = (IntPtr) (16 | 65536)};
             hexBox1._ki.PreProcessWmKeyUp(ref m);
         }
 
         private void chkBSSSection_CheckedChanged(object sender, EventArgs e)
         {
-            bool isBSS = chkBSSSection.Checked;
+            var isBSS = chkBSSSection.Checked;
 
             if (_updating)
             {
@@ -609,8 +551,7 @@ namespace System.Windows.Forms
             }
 
             //There can only be one BSS section
-            foreach (ModuleSectionNode s in ((ModuleNode)_section.Root).Sections)
-            {
+            foreach (var s in ((ModuleNode) _section.Root).Sections)
                 if (s != _section)
                 {
                     if (isBSS)
@@ -630,7 +571,7 @@ namespace System.Windows.Forms
                     else
                     {
                         //Make sure there is another BSS section
-                        bool found = false;
+                        var found = false;
                         if (s._linkedEditor != null)
                         {
                             if (s._linkedEditor.chkBSSSection.Checked)
@@ -639,19 +580,15 @@ namespace System.Windows.Forms
                                 break;
                             }
                         }
-                        else
-                            if (s._isBSSSection)
+                        else if (s._isBSSSection)
                         {
                             found = true;
                             break;
                         }
-                        if (!found)
-                        {
-                            return;
-                        }
+
+                        if (!found) return;
                     }
                 }
-            }
 
             menuStrip1.Enabled = !isBSS;
             grpValue.Enabled = !isBSS;
@@ -688,21 +625,18 @@ namespace System.Windows.Forms
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog d = new SaveFileDialog())
+            using (var d = new SaveFileDialog())
             {
                 d.Filter = "Raw Data (*.*)|*.*";
                 d.FileName = _section.Name;
                 d.Title = "Choose a place to export to.";
-                if (d.ShowDialog() == DialogResult.OK)
-                {
-                    _section.Export(d.FileName);
-                }
+                if (d.ShowDialog() == DialogResult.OK) _section.Export(d.FileName);
             }
         }
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog d = new OpenFileDialog())
+            using (var d = new OpenFileDialog())
             {
                 d.Filter = "Raw Data (*.*)|*.*";
                 if (d.ShowDialog() == DialogResult.OK)
@@ -726,22 +660,16 @@ namespace System.Windows.Forms
 
         private void btnNewCmd_Click(object sender, EventArgs e)
         {
-            RelCommand cmd = new RelCommand(
+            var cmd = new RelCommand(
                 (_section.Root as ModuleNode).ID,
                 _section,
                 new RELLink());
 
             if (hexBox1.SelectionLength > 0)
-            {
-                for (int i = 0; i < (hexBox1.SelectionLength.RoundUp(4) / 4); i++)
-                {
+                for (var i = 0; i < hexBox1.SelectionLength.RoundUp(4) / 4; i++)
                     _manager.SetCommand(SelectedRelocationIndex + i, cmd);
-                }
-            }
             else
-            {
                 _manager.SetCommand(SelectedRelocationIndex, cmd);
-            }
 
             CommandChanged();
             hexBox1.Focus();
@@ -776,20 +704,15 @@ namespace System.Windows.Forms
 
         private void txtSize_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         public void OpenRelocation(RelocationTarget target)
         {
-            if (target == null)
-            {
-                return;
-            }
+            if (target == null) return;
 
             if (target._sectionID != _section.Index)
             {
-                foreach (SectionEditor r in _openedSections)
-                {
+                foreach (var r in _openedSections)
                     if (r._section.Index == target._sectionID)
                     {
                         r.Position = target._index * 4;
@@ -797,11 +720,10 @@ namespace System.Windows.Forms
                         r.hexBox1.Focus();
                         return;
                     }
-                }
 
                 //TODO: use target module id here
-                ModuleSectionNode section = ((ModuleNode)_section.Root).Sections[target._sectionID];
-                SectionEditor x = new SectionEditor(section);
+                var section = ((ModuleNode) _section.Root).Sections[target._sectionID];
+                var x = new SectionEditor(section);
                 x.Show();
 
                 x.Position = target._index * 4;
@@ -816,48 +738,40 @@ namespace System.Windows.Forms
 
         private void btnOpenTarget_Click(object sender, EventArgs e)
         {
-            RelCommand cmd = _manager.GetCommand(SelectedRelocationIndex);
-            if (cmd != null)
-            {
-                OpenRelocation(cmd.GetTargetRelocation());
-            }
+            var cmd = _manager.GetCommand(SelectedRelocationIndex);
+            if (cmd != null) OpenRelocation(cmd.GetTargetRelocation());
         }
 
         private void lstLinked_DoubleClick(object sender, EventArgs e)
         {
-            if (lstLinked.SelectedItem != null)
-            {
-                OpenRelocation(lstLinked.SelectedItem as RelocationTarget);
-            }
+            if (lstLinked.SelectedItem != null) OpenRelocation(lstLinked.SelectedItem as RelocationTarget);
         }
+
         private void lstLinked_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
             if (e.Index >= 0)
             {
-                RelocationTarget r = lstLinked.Items[e.Index] as RelocationTarget;
+                var r = lstLinked.Items[e.Index] as RelocationTarget;
                 if (r != null && r.Section != null)
                 {
-                    PPCOpCode code = r.Section._manager.GetCode(r._index);
-                    Color c = code is PPCBranch ? Color.Blue : Color.Red;
+                    var code = r.Section._manager.GetCode(r._index);
+                    var c = code is PPCBranch ? Color.Blue : Color.Red;
                     e.Graphics.DrawString(r.ToString(), lstLinked.Font, new SolidBrush(c), e.Bounds);
                 }
             }
+
             e.DrawFocusRectangle();
         }
 
-        private bool _updating = false;
         private void txtFloat_TextChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            if (float.TryParse(txtFloat.Text, out float f))
+            if (float.TryParse(txtFloat.Text, out var f))
             {
-                long t = Position.RoundDown(4);
-                byte* b = (byte*)&f;
+                var t = Position.RoundDown(4);
+                var b = (byte*) &f;
                 hexBox1.ByteProvider.WriteByte(t + 3, b[0]);
                 hexBox1.ByteProvider.WriteByte(t + 2, b[1]);
                 hexBox1.ByteProvider.WriteByte(t + 1, b[2]);
@@ -869,15 +783,12 @@ namespace System.Windows.Forms
 
         private void txtInt_TextChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            if (int.TryParse(txtInt.Text, out int i))
+            if (int.TryParse(txtInt.Text, out var i))
             {
-                long t = Position.RoundDown(4);
-                byte* b = (byte*)&i;
+                var t = Position.RoundDown(4);
+                var b = (byte*) &i;
                 hexBox1.ByteProvider.WriteByte(t + 3, b[0]);
                 hexBox1.ByteProvider.WriteByte(t + 2, b[1]);
                 hexBox1.ByteProvider.WriteByte(t + 1, b[2]);
@@ -889,33 +800,24 @@ namespace System.Windows.Forms
 
         private void txtBin1_TextChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            string text = (sender as TextBox).Text;
-            if (text.Length != 4)
-            {
-                return;
-            }
+            var text = (sender as TextBox).Text;
+            if (text.Length != 4) return;
 
-            foreach (char s in text)
-            {
+            foreach (var s in text)
                 if (s != '0' && s != '1')
-                {
                     return;
-                }
-            }
 
-            Bin32 b = Bin32.FromString(txtBin1.Text + " " + txtBin2.Text + " " + txtBin3.Text + " " + txtBin4.Text + " " + txtBin5.Text + " " + txtBin6.Text + " " + txtBin7.Text + " " + txtBin8.Text);
-            long t = Position.RoundDown(4);
+            var b = Bin32.FromString(txtBin1.Text + " " + txtBin2.Text + " " + txtBin3.Text + " " + txtBin4.Text + " " +
+                                     txtBin5.Text + " " + txtBin6.Text + " " + txtBin7.Text + " " + txtBin8.Text);
+            var t = Position.RoundDown(4);
 
             byte
-                b1 = (byte)((b >> 00) & 0xFF),
-                b2 = (byte)((b >> 08) & 0xFF),
-                b3 = (byte)((b >> 16) & 0xFF),
-                b4 = (byte)((b >> 24) & 0xFF);
+                b1 = (byte) ((b >> 00) & 0xFF),
+                b2 = (byte) ((b >> 08) & 0xFF),
+                b3 = (byte) ((b >> 16) & 0xFF),
+                b4 = (byte) ((b >> 24) & 0xFF);
 
             txtByte1.Text = b1.ToString();
             txtByte2.Text = b2.ToString();
@@ -931,17 +833,14 @@ namespace System.Windows.Forms
             PosChanged();
         }
 
-        public bool _relocationsChanged = false;
         private void Apply()
         {
-            if (hexBox1.ByteProvider == null)
-            {
-                return;
-            }
+            if (hexBox1.ByteProvider == null) return;
 
             try
             {
-                if (_section._isBSSSection != chkBSSSection.Checked || _section._isCodeSection != chkCodeSection.Checked)
+                if (_section._isBSSSection != chkBSSSection.Checked ||
+                    _section._isCodeSection != chkCodeSection.Checked)
                 {
                     _section._isBSSSection = chkBSSSection.Checked;
                     _section._isCodeSection = chkCodeSection.Checked;
@@ -950,51 +849,44 @@ namespace System.Windows.Forms
 
                 if (_section.Root is RELNode)
                 {
-                    RELNode r = _section.Root as RELNode;
+                    var r = _section.Root as RELNode;
 
                     if (r.PrologSection == _section.Index && r._prologOffset / 4 != _manager._constructorIndex)
                     {
-                        r._prologOffset = (uint)_manager._constructorIndex * 4;
+                        r._prologOffset = (uint) _manager._constructorIndex * 4;
                         r.SignalPropertyChange();
                     }
 
                     if (r.EpilogSection == _section.Index && r._epilogOffset / 4 != _manager._destructorIndex)
                     {
-                        r._epilogOffset = (uint)_manager._destructorIndex * 4;
+                        r._epilogOffset = (uint) _manager._destructorIndex * 4;
                         r.SignalPropertyChange();
                     }
 
                     if (r.UnresolvedSection == _section.Index && r._unresolvedOffset / 4 != _manager._unresolvedIndex)
                     {
-                        r._unresolvedOffset = (uint)_manager._unresolvedIndex * 4;
+                        r._unresolvedOffset = (uint) _manager._unresolvedIndex * 4;
                         r.SignalPropertyChange();
                     }
                 }
 
-                DynamicFileByteProvider d = hexBox1.ByteProvider as DynamicFileByteProvider;
-                if (!d.HasChanges())
-                {
-                    return;
-                }
+                var d = hexBox1.ByteProvider as DynamicFileByteProvider;
+                if (!d.HasChanges()) return;
 
-                UnsafeBuffer newBuffer = new UnsafeBuffer((int)d.Length);
+                var newBuffer = new UnsafeBuffer((int) d.Length);
 
-                int amt = Math.Min(_section._dataBuffer.Length, newBuffer.Length);
+                var amt = Math.Min(_section._dataBuffer.Length, newBuffer.Length);
                 if (amt > 0)
                 {
-                    Memory.Move(newBuffer.Address, _section._dataBuffer.Address, (uint)amt);
+                    Memory.Move(newBuffer.Address, _section._dataBuffer.Address, (uint) amt);
                     if (newBuffer.Length - amt > 0)
-                    {
-                        Memory.Fill(newBuffer.Address + amt, (uint)(newBuffer.Length - amt), 0);
-                    }
+                        Memory.Fill(newBuffer.Address + amt, (uint) (newBuffer.Length - amt), 0);
                 }
 
-                if (d._stream != null)
-                {
-                    d._stream.Dispose();
-                }
+                if (d._stream != null) d._stream.Dispose();
 
-                d._stream = new UnmanagedMemoryStream((byte*)newBuffer.Address, newBuffer.Length, newBuffer.Length, FileAccess.ReadWrite);
+                d._stream = new UnmanagedMemoryStream((byte*) newBuffer.Address, newBuffer.Length, newBuffer.Length,
+                    FileAccess.ReadWrite);
 
                 d.ApplyChanges();
 
@@ -1031,12 +923,12 @@ namespace System.Windows.Forms
 
         private void btnInsertWord_Click(object sender, EventArgs e)
         {
-            long offset = Position.RoundDown(4);
-            long index = offset / 4;
+            var offset = Position.RoundDown(4);
+            var index = offset / 4;
 
-            DynamicFileByteProvider d = hexBox1.ByteProvider as DynamicFileByteProvider;
+            var d = hexBox1.ByteProvider as DynamicFileByteProvider;
             d._supportsInsDel = true;
-            d.InsertBytes(offset, new byte[] { 0, 0, 0, 0 });
+            d.InsertBytes(offset, new byte[] {0, 0, 0, 0});
             d._supportsInsDel = false;
             FixRelocations(1, offset);
 
@@ -1045,40 +937,32 @@ namespace System.Windows.Forms
 
         private void FixRelocations(int amt, long offset)
         {
-            foreach (ModuleDataNode s in ((ModuleNode)_section.Root).Sections)
+            foreach (ModuleDataNode s in ((ModuleNode) _section.Root).Sections)
             {
-                foreach (RelCommand command in s._manager._commands.Values)
-                {
+                foreach (var command in s._manager._commands.Values)
                     if (command.TargetSectionID == _section.Index && command._addend >= offset)
-                    {
-                        command._addend = (uint)((int)command._addend + (amt * 4));
-                    }
-                }
+                        command._addend = (uint) ((int) command._addend + amt * 4);
                 if (s.Index == _section.Index)
                 {
-                    List<KeyValuePair<int, RelCommand>> keysToUpdate = new List<KeyValuePair<int, RelCommand>>(_section._manager._commands.Where(x => x.Key >= offset / 4));
+                    var keysToUpdate =
+                        new List<KeyValuePair<int, RelCommand>>(
+                            _section._manager._commands.Where(x => x.Key >= offset / 4));
 
                     // TODO fix this mess. Right now we need to clear all commands that need
                     // updating before setting them with their new index or commands seated
                     // right next to eachother will be removed after having just been updated.
-                    foreach (KeyValuePair<int, RelCommand> rel in keysToUpdate)
-                    {
-                        _section._manager.ClearCommand(rel.Key);
-                    }
-                    foreach (KeyValuePair<int, RelCommand> rel in keysToUpdate)
-                    {
-                        _section._manager.SetCommand(rel.Key + 1, rel.Value);
-                    }
+                    foreach (var rel in keysToUpdate) _section._manager.ClearCommand(rel.Key);
+                    foreach (var rel in keysToUpdate) _section._manager.SetCommand(rel.Key + 1, rel.Value);
                 }
             }
         }
 
         private void btnRemoveWord_Click(object sender, EventArgs e)
         {
-            long offset = Position.RoundDown(4);
-            long index = offset / 4;
+            var offset = Position.RoundDown(4);
+            var index = offset / 4;
 
-            DynamicFileByteProvider d = hexBox1.ByteProvider as DynamicFileByteProvider;
+            var d = hexBox1.ByteProvider as DynamicFileByteProvider;
             d._supportsInsDel = true;
             d.DeleteBytes(offset, 4);
             d._supportsInsDel = false;
@@ -1118,26 +1002,17 @@ namespace System.Windows.Forms
 
         private void chkConstructor_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
             if (SelectedRelocationIndex == _manager._constructorIndex)
             {
-                if (!chkConstructor.Checked)
-                {
-                    _manager._constructorIndex = -1;
-                }
+                if (!chkConstructor.Checked) _manager._constructorIndex = -1;
             }
             else
             {
                 if (chkConstructor.Checked)
                 {
-                    if (_manager._constructorIndex != -1)
-                    {
-                        _manager._constructorIndex = -1;
-                    }
+                    if (_manager._constructorIndex != -1) _manager._constructorIndex = -1;
 
                     _manager._constructorIndex = SelectedRelocationIndex;
                 }
@@ -1146,26 +1021,17 @@ namespace System.Windows.Forms
 
         private void chkDestructor_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
             if (SelectedRelocationIndex == _manager._destructorIndex)
             {
-                if (!chkDestructor.Checked)
-                {
-                    _manager._destructorIndex = -1;
-                }
+                if (!chkDestructor.Checked) _manager._destructorIndex = -1;
             }
             else
             {
                 if (chkDestructor.Checked)
                 {
-                    if (_manager._destructorIndex != -1)
-                    {
-                        _manager._destructorIndex = -1;
-                    }
+                    if (_manager._destructorIndex != -1) _manager._destructorIndex = -1;
 
                     _manager._destructorIndex = SelectedRelocationIndex;
                 }
@@ -1174,26 +1040,17 @@ namespace System.Windows.Forms
 
         private void chkUnresolved_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
             if (SelectedRelocationIndex == _manager._unresolvedIndex)
             {
-                if (!chkUnresolved.Checked)
-                {
-                    _manager._unresolvedIndex = -1;
-                }
+                if (!chkUnresolved.Checked) _manager._unresolvedIndex = -1;
             }
             else
             {
                 if (chkUnresolved.Checked)
                 {
-                    if (_manager._unresolvedIndex != -1)
-                    {
-                        _manager._unresolvedIndex = -1;
-                    }
+                    if (_manager._unresolvedIndex != -1) _manager._unresolvedIndex = -1;
 
                     _manager._unresolvedIndex = SelectedRelocationIndex;
                 }
@@ -1205,13 +1062,11 @@ namespace System.Windows.Forms
             if (TargetBranch != null &&
                 !(TargetBranch is PPCblr) &&
                 !(TargetBranch is PPCbctr))
-            {
                 return new RelocationTarget(_section.ModuleID, _section.Index,
-                    !TargetBranch.Absolute ?
-                    (SelectedRelocationIndex * 4 + (TargetBranch.DataOffset).RoundDown(4)) / 4 :
-                    0 //Absolute from start of section, start of file, or start of memory?
+                    !TargetBranch.Absolute
+                        ? (SelectedRelocationIndex * 4 + TargetBranch.DataOffset.RoundDown(4)) / 4
+                        : 0 //Absolute from start of section, start of file, or start of memory?
                 );
-            }
 
             return null;
         }

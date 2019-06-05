@@ -1,12 +1,61 @@
-﻿using BrawlLib.Modeling;
+﻿using System.ComponentModel;
+using System.Drawing;
+using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using System.ComponentModel;
 
 namespace System.Windows.Forms
 {
     public class CLR0Editor : UserControl
     {
+        public CLR0MaterialEntryNode _entry;
+
+        public ModelEditorBase _mainWindow;
+        public CLR0MaterialNode _mat;
+
+        private Label label1;
+        private ListBox listBox1;
+        public ComboBox lstTarget;
+        private Panel panel1;
+
+        public CLR0Editor()
+        {
+            InitializeComponent();
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MDL0MaterialRefNode TargetTexRef
+        {
+            get => _mainWindow.TargetTexRef;
+            set => _mainWindow.TargetTexRef = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int CurrentFrame
+        {
+            get => _mainWindow.CurrentFrame;
+            set => _mainWindow.CurrentFrame = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IModel TargetModel
+        {
+            get => _mainWindow.TargetModel;
+            set => _mainWindow.TargetModel = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public CLR0Node SelectedAnimation
+        {
+            get => _mainWindow.SelectedCLR0;
+            set => _mainWindow.SelectedCLR0 = value;
+        }
+
         #region Designer
+
         private void InitializeComponent()
         {
             label1 = new Label();
@@ -24,29 +73,31 @@ namespace System.Windows.Forms
             label1.Size = new Drawing.Size(100, 20);
             label1.TabIndex = 1;
             label1.Text = "Target:";
-            label1.TextAlign = Drawing.ContentAlignment.MiddleLeft;
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lstTarget
             // 
             lstTarget.DropDownStyle = ComboBoxStyle.DropDownList;
             lstTarget.FormattingEnabled = true;
-            lstTarget.Items.AddRange(new object[] {
-            "Color0",
-            "Color1",
-            "Ambient0",
-            "Ambient1",
-            "TevColorReg0",
-            "TevColorReg1",
-            "TevColorReg2",
-            "TevKonstReg0",
-            "TevKonstReg1",
-            "TevKonstReg2",
-            "TevKonstReg3"});
+            lstTarget.Items.AddRange(new object[]
+            {
+                "Color0",
+                "Color1",
+                "Ambient0",
+                "Ambient1",
+                "TevColorReg0",
+                "TevColorReg1",
+                "TevColorReg2",
+                "TevKonstReg0",
+                "TevKonstReg1",
+                "TevKonstReg2",
+                "TevKonstReg3"
+            });
             lstTarget.Location = new Drawing.Point(-1, 18);
             lstTarget.Name = "lstTarget";
             lstTarget.Size = new Drawing.Size(100, 21);
             lstTarget.TabIndex = 2;
-            lstTarget.SelectedIndexChanged += new EventHandler(lstTarget_SelectedIndexChanged);
+            lstTarget.SelectedIndexChanged += lstTarget_SelectedIndexChanged;
             // 
             // listBox1
             // 
@@ -57,7 +108,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new Drawing.Size(156, 74);
             listBox1.TabIndex = 4;
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // panel1
             // 
@@ -78,39 +129,9 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(256, 74);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        public ModelEditorBase _mainWindow;
-
-        private Label label1;
-        private ListBox listBox1;
-        private Panel panel1;
-        public ComboBox lstTarget;
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef { get => _mainWindow.TargetTexRef; set => _mainWindow.TargetTexRef = value; }
-
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int CurrentFrame
-        {
-            get => _mainWindow.CurrentFrame;
-            set => _mainWindow.CurrentFrame = value;
-        }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IModel TargetModel
-        {
-            get => _mainWindow.TargetModel;
-            set => _mainWindow.TargetModel = value;
-        }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CLR0Node SelectedAnimation
-        {
-            get => _mainWindow.SelectedCLR0;
-            set => _mainWindow.SelectedCLR0 = value;
-        }
 
         public void AnimationChanged()
         {
@@ -118,10 +139,7 @@ namespace System.Windows.Forms
             listBox1.BeginUpdate();
             if (_mainWindow.SelectedCLR0 != null)
             {
-                foreach (CLR0MaterialNode n in _mainWindow.SelectedCLR0.Children)
-                {
-                    listBox1.Items.Add(n);
-                }
+                foreach (CLR0MaterialNode n in _mainWindow.SelectedCLR0.Children) listBox1.Items.Add(n);
 
                 Enabled = true;
             }
@@ -131,33 +149,20 @@ namespace System.Windows.Forms
             }
 
             listBox1.EndUpdate();
-            if (listBox1.Items.Count > 0)
-            {
-                listBox1.SelectedIndex = 0;
-            }
+            if (listBox1.Items.Count > 0) listBox1.SelectedIndex = 0;
 
             lstTarget.SelectedIndex = 0;
         }
-        public CLR0MaterialNode _mat;
-        public CLR0MaterialEntryNode _entry;
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _mat = listBox1.Items[listBox1.SelectedIndex] as CLR0MaterialNode;
             if (_mat.Children.Count > 0)
-            {
-                lstTarget.SelectedIndex = (int)((CLR0MaterialEntryNode)_mat.Children[0]).Target;
-            }
+                lstTarget.SelectedIndex = (int) ((CLR0MaterialEntryNode) _mat.Children[0]).Target;
             else
-            {
                 lstTarget.SelectedIndex = 0;
-            }
 
             lstTarget_SelectedIndexChanged(null, null);
-        }
-
-        public CLR0Editor()
-        {
-            InitializeComponent();
         }
 
         private void lstTarget_SelectedIndexChanged(object sender, EventArgs e)
@@ -169,6 +174,7 @@ namespace System.Windows.Forms
                     _mainWindow.KeyframePanel.chkEnabled.Checked = false;
                     _mainWindow.KeyframePanel.chkConstant.Checked = false;
                 }
+
                 return;
             }
 

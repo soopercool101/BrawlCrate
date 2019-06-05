@@ -1,40 +1,36 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class STDTNode : StageTableNode
     {
-        public override ResourceType ResourceFileType => ResourceType.STDT;
-        internal STDT* Header => (STDT*)WorkingUncompressed.Address;
-        internal override string DocumentationSubDirectory => "STDT";
-
-        public STDTNode() { }
+        public STDTNode()
+        {
+        }
 
         public STDTNode(VoidPtr address, int numEntries)
         {
             version = 1;
             unk1 = 0;
             unk2 = 0;
-            entries = new UnsafeBuffer((numEntries * 4));
+            entries = new UnsafeBuffer(numEntries * 4);
             if (address == null)
             {
-                byte* pOut = (byte*)entries.Address;
-                for (int i = 0; i < (numEntries * 4); i++)
-                {
-                    *pOut++ = 0;
-                }
+                var pOut = (byte*) entries.Address;
+                for (var i = 0; i < numEntries * 4; i++) *pOut++ = 0;
             }
             else
             {
-                byte* pIn = (byte*)address;
-                byte* pOut = (byte*)entries.Address;
-                for (int i = 0; i < (numEntries * 4); i++)
-                {
-                    *pOut++ = *pIn++;
-                }
+                var pIn = (byte*) address;
+                var pOut = (byte*) entries.Address;
+                for (var i = 0; i < numEntries * 4; i++) *pOut++ = *pIn++;
             }
         }
+
+        public override ResourceType ResourceFileType => ResourceType.STDT;
+        internal STDT* Header => (STDT*) WorkingUncompressed.Address;
+        internal override string DocumentationSubDirectory => "STDT";
 
         public override bool OnInitialize()
         {
@@ -43,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             unk2 = Header->_unk2;
             EntryOffset = Header->_entryOffset;
             entries = new UnsafeBuffer(WorkingUncompressed.Length - EntryOffset);
-            Memory.Move(entries.Address, Header->Entries, (uint)entries.Length);
+            Memory.Move(entries.Address, Header->Entries, (uint) entries.Length);
             return false;
         }
 
@@ -54,15 +50,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STDT* header = (STDT*)address;
+            var header = (STDT*) address;
             header->_tag = STDT.Tag;
             header->_unk1 = unk1;
             header->_unk2 = unk2;
             header->_version = version;
             header->_entryOffset = EntryOffset;
-            Memory.Move(header->Entries, entries.Address, (uint)entries.Length);
+            Memory.Move(header->Entries, entries.Address, (uint) entries.Length);
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((STDT*)source.Address)->_tag == STDT.Tag ? new STDTNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((STDT*) source.Address)->_tag == STDT.Tag ? new STDTNode() : null;
+        }
     }
 }

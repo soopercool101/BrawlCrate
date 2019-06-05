@@ -6,23 +6,22 @@ namespace System.Windows.Forms
     {
         private readonly NumericInputBox[] _boxes;
 
+        private bool _twoDimensional;
+
         public TransformAttributesControl()
         {
             InitializeComponent();
 
-            _boxes = new NumericInputBox[] {
+            _boxes = new[]
+            {
                 numScaleX, numScaleY, numScaleZ,
                 numRotX, numRotY, numRotZ,
                 numTransX, numTransY, numTransZ
             };
 
-            foreach (NumericInputBox box in _boxes)
-            {
-                box.Value = box.Value;
-            }
+            foreach (var box in _boxes) box.Value = box.Value;
         }
 
-        private bool _twoDimensional;
         public bool TwoDimensional
         {
             get => _twoDimensional;

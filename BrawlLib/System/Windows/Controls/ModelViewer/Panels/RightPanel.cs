@@ -15,6 +15,9 @@
             pnlOpenedFiles.Visible = editor.SelectedIndex == 2;
         }
 
-        public void Reset() { pnlBones.Reset(); }
+        public void Reset()
+        {
+            pnlBones.Reset();
+        }
     }
 }

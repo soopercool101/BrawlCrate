@@ -1,8 +1,53 @@
 ﻿using System.Drawing;
+
 namespace System.Windows.Forms
 {
     public class GoodColorDialog : Form
     {
+        public GoodColorDialog()
+        {
+            InitializeComponent();
+            goodColorControl21.Closed += goodColorControl21_Closed;
+            goodColorControl21.OnColorChanged += goodColorControl21_ColorChanged;
+        }
+
+        public Color Color
+        {
+            get => goodColorControl21.Color;
+            set => goodColorControl21.Color = value;
+        }
+
+        public bool EditAlpha
+        {
+            get => goodColorControl21.EditAlpha;
+            set
+            {
+                if (goodColorControl21.EditAlpha = value)
+                    Height = 287;
+                else
+                    Height = 267;
+            }
+        }
+
+        public bool ShowOldColor
+        {
+            get => goodColorControl21.ShowOldColor;
+            set => goodColorControl21.ShowOldColor = value;
+        }
+
+        public event GoodColorControl2.ColorChangedEvent OnColorChanged;
+
+        private void goodColorControl21_ColorChanged(Color c)
+        {
+            OnColorChanged?.Invoke(c);
+        }
+
+        private void goodColorControl21_Closed(object sender, EventArgs e)
+        {
+            DialogResult = goodColorControl21.DialogResult;
+            Close();
+        }
+
         #region Designer
 
         private GoodColorControl2 goodColorControl21;
@@ -34,55 +79,8 @@ namespace System.Windows.Forms
             ShowInTaskbar = false;
             Text = "Color Selector";
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        public event GoodColorControl2.ColorChangedEvent OnColorChanged;
-
-        public Color Color
-        {
-            get => goodColorControl21.Color;
-            set => goodColorControl21.Color = value;
-        }
-        public bool EditAlpha
-        {
-            get => goodColorControl21.EditAlpha;
-            set
-            {
-                if (goodColorControl21.EditAlpha = value)
-                {
-                    Height = 287;
-                }
-                else
-                {
-                    Height = 267;
-                }
-            }
-        }
-        public bool ShowOldColor
-        {
-            get => goodColorControl21.ShowOldColor;
-            set => goodColorControl21.ShowOldColor = value;
-        }
-
-        public GoodColorDialog()
-        {
-            InitializeComponent();
-            goodColorControl21.Closed += goodColorControl21_Closed;
-            goodColorControl21.OnColorChanged += goodColorControl21_ColorChanged;
-        }
-
-        private void goodColorControl21_ColorChanged(Color c)
-        {
-            OnColorChanged?.Invoke(c);
-        }
-
-        private void goodColorControl21_Closed(object sender, EventArgs e)
-        {
-            DialogResult = goodColorControl21.DialogResult;
-            Close();
-        }
     }
 }

@@ -1,12 +1,15 @@
-﻿using BrawlCrate.NodeWrappers;
-using BrawlLib.IO;
-using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
+using System.Audio;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
+using BrawlCrate.Discord;
+using BrawlCrate.NodeWrappers;
+using BrawlLib.IO;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate
 {
@@ -26,23 +29,25 @@ namespace BrawlCrate
         private static readonly FolderBrowserDialog _folderDlg;
 
         internal static ResourceNode _rootNode;
-        public static ResourceNode RootNode { get => _rootNode; set { _rootNode = value; MainForm.Instance.Reset(); } }
         internal static string _rootPath;
 
         public static string AppPath;
-        public static string RootPath => _rootPath;
-
-        public static bool Canary => Directory.Exists(AppPath + "\\Canary") && File.Exists(AppPath + "\\Canary\\Active") && File.Exists(AppPath + "\\Canary\\New");
 
         static Program()
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
-            AssemblyTitle = Canary ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[1] : ((AssemblyTitleAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
-            AssemblyDescription = ((AssemblyDescriptionAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0]).Description;
-            AssemblyCopyright = ((AssemblyCopyrightAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
-            BrawlLibTitle = ((AssemblyTitleAttribute)Assembly.GetAssembly(typeof(ResourceNode)).GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+            AssemblyTitle = Canary
+                ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[1]
+                : ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+            AssemblyDescription = ((AssemblyDescriptionAttribute) Assembly.GetExecutingAssembly()
+                .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0]).Description;
+            AssemblyCopyright = ((AssemblyCopyrightAttribute) Assembly.GetExecutingAssembly()
+                .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
+            BrawlLibTitle = ((AssemblyTitleAttribute) Assembly.GetAssembly(typeof(ResourceNode))
+                .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
 
             _openDlg = new OpenFileDialog();
             _saveDlg = new SaveFileDialog();
@@ -53,11 +58,29 @@ namespace BrawlCrate
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
         }
 
-        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        public static ResourceNode RootNode
         {
-            List<ResourceNode> dirty = GetDirtyFiles();
-            Exception ex = e.Exception;
-            IssueDialog d = new IssueDialog(ex, dirty);
+            get => _rootNode;
+            set
+            {
+                _rootNode = value;
+                MainForm.Instance.Reset();
+            }
+        }
+
+        public static string RootPath => _rootPath;
+
+        public static bool Canary => Directory.Exists(AppPath + "\\Canary") &&
+                                     File.Exists(AppPath + "\\Canary\\Active") &&
+                                     File.Exists(AppPath + "\\Canary\\New");
+
+        public static bool CanRunDiscordRPC => File.Exists($"{Application.StartupPath}\\discord-rpc.dll");
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            var dirty = GetDirtyFiles();
+            var ex = e.Exception;
+            var d = new IssueDialog(ex, dirty);
             d.ShowDialog();
         }
 
@@ -65,32 +88,23 @@ namespace BrawlCrate
         {
             if (e.ExceptionObject is Exception)
             {
-                List<ResourceNode> dirty = GetDirtyFiles();
-                Exception ex = e.ExceptionObject as Exception;
-                IssueDialog d = new IssueDialog(ex, dirty);
+                var dirty = GetDirtyFiles();
+                var ex = e.ExceptionObject as Exception;
+                var d = new IssueDialog(ex, dirty);
                 d.ShowDialog();
             }
         }
 
         private static List<ResourceNode> GetDirtyFiles()
         {
-            List<ResourceNode> dirty = new List<ResourceNode>();
+            var dirty = new List<ResourceNode>();
 
-            foreach (ModelEditControl control in ModelEditControl.Instances)
-            {
-                foreach (ResourceNode r in control.rightPanel.pnlOpenedFiles.OpenedFiles)
-                {
-                    if (r.IsDirty && !dirty.Contains(r))
-                    {
-                        dirty.Add(r);
-                    }
-                }
-            }
+            foreach (var control in ModelEditControl.Instances)
+            foreach (var r in control.rightPanel.pnlOpenedFiles.OpenedFiles)
+                if (r.IsDirty && !dirty.Contains(r))
+                    dirty.Add(r);
 
-            if (_rootNode != null && _rootNode.IsDirty && !dirty.Contains(_rootNode))
-            {
-                dirty.Add(_rootNode);
-            }
+            if (_rootNode != null && _rootNode.IsDirty && !dirty.Contains(_rootNode)) dirty.Add(_rootNode);
 
             return dirty;
         }
@@ -102,18 +116,16 @@ namespace BrawlCrate
             {
                 if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))
                 {
-                    GCTEditor editor = new GCTEditor();
-                    if (args.Length >= 2)
-                    {
-                        editor.TargetNode = GCTEditor.LoadGCT(args[1]);
-                    }
+                    var editor = new GCTEditor();
+                    if (args.Length >= 2) editor.TargetNode = GCTEditor.LoadGCT(args[1]);
 
                     Application.Run(editor);
                     return;
                 }
-                else if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
+
+                if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
                 {
-                    GCTEditor editor = new GCTEditor
+                    var editor = new GCTEditor
                     {
                         TargetNode = GCTEditor.LoadGCT(args[0])
                     };
@@ -122,46 +134,29 @@ namespace BrawlCrate
                 }
             }
 
-            List<string> remainingArgs = new List<string>();
-            foreach (string a in args)
-            {
+            var remainingArgs = new List<string>();
+            foreach (var a in args)
                 if (a.Equals("/audio:directsound", StringComparison.OrdinalIgnoreCase))
-                {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.DirectSound;
-                }
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.DirectSound;
                 else if (a.Equals("/audio:openal", StringComparison.OrdinalIgnoreCase))
-                {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.OpenAL;
-                }
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.OpenAL;
                 else if (a.Equals("/audio:none", StringComparison.OrdinalIgnoreCase))
-                {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.None;
-                }
+                    AudioProvider.AvailableTypes = AudioProvider.AudioProviderType.None;
                 else
-                {
                     remainingArgs.Add(a);
-                }
-            }
             args = remainingArgs.ToArray();
 
             try
             {
-                if (args.Length >= 1)
-                {
-                    Open(args[0]);
-                }
+                if (args.Length >= 1) Open(args[0]);
 
                 if (args.Length >= 2)
                 {
-                    ResourceNode target = ResourceNode.FindNode(RootNode, args[1], true);
+                    var target = ResourceNode.FindNode(RootNode, args[1], true);
                     if (target != null)
-                    {
                         MainForm.Instance.TargetResource(target);
-                    }
                     else
-                    {
                         Say(string.Format("Error: Unable to find node or path '{0}'!", args[1]));
-                    }
                 }
 
                 Application.Run(MainForm.Instance);
@@ -169,21 +164,17 @@ namespace BrawlCrate
             catch (FileNotFoundException x)
             {
                 if (x.Message.Contains("Could not load file or assembly"))
-                {
                     MessageBox.Show(x.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
                 else
-                {
                     throw x;
-                }
             }
             finally
             {
                 Close(true);
                 if (CanRunDiscordRPC)
                 {
-                    Discord.DiscordRpc.ClearPresence();
-                    Discord.DiscordRpc.Shutdown();
+                    DiscordRpc.ClearPresence();
+                    DiscordRpc.Shutdown();
                 }
             }
         }
@@ -195,10 +186,7 @@ namespace BrawlCrate
 
         public static bool New<T>() where T : ResourceNode
         {
-            if (!Close())
-            {
-                return false;
-            }
+            if (!Close()) return false;
 
             _rootNode = Activator.CreateInstance<T>();
             _rootNode.Name = "NewTree";
@@ -207,20 +195,21 @@ namespace BrawlCrate
             return true;
         }
 
-        public static bool Close() { return Close(false); }
+        public static bool Close()
+        {
+            return Close(false);
+        }
+
         public static bool Close(bool force)
         {
             //Have to close external files before the root file
             while (ModelEditControl.Instances.Count > 0)
             {
-                ModelEditControl control = ModelEditControl.Instances[0];
+                var control = ModelEditControl.Instances[0];
                 if (control.ParentForm != null)
                 {
                     control.ParentForm.Close();
-                    if (!control.IsDisposed)
-                    {
-                        return false;
-                    }
+                    if (!control.IsDisposed) return false;
                 }
                 else if (!control.Close())
                 {
@@ -232,11 +221,8 @@ namespace BrawlCrate
             {
                 if (_rootNode.IsDirty && !force)
                 {
-                    DialogResult res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
-                    if ((res == DialogResult.Yes && !Save()) || res == DialogResult.Cancel)
-                    {
-                        return false;
-                    }
+                    var res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
+                    if (res == DialogResult.Yes && !Save() || res == DialogResult.Cancel) return false;
                 }
 
                 _rootNode.Dispose();
@@ -252,10 +238,7 @@ namespace BrawlCrate
 
         public static bool Open(string path)
         {
-            if (string.IsNullOrEmpty(path))
-            {
-                return false;
-            }
+            if (string.IsNullOrEmpty(path)) return false;
 
             if (!File.Exists(path))
             {
@@ -265,7 +248,7 @@ namespace BrawlCrate
 
             if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
             {
-                GCTEditor editor = new GCTEditor
+                var editor = new GCTEditor
                 {
                     TargetNode = GCTEditor.LoadGCT(path)
                 };
@@ -273,10 +256,7 @@ namespace BrawlCrate
                 return true;
             }
 
-            if (!Close())
-            {
-                return false;
-            }
+            if (!Close()) return false;
 #if !DEBUG
             try
             {
@@ -286,15 +266,16 @@ namespace BrawlCrate
                     MainForm.Instance.Reset();
                     return true;
                 }
-                else
-                {
-                    _rootPath = null;
-                    Say("Unable to recognize input file.");
-                    MainForm.Instance.Reset();
-                }
+
+                _rootPath = null;
+                Say("Unable to recognize input file.");
+                MainForm.Instance.Reset();
 #if !DEBUG
             }
-            catch (Exception x) { Say(x.ToString()); }
+            catch (Exception x)
+            {
+                Say(x.ToString());
+            }
 #endif
 
             Close();
@@ -304,35 +285,33 @@ namespace BrawlCrate
 
         public static unsafe void Scan(FileMap map, FileScanNode node)
         {
-            using (ProgressWindow progress = new ProgressWindow(MainForm.Instance, "File Scanner", "Scanning for known file types, please wait...", true))
+            using (var progress = new ProgressWindow(MainForm.Instance, "File Scanner",
+                "Scanning for known file types, please wait...", true))
             {
                 progress.TopMost = true;
                 progress.Begin(0, map.Length, 0);
 
-                byte* data = (byte*)map.Address;
+                var data = (byte*) map.Address;
                 uint i = 0;
                 do
                 {
                     ResourceNode n = null;
-                    DataSource d = new DataSource(&data[i], 0);
+                    var d = new DataSource(&data[i], 0);
                     if ((n = NodeFactory.GetRaw(d)) != null)
-                    {
                         if (!(n is MSBinNode))
                         {
                             n.Initialize(node, d);
                             try
                             {
-                                i += (uint)n.WorkingSource.Length;
+                                i += (uint) n.WorkingSource.Length;
                             }
                             catch
                             {
-
                             }
                         }
-                    }
+
                     progress.Update(i + 1);
-                }
-                while (++i + 4 < map.Length);
+                } while (++i + 4 < map.Length);
 
                 progress.Finish();
             }
@@ -346,12 +325,9 @@ namespace BrawlCrate
                 try
                 {
 #endif
-                    if (_rootPath == null)
-                    {
-                        return SaveAs();
-                    }
+                    if (_rootPath == null) return SaveAs();
 
-                    bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
+                    var force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
                     if (!force && !_rootNode.IsDirty)
                     {
                         MessageBox.Show("No changes have been made.");
@@ -365,23 +341,28 @@ namespace BrawlCrate
                     return true;
 #if !DEBUG
                 }
-                catch (Exception x) { Say(x.Message); }
+                catch (Exception x)
+                {
+                    Say(x.Message);
+                }
 #endif
             }
+
             return false;
         }
 
         public static string ChooseFolder()
         {
-            if (_folderDlg.ShowDialog() == DialogResult.OK)
-            {
-                return _folderDlg.SelectedPath;
-            }
+            if (_folderDlg.ShowDialog() == DialogResult.OK) return _folderDlg.SelectedPath;
 
             return null;
         }
 
-        public static int OpenFile(string filter, out string fileName) { return OpenFile(filter, out fileName, true); }
+        public static int OpenFile(string filter, out string fileName)
+        {
+            return OpenFile(filter, out fileName, true);
+        }
+
         public static int OpenFile(string filter, out string fileName, bool categorize)
         {
             _openDlg.Filter = filter;
@@ -392,26 +373,29 @@ namespace BrawlCrate
                 if (_openDlg.ShowDialog() == DialogResult.OK)
                 {
                     fileName = _openDlg.FileName;
-                    if ((categorize) && (_openDlg.FilterIndex == 1))
-                    {
+                    if (categorize && _openDlg.FilterIndex == 1)
                         return CategorizeFilter(_openDlg.FileName, filter);
-                    }
-                    else
-                    {
-                        return _openDlg.FilterIndex;
-                    }
+                    return _openDlg.FilterIndex;
                 }
 #if !DEBUG
             }
-            catch (Exception ex) { Say(ex.ToString()); }
+            catch (Exception ex)
+            {
+                Say(ex.ToString());
+            }
 #endif
             fileName = null;
             return 0;
         }
-        public static int SaveFile(string filter, string name, out string fileName) { return SaveFile(filter, name, out fileName, true); }
+
+        public static int SaveFile(string filter, string name, out string fileName)
+        {
+            return SaveFile(filter, name, out fileName, true);
+        }
+
         public static int SaveFile(string filter, string name, out string fileName, bool categorize)
         {
-            int fIndex = 0;
+            var fIndex = 0;
             fileName = null;
 
             _saveDlg.Filter = filter;
@@ -419,14 +403,10 @@ namespace BrawlCrate
             _saveDlg.FilterIndex = 1;
             if (_saveDlg.ShowDialog() == DialogResult.OK)
             {
-                if ((categorize) && (_saveDlg.FilterIndex == 1) && (Path.HasExtension(_saveDlg.FileName)))
-                {
+                if (categorize && _saveDlg.FilterIndex == 1 && Path.HasExtension(_saveDlg.FileName))
                     fIndex = CategorizeFilter(_saveDlg.FileName, filter);
-                }
                 else
-                {
                     fIndex = _saveDlg.FilterIndex;
-                }
 
                 //Fix extension
                 fileName = ApplyExtension(_saveDlg.FileName, filter, fIndex - 1);
@@ -434,46 +414,33 @@ namespace BrawlCrate
 
             return fIndex;
         }
+
         public static int CategorizeFilter(string path, string filter)
         {
-            string ext = "*" + Path.GetExtension(path);
+            var ext = "*" + Path.GetExtension(path);
 
-            string[] split = filter.Split('|');
-            for (int i = 3; i < split.Length; i += 2)
-            {
-                foreach (string s in split[i].Split(';'))
-                {
+            var split = filter.Split('|');
+            for (var i = 3; i < split.Length; i += 2)
+                foreach (var s in split[i].Split(';'))
                     if (s.Equals(ext, StringComparison.OrdinalIgnoreCase))
-                    {
                         return (i + 1) / 2;
-                    }
-                }
-            }
 
             return 1;
         }
+
         public static string ApplyExtension(string path, string filter, int filterIndex)
         {
-            if ((Path.HasExtension(path)) && (!int.TryParse(Path.GetExtension(path), out int tmp)))
-            {
-                return path;
-            }
+            if (Path.HasExtension(path) && !int.TryParse(Path.GetExtension(path), out var tmp)) return path;
 
-            int index = filter.IndexOfOccurance('|', filterIndex * 2);
-            if (index == -1)
-            {
-                return path;
-            }
+            var index = filter.IndexOfOccurance('|', filterIndex * 2);
+            if (index == -1) return path;
 
             index = filter.IndexOf('.', index);
-            int len = Math.Max(filter.Length, filter.IndexOfAny(new char[] { ';', '|' })) - index;
+            var len = Math.Max(filter.Length, filter.IndexOfAny(new[] {';', '|'})) - index;
 
-            string ext = filter.Substring(index, len);
+            var ext = filter.Substring(index, len);
 
-            if (ext.IndexOf('*') >= 0)
-            {
-                return path;
-            }
+            if (ext.IndexOf('*') >= 0) return path;
 
             return path + ext;
         }
@@ -486,8 +453,8 @@ namespace BrawlCrate
                 try
                 {
 #endif
-                    GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
-                    string path = w.Export();
+                    var w = MainForm.Instance.RootNode as GenericWrapper;
+                    var path = w.Export();
                     if (path != null)
                     {
                         _rootPath = path;
@@ -497,10 +464,14 @@ namespace BrawlCrate
                     }
 #if !DEBUG
                 }
-                catch (Exception x) { Say(x.Message); }
+                catch (Exception x)
+                {
+                    Say(x.Message);
+                }
                 //finally { }
 #endif
             }
+
             return false;
         }
 
@@ -509,16 +480,12 @@ namespace BrawlCrate
             path = $"{Application.StartupPath}\\Updater.exe";
             if (!File.Exists(path))
             {
-                if (showMessages)
-                {
-                    MessageBox.Show("Could not find " + path);
-                }
+                if (showMessages) MessageBox.Show("Could not find " + path);
 
                 return false;
             }
+
             return true;
         }
-
-        public static bool CanRunDiscordRPC => File.Exists($"{Application.StartupPath}\\discord-rpc.dll");
     }
 }

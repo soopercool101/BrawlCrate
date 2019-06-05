@@ -1,15 +1,111 @@
-﻿using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.Wii.Animations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
     public class SHP0Editor : UserControl
     {
+        public ModelEditorBase _mainWindow;
+        private string _selectedDest;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+
+        private ListBox listBox1;
+        private ListBox listBox2;
+        private Panel panel1;
+        private Panel panel2;
+
+        private Dictionary<int, List<int>> SHP0Indices;
+        private Splitter splitter1;
+        private NumericInputBox textBox1;
+        private TrackBar trackBar1;
+
+        private bool updating;
+
+        public SHP0Editor()
+        {
+            InitializeComponent();
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string SelectedSource { get; set; }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string SelectedDestination
+        {
+            get => _selectedDest;
+            set
+            {
+                _selectedDest = value;
+                ResetBox();
+                if (_mainWindow.InterpolationEditor != null &&
+                    _mainWindow.InterpolationEditor._targetNode != VertexSetDest)
+                    _mainWindow.InterpolationEditor.SetTarget(VertexSetDest);
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int CurrentFrame
+        {
+            get => _mainWindow.CurrentFrame;
+            set => _mainWindow.CurrentFrame = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IModel TargetModel
+        {
+            get => _mainWindow.TargetModel;
+            set => _mainWindow.TargetModel = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public SHP0Node SelectedAnimation
+        {
+            get => _mainWindow.SelectedSHP0;
+            set => _mainWindow.SelectedSHP0 = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public CHR0Node SelectedCHR0
+        {
+            get => _mainWindow.SelectedCHR0;
+            set => _mainWindow.SelectedCHR0 = value;
+        }
+
+        public SHP0VertexSetNode VertexSetDest
+        {
+            get
+            {
+                if (SelectedSource == null || SelectedDestination == null || SelectedAnimation == null) return null;
+
+                var set = SelectedAnimation.FindChild(SelectedSource, false);
+                if (set == null) return null;
+
+                return set.FindChild(SelectedDestination, false) as SHP0VertexSetNode;
+            }
+        }
+
         #region Designer
+
         private void InitializeComponent()
         {
             listBox1 = new ListBox();
@@ -31,7 +127,7 @@ namespace System.Windows.Forms
             panel2 = new Panel();
             button5 = new Button();
             textBox1 = new NumericInputBox();
-            ((ISupportInitialize)(trackBar1)).BeginInit();
+            ((ISupportInitialize) trackBar1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -45,7 +141,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new Drawing.Size(256, 49);
             listBox1.TabIndex = 0;
-            listBox1.SelectedValueChanged += new EventHandler(listBox1_SelectedValueChanged);
+            listBox1.SelectedValueChanged += listBox1_SelectedValueChanged;
             // 
             // label1
             // 
@@ -65,7 +161,7 @@ namespace System.Windows.Forms
             listBox2.Name = "listBox2";
             listBox2.Size = new Drawing.Size(261, 49);
             listBox2.TabIndex = 2;
-            listBox2.SelectedValueChanged += new EventHandler(listBox2_SelectedValueChanged);
+            listBox2.SelectedValueChanged += listBox2_SelectedValueChanged;
             // 
             // label2
             // 
@@ -85,7 +181,7 @@ namespace System.Windows.Forms
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
             button1.Visible = false;
-            button1.Click += new EventHandler(button1_Click);
+            button1.Click += button1_Click;
             // 
             // label3
             // 
@@ -104,7 +200,7 @@ namespace System.Windows.Forms
             trackBar1.Size = new Drawing.Size(204, 45);
             trackBar1.TabIndex = 6;
             trackBar1.TickStyle = TickStyle.None;
-            trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
+            trackBar1.Scroll += trackBar1_Scroll;
             // 
             // label4
             // 
@@ -142,7 +238,7 @@ namespace System.Windows.Forms
             button2.Text = "Remove";
             button2.UseVisualStyleBackColor = true;
             button2.Visible = false;
-            button2.Click += new EventHandler(button2_Click);
+            button2.Click += button2_Click;
             // 
             // label7
             // 
@@ -172,7 +268,7 @@ namespace System.Windows.Forms
             button4.Text = "Add";
             button4.UseVisualStyleBackColor = true;
             button4.Visible = false;
-            button4.Click += new EventHandler(button4_Click);
+            button4.Click += button4_Click;
             // 
             // splitter1
             // 
@@ -209,7 +305,7 @@ namespace System.Windows.Forms
             button5.TabIndex = 18;
             button5.Text = "Set";
             button5.UseVisualStyleBackColor = true;
-            button5.Click += new EventHandler(button5_Click);
+            button5.Click += button5_Click;
             // 
             // textBox1
             // 
@@ -222,7 +318,7 @@ namespace System.Windows.Forms
             textBox1.Size = new Drawing.Size(41, 20);
             textBox1.TabIndex = 9;
             textBox1.Text = "0";
-            textBox1.ValueChanged += new EventHandler(PercentChanged);
+            textBox1.ValueChanged += PercentChanged;
             // 
             // SHP0Editor
             // 
@@ -244,120 +340,23 @@ namespace System.Windows.Forms
             MinimumSize = new Drawing.Size(533, 106);
             Name = "SHP0Editor";
             Size = new Drawing.Size(533, 106);
-            ((ISupportInitialize)(trackBar1)).EndInit();
+            ((ISupportInitialize) trackBar1).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
 
-        private ListBox listBox1;
-        private Label label1;
-        private ListBox listBox2;
-        private Label label2;
-        private Button button1;
-        private Label label3;
-        private TrackBar trackBar1;
-        private Label label4;
-        private Label label5;
-        private NumericInputBox textBox1;
-        private Label label6;
-        private Button button2;
-        private Label label7;
-        private Button button3;
-        private Button button4;
-        private Splitter splitter1;
-        private Panel panel1;
-        private Panel panel2;
-        private Button button5;
-
-        public ModelEditorBase _mainWindow;
-
-        public SHP0Editor()
-        {
-            InitializeComponent();
-        }
         public void UpdatePropDisplay()
         {
-            if (!Enabled)
-            {
-                return;
-            }
+            if (!Enabled) return;
 
             ResetBox();
 
             if (_mainWindow.InterpolationEditor != null && _mainWindow.InterpolationEditor._targetNode != VertexSetDest)
-            {
                 _mainWindow.InterpolationEditor.SetTarget(VertexSetDest);
-            }
-        }
-        private string _selectedSource;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string SelectedSource
-        {
-            get => _selectedSource;
-            set => _selectedSource = value;
-        }
-        private string _selectedDest;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string SelectedDestination
-        {
-            get => _selectedDest;
-            set
-            {
-                _selectedDest = value;
-                ResetBox();
-                if (_mainWindow.InterpolationEditor != null && _mainWindow.InterpolationEditor._targetNode != VertexSetDest)
-                {
-                    _mainWindow.InterpolationEditor.SetTarget(VertexSetDest);
-                }
-            }
-        }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public int CurrentFrame
-        {
-            get => _mainWindow.CurrentFrame;
-            set => _mainWindow.CurrentFrame = value;
-        }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IModel TargetModel
-        {
-            get => _mainWindow.TargetModel;
-            set => _mainWindow.TargetModel = value;
-        }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SHP0Node SelectedAnimation
-        {
-            get => _mainWindow.SelectedSHP0;
-            set => _mainWindow.SelectedSHP0 = value;
-        }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public CHR0Node SelectedCHR0
-        {
-            get => _mainWindow.SelectedCHR0;
-            set => _mainWindow.SelectedCHR0 = value;
-        }
-
-        public SHP0VertexSetNode VertexSetDest
-        {
-            get
-            {
-                if (SelectedSource == null || SelectedDestination == null || SelectedAnimation == null)
-                {
-                    return null;
-                }
-
-                ResourceNode set = SelectedAnimation.FindChild(SelectedSource, false);
-                if (set == null)
-                {
-                    return null;
-                }
-
-                return set.FindChild(SelectedDestination, false) as SHP0VertexSetNode;
-            }
         }
 
         public void UpdateVertexSetList()
@@ -384,7 +383,6 @@ namespace System.Windows.Forms
             //listBox2.EndUpdate();
         }
 
-        private Dictionary<int, List<int>> SHP0Indices;
         public void AnimationChanged()
         {
             listBox1.Items.Clear();
@@ -397,86 +395,62 @@ namespace System.Windows.Forms
             if (SelectedAnimation != null && TargetModel != null && TargetModel is MDL0Node)
             {
                 List<string> names1 = new List<string>(), names2 = new List<string>();
-                MDL0Node model = TargetModel as MDL0Node;
+                var model = TargetModel as MDL0Node;
                 foreach (SHP0EntryNode e in SelectedAnimation.Children)
                 {
                     if (model._vertList != null)
-                    {
                         foreach (MDL0VertexNode v1 in model._vertList)
-                        {
                             if (e.Name == v1.Name && !names1.Contains(e.Name))
                             {
                                 names1.Add(e.Name);
-                                List<int> indices = new List<int>();
+                                var indices = new List<int>();
                                 foreach (SHP0VertexSetNode n in e.Children)
-                                {
-                                    foreach (MDL0VertexNode v2 in model._vertList)
+                                foreach (MDL0VertexNode v2 in model._vertList)
+                                    if (n.Name == v2.Name && !names2.Contains(n.Name))
                                     {
-                                        if (n.Name == v2.Name && !names2.Contains(n.Name))
-                                        {
-                                            indices.Add(v2.Index);
-                                            names2.Add(n.Name);
-                                        }
+                                        indices.Add(v2.Index);
+                                        names2.Add(n.Name);
                                     }
-                                }
 
                                 SHP0Indices[v1.Index] = indices;
                                 break;
                             }
-                        }
-                    }
 
                     if (model._normList != null)
-                    {
                         foreach (MDL0NormalNode v1 in model._normList)
-                        {
                             if (e.Name == v1.Name && !names1.Contains(e.Name))
                             {
                                 names1.Add(e.Name);
-                                List<int> indices = new List<int>();
+                                var indices = new List<int>();
                                 foreach (SHP0VertexSetNode n in e.Children)
-                                {
-                                    foreach (MDL0NormalNode v2 in model._normList)
+                                foreach (MDL0NormalNode v2 in model._normList)
+                                    if (n.Name == v2.Name && !names2.Contains(n.Name))
                                     {
-                                        if (n.Name == v2.Name && !names2.Contains(n.Name))
-                                        {
-                                            indices.Add(v2.Index);
-                                            names2.Add(n.Name);
-                                        }
+                                        indices.Add(v2.Index);
+                                        names2.Add(n.Name);
                                     }
-                                }
 
                                 SHP0Indices[v1.Index] = indices;
                                 break;
                             }
-                        }
-                    }
 
                     if (model._colorList != null)
-                    {
                         foreach (MDL0ColorNode v1 in model._colorList)
-                        {
                             if (e.Name == v1.Name && !names1.Contains(e.Name))
                             {
                                 names1.Add(e.Name);
-                                List<int> indices = new List<int>();
+                                var indices = new List<int>();
                                 foreach (SHP0VertexSetNode n in e.Children)
-                                {
-                                    foreach (MDL0ColorNode v2 in model._colorList)
+                                foreach (MDL0ColorNode v2 in model._colorList)
+                                    if (n.Name == v2.Name && !names2.Contains(n.Name))
                                     {
-                                        if (n.Name == v2.Name && !names2.Contains(n.Name))
-                                        {
-                                            indices.Add(v2.Index);
-                                            names2.Add(n.Name);
-                                        }
+                                        indices.Add(v2.Index);
+                                        names2.Add(n.Name);
                                     }
-                                }
 
                                 SHP0Indices[v1.Index] = indices;
                                 break;
                             }
-                        }
-                    }
                 }
 
                 listBox1.Items.AddRange(names1.ToArray());
@@ -487,21 +461,19 @@ namespace System.Windows.Forms
             listBox2.EndUpdate();
         }
 
-        internal unsafe void PercentChanged(object sender, EventArgs e)
+        internal void PercentChanged(object sender, EventArgs e)
         {
-            if (SelectedSource == null || SelectedDestination == null || updating)
-            {
-                return;
-            }
+            if (SelectedSource == null || SelectedDestination == null || updating) return;
 
-            if ((SelectedAnimation != null) && (CurrentFrame >= 1))
+            if (SelectedAnimation != null && CurrentFrame >= 1)
             {
-                SHP0EntryNode entry = SelectedAnimation.FindChild(SelectedSource, false) as SHP0EntryNode;
+                var entry = SelectedAnimation.FindChild(SelectedSource, false) as SHP0EntryNode;
                 SHP0VertexSetNode v;
 
                 if (entry == null)
                 {
-                    (v = (entry = SelectedAnimation.FindOrCreateEntry(SelectedSource)).Children[0] as SHP0VertexSetNode).Name = SelectedDestination;
+                    (v = (entry = SelectedAnimation.FindOrCreateEntry(SelectedSource)).Children[0] as SHP0VertexSetNode)
+                        .Name = SelectedDestination;
                 }
                 else if ((v = entry.FindChild(SelectedDestination, false) as SHP0VertexSetNode) == null)
                 {
@@ -511,8 +483,7 @@ namespace System.Windows.Forms
                         v.SetKeyframe(CurrentFrame - 1, textBox1.Value / 100.0f);
                     }
                 }
-                else
-                    if (float.IsNaN(textBox1.Value))
+                else if (float.IsNaN(textBox1.Value))
                 {
                     v.RemoveKeyframe(CurrentFrame - 1);
                 }
@@ -521,31 +492,27 @@ namespace System.Windows.Forms
                     v.SetKeyframe(CurrentFrame - 1, textBox1.Value / 100.0f);
                 }
 
-                if (_mainWindow.InterpolationEditor != null && _mainWindow.InterpolationEditor._targetNode != VertexSetDest)
-                {
+                if (_mainWindow.InterpolationEditor != null &&
+                    _mainWindow.InterpolationEditor._targetNode != VertexSetDest)
                     _mainWindow.InterpolationEditor.SetTarget(VertexSetDest);
-                }
             }
+
             ResetBox();
             _mainWindow.KeyframePanel.UpdateKeyframe(CurrentFrame - 1);
             _mainWindow.UpdateModel();
         }
 
-        private bool updating = false;
-        public unsafe void ResetBox()
+        public void ResetBox()
         {
             SHP0EntryNode entry;
             SHP0VertexSetNode v;
-            if (SelectedSource == null || SelectedDestination == null)
-            {
-                return;
-            }
+            if (SelectedSource == null || SelectedDestination == null) return;
 
-            if ((SelectedAnimation != null) && (CurrentFrame >= 1) &&
-                ((entry = SelectedAnimation.FindChild(SelectedSource, false) as SHP0EntryNode) != null) &&
+            if (SelectedAnimation != null && CurrentFrame >= 1 &&
+                (entry = SelectedAnimation.FindChild(SelectedSource, false) as SHP0EntryNode) != null &&
                 (v = entry.FindChild(SelectedDestination, false) as SHP0VertexSetNode) != null)
             {
-                KeyframeEntry e = v.Keyframes.GetKeyframe(CurrentFrame - 1);
+                var e = v.Keyframes.GetKeyframe(CurrentFrame - 1);
                 if (e == null)
                 {
                     textBox1.Value = v.Keyframes[CurrentFrame - 1] * 100.0f;
@@ -562,8 +529,9 @@ namespace System.Windows.Forms
                 textBox1.Value = 0;
                 textBox1.BackColor = Color.White;
             }
+
             updating = true;
-            trackBar1.Value = ((int)(textBox1.Value * 10.0f)).Clamp(trackBar1.Minimum, trackBar1.Maximum);
+            trackBar1.Value = ((int) (textBox1.Value * 10.0f)).Clamp(trackBar1.Minimum, trackBar1.Maximum);
             updating = false;
         }
 
@@ -589,20 +557,17 @@ namespace System.Windows.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
         }
 
-        private unsafe void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
             //Set vertices (0), normals (1), and/or colors (2, 3)
             //UVs are not morphed so there's no need to set them
@@ -612,43 +577,36 @@ namespace System.Windows.Forms
                 TargetModel == null ||
                 TargetModel.Objects == null ||
                 TargetModel.Objects.Length == 0)
-            {
                 return;
-            }
 
-            SHP0EntryNode entry = SelectedAnimation.FindChild(SelectedSource, false) as SHP0EntryNode;
-            if (entry == null)
-            {
-                return;
-            }
+            var entry = SelectedAnimation.FindChild(SelectedSource, false) as SHP0EntryNode;
+            if (entry == null) return;
 
-            if (MessageBox.Show(this, "Are you sure you want to continue?\nThis will edit the model and make the selected object's vertices, normals and/or colors default to the current morph.", "Are you sure?", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-            {
-                return;
-            }
+            if (MessageBox.Show(this,
+                    "Are you sure you want to continue?\nThis will edit the model and make the selected object's vertices, normals and/or colors default to the current morph.",
+                    "Are you sure?", MessageBoxButtons.OKCancel) == DialogResult.Cancel) return;
 
             //Set the model to be only the bind pose with the SHP0 applied
             //This is so when the data is unweighted,
             //only the influence of the SHP0 will be set to the model.
             //Otherwise the entire CHR0 pose would be set as well
             float frame = CurrentFrame;
-            SHP0Node shp = _mainWindow.SelectedSHP0;
-            CHR0Node chr = _mainWindow.SelectedCHR0;
+            var shp = _mainWindow.SelectedSHP0;
+            var chr = _mainWindow.SelectedCHR0;
             if (TargetModel != null)
             {
                 TargetModel.ApplyCHR(null, 0);
                 TargetModel.ApplySHP(shp, frame);
             }
 
-            ResourceNode[] nodes = ((ResourceNode)TargetModel).FindChildrenByName(SelectedSource);
-            foreach (ResourceNode n in nodes)
-            {
+            var nodes = ((ResourceNode) TargetModel).FindChildrenByName(SelectedSource);
+            foreach (var n in nodes)
                 if (n is MDL0VertexNode)
                 {
-                    MDL0VertexNode node = (MDL0VertexNode)n;
-                    MDL0ObjectNode[] o = new MDL0ObjectNode[node._objects.Count];
+                    var node = (MDL0VertexNode) n;
+                    var o = new MDL0ObjectNode[node._objects.Count];
                     node._objects.CopyTo(o);
-                    foreach (MDL0ObjectNode obj in o)
+                    foreach (var obj in o)
                     {
                         //Set the unweighted positions using the weighted positions
                         //Created using the SHP0
@@ -658,25 +616,18 @@ namespace System.Windows.Forms
                 }
                 else if (n is MDL0NormalNode)
                 {
-                    MDL0NormalNode node = (MDL0NormalNode)n;
-                    MDL0ObjectNode[] o = new MDL0ObjectNode[node._objects.Count];
+                    var node = (MDL0NormalNode) n;
+                    var o = new MDL0ObjectNode[node._objects.Count];
                     node._objects.CopyTo(o);
-                    foreach (MDL0ObjectNode obj in o)
-                    {
-                        obj.SetEditedAssets(true, false, true, false, false);
-                    }
+                    foreach (var obj in o) obj.SetEditedAssets(true, false, true, false, false);
                 }
                 else if (n is MDL0ColorNode)
                 {
-                    MDL0ColorNode node = (MDL0ColorNode)n;
-                    MDL0ObjectNode[] o = new MDL0ObjectNode[node._objects.Count];
+                    var node = (MDL0ColorNode) n;
+                    var o = new MDL0ObjectNode[node._objects.Count];
                     node._objects.CopyTo(o);
-                    foreach (MDL0ObjectNode obj in o)
-                    {
-                        obj.SetEditedAssets(true, false, false, true, true);
-                    }
+                    foreach (var obj in o) obj.SetEditedAssets(true, false, false, true, true);
                 }
-            }
 
             if (TargetModel != null)
             {

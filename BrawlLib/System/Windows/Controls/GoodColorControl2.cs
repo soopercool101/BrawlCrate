@@ -1,13 +1,127 @@
-﻿using BrawlLib.Imaging;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Windows.Forms.Design;
+using BrawlLib.Imaging;
+
 namespace System.Windows.Forms
 {
     public delegate void ColorChanged(Color c);
+
     public class GoodColorControl2 : UserControl
     {
+        public delegate void ColorChangedEvent(Color selection);
+
+        private Color _color;
+        private Color _newColor;
+
+        private bool _showOld;
+
+        public DialogResult DialogResult;
+
+        public GoodColorControl2()
+        {
+            InitializeComponent();
+        }
+
+        public Color Color
+        {
+            get => _color;
+            set
+            {
+                goodColorControl1.Color = _color = _newColor = value;
+                pnlOld.Invalidate();
+                pnlNew.Invalidate();
+            }
+        }
+
+        public bool EditAlpha
+        {
+            get => chkAlpha.Visible;
+            set
+            {
+                if (chkAlpha.Visible = goodColorControl1.ShowAlpha = value)
+                    Height = 287;
+                else
+                    Height = 287 - 20;
+
+                pnlOld.Invalidate();
+                pnlNew.Invalidate();
+            }
+        }
+
+        public bool ShowOldColor
+        {
+            get => _showOld;
+            set => lblOld.Visible = lblNew.Visible = pnlOld.Visible = _showOld = value;
+        }
+
+        public event ColorChangedEvent OnColorChanged;
+
+        public event EventHandler Closed;
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Closed?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnOkay_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            _color = _newColor;
+            Closed?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void pnlOld_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            var c = _color;
+
+            //Draw hatch
+            if (chkAlpha.Checked && chkAlpha.Visible)
+                g.FillRectangle(GoodPictureBox._brush, pnlOld.ClientRectangle);
+            else
+                c = Color.FromArgb(c.R, c.G, c.B);
+
+            //Draw background
+            using (Brush b = new SolidBrush(c))
+            {
+                g.FillRectangle(b, pnlOld.ClientRectangle);
+            }
+        }
+
+        private void pnlNew_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            var c = _newColor;
+
+            //Draw hatch
+            if (chkAlpha.Checked && chkAlpha.Visible)
+                g.FillRectangle(GoodPictureBox._brush, pnlNew.ClientRectangle);
+            else
+                c = Color.FromArgb(c.R, c.G, c.B);
+
+            //Draw background
+            using (Brush b = new SolidBrush(c))
+            {
+                g.FillRectangle(b, pnlNew.ClientRectangle);
+            }
+        }
+
+        private void goodColorControl1_ColorChanged(object sender, EventArgs e)
+        {
+            _newColor = goodColorControl1.Color;
+            pnlNew.Invalidate();
+            OnColorChanged?.Invoke(_newColor);
+        }
+
+        private void chkAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+            pnlNew.Invalidate();
+            pnlOld.Invalidate();
+        }
+
         #region Designer
 
         private Button btnOkay;
@@ -36,30 +150,30 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(200, 221);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(59, 24);
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.Location = new Drawing.Point(267, 221);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(59, 24);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // pnlColors
             // 
-            pnlColors.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            pnlColors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             pnlColors.Controls.Add(pnlNew);
             pnlColors.Controls.Add(pnlOld);
             pnlColors.Location = new Drawing.Point(14, 207);
@@ -99,7 +213,7 @@ namespace System.Windows.Forms
             chkAlpha.TabIndex = 6;
             chkAlpha.Text = "Show Alpha";
             chkAlpha.UseVisualStyleBackColor = true;
-            chkAlpha.CheckedChanged += new EventHandler(chkAlpha_CheckedChanged);
+            chkAlpha.CheckedChanged += chkAlpha_CheckedChanged;
             // 
             // pnlNew
             // 
@@ -108,7 +222,7 @@ namespace System.Windows.Forms
             pnlNew.Name = "pnlNew";
             pnlNew.Size = new Drawing.Size(90, 37);
             pnlNew.TabIndex = 6;
-            pnlNew.Paint += new PaintEventHandler(pnlNew_Paint);
+            pnlNew.Paint += pnlNew_Paint;
             // 
             // pnlOld
             // 
@@ -117,7 +231,7 @@ namespace System.Windows.Forms
             pnlOld.Name = "pnlOld";
             pnlOld.Size = new Drawing.Size(90, 37);
             pnlOld.TabIndex = 5;
-            pnlOld.Paint += new PaintEventHandler(pnlOld_Paint);
+            pnlOld.Paint += pnlOld_Paint;
             // 
             // goodColorControl1
             // 
@@ -128,7 +242,7 @@ namespace System.Windows.Forms
             goodColorControl1.ShowAlpha = true;
             goodColorControl1.Size = new Drawing.Size(314, 186);
             goodColorControl1.TabIndex = 2;
-            goodColorControl1.ColorChanged += new EventHandler(goodColorControl1_ColorChanged);
+            goodColorControl1.ColorChanged += goodColorControl1_ColorChanged;
             // 
             // GoodColorControl2
             // 
@@ -143,138 +257,19 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(335, 253);
             pnlColors.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        public delegate void ColorChangedEvent(Color selection);
-        public event ColorChangedEvent OnColorChanged;
-
-        private Color _color;
-        private Color _newColor;
-        public Color Color
-        {
-            get => _color;
-            set
-            {
-                goodColorControl1.Color = _color = _newColor = value;
-                pnlOld.Invalidate();
-                pnlNew.Invalidate();
-            }
-        }
-
-        public bool EditAlpha
-        {
-            get => chkAlpha.Visible;
-            set
-            {
-                if (chkAlpha.Visible = goodColorControl1.ShowAlpha = value)
-                {
-                    Height = 287;
-                }
-                else
-                {
-                    Height = 287 - 20;
-                }
-
-                pnlOld.Invalidate();
-                pnlNew.Invalidate();
-            }
-        }
-
-        private bool _showOld = false;
-        public bool ShowOldColor
-        {
-            get => _showOld;
-            set => lblOld.Visible = lblNew.Visible = pnlOld.Visible = _showOld = value;
-        }
-
-        public GoodColorControl2() { InitializeComponent(); }
-
-        public event EventHandler Closed;
-
-        public DialogResult DialogResult;
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Closed?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnOkay_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.OK;
-            _color = _newColor;
-            Closed?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void pnlOld_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            Color c = _color;
-
-            //Draw hatch
-            if (chkAlpha.Checked && chkAlpha.Visible)
-            {
-                g.FillRectangle(GoodPictureBox._brush, pnlOld.ClientRectangle);
-            }
-            else
-            {
-                c = Color.FromArgb(c.R, c.G, c.B);
-            }
-
-            //Draw background
-            using (Brush b = new SolidBrush(c))
-            {
-                g.FillRectangle(b, pnlOld.ClientRectangle);
-            }
-        }
-
-        private void pnlNew_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            Color c = _newColor;
-
-            //Draw hatch
-            if (chkAlpha.Checked && chkAlpha.Visible)
-            {
-                g.FillRectangle(GoodPictureBox._brush, pnlNew.ClientRectangle);
-            }
-            else
-            {
-                c = Color.FromArgb(c.R, c.G, c.B);
-            }
-
-            //Draw background
-            using (Brush b = new SolidBrush(c))
-            {
-                g.FillRectangle(b, pnlNew.ClientRectangle);
-            }
-        }
-
-        private void goodColorControl1_ColorChanged(object sender, EventArgs e)
-        {
-            _newColor = goodColorControl1.Color;
-            pnlNew.Invalidate();
-            OnColorChanged?.Invoke(_newColor);
-        }
-
-        private void chkAlpha_CheckedChanged(object sender, EventArgs e)
-        {
-            pnlNew.Invalidate();
-            pnlOld.Invalidate();
-        }
     }
 
     internal class PropertyGridColorEditor : UITypeEditor
     {
+        private IWindowsFormsEditorService _service;
+
         public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context)
         {
             return UITypeEditorEditStyle.DropDown;
         }
-
-        private IWindowsFormsEditorService _service = null;
 
         public override object EditValue(
             ITypeDescriptorContext context,
@@ -282,50 +277,35 @@ namespace System.Windows.Forms
             object value)
         {
             if (provider != null)
-            {
                 _service =
                     provider.GetService(
-                    typeof(IWindowsFormsEditorService))
-                    as IWindowsFormsEditorService;
-            }
+                            typeof(IWindowsFormsEditorService))
+                        as IWindowsFormsEditorService;
 
             if (_service != null)
             {
-                GoodColorControl2 selectionControl = new GoodColorControl2();
+                var selectionControl = new GoodColorControl2();
                 selectionControl.Closed += selectionControl_Closed;
 
-                Type t = value.GetType();
+                var t = value.GetType();
 
                 if (t == typeof(ARGBPixel))
-                {
-                    selectionControl.Color = (Color)(ARGBPixel)value;
-                }
+                    selectionControl.Color = (Color) (ARGBPixel) value;
                 else if (t == typeof(RGBAPixel))
-                {
-                    selectionControl.Color = (Color)(RGBAPixel)value;
-                }
-                else if (t == typeof(GXColorS10))
-                {
-                    selectionControl.Color = (Color)(GXColorS10)value;
-                }
+                    selectionControl.Color = (Color) (RGBAPixel) value;
+                else if (t == typeof(GXColorS10)) selectionControl.Color = (Color) (GXColorS10) value;
 
                 _service.DropDownControl(selectionControl);
 
                 if (selectionControl.DialogResult == DialogResult.OK)
                 {
                     if (t == typeof(ARGBPixel))
-                    {
-                        value = (ARGBPixel)selectionControl.Color;
-                    }
+                        value = (ARGBPixel) selectionControl.Color;
                     else if (t == typeof(RGBAPixel))
-                    {
-                        value = (RGBAPixel)(ARGBPixel)selectionControl.Color;
-                    }
-                    else if (t == typeof(GXColorS10))
-                    {
-                        value = (GXColorS10)(ARGBPixel)selectionControl.Color;
-                    }
+                        value = (RGBAPixel) (ARGBPixel) selectionControl.Color;
+                    else if (t == typeof(GXColorS10)) value = (GXColorS10) (ARGBPixel) selectionControl.Color;
                 }
+
                 _service = null;
             }
 
@@ -334,10 +314,7 @@ namespace System.Windows.Forms
 
         private void selectionControl_Closed(object sender, EventArgs e)
         {
-            if (_service != null)
-            {
-                _service.CloseDropDown();
-            }
+            if (_service != null) _service.CloseDropDown();
         }
     }
 }

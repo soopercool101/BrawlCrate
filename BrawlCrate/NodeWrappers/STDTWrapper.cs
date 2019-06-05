@@ -7,7 +7,5 @@ namespace BrawlCrate.NodeWrappers
     public class STDTWrapper : GenericWrapper
     {
         public override string ExportFilter => FileFilters.STDT;
-
-        public STDTWrapper() { }
     }
 }

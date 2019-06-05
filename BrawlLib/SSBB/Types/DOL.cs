@@ -73,23 +73,30 @@ namespace BrawlLib.SSBBTypes
         public buint entryPoint;
         public fixed byte padding[28];
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
-        public buint* TextOffset => ((buint*)Address);
-        public buint* DataOffset => ((buint*)Address + 7);
-        public buint* TextLoadAddr => ((buint*)Address + 18);
-        public buint* DataLoadAddr => ((buint*)Address + 25);
-        public buint* TextSize => ((buint*)Address + 36);
-        public buint* DataSize => ((buint*)Address + 43);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
+
+        public buint* TextOffset => (buint*) Address;
+        public buint* DataOffset => (buint*) Address + 7;
+        public buint* TextLoadAddr => (buint*) Address + 18;
+        public buint* DataLoadAddr => (buint*) Address + 25;
+        public buint* TextSize => (buint*) Address + 36;
+        public buint* DataSize => (buint*) Address + 43;
 
         public uint GetSize()
         {
-            buint* offsets = TextOffset;
-            buint* sizes = TextSize;
+            var offsets = TextOffset;
+            var sizes = TextSize;
             uint maxLen = 0;
-            for (int i = 0; i < 18; ++i)
-            {
-                maxLen = Math.Max(offsets[i] + sizes[i], maxLen);
-            }
+            for (var i = 0; i < 18; ++i) maxLen = Math.Max(offsets[i] + sizes[i], maxLen);
 
             return maxLen + 0x100;
         }

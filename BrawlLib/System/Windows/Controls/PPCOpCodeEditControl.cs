@@ -4,23 +4,23 @@ namespace System.Windows.Forms
 {
     public partial class PPCOpCodeEditControl : UserControl
     {
-        public PPCOpCode _code;
         public bool _canFollowBranch;
-        private bool _updating = false;
-
-        public void SetCode(PPCOpCode code)
-        {
-            propertyGrid1.SelectedObject = _code = (uint)code;
-            btnGoToBranch.Visible = _canFollowBranch && _code is PPCBranch;
-            _updating = true;
-            //cboOpCode.SelectedIndex = 
-            _updating = false;
-        }
+        public PPCOpCode _code;
+        private bool _updating;
 
         public PPCOpCodeEditControl()
         {
             InitializeComponent();
             cboOpCode.DataSource = Enum.GetNames(typeof(PPCMnemonic));
+        }
+
+        public void SetCode(PPCOpCode code)
+        {
+            propertyGrid1.SelectedObject = _code = (uint) code;
+            btnGoToBranch.Visible = _canFollowBranch && _code is PPCBranch;
+            _updating = true;
+            //cboOpCode.SelectedIndex = 
+            _updating = false;
         }
 
         public event Action OnOpChanged, OnBranchFollowed;
@@ -37,10 +37,7 @@ namespace System.Windows.Forms
 
         private void cboOpCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
         }
     }
 }

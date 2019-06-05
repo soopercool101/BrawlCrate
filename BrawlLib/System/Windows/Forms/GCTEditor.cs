@@ -1,42 +1,42 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using BrawlLib.Properties;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
     public partial class GCTEditor : Form
     {
+        private GCTCodeEntryNode _codeEntry;
+        public int _codeEntrySavedIndex = -1;
+
+        private bool _isOpen;
+
+        private GCTNode _targetNode;
+
+        private bool _updating;
+
         public GCTEditor()
         {
             InitializeComponent();
             txtCode.TextChanged += txtCode_TextChanged;
-            lstCodes.ItemChecked += new ItemCheckedEventHandler(lstCodes_ItemChecked);
-            lstCodes.SelectedIndexChanged += new EventHandler(lstCodes_SelectedIndexChanged);
+            lstCodes.ItemChecked += lstCodes_ItemChecked;
+            lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
 
-            string title =
-                ((AssemblyTitleAttribute)Attribute.GetCustomAttribute(
-                Assembly.GetEntryAssembly(), typeof(AssemblyTitleAttribute), false)).Title;
+            var title =
+                ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(
+                    Assembly.GetEntryAssembly(), typeof(AssemblyTitleAttribute), false)).Title;
 
             Text = title + " - Code Manager";
 
-            checkBox1.Checked = BrawlLib.Properties.Settings.Default.SaveGCTWithInfo;
+            checkBox1.Checked = Settings.Default.SaveGCTWithInfo;
         }
 
-        protected override void OnShown(EventArgs e)
-        {
-            _isOpen = true;
-            base.OnShown(e);
-        }
-
-        private bool _isOpen = false;
-        private GCTCodeEntryNode _codeEntry;
-
-        private GCTNode _targetNode;
         public GCTNode TargetNode
         {
             get => _targetNode;
@@ -44,11 +44,9 @@ namespace System.Windows.Forms
             {
                 if (_targetNode != null && _targetNode.IsDirty)
                 {
-                    DialogResult res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
-                    if (((res == DialogResult.Yes) && (!Save(_targetNode, checkBox1.Checked))) || (res == DialogResult.Cancel))
-                    {
-                        return;
-                    }
+                    var res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
+                    if (res == DialogResult.Yes && !Save(_targetNode, checkBox1.Checked) ||
+                        res == DialogResult.Cancel) return;
                 }
 
                 _updating = true;
@@ -64,43 +62,43 @@ namespace System.Windows.Forms
                     txtPath.Text = _targetNode._origPath;
                     txtID.Text = _targetNode._name;
                     txtName.Text = _targetNode.GameName;
-                    lstCodes.Items.AddRange(_targetNode.Children.Select(s => new ListViewItem() { Text = s.Name, Checked = ((GCTCodeEntryNode)s)._enabled, Tag = s }).ToArray());
-                    if (_targetNode.Children.Count > 0)
-                    {
-                        lstCodes.Items[0].Selected = true;
-                    }
+                    lstCodes.Items.AddRange(_targetNode.Children.Select(s => new ListViewItem
+                        {Text = s.Name, Checked = ((GCTCodeEntryNode) s)._enabled, Tag = s}).ToArray());
+                    if (_targetNode.Children.Count > 0) lstCodes.Items[0].Selected = true;
                 }
+
                 _updating = false;
             }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            _isOpen = true;
+            base.OnShown(e);
         }
 
         protected override void OnClosing(CancelEventArgs e)
         {
             TargetNode = null;
 
-            if (TargetNode != null)
-            {
-                e.Cancel = true;
-            }
+            if (TargetNode != null) e.Cancel = true;
 
-            BrawlLib.Properties.Settings.Default.Save();
+            Settings.Default.Save();
 
             base.OnClosing(e);
         }
 
         public GCTNode LoadGCT()
         {
-            OpenFileDialog d = new OpenFileDialog
+            var d = new OpenFileDialog
             {
                 Filter = "GCT/Text File|*.gct;*.txt|GCT File|*.gct|Text File|*.txt"
             };
-            if (d.ShowDialog(this) != DialogResult.OK)
-            {
-                return null;
-            }
+            if (d.ShowDialog(this) != DialogResult.OK) return null;
 
             return LoadGCT(d.FileName);
         }
+
         public static GCTNode LoadGCT(string path)
         {
             GCTNode node;
@@ -110,10 +108,8 @@ namespace System.Windows.Forms
                 node = GCTNode.FromTXT(path);
                 return node;
             }
-            else if ((node = GCTNode.IsParsable(path)) != null)
-            {
-                return node;
-            }
+
+            if ((node = GCTNode.IsParsable(path)) != null) return node;
 
             return null;
         }
@@ -122,15 +118,9 @@ namespace System.Windows.Forms
         {
             try
             {
-                if (string.IsNullOrEmpty(node._origPath))
-                {
-                    return SaveAs(node, writeInfo);
-                }
+                if (string.IsNullOrEmpty(node._origPath)) return SaveAs(node, writeInfo);
 
-                foreach (ListViewItem e in lstCodes.Items)
-                {
-                    (e.Tag as GCTCodeEntryNode)._enabled = e.Checked;
-                }
+                foreach (ListViewItem e in lstCodes.Items) (e.Tag as GCTCodeEntryNode)._enabled = e.Checked;
 
                 node._writeInfo = writeInfo;
                 node.Merge();
@@ -146,20 +136,13 @@ namespace System.Windows.Forms
 
         public bool SaveAs(GCTNode node, bool writeInfo)
         {
-            if (dlgSave.ShowDialog(this) != DialogResult.OK)
-            {
-                return false;
-            }
+            if (dlgSave.ShowDialog(this) != DialogResult.OK) return false;
 
-            string path = dlgSave.FileName;
+            var path = dlgSave.FileName;
             if (!string.IsNullOrEmpty(path))
-            {
                 try
                 {
-                    foreach (ListViewItem e in lstCodes.Items)
-                    {
-                        (e.Tag as GCTCodeEntryNode)._enabled = e.Checked;
-                    }
+                    foreach (ListViewItem e in lstCodes.Items) (e.Tag as GCTCodeEntryNode)._enabled = e.Checked;
 
                     if (Path.GetExtension(path).ToUpper() == ".TXT")
                     {
@@ -173,26 +156,38 @@ namespace System.Windows.Forms
                         node.IsDirty = false;
                         txtPath.Text = path;
                     }
+
                     return true;
                 }
-                catch { return false; }
-            }
+                catch
+                {
+                    return false;
+                }
+
             return false;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            GCTNode node = LoadGCT(); if (node != null)
-            {
-                TargetNode = node;
-            }
+            var node = LoadGCT();
+            if (node != null) TargetNode = node;
         }
-        private void btnSaveAs_Click(object sender, EventArgs e) { SaveAs(TargetNode, checkBox1.Checked); }
-        private void btnSave_Click(object sender, EventArgs e) { Save(TargetNode, checkBox1.Checked); }
-        private void btnClose_Click(object sender, EventArgs e) { TargetNode = null; }
 
-        private bool _updating = false;
-        public int _codeEntrySavedIndex = -1;
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveAs(TargetNode, checkBox1.Checked);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save(TargetNode, checkBox1.Checked);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            TargetNode = null;
+        }
+
         private void lstCodes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (panel1.Enabled = lstCodes.SelectedIndices.Count > 0)
@@ -203,10 +198,10 @@ namespace System.Windows.Forms
                 txtCode.Text = _codeEntry.DisplayLines;
                 textBox1.Text = _codeEntry._name;
 
-                string s = _codeEntry.LinesNoSpaces;
-                int i = 0;
+                var s = _codeEntry.LinesNoSpaces;
+                var i = 0;
                 _codeEntrySavedIndex = -1;
-                foreach (CodeStorage c in BrawlLib.Properties.Settings.Default.Codes)
+                foreach (var c in Settings.Default.Codes)
                 {
                     if (c._code == s)
                     {
@@ -214,28 +209,25 @@ namespace System.Windows.Forms
                         _codeEntrySavedIndex = i;
                         break;
                     }
+
                     i++;
                 }
-                if (_codeEntrySavedIndex == -1)
-                {
-                    btnAddRemoveCode.Text = "Remember Code";
-                }
+
+                if (_codeEntrySavedIndex == -1) btnAddRemoveCode.Text = "Remember Code";
 
                 _updating = false;
             }
+
             status.Text = "";
         }
 
         private void txtID_TextChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            string s = txtID.Text;
+            var s = txtID.Text;
 
-            bool temp = false;
+            var temp = false;
             if (TargetNode == null)
             {
                 TargetNode = new GCTNode();
@@ -243,22 +235,16 @@ namespace System.Windows.Forms
             }
 
             TargetNode.Name = txtID.Text = s;
-            if (temp)
-            {
-                txtID.Select(txtID.Text.Length, 0);
-            }
+            if (temp) txtID.Select(txtID.Text.Length, 0);
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            string s = txtName.Text;
+            var s = txtName.Text;
 
-            bool temp = false;
+            var temp = false;
             if (TargetNode == null)
             {
                 TargetNode = new GCTNode();
@@ -266,80 +252,55 @@ namespace System.Windows.Forms
             }
 
             TargetNode.GameName = txtName.Text = s;
-            if (temp)
-            {
-                txtName.Select(txtName.Text.Length, 0);
-            }
+            if (temp) txtName.Select(txtName.Text.Length, 0);
         }
 
         private void txtDesc_TextChanged(object sender, EventArgs e)
         {
-            if (TargetNode == null || _codeEntry == null || _updating)
-            {
-                return;
-            }
+            if (TargetNode == null || _codeEntry == null || _updating) return;
 
             _codeEntry._description = txtDesc.Text;
 
             if (_codeEntrySavedIndex != -1)
-            {
-                BrawlLib.Properties.Settings.Default.Codes[_codeEntrySavedIndex]._description = _codeEntry._description;
-            }
+                Settings.Default.Codes[_codeEntrySavedIndex]._description = _codeEntry._description;
         }
 
         private void btnDeleteCode_Click(object sender, EventArgs e)
         {
-            if (TargetNode == null || _codeEntry == null || _updating)
-            {
-                return;
-            }
+            if (TargetNode == null || _codeEntry == null || _updating) return;
 
             _codeEntry.Remove();
-            int i = lstCodes.SelectedIndices[0];
+            var i = lstCodes.SelectedIndices[0];
             lstCodes.Items[i].Remove();
             i = i.Clamp(-1, TargetNode.Children.Count - 1);
-            if (i >= 0 && i < lstCodes.Items.Count)
-            {
-                lstCodes.Items[i].Selected = true;
-            }
+            if (i >= 0 && i < lstCodes.Items.Count) lstCodes.Items[i].Selected = true;
         }
 
         private void btnNewCode_Click(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            if (TargetNode == null)
-            {
-                TargetNode = new GCTNode();
-            }
+            if (TargetNode == null) TargetNode = new GCTNode();
 
-            GCTCodeEntryNode n = new GCTCodeEntryNode() { _name = "New Code" };
+            var n = new GCTCodeEntryNode {_name = "New Code"};
             TargetNode.AddChild(n);
-            lstCodes.Items.Add(new ListViewItem() { Text = n.Name, Checked = n._enabled, Tag = n });
+            lstCodes.Items.Add(new ListViewItem {Text = n.Name, Checked = n._enabled, Tag = n});
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
         {
-            if (TargetNode == null || _codeEntry == null || _updating)
-            {
-                return;
-            }
+            if (TargetNode == null || _codeEntry == null || _updating) return;
 
-            int i = txtCode.textBox.SelectionStart;
+            var i = txtCode.textBox.SelectionStart;
             txtCode.Text = txtCode.Text.ToUpper();
             txtCode.textBox.Select(i, 0);
 
-            if ((txtCode._borderColor = CheckCode(out List<GCTCodeLine> lines)) == Color.Green)
+            if ((txtCode._borderColor = CheckCode(out var lines)) == Color.Green)
             {
                 _codeEntry._lines = lines.ToArray();
 
                 if (_codeEntrySavedIndex != -1)
-                {
-                    BrawlLib.Properties.Settings.Default.Codes[_codeEntrySavedIndex]._code = _codeEntry.LinesNoSpaces;
-                }
+                    Settings.Default.Codes[_codeEntrySavedIndex]._code = _codeEntry.LinesNoSpaces;
             }
 
             txtCode.Invalidate();
@@ -347,17 +308,11 @@ namespace System.Windows.Forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (TargetNode == null || _codeEntry == null || _updating)
-            {
-                return;
-            }
+            if (TargetNode == null || _codeEntry == null || _updating) return;
 
             _codeEntry.Name = textBox1.Text;
 
-            if (_codeEntrySavedIndex != -1)
-            {
-                BrawlLib.Properties.Settings.Default.Codes[_codeEntrySavedIndex]._name = _codeEntry._name;
-            }
+            if (_codeEntrySavedIndex != -1) Settings.Default.Codes[_codeEntrySavedIndex]._name = _codeEntry._name;
         }
 
         private Color Error(int x, string text)
@@ -365,64 +320,40 @@ namespace System.Windows.Forms
             status.Text = string.Format("Problem on line {0}: {1}", x, text);
             return Color.Red;
         }
+
         public Color CheckCode(out List<GCTCodeLine> lines)
         {
             lines = new List<GCTCodeLine>();
 
-            string code = txtCode.Text;
-            string[] values = code.Split('\n');
-            int x = 0;
-            foreach (string s in values)
+            var code = txtCode.Text;
+            var values = code.Split('\n');
+            var x = 0;
+            foreach (var s in values)
             {
                 ++x;
-                if (string.IsNullOrEmpty(s))
-                {
-                    continue;
-                }
+                if (string.IsNullOrEmpty(s)) continue;
 
-                string line = s.StartsWith("* ") ? s.Substring(2) : s;
+                var line = s.StartsWith("* ") ? s.Substring(2) : s;
 
-                string[] split = line.Split(' ');
-                if (split.Length < 1)
-                {
-                    continue;
-                }
+                var split = line.Split(' ');
+                if (split.Length < 1) continue;
 
-                if (split[0].Length != 8)
-                {
-                    return Error(x, "First value must be 8 characters long.");
-                }
+                if (split[0].Length != 8) return Error(x, "First value must be 8 characters long.");
 
-                if (!uint.TryParse(split[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint val1))
-                {
+                if (!uint.TryParse(split[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var val1))
                     return Error(x, "First value is not a hex integer.");
-                }
 
-                if (split.Length < 2 || string.IsNullOrWhiteSpace(split[1]))
-                {
-                    return Error(x, "Needs two values.");
-                }
+                if (split.Length < 2 || string.IsNullOrWhiteSpace(split[1])) return Error(x, "Needs two values.");
 
-                if (split[1].Length != 8)
-                {
-                    return Error(x, "Second value must be 8 characters long.");
-                }
+                if (split[1].Length != 8) return Error(x, "Second value must be 8 characters long.");
 
-                if (!uint.TryParse(split[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint val2))
-                {
+                if (!uint.TryParse(split[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var val2))
                     return Error(x, "Second value is not a hex integer.");
-                }
 
                 if (split.Length > 2)
-                {
-                    for (int i = 2; i < split.Length; i++)
-                    {
+                    for (var i = 2; i < split.Length; i++)
                         if (!string.IsNullOrWhiteSpace(split[i]))
-                        {
                             return Error(x, "Too many values.");
-                        }
-                    }
-                }
 
                 lines.Add(new GCTCodeLine(val1, val2));
             }
@@ -433,43 +364,38 @@ namespace System.Windows.Forms
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
             _updating = true;
             if (!checkBox1.Checked)
-            {
-                if (MessageBox.Show(this, "Are you sure you don't want the info written in the GCT?\nOnly codes you have set to remember will be readable.", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.No)
-                {
+                if (MessageBox.Show(this,
+                        "Are you sure you don't want the info written in the GCT?\nOnly codes you have set to remember will be readable.",
+                        "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.No)
                     checkBox1.Checked = true;
-                }
-            }
 
             _updating = false;
 
-            BrawlLib.Properties.Settings.Default.SaveGCTWithInfo = checkBox1.Checked;
+            Settings.Default.SaveGCTWithInfo = checkBox1.Checked;
         }
 
         private void btnAddRemoveCode_Click(object sender, EventArgs e)
         {
             if (_codeEntrySavedIndex == -1)
             {
-                CodeStorage c = new CodeStorage
+                var c = new CodeStorage
                 {
                     _code = _codeEntry.LinesNoSpaces,
                     _name = _codeEntry._name,
                     _description = _codeEntry._description
                 };
 
-                BrawlLib.Properties.Settings.Default.Codes.Add(c);
-                _codeEntrySavedIndex = BrawlLib.Properties.Settings.Default.Codes.Count - 1;
+                Settings.Default.Codes.Add(c);
+                _codeEntrySavedIndex = Settings.Default.Codes.Count - 1;
                 btnAddRemoveCode.Text = "Forget Code";
             }
             else
             {
-                BrawlLib.Properties.Settings.Default.Codes.RemoveAt(_codeEntrySavedIndex);
+                Settings.Default.Codes.RemoveAt(_codeEntrySavedIndex);
 
                 _codeEntrySavedIndex = -1;
                 btnAddRemoveCode.Text = "Remember Code";
@@ -478,17 +404,13 @@ namespace System.Windows.Forms
 
         private void rememberAllCodesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_targetNode == null)
-            {
-                return;
-            }
+            if (_targetNode == null) return;
 
             foreach (GCTCodeEntryNode r in _targetNode.Children)
             {
-                string c = r.LinesNoSpaces;
-                bool found = false;
-                foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
-                {
+                var c = r.LinesNoSpaces;
+                var found = false;
+                foreach (var w in Settings.Default.Codes)
                     if (w._code == c)
                     {
                         w._name = r._name;
@@ -496,58 +418,47 @@ namespace System.Windows.Forms
                         found = true;
                         break;
                     }
-                }
+
                 if (!found)
-                {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage() { _name = r._name, _description = r._description, _code = r.LinesNoSpaces });
-                }
+                    Settings.Default.Codes.Add(new CodeStorage
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
             }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (_targetNode == null)
-            {
-                return;
-            }
+            if (_targetNode == null) return;
 
             foreach (GCTCodeEntryNode r in _targetNode.Children)
             {
-                string c = r.LinesNoSpaces;
-                int i = 0;
-                foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
+                var c = r.LinesNoSpaces;
+                var i = 0;
+                foreach (var w in Settings.Default.Codes)
                 {
-                    if (w._code == c)
-                    {
-                        break;
-                    }
+                    if (w._code == c) break;
 
                     i++;
                 }
-                if (i != BrawlLib.Properties.Settings.Default.Codes.Count)
-                {
-                    BrawlLib.Properties.Settings.Default.Codes.RemoveAt(i);
-                }
+
+                if (i != Settings.Default.Codes.Count) Settings.Default.Codes.RemoveAt(i);
             }
         }
 
         private void forgetAllCodesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to forget all codes?", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                if (MessageBox.Show("Are you really sure?", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    BrawlLib.Properties.Settings.Default.Codes.Clear();
-                }
-            }
+            if (MessageBox.Show("Are you sure you want to forget all codes?", "Are you sure?",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you really sure?", "Are you sure?", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
+                    Settings.Default.Codes.Clear();
         }
 
         private void saveAllRememberedCodesToGCTToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GCTNode g = new GCTNode();
-            foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
+            var g = new GCTNode();
+            foreach (var w in Settings.Default.Codes)
             {
-                GCTCodeEntryNode r = new GCTCodeEntryNode
+                var r = new GCTCodeEntryNode
                 {
                     LinesNoSpaces = w._code,
                     _name = w._name,
@@ -556,23 +467,20 @@ namespace System.Windows.Forms
 
                 g.AddChild(r);
             }
+
             SaveAs(g, true);
         }
 
         private void loadCodesToRememberToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GCTNode l = LoadGCT();
-            if (l == null)
-            {
-                return;
-            }
+            var l = LoadGCT();
+            if (l == null) return;
 
             foreach (GCTCodeEntryNode r in l.Children)
             {
-                string c = r.LinesNoSpaces;
-                bool found = false;
-                foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
-                {
+                var c = r.LinesNoSpaces;
+                var found = false;
+                foreach (var w in Settings.Default.Codes)
                     if (w._code == c)
                     {
                         w._name = r._name;
@@ -580,11 +488,10 @@ namespace System.Windows.Forms
                         found = true;
                         break;
                     }
-                }
+
                 if (!found)
-                {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage() { _name = r._name, _description = r._description, _code = r.LinesNoSpaces });
-                }
+                    Settings.Default.Codes.Add(new CodeStorage
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
             }
 
             l.Dispose();
@@ -592,25 +499,21 @@ namespace System.Windows.Forms
 
         private void loadRememberedCodesAsNewFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GCTNode node = new GCTNode
+            var node = new GCTNode
             {
                 _name = "CODE",
                 _gameName = "Code List"
             };
-            foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
-            {
-                node.AddChild(new GCTCodeEntryNode() { _name = w._name, _description = w._description, LinesNoSpaces = w._code });
-            }
+            foreach (var w in Settings.Default.Codes)
+                node.AddChild(new GCTCodeEntryNode
+                    {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
 
             TargetNode = node;
         }
 
         private void lstCodes_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            if (!_isOpen || _updating || TargetNode == null)
-            {
-                return;
-            }
+            if (!_isOpen || _updating || TargetNode == null) return;
 
             TargetNode.SignalPropertyChange();
         }

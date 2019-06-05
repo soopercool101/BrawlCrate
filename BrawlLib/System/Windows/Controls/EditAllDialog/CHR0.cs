@@ -1,70 +1,75 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using System.Collections.Generic;
+using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Animations;
-using System.Collections.Generic;
 
 namespace System.Windows.Forms
 {
     public class EditAllCHR0Editor : UserControl
     {
-        private GroupBox groupBox2;
-        private GroupBox groupBox4;
-        private GroupBox groupBox3;
-        private GroupBox groupBox5;
-        private Label label7;
-        private Label label6;
-        private Label label8;
-        private TextBox ScaleZ;
-        private TextBox ScaleY;
-        private TextBox ScaleX;
-        private Label label1;
-        private TextBox keyframeCopy;
-        private TextBox name;
+        private CheckBox ChangeVersion;
         private CheckBox copyKeyframes;
-        private GroupBox groupBox1;
-        private CheckBox NameContains;
-        private TextBox targetName;
-        private CheckBox Rename;
-        private TextBox newName;
         private CheckBox editLoop;
         private CheckBox enableLoop;
-        private CheckBox Port;
-        private ComboBox Version;
-        private RadioButton ScaleDivide;
-        private RadioButton ScaleMultiply;
-        private RadioButton ScaleSubtract;
-        private RadioButton ScaleAdd;
-        private RadioButton ScaleClear;
-        private RadioButton ScaleReplace;
-        private RadioButton TranslateDivide;
-        private RadioButton TranslateMultiply;
-        private RadioButton TranslateSubtract;
-        private RadioButton TranslateAdd;
-        private RadioButton TranslateClear;
-        private RadioButton TranslateReplace;
-        private Label label5;
-        private Label label9;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private GroupBox groupBox4;
+        private GroupBox groupBox5;
+        private TextBox keyframeCopy;
+        private Label label1;
         private Label label10;
-        private TextBox TranslateZ;
-        private TextBox TranslateY;
-        private TextBox TranslateX;
-        private RadioButton RotateDivide;
-        private RadioButton RotateMultiply;
-        private RadioButton RotateSubtract;
-        private RadioButton RotateAdd;
-        private RadioButton RotateClear;
-        private RadioButton RotateReplace;
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox RotateZ;
-        private TextBox RotateY;
-        private TextBox RotateX;
-        private RadioButton TranslateDoNotChange;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private TextBox name;
+        private CheckBox NameContains;
+        private TextBox newName;
+        private CheckBox Port;
+        private CheckBox Rename;
+        private RadioButton RotateAdd;
+        private RadioButton RotateClear;
+        private RadioButton RotateDivide;
         private RadioButton RotateDoNotChange;
+        private RadioButton RotateMultiply;
+        private RadioButton RotateReplace;
+        private RadioButton RotateSubtract;
+        private TextBox RotateX;
+        private TextBox RotateY;
+        private TextBox RotateZ;
+        private RadioButton ScaleAdd;
+        private RadioButton ScaleClear;
+        private RadioButton ScaleDivide;
         private RadioButton ScaleDoNotChange;
-        private CheckBox ChangeVersion;
-        #region Designer
+        private RadioButton ScaleMultiply;
+        private RadioButton ScaleReplace;
+        private RadioButton ScaleSubtract;
+        private TextBox ScaleX;
+        private TextBox ScaleY;
+        private TextBox ScaleZ;
+        private TextBox targetName;
+        private RadioButton TranslateAdd;
+        private RadioButton TranslateClear;
+        private RadioButton TranslateDivide;
+        private RadioButton TranslateDoNotChange;
+        private RadioButton TranslateMultiply;
+        private RadioButton TranslateReplace;
+        private RadioButton TranslateSubtract;
+        private TextBox TranslateX;
+        private TextBox TranslateY;
+        private TextBox TranslateZ;
+        private ComboBox Version;
 
+        public EditAllCHR0Editor()
+        {
+            InitializeComponent();
+        }
+
+        #region Designer
 
         private void InitializeComponent()
         {
@@ -151,8 +156,8 @@ namespace System.Windows.Forms
             // 
             // groupBox4
             // 
-            groupBox4.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox4.Controls.Add(TranslateDoNotChange);
             groupBox4.Controls.Add(TranslateDivide);
             groupBox4.Controls.Add(TranslateMultiply);
@@ -184,7 +189,7 @@ namespace System.Windows.Forms
             TranslateDoNotChange.TabStop = true;
             TranslateDoNotChange.Text = "Do not change";
             TranslateDoNotChange.UseVisualStyleBackColor = true;
-            TranslateDoNotChange.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateDoNotChange.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // TranslateDivide
             // 
@@ -195,7 +200,7 @@ namespace System.Windows.Forms
             TranslateDivide.TabIndex = 47;
             TranslateDivide.Text = "Divide";
             TranslateDivide.UseVisualStyleBackColor = true;
-            TranslateDivide.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateDivide.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // TranslateMultiply
             // 
@@ -206,7 +211,7 @@ namespace System.Windows.Forms
             TranslateMultiply.TabIndex = 46;
             TranslateMultiply.Text = "Multiply";
             TranslateMultiply.UseVisualStyleBackColor = true;
-            TranslateMultiply.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateMultiply.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // TranslateSubtract
             // 
@@ -217,7 +222,7 @@ namespace System.Windows.Forms
             TranslateSubtract.TabIndex = 45;
             TranslateSubtract.Text = "Subtract";
             TranslateSubtract.UseVisualStyleBackColor = true;
-            TranslateSubtract.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateSubtract.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // TranslateAdd
             // 
@@ -228,7 +233,7 @@ namespace System.Windows.Forms
             TranslateAdd.TabIndex = 44;
             TranslateAdd.Text = "Add";
             TranslateAdd.UseVisualStyleBackColor = true;
-            TranslateAdd.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateAdd.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // TranslateClear
             // 
@@ -239,7 +244,7 @@ namespace System.Windows.Forms
             TranslateClear.TabIndex = 43;
             TranslateClear.Text = "Clear";
             TranslateClear.UseVisualStyleBackColor = true;
-            TranslateClear.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateClear.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // TranslateReplace
             // 
@@ -250,7 +255,7 @@ namespace System.Windows.Forms
             TranslateReplace.TabIndex = 42;
             TranslateReplace.Text = "Replace";
             TranslateReplace.UseVisualStyleBackColor = true;
-            TranslateReplace.CheckedChanged += new EventHandler(TranslateClear_CheckedChanged);
+            TranslateReplace.CheckedChanged += TranslateClear_CheckedChanged;
             // 
             // label5
             // 
@@ -305,8 +310,8 @@ namespace System.Windows.Forms
             // 
             // groupBox3
             // 
-            groupBox3.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox3.Controls.Add(RotateDoNotChange);
             groupBox3.Controls.Add(RotateDivide);
             groupBox3.Controls.Add(RotateMultiply);
@@ -338,7 +343,7 @@ namespace System.Windows.Forms
             RotateDoNotChange.TabStop = true;
             RotateDoNotChange.Text = "Do not change";
             RotateDoNotChange.UseVisualStyleBackColor = true;
-            RotateDoNotChange.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateDoNotChange.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // RotateDivide
             // 
@@ -349,7 +354,7 @@ namespace System.Windows.Forms
             RotateDivide.TabIndex = 47;
             RotateDivide.Text = "Divide";
             RotateDivide.UseVisualStyleBackColor = true;
-            RotateDivide.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateDivide.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // RotateMultiply
             // 
@@ -360,7 +365,7 @@ namespace System.Windows.Forms
             RotateMultiply.TabIndex = 46;
             RotateMultiply.Text = "Multiply";
             RotateMultiply.UseVisualStyleBackColor = true;
-            RotateMultiply.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateMultiply.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // RotateSubtract
             // 
@@ -371,7 +376,7 @@ namespace System.Windows.Forms
             RotateSubtract.TabIndex = 45;
             RotateSubtract.Text = "Subtract";
             RotateSubtract.UseVisualStyleBackColor = true;
-            RotateSubtract.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateSubtract.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // RotateAdd
             // 
@@ -382,7 +387,7 @@ namespace System.Windows.Forms
             RotateAdd.TabIndex = 44;
             RotateAdd.Text = "Add";
             RotateAdd.UseVisualStyleBackColor = true;
-            RotateAdd.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateAdd.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // RotateClear
             // 
@@ -393,7 +398,7 @@ namespace System.Windows.Forms
             RotateClear.TabIndex = 43;
             RotateClear.Text = "Clear";
             RotateClear.UseVisualStyleBackColor = true;
-            RotateClear.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateClear.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // RotateReplace
             // 
@@ -404,7 +409,7 @@ namespace System.Windows.Forms
             RotateReplace.TabIndex = 42;
             RotateReplace.Text = "Replace";
             RotateReplace.UseVisualStyleBackColor = true;
-            RotateReplace.CheckedChanged += new EventHandler(RotateClear_CheckedChanged);
+            RotateReplace.CheckedChanged += RotateClear_CheckedChanged;
             // 
             // label2
             // 
@@ -459,8 +464,8 @@ namespace System.Windows.Forms
             // 
             // groupBox5
             // 
-            groupBox5.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox5.Controls.Add(ScaleDoNotChange);
             groupBox5.Controls.Add(ScaleDivide);
             groupBox5.Controls.Add(ScaleMultiply);
@@ -492,7 +497,7 @@ namespace System.Windows.Forms
             ScaleDoNotChange.TabStop = true;
             ScaleDoNotChange.Text = "Do not change";
             ScaleDoNotChange.UseVisualStyleBackColor = true;
-            ScaleDoNotChange.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleDoNotChange.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // ScaleDivide
             // 
@@ -503,7 +508,7 @@ namespace System.Windows.Forms
             ScaleDivide.TabIndex = 35;
             ScaleDivide.Text = "Divide";
             ScaleDivide.UseVisualStyleBackColor = true;
-            ScaleDivide.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleDivide.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // ScaleMultiply
             // 
@@ -514,7 +519,7 @@ namespace System.Windows.Forms
             ScaleMultiply.TabIndex = 34;
             ScaleMultiply.Text = "Multiply";
             ScaleMultiply.UseVisualStyleBackColor = true;
-            ScaleMultiply.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleMultiply.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // ScaleSubtract
             // 
@@ -525,7 +530,7 @@ namespace System.Windows.Forms
             ScaleSubtract.TabIndex = 33;
             ScaleSubtract.Text = "Subtract";
             ScaleSubtract.UseVisualStyleBackColor = true;
-            ScaleSubtract.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleSubtract.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // ScaleAdd
             // 
@@ -536,7 +541,7 @@ namespace System.Windows.Forms
             ScaleAdd.TabIndex = 32;
             ScaleAdd.Text = "Add";
             ScaleAdd.UseVisualStyleBackColor = true;
-            ScaleAdd.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleAdd.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // ScaleClear
             // 
@@ -547,7 +552,7 @@ namespace System.Windows.Forms
             ScaleClear.TabIndex = 31;
             ScaleClear.Text = "Clear";
             ScaleClear.UseVisualStyleBackColor = true;
-            ScaleClear.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleClear.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // ScaleReplace
             // 
@@ -558,7 +563,7 @@ namespace System.Windows.Forms
             ScaleReplace.TabIndex = 30;
             ScaleReplace.Text = "Replace";
             ScaleReplace.UseVisualStyleBackColor = true;
-            ScaleReplace.CheckedChanged += new EventHandler(ScaleClear_CheckedChanged);
+            ScaleReplace.CheckedChanged += ScaleClear_CheckedChanged;
             // 
             // label7
             // 
@@ -628,7 +633,7 @@ namespace System.Windows.Forms
             copyKeyframes.TabIndex = 33;
             copyKeyframes.Text = "Copy keyframes from:";
             copyKeyframes.UseVisualStyleBackColor = true;
-            copyKeyframes.CheckedChanged += new EventHandler(copyKeyframes_CheckedChanged);
+            copyKeyframes.CheckedChanged += copyKeyframes_CheckedChanged;
             // 
             // label1
             // 
@@ -682,7 +687,7 @@ namespace System.Windows.Forms
             NameContains.TabIndex = 85;
             NameContains.Text = "Modify only if name contains: ";
             NameContains.UseVisualStyleBackColor = true;
-            NameContains.CheckedChanged += new EventHandler(NameContains_CheckedChanged);
+            NameContains.CheckedChanged += NameContains_CheckedChanged;
             // 
             // newName
             // 
@@ -701,7 +706,7 @@ namespace System.Windows.Forms
             Rename.TabIndex = 83;
             Rename.Text = "Rename:";
             Rename.UseVisualStyleBackColor = true;
-            Rename.CheckedChanged += new EventHandler(Rename_CheckedChanged);
+            Rename.CheckedChanged += Rename_CheckedChanged;
             // 
             // enableLoop
             // 
@@ -723,7 +728,7 @@ namespace System.Windows.Forms
             editLoop.TabIndex = 38;
             editLoop.Text = "Edit loop:";
             editLoop.UseVisualStyleBackColor = true;
-            editLoop.CheckedChanged += new EventHandler(editLoop_CheckedChanged);
+            editLoop.CheckedChanged += editLoop_CheckedChanged;
             // 
             // Port
             // 
@@ -740,9 +745,11 @@ namespace System.Windows.Forms
             Version.DropDownStyle = ComboBoxStyle.DropDownList;
             Version.Enabled = false;
             Version.FormattingEnabled = true;
-            Version.Items.AddRange(new object[] {
-            "4",
-            "5"});
+            Version.Items.AddRange(new object[]
+            {
+                "4",
+                "5"
+            });
             Version.Location = new Drawing.Point(114, 61);
             Version.Name = "Version";
             Version.Size = new Drawing.Size(80, 21);
@@ -757,7 +764,7 @@ namespace System.Windows.Forms
             ChangeVersion.TabIndex = 35;
             ChangeVersion.Text = "Change version:";
             ChangeVersion.UseVisualStyleBackColor = true;
-            ChangeVersion.CheckedChanged += new EventHandler(ChangeVersion_CheckedChanged);
+            ChangeVersion.CheckedChanged += ChangeVersion_CheckedChanged;
             // 
             // EditAllCHR0Editor
             // 
@@ -776,12 +783,9 @@ namespace System.Windows.Forms
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        public EditAllCHR0Editor() { InitializeComponent(); }
 
         private void editLoop_CheckedChanged(object sender, EventArgs e)
         {
@@ -792,9 +796,9 @@ namespace System.Windows.Forms
         {
             groupBox1.Enabled =
                 name.Enabled =
-                keyframeCopy.Enabled =
-                copyKeyframes.Enabled =
-                false;
+                    keyframeCopy.Enabled =
+                        copyKeyframes.Enabled =
+                            false;
         }
 
         public static PartialVector3 Vec3From(TextBox x, TextBox y, TextBox z)
@@ -805,43 +809,40 @@ namespace System.Windows.Forms
         public static PartialVector3 Vec3From(string x, string y, string z)
         {
             return new PartialVector3(
-                string.IsNullOrEmpty(x) ? (float?)null : float.Parse(x),
-                string.IsNullOrEmpty(y) ? (float?)null : float.Parse(y),
-                string.IsNullOrEmpty(z) ? (float?)null : float.Parse(z));
+                string.IsNullOrEmpty(x) ? (float?) null : float.Parse(x),
+                string.IsNullOrEmpty(y) ? (float?) null : float.Parse(y),
+                string.IsNullOrEmpty(z) ? (float?) null : float.Parse(z));
         }
 
         public void Apply(IEnumerable<CHR0Node> CHR0)
         {
-            string _name = name.Text;
+            var _name = name.Text;
             MDL0Node model = null;
             MDL0Node _targetModel = null;
             if (Port.Checked)
             {
-                MessageBox.Show("Please open the model you want to port the animations to.\nThen open the model the animations work normally for.");
-                OpenFileDialog dlgOpen = new OpenFileDialog();
-                OpenFileDialog dlgOpen2 = new OpenFileDialog();
+                MessageBox.Show(
+                    "Please open the model you want to port the animations to.\nThen open the model the animations work normally for.");
+                var dlgOpen = new OpenFileDialog();
+                var dlgOpen2 = new OpenFileDialog();
                 dlgOpen.Filter = dlgOpen2.Filter = "MDL0 Model (*.mdl0)|*.mdl0";
                 dlgOpen.Title = "Select the model to port the animations to...";
                 dlgOpen2.Title = "Select the model the animations are for...";
                 if (dlgOpen.ShowDialog() == DialogResult.OK)
                 {
-                    _targetModel = (MDL0Node)NodeFactory.FromFile(null, dlgOpen.FileName);
+                    _targetModel = (MDL0Node) NodeFactory.FromFile(null, dlgOpen.FileName);
                     if (dlgOpen2.ShowDialog() == DialogResult.OK)
-                    {
-                        model = (MDL0Node)NodeFactory.FromFile(null, dlgOpen2.FileName);
-                    }
+                        model = (MDL0Node) NodeFactory.FromFile(null, dlgOpen2.FileName);
                 }
             }
-            PartialVector3 scale = Vec3From(ScaleX, ScaleY, ScaleZ);
-            PartialVector3 rot = Vec3From(RotateX, RotateY, RotateZ);
-            PartialVector3 trans = Vec3From(TranslateX, TranslateY, TranslateZ);
 
-            foreach (CHR0Node n in CHR0)
+            var scale = Vec3From(ScaleX, ScaleY, ScaleZ);
+            var rot = Vec3From(RotateX, RotateY, RotateZ);
+            var trans = Vec3From(TranslateX, TranslateY, TranslateZ);
+
+            foreach (var n in CHR0)
             {
-                if (NameContains.Checked && !n.Name.Contains(targetName.Text))
-                {
-                    continue;
-                }
+                if (NameContains.Checked && !n.Name.Contains(targetName.Text)) continue;
 
                 if (editLoop.Checked)
                 {
@@ -869,131 +870,96 @@ namespace System.Windows.Forms
 
                 if (copyKeyframes.Checked)
                 {
-                    CHR0EntryNode _copyNode = n.FindChild(keyframeCopy.Text, false) as CHR0EntryNode;
+                    var _copyNode = n.FindChild(keyframeCopy.Text, false) as CHR0EntryNode;
 
                     if (n.FindChild(_name, false) == null)
-                    {
                         if (!string.IsNullOrEmpty(_name))
                         {
                             KeyframeEntry kfe = null;
-                            CHR0EntryNode c = new CHR0EntryNode();
+                            var c = new CHR0EntryNode();
                             c.SetSize(n.FrameCount, n.Loop);
                             c.Name = _name;
 
                             if (_copyNode != null)
-                            {
-                                for (int x = 0; x < _copyNode.FrameCount; x++)
-                                {
-                                    for (int i = 0; i < 9; i++)
-                                    {
-                                        if ((kfe = _copyNode.GetKeyframe(i, x)) != null)
-                                        {
-                                            c.SetKeyframe(i, x, kfe._value);
-                                        }
-                                    }
-                                }
-                            }
+                                for (var x = 0; x < _copyNode.FrameCount; x++)
+                                for (var i = 0; i < 9; i++)
+                                    if ((kfe = _copyNode.GetKeyframe(i, x)) != null)
+                                        c.SetKeyframe(i, x, kfe._value);
 
                             n.AddChild(c);
                         }
-                    }
                 }
 
-                CHR0EntryNode entry = n.FindChild(_name, false) as CHR0EntryNode;
+                var entry = n.FindChild(_name, false) as CHR0EntryNode;
                 if (entry == null)
                 {
-                    entry = new CHR0EntryNode() { _name = _name };
+                    entry = new CHR0EntryNode {_name = _name};
                     n.AddChild(entry);
                 }
+
                 Apply(entry, scale, rot, trans);
             }
         }
 
         public void Apply(IEnumerable<CHR0EntryNode> CHR0)
         {
-            PartialVector3 scale = Vec3From(ScaleX, ScaleY, ScaleZ);
-            PartialVector3 rot = Vec3From(RotateX, RotateY, RotateZ);
-            PartialVector3 trans = Vec3From(TranslateX, TranslateY, TranslateZ);
+            var scale = Vec3From(ScaleX, ScaleY, ScaleZ);
+            var rot = Vec3From(RotateX, RotateY, RotateZ);
+            var trans = Vec3From(TranslateX, TranslateY, TranslateZ);
 
-            foreach (CHR0EntryNode entry in CHR0)
-            {
-                Apply(entry, scale, rot, trans);
-            }
+            foreach (var entry in CHR0) Apply(entry, scale, rot, trans);
         }
 
         private void Apply(CHR0EntryNode entry, PartialVector3 scaleVec, PartialVector3 rotVec, PartialVector3 transVec)
         {
             KeyframeEntry kfe = null;
             CHRAnimationFrame anim;
-            bool hasKeyframe = false;
-            int numFrames = entry.FrameCount;
+            var hasKeyframe = false;
+            var numFrames = entry.FrameCount;
             int low = 0, high = 3;
             if (ScaleReplace.Checked)
             {
-                Vector3 scale = (Vector3)scaleVec;
+                var scale = (Vector3) scaleVec;
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
-                    {
-                        if (entry.GetKeyframe(i, x) != null)
-                        {
-                            entry.RemoveKeyframe(i, x);
-                        }
-                    }
-                }
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if (entry.GetKeyframe(i, x) != null)
+                        entry.RemoveKeyframe(i, x);
 
                 entry.SetKeyframeOnlyScale(0, scale);
             }
             else if (ScaleClear.Checked)
             {
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
-                    {
-                        if (entry.GetKeyframe(i, x) != null)
-                        {
-                            entry.RemoveKeyframe(i, x);
-                        }
-                    }
-                }
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if (entry.GetKeyframe(i, x) != null)
+                        entry.RemoveKeyframe(i, x);
             }
             else if (ScaleAdd.Checked)
             {
-                Vector3 scale = new Vector3(
+                var scale = new Vector3(
                     scaleVec._x ?? 0,
                     scaleVec._y ?? 0,
                     scaleVec._z ?? 0);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value += scale._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value += scale._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value += scale._z;
-                            }
+                        if (i == low)
+                            kfe._value += scale._x;
+                        else if (i == low + 1)
+                            kfe._value += scale._y;
+                        else if (i == high - 1) kfe._value += scale._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newScale = anim.Scale;
+                    var newScale = anim.Scale;
                     scale._x += newScale._x;
                     scale._y += newScale._y;
                     scale._z += newScale._z;
@@ -1002,39 +968,28 @@ namespace System.Windows.Forms
             }
             else if (ScaleSubtract.Checked)
             {
-                Vector3 scale = new Vector3(
+                var scale = new Vector3(
                     scaleVec._x ?? 0,
                     scaleVec._y ?? 0,
                     scaleVec._z ?? 0);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value -= scale._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value -= scale._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value -= scale._z;
-                            }
+                        if (i == low)
+                            kfe._value -= scale._x;
+                        else if (i == low + 1)
+                            kfe._value -= scale._y;
+                        else if (i == high - 1) kfe._value -= scale._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newScale = anim.Scale;
+                    var newScale = anim.Scale;
                     scale._x = newScale._x - scale._x;
                     scale._y = newScale._y - scale._y;
                     scale._z = newScale._z - scale._z;
@@ -1043,39 +998,28 @@ namespace System.Windows.Forms
             }
             else if (ScaleMultiply.Checked)
             {
-                Vector3 scale = new Vector3(
+                var scale = new Vector3(
                     scaleVec._x ?? 1,
                     scaleVec._y ?? 1,
                     scaleVec._z ?? 1);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value *= scale._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value *= scale._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value *= scale._z;
-                            }
+                        if (i == low)
+                            kfe._value *= scale._x;
+                        else if (i == low + 1)
+                            kfe._value *= scale._y;
+                        else if (i == high - 1) kfe._value *= scale._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newScale = anim.Scale;
+                    var newScale = anim.Scale;
                     scale._x *= newScale._x;
                     scale._y *= newScale._y;
                     scale._z *= newScale._z;
@@ -1084,125 +1028,83 @@ namespace System.Windows.Forms
             }
             else if (ScaleDivide.Checked)
             {
-                Vector3 scale = new Vector3(
+                var scale = new Vector3(
                     scaleVec._x ?? 1,
                     scaleVec._y ?? 1,
                     scaleVec._z ?? 1);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low && scale._x != 0)
-                            {
-                                kfe._value /= scale._x;
-                            }
-                            else if (i == low + 1 && scale._y != 0)
-                            {
-                                kfe._value /= scale._y;
-                            }
-                            else if (i == high - 1 && scale._z != 0)
-                            {
-                                kfe._value /= scale._z;
-                            }
+                        if (i == low && scale._x != 0)
+                            kfe._value /= scale._x;
+                        else if (i == low + 1 && scale._y != 0)
+                            kfe._value /= scale._y;
+                        else if (i == high - 1 && scale._z != 0) kfe._value /= scale._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newScale = anim.Scale;
-                    if (scale._x != 0)
-                    {
-                        scale._x = newScale._x / scale._x;
-                    }
+                    var newScale = anim.Scale;
+                    if (scale._x != 0) scale._x = newScale._x / scale._x;
 
-                    if (scale._y != 0)
-                    {
-                        scale._y = newScale._y / scale._y;
-                    }
+                    if (scale._y != 0) scale._y = newScale._y / scale._y;
 
-                    if (scale._z != 0)
-                    {
-                        scale._z = newScale._z / scale._z;
-                    }
+                    if (scale._z != 0) scale._z = newScale._z / scale._z;
 
                     entry.SetKeyframeOnlyScale(0, scale);
                 }
             }
 
-            low = 3; high = 6;
+            low = 3;
+            high = 6;
             if (RotateReplace.Checked)
             {
-                Vector3 rot = (Vector3)rotVec;
+                var rot = (Vector3) rotVec;
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
-                    {
-                        if (entry.GetKeyframe(i, x) != null)
-                        {
-                            entry.RemoveKeyframe(i, x);
-                        }
-                    }
-                }
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if (entry.GetKeyframe(i, x) != null)
+                        entry.RemoveKeyframe(i, x);
 
                 entry.SetKeyframeOnlyRot(0, rot);
             }
             else if (RotateClear.Checked)
             {
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
-                    {
-                        if (entry.GetKeyframe(i, x) != null)
-                        {
-                            entry.RemoveKeyframe(i, x);
-                        }
-                    }
-                }
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if (entry.GetKeyframe(i, x) != null)
+                        entry.RemoveKeyframe(i, x);
             }
             else if (RotateAdd.Checked)
             {
-                Vector3 rot = new Vector3(
+                var rot = new Vector3(
                     rotVec._x ?? 0,
                     rotVec._y ?? 0,
                     rotVec._z ?? 0);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value += rot._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value += rot._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value += rot._z;
-                            }
+                        if (i == low)
+                            kfe._value += rot._x;
+                        else if (i == low + 1)
+                            kfe._value += rot._y;
+                        else if (i == high - 1) kfe._value += rot._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newRotate = anim.Rotation;
+                    var newRotate = anim.Rotation;
                     rot._x += newRotate._x;
                     rot._y += newRotate._y;
                     rot._z += newRotate._z;
@@ -1211,39 +1113,28 @@ namespace System.Windows.Forms
             }
             else if (RotateSubtract.Checked)
             {
-                Vector3 rot = new Vector3(
+                var rot = new Vector3(
                     rotVec._x ?? 0,
                     rotVec._y ?? 0,
                     rotVec._z ?? 0);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value -= rot._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value -= rot._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value -= rot._z;
-                            }
+                        if (i == low)
+                            kfe._value -= rot._x;
+                        else if (i == low + 1)
+                            kfe._value -= rot._y;
+                        else if (i == high - 1) kfe._value -= rot._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newRotate = anim.Rotation;
+                    var newRotate = anim.Rotation;
                     rot._x = newRotate._x - rot._x;
                     rot._y = newRotate._y - rot._y;
                     rot._z = newRotate._z - rot._z;
@@ -1252,39 +1143,28 @@ namespace System.Windows.Forms
             }
             else if (RotateMultiply.Checked)
             {
-                Vector3 rot = new Vector3(
+                var rot = new Vector3(
                     rotVec._x ?? 1,
                     rotVec._y ?? 1,
                     rotVec._z ?? 1);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value *= rot._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value *= rot._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value *= rot._z;
-                            }
+                        if (i == low)
+                            kfe._value *= rot._x;
+                        else if (i == low + 1)
+                            kfe._value *= rot._y;
+                        else if (i == high - 1) kfe._value *= rot._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newRotate = anim.Rotation;
+                    var newRotate = anim.Rotation;
                     rot._x *= newRotate._x;
                     rot._y *= newRotate._y;
                     rot._z *= newRotate._z;
@@ -1293,125 +1173,83 @@ namespace System.Windows.Forms
             }
             else if (RotateDivide.Checked)
             {
-                Vector3 rot = new Vector3(
+                var rot = new Vector3(
                     rotVec._x ?? 1,
                     rotVec._y ?? 1,
                     rotVec._z ?? 1);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low && rot._x != 0)
-                            {
-                                kfe._value /= rot._x;
-                            }
-                            else if (i == low + 1 && rot._y != 0)
-                            {
-                                kfe._value /= rot._y;
-                            }
-                            else if (i == high - 1 && rot._z != 0)
-                            {
-                                kfe._value /= rot._z;
-                            }
+                        if (i == low && rot._x != 0)
+                            kfe._value /= rot._x;
+                        else if (i == low + 1 && rot._y != 0)
+                            kfe._value /= rot._y;
+                        else if (i == high - 1 && rot._z != 0) kfe._value /= rot._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newRotate = anim.Rotation;
-                    if (rot._x != 0)
-                    {
-                        rot._x = newRotate._x / rot._x;
-                    }
+                    var newRotate = anim.Rotation;
+                    if (rot._x != 0) rot._x = newRotate._x / rot._x;
 
-                    if (rot._y != 0)
-                    {
-                        rot._y = newRotate._y / rot._y;
-                    }
+                    if (rot._y != 0) rot._y = newRotate._y / rot._y;
 
-                    if (rot._z != 0)
-                    {
-                        rot._z = newRotate._z / rot._z;
-                    }
+                    if (rot._z != 0) rot._z = newRotate._z / rot._z;
 
                     entry.SetKeyframeOnlyRot(0, rot);
                 }
             }
 
-            low = 6; high = 9;
+            low = 6;
+            high = 9;
             if (TranslateReplace.Checked)
             {
-                Vector3 trans = (Vector3)transVec;
+                var trans = (Vector3) transVec;
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = 0x10; i < high; i++)
-                    {
-                        if (entry.GetKeyframe(i, x) != null)
-                        {
-                            entry.RemoveKeyframe(i, x);
-                        }
-                    }
-                }
+                for (var x = 0; x < numFrames; x++)
+                for (var i = 0x10; i < high; i++)
+                    if (entry.GetKeyframe(i, x) != null)
+                        entry.RemoveKeyframe(i, x);
 
                 entry.SetKeyframeOnlyTrans(0, trans);
             }
             else if (TranslateClear.Checked)
             {
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
-                    {
-                        if (entry.GetKeyframe(i, x) != null)
-                        {
-                            entry.RemoveKeyframe(i, x);
-                        }
-                    }
-                }
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if (entry.GetKeyframe(i, x) != null)
+                        entry.RemoveKeyframe(i, x);
             }
             else if (TranslateAdd.Checked)
             {
-                Vector3 trans = new Vector3(
+                var trans = new Vector3(
                     transVec._x ?? 0,
                     transVec._y ?? 0,
                     transVec._z ?? 0);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value += trans._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value += trans._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value += trans._z;
-                            }
+                        if (i == low)
+                            kfe._value += trans._x;
+                        else if (i == low + 1)
+                            kfe._value += trans._y;
+                        else if (i == high - 1) kfe._value += trans._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newTranslate = anim.Translation;
+                    var newTranslate = anim.Translation;
                     trans._x += newTranslate._x;
                     trans._y += newTranslate._y;
                     trans._z += newTranslate._z;
@@ -1420,39 +1258,28 @@ namespace System.Windows.Forms
             }
             else if (TranslateSubtract.Checked)
             {
-                Vector3 trans = new Vector3(
+                var trans = new Vector3(
                     transVec._x ?? 0,
                     transVec._y ?? 0,
                     transVec._z ?? 0);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value -= trans._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value -= trans._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value -= trans._z;
-                            }
+                        if (i == low)
+                            kfe._value -= trans._x;
+                        else if (i == low + 1)
+                            kfe._value -= trans._y;
+                        else if (i == high - 1) kfe._value -= trans._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newTranslate = anim.Translation;
+                    var newTranslate = anim.Translation;
                     trans._x = newTranslate._x - trans._x;
                     trans._y = newTranslate._y - trans._y;
                     trans._z = newTranslate._z - trans._z;
@@ -1461,39 +1288,28 @@ namespace System.Windows.Forms
             }
             else if (TranslateMultiply.Checked)
             {
-                Vector3 trans = new Vector3(
+                var trans = new Vector3(
                     transVec._x ?? 1,
                     transVec._y ?? 1,
                     transVec._z ?? 1);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low)
-                            {
-                                kfe._value *= trans._x;
-                            }
-                            else if (i == low + 1)
-                            {
-                                kfe._value *= trans._y;
-                            }
-                            else if (i == high - 1)
-                            {
-                                kfe._value *= trans._z;
-                            }
+                        if (i == low)
+                            kfe._value *= trans._x;
+                        else if (i == low + 1)
+                            kfe._value *= trans._y;
+                        else if (i == high - 1) kfe._value *= trans._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newTranslate = anim.Translation;
+                    var newTranslate = anim.Translation;
                     trans._x *= newTranslate._x;
                     trans._y *= newTranslate._y;
                     trans._z *= newTranslate._z;
@@ -1502,53 +1318,33 @@ namespace System.Windows.Forms
             }
             else if (TranslateDivide.Checked)
             {
-                Vector3 trans = new Vector3(
+                var trans = new Vector3(
                     transVec._x ?? 1,
                     transVec._y ?? 1,
                     transVec._z ?? 1);
                 entry.SignalPropertyChange();
-                for (int x = 0; x < numFrames; x++)
-                {
-                    for (int i = low; i < high; i++)
+                for (var x = 0; x < numFrames; x++)
+                for (var i = low; i < high; i++)
+                    if ((kfe = entry.GetKeyframe(i, x)) != null)
                     {
-                        if ((kfe = entry.GetKeyframe(i, x)) != null)
-                        {
-                            if (i == low && trans._x != 0)
-                            {
-                                kfe._value /= trans._x;
-                            }
-                            else if (i == low + 1 && trans._y != 0)
-                            {
-                                kfe._value /= trans._y;
-                            }
-                            else if (i == high - 1 && trans._z != 0)
-                            {
-                                kfe._value /= trans._z;
-                            }
+                        if (i == low && trans._x != 0)
+                            kfe._value /= trans._x;
+                        else if (i == low + 1 && trans._y != 0)
+                            kfe._value /= trans._y;
+                        else if (i == high - 1 && trans._z != 0) kfe._value /= trans._z;
 
-                            hasKeyframe = true;
-                        }
+                        hasKeyframe = true;
                     }
-                }
 
                 if (!hasKeyframe)
                 {
                     anim = entry.GetAnimFrame(0);
-                    Vector3 newTranslate = anim.Translation;
-                    if (trans._x != 0)
-                    {
-                        trans._x = newTranslate._x / trans._x;
-                    }
+                    var newTranslate = anim.Translation;
+                    if (trans._x != 0) trans._x = newTranslate._x / trans._x;
 
-                    if (trans._y != 0)
-                    {
-                        trans._y = newTranslate._y / trans._y;
-                    }
+                    if (trans._y != 0) trans._y = newTranslate._y / trans._y;
 
-                    if (trans._z != 0)
-                    {
-                        trans._z = newTranslate._z / trans._z;
-                    }
+                    if (trans._z != 0) trans._z = newTranslate._z / trans._z;
 
                     entry.SetKeyframeOnlyTrans(0, trans);
                 }
@@ -1577,15 +1373,18 @@ namespace System.Windows.Forms
 
         private void ScaleClear_CheckedChanged(object sender, EventArgs e)
         {
-            ScaleX.Enabled = ScaleY.Enabled = ScaleZ.Enabled = (!ScaleClear.Checked && !ScaleDoNotChange.Checked);
+            ScaleX.Enabled = ScaleY.Enabled = ScaleZ.Enabled = !ScaleClear.Checked && !ScaleDoNotChange.Checked;
         }
+
         private void RotateClear_CheckedChanged(object sender, EventArgs e)
         {
-            RotateX.Enabled = RotateY.Enabled = RotateZ.Enabled = (!RotateClear.Checked && !RotateDoNotChange.Checked);
+            RotateX.Enabled = RotateY.Enabled = RotateZ.Enabled = !RotateClear.Checked && !RotateDoNotChange.Checked;
         }
+
         private void TranslateClear_CheckedChanged(object sender, EventArgs e)
         {
-            TranslateX.Enabled = TranslateY.Enabled = TranslateZ.Enabled = (!TranslateClear.Checked && !TranslateDoNotChange.Checked);
+            TranslateX.Enabled = TranslateY.Enabled =
+                TranslateZ.Enabled = !TranslateClear.Checked && !TranslateDoNotChange.Checked;
         }
     }
 }

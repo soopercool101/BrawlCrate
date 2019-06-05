@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public class RELType
     {
-        private string _fullName = "";
-        private bool _inherited = false;
-        private readonly List<InheritanceItemNode> _inheritance = new List<InheritanceItemNode>();
-
-        public string FullName { get => _fullName; set => _fullName = value; }
-        public string FormalName { get => GetName(); set => SetName(value); }
-        public string[] FormalArguments { get => GetArguments(); set => SetArguments(value); }
-        public bool Inherited { get => _inherited; set => _inherited = value; }
-        public List<InheritanceItemNode> Inheritance => _inheritance;
-
         public RELType(string name)
         {
-            _fullName = name;
+            FullName = name;
         }
+
+        public string FullName { get; set; } = "";
+
+        public string FormalName
+        {
+            get => GetName();
+            set => SetName(value);
+        }
+
+        public string[] FormalArguments
+        {
+            get => GetArguments();
+            set => SetArguments(value);
+        }
+
+        public bool Inherited { get; set; } = false;
+        public List<InheritanceItemNode> Inheritance { get; } = new List<InheritanceItemNode>();
 
         private string GetName()
         {
@@ -28,32 +34,22 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private void SetName(string name)
         {
-            if (FormalName == name)
-            {
-                return;
-            }
+            if (FormalName == name) return;
 
             if (!FullName.Contains('<'))
-            {
-                _fullName = name;
-            }
+                FullName = name;
             else
-            {
-                _fullName = name + '<' + FullName.Split('<')[1];
-            }
+                FullName = name + '<' + FullName.Split('<')[1];
         }
 
         private string[] GetArguments()
         {
             string[] arguments = null;
 
-            if (_fullName.Contains('<') && _fullName.EndsWith(">"))
+            if (FullName.Contains('<') && FullName.EndsWith(">"))
             {
-                arguments = _fullName.Remove(_fullName.Length - 1).Split(new char[] { '<' }, 2)[1].Split(',');
-                for (int i = 0; i < arguments.Length; i++)
-                {
-                    arguments[i] = arguments[i].Trim();
-                }
+                arguments = FullName.Remove(FullName.Length - 1).Split(new[] {'<'}, 2)[1].Split(',');
+                for (var i = 0; i < arguments.Length; i++) arguments[i] = arguments[i].Trim();
             }
 
             return arguments;
@@ -61,19 +57,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private void SetArguments(string[] arguments)
         {
-            if (FormalArguments == arguments)
-            {
-                return;
-            }
+            if (FormalArguments == arguments) return;
 
             if (arguments == null)
-            {
-                _fullName = FormalName;
-            }
+                FullName = FormalName;
             else
-            {
-                _fullName = FormalName + '<' + string.Join(", ", arguments) + '>';
-            }
+                FullName = FormalName + '<' + string.Join(", ", arguments) + '>';
         }
 
         public override string ToString()
@@ -83,32 +72,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public string ToString(bool inheritance)
         {
-            if (!inheritance || _inheritance.Count == 0)
-            {
-                return FullName;
-            }
-            else
-            {
-                string[] inheritTypes = new string[_inheritance.Count];
-                for (int i = 0; i < inheritTypes.Length; i++)
-                {
-                    inheritTypes[i] = _inheritance[i]._type.ToString(false);
-                }
+            if (!inheritance || Inheritance.Count == 0) return FullName;
 
-                return FullName + " : " + string.Join(", ", inheritTypes);
-            }
+            var inheritTypes = new string[Inheritance.Count];
+            for (var i = 0; i < inheritTypes.Length; i++) inheritTypes[i] = Inheritance[i]._type.ToString(false);
+
+            return FullName + " : " + string.Join(", ", inheritTypes);
         }
     }
 
     public class InheritanceItemNode : RELEntryNode
     {
-        public override ResourceType ResourceFileType => ResourceType.RELInheritance;
-
         public RELType _type;
         public uint _unknown;
-
-        public RELType Type { get => _type; set { _type = value; SignalPropertyChange(); } }
-        public uint Unknown => _unknown;
 
         public InheritanceItemNode(RELType type, uint unknown)
         {
@@ -116,6 +92,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = _type.FullName;
             _unknown = unknown;
         }
+
+        public override ResourceType ResourceFileType => ResourceType.RELInheritance;
+
+        public RELType Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public uint Unknown => _unknown;
 
         public override string ToString()
         {

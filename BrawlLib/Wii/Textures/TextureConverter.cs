@@ -1,10 +1,10 @@
-﻿using BrawlLib.Imaging;
-using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using BrawlLib.Imaging;
+using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.Wii.Textures
 {
@@ -21,79 +21,87 @@ namespace BrawlLib.Wii.Textures
         public static readonly CMPR CMPR = new CMPR();
         public static readonly TextureConverter RGBA8 = new RGBA8();
 
+        protected ColorPalette _workingPalette;
+
         public abstract WiiPixelFormat RawFormat { get; }
         public abstract int BitsPerPixel { get; }
         public abstract int BlockWidth { get; }
         public abstract int BlockHeight { get; }
-        public bool IsIndexed => ((RawFormat == WiiPixelFormat.CI4) || (RawFormat == WiiPixelFormat.CI8));
+        public bool IsIndexed => RawFormat == WiiPixelFormat.CI4 || RawFormat == WiiPixelFormat.CI8;
 
-        protected ColorPalette _workingPalette;
+        public int GetMipOffset(int width, int height, int mipLevel)
+        {
+            return GetMipOffset(ref width, ref height, mipLevel);
+        }
 
-        public int GetMipOffset(int width, int height, int mipLevel) { return GetMipOffset(ref width, ref height, mipLevel); }
         public int GetMipOffset(ref int width, ref int height, int mipLevel)
         {
-            int offset = 0;
+            var offset = 0;
             while (mipLevel-- > 1)
             {
-                offset += ((width.Align(BlockWidth) * height.Align(BlockHeight)) * BitsPerPixel) >> 3;
+                offset += (width.Align(BlockWidth) * height.Align(BlockHeight) * BitsPerPixel) >> 3;
                 width = Math.Max(width >> 1, 1);
                 height = Math.Max(height >> 1, 1);
             }
+
             return offset;
         }
+
         public int GetFileSize(int width, int height, int mipLevels)
         {
             return GetMipOffset(width, height, mipLevels + 1);
         }
-        public virtual FileMap EncodeTPLTextureIndexed(Bitmap src, int numColors, WiiPaletteFormat format, QuantizationAlgorithm algorithm, out FileMap paletteFile)
+
+        public virtual FileMap EncodeTPLTextureIndexed(Bitmap src, int numColors, WiiPaletteFormat format,
+            QuantizationAlgorithm algorithm, out FileMap paletteFile)
         {
-            using (Bitmap indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
+            using (var indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
             {
                 return EncodeTPLTextureIndexed(indexed, 1, format, out paletteFile);
             }
         }
-        public virtual FileMap EncodeTextureIndexed(Bitmap src, int mipLevels, int numColors, WiiPaletteFormat format, QuantizationAlgorithm algorithm, out FileMap paletteFile)
+
+        public virtual FileMap EncodeTextureIndexed(Bitmap src, int mipLevels, int numColors, WiiPaletteFormat format,
+            QuantizationAlgorithm algorithm, out FileMap paletteFile)
         {
-            using (Bitmap indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
+            using (var indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
             {
                 return EncodeTEX0TextureIndexed(indexed, mipLevels, format, out paletteFile);
             }
         }
-        public virtual FileMap EncodeREFTTextureIndexed(Bitmap src, int mipLevels, int numColors, WiiPaletteFormat format, QuantizationAlgorithm algorithm)
+
+        public virtual FileMap EncodeREFTTextureIndexed(Bitmap src, int mipLevels, int numColors,
+            WiiPaletteFormat format, QuantizationAlgorithm algorithm)
         {
-            using (Bitmap indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
+            using (var indexed = src.Quantize(algorithm, numColors, RawFormat, format, null))
             {
                 return EncodeREFTTextureIndexed(indexed, mipLevels, format);
             }
         }
-        public virtual FileMap EncodeTPLTextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format, out FileMap paletteFile)
-        {
-            if (!src.IsIndexed())
-            {
-                throw new ArgumentException("Source image must be indexed.");
-            }
 
-            FileMap texMap = EncodeTPLTexture(src, mipLevels);
+        public virtual FileMap EncodeTPLTextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format,
+            out FileMap paletteFile)
+        {
+            if (!src.IsIndexed()) throw new ArgumentException("Source image must be indexed.");
+
+            var texMap = EncodeTPLTexture(src, mipLevels);
             paletteFile = EncodeTPLPalette(src.Palette, format);
             return texMap;
         }
+
         public virtual FileMap EncodeREFTTextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format)
         {
-            if (!src.IsIndexed())
-            {
-                throw new ArgumentException("Source image must be indexed.");
-            }
+            if (!src.IsIndexed()) throw new ArgumentException("Source image must be indexed.");
 
             return EncodeREFTTexture(src, mipLevels, format);
         }
-        public virtual FileMap EncodeTEX0TextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format, out FileMap paletteFile)
-        {
-            if (!src.IsIndexed())
-            {
-                throw new ArgumentException("Source image must be indexed.");
-            }
 
-            FileMap texMap = EncodeTEX0Texture(src, mipLevels);
+        public virtual FileMap EncodeTEX0TextureIndexed(Bitmap src, int mipLevels, WiiPaletteFormat format,
+            out FileMap paletteFile)
+        {
+            if (!src.IsIndexed()) throw new ArgumentException("Source image must be indexed.");
+
+            var texMap = EncodeTEX0Texture(src, mipLevels);
             paletteFile = EncodePLT0Palette(src.Palette, format);
             return texMap;
         }
@@ -103,64 +111,59 @@ namespace BrawlLib.Wii.Textures
             int w = src.Width, h = src.Height;
             int bw = BlockWidth, bh = BlockHeight;
 
-            ColorPalette pal = src.Palette;
+            var pal = src.Palette;
 
-            PixelFormat fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
+            var fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
 
-            FileMap fileView = FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + 0x20 + (pal != null ? (pal.Entries.Length * 2) : 0));
+            var fileView =
+                FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + 0x20 + (pal != null ? pal.Entries.Length * 2 : 0));
             try
             {
                 //Build REFT image header
-                REFTImageHeader* header = (REFTImageHeader*)fileView.Address;
-                *header = new REFTImageHeader((ushort)w, (ushort)h, (byte)RawFormat, (byte)format, (ushort)(pal != null ? pal.Entries.Length : 0), (uint)fileView.Length - 0x20 - (uint)(pal != null ? (pal.Entries.Length * 2) : 0), (byte)(mipLevels - 1));
+                var header = (REFTImageHeader*) fileView.Address;
+                *header = new REFTImageHeader((ushort) w, (ushort) h, (byte) RawFormat, (byte) format,
+                    (ushort) (pal != null ? pal.Entries.Length : 0),
+                    (uint) fileView.Length - 0x20 - (uint) (pal != null ? pal.Entries.Length * 2 : 0),
+                    (byte) (mipLevels - 1));
 
-                int sStep = bw * Image.GetPixelFormatSize(fmt) / 8;
-                int dStep = bw * bh * BitsPerPixel / 8;
+                var sStep = bw * Image.GetPixelFormatSize(fmt) / 8;
+                var dStep = bw * bh * BitsPerPixel / 8;
 
-                using (DIB dib = DIB.FromBitmap(src, bw, bh, fmt))
+                using (var dib = DIB.FromBitmap(src, bw, bh, fmt))
                 {
-                    for (int i = 1; i <= mipLevels; i++)
-                    {
-                        EncodeLevel((VoidPtr)header + 0x20, dib, src, dStep, sStep, i);
-                    }
+                    for (var i = 1; i <= mipLevels; i++)
+                        EncodeLevel((VoidPtr) header + 0x20, dib, src, dStep, sStep, i);
                 }
 
                 if (pal != null)
                 {
-                    int count = pal.Entries.Length;
+                    var count = pal.Entries.Length;
 
                     switch (format)
                     {
                         case WiiPaletteFormat.IA8:
-                            {
-                                IA8Pixel* dPtr = (IA8Pixel*)header->PaletteData;
-                                for (int i = 0; i < count; i++)
-                                {
-                                    dPtr[i] = (IA8Pixel)pal.Entries[i];
-                                }
+                        {
+                            var dPtr = (IA8Pixel*) header->PaletteData;
+                            for (var i = 0; i < count; i++) dPtr[i] = (IA8Pixel) pal.Entries[i];
 
-                                break;
-                            }
+                            break;
+                        }
+
                         case WiiPaletteFormat.RGB565:
-                            {
-                                wRGB565Pixel* dPtr = (wRGB565Pixel*)header->PaletteData;
-                                for (int i = 0; i < count; i++)
-                                {
-                                    dPtr[i] = (wRGB565Pixel)pal.Entries[i];
-                                }
+                        {
+                            var dPtr = (wRGB565Pixel*) header->PaletteData;
+                            for (var i = 0; i < count; i++) dPtr[i] = (wRGB565Pixel) pal.Entries[i];
 
-                                break;
-                            }
+                            break;
+                        }
+
                         case WiiPaletteFormat.RGB5A3:
-                            {
-                                wRGB5A3Pixel* dPtr = (wRGB5A3Pixel*)header->PaletteData;
-                                for (int i = 0; i < count; i++)
-                                {
-                                    dPtr[i] = (wRGB5A3Pixel)pal.Entries[i];
-                                }
+                        {
+                            var dPtr = (wRGB5A3Pixel*) header->PaletteData;
+                            for (var i = 0; i < count; i++) dPtr[i] = (wRGB5A3Pixel) pal.Entries[i];
 
-                                break;
-                            }
+                            break;
+                        }
                     }
                 }
 
@@ -192,22 +195,19 @@ namespace BrawlLib.Wii.Textures
                     break;
             }
 
-            FileMap fileView = FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + 0x40);
+            var fileView = FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + 0x40);
             try
             {
                 //Build TEX header
-                TEX0v1* header = (TEX0v1*)fileView.Address;
+                var header = (TEX0v1*) fileView.Address;
                 *header = new TEX0v1(w, h, RawFormat, mipLevels);
 
-                int sStep = bw * Image.GetPixelFormatSize(fmt) / 8;
-                int dStep = bw * bh * BitsPerPixel / 8;
+                var sStep = bw * Image.GetPixelFormatSize(fmt) / 8;
+                var dStep = bw * bh * BitsPerPixel / 8;
 
-                using (DIB dib = DIB.FromBitmap(src, bw, bh, fmt))
+                using (var dib = DIB.FromBitmap(src, bw, bh, fmt))
                 {
-                    for (int i = 1; i <= mipLevels; i++)
-                    {
-                        EncodeLevel(header->PixelData, dib, src, dStep, sStep, i);
-                    }
+                    for (var i = 1; i <= mipLevels; i++) EncodeLevel(header->PixelData, dib, src, dStep, sStep, i);
                 }
 
                 return fileView;
@@ -219,39 +219,37 @@ namespace BrawlLib.Wii.Textures
                 return null;
             }
         }
+
         public virtual FileMap EncodeTPLTexture(Bitmap src, int mipLevels)
         {
             int w = src.Width, h = src.Height;
             int bw = BlockWidth, bh = BlockHeight;
 
-            PixelFormat fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
+            var fmt = src.IsIndexed() ? src.PixelFormat : PixelFormat.Format32bppArgb;
 
-            FileMap fileView = FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + TPLTextureHeader.Size);
+            var fileView = FileMap.FromTempFile(GetFileSize(w, h, mipLevels) + TPLTextureHeader.Size);
             try
             {
                 //Build TPL header
-                TPLTextureHeader* tex = (TPLTextureHeader*)fileView.Address;
+                var tex = (TPLTextureHeader*) fileView.Address;
                 tex->_wrapS = 0;
                 tex->_wrapT = 0;
                 tex->_minFilter = 1;
                 tex->_magFilter = 1;
                 tex->_minLOD = 0;
-                tex->_maxLOD = (byte)(mipLevels - 1);
+                tex->_maxLOD = (byte) (mipLevels - 1);
                 tex->PixelFormat = RawFormat;
-                tex->_width = (ushort)w;
-                tex->_height = (ushort)h;
+                tex->_width = (ushort) w;
+                tex->_height = (ushort) h;
                 tex->_data = TPLTextureHeader.Size;
 
-                int sStep = bw * Image.GetPixelFormatSize(fmt) / 8;
-                int dStep = bw * bh * BitsPerPixel / 8;
-                VoidPtr baseAddr = fileView.Address;
+                var sStep = bw * Image.GetPixelFormatSize(fmt) / 8;
+                var dStep = bw * bh * BitsPerPixel / 8;
+                var baseAddr = fileView.Address;
 
-                using (DIB dib = DIB.FromBitmap(src, bw, bh, fmt))
+                using (var dib = DIB.FromBitmap(src, bw, bh, fmt))
                 {
-                    for (int i = 1; i <= mipLevels; i++)
-                    {
-                        EncodeLevel(baseAddr + tex->_data, dib, src, dStep, sStep, i);
-                    }
+                    for (var i = 1; i <= mipLevels; i++) EncodeLevel(baseAddr + tex->_data, dib, src, dStep, sStep, i);
                 }
 
                 return fileView;
@@ -270,7 +268,7 @@ namespace BrawlLib.Wii.Textures
             if (level != 1)
             {
                 dstAddr += GetMipOffset(ref mw, ref mh, level);
-                using (Bitmap mip = src.GenerateMip(level))
+                using (var mip = src.GenerateMip(level))
                 {
                     dib.ReadBitmap(mip, mw, mh);
                 }
@@ -279,64 +277,68 @@ namespace BrawlLib.Wii.Textures
             mw = mw.Align(BlockWidth);
             mh = mh.Align(BlockHeight);
 
-            int bStride = mw * BitsPerPixel / 8;
-            for (int y = 0; y < mh; y += BlockHeight)
+            var bStride = mw * BitsPerPixel / 8;
+            for (var y = 0; y < mh; y += BlockHeight)
             {
-                VoidPtr sPtr = (int)dib.Scan0 + (y * dib.Stride);
-                VoidPtr dPtr = dstAddr + (y * bStride);
-                for (int x = 0; x < mw; x += BlockWidth, dPtr += dStep, sPtr += sStep)
-                {
-                    EncodeBlock((ARGBPixel*)sPtr, dPtr, aw);
-                }
+                VoidPtr sPtr = (int) dib.Scan0 + y * dib.Stride;
+                var dPtr = dstAddr + y * bStride;
+                for (var x = 0; x < mw; x += BlockWidth, dPtr += dStep, sPtr += sStep)
+                    EncodeBlock((ARGBPixel*) sPtr, dPtr, aw);
             }
         }
 
         protected abstract void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width);
 
-        public Bitmap DecodeTexture(TEX0v1* texture) { return DecodeTexture(texture, 1); }
+        public Bitmap DecodeTexture(TEX0v1* texture)
+        {
+            return DecodeTexture(texture, 1);
+        }
+
         public virtual Bitmap DecodeTexture(TEX0v1* texture, int mipLevel)
         {
-            int w = (ushort)texture->_width, h = (ushort)texture->_height;
-            VoidPtr addr = texture->PixelData + GetMipOffset(ref w, ref h, mipLevel);
+            int w = (ushort) texture->_width, h = (ushort) texture->_height;
+            var addr = texture->PixelData + GetMipOffset(ref w, ref h, mipLevel);
             int aw = w.Align(BlockWidth), ah = h.Align(BlockHeight);
 
-            using (DIB dib = new DIB(w, h, BlockWidth, BlockHeight, PixelFormat.Format32bppArgb))
+            using (var dib = new DIB(w, h, BlockWidth, BlockHeight, PixelFormat.Format32bppArgb))
             {
-                int sStep = BlockWidth * BlockHeight * BitsPerPixel / 8;
-                int bStride = aw * BitsPerPixel / 8;
-                for (int y = 0; y < ah; y += BlockHeight)
+                var sStep = BlockWidth * BlockHeight * BitsPerPixel / 8;
+                var bStride = aw * BitsPerPixel / 8;
+                for (var y = 0; y < ah; y += BlockHeight)
                 {
-                    ARGBPixel* dPtr = (ARGBPixel*)dib.Scan0 + (y * aw);
-                    VoidPtr sPtr = addr + (y * bStride);
-                    for (int x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
-                    {
+                    var dPtr = (ARGBPixel*) dib.Scan0 + y * aw;
+                    var sPtr = addr + y * bStride;
+                    for (var x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
                         DecodeBlock(sPtr, dPtr, aw);
-                    }
                 }
+
                 return dib.ToBitmap();
             }
         }
 
-        public static Bitmap Decode(VoidPtr addr, int w, int h, int mipLevel, WiiPixelFormat fmt) { return Get(fmt).DecodeTexture(addr, w, h, mipLevel); }
+        public static Bitmap Decode(VoidPtr addr, int w, int h, int mipLevel, WiiPixelFormat fmt)
+        {
+            return Get(fmt).DecodeTexture(addr, w, h, mipLevel);
+        }
+
         public virtual Bitmap DecodeTexture(VoidPtr addr, int w, int h, int mipLevel)
         {
             addr += GetMipOffset(ref w, ref h, mipLevel);
 
             int aw = w.Align(BlockWidth), ah = h.Align(BlockHeight);
 
-            using (DIB dib = new DIB(w, h, BlockWidth, BlockHeight, PixelFormat.Format32bppArgb))
+            using (var dib = new DIB(w, h, BlockWidth, BlockHeight, PixelFormat.Format32bppArgb))
             {
-                int sStep = BlockWidth * BlockHeight * BitsPerPixel / 8;
-                int bStride = aw * BitsPerPixel / 8;
-                for (int y = 0; y < ah; y += BlockHeight)
+                var sStep = BlockWidth * BlockHeight * BitsPerPixel / 8;
+                var bStride = aw * BitsPerPixel / 8;
+                for (var y = 0; y < ah; y += BlockHeight)
                 {
-                    ARGBPixel* dPtr = (ARGBPixel*)dib.Scan0 + (y * aw);
-                    VoidPtr sPtr = addr + (y * bStride);
-                    for (int x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
-                    {
+                    var dPtr = (ARGBPixel*) dib.Scan0 + y * aw;
+                    var sPtr = addr + y * bStride;
+                    for (var x = 0; x < aw; x += BlockWidth, dPtr += BlockWidth, sPtr += sStep)
                         DecodeBlock(sPtr, dPtr, aw);
-                    }
                 }
+
                 return dib.ToBitmap();
             }
         }
@@ -345,17 +347,32 @@ namespace BrawlLib.Wii.Textures
         {
             return DecodeTextureIndexed(texture, DecodePalette(palette), mipLevel);
         }
+
         public virtual Bitmap DecodeTextureIndexed(TEX0v1* texture, ColorPalette palette, int mipLevel)
         {
             _workingPalette = palette;
-            try { return DecodeTexture(texture, mipLevel); }
-            finally { _workingPalette = null; }
+            try
+            {
+                return DecodeTexture(texture, mipLevel);
+            }
+            finally
+            {
+                _workingPalette = null;
+            }
         }
-        public virtual Bitmap DecodeTextureIndexed(VoidPtr addr, int w, int h, ColorPalette palette, int mipLevel, WiiPixelFormat fmt)
+
+        public virtual Bitmap DecodeTextureIndexed(VoidPtr addr, int w, int h, ColorPalette palette, int mipLevel,
+            WiiPixelFormat fmt)
         {
             _workingPalette = palette;
-            try { return Decode(addr, w, h, mipLevel, fmt); }
-            finally { _workingPalette = null; }
+            try
+            {
+                return Decode(addr, w, h, mipLevel, fmt);
+            }
+            finally
+            {
+                _workingPalette = null;
+            }
         }
 
         protected abstract void DecodeBlock(VoidPtr blockAddr, ARGBPixel* destAddr, int width);
@@ -375,19 +392,37 @@ namespace BrawlLib.Wii.Textures
                 case WiiPixelFormat.CMPR: return CMPR;
                 case WiiPixelFormat.RGBA8: return RGBA8;
             }
+
             return null;
         }
 
-        public static Bitmap Decode(TEX0v1* texture, int mipLevel) { return Get(texture->PixelFormat).DecodeTexture(texture, mipLevel); }
-        public static Bitmap DecodeIndexed(TEX0v1* texture, PLT0v1* palette, int mipLevel) { return Get(texture->PixelFormat).DecodeTextureIndexed(texture, palette, mipLevel); }
-        public static Bitmap DecodeIndexed(TEX0v1* texture, ColorPalette palette, int mipLevel) { return Get(texture->PixelFormat).DecodeTextureIndexed(texture, palette, mipLevel); }
-        public static Bitmap DecodeIndexed(VoidPtr addr, int w, int h, ColorPalette palette, int mipLevel, WiiPixelFormat fmt) { return Get(fmt).DecodeTextureIndexed(addr, w, h, palette, mipLevel, fmt); }
+        public static Bitmap Decode(TEX0v1* texture, int mipLevel)
+        {
+            return Get(texture->PixelFormat).DecodeTexture(texture, mipLevel);
+        }
+
+        public static Bitmap DecodeIndexed(TEX0v1* texture, PLT0v1* palette, int mipLevel)
+        {
+            return Get(texture->PixelFormat).DecodeTextureIndexed(texture, palette, mipLevel);
+        }
+
+        public static Bitmap DecodeIndexed(TEX0v1* texture, ColorPalette palette, int mipLevel)
+        {
+            return Get(texture->PixelFormat).DecodeTextureIndexed(texture, palette, mipLevel);
+        }
+
+        public static Bitmap DecodeIndexed(VoidPtr addr, int w, int h, ColorPalette palette, int mipLevel,
+            WiiPixelFormat fmt)
+        {
+            return Get(fmt).DecodeTextureIndexed(addr, w, h, palette, mipLevel, fmt);
+        }
+
         public static FileMap EncodePLT0Palette(ColorPalette pal, WiiPaletteFormat format)
         {
-            FileMap fileView = FileMap.FromTempFile((pal.Entries.Length * 2) + 0x40);
+            var fileView = FileMap.FromTempFile(pal.Entries.Length * 2 + 0x40);
             try
             {
-                PLT0v1* header = (PLT0v1*)fileView.Address;
+                var header = (PLT0v1*) fileView.Address;
                 *header = new PLT0v1(pal.Entries.Length, format);
 
                 EncodePalette(fileView.Address + 0x40, pal, format);
@@ -402,14 +437,15 @@ namespace BrawlLib.Wii.Textures
                 //return null;
             }
         }
+
         public static FileMap EncodeTPLPalette(ColorPalette pal, WiiPaletteFormat format)
         {
-            FileMap fileView = FileMap.FromTempFile((pal.Entries.Length * 2) + 0xC);
+            var fileView = FileMap.FromTempFile(pal.Entries.Length * 2 + 0xC);
             try
             {
-                TPLPaletteHeader* header = (TPLPaletteHeader*)fileView.Address;
-                header->_format = (uint)format;
-                header->_numEntries = (ushort)pal.Entries.Length;
+                var header = (TPLPaletteHeader*) fileView.Address;
+                header->_format = (uint) format;
+                header->_numEntries = (ushort) pal.Entries.Length;
                 header->_data = 0xC;
 
                 EncodePalette(fileView.Address + 0xC, pal, format);
@@ -424,9 +460,10 @@ namespace BrawlLib.Wii.Textures
                 //return null;
             }
         }
+
         public static FileMap EncodePalette(ColorPalette pal, WiiPaletteFormat format)
         {
-            FileMap fileView = FileMap.FromTempFile((pal.Entries.Length * 2));
+            var fileView = FileMap.FromTempFile(pal.Entries.Length * 2);
             try
             {
                 EncodePalette(fileView.Address, pal, format);
@@ -441,121 +478,103 @@ namespace BrawlLib.Wii.Textures
                 //return null;
             }
         }
+
         public static void EncodePalette(VoidPtr destAddr, ColorPalette pal, WiiPaletteFormat format)
         {
-            int count = pal.Entries.Length;
+            var count = pal.Entries.Length;
 
             switch (format)
             {
                 case WiiPaletteFormat.IA8:
-                    {
-                        IA8Pixel* dPtr = (IA8Pixel*)destAddr;
-                        for (int i = 0; i < count; i++)
-                        {
-                            dPtr[i] = (IA8Pixel)pal.Entries[i];
-                        }
+                {
+                    var dPtr = (IA8Pixel*) destAddr;
+                    for (var i = 0; i < count; i++) dPtr[i] = (IA8Pixel) pal.Entries[i];
 
-                        break;
-                    }
+                    break;
+                }
+
                 case WiiPaletteFormat.RGB565:
-                    {
-                        wRGB565Pixel* dPtr = (wRGB565Pixel*)destAddr;
-                        for (int i = 0; i < count; i++)
-                        {
-                            dPtr[i] = (wRGB565Pixel)pal.Entries[i];
-                        }
+                {
+                    var dPtr = (wRGB565Pixel*) destAddr;
+                    for (var i = 0; i < count; i++) dPtr[i] = (wRGB565Pixel) pal.Entries[i];
 
-                        break;
-                    }
+                    break;
+                }
+
                 case WiiPaletteFormat.RGB5A3:
-                    {
-                        wRGB5A3Pixel* dPtr = (wRGB5A3Pixel*)destAddr;
-                        for (int i = 0; i < count; i++)
-                        {
-                            dPtr[i] = (wRGB5A3Pixel)pal.Entries[i];
-                        }
+                {
+                    var dPtr = (wRGB5A3Pixel*) destAddr;
+                    for (var i = 0; i < count; i++) dPtr[i] = (wRGB5A3Pixel) pal.Entries[i];
 
-                        break;
-                    }
+                    break;
+                }
             }
         }
 
         public static ColorPalette DecodePalette(PLT0v1* palette)
         {
             int count = palette->_numEntries;
-            ColorPalette pal = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.HasAlpha, count);
+            var pal = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.HasAlpha, count);
             switch (palette->PaletteFormat)
             {
                 case WiiPaletteFormat.IA8:
-                    {
-                        IA8Pixel* sPtr = (IA8Pixel*)palette->PaletteData;
-                        for (int i = 0; i < count; i++)
-                        {
-                            pal.Entries[i] = (Color)sPtr[i];
-                        }
+                {
+                    var sPtr = (IA8Pixel*) palette->PaletteData;
+                    for (var i = 0; i < count; i++) pal.Entries[i] = (Color) sPtr[i];
 
-                        break;
-                    }
+                    break;
+                }
+
                 case WiiPaletteFormat.RGB565:
-                    {
-                        wRGB565Pixel* sPtr = (wRGB565Pixel*)palette->PaletteData;
-                        for (int i = 0; i < count; i++)
-                        {
-                            pal.Entries[i] = (Color)sPtr[i];
-                        }
+                {
+                    var sPtr = (wRGB565Pixel*) palette->PaletteData;
+                    for (var i = 0; i < count; i++) pal.Entries[i] = (Color) sPtr[i];
 
-                        break;
-                    }
+                    break;
+                }
+
                 case WiiPaletteFormat.RGB5A3:
-                    {
-                        wRGB5A3Pixel* sPtr = (wRGB5A3Pixel*)palette->PaletteData;
-                        for (int i = 0; i < count; i++)
-                        {
-                            pal.Entries[i] = (Color)(ARGBPixel)sPtr[i];
-                        }
+                {
+                    var sPtr = (wRGB5A3Pixel*) palette->PaletteData;
+                    for (var i = 0; i < count; i++) pal.Entries[i] = (Color) (ARGBPixel) sPtr[i];
 
-                        break;
-                    }
+                    break;
+                }
             }
+
             return pal;
         }
 
         public static ColorPalette DecodePalette(VoidPtr address, int count, WiiPaletteFormat format)
         {
-            ColorPalette pal = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.HasAlpha, count);
+            var pal = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.HasAlpha, count);
             switch (format)
             {
                 case WiiPaletteFormat.IA8:
-                    {
-                        IA8Pixel* sPtr = (IA8Pixel*)address;
-                        for (int i = 0; i < count; i++)
-                        {
-                            pal.Entries[i] = (Color)sPtr[i];
-                        }
+                {
+                    var sPtr = (IA8Pixel*) address;
+                    for (var i = 0; i < count; i++) pal.Entries[i] = (Color) sPtr[i];
 
-                        break;
-                    }
+                    break;
+                }
+
                 case WiiPaletteFormat.RGB565:
-                    {
-                        wRGB565Pixel* sPtr = (wRGB565Pixel*)address;
-                        for (int i = 0; i < count; i++)
-                        {
-                            pal.Entries[i] = (Color)sPtr[i];
-                        }
+                {
+                    var sPtr = (wRGB565Pixel*) address;
+                    for (var i = 0; i < count; i++) pal.Entries[i] = (Color) sPtr[i];
 
-                        break;
-                    }
+                    break;
+                }
+
                 case WiiPaletteFormat.RGB5A3:
-                    {
-                        wRGB5A3Pixel* sPtr = (wRGB5A3Pixel*)address;
-                        for (int i = 0; i < count; i++)
-                        {
-                            pal.Entries[i] = (Color)(ARGBPixel)sPtr[i];
-                        }
+                {
+                    var sPtr = (wRGB5A3Pixel*) address;
+                    for (var i = 0; i < count; i++) pal.Entries[i] = (Color) (ARGBPixel) sPtr[i];
 
-                        break;
-                    }
+                    break;
+                }
             }
+
             return pal;
         }
     }

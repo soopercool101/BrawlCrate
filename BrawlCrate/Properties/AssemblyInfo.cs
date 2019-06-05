@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Windows.Media;
+
 [assembly: AssemblyTrademark(@"Characters are copyrighted by the following:
 © Nintendo / HAL Laboratory, Inc. / Pokemon / Creatures Inc. / GAME FREAK Inc. / SHIGESATO ITOI / APE Inc. / INTELLIGENT SYSTEMS / Konami Digital Entertainment Co., Ltd. / SEGA")]
 
@@ -12,4 +14,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("aa25c3c0-9c54-4fd2-81bc-96efb4953a7b")]
 
 // This prevents resizes on monitors with different DPIs
-[assembly: System.Windows.Media.DisableDpiAwareness]
+[assembly: DisableDpiAwareness]

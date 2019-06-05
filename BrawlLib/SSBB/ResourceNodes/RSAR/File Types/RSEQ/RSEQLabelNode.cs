@@ -1,29 +1,32 @@
-﻿using BrawlLib.SSBBTypes;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSEQLabelNode : ResourceNode
     {
-        internal LABLEntry* Header => (LABLEntry*)WorkingUncompressed.Address;
-
         private uint _id;
+        internal LABLEntry* Header => (LABLEntry*) WorkingUncompressed.Address;
 
         [Category("RSEQ Label")] //Matches with RSAR Sound Part2 pack index
-        public uint Id { get => _id; set { _id = value; SignalPropertyChange(); } }
+        public uint Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
             if (_name == null)
             {
                 if (Header->_stringLength > 0)
-                {
                     _name = Header->Name;
-                }
                 else
-                {
                     _name = string.Format("Label[{0}]", Index);
-                }
             }
 
             _id = Header->_id;

@@ -7,7 +7,8 @@
             InitializeComponent();
         }
 
-        public int NewValue => (int)numNewCount.Value;
+        public int NewValue => (int) numNewCount.Value;
+
         public DialogResult ShowDialog(int frameCount)
         {
             lblPrevCount.Text = (numNewCount.Value = frameCount).ToString();

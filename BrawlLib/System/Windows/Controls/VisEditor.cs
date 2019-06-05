@@ -1,11 +1,214 @@
-﻿using BrawlLib.SSBB;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
+using BrawlLib.SSBB;
 
 namespace System.Windows.Forms
 {
     public class VisEditor : UserControl
     {
+        private static readonly Font _renderFont = new Font(FontFamily.GenericMonospace, 9.0f);
+
+        private IBoolArraySource _targetNode;
+
+        public bool _updating;
+
+        //public VIS0Editor _mainWindow;
+
+        public EventHandler EntryChanged;
+        public EventHandler IndexChanged;
+
+        public VisEditor()
+        {
+            InitializeComponent();
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IBoolArraySource TargetNode
+        {
+            get => _targetNode;
+            set
+            {
+                _targetNode = value;
+                TargetChanged();
+            }
+        }
+
+        private void TargetChanged()
+        {
+            listBox1.BeginUpdate();
+            listBox1.Items.Clear();
+
+            if (_targetNode != null)
+                for (var i = 0; i < _targetNode.EntryCount; i++)
+                    listBox1.Items.Add(_targetNode.GetEntry(i));
+
+            listBox1.EndUpdate();
+        }
+
+        private void Toggle()
+        {
+            listBox1.BeginUpdate();
+
+            var indices = new int[listBox1.SelectedIndices.Count];
+            listBox1.SelectedIndices.CopyTo(indices, 0);
+            foreach (var i in indices)
+            {
+                var val = !(bool) listBox1.Items[i];
+                listBox1.Items[i] = val;
+                _targetNode.SetEntry(i, val);
+            }
+
+            foreach (var i in indices) listBox1.SelectedIndices.Add(i);
+
+            listBox1.EndUpdate();
+
+            EntryChanged?.Invoke(this, null);
+        }
+
+        private void Clear()
+        {
+            listBox1.BeginUpdate();
+
+            var indices = new int[listBox1.SelectedIndices.Count];
+            listBox1.SelectedIndices.CopyTo(indices, 0);
+            foreach (var i in indices)
+            {
+                listBox1.Items[i] = false;
+                _targetNode.SetEntry(i, false);
+            }
+
+            foreach (var i in indices) listBox1.SelectedIndices.Add(i);
+
+            listBox1.EndUpdate();
+
+            EntryChanged?.Invoke(this, null);
+        }
+
+        private void Set()
+        {
+            listBox1.BeginUpdate();
+
+            var indices = new int[listBox1.SelectedIndices.Count];
+            listBox1.SelectedIndices.CopyTo(indices, 0);
+            foreach (var i in indices)
+            {
+                listBox1.Items[i] = true;
+                _targetNode.SetEntry(i, true);
+            }
+
+            foreach (var i in indices) listBox1.SelectedIndices.Add(i);
+
+            listBox1.EndUpdate();
+
+            EntryChanged?.Invoke(this, null);
+        }
+
+        private void SelectAll()
+        {
+            listBox1.BeginUpdate();
+            _updating = true;
+            for (var i = 0; i < listBox1.Items.Count; i++) listBox1.SelectedIndices.Add(i);
+
+            _updating = false;
+            listBox1.EndUpdate();
+        }
+
+        private void SelectInverse()
+        {
+            listBox1.BeginUpdate();
+            _updating = true;
+            int x;
+            var count = listBox1.SelectedIndices.Count;
+            var indices = new int[count];
+
+            listBox1.SelectedIndices.CopyTo(indices, 0);
+            listBox1.SelectedIndices.Clear();
+
+            for (var i = 0; i < listBox1.Items.Count; i++)
+            {
+                for (x = 0; x < count; x++)
+                    if (indices[x] == i)
+                        break;
+
+                if (x >= count) listBox1.SelectedIndices.Add(i);
+            }
+
+            _updating = false;
+            listBox1.EndUpdate();
+        }
+
+        private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var g = e.Graphics;
+            var r = e.Bounds;
+            var index = e.Index;
+
+            g.FillRectangle(Brushes.White, r);
+            if (index >= 0)
+            {
+                if ((e.State & DrawItemState.Selected) != 0)
+                    g.FillRectangle(Brushes.LightBlue, r.X, r.Y, 210, r.Height);
+
+                g.DrawString(string.Format(" [{0:d2}]", index), _renderFont, Brushes.Black, 4.0f, e.Bounds.Y - 4);
+
+                r.X += 100;
+                r.Width = 30;
+
+                if ((bool) listBox1.Items[index])
+                {
+                    g.FillRectangle(Brushes.Gray, r);
+                    g.DrawString("✔", new Font("", 7), Brushes.Black, r.X + 9, r.Y - 1);
+                }
+
+                g.DrawRectangle(Pens.Black, r);
+            }
+        }
+
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) Toggle();
+        }
+
+        private void listBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) Toggle();
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            SelectAll();
+        }
+
+        private void btnInvert_Click(object sender, EventArgs e)
+        {
+            SelectInverse();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+            Set();
+        }
+
+        private void btnToggle_Click(object sender, EventArgs e)
+        {
+            Toggle();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_updating) return;
+
+            IndexChanged?.Invoke(this, null);
+            //if (_mainWindow != null && !_updating)
+            //    _mainWindow._mainWindow.SetFrame(listBox1.SelectedIndex);
+        }
+
         #region Designer
 
         public ListBox listBox1;
@@ -40,10 +243,10 @@ namespace System.Windows.Forms
             listBox1.SelectionMode = SelectionMode.MultiExtended;
             listBox1.Size = new Drawing.Size(310, 264);
             listBox1.TabIndex = 0;
-            listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
-            listBox1.KeyDown += new KeyEventHandler(listBox1_KeyDown);
-            listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_MouseDoubleClick);
+            listBox1.DrawItem += listBox1_DrawItem;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.KeyDown += listBox1_KeyDown;
+            listBox1.MouseDoubleClick += listBox1_MouseDoubleClick;
             // 
             // panel1
             // 
@@ -60,36 +263,36 @@ namespace System.Windows.Forms
             // 
             // btnToggle
             // 
-            btnToggle.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnToggle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnToggle.Location = new Drawing.Point(257, 0);
             btnToggle.Name = "btnToggle";
             btnToggle.Size = new Drawing.Size(50, 20);
             btnToggle.TabIndex = 5;
             btnToggle.Text = "&Toggle";
             btnToggle.UseVisualStyleBackColor = true;
-            btnToggle.Click += new EventHandler(btnToggle_Click);
+            btnToggle.Click += btnToggle_Click;
             // 
             // btnSet
             // 
-            btnSet.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnSet.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSet.Location = new Drawing.Point(206, 0);
             btnSet.Name = "btnSet";
             btnSet.Size = new Drawing.Size(50, 20);
             btnSet.TabIndex = 4;
             btnSet.Text = "&Set";
             btnSet.UseVisualStyleBackColor = true;
-            btnSet.Click += new EventHandler(btnSet_Click);
+            btnSet.Click += btnSet_Click;
             // 
             // btnClear
             // 
-            btnClear.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClear.Location = new Drawing.Point(155, 0);
             btnClear.Name = "btnClear";
             btnClear.Size = new Drawing.Size(50, 20);
             btnClear.TabIndex = 3;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += new EventHandler(btnClear_Click);
+            btnClear.Click += btnClear_Click;
             // 
             // btnInvert
             // 
@@ -99,7 +302,7 @@ namespace System.Windows.Forms
             btnInvert.TabIndex = 2;
             btnInvert.Text = "&Invert";
             btnInvert.UseVisualStyleBackColor = true;
-            btnInvert.Click += new EventHandler(btnInvert_Click);
+            btnInvert.Click += btnInvert_Click;
             // 
             // btnAll
             // 
@@ -109,7 +312,7 @@ namespace System.Windows.Forms
             btnAll.TabIndex = 1;
             btnAll.Text = "Select &All";
             btnAll.UseVisualStyleBackColor = true;
-            btnAll.Click += new EventHandler(btnAll_Click);
+            btnAll.Click += btnAll_Click;
             // 
             // VisEditor
             // 
@@ -119,206 +322,8 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(310, 284);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        //public VIS0Editor _mainWindow;
-
-        public EventHandler EntryChanged;
-        public EventHandler IndexChanged;
-
-        private IBoolArraySource _targetNode;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoolArraySource TargetNode
-        {
-            get => _targetNode;
-            set { _targetNode = value; TargetChanged(); }
-        }
-
-        public VisEditor() { InitializeComponent(); }
-
-        private void TargetChanged()
-        {
-            listBox1.BeginUpdate();
-            listBox1.Items.Clear();
-
-            if (_targetNode != null)
-            {
-                for (int i = 0; i < _targetNode.EntryCount; i++)
-                {
-                    listBox1.Items.Add(_targetNode.GetEntry(i));
-                }
-            }
-
-            listBox1.EndUpdate();
-        }
-
-        private void Toggle()
-        {
-            listBox1.BeginUpdate();
-
-            int[] indices = new int[listBox1.SelectedIndices.Count];
-            listBox1.SelectedIndices.CopyTo(indices, 0);
-            foreach (int i in indices)
-            {
-                bool val = !(bool)listBox1.Items[i];
-                listBox1.Items[i] = val;
-                _targetNode.SetEntry(i, val);
-            }
-            foreach (int i in indices)
-            {
-                listBox1.SelectedIndices.Add(i);
-            }
-
-            listBox1.EndUpdate();
-
-            EntryChanged?.Invoke(this, null);
-        }
-        private void Clear()
-        {
-            listBox1.BeginUpdate();
-
-            int[] indices = new int[listBox1.SelectedIndices.Count];
-            listBox1.SelectedIndices.CopyTo(indices, 0);
-            foreach (int i in indices)
-            {
-                listBox1.Items[i] = false;
-                _targetNode.SetEntry(i, false);
-            }
-            foreach (int i in indices)
-            {
-                listBox1.SelectedIndices.Add(i);
-            }
-
-            listBox1.EndUpdate();
-
-            EntryChanged?.Invoke(this, null);
-        }
-        private void Set()
-        {
-            listBox1.BeginUpdate();
-
-            int[] indices = new int[listBox1.SelectedIndices.Count];
-            listBox1.SelectedIndices.CopyTo(indices, 0);
-            foreach (int i in indices)
-            {
-                listBox1.Items[i] = true;
-                _targetNode.SetEntry(i, true);
-            }
-            foreach (int i in indices)
-            {
-                listBox1.SelectedIndices.Add(i);
-            }
-
-            listBox1.EndUpdate();
-
-            EntryChanged?.Invoke(this, null);
-        }
-        private void SelectAll()
-        {
-            listBox1.BeginUpdate();
-            _updating = true;
-            for (int i = 0; i < listBox1.Items.Count; i++)
-            {
-                listBox1.SelectedIndices.Add(i);
-            }
-
-            _updating = false;
-            listBox1.EndUpdate();
-        }
-        private void SelectInverse()
-        {
-            listBox1.BeginUpdate();
-            _updating = true;
-            int x;
-            int count = listBox1.SelectedIndices.Count;
-            int[] indices = new int[count];
-
-            listBox1.SelectedIndices.CopyTo(indices, 0);
-            listBox1.SelectedIndices.Clear();
-
-            for (int i = 0; i < listBox1.Items.Count; i++)
-            {
-                for (x = 0; x < count; x++)
-                {
-                    if (indices[x] == i)
-                    {
-                        break;
-                    }
-                }
-
-                if (x >= count)
-                {
-                    listBox1.SelectedIndices.Add(i);
-                }
-            }
-            _updating = false;
-            listBox1.EndUpdate();
-        }
-
-        private static readonly Font _renderFont = new Font(FontFamily.GenericMonospace, 9.0f);
-        private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            Rectangle r = e.Bounds;
-            int index = e.Index;
-
-            g.FillRectangle(Brushes.White, r);
-            if (index >= 0)
-            {
-                if ((e.State & DrawItemState.Selected) != 0)
-                {
-                    g.FillRectangle(Brushes.LightBlue, r.X, r.Y, 210, r.Height);
-                }
-
-                g.DrawString(string.Format(" [{0:d2}]", index), _renderFont, Brushes.Black, 4.0f, e.Bounds.Y - 4);
-
-                r.X += 100;
-                r.Width = 30;
-
-                if ((bool)listBox1.Items[index])
-                {
-                    g.FillRectangle(Brushes.Gray, r);
-                    g.DrawString("✔", new Font("", 7), Brushes.Black, r.X + 9, r.Y - 1);
-                }
-
-                g.DrawRectangle(Pens.Black, r);
-            }
-        }
-
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Toggle();
-            }
-        }
-        private void listBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Toggle();
-            }
-        }
-        private void btnAll_Click(object sender, EventArgs e) { SelectAll(); }
-        private void btnInvert_Click(object sender, EventArgs e) { SelectInverse(); }
-        private void btnClear_Click(object sender, EventArgs e) { Clear(); }
-        private void btnSet_Click(object sender, EventArgs e) { Set(); }
-        private void btnToggle_Click(object sender, EventArgs e) { Toggle(); }
-
-        public bool _updating = false;
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_updating)
-            {
-                return;
-            }
-
-            IndexChanged?.Invoke(this, null);
-            //if (_mainWindow != null && !_updating)
-            //    _mainWindow._mainWindow.SetFrame(listBox1.SelectedIndex);
-        }
     }
 }

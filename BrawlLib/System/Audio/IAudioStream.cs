@@ -13,8 +13,8 @@
         int SamplePosition { get; set; }
 
         /// <summary>
-        /// Reads numSamples audio samples into the address specified by destAddr.
-        /// This method does not observe loop points and does not loop automatically.
+        ///     Reads numSamples audio samples into the address specified by destAddr.
+        ///     This method does not observe loop points and does not loop automatically.
         /// </summary>
         /// <param name="destAddr">The address at which to start writing samples.</param>
         /// <param name="numSamples">The maximum number of samples to read.</param>

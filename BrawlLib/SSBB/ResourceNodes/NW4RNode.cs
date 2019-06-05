@@ -1,21 +1,20 @@
-﻿using BrawlLib.SSBBTypes;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class NW4RNode : ResourceNode
     {
-        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*)WorkingUncompressed.Address;
-
-        [Category("NW4R Node")]
-        public byte VersionMajor => _major;
-        [Category("NW4R Node")]
-        public byte VersionMinor => _minor;
+        internal Endian _endian;
+        internal int _length;
         internal byte _minor, _major;
 
         internal string _tag;
-        internal int _length;
-        internal Endian _endian;
+        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*) WorkingUncompressed.Address;
+
+        [Category("NW4R Node")] public byte VersionMajor => _major;
+
+        [Category("NW4R Node")] public byte VersionMinor => _minor;
 
         public override bool OnInitialize()
         {
@@ -31,17 +30,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class NW4RArcEntryNode : ARCEntryNode
     {
-        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*)WorkingUncompressed.Address;
-
-        [Category("NW4R Node")]
-        public byte VersionMajor => _major;
-        [Category("NW4R Node")]
-        public byte VersionMinor => _minor;
+        internal Endian _endian;
+        internal int _length;
         internal byte _minor, _major;
 
         internal string _tag;
-        internal int _length;
-        internal Endian _endian;
+        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*) WorkingUncompressed.Address;
+
+        [Category("NW4R Node")] public byte VersionMajor => _major;
+
+        [Category("NW4R Node")] public byte VersionMinor => _minor;
 
         public override bool OnInitialize()
         {
@@ -62,10 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is NW4RNode))
-                {
-                    ;
-                }
+                while ((n = n.Parent) != null && !(n is NW4RNode)) ;
 
                 return n as NW4RNode;
             }

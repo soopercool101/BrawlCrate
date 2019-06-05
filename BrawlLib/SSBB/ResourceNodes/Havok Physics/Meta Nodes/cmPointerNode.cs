@@ -1,39 +1,40 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Xml;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmPointerNode : ClassMemberInstanceNode
     {
-        public override int GetSize() { return 4; }
+        public override int GetSize()
+        {
+            return 4;
+        }
 
         public override bool OnInitialize()
         {
-            if (_name == null || _name == "<null>")
-            {
-                _name = "Pointer" + Index;
-            }
+            if (_name == null || _name == "<null>") _name = "Pointer" + Index;
 
-            return *(bint*)Data != 0;
+            return *(bint*) Data != 0;
         }
 
         public override void OnPopulate()
         {
-            VoidPtr dataPtr = ((bint*)Data)->OffsetAddress;
+            var dataPtr = ((bint*) Data)->OffsetAddress;
             switch (_memberType)
             {
                 case hkClassMember.Type.TYPE_STRUCT:
                     new HavokMetaObjectNode(_classNode)
-                    .Initialize(this, dataPtr, _classNode.Size);
+                        .Initialize(this, dataPtr, _classNode.Size);
                     break;
                 case hkClassMember.Type.TYPE_ENUM:
                 case hkClassMember.Type.TYPE_FLAGS:
-                    new cmEnumNode()
-                    {
-                        _enumNode = _enumNode
-                    }
-                    .Initialize(this, dataPtr, (int)_memberFlags & 0x3F);
+                    new cmEnumNode
+                        {
+                            _enumNode = _enumNode
+                        }
+                        .Initialize(this, dataPtr, (int) _memberFlags & 0x3F);
                     break;
                 case hkClassMember.Type.TYPE_ARRAY:
                 case hkClassMember.Type.TYPE_HOMOGENEOUSARRAY:
@@ -43,7 +44,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     Console.WriteLine("This shouldn't happen");
                     break;
                 default:
-                    ClassMemberInstanceNode instance = HavokMetaObjectNode.TryGetMember(_memberType);
+                    var instance = HavokMetaObjectNode.TryGetMember(_memberType);
                     if (instance != null)
                     {
                         instance._isZero = false;
@@ -55,6 +56,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         instance.Initialize(this, dataPtr, instance.GetSize());
                     }
+
                     break;
             }
         }
@@ -66,22 +68,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-
         }
 
-        public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
+        public override void WriteParams(XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
             if (Children.Count > 0)
             {
-                HavokClassNode n = Children[0] as HavokClassNode;
+                var n = Children[0] as HavokClassNode;
                 if (n is HavokMetaObjectNode || n is hkClassNode)
-                {
                     writer.WriteString(HavokXML.GetObjectName(classNodes, n));
-                }
                 else
-                {
                     n.WriteParams(writer, classNodes);
-                }
             }
         }
     }

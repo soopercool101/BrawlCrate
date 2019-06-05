@@ -1,51 +1,36 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.Wii.Animations;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Wii.Animations;
 
 namespace System.Windows.Forms
 {
     public class SCN0FogEditControl : UserControl
     {
-        private int _numFrames;
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[2];
+        private FogAnimationFrame _currentFrame = FogAnimationFrame.Empty;
 
         private int _currentPage = 1;
-        private FogAnimationFrame _currentFrame = FogAnimationFrame.Empty;
-        private readonly NumericInputBox[] _boxes = new NumericInputBox[2];
-        private Panel panel1;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private GroupBox groupBox1;
-        private ListBox listKeyframes;
-        private Panel panel2;
-        private Label label7;
-        private Label label3;
-        private Button btnNext;
-        private Button btnPrev;
-        private Label lblFrameCount;
-        private NumericInputBox numStart;
-        private NumericInputBox numEnd;
-        private NumericUpDown numFrame;
-        private Label label1;
-        private TabPage tabPage3;
-        private CLRControl lightCtrl;
+        private int _numFrames;
 
         private SCN0FogNode _target;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SCN0FogNode TargetSequence
-        {
-            get => _target;
-            set
-            {
-                if (_target == value)
-                {
-                    return;
-                }
-
-                _target = value;
-                UpdateTarget();
-            }
-        }
+        private Button btnNext;
+        private Button btnPrev;
+        private GroupBox groupBox1;
+        private Label label1;
+        private Label label3;
+        private Label label7;
+        private Label lblFrameCount;
+        private CLRControl lightCtrl;
+        private ListBox listKeyframes;
+        private NumericInputBox numEnd;
+        private NumericUpDown numFrame;
+        private NumericInputBox numStart;
+        private Panel panel1;
+        private Panel panel2;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage3;
 
         public SCN0FogEditControl()
         {
@@ -53,9 +38,20 @@ namespace System.Windows.Forms
             _boxes[0] = numStart;
             _boxes[1] = numEnd;
 
-            for (int i = 0; i < 2; i++)
+            for (var i = 0; i < 2; i++) _boxes[i].Tag = i;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public SCN0FogNode TargetSequence
+        {
+            get => _target;
+            set
             {
-                _boxes[i].Tag = i;
+                if (_target == value) return;
+
+                _target = value;
+                UpdateTarget();
             }
         }
 
@@ -68,13 +64,9 @@ namespace System.Windows.Forms
                 if (_target.FrameCount > 0)
                 {
                     FogAnimationFrame a;
-                    for (int x = 0; x < _target.FrameCount; x++)
-                    {
+                    for (var x = 0; x < _target.FrameCount; x++)
                         if ((a = _target.GetAnimFrame(x)).HasKeys)
-                        {
                             listKeyframes.Items.Add(a);
-                        }
-                    }
 
                     _numFrames = _target.FrameCount;
 
@@ -88,6 +80,7 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
+
             listKeyframes.EndUpdate();
             lightCtrl.ColorSource = TargetSequence;
             RefreshPage();
@@ -95,7 +88,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            int page = (int)numFrame.Value - 1;
+            var page = (int) numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -114,13 +107,10 @@ namespace System.Windows.Forms
                 numStart.Value = _currentFrame.Start;
                 numEnd.Value = _currentFrame.End;
 
-                for (int i = 0; i < 2; i++)
-                {
-                    UpdateBox(i);
-                }
+                for (var i = 0; i < 2; i++) UpdateBox(i);
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < (_numFrames - 1);
+                btnNext.Enabled = _currentPage < _numFrames - 1;
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -128,14 +118,10 @@ namespace System.Windows.Forms
 
         private int FindKeyframe(int index)
         {
-            int count = listKeyframes.Items.Count;
-            for (int i = 0; i < count; i++)
-            {
-                if (((FogAnimationFrame)listKeyframes.Items[i]).Index == index)
-                {
+            var count = listKeyframes.Items.Count;
+            for (var i = 0; i < count; i++)
+                if (((FogAnimationFrame) listKeyframes.Items[i]).Index == index)
                     return i;
-                }
-            }
 
             return -1;
         }
@@ -143,40 +129,33 @@ namespace System.Windows.Forms
         private void UpdateBox(int index)
         {
             if (_target.GetKeyframe(index, _currentPage) != null)
-            {
                 _boxes[index].BackColor = Color.Yellow;
-            }
             else
-            {
                 _boxes[index].BackColor = Color.White;
-            }
         }
 
         private unsafe void BoxChanged(object sender, EventArgs e)
         {
-            NumericInputBox box = sender as NumericInputBox;
+            var box = sender as NumericInputBox;
             FogAnimationFrame kf;
-            float* pkf = (float*)&kf;
-            float val = box.Value;
-            int index = (int)box.Tag;
+            var pkf = (float*) &kf;
+            var val = box.Value;
+            var index = (int) box.Tag;
             int x;
 
             if (val != _currentFrame[index])
             {
-                int kfIndex = FindKeyframe(_currentPage);
+                var kfIndex = FindKeyframe(_currentPage);
 
                 if (float.IsNaN(val))
                 {
                     //Value removed find keyframe and zero it out
                     if (kfIndex >= 0)
                     {
-                        kf = (FogAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (FogAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBools(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 2) && float.IsNaN(pkf[x]); x++)
-                        {
-                            ;
-                        }
+                        for (x = 0; x < 2 && float.IsNaN(pkf[x]); x++) ;
 
                         if (x == 2)
                         {
@@ -197,7 +176,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (FogAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (FogAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBools(index, true);
                         pkf[index] = val;
                         listKeyframes.Items[kfIndex] = kf;
@@ -209,11 +188,10 @@ namespace System.Windows.Forms
                         kf.Index = _currentPage;
                         pkf[index] = val;
 
-                        int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((FogAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
-                        {
-                            ;
-                        }
+                        var count = listKeyframes.Items.Count;
+                        for (x = 0;
+                            x < count && ((FogAnimationFrame) listKeyframes.Items[x]).Index < _currentPage;
+                            x++) ;
 
                         listKeyframes.Items.Insert(x, kf);
                         listKeyframes.SelectedIndex = x;
@@ -229,19 +207,25 @@ namespace System.Windows.Forms
 
         private void listKeyframes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listKeyframes.SelectedIndex;
+            var index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                FogAnimationFrame f = (FogAnimationFrame)listKeyframes.SelectedItem;
-                numFrame.Value = (decimal)(f.Index + 1);
+                var f = (FogAnimationFrame) listKeyframes.SelectedItem;
+                numFrame.Value = (decimal) (f.Index + 1);
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value--; }
-        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value++; }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            numFrame.Value--;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            numFrame.Value++;
+        }
 
         #region Designer
-
 
         private void InitializeComponent()
         {
@@ -267,7 +251,7 @@ namespace System.Windows.Forms
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
-            ((ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize) numFrame).BeginInit();
             tabPage3.SuspendLayout();
             SuspendLayout();
             // 
@@ -324,7 +308,7 @@ namespace System.Windows.Forms
             listKeyframes.Name = "listKeyframes";
             listKeyframes.Size = new Drawing.Size(207, 83);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
+            listKeyframes.SelectedIndexChanged += listKeyframes_SelectedIndexChanged;
             // 
             // panel2
             // 
@@ -374,7 +358,7 @@ namespace System.Windows.Forms
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += new EventHandler(btnNext_Click);
+            btnNext.Click += btnNext_Click;
             // 
             // btnPrev
             // 
@@ -386,7 +370,7 @@ namespace System.Windows.Forms
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += new EventHandler(btnPrev_Click);
+            btnPrev.Click += btnPrev_Click;
             // 
             // lblFrameCount
             // 
@@ -406,7 +390,7 @@ namespace System.Windows.Forms
             numStart.Size = new Drawing.Size(70, 20);
             numStart.TabIndex = 3;
             numStart.Text = "0";
-            numStart.ValueChanged += new EventHandler(BoxChanged);
+            numStart.ValueChanged += BoxChanged;
             // 
             // numEnd
             // 
@@ -417,25 +401,29 @@ namespace System.Windows.Forms
             numEnd.Size = new Drawing.Size(70, 20);
             numEnd.TabIndex = 6;
             numEnd.Text = "0";
-            numEnd.ValueChanged += new EventHandler(BoxChanged);
+            numEnd.ValueChanged += BoxChanged;
             // 
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(50, 3);
-            numFrame.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Minimum = new decimal(new[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
+            numFrame.Value = new decimal(new[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
+            numFrame.ValueChanged += numFrame_ValueChanged;
             // 
             // label1
             // 
@@ -477,11 +465,11 @@ namespace System.Windows.Forms
             groupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize) numFrame).EndInit();
             tabPage3.ResumeLayout(false);
             ResumeLayout(false);
-
         }
+
         #endregion
     }
 }

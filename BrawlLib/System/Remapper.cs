@@ -5,9 +5,9 @@ namespace System
 {
     public class Remapper
     {
-        internal object _source;
         internal int[] _impTable;
         internal int[] _remapTable;
+        internal object _source;
 
         public int[] ImplementationTable => _impTable;
         public int[] RemapTable => _remapTable;
@@ -16,21 +16,21 @@ namespace System
         public void Remap<T>(IList<T> source, Comparison<T> comp)
         {
             _source = source;
-            int count = source.Count;
+            var count = source.Count;
             int tmp;
-            Hashtable cache = new Hashtable();
+            var cache = new Hashtable();
 
             _remapTable = new int[count];
             _impTable = new int[count];
 
             //Build remap table by assigning first appearance
-            int impIndex = 0;
-            for (int i = 0; i < count; i++)
+            var impIndex = 0;
+            for (var i = 0; i < count; i++)
             {
-                T t = source[i];
+                var t = source[i];
                 if (cache.ContainsKey(t))
                 {
-                    _remapTable[i] = (int)cache[t];
+                    _remapTable[i] = (int) cache[t];
                 }
                 else
                 {
@@ -39,23 +39,23 @@ namespace System
                 }
             }
 
-            int impCount = impIndex;
+            var impCount = impIndex;
 
             if (comp != null)
             {
                 //Create new remap table, which is a sorted index list into the imp table
-                int[] sorted = new int[impCount];
+                var sorted = new int[impCount];
                 impIndex = 0;
-                for (int i = 0; i < impCount; i++)
+                for (var i = 0; i < impCount; i++)
                 {
                     //Get implementation index/object
-                    int ind = _impTable[i];
-                    T t = source[ind];
+                    var ind = _impTable[i];
+                    var t = source[ind];
 
                     sorted[impIndex] = i; //Set last, just in case we don't find a match
 
                     //Iterate entries in sorted list, comparing them
-                    for (int y = 0; y < impIndex; y++)
+                    for (var y = 0; y < impIndex; y++)
                     {
                         tmp = sorted[y]; //Pull old value, will use it later
                         if (comp(t, source[_impTable[tmp]]) < 0)
@@ -63,7 +63,7 @@ namespace System
                             sorted[y] = i;
 
                             //Rotate right
-                            for (int z = y; z++ < impIndex;)
+                            for (var z = y; z++ < impIndex;)
                             {
                                 ind = sorted[z];
                                 sorted[z] = tmp;
@@ -78,7 +78,7 @@ namespace System
                 }
 
                 //Swap sorted list, creating a new remap table in the process
-                for (int i = 0; i < impCount; i++)
+                for (var i = 0; i < impCount; i++)
                 {
                     tmp = sorted[i]; //Get index
                     sorted[i] = _impTable[tmp]; //Set sorted entry to imp index
@@ -86,10 +86,7 @@ namespace System
                 }
 
                 //Re-index remap
-                for (int i = 0; i < count; i++)
-                {
-                    _remapTable[i] = _impTable[_remapTable[i]];
-                }
+                for (var i = 0; i < count; i++) _remapTable[i] = _impTable[_remapTable[i]];
 
                 //Swap tables
                 _impTable = sorted;

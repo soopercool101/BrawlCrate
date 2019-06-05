@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.Wii.Compression
 {
@@ -9,7 +9,6 @@ namespace BrawlLib.Wii.Compression
     {
         private Differential()
         {
-
         }
 
         public int Compress(VoidPtr srcAddr, int srcLen, Stream outStream, IProgressTracker progress)
@@ -19,37 +18,37 @@ namespace BrawlLib.Wii.Compression
 
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r, bool extendedFormat)
         {
-            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "Differential", string.Format("Compressing {0}, please wait...", r.Name), false))
+            using (var prog = new ProgressWindow(r.RootNode._mainForm, "Differential",
+                string.Format("Compressing {0}, please wait...", r.Name), false))
             {
                 return new Differential().Compress(srcAddr, srcLen, outStream, prog);
             }
         }
+
         public static void Expand(CompressionHeader* header, VoidPtr dstAddress, int dstLen)
         {
             uint total = 0;
-            VoidPtr ceil = dstAddress + dstLen;
+            var ceil = dstAddress + dstLen;
 
             if (header->Parameter != 1)
             {
-                byte* pSrc = (byte*)header->Data;
-                byte* pDst = (byte*)dstAddress;
+                var pSrc = (byte*) header->Data;
+                var pDst = (byte*) dstAddress;
                 do
                 {
                     total += *pSrc++;
-                    *pDst++ = (byte)total;
-                }
-                while (pSrc < (byte*)ceil);
+                    *pDst++ = (byte) total;
+                } while (pSrc < (byte*) ceil);
             }
             else
             {
-                bushort* pSrc = (bushort*)header->Data;
-                bushort* pDst = (bushort*)dstAddress;
+                var pSrc = (bushort*) header->Data;
+                var pDst = (bushort*) dstAddress;
                 do
                 {
                     total += *pSrc++;
-                    *pDst++ = (ushort)total;
-                }
-                while ((byte*)pSrc < (byte*)ceil);
+                    *pDst++ = (ushort) total;
+                } while ((byte*) pSrc < (byte*) ceil);
             }
         }
     }

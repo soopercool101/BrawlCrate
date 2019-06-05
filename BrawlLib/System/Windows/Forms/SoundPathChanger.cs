@@ -1,9 +1,67 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 
 namespace System.Windows.Forms
 {
     internal class SoundPathChanger : Form
     {
+        public OpenFileDialog dlg = new OpenFileDialog
+        {
+            DefaultExt =
+                "All RSAR Files (*.brstm, *.rwsd, *.rbnk, *.rseq)|*.brstm;*.rwsd;*.rbnk;*.rseq|" +
+                "BRSTM Audio (*.brstm)|*.brstm|" +
+                "Raw Sound Pack (*.rwsd)|*.rwsd|" +
+                "Raw Sound Bank (*.rbnk)|*.rbnk|" +
+                "Raw Sound Requence (*.rseq)|*.rseq"
+        };
+
+        public SoundPathChanger()
+        {
+            InitializeComponent();
+            dlg.FileOk += OnFileOk;
+        }
+
+        public string FilePath { get; set; } = "";
+
+        ~SoundPathChanger()
+        {
+            dlg.FileOk -= OnFileOk;
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            txtPath.Text = FilePath;
+            base.OnShown(e);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void btnOkay_Click(object sender, EventArgs e)
+        {
+            FilePath = txtPath.Text;
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        public void OnFileOk(object sender, CancelEventArgs e)
+        {
+            if (!dlg.FileName.StartsWith(dlg.InitialDirectory)) dlg.FileName = dlg.InitialDirectory;
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            if (dlg.ShowDialog() == DialogResult.OK) txtPath.Text = dlg.FileName;
+        }
+
+        private void txtPath_TextChanged(object sender, EventArgs e)
+        {
+            if (!txtPath.Text.StartsWith(dlg.InitialDirectory)) txtPath.Text = dlg.InitialDirectory;
+        }
+
         #region Designer
 
         private TextBox txtPath;
@@ -23,13 +81,13 @@ namespace System.Windows.Forms
             // 
             // txtPath
             // 
-            txtPath.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            txtPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                              | AnchorStyles.Right;
             txtPath.Location = new Drawing.Point(12, 34);
             txtPath.Name = "txtPath";
             txtPath.Size = new Drawing.Size(330, 20);
             txtPath.TabIndex = 0;
-            txtPath.TextChanged += new EventHandler(txtPath_TextChanged);
+            txtPath.TextChanged += txtPath_TextChanged;
             // 
             // btnOkay
             // 
@@ -40,7 +98,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // btnCancel
             // 
@@ -51,18 +109,18 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // label1
             // 
-            label1.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                             | AnchorStyles.Right;
             label1.Location = new Drawing.Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(367, 21);
             label1.TabIndex = 3;
             label1.Text = "*Changing the path on an internal file will remove it from the RSAR*";
-            label1.TextAlign = Drawing.ContentAlignment.MiddleCenter;
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnBrowse
             // 
@@ -72,7 +130,7 @@ namespace System.Windows.Forms
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += new EventHandler(btnBrowse_Click);
+            btnBrowse.Click += btnBrowse_Click;
             // 
             // SoundPathChanger
             // 
@@ -87,67 +145,8 @@ namespace System.Windows.Forms
             Text = "File Path";
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
-
-        private string _filePath = "";
-        public string FilePath { get => _filePath; set => _filePath = value; }
-
-        public SoundPathChanger() { InitializeComponent(); dlg.FileOk += OnFileOk; }
-        ~SoundPathChanger() { dlg.FileOk -= OnFileOk; }
-
-        protected override void OnShown(EventArgs e)
-        {
-            txtPath.Text = _filePath;
-            base.OnShown(e);
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
-
-        private void btnOkay_Click(object sender, EventArgs e)
-        {
-            _filePath = txtPath.Text;
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        public void OnFileOk(object sender, CancelEventArgs e)
-        {
-            if (!dlg.FileName.StartsWith(dlg.InitialDirectory))
-            {
-                dlg.FileName = dlg.InitialDirectory;
-            }
-        }
-
-        public OpenFileDialog dlg = new OpenFileDialog()
-        {
-            DefaultExt =
-                "All RSAR Files (*.brstm, *.rwsd, *.rbnk, *.rseq)|*.brstm;*.rwsd;*.rbnk;*.rseq|" +
-                "BRSTM Audio (*.brstm)|*.brstm|" +
-                "Raw Sound Pack (*.rwsd)|*.rwsd|" +
-                "Raw Sound Bank (*.rbnk)|*.rbnk|" +
-                "Raw Sound Requence (*.rseq)|*.rseq"
-        };
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                txtPath.Text = dlg.FileName;
-            }
-        }
-
-        private void txtPath_TextChanged(object sender, EventArgs e)
-        {
-            if (!txtPath.Text.StartsWith(dlg.InitialDirectory))
-            {
-                txtPath.Text = dlg.InitialDirectory;
-            }
-        }
     }
 }

@@ -1,47 +1,53 @@
-﻿using BrawlLib.Imaging;
+﻿using System.Drawing;
+using System.Drawing.Imaging;
+using BrawlLib.Imaging;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Textures;
 using OpenTK.Graphics.OpenGL;
-using System.Drawing;
-using System.Drawing.Imaging;
+using PixelFormat = System.Drawing.Imaging.PixelFormat;
 
 namespace BrawlLib.OpenGL
 {
     public class GLTexture
     {
         public string _name;
-        public int _texId;
-
-        public IImageSource _source;
 
         private bool _remake = true;
+
+        public IImageSource _source;
+        public int _texId;
         private Bitmap[] _textures;
+
+        internal int _width, _height;
 
         private PixelInternalFormat ifmt = PixelInternalFormat.Four;
 
-        internal int _width, _height;
-        public int Width => _width;
-        public int Height => _height;
+        public GLTexture()
+        {
+        }
 
-        public GLTexture() { }
-        public unsafe GLTexture(int width, int height)
+        public GLTexture(int width, int height)
         {
             _width = width;
             _height = height;
             _source = null;
         }
-        public unsafe GLTexture(Bitmap b)
+
+        public GLTexture(Bitmap b)
         {
             _width = b.Width;
             _height = b.Height;
             ClearImages();
             ClearTexture();
-            _textures = new Bitmap[] { b };
+            _textures = new[] {b};
             _remake = true;
             _source = null;
         }
 
-        public unsafe int Initialize()
+        public int Width => _width;
+        public int Height => _height;
+
+        public int Initialize()
         {
             if (_remake && _textures != null)
             {
@@ -56,13 +62,15 @@ namespace BrawlLib.OpenGL
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMaxLod, _textures.Length - 1);
                 //GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.GenerateMipmap, 1);
 
-                for (int i = 0; i < _textures.Length; i++)
+                for (var i = 0; i < _textures.Length; i++)
                 {
-                    Bitmap bmp = _textures[i];
+                    var bmp = _textures[i];
                     if (bmp != null)
                     {
-                        BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                        GL.TexImage2D(TextureTarget.Texture2D, i, ifmt, data.Width, data.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+                        var data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
+                            PixelFormat.Format32bppArgb);
+                        GL.TexImage2D(TextureTarget.Texture2D, i, ifmt, data.Width, data.Height, 0,
+                            OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
                         bmp.UnlockBits(data);
                     }
                 }
@@ -70,6 +78,7 @@ namespace BrawlLib.OpenGL
                 _remake = false;
                 ClearImages();
             }
+
             return _texId;
         }
 
@@ -77,46 +86,37 @@ namespace BrawlLib.OpenGL
         {
             if (_textures != null)
             {
-                foreach (Bitmap bmp in _textures)
-                {
+                foreach (var bmp in _textures)
                     if (bmp != null)
-                    {
                         bmp.Dispose();
-                    }
-                }
 
                 _textures = null;
             }
         }
-        private unsafe void ClearTexture()
+
+        private void ClearTexture()
         {
             if (_texId != 0)
             {
-                int id = _texId;
+                var id = _texId;
                 GL.DeleteTexture(id);
                 _texId = 0;
             }
         }
 
-        public unsafe void SetPalette(PLT0Node plt)
+        public void SetPalette(PLT0Node plt)
         {
-            if (_source != null && _source is TEX0Node)
-            {
-                Attach((TEX0Node)_source, plt);
-            }
+            if (_source != null && _source is TEX0Node) Attach((TEX0Node) _source, plt);
         }
 
-        public unsafe void Attach(TEX0Node tex, PLT0Node plt)
+        public void Attach(TEX0Node tex, PLT0Node plt)
         {
             ClearImages();
 
             _source = tex;
 
             _textures = new Bitmap[tex.LevelOfDetail];
-            for (int i = 0; i < tex.LevelOfDetail; i++)
-            {
-                _textures[i] = tex.GetImage(i, plt);
-            }
+            for (var i = 0; i < tex.LevelOfDetail; i++) _textures[i] = tex.GetImage(i, plt);
 
             if (_textures.Length != 0 && _textures[0] != null)
             {
@@ -143,13 +143,13 @@ namespace BrawlLib.OpenGL
             Initialize();
         }
 
-        public unsafe void Attach(Bitmap bmp)
+        public void Attach(Bitmap bmp)
         {
             ClearImages();
 
             _source = null;
 
-            _textures = new Bitmap[] { bmp };
+            _textures = new[] {bmp};
 
             if (_textures.Length != 0)
             {
@@ -165,8 +165,8 @@ namespace BrawlLib.OpenGL
 
         public void Default()
         {
-            Bitmap b = new Bitmap(32, 32, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            using (Graphics grp = Graphics.FromImage(b))
+            var b = new Bitmap(32, 32, PixelFormat.Format24bppRgb);
+            using (var grp = Graphics.FromImage(b))
             {
                 grp.FillRectangle(Brushes.White, 0, 0, 32, 32);
             }
@@ -174,18 +174,20 @@ namespace BrawlLib.OpenGL
             Attach(b);
         }
 
-        public void Bind() { Bind(-1, -1); }
+        public void Bind()
+        {
+            Bind(-1);
+        }
+
         public void Bind(int index = -1, int program = -1)
         {
             if (program != -1 && index >= 0 && index < 8)
-            {
                 GL.Uniform1(GL.GetUniformLocation(program, "texture" + index), index);
-            }
 
             GL.BindTexture(TextureTarget.Texture2D, Initialize());
         }
 
-        public unsafe void Delete()
+        public void Delete()
         {
             ClearImages();
             ClearTexture();

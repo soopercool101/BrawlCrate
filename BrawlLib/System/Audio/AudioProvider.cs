@@ -5,12 +5,6 @@ namespace System.Audio
 {
     public abstract class AudioProvider : IDisposable
     {
-        internal AudioDevice _device;
-        public AudioDevice Device => _device;
-
-        internal List<AudioBuffer> _buffers = new List<AudioBuffer>();
-        public List<AudioBuffer> Buffers => _buffers;
-
         [Flags]
         public enum AudioProviderType
         {
@@ -18,47 +12,49 @@ namespace System.Audio
             DirectSound = 1,
             OpenAL = 2,
             All = ~0
-        };
+        }
+
         public static AudioProviderType AvailableTypes = AudioProviderType.All;
+
+        internal List<AudioBuffer> _buffers = new List<AudioBuffer>();
+        internal AudioDevice _device;
+        public AudioDevice Device => _device;
+        public List<AudioBuffer> Buffers => _buffers;
+
+        public virtual void Dispose()
+        {
+            foreach (var buffer in _buffers) buffer.Dispose();
+
+            _buffers.Clear();
+            GC.SuppressFinalize(this);
+        }
 
         public static AudioProvider Create(AudioDevice device)
         {
             if (AvailableTypes.HasFlag(AudioProviderType.DirectSound))
-            {
                 switch (Environment.OSVersion.Platform)
                 {
                     case PlatformID.Win32NT:
-                        if (IntPtr.Size <= 4)
-                        {
-                            return new wAudioProvider(device);
-                        }
+                        if (IntPtr.Size <= 4) return new wAudioProvider(device);
 
                         break;
                 }
-            }
 
             if (device == null && AvailableTypes.HasFlag(AudioProviderType.OpenAL))
-            {
                 try
                 {
                     return new alAudioProvider();
                 }
-                catch (TypeInitializationException) { }
-            }
+                catch (TypeInitializationException)
+                {
+                }
 
             return null;
         }
 
-        ~AudioProvider() { Dispose(); }
-        public virtual void Dispose()
+        ~AudioProvider()
         {
-            foreach (AudioBuffer buffer in _buffers)
-            {
-                buffer.Dispose();
-            }
-
-            _buffers.Clear();
-            GC.SuppressFinalize(this);
+            Dispose();
         }
 
         public abstract void Attach(Control owner);

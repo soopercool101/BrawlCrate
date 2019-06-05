@@ -1,42 +1,41 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Xml;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmVariantNode : ClassMemberInstanceNode
     {
-        public override int GetSize() { return 8; }
+        public override int GetSize()
+        {
+            return 8;
+        }
 
         public override bool OnInitialize()
         {
-            return ((hkVariant*)Data)->_objectPtr != 0;
+            return ((hkVariant*) Data)->_objectPtr != 0;
         }
 
         public override void OnPopulate()
         {
-            hkVariant* v = (hkVariant*)Data;
-            hkClass* classData = (hkClass*)v->_classPtr.OffsetAddress;
-            HavokClassNode entry = HavokNode.GetClassNode(new string((sbyte*)classData->_namePtr.OffsetAddress), true);
+            var v = (hkVariant*) Data;
+            var classData = (hkClass*) v->_classPtr.OffsetAddress;
+            var entry = HavokNode.GetClassNode(new string((sbyte*) classData->_namePtr.OffsetAddress));
             if (entry != null)
-            {
                 new HavokMetaObjectNode(entry as hkClassNode)
-                .Initialize(this, v->_objectPtr.OffsetAddress, classData->_size);
-            }
+                    .Initialize(this, v->_objectPtr.OffsetAddress, classData->_size);
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            hkVariant* v = (hkVariant*)address;
-
+            var v = (hkVariant*) address;
         }
 
-        public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
+        public override void WriteParams(XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
         {
             if (Children.Count > 0)
-            {
                 writer.WriteString(HavokXML.GetObjectName(classNodes, Children[0] as HavokClassNode));
-            }
         }
     }
 }

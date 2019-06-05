@@ -1,19 +1,14 @@
-﻿using BrawlLib.Imaging;
-using BrawlLib.SSBBTypes;
-using BrawlLib.Wii.Animations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using BrawlLib.Imaging;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Animations;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0GroupNode : ResourceNode
     {
-        internal ResourceGroup* Group => (ResourceGroup*)WorkingUncompressed.Address;
-
-        public override ResourceType ResourceFileType => ResourceType.MDL0Group;
-
-        public GroupType _type;
         public enum GroupType
         {
             LightSet,
@@ -29,71 +24,89 @@ namespace BrawlLib.SSBB.ResourceNodes
             "AmbLights(NW4R)",
             "Lights(NW4R)",
             "Fogs(NW4R)",
-            "Cameras(NW4R)",
+            "Cameras(NW4R)"
         };
+
         public static readonly Type[] _types =
         {
             typeof(SCN0LightSetNode),
             typeof(SCN0AmbientLightNode),
             typeof(SCN0LightNode),
             typeof(SCN0FogNode),
-            typeof(SCN0CameraNode),
+            typeof(SCN0CameraNode)
         };
+
+        //Entries, Keys, Colors, Vis
+        public VoidPtr[] _addrs = new VoidPtr[4];
+
+        //groups, entries, keys, colors, vis
+        public int[] _dataLengths = {0, 0, 0, 0, 0};
+
+        public GroupType _type;
+
+        public SCN0GroupNode(GroupType t)
+        {
+            _type = t;
+        }
+
+        public SCN0GroupNode(string name)
+        {
+            var i = _names.IndexOf(name);
+            if (i >= 0 && i < 5) _type = (GroupType) i;
+        }
+
+        internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
+
+        public override ResourceType ResourceFileType => ResourceType.MDL0Group;
 
 
         public override string Name
         {
-            get => _names[(int)_type];
+            get => _names[(int) _type];
             set
             {
-                int i = _names.IndexOf(value);
-                if (i >= 0 && i < 5)
-                {
-                    _type = (GroupType)i;
-                }
+                var i = _names.IndexOf(value);
+                if (i >= 0 && i < 5) _type = (GroupType) i;
 
                 base.Name = value;
             }
         }
 
-        public SCN0GroupNode(GroupType t) { _type = t; }
-        public SCN0GroupNode(string name)
+        /// <summary>
+        ///     Returns a list of all non-null children.
+        /// </summary>
+        [Browsable(false)]
+        public List<ResourceNode> UsedChildren
         {
-            int i = _names.IndexOf(name);
-            if (i >= 0 && i < 5)
+            get
             {
-                _type = (GroupType)i;
+                var l = new List<ResourceNode>();
+                foreach (SCN0EntryNode n in Children)
+                    if (n.Name != "<null>")
+                        l.Add(n);
+
+                return l;
             }
         }
 
         internal void GetStrings(StringTable table)
         {
             table.Add(Name);
-            foreach (SCN0EntryNode n in Children)
-            {
-                n.GetStrings(table);
-            }
+            foreach (SCN0EntryNode n in Children) n.GetStrings(table);
         }
 
         public override void RemoveChild(ResourceNode child)
         {
-            if ((_children != null) && (_children.Count == 1) && (_children.Contains(child)))
-            {
+            if (_children != null && _children.Count == 1 && _children.Contains(child))
                 _parent.RemoveChild(this);
-            }
             else
-            {
                 base.RemoveChild(child);
-            }
         }
 
         public override bool OnInitialize()
         {
             return Group->_numEntries > 0;
         }
-
-        //groups, entries, keys, colors, vis
-        public int[] _dataLengths = { 0, 0, 0, 0, 0 };
 
         public override int OnCalculateSize(bool force)
         {
@@ -110,23 +123,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //Add length of header and calculate data lengths
                 _dataLengths[1] += n.CalculateSize(true);
 
-                for (int i = 0; i < 3; i++)
-                {
-                    _dataLengths[i + 2] += n._dataLengths[i];
-                }
+                for (var i = 0; i < 3; i++) _dataLengths[i + 2] += n._dataLengths[i];
             }
+
             return _dataLengths[0] + _dataLengths[1] + _dataLengths[2] + _dataLengths[3] + _dataLengths[4];
         }
-
-        //Entries, Keys, Colors, Vis
-        public VoidPtr[] _addrs = new VoidPtr[4];
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             //Create resource group
-            ResourceGroup* group = (ResourceGroup*)address;
+            var group = (ResourceGroup*) address;
             *group = new ResourceGroup(UsedChildren.Count);
-            ResourceEntry* entry = group->First;
+            var entry = group->First;
 
             //Loop through entries, 
             //set data offset in group,
@@ -135,45 +143,36 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (SCN0EntryNode n in Children)
             {
                 //Null entries are not written to the resource group
-                if (n.Name != "<null>")
-                {
-                    (entry++)->_dataOffset = (int)_addrs[0] - (int)group;
-                }
+                if (n.Name != "<null>") (entry++)->_dataOffset = (int) _addrs[0] - (int) group;
 
                 //Set data addresses to entry
-                for (int i = 0; i < 3; i++)
-                {
-                    n._dataAddrs[i] = _addrs[i + 1];
-                }
+                for (var i = 0; i < 3; i++) n._dataAddrs[i] = _addrs[i + 1];
 
                 //Rebuild entry
                 n.Rebuild(_addrs[0], n._calcSize, true);
 
                 //Increase data addresses
                 _addrs[0] += n._calcSize;
-                for (int i = 0; i < 3; i++)
-                {
-                    _addrs[i + 1] += n._dataLengths[i];
-                }
+                for (var i = 0; i < 3; i++) _addrs[i + 1] += n._dataLengths[i];
             }
         }
 
         protected internal virtual void PostProcess(VoidPtr scn0Address, VoidPtr dataAddress, StringTable stringTable)
         {
-            ResourceGroup* group = (ResourceGroup*)dataAddress;
+            var group = (ResourceGroup*) dataAddress;
             group->_first = new ResourceEntry(0xFFFF, 0, 0, 0, 0);
 
-            ResourceEntry* rEntry = group->First;
+            var rEntry = group->First;
 
-            int index = 1;
+            var index = 1;
             foreach (SCN0EntryNode n in UsedChildren)
             {
-                dataAddress = (VoidPtr)group + (rEntry++)->_dataOffset;
-                ResourceEntry.Build(group, index++, dataAddress, (BRESString*)stringTable[n.Name]);
+                dataAddress = (VoidPtr) group + (rEntry++)->_dataOffset;
+                ResourceEntry.Build(group, index++, dataAddress, (BRESString*) stringTable[n.Name]);
                 //n.PostProcess(scn0Address, dataAddress, stringTable);
             }
 
-            int len = 0;
+            var len = 0;
             switch (_type)
             {
                 case GroupType.LightSet:
@@ -192,40 +191,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                     len = SCN0Camera.Size;
                     break;
             }
-            bint* hdr = (bint*)scn0Address + 5;
-            VoidPtr entries = scn0Address + hdr[(int)_type];
+
+            var hdr = (bint*) scn0Address + 5;
+            var entries = scn0Address + hdr[(int) _type];
             foreach (SCN0EntryNode n in Children)
             {
                 n.PostProcess(scn0Address, entries, stringTable);
                 entries += len;
             }
         }
-
-        /// <summary>
-        /// Returns a list of all non-null children.
-        /// </summary>
-        [Browsable(false)]
-        public List<ResourceNode> UsedChildren
-        {
-            get
-            {
-                List<ResourceNode> l = new List<ResourceNode>();
-                foreach (SCN0EntryNode n in Children)
-                {
-                    if (n.Name != "<null>")
-                    {
-                        l.Add(n);
-                    }
-                }
-
-                return l;
-            }
-        }
     }
 
     public unsafe class SCN0EntryNode : ResourceNode
     {
-        internal SCN0CommonHeader* Header => (SCN0CommonHeader*)WorkingUncompressed.Address;
+        public VoidPtr[] _dataAddrs = new VoidPtr[3];
+
+        //Key, Color, Vis
+        public int[] _dataLengths = {0, 0, 0};
+        internal SCN0CommonHeader* Header => (SCN0CommonHeader*) WorkingUncompressed.Address;
         public override bool AllowNullNames => true;
 
         [Browsable(false)]
@@ -233,31 +216,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                ResourceNode n = _parent;
-                while (!(n is SCN0Node) && (n != null))
-                {
-                    n = n._parent;
-                }
+                var n = _parent;
+                while (!(n is SCN0Node) && n != null) n = n._parent;
 
                 return n as SCN0Node;
             }
         }
 
-        //Key, Color, Vis
-        public int[] _dataLengths = { 0, 0, 0 };
-        public VoidPtr[] _dataAddrs = new VoidPtr[3];
+        [Category("SCN0 Entry")]
+        public int NodeIndex => Name != "<null>" ? ((SCN0GroupNode) Parent).UsedChildren.IndexOf(this) : -1;
 
-        [Category("SCN0 Entry")]
-        public int NodeIndex => Name != "<null>" ? ((SCN0GroupNode)Parent).UsedChildren.IndexOf(this) : -1;
-        [Category("SCN0 Entry")]
-        public int RealIndex => Name != "<null>" ? Index : -1;
+        [Category("SCN0 Entry")] public int RealIndex => Name != "<null>" ? Index : -1;
 
         internal virtual void GetStrings(StringTable table)
         {
-            if (Name != "<null>")
-            {
-                table.Add(Name);
-            }
+            if (Name != "<null>") table.Add(Name);
         }
 
         public override bool OnInitialize()
@@ -265,13 +238,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (!_replaced && _name == null)
             {
                 if (Header->_stringOffset != 0)
-                {
                     _name = Header->ResourceString;
-                }
                 else
-                {
                     _name = "<null>";
-                }
             }
 
             SetSizeInternal(Header->_length);
@@ -281,61 +250,43 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            SCN0CommonHeader* header = (SCN0CommonHeader*)address;
+            var header = (SCN0CommonHeader*) address;
             header->_length = length;
         }
 
         protected internal virtual void PostProcess(VoidPtr scn0Address, VoidPtr dataAddress, StringTable stringTable)
         {
-            SCN0CommonHeader* header = (SCN0CommonHeader*)dataAddress;
-            header->_scn0Offset = (int)scn0Address - (int)dataAddress;
+            var header = (SCN0CommonHeader*) dataAddress;
+            header->_scn0Offset = (int) scn0Address - (int) dataAddress;
             header->_nodeIndex = NodeIndex;
             header->_realIndex = RealIndex;
 
             if (Name != "<null>")
-            {
                 header->ResourceStringAddress = stringTable[Name] + 4;
-            }
             else
-            {
                 header->_stringOffset = 0;
-            }
         }
+
         public IColorSource FindColorMatch(bool constant, int frameCount, int id)
         {
             IColorSource match = null;
-            IColorSource s = this as IColorSource;
+            var s = this as IColorSource;
             if (!constant && s != null)
-            {
-                foreach (IColorSource n in ((ResourceNode)s).Parent.Children)
+                foreach (IColorSource n in ((ResourceNode) s).Parent.Children)
                 {
-                    if (n == s)
-                    {
-                        break;
-                    }
+                    if (n == s) break;
 
                     if (!n.GetColorConstant(id))
-                    {
-                        for (int i = 0; i <= frameCount; i++)
+                        for (var i = 0; i <= frameCount; i++)
                         {
-                            if (n.GetColor(i, id) != s.GetColor(i, id))
-                            {
-                                break;
-                            }
+                            if (n.GetColor(i, id) != s.GetColor(i, id)) break;
 
-                            if (i == frameCount)
-                            {
-                                match = n;
-                            }
+                            if (i == frameCount) match = n;
                         }
-                    }
 
-                    if (match != null)
-                    {
-                        break;
-                    }
+                    if (match != null) break;
                 }
-            }
+
             return match;
         }
 
@@ -357,33 +308,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (thatMatchAddr == null)
                 {
                     VoidPtr start = dataAddr;
-                    *((bint*)valueAddr) = (int)dataAddr - (int)valueAddr;
-                    for (int x = 0; x <= frameCount; x++)
-                    {
+                    *(bint*) valueAddr = (int) dataAddr - (int) valueAddr;
+                    for (var x = 0; x <= frameCount; x++)
                         if (x < colors.Count)
-                        {
                             *dataAddr++ = colors[x];
-                        }
                         else
-                        {
                             *dataAddr++ = new RGBAPixel();
-                        }
-                    }
 
                     return dataAddr - start;
                 }
-                else
-                {
-                    *((bint*)valueAddr) = (int)thatMatchAddr - (int)valueAddr;
-                    return 0;
-                }
-            }
-            else
-            {
-                flags |= bit;
-                *((RGBAPixel*)valueAddr) = solidColor;
+
+                *(bint*) valueAddr = (int) thatMatchAddr - (int) valueAddr;
                 return 0;
             }
+
+            flags |= bit;
+            *(RGBAPixel*) valueAddr = solidColor;
+            return 0;
         }
 
         protected void ReadColors(
@@ -399,30 +340,25 @@ namespace BrawlLib.SSBB.ResourceNodes
             colors = new List<RGBAPixel>();
             if (constant = (flags & bit) != 0)
             {
-                solidColor = *(RGBAPixel*)address;
+                solidColor = *(RGBAPixel*) address;
                 numEntries = 0;
             }
             else
             {
                 numEntries = frameCount + 1;
-                RGBAPixel* addr = (RGBAPixel*)(address + *(bint*)address);
-                for (int x = 0; x < numEntries; x++)
-                {
-                    colors.Add(*addr++);
-                }
+                var addr = (RGBAPixel*) (address + *(bint*) address);
+                for (var x = 0; x < numEntries; x++) colors.Add(*addr++);
             }
         }
 
         protected void CalcKeyLen(KeyframeArray keyframes)
         {
             if (keyframes._keyCount > 1)
-            {
                 _dataLengths[0] += SCN0KeyframesHeader.Size + keyframes._keyCount * SCN0KeyframeStruct.Size + 4;
-            }
         }
 
         /// <summary>
-        /// Reads keyframes from an address and sets them in the keyframe array provided.
+        ///     Reads keyframes from an address and sets them in the keyframe array provided.
         /// </summary>
         /// <param name="kf">The array to set decoded frames to.</param>
         /// <param name="dataAddr">The address of the OFFSET to the data.</param>
@@ -431,62 +367,57 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void DecodeKeyframes(KeyframeArray kf, VoidPtr dataAddr, int flags, int fixedBit)
         {
             if ((flags & fixedBit) != 0)
-            {
-                kf[0] = *(bfloat*)dataAddr;
-            }
+                kf[0] = *(bfloat*) dataAddr;
             else
-            {
-                DecodeKeyframes(kf, dataAddr + *(bint*)dataAddr);
-            }
+                DecodeKeyframes(kf, dataAddr + *(bint*) dataAddr);
         }
+
         /// <summary>
-        /// Reads keyframes at an address, starting with the keyframe array header.
+        ///     Reads keyframes at an address, starting with the keyframe array header.
         /// </summary>
         /// <param name="kf">The array to set decoded frames to.</param>
         /// <param name="dataAddr">The address of the keyframe array header.</param>
         public static void DecodeKeyframes(KeyframeArray kf, VoidPtr dataAddr)
         {
-            SCN0KeyframesHeader* header = (SCN0KeyframesHeader*)dataAddr;
-            SCN0KeyframeStruct* entry = header->Data;
-            for (int i = 0; i < header->_numFrames; i++, entry++)
-            {
-                kf.SetFrameValue((int)entry->_index, entry->_value, true)._tangent = entry->_tangent;
-            }
+            var header = (SCN0KeyframesHeader*) dataAddr;
+            var entry = header->Data;
+            for (var i = 0; i < header->_numFrames; i++, entry++)
+                kf.SetFrameValue((int) entry->_index, entry->_value, true)._tangent = entry->_tangent;
         }
-        public static int EncodeKeyframes(KeyframeArray kf, VoidPtr dataAddr, VoidPtr offset, ref int flags, int fixedBit)
+
+        public static int EncodeKeyframes(KeyframeArray kf, VoidPtr dataAddr, VoidPtr offset, ref int flags,
+            int fixedBit)
         {
             if (kf._keyCount > 1)
             {
                 flags &= ~fixedBit;
                 return EncodeKeyframes(kf, dataAddr, offset);
             }
-            else
-            {
-                flags |= fixedBit;
-                *(bfloat*)offset = kf._keyRoot._next._value;
-                return 0;
-            }
+
+            flags |= fixedBit;
+            *(bfloat*) offset = kf._keyRoot._next._value;
+            return 0;
         }
+
         public static int EncodeKeyframes(KeyframeArray kf, VoidPtr dataAddr, VoidPtr offset)
         {
-            *(bint*)offset = (int)dataAddr - (int)offset;
+            *(bint*) offset = (int) dataAddr - (int) offset;
             return EncodeKeyframes(kf, dataAddr);
         }
+
         public static int EncodeKeyframes(KeyframeArray kf, VoidPtr dataAddr)
         {
-            VoidPtr start = dataAddr;
-            SCN0KeyframesHeader* header = (SCN0KeyframesHeader*)dataAddr;
+            var start = dataAddr;
+            var header = (SCN0KeyframesHeader*) dataAddr;
             *header = new SCN0KeyframesHeader(kf._keyCount);
             KeyframeEntry frame, root = kf._keyRoot;
 
-            SCN0KeyframeStruct* entry = header->Data;
+            var entry = header->Data;
             for (frame = root._next; frame._index != -1; frame = frame._next)
-            {
                 *entry++ = new SCN0KeyframeStruct(frame._tangent, frame._index, frame._value);
-            }
 
-            *(bint*)entry = 0;
-            dataAddr = ((VoidPtr)entry) + 4;
+            *(bint*) entry = 0;
+            dataAddr = (VoidPtr) entry + 4;
             return dataAddr - start;
         }
     }

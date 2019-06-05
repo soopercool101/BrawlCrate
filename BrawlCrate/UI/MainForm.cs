@@ -1,12 +1,4 @@
-﻿using BrawlCrate.API;
-using BrawlCrate.NodeWrappers;
-using BrawlCrate.Properties;
-using BrawlLib.Imaging;
-using BrawlLib.Modeling;
-using BrawlLib.OpenGL;
-using BrawlLib.SSBB;
-using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.Audio;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -14,41 +6,58 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Be.Windows.Forms;
+using BrawlCrate.API;
+using BrawlCrate.Discord;
+using BrawlCrate.NodeWrappers;
+using BrawlCrate.Properties;
+using BrawlLib.Imaging;
+using BrawlLib.Modeling;
+using BrawlLib.OpenGL;
+using BrawlLib.SSBB;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate
 {
     public partial class MainForm : Form
     {
         private static MainForm _instance;
-        public static MainForm Instance => _instance ?? (_instance = new MainForm());
-
-        private BaseWrapper _root;
-        public BaseWrapper RootNode => _root;
-
-        private SettingsDialog _settings;
-        private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
+        private readonly DelegateOpenFile m_DelegateOpenFile;
 
         private readonly RecentFileHandler RecentFileHandler;
 
-        private InterpolationForm _interpolationForm = null;
-        public InterpolationForm InterpolationForm
-        {
-            get
-            {
-                if (_interpolationForm == null)
-                {
-                    _interpolationForm = new InterpolationForm(null);
-                    _interpolationForm.FormClosed += _interpolationForm_FormClosed;
-                    _interpolationForm.Show();
-                }
-                return _interpolationForm;
-            }
-        }
+        private bool _autoCompressModules;
 
-        private void _interpolationForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            _interpolationForm = null;
-        }
+        private bool _autoCompressPCS;
+
+        private bool _autoCompressStages;
+
+        private bool _autoDecompressPAC;
+
+        private bool _autoPlayAudio;
+
+        private bool _autoUpdate;
+
+        private bool _compatibilityMode;
+
+        public Control _currentControl;
+
+        private bool _displayPropertyDescription;
+
+        private bool _docUpdates;
+
+        private InterpolationForm _interpolationForm;
+
+        private Control _secondaryControl;
+
+        private SettingsDialog _settings;
+
+        private bool _showFullPath;
+
+        private bool _showHex;
+
+        private bool _updatesOnStartup;
+        private Type selectedType;
 
         public MainForm()
         {
@@ -68,10 +77,7 @@ namespace BrawlCrate
             _showFullPath = Properties.Settings.Default.ShowFullPath;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
-            if (CheckUpdatesOnStartup)
-            {
-                CheckUpdates(false);
-            }
+            if (CheckUpdatesOnStartup) CheckUpdates(false);
 #else
             Text += " DEBUG";
 #endif
@@ -83,7 +89,8 @@ namespace BrawlCrate
                 c.Visible = false;
                 c.Dock = DockStyle.Fill;
             }
-            m_DelegateOpenFile = new DelegateOpenFile(Program.Open);
+
+            m_DelegateOpenFile = Program.Open;
             _instance = this;
 
             _currentControl = modelPanel1;
@@ -99,84 +106,34 @@ namespace BrawlCrate
             {
                 BrawlAPI.Plugins.Clear();
                 BrawlAPI.Loaders.Clear();
-                string plugins = $"{Application.StartupPath}/Plugins";
-                string loaders = $"{Application.StartupPath}/Loaders";
+                var plugins = $"{Application.StartupPath}/Plugins";
+                var loaders = $"{Application.StartupPath}/Loaders";
 
                 pluginToolStripMenuItem.DropDown.Items.Clear();
-                if (Directory.Exists(plugins))
-                {
-                    reloadPluginsToolStripMenuItem_Click(null, null);
-                }
+                if (Directory.Exists(plugins)) reloadPluginsToolStripMenuItem_Click(null, null);
                 if (Directory.Exists(loaders) && Properties.Settings.Default.APILoadersEnabled)
-                {
-                    foreach (string str in Directory.EnumerateFiles(loaders, "*.py"))
-                    {
+                    foreach (var str in Directory.EnumerateFiles(loaders, "*.py"))
                         BrawlAPI.CreatePlugin(str, true);
-                    }
-                }
-            }
-            else
-            {
-                // TO-DO: Delete plugin-centric toolbar items
             }
         }
 
-        private delegate bool DelegateOpenFile(string s);
-        private readonly DelegateOpenFile m_DelegateOpenFile;
+        public static MainForm Instance => _instance ?? (_instance = new MainForm());
+        public BaseWrapper RootNode { get; private set; }
 
-        private void CheckUpdates(bool manual = true)
+        private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
+
+        public InterpolationForm InterpolationForm
         {
-            try
+            get
             {
-                if (Program.CanRunGithubApp(manual, out string path))
+                if (_interpolationForm == null)
                 {
-                    if (Program.Canary)
-                    {
-                        Process git = Process.Start(new ProcessStartInfo()
-                        {
-                            FileName = path,
-                            WindowStyle = ProcessWindowStyle.Hidden,
-                            Arguments = string.Format("-buc \"{0}\" {1}", Program.RootPath ?? "<null>", manual ? "1" : "0"),
-                        });
-                        git.WaitForExit();
-                        if (File.Exists(Program.AppPath + "\\Canary\\Old"))
-                        {
-                            Process changelog = Process.Start(new ProcessStartInfo()
-                            {
-                                FileName = path,
-                                WindowStyle = ProcessWindowStyle.Hidden,
-                                Arguments = string.Format("-canarylog"),
-                            });
-                        }
-                    }
-                    else
-                    {
-                        Process.Start(new ProcessStartInfo()
-                        {
-                            FileName = path,
-                            WindowStyle = ProcessWindowStyle.Hidden,
-                            Arguments = string.Format("-bu 1 \"{0}\" {1} \"{2}\" {3} {4}",
-                                Program.TagName, manual ? "1" : "0", Program.RootPath ?? "<null>", _docUpdates ? "1" : "0", (!manual && _autoUpdate) ? "1" : "0"),
-                        });
-                    }
+                    _interpolationForm = new InterpolationForm(null);
+                    _interpolationForm.FormClosed += _interpolationForm_FormClosed;
+                    _interpolationForm.Show();
                 }
-                else
-                {
-                    if (manual)
-                    {
-                        MessageBox.Show("The updater could not be found.");
-                    }
 
-                    checkForUpdatesToolStripMenuItem.Enabled =
-                    checkForUpdatesToolStripMenuItem.Visible = false;
-                }
-            }
-            catch (Exception e)
-            {
-                if (manual)
-                {
-                    MessageBox.Show(e.Message);
-                }
+                return _interpolationForm;
             }
         }
 
@@ -193,8 +150,6 @@ namespace BrawlCrate
             }
         }
 
-        private bool _displayPropertyDescription;
-
         public bool CheckUpdatesOnStartup
         {
             get => _updatesOnStartup;
@@ -206,8 +161,6 @@ namespace BrawlCrate
                 Properties.Settings.Default.Save();
             }
         }
-
-        private bool _updatesOnStartup;
 
         public bool GetDocumentationUpdates
         {
@@ -221,8 +174,6 @@ namespace BrawlCrate
             }
         }
 
-        private bool _docUpdates;
-
         public bool AutoCompressPCS
         {
             get => _autoCompressPCS;
@@ -234,8 +185,6 @@ namespace BrawlCrate
                 BrawlLib.Properties.Settings.Default.Save();
             }
         }
-
-        private bool _autoCompressPCS;
 
         public bool AutoDecompressFighterPAC
         {
@@ -249,8 +198,6 @@ namespace BrawlCrate
             }
         }
 
-        private bool _autoDecompressPAC;
-
         public bool AutoCompressStages
         {
             get => _autoCompressStages;
@@ -262,8 +209,6 @@ namespace BrawlCrate
                 BrawlLib.Properties.Settings.Default.Save();
             }
         }
-
-        private bool _autoCompressStages;
 
         public bool AutoCompressModules
         {
@@ -277,8 +222,6 @@ namespace BrawlCrate
             }
         }
 
-        private bool _autoCompressModules;
-
         public bool AutoPlayAudio
         {
             get => _autoPlayAudio;
@@ -290,8 +233,6 @@ namespace BrawlCrate
                 Properties.Settings.Default.Save();
             }
         }
-
-        private bool _autoPlayAudio;
 
         public bool UpdateAutomatically
 
@@ -306,8 +247,6 @@ namespace BrawlCrate
             }
         }
 
-        private bool _autoUpdate;
-
         public bool ShowHex
         {
             get => _showHex;
@@ -321,8 +260,6 @@ namespace BrawlCrate
             }
         }
 
-        private bool _showHex;
-
         public bool CompatibilityMode
         {
             get => _compatibilityMode;
@@ -330,12 +267,11 @@ namespace BrawlCrate
             {
                 _compatibilityMode = value;
 
-                BrawlLib.Properties.Settings.Default.HideMDL0Errors = BrawlLib.Properties.Settings.Default.CompatibilityMode = _compatibilityMode;
+                BrawlLib.Properties.Settings.Default.HideMDL0Errors =
+                    BrawlLib.Properties.Settings.Default.CompatibilityMode = _compatibilityMode;
                 BrawlLib.Properties.Settings.Default.Save();
             }
         }
-
-        private bool _compatibilityMode;
 
         public bool ShowFullPath
         {
@@ -350,44 +286,94 @@ namespace BrawlCrate
             }
         }
 
-        private bool _showFullPath;
+        private void _interpolationForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _interpolationForm = null;
+        }
+
+        private void CheckUpdates(bool manual = true)
+        {
+            try
+            {
+                if (Program.CanRunGithubApp(manual, out var path))
+                {
+                    if (Program.Canary)
+                    {
+                        var git = Process.Start(new ProcessStartInfo
+                        {
+                            FileName = path,
+                            WindowStyle = ProcessWindowStyle.Hidden,
+                            Arguments = string.Format("-buc \"{0}\" {1}", Program.RootPath ?? "<null>",
+                                manual ? "1" : "0")
+                        });
+                        git.WaitForExit();
+                        if (File.Exists(Program.AppPath + "\\Canary\\Old"))
+                        {
+                            var changelog = Process.Start(new ProcessStartInfo
+                            {
+                                FileName = path,
+                                WindowStyle = ProcessWindowStyle.Hidden,
+                                Arguments = "-canarylog"
+                            });
+                        }
+                    }
+                    else
+                    {
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = path,
+                            WindowStyle = ProcessWindowStyle.Hidden,
+                            Arguments = string.Format("-bu 1 \"{0}\" {1} \"{2}\" {3} {4}",
+                                Program.TagName, manual ? "1" : "0", Program.RootPath ?? "<null>",
+                                _docUpdates ? "1" : "0", !manual && _autoUpdate ? "1" : "0")
+                        });
+                    }
+                }
+                else
+                {
+                    if (manual) MessageBox.Show("The updater could not be found.");
+
+                    checkForUpdatesToolStripMenuItem.Enabled =
+                        checkForUpdatesToolStripMenuItem.Visible = false;
+                }
+            }
+            catch (Exception e)
+            {
+                if (manual) MessageBox.Show(e.Message);
+            }
+        }
 
         private void UpdatePropertyDescriptionBox(GridItem item)
         {
             if (!DisplayPropertyDescriptionsWhenAvailable)
             {
-                if (propertyGrid1.HelpVisible != false)
-                {
-                    propertyGrid1.HelpVisible = false;
-                }
+                if (propertyGrid1.HelpVisible) propertyGrid1.HelpVisible = false;
             }
             else
             {
-                propertyGrid1.HelpVisible = item != null && item.PropertyDescriptor != null && !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
+                propertyGrid1.HelpVisible = item != null && item.PropertyDescriptor != null &&
+                                            !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
             }
         }
 
         private void propertyGrid1_SelectedGridItemChanged(object sender, SelectedGridItemChangedEventArgs e)
         {
-            if (DisplayPropertyDescriptionsWhenAvailable)
-            {
-                UpdatePropertyDescriptionBox(e.NewSelection);
-            }
+            if (DisplayPropertyDescriptionsWhenAvailable) UpdatePropertyDescriptionBox(e.NewSelection);
         }
 
         public void Reset()
         {
-            _root = null;
+            RootNode = null;
             resourceTree.SelectedNode = null;
             resourceTree.Clear();
 
             if (Program.RootNode != null)
             {
-                _root = BaseWrapper.Wrap(this, Program.RootNode);
+                RootNode = BaseWrapper.Wrap(this, Program.RootNode);
                 resourceTree.BeginUpdate();
-                resourceTree.Nodes.Add(_root);
-                resourceTree.SelectedNode = _root;
-                _root.Expand();
+                resourceTree.Nodes.Add(RootNode);
+                resourceTree.SelectedNode = RootNode;
+                RootNode.Expand();
                 resourceTree.EndUpdate();
 
                 closeToolStripMenuItem.Enabled = true;
@@ -402,6 +388,7 @@ namespace BrawlCrate
                 saveAsToolStripMenuItem.Enabled = false;
                 saveToolStripMenuItem.Enabled = false;
             }
+
             resourceTree_SelectionChanged(null, null);
 
             UpdateName();
@@ -411,13 +398,12 @@ namespace BrawlCrate
         public void UpdateName()
         {
             if (Program.RootPath != null)
-            {
-                Text = string.Format("{0} - {1}", Program.AssemblyTitle, ShowFullPath ? Program.RootPath : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1));
-            }
+                Text = string.Format("{0} - {1}", Program.AssemblyTitle,
+                    ShowFullPath
+                        ? Program.RootPath
+                        : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1));
             else
-            {
                 Text = Program.AssemblyTitle;
-            }
 #if DEBUG
             Text += " DEBUG";
 #endif
@@ -425,15 +411,9 @@ namespace BrawlCrate
 
         public void TargetResource(ResourceNode n)
         {
-            if (_root != null)
-            {
-                resourceTree.SelectedNode = _root.FindResource(n, true);
-            }
+            if (RootNode != null) resourceTree.SelectedNode = RootNode.FindResource(n, true);
         }
 
-        public Control _currentControl;
-        private Control _secondaryControl;
-        private Type selectedType;
         public unsafe void resourceTree_SelectionChanged(object sender, EventArgs e)
         {
             audioPlaybackPanel1.TargetSource = null;
@@ -451,58 +431,50 @@ namespace BrawlCrate
             ppcDisassembler1.SetTarget(null, 0, null);
             modelPanel1.ClearAll();
             mdL0ObjectControl1.SetTarget(null);
-            if (hexBox1.ByteProvider != null)
-            {
-                ((Be.Windows.Forms.DynamicFileByteProvider)hexBox1.ByteProvider).Dispose();
-            }
+            if (hexBox1.ByteProvider != null) ((DynamicFileByteProvider) hexBox1.ByteProvider).Dispose();
 
             Control newControl = null;
             Control newControl2 = null;
 
             BaseWrapper w;
             ResourceNode node = null;
-            bool disable2nd = false;
-            if ((resourceTree.SelectedNode is BaseWrapper) && ((node = (w = resourceTree.SelectedNode as BaseWrapper).Resource) != null))
+            var disable2nd = false;
+            if (resourceTree.SelectedNode is BaseWrapper &&
+                (node = (w = resourceTree.SelectedNode as BaseWrapper).Resource) != null)
             {
                 Action setScrollOffset = null;
                 if (selectedType == resourceTree.SelectedNode.GetType())
-                {
                     foreach (Control c in propertyGrid1.Controls)
-                    {
                         if (c.GetType().Name == "PropertyGridView")
                         {
-                            object scrollOffset = c.GetType().GetMethod("GetScrollOffset").Invoke(c, null);
-                            setScrollOffset = () => c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] { scrollOffset });
+                            var scrollOffset = c.GetType().GetMethod("GetScrollOffset").Invoke(c, null);
+                            setScrollOffset = () =>
+                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new[] {scrollOffset});
                             break;
                         }
-                    }
-                }
                 else
-                {
                     foreach (Control c in propertyGrid1.Controls)
-                    {
                         if (c.GetType().Name == "PropertyGridView")
                         {
-                            setScrollOffset = () => c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] { 0 });
+                            setScrollOffset = () =>
+                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] {0});
                             break;
                         }
-                    }
-                }
 
                 propertyGrid1.SelectedObject = node;
                 setScrollOffset?.Invoke();
 
                 if (node is IBufferNode && ShowHex)
                 {
-                    IBufferNode d = node as IBufferNode;
+                    var d = node as IBufferNode;
                     if (d.IsValid())
                     {
-                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
-                                (byte*)d.GetAddress(),
+                        hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
+                                (byte*) d.GetAddress(),
                                 d.GetLength(),
                                 d.GetLength(),
                                 FileAccess.ReadWrite))
-                        { _supportsInsDel = false };
+                            {_supportsInsDel = false};
                         newControl = hexBox1;
                     }
                 }
@@ -513,7 +485,7 @@ namespace BrawlCrate
                 }
                 else if (node is RELMethodNode)
                 {
-                    ppcDisassembler1.SetTarget((RELMethodNode)node);
+                    ppcDisassembler1.SetTarget((RELMethodNode) node);
                     newControl = ppcDisassembler1;
                 }
                 else if (node is IVideo)
@@ -579,15 +551,12 @@ namespace BrawlCrate
                 else if (node is IAudioSource)
                 {
                     audioPlaybackPanel1.TargetSource = node as IAudioSource;
-                    IAudioStream[] sources = audioPlaybackPanel1.TargetSource.CreateStreams();
-                    if (sources != null && sources.Length > 0 && sources[0] != null)
-                    {
-                        newControl = audioPlaybackPanel1;
-                    }
+                    var sources = audioPlaybackPanel1.TargetSource.CreateStreams();
+                    if (sources != null && sources.Length > 0 && sources[0] != null) newControl = audioPlaybackPanel1;
                 }
                 else if (node is IImageSource)
                 {
-                    previewPanel2.RenderingTarget = ((IImageSource)node);
+                    previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
                 else if (node is IRenderedObject)
@@ -596,7 +565,7 @@ namespace BrawlCrate
                 }
                 else if (node is STDTNode)
                 {
-                    STDTNode stdt = (STDTNode)node;
+                    var stdt = (STDTNode) node;
 
                     attributeGrid1.Clear();
                     attributeGrid1.AddRange(stdt.GetPossibleInterpretations());
@@ -607,41 +576,31 @@ namespace BrawlCrate
                 if (node is IColorSource && !disable2nd)
                 {
                     clrControl.ColorSource = node as IColorSource;
-                    if (((IColorSource)node).ColorCount(0) > 0)
+                    if (((IColorSource) node).ColorCount(0) > 0)
                     {
                         if (newControl != null)
-                        {
                             newControl2 = clrControl;
-                        }
                         else
-                        {
                             newControl = clrControl;
-                        }
                     }
                 }
 
                 if (newControl == null && Instance.ShowHex && !(node is RELEntryNode || node is RELNode))
-                {
                     if (node.WorkingUncompressed.Length > 0)
                     {
-                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
-                                (byte*)node.WorkingUncompressed.Address,
+                        hexBox1.ByteProvider = new DynamicFileByteProvider(new UnmanagedMemoryStream(
+                                (byte*) node.WorkingUncompressed.Address,
                                 node.WorkingUncompressed.Length,
                                 node.WorkingUncompressed.Length,
                                 FileAccess.ReadWrite))
-                        { _supportsInsDel = false };
+                            {_supportsInsDel = false};
                         newControl = hexBox1;
                     }
-                }
 
                 if ((editToolStripMenuItem.DropDown = w.ContextMenuStrip) != null)
-                {
                     editToolStripMenuItem.Enabled = true;
-                }
                 else
-                {
                     editToolStripMenuItem.Enabled = false;
-                }
             }
             else
             {
@@ -652,8 +611,8 @@ namespace BrawlCrate
                 }
                 catch
                 {
-
                 }
+
                 editToolStripMenuItem.Enabled = false;
             }
 
@@ -664,6 +623,7 @@ namespace BrawlCrate
                     _secondaryControl.Dock = DockStyle.Fill;
                     _secondaryControl.Visible = false;
                 }
+
                 _secondaryControl = newControl2;
                 if (_secondaryControl != null)
                 {
@@ -672,18 +632,13 @@ namespace BrawlCrate
                     _secondaryControl.Width = 340;
                 }
             }
+
             if (_currentControl != newControl)
             {
-                if (_currentControl != null)
-                {
-                    _currentControl.Visible = false;
-                }
+                if (_currentControl != null) _currentControl.Visible = false;
 
                 _currentControl = newControl;
-                if (_currentControl != null)
-                {
-                    _currentControl.Visible = true;
-                }
+                if (_currentControl != null) _currentControl.Visible = true;
             }
             else if (_currentControl != null && !_currentControl.Visible)
             {
@@ -693,9 +648,7 @@ namespace BrawlCrate
             if (_currentControl != null)
             {
                 if (_secondaryControl != null)
-                {
                     _currentControl.Width = splitContainer2.Panel2.Width - _secondaryControl.Width;
-                }
 
                 _currentControl.Dock = DockStyle.Fill;
             }
@@ -703,18 +656,15 @@ namespace BrawlCrate
             //Model panel has to be loaded first to display model correctly
             if (_currentControl is ModelPanel)
             {
-                if (node._children == null)
-                {
-                    node.Populate(0);
-                }
+                if (node._children == null) node.Populate(0);
 
                 if (node is IModel && ModelEditControl.Instances.Count == 0)
                 {
-                    IModel m = node as IModel;
+                    var m = node as IModel;
                     m.ResetToBindState();
                 }
 
-                IRenderedObject o = node as IRenderedObject;
+                var o = node as IRenderedObject;
                 modelPanel1.AddTarget(o);
                 modelPanel1.SetCamWithBox(o.GetBox());
             }
@@ -724,8 +674,9 @@ namespace BrawlCrate
             }
             else if (_currentControl is TexCoordControl)
             {
-                texCoordControl1.TargetNode = ((MDL0MaterialRefNode)node);
+                texCoordControl1.TargetNode = (MDL0MaterialRefNode) node;
             }
+
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
@@ -733,19 +684,16 @@ namespace BrawlCrate
         {
             if (Program.CanRunDiscordRPC)
             {
-                if (Discord.DiscordSettings.DiscordControllerSet)
+                if (DiscordSettings.DiscordControllerSet)
                 {
-                    Discord.DiscordSettings.Update();
+                    DiscordSettings.Update();
                 }
                 else
                 {
-                    Process[] px = Process.GetProcessesByName("BrawlCrate");
-                    if (px.Length == 1)
-                    {
-                        Discord.DiscordRpc.ClearPresence();
-                    }
+                    var px = Process.GetProcessesByName("BrawlCrate");
+                    if (px.Length == 1) DiscordRpc.ClearPresence();
 
-                    Discord.DiscordSettings.LoadSettings(true);
+                    DiscordSettings.LoadSettings(true);
                 }
             }
         }
@@ -758,58 +706,38 @@ namespace BrawlCrate
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            if (!Program.Close())
-            {
-                e.Cancel = true;
-            }
+            if (!Program.Close()) e.Cancel = true;
 
             base.OnClosing(e);
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int i = Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile);
-            if (i != 0 && Program.Open(inFile))
-            {
-                RecentFileHandler.AddFile(inFile);
-            }
+            var i = Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out var inFile);
+            if (i != 0 && Program.Open(inFile)) RecentFileHandler.AddFile(inFile);
         }
-
-        #region File Menu
-        private void aRCArchiveToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<ARCNode>(); }
-        private void u8FileArchiveToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<U8Node>(); }
-        private void brresPackToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<BRRESNode>(); }
-        private void tPLTextureArchiveToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<TPLNode>(); }
-        private void eFLSEffectListToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<EFLSNode>(); }
-        private void rEFFParticlesToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<REFFNode>(); }
-        private void rEFTParticleTexturesToolStripMenuItem_Click(object sender, EventArgs e) { Program.New<REFTNode>(); }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e) { Program.Save(); }
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) { Program.SaveAs(); }
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e) { Program.Close(); }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) { Close(); }
-        #endregion
 
         private void fileResizerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //using (FileResizer res = new FileResizer())
             //    res.ShowDialog();
         }
+
         private void settingsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Settings.ShowDialog();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) { AboutForm.Instance.ShowDialog(this); }
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm.Instance.ShowDialog(this);
+        }
 
         private void bRStmAudioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path) > 0)
-            {
+            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out var path) > 0)
                 if (Program.New<RSTMNode>())
-                {
-                    using (BrstmConverterDialog dlg = new BrstmConverterDialog())
+                    using (var dlg = new BrstmConverterDialog())
                     {
                         dlg.AudioSource = path;
                         if (dlg.ShowDialog(this) == DialogResult.OK)
@@ -822,20 +750,18 @@ namespace BrawlCrate
                             Program.Close(true);
                         }
                     }
-                }
-            }
         }
 
         private void MainForm_DragDrop(object sender, DragEventArgs e)
         {
-            Array a = (Array)e.Data.GetData(DataFormats.FileDrop);
+            var a = (Array) e.Data.GetData(DataFormats.FileDrop);
             if (a != null)
             {
                 string s = null;
-                for (int i = 0; i < a.Length; i++)
+                for (var i = 0; i < a.Length; i++)
                 {
                     s = a.GetValue(i).ToString();
-                    BeginInvoke(m_DelegateOpenFile, new object[] { s });
+                    BeginInvoke(m_DelegateOpenFile, s);
                 }
             }
         }
@@ -843,13 +769,9 @@ namespace BrawlCrate
         private void MainForm_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
                 e.Effect = DragDropEffects.Copy;
-            }
             else
-            {
                 e.Effect = DragDropEffects.None;
-            }
         }
 
         private void gCTEditorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -859,7 +781,7 @@ namespace BrawlCrate
 
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Program.Open(((RecentFileHandler.FileMenuItem)e.ClickedItem).FileName);
+            Program.Open(((RecentFileHandler.FileMenuItem) e.ClickedItem).FileName);
         }
 
         private void checkForUpdatesToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -869,15 +791,17 @@ namespace BrawlCrate
 
         private void splitContainer_MouseDown(object sender, MouseEventArgs e)
         {
-            ((SplitContainer)sender).IsSplitterFixed = true;
+            ((SplitContainer) sender).IsSplitterFixed = true;
         }
+
         private void splitContainer_MouseUp(object sender, MouseEventArgs e)
         {
-            ((SplitContainer)sender).IsSplitterFixed = false;
+            ((SplitContainer) sender).IsSplitterFixed = false;
         }
+
         private void splitContainer_MouseMove(object sender, MouseEventArgs e)
         {
-            SplitContainer splitter = (SplitContainer)sender;
+            var splitter = (SplitContainer) sender;
             if (splitter.IsSplitterFixed)
             {
                 if (e.Button.Equals(MouseButtons.Left))
@@ -908,18 +832,19 @@ namespace BrawlCrate
 
         private void onPluginClicked(object sender, EventArgs e)
         {
-            PluginScript plg = BrawlAPI.Plugins.Find(x => x.Name == ((ToolStripItem)sender).Text);
+            var plg = BrawlAPI.Plugins.Find(x => x.Name == ((ToolStripItem) sender).Text);
             plg?.Execute();
         }
 
         private void runScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog() { Filter = "All supported files (.py, .fsx)|*.py;*.fsx|Python file (.py)|*.py|F# script (.fsx)|*.fsx|All Files|*" })
+            using (var dlg = new OpenFileDialog
             {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    BrawlAPI.RunScript(dlg.FileName);
-                }
+                Filter =
+                    "All supported files (.py, .fsx)|*.py;*.fsx|Python file (.py)|*.py|F# script (.fsx)|*.fsx|All Files|*"
+            })
+            {
+                if (dlg.ShowDialog() == DialogResult.OK) BrawlAPI.RunScript(dlg.FileName);
             }
         }
 
@@ -932,72 +857,89 @@ namespace BrawlCrate
 
         private void AddPlugins(ToolStripMenuItem menu, string path)
         {
-            DirectoryInfo dir = Directory.CreateDirectory(path);
-            foreach (DirectoryInfo d in dir.GetDirectories())
+            var dir = Directory.CreateDirectory(path);
+            foreach (var d in dir.GetDirectories())
             {
-                ToolStripMenuItem folder = new ToolStripMenuItem();
+                var folder = new ToolStripMenuItem();
                 folder.Name = folder.Text = d.Name;
                 AddPlugins(folder, d.FullName);
-                if (folder.DropDownItems.Count == 0)
-                {
-                    continue;
-                }
+                if (folder.DropDownItems.Count == 0) continue;
 
                 menu.DropDownItems.Add(folder);
             }
-            foreach (string str in new[] { "*.py", "*.fsx" }.SelectMany(p => Directory.EnumerateFiles(path, p)))
-            {
+
+            foreach (var str in new[] {"*.py", "*.fsx"}.SelectMany(p => Directory.EnumerateFiles(path, p)))
                 if (BrawlAPI.CreatePlugin(str, false))
-                {
                     menu.DropDownItems.Add(Path.GetFileNameWithoutExtension(str), null, onPluginClicked);
-                }
-            }
         }
+
+        private delegate bool DelegateOpenFile(string s);
+
+        #region File Menu
+
+        private void aRCArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<ARCNode>();
+        }
+
+        private void u8FileArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<U8Node>();
+        }
+
+        private void brresPackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<BRRESNode>();
+        }
+
+        private void tPLTextureArchiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<TPLNode>();
+        }
+
+        private void eFLSEffectListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<EFLSNode>();
+        }
+
+        private void rEFFParticlesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<REFFNode>();
+        }
+
+        private void rEFTParticleTexturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.New<REFTNode>();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.Save();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.SaveAs();
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        #endregion
     }
 
     public class RecentFileHandler : Component
     {
-        private IContainer components = null;
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-        private void InitializeComponent()
-        {
-            components = new Container();
-        }
-        public class FileMenuItem : ToolStripMenuItem
-        {
-            private string fileName;
+        private IContainer components;
 
-            public string FileName
-            {
-                get => fileName;
-                set => fileName = value;
-            }
-
-            public FileMenuItem(string fileName)
-            {
-                this.fileName = fileName;
-            }
-
-            public override string Text
-            {
-                get
-                {
-                    ToolStripMenuItem parent = (ToolStripMenuItem)OwnerItem;
-                    int index = parent.DropDownItems.IndexOf(this);
-                    return string.Format("{0} {1}", index + 1, fileName);
-                }
-                set
-                {
-                }
-            }
-        }
+        private ToolStripMenuItem recentFileToolStripItem;
 
         public RecentFileHandler()
         {
@@ -1015,9 +957,33 @@ namespace BrawlCrate
             Init();
         }
 
+        public ToolStripMenuItem RecentFileToolStripItem
+        {
+            get => recentFileToolStripItem;
+            set
+            {
+                if (recentFileToolStripItem == value) return;
+
+                recentFileToolStripItem = value;
+
+                ReCreateItems();
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null) components.Dispose();
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            components = new Container();
+        }
+
         private void Init()
         {
-            Settings.Default.PropertyChanged += new PropertyChangedEventHandler(Default_PropertyChanged);
+            Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
         public void AddFile(string fileName)
@@ -1025,12 +991,10 @@ namespace BrawlCrate
             try
             {
                 if (recentFileToolStripItem == null)
-                {
                     throw new OperationCanceledException("recentFileToolStripItem can not be null!");
-                }
 
                 // check if the file is already in the collection
-                int alreadyIn = GetIndexOfRecentFile(fileName);
+                var alreadyIn = GetIndexOfRecentFile(fileName);
                 if (alreadyIn != -1) // remove it
                 {
                     recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);
@@ -1053,75 +1017,45 @@ namespace BrawlCrate
                 }
 
                 // enable the menu item if it´s disabled
-                if (!recentFileToolStripItem.Enabled)
-                {
-                    recentFileToolStripItem.Enabled = true;
-                }
+                if (!recentFileToolStripItem.Enabled) recentFileToolStripItem.Enabled = true;
 
                 // save the changes
                 Settings.Default.Save();
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private int GetIndexOfRecentFile(string filename)
         {
-            for (int i = 0; i < Settings.Default.RecentFiles.Count; i++)
+            for (var i = 0; i < Settings.Default.RecentFiles.Count; i++)
             {
-                string currentFile = Settings.Default.RecentFiles[i];
-                if (string.Equals(currentFile, filename, StringComparison.OrdinalIgnoreCase))
-                {
-                    return i;
-                }
+                var currentFile = Settings.Default.RecentFiles[i];
+                if (string.Equals(currentFile, filename, StringComparison.OrdinalIgnoreCase)) return i;
             }
+
             return -1;
-        }
-
-        private ToolStripMenuItem recentFileToolStripItem;
-
-        public ToolStripMenuItem RecentFileToolStripItem
-        {
-            get => recentFileToolStripItem;
-            set
-            {
-                if (recentFileToolStripItem == value)
-                {
-                    return;
-                }
-
-                recentFileToolStripItem = value;
-
-                ReCreateItems();
-            }
         }
 
         private void Default_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "RecentFilesMax")
-            {
-                ReCreateItems();
-            }
+            if (e.PropertyName == "RecentFilesMax") ReCreateItems();
         }
 
         private void ReCreateItems()
         {
-            if (recentFileToolStripItem == null)
-            {
-                return;
-            }
+            if (recentFileToolStripItem == null) return;
 
-            if (Settings.Default.RecentFiles == null)
-            {
-                Settings.Default.RecentFiles = new StringCollection();
-            }
+            if (Settings.Default.RecentFiles == null) Settings.Default.RecentFiles = new StringCollection();
 
             recentFileToolStripItem.DropDownItems.Clear();
-            recentFileToolStripItem.Enabled = (Settings.Default.RecentFiles.Count > 0);
+            recentFileToolStripItem.Enabled = Settings.Default.RecentFiles.Count > 0;
 
-            int fileItemCount = Math.Min(Settings.Default.RecentFilesMax, Settings.Default.RecentFiles.Count);
-            for (int i = 0; i < fileItemCount; i++)
+            var fileItemCount = Math.Min(Settings.Default.RecentFilesMax, Settings.Default.RecentFiles.Count);
+            for (var i = 0; i < fileItemCount; i++)
             {
-                string file = Settings.Default.RecentFiles[i];
+                var file = Settings.Default.RecentFiles[i];
                 recentFileToolStripItem.DropDownItems.Add(new FileMenuItem(file));
             }
         }
@@ -1130,6 +1064,27 @@ namespace BrawlCrate
         {
             Settings.Default.RecentFiles.Clear();
             ReCreateItems();
+        }
+
+        public class FileMenuItem : ToolStripMenuItem
+        {
+            public FileMenuItem(string fileName)
+            {
+                FileName = fileName;
+            }
+
+            public string FileName { get; set; }
+
+            public override string Text
+            {
+                get
+                {
+                    var parent = (ToolStripMenuItem) OwnerItem;
+                    var index = parent.DropDownItems.IndexOf(this);
+                    return string.Format("{0} {1}", index + 1, FileName);
+                }
+                set { }
+            }
         }
     }
 }

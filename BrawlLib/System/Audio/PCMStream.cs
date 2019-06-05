@@ -1,67 +1,43 @@
-﻿using BrawlLib.SSBBTypes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
 
 namespace System.Audio
 {
     public unsafe class PCMStream : IAudioStream
     {
-        private IntPtr _allocatedHGlobal = IntPtr.Zero;
-        private BrawlLib.IO.FileMap _sourceMap;
-
         private readonly short* _source;
+        private IntPtr _allocatedHGlobal = IntPtr.Zero;
 
-        private readonly int _bps;
-        private readonly int _numSamples;
-        private readonly int _numChannels;
-        private readonly int _frequency;
         private int _samplePos;
-
-        private bool _looped;
-        private int _loopStart;
-        private int _loopEnd;
-
-        public WaveFormatTag Format => WaveFormatTag.WAVE_FORMAT_PCM;
-        public int BitsPerSample => _bps;
-        public int Samples => _numSamples;
-        public int Channels => _numChannels;
-        public int Frequency => _frequency;
-
-        public bool IsLooping { get => _looped; set => _looped = value; }
-        public int LoopStartSample { get => _loopStart; set => _loopStart = value; }
-        public int LoopEndSample { get => _loopEnd; set => _loopEnd = value; }
-
-        public int SamplePosition
-        {
-            get => _samplePos;
-            set => _samplePos = Math.Max(Math.Min(value, _numSamples), 0);
-        }
+        private FileMap _sourceMap;
 
         public PCMStream(byte[] wavData)
         {
             _allocatedHGlobal = Marshal.AllocHGlobal(wavData.Length);
             Marshal.Copy(wavData, 0, _allocatedHGlobal, wavData.Length);
 
-            RIFFHeader* header = (RIFFHeader*)_allocatedHGlobal;
-            _bps = header->_fmtChunk._bitsPerSample;
-            _numChannels = header->_fmtChunk._channels;
-            _frequency = (int)header->_fmtChunk._samplesSec;
-            _numSamples = (int)(header->_dataChunk._chunkSize / header->_fmtChunk._blockAlign);
+            var header = (RIFFHeader*) _allocatedHGlobal;
+            BitsPerSample = header->_fmtChunk._bitsPerSample;
+            Channels = header->_fmtChunk._channels;
+            Frequency = (int) header->_fmtChunk._samplesSec;
+            Samples = (int) (header->_dataChunk._chunkSize / header->_fmtChunk._blockAlign);
 
-            _source = (short*)((byte*)_allocatedHGlobal + header->GetSize());
+            _source = (short*) ((byte*) _allocatedHGlobal + header->GetSize());
             _samplePos = 0;
 
-            _looped = false;
-            _loopStart = 0;
-            _loopEnd = _numSamples;
+            IsLooping = false;
+            LoopStartSample = 0;
+            LoopEndSample = Samples;
 
-            smplLoop[] loops = header->_smplLoops;
+            var loops = header->_smplLoops;
             if (loops.Length > 0)
             {
-                _looped = true;
-                _loopStart = (int)loops[0]._dwStart;
-                _loopEnd = (int)loops[0]._dwEnd;
+                IsLooping = true;
+                LoopStartSample = (int) loops[0]._dwStart;
+                LoopEndSample = (int) loops[0]._dwEnd;
             }
         }
 
@@ -69,10 +45,10 @@ namespace System.Audio
         {
             _sourceMap = null;
 
-            _bps = bps; //16
-            _numChannels = channels;
-            _frequency = sampleRate;
-            _numSamples = samples;
+            BitsPerSample = bps; //16
+            Channels = channels;
+            Frequency = sampleRate;
+            Samples = samples;
 
             _source = source;
             _samplePos = 0;
@@ -80,81 +56,53 @@ namespace System.Audio
 
         internal PCMStream(WaveInfo* pWAVE, VoidPtr dataAddr)
         {
-            _frequency = pWAVE->_sampleRate;
-            _numSamples = pWAVE->NumSamples;
-            _numChannels = pWAVE->_format._channels;
+            Frequency = pWAVE->_sampleRate;
+            Samples = pWAVE->NumSamples;
+            Channels = pWAVE->_format._channels;
 
-            _bps = pWAVE->_format._encoding == 0 ? 8 : 16;
+            BitsPerSample = pWAVE->_format._encoding == 0 ? 8 : 16;
 
-            if (_numSamples <= 0)
-            {
-                return;
-            }
+            if (Samples <= 0) return;
 
-            _loopStart = pWAVE->LoopSample;
-            _loopEnd = _numSamples;
+            LoopStartSample = pWAVE->LoopSample;
+            LoopEndSample = Samples;
 
-            _source = (short*)dataAddr;
+            _source = (short*) dataAddr;
             _samplePos = 0;
-        }
-
-        internal static PCMStream[] GetStreams(RSTMHeader* pRSTM, VoidPtr dataAddr)
-        {
-            HEADHeader* pHeader = pRSTM->HEADData;
-            StrmDataInfo* part1 = pHeader->Part1;
-            int c = part1->_format._channels;
-            PCMStream[] streams = new PCMStream[c.RoundUpToEven() / 2];
-
-            for (int i = 0; i < streams.Length; i++)
-            {
-                int x = (i + 1) * 2 <= c ? 2 : 1;
-                streams[i] = new PCMStream(pRSTM, x, i * 2, dataAddr);
-            }
-
-            return streams;
         }
 
         internal PCMStream(RSTMHeader* header, int channels, int startChannel, void* audioSource)
         {
-            StrmDataInfo* info = header->HEADData->Part1;
-            if (info->_format._channels < startChannel + channels)
-            {
-                throw new Exception("Not enough channels");
-            }
+            var info = header->HEADData->Part1;
+            if (info->_format._channels < startChannel + channels) throw new Exception("Not enough channels");
 
-            List<short[]>[] blocksByChannel = new List<short[]>[info->_format._channels];
-            for (int i = 0; i < blocksByChannel.Length; i++)
-            {
-                blocksByChannel[i] = new List<short[]>();
-            }
+            var blocksByChannel = new List<short[]>[info->_format._channels];
+            for (var i = 0; i < blocksByChannel.Length; i++) blocksByChannel[i] = new List<short[]>();
 
-            byte* from = (byte*)audioSource;
+            var from = (byte*) audioSource;
 
-            for (int block = 0; block < info->_numBlocks; block++)
+            for (var block = 0; block < info->_numBlocks; block++)
             {
-                int blockSize = (block == info->_numBlocks - 1)
+                int blockSize = block == info->_numBlocks - 1
                     ? info->_lastBlockSize
                     : info->_blockSize;
-                int blockTotal = (block == info->_numBlocks - 1)
+                int blockTotal = block == info->_numBlocks - 1
                     ? info->_lastBlockTotal
                     : info->_blockSize;
 
-                for (int channel = 0; channel < info->_format._channels; channel++)
+                for (var channel = 0; channel < info->_format._channels; channel++)
                 {
-                    short[] b = new short[blockSize / sizeof(short)];
-                    Marshal.Copy((IntPtr)from, b, 0, b.Length);
+                    var b = new short[blockSize / sizeof(short)];
+                    Marshal.Copy((IntPtr) from, b, 0, b.Length);
                     from += blockTotal;
                     blocksByChannel[channel].Add(b);
                 }
             }
 
-            List<List<short[]>> blocksToUseByChannel = new List<List<short[]>>();
-            for (int i = 0; i < channels; i++)
-            {
-                blocksToUseByChannel.Add(blocksByChannel[startChannel + i]);
-            }
+            var blocksToUseByChannel = new List<List<short[]>>();
+            for (var i = 0; i < channels; i++) blocksToUseByChannel.Add(blocksByChannel[startChannel + i]);
 
-            int size = info->_numSamples * channels * sizeof(short);
+            var size = info->_numSamples * channels * sizeof(short);
             //int size2 = blocksToUseByChannel.SelectMany(blocks => blocks.Select(block => block.Length)).Sum() * sizeof(short);
             //if (size != size2)
             //{
@@ -162,50 +110,63 @@ namespace System.Audio
             //}
 
             _allocatedHGlobal = Marshal.AllocHGlobal(size);
-            short* toPtr = (short*)_allocatedHGlobal;
+            var toPtr = (short*) _allocatedHGlobal;
             //short* endPtr = (short*)(_allocatedHGlobal + size);
-            int blockCount = blocksToUseByChannel.Select(b => b.Count).Distinct().Single();
-            for (int blockIndex = 0; blockIndex < blockCount; blockIndex++)
+            var blockCount = blocksToUseByChannel.Select(b => b.Count).Distinct().Single();
+            for (var blockIndex = 0; blockIndex < blockCount; blockIndex++)
             {
-                List<short[]> blocks = blocksToUseByChannel.Select(l => l[blockIndex]).ToList();
-                int blockShorts = blocks.Select(a => a.Length).Distinct().Single();
-                for (int i = 0; i < blockShorts; i++)
-                {
-                    foreach (short[] block in blocks)
-                    {
+                var blocks = blocksToUseByChannel.Select(l => l[blockIndex]).ToList();
+                var blockShorts = blocks.Select(a => a.Length).Distinct().Single();
+                for (var i = 0; i < blockShorts; i++)
+                    foreach (var block in blocks)
                         *toPtr++ = block[i].Reverse();
-                    }
-                }
             }
             //if (toPtr != endPtr) throw new Exception($"Not all data filled ({(long)_allocatedHGlobal}, {(long)toPtr}, {(long)endPtr})");
 
-            _bps = 16;
-            _numChannels = channels;
-            _frequency = info->_sampleRate;
-            _numSamples = info->_numSamples;
+            BitsPerSample = 16;
+            Channels = channels;
+            Frequency = info->_sampleRate;
+            Samples = info->_numSamples;
 
-            _source = (short*)_allocatedHGlobal;
+            _source = (short*) _allocatedHGlobal;
             _samplePos = 0;
 
-            _looped = info->_format._looped != 0;
-            _loopStart = info->_loopStartSample;
-            _loopEnd = _numSamples;
+            IsLooping = info->_format._looped != 0;
+            LoopStartSample = info->_loopStartSample;
+            LoopEndSample = Samples;
+        }
+
+        public WaveFormatTag Format => WaveFormatTag.WAVE_FORMAT_PCM;
+        public int BitsPerSample { get; }
+
+        public int Samples { get; }
+
+        public int Channels { get; }
+
+        public int Frequency { get; }
+
+        public bool IsLooping { get; set; }
+
+        public int LoopStartSample { get; set; }
+
+        public int LoopEndSample { get; set; }
+
+        public int SamplePosition
+        {
+            get => _samplePos;
+            set => _samplePos = Math.Max(Math.Min(value, Samples), 0);
         }
 
         public int ReadSamples(VoidPtr destAddr, int numSamples)
         {
-            short* sPtr = _source + (_samplePos * _numChannels);
-            short* dPtr = (short*)destAddr;
+            var sPtr = _source + _samplePos * Channels;
+            var dPtr = (short*) destAddr;
 
-            int max = Math.Min(numSamples, _numSamples - _samplePos);
+            var max = Math.Min(numSamples, Samples - _samplePos);
 
-            for (int i = 0; i < max; i++)
-            {
-                for (int x = 0; x < _numChannels; x++)
-                {
-                    *dPtr++ = *sPtr++;
-                }
-            }
+            for (var i = 0; i < max; i++)
+            for (var x = 0; x < Channels; x++)
+                *dPtr++ = *sPtr++;
 
             _samplePos += max;
 
@@ -214,7 +175,7 @@ namespace System.Audio
 
         public void Wrap()
         {
-            SamplePosition = _loopStart;
+            SamplePosition = LoopStartSample;
         }
 
         public void Dispose()
@@ -224,12 +185,30 @@ namespace System.Audio
                 _sourceMap.Dispose();
                 _sourceMap = null;
             }
+
             if (_allocatedHGlobal != IntPtr.Zero)
             {
                 Marshal.FreeHGlobal(_allocatedHGlobal);
                 _allocatedHGlobal = IntPtr.Zero;
             }
+
             GC.SuppressFinalize(this);
+        }
+
+        internal static PCMStream[] GetStreams(RSTMHeader* pRSTM, VoidPtr dataAddr)
+        {
+            var pHeader = pRSTM->HEADData;
+            var part1 = pHeader->Part1;
+            int c = part1->_format._channels;
+            var streams = new PCMStream[c.RoundUpToEven() / 2];
+
+            for (var i = 0; i < streams.Length; i++)
+            {
+                var x = (i + 1) * 2 <= c ? 2 : 1;
+                streams[i] = new PCMStream(pRSTM, x, i * 2, dataAddr);
+            }
+
+            return streams;
         }
     }
 }

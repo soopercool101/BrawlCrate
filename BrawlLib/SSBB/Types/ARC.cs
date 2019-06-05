@@ -16,35 +16,32 @@ namespace BrawlLib.SSBBTypes
         private readonly uint _unk2;
         private fixed sbyte _name[48];
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-
-        public string Name
+        internal VoidPtr Address
         {
-            get => new string((sbyte*)Address + 0x10);
-            set
+            get
             {
-                if (value == null)
+                fixed (void* ptr = &this)
                 {
-                    value = "";
-                }
-
-                fixed (sbyte* ptr = _name)
-                {
-                    int i = 0;
-                    while ((i < 47) && (i < value.Length))
-                    {
-                        ptr[i] = (sbyte)value[i++];
-                    }
-
-                    while (i < 48)
-                    {
-                        ptr[i++] = 0;
-                    }
+                    return ptr;
                 }
             }
         }
 
-        public ARCFileHeader* First => (ARCFileHeader*)(Address + Size);
+        public string Name
+        {
+            get => new string((sbyte*) Address + 0x10);
+            set
+            {
+                if (value == null) value = "";
+
+                var i = 0;
+                while (i < 47 && i < value.Length) _name[i] = (sbyte) value[i++];
+
+                while (i < 48) _name[i++] = 0;
+            }
+        }
+
+        public ARCFileHeader* First => (ARCFileHeader*) (Address + Size);
 
         public ARCHeader(ushort numFiles, string name)
         {
@@ -76,8 +73,8 @@ namespace BrawlLib.SSBBTypes
 
         public ARCFileHeader(ARCFileType type, int index, int size, byte groupIndex, short id)
         {
-            _type = (short)type;
-            _index = (short)index;
+            _type = (short) type;
+            _index = (short) index;
             _size = size;
             _groupIndex = groupIndex;
             _padding = 0;
@@ -85,21 +82,50 @@ namespace BrawlLib.SSBBTypes
             _pad1 = _pad2 = _pad3 = _pad4 = _pad5 = 0;
         }
 
-        private ARCFileHeader* Address { get { fixed (ARCFileHeader* ptr = &this) { return ptr; } } }
+        private ARCFileHeader* Address
+        {
+            get
+            {
+                fixed (ARCFileHeader* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public VoidPtr Data => (VoidPtr)Address + Size;
-        public ARCFileHeader* Next => (ARCFileHeader*)((uint)(Data + _size)).Align(Size);
+        public VoidPtr Data => (VoidPtr) Address + Size;
+        public ARCFileHeader* Next => (ARCFileHeader*) ((uint) (Data + _size)).Align(Size);
 
         public ARCFileType FileType
         {
-            get => (ARCFileType)(short)_type;
-            set => _type = (short)value;
+            get => (ARCFileType) (short) _type;
+            set => _type = (short) value;
         }
-        public short Index { get => _index; set => _index = value; }
-        public int Length { get => _size; set => _size = value; }
-        public byte GroupIndex { get => _groupIndex; set => _groupIndex = value; }
+
+        public short Index
+        {
+            get => _index;
+            set => _index = value;
+        }
+
+        public int Length
+        {
+            get => _size;
+            set => _size = value;
+        }
+
+        public byte GroupIndex
+        {
+            get => _groupIndex;
+            set => _groupIndex = value;
+        }
+
         //public byte Unknown { get { return _padding; } set { _padding = value; } }
-        public short ID { get => _redirectIndex; set => _redirectIndex = value; }
+        public short ID
+        {
+            get => _redirectIndex;
+            set => _redirectIndex = value;
+        }
     }
 
     public enum ARCFileType : short

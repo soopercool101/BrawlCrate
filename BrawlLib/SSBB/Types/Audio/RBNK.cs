@@ -16,21 +16,47 @@ namespace BrawlLib.SSBBTypes
         public bint _waveOffset;
         public bint _waveLength;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public RBNK_DATAHeader* Data => (RBNK_DATAHeader*)(Address + _dataOffset);
-        public RBNK_WAVEHeader* Wave => (RBNK_WAVEHeader*)(Address + _waveOffset);
+        public RBNK_DATAHeader* Data => (RBNK_DATAHeader*) (Address + _dataOffset);
+        public RBNK_WAVEHeader* Wave => (RBNK_WAVEHeader*) (Address + _waveOffset);
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct RangeTable
     {
         public byte _tableCount;
-        public byte GetKey(int index) { return *(byte*)(Address + 1 + index); }
+
+        public byte GetKey(int index)
+        {
+            return *(byte*) (Address + 1 + index);
+        }
+
         //Align to 4 bytes after byte table
-        public RuintCollection* Collection => (RuintCollection*)(Address + (1 + _tableCount).Align(4));
+        public RuintCollection* Collection => (RuintCollection*) (Address + (1 + _tableCount).Align(4));
+
         //Invalid, InstParam, RangeTable, IndexTable, Null
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct IndexTable
     {
@@ -49,9 +75,18 @@ namespace BrawlLib.SSBBTypes
         public buint _length;
         public RuintList _list;
 
-        public WaveInfo* this[int index] => (WaveInfo*)(_list.Address + _list.Entries[index]);
+        public WaveInfo* this[int index] => (WaveInfo*) (_list.Address + _list.Entries[index]);
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -63,7 +98,16 @@ namespace BrawlLib.SSBBTypes
         public bint _length;
         public RuintList _list;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     public enum WaveDataLocation
@@ -81,7 +125,7 @@ namespace BrawlLib.SSBBTypes
 
     //These entries are embedded in a list, using RuintList
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct RBNKInstParam
+    public struct RBNKInstParam
     {
         public const int Size = 0x30;
 

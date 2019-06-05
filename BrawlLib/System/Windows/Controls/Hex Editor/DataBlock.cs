@@ -6,10 +6,7 @@ namespace Be.Windows.Forms
         internal DataBlock _nextBlock;
         internal DataBlock _previousBlock;
 
-        public abstract long Length
-        {
-            get;
-        }
+        public abstract long Length { get; }
 
         public DataMap Map => _map;
 

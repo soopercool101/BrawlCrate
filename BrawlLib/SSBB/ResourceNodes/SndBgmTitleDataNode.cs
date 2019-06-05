@@ -1,6 +1,6 @@
-﻿using BrawlLib.SSBB.Types;
-using System;
+﻿using System;
 using System.ComponentModel;
+using BrawlLib.SSBB.Types;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -17,9 +17,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            for (int i = 0; i < WorkingUncompressed.Length; i += sizeof(SndBgmTitleEntry))
+            for (var i = 0; i < WorkingUncompressed.Length; i += sizeof(SndBgmTitleEntry))
             {
-                DataSource source = new DataSource(WorkingUncompressed.Address + i, sizeof(SndBgmTitleEntry));
+                var source = new DataSource(WorkingUncompressed.Address + i, sizeof(SndBgmTitleEntry));
                 new SndBgmTitleEntryNode().Initialize(this, source);
             }
         }
@@ -27,19 +27,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             // Rebuild children using new address
-            for (int i = 0; i < Children.Count; i++)
-            {
-                Children[i].Rebuild(address + (i * sizeof(SndBgmTitleEntry)), sizeof(SndBgmTitleEntry), true);
-            }
+            for (var i = 0; i < Children.Count; i++)
+                Children[i].Rebuild(address + i * sizeof(SndBgmTitleEntry), sizeof(SndBgmTitleEntry), true);
         }
 
         public override int OnCalculateSize(bool force)
         {
-            int size = 0;
-            foreach (SndBgmTitleEntryNode node in Children)
-            {
-                size += node.CalculateSize(true);
-            }
+            var size = 0;
+            foreach (SndBgmTitleEntryNode node in Children) size += node.CalculateSize(true);
 
             return size;
         }
@@ -52,7 +47,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 maxID = Math.Max(entry.ID, maxID);
                 maxSongIndex = Math.Max(entry.SongTitleIndex, maxSongIndex);
             }
-            SndBgmTitleEntryNode n = new SndBgmTitleEntryNode
+
+            var n = new SndBgmTitleEntryNode
             {
                 ID = maxID + 1,
                 SongTitleIndex = maxSongIndex + 1
@@ -63,27 +59,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class SndBgmTitleEntryNode : ResourceNode
     {
-        [Browsable(false)]
-        public SndBgmTitleDataNode Root => _parent as SndBgmTitleDataNode;
-
-        [Browsable(true)]
-        [Category("Entry")]
-        public string Length => sizeof(SndBgmTitleEntry).ToString("x");
-
         //internal SndBgmTitleEntry* Header { get { return (SndBgmTitleEntry*)WorkingUncompressed.Address; } }
         public SndBgmTitleEntry Data;
-
-        public override ResourceType ResourceFileType => ResourceType.SndBgmTitleDataEntry;
-
-        [Category("Song")]
-        [DisplayName("Song ID")]
-        [Description("The ID of the song to show the title for.")]
-        public int ID { get => Data._ID; set { Data._ID = value; SignalPropertyChange(); UpdateName(); } }
-
-        [Category("Song")]
-        [DisplayName("Song Title Index")]
-        [Description("The index of the song title in info.pac (MiscData[140]) and other files.")]
-        public int SongTitleIndex { get => Data._SongTitleIndex; set { Data._SongTitleIndex = value; SignalPropertyChange(); UpdateName(); } }
 
         public SndBgmTitleEntryNode()
         {
@@ -96,37 +73,72 @@ namespace BrawlLib.SSBB.ResourceNodes
             Data._unknown2c = 0x0B;
         }
 
+        [Browsable(false)] public SndBgmTitleDataNode Root => _parent as SndBgmTitleDataNode;
+
+        [Browsable(true)] [Category("Entry")] public string Length => sizeof(SndBgmTitleEntry).ToString("x");
+
+        public override ResourceType ResourceFileType => ResourceType.SndBgmTitleDataEntry;
+
+        [Category("Song")]
+        [DisplayName("Song ID")]
+        [Description("The ID of the song to show the title for.")]
+        public int ID
+        {
+            get => Data._ID;
+            set
+            {
+                Data._ID = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
+
+        [Category("Song")]
+        [DisplayName("Song Title Index")]
+        [Description("The index of the song title in info.pac (MiscData[140]) and other files.")]
+        public int SongTitleIndex
+        {
+            get => Data._SongTitleIndex;
+            set
+            {
+                Data._SongTitleIndex = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
             if (WorkingUncompressed.Length != sizeof(SndBgmTitleEntry))
-            {
                 throw new Exception("Wrong size for SndBgmTitleEntryNode");
-            }
 
             // Copy the data from the address
-            Data = *(SndBgmTitleEntry*)WorkingUncompressed.Address;
+            Data = *(SndBgmTitleEntry*) WorkingUncompressed.Address;
 
             if (_name == null)
             {
-                bool changed = HasChanged;
+                var changed = HasChanged;
                 UpdateName();
                 HasChanged = changed;
             }
 
             return false;
         }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             // Copy the data back to the address
-            *(SndBgmTitleEntry*)address = Data;
+            *(SndBgmTitleEntry*) address = Data;
         }
+
         public override int OnCalculateSize(bool force)
         {
             // Constant size (48 bytes)
             return sizeof(SndBgmTitleEntry);
         }
+
         public void UpdateName()
         {
             Name = ID.ToString("X4") + " --> " + SongTitleIndex;

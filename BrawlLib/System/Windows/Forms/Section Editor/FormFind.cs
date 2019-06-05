@@ -1,38 +1,56 @@
-using Be.Windows.Forms;
 using System.ComponentModel;
+using System.Globalization;
+using Be.Windows.Forms;
 
 namespace System.Windows.Forms
 {
     /// <summary>
-    /// Summary description for FormFind.
+    ///     Summary description for FormFind.
     /// </summary>
     public class FormFind : Form
     {
-        private HexBox hexFind;
-        private TextBox txtFind;
-        private RadioButton rbString;
-        private RadioButton rbHex;
-        private Label label1;
-        private Button btnOK;
-        private Button btnCancel;
-        private GroupBox groupBox1;
-        private Label lblPercent;
-        private Label lblFinding;
-        private CheckBox chkMatchCase;
-        private Timer timerPercent;
-        private Timer timer;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private IContainer components;
         private readonly SectionEditor _mainWindow;
+
+        private bool _finding;
+
+        private FindOptions _findOptions;
+        private Button btnCancel;
+        private Button btnOK;
+        private CheckBox chkMatchCase;
+        private IContainer components;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private GroupBox groupBox1;
+        private HexBox hexFind;
+        private Label label1;
+        private Label lblFinding;
+        private Label lblPercent;
+        private RadioButton rbHex;
+        private RadioButton rbString;
+        private Timer timer;
+        private Timer timerPercent;
+        private TextBox txtFind;
+
         public FormFind(SectionEditor mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
             HexBox = _mainWindow.hexBox1;
             FindOptions = _mainWindow._findOptions;
-            rbString.CheckedChanged += new EventHandler(rb_CheckedChanged);
-            rbHex.CheckedChanged += new EventHandler(rb_CheckedChanged);
+            rbString.CheckedChanged += rb_CheckedChanged;
+            rbHex.CheckedChanged += rb_CheckedChanged;
         }
+
+        public FindOptions FindOptions
+        {
+            get => _findOptions;
+            set
+            {
+                _findOptions = value;
+                Reinitialize();
+            }
+        }
+
+        public HexBox HexBox { get; set; }
 
         private void ByteProvider_Changed(object sender, EventArgs e)
         {
@@ -40,24 +58,21 @@ namespace System.Windows.Forms
         }
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///     Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
                 if (components != null)
-                {
                     components.Dispose();
-                }
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
+
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///     Required method for Designer support - do not modify
+        ///     the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -200,23 +215,9 @@ namespace System.Windows.Forms
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-
         }
+
         #endregion
-
-        private FindOptions _findOptions;
-
-        public FindOptions FindOptions
-        {
-            get => _findOptions;
-            set
-            {
-                _findOptions = value;
-                Reinitialize();
-            }
-        }
-
-        public HexBox HexBox { get; set; }
 
         private void Reinitialize()
         {
@@ -226,14 +227,11 @@ namespace System.Windows.Forms
 
             rbHex.Checked = _findOptions.Type == FindType.Hex;
 
-            if (hexFind.ByteProvider != null)
-            {
-                hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
-            }
+            if (hexFind.ByteProvider != null) hexFind.ByteProvider.Changed -= ByteProvider_Changed;
 
-            byte[] hex = _findOptions.Hex ?? (new byte[0]);
+            var hex = _findOptions.Hex ?? new byte[0];
             hexFind.ByteProvider = new DynamicByteProvider(hex);
-            hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
+            hexFind.ByteProvider.Changed += ByteProvider_Changed;
         }
 
         private void rb_CheckedChanged(object sender, EventArgs e)
@@ -242,13 +240,9 @@ namespace System.Windows.Forms
             hexFind.Enabled = !txtFind.Enabled;
 
             if (txtFind.Enabled)
-            {
                 txtFind.Focus();
-            }
             else
-            {
                 hexFind.Focus();
-            }
         }
 
         private void rbString_Enter(object sender, EventArgs e)
@@ -264,38 +258,29 @@ namespace System.Windows.Forms
         private void FormFind_Activated(object sender, EventArgs e)
         {
             if (rbString.Checked)
-            {
                 txtFind.Focus();
-            }
             else
-            {
                 hexFind.Focus();
-            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             _findOptions.MatchCase = chkMatchCase.Checked;
 
-            DynamicByteProvider provider = hexFind.ByteProvider as DynamicByteProvider;
+            var provider = hexFind.ByteProvider as DynamicByteProvider;
             _findOptions.Hex = provider.Bytes.ToArray();
             _findOptions.Text = txtFind.Text;
             _findOptions.Type = rbHex.Checked ? FindType.Hex : FindType.Text;
             _findOptions.MatchCase = chkMatchCase.Checked;
             _findOptions.IsValid = true;
 
-            bool empty = rbHex.Checked ? _findOptions.Hex.Length == 0 : _findOptions.Text.Length == 0;
-            if (empty)
-            {
-                return;
-            }
+            var empty = rbHex.Checked ? _findOptions.Hex.Length == 0 : _findOptions.Text.Length == 0;
+            if (empty) return;
 
             _mainWindow._findOptions = _findOptions;
             _mainWindow.Find(false);
             Close();
         }
-
-        private bool _finding;
 
         private void UpdateUIToNormalState()
         {
@@ -318,13 +303,9 @@ namespace System.Windows.Forms
         private void btnCancel_Click(object sender, EventArgs e)
         {
             if (_finding)
-            {
                 HexBox.AbortFind();
-            }
             else
-            {
                 Close();
-            }
         }
 
         private void txtString_TextChanged(object sender, EventArgs e)
@@ -334,40 +315,31 @@ namespace System.Windows.Forms
 
         private void ValidateFind()
         {
-            bool isValid = false;
-            if (rbString.Checked && txtFind.Text.Length > 0)
-            {
-                isValid = true;
-            }
+            var isValid = false;
+            if (rbString.Checked && txtFind.Text.Length > 0) isValid = true;
 
-            if (rbHex.Checked && hexFind.ByteProvider.Length > 0)
-            {
-                isValid = true;
-            }
+            if (rbHex.Checked && hexFind.ByteProvider.Length > 0) isValid = true;
 
             btnOK.Enabled = isValid;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (lblFinding.Text.Length == 13)
-            {
-                lblFinding.Text = "";
-            }
+            if (lblFinding.Text.Length == 13) lblFinding.Text = "";
 
             lblFinding.Text += ".";
         }
 
         private void timerPercent_Tick(object sender, EventArgs e)
         {
-            long pos = HexBox.CurrentFindingPosition;
-            long length = HexBox.ByteProvider.Length;
-            double percent = pos / (double)length * 100;
+            var pos = HexBox.CurrentFindingPosition;
+            var length = HexBox.ByteProvider.Length;
+            var percent = pos / (double) length * 100;
 
-            Globalization.NumberFormatInfo nfi =
-                new Globalization.CultureInfo("en-US").NumberFormat;
+            var nfi =
+                new CultureInfo("en-US").NumberFormat;
 
-            string text = percent.ToString("0.00", nfi) + " %";
+            var text = percent.ToString("0.00", nfi) + " %";
             lblPercent.Text = text;
         }
     }

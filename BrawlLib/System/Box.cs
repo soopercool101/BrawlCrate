@@ -8,8 +8,17 @@ namespace System
         public static readonly Box ZeroBox = new Box();
         private Vector3 _min, _max;
 
-        public Vector3 Min { get => _min; set => _min = value; }
-        public Vector3 Max { get => _max; set => _max = value; }
+        public Vector3 Min
+        {
+            get => _min;
+            set => _min = value;
+        }
+
+        public Vector3 Max
+        {
+            get => _max;
+            set => _max = value;
+        }
 
         public Box(Vector3 min, Vector3 max)
         {
@@ -22,6 +31,7 @@ namespace System
             _min.Min(value);
             _max.Max(value);
         }
+
         public void ExpandVolume(Box value)
         {
             ExpandVolume(value.Min);
@@ -30,23 +40,20 @@ namespace System
 
         public static Box GetVolume(Vector3[] points)
         {
-            if (points == null || points.Length == 0)
-            {
-                return new Box();
-            }
+            if (points == null || points.Length == 0) return new Box();
 
-            Box box = ExpandableVolume;
-            foreach (Vector3 point in points)
-            {
-                box.ExpandVolume(point);
-            }
+            var box = ExpandableVolume;
+            foreach (var point in points) box.ExpandVolume(point);
 
             return box;
         }
 
         public bool IsValid => _min < _max;
 
-        public static implicit operator Box(BBox val) { return new Box(val.Min, val.Max); }
+        public static implicit operator Box(BBox val)
+        {
+            return new Box(val.Min, val.Max);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -54,8 +61,17 @@ namespace System
     {
         private BVec3 _min, _max;
 
-        public Vector3 Min { get => _min; set => _min = value; }
-        public Vector3 Max { get => _max; set => _max = value; }
+        public Vector3 Min
+        {
+            get => _min;
+            set => _min = value;
+        }
+
+        public Vector3 Max
+        {
+            get => _max;
+            set => _max = value;
+        }
 
         public BBox(Vector3 min, Vector3 max)
         {
@@ -63,8 +79,20 @@ namespace System
             _max = max;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public static implicit operator BBox(Box val) { return new BBox(val.Min, val.Max); }
+        public static implicit operator BBox(Box val)
+        {
+            return new BBox(val.Min, val.Max);
+        }
     }
 }

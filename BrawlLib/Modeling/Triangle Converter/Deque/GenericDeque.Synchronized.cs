@@ -5,7 +5,7 @@ namespace System.Collections.Generic
         #region SynchronizedDeque Class
 
         // Implements a synchronization wrapper around a deque.
-        [Serializable()]
+        [Serializable]
         private class SynchronizedDeque : Deque<T>, IEnumerable
         {
             #region SynchronziedDeque Members
@@ -26,10 +26,7 @@ namespace System.Collections.Generic
             {
                 #region Require
 
-                if (deque == null)
-                {
-                    throw new ArgumentNullException("deque");
-                }
+                if (deque == null) throw new ArgumentNullException("deque");
 
                 #endregion
 
@@ -138,16 +135,16 @@ namespace System.Collections.Generic
             }
 
             /// <summary>
-            /// Returns an enumerator that can iterate through the Deque.
+            ///     Returns an enumerator that can iterate through the Deque.
             /// </summary>
             /// <returns>
-            /// An IEnumerator for the Deque.
+            ///     An IEnumerator for the Deque.
             /// </returns>
             IEnumerator IEnumerable.GetEnumerator()
             {
                 lock (root)
                 {
-                    return ((IEnumerable)deque).GetEnumerator();
+                    return ((IEnumerable) deque).GetEnumerator();
                 }
             }
 

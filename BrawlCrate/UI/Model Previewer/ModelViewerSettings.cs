@@ -1,118 +1,129 @@
-﻿using BrawlCrate;
+﻿using System.Drawing;
+using BrawlCrate;
+using BrawlCrate.Properties;
 using BrawlLib.Imaging;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Graphics;
-using System.Drawing;
 
 namespace System.Windows.Forms
 {
     public class ModelViewerSettingsDialog : Form
     {
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[31];
+        private readonly CheckBox[] _checkBoxes = new CheckBox[9];
+
+        private readonly GoodColorDialog _dlgColor;
+        private readonly bool[] _origChecks = new bool[9];
+        private readonly float[] _origValues = new float[31];
+        private ModelEditControl _form;
+        private Color _origNode, _origBone, _origFloor;
+        public bool _updating;
+        private NumericInputBox ax;
+        private NumericInputBox ay;
+        private NumericInputBox az;
+        private NumericInputBox azimuth;
+        private Button btnExportSettings;
+        private Button btnImportSettings;
+        private Button btnResetSettings;
+        private ComboBox cboProjection;
+        private RadioButton chkCurrentPos;
+        private RadioButton chkDefaultPos;
+        private CheckBox chkDisableBonesOnPlay;
+        private CheckBox chkDisableHighlight;
+        private CheckBox chkHideMainWindow;
+        private CheckBox chkLightDirectional;
+        private CheckBox chkLightEnabled;
+        private CheckBox chkMaximize;
+        private CheckBox chkPixelLighting;
+        private CheckBox chkPrecalcBoxes;
+        private CheckBox chkRetrieveCorrAnims;
+        private CheckBox chkSaveWindowPosition;
+        private CheckBox chkScaleBones;
+        private CheckBox chkSnapBonesToFloor;
+        private CheckBox chkSyncObjToVIS;
+        private CheckBox chkSyncTexToObj;
+        private CheckBox chkTanCam;
+        private CheckBox chkTanCHR;
+        private CheckBox chkTanFog;
+        private CheckBox chkTanLight;
+        private CheckBox chkTanSHP;
+        private CheckBox chkTanSRT;
+        private CheckBox chkTextOverlays;
+        private CheckBox chkUsePointsAsBones;
+
+        private ModelPanelViewport current;
+        private NumericInputBox dx;
+        private NumericInputBox dy;
+        private NumericInputBox dz;
+        private NumericInputBox elevation;
+        private NumericInputBox ex;
+        private NumericInputBox ey;
+        private NumericInputBox ez;
+        private NumericInputBox farZ;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox grpColors;
+        private GroupBox grpLighting;
+        private GroupBox grpProjection;
         private Label label1;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private Label label18;
+        private Label label19;
         private Label label2;
+        private Label label20;
+        private Label label21;
+        private Label label22;
+        private Label label23;
+        private Label label24;
+        private Label label25;
+        private Label label26;
+        private Label label27;
+        private Label label28;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;
-        private NumericInputBox ax;
-        private NumericInputBox radius;
-        private NumericInputBox dx;
-        private NumericInputBox sx;
-        private NumericInputBox sy;
-        private NumericInputBox dy;
-        private NumericInputBox azimuth;
-        private NumericInputBox ay;
-        private NumericInputBox sz;
-        private NumericInputBox dz;
-        private NumericInputBox elevation;
-        private NumericInputBox az;
-        private GroupBox grpLighting;
-        private GroupBox grpProjection;
-        private Label label10;
+        private Label label8;
         private Label label9;
-        private Label label11;
-        private Label label13;
-        private Label label12;
-        private Label label14;
-        private NumericInputBox farZ;
-        private NumericInputBox nearZ;
-        private NumericInputBox yFov;
-        private NumericInputBox zScale;
-        private NumericInputBox tScale;
-        private NumericInputBox rScale;
-        private Label label17;
-        private Label label16;
-        private GroupBox grpColors;
-        private Label lblLineColor;
-        private Label lblLineText;
-        private Label label20;
-        private Label lblOrbColor;
-        private Label lblOrbText;
-        private Label label15;
         private Label lblCol1Color;
         private Label lblCol1Text;
-        private Label label24;
+        private Label lblLineColor;
+        private Label lblLineText;
+        private Label lblOrbColor;
+        private Label lblOrbText;
         private NumericInputBox maxUndoCount;
-        private Label label18;
-        private NumericInputBox ez;
-        private NumericInputBox ey;
-        private Label label8;
-        private NumericInputBox ex;
-        private Label label23;
-        private Label label22;
-        private Label label21;
-        private Label label19;
-        private Label label25;
-        private ComboBox cboProjection;
-        private CheckBox chkRetrieveCorrAnims;
-        private CheckBox chkSyncTexToObj;
-        private CheckBox chkSyncObjToVIS;
-        private CheckBox chkDisableBonesOnPlay;
-        private CheckBox chkDisableHighlight;
-        private CheckBox chkSnapBonesToFloor;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
-        private Panel panel1;
-        private CheckBox chkMaximize;
-        private CheckBox chkPrecalcBoxes;
-        private CheckBox chkTextOverlays;
-        private TabPage tabPage3;
-        private GroupBox groupBox1;
-        private CheckBox chkTanCam;
-        private CheckBox chkTanFog;
-        private CheckBox chkTanLight;
-        private CheckBox chkTanSHP;
-        private CheckBox chkTanSRT;
-        private CheckBox chkTanCHR;
-        private Button btnResetSettings;
-        private Button btnImportSettings;
-        private Button btnExportSettings;
-        private Label label28;
-        private Label label27;
-        private Label label26;
+        private NumericInputBox nearZ;
         private NumericInputBox numPosRX;
-        private NumericInputBox numPosSZ;
-        private NumericInputBox numPosSY;
+        private NumericInputBox numPosRY;
+        private NumericInputBox numPosRZ;
         private NumericInputBox numPosSX;
+        private NumericInputBox numPosSY;
+        private NumericInputBox numPosSZ;
         private NumericInputBox numPosTX;
         private NumericInputBox numPosTY;
         private NumericInputBox numPosTZ;
-        private NumericInputBox numPosRZ;
-        private NumericInputBox numPosRY;
-        private GroupBox groupBox2;
-        private RadioButton chkDefaultPos;
-        private RadioButton chkCurrentPos;
-        private CheckBox chkSaveWindowPosition;
-        private CheckBox chkLightDirectional;
-        private CheckBox chkLightEnabled;
-        private CheckBox chkUsePointsAsBones;
-        private CheckBox chkScaleBones;
-        private CheckBox chkHideMainWindow;
-        private CheckBox chkPixelLighting;
-        private ModelEditControl _form;
+        private Panel panel1;
+        private NumericInputBox radius;
+        private NumericInputBox rScale;
+        private NumericInputBox sx;
+        private NumericInputBox sy;
+        private NumericInputBox sz;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private NumericInputBox tScale;
+        private NumericInputBox yFov;
+        private NumericInputBox zScale;
 
         public ModelViewerSettingsDialog()
         {
@@ -153,30 +164,19 @@ namespace System.Windows.Forms
 
             _boxes[30] = maxUndoCount;
 
-            for (int i = 0; i < 15; i++)
-            {
+            for (var i = 0; i < 15; i++)
                 if (i < 4 || i > 6)
                 {
                     _boxes[i]._maxValue = 255;
                     _boxes[i]._minValue = 0;
                 }
-            }
 
-            foreach (NumericInputBox b in _boxes)
-            {
-                b.ValueChanged += new EventHandler(BoxValueChanged);
-            }
+            foreach (var b in _boxes) b.ValueChanged += BoxValueChanged;
 
             _updating = true;
             cboProjection.DataSource = Enum.GetNames(typeof(ViewportProjection));
             _updating = false;
         }
-
-        private readonly NumericInputBox[] _boxes = new NumericInputBox[31];
-        private readonly float[] _origValues = new float[31];
-        private Color _origNode, _origBone, _origFloor;
-        private readonly CheckBox[] _checkBoxes = new CheckBox[9];
-        private readonly bool[] _origChecks = new bool[9];
 
         public void Show(ModelEditControl owner)
         {
@@ -188,8 +188,6 @@ namespace System.Windows.Forms
 
             Show(_form as IWin32Window);
         }
-
-        private ModelPanelViewport current;
 
         public void UpdateAll()
         {
@@ -232,42 +230,26 @@ namespace System.Windows.Forms
 
         private void Camera_OnPositionChanged()
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
-            if (!chkDefaultPos.Checked)
-            {
-                chkCurrentPos_CheckedChanged(null, null);
-            }
+            if (!chkDefaultPos.Checked) chkCurrentPos_CheckedChanged(null, null);
         }
 
         public void UpdateViewport(GLViewport viewport)
         {
             if (viewport as ModelPanelViewport != current)
             {
-                if (current != null)
-                {
-                    current.Camera.OnPositionChanged -= Camera_OnPositionChanged;
-                }
+                if (current != null) current.Camera.OnPositionChanged -= Camera_OnPositionChanged;
 
-                if (viewport != null)
-                {
-                    viewport.Camera.OnPositionChanged += Camera_OnPositionChanged;
-                }
+                if (viewport != null) viewport.Camera.OnPositionChanged += Camera_OnPositionChanged;
             }
 
             current = viewport as ModelPanelViewport;
 
             if (chkDefaultPos.Checked)
-            {
                 chkDefaultPos_CheckedChanged(null, null);
-            }
             else
-            {
                 chkCurrentPos_CheckedChanged(null, null);
-            }
 
             _updating = true;
 
@@ -304,10 +286,10 @@ namespace System.Windows.Forms
             chkScaleBones.Checked = current.ScaleBones;
             chkUsePointsAsBones.Checked = current.RenderBonesAsPoints;
 
-            cboProjection.SelectedIndex = (int)current.ViewType;
+            cboProjection.SelectedIndex = (int) current.ViewType;
             chkTextOverlays.Checked = current.TextOverlaysEnabled;
 
-            for (int i = 0; i < 30; i++)
+            for (var i = 0; i < 30; i++)
             {
                 _origValues[i] = _boxes[i].Value;
                 _boxes[i].Tag = i;
@@ -323,21 +305,22 @@ namespace System.Windows.Forms
 
         private void BoxValueChanged(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
             _updating = true;
 
             _boxes[5].Value = _boxes[5].Value.RemapToRange(-180.0f, 180.0f);
             _boxes[6].Value = _boxes[6].Value.RemapToRange(-180.0f, 180.0f);
 
-            current.Ambient = new Vector4(_boxes[0].Value / 255.0f, _boxes[1].Value / 255.0f, _boxes[2].Value / 255.0f, 1.0f);
+            current.Ambient = new Vector4(_boxes[0].Value / 255.0f, _boxes[1].Value / 255.0f, _boxes[2].Value / 255.0f,
+                1.0f);
             current.LightPosition = new Vector4(_boxes[4].Value, _boxes[5].Value, _boxes[6].Value, 1.0f);
-            current.Diffuse = new Vector4(_boxes[7].Value / 255.0f, _boxes[8].Value / 255.0f, _boxes[9].Value / 255.0f, 1.0f);
-            current.Specular = new Vector4(_boxes[11].Value / 255.0f, _boxes[12].Value / 255.0f, _boxes[13].Value / 255.0f, 1.0f);
-            current.Emission = new Vector4(_boxes[3].Value / 255.0f, _boxes[10].Value / 255.0f, _boxes[14].Value / 255.0f, 1.0f);
+            current.Diffuse = new Vector4(_boxes[7].Value / 255.0f, _boxes[8].Value / 255.0f, _boxes[9].Value / 255.0f,
+                1.0f);
+            current.Specular = new Vector4(_boxes[11].Value / 255.0f, _boxes[12].Value / 255.0f,
+                _boxes[13].Value / 255.0f, 1.0f);
+            current.Emission = new Vector4(_boxes[3].Value / 255.0f, _boxes[10].Value / 255.0f,
+                _boxes[14].Value / 255.0f, 1.0f);
 
             current.TranslationScale = _boxes[15].Value;
             current.RotationScale = _boxes[16].Value;
@@ -348,26 +331,18 @@ namespace System.Windows.Forms
             current.Camera._farZ = _boxes[20].Value;
             current.Camera.CalculateProjection();
 
-            _form.AllowedUndos = (uint)Math.Abs(_boxes[21].Value);
+            _form.AllowedUndos = (uint) Math.Abs(_boxes[21].Value);
 
-            int i = (int)(sender as NumericInputBox).Tag;
+            var i = (int) (sender as NumericInputBox).Tag;
 
             if (i == 3 || i == 10 || i == 14)
-            {
                 UpdateEmi();
-            }
             else if (i < 3)
-            {
                 UpdateAmb();
-            }
             else if (i < 10)
-            {
                 UpdateDif();
-            }
             else
-            {
                 UpdateSpe();
-            }
 
             if (chkCurrentPos.Checked)
             {
@@ -391,7 +366,7 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
-        private unsafe void btnOkay_Click(object sender, EventArgs e)
+        private void btnOkay_Click(object sender, EventArgs e)
         {
             //if (Math.Abs(_boxes[5].Value) == Math.Abs(_boxes[6].Value) &&
             //    _boxes[5].Value % 180.0f == 0 &&
@@ -454,6 +429,381 @@ namespace System.Windows.Forms
             _form.RenderLightDisplay = false;
             _form.ModelPanel.OnCurrentViewportChanged -= UpdateViewport;
             _form.ModelPanel.Invalidate();
+        }
+
+        private void lblOrbColor_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = MDL0BoneNode.DefaultNodeColor;
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                MDL0BoneNode.DefaultNodeColor = _dlgColor.Color;
+                UpdateOrb();
+            }
+        }
+
+        private void lblLineColor_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = MDL0BoneNode.DefaultLineColor;
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                MDL0BoneNode.DefaultLineColor = _dlgColor.Color;
+                UpdateLine();
+            }
+        }
+
+        private void lblCol1Color_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = ModelEditorBase._floorHue;
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                ModelEditorBase._floorHue = _dlgColor.Color;
+                UpdateCol1();
+            }
+        }
+
+        private void UpdateOrb()
+        {
+            lblOrbText.Text = ((ARGBPixel) MDL0BoneNode.DefaultNodeColor).ToString();
+            lblOrbColor.BackColor = Color.FromArgb(MDL0BoneNode.DefaultNodeColor.R, MDL0BoneNode.DefaultNodeColor.G,
+                MDL0BoneNode.DefaultNodeColor.B);
+
+            if (!_updating) _form.ModelPanel.Invalidate();
+        }
+
+        private void UpdateLine()
+        {
+            lblLineText.Text = ((ARGBPixel) MDL0BoneNode.DefaultLineColor).ToString();
+            lblLineColor.BackColor = Color.FromArgb(MDL0BoneNode.DefaultLineColor.R, MDL0BoneNode.DefaultLineColor.G,
+                MDL0BoneNode.DefaultLineColor.B);
+
+            if (!_updating) _form.ModelPanel.Invalidate();
+        }
+
+        private void UpdateCol1()
+        {
+            lblCol1Text.Text = ((ARGBPixel) ModelEditorBase._floorHue).ToString();
+            lblCol1Color.BackColor = Color.FromArgb(ModelEditorBase._floorHue.R, ModelEditorBase._floorHue.G,
+                ModelEditorBase._floorHue.B);
+
+            if (!_updating) _form.ModelPanel.Invalidate();
+        }
+
+        private void UpdateAmb()
+        {
+            label19.BackColor = Color.FromArgb(255, (int) ax.Value, (int) ay.Value, (int) az.Value);
+
+            if (!_updating)
+                _form.ModelPanel.CurrentViewport.Ambient =
+                    new Vector4(ax.Value / 255.0f, ay.Value / 255.0f, az.Value / 255.0f, 1.0f);
+        }
+
+        private void UpdateDif()
+        {
+            label21.BackColor = Color.FromArgb(255, (int) dx.Value, (int) dy.Value, (int) dz.Value);
+
+            if (!_updating)
+                _form.ModelPanel.CurrentViewport.Diffuse =
+                    new Vector4(dx.Value / 255.0f, dy.Value / 255.0f, dz.Value / 255.0f, 1.0f);
+        }
+
+        private void UpdateSpe()
+        {
+            label22.BackColor = Color.FromArgb(255, (int) sx.Value, (int) sy.Value, (int) sz.Value);
+
+            if (!_updating)
+                _form.ModelPanel.CurrentViewport.Specular =
+                    new Vector4(sx.Value / 255.0f, sy.Value / 255.0f, sz.Value / 255.0f, 1.0f);
+        }
+
+        private void UpdateEmi()
+        {
+            label23.BackColor = Color.FromArgb(255, (int) ex.Value, (int) ey.Value, (int) ez.Value);
+
+            if (!_updating)
+                _form.ModelPanel.CurrentViewport.Emission =
+                    new Vector4(ex.Value / 255.0f, ey.Value / 255.0f, ez.Value / 255.0f, 1.0f);
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = Color.FromArgb(255, (int) ax.Value, (int) ay.Value, (int) az.Value);
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                _updating = true;
+                ax.Value = _dlgColor.Color.R;
+                ay.Value = _dlgColor.Color.G;
+                az.Value = _dlgColor.Color.B;
+                _updating = false;
+                UpdateAmb();
+            }
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = Color.FromArgb(255, (int) dx.Value, (int) dy.Value, (int) dz.Value);
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                _updating = true;
+                dx.Value = _dlgColor.Color.R;
+                dy.Value = _dlgColor.Color.G;
+                dz.Value = _dlgColor.Color.B;
+                _updating = false;
+                UpdateDif();
+            }
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = Color.FromArgb(255, (int) sx.Value, (int) sy.Value, (int) sz.Value);
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                _updating = true;
+                sx.Value = _dlgColor.Color.R;
+                sy.Value = _dlgColor.Color.G;
+                sz.Value = _dlgColor.Color.B;
+                _updating = false;
+                UpdateSpe();
+            }
+        }
+
+        private void label23_Click(object sender, EventArgs e)
+        {
+            _dlgColor.Color = Color.FromArgb(255, (int) ex.Value, (int) ey.Value, (int) ez.Value);
+            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
+            {
+                _updating = true;
+                ex.Value = _dlgColor.Color.R;
+                ey.Value = _dlgColor.Color.G;
+                ez.Value = _dlgColor.Color.B;
+                _updating = false;
+                UpdateEmi();
+            }
+        }
+
+        private void cboProjection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_updating)
+            {
+                _form.ModelPanel.CurrentViewport.SetProjectionType((ViewportProjection) cboProjection.SelectedIndex);
+                UpdateViewport(_form.ModelPanel.CurrentViewport);
+            }
+        }
+
+        private void chkRetrieveCorrAnims_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating)
+            {
+                if (_form.RetrieveCorrespondingAnimations = chkRetrieveCorrAnims.Checked)
+                    _form.GetFiles(_form.TargetAnimType);
+                else
+                    _form.GetFiles(NW4RAnimType.None);
+            }
+        }
+
+        private void chkSyncTexToObj_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.SyncTexturesToObjectList = chkSyncTexToObj.Checked;
+        }
+
+        private void chkSyncObjToVIS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.SyncVIS0 = chkSyncObjToVIS.Checked;
+        }
+
+        private void chkDisableBonesOnPlay_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.DisableBonesWhenPlaying = chkDisableBonesOnPlay.Checked;
+        }
+
+        private void chkDisableHighlight_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.DoNotHighlightOnMouseMove = chkDisableHighlight.Checked;
+        }
+
+        private void chkSnapBonesToFloor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.SnapBonesToCollisions = chkSnapBonesToFloor.Checked;
+        }
+
+        private void chkMaximize_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form._maximize = chkMaximize.Checked;
+        }
+
+        private void chkPrecalcBoxes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.UseBindStateBoxes = chkPrecalcBoxes.Checked;
+        }
+
+        private void chkTanCHR_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) CHR0EntryNode._generateTangents = chkTanCHR.Checked;
+        }
+
+        private void chkTanSRT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) SRT0TextureNode._generateTangents = chkTanSRT.Checked;
+        }
+
+        private void chkTanSHP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) SHP0VertexSetNode._generateTangents = chkTanSHP.Checked;
+        }
+
+        private void chkTanCam_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) SCN0CameraNode._generateTangents = chkTanCam.Checked;
+        }
+
+        private void chkTanFog_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) SCN0FogNode._generateTangents = chkTanFog.Checked;
+        }
+
+        private void chkTanLight_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) SCN0LightNode._generateTangents = chkTanLight.Checked;
+        }
+
+        private void btnResetSettings_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(this, "Are you sure you want to reset all settings to default?", "Reset?",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != DialogResult.OK) return;
+
+            Settings.Default.ViewerSettings = null;
+            Settings.Default.ViewerSettingsSet = false;
+            _form.SetDefaultSettings();
+            UpdateAll();
+        }
+
+        private void btnImportSettings_Click(object sender, EventArgs e)
+        {
+            var od = new OpenFileDialog
+            {
+                Filter = "BrawlCrate Settings (*.settings)|*.settings",
+                FileName = Application.StartupPath
+            };
+            if (od.ShowDialog() == DialogResult.OK)
+            {
+                var path = od.FileName;
+                var settings = Serializer.DeserializeObject(path) as ModelEditorSettings;
+                _form.DistributeSettings(settings);
+            }
+        }
+
+        private void btnExportSettings_Click(object sender, EventArgs e)
+        {
+            var sd = new SaveFileDialog
+            {
+                Filter = "BrawlCrate Settings (*.settings)|*.settings",
+                FileName = Application.StartupPath
+            };
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                var path = sd.FileName;
+                var settings = _form.CollectSettings();
+
+                Serializer.SerializeObject(path, settings);
+                MessageBox.Show("Settings successfully saved to " + path);
+            }
+        }
+
+        private void chkTextOverlays_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.ModelPanel.CurrentViewport.TextOverlaysEnabled = chkTextOverlays.Checked;
+        }
+
+        private void maxUndoCount_ValueChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form._allowedUndos = (uint) maxUndoCount.Value;
+        }
+
+        private void chkSaveWindowPosition_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form._savePosition = chkSaveWindowPosition.Checked;
+        }
+
+        private void chkDefaultPos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkDefaultPos.Checked) return;
+
+            _updating = true;
+
+            numPosSX.Value = current.Camera._defaultScale._x;
+            numPosSY.Value = current.Camera._defaultScale._y;
+            numPosSZ.Value = current.Camera._defaultScale._z;
+
+            numPosRX.Value = current.Camera._defaultRotate._x;
+            numPosRY.Value = current.Camera._defaultRotate._y;
+            numPosRZ.Value = current.Camera._defaultRotate._z;
+
+            numPosTX.Value = current.Camera._defaultTranslate._x;
+            numPosTY.Value = current.Camera._defaultTranslate._y;
+            numPosTZ.Value = current.Camera._defaultTranslate._z;
+
+            _updating = false;
+        }
+
+        private void chkCurrentPos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chkCurrentPos.Checked) return;
+
+            _updating = true;
+
+            numPosSX.Value = current.Camera._scale._x;
+            numPosSY.Value = current.Camera._scale._y;
+            numPosSZ.Value = current.Camera._scale._z;
+
+            numPosRX.Value = current.Camera._rotation._x;
+            numPosRY.Value = current.Camera._rotation._y;
+            numPosRZ.Value = current.Camera._rotation._z;
+
+            var trans = current.Camera.GetPoint();
+            numPosTX.Value = trans._x;
+            numPosTY.Value = trans._y;
+            numPosTZ.Value = trans._z;
+
+            _updating = false;
+        }
+
+        private void chkLightEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.ModelPanel.CurrentViewport.LightEnabled = chkLightEnabled.Checked;
+        }
+
+        private void chkLightDirectional_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.ModelPanel.CurrentViewport.LightDirectional = chkLightDirectional.Checked;
+        }
+
+        private void chkScaleBones_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.ModelPanel.CurrentViewport.ScaleBones = chkScaleBones.Checked;
+        }
+
+        private void chkUsePointsAsBones_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating) _form.ModelPanel.CurrentViewport.RenderBonesAsPoints = chkUsePointsAsBones.Checked;
+        }
+
+        private void chkHideMainWindow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating) return;
+
+            MainForm.Instance.Visible = !(_form._hideMainWindow = chkHideMainWindow.Checked);
+            foreach (var c in ModelEditControl.Instances) c._hideMainWindow = _form._hideMainWindow;
+
+            _form.SaveSettings();
+        }
+
+        private void chkPixelLighting_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating) return;
+
+            Settings.Default.PixelLighting =
+                ShaderGenerator.UsePixelLighting = chkPixelLighting.Checked;
+            _form.ModelPanel.Invalidate();
+            Settings.Default.Save();
         }
 
         #region Designer
@@ -582,7 +932,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Enabled = false;
             btnCancel.Location = new Drawing.Point(136, 6);
@@ -592,22 +942,22 @@ namespace System.Windows.Forms
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Visible = false;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(268, 6);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(60, 23);
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // label1
             // 
-            label1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Drawing.Point(33, 81);
             label1.Name = "label1";
@@ -628,7 +978,7 @@ namespace System.Windows.Forms
             // 
             // label3
             // 
-            label3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Location = new Drawing.Point(33, 100);
             label3.Name = "label3";
@@ -639,7 +989,7 @@ namespace System.Windows.Forms
             // 
             // label4
             // 
-            label4.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Location = new Drawing.Point(33, 119);
             label4.Name = "label4";
@@ -650,7 +1000,7 @@ namespace System.Windows.Forms
             // 
             // label5
             // 
-            label5.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Location = new Drawing.Point(88, 62);
             label5.Name = "label5";
@@ -661,7 +1011,7 @@ namespace System.Windows.Forms
             // 
             // label6
             // 
-            label6.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label6.BorderStyle = BorderStyle.FixedSingle;
             label6.Location = new Drawing.Point(137, 62);
             label6.Name = "label6";
@@ -672,7 +1022,7 @@ namespace System.Windows.Forms
             // 
             // label7
             // 
-            label7.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.BorderStyle = BorderStyle.FixedSingle;
             label7.Location = new Drawing.Point(186, 62);
             label7.Name = "label7";
@@ -733,7 +1083,7 @@ namespace System.Windows.Forms
             chkLightDirectional.Text = "Directional";
             chkLightDirectional.UseVisualStyleBackColor = true;
             chkLightDirectional.Visible = false;
-            chkLightDirectional.CheckedChanged += new EventHandler(chkLightDirectional_CheckedChanged);
+            chkLightDirectional.CheckedChanged += chkLightDirectional_CheckedChanged;
             // 
             // chkLightEnabled
             // 
@@ -744,7 +1094,7 @@ namespace System.Windows.Forms
             chkLightEnabled.TabIndex = 44;
             chkLightEnabled.Text = "Enabled";
             chkLightEnabled.UseVisualStyleBackColor = true;
-            chkLightEnabled.CheckedChanged += new EventHandler(chkLightEnabled_CheckedChanged);
+            chkLightEnabled.CheckedChanged += chkLightEnabled_CheckedChanged;
             // 
             // label23
             // 
@@ -753,7 +1103,7 @@ namespace System.Windows.Forms
             label23.Name = "label23";
             label23.Size = new Drawing.Size(40, 20);
             label23.TabIndex = 43;
-            label23.Click += new EventHandler(label23_Click);
+            label23.Click += label23_Click;
             // 
             // label22
             // 
@@ -762,7 +1112,7 @@ namespace System.Windows.Forms
             label22.Name = "label22";
             label22.Size = new Drawing.Size(40, 20);
             label22.TabIndex = 42;
-            label22.Click += new EventHandler(label22_Click);
+            label22.Click += label22_Click;
             // 
             // label21
             // 
@@ -771,7 +1121,7 @@ namespace System.Windows.Forms
             label21.Name = "label21";
             label21.Size = new Drawing.Size(40, 20);
             label21.TabIndex = 41;
-            label21.Click += new EventHandler(label21_Click);
+            label21.Click += label21_Click;
             // 
             // label19
             // 
@@ -780,11 +1130,11 @@ namespace System.Windows.Forms
             label19.Name = "label19";
             label19.Size = new Drawing.Size(40, 20);
             label19.TabIndex = 11;
-            label19.Click += new EventHandler(label19_Click);
+            label19.Click += label19_Click;
             // 
             // ez
             // 
-            ez.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            ez.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ez.BorderStyle = BorderStyle.FixedSingle;
             ez.Integral = false;
             ez.Location = new Drawing.Point(186, 138);
@@ -797,7 +1147,7 @@ namespace System.Windows.Forms
             // 
             // ey
             // 
-            ey.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            ey.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ey.BorderStyle = BorderStyle.FixedSingle;
             ey.Integral = false;
             ey.Location = new Drawing.Point(137, 138);
@@ -810,7 +1160,7 @@ namespace System.Windows.Forms
             // 
             // label8
             // 
-            label8.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label8.BorderStyle = BorderStyle.FixedSingle;
             label8.Location = new Drawing.Point(33, 138);
             label8.Name = "label8";
@@ -821,7 +1171,7 @@ namespace System.Windows.Forms
             // 
             // ex
             // 
-            ex.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            ex.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ex.BorderStyle = BorderStyle.FixedSingle;
             ex.Integral = false;
             ex.Location = new Drawing.Point(88, 138);
@@ -854,7 +1204,7 @@ namespace System.Windows.Forms
             // 
             // sz
             // 
-            sz.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            sz.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             sz.BorderStyle = BorderStyle.FixedSingle;
             sz.Integral = false;
             sz.Location = new Drawing.Point(186, 119);
@@ -867,7 +1217,7 @@ namespace System.Windows.Forms
             // 
             // dz
             // 
-            dz.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            dz.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             dz.BorderStyle = BorderStyle.FixedSingle;
             dz.Integral = false;
             dz.Location = new Drawing.Point(186, 100);
@@ -892,7 +1242,7 @@ namespace System.Windows.Forms
             // 
             // az
             // 
-            az.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            az.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             az.BorderStyle = BorderStyle.FixedSingle;
             az.Integral = false;
             az.Location = new Drawing.Point(186, 81);
@@ -917,7 +1267,7 @@ namespace System.Windows.Forms
             // 
             // sy
             // 
-            sy.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            sy.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             sy.BorderStyle = BorderStyle.FixedSingle;
             sy.Integral = false;
             sy.Location = new Drawing.Point(137, 119);
@@ -942,7 +1292,7 @@ namespace System.Windows.Forms
             // 
             // dy
             // 
-            dy.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            dy.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             dy.BorderStyle = BorderStyle.FixedSingle;
             dy.Integral = false;
             dy.Location = new Drawing.Point(137, 100);
@@ -955,7 +1305,7 @@ namespace System.Windows.Forms
             // 
             // ay
             // 
-            ay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            ay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ay.BorderStyle = BorderStyle.FixedSingle;
             ay.Integral = false;
             ay.Location = new Drawing.Point(137, 81);
@@ -968,7 +1318,7 @@ namespace System.Windows.Forms
             // 
             // sx
             // 
-            sx.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            sx.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             sx.BorderStyle = BorderStyle.FixedSingle;
             sx.Integral = false;
             sx.Location = new Drawing.Point(88, 119);
@@ -981,7 +1331,7 @@ namespace System.Windows.Forms
             // 
             // dx
             // 
-            dx.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            dx.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             dx.BorderStyle = BorderStyle.FixedSingle;
             dx.Integral = false;
             dx.Location = new Drawing.Point(88, 100);
@@ -994,7 +1344,7 @@ namespace System.Windows.Forms
             // 
             // ax
             // 
-            ax.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            ax.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ax.BorderStyle = BorderStyle.FixedSingle;
             ax.Integral = false;
             ax.Location = new Drawing.Point(88, 81);
@@ -1061,7 +1411,7 @@ namespace System.Windows.Forms
             chkDefaultPos.TabIndex = 27;
             chkDefaultPos.Text = "Default";
             chkDefaultPos.UseVisualStyleBackColor = true;
-            chkDefaultPos.CheckedChanged += new EventHandler(chkDefaultPos_CheckedChanged);
+            chkDefaultPos.CheckedChanged += chkDefaultPos_CheckedChanged;
             // 
             // chkCurrentPos
             // 
@@ -1074,7 +1424,7 @@ namespace System.Windows.Forms
             chkCurrentPos.TabStop = true;
             chkCurrentPos.Text = "Current";
             chkCurrentPos.UseVisualStyleBackColor = true;
-            chkCurrentPos.CheckedChanged += new EventHandler(chkCurrentPos_CheckedChanged);
+            chkCurrentPos.CheckedChanged += chkCurrentPos_CheckedChanged;
             // 
             // label26
             // 
@@ -1232,7 +1582,7 @@ namespace System.Windows.Forms
             cboProjection.Name = "cboProjection";
             cboProjection.Size = new Drawing.Size(198, 21);
             cboProjection.TabIndex = 12;
-            cboProjection.SelectedIndexChanged += new EventHandler(cboProjection_SelectedIndexChanged);
+            cboProjection.SelectedIndexChanged += cboProjection_SelectedIndexChanged;
             // 
             // farZ
             // 
@@ -1391,7 +1741,7 @@ namespace System.Windows.Forms
             lblCol1Color.Name = "lblCol1Color";
             lblCol1Color.Size = new Drawing.Size(40, 20);
             lblCol1Color.TabIndex = 5;
-            lblCol1Color.Click += new EventHandler(lblCol1Color_Click);
+            lblCol1Color.Click += lblCol1Color_Click;
             // 
             // lblLineColor
             // 
@@ -1400,7 +1750,7 @@ namespace System.Windows.Forms
             lblLineColor.Name = "lblLineColor";
             lblLineColor.Size = new Drawing.Size(40, 20);
             lblLineColor.TabIndex = 8;
-            lblLineColor.Click += new EventHandler(lblLineColor_Click);
+            lblLineColor.Click += lblLineColor_Click;
             // 
             // lblCol1Text
             // 
@@ -1451,7 +1801,7 @@ namespace System.Windows.Forms
             lblOrbColor.Name = "lblOrbColor";
             lblOrbColor.Size = new Drawing.Size(40, 20);
             lblOrbColor.TabIndex = 5;
-            lblOrbColor.Click += new EventHandler(lblOrbColor_Click);
+            lblOrbColor.Click += lblOrbColor_Click;
             // 
             // lblOrbText
             // 
@@ -1476,7 +1826,7 @@ namespace System.Windows.Forms
             // 
             // label18
             // 
-            label18.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label18.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label18.AutoSize = true;
             label18.Location = new Drawing.Point(4, 367);
             label18.Name = "label18";
@@ -1493,7 +1843,7 @@ namespace System.Windows.Forms
             chkRetrieveCorrAnims.TabIndex = 40;
             chkRetrieveCorrAnims.Text = "Retreieve animations with corresponding name";
             chkRetrieveCorrAnims.UseVisualStyleBackColor = true;
-            chkRetrieveCorrAnims.CheckedChanged += new EventHandler(chkRetrieveCorrAnims_CheckedChanged);
+            chkRetrieveCorrAnims.CheckedChanged += chkRetrieveCorrAnims_CheckedChanged;
             // 
             // chkSyncTexToObj
             // 
@@ -1504,7 +1854,7 @@ namespace System.Windows.Forms
             chkSyncTexToObj.TabIndex = 41;
             chkSyncTexToObj.Text = "Sync texture list with selected object";
             chkSyncTexToObj.UseVisualStyleBackColor = true;
-            chkSyncTexToObj.CheckedChanged += new EventHandler(chkSyncTexToObj_CheckedChanged);
+            chkSyncTexToObj.CheckedChanged += chkSyncTexToObj_CheckedChanged;
             // 
             // chkSyncObjToVIS
             // 
@@ -1515,7 +1865,7 @@ namespace System.Windows.Forms
             chkSyncObjToVIS.TabIndex = 42;
             chkSyncObjToVIS.Text = "Sync object list checkbox changes to selected VIS0";
             chkSyncObjToVIS.UseVisualStyleBackColor = true;
-            chkSyncObjToVIS.CheckedChanged += new EventHandler(chkSyncObjToVIS_CheckedChanged);
+            chkSyncObjToVIS.CheckedChanged += chkSyncObjToVIS_CheckedChanged;
             // 
             // chkDisableBonesOnPlay
             // 
@@ -1526,7 +1876,7 @@ namespace System.Windows.Forms
             chkDisableBonesOnPlay.TabIndex = 43;
             chkDisableBonesOnPlay.Text = "Disable bones when playing animaton";
             chkDisableBonesOnPlay.UseVisualStyleBackColor = true;
-            chkDisableBonesOnPlay.CheckedChanged += new EventHandler(chkDisableBonesOnPlay_CheckedChanged);
+            chkDisableBonesOnPlay.CheckedChanged += chkDisableBonesOnPlay_CheckedChanged;
             // 
             // chkDisableHighlight
             // 
@@ -1537,7 +1887,7 @@ namespace System.Windows.Forms
             chkDisableHighlight.TabIndex = 44;
             chkDisableHighlight.Text = "Disable realtime highlighting in viewport";
             chkDisableHighlight.UseVisualStyleBackColor = true;
-            chkDisableHighlight.CheckedChanged += new EventHandler(chkDisableHighlight_CheckedChanged);
+            chkDisableHighlight.CheckedChanged += chkDisableHighlight_CheckedChanged;
             // 
             // chkSnapBonesToFloor
             // 
@@ -1548,7 +1898,7 @@ namespace System.Windows.Forms
             chkSnapBonesToFloor.TabIndex = 46;
             chkSnapBonesToFloor.Text = "Snap dragged bones to floor collisions";
             chkSnapBonesToFloor.UseVisualStyleBackColor = true;
-            chkSnapBonesToFloor.CheckedChanged += new EventHandler(chkSnapBonesToFloor_CheckedChanged);
+            chkSnapBonesToFloor.CheckedChanged += chkSnapBonesToFloor_CheckedChanged;
             // 
             // tabControl1
             // 
@@ -1584,7 +1934,7 @@ namespace System.Windows.Forms
             chkTextOverlays.TabIndex = 46;
             chkTextOverlays.Text = "Enable text overlays";
             chkTextOverlays.UseVisualStyleBackColor = true;
-            chkTextOverlays.CheckedChanged += new EventHandler(chkTextOverlays_CheckedChanged);
+            chkTextOverlays.CheckedChanged += chkTextOverlays_CheckedChanged;
             // 
             // tabPage2
             // 
@@ -1616,7 +1966,7 @@ namespace System.Windows.Forms
             chkPixelLighting.TabIndex = 52;
             chkPixelLighting.Text = "Per pixel lighting (as opposed to per vertex)";
             chkPixelLighting.UseVisualStyleBackColor = true;
-            chkPixelLighting.CheckedChanged += new EventHandler(chkPixelLighting_CheckedChanged);
+            chkPixelLighting.CheckedChanged += chkPixelLighting_CheckedChanged;
             // 
             // chkHideMainWindow
             // 
@@ -1627,7 +1977,7 @@ namespace System.Windows.Forms
             chkHideMainWindow.TabIndex = 51;
             chkHideMainWindow.Text = "Hide main window";
             chkHideMainWindow.UseVisualStyleBackColor = true;
-            chkHideMainWindow.CheckedChanged += new EventHandler(chkHideMainWindow_CheckedChanged);
+            chkHideMainWindow.CheckedChanged += chkHideMainWindow_CheckedChanged;
             // 
             // chkUsePointsAsBones
             // 
@@ -1638,7 +1988,7 @@ namespace System.Windows.Forms
             chkUsePointsAsBones.TabIndex = 50;
             chkUsePointsAsBones.Text = "Display bones as points";
             chkUsePointsAsBones.UseVisualStyleBackColor = true;
-            chkUsePointsAsBones.CheckedChanged += new EventHandler(chkUsePointsAsBones_CheckedChanged);
+            chkUsePointsAsBones.CheckedChanged += chkUsePointsAsBones_CheckedChanged;
             // 
             // chkScaleBones
             // 
@@ -1649,7 +1999,7 @@ namespace System.Windows.Forms
             chkScaleBones.TabIndex = 49;
             chkScaleBones.Text = "Scale bones with camera";
             chkScaleBones.UseVisualStyleBackColor = true;
-            chkScaleBones.CheckedChanged += new EventHandler(chkScaleBones_CheckedChanged);
+            chkScaleBones.CheckedChanged += chkScaleBones_CheckedChanged;
             // 
             // chkSaveWindowPosition
             // 
@@ -1660,7 +2010,7 @@ namespace System.Windows.Forms
             chkSaveWindowPosition.TabIndex = 48;
             chkSaveWindowPosition.Text = "Save window position and dimensions";
             chkSaveWindowPosition.UseVisualStyleBackColor = true;
-            chkSaveWindowPosition.CheckedChanged += new EventHandler(chkSaveWindowPosition_CheckedChanged);
+            chkSaveWindowPosition.CheckedChanged += chkSaveWindowPosition_CheckedChanged;
             // 
             // chkMaximize
             // 
@@ -1671,11 +2021,11 @@ namespace System.Windows.Forms
             chkMaximize.TabIndex = 47;
             chkMaximize.Text = "Maximize window upon opening";
             chkMaximize.UseVisualStyleBackColor = true;
-            chkMaximize.CheckedChanged += new EventHandler(chkMaximize_CheckedChanged);
+            chkMaximize.CheckedChanged += chkMaximize_CheckedChanged;
             // 
             // maxUndoCount
             // 
-            maxUndoCount.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            maxUndoCount.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             maxUndoCount.BorderStyle = BorderStyle.FixedSingle;
             maxUndoCount.Integral = false;
             maxUndoCount.Location = new Drawing.Point(155, 365);
@@ -1685,7 +2035,7 @@ namespace System.Windows.Forms
             maxUndoCount.Size = new Drawing.Size(66, 20);
             maxUndoCount.TabIndex = 37;
             maxUndoCount.Text = "0";
-            maxUndoCount.ValueChanged += new EventHandler(maxUndoCount_ValueChanged);
+            maxUndoCount.ValueChanged += maxUndoCount_ValueChanged;
             // 
             // tabPage3
             // 
@@ -1724,7 +2074,7 @@ namespace System.Windows.Forms
             chkTanCam.TabIndex = 55;
             chkTanCam.Text = "SCN0 Camera";
             chkTanCam.UseVisualStyleBackColor = true;
-            chkTanCam.CheckedChanged += new EventHandler(chkTanCam_CheckedChanged);
+            chkTanCam.CheckedChanged += chkTanCam_CheckedChanged;
             // 
             // chkTanFog
             // 
@@ -1735,7 +2085,7 @@ namespace System.Windows.Forms
             chkTanFog.TabIndex = 54;
             chkTanFog.Text = "SCN0 Fog";
             chkTanFog.UseVisualStyleBackColor = true;
-            chkTanFog.CheckedChanged += new EventHandler(chkTanFog_CheckedChanged);
+            chkTanFog.CheckedChanged += chkTanFog_CheckedChanged;
             // 
             // chkTanLight
             // 
@@ -1746,7 +2096,7 @@ namespace System.Windows.Forms
             chkTanLight.TabIndex = 53;
             chkTanLight.Text = "SCN0 Light";
             chkTanLight.UseVisualStyleBackColor = true;
-            chkTanLight.CheckedChanged += new EventHandler(chkTanLight_CheckedChanged);
+            chkTanLight.CheckedChanged += chkTanLight_CheckedChanged;
             // 
             // chkTanSHP
             // 
@@ -1757,7 +2107,7 @@ namespace System.Windows.Forms
             chkTanSHP.TabIndex = 52;
             chkTanSHP.Text = "SHP0";
             chkTanSHP.UseVisualStyleBackColor = true;
-            chkTanSHP.CheckedChanged += new EventHandler(chkTanSHP_CheckedChanged);
+            chkTanSHP.CheckedChanged += chkTanSHP_CheckedChanged;
             // 
             // chkTanSRT
             // 
@@ -1768,7 +2118,7 @@ namespace System.Windows.Forms
             chkTanSRT.TabIndex = 51;
             chkTanSRT.Text = "SRT0";
             chkTanSRT.UseVisualStyleBackColor = true;
-            chkTanSRT.CheckedChanged += new EventHandler(chkTanSRT_CheckedChanged);
+            chkTanSRT.CheckedChanged += chkTanSRT_CheckedChanged;
             // 
             // chkTanCHR
             // 
@@ -1779,7 +2129,7 @@ namespace System.Windows.Forms
             chkTanCHR.TabIndex = 50;
             chkTanCHR.Text = "CHR0";
             chkTanCHR.UseVisualStyleBackColor = true;
-            chkTanCHR.CheckedChanged += new EventHandler(chkTanCHR_CheckedChanged);
+            chkTanCHR.CheckedChanged += chkTanCHR_CheckedChanged;
             // 
             // chkPrecalcBoxes
             // 
@@ -1790,7 +2140,7 @@ namespace System.Windows.Forms
             chkPrecalcBoxes.TabIndex = 48;
             chkPrecalcBoxes.Text = "Display precalculated bounding boxes on frame 0";
             chkPrecalcBoxes.UseVisualStyleBackColor = true;
-            chkPrecalcBoxes.CheckedChanged += new EventHandler(chkPrecalcBoxes_CheckedChanged);
+            chkPrecalcBoxes.CheckedChanged += chkPrecalcBoxes_CheckedChanged;
             // 
             // panel1
             // 
@@ -1813,7 +2163,7 @@ namespace System.Windows.Forms
             btnResetSettings.TabIndex = 5;
             btnResetSettings.Text = "Reset";
             btnResetSettings.UseVisualStyleBackColor = true;
-            btnResetSettings.Click += new EventHandler(btnResetSettings_Click);
+            btnResetSettings.Click += btnResetSettings_Click;
             // 
             // btnImportSettings
             // 
@@ -1824,7 +2174,7 @@ namespace System.Windows.Forms
             btnImportSettings.Text = "Import";
             btnImportSettings.UseVisualStyleBackColor = true;
             btnImportSettings.Visible = false;
-            btnImportSettings.Click += new EventHandler(btnImportSettings_Click);
+            btnImportSettings.Click += btnImportSettings_Click;
             // 
             // btnExportSettings
             // 
@@ -1836,7 +2186,7 @@ namespace System.Windows.Forms
             btnExportSettings.Text = "Export";
             btnExportSettings.UseVisualStyleBackColor = true;
             btnExportSettings.Visible = false;
-            btnExportSettings.Click += new EventHandler(btnExportSettings_Click);
+            btnExportSettings.Click += btnExportSettings_Click;
             // 
             // ModelViewerSettingsDialog
             // 
@@ -1868,469 +2218,8 @@ namespace System.Windows.Forms
             groupBox1.PerformLayout();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-
         }
+
         #endregion
-
-        private readonly GoodColorDialog _dlgColor;
-        private void lblOrbColor_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = MDL0BoneNode.DefaultNodeColor;
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                MDL0BoneNode.DefaultNodeColor = _dlgColor.Color;
-                UpdateOrb();
-            }
-        }
-
-        private void lblLineColor_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = MDL0BoneNode.DefaultLineColor;
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                MDL0BoneNode.DefaultLineColor = _dlgColor.Color;
-                UpdateLine();
-            }
-        }
-
-        private void lblCol1Color_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = ModelEditorBase._floorHue;
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                ModelEditorBase._floorHue = _dlgColor.Color;
-                UpdateCol1();
-            }
-        }
-
-        private void UpdateOrb()
-        {
-            lblOrbText.Text = ((ARGBPixel)MDL0BoneNode.DefaultNodeColor).ToString();
-            lblOrbColor.BackColor = Color.FromArgb(MDL0BoneNode.DefaultNodeColor.R, MDL0BoneNode.DefaultNodeColor.G, MDL0BoneNode.DefaultNodeColor.B);
-
-            if (!_updating)
-            {
-                _form.ModelPanel.Invalidate();
-            }
-        }
-        private void UpdateLine()
-        {
-            lblLineText.Text = ((ARGBPixel)MDL0BoneNode.DefaultLineColor).ToString();
-            lblLineColor.BackColor = Color.FromArgb(MDL0BoneNode.DefaultLineColor.R, MDL0BoneNode.DefaultLineColor.G, MDL0BoneNode.DefaultLineColor.B);
-
-            if (!_updating)
-            {
-                _form.ModelPanel.Invalidate();
-            }
-        }
-        private void UpdateCol1()
-        {
-            lblCol1Text.Text = ((ARGBPixel)ModelEditorBase._floorHue).ToString();
-            lblCol1Color.BackColor = Color.FromArgb(ModelEditorBase._floorHue.R, ModelEditorBase._floorHue.G, ModelEditorBase._floorHue.B);
-
-            if (!_updating)
-            {
-                _form.ModelPanel.Invalidate();
-            }
-        }
-        private void UpdateAmb()
-        {
-            label19.BackColor = Color.FromArgb(255, (int)(ax.Value), (int)(ay.Value), (int)(az.Value));
-
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.Ambient = new Vector4(ax.Value / 255.0f, ay.Value / 255.0f, az.Value / 255.0f, 1.0f);
-            }
-        }
-        private void UpdateDif()
-        {
-            label21.BackColor = Color.FromArgb(255, (int)(dx.Value), (int)(dy.Value), (int)(dz.Value));
-
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.Diffuse = new Vector4(dx.Value / 255.0f, dy.Value / 255.0f, dz.Value / 255.0f, 1.0f);
-            }
-        }
-        private void UpdateSpe()
-        {
-            label22.BackColor = Color.FromArgb(255, (int)(sx.Value), (int)(sy.Value), (int)(sz.Value));
-
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.Specular = new Vector4(sx.Value / 255.0f, sy.Value / 255.0f, sz.Value / 255.0f, 1.0f);
-            }
-        }
-        private void UpdateEmi()
-        {
-            label23.BackColor = Color.FromArgb(255, (int)(ex.Value), (int)(ey.Value), (int)(ez.Value));
-
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.Emission = new Vector4(ex.Value / 255.0f, ey.Value / 255.0f, ez.Value / 255.0f, 1.0f);
-            }
-        }
-        public bool _updating = false;
-        private void label19_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = Color.FromArgb(255, (int)(ax.Value), (int)(ay.Value), (int)(az.Value));
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                _updating = true;
-                ax.Value = _dlgColor.Color.R;
-                ay.Value = _dlgColor.Color.G;
-                az.Value = _dlgColor.Color.B;
-                _updating = false;
-                UpdateAmb();
-            }
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = Color.FromArgb(255, (int)(dx.Value), (int)(dy.Value), (int)(dz.Value));
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                _updating = true;
-                dx.Value = _dlgColor.Color.R;
-                dy.Value = _dlgColor.Color.G;
-                dz.Value = _dlgColor.Color.B;
-                _updating = false;
-                UpdateDif();
-            }
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = Color.FromArgb(255, (int)(sx.Value), (int)(sy.Value), (int)(sz.Value));
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                _updating = true;
-                sx.Value = _dlgColor.Color.R;
-                sy.Value = _dlgColor.Color.G;
-                sz.Value = _dlgColor.Color.B;
-                _updating = false;
-                UpdateSpe();
-            }
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
-            _dlgColor.Color = Color.FromArgb(255, (int)(ex.Value), (int)(ey.Value), (int)(ez.Value));
-            if (_dlgColor.ShowDialog(this) == DialogResult.OK)
-            {
-                _updating = true;
-                ex.Value = _dlgColor.Color.R;
-                ey.Value = _dlgColor.Color.G;
-                ez.Value = _dlgColor.Color.B;
-                _updating = false;
-                UpdateEmi();
-            }
-        }
-
-        private void cboProjection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.SetProjectionType((ViewportProjection)cboProjection.SelectedIndex);
-                UpdateViewport(_form.ModelPanel.CurrentViewport);
-            }
-        }
-
-        private void chkRetrieveCorrAnims_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                if (_form.RetrieveCorrespondingAnimations = chkRetrieveCorrAnims.Checked)
-                {
-                    _form.GetFiles(_form.TargetAnimType);
-                }
-                else
-                {
-                    _form.GetFiles(NW4RAnimType.None);
-                }
-            }
-        }
-
-        private void chkSyncTexToObj_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.SyncTexturesToObjectList = chkSyncTexToObj.Checked;
-            }
-        }
-
-        private void chkSyncObjToVIS_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.SyncVIS0 = chkSyncObjToVIS.Checked;
-            }
-        }
-
-        private void chkDisableBonesOnPlay_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.DisableBonesWhenPlaying = chkDisableBonesOnPlay.Checked;
-            }
-        }
-
-        private void chkDisableHighlight_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.DoNotHighlightOnMouseMove = chkDisableHighlight.Checked;
-            }
-        }
-
-        private void chkSnapBonesToFloor_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.SnapBonesToCollisions = chkSnapBonesToFloor.Checked;
-            }
-        }
-
-        private void chkMaximize_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form._maximize = chkMaximize.Checked;
-            }
-        }
-
-        private void chkPrecalcBoxes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.UseBindStateBoxes = chkPrecalcBoxes.Checked;
-            }
-        }
-
-        private void chkTanCHR_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                CHR0EntryNode._generateTangents = chkTanCHR.Checked;
-            }
-        }
-
-        private void chkTanSRT_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                SRT0TextureNode._generateTangents = chkTanSRT.Checked;
-            }
-        }
-
-        private void chkTanSHP_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                SHP0VertexSetNode._generateTangents = chkTanSHP.Checked;
-            }
-        }
-
-        private void chkTanCam_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                SCN0CameraNode._generateTangents = chkTanCam.Checked;
-            }
-        }
-
-        private void chkTanFog_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                SCN0FogNode._generateTangents = chkTanFog.Checked;
-            }
-        }
-
-        private void chkTanLight_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                SCN0LightNode._generateTangents = chkTanLight.Checked;
-            }
-        }
-
-        private void btnResetSettings_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show(this, "Are you sure you want to reset all settings to default?", "Reset?", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) != DialogResult.OK)
-            {
-                return;
-            }
-
-            BrawlCrate.Properties.Settings.Default.ViewerSettings = null;
-            BrawlCrate.Properties.Settings.Default.ViewerSettingsSet = false;
-            _form.SetDefaultSettings();
-            UpdateAll();
-        }
-
-        private void btnImportSettings_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog od = new OpenFileDialog
-            {
-                Filter = "BrawlCrate Settings (*.settings)|*.settings",
-                FileName = Application.StartupPath
-            };
-            if (od.ShowDialog() == DialogResult.OK)
-            {
-                string path = od.FileName;
-                ModelEditorSettings settings = Serializer.DeserializeObject(path) as ModelEditorSettings;
-                _form.DistributeSettings(settings);
-            }
-        }
-
-        private void btnExportSettings_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sd = new SaveFileDialog
-            {
-                Filter = "BrawlCrate Settings (*.settings)|*.settings",
-                FileName = Application.StartupPath
-            };
-            if (sd.ShowDialog() == DialogResult.OK)
-            {
-                string path = sd.FileName;
-                ModelEditorSettings settings = _form.CollectSettings();
-
-                Serializer.SerializeObject(path, settings);
-                MessageBox.Show("Settings successfully saved to " + path);
-            }
-        }
-
-        private void chkTextOverlays_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.TextOverlaysEnabled = chkTextOverlays.Checked;
-            }
-        }
-
-        private void maxUndoCount_ValueChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form._allowedUndos = (uint)maxUndoCount.Value;
-            }
-        }
-
-        private void chkSaveWindowPosition_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form._savePosition = chkSaveWindowPosition.Checked;
-            }
-        }
-
-        private void chkDefaultPos_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!chkDefaultPos.Checked)
-            {
-                return;
-            }
-
-            _updating = true;
-
-            numPosSX.Value = current.Camera._defaultScale._x;
-            numPosSY.Value = current.Camera._defaultScale._y;
-            numPosSZ.Value = current.Camera._defaultScale._z;
-
-            numPosRX.Value = current.Camera._defaultRotate._x;
-            numPosRY.Value = current.Camera._defaultRotate._y;
-            numPosRZ.Value = current.Camera._defaultRotate._z;
-
-            numPosTX.Value = current.Camera._defaultTranslate._x;
-            numPosTY.Value = current.Camera._defaultTranslate._y;
-            numPosTZ.Value = current.Camera._defaultTranslate._z;
-
-            _updating = false;
-        }
-
-        private void chkCurrentPos_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!chkCurrentPos.Checked)
-            {
-                return;
-            }
-
-            _updating = true;
-
-            numPosSX.Value = current.Camera._scale._x;
-            numPosSY.Value = current.Camera._scale._y;
-            numPosSZ.Value = current.Camera._scale._z;
-
-            numPosRX.Value = current.Camera._rotation._x;
-            numPosRY.Value = current.Camera._rotation._y;
-            numPosRZ.Value = current.Camera._rotation._z;
-
-            Vector3 trans = current.Camera.GetPoint();
-            numPosTX.Value = trans._x;
-            numPosTY.Value = trans._y;
-            numPosTZ.Value = trans._z;
-
-            _updating = false;
-        }
-
-        private void chkLightEnabled_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.LightEnabled = chkLightEnabled.Checked;
-            }
-        }
-
-        private void chkLightDirectional_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.LightDirectional = chkLightDirectional.Checked;
-            }
-        }
-
-        private void chkScaleBones_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.ScaleBones = chkScaleBones.Checked;
-            }
-        }
-
-        private void chkUsePointsAsBones_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!_updating)
-            {
-                _form.ModelPanel.CurrentViewport.RenderBonesAsPoints = chkUsePointsAsBones.Checked;
-            }
-        }
-
-        private void chkHideMainWindow_CheckedChanged(object sender, EventArgs e)
-        {
-            if (_updating)
-            {
-                return;
-            }
-
-            MainForm.Instance.Visible = !(_form._hideMainWindow = chkHideMainWindow.Checked);
-            foreach (ModelEditControl c in ModelEditControl.Instances)
-            {
-                c._hideMainWindow = _form._hideMainWindow;
-            }
-
-            _form.SaveSettings();
-        }
-
-        private void chkPixelLighting_CheckedChanged(object sender, EventArgs e)
-        {
-            if (_updating)
-            {
-                return;
-            }
-
-            BrawlCrate.Properties.Settings.Default.PixelLighting =
-                ShaderGenerator.UsePixelLighting = chkPixelLighting.Checked;
-            _form.ModelPanel.Invalidate();
-            BrawlCrate.Properties.Settings.Default.Save();
-        }
     }
 }

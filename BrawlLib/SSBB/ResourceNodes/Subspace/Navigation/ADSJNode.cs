@@ -1,104 +1,169 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.ComponentModel;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ADSJNode : ARCEntryNode
     {
-        internal ADSJ* Header => (ADSJ*)WorkingUncompressed.Address;
+        internal ADSJ* Header => (ADSJ*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ADSJ;
 
-        private int _count;
         [Category("ADSJ")]
         [DisplayName("Entries")]
-        public int count => _count;
+        public int count { get; private set; }
+
         public override void OnPopulate()
         {
-            for (int i = 0; i < Header->_count; i++)
+            for (var i = 0; i < Header->_count; i++)
             {
                 DataSource source;
                 if (i == Header->_count - 1)
-                { source = new DataSource((*Header)[i], WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]); }
-                else { source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]); }
+                    source = new DataSource((*Header)[i],
+                        WorkingUncompressed.Address + WorkingUncompressed.Length - (*Header)[i]);
+                else
+                    source = new DataSource((*Header)[i], (*Header)[i + 1] - (*Header)[i]);
                 new ADSJEntryNode().Initialize(this, source);
             }
         }
+
         public override bool OnInitialize()
         {
-            ARCFileHeader* header = (ARCFileHeader*)(WorkingUncompressed.Address - 0x20);
+            var header = (ARCFileHeader*) (WorkingUncompressed.Address - 0x20);
             int index = header->_index;
 
-            _count = Header->_count;
+            count = Header->_count;
 
-            if (_name == null)
-            {
-                _name = string.Format("Stepjumps[{0}]", index);
-            }
+            if (_name == null) _name = string.Format("Stepjumps[{0}]", index);
 
             return Header->_count > 0;
         }
+
         public override int OnCalculateSize(bool force)
         {
-            int size = ADSJ.Size + (Children.Count * 4);
-            foreach (ResourceNode node in Children)
-            {
-                size += node.CalculateSize(force);
-            }
+            var size = ADSJ.Size + Children.Count * 4;
+            foreach (var node in Children) size += node.CalculateSize(force);
 
             return size;
         }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ADSJ* header = (ADSJ*)address;
+            var header = (ADSJ*) address;
             *header = new ADSJ(_children.Count);
-            uint offset = (uint)(0x10 + (Children.Count * 4));
-            for (int i = 0; i < Children.Count; i++)
+            var offset = (uint) (0x10 + Children.Count * 4);
+            for (var i = 0; i < Children.Count; i++)
             {
-                if (i > 0) { offset += (uint)(Children[i - 1].CalculateSize(false)); }
-                *(buint*)(address + 0x10 + i * 4) = offset;
+                if (i > 0) offset += (uint) Children[i - 1].CalculateSize(false);
+                *(buint*) (address + 0x10 + i * 4) = offset;
                 _children[i].Rebuild(address + offset, _children[i].CalculateSize(false), true);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((ADSJ*)source.Address)->_tag == ADSJ.Tag ? new ADSJNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((ADSJ*) source.Address)->_tag == ADSJ.Tag ? new ADSJNode() : null;
+        }
     }
 
     public unsafe class ADSJEntryNode : ResourceNode
     {
-        internal ADSJEntry* Header => (ADSJEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.Unknown;
-
         private string _doorID;
-        [Category("Jump Info")]
-        [DisplayName("Corrosponding GDOR")]
-        public string DoorID { get => _doorID; set { _doorID = value; SignalPropertyChange(); } }
-
-        private string _sendingID;
-        [Category("Jump Info")]
-        [DisplayName("File ID (hex)")]
-        public string SendingID { get => _sendingID; set { _sendingID = value; SignalPropertyChange(); } }
-
-        private string _jumpBone;
-        [Category("Jump Info")]
-        [DisplayName("Jump Bone?")]
-        public string JumpBone { get => _jumpBone; set { _jumpBone = value; Name = value; SignalPropertyChange(); } }
 
         private byte _flag0;
-        [Category("Jump Flags")]
-        public byte Flag0 { get => _flag0; set { _flag0 = value; SignalPropertyChange(); } }
 
         private byte _flag1;
-        [Category("Jump Flags")]
-        public byte Flag1 { get => _flag1; set { _flag1 = value; SignalPropertyChange(); } }
 
         private byte _flag2;
-        [Category("Jump Flags")]
-        public byte Flag2 { get => _flag2; set { _flag2 = value; SignalPropertyChange(); } }
 
         private byte _flag3;
+
+        private string _jumpBone;
+
+        private string _sendingID;
+        internal ADSJEntry* Header => (ADSJEntry*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
+
+        [Category("Jump Info")]
+        [DisplayName("Corrosponding GDOR")]
+        public string DoorID
+        {
+            get => _doorID;
+            set
+            {
+                _doorID = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Jump Info")]
+        [DisplayName("File ID (hex)")]
+        public string SendingID
+        {
+            get => _sendingID;
+            set
+            {
+                _sendingID = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Jump Info")]
+        [DisplayName("Jump Bone?")]
+        public string JumpBone
+        {
+            get => _jumpBone;
+            set
+            {
+                _jumpBone = value;
+                Name = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Category("Jump Flags")]
-        public byte Flag3 { get => _flag3; set { _flag3 = value; SignalPropertyChange(); } }
+        public byte Flag0
+        {
+            get => _flag0;
+            set
+            {
+                _flag0 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Jump Flags")]
+        public byte Flag1
+        {
+            get => _flag1;
+            set
+            {
+                _flag1 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Jump Flags")]
+        public byte Flag2
+        {
+            get => _flag2;
+            set
+            {
+                _flag2 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Jump Flags")]
+        public byte Flag3
+        {
+            get => _flag3;
+            set
+            {
+                _flag3 = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
@@ -111,20 +176,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             _flag2 = Header->_unk2;
             _flag3 = Header->_unk3;
 
-            if (_name == null)
-            {
-                _name = JumpBone;
-            }
+            if (_name == null) _name = JumpBone;
 
             return false;
         }
+
         public override int OnCalculateSize(bool force)
         {
             return ADSJEntry.Size;
         }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            ADSJEntry* header = (ADSJEntry*)address;
+            var header = (ADSJEntry*) address;
             *header = new ADSJEntry();
             header->_unk0 = _flag0;
             header->_unk1 = _flag1;

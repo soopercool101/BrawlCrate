@@ -1,23 +1,28 @@
-﻿using BrawlLib.Modeling;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using BrawlLib.Modeling;
 using BrawlLib.Modeling.Triangle_Converter;
+using BrawlLib.Properties;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.Wii.Models;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace System.Windows.Forms
 {
     public partial class ObjectOptimizerForm : Form
     {
+        private readonly List<ObjectOptimization> _results = new List<ObjectOptimization>();
+        private int _originalPointCount, _newPointCount;
+        private bool _processPending, _endPending;
+
+        private ResourceNode _target;
+
+        private bool _updating;
+        private BackgroundWorker b;
+
         public ObjectOptimizerForm()
         {
             InitializeComponent();
         }
-
-        private ResourceNode _target;
-        private int _originalPointCount, _newPointCount;
-        private readonly List<ObjectOptimization> _results = new List<ObjectOptimization>();
-        private bool _processPending = false, _endPending = false;
 
         public DialogResult ShowDialog(ResourceNode o)
         {
@@ -30,27 +35,23 @@ namespace System.Windows.Forms
             b.WorkerReportsProgress = false;
 
             _updating = true;
-            Collada.ImportOptions i = BrawlLib.Properties.Settings.Default.ColladaImportOptions;
+            var i = Settings.Default.ColladaImportOptions;
             numCacheSize.Value = i._cacheSize;
             numMinStripLen.Value = i._minStripLen;
             chkPushCacheHits.Checked = i._pushCacheHits;
             chkUseStrips.Checked = i._useTristrips;
             if (_target is MDL0Node)
             {
-                if (((MDL0Node)_target)._objList != null)
-                {
-                    foreach (MDL0ObjectNode w in ((MDL0Node)_target)._objList)
-                    {
+                if (((MDL0Node) _target)._objList != null)
+                    foreach (MDL0ObjectNode w in ((MDL0Node) _target)._objList)
                         _results.Add(new ObjectOptimization(w));
-                    }
-                }
 
-                lblOldCount.Text = (_originalPointCount = ((MDL0Node)o)._numFacepoints).ToString();
+                lblOldCount.Text = (_originalPointCount = ((MDL0Node) o)._numFacepoints).ToString();
             }
             else
             {
-                _results.Add(new ObjectOptimization((MDL0ObjectNode)_target));
-                lblOldCount.Text = (_originalPointCount = ((MDL0ObjectNode)o)._numFacepoints).ToString();
+                _results.Add(new ObjectOptimization((MDL0ObjectNode) _target));
+                lblOldCount.Text = (_originalPointCount = ((MDL0ObjectNode) o)._numFacepoints).ToString();
             }
 
             chkForceCCW.Checked = i._forceCCW;
@@ -63,38 +64,32 @@ namespace System.Windows.Forms
 
         private void b_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (e == null)
-            {
-                return;
-            }
+            if (e == null) return;
 
-            ObjectOptimizerForm form = e.Argument as ObjectOptimizerForm;
+            var form = e.Argument as ObjectOptimizerForm;
             form._newPointCount = 0;
 
-            foreach (ObjectOptimization a in form._results)
+            foreach (var a in form._results)
             {
                 if (a == null ||
                     a._object == null ||
                     a._object._manager == null ||
                     a._object._manager._triangles == null ||
                     a._facepoints == null)
-                {
                     return;
-                }
 
-                TriangleConverter triConverter = new TriangleConverter(chkUseStrips.Checked, (uint)numCacheSize.Value, (uint)numMinStripLen.Value, chkPushCacheHits.Checked);
-                Facepoint[] points = new Facepoint[a._object._manager._triangles._indices.Length];
-                uint[] indices = a._object._manager._triangles._indices;
-                bool ccw = Collada._importOptions._forceCCW;
+                var triConverter = new TriangleConverter(chkUseStrips.Checked, (uint) numCacheSize.Value,
+                    (uint) numMinStripLen.Value, chkPushCacheHits.Checked);
+                var points = new Facepoint[a._object._manager._triangles._indices.Length];
+                var indices = a._object._manager._triangles._indices;
+                var ccw = Collada._importOptions._forceCCW;
 
                 //Indices are written in reverse for each triangle, 
                 //so they need to be set to a triangle in reverse if not CCW
-                for (int t = 0; t < a._object._manager._triangles._indices.Length; t++)
-                {
-                    points[ccw ? t : (t - (t % 3)) + (2 - (t % 3))] = a._facepoints[indices[t]];
-                }
+                for (var t = 0; t < a._object._manager._triangles._indices.Length; t++)
+                    points[ccw ? t : t - t % 3 + (2 - t % 3)] = a._facepoints[indices[t]];
 
-                List<PrimitiveGroup> p = triConverter.GroupPrimitives(points, out int pc, out int fc);
+                var p = triConverter.GroupPrimitives(points, out var pc, out var fc);
 
                 if (chkAllowIncrease.Checked || pc < a._pointCount)
                 {
@@ -105,13 +100,15 @@ namespace System.Windows.Forms
 
                 form._newPointCount += a._pointCount;
             }
+
             e.Result = form;
         }
 
         private void b_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            float percentChange = 100.0f - (_newPointCount / (float)_originalPointCount) * 100.0f;
-            lblPercentChange.Text = string.Format("{0}% {1}", Math.Round(Math.Abs(percentChange), 3), percentChange < 0 ? "Increase" : "Decrease");
+            var percentChange = 100.0f - _newPointCount / (float) _originalPointCount * 100.0f;
+            lblPercentChange.Text = string.Format("{0}% {1}", Math.Round(Math.Abs(percentChange), 3),
+                percentChange < 0 ? "Increase" : "Decrease");
             lblNewCount.Text = _newPointCount.ToString();
 
             if (_processPending)
@@ -125,34 +122,13 @@ namespace System.Windows.Forms
             }
         }
 
-        private class ObjectOptimization
-        {
-            public ObjectOptimization(MDL0ObjectNode o)
-            {
-                _object = o;
-                _facepoints = _object._manager.MergeExternalFaceData(_object);
-                _pointCount = _object._numFacepoints;
-                _faceCount = _object._numFaces;
-            }
-
-            public MDL0ObjectNode _object;
-            public Facepoint[] _facepoints;
-
-            public int _pointCount, _faceCount;
-            public List<PrimitiveGroup> _groups;
-        }
-
         private void Optimize()
         {
             lblPercentChange.Text = "Working...";
             if (b.IsBusy)
-            {
                 _processPending = true;
-            }
             else
-            {
                 b.RunWorkerAsync(this);
-            }
         }
 
         private void btnOkay_Click(object sender, EventArgs e)
@@ -163,12 +139,9 @@ namespace System.Windows.Forms
                 return;
             }
 
-            foreach (ObjectOptimization a in _results)
+            foreach (var a in _results)
             {
-                if (a._groups == null)
-                {
-                    continue;
-                }
+                if (a._groups == null) continue;
 
                 a._object._manager._primGroups = a._groups;
                 a._object._numFacepoints = a._pointCount;
@@ -177,19 +150,14 @@ namespace System.Windows.Forms
                 a._object.SignalPropertyChange();
 
                 if (a._object._vertexNode.Format != WiiVertexComponentType.Float)
-                {
                     a._object._vertexNode._forceRebuild = a._object._vertexNode._forceFloat = chkUseStrips.Checked;
-                }
             }
 
-            if (_target is MDL0Node)
-            {
-                ((MDL0Node)_target)._numFacepoints = _newPointCount;
-            }
+            if (_target is MDL0Node) ((MDL0Node) _target)._numFacepoints = _newPointCount;
 
             _target.SignalPropertyChange();
             _target.UpdateProperties();
-            BrawlLib.Properties.Settings.Default.Save();
+            Settings.Default.Save();
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -200,35 +168,42 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private bool _updating = false;
-        private BackgroundWorker b;
         private void Update(object sender, EventArgs e)
         {
-            if (_updating)
-            {
-                return;
-            }
+            if (_updating) return;
 
             _updating = true;
-            if (numCacheSize.Value < 0)
-            {
-                numCacheSize.Value = 0;
-            }
+            if (numCacheSize.Value < 0) numCacheSize.Value = 0;
 
-            if (numMinStripLen.Value < 2)
-            {
-                numMinStripLen.Value = 2;
-            }
+            if (numMinStripLen.Value < 2) numMinStripLen.Value = 2;
 
             _updating = false;
 
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._cacheSize = (uint)numCacheSize.Value;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._minStripLen = (uint)numMinStripLen.Value;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._pushCacheHits = chkPushCacheHits.Checked;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._useTristrips = chkUseStrips.Checked;
-            BrawlLib.Properties.Settings.Default.ColladaImportOptions._forceCCW = chkForceCCW.Checked;
+            Settings.Default.ColladaImportOptions._cacheSize = (uint) numCacheSize.Value;
+            Settings.Default.ColladaImportOptions._minStripLen = (uint) numMinStripLen.Value;
+            Settings.Default.ColladaImportOptions._pushCacheHits = chkPushCacheHits.Checked;
+            Settings.Default.ColladaImportOptions._useTristrips = chkUseStrips.Checked;
+            Settings.Default.ColladaImportOptions._forceCCW = chkForceCCW.Checked;
 
             Optimize();
+        }
+
+        private class ObjectOptimization
+        {
+            public readonly Facepoint[] _facepoints;
+            public List<PrimitiveGroup> _groups;
+
+            public readonly MDL0ObjectNode _object;
+
+            public int _pointCount, _faceCount;
+
+            public ObjectOptimization(MDL0ObjectNode o)
+            {
+                _object = o;
+                _facepoints = _object._manager.MergeExternalFaceData(_object);
+                _pointCount = _object._numFacepoints;
+                _faceCount = _object._numFaces;
+            }
         }
     }
 }

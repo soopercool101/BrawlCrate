@@ -6,9 +6,9 @@ namespace BrawlLib.SSBB.ResourceNodes
     public class ObjectParser
     {
         private readonly ModuleSectionNode _objectSection;
+        public List<RELObjectNode> _objects = new List<RELObjectNode>();
 
         public Dictionary<int, RELType> _types = new Dictionary<int, RELType>();
-        public List<RELObjectNode> _objects = new List<RELObjectNode>();
 
         public ObjectParser(ModuleSectionNode section)
         {
@@ -19,71 +19,46 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private RelocationManager Manager => _objectSection._manager;
 
-        public unsafe void Parse()
+        public void Parse()
         {
-            if (_objectSection == null)
-            {
-                return;
-            }
+            if (_objectSection == null) return;
 
-            for (int rel = 0; rel < _objectSection._dataBuffer.Length / 4; rel++)
-            {
-                ParseDeclaration(rel);
-            }
+            for (var rel = 0; rel < _objectSection._dataBuffer.Length / 4; rel++) ParseDeclaration(rel);
 
-            for (int rel = 0; rel < _objectSection._dataBuffer.Length / 4; rel++)
-            {
-                ParseObject(ref rel);
-            }
+            for (var rel = 0; rel < _objectSection._dataBuffer.Length / 4; rel++) ParseObject(ref rel);
         }
 
         private unsafe RELType ParseDeclaration(int index)
         {
-            if (_types.TryGetValue(index, out RELType type))
-            {
-                return type;
-            }
+            if (_types.TryGetValue(index, out var type)) return type;
 
-            RelCommand cmd = Manager.GetCommand(index);
-            if (cmd == null)
-            {
-                return null;
-            }
+            var cmd = Manager.GetCommand(index);
+            if (cmd == null) return null;
 
-            RelocationTarget target = cmd.GetTargetRelocation();
-            if (target == null || target._sectionID != _objectSection.Index)
-            {
-                return null;
-            }
+            var target = cmd.GetTargetRelocation();
+            if (target == null || target._sectionID != _objectSection.Index) return null;
 
-            uint relOffset = cmd.Apply(Manager.GetUint(index), 0);
-            if (relOffset > _objectSection._dataOffset + _objectSection._dataSize)
-            {
-                return null;
-            }
+            var relOffset = cmd.Apply(Manager.GetUint(index), 0);
+            if (relOffset > _objectSection._dataOffset + _objectSection._dataSize) return null;
 
-            string name = new string((sbyte*)(_objectSection.Header + relOffset));
+            var name = new string((sbyte*) (_objectSection.Header + relOffset));
 
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                return null;
-            }
+            if (string.IsNullOrWhiteSpace(name)) return null;
 
             type = new RELType(name);
 
             //Get inheritances, if any.
             cmd = Manager.GetCommand(index + 1);
             if (cmd != null)
-            {
-                for (RelocationTarget r = cmd.GetTargetRelocation();
-                     r != null && (cmd = Manager.GetCommand(r._index)) != null;
-                     r._index += 2)
+                for (var r = cmd.GetTargetRelocation();
+                    r != null && (cmd = Manager.GetCommand(r._index)) != null;
+                    r._index += 2)
                 {
-                    RelocationTarget inheritTarget = cmd.GetTargetRelocation();
-                    RELType inheritance = ParseDeclaration(inheritTarget._index);
+                    var inheritTarget = cmd.GetTargetRelocation();
+                    var inheritance = ParseDeclaration(inheritTarget._index);
                     if (inheritance != null)
                     {
-                        InheritanceItemNode typeNode = new InheritanceItemNode(inheritance, Manager.GetUint(r._index + 1));
+                        var typeNode = new InheritanceItemNode(inheritance, Manager.GetUint(r._index + 1));
                         typeNode.Initialize(null, _objectSection.Header + r._index * 4, 0);
                         type.Inheritance.Add(typeNode);
                         inheritance.Inherited = true;
@@ -93,7 +68,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                     }
                 }
-            }
 
             Manager.AddTag(index, type.FormalName + " Declaration");
             Manager.AddTag(index + 1, type.FormalName + "->Inheritances");
@@ -103,35 +77,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             return type;
         }
 
-        private unsafe RELObjectNode ParseObject(ref int rel)
+        private RELObjectNode ParseObject(ref int rel)
         {
-            RelCommand cmd = Manager.GetCommand(rel);
-            if (cmd == null)
-            {
-                return null;
-            }
+            var cmd = Manager.GetCommand(rel);
+            if (cmd == null) return null;
 
-            RelocationTarget target = cmd.GetTargetRelocation();
-            if (target == null || target._sectionID != _objectSection.Index)
-            {
-                return null;
-            }
+            var target = cmd.GetTargetRelocation();
+            if (target == null || target._sectionID != _objectSection.Index) return null;
 
 
-            if (!_types.TryGetValue(target._index, out RELType declaration) || declaration.Inherited)
-            {
-                return null;
-            }
+            if (!_types.TryGetValue(target._index, out var declaration) || declaration.Inherited) return null;
 
             RELObjectNode obj = null;
-            foreach (RELObjectNode node in _objects)
-            {
+            foreach (var node in _objects)
                 if (node._name == declaration.FullName)
                 {
                     obj = node;
                     break;
                 }
-            }
 
             if (obj == null)
             {
@@ -140,54 +103,46 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _parent = _objectSection
                 };
                 _objectSection._children.Add(obj);
-                new RELGroupNode() { _name = "Inheritance" }.Parent = obj;
-                foreach (InheritanceItemNode n in declaration.Inheritance)
-                {
-                    n.Parent = obj.Children[0];
-                }
+                new RELGroupNode {_name = "Inheritance"}.Parent = obj;
+                foreach (var n in declaration.Inheritance) n.Parent = obj.Children[0];
 
-                new RELGroupNode() { _name = "Functions" }.Parent = obj;
+                new RELGroupNode {_name = "Functions"}.Parent = obj;
             }
 
-            int baseRel = rel;
-            RelCommand baseCmd = Manager.GetCommand(baseRel);
+            var baseRel = rel;
+            var baseCmd = Manager.GetCommand(baseRel);
 
-            int methodIndex = 0;
-            int setIndex = 0;
+            var methodIndex = 0;
+            var setIndex = 0;
 
             //Read object methods.
             while ((cmd = Manager.GetCommand(rel)) != null)
             {
-                RelocationTarget t = cmd.GetTargetRelocation();
+                var t = cmd.GetTargetRelocation();
                 if (cmd.Apply(Manager.GetUint(rel), 0) != baseCmd.Apply(Manager.GetUint(baseRel), 0))
                 {
-
-                    string methodName = string.Format("Function[{0}][{1}]", setIndex, methodIndex);
+                    var methodName = string.Format("Function[{0}][{1}]", setIndex, methodIndex);
                     VoidPtr addr = null;
                     if (t != null && t._moduleID == (_objectSection.Root as ModuleNode).ID)
-                    {
                         addr = _objectSection.Root.Children[t._sectionID].WorkingUncompressed.Address + t._index * 4;
-                    }
 
-                    new RELMethodNode()
-                    {
-                        _name = methodName,
-                        _cmd = cmd
-                    }
-                    .Initialize(obj.Children[1], addr, 0);
+                    new RELMethodNode
+                        {
+                            _name = methodName,
+                            _cmd = cmd
+                        }
+                        .Initialize(obj.Children[1], addr, 0);
 
                     methodIndex++;
                 }
                 else
                 {
-                    if (Manager.GetUint(rel + 1) != 0)
-                    {
-                        setIndex++;
-                    }
+                    if (Manager.GetUint(rel + 1) != 0) setIndex++;
 
                     methodIndex = 0;
                     rel++;
                 }
+
                 rel++;
             }
 
@@ -199,7 +154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void Populate()
         {
-            foreach (RELObjectNode obj in _objects)
+            foreach (var obj in _objects)
             {
                 obj._parent = null;
                 _objectSection._children.Remove(obj);

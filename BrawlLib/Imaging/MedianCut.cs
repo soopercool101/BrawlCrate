@@ -1,9 +1,9 @@
-﻿using BrawlLib.Wii.Textures;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using BrawlLib.Wii.Textures;
 
 /* This formula is based on the Median Cut formula used in the GIMP library.
  * Special thanks goes to Spencer Kimball, Peter Mattis, and Adam Moss.
@@ -14,50 +14,36 @@ namespace BrawlLib.Imaging
 {
     internal unsafe class MedianCut : IDisposable
     {
-        private Bitmap _srcBmp;
-        private BitmapData _srcData;
-
-        private readonly int _width, _height, _size;
-
-        private ARGBPixel* _srcPixels;
-
-        private ColorBox* _boxes;
-        private int _boxCount;
-
-        private ColorEntry** _groupTable;
+        private const int R_SCALE = 13;
+        private const int G_SCALE = 24;
+        private const int B_SCALE = 26;
+        private const int A_SCALE = 28;
+        private readonly IDConverter _idConv;
 
         private readonly IDHandler _idFunc;
-        private readonly IDConverter _idConv;
 
         private readonly PixelFormat _outFormat;
 
-        #region Handlers/Converters
-        private delegate void IDHandler(ARGBPixel inPixel, ushort* id);
-        private static void IA8Handler(ARGBPixel inPixel, ushort* id) { *(IA8Pixel*)id = inPixel; }
-        private static void RGB565Handler(ARGBPixel inPixel, ushort* id) { *(wRGB565Pixel*)id = (wRGB565Pixel)inPixel; }
-        private static void RGB5A3Handler(ARGBPixel inPixel, ushort* id) { *(wRGB5A3Pixel*)id = (wRGB5A3Pixel)inPixel; }
+        private readonly int _width, _height, _size;
+        private int _boxCount;
 
-        private delegate void IDConverter(ushort* id, out ARGBPixel outPixel);
-        private static void IA8Converter(ushort* id, out ARGBPixel outPixel) { outPixel = *(IA8Pixel*)id; }
-        private static void RGB565Converter(ushort* id, out ARGBPixel outPixel) { outPixel = (ARGBPixel)(*(wRGB565Pixel*)id); }
-        private static void RGB5A3Converter(ushort* id, out ARGBPixel outPixel) { outPixel = (ARGBPixel)(*(wRGB5A3Pixel*)id); }
-        #endregion
+        private ColorBox* _boxes;
+
+        private ColorEntry** _groupTable;
+        private Bitmap _srcBmp;
+        private BitmapData _srcData;
+
+        private ARGBPixel* _srcPixels;
 
         private MedianCut(Bitmap bmp, WiiPixelFormat texFormat, WiiPaletteFormat palFormat)
         {
             //Set output format
             if (texFormat == WiiPixelFormat.CI4)
-            {
                 _outFormat = PixelFormat.Format4bppIndexed;
-            }
             else if (texFormat == WiiPixelFormat.CI8)
-            {
                 _outFormat = PixelFormat.Format8bppIndexed;
-            }
             else
-            {
                 throw new ArgumentException("Invalid pixel format.");
-            }
 
             //Set conversion functions
             if (palFormat == WiiPaletteFormat.IA8)
@@ -81,27 +67,29 @@ namespace BrawlLib.Imaging
             _width = bmp.Width;
             _height = bmp.Height;
             _size = _width * _height;
-            _srcData = bmp.LockBits(new Rectangle(0, 0, _width, _height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-            _srcPixels = (ARGBPixel*)_srcData.Scan0;
+            _srcData = bmp.LockBits(new Rectangle(0, 0, _width, _height), ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb);
+            _srcPixels = (ARGBPixel*) _srcData.Scan0;
 
             //Create buffers
-            _boxes = (ColorBox*)Marshal.AllocHGlobal(256 * sizeof(ColorBox));
-            _groupTable = (ColorEntry**)Marshal.AllocHGlobal(65536 * sizeof(void*));
+            _boxes = (ColorBox*) Marshal.AllocHGlobal(256 * sizeof(ColorBox));
+            _groupTable = (ColorEntry**) Marshal.AllocHGlobal(65536 * sizeof(void*));
         }
 
-        ~MedianCut() { Dispose(); }
         public void Dispose()
         {
             if (_boxes != null)
             {
-                Marshal.FreeHGlobal((IntPtr)_boxes);
+                Marshal.FreeHGlobal((IntPtr) _boxes);
                 _boxes = null;
             }
+
             if (_groupTable != null)
             {
-                Marshal.FreeHGlobal((IntPtr)_groupTable);
+                Marshal.FreeHGlobal((IntPtr) _groupTable);
                 _groupTable = null;
             }
+
             if (_srcBmp != null)
             {
                 _srcBmp.UnlockBits(_srcData);
@@ -109,14 +97,20 @@ namespace BrawlLib.Imaging
                 _srcData = null;
                 _srcPixels = null;
             }
+
             GC.SuppressFinalize(this);
+        }
+
+        ~MedianCut()
+        {
+            Dispose();
         }
 
         private bool SelectColors(int targetColors)
         {
             ColorBox* splitBox, boxPtr = _boxes;
-            ARGBPixel* sPtr = _srcPixels;
-            ColorEntry** gPtr = _groupTable;
+            var sPtr = _srcPixels;
+            var gPtr = _groupTable;
             ColorEntry* entry;
             ushort id;
 
@@ -125,7 +119,7 @@ namespace BrawlLib.Imaging
             _boxCount = 1;
 
             //Iterate through colors using ID generator
-            for (int i = 0; i < _size; i++)
+            for (var i = 0; i < _size; i++)
             {
                 _idFunc(*sPtr++, &id);
                 gPtr = _groupTable + id;
@@ -143,10 +137,7 @@ namespace BrawlLib.Imaging
             }
 
             //If no quantization is necessary, then leave.
-            if (boxPtr->_colors <= targetColors)
-            {
-                return false;
-            }
+            if (boxPtr->_colors <= targetColors) return false;
 
             //Update initial box
             boxPtr->Update(targetColors - 1);
@@ -155,7 +146,7 @@ namespace BrawlLib.Imaging
             while (_boxCount < targetColors)
             {
                 //Find split candidate
-                splitBox = ColorBox.FindSplit(_boxes, _boxCount, targetColors, out int splitAxis);
+                splitBox = ColorBox.FindSplit(_boxes, _boxCount, targetColors, out var splitAxis);
 
                 //Create new box
                 (++boxPtr)->Initialize();
@@ -168,108 +159,96 @@ namespace BrawlLib.Imaging
                 splitBox->Update(targetColors - _boxCount);
                 boxPtr->Update(targetColors - _boxCount);
             }
+
             return true;
         }
 
         private void SortBoxes()
         {
             //Sort boxes by luminance
-            void** tableData = stackalloc void*[_boxCount];
-            ColorBox** colorTable = (ColorBox**)tableData;
-            ColorBox* boxPtr = _boxes;
+            var tableData = stackalloc void*[_boxCount];
+            var colorTable = (ColorBox**) tableData;
+            var boxPtr = _boxes;
             int index;
             ushort id;
             float luminance;
-            for (int count = 0; count < _boxCount; count++)
+            for (var count = 0; count < _boxCount; count++)
             {
                 luminance = boxPtr->_luminance = boxPtr->_color.Luminance();
 
-                for (index = 0; (index < count) && (luminance > colorTable[index]->_luminance); index++)
-                {
-                    ;
-                }
+                for (index = 0; index < count && luminance > colorTable[index]->_luminance; index++) ;
 
                 //Slide entries right
-                for (int y = count; y > index;)
-                {
-                    colorTable[y--] = colorTable[y];
-                }
+                for (var y = count; y > index;) colorTable[y--] = colorTable[y];
 
                 colorTable[index] = boxPtr++;
             }
 
             //Set indices and clamp colors
-            for (int i = 0; i < _boxCount; i++)
+            for (var i = 0; i < _boxCount; i++)
             {
                 colorTable[i]->_index = i;
                 _idFunc(colorTable[i]->_color, &id);
                 _idConv(&id, out colorTable[i]->_color);
             }
         }
+
         private void ClearBoxes()
         {
             //Clean up
-            ColorBox* boxPtr = _boxes;
-            for (int i = 0; i < _boxCount; i++, boxPtr++)
-            {
-                boxPtr->Destroy();
-            }
+            var boxPtr = _boxes;
+            for (var i = 0; i < _boxCount; i++, boxPtr++) boxPtr->Destroy();
         }
+
         private void WritePalette(ColorPalette pal)
         {
-            ColorBox* pBox = _boxes;
-            for (int i = 0; i < _boxCount; i++, pBox++)
-            {
-                pal.Entries[pBox->_index] = (Color)pBox->_color;
-            }
+            var pBox = _boxes;
+            for (var i = 0; i < _boxCount; i++, pBox++) pal.Entries[pBox->_index] = (Color) pBox->_color;
         }
+
         private void WriteIndices(BitmapData destData)
         {
-            ARGBPixel* sPtr = _srcPixels;
+            var sPtr = _srcPixels;
             ushort id;
-            byte* dPtr = (byte*)destData.Scan0;
+            var dPtr = (byte*) destData.Scan0;
             int step, val;
 
             if (destData.PixelFormat == PixelFormat.Format8bppIndexed)
             {
                 step = destData.Stride - _width;
-                for (int y = 0; y < _height; y++, dPtr += step)
+                for (var y = 0; y < _height; y++, dPtr += step)
+                for (var x = 0; x < _width; x++)
                 {
-                    for (int x = 0; x < _width; x++)
-                    {
-                        _idFunc(*sPtr++, &id);
-                        *dPtr++ = (byte)_groupTable[id]->_box->_index;
-                    }
+                    _idFunc(*sPtr++, &id);
+                    *dPtr++ = (byte) _groupTable[id]->_box->_index;
                 }
             }
             else
             {
-                step = destData.Stride - ((_width + 1) / 2);
-                for (int y = 0; y < _height; y++, dPtr += step)
+                step = destData.Stride - (_width + 1) / 2;
+                for (var y = 0; y < _height; y++, dPtr += step)
+                for (var x = _width; x > 0; x -= 2)
                 {
-                    for (int x = _width; x > 0; x -= 2)
+                    _idFunc(*sPtr++, &id);
+                    val = _groupTable[id]->_box->_index << 4;
+
+                    if (x > 1)
                     {
                         _idFunc(*sPtr++, &id);
-                        val = _groupTable[id]->_box->_index << 4;
-
-                        if (x > 1)
-                        {
-                            _idFunc(*sPtr++, &id);
-                            val |= _groupTable[id]->_box->_index & 0xF;
-                        }
-
-                        *dPtr++ = (byte)val;
+                        val |= _groupTable[id]->_box->_index & 0xF;
                     }
+
+                    *dPtr++ = (byte) val;
                 }
             }
         }
 
         private void SpreadColors(int total)
         {
-            ColorBox* pBox = _boxes;
-            ColorEntry* entry = pBox->_rootEntry->_next;
+            var pBox = _boxes;
+            var entry = pBox->_rootEntry->_next;
 
-            int index, count = (int)pBox->_colors;
+            int index, count = (int) pBox->_colors;
 
             //Set initial box
             pBox->_color = entry->_color;
@@ -310,22 +289,19 @@ namespace BrawlLib.Imaging
         private Bitmap Quantize(int targetColors, IProgressTracker progress)
         {
             //Clear group table
-            Memory.Fill(_groupTable, (uint)(65536 * sizeof(void*)), 0);
+            Memory.Fill(_groupTable, (uint) (65536 * sizeof(void*)), 0);
 
-            if (!SelectColors(targetColors))
-            {
-                SpreadColors(targetColors);
-            }
+            if (!SelectColors(targetColors)) SpreadColors(targetColors);
 
             SortBoxes();
 
             //Write bitmap
-            Bitmap bmp = new Bitmap(_width, _height, _outFormat);
-            ColorPalette pal = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, targetColors);
+            var bmp = new Bitmap(_width, _height, _outFormat);
+            var pal = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, targetColors);
             WritePalette(pal);
             bmp.Palette = pal;
 
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, _width, _height), ImageLockMode.ReadWrite, _outFormat);
+            var data = bmp.LockBits(new Rectangle(0, 0, _width, _height), ImageLockMode.ReadWrite, _outFormat);
 
             WriteIndices(data);
 
@@ -336,18 +312,14 @@ namespace BrawlLib.Imaging
             return bmp;
         }
 
-        public static Bitmap Quantize(Bitmap bmp, int colors, WiiPixelFormat texFormat, WiiPaletteFormat palFormat, IProgressTracker progress)
+        public static Bitmap Quantize(Bitmap bmp, int colors, WiiPixelFormat texFormat, WiiPaletteFormat palFormat,
+            IProgressTracker progress)
         {
-            using (MedianCut mc = new MedianCut(bmp, texFormat, palFormat))
+            using (var mc = new MedianCut(bmp, texFormat, palFormat))
             {
                 return mc.Quantize(colors, progress);
             }
         }
-
-        private const int R_SCALE = 13;
-        private const int G_SCALE = 24;
-        private const int B_SCALE = 26;
-        private const int A_SCALE = 28;
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         private struct ColorEntry
@@ -359,9 +331,13 @@ namespace BrawlLib.Imaging
 
             public static ColorEntry* Create()
             {
-                return (ColorEntry*)Marshal.AllocHGlobal(sizeof(ColorEntry));
+                return (ColorEntry*) Marshal.AllocHGlobal(sizeof(ColorEntry));
             }
-            public static void Destroy(ColorEntry* e) { Marshal.FreeHGlobal((IntPtr)e); }
+
+            public static void Destroy(ColorEntry* e)
+            {
+                Marshal.FreeHGlobal((IntPtr) e);
+            }
 
             public void InsertNext(ColorEntry* entry)
             {
@@ -373,6 +349,7 @@ namespace BrawlLib.Imaging
                 _next->_prev = entry;
                 _next = entry;
             }
+
             public void InsertPrev(ColorEntry* entry)
             {
                 entry->_prev = _prev;
@@ -383,6 +360,7 @@ namespace BrawlLib.Imaging
                 _prev->_next = entry;
                 _prev = entry;
             }
+
             public void Remove()
             {
                 _prev->_next = _next;
@@ -409,7 +387,16 @@ namespace BrawlLib.Imaging
             public uint _colors, _weight;
             public int _index;
 
-            private ColorBox* Address { get { fixed (ColorBox* p = &this) { return p; } } }
+            private ColorBox* Address
+            {
+                get
+                {
+                    fixed (ColorBox* p = &this)
+                    {
+                        return p;
+                    }
+                }
+            }
 
             public void Initialize()
             {
@@ -418,6 +405,7 @@ namespace BrawlLib.Imaging
                 _rootEntry->_box = Address;
                 _colors = 0;
             }
+
             public void Destroy()
             {
                 ColorEntry* current, next;
@@ -431,21 +419,22 @@ namespace BrawlLib.Imaging
                         ColorEntry.Destroy(current);
                         current = next;
                     } while (current != _rootEntry);
+
                     _rootEntry = null;
                 }
             }
 
             public void Split(ColorBox* newBox, int axis)
             {
-                ColorBox* box = _rootEntry->_box;
+                var box = _rootEntry->_box;
                 ColorEntry* current, next;
                 //Get limit from halfError
-                int limit = ((byte*)&box->_halfError)[axis];
+                int limit = ((byte*) &box->_halfError)[axis];
 
                 for (current = _rootEntry->_next; current != _rootEntry; current = next)
                 {
                     next = current->_next;
-                    if (((byte*)&current->_color)[axis] > limit)
+                    if (((byte*) &current->_color)[axis] > limit)
                     {
                         //Remove from current box
                         current->Remove();
@@ -457,16 +446,16 @@ namespace BrawlLib.Imaging
 
             public void Update(int remaining)
             {
-                ColorBox* box = _rootEntry->_box;
+                var box = _rootEntry->_box;
                 ColorEntry* current;
                 byte* tPtr, sColor;
-                ulong* colBuffer = &box->bError;
-                byte* pMin = (byte*)&box->_min;
-                byte* pMax = (byte*)&box->_max;
+                var colBuffer = &box->bError;
+                var pMin = (byte*) &box->_min;
+                var pMax = (byte*) &box->_max;
                 uint weight;
                 int diff;
                 byte val;
-                int* size = stackalloc int[4];
+                var size = stackalloc int[4];
 
                 //Reset bounds and weight
                 _min = 0xFFFFFFFF;
@@ -481,10 +470,10 @@ namespace BrawlLib.Imaging
                 for (current = _rootEntry->_next; current != _rootEntry; current = current->_next)
                 {
                     _weight += weight = current->_weight;
-                    tPtr = (byte*)&current->_color;
+                    tPtr = (byte*) &current->_color;
 
                     //Update bounds for and accumulate each element
-                    for (int i = 0; i < 4; i++)
+                    for (var i = 0; i < 4; i++)
                     {
                         val = *tPtr++;
                         pMin[i] = Math.Min(val, pMin[i]);
@@ -494,24 +483,19 @@ namespace BrawlLib.Imaging
                 }
 
                 //Set calculated color
-                sColor = (byte*)&box->_color;
-                for (int i = 0; i < 4; i++)
-                {
-                    sColor[i] = (byte)(colBuffer[i] / _weight);
-                }
+                sColor = (byte*) &box->_color;
+                for (var i = 0; i < 4; i++) sColor[i] = (byte) (colBuffer[i] / _weight);
 
                 //Calculate volume
                 _volume = 1;
-                for (int i = 0; i < 4; i++)
+                for (var i = 0; i < 4; i++)
                 {
                     diff = pMax[i] - pMin[i] + 1;
-                    _volume *= (uint)diff;
-                    size[i] = (byte)diff;
+                    _volume *= (uint) diff;
+                    size[i] = (byte) diff;
                 }
-                if (_volume == 0)
-                {
-                    _volume = 0xFFFFFFFF;
-                }
+
+                if (_volume == 0) _volume = 0xFFFFFFFF;
 
                 //Calculate error
                 aError = rError = gError = bError = 0;
@@ -519,20 +503,17 @@ namespace BrawlLib.Imaging
                 for (current = _rootEntry->_next; current != _rootEntry; current = current->_next)
                 {
                     weight = current->_weight;
-                    tPtr = (byte*)&current->_color;
-                    for (int i = 0; i < 4; i++)
+                    tPtr = (byte*) &current->_color;
+                    for (var i = 0; i < 4; i++)
                     {
                         diff = tPtr[i] - sColor[i];
-                        colBuffer[i] += weight * (uint)(diff * diff);
+                        colBuffer[i] += weight * (uint) (diff * diff);
                     }
                 }
 
                 //Get half-error
-                tPtr = (byte*)&box->_halfError;
-                for (int i = 0; i < 4; i++)
-                {
-                    tPtr[i] = (byte)(pMin[i] + (size[i] / 2));
-                }
+                tPtr = (byte*) &box->_halfError;
+                for (var i = 0; i < 4; i++) tPtr[i] = (byte) (pMin[i] + size[i] / 2);
 
                 if (_volume > 1)
                 {
@@ -540,8 +521,7 @@ namespace BrawlLib.Imaging
                     int len1 = 0, len2 = 0;
                     int ratio;
 
-                    for (int i = 0; i < 4; i++)
-                    {
+                    for (var i = 0; i < 4; i++)
                         if (size[i] > len1)
                         {
                             len2 = len1;
@@ -554,38 +534,24 @@ namespace BrawlLib.Imaging
                             len2 = size[i];
                             axis2 = i;
                         }
-                    }
 
-                    if (len2 == 0)
+                    if (len2 == 0) len2 = 1;
+
+                    ratio = (len1 + len2 / 2) / len2;
+
+                    if (ratio > remaining + 1) ratio = remaining + 1;
+
+                    if (ratio > 2 && axis1 >= 0)
                     {
-                        len2 = 1;
-                    }
-
-                    ratio = (len1 + (len2 / 2)) / len2;
-
-                    if (ratio > remaining + 1)
-                    {
-                        ratio = remaining + 1;
-                    }
-
-                    if ((ratio > 2) && (axis1 >= 0))
-                    {
-                        diff = pMin[axis1] + (pMax[axis1] - pMin[axis1] + (ratio / 2));
-                        if (diff < pMax[axis1])
-                        {
-                            tPtr[axis1] = (byte)diff;
-                        }
+                        diff = pMin[axis1] + (pMax[axis1] - pMin[axis1]) + ratio / 2;
+                        if (diff < pMax[axis1]) tPtr[axis1] = (byte) diff;
                     }
                 }
 
                 //If half-error touches ceiling, set to floor
-                for (int i = 0; i < 4; i++)
-                {
+                for (var i = 0; i < 4; i++)
                     if (tPtr[i] == pMax[i])
-                    {
                         tPtr[i] = pMin[i];
-                    }
-                }
             }
 
             public static ColorBox* FindSplit(ColorBox* boxes, int boxCount, int maxColors, out int axis)
@@ -601,20 +567,14 @@ namespace BrawlLib.Imaging
 
                 axis = -1;
 
-                if ((maxColors <= 16) && (boxCount <= 2))
-                {
-                    lBias = (3.0 - boxCount) / (2.0 / 2.66);
-                }
+                if (maxColors <= 16 && boxCount <= 2) lBias = (3.0 - boxCount) / (2.0 / 2.66);
 
-                for (int i = 0; i < boxCount; i++, boxes++)
+                for (var i = 0; i < boxCount; i++, boxes++)
                 {
-                    if (boxes->_volume <= 1)
-                    {
-                        continue;
-                    }
+                    if (boxes->_volume <= 1) continue;
 
-                    pMin = (byte*)&boxes->_min;
-                    pMax = (byte*)&boxes->_max;
+                    pMin = (byte*) &boxes->_min;
+                    pMax = (byte*) &boxes->_max;
                     pErr = &boxes->bError;
 
                     rpe = boxes->rError * R_SCALE * R_SCALE;
@@ -633,35 +593,75 @@ namespace BrawlLib.Imaging
                     //    }
                     //}
 
-                    if (((lBias * rpe) > maxC) && (pMin[2] < pMax[2]))
+                    if (lBias * rpe > maxC && pMin[2] < pMax[2])
                     {
                         outBox = boxes;
                         maxC = lBias * rpe;
                         axis = 2;
                     }
 
-                    if ((gpe > maxC) && (pMin[1] < pMax[1]))
+                    if (gpe > maxC && pMin[1] < pMax[1])
                     {
                         outBox = boxes;
                         maxC = gpe;
                         axis = 1;
                     }
 
-                    if ((bpe > maxC) && (pMin[0] < pMax[0]))
+                    if (bpe > maxC && pMin[0] < pMax[0])
                     {
                         outBox = boxes;
                         maxC = bpe;
                         axis = 0;
                     }
-                    if ((ape > maxC) && (pMin[3] < pMax[3]))
+
+                    if (ape > maxC && pMin[3] < pMax[3])
                     {
                         outBox = boxes;
                         maxC = ape;
                         axis = 3;
                     }
                 }
+
                 return outBox;
             }
         }
+
+        #region Handlers/Converters
+
+        private delegate void IDHandler(ARGBPixel inPixel, ushort* id);
+
+        private static void IA8Handler(ARGBPixel inPixel, ushort* id)
+        {
+            *(IA8Pixel*) id = inPixel;
+        }
+
+        private static void RGB565Handler(ARGBPixel inPixel, ushort* id)
+        {
+            *(wRGB565Pixel*) id = (wRGB565Pixel) inPixel;
+        }
+
+        private static void RGB5A3Handler(ARGBPixel inPixel, ushort* id)
+        {
+            *(wRGB5A3Pixel*) id = (wRGB5A3Pixel) inPixel;
+        }
+
+        private delegate void IDConverter(ushort* id, out ARGBPixel outPixel);
+
+        private static void IA8Converter(ushort* id, out ARGBPixel outPixel)
+        {
+            outPixel = *(IA8Pixel*) id;
+        }
+
+        private static void RGB565Converter(ushort* id, out ARGBPixel outPixel)
+        {
+            outPixel = (ARGBPixel) (*(wRGB565Pixel*) id);
+        }
+
+        private static void RGB5A3Converter(ushort* id, out ARGBPixel outPixel)
+        {
+            outPixel = (ARGBPixel) (*(wRGB5A3Pixel*) id);
+        }
+
+        #endregion
     }
 }

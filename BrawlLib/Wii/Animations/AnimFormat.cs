@@ -1,32 +1,31 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.Wii.Animations
 {
     public class AnimFormat
     {
-        private static readonly string[] types = new string[] { "scale", "rotate", "translate" };
-        private static readonly string[] axes = new string[] { "X", "Y", "Z" };
+        private static readonly string[] types = {"scale", "rotate", "translate"};
+        private static readonly string[] axes = {"X", "Y", "Z"};
+
         public static void Serialize(CHR0Node node, bool bake, string output)
         {
             MDL0Node model;
 
-            OpenFileDialog dlgOpen = new OpenFileDialog
+            var dlgOpen = new OpenFileDialog
             {
                 Filter = "MDL0 Model (*.mdl0)|*.mdl0",
                 Title = "Select the model this animation is for..."
             };
 
-            if (dlgOpen.ShowDialog() != DialogResult.OK || (model = (MDL0Node)NodeFactory.FromFile(null, dlgOpen.FileName)) == null)
-            {
-                return;
-            }
+            if (dlgOpen.ShowDialog() != DialogResult.OK ||
+                (model = (MDL0Node) NodeFactory.FromFile(null, dlgOpen.FileName)) == null) return;
 
-            using (StreamWriter file = new StreamWriter(output))
+            using (var file = new StreamWriter(output))
             {
                 file.WriteLine("animVersion 1.1;");
                 file.WriteLine("mayaVersion 2015;");
@@ -34,48 +33,40 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine("linearUnit cm;");
                 file.WriteLine("angularUnit deg;");
                 file.WriteLine("startTime 1;");
-                file.WriteLine(string.Format("endTime {0};", node.FrameCount));
+                file.WriteLine("endTime {0};", node.FrameCount);
                 foreach (CHR0EntryNode e in node.Children)
                 {
-                    MDL0BoneNode bone = model.FindChild("Bones/" + e.Name, true) as MDL0BoneNode;
-                    if (bone == null)
+                    var bone = model.FindChild("Bones/" + e.Name, true) as MDL0BoneNode;
+                    if (bone == null) continue;
+
+                    var c = e.Keyframes;
+                    for (var index = 0; index < 9; index++)
                     {
-                        continue;
-                    }
+                        var array = c._keyArrays[index];
 
-                    KeyframeCollection c = e.Keyframes;
-                    for (int index = 0; index < 9; index++)
-                    {
-                        KeyframeArray array = c._keyArrays[index];
+                        if (array._keyCount <= 0) continue;
 
-                        if (array._keyCount <= 0)
-                        {
-                            continue;
-                        }
-
-                        file.WriteLine(string.Format("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5}", types[index / 3], axes[index % 3], e.Name, 0, bone.Children.Count, index < 6 ? (index + 3) : index - 6));
+                        file.WriteLine("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5}", types[index / 3], axes[index % 3],
+                            e.Name, 0, bone.Children.Count, index < 6 ? index + 3 : index - 6);
                         file.WriteLine("animData {");
                         file.WriteLine("  input time;");
-                        file.WriteLine(string.Format("  output {0};", index > 2 && index < 6 ? "angular" : "linear"));
+                        file.WriteLine("  output {0};", index > 2 && index < 6 ? "angular" : "linear");
                         file.WriteLine("  weighted 0;");
                         file.WriteLine("  preInfinity constant;");
                         file.WriteLine("  postInfinity constant;");
                         file.WriteLine("  keys {");
-                        for (KeyframeEntry entry = array._keyRoot._next; (entry != array._keyRoot); entry = entry._next)
+                        for (var entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
-                            bool single = entry._next._index < 0 && entry._prev._index < 0;
+                            var single = entry._next._index < 0 && entry._prev._index < 0;
                             //float angle = (float)Math.Atan(entry._tangent) * Maths._rad2degf;
                             //if (single)
                             {
-                                file.WriteLine(string.Format("    {0} {1} {2} {2} {3} {4} {5};",
-                                    entry._index + 1,
-                                    entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                    "auto",//single ? "auto" : "fixed",
-                                    "1",
-                                    "1",
-                                    "0"));
+                                file.WriteLine("    {0} {1} {2} {2} {3} {4} {5};", entry._index + 1,
+                                    entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat), "auto", "1", "1",
+                                    "0");
                             }
                         }
+
                         file.WriteLine("  }");
                         file.WriteLine("}");
                     }
@@ -85,24 +76,21 @@ namespace BrawlLib.Wii.Animations
 
         public static CHR0Node Read(string input)
         {
-            CHR0Node node = new CHR0Node() { _name = Path.GetFileNameWithoutExtension(input) };
-            using (StreamReader file = new StreamReader(input))
+            var node = new CHR0Node {_name = Path.GetFileNameWithoutExtension(input)};
+            using (var file = new StreamReader(input))
             {
-                float start = 0.0f;
-                float end = 0.0f;
-                string line = "";
+                var start = 0.0f;
+                var end = 0.0f;
+                var line = "";
                 while (true)
                 {
                     line = file.ReadLine();
-                    int i = line.IndexOf(' ');
-                    string tag = line.Substring(0, i);
+                    var i = line.IndexOf(' ');
+                    var tag = line.Substring(0, i);
 
-                    if (tag == "anim")
-                    {
-                        break;
-                    }
+                    if (tag == "anim") break;
 
-                    string val = line.Substring(i + 1, line.IndexOf(';') - i - 1);
+                    var val = line.Substring(i + 1, line.IndexOf(';') - i - 1);
 
                     switch (tag)
                     {
@@ -125,81 +113,52 @@ namespace BrawlLib.Wii.Animations
                     }
                 }
 
-                int frameCount = (int)(end - start + 1.5f);
+                var frameCount = (int) (end - start + 1.5f);
                 node.FrameCount = frameCount;
 
                 while (true)
                 {
-                    if (line == null)
-                    {
-                        break;
-                    }
+                    if (line == null) break;
 
-                    string[] anim = line.Split(' ');
+                    var anim = line.Split(' ');
                     if (anim.Length != 7)
                     {
-                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim "))
-                        {
-                            ;
-                        }
+                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim ")) ;
 
                         continue;
                     }
-                    string t = anim[2];
-                    string bone = anim[3];
-                    int mode = -1;
+
+                    var t = anim[2];
+                    var bone = anim[3];
+                    var mode = -1;
                     if (t.StartsWith("scale"))
                     {
                         if (t.EndsWith("X"))
-                        {
                             mode = 0;
-                        }
                         else if (t.EndsWith("Y"))
-                        {
                             mode = 1;
-                        }
-                        else if (t.EndsWith("Z"))
-                        {
-                            mode = 2;
-                        }
+                        else if (t.EndsWith("Z")) mode = 2;
                     }
                     else if (t.StartsWith("rotate"))
                     {
                         if (t.EndsWith("X"))
-                        {
                             mode = 3;
-                        }
                         else if (t.EndsWith("Y"))
-                        {
                             mode = 4;
-                        }
-                        else if (t.EndsWith("Z"))
-                        {
-                            mode = 5;
-                        }
+                        else if (t.EndsWith("Z")) mode = 5;
                     }
                     else if (t.StartsWith("translate"))
                     {
                         if (t.EndsWith("X"))
-                        {
                             mode = 6;
-                        }
                         else if (t.EndsWith("Y"))
-                        {
                             mode = 7;
-                        }
-                        else if (t.EndsWith("Z"))
-                        {
-                            mode = 8;
-                        }
+                        else if (t.EndsWith("Z")) mode = 8;
                     }
 
                     if (mode == -1)
                     {
-                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim "))
-                        {
-                            ;
-                        }
+                        while ((line = file.ReadLine()) != null && !line.StartsWith("anim ")) ;
 
                         continue;
                     }
@@ -212,38 +171,34 @@ namespace BrawlLib.Wii.Animations
 
                         if ((e = node.FindChild(bone, false) as CHR0EntryNode) == null)
                         {
-                            e = new CHR0EntryNode() { _name = bone };
+                            e = new CHR0EntryNode {_name = bone};
                             node.AddChild(e);
                         }
 
                         while (true)
                         {
                             line = file.ReadLine().TrimStart();
-                            int i = line.IndexOf(' ');
+                            var i = line.IndexOf(' ');
 
-                            if (i < 0)
-                            {
-                                break;
-                            }
+                            if (i < 0) break;
 
-                            string tag = line.Substring(0, i);
+                            var tag = line.Substring(0, i);
 
                             if (tag == "keys")
                             {
-                                List<KeyframeEntry> l = new List<KeyframeEntry>();
+                                var l = new List<KeyframeEntry>();
                                 while (true)
                                 {
                                     line = file.ReadLine().TrimStart();
 
-                                    if (line == "}")
-                                    {
-                                        break;
-                                    }
+                                    if (line == "}") break;
 
-                                    string[] s = line.Split(' ');
+                                    var s = line.Split(' ');
 
-                                    float.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture, out float inVal);
-                                    float.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture, out float outVal);
+                                    float.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                        out var inVal);
+                                    float.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                        out var outVal);
 
                                     float finalTan = 0;
 
@@ -253,8 +208,8 @@ namespace BrawlLib.Wii.Animations
                                     float angle1 = 0;
                                     float angle2 = 0;
 
-                                    bool firstFixed = false;
-                                    bool secondFixed = false;
+                                    var firstFixed = false;
+                                    var secondFixed = false;
                                     switch (s[2])
                                     {
                                         case "linear":
@@ -264,8 +219,10 @@ namespace BrawlLib.Wii.Animations
 
                                         case "fixed":
                                             firstFixed = true;
-                                            float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture, out angle1);
-                                            float.TryParse(s[8], NumberStyles.Number, CultureInfo.InvariantCulture, out weight1);
+                                            float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                out angle1);
+                                            float.TryParse(s[8], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                out weight1);
                                             break;
                                     }
 
@@ -280,20 +237,26 @@ namespace BrawlLib.Wii.Animations
                                             secondFixed = true;
                                             if (firstFixed)
                                             {
-                                                float.TryParse(s[9], NumberStyles.Number, CultureInfo.InvariantCulture, out angle2);
-                                                float.TryParse(s[10], NumberStyles.Number, CultureInfo.InvariantCulture, out weight2);
+                                                float.TryParse(s[9], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                    out angle2);
+                                                float.TryParse(s[10], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                    out weight2);
                                             }
                                             else
                                             {
-                                                float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture, out angle2);
-                                                float.TryParse(s[8], NumberStyles.Number, CultureInfo.InvariantCulture, out weight2);
+                                                float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                    out angle2);
+                                                float.TryParse(s[8], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                    out weight2);
                                             }
+
                                             break;
                                     }
-                                    bool anyFixed = (secondFixed || firstFixed);
-                                    bool bothFixed = (secondFixed && firstFixed);
 
-                                    KeyframeEntry x = e.SetKeyframe(mode, (int)(inVal - 0.5f), outVal, true);
+                                    var anyFixed = secondFixed || firstFixed;
+                                    var bothFixed = secondFixed && firstFixed;
+
+                                    var x = e.SetKeyframe(mode, (int) (inVal - 0.5f), outVal, true);
                                     if (!anyFixed)
                                     {
                                         l.Add(x);
@@ -301,35 +264,25 @@ namespace BrawlLib.Wii.Animations
                                     else
                                     {
                                         if (bothFixed)
-                                        {
-                                            finalTan = (float)Math.Tan(((angle1 + angle2) / 2) * Maths._deg2radf) * ((weight1 + weight2) / 2);
-                                        }
+                                            finalTan = (float) Math.Tan((angle1 + angle2) / 2 * Maths._deg2radf) *
+                                                       ((weight1 + weight2) / 2);
                                         else if (firstFixed)
-                                        {
-                                            finalTan = (float)Math.Tan(angle1 * Maths._deg2radf) * weight1;
-                                        }
+                                            finalTan = (float) Math.Tan(angle1 * Maths._deg2radf) * weight1;
                                         else
-                                        {
-                                            finalTan = (float)Math.Tan(angle2 * Maths._deg2radf) * weight2;
-                                        }
+                                            finalTan = (float) Math.Tan(angle2 * Maths._deg2radf) * weight2;
 
                                         x._tangent = finalTan;
                                     }
                                 }
-                                foreach (KeyframeEntry w in l)
-                                {
-                                    w.GenerateTangent();
-                                }
+
+                                foreach (var w in l) w.GenerateTangent();
                             }
                             else
                             {
-                                int z = line.IndexOf(';') - i - 1;
-                                if (z < 0)
-                                {
-                                    continue;
-                                }
+                                var z = line.IndexOf(';') - i - 1;
+                                if (z < 0) continue;
 
-                                string val = line.Substring(i + 1, z);
+                                var val = line.Substring(i + 1, z);
 
                                 switch (tag)
                                 {

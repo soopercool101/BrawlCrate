@@ -1,39 +1,24 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.Wii.Animations;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Wii.Animations;
 
 namespace System.Windows.Forms
 {
     public class TexAnimEditControl : UserControl
     {
-        private int _numFrames;
+        private readonly NumericInputBox[] _boxes = new NumericInputBox[5];
+        private SRTAnimationFrame _currentFrame = SRTAnimationFrame.Identity;
 
         private int _currentPage = 1;
-        private SRTAnimationFrame _currentFrame = SRTAnimationFrame.Identity;
-        private readonly NumericInputBox[] _boxes = new NumericInputBox[5];
-        private Panel panel1;
-        private Label label6;
-        private Label label5;
-        private Label label9;
-        private Label label8;
+        private int _numFrames;
 
         private SRT0TextureNode _target;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public SRT0TextureNode TargetSequence
-        {
-            get => _target;
-            set
-            {
-                if (_target == value)
-                {
-                    return;
-                }
-
-                _target = value;
-                UpdateTarget();
-            }
-        }
+        private Label label5;
+        private Label label6;
+        private Label label8;
+        private Label label9;
+        private Panel panel1;
 
         public TexAnimEditControl()
         {
@@ -44,9 +29,20 @@ namespace System.Windows.Forms
             _boxes[3] = numTransX;
             _boxes[4] = numTransY;
 
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++) _boxes[i].Tag = i;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public SRT0TextureNode TargetSequence
+        {
+            get => _target;
+            set
             {
-                _boxes[i].Tag = i;
+                if (_target == value) return;
+
+                _target = value;
+                UpdateTarget();
             }
         }
 
@@ -58,21 +54,20 @@ namespace System.Windows.Forms
             {
                 if (_target.FrameCount > 0)
                 {
-                    SRTAnimationFrame a = new SRTAnimationFrame();
-                    bool check = false;
-                    for (int x = 0; x < _target.FrameCount; x++)
+                    var a = new SRTAnimationFrame();
+                    var check = false;
+                    for (var x = 0; x < _target.FrameCount; x++)
                     {
                         a = _target.GetAnimFrame(x);
                         a.Index = x;
-                        for (int i = 0; i < 5; i++)
-                        {
+                        for (var i = 0; i < 5; i++)
                             if (_target.GetKeyframe(i, x) != null)
                             {
                                 check = true;
                                 a.SetBool(i, true);
                             }
-                        }
-                        if (check == true)
+
+                        if (check)
                         {
                             listKeyframes.Items.Add(a);
                             check = false;
@@ -93,6 +88,7 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
+
             listKeyframes.EndUpdate();
 
             RefreshPage();
@@ -100,7 +96,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            int page = (int)numFrame.Value - 1;
+            var page = (int) numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -122,13 +118,10 @@ namespace System.Windows.Forms
                 numTransX.Value = _currentFrame.Translation._x;
                 numTransY.Value = _currentFrame.Translation._y;
 
-                for (int i = 0; i < 5; i++)
-                {
-                    UpdateBox(i);
-                }
+                for (var i = 0; i < 5; i++) UpdateBox(i);
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < (_numFrames - 1);
+                btnNext.Enabled = _currentPage < _numFrames - 1;
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -136,14 +129,10 @@ namespace System.Windows.Forms
 
         private int FindKeyframe(int index)
         {
-            int count = listKeyframes.Items.Count;
-            for (int i = 0; i < count; i++)
-            {
-                if (((SRTAnimationFrame)listKeyframes.Items[i]).Index == index)
-                {
+            var count = listKeyframes.Items.Count;
+            for (var i = 0; i < count; i++)
+                if (((SRTAnimationFrame) listKeyframes.Items[i]).Index == index)
                     return i;
-                }
-            }
 
             return -1;
         }
@@ -151,40 +140,33 @@ namespace System.Windows.Forms
         private void UpdateBox(int index)
         {
             if (_target.GetKeyframe(index, _currentPage) != null)
-            {
                 _boxes[index].BackColor = Color.Yellow;
-            }
             else
-            {
                 _boxes[index].BackColor = Color.White;
-            }
         }
 
         private unsafe void BoxChanged(object sender, EventArgs e)
         {
-            NumericInputBox box = sender as NumericInputBox;
+            var box = sender as NumericInputBox;
             SRTAnimationFrame kf;
-            float* pkf = (float*)&kf;
-            float val = box.Value;
-            int index = (int)box.Tag;
+            var pkf = (float*) &kf;
+            var val = box.Value;
+            var index = (int) box.Tag;
             int x;
 
             if (val != _currentFrame[index])
             {
-                int kfIndex = FindKeyframe(_currentPage);
+                var kfIndex = FindKeyframe(_currentPage);
 
                 if (float.IsNaN(val))
                 {
                     //Value removed find keyframe and zero it out
                     if (kfIndex >= 0)
                     {
-                        kf = (SRTAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (SRTAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBool(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 5) && float.IsNaN(pkf[x]); x++)
-                        {
-                            ;
-                        }
+                        for (x = 0; x < 5 && float.IsNaN(pkf[x]); x++) ;
 
                         if (x == 5)
                         {
@@ -205,7 +187,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (SRTAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (SRTAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBool(index, true);
                         pkf[index] = val;
                         listKeyframes.Items[kfIndex] = kf;
@@ -217,11 +199,10 @@ namespace System.Windows.Forms
                         kf.SetBool(index, true);
                         pkf[index] = val;
 
-                        int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((SRTAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
-                        {
-                            ;
-                        }
+                        var count = listKeyframes.Items.Count;
+                        for (x = 0;
+                            x < count && ((SRTAnimationFrame) listKeyframes.Items[x]).Index < _currentPage;
+                            x++) ;
 
                         listKeyframes.Items.Insert(x, kf);
                         listKeyframes.SelectedIndex = x;
@@ -237,16 +218,23 @@ namespace System.Windows.Forms
 
         private void listKeyframes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listKeyframes.SelectedIndex;
+            var index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                SRTAnimationFrame f = (SRTAnimationFrame)listKeyframes.SelectedItem;
+                var f = (SRTAnimationFrame) listKeyframes.SelectedItem;
                 numFrame.Value = f.Index + 1;
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value -= 1; }
-        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value += 1; }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            numFrame.Value -= 1;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            numFrame.Value += 1;
+        }
 
         #region Designer
 
@@ -288,7 +276,7 @@ namespace System.Windows.Forms
             label8 = new Label();
             label6 = new Label();
             label5 = new Label();
-            ((ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize) numFrame).BeginInit();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -335,7 +323,7 @@ namespace System.Windows.Forms
             numScaleY.Size = new Drawing.Size(70, 20);
             numScaleY.TabIndex = 3;
             numScaleY.Text = "0";
-            numScaleY.ValueChanged += new EventHandler(BoxChanged);
+            numScaleY.ValueChanged += BoxChanged;
             // 
             // numRot
             // 
@@ -346,7 +334,7 @@ namespace System.Windows.Forms
             numRot.Size = new Drawing.Size(70, 20);
             numRot.TabIndex = 6;
             numRot.Text = "0";
-            numRot.ValueChanged += new EventHandler(BoxChanged);
+            numRot.ValueChanged += BoxChanged;
             // 
             // numTransX
             // 
@@ -357,7 +345,7 @@ namespace System.Windows.Forms
             numTransX.Size = new Drawing.Size(70, 20);
             numTransX.TabIndex = 9;
             numTransX.Text = "0";
-            numTransX.ValueChanged += new EventHandler(BoxChanged);
+            numTransX.ValueChanged += BoxChanged;
             // 
             // numTransY
             // 
@@ -368,7 +356,7 @@ namespace System.Windows.Forms
             numTransY.Size = new Drawing.Size(70, 20);
             numTransY.TabIndex = 10;
             numTransY.Text = "0";
-            numTransY.ValueChanged += new EventHandler(BoxChanged);
+            numTransY.ValueChanged += BoxChanged;
             // 
             // numScaleX
             // 
@@ -379,7 +367,7 @@ namespace System.Windows.Forms
             numScaleX.Size = new Drawing.Size(70, 20);
             numScaleX.TabIndex = 11;
             numScaleX.Text = "0";
-            numScaleX.ValueChanged += new EventHandler(BoxChanged);
+            numScaleX.ValueChanged += BoxChanged;
             // 
             // label7
             // 
@@ -393,20 +381,24 @@ namespace System.Windows.Forms
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(104, 5);
-            numFrame.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Minimum = new decimal(new[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
+            numFrame.Value = new decimal(new[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
+            numFrame.ValueChanged += numFrame_ValueChanged;
             // 
             // lblFrameCount
             // 
@@ -427,7 +419,7 @@ namespace System.Windows.Forms
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += new EventHandler(btnPrev_Click);
+            btnPrev.Click += btnPrev_Click;
             // 
             // btnNext
             // 
@@ -439,7 +431,7 @@ namespace System.Windows.Forms
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += new EventHandler(btnNext_Click);
+            btnNext.Click += btnNext_Click;
             // 
             // listKeyframes
             // 
@@ -452,7 +444,7 @@ namespace System.Windows.Forms
             listKeyframes.Name = "listKeyframes";
             listKeyframes.Size = new Drawing.Size(294, 96);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
+            listKeyframes.SelectedIndexChanged += listKeyframes_SelectedIndexChanged;
             // 
             // groupBox1
             // 
@@ -540,12 +532,11 @@ namespace System.Windows.Forms
             Controls.Add(panel1);
             Name = "TexAnimEditControl";
             Size = new Drawing.Size(300, 212);
-            ((ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize) numFrame).EndInit();
             groupBox1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion

@@ -1,45 +1,85 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.ComponentModel;
+using System.Globalization;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     [TypeConverter(typeof(ExpandableObjectCustomConverter))]
-    public unsafe class RelCommand
+    public class RelCommand
     {
         private readonly ModuleDataNode _section;
 
+        //Addend is an offset relative to the start of the section
+        public uint _addend;
+
+        public RELCommandType _command;
+        public bool _initialized = false;
+        public int _modifiedSectionId;
+        public uint _moduleID;
+        public uint _targetSectionId;
+
+        public RelCommand(uint fileId, ModuleDataNode section, RELLink link)
+        {
+            _moduleID = fileId;
+            _section = section;
+            _modifiedSectionId = section.Index;
+            _targetSectionId = link._section;
+            _command = (RELCommandType) (int) link._type;
+            _addend = link._value;
+        }
+
         private ModuleSectionNode[] Sections => (_section.Root as ModuleNode).Sections;
 
-        [Category("Relocation Command"), Browsable(false)]
-        public bool IsBranchSet => (_command >= RELCommandType.SetBranchDestination && _command <= RELCommandType.SetBranchConditionDestination3);
-        [Category("Relocation Command"), Browsable(false)]
-        public bool IsHalf => (_command >= RELCommandType.WriteLowerHalf1 && _command <= RELCommandType.WriteUpperHalfandBit1);
+        [Category("Relocation Command")]
+        [Browsable(false)]
+        public bool IsBranchSet => _command >= RELCommandType.SetBranchDestination &&
+                                   _command <= RELCommandType.SetBranchConditionDestination3;
 
-        [Category("Relocation Command"), Description("The offset relative to the start of the target section.")]
+        [Category("Relocation Command")]
+        [Browsable(false)]
+        public bool IsHalf => _command >= RELCommandType.WriteLowerHalf1 &&
+                              _command <= RELCommandType.WriteUpperHalfandBit1;
+
+        [Category("Relocation Command")]
+        [Description("The offset relative to the start of the target section.")]
         public string TargetOffset
         {
             get => "0x" + _addend.ToString("X");
             set
             {
-                string s = (value.StartsWith("0x") ? value.Substring(2, Math.Min(value.Length - 2, 8)) : value.Substring(0, Math.Min(value.Length, 8)));
-                if (uint.TryParse(s, System.Globalization.NumberStyles.HexNumber, null, out uint offset))
+                var s = value.StartsWith("0x")
+                    ? value.Substring(2, Math.Min(value.Length - 2, 8))
+                    : value.Substring(0, Math.Min(value.Length, 8));
+                if (uint.TryParse(s, NumberStyles.HexNumber, null, out var offset))
                 {
                     if ((_section.Root as ModuleNode).ID == _moduleID)
                     {
-                        ModuleSectionNode section = Sections[TargetSectionID];
-                        int x = section._dataBuffer.Length - 2;
-                        offset = offset.Clamp(0, (uint)(x < 0 ? 0 : x));
+                        var section = Sections[TargetSectionID];
+                        var x = section._dataBuffer.Length - 2;
+                        offset = offset.Clamp(0, (uint) (x < 0 ? 0 : x));
                     }
+
                     _addend = offset;
                     _section.SignalPropertyChange();
                 }
             }
         }
-        [Category("Relocation Command"), Description("Determines how the offset should be written.")]
-        public RELCommandType Command { get => _command; set { _command = value; _section.SignalPropertyChange(); } }
 
-        [Category("Relocation Command"), Description("The index of the section to offset into.")]
+        [Category("Relocation Command")]
+        [Description("Determines how the offset should be written.")]
+        public RELCommandType Command
+        {
+            get => _command;
+            set
+            {
+                _command = value;
+                _section.SignalPropertyChange();
+            }
+        }
+
+        [Category("Relocation Command")]
+        [Description("The index of the section to offset into.")]
         public uint TargetSectionID
         {
             get => _targetSectionId;
@@ -47,10 +87,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if ((_section.Root as ModuleNode).ID == _moduleID)
                 {
-                    _targetSectionId = value.Clamp(0, (uint)Sections.Length - 1);
-                    ModuleSectionNode section = Sections[TargetSectionID];
-                    int x = section._dataBuffer.Length - 2;
-                    _addend = _addend.Clamp(0, (uint)(x < 0 ? 0 : x));
+                    _targetSectionId = value.Clamp(0, (uint) Sections.Length - 1);
+                    var section = Sections[TargetSectionID];
+                    var x = section._dataBuffer.Length - 2;
+                    _addend = _addend.Clamp(0, (uint) (x < 0 ? 0 : x));
                 }
                 else
                 {
@@ -60,59 +100,38 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _section.SignalPropertyChange();
             }
         }
-        [Category("Relocation Command"), Description("The ID of the target module."), TypeConverter(typeof(DropDownListRELModuleIDs))]
+
+        [Category("Relocation Command")]
+        [Description("The ID of the target module.")]
+        [TypeConverter(typeof(DropDownListRELModuleIDs))]
         public string TargetModuleID
         {
             get => RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : _moduleID.ToString();
             set
             {
-                if (!uint.TryParse(value, out uint id) && RELNode._idNames.ContainsValue(value))
-                {
+                if (!uint.TryParse(value, out var id) && RELNode._idNames.ContainsValue(value))
                     id = RELNode._idNames.Keys[RELNode._idNames.IndexOfValue(value)];
-                }
 
                 _moduleID = id;
                 _section.SignalPropertyChange();
             }
         }
 
-        public RELCommandType _command;
-        public int _modifiedSectionId;
-        public uint _targetSectionId;
-        public uint _moduleID;
-
-        //Addend is an offset relative to the start of the section
-        public uint _addend;
-        public bool _initialized = false;
-
-        public RelCommand(uint fileId, ModuleDataNode section, RELLink link)
-        {
-            _moduleID = fileId;
-            _section = section;
-            _modifiedSectionId = section.Index;
-            _targetSectionId = link._section;
-            _command = (RELCommandType)(int)link._type;
-            _addend = link._value;
-        }
-
         public RelocationTarget GetTargetRelocation()
         {
-            return new RelocationTarget(_moduleID, (int)_targetSectionId, (int)(_addend.RoundDown(4) / 4));
+            return new RelocationTarget(_moduleID, (int) _targetSectionId, (int) (_addend.RoundDown(4) / 4));
         }
 
         public void SetTargetRelocation(RelocationTarget e)
         {
-            if (e == null)
-            {
-                return;
-            }
+            if (e == null) return;
 
-            _addend = (uint)e._index * 4;
+            _addend = (uint) e._index * 4;
         }
 
         public uint Apply(uint newValue, uint baseOffset)
         {
-            uint addend = _addend + baseOffset;
+            var addend = _addend + baseOffset;
             switch (_command)
             {
                 case RELCommandType.Nop: // 0x0
@@ -123,30 +142,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 case RELCommandType.SetBranchOffset: //0x2
                     newValue &= 0xFC000003;
-                    newValue |= (addend & 0x03FFFFFC);
+                    newValue |= addend & 0x03FFFFFC;
                     break;
 
                 case RELCommandType.WriteLowerHalf1: //0x3
                 case RELCommandType.WriteLowerHalf2: //0x4
                     newValue &= 0xFFFF0000;
-                    newValue |= (ushort)(addend & 0xFFFF);
+                    newValue |= (ushort) (addend & 0xFFFF);
                     break;
 
                 case RELCommandType.WriteUpperHalf: //0x5
                     newValue &= 0xFFFF0000;
-                    newValue |= (ushort)(addend >> 16);
+                    newValue |= (ushort) (addend >> 16);
                     break;
 
                 case RELCommandType.WriteUpperHalfandBit1: //0x6
                     newValue &= 0xFFFF0000;
-                    newValue |= (ushort)((addend >> 16) | (addend & 0x1));
+                    newValue |= (ushort) ((addend >> 16) | (addend & 0x1));
                     break;
 
                 case RELCommandType.SetBranchConditionOffset1: //0x7
                 case RELCommandType.SetBranchConditionOffset2: //0x8
                 case RELCommandType.SetBranchConditionOffset3: //0x9
                     newValue &= 0xFFFF0003;
-                    newValue |= (addend & 0xFFFC);
+                    newValue |= addend & 0xFFFC;
                     break;
 
                 case RELCommandType.SetBranchDestination: //0xA
@@ -162,6 +181,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 default:
                     throw new Exception("Unknown Relocation Command.");
             }
+
             return newValue;
         }
     }
@@ -181,6 +201,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         SetBranchDestination = 0xA,
         SetBranchConditionDestination1 = 0xB,
         SetBranchConditionDestination2 = 0xC,
-        SetBranchConditionDestination3 = 0xD,
+        SetBranchConditionDestination3 = 0xD
     }
 }

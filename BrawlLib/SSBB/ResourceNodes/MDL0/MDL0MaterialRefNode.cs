@@ -1,38 +1,407 @@
-﻿using BrawlLib.IO;
-using BrawlLib.Modeling;
-using BrawlLib.SSBBTypes;
-using BrawlLib.Wii.Graphics;
-using BrawlLib.Wii.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib.IO;
+using BrawlLib.Modeling;
+using BrawlLib.SSBBTypes;
+using BrawlLib.Wii.Graphics;
+using BrawlLib.Wii.Models;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0MaterialRefNode : MDL0EntryNode
     {
-        internal MDL0TextureRef* Header { get => (MDL0TextureRef*)_origSource.Address; set => _origSource.Address = value; }
-        public override bool AllowDuplicateNames => true;
+        private Matrix _effectMatrix = Matrix.Identity;
 
-        [Browsable(false)]
-        public MDL0MaterialNode Material => Parent as MDL0MaterialNode;
+        public TextureFrameState _frameState, _bindState;
+        public string PAT0Texture, PAT0Palette;
+
+        public Dictionary<string, MDL0TextureNode> PAT0Textures = new Dictionary<string, MDL0TextureNode>();
 
         public MDL0MaterialRefNode()
         {
-            _uWrap = (int)MatWrapMode.Repeat;
-            _vWrap = (int)MatWrapMode.Repeat;
+            _uWrap = (int) MatWrapMode.Repeat;
+            _vWrap = (int) MatWrapMode.Repeat;
             _bindState = TextureFrameState.Neutral;
             _texMatrixEffect = TexMtxEffect.Default;
             _minFltr = 1;
             _magFltr = 1;
         }
 
+        internal MDL0TextureRef* Header
+        {
+            get => (MDL0TextureRef*) _origSource.Address;
+            set => _origSource.Address = value;
+        }
+
+        public override bool AllowDuplicateNames => true;
+
+        [Browsable(false)] public MDL0MaterialNode Material => Parent as MDL0MaterialNode;
+
         public override string Name
         {
             get => _texture != null ? _texture.Name : base.Name;
-            set { Texture = value; base.Name = value; }
+            set
+            {
+                Texture = value;
+                base.Name = value;
+            }
+        }
+
+        [Browsable(false)]
+        public int TextureCoordId
+        {
+            get
+            {
+                if ((int) Coordinates >= (int) TexSourceRow.TexCoord0)
+                    return (int) Coordinates - (int) TexSourceRow.TexCoord0;
+                return -1 - (int) Coordinates;
+            }
+        }
+
+        public bool CheckIfMetal()
+        {
+            if (Material != null && Material.CheckIfMetal()) return true;
+
+            return false;
+        }
+
+        public override bool OnInitialize()
+        {
+            var header = Header;
+
+            _uWrap = header->_uWrap;
+            _vWrap = header->_vWrap;
+            _minFltr = header->_minFltr;
+            _magFltr = header->_magFltr;
+            _lodBias = header->_lodBias;
+            _maxAniso = header->_maxAniso;
+            _clampBias = header->_clampBias == 1;
+            _texelInterp = header->_texelInterp == 1;
+
+            if (header->_texOffset != 0)
+            {
+                if (_replaced && header->_texOffset >= Parent.WorkingUncompressed.Length)
+                {
+                    Name = null;
+                }
+                else
+                {
+                    if (_replaced)
+                        Name = header->TextureName;
+                    else
+                        _name = header->TextureName;
+
+                    _texture = Model.FindOrCreateTexture(_name);
+                    _texture._references.Add(this);
+                }
+            }
+
+            if (header->_pltOffset != 0)
+            {
+                if (_replaced && header->_pltOffset >= Parent.WorkingUncompressed.Length)
+                {
+                    _palette = null;
+                }
+                else
+                {
+                    var name = header->PaletteName;
+                    _palette = Model.FindOrCreatePalette(name);
+                    _palette._references.Add(this);
+                }
+            }
+
+            var len = Material.XFCmds.Count;
+            if (len != 0 && Index * 2 + 1 < len)
+            {
+                _texMtxFlags = new XFTexMtxInfo(Material.XFCmds[Index * 2]._values[0]);
+                _dualTexFlags = new XFDualTex(Material.XFCmds[Index * 2 + 1]._values[0]);
+            }
+
+            //if (PaletteNode == null && TextureNode != null)
+            //{
+            //    if (TextureNode.Source == null)
+            //        TextureNode.GetSource();
+
+            //    if (TextureNode.Source is TEX0Node && ((TEX0Node)TextureNode.Source).HasPalette)
+            //    {
+            //        Model._errors.Add("A palette was not set to texture reference " + Index + " in material " + Parent.Index + " (" + Parent.Name + ").");
+            //        PaletteNode = Model.FindOrCreatePalette(TextureNode.Name);
+
+            //        SignalPropertyChange();
+            //    }
+            //}
+
+            var TexSettings = Material.Header->TexMatrices(Material._initVersion);
+
+            _texMatrixEffect = TexSettings->GetTexMatrices(Index);
+            _bindState = TexSettings->GetTexSRT(Index);
+            _bindState.MatrixMode = Material.TextureMatrixMode;
+
+            return false;
+        }
+
+        internal override void GetStrings(StringTable table)
+        {
+            table.Add(Name);
+            if (_palette != null) table.Add(_palette.Name);
+        }
+
+        public override void OnRebuild(VoidPtr address, int length, bool force)
+        {
+            var header = (MDL0TextureRef*) address;
+            header->_texPtr = 0;
+            header->_pltPtr = 0;
+            header->_index1 = Index;
+            header->_index2 = Index;
+            header->_uWrap = _uWrap;
+            header->_vWrap = _vWrap;
+            header->_minFltr = _minFltr;
+            header->_magFltr = _magFltr;
+            header->_lodBias = _lodBias;
+            header->_maxAniso = _maxAniso;
+            header->_clampBias = (byte) (_clampBias ? 1 : 0);
+            header->_texelInterp = (byte) (_texelInterp ? 1 : 0);
+            header->_pad = 0;
+        }
+
+        protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
+        {
+            var header = (MDL0TextureRef*) dataAddress;
+
+            header->_texOffset = _texture != null ? (int) stringTable[_texture.Name] + 4 - (int) dataAddress : 0;
+            header->_pltOffset = _palette != null ? (int) stringTable[_palette.Name] + 4 - (int) dataAddress : 0;
+            header->_texPtr = 0;
+            header->_pltPtr = 0;
+            header->_index1 = Index;
+            header->_index2 = Index;
+            header->_uWrap = _uWrap;
+            header->_vWrap = _vWrap;
+            header->_minFltr = _minFltr;
+            header->_magFltr = _magFltr;
+            header->_lodBias = _lodBias;
+            header->_maxAniso = _maxAniso;
+            header->_clampBias = (byte) (_clampBias ? 1 : 0);
+            header->_texelInterp = (byte) (_texelInterp ? 1 : 0);
+            header->_pad = 0;
+        }
+
+        internal void Bind(int prog)
+        {
+            if (!string.IsNullOrEmpty(PAT0Texture))
+            {
+                if (!PAT0Textures.ContainsKey(PAT0Texture))
+                    PAT0Textures[PAT0Texture] = new MDL0TextureNode(PAT0Texture)
+                    {
+                        Source = null,
+                        _palette = !string.IsNullOrEmpty(PAT0Palette)
+                            ? RootNode.FindChildByType(PAT0Palette, true, ResourceType.PLT0) as PLT0Node
+                            : null
+                    };
+
+                var t = PAT0Textures[PAT0Texture];
+                t.Bind();
+                t.Prepare(this, prog, PAT0Palette);
+            }
+            else if (_texture != null)
+            {
+                _texture.Prepare(this, prog);
+            }
+        }
+
+        internal override void Unbind()
+        {
+            if (_texture != null) _texture.Unbind();
+
+            foreach (var t in PAT0Textures.Values) t.Unbind();
+        }
+
+        internal void ApplySRT0Texture(SRT0TextureNode node, float index = 0,
+            TexMatrixMode matrixMode = TexMatrixMode.MatrixMaya)
+        {
+            _frameState = _bindState;
+
+            if (node != null && index >= 1)
+                fixed (TextureFrameState* v = &_frameState)
+                {
+                    var f = (float*) v;
+                    for (var i = 0; i < 5; i++)
+                        if (node.Keyframes[i]._keyCount > 0)
+                            f[i] = node.GetFrameValue(i, index - 1);
+
+                    _frameState.MatrixMode = matrixMode;
+                    _frameState.CalcTransforms();
+                }
+        }
+
+        internal void ApplyPAT0Texture(PAT0TextureNode node, float index)
+        {
+            PAT0TextureEntryNode prev = null;
+            if (node != null && index >= 1 && node.Children.Count > 0)
+            {
+                foreach (PAT0TextureEntryNode next in node.Children)
+                {
+                    if (next.Index == 0)
+                    {
+                        prev = next;
+                        continue;
+                    }
+
+                    if (prev._frame <= index - 1 && next._frame > index - 1) break;
+
+                    prev = next;
+                }
+
+                PAT0Texture = prev.Texture;
+                PAT0Palette = prev.Palette;
+                if (PAT0Texture != null && !PAT0Textures.ContainsKey(PAT0Texture))
+                {
+                    var texture = RootNode.FindChildByType(PAT0Texture, true, ResourceType.TEX0) as TEX0Node;
+                    if (texture != null)
+                        PAT0Textures[PAT0Texture] = new MDL0TextureNode(texture.Name)
+                        {
+                            Source = texture,
+                            _palette = !string.IsNullOrEmpty(PAT0Palette)
+                                ? RootNode.FindChildByType(PAT0Palette, true, ResourceType.PLT0) as PLT0Node
+                                : null
+                        };
+                }
+            }
+            else
+            {
+                PAT0Texture = PAT0Palette = null;
+            }
+        }
+
+        public void SetEffectMatrix(SCN0Node node, ModelPanelViewport v, float frame)
+        {
+            if (MapMode != MappingMethod.TexCoord)
+                switch (MapMode)
+                {
+                    case MappingMethod.Projection:
+                        _effectMatrix = Matrix34.ProjectionMapping(SCN0RefCamera, node, v, frame);
+                        break;
+                    case MappingMethod.EnvSpec:
+                        _effectMatrix = Matrix34.EnvSpecMap(SCN0RefCamera, SCN0RefLight, node, v, frame);
+                        break;
+                    case MappingMethod.EnvLight:
+                        _effectMatrix = Matrix34.EnvLightMap(SCN0RefLight, node, v, frame);
+                        break;
+                    case MappingMethod.EnvCamera:
+                        _effectMatrix = Matrix34.EnvCamMap(SCN0RefCamera, node, v, frame);
+                        break;
+                    default:
+                        _effectMatrix = Matrix.Identity;
+                        break;
+                }
+            else
+                _effectMatrix = Matrix.Identity;
+        }
+
+        public Matrix GetTransform(bool useEffectMtx)
+        {
+            if (!useEffectMtx || _effectMatrix == Matrix.Identity)
+                return _frameState._transform;
+            return _frameState._transform * _effectMatrix;
+        }
+
+        public void Default()
+        {
+            Name = "NewRef";
+            _minFltr = 1;
+            _magFltr = 1;
+            UWrapMode = MatWrapMode.Repeat;
+            VWrapMode = MatWrapMode.Repeat;
+
+            _bindState = TextureFrameState.Neutral;
+            _texMatrixEffect.TextureMatrix = Matrix34.Identity;
+            _texMatrixEffect.SCNCamera = -1;
+            _texMatrixEffect.SCNLight = -1;
+            _texMatrixEffect.MapMode = MappingMethod.TexCoord;
+
+            _texMtxFlags = new XFTexMtxInfo
+            {
+                Projection = TexProjection.ST,
+                InputForm = TexInputForm.AB11,
+                TexGenType = TexTexgenType.Regular,
+                SourceRow = TexSourceRow.TexCoord0,
+                EmbossSource = 5,
+                EmbossLight = 0
+            };
+
+            _texture = Model.FindOrCreateTexture(_name);
+            _texture._references.Add(this);
+        }
+
+        public override void Remove()
+        {
+            if (_parent != null && !CheckIfMetal())
+            {
+                TextureNode = null;
+                PaletteNode = null;
+                base.Remove();
+            }
+        }
+
+        public override bool MoveUp()
+        {
+            if (Parent == null) return false;
+
+            if (CheckIfMetal()) return false;
+
+            var index = Index - 1;
+            if (index < 0) return false;
+
+            Parent.Children.Remove(this);
+            Parent.Children.Insert(index, this);
+            Parent._changed = true;
+
+            return true;
+        }
+
+        public override bool MoveDown()
+        {
+            if (Parent == null) return false;
+
+            if (CheckIfMetal()) return false;
+
+            var index = Index + 1;
+            if (index >= Parent.Children.Count) return false;
+
+            Parent.Children.Remove(this);
+            Parent.Children.Insert(index, this);
+            Parent._changed = true;
+
+            return true;
+        }
+
+        public override void Replace(string fileName)
+        {
+            base.Replace(fileName);
+
+            Model.CheckTextures();
+        }
+
+        public override void Export(string outPath)
+        {
+            var table = new StringTable();
+            GetStrings(table);
+            var dataLen = OnCalculateSize(true);
+            var totalLen = dataLen + table.GetTotalSize();
+
+            using (var stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8,
+                FileOptions.RandomAccess))
+            {
+                stream.SetLength(totalLen);
+                using (var map = FileMap.FromStream(stream))
+                {
+                    Rebuild(map.Address, dataLen, false);
+                    table.WriteTable(map.Address + dataLen);
+                    PostProcess(map.Address, map.Address, table);
+                }
+            }
         }
 
         #region Variables
@@ -58,37 +427,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                bool allsinglebinds = true;
+                var allsinglebinds = true;
                 if (Material.Objects != null)
-                {
-                    foreach (MDL0ObjectNode n in Material.Objects)
-                    {
+                    foreach (var n in Material.Objects)
                         if (n.Weighted)
                         {
                             allsinglebinds = false;
-                            if (!n._manager.HasTextureMatrix[Index])
-                            {
-                                return false;
-                            }
+                            if (!n._manager.HasTextureMatrix[Index]) return false;
                         }
-                    }
-                }
                 else
-                {
                     return false;
-                }
 
-                if (allsinglebinds)
-                {
-                    return false;
-                }
+                if (allsinglebinds) return false;
 
                 return true;
             }
             set
             {
-                foreach (MDL0ObjectNode n in Material.Objects)
-                {
+                foreach (var n in Material.Objects)
                     if (n.Weighted)
                     {
                         n._manager.HasTextureMatrix[Index] = value;
@@ -96,17 +452,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                         n.SignalPropertyChange();
 
                         if (n._vertexNode.Format != WiiVertexComponentType.Float)
-                        {
                             n._vertexNode._forceRebuild = n._vertexNode._forceFloat = value;
-                        }
                     }
-                }
 
                 SignalPropertyChange();
             }
         }
 
-        [Category("Texture Coordinates"), TypeConverter(typeof(Vector2StringConverter))]
+        [Category("Texture Coordinates")]
+        [TypeConverter(typeof(Vector2StringConverter))]
         public Vector2 Scale
         {
             get => _bindState.Scale;
@@ -120,6 +474,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("Texture Coordinates")]
         public float Rotation
         {
@@ -134,7 +489,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-        [Category("Texture Coordinates"), TypeConverter(typeof(Vector2StringConverter))]
+
+        [Category("Texture Coordinates")]
+        [TypeConverter(typeof(Vector2StringConverter))]
         public Vector2 Translation
         {
             get => _bindState.Translate;
@@ -162,6 +519,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("Texture Matrix Effect")]
         public sbyte SCN0RefLight
         {
@@ -175,6 +533,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("Texture Matrix Effect")]
         public MappingMethod MapMode
         {
@@ -189,7 +548,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-        [Category("Texture Matrix Effect"), TypeConverter(typeof(Matrix43StringConverter)), Browsable(false)]
+
+        [Category("Texture Matrix Effect")]
+        [TypeConverter(typeof(Matrix43StringConverter))]
+        [Browsable(false)]
         public Matrix34 EffectMatrix
         {
             get => _texMatrixEffect.TextureMatrix;
@@ -216,6 +578,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("XF TexGen Flags")]
         public TexInputForm InputForm
         {
@@ -229,6 +592,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("XF TexGen Flags")]
         public TexTexgenType Type
         {
@@ -242,6 +606,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("XF TexGen Flags")]
         public TexSourceRow Coordinates
         {
@@ -256,6 +621,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("XF TexGen Flags")]
         public int EmbossSource
         {
@@ -269,6 +635,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("XF TexGen Flags")]
         public int EmbossLight
         {
@@ -282,6 +649,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("XF TexGen Flags")]
         public bool Normalize
         {
@@ -290,7 +658,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!CheckIfMetal())
                 {
-                    _dualTexFlags._normalEnable = (byte)(value ? 1 : 0);
+                    _dualTexFlags._normalEnable = (byte) (value ? 1 : 0);
                     SignalPropertyChange();
                 }
             }
@@ -299,59 +667,63 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Texture Reference")]
         public MatWrapMode UWrapMode
         {
-            get => (MatWrapMode)_uWrap;
+            get => (MatWrapMode) _uWrap;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _uWrap = (int)value;
+                    _uWrap = (int) value;
                     SignalPropertyChange();
                     UpdateCurrentControl();
                 }
             }
         }
+
         [Category("Texture Reference")]
         public MatWrapMode VWrapMode
         {
-            get => (MatWrapMode)_vWrap;
+            get => (MatWrapMode) _vWrap;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _vWrap = (int)value;
+                    _vWrap = (int) value;
                     SignalPropertyChange();
                     UpdateCurrentControl();
                 }
             }
         }
+
         [Category("Texture Reference")]
         public MatTextureMinFilter MinFilter
         {
-            get => (MatTextureMinFilter)_minFltr;
+            get => (MatTextureMinFilter) _minFltr;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _minFltr = (int)value;
+                    _minFltr = (int) value;
                     SignalPropertyChange();
                     UpdateCurrentControl();
                 }
             }
         }
+
         [Category("Texture Reference")]
         public MatTextureMagFilter MagFilter
         {
-            get => (MatTextureMagFilter)_magFltr;
+            get => (MatTextureMagFilter) _magFltr;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _magFltr = (int)value;
+                    _magFltr = (int) value;
                     SignalPropertyChange();
                     UpdateCurrentControl();
                 }
             }
         }
+
         [Category("Texture Reference")]
         public float LODBias
         {
@@ -366,19 +738,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("Texture Reference")]
         public MatAnisotropy MaxAnisotropy
         {
-            get => (MatAnisotropy)_maxAniso;
+            get => (MatAnisotropy) _maxAniso;
             set
             {
                 if (!CheckIfMetal())
                 {
-                    _maxAniso = (int)value;
+                    _maxAniso = (int) value;
                     SignalPropertyChange();
                 }
             }
         }
+
         [Category("Texture Reference")]
         public bool ClampBias
         {
@@ -392,6 +766,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("Texture Reference")]
         public bool TexelInterpolate
         {
@@ -409,493 +784,90 @@ namespace BrawlLib.SSBB.ResourceNodes
         #endregion
 
         #region Texture linkage
+
         internal MDL0TextureNode _texture;
+
         [Browsable(false)]
         public MDL0TextureNode TextureNode
         {
             get => _texture;
             set
             {
-                if (_texture == value)
-                {
-                    return;
-                }
+                if (_texture == value) return;
 
                 if (_texture != null)
                 {
                     _texture._references.Remove(this);
-                    if (_texture._references.Count == 0)
-                    {
-                        _texture.Remove();
-                    }
+                    if (_texture._references.Count == 0) _texture.Remove();
                 }
+
                 if ((_texture = value) != null)
                 {
                     _texture._references.Add(this);
 
                     Name = _texture.Name;
 
-                    if (_texture.Source == null)
-                    {
-                        _texture.GetSource();
-                    }
+                    if (_texture.Source == null) _texture.GetSource();
 
-                    if (_texture.Source is TEX0Node && ((TEX0Node)_texture.Source).HasPalette)
-                    {
+                    if (_texture.Source is TEX0Node && ((TEX0Node) _texture.Source).HasPalette)
                         PaletteNode = Model.FindOrCreatePalette(_texture.Name);
-                    }
                     else
-                    {
                         PaletteNode = null;
-                    }
                 }
             }
         }
-        [Browsable(true), TypeConverter(typeof(DropDownListTextures))]
+
+        [Browsable(true)]
+        [TypeConverter(typeof(DropDownListTextures))]
         public string Texture
         {
             get => _texture == null ? null : _texture.Name;
-            set { TextureNode = string.IsNullOrEmpty(value) || Model == null ? null : Model.FindOrCreateTexture(value); SignalPropertyChange(); UpdateCurrentControl(); }
+            set
+            {
+                TextureNode = string.IsNullOrEmpty(value) || Model == null ? null : Model.FindOrCreateTexture(value);
+                SignalPropertyChange();
+                UpdateCurrentControl();
+            }
         }
+
         #endregion
 
         #region Palette linkage
+
         internal MDL0TextureNode _palette;
+
         [Browsable(false)]
         public MDL0TextureNode PaletteNode
         {
             get => _palette;
             set
             {
-                if (_palette == value)
-                {
-                    return;
-                }
+                if (_palette == value) return;
 
                 if (_palette != null)
                 {
                     _palette._references.Remove(this);
-                    if (_palette._references.Count == 0)
-                    {
-                        _palette.Remove();
-                    }
+                    if (_palette._references.Count == 0) _palette.Remove();
                 }
-                if ((_palette = value) != null)
-                {
-                    _palette._references.Add(this);
-                }
+
+                if ((_palette = value) != null) _palette._references.Add(this);
             }
         }
-        [Browsable(true), TypeConverter(typeof(DropDownListTextures))]
+
+        [Browsable(true)]
+        [TypeConverter(typeof(DropDownListTextures))]
         public string Palette
         {
             get => _palette == null ? null : _palette.Name;
-            set { PaletteNode = string.IsNullOrEmpty(value) ? null : Model.FindOrCreatePalette(value); SignalPropertyChange(); UpdateCurrentControl(); }
+            set
+            {
+                PaletteNode = string.IsNullOrEmpty(value) ? null : Model.FindOrCreatePalette(value);
+                SignalPropertyChange();
+                UpdateCurrentControl();
+            }
         }
+
         #endregion
-
-        [Browsable(false)]
-        public int TextureCoordId
-        {
-            get
-            {
-                if ((int)Coordinates >= (int)TexSourceRow.TexCoord0)
-                {
-                    return (int)Coordinates - (int)TexSourceRow.TexCoord0;
-                }
-                else
-                {
-                    return -1 - (int)Coordinates;
-                }
-            }
-        }
-        public bool CheckIfMetal()
-        {
-            if (Material != null && Material.CheckIfMetal())
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        public override bool OnInitialize()
-        {
-            MDL0TextureRef* header = Header;
-
-            _uWrap = header->_uWrap;
-            _vWrap = header->_vWrap;
-            _minFltr = header->_minFltr;
-            _magFltr = header->_magFltr;
-            _lodBias = header->_lodBias;
-            _maxAniso = header->_maxAniso;
-            _clampBias = header->_clampBias == 1;
-            _texelInterp = header->_texelInterp == 1;
-
-            if (header->_texOffset != 0)
-            {
-                if (_replaced && header->_texOffset >= Parent.WorkingUncompressed.Length)
-                {
-                    Name = null;
-                }
-                else
-                {
-                    if (_replaced)
-                    {
-                        Name = header->TextureName;
-                    }
-                    else
-                    {
-                        _name = header->TextureName;
-                    }
-
-                    _texture = Model.FindOrCreateTexture(_name);
-                    _texture._references.Add(this);
-                }
-            }
-            if (header->_pltOffset != 0)
-            {
-                if (_replaced && header->_pltOffset >= Parent.WorkingUncompressed.Length)
-                {
-                    _palette = null;
-                }
-                else
-                {
-                    string name = header->PaletteName;
-                    _palette = Model.FindOrCreatePalette(name);
-                    _palette._references.Add(this);
-                }
-            }
-
-            int len = Material.XFCmds.Count;
-            if (len != 0 && Index * 2 + 1 < len)
-            {
-                _texMtxFlags = new XFTexMtxInfo(Material.XFCmds[Index * 2]._values[0]);
-                _dualTexFlags = new XFDualTex(Material.XFCmds[Index * 2 + 1]._values[0]);
-            }
-
-            //if (PaletteNode == null && TextureNode != null)
-            //{
-            //    if (TextureNode.Source == null)
-            //        TextureNode.GetSource();
-
-            //    if (TextureNode.Source is TEX0Node && ((TEX0Node)TextureNode.Source).HasPalette)
-            //    {
-            //        Model._errors.Add("A palette was not set to texture reference " + Index + " in material " + Parent.Index + " (" + Parent.Name + ").");
-            //        PaletteNode = Model.FindOrCreatePalette(TextureNode.Name);
-
-            //        SignalPropertyChange();
-            //    }
-            //}
-
-            MDL0TexSRTData* TexSettings = Material.Header->TexMatrices(Material._initVersion);
-
-            _texMatrixEffect = TexSettings->GetTexMatrices(Index);
-            _bindState = TexSettings->GetTexSRT(Index);
-            _bindState.MatrixMode = Material.TextureMatrixMode;
-
-            return false;
-        }
-
-        internal override void GetStrings(StringTable table)
-        {
-            table.Add(Name);
-            if (_palette != null)
-            {
-                table.Add(_palette.Name);
-            }
-        }
-
-        public override void OnRebuild(VoidPtr address, int length, bool force)
-        {
-            MDL0TextureRef* header = (MDL0TextureRef*)address;
-            header->_texPtr = 0;
-            header->_pltPtr = 0;
-            header->_index1 = Index;
-            header->_index2 = Index;
-            header->_uWrap = _uWrap;
-            header->_vWrap = _vWrap;
-            header->_minFltr = _minFltr;
-            header->_magFltr = _magFltr;
-            header->_lodBias = _lodBias;
-            header->_maxAniso = _maxAniso;
-            header->_clampBias = (byte)(_clampBias ? 1 : 0);
-            header->_texelInterp = (byte)(_texelInterp ? 1 : 0);
-            header->_pad = 0;
-        }
-
-        protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
-        {
-            MDL0TextureRef* header = (MDL0TextureRef*)dataAddress;
-
-            header->_texOffset = _texture != null ? (int)stringTable[_texture.Name] + 4 - (int)dataAddress : 0;
-            header->_pltOffset = _palette != null ? (int)stringTable[_palette.Name] + 4 - (int)dataAddress : 0;
-            header->_texPtr = 0;
-            header->_pltPtr = 0;
-            header->_index1 = Index;
-            header->_index2 = Index;
-            header->_uWrap = _uWrap;
-            header->_vWrap = _vWrap;
-            header->_minFltr = _minFltr;
-            header->_magFltr = _magFltr;
-            header->_lodBias = _lodBias;
-            header->_maxAniso = _maxAniso;
-            header->_clampBias = (byte)(_clampBias ? 1 : 0);
-            header->_texelInterp = (byte)(_texelInterp ? 1 : 0);
-            header->_pad = 0;
-        }
-
-        internal void Bind(int prog)
-        {
-            if (!string.IsNullOrEmpty(PAT0Texture))
-            {
-                if (!PAT0Textures.ContainsKey(PAT0Texture))
-                {
-                    PAT0Textures[PAT0Texture] = new MDL0TextureNode(PAT0Texture) { Source = null, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceType.PLT0) as PLT0Node : null };
-                }
-
-                MDL0TextureNode t = PAT0Textures[PAT0Texture];
-                t.Bind();
-                t.Prepare(this, prog, PAT0Palette);
-            }
-            else if (_texture != null)
-            {
-                _texture.Prepare(this, prog);
-            }
-        }
-
-        internal override void Unbind()
-        {
-            if (_texture != null)
-            {
-                _texture.Unbind();
-            }
-
-            foreach (MDL0TextureNode t in PAT0Textures.Values)
-            {
-                t.Unbind();
-            }
-        }
-
-        public TextureFrameState _frameState, _bindState;
-        internal void ApplySRT0Texture(SRT0TextureNode node, float index = 0, TexMatrixMode matrixMode = TexMatrixMode.MatrixMaya)
-        {
-            _frameState = _bindState;
-
-            if (node != null && index >= 1)
-            {
-                fixed (TextureFrameState* v = &_frameState)
-                {
-                    float* f = (float*)v;
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (node.Keyframes[i]._keyCount > 0)
-                        {
-                            f[i] = node.GetFrameValue(i, index - 1);
-                        }
-                    }
-
-                    _frameState.MatrixMode = matrixMode;
-                    _frameState.CalcTransforms();
-                }
-            }
-        }
-
-        public Dictionary<string, MDL0TextureNode> PAT0Textures = new Dictionary<string, MDL0TextureNode>();
-        public string PAT0Texture, PAT0Palette;
-        internal void ApplyPAT0Texture(PAT0TextureNode node, float index)
-        {
-            PAT0TextureEntryNode prev = null;
-            if (node != null && index >= 1 && node.Children.Count > 0)
-            {
-                foreach (PAT0TextureEntryNode next in node.Children)
-                {
-                    if (next.Index == 0)
-                    {
-                        prev = next;
-                        continue;
-                    }
-                    if (prev._frame <= index - 1 && next._frame > index - 1)
-                    {
-                        break;
-                    }
-
-                    prev = next;
-                }
-
-                PAT0Texture = prev.Texture;
-                PAT0Palette = prev.Palette;
-                if (PAT0Texture != null && !PAT0Textures.ContainsKey(PAT0Texture))
-                {
-                    TEX0Node texture = RootNode.FindChildByType(PAT0Texture, true, ResourceType.TEX0) as TEX0Node;
-                    if (texture != null)
-                    {
-                        PAT0Textures[PAT0Texture] = new MDL0TextureNode(texture.Name) { Source = texture, _palette = !string.IsNullOrEmpty(PAT0Palette) ? RootNode.FindChildByType(PAT0Palette, true, ResourceType.PLT0) as PLT0Node : null };
-                    }
-                }
-                return;
-            }
-            else
-            {
-                PAT0Texture = PAT0Palette = null;
-            }
-        }
-
-        public void SetEffectMatrix(SCN0Node node, ModelPanelViewport v, float frame)
-        {
-            if (MapMode != MappingMethod.TexCoord)
-            {
-                switch (MapMode)
-                {
-                    case MappingMethod.Projection:
-                        _effectMatrix = Matrix34.ProjectionMapping(SCN0RefCamera, node, v, frame);
-                        break;
-                    case MappingMethod.EnvSpec:
-                        _effectMatrix = Matrix34.EnvSpecMap(SCN0RefCamera, SCN0RefLight, node, v, frame);
-                        break;
-                    case MappingMethod.EnvLight:
-                        _effectMatrix = Matrix34.EnvLightMap(SCN0RefLight, node, v, frame);
-                        break;
-                    case MappingMethod.EnvCamera:
-                        _effectMatrix = Matrix34.EnvCamMap(SCN0RefCamera, node, v, frame);
-                        break;
-                    default:
-                        _effectMatrix = Matrix.Identity;
-                        break;
-                }
-            }
-            else
-            {
-                _effectMatrix = Matrix.Identity;
-            }
-        }
-
-        private Matrix _effectMatrix = Matrix.Identity;
-        public Matrix GetTransform(bool useEffectMtx)
-        {
-            if (!useEffectMtx || _effectMatrix == Matrix.Identity)
-            {
-                return _frameState._transform;
-            }
-            else
-            {
-                return _frameState._transform * _effectMatrix;
-            }
-        }
-
-        public void Default()
-        {
-            Name = "NewRef";
-            _minFltr = 1;
-            _magFltr = 1;
-            UWrapMode = MatWrapMode.Repeat;
-            VWrapMode = MatWrapMode.Repeat;
-
-            _bindState = TextureFrameState.Neutral;
-            _texMatrixEffect.TextureMatrix = Matrix34.Identity;
-            _texMatrixEffect.SCNCamera = -1;
-            _texMatrixEffect.SCNLight = -1;
-            _texMatrixEffect.MapMode = MappingMethod.TexCoord;
-
-            _texMtxFlags = new XFTexMtxInfo()
-            {
-                Projection = TexProjection.ST,
-                InputForm = TexInputForm.AB11,
-                TexGenType = TexTexgenType.Regular,
-                SourceRow = TexSourceRow.TexCoord0,
-                EmbossSource = 5,
-                EmbossLight = 0
-            };
-
-            _texture = Model.FindOrCreateTexture(_name);
-            _texture._references.Add(this);
-        }
-
-        public override void Remove()
-        {
-            if (_parent != null && !CheckIfMetal())
-            {
-                TextureNode = null;
-                PaletteNode = null;
-                base.Remove();
-            }
-        }
-
-        public override bool MoveUp()
-        {
-            if (Parent == null)
-            {
-                return false;
-            }
-
-            if (CheckIfMetal())
-            {
-                return false;
-            }
-
-            int index = Index - 1;
-            if (index < 0)
-            {
-                return false;
-            }
-
-            Parent.Children.Remove(this);
-            Parent.Children.Insert(index, this);
-            Parent._changed = true;
-
-            return true;
-        }
-
-        public override bool MoveDown()
-        {
-            if (Parent == null)
-            {
-                return false;
-            }
-
-            if (CheckIfMetal())
-            {
-                return false;
-            }
-
-            int index = Index + 1;
-            if (index >= Parent.Children.Count)
-            {
-                return false;
-            }
-
-            Parent.Children.Remove(this);
-            Parent.Children.Insert(index, this);
-            Parent._changed = true;
-
-            return true;
-        }
-
-        public override unsafe void Replace(string fileName)
-        {
-            base.Replace(fileName);
-
-            Model.CheckTextures();
-        }
-
-        public override unsafe void Export(string outPath)
-        {
-            StringTable table = new StringTable();
-            GetStrings(table);
-            int dataLen = OnCalculateSize(true);
-            int totalLen = dataLen + table.GetTotalSize();
-
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
-            {
-                stream.SetLength(totalLen);
-                using (FileMap map = FileMap.FromStream(stream))
-                {
-                    Rebuild(map.Address, dataLen, false);
-                    table.WriteTable(map.Address + dataLen);
-                    PostProcess(map.Address, map.Address, table);
-                }
-            }
-        }
     }
 
     public enum MatAnisotropy
@@ -904,12 +876,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         Two, //Filters a maximum of two samples.
         Four //Filters a maximum of four samples.
     }
+
     public enum MatWrapMode
     {
         Clamp,
         Repeat,
         Mirror
     }
+
     public enum MatTextureMinFilter : uint
     {
         Nearest = 0,
@@ -919,11 +893,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         Nearest_Mipmap_Linear,
         Linear_Mipmap_Linear
     }
+
     public enum MatTextureMagFilter : uint
     {
         Nearest = 0,
-        Linear,
+        Linear
     }
+
     public enum MappingMethod
     {
         TexCoord = 0x00,

@@ -1,15 +1,13 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MDL0DefNode : MDL0EntryNode
+    public class MDL0DefNode : MDL0EntryNode
     {
         internal List<object> _items = new List<object>();
-        private int _len;
 
         //internal List<MDL0Node2Class> _items2 = new List<MDL0Node2Class>();
         //internal List<MDL0Node3Class> _items3 = new List<MDL0Node3Class>();
@@ -25,19 +23,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("MDL0 Nodes")]
         //public List<MDL0NodeType5> NodeType5Items { get { return _items5; } }
 
+        [Category("MDL0 Nodes")] public int DataLength { get; private set; }
+
         [Category("MDL0 Nodes")]
-        public int DataLength => _len;
-        [Category("MDL0 Nodes")]
-        public object[] Items { get => _items.ToArray(); set => _items = value.ToList(); }
+        public object[] Items
+        {
+            get => _items.ToArray();
+            set => _items = value.ToList();
+        }
 
         public override bool OnInitialize()
         {
-            VoidPtr addr = WorkingUncompressed.Address;
+            var addr = WorkingUncompressed.Address;
             object n = null;
-            while ((n = MDL0NodeClass.Create(ref addr)) != null)
-            {
-                _items.Add(n);
-            }
+            while ((n = MDL0NodeClass.Create(ref addr)) != null) _items.Add(n);
 
             //while ((n = MDL0NodeClass.Create(ref addr)) != null)
             //{
@@ -51,8 +50,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             //        _items5.Add((MDL0NodeType5)n);
             //}
 
-            _len = addr - WorkingUncompressed.Address;
-            SetSizeInternal(_len);
+            DataLength = addr - WorkingUncompressed.Address;
+            SetSizeInternal(DataLength);
 
             return false;
         }

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct BRESHeader// : IEnumerable<VoidPtr>
+    public unsafe struct BRESHeader // : IEnumerable<VoidPtr>
     {
         public const string Tag = "bres";
         public const int Size = 16;
@@ -16,16 +16,25 @@ namespace BrawlLib.SSBBTypes
         public bushort _rootOffset; //Offset to root entry
         public bushort _numSections;
 
-        public ROOTHeader* First { get { fixed (BRESHeader* p = &this) { return (ROOTHeader*)((uint)p + _rootOffset); } } }
+        public ROOTHeader* First
+        {
+            get
+            {
+                fixed (BRESHeader* p = &this)
+                {
+                    return (ROOTHeader*) ((uint) p + _rootOffset);
+                }
+            }
+        }
 
         public BRESHeader(int size, int numSections)
         {
             _tag = Tag;
             _endian = 0xFEFF;
             _version = 0;
-            _fileSize = (uint)size;
+            _fileSize = (uint) size;
             _rootOffset = 0x10;
-            _numSections = (ushort)numSections;
+            _numSections = (ushort) numSections;
         }
 
         //public IEnumerator<VoidPtr> GetEnumerator() { return new StructEnumerator(this.First, this._numSections, BRESEntry.GetNext); }
@@ -46,7 +55,7 @@ namespace BrawlLib.SSBBTypes
     //}
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct ROOTHeader
+    public struct ROOTHeader
     {
         public const string Tag = "root";
 
@@ -72,31 +81,38 @@ namespace BrawlLib.SSBBTypes
         public bint _version;
         public bint _bresOffset;
 
-        private BRESCommonHeader* Address { get { fixed (BRESCommonHeader* ptr = &this) { return ptr; } } }
+        private BRESCommonHeader* Address
+        {
+            get
+            {
+                fixed (BRESCommonHeader* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public BRESHeader* BRESHeader
         {
-            get => (BRESHeader*)((uint)Address + _bresOffset);
-            set => _bresOffset = (int)value - (int)Address;
+            get => (BRESHeader*) ((uint) Address + _bresOffset);
+            set => _bresOffset = (int) value - (int) Address;
         }
 
         public ResourceEntry* GetRootEntry()
         {
             VoidPtr addr = Address;
 
-            BRESHeader* header = BRESHeader;
-            ResourceGroup* master = &header->First->_master;
+            var header = BRESHeader;
+            var master = &header->First->_master;
 
-            for (int i = 0; i < master->_numEntries; i++)
+            for (var i = 0; i < master->_numEntries; i++)
             {
-                ResourceGroup* group = (ResourceGroup*)master->First[i].DataAddress;
-                for (int y = 0; y < group->_numEntries; y++)
-                {
+                var group = (ResourceGroup*) master->First[i].DataAddress;
+                for (var y = 0; y < group->_numEntries; y++)
                     if (addr == group->First[y].DataAddress)
-                    {
                         return &group->First[y];
-                    }
-                }
             }
+
             return null;
         }
     }
@@ -107,8 +123,18 @@ namespace BrawlLib.SSBBTypes
         public bint _length;
         public sbyte _data;
 
-        private void* Address { get { fixed (void* p = &this) { return p; } } }
-        public sbyte* Data => (sbyte*)Address + 4;
+        private void* Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
+
+        public sbyte* Data => (sbyte*) Address + 4;
 
         public int Length => _length;
 
@@ -117,24 +143,28 @@ namespace BrawlLib.SSBBTypes
             get => new string(Data);
             set
             {
-                if (value == null)
-                {
-                    value = "";
-                }
+                if (value == null) value = "";
 
                 int len = _length = value.Length;
-                int ceil = (len + 1).Align(4);
+                var ceil = (len + 1).Align(4);
 
-                sbyte* ptr = Data;
+                var ptr = Data;
                 value.Write(ptr);
 
-                for (int i = len; i < ceil;)
-                {
-                    ptr[i++] = 0;
-                }
+                for (var i = len; i < ceil;) ptr[i++] = 0;
             }
         }
-        public BRESString* Next => (BRESString*)((byte*)Address + (_length + 5).Align(4));
-        public BRESString* End { get { BRESString* p = (BRESString*)Address; while (p->_length != 0) { p = p->Next; } return p; } }
+
+        public BRESString* Next => (BRESString*) ((byte*) Address + (_length + 5).Align(4));
+
+        public BRESString* End
+        {
+            get
+            {
+                var p = (BRESString*) Address;
+                while (p->_length != 0) p = p->Next;
+                return p;
+            }
+        }
     }
 }

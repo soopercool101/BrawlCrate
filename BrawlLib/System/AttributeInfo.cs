@@ -6,8 +6,8 @@ namespace System
 {
     public class AttributeInfo
     {
-        public string _name;
         public string _description;
+        public string _name;
         public int _type;
 
         //0 == float/radians
@@ -20,10 +20,6 @@ namespace System
 
     public class AttributeInterpretation
     {
-        public AttributeInfo[] Array { get; private set; }
-        public string Filename { get; private set; }
-        public int NumEntries => Array != null ? Array.Length : 0;
-
         public AttributeInterpretation(AttributeInfo[] array, string saveToFile)
         {
             Array = array;
@@ -34,57 +30,54 @@ namespace System
         {
             Filename = filename;
 
-            List<AttributeInfo> list = new List<AttributeInfo>();
+            var list = new List<AttributeInfo>();
             if (filename != null && File.Exists(filename))
-            {
-                using (StreamReader sr = new StreamReader(filename))
+                using (var sr = new StreamReader(filename))
                 {
-                    for (int i = 0; !sr.EndOfStream; i++)
+                    for (var i = 0; !sr.EndOfStream; i++)
                     {
-                        AttributeInfo attr = new AttributeInfo
+                        var attr = new AttributeInfo
                         {
                             _name = sr.ReadLine(),
                             _description = ""
                         };
-                        string temp = sr.ReadLine();
+                        var temp = sr.ReadLine();
                         while (temp != null && !temp.Equals("\t/EndDescription"))
                         {
                             attr._description += temp;
                             attr._description += '\n';
                             temp = sr.ReadLine();
                         }
-                        if (temp == null)
-                        {
-                            return;
-                        }
-                        if (attr._description.EndsWith("\n"))
-                        {
-                            attr._description = attr._description.Substring(0, attr._description.Length - 1);
-                        }
 
-                        string num = sr.ReadLine();
+                        if (temp == null) return;
+                        if (attr._description.EndsWith("\n"))
+                            attr._description = attr._description.Substring(0, attr._description.Length - 1);
+
+                        var num = sr.ReadLine();
                         try
                         {
                             attr._type = int.Parse(num);
                         }
                         catch (FormatException ex)
                         {
-                            throw new FormatException("Invalid type \"" + num + "\" in " + Path.GetFileName(filename) + ".", ex);
+                            throw new FormatException(
+                                "Invalid type \"" + num + "\" in " + Path.GetFileName(filename) + ".", ex);
                         }
 
-                        if (attr._description == "")
-                        {
-                            attr._description = "No Description Available.";
-                        }
+                        if (attr._description == "") attr._description = "No Description Available.";
 
                         list.Add(attr);
                         sr.ReadLine();
                         index++;
                     }
                 }
-            }
+
             Array = list.ToArray();
         }
+
+        public AttributeInfo[] Array { get; }
+        public string Filename { get; }
+        public int NumEntries => Array != null ? Array.Length : 0;
 
         public override string ToString()
         {
@@ -93,24 +86,17 @@ namespace System
 
         public void Save()
         {
-            string dir = Path.GetDirectoryName(Filename);
-            if (!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
+            var dir = Path.GetDirectoryName(Filename);
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
             if (File.Exists(Filename))
-            {
                 if (DialogResult.Yes != MessageBox.Show("Overwrite " + Filename + "?", "Overwrite",
-                    MessageBoxButtons.YesNo))
-                {
+                        MessageBoxButtons.YesNo))
                     return;
-                }
-            }
-            using (StreamWriter sw = new StreamWriter(Filename))
+            using (var sw = new StreamWriter(Filename))
             {
-                for (int i = 0; i < Array.Length; i++)
+                for (var i = 0; i < Array.Length; i++)
                 {
-                    AttributeInfo attr = Array[i];
+                    var attr = Array[i];
                     sw.WriteLine(attr._name);
                     sw.WriteLine(attr._description);
                     sw.WriteLine("\t/EndDescription");

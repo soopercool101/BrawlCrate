@@ -6,12 +6,37 @@ namespace System
     public unsafe struct bint
     {
         public int _data;
-        public static implicit operator int(bint val) { return val._data.Reverse(); }
-        public static implicit operator bint(int val) { return new bint { _data = val.Reverse() }; }
-        public static explicit operator uint(bint val) { return (uint)val._data.Reverse(); }
-        public static explicit operator bint(uint val) { return new bint { _data = (int)val.Reverse() }; }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator int(bint val)
+        {
+            return val._data.Reverse();
+        }
+
+        public static implicit operator bint(int val)
+        {
+            return new bint {_data = val.Reverse()};
+        }
+
+        public static explicit operator uint(bint val)
+        {
+            return (uint) val._data.Reverse();
+        }
+
+        public static explicit operator bint(uint val)
+        {
+            return new bint {_data = (int) val.Reverse()};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public VoidPtr OffsetAddress
         {
@@ -20,6 +45,7 @@ namespace System
         }
 
         public int Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -30,20 +56,46 @@ namespace System
     public unsafe struct buint
     {
         public uint _data;
-        public static implicit operator uint(buint val) { return val._data.Reverse(); }
-        public static implicit operator buint(uint val) { return new buint { _data = val.Reverse() }; }
-        public static explicit operator int(buint val) { return (int)val._data.Reverse(); }
-        public static explicit operator buint(int val) { return new buint { _data = (uint)val.Reverse() }; }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator uint(buint val)
+        {
+            return val._data.Reverse();
+        }
+
+        public static implicit operator buint(uint val)
+        {
+            return new buint {_data = val.Reverse()};
+        }
+
+        public static explicit operator int(buint val)
+        {
+            return (int) val._data.Reverse();
+        }
+
+        public static explicit operator buint(int val)
+        {
+            return new buint {_data = (uint) val.Reverse()};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public VoidPtr OffsetAddress
         {
             get => Address + Value;
-            set => _data = ((uint)(value - Address)).Reverse();
+            set => _data = ((uint) (value - Address)).Reverse();
         }
 
         public uint Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -54,13 +106,35 @@ namespace System
     public unsafe struct bfloat
     {
         public float _data;
-        public static implicit operator float(bfloat val) { return val._data.Reverse(); }
-        public static implicit operator bfloat(float val) { return new bfloat { _data = val.Reverse() }; }
-        public static implicit operator bfloat(byte[] val) { return new bfloat { _data = BitConverter.ToSingle(val, 0) }; }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator float(bfloat val)
+        {
+            return val._data.Reverse();
+        }
+
+        public static implicit operator bfloat(float val)
+        {
+            return new bfloat {_data = val.Reverse()};
+        }
+
+        public static implicit operator bfloat(byte[] val)
+        {
+            return new bfloat {_data = BitConverter.ToSingle(val, 0)};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public float Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -71,14 +145,40 @@ namespace System
     public unsafe struct bshort
     {
         public short _data;
-        public static implicit operator short(bshort val) { return val._data.Reverse(); }
-        public static implicit operator bshort(short val) { return new bshort { _data = val.Reverse() }; }
-        public static explicit operator ushort(bshort val) { return (ushort)val._data.Reverse(); }
-        public static explicit operator bshort(ushort val) { return new bshort { _data = (short)val.Reverse() }; }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator short(bshort val)
+        {
+            return val._data.Reverse();
+        }
+
+        public static implicit operator bshort(short val)
+        {
+            return new bshort {_data = val.Reverse()};
+        }
+
+        public static explicit operator ushort(bshort val)
+        {
+            return (ushort) val._data.Reverse();
+        }
+
+        public static explicit operator bshort(ushort val)
+        {
+            return new bshort {_data = (short) val.Reverse()};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public short Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -89,14 +189,40 @@ namespace System
     public unsafe struct bushort
     {
         public ushort _data;
-        public static implicit operator ushort(bushort val) { return val._data.Reverse(); }
-        public static implicit operator bushort(ushort val) { return new bushort { _data = val.Reverse() }; }
-        public static explicit operator short(bushort val) { return (short)val._data.Reverse(); }
-        public static explicit operator bushort(short val) { return new bushort { _data = (ushort)val.Reverse() }; }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator ushort(bushort val)
+        {
+            return val._data.Reverse();
+        }
+
+        public static implicit operator bushort(ushort val)
+        {
+            return new bushort {_data = val.Reverse()};
+        }
+
+        public static explicit operator short(bushort val)
+        {
+            return (short) val._data.Reverse();
+        }
+
+        public static explicit operator bushort(short val)
+        {
+            return new bushort {_data = (ushort) val.Reverse()};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public ushort Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -108,20 +234,45 @@ namespace System
     {
         public long _data;
 
-        public static implicit operator long(blong val) { return val._data.Reverse(); }
-        public static implicit operator blong(long val) { return new blong { _data = val.Reverse() }; }
-        public static explicit operator ulong(blong val) { return (ulong)val._data.Reverse(); }
-        public static explicit operator blong(ulong val) { return new blong { _data = (long)val.Reverse() }; }
+        public static implicit operator long(blong val)
+        {
+            return val._data.Reverse();
+        }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator blong(long val)
+        {
+            return new blong {_data = val.Reverse()};
+        }
+
+        public static explicit operator ulong(blong val)
+        {
+            return (ulong) val._data.Reverse();
+        }
+
+        public static explicit operator blong(ulong val)
+        {
+            return new blong {_data = (long) val.Reverse()};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public VoidPtr OffsetAddress
         {
             get => Address + Value;
-            set => _data = ((long)(value - Address)).Reverse();
+            set => _data = ((long) (value - Address)).Reverse();
         }
 
         public long Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -133,20 +284,45 @@ namespace System
     {
         public ulong _data;
 
-        public static implicit operator ulong(bulong val) { return val._data.Reverse(); }
-        public static implicit operator bulong(ulong val) { return new bulong { _data = val.Reverse() }; }
-        public static explicit operator long(bulong val) { return (long)val._data.Reverse(); }
-        public static explicit operator bulong(long val) { return new bulong { _data = (ulong)val.Reverse() }; }
+        public static implicit operator ulong(bulong val)
+        {
+            return val._data.Reverse();
+        }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public static implicit operator bulong(ulong val)
+        {
+            return new bulong {_data = val.Reverse()};
+        }
+
+        public static explicit operator long(bulong val)
+        {
+            return (long) val._data.Reverse();
+        }
+
+        public static explicit operator bulong(long val)
+        {
+            return new bulong {_data = (ulong) val.Reverse()};
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public VoidPtr OffsetAddress
         {
             get => Address + Value;
-            set => _data = ((ulong)(value - Address)).Reverse();
+            set => _data = ((ulong) (value - Address)).Reverse();
         }
 
         public ulong Value => this;
+
         public override string ToString()
         {
             return Value.ToString();
@@ -159,12 +335,26 @@ namespace System
         public bfloat _x;
         public bfloat _y;
 
-        public BVec2(float x, float y) { _x = x; _y = y; }
+        public BVec2(float x, float y)
+        {
+            _x = x;
+            _y = y;
+        }
 
-        public override string ToString() { return string.Format("({0}, {1})", (float)_x, (float)_y); }
+        public override string ToString()
+        {
+            return string.Format("({0}, {1})", (float) _x, (float) _y);
+        }
 
-        public static implicit operator Vector2(BVec2 v) { return new Vector2(v._x, v._y); }
-        public static implicit operator BVec2(Vector2 v) { return new BVec2(v._x, v._y); }
+        public static implicit operator Vector2(BVec2 v)
+        {
+            return new Vector2(v._x, v._y);
+        }
+
+        public static implicit operator BVec2(Vector2 v)
+        {
+            return new BVec2(v._x, v._y);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -174,15 +364,37 @@ namespace System
         public bfloat _y;
         public bfloat _z;
 
-        public BVec3(float x, float y, float z) { _x = x; _y = y; _z = z; }
+        public BVec3(float x, float y, float z)
+        {
+            _x = x;
+            _y = y;
+            _z = z;
+        }
 
-        public override string ToString() { return string.Format("({0}, {1}, {2})", (float)_x, (float)_y, (float)_z); }
+        public override string ToString()
+        {
+            return string.Format("({0}, {1}, {2})", (float) _x, (float) _y, (float) _z);
+        }
 
-        public static implicit operator Vector3(BVec3 v) { return new Vector3(v._x, v._y, v._z); }
-        public static implicit operator BVec3(Vector3 v) { return new BVec3(v._x, v._y, v._z); }
+        public static implicit operator Vector3(BVec3 v)
+        {
+            return new Vector3(v._x, v._y, v._z);
+        }
 
-        public static implicit operator Vector4(BVec3 v) { return new Vector4(v._x, v._y, v._z, 1); }
-        public static implicit operator BVec3(Vector4 v) { return new BVec3(v._x / v._w, v._y / v._w, v._z / v._w); }
+        public static implicit operator BVec3(Vector3 v)
+        {
+            return new BVec3(v._x, v._y, v._z);
+        }
+
+        public static implicit operator Vector4(BVec3 v)
+        {
+            return new Vector4(v._x, v._y, v._z, 1);
+        }
+
+        public static implicit operator BVec3(Vector4 v)
+        {
+            return new BVec3(v._x / v._w, v._y / v._w, v._z / v._w);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -193,12 +405,28 @@ namespace System
         public bfloat _z;
         public bfloat _w;
 
-        public BVec4(float x, float y, float z, float w) { _x = x; _y = y; _z = z; _w = w; }
+        public BVec4(float x, float y, float z, float w)
+        {
+            _x = x;
+            _y = y;
+            _z = z;
+            _w = w;
+        }
 
-        public override string ToString() { return string.Format("({0}, {1}, {2}, {3})", (float)_x, (float)_y, (float)_z, (float)_w); }
+        public override string ToString()
+        {
+            return string.Format("({0}, {1}, {2}, {3})", (float) _x, (float) _y, (float) _z, (float) _w);
+        }
 
-        public static implicit operator Vector4(BVec4 v) { return new Vector4(v._x, v._y, v._z, v._w); }
-        public static implicit operator BVec4(Vector4 v) { return new BVec4(v._x, v._y, v._z, v._w); }
+        public static implicit operator Vector4(BVec4 v)
+        {
+            return new Vector4(v._x, v._y, v._z, v._w);
+        }
+
+        public static implicit operator BVec4(Vector4 v)
+        {
+            return new BVec4(v._x, v._y, v._z, v._w);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -206,13 +434,23 @@ namespace System
     {
         private fixed float _data[12];
 
-        public bfloat* Data { get { fixed (float* ptr = _data) { return (bfloat*)ptr; } } }
+        public bfloat* Data
+        {
+            get
+            {
+                fixed (float* ptr = _data)
+                {
+                    return (bfloat*) ptr;
+                }
+            }
+        }
 
         public float this[int x, int y]
         {
             get => Data[(y << 2) + x];
             set => Data[(y << 2) + x] = value;
         }
+
         public float this[int index]
         {
             get => Data[index];
@@ -221,15 +459,16 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})", this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11]);
+            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})", this[0], this[1], this[2],
+                this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11]);
         }
 
         public static implicit operator Matrix(bMatrix43 bm)
         {
             Matrix m;
 
-            bfloat* sPtr = (bfloat*)&bm;
-            float* dPtr = (float*)&m;
+            var sPtr = (bfloat*) &bm;
+            var dPtr = (float*) &m;
 
             dPtr[0] = sPtr[0];
             dPtr[1] = sPtr[4];
@@ -255,8 +494,8 @@ namespace System
         {
             bMatrix43 bm;
 
-            bfloat* dPtr = (bfloat*)&bm;
-            float* sPtr = (float*)&m;
+            var dPtr = (bfloat*) &bm;
+            var sPtr = (float*) &m;
 
             dPtr[0] = sPtr[0];
             dPtr[1] = sPtr[4];
@@ -276,26 +515,20 @@ namespace System
 
         public static implicit operator Matrix34(bMatrix43 bm)
         {
-            Matrix34 m = new Matrix34();
-            float* dPtr = (float*)&m;
-            bfloat* sPtr = (bfloat*)&bm;
-            for (int i = 0; i < 12; i++)
-            {
-                dPtr[i] = sPtr[i];
-            }
+            var m = new Matrix34();
+            var dPtr = (float*) &m;
+            var sPtr = (bfloat*) &bm;
+            for (var i = 0; i < 12; i++) dPtr[i] = sPtr[i];
 
             return m;
         }
 
         public static implicit operator bMatrix43(Matrix34 m)
         {
-            bMatrix43 bm = new bMatrix43();
-            bfloat* dPtr = (bfloat*)&bm;
-            float* sPtr = (float*)&m;
-            for (int i = 0; i < 12; i++)
-            {
-                dPtr[i] = sPtr[i];
-            }
+            var bm = new bMatrix43();
+            var dPtr = (bfloat*) &bm;
+            var sPtr = (float*) &m;
+            for (var i = 0; i < 12; i++) dPtr[i] = sPtr[i];
 
             return bm;
         }
@@ -306,13 +539,23 @@ namespace System
     {
         private fixed float _data[16];
 
-        public bfloat* Data { get { fixed (float* ptr = _data) { return (bfloat*)ptr; } } }
+        public bfloat* Data
+        {
+            get
+            {
+                fixed (float* ptr = _data)
+                {
+                    return (bfloat*) ptr;
+                }
+            }
+        }
 
         public float this[int x, int y]
         {
             get => Data[(y << 2) + x];
             set => Data[(y << 2) + x] = value;
         }
+
         public float this[int index]
         {
             get => Data[index];
@@ -321,31 +564,27 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11], this[12], this[13], this[14], this[15]);
+            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0],
+                this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11],
+                this[12], this[13], this[14], this[15]);
         }
 
         public static implicit operator Matrix(bMatrix bm)
         {
-            Matrix m = new Matrix();
-            float* dPtr = (float*)&m;
-            bfloat* sPtr = (bfloat*)&bm;
-            for (int i = 0; i < 16; i++)
-            {
-                dPtr[i] = sPtr[i];
-            }
+            var m = new Matrix();
+            var dPtr = (float*) &m;
+            var sPtr = (bfloat*) &bm;
+            for (var i = 0; i < 16; i++) dPtr[i] = sPtr[i];
 
             return m;
         }
 
         public static implicit operator bMatrix(Matrix m)
         {
-            bMatrix bm = new bMatrix();
-            bfloat* dPtr = (bfloat*)&bm;
-            float* sPtr = (float*)&m;
-            for (int i = 0; i < 16; i++)
-            {
-                dPtr[i] = sPtr[i];
-            }
+            var bm = new bMatrix();
+            var dPtr = (bfloat*) &bm;
+            var sPtr = (float*) &m;
+            for (var i = 0; i < 16; i++) dPtr[i] = sPtr[i];
 
             return bm;
         }

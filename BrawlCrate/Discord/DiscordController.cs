@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlCrate.Discord
 {
@@ -7,7 +8,12 @@ namespace BrawlCrate.Discord
     {
         public static DiscordRpc.RichPresence presence;
         private static DiscordRpc.EventHandlers handlers;
-        private static readonly string applicationId = (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary") && File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary\\Active")) ? "545788780980994078" : "545732315658059801";
+
+        private static readonly string applicationId =
+            Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary") &&
+            File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary\\Active")
+                ? "545788780980994078"
+                : "545732315658059801";
 
         /// <summary>
         ///     Initializes Discord RPC
@@ -38,7 +44,8 @@ namespace BrawlCrate.Discord
 
         public static void ErrorCallback(int errorCode, string message)
         {
-            System.Windows.Forms.MessageBox.Show("Discord Rich Presence Error " + errorCode + "\n\n" + message, "Discord Rich Presence", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            MessageBox.Show("Discord Rich Presence Error " + errorCode + "\n\n" + message, "Discord Rich Presence",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

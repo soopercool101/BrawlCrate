@@ -1,8 +1,8 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlLib.Wii.Animations
 {
@@ -10,11 +10,11 @@ namespace BrawlLib.Wii.Animations
     {
         public static CHR0Node Convert(string input)
         {
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BoneAnimation));
+            var serializer = new DataContractJsonSerializer(typeof(BoneAnimation));
             Stream inputFile = new FileStream(input, FileMode.Open, FileAccess.Read);
-            BoneAnimation data = (BoneAnimation)serializer.ReadObject(inputFile);
+            var data = (BoneAnimation) serializer.ReadObject(inputFile);
 
-            CHR0Node node = data.ToCHR0Node();
+            var node = data.ToCHR0Node();
             node.Name = Path.GetFileNameWithoutExtension(input);
             return node;
         }
@@ -23,26 +23,22 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class BoneAnimation
     {
-        [DataMember]
-        private readonly int FrameCount = 0;
-        [DataMember]
-        private readonly bool Loop = false;
-        [DataMember]
-        private readonly ICollection<Bone> Bones = null;
+        [DataMember] private readonly ICollection<Bone> Bones;
+
+        [DataMember] private readonly int FrameCount;
+
+        [DataMember] private readonly bool Loop;
 
         public CHR0Node ToCHR0Node()
         {
-            CHR0Node node = new CHR0Node
+            var node = new CHR0Node
             {
                 Version = 4,
                 FrameCount = FrameCount,
                 Loop = Loop
             };
 
-            foreach (Bone bone in Bones)
-            {
-                bone.AddToNode(node);
-            }
+            foreach (var bone in Bones) bone.AddToNode(node);
 
             return node;
         }
@@ -51,23 +47,18 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class Bone
     {
-        [DataMember]
-        private readonly string Name = null;
+        [DataMember] private readonly ICollection<Keyframe> Keyframes;
 
-        [DataMember]
-        private readonly ICollection<Keyframe> Keyframes = null;
+        [DataMember] private readonly string Name;
 
         public void AddToNode(CHR0Node parentNode)
         {
-            CHR0EntryNode entryNode = new CHR0EntryNode();
+            var entryNode = new CHR0EntryNode();
             parentNode.AddChild(entryNode);
             entryNode.SetSize(parentNode.FrameCount, parentNode.Loop);
             entryNode.Name = Name;
 
-            foreach (Keyframe keyframe in Keyframes)
-            {
-                keyframe.AddToNode(entryNode);
-            }
+            foreach (var keyframe in Keyframes) keyframe.AddToNode(entryNode);
 
             //entryNode.Keyframes.Clean();
         }
@@ -76,8 +67,8 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class Keyframe
     {
-        [DataMember]
-        private readonly int Frame = 0;
+        [DataMember] private readonly int Frame;
+
         private float?[] _transformations;
 
         [DataMember]
@@ -86,12 +77,14 @@ namespace BrawlLib.Wii.Animations
             get => _transformations[0];
             set => SetTransformation(0, value);
         }
+
         [DataMember]
         private float? ScaleY
         {
             get => _transformations[1];
             set => SetTransformation(1, value);
         }
+
         [DataMember]
         private float? ScaleZ
         {
@@ -105,12 +98,14 @@ namespace BrawlLib.Wii.Animations
             get => _transformations[3];
             set => SetTransformation(3, value);
         }
+
         [DataMember]
         private float? RotationY
         {
             get => _transformations[4];
             set => SetTransformation(4, value);
         }
+
         [DataMember]
         private float? RotationZ
         {
@@ -124,12 +119,14 @@ namespace BrawlLib.Wii.Animations
             get => _transformations[6];
             set => SetTransformation(6, value);
         }
+
         [DataMember]
         private float? TranslationY
         {
             get => _transformations[7];
             set => SetTransformation(7, value);
         }
+
         [DataMember]
         private float? TranslationZ
         {
@@ -139,22 +136,15 @@ namespace BrawlLib.Wii.Animations
 
         private void SetTransformation(int index, float? value)
         {
-            if (_transformations == null)
-            {
-                _transformations = new float?[9];
-            }
+            if (_transformations == null) _transformations = new float?[9];
             _transformations[index] = value;
         }
 
         public void AddToNode(CHR0EntryNode node)
         {
-            for (int i = 0; i < 9; i++)
-            {
+            for (var i = 0; i < 9; i++)
                 if (_transformations[i].HasValue)
-                {
                     node.SetKeyframe(i, Frame, _transformations[i].Value, false, true);
-                }
-            }
         }
     }
 }

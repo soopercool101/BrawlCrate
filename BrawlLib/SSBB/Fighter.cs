@@ -2,27 +2,10 @@
 {
     public class Fighter
     {
-        /// <summary>
-        /// The character slot index, as used by common2.pac event match and all-star data.
-        /// See: http://opensa.dantarion.com/wiki/Character_Slots
-        /// </summary>
-        public int ID { get; private set; }
-        /// <summary>
-        /// The fighter name (e.g. "Yoshi").
-        /// </summary>
-        public string Name { get; private set; }
-
-        public Fighter(int id, string name)
+        public static readonly Fighter[] Fighters =
         {
-            ID = id;
-            Name = name;
-        }
-
-        public override string ToString() { return Name; }
-
-        public static readonly Fighter[] Fighters = new Fighter[] {
             //          ID     Display Name     
-			new Fighter(0x00, "Mario"),
+            new Fighter(0x00, "Mario"),
             new Fighter(0x01, "Donkey Kong"),
             new Fighter(0x02, "Link"),
             new Fighter(0x03, "Samus"),
@@ -79,5 +62,27 @@
             new Fighter(0x49, "Samus/ZSS"),
             new Fighter(0x4a, "Zelda/Sheik")
         };
+
+        public Fighter(int id, string name)
+        {
+            ID = id;
+            Name = name;
+        }
+
+        /// <summary>
+        ///     The character slot index, as used by common2.pac event match and all-star data.
+        ///     See: http://opensa.dantarion.com/wiki/Character_Slots
+        /// </summary>
+        public int ID { get; }
+
+        /// <summary>
+        ///     The fighter name (e.g. "Yoshi").
+        /// </summary>
+        public string Name { get; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

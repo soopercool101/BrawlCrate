@@ -1,35 +1,38 @@
-﻿using BrawlLib.IO;
-using BrawlLib.SSBBTypes;
-using Gif.Components;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using BrawlLib.IO;
+using BrawlLib.SSBBTypes;
+using Gif.Components;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class BRRESNode : ARCEntryNode
     {
-        internal BRESHeader* Header => (BRESHeader*)WorkingUncompressed.Address;
+        private readonly StringTable _stringTable = new StringTable();
+
+        private int _numEntries, _strOffset, _rootSize;
+        internal BRESHeader* Header => (BRESHeader*) WorkingUncompressed.Address;
 
         internal ROOTHeader* RootHeader => Header->First;
         internal ResourceGroup* Group => &RootHeader->_master;
 
         public override ResourceType ResourceFileType => ResourceType.BRES;
 
-        public override Type[] AllowedChildTypes => new Type[] { typeof(BRESGroupNode) };
+        public override Type[] AllowedChildTypes => new[] {typeof(BRESGroupNode)};
 
         public override void OnPopulate()
         {
-            ResourceGroup* group = Group;
-            for (int i = 0; i < group->_numEntries; i++)
-            {
-                new BRESGroupNode(new string((sbyte*)group + group->First[i]._stringOffset)).Initialize(this, (VoidPtr)group + group->First[i]._dataOffset, 0);
-            }
+            var group = Group;
+            for (var i = 0; i < group->_numEntries; i++)
+                new BRESGroupNode(new string((sbyte*) group + group->First[i]._stringOffset)).Initialize(this,
+                    (VoidPtr) group + group->First[i]._dataOffset, 0);
         }
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
@@ -39,7 +42,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public BRESGroupNode GetOrCreateFolder<T>() where T : BRESEntryNode
         {
-            string groupName; BRESGroupNode.BRESGroupType type;
+            string groupName;
+            BRESGroupNode.BRESGroupType type;
             if (typeof(T) == typeof(TEX0Node))
             {
                 type = BRESGroupNode.BRESGroupType.Textures;
@@ -102,43 +106,45 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             BRESGroupNode group = null;
             foreach (BRESGroupNode node in Children)
-            {
                 if (node.Type == type)
-                { group = node; break; }
-            }
+                {
+                    group = node;
+                    break;
+                }
 
-            if (group == null)
-            {
-                AddChild(group = new BRESGroupNode(groupName, type));
-            }
+            if (group == null) AddChild(group = new BRESGroupNode(groupName, type));
 
             return group;
         }
+
         public T CreateResource<T>(string name) where T : BRESEntryNode
         {
-            BRESGroupNode group = GetOrCreateFolder<T>();
-            if (group == null)
-            {
-                return null;
-            }
+            var group = GetOrCreateFolder<T>();
+            if (group == null) return null;
 
-            T n = Activator.CreateInstance<T>();
+            var n = Activator.CreateInstance<T>();
             n.Name = group.FindName(name);
             group.AddChild(n);
 
             return n;
         }
-        public void ExportToFolder(string outFolder) { ExportToFolder(outFolder, ".tex0"); }
-        public void ExportToFolder(string outFolder, string imageExtension) { ExportToFolder(outFolder, imageExtension, ".mdl0"); }
+
+        public void ExportToFolder(string outFolder)
+        {
+            ExportToFolder(outFolder, ".tex0");
+        }
+
+        public void ExportToFolder(string outFolder, string imageExtension)
+        {
+            ExportToFolder(outFolder, imageExtension, ".mdl0");
+        }
+
         public void ExportToFolder(string outFolder, string imageExtension, string modelExtension)
         {
-            if (!Directory.Exists(outFolder))
-            {
-                Directory.CreateDirectory(outFolder);
-            }
+            if (!Directory.Exists(outFolder)) Directory.CreateDirectory(outFolder);
 
-            string ext = "";
-            bool extract = true;
+            var ext = "";
+            var extract = true;
             foreach (BRESGroupNode group in Children)
             {
                 extract = true;
@@ -181,10 +187,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else if (group.Type == BRESGroupNode.BRESGroupType.Palettes)
                 {
                     ext = ".plt0";
-                    if (imageExtension != ".tex0")
-                    {
-                        extract = false;
-                    }
+                    if (imageExtension != ".tex0") extract = false;
                 }
                 else
                 {
@@ -192,90 +195,68 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 if (extract)
-                {
                     foreach (BRESEntryNode entry in group.Children)
-                    {
                         entry.Export(Path.Combine(outFolder, entry.Name + ext));
-                    }
-                }
             }
         }
-        public void ReplaceFromFolder(string inFolder) { ReplaceFromFolder(inFolder, ".tex0"); }
+
+        public void ReplaceFromFolder(string inFolder)
+        {
+            ReplaceFromFolder(inFolder, ".tex0");
+        }
+
         public void ReplaceFromFolder(string inFolder, string imageExtension)
         {
-            DirectoryInfo dir = new DirectoryInfo(inFolder);
-            FileInfo[] files = dir.GetFiles();
-            string ext = "*";
+            var dir = new DirectoryInfo(inFolder);
+            var files = dir.GetFiles();
+            var ext = "*";
             foreach (BRESGroupNode group in Children)
             {
                 if (group.Type == BRESGroupNode.BRESGroupType.Textures)
-                {
                     ext = imageExtension;
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.Palettes)
-                {
                     ext = ".plt0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.Models)
-                {
                     ext = ".mdl0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.CHR0)
-                {
                     ext = ".chr0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.CLR0)
-                {
                     ext = ".clr0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.SRT0)
-                {
                     ext = ".srt0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.SHP0)
-                {
                     ext = ".shp0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.PAT0)
-                {
                     ext = ".pat0";
-                }
                 else if (group.Type == BRESGroupNode.BRESGroupType.VIS0)
-                {
                     ext = ".vis0";
-                }
-                else if (group.Type == BRESGroupNode.BRESGroupType.SCN0)
-                {
-                    ext = ".scn0";
-                }
+                else if (group.Type == BRESGroupNode.BRESGroupType.SCN0) ext = ".scn0";
 
                 foreach (BRESEntryNode entry in group.Children)
-                {
                     //Find file name for entry
-                    foreach (FileInfo info in files)
+                foreach (var info in files)
+                    if (info.Extension.Equals(ext, StringComparison.OrdinalIgnoreCase) &&
+                        info.Name.Equals(entry.Name + ext, StringComparison.OrdinalIgnoreCase))
                     {
-                        if (info.Extension.Equals(ext, StringComparison.OrdinalIgnoreCase) && info.Name.Equals(entry.Name + ext, StringComparison.OrdinalIgnoreCase))
-                        {
-                            entry.Replace(info.FullName);
-                            break;
-                        }
+                        entry.Replace(info.FullName);
+                        break;
                     }
-                }
             }
         }
 
         public void ImportFolder(string inFolder)
         {
-            DirectoryInfo dir = new DirectoryInfo(inFolder);
+            var dir = new DirectoryInfo(inFolder);
             FileInfo[] files;
 
             files = dir.GetFiles();
-            foreach (FileInfo info in files)
+            foreach (var info in files)
             {
-                string ext = Path.GetExtension(info.FullName).ToUpper();
-                if (ext == ".PNG" || ext == ".TGA" || ext == ".BMP" || ext == ".JPG" || ext == ".JPEG" || ext == ".GIF" || ext == ".TIF" || ext == ".TIFF")
+                var ext = Path.GetExtension(info.FullName).ToUpper();
+                if (ext == ".PNG" || ext == ".TGA" || ext == ".BMP" || ext == ".JPG" || ext == ".JPEG" ||
+                    ext == ".GIF" || ext == ".TIF" || ext == ".TIFF")
                 {
-                    using (TextureConverterDialog dlg = new TextureConverterDialog())
+                    using (var dlg = new TextureConverterDialog())
                     {
                         dlg.ImageSource = info.FullName;
                         dlg.ShowDialog(null, this);
@@ -283,53 +264,51 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else if (ext == ".TEX0")
                 {
-                    TEX0Node node = NodeFactory.FromFile(null, info.FullName) as TEX0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as TEX0Node;
                     GetOrCreateFolder<TEX0Node>().AddChild(node);
                 }
                 else if (ext == ".MDL0")
                 {
-                    MDL0Node node = NodeFactory.FromFile(null, info.FullName) as MDL0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as MDL0Node;
                     GetOrCreateFolder<MDL0Node>().AddChild(node);
                 }
                 else if (ext == ".CHR0")
                 {
-                    CHR0Node node = NodeFactory.FromFile(null, info.FullName) as CHR0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as CHR0Node;
                     GetOrCreateFolder<CHR0Node>().AddChild(node);
                 }
                 else if (ext == ".CLR0")
                 {
-                    CLR0Node node = NodeFactory.FromFile(null, info.FullName) as CLR0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as CLR0Node;
                     GetOrCreateFolder<CLR0Node>().AddChild(node);
                 }
                 else if (ext == ".SRT0")
                 {
-                    SRT0Node node = NodeFactory.FromFile(null, info.FullName) as SRT0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as SRT0Node;
                     GetOrCreateFolder<SRT0Node>().AddChild(node);
                 }
                 else if (ext == ".SHP0")
                 {
-                    SHP0Node node = NodeFactory.FromFile(null, info.FullName) as SHP0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as SHP0Node;
                     GetOrCreateFolder<SHP0Node>().AddChild(node);
                 }
                 else if (ext == ".PAT0")
                 {
-                    PAT0Node node = NodeFactory.FromFile(null, info.FullName) as PAT0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as PAT0Node;
                     GetOrCreateFolder<PAT0Node>().AddChild(node);
                 }
                 else if (ext == ".VIS0")
                 {
-                    VIS0Node node = NodeFactory.FromFile(null, info.FullName) as VIS0Node;
+                    var node = NodeFactory.FromFile(null, info.FullName) as VIS0Node;
                     GetOrCreateFolder<VIS0Node>().AddChild(node);
                 }
             }
         }
 
-        private int _numEntries, _strOffset, _rootSize;
-        private readonly StringTable _stringTable = new StringTable();
         public override int OnCalculateSize(bool force)
         {
-            int size = BRESHeader.Size;
-            _rootSize = 0x20 + (Children.Count * 0x10);
+            var size = BRESHeader.Size;
+            _rootSize = 0x20 + Children.Count * 0x10;
 
             //Get entry count and data start
             _numEntries = 0;
@@ -337,9 +316,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (BRESGroupNode n in Children)
             {
                 //n.Children.Sort(NodeComparer.Instance);
-                _rootSize += (n.Children.Count * 0x10) + 0x18;
+                _rootSize += n.Children.Count * 0x10 + 0x18;
                 _numEntries += n.Children.Count;
             }
+
             size += _rootSize;
 
             //Get strings and advance entry offset
@@ -353,6 +333,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     c.GetStrings(_stringTable);
                 }
             }
+
             _strOffset = size = size.Align(4);
 
             size += _stringTable.GetTotalSize();
@@ -362,114 +343,111 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int size, bool force)
         {
-            BRESHeader* header = (BRESHeader*)address;
+            var header = (BRESHeader*) address;
             *header = new BRESHeader(size, _numEntries + 1);
 
-            ROOTHeader* rootHeader = header->First;
+            var rootHeader = header->First;
             *rootHeader = new ROOTHeader(_rootSize, Children.Count);
 
-            ResourceGroup* pMaster = &rootHeader->_master;
-            ResourceGroup* rGroup = (ResourceGroup*)pMaster->EndAddress;
+            var pMaster = &rootHeader->_master;
+            var rGroup = (ResourceGroup*) pMaster->EndAddress;
 
             //Write string table
             _stringTable.WriteTable(address + _strOffset);
 
-            VoidPtr dataAddr = (VoidPtr)rootHeader + _rootSize;
+            var dataAddr = (VoidPtr) rootHeader + _rootSize;
 
-            int gIndex = 1;
+            var gIndex = 1;
             foreach (BRESGroupNode g in Children)
             {
-                ResourceEntry.Build(pMaster, gIndex++, rGroup, (BRESString*)_stringTable[g.Name]);
+                ResourceEntry.Build(pMaster, gIndex++, rGroup, (BRESString*) _stringTable[g.Name]);
 
                 *rGroup = new ResourceGroup(g.Children.Count);
-                ResourceEntry* nEntry = rGroup->First;
+                var nEntry = rGroup->First;
 
-                int rIndex = 1;
+                var rIndex = 1;
                 foreach (BRESEntryNode n in g.Children)
                 {
                     //Align data
-                    dataAddr = ((int)dataAddr).Align(n.DataAlign);
+                    dataAddr = ((int) dataAddr).Align(n.DataAlign);
 
-                    ResourceEntry.Build(rGroup, rIndex++, dataAddr, (BRESString*)_stringTable[n.Name]);
+                    ResourceEntry.Build(rGroup, rIndex++, dataAddr, (BRESString*) _stringTable[n.Name]);
 
                     //Rebuild entry
-                    int len = n._calcSize;
+                    var len = n._calcSize;
                     n.Rebuild(dataAddr, len, force);
                     n.PostProcess(address, dataAddr, len, _stringTable);
                     dataAddr += len;
                 }
+
                 g._changed = false;
 
                 //Advance to next group
-                rGroup = (ResourceGroup*)rGroup->EndAddress;
+                rGroup = (ResourceGroup*) rGroup->EndAddress;
             }
+
             _stringTable.Clear();
         }
 
         public void ImportGIF(string file)
         {
-            Action<object, DoWorkEventArgs> work = (object sender, DoWorkEventArgs e) =>
+            Action<object, DoWorkEventArgs> work = (sender, e) =>
             {
-                GifDecoder decoder = new GifDecoder();
+                var decoder = new GifDecoder();
                 decoder.Read(file, null);
                 e.Result = decoder;
             };
-            Action<object, RunWorkerCompletedEventArgs> completed = (object sender, RunWorkerCompletedEventArgs e) =>
+            Action<object, RunWorkerCompletedEventArgs> completed = (sender, e) =>
             {
-                GifDecoder decoder = e.Result as GifDecoder;
-                string s = Path.GetFileNameWithoutExtension(file);
-                PAT0Node p = CreateResource<PAT0Node>(s);
+                var decoder = e.Result as GifDecoder;
+                var s = Path.GetFileNameWithoutExtension(file);
+                var p = CreateResource<PAT0Node>(s);
                 p._loop = true;
                 p.CreateEntry();
 
-                PAT0TextureNode textureNode = p.Children[0].Children[0] as PAT0TextureNode;
-                PAT0TextureEntryNode entry = textureNode.Children[0] as PAT0TextureEntryNode;
+                var textureNode = p.Children[0].Children[0] as PAT0TextureNode;
+                var entry = textureNode.Children[0] as PAT0TextureEntryNode;
 
                 //Get the number of images in the file
-                int frames = decoder.GetFrameCount();
+                var frames = decoder.GetFrameCount();
 
                 //The framecount will be created by adding up each image delay.
                 float frameCount = 0;
 
-                bool resized = false;
+                var resized = false;
                 int w = 0, h = 0;
                 Action<int, int> onResized = (newW, newH) =>
+                {
+                    if (resized != true)
                     {
-                        if (resized != true)
-                        {
-                            w = newW;
-                            h = newH;
-                            resized = true;
-                        }
-                    };
+                        w = newW;
+                        h = newH;
+                        resized = true;
+                    }
+                };
 
-                using (TextureConverterDialog dlg = new TextureConverterDialog())
-                using (ProgressWindow progress = new ProgressWindow(RootNode._mainForm, "GIF to PAT0 converter", "Converting, please wait...", true))
+                using (var dlg = new TextureConverterDialog())
+                using (var progress = new ProgressWindow(RootNode._mainForm, "GIF to PAT0 converter",
+                    "Converting, please wait...", true))
                 {
                     Bitmap prev = null;
 
                     progress.Begin(0, frames, 0);
-                    for (int i = 0; i < frames; i++, entry = new PAT0TextureEntryNode())
+                    for (var i = 0; i < frames; i++, entry = new PAT0TextureEntryNode())
                     {
-                        if (progress.Cancelled)
-                        {
-                            break;
-                        }
+                        if (progress.Cancelled) break;
 
-                        string name = s + "." + i;
+                        var name = s + "." + i;
 
                         dlg.ImageSource = name + ".";
 
-                        using (Bitmap img = (Bitmap)decoder.GetFrame(i))
+                        using (var img = (Bitmap) decoder.GetFrame(i))
                         {
                             if (i == 0)
                             {
                                 dlg.LoadImages(img.Copy());
                                 dlg.Resized += onResized;
-                                if (dlg.ShowDialog(null, this) != DialogResult.OK)
-                                {
-                                    return;
-                                }
+                                if (dlg.ShowDialog(null, this) != DialogResult.OK) return;
 
                                 textureNode._hasTex = dlg.TextureData != null;
                                 textureNode._hasPlt = dlg.PaletteData != null;
@@ -481,7 +459,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 //Draw the current image over the previous
                                 //This is because some GIFs use pixels of the previous frame
                                 //in order to compress the overall image data
-                                using (Graphics graphics = Graphics.FromImage(prev))
+                                using (var graphics = Graphics.FromImage(prev))
                                 {
                                     graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                                     graphics.CompositingQuality = CompositingQuality.HighQuality;
@@ -492,13 +470,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                                 dlg.LoadImages(prev.Copy());
                                 if (resized)
-                                {
                                     dlg.ResizeImage(w, h);
-                                }
                                 else
-                                {
                                     dlg.UpdatePreview();
-                                }
 
                                 dlg.EncodeSource();
 
@@ -506,32 +480,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                             }
                         }
 
-                        entry._frame = (float)Math.Round(frameCount, 2);
+                        entry._frame = (float) Math.Round(frameCount, 2);
                         frameCount += decoder.GetDelay(i) / 1000.0f * 60.0f;
 
-                        if (textureNode._hasTex)
-                        {
-                            entry.Texture = name;
-                        }
+                        if (textureNode._hasTex) entry.Texture = name;
 
-                        if (textureNode._hasPlt)
-                        {
-                            entry.Palette = name;
-                        }
+                        if (textureNode._hasPlt) entry.Palette = name;
 
                         progress.Update(progress.CurrentValue + 1);
                     }
+
                     progress.Finish();
-                    if (prev != null)
-                    {
-                        prev.Dispose();
-                    }
+                    if (prev != null) prev.Dispose();
                 }
 
-                p._numFrames = (ushort)(frameCount + 0.5f);
+                p._numFrames = (ushort) (frameCount + 0.5f);
             };
 
-            using (BackgroundWorker b = new BackgroundWorker())
+            using (var b = new BackgroundWorker())
             {
                 b.DoWork += new DoWorkEventHandler(work);
                 b.RunWorkerCompleted += new RunWorkerCompletedEventHandler(completed);
@@ -539,57 +505,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((BRESHeader*)source.Address)->_tag == BRESHeader.Tag ? new BRRESNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((BRESHeader*) source.Address)->_tag == BRESHeader.Tag ? new BRRESNode() : null;
+        }
     }
 
     public unsafe class BRESGroupNode : ResourceNode
     {
-        internal ResourceGroup* Group => (ResourceGroup*)WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.BRESGroup;
-        public override Type[] AllowedChildTypes
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case BRESGroupType.Textures:
-                        return new Type[] { typeof(TEX0Node) };
-                    case BRESGroupType.Palettes:
-                        return new Type[] { typeof(PLT0Node) };
-                    case BRESGroupType.Models:
-                        return new Type[] { typeof(MDL0Node) };
-                    case BRESGroupType.CHR0:
-                        return new Type[] { typeof(CHR0Node) };
-                    case BRESGroupType.CLR0:
-                        return new Type[] { typeof(CLR0Node) };
-                    case BRESGroupType.SRT0:
-                        return new Type[] { typeof(SRT0Node) };
-                    case BRESGroupType.SHP0:
-                        return new Type[] { typeof(SHP0Node) };
-                    case BRESGroupType.VIS0:
-                        return new Type[] { typeof(VIS0Node) };
-                    case BRESGroupType.SCN0:
-                        return new Type[] { typeof(SCN0Node) };
-                    case BRESGroupType.PAT0:
-                        return new Type[] { typeof(PAT0Node) };
-                    default:
-                        return new Type[] { };
-                }
-
-            }
-        }
-
-        [Browsable(false)]
-        public BRESGroupType Type
-        {
-            get { if (_type == BRESGroupType.None) { GetFileType(); } return _type; }
-            set => _type = value;
-        }
-
-        public BRESGroupNode() : base() { }
-        public BRESGroupNode(string name) : base() { _name = name; }
-        public BRESGroupNode(string name, BRESGroupType type) : base() { _name = name; Type = type; }
-
         public enum BRESGroupType
         {
             Textures,
@@ -608,16 +531,73 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public BRESGroupType _type = BRESGroupType.None;
 
+        public BRESGroupNode()
+        {
+        }
+
+        public BRESGroupNode(string name)
+        {
+            _name = name;
+        }
+
+        public BRESGroupNode(string name, BRESGroupType type)
+        {
+            _name = name;
+            Type = type;
+        }
+
+        internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.BRESGroup;
+
+        public override Type[] AllowedChildTypes
+        {
+            get
+            {
+                switch (Type)
+                {
+                    case BRESGroupType.Textures:
+                        return new[] {typeof(TEX0Node)};
+                    case BRESGroupType.Palettes:
+                        return new[] {typeof(PLT0Node)};
+                    case BRESGroupType.Models:
+                        return new[] {typeof(MDL0Node)};
+                    case BRESGroupType.CHR0:
+                        return new[] {typeof(CHR0Node)};
+                    case BRESGroupType.CLR0:
+                        return new[] {typeof(CLR0Node)};
+                    case BRESGroupType.SRT0:
+                        return new[] {typeof(SRT0Node)};
+                    case BRESGroupType.SHP0:
+                        return new[] {typeof(SHP0Node)};
+                    case BRESGroupType.VIS0:
+                        return new[] {typeof(VIS0Node)};
+                    case BRESGroupType.SCN0:
+                        return new[] {typeof(SCN0Node)};
+                    case BRESGroupType.PAT0:
+                        return new[] {typeof(PAT0Node)};
+                    default:
+                        return new Type[] { };
+                }
+            }
+        }
+
+        [Browsable(false)]
+        public BRESGroupType Type
+        {
+            get
+            {
+                if (_type == BRESGroupType.None) GetFileType();
+                return _type;
+            }
+            set => _type = value;
+        }
+
         public override void RemoveChild(ResourceNode child)
         {
-            if ((Children.Count == 1) && (Children.Contains(child)))
-            {
+            if (Children.Count == 1 && Children.Contains(child))
                 Parent.RemoveChild(this);
-            }
             else
-            {
                 base.RemoveChild(child);
-            }
         }
 
         public override bool OnInitialize()
@@ -627,86 +607,49 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void GetFileType()
         {
-            if (_name == "Textures(NW4R)" || Children[0] is TEX0Node)
-            {
-                Type = BRESGroupType.Textures;
-            }
+            if (_name == "Textures(NW4R)" || Children[0] is TEX0Node) Type = BRESGroupType.Textures;
 
-            if (_name == "Palettes(NW4R)" || Children[0] is PLT0Node)
-            {
-                Type = BRESGroupType.Palettes;
-            }
+            if (_name == "Palettes(NW4R)" || Children[0] is PLT0Node) Type = BRESGroupType.Palettes;
 
-            if (_name == "3DModels(NW4R)" || Children[0] is MDL0Node)
-            {
-                Type = BRESGroupType.Models;
-            }
+            if (_name == "3DModels(NW4R)" || Children[0] is MDL0Node) Type = BRESGroupType.Models;
 
-            if (_name == "AnmChr(NW4R)" || Children[0] is CHR0Node)
-            {
-                Type = BRESGroupType.CHR0;
-            }
+            if (_name == "AnmChr(NW4R)" || Children[0] is CHR0Node) Type = BRESGroupType.CHR0;
 
-            if (_name == "AnmClr(NW4R)" || Children[0] is CLR0Node)
-            {
-                Type = BRESGroupType.CLR0;
-            }
+            if (_name == "AnmClr(NW4R)" || Children[0] is CLR0Node) Type = BRESGroupType.CLR0;
 
-            if (_name == "AnmTexSrt(NW4R)" || Children[0] is SRT0Node)
-            {
-                Type = BRESGroupType.SRT0;
-            }
+            if (_name == "AnmTexSrt(NW4R)" || Children[0] is SRT0Node) Type = BRESGroupType.SRT0;
 
-            if (_name == "AnmShp(NW4R)" || Children[0] is SHP0Node)
-            {
-                Type = BRESGroupType.SHP0;
-            }
+            if (_name == "AnmShp(NW4R)" || Children[0] is SHP0Node) Type = BRESGroupType.SHP0;
 
-            if (_name == "AnmVis(NW4R)" || Children[0] is VIS0Node)
-            {
-                Type = BRESGroupType.VIS0;
-            }
+            if (_name == "AnmVis(NW4R)" || Children[0] is VIS0Node) Type = BRESGroupType.VIS0;
 
-            if (_name == "AnmScn(NW4R)" || Children[0] is SCN0Node)
-            {
-                Type = BRESGroupType.SCN0;
-            }
+            if (_name == "AnmScn(NW4R)" || Children[0] is SCN0Node) Type = BRESGroupType.SCN0;
 
-            if (_name == "AnmPat(NW4R)" || Children[0] is PAT0Node)
-            {
-                Type = BRESGroupType.PAT0;
-            }
+            if (_name == "AnmPat(NW4R)" || Children[0] is PAT0Node) Type = BRESGroupType.PAT0;
 
-            if (_name == "External" || Children[0] is RASDNode)
-            {
-                Type = BRESGroupType.External;
-            }
+            if (_name == "External" || Children[0] is RASDNode) Type = BRESGroupType.External;
         }
 
         public override void OnPopulate()
         {
-            ResourceGroup* group = Group;
-            for (int i = 0; i < group->_numEntries; i++)
+            var group = Group;
+            for (var i = 0; i < group->_numEntries; i++)
             {
-                BRESCommonHeader* hdr = (BRESCommonHeader*)group->First[i].DataAddress;
+                var hdr = (BRESCommonHeader*) group->First[i].DataAddress;
                 if (NodeFactory.FromAddress(this, hdr, hdr->_size) == null)
-                {
                     new BRESEntryNode().Initialize(this, hdr, hdr->_size);
-                }
             }
-            if (Type == BRESGroupType.None)
-            {
-                GetFileType();
-            }
+
+            if (Type == BRESGroupType.None) GetFileType();
         }
     }
 
     public unsafe class NW4RAnimationNode : BRESEntryNode
     {
-        internal BRESCommonHeader* Header => (BRESCommonHeader*)WorkingUncompressed.Address;
+        public bool _loop;
 
         public int _numFrames = 1;
-        public bool _loop;
+        internal BRESCommonHeader* Header => (BRESCommonHeader*) WorkingUncompressed.Address;
 
         [Browsable(true)]
         public virtual int FrameCount
@@ -714,37 +657,50 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _numFrames;
             set
             {
-                if (_numFrames == value || value < 1)
-                {
-                    return;
-                }
+                if (_numFrames == value || value < 1) return;
 
                 _numFrames = value;
                 UpdateChildFrameLimits();
                 SignalPropertyChange();
             }
         }
-        [Browsable(true)]
-        public virtual bool Loop { get => _loop; set { if (_loop != value) { _loop = value; SignalPropertyChange(); } } }
 
-        protected virtual void UpdateChildFrameLimits() { }
+        [Browsable(true)]
+        public virtual bool Loop
+        {
+            get => _loop;
+            set
+            {
+                if (_loop != value)
+                {
+                    _loop = value;
+                    SignalPropertyChange();
+                }
+            }
+        }
+
+        protected virtual void UpdateChildFrameLimits()
+        {
+        }
     }
 
     public unsafe class BRESEntryNode : ResourceNode
     {
-        internal BRESCommonHeader* CommonHeader => (BRESCommonHeader*)WorkingSource.Address;
-        [Browsable(false)]
-        public virtual int DataAlign => 4;
-        [Browsable(false)]
-        public BRRESNode BRESNode => ((_parent != null) && (Parent.Parent is BRRESNode)) ? Parent.Parent as BRRESNode : null;
-        [Browsable(false)]
-        public virtual int[] SupportedVersions => new int[0];
-
-        public int _version;
         public string _originalPath;
         internal UserDataCollection _userEntries = new UserDataCollection();
 
-        [Category("G3D Node"), Browsable(true)]
+        public int _version;
+        internal BRESCommonHeader* CommonHeader => (BRESCommonHeader*) WorkingSource.Address;
+
+        [Browsable(false)] public virtual int DataAlign => 4;
+
+        [Browsable(false)]
+        public BRRESNode BRESNode => _parent != null && Parent.Parent is BRRESNode ? Parent.Parent as BRRESNode : null;
+
+        [Browsable(false)] public virtual int[] SupportedVersions => new int[0];
+
+        [Category("G3D Node")]
+        [Browsable(true)]
         public int Version
         {
             get => _version;
@@ -752,29 +708,51 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (SupportedVersions.Contains(value))
                 {
-                    int previous = _version;
+                    var previous = _version;
                     _version = value;
                     SignalPropertyChange();
                     OnVersionChanged(previous);
                 }
                 else
                 {
-                    string message = "The version entered for this node is either invalid or unsupported.\nSupported versions are: ";
-                    foreach (int i in SupportedVersions)
-                    {
-                        message += " " + i;
-                    }
+                    var message =
+                        "The version entered for this node is either invalid or unsupported.\nSupported versions are: ";
+                    foreach (var i in SupportedVersions) message += " " + i;
 
-                    MessageBox.Show(RootNode._mainForm, message, "Unsupported version", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(RootNode._mainForm, message, "Unsupported version", MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
                 }
             }
         }
-        [Category("G3D Node"), Browsable(true)]
-        public string OriginalPath { get => _originalPath; set { _originalPath = value; SignalPropertyChange(); } }
-        [Category("User Data"), Browsable(true), TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public UserDataCollection UserEntries { get => _userEntries; set { _userEntries = value; SignalPropertyChange(); } }
 
-        protected virtual void OnVersionChanged(int previousVersion) { }
+        [Category("G3D Node")]
+        [Browsable(true)]
+        public string OriginalPath
+        {
+            get => _originalPath;
+            set
+            {
+                _originalPath = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("User Data")]
+        [Browsable(true)]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public UserDataCollection UserEntries
+        {
+            get => _userEntries;
+            set
+            {
+                _userEntries = value;
+                SignalPropertyChange();
+            }
+        }
+
+        protected virtual void OnVersionChanged(int previousVersion)
+        {
+        }
 
         public override bool OnInitialize()
         {
@@ -789,71 +767,68 @@ namespace BrawlLib.SSBB.ResourceNodes
             strings.Add(Name);
         }
 
-        public override unsafe void Export(string outPath)
+        public override void Export(string outPath)
         {
             Rebuild();
 
-            StringTable table = new StringTable();
+            var table = new StringTable();
             GetStrings(table);
 
-            int dataLen = WorkingUncompressed.Length.Align(4);
-            int size = dataLen + table.GetTotalSize();
+            var dataLen = WorkingUncompressed.Length.Align(4);
+            var size = dataLen + table.GetTotalSize();
 
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
+            using (var stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8,
+                FileOptions.RandomAccess))
             {
                 stream.SetLength(size);
-                using (FileMap map = FileMap.FromStream(stream))
+                using (var map = FileMap.FromStream(stream))
                 {
-                    Memory.Move(map.Address, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
+                    Memory.Move(map.Address, WorkingUncompressed.Address, (uint) WorkingUncompressed.Length);
                     table.WriteTable(map.Address + dataLen);
                     PostProcess(null, map.Address, WorkingUncompressed.Length, table);
                 }
             }
+
             table.Clear();
         }
 
-        protected internal virtual void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength, StringTable stringTable)
+        protected internal virtual void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength,
+            StringTable stringTable)
         {
-            BRESCommonHeader* header = (BRESCommonHeader*)dataAddress;
+            var header = (BRESCommonHeader*) dataAddress;
 
             if (bresAddress)
-            {
-                header->_bresOffset = (int)bresAddress - (int)header;
-            }
+                header->_bresOffset = (int) bresAddress - (int) header;
             else
-            {
                 // AFAIK only the Export method calls this method with a bresAddress of null - it should be OK to put 0 in here
                 header->_bresOffset = 0;
-            }
 
             header->_size = dataLength;
         }
 
         /// <summary>
-        /// Find the MD5 checksum of this node's data.
-        /// Before calculating the checksum, the data will be copied to a
-        /// temporary area in memory and PostProcess will be run just as in Export().
+        ///     Find the MD5 checksum of this node's data.
+        ///     Before calculating the checksum, the data will be copied to a
+        ///     temporary area in memory and PostProcess will be run just as in Export().
         /// </summary>
-        public override unsafe byte[] MD5()
+        public override byte[] MD5()
         {
             if (WorkingUncompressed.Address == null || WorkingUncompressed.Length == 0)
-            {
                 // skip bres fix
                 return base.MD5();
-            }
 
             Rebuild();
 
-            StringTable table = new StringTable();
+            var table = new StringTable();
             GetStrings(table);
 
-            int dataLen = WorkingUncompressed.Length.Align(4);
-            int size = dataLen + table.GetTotalSize();
+            var dataLen = WorkingUncompressed.Length.Align(4);
+            var size = dataLen + table.GetTotalSize();
 
-            byte[] datacopy = new byte[size];
+            var datacopy = new byte[size];
             fixed (byte* ptr = datacopy)
             {
-                Memory.Move(ptr, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
+                Memory.Move(ptr, WorkingUncompressed.Address, (uint) WorkingUncompressed.Length);
                 table.WriteTable(ptr + dataLen);
                 PostProcess(null, ptr, WorkingUncompressed.Length, table);
             }

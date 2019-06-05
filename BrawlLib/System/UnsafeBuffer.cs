@@ -4,29 +4,38 @@ namespace System
 {
     public class UnsafeBuffer : IDisposable
     {
-        private VoidPtr _data;
-        public VoidPtr Address => _data;
+        public UnsafeBuffer(int size)
+        {
+            Address = Marshal.AllocHGlobal(size);
+            Length = size;
+        }
 
-        private int _length;
-        public int Length { get => _length; set => _length = value; }
+        public VoidPtr Address { get; private set; }
 
-        public UnsafeBuffer(int size) { _data = Marshal.AllocHGlobal(size); _length = size; }
-        ~UnsafeBuffer() { Dispose(); }
+        public int Length { get; set; }
 
-        public VoidPtr this[int count, int stride] => _data[count, stride];
+        public VoidPtr this[int count, int stride] => Address[count, stride];
 
         public void Dispose()
         {
             try
             {
-                if (_data)
+                if (Address)
                 {
-                    Marshal.FreeHGlobal(_data);
-                    _data = null;
+                    Marshal.FreeHGlobal(Address);
+                    Address = null;
                     GC.SuppressFinalize(this);
                 }
             }
-            catch (Exception e) { Console.WriteLine(e.ToString()); }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        ~UnsafeBuffer()
+        {
+            Dispose();
         }
     }
 }

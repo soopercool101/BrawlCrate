@@ -1,20 +1,175 @@
-﻿using BrawlLib;
-using BrawlLib.Modeling;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using BrawlLib;
+using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.ARC)]
     public class ARCWrapper : GenericWrapper
     {
+        public ARCWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
+
+        public override string ExportFilter => "PAC Archive (*.pac)|*.pac|" +
+                                               "Compressed PAC Archive (*.pcs)|*.pcs|" +
+                                               "Archive Pair (*.pair)|*.pair|" +
+                                               "Multiple Resource Group (*.mrg)|*.mrg|" +
+                                               "Compressed MRG (*.mrgc)|*.mrgc";
+
+        public ARCNode NewARC()
+        {
+            var node = new ARCNode {Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData};
+            _resource.AddChild(node);
+
+            var w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public BRRESNode NewBRES()
+        {
+            var node = new BRRESNode {FileType = ARCFileType.MiscData};
+            _resource.AddChild(node);
+
+            var w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public CollisionNode NewCollision()
+        {
+            var node = new CollisionNode {FileType = ARCFileType.MiscData};
+            _resource.AddChild(node);
+
+            var w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public BLOCNode NewBLOC()
+        {
+            var node = new BLOCNode {FileType = ARCFileType.MiscData};
+            _resource.AddChild(node);
+
+            var w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public MSBinNode NewMSBin()
+        {
+            var node = new MSBinNode {FileType = ARCFileType.MiscData};
+            _resource.AddChild(node);
+
+            var w = FindResource(node, false);
+            w.EnsureVisible();
+            w.TreeView.SelectedNode = w;
+            return node;
+        }
+
+        public void ImportARC()
+        {
+            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out var path) > 0) NewARC().Replace(path);
+        }
+
+        public void ImportBRES()
+        {
+            if (Program.OpenFile(FileFilters.BRES, out var path) > 0) NewBRES().Replace(path);
+        }
+
+        public void ImportBLOC()
+        {
+            if (Program.OpenFile(FileFilters.BLOC, out var path) > 0) NewBLOC().Replace(path);
+        }
+
+        public void ImportCollision()
+        {
+            if (Program.OpenFile(FileFilters.CollisionDef, out var path) > 0) NewBRES().Replace(path);
+        }
+
+        public void ImportMSBin()
+        {
+            if (Program.OpenFile(FileFilters.MSBin, out var path) > 0) NewMSBin().Replace(path);
+        }
+
+        public override void OnExport(string outPath, int filterIndex)
+        {
+            switch (filterIndex)
+            {
+                case 1:
+                    ((ARCNode) _resource).Export(outPath);
+                    break;
+                case 2:
+                    ((ARCNode) _resource).ExportPCS(outPath);
+                    break;
+                case 3:
+                    ((ARCNode) _resource).ExportPair(outPath);
+                    break;
+                case 4:
+                    ((ARCNode) _resource).ExportAsMRG(outPath);
+                    break;
+            }
+        }
+
+        private void LoadModels(ResourceNode node, List<IModel> models, List<CollisionNode> collisions)
+        {
+            switch (node.ResourceFileType)
+            {
+                case ResourceType.ARC:
+                case ResourceType.MRG:
+                case ResourceType.U8:
+                case ResourceType.U8Folder:
+                case ResourceType.BRES:
+                case ResourceType.BRESGroup:
+                    foreach (var n in node.Children) LoadModels(n, models, collisions);
+
+                    break;
+                case ResourceType.MDL0:
+                    models.Add((IModel) node);
+                    break;
+                case ResourceType.CollisionDef:
+                    collisions.Add((CollisionNode) node);
+                    break;
+            }
+        }
+
+        public void PreviewAll()
+        {
+            var models = new List<IModel>();
+            var collisions = new List<CollisionNode>();
+            LoadModels(_resource, models, collisions);
+            new ModelForm().Show(_owner, models, collisions);
+        }
+
+        public void ExportAll()
+        {
+            var path = Program.ChooseFolder();
+            if (path == null) return;
+            ((ARCNode) _resource).ExtractToFolder(path);
+        }
+
+        public void ReplaceAll()
+        {
+            var path = Program.ChooseFolder();
+            if (path == null) return;
+            ((ARCNode) _resource).ReplaceFromFolder(path);
+        }
+
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static ARCWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -24,13 +179,13 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Collision", null, NewCollisionAction),
                 new ToolStripMenuItem("BLOC", null, NewBLOCAction),
                 new ToolStripMenuItem("MSBin", null, NewMSBinAction)
-                ));
+            ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
                 new ToolStripMenuItem("ARChive", null, ImportARCAction),
                 new ToolStripMenuItem("BRResource Pack", null, ImportBRESAction),
                 new ToolStripMenuItem("BLOC", null, ImportBLOCAction),
                 new ToolStripMenuItem("MSBin", null, ImportMSBinAction)
-                ));
+            ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Preview All Models", null, PreviewAllAction));
             _menu.Items.Add(new ToolStripMenuItem("Export All", null, ExportAllAction));
@@ -48,188 +203,87 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewBRESAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewBRES(); }
-        protected static void NewARCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewARC(); }
-        protected static void NewMSBinAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewMSBin(); }
-        protected static void NewCollisionAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewCollision(); }
-        protected static void NewBLOCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewBLOC(); }
-        protected static void ImportBRESAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportBRES(); }
-        protected static void ImportARCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportARC(); }
-        protected static void ImportBLOCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportBLOC(); }
-        protected static void ImportCollisionAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportCollision(); }
-        protected static void ImportMSBinAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportMSBin(); }
-        protected static void PreviewAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().PreviewAll(); }
-        protected static void ExportAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ExportAll(); }
-        protected static void ReplaceAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ReplaceAll(); }
+
+        protected static void NewBRESAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewBRES();
+        }
+
+        protected static void NewARCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewARC();
+        }
+
+        protected static void NewMSBinAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewMSBin();
+        }
+
+        protected static void NewCollisionAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewCollision();
+        }
+
+        protected static void NewBLOCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewBLOC();
+        }
+
+        protected static void ImportBRESAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportBRES();
+        }
+
+        protected static void ImportARCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportARC();
+        }
+
+        protected static void ImportBLOCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportBLOC();
+        }
+
+        protected static void ImportCollisionAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportCollision();
+        }
+
+        protected static void ImportMSBinAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportMSBin();
+        }
+
+        protected static void PreviewAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().PreviewAll();
+        }
+
+        protected static void ExportAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ExportAll();
+        }
+
+        protected static void ReplaceAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ReplaceAll();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[8].Enabled = _menu.Items[9].Enabled = _menu.Items[11].Enabled = _menu.Items[12].Enabled = _menu.Items[15].Enabled = true;
+            _menu.Items[8].Enabled = _menu.Items[9].Enabled =
+                _menu.Items[11].Enabled = _menu.Items[12].Enabled = _menu.Items[15].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            ARCWrapper w = GetInstance<ARCWrapper>();
+            var w = GetInstance<ARCWrapper>();
             _menu.Items[8].Enabled = _menu.Items[15].Enabled = w.Parent != null;
-            _menu.Items[9].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[9].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[11].Enabled = w.PrevNode != null;
             _menu.Items[12].Enabled = w.NextNode != null;
         }
+
         #endregion
-
-        public override string ExportFilter => "PAC Archive (*.pac)|*.pac|" +
-                    "Compressed PAC Archive (*.pcs)|*.pcs|" +
-                    "Archive Pair (*.pair)|*.pair|" +
-                    "Multiple Resource Group (*.mrg)|*.mrg|" +
-                    "Compressed MRG (*.mrgc)|*.mrgc";
-
-        public ARCWrapper() { ContextMenuStrip = _menu; }
-
-        public ARCNode NewARC()
-        {
-            ARCNode node = new ARCNode() { Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData };
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-        public BRRESNode NewBRES()
-        {
-            BRRESNode node = new BRRESNode() { FileType = ARCFileType.MiscData };
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-        public CollisionNode NewCollision()
-        {
-            CollisionNode node = new CollisionNode() { FileType = ARCFileType.MiscData };
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-        public BLOCNode NewBLOC()
-        {
-            BLOCNode node = new BLOCNode() { FileType = ARCFileType.MiscData };
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-        public MSBinNode NewMSBin()
-        {
-            MSBinNode node = new MSBinNode() { FileType = ARCFileType.MiscData };
-            _resource.AddChild(node);
-
-            BaseWrapper w = FindResource(node, false);
-            w.EnsureVisible();
-            w.TreeView.SelectedNode = w;
-            return node;
-        }
-
-        public void ImportARC()
-        {
-            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out string path) > 0)
-            {
-                NewARC().Replace(path);
-            }
-        }
-        public void ImportBRES()
-        {
-            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
-            {
-                NewBRES().Replace(path);
-            }
-        }
-        public void ImportBLOC()
-        {
-            if (Program.OpenFile(FileFilters.BLOC, out string path) > 0)
-            {
-                NewBLOC().Replace(path);
-            }
-        }
-        public void ImportCollision()
-        {
-            if (Program.OpenFile(FileFilters.CollisionDef, out string path) > 0)
-            {
-                NewBRES().Replace(path);
-            }
-        }
-        public void ImportMSBin()
-        {
-            if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
-            {
-                NewMSBin().Replace(path);
-            }
-        }
-
-        public override void OnExport(string outPath, int filterIndex)
-        {
-            switch (filterIndex)
-            {
-                case 1: ((ARCNode)_resource).Export(outPath); break;
-                case 2: ((ARCNode)_resource).ExportPCS(outPath); break;
-                case 3: ((ARCNode)_resource).ExportPair(outPath); break;
-                case 4: ((ARCNode)_resource).ExportAsMRG(outPath); break;
-            }
-        }
-
-        private void LoadModels(ResourceNode node, List<IModel> models, List<CollisionNode> collisions)
-        {
-            switch (node.ResourceFileType)
-            {
-                case ResourceType.ARC:
-                case ResourceType.MRG:
-                case ResourceType.U8:
-                case ResourceType.U8Folder:
-                case ResourceType.BRES:
-                case ResourceType.BRESGroup:
-                    foreach (ResourceNode n in node.Children)
-                    {
-                        LoadModels(n, models, collisions);
-                    }
-
-                    break;
-                case ResourceType.MDL0:
-                    models.Add((IModel)node);
-                    break;
-                case ResourceType.CollisionDef:
-                    collisions.Add((CollisionNode)node);
-                    break;
-            }
-        }
-
-        public void PreviewAll()
-        {
-            List<IModel> models = new List<IModel>();
-            List<CollisionNode> collisions = new List<CollisionNode>();
-            LoadModels(_resource, models, collisions);
-            new ModelForm().Show(_owner, models, collisions);
-        }
-
-        public void ExportAll()
-        {
-            string path = Program.ChooseFolder();
-            if (path == null)
-            {
-                return;
-            } ((ARCNode)_resource).ExtractToFolder(path);
-        }
-
-        public void ReplaceAll()
-        {
-            string path = Program.ChooseFolder();
-            if (path == null)
-            {
-                return;
-            } ((ARCNode)_resource).ReplaceFromFolder(path);
-        }
     }
 }

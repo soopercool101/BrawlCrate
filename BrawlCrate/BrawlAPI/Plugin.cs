@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using Microsoft.Scripting.Hosting;
-using System;
+﻿using System;
 using System.IO;
+using BrawlLib.SSBB.ResourceNodes;
+using Microsoft.Scripting.Hosting;
 
 namespace BrawlCrate.API
 {
@@ -34,7 +34,7 @@ namespace BrawlCrate.API
                 }
                 else
                 {
-                    string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
+                    var msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
                     BrawlAPI.ShowMessage(msg, Path.GetFileName(Script.Path));
                 }
             }
@@ -46,18 +46,16 @@ namespace BrawlCrate.API
         internal static ResourceNode TryParse(DataSource source)
         {
             ResourceNode n = null;
-            foreach (PluginLoader ldr in BrawlAPI.Loaders)
-            {
-                if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint)source.Length))) != null)
-                {
+            foreach (var ldr in BrawlAPI.Loaders)
+                if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint) source.Length))) != null)
                     break;
-                }
-            }
 
             return n;
-
         }
 
-        public virtual ResourceNode TryParse(Stream stream) { return null; }
+        public virtual ResourceNode TryParse(Stream stream)
+        {
+            return null;
+        }
     }
 }

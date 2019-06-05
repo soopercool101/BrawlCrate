@@ -1,17 +1,18 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
     public partial class RSARGroupEditor : UserControl
     {
+        private RSARGroupNode _targetGroup;
+
         public RSARGroupEditor()
         {
             InitializeComponent();
         }
 
-        private RSARGroupNode _targetGroup;
         public void LoadGroup(RSARGroupNode group)
         {
             if ((_targetGroup = group) != null)
@@ -28,8 +29,8 @@ namespace System.Windows.Forms
 
         private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int sIndex = lstFiles.SelectedIndex;
-            int count = lstFiles.Items.Count;
+            var sIndex = lstFiles.SelectedIndex;
+            var count = lstFiles.Items.Count;
             btnMoveDown.Enabled = sIndex < count - 1 && sIndex >= 0;
             btnMoveUp.Enabled = sIndex > 0 && sIndex < count;
             btnRemove.Enabled = btnEdit.Enabled = sIndex >= 0 && sIndex < count;
@@ -39,7 +40,7 @@ namespace System.Windows.Forms
         {
             if (cboAllFiles.SelectedIndex != -1)
             {
-                RSARFileNode file = cboAllFiles.Items[cboAllFiles.SelectedIndex] as RSARFileNode;
+                var file = cboAllFiles.Items[cboAllFiles.SelectedIndex] as RSARFileNode;
                 file._groupRefs.Add(_targetGroup);
                 _targetGroup._files.Add(file);
                 file.GetName();
@@ -51,7 +52,7 @@ namespace System.Windows.Forms
         {
             if (lstFiles.SelectedIndex != -1)
             {
-                RSARFileNode file = cboAllFiles.Items[cboAllFiles.SelectedIndex] as RSARFileNode;
+                var file = cboAllFiles.Items[cboAllFiles.SelectedIndex] as RSARFileNode;
                 file._groupRefs.RemoveAt(lstFiles.SelectedIndex);
                 _targetGroup._files.RemoveAt(lstFiles.SelectedIndex);
                 file.GetName();
@@ -61,8 +62,8 @@ namespace System.Windows.Forms
 
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
-            int sIndex = lstFiles.SelectedIndex;
-            RSARFileNode file = _targetGroup._files[sIndex];
+            var sIndex = lstFiles.SelectedIndex;
+            var file = _targetGroup._files[sIndex];
             _targetGroup._files.Insert(sIndex - 1, file);
             _targetGroup._files.RemoveAt(sIndex + 1);
             lstFiles.SelectedIndex = sIndex - 1;
@@ -70,8 +71,8 @@ namespace System.Windows.Forms
 
         private void btnMoveDown_Click(object sender, EventArgs e)
         {
-            int sIndex = lstFiles.SelectedIndex;
-            RSARFileNode file = _targetGroup._files[sIndex];
+            var sIndex = lstFiles.SelectedIndex;
+            var file = _targetGroup._files[sIndex];
             _targetGroup._files.RemoveAt(sIndex);
             _targetGroup._files.Insert(sIndex + 1, file);
             lstFiles.SelectedIndex = sIndex + 1;
@@ -79,27 +80,20 @@ namespace System.Windows.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            RSARFileNode file = lstFiles.SelectedItem as RSARFileNode;
+            var file = lstFiles.SelectedItem as RSARFileNode;
             if (file is RSARExtFileNode)
             {
-                RSARExtFileNode m = file as RSARExtFileNode;
+                var m = file as RSARExtFileNode;
                 if (File.Exists(m.FullExtPath))
-                {
                     Process.Start(m.FullExtPath);
-                }
                 else
-                {
-                    using (SoundPathChanger dlg = new SoundPathChanger())
+                    using (var dlg = new SoundPathChanger())
                     {
-                        RSARNode rsar = m.RSARNode;
+                        var rsar = m.RSARNode;
                         dlg.FilePath = m.FullExtPath;
                         dlg.dlg.InitialDirectory = rsar._origPath.Substring(0, rsar._origPath.LastIndexOf('\\'));
-                        if (dlg.ShowDialog() == DialogResult.OK)
-                        {
-                            m.FullExtPath = dlg.FilePath;
-                        }
+                        if (dlg.ShowDialog() == DialogResult.OK) m.FullExtPath = dlg.FilePath;
                     }
-                }
             }
             else
             {

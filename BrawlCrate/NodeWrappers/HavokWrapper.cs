@@ -1,10 +1,10 @@
-﻿using BrawlLib;
-using BrawlLib.IO;
-using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib;
+using BrawlLib.IO;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -12,6 +12,7 @@ namespace BrawlCrate.NodeWrappers
     public class HavokWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static HavokWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -29,42 +30,50 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ExportPatchedAction(object sender, EventArgs e) { GetInstance<HavokWrapper>().ExportPatched(); }
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
-        }
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            HavokWrapper w = GetInstance<HavokWrapper>();
-            _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
-            _menu.Items[6].Enabled = w.PrevNode != null;
-            _menu.Items[7].Enabled = w.NextNode != null;
-        }
 
-        public HavokWrapper() { ContextMenuStrip = _menu; }
+        public HavokWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public override string ExportFilter => FileFilters.Havok;
         public override string ImportFilter => FileFilters.Havok;
 
+        protected static void ExportPatchedAction(object sender, EventArgs e)
+        {
+            GetInstance<HavokWrapper>().ExportPatched();
+        }
+
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<HavokWrapper>();
+            _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _menu.Items[6].Enabled = w.PrevNode != null;
+            _menu.Items[7].Enabled = w.NextNode != null;
+        }
+
         public void ExportPatched()
         {
-            int index = Program.SaveFile(ExportFilter, Text, out string outPath);
+            var index = Program.SaveFile(ExportFilter, Text, out var outPath);
             if (index != 0)
             {
-                if (Parent == null)
-                {
-                    _resource.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
-                }
+                if (Parent == null) _resource.Merge(Control.ModifierKeys == (Keys.Control | Keys.Shift));
                 //_resource.Rebuild();
-                HavokNode p = _resource as HavokNode;
-                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+                var p = _resource as HavokNode;
+                using (var stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                    FileShare.ReadWrite, 8, FileOptions.SequentialScan))
                 {
                     stream.SetLength(p._buffer.Length);
-                    using (FileMap map = FileMap.FromStream(stream))
+                    using (var map = FileMap.FromStream(stream))
                     {
-                        Memory.Move(map.Address, p._buffer.Address, (uint)p._buffer.Length);
+                        Memory.Move(map.Address, p._buffer.Address, (uint) p._buffer.Length);
                     }
                 }
             }

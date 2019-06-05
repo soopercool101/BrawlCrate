@@ -2,37 +2,43 @@
 {
     public class EditAllSRT0Editor : UserControl
     {
-        private CheckBox srtTexRename;
-        private CheckBox srtModMat;
-        private TextBox textBox7;
+        private CheckBox chkSrtVersion;
+        private Label label2;
+        private CheckBox srtCopyKF;
+        private CheckBox srtEditLoop;
+        private CheckBox srtLoopEnable;
         private TextBox srtMatName;
+        private CheckBox srtModMat;
+        private Label srtRot;
+        private CheckBox srtRotAdd;
+        private CheckBox srtRotReplace;
+        private CheckBox srtRotSubtract;
+        private CheckBox srtScaleAdd;
+        private CheckBox srtScaleReplace;
+        private CheckBox srtScaleSubtract;
+        private Label srtScaleX;
+        private Label srtScaleY;
         private TextBox srtTexName;
+        private CheckBox srtTexRename;
+        private CheckBox srtTransAdd;
+        private CheckBox srtTransReplace;
+        private CheckBox srtTransSubtract;
+        private Label srtTransX;
+        private Label srtTransY;
+        private ComboBox srtVersion;
+        private TextBox textBox10;
+        private TextBox textBox12;
         private TextBox textBox3;
         private TextBox textBox4;
         private TextBox textBox6;
+        private TextBox textBox7;
         private TextBox textBox9;
-        private TextBox textBox10;
-        private TextBox textBox12;
-        private CheckBox srtLoopEnable;
-        private Label label2;
-        private Label srtScaleX;
-        private Label srtScaleY;
-        private Label srtRot;
-        private Label srtTransX;
-        private Label srtTransY;
-        private CheckBox srtScaleSubtract;
-        private CheckBox srtScaleAdd;
-        private CheckBox srtScaleReplace;
-        private CheckBox srtRotSubtract;
-        private CheckBox srtRotAdd;
-        private CheckBox srtRotReplace;
-        private CheckBox srtTransSubtract;
-        private CheckBox srtTransAdd;
-        private CheckBox srtTransReplace;
-        private CheckBox srtCopyKF;
-        private CheckBox chkSrtVersion;
-        private ComboBox srtVersion;
-        private CheckBox srtEditLoop;
+
+        public EditAllSRT0Editor()
+        {
+            InitializeComponent();
+        }
+
         #region Designer
 
         private GroupBox groupBox1;
@@ -387,9 +393,11 @@
             // 
             srtVersion.Enabled = false;
             srtVersion.FormattingEnabled = true;
-            srtVersion.Items.AddRange(new object[] {
-            "4",
-            "5"});
+            srtVersion.Items.AddRange(new object[]
+            {
+                "4",
+                "5"
+            });
             srtVersion.Location = new Drawing.Point(310, 146);
             srtVersion.Name = "srtVersion";
             srtVersion.Size = new Drawing.Size(79, 21);
@@ -413,11 +421,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        public EditAllSRT0Editor() { InitializeComponent(); }
     }
 }

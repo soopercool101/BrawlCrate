@@ -1,110 +1,22 @@
-﻿using BrawlCrate.NodeWrappers;
-using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
+using BrawlCrate.NodeWrappers;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate
 {
     internal class CloneSoundDialog : Form
     {
-        #region Designer
-
-        private ResourceTree treeResource;
-        private Label label1;
-        private TextBox txtName;
-        private Button btnOk;
-        private System.ComponentModel.IContainer components;
-        private Button btnCancel;
-
-        private void InitializeComponent()
-        {
-            components = new System.ComponentModel.Container();
-            label1 = new Label();
-            txtName = new TextBox();
-            btnOk = new Button();
-            btnCancel = new Button();
-            treeResource = new ResourceTree();
-            SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.Location = new System.Drawing.Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(48, 20);
-            label1.TabIndex = 1;
-            label1.Text = "Name:";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtName
-            // 
-            txtName.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-                        | AnchorStyles.Right);
-            txtName.Location = new System.Drawing.Point(66, 9);
-            txtName.Name = "txtName";
-            txtName.Size = new System.Drawing.Size(99, 20);
-            txtName.TabIndex = 2;
-            txtName.TextChanged += new EventHandler(txtName_TextChanged);
-            // 
-            // btnOk
-            // 
-            btnOk.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
-            btnOk.Location = new System.Drawing.Point(171, 8);
-            btnOk.Name = "btnOk";
-            btnOk.Size = new System.Drawing.Size(63, 20);
-            btnOk.TabIndex = 3;
-            btnOk.Text = "Okay";
-            btnOk.UseVisualStyleBackColor = true;
-            btnOk.Click += new EventHandler(btnOk_Click);
-            // 
-            // btnCancel
-            // 
-            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
-            btnCancel.Location = new System.Drawing.Point(240, 8);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(63, 20);
-            btnCancel.TabIndex = 4;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
-            // 
-            // treeResource
-            // 
-            treeResource.AllowContextMenus = false;
-            treeResource.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-                        | AnchorStyles.Left)
-                        | AnchorStyles.Right);
-            treeResource.HideSelection = false;
-            treeResource.ImageIndex = 0;
-            treeResource.Location = new System.Drawing.Point(12, 35);
-            treeResource.Name = "treeResource";
-            treeResource.SelectedImageIndex = 0;
-            treeResource.ShowIcons = true;
-            treeResource.Size = new System.Drawing.Size(291, 200);
-            treeResource.TabIndex = 0;
-            treeResource.SelectionChanged += new EventHandler(treeResource_SelectionChanged);
-            // 
-            // CloneSoundDialog
-            // 
-            ClientSize = new System.Drawing.Size(315, 247);
-            Controls.Add(btnCancel);
-            Controls.Add(btnOk);
-            Controls.Add(txtName);
-            Controls.Add(label1);
-            Controls.Add(treeResource);
-            FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            Name = "CloneSoundDialog";
-            Text = "Sound Cloner";
-            ResumeLayout(false);
-            PerformLayout();
-
-        }
-
-        #endregion
-
-        private RSARFolderNode _parentNode;
         private RSARSoundNode _newNode;
 
-        public CloneSoundDialog() { InitializeComponent(); }
+        private RSARFolderNode _parentNode;
+
+        public CloneSoundDialog()
+        {
+            InitializeComponent();
+        }
 
         public DialogResult ShowDialog(IWin32Window owner, RSARFolderNode parent)
         {
@@ -112,35 +24,37 @@ namespace BrawlCrate
             _newNode = null;
 
             treeResource.BeginUpdate();
-            foreach (ResourceNode node in parent.RSARNode.Children)
-            {
-                treeResource.Nodes.Add(BaseWrapper.Wrap(this, node));
-            }
+            foreach (var node in parent.RSARNode.Children) treeResource.Nodes.Add(BaseWrapper.Wrap(this, node));
 
-            BaseWrapper w = treeResource.FindResource(parent);
+            var w = treeResource.FindResource(parent);
             treeResource.SelectedNode = w;
             w.EnsureVisible();
             w.Expand();
 
             treeResource.EndUpdate();
 
-            try { return ShowDialog(owner); }
-            finally { _parentNode = null; treeResource.Clear(); }
+            try
+            {
+                return ShowDialog(owner);
+            }
+            finally
+            {
+                _parentNode = null;
+                treeResource.Clear();
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
             //Check name
-            string name = txtName.Text;
+            var name = txtName.Text;
 
-            foreach (ResourceNode c in _parentNode.Children)
-            {
-                if ((c.Name == name) && !(c is RSARFolderNode))
+            foreach (var c in _parentNode.Children)
+                if (c.Name == name && !(c is RSARFolderNode))
                 {
                     MessageBox.Show(this, "A resource with that name already exists!", "What the...");
                     return;
                 }
-            }
 
             _newNode = new RSARSoundNode
             {
@@ -150,7 +64,7 @@ namespace BrawlCrate
 
             if (treeResource.SelectedNode != null)
             {
-                RSARSoundNode existing = ((BaseWrapper)treeResource.SelectedNode).Resource as RSARSoundNode;
+                var existing = ((BaseWrapper) treeResource.SelectedNode).Resource as RSARSoundNode;
                 if (existing != null)
                 {
                     _newNode._sound3dParam = existing._sound3dParam;
@@ -184,8 +98,8 @@ namespace BrawlCrate
         {
             if (txtName.Text != "")
             {
-                GenericWrapper node = treeResource.SelectedNode as GenericWrapper;
-                btnOk.Enabled = (node != null) && (node.Resource is RSARSoundNode);
+                var node = treeResource.SelectedNode as GenericWrapper;
+                btnOk.Enabled = node != null && node.Resource is RSARSoundNode;
             }
             else
             {
@@ -202,5 +116,98 @@ namespace BrawlCrate
         {
             CheckState();
         }
+
+        #region Designer
+
+        private ResourceTree treeResource;
+        private Label label1;
+        private TextBox txtName;
+        private Button btnOk;
+        private IContainer components;
+        private Button btnCancel;
+
+        private void InitializeComponent()
+        {
+            components = new Container();
+            label1 = new Label();
+            txtName = new TextBox();
+            btnOk = new Button();
+            btnCancel = new Button();
+            treeResource = new ResourceTree();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(48, 20);
+            label1.TabIndex = 1;
+            label1.Text = "Name:";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtName
+            // 
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                              | AnchorStyles.Right;
+            txtName.Location = new Point(66, 9);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(99, 20);
+            txtName.TabIndex = 2;
+            txtName.TextChanged += txtName_TextChanged;
+            // 
+            // btnOk
+            // 
+            btnOk.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnOk.Location = new Point(171, 8);
+            btnOk.Name = "btnOk";
+            btnOk.Size = new Size(63, 20);
+            btnOk.TabIndex = 3;
+            btnOk.Text = "Okay";
+            btnOk.UseVisualStyleBackColor = true;
+            btnOk.Click += btnOk_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCancel.Location = new Point(240, 8);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(63, 20);
+            btnCancel.TabIndex = 4;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // treeResource
+            // 
+            treeResource.AllowContextMenus = false;
+            treeResource.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                   | AnchorStyles.Left
+                                                   | AnchorStyles.Right;
+            treeResource.HideSelection = false;
+            treeResource.ImageIndex = 0;
+            treeResource.Location = new Point(12, 35);
+            treeResource.Name = "treeResource";
+            treeResource.SelectedImageIndex = 0;
+            treeResource.ShowIcons = true;
+            treeResource.Size = new Size(291, 200);
+            treeResource.TabIndex = 0;
+            treeResource.SelectionChanged += treeResource_SelectionChanged;
+            // 
+            // CloneSoundDialog
+            // 
+            ClientSize = new Size(315, 247);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOk);
+            Controls.Add(txtName);
+            Controls.Add(label1);
+            Controls.Add(treeResource);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Name = "CloneSoundDialog";
+            Text = "Sound Cloner";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
     }
 }

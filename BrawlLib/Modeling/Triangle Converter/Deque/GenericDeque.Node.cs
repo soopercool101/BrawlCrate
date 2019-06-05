@@ -5,14 +5,13 @@ namespace System.Collections.Generic
         #region Node Class
 
         // Represents a node in the deque.
-        [Serializable()]
+        [Serializable]
         public class Node
         {
+            private Node next;
+
+            private Node previous;
             private T value;
-
-            private Node previous = null;
-
-            private Node next = null;
 
             public Node(T value)
             {

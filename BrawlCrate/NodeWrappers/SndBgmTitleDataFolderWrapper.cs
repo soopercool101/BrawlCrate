@@ -1,7 +1,7 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -9,6 +9,7 @@ namespace BrawlCrate.NodeWrappers
     public class SndBgmTitleDataFolderWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static SndBgmTitleDataFolderWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -20,22 +21,27 @@ namespace BrawlCrate.NodeWrappers
             _menu.Closing += MenuClosing;
         }
 
+        public SndBgmTitleDataFolderWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
+
         private static void NewEntryAction(object sender, EventArgs e)
         {
             GetInstance<SndBgmTitleDataFolderWrapper>().NewEntry();
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-
         }
-        public SndBgmTitleDataFolderWrapper() { ContextMenuStrip = _menu; }
+
         public void NewEntry()
         {
-            ((SndBgmTitleDataNode)_resource).CreateEntry();
+            ((SndBgmTitleDataNode) _resource).CreateEntry();
         }
     }
 }

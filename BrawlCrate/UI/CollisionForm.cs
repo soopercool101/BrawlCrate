@@ -1,23 +1,68 @@
-﻿using BrawlCrate;
+﻿using System.ComponentModel;
+using System.Drawing;
+using BrawlCrate;
 using BrawlLib.SSBB.ResourceNodes;
 
 namespace System.Windows.Forms
 {
     public class CollisionForm : Form
     {
+        private CollisionNode _node;
+
+        public CollisionForm()
+        {
+            InitializeComponent();
+            Text = Program.AssemblyTitle + " - Collision Editor";
+        }
+
+        public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
+        {
+            _node = node;
+            try
+            {
+                return ShowDialog(owner);
+            }
+            finally
+            {
+                _node = null;
+            }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            collisionEditor1.TargetNode = _node;
+            collisionEditor1._modelPanel.Capture();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            collisionEditor1.TargetNode = null;
+            collisionEditor1._modelPanel.Release();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            MainForm.Instance.Visible = true;
+            MainForm.Instance.Refresh();
+        }
+
         #region Designer
 
         private CollisionEditor collisionEditor1;
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollisionForm));
+            var resources = new ComponentResourceManager(typeof(CollisionForm));
             collisionEditor1 = new CollisionEditor();
             SuspendLayout();
             // 
             // collisionEditor1
             // 
-            collisionEditor1.BackColor = Drawing.Color.Lavender;
+            collisionEditor1.BackColor = Color.Lavender;
             collisionEditor1.Dock = DockStyle.Fill;
             collisionEditor1.Location = new Drawing.Point(0, 0);
             collisionEditor1.Name = "collisionEditor1";
@@ -33,42 +78,8 @@ namespace System.Windows.Forms
             Name = "CollisionForm";
             Text = "Collision Editor";
             ResumeLayout(false);
-
         }
 
         #endregion
-
-        private CollisionNode _node;
-
-        public CollisionForm() { InitializeComponent(); Text = Program.AssemblyTitle + " - Collision Editor"; }
-
-        public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
-        {
-            _node = node;
-            try { return ShowDialog(owner); }
-            finally { _node = null; }
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-            collisionEditor1.TargetNode = _node;
-            collisionEditor1._modelPanel.Capture();
-        }
-
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-        {
-            base.OnClosing(e);
-            collisionEditor1.TargetNode = null;
-            collisionEditor1._modelPanel.Release();
-        }
-
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-
-            MainForm.Instance.Visible = true;
-            MainForm.Instance.Refresh();
-        }
     }
 }

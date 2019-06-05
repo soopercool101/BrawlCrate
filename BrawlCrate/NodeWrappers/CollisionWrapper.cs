@@ -1,17 +1,33 @@
-﻿using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CollisionDef)]
     public class CollisionWrapper : GenericWrapper
     {
+        public CollisionWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
+
+        public override string ExportFilter => FileFilters.CollisionDef;
+
+        private void Preview()
+        {
+            using (var frm = new CollisionForm())
+            {
+                frm.ShowDialog(null, _resource as CollisionNode);
+            }
+        }
+
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static CollisionWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -29,31 +45,27 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void EditAction(object sender, EventArgs e) { GetInstance<CollisionWrapper>().Preview(); }
+
+        protected static void EditAction(object sender, EventArgs e)
+        {
+            GetInstance<CollisionWrapper>().Preview();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            CollisionWrapper w = GetInstance<CollisionWrapper>();
+            var w = GetInstance<CollisionWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
-
-        public override string ExportFilter => FileFilters.CollisionDef;
-
-        public CollisionWrapper() { ContextMenuStrip = _menu; }
-
-        private void Preview()
-        {
-            using (CollisionForm frm = new CollisionForm())
-            {
-                frm.ShowDialog(null, _resource as CollisionNode);
-            }
-        }
     }
 }

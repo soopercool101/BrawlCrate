@@ -1,13 +1,12 @@
-﻿using BrawlLib.SSBBTypes;
-using System;
+﻿using System;
 using System.ComponentModel;
+using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public abstract unsafe class ClassMemberInstanceNode : HavokClassNode
+    public abstract class ClassMemberInstanceNode : HavokClassNode
     {
-        [Browsable(false)]
-        protected VoidPtr Data => WorkingUncompressed.Address;
+        [Browsable(false)] protected VoidPtr Data => WorkingUncompressed.Address;
 
         public bool _isZero;
         public hkClassMember.Type _memberType;
@@ -17,15 +16,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Class Member Instance")]
         public string Inheritance => _classNode == null ? null : _classNode.Inheritance;
-        [Category("Class Member Instance")]
-        public bool SerializedAsZero => _isZero;
+
+        [Category("Class Member Instance")] public bool SerializedAsZero => _isZero;
 #if DEBUG
         [Category("Class Member Instance")]
         public string TypeName => GetType().ToString();
 #endif
 
         //Size of this member in bytes
-        public virtual int GetSize() { return 0; }
+        public virtual int GetSize()
+        {
+            return 0;
+        }
 
         public override int OnCalculateSize(bool force)
         {

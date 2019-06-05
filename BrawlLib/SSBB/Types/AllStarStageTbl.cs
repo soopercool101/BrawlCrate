@@ -19,11 +19,20 @@ namespace BrawlLib.SSBB.Types
         public AllstarFighterData _opponent4;
         public AllstarFighterData _opponent5;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct AllstarFighterData
+    public struct AllstarFighterData
     {
         public const int Size = 0x50;
 
@@ -42,7 +51,7 @@ namespace BrawlLib.SSBB.Types
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct AllstarDifficultyData
+    public struct AllstarDifficultyData
     {
         public const int Size = 0x0E;
 

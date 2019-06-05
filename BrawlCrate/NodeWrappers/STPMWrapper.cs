@@ -1,17 +1,31 @@
-﻿using BrawlLib;
-using BrawlLib.SSBB.ResourceNodes;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.STPM)]
     public class STPMWrapper : GenericWrapper
     {
+        public STPMWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
+
+        public override string ExportFilter => FileFilters.STPM;
+
+        public void NewEntry()
+        {
+            var node = new STPMEntryNode {Name = "NewEntry"};
+            _resource.AddChild(node);
+        }
+
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static STPMWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -31,27 +45,24 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<STPMWrapper>().NewEntry(); }
+
+        protected static void NewEntryAction(object sender, EventArgs e)
+        {
+            GetInstance<STPMWrapper>().NewEntry();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[6].Enabled = _menu.Items[7].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-            STPMWrapper w = GetInstance<STPMWrapper>();
+            var w = GetInstance<STPMWrapper>();
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
-
-        public override string ExportFilter => FileFilters.STPM;
-
-        public void NewEntry()
-        {
-            STPMEntryNode node = new STPMEntryNode() { Name = "NewEntry" };
-            _resource.AddChild(node);
-        }
-
-        public STPMWrapper() { ContextMenuStrip = _menu; }
     }
 }
