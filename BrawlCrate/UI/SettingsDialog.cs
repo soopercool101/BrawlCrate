@@ -253,6 +253,10 @@ namespace BrawlCrate
             txtBoxFSharpPath.Text = Properties.Settings.Default.FSharpInstallationPath;
             txtBoxPythonPath.Text = Properties.Settings.Default.PythonInstallationPath;
 
+            chkBoxAPIEnableLoaders.Enabled = chkBoxEnableAPI.Checked;
+            grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
+            grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
+
             Discord.DiscordSettings.LoadSettings();
             grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked = Discord.DiscordSettings.enabled;
             if (Discord.DiscordSettings.modNameType == Discord.DiscordSettings.ModNameType.Disabled)
@@ -960,6 +964,8 @@ namespace BrawlCrate
             // 
             // btnFSharpBrowse
             // 
+            btnFSharpBrowse.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
             btnFSharpBrowse.Name = "btnFSharpBrowse";
             btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
@@ -970,6 +976,8 @@ namespace BrawlCrate
             // 
             // btnFSharpDetect
             // 
+            btnFSharpDetect.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
             btnFSharpDetect.Name = "btnFSharpDetect";
             btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
@@ -1015,6 +1023,8 @@ namespace BrawlCrate
             // 
             // btnPythonBrowse
             // 
+            btnPythonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
             btnPythonBrowse.Name = "btnPythonBrowse";
             btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
@@ -1025,6 +1035,8 @@ namespace BrawlCrate
             // 
             // btnPythonDetect
             // 
+            btnPythonDetect.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right);
             btnPythonDetect.Location = new System.Drawing.Point(266, 36);
             btnPythonDetect.Name = "btnPythonDetect";
             btnPythonDetect.Size = new System.Drawing.Size(75, 24);
@@ -1264,9 +1276,9 @@ namespace BrawlCrate
             ClientSize = new System.Drawing.Size(373, 478);
             Controls.Add(tabControl1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            Icon = BrawlLib.Properties.Resources.Icon;
             Name = "SettingsDialog";
             Text = "Settings";
-            Icon = BrawlLib.Properties.Resources.Icon;
             Load += new System.EventHandler(SettingsDialog_Load);
             Shown += new System.EventHandler(SettingsDialog_Shown);
             tabControl1.ResumeLayout(false);

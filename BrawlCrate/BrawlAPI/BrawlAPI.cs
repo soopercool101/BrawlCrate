@@ -269,7 +269,7 @@ namespace BrawlCrate.API
                 }
             }
 
-            if (force || settingPath.Equals("") || settingPath.Equals("(none)"))
+            if (force || string.IsNullOrEmpty(settingPath) || settingPath.Equals("(none)"))
             {
                 if (searchPaths.Count > 0)
                 {
@@ -284,7 +284,7 @@ namespace BrawlCrate.API
                 {
                     if (force && manual)
                     {
-                        if (settingPath.Equals(""))
+                        if (string.IsNullOrEmpty(settingPath))
                         {
                             Properties.Settings.Default.PythonInstallationPath = "(none)";
                             Properties.Settings.Default.Save();
@@ -348,7 +348,7 @@ namespace BrawlCrate.API
                         fsi_path = "(none)";
                     }
                 }
-                if (fsi_path != null && fsi_path != "")
+                if (!string.IsNullOrEmpty(fsi_path))
                 {
                     Properties.Settings.Default.FSharpInstallationPath = fsi_path;
                     Properties.Settings.Default.Save();
