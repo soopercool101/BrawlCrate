@@ -11,7 +11,8 @@ namespace BrawlLib.SSBB
             //Archives
             new SupportedFileInfo(true, "PAC File Archive", "pac"),
             new SupportedFileInfo(true, "PCS Compressed File Archive", "pcs"),
-            new SupportedFileInfo(true, "ARC File Archive", "arc"),
+            new SupportedFileInfo(true, "U8 ARC File Archive", "arc"),
+            new SupportedFileInfo(false, "Archive Pair", "pair"),
             //new SupportedFileInfo(true, "RARC File Archive", "rarc"),
             new SupportedFileInfo(true, "MRG Resource Group", "mrg"),
             new SupportedFileInfo(true, "MRG Compressed Resource Group", "mrgc"),
@@ -85,8 +86,11 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Brawl Message Pack", "msbin"),
             new SupportedFileInfo(true, "Brawl Stage Collision File", "coll"),
             new SupportedFileInfo(true, "Brawl Stage Parameters File", "stpm"),
-            new SupportedFileInfo(true, "Brawl STDT File", "stdt"),
+            new SupportedFileInfo(true, "Brawl Stage Trap Data File", "stdt"),
             new SupportedFileInfo(true, "Brawl Stage Collision Attributes File", "scla"),
+
+            //Subspace Emissary files
+            new SupportedFileInfo(true, "BLOC Adventure Archive", "bloc"),
 
             //Gamecube
             //new SupportedFileInfo(true, "J3D v3 Model", "bmd"),
@@ -155,9 +159,9 @@ namespace BrawlLib.SSBB
             return infoArray;
         }
 
-        public static string CompleteFilterEditableOnly => GetAllSupportedFilter(true) + "|" + GetListFilter(true);
+        public static string CompleteFilterEditableOnly => GetAllSupportedFilter(true) + "|" + GetListFilter(true) + "|All Files (*.*)|*.*";
 
-        public static string CompleteFilter => GetAllSupportedFilter(false) + "|" + GetListFilter(false);
+        public static string CompleteFilter => GetAllSupportedFilter(false) + "|" + GetListFilter(false) + "|All Files (*.*)|*.*";
 
         public static string GetCompleteFilter(params string[] extensions)
         {
@@ -166,18 +170,16 @@ namespace BrawlLib.SSBB
 
         public static string GetCompleteFilter(SupportedFileInfo[] files)
         {
-            if (files.Length == 0)
+            switch (files.Length)
             {
-                return "All Files (*.*)|*.*";
+                case 0:
+                case 1 when files[0]._extensions[0].Equals("*"):
+                    return "All Files (*.*)|*.*";
+                case 1: //No need for the "all supported" filter if there's only one supported filter
+                    return GetListFilter(files) + "|All Files (*.*)|*.*";
+                default:
+                    return GetAllSupportedFilter(files) + "|" + GetListFilter(files) + "|All Files (*.*)|*.*";
             }
-
-            //No need for the all filter if there's only one filter
-            if (files.Length == 1)
-            {
-                return GetListFilter(files);
-            }
-
-            return GetAllSupportedFilter(files) + "|" + GetListFilter(files);
         }
 
         public static string GetAllSupportedFilter(bool editableOnly)

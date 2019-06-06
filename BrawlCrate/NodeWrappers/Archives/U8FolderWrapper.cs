@@ -152,9 +152,8 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => "U8 Archive (*.arc)|*.arc|" +
-                                               "Compressed U8 Archive (*.szs)|*.szs|" +
-                                               "Archive Pair (*.pair)|*.pair";
+        public override string ExportFilter => FileFilters.U8Export;
+        public override string ImportFilter => FileFilters.U8Import;
 
         public U8FolderWrapper()
         {
@@ -275,9 +274,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportU8()
         {
-            if (Program.OpenFile("U8 Archive (*.arc)|*.arc|" +
-                                 "Compressed U8 Archive (*.szs)|*.szs|" +
-                                 "Archive Pair (*.pair)|*.pair", out string path) > 0)
+            if (Program.OpenFile(FileFilters.U8Import, out string path) > 0)
             {
                 U8Node node = NodeFactory.FromFile(null, path) as U8Node;
                 U8FolderNode n = new U8FolderNode();

@@ -63,7 +63,7 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => "BLOC Adventure Archive (*.BLOC)|*.bloc";
+        public override string ExportFilter => BrawlLib.FileFilters.BLOC;
 
         public BLOCWrapper()
         {

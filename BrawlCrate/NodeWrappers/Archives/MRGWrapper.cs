@@ -102,10 +102,8 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => "Multiple Resource Group (*.mrg)|*.mrg|" +
-                                               "PAC Archive (*.pac)|*.pac|" +
-                                               "Compressed PAC Archive (*.pcs)|*.pcs|" +
-                                               "Archive Pair (*.pair)|*.pair";
+        public override string ExportFilter => FileFilters.MRGExport;
+        public override string ImportFilter => FileFilters.MRGImport;
 
         public MRGWrapper()
         {
@@ -147,7 +145,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out string path) > 0)
+            if (Program.OpenFile(FileFilters.MRGImport, out string path) > 0)
             {
                 NewMRG().Replace(path);
             }

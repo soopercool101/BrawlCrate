@@ -132,11 +132,8 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => "PAC Archive (*.pac)|*.pac|" +
-                                               "Compressed PAC Archive (*.pcs)|*.pcs|" +
-                                               "Archive Pair (*.pair)|*.pair|" +
-                                               "Multiple Resource Group (*.mrg)|*.mrg|" +
-                                               "Compressed MRG (*.mrgc)|*.mrgc";
+        public override string ExportFilter => FileFilters.ARCExport;
+        public override string ImportFilter => FileFilters.ARCImport;
 
         public ARCWrapper()
         {
@@ -200,7 +197,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out string path) > 0)
+            if (Program.OpenFile(FileFilters.ARCImport, out string path) > 0)
             {
                 NewARC().Replace(path);
             }
@@ -240,20 +237,27 @@ namespace BrawlCrate.NodeWrappers
 
         public override void OnExport(string outPath, int filterIndex)
         {
-            switch (filterIndex)
+            if (outPath.Contains("."))
             {
-                case 1:
-                    ((ARCNode) _resource).Export(outPath);
-                    break;
-                case 2:
-                    ((ARCNode) _resource).ExportPCS(outPath);
-                    break;
-                case 3:
-                    ((ARCNode) _resource).ExportPair(outPath);
-                    break;
-                case 4:
-                    ((ARCNode) _resource).ExportAsMRG(outPath);
-                    break;
+                switch (outPath.Substring(outPath.ToLowerInvariant().LastIndexOf(".")))
+                {
+                    case ".pcs":
+                        ((ARCNode)_resource).ExportPCS(outPath);
+                        break;
+                    case ".pair":
+                        ((ARCNode)_resource).ExportPair(outPath);
+                        break;
+                    case ".mrg":
+                        ((ARCNode)_resource).ExportAsMRG(outPath);
+                        break;
+                    default:
+                        ((ARCNode)_resource).Export(outPath);
+                        break;
+                }
+            }
+            else
+            {
+                ((ARCNode)_resource).Export(outPath);
             }
         }
 

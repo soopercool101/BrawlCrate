@@ -114,9 +114,8 @@ namespace BrawlCrate.NodeWrappers
 
         #endregion
 
-        public override string ExportFilter => "U8 Archive (*.arc)|*.arc|" +
-                                               "Compressed U8 Archive (*.szs)|*.szs|" +
-                                               "Archive Pair (*.pair)|*.pair";
+        public override string ExportFilter => FileFilters.U8Export;
+        public override string ImportFilter => FileFilters.U8Import;
 
         public U8Wrapper()
         {
@@ -169,7 +168,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            if (Program.OpenFile("ARChive (*.pac,*.pcs)|*.pac;*.pcs", out string path) > 0)
+            if (Program.OpenFile(FileFilters.ARCImport, out string path) > 0)
             {
                 NewARC().Replace(path);
             }
@@ -193,17 +192,24 @@ namespace BrawlCrate.NodeWrappers
 
         public override void OnExport(string outPath, int filterIndex)
         {
-            switch (filterIndex)
+            if (outPath.Contains("."))
             {
-                case 1:
-                    ((U8Node) _resource).Export(outPath);
-                    break;
-                case 2:
-                    ((U8Node) _resource).ExportSZS(outPath);
-                    break;
-                case 3:
-                    ((U8Node) _resource).ExportPair(outPath);
-                    break;
+                switch (outPath.Substring(outPath.ToLowerInvariant().LastIndexOf(".")))
+                {
+                    case ".szs":
+                        ((U8Node)_resource).ExportSZS(outPath);
+                        break;
+                    case ".pair":
+                        ((U8Node)_resource).ExportPair(outPath);
+                        break;
+                    default:
+                        ((U8Node)_resource).Export(outPath);
+                        break;
+                }
+            }
+            else
+            {
+                ((U8Node)_resource).Export(outPath);
             }
         }
 

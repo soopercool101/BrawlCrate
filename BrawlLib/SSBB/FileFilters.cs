@@ -7,6 +7,24 @@ namespace BrawlLib
 {
     public static class FileFilters
     {
+        public static string ARCExport =
+            SupportedFilesHandler.GetCompleteFilter("pac", "pcs", "pair", "mrg");
+
+        public static string ARCImport =
+            SupportedFilesHandler.GetCompleteFilter("pac", "pcs", "mrg");
+
+        public static string MRGExport =
+            SupportedFilesHandler.GetCompleteFilter("mrg", "pac", "pcs", "pair");
+
+        public static string MRGImport =
+            SupportedFilesHandler.GetCompleteFilter("mrg", "pac", "pcs");
+
+        public static string U8Export =
+            SupportedFilesHandler.GetCompleteFilter("arc", "szs", "pair");
+
+        public static string U8Import =
+            SupportedFilesHandler.GetCompleteFilter("arc", "szs");
+
         public static string BRES =
             SupportedFilesHandler.GetCompleteFilter("brres", "branm", "brmdl", "brtex", "brplt", "brcha", "brtsa",
                 "brsha", "brvia", "brtpa", "brcla", "brsca");
@@ -90,13 +108,13 @@ namespace BrawlLib
             SupportedFilesHandler.GetCompleteFilter("tpl");
 
         public static string Object =
-            SupportedFilesHandler.GetCompleteFilter("obj", "*");
+            SupportedFilesHandler.GetCompleteFilter("obj");
 
         public static string WAV =
             SupportedFilesHandler.GetCompleteFilter("wav");
 
         public static string BLOC =
-            "BLOC Adventure Archive (*.BLOC)|*.bloc";
+            SupportedFilesHandler.GetCompleteFilter("bloc");
 
         public static string FMDL =
             SupportedFilesHandler.GetCompleteFilter("fmdl");
