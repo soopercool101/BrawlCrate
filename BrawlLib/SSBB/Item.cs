@@ -6,6 +6,7 @@
         /// The Item ID, as used by the module files, PSA script, and the item frequency tables.
         /// </summary>
         public int ID { get; private set; }
+
         /// <summary>
         /// The Item name (e.g. "Heart Container").
         /// </summary>
@@ -17,11 +18,15 @@
             Name = name;
         }
 
-        public override string ToString() { return Name; }
+        public override string ToString()
+        {
+            return Name;
+        }
 
-        public static readonly Item[] Items = new Item[] {
+        public static readonly Item[] Items = new Item[]
+        {
             //        ID    Display Name     
-			new Item(0x00, "Assist Trophy"),
+            new Item(0x00, "Assist Trophy"),
             new Item(0x01, "Franklin Badge"),
             new Item(0x02, "Banana Peel"),
             new Item(0x03, "Barrel"),

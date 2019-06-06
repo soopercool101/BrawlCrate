@@ -24,34 +24,53 @@ namespace BrawlLib.SSBBTypes
         public bint _origPathOffset;
         private fixed int padding[3];
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        internal VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
+
         public VoidPtr PixelData => Address + _headerLen;
         public int PixelDataLength => _header._size - _headerLen;
+
         public WiiPixelFormat PixelFormat
         {
-            get => (WiiPixelFormat)(int)_pixelFormat;
-            set => _pixelFormat = (int)value;
+            get => (WiiPixelFormat) (int) _pixelFormat;
+            set => _pixelFormat = (int) value;
         }
+
         public bool HasPalette
         {
             get => _hasPalette != 0;
-            set => _hasPalette = (value) ? 1 : 0;
+            set => _hasPalette = value ? 1 : 0;
         }
 
-        public TEX0v1(int width, int height, WiiPixelFormat format, int mipLevels) : this(width, height, format, mipLevels, Size) { }
+        public TEX0v1(int width, int height, WiiPixelFormat format, int mipLevels) : this(width, height, format,
+            mipLevels, Size)
+        {
+        }
+
         public TEX0v1(int width, int height, WiiPixelFormat format, int mipLevels, int headerLen)
         {
             _header._tag = Tag;
@@ -61,10 +80,10 @@ namespace BrawlLib.SSBBTypes
 
             _headerLen = headerLen;
             _stringOffset = 0;
-            _hasPalette = ((format == WiiPixelFormat.CI4) || (format == WiiPixelFormat.CI8)) ? 1 : 0;
-            _width = (short)width;
-            _height = (short)height;
-            _pixelFormat = (int)format;
+            _hasPalette = format == WiiPixelFormat.CI4 || format == WiiPixelFormat.CI8 ? 1 : 0;
+            _width = (short) width;
+            _height = (short) height;
+            _pixelFormat = (int) format;
             _levelOfDetail = mipLevels;
             _minLod = 0;
             _maxLod = mipLevels - 1.0f;
@@ -91,34 +110,53 @@ namespace BrawlLib.SSBBTypes
         public bfloat _maxLod;
         private fixed int padding[3];
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        internal VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
+
         public VoidPtr PixelData => Address + _headerLen;
         public int PixelDataLength => _header._size - _headerLen;
+
         public WiiPixelFormat PixelFormat
         {
-            get => (WiiPixelFormat)(int)_pixelFormat;
-            set => _pixelFormat = (int)value;
+            get => (WiiPixelFormat) (int) _pixelFormat;
+            set => _pixelFormat = (int) value;
         }
+
         public bool HasPalette
         {
             get => _hasPalette != 0;
-            set => _hasPalette = (value) ? 1 : 0;
+            set => _hasPalette = value ? 1 : 0;
         }
 
-        public TEX0v2(int width, int height, WiiPixelFormat format, int mipLevels) : this(width, height, format, mipLevels, Size) { }
+        public TEX0v2(int width, int height, WiiPixelFormat format, int mipLevels) : this(width, height, format,
+            mipLevels, Size)
+        {
+        }
+
         public TEX0v2(int width, int height, WiiPixelFormat format, int mipLevels, int headerLen)
         {
             _header._tag = Tag;
@@ -128,10 +166,10 @@ namespace BrawlLib.SSBBTypes
 
             _headerLen = headerLen;
             _stringOffset = 0;
-            _hasPalette = ((format == WiiPixelFormat.CI4) || (format == WiiPixelFormat.CI8)) ? 1 : 0;
-            _width = (short)width;
-            _height = (short)height;
-            _pixelFormat = (int)format;
+            _hasPalette = format == WiiPixelFormat.CI4 || format == WiiPixelFormat.CI8 ? 1 : 0;
+            _width = (short) width;
+            _height = (short) height;
+            _pixelFormat = (int) format;
             _levelOfDetail = mipLevels;
             _minLod = 0;
             _maxLod = mipLevels - 1.0f;
@@ -161,37 +199,52 @@ namespace BrawlLib.SSBBTypes
 
         //User Data comes before texture data. Align to 0x20
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        internal VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
-        }
-        public UserData* UserData
-        {
-            get => _userDataOffset == 0 ? null : (UserData*)(Address + _userDataOffset);
-            set => _userDataOffset = (int)(VoidPtr)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public UserData* UserData
+        {
+            get => _userDataOffset == 0 ? null : (UserData*) (Address + _userDataOffset);
+            set => _userDataOffset = (int) (VoidPtr) value - (int) Address;
+        }
+
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
+
         public VoidPtr PixelData => Address + _headerLen;
         public int PixelDataLength => _header._size - _headerLen;
+
         public WiiPixelFormat PixelFormat
         {
-            get => (WiiPixelFormat)(int)_pixelFormat;
-            set => _pixelFormat = (int)value;
+            get => (WiiPixelFormat) (int) _pixelFormat;
+            set => _pixelFormat = (int) value;
         }
+
         public bool HasPalette
         {
             get => _hasPalette != 0;
-            set => _hasPalette = (value) ? 1 : 0;
+            set => _hasPalette = value ? 1 : 0;
         }
 
         public TEX0v3(int width, int height, WiiPixelFormat format, int mipLevels, int headerLen)
@@ -203,10 +256,10 @@ namespace BrawlLib.SSBBTypes
 
             _headerLen = headerLen;
             _stringOffset = 0;
-            _hasPalette = ((format == WiiPixelFormat.CI4) || (format == WiiPixelFormat.CI8)) ? 1 : 0;
-            _width = (short)width;
-            _height = (short)height;
-            _pixelFormat = (int)format;
+            _hasPalette = format == WiiPixelFormat.CI4 || format == WiiPixelFormat.CI8 ? 1 : 0;
+            _width = (short) width;
+            _height = (short) height;
+            _pixelFormat = (int) format;
             _levelOfDetail = mipLevels;
             _minLod = 0;
             _maxLod = mipLevels - 1.0f;

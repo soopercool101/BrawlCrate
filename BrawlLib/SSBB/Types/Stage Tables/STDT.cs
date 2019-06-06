@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace BrawlLib.SSBBTypes
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct STDT//Stage Trap Data Table
+    public unsafe struct STDT //Stage Trap Data Table
     {
         public const uint Tag = 0x54445453;
 
@@ -14,7 +14,17 @@ namespace BrawlLib.SSBBTypes
         public bint _unk2;
         public bint _entryOffset;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public bfloat* Entries => (bfloat*)(Address + _entryOffset);
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public bfloat* Entries => (bfloat*) (Address + _entryOffset);
     }
 }

@@ -16,10 +16,19 @@ namespace BrawlLib.SSBBTypes
         public bint _waveOffset;
         public bint _waveLength;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public RWSD_DATAHeader* Data => (RWSD_DATAHeader*)(Address + _dataOffset);
-        public WAVEHeader* Wave => (WAVEHeader*)(Address + _waveOffset);
+        public RWSD_DATAHeader* Data => (RWSD_DATAHeader*) (Address + _dataOffset);
+        public WAVEHeader* Wave => (WAVEHeader*) (Address + _waveOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -31,7 +40,16 @@ namespace BrawlLib.SSBBTypes
         public bint _length;
         public RuintList _list; //control = 0x0100
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -45,11 +63,31 @@ namespace BrawlLib.SSBBTypes
         public ruint _trackTable;
         public ruint _noteTable;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public RWSD_WSDEntry* GetWsdInfo(VoidPtr offset) { return (RWSD_WSDEntry*)_wsdInfo.Offset(offset); }
-        public RuintList* GetTrackTable(VoidPtr offset) { return (RuintList*)_trackTable.Offset(offset); }
-        public RuintList* GetNoteTable(VoidPtr offset) { return (RuintList*)_noteTable.Offset(offset); }
+        public RWSD_WSDEntry* GetWsdInfo(VoidPtr offset)
+        {
+            return (RWSD_WSDEntry*) _wsdInfo.Offset(offset);
+        }
+
+        public RuintList* GetTrackTable(VoidPtr offset)
+        {
+            return (RuintList*) _trackTable.Offset(offset);
+        }
+
+        public RuintList* GetNoteTable(VoidPtr offset)
+        {
+            return (RuintList*) _noteTable.Offset(offset);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -118,9 +156,22 @@ namespace BrawlLib.SSBBTypes
         public bint _length;
         public bint _numEntries;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public bint* Entries => (bint*)(Address + 12);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public WaveInfo* GetEntry(int index) { return (WaveInfo*)(Address + Entries[index]); }
+        public bint* Entries => (bint*) (Address + 12);
+
+        public WaveInfo* GetEntry(int index)
+        {
+            return (WaveInfo*) (Address + Entries[index]);
+        }
     }
 }

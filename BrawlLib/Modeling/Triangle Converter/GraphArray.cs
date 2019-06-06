@@ -15,16 +15,25 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public class Arc
         {
-            public Arc(Node Terminal) { m_Terminal = Terminal; }
+            public Arc(Node Terminal)
+            {
+                m_Terminal = Terminal;
+            }
+
             public Node Terminal => m_Terminal;
             public Node m_Terminal;
         }
 
         public class Node
         {
-            public bool Marked { get => m_Marker; set => m_Marker = value; }
-            public bool Empty => (m_Begin == m_End);
-            public uint Size => (m_End - m_Begin);
+            public bool Marked
+            {
+                get => m_Marker;
+                set => m_Marker = value;
+            }
+
+            public bool Empty => m_Begin == m_End;
+            public uint Size => m_End - m_Begin;
 
             public Node(GraphArray<T> graph)
             {
@@ -44,7 +53,10 @@ namespace BrawlLib.Modeling.Triangle_Converter
             private bool m_Marker;
         }
 
-        public GraphArray() { }
+        public GraphArray()
+        {
+        }
+
         public GraphArray(uint NbNodes)
         {
             m_Nodes = new List<Node>();
@@ -58,13 +70,14 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         //Node related member functions
         public bool Empty => m_Nodes.Count == 0;
-        public uint Count => (uint)m_Nodes.Count;
+        public uint Count => (uint) m_Nodes.Count;
+
         public Node this[uint i]
         {
             get
             {
                 Debug.Assert(i < Count);
-                return m_Nodes[(int)i];
+                return m_Nodes[(int) i];
             }
         }
 
@@ -74,14 +87,14 @@ namespace BrawlLib.Modeling.Triangle_Converter
             Debug.Assert(Initial < Count, "Initial is greater than count");
             Debug.Assert(Terminal < Count, "Terminal is greater than count");
 
-            Arc r = new Arc(m_Nodes[(int)Terminal]);
+            Arc r = new Arc(m_Nodes[(int) Terminal]);
             m_Arcs.Add(r);
 
-            Node Node = m_Nodes[(int)Initial];
+            Node Node = m_Nodes[(int) Initial];
             if (Node.Empty)
             {
-                Node.m_Begin = (uint)m_Arcs.Count - 1;
-                Node.m_End = (uint)m_Arcs.Count;
+                Node.m_Begin = (uint) m_Arcs.Count - 1;
+                Node.m_End = (uint) m_Arcs.Count;
             }
             else
             {
@@ -91,6 +104,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 // we know all the arcs for a given node are successively and sequentially added
                 Debug.Assert(Node.m_End == m_Arcs.Count);
             }
+
             return r;
         }
 

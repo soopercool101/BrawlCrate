@@ -8,13 +8,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class VIS0Node : NW4RAnimationNode
     {
-        internal VIS0v3* Header3 => (VIS0v3*)WorkingUncompressed.Address;
-        internal VIS0v4* Header4 => (VIS0v4*)WorkingUncompressed.Address;
+        internal VIS0v3* Header3 => (VIS0v3*) WorkingUncompressed.Address;
+        internal VIS0v4* Header4 => (VIS0v4*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.VIS0;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(VIS0EntryNode) };
-        public override int[] SupportedVersions => new int[] { 3, 4 };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(VIS0EntryNode)};
+        public override int[] SupportedVersions => new int[] {3, 4};
 
-        public VIS0Node() { _version = 3; }
+        public VIS0Node()
+        {
+            _version = 3;
+        }
 
         private const string _category = "Bone Visibility Animation";
 
@@ -24,6 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => base.FrameCount;
             set => base.FrameCount = value;
         }
+
         [Category(_category)]
         public override bool Loop
         {
@@ -59,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 VIS0v4* header = Header4;
                 _numFrames = header->_numFrames;
                 _loop = header->_loop != 0;
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -67,7 +71,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (header->_origPathOffset > 0)
                 {
                     _originalPath = header->OrigPath;
-                } (_userEntries = new UserDataCollection()).Read(header->UserData);
+                }
+
+                (_userEntries = new UserDataCollection()).Read(header->UserData);
 
                 return header->Group->_numEntries > 0;
             }
@@ -77,7 +83,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _numFrames = header->_numFrames;
                 _loop = header->_loop != 0;
 
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -114,14 +120,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_version == 4)
             {
-                VIS0v4* header = (VIS0v4*)address;
-                *header = new VIS0v4(length, (ushort)_numFrames, (ushort)count, _loop);
+                VIS0v4* header = (VIS0v4*) address;
+                *header = new VIS0v4(length, (ushort) _numFrames, (ushort) count, _loop);
                 group = header->Group;
             }
             else
             {
-                VIS0v3* header = (VIS0v3*)address;
-                *header = new VIS0v3(length, (ushort)_numFrames, (ushort)count, _loop);
+                VIS0v3* header = (VIS0v3*) address;
+                *header = new VIS0v3(length, (ushort) _numFrames, (ushort) count, _loop);
                 group = header->Group;
             }
 
@@ -131,7 +137,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             VoidPtr dataAddress = group->EndAddress;
             foreach (ResourceNode n in Children)
             {
-                (entry++)->_dataOffset = (int)dataAddress - (int)group;
+                (entry++)->_dataOffset = (int) dataAddress - (int) group;
 
                 int len = n._calcSize;
                 n.Rebuild(dataAddress, len, force);
@@ -140,7 +146,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_userEntries.Count > 0 && _version == 4)
             {
-                _userEntries.Write(((VIS0v4*)address)->UserData = dataAddress);
+                _userEntries.Write(((VIS0v4*) address)->UserData = dataAddress);
             }
         }
 
@@ -149,7 +155,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceGroup* group = Header3->Group;
             for (int i = 0; i < group->_numEntries; i++)
             {
-                new VIS0EntryNode().Initialize(this, new DataSource((VoidPtr)group + group->First[i]._dataOffset, 0));
+                new VIS0EntryNode().Initialize(this, new DataSource((VoidPtr) group + group->First[i]._dataOffset, 0));
             }
         }
 
@@ -172,18 +178,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength, StringTable stringTable)
+        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength,
+                                                     StringTable stringTable)
         {
             base.PostProcess(bresAddress, dataAddress, dataLength, stringTable);
 
-            VIS0v3* header = (VIS0v3*)dataAddress;
+            VIS0v3* header = (VIS0v3*) dataAddress;
 
             if (_version == 4)
             {
-                ((VIS0v4*)dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
+                ((VIS0v4*) dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
                 if (!string.IsNullOrEmpty(_originalPath))
                 {
-                    ((VIS0v4*)dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
+                    ((VIS0v4*) dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
                 }
             }
             else
@@ -203,20 +210,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             int index = 1;
             foreach (VIS0EntryNode n in Children)
             {
-                dataAddress = (VoidPtr)group + (rEntry++)->_dataOffset;
-                ResourceEntry.Build(group, index++, dataAddress, (BRESString*)stringTable[n.Name]);
+                dataAddress = (VoidPtr) group + (rEntry++)->_dataOffset;
+                ResourceEntry.Build(group, index++, dataAddress, (BRESString*) stringTable[n.Name]);
                 n.PostProcess(dataAddress, stringTable);
             }
 
             if (_version == 4)
             {
-                _userEntries.PostProcess(((VIS0v4*)dataAddress)->UserData, stringTable);
+                _userEntries.PostProcess(((VIS0v4*) dataAddress)->UserData, stringTable);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((VIS0v3*)source.Address)->_header._tag == VIS0v3.Tag ? new VIS0Node() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((VIS0v3*) source.Address)->_header._tag == VIS0v3.Tag ? new VIS0Node() : null;
+        }
 
         #region Extra Functions
+
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count specified by the user.
         /// </summary>
@@ -228,12 +239,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Resize(f.NewValue);
             }
         }
+
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count.
         /// </summary>
         public void Resize(int newFrameCount)
         {
-            float ratio = newFrameCount / (float)FrameCount;
+            float ratio = newFrameCount / (float) FrameCount;
             int oldFrameCount = FrameCount;
 
             bool[][] bools = new bool[Children.Count][];
@@ -249,15 +261,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             int start = i;
                             int z = i;
-                            while ((e.GetEntry(++z)))
+                            while (e.GetEntry(++z))
                             {
                                 ;
                             }
 
                             int span = z - start;
 
-                            int newSpan = (int)(span * ratio + 0.5f);
-                            int newStart = (int)(start * ratio + 0.5f);
+                            int newSpan = (int) (span * ratio + 0.5f);
+                            int newStart = (int) (start * ratio + 0.5f);
 
                             for (int w = 0; w < newSpan; w++)
                             {
@@ -295,12 +307,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                         byteIndex = u / 8;
                     }
 
-                    e._data[byteIndex] |= (byte)((i ? 1 : 0) << (7 - (u % 8)));
+                    e._data[byteIndex] |= (byte) ((i ? 1 : 0) << (7 - u % 8));
 
                     u++;
                 }
             }
         }
+
         /// <summary>
         /// Adds an animation opened by the user to the end of this one
         /// </summary>
@@ -314,12 +327,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (VIS0Node)NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = (VIS0Node) NodeFactory.FromFile(null, o.FileName)) != null)
                 {
                     Append(external);
                 }
             }
         }
+
         /// <summary>
         /// Adds an animation to the end of this one
         /// </summary>
@@ -331,9 +345,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (VIS0EntryNode _extEntry in external.Children)
             {
                 VIS0EntryNode _intEntry = null;
-                if ((_intEntry = (VIS0EntryNode)FindChild(_extEntry.Name, false)) == null)
+                if ((_intEntry = (VIS0EntryNode) FindChild(_extEntry.Name, false)) == null)
                 {
-                    VIS0EntryNode newIntEntry = new VIS0EntryNode() { Name = _extEntry.Name };
+                    VIS0EntryNode newIntEntry = new VIS0EntryNode() {Name = _extEntry.Name};
 
                     newIntEntry._entryCount = -1;
                     newIntEntry.EntryCount = _extEntry.EntryCount + origIntCount;
@@ -351,7 +365,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                     else
                     {
-                        Array.Copy(_extEntry._data, 0, newIntEntry._data, origIntCount.Align(8) / 8, _extEntry.EntryCount.Align(8) / 8);
+                        Array.Copy(_extEntry._data, 0, newIntEntry._data, origIntCount.Align(8) / 8,
+                            _extEntry.EntryCount.Align(8) / 8);
                     }
 
                     AddChild(newIntEntry);
@@ -360,7 +375,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (!_extEntry.Constant && !_intEntry.Constant)
                     {
-                        Array.Copy(_extEntry._data, 0, _intEntry._data, origIntCount.Align(8) / 8, _extEntry.EntryCount.Align(8) / 8);
+                        Array.Copy(_extEntry._data, 0, _intEntry._data, origIntCount.Align(8) / 8,
+                            _extEntry.EntryCount.Align(8) / 8);
                     }
                     else
                     {
@@ -377,7 +393,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                         else
                         {
-                            Array.Copy(_extEntry._data, 0, _intEntry._data, origIntCount.Align(8) / 8, _extEntry.EntryCount.Align(8) / 8);
+                            Array.Copy(_extEntry._data, 0, _intEntry._data, origIntCount.Align(8) / 8,
+                                _extEntry.EntryCount.Align(8) / 8);
                         }
 
                         _intEntry.Constant = false;
@@ -393,7 +410,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                         else
                         {
-                            Array.Copy(_extEntry._data, 0, d, origIntCount.Align(8) / 8, _extEntry.EntryCount.Align(8) / 8);
+                            Array.Copy(_extEntry._data, 0, d, origIntCount.Align(8) / 8,
+                                _extEntry.EntryCount.Align(8) / 8);
                         }
 
                         _intEntry._data = d;
@@ -401,12 +419,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         #endregion
     }
 
     public unsafe class VIS0EntryNode : ResourceNode, IBoolArraySource
     {
-        internal VIS0Entry* Header => (VIS0Entry*)WorkingUncompressed.Address;
+        internal VIS0Entry* Header => (VIS0Entry*) WorkingUncompressed.Address;
 
         public byte[] _data = new byte[0];
         public int _entryCount;
@@ -432,6 +451,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     Array.Copy(_data, newArr, _data.Length);
                     _data = newArr;
                 }
+
                 SignalPropertyChange();
             }
         }
@@ -457,6 +477,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         [Category("VIS0 Entry")]
         public bool Constant
         {
@@ -489,7 +510,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            VIS0Entry* header = (VIS0Entry*)address;
+            VIS0Entry* header = (VIS0Entry*) address;
             *header = new VIS0Entry(_flags);
 
             if (_entryCount != 0)
@@ -500,7 +521,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            if ((_name == null) && (Header->_stringOffset != 0))
+            if (_name == null && Header->_stringOffset != 0)
             {
                 _name = Header->ResourceString;
             }
@@ -509,7 +530,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if ((_flags & VIS0Flags.Constant) == 0)
             {
-                _entryCount = ((VIS0Node)_parent).FrameCount;
+                _entryCount = ((VIS0Node) _parent).FrameCount;
                 int numBytes = _entryCount.Align(32) / 8;
 
                 SetSizeInternal(numBytes + 8);
@@ -538,6 +559,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int bit = 1 << (7 - (index & 7));
             return (_data[i] & bit) != 0;
         }
+
         public void SetEntry(int index, bool value)
         {
             int i = index >> 3;
@@ -548,7 +570,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             int bit = 1 << (7 - (index & 7));
             int mask = ~bit;
-            _data[i] = (byte)((_data[i] & mask) | (value ? bit : 0));
+            _data[i] = (byte) ((_data[i] & mask) | (value ? bit : 0));
             SignalPropertyChange();
         }
 
@@ -558,11 +580,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             _entryCount = 0;
             SignalPropertyChange();
         }
+
         public void MakeAnimated()
         {
             _flags = VIS0Flags.None;
             _entryCount = -1;
-            EntryCount = ((VIS0Node)_parent).FrameCount;
+            EntryCount = ((VIS0Node) _parent).FrameCount;
 
             //bool e = Enabled;
             //for (int i = 0; i < _entryCount; i++)
@@ -573,7 +596,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected internal virtual void PostProcess(VoidPtr dataAddress, StringTable stringTable)
         {
-            VIS0Entry* header = (VIS0Entry*)dataAddress;
+            VIS0Entry* header = (VIS0Entry*) dataAddress;
             header->ResourceStringAddress = stringTable[Name] + 4;
         }
     }

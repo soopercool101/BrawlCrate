@@ -23,20 +23,24 @@ namespace BrawlLib.OpenGL
         public int Width => _width;
         public int Height => _height;
 
-        public GLTexture() { }
+        public GLTexture()
+        {
+        }
+
         public unsafe GLTexture(int width, int height)
         {
             _width = width;
             _height = height;
             _source = null;
         }
+
         public unsafe GLTexture(Bitmap b)
         {
             _width = b.Width;
             _height = b.Height;
             ClearImages();
             ClearTexture();
-            _textures = new Bitmap[] { b };
+            _textures = new Bitmap[] {b};
             _remake = true;
             _source = null;
         }
@@ -61,8 +65,10 @@ namespace BrawlLib.OpenGL
                     Bitmap bmp = _textures[i];
                     if (bmp != null)
                     {
-                        BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                        GL.TexImage2D(TextureTarget.Texture2D, i, ifmt, data.Width, data.Height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
+                        BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height),
+                            ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        GL.TexImage2D(TextureTarget.Texture2D, i, ifmt, data.Width, data.Height, 0,
+                            OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, data.Scan0);
                         bmp.UnlockBits(data);
                     }
                 }
@@ -70,6 +76,7 @@ namespace BrawlLib.OpenGL
                 _remake = false;
                 ClearImages();
             }
+
             return _texId;
         }
 
@@ -88,6 +95,7 @@ namespace BrawlLib.OpenGL
                 _textures = null;
             }
         }
+
         private unsafe void ClearTexture()
         {
             if (_texId != 0)
@@ -102,7 +110,7 @@ namespace BrawlLib.OpenGL
         {
             if (_source != null && _source is TEX0Node)
             {
-                Attach((TEX0Node)_source, plt);
+                Attach((TEX0Node) _source, plt);
             }
         }
 
@@ -149,7 +157,7 @@ namespace BrawlLib.OpenGL
 
             _source = null;
 
-            _textures = new Bitmap[] { bmp };
+            _textures = new Bitmap[] {bmp};
 
             if (_textures.Length != 0)
             {
@@ -174,7 +182,11 @@ namespace BrawlLib.OpenGL
             Attach(b);
         }
 
-        public void Bind() { Bind(-1, -1); }
+        public void Bind()
+        {
+            Bind(-1, -1);
+        }
+
         public void Bind(int index = -1, int program = -1)
         {
             if (program != -1 && index >= 0 && index < 8)

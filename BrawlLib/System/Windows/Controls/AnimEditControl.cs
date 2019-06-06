@@ -15,7 +15,9 @@ namespace System.Windows.Forms
         private Panel panel1;
 
         private CHR0EntryNode _target;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CHR0EntryNode TargetSequence
         {
             get => _target;
@@ -84,6 +86,7 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
+
             listKeyframes.EndUpdate();
 
             RefreshPage();
@@ -91,7 +94,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            int page = (int)numFrame.Value - 1;
+            int page = (int) numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -125,7 +128,7 @@ namespace System.Windows.Forms
                 }
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < (_numFrames - 1);
+                btnNext.Enabled = _currentPage < _numFrames - 1;
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -136,7 +139,7 @@ namespace System.Windows.Forms
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
             {
-                if (((CHRAnimationFrame)listKeyframes.Items[i]).Index == index)
+                if (((CHRAnimationFrame) listKeyframes.Items[i]).Index == index)
                 {
                     return i;
                 }
@@ -161,9 +164,9 @@ namespace System.Windows.Forms
         {
             NumericInputBox box = sender as NumericInputBox;
             CHRAnimationFrame kf;
-            float* pkf = (float*)&kf;
+            float* pkf = (float*) &kf;
             float val = box.Value;
-            int index = (int)box.Tag;
+            int index = (int) box.Tag;
             int x;
 
             if (val != _currentFrame[index])
@@ -175,10 +178,10 @@ namespace System.Windows.Forms
                     //Value removed find keyframe and zero it out
                     if (kfIndex >= 0)
                     {
-                        kf = (CHRAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (CHRAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBool(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 9) && float.IsNaN(pkf[x]); x++)
+                        for (x = 0; x < 9 && float.IsNaN(pkf[x]); x++)
                         {
                             ;
                         }
@@ -202,7 +205,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (CHRAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (CHRAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBool(index, true);
                         pkf[index] = val;
                         listKeyframes.Items[kfIndex] = kf;
@@ -215,7 +218,7 @@ namespace System.Windows.Forms
                         pkf[index] = val;
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((CHRAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        for (x = 0; x < count && ((CHRAnimationFrame) listKeyframes.Items[x]).Index < _currentPage; x++)
                         {
                             ;
                         }
@@ -237,13 +240,20 @@ namespace System.Windows.Forms
             int index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                CHRAnimationFrame f = (CHRAnimationFrame)listKeyframes.SelectedItem;
+                CHRAnimationFrame f = (CHRAnimationFrame) listKeyframes.SelectedItem;
                 numFrame.Value = f.Index + 1;
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value--; }
-        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value++; }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            numFrame.Value--;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            numFrame.Value++;
+        }
 
         #region Designer
 
@@ -295,7 +305,7 @@ namespace System.Windows.Forms
             listKeyframes = new ListBox();
             groupBox1 = new GroupBox();
             panel1 = new Panel();
-            ((ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize) numFrame).BeginInit();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -477,19 +487,23 @@ namespace System.Windows.Forms
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(104, 5);
-            numFrame.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Minimum = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Value = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
@@ -583,12 +597,11 @@ namespace System.Windows.Forms
             Controls.Add(panel1);
             Name = "AnimEditControl";
             Size = new Drawing.Size(300, 212);
-            ((ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize) numFrame).EndInit();
             groupBox1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion

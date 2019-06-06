@@ -30,7 +30,7 @@ namespace System
                 T t = source[i];
                 if (cache.ContainsKey(t))
                 {
-                    _remapTable[i] = (int)cache[t];
+                    _remapTable[i] = (int) cache[t];
                 }
                 else
                 {

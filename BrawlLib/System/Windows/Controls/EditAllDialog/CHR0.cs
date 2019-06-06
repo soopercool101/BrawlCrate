@@ -63,8 +63,8 @@ namespace System.Windows.Forms
         private RadioButton RotateDoNotChange;
         private RadioButton ScaleDoNotChange;
         private CheckBox ChangeVersion;
-        #region Designer
 
+        #region Designer
 
         private void InitializeComponent()
         {
@@ -151,8 +151,8 @@ namespace System.Windows.Forms
             // 
             // groupBox4
             // 
-            groupBox4.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox4.Controls.Add(TranslateDoNotChange);
             groupBox4.Controls.Add(TranslateDivide);
             groupBox4.Controls.Add(TranslateMultiply);
@@ -305,8 +305,8 @@ namespace System.Windows.Forms
             // 
             // groupBox3
             // 
-            groupBox3.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox3.Controls.Add(RotateDoNotChange);
             groupBox3.Controls.Add(RotateDivide);
             groupBox3.Controls.Add(RotateMultiply);
@@ -459,8 +459,8 @@ namespace System.Windows.Forms
             // 
             // groupBox5
             // 
-            groupBox5.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox5.Controls.Add(ScaleDoNotChange);
             groupBox5.Controls.Add(ScaleDivide);
             groupBox5.Controls.Add(ScaleMultiply);
@@ -740,9 +740,11 @@ namespace System.Windows.Forms
             Version.DropDownStyle = ComboBoxStyle.DropDownList;
             Version.Enabled = false;
             Version.FormattingEnabled = true;
-            Version.Items.AddRange(new object[] {
-            "4",
-            "5"});
+            Version.Items.AddRange(new object[]
+            {
+                "4",
+                "5"
+            });
             Version.Location = new Drawing.Point(114, 61);
             Version.Name = "Version";
             Version.Size = new Drawing.Size(80, 21);
@@ -776,12 +778,14 @@ namespace System.Windows.Forms
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
 
-        public EditAllCHR0Editor() { InitializeComponent(); }
+        public EditAllCHR0Editor()
+        {
+            InitializeComponent();
+        }
 
         private void editLoop_CheckedChanged(object sender, EventArgs e)
         {
@@ -792,9 +796,9 @@ namespace System.Windows.Forms
         {
             groupBox1.Enabled =
                 name.Enabled =
-                keyframeCopy.Enabled =
-                copyKeyframes.Enabled =
-                false;
+                    keyframeCopy.Enabled =
+                        copyKeyframes.Enabled =
+                            false;
         }
 
         public static PartialVector3 Vec3From(TextBox x, TextBox y, TextBox z)
@@ -805,9 +809,9 @@ namespace System.Windows.Forms
         public static PartialVector3 Vec3From(string x, string y, string z)
         {
             return new PartialVector3(
-                string.IsNullOrEmpty(x) ? (float?)null : float.Parse(x),
-                string.IsNullOrEmpty(y) ? (float?)null : float.Parse(y),
-                string.IsNullOrEmpty(z) ? (float?)null : float.Parse(z));
+                string.IsNullOrEmpty(x) ? (float?) null : float.Parse(x),
+                string.IsNullOrEmpty(y) ? (float?) null : float.Parse(y),
+                string.IsNullOrEmpty(z) ? (float?) null : float.Parse(z));
         }
 
         public void Apply(IEnumerable<CHR0Node> CHR0)
@@ -817,7 +821,8 @@ namespace System.Windows.Forms
             MDL0Node _targetModel = null;
             if (Port.Checked)
             {
-                MessageBox.Show("Please open the model you want to port the animations to.\nThen open the model the animations work normally for.");
+                MessageBox.Show(
+                    "Please open the model you want to port the animations to.\nThen open the model the animations work normally for.");
                 OpenFileDialog dlgOpen = new OpenFileDialog();
                 OpenFileDialog dlgOpen2 = new OpenFileDialog();
                 dlgOpen.Filter = dlgOpen2.Filter = "MDL0 Model (*.mdl0)|*.mdl0";
@@ -825,13 +830,14 @@ namespace System.Windows.Forms
                 dlgOpen2.Title = "Select the model the animations are for...";
                 if (dlgOpen.ShowDialog() == DialogResult.OK)
                 {
-                    _targetModel = (MDL0Node)NodeFactory.FromFile(null, dlgOpen.FileName);
+                    _targetModel = (MDL0Node) NodeFactory.FromFile(null, dlgOpen.FileName);
                     if (dlgOpen2.ShowDialog() == DialogResult.OK)
                     {
-                        model = (MDL0Node)NodeFactory.FromFile(null, dlgOpen2.FileName);
+                        model = (MDL0Node) NodeFactory.FromFile(null, dlgOpen2.FileName);
                     }
                 }
             }
+
             PartialVector3 scale = Vec3From(ScaleX, ScaleY, ScaleZ);
             PartialVector3 rot = Vec3From(RotateX, RotateY, RotateZ);
             PartialVector3 trans = Vec3From(TranslateX, TranslateY, TranslateZ);
@@ -902,9 +908,10 @@ namespace System.Windows.Forms
                 CHR0EntryNode entry = n.FindChild(_name, false) as CHR0EntryNode;
                 if (entry == null)
                 {
-                    entry = new CHR0EntryNode() { _name = _name };
+                    entry = new CHR0EntryNode() {_name = _name};
                     n.AddChild(entry);
                 }
+
                 Apply(entry, scale, rot, trans);
             }
         }
@@ -930,7 +937,7 @@ namespace System.Windows.Forms
             int low = 0, high = 3;
             if (ScaleReplace.Checked)
             {
-                Vector3 scale = (Vector3)scaleVec;
+                Vector3 scale = (Vector3) scaleVec;
                 entry.SignalPropertyChange();
                 for (int x = 0; x < numFrames; x++)
                 {
@@ -1136,10 +1143,11 @@ namespace System.Windows.Forms
                 }
             }
 
-            low = 3; high = 6;
+            low = 3;
+            high = 6;
             if (RotateReplace.Checked)
             {
-                Vector3 rot = (Vector3)rotVec;
+                Vector3 rot = (Vector3) rotVec;
                 entry.SignalPropertyChange();
                 for (int x = 0; x < numFrames; x++)
                 {
@@ -1345,10 +1353,11 @@ namespace System.Windows.Forms
                 }
             }
 
-            low = 6; high = 9;
+            low = 6;
+            high = 9;
             if (TranslateReplace.Checked)
             {
-                Vector3 trans = (Vector3)transVec;
+                Vector3 trans = (Vector3) transVec;
                 entry.SignalPropertyChange();
                 for (int x = 0; x < numFrames; x++)
                 {
@@ -1577,15 +1586,18 @@ namespace System.Windows.Forms
 
         private void ScaleClear_CheckedChanged(object sender, EventArgs e)
         {
-            ScaleX.Enabled = ScaleY.Enabled = ScaleZ.Enabled = (!ScaleClear.Checked && !ScaleDoNotChange.Checked);
+            ScaleX.Enabled = ScaleY.Enabled = ScaleZ.Enabled = !ScaleClear.Checked && !ScaleDoNotChange.Checked;
         }
+
         private void RotateClear_CheckedChanged(object sender, EventArgs e)
         {
-            RotateX.Enabled = RotateY.Enabled = RotateZ.Enabled = (!RotateClear.Checked && !RotateDoNotChange.Checked);
+            RotateX.Enabled = RotateY.Enabled = RotateZ.Enabled = !RotateClear.Checked && !RotateDoNotChange.Checked;
         }
+
         private void TranslateClear_CheckedChanged(object sender, EventArgs e)
         {
-            TranslateX.Enabled = TranslateY.Enabled = TranslateZ.Enabled = (!TranslateClear.Checked && !TranslateDoNotChange.Checked);
+            TranslateX.Enabled = TranslateY.Enabled =
+                TranslateZ.Enabled = !TranslateClear.Checked && !TranslateDoNotChange.Checked;
         }
     }
 }

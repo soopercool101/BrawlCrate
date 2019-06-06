@@ -8,7 +8,7 @@ namespace Be.Windows.Forms
 
         public MemoryDataBlock(byte data)
         {
-            _data = new byte[] { data };
+            _data = new byte[] {data};
         }
 
         public MemoryDataBlock(byte[] data)
@@ -18,7 +18,7 @@ namespace Be.Windows.Forms
                 throw new ArgumentNullException("data");
             }
 
-            _data = (byte[])data.Clone();
+            _data = (byte[]) data.Clone();
         }
 
         public override long Length => _data.LongLength;
@@ -48,11 +48,13 @@ namespace Be.Windows.Forms
             {
                 Array.Copy(_data, 0, newData, 0, position);
             }
+
             Array.Copy(data, 0, newData, position, data.LongLength);
             if (position < _data.LongLength)
             {
                 Array.Copy(_data, position, newData, position + data.LongLength, _data.LongLength - position);
             }
+
             _data = newData;
         }
 
@@ -64,6 +66,7 @@ namespace Be.Windows.Forms
             {
                 Array.Copy(_data, 0, newData, 0, position);
             }
+
             if (position + count < _data.LongLength)
             {
                 Array.Copy(_data, position + count, newData, position, newData.LongLength - position);

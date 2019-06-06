@@ -74,6 +74,7 @@ namespace Be.Windows.Forms
             {
                 throw new InvalidOperationException("The collection is empty.");
             }
+
             RemoveInternal(_firstBlock);
         }
 
@@ -83,6 +84,7 @@ namespace Be.Windows.Forms
             {
                 throw new InvalidOperationException("The collection is empty.");
             }
+
             RemoveInternal(GetLastBlock());
         }
 
@@ -102,6 +104,7 @@ namespace Be.Windows.Forms
                 InvalidateBlock(block);
                 block = nextBlock;
             }
+
             _firstBlock = null;
             _count = 0;
             _version++;
@@ -117,6 +120,7 @@ namespace Be.Windows.Forms
             {
                 block._nextBlock._previousBlock = newBlock;
             }
+
             block._nextBlock = newBlock;
 
             _version++;
@@ -133,12 +137,14 @@ namespace Be.Windows.Forms
             {
                 block._previousBlock._nextBlock = newBlock;
             }
+
             block._previousBlock = newBlock;
 
             if (_firstBlock == block)
             {
                 _firstBlock = newBlock;
             }
+
             _version++;
             _count++;
         }
@@ -176,6 +182,7 @@ namespace Be.Windows.Forms
             {
                 lastBlock = block;
             }
+
             return lastBlock;
         }
 
@@ -198,6 +205,7 @@ namespace Be.Windows.Forms
         }
 
         #region ICollection Members
+
         public void CopyTo(Array array, int index)
         {
             DataBlock[] blockArray = array as DataBlock[];
@@ -212,16 +220,20 @@ namespace Be.Windows.Forms
         public bool IsSynchronized => false;
 
         public object SyncRoot => _syncRoot;
+
         #endregion
 
         #region IEnumerable Members
+
         public IEnumerator GetEnumerator()
         {
             return new Enumerator(this);
         }
+
         #endregion
 
         #region Enumerator Nested Type
+
         internal class Enumerator : IEnumerator, IDisposable
         {
             private readonly DataMap _map;
@@ -243,8 +255,10 @@ namespace Be.Windows.Forms
                 {
                     if (_index < 0 || _index > _map.Count)
                     {
-                        throw new InvalidOperationException("Enumerator is positioned before the first element or after the last element of the collection.");
+                        throw new InvalidOperationException(
+                            "Enumerator is positioned before the first element or after the last element of the collection.");
                     }
+
                     return _current;
                 }
             }
@@ -253,7 +267,8 @@ namespace Be.Windows.Forms
             {
                 if (_version != _map._version)
                 {
-                    throw new InvalidOperationException("Collection was modified after the enumerator was instantiated.");
+                    throw new InvalidOperationException(
+                        "Collection was modified after the enumerator was instantiated.");
                 }
 
                 if (_index >= _map.Count)
@@ -270,14 +285,15 @@ namespace Be.Windows.Forms
                     _current = _current.NextBlock;
                 }
 
-                return (_index < _map.Count);
+                return _index < _map.Count;
             }
 
             void IEnumerator.Reset()
             {
                 if (_version != _map._version)
                 {
-                    throw new InvalidOperationException("Collection was modified after the enumerator was instantiated.");
+                    throw new InvalidOperationException(
+                        "Collection was modified after the enumerator was instantiated.");
                 }
 
                 _index = -1;
@@ -288,6 +304,7 @@ namespace Be.Windows.Forms
             {
             }
         }
+
         #endregion
     }
 }

@@ -27,9 +27,10 @@ namespace BrawlLib.Wii.Models
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe class ModelLinker// : IDisposable
+    public unsafe class ModelLinker // : IDisposable
     {
         #region Linker lists
+
         internal const int BankLen = 13;
 
         internal static bool SpecialRebuildData(int typeIndex)
@@ -76,7 +77,8 @@ namespace BrawlLib.Wii.Models
             MR.UVs,
         };
 
-        public static readonly List<MR>[] IndexBank = new List<MR>[]{
+        public static readonly List<MR>[] IndexBank = new List<MR>[]
+        {
             null, //0
             null, //1
             null, //2
@@ -85,15 +87,34 @@ namespace BrawlLib.Wii.Models
             null, //5
             null, //6
             null, //7
-            new List<MR>(new MR[] { MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes }),
-            new List<MR>(new MR[] { MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes }),
-            new List<MR>(new MR[] { MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.FurVectors, MR.FurLayerCoords, MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes }),
-            new List<MR>(new MR[] { MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.FurVectors, MR.FurLayerCoords, MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes })
+            new List<MR>(new MR[]
+            {
+                MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.Materials, MR.Shaders,
+                MR.Objects, MR.Textures, MR.Palettes
+            }),
+            new List<MR>(new MR[]
+            {
+                MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.Materials, MR.Shaders,
+                MR.Objects, MR.Textures, MR.Palettes
+            }),
+            new List<MR>(new MR[]
+            {
+                MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.FurVectors, MR.FurLayerCoords,
+                MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes
+            }),
+            new List<MR>(new MR[]
+            {
+                MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.FurVectors, MR.FurLayerCoords,
+                MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes
+            })
         };
+
         #endregion
 
         public MDL0Header* Header;
+
         public int Version = 9;
+
         //Build relocation offsets in this order:
         public ResourceGroup* Defs; //1
         public ResourceGroup* Bones; //2
@@ -125,18 +146,20 @@ namespace BrawlLib.Wii.Models
 
         public bool[] _forceDirectAssets = new bool[12];
 
-        private ModelLinker() { }
+        private ModelLinker()
+        {
+        }
 
         public ModelLinker(MDL0Header* pModel)
         {
             Header = pModel;
             Version = pModel->_header._version;
-            NodeCache = pModel->Properties == null ?
-                new IMatrixNode[0] :
-                new IMatrixNode[pModel->Properties->_numNodes];
+            NodeCache = pModel->Properties == null
+                ? new IMatrixNode[0]
+                : new IMatrixNode[pModel->Properties->_numNodes];
             BoneCache = new MDL0BoneNode[0];
 
-            bint* offsets = (bint*)((byte*)pModel + 0x10);
+            bint* offsets = (bint*) ((byte*) pModel + 0x10);
             if (Version >= 8 && Version <= 11)
             {
                 List<MR> iList = IndexBank[Version];
@@ -150,7 +173,7 @@ namespace BrawlLib.Wii.Models
                     {
                         if ((offset = offsets[i]) > 0)
                         {
-                            gList[(int)iList[i]] = (ResourceGroup*)((byte*)pModel + offset);
+                            gList[(int) iList[i]] = (ResourceGroup*) ((byte*) pModel + offset);
                         }
                     }
                 }
@@ -163,18 +186,13 @@ namespace BrawlLib.Wii.Models
             {
                 if (remake)
                 {
-                    BoneCache = Model._boneGroup.
-                        FindChildrenByType(null, ResourceType.MDL0Bone).
-                        Select(x => x as MDL0BoneNode).
-                        ToArray();
+                    BoneCache = Model._boneGroup.FindChildrenByType(null, ResourceType.MDL0Bone)
+                                     .Select(x => x as MDL0BoneNode).ToArray();
                 }
                 else
                 {
-                    BoneCache = Model._boneGroup.
-                        FindChildrenByType(null, ResourceType.MDL0Bone).
-                        Select(x => x as MDL0BoneNode).
-                        OrderBy(x => x.BoneIndex).
-                        ToArray();
+                    BoneCache = Model._boneGroup.FindChildrenByType(null, ResourceType.MDL0Bone)
+                                     .Select(x => x as MDL0BoneNode).OrderBy(x => x.BoneIndex).ToArray();
                 }
             }
             else
@@ -207,10 +225,10 @@ namespace BrawlLib.Wii.Models
             foreach (MDL0GroupNode group in model.Children)
             {
                 //If version contains resource type, add it to group list
-                resType = (MR)Enum.Parse(typeof(MR), group.Name);
+                resType = (MR) Enum.Parse(typeof(MR), group.Name);
                 if ((index = iList.IndexOf(resType)) >= 0)
                 {
-                    linker.Groups[(int)resType] = group;
+                    linker.Groups[(int) resType] = group;
                 }
             }
 
@@ -227,7 +245,7 @@ namespace BrawlLib.Wii.Models
             //Write data in the order it appears
             foreach (MR resType in OrderBank)
             {
-                if (((group = Groups[(int)resType]) == null) || SpecialRebuildData((int)resType))
+                if ((@group = Groups[(int) resType]) == null || SpecialRebuildData((int) resType))
                 {
                     continue;
                 }
@@ -239,13 +257,14 @@ namespace BrawlLib.Wii.Models
                         form.Say("Writing Bones");
                     }
 
-                    MDL0Bone* pBone = (MDL0Bone*)pData;
+                    MDL0Bone* pBone = (MDL0Bone*) pData;
                     foreach (MDL0BoneNode e in BoneCache)
                     {
                         len = e._calcSize;
                         e.Rebuild(pData, len, true);
                         pData += len;
                     }
+
                     //Loop through after all bones are written
                     //and set header offsets to related bones
                     foreach (MDL0BoneNode e in BoneCache)
@@ -255,7 +274,7 @@ namespace BrawlLib.Wii.Models
                 }
                 else if (resType == MR.Shaders)
                 {
-                    MDL0GroupNode mats = Groups[(int)MR.Materials];
+                    MDL0GroupNode mats = Groups[(int) MR.Materials];
                     MDL0Material* mHeader;
 
                     if (form != null)
@@ -266,13 +285,14 @@ namespace BrawlLib.Wii.Models
                     //Write data without headers
                     foreach (ResourceNode e in group.Children)
                     {
-                        if (((MDL0ShaderNode)e)._materials.Count > 0)
+                        if (((MDL0ShaderNode) e)._materials.Count > 0)
                         {
                             len = e._calcSize;
                             e.Rebuild(pData, len, force);
                             pData += len;
                         }
                     }
+
                     //Write one header for each material, using same order.
                     if (mats != null)
                     {
@@ -281,8 +301,8 @@ namespace BrawlLib.Wii.Models
                             mHeader = mat.Header;
                             if (mat._shader != null)
                             {
-                                len = (int)mat._shader.Header;
-                                mHeader->_shaderOffset = len - (int)mHeader;
+                                len = (int) mat._shader.Header;
+                                mHeader->_shaderOffset = len - (int) mHeader;
                             }
                             else
                             {
@@ -344,24 +364,24 @@ namespace BrawlLib.Wii.Models
             {
                 foreach (MR resType in IndexBank[Version])
                 {
-                    if (((group = Groups[(int)resType]) == null) || SpecialRebuildData((int)resType))
+                    if ((@group = Groups[(int) resType]) == null || SpecialRebuildData((int) resType))
                     {
                         continue;
                     }
 
-                    pOut[(int)resType] = pGrp = (ResourceGroup*)pGroup;
+                    pOut[(int) resType] = pGrp = (ResourceGroup*) pGroup;
                     pEntry = &pGrp->_first + 1;
                     if (resType == MR.Bones)
                     {
                         *pGrp = new ResourceGroup(BoneCache.Length);
                         foreach (ResourceNode e in BoneCache)
                         {
-                            (pEntry++)->_dataOffset = (int)((byte*)(e.WorkingUncompressed.Address) - pGroup);
+                            (pEntry++)->_dataOffset = (int) ((byte*) e.WorkingUncompressed.Address - pGroup);
                         }
                     }
                     else if (resType == MR.Shaders)
                     {
-                        MDL0GroupNode mats = Groups[(int)MR.Materials];
+                        MDL0GroupNode mats = Groups[(int) MR.Materials];
 
                         if (mats != null)
                         {
@@ -370,7 +390,7 @@ namespace BrawlLib.Wii.Models
 
                             foreach (MDL0MaterialNode mat in mats.Children)
                             {
-                                (pEntry++)->_dataOffset = (int)mat._shader.Header - (int)pGrp;
+                                (pEntry++)->_dataOffset = (int) mat._shader.Header - (int) pGrp;
                             }
                         }
                     }
@@ -379,9 +399,10 @@ namespace BrawlLib.Wii.Models
                         *pGrp = new ResourceGroup(group.Children.Count);
                         foreach (ResourceNode e in group.Children)
                         {
-                            (pEntry++)->_dataOffset = (int)((byte*)(e.WorkingUncompressed.Address) - pGroup);
+                            (pEntry++)->_dataOffset = (int) ((byte*) e.WorkingUncompressed.Address - pGroup);
                         }
                     }
+
                     pGroup += pGrp->_totalSize;
                 }
             }
@@ -392,7 +413,7 @@ namespace BrawlLib.Wii.Models
         {
             List<MR> iList = IndexBank[Version];
             MR resType;
-            bint* pOffset = (bint*)Header + 4;
+            bint* pOffset = (bint*) Header + 4;
             int count = iList.Count, offset;
 
             fixed (ResourceGroup** pGroup = &Defs)
@@ -400,9 +421,9 @@ namespace BrawlLib.Wii.Models
                 for (int i = 0; i < count; i++)
                 {
                     resType = iList[i];
-                    if ((offset = (int)pGroup[(int)resType]) > 0)
+                    if ((offset = (int) pGroup[(int) resType]) > 0)
                     {
-                        offset -= (int)Header;
+                        offset -= (int) Header;
                     }
 
                     pOffset[i] = offset;

@@ -19,11 +19,30 @@ namespace System
             return strIn.Substring(strIn.Length - totalWidth);
         }
 
-        public static string Hex(int val) { return TruncateLeft(val.ToString("X"), 8); }
-        public static string Hex(long val) { return TruncateLeft(val.ToString("X"), 8); }
-        public static string Hex8(int val) { return TruncateLeft(val.ToString("X"), 8).PadLeft(8, '0'); }
-        public static string Hex8(long val) { return TruncateLeft(val.ToString("X"), 8).PadLeft(8, '0'); }
-        public static int UnHex(string val) { return int.Parse(val, Globalization.NumberStyles.HexNumber); }
+        public static string Hex(int val)
+        {
+            return TruncateLeft(val.ToString("X"), 8);
+        }
+
+        public static string Hex(long val)
+        {
+            return TruncateLeft(val.ToString("X"), 8);
+        }
+
+        public static string Hex8(int val)
+        {
+            return TruncateLeft(val.ToString("X"), 8).PadLeft(8, '0');
+        }
+
+        public static string Hex8(long val)
+        {
+            return TruncateLeft(val.ToString("X"), 8).PadLeft(8, '0');
+        }
+
+        public static int UnHex(string val)
+        {
+            return int.Parse(val, Globalization.NumberStyles.HexNumber);
+        }
 
         public static string WordH(string val, int wordNum)
         {
@@ -52,29 +71,35 @@ namespace System
                 return 0;
             }
 
-            long sign = (val >= 0 ? 0 : 8);
+            long sign = val >= 0 ? 0 : 8;
             long exponent = 0x7F;
             float mantissa = Math.Abs(val);
 
             if (mantissa > 1)
             {
                 while (mantissa > 2)
-                { mantissa /= 2; exponent++; }
+                {
+                    mantissa /= 2;
+                    exponent++;
+                }
             }
             else
             {
                 while (mantissa < 1)
-                { mantissa *= 2; exponent--; }
+                {
+                    mantissa *= 2;
+                    exponent--;
+                }
             }
 
             mantissa -= 1;
-            mantissa *= (float)Math.Pow(2, 23);
+            mantissa *= (float) Math.Pow(2, 23);
 
-            return (
-                  sign * 0x10000000
-                + exponent * 0x800000
-                + (long)mantissa);
+            return sign * 0x10000000
+                   + exponent * 0x800000
+                   + (long) mantissa;
         }
+
         public static float UnFloat(long val)
         {
             if (val == 0)
@@ -82,26 +107,36 @@ namespace System
                 return 0;
             }
 
-            float sign = ((val & 0x80000000) == 0 ? 1 : -1);
-            int exponent = ((int)(val & 0x7F800000) / 0x800000) - 0x7F;
-            float mantissa = (val & 0x7FFFFF);
+            float sign = (val & 0x80000000) == 0 ? 1 : -1;
+            int exponent = (int) (val & 0x7F800000) / 0x800000 - 0x7F;
+            float mantissa = val & 0x7FFFFF;
             long mantissaBits = 23;
 
             if (mantissa != 0)
             {
-                while (((long)mantissa & 0x1) != 1)
-                { mantissa /= 2; mantissaBits--; }
+                while (((long) mantissa & 0x1) != 1)
+                {
+                    mantissa /= 2;
+                    mantissaBits--;
+                }
             }
 
-            mantissa /= (float)Math.Pow(2, mantissaBits);
+            mantissa /= (float) Math.Pow(2, mantissaBits);
             mantissa += 1;
 
-            mantissa *= (float)Math.Pow(2, exponent);
+            mantissa *= (float) Math.Pow(2, exponent);
             return mantissa *= sign;
         }
 
-        public static long RoundUp(long val, long factor) { return val + (factor - 1) - (val + (factor - 1)) % factor; }
-        public static long RoundDown(long val, long factor) { return val - val % factor; }
+        public static long RoundUp(long val, long factor)
+        {
+            return val + (factor - 1) - (val + (factor - 1)) % factor;
+        }
+
+        public static long RoundDown(long val, long factor)
+        {
+            return val - val % factor;
+        }
 
         //Find the first occuring instance of the passed character.
         public static int FindFirst(string str, int begin, char chr)
@@ -176,6 +211,7 @@ namespace System
                     chrFound = chr[i];
                 }
             }
+
             return result;
         }
 
@@ -187,7 +223,7 @@ namespace System
                 return FindFirst(str, begin, chr);
             }
 
-            char[] searchCharacters = { chr, '(', ')' };
+            char[] searchCharacters = {chr, '(', ')'};
             char chrResult = '\0';
             int searchResult = begin;
             int nested = 0;
@@ -207,6 +243,7 @@ namespace System
 
                 searchResult++;
             } while ((nested > 0 || chrResult != chr) && chrResult != '\0');
+
             searchResult--;
 
             return searchResult;
@@ -227,6 +264,7 @@ namespace System
                     chrFound = chr[i];
                 }
             }
+
             return result;
         }
 
@@ -318,6 +356,7 @@ namespace System
             return obj.GetHashCode();
         }
     }
+
     public class SectionParamInfo
     {
         public string _newName;

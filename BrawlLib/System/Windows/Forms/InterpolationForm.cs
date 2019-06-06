@@ -3,6 +3,7 @@
     public partial class InterpolationForm : Form
     {
         public InterpolationEditor _interpolationEditor;
+
         public InterpolationForm(ModelEditorBase mainWindow)
         {
             InitializeComponent();

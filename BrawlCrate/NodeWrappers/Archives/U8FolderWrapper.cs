@@ -13,6 +13,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static U8FolderWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -47,36 +48,104 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewRlytAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().NewRlyt(); }
-        protected static void NewTplAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().NewTpl(); }
-        protected static void NewRfntAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().NewRfnt(); }
-        protected static void NewWavAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().NewWav(); }
-        protected static void NewBrresAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().NewBrres(); }
-        protected static void NewFolderAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().NewFolder(); }
 
-        protected static void ImportBrresAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportBrres(); }
-        protected static void ImportRlytAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportRlyt(); }
-        protected static void ImportTplAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportTpl(); }
-        protected static void ImportRfntAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportRfnt(); }
-        protected static void ImportWavAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportWav(); }
-        protected static void ImportU8Action(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportU8(); }
+        protected static void NewRlytAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().NewRlyt();
+        }
 
-        protected static void ExportAllAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ExportAll(); }
-        protected static void ImportFolderAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ImportFolder(); }
-        protected static void ReplaceAllAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().ReplaceAll(); }
-        protected static void EditAllAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().EditAll(); }
-        protected static void PreviewAllAction(object sender, EventArgs e) { GetInstance<U8FolderWrapper>().PreviewAll(); }
+        protected static void NewTplAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().NewTpl();
+        }
+
+        protected static void NewRfntAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().NewRfnt();
+        }
+
+        protected static void NewWavAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().NewWav();
+        }
+
+        protected static void NewBrresAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().NewBrres();
+        }
+
+        protected static void NewFolderAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().NewFolder();
+        }
+
+        protected static void ImportBrresAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportBrres();
+        }
+
+        protected static void ImportRlytAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportRlyt();
+        }
+
+        protected static void ImportTplAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportTpl();
+        }
+
+        protected static void ImportRfntAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportRfnt();
+        }
+
+        protected static void ImportWavAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportWav();
+        }
+
+        protected static void ImportU8Action(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportU8();
+        }
+
+        protected static void ExportAllAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ExportAll();
+        }
+
+        protected static void ImportFolderAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ImportFolder();
+        }
+
+        protected static void ReplaceAllAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().ReplaceAll();
+        }
+
+        protected static void EditAllAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().EditAll();
+        }
+
+        protected static void PreviewAllAction(object sender, EventArgs e)
+        {
+            GetInstance<U8FolderWrapper>().PreviewAll();
+        }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[9].Enabled = _menu.Items[10].Enabled = _menu.Items[12].Enabled = _menu.Items[13].Enabled = _menu.Items[15].Enabled = true;
+            _menu.Items[9].Enabled = _menu.Items[10].Enabled =
+                _menu.Items[12].Enabled = _menu.Items[13].Enabled = _menu.Items[15].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             U8FolderWrapper w = GetInstance<U8FolderWrapper>();
 
             _menu.Items[9].Enabled = _menu.Items[15].Enabled = w.Parent != null;
-            _menu.Items[10].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[10].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[12].Enabled = w.PrevNode != null;
             _menu.Items[13].Enabled = w.NextNode != null;
         }
@@ -84,10 +153,13 @@ namespace BrawlCrate.NodeWrappers
         #endregion
 
         public override string ExportFilter => "U8 Archive (*.arc)|*.arc|" +
-                    "Compressed U8 Archive (*.szs)|*.szs|" +
-                    "Archive Pair (*.pair)|*.pair";
+                                               "Compressed U8 Archive (*.szs)|*.szs|" +
+                                               "Archive Pair (*.pair)|*.pair";
 
-        public U8FolderWrapper() { ContextMenuStrip = _menu; }
+        public U8FolderWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void NewRlyt()
         {
@@ -100,7 +172,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewTpl()
         {
-            TPLNode node = ((U8FolderNode)_resource).CreateResource<TPLNode>("TPL");
+            TPLNode node = ((U8FolderNode) _resource).CreateResource<TPLNode>("TPL");
             BaseWrapper res = FindResource(node, true);
             res = res.FindResource(node, false);
             res.EnsureVisible();
@@ -127,7 +199,7 @@ namespace BrawlCrate.NodeWrappers
 
         public U8FolderNode NewFolder()
         {
-            U8FolderNode node = ((U8FolderNode)_resource).CreateResource<U8FolderNode>("NewFolder");
+            U8FolderNode node = ((U8FolderNode) _resource).CreateResource<U8FolderNode>("NewFolder");
             BaseWrapper res = FindResource(node, true);
             res = res.FindResource(node, false);
             res.EnsureVisible();
@@ -137,7 +209,7 @@ namespace BrawlCrate.NodeWrappers
 
         public BRRESNode NewBrres()
         {
-            BRRESNode node = ((U8FolderNode)_resource).CreateResource<BRRESNode>("NewBrres");
+            BRRESNode node = ((U8FolderNode) _resource).CreateResource<BRRESNode>("NewBrres");
             BaseWrapper res = FindResource(node, true);
             res = res.FindResource(node, false);
             res.EnsureVisible();
@@ -158,6 +230,7 @@ namespace BrawlCrate.NodeWrappers
             //    w.TreeView.SelectedNode = w;
             //}
         }
+
         public void ImportTpl()
         {
             //string path;
@@ -171,6 +244,7 @@ namespace BrawlCrate.NodeWrappers
             //    w.TreeView.SelectedNode = w;
             //}
         }
+
         public void ImportRfnt()
         {
             //string path;
@@ -184,6 +258,7 @@ namespace BrawlCrate.NodeWrappers
             //    w.TreeView.SelectedNode = w;
             //}
         }
+
         public void ImportWav()
         {
             //string path;
@@ -197,11 +272,12 @@ namespace BrawlCrate.NodeWrappers
             //    w.TreeView.SelectedNode = w;
             //}
         }
+
         public void ImportU8()
         {
             if (Program.OpenFile("U8 Archive (*.arc)|*.arc|" +
-                    "Compressed U8 Archive (*.szs)|*.szs|" +
-                    "Archive Pair (*.pair)|*.pair", out string path) > 0)
+                                 "Compressed U8 Archive (*.szs)|*.szs|" +
+                                 "Archive Pair (*.pair)|*.pair", out string path) > 0)
             {
                 U8Node node = NodeFactory.FromFile(null, path) as U8Node;
                 U8FolderNode n = new U8FolderNode();
@@ -211,19 +287,20 @@ namespace BrawlCrate.NodeWrappers
                 }
 
                 n.Name = node.Name;
-                ((U8FolderNode)_resource).AddChild(n);
+                ((U8FolderNode) _resource).AddChild(n);
 
                 BaseWrapper w = FindResource(n, true);
                 w.EnsureVisible();
                 w.TreeView.SelectedNode = w;
             }
         }
+
         public void ImportBrres()
         {
             if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
             {
                 BRRESNode node = NodeFactory.FromFile(null, path) as BRRESNode;
-                ((U8FolderNode)_resource).AddChild(node);
+                ((U8FolderNode) _resource).AddChild(node);
 
                 BaseWrapper w = FindResource(node, true);
                 w.EnsureVisible();
@@ -269,9 +346,9 @@ namespace BrawlCrate.NodeWrappers
                 }
                 else if (r is U8FolderNode)
                 {
-                    searchU8Folder((U8FolderNode)r, out bool hasModelsTemp, out bool hasTexturesTemp);
-                    hasModels = (hasModels || hasModelsTemp);
-                    hasTextures = (hasTextures || hasTexturesTemp);
+                    searchU8Folder((U8FolderNode) r, out bool hasModelsTemp, out bool hasTexturesTemp);
+                    hasModels = hasModels || hasModelsTemp;
+                    hasTextures = hasTextures || hasTexturesTemp;
                 }
             }
 
@@ -291,6 +368,7 @@ namespace BrawlCrate.NodeWrappers
                     return;
                 }
             }
+
             if (hasModels)
             {
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog(true);
@@ -304,7 +382,8 @@ namespace BrawlCrate.NodeWrappers
                     return;
                 }
             }
-            ((U8FolderNode)_resource).ExportToFolder(path, extensionTEX0, extensionMDL0);
+
+            ((U8FolderNode) _resource).ExportToFolder(path, extensionTEX0, extensionMDL0);
         }
 
         public void searchU8Folder(U8FolderNode u8, out bool hasModels, out bool hasTextures)
@@ -339,9 +418,9 @@ namespace BrawlCrate.NodeWrappers
                 }
                 else if (r is U8FolderNode)
                 {
-                    searchU8Folder((U8FolderNode)r, out bool hasModelsTemp, out bool hasTexturesTemp);
-                    hasModels = (hasModels || hasModelsTemp);
-                    hasTextures = (hasTextures || hasTexturesTemp);
+                    searchU8Folder((U8FolderNode) r, out bool hasModelsTemp, out bool hasTexturesTemp);
+                    hasModels = hasModels || hasModelsTemp;
+                    hasTextures = hasTextures || hasTexturesTemp;
                 }
             }
         }
@@ -365,7 +444,7 @@ namespace BrawlCrate.NodeWrappers
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                ((BRRESNode)_resource).ReplaceFromFolder(path, dialog.SelectedExtension);
+                ((BRRESNode) _resource).ReplaceFromFolder(path, dialog.SelectedExtension);
             }
         }
 
@@ -375,7 +454,9 @@ namespace BrawlCrate.NodeWrappers
             if (path == null)
             {
                 return;
-            } ((BRRESNode)_resource).ImportFolder(path);
+            }
+
+            ((BRRESNode) _resource).ImportFolder(path);
         }
 
         private void LoadModels(ResourceNode node, List<MDL0Node> models)
@@ -395,7 +476,7 @@ namespace BrawlCrate.NodeWrappers
 
                     break;
                 case ResourceType.MDL0:
-                    models.Add((MDL0Node)node);
+                    models.Add((MDL0Node) node);
                     break;
             }
         }

@@ -24,16 +24,24 @@ namespace BrawlLib.Wii.Compression
         {
             _dataAddr = Marshal.AllocHGlobal((0x1000 + 0x10000 + 0x10000) * 2);
 
-            _Next = (ushort*)_dataAddr;
+            _Next = (ushort*) _dataAddr;
             _First = _Next + WindowLength;
             _Last = _First + 0x10000;
-
         }
 
-        ~LZ77() { Dispose(); }
+        ~LZ77()
+        {
+            Dispose();
+        }
+
         public void Dispose()
         {
-            if (_dataAddr) { Marshal.FreeHGlobal(_dataAddr); _dataAddr = 0; }
+            if (_dataAddr)
+            {
+                Marshal.FreeHGlobal(_dataAddr);
+                _dataAddr = 0;
+            }
+
             GC.SuppressFinalize(this);
         }
 
@@ -42,9 +50,9 @@ namespace BrawlLib.Wii.Compression
             int dstLen = 4, bitCount;
             byte control;
 
-            byte* sPtr = (byte*)srcAddr;
+            byte* sPtr = (byte*) srcAddr;
             int matchLength, matchOffset = 0;
-            PatternLength = extFmt ? (0xFFFF + 0xFF + 0xF + 3) : (0xF + 3);
+            PatternLength = extFmt ? 0xFFFF + 0xFF + 0xF + 3 : 0xF + 3;
 
             //Initialize
             Memory.Fill(_First, 0x40000, 0xFF);
@@ -54,7 +62,7 @@ namespace BrawlLib.Wii.Compression
             CompressionHeader header = new CompressionHeader
             {
                 Algorithm = CompressionType.LZ77,
-                ExpandedSize = (uint)srcLen,
+                ExpandedSize = (uint) srcLen,
                 IsExtendedLZ77 = extFmt
             };
             outStream.Write(&header, 4 + (header.LargeSize ? 4 : 0));
@@ -70,8 +78,8 @@ namespace BrawlLib.Wii.Compression
 
             while (remaining > 0)
             {
-                blockBuffer = new List<byte>() { 0 };
-                for (bitCount = 0, control = 0; (bitCount < 8) && (remaining > 0); bitCount++)
+                blockBuffer = new List<byte>() {0};
+                for (bitCount = 0, control = 0; bitCount < 8 && remaining > 0; bitCount++)
                 {
                     control <<= 1;
                     if ((matchLength = FindPattern(sPtr, remaining, ref matchOffset)) != 0)
@@ -81,14 +89,14 @@ namespace BrawlLib.Wii.Compression
                         {
                             if (matchLength >= 0xFF + 0xF + 3)
                             {
-                                length = (matchLength - 0xFF - 0xF - 3);
-                                blockBuffer.Add((byte)(0x10 | (length >> 12)));
-                                blockBuffer.Add((byte)(length >> 4));
+                                length = matchLength - 0xFF - 0xF - 3;
+                                blockBuffer.Add((byte) (0x10 | (length >> 12)));
+                                blockBuffer.Add((byte) (length >> 4));
                             }
                             else if (matchLength >= 0xF + 2)
                             {
-                                length = (matchLength - 0xF - 2);
-                                blockBuffer.Add((byte)(length >> 4));
+                                length = matchLength - 0xF - 2;
+                                blockBuffer.Add((byte) (length >> 4));
                             }
                             else
                             {
@@ -101,14 +109,15 @@ namespace BrawlLib.Wii.Compression
                         }
 
                         control |= 1;
-                        blockBuffer.Add((byte)((length << 4) | ((matchOffset - 1) >> 8)));
-                        blockBuffer.Add((byte)(matchOffset - 1));
+                        blockBuffer.Add((byte) ((length << 4) | ((matchOffset - 1) >> 8)));
+                        blockBuffer.Add((byte) (matchOffset - 1));
                     }
                     else
                     {
                         matchLength = 1;
                         blockBuffer.Add(*sPtr);
                     }
+
                     Consume(sPtr, matchLength, remaining);
                     sPtr += matchLength;
                     remaining -= matchLength;
@@ -124,7 +133,7 @@ namespace BrawlLib.Wii.Compression
 
                 if (progress != null)
                 {
-                    if ((lastUpdate - remaining) > 0x4000)
+                    if (lastUpdate - remaining > 0x4000)
                     {
                         lastUpdate = remaining;
                         progress.Update(srcLen - remaining);
@@ -144,7 +153,7 @@ namespace BrawlLib.Wii.Compression
 
         private ushort MakeHash(byte* ptr)
         {
-            return (ushort)((ptr[0] << 6) ^ (ptr[1] << 3) ^ ptr[2]);
+            return (ushort) ((ptr[0] << 6) ^ (ptr[1] << 3) ^ ptr[2]);
         }
 
         private int FindPattern(byte* sPtr, int length, ref int matchOffset)
@@ -174,7 +183,7 @@ namespace BrawlLib.Wii.Compression
                     break;
                 }
 
-                for (index = bestLen + 1; (--index >= 0) && (mPtr[index] == sPtr[index]);)
+                for (index = bestLen + 1; --index >= 0 && mPtr[index] == sPtr[index];)
                 {
                     ;
                 }
@@ -184,12 +193,12 @@ namespace BrawlLib.Wii.Compression
                     continue;
                 }
 
-                for (index = bestLen; (++index < length) && (mPtr[index] == sPtr[index]);)
+                for (index = bestLen; ++index < length && mPtr[index] == sPtr[index];)
                 {
                     ;
                 }
 
-                bestOffset = (int)(sPtr - mPtr);
+                bestOffset = (int) (sPtr - mPtr);
                 if ((bestLen = index) == length)
                 {
                     break;
@@ -204,6 +213,7 @@ namespace BrawlLib.Wii.Compression
             matchOffset = bestOffset;
             return bestLen;
         }
+
         private void Consume(byte* ptr, int length, int remaining)
         {
             int last, inOffset, inVal, outVal;
@@ -229,14 +239,14 @@ namespace BrawlLib.Wii.Compression
                 inVal = MakeHash(ptr++);
                 if ((last = _Last[inVal]) == 0xFFFF)
                 {
-                    _First[inVal] = (ushort)inOffset;
+                    _First[inVal] = (ushort) inOffset;
                 }
                 else
                 {
-                    _Next[last] = (ushort)inOffset;
+                    _Next[last] = (ushort) inOffset;
                 }
 
-                _Last[inVal] = (ushort)inOffset;
+                _Last[inVal] = (ushort) inOffset;
                 _Next[inOffset] = 0xFFFF;
             }
         }
@@ -244,18 +254,26 @@ namespace BrawlLib.Wii.Compression
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r, bool extendedFormat)
         {
             using (LZ77 lz = new LZ77())
-            using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, (extendedFormat ? "Extended " : "") + "LZ77", string.Format("Compressing {0}, please wait...", r.Name), false))
             {
-                return lz.Compress(srcAddr, srcLen, outStream, prog, extendedFormat);
+                using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm,
+                    (extendedFormat ? "Extended " : "") + "LZ77",
+                    string.Format("Compressing {0}, please wait...", r.Name), false))
+                {
+                    return lz.Compress(srcAddr, srcLen, outStream, prog, extendedFormat);
+                }
             }
         }
 
-        public static void Expand(CompressionHeader* header, VoidPtr dstAddress, int dstLen) { Expand(header->Data, dstAddress, dstLen, header->IsExtendedLZ77); }
+        public static void Expand(CompressionHeader* header, VoidPtr dstAddress, int dstLen)
+        {
+            Expand(header->Data, dstAddress, dstLen, header->IsExtendedLZ77);
+        }
+
         public static void Expand(VoidPtr data, VoidPtr dstAddress, int dstLen, bool extFmt)
         {
-            for (byte* srcPtr = (byte*)data, dstPtr = (byte*)dstAddress, ceiling = dstPtr + dstLen; dstPtr < ceiling;)
+            for (byte* srcPtr = (byte*) data, dstPtr = (byte*) dstAddress, ceiling = dstPtr + dstLen; dstPtr < ceiling;)
             {
-                for (byte control = *srcPtr++, bit = 8; (bit-- != 0) && (dstPtr != ceiling);)
+                for (byte control = *srcPtr++, bit = 8; bit-- != 0 && dstPtr != ceiling;)
                 {
                     if ((control & (1 << bit)) == 0)
                     {
@@ -263,7 +281,15 @@ namespace BrawlLib.Wii.Compression
                     }
                     else
                     {
-                        int temp = (*srcPtr >> 4), num = !extFmt ? temp + 3 : temp == 1 ? (((*srcPtr++ & 0x0F) << 12) | ((*srcPtr++) << 4) | (*srcPtr >> 4)) + 0xFF + 0xF + 3 : temp == 0 ? (((*srcPtr++ & 0x0F) << 4) | (*srcPtr >> 4)) + 0xF + 2 : temp + 1, offset = (((*srcPtr++ & 0xF) << 8) | *srcPtr++) + 2;
+                        int temp = *srcPtr >> 4,
+                            num = !extFmt
+                                ? temp + 3
+                                : temp == 1
+                                    ? (((*srcPtr++ & 0x0F) << 12) | (*srcPtr++ << 4) | (*srcPtr >> 4)) + 0xFF + 0xF + 3
+                                    : temp == 0
+                                        ? (((*srcPtr++ & 0x0F) << 4) | (*srcPtr >> 4)) + 0xF + 2
+                                        : temp + 1,
+                            offset = (((*srcPtr++ & 0xF) << 8) | *srcPtr++) + 2;
                         while (dstPtr != ceiling && num-- > 0)
                         {
                             *dstPtr++ = dstPtr[-offset];

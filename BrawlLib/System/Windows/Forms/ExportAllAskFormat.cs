@@ -19,6 +19,7 @@ namespace System.Windows.Forms
                     comboBox1.Items.Add(new FormatForExportAllDialog(source[i], source[i + 1]));
                 }
             }
+
             comboBox1.SelectedIndex = 0;
         }
 
@@ -28,6 +29,7 @@ namespace System.Windows.Forms
             {
                 return;
             }
+
             InitializeComponent();
             label1.Text = "Output format for models:";
             string[] source = FileFilters.MDL0Export.Split('|');
@@ -38,10 +40,12 @@ namespace System.Windows.Forms
                     comboBox1.Items.Add(new FormatForExportAllDialog(source[i], source[i + 1]));
                 }
             }
+
             comboBox1.SelectedIndex = 0;
         }
 
-        public string SelectedExtension => ((FormatForExportAllDialog)comboBox1.SelectedItem).extension.Replace("*", "");
+        public string SelectedExtension =>
+            ((FormatForExportAllDialog) comboBox1.SelectedItem).extension.Replace("*", "");
     }
 
     public class FormatForExportAllDialog
@@ -63,6 +67,9 @@ namespace System.Windows.Forms
             }
         }
 
-        public override string ToString() { return description; }
+        public override string ToString()
+        {
+            return description;
+        }
     }
 }

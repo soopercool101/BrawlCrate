@@ -21,6 +21,7 @@ namespace BrawlLib.OpenGL
         public static TKContext CurrentContext = null;
 
         internal Dictionary<string, object> _states = new Dictionary<string, object>();
+
         public static T FindOrCreate<T>(string name, GLCreateHandler<T> handler)
         {
             if (CurrentContext == null)
@@ -30,7 +31,7 @@ namespace BrawlLib.OpenGL
 
             if (CurrentContext._states.ContainsKey(name))
             {
-                return (T)CurrentContext._states[name];
+                return (T) CurrentContext._states[name];
             }
 
             T obj = handler();
@@ -54,7 +55,10 @@ namespace BrawlLib.OpenGL
                     }
                 }
             }
-            catch { }
+            catch
+            {
+            }
+
             _states.Clear();
         }
 
@@ -64,6 +68,7 @@ namespace BrawlLib.OpenGL
         public static bool _anyContextInitialized = false;
 
         public Control _window;
+
         public TKContext(Control window)
         {
             _window = window;
@@ -80,7 +85,7 @@ namespace BrawlLib.OpenGL
                 _versionMin = int.Parse(version[1].ToString());
 
                 //Need OpenGL 2.1 to use GLSL 120
-                _shadersSupported = !(_versionMax < 2 || (_versionMax == 2 && _versionMin < 1));
+                _shadersSupported = !(_versionMax < 2 || _versionMax == 2 && _versionMin < 1);
                 _anyContextInitialized = true;
             }
 
@@ -88,6 +93,7 @@ namespace BrawlLib.OpenGL
         }
 
         public delegate void ContextChangedEventHandler(bool isCurrent);
+
         public event ContextChangedEventHandler ContextChanged;
         public event EventHandler ResetOccured;
 
@@ -146,6 +152,7 @@ namespace BrawlLib.OpenGL
                 Reset();
             }
         }
+
         public void Swap()
         {
             try
@@ -189,6 +196,7 @@ namespace BrawlLib.OpenGL
 
             _resetting = false;
         }
+
         public void Release()
         {
             if (CurrentContext == this && !_context.IsDisposed && _context.IsCurrent)
@@ -199,6 +207,7 @@ namespace BrawlLib.OpenGL
                 ContextChanged?.Invoke(false);
             }
         }
+
         public void Update()
         {
             if (CurrentContext == this)
@@ -213,7 +222,7 @@ namespace BrawlLib.OpenGL
             {
                 foreach (TKContext x in _boundContexts)
                 {
-                    if (x._window is ModelPanel/* && ((ModelPanel)x._window)._renderList.Contains(obj)*/)
+                    if (x._window is ModelPanel /* && ((ModelPanel)x._window)._renderList.Contains(obj)*/)
                     {
                         x._window.Invalidate();
                     }
@@ -221,7 +230,11 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        public static unsafe void DrawWireframeBox(Box value) { DrawWireframeBox(value.Min, value.Max); }
+        public static unsafe void DrawWireframeBox(Box value)
+        {
+            DrawWireframeBox(value.Min, value.Max);
+        }
+
         public static unsafe void DrawWireframeBox(Vector3 min, Vector3 max)
         {
             GL.Begin(PrimitiveType.LineStrip);
@@ -253,7 +266,12 @@ namespace BrawlLib.OpenGL
 
             GL.End();
         }
-        public static unsafe void DrawBox(Box value) { DrawBox(value.Min, value.Max); }
+
+        public static unsafe void DrawBox(Box value)
+        {
+            DrawBox(value.Min, value.Max);
+        }
+
         public static unsafe void DrawBox(Vector3 p1, Vector3 p2)
         {
             GL.Begin(PrimitiveType.QuadStrip);
@@ -285,7 +303,12 @@ namespace BrawlLib.OpenGL
 
             GL.End();
         }
-        public static unsafe void DrawInvertedBox(Box value) { DrawInvertedBox(value.Min, value.Max); }
+
+        public static unsafe void DrawInvertedBox(Box value)
+        {
+            DrawInvertedBox(value.Min, value.Max);
+        }
+
         public static unsafe void DrawInvertedBox(Vector3 p1, Vector3 p2)
         {
             GL.Begin(PrimitiveType.QuadStrip);
@@ -340,7 +363,11 @@ namespace BrawlLib.OpenGL
             GL.PopMatrix();
         }
 
-        public GLDisplayList GetLine() { return FindOrCreate("Line", CreateLine); }
+        public GLDisplayList GetLine()
+        {
+            return FindOrCreate("Line", CreateLine);
+        }
+
         private static GLDisplayList CreateLine()
         {
             GLDisplayList list = new GLDisplayList();
@@ -355,7 +382,11 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetRingList() { return FindOrCreate("Ring", CreateRing); }
+        public static GLDisplayList GetRingList()
+        {
+            return FindOrCreate("Ring", CreateRing);
+        }
+
         private static GLDisplayList CreateRing()
         {
             GLDisplayList list = new GLDisplayList();
@@ -375,7 +406,11 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetSquareList() { return FindOrCreate("Square", CreateSquare); }
+        public static GLDisplayList GetSquareList()
+        {
+            return FindOrCreate("Square", CreateSquare);
+        }
+
         private static GLDisplayList CreateSquare()
         {
             GLDisplayList list = new GLDisplayList();
@@ -395,7 +430,11 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetAxisList() { return FindOrCreate("Axes", CreateAxes); }
+        public static GLDisplayList GetAxisList()
+        {
+            return FindOrCreate("Axes", CreateAxes);
+        }
+
         private static GLDisplayList CreateAxes()
         {
             GLDisplayList list = new GLDisplayList();
@@ -435,7 +474,12 @@ namespace BrawlLib.OpenGL
             list.End();
             return list;
         }
-        public static GLDisplayList GetCubeList() { return FindOrCreate("Cube", CreateCube); }
+
+        public static GLDisplayList GetCubeList()
+        {
+            return FindOrCreate("Cube", CreateCube);
+        }
+
         private static GLDisplayList CreateCube()
         {
             GLDisplayList list = new GLDisplayList();
@@ -477,7 +521,11 @@ namespace BrawlLib.OpenGL
             return list;
         }
 
-        public static GLDisplayList GetCircleList() { return FindOrCreate("Circle", CreateCircle); }
+        public static GLDisplayList GetCircleList()
+        {
+            return FindOrCreate("Circle", CreateCircle);
+        }
+
         private static GLDisplayList CreateCircle()
         {
             GLDisplayList list = new GLDisplayList();
@@ -506,7 +554,12 @@ namespace BrawlLib.OpenGL
             GetSphereList().Call();
             GL.PopMatrix();
         }
-        public static GLDisplayList GetSphereList() { return FindOrCreate("Sphere", CreateSphere); }
+
+        public static GLDisplayList GetSphereList()
+        {
+            return FindOrCreate("Sphere", CreateSphere);
+        }
+
         public static GLDisplayList CreateSphere()
         {
             GLDisplayList dl = new GLDisplayList();
@@ -517,6 +570,7 @@ namespace BrawlLib.OpenGL
 
             return dl;
         }
+
         public static void DrawSphere(Vector3 center, float radius, uint precision)
         {
             if (radius < 0.0f)
@@ -534,26 +588,26 @@ namespace BrawlLib.OpenGL
                 throw new DivideByZeroException("DrawSphere: Precision of 8 or greater is required.");
             }
 
-            float halfPI = (float)(Math.PI * 0.5);
+            float halfPI = (float) (Math.PI * 0.5);
             float oneThroughPrecision = 1.0f / precision;
-            float twoPIThroughPrecision = (float)(Math.PI * 2.0 * oneThroughPrecision);
+            float twoPIThroughPrecision = (float) (Math.PI * 2.0 * oneThroughPrecision);
 
             float theta1, theta2, theta3;
             Vector3 norm, pos;
 
             for (uint j = 0; j < precision / 2; j++)
             {
-                theta1 = (j * twoPIThroughPrecision) - halfPI;
-                theta2 = ((j + 1) * twoPIThroughPrecision) - halfPI;
+                theta1 = j * twoPIThroughPrecision - halfPI;
+                theta2 = (j + 1) * twoPIThroughPrecision - halfPI;
 
                 GL.Begin(PrimitiveType.TriangleStrip);
                 for (uint i = 0; i <= precision; i++)
                 {
                     theta3 = i * twoPIThroughPrecision;
 
-                    norm._x = (float)(Math.Cos(theta2) * Math.Cos(theta3));
-                    norm._y = (float)Math.Sin(theta2);
-                    norm._z = (float)(Math.Cos(theta2) * Math.Sin(theta3));
+                    norm._x = (float) (Math.Cos(theta2) * Math.Cos(theta3));
+                    norm._y = (float) Math.Sin(theta2);
+                    norm._z = (float) (Math.Cos(theta2) * Math.Sin(theta3));
                     pos._x = center._x + radius * norm._x;
                     pos._y = center._y + radius * norm._y;
                     pos._z = center._z + radius * norm._z;
@@ -562,9 +616,9 @@ namespace BrawlLib.OpenGL
                     GL.TexCoord2(i * oneThroughPrecision, 2.0f * (j + 1) * oneThroughPrecision);
                     GL.Vertex3(pos._x, pos._y, pos._z);
 
-                    norm._x = (float)(Math.Cos(theta1) * Math.Cos(theta3));
-                    norm._y = (float)Math.Sin(theta1);
-                    norm._z = (float)(Math.Cos(theta1) * Math.Sin(theta3));
+                    norm._x = (float) (Math.Cos(theta1) * Math.Cos(theta3));
+                    norm._y = (float) Math.Sin(theta1);
+                    norm._z = (float) (Math.Cos(theta1) * Math.Sin(theta3));
                     pos._x = center._x + radius * norm._x;
                     pos._y = center._y + radius * norm._y;
                     pos._z = center._z + radius * norm._z;
@@ -573,6 +627,7 @@ namespace BrawlLib.OpenGL
                     GL.TexCoord2(i * oneThroughPrecision, 2.0f * j * oneThroughPrecision);
                     GL.Vertex3(pos._x, pos._y, pos._z);
                 }
+
                 GL.End();
             }
         }

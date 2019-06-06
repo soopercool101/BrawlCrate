@@ -5,7 +5,8 @@ namespace System.Windows.Forms
 {
     public class GoodPictureBox : Panel
     {
-        internal static HatchBrush _brush = new HatchBrush(HatchStyle.LargeCheckerBoard, Color.LightGray, Color.GhostWhite);
+        internal static HatchBrush _brush =
+            new HatchBrush(HatchStyle.LargeCheckerBoard, Color.LightGray, Color.GhostWhite);
 
         //private Color _transColor = Color.Magenta;
         //public Color TransparentColor
@@ -15,15 +16,22 @@ namespace System.Windows.Forms
         //}
 
         private Image _target;
+
         public Image Picture
         {
             get => _target;
-            set { _target = value; Invalidate(); }
+            set
+            {
+                _target = value;
+                Invalidate();
+            }
         }
 
         public GoodPictureBox()
         {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.Opaque | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.Opaque |
+                ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -40,13 +48,13 @@ namespace System.Windows.Forms
             Rectangle client = ClientRectangle;
             Rectangle bounds = new Rectangle(0, 0, w, h);
 
-            float aspect = (float)w / h;
-            float newaspect = (float)client.Width / client.Height;
+            float aspect = (float) w / h;
+            float newaspect = (float) client.Width / client.Height;
 
-            float scale = (newaspect > aspect) ? (float)client.Height / h : (float)client.Width / w;
+            float scale = newaspect > aspect ? (float) client.Height / h : (float) client.Width / w;
 
-            bounds.Width = (int)(w * scale);
-            bounds.Height = (int)(h * scale);
+            bounds.Width = (int) (w * scale);
+            bounds.Height = (int) (h * scale);
             bounds.X = (client.Width - bounds.Width) >> 1;
             bounds.Y = (client.Height - bounds.Height) >> 1;
 

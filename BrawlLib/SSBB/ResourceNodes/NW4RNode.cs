@@ -5,12 +5,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class NW4RNode : ResourceNode
     {
-        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*)WorkingUncompressed.Address;
+        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*) WorkingUncompressed.Address;
 
-        [Category("NW4R Node")]
-        public byte VersionMajor => _major;
-        [Category("NW4R Node")]
-        public byte VersionMinor => _minor;
+        [Category("NW4R Node")] public byte VersionMajor => _major;
+        [Category("NW4R Node")] public byte VersionMinor => _minor;
         internal byte _minor, _major;
 
         internal string _tag;
@@ -31,12 +29,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class NW4RArcEntryNode : ARCEntryNode
     {
-        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*)WorkingUncompressed.Address;
+        internal NW4RCommonHeader* CommonHeader => (NW4RCommonHeader*) WorkingUncompressed.Address;
 
-        [Category("NW4R Node")]
-        public byte VersionMajor => _major;
-        [Category("NW4R Node")]
-        public byte VersionMinor => _minor;
+        [Category("NW4R Node")] public byte VersionMajor => _major;
+        [Category("NW4R Node")] public byte VersionMinor => _minor;
         internal byte _minor, _major;
 
         internal string _tag;
@@ -62,7 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is NW4RNode))
+                while ((n = n.Parent) != null && !(n is NW4RNode))
                 {
                     ;
                 }

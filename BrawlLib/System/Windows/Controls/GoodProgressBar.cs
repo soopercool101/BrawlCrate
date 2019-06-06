@@ -7,14 +7,39 @@ namespace System.Windows.Forms
     {
         private float _min = 0.0f, _max = 1.0f, _current = 0.0f;
 
-        public float MinValue { get => _min; set => _min = value; }
-        public float MaxValue { get => _max; set => _max = value; }
-        public float CurrentValue { get => _current; set { _current = Math.Max(Math.Min(value, _max), _min); Invalidate(); } }
-        public float Percent { get => (_current - _min) / (_max - _min); set => CurrentValue = (_max - _min) * value; }
+        public float MinValue
+        {
+            get => _min;
+            set => _min = value;
+        }
+
+        public float MaxValue
+        {
+            get => _max;
+            set => _max = value;
+        }
+
+        public float CurrentValue
+        {
+            get => _current;
+            set
+            {
+                _current = Math.Max(Math.Min(value, _max), _min);
+                Invalidate();
+            }
+        }
+
+        public float Percent
+        {
+            get => (_current - _min) / (_max - _min);
+            set => CurrentValue = (_max - _min) * value;
+        }
 
         public GoodProgressBar()
         {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.Opaque, true);
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.Opaque, true);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -24,7 +49,7 @@ namespace System.Windows.Forms
 
             float percent = Percent;
 
-            bounds.Width = (int)(bounds.Width * percent);
+            bounds.Width = (int) (bounds.Width * percent);
             PointF p1 = new PointF(0, 0);
             PointF p2 = new PointF(bounds.Width, 0);
             //PointF p3 = new PointF(bounds.Width, bounds.Height / 2);
@@ -33,7 +58,7 @@ namespace System.Windows.Forms
             g.ResetClip();
             g.Clear(BackColor);
 
-            if ((bounds.Width != 0) && (bounds.Height != 0))
+            if (bounds.Width != 0 && bounds.Height != 0)
             {
                 //using (PathGradientBrush b = new PathGradientBrush(new PointF[] { p1, p2, p3, p4 }, WrapMode.TileFlipY))
                 //{

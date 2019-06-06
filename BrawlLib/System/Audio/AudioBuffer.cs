@@ -60,7 +60,12 @@
         //Sets whether the buffer manages looping.
         //Use this with Source.
         internal bool _loop = false;
-        public bool Loop { get => _loop; set => _loop = value; }
+
+        public bool Loop
+        {
+            get => _loop;
+            set => _loop = value;
+        }
 
         //internal bool _playing = false;
         //public bool IsPlaying { get { return _playing; } }
@@ -71,7 +76,11 @@
         public abstract int Volume { get; set; }
         public abstract int Pan { get; set; }
 
-        ~AudioBuffer() { Dispose(); }
+        ~AudioBuffer()
+        {
+            Dispose();
+        }
+
         public virtual void Dispose()
         {
             if (_owner != null)
@@ -79,6 +88,7 @@
                 _owner._buffers.Remove(this);
                 _owner = null;
             }
+
             GC.SuppressFinalize(this);
         }
 
@@ -98,6 +108,7 @@
                 _source.SamplePosition = samplePos;
             }
         }
+
         public void Reset()
         {
             _readOffset = _writeOffset = PlayCursor;
@@ -110,7 +121,8 @@
             //Get current byte offset
             int byteOffset = sampleOffset * _blockAlign;
             //Get sample difference since last update, taking into account circular wrapping.
-            int sampleDifference = (((byteOffset < _readOffset) ? (byteOffset + _dataLength) : byteOffset) - _readOffset) / _blockAlign;
+            int sampleDifference = ((byteOffset < _readOffset ? byteOffset + _dataLength : byteOffset) - _readOffset) /
+                                   _blockAlign;
             //Get byte difference
             //int byteDifference = sampleDifference * _blockAlign;
 
@@ -126,15 +138,15 @@
             //Update looping
             if (_source != null)
             {
-                if ((_loop) && (_source.IsLooping))
+                if (_loop && _source.IsLooping)
                 {
                     int start = _source.LoopStartSample;
                     int end = _source.LoopEndSample;
                     int newSample = _readSample + sampleDifference;
 
-                    if ((newSample >= end) && (_writeSample < _readSample))
+                    if (newSample >= end && _writeSample < _readSample)
                     {
-                        _readSample = start + ((newSample - start) % (end - start));
+                        _readSample = start + (newSample - start) % (end - start);
                     }
                     else
                     {
@@ -166,19 +178,27 @@
             Update();
 
             //Get number of samples available for writing. 
-            int sampleCount = (((_readOffset <= _writeOffset) ? (_readOffset + _dataLength) : _readOffset) - _writeOffset) / _blockAlign / 8;
+            int sampleCount = ((_readOffset <= _writeOffset ? _readOffset + _dataLength : _readOffset) - _writeOffset) /
+                              _blockAlign / 8;
 
             //Fill samples
             Fill(_source, sampleCount, _loop);
         }
+
         public virtual void Fill(IAudioStream source, int samples, bool loop)
         {
             int byteCount = samples * _blockAlign;
 
             //Lock buffer and fill
             BufferData data = Lock(_writeOffset, byteCount);
-            try { data.Fill(source, loop); }
-            finally { Unlock(data); }
+            try
+            {
+                data.Fill(source, loop);
+            }
+            finally
+            {
+                Unlock(data);
+            }
 
             //Advance offsets
             _writeOffset = (_writeOffset + byteCount) % _dataLength;

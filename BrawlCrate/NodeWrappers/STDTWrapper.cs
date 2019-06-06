@@ -8,6 +8,8 @@ namespace BrawlCrate.NodeWrappers
     {
         public override string ExportFilter => FileFilters.STDT;
 
-        public STDTWrapper() { }
+        public STDTWrapper()
+        {
+        }
     }
 }

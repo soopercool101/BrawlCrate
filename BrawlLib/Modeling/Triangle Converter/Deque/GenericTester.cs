@@ -218,7 +218,7 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            Deque<int> deque2 = (Deque<int>)deque.Clone();
+            Deque<int> deque2 = (Deque<int>) deque.Clone();
 
             Debug.Assert(deque.Count == deque2.Count);
 

@@ -9,6 +9,7 @@ namespace System.Windows.Forms
     public class VertexEditor : UserControl
     {
         #region Designer
+
         private void InitializeComponent()
         {
             label3 = new Label();
@@ -108,7 +109,7 @@ namespace System.Windows.Forms
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox1.Controls.Add(numPosZ);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(numPosX);
@@ -125,7 +126,7 @@ namespace System.Windows.Forms
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            groupBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox2.Controls.Add(numNormZ);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(numNormX);
@@ -211,7 +212,7 @@ namespace System.Windows.Forms
             // 
             // groupBox4
             // 
-            groupBox4.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            groupBox4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox4.Controls.Add(colorBox);
             groupBox4.Controls.Add(colorIndex);
             groupBox4.Location = new Drawing.Point(348, 3);
@@ -224,7 +225,7 @@ namespace System.Windows.Forms
             // 
             // colorBox
             // 
-            colorBox.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            colorBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             colorBox.BorderStyle = BorderStyle.FixedSingle;
             colorBox.Cursor = Cursors.Hand;
             colorBox.Location = new Drawing.Point(6, 36);
@@ -237,9 +238,11 @@ namespace System.Windows.Forms
             // 
             colorIndex.DropDownStyle = ComboBoxStyle.DropDownList;
             colorIndex.FormattingEnabled = true;
-            colorIndex.Items.AddRange(new object[] {
-            "Color 0",
-            "Color 1"});
+            colorIndex.Items.AddRange(new object[]
+            {
+                "Color 0",
+                "Color 1"
+            });
             colorIndex.Location = new Drawing.Point(6, 14);
             colorIndex.Name = "colorIndex";
             colorIndex.Size = new Drawing.Size(99, 21);
@@ -248,7 +251,7 @@ namespace System.Windows.Forms
             // 
             // btnAverage
             // 
-            btnAverage.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            btnAverage.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAverage.Enabled = false;
             btnAverage.Location = new Drawing.Point(120, 54);
             btnAverage.Name = "btnAverage";
@@ -260,7 +263,7 @@ namespace System.Windows.Forms
             // 
             // label7
             // 
-            label7.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Location = new Drawing.Point(120, 38);
             label7.Name = "label7";
@@ -270,7 +273,7 @@ namespace System.Windows.Forms
             // 
             // comboBox1
             // 
-            comboBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Drawing.Point(98, -22);
@@ -280,7 +283,7 @@ namespace System.Windows.Forms
             // 
             // label8
             // 
-            label8.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label8.AutoSize = true;
             label8.Location = new Drawing.Point(6, -19);
             label8.Name = "label8";
@@ -307,7 +310,6 @@ namespace System.Windows.Forms
             groupBox4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
@@ -322,21 +324,29 @@ namespace System.Windows.Forms
 
         public ModelEditorBase _mainWindow;
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentFrame
         {
             get => _mainWindow.CurrentFrame;
             set => _mainWindow.CurrentFrame = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IModel TargetModel
         {
             get => _mainWindow.TargetModel;
             set => _mainWindow.TargetModel = value;
         }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoneNode TargetBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IBoneNode TargetBone
+        {
+            get => _mainWindow.SelectedBone;
+            set => _mainWindow.SelectedBone = value;
+        }
 
         private Label label3;
         public NumericInputBox numPosZ;
@@ -365,6 +375,7 @@ namespace System.Windows.Forms
         private Label label8;
 
         private readonly GoodColorDialog _dlgColor;
+
         private void colorBox_Click(object sender, EventArgs e)
         {
             if (TargetVertex == null)
@@ -489,7 +500,8 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Vertex3> TargetVertices
         {
             get => _targetVertices;
@@ -502,6 +514,7 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public List<Vertex3> _targetVertices;
 
         private void numPosX_TextChanged(object sender, EventArgs e)
@@ -527,6 +540,7 @@ namespace System.Windows.Forms
                         v.Unweight();
                     }
                 }
+
                 _mainWindow.VertexChange(_targetVertices);
                 _mainWindow.UpdateModel();
             }
@@ -555,6 +569,7 @@ namespace System.Windows.Forms
                         v.Unweight();
                     }
                 }
+
                 _mainWindow.VertexChange(_targetVertices);
                 _mainWindow.UpdateModel();
             }
@@ -583,6 +598,7 @@ namespace System.Windows.Forms
                         v.Unweight();
                     }
                 }
+
                 _mainWindow.VertexChange(_targetVertices);
                 _mainWindow.UpdateModel();
             }

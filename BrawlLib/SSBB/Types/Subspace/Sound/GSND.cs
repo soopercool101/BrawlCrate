@@ -11,9 +11,23 @@ namespace BrawlLib.SSBBTypes
         public uint _tag;
         public bint _count;
 
-        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
-        public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x08 + (index * 4)); }
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
+
+        public uint Offsets(int index)
+        {
+            return *(buint*) ((byte*) Address + 0x08 + index * 4);
+        }
+
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public GSND(int count)
         {
@@ -49,7 +63,7 @@ namespace BrawlLib.SSBBTypes
 
         public string Name
         {
-            get => new string((sbyte*)Address + 0x1C);
+            get => new string((sbyte*) Address + 0x1C);
             set
             {
                 if (value == null)
@@ -60,9 +74,9 @@ namespace BrawlLib.SSBBTypes
                 fixed (sbyte* ptr = _name)
                 {
                     int i = 0;
-                    while ((i < 31) && (i < value.Length))
+                    while (i < 31 && i < value.Length)
                     {
-                        ptr[i] = (sbyte)value[i++];
+                        ptr[i] = (sbyte) value[i++];
                     }
 
                     while (i < 32)
@@ -72,6 +86,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public string Trigger
         {
             get
@@ -80,17 +95,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)(Address + 0x3C + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + 0x3C + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -105,6 +124,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public int Pad4
         {
             set
@@ -120,7 +140,15 @@ namespace BrawlLib.SSBBTypes
         }
 
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 }

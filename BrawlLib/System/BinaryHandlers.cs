@@ -7,10 +7,20 @@ namespace System
     {
         public buint _data;
 
-        public Bin32(uint val) { _data = val; }
+        public Bin32(uint val)
+        {
+            _data = val;
+        }
 
-        public static implicit operator uint(Bin32 val) { return val._data; }
-        public static implicit operator Bin32(uint val) { return new Bin32(val); }
+        public static implicit operator uint(Bin32 val)
+        {
+            return val._data;
+        }
+
+        public static implicit operator Bin32(uint val)
+        {
+            return new Bin32(val);
+        }
         //public static implicit operator int(Bin32 val) { return (int)val._data; }
         //public static implicit operator Bin32(int val) { return new Bin32((uint)val); }
 
@@ -26,21 +36,22 @@ namespace System
                     val += " ";
                 }
             }
+
             return val;
         }
 
         public bool this[int index]
         {
-            get => (_data >> index & 1) != 0;
+            get => ((_data >> index) & 1) != 0;
             set
             {
                 if (value)
                 {
-                    _data |= (uint)(1 << index);
+                    _data |= (uint) (1 << index);
                 }
                 else
                 {
-                    _data &= ~(uint)(1 << index);
+                    _data &= ~(uint) (1 << index);
                 }
             }
         }
@@ -61,7 +72,7 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                return (uint)((_data >> shift) & mask);
+                return (uint) ((_data >> shift) & mask);
             }
             set
             {
@@ -71,13 +82,13 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                _data = (uint)((_data & ~(mask << shift)) | ((value & mask) << shift));
+                _data = (uint) ((_data & ~(mask << shift)) | ((value & mask) << shift));
             }
         }
 
         public static Bin32 FromString(string s)
         {
-            char[] delims = new char[] { ',', '(', ')', ' ' };
+            char[] delims = new char[] {',', '(', ')', ' '};
 
             uint b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
@@ -97,18 +108,41 @@ namespace System
             return new Bin32(b);
         }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Bin24
     {
         public BUInt24 _data;
 
-        public Bin24(BUInt24 val) { _data = val; }
+        public Bin24(BUInt24 val)
+        {
+            _data = val;
+        }
 
-        public static implicit operator int(Bin24 val) { return val._data; }
-        public static implicit operator uint(Bin24 val) { return val._data; }
-        public static implicit operator Bin24(uint val) { return new Bin24(val); }
-        public static implicit operator BUInt24(Bin24 val) { return val._data; }
-        public static implicit operator Bin24(BUInt24 val) { return new Bin24(val); }
+        public static implicit operator int(Bin24 val)
+        {
+            return val._data;
+        }
+
+        public static implicit operator uint(Bin24 val)
+        {
+            return val._data;
+        }
+
+        public static implicit operator Bin24(uint val)
+        {
+            return new Bin24(val);
+        }
+
+        public static implicit operator BUInt24(Bin24 val)
+        {
+            return val._data;
+        }
+
+        public static implicit operator Bin24(BUInt24 val)
+        {
+            return new Bin24(val);
+        }
 
         public override string ToString()
         {
@@ -123,21 +157,22 @@ namespace System
                     val += " ";
                 }
             }
+
             return val;
         }
 
         public bool this[int index]
         {
-            get => ((uint)_data >> index & 1) != 0;
+            get => (((uint) _data >> index) & 1) != 0;
             set
             {
                 if (value)
                 {
-                    _data = _data | (uint)(1 << index);
+                    _data = _data | (uint) (1 << index);
                 }
                 else
                 {
-                    _data = _data & ~(uint)(1 << index);
+                    _data = _data & ~(uint) (1 << index);
                 }
             }
         }
@@ -158,7 +193,7 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                return (int)(((uint)_data >> shift) & mask);
+                return (int) (((uint) _data >> shift) & mask);
             }
             set
             {
@@ -168,13 +203,13 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                _data = (uint)(((uint)_data & ~(mask << shift)) | (((uint)value & mask) << shift));
+                _data = (uint) (((uint) _data & ~(mask << shift)) | (((uint) value & mask) << shift));
             }
         }
 
         public static Bin24 FromString(string s)
         {
-            char[] delims = new char[] { ',', '(', ')', ' ' };
+            char[] delims = new char[] {',', '(', ')', ' '};
 
             uint b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
@@ -194,15 +229,26 @@ namespace System
             return new Bin24(b);
         }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Bin16
     {
         public bushort _data;
 
-        public Bin16(ushort val) { _data = val; }
+        public Bin16(ushort val)
+        {
+            _data = val;
+        }
 
-        public static implicit operator ushort(Bin16 val) { return val._data; }
-        public static implicit operator Bin16(ushort val) { return new Bin16(val); }
+        public static implicit operator ushort(Bin16 val)
+        {
+            return val._data;
+        }
+
+        public static implicit operator Bin16(ushort val)
+        {
+            return new Bin16(val);
+        }
         //public static implicit operator short(Bin16 val) { return (short)val._data; }
         //public static implicit operator Bin16(short val) { return new Bin16((ushort)val); }
 
@@ -218,21 +264,22 @@ namespace System
                     val += " ";
                 }
             }
+
             return val;
         }
 
         public bool this[int index]
         {
-            get => (_data >> index & 1) != 0;
+            get => ((_data >> index) & 1) != 0;
             set
             {
                 if (value)
                 {
-                    _data = (ushort)(_data | (ushort)(1 << index));
+                    _data = (ushort) (_data | (ushort) (1 << index));
                 }
                 else
                 {
-                    _data = (ushort)(_data & ~(ushort)(1 << index));
+                    _data = (ushort) (_data & ~(ushort) (1 << index));
                 }
             }
         }
@@ -253,7 +300,7 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                return (ushort)((_data >> shift) & mask);
+                return (ushort) ((_data >> shift) & mask);
             }
             set
             {
@@ -263,13 +310,13 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                _data = (ushort)((_data & ~(mask << shift)) | ((value & mask) << shift));
+                _data = (ushort) ((_data & ~(mask << shift)) | ((value & mask) << shift));
             }
         }
 
         public static Bin16 FromString(string s)
         {
-            char[] delims = new char[] { ',', '(', ')', ' ' };
+            char[] delims = new char[] {',', '(', ')', ' '};
 
             ushort b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
@@ -289,15 +336,26 @@ namespace System
             return new Bin16(b);
         }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct Bin8
     {
         public byte _data;
 
-        public Bin8(byte val) { _data = val; }
+        public Bin8(byte val)
+        {
+            _data = val;
+        }
 
-        public static implicit operator byte(Bin8 val) { return val._data; }
-        public static implicit operator Bin8(byte val) { return new Bin8(val); }
+        public static implicit operator byte(Bin8 val)
+        {
+            return val._data;
+        }
+
+        public static implicit operator Bin8(byte val)
+        {
+            return new Bin8(val);
+        }
         //public static implicit operator sbyte(Bin8 val) { return (sbyte)val._data; }
         //public static implicit operator Bin8(sbyte val) { return new Bin8((byte)val); }
 
@@ -313,21 +371,22 @@ namespace System
                     val += " ";
                 }
             }
+
             return val;
         }
 
         public bool this[int index]
         {
-            get => (_data >> index & 1) != 0;
+            get => ((_data >> index) & 1) != 0;
             set
             {
                 if (value)
                 {
-                    _data |= (byte)(1 << index);
+                    _data |= (byte) (1 << index);
                 }
                 else
                 {
-                    _data &= (byte)~(1 << index);
+                    _data &= (byte) ~(1 << index);
                 }
             }
         }
@@ -348,7 +407,7 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                return (byte)((_data >> shift) & mask);
+                return (byte) ((_data >> shift) & mask);
             }
             set
             {
@@ -358,13 +417,13 @@ namespace System
                     mask |= 1 << i;
                 }
 
-                _data = (byte)((_data & ~(mask << shift)) | ((value & mask) << shift));
+                _data = (byte) ((_data & ~(mask << shift)) | ((value & mask) << shift));
             }
         }
 
         public static Bin8 FromString(string s)
         {
-            char[] delims = new char[] { ',', '(', ')', ' ' };
+            char[] delims = new char[] {',', '(', ')', ' '};
 
             byte b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);

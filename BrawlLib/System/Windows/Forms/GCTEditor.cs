@@ -19,8 +19,8 @@ namespace System.Windows.Forms
             lstCodes.SelectedIndexChanged += new EventHandler(lstCodes_SelectedIndexChanged);
 
             string title =
-                ((AssemblyTitleAttribute)Attribute.GetCustomAttribute(
-                Assembly.GetEntryAssembly(), typeof(AssemblyTitleAttribute), false)).Title;
+                ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(
+                    Assembly.GetEntryAssembly(), typeof(AssemblyTitleAttribute), false)).Title;
 
             Text = title + " - Code Manager";
 
@@ -37,6 +37,7 @@ namespace System.Windows.Forms
         private GCTCodeEntryNode _codeEntry;
 
         private GCTNode _targetNode;
+
         public GCTNode TargetNode
         {
             get => _targetNode;
@@ -45,7 +46,7 @@ namespace System.Windows.Forms
                 if (_targetNode != null && _targetNode.IsDirty)
                 {
                     DialogResult res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
-                    if (((res == DialogResult.Yes) && (!Save(_targetNode, checkBox1.Checked))) || (res == DialogResult.Cancel))
+                    if (res == DialogResult.Yes && !Save(_targetNode, checkBox1.Checked) || res == DialogResult.Cancel)
                     {
                         return;
                     }
@@ -64,12 +65,16 @@ namespace System.Windows.Forms
                     txtPath.Text = _targetNode._origPath;
                     txtID.Text = _targetNode._name;
                     txtName.Text = _targetNode.GameName;
-                    lstCodes.Items.AddRange(_targetNode.Children.Select(s => new ListViewItem() { Text = s.Name, Checked = ((GCTCodeEntryNode)s)._enabled, Tag = s }).ToArray());
+                    lstCodes.Items.AddRange(_targetNode.Children.Select(s => new ListViewItem()
+                    {
+                        Text = s.Name, Checked = ((GCTCodeEntryNode) s)._enabled, Tag = s
+                    }).ToArray());
                     if (_targetNode.Children.Count > 0)
                     {
                         lstCodes.Items[0].Selected = true;
                     }
                 }
+
                 _updating = false;
             }
         }
@@ -101,6 +106,7 @@ namespace System.Windows.Forms
 
             return LoadGCT(d.FileName);
         }
+
         public static GCTNode LoadGCT(string path)
         {
             GCTNode node;
@@ -173,26 +179,45 @@ namespace System.Windows.Forms
                         node.IsDirty = false;
                         txtPath.Text = path;
                     }
+
                     return true;
                 }
-                catch { return false; }
+                catch
+                {
+                    return false;
+                }
             }
+
             return false;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            GCTNode node = LoadGCT(); if (node != null)
+            GCTNode node = LoadGCT();
+            if (node != null)
             {
                 TargetNode = node;
             }
         }
-        private void btnSaveAs_Click(object sender, EventArgs e) { SaveAs(TargetNode, checkBox1.Checked); }
-        private void btnSave_Click(object sender, EventArgs e) { Save(TargetNode, checkBox1.Checked); }
-        private void btnClose_Click(object sender, EventArgs e) { TargetNode = null; }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveAs(TargetNode, checkBox1.Checked);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save(TargetNode, checkBox1.Checked);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            TargetNode = null;
+        }
 
         private bool _updating = false;
         public int _codeEntrySavedIndex = -1;
+
         private void lstCodes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (panel1.Enabled = lstCodes.SelectedIndices.Count > 0)
@@ -216,9 +241,11 @@ namespace System.Windows.Forms
                             _codeEntrySavedIndex = i;
                             break;
                         }
+
                         i++;
                     }
                 }
+
                 if (_codeEntrySavedIndex == -1)
                 {
                     btnAddRemoveCode.Text = "Remember Code";
@@ -226,6 +253,7 @@ namespace System.Windows.Forms
 
                 _updating = false;
             }
+
             status.Text = "";
         }
 
@@ -319,9 +347,9 @@ namespace System.Windows.Forms
                 TargetNode = new GCTNode();
             }
 
-            GCTCodeEntryNode n = new GCTCodeEntryNode() { _name = "New Code" };
+            GCTCodeEntryNode n = new GCTCodeEntryNode() {_name = "New Code"};
             TargetNode.AddChild(n);
-            lstCodes.Items.Add(new ListViewItem() { Text = n.Name, Checked = n._enabled, Tag = n });
+            lstCodes.Items.Add(new ListViewItem() {Text = n.Name, Checked = n._enabled, Tag = n});
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
@@ -368,6 +396,7 @@ namespace System.Windows.Forms
             status.Text = string.Format("Problem on line {0}: {1}", x, text);
             return Color.Red;
         }
+
         public Color CheckCode(out List<GCTCodeLine> lines)
         {
             lines = new List<GCTCodeLine>();
@@ -444,7 +473,9 @@ namespace System.Windows.Forms
             _updating = true;
             if (!checkBox1.Checked)
             {
-                if (MessageBox.Show(this, "Are you sure you don't want the info written in the GCT?\nOnly codes you have set to remember will be readable.", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show(this,
+                        "Are you sure you don't want the info written in the GCT?\nOnly codes you have set to remember will be readable.",
+                        "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.No)
                 {
                     checkBox1.Checked = true;
                 }
@@ -500,9 +531,11 @@ namespace System.Windows.Forms
                         break;
                     }
                 }
+
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage() { _name = r._name, _description = r._description, _code = r.LinesNoSpaces });
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage()
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
         }
@@ -527,6 +560,7 @@ namespace System.Windows.Forms
 
                     i++;
                 }
+
                 if (i != BrawlLib.Properties.Settings.Default.Codes.Count)
                 {
                     BrawlLib.Properties.Settings.Default.Codes.RemoveAt(i);
@@ -536,9 +570,11 @@ namespace System.Windows.Forms
 
         private void forgetAllCodesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to forget all codes?", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Are you sure you want to forget all codes?", "Are you sure?",
+                    MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (MessageBox.Show("Are you really sure?", "Are you sure?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you really sure?", "Are you sure?", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
                 {
                     BrawlLib.Properties.Settings.Default.Codes.Clear();
                 }
@@ -559,6 +595,7 @@ namespace System.Windows.Forms
 
                 g.AddChild(r);
             }
+
             SaveAs(g, true);
         }
 
@@ -584,9 +621,11 @@ namespace System.Windows.Forms
                         break;
                     }
                 }
+
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage() { _name = r._name, _description = r._description, _code = r.LinesNoSpaces });
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage()
+                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
 
@@ -602,7 +641,8 @@ namespace System.Windows.Forms
             };
             foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
             {
-                node.AddChild(new GCTCodeEntryNode() { _name = w._name, _description = w._description, LinesNoSpaces = w._code });
+                node.AddChild(new GCTCodeEntryNode()
+                    {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
             }
 
             TargetNode = node;

@@ -16,10 +16,19 @@ namespace BrawlLib.SSBBTypes
         public bint _dataOffset;
         public bint _dataLength;
 
-        public RWARTableBlock* Table => (RWARTableBlock*)(Address + _tableOffset);
-        public RWARDataBlock* Data => (RWARDataBlock*)(Address + _dataOffset);
+        public RWARTableBlock* Table => (RWARTableBlock*) (Address + _tableOffset);
+        public RWARDataBlock* Data => (RWARDataBlock*) (Address + _dataOffset);
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -31,9 +40,21 @@ namespace BrawlLib.SSBBTypes
         public SSBBEntryHeader _header;
         public fixed uint _padding[6];
 
-        public RWAV* GetEntry(uint offset) { return (RWAV*)(Address + offset); }
+        public RWAV* GetEntry(uint offset)
+        {
+            return (RWAV*) (Address + offset);
+        }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -51,7 +72,17 @@ namespace BrawlLib.SSBBTypes
         public SSBBEntryHeader _header;
         public buint _entryCount;
 
-        public TableItem* Entries => (TableItem*)(Address + 12);
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public TableItem* Entries => (TableItem*) (Address + 12);
+
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 }

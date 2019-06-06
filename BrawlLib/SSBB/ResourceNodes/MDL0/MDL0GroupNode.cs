@@ -11,7 +11,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class MDL0EntryNode : ResourceNode
     {
-        internal virtual void GetStrings(StringTable table) { table.Add(_name); }
+        internal virtual void GetStrings(StringTable table)
+        {
+            table.Add(_name);
+        }
 
         public int _entryIndex;
 
@@ -21,7 +24,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = _parent;
-                while (!(n is MDL0Node) && (n != null))
+                while (!(n is MDL0Node) && n != null)
                 {
                     n = n._parent;
                 }
@@ -36,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = _parent;
-                while (!(n is BRRESNode) && (n != null))
+                while (!(n is BRRESNode) && n != null)
                 {
                     n = n._parent;
                 }
@@ -45,8 +48,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal virtual void Bind() { }
-        internal virtual void Unbind() { }
+        internal virtual void Bind()
+        {
+        }
+
+        internal virtual void Unbind()
+        {
+        }
 
         public override void SignalPropertyChange()
         {
@@ -55,16 +63,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             TKContext.InvalidateModelPanels(Model);
         }
 
-        protected internal virtual void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable) { }
+        protected internal virtual void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
+        {
+        }
     }
 
     public unsafe class MDL0GroupNode : ResourceNode
     {
-        internal ResourceGroup* Header => (ResourceGroup*)WorkingUncompressed.Address;
+        internal ResourceGroup* Header => (ResourceGroup*) WorkingUncompressed.Address;
 
         public override ResourceType ResourceFileType => ResourceType.MDL0Group;
 
         public MDLResourceType _type;
+
         internal int _index;
         //internal List<ResourceNode> _nodeCache;
 
@@ -90,7 +101,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void RemoveChild(ResourceNode child)
         {
-            if ((_children != null) && (_children.Count == 1) && (_children.Contains(child)))
+            if (_children != null && _children.Count == 1 && _children.Contains(child))
             {
                 _parent.RemoveChild(this);
             }
@@ -105,7 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Influence inf;
             ModelLinker linker = model._linker;
 
-            int typeIndex = (int)_type;
+            int typeIndex = (int) _type;
             fixed (ResourceGroup** gList = &linker.Defs)
             {
                 if (gList[typeIndex] != null)
@@ -142,7 +153,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if (offset != 0)
                     {
                         //Get address of parent header
-                        MDL0Bone* pHeader = (MDL0Bone*)((byte*)header + offset);
+                        MDL0Bone* pHeader = (MDL0Bone*) ((byte*) header + offset);
                         //Search bone list for matching header
                         foreach (MDL0BoneNode b2 in linker.BoneCache)
                         {
@@ -199,7 +210,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         //Double check bone tree using the NodeTree definition.
                         //If the NodeTree is corrupt, the user will be informed that it needs to be rebuilt.
-                        byte* pData = (byte*)p.Data;
+                        byte* pData = (byte*) p.Data;
                         bool fixCS0159 = false;
 
                         List<MDL0BoneNode> bones = linker.BoneCache.ToList();
@@ -207,8 +218,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         STop:
                         if (*pData == 2)
                         {
-                            bone = linker.BoneCache[*(bushort*)(pData + 1)] as MDL0BoneNode;
-                            index = *(bushort*)(pData + 3); //Parent bone node index
+                            bone = linker.BoneCache[*(bushort*) (pData + 1)] as MDL0BoneNode;
+                            index = *(bushort*) (pData + 3); //Parent bone node index
 
                             if (bone.Header->_parentOffset == 0)
                             {
@@ -235,9 +246,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     bones.Remove(bone);
                                 }
                             }
+
                             pData += 5;
                             fixCS0159 = true;
                         }
+
                         if (fixCS0159)
                         {
                             fixCS0159 = false;
@@ -252,7 +265,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     else if (p.Name == "NodeMix")
                     {
                         //Use node mix to create weight groups
-                        byte* pData = (byte*)p.Data;
+                        byte* pData = (byte*) p.Data;
                         bool fixCS0159 = false;
                         TTop:
                         switch (*pData)
@@ -260,10 +273,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                             //Type 3 is for weighted influences
                             case 3:
                                 //Get index/count fields
-                                index = *(bushort*)(pData + 1);
+                                index = *(bushort*) (pData + 1);
                                 count = pData[3];
                                 //Get data pointer (offset of 4)
-                                MDL0NodeType3Entry* nEntry = (MDL0NodeType3Entry*)(pData + 4);
+                                MDL0NodeType3Entry* nEntry = (MDL0NodeType3Entry*) (pData + 4);
                                 //Create influence with specified count
                                 inf = new Influence();
                                 //Iterate through weights, adding each to the influence
@@ -273,7 +286,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 List<int> nullIndices = new List<int>();
                                 for (int i = 0; i < count; i++, nEntry++)
                                 {
-                                    if (nEntry->_id < linker.NodeCache.Length && (b = (linker.NodeCache[nEntry->_id] as MDL0BoneNode)) != null)
+                                    if (nEntry->_id < linker.NodeCache.Length &&
+                                        (b = linker.NodeCache[nEntry->_id] as MDL0BoneNode) != null)
                                     {
                                         inf.AddWeight(new BoneWeight(b, nEntry->_value));
                                     }
@@ -309,11 +323,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 //Don't add user references here, they will be added during each object's initialization
                                 if (!noWeights)
                                 {
-                                    ((Influence)(linker.NodeCache[index] = model._influences.FindOrCreate(inf)))._index = index;
+                                    ((Influence) (linker.NodeCache[index] = model._influences.FindOrCreate(inf)))
+                                        ._index = index;
                                 }
 
                                 //Move data pointer to next entry
-                                pData = (byte*)nEntry;
+                                pData = (byte*) nEntry;
                                 fixCS0159 = true;
                                 break;
                             //Type 5 is for primary influences
@@ -322,6 +337,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 fixCS0159 = true;
                                 break;
                         }
+
                         if (fixCS0159)
                         {
                             fixCS0159 = false;
@@ -345,35 +361,36 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //Attach materials to polygons.
                 //This assumes that materials have already been parsed.
 
-                List<ResourceNode> matList = ((MDL0Node)_parent)._matList;
+                List<ResourceNode> matList = ((MDL0Node) _parent)._matList;
                 MDL0ObjectNode obj;
                 MDL0MaterialNode mat;
 
                 //Find DrawOpa or DrawXlu entry in Definition list
                 foreach (ResourcePair p in *linker.Defs)
                 {
-                    if ((p.Name == "DrawOpa") || (p.Name == "DrawXlu"))
+                    if (p.Name == "DrawOpa" || p.Name == "DrawXlu")
                     {
                         bool isXLU = p.Name == "DrawXlu";
 
                         ushort objectIndex = 0;
-                        byte* pData = (byte*)p.Data;
+                        byte* pData = (byte*) p.Data;
                         while (*pData++ == 4)
                         {
                             //Get object with index
-                            objectIndex = *(bushort*)(pData + 2);
+                            objectIndex = *(bushort*) (pData + 2);
                             if (objectIndex >= _children.Count || objectIndex < 0)
                             {
                                 model._errors.Add("Object index was greater than the actual object count.");
                                 objectIndex = 0;
                             }
+
                             obj = _children[objectIndex] as MDL0ObjectNode;
 
                             //Get material with index
-                            mat = matList[*(bushort*)pData] as MDL0MaterialNode;
+                            mat = matList[*(bushort*) pData] as MDL0MaterialNode;
 
                             //Get bone with index
-                            int boneIndex = *(bushort*)(pData + 4);
+                            int boneIndex = *(bushort*) (pData + 4);
                             MDL0BoneNode visBone = null;
                             if (linker.BoneCache != null && boneIndex >= 0 && boneIndex < linker.BoneCache.Length)
                             {
@@ -422,7 +439,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     if (hasUnused)
                     {
-                        ((MDL0Node)Parent)._errors.Add("Object " + m.Index + " has unused texture matrices.");
+                        ((MDL0Node) Parent)._errors.Add("Object " + m.Index + " has unused texture matrices.");
                     }
 
                     //This error doesn't seem to always be true for factory models...
@@ -454,21 +471,23 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (useCache)
                 {
                     //search for entry within offset cache
-                    for (x = 0; (x < offsetCount) && (offsetCache[x] != offset); x++)
+                    for (x = 0; x < offsetCount && offsetCache[x] != offset; x++)
                     {
                         ;
                     }
+
                     //If found, skip to next entry
                     if (x < offsetCount)
                     {
                         continue;
                     }
+
                     //Otherwise, store offset
                     offsetCache[offsetCount++] = offset;
                 }
 
                 //Create resource instance
-                pHeader = (MDL0CommonHeader*)p.Data;
+                pHeader = (MDL0CommonHeader*) p.Data;
                 node = Activator.CreateInstance(t) as ResourceNode;
 
                 //Initialize
@@ -479,7 +498,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //or it will name it the name of the first material it's linked to.
                 if (t != typeof(MDL0ShaderNode))
                 {
-                    node._name = (string)p.Name;
+                    node._name = (string) p.Name;
                 }
             }
         }
@@ -491,7 +510,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            ResourceGroup* pGroup = (ResourceGroup*)dataAddress;
+            ResourceGroup* pGroup = (ResourceGroup*) dataAddress;
             ResourceEntry* rEntry = &pGroup->_first;
             int index = 1;
             (*rEntry++) = new ResourceEntry(0xFFFF, 0, 0, 0, 0);
@@ -501,14 +520,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            List<ResourceNode> entries = _name == "Bones" ?
-                ((MDL0Node)Parent)._linker.BoneCache.Select(x => x as ResourceNode).ToList() :
-                Children;
+            List<ResourceNode> entries = _name == "Bones"
+                ? ((MDL0Node) Parent)._linker.BoneCache.Select(x => x as ResourceNode).ToList()
+                : Children;
 
             foreach (MDL0EntryNode n in entries)
             {
-                dataAddress = (VoidPtr)pGroup + (rEntry++)->_dataOffset;
-                ResourceEntry.Build(pGroup, index++, dataAddress, (BRESString*)stringTable[n.Name]);
+                dataAddress = (VoidPtr) pGroup + (rEntry++)->_dataOffset;
+                ResourceEntry.Build(pGroup, index++, dataAddress, (BRESString*) stringTable[n.Name]);
 
                 if (dataAddress > mdlAddress)
                 {
@@ -524,6 +543,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 e.Bind();
             }
         }
+
         internal void Unbind()
         {
             foreach (MDL0EntryNode e in Children)

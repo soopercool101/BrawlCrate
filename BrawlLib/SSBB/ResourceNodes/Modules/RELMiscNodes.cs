@@ -13,11 +13,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         internal VoidPtr Data => WorkingUncompressed.Address;
 
-        [Browsable(false)]
-        public uint ModuleID => ((ModuleNode)Root).ID;
+        [Browsable(false)] public uint ModuleID => ((ModuleNode) Root).ID;
 
-        [Browsable(false)]
-        public uint RootOffset => Root != null && Data != 0 ? ((uint)Data - (uint)BaseAddress) : 0;
+        [Browsable(false)] public uint RootOffset => Root != null && Data != 0 ? (uint) Data - (uint) BaseAddress : 0;
         public string FileOffset => "0x" + RootOffset.ToString("X");
 
         [Browsable(false)]
@@ -42,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = _parent;
-                while (!(n is ModuleNode) && (n != null))
+                while (!(n is ModuleNode) && n != null)
                 {
                     n = n._parent;
                 }

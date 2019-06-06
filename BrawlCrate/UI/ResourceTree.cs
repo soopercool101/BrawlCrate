@@ -12,6 +12,7 @@ namespace BrawlCrate
     public class ResourceTree : TreeViewMS
     {
         private static ImageList _imgList;
+
         public static ImageList Images
         {
             get
@@ -23,7 +24,8 @@ namespace BrawlCrate
                         ImageSize = new Size(24, 24),
                         ColorDepth = ColorDepth.Depth32Bit
                     };
-                    _imgList.Images.AddRange(new Image[]{
+                    _imgList.Images.AddRange(new Image[]
+                    {
                         Resources.Unknown, //0
                         Resources.Folder,
                         Resources.ARC,
@@ -64,21 +66,22 @@ namespace BrawlCrate
                         Resources.BLOC,
                         Resources.STDT,
                         Resources.GDOR,
-                        Resources.GEG1,//40
+                        Resources.GEG1, //40
                         Resources.ENEMY,
                         Resources.GMOV,
                         Resources.GSND,
                         Resources.GMOT,
-                        Resources.ADSJ,//45
+                        Resources.ADSJ, //45
                         Resources.GBLK,
                         Resources.GMPS,
                         Resources.Redirect,
                         Resources.REL,
-                        Resources.BGMG,//50
+                        Resources.BGMG, //50
                         Resources.SharedTEX0,
                         Resources.SCLA
                     });
                 }
+
                 return _imgList;
             }
         }
@@ -86,6 +89,7 @@ namespace BrawlCrate
         public event EventHandler SelectionChanged;
 
         private bool _allowContextMenus = true;
+
         [DefaultValue(true)]
         public bool AllowContextMenus
         {
@@ -94,14 +98,20 @@ namespace BrawlCrate
         }
 
         private bool _allowIcons = false;
+
         [DefaultValue(false)]
         public bool ShowIcons
         {
             get => _allowIcons;
-            set => ImageList = (_allowIcons = value) ? Images : null;
+            set
+            {
+                _allowIcons = value;
+                ImageList = _allowIcons ? Images : null;
+            }
         }
 
         private TreeNode _selected;
+
         public new TreeNode SelectedNode
         {
             get => base.SelectedNode;
@@ -154,13 +164,14 @@ namespace BrawlCrate
         {
             if (m.Msg == 0x204)
             {
-                int x = (int)m.LParam & 0xFFFF, y = (int)m.LParam >> 16;
+                int x = (int) m.LParam & 0xFFFF, y = (int) m.LParam >> 16;
 
                 TreeNode n = GetNodeAt(x, y);
                 if (n != null)
                 {
                     Rectangle r = n.Bounds;
-                    r.X -= 25; r.Width += 25;
+                    r.X -= 25;
+                    r.Width += 25;
                     if (r.Contains(x, y))
                     {
                         SelectedNode = n;
@@ -172,9 +183,9 @@ namespace BrawlCrate
             }
             else if (m.Msg == 0x205)
             {
-                int x = (int)m.LParam & 0xFFFF, y = (int)m.LParam >> 16;
+                int x = (int) m.LParam & 0xFFFF, y = (int) m.LParam >> 16;
 
-                if ((_allowContextMenus) && (_selected != null))
+                if (_allowContextMenus && _selected != null)
                 {
                     ContextMenuStrip menuStrip = SelectedNodes.Count > 1
                         ? GetMultiSelectMenuStrip()
@@ -182,7 +193,8 @@ namespace BrawlCrate
                     if (menuStrip != null)
                     {
                         Rectangle r = _selected.Bounds;
-                        r.X -= 25; r.Width += 25;
+                        r.X -= 25;
+                        r.Width += 25;
                         if (r.Contains(x, y))
                         {
                             menuStrip.Show(this, x, y);
@@ -239,15 +251,15 @@ namespace BrawlCrate
             base.OnBeforeExpand(e);
             if (e.Node is BaseWrapper)
             {
-                ((BaseWrapper)e.Node).OnExpand();
+                ((BaseWrapper) e.Node).OnExpand();
             }
         }
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
-            if ((e.Button == MouseButtons.Left) && (SelectedNode is BaseWrapper))
+            if (e.Button == MouseButtons.Left && SelectedNode is BaseWrapper)
             {
-                ((BaseWrapper)SelectedNode).OnDoubleClick();
+                ((BaseWrapper) SelectedNode).OnDoubleClick();
             }
             else
             {
@@ -255,7 +267,11 @@ namespace BrawlCrate
             }
         }
 
-        protected override void Dispose(bool disposing) { Clear(); base.Dispose(disposing); }
+        protected override void Dispose(bool disposing)
+        {
+            Clear();
+            base.Dispose(disposing);
+        }
 
         private TreeNode _dragNode = null;
         private TreeNode _tempDropNode = null;
@@ -265,7 +281,7 @@ namespace BrawlCrate
 
         private void treeView_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            _dragNode = (TreeNode)e.Item;
+            _dragNode = (TreeNode) e.Item;
             SelectedNode = _dragNode;
 
             imageListDrag.Images.Clear();
@@ -308,7 +324,7 @@ namespace BrawlCrate
             }
             else
             {
-                ResourceNode dest = ((BaseWrapper)t).Resource;
+                ResourceNode dest = ((BaseWrapper) t).Resource;
                 try
                 {
                     if ((node = NodeFactory.FromFile(null, file)) != null)
@@ -365,7 +381,9 @@ namespace BrawlCrate
                         }
                     }
                 }
-                catch { }
+                catch
+                {
+                }
             }
 
             _timer.Enabled = false;
@@ -373,10 +391,12 @@ namespace BrawlCrate
         }
 
         private delegate void DelegateOpenFile(string s, TreeNode t);
+
         private readonly DelegateOpenFile m_DelegateOpenFile;
+
         private void treeView1_DragOver(object sender, DragEventArgs e)
         {
-            Array a = (Array)e.Data.GetData(DataFormats.FileDrop);
+            Array a = (Array) e.Data.GetData(DataFormats.FileDrop);
 
             Point formP = PointToClient(new Point(e.X, e.Y));
             DragHelper.ImageList_DragMove(formP.X - Left, formP.Y - Top);
@@ -433,12 +453,15 @@ namespace BrawlCrate
                     bType = bType.BaseType;
                 }
             }
+
             return false;
         }
+
         private static bool CompareTypes(ResourceNode r1, ResourceNode r2)
         {
             return CompareTypes(r1.GetType(), r2.GetType());
         }
+
         private static bool CompareTypes(Type type1, Type type2)
         {
             Type bType1, bType2;
@@ -461,9 +484,11 @@ namespace BrawlCrate
 
                         bType1 = bType1.BaseType;
                     }
+
                     bType2 = bType2.BaseType;
                 }
             }
+
             return false;
         }
 
@@ -547,7 +572,7 @@ namespace BrawlCrate
 
         private void treeView1_DragDrop(object sender, DragEventArgs e)
         {
-            Array a = (Array)e.Data.GetData(DataFormats.FileDrop);
+            Array a = (Array) e.Data.GetData(DataFormats.FileDrop);
 
             DragHelper.ImageList_DragLeave(Handle);
             TreeNode dropNode = GetNodeAt(PointToClient(new Point(e.X, e.Y)));
@@ -565,8 +590,8 @@ namespace BrawlCrate
             {
                 if (_dragNode != dropNode)
                 {
-                    BaseWrapper drag = ((BaseWrapper)_dragNode);
-                    BaseWrapper drop = ((BaseWrapper)dropNode);
+                    BaseWrapper drag = (BaseWrapper) _dragNode;
+                    BaseWrapper drop = (BaseWrapper) dropNode;
                     ResourceNode dragging = drag.Resource;
                     ResourceNode dropping = drop.Resource;
 
@@ -671,7 +696,7 @@ namespace BrawlCrate
 
         [DllImport("comctl32.dll", CharSet = CharSet.Auto)]
         public static extern bool ImageList_BeginDrag(IntPtr himlTrack, int
-            iTrack, int dxHotspot, int dyHotspot);
+                                                          iTrack, int dxHotspot, int dyHotspot);
 
         [DllImport("comctl32.dll", CharSet = CharSet.Auto)]
         public static extern bool ImageList_DragMove(int x, int y);

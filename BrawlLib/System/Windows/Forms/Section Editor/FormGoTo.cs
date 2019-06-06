@@ -16,6 +16,7 @@ namespace System.Windows.Forms
         private RadioButton chkHex;
         private Label label1;
         private TextBox txtOffset;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -45,10 +46,12 @@ namespace System.Windows.Forms
                     components.Dispose();
                 }
             }
+
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -212,12 +215,13 @@ namespace System.Windows.Forms
             groupBox3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-
         }
+
         #endregion
 
         private long _maxVal = long.MaxValue;
         private long current;
+
         public void SetDefaultValue(long byteIndex)
         {
             current = byteIndex;
@@ -252,6 +256,7 @@ namespace System.Windows.Forms
 
         public char[] _hexChars = "0123456789ABCDEFabcdef".ToCharArray();
         public char[] _decChars = "0123456789".ToCharArray();
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             char[] arr = chkHex.Checked ? _hexChars : _decChars;
@@ -289,6 +294,7 @@ namespace System.Windows.Forms
                 long v = Convert.ToInt64(txtOffset.Text, 16);
                 txtOffset.Text = v.ToString();
             }
+
             if (!string.IsNullOrEmpty(txtOffset.Text))
             {
                 txtOffset.Select(i.Clamp(0, txtOffset.TextLength), 0);

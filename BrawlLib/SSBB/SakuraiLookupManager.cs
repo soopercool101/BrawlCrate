@@ -10,6 +10,7 @@ namespace BrawlLib.SSBBTypes
     {
         private readonly List<VoidPtr> _values = new List<VoidPtr>();
         public int Count => _values.Count;
+
         public VoidPtr this[int index]
         {
             get
@@ -29,6 +30,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public void Add(params VoidPtr[] valueAddrs)
         {
             foreach (VoidPtr value in valueAddrs)
@@ -49,20 +51,28 @@ namespace BrawlLib.SSBBTypes
         {
             Sort();
 
-            bint* values = (bint*)address;
+            bint* values = (bint*) address;
             foreach (int offset in this)
             {
                 *values++ = offset;
             }
 
-            return (int)values - (int)address;
+            return (int) values - (int) address;
         }
+
         public void Write(ref VoidPtr address)
         {
             address += Write(address);
         }
 
-        public IEnumerator<VoidPtr> GetEnumerator() { return _values.GetEnumerator(); }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<VoidPtr> GetEnumerator()
+        {
+            return _values.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

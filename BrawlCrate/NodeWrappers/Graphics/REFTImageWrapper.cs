@@ -10,6 +10,7 @@ namespace BrawlCrate.NodeWrappers
     public class REFTImageWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static REFTImageWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -27,21 +28,31 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ReEncodeAction(object sender, EventArgs e) { GetInstance<REFTImageWrapper>().ReEncode(); }
+
+        protected static void ReEncodeAction(object sender, EventArgs e)
+        {
+            GetInstance<REFTImageWrapper>().ReEncode();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             REFTImageWrapper w = GetInstance<REFTImageWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
-        public REFTImageWrapper() { ContextMenuStrip = _menu; }
+        public REFTImageWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void ReEncode()
         {
@@ -65,7 +76,7 @@ namespace BrawlCrate.NodeWrappers
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = inStream;
-                    dlg.ShowDialog(MainForm.Instance, (REFTEntryNode)_resource);
+                    dlg.ShowDialog(MainForm.Instance, (REFTEntryNode) _resource);
                 }
             }
         }

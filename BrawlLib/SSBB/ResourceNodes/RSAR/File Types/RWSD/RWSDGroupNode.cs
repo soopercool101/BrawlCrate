@@ -5,7 +5,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RWSDDataGroupNode : ResourceNode
     {
-        internal RWSD_DATAHeader* Header => (RWSD_DATAHeader*)WorkingUncompressed.Address;
+        internal RWSD_DATAHeader* Header => (RWSD_DATAHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RWSDDataGroup;
 
         public override bool OnInitialize()
@@ -27,7 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            RWSD_DATAHeader* header = (RWSD_DATAHeader*)address;
+            RWSD_DATAHeader* header = (RWSD_DATAHeader*) address;
             header->_tag = RWSD_DATAHeader.Tag;
             header->_length = length;
             header->_list._numEntries = Children.Count;
@@ -44,7 +44,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RWSDSoundGroupNode : ResourceNode
     {
-        internal WAVEHeader* Header => (WAVEHeader*)WorkingUncompressed.Address;
+        internal WAVEHeader* Header => (WAVEHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RSARFileSoundGroup;
 
         public VoidPtr _audioAddr;
@@ -82,25 +82,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            WAVEHeader* header = (WAVEHeader*)address;
+            WAVEHeader* header = (WAVEHeader*) address;
             header->_tag = WAVEHeader.Tag;
             header->_numEntries = Children.Count;
             header->_length = length;
-            buint* table = (buint*)header + 3;
+            buint* table = (buint*) header + 3;
             VoidPtr addr = table + Children.Count;
             VoidPtr baseAddr = _audioAddr;
             foreach (WAVESoundNode r in Children)
             {
-                table[r.Index] = (uint)(addr - address);
+                table[r.Index] = (uint) (addr - address);
 
                 r.MoveRawUncompressed(addr, r.WorkingUncompressed.Length);
 
-                WaveInfo* wave = (WaveInfo*)addr;
-                wave->_dataLocation = (uint)(_audioAddr - baseAddr);
+                WaveInfo* wave = (WaveInfo*) addr;
+                wave->_dataLocation = (uint) (_audioAddr - baseAddr);
 
-                Memory.Move(_audioAddr, r._streamBuffer.Address, (uint)r._streamBuffer.Length);
+                Memory.Move(_audioAddr, r._streamBuffer.Address, (uint) r._streamBuffer.Length);
 
-                _audioAddr += (uint)r._streamBuffer.Length;
+                _audioAddr += (uint) r._streamBuffer.Length;
                 addr += r.WorkingUncompressed.Length;
             }
         }

@@ -19,6 +19,7 @@ namespace System.Audio
             OpenAL = 2,
             All = ~0
         };
+
         public static AudioProviderType AvailableTypes = AudioProviderType.All;
 
         public static AudioProvider Create(AudioDevice device)
@@ -43,13 +44,19 @@ namespace System.Audio
                 {
                     return new alAudioProvider();
                 }
-                catch (TypeInitializationException) { }
+                catch (TypeInitializationException)
+                {
+                }
             }
 
             return null;
         }
 
-        ~AudioProvider() { Dispose(); }
+        ~AudioProvider()
+        {
+            Dispose();
+        }
+
         public virtual void Dispose()
         {
             foreach (AudioBuffer buffer in _buffers)

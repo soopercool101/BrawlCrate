@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             // Rebuild children using new address
             for (int i = 0; i < Children.Count; i++)
             {
-                Children[i].Rebuild(address + (i * sizeof(SndBgmTitleEntry)), sizeof(SndBgmTitleEntry), true);
+                Children[i].Rebuild(address + i * sizeof(SndBgmTitleEntry), sizeof(SndBgmTitleEntry), true);
             }
         }
 
@@ -52,6 +52,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 maxID = Math.Max(entry.ID, maxID);
                 maxSongIndex = Math.Max(entry.SongTitleIndex, maxSongIndex);
             }
+
             SndBgmTitleEntryNode n = new SndBgmTitleEntryNode
             {
                 ID = maxID + 1,
@@ -63,12 +64,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class SndBgmTitleEntryNode : ResourceNode
     {
-        [Browsable(false)]
-        public SndBgmTitleDataNode Root => _parent as SndBgmTitleDataNode;
+        [Browsable(false)] public SndBgmTitleDataNode Root => _parent as SndBgmTitleDataNode;
 
-        [Browsable(true)]
-        [Category("Entry")]
-        public string Length => sizeof(SndBgmTitleEntry).ToString("x");
+        [Browsable(true)] [Category("Entry")] public string Length => sizeof(SndBgmTitleEntry).ToString("x");
 
         //internal SndBgmTitleEntry* Header { get { return (SndBgmTitleEntry*)WorkingUncompressed.Address; } }
         public SndBgmTitleEntry Data;
@@ -78,12 +76,30 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Song")]
         [DisplayName("Song ID")]
         [Description("The ID of the song to show the title for.")]
-        public int ID { get => Data._ID; set { Data._ID = value; SignalPropertyChange(); UpdateName(); } }
+        public int ID
+        {
+            get => Data._ID;
+            set
+            {
+                Data._ID = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
 
         [Category("Song")]
         [DisplayName("Song Title Index")]
         [Description("The index of the song title in info.pac (MiscData[140]) and other files.")]
-        public int SongTitleIndex { get => Data._SongTitleIndex; set { Data._SongTitleIndex = value; SignalPropertyChange(); UpdateName(); } }
+        public int SongTitleIndex
+        {
+            get => Data._SongTitleIndex;
+            set
+            {
+                Data._SongTitleIndex = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
 
         public SndBgmTitleEntryNode()
         {
@@ -106,7 +122,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             // Copy the data from the address
-            Data = *(SndBgmTitleEntry*)WorkingUncompressed.Address;
+            Data = *(SndBgmTitleEntry*) WorkingUncompressed.Address;
 
             if (_name == null)
             {
@@ -117,16 +133,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return false;
         }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             // Copy the data back to the address
-            *(SndBgmTitleEntry*)address = Data;
+            *(SndBgmTitleEntry*) address = Data;
         }
+
         public override int OnCalculateSize(bool force)
         {
             // Constant size (48 bytes)
             return sizeof(SndBgmTitleEntry);
         }
+
         public void UpdateName()
         {
             Name = ID.ToString("X4") + " --> " + SongTitleIndex;

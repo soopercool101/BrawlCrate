@@ -37,8 +37,8 @@ namespace BrawlCrate
             // 
             // txtName
             // 
-            txtName.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-                        | AnchorStyles.Right);
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                              | AnchorStyles.Right;
             txtName.Location = new System.Drawing.Point(66, 9);
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(99, 20);
@@ -47,7 +47,7 @@ namespace BrawlCrate
             // 
             // btnOk
             // 
-            btnOk.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnOk.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnOk.Location = new System.Drawing.Point(171, 8);
             btnOk.Name = "btnOk";
             btnOk.Size = new System.Drawing.Size(63, 20);
@@ -58,7 +58,7 @@ namespace BrawlCrate
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCancel.Location = new System.Drawing.Point(240, 8);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(63, 20);
@@ -70,9 +70,9 @@ namespace BrawlCrate
             // treeResource
             // 
             treeResource.AllowContextMenus = false;
-            treeResource.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-                        | AnchorStyles.Left)
-                        | AnchorStyles.Right);
+            treeResource.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                   | AnchorStyles.Left
+                                                   | AnchorStyles.Right;
             treeResource.HideSelection = false;
             treeResource.ImageIndex = 0;
             treeResource.Location = new System.Drawing.Point(12, 35);
@@ -96,7 +96,6 @@ namespace BrawlCrate
             Text = "Sound Cloner";
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
@@ -104,7 +103,10 @@ namespace BrawlCrate
         private RSARFolderNode _parentNode;
         private RSARSoundNode _newNode;
 
-        public CloneSoundDialog() { InitializeComponent(); }
+        public CloneSoundDialog()
+        {
+            InitializeComponent();
+        }
 
         public DialogResult ShowDialog(IWin32Window owner, RSARFolderNode parent)
         {
@@ -124,8 +126,15 @@ namespace BrawlCrate
 
             treeResource.EndUpdate();
 
-            try { return ShowDialog(owner); }
-            finally { _parentNode = null; treeResource.Clear(); }
+            try
+            {
+                return ShowDialog(owner);
+            }
+            finally
+            {
+                _parentNode = null;
+                treeResource.Clear();
+            }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -135,7 +144,7 @@ namespace BrawlCrate
 
             foreach (ResourceNode c in _parentNode.Children)
             {
-                if ((c.Name == name) && !(c is RSARFolderNode))
+                if (c.Name == name && !(c is RSARFolderNode))
                 {
                     MessageBox.Show(this, "A resource with that name already exists!", "What the...");
                     return;
@@ -150,7 +159,7 @@ namespace BrawlCrate
 
             if (treeResource.SelectedNode != null)
             {
-                RSARSoundNode existing = ((BaseWrapper)treeResource.SelectedNode).Resource as RSARSoundNode;
+                RSARSoundNode existing = ((BaseWrapper) treeResource.SelectedNode).Resource as RSARSoundNode;
                 if (existing != null)
                 {
                     _newNode._sound3dParam = existing._sound3dParam;
@@ -185,7 +194,7 @@ namespace BrawlCrate
             if (txtName.Text != "")
             {
                 GenericWrapper node = treeResource.SelectedNode as GenericWrapper;
-                btnOk.Enabled = (node != null) && (node.Resource is RSARSoundNode);
+                btnOk.Enabled = node != null && node.Resource is RSARSoundNode;
             }
             else
             {

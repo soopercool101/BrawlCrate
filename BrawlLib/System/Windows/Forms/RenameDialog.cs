@@ -6,7 +6,10 @@ namespace System.Windows.Forms
     {
         private ResourceNode _node;
 
-        public RenameDialog() { InitializeComponent(); }
+        public RenameDialog()
+        {
+            InitializeComponent();
+        }
 
         public DialogResult ShowDialog(IWin32Window owner, ResourceNode node)
         {
@@ -23,9 +26,16 @@ namespace System.Windows.Forms
 
             txtName.Text = node.Name;
 
-            try { return ShowDialog(owner); }
-            finally { _node = null; }
+            try
+            {
+                return ShowDialog(owner);
+            }
+            finally
+            {
+                _node = null;
+            }
         }
+
         private unsafe void btnOkay_Click(object sender, EventArgs e)
         {
             string name = txtName.Text;
@@ -42,12 +52,12 @@ namespace System.Windows.Forms
                     return;
                 }
             }
-            else if ((!_node.AllowDuplicateNames) && (_node.Parent != null))
+            else if (!_node.AllowDuplicateNames && _node.Parent != null)
             {
                 //No duplicates
                 foreach (ResourceNode c in _node.Parent.Children)
                 {
-                    if ((c.Name == name) && (c.GetType() == _node.GetType()) && (c != _node))
+                    if (c.Name == name && c.GetType() == _node.GetType() && c != _node)
                     {
                         MessageBox.Show(this, "A resource with that name already exists!", "What the...");
                         return;
@@ -58,7 +68,7 @@ namespace System.Windows.Forms
             //Also change palette node
             if (_node is TEX0Node)
             {
-                PLT0Node plt = ((TEX0Node)_node).GetPaletteNode();
+                PLT0Node plt = ((TEX0Node) _node).GetPaletteNode();
                 if (plt != null)
                 {
                     plt.Name = name;
@@ -70,7 +80,11 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
 
         #region Designer
@@ -96,7 +110,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(197, 38);
             btnCancel.Name = "btnCancel";
@@ -108,7 +122,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(116, 38);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -133,10 +147,8 @@ namespace System.Windows.Forms
             Text = "Rename Node";
             ResumeLayout(false);
             PerformLayout();
-
         }
+
         #endregion
-
-
     }
 }

@@ -59,6 +59,7 @@ namespace BrawlLib.Wii
                                     break;
                             }
                         }
+
                         *dPtr++ = 0x3E; // >
                         break;
 
@@ -72,7 +73,7 @@ namespace BrawlLib.Wii
                 }
             }
 
-            int input_count = (int)dPtr - (int)buffer;
+            int input_count = (int) dPtr - (int) buffer;
             int output_count = Encoding.UTF8.GetDecoder().GetCharCount(buffer, input_count, true);
             char[] buffer2 = new char[output_count];
             fixed (char* ptr = buffer2)
@@ -80,6 +81,7 @@ namespace BrawlLib.Wii
                 Encoding.UTF8.GetDecoder().GetChars(buffer, input_count,
                     ptr, output_count, true);
             }
+
             return new string(buffer2);
         }
 
@@ -107,16 +109,18 @@ namespace BrawlLib.Wii
                     Encoding.UTF8.GetEncoder().Convert(p, s.Length, b, utf8.Length, true,
                         out int charsUsed, out int bytesUsed, out completed);
                 }
+
                 if (!completed)
                 {
                     throw new Exception("Could not encode the MSBin file.");
                 }
             }
+
             // The loop below is ignorant of UTF8, but it looks for certain ASCII characters and writes each character as 1 byte, so hopefully this kludge will make it work
             char[] utf8_to_char_array = new char[utf8.Length];
             for (int i = 0; i < utf8.Length; i++)
             {
-                utf8_to_char_array[i] = (char)utf8[i];
+                utf8_to_char_array[i] = (char) utf8[i];
             }
 
             fixed (char* p = utf8_to_char_array)
@@ -130,22 +134,22 @@ namespace BrawlLib.Wii
                     {
                         char* last = sPtr;
                         byte* tPtr = buffer;
-                        while ((last < ceil) && ((c = *last++) != '>'))
+                        while (last < ceil && (c = *last++) != '>')
                         {
                             if (c != ' ')
                             {
-                                *tPtr++ = (byte)c;
+                                *tPtr++ = (byte) c;
                             }
                         }
 
                         if (c != '>')
                         {
-                            *dPtr++ = (byte)'<';
+                            *dPtr++ = (byte) '<';
                         }
                         else
                         {
                             sPtr = last;
-                            bLen = (int)tPtr - (int)buffer;
+                            bLen = (int) tPtr - (int) buffer;
                             ToLower(buffer, bLen);
 
                             byte* control = dPtr;
@@ -186,22 +190,22 @@ namespace BrawlLib.Wii
                     {
                         char* last = sPtr;
                         byte* tPtr = buffer;
-                        while ((last < ceil) && ((c = *last++) != ']'))
+                        while (last < ceil && (c = *last++) != ']')
                         {
                             if (c != ' ')
                             {
-                                *tPtr++ = (byte)c;
+                                *tPtr++ = (byte) c;
                             }
                         }
 
                         if (c != ']')
                         {
-                            *dPtr++ = (byte)']';
+                            *dPtr++ = (byte) ']';
                         }
                         else
                         {
                             sPtr = last;
-                            bLen = (int)tPtr - (int)buffer;
+                            bLen = (int) tPtr - (int) buffer;
                             ToLower(buffer, bLen);
 
                             if ((colorIndex = IndexOf(buffer, bLen, "border=")) >= 0)
@@ -217,18 +221,20 @@ namespace BrawlLib.Wii
                     {
                         if (sPtr < ceil)
                         {
-                            *dPtr++ = (byte)*sPtr++;
+                            *dPtr++ = (byte) *sPtr++;
                         }
                     }
-                    else if (c == '\r') { } //do nothing
+                    else if (c == '\r')
+                    {
+                    } //do nothing
                     else
                     {
-                        *dPtr++ = (byte)c;
+                        *dPtr++ = (byte) c;
                     }
                 }
             }
 
-            return (int)dPtr - (int)first;
+            return (int) dPtr - (int) first;
         }
 
         public static int GetStringSize(string s)
@@ -255,16 +261,18 @@ namespace BrawlLib.Wii
                     Encoding.UTF8.GetEncoder().Convert(p, s.Length, b, utf8.Length, true,
                         out int charsUsed, out int bytesUsed, out completed);
                 }
+
                 if (!completed)
                 {
                     throw new Exception("Could not encode the MSBin file.");
                 }
             }
+
             // The loop below is ignorant of UTF8, but it looks for certain ASCII characters and writes each character as 1 byte, so hopefully this kludge will make it work
             char[] utf8_to_char_array = new char[utf8.Length];
             for (int i = 0; i < utf8.Length; i++)
             {
-                utf8_to_char_array[i] = (char)utf8[i];
+                utf8_to_char_array[i] = (char) utf8[i];
             }
 
             fixed (char* p = utf8_to_char_array)
@@ -278,11 +286,11 @@ namespace BrawlLib.Wii
                     {
                         char* last = sPtr;
                         byte* tPtr = buffer;
-                        while ((last < ceil) && ((c = *last++) != '>'))
+                        while (last < ceil && (c = *last++) != '>')
                         {
                             if (c != ' ')
                             {
-                                *tPtr++ = (byte)c;
+                                *tPtr++ = (byte) c;
                             }
                         }
 
@@ -293,7 +301,7 @@ namespace BrawlLib.Wii
                         else
                         {
                             sPtr = last;
-                            bLen = (int)tPtr - (int)buffer;
+                            bLen = (int) tPtr - (int) buffer;
                             ToLower(buffer, bLen);
 
                             if (hasColor = StrContains(buffer, bLen, "color="))
@@ -321,11 +329,11 @@ namespace BrawlLib.Wii
                     {
                         char* last = sPtr;
                         byte* tPtr = buffer;
-                        while ((last < ceil) && ((c = *last++) != ']'))
+                        while (last < ceil && (c = *last++) != ']')
                         {
                             if (c != ' ')
                             {
-                                *tPtr++ = (byte)c;
+                                *tPtr++ = (byte) c;
                             }
                         }
 
@@ -336,7 +344,7 @@ namespace BrawlLib.Wii
                         else
                         {
                             sPtr = last;
-                            bLen = (int)tPtr - (int)buffer;
+                            bLen = (int) tPtr - (int) buffer;
                             ToLower(buffer, bLen);
 
                             if (StrContains(buffer, bLen, "border="))
@@ -353,13 +361,16 @@ namespace BrawlLib.Wii
                             len++;
                         }
                     }
-                    else if (c == '\r') { } //do nothing
+                    else if (c == '\r')
+                    {
+                    } //do nothing
                     else
                     {
                         len++;
                     }
                 }
             }
+
             return len;
         }
 
@@ -371,21 +382,23 @@ namespace BrawlLib.Wii
             {
                 for (int i = 0; i < len;)
                 {
-                    *dPtr++ = (byte)sPtr[i++];
+                    *dPtr++ = (byte) sPtr[i++];
                 }
             }
         }
+
         private static void WriteHex(ref byte* dPtr, ref byte* sPtr, int len)
         {
             for (int i = 0; i++ < len;)
             {
                 byte b = *sPtr++;
-                *dPtr++ = (b >= 0xA0) ? (byte)((b >> 4) + 0x37) : (byte)((b >> 4) + 0x30);
+                *dPtr++ = b >= 0xA0 ? (byte) ((b >> 4) + 0x37) : (byte) ((b >> 4) + 0x30);
 
                 b &= 0x0F;
-                *dPtr++ = (b >= 0x0A) ? (byte)(b + 0x37) : (byte)(b + 0x30);
+                *dPtr++ = b >= 0x0A ? (byte) (b + 0x37) : (byte) (b + 0x30);
             }
         }
+
         private static void ReadHex(ref byte* dPtr, ref byte* sPtr, int len)
         {
             byte* buffer = stackalloc byte[2];
@@ -394,15 +407,15 @@ namespace BrawlLib.Wii
                 for (int x = 0; x < 2; x++)
                 {
                     byte b = *sPtr++;
-                    if ((b >= 0x30) && (b <= 0x39))
+                    if (b >= 0x30 && b <= 0x39)
                     {
                         b -= 0x30;
                     }
-                    else if ((b >= 0x41) && (b <= 0x5A))
+                    else if (b >= 0x41 && b <= 0x5A)
                     {
                         b -= 0x37;
                     }
-                    else if ((b >= 0x61) && (b <= 0x7A))
+                    else if (b >= 0x61 && b <= 0x7A)
                     {
                         b -= 0x57;
                     }
@@ -413,21 +426,24 @@ namespace BrawlLib.Wii
 
                     buffer[x] = b;
                 }
-                *dPtr++ = (byte)((buffer[0] << 4) | buffer[1]);
+
+                *dPtr++ = (byte) ((buffer[0] << 4) | buffer[1]);
             }
         }
+
         private static void ToLower(byte* ptr, int len)
         {
             byte b;
             for (byte* ceil = ptr + len; ptr < ceil; ptr++)
             {
                 b = *ptr;
-                if ((b > 0x40) && (b < 0x5B))
+                if (b > 0x40 && b < 0x5B)
                 {
-                    *ptr = (byte)(b + 0x20);
+                    *ptr = (byte) (b + 0x20);
                 }
             }
         }
+
         private static int IndexOf(byte* ptr, int len, string s)
         {
             int slen = s.Length;
@@ -435,7 +451,7 @@ namespace BrawlLib.Wii
 
             for (int start = 0, end = slen - 1; end < len; start++, end++)
             {
-                for (x = start, y = 0; (y < slen) && (ptr[x++] == s[y++]);)
+                for (x = start, y = 0; y < slen && ptr[x++] == s[y++];)
                 {
                     ;
                 }
@@ -445,8 +461,10 @@ namespace BrawlLib.Wii
                     return start;
                 }
             }
+
             return -1;
         }
+
         private static bool StrContains(byte* ptr, int len, string s)
         {
             int slen = s.Length;
@@ -454,7 +472,7 @@ namespace BrawlLib.Wii
 
             for (int start = 0, end = slen - 1; end < len; start++, end++)
             {
-                for (x = start, y = 0; (y < slen) && (ptr[x++] == s[y++]);)
+                for (x = start, y = 0; y < slen && ptr[x++] == s[y++];)
                 {
                     ;
                 }
@@ -464,6 +482,7 @@ namespace BrawlLib.Wii
                     return true;
                 }
             }
+
             return false;
         }
     }

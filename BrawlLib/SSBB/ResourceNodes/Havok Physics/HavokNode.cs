@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public const bool AssignClassParents = true;
 
-        internal HKXHeader* Header => (HKXHeader*)WorkingUncompressed.Address;
+        internal HKXHeader* Header => (HKXHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Havok;
 
         protected override string GetName()
@@ -20,14 +20,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             return base.GetName("HavokData");
         }
 
-        [Category("Havok Physics")]
-        public int UserTag => Header->_userTag;
-        [Category("Havok Physics")]
-        public int Version => Header->_classVersion;
-        [Category("Havok Physics")]
-        public string VersionString => _versionString;
-        [Category("Havok Physics")]
-        public string RootClass => _rootClass;
+        [Category("Havok Physics")] public int UserTag => Header->_userTag;
+        [Category("Havok Physics")] public int Version => Header->_classVersion;
+        [Category("Havok Physics")] public string VersionString => _versionString;
+        [Category("Havok Physics")] public string RootClass => _rootClass;
 
         public Dictionary<string, uint> MainTypeSignatures => _mainTypeSignatures;
         public Dictionary<string, uint> MainDataSignatures => _mainDataSignatures;
@@ -57,7 +53,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             PatchPointers();
 
             PhysicsOffsetSection* section = Header->OffsetSections;
-            sbyte* classNames = (sbyte*)(_buffer.Address + section[Header->_classNameSectionIndex]._dataOffset);
+            sbyte* classNames = (sbyte*) (_buffer.Address + section[Header->_classNameSectionIndex]._dataOffset);
             _rootClass = new string(classNames + Header->_rootClassNameOffset);
 
             return true;
@@ -72,9 +68,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Make a copy of the file's data that we can patch with offsets
             _buffer = new UnsafeBuffer(WorkingUncompressed.Length);
-            Memory.Move(_buffer.Address, WorkingUncompressed.Address, (uint)WorkingUncompressed.Length);
+            Memory.Move(_buffer.Address, WorkingUncompressed.Address, (uint) WorkingUncompressed.Length);
 
-            HKXHeader* header = (HKXHeader*)_buffer.Address;
+            HKXHeader* header = (HKXHeader*) _buffer.Address;
             PhysicsOffsetSection* section = header->OffsetSections;
             for (int i = 0; i < header->_sectionCount; i++, section++)
             {
@@ -97,12 +93,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     //Global patches set offsets from this section to data in another section (or this one)
                     VoidPtr start = data + section->_globalPatchesOffset;
-                    GlobalPatch* patch = (GlobalPatch*)start;
-                    while ((int)patch - (int)start < global && patch->_dataOffset >= 0 && patch->_pointerOffset >= 0)
+                    GlobalPatch* patch = (GlobalPatch*) start;
+                    while ((int) patch - (int) start < global && patch->_dataOffset >= 0 && patch->_pointerOffset >= 0)
                     {
                         //Make the pointer offset relative to itself so it's self-contained
                         int ptrOffset = patch->_pointerOffset;
-                        bint* ptr = (bint*)(data + ptrOffset);
+                        bint* ptr = (bint*) (data + ptrOffset);
                         PhysicsOffsetSection* otherSection = &header->OffsetSections[patch->_sectionIndex];
                         int dOffset = patch->_dataOffset + otherSection->_dataOffset - dataOffset;
                         int offset = dOffset - ptrOffset;
@@ -110,16 +106,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                         patch++;
                     }
                 }
+
                 if (local > 0)
                 {
                     //Local patches set offsets to data located elsewhere in this section
                     VoidPtr start = data + section->_localPatchesOffset;
-                    LocalPatch* patch = (LocalPatch*)start;
-                    while ((int)patch - (int)start < local && patch->_dataOffset >= 0)
+                    LocalPatch* patch = (LocalPatch*) start;
+                    while ((int) patch - (int) start < local && patch->_dataOffset >= 0)
                     {
                         //Make the pointer offset relative to itself so it's self-contained
                         int ptrOffset = patch->_pointerOffset;
-                        bint* ptr = (bint*)(data + ptrOffset);
+                        bint* ptr = (bint*) (data + ptrOffset);
                         *ptr = patch->_dataOffset - ptrOffset;
                         patch++;
                     }
@@ -129,18 +126,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            HKXHeader* header = (HKXHeader*)_buffer.Address;
+            HKXHeader* header = (HKXHeader*) _buffer.Address;
             PhysicsOffsetSection* section = header->OffsetSections;
 
             PhysicsOffsetSection* classes = &section[header->_classNameSectionIndex];
-            sbyte* classNames = (sbyte*)(_buffer.Address + classes->_dataOffset);
+            sbyte* classNames = (sbyte*) (_buffer.Address + classes->_dataOffset);
 
             VoidPtr dataAddr = classNames;
             VoidPtr baseAddr = dataAddr;
-            while (dataAddr - baseAddr < classes->DataLength && *(byte*)(dataAddr + 4) == 9)
+            while (dataAddr - baseAddr < classes->DataLength && *(byte*) (dataAddr + 4) == 9)
             {
-                uint signature = *(buint*)dataAddr;
-                string c = new string((sbyte*)dataAddr + 5);
+                uint signature = *(buint*) dataAddr;
+                string c = new string((sbyte*) dataAddr + 5);
                 if (!_allSignatures.ContainsKey(c))
                 {
                     _allSignatures.Add(c, signature);
@@ -177,13 +174,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     //sectionNode.Children.Add(enumGroup);
 
                     VoidPtr start = data + section->_classNamePatchesOffset;
-                    ClassNamePatch* patch = (ClassNamePatch*)start;
+                    ClassNamePatch* patch = (ClassNamePatch*) start;
 
                     int x = 0;
-                    while ((int)patch - (int)start < classNamePatchLength && patch->_dataOffset >= 0)
+                    while ((int) patch - (int) start < classNamePatchLength && patch->_dataOffset >= 0)
                     {
                         string className = new string(classNames + patch->_classNameOffset);
-                        uint signature = *(buint*)(classNames + (patch->_classNameOffset - 5));
+                        uint signature = *(buint*) (classNames + (patch->_classNameOffset - 5));
                         if (!_mainTypeSignatures.ContainsKey(className))
                         {
                             _mainTypeSignatures.Add(className, signature);
@@ -196,6 +193,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             entry._className = className;
                             entry.Initialize(sectionNode, data + patch->_dataOffset, 0);
                         }
+
                         patch++;
                         x++;
                     }
@@ -246,6 +244,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             n._parent._children.Add(n);
                         }
                     }
+
                     foreach (HavokClassNode classNode in sectionNode._classCache)
                     {
                         if (classNode is hkClassNode)
@@ -279,13 +278,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     uint rootOffset = header->_rootClassNameOffset;
 
                     VoidPtr start = data + section->_classNamePatchesOffset;
-                    ClassNamePatch* patch = (ClassNamePatch*)start;
+                    ClassNamePatch* patch = (ClassNamePatch*) start;
 
                     int x = 0;
-                    while ((int)patch - (int)start < classNamePatchLength && patch->_dataOffset >= 0)
+                    while ((int) patch - (int) start < classNamePatchLength && patch->_dataOffset >= 0)
                     {
                         string className = new string(classNames + patch->_classNameOffset);
-                        uint signature = *(buint*)(classNames + (patch->_classNameOffset - 5));
+                        uint signature = *(buint*) (classNames + (patch->_classNameOffset - 5));
 
                         if (!_mainDataSignatures.ContainsKey(className))
                         {
@@ -295,8 +294,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         HavokClassNode entry = GetClassNode(className);
                         if (entry != null && patch->_classNameOffset == rootOffset)
                         {
-                            new HavokMetaObjectNode(entry as hkClassNode) { _signature = signature }
-                            .Initialize(sectionNode, data + patch->_dataOffset, 0);
+                            new HavokMetaObjectNode(entry as hkClassNode) {_signature = signature}
+                                .Initialize(sectionNode, data + patch->_dataOffset, 0);
                         }
 
                         patch++;
@@ -308,8 +307,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private static readonly Dictionary<string, Type> _classNodeTypes = new Dictionary<string, Type>()
         {
-            { "hkClass", typeof(hkClassNode) },
-            { "hkClassEnum", typeof(hkClassEnumNode) },
+            {"hkClass", typeof(hkClassNode)},
+            {"hkClassEnum", typeof(hkClassEnumNode)},
 
             //Class types can be explicitly supported
             //Otherwise they are interpreted with a meta object node
@@ -317,6 +316,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //{ "hkxScene", typeof(hkxSceneNode) },
             //{ "hkPhysicsData", typeof(hkPhysicsDataNode) },
         };
+
         public HavokClassNode GetClassNode(string className, bool searchClasses = true)
         {
             HavokClassNode e = null;
@@ -379,7 +379,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            Memory.Move(address, WorkingUncompressed.Address, (uint)length);
+            Memory.Move(address, WorkingUncompressed.Address, (uint) length);
             foreach (HavokEntryNode r in Children)
             {
                 RecursiveRebuild(r, address);
@@ -407,7 +407,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Replace(fileName, prot, options);
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((HKXHeader*)source.Address)->_tag1 == HKXHeader.Tag1 ? new HavokNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((HKXHeader*) source.Address)->_tag1 == HKXHeader.Tag1 ? new HavokNode() : null;
+        }
 
         public bool IsValid()
         {
@@ -435,7 +438,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = _parent;
-                while (!(n is HavokNode) && (n != null))
+                while (!(n is HavokNode) && n != null)
                 {
                     n = n._parent;
                 }
@@ -452,7 +455,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 HavokNode p = HavokNode;
                 if (p != null)
                 {
-                    return (int)WorkingUncompressed.Address - (int)p._buffer.Address;
+                    return (int) WorkingUncompressed.Address - (int) p._buffer.Address;
                 }
                 else
                 {
@@ -474,8 +477,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return "null";
             }
         }
+
         public string DataSize => "0x" + WorkingUncompressed.Length.ToString("X");
     }
+
     public unsafe class HavokGroupNode : HavokEntryNode
     {
         public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
@@ -483,12 +488,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public abstract unsafe class HavokClassNode : HavokEntryNode
     {
-        [Category("Havok Class")]
-        public string ClassName => _className;
+        [Category("Havok Class")] public string ClassName => _className;
         public string _className;
         public uint _signature;
 
-        public virtual void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes) { }
+        public virtual void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)
+        {
+        }
     }
 
     public unsafe class HavokSectionNode : HavokEntryNode

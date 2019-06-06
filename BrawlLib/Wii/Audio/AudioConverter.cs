@@ -24,11 +24,11 @@ namespace BrawlLib.Wii.Audio
             double** bufferArray = stackalloc double*[8];
             for (int z = 0; z < 8; z++)
             {
-                bufferArray[z] = (double*)Marshal.AllocHGlobal(3 * 8);
+                bufferArray[z] = (double*) Marshal.AllocHGlobal(3 * 8);
             }
 
             double* buffer2 = stackalloc double[3];
-            short* sampleBuffer = (short*)Marshal.AllocHGlobal(0x7000);
+            short* sampleBuffer = (short*) Marshal.AllocHGlobal(0x7000);
             short* chunkBuffer = stackalloc short[28];
             //double** chunkBuffer = (double**)chunkBufferData;
             for (int z = 0; z < 28; z++)
@@ -42,12 +42,12 @@ namespace BrawlLib.Wii.Audio
             double** pChannels = stackalloc double*[3];
             for (int z = 0; z <= 2; z++)
             {
-                pChannels[z] = (double*)Marshal.AllocHGlobal(3 * 8);
+                pChannels[z] = (double*) Marshal.AllocHGlobal(3 * 8);
             }
 
             int* anotherBuffer = stackalloc int[3];
 
-            double** multiBuffer = (double**)Marshal.AllocHGlobal(numBlocks * 4 * 2);
+            double** multiBuffer = (double**) Marshal.AllocHGlobal(numBlocks * 4 * 2);
             int unused = 0;
             int multiIndex = 0;
 
@@ -71,7 +71,7 @@ namespace BrawlLib.Wii.Audio
                 else
                 {
                     blockSamples = x;
-                    for (int z = 0; (z < 14) && ((z + blockSamples) < 0x3800); z++)
+                    for (int z = 0; z < 14 && z + blockSamples < 0x3800; z++)
                     {
                         sampleBuffer[blockSamples + z] = 0;
                     }
@@ -107,7 +107,7 @@ namespace BrawlLib.Wii.Audio
                             sChunkBuffer[0] = 1.0;
                             if (Something5(sChunkBuffer, omgBuffer) == 0)
                             {
-                                multiBuffer[multiIndex] = (double*)Marshal.AllocHGlobal(3 * 8);
+                                multiBuffer[multiIndex] = (double*) Marshal.AllocHGlobal(3 * 8);
                                 multiBuffer[multiIndex][0] = 1.0;
                                 for (int z = 1; z <= 2; z++)
                                 {
@@ -121,18 +121,20 @@ namespace BrawlLib.Wii.Audio
                                         omgBuffer[z] = -0.9999999999;
                                     }
                                 }
+
                                 Something6(omgBuffer, multiBuffer[multiIndex]);
                                 multiIndex++;
                             }
                         }
                     }
+
                     unused++;
                 }
 
                 if (progress != null)
                 {
                     lastUpdate += blockSamples;
-                    if ((lastUpdate % 0x3800) == 0)
+                    if (lastUpdate % 0x3800 == 0)
                     {
                         progress.Update(progress.CurrentValue + 0x3800);
                     }
@@ -178,6 +180,7 @@ namespace BrawlLib.Wii.Audio
                     omgBuffer[y] = -0.9999999999;
                 }
             }
+
             Something6(omgBuffer, bufferArray[0]);
 
             for (int w = 0; w < nBits;)
@@ -202,11 +205,11 @@ namespace BrawlLib.Wii.Audio
                     double d = -bufferArray[z][y + 1] * 2048.0;
                     if (d > 0.0)
                     {
-                        dest[(z << 1) + y] = (d > 32767.0) ? (short)32767 : (short)(d + 0.5);
+                        dest[(z << 1) + y] = d > 32767.0 ? (short) 32767 : (short) (d + 0.5);
                     }
                     else
                     {
-                        dest[(z << 1) + y] = (d < -32768.0) ? (short)-32768 : (short)(d - 0.5);
+                        dest[(z << 1) + y] = d < -32768.0 ? (short) -32768 : (short) (d - 0.5);
                     }
                 }
             }
@@ -214,22 +217,22 @@ namespace BrawlLib.Wii.Audio
             //Free memory
             for (int i = 0; i < multiIndex; i++)
             {
-                Marshal.FreeHGlobal((IntPtr)multiBuffer[i]);
+                Marshal.FreeHGlobal((IntPtr) multiBuffer[i]);
             }
 
-            Marshal.FreeHGlobal((IntPtr)multiBuffer);
+            Marshal.FreeHGlobal((IntPtr) multiBuffer);
 
             for (int i = 0; i <= 2; i++)
             {
-                Marshal.FreeHGlobal((IntPtr)pChannels[i]);
+                Marshal.FreeHGlobal((IntPtr) pChannels[i]);
             }
 
             for (int i = 0; i < 8; i++)
             {
-                Marshal.FreeHGlobal((IntPtr)bufferArray[i]);
+                Marshal.FreeHGlobal((IntPtr) bufferArray[i]);
             }
 
-            Marshal.FreeHGlobal((IntPtr)sampleBuffer);
+            Marshal.FreeHGlobal((IntPtr) sampleBuffer);
 
             //return coefs;
         }
@@ -275,11 +278,11 @@ namespace BrawlLib.Wii.Audio
                 for (int y = 0; y < samples; y++)
                 {
                     //Multiply previous samples by coefs
-                    *t1++ = v1 = ((*sPtr++ * coefs[1]) + (*sPtr++ * coefs[0])) / 2048;
+                    *t1++ = v1 = (*sPtr++ * coefs[1] + *sPtr++ * coefs[0]) / 2048;
                     //Subtract from current sample
                     v2 = *sPtr-- - v1;
                     //Clamp
-                    v3 = (v2 >= 32767) ? 32767 : (v2 <= -32768) ? -32768 : v2;
+                    v3 = v2 >= 32767 ? 32767 : v2 <= -32768 ? -32768 : v2;
                     //Compare distance
                     if (Math.Abs(v3) > Math.Abs(distance))
                     {
@@ -288,12 +291,12 @@ namespace BrawlLib.Wii.Audio
                 }
 
                 //Set initial scale
-                for (scale = 0; (scale <= 12) && ((distance > 7) || (distance < -8)); scale++, distance /= 2)
+                for (scale = 0; scale <= 12 && (distance > 7 || distance < -8); scale++, distance /= 2)
                 {
                     ;
                 }
 
-                scale = (scale <= 1) ? -1 : scale - 2;
+                scale = scale <= 1 ? -1 : scale - 2;
 
                 do
                 {
@@ -307,11 +310,13 @@ namespace BrawlLib.Wii.Audio
                     for (int y = 0; y < samples; y++)
                     {
                         //Multiply previous 
-                        v1 = ((*t1++ * coefs[1]) + (*t1++ * coefs[0]));
+                        v1 = *t1++ * coefs[1] + *t1++ * coefs[0];
                         //Evaluate from real sample
                         v2 = ((*sPtr << 11) - v1) / 2048;
                         //Round to nearest sample
-                        v3 = (v2 > 0) ? (int)((double)v2 / (1 << scale) + 0.4999999f) : (int)((double)v2 / (1 << scale) - 0.4999999f);
+                        v3 = v2 > 0
+                            ? (int) ((double) v2 / (1 << scale) + 0.4999999f)
+                            : (int) ((double) v2 / (1 << scale) - 0.4999999f);
 
                         //Clamp sample and set index
                         if (v3 < -8)
@@ -339,10 +344,10 @@ namespace BrawlLib.Wii.Audio
                         //Round and expand
                         v1 = (v1 + ((v3 * (1 << scale)) << 11) + 1024) >> 11;
                         //Clamp and store
-                        *t1-- = v2 = (v1 >= 32767) ? 32767 : (v1 <= -32768) ? -32768 : v1;
+                        *t1-- = v2 = v1 >= 32767 ? 32767 : v1 <= -32768 ? -32768 : v1;
                         //Accumulate distance
                         v3 = *sPtr++ - v2;
-                        distAccum += (double)v3 * v3;
+                        distAccum += (double) v3 * v3;
                     }
 
                     for (int x = index + 8; x > 256; x >>= 1)
@@ -352,7 +357,7 @@ namespace BrawlLib.Wii.Audio
                             scale = 11;
                         }
                     }
-                } while ((scale < 12) && (index > 1));
+                } while (scale < 12 && index > 1);
 
                 if (distAccum < bestDistance)
                 {
@@ -363,7 +368,7 @@ namespace BrawlLib.Wii.Audio
             }
 
             p1 = buffer1 + (bestIndex << 4) + 2;
-            p2 = buffer2 + (bestIndex * 14);
+            p2 = buffer2 + bestIndex * 14;
 
             //Set resulting yn values
             //*yn++ = (short)*p1++;
@@ -373,11 +378,11 @@ namespace BrawlLib.Wii.Audio
             sPtr = source + 2;
             for (int i = 0; i < samples; i++)
             {
-                *sPtr++ = (short)*p1++;
+                *sPtr++ = (short) *p1++;
             }
 
             //Write ps
-            *dest++ = (byte)((bestIndex << 4) | (bestScale & 0xF));
+            *dest++ = (byte) ((bestIndex << 4) | (bestScale & 0xF));
 
             //Zero remaining samples
             for (int i = samples; i < 14; i++)
@@ -388,11 +393,12 @@ namespace BrawlLib.Wii.Audio
             //Write output samples
             for (int y = 0; y++ < 7;)
             {
-                *dest++ = (byte)((*p2++ << 4) | (*p2++ & 0xF));
+                *dest++ = (byte) ((*p2++ << 4) | (*p2++ & 0xF));
             }
         }
 
-        private static unsafe void Something10(double** bufferArray, int mask, double** multiBuffer, int multiIndex, double val)
+        private static unsafe void Something10(double** bufferArray, int mask, double** multiBuffer, int multiIndex,
+                                               double val)
         {
             double** bufferList = stackalloc double*[mask];
 
@@ -404,7 +410,7 @@ namespace BrawlLib.Wii.Audio
 
             for (int i = 0; i < mask; i++)
             {
-                bufferList[i] = (double*)Marshal.AllocHGlobal(8 * 3);
+                bufferList[i] = (double*) Marshal.AllocHGlobal(8 * 3);
             }
 
             for (int x = 0; x < 2; x++)
@@ -417,6 +423,7 @@ namespace BrawlLib.Wii.Audio
                         bufferList[y][i] = 0.0;
                     }
                 }
+
                 for (int z = 0; z < multiIndex; z++)
                 {
                     index = 0;
@@ -430,6 +437,7 @@ namespace BrawlLib.Wii.Audio
                             index = i;
                         }
                     }
+
                     buffer1[index]++;
                     Something7(multiBuffer[z], buffer2);
                     for (int i = 0; i <= 2; i++)
@@ -464,13 +472,14 @@ namespace BrawlLib.Wii.Audio
                             buffer2[y] = -0.9999999999;
                         }
                     }
+
                     Something6(buffer2, bufferArray[i]);
                 }
             }
 
             for (int i = 0; i < mask; i++)
             {
-                Marshal.FreeHGlobal((IntPtr)bufferList[i]);
+                Marshal.FreeHGlobal((IntPtr) bufferList[i]);
             }
         }
 
@@ -478,10 +487,10 @@ namespace BrawlLib.Wii.Audio
         {
             double* b = stackalloc double[3];
             Something12(source2, b);
-            double val1 = (source1[0] * source1[0]) + (source1[1] * source1[1]) + (source1[2] * source1[2]);
-            double val2 = (source1[0] * source1[1]) + (source1[1] * source1[2]);
+            double val1 = source1[0] * source1[0] + source1[1] * source1[1] + source1[2] * source1[2];
+            double val2 = source1[0] * source1[1] + source1[1] * source1[2];
             double val3 = source1[0] * source1[2];
-            return (b[0] * val1) + (2.0 * b[1] * val2) + (2.0 * b[2] * val3);
+            return b[0] * val1 + 2.0 * b[1] * val2 + 2.0 * b[2] * val3;
         }
 
         private static unsafe void Something12(double* source, double* dest)
@@ -491,7 +500,7 @@ namespace BrawlLib.Wii.Audio
 
             dest[0] = 1.0;
             dest[1] = val * dest[0];
-            dest[2] = (v2 * dest[1]) + (v3 * dest[0]);
+            dest[2] = v2 * dest[1] + v3 * dest[0];
         }
 
         private static unsafe void Something9(double** bufferArray, double* buffer2, int mask, double value)
@@ -500,7 +509,7 @@ namespace BrawlLib.Wii.Audio
             {
                 for (int y = 0; y <= 2; y++)
                 {
-                    bufferArray[mask + i][y] = (value * buffer2[y]) + bufferArray[i][y];
+                    bufferArray[mask + i][y] = value * buffer2[y] + bufferArray[i][y];
                 }
             }
         }
@@ -540,7 +549,7 @@ namespace BrawlLib.Wii.Audio
                     dst[y] += dst[i] * dst[i - y];
                 }
 
-                val *= 1.0 - (dst[i] * dst[i]);
+                val *= 1.0 - dst[i] * dst[i];
             }
 
             *outVar = val;
@@ -580,10 +589,10 @@ namespace BrawlLib.Wii.Audio
 
             for (int i = 2; i > 0; i--)
             {
-                double val = 1.0 - (buffer[i * 3 + i] * buffer[i * 3 + i]);
+                double val = 1.0 - buffer[i * 3 + i] * buffer[i * 3 + i];
                 for (int y = 1; y <= i; y++)
                 {
-                    buffer[(i - 1) * 3 + y] = ((buffer[i * 3 + i] * buffer[i * 3 + y]) + buffer[i * 3 + y]) / val;
+                    buffer[(i - 1) * 3 + y] = (buffer[i * 3 + i] * buffer[i * 3 + y] + buffer[i * 3 + y]) / val;
                 }
             }
 
@@ -645,6 +654,7 @@ namespace BrawlLib.Wii.Audio
                         val = tmp;
                     }
                 }
+
                 if (val == 0.0)
                 {
                     return true;
@@ -693,6 +703,7 @@ namespace BrawlLib.Wii.Audio
                         outList[maxIndex][y] = outList[i][y];
                         outList[i][y] = tmp;
                     }
+
                     *unk = -*unk;
                     buffer[maxIndex] = buffer[i];
                 }
@@ -825,13 +836,13 @@ namespace BrawlLib.Wii.Audio
             double v0, v1, v2 = block[2];
             double tmp;
 
-            if ((tmp = 1.0 - (v2 * v2)) == 0.0)
+            if ((tmp = 1.0 - v2 * v2) == 0.0)
             {
                 return 1;
             }
 
-            v0 = (block[0] - (v2 * v2)) / tmp;
-            v1 = (block[1] - (block[1] * v2)) / tmp;
+            v0 = (block[0] - v2 * v2) / tmp;
+            v1 = (block[1] - block[1] * v2) / tmp;
 
             block[0] = v0;
             block[1] = v1;
@@ -839,7 +850,7 @@ namespace BrawlLib.Wii.Audio
             buffer[1] = v1;
             buffer[2] = v2;
 
-            return (Math.Abs(v1) > 1.0) ? 1 : 0;
+            return Math.Abs(v1) > 1.0 ? 1 : 0;
         }
 
         private static unsafe void Something6(double* omgBuffer, double* buffer)
@@ -861,7 +872,7 @@ namespace BrawlLib.Wii.Audio
             double d1 = omgBuffer[1], d2 = omgBuffer[2];
 
             buffer[0] = 1.0;
-            buffer[1] = (d2 * d1) + d1;
+            buffer[1] = d2 * d1 + d1;
             buffer[2] = d2;
         }
     }

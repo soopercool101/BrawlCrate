@@ -14,6 +14,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
         }
 
         public Strip BestStrip => m_Strip;
+
         public void Challenge(Strip Strip, uint Degree, uint CacheHits)
         {
             if (Strip.Size < m_MinStripSize)
@@ -39,7 +40,8 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     m_Degree = Degree;
                     m_CacheHits = CacheHits;
                 }
-                else if ((CacheHits == m_CacheHits) && (((m_Strip.Size != 0) && (Degree < m_Degree)) || (Strip.Size > m_Strip.Size)))
+                else if (CacheHits == m_CacheHits &&
+                         (m_Strip.Size != 0 && Degree < m_Degree || Strip.Size > m_Strip.Size))
                 {
                     //Priority 2: Keep the strip with the loneliest start triangle
                     //Priority 3: Keep the longest strip

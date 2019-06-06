@@ -246,15 +246,19 @@ namespace System.Windows.Forms
             // listAnims
             // 
             listAnims.AutoArrange = false;
-            listAnims.Columns.AddRange(new ColumnHeader[] {
-            nameColumn});
+            listAnims.Columns.AddRange(new ColumnHeader[]
+            {
+                nameColumn
+            });
             listAnims.ContextMenuStrip = ctxAnimList;
             listAnims.Cursor = Cursors.Default;
             listAnims.Dock = DockStyle.Fill;
             listViewGroup2.Header = "Animations";
             listViewGroup2.Name = "grpAnims";
-            listAnims.Groups.AddRange(new ListViewGroup[] {
-            listViewGroup2});
+            listAnims.Groups.AddRange(new ListViewGroup[]
+            {
+                listViewGroup2
+            });
             listAnims.HeaderStyle = ColumnHeaderStyle.None;
             listAnims.HideSelection = false;
             listAnims.Location = new Drawing.Point(0, 73);
@@ -276,17 +280,21 @@ namespace System.Windows.Forms
             // ctxAnimList
             // 
             ctxAnimList.ImageScalingSize = new Drawing.Size(20, 20);
-            ctxAnimList.Items.AddRange(new ToolStripItem[] {
-            AnimListNewAnim});
+            ctxAnimList.Items.AddRange(new ToolStripItem[]
+            {
+                AnimListNewAnim
+            });
             ctxAnimList.Name = "ctxAnim";
             ctxAnimList.Size = new Drawing.Size(235, 30);
             ctxAnimList.Opening += new CancelEventHandler(ctxAnimList_Opening);
             // 
             // AnimListNewAnim
             // 
-            AnimListNewAnim.DropDownItems.AddRange(new ToolStripItem[] {
-            inModelsBRRESToolStripMenuItem,
-            inExternalFileToolStripMenuItem});
+            AnimListNewAnim.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                inModelsBRRESToolStripMenuItem,
+                inExternalFileToolStripMenuItem
+            });
             AnimListNewAnim.Name = "AnimListNewAnim";
             AnimListNewAnim.Size = new Drawing.Size(234, 26);
             AnimListNewAnim.Text = "Create New Animation";
@@ -405,15 +413,17 @@ namespace System.Windows.Forms
             // ctxTextures
             // 
             ctxTextures.ImageScalingSize = new Drawing.Size(20, 20);
-            ctxTextures.Items.AddRange(new ToolStripItem[] {
-            sourceToolStripMenuItem,
-            sizeToolStripMenuItem,
-            toolStripMenuItem1,
-            viewToolStripMenuItem,
-            exportTextureToolStripMenuItem,
-            replaceTextureToolStripMenuItem,
-            renameTextureTextureToolStripMenuItem,
-            resetToolStripMenuItem});
+            ctxTextures.Items.AddRange(new ToolStripItem[]
+            {
+                sourceToolStripMenuItem,
+                sizeToolStripMenuItem,
+                toolStripMenuItem1,
+                viewToolStripMenuItem,
+                exportTextureToolStripMenuItem,
+                replaceTextureToolStripMenuItem,
+                renameTextureTextureToolStripMenuItem,
+                resetToolStripMenuItem
+            });
             ctxTextures.Name = "ctxTextures";
             ctxTextures.Size = new Drawing.Size(147, 192);
             ctxTextures.Opening += new CancelEventHandler(ctxTextures_Opening);
@@ -533,16 +543,18 @@ namespace System.Windows.Forms
             // ctxAnim
             // 
             ctxAnim.ImageScalingSize = new Drawing.Size(20, 20);
-            ctxAnim.Items.AddRange(new ToolStripItem[] {
-            toolStripMenuItem2,
-            toolStripSeparator1,
-            chkLoop,
-            matrixModeToolStripMenuItem,
-            toolStripMenuItem3,
-            toolStripMenuItem4,
-            renameToolStripMenuItem,
-            deleteToolStripMenuItem,
-            createNewToolStripMenuItem});
+            ctxAnim.Items.AddRange(new ToolStripItem[]
+            {
+                toolStripMenuItem2,
+                toolStripSeparator1,
+                chkLoop,
+                matrixModeToolStripMenuItem,
+                toolStripMenuItem3,
+                toolStripMenuItem4,
+                renameToolStripMenuItem,
+                deleteToolStripMenuItem,
+                createNewToolStripMenuItem
+            });
             ctxAnim.Name = "ctxAnim";
             ctxAnim.Size = new Drawing.Size(235, 218);
             ctxAnim.Opening += new CancelEventHandler(ctxAnim_Opening);
@@ -569,10 +581,12 @@ namespace System.Windows.Forms
             // 
             // matrixModeToolStripMenuItem
             // 
-            matrixModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
-            chkMtxMaya,
-            chkMtxXSI,
-            chkMtxMax});
+            matrixModeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                chkMtxMaya,
+                chkMtxXSI,
+                chkMtxMax
+            });
             matrixModeToolStripMenuItem.Name = "matrixModeToolStripMenuItem";
             matrixModeToolStripMenuItem.Size = new Drawing.Size(234, 26);
             matrixModeToolStripMenuItem.Text = "Matrix Mode";
@@ -694,7 +708,6 @@ namespace System.Windows.Forms
             pnlTextures.ResumeLayout(false);
             ctxAnim.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
@@ -702,7 +715,9 @@ namespace System.Windows.Forms
         public bool _closing = false;
 
         public ModelEditControl _mainWindow;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ModelEditControl MainWindow
         {
             get => _mainWindow;
@@ -710,7 +725,9 @@ namespace System.Windows.Forms
         }
 
         public ListViewGroup _AnimGroupBRRES = new ListViewGroup("In BRRES");
+
         public ListViewGroup _AnimGroupNotBRRES = new ListViewGroup("Not In BRRES");
+
         //private ListViewGroup _AnimGroupExternal = new ListViewGroup("External File");
         public List<ListViewGroup> _AnimGroupsExternal = new List<ListViewGroup>();
 
@@ -722,13 +739,32 @@ namespace System.Windows.Forms
         private IObject _selectedObject;
         private MDL0TextureNode _selectedTexture;
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IObject SelectedObject { get => _selectedObject; set => lstObjects.SelectedItem = value; }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0TextureNode SelectedTexture { get => _selectedTexture; set => lstTextures.SelectedItem = value; }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public IBoneNode TargetBone { get => _mainWindow.SelectedBone; set => _mainWindow.SelectedBone = value; }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IObject SelectedObject
+        {
+            get => _selectedObject;
+            set => lstObjects.SelectedItem = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MDL0TextureNode SelectedTexture
+        {
+            get => _selectedTexture;
+            set => lstTextures.SelectedItem = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IBoneNode TargetBone
+        {
+            get => _mainWindow.SelectedBone;
+            set => _mainWindow.SelectedBone = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MDL0MaterialRefNode TargetTexRef
         {
             get => _mainWindow.TargetTexRef;
@@ -741,63 +777,81 @@ namespace System.Windows.Forms
                 }
             }
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentFrame
         {
             get => _mainWindow.CurrentFrame;
             set => _mainWindow.CurrentFrame = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IModel TargetModel
         {
             get => _mainWindow.TargetModel;
             set => _mainWindow.TargetModel = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CollisionNode TargetCollision
         {
             get => _mainWindow.TargetCollision;
             set => _mainWindow.TargetCollision = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CHR0Node SelectedCHR0
         {
             get => _mainWindow.SelectedCHR0;
             set => _mainWindow.SelectedCHR0 = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SRT0Node SelectedSRT0
         {
             get => _mainWindow.SelectedSRT0;
             set => _mainWindow.SelectedSRT0 = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SHP0Node SelectedSHP0
         {
             get => _mainWindow.SelectedSHP0;
             set => _mainWindow.SelectedSHP0 = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public PAT0Node SelectedPAT0
         {
             get => _mainWindow.SelectedPAT0;
             set => _mainWindow.SelectedPAT0 = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public VIS0Node SelectedVIS0
         {
             get => _mainWindow.SelectedVIS0;
             set => _mainWindow.SelectedVIS0 = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public NW4RAnimType TargetAnimType
         {
-            get => (NW4RAnimType)fileType.SelectedIndex;
+            get => (NW4RAnimType) fileType.SelectedIndex;
             set
             {
-                if (fileType.SelectedIndex != (int)value)
+                if (fileType.SelectedIndex != (int) value)
                 {
-                    fileType.SelectedIndex = (int)value;
+                    fileType.SelectedIndex = (int) value;
                 }
             }
         }
@@ -818,7 +872,8 @@ namespace System.Windows.Forms
             bool inBRRES,
             ListViewGroup externalGroup = null)
         {
-            bool ib = inBRRES || (TargetModel != null && TargetModel is MDL0Node && node == ((MDL0Node)TargetModel).BRESNode);
+            bool ib = inBRRES || TargetModel != null && TargetModel is MDL0Node &&
+                      node == ((MDL0Node) TargetModel).BRESNode;
 
             if (!_mainWindow.chkBRRESAnims.Checked && ib)
             {
@@ -840,19 +895,69 @@ namespace System.Windows.Forms
                     }
 
                     break;
-                case ResourceType.CHR0: found = true; if (type == NW4RAnimType.CHR) { goto Add; } break;
-                case ResourceType.SRT0: found = true; if (type == NW4RAnimType.SRT) { goto Add; } break;
-                case ResourceType.SHP0: found = true; if (type == NW4RAnimType.SHP) { goto Add; } break;
-                case ResourceType.PAT0: found = true; if (type == NW4RAnimType.PAT) { goto Add; } break;
-                case ResourceType.VIS0: found = true; if (type == NW4RAnimType.VIS) { goto Add; } break;
-                case ResourceType.SCN0: found = true; if (type == NW4RAnimType.SCN) { goto Add; } break;
-                case ResourceType.CLR0: found = true; if (type == NW4RAnimType.CLR) { goto Add; } break;
+                case ResourceType.CHR0:
+                    found = true;
+                    if (type == NW4RAnimType.CHR)
+                    {
+                        goto Add;
+                    }
+
+                    break;
+                case ResourceType.SRT0:
+                    found = true;
+                    if (type == NW4RAnimType.SRT)
+                    {
+                        goto Add;
+                    }
+
+                    break;
+                case ResourceType.SHP0:
+                    found = true;
+                    if (type == NW4RAnimType.SHP)
+                    {
+                        goto Add;
+                    }
+
+                    break;
+                case ResourceType.PAT0:
+                    found = true;
+                    if (type == NW4RAnimType.PAT)
+                    {
+                        goto Add;
+                    }
+
+                    break;
+                case ResourceType.VIS0:
+                    found = true;
+                    if (type == NW4RAnimType.VIS)
+                    {
+                        goto Add;
+                    }
+
+                    break;
+                case ResourceType.SCN0:
+                    found = true;
+                    if (type == NW4RAnimType.SCN)
+                    {
+                        goto Add;
+                    }
+
+                    break;
+                case ResourceType.CLR0:
+                    found = true;
+                    if (type == NW4RAnimType.CLR)
+                    {
+                        goto Add;
+                    }
+
+                    break;
             }
+
             return found;
 
             Add:
             if (string.IsNullOrEmpty(compare) ||
-                (contains && node.Name.Contains(compare, StringComparison.OrdinalIgnoreCase)) ||
+                contains && node.Name.Contains(compare, StringComparison.OrdinalIgnoreCase) ||
                 node.Name.StartsWith(compare, StringComparison.OrdinalIgnoreCase))
             {
                 ListViewGroup u = externalGroup ?? (ib ? _AnimGroupBRRES : _AnimGroupNotBRRES);
@@ -861,17 +966,24 @@ namespace System.Windows.Forms
                     Console.WriteLine();
                 }
 
-                listAnims.Items.Add(new ListViewItem(node.Name, (int)node.ResourceFileType, u) { Tag = node });
+                listAnims.Items.Add(new ListViewItem(node.Name, (int) node.ResourceFileType, u) {Tag = node});
             }
+
             return found;
         }
 
-        public void UpdateAnimations() { UpdateAnimations(TargetAnimType); }
+        public void UpdateAnimations()
+        {
+            UpdateAnimations(TargetAnimType);
+        }
+
         public void UpdateAnimations(NW4RAnimType type)
         {
             _mainWindow.Updating = true;
 
-            string name = listAnims.SelectedItems != null && listAnims.SelectedItems.Count > 0 ? listAnims.SelectedItems[0].Tag.ToString() : null;
+            string name = listAnims.SelectedItems != null && listAnims.SelectedItems.Count > 0
+                ? listAnims.SelectedItems[0].Tag.ToString()
+                : null;
             int frame = CurrentFrame;
 
             string text = txtSearchAnim.Text;
@@ -890,13 +1002,15 @@ namespace System.Windows.Forms
                 listAnims.Groups.Add(_AnimGroupBRRES);
                 listAnims.Groups.Add(_AnimGroupNotBRRES);
 
-                ResourceNode node = _mainWindow.chkNonBRRESAnims.Checked ? ((MDL0Node)TargetModel).RootNode : ((MDL0Node)TargetModel).BRESNode;
+                ResourceNode node = _mainWindow.chkNonBRRESAnims.Checked
+                    ? ((MDL0Node) TargetModel).RootNode
+                    : ((MDL0Node) TargetModel).BRESNode;
                 LoadAnims(node, type, addAll ? null : text, chkContains.Checked, false);
             }
 
             if (_mainWindow.chkExternalAnims.Checked)
             {
-                ResourceNode root = TargetModel == null ? null : ((ResourceNode)TargetModel).RootNode;
+                ResourceNode root = TargetModel == null ? null : ((ResourceNode) TargetModel).RootNode;
                 foreach (ResourceNode r in _mainWindow._openedFiles)
                 {
                     if (r != root && r != null)
@@ -924,7 +1038,7 @@ namespace System.Windows.Forms
             _mainWindow.Updating = false;
             CurrentFrame = frame;
 
-            if ((_mainWindow.GetAnimation(TargetAnimType) == null) && (listAnims.SelectedItems.Count == 0))
+            if (_mainWindow.GetAnimation(TargetAnimType) == null && listAnims.SelectedItems.Count == 0)
             {
                 _mainWindow.GetFiles(NW4RAnimType.None);
             }
@@ -934,7 +1048,7 @@ namespace System.Windows.Forms
         {
             if (_mainWindow.chkExternalAnims.Checked && node != null)
             {
-                ResourceNode root = TargetModel == null ? null : ((ResourceNode)TargetModel).RootNode;
+                ResourceNode root = TargetModel == null ? null : ((ResourceNode) TargetModel).RootNode;
                 if (node.RootNode != root)
                 {
                     ListViewGroup g = new ListViewGroup(node.Name);
@@ -979,7 +1093,9 @@ namespace System.Windows.Forms
         {
             _mainWindow.Updating = true;
 
-            string Name = lstTextures.SelectedItems != null && lstTextures.SelectedItems.Count > 0 ? lstTextures.SelectedItems[0].ToString() : null;
+            string Name = lstTextures.SelectedItems != null && lstTextures.SelectedItems.Count > 0
+                ? lstTextures.SelectedItems[0].ToString()
+                : null;
 
             lstTextures.BeginUpdate();
             lstTextures.Items.Clear();
@@ -992,7 +1108,8 @@ namespace System.Windows.Forms
                 //Add textures the selected object uses
                 if (_selectedObject is MDL0ObjectNode)
                 {
-                    foreach (MDL0MaterialRefNode tref in ((MDL0ObjectNode)_selectedObject)._drawCalls[0].MaterialNode.Children)
+                    foreach (MDL0MaterialRefNode tref in ((MDL0ObjectNode) _selectedObject)
+                                                         ._drawCalls[0].MaterialNode.Children)
                     {
                         lstTextures.Items.Add(tref.TextureNode, tref.TextureNode.Enabled);
                     }
@@ -1001,7 +1118,7 @@ namespace System.Windows.Forms
             else if (TargetModel != null)
             {
                 //Add all model textures
-                if (TargetModel is MDL0Node && (n = ((ResourceNode)TargetModel).FindChild("Textures", false)) != null)
+                if (TargetModel is MDL0Node && (n = ((ResourceNode) TargetModel).FindChild("Textures", false)) != null)
                 {
                     foreach (MDL0TextureNode tref in n.Children)
                     {
@@ -1038,7 +1155,7 @@ namespace System.Windows.Forms
             chkAllObj.CheckState = CheckState.Checked;
             chkAllTextures.CheckState = CheckState.Checked;
 
-            pnlAnims.Enabled = pnlTextures.Enabled = chkSyncVis.Enabled = (TargetCollision == null);
+            pnlAnims.Enabled = pnlTextures.Enabled = chkSyncVis.Enabled = TargetCollision == null;
 
             if (TargetCollision != null)
             {
@@ -1107,7 +1224,7 @@ namespace System.Windows.Forms
             int height = -1;
             if (objY + btnObjects.Height + e.Y >= texY - 6)
             {
-                int difference = (objY + btnObjects.Height + e.Y) - (texY - 6);
+                int difference = objY + btnObjects.Height + e.Y - (texY - 6);
                 if (texY - 6 - e.Y <= objY + btnObjects.Height)
                 {
                     if (e.Y > 0) //Only want to push the texture panel down
@@ -1137,7 +1254,7 @@ namespace System.Windows.Forms
             int height = -1;
             if (texY - 6 + e.Y <= objY + btnObjects.Height)
             {
-                int difference = (objY + btnObjects.Height) - (texY - 6 + e.Y);
+                int difference = objY + btnObjects.Height - (texY - 6 + e.Y);
                 if (objY + btnObjects.Height - e.Y >= texY - 6)
                 {
                     if (e.Y < 0) //Only want to push the anims panel up
@@ -1262,7 +1379,7 @@ namespace System.Windows.Forms
                             continue;
                         }
 
-                        MDL0ObjectNode o = (MDL0ObjectNode)lstObjects.Items[i.Key];
+                        MDL0ObjectNode o = (MDL0ObjectNode) lstObjects.Items[i.Key];
                         foreach (int call in i.Value)
                         {
                             DrawCall other = o._drawCalls[call];
@@ -1271,6 +1388,7 @@ namespace System.Windows.Forms
                                 other._render = d._render;
                             }
                         }
+
                         UpdateObjectCheckState(i.Key);
                     }
                 }
@@ -1315,11 +1433,16 @@ namespace System.Windows.Forms
                     _selectedTexture.ObjOnly = true;
                 }
 
-                if (_selectedObject is MDL0ObjectNode && ((MDL0ObjectNode)_selectedObject)._drawCalls[0].MaterialNode != null)
+                if (_selectedObject is MDL0ObjectNode &&
+                    ((MDL0ObjectNode) _selectedObject)._drawCalls[0].MaterialNode != null)
                 {
-                    TargetTexRef = _selectedObject != null ? ((MDL0ObjectNode)_selectedObject)._drawCalls[0].MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode : null;
+                    TargetTexRef = _selectedObject != null
+                        ? ((MDL0ObjectNode) _selectedObject)
+                          ._drawCalls[0].MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode
+                        : null;
                 }
             }
+
             if (!_updating)
             {
                 _mainWindow.ModelPanel.Invalidate();
@@ -1358,7 +1481,7 @@ namespace System.Windows.Forms
             }
             else
             {
-                pnlObjects.Height = (int)pnlObjects.Tag;
+                pnlObjects.Height = (int) pnlObjects.Tag;
                 pnlAnims.Dock = DockStyle.Top;
                 pnlTextures.Dock = DockStyle.Bottom;
                 pnlObjects.Dock = DockStyle.Fill;
@@ -1376,7 +1499,7 @@ namespace System.Windows.Forms
             }
             else
             {
-                pnlTextures.Height = (int)pnlTextures.Tag;
+                pnlTextures.Height = (int) pnlTextures.Tag;
                 lstTextures.Visible = chkAllTextures.Visible = spltObjTex.Visible = overTexPnl.Visible = true;
             }
         }
@@ -1391,7 +1514,7 @@ namespace System.Windows.Forms
             }
             else
             {
-                pnlAnims.Height = (int)pnlAnims.Tag;
+                pnlAnims.Height = (int) pnlAnims.Tag;
                 listAnims.Visible = fileType.Visible = spltAnimObj.Visible = true;
             }
         }
@@ -1438,7 +1561,7 @@ namespace System.Windows.Forms
         private void replaceTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = lstTextures.SelectedIndex;
-            if ((_selectedTexture != null) && (_selectedTexture.Source is TEX0Node))
+            if (_selectedTexture != null && _selectedTexture.Source is TEX0Node)
             {
                 TEX0Node node = _selectedTexture.Source as TEX0Node;
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
@@ -1470,14 +1593,15 @@ namespace System.Windows.Forms
                     viewToolStripMenuItem.Enabled = true;
                     replaceTextureToolStripMenuItem.Enabled = true;
                     exportTextureToolStripMenuItem.Enabled = true;
-                    sourceToolStripMenuItem.Text = string.Format("Source: {0}", Path.GetFileName(((ResourceNode)_selectedTexture.Source).RootNode._origPath));
+                    sourceToolStripMenuItem.Text = string.Format("Source: {0}",
+                        Path.GetFileName(((ResourceNode) _selectedTexture.Source).RootNode._origPath));
                 }
                 else if (_selectedTexture.Source is string)
                 {
                     viewToolStripMenuItem.Enabled = true;
                     replaceTextureToolStripMenuItem.Enabled = false;
                     exportTextureToolStripMenuItem.Enabled = false;
-                    sourceToolStripMenuItem.Text = string.Format("Source: {0}", (string)_selectedTexture.Source);
+                    sourceToolStripMenuItem.Text = string.Format("Source: {0}", (string) _selectedTexture.Source);
                 }
                 else
                 {
@@ -1489,7 +1613,8 @@ namespace System.Windows.Forms
 
                 if (_selectedTexture.Texture != null)
                 {
-                    sizeToolStripMenuItem.Text = string.Format("Size: {0} x {1}", _selectedTexture.Texture.Width, _selectedTexture.Texture.Height);
+                    sizeToolStripMenuItem.Text = string.Format("Size: {0} x {1}", _selectedTexture.Texture.Width,
+                        _selectedTexture.Texture.Height);
                 }
                 else
                 {
@@ -1535,6 +1660,7 @@ namespace System.Windows.Forms
                 lstTextures.SelectedItem = null;
             }
         }
+
         private void lstPolygons_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -1542,6 +1668,7 @@ namespace System.Windows.Forms
                 lstObjects.SelectedItem = null;
             }
         }
+
         private void listAnims_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -1549,9 +1676,10 @@ namespace System.Windows.Forms
                 listAnims.SelectedItems.Clear();
             }
         }
+
         private void exportTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if ((_selectedTexture != null) && (_selectedTexture.Source is TEX0Node))
+            if (_selectedTexture != null && _selectedTexture.Source is TEX0Node)
             {
                 TEX0Node node = _selectedTexture.Source as TEX0Node;
                 using (SaveFileDialog dlgSave = new SaveFileDialog())
@@ -1570,7 +1698,7 @@ namespace System.Windows.Forms
         {
             using (RenameDialog dlg = new RenameDialog())
             {
-                dlg.ShowDialog(ParentForm, (_selectedTexture.Source as TEX0Node));
+                dlg.ShowDialog(ParentForm, _selectedTexture.Source as TEX0Node);
             }
 
             _selectedTexture.Name = (_selectedTexture.Source as TEX0Node).Name;
@@ -1614,6 +1742,7 @@ namespace System.Windows.Forms
         }
 
         #region Animation Context Menu
+
         private void ctxAnim_Opening(object sender, CancelEventArgs e)
         {
             if (_mainWindow.TargetAnimation == null)
@@ -1622,10 +1751,11 @@ namespace System.Windows.Forms
             }
             else
             {
-                sourceToolStripMenuItem.Text = string.Format("Source: {0}", Path.GetFileName(_mainWindow.TargetAnimation.RootNode._origPath));
+                sourceToolStripMenuItem.Text = string.Format("Source: {0}",
+                    Path.GetFileName(_mainWindow.TargetAnimation.RootNode._origPath));
                 if (matrixModeToolStripMenuItem.Visible = _mainWindow.TargetAnimation is SRT0Node)
                 {
-                    SRT0Node node = (SRT0Node)_mainWindow.TargetAnimation;
+                    SRT0Node node = (SRT0Node) _mainWindow.TargetAnimation;
                     chkMtxMax.Checked = node.MatrixMode == BrawlLib.SSBBTypes.TexMatrixMode.Matrix3dsMax;
                     chkMtxXSI.Checked = node.MatrixMode == BrawlLib.SSBBTypes.TexMatrixMode.MatrixXSI;
                     chkMtxMaya.Checked = node.MatrixMode == BrawlLib.SSBBTypes.TexMatrixMode.MatrixMaya;
@@ -1635,6 +1765,7 @@ namespace System.Windows.Forms
 
         private readonly SaveFileDialog dlgSave = new SaveFileDialog();
         private readonly OpenFileDialog dlgOpen = new OpenFileDialog();
+
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BRESEntryNode node;
@@ -1646,14 +1777,29 @@ namespace System.Windows.Forms
             dlgSave.FileName = node.Name;
             switch (TargetAnimType)
             {
-                case NW4RAnimType.CHR: dlgSave.Filter = FileFilters.CHR0Export; break;
-                case NW4RAnimType.SRT: dlgSave.Filter = FileFilters.SRT0; break;
-                case NW4RAnimType.SHP: dlgSave.Filter = FileFilters.SHP0; break;
-                case NW4RAnimType.PAT: dlgSave.Filter = FileFilters.PAT0; break;
-                case NW4RAnimType.VIS: dlgSave.Filter = FileFilters.VIS0; break;
-                case NW4RAnimType.SCN: dlgSave.Filter = FileFilters.SCN0; break;
-                case NW4RAnimType.CLR: dlgSave.Filter = FileFilters.CLR0; break;
+                case NW4RAnimType.CHR:
+                    dlgSave.Filter = FileFilters.CHR0Export;
+                    break;
+                case NW4RAnimType.SRT:
+                    dlgSave.Filter = FileFilters.SRT0;
+                    break;
+                case NW4RAnimType.SHP:
+                    dlgSave.Filter = FileFilters.SHP0;
+                    break;
+                case NW4RAnimType.PAT:
+                    dlgSave.Filter = FileFilters.PAT0;
+                    break;
+                case NW4RAnimType.VIS:
+                    dlgSave.Filter = FileFilters.VIS0;
+                    break;
+                case NW4RAnimType.SCN:
+                    dlgSave.Filter = FileFilters.SCN0;
+                    break;
+                case NW4RAnimType.CLR:
+                    dlgSave.Filter = FileFilters.CLR0;
+                    break;
             }
+
             if (dlgSave.ShowDialog() == DialogResult.OK)
             {
                 node.Export(dlgSave.FileName);
@@ -1670,13 +1816,27 @@ namespace System.Windows.Forms
 
             switch (TargetAnimType)
             {
-                case NW4RAnimType.CHR: dlgOpen.Filter = FileFilters.CHR0Import; break;
-                case NW4RAnimType.SRT: dlgOpen.Filter = FileFilters.SRT0; break;
-                case NW4RAnimType.SHP: dlgOpen.Filter = FileFilters.SHP0; break;
-                case NW4RAnimType.PAT: dlgOpen.Filter = FileFilters.PAT0; break;
-                case NW4RAnimType.VIS: dlgOpen.Filter = FileFilters.VIS0; break;
-                case NW4RAnimType.SCN: dlgOpen.Filter = FileFilters.SCN0; break;
-                case NW4RAnimType.CLR: dlgOpen.Filter = FileFilters.CLR0; break;
+                case NW4RAnimType.CHR:
+                    dlgOpen.Filter = FileFilters.CHR0Import;
+                    break;
+                case NW4RAnimType.SRT:
+                    dlgOpen.Filter = FileFilters.SRT0;
+                    break;
+                case NW4RAnimType.SHP:
+                    dlgOpen.Filter = FileFilters.SHP0;
+                    break;
+                case NW4RAnimType.PAT:
+                    dlgOpen.Filter = FileFilters.PAT0;
+                    break;
+                case NW4RAnimType.VIS:
+                    dlgOpen.Filter = FileFilters.VIS0;
+                    break;
+                case NW4RAnimType.SCN:
+                    dlgOpen.Filter = FileFilters.SCN0;
+                    break;
+                case NW4RAnimType.CLR:
+                    dlgOpen.Filter = FileFilters.CLR0;
+                    break;
             }
 
             if (dlgOpen.ShowDialog() == DialogResult.OK)
@@ -1696,6 +1856,7 @@ namespace System.Windows.Forms
 
             _mainWindow.UpdateModel();
         }
+
         #endregion
 
         private void listAnims_MouseDown(object sender, MouseEventArgs e)
@@ -1728,13 +1889,27 @@ namespace System.Windows.Forms
             {
                 switch (TargetAnimType)
                 {
-                    case NW4RAnimType.CHR: ((BRRESNode)r.Parent.Parent).CreateResource<CHR0Node>("NewCHR"); break;
-                    case NW4RAnimType.SRT: ((BRRESNode)r.Parent.Parent).CreateResource<SRT0Node>("NewSRT"); break;
-                    case NW4RAnimType.SHP: ((BRRESNode)r.Parent.Parent).CreateResource<SHP0Node>("NewSHP"); break;
-                    case NW4RAnimType.PAT: ((BRRESNode)r.Parent.Parent).CreateResource<PAT0Node>("NewPAT"); break;
-                    case NW4RAnimType.VIS: ((BRRESNode)r.Parent.Parent).CreateResource<VIS0Node>("NewVIS"); break;
-                    case NW4RAnimType.SCN: ((BRRESNode)r.Parent.Parent).CreateResource<SCN0Node>("NewSCN"); break;
-                    case NW4RAnimType.CLR: ((BRRESNode)r.Parent.Parent).CreateResource<CLR0Node>("NewCLR"); break;
+                    case NW4RAnimType.CHR:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<CHR0Node>("NewCHR");
+                        break;
+                    case NW4RAnimType.SRT:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<SRT0Node>("NewSRT");
+                        break;
+                    case NW4RAnimType.SHP:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<SHP0Node>("NewSHP");
+                        break;
+                    case NW4RAnimType.PAT:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<PAT0Node>("NewPAT");
+                        break;
+                    case NW4RAnimType.VIS:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<VIS0Node>("NewVIS");
+                        break;
+                    case NW4RAnimType.SCN:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<SCN0Node>("NewSCN");
+                        break;
+                    case NW4RAnimType.CLR:
+                        ((BRRESNode) r.Parent.Parent).CreateResource<CLR0Node>("NewCLR");
+                        break;
                 }
             }
 
@@ -1771,7 +1946,8 @@ namespace System.Windows.Forms
                         {
                             if (_srt0Selection != null)
                             {
-                                if (_srt0Selection.FindChildByType(c.MaterialNode.Name, false, ResourceType.SRT0Entry) != null)
+                                if (_srt0Selection.FindChildByType(c.MaterialNode.Name, false,
+                                        ResourceType.SRT0Entry) != null)
                                 {
                                     Rectangle r = lstObjects.GetItemRectangle(i);
                                     g.DrawRectangle(Pens.Black, r);
@@ -1779,11 +1955,11 @@ namespace System.Windows.Forms
                             }
                             else if (_pat0Selection != null)
                             {
-                                if (_pat0Selection.FindChildByType(c.MaterialNode.Name, false, ResourceType.PAT0Entry) != null)
+                                if (_pat0Selection.FindChildByType(c.MaterialNode.Name, false,
+                                        ResourceType.PAT0Entry) != null)
                                 {
                                     Rectangle r = lstObjects.GetItemRectangle(i);
                                     g.DrawRectangle(Pens.Black, r);
-
                                 }
                             }
                         }
@@ -1816,7 +1992,8 @@ namespace System.Windows.Forms
                             {
                                 if (_srt0Selection != null)
                                 {
-                                    if (_srt0Selection.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index, false, ResourceType.SRT0Texture) != null)
+                                    if (_srt0Selection.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index,
+                                            false, ResourceType.SRT0Texture) != null)
                                     {
                                         Rectangle r = lstTextures.GetItemRectangle(i);
                                         g.DrawRectangle(Pens.Black, r);
@@ -1824,7 +2001,8 @@ namespace System.Windows.Forms
                                 }
                                 else if (_pat0Selection != null)
                                 {
-                                    if (_pat0Selection.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index, false, ResourceType.PAT0Texture) != null)
+                                    if (_pat0Selection.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index,
+                                            false, ResourceType.PAT0Texture) != null)
                                     {
                                         Rectangle r = lstTextures.GetItemRectangle(i);
                                         g.DrawRectangle(Pens.Black, r);
@@ -1903,15 +2081,15 @@ namespace System.Windows.Forms
                 return;
             }
 
-            AddAnimation((BRRESNode)r.Parent.Parent);
+            AddAnimation((BRRESNode) r.Parent.Parent);
         }
 
         private void AddAnimation(BRRESNode target)
         {
-            Type t = ModelEditorBase.AnimTypeList[(int)TargetAnimType];
+            Type t = ModelEditorBase.AnimTypeList[(int) TargetAnimType];
             Reflection.MethodInfo method = typeof(BRRESNode).GetMethod("CreateResource");
             Reflection.MethodInfo generic = method.MakeGenericMethod(t);
-            generic.Invoke(target, new object[] { "New" + TargetAnimType.ToString() });
+            generic.Invoke(target, new object[] {"New" + TargetAnimType.ToString()});
             UpdateAnimations();
             listAnims.Items[listAnims.Items.Count - 1].Selected = true;
         }
@@ -1931,7 +2109,8 @@ namespace System.Windows.Forms
         private void ctxAnimList_Opening(object sender, CancelEventArgs e)
         {
             ResourceNode r = TargetModel as ResourceNode;
-            bool targetBRRES = !(r == null || r.Parent == null || r.Parent.Parent == null || !(r.Parent.Parent is BRRESNode));
+            bool targetBRRES = !(r == null || r.Parent == null || r.Parent.Parent == null ||
+                                 !(r.Parent.Parent is BRRESNode));
 
             if (!targetBRRES)
             {
@@ -1953,7 +2132,7 @@ namespace System.Windows.Forms
 
             if (chkMtxMaya.Checked)
             {
-                SRT0Node node = (SRT0Node)_mainWindow.TargetAnimation;
+                SRT0Node node = (SRT0Node) _mainWindow.TargetAnimation;
                 node.MatrixMode = BrawlLib.SSBBTypes.TexMatrixMode.MatrixMaya;
                 chkMtxMax.Checked = chkMtxXSI.Checked = false;
             }
@@ -1976,7 +2155,7 @@ namespace System.Windows.Forms
 
             if (chkMtxXSI.Checked)
             {
-                SRT0Node node = (SRT0Node)_mainWindow.TargetAnimation;
+                SRT0Node node = (SRT0Node) _mainWindow.TargetAnimation;
                 node.MatrixMode = BrawlLib.SSBBTypes.TexMatrixMode.MatrixXSI;
                 chkMtxMax.Checked = chkMtxMaya.Checked = false;
             }
@@ -1999,7 +2178,7 @@ namespace System.Windows.Forms
 
             if (chkMtxMax.Checked)
             {
-                SRT0Node node = (SRT0Node)_mainWindow.TargetAnimation;
+                SRT0Node node = (SRT0Node) _mainWindow.TargetAnimation;
                 node.MatrixMode = BrawlLib.SSBBTypes.TexMatrixMode.Matrix3dsMax;
                 chkMtxXSI.Checked = chkMtxMaya.Checked = false;
             }
@@ -2093,6 +2272,7 @@ namespace System.Windows.Forms
                     break;
                 }
             }
+
             if (someRendering && !someNotRendering)
             {
                 s = CheckState.Checked;
@@ -2112,13 +2292,14 @@ namespace System.Windows.Forms
             DrawCall c = lstDrawCalls.SelectedItem as DrawCall;
             if (c != null && c.MaterialNode != null)
             {
-                TargetTexRef = _selectedTexture != null ? c.MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode : null;
+                TargetTexRef = _selectedTexture != null
+                    ? c.MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode
+                    : null;
             }
         }
 
         private void lstDrawCalls_DoubleClick(object sender, EventArgs e)
         {
-
         }
 
         public void SetRenderState(int objKey, int i, bool render, MDL0ObjectNode obj)

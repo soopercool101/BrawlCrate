@@ -32,7 +32,7 @@ namespace System.Windows.Forms
                 }
 
                 _sectionOffset = 0;
-                _baseOffset = (int)node._cmd._addend;
+                _baseOffset = (int) node._cmd._addend;
                 _manager = node._manager;
             }
 
@@ -96,7 +96,7 @@ namespace System.Windows.Forms
 
             int index = _sectionOffset / 4 + i;
 
-            row.Cells[0].Value = PPCFormat.Offset(_baseOffset + _sectionOffset + (i * 4));
+            row.Cells[0].Value = PPCFormat.Offset(_baseOffset + _sectionOffset + i * 4);
             row.Cells[1].Value = opcode.Name;
             row.Cells[2].Value = opcode.GetFormattedOperands();
 
@@ -121,7 +121,6 @@ namespace System.Windows.Forms
 
         private void grdDisassembler_DoubleClick(object sender, EventArgs e)
         {
-
         }
 
         private void grdDisassembler_SelectionChanged(object sender, EventArgs e)
@@ -147,7 +146,7 @@ namespace System.Windows.Forms
 
             _updating = true;
             int index = grdDisassembler.SelectedRows[0].Index;
-            long offset = (long)_sectionOffset + index * 4;
+            long offset = (long) _sectionOffset + index * 4;
             if (_editor.Position.RoundDown(4) != offset)
             {
                 _editor.Position = offset;
@@ -158,15 +157,17 @@ namespace System.Windows.Forms
 
         private void splitContainer_MouseDown(object sender, MouseEventArgs e)
         {
-            ((SplitContainer)sender).IsSplitterFixed = true;
+            ((SplitContainer) sender).IsSplitterFixed = true;
         }
+
         private void splitContainer_MouseUp(object sender, MouseEventArgs e)
         {
-            ((SplitContainer)sender).IsSplitterFixed = false;
+            ((SplitContainer) sender).IsSplitterFixed = false;
         }
+
         private void splitContainer_MouseMove(object sender, MouseEventArgs e)
         {
-            SplitContainer splitter = (SplitContainer)sender;
+            SplitContainer splitter = (SplitContainer) sender;
             if (splitter.IsSplitterFixed)
             {
                 if (e.Button.Equals(MouseButtons.Left))
@@ -206,9 +207,11 @@ namespace System.Windows.Forms
                     b.Append(grdDisassembler.Rows[i].Cells[1].Value + " ");
                     b.Append(grdDisassembler.Rows[i].Cells[2].Value + "\n");
                 }
+
                 Clipboard.SetText(b.ToString());
                 handled = true;
             }
+
             if (!handled)
             {
                 return base.ProcessCmdKey(ref msg, keyData);

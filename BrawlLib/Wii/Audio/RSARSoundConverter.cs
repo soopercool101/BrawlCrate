@@ -18,7 +18,8 @@ namespace BrawlLib.Wii.Audio
             int blocks;
             int sampleRate = stream.Frequency;
             int lbSamples, lbSize, lbTotal;
-            int /*loopPadding, */loopStart, totalSamples;
+            int /*loopPadding, */
+                loopStart, totalSamples;
             short* tPtr;
 
             int blockLen, samplesPerBlock;
@@ -26,9 +27,10 @@ namespace BrawlLib.Wii.Audio
             if (looped)
             {
                 loopStart = stream.LoopStartSample;
-                samples = stream.LoopEndSample; //Set sample size to end sample. That way the audio gets cut off when encoding.
+                samples = stream
+                    .LoopEndSample; //Set sample size to end sample. That way the audio gets cut off when encoding.
 
-                blockLen = (samples.Align(14) / 14 * 8);
+                blockLen = samples.Align(14) / 14 * 8;
                 samplesPerBlock = blockLen / 8 * 14;
 
                 //If loop point doesn't land on a block, pad the stream so that it does.
@@ -48,7 +50,7 @@ namespace BrawlLib.Wii.Audio
                 loopStart = 2;
                 totalSamples = samples = stream.Samples;
 
-                blockLen = (samples.Align(14) / 14 * 8);
+                blockLen = samples.Align(14) / 14 * 8;
                 samplesPerBlock = blockLen / 8 * 14;
             }
 
@@ -74,32 +76,32 @@ namespace BrawlLib.Wii.Audio
 
             //Get section sizes
             int waveSize = 0x1C,
-            tableSize = channels * 4,
-            channelSize = channels * 0x1C,
-            adpcmInfoSize = channels * 0x30,
-            entrySize = waveSize + tableSize + channelSize + adpcmInfoSize,
-            dataSize = (((blocks - 1) * blockLen + lbTotal) * channels);
+                tableSize = channels * 4,
+                channelSize = channels * 0x1C,
+                adpcmInfoSize = channels * 0x30,
+                entrySize = waveSize + tableSize + channelSize + adpcmInfoSize,
+                dataSize = ((blocks - 1) * blockLen + lbTotal) * channels;
 
             //Create file map
             FileMap map = FileMap.FromTempFile(waveSize + channelSize + tableSize + adpcmInfoSize + dataSize);
 
             //Get section pointers
-            WaveInfo* wave = (WaveInfo*)map.Address;
+            WaveInfo* wave = (WaveInfo*) map.Address;
 
-            wave->_format = new AudioFormatInfo(2, (byte)(looped ? 1 : 0), (byte)channels, 0);
-            wave->_sampleRate = (ushort)sampleRate;
+            wave->_format = new AudioFormatInfo(2, (byte) (looped ? 1 : 0), (byte) channels, 0);
+            wave->_sampleRate = (ushort) sampleRate;
             wave->_channelInfoTableOffset = 0x1C;
-            wave->_dataLocation = (uint)entrySize;
+            wave->_dataLocation = (uint) entrySize;
 
             wave->LoopSample = loopStart;
             wave->NumSamples = totalSamples;
 
             //Create one ChannelInfo for each channel
-            buint* table = (buint*)((VoidPtr)wave + waveSize);
-            ChannelInfo* channelInfo = (ChannelInfo*)((VoidPtr)wave + waveSize + tableSize);
+            buint* table = (buint*) ((VoidPtr) wave + waveSize);
+            ChannelInfo* channelInfo = (ChannelInfo*) ((VoidPtr) wave + waveSize + tableSize);
             for (int i = 0; i < channels; i++)
             {
-                table[i] = (uint)&channelInfo[i] - (uint)wave;
+                table[i] = (uint) &channelInfo[i] - (uint) wave;
                 channelInfo[i] = new ChannelInfo()
                 {
                     _volBackLeft = 1,
@@ -112,7 +114,7 @@ namespace BrawlLib.Wii.Audio
 
             //Create one ADPCMInfo for each channel
             int* adpcData = stackalloc int[channels];
-            ADPCMInfo** pAdpcm = (ADPCMInfo**)adpcData;
+            ADPCMInfo** pAdpcm = (ADPCMInfo**) adpcData;
             for (int i = 0; i < channels; i++)
             {
                 *(pAdpcm[i] = wave->GetADPCMInfo(i)) = new ADPCMInfo();
@@ -120,11 +122,11 @@ namespace BrawlLib.Wii.Audio
 
             //Create buffer for each channel
             int* bufferData = stackalloc int[channels];
-            short** channelBuffers = (short**)bufferData;
+            short** channelBuffers = (short**) bufferData;
             int bufferSamples = totalSamples + 2; //Add two samples for initial yn values
             for (int i = 0; i < channels; i++)
             {
-                channelBuffers[i] = tPtr = (short*)Marshal.AllocHGlobal(bufferSamples * 2); //Two bytes per sample
+                channelBuffers[i] = tPtr = (short*) Marshal.AllocHGlobal(bufferSamples * 2); //Two bytes per sample
 
                 //Zero padding samples and initial yn values
                 //for (int x = 0; x < (loopPadding + 2); x++)
@@ -150,17 +152,17 @@ namespace BrawlLib.Wii.Audio
             //Calculate coefs
             for (int i = 0; i < channels; i++)
             {
-                AudioConverter.CalcCoefs(channelBuffers[i] + 2, totalSamples, (short*)pAdpcm[i], progress);
+                AudioConverter.CalcCoefs(channelBuffers[i] + 2, totalSamples, (short*) pAdpcm[i], progress);
             }
 
             //Encode blocks
-            byte* dPtr = (byte*)wave + entrySize;
+            byte* dPtr = (byte*) wave + entrySize;
             for (int sIndex = 0, bIndex = 1; sIndex < totalSamples; sIndex += samplesPerBlock, bIndex++)
             {
                 int blockSamples = Math.Min(totalSamples - sIndex, samplesPerBlock);
                 for (int x = 0; x < channels; x++)
                 {
-                    channelInfo[x]._channelDataOffset = (int)(dPtr - ((byte*)wave + entrySize));
+                    channelInfo[x]._channelDataOffset = (int) (dPtr - ((byte*) wave + entrySize));
                     short* sPtr = channelBuffers[x] + sIndex;
 
                     //Set block yn values
@@ -171,7 +173,7 @@ namespace BrawlLib.Wii.Audio
                     }
 
                     //Encode block (include yn in sPtr)
-                    AudioConverter.EncodeBlock(sPtr, blockSamples, dPtr, (short*)pAdpcm[x]);
+                    AudioConverter.EncodeBlock(sPtr, blockSamples, dPtr, (short*) pAdpcm[x]);
 
                     //Set initial ps
                     if (bIndex == 1)
@@ -195,9 +197,9 @@ namespace BrawlLib.Wii.Audio
                     }
                 }
 
-                if (progress != null && (sIndex % samplesPerBlock) == 0)
+                if (progress != null && sIndex % samplesPerBlock == 0)
                 {
-                    progress.Update(progress.CurrentValue + (samplesPerBlock * 2 * channels));
+                    progress.Update(progress.CurrentValue + samplesPerBlock * 2 * channels);
                 }
             }
 
@@ -216,9 +218,9 @@ namespace BrawlLib.Wii.Audio
             {
                 //Can't we just use block states?
                 int loopBlock = loopStart / samplesPerBlock;
-                int loopChunk = (loopStart - (loopBlock * samplesPerBlock)) / 14;
-                dPtr = (byte*)wave + entrySize + (loopBlock * blockLen * channels) + (loopChunk * 8);
-                tmp = (loopBlock == blocks - 1) ? lbTotal : blockLen;
+                int loopChunk = (loopStart - loopBlock * samplesPerBlock) / 14;
+                dPtr = (byte*) wave + entrySize + loopBlock * blockLen * channels + loopChunk * 8;
+                tmp = loopBlock == blocks - 1 ? lbTotal : blockLen;
 
                 for (int i = 0; i < channels; i++, dPtr += tmp)
                 {
@@ -233,7 +235,7 @@ namespace BrawlLib.Wii.Audio
             //Free memory
             for (int i = 0; i < channels; i++)
             {
-                Marshal.FreeHGlobal((IntPtr)channelBuffers[i]);
+                Marshal.FreeHGlobal((IntPtr) channelBuffers[i]);
             }
 
             if (progress != null)

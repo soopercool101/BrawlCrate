@@ -15,6 +15,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu, _multiSelectMenu;
+
         static CHR0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -40,28 +41,53 @@ namespace BrawlCrate.NodeWrappers
             _multiSelectMenu = new ContextMenuStrip();
             _multiSelectMenu.Items.Add(new ToolStripMenuItem("Edit All", null, EditAllAction));
         }
-        protected static void NewBoneAction(object sender, EventArgs e) { GetInstance<CHR0Wrapper>().NewBone(); }
-        protected static void MergeAction(object sender, EventArgs e) { GetInstance<CHR0Wrapper>().Merge(); }
-        protected static void AppendAction(object sender, EventArgs e) { GetInstance<CHR0Wrapper>().Append(); }
-        protected static void ResizeAction(object sender, EventArgs e) { GetInstance<CHR0Wrapper>().Resize(); }
-        protected static void EditAllAction(object sender, EventArgs e) { EditAll(GetInstances<CHR0Wrapper>()); }
+
+        protected static void NewBoneAction(object sender, EventArgs e)
+        {
+            GetInstance<CHR0Wrapper>().NewBone();
+        }
+
+        protected static void MergeAction(object sender, EventArgs e)
+        {
+            GetInstance<CHR0Wrapper>().Merge();
+        }
+
+        protected static void AppendAction(object sender, EventArgs e)
+        {
+            GetInstance<CHR0Wrapper>().Append();
+        }
+
+        protected static void ResizeAction(object sender, EventArgs e)
+        {
+            GetInstance<CHR0Wrapper>().Resize();
+        }
+
+        protected static void EditAllAction(object sender, EventArgs e)
+        {
+            EditAll(GetInstances<CHR0Wrapper>());
+        }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[5].Enabled = _menu.Items[6].Enabled = _menu.Items[8].Enabled = _menu.Items[9].Enabled = _menu.Items[12].Enabled = true;
+            _menu.Items[5].Enabled = _menu.Items[6].Enabled =
+                _menu.Items[8].Enabled = _menu.Items[9].Enabled = _menu.Items[12].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             CHR0Wrapper w = GetInstance<CHR0Wrapper>();
             _menu.Items[5].Enabled = _menu.Items[12].Enabled = w.Parent != null;
-            _menu.Items[6].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[6].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[8].Enabled = w.PrevNode != null;
             _menu.Items[9].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public CHR0Wrapper() { ContextMenuStrip = _menu; }
+        public CHR0Wrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public override string ExportFilter => FileFilters.CHR0Export;
         public override string ImportFilter => FileFilters.CHR0Import;
@@ -70,7 +96,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewBone()
         {
-            CHR0EntryNode node = ((CHR0Node)_resource).CreateEntry();
+            CHR0EntryNode node = ((CHR0Node) _resource).CreateEntry();
             BaseWrapper res = FindResource(node, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
@@ -78,7 +104,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void Merge()
         {
-            ((CHR0Node)_resource).MergeWith();
+            ((CHR0Node) _resource).MergeWith();
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
@@ -86,7 +112,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void Resize()
         {
-            ((CHR0Node)_resource).Resize();
+            ((CHR0Node) _resource).Resize();
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
@@ -94,7 +120,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void Append()
         {
-            ((CHR0Node)_resource).Append();
+            ((CHR0Node) _resource).Append();
             BaseWrapper res = FindResource(_resource, false);
             res.EnsureVisible();
             res.TreeView.SelectedNode = res;
@@ -113,6 +139,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu, _multiSelectMenu;
+
         static CHR0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -133,8 +160,17 @@ namespace BrawlCrate.NodeWrappers
             _multiSelectMenu = new ContextMenuStrip();
             _multiSelectMenu.Items.Add(new ToolStripMenuItem("Edit All", null, EditAllAction));
         }
-        protected static void EditAllAction(object sender, EventArgs e) { EditAll(GetInstances<CHR0EntryWrapper>()); }
-        protected static void ViewInterp(object sender, EventArgs e) { GetInstance<CHR0EntryWrapper>().ViewInterp(); }
+
+        protected static void EditAllAction(object sender, EventArgs e)
+        {
+            EditAll(GetInstances<CHR0EntryWrapper>());
+        }
+
+        protected static void ViewInterp(object sender, EventArgs e)
+        {
+            GetInstance<CHR0EntryWrapper>().ViewInterp();
+        }
+
         private void ViewInterp()
         {
             InterpolationForm f = MainForm.Instance.InterpolationForm;
@@ -147,23 +183,35 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             CHR0EntryWrapper w = GetInstance<CHR0EntryWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public CHR0EntryWrapper(IWin32Window owner) { _owner = owner; ContextMenuStrip = _menu; }
-        public CHR0EntryWrapper() { _owner = null; ContextMenuStrip = _menu; }
+        public CHR0EntryWrapper(IWin32Window owner)
+        {
+            _owner = owner;
+            ContextMenuStrip = _menu;
+        }
+
+        public CHR0EntryWrapper()
+        {
+            _owner = null;
+            ContextMenuStrip = _menu;
+        }
 
         public ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
 

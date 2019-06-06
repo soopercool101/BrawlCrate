@@ -11,7 +11,7 @@ namespace BrawlLib
 
         public void Add(string s)
         {
-            if ((!string.IsNullOrEmpty(s)) && (!_table.ContainsKey(s)))
+            if (!string.IsNullOrEmpty(s) && !_table.ContainsKey(s))
             {
                 _table.Add(s, 0);
             }
@@ -28,13 +28,16 @@ namespace BrawlLib
             return len;
         }
 
-        public void Clear() { _table.Clear(); }
+        public void Clear()
+        {
+            _table.Clear();
+        }
 
         public VoidPtr this[string s]
         {
             get
             {
-                if ((!string.IsNullOrEmpty(s)) && (_table.ContainsKey(s)))
+                if (!string.IsNullOrEmpty(s) && _table.ContainsKey(s))
                 {
                     return _table[s];
                 }
@@ -45,7 +48,7 @@ namespace BrawlLib
 
         public void WriteTable(VoidPtr address)
         {
-            BRESString* entry = (BRESString*)address;
+            BRESString* entry = (BRESString*) address;
             for (int i = 0; i < _table.Count; i++)
             {
                 string s = _table.Keys[i];

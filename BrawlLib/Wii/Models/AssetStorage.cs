@@ -18,7 +18,7 @@ namespace BrawlLib.Wii.Models
                 index = 0;
                 foreach (ResourcePair p in *linker.Vertices)
                 {
-                    Assets[0][index++] = VertexCodec.Decode((MDL0VertexData*)p.Data);
+                    Assets[0][index++] = VertexCodec.Decode((MDL0VertexData*) p.Data);
                 }
             }
 
@@ -29,7 +29,7 @@ namespace BrawlLib.Wii.Models
                 index = 0;
                 foreach (ResourcePair p in *linker.Normals)
                 {
-                    Assets[1][index++] = VertexCodec.Decode((MDL0NormalData*)p.Data);
+                    Assets[1][index++] = VertexCodec.Decode((MDL0NormalData*) p.Data);
                 }
             }
 
@@ -40,7 +40,7 @@ namespace BrawlLib.Wii.Models
                 index = 0;
                 foreach (ResourcePair p in *linker.Colors)
                 {
-                    Assets[2][index++] = ColorCodec.Decode((MDL0ColorData*)p.Data);
+                    Assets[2][index++] = ColorCodec.Decode((MDL0ColorData*) p.Data);
                 }
             }
 
@@ -51,11 +51,15 @@ namespace BrawlLib.Wii.Models
                 index = 0;
                 foreach (ResourcePair p in *linker.UVs)
                 {
-                    Assets[3][index++] = VertexCodec.Decode((MDL0UVData*)p.Data);
+                    Assets[3][index++] = VertexCodec.Decode((MDL0UVData*) p.Data);
                 }
             }
         }
-        ~AssetStorage() { Dispose(); }
+
+        ~AssetStorage()
+        {
+            Dispose();
+        }
 
         public void Dispose()
         {

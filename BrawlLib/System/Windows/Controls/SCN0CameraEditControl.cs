@@ -49,7 +49,9 @@ namespace System.Windows.Forms
         private Label label13;
 
         private SCN0CameraNode _target;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SCN0CameraNode TargetSequence
         {
             get => _target;
@@ -119,6 +121,7 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
+
             listKeyframes.EndUpdate();
 
             RefreshPage();
@@ -126,7 +129,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            int page = (int)numFrame.Value - 1;
+            int page = (int) numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -165,7 +168,7 @@ namespace System.Windows.Forms
                 }
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < (_numFrames - 1);
+                btnNext.Enabled = _currentPage < _numFrames - 1;
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -176,7 +179,7 @@ namespace System.Windows.Forms
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
             {
-                if (((CameraAnimationFrame)listKeyframes.Items[i]).Index == index)
+                if (((CameraAnimationFrame) listKeyframes.Items[i]).Index == index)
                 {
                     return i;
                 }
@@ -187,7 +190,7 @@ namespace System.Windows.Forms
 
         private void UpdateBox(int index)
         {
-            if (_target.GetKeyframe((CameraKeyframeMode)index, _currentPage) != null)
+            if (_target.GetKeyframe((CameraKeyframeMode) index, _currentPage) != null)
             {
                 _boxes[index].BackColor = Color.Yellow;
             }
@@ -201,9 +204,9 @@ namespace System.Windows.Forms
         {
             NumericInputBox box = sender as NumericInputBox;
             CameraAnimationFrame kf;
-            float* pkf = (float*)&kf;
+            float* pkf = (float*) &kf;
             float val = box.Value;
-            int index = (int)box.Tag;
+            int index = (int) box.Tag;
             int x;
 
             if (val != _currentFrame[index])
@@ -215,10 +218,10 @@ namespace System.Windows.Forms
                     //Value removed find keyframe and zero it out
                     if (kfIndex >= 0)
                     {
-                        kf = (CameraAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (CameraAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBools(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 15) && float.IsNaN(pkf[x]); x++)
+                        for (x = 0; x < 15 && float.IsNaN(pkf[x]); x++)
                         {
                             ;
                         }
@@ -234,7 +237,7 @@ namespace System.Windows.Forms
                         }
                     }
 
-                    _target.RemoveKeyframe((CameraKeyframeMode)index, _currentPage);
+                    _target.RemoveKeyframe((CameraKeyframeMode) index, _currentPage);
                     val = _target.GetAnimFrame(_currentPage)[index];
                     box.Value = val;
                 }
@@ -242,7 +245,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (CameraAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (CameraAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBools(index, true);
                         pkf[index] = val;
                         listKeyframes.Items[kfIndex] = kf;
@@ -255,7 +258,9 @@ namespace System.Windows.Forms
                         pkf[index] = val;
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((CameraAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        for (x = 0;
+                            x < count && ((CameraAnimationFrame) listKeyframes.Items[x]).Index < _currentPage;
+                            x++)
                         {
                             ;
                         }
@@ -264,7 +269,7 @@ namespace System.Windows.Forms
                         listKeyframes.SelectedIndex = x;
                     }
 
-                    _target.SetKeyframe((CameraKeyframeMode)index, _currentPage, val);
+                    _target.SetKeyframe((CameraKeyframeMode) index, _currentPage, val);
                 }
 
                 _currentFrame[index] = val;
@@ -277,15 +282,23 @@ namespace System.Windows.Forms
             int index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                CameraAnimationFrame f = (CameraAnimationFrame)listKeyframes.SelectedItem;
-                numFrame.Value = (decimal)(f.Index + 1);
+                CameraAnimationFrame f = (CameraAnimationFrame) listKeyframes.SelectedItem;
+                numFrame.Value = (decimal) (f.Index + 1);
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value--; }
-        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value++; }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            numFrame.Value--;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            numFrame.Value++;
+        }
 
         #region Designer
+
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
@@ -325,7 +338,7 @@ namespace System.Windows.Forms
             label8 = new Label();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
-            ((ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize) numFrame).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -673,19 +686,23 @@ namespace System.Windows.Forms
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(117, 4);
-            numFrame.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Minimum = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Value = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // numRotY
@@ -765,9 +782,8 @@ namespace System.Windows.Forms
             groupBox1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize) numFrame).EndInit();
             ResumeLayout(false);
-
         }
 
         #endregion

@@ -12,8 +12,7 @@ namespace System
     {
         public static readonly Matrix Identity = ScaleMatrix(1.0f, 1.0f, 1.0f);
 
-        [NonSerialized]
-        private fixed float _values[16];
+        [NonSerialized] private fixed float _values[16];
 
         public Matrix(SerializationInfo info, StreamingContext ctxt)
         {
@@ -22,6 +21,7 @@ namespace System
                 Data[i] = info.GetSingle(string.Format("_values[{0}]", i));
             }
         }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             for (int i = 0; i < 16; i++)
@@ -32,10 +32,29 @@ namespace System
 
         #region Value Management
 
-        public Vector4 Row0 { get => *(Vector4*)&Data[0]; set => *(Vector4*)&Data[0] = value; }
-        public Vector4 Row1 { get => *(Vector4*)&Data[4]; set => *(Vector4*)&Data[4] = value; }
-        public Vector4 Row2 { get => *(Vector4*)&Data[8]; set => *(Vector4*)&Data[8] = value; }
-        public Vector4 Row3 { get => *(Vector4*)&Data[12]; set => *(Vector4*)&Data[12] = value; }
+        public Vector4 Row0
+        {
+            get => *(Vector4*) &Data[0];
+            set => *(Vector4*) &Data[0] = value;
+        }
+
+        public Vector4 Row1
+        {
+            get => *(Vector4*) &Data[4];
+            set => *(Vector4*) &Data[4] = value;
+        }
+
+        public Vector4 Row2
+        {
+            get => *(Vector4*) &Data[8];
+            set => *(Vector4*) &Data[8] = value;
+        }
+
+        public Vector4 Row3
+        {
+            get => *(Vector4*) &Data[12];
+            set => *(Vector4*) &Data[12] = value;
+        }
 
         public Vector4 Col0
         {
@@ -48,6 +67,7 @@ namespace System
                 Data[12] = value._w;
             }
         }
+
         public Vector4 Col1
         {
             get => new Vector4(Data[1], Data[5], Data[9], Data[13]);
@@ -59,6 +79,7 @@ namespace System
                 Data[13] = value._w;
             }
         }
+
         public Vector4 Col2
         {
             get => new Vector4(Data[2], Data[6], Data[10], Data[14]);
@@ -70,6 +91,7 @@ namespace System
                 Data[14] = value._w;
             }
         }
+
         public Vector4 Col3
         {
             get => new Vector4(Data[3], Data[7], Data[11], Data[15]);
@@ -85,78 +107,164 @@ namespace System
         /// <summary>
         /// Row 1, Column 1
         /// </summary>
-        public float M11 { get => Data[0]; set => Data[0] = value; }
+        public float M11
+        {
+            get => Data[0];
+            set => Data[0] = value;
+        }
+
         /// <summary>
         /// Row 1, Column 2
         /// </summary>
-        public float M12 { get => Data[1]; set => Data[1] = value; }
+        public float M12
+        {
+            get => Data[1];
+            set => Data[1] = value;
+        }
+
         /// <summary>
         /// Row 1, Column 3
         /// </summary>
-        public float M13 { get => Data[2]; set => Data[2] = value; }
+        public float M13
+        {
+            get => Data[2];
+            set => Data[2] = value;
+        }
+
         /// <summary>
         /// Row 1, Column 4
         /// </summary>
-        public float M14 { get => Data[3]; set => Data[3] = value; }
+        public float M14
+        {
+            get => Data[3];
+            set => Data[3] = value;
+        }
 
         /// <summary>
         /// Row 2, Column 1
         /// </summary>
-        public float M21 { get => Data[4]; set => Data[4] = value; }
+        public float M21
+        {
+            get => Data[4];
+            set => Data[4] = value;
+        }
+
         /// <summary>
         /// Row 2, Column 2
         /// </summary>
-        public float M22 { get => Data[5]; set => Data[5] = value; }
+        public float M22
+        {
+            get => Data[5];
+            set => Data[5] = value;
+        }
+
         /// <summary>
         /// Row 2, Column 3
         /// </summary>
-        public float M23 { get => Data[6]; set => Data[6] = value; }
+        public float M23
+        {
+            get => Data[6];
+            set => Data[6] = value;
+        }
+
         /// <summary>
         /// Row 2, Column 4
         /// </summary>
-        public float M24 { get => Data[7]; set => Data[7] = value; }
+        public float M24
+        {
+            get => Data[7];
+            set => Data[7] = value;
+        }
 
         /// <summary>
         /// Row 3, Column 1
         /// </summary>
-        public float M31 { get => Data[8]; set => Data[8] = value; }
+        public float M31
+        {
+            get => Data[8];
+            set => Data[8] = value;
+        }
+
         /// <summary>
         /// Row 3, Column 2
         /// </summary>
-        public float M32 { get => Data[9]; set => Data[9] = value; }
+        public float M32
+        {
+            get => Data[9];
+            set => Data[9] = value;
+        }
+
         /// <summary>
         /// Row 3, Column 3
         /// </summary>
-        public float M33 { get => Data[10]; set => Data[10] = value; }
+        public float M33
+        {
+            get => Data[10];
+            set => Data[10] = value;
+        }
+
         /// <summary>
         /// Row 3, Column 4
         /// </summary>
-        public float M34 { get => Data[11]; set => Data[11] = value; }
+        public float M34
+        {
+            get => Data[11];
+            set => Data[11] = value;
+        }
 
         /// <summary>
         /// Row 4, Column 1
         /// </summary>
-        public float M41 { get => Data[12]; set => Data[12] = value; }
+        public float M41
+        {
+            get => Data[12];
+            set => Data[12] = value;
+        }
+
         /// <summary>
         /// Row 4, Column 2
         /// </summary>
-        public float M42 { get => Data[13]; set => Data[13] = value; }
+        public float M42
+        {
+            get => Data[13];
+            set => Data[13] = value;
+        }
+
         /// <summary>
         /// Row 4, Column 3
         /// </summary>
-        public float M43 { get => Data[14]; set => Data[14] = value; }
+        public float M43
+        {
+            get => Data[14];
+            set => Data[14] = value;
+        }
+
         /// <summary>
         /// Row 4, Column 4
         /// </summary>
-        public float M44 { get => Data[15]; set => Data[15] = value; }
+        public float M44
+        {
+            get => Data[15];
+            set => Data[15] = value;
+        }
 
-        public float* Data { get { fixed (float* ptr = _values) { return ptr; } } }
+        public float* Data
+        {
+            get
+            {
+                fixed (float* ptr = _values)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public float this[int x, int y]
         {
             get => Data[(y << 2) + x];
             set => Data[(y << 2) + x] = value;
         }
+
         public float this[int index]
         {
             get => Data[index];
@@ -173,7 +281,7 @@ namespace System
         public Matrix(float* values)
         {
             Matrix m = this;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             for (int i = 0; i < 16; i++)
             {
                 p[i] = values[i];
@@ -183,7 +291,7 @@ namespace System
         public Matrix(params float[] values)
         {
             Matrix m = this;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             for (int i = 0; i < 16; i++)
             {
                 p[i] = values[i];
@@ -193,7 +301,7 @@ namespace System
         public Matrix Reverse()
         {
             Matrix m;
-            float* pOut = (float*)&m;
+            float* pOut = (float*) &m;
             fixed (float* p = _values)
             {
                 for (int y = 0; y < 4; y++)
@@ -224,32 +332,46 @@ namespace System
             }
         }
 
-        public static Matrix ScaleMatrix(Vector3 scale) { return ScaleMatrix(scale._x, scale._y, scale._z); }
+        public static Matrix ScaleMatrix(Vector3 scale)
+        {
+            return ScaleMatrix(scale._x, scale._y, scale._z);
+        }
+
         public static Matrix ScaleMatrix(float x, float y, float z)
         {
             Matrix m = new Matrix();
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             p[0] = x;
             p[5] = y;
             p[10] = z;
             p[15] = 1.0f;
             return m;
         }
-        public static Matrix TranslationMatrix(Vector3 v) { return TranslationMatrix(v._x, v._y, v._z); }
+
+        public static Matrix TranslationMatrix(Vector3 v)
+        {
+            return TranslationMatrix(v._x, v._y, v._z);
+        }
+
         public static Matrix TranslationMatrix(float x, float y, float z)
         {
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             p[12] = x;
             p[13] = y;
             p[14] = z;
             return m;
         }
-        public static Matrix ReverseTranslationMatrix(Vector3 v) { return ReverseTranslationMatrix(v._x, v._y, v._z); }
+
+        public static Matrix ReverseTranslationMatrix(Vector3 v)
+        {
+            return ReverseTranslationMatrix(v._x, v._y, v._z);
+        }
+
         public static Matrix ReverseTranslationMatrix(float x, float y, float z)
         {
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             p[12] = -x - y - z;
             p[13] = -x - y - z;
             p[14] = -x - y - z;
@@ -263,12 +385,13 @@ namespace System
             {
                 if (w.Bone != null)
                 {
-                    m += (w.Bone.Matrix * w.Bone.InverseBindMatrix) * w.Weight;
+                    m += w.Bone.Matrix * w.Bone.InverseBindMatrix * w.Weight;
                 }
             }
 
             return m;
         }
+
         public static Matrix ReverseInfluenceMatrix(List<BoneWeight> weights)
         {
             Matrix m = new Matrix();
@@ -276,7 +399,7 @@ namespace System
             {
                 if (w.Bone != null)
                 {
-                    m += (w.Bone.InverseMatrix * w.Bone.BindMatrix) * w.Weight;
+                    m += w.Bone.InverseMatrix * w.Bone.BindMatrix * w.Weight;
                 }
             }
 
@@ -288,10 +411,10 @@ namespace System
             angle *= Maths._deg2radf;
 
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
-            float cos = (float)Math.Cos(angle);
-            float sin = (float)Math.Sin(angle);
+            float cos = (float) Math.Cos(angle);
+            float sin = (float) Math.Sin(angle);
 
             m[5] = cos;
             m[6] = -sin;
@@ -306,10 +429,10 @@ namespace System
             angle *= Maths._deg2radf;
 
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
-            float cos = (float)Math.Cos(angle);
-            float sin = (float)Math.Sin(angle);
+            float cos = (float) Math.Cos(angle);
+            float sin = (float) Math.Sin(angle);
 
             m[0] = cos;
             m[2] = sin;
@@ -324,10 +447,10 @@ namespace System
             angle *= Maths._deg2radf;
 
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
-            float cos = (float)Math.Cos(angle);
-            float sin = (float)Math.Sin(angle);
+            float cos = (float) Math.Cos(angle);
+            float sin = (float) Math.Sin(angle);
 
             m[0] = cos;
             m[1] = -sin;
@@ -337,43 +460,52 @@ namespace System
             return m;
         }
 
-        public static Matrix RotationMatrix(Vector3 angles) { return RotationMatrix(angles._x, angles._y, angles._z); }
+        public static Matrix RotationMatrix(Vector3 angles)
+        {
+            return RotationMatrix(angles._x, angles._y, angles._z);
+        }
+
         public static Matrix RotationMatrix(float x, float y, float z)
         {
-            float cosx = (float)Math.Cos(x * Maths._deg2radf);
-            float sinx = (float)Math.Sin(x * Maths._deg2radf);
-            float cosy = (float)Math.Cos(y * Maths._deg2radf);
-            float siny = (float)Math.Sin(y * Maths._deg2radf);
-            float cosz = (float)Math.Cos(z * Maths._deg2radf);
-            float sinz = (float)Math.Sin(z * Maths._deg2radf);
+            float cosx = (float) Math.Cos(x * Maths._deg2radf);
+            float sinx = (float) Math.Sin(x * Maths._deg2radf);
+            float cosy = (float) Math.Cos(y * Maths._deg2radf);
+            float siny = (float) Math.Sin(y * Maths._deg2radf);
+            float cosz = (float) Math.Cos(z * Maths._deg2radf);
+            float sinz = (float) Math.Sin(z * Maths._deg2radf);
 
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             m[0] = cosy * cosz;
             m[1] = sinz * cosy;
             m[2] = -siny;
-            m[4] = (sinx * cosz * siny - cosx * sinz);
-            m[5] = (sinx * sinz * siny + cosz * cosx);
+            m[4] = sinx * cosz * siny - cosx * sinz;
+            m[5] = sinx * sinz * siny + cosz * cosx;
             m[6] = sinx * cosy;
-            m[8] = (sinx * sinz + cosx * cosz * siny);
-            m[9] = (cosx * sinz * siny - sinx * cosz);
+            m[8] = sinx * sinz + cosx * cosz * siny;
+            m[9] = cosx * sinz * siny - sinx * cosz;
             m[10] = cosx * cosy;
 
             return m;
         }
-        public static Matrix ReverseRotationMatrix(Vector3 angles) { return ReverseRotationMatrix(angles._x, angles._y, angles._z); }
+
+        public static Matrix ReverseRotationMatrix(Vector3 angles)
+        {
+            return ReverseRotationMatrix(angles._x, angles._y, angles._z);
+        }
+
         public static Matrix ReverseRotationMatrix(float x, float y, float z)
         {
-            float cosx = (float)Math.Cos(x * Maths._deg2radf);
-            float sinx = (float)Math.Sin(x * Maths._deg2radf);
-            float cosy = (float)Math.Cos(y * Maths._deg2radf);
-            float siny = (float)Math.Sin(y * Maths._deg2radf);
-            float cosz = (float)Math.Cos(z * Maths._deg2radf);
-            float sinz = (float)Math.Sin(z * Maths._deg2radf);
+            float cosx = (float) Math.Cos(x * Maths._deg2radf);
+            float sinx = (float) Math.Sin(x * Maths._deg2radf);
+            float cosy = (float) Math.Cos(y * Maths._deg2radf);
+            float siny = (float) Math.Sin(y * Maths._deg2radf);
+            float cosz = (float) Math.Cos(z * Maths._deg2radf);
+            float sinz = (float) Math.Sin(z * Maths._deg2radf);
 
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             p[0] = cosy * cosz;
             p[1] = sinx * siny * cosz - cosx * sinz;
@@ -388,15 +520,19 @@ namespace System
             return m;
         }
 
-        public void Translate(Vector3 v) { Translate(v._x, v._y, v._z); }
+        public void Translate(Vector3 v)
+        {
+            Translate(v._x, v._y, v._z);
+        }
+
         public void Translate(float x, float y, float z)
         {
             fixed (float* p = _values)
             {
-                p[12] += (p[0] * x) + (p[4] * y) + (p[8] * z);
-                p[13] += (p[1] * x) + (p[5] * y) + (p[9] * z);
-                p[14] += (p[2] * x) + (p[6] * y) + (p[10] * z);
-                p[15] += (p[3] * x) + (p[7] * y) + (p[11] * z);
+                p[12] += p[0] * x + p[4] * y + p[8] * z;
+                p[13] += p[1] * x + p[5] * y + p[9] * z;
+                p[14] += p[2] * x + p[6] * y + p[10] * z;
+                p[15] += p[3] * x + p[7] * y + p[11] * z;
             }
         }
 
@@ -405,10 +541,11 @@ namespace System
             Vector3 nv = new Vector3();
             fixed (float* p = _values)
             {
-                nv._x = (p[0] * v._x) + (p[4] * v._y) + (p[8] * v._z) + p[12];
-                nv._y = (p[1] * v._x) + (p[5] * v._y) + (p[9] * v._z) + p[13];
-                nv._z = (p[2] * v._x) + (p[6] * v._y) + (p[10] * v._z) + p[14];
+                nv._x = p[0] * v._x + p[4] * v._y + p[8] * v._z + p[12];
+                nv._y = p[1] * v._x + p[5] * v._y + p[9] * v._z + p[13];
+                nv._z = p[2] * v._x + p[6] * v._y + p[10] * v._z + p[14];
             }
+
             return nv;
         }
 
@@ -417,19 +554,20 @@ namespace System
             Vector3 nv = new Vector3();
             fixed (float* p = _values)
             {
-                nv._x = (p[0] * v._x) + (p[1] * v._y) + (p[2] * v._z);
-                nv._y = (p[4] * v._x) + (p[5] * v._y) + (p[6] * v._z);
-                nv._z = (p[8] * v._x) + (p[9] * v._y) + (p[10] * v._z);
+                nv._x = p[0] * v._x + p[1] * v._y + p[2] * v._z;
+                nv._y = p[4] * v._x + p[5] * v._y + p[6] * v._z;
+                nv._z = p[8] * v._x + p[9] * v._y + p[10] * v._z;
             }
+
             return nv;
         }
 
         public static Vector2 operator *(Matrix m, Vector2 v)
         {
             Vector2 nv;
-            float* p = (float*)&m;
-            nv._x = (p[0] * v._x) + (p[4] * v._y) + p[8] + p[12];
-            nv._y = (p[1] * v._x) + (p[5] * v._y) + p[9] + p[13];
+            float* p = (float*) &m;
+            nv._x = p[0] * v._x + p[4] * v._y + p[8] + p[12];
+            nv._y = p[1] * v._x + p[5] * v._y + p[9] + p[13];
             //nv._x = (p[0] * v._x) + (p[4] * v._y) + (p[8] * v._z) + p[12];
             //nv._y = (p[1] * v._x) + (p[5] * v._y) + (p[9] * v._z) + p[13];
             //nv._z = (p[2] * v._x) + (p[6] * v._y) + (p[10] * v._z) + p[14];
@@ -439,23 +577,31 @@ namespace System
         private static Vector3 Transform(Vector3 v, Matrix m)
         {
             Vector3 nv;
-            float* p = (float*)&m;
-            nv._x = (p[0] * v._x) + (p[4] * v._y) + (p[8] * v._z) + p[12];
-            nv._y = (p[1] * v._x) + (p[5] * v._y) + (p[9] * v._z) + p[13];
-            nv._z = (p[2] * v._x) + (p[6] * v._y) + (p[10] * v._z) + p[14];
+            float* p = (float*) &m;
+            nv._x = p[0] * v._x + p[4] * v._y + p[8] * v._z + p[12];
+            nv._y = p[1] * v._x + p[5] * v._y + p[9] * v._z + p[13];
+            nv._z = p[2] * v._x + p[6] * v._y + p[10] * v._z + p[14];
             return nv;
         }
-        public static Vector3 operator *(Vector3 v, Matrix m) { return Transform(v, m); }
-        public static Vector3 operator *(Matrix m, Vector3 v) { return Transform(v, m); }
+
+        public static Vector3 operator *(Vector3 v, Matrix m)
+        {
+            return Transform(v, m);
+        }
+
+        public static Vector3 operator *(Matrix m, Vector3 v)
+        {
+            return Transform(v, m);
+        }
 
         public static Vector4 operator *(Matrix m, Vector4 v)
         {
             Vector4 nv;
-            float* dPtr = (float*)&nv;
-            float* p0 = (float*)&m, p1 = p0 + 4, p2 = p0 + 8, p3 = p0 + 12;
+            float* dPtr = (float*) &nv;
+            float* p0 = (float*) &m, p1 = p0 + 4, p2 = p0 + 8, p3 = p0 + 12;
             for (int i = 0; i < 4; i++)
             {
-                dPtr[i] = (p0[i] * v._x) + (p1[i] * v._y) + (p2[i] * v._z) + (p3[i] * v._w);
+                dPtr[i] = p0[i] * v._x + p1[i] * v._y + p2[i] * v._z + p3[i] * v._w;
             }
 
             return nv;
@@ -480,7 +626,7 @@ namespace System
         public static Matrix operator *(Matrix m1, Matrix m2)
         {
             Matrix dm;
-            float* s1 = (float*)&m2, s2 = (float*)&m1, d = (float*)&dm;
+            float* s1 = (float*) &m2, s2 = (float*) &m1, d = (float*) &dm;
 
             int index = 0;
             float val;
@@ -503,8 +649,8 @@ namespace System
 
         public static Matrix operator +(Matrix m1, Matrix m2)
         {
-            float* dPtr = (float*)&m1;
-            float* sPtr = (float*)&m2;
+            float* dPtr = (float*) &m1;
+            float* sPtr = (float*) &m2;
             for (int i = 0; i < 16; i++)
             {
                 *dPtr++ += *sPtr++;
@@ -512,10 +658,11 @@ namespace System
 
             return m1;
         }
+
         public static Matrix operator -(Matrix m1, Matrix m2)
         {
-            float* dPtr = (float*)&m1;
-            float* sPtr = (float*)&m2;
+            float* dPtr = (float*) &m1;
+            float* sPtr = (float*) &m2;
             for (int i = 0; i < 16; i++)
             {
                 *dPtr++ -= *sPtr++;
@@ -523,6 +670,7 @@ namespace System
 
             return m1;
         }
+
         //public static Matrix operator /(Matrix m1, Matrix m2)
         //{
         //    float* dPtr = (float*)&m1;
@@ -533,7 +681,7 @@ namespace System
         //}
         public static Matrix operator *(Matrix m, float f)
         {
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             for (int i = 0; i < 16; i++)
             {
                 *p++ *= f;
@@ -541,9 +689,10 @@ namespace System
 
             return m;
         }
+
         public static Matrix operator /(Matrix m, float f)
         {
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             for (int i = 0; i < 16; i++)
             {
                 *p++ /= f;
@@ -551,10 +700,11 @@ namespace System
 
             return m;
         }
+
         public static bool operator ==(Matrix m1, Matrix m2)
         {
-            float* p1 = (float*)&m1;
-            float* p2 = (float*)&m2;
+            float* p1 = (float*) &m1;
+            float* p2 = (float*) &m2;
 
             for (int i = 0; i < 16; i++)
             {
@@ -566,10 +716,11 @@ namespace System
 
             return true;
         }
+
         public static bool operator !=(Matrix m1, Matrix m2)
         {
-            float* p1 = (float*)&m1;
-            float* p2 = (float*)&m2;
+            float* p1 = (float*) &m1;
+            float* p2 = (float*) &m2;
 
             for (int i = 0; i < 16; i++)
             {
@@ -581,9 +732,10 @@ namespace System
 
             return false;
         }
+
         public static Matrix operator -(Matrix m)
         {
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             int i = 0;
             while (i++ < 16)
             {
@@ -596,71 +748,82 @@ namespace System
         public void RotateX(float x)
         {
             float var1, var2;
-            float cosx = (float)Math.Cos(x / 180.0f * Math.PI);
-            float sinx = (float)Math.Sin(x / 180.0f * Math.PI);
+            float cosx = (float) Math.Cos(x / 180.0f * Math.PI);
+            float sinx = (float) Math.Sin(x / 180.0f * Math.PI);
 
             fixed (float* p = _values)
             {
-                var1 = p[4]; var2 = p[8];
-                p[4] = (var1 * cosx) + (var2 * sinx);
-                p[8] = (var1 * -sinx) + (var2 * cosx);
+                var1 = p[4];
+                var2 = p[8];
+                p[4] = var1 * cosx + var2 * sinx;
+                p[8] = var1 * -sinx + var2 * cosx;
 
-                var1 = p[5]; var2 = p[9];
-                p[5] = (var1 * cosx) + (var2 * sinx);
-                p[9] = (var1 * -sinx) + (var2 * cosx);
+                var1 = p[5];
+                var2 = p[9];
+                p[5] = var1 * cosx + var2 * sinx;
+                p[9] = var1 * -sinx + var2 * cosx;
 
-                var1 = p[6]; var2 = p[10];
-                p[6] = (var1 * cosx) + (var2 * sinx);
-                p[10] = (var1 * -sinx) + (var2 * cosx);
+                var1 = p[6];
+                var2 = p[10];
+                p[6] = var1 * cosx + var2 * sinx;
+                p[10] = var1 * -sinx + var2 * cosx;
             }
         }
+
         public void RotateY(float y)
         {
             float var1, var2;
-            float cosy = (float)Math.Cos(y / 180.0f * Math.PI);
-            float siny = (float)Math.Sin(y / 180.0f * Math.PI);
+            float cosy = (float) Math.Cos(y / 180.0f * Math.PI);
+            float siny = (float) Math.Sin(y / 180.0f * Math.PI);
 
             fixed (float* p = _values)
             {
-                var1 = p[0]; var2 = p[8];
-                p[0] = (var1 * cosy) + (var2 * -siny);
-                p[8] = (var1 * siny) + (var2 * cosy);
+                var1 = p[0];
+                var2 = p[8];
+                p[0] = var1 * cosy + var2 * -siny;
+                p[8] = var1 * siny + var2 * cosy;
 
-                var1 = p[1]; var2 = p[9];
-                p[1] = (var1 * cosy) + (var2 * -siny);
-                p[9] = (var1 * siny) + (var2 * cosy);
+                var1 = p[1];
+                var2 = p[9];
+                p[1] = var1 * cosy + var2 * -siny;
+                p[9] = var1 * siny + var2 * cosy;
 
-                var1 = p[2]; var2 = p[10];
-                p[2] = (var1 * cosy) + (var2 * -siny);
-                p[10] = (var1 * siny) + (var2 * cosy);
+                var1 = p[2];
+                var2 = p[10];
+                p[2] = var1 * cosy + var2 * -siny;
+                p[10] = var1 * siny + var2 * cosy;
             }
         }
+
         public void RotateZ(float z)
         {
             float var1, var2;
-            float cosz = (float)Math.Cos(z / 180.0f * Math.PI);
-            float sinz = (float)Math.Sin(z / 180.0f * Math.PI);
+            float cosz = (float) Math.Cos(z / 180.0f * Math.PI);
+            float sinz = (float) Math.Sin(z / 180.0f * Math.PI);
 
             fixed (float* p = _values)
             {
-                var1 = p[0]; var2 = p[4];
-                p[0] = (var1 * cosz) + (var2 * sinz);
-                p[4] = (var1 * -sinz) + (var2 * cosz);
+                var1 = p[0];
+                var2 = p[4];
+                p[0] = var1 * cosz + var2 * sinz;
+                p[4] = var1 * -sinz + var2 * cosz;
 
-                var1 = p[1]; var2 = p[5];
-                p[1] = (var1 * cosz) + (var2 * sinz);
-                p[5] = (var1 * -sinz) + (var2 * cosz);
+                var1 = p[1];
+                var2 = p[5];
+                p[1] = var1 * cosz + var2 * sinz;
+                p[5] = var1 * -sinz + var2 * cosz;
 
-                var1 = p[2]; var2 = p[6];
-                p[2] = (var1 * cosz) + (var2 * sinz);
-                p[6] = (var1 * -sinz) + (var2 * cosz);
+                var1 = p[2];
+                var2 = p[6];
+                p[2] = var1 * cosz + var2 * sinz;
+                p[6] = var1 * -sinz + var2 * cosz;
             }
         }
 
         public Matrix GetRotationMatrix()
         {
             Matrix m = Identity;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
             fixed (float* src = _values)
             {
                 p[0] = src[0];
@@ -675,13 +838,14 @@ namespace System
                 p[9] = src[9];
                 p[10] = src[10];
             }
+
             return m;
         }
 
         public Vector4 GetQuaternion1()
         {
             Matrix m = this;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             Vector4 result = new Vector4();
 
@@ -690,7 +854,7 @@ namespace System
 
             if (scale > 0.0f)
             {
-                sqrt = 0.5f / (float)Math.Sqrt(scale);
+                sqrt = 0.5f / (float) Math.Sqrt(scale);
 
                 result._x = (p[9] - p[6]) * sqrt;
                 result._y = (p[2] - p[8]) * sqrt;
@@ -700,9 +864,9 @@ namespace System
                 return result;
             }
 
-            if ((p[0] >= p[5]) && (p[0] >= p[10]))
+            if (p[0] >= p[5] && p[0] >= p[10])
             {
-                sqrt = (float)Math.Sqrt(1.0 + p[0] - p[5] - p[10]) * 2;
+                sqrt = (float) Math.Sqrt(1.0 + p[0] - p[5] - p[10]) * 2;
 
                 result._x = 0.5f / sqrt;
                 result._y = (p[1] + p[4]) / sqrt;
@@ -714,7 +878,7 @@ namespace System
 
             if (p[5] > p[10])
             {
-                sqrt = (float)Math.Sqrt(1.0 + p[5] - p[0] - p[10]) * 2;
+                sqrt = (float) Math.Sqrt(1.0 + p[5] - p[0] - p[10]) * 2;
 
                 result._x = (p[1] + p[4]) / sqrt;
                 result._y = 0.5f / sqrt;
@@ -724,7 +888,7 @@ namespace System
                 return result;
             }
 
-            sqrt = (float)Math.Sqrt(1.0 + p[10] - p[0] - p[5]) * 2;
+            sqrt = (float) Math.Sqrt(1.0 + p[10] - p[0] - p[5]) * 2;
 
             result._x = (p[2] + p[8]) / sqrt;
             result._y = (p[6] + p[9]) / sqrt;
@@ -739,43 +903,43 @@ namespace System
             Vector4 q = new Vector4();
 
             Matrix m = this;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             double trace = p[0] + p[5] + p[10] + 1.0;
 
             if (trace > 1e-7)
             {
                 double s = 0.5 / Math.Sqrt(trace);
-                q[0] = (float)((p[9] - p[6]) * s);
-                q[1] = (float)((p[2] - p[8]) * s);
-                q[2] = (float)((p[4] - p[1]) * s);
-                q[3] = (float)(0.25 / s);
+                q[0] = (float) ((p[9] - p[6]) * s);
+                q[1] = (float) ((p[2] - p[8]) * s);
+                q[2] = (float) ((p[4] - p[1]) * s);
+                q[3] = (float) (0.25 / s);
             }
             else
             {
                 if (p[0] > p[5] && p[0] > p[10])
                 {
                     double s = 2.0 * Math.Sqrt(1.0 + p[0] - p[5] - p[10]);
-                    q[0] = (float)(0.25 * s);
-                    q[1] = (float)((p[1] + p[4]) / s);
-                    q[2] = (float)((p[2] + p[8]) / s);
-                    q[3] = (float)((p[6] - p[9]) / s);
+                    q[0] = (float) (0.25 * s);
+                    q[1] = (float) ((p[1] + p[4]) / s);
+                    q[2] = (float) ((p[2] + p[8]) / s);
+                    q[3] = (float) ((p[6] - p[9]) / s);
                 }
                 else if (p[5] > p[10])
                 {
                     double s = 2.0 * Math.Sqrt(1.0 + p[5] - p[0] - p[10]);
-                    q[0] = (float)((p[1] + p[4]) / s);
-                    q[1] = (float)(0.25 * s);
-                    q[2] = (float)((p[6] + p[9]) / s);
-                    q[3] = (float)((p[2] - p[8]) / s);
+                    q[0] = (float) ((p[1] + p[4]) / s);
+                    q[1] = (float) (0.25 * s);
+                    q[2] = (float) ((p[6] + p[9]) / s);
+                    q[3] = (float) ((p[2] - p[8]) / s);
                 }
                 else
                 {
                     double s = 2.0 * Math.Sqrt(1.0 + p[10] - p[0] - p[5]);
-                    q[0] = (float)((p[2] + p[8]) / s);
-                    q[1] = (float)((p[6] + p[9]) / s);
-                    q[2] = (float)(0.25 * s);
-                    q[3] = (float)((p[1] - p[4]) / s);
+                    q[0] = (float) ((p[2] + p[8]) / s);
+                    q[1] = (float) ((p[6] + p[9]) / s);
+                    q[2] = (float) (0.25 * s);
+                    q[3] = (float) ((p[1] - p[4]) / s);
                 }
             }
 
@@ -789,10 +953,10 @@ namespace System
             Matrix m = this;
             Vector4 q = new Vector4
             {
-                _w = (float)Math.Sqrt(Math.Max(0, 1 + m[0, 0] + m[1, 1] + m[2, 2])) / 2,
-                _x = (float)Math.Sqrt(Math.Max(0, 1 + m[0, 0] - m[1, 1] - m[2, 2])) / 2,
-                _y = (float)Math.Sqrt(Math.Max(0, 1 - m[0, 0] + m[1, 1] - m[2, 2])) / 2,
-                _z = (float)Math.Sqrt(Math.Max(0, 1 - m[0, 0] - m[1, 1] + m[2, 2])) / 2
+                _w = (float) Math.Sqrt(Math.Max(0, 1 + m[0, 0] + m[1, 1] + m[2, 2])) / 2,
+                _x = (float) Math.Sqrt(Math.Max(0, 1 + m[0, 0] - m[1, 1] - m[2, 2])) / 2,
+                _y = (float) Math.Sqrt(Math.Max(0, 1 - m[0, 0] + m[1, 1] - m[2, 2])) / 2,
+                _z = (float) Math.Sqrt(Math.Max(0, 1 - m[0, 0] - m[1, 1] + m[2, 2])) / 2
             };
             q._x *= Math.Sign(q._x * (m[2, 1] - m[1, 2]));
             q._y *= Math.Sign(q._y * (m[0, 2] - m[2, 0]));
@@ -807,36 +971,37 @@ namespace System
             float x, y, z, c;
             fixed (float* p = _values)
             {
-                y = (float)Math.Asin(-p[2]);
-                if ((Maths._halfPif - Math.Abs(y)) < 0.0001f)
+                y = (float) Math.Asin(-p[2]);
+                if (Maths._halfPif - Math.Abs(y) < 0.0001f)
                 {
                     //Gimbal lock, occurs when the y rotation falls on pi/2 or -pi/2
                     z = 0.0f;
                     if (y > 0)
                     {
-                        x = (float)Math.Atan2(p[4], p[8]);
+                        x = (float) Math.Atan2(p[4], p[8]);
                     }
                     else
                     {
-                        x = (float)Math.Atan2(p[4], -p[8]);
+                        x = (float) Math.Atan2(p[4], -p[8]);
                     }
                 }
                 else
                 {
-                    c = (float)Math.Cos(y);
-                    x = (float)Math.Atan2(p[6] / c, p[10] / c);
-                    z = (float)Math.Atan2(p[1] / c, p[0] / c);
+                    c = (float) Math.Cos(y);
+                    x = (float) Math.Atan2(p[6] / c, p[10] / c);
+                    z = (float) Math.Atan2(p[1] / c, p[0] / c);
 
                     //180 z/x inverts y, use second option
                     if (Maths._pif - Math.Abs(z) < 0.05f)
                     {
                         y = Maths._pif - y;
-                        c = (float)Math.Cos(y);
-                        x = (float)Math.Atan2(p[6] / c, p[10] / c);
-                        z = (float)Math.Atan2(p[1] / c, p[0] / c);
+                        c = (float) Math.Cos(y);
+                        x = (float) Math.Atan2(p[6] / c, p[10] / c);
+                        z = (float) Math.Atan2(p[1] / c, p[0] / c);
                     }
                 }
             }
+
             return new Vector3(x, y, z) * Maths._rad2degf;
         }
 
@@ -847,12 +1012,12 @@ namespace System
             fixed (float* p = _values)
             {
                 //Translation is easy!
-                state._translate = *(Vector3*)&p[12];
+                state._translate = *(Vector3*) &p[12];
 
                 //Scale, use sqrt of rotation columns
-                state._scale._x = (float)Math.Round(Math.Sqrt(p[0] * p[0] + p[1] * p[1] + p[2] * p[2]), 4);
-                state._scale._y = (float)Math.Round(Math.Sqrt(p[4] * p[4] + p[5] * p[5] + p[6] * p[6]), 4);
-                state._scale._z = (float)Math.Round(Math.Sqrt(p[8] * p[8] + p[9] * p[9] + p[10] * p[10]), 4);
+                state._scale._x = (float) Math.Round(Math.Sqrt(p[0] * p[0] + p[1] * p[1] + p[2] * p[2]), 4);
+                state._scale._y = (float) Math.Round(Math.Sqrt(p[4] * p[4] + p[5] * p[5] + p[6] * p[6]), 4);
+                state._scale._z = (float) Math.Round(Math.Sqrt(p[8] * p[8] + p[9] * p[9] + p[10] * p[10]), 4);
 
                 state._rotate = GetAngles();
             }
@@ -860,14 +1025,23 @@ namespace System
             state.CalcTransforms();
             return state;
         }
-        internal void Scale(Vector3 v) { Scale(v._x, v._y, v._z); }
+
+        internal void Scale(Vector3 v)
+        {
+            Scale(v._x, v._y, v._z);
+        }
+
         internal void Scale(float x, float y, float z)
         {
             Matrix m = ScaleMatrix(x, y, z);
             Multiply(m);
         }
 
-        internal void Rotate(Vector3 v) { Rotate(v._x, v._y, v._z); }
+        internal void Rotate(Vector3 v)
+        {
+            Rotate(v._x, v._y, v._z);
+        }
+
         internal void Rotate(float x, float y, float z)
         {
             Matrix m = RotationMatrix(x, y, z);
@@ -877,8 +1051,8 @@ namespace System
         public static explicit operator Matrix(Matrix34 m)
         {
             Matrix m1;
-            float* sPtr = (float*)&m;
-            float* dPtr = (float*)&m1;
+            float* sPtr = (float*) &m;
+            float* dPtr = (float*) &m1;
 
             dPtr[0] = sPtr[0];
             dPtr[1] = sPtr[4];
@@ -899,11 +1073,12 @@ namespace System
 
             return m1;
         }
+
         public static explicit operator Matrix34(Matrix m)
         {
             Matrix34 m1;
-            float* sPtr = (float*)&m;
-            float* dPtr = (float*)&m1;
+            float* sPtr = (float*) &m;
+            float* dPtr = (float*) &m1;
 
             dPtr[0] = sPtr[0];
             dPtr[1] = sPtr[4];
@@ -920,14 +1095,28 @@ namespace System
 
             return m1;
         }
-        public static Matrix OrthographicMatrix(Vector4 dimensions, Vector2 depth) { return OrthographicMatrix(dimensions, depth._x, depth._y); }
-        public static Matrix OrthographicMatrix(Vector4 dimensions, float nearZ, float farZ) { return OrthographicMatrix(dimensions._x, dimensions._y, dimensions._z, dimensions._w, nearZ, farZ); }
-        public static Matrix OrthographicMatrix(float w, float h, float nearZ, float farZ) { return OrthographicMatrix(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ); }
-        public static Matrix OrthographicMatrix(float left, float right, float top, float bottom, float nearZ, float farZ)
+
+        public static Matrix OrthographicMatrix(Vector4 dimensions, Vector2 depth)
+        {
+            return OrthographicMatrix(dimensions, depth._x, depth._y);
+        }
+
+        public static Matrix OrthographicMatrix(Vector4 dimensions, float nearZ, float farZ)
+        {
+            return OrthographicMatrix(dimensions._x, dimensions._y, dimensions._z, dimensions._w, nearZ, farZ);
+        }
+
+        public static Matrix OrthographicMatrix(float w, float h, float nearZ, float farZ)
+        {
+            return OrthographicMatrix(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ);
+        }
+
+        public static Matrix OrthographicMatrix(float left, float right, float top, float bottom, float nearZ,
+                                                float farZ)
         {
             Matrix m = Identity;
 
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             float rl = right - left;
             float tb = top - bottom;
@@ -943,14 +1132,28 @@ namespace System
 
             return m;
         }
-        public static Matrix ReverseOrthographicMatrix(Vector4 dimensions, Vector2 depth) { return ReverseOrthographicMatrix(dimensions, depth._x, depth._y); }
-        public static Matrix ReverseOrthographicMatrix(Vector4 dimensions, float nearZ, float farZ) { return ReverseOrthographicMatrix(dimensions._x, dimensions._y, dimensions._z, dimensions._w, nearZ, farZ); }
-        public static Matrix ReverseOrthographicMatrix(float w, float h, float nearZ, float farZ) { return ReverseOrthographicMatrix(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ); }
-        public static Matrix ReverseOrthographicMatrix(float left, float right, float top, float bottom, float nearZ, float farZ)
+
+        public static Matrix ReverseOrthographicMatrix(Vector4 dimensions, Vector2 depth)
+        {
+            return ReverseOrthographicMatrix(dimensions, depth._x, depth._y);
+        }
+
+        public static Matrix ReverseOrthographicMatrix(Vector4 dimensions, float nearZ, float farZ)
+        {
+            return ReverseOrthographicMatrix(dimensions._x, dimensions._y, dimensions._z, dimensions._w, nearZ, farZ);
+        }
+
+        public static Matrix ReverseOrthographicMatrix(float w, float h, float nearZ, float farZ)
+        {
+            return ReverseOrthographicMatrix(-w / 2, w / 2, h / 2, -h / 2, nearZ, farZ);
+        }
+
+        public static Matrix ReverseOrthographicMatrix(float left, float right, float top, float bottom, float nearZ,
+                                                       float farZ)
         {
             Matrix m = Identity;
 
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             float rl = right - left;
             float tb = top - bottom;
@@ -971,28 +1174,29 @@ namespace System
         {
             Matrix m;
 
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
-            float cotan = (float)(1.0 / Math.Tan(fovY / 2 * Math.PI / 180.0));
+            float cotan = (float) (1.0 / Math.Tan(fovY / 2 * Math.PI / 180.0));
 
             p[0] = cotan / aspect;
             p[5] = cotan;
             p[10] = (farZ + nearZ) / (nearZ - farZ);
             p[11] = -1.0f;
-            p[14] = (2.0f * farZ * nearZ) / (nearZ - farZ);
+            p[14] = 2.0f * farZ * nearZ / (nearZ - farZ);
 
             p[1] = p[2] = p[3] = p[4] = p[6] = p[7] = p[8] = p[9] = p[12] = p[13] = p[15] = 0.0f;
 
             return m;
         }
+
         public static Matrix ReversePerspectiveMatrix(float fovY, float aspect, float nearZ, float farZ)
         {
             Matrix m;
 
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
-            float cotan = (float)(1.0 / Math.Tan(fovY / 2 * Math.PI / 180.0));
-            float val = (2.0f * farZ * nearZ) / (nearZ - farZ);
+            float cotan = (float) (1.0 / Math.Tan(fovY / 2 * Math.PI / 180.0));
+            float val = 2.0f * farZ * nearZ / (nearZ - farZ);
 
             p[0] = aspect / cotan;
             p[5] = 1.0f / cotan;
@@ -1008,14 +1212,14 @@ namespace System
         public static Matrix TransformMatrix(Vector3 scale, Vector3 rotate, Vector3 translate)
         {
             Matrix m;
-            float* d = (float*)&m;
+            float* d = (float*) &m;
 
-            float cosx = (float)Math.Cos(rotate._x * Maths._deg2radf);
-            float sinx = (float)Math.Sin(rotate._x * Maths._deg2radf);
-            float cosy = (float)Math.Cos(rotate._y * Maths._deg2radf);
-            float siny = (float)Math.Sin(rotate._y * Maths._deg2radf);
-            float cosz = (float)Math.Cos(rotate._z * Maths._deg2radf);
-            float sinz = (float)Math.Sin(rotate._z * Maths._deg2radf);
+            float cosx = (float) Math.Cos(rotate._x * Maths._deg2radf);
+            float sinx = (float) Math.Sin(rotate._x * Maths._deg2radf);
+            float cosy = (float) Math.Cos(rotate._y * Maths._deg2radf);
+            float siny = (float) Math.Sin(rotate._y * Maths._deg2radf);
+            float cosz = (float) Math.Cos(rotate._z * Maths._deg2radf);
+            float sinz = (float) Math.Sin(rotate._z * Maths._deg2radf);
 
             d[0] = scale._x * cosy * cosz;
             d[1] = scale._x * sinz * cosy;
@@ -1039,12 +1243,12 @@ namespace System
 
         public static Matrix ReverseTransformMatrix(Vector3 scale, Vector3 rotation, Vector3 translation)
         {
-            float cosx = (float)Math.Cos(rotation._x * Maths._deg2radf);
-            float sinx = (float)Math.Sin(rotation._x * Maths._deg2radf);
-            float cosy = (float)Math.Cos(rotation._y * Maths._deg2radf);
-            float siny = (float)Math.Sin(rotation._y * Maths._deg2radf);
-            float cosz = (float)Math.Cos(rotation._z * Maths._deg2radf);
-            float sinz = (float)Math.Sin(rotation._z * Maths._deg2radf);
+            float cosx = (float) Math.Cos(rotation._x * Maths._deg2radf);
+            float sinx = (float) Math.Sin(rotation._x * Maths._deg2radf);
+            float cosy = (float) Math.Cos(rotation._y * Maths._deg2radf);
+            float siny = (float) Math.Sin(rotation._y * Maths._deg2radf);
+            float cosz = (float) Math.Cos(rotation._z * Maths._deg2radf);
+            float sinz = (float) Math.Sin(rotation._z * Maths._deg2radf);
 
             scale._x = 1 / scale._x;
             scale._y = 1 / scale._y;
@@ -1054,7 +1258,7 @@ namespace System
             translation._z = -translation._z;
 
             Matrix m;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             p[0] = scale._x * cosy * cosz;
             p[1] = scale._y * (sinx * siny * cosz - cosx * sinz);
@@ -1071,9 +1275,9 @@ namespace System
             p[10] = scale._z * cosx * cosy;
             p[11] = 0.0f;
 
-            p[12] = (translation._x * p[0]) + (translation._y * p[4]) + (translation._z * p[8]);
-            p[13] = (translation._x * p[1]) + (translation._y * p[5]) + (translation._z * p[9]);
-            p[14] = (translation._x * p[2]) + (translation._y * p[6]) + (translation._z * p[10]);
+            p[12] = translation._x * p[0] + translation._y * p[4] + translation._z * p[8];
+            p[13] = translation._x * p[1] + translation._y * p[5] + translation._z * p[9];
+            p[14] = translation._x * p[2] + translation._y * p[6] + translation._z * p[10];
             p[15] = 1.0f;
 
             return m;
@@ -1082,7 +1286,7 @@ namespace System
         public static Matrix QuaternionTransformMatrix(Vector3 scale, Vector4 rotate, Vector3 translate)
         {
             Matrix m;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             float xx = rotate._x * rotate._x;
             float yy = rotate._y * rotate._y;
@@ -1094,19 +1298,19 @@ namespace System
             float yz = rotate._y * rotate._z;
             float xw = rotate._x * rotate._w;
 
-            p[0] = scale._x * (1.0f - (2.0f * (yy + zz)));
+            p[0] = scale._x * (1.0f - 2.0f * (yy + zz));
             p[1] = scale._x * (2.0f * (xy + zw));
             p[2] = scale._x * (2.0f * (zx - yw));
             p[3] = 0.0f;
 
             p[4] = scale._y * (2.0f * (xy - zw));
-            p[5] = scale._y * (1.0f - (2.0f * (zz + xx)));
+            p[5] = scale._y * (1.0f - 2.0f * (zz + xx));
             p[6] = scale._y * (2.0f * (yz + xw));
             p[7] = 0.0f;
 
             p[8] = scale._z * (2.0f * (zx + yw));
             p[9] = scale._z * (2.0f * (yz - xw));
-            p[10] = scale._z * (1.0f - (2.0f * (yy + xx)));
+            p[10] = scale._z * (1.0f - 2.0f * (yy + xx));
             p[11] = 0.0f;
 
             p[12] = translate._x;
@@ -1120,7 +1324,7 @@ namespace System
         public static Matrix ReverseQuaternionTransformMatrix(Vector3 scale, Vector4 rotate, Vector3 translate)
         {
             Matrix m;
-            float* p = (float*)&m;
+            float* p = (float*) &m;
 
             float xx = rotate._x * rotate._x;
             float yy = rotate._y * rotate._y;
@@ -1139,24 +1343,24 @@ namespace System
             translate._y = -translate._y;
             translate._z = -translate._z;
 
-            p[0] = scale._x * (1.0f - (2.0f * (yy + zz)));
+            p[0] = scale._x * (1.0f - 2.0f * (yy + zz));
             p[1] = scale._x * (2.0f * (xy + zw));
             p[2] = scale._x * (2.0f * (zx - yw));
             p[3] = 0.0f;
 
             p[4] = scale._y * (2.0f * (xy - zw));
-            p[5] = scale._y * (1.0f - (2.0f * (zz + xx)));
+            p[5] = scale._y * (1.0f - 2.0f * (zz + xx));
             p[6] = scale._y * (2.0f * (yz + xw));
             p[7] = 0.0f;
 
             p[8] = scale._z * (2.0f * (zx + yw));
             p[9] = scale._z * (2.0f * (yz - xw));
-            p[10] = scale._z * (1.0f - (2.0f * (yy + xx)));
+            p[10] = scale._z * (1.0f - 2.0f * (yy + xx));
             p[11] = 0.0f;
 
-            p[12] = (translate._x * p[0]) + (translate._y * p[4]) + (translate._z * p[8]);
-            p[13] = (translate._x * p[1]) + (translate._y * p[5]) + (translate._z * p[9]);
-            p[14] = (translate._x * p[2]) + (translate._y * p[6]) + (translate._z * p[10]);
+            p[12] = translate._x * p[0] + translate._y * p[4] + translate._z * p[8];
+            p[13] = translate._x * p[1] + translate._y * p[5] + translate._z * p[9];
+            p[14] = translate._x * p[2] + translate._y * p[6] + translate._z * p[10];
             p[15] = 1.0f;
 
             return m;
@@ -1168,7 +1372,7 @@ namespace System
             //Equal points will cause a corrupt matrix
             if (point1 != point2)
             {
-                float* pOut = (float*)&m;
+                float* pOut = (float*) &m;
 
                 point1 = point1.Normalize();
                 point2 = point2.Normalize();
@@ -1194,19 +1398,21 @@ namespace System
                 pOut[8] = vt._z + vSin._y;
                 pOut[9] = vt._y - vSin._x;
             }
+
             return m;
         }
 
         public static Matrix Lookat(Vector3 eye, Vector3 target, float roll)
         {
-            Vector3 up = new Vector3(-(float)Math.Sin(roll * Maths._deg2radf), (float)Math.Cos(roll * Maths._deg2radf), 0);
+            Vector3 up = new Vector3(-(float) Math.Sin(roll * Maths._deg2radf),
+                (float) Math.Cos(roll * Maths._deg2radf), 0);
 
             Vector3 zaxis = (eye - target).Normalize();
             Vector3 xaxis = up.Cross(zaxis).Normalize();
             Vector3 yaxis = zaxis.Cross(xaxis).Normalize();
 
             Matrix m = Identity;
-            float* pOut = (float*)&m;
+            float* pOut = (float*) &m;
 
             pOut[0] = xaxis._x;
             pOut[4] = yaxis._x;
@@ -1229,14 +1435,15 @@ namespace System
 
         public static Matrix ReverseLookat(Vector3 eye, Vector3 target, float roll)
         {
-            Vector3 up = new Vector3(-(float)Math.Sin(roll * Maths._deg2radf), (float)Math.Cos(roll * Maths._deg2radf), 0);
+            Vector3 up = new Vector3(-(float) Math.Sin(roll * Maths._deg2radf),
+                (float) Math.Cos(roll * Maths._deg2radf), 0);
 
             Vector3 zaxis = (target - eye).Normalize();
             Vector3 xaxis = up.Cross(zaxis).Normalize();
             Vector3 yaxis = xaxis.Cross(zaxis).Normalize();
 
             Matrix m = Identity;
-            float* pOut = (float*)&m;
+            float* pOut = (float*) &m;
 
             pOut[0] = xaxis._x;
             pOut[1] = yaxis._x;
@@ -1254,26 +1461,33 @@ namespace System
             eye._y = -eye._y;
             eye._z = -eye._z;
 
-            pOut[12] = (eye._x * pOut[0]) + (eye._y * pOut[4]) + (eye._z * pOut[8]);
-            pOut[13] = (eye._x * pOut[1]) + (eye._y * pOut[5]) + (eye._z * pOut[9]);
-            pOut[14] = (eye._x * pOut[2]) + (eye._y * pOut[6]) + (eye._z * pOut[10]);
+            pOut[12] = eye._x * pOut[0] + eye._y * pOut[4] + eye._z * pOut[8];
+            pOut[13] = eye._x * pOut[1] + eye._y * pOut[5] + eye._z * pOut[9];
+            pOut[14] = eye._x * pOut[2] + eye._y * pOut[6] + eye._z * pOut[10];
 
             return m;
         }
 
         //From OpenTK
-        public Matrix Invert() { return Invert(this); }
+        public Matrix Invert()
+        {
+            return Invert(this);
+        }
+
         public static Matrix Invert(Matrix mat)
         {
-            int[] colIdx = { 0, 0, 0, 0 };
-            int[] rowIdx = { 0, 0, 0, 0 };
-            int[] pivotIdx = { -1, -1, -1, -1 };
+            int[] colIdx = {0, 0, 0, 0};
+            int[] rowIdx = {0, 0, 0, 0};
+            int[] pivotIdx = {-1, -1, -1, -1};
 
             // convert the matrix to an array for easy looping
-            float[,] inverse = { { mat.Row0._x, mat.Row0._y, mat.Row0._z, mat.Row0._w },
-                                 { mat.Row1._x, mat.Row1._y, mat.Row1._z, mat.Row1._w },
-                                 { mat.Row2._x, mat.Row2._y, mat.Row2._z, mat.Row2._w },
-                                 { mat.Row3._x, mat.Row3._y, mat.Row3._z, mat.Row3._w } };
+            float[,] inverse =
+            {
+                {mat.Row0._x, mat.Row0._y, mat.Row0._z, mat.Row0._w},
+                {mat.Row1._x, mat.Row1._y, mat.Row1._z, mat.Row1._w},
+                {mat.Row2._x, mat.Row2._y, mat.Row2._z, mat.Row2._w},
+                {mat.Row3._x, mat.Row3._y, mat.Row3._z, mat.Row3._w}
+            };
             int icol = 0;
             int irow = 0;
             for (int i = 0; i < 4; i++)
@@ -1304,7 +1518,7 @@ namespace System
                     }
                 }
 
-                ++(pivotIdx[icol]);
+                ++pivotIdx[icol];
 
                 // Swap rows over so pivot is on diagonal
                 if (irow != icol)
@@ -1376,7 +1590,7 @@ namespace System
         {
             if (obj is Matrix)
             {
-                return ((Matrix)obj == this);
+                return (Matrix) obj == this;
             }
 
             return false;
@@ -1389,7 +1603,9 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0], this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11], this[12], this[13], this[14], this[15]);
+            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0],
+                this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11],
+                this[12], this[13], this[14], this[15]);
         }
     }
 }

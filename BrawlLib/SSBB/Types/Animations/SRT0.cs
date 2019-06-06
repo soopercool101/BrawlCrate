@@ -35,21 +35,33 @@ namespace BrawlLib.SSBBTypes
             _numEntries = entries;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -85,27 +97,39 @@ namespace BrawlLib.SSBBTypes
             _numEntries = entries;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
 
         public VoidPtr UserData
         {
             get => _userDataOffset == 0 ? null : Address + _userDataOffset;
-            set => _userDataOffset = (int)value - (int)Address;
+            set => _userDataOffset = (int) value - (int) Address;
         }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -147,19 +171,43 @@ namespace BrawlLib.SSBBTypes
             return size;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public SRT0TextureEntry* GetEntry(int index) { return (SRT0TextureEntry*)(Address + GetOffset(index)); }
-        public void SetEntry(int index, SRT0TextureEntry value) { *(SRT0TextureEntry*)(Address + GetOffset(index)) = value; }
+        public SRT0TextureEntry* GetEntry(int index)
+        {
+            return (SRT0TextureEntry*) (Address + GetOffset(index));
+        }
 
-        public int GetOffset(int index) { return *(bint*)(Address + 12 + index * 4); }
-        public void SetOffset(int index, int value) { *(bint*)(Address + 12 + index * 4) = value; }
+        public void SetEntry(int index, SRT0TextureEntry value)
+        {
+            *(SRT0TextureEntry*) (Address + GetOffset(index)) = value;
+        }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public int GetOffset(int index)
+        {
+            return *(bint*) (Address + 12 + index * 4);
+        }
+
+        public void SetOffset(int index, int value)
+        {
+            *(bint*) (Address + 12 + index * 4) = value;
+        }
+
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -210,23 +258,55 @@ namespace BrawlLib.SSBBTypes
         //X Trans
         //Y Trans
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public VoidPtr Data => Address + 4;
-        public SRT0Code Code { get => new SRT0Code() { _data = (uint)_code }; set => _code = (uint)value._data; }
+
+        public SRT0Code Code
+        {
+            get => new SRT0Code() {_data = (uint) _code};
+            set => _code = (uint) value._data;
+        }
 
         //Uses same header as CHR0 animations
-        public I12Header* Entry(int index) { return (I12Header*)(Address + 4 + 4 * index + GetOffset(index)); }
+        public I12Header* Entry(int index)
+        {
+            return (I12Header*) (Address + 4 + 4 * index + GetOffset(index));
+        }
 
-        public float GetValue(int index) { return *(bfloat*)(Address + 4 + 4 * index); }
-        public void SetValue(int index, float value) { *(bfloat*)(Address + 4 + 4 * index) = value; }
+        public float GetValue(int index)
+        {
+            return *(bfloat*) (Address + 4 + 4 * index);
+        }
 
-        public int GetOffset(int index) { return *(bint*)(Address + 4 + 4 * index); }
-        public void SetOffset(int index, int value) { *(bint*)(Address + 4 + 4 * index) = value; }
+        public void SetValue(int index, float value)
+        {
+            *(bfloat*) (Address + 4 + 4 * index) = value;
+        }
+
+        public int GetOffset(int index)
+        {
+            return *(bint*) (Address + 4 + 4 * index);
+        }
+
+        public void SetOffset(int index, int value)
+        {
+            *(bint*) (Address + 4 + 4 * index) = value;
+        }
     }
 
     public struct SRT0Code
     {
-        public static SRT0Code Default = new SRT0Code() { _data = 0x3FF };
+        public static SRT0Code Default = new SRT0Code() {_data = 0x3FF};
 
         //0000 0000 0000 0000 0000 0000 0000 0001       Always set
 
@@ -243,22 +323,85 @@ namespace BrawlLib.SSBBTypes
 
         public Bin32 _data;
 
-        public bool AlwaysOn { get => _data[0]; set => _data[0] = value; }
-        public bool NoScale { get => _data[1]; set => _data[1] = value; }
-        public bool NoRotation { get => _data[2]; set => _data[2] = value; }
-        public bool NoTranslation { get => _data[3]; set => _data[3] = value; }
-        public bool ScaleIsotropic { get => _data[4]; set => _data[4] = value; }
-        public bool FixedScaleX { get => _data[5]; set => _data[5] = value; }
-        public bool FixedScaleY { get => _data[6]; set => _data[6] = value; }
-        public bool FixedRotation { get => _data[7]; set => _data[7] = value; }
-        public bool FixedX { get => _data[8]; set => _data[8] = value; }
-        public bool FixedY { get => _data[9]; set => _data[9] = value; }
+        public bool AlwaysOn
+        {
+            get => _data[0];
+            set => _data[0] = value;
+        }
 
-        public bool GetHas(int i) { return _data[i + 1] != true; }
-        public void SetHas(int index, bool p) { _data[index + 1] = !p; }
+        public bool NoScale
+        {
+            get => _data[1];
+            set => _data[1] = value;
+        }
 
-        public bool GetFixed(int i) { return _data[i + 5] != false; }
-        public void SetFixed(int index, bool p) { _data[index + 5] = p; }
+        public bool NoRotation
+        {
+            get => _data[2];
+            set => _data[2] = value;
+        }
+
+        public bool NoTranslation
+        {
+            get => _data[3];
+            set => _data[3] = value;
+        }
+
+        public bool ScaleIsotropic
+        {
+            get => _data[4];
+            set => _data[4] = value;
+        }
+
+        public bool FixedScaleX
+        {
+            get => _data[5];
+            set => _data[5] = value;
+        }
+
+        public bool FixedScaleY
+        {
+            get => _data[6];
+            set => _data[6] = value;
+        }
+
+        public bool FixedRotation
+        {
+            get => _data[7];
+            set => _data[7] = value;
+        }
+
+        public bool FixedX
+        {
+            get => _data[8];
+            set => _data[8] = value;
+        }
+
+        public bool FixedY
+        {
+            get => _data[9];
+            set => _data[9] = value;
+        }
+
+        public bool GetHas(int i)
+        {
+            return _data[i + 1] != true;
+        }
+
+        public void SetHas(int index, bool p)
+        {
+            _data[index + 1] = !p;
+        }
+
+        public bool GetFixed(int i)
+        {
+            return _data[i + 5] != false;
+        }
+
+        public void SetFixed(int index, bool p)
+        {
+            _data[index + 5] = p;
+        }
 
         public int DataSize()
         {
@@ -267,7 +410,7 @@ namespace BrawlLib.SSBBTypes
             {
                 if (GetHas(i))
                 {
-                    if ((i == 1) || (i == 2 && ScaleIsotropic))
+                    if (i == 1 || i == 2 && ScaleIsotropic)
                     {
                         val += 4;
                     }

@@ -94,9 +94,9 @@ namespace System.Windows.Forms
         private CheckedListBox lstObjects;
 
         // StageBox edits
-        private ToolStripSeparator toolStripSeparatorCamera;    // Seperator for Camera controls
-        private ToolStripButton btnPerspectiveCam;              // Goes into perspective mode
-        private ToolStripButton btnOrthographicCam;             // Goes into orthographic mode
+        private ToolStripSeparator toolStripSeparatorCamera; // Seperator for Camera controls
+        private ToolStripButton btnPerspectiveCam; // Goes into perspective mode
+        private ToolStripButton btnOrthographicCam; // Goes into orthographic mode
 
         private void InitializeComponent()
         {
@@ -186,11 +186,11 @@ namespace System.Windows.Forms
             btnHelp = new ToolStripButton();
             btnResetRot = new Button();
             trackBar1 = new TrackBar();
-            ((ISupportInitialize)(undoToolStrip)).BeginInit();
+            ((ISupportInitialize) undoToolStrip).BeginInit();
             undoToolStrip.Panel1.SuspendLayout();
             undoToolStrip.Panel2.SuspendLayout();
             undoToolStrip.SuspendLayout();
-            ((ISupportInitialize)(redoToolStrip)).BeginInit();
+            ((ISupportInitialize) redoToolStrip).BeginInit();
             redoToolStrip.Panel1.SuspendLayout();
             redoToolStrip.Panel2.SuspendLayout();
             redoToolStrip.SuspendLayout();
@@ -207,7 +207,7 @@ namespace System.Windows.Forms
             panel4.SuspendLayout();
             panel1.SuspendLayout();
             toolStrip1.SuspendLayout();
-            ((ISupportInitialize)(trackBar1)).BeginInit();
+            ((ISupportInitialize) trackBar1).BeginInit();
             SuspendLayout();
             // 
             // undoToolStrip
@@ -267,9 +267,11 @@ namespace System.Windows.Forms
             // 
             // contextMenuStrip2
             // 
-            contextMenuStrip2.Items.AddRange(new ToolStripItem[] {
-            assignToolStripMenuItem,
-            snapToolStripMenuItem1});
+            contextMenuStrip2.Items.AddRange(new ToolStripItem[]
+            {
+                assignToolStripMenuItem,
+                snapToolStripMenuItem1
+            });
             contextMenuStrip2.Name = "contextMenuStrip2";
             contextMenuStrip2.Size = new Drawing.Size(110, 48);
             contextMenuStrip2.Opening += new CancelEventHandler(contextMenuStrip2_Opening);
@@ -354,12 +356,14 @@ namespace System.Windows.Forms
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] {
-            newObjectToolStripMenuItem,
-            toolStripMenuItem2,
-            snapToolStripMenuItem,
-            toolStripMenuItem1,
-            deleteToolStripMenuItem});
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[]
+            {
+                newObjectToolStripMenuItem,
+                toolStripMenuItem2,
+                snapToolStripMenuItem,
+                toolStripMenuItem1,
+                deleteToolStripMenuItem
+            });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Drawing.Size(137, 82);
             // 
@@ -588,8 +592,8 @@ namespace System.Windows.Forms
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox2.Controls.Add(chkTypeCharacters);
             groupBox2.Controls.Add(chkTypeItems);
             groupBox2.Controls.Add(chkTypePokemonTrainer);
@@ -614,8 +618,8 @@ namespace System.Windows.Forms
             // 
             // groupBoxUnknownFlags
             // 
-            groupBoxUnknownFlags.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBoxUnknownFlags.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                           | AnchorStyles.Left;
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown4);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown3);
             groupBoxUnknownFlags.Controls.Add(chkFlagUnknown2);
@@ -719,8 +723,8 @@ namespace System.Windows.Forms
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             groupBox1.Controls.Add(chkLeftLedge);
             groupBox1.Controls.Add(chkNoWalljump);
             groupBox1.Controls.Add(chkRightLedge);
@@ -884,25 +888,27 @@ namespace System.Windows.Forms
             toolStrip1.BackColor = Color.WhiteSmoke;
             toolStrip1.Dock = DockStyle.Fill;
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-            toolStrip1.Items.AddRange(new ToolStripItem[] {
-            btnUndo,
-            btnRedo,
-            toolStripSeparator3,
-            btnSplit,
-            btnMerge,
-            btnDelete,
-            toolStripSeparator2,
-            btnSameX,
-            btnSameY,
-            toolStripSeparator1,
+            toolStrip1.Items.AddRange(new ToolStripItem[]
+            {
+                btnUndo,
+                btnRedo,
+                toolStripSeparator3,
+                btnSplit,
+                btnMerge,
+                btnDelete,
+                toolStripSeparator2,
+                btnSameX,
+                btnSameY,
+                toolStripSeparator1,
 
-            btnPerspectiveCam,
-            btnOrthographicCam,
-            toolStripSeparatorCamera,
+                btnPerspectiveCam,
+                btnOrthographicCam,
+                toolStripSeparatorCamera,
 
-            btnResetCam,
-            btnResetSnap,
-            btnHelp});
+                btnResetCam,
+                btnResetSnap,
+                btnHelp
+            });
             toolStrip1.Location = new Drawing.Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Drawing.Size(335, 25);
@@ -1035,7 +1041,7 @@ namespace System.Windows.Forms
             // btnHelp
             // 
             btnHelp.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            btnHelp.Image = ((Image)(resources.GetObject("btnHelp.Image")));
+            btnHelp.Image = (Image) resources.GetObject("btnHelp.Image");
             btnHelp.ImageTransparentColor = Color.Magenta;
             btnHelp.Name = "btnHelp";
             btnHelp.Size = new Drawing.Size(36, 19);
@@ -1079,11 +1085,11 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(694, 467);
             undoToolStrip.Panel1.ResumeLayout(false);
             undoToolStrip.Panel2.ResumeLayout(false);
-            ((ISupportInitialize)(undoToolStrip)).EndInit();
+            ((ISupportInitialize) undoToolStrip).EndInit();
             undoToolStrip.ResumeLayout(false);
             redoToolStrip.Panel1.ResumeLayout(false);
             redoToolStrip.Panel2.ResumeLayout(false);
-            ((ISupportInitialize)(redoToolStrip)).EndInit();
+            ((ISupportInitialize) redoToolStrip).EndInit();
             redoToolStrip.ResumeLayout(false);
             contextMenuStrip2.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -1102,7 +1108,7 @@ namespace System.Windows.Forms
             panel1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
-            ((ISupportInitialize)(trackBar1)).EndInit();
+            ((ISupportInitialize) trackBar1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1114,6 +1120,7 @@ namespace System.Windows.Forms
         private const float LargeIncrement = 3.0f;
 
         private CollisionNode _targetNode;
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CollisionNode TargetNode
         {
@@ -1178,6 +1185,7 @@ namespace System.Windows.Forms
                 _selectedObject = lstObjects.Items[0] as CollisionObject;
                 SnapObject();
             }
+
             ObjectSelected();
 
             _modelPanel.ResetCamera();
@@ -1227,16 +1235,17 @@ namespace System.Windows.Forms
                 CollisionPlane p = _selectedPlanes[0];
 
                 //Material
-                if ((byte)p._material >= 32)
+                if ((byte) p._material >= 32)
                 {
                     // Select basic by default (currently cannot display expanded collisions in default previewer)
-                    cboMaterial.SelectedItem = (CollisionPlaneMaterial)(0x0);
+                    cboMaterial.SelectedItem = (CollisionPlaneMaterial) 0x0;
                 }
                 else
                 {
                     // Otherwise convert to the proper place in the unexpanded list
                     cboMaterial.SelectedItem = p._material;
                 }
+
                 //Type
                 cboType.SelectedItem = p.Type;
                 //Flags
@@ -1276,16 +1285,16 @@ namespace System.Windows.Forms
             modelTree.BeginUpdate();
             modelTree.Nodes.Clear();
 
-            if ((_targetNode != null) && (_targetNode._parent != null))
+            if (_targetNode != null && _targetNode._parent != null)
             {
                 foreach (MDL0Node n in _targetNode._parent.FindChildrenByType(null, ResourceType.MDL0))
                 {
-                    TreeNode modelNode = new TreeNode(n._name) { Tag = n, Checked = true };
+                    TreeNode modelNode = new TreeNode(n._name) {Tag = n, Checked = true};
                     modelTree.Nodes.Add(modelNode);
 
                     foreach (MDL0BoneNode bone in n._linker.BoneCache)
                     {
-                        modelNode.Nodes.Add(new TreeNode(bone._name) { Tag = bone, Checked = true });
+                        modelNode.Nodes.Add(new TreeNode(bone._name) {Tag = bone, Checked = true});
                     }
 
                     _modelPanel.AddTarget(n);
@@ -1329,17 +1338,23 @@ namespace System.Windows.Forms
 
             lstObjects.EndUpdate();
         }
+
         private void lstObjects_MouseDown(object sender, MouseEventArgs e)
         {
             int index = lstObjects.IndexFromPoint(e.Location);
             lstObjects.SelectedIndex = index;
         }
+
         private void lstObjects_SelectedValueChanged(object sender, EventArgs e)
         {
             _selectedObject = lstObjects.SelectedItem as CollisionObject;
             ObjectSelected();
         }
-        private void snapToolStripMenuItem_Click(object sender, EventArgs e) { SnapObject(); }
+
+        private void snapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SnapObject();
+        }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1406,7 +1421,7 @@ namespace System.Windows.Forms
                         {
                             if (bNode.Text == _selectedObject._boneName)
                             {
-                                _snapMatrix = ((MDL0BoneNode)bNode.Tag)._inverseBindMatrix;
+                                _snapMatrix = ((MDL0BoneNode) bNode.Tag)._inverseBindMatrix;
                                 break;
                             }
                         }
@@ -1420,7 +1435,7 @@ namespace System.Windows.Forms
             for (int i = lstObjects.Items.Count; i-- > 0;)
             {
                 CollisionObject obj = lstObjects.Items[i] as CollisionObject;
-                if ((obj._modelName == _selectedObject._modelName) && (obj._boneName == _selectedObject._boneName))
+                if (obj._modelName == _selectedObject._modelName && obj._boneName == _selectedObject._boneName)
                 {
                     lstObjects.SetItemChecked(i, true);
                 }
@@ -1442,7 +1457,6 @@ namespace System.Windows.Forms
                 _modelPanel.Invalidate();
             }
         }
-
 
         #endregion
 
@@ -1469,7 +1483,7 @@ namespace System.Windows.Forms
                         continue;
                     }
 
-                    Vector3 point = (Vector3)link.Value;
+                    Vector3 point = (Vector3) link.Value;
 
                     if (_selectInverse && point.Contained(_selectStart, _selectEnd, 0.0f))
                     {
@@ -1496,9 +1510,10 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public void UpdateTools()
         {
-            if (_selecting || _hovering || (_selectedLinks.Count == 0))
+            if (_selecting || _hovering || _selectedLinks.Count == 0)
             {
                 btnMerge.Enabled = btnSplit.Enabled = btnSameX.Enabled = btnSameY.Enabled = false;
             }
@@ -1550,6 +1565,7 @@ namespace System.Windows.Forms
             _hovering = true;
             UpdateTools();
         }
+
         private void UpdateHover(int x, int y)
         {
             if (!_hovering)
@@ -1557,7 +1573,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _selectEnd = Vector3.IntersectZ(_modelPanel.CurrentViewport.UnProject(x, y, 0.0f), _modelPanel.CurrentViewport.UnProject(x, y, 1.0f), _selectLast._z);
+            _selectEnd = Vector3.IntersectZ(_modelPanel.CurrentViewport.UnProject(x, y, 0.0f),
+                _modelPanel.CurrentViewport.UnProject(x, y, 1.0f), _selectLast._z);
 
             //Apply difference in start/end
             Vector3 diff = _selectEnd - _selectLast;
@@ -1573,6 +1590,7 @@ namespace System.Windows.Forms
 
             UpdatePropPanels();
         }
+
         private void CancelHover()
         {
             if (!_hovering)
@@ -1609,10 +1627,16 @@ namespace System.Windows.Forms
                     l.Value += diff;
                 }
             }
+
             _modelPanel.Invalidate();
             UpdatePropPanels();
         }
-        private void FinishHover() { _hovering = false; }
+
+        private void FinishHover()
+        {
+            _hovering = false;
+        }
+
         private void BeginSelection(Vector3 point, bool inverse)
         {
             if (_selecting)
@@ -1630,6 +1654,7 @@ namespace System.Windows.Forms
 
             UpdateTools();
         }
+
         private void CancelSelection()
         {
             if (!_selecting)
@@ -1642,6 +1667,7 @@ namespace System.Windows.Forms
             UpdateSelection(false);
             _modelPanel.Invalidate();
         }
+
         private void FinishSelection()
         {
             if (!_selecting)
@@ -1671,9 +1697,9 @@ namespace System.Windows.Forms
                 Vector3 target = _modelPanel.CurrentViewport.UnProject(e.X, e.Y, depth);
                 Vector2 point;
 
-                if (!move && (depth < 1.0f))
+                if (!move && depth < 1.0f)
                 {
-                    point = (Vector2)target;
+                    point = (Vector2) target;
 
                     //Hit-detect points first
                     foreach (CollisionObject obj in _targetNode._objects)
@@ -1722,10 +1748,11 @@ namespace System.Windows.Forms
                                         SelectionModified();
                                     }
 
-                                    if ((!add) && (!subtract))
+                                    if (!add && !subtract)
                                     {
                                         BeginHover(target);
                                     }
+
                                     //Single Link Selected
                                     return;
                                 }
@@ -1746,9 +1773,13 @@ namespace System.Windows.Forms
                             {
                                 if (point.Contained(p.PointLeft, p.PointRight, PointSelectRadius))
                                 {
-                                    dist = point.TrueDistance(p.PointLeft) + point.TrueDistance(p.PointRight) - p.PointLeft.TrueDistance(p.PointRight);
+                                    dist = point.TrueDistance(p.PointLeft) + point.TrueDistance(p.PointRight) -
+                                           p.PointLeft.TrueDistance(p.PointRight);
                                     if (dist < bestDist)
-                                    { bestDist = dist; bestMatch = p; }
+                                    {
+                                        bestDist = dist;
+                                        bestMatch = p;
+                                    }
                                 }
                             }
                         }
@@ -1783,7 +1814,8 @@ namespace System.Windows.Forms
                         }
 
                         //Select both points
-                        if (!_selectedLinks.Contains(bestMatch._linkLeft) || !_selectedLinks.Contains(bestMatch._linkRight))
+                        if (!_selectedLinks.Contains(bestMatch._linkLeft) ||
+                            !_selectedLinks.Contains(bestMatch._linkRight))
                         {
                             if (!add)
                             {
@@ -1802,6 +1834,7 @@ namespace System.Windows.Forms
                         {
                             BeginHover(target);
                         }
+
                         //Single Platform Selected;
                         return;
                     }
@@ -1811,7 +1844,7 @@ namespace System.Windows.Forms
 
                 //Trace ray to Z axis
                 target = Vector3.IntersectZ(target, _modelPanel.CurrentViewport.UnProject(e.X, e.Y, 0.0f), 0.0f);
-                point = (Vector2)target;
+                point = (Vector2) target;
 
                 if (create)
                 {
@@ -1839,7 +1872,7 @@ namespace System.Windows.Forms
                     {
                         //Create new plane extending to point
                         CollisionLink link = _selectedLinks[0];
-                        _selectedLinks[0] = link.Branch((Vector2)target);
+                        _selectedLinks[0] = link.Branch((Vector2) target);
                         _selectedLinks[0]._highlight = true;
                         link._highlight = false;
                         SelectionModified();
@@ -1864,9 +1897,13 @@ namespace System.Windows.Forms
 
                             foreach (CollisionPlane p in _selectedPlanes)
                             {
-                                dist = point.TrueDistance(p.PointLeft) + point.TrueDistance(p.PointRight) - p.PointLeft.TrueDistance(p.PointRight);
+                                dist = point.TrueDistance(p.PointLeft) + point.TrueDistance(p.PointRight) -
+                                       p.PointLeft.TrueDistance(p.PointRight);
                                 if (dist < bestDist)
-                                { bestDist = dist; bestMatch = p; }
+                                {
+                                    bestDist = dist;
+                                    bestMatch = p;
+                                }
                             }
                         }
 
@@ -1902,13 +1939,15 @@ namespace System.Windows.Forms
                 BeginSelection(target, subtract);
             }
         }
+
         private void _modelPanel_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 if (saveIndex - 1 > 0 && saveIndex - 1 < undoSaves.Count)
                 {
-                    if (undoSaves[saveIndex - 1]._collisionLinks[0].Value.ToString() == undoSaves[saveIndex - 1]._linkVectors[0].ToString())//If equal to starting point, remove.
+                    if (undoSaves[saveIndex - 1]._collisionLinks[0].Value.ToString() ==
+                        undoSaves[saveIndex - 1]._linkVectors[0].ToString()) //If equal to starting point, remove.
                     {
                         undoSaves.RemoveAt(saveIndex - 1);
                         saveIndex--;
@@ -1947,7 +1986,6 @@ namespace System.Windows.Forms
 
         private void _modelPanel_PreRender(object sender)
         {
-
         }
 
         private unsafe void _modelPanel_PostRender(object sender)
@@ -1968,7 +2006,7 @@ namespace System.Windows.Forms
                 {
                     if (o is IModel)
                     {
-                        ((IModel)o).RenderBones(_modelPanel.CurrentViewport);
+                        ((IModel) o).RenderBones(_modelPanel.CurrentViewport);
                     }
                 }
             }
@@ -2028,14 +2066,28 @@ namespace System.Windows.Forms
                         x++;
                     }
                 }
+
                 link.Value = pos / count;
             }
+
             _modelPanel.Invalidate();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e) { _modelPanel.Invalidate(); }
-        private void btnResetRot_Click(object sender, EventArgs e) { trackBar1.Value = 0; _modelPanel.Invalidate(); }
-        private void btnResetCam_Click(object sender, EventArgs e) { _modelPanel.ResetCamera(); }
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            _modelPanel.Invalidate();
+        }
+
+        private void btnResetRot_Click(object sender, EventArgs e)
+        {
+            trackBar1.Value = 0;
+            _modelPanel.Invalidate();
+        }
+
+        private void btnResetCam_Click(object sender, EventArgs e)
+        {
+            _modelPanel.ResetCamera();
+        }
 
         // StageBox Perspective viewer
         private void btnPerspectiveCam_Click(object sender, EventArgs e)
@@ -2182,6 +2234,7 @@ namespace System.Windows.Forms
                                 _selectedLinks.Add(p._linkLeft);
                                 p._linkLeft._highlight = true;
                             }
+
                             SelectionModified();
 
                             _modelPanel.Invalidate();
@@ -2255,11 +2308,12 @@ namespace System.Windows.Forms
 
             foreach (CollisionPlane plane in _selectedPlanes)
             {
-                plane._material = (CollisionPlaneMaterial)cboMaterial.SelectedItem;
+                plane._material = (CollisionPlaneMaterial) cboMaterial.SelectedItem;
             }
 
             TargetNode.SignalPropertyChange();
         }
+
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2269,7 +2323,7 @@ namespace System.Windows.Forms
 
             foreach (CollisionPlane plane in _selectedPlanes)
             {
-                plane.Type = (CollisionPlaneType)cboType.SelectedItem;
+                plane.Type = (CollisionPlaneType) cboType.SelectedItem;
             }
 
             TargetNode.SignalPropertyChange();
@@ -2282,11 +2336,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsCharacters = chkTypeCharacters.Checked;
             }
         }
+
         private void chkTypeItems_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2294,11 +2350,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsItems = chkTypeItems.Checked;
             }
         }
+
         private void chkTypePokemonTrainer_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2306,11 +2364,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsPokemonTrainer = chkTypePokemonTrainer.Checked;
             }
         }
+
         private void chkTypeRotating_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2318,7 +2378,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsRotating = chkTypeRotating.Checked;
             }
@@ -2331,11 +2392,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsFallThrough = chkFallThrough.Checked;
             }
         }
+
         private void chkLeftLedge_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2343,11 +2406,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsLeftLedge = chkLeftLedge.Checked;
             }
         }
+
         private void chkRightLedge_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2355,11 +2420,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsRightLedge = chkRightLedge.Checked;
             }
         }
+
         private void chkNoWalljump_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2367,7 +2434,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsNoWalljump = chkNoWalljump.Checked;
             }
@@ -2380,11 +2448,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsUnknownStageBox = chkFlagUnknown1.Checked;
             }
         }
+
         private void chkFlagUnknown2_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2392,11 +2462,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsUnknownFlag1 = chkFlagUnknown2.Checked;
             }
         }
+
         private void chkFlagUnknown3_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2404,11 +2476,13 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsUnknownFlag3 = chkFlagUnknown3.Checked;
             }
         }
+
         private void chkFlagUnknown4_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
@@ -2416,7 +2490,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            TargetNode.SignalPropertyChange(); foreach (CollisionPlane p in _selectedPlanes)
+            TargetNode.SignalPropertyChange();
+            foreach (CollisionPlane p in _selectedPlanes)
             {
                 p.IsUnknownFlag4 = chkFlagUnknown4.Checked;
             }
@@ -2445,6 +2520,7 @@ namespace System.Windows.Forms
                     link.Value = new Vector2(numX.Value, oldValue._y);
                 }
             }
+
             _modelPanel.Invalidate();
             TargetNode.SignalPropertyChange();
         }
@@ -2468,6 +2544,7 @@ namespace System.Windows.Forms
                     link.Value = new Vector2(oldValue._x, numY.Value);
                 }
             }
+
             _modelPanel.Invalidate();
             TargetNode.SignalPropertyChange();
         }
@@ -2517,7 +2594,7 @@ namespace System.Windows.Forms
         {
             if (e.Node.Tag is MDL0Node)
             {
-                ((MDL0Node)e.Node.Tag).IsRendering = e.Node.Checked;
+                ((MDL0Node) e.Node.Tag).IsRendering = e.Node.Checked;
                 if (!_updating)
                 {
                     _updating = true;
@@ -2531,7 +2608,7 @@ namespace System.Windows.Forms
             }
             else if (e.Node.Tag is MDL0BoneNode)
             {
-                ((MDL0BoneNode)e.Node.Tag)._render = e.Node.Checked;
+                ((MDL0BoneNode) e.Node.Tag)._render = e.Node.Checked;
             }
 
             if (!_updating)
@@ -2571,13 +2648,13 @@ namespace System.Windows.Forms
         private void btnRelink_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if ((_selectedObject == null) || (node == null) || !(node.Tag is MDL0BoneNode))
+            if (_selectedObject == null || node == null || !(node.Tag is MDL0BoneNode))
             {
                 return;
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = ((MDL0BoneNode)node.Tag);
+            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             TargetNode.SignalPropertyChange();
         }
@@ -2592,7 +2669,7 @@ namespace System.Windows.Forms
 
         private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
         {
-            if ((modelTree.SelectedNode == null) || !(modelTree.SelectedNode.Tag is MDL0BoneNode))
+            if (modelTree.SelectedNode == null || !(modelTree.SelectedNode.Tag is MDL0BoneNode))
             {
                 e.Cancel = true;
             }
@@ -2601,12 +2678,12 @@ namespace System.Windows.Forms
         private void snapToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if ((node == null) || !(node.Tag is MDL0BoneNode))
+            if (node == null || !(node.Tag is MDL0BoneNode))
             {
                 return;
             }
 
-            _snapMatrix = ((MDL0BoneNode)node.Tag)._inverseBindMatrix;
+            _snapMatrix = ((MDL0BoneNode) node.Tag)._inverseBindMatrix;
             _modelPanel.Invalidate();
         }
 
@@ -2632,7 +2709,10 @@ namespace System.Windows.Forms
             };
 
             foreach (CollisionLink l in _selectedLinks)
-            { save._collisionLinks.Add(l); save._linkVectors.Add(l.Value); }
+            {
+                save._collisionLinks.Add(l);
+                save._linkVectors.Add(l.Value);
+            }
 
             undoSaves.Add(save);
             btnUndo.Enabled = true;
@@ -2643,10 +2723,15 @@ namespace System.Windows.Forms
         private void CheckSaveIndex()
         {
             if (saveIndex < 0)
-            { saveIndex = 0; }
+            {
+                saveIndex = 0;
+            }
 
             if (undoSaves.Count > 25)
-            { undoSaves.RemoveAt(0); saveIndex--; }
+            {
+                undoSaves.RemoveAt(0);
+                saveIndex--;
+            }
         }
 
         private void ClearUndoBuffer()
@@ -2663,7 +2748,7 @@ namespace System.Windows.Forms
 
             save = new CollisionState();
 
-            if (undoSaves[saveIndex - 1]._linkVectors != null)     //XY Positions changed.
+            if (undoSaves[saveIndex - 1]._linkVectors != null) //XY Positions changed.
             {
                 save._collisionLinks = new List<CollisionLink>();
                 save._linkVectors = new List<Vector2>();
@@ -2681,7 +2766,10 @@ namespace System.Windows.Forms
             CheckSaveIndex();
 
             if (saveIndex == 0)
-            { btnUndo.Enabled = false; }
+            {
+                btnUndo.Enabled = false;
+            }
+
             btnRedo.Enabled = true;
 
             redoSaves.Add(save);
@@ -2705,7 +2793,10 @@ namespace System.Windows.Forms
             saveIndex++;
 
             if (redoSaves.Count == 0)
-            { btnRedo.Enabled = false; }
+            {
+                btnRedo.Enabled = false;
+            }
+
             btnUndo.Enabled = true;
 
             _modelPanel.Invalidate();
@@ -2725,7 +2816,6 @@ namespace System.Windows.Forms
 
         private void chkObjIndep_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void chkObjModule_CheckedChanged(object sender, EventArgs e)
@@ -2752,17 +2842,14 @@ namespace System.Windows.Forms
 
         private void btnPlayAnims_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnPrevFrame_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnNextFrame_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -2777,6 +2864,7 @@ namespace System.Windows.Forms
                 MessageBox.Show("You must select at least one collision link.");
                 return;
             }
+
             using (TransformAttributesForm f = new TransformAttributesForm())
             {
                 f.TwoDimensional = true;
@@ -2787,6 +2875,7 @@ namespace System.Windows.Forms
                     {
                         link.Value = m * link.Value;
                     }
+
                     TargetNode.SignalPropertyChange();
                     _modelPanel.Invalidate();
                 }

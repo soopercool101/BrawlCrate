@@ -43,7 +43,7 @@ namespace BrawlLib.SSBBTypes
             _calculatingSize = true;
 
             VoidPtr origAddr = _rootNode.WorkingUncompressed.Address;
-            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*)origAddr;
+            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*) origAddr;
             VoidPtr origBase = hdr->BaseAddress;
 
             _size = _rootNode.WorkingUncompressed.Length;
@@ -59,16 +59,15 @@ namespace BrawlLib.SSBBTypes
                 int maxOffset = minOffset + oldSize;
 
                 bint* lookup = hdr->LookupEntries;
-                int currentOffset = *(bint*)(origBase + *lookup++);
+                int currentOffset = *(bint*) (origBase + *lookup++);
                 for (int i = 0; i < hdr->_lookupEntryCount - 1; i++, lookup++)
                 {
-                    int nextOffset = *(bint*)(origBase + *lookup);
+                    int nextOffset = *(bint*) (origBase + *lookup);
                     if (minOffset >= currentOffset && minOffset < nextOffset)
                     {
                         for (int x = i; x < hdr->_lookupEntryCount; x++)
                         {
-                            int insideOffset = *(bint*)(origBase + lookup[x]);
-
+                            int insideOffset = *(bint*) (origBase + lookup[x]);
                         }
                     }
                 }
@@ -87,7 +86,7 @@ namespace BrawlLib.SSBBTypes
         public unsafe void QuickWrite()
         {
             VoidPtr origAddr = _rootNode.WorkingUncompressed.Address;
-            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*)origAddr;
+            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*) origAddr;
             VoidPtr origBase = hdr->BaseAddress;
 
             System.ComponentModel.BindingList<SakuraiEntryNode> changed = _rootNode.RebuildEntries;
@@ -97,10 +96,10 @@ namespace BrawlLib.SSBBTypes
                 {
                     int eOffset = entry._offset;
                     bint* lookup = hdr->LookupEntries;
-                    int currentOffset = *(bint*)(origBase + *lookup++);
+                    int currentOffset = *(bint*) (origBase + *lookup++);
                     for (int i = 0; i < hdr->_lookupEntryCount - 1; i++, lookup++)
                     {
-                        int nextOffset = *(bint*)(origBase + *lookup);
+                        int nextOffset = *(bint*) (origBase + *lookup);
                         if (eOffset >= currentOffset && eOffset < nextOffset)
                         {
                             int newSize = entry._calcSize;
@@ -109,10 +108,10 @@ namespace BrawlLib.SSBBTypes
 
                             for (int x = i; x < hdr->_lookupEntryCount; x++)
                             {
-
                                 lookup[x] += diff;
                             }
                         }
+
                         currentOffset = nextOffset;
                     }
                 }
@@ -187,7 +186,7 @@ namespace BrawlLib.SSBBTypes
             _currentAddress = _baseAddress;
 
             //Write header
-            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*)address;
+            SakuraiArchiveHeader* hdr = (SakuraiArchiveHeader*) address;
             hdr->_sectionCount = _sectionCount;
             hdr->_externalSubRoutineCount = _referenceCount;
             hdr->_lookupEntryCount = _lookupManager.Count;
@@ -213,15 +212,13 @@ namespace BrawlLib.SSBBTypes
             }
 
             //Write lookup values
-            hdr->_lookupOffset = (int)_currentAddress - (int)_baseAddress;
+            hdr->_lookupOffset = (int) _currentAddress - (int) _baseAddress;
             _lookupManager.Write(ref _currentAddress);
 
             //These can only be accessed after the lookup offset and count
             //have been written to the header.
             sStringEntry* sectionAddr = hdr->Sections;
             sStringEntry* refAddr = hdr->ExternalSubRoutines;
-
-
         }
     }
 }

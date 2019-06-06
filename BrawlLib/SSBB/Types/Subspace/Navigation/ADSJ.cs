@@ -21,10 +21,25 @@ namespace BrawlLib.SSBBTypes
             _pad0 = _pad1 = 0;
         }
 
-        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
-        public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x10 + (index * 4)); }
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
+
+        public uint Offsets(int index)
+        {
+            return *(buint*) ((byte*) Address + 0x10 + index * 4);
+        }
+
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
+
     public unsafe struct ADSJEntry
     {
         public const int Size = 0x2C;
@@ -44,17 +59,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)(Address + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -69,6 +88,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public string SendStage
         {
             get
@@ -77,17 +97,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)(Address + 0x08 + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + 0x08 + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -102,9 +126,10 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public string JumpBone
         {
-            get => new string((sbyte*)Address + 0x0C);
+            get => new string((sbyte*) Address + 0x0C);
             set
             {
                 if (value == null)
@@ -115,9 +140,9 @@ namespace BrawlLib.SSBBTypes
                 fixed (sbyte* ptr = _jumpBone)
                 {
                     int i = 0;
-                    while ((i < 0x19) && (i < value.Length))
+                    while (i < 0x19 && i < value.Length)
                     {
-                        ptr[i] = (sbyte)value[i++];
+                        ptr[i] = (sbyte) value[i++];
                     }
 
                     while (i < 0x20)
@@ -136,6 +161,15 @@ namespace BrawlLib.SSBBTypes
             JumpBone = Bone;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 }

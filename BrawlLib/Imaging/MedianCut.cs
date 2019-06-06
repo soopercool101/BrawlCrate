@@ -32,15 +32,41 @@ namespace BrawlLib.Imaging
         private readonly PixelFormat _outFormat;
 
         #region Handlers/Converters
+
         private delegate void IDHandler(ARGBPixel inPixel, ushort* id);
-        private static void IA8Handler(ARGBPixel inPixel, ushort* id) { *(IA8Pixel*)id = inPixel; }
-        private static void RGB565Handler(ARGBPixel inPixel, ushort* id) { *(wRGB565Pixel*)id = (wRGB565Pixel)inPixel; }
-        private static void RGB5A3Handler(ARGBPixel inPixel, ushort* id) { *(wRGB5A3Pixel*)id = (wRGB5A3Pixel)inPixel; }
+
+        private static void IA8Handler(ARGBPixel inPixel, ushort* id)
+        {
+            *(IA8Pixel*) id = inPixel;
+        }
+
+        private static void RGB565Handler(ARGBPixel inPixel, ushort* id)
+        {
+            *(wRGB565Pixel*) id = (wRGB565Pixel) inPixel;
+        }
+
+        private static void RGB5A3Handler(ARGBPixel inPixel, ushort* id)
+        {
+            *(wRGB5A3Pixel*) id = (wRGB5A3Pixel) inPixel;
+        }
 
         private delegate void IDConverter(ushort* id, out ARGBPixel outPixel);
-        private static void IA8Converter(ushort* id, out ARGBPixel outPixel) { outPixel = *(IA8Pixel*)id; }
-        private static void RGB565Converter(ushort* id, out ARGBPixel outPixel) { outPixel = (ARGBPixel)(*(wRGB565Pixel*)id); }
-        private static void RGB5A3Converter(ushort* id, out ARGBPixel outPixel) { outPixel = (ARGBPixel)(*(wRGB5A3Pixel*)id); }
+
+        private static void IA8Converter(ushort* id, out ARGBPixel outPixel)
+        {
+            outPixel = *(IA8Pixel*) id;
+        }
+
+        private static void RGB565Converter(ushort* id, out ARGBPixel outPixel)
+        {
+            outPixel = (ARGBPixel) (*(wRGB565Pixel*) id);
+        }
+
+        private static void RGB5A3Converter(ushort* id, out ARGBPixel outPixel)
+        {
+            outPixel = (ARGBPixel) (*(wRGB5A3Pixel*) id);
+        }
+
         #endregion
 
         private MedianCut(Bitmap bmp, WiiPixelFormat texFormat, WiiPaletteFormat palFormat)
@@ -81,27 +107,34 @@ namespace BrawlLib.Imaging
             _width = bmp.Width;
             _height = bmp.Height;
             _size = _width * _height;
-            _srcData = bmp.LockBits(new Rectangle(0, 0, _width, _height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-            _srcPixels = (ARGBPixel*)_srcData.Scan0;
+            _srcData = bmp.LockBits(new Rectangle(0, 0, _width, _height), ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb);
+            _srcPixels = (ARGBPixel*) _srcData.Scan0;
 
             //Create buffers
-            _boxes = (ColorBox*)Marshal.AllocHGlobal(256 * sizeof(ColorBox));
-            _groupTable = (ColorEntry**)Marshal.AllocHGlobal(65536 * sizeof(void*));
+            _boxes = (ColorBox*) Marshal.AllocHGlobal(256 * sizeof(ColorBox));
+            _groupTable = (ColorEntry**) Marshal.AllocHGlobal(65536 * sizeof(void*));
         }
 
-        ~MedianCut() { Dispose(); }
+        ~MedianCut()
+        {
+            Dispose();
+        }
+
         public void Dispose()
         {
             if (_boxes != null)
             {
-                Marshal.FreeHGlobal((IntPtr)_boxes);
+                Marshal.FreeHGlobal((IntPtr) _boxes);
                 _boxes = null;
             }
+
             if (_groupTable != null)
             {
-                Marshal.FreeHGlobal((IntPtr)_groupTable);
+                Marshal.FreeHGlobal((IntPtr) _groupTable);
                 _groupTable = null;
             }
+
             if (_srcBmp != null)
             {
                 _srcBmp.UnlockBits(_srcData);
@@ -109,6 +142,7 @@ namespace BrawlLib.Imaging
                 _srcData = null;
                 _srcPixels = null;
             }
+
             GC.SuppressFinalize(this);
         }
 
@@ -168,6 +202,7 @@ namespace BrawlLib.Imaging
                 splitBox->Update(targetColors - _boxCount);
                 boxPtr->Update(targetColors - _boxCount);
             }
+
             return true;
         }
 
@@ -175,7 +210,7 @@ namespace BrawlLib.Imaging
         {
             //Sort boxes by luminance
             void** tableData = stackalloc void*[_boxCount];
-            ColorBox** colorTable = (ColorBox**)tableData;
+            ColorBox** colorTable = (ColorBox**) tableData;
             ColorBox* boxPtr = _boxes;
             int index;
             ushort id;
@@ -184,7 +219,7 @@ namespace BrawlLib.Imaging
             {
                 luminance = boxPtr->_luminance = boxPtr->_color.Luminance();
 
-                for (index = 0; (index < count) && (luminance > colorTable[index]->_luminance); index++)
+                for (index = 0; index < count && luminance > colorTable[index]->_luminance; index++)
                 {
                     ;
                 }
@@ -206,6 +241,7 @@ namespace BrawlLib.Imaging
                 _idConv(&id, out colorTable[i]->_color);
             }
         }
+
         private void ClearBoxes()
         {
             //Clean up
@@ -215,19 +251,21 @@ namespace BrawlLib.Imaging
                 boxPtr->Destroy();
             }
         }
+
         private void WritePalette(ColorPalette pal)
         {
             ColorBox* pBox = _boxes;
             for (int i = 0; i < _boxCount; i++, pBox++)
             {
-                pal.Entries[pBox->_index] = (Color)pBox->_color;
+                pal.Entries[pBox->_index] = (Color) pBox->_color;
             }
         }
+
         private void WriteIndices(BitmapData destData)
         {
             ARGBPixel* sPtr = _srcPixels;
             ushort id;
-            byte* dPtr = (byte*)destData.Scan0;
+            byte* dPtr = (byte*) destData.Scan0;
             int step, val;
 
             if (destData.PixelFormat == PixelFormat.Format8bppIndexed)
@@ -238,13 +276,13 @@ namespace BrawlLib.Imaging
                     for (int x = 0; x < _width; x++)
                     {
                         _idFunc(*sPtr++, &id);
-                        *dPtr++ = (byte)_groupTable[id]->_box->_index;
+                        *dPtr++ = (byte) _groupTable[id]->_box->_index;
                     }
                 }
             }
             else
             {
-                step = destData.Stride - ((_width + 1) / 2);
+                step = destData.Stride - (_width + 1) / 2;
                 for (int y = 0; y < _height; y++, dPtr += step)
                 {
                     for (int x = _width; x > 0; x -= 2)
@@ -258,7 +296,7 @@ namespace BrawlLib.Imaging
                             val |= _groupTable[id]->_box->_index & 0xF;
                         }
 
-                        *dPtr++ = (byte)val;
+                        *dPtr++ = (byte) val;
                     }
                 }
             }
@@ -269,7 +307,7 @@ namespace BrawlLib.Imaging
             ColorBox* pBox = _boxes;
             ColorEntry* entry = pBox->_rootEntry->_next;
 
-            int index, count = (int)pBox->_colors;
+            int index, count = (int) pBox->_colors;
 
             //Set initial box
             pBox->_color = entry->_color;
@@ -310,7 +348,7 @@ namespace BrawlLib.Imaging
         private Bitmap Quantize(int targetColors, IProgressTracker progress)
         {
             //Clear group table
-            Memory.Fill(_groupTable, (uint)(65536 * sizeof(void*)), 0);
+            Memory.Fill(_groupTable, (uint) (65536 * sizeof(void*)), 0);
 
             if (!SelectColors(targetColors))
             {
@@ -336,7 +374,8 @@ namespace BrawlLib.Imaging
             return bmp;
         }
 
-        public static Bitmap Quantize(Bitmap bmp, int colors, WiiPixelFormat texFormat, WiiPaletteFormat palFormat, IProgressTracker progress)
+        public static Bitmap Quantize(Bitmap bmp, int colors, WiiPixelFormat texFormat, WiiPaletteFormat palFormat,
+                                      IProgressTracker progress)
         {
             using (MedianCut mc = new MedianCut(bmp, texFormat, palFormat))
             {
@@ -359,9 +398,13 @@ namespace BrawlLib.Imaging
 
             public static ColorEntry* Create()
             {
-                return (ColorEntry*)Marshal.AllocHGlobal(sizeof(ColorEntry));
+                return (ColorEntry*) Marshal.AllocHGlobal(sizeof(ColorEntry));
             }
-            public static void Destroy(ColorEntry* e) { Marshal.FreeHGlobal((IntPtr)e); }
+
+            public static void Destroy(ColorEntry* e)
+            {
+                Marshal.FreeHGlobal((IntPtr) e);
+            }
 
             public void InsertNext(ColorEntry* entry)
             {
@@ -373,6 +416,7 @@ namespace BrawlLib.Imaging
                 _next->_prev = entry;
                 _next = entry;
             }
+
             public void InsertPrev(ColorEntry* entry)
             {
                 entry->_prev = _prev;
@@ -383,6 +427,7 @@ namespace BrawlLib.Imaging
                 _prev->_next = entry;
                 _prev = entry;
             }
+
             public void Remove()
             {
                 _prev->_next = _next;
@@ -409,7 +454,16 @@ namespace BrawlLib.Imaging
             public uint _colors, _weight;
             public int _index;
 
-            private ColorBox* Address { get { fixed (ColorBox* p = &this) { return p; } } }
+            private ColorBox* Address
+            {
+                get
+                {
+                    fixed (ColorBox* p = &this)
+                    {
+                        return p;
+                    }
+                }
+            }
 
             public void Initialize()
             {
@@ -418,6 +472,7 @@ namespace BrawlLib.Imaging
                 _rootEntry->_box = Address;
                 _colors = 0;
             }
+
             public void Destroy()
             {
                 ColorEntry* current, next;
@@ -431,6 +486,7 @@ namespace BrawlLib.Imaging
                         ColorEntry.Destroy(current);
                         current = next;
                     } while (current != _rootEntry);
+
                     _rootEntry = null;
                 }
             }
@@ -440,12 +496,12 @@ namespace BrawlLib.Imaging
                 ColorBox* box = _rootEntry->_box;
                 ColorEntry* current, next;
                 //Get limit from halfError
-                int limit = ((byte*)&box->_halfError)[axis];
+                int limit = ((byte*) &box->_halfError)[axis];
 
                 for (current = _rootEntry->_next; current != _rootEntry; current = next)
                 {
                     next = current->_next;
-                    if (((byte*)&current->_color)[axis] > limit)
+                    if (((byte*) &current->_color)[axis] > limit)
                     {
                         //Remove from current box
                         current->Remove();
@@ -461,8 +517,8 @@ namespace BrawlLib.Imaging
                 ColorEntry* current;
                 byte* tPtr, sColor;
                 ulong* colBuffer = &box->bError;
-                byte* pMin = (byte*)&box->_min;
-                byte* pMax = (byte*)&box->_max;
+                byte* pMin = (byte*) &box->_min;
+                byte* pMax = (byte*) &box->_max;
                 uint weight;
                 int diff;
                 byte val;
@@ -481,7 +537,7 @@ namespace BrawlLib.Imaging
                 for (current = _rootEntry->_next; current != _rootEntry; current = current->_next)
                 {
                     _weight += weight = current->_weight;
-                    tPtr = (byte*)&current->_color;
+                    tPtr = (byte*) &current->_color;
 
                     //Update bounds for and accumulate each element
                     for (int i = 0; i < 4; i++)
@@ -494,10 +550,10 @@ namespace BrawlLib.Imaging
                 }
 
                 //Set calculated color
-                sColor = (byte*)&box->_color;
+                sColor = (byte*) &box->_color;
                 for (int i = 0; i < 4; i++)
                 {
-                    sColor[i] = (byte)(colBuffer[i] / _weight);
+                    sColor[i] = (byte) (colBuffer[i] / _weight);
                 }
 
                 //Calculate volume
@@ -505,9 +561,10 @@ namespace BrawlLib.Imaging
                 for (int i = 0; i < 4; i++)
                 {
                     diff = pMax[i] - pMin[i] + 1;
-                    _volume *= (uint)diff;
-                    size[i] = (byte)diff;
+                    _volume *= (uint) diff;
+                    size[i] = (byte) diff;
                 }
+
                 if (_volume == 0)
                 {
                     _volume = 0xFFFFFFFF;
@@ -519,19 +576,19 @@ namespace BrawlLib.Imaging
                 for (current = _rootEntry->_next; current != _rootEntry; current = current->_next)
                 {
                     weight = current->_weight;
-                    tPtr = (byte*)&current->_color;
+                    tPtr = (byte*) &current->_color;
                     for (int i = 0; i < 4; i++)
                     {
                         diff = tPtr[i] - sColor[i];
-                        colBuffer[i] += weight * (uint)(diff * diff);
+                        colBuffer[i] += weight * (uint) (diff * diff);
                     }
                 }
 
                 //Get half-error
-                tPtr = (byte*)&box->_halfError;
+                tPtr = (byte*) &box->_halfError;
                 for (int i = 0; i < 4; i++)
                 {
-                    tPtr[i] = (byte)(pMin[i] + (size[i] / 2));
+                    tPtr[i] = (byte) (pMin[i] + size[i] / 2);
                 }
 
                 if (_volume > 1)
@@ -561,19 +618,19 @@ namespace BrawlLib.Imaging
                         len2 = 1;
                     }
 
-                    ratio = (len1 + (len2 / 2)) / len2;
+                    ratio = (len1 + len2 / 2) / len2;
 
                     if (ratio > remaining + 1)
                     {
                         ratio = remaining + 1;
                     }
 
-                    if ((ratio > 2) && (axis1 >= 0))
+                    if (ratio > 2 && axis1 >= 0)
                     {
-                        diff = pMin[axis1] + (pMax[axis1] - pMin[axis1] + (ratio / 2));
+                        diff = pMin[axis1] + (pMax[axis1] - pMin[axis1]) + ratio / 2;
                         if (diff < pMax[axis1])
                         {
-                            tPtr[axis1] = (byte)diff;
+                            tPtr[axis1] = (byte) diff;
                         }
                     }
                 }
@@ -601,7 +658,7 @@ namespace BrawlLib.Imaging
 
                 axis = -1;
 
-                if ((maxColors <= 16) && (boxCount <= 2))
+                if (maxColors <= 16 && boxCount <= 2)
                 {
                     lBias = (3.0 - boxCount) / (2.0 / 2.66);
                 }
@@ -613,8 +670,8 @@ namespace BrawlLib.Imaging
                         continue;
                     }
 
-                    pMin = (byte*)&boxes->_min;
-                    pMax = (byte*)&boxes->_max;
+                    pMin = (byte*) &boxes->_min;
+                    pMax = (byte*) &boxes->_max;
                     pErr = &boxes->bError;
 
                     rpe = boxes->rError * R_SCALE * R_SCALE;
@@ -633,33 +690,35 @@ namespace BrawlLib.Imaging
                     //    }
                     //}
 
-                    if (((lBias * rpe) > maxC) && (pMin[2] < pMax[2]))
+                    if (lBias * rpe > maxC && pMin[2] < pMax[2])
                     {
                         outBox = boxes;
                         maxC = lBias * rpe;
                         axis = 2;
                     }
 
-                    if ((gpe > maxC) && (pMin[1] < pMax[1]))
+                    if (gpe > maxC && pMin[1] < pMax[1])
                     {
                         outBox = boxes;
                         maxC = gpe;
                         axis = 1;
                     }
 
-                    if ((bpe > maxC) && (pMin[0] < pMax[0]))
+                    if (bpe > maxC && pMin[0] < pMax[0])
                     {
                         outBox = boxes;
                         maxC = bpe;
                         axis = 0;
                     }
-                    if ((ape > maxC) && (pMin[3] < pMax[3]))
+
+                    if (ape > maxC && pMin[3] < pMax[3])
                     {
                         outBox = boxes;
                         maxC = ape;
                         axis = 3;
                     }
                 }
+
                 return outBox;
             }
         }

@@ -16,7 +16,16 @@ namespace BrawlLib.SSBBTypes
         public bint _dataOffset;
         public bint _dataLength;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public void Set(int headLen, int adpcLen, int dataLen)
         {
@@ -32,9 +41,9 @@ namespace BrawlLib.SSBBTypes
             //Set offsets/lengths
             _headOffset = len;
             _headLength = headLen;
-            _adpcOffset = (len += headLen);
+            _adpcOffset = len += headLen;
             _adpcLength = adpcLen;
-            _dataOffset = (len += adpcLen);
+            _dataOffset = len += adpcLen;
             _dataLength = dataLen;
 
             if (adpcLen == 0)
@@ -48,9 +57,9 @@ namespace BrawlLib.SSBBTypes
             Memory.Fill(Address + 0x28, 0x18, 0);
         }
 
-        public HEADHeader* HEADData => (HEADHeader*)(Address + _headOffset);
-        public ADPCHeader* ADPCData => (ADPCHeader*)(Address + _adpcOffset);
-        public RSTMDATAHeader* DATAData => (RSTMDATAHeader*)(Address + _dataOffset);
+        public HEADHeader* HEADData => (HEADHeader*) (Address + _headOffset);
+        public ADPCHeader* ADPCData => (ADPCHeader*) (Address + _adpcOffset);
+        public RSTMDATAHeader* DATAData => (RSTMDATAHeader*) (Address + _dataOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -62,13 +71,22 @@ namespace BrawlLib.SSBBTypes
         public bint _size;
         public RuintCollection _entries;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public void Set(int size, int channels, WaveEncoding encoding)
         {
             RuintList* list;
             VoidPtr offset = _entries.Address;
-            int dataOffset = 0x60 + (channels * 8);
+            int dataOffset = 0x60 + channels * 8;
 
             _tag = Tag;
             _size = size;
@@ -86,7 +104,7 @@ namespace BrawlLib.SSBBTypes
             list->_numEntries._data = 1; //Number is little-endian
             list->Entries[0] = 0x58;
             // TODO: This is not actually AudioFormatInfo. Set it as a buint instead.
-            *(AudioFormatInfo*)list->Get(offset, 0) =
+            *(AudioFormatInfo*) list->Get(offset, 0) =
                 channels == 1 ? new AudioFormatInfo(1, 0, 0, 0) : new AudioFormatInfo(2, 0, 1, 0);
 
             //Set adpcm infos
@@ -100,7 +118,7 @@ namespace BrawlLib.SSBBTypes
                 if (encoding == WaveEncoding.ADPCM)
                 {
                     //Set embedded pointer
-                    *(ruint*)(offset + dataOffset) = dataOffset + 8;
+                    *(ruint*) (offset + dataOffset) = dataOffset + 8;
                     dataOffset += 8;
 
                     //Set info
@@ -114,26 +132,26 @@ namespace BrawlLib.SSBBTypes
                 else
                 {
                     //Set embedded pointer
-                    *(ruint*)(offset + dataOffset) = 0;
+                    *(ruint*) (offset + dataOffset) = 0;
                     dataOffset += 8;
                 }
             }
 
             //Fill remaining
-            int* p = (int*)(offset + dataOffset);
+            int* p = (int*) (offset + dataOffset);
             for (dataOffset += 8; dataOffset < size; dataOffset += 4)
             {
                 *p++ = 0;
             }
         }
 
-        public StrmDataInfo* Part1 => (StrmDataInfo*)_entries[0];  //Audio info
-        public RuintList* Part2 => (RuintList*)_entries[1];  //ADPC block flags?
-        public RuintList* Part3 => (RuintList*)_entries[2];  //ADPCMInfo array, one for each channel?
+        public StrmDataInfo* Part1 => (StrmDataInfo*) _entries[0]; //Audio info
+        public RuintList* Part2 => (RuintList*) _entries[1]; //ADPC block flags?
+        public RuintList* Part3 => (RuintList*) _entries[2]; //ADPCMInfo array, one for each channel?
 
         public ADPCMInfo* GetChannelInfo(int index)
         {
-            return (ADPCMInfo*)((ruint*)Part3->Get(_entries.Address, index))->Offset(_entries.Address);
+            return (ADPCMInfo*) ((ruint*) Part3->Get(_entries.Address, index))->Offset(_entries.Address);
         }
 
         public ADPCMInfo[] ChannelInfo
@@ -146,7 +164,7 @@ namespace BrawlLib.SSBBTypes
                 ADPCMInfo[] arr = new ADPCMInfo[count];
                 for (int i = 0; i < count; i++)
                 {
-                    arr[i] = *(ADPCMInfo*)((ruint*)list->Get(offset, i))->Offset(offset);
+                    arr[i] = *(ADPCMInfo*) ((ruint*) list->Get(offset, i))->Offset(offset);
                 }
 
                 return arr;
@@ -175,7 +193,7 @@ namespace BrawlLib.SSBBTypes
         public unsafe StrmDataInfo(CSTMDataInfo o, int dataOffset)
         {
             _format = o._format;
-            _sampleRate = checked((ushort)o._sampleRate);
+            _sampleRate = checked((ushort) o._sampleRate);
             _blockHeaderOffset = 0;
             _loopStartSample = o._loopStartSample;
             _numSamples = o._numSamples;
@@ -193,7 +211,7 @@ namespace BrawlLib.SSBBTypes
         public unsafe StrmDataInfo(FSTMDataInfo o, int dataOffset)
         {
             _format = o._format;
-            _sampleRate = checked((ushort)(int)o._sampleRate);
+            _sampleRate = checked((ushort) (int) o._sampleRate);
             _blockHeaderOffset = 0;
             _loopStartSample = o._loopStartSample;
             _numSamples = o._numSamples;
@@ -256,7 +274,17 @@ namespace BrawlLib.SSBBTypes
             _length = length;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public VoidPtr Data => Address + 8;
     }
 
@@ -279,7 +307,17 @@ namespace BrawlLib.SSBBTypes
             _pad1 = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public VoidPtr Data => Address + 8 + _dataOffset;
     }
 }

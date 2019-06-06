@@ -5,6 +5,7 @@ namespace System.Windows.Forms
     public partial class ModelEditControl : ModelEditorBase
     {
         public int prevHeight = 0, prevWidth = 0;
+
         public void ToggleWeightEditor()
         {
             animEditors.Visible = true;
@@ -32,6 +33,7 @@ namespace System.Windows.Forms
 
             CheckDimensions();
         }
+
         public void ToggleVertexEditor()
         {
             animEditors.Visible = true;
@@ -85,17 +87,19 @@ namespace System.Windows.Forms
             appendToolStripMenuItem.Enabled = node != null && Array.IndexOf(Appendable, node.GetType()) >= 0;
 
             int i = -1;
-            bool hasKeys = node != null && !(node is SCN0Node) && (i = Array.IndexOf(Interpolated, node.GetType())) >= 0;
+            bool hasKeys = node != null && !(node is SCN0Node) &&
+                           (i = Array.IndexOf(Interpolated, node.GetType())) >= 0;
             string s =
-                i == 0 ? (SelectedBone != null ? SelectedBone.Name : "entry") :
-                i == 1 ? (TargetTexRef != null ? TargetTexRef.Name : "entry") :
-                i == 2 ? (shp0Editor.VertexSetDest != null ? shp0Editor.VertexSetDest.Name : "entry") :
-            "entry";
+                i == 0 ? SelectedBone != null ? SelectedBone.Name : "entry" :
+                i == 1 ? TargetTexRef != null ? TargetTexRef.Name : "entry" :
+                i == 2 ? shp0Editor.VertexSetDest != null ? shp0Editor.VertexSetDest.Name : "entry" :
+                "entry";
 
             averageboneStartendTangentsToolStripMenuItem.Enabled = hasKeys && s != "entry";
             averageboneStartendTangentsToolStripMenuItem.Text = string.Format("Average {0} start/end keyframes", s);
 
-            averageAllStartEndTangentsToolStripMenuItem.Enabled = node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
+            averageAllStartEndTangentsToolStripMenuItem.Enabled =
+                node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
             //syncStartendTangentsToolStripMenuItem.Enabled = node != null && Array.IndexOf(Interpolated, node.GetType()) >= 0;
         }
     }

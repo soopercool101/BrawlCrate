@@ -9,7 +9,7 @@ namespace BrawlLib.Wii.Audio
         {
             fixed (byte* ptr = rstm)
             {
-                return FromRSTM((RSTMHeader*)ptr);
+                return FromRSTM((RSTMHeader*) ptr);
             }
         }
 
@@ -18,7 +18,7 @@ namespace BrawlLib.Wii.Audio
             StrmDataInfo strmDataInfo = *rstm->HEADData->Part1;
             int channels = strmDataInfo._format._channels;
 
-            if (strmDataInfo._format._encoding != (byte)WaveEncoding.ADPCM)
+            if (strmDataInfo._format._encoding != (byte) WaveEncoding.ADPCM)
             {
                 throw new NotImplementedException("CSTM export only supports ADPCM encoding.");
             }
@@ -35,10 +35,10 @@ namespace BrawlLib.Wii.Audio
             fixed (byte* address = array)
             {
                 //Get section pointers
-                CSTMHeader* cstm = (CSTMHeader*)address;
-                CSTMINFOHeader* info = (CSTMINFOHeader*)((byte*)cstm + rstmSize);
-                CSTMSEEKHeader* seek = (CSTMSEEKHeader*)((byte*)info + infoSize);
-                CSTMDATAHeader* data = (CSTMDATAHeader*)((byte*)seek + seekSize);
+                CSTMHeader* cstm = (CSTMHeader*) address;
+                CSTMINFOHeader* info = (CSTMINFOHeader*) ((byte*) cstm + rstmSize);
+                CSTMSEEKHeader* seek = (CSTMSEEKHeader*) ((byte*) info + infoSize);
+                CSTMDATAHeader* data = (CSTMDATAHeader*) ((byte*) seek + seekSize);
 
                 //Initialize sections
                 cstm->Set(infoSize, seekSize, dataSize);
@@ -51,23 +51,24 @@ namespace BrawlLib.Wii.Audio
 
                 //Create one ADPCMInfo for each channel
                 IntPtr* adpcData = stackalloc IntPtr[channels];
-                CSTMADPCMInfo** pAdpcm = (CSTMADPCMInfo**)adpcData;
+                CSTMADPCMInfo** pAdpcm = (CSTMADPCMInfo**) adpcData;
                 for (int i = 0; i < channels; i++)
                 {
                     *(pAdpcm[i] = info->GetChannelInfo(i)) = new CSTMADPCMInfo(*rstm->HEADData->GetChannelInfo(i));
                 }
 
-                bshort* seekFrom = (bshort*)rstm->ADPCData->Data;
-                short* seekTo = (short*)seek->Data;
+                bshort* seekFrom = (bshort*) rstm->ADPCData->Data;
+                short* seekTo = (short*) seek->Data;
                 for (int i = 0; i < seek->_length / 2 - 8; i++)
                 {
-                    *(seekTo++) = *(seekFrom++);
+                    *seekTo++ = *seekFrom++;
                 }
 
                 VoidPtr dataFrom = rstm->DATAData->Data;
                 VoidPtr dataTo = data->Data;
-                Memory.Move(dataTo, dataFrom, (uint)data->_length - 8);
+                Memory.Move(dataTo, dataFrom, (uint) data->_length - 8);
             }
+
             return array;
         }
 
@@ -75,7 +76,7 @@ namespace BrawlLib.Wii.Audio
         {
             fixed (byte* ptr = cstm)
             {
-                return ToRSTM((CSTMHeader*)ptr);
+                return ToRSTM((CSTMHeader*) ptr);
             }
         }
 
@@ -86,7 +87,8 @@ namespace BrawlLib.Wii.Audio
 
             if (cstm->_seekBlockRef._type != CSTMReference.RefType.SeekBlock)
             {
-                throw new Exception("BrawlLib does not recognize this type of CSTM file (the SEEK block is missing or in an unexpected location.)");
+                throw new Exception(
+                    "BrawlLib does not recognize this type of CSTM file (the SEEK block is missing or in an unexpected location.)");
             }
 
             // Get section sizes from the BRSTM - BCSTM is such a similar format that we can assume the sizes will match.
@@ -101,14 +103,14 @@ namespace BrawlLib.Wii.Audio
             fixed (byte* address = array)
             {
                 //Get section pointers
-                RSTMHeader* rstm = (RSTMHeader*)address;
-                HEADHeader* info = (HEADHeader*)((byte*)rstm + rstmSize);
-                ADPCHeader* seek = (ADPCHeader*)((byte*)info + infoSize);
-                RSTMDATAHeader* data = (RSTMDATAHeader*)((byte*)seek + seekSize);
+                RSTMHeader* rstm = (RSTMHeader*) address;
+                HEADHeader* info = (HEADHeader*) ((byte*) rstm + rstmSize);
+                ADPCHeader* seek = (ADPCHeader*) ((byte*) info + infoSize);
+                RSTMDATAHeader* data = (RSTMDATAHeader*) ((byte*) seek + seekSize);
 
                 //Initialize sections
                 rstm->Set(infoSize, seekSize, dataSize);
-                info->Set(infoSize, channels, (WaveEncoding)cstm->INFOData->_dataInfo._format._encoding);
+                info->Set(infoSize, channels, (WaveEncoding) cstm->INFOData->_dataInfo._format._encoding);
                 seek->Set(seekSize);
                 data->Set(dataSize);
 
@@ -117,23 +119,24 @@ namespace BrawlLib.Wii.Audio
 
                 //Create one ADPCMInfo for each channel
                 IntPtr* adpcData = stackalloc IntPtr[channels];
-                ADPCMInfo** pAdpcm = (ADPCMInfo**)adpcData;
+                ADPCMInfo** pAdpcm = (ADPCMInfo**) adpcData;
                 for (int i = 0; i < channels; i++)
                 {
                     *(pAdpcm[i] = info->GetChannelInfo(i)) = new ADPCMInfo(*cstm->INFOData->GetChannelInfo(i));
                 }
 
-                bshort* seekFrom = (bshort*)cstm->SEEKData->Data;
-                short* seekTo = (short*)seek->Data;
+                bshort* seekFrom = (bshort*) cstm->SEEKData->Data;
+                short* seekTo = (short*) seek->Data;
                 for (int i = 0; i < seek->_length / 2 - 8; i++)
                 {
-                    *(seekTo++) = *(seekFrom++);
+                    *seekTo++ = *seekFrom++;
                 }
 
                 VoidPtr dataFrom = cstm->DATAData->Data;
                 VoidPtr dataTo = data->Data;
-                Memory.Move(dataTo, dataFrom, (uint)data->_length - 8);
+                Memory.Move(dataTo, dataFrom, (uint) data->_length - 8);
             }
+
             return array;
         }
     }

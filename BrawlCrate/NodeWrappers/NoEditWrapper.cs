@@ -8,6 +8,7 @@ namespace BrawlCrate.NodeWrappers
     public class NoEditEntryWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static NoEditEntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -16,21 +17,26 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-
         }
-        public NoEditEntryWrapper() { ContextMenuStrip = _menu; }
+
+        public NoEditEntryWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 
     [NodeWrapper(ResourceType.NoEditFolder)]
     public class NoEditFolderWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static NoEditFolderWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -39,14 +45,18 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-
         }
-        public NoEditFolderWrapper() { ContextMenuStrip = _menu; }
+
+        public NoEditFolderWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

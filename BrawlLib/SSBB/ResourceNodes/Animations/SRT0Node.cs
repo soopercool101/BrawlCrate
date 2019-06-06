@@ -10,13 +10,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SRT0Node : NW4RAnimationNode
     {
-        internal SRT0v4* Header4 => (SRT0v4*)WorkingUncompressed.Address;
-        internal SRT0v5* Header5 => (SRT0v5*)WorkingUncompressed.Address;
+        internal SRT0v4* Header4 => (SRT0v4*) WorkingUncompressed.Address;
+        internal SRT0v5* Header5 => (SRT0v5*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SRT0;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(SRT0EntryNode) };
-        public override int[] SupportedVersions => new int[] { 4, 5 };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(SRT0EntryNode)};
+        public override int[] SupportedVersions => new int[] {4, 5};
 
-        public SRT0Node() { _version = 4; }
+        public SRT0Node()
+        {
+            _version = 4;
+        }
 
         private const string _category = "Texture Coordinate Animation";
         private int _matrixMode;
@@ -27,14 +30,29 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => base.FrameCount;
             set => base.FrameCount = value;
         }
+
         [Category(_category)]
         public override bool Loop
         {
             get => base.Loop;
-            set { base.Loop = value; UpdateChildFrameLimits(); }
+            set
+            {
+                base.Loop = value;
+                UpdateChildFrameLimits();
+            }
         }
-        [Category(_category), Description(MDL0Node._textureMatrixModeDescription)]
-        public TexMatrixMode MatrixMode { get => (TexMatrixMode)_matrixMode; set { _matrixMode = (int)value; SignalPropertyChange(); } }
+
+        [Category(_category)]
+        [Description(MDL0Node._textureMatrixModeDescription)]
+        public TexMatrixMode MatrixMode
+        {
+            get => (TexMatrixMode) _matrixMode;
+            set
+            {
+                _matrixMode = (int) value;
+                SignalPropertyChange();
+            }
+        }
 
         protected override void UpdateChildFrameLimits()
         {
@@ -58,6 +76,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public void DeleteKeyframe(int index)
         {
             foreach (SRT0EntryNode e in Children)
@@ -70,13 +89,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             FrameCount--;
         }
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_version == 5)
             {
                 SRT0v5* header = Header5;
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -88,14 +108,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (header->_origPathOffset > 0)
                 {
                     _originalPath = header->OrigPath;
-                } (_userEntries = new UserDataCollection()).Read(header->UserData);
+                }
+
+                (_userEntries = new UserDataCollection()).Read(header->UserData);
 
                 return header->Group->_numEntries > 0;
             }
             else
             {
                 SRT0v4* header = Header4;
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -119,7 +141,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceGroup* group = Header4->Group;
             for (int i = 0; i < group->_numEntries; i++)
             {
-                new SRT0EntryNode().Initialize(this, new DataSource(addr = (VoidPtr)group + group->First[i]._dataOffset, ((SRT0Entry*)addr)->DataSize()));
+                new SRT0EntryNode().Initialize(this,
+                    new DataSource(addr = (VoidPtr) group + group->First[i]._dataOffset,
+                        ((SRT0Entry*) addr)->DataSize()));
             }
         }
 
@@ -142,18 +166,19 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength, StringTable stringTable)
+        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength,
+                                                     StringTable stringTable)
         {
             base.PostProcess(bresAddress, dataAddress, dataLength, stringTable);
 
-            SRT0v4* header = (SRT0v4*)dataAddress;
+            SRT0v4* header = (SRT0v4*) dataAddress;
 
             if (_version == 5)
             {
-                ((SRT0v5*)dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
+                ((SRT0v5*) dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
                 if (!string.IsNullOrEmpty(_originalPath))
                 {
-                    ((SRT0v5*)dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
+                    ((SRT0v5*) dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
                 }
             }
             else
@@ -173,14 +198,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             int index = 1;
             foreach (SRT0EntryNode n in Children)
             {
-                dataAddress = (VoidPtr)group + (rEntry++)->_dataOffset;
-                ResourceEntry.Build(group, index++, dataAddress, (BRESString*)stringTable[n.Name]);
+                dataAddress = (VoidPtr) group + (rEntry++)->_dataOffset;
+                ResourceEntry.Build(group, index++, dataAddress, (BRESString*) stringTable[n.Name]);
                 n.PostProcess(dataAddress, stringTable);
             }
 
             if (_version == 5)
             {
-                _userEntries.PostProcess(((SRT0v5*)dataAddress)->UserData, stringTable);
+                _userEntries.PostProcess(((SRT0v5*) dataAddress)->UserData, stringTable);
             }
         }
 
@@ -189,14 +214,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceGroup* group;
             if (_version == 5)
             {
-                SRT0v5* header = (SRT0v5*)address;
-                *header = new SRT0v5((ushort)_numFrames, _loop, (ushort)Children.Count, _matrixMode);
+                SRT0v5* header = (SRT0v5*) address;
+                *header = new SRT0v5((ushort) _numFrames, _loop, (ushort) Children.Count, _matrixMode);
                 group = header->Group;
             }
             else
             {
-                SRT0v4* header = (SRT0v4*)address;
-                *header = new SRT0v4((ushort)_numFrames, _loop, (ushort)Children.Count, _matrixMode);
+                SRT0v4* header = (SRT0v4*) address;
+                *header = new SRT0v4((ushort) _numFrames, _loop, (ushort) Children.Count, _matrixMode);
                 group = header->Group;
             }
 
@@ -212,7 +237,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceEntry* rEntry = group->First;
             foreach (SRT0EntryNode n in Children)
             {
-                (rEntry++)->_dataOffset = (int)entryAddress - (int)group;
+                (rEntry++)->_dataOffset = (int) entryAddress - (int) group;
 
                 n._dataAddr = dataAddress;
                 n.Rebuild(entryAddress, n._entryLength, true);
@@ -222,7 +247,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_userEntries.Count > 0 && _version == 5)
             {
-                SRT0v5* header = (SRT0v5*)address;
+                SRT0v5* header = (SRT0v5*) address;
                 header->UserData = dataAddress;
                 _userEntries.Write(dataAddress);
             }
@@ -244,7 +269,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((BRESCommonHeader*)source.Address)->_tag == SRT0v4.Tag ? new SRT0Node() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((BRESCommonHeader*) source.Address)->_tag == SRT0v4.Tag ? new SRT0Node() : null;
+        }
 
         public unsafe SRT0TextureNode FindOrCreateEntry(string name, int index, bool ind)
         {
@@ -279,10 +307,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void CreateEntry()
         {
-            AddChild(new SRT0EntryNode() { Name = FindName("NewMaterial") });
+            AddChild(new SRT0EntryNode() {Name = FindName("NewMaterial")});
         }
 
         #region Extra Functions
+
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count specified by the user.
         /// </summary>
@@ -294,13 +323,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Resize(f.NewValue);
             }
         }
+
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count.
         /// </summary>
         public void Resize(int newFrameCount)
         {
             KeyframeEntry kfe = null;
-            float ratio = newFrameCount / (float)FrameCount;
+            float ratio = newFrameCount / (float) FrameCount;
             foreach (SRT0EntryNode n in Children)
             {
                 foreach (SRT0TextureNode e in n.Children)
@@ -308,22 +338,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                     KeyframeCollection newCollection = new KeyframeCollection(5, newFrameCount + (Loop ? 1 : 0), 1, 1);
                     for (int x = 0; x < FrameCount; x++)
                     {
-                        int newFrame = (int)(x * ratio + 0.5f);
-                        float frameRatio = newFrame == 0 ? 0 : x / (float)newFrame;
+                        int newFrame = (int) (x * ratio + 0.5f);
+                        float frameRatio = newFrame == 0 ? 0 : x / (float) newFrame;
                         for (int i = 0; i < 5; i++)
                         {
                             if ((kfe = e.GetKeyframe(i, x)) != null)
                             {
-                                newCollection.SetFrameValue(i, newFrame, kfe._value)._tangent = kfe._tangent * (float.IsNaN(frameRatio) ? 1 : frameRatio);
+                                newCollection.SetFrameValue(i, newFrame, kfe._value)._tangent =
+                                    kfe._tangent * (float.IsNaN(frameRatio) ? 1 : frameRatio);
                             }
                         }
                     }
+
                     e._keyframes = newCollection;
                 }
             }
 
             FrameCount = newFrameCount;
         }
+
         /// <summary>
         /// Adds an animation opened by the user to the end of this one
         /// </summary>
@@ -337,12 +370,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (SRT0Node)NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = (SRT0Node) NodeFactory.FromFile(null, o.FileName)) != null)
                 {
                     Append(external);
                 }
             }
         }
+
         /// <summary>
         /// Adds an animation to the end of this one
         /// </summary>
@@ -358,15 +392,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 foreach (SRT0TextureNode extEntry in w.Children)
                 {
                     SRT0TextureNode intEntry = null;
-                    if ((intEntry = (SRT0TextureNode)FindChild(w.Name + "/" + extEntry.Name, false)) == null)
+                    if ((intEntry = (SRT0TextureNode) FindChild(w.Name + "/" + extEntry.Name, false)) == null)
                     {
                         SRT0EntryNode wi = null;
-                        if ((wi = (SRT0EntryNode)FindChild(w.Name, false)) == null)
+                        if ((wi = (SRT0EntryNode) FindChild(w.Name, false)) == null)
                         {
-                            AddChild(wi = new SRT0EntryNode() { Name = FindName(null) });
+                            AddChild(wi = new SRT0EntryNode() {Name = FindName(null)});
                         }
 
-                        SRT0TextureNode newIntEntry = new SRT0TextureNode(extEntry.Index, extEntry.Indirect) { Name = extEntry.Name };
+                        SRT0TextureNode newIntEntry = new SRT0TextureNode(extEntry.Index, extEntry.Indirect)
+                            {Name = extEntry.Name};
                         newIntEntry.SetSize(extEntry.FrameCount + origIntCount, Loop);
 
                         for (int x = 0; x < extEntry.FrameCount; x++)
@@ -375,7 +410,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                             {
                                 if ((kfe = extEntry.GetKeyframe(i, x)) != null)
                                 {
-                                    newIntEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent = kfe._tangent;
+                                    newIntEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent =
+                                        kfe._tangent;
                                 }
                             }
                         }
@@ -390,7 +426,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                             {
                                 if ((kfe = extEntry.GetKeyframe(i, x)) != null)
                                 {
-                                    intEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent = kfe._tangent;
+                                    intEntry.Keyframes.SetFrameValue(i, x + origIntCount, kfe._value)._tangent =
+                                        kfe._tangent;
                                 }
                             }
                         }
@@ -398,6 +435,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public void AverageKeys()
         {
             foreach (SRT0EntryNode u in Children)
@@ -464,14 +502,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             SignalPropertyChange();
         }
+
         #endregion
     }
 
     public unsafe class SRT0EntryNode : ResourceNode
     {
-        internal SRT0Entry* Header => (SRT0Entry*)WorkingUncompressed.Address;
+        internal SRT0Entry* Header => (SRT0Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SRT0Entry;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(SRT0TextureNode) };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(SRT0TextureNode)};
 
         public int[] _usageIndices = new int[11];
 
@@ -480,22 +519,22 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            if ((_name == null) && (Header->_stringOffset != 0))
+            if (_name == null && Header->_stringOffset != 0)
             {
                 _name = Header->ResourceString;
             }
 
-            _texIndices = (TextureIndices)(int)Header->_textureIndices;
-            _indIndices = (IndirectTextureIndices)(int)Header->_indirectIndices;
+            _texIndices = (TextureIndices) (int) Header->_textureIndices;
+            _indIndices = (IndirectTextureIndices) (int) Header->_indirectIndices;
 
             for (int i = 0; i < 8; i++)
             {
-                _usageIndices[i] = ((Header->_textureIndices >> i) & 1);
+                _usageIndices[i] = (Header->_textureIndices >> i) & 1;
             }
 
             for (int i = 0; i < 3; i++)
             {
-                _usageIndices[i + 8] = ((Header->_indirectIndices >> i) & 1);
+                _usageIndices[i + 8] = (Header->_indirectIndices >> i) & 1;
             }
 
             return _texIndices > 0 || _indIndices > 0;
@@ -503,7 +542,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected internal virtual void PostProcess(VoidPtr dataAddress, StringTable stringTable)
         {
-            SRT0Entry* header = (SRT0Entry*)dataAddress;
+            SRT0Entry* header = (SRT0Entry*) dataAddress;
             header->ResourceStringAddress = stringTable[Name] + 4;
         }
 
@@ -515,19 +554,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_usageIndices[i] == 1)
                 {
-                    new SRT0TextureNode(i >= 8 ? i - 8 : i, i >= 8).Initialize(this, new DataSource(addr = Header->GetEntry(index++), ((SRT0TextureEntry*)addr)->Code.DataSize()));
+                    new SRT0TextureNode(i >= 8 ? i - 8 : i, i >= 8).Initialize(this,
+                        new DataSource(addr = Header->GetEntry(index++), ((SRT0TextureEntry*) addr)->Code.DataSize()));
                 }
             }
         }
 
         internal int _entryLength, _dataLength;
         internal VoidPtr _dataAddr;
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            SRT0Entry* header = (SRT0Entry*)address;
+            SRT0Entry* header = (SRT0Entry*) address;
 
-            header->_textureIndices = (int)_texIndices;
-            header->_indirectIndices = (int)_indIndices;
+            header->_textureIndices = (int) _texIndices;
+            header->_indirectIndices = (int) _indIndices;
 
             int offset = 12 + Children.Count * 4;
             VoidPtr entryAddress = address + offset;
@@ -535,7 +576,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int prevOffset = 0;
             for (int i = 0; i < Children.Count; i++)
             {
-                SRT0TextureNode n = (SRT0TextureNode)Children[i];
+                SRT0TextureNode n = (SRT0TextureNode) Children[i];
 
                 n._dataAddr = _dataAddr;
 
@@ -550,10 +591,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Export(string outPath)
         {
-            StringTable table = new StringTable() { Name };
+            StringTable table = new StringTable() {Name};
 
             int totalLength = OnCalculateSize(true) + table.GetTotalSize();
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.None, 8, FileOptions.RandomAccess))
             {
                 stream.SetLength(totalLength);
                 using (FileMap map = FileMap.FromStream(stream))
@@ -607,17 +649,18 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (n._indirect)
                 {
-                    _indIndices |= (IndirectTextureIndices)(1 << n._textureIndex);
+                    _indIndices |= (IndirectTextureIndices) (1 << n._textureIndex);
                 }
                 else
                 {
-                    _texIndices |= (TextureIndices)(1 << n._textureIndex);
+                    _texIndices |= (TextureIndices) (1 << n._textureIndex);
                 }
 
                 n.CalculateSize(true);
                 _entryLength += 4 + n._entryLength;
                 _dataLength += n._dataLength;
             }
+
             return _entryLength + _dataLength;
         }
 
@@ -650,6 +693,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
             }
+
             SRT0TextureNode node = new SRT0TextureNode(value, indirect);
             AddChild(node);
         }
@@ -657,15 +701,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class SRT0TextureNode : ResourceNode, IKeyframeSource
     {
-        internal SRT0TextureEntry* Header => (SRT0TextureEntry*)WorkingUncompressed.Address;
+        internal SRT0TextureEntry* Header => (SRT0TextureEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SRT0Texture;
 
 #if DEBUG
-        [Category("SRT0 Texture Entry")]
-        public SRT0Code Flags => _code;
+        [Category("SRT0 Texture Entry")] public SRT0Code Flags => _code;
 #endif
 
         public bool _indirect = false;
+
         [Category("SRT0 Texture Entry")]
         public bool Indirect
         {
@@ -688,6 +732,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 CheckPrev();
             }
         }
+
         [Category("SRT0 Texture Entry")]
         public int TextureIndex
         {
@@ -712,6 +757,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 CheckPrev();
             }
         }
+
         public int _textureIndex;
 
         public SRT0TextureNode(int index, bool indirect)
@@ -729,8 +775,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             int index = Index;
-            if ((_indirect == true && ((SRT0TextureNode)Parent.Children[Index + 1])._indirect == false) ||
-                (_textureIndex > ((SRT0TextureNode)Parent.Children[Index + 1])._textureIndex && _indirect == ((SRT0TextureNode)Parent.Children[Index + 1])._indirect))
+            if (_indirect == true && ((SRT0TextureNode) Parent.Children[Index + 1])._indirect == false ||
+                _textureIndex > ((SRT0TextureNode) Parent.Children[Index + 1])._textureIndex &&
+                _indirect == ((SRT0TextureNode) Parent.Children[Index + 1])._indirect)
             {
                 DoMoveDown();
                 if (index != Index)
@@ -748,8 +795,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             int index = Index;
-            if ((_indirect == false && ((SRT0TextureNode)Parent.Children[Index - 1])._indirect == true) ||
-                (_textureIndex < ((SRT0TextureNode)Parent.Children[Index - 1])._textureIndex && _indirect == ((SRT0TextureNode)Parent.Children[Index - 1])._indirect))
+            if (_indirect == false && ((SRT0TextureNode) Parent.Children[Index - 1])._indirect == true ||
+                _textureIndex < ((SRT0TextureNode) Parent.Children[Index - 1])._textureIndex &&
+                _indirect == ((SRT0TextureNode) Parent.Children[Index - 1])._indirect)
             {
                 DoMoveUp();
                 if (index != Index)
@@ -766,10 +814,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             SignalPropertyChange();
         }
 
-        [Browsable(false)]
-        public int FrameCount => Keyframes.FrameLimit;
+        [Browsable(false)] public int FrameCount => Keyframes.FrameLimit;
 
         internal KeyframeCollection _keyframes;
+
         [Browsable(false)]
         public KeyframeCollection Keyframes
         {
@@ -777,9 +825,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_keyframes == null)
                 {
-                    System.Diagnostics.Debug.WriteLine((IntPtr)Header);
-                    _keyframes = AnimationConverter.DecodeKeyframes(Header, Parent != null ? Parent.Parent as SRT0Node : null, 5, 1, 1);
+                    System.Diagnostics.Debug.WriteLine((IntPtr) Header);
+                    _keyframes = AnimationConverter.DecodeKeyframes(Header,
+                        Parent != null ? Parent.Parent as SRT0Node : null, 5, 1, 1);
                 }
+
                 return _keyframes;
             }
         }
@@ -819,7 +869,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override unsafe void Export(string outPath)
         {
             int dataLen = OnCalculateSize(true);
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.None, 8, FileOptions.RandomAccess))
             {
                 stream.SetLength(dataLen);
                 using (FileMap map = FileMap.FromStream(stream))
@@ -833,9 +884,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static bool _generateTangents = true;
 
-        public float GetFrameValue(int arrayIndex, float index) { return Keyframes.GetFrameValue(arrayIndex, index); }
+        public float GetFrameValue(int arrayIndex, float index)
+        {
+            return Keyframes.GetFrameValue(arrayIndex, index);
+        }
 
-        public KeyframeEntry GetKeyframe(int arrayIndex, int index) { return Keyframes.GetKeyframe(arrayIndex, index); }
+        public KeyframeEntry GetKeyframe(int arrayIndex, int index)
+        {
+            return Keyframes.GetKeyframe(arrayIndex, index);
+        }
+
         public KeyframeEntry SetKeyframe(int arrayIndex, int index, float value)
         {
             bool exists = Keyframes.GetKeyframe(arrayIndex, index) != null;
@@ -856,54 +914,62 @@ namespace BrawlLib.SSBB.ResourceNodes
             SignalPropertyChange();
             return k;
         }
+
         public void SetKeyframe(int index, SRTAnimationFrame frame)
         {
-            float* v = (float*)&frame;
+            float* v = (float*) &frame;
             for (int i = 0; i < 5; i++)
             {
                 SetKeyframe(i, index, *v++);
             }
         }
+
         public void SetKeyframeOnlyTrans(int index, SRTAnimationFrame frame)
         {
-            float* v = (float*)&frame.Translation;
+            float* v = (float*) &frame.Translation;
             for (int i = 3; i < 5; i++)
             {
                 SetKeyframe(i, index, *v++);
             }
         }
+
         public void SetKeyframeOnlyRot(int index, SRTAnimationFrame frame)
         {
             SetKeyframe(2, index, frame.Rotation);
         }
+
         public void SetKeyframeOnlyScale(int index, SRTAnimationFrame frame)
         {
-            float* v = (float*)&frame.Scale;
+            float* v = (float*) &frame.Scale;
             for (int i = 0; i < 2; i++)
             {
                 SetKeyframe(i, index, *v++);
             }
         }
+
         public void SetKeyframeOnlyTrans(int index, Vector2 trans)
         {
-            float* v = (float*)&trans;
+            float* v = (float*) &trans;
             for (int i = 3; i < 5; i++)
             {
                 SetKeyframe(i, index, *v++);
             }
         }
+
         public void SetKeyframeOnlyRot(int index, float rot)
         {
             SetKeyframe(2, index, rot);
         }
+
         public void SetKeyframeOnlyScale(int index, Vector2 scale)
         {
-            float* v = (float*)&scale;
+            float* v = (float*) &scale;
             for (int i = 0; i < 2; i++)
             {
                 SetKeyframe(i, index, *v++);
             }
         }
+
         public void RemoveKeyframe(int arrayIndex, int index)
         {
             KeyframeEntry k = Keyframes.Remove(arrayIndex, index);
@@ -914,6 +980,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 k._next.GenerateTangent();
             }
         }
+
         public void RemoveKeyframe(int index)
         {
             for (int i = 0; i < 5; i++)
@@ -921,6 +988,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RemoveKeyframe(i, index);
             }
         }
+
         public void RemoveKeyframeOnlyTrans(int index)
         {
             for (int i = 3; i < 5; i++)
@@ -928,10 +996,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RemoveKeyframe(i, index);
             }
         }
+
         public void RemoveKeyframeOnlyRot(int index)
         {
             RemoveKeyframe(2, index);
         }
+
         public void RemoveKeyframeOnlyScale(int index)
         {
             for (int i = 0; i < 2; i++)
@@ -939,40 +1009,77 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RemoveKeyframe(i, index);
             }
         }
+
         public SRTAnimationFrame GetAnimFrame(int index)
         {
-            SRTAnimationFrame frame = new SRTAnimationFrame() { Index = index };
-            float* dPtr = (float*)&frame;
+            SRTAnimationFrame frame = new SRTAnimationFrame() {Index = index};
+            float* dPtr = (float*) &frame;
             for (int x = 0; x < 5; x++)
             {
                 frame.SetBool(x, Keyframes.GetKeyframe(x, index) != null);
                 *dPtr++ = GetFrameValue(x, index);
             }
+
             return frame;
         }
 
         #endregion
 
-        [Browsable(false)]
-        public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
+        [Browsable(false)] public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
     }
 
     public class SRT0FrameEntry
     {
         public float _index, _value, _tangent;
 
-        public static implicit operator SRT0FrameEntry(I12Entry v) { return new SRT0FrameEntry(v._index, v._value, v._tangent); }
-        public static implicit operator I12Entry(SRT0FrameEntry v) { return new I12Entry(v._index, v._value, v._tangent); }
+        public static implicit operator SRT0FrameEntry(I12Entry v)
+        {
+            return new SRT0FrameEntry(v._index, v._value, v._tangent);
+        }
 
-        public static implicit operator SRT0FrameEntry(Vector3 v) { return new SRT0FrameEntry(v._x, v._y, v._z); }
-        public static implicit operator Vector3(SRT0FrameEntry v) { return new Vector3(v._index, v._value, v._tangent); }
+        public static implicit operator I12Entry(SRT0FrameEntry v)
+        {
+            return new I12Entry(v._index, v._value, v._tangent);
+        }
 
-        public SRT0FrameEntry(float x, float y, float z) { _index = x; _value = y; _tangent = z; }
-        public SRT0FrameEntry() { }
+        public static implicit operator SRT0FrameEntry(Vector3 v)
+        {
+            return new SRT0FrameEntry(v._x, v._y, v._z);
+        }
 
-        public float Index { get => _index; set => _index = value; }
-        public float Value { get => _value; set => _value = value; }
-        public float Tangent { get => _tangent; set => _tangent = value; }
+        public static implicit operator Vector3(SRT0FrameEntry v)
+        {
+            return new Vector3(v._index, v._value, v._tangent);
+        }
+
+        public SRT0FrameEntry(float x, float y, float z)
+        {
+            _index = x;
+            _value = y;
+            _tangent = z;
+        }
+
+        public SRT0FrameEntry()
+        {
+        }
+
+        public float Index
+        {
+            get => _index;
+            set => _index = value;
+        }
+
+        public float Value
+        {
+            get => _value;
+            set => _value = value;
+        }
+
+        public float Tangent
+        {
+            get => _tangent;
+            set => _tangent = value;
+        }
 
         public override string ToString()
         {

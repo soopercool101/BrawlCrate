@@ -74,19 +74,23 @@ namespace System.Windows.Forms
 
             GL.GenTextures(1, out uint colorTex);
             GL.BindTexture(TextureTarget.Texture2D, colorTex);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Clamp);
-            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Clamp);
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, height, width, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
+                (int) TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
+                (int) TextureMagFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int) TextureWrapMode.Clamp);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int) TextureWrapMode.Clamp);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, height, width, 0, PixelFormat.Rgba,
+                PixelType.UnsignedByte, IntPtr.Zero);
 
             GL.BindTexture(TextureTarget.Texture2D, 0);
 
             GL.Ext.GenFramebuffers(1, out uint bufferHandle);
             GL.Ext.BindFramebuffer(FramebufferTarget.FramebufferExt, bufferHandle);
-            GL.Ext.FramebufferTexture2D(FramebufferTarget.FramebufferExt, FramebufferAttachment.ColorAttachment0Ext, TextureTarget.Texture2D, colorTex, 0);
+            GL.Ext.FramebufferTexture2D(FramebufferTarget.FramebufferExt, FramebufferAttachment.ColorAttachment0Ext,
+                TextureTarget.Texture2D, colorTex, 0);
 
-            GL.DrawBuffer((DrawBufferMode)FramebufferAttachment.ColorAttachment0Ext);
+            GL.DrawBuffer((DrawBufferMode) FramebufferAttachment.ColorAttachment0Ext);
 
             GL.PushAttrib(AttribMask.ViewportBit);
             GL.Viewport(0, 0, height, width);

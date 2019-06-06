@@ -39,7 +39,7 @@ namespace System.Windows.Forms
             comboBox2.Items.AddRange(_internalModel._linker.BoneCache);
 
             comboBox1.SelectedIndex = comboBox2.SelectedIndex = comboBox3.SelectedIndex = 0;
-            _parent = (MDL0BoneNode)comboBox2.SelectedItem;
+            _parent = (MDL0BoneNode) comboBox2.SelectedItem;
 
             return ShowDialog(null);
         }
@@ -124,16 +124,16 @@ namespace System.Windows.Forms
                 case 0:
                     foreach (MDL0BoneNode b in (_baseInf as MDL0BoneNode).Children)
                     {
-                        MergeChildren(_parent, b, _mergeModels ? _externalModel : (ResourceNode)_node);
+                        MergeChildren(_parent, b, _mergeModels ? _externalModel : (ResourceNode) _node);
                     }
 
                     break;
                 case 1:
-                    _parent.Parent.InsertChild((ResourceNode)_baseInf, true, _parent.Index);
+                    _parent.Parent.InsertChild((ResourceNode) _baseInf, true, _parent.Index);
                     _parent.Remove();
                     break;
                 case 2:
-                    _parent.AddChild((ResourceNode)_baseInf);
+                    _parent.AddChild((ResourceNode) _baseInf);
                     break;
             }
 
@@ -158,7 +158,11 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
         private void GetBaseInfluence()
         {
@@ -168,21 +172,21 @@ namespace System.Windows.Forms
             }
 
             MDL0BoneNode[] boneCache = _externalModel._linker.BoneCache;
-            if ((_node = (MDL0ObjectNode)comboBox1.SelectedItem).Weighted)
+            if ((_node = (MDL0ObjectNode) comboBox1.SelectedItem).Weighted)
             {
                 int least = int.MaxValue;
                 foreach (IMatrixNode inf in _node.Influences)
                 {
-                    if (inf is MDL0BoneNode && ((MDL0BoneNode)inf).BoneIndex < least)
+                    if (inf is MDL0BoneNode && ((MDL0BoneNode) inf).BoneIndex < least)
                     {
-                        least = ((MDL0BoneNode)inf).BoneIndex;
+                        least = ((MDL0BoneNode) inf).BoneIndex;
                     }
                 }
 
                 if (least != int.MaxValue)
                 {
                     MDL0BoneNode temp = boneCache[least];
-                    _baseInf = (IMatrixNode)temp.Parent;
+                    _baseInf = (IMatrixNode) temp.Parent;
                 }
             }
             else
@@ -213,6 +217,7 @@ namespace System.Windows.Forms
                         comboBox2.SelectedIndex = i;
                         break;
                     }
+
                     i++;
                 }
             }
@@ -241,7 +246,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _parent = (MDL0BoneNode)comboBox2.SelectedItem;
+            _parent = (MDL0BoneNode) comboBox2.SelectedItem;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -274,7 +279,8 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ObjectImporter));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(ObjectImporter));
             btnCancel = new Button();
             btnOkay = new Button();
             label1 = new Label();
@@ -293,7 +299,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(139, 131);
             btnCancel.Name = "btnCancel";
@@ -305,7 +311,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(58, 131);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -316,7 +322,7 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Drawing.Point(47, 12);
             label1.Name = "label1";
@@ -327,7 +333,7 @@ namespace System.Windows.Forms
             // 
             // comboBox1
             // 
-            comboBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            comboBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Drawing.Point(92, 9);
@@ -338,7 +344,7 @@ namespace System.Windows.Forms
             // 
             // label2
             // 
-            label2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.Location = new Drawing.Point(3, 58);
             label2.Name = "label2";
             label2.Size = new Drawing.Size(83, 18);
@@ -348,7 +354,7 @@ namespace System.Windows.Forms
             // 
             // comboBox2
             // 
-            comboBox2.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            comboBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Drawing.Point(92, 55);
@@ -359,13 +365,15 @@ namespace System.Windows.Forms
             // 
             // comboBox3
             // 
-            comboBox3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            comboBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox3.FormattingEnabled = true;
-            comboBox3.Items.AddRange(new object[] {
-            "Merge",
-            "Replace",
-            "Add As Child"});
+            comboBox3.Items.AddRange(new object[]
+            {
+                "Merge",
+                "Replace",
+                "Add As Child"
+            });
             comboBox3.Location = new Drawing.Point(92, 82);
             comboBox3.Name = "comboBox3";
             comboBox3.Size = new Drawing.Size(121, 21);
@@ -373,7 +381,7 @@ namespace System.Windows.Forms
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            checkBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             checkBox1.AutoSize = true;
             checkBox1.Location = new Drawing.Point(92, 109);
             checkBox1.Name = "checkBox1";
@@ -385,7 +393,7 @@ namespace System.Windows.Forms
             // 
             // label3
             // 
-            label3.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Location = new Drawing.Point(7, 85);
             label3.Name = "label3";
@@ -396,7 +404,7 @@ namespace System.Windows.Forms
             // 
             // label4
             // 
-            label4.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Location = new Drawing.Point(24, 35);
             label4.Name = "label4";
@@ -407,7 +415,7 @@ namespace System.Windows.Forms
             // 
             // baseBone
             // 
-            baseBone.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            baseBone.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             baseBone.AutoSize = true;
             baseBone.Location = new Drawing.Point(92, 35);
             baseBone.Name = "baseBone";
@@ -460,8 +468,8 @@ namespace System.Windows.Forms
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-
         }
+
         #endregion
     }
 }

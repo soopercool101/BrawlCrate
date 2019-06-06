@@ -22,9 +22,9 @@ namespace System.Windows.Forms
             txtStack.Text = e.Message + "\n" + e.StackTrace;
 
             lstChangedFiles.Visible =
-            lblChangedFiles.Visible =
-            spltChangedFiles.Visible =
-            edited != null && edited.Count > 0;
+                lblChangedFiles.Visible =
+                    spltChangedFiles.Visible =
+                        edited != null && edited.Count > 0;
 
             lstChangedFiles.Items.AddRange(edited.ToArray());
         }
@@ -55,7 +55,9 @@ namespace System.Windows.Forms
                     _exception.Message.Replace("\"", "\\\""),
                     _exception.StackTrace.Replace("\"", "\\\""),
                     txtTitle.Text.Replace("\"", "\\\""),
-                    (string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray) ? "" : txtDescription.Text.Replace("\"", "\\\""));
+                    string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray
+                        ? ""
+                        : txtDescription.Text.Replace("\"", "\\\""));
 
                 Process.Start(new ProcessStartInfo()
                 {
@@ -66,7 +68,8 @@ namespace System.Windows.Forms
             }
             else
             {
-                MessageBox.Show(".NET version 4.5 is required to run the updater, which is used to submit the bug report.");
+                MessageBox.Show(
+                    ".NET version 4.5 is required to run the updater, which is used to submit the bug report.");
             }
 
             if (chkForceClose.Checked)
@@ -97,7 +100,6 @@ namespace System.Windows.Forms
 
         private void txtDescription_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void txtDescription_Leave(object sender, EventArgs e)
@@ -105,7 +107,8 @@ namespace System.Windows.Forms
             if (string.IsNullOrEmpty(txtDescription.Text))
             {
                 txtDescription.ForeColor = Color.Gray;
-                txtDescription.Text = "Explain what you were doing that caused the bug. This will be posted publicly at https://github.com/BrawlCrate/BrawlCrateIssues/issues, so do not put any personal information here. It may be beneficial to you to sign your report with a username unless you wish to stay anonymous.";
+                txtDescription.Text =
+                    "Explain what you were doing that caused the bug. This will be posted publicly at https://github.com/BrawlCrate/BrawlCrateIssues/issues, so do not put any personal information here. It may be beneficial to you to sign your report with a username unless you wish to stay anonymous.";
             }
         }
 

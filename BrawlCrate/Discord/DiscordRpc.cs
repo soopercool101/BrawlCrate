@@ -35,7 +35,8 @@ namespace BrawlCrate.Discord
             public RequestCallback requestCallback;
         }
 
-        [Serializable, StructLayout(LayoutKind.Sequential)]
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential)]
         public struct RichPresenceStruct
         {
             public IntPtr state; /* max 128 bytes */
@@ -72,7 +73,8 @@ namespace BrawlCrate.Discord
         }
 
         [DllImport("discord-rpc", EntryPoint = "Discord_Initialize", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void Initialize(string applicationId, ref EventHandlers handlers, bool autoRegister, string optionalSteamId);
+        public static extern void Initialize(string applicationId, ref EventHandlers handlers, bool autoRegister,
+                                             string optionalSteamId);
 
         [DllImport("discord-rpc", EntryPoint = "Discord_Shutdown", CallingConvention = CallingConvention.Cdecl)]
         public static extern void Shutdown();
@@ -181,6 +183,7 @@ namespace BrawlCrate.Discord
                 {
                     str += "\0\0";
                 }
+
                 return Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(str));
             }
 

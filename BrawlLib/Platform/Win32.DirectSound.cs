@@ -6,19 +6,25 @@ namespace System
     {
         internal static unsafe partial class DirectSound
         {
-            public delegate bool DSEnumCallback(Guid* lpGuid, sbyte* lpcstrDescription, sbyte* lpcstrModule, IntPtr lpContext);
+            public delegate bool DSEnumCallback(Guid* lpGuid, sbyte* lpcstrDescription, sbyte* lpcstrModule,
+                                                IntPtr lpContext);
 
             public static readonly Guid DefaultPlaybackGuid = new Guid("DEF00000-9C6D-47ED-AAF1-4DDA8F2B5C03");
             public static readonly Guid DefaultVoicePlaybackGuid = new Guid("DEF00002-9C6D-47ED-AAF1-4DDA8F2B5C03");
 
             [DllImport("DSound.dll", PreserveSig = false)]
             public static extern void GetDeviceID(ref Guid pGuidSrc, out Guid pGuidDest);
+
             [DllImport("DSound.dll", PreserveSig = false)]
-            public static extern void DirectSoundEnumerate([MarshalAs(UnmanagedType.FunctionPtr)] DSEnumCallback lpDSEnumCallback, IntPtr lpContext);
+            public static extern void DirectSoundEnumerate(
+                [MarshalAs(UnmanagedType.FunctionPtr)] DSEnumCallback lpDSEnumCallback, IntPtr lpContext);
+
             [DllImport("DSound.dll", PreserveSig = false)]
-            public static extern void DirectSoundCreate8(Guid* lpcGuidDevice, out IDirectSound8 ppDS8, IntPtr pUnkOuter);
+            public static extern void
+                DirectSoundCreate8(Guid* lpcGuidDevice, out IDirectSound8 ppDS8, IntPtr pUnkOuter);
 
             #region Structs
+
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             public struct DSCaps
             {
@@ -47,9 +53,11 @@ namespace System
                 public uint dwReserved1;
                 public uint dwReserved2;
             }
+
             #endregion
 
             #region Enums
+
             [Flags]
             public enum DSCapsFlags : uint
             {
@@ -88,21 +96,28 @@ namespace System
                 Surround7Point1 = 0x00000008,
                 Surround5Point1 = 0x00000009,
 
-                StereoGeometryMin = 0x00050000,  //   5 degrees
-                GeometryNarrow = 0x000A0000,  //  10 degrees
-                GeometryWide = 0x00140000,  //  20 degrees
-                GeometryMax = 0x00B40000  // 180 degrees
+                StereoGeometryMin = 0x00050000, //   5 degrees
+                GeometryNarrow = 0x000A0000, //  10 degrees
+                GeometryWide = 0x00140000, //  20 degrees
+                GeometryMax = 0x00B40000 // 180 degrees
             }
+
             #endregion
 
             #region Interfaces
 
-            [Guid("C50A7E93-F395-4834-9EF6-7FA99DE50966"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+            [Guid("C50A7E93-F395-4834-9EF6-7FA99DE50966")]
+            [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
             public unsafe interface IDirectSound8
             {
-                void CreateSoundBuffer(ref DSBufferDesc pcDSBufferDesc, out IDirectSoundBuffer8 ppDSBuffer, IntPtr pUnkOuter);
+                void CreateSoundBuffer(ref DSBufferDesc pcDSBufferDesc, out IDirectSoundBuffer8 ppDSBuffer,
+                                       IntPtr pUnkOuter);
+
                 void GetCaps(ref DSCaps pDSCaps);
-                void DuplicateSoundBuffer(IDirectSoundBuffer8 pDSBufferOriginal, out IDirectSoundBuffer8 ppDSBufferDuplicate);
+
+                void DuplicateSoundBuffer(IDirectSoundBuffer8 pDSBufferOriginal,
+                                          out IDirectSoundBuffer8 ppDSBufferDuplicate);
+
                 void SetCooperativeLevel(IntPtr hwnd, DSCooperativeLevel dwLevel);
                 void Compact();
                 void GetSpeakerConfig(out DSSpeakerConfig pdwSpeakerConfig);

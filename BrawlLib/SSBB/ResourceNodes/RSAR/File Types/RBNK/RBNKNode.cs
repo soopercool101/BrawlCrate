@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RBNKNode : RSARFileNode
     {
-        internal RBNKHeader* Header => (RBNKHeader*)WorkingUncompressed.Address;
+        internal RBNKHeader* Header => (RBNKHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.RBNK;
 
         public void InitGroups()
@@ -23,8 +23,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public List<RSARBankNode> _rsarBankEntries = new List<RSARBankNode>();
-        [Browsable(false)]
-        public RSARBankNode[] Banks => _rsarBankEntries.ToArray();
+        [Browsable(false)] public RSARBankNode[] Banks => _rsarBankEntries.ToArray();
+
         public void AddBankRef(RSARBankNode n)
         {
             if (!_rsarBankEntries.Contains(n))
@@ -33,6 +33,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _references.Add(n.TreePath);
             }
         }
+
         public void RemoveBankRef(RSARBankNode n)
         {
             if (_rsarBankEntries.Contains(n))
@@ -54,7 +55,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Set data source
             if (total > len)
             {
-                _audioSource = new DataSource((VoidPtr)Header + len, total - len);
+                _audioSource = new DataSource((VoidPtr) Header + len, total - len);
             }
 
             return true;
@@ -69,7 +70,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (VersionMinor >= 2)
             {
-                new RWARNode() { _name = "Audio" }.Initialize(this, _audioSource.Address, _audioSource.Length);
+                new RWARNode() {_name = "Audio"}.Initialize(this, _audioSource.Address, _audioSource.Length);
             }
         }
 
@@ -97,17 +98,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return _headerLen + _audioLen;
         }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             VoidPtr addr = address + 0x20;
 
-            RBNKHeader* header = (RBNKHeader*)address;
+            RBNKHeader* header = (RBNKHeader*) address;
             header->_header._length = length;
             header->_header._tag = RBNKHeader.Tag;
-            header->_header._numEntries = (ushort)(VersionMinor >= 2 ? 1 : 2);
+            header->_header._numEntries = (ushort) (VersionMinor >= 2 ? 1 : 2);
             header->_header._firstOffset = 0x20;
             header->_header.Endian = Endian.Big;
-            header->_header._version = (ushort)(0x100 + VersionMinor);
+            header->_header._version = (ushort) (0x100 + VersionMinor);
             header->_dataOffset = 0x20;
             header->_dataLength = Children[0]._calcSize;
 
@@ -127,7 +129,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else
                 {
                     audio = _rebuildAudioAddr;
-                } (Children[1] as RBNKSoundGroupNode)._audioAddr = audio;
+                }
+
+                (Children[1] as RBNKSoundGroupNode)._audioAddr = audio;
                 _audioSource = new DataSource(audio, _audioLen);
 
                 Children[1].Rebuild(addr, Children[1]._calcSize, true);
@@ -161,6 +165,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Remove();
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((RBNKHeader*)source.Address)->_header._tag == RBNKHeader.Tag ? new RBNKNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((RBNKHeader*) source.Address)->_header._tag == RBNKHeader.Tag ? new RBNKNode() : null;
+        }
     }
 }

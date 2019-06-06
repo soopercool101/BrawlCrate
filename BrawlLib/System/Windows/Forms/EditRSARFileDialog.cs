@@ -7,7 +7,10 @@ namespace System.Windows.Forms
 {
     public class EditRSARFileDialog : Form
     {
-        public EditRSARFileDialog() { InitializeComponent(); }
+        public EditRSARFileDialog()
+        {
+            InitializeComponent();
+        }
 
         private AudioPlaybackPanel audioPlaybackPanel1;
         private ContextMenuStrip ctxData;
@@ -27,7 +30,16 @@ namespace System.Windows.Forms
         private ToolStripMenuItem dataNewRange;
         private ToolStripMenuItem dataNewIndex;
         private RSARFileNode _targetNode;
-        public RSARFileNode TargetNode { get => _targetNode; set { _targetNode = value; TargetChanged(); } }
+
+        public RSARFileNode TargetNode
+        {
+            get => _targetNode;
+            set
+            {
+                _targetNode = value;
+                TargetChanged();
+            }
+        }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -50,7 +62,11 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
         protected internal virtual void OnUpdateCurrControl(object sender, EventArgs e)
         {
@@ -113,7 +129,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(369, 3);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -171,11 +187,13 @@ namespace System.Windows.Forms
             // ctxData
             // 
             ctxData.ImageScalingSize = new Drawing.Size(20, 20);
-            ctxData.Items.AddRange(new ToolStripItem[] {
-            dataReplace,
-            dataExport,
-            dataNew,
-            dataDelete});
+            ctxData.Items.AddRange(new ToolStripItem[]
+            {
+                dataReplace,
+                dataExport,
+                dataNew,
+                dataDelete
+            });
             ctxData.Name = "contextMenuStrip1";
             ctxData.Size = new Drawing.Size(182, 136);
             // 
@@ -195,11 +213,13 @@ namespace System.Windows.Forms
             // 
             // dataNew
             // 
-            dataNew.DropDownItems.AddRange(new ToolStripItem[] {
-            dataNewNullEntry,
-            dataNewInstParam,
-            dataNewRange,
-            dataNewIndex});
+            dataNew.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                dataNewNullEntry,
+                dataNewInstParam,
+                dataNewRange,
+                dataNewIndex
+            });
             dataNew.Name = "dataNew";
             dataNew.Size = new Drawing.Size(181, 26);
             dataNew.Text = "New";
@@ -290,11 +310,13 @@ namespace System.Windows.Forms
             // ctxSounds
             // 
             ctxSounds.ImageScalingSize = new Drawing.Size(20, 20);
-            ctxSounds.Items.AddRange(new ToolStripItem[] {
-            sndReplace,
-            sndExport,
-            sndNew,
-            sndDelete});
+            ctxSounds.Items.AddRange(new ToolStripItem[]
+            {
+                sndReplace,
+                sndExport,
+                sndNew,
+                sndDelete
+            });
             ctxSounds.Name = "contextMenuStrip1";
             ctxSounds.Size = new Drawing.Size(138, 108);
             // 
@@ -398,8 +420,8 @@ namespace System.Windows.Forms
             panel4.ResumeLayout(false);
             ctxSounds.ResumeLayout(false);
             ResumeLayout(false);
-
         }
+
         #endregion
 
         public void TargetChanged()
@@ -437,11 +459,12 @@ namespace System.Windows.Forms
                     soundsListBox.SelectedIndex = 0;
                 }
             }
+
             button1.Visible =
-            dataNewNullEntry.Visible =
-            dataNewInstParam.Visible =
-                dataNewRange.Visible =
-                dataNewIndex.Visible = TargetNode is RBNKNode;
+                dataNewNullEntry.Visible =
+                    dataNewInstParam.Visible =
+                        dataNewRange.Visible =
+                            dataNewIndex.Visible = TargetNode is RBNKNode;
 
             if (TargetNode != null)
             {
@@ -455,7 +478,6 @@ namespace System.Windows.Forms
 
         private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
         {
-
         }
 
         private void dataListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -484,6 +506,7 @@ namespace System.Windows.Forms
                     soundsListBox.SelectedIndex = w;
                 }
             }
+
             button1.Enabled = !(button1.Text != "Back" && r is RBNKDataEntryNode);
         }
 
@@ -539,6 +562,7 @@ namespace System.Windows.Forms
         }
 
         private RBNKEntryNode _baseEntry = null;
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (button1.Text == "View Entries")
@@ -686,7 +710,7 @@ namespace System.Windows.Forms
             }
 
             RBNKNullNode n = new RBNKNullNode();
-            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode)_baseEntry;
+            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode) _baseEntry;
             n.Parent = r;
         }
 
@@ -698,7 +722,7 @@ namespace System.Windows.Forms
             }
 
             RBNKDataInstParamNode n = new RBNKDataInstParamNode();
-            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode)_baseEntry;
+            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode) _baseEntry;
             n.Parent = r;
         }
 
@@ -710,7 +734,7 @@ namespace System.Windows.Forms
             }
 
             RBNKDataRangeTableNode n = new RBNKDataRangeTableNode();
-            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode)_baseEntry;
+            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode) _baseEntry;
             n.Parent = r;
         }
 
@@ -722,7 +746,7 @@ namespace System.Windows.Forms
             }
 
             RBNKDataIndexTableNode n = new RBNKDataIndexTableNode();
-            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode)_baseEntry;
+            ResourceNode r = _baseEntry == null ? TargetNode : (ResourceNode) _baseEntry;
             n.Parent = r;
         }
     }

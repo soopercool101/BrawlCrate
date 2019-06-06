@@ -15,7 +15,7 @@
 
             fixed (byte* ptr = arr)
             {
-                Memory.Move(dstAddr, ptr, (uint)numRead);
+                Memory.Move(dstAddr, ptr, (uint) numRead);
             }
 
             return numRead;
@@ -27,7 +27,7 @@
 
             fixed (byte* ptr = arr)
             {
-                Memory.Move(ptr, srcAddr, (uint)length);
+                Memory.Move(ptr, srcAddr, (uint) length);
             }
 
             stream.Write(arr, 0, length);
@@ -113,6 +113,5 @@
 
         //[DllImport("Kernel32.dll", SetLastError = true)]
         //private static extern bool ReadFile(SafeFileHandle hFile, void* lpBuffer, uint nNumberOfBytesToRead, uint* lpNumberOfBytesRead, void* lpOverlapped);
-
     }
 }

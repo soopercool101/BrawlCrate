@@ -8,7 +8,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmVec4Node : ClassMemberInstanceNode
     {
-        public override int GetSize() { return 16; }
+        public override int GetSize()
+        {
+            return 16;
+        }
 
         public bool _isQuaternion;
         public bool IsQuaternion => _isQuaternion;
@@ -16,18 +19,26 @@ namespace BrawlLib.SSBB.ResourceNodes
         public Vector4 _value;
 
         [TypeConverter(typeof(Vector4StringConverter))]
-        public Vector4 Value { get => _value; set { _value = value; SignalPropertyChange(); } }
+        public Vector4 Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
             _isQuaternion = _memberType == hkClassMember.Type.TYPE_QUATERNION;
-            _value = *(BVec4*)Data;
+            _value = *(BVec4*) Data;
             return false;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            *(Vector4*)address = _value;
+            *(Vector4*) address = _value;
         }
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)

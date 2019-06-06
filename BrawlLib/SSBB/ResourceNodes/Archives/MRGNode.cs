@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MRGNode : ResourceNode
     {
-        internal MRGHeader* Header => (MRGHeader*)WorkingUncompressed.Address;
+        internal MRGHeader* Header => (MRGHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.MRG;
 
         public override void OnPopulate()
@@ -45,11 +45,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (entry is ARCNode)
                 {
-                    ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, entry.Name));
+                    ((ARCNode) entry).ExtractToFolder(Path.Combine(outFolder, entry.Name));
                 }
                 else if (entry is BRRESNode)
                 {
-                    ((BRRESNode)entry).ExportToFolder(outFolder);
+                    ((BRRESNode) entry).ExportToFolder(outFolder);
                 }
             }
         }
@@ -66,13 +66,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     dirs = dir.GetDirectories(entry.Name);
                     if (dirs.Length > 0)
                     {
-                        ((ARCNode)entry).ReplaceFromFolder(dirs[0].FullName);
+                        ((ARCNode) entry).ReplaceFromFolder(dirs[0].FullName);
                         continue;
                     }
                 }
                 else if (entry is BRRESNode)
                 {
-                    ((BRRESNode)entry).ReplaceFromFolder(inFolder);
+                    ((BRRESNode) entry).ReplaceFromFolder(inFolder);
                 }
 
                 //Find file name for entry
@@ -84,10 +84,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         private int offset = 0;
+
         public override int OnCalculateSize(bool force)
         {
-            int size = offset = 0x20 + (Children.Count * 0x20);
+            int size = offset = 0x20 + Children.Count * 0x20;
             foreach (ResourceNode node in Children)
             {
                 size += node.CalculateSize(force);
@@ -98,8 +100,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int size, bool force)
         {
-            MRGHeader* header = (MRGHeader*)address;
-            *header = new MRGHeader((uint)Children.Count);
+            MRGHeader* header = (MRGHeader*) address;
+            *header = new MRGHeader((uint) Children.Count);
 
             MRGFileHeader* entry = header->First;
             foreach (ARCEntryNode node in Children)

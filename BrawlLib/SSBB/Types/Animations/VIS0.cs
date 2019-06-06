@@ -39,21 +39,33 @@ namespace BrawlLib.SSBBTypes
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -86,27 +98,39 @@ namespace BrawlLib.SSBBTypes
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
         public VoidPtr UserData
         {
             get => _userDataOffset == 0 ? null : Address + _userDataOffset;
-            set => _userDataOffset = (int)value - (int)Address;
+            set => _userDataOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -121,20 +145,34 @@ namespace BrawlLib.SSBBTypes
         public VIS0Entry(VIS0Flags flags)
         {
             _stringOffset = 0;
-            _flags = (int)flags;
+            _flags = (int) flags;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public VoidPtr Data => Address + 8;
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
 
-        public VIS0Flags Flags { get => (VIS0Flags)(int)_flags; set => _flags = (int)value; }
+        public VIS0Flags Flags
+        {
+            get => (VIS0Flags) (int) _flags;
+            set => _flags = (int) value;
+        }
     }
 }

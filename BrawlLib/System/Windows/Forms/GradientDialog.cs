@@ -156,25 +156,36 @@ namespace System.Windows.Forms
             ShowInTaskbar = false;
             Text = "Gradient Fill";
             ResumeLayout(false);
-
         }
 
         #endregion
 
         private Color _startColor;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color StartColor
         {
             get => _startColor;
-            set { _startColor = value; UpdateStart(); }
+            set
+            {
+                _startColor = value;
+                UpdateStart();
+            }
         }
 
         private Color _endColor;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color EndColor
         {
             get => _endColor;
-            set { _endColor = value; UpdateEnd(); }
+            set
+            {
+                _endColor = value;
+                UpdateEnd();
+            }
         }
 
         //private int _startIndex;
@@ -209,28 +220,36 @@ namespace System.Windows.Forms
             InitializeComponent();
 
             _dlgColor = new GoodColorDialog();
-            _gradBrush = new LinearGradientBrush(new Rectangle(0, 0, pnlPreview.ClientRectangle.Width, pnlPreview.ClientRectangle.Height), Color.White, Color.Black, LinearGradientMode.Horizontal);
+            _gradBrush =
+                new LinearGradientBrush(
+                    new Rectangle(0, 0, pnlPreview.ClientRectangle.Width, pnlPreview.ClientRectangle.Height),
+                    Color.White, Color.Black, LinearGradientMode.Horizontal);
         }
 
         private void UpdateStart()
         {
-            lblStartText.Text = ((ARGBPixel)_startColor).ToString();
+            lblStartText.Text = ((ARGBPixel) _startColor).ToString();
             lblStartColor.BackColor = Color.FromArgb(_startColor.R, _startColor.G, _startColor.B);
             UpdateBrush();
         }
+
         private void UpdateEnd()
         {
-            lblEndText.Text = ((ARGBPixel)_endColor).ToString();
+            lblEndText.Text = ((ARGBPixel) _endColor).ToString();
             lblEndColor.BackColor = Color.FromArgb(_endColor.R, _endColor.G, _endColor.B);
             UpdateBrush();
         }
+
         private void UpdateBrush()
         {
-            _gradBrush.LinearColors = new Color[] { _startColor, _endColor };
+            _gradBrush.LinearColors = new Color[] {_startColor, _endColor};
             pnlPreview.Invalidate();
         }
 
-        private void numStart_ValueChanged(object sender, EventArgs e) { } // _startIndex = (int)numStart.Value; }
+        private void numStart_ValueChanged(object sender, EventArgs e)
+        {
+        } // _startIndex = (int)numStart.Value; }
+
         private void lblStartText_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = _startColor;
@@ -241,7 +260,10 @@ namespace System.Windows.Forms
             }
         }
 
-        private void numEnd_ValueChanged(object sender, EventArgs e) { } // _endIndex = (int)numEnd.Value; }
+        private void numEnd_ValueChanged(object sender, EventArgs e)
+        {
+        } // _endIndex = (int)numEnd.Value; }
+
         private void lblEndText_Click(object sender, EventArgs e)
         {
             _dlgColor.Color = _endColor;
@@ -276,7 +298,6 @@ namespace System.Windows.Forms
 
             g.FillRectangle(GoodPictureBox._brush, pnlPreview.ClientRectangle);
             g.FillRectangle(_gradBrush, pnlPreview.ClientRectangle);
-
         }
     }
 }

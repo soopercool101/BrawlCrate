@@ -39,6 +39,7 @@ namespace Be.Windows.Forms
         /// Contains the "Select All"-ToolStripMenuItem object.
         /// </summary>
         private ToolStripMenuItem _selectAllToolStripMenuItem;
+
         /// <summary>
         /// Initializes a new instance of BuildInContextMenu class.
         /// </summary>
@@ -74,14 +75,17 @@ namespace Be.Windows.Forms
                 ContextMenuStrip cms = new ContextMenuStrip();
                 //_cutToolStripMenuItem = new ToolStripMenuItem(CutMenuItemTextInternal, CutMenuItemImage, new EventHandler(CutMenuItem_Click));
                 //cms.Items.Add(_cutToolStripMenuItem);
-                _copyToolStripMenuItem = new ToolStripMenuItem(CopyMenuItemTextInternal, CopyMenuItemImage, new EventHandler(CopyMenuItem_Click));
+                _copyToolStripMenuItem = new ToolStripMenuItem(CopyMenuItemTextInternal, CopyMenuItemImage,
+                    new EventHandler(CopyMenuItem_Click));
                 cms.Items.Add(_copyToolStripMenuItem);
-                _pasteToolStripMenuItem = new ToolStripMenuItem(PasteMenuItemTextInternal, PasteMenuItemImage, new EventHandler(PasteMenuItem_Click));
+                _pasteToolStripMenuItem = new ToolStripMenuItem(PasteMenuItemTextInternal, PasteMenuItemImage,
+                    new EventHandler(PasteMenuItem_Click));
                 cms.Items.Add(_pasteToolStripMenuItem);
 
                 cms.Items.Add(new ToolStripSeparator());
 
-                _selectAllToolStripMenuItem = new ToolStripMenuItem(SelectAllMenuItemTextInternal, SelectAllMenuItemImage, new EventHandler(SelectAllMenuItem_Click));
+                _selectAllToolStripMenuItem = new ToolStripMenuItem(SelectAllMenuItemTextInternal,
+                    SelectAllMenuItemImage, new EventHandler(SelectAllMenuItem_Click));
                 cms.Items.Add(_selectAllToolStripMenuItem);
                 cms.Opening += new CancelEventHandler(BuildInContextMenuStrip_Opening);
 
@@ -116,32 +120,47 @@ namespace Be.Windows.Forms
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        private void CutMenuItem_Click(object sender, EventArgs e) { _hexBox.Cut(); }
+        private void CutMenuItem_Click(object sender, EventArgs e)
+        {
+            _hexBox.Cut();
+        }
 
         /// <summary>
         /// The handler for the "Copy"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        private void CopyMenuItem_Click(object sender, EventArgs e) { _hexBox.Copy(); }
+        private void CopyMenuItem_Click(object sender, EventArgs e)
+        {
+            _hexBox.Copy();
+        }
 
         /// <summary>
         /// The handler for the "Paste"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        private void PasteMenuItem_Click(object sender, EventArgs e) { _hexBox.Paste(); }
+        private void PasteMenuItem_Click(object sender, EventArgs e)
+        {
+            _hexBox.Paste();
+        }
 
         /// <summary>
         /// The handler for the "Select All"-Click event
         /// </summary>
         /// <param name="sender">the sender object</param>
         /// <param name="e">the event data</param>
-        private void SelectAllMenuItem_Click(object sender, EventArgs e) { _hexBox.SelectAll(); }
+        private void SelectAllMenuItem_Click(object sender, EventArgs e)
+        {
+            _hexBox.SelectAll();
+        }
+
         /// <summary>
         /// Gets or sets the custom text of the "Copy" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
+        [Localizable(true)]
         public string CopyMenuItemText
         {
             get => _copyMenuItemText;
@@ -153,7 +172,9 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets or sets the custom text of the "Cut" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
+        [Localizable(true)]
         public string CutMenuItemText
         {
             get => _cutMenuItemText;
@@ -165,7 +186,9 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets or sets the custom text of the "Paste" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
+        [Localizable(true)]
         public string PasteMenuItemText
         {
             get => _pasteMenuItemText;
@@ -177,7 +200,9 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Gets or sets the custom text of the "Select All" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null), Localizable(true)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
+        [Localizable(true)]
         public string SelectAllMenuItemText
         {
             get => _selectAllMenuItemText;
@@ -190,23 +215,29 @@ namespace Be.Windows.Forms
         /// Gets the text of the "Cut" ContextMenuStrip item.
         /// </summary>
         internal string CutMenuItemTextInternal => !string.IsNullOrEmpty(CutMenuItemText) ? CutMenuItemText : "Cut";
+
         /// <summary>
         /// Gets the text of the "Copy" ContextMenuStrip item.
         /// </summary>
         internal string CopyMenuItemTextInternal => !string.IsNullOrEmpty(CopyMenuItemText) ? CopyMenuItemText : "Copy";
+
         /// <summary>
         /// Gets the text of the "Paste" ContextMenuStrip item.
         /// </summary>
-        internal string PasteMenuItemTextInternal => !string.IsNullOrEmpty(PasteMenuItemText) ? PasteMenuItemText : "Paste";
+        internal string PasteMenuItemTextInternal =>
+            !string.IsNullOrEmpty(PasteMenuItemText) ? PasteMenuItemText : "Paste";
+
         /// <summary>
         /// Gets the text of the "Select All" ContextMenuStrip item.
         /// </summary>
-        internal string SelectAllMenuItemTextInternal => !string.IsNullOrEmpty(SelectAllMenuItemText) ? SelectAllMenuItemText : "SelectAll";
+        internal string SelectAllMenuItemTextInternal =>
+            !string.IsNullOrEmpty(SelectAllMenuItemText) ? SelectAllMenuItemText : "SelectAll";
 
         /// <summary>
         /// Gets or sets the image of the "Cut" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
         public Image CutMenuItemImage
         {
             get => _cutMenuItemImage;
@@ -214,10 +245,12 @@ namespace Be.Windows.Forms
         }
 
         private Image _cutMenuItemImage = null;
+
         /// <summary>
         /// Gets or sets the image of the "Copy" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
         public Image CopyMenuItemImage
         {
             get => _copyMenuItemImage;
@@ -225,10 +258,12 @@ namespace Be.Windows.Forms
         }
 
         private Image _copyMenuItemImage = null;
+
         /// <summary>
         /// Gets or sets the image of the "Paste" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
         public Image PasteMenuItemImage
         {
             get => _pasteMenuItemImage;
@@ -236,10 +271,12 @@ namespace Be.Windows.Forms
         }
 
         private Image _pasteMenuItemImage = null;
+
         /// <summary>
         /// Gets or sets the image of the "Select All" ContextMenuStrip item.
         /// </summary>
-        [Category("BuiltIn-ContextMenu"), DefaultValue(null)]
+        [Category("BuiltIn-ContextMenu")]
+        [DefaultValue(null)]
         public Image SelectAllMenuItemImage
         {
             get => _selectAllMenuItemImage;

@@ -6,6 +6,7 @@ namespace System.Windows.Forms
     {
         public float _previousValue = 0.0f;
         public float? _value;
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float Value
         {
@@ -25,12 +26,34 @@ namespace System.Windows.Forms
             }
         }
 
-        public NumericInputBox() { UpdateText(); }
+        public NumericInputBox()
+        {
+            UpdateText();
+        }
 
-        public float MinimumValue { get => _minValue; set => _minValue = value; }
-        public float MaximumValue { get => _maxValue; set => _maxValue = value; }
-        public bool Integral { get => _integral; set => _integral = value; }
-        public bool Integer { get => _integer; set => _integer = value; }
+        public float MinimumValue
+        {
+            get => _minValue;
+            set => _minValue = value;
+        }
+
+        public float MaximumValue
+        {
+            get => _maxValue;
+            set => _maxValue = value;
+        }
+
+        public bool Integral
+        {
+            get => _integral;
+            set => _integral = value;
+        }
+
+        public bool Integer
+        {
+            get => _integer;
+            set => _integer = value;
+        }
 
         public float _minValue = float.MinValue;
         public float _maxValue = float.MaxValue;
@@ -83,6 +106,7 @@ namespace System.Windows.Forms
                             e.Handled = true;
                             e.SuppressKeyPress = true;
                         }
+
                         if (e.Shift)
                         {
                             Text = (val - 180f).Clamp(_minValue, _maxValue).ToString();
@@ -91,6 +115,7 @@ namespace System.Windows.Forms
                             e.SuppressKeyPress = true;
                         }
                     }
+
                     break;
 
                 case Keys.Right:
@@ -103,6 +128,7 @@ namespace System.Windows.Forms
                             e.Handled = true;
                             e.SuppressKeyPress = true;
                         }
+
                         if (e.Shift)
                         {
                             Text = (val + 180f).Clamp(_minValue, _maxValue).ToString();
@@ -111,6 +137,7 @@ namespace System.Windows.Forms
                             e.SuppressKeyPress = true;
                         }
                     }
+
                     break;
 
                 case Keys.Up:
@@ -127,6 +154,7 @@ namespace System.Windows.Forms
 
                         Apply();
                     }
+
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                     break;
@@ -145,13 +173,14 @@ namespace System.Windows.Forms
 
                         Apply();
                     }
+
                     e.Handled = true;
                     e.SuppressKeyPress = true;
                     break;
 
                 case Keys.Subtract:
                 case Keys.OemMinus:
-                    if ((SelectionStart != 0) || (Text.IndexOf('-') != -1))
+                    if (SelectionStart != 0 || Text.IndexOf('-') != -1)
                     {
                         e.SuppressKeyPress = true;
                     }
@@ -188,6 +217,7 @@ namespace System.Windows.Forms
                             Apply();
                         }
                     }
+
                     break;
 
                 case Keys.V:
@@ -205,6 +235,7 @@ namespace System.Windows.Forms
                     e.SuppressKeyPress = true;
                     break;
             }
+
             base.OnKeyDown(e);
         }
 
@@ -223,7 +254,7 @@ namespace System.Windows.Forms
         private void Apply()
         {
             float val = _value ?? 0.0f;
-            int val2 = (int)val;
+            int val2 = (int) val;
 
             if (_value != null && val.ToString() == Text)
             {

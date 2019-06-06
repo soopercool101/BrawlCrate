@@ -43,6 +43,7 @@
 
             base.OnMouseDown(e);
         }
+
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -52,6 +53,7 @@
 
             base.OnMouseUp(e);
         }
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             int x = Cursor.Position.X;

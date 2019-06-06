@@ -23,8 +23,8 @@ namespace System.Windows.Forms
             // 
             // txtPath
             // 
-            txtPath.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            txtPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                              | AnchorStyles.Right;
             txtPath.Location = new Drawing.Point(12, 34);
             txtPath.Name = "txtPath";
             txtPath.Size = new Drawing.Size(330, 20);
@@ -55,8 +55,8 @@ namespace System.Windows.Forms
             // 
             // label1
             // 
-            label1.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                             | AnchorStyles.Right;
             label1.Location = new Drawing.Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(367, 21);
@@ -87,16 +87,28 @@ namespace System.Windows.Forms
             Text = "File Path";
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
 
         private string _filePath = "";
-        public string FilePath { get => _filePath; set => _filePath = value; }
 
-        public SoundPathChanger() { InitializeComponent(); dlg.FileOk += OnFileOk; }
-        ~SoundPathChanger() { dlg.FileOk -= OnFileOk; }
+        public string FilePath
+        {
+            get => _filePath;
+            set => _filePath = value;
+        }
+
+        public SoundPathChanger()
+        {
+            InitializeComponent();
+            dlg.FileOk += OnFileOk;
+        }
+
+        ~SoundPathChanger()
+        {
+            dlg.FileOk -= OnFileOk;
+        }
 
         protected override void OnShown(EventArgs e)
         {
@@ -134,6 +146,7 @@ namespace System.Windows.Forms
                 "Raw Sound Bank (*.rbnk)|*.rbnk|" +
                 "Raw Sound Requence (*.rseq)|*.rseq"
         };
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             if (dlg.ShowDialog() == DialogResult.OK)

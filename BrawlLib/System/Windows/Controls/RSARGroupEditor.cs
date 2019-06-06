@@ -12,6 +12,7 @@ namespace System.Windows.Forms
         }
 
         private RSARGroupNode _targetGroup;
+
         public void LoadGroup(RSARGroupNode group)
         {
             if ((_targetGroup = group) != null)

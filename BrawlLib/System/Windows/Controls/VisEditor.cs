@@ -60,7 +60,7 @@ namespace System.Windows.Forms
             // 
             // btnToggle
             // 
-            btnToggle.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnToggle.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnToggle.Location = new Drawing.Point(257, 0);
             btnToggle.Name = "btnToggle";
             btnToggle.Size = new Drawing.Size(50, 20);
@@ -71,7 +71,7 @@ namespace System.Windows.Forms
             // 
             // btnSet
             // 
-            btnSet.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnSet.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSet.Location = new Drawing.Point(206, 0);
             btnSet.Name = "btnSet";
             btnSet.Size = new Drawing.Size(50, 20);
@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             // 
             // btnClear
             // 
-            btnClear.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClear.Location = new Drawing.Point(155, 0);
             btnClear.Name = "btnClear";
             btnClear.Size = new Drawing.Size(50, 20);
@@ -119,7 +119,6 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(310, 284);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
@@ -130,14 +129,23 @@ namespace System.Windows.Forms
         public EventHandler IndexChanged;
 
         private IBoolArraySource _targetNode;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IBoolArraySource TargetNode
         {
             get => _targetNode;
-            set { _targetNode = value; TargetChanged(); }
+            set
+            {
+                _targetNode = value;
+                TargetChanged();
+            }
         }
 
-        public VisEditor() { InitializeComponent(); }
+        public VisEditor()
+        {
+            InitializeComponent();
+        }
 
         private void TargetChanged()
         {
@@ -163,10 +171,11 @@ namespace System.Windows.Forms
             listBox1.SelectedIndices.CopyTo(indices, 0);
             foreach (int i in indices)
             {
-                bool val = !(bool)listBox1.Items[i];
+                bool val = !(bool) listBox1.Items[i];
                 listBox1.Items[i] = val;
                 _targetNode.SetEntry(i, val);
             }
+
             foreach (int i in indices)
             {
                 listBox1.SelectedIndices.Add(i);
@@ -176,6 +185,7 @@ namespace System.Windows.Forms
 
             EntryChanged?.Invoke(this, null);
         }
+
         private void Clear()
         {
             listBox1.BeginUpdate();
@@ -187,6 +197,7 @@ namespace System.Windows.Forms
                 listBox1.Items[i] = false;
                 _targetNode.SetEntry(i, false);
             }
+
             foreach (int i in indices)
             {
                 listBox1.SelectedIndices.Add(i);
@@ -196,6 +207,7 @@ namespace System.Windows.Forms
 
             EntryChanged?.Invoke(this, null);
         }
+
         private void Set()
         {
             listBox1.BeginUpdate();
@@ -207,6 +219,7 @@ namespace System.Windows.Forms
                 listBox1.Items[i] = true;
                 _targetNode.SetEntry(i, true);
             }
+
             foreach (int i in indices)
             {
                 listBox1.SelectedIndices.Add(i);
@@ -216,6 +229,7 @@ namespace System.Windows.Forms
 
             EntryChanged?.Invoke(this, null);
         }
+
         private void SelectAll()
         {
             listBox1.BeginUpdate();
@@ -228,6 +242,7 @@ namespace System.Windows.Forms
             _updating = false;
             listBox1.EndUpdate();
         }
+
         private void SelectInverse()
         {
             listBox1.BeginUpdate();
@@ -254,11 +269,13 @@ namespace System.Windows.Forms
                     listBox1.SelectedIndices.Add(i);
                 }
             }
+
             _updating = false;
             listBox1.EndUpdate();
         }
 
         private static readonly Font _renderFont = new Font(FontFamily.GenericMonospace, 9.0f);
+
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -278,7 +295,7 @@ namespace System.Windows.Forms
                 r.X += 100;
                 r.Width = 30;
 
-                if ((bool)listBox1.Items[index])
+                if ((bool) listBox1.Items[index])
                 {
                     g.FillRectangle(Brushes.Gray, r);
                     g.DrawString("✔", new Font("", 7), Brushes.Black, r.X + 9, r.Y - 1);
@@ -295,6 +312,7 @@ namespace System.Windows.Forms
                 Toggle();
             }
         }
+
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -302,13 +320,34 @@ namespace System.Windows.Forms
                 Toggle();
             }
         }
-        private void btnAll_Click(object sender, EventArgs e) { SelectAll(); }
-        private void btnInvert_Click(object sender, EventArgs e) { SelectInverse(); }
-        private void btnClear_Click(object sender, EventArgs e) { Clear(); }
-        private void btnSet_Click(object sender, EventArgs e) { Set(); }
-        private void btnToggle_Click(object sender, EventArgs e) { Toggle(); }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            SelectAll();
+        }
+
+        private void btnInvert_Click(object sender, EventArgs e)
+        {
+            SelectInverse();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+            Set();
+        }
+
+        private void btnToggle_Click(object sender, EventArgs e)
+        {
+            Toggle();
+        }
 
         public bool _updating = false;
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_updating)

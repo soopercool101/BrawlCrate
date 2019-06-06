@@ -18,9 +18,18 @@ namespace BrawlLib.Imaging
         public TGAColorMapSpecification colorMapSpecification;
         public TGAImageSpecification imageSpecification;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public byte* ImageId => (byte*)(Address + Size);
+        public byte* ImageId => (byte*) (Address + Size);
         public byte* ColorMapData => ImageId + idLength;
         public byte* ImageData => ColorMapData + colorMapSpecification.DataLength;
     }
@@ -32,7 +41,7 @@ namespace BrawlLib.Imaging
         public ushort length;
         public byte entrySize;
 
-        public int DataLength => (((int)entrySize).Align(4) * length).Align(8) >> 3;
+        public int DataLength => (((int) entrySize).Align(4) * length).Align(8) >> 3;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -47,16 +56,17 @@ namespace BrawlLib.Imaging
 
         public byte AlphaBits
         {
-            get => (byte)(imageDescriptor & 0xF);
-            set => imageDescriptor = (byte)((value & 0xF) | (imageDescriptor & 0x30));
-        }
-        public TGAOrigin ImageOrigin
-        {
-            get => (TGAOrigin)((imageDescriptor >> 4) & 0x3);
-            set => imageDescriptor = (byte)(((byte)value << 4) | (imageDescriptor & 0xF));
+            get => (byte) (imageDescriptor & 0xF);
+            set => imageDescriptor = (byte) ((value & 0xF) | (imageDescriptor & 0x30));
         }
 
-        public int DataLength => ((((int)pixelDepth).Align(4) * width).Align(8) >> 3) * height;
+        public TGAOrigin ImageOrigin
+        {
+            get => (TGAOrigin) ((imageDescriptor >> 4) & 0x3);
+            set => imageDescriptor = (byte) (((byte) value << 4) | (imageDescriptor & 0xF));
+        }
+
+        public int DataLength => ((((int) pixelDepth).Align(4) * width).Align(8) >> 3) * height;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -77,7 +87,7 @@ namespace BrawlLib.Imaging
             {
                 for (int i = 0; i < Signature.Length; i++)
                 {
-                    ptr[i] = (byte)Signature[i];
+                    ptr[i] = (byte) Signature[i];
                 }
 
                 ptr[18] = 0;
@@ -107,10 +117,12 @@ namespace BrawlLib.Imaging
     public static class TGA
     {
         private delegate Color PaletteParser(ref VoidPtr data);
+
         private delegate void ColorParser(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex);
 
 
         private delegate void PaletteEncoder(ref VoidPtr data, Color c);
+
         private delegate void ColorEncoder(VoidPtr sPtr, int sIndex, Stream dstStream);
 
         private static unsafe int DecodeRLE(byte* sPtr, byte* dPtr, int stride, int entryBits)
@@ -150,14 +162,16 @@ namespace BrawlLib.Imaging
                     }
                 }
             }
+
             return sLen;
         }
 
         public static unsafe Bitmap FromFile(string path)
         {
-            using (FileMap view = FileMap.FromFile(path, FileMapProtect.Read))// FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileMap view = FileMap.FromFile(path, FileMapProtect.Read)
+            ) // FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                TGAHeader* header = (TGAHeader*)view.Address;
+                TGAHeader* header = (TGAHeader*) view.Address;
 
                 int w = header->imageSpecification.width, h = header->imageSpecification.height;
                 int entryBpp = header->imageSpecification.pixelDepth;
@@ -166,106 +180,133 @@ namespace BrawlLib.Imaging
                 ColorPalette palette = null;
                 PixelFormat format;
                 ColorParser cParser;
-                switch (header->imageType & (TGAImageType)0x3)
+                switch (header->imageType & (TGAImageType) 0x3)
                 {
                     case TGAImageType.UncompressedColorMapped:
+                    {
+                        int mapBpp = header->colorMapSpecification.entrySize;
+                        if (entryBpp == 4)
                         {
-                            int mapBpp = header->colorMapSpecification.entrySize;
-                            if (entryBpp == 4)
+                            format = PixelFormat.Format4bppIndexed;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                             {
-                                format = PixelFormat.Format4bppIndexed;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                {
-                                    byte val = ((byte*)sPtr)[sIndex >> 1], val2 = ((byte*)dPtr)[dIndex >> 1];
-                                    val = ((sIndex & 1) == 0) ? (byte)(val >> 4) : (byte)(val & 0xF);
-                                    ((byte*)dPtr)[dIndex >> 1] = ((dIndex & 1) == 0) ? (byte)((val2 & 0xF) | (val << 4)) : (byte)((val2 & 0xF0) | val);
-                                };
-                            }
-                            else if (entryBpp == 8)
-                            {
-                                format = PixelFormat.Format8bppIndexed;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                { ((byte*)dPtr)[dIndex] = ((byte*)sPtr)[sIndex]; };
-                            }
-                            else
-                            {
-                                throw new InvalidDataException("Invalid TGA color map format.");
-                            }
-
-                            int firstIndex = header->colorMapSpecification.firstEntryIndex;
-                            int palSize = firstIndex + header->colorMapSpecification.length;
-                            palette = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, palSize);
-
-                            PaletteParser pParser;
-                            if (mapBpp == 32)
-                            {
-                                pParser = (ref VoidPtr x) => { Color c = (Color)(*(ARGBPixel*)x); x += 4; return c; };
-                            }
-                            else if (mapBpp == 24)
-                            {
-                                pParser = (ref VoidPtr x) => { Color c = (Color)(*(RGBPixel*)x); x += 3; return c; };
-                            }
-                            else
-                            {
-                                throw new InvalidDataException("Invalid TGA color map format.");
-                            }
-
-                            VoidPtr palData = header->ColorMapData;
-                            for (int i = firstIndex; i < palSize; i++)
-                            {
-                                palette.Entries[i] = pParser(ref palData);
-                            }
-
-                            break;
+                                byte val = ((byte*) sPtr)[sIndex >> 1], val2 = ((byte*) dPtr)[dIndex >> 1];
+                                val = (sIndex & 1) == 0 ? (byte) (val >> 4) : (byte) (val & 0xF);
+                                ((byte*) dPtr)[dIndex >> 1] = (dIndex & 1) == 0
+                                    ? (byte) ((val2 & 0xF) | (val << 4))
+                                    : (byte) ((val2 & 0xF0) | val);
+                            };
                         }
+                        else if (entryBpp == 8)
+                        {
+                            format = PixelFormat.Format8bppIndexed;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                            {
+                                ((byte*) dPtr)[dIndex] = ((byte*) sPtr)[sIndex];
+                            };
+                        }
+                        else
+                        {
+                            throw new InvalidDataException("Invalid TGA color map format.");
+                        }
+
+                        int firstIndex = header->colorMapSpecification.firstEntryIndex;
+                        int palSize = firstIndex + header->colorMapSpecification.length;
+                        palette = ColorPaletteExtension.CreatePalette(ColorPaletteFlags.None, palSize);
+
+                        PaletteParser pParser;
+                        if (mapBpp == 32)
+                        {
+                            pParser = (ref VoidPtr x) =>
+                            {
+                                Color c = (Color) (*(ARGBPixel*) x);
+                                x += 4;
+                                return c;
+                            };
+                        }
+                        else if (mapBpp == 24)
+                        {
+                            pParser = (ref VoidPtr x) =>
+                            {
+                                Color c = (Color) (*(RGBPixel*) x);
+                                x += 3;
+                                return c;
+                            };
+                        }
+                        else
+                        {
+                            throw new InvalidDataException("Invalid TGA color map format.");
+                        }
+
+                        VoidPtr palData = header->ColorMapData;
+                        for (int i = firstIndex; i < palSize; i++)
+                        {
+                            palette.Entries[i] = pParser(ref palData);
+                        }
+
+                        break;
+                    }
+
                     case TGAImageType.UncompressedTrueColor:
+                    {
+                        if (entryBpp == 15 || entryBpp == 16 && alphaBits == 0)
                         {
-                            if ((entryBpp == 15) || ((entryBpp == 16) && (alphaBits == 0)))
+                            format = PixelFormat.Format16bppRgb555;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                             {
-                                format = PixelFormat.Format16bppRgb555;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
-                            }
-                            else if (entryBpp == 16)
-                            {
-                                format = PixelFormat.Format16bppArgb1555;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
-                            }
-                            else if (entryBpp == 24)
-                            {
-                                format = PixelFormat.Format24bppRgb;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                { ((RGBPixel*)dPtr)[dIndex] = ((RGBPixel*)sPtr)[sIndex]; };
-                            }
-                            else if (entryBpp == 32)
-                            {
-                                format = (alphaBits == 8) ? PixelFormat.Format32bppArgb : PixelFormat.Format32bppRgb;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                { ((ARGBPixel*)dPtr)[dIndex] = ((ARGBPixel*)sPtr)[sIndex]; };
-                            }
-                            else
-                            {
-                                throw new InvalidDataException("Unknown TGA file format.");
-                            }
-
-                            break;
+                                ((RGB555Pixel*) dPtr)[dIndex] = ((RGB555Pixel*) sPtr)[sIndex];
+                            };
                         }
+                        else if (entryBpp == 16)
+                        {
+                            format = PixelFormat.Format16bppArgb1555;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                            {
+                                ((RGB555Pixel*) dPtr)[dIndex] = ((RGB555Pixel*) sPtr)[sIndex];
+                            };
+                        }
+                        else if (entryBpp == 24)
+                        {
+                            format = PixelFormat.Format24bppRgb;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                            {
+                                ((RGBPixel*) dPtr)[dIndex] = ((RGBPixel*) sPtr)[sIndex];
+                            };
+                        }
+                        else if (entryBpp == 32)
+                        {
+                            format = alphaBits == 8 ? PixelFormat.Format32bppArgb : PixelFormat.Format32bppRgb;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                            {
+                                ((ARGBPixel*) dPtr)[dIndex] = ((ARGBPixel*) sPtr)[sIndex];
+                            };
+                        }
+                        else
+                        {
+                            throw new InvalidDataException("Unknown TGA file format.");
+                        }
+
+                        break;
+                    }
+
                     case TGAImageType.UncompressedGreyscale:
+                    {
+                        if (entryBpp == 8)
                         {
-                            if (entryBpp == 8)
+                            format = PixelFormat.Format24bppRgb;
+                            cParser = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                             {
-                                format = PixelFormat.Format24bppRgb;
-                                cParser = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                                { ((RGBPixel*)dPtr)[dIndex] = RGBPixel.FromIntensity(((byte*)sPtr)[sIndex]); };
-                            }
-                            else
-                            {
-                                throw new InvalidDataException("Unknown TGA file format.");
-                            }
-
-                            break;
+                                ((RGBPixel*) dPtr)[dIndex] = RGBPixel.FromIntensity(((byte*) sPtr)[sIndex]);
+                            };
                         }
+                        else
+                        {
+                            throw new InvalidDataException("Unknown TGA file format.");
+                        }
+
+                        break;
+                    }
+
                     default: throw new InvalidDataException("Unknown TGA file format.");
                 }
 
@@ -277,28 +318,28 @@ namespace BrawlLib.Imaging
 
                 BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, format);
 
-                bool rle = ((int)header->imageType & 0x8) != 0;
+                bool rle = ((int) header->imageType & 0x8) != 0;
                 int srcStride = (entryBpp * w).Align(8) / 8;
-                int rleBufferLen = (rle) ? srcStride : 0;
+                int rleBufferLen = rle ? srcStride : 0;
 
                 byte* buffer = stackalloc byte[rleBufferLen];
 
-                int origin = (int)header->imageSpecification.ImageOrigin;
-                int xStep = ((origin & 1) == 0) ? 1 : -1;
-                int yStep = ((origin & 2) != 0) ? 1 : -1;
+                int origin = (int) header->imageSpecification.ImageOrigin;
+                int xStep = (origin & 1) == 0 ? 1 : -1;
+                int yStep = (origin & 2) != 0 ? 1 : -1;
                 byte* imgSrc = header->ImageData;
-                for (int dY = (yStep == 1) ? 0 : h - 1, sY = 0; sY < h; dY += yStep, sY++)
+                for (int dY = yStep == 1 ? 0 : h - 1, sY = 0; sY < h; dY += yStep, sY++)
                 {
-                    VoidPtr imgDst = (VoidPtr)data.Scan0 + (data.Stride * dY);
+                    VoidPtr imgDst = (VoidPtr) data.Scan0 + data.Stride * dY;
 
                     if (rle)
                     {
                         imgSrc += DecodeRLE(imgSrc, buffer, srcStride, entryBpp);
                     }
 
-                    for (int dX = (xStep == 1) ? 0 : w - 1, sX = 0; sX < w; dX += xStep, sX++)
+                    for (int dX = xStep == 1 ? 0 : w - 1, sX = 0; sX < w; dX += xStep, sX++)
                     {
-                        cParser((rle) ? buffer : imgSrc, sX, imgDst, dX);
+                        cParser(rle ? buffer : imgSrc, sX, imgDst, dX);
                     }
 
                     if (!rle)
@@ -323,72 +364,93 @@ namespace BrawlLib.Imaging
             ColorParser cEnc = null;
             ColorPalette pal = null;
 
-            header.imageSpecification.width = (ushort)w;
-            header.imageSpecification.height = (ushort)h;
+            header.imageSpecification.width = (ushort) w;
+            header.imageSpecification.height = (ushort) h;
             header.imageType = TGAImageType.UncompressedTrueColor;
             switch (bmp.PixelFormat)
             {
                 case PixelFormat.Format4bppIndexed:
                 case PixelFormat.Format8bppIndexed:
+                {
+                    pal = bmp.Palette;
+
+                    header.colorMapType = 1;
+                    header.imageType = TGAImageType.UncompressedColorMapped;
+                    header.colorMapSpecification.length = (ushort) pal.Entries.Length;
+                    header.colorMapSpecification.entrySize = 24;
+                    header.imageSpecification.pixelDepth = 8;
+
+                    pEnc = (ref VoidPtr ptr, Color c) =>
                     {
-                        pal = bmp.Palette;
+                        *(RGBPixel*) ptr = (RGBPixel) c;
+                        ptr += 3;
+                    };
 
-                        header.colorMapType = 1;
-                        header.imageType = TGAImageType.UncompressedColorMapped;
-                        header.colorMapSpecification.length = (ushort)pal.Entries.Length;
-                        header.colorMapSpecification.entrySize = 24;
-                        header.imageSpecification.pixelDepth = 8;
-
-                        pEnc = (ref VoidPtr ptr, Color c) => { *(RGBPixel*)ptr = (RGBPixel)c; ptr += 3; };
-
-                        if (bmp.PixelFormat == PixelFormat.Format4bppIndexed)
+                    if (bmp.PixelFormat == PixelFormat.Format4bppIndexed)
+                    {
+                        cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                         {
-                            cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                            { ((byte*)dPtr)[dIndex] = ((sIndex & 1) == 0) ? (byte)(((byte*)sPtr)[sIndex >> 1] >> 4) : (byte)(((byte*)sPtr)[sIndex >> 1] & 0xF); };
-                        }
-                        else
-                        {
-                            cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                            { ((byte*)dPtr)[dIndex] = ((byte*)sPtr)[sIndex]; };
-                        }
-
-                        break;
+                            ((byte*) dPtr)[dIndex] = (sIndex & 1) == 0
+                                ? (byte) (((byte*) sPtr)[sIndex >> 1] >> 4)
+                                : (byte) (((byte*) sPtr)[sIndex >> 1] & 0xF);
+                        };
                     }
+                    else
+                    {
+                        cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                        {
+                            ((byte*) dPtr)[dIndex] = ((byte*) sPtr)[sIndex];
+                        };
+                    }
+
+                    break;
+                }
+
                 case PixelFormat.Format32bppRgb:
                 case PixelFormat.Format32bppArgb:
-                    {
-                        header.imageSpecification.pixelDepth = 32;
-                        header.imageSpecification.AlphaBits = (bmp.PixelFormat == PixelFormat.Format32bppArgb) ? (byte)8 : (byte)0;
+                {
+                    header.imageSpecification.pixelDepth = 32;
+                    header.imageSpecification.AlphaBits =
+                        bmp.PixelFormat == PixelFormat.Format32bppArgb ? (byte) 8 : (byte) 0;
 
-                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                        { ((ARGBPixel*)dPtr)[dIndex] = ((ARGBPixel*)sPtr)[sIndex]; };
-                        break;
-                    }
+                    cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                    {
+                        ((ARGBPixel*) dPtr)[dIndex] = ((ARGBPixel*) sPtr)[sIndex];
+                    };
+                    break;
+                }
 
                 case PixelFormat.Format24bppRgb:
-                    {
-                        header.imageSpecification.pixelDepth = 24;
+                {
+                    header.imageSpecification.pixelDepth = 24;
 
-                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                        { ((RGBPixel*)dPtr)[dIndex] = ((RGBPixel*)sPtr)[sIndex]; };
-                        break;
-                    }
+                    cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
+                    {
+                        ((RGBPixel*) dPtr)[dIndex] = ((RGBPixel*) sPtr)[sIndex];
+                    };
+                    break;
+                }
 
                 case PixelFormat.Format16bppRgb555:
+                {
+                    header.imageSpecification.pixelDepth = 15;
+                    cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                     {
-                        header.imageSpecification.pixelDepth = 15;
-                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                        { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
-                        break;
-                    }
+                        ((RGB555Pixel*) dPtr)[dIndex] = ((RGB555Pixel*) sPtr)[sIndex];
+                    };
+                    break;
+                }
+
                 case PixelFormat.Format16bppArgb1555:
+                {
+                    header.imageSpecification.pixelDepth = 16;
+                    header.imageSpecification.AlphaBits = 1;
+                    cEnc = delegate(VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
                     {
-                        header.imageSpecification.pixelDepth = 16;
-                        header.imageSpecification.AlphaBits = 1;
-                        cEnc = delegate (VoidPtr sPtr, int sIndex, VoidPtr dPtr, int dIndex)
-                        { ((RGB555Pixel*)dPtr)[dIndex] = ((RGB555Pixel*)sPtr)[sIndex]; };
-                        break;
-                    }
+                        ((RGB555Pixel*) dPtr)[dIndex] = ((RGB555Pixel*) sPtr)[sIndex];
+                    };
+                    break;
+                }
 
                 default:
                     throw new FormatException("Input pixel format unsupported.");
@@ -402,10 +464,11 @@ namespace BrawlLib.Imaging
 
             BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly, bmp.PixelFormat);
             //using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 0x1000, FileOptions.RandomAccess))
-            using (FileMap view = FileMap.FromStream(stream))// stream.MapView(0, (uint)totalLen, FileMapProtect.ReadWrite))
+            using (FileMap view = FileMap.FromStream(stream)
+            ) // stream.MapView(0, (uint)totalLen, FileMapProtect.ReadWrite))
             {
                 //Create header
-                TGAHeader* pHeader = (TGAHeader*)view.Address;
+                TGAHeader* pHeader = (TGAHeader*) view.Address;
                 *pHeader = header;
 
                 //Write id
@@ -422,17 +485,17 @@ namespace BrawlLib.Imaging
 
                 //Write color data
                 int dstStride = (pHeader->imageSpecification.pixelDepth * w).Align(8) / 8;
-                int origin = (int)pHeader->imageSpecification.ImageOrigin;
-                int xStep = ((origin & 1) == 0) ? 1 : -1;
-                int yStep = ((origin & 2) != 0) ? 1 : -1;
+                int origin = (int) pHeader->imageSpecification.ImageOrigin;
+                int xStep = (origin & 1) == 0 ? 1 : -1;
+                int yStep = (origin & 2) != 0 ? 1 : -1;
                 byte* imgDst = pHeader->ImageData;
-                for (int sY = (yStep == 1) ? 0 : h - 1, dY = 0; dY < h; sY += yStep, dY++)
+                for (int sY = yStep == 1 ? 0 : h - 1, dY = 0; dY < h; sY += yStep, dY++)
                 {
-                    VoidPtr imgSrc = (VoidPtr)data.Scan0 + (data.Stride * sY);
+                    VoidPtr imgSrc = (VoidPtr) data.Scan0 + data.Stride * sY;
 
                     //Do RLE encoding
 
-                    for (int sX = (xStep == 1) ? 0 : w - 1, dX = 0; dX < w; sX += xStep, dX++)
+                    for (int sX = xStep == 1 ? 0 : w - 1, dX = 0; dX < w; sX += xStep, dX++)
                     {
                         cEnc(imgSrc, sX, imgDst, dX);
                     }
@@ -441,15 +504,17 @@ namespace BrawlLib.Imaging
                 }
 
                 //Write footer
-                TGAFooter* pFooter = (TGAFooter*)(pHeader->ImageData + pHeader->imageSpecification.DataLength);
+                TGAFooter* pFooter = (TGAFooter*) (pHeader->ImageData + pHeader->imageSpecification.DataLength);
                 *pFooter = footer;
             }
+
             bmp.UnlockBits(data);
         }
 
         public static unsafe void ToFile(Bitmap bmp, string path)
         {
-            using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
+            using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 8,
+                FileOptions.RandomAccess))
             {
                 ToStream(bmp, stream);
             }

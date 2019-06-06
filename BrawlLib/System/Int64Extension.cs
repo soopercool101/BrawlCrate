@@ -31,6 +31,7 @@
 
             return value;
         }
+
         public static long Clamp(this long value, long min, long max)
         {
             if (value <= min)

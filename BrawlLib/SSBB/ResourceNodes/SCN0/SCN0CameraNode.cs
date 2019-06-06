@@ -10,25 +10,51 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0CameraNode : SCN0EntryNode, IKeyframeSource
     {
-        internal SCN0Camera* Data => (SCN0Camera*)WorkingUncompressed.Address;
+        internal SCN0Camera* Data => (SCN0Camera*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SCN0Camera;
 
-        [Category("User Data"), TypeConverter(typeof(ExpandableObjectCustomConverter))]
-        public UserDataCollection UserEntries { get => _userEntries; set { _userEntries = value; SignalPropertyChange(); } }
+        [Category("User Data")]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
+        public UserDataCollection UserEntries
+        {
+            get => _userEntries;
+            set
+            {
+                _userEntries = value;
+                SignalPropertyChange();
+            }
+        }
+
         internal UserDataCollection _userEntries = new UserDataCollection();
 
         public SCN0CameraType _type = SCN0CameraType.Aim;
         public ProjectionType _projType;
-        public SCN0CameraFlags _flags1 = (SCN0CameraFlags)0xFFFE;
+        public SCN0CameraFlags _flags1 = (SCN0CameraFlags) 0xFFFE;
         public ushort _flags2 = 1;
 
-        [Browsable(false)]
-        public int FrameCount => Keyframes.FrameLimit;
+        [Browsable(false)] public int FrameCount => Keyframes.FrameLimit;
 
         [Category("Camera")]
-        public SCN0CameraType Type { get => _type; set { _type = value; SignalPropertyChange(); } }
+        public SCN0CameraType Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Category("Camera")]
-        public ProjectionType ProjectionType { get => _projType; set { _projType = value; SignalPropertyChange(); } }
+        public ProjectionType ProjectionType
+        {
+            get => _projType;
+            set
+            {
+                _projType = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
@@ -41,10 +67,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             //Read header data
-            _flags1 = (SCN0CameraFlags)(ushort)Data->_flags1;
+            _flags1 = (SCN0CameraFlags) (ushort) Data->_flags1;
             _flags2 = Data->_flags2;
-            _type = (SCN0CameraType)(_flags2 & 1);
-            _projType = (ProjectionType)(int)Data->_projectionType;
+            _type = (SCN0CameraType) (_flags2 & 1);
+            _projType = (ProjectionType) (int) Data->_projectionType;
 
             //Read user data
             (_userEntries = new UserDataCollection()).Read(Data->UserData);
@@ -104,10 +130,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            SCN0Camera* header = (SCN0Camera*)address;
+            SCN0Camera* header = (SCN0Camera*) address;
 
-            header->_projectionType = (int)_projType;
-            header->_flags2 = (ushort)(2 + (int)_type);
+            header->_projectionType = (int) _projType;
+            header->_flags2 = (ushort) (2 + (int) _type);
             header->_userDataOffset = 0;
 
             int newFlags1 = 0;
@@ -119,14 +145,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _dataAddrs[0],
                     header->_position._x.Address + i * 4,
                     ref newFlags1,
-                    (int)Ordered[i]);
+                    (int) Ordered[i]);
             }
 
-            header->_flags1 = (ushort)newFlags1;
+            header->_flags1 = (ushort) newFlags1;
 
             if (_userEntries.Count > 0)
             {
-                _userEntries.Write(header->UserData = (VoidPtr)header + SCN0Camera.Size);
+                _userEntries.Write(header->UserData = (VoidPtr) header + SCN0Camera.Size);
             }
         }
 
@@ -136,7 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name != "<null>")
             {
-                _userEntries.PostProcess(((SCN0Camera*)dataAddress)->UserData, stringTable);
+                _userEntries.PostProcess(((SCN0Camera*) dataAddress)->UserData, stringTable);
             }
         }
 
@@ -161,7 +187,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void SetCamera(ModelPanelViewport v, float frame, bool retainAspect)
         {
-            ViewportProjection proj = (ViewportProjection)(int)ProjectionType;
+            ViewportProjection proj = (ViewportProjection) (int) ProjectionType;
             if (v.ViewType != proj)
             {
                 v.SetProjectionType(proj);
@@ -200,6 +226,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 PosY.GetFrameValue(frame),
                 PosZ.GetFrameValue(frame));
         }
+
         public Vector3 GetEnd(float frame)
         {
             return new Vector3(
@@ -213,30 +240,31 @@ namespace BrawlLib.SSBB.ResourceNodes
         public CameraAnimationFrame GetAnimFrame(float index)
         {
             CameraAnimationFrame frame;
-            float* dPtr = (float*)&frame;
+            float* dPtr = (float*) &frame;
             for (int x = 0; x < 15; x++)
             {
                 KeyframeArray a = Keyframes[x];
                 *dPtr++ = a.GetFrameValue(index);
-                frame.SetBools(x, a.GetKeyframe((int)index) != null);
+                frame.SetBools(x, a.GetKeyframe((int) index) != null);
                 frame.Index = index;
             }
+
             return frame;
         }
 
         internal KeyframeEntry GetKeyframe(CameraKeyframeMode keyFrameMode, int index)
         {
-            return Keyframes[(int)keyFrameMode].GetKeyframe(index);
+            return Keyframes[(int) keyFrameMode].GetKeyframe(index);
         }
 
         public float GetFrameValue(CameraKeyframeMode keyFrameMode, float index)
         {
-            return Keyframes[(int)keyFrameMode].GetFrameValue(index);
+            return Keyframes[(int) keyFrameMode].GetFrameValue(index);
         }
 
         internal void RemoveKeyframe(CameraKeyframeMode keyFrameMode, int index)
         {
-            KeyframeEntry k = Keyframes[(int)keyFrameMode].Remove(index);
+            KeyframeEntry k = Keyframes[(int) keyFrameMode].Remove(index);
             if (k != null && _generateTangents)
             {
                 k._prev.GenerateTangent();
@@ -247,7 +275,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal void SetKeyframe(CameraKeyframeMode keyFrameMode, int index, float value)
         {
-            KeyframeArray keys = Keyframes[(int)keyFrameMode];
+            KeyframeArray keys = Keyframes[(int) keyFrameMode];
             bool exists = keys.GetKeyframe(index) != null;
             KeyframeEntry k = keys.SetFrameValue(index, value);
 
@@ -266,38 +294,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             SignalPropertyChange();
         }
 
-        [Browsable(false)]
-        public KeyframeArray PosX => Keyframes[0];
-        [Browsable(false)]
-        public KeyframeArray PosY => Keyframes[1];
-        [Browsable(false)]
-        public KeyframeArray PosZ => Keyframes[2];
-        [Browsable(false)]
-        public KeyframeArray Aspect => Keyframes[3];
-        [Browsable(false)]
-        public KeyframeArray NearZ => Keyframes[4];
-        [Browsable(false)]
-        public KeyframeArray FarZ => Keyframes[5];
-        [Browsable(false)]
-        public KeyframeArray RotX => Keyframes[6];
-        [Browsable(false)]
-        public KeyframeArray RotY => Keyframes[7];
-        [Browsable(false)]
-        public KeyframeArray RotZ => Keyframes[8];
-        [Browsable(false)]
-        public KeyframeArray AimX => Keyframes[9];
-        [Browsable(false)]
-        public KeyframeArray AimY => Keyframes[10];
-        [Browsable(false)]
-        public KeyframeArray AimZ => Keyframes[11];
-        [Browsable(false)]
-        public KeyframeArray Twist => Keyframes[12];
-        [Browsable(false)]
-        public KeyframeArray FovY => Keyframes[13];
-        [Browsable(false)]
-        public KeyframeArray Height => Keyframes[14];
+        [Browsable(false)] public KeyframeArray PosX => Keyframes[0];
+        [Browsable(false)] public KeyframeArray PosY => Keyframes[1];
+        [Browsable(false)] public KeyframeArray PosZ => Keyframes[2];
+        [Browsable(false)] public KeyframeArray Aspect => Keyframes[3];
+        [Browsable(false)] public KeyframeArray NearZ => Keyframes[4];
+        [Browsable(false)] public KeyframeArray FarZ => Keyframes[5];
+        [Browsable(false)] public KeyframeArray RotX => Keyframes[6];
+        [Browsable(false)] public KeyframeArray RotY => Keyframes[7];
+        [Browsable(false)] public KeyframeArray RotZ => Keyframes[8];
+        [Browsable(false)] public KeyframeArray AimX => Keyframes[9];
+        [Browsable(false)] public KeyframeArray AimY => Keyframes[10];
+        [Browsable(false)] public KeyframeArray AimZ => Keyframes[11];
+        [Browsable(false)] public KeyframeArray Twist => Keyframes[12];
+        [Browsable(false)] public KeyframeArray FovY => Keyframes[13];
+        [Browsable(false)] public KeyframeArray Height => Keyframes[14];
 
         private KeyframeCollection _keyframes = null;
+
         [Browsable(false)]
         public KeyframeCollection Keyframes
         {
@@ -305,7 +319,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_keyframes == null)
                 {
-                    _keyframes = new KeyframeCollection(15, Scene == null ? 1 : Scene.FrameCount + (Scene.Loop ? 1 : 0));
+                    _keyframes =
+                        new KeyframeCollection(15, Scene == null ? 1 : Scene.FrameCount + (Scene.Loop ? 1 : 0));
                     if (Data != null && Name != "<null>")
                     {
                         for (int i = 0; i < 15; i++)
@@ -313,17 +328,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                             DecodeKeyframes(
                                 Keyframes[i],
                                 Data->_position._x.Address + i * 4,
-                                (int)_flags1,
-                                (int)Ordered[i]);
+                                (int) _flags1,
+                                (int) Ordered[i]);
                         }
                     }
                 }
+
                 return _keyframes;
             }
         }
 
-        [Browsable(false)]
-        public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
+        [Browsable(false)] public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
 
         internal void SetSize(int numFrames, bool looped)
         {

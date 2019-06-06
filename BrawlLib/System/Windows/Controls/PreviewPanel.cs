@@ -9,23 +9,35 @@ namespace System.Windows.Forms
         private object _target;
         private int _targetIndex, _maxIndex;
         private Image _currentImage;
-        internal static HatchBrush _brush = new HatchBrush(HatchStyle.LargeCheckerBoard, Color.LightGray, Color.GhostWhite);
+
+        internal static HatchBrush _brush =
+            new HatchBrush(HatchStyle.LargeCheckerBoard, Color.LightGray, Color.GhostWhite);
 
         private bool _disposeImage = true;
-        public bool DisposeImage { get => _disposeImage; set => _disposeImage = value; }
+
+        public bool DisposeImage
+        {
+            get => _disposeImage;
+            set => _disposeImage = value;
+        }
 
         public object RenderingTarget
         {
             get => _target;
             set
             {
-                if (_currentImage != null && _disposeImage) { _currentImage.Dispose(); _currentImage = null; }
+                if (_currentImage != null && _disposeImage)
+                {
+                    _currentImage.Dispose();
+                    _currentImage = null;
+                }
+
                 _targetIndex = 0;
                 _target = value;
 
                 if (_target is IImageSource)
                 {
-                    _maxIndex = ((IImageSource)_target).ImageCount - 1;
+                    _maxIndex = ((IImageSource) _target).ImageCount - 1;
                 }
                 else
                 {
@@ -44,6 +56,7 @@ namespace System.Windows.Forms
                 CurrentIndex = 0;
             }
         }
+
         public int CurrentIndex
         {
             get => _targetIndex;
@@ -74,8 +87,13 @@ namespace System.Windows.Forms
                 }
                 else if (_target is IImageSource)
                 {
-                    if (_currentImage != null && _disposeImage) { _currentImage.Dispose(); _currentImage = null; }
-                    _currentImage = ((IImageSource)_target).GetImage(value);
+                    if (_currentImage != null && _disposeImage)
+                    {
+                        _currentImage.Dispose();
+                        _currentImage = null;
+                    }
+
+                    _currentImage = ((IImageSource) _target).GetImage(value);
                 }
 
                 Refresh();
@@ -84,7 +102,9 @@ namespace System.Windows.Forms
 
         public PreviewPanel()
         {
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(
+                ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.ResizeRedraw |
+                ControlStyles.OptimizedDoubleBuffer, true);
             InitializeComponent();
         }
 
@@ -102,13 +122,13 @@ namespace System.Windows.Forms
             Rectangle client = ClientRectangle;
             Rectangle bounds = new Rectangle(0, 0, w, h);
 
-            float aspect = (float)w / h;
-            float newaspect = (float)client.Width / client.Height;
+            float aspect = (float) w / h;
+            float newaspect = (float) client.Width / client.Height;
 
-            float scale = (newaspect > aspect) ? (float)client.Height / h : (float)client.Width / w;
+            float scale = newaspect > aspect ? (float) client.Height / h : (float) client.Width / w;
 
-            bounds.Width = (int)(w * scale);
-            bounds.Height = (int)(h * scale);
+            bounds.Width = (int) (w * scale);
+            bounds.Height = (int) (h * scale);
             bounds.X = (client.Width - bounds.Width) >> 1;
             bounds.Y = (client.Height - bounds.Height) >> 1;
 
@@ -131,6 +151,7 @@ namespace System.Windows.Forms
             CurrentIndex--;
             LeftClicked?.Invoke(null, null);
         }
+
         private void btnRight_Click(object sender, EventArgs e)
         {
             CurrentIndex++;

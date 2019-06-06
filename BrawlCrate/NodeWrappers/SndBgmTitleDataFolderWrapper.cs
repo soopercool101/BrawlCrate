@@ -9,6 +9,7 @@ namespace BrawlCrate.NodeWrappers
     public class SndBgmTitleDataFolderWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static SndBgmTitleDataFolderWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -24,18 +25,23 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<SndBgmTitleDataFolderWrapper>().NewEntry();
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-
         }
-        public SndBgmTitleDataFolderWrapper() { ContextMenuStrip = _menu; }
+
+        public SndBgmTitleDataFolderWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
+
         public void NewEntry()
         {
-            ((SndBgmTitleDataNode)_resource).CreateEntry();
+            ((SndBgmTitleDataNode) _resource).CreateEntry();
         }
     }
 }

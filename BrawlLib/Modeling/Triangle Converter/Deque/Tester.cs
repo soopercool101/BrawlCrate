@@ -88,7 +88,7 @@ namespace DequeTest
 
             for (int i = 0; i < ElementCount; i++)
             {
-                j = (int)deque.PopFront();
+                j = (int) deque.PopFront();
 
                 Debug.Assert(j == i);
             }
@@ -106,7 +106,7 @@ namespace DequeTest
 
             for (int i = 0; i < ElementCount; i++)
             {
-                j = (int)deque.PopBack();
+                j = (int) deque.PopBack();
 
                 Debug.Assert(j == ElementCount - 1 - i);
             }
@@ -232,7 +232,7 @@ namespace DequeTest
 
             PopulateDequePushBack(deque);
 
-            Deque deque2 = (Deque)deque.Clone();
+            Deque deque2 = (Deque) deque.Clone();
 
             Debug.Assert(deque.Count == deque2.Count);
 

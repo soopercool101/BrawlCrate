@@ -14,6 +14,7 @@ namespace System.Audio
         private class alSourceLock
         {
             public int currentSource;
+
             // Total length of discarded buffers. Maybe there's a better way to do this?
             public int addToCursor;
         }
@@ -58,6 +59,7 @@ namespace System.Audio
         }
 
         private int _volume;
+
         public override int Volume
         {
             get
@@ -69,8 +71,8 @@ namespace System.Audio
                         return _volume;
                     }
 
-                    AL.GetSource((uint)sourceLock.currentSource, ALSourcef.Gain, out float v);
-                    return Math.Max(-10000, (int)(Math.Log10(v) * 2000));
+                    AL.GetSource((uint) sourceLock.currentSource, ALSourcef.Gain, out float v);
+                    return Math.Max(-10000, (int) (Math.Log10(v) * 2000));
                 }
             }
             set
@@ -83,8 +85,8 @@ namespace System.Audio
                         return;
                     }
 
-                    double pct = Math.Pow(10, (double)value / 2000);
-                    AL.Source(sourceLock.currentSource, ALSourcef.Gain, (float)pct);
+                    double pct = Math.Pow(10, (double) value / 2000);
+                    AL.Source(sourceLock.currentSource, ALSourcef.Gain, (float) pct);
                 }
             }
         }
@@ -111,7 +113,7 @@ namespace System.Audio
             _internalBuffer = new UnsafeBuffer(size);
 
             _format = fmt.wFormatTag;
-            _frequency = (int)fmt.nSamplesPerSec;
+            _frequency = (int) fmt.nSamplesPerSec;
             _channels = fmt.nChannels;
             _bitsPerSample = fmt.wBitsPerSample;
             _dataLength = size;
@@ -158,10 +160,12 @@ namespace System.Audio
 
             return data;
         }
+
         public override void Unlock(BufferData data)
         {
             int buffer = AL.GenBuffer();
-            AL.BufferData(buffer, GetSoundFormat(_channels, _bitsPerSample), data.Part1Address, data.Part1Length, _frequency);
+            AL.BufferData(buffer, GetSoundFormat(_channels, _bitsPerSample), data.Part1Address, data.Part1Length,
+                _frequency);
 
             lock (sourceLock)
             {
@@ -231,10 +235,12 @@ namespace System.Audio
 
                     buffersToQueue.Clear();
                 }
+
                 Volume = _volume;
                 AL.SourcePlay(sourceLock.currentSource);
             }
         }
+
         public override void Stop()
         {
             lock (sourceLock)

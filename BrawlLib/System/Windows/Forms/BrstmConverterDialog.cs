@@ -47,7 +47,9 @@ namespace System.Windows.Forms
                 BaseStream.Wrap();
             }
 
-            public void Dispose() { }
+            public void Dispose()
+            {
+            }
         }
 
         #region Designer
@@ -144,16 +146,16 @@ namespace System.Windows.Forms
             groupBox2.SuspendLayout();
             pnlLoop.SuspendLayout();
             grpLoop.SuspendLayout();
-            ((ISupportInitialize)(numLoopStart)).BeginInit();
-            ((ISupportInitialize)(numLoopEnd)).BeginInit();
+            ((ISupportInitialize) numLoopStart).BeginInit();
+            ((ISupportInitialize) numLoopEnd).BeginInit();
             panel3.SuspendLayout();
-            ((ISupportInitialize)(customTrackBar1)).BeginInit();
+            ((ISupportInitialize) customTrackBar1).BeginInit();
             groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Enabled = false;
             btnOkay.Location = new Drawing.Point(3, 3);
             btnOkay.Name = "btnOkay";
@@ -165,7 +167,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.Location = new Drawing.Point(80, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(75, 23);
@@ -176,8 +178,8 @@ namespace System.Windows.Forms
             // 
             // txtPath
             // 
-            txtPath.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            txtPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                              | AnchorStyles.Right;
             txtPath.Location = new Drawing.Point(0, 0);
             txtPath.Name = "txtPath";
             txtPath.ReadOnly = true;
@@ -186,7 +188,7 @@ namespace System.Windows.Forms
             // 
             // btnBrowse
             // 
-            btnBrowse.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnBrowse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnBrowse.Location = new Drawing.Point(297, 0);
             btnBrowse.Name = "btnBrowse";
             btnBrowse.Size = new Drawing.Size(25, 20);
@@ -211,8 +213,8 @@ namespace System.Windows.Forms
             // 
             // lblSamples
             // 
-            lblSamples.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            lblSamples.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                 | AnchorStyles.Right;
             lblSamples.Location = new Drawing.Point(84, 36);
             lblSamples.Name = "lblSamples";
             lblSamples.Size = new Drawing.Size(68, 20);
@@ -221,8 +223,8 @@ namespace System.Windows.Forms
             // 
             // lblFrequency
             // 
-            lblFrequency.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            lblFrequency.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                   | AnchorStyles.Right;
             lblFrequency.Location = new Drawing.Point(84, 16);
             lblFrequency.Name = "lblFrequency";
             lblFrequency.Size = new Drawing.Size(68, 20);
@@ -249,8 +251,8 @@ namespace System.Windows.Forms
             // 
             // lblPlayTime
             // 
-            lblPlayTime.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            lblPlayTime.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                  | AnchorStyles.Right;
             lblPlayTime.Location = new Drawing.Point(6, 63);
             lblPlayTime.Name = "lblPlayTime";
             lblPlayTime.Size = new Drawing.Size(314, 20);
@@ -379,8 +381,8 @@ namespace System.Windows.Forms
             // 
             // pnlLoop
             // 
-            pnlLoop.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            pnlLoop.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                              | AnchorStyles.Right;
             pnlLoop.BackColor = Drawing.Color.FromArgb(192, 192, 255);
             pnlLoop.Controls.Add(spltEnd);
             pnlLoop.Controls.Add(pnlLoopEnd);
@@ -474,11 +476,13 @@ namespace System.Windows.Forms
             // 
             // numLoopStart
             // 
-            numLoopStart.Increment = new decimal(new int[] {
-            14,
-            0,
-            0,
-            0});
+            numLoopStart.Increment = new decimal(new int[]
+            {
+                14,
+                0,
+                0,
+                0
+            });
             numLoopStart.Location = new Drawing.Point(59, 19);
             numLoopStart.Name = "numLoopStart";
             numLoopStart.Size = new Drawing.Size(81, 20);
@@ -487,11 +491,13 @@ namespace System.Windows.Forms
             // 
             // numLoopEnd
             // 
-            numLoopEnd.Increment = new decimal(new int[] {
-            14,
-            0,
-            0,
-            0});
+            numLoopEnd.Increment = new decimal(new int[]
+            {
+                14,
+                0,
+                0,
+                0
+            });
             numLoopEnd.Location = new Drawing.Point(207, 19);
             numLoopEnd.Name = "numLoopEnd";
             numLoopEnd.Size = new Drawing.Size(81, 20);
@@ -543,8 +549,8 @@ namespace System.Windows.Forms
             // 
             // customTrackBar1
             // 
-            customTrackBar1.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            customTrackBar1.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                      | AnchorStyles.Right;
             customTrackBar1.Location = new Drawing.Point(6, 19);
             customTrackBar1.Name = "customTrackBar1";
             customTrackBar1.Size = new Drawing.Size(314, 45);
@@ -605,25 +611,36 @@ namespace System.Windows.Forms
             groupBox2.PerformLayout();
             pnlLoop.ResumeLayout(false);
             grpLoop.ResumeLayout(false);
-            ((ISupportInitialize)(numLoopStart)).EndInit();
-            ((ISupportInitialize)(numLoopEnd)).EndInit();
+            ((ISupportInitialize) numLoopStart).EndInit();
+            ((ISupportInitialize) numLoopEnd).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((ISupportInitialize)(customTrackBar1)).EndInit();
+            ((ISupportInitialize) customTrackBar1).EndInit();
             groupBox3.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
 
         private string _audioSource;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string AudioSource { get => _audioSource; set => _audioSource = value; }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public string AudioSource
+        {
+            get => _audioSource;
+            set => _audioSource = value;
+        }
 
         private FileMap _audioData;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public FileMap AudioData { get => _audioData; set => _audioData = value; }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public FileMap AudioData
+        {
+            get => _audioData;
+            set => _audioData = value;
+        }
 
         private static WaveEncoding PreviousEncoding = WaveEncoding.ADPCM;
 
@@ -710,6 +727,7 @@ namespace System.Windows.Forms
 
             base.OnShown(e);
         }
+
         protected override void OnClosed(EventArgs e)
         {
             DisposeProvider();
@@ -725,6 +743,7 @@ namespace System.Windows.Forms
                 _provider = null;
             }
         }
+
         private void DisposeSource()
         {
             //Stop playback
@@ -761,6 +780,7 @@ namespace System.Windows.Forms
 
             return LoadAudio(dlgOpen.FileName);
         }
+
         private bool LoadAudio(string path)
         {
             DisposeSource();
@@ -780,7 +800,7 @@ namespace System.Windows.Forms
             }
 
             //Set controls
-            _sampleTime = new DateTime((long)_sourceStream.Samples * 10000000 / _sourceStream.Frequency);
+            _sampleTime = new DateTime((long) _sourceStream.Samples * 10000000 / _sourceStream.Frequency);
 
             txtPath.Text = _initialStream != null ? "Internal audio" : path;
             lblFrequency.Text = string.Format("{0} Hz", _sourceStream.Frequency);
@@ -833,7 +853,7 @@ namespace System.Windows.Forms
         {
             if (_sourceStream != null)
             {
-                DateTime t = new DateTime((long)customTrackBar1.Value * 10000000 / _sourceStream.Frequency);
+                DateTime t = new DateTime((long) customTrackBar1.Value * 10000000 / _sourceStream.Frequency);
                 lblPlayTime.Text = string.Format("{0:mm:ss.ff} / {1:mm:ss.ff}", t, _sampleTime);
             }
             else
@@ -844,7 +864,7 @@ namespace System.Windows.Forms
 
         private void Play()
         {
-            if (_playing || (_buffer == null))
+            if (_playing || _buffer == null)
             {
                 return;
             }
@@ -912,7 +932,7 @@ namespace System.Windows.Forms
 
         private void tmrUpdate_Tick(object sender, EventArgs e)
         {
-            if ((_playing) && (_buffer != null))
+            if (_playing && _buffer != null)
             {
                 _buffer.Fill();
 
@@ -925,22 +945,33 @@ namespace System.Windows.Forms
             }
         }
 
-        private void btnRewind_Click(object sender, EventArgs e) { Seek(0); }
-        private void customTrackBar1_ValueChanged(object sender, EventArgs e) { UpdateTimeDisplay(); }
-        private void customTrackBar1_UserSeek(object sender, EventArgs e) { Seek(customTrackBar1.Value); }
+        private void btnRewind_Click(object sender, EventArgs e)
+        {
+            Seek(0);
+        }
+
+        private void customTrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTimeDisplay();
+        }
+
+        private void customTrackBar1_UserSeek(object sender, EventArgs e)
+        {
+            Seek(customTrackBar1.Value);
+        }
 
         private void pnlLoopStart_SizeChanged(object sender, EventArgs e)
         {
-            if ((_sourceStream == null) || (_updating))
+            if (_sourceStream == null || _updating)
             {
                 return;
             }
 
             //Get approximate sample number from start of audio.
-            float percent = (float)pnlLoopStart.Width / pnlLoop.Width;
+            float percent = (float) pnlLoopStart.Width / pnlLoop.Width;
 
             //Should we align to a chunk, or block?
-            int startSample = (int)(_sourceStream.Samples * percent);
+            int startSample = (int) (_sourceStream.Samples * percent);
 
             _updating = true;
             numLoopStart.Value = startSample;
@@ -949,25 +980,37 @@ namespace System.Windows.Forms
 
         private void pnlLoopEnd_SizeChanged(object sender, EventArgs e)
         {
-            if ((_sourceStream == null) || (_updating))
+            if (_sourceStream == null || _updating)
             {
                 return;
             }
 
             //Get approximate sample number from start of audio.
-            float percent = 1.0f - ((float)pnlLoopEnd.Width / pnlLoop.Width);
+            float percent = 1.0f - (float) pnlLoopEnd.Width / pnlLoop.Width;
 
             //End sample doesn't need to be aligned
-            int endSample = (int)(_sourceStream.Samples * percent);
+            int endSample = (int) (_sourceStream.Samples * percent);
 
             _updating = true;
             numLoopEnd.Value = endSample;
             _updating = false;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) { Close(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-        public int Type { get => _type; set { _type = value; Text = string.Format("{0} Import", _type == 0 ? "Brstm" : "Wave"); } }
+        public int Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                Text = string.Format("{0} Import", _type == 0 ? "Brstm" : "Wave");
+            }
+        }
+
         public int _type = 0;
 
         private void btnOkay_Click(object sender, EventArgs e)
@@ -983,12 +1026,13 @@ namespace System.Windows.Forms
 
             if (_initialStream == null)
             {
-                using (ProgressWindow progress = new ProgressWindow(this, string.Format("{0} Converter", _type == 0 ? "Brstm" : "Wave"), "Encoding, please wait...", false))
+                using (ProgressWindow progress = new ProgressWindow(this,
+                    string.Format("{0} Converter", _type == 0 ? "Brstm" : "Wave"), "Encoding, please wait...", false))
                 {
                     switch (_type)
                     {
                         case 0:
-                            WaveEncoding encoding = (WaveEncoding)ddlEncoding.SelectedItem;
+                            WaveEncoding encoding = (WaveEncoding) ddlEncoding.SelectedItem;
                             PreviousEncoding = encoding;
                             _audioData = RSTMConverter.Encode(_sourceStream, progress, encoding);
                             break;
@@ -1016,7 +1060,8 @@ namespace System.Windows.Forms
 
         private void chkLoopEnable_CheckedChanged(object sender, EventArgs e)
         {
-            pnlLoop.Visible = grpLoop.Enabled = chkLoop.Enabled = btnFFwd.Enabled = btnLoopRW.Enabled = chkLoopEnable.Checked;
+            pnlLoop.Visible = grpLoop.Enabled =
+                chkLoop.Enabled = btnFFwd.Enabled = btnLoopRW.Enabled = chkLoopEnable.Checked;
             if (!chkLoopEnable.Checked)
             {
                 chkLoop.Checked = false;
@@ -1027,8 +1072,8 @@ namespace System.Windows.Forms
                 if (chkLoopEnable.Checked)
                 {
                     _sourceStream.IsLooping = true;
-                    _sourceStream.LoopStartSample = (int)numLoopStart.Value;
-                    _sourceStream.LoopEndSample = (int)numLoopEnd.Value;
+                    _sourceStream.LoopStartSample = (int) numLoopStart.Value;
+                    _sourceStream.LoopEndSample = (int) numLoopEnd.Value;
                 }
                 else
                 {
@@ -1048,16 +1093,16 @@ namespace System.Windows.Forms
 
             if (!_updating)
             {
-                float percent = (float)numLoopStart.Value / _sourceStream.Samples;
+                float percent = (float) numLoopStart.Value / _sourceStream.Samples;
 
                 _updating = true;
-                pnlLoopStart.Width = (int)(pnlLoop.Width * percent);
+                pnlLoopStart.Width = (int) (pnlLoop.Width * percent);
                 _updating = false;
             }
 
             if (_sourceStream.IsLooping)
             {
-                _sourceStream.LoopStartSample = (int)numLoopStart.Value;
+                _sourceStream.LoopStartSample = (int) numLoopStart.Value;
             }
         }
 
@@ -1070,25 +1115,47 @@ namespace System.Windows.Forms
 
             if (!_updating)
             {
-                float percent = 1.0f - ((float)numLoopEnd.Value / _sourceStream.Samples);
+                float percent = 1.0f - (float) numLoopEnd.Value / _sourceStream.Samples;
 
                 _updating = true;
-                pnlLoopEnd.Width = (int)(pnlLoop.Width * percent);
+                pnlLoopEnd.Width = (int) (pnlLoop.Width * percent);
                 _updating = false;
             }
 
             if (_sourceStream.IsLooping)
             {
-                _sourceStream.LoopEndSample = (int)numLoopEnd.Value;
+                _sourceStream.LoopEndSample = (int) numLoopEnd.Value;
             }
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e) { LoadAudio(); }
-        private void btnStartSet_Click(object sender, EventArgs e) { numLoopStart.Value = customTrackBar1.Value; }
-        private void btnEndSet_Click(object sender, EventArgs e) { numLoopEnd.Value = customTrackBar1.Value; }
-        private void btnLoopRW_Click(object sender, EventArgs e) { Seek((int)numLoopStart.Value); }
-        private void btnFFwd_Click(object sender, EventArgs e) { Seek((int)numLoopEnd.Value); }
-        private void btnSeekEnd_Click(object sender, EventArgs e) { Seek(customTrackBar1.Maximum); }
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            LoadAudio();
+        }
 
+        private void btnStartSet_Click(object sender, EventArgs e)
+        {
+            numLoopStart.Value = customTrackBar1.Value;
+        }
+
+        private void btnEndSet_Click(object sender, EventArgs e)
+        {
+            numLoopEnd.Value = customTrackBar1.Value;
+        }
+
+        private void btnLoopRW_Click(object sender, EventArgs e)
+        {
+            Seek((int) numLoopStart.Value);
+        }
+
+        private void btnFFwd_Click(object sender, EventArgs e)
+        {
+            Seek((int) numLoopEnd.Value);
+        }
+
+        private void btnSeekEnd_Click(object sender, EventArgs e)
+        {
+            Seek(customTrackBar1.Maximum);
+        }
     }
 }

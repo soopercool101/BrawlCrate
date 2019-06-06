@@ -26,6 +26,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _numSamples = _info.NumSamples;
             }
         }
+
         private WaveInfo _info;
 
         public DataSource _audioSource;
@@ -37,23 +38,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int _loopStart;
         internal int _numSamples;
 
-        [Category("Audio Stream")]
-        public WaveEncoding Encoding => (WaveEncoding)_encoding;
-        [Category("Audio Stream")]
-        public int Channels => _channels;
-        [Category("Audio Stream")]
-        public bool IsLooped => _looped;
-        [Category("Audio Stream")]
-        public int SampleRate => _sampleRate;
-        [Category("Audio Stream")]
-        public int LoopStartSample => _loopStart;
-        [Category("Audio Stream")]
-        public int NumSamples => _numSamples;
+        [Category("Audio Stream")] public WaveEncoding Encoding => (WaveEncoding) _encoding;
+        [Category("Audio Stream")] public int Channels => _channels;
+        [Category("Audio Stream")] public bool IsLooped => _looped;
+        [Category("Audio Stream")] public int SampleRate => _sampleRate;
+        [Category("Audio Stream")] public int LoopStartSample => _loopStart;
+        [Category("Audio Stream")] public int NumSamples => _numSamples;
 
         internal IAudioStream _stream;
         internal UnsafeBuffer _streamBuffer;
 
-        ~RSARFileAudioNode() { Dispose(); }
+        ~RSARFileAudioNode()
+        {
+            Dispose();
+        }
 
         public override void Dispose()
         {
@@ -82,7 +80,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Info = *info;
 
             _streamBuffer = new UnsafeBuffer(strmLen);
-            Memory.Move(_streamBuffer.Address, strmAddr, (uint)strmLen);
+            Memory.Move(_streamBuffer.Address, strmAddr, (uint) strmLen);
             _audioSource = new DataSource(_streamBuffer.Address, _streamBuffer.Length);
 
             if (info->_format._encoding == 2)
@@ -134,12 +132,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         //}
 
-        public virtual IAudioStream[] CreateStreams() { return new IAudioStream[] { _stream }; }
+        public virtual IAudioStream[] CreateStreams()
+        {
+            return new IAudioStream[] {_stream};
+        }
     }
 
     public unsafe class RWAVNode : RSARFileAudioNode
     {
-        internal RWAV* Header => (RWAV*)WorkingUncompressed.Address;
+        internal RWAV* Header => (RWAV*) WorkingUncompressed.Address;
 
         public override bool OnInitialize()
         {

@@ -18,6 +18,7 @@ namespace System
             _renderTime,
             _nextRender = 0.0,
             _nextUpdate = 0.0;
+
         private readonly Stopwatch _updateWatch = new Stopwatch(), _renderWatch = new Stopwatch();
 
         public event EventHandler<FrameEventArgs> RenderFrame;
@@ -243,6 +244,7 @@ namespace System
 
                 UpdateAndRenderFrame();
             }
+
             //};
             //using (BackgroundWorker b = new BackgroundWorker())
             //{
@@ -385,7 +387,11 @@ namespace System
 
         private bool _running = false;
         public bool IsRunning => _running;
-        public void Stop() { _running = false; }
+
+        public void Stop()
+        {
+            _running = false;
+        }
 
         private void ProcessEvents()
         {
@@ -398,7 +404,9 @@ namespace System
     {
         private double elapsed;
 
-        public FrameEventArgs() { }
+        public FrameEventArgs()
+        {
+        }
 
         /// <param name="elapsed">The amount of time that has elapsed since the previous event, in seconds.</param>
         public FrameEventArgs(double elapsed)

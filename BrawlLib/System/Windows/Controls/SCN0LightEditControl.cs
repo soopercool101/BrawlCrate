@@ -43,7 +43,9 @@ namespace System.Windows.Forms
         private VisEditor visEditor1;
 
         private SCN0LightNode _target;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SCN0LightNode TargetSequence
         {
             get => _target;
@@ -110,6 +112,7 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
+
             listKeyframes.EndUpdate();
             visEditor1.TargetNode = TargetSequence;
             lightCtrl.ColorSource = TargetSequence;
@@ -119,7 +122,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            int page = (int)numFrame.Value - 1;
+            int page = (int) numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -154,7 +157,7 @@ namespace System.Windows.Forms
                 }
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < (_numFrames - 1);
+                btnNext.Enabled = _currentPage < _numFrames - 1;
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -165,7 +168,7 @@ namespace System.Windows.Forms
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
             {
-                if (((LightAnimationFrame)listKeyframes.Items[i]).Index == index)
+                if (((LightAnimationFrame) listKeyframes.Items[i]).Index == index)
                 {
                     return i;
                 }
@@ -176,7 +179,7 @@ namespace System.Windows.Forms
 
         private void UpdateBox(int index)
         {
-            if (_target.GetKeyframe((LightKeyframeMode)index, _currentPage) != null)
+            if (_target.GetKeyframe((LightKeyframeMode) index, _currentPage) != null)
             {
                 _boxes[index].BackColor = Color.Yellow;
             }
@@ -190,9 +193,9 @@ namespace System.Windows.Forms
         {
             NumericInputBox box = sender as NumericInputBox;
             LightAnimationFrame kf;
-            float* pkf = (float*)&kf;
+            float* pkf = (float*) &kf;
             float val = box.Value;
-            int index = (int)box.Tag;
+            int index = (int) box.Tag;
             int x;
 
             if (val != _currentFrame[index])
@@ -204,10 +207,10 @@ namespace System.Windows.Forms
                     //Value removed find keyframe and zero it out
                     if (kfIndex >= 0)
                     {
-                        kf = (LightAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (LightAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBools(index, false);
                         pkf[index] = val;
-                        for (x = 0; (x < 10) && float.IsNaN(pkf[x]); x++)
+                        for (x = 0; x < 10 && float.IsNaN(pkf[x]); x++)
                         {
                             ;
                         }
@@ -223,7 +226,7 @@ namespace System.Windows.Forms
                         }
                     }
 
-                    _target.RemoveKeyframe((LightKeyframeMode)index, _currentPage);
+                    _target.RemoveKeyframe((LightKeyframeMode) index, _currentPage);
                     val = _target.GetAnimFrame(_currentPage)[index];
                     box.Value = val;
                 }
@@ -231,7 +234,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (LightAnimationFrame)listKeyframes.Items[kfIndex];
+                        kf = (LightAnimationFrame) listKeyframes.Items[kfIndex];
                         kf.SetBools(index, true);
                         pkf[index] = val;
                         listKeyframes.Items[kfIndex] = kf;
@@ -244,7 +247,9 @@ namespace System.Windows.Forms
                         pkf[index] = val;
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((LightAnimationFrame)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        for (x = 0;
+                            x < count && ((LightAnimationFrame) listKeyframes.Items[x]).Index < _currentPage;
+                            x++)
                         {
                             ;
                         }
@@ -253,7 +258,7 @@ namespace System.Windows.Forms
                         listKeyframes.SelectedIndex = x;
                     }
 
-                    _target.SetKeyframe((LightKeyframeMode)index, _currentPage, val);
+                    _target.SetKeyframe((LightKeyframeMode) index, _currentPage, val);
                 }
 
                 _currentFrame[index] = val;
@@ -266,13 +271,20 @@ namespace System.Windows.Forms
             int index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                LightAnimationFrame f = (LightAnimationFrame)listKeyframes.SelectedItem;
-                numFrame.Value = (decimal)(f.Index + 1);
+                LightAnimationFrame f = (LightAnimationFrame) listKeyframes.SelectedItem;
+                numFrame.Value = (decimal) (f.Index + 1);
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value--; }
-        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value++; }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            numFrame.Value--;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            numFrame.Value++;
+        }
 
         #region Designer
 
@@ -322,7 +334,7 @@ namespace System.Windows.Forms
             lightCtrl = new CLRControl();
             tabPage4 = new TabPage();
             specCtrl = new CLRControl();
-            ((ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize) numFrame).BeginInit();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -345,19 +357,23 @@ namespace System.Windows.Forms
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(80, 5);
-            numFrame.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Minimum = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Value = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
@@ -786,7 +802,7 @@ namespace System.Windows.Forms
             Controls.Add(panel1);
             Name = "SCN0LightEditControl";
             Size = new Drawing.Size(293, 276);
-            ((ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize) numFrame).EndInit();
             groupBox1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
@@ -797,7 +813,6 @@ namespace System.Windows.Forms
             tabPage3.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion

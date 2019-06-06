@@ -6,12 +6,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0Node : NW4RAnimationNode
     {
-        internal SCN0v4* Header4 => (SCN0v4*)WorkingUncompressed.Address;
-        internal SCN0v5* Header5 => (SCN0v5*)WorkingUncompressed.Address;
+        internal SCN0v4* Header4 => (SCN0v4*) WorkingUncompressed.Address;
+        internal SCN0v5* Header5 => (SCN0v5*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SCN0;
-        public override int[] SupportedVersions => new int[] { 4, 5 };
+        public override int[] SupportedVersions => new int[] {4, 5};
 
-        public SCN0Node() { _version = 4; }
+        public SCN0Node()
+        {
+            _version = 4;
+        }
 
         private const string _category = "Scene Definition";
         public int _specLights, _lightsets, _amblights, _lights, _fogs, _cameras;
@@ -19,15 +22,39 @@ namespace BrawlLib.SSBB.ResourceNodes
         public SCN0GroupNode[] _groups = new SCN0GroupNode[5];
 
         [Browsable(false)]
-        public SCN0GroupNode LightSetGroup { get => _groups[0]; set => _groups[0] = value; }
+        public SCN0GroupNode LightSetGroup
+        {
+            get => _groups[0];
+            set => _groups[0] = value;
+        }
+
         [Browsable(false)]
-        public SCN0GroupNode AmbientGroup { get => _groups[1]; set => _groups[1] = value; }
+        public SCN0GroupNode AmbientGroup
+        {
+            get => _groups[1];
+            set => _groups[1] = value;
+        }
+
         [Browsable(false)]
-        public SCN0GroupNode LightGroup { get => _groups[2]; set => _groups[2] = value; }
+        public SCN0GroupNode LightGroup
+        {
+            get => _groups[2];
+            set => _groups[2] = value;
+        }
+
         [Browsable(false)]
-        public SCN0GroupNode FogGroup { get => _groups[3]; set => _groups[3] = value; }
+        public SCN0GroupNode FogGroup
+        {
+            get => _groups[3];
+            set => _groups[3] = value;
+        }
+
         [Browsable(false)]
-        public SCN0GroupNode CameraGroup { get => _groups[4]; set => _groups[4] = value; }
+        public SCN0GroupNode CameraGroup
+        {
+            get => _groups[4];
+            set => _groups[4] = value;
+        }
 
         [Category(_category)]
         public override int FrameCount
@@ -35,11 +62,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => base.FrameCount;
             set => base.FrameCount = value;
         }
+
         [Category(_category)]
         public override bool Loop
         {
             get => base.Loop;
-            set { base.Loop = value; UpdateChildFrameLimits(); }
+            set
+            {
+                base.Loop = value;
+                UpdateChildFrameLimits();
+            }
         }
 
         protected override void UpdateChildFrameLimits()
@@ -83,7 +115,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_version == 5)
             {
                 SCN0v5* header = Header5;
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -100,14 +132,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (header->_origPathOffset > 0)
                 {
                     _originalPath = header->OrigPath;
-                } (_userEntries = new UserDataCollection()).Read(header->UserData);
+                }
+
+                (_userEntries = new UserDataCollection()).Read(header->UserData);
 
                 return header->Group->_numEntries > 0;
             }
             else
             {
                 SCN0v4* header = Header4;
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -138,14 +172,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (Header->_version == 5)
             {
                 group = Header5->Group;
-                offsets = (bint*)Header5->_lightSetOffset.Address;
-                counts = (bshort*)Header5->_lightSetCount.Address;
+                offsets = (bint*) Header5->_lightSetOffset.Address;
+                counts = (bshort*) Header5->_lightSetCount.Address;
             }
             else
             {
                 group = Header4->Group;
-                offsets = (bint*)Header4->_lightSetOffset.Address;
-                counts = (bshort*)Header4->_lightSetCount.Address;
+                offsets = (bint*) Header4->_lightSetOffset.Address;
+                counts = (bshort*) Header4->_lightSetCount.Address;
             }
 
             SCN0GroupNode g;
@@ -154,17 +188,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                 string name = group->First[i].GetName();
                 (g = new SCN0GroupNode(name)).Initialize(this, new DataSource(group->First[i].DataAddress, 0));
 
-                int typeID = (int)g._type;
+                int typeID = (int) g._type;
                 _groups[typeID] = g;
 
                 Type t = SCN0GroupNode._types[typeID];
 
                 ResourceNode r;
-                VoidPtr entryAddr = (VoidPtr)Header + offsets[typeID];
+                VoidPtr entryAddr = (VoidPtr) Header + offsets[typeID];
                 for (int x = 0, offset = 0, size = 0; x < counts[typeID]; x++, offset += size)
                 {
                     r = Activator.CreateInstance(t) as ResourceNode;
-                    size = *(bint*)(entryAddr + offset);
+                    size = *(bint*) (entryAddr + offset);
                     r.Initialize(g, new DataSource(entryAddr + offset, size));
                 }
             }
@@ -180,11 +214,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public SCN0GroupNode GetOrCreateFolder<T>() where T : SCN0EntryNode
         {
-            return GetOrCreateFolder((SCN0GroupNode.GroupType)SCN0GroupNode._types.IndexOf(typeof(T)));
+            return GetOrCreateFolder((SCN0GroupNode.GroupType) SCN0GroupNode._types.IndexOf(typeof(T)));
         }
+
         public SCN0GroupNode GetOrCreateFolder(SCN0GroupNode.GroupType type)
         {
-            int typeID = (int)type;
+            int typeID = (int) type;
             if (typeID < 0 || typeID >= 5)
             {
                 return null;
@@ -200,13 +235,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public SCN0GroupNode GetFolder<T>() where T : SCN0EntryNode
         {
-            return GetFolder((SCN0GroupNode.GroupType)SCN0GroupNode._types.IndexOf(typeof(T)));
+            return GetFolder((SCN0GroupNode.GroupType) SCN0GroupNode._types.IndexOf(typeof(T)));
         }
+
         public SCN0GroupNode GetFolder(SCN0GroupNode.GroupType type)
         {
             Populate(0);
 
-            int typeID = (int)type;
+            int typeID = (int) type;
             if (typeID < 0 || typeID >= 5)
             {
                 return null;
@@ -274,11 +310,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceGroup* group;
             if (_version == 5)
             {
-                SCN0v5* header = (SCN0v5*)address;
+                SCN0v5* header = (SCN0v5*) address;
 
                 header->_origPathOffset = 0;
-                header->_frameCount = (ushort)_numFrames;
-                header->_specLightCount = (ushort)_specLights;
+                header->_frameCount = (ushort) _numFrames;
+                header->_specLightCount = (ushort) _specLights;
                 header->_loop = _loop ? 1 : 0;
                 header->_pad = 0;
                 header->_dataOffset = SCN0v5.Size;
@@ -287,11 +323,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                SCN0v4* header = (SCN0v4*)address;
+                SCN0v4* header = (SCN0v4*) address;
 
                 header->_origPathOffset = 0;
-                header->_frameCount = (ushort)_numFrames;
-                header->_specLightCount = (ushort)_specLights;
+                header->_frameCount = (ushort) _numFrames;
+                header->_specLightCount = (ushort) _specLights;
                 header->_loop = _loop ? 1 : 0;
                 header->_pad = 0;
                 header->_dataOffset = SCN0v4.Size;
@@ -323,22 +359,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         foreach (SCN0EntryNode e in g.Children)
                         {
-                            dataAddrs[i + 1] += (i == 1 ? e._calcSize : e._dataLengths[i - 2]);
+                            dataAddrs[i + 1] += i == 1 ? e._calcSize : e._dataLengths[i - 2];
                         }
                     }
                 }
             }
 
             //Use an index array to remap and write groups in proper order.
-            int[] indices = new int[] { -1, -1, -1, -1, -1 };
+            int[] indices = new int[] {-1, -1, -1, -1, -1};
 
             //Loop through groups and set index, length and count
             foreach (SCN0GroupNode g in Children)
             {
-                int i = (int)g._type;
+                int i = (int) g._type;
                 indices[i] = g.Index;
                 lengths[i + 1] = g._dataLengths[1];
-                counts[i] = (short)g.Children.Count;
+                counts[i] = (short) g.Children.Count;
             }
 
             //Now loop through indices to get each group and write it
@@ -349,7 +385,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (g != null)
                 {
                     //Set offset to group in main resource group
-                    (entry++)->_dataOffset = (int)dataAddrs[0] - (int)group;
+                    (entry++)->_dataOffset = (int) dataAddrs[0] - (int) group;
 
                     //Set addresses for rebuild
                     for (int x = 0; x < 4; x++)
@@ -372,7 +408,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Set header values
             if (_version == 5)
             {
-                SCN0v5* header = (SCN0v5*)address;
+                SCN0v5* header = (SCN0v5*) address;
                 header->_lightSetCount = counts[0];
                 header->_ambientCount = counts[1];
                 header->_lightCount = counts[2];
@@ -387,7 +423,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                SCN0v4* header = (SCN0v4*)address;
+                SCN0v4* header = (SCN0v4*) address;
                 header->_lightSetCount = counts[0];
                 header->_ambientCount = counts[1];
                 header->_lightCount = counts[2];
@@ -397,14 +433,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength, StringTable stringTable)
+        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength,
+                                                     StringTable stringTable)
         {
             base.PostProcess(bresAddress, dataAddress, dataLength, stringTable);
 
             ResourceGroup* group;
             if (_version == 5)
             {
-                SCN0v5* header = (SCN0v5*)dataAddress;
+                SCN0v5* header = (SCN0v5*) dataAddress;
                 header->ResourceStringAddress = stringTable[Name] + 4;
                 if (!string.IsNullOrEmpty(_originalPath))
                 {
@@ -415,7 +452,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                SCN0v4* header = (SCN0v4*)dataAddress;
+                SCN0v4* header = (SCN0v4*) dataAddress;
                 header->ResourceStringAddress = stringTable[Name] + 4;
                 if (!string.IsNullOrEmpty(_originalPath))
                 {
@@ -429,10 +466,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceEntry* rEntry = group->First;
 
             int index = 1;
-            int[] indices = new int[] { -1, -1, -1, -1, -1 };
+            int[] indices = new int[] {-1, -1, -1, -1, -1};
             foreach (SCN0GroupNode g in Children)
             {
-                indices[(int)g._type] = g.Index;
+                indices[(int) g._type] = g.Index;
             }
 
             VoidPtr addr = dataAddress;
@@ -441,19 +478,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SCN0GroupNode n = indices[i] >= 0 ? Children[indices[i]] as SCN0GroupNode : null;
                 if (n != null)
                 {
-                    addr = (VoidPtr)group + (rEntry++)->_dataOffset;
-                    ResourceEntry.Build(group, index++, addr, (BRESString*)stringTable[n.Name]);
+                    addr = (VoidPtr) group + (rEntry++)->_dataOffset;
+                    ResourceEntry.Build(group, index++, addr, (BRESString*) stringTable[n.Name]);
                     n.PostProcess(dataAddress, addr, stringTable);
                 }
             }
 
             if (_version == 5)
             {
-                _userEntries.PostProcess(((SCN0v5*)addr)->UserData, stringTable);
+                _userEntries.PostProcess(((SCN0v5*) addr)->UserData, stringTable);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((SCN0v4*)source.Address)->_header._tag == SCN0v4.Tag ? new SCN0Node() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((SCN0v4*) source.Address)->_header._tag == SCN0v4.Tag ? new SCN0Node() : null;
+        }
 
         public T CreateResource<T>(string name) where T : SCN0EntryNode
         {
@@ -469,6 +509,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return n;
         }
+
         public SCN0EntryNode CreateResource(SCN0GroupNode.GroupType type, string name)
         {
             SCN0GroupNode group = GetOrCreateFolder(type);
@@ -477,7 +518,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return null;
             }
 
-            Type t = SCN0GroupNode._types[(int)type];
+            Type t = SCN0GroupNode._types[(int) type];
             SCN0EntryNode n = Activator.CreateInstance(t) as SCN0EntryNode;
             n.Name = group.FindName(name);
             group.AddChild(n);

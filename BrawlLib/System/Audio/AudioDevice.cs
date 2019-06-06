@@ -15,6 +15,7 @@
                 {
                     case PlatformID.Win32NT: return wAudioDevice.PlaybackDevices;
                 }
+
                 return null;
             }
         }
@@ -27,6 +28,7 @@
                 {
                     case PlatformID.Win32NT: return wAudioDevice.DefaultPlaybackDevice;
                 }
+
                 return null;
             }
         }
@@ -39,6 +41,7 @@
                 {
                     case PlatformID.Win32NT: return wAudioDevice.DefaultVoicePlaybackDevice;
                 }
+
                 return null;
             }
         }

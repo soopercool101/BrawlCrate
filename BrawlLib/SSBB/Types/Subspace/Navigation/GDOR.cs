@@ -17,10 +17,25 @@ namespace BrawlLib.SSBBTypes
             _count = count;
         }
 
-        public VoidPtr this[int index] => (byte*)Address + Offsets(index);
-        public uint Offsets(int index) { return *(buint*)((byte*)Address + 0x08 + (index * 4)); }
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr this[int index] => (byte*) Address + Offsets(index);
+
+        public uint Offsets(int index)
+        {
+            return *(buint*) ((byte*) Address + 0x08 + index * 4);
+        }
+
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct GDOREntry
     {
@@ -78,17 +93,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 3; i++)
                 {
-                    bytes[i] = *(byte*)(Address + 0x30 + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + 0x30 + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -103,6 +122,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public string Trigger0
         {
             get
@@ -111,17 +131,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)(Address + 0x40 + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + 0x40 + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -136,6 +160,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public string Trigger1
         {
             get
@@ -144,17 +169,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)(Address + 0x4C + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + 0x4C + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -169,6 +198,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public string Trigger2
         {
             get
@@ -177,17 +207,21 @@ namespace BrawlLib.SSBBTypes
                 string s1 = "";
                 for (int i = 0; i < 4; i++)
                 {
-                    bytes[i] = *(byte*)(Address + 0x50 + i);
-                    if (bytes[i].ToString("x").Length < 2) { s1 += bytes[i].ToString("x").PadLeft(2, '0'); }
+                    bytes[i] = *(byte*) (Address + 0x50 + i);
+                    if (bytes[i].ToString("x").Length < 2)
+                    {
+                        s1 += bytes[i].ToString("x").PadLeft(2, '0');
+                    }
                     else
-                    { s1 += bytes[i].ToString("x").ToUpper(); }
+                    {
+                        s1 += bytes[i].ToString("x").ToUpper();
+                    }
                 }
-                return s1;
 
+                return s1;
             }
             set
             {
-
                 if (value == null)
                 {
                     value = "";
@@ -202,6 +236,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public float Pad4
         {
             set
@@ -218,6 +253,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         public byte Pad2
         {
             set
@@ -236,15 +272,15 @@ namespace BrawlLib.SSBBTypes
         {
             _pad0 = 1.0f;
             _unk0 = _unk1 = _unk2 = _unk3 =
-            _unk4 = _unk5 = _unk6 = 0;
+                _unk4 = _unk5 = _unk6 = 0;
             _pad1 = 0;
             _unkInt = 0;
             _xOverride = _yOverride = _zOverride =
-            _unkFloat0 = _unkFloat1 = 0;
+                _unkFloat0 = _unkFloat1 = 0;
             _unk7 = 1;
             _unk8 = _unk9 = _unk10 = 0;
             _nulls = 0xffffffff;
-            _mdlIndex = (byte)modelIndex;
+            _mdlIndex = (byte) modelIndex;
             _doorIndex = 0;
             DoorID = stageID;
             Trigger0 = trigger0;
@@ -254,6 +290,15 @@ namespace BrawlLib.SSBBTypes
             Pad4 = 1.0f;
         }
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 }

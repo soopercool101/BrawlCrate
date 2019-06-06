@@ -20,6 +20,7 @@ namespace BrawlLib.Wii.Audio
             _cyn2 = _lyn2 = _yn2 = yn2;
             _coefs = coefs;
         }
+
         public ADPCMState(byte* srcPtr, short ps, short yn1, short yn2, short[] coefs)
         {
             _srcPtr = srcPtr;
@@ -32,7 +33,9 @@ namespace BrawlLib.Wii.Audio
             _lyn2 = yn2;
             _coefs = coefs;
         }
-        public ADPCMState(byte* srcPtr, short ps, short yn1, short yn2, short lps, short lyn1, short lyn2, short[] coefs)
+
+        public ADPCMState(byte* srcPtr, short ps, short yn1, short yn2, short lps, short lyn1, short lyn2,
+                          short[] coefs)
         {
             _srcPtr = srcPtr;
             _sampleIndex = 0;
@@ -51,6 +54,7 @@ namespace BrawlLib.Wii.Audio
             _cyn1 = _yn1;
             _cyn2 = _yn2;
         }
+
         public void InitLoop()
         {
             _cps = _lps;
@@ -84,10 +88,11 @@ namespace BrawlLib.Wii.Audio
             scale = 1 << (_cps & 0x0F);
             cIndex = (_cps >> 4) << 1;
 
-            outSample = (0x400 + (scale * outSample << 11) + (_coefs[cIndex.Clamp(0, 15)] * _cyn1) + (_coefs[(cIndex + 1).Clamp(0, 15)] * _cyn2)) >> 11;
+            outSample = (0x400 + ((scale * outSample) << 11) + _coefs[cIndex.Clamp(0, 15)] * _cyn1 +
+                         _coefs[(cIndex + 1).Clamp(0, 15)] * _cyn2) >> 11;
 
             _cyn2 = _cyn1;
-            return _cyn1 = (short)outSample.Clamp(-32768, 32767);
+            return _cyn1 = (short) outSample.Clamp(-32768, 32767);
         }
     }
 }

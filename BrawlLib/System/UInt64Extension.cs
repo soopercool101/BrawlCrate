@@ -31,6 +31,7 @@
 
             return value;
         }
+
         public static ulong Clamp(this ulong value, ulong min, ulong max)
         {
             if (value <= min)

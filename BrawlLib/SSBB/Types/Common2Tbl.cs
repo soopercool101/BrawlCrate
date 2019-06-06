@@ -18,7 +18,17 @@ namespace BrawlLib.SSBBTypes
         public int _pad3;
 
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public string Str => new string((sbyte*)Address + _DataLength + (_OffCount * 4) + 0x20 + (_DataTable * 8));
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public string Str => new string((sbyte*) Address + _DataLength + _OffCount * 4 + 0x20 + _DataTable * 8);
     }
 }

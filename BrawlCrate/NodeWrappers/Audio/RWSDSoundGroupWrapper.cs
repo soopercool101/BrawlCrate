@@ -11,6 +11,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static RWSDSoundGroupWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -27,17 +28,24 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void CreateAction(object sender, EventArgs e) { GetInstance<RWSDSoundGroupWrapper>().Import(); }
+
+        protected static void CreateAction(object sender, EventArgs e)
+        {
+            GetInstance<RWSDSoundGroupWrapper>().Import();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[6].Enabled = _menu.Items[7].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RWSDSoundGroupWrapper w = GetInstance<RWSDSoundGroupWrapper>();
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         private unsafe void Import()
         {
             if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path) > 0)
@@ -61,8 +69,12 @@ namespace BrawlCrate.NodeWrappers
                 res.TreeView.SelectedNode = res;
             }
         }
+
         #endregion
 
-        public RWSDSoundGroupWrapper() { ContextMenuStrip = _menu; }
+        public RWSDSoundGroupWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

@@ -28,26 +28,38 @@ namespace BrawlLib.SSBBTypes
             _dataOffset = Size;
             _stringOffset = 0;
             _origPathOffset = 0;
-            _frames = (ushort)frames;
-            _entries = (ushort)entries;
+            _frames = (ushort) frames;
+            _entries = (ushort) entries;
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -77,32 +89,44 @@ namespace BrawlLib.SSBBTypes
             _dataOffset = Size;
             _stringOffset = 0;
             _origPathOffset = 0;
-            _frames = (ushort)frames;
-            _entries = (ushort)entries;
+            _frames = (ushort) frames;
+            _entries = (ushort) entries;
             _loop = loop ? 1 : 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
 
         public VoidPtr UserData
         {
             get => _userDataOffset == 0 ? null : Address + _userDataOffset;
-            set => _userDataOffset = (int)value - (int)Address;
+            set => _userDataOffset = (int) value - (int) Address;
         }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -135,17 +159,17 @@ namespace BrawlLib.SSBBTypes
 
     public enum EntryTarget
     {
-        LightChannel0MaterialColor,     // GX_COLOR0A0
-        LightChannel1MaterialColor,     // GX_COLOR1A1
-        LightChannel0AmbientColor,      // GX_COLOR0A0
-        LightChannel1AmbientColor,      // GX_COLOR1A1
-        ColorRegister0,                 // GX_TEVREG0
-        ColorRegister1,                 // GX_TEVREG1
-        ColorRegister2,                 // GX_TEVREG2
-        ConstantColorRegister0,         // GX_KCOLOR0
-        ConstantColorRegister1,         // GX_KCOLOR1
-        ConstantColorRegister2,         // GX_KCOLOR2
-        ConstantColorRegister3,         // GX_KCOLOR3
+        LightChannel0MaterialColor, // GX_COLOR0A0
+        LightChannel1MaterialColor, // GX_COLOR1A1
+        LightChannel0AmbientColor, // GX_COLOR0A0
+        LightChannel1AmbientColor, // GX_COLOR1A1
+        ColorRegister0, // GX_TEVREG0
+        ColorRegister1, // GX_TEVREG1
+        ColorRegister2, // GX_TEVREG2
+        ConstantColorRegister0, // GX_KCOLOR0
+        ConstantColorRegister1, // GX_KCOLOR1
+        ConstantColorRegister2, // GX_KCOLOR2
+        ConstantColorRegister3, // GX_KCOLOR3
     }
 
     [Flags]
@@ -166,23 +190,38 @@ namespace BrawlLib.SSBBTypes
         public CLR0Material(CLR0EntryFlags flags, RGBAPixel mask, int offset)
         {
             _stringOffset = 0;
-            _flags = (uint)flags;
+            _flags = (uint) flags;
         }
+
         public CLR0Material(CLR0EntryFlags flags, RGBAPixel mask, RGBAPixel color)
         {
             _stringOffset = 0;
-            _flags = (uint)flags;
+            _flags = (uint) flags;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public CLR0EntryFlags Flags { get => (CLR0EntryFlags)(uint)_flags; set => _flags = (uint)value; }
+        public CLR0EntryFlags Flags
+        {
+            get => (CLR0EntryFlags) (uint) _flags;
+            set => _flags = (uint) value;
+        }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -192,13 +231,18 @@ namespace BrawlLib.SSBBTypes
         public RGBAPixel _colorMask; //Used as a mask for source color before applying frames
         public bint _data;
 
-        public RGBAPixel SolidColor { get => *(RGBAPixel*)(Address + 4); set => *(RGBAPixel*)(Address + 4) = value; }
-        public RGBAPixel* Data => (RGBAPixel*)(Address + _data + 4);
+        public RGBAPixel SolidColor
+        {
+            get => *(RGBAPixel*) (Address + 4);
+            set => *(RGBAPixel*) (Address + 4) = value;
+        }
+
+        public RGBAPixel* Data => (RGBAPixel*) (Address + _data + 4);
 
         public CLR0MaterialEntry(RGBAPixel mask, RGBAPixel color)
         {
             _colorMask = mask;
-            _data._data = *(int*)&color;
+            _data._data = *(int*) &color;
         }
 
         public CLR0MaterialEntry(RGBAPixel mask, int offset)
@@ -207,6 +251,15 @@ namespace BrawlLib.SSBBTypes
             _data = offset;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 }

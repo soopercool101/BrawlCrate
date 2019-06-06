@@ -6,13 +6,18 @@ namespace BrawlLib.Modeling
 {
     public unsafe partial class Collada : Form
     {
-        public Collada() { InitializeComponent(); }
+        public Collada()
+        {
+            InitializeComponent();
+        }
+
         public Collada(Form owner, string title)
             : this()
         {
             Owner = owner;
             Text = title;
         }
+
         private Button button1;
         private Button button2;
         private Panel panel1;
@@ -33,7 +38,7 @@ namespace BrawlLib.Modeling
             base.OnShown(e);
 
             PropertyInfo info = propertyGrid1.GetType().GetProperty("Controls");
-            Control.ControlCollection collection = (Control.ControlCollection)info.GetValue(propertyGrid1, null);
+            Control.ControlCollection collection = (Control.ControlCollection) info.GetValue(propertyGrid1, null);
 
             foreach (object control in collection)
             {
@@ -72,6 +77,7 @@ namespace BrawlLib.Modeling
                 _importOptions = new ImportOptions();
                 return model;
             }
+
             _importOptions = new ImportOptions();
             return null;
         }
@@ -112,7 +118,7 @@ namespace BrawlLib.Modeling
             // 
             // button1
             // 
-            button1.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button1.Location = new System.Drawing.Point(231, 6);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(65, 23);
@@ -123,7 +129,7 @@ namespace BrawlLib.Modeling
             // 
             // button2
             // 
-            button2.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             button2.DialogResult = DialogResult.Cancel;
             button2.Location = new System.Drawing.Point(302, 6);
             button2.Name = "button2";
@@ -178,7 +184,6 @@ namespace BrawlLib.Modeling
             panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
-
         }
     }
 }

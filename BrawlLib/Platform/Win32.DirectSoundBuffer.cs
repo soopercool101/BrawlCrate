@@ -21,7 +21,11 @@ namespace System
                 public WaveFormatEx* lpwfxFormat;
                 public Guid guid3DAlgorithm;
 
-                public DSBufferDesc(uint bufferSize, DSBufferCapsFlags bufferCaps) : this(bufferSize, bufferCaps, null, Guid.Empty) { }
+                public DSBufferDesc(uint bufferSize, DSBufferCapsFlags bufferCaps) : this(bufferSize, bufferCaps, null,
+                    Guid.Empty)
+                {
+                }
+
                 public DSBufferDesc(uint bufferSize, DSBufferCapsFlags bufferCaps, WaveFormatEx* format, Guid algorithm)
                 {
                     dwSize = Size;
@@ -54,6 +58,7 @@ namespace System
                 public IntPtr dwReserved1;
                 public IntPtr dwReserved2;
             }
+
             [StructLayout(LayoutKind.Sequential, Pack = 1)]
             internal struct DSBufferPositionNotify
             {
@@ -138,7 +143,9 @@ namespace System
             #endregion
 
             #region COM Interfaces
-            [Guid("279AFA85-4981-11CE-A521-0020AF0BE560"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+
+            [Guid("279AFA85-4981-11CE-A521-0020AF0BE560")]
+            [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
             internal unsafe interface IDirectSoundBuffer8
             {
                 void GetCaps(ref DSBufferCaps pDSBufferCaps);
@@ -149,7 +156,10 @@ namespace System
                 void GetFrequency(out uint pdwFrequency);
                 void GetStatus(out DSBufferStatus pdwStatus);
                 void Initialize(IDirectSound8 pDirectSound, ref DSBufferDesc pcDSBufferDesc);
-                void Lock(uint dwOffset, uint dwBytes, out IntPtr ppvAudioPtr1, out uint pdwAudioBytes1, out IntPtr ppvAudioPtr2, out uint pdwAudioBytes2, DSLockFlags dwFlags);
+
+                void Lock(uint dwOffset, uint dwBytes, out IntPtr ppvAudioPtr1, out uint pdwAudioBytes1,
+                          out IntPtr ppvAudioPtr2, out uint pdwAudioBytes2, DSLockFlags dwFlags);
+
                 void Play(uint dwReserved1, uint dwPriority, DSBufferPlayFlags dwFlags);
                 void SetCurrentPosition(uint dwNewPosition);
                 void SetFormat(WaveFormatEx* pcfxFormat);
@@ -159,16 +169,25 @@ namespace System
                 void Stop();
                 void Unlock(IntPtr pvAudioPtr1, uint dwAudioBytes1, IntPtr pvAudioPtr2, uint dwAudioBytes2);
                 void Restore();
-                void SetFX(uint dwEffectsCount, [MarshalAs(UnmanagedType.LPArray)] DSEffectDesc[] pDSFXDesc, [MarshalAs(UnmanagedType.LPArray)] DSEffectResult[] pdwResultCodes);
-                void AcquireResources(DSBufferPlayFlags dwFlags, uint dwEffectsCount, [MarshalAs(UnmanagedType.LPArray)] DSEffectResult[] pdwResultCodes);
+
+                void SetFX(uint dwEffectsCount, [MarshalAs(UnmanagedType.LPArray)] DSEffectDesc[] pDSFXDesc,
+                           [MarshalAs(UnmanagedType.LPArray)] DSEffectResult[] pdwResultCodes);
+
+                void AcquireResources(DSBufferPlayFlags dwFlags, uint dwEffectsCount,
+                                      [MarshalAs(UnmanagedType.LPArray)] DSEffectResult[] pdwResultCodes);
+
                 void GetObjectInPath(ref Guid rguidObject, uint dwIndex, ref Guid rguidInterface, out IntPtr ppObject);
             }
 
-            [Guid("B0210783-89CD-11D0-AF08-00A0C925CD16"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+            [Guid("B0210783-89CD-11D0-AF08-00A0C925CD16")]
+            [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
             internal unsafe interface IDirectSound8Notify
             {
-                void SetNotificationPositions(uint dwPositionNotifies, [MarshalAs(UnmanagedType.LPArray)] DSBufferPositionNotify[] pcPositionNotifies);
+                void SetNotificationPositions(uint dwPositionNotifies,
+                                              [MarshalAs(UnmanagedType.LPArray)]
+                                              DSBufferPositionNotify[] pcPositionNotifies);
             }
+
             #endregion
         }
     }

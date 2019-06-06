@@ -33,6 +33,7 @@
         private CheckBox chkSrtVersion;
         private ComboBox srtVersion;
         private CheckBox srtEditLoop;
+
         #region Designer
 
         private GroupBox groupBox1;
@@ -387,9 +388,11 @@
             // 
             srtVersion.Enabled = false;
             srtVersion.FormattingEnabled = true;
-            srtVersion.Items.AddRange(new object[] {
-            "4",
-            "5"});
+            srtVersion.Items.AddRange(new object[]
+            {
+                "4",
+                "5"
+            });
             srtVersion.Location = new Drawing.Point(310, 146);
             srtVersion.Name = "srtVersion";
             srtVersion.Size = new Drawing.Size(79, 21);
@@ -413,11 +416,13 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
 
-        public EditAllSRT0Editor() { InitializeComponent(); }
+        public EditAllSRT0Editor()
+        {
+            InitializeComponent();
+        }
     }
 }

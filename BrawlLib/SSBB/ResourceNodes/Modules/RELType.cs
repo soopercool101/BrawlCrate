@@ -10,10 +10,30 @@ namespace BrawlLib.SSBB.ResourceNodes
         private bool _inherited = false;
         private readonly List<InheritanceItemNode> _inheritance = new List<InheritanceItemNode>();
 
-        public string FullName { get => _fullName; set => _fullName = value; }
-        public string FormalName { get => GetName(); set => SetName(value); }
-        public string[] FormalArguments { get => GetArguments(); set => SetArguments(value); }
-        public bool Inherited { get => _inherited; set => _inherited = value; }
+        public string FullName
+        {
+            get => _fullName;
+            set => _fullName = value;
+        }
+
+        public string FormalName
+        {
+            get => GetName();
+            set => SetName(value);
+        }
+
+        public string[] FormalArguments
+        {
+            get => GetArguments();
+            set => SetArguments(value);
+        }
+
+        public bool Inherited
+        {
+            get => _inherited;
+            set => _inherited = value;
+        }
+
         public List<InheritanceItemNode> Inheritance => _inheritance;
 
         public RELType(string name)
@@ -49,7 +69,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_fullName.Contains('<') && _fullName.EndsWith(">"))
             {
-                arguments = _fullName.Remove(_fullName.Length - 1).Split(new char[] { '<' }, 2)[1].Split(',');
+                arguments = _fullName.Remove(_fullName.Length - 1).Split(new char[] {'<'}, 2)[1].Split(',');
                 for (int i = 0; i < arguments.Length; i++)
                 {
                     arguments[i] = arguments[i].Trim();
@@ -107,7 +127,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         public RELType _type;
         public uint _unknown;
 
-        public RELType Type { get => _type; set { _type = value; SignalPropertyChange(); } }
+        public RELType Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                SignalPropertyChange();
+            }
+        }
+
         public uint Unknown => _unknown;
 
         public InheritanceItemNode(RELType type, uint unknown)

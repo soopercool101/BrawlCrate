@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class hkClassNode : HavokClassNode
     {
-        internal hkClass* Header => (hkClass*)WorkingUncompressed.Address;
+        internal hkClass* Header => (hkClass*) WorkingUncompressed.Address;
 
         public List<hkClassNode> _inheritance = null;
 
@@ -17,29 +17,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         private string _parentName;
 
         [Category("hkClass Node")]
-        public string Inheritance => _inheritance == null ? ClassName : string.Join(", ", _inheritance.Select(x => x.Name));
-        [Category("hkClass Node")]
-        public string ParentClass => _parentName;
-        [Category("hkClass Node")]
-        public int InterfaceCount => _interfaceCount;
-        [Category("hkClass Node")]
-        public int EnumCount => _enumCount;
-        [Category("hkClass Node")]
-        public int MemberCount => _memberCount;
-        [Category("hkClass Node")]
-        public int Version => _version;
-        [Category("hkClass Node")]
-        public int Size => _size;
-        [Category("hkClass Node")]
-        public int Flags => _flags;
-        [Category("hkClass Node")]
-        public int DefaultsPtr => _defaultsPtr;
+        public string Inheritance =>
+            _inheritance == null ? ClassName : string.Join(", ", _inheritance.Select(x => x.Name));
+
+        [Category("hkClass Node")] public string ParentClass => _parentName;
+        [Category("hkClass Node")] public int InterfaceCount => _interfaceCount;
+        [Category("hkClass Node")] public int EnumCount => _enumCount;
+        [Category("hkClass Node")] public int MemberCount => _memberCount;
+        [Category("hkClass Node")] public int Version => _version;
+        [Category("hkClass Node")] public int Size => _size;
+        [Category("hkClass Node")] public int Flags => _flags;
+        [Category("hkClass Node")] public int DefaultsPtr => _defaultsPtr;
 
         public override bool OnInitialize()
         {
             if (Header->_namePtr > 0)
             {
-                _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
+                _name = new string((sbyte*) Header->_namePtr.OffsetAddress);
             }
 
             _interfaceCount = Header->_interfaceCount;
@@ -52,14 +46,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (Header->_parentPtr != 0)
             {
-                hkClass* parent = (hkClass*)Header->_parentPtr.OffsetAddress;
-                _parentName = new string((sbyte*)parent->_namePtr.OffsetAddress);
+                hkClass* parent = (hkClass*) Header->_parentPtr.OffsetAddress;
+                _parentName = new string((sbyte*) parent->_namePtr.OffsetAddress);
             }
 
             int attribCount = 0;
             if (Header->_attribPtr != 0)
             {
-                hkCustomAttributes* attribHeader = (hkCustomAttributes*)Header->_attribPtr.OffsetAddress;
+                hkCustomAttributes* attribHeader = (hkCustomAttributes*) Header->_attribPtr.OffsetAddress;
                 attribCount = attribHeader->_count;
             }
 
@@ -139,7 +133,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Now add this class and the classes it inherits
             while (current != null && current is hkClassNode)
             {
-                hkClassNode cNode = (hkClassNode)current;
+                hkClassNode cNode = (hkClassNode) current;
 
                 _inheritance.Add(cNode);
 
@@ -147,6 +141,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     current = current.Parent;
                 }
+
                 //else if (!string.IsNullOrEmpty(cNode.ParentClass))
                 //{
                 //    current = null;
@@ -166,32 +161,34 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (Header->_propertyPtr != 0 && Header->_propertyCount > 0)
             {
-                HavokGroupNode memberGroup = new HavokGroupNode() { _name = "Members" };
+                HavokGroupNode memberGroup = new HavokGroupNode() {_name = "Members"};
                 memberGroup.Parent = this;
-                hkClassMember* member = (hkClassMember*)Header->_propertyPtr.OffsetAddress;
+                hkClassMember* member = (hkClassMember*) Header->_propertyPtr.OffsetAddress;
                 for (int i = 0; i < Header->_propertyCount; i++, member++)
                 {
                     new hkClassMemberNode().Initialize(memberGroup, member, 20);
                 }
             }
+
             if (Header->_enumPtr != 0 && Header->_enumCount > 0)
             {
-                HavokGroupNode enumGroup = new HavokGroupNode() { _name = "Enums" };
+                HavokGroupNode enumGroup = new HavokGroupNode() {_name = "Enums"};
                 enumGroup.Parent = this;
-                hkClassEnum* Enum = (hkClassEnum*)Header->_enumPtr.OffsetAddress;
+                hkClassEnum* Enum = (hkClassEnum*) Header->_enumPtr.OffsetAddress;
                 for (int i = 0; i < Header->_enumCount; i++, Enum++)
                 {
                     new hkClassEnumNode().Initialize(enumGroup, Enum, 16);
                 }
             }
+
             if (Header->_attribPtr != 0)
             {
-                hkCustomAttributes* attribHeader = (hkCustomAttributes*)Header->_attribPtr.OffsetAddress;
+                hkCustomAttributes* attribHeader = (hkCustomAttributes*) Header->_attribPtr.OffsetAddress;
                 if (attribHeader->_count > 0)
                 {
-                    HavokGroupNode attribGroup = new HavokGroupNode() { _name = "Attributes" };
+                    HavokGroupNode attribGroup = new HavokGroupNode() {_name = "Attributes"};
                     attribGroup.Parent = this;
-                    HavokAttribute* attrib = (HavokAttribute*)attribHeader->_attribPtr.OffsetAddress;
+                    HavokAttribute* attrib = (HavokAttribute*) attribHeader->_attribPtr.OffsetAddress;
                     for (int i = 0; i < attribHeader->_count; i++, attrib++)
                     {
                         new HavokAttributeNode().Initialize(attribGroup, attrib, 12);
@@ -219,7 +216,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             writer.WriteStartElement("hkparam");
             writer.WriteAttributeString("name", "parent");
-            writer.WriteString(_parent is HavokClassNode ? HavokXML.GetObjectName(classNodes, _parent as HavokClassNode) : "null");
+            writer.WriteString(_parent is HavokClassNode
+                ? HavokXML.GetObjectName(classNodes, _parent as HavokClassNode)
+                : "null");
             writer.WriteEndElement();
 
             writer.WriteStartElement("hkparam");
@@ -279,11 +278,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class HavokAttributeNode : HavokEntryNode
     {
-        internal HavokAttribute* Header => (HavokAttribute*)WorkingUncompressed.Address;
+        internal HavokAttribute* Header => (HavokAttribute*) WorkingUncompressed.Address;
 
         public override bool OnInitialize()
         {
-            _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
+            _name = new string((sbyte*) Header->_namePtr.OffsetAddress);
 
             return base.OnInitialize();
         }
@@ -291,22 +290,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class hkClassMemberNode : HavokEntryNode
     {
-        internal hkClassMember* Header => (hkClassMember*)WorkingUncompressed.Address;
+        internal hkClassMember* Header => (hkClassMember*) WorkingUncompressed.Address;
 
-        [Category("Class Member")]
-        public hkClassMember.Type Type => _type;
-        [Category("Class Member")]
-        public int OffsetInStruct => _structOffset;
-        [Category("Class Member")]
-        public int ArraySize => _arraySize;
-        [Category("Class Member")]
-        public hkClassMember.Type SubType => _subType;
-        [Category("Class Member")]
-        public string EnumName => _enum;
-        [Category("Class Member")]
-        public string ClassName => _class;
-        [Category("Class Member")]
-        public hkClassMember.Flags Flags => _flags;
+        [Category("Class Member")] public hkClassMember.Type Type => _type;
+        [Category("Class Member")] public int OffsetInStruct => _structOffset;
+        [Category("Class Member")] public int ArraySize => _arraySize;
+        [Category("Class Member")] public hkClassMember.Type SubType => _subType;
+        [Category("Class Member")] public string EnumName => _enum;
+        [Category("Class Member")] public string ClassName => _class;
+        [Category("Class Member")] public hkClassMember.Flags Flags => _flags;
 
         public hkClassMember.Type _type;
         public hkClassMember.Type _subType;
@@ -317,23 +309,24 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _name = new string((sbyte*)Header->_namePtr.OffsetAddress);
+            _name = new string((sbyte*) Header->_namePtr.OffsetAddress);
 
-            _type = (hkClassMember.Type)Header->_type;
-            _subType = (hkClassMember.Type)Header->_pointedType;
+            _type = (hkClassMember.Type) Header->_type;
+            _subType = (hkClassMember.Type) Header->_pointedType;
             _structOffset = Header->_structOffset;
-            _flags = (hkClassMember.Flags)(ushort)Header->_flags;
+            _flags = (hkClassMember.Flags) (ushort) Header->_flags;
             _arraySize = Header->_arraySize;
 
             if (Header->_enumPtr != 0)
             {
-                hkClassEnum* e = (hkClassEnum*)Header->_enumPtr.OffsetAddress;
-                _enum = new string((sbyte*)e->_namePtr.OffsetAddress);
+                hkClassEnum* e = (hkClassEnum*) Header->_enumPtr.OffsetAddress;
+                _enum = new string((sbyte*) e->_namePtr.OffsetAddress);
             }
+
             if (Header->_classPtr != 0)
             {
-                hkClass* c = (hkClass*)Header->_classPtr.OffsetAddress;
-                _class = new string((sbyte*)c->_namePtr.OffsetAddress);
+                hkClass* c = (hkClass*) Header->_classPtr.OffsetAddress;
+                _class = new string((sbyte*) c->_namePtr.OffsetAddress);
             }
 
             return false;
@@ -393,7 +386,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 writer.WriteStartElement("hkparam");
                 writer.WriteAttributeString("name", "flags");
-                writer.WriteString(((int)Flags).ToString(CultureInfo.InvariantCulture));
+                writer.WriteString(((int) Flags).ToString(CultureInfo.InvariantCulture));
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("hkparam");

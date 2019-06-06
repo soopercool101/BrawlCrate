@@ -10,7 +10,9 @@ namespace BrawlCrate.NodeWrappers
     public class RELWrapper : GenericWrapper
     {
         #region Menu
+
         private static readonly ContextMenuStrip _menu;
+
         static RELWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -32,26 +34,48 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ConvertAction(object sender, EventArgs e) { GetInstance<RELWrapper>().Convert(); }
-        protected static void ConstructorAction(object sender, EventArgs e) { GetInstance<RELWrapper>().Constructor(); }
-        protected static void DestructorAction(object sender, EventArgs e) { GetInstance<RELWrapper>().Destructor(); }
-        protected static void UnresolvedAction(object sender, EventArgs e) { GetInstance<RELWrapper>().Unresolved(); }
+
+        protected static void ConvertAction(object sender, EventArgs e)
+        {
+            GetInstance<RELWrapper>().Convert();
+        }
+
+        protected static void ConstructorAction(object sender, EventArgs e)
+        {
+            GetInstance<RELWrapper>().Constructor();
+        }
+
+        protected static void DestructorAction(object sender, EventArgs e)
+        {
+            GetInstance<RELWrapper>().Destructor();
+        }
+
+        protected static void UnresolvedAction(object sender, EventArgs e)
+        {
+            GetInstance<RELWrapper>().Unresolved();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[7].Enabled = _menu.Items[8].Enabled = _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
+            _menu.Items[7].Enabled = _menu.Items[8].Enabled =
+                _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RELWrapper w = GetInstance<RELWrapper>();
             _menu.Items[7].Enabled = _menu.Items[14].Enabled = w.Parent != null;
-            _menu.Items[8].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[8].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[10].Enabled = w.PrevNode != null;
             _menu.Items[11].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public RELWrapper() { ContextMenuStrip = _menu; }
+        public RELWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void Convert()
         {
@@ -110,7 +134,6 @@ namespace BrawlCrate.NodeWrappers
             e.Show();
             e.Position = r._epilogOffset;
             e.hexBox1.Focus();
-
         }
 
         public void Unresolved()
@@ -143,7 +166,9 @@ namespace BrawlCrate.NodeWrappers
     internal class RELSectionWrapper : GenericWrapper
     {
         #region Menu
+
         private static readonly ContextMenuStrip _menu;
+
         static RELSectionWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -154,21 +179,34 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void OpenAction(object sender, EventArgs e) { GetInstance<RELSectionWrapper>().Open(); }
-        protected static void Export2Action(object sender, EventArgs e) { GetInstance<RELSectionWrapper>().Export2(); }
+
+        protected static void OpenAction(object sender, EventArgs e)
+        {
+            GetInstance<RELSectionWrapper>().Open();
+        }
+
+        protected static void Export2Action(object sender, EventArgs e)
+        {
+            GetInstance<RELSectionWrapper>().Export2();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[3].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RELSectionWrapper w = GetInstance<RELSectionWrapper>();
-            _menu.Items[3].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[3].Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion
 
-        public RELSectionWrapper() { ContextMenuStrip = _menu; }
+        public RELSectionWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void Export2()
         {
@@ -204,7 +242,9 @@ namespace BrawlCrate.NodeWrappers
     public class RELMethodWrapper : GenericWrapper
     {
         #region Menu
+
         private static readonly ContextMenuStrip _menu;
+
         static RELMethodWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -215,21 +255,30 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void OpenAction(object sender, EventArgs e) { GetInstance<RELMethodWrapper>().Open(); }
+
+        protected static void OpenAction(object sender, EventArgs e)
+        {
+            GetInstance<RELMethodWrapper>().Open();
+        }
+
         //protected static void Export2Action(object sender, EventArgs e) { GetInstance<RELMethodWrapper>().Export2(); }
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[2].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RELMethodWrapper w = GetInstance<RELMethodWrapper>();
-            _menu.Items[2].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[2].Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion
 
-        public RELMethodWrapper() { ContextMenuStrip = _menu; }
+        public RELMethodWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void Export2()
         {
@@ -245,7 +294,7 @@ namespace BrawlCrate.NodeWrappers
         public void Open()
         {
             RELMethodNode r = _resource as RELMethodNode;
-            ModuleSectionNode section = r.Root.Children[(int)r.TargetSection] as ModuleSectionNode;
+            ModuleSectionNode section = r.Root.Children[(int) r.TargetSection] as ModuleSectionNode;
 
             foreach (SectionEditor l in SectionEditor._openedSections)
             {
@@ -275,15 +324,19 @@ namespace BrawlCrate.NodeWrappers
     [NodeWrapper(ResourceType.RELExternalMethod)]
     public class RELExternalMethodWrapper : GenericWrapper
     {
-        public RELExternalMethodWrapper() { BackColor = System.Drawing.Color.FromArgb(255, 255, 180, 180); }
-
+        public RELExternalMethodWrapper()
+        {
+            BackColor = System.Drawing.Color.FromArgb(255, 255, 180, 180);
+        }
     }
 
     [NodeWrapper(ResourceType.RELInheritance)]
     public class RELInheritanceWrapper : GenericWrapper
     {
         #region Menu
+
         private static readonly ContextMenuStrip _menu;
+
         static RELInheritanceWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -294,21 +347,34 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void OpenAction(object sender, EventArgs e) { GetInstance<RELInheritanceWrapper>().Open(); }
-        protected static void Export2Action(object sender, EventArgs e) { GetInstance<RELInheritanceWrapper>().Export2(); }
+
+        protected static void OpenAction(object sender, EventArgs e)
+        {
+            GetInstance<RELInheritanceWrapper>().Open();
+        }
+
+        protected static void Export2Action(object sender, EventArgs e)
+        {
+            GetInstance<RELInheritanceWrapper>().Export2();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[3].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RELInheritanceWrapper w = GetInstance<RELInheritanceWrapper>();
-            _menu.Items[3].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[3].Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion
 
-        public RELInheritanceWrapper() { ContextMenuStrip = _menu; }
+        public RELInheritanceWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void Export2()
         {

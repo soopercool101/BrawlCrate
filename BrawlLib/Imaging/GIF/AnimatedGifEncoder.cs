@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 
 #region .NET Disclaimer/Info
+
 //===============================================================================
 //
 // gOODiDEA, uland.com
@@ -15,9 +16,11 @@ using System.IO;
 // $History:		$  
 //  
 //===============================================================================
-#endregion 
+
+#endregion
 
 #region Java
+
 /**
  * Class AnimatedGifEncoder - Encodes a GIF file consisting of one or
  * more frames.
@@ -39,6 +42,7 @@ using System.IO;
  * @version 1.03 November 2003
  *
  */
+
 #endregion
 
 namespace Gif.Components
@@ -51,8 +55,10 @@ namespace Gif.Components
         protected int transIndex; // transparent index in color table
         protected int repeat = -1; // no repeat
         protected int delay = 0; // frame delay (hundredths)
+
         protected bool started = false; // ready to output frames
-                                        //	protected BinaryWriter bw;
+
+        //	protected BinaryWriter bw;
         protected FileStream fs;
 
         protected Image image; // current frame
@@ -76,7 +82,7 @@ namespace Gif.Components
 		 */
         public void SetDelay(int ms)
         {
-            delay = (int)Math.Round(ms / 10.0f);
+            delay = (int) Math.Round(ms / 10.0f);
         }
 
         /**
@@ -138,10 +144,11 @@ namespace Gif.Components
 		 */
         public bool AddFrame(Image im)
         {
-            if ((im == null) || !started)
+            if (im == null || !started)
             {
                 return false;
             }
+
             bool ok = true;
             try
             {
@@ -150,6 +157,7 @@ namespace Gif.Components
                     // use first frame's size
                     SetSize(im.Width, im.Height);
                 }
+
                 image = im;
                 GetImagePixels(); // convert to correct format if necessary
                 AnalyzePixels(); // build color table & map pixels
@@ -163,12 +171,14 @@ namespace Gif.Components
                         WriteNetscapeExt();
                     }
                 }
+
                 WriteGraphicCtrlExt(); // write graphic control extension
                 WriteImageDesc(); // image descriptor
                 if (!firstFrame)
                 {
                     WritePalette(); // local color table
                 }
+
                 WritePixels(); // encode and write pixel data
                 firstFrame = false;
             }
@@ -231,7 +241,7 @@ namespace Gif.Components
         {
             if (fps != 0f)
             {
-                delay = (int)Math.Round(1000f / fps);
+                delay = (int) Math.Round(1000f / fps);
             }
         }
 
@@ -311,6 +321,7 @@ namespace Gif.Components
             {
                 ok = false;
             }
+
             return started = ok;
         }
 
@@ -334,6 +345,7 @@ namespace Gif.Components
             {
                 ok = false;
             }
+
             return started = ok;
         }
 
@@ -348,26 +360,27 @@ namespace Gif.Components
             NeuQuant nq = new NeuQuant(pixels, len, sample);
             // initialize quantizer
             colorTab = nq.Process(); // create reduced palette
-                                     // convert map from BGR to RGB
-                                     //			for (int i = 0; i < colorTab.Length; i += 3) 
-                                     //			{
-                                     //				byte temp = colorTab[i];
-                                     //				colorTab[i] = colorTab[i + 2];
-                                     //				colorTab[i + 2] = temp;
-                                     //				usedEntry[i / 3] = false;
-                                     //			}
-                                     // map image pixels to new palette
-            byte* addr = (byte*)pixels.Address;
+            // convert map from BGR to RGB
+            //			for (int i = 0; i < colorTab.Length; i += 3) 
+            //			{
+            //				byte temp = colorTab[i];
+            //				colorTab[i] = colorTab[i + 2];
+            //				colorTab[i + 2] = temp;
+            //				usedEntry[i / 3] = false;
+            //			}
+            // map image pixels to new palette
+            byte* addr = (byte*) pixels.Address;
             int k = 0;
             for (int i = 0; i < nPix; i++)
             {
                 int index =
                     nq.Map(addr[k++] & 0xff,
-                    addr[k++] & 0xff,
-                    addr[k++] & 0xff);
+                        addr[k++] & 0xff,
+                        addr[k++] & 0xff);
                 usedEntry[index] = true;
-                indexedPixels[i] = (byte)index;
+                indexedPixels[i] = (byte) index;
             }
+
             pixels = null;
             colorDepth = 8;
             palSize = 7;
@@ -402,13 +415,15 @@ namespace Gif.Components
                 int db = b - (colorTab[i] & 0xff);
                 int d = dr * dr + dg * dg + db * db;
                 int index = i / 3;
-                if (usedEntry[index] && (d < dmin))
+                if (usedEntry[index] && d < dmin)
                 {
                     dmin = d;
                     minpos = index;
                 }
+
                 i++;
             }
+
             return minpos;
         }
 
@@ -420,9 +435,9 @@ namespace Gif.Components
             int w = image.Width;
             int h = image.Height;
             //		int type = image.GetType().;
-            if ((w != width)
-                || (h != height)
-                )
+            if (w != width
+                || h != height
+            )
             {
                 // create new image with right size/format
                 Image temp =
@@ -432,8 +447,9 @@ namespace Gif.Components
                 image = temp;
                 g.Dispose();
             }
+
             pixels = new UnsafeBuffer(3 * image.Width * image.Height);
-            byte* addr = (byte*)pixels.Address;
+            byte* addr = (byte*) pixels.Address;
             Bitmap tempBitmap = new Bitmap(image);
             for (int th = 0; th < image.Height; th++)
             {
@@ -468,17 +484,19 @@ namespace Gif.Components
                 transp = 1;
                 disp = 2; // force clear if using transparent color
             }
+
             if (dispose >= 0)
             {
                 disp = dispose & 7; // user override
             }
+
             disp <<= 2;
 
             // packed fields
             fs.WriteByte(Convert.ToByte(0 | // 1:3 reserved
-                disp | // 4:6 disposal
-                0 | // 7   user input - 0 = none
-                transp)); // 8   transparency flag
+                                        disp | // 4:6 disposal
+                                        0 | // 7   user input - 0 = none
+                                        transp)); // 8   transparency flag
 
             WriteShort(delay); // delay x 1/100 sec
             fs.WriteByte(Convert.ToByte(transIndex)); // transparent color index
@@ -505,10 +523,10 @@ namespace Gif.Components
             {
                 // specify normal LCT
                 fs.WriteByte(Convert.ToByte(0x80 | // 1 local color table  1=yes
-                    0 | // 2 interlace - 0=no
-                    0 | // 3 sorted - 0=no
-                    0 | // 4-5 reserved
-                    palSize)); // 6-8 size of color table
+                                            0 | // 2 interlace - 0=no
+                                            0 | // 3 sorted - 0=no
+                                            0 | // 4-5 reserved
+                                            palSize)); // 6-8 size of color table
             }
         }
 
@@ -522,9 +540,9 @@ namespace Gif.Components
             WriteShort(height);
             // packed fields
             fs.WriteByte(Convert.ToByte(0x80 | // 1   : global color table flag = 1 (gct used)
-                0x70 | // 2-4 : color resolution = 7
-                0x00 | // 5   : gct sort flag = 0
-                palSize)); // 6-8 : gct size
+                                        0x70 | // 2-4 : color resolution = 7
+                                        0x00 | // 5   : gct sort flag = 0
+                                        palSize)); // 6-8 : gct size
 
             fs.WriteByte(0); // background color index
             fs.WriteByte(0); // pixel aspect ratio - assume 1:1
@@ -552,7 +570,7 @@ namespace Gif.Components
         protected void WritePalette()
         {
             fs.Write(colorTab, 0, colorTab.Length);
-            int n = (3 * 256) - colorTab.Length;
+            int n = 3 * 256 - colorTab.Length;
             for (int i = 0; i < n; i++)
             {
                 fs.WriteByte(0);
@@ -586,9 +604,8 @@ namespace Gif.Components
             char[] chars = s.ToCharArray();
             for (int i = 0; i < chars.Length; i++)
             {
-                fs.WriteByte((byte)chars[i]);
+                fs.WriteByte((byte) chars[i]);
             }
         }
     }
-
 }

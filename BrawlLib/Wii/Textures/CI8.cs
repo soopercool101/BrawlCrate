@@ -7,13 +7,15 @@ namespace BrawlLib.Wii.Textures
     {
         public override int BitsPerPixel => 8;
         public override int BlockWidth => 8;
+
         public override int BlockHeight => 4;
+
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format8bppIndexed; } }
         public override WiiPixelFormat RawFormat => WiiPixelFormat.CI8;
 
         protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
         {
-            byte* sPtr = (byte*)blockAddr;
+            byte* sPtr = (byte*) blockAddr;
             if (_workingPalette != null)
             {
                 for (int y = 0; y < BlockHeight; y++, dPtr += width)
@@ -27,7 +29,7 @@ namespace BrawlLib.Wii.Textures
                         }
                         else
                         {
-                            dPtr[x] = (ARGBPixel)_workingPalette.Entries[b];
+                            dPtr[x] = (ARGBPixel) _workingPalette.Entries[b];
                         }
                     }
                 }
@@ -46,8 +48,8 @@ namespace BrawlLib.Wii.Textures
 
         protected override void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width)
         {
-            byte* stPtr = (byte*)sPtr;
-            byte* dPtr = (byte*)blockAddr;
+            byte* stPtr = (byte*) sPtr;
+            byte* dPtr = (byte*) blockAddr;
             for (int y = 0; y < BlockHeight; y++, stPtr += width)
             {
                 for (int x = 0; x < BlockWidth;)

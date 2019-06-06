@@ -1,4 +1,5 @@
 #region .NET Disclaimer/Info
+
 //===============================================================================
 //
 // gOODiDEA, uland.com
@@ -11,13 +12,17 @@
 // $History:		$  
 //  
 //===============================================================================
-#endregion 
+
+#endregion
 
 #region Java
+
 //==============================================================================
 //  Adapted from Jef Poskanzer's Java port by way of J. M. G. Elliott.
 //  K Weiner 12/00
+
 #endregion
+
 using System;
 using System.IO;
 
@@ -25,7 +30,6 @@ namespace Gif.Components
 {
     public class LZWEncoder
     {
-
         private static readonly int EOF = -1;
 
         private readonly int imgW, imgH;
@@ -103,6 +107,7 @@ namespace Gif.Components
 
         private int cur_accum = 0;
         private int cur_bits = 0;
+
         private readonly int[] masks =
         {
             0x0000,
@@ -121,7 +126,8 @@ namespace Gif.Components
             0x1FFF,
             0x3FFF,
             0x7FFF,
-            0xFFFF };
+            0xFFFF
+        };
 
         // Number of characters so far in this 'packet'
         private int a_count;
@@ -209,7 +215,8 @@ namespace Gif.Components
 
             Output(ClearCode, outs);
 
-            outer_loop: while ((c = NextPixel()) != EOF)
+            outer_loop:
+            while ((c = NextPixel()) != EOF)
             {
                 fcode = (c << maxbits) + ent;
                 i = (c << hshift) ^ ent; // xor hashing
@@ -241,6 +248,7 @@ namespace Gif.Components
                         }
                     } while (htab[i] >= 0);
                 }
+
                 Output(ent, outs);
                 ent = c;
                 if (free_ent < maxmaxcode)
@@ -253,6 +261,7 @@ namespace Gif.Components
                     ClearTable(outs);
                 }
             }
+
             // Put out the final code.
             Output(ent, outs);
             Output(EOFCode, outs);
@@ -306,6 +315,7 @@ namespace Gif.Components
 
                 return pix & 0xff;
             }
+
             return 0xff;
         }
 
@@ -315,7 +325,7 @@ namespace Gif.Components
 
             if (cur_bits > 0)
             {
-                cur_accum |= (code << cur_bits);
+                cur_accum |= code << cur_bits;
             }
             else
             {
@@ -326,7 +336,7 @@ namespace Gif.Components
 
             while (cur_bits >= 8)
             {
-                Add((byte)(cur_accum & 0xff), outs);
+                Add((byte) (cur_accum & 0xff), outs);
                 cur_accum >>= 8;
                 cur_bits -= 8;
             }
@@ -359,7 +369,7 @@ namespace Gif.Components
                 // At EOF, write the rest of the buffer.
                 while (cur_bits > 0)
                 {
-                    Add((byte)(cur_accum & 0xff), outs);
+                    Add((byte) (cur_accum & 0xff), outs);
                     cur_accum >>= 8;
                     cur_bits -= 8;
                 }

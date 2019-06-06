@@ -8,18 +8,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARExtFileNode : RSARFileNode
     {
-        internal INFOFileHeader* Header => (INFOFileHeader*)WorkingUncompressed.Address;
+        internal INFOFileHeader* Header => (INFOFileHeader*) WorkingUncompressed.Address;
 
-        [Category("Data"), Browsable(true)]
-        public override string DataOffset => "0";
-        [Category("Data"), Browsable(true)]
+        [Category("Data")] [Browsable(true)] public override string DataOffset => "0";
+
+        [Category("Data")]
+        [Browsable(true)]
         public override string InfoHeaderOffset
         {
             get
             {
                 if (RSARNode != null && Header != null)
                 {
-                    return ((uint)(Header - (VoidPtr)RSARNode.Header)).ToString("X");
+                    return ((uint) (Header - (VoidPtr) RSARNode.Header)).ToString("X");
                 }
                 else
                 {
@@ -32,11 +33,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal string _extPath;
 
         [Browsable(false)]
-        public string ExtPath { get => _extPath; set { _extPath = value; SignalPropertyChange(); } }
+        public string ExtPath
+        {
+            get => _extPath;
+            set
+            {
+                _extPath = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Browsable(false)]
         public string FullExtPath
         {
-            get => ExtPath == null ? null : RootNode._origPath.Substring(0, RootNode._origPath.LastIndexOf('\\')) + "\\" + ExtPath.Replace('/', '\\');
+            get => ExtPath == null
+                ? null
+                : RootNode._origPath.Substring(0, RootNode._origPath.LastIndexOf('\\')) + "\\" +
+                  ExtPath.Replace('/', '\\');
             set
             {
                 if (!value.Contains(".") || !value.Contains("\\"))
@@ -45,21 +58,27 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    _extPath = value.Substring(RootNode._origPath.Substring(0, RootNode._origPath.LastIndexOf('\\')).Length + 1).Replace('\\', '/');
+                    _extPath = value
+                               .Substring(RootNode._origPath.Substring(0, RootNode._origPath.LastIndexOf('\\')).Length +
+                                          1).Replace('\\', '/');
                 }
 
                 SignalPropertyChange();
             }
         }
-        [Browsable(false), TypeConverter(typeof(ExpandableObjectCustomConverter))]
+
+        [Browsable(false)]
+        [TypeConverter(typeof(ExpandableObjectCustomConverter))]
         public FileInfo ExternalFileInfo => FullExtPath == null ? null : new FileInfo(FullExtPath);
+
         public void GetExtSize()
         {
             if (ExternalFileInfo.Exists)
             {
-                _extFileSize = (uint)ExternalFileInfo.Length;
+                _extFileSize = (uint) ExternalFileInfo.Length;
             }
         }
+
         public override bool OnInitialize()
         {
             RSARNode parent = RSARNode;
@@ -74,6 +93,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public List<RSARBankNode> _rsarBankEntries = new List<RSARBankNode>();
+
         internal void AddBankRef(RSARBankNode n)
         {
             if (!_rsarBankEntries.Contains(n))

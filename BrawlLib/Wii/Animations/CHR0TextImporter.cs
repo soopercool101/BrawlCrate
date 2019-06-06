@@ -13,19 +13,24 @@ namespace BrawlLib.Wii.Animations
         private class Coords
         {
             public List<float> x, y, z;
+
             public Coords()
             {
                 x = new List<float>();
                 y = new List<float>();
                 z = new List<float>();
             }
+
             public int highestCount => Math.Max(Math.Max(x.Count, y.Count), z.Count);
         }
 
         private static Coords getCoords(TextReader reader, out string line)
         {
             Coords output = new Coords();
-            for (line = reader.ReadLine(); line != null && line.CompareTo("	") != 0 && (line.CompareTo("X") == 0 || line.CompareTo("Y") == 0 || line.CompareTo("Z") == 0); line = reader.ReadLine())
+            for (line = reader.ReadLine();
+                line != null && line.CompareTo("	") != 0 &&
+                (line.CompareTo("X") == 0 || line.CompareTo("Y") == 0 || line.CompareTo("Z") == 0);
+                line = reader.ReadLine())
             {
                 if (line.CompareTo("X") == 0)
                 {
@@ -52,6 +57,7 @@ namespace BrawlLib.Wii.Animations
 
             return output;
         }
+
         public static CHR0Node Convert(string input)
         {
             try
@@ -75,7 +81,9 @@ namespace BrawlLib.Wii.Animations
                         int keyFrameCount = int.Parse(justNumbers);
                         chr0.FrameCount = keyFrameCount;
 
-                        for (line = reader.ReadLine(); line != null && line.CompareTo("End Of Animation Data") != 0; line = reader.ReadLine())
+                        for (line = reader.ReadLine();
+                            line != null && line.CompareTo("End Of Animation Data") != 0;
+                            line = reader.ReadLine())
                         {
                             if (line.CompareTo("Keyframe Data") == 0)
                             {
@@ -88,7 +96,9 @@ namespace BrawlLib.Wii.Animations
                                 Coords rotation = new Coords();
                                 Coords scale = new Coords();
 
-                                for (line = reader.ReadLine(); line != null && line.CompareTo("End of Keyframe Data") != 0; line = reader.ReadLine())
+                                for (line = reader.ReadLine();
+                                    line != null && line.CompareTo("End of Keyframe Data") != 0;
+                                    line = reader.ReadLine())
                                 {
                                     //Use goto to retry the loop without advancing the reader, when it returns from getCoords it will have the next line we need from it.
                                     retry:
@@ -110,13 +120,18 @@ namespace BrawlLib.Wii.Animations
                                         scale = getCoords(reader, out line);
                                         goto retry;
                                     }
-                                    else if (line.CompareTo("End of Keyframe Data") == 0) //If line equals this now it's time to break
+                                    else if (line.CompareTo("End of Keyframe Data") == 0
+                                    ) //If line equals this now it's time to break
                                     {
                                         break;
                                     }
                                 }
+
                                 //Add frames to node
-                                for (int frameCount = 0; translation.highestCount > frameCount || rotation.highestCount > frameCount || scale.highestCount > frameCount; frameCount++)
+                                for (int frameCount = 0;
+                                    translation.highestCount > frameCount || rotation.highestCount > frameCount ||
+                                    scale.highestCount > frameCount;
+                                    frameCount++)
                                 {
                                     if (translation.highestCount > frameCount)
                                     {
@@ -135,6 +150,7 @@ namespace BrawlLib.Wii.Animations
                                             node.SetKeyframe(8, frameCount, translation.z[frameCount]);
                                         }
                                     }
+
                                     if (rotation.highestCount > frameCount)
                                     {
                                         if (rotation.x.Count != 0 && frameCount < rotation.x.Count)
@@ -152,6 +168,7 @@ namespace BrawlLib.Wii.Animations
                                             node.SetKeyframe(5, frameCount, rotation.z[frameCount]);
                                         }
                                     }
+
                                     if (scale.highestCount > frameCount)
                                     {
                                         if (scale.x.Count != 0 && frameCount < scale.x.Count)
@@ -179,6 +196,7 @@ namespace BrawlLib.Wii.Animations
                         return null;
                     }
                 }
+
                 return chr0;
             }
             catch (Exception e)

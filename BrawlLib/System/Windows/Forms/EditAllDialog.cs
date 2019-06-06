@@ -10,9 +10,16 @@ namespace System.Windows.Forms
         private CHR0EntryNode[] _entries;
         private EditAllCHR0Editor editAllCHR0Editor1;
 
-        public EditAllDialog() { InitializeComponent(); }
+        public EditAllDialog()
+        {
+            InitializeComponent();
+        }
 
-        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
         #region Designer
 
@@ -28,7 +35,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(325, 344);
             btnCancel.Name = "btnCancel";
@@ -40,7 +47,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(244, 344);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -72,8 +79,8 @@ namespace System.Windows.Forms
             StartPosition = FormStartPosition.CenterParent;
             Text = "Edit All Animations";
             ResumeLayout(false);
-
         }
+
         #endregion
 
         public bool[] _enabled = new bool[5];
@@ -102,17 +109,18 @@ namespace System.Windows.Forms
         public void ShowDialog(IWin32Window owner, IEnumerable<ResourceNode> nodes)
         {
             _nodes = nodes
-                .Select(n => n as CHR0Node)
-                .Where(n => n != null)
-                .ToArray();
+                     .Select(n => n as CHR0Node)
+                     .Where(n => n != null)
+                     .ToArray();
             if (!_nodes.Any())
             {
                 editAllCHR0Editor1.OnlyEntryNodesSelected();
                 _entries = nodes
-                    .Select(n => n as CHR0EntryNode)
-                    .Where(n => n != null)
-                    .ToArray();
+                           .Select(n => n as CHR0EntryNode)
+                           .Where(n => n != null)
+                           .ToArray();
             }
+
             _enabled = new bool[5];
             ShowDialog(owner);
         }

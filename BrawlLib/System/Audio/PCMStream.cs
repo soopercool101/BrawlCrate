@@ -28,9 +28,23 @@ namespace System.Audio
         public int Channels => _numChannels;
         public int Frequency => _frequency;
 
-        public bool IsLooping { get => _looped; set => _looped = value; }
-        public int LoopStartSample { get => _loopStart; set => _loopStart = value; }
-        public int LoopEndSample { get => _loopEnd; set => _loopEnd = value; }
+        public bool IsLooping
+        {
+            get => _looped;
+            set => _looped = value;
+        }
+
+        public int LoopStartSample
+        {
+            get => _loopStart;
+            set => _loopStart = value;
+        }
+
+        public int LoopEndSample
+        {
+            get => _loopEnd;
+            set => _loopEnd = value;
+        }
 
         public int SamplePosition
         {
@@ -43,13 +57,13 @@ namespace System.Audio
             _allocatedHGlobal = Marshal.AllocHGlobal(wavData.Length);
             Marshal.Copy(wavData, 0, _allocatedHGlobal, wavData.Length);
 
-            RIFFHeader* header = (RIFFHeader*)_allocatedHGlobal;
+            RIFFHeader* header = (RIFFHeader*) _allocatedHGlobal;
             _bps = header->_fmtChunk._bitsPerSample;
             _numChannels = header->_fmtChunk._channels;
-            _frequency = (int)header->_fmtChunk._samplesSec;
-            _numSamples = (int)(header->_dataChunk._chunkSize / header->_fmtChunk._blockAlign);
+            _frequency = (int) header->_fmtChunk._samplesSec;
+            _numSamples = (int) (header->_dataChunk._chunkSize / header->_fmtChunk._blockAlign);
 
-            _source = (short*)((byte*)_allocatedHGlobal + header->GetSize());
+            _source = (short*) ((byte*) _allocatedHGlobal + header->GetSize());
             _samplePos = 0;
 
             _looped = false;
@@ -60,8 +74,8 @@ namespace System.Audio
             if (loops.Length > 0)
             {
                 _looped = true;
-                _loopStart = (int)loops[0]._dwStart;
-                _loopEnd = (int)loops[0]._dwEnd;
+                _loopStart = (int) loops[0]._dwStart;
+                _loopEnd = (int) loops[0]._dwEnd;
             }
         }
 
@@ -94,7 +108,7 @@ namespace System.Audio
             _loopStart = pWAVE->LoopSample;
             _loopEnd = _numSamples;
 
-            _source = (short*)dataAddr;
+            _source = (short*) dataAddr;
             _samplePos = 0;
         }
 
@@ -128,21 +142,21 @@ namespace System.Audio
                 blocksByChannel[i] = new List<short[]>();
             }
 
-            byte* from = (byte*)audioSource;
+            byte* from = (byte*) audioSource;
 
             for (int block = 0; block < info->_numBlocks; block++)
             {
-                int blockSize = (block == info->_numBlocks - 1)
+                int blockSize = block == info->_numBlocks - 1
                     ? info->_lastBlockSize
                     : info->_blockSize;
-                int blockTotal = (block == info->_numBlocks - 1)
+                int blockTotal = block == info->_numBlocks - 1
                     ? info->_lastBlockTotal
                     : info->_blockSize;
 
                 for (int channel = 0; channel < info->_format._channels; channel++)
                 {
                     short[] b = new short[blockSize / sizeof(short)];
-                    Marshal.Copy((IntPtr)from, b, 0, b.Length);
+                    Marshal.Copy((IntPtr) from, b, 0, b.Length);
                     from += blockTotal;
                     blocksByChannel[channel].Add(b);
                 }
@@ -162,7 +176,7 @@ namespace System.Audio
             //}
 
             _allocatedHGlobal = Marshal.AllocHGlobal(size);
-            short* toPtr = (short*)_allocatedHGlobal;
+            short* toPtr = (short*) _allocatedHGlobal;
             //short* endPtr = (short*)(_allocatedHGlobal + size);
             int blockCount = blocksToUseByChannel.Select(b => b.Count).Distinct().Single();
             for (int blockIndex = 0; blockIndex < blockCount; blockIndex++)
@@ -184,7 +198,7 @@ namespace System.Audio
             _frequency = info->_sampleRate;
             _numSamples = info->_numSamples;
 
-            _source = (short*)_allocatedHGlobal;
+            _source = (short*) _allocatedHGlobal;
             _samplePos = 0;
 
             _looped = info->_format._looped != 0;
@@ -194,8 +208,8 @@ namespace System.Audio
 
         public int ReadSamples(VoidPtr destAddr, int numSamples)
         {
-            short* sPtr = _source + (_samplePos * _numChannels);
-            short* dPtr = (short*)destAddr;
+            short* sPtr = _source + _samplePos * _numChannels;
+            short* dPtr = (short*) destAddr;
 
             int max = Math.Min(numSamples, _numSamples - _samplePos);
 
@@ -224,11 +238,13 @@ namespace System.Audio
                 _sourceMap.Dispose();
                 _sourceMap = null;
             }
+
             if (_allocatedHGlobal != IntPtr.Zero)
             {
                 Marshal.FreeHGlobal(_allocatedHGlobal);
                 _allocatedHGlobal = IntPtr.Zero;
             }
+
             GC.SuppressFinalize(this);
         }
     }

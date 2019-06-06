@@ -27,23 +27,50 @@ namespace BrawlCrate
         private static readonly FolderBrowserDialog _folderDlg;
 
         internal static ResourceNode _rootNode;
-        public static ResourceNode RootNode { get => _rootNode; set { _rootNode = value; MainForm.Instance.Reset(); } }
+
+        public static ResourceNode RootNode
+        {
+            get => _rootNode;
+            set
+            {
+                _rootNode = value;
+                MainForm.Instance.Reset();
+            }
+        }
+
         internal static string _rootPath;
 
         public static string AppPath;
         public static string RootPath => _rootPath;
 
-        public static bool Canary => Directory.Exists(AppPath + "\\Canary") && File.Exists(AppPath + "\\Canary\\Active") && File.Exists(AppPath + "\\Canary\\New");
+        public static bool Canary => Directory.Exists(AppPath + "\\Canary") &&
+                                     File.Exists(AppPath + "\\Canary\\Active") &&
+                                     File.Exists(AppPath + "\\Canary\\New");
 
         static Program()
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
-            AssemblyTitle = Canary ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[1] : ((AssemblyTitleAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
-            AssemblyDescription = ((AssemblyDescriptionAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0]).Description;
-            AssemblyCopyright = ((AssemblyCopyrightAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
-            BrawlLibTitle = ((AssemblyTitleAttribute)Assembly.GetAssembly(typeof(ResourceNode)).GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+            AssemblyTitle = Canary
+                ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[1]
+                : ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
+                                                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                .Title;
+            AssemblyDescription =
+                ((AssemblyDescriptionAttribute) Assembly
+                                                .GetExecutingAssembly()
+                                                .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
+                .Description;
+            AssemblyCopyright =
+                ((AssemblyCopyrightAttribute) Assembly
+                                              .GetExecutingAssembly()
+                                              .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
+                .Copyright;
+            BrawlLibTitle = ((AssemblyTitleAttribute) Assembly
+                                                      .GetAssembly(typeof(ResourceNode))
+                                                      .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                .Title;
 
             _openDlg = new OpenFileDialog();
             _saveDlg = new SaveFileDialog();
@@ -146,7 +173,8 @@ namespace BrawlCrate
             {
                 if (a.Equals("/audio:directsound", StringComparison.OrdinalIgnoreCase))
                 {
-                    System.Audio.AudioProvider.AvailableTypes = System.Audio.AudioProvider.AudioProviderType.DirectSound;
+                    System.Audio.AudioProvider.AvailableTypes =
+                        System.Audio.AudioProvider.AudioProviderType.DirectSound;
                 }
                 else if (a.Equals("/audio:openal", StringComparison.OrdinalIgnoreCase))
                 {
@@ -161,6 +189,7 @@ namespace BrawlCrate
                     remainingArgs.Add(a);
                 }
             }
+
             args = remainingArgs.ToArray();
 
             try
@@ -226,7 +255,11 @@ namespace BrawlCrate
             return true;
         }
 
-        public static bool Close() { return Close(false); }
+        public static bool Close()
+        {
+            return Close(false);
+        }
+
         public static bool Close(bool force)
         {
             //Have to close external files before the root file
@@ -252,7 +285,7 @@ namespace BrawlCrate
                 if (_rootNode.IsDirty && !force)
                 {
                     DialogResult res = MessageBox.Show("Save changes?", "Closing", MessageBoxButtons.YesNoCancel);
-                    if ((res == DialogResult.Yes && !Save()) || res == DialogResult.Cancel)
+                    if (res == DialogResult.Yes && !Save() || res == DialogResult.Cancel)
                     {
                         return false;
                     }
@@ -313,7 +346,10 @@ namespace BrawlCrate
                 }
 #if !DEBUG
             }
-            catch (Exception x) { Say(x.ToString()); }
+            catch (Exception x)
+            {
+                Say(x.ToString());
+            }
 #endif
 
             Close();
@@ -323,12 +359,13 @@ namespace BrawlCrate
 
         public static unsafe void Scan(FileMap map, FileScanNode node)
         {
-            using (ProgressWindow progress = new ProgressWindow(MainForm.Instance, "File Scanner", "Scanning for known file types, please wait...", true))
+            using (ProgressWindow progress = new ProgressWindow(MainForm.Instance, "File Scanner",
+                "Scanning for known file types, please wait...", true))
             {
                 progress.TopMost = true;
                 progress.Begin(0, map.Length, 0);
 
-                byte* data = (byte*)map.Address;
+                byte* data = (byte*) map.Address;
                 uint i = 0;
                 do
                 {
@@ -341,17 +378,16 @@ namespace BrawlCrate
                             n.Initialize(node, d);
                             try
                             {
-                                i += (uint)n.WorkingSource.Length;
+                                i += (uint) n.WorkingSource.Length;
                             }
                             catch
                             {
-
                             }
                         }
                     }
+
                     progress.Update(i + 1);
-                }
-                while (++i + 4 < map.Length);
+                } while (++i + 4 < map.Length);
 
                 progress.Finish();
             }
@@ -384,9 +420,13 @@ namespace BrawlCrate
                     return true;
 #if !DEBUG
                 }
-                catch (Exception x) { Say(x.Message); }
+                catch (Exception x)
+                {
+                    Say(x.Message);
+                }
 #endif
             }
+
             return false;
         }
 
@@ -400,7 +440,11 @@ namespace BrawlCrate
             return null;
         }
 
-        public static int OpenFile(string filter, out string fileName) { return OpenFile(filter, out fileName, true); }
+        public static int OpenFile(string filter, out string fileName)
+        {
+            return OpenFile(filter, out fileName, true);
+        }
+
         public static int OpenFile(string filter, out string fileName, bool categorize)
         {
             _openDlg.Filter = filter;
@@ -411,7 +455,7 @@ namespace BrawlCrate
                 if (_openDlg.ShowDialog() == DialogResult.OK)
                 {
                     fileName = _openDlg.FileName;
-                    if ((categorize) && (_openDlg.FilterIndex == 1))
+                    if (categorize && _openDlg.FilterIndex == 1)
                     {
                         return CategorizeFilter(_openDlg.FileName, filter);
                     }
@@ -422,12 +466,20 @@ namespace BrawlCrate
                 }
 #if !DEBUG
             }
-            catch (Exception ex) { Say(ex.ToString()); }
+            catch (Exception ex)
+            {
+                Say(ex.ToString());
+            }
 #endif
             fileName = null;
             return 0;
         }
-        public static int SaveFile(string filter, string name, out string fileName) { return SaveFile(filter, name, out fileName, true); }
+
+        public static int SaveFile(string filter, string name, out string fileName)
+        {
+            return SaveFile(filter, name, out fileName, true);
+        }
+
         public static int SaveFile(string filter, string name, out string fileName, bool categorize)
         {
             int fIndex = 0;
@@ -438,7 +490,7 @@ namespace BrawlCrate
             _saveDlg.FilterIndex = 1;
             if (_saveDlg.ShowDialog() == DialogResult.OK)
             {
-                if ((categorize) && (_saveDlg.FilterIndex == 1) && (Path.HasExtension(_saveDlg.FileName)))
+                if (categorize && _saveDlg.FilterIndex == 1 && Path.HasExtension(_saveDlg.FileName))
                 {
                     fIndex = CategorizeFilter(_saveDlg.FileName, filter);
                 }
@@ -453,6 +505,7 @@ namespace BrawlCrate
 
             return fIndex;
         }
+
         public static int CategorizeFilter(string path, string filter)
         {
             string ext = "*" + Path.GetExtension(path);
@@ -471,9 +524,10 @@ namespace BrawlCrate
 
             return 1;
         }
+
         public static string ApplyExtension(string path, string filter, int filterIndex)
         {
-            if ((Path.HasExtension(path)) && (!int.TryParse(Path.GetExtension(path), out int tmp)))
+            if (Path.HasExtension(path) && !int.TryParse(Path.GetExtension(path), out int tmp))
             {
                 return path;
             }
@@ -485,7 +539,7 @@ namespace BrawlCrate
             }
 
             index = filter.IndexOf('.', index);
-            int len = Math.Max(filter.Length, filter.IndexOfAny(new char[] { ';', '|' })) - index;
+            int len = Math.Max(filter.Length, filter.IndexOfAny(new char[] {';', '|'})) - index;
 
             string ext = filter.Substring(index, len);
 
@@ -516,10 +570,14 @@ namespace BrawlCrate
                     }
 #if !DEBUG
                 }
-                catch (Exception x) { Say(x.Message); }
+                catch (Exception x)
+                {
+                    Say(x.Message);
+                }
                 //finally { }
 #endif
             }
+
             return false;
         }
 
@@ -535,6 +593,7 @@ namespace BrawlCrate
 
                 return false;
             }
+
             return true;
         }
 

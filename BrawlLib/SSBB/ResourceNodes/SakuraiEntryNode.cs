@@ -12,13 +12,14 @@ namespace BrawlLib.SSBBTypes
 
         [Browsable(false)]
         public int RebuildOffset => RebuildAddress == null
-                    || BaseAddress == null
-                    || RebuildAddress < BaseAddress ?
-                    -1 : Offset(RebuildAddress);
-        [Browsable(false)]
-        public VoidPtr BaseAddress => _root.BaseAddress;
-        [Browsable(false)]
-        public bool External => _externalEntry != null;
+                                    || BaseAddress == null
+                                    || RebuildAddress < BaseAddress
+            ? -1
+            : Offset(RebuildAddress);
+
+        [Browsable(false)] public VoidPtr BaseAddress => _root.BaseAddress;
+        [Browsable(false)] public bool External => _externalEntry != null;
+
         [Browsable(false)]
         public bool HasChanged
         {
@@ -44,8 +45,9 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
-        [Browsable(false)]
-        public virtual string Name => _name;
+
+        [Browsable(false)] public virtual string Name => _name;
+
         /// <summary>
         /// This is where the data for this node was written during the last rebuild.
         /// Don't forget to set this when rebuilding a node!
@@ -68,16 +70,21 @@ namespace BrawlLib.SSBBTypes
 #endif
             }
         }
+
         [Browsable(false)]
-        public virtual bool IsDirty { get => _root.ChangedEntries.Contains(this); set => HasChanged = value; }
-        [Browsable(false)]
-        public virtual int Index => _index;
-        [Browsable(false)]
-        public int TotalSize => _entryLength + _childLength;
+        public virtual bool IsDirty
+        {
+            get => _root.ChangedEntries.Contains(this);
+            set => HasChanged = value;
+        }
+
+        [Browsable(false)] public virtual int Index => _index;
+        [Browsable(false)] public int TotalSize => _entryLength + _childLength;
 
         public string _name;
         public SakuraiEntryNode _parent;
         public SakuraiArchiveNode _root;
+
         public int
             _offset, //The initial offset of this entry when first parsed
             _index, //The entry's child index when first parsed
@@ -91,8 +98,7 @@ namespace BrawlLib.SSBBTypes
         private VoidPtr _rebuildAddress = null;
         public int _entryLength = 0, _childLength = 0;
 
-        [Browsable(false)]
-        public int LookupCount => _lookupCount;
+        [Browsable(false)] public int LookupCount => _lookupCount;
         private int _lookupCount = 0;
 
         private List<VoidPtr> _lookupAddresses;
@@ -101,24 +107,47 @@ namespace BrawlLib.SSBBTypes
         /// <summary>
         /// Call this when an entry's size changes
         /// </summary>
-        public void SignalRebuildChange() { if (_root != null) { _root.RebuildEntries.Add(this); } HasChanged = true; }
+        public void SignalRebuildChange()
+        {
+            if (_root != null)
+            {
+                _root.RebuildEntries.Add(this);
+            }
+
+            HasChanged = true;
+        }
+
         /// <summary>
         /// Call this when a property has been changed but the size remains the same
         /// </summary>
-        public void SignalPropertyChange() { HasChanged = true; }
+        public void SignalPropertyChange()
+        {
+            HasChanged = true;
+        }
 
         /// <summary>
         /// Returns an offset of the given address relative to the base address.
         /// </summary>
-        public int Offset(VoidPtr address) { return _root.Offset(address); }
+        public int Offset(VoidPtr address)
+        {
+            return _root.Offset(address);
+        }
+
         /// <summary>
         /// Returns an address of the given offset relative to the base address.
         /// </summary>
-        public VoidPtr Address(int offset) { return BaseAddress + offset; }
+        public VoidPtr Address(int offset)
+        {
+            return BaseAddress + offset;
+        }
+
         /// <summary>
         /// Returns the size of the entry at the given offset.
         /// </summary>
-        public int GetSize(int offset) { return _root.GetSize(offset); }
+        public int GetSize(int offset)
+        {
+            return _root.GetSize(offset);
+        }
 
         /// <summary>
         /// Use this to parse a node of a specific type at the given offset.
@@ -131,6 +160,7 @@ namespace BrawlLib.SSBBTypes
         {
             return CommonInit<T>(_root, this, Address(offset), parameters);
         }
+
         /// <summary>
         /// Use this to parse a node of a specific type at the given address.
         /// This will automatically add the node to the entry cache, get its size,
@@ -142,6 +172,7 @@ namespace BrawlLib.SSBBTypes
         {
             return CommonInit<T>(_root, this, address, parameters);
         }
+
         /// <summary>
         /// Use this to parse a node of a specific type at the given address.
         /// This will automatically add the node to the entry cache, get its size,
@@ -149,15 +180,18 @@ namespace BrawlLib.SSBBTypes
         /// Be sure to send the proper constructor parameters for the given type
         /// as well, or an error will be thrown.
         /// </summary>
-        public static T Parse<T>(SakuraiArchiveNode root, SakuraiEntryNode parent, VoidPtr address, params object[] parameters) where T : SakuraiEntryNode
+        public static T Parse<T>(SakuraiArchiveNode root, SakuraiEntryNode parent, VoidPtr address,
+                                 params object[] parameters) where T : SakuraiEntryNode
         {
             return CommonInit<T>(root, parent, address, parameters);
         }
+
         /// <summary>
         /// Don't call this outside of the Parse functions. 
         /// This is here to eliminate redundant code.
         /// </summary>
-        private static T CommonInit<T>(SakuraiArchiveNode root, SakuraiEntryNode parent, VoidPtr addr, params object[] parameters) where T : SakuraiEntryNode
+        private static T CommonInit<T>(SakuraiArchiveNode root, SakuraiEntryNode parent, VoidPtr addr,
+                                       params object[] parameters) where T : SakuraiEntryNode
         {
             int offset = root.Offset(addr);
             bool attributes = parameters.Contains("Attributes");
@@ -182,13 +216,18 @@ namespace BrawlLib.SSBBTypes
             Setup(root, parent, offset);
             OnParse(Address(offset));
         }
+
         public void ParseSelf(SakuraiArchiveNode root, SakuraiEntryNode parent, VoidPtr address)
         {
             Setup(root, parent, Offset(address));
             OnParse(address);
         }
 
-        private void Setup(SakuraiArchiveNode node, SakuraiEntryNode parent, int offset) { Setup(node, parent, offset, null); }
+        private void Setup(SakuraiArchiveNode node, SakuraiEntryNode parent, int offset)
+        {
+            Setup(node, parent, offset, null);
+        }
+
         private void Setup(SakuraiArchiveNode node, SakuraiEntryNode parent, int offset, string name)
         {
             _name = name;
@@ -206,6 +245,7 @@ namespace BrawlLib.SSBBTypes
                 _externalEntry.References.Add(this);
             }
         }
+
         public int GetSize()
         {
             _entryLength = 0;
@@ -277,7 +317,7 @@ namespace BrawlLib.SSBBTypes
         protected void Lookup(VoidPtr address)
         {
 #if DEBUG
-            if ((int)address < (int)BaseAddress)
+            if ((int) address < (int) BaseAddress)
             {
                 throw new Exception("Offset value set in lookup, not the address of the offset value.");
             }
@@ -293,18 +333,38 @@ namespace BrawlLib.SSBBTypes
             _lookupAddresses.AddRange(values);
         }
 
-        [Browsable(false)]
-        public List<VoidPtr> LookupAddresses => _lookupAddresses;
+        [Browsable(false)] public List<VoidPtr> LookupAddresses => _lookupAddresses;
 
         //Overridable functions
-        protected virtual void OnParse(VoidPtr address) { }
-        protected virtual void OnWrite(VoidPtr address) { }
-        protected virtual int OnGetSize() { return 0; }
-        protected virtual int OnGetLookupCount() { return 0; }
-        protected virtual void PostProcess(LookupManager lookupOffsets) { }
+        protected virtual void OnParse(VoidPtr address)
+        {
+        }
 
-        public override string ToString() { return string.IsNullOrEmpty(Name) ? base.ToString() : Name; }
+        protected virtual void OnWrite(VoidPtr address)
+        {
+        }
 
-        public virtual void PostParse() { }
+        protected virtual int OnGetSize()
+        {
+            return 0;
+        }
+
+        protected virtual int OnGetLookupCount()
+        {
+            return 0;
+        }
+
+        protected virtual void PostProcess(LookupManager lookupOffsets)
+        {
+        }
+
+        public override string ToString()
+        {
+            return string.IsNullOrEmpty(Name) ? base.ToString() : Name;
+        }
+
+        public virtual void PostParse()
+        {
+        }
     }
 }

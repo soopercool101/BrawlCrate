@@ -7,6 +7,7 @@ namespace System.Windows.Forms
         public string _oldValue;
         private bool check = true;
         public string _value;
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Value
         {
@@ -27,17 +28,23 @@ namespace System.Windows.Forms
 
                 UpdateText();
 
-                if (check == true) { _oldValue = Text; check = false; }
+                if (check == true)
+                {
+                    _oldValue = Text;
+                    check = false;
+                }
 
                 Apply();
             }
         }
 
-        public StringInputComboBox() { UpdateText(); }
+        public StringInputComboBox()
+        {
+            UpdateText();
+        }
 
         protected override void OnTextUpdate(EventArgs e)
         {
-
             base.OnTextUpdate(e);
         }
 
@@ -80,6 +87,7 @@ namespace System.Windows.Forms
                         Text = null;
                         Apply();
                     }
+
                     break;
 
                 //case Keys.V:
@@ -93,6 +101,7 @@ namespace System.Windows.Forms
                     //e.SuppressKeyPress = true;
                     break;
             }
+
             base.OnKeyDown(e);
         }
 
@@ -124,6 +133,7 @@ namespace System.Windows.Forms
                 _value = val;
                 ValueChanged?.Invoke(this, null);
             }
+
             UpdateText();
         }
     }

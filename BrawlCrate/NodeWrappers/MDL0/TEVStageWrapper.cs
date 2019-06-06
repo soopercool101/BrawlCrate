@@ -10,6 +10,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static TEVStageWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -21,10 +22,12 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[0].Enabled = _menu.Items[1].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TEVStageWrapper w = GetInstance<TEVStageWrapper>();
@@ -87,8 +90,12 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
+
         #endregion
 
-        public TEVStageWrapper() { ContextMenuStrip = _menu; }
+        public TEVStageWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

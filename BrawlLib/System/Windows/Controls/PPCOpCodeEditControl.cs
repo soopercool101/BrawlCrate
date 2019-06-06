@@ -10,7 +10,7 @@ namespace System.Windows.Forms
 
         public void SetCode(PPCOpCode code)
         {
-            propertyGrid1.SelectedObject = _code = (uint)code;
+            propertyGrid1.SelectedObject = _code = (uint) code;
             btnGoToBranch.Visible = _canFollowBranch && _code is PPCBranch;
             _updating = true;
             //cboOpCode.SelectedIndex = 

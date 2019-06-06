@@ -14,6 +14,7 @@
 
             return 0;
         }
+
         public static int CountBits(this byte b)
         {
             int count = 0;
@@ -27,6 +28,7 @@
 
             return count;
         }
+
         public static byte Clamp(this byte value, byte min, byte max)
         {
             return value <= min ? min : value >= max ? max : value;

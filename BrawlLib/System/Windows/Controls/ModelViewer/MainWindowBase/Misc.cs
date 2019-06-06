@@ -44,11 +44,11 @@ namespace System.Windows.Forms
                 KeyframePanel.visEditor.IndexChanged += new EventHandler(VISIndexChanged);
             }
 
-            ModelPanel.PreRender += (EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender));
-            ModelPanel.PostRender += (EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender));
-            ModelPanel.MouseDown += (EventMouseDown = new MouseEventHandler(modelPanel1_MouseDown));
-            ModelPanel.MouseMove += (EventMouseMove = new MouseEventHandler(modelPanel1_MouseMove));
-            ModelPanel.MouseUp += (EventMouseUp = new MouseEventHandler(modelPanel1_MouseUp));
+            ModelPanel.PreRender += EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender);
+            ModelPanel.PostRender += EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender);
+            ModelPanel.MouseDown += EventMouseDown = new MouseEventHandler(modelPanel1_MouseDown);
+            ModelPanel.MouseMove += EventMouseMove = new MouseEventHandler(modelPanel1_MouseMove);
+            ModelPanel.MouseUp += EventMouseUp = new MouseEventHandler(modelPanel1_MouseUp);
 
             if (PlaybackPanel != null)
             {
@@ -89,6 +89,7 @@ namespace System.Windows.Forms
             p.MouseMove += EventMouseMove;
             p.MouseUp += EventMouseUp;
         }
+
         public virtual void UnlinkModelPanel(ModelPanel p)
         {
             p.PreRender -= EventPreRender;
@@ -106,6 +107,7 @@ namespace System.Windows.Forms
         #endregion
 
         #region Models
+
         public virtual void AppendTarget(IModel model)
         {
             if (!_targetModels.Contains(model))
@@ -155,14 +157,20 @@ namespace System.Windows.Forms
             TargetModelChanged?.Invoke(this, null);
         }
 
-        protected virtual void OnModelChanged() { }
+        protected virtual void OnModelChanged()
+        {
+        }
+
         protected virtual void OnSelectedVerticesChanged()
         {
             //Force the average vertex location to be recalculated
             _vertexLoc = null;
             ModelPanel.Invalidate();
         }
-        protected virtual void OnSelectedBoneChanged() { }
+
+        protected virtual void OnSelectedBoneChanged()
+        {
+        }
 
         #endregion
 
@@ -202,6 +210,7 @@ namespace System.Windows.Forms
         #endregion
 
         #region Playback Panel
+
         public void pnlPlayback_Resize(object sender, EventArgs e)
         {
             if (PlaybackPanel.Width <= PlaybackPanel.MinimumSize.Width)
@@ -217,7 +226,7 @@ namespace System.Windows.Forms
 
         public virtual void numFrameIndex_ValueChanged(object sender, EventArgs e)
         {
-            int val = (int)PlaybackPanel.numFrameIndex.Value;
+            int val = (int) PlaybackPanel.numFrameIndex.Value;
             if (val != _animFrame)
             {
                 int difference = val - _animFrame;
@@ -227,24 +236,27 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public virtual void numFPS_ValueChanged(object sender, EventArgs e)
         {
-            _timer.TargetRenderFrequency = (double)PlaybackPanel.numFPS.Value;
+            _timer.TargetRenderFrequency = (double) PlaybackPanel.numFPS.Value;
         }
+
         public virtual void PlaybackPanel_LoopChanged()
         {
             _loop = PlaybackPanel.chkLoop.Checked;
             //if (TargetAnimation != null)
             //    TargetAnimation.Loop = _loop;
         }
+
         public virtual void numTotalFrames_ValueChanged(object sender, EventArgs e)
         {
-            if ((TargetAnimation == null) || (_updating))
+            if (TargetAnimation == null || _updating)
             {
                 return;
             }
 
-            int max = (int)PlaybackPanel.numTotalFrames.Value;
+            int max = (int) PlaybackPanel.numTotalFrames.Value;
             PlaybackPanel.numFrameIndex.Maximum = max;
 
             if (Interpolated.Contains(TargetAnimation.GetType()) && TargetAnimation.Loop)
@@ -255,8 +267,17 @@ namespace System.Windows.Forms
             _maxFrame = max;
             TargetAnimation.FrameCount = max;
         }
-        public virtual void btnPrevFrame_Click(object sender, EventArgs e) { PlaybackPanel.numFrameIndex.Value--; }
-        public virtual void btnNextFrame_Click(object sender, EventArgs e) { PlaybackPanel.numFrameIndex.Value++; }
+
+        public virtual void btnPrevFrame_Click(object sender, EventArgs e)
+        {
+            PlaybackPanel.numFrameIndex.Value--;
+        }
+
+        public virtual void btnNextFrame_Click(object sender, EventArgs e)
+        {
+            PlaybackPanel.numFrameIndex.Value++;
+        }
+
         public virtual void TogglePlay()
         {
             if (_timer.IsRunning)
@@ -268,10 +289,16 @@ namespace System.Windows.Forms
                 PlayAnim();
             }
         }
+
         #endregion
 
-        public virtual void SaveSettings() { }
-        public virtual void SetDefaultSettings() { }
+        public virtual void SaveSettings()
+        {
+        }
+
+        public virtual void SetDefaultSettings()
+        {
+        }
 
         private void RenderToGIF(List<Image> images, string path)
         {
@@ -305,11 +332,13 @@ namespace System.Windows.Forms
 
                 outPath += "\\" + name + i + ".gif";
             }
-            catch { }
+            catch
+            {
+            }
 
             AnimatedGifEncoder e = new AnimatedGifEncoder();
             e.Start(outPath);
-            e.SetDelay(1000 / (int)PlaybackPanel.numFPS.Value);
+            e.SetDelay(1000 / (int) PlaybackPanel.numFPS.Value);
             e.SetRepeat(0);
             e.SetQuality(10);
             using (ProgressWindow progress = new ProgressWindow(this, "GIF Encoder", "Encoding, please wait...", true))
@@ -329,15 +358,19 @@ namespace System.Windows.Forms
                     e.AddFrame(images[i]);
                     progress.Update(progress.CurrentValue + 1);
                 }
+
                 progress.Finish();
                 e.Finish();
             }
 
-            if (MessageBox.Show(this, "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?", "GIF saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(this,
+                    "Animated GIF successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder now?",
+                    "GIF saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Process.Start("explorer.exe", path);
             }
         }
+
         protected void SaveBitmap(Bitmap bmp, string path, string extension)
         {
             if (string.IsNullOrEmpty(path))
@@ -400,17 +433,27 @@ namespace System.Windows.Forms
                     {
                         bmp.Save(outPath, ImageFormat.Gif);
                     }
-                    else { okay = false; }
+                    else
+                    {
+                        okay = false;
+                    }
+
                     if (okay)
                     {
-                        if (MessageBox.Show(this, "Screenshot successfully saved to \"" + outPath.Replace("\\", "/") + "\".\nOpen the folder containing the screenshot now?", "Screenshot saved", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show(this,
+                                "Screenshot successfully saved to \"" + outPath.Replace("\\", "/") +
+                                "\".\nOpen the folder containing the screenshot now?", "Screenshot saved",
+                                MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             Process.Start("explorer.exe", path);
                         }
                     }
                 }
-                catch { }
+                catch
+                {
+                }
             }
+
             bmp.Dispose();
         }
 
@@ -434,10 +477,20 @@ namespace System.Windows.Forms
                 TargetModel = _targetModels[0];
             }
         }
-        public virtual void LoadAnimations(ResourceNode node) { }
-        public virtual void LoadEtc(ResourceNode node) { }
 
-        public virtual void OpenFile(string file) { OpenFile(file, true, true, true); }
+        public virtual void LoadAnimations(ResourceNode node)
+        {
+        }
+
+        public virtual void LoadEtc(ResourceNode node)
+        {
+        }
+
+        public virtual void OpenFile(string file)
+        {
+            OpenFile(file, true, true, true);
+        }
+
         public virtual void OpenFile(string file, bool models = true, bool animations = true, bool etc = true)
         {
             ResourceNode node = null;
@@ -468,7 +521,10 @@ namespace System.Windows.Forms
                     MessageBox.Show(this, "Unable to recognize input file.");
                 }
             }
-            catch (Exception ex) { MessageBox.Show(this, ex.Message, "Error loading from file."); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error loading from file.");
+            }
         }
     }
 }

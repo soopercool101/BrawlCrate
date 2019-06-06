@@ -34,11 +34,20 @@ namespace BrawlLib.SSBBTypes
         public buint _unk19; //0
         public buint _unk20; //0
 
-        public LMBinTexture* Textures => (LMBinTexture*)(Address + _textureOffset);
+        public LMBinTexture* Textures => (LMBinTexture*) (Address + _textureOffset);
 
-        public string Name => new string((sbyte*)Address + 1);
+        public string Name => new string((sbyte*) Address + 1);
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -77,7 +86,16 @@ namespace BrawlLib.SSBBTypes
         public bint _num2;
         public fixed uint _pad4[7];
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
 
     [Flags]

@@ -3,9 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Windows.Forms.Design;
+
 namespace System.Windows.Forms
 {
     public delegate void ColorChanged(Color c);
+
     public class GoodColorControl2 : UserControl
     {
         #region Designer
@@ -36,7 +38,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(200, 221);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(59, 24);
@@ -47,7 +49,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancel.Location = new Drawing.Point(267, 221);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Drawing.Size(59, 24);
@@ -58,8 +60,8 @@ namespace System.Windows.Forms
             // 
             // pnlColors
             // 
-            pnlColors.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            pnlColors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left;
             pnlColors.Controls.Add(pnlNew);
             pnlColors.Controls.Add(pnlOld);
             pnlColors.Location = new Drawing.Point(14, 207);
@@ -143,16 +145,17 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(335, 253);
             pnlColors.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
 
         public delegate void ColorChangedEvent(Color selection);
+
         public event ColorChangedEvent OnColorChanged;
 
         private Color _color;
         private Color _newColor;
+
         public Color Color
         {
             get => _color;
@@ -184,13 +187,17 @@ namespace System.Windows.Forms
         }
 
         private bool _showOld = false;
+
         public bool ShowOldColor
         {
             get => _showOld;
             set => lblOld.Visible = lblNew.Visible = pnlOld.Visible = _showOld = value;
         }
 
-        public GoodColorControl2() { InitializeComponent(); }
+        public GoodColorControl2()
+        {
+            InitializeComponent();
+        }
 
         public event EventHandler Closed;
 
@@ -285,8 +292,8 @@ namespace System.Windows.Forms
             {
                 _service =
                     provider.GetService(
-                    typeof(IWindowsFormsEditorService))
-                    as IWindowsFormsEditorService;
+                            typeof(IWindowsFormsEditorService))
+                        as IWindowsFormsEditorService;
             }
 
             if (_service != null)
@@ -298,15 +305,15 @@ namespace System.Windows.Forms
 
                 if (t == typeof(ARGBPixel))
                 {
-                    selectionControl.Color = (Color)(ARGBPixel)value;
+                    selectionControl.Color = (Color) (ARGBPixel) value;
                 }
                 else if (t == typeof(RGBAPixel))
                 {
-                    selectionControl.Color = (Color)(RGBAPixel)value;
+                    selectionControl.Color = (Color) (RGBAPixel) value;
                 }
                 else if (t == typeof(GXColorS10))
                 {
-                    selectionControl.Color = (Color)(GXColorS10)value;
+                    selectionControl.Color = (Color) (GXColorS10) value;
                 }
 
                 _service.DropDownControl(selectionControl);
@@ -315,17 +322,18 @@ namespace System.Windows.Forms
                 {
                     if (t == typeof(ARGBPixel))
                     {
-                        value = (ARGBPixel)selectionControl.Color;
+                        value = (ARGBPixel) selectionControl.Color;
                     }
                     else if (t == typeof(RGBAPixel))
                     {
-                        value = (RGBAPixel)(ARGBPixel)selectionControl.Color;
+                        value = (RGBAPixel) (ARGBPixel) selectionControl.Color;
                     }
                     else if (t == typeof(GXColorS10))
                     {
-                        value = (GXColorS10)(ARGBPixel)selectionControl.Color;
+                        value = (GXColorS10) (ARGBPixel) selectionControl.Color;
                     }
                 }
+
                 _service = null;
             }
 

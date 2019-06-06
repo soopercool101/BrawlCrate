@@ -34,7 +34,7 @@ namespace Be.Windows.Forms
         /// <returns></returns>
         public virtual char ToChar(byte b)
         {
-            return b > 0x1F && !(b > 0x7E && b < 0xA0) ? (char)b : '.';
+            return b > 0x1F && !(b > 0x7E && b < 0xA0) ? (char) b : '.';
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Be.Windows.Forms
         /// <returns></returns>
         public virtual byte ToByte(char c)
         {
-            return (byte)c;
+            return (byte) c;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Be.Windows.Forms
         /// <returns></returns>
         public virtual char ToChar(byte b)
         {
-            string encoded = _ebcdicEncoding.GetString(new byte[] { b });
+            string encoded = _ebcdicEncoding.GetString(new byte[] {b});
             return encoded.Length > 0 ? encoded[0] : '.';
         }
 
@@ -86,8 +86,8 @@ namespace Be.Windows.Forms
         /// <returns></returns>
         public virtual byte ToByte(char c)
         {
-            byte[] decoded = _ebcdicEncoding.GetBytes(new char[] { c });
-            return decoded.Length > 0 ? decoded[0] : (byte)0;
+            byte[] decoded = _ebcdicEncoding.GetBytes(new char[] {c});
+            return decoded.Length > 0 ? decoded[0] : (byte) 0;
         }
 
         /// <summary>

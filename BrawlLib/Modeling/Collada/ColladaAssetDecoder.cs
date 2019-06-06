@@ -29,16 +29,16 @@ namespace BrawlLib.Modeling
             float weight = 0;
             float* pWeights = null;
             Vector3* pVert = null, pNorms = null;
-            ushort* pVInd = (ushort*)manager._indices.Address;
+            ushort* pVInd = (ushort*) manager._indices.Address;
             List<Vertex3> vertList = new List<Vertex3>(skin._weightCount);
             Matrix* pMatrix = null;
 
             UnsafeBuffer remap = new UnsafeBuffer(skin._weightCount * 2);
-            ushort* pRemap = (ushort*)remap.Address;
+            ushort* pRemap = (ushort*) remap.Address;
 
             if (manager._faceData[1] != null)
             {
-                pNorms = (Vector3*)manager._faceData[1].Address;
+                pNorms = (Vector3*) manager._faceData[1].Address;
             }
 
             manager._vertices = vertList;
@@ -48,7 +48,7 @@ namespace BrawlLib.Modeling
             {
                 if (s._id == geo._verticesInput._source)
                 {
-                    pVert = (Vector3*)((UnsafeBuffer)s._arrayData).Address;
+                    pVert = (Vector3*) ((UnsafeBuffer) s._arrayData).Address;
                     break;
                 }
             }
@@ -74,7 +74,7 @@ namespace BrawlLib.Modeling
                     {
                         if (src._id == inp._source)
                         {
-                            pMatrix = (Matrix*)((UnsafeBuffer)src._arrayData).Address;
+                            pMatrix = (Matrix*) ((UnsafeBuffer) src._arrayData).Address;
                             break;
                         }
                     }
@@ -134,7 +134,7 @@ namespace BrawlLib.Modeling
                         {
                             if (src._id == inp._source)
                             {
-                                pWeights = (float*)((UnsafeBuffer)src._arrayData).Address;
+                                pWeights = (float*) ((UnsafeBuffer) src._arrayData).Address;
                                 break;
                             }
                         }
@@ -178,7 +178,8 @@ namespace BrawlLib.Modeling
 
                 inf.CalcMatrix();
 
-                Error = "There was a problem creating a vertex from the geometry entry " + geo._name + ".\nMake sure that all the vertices are weighted properly.";
+                Error = "There was a problem creating a vertex from the geometry entry " + geo._name +
+                        ".\nMake sure that all the vertices are weighted properly.";
 
                 Vector3 worldPos = bindMatrix * skin._bindMatrix * pVert[i];
                 Vertex3 v;
@@ -204,6 +205,7 @@ namespace BrawlLib.Modeling
 
                     index++;
                 }
+
                 if (index == vertList.Count)
                 {
                     vertList.Add(v);
@@ -233,15 +235,15 @@ namespace BrawlLib.Modeling
                         {
                             pNorms[i] =
                                 (bindMatrix *
-                                skin._bindMatrix).GetRotationMatrix() *
+                                 skin._bindMatrix).GetRotationMatrix() *
                                 pNorms[i];
                         }
                         else
                         {
                             pNorms[i] =
                                 (v.MatrixNode.Weights[0].Bone.InverseBindMatrix *
-                                bindMatrix *
-                                skin._bindMatrix).GetRotationMatrix() *
+                                 bindMatrix *
+                                 skin._bindMatrix).GetRotationMatrix() *
                                 pNorms[i];
                         }
                     }
@@ -284,7 +286,7 @@ namespace BrawlLib.Modeling
             PrimitiveManager manager = DecodePrimitives(geo);
 
             Vector3* pVert = null, pNorms = null;
-            ushort* pVInd = (ushort*)manager._indices.Address;
+            ushort* pVInd = (ushort*) manager._indices.Address;
             int vCount = 0;
             List<Vertex3> vertList = new List<Vertex3>(manager._pointCount);
 
@@ -292,7 +294,7 @@ namespace BrawlLib.Modeling
 
             if (manager._faceData[1] != null)
             {
-                pNorms = (Vector3*)manager._faceData[1].Address;
+                pNorms = (Vector3*) manager._faceData[1].Address;
             }
 
             //Find vertex source
@@ -301,14 +303,14 @@ namespace BrawlLib.Modeling
                 if (s._id == geo._verticesInput._source)
                 {
                     UnsafeBuffer b = s._arrayData as UnsafeBuffer;
-                    pVert = (Vector3*)b.Address;
+                    pVert = (Vector3*) b.Address;
                     vCount = b.Length / 12;
                     break;
                 }
             }
 
             UnsafeBuffer remap = new UnsafeBuffer(vCount * 2);
-            ushort* pRemap = (ushort*)remap.Address;
+            ushort* pRemap = (ushort*) remap.Address;
 
             //Create remap table
             for (int i = 0; i < vCount; i++)
@@ -326,12 +328,13 @@ namespace BrawlLib.Modeling
 
                     index++;
                 }
+
                 if (index == vertList.Count)
                 {
                     vertList.Add(v);
                 }
 
-                pRemap[i] = (ushort)index;
+                pRemap[i] = (ushort) index;
             }
 
             //Remap vertex indices and fix normals
@@ -360,9 +363,9 @@ namespace BrawlLib.Modeling
             int faces = 0, lines = 0, points = 0;
             uint fIndex = 0, lIndex = 0, temp;
 
-            PrimitiveDecodeCommand* pCmd = (PrimitiveDecodeCommand*)pData;
-            byte** pInData = (byte**)pInDataList;
-            byte** pOutData = (byte**)pOutDataList;
+            PrimitiveDecodeCommand* pCmd = (PrimitiveDecodeCommand*) pData;
+            byte** pInData = (byte**) pInDataList;
+            byte** pOutData = (byte**) pOutDataList;
 
             PrimitiveManager manager = new PrimitiveManager();
 
@@ -371,7 +374,7 @@ namespace BrawlLib.Modeling
             {
                 if (s._id == geo._verticesInput._source)
                 {
-                    pInData[0] = (byte*)((UnsafeBuffer)s._arrayData).Address;
+                    pInData[0] = (byte*) ((UnsafeBuffer) s._arrayData).Address;
                     break;
                 }
             }
@@ -398,10 +401,26 @@ namespace BrawlLib.Modeling
 
                     switch (inp._semantic)
                     {
-                        case SemanticType.VERTEX: offset = 0; break;
-                        case SemanticType.NORMAL: offset = 1; break;
-                        case SemanticType.COLOR: if (inp._set < 2) { offset = 2 + inp._set; } break;
-                        case SemanticType.TEXCOORD: if (inp._set < 8) { offset = 4 + inp._set; } break;
+                        case SemanticType.VERTEX:
+                            offset = 0;
+                            break;
+                        case SemanticType.NORMAL:
+                            offset = 1;
+                            break;
+                        case SemanticType.COLOR:
+                            if (inp._set < 2)
+                            {
+                                offset = 2 + inp._set;
+                            }
+
+                            break;
+                        case SemanticType.TEXCOORD:
+                            if (inp._set < 8)
+                            {
+                                offset = 4 + inp._set;
+                            }
+
+                            break;
                     }
 
                     if (offset != -1)
@@ -412,6 +431,7 @@ namespace BrawlLib.Modeling
                     inp._outputOffset = offset;
                 }
             }
+
             manager._pointCount = points;
 
             //Create primitives
@@ -420,6 +440,7 @@ namespace BrawlLib.Modeling
                 manager._triangles = new GLPrimitive(faces * 3, OpenTK.Graphics.OpenGL.PrimitiveType.Triangles);
                 pTriarr = manager._triangles._indices;
             }
+
             if (lines > 0)
             {
                 manager._lines = new GLPrimitive(lines * 2, OpenTK.Graphics.OpenGL.PrimitiveType.Lines);
@@ -453,11 +474,11 @@ namespace BrawlLib.Modeling
                     manager._faceData[i] = new UnsafeBuffer(points * stride);
                     if (i == 0)
                     {
-                        pOutData[i] = (byte*)manager._indices.Address;
+                        pOutData[i] = (byte*) manager._indices.Address;
                     }
                     else
                     {
-                        pOutData[i] = (byte*)manager._faceData[i].Address;
+                        pOutData[i] = (byte*) manager._faceData[i].Address;
                     }
                 }
             }
@@ -475,15 +496,15 @@ namespace BrawlLib.Modeling
                     }
                     else
                     {
-                        pCmd[inp._offset].Cmd = (byte)inp._semantic;
-                        pCmd[inp._offset].Index = (byte)inp._outputOffset;
+                        pCmd[inp._offset].Cmd = (byte) inp._semantic;
+                        pCmd[inp._offset].Index = (byte) inp._outputOffset;
 
                         //Assign input buffer
                         foreach (SourceEntry src in geo._sources)
                         {
                             if (src._id == inp._source)
                             {
-                                pInData[inp._outputOffset] = (byte*)((UnsafeBuffer)src._arrayData).Address;
+                                pInData[inp._outputOffset] = (byte*) ((UnsafeBuffer) src._arrayData).Address;
                                 break;
                             }
                         }
@@ -525,6 +546,7 @@ namespace BrawlLib.Modeling
                                 pTriarr[pTri++] = fIndex++;
                             }
                         }
+
                         break;
                     case ColladaPrimitiveType.tristrips:
                         foreach (PrimitiveFace f in prim._faces)
@@ -547,6 +569,7 @@ namespace BrawlLib.Modeling
                                 }
                             }
                         }
+
                         break;
 
                     case ColladaPrimitiveType.linestrips:
@@ -560,6 +583,7 @@ namespace BrawlLib.Modeling
                                 pLinarr[pLin++] = lIndex++;
                             }
                         }
+
                         break;
 
                     case ColladaPrimitiveType.lines:
@@ -571,13 +595,16 @@ namespace BrawlLib.Modeling
                                 pLinarr[pLin++] = lIndex++;
                             }
                         }
+
                         break;
                 }
             }
+
             return manager;
         }
 
-        private static void RunPrimitiveCmd(byte** pIn, byte** pOut, PrimitiveDecodeCommand* pCmd, int cmdCount, ushort* pIndex, int count)
+        private static void RunPrimitiveCmd(byte** pIn, byte** pOut, PrimitiveDecodeCommand* pCmd, int cmdCount,
+                                            ushort* pIndex, int count)
         {
             int buffer;
             while (count-- > 0)
@@ -585,7 +612,7 @@ namespace BrawlLib.Modeling
                 for (int i = 0; i < cmdCount; i++)
                 {
                     buffer = pCmd[i].Index;
-                    switch ((SemanticType)pCmd[i].Cmd)
+                    switch ((SemanticType) pCmd[i].Cmd)
                     {
                         case SemanticType.None:
                             *pIndex += 1;
@@ -593,21 +620,21 @@ namespace BrawlLib.Modeling
 
                         case SemanticType.VERTEX:
                             //Can't do remap table because weights haven't been assigned yet!
-                            *(ushort*)pOut[buffer] = *pIndex++;
+                            *(ushort*) pOut[buffer] = *pIndex++;
                             pOut[buffer] += 2;
                             break;
 
                         case SemanticType.NORMAL:
-                            *(Vector3*)pOut[buffer] = ((Vector3*)pIn[buffer])[*pIndex++];
+                            *(Vector3*) pOut[buffer] = ((Vector3*) pIn[buffer])[*pIndex++];
                             pOut[buffer] += 12;
                             break;
 
                         case SemanticType.COLOR:
-                            float* p = (float*)(pIn[buffer] + (*pIndex++ * 16));
+                            float* p = (float*) (pIn[buffer] + *pIndex++ * 16);
                             byte* p2 = pOut[buffer];
                             for (int x = 0; x < 4; x++)
                             {
-                                *p2++ = (byte)(*p++ * 255.0f + 0.5f);
+                                *p2++ = (byte) (*p++ * 255.0f + 0.5f);
                             }
 
                             pOut[buffer] = p2;
@@ -615,9 +642,9 @@ namespace BrawlLib.Modeling
 
                         case SemanticType.TEXCOORD:
                             //Flip y axis so coordinates are bottom-up
-                            Vector2 v = ((Vector2*)pIn[buffer])[*pIndex++];
+                            Vector2 v = ((Vector2*) pIn[buffer])[*pIndex++];
                             v._y = 1.0f - v._y;
-                            *(Vector2*)pOut[buffer] = v;
+                            *(Vector2*) pOut[buffer] = v;
                             pOut[buffer] += 8;
                             break;
                     }

@@ -52,7 +52,7 @@ namespace System.Windows.Forms
             {
                 if (_targetModel is MDL0Node)
                 {
-                    return ((MDL0Node)_targetModel).VIS0Indices;
+                    return ((MDL0Node) _targetModel).VIS0Indices;
                 }
 
                 return null;
@@ -75,32 +75,39 @@ namespace System.Windows.Forms
             {
                 _snapX = _snapY = _snapZ = _snapCirc = false;
             }
+
             public void ResetActions()
             {
                 _rotating = _translating = _scaling = false;
             }
+
             public void ResetHighlights()
             {
                 _hiX = _hiY = _hiZ = _hiCirc = _hiSphere = false;
             }
+
             public void ResetAll()
             {
                 ResetActions();
                 ResetSnaps();
                 ResetHighlights();
             }
+
             public bool IsMoving()
             {
                 return _rotating || _translating || _scaling;
             }
+
             public bool SnappingAny()
             {
                 return _snapX || _snapY || _snapZ || _snapCirc;
             }
+
             public bool HighlightingAny()
             {
                 return _hiX || _hiY || _hiZ || _hiCirc || _hiSphere;
             }
+
             public void Update(
                 TransformType type,
                 Vector3 worldPoint,
@@ -118,14 +125,17 @@ namespace System.Windows.Forms
                 _oldPosition = oldPosition;
                 _oldScale = oldScale;
             }
+
             public void Update(
                 TransformType type,
                 Vector3 worldPoint,
                 Vector3 localPoint,
                 FrameState oldFrameState)
             {
-                Update(type, worldPoint, localPoint, oldFrameState._rotate, oldFrameState._translate, oldFrameState._scale);
+                Update(type, worldPoint, localPoint, oldFrameState._rotate, oldFrameState._translate,
+                    oldFrameState._scale);
             }
+
             public void ApplySnaps()
             {
                 _snapX = _hiX;
@@ -176,6 +186,7 @@ namespace System.Windows.Forms
         #region Delegates
 
         protected delegate void DelegateOpenFile(string s);
+
         protected DelegateOpenFile _openFileDelegate;
 
         #endregion

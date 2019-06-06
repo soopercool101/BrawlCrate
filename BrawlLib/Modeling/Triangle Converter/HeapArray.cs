@@ -41,7 +41,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_Compare = c;
         }
 
-        public void Clear()	// Post: ((size() == 0) && ! locked())
+        public void Clear() // Post: ((size() == 0) && ! locked())
         {
             m_Heap.Clear();
             m_Finder.Clear();
@@ -53,19 +53,26 @@ namespace BrawlLib.Modeling.Triangle_Converter
             //m_Heap.Capacity = (int)Size;
             //m_Finder.Capacity = (int)Size;
         }
-        public uint Size => (uint)m_Heap.Count;
+
+        public uint Size => (uint) m_Heap.Count;
         public bool Empty => m_Heap.Count == 0;
         public bool Locked => m_Locked;
-        public bool Removed(uint i)	// Pre: (valid(i))
+
+        public bool Removed(uint i) // Pre: (valid(i))
         {
             Debug.Assert(Valid(i));
-            return m_Finder[(int)i] >= m_Heap.Count;
+            return m_Finder[(int) i] >= m_Heap.Count;
         }
-        public bool Valid(uint i) { return i < m_Finder.Count; }
+
+        public bool Valid(uint i)
+        {
+            return i < m_Finder.Count;
+        }
+
         public uint Position(uint i) // Pre: (valid(i))
         {
             Debug.Assert(Valid(i));
-            return m_Heap[(int)i].m_Index;
+            return m_Heap[(int) i].m_Index;
         }
 
         public uint Top // Pre: (! empty())
@@ -82,7 +89,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             get
             {
                 Debug.Assert(!Removed(i));
-                return m_Heap[(int)m_Finder[(int)i]].m_Elem;
+                return m_Heap[(int) m_Finder[(int) i]].m_Elem;
             }
         }
 
@@ -91,6 +98,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             Debug.Assert(!Locked);
             m_Locked = true;
         }
+
         public uint Push(uint Elem) // Pre: (! locked())
         {
             Debug.Assert(!Locked);
@@ -108,7 +116,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             Debug.Assert(Locked);
             Debug.Assert(!Empty);
 
-            Swap(0, (int)Size - 1);
+            Swap(0, (int) Size - 1);
             m_Heap.RemoveAt(m_Heap.Count - 1);
 
             if (!Empty)
@@ -122,8 +130,8 @@ namespace BrawlLib.Modeling.Triangle_Converter
             Debug.Assert(Locked);
             Debug.Assert(!Removed(i));
 
-            uint j = m_Finder[(int)i];
-            Swap((int)j, (int)Size - 1);
+            uint j = m_Finder[(int) i];
+            Swap((int) j, (int) Size - 1);
             m_Heap.RemoveAt(m_Heap.Count - 1);
 
             if (j != Size)
@@ -131,26 +139,27 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 Adjust(j);
             }
         }
+
         public void Update(uint i, uint Elem) // Pre: (locked() && ! removed(i))
         {
             Debug.Assert(Locked);
             Debug.Assert(!Removed(i));
 
-            uint j = m_Finder[(int)i];
-            m_Heap[(int)j].m_Elem = Elem;
+            uint j = m_Finder[(int) i];
+            m_Heap[(int) j].m_Elem = Elem;
             Adjust(j);
         }
 
         protected void Adjust(uint z)
         {
-            int i = (int)z;
+            int i = (int) z;
 
             Debug.Assert(i < m_Heap.Count);
 
             int j;
 
             // Check the upper part of the heap
-            for (j = i; (j > 0) && (Comp(m_Heap[(j - 1) / 2], m_Heap[j])); j = ((j - 1) / 2))
+            for (j = i; j > 0 && Comp(m_Heap[(j - 1) / 2], m_Heap[j]); j = (j - 1) / 2)
             {
                 Swap(j, (j - 1) / 2);
             }
@@ -158,7 +167,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             // Check the lower part of the heap
             for (i = j; (j = 2 * i + 1) < Size; i = j)
             {
-                if ((j + 1 < Size) && (Comp(m_Heap[j], m_Heap[j + 1])))
+                if (j + 1 < Size && Comp(m_Heap[j], m_Heap[j + 1]))
                 {
                     ++j;
                 }
@@ -171,15 +180,17 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 Swap(i, j);
             }
         }
+
         protected void Swap(int a, int b)
         {
             Linker r = m_Heap[b];
             m_Heap[b] = m_Heap[a];
             m_Heap[a] = r;
 
-            m_Finder[(int)m_Heap[a].m_Index] = (uint)a;
-            m_Finder[(int)m_Heap[b].m_Index] = (uint)b;
+            m_Finder[(int) m_Heap[a].m_Index] = (uint) a;
+            m_Finder[(int) m_Heap[b].m_Index] = (uint) b;
         }
+
         protected bool Comp(Linker a, Linker b)
         {
             switch (m_Compare)

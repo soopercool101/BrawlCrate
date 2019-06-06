@@ -24,6 +24,7 @@ namespace System.Windows.Forms
         private FlowLayoutPanel flowLayoutPanel1;
         private IContainer components;
         private readonly SectionEditor _mainWindow;
+
         public FormFind(SectionEditor mainWindow)
         {
             InitializeComponent();
@@ -51,10 +52,12 @@ namespace System.Windows.Forms
                     components.Dispose();
                 }
             }
+
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -200,8 +203,8 @@ namespace System.Windows.Forms
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-
         }
+
         #endregion
 
         private FindOptions _findOptions;
@@ -231,7 +234,7 @@ namespace System.Windows.Forms
                 hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
             }
 
-            byte[] hex = _findOptions.Hex ?? (new byte[0]);
+            byte[] hex = _findOptions.Hex ?? new byte[0];
             hexFind.ByteProvider = new DynamicByteProvider(hex);
             hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
         }
@@ -362,7 +365,7 @@ namespace System.Windows.Forms
         {
             long pos = HexBox.CurrentFindingPosition;
             long length = HexBox.ByteProvider.Length;
-            double percent = pos / (double)length * 100;
+            double percent = pos / (double) length * 100;
 
             Globalization.NumberFormatInfo nfi =
                 new Globalization.CultureInfo("en-US").NumberFormat;

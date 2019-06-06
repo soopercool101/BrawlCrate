@@ -44,11 +44,19 @@ namespace System.Windows.Forms
         private float _minVal = float.MaxValue; //The minimum value in all keyframes
         private float _maxVal = float.MinValue; //The maximum value in all keyframes
 
-        private bool _keyDraggingAllowed = false; //Determines if the user can drag keyframe values across frames or to change the value
+        private bool
+            _keyDraggingAllowed =
+                false; //Determines if the user can drag keyframe values across frames or to change the value
+
         private bool _drawTans = true; //Determines if tangents should be rendered
         private bool _syncStartEnd; //If true, the first and last keyframe values and tangents will be synchronized
-        private bool _allKeys = true; //Determines if all keyframes should be rendered, or only the selected one and its neighbors
-        private bool _genTans = false; //True if tangents should be automatically generated when affected keyframes change
+
+        private bool
+            _allKeys = true; //Determines if all keyframes should be rendered, or only the selected one and its neighbors
+
+        private bool
+            _genTans = false; //True if tangents should be automatically generated when affected keyframes change
+
         private bool _lockIncs = false; //Determines if the scales can be changed on resize
         private bool _dragging = false; //True if the user is dragging a keyframe or tangent slope
 
@@ -68,6 +76,7 @@ namespace System.Windows.Forms
                 Invalidate();
             }
         }
+
         public float TangentLength
         {
             get => _tanLen;
@@ -77,8 +86,19 @@ namespace System.Windows.Forms
                 Invalidate();
             }
         }
-        public bool GenerateTangents { get => _genTans; set => _genTans = value; }
-        public bool KeyDraggingAllowed { get => _keyDraggingAllowed; set => _keyDraggingAllowed = value; }
+
+        public bool GenerateTangents
+        {
+            get => _genTans;
+            set => _genTans = value;
+        }
+
+        public bool KeyDraggingAllowed
+        {
+            get => _keyDraggingAllowed;
+            set => _keyDraggingAllowed = value;
+        }
+
         public bool DrawTangents
         {
             get => _drawTans;
@@ -88,9 +108,15 @@ namespace System.Windows.Forms
                 Invalidate();
             }
         }
-        public bool SyncStartEnd { get => _syncStartEnd; set => _syncStartEnd = value; }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+        public bool SyncStartEnd
+        {
+            get => _syncStartEnd;
+            set => _syncStartEnd = value;
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         public KeyframeEntry SelectedKeyframe
         {
             get => _selKey;
@@ -104,13 +130,37 @@ namespace System.Windows.Forms
                 }
             }
         }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         public KeyframeEntry HighlightedKeyframe => _hiKey;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public float Precision { get => _precision; set { _precision = value; Invalidate(); } }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public KeyframeEntry KeyRoot { get => _keyRoot; set { _keyRoot = value; Invalidate(); } }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        public float Precision
+        {
+            get => _precision;
+            set
+            {
+                _precision = value;
+                Invalidate();
+            }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        public KeyframeEntry KeyRoot
+        {
+            get => _keyRoot;
+            set
+            {
+                _keyRoot = value;
+                Invalidate();
+            }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         public int FrameIndex
         {
             get => _frame;
@@ -126,9 +176,17 @@ namespace System.Windows.Forms
                 }
             }
         }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
-        public int FrameLimit { get => _frameLimit; set => _frameLimit = value; }
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(false)]
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        public int FrameLimit
+        {
+            get => _frameLimit;
+            set => _frameLimit = value;
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         private int DisplayedFrameLimit
         {
             get
@@ -145,6 +203,7 @@ namespace System.Windows.Forms
                 return 0;
             }
         }
+
         public bool AlterSelectedTangent_OnDrag
         {
             get => _alterSelTangent_Drag;
@@ -157,6 +216,7 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public bool AlterAdjTangent_OnSelectedDrag
         {
             get => _alterAdjTangents_KeyFrame_Drag;
@@ -169,9 +229,11 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         #endregion
 
         #region Functions
+
         private bool Has3PlusVals()
         {
             //Just don't resize while dragging at all
@@ -265,10 +327,12 @@ namespace System.Windows.Forms
 
             if (index > root._prev._index)
             {
-                float span = FrameLimit - _keyRoot._prev._index.Clamp(0, FrameLimit) + _keyRoot._next._index.Clamp(0, FrameLimit);
+                float span = FrameLimit - _keyRoot._prev._index.Clamp(0, FrameLimit) +
+                             _keyRoot._next._index.Clamp(0, FrameLimit);
                 float offset =
-                    index > _keyRoot._prev._index && index < FrameLimit ? index - _keyRoot._prev._index :
-                    FrameLimit - _keyRoot._prev._index + index;
+                    index > _keyRoot._prev._index && index < FrameLimit
+                        ? index - _keyRoot._prev._index
+                        : FrameLimit - _keyRoot._prev._index + index;
 
                 one = _keyRoot._prev.Interpolate(offset, span, _keyRoot._next);
                 return false;
@@ -276,16 +340,18 @@ namespace System.Windows.Forms
 
             if (index < root._next._index)
             {
-                float span = FrameLimit - _keyRoot._prev._index.Clamp(0, FrameLimit) + _keyRoot._next._index.Clamp(0, FrameLimit);
+                float span = FrameLimit - _keyRoot._prev._index.Clamp(0, FrameLimit) +
+                             _keyRoot._next._index.Clamp(0, FrameLimit);
                 float offset =
-                    index > _keyRoot._prev._index.Clamp(0, FrameLimit) && index < FrameLimit ? index - _keyRoot._prev._index.Clamp(0, FrameLimit) :
-                    FrameLimit - _keyRoot._prev._index.Clamp(0, FrameLimit) + index;
+                    index > _keyRoot._prev._index.Clamp(0, FrameLimit) && index < FrameLimit
+                        ? index - _keyRoot._prev._index.Clamp(0, FrameLimit)
+                        : FrameLimit - _keyRoot._prev._index.Clamp(0, FrameLimit) + index;
 
                 one = _keyRoot._prev.Interpolate(offset, span, _keyRoot._next);
                 return false;
             }
 
-            for (entry = root._next; (entry != root) && (entry._index <= index); entry = entry._next)
+            for (entry = root._next; entry != root && entry._index <= index; entry = entry._next)
             {
                 if (entry._index == index)
                 {
@@ -320,7 +386,7 @@ namespace System.Windows.Forms
             int start = GetKeyframeMinIndex();
             int end = GetKeyframeMaxIndex();
 
-            for (float i = start; i <= end; i += (1 / _precision))
+            for (float i = start; i <= end; i += 1 / _precision)
             {
                 if (i >= 0 && i < _frameLimit)
                 {
@@ -368,13 +434,14 @@ namespace System.Windows.Forms
             }
 
             //Calculate X Scale
-            _xScale = Width / (float)i;
+            _xScale = Width / (float) i;
 
             FindMaxMin();
 
             //Calculate Y Scale
-            _yScale = (Height / (_maxVal - _minVal));
+            _yScale = Height / (_maxVal - _minVal);
         }
+
         #endregion
 
         #region Mouse, Resize
@@ -386,11 +453,11 @@ namespace System.Windows.Forms
                 return;
             }
 
-            float mouseY = (float)Height - e.Y;
+            float mouseY = (float) Height - e.Y;
             float mouseX = e.X;
 
             //Get nearest frame value
-            int frameVal = (int)(mouseX / _xScale + 0.5f);
+            int frameVal = (int) (mouseX / _xScale + 0.5f);
 
             int min = GetKeyframeMinIndex();
             if (!_dragging)
@@ -405,12 +472,12 @@ namespace System.Windows.Forms
 
                 if (DisplayAllKeyframes)
                 {
-                    for (KeyframeEntry entry = _keyRoot._next; (entry != _keyRoot); entry = entry._next)
+                    for (KeyframeEntry entry = _keyRoot._next; entry != _keyRoot; entry = entry._next)
                     {
                         float frame = entry._index;
-                        if (Math.Abs(mouseX - (frame * _xScale)) <= _pointWidth)
+                        if (Math.Abs(mouseX - frame * _xScale) <= _pointWidth)
                         {
-                            if (Math.Abs(mouseY - ((entry._value - _minVal) * _yScale)) <= _pointWidth)
+                            if (Math.Abs(mouseY - (entry._value - _minVal) * _yScale) <= _pointWidth)
                             {
                                 _hiKey = entry;
                                 Cursor = Cursors.Hand;
@@ -421,16 +488,17 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (/*_drawTans && */_selKey != null)
+                if ( /*_drawTans && */_selKey != null)
                 {
                     if (!DisplayAllKeyframes)
                     {
                         if (SelectedKeyframe._prev._index != -1)
                         {
                             float frame = SelectedKeyframe._prev._index;
-                            if (Math.Abs(mouseX - ((frame - min) * _xScale)) <= _pointWidth)
+                            if (Math.Abs(mouseX - (frame - min) * _xScale) <= _pointWidth)
                             {
-                                if (Math.Abs(mouseY - ((SelectedKeyframe._prev._value - _minVal) * _yScale)) <= _pointWidth)
+                                if (Math.Abs(mouseY - (SelectedKeyframe._prev._value - _minVal) * _yScale) <=
+                                    _pointWidth)
                                 {
                                     _hiKey = SelectedKeyframe._prev;
                                     Cursor = Cursors.Hand;
@@ -441,9 +509,9 @@ namespace System.Windows.Forms
                         }
 
                         float frame1 = SelectedKeyframe._index;
-                        if (Math.Abs(mouseX - ((frame1 - min) * _xScale)) <= _pointWidth)
+                        if (Math.Abs(mouseX - (frame1 - min) * _xScale) <= _pointWidth)
                         {
-                            if (Math.Abs(mouseY - ((SelectedKeyframe._value - _minVal) * _yScale)) <= _pointWidth)
+                            if (Math.Abs(mouseY - (SelectedKeyframe._value - _minVal) * _yScale) <= _pointWidth)
                             {
                                 _hiKey = SelectedKeyframe;
                                 Cursor = Cursors.Hand;
@@ -455,9 +523,10 @@ namespace System.Windows.Forms
                         if (SelectedKeyframe._next._index != -1)
                         {
                             float frame = SelectedKeyframe._next._index;
-                            if (Math.Abs(mouseX - ((frame - min) * _xScale)) <= _pointWidth)
+                            if (Math.Abs(mouseX - (frame - min) * _xScale) <= _pointWidth)
                             {
-                                if (Math.Abs(mouseY - ((SelectedKeyframe._next._value - _minVal) * _yScale)) <= _pointWidth)
+                                if (Math.Abs(mouseY - (SelectedKeyframe._next._value - _minVal) * _yScale) <=
+                                    _pointWidth)
                                 {
                                     _hiKey = SelectedKeyframe._next;
                                     Cursor = Cursors.Hand;
@@ -475,9 +544,11 @@ namespace System.Windows.Forms
                     float yVal = _selKey._value;
                     float tan = _selKey._tangent;
 
-                    float p = (float)Math.Sqrt(_precision / 4.0f);
-                    Vector2 one = new Vector2((xVal2 + i1 * p - min) * _xScale, (yVal - _minVal + tan * i1 * p) * _yScale);
-                    Vector2 two = new Vector2((xVal2 + i2 * p - min) * _xScale, (yVal - _minVal + tan * i2 * p) * _yScale);
+                    float p = (float) Math.Sqrt(_precision / 4.0f);
+                    Vector2 one = new Vector2((xVal2 + i1 * p - min) * _xScale,
+                        (yVal - _minVal + tan * i1 * p) * _yScale);
+                    Vector2 two = new Vector2((xVal2 + i2 * p - min) * _xScale,
+                        (yVal - _minVal + tan * i2 * p) * _yScale);
 
                     _slopePoint = null;
                     if (Math.Abs(mouseX - one._x) <= _pointWidth && Math.Abs(mouseY - one._y) <= _pointWidth)
@@ -503,9 +574,10 @@ namespace System.Windows.Forms
                         }
                     }
                 }
+
                 if (DisplayAllKeyframes)
                 {
-                    if (Math.Abs(mouseX - (_frame * _xScale)) <= _pointWidth)
+                    if (Math.Abs(mouseX - _frame * _xScale) <= _pointWidth)
                     {
                         Cursor = Cursors.VSplit;
                     }
@@ -518,16 +590,16 @@ namespace System.Windows.Forms
                     int xVal2 = _selKey._index;
                     float yVal = _selKey._value;
 
-                    float xDiff = mouseX - ((Vector2)_slopePoint)._x;
-                    float yDiff = mouseY - ((Vector2)_slopePoint)._y;
+                    float xDiff = mouseX - ((Vector2) _slopePoint)._x;
+                    float yDiff = mouseY - ((Vector2) _slopePoint)._y;
 
-                    float x2 = ((Vector2)_slopePoint)._x + xDiff;
-                    float y2 = ((Vector2)_slopePoint)._y + yDiff;
+                    float x2 = ((Vector2) _slopePoint)._x + xDiff;
+                    float y2 = ((Vector2) _slopePoint)._y + yDiff;
 
-                    _slopePoint = new Vector2(x2 == _origPos._x ? ((Vector2)_slopePoint)._x : x2, y2);
+                    _slopePoint = new Vector2(x2 == _origPos._x ? ((Vector2) _slopePoint)._x : x2, y2);
 
-                    Vector2 x = (Vector2)_slopePoint - _origPos;
-                    _selKey._tangent = (float)Math.Round((x._y / _yScale) / (x._x / _xScale), 5);
+                    Vector2 x = (Vector2) _slopePoint - _origPos;
+                    _selKey._tangent = (float) Math.Round(x._y / _yScale / (x._x / _xScale), 5);
 
                     if (_genTans)
                     {
@@ -560,8 +632,8 @@ namespace System.Windows.Forms
                 {
                     float yVal = mouseY / _yScale + _minVal;
                     int xv = frameVal;
-                    int xDiff = xv - (int)(_prevX + 0.5f);
-                    float yDiff = (yVal - _prevY);
+                    int xDiff = xv - (int) (_prevX + 0.5f);
+                    float yDiff = yVal - _prevY;
 
                     int newFrameIndex = _selKey._index + xDiff;
                     bool frameSet =
@@ -585,7 +657,7 @@ namespace System.Windows.Forms
                         }
                     }
 
-                    _selKey._value = (float)Math.Round(_selKey._value + yDiff, 3);
+                    _selKey._value = (float) Math.Round(_selKey._value + yDiff, 3);
 
                     if (frameSet)
                     {
@@ -616,6 +688,7 @@ namespace System.Windows.Forms
                             SelectedKeyframe._prev._prev._tangent = SelectedKeyframe._tangent;
                             SelectedKeyframe._prev._prev._value = SelectedKeyframe._value;
                         }
+
                         if (SelectedKeyframe._next._index == -1 && SelectedKeyframe._next._next != SelectedKeyframe)
                         {
                             SelectedKeyframe._next._next._tangent = SelectedKeyframe._tangent;
@@ -658,16 +731,17 @@ namespace System.Windows.Forms
                     _prevX = _selKey._index - min;
                     _prevY = _selKey._value;
                 }
+
                 _frame = _selKey._index;
 
-                if ((_dragging && !Has3PlusVals()) || _slopePoint != null)
+                if (_dragging && !Has3PlusVals() || _slopePoint != null)
                 {
                     _lockIncs = true;
                 }
             }
             else if (!_dragging && ModifierKeys == Keys.Control)
             {
-                int frameVal = (int)(e.X / _xScale + 0.5f);
+                int frameVal = (int) (e.X / _xScale + 0.5f);
                 KeyframeEntry entry;
                 for (entry = _keyRoot._next;
                     entry != _keyRoot && entry._index >= 0 && entry._index <= FrameLimit;
@@ -690,7 +764,7 @@ namespace System.Windows.Forms
                 if (entry != _keyRoot)
                 {
                     int min = GetKeyframeMinIndex();
-                    KeyframeEntry r = new KeyframeEntry(frameVal + min, ((float)Height - e.Y) / _yScale + _minVal);
+                    KeyframeEntry r = new KeyframeEntry(frameVal + min, ((float) Height - e.Y) / _yScale + _minVal);
                     entry.InsertAfter(r);
                     r.GenerateTangent();
                     _selKey = r;
@@ -713,7 +787,7 @@ namespace System.Windows.Forms
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (_slopePoint != null || (_dragging && _lockIncs))
+            if (_slopePoint != null || _dragging && _lockIncs)
             {
                 Invalidate();
             }
@@ -742,6 +816,7 @@ namespace System.Windows.Forms
         #endregion
 
         #region Rendering
+
         internal override unsafe void OnInit(TKContext ctx)
         {
             GL.Enable(EnableCap.Blend);
@@ -762,7 +837,7 @@ namespace System.Windows.Forms
             float tan = e._tangent;
 
             float i1 = -(_tanLen / 2);
-            float i2 = (_tanLen / 2);
+            float i2 = _tanLen / 2;
 
             bool ignoreIn = false, ignoreOut = false;
             if (e.Second != null)
@@ -779,7 +854,7 @@ namespace System.Windows.Forms
                 }
             }
 
-            float p = (float)Math.Sqrt(_precision / 4.0f);
+            float p = (float) Math.Sqrt(_precision / 4.0f);
             Vector2 one = new Vector2((xVal + i1 * p - xMin) * _xScale, (yVal - _minVal + tan * i1 * p) * _yScale);
             Vector2 two = new Vector2((xVal + i2 * p - xMin) * _xScale, (yVal - _minVal + tan * i2 * p) * _yScale);
 
@@ -804,7 +879,7 @@ namespace System.Windows.Forms
             {
                 GL.Color4(Color.Green);
 
-                float angle = (float)Math.Atan((tan * _yScale) / _xScale) * Maths._rad2degf;
+                float angle = (float) Math.Atan(tan * _yScale / _xScale) * Maths._rad2degf;
 
                 if (!ignoreIn)
                 {
@@ -887,12 +962,12 @@ namespace System.Windows.Forms
                 //Draw tangents
                 if (_drawTans)
                 {
-                    for (KeyframeEntry entry = _keyRoot._next; (entry != _keyRoot); entry = entry._next)
+                    for (KeyframeEntry entry = _keyRoot._next; entry != _keyRoot; entry = entry._next)
                     {
                         DrawTangent(entry, 0);
                     }
                 }
-                else if (_selKey != null/* && !Linear*/)
+                else if (_selKey != null /* && !Linear*/)
                 {
                     DrawTangent(_selKey, 0);
                 }
@@ -901,9 +976,11 @@ namespace System.Windows.Forms
                 GL.Color4(Color.Red);
                 GL.Begin(PrimitiveType.LineStrip);
 
-                for (KeyframeEntry entry = _keyRoot._next; (entry != _keyRoot); entry = entry._next)
+                for (KeyframeEntry entry = _keyRoot._next; entry != _keyRoot; entry = entry._next)
                 {
-                    for (float i = entry._index; i < (entry._next == _keyRoot ? _frameLimit : entry._next._index); i += (1.0f / _precision))
+                    for (float i = entry._index;
+                        i < (entry._next == _keyRoot ? _frameLimit : entry._next._index);
+                        i += 1.0f / _precision)
                     {
                         has2nd = GetFrameValue(i, out one, out two);
                         GL.Vertex2(i * _xScale, (one - _minVal) * _yScale);
@@ -915,6 +992,7 @@ namespace System.Windows.Forms
                         }
                     }
                 }
+
                 GL.End();
 
                 //Draw frame indicator
@@ -933,10 +1011,10 @@ namespace System.Windows.Forms
                 //Draw points
                 GL.Color4(Color.Black);
                 GL.Begin(PrimitiveType.Points);
-                for (KeyframeEntry entry = _keyRoot._next; (entry != _keyRoot); entry = entry._next)
+                for (KeyframeEntry entry = _keyRoot._next; entry != _keyRoot; entry = entry._next)
                 {
                     bool t = false;
-                    if (t = (_hiKey == entry || _selKey == entry))
+                    if (t = _hiKey == entry || _selKey == entry)
                     {
                         GL.PointSize(_pointWidth * 4.0f);
                         GL.Color4(Color.Orange);
@@ -955,6 +1033,7 @@ namespace System.Windows.Forms
                         GL.Color4(Color.Black);
                     }
                 }
+
                 GL.End();
             }
             else if (SelectedKeyframe != null)
@@ -1011,6 +1090,7 @@ namespace System.Windows.Forms
                         GL.Vertex2((SelectedKeyframe._prev._index - min) * _xScale, (two - _minVal) * _yScale);
                     }
                 }
+
                 if (SelectedKeyframe._index != -1)
                 {
                     has2nd = GetFrameValue(SelectedKeyframe._index, out one, out two);
@@ -1020,6 +1100,7 @@ namespace System.Windows.Forms
                         GL.Vertex2((SelectedKeyframe._index - min) * _xScale, (two - _minVal) * _yScale);
                     }
                 }
+
                 if (SelectedKeyframe._next._index != -1)
                 {
                     has2nd = GetFrameValue(SelectedKeyframe._next._index, out one, out two);
@@ -1035,6 +1116,7 @@ namespace System.Windows.Forms
 
             GL.Disable(EnableCap.ScissorTest);
         }
+
         #endregion
     }
 }

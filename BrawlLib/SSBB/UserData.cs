@@ -20,17 +20,41 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public override AttributeCollection Attributes => new AttributeCollection(null);
-        public override bool CanResetValue(object component) { return true; }
+
+        public override bool CanResetValue(object component)
+        {
+            return true;
+        }
+
         public override Type ComponentType => collection.GetType();
-        public override string DisplayName => index >= collection.Count || index < 0 ? null : collection[index].ToString();
+
+        public override string DisplayName =>
+            index >= collection.Count || index < 0 ? null : collection[index].ToString();
+
         public override string Description => null;
-        public override object GetValue(object component) { return collection[index]; }
+
+        public override object GetValue(object component)
+        {
+            return collection[index];
+        }
+
         public override bool IsReadOnly => true;
         public override string Name => "#" + index.ToString();
         public override Type PropertyType => collection[index].GetType();
-        public override void ResetValue(object component) { }
-        public override bool ShouldSerializeValue(object component) { return true; }
-        public override void SetValue(object component, object value) { collection[index] = (UserDataClass)value; }
+
+        public override void ResetValue(object component)
+        {
+        }
+
+        public override bool ShouldSerializeValue(object component)
+        {
+            return true;
+        }
+
+        public override void SetValue(object component, object value)
+        {
+            collection[index] = (UserDataClass) value;
+        }
     }
 
     public unsafe class UserDataCollection : CollectionBase, ICustomTypeDescriptor
@@ -42,15 +66,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            UserData* data = (UserData*)userDataAddr;
+            UserData* data = (UserData*) userDataAddr;
             ResourceGroup* group = data->Group;
             ResourceEntry* pEntry = &group->_first + 1;
             int count = group->_numEntries;
             for (int i = 0; i < count; i++, pEntry++)
             {
-                UserDataEntry* entry = (UserDataEntry*)((VoidPtr)group + pEntry->_dataOffset);
-                UserDataClass d = new UserDataClass() { _name = new string((sbyte*)group + pEntry->_stringOffset) };
-                VoidPtr addr = (VoidPtr)entry + entry->_dataOffset;
+                UserDataEntry* entry = (UserDataEntry*) ((VoidPtr) group + pEntry->_dataOffset);
+                UserDataClass d = new UserDataClass() {_name = new string((sbyte*) group + pEntry->_stringOffset)};
+                VoidPtr addr = (VoidPtr) entry + entry->_dataOffset;
                 d._type = entry->Type;
                 if (d._type != UserValueType.String)
                 {
@@ -59,11 +83,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                         switch (entry->Type)
                         {
                             case UserValueType.Float:
-                                d._entries.Add(((float)*(bfloat*)addr).ToString());
+                                d._entries.Add(((float) *(bfloat*) addr).ToString());
                                 addr += 4;
                                 break;
                             case UserValueType.Int:
-                                d._entries.Add(((int)*(bint*)addr).ToString());
+                                d._entries.Add(((int) *(bint*) addr).ToString());
                                 addr += 4;
                                 break;
                         }
@@ -71,7 +95,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    d._entries.Add(new string((sbyte*)addr));
+                    d._entries.Add(new string((sbyte*) addr));
                 }
 
                 Add(d);
@@ -97,7 +121,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return 0;
             }
 
-            int len = 0x1C + (Count * 0x28);
+            int len = 0x1C + Count * 0x28;
             foreach (UserDataClass c in this)
             {
                 foreach (string s in c._entries)
@@ -119,20 +143,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            UserData* data = (UserData*)userDataAddr;
+            UserData* data = (UserData*) userDataAddr;
 
             ResourceGroup* pGroup = data->Group;
             ResourceEntry* pEntry = &pGroup->_first + 1;
             *pGroup = new ResourceGroup(Count);
 
-            byte* pData = (byte*)pGroup + pGroup->_totalSize;
+            byte* pData = (byte*) pGroup + pGroup->_totalSize;
 
             int id = 0;
             foreach (UserDataClass s in this)
             {
-                (pEntry++)->_dataOffset = (int)pData - (int)pGroup;
-                UserDataEntry* p = (UserDataEntry*)pData;
-                *p = new UserDataEntry(s.DataType != UserValueType.String ? s._entries.Count : (s._entries.Count > 0 ? 1 : 0), s._type, id++);
+                (pEntry++)->_dataOffset = (int) pData - (int) pGroup;
+                UserDataEntry* p = (UserDataEntry*) pData;
+                *p = new UserDataEntry(
+                    s.DataType != UserValueType.String ? s._entries.Count : s._entries.Count > 0 ? 1 : 0, s._type,
+                    id++);
                 pData += 0x18;
                 if (s.DataType != UserValueType.String)
                 {
@@ -145,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 x = 0;
                             }
 
-                            *(bfloat*)pData = x;
+                            *(bfloat*) pData = x;
                             pData += 4;
                         }
                         else if (s.DataType == UserValueType.Int)
@@ -155,15 +181,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 x = 0;
                             }
 
-                            *(bint*)pData = x;
+                            *(bint*) pData = x;
                             pData += 4;
                         }
                     }
                 }
 
-                p->_totalLen = (int)pData - (int)p;
+                p->_totalLen = (int) pData - (int) p;
             }
-            data->_totalLen = (int)pData - (int)userDataAddr;
+
+            data->_totalLen = (int) pData - (int) userDataAddr;
         }
 
         public void PostProcess(VoidPtr userDataAddr, StringTable stringTable)
@@ -173,7 +200,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            UserData* data = (UserData*)userDataAddr;
+            UserData* data = (UserData*) userDataAddr;
 
             ResourceGroup* pGroup = data->Group;
             ResourceEntry* pEntry = &pGroup->_first;
@@ -182,22 +209,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             for (int i = 0; i < count; i++)
             {
-                UserDataEntry* entry = (UserDataEntry*)((byte*)pGroup + (pEntry++)->_dataOffset);
+                UserDataEntry* entry = (UserDataEntry*) ((byte*) pGroup + (pEntry++)->_dataOffset);
                 if (entry->Type == UserValueType.String && entry->_entryCount > 0)
                 {
                     entry->_dataOffset = stringTable[this[i]._entries[0]] + 4 - entry;
                 }
 
-                ResourceEntry.Build(pGroup, i + 1, entry, (BRESString*)stringTable[this[i]._name]);
+                ResourceEntry.Build(pGroup, i + 1, entry, (BRESString*) stringTable[this[i]._name]);
                 entry->ResourceStringAddress = stringTable[this[i]._name] + 4;
             }
         }
 
-        public void Add(UserDataClass u) { List.Add(u); }
-        public void Remove(UserDataClass u) { List.Remove(u); }
+        public void Add(UserDataClass u)
+        {
+            List.Add(u);
+        }
+
+        public void Remove(UserDataClass u)
+        {
+            List.Remove(u);
+        }
+
         public UserDataClass this[int index]
         {
-            get => index >= List.Count || index < 0 ? null : (UserDataClass)List[index];
+            get => index >= List.Count || index < 0 ? null : (UserDataClass) List[index];
             set => List[index] = value;
         }
 
@@ -264,6 +299,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 UserDataCollectionPropertyDescriptor pd = new UserDataCollectionPropertyDescriptor(this, i);
                 pds.Add(pd);
             }
+
             return pds;
         }
     }
@@ -274,7 +310,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string _name = "";
 
         [Category("User Data")]
-        public string Name { get => _name; set => _name = value; }
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
 
         [Category("User Data")]
         public string[] Entries
@@ -305,8 +345,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         [Category("User Data")]
-        public UserValueType DataType { get => _type; set => _type = value; }
+        public UserValueType DataType
+        {
+            get => _type;
+            set => _type = value;
+        }
 
         public override string ToString()
         {
@@ -335,8 +380,18 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public bint _totalLen; //Of everything user data related
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + 4);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public ResourceGroup* Group => (ResourceGroup*) (Address + 4);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -353,25 +408,39 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         //Entries, in the specified type
 
-        public UserValueType Type { get => (UserValueType)(int)_type; set => _type = (int)value; }
+        public UserValueType Type
+        {
+            get => (UserValueType) (int) _type;
+            set => _type = (int) value;
+        }
 
         public UserDataEntry(int entries, UserValueType type, int id)
         {
             _totalLen = 0;
             _dataOffset = type == UserValueType.String ? 0 : 0x18;
             _entryCount = entries;
-            _type = (int)type;
+            _type = (int) type;
             _stringOffset = 0;
             _id = id;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 }

@@ -25,12 +25,14 @@ namespace System.Windows.Forms
         }
 
         public Color _borderColor = Color.Green;
+
         private void UserControl1_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, ClientRectangle, _borderColor, ButtonBorderStyle.Solid);
         }
 
         public new event EventHandler TextChanged;
+
         private void textBox_TextChanged(object sender, EventArgs e)
         {
             TextChanged?.Invoke(sender, e);

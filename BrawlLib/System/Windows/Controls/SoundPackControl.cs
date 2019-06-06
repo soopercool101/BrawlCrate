@@ -82,13 +82,15 @@ namespace System.Windows.Forms
             // 
             lstSets.AutoArrange = false;
             lstSets.BorderStyle = BorderStyle.None;
-            lstSets.Columns.AddRange(new ColumnHeader[] {
-            clmIndex,
-            clmType,
-            clmName,
-            clmDataOffset,
-            clmAudioOffset,
-            clmEntryOffset});
+            lstSets.Columns.AddRange(new ColumnHeader[]
+            {
+                clmIndex,
+                clmType,
+                clmName,
+                clmDataOffset,
+                clmAudioOffset,
+                clmEntryOffset
+            });
             lstSets.ContextMenuStrip = contextMenuStrip1;
             lstSets.Dock = DockStyle.Fill;
             lstSets.FullRowSelect = true;
@@ -129,11 +131,13 @@ namespace System.Windows.Forms
             // contextMenuStrip1
             // 
             contextMenuStrip1.ImageScalingSize = new Drawing.Size(20, 20);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] {
-            mnuPath,
-            mnuExport,
-            mnuReplace,
-            deleteToolStripMenuItem});
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[]
+            {
+                mnuPath,
+                mnuExport,
+                mnuReplace,
+                deleteToolStripMenuItem
+            });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Drawing.Size(138, 108);
             contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
@@ -169,9 +173,11 @@ namespace System.Windows.Forms
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] {
-            newFileToolStripMenuItem,
-            editToolStripMenuItem});
+            menuStrip1.Items.AddRange(new ToolStripItem[]
+            {
+                newFileToolStripMenuItem,
+                editToolStripMenuItem
+            });
             menuStrip1.Location = new Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Drawing.Size(389, 28);
@@ -180,12 +186,14 @@ namespace System.Windows.Forms
             // 
             // newFileToolStripMenuItem
             // 
-            newFileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
-            rWSDToolStripMenuItem,
-            rSEQToolStripMenuItem,
-            rBNKToolStripMenuItem,
-            rSTMToolStripMenuItem,
-            externalReferenceToolStripMenuItem});
+            newFileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                rWSDToolStripMenuItem,
+                rSEQToolStripMenuItem,
+                rBNKToolStripMenuItem,
+                rSTMToolStripMenuItem,
+                externalReferenceToolStripMenuItem
+            });
             newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
             newFileToolStripMenuItem.Size = new Drawing.Size(78, 24);
             newFileToolStripMenuItem.Text = "New File";
@@ -238,9 +246,11 @@ namespace System.Windows.Forms
             // 
             // editToolStripMenuItem
             // 
-            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
-            makeAllExternalToolStripMenuItem,
-            makeAllInternalToolStripMenuItem});
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                makeAllExternalToolStripMenuItem,
+                makeAllInternalToolStripMenuItem
+            });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Drawing.Size(47, 24);
             editToolStripMenuItem.Text = "Edit";
@@ -272,7 +282,6 @@ namespace System.Windows.Forms
             menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
@@ -280,10 +289,20 @@ namespace System.Windows.Forms
         public PropertyGrid _grid = null;
 
         private RSARNode _targetNode;
+
         public RSARNode TargetNode
         {
             get => _targetNode;
-            set { if (value == _targetNode) { return; } _targetNode = value; NodeChanged(); }
+            set
+            {
+                if (value == _targetNode)
+                {
+                    return;
+                }
+
+                _targetNode = value;
+                NodeChanged();
+            }
         }
 
         private SoundPackItem _selectedItem;
@@ -321,6 +340,7 @@ namespace System.Windows.Forms
         }
 
         private delegate void delUpdate(ListView list);
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
@@ -337,6 +357,7 @@ namespace System.Windows.Forms
         }
 
         private readonly BackgroundWorker backgroundWorker1;
+
         private void NodeChanged()
         {
             //if (backgroundWorker1.IsBusy != true && _targetNode != null)
@@ -406,11 +427,20 @@ namespace System.Windows.Forms
                     dlg.FileName = _selectedItem.SubItems[2].Text.Replace('/', '_');
                     switch (_selectedItem.SubItems[1].Text)
                     {
-                        case "RWSD": dlg.Filter = FileFilters.RWSD; break;
-                        case "RBNK": dlg.Filter = FileFilters.RBNK; break;
-                        case "RSEQ": dlg.Filter = FileFilters.RSEQ; break;
-                        case "RSAR": dlg.Filter = FileFilters.RSAR; break;
+                        case "RWSD":
+                            dlg.Filter = FileFilters.RWSD;
+                            break;
+                        case "RBNK":
+                            dlg.Filter = FileFilters.RBNK;
+                            break;
+                        case "RSEQ":
+                            dlg.Filter = FileFilters.RSEQ;
+                            break;
+                        case "RSAR":
+                            dlg.Filter = FileFilters.RSAR;
+                            break;
                     }
+
                     if (dlg.ShowDialog(this) == DialogResult.OK)
                     {
                         _selectedItem._node.Export(dlg.FileName);
@@ -551,11 +581,11 @@ namespace System.Windows.Forms
 
         private void rSTMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = SupportedFilesHandler.GetCompleteFilter("wav") })
+            using (OpenFileDialog ofd = new OpenFileDialog() {Filter = SupportedFilesHandler.GetCompleteFilter("wav")})
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    RSTMNode r = new RSTMNode() { _fileIndex = _targetNode.Files.Count };
+                    RSTMNode r = new RSTMNode() {_fileIndex = _targetNode.Files.Count};
                     using (BrstmConverterDialog dlg = new BrstmConverterDialog())
                     {
                         dlg.AudioSource = ofd.FileName;
@@ -567,6 +597,7 @@ namespace System.Windows.Forms
                             r.ReplaceRaw(dlg.AudioData);
                         }
                     }
+
                     r._parent = _targetNode;
                     _targetNode.Files.Add(r);
                     r.SignalPropertyChange();
@@ -587,7 +618,8 @@ namespace System.Windows.Forms
                 ListViewItem v = i as ListViewItem;
                 string type = v.SubItems[1].Text;
                 string dir = "\\" + type + "\\";
-                string fileName = i._node.Name.Replace('/', '_').Replace('<', '(').Replace('>', ')') + ".b" + type.ToLower();
+                string fileName = i._node.Name.Replace('/', '_').Replace('<', '(').Replace('>', ')') + ".b" +
+                                  type.ToLower();
 
                 string newPath = _targetNode._origPath.Substring(0, _targetNode._origPath.LastIndexOf('\\')) + dir;
                 if (!Directory.Exists(newPath))
@@ -688,6 +720,7 @@ namespace System.Windows.Forms
 
                 i._node = ext;
             }
+
             _targetNode.IsDirty = true;
             Update(lstSets);
         }
@@ -734,7 +767,7 @@ namespace System.Windows.Forms
 
         public SoundPackItem(RSARFileNode file)
         {
-            ImageIndex = (byte)file.ResourceFileType;
+            ImageIndex = (byte) file.ResourceFileType;
 
             Text = file.FileNodeIndex.ToString();
 
@@ -765,10 +798,12 @@ namespace System.Windows.Forms
         /// Specifies the column to be sorted
         /// </summary>
         private int ColumnToSort;
+
         /// <summary>
         /// Specifies the order in which to sort (i.e. 'Ascending').
         /// </summary>
         private SortOrder OrderOfSort;
+
         /// <summary>
         /// Case insensitive comparer object
         /// </summary>
@@ -801,21 +836,26 @@ namespace System.Windows.Forms
             ListViewItem listviewX, listviewY;
 
             // Cast the objects to be compared to ListViewItem objects
-            listviewX = (ListViewItem)x;
-            listviewY = (ListViewItem)y;
+            listviewX = (ListViewItem) x;
+            listviewY = (ListViewItem) y;
 
             // Compare the two items
             if (ColumnToSort == 0)
             {
-                compareResult = ObjectCompare.Compare(int.Parse(listviewX.SubItems[ColumnToSort].Text), int.Parse(listviewY.SubItems[ColumnToSort].Text));
+                compareResult = ObjectCompare.Compare(int.Parse(listviewX.SubItems[ColumnToSort].Text),
+                    int.Parse(listviewY.SubItems[ColumnToSort].Text));
             }
             else if (ColumnToSort >= 4)
             {
-                compareResult = ObjectCompare.Compare(int.Parse(listviewX.SubItems[ColumnToSort].Text.Substring(2), Globalization.NumberStyles.HexNumber), int.Parse(listviewY.SubItems[ColumnToSort].Text.Substring(2), Globalization.NumberStyles.HexNumber));
+                compareResult = ObjectCompare.Compare(
+                    int.Parse(listviewX.SubItems[ColumnToSort].Text.Substring(2), Globalization.NumberStyles.HexNumber),
+                    int.Parse(listviewY.SubItems[ColumnToSort].Text.Substring(2),
+                        Globalization.NumberStyles.HexNumber));
             }
             else
             {
-                compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+                compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text,
+                    listviewY.SubItems[ColumnToSort].Text);
             }
 
             // Calculate correct return value based on object comparison
@@ -827,7 +867,7 @@ namespace System.Windows.Forms
             else if (OrderOfSort == SortOrder.Descending)
             {
                 // Descending sort is selected, return negative result of compare operation
-                return (-compareResult);
+                return -compareResult;
             }
             else
             {

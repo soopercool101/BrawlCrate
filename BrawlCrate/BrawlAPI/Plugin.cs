@@ -48,16 +48,18 @@ namespace BrawlCrate.API
             ResourceNode n = null;
             foreach (PluginLoader ldr in BrawlAPI.Loaders)
             {
-                if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint)source.Length))) != null)
+                if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint) source.Length))) != null)
                 {
                     break;
                 }
             }
 
             return n;
-
         }
 
-        public virtual ResourceNode TryParse(Stream stream) { return null; }
+        public virtual ResourceNode TryParse(Stream stream)
+        {
+            return null;
+        }
     }
 }

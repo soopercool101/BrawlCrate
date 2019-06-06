@@ -20,8 +20,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal Dictionary<int, RelCommand> _commands;
         private readonly Dictionary<int, SolidBrush> _colors;
 
-        public int BaseOffset => DataNode.Data - ((ResourceNode)_module).WorkingUncompressed.Address;
-        public KeyValuePair<int, RelCommand>[] GetCommands() { return _commands.OrderBy(x => x.Key).ToArray(); }
+        public int BaseOffset => DataNode.Data - ((ResourceNode) _module).WorkingUncompressed.Address;
+
+        public KeyValuePair<int, RelCommand>[] GetCommands()
+        {
+            return _commands.OrderBy(x => x.Key).ToArray();
+        }
 
         public int _constructorIndex, _destructorIndex, _unresolvedIndex;
         private int _referenceIndex = 0;
@@ -59,67 +63,78 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public uint GetUint(int index)
         {
-            return *((buint*)DataNode._dataBuffer.Address + index + _referenceIndex);
+            return *((buint*) DataNode._dataBuffer.Address + index + _referenceIndex);
         }
+
         public int GetInt(int index)
         {
-            return *((bint*)DataNode._dataBuffer.Address + index + _referenceIndex);
+            return *((bint*) DataNode._dataBuffer.Address + index + _referenceIndex);
         }
+
         public float GetFloat(int index)
         {
-            return *((bint*)DataNode._dataBuffer.Address + index + _referenceIndex);
+            return *((bint*) DataNode._dataBuffer.Address + index + _referenceIndex);
         }
+
         public Bin32 GetBin(int index)
         {
-            return *((Bin32*)DataNode._dataBuffer.Address + index + _referenceIndex);
+            return *((Bin32*) DataNode._dataBuffer.Address + index + _referenceIndex);
         }
+
         public PPCOpCode GetCode(int index)
         {
-            return (uint)*((buint*)DataNode._dataBuffer.Address + index + _referenceIndex);
+            return (uint) *((buint*) DataNode._dataBuffer.Address + index + _referenceIndex);
         }
+
         public string GetString(int index)
         {
-            return new string((sbyte*)DataNode._dataBuffer.Address + (index + _referenceIndex) * 4);
+            return new string((sbyte*) DataNode._dataBuffer.Address + (index + _referenceIndex) * 4);
         }
+
         public void SetUint(int index, uint value)
         {
-            *((buint*)DataNode._dataBuffer.Address + index + _referenceIndex) = value;
+            *((buint*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
         }
+
         public void SetInt(int index, int value)
         {
-            *((bint*)DataNode._dataBuffer.Address + index + _referenceIndex) = value;
+            *((bint*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
             if (_data._linkedEditor != null)
             {
                 _data._linkedEditor.hexBox1.Invalidate();
             }
         }
+
         public void SetFloat(int index, float value)
         {
-            *((bfloat*)DataNode._dataBuffer.Address + index + _referenceIndex) = value;
+            *((bfloat*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
             if (_data._linkedEditor != null)
             {
                 _data._linkedEditor.hexBox1.Invalidate();
             }
         }
+
         public void SetBin(int index, Bin32 value)
         {
-            *((Bin32*)DataNode._dataBuffer.Address + index + _referenceIndex) = value;
+            *((Bin32*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
             if (_data._linkedEditor != null)
             {
                 _data._linkedEditor.hexBox1.Invalidate();
             }
         }
+
         public void SetCode(int index, PPCOpCode code)
         {
-            *((buint*)DataNode._dataBuffer.Address + index + _referenceIndex) = (uint)code;
+            *((buint*) DataNode._dataBuffer.Address + index + _referenceIndex) = (uint) code;
             if (_data._linkedEditor != null)
             {
                 _data._linkedEditor.hexBox1.Invalidate();
             }
         }
+
         public void SetString(int index, string value)
         {
-            value.Write((sbyte*)DataNode._dataBuffer.Address + (index + _referenceIndex) * 4);
+            value.Write((sbyte*) DataNode._dataBuffer.Address + (index + _referenceIndex) * 4);
             if (_data._linkedEditor != null)
             {
                 _data._linkedEditor.hexBox1.Invalidate();
@@ -127,6 +142,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         #region TargetRelocation
+
         public RelocationTarget GetTargetRelocation(int index)
         {
             if (_reference != null)
@@ -141,6 +157,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
         public void SetTargetRelocation(int index, RelocationTarget target)
         {
             if (_reference != null)
@@ -165,7 +182,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _targetRelocations.Add(index, target);
             }
         }
-        public void ClearTargetRelocation(int index) { SetTargetRelocation(index, null); }
+
+        public void ClearTargetRelocation(int index)
+        {
+            SetTargetRelocation(index, null);
+        }
+
         #endregion
 
         public RelCommand GetCommand(int index)
@@ -182,6 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
         public void SetCommand(int index, RelCommand cmd)
         {
             if (_reference != null)
@@ -242,7 +265,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void LinkBranch(int index, bool isLinked)
         {
-            PPCBranch branch = (PPCBranch)GetCode(index);
+            PPCBranch branch = (PPCBranch) GetCode(index);
             int destIndex = -1;
             if (!branch.Absolute)
             {
@@ -267,7 +290,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public void ClearCommand(int index) { SetCommand(index, null); }
+        public void ClearCommand(int index)
+        {
+            SetCommand(index, null);
+        }
+
         public SolidBrush GetColor(int index)
         {
             if (_reference != null)
@@ -282,6 +309,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
         public void SetColor(int index, Color color)
         {
             if (_reference != null)
@@ -313,7 +341,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _colors.Add(index, new SolidBrush(color));
             }
         }
-        public void ClearColor(int index) { SetColor(index, Color.Transparent); }
+
+        public void ClearColor(int index)
+        {
+            SetColor(index, Color.Transparent);
+        }
+
         public List<RelocationTarget> GetLinked(int index)
         {
             if (_linkedCommands.ContainsKey(index))
@@ -323,6 +356,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
         public void RemoveLinked(int index, RelocationTarget target)
         {
             if (_linkedCommands.ContainsKey(index) &&
@@ -332,13 +366,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _linkedCommands[index].Remove(target);
             }
         }
+
         public void AddLinked(int index, RelocationTarget target)
         {
             if (_linkedCommands.ContainsKey(index))
             {
                 if (_linkedCommands[index] == null)
                 {
-                    _linkedCommands[index] = new List<RelocationTarget>() { target };
+                    _linkedCommands[index] = new List<RelocationTarget>() {target};
                 }
                 else
                 {
@@ -347,9 +382,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                _linkedCommands.Add(index, new List<RelocationTarget>() { target });
+                _linkedCommands.Add(index, new List<RelocationTarget>() {target});
             }
         }
+
         public void ClearLinked(int index)
         {
             if (_linkedCommands.ContainsKey(index))
@@ -358,6 +394,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _linkedCommands.Remove(index);
             }
         }
+
         public List<RelocationTarget> GetBranched(int index)
         {
             if (_linkedBranches.ContainsKey(index))
@@ -367,6 +404,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
         public void RemoveBranched(int index, RelocationTarget target)
         {
             if (_linkedBranches.ContainsKey(index) &&
@@ -376,13 +414,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _linkedBranches[index].Remove(target);
             }
         }
+
         public void AddBranched(int index, RelocationTarget target)
         {
             if (_linkedBranches.ContainsKey(index))
             {
                 if (_linkedBranches[index] == null)
                 {
-                    _linkedBranches[index] = new List<RelocationTarget>() { target };
+                    _linkedBranches[index] = new List<RelocationTarget>() {target};
                 }
                 else
                 {
@@ -391,9 +430,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                _linkedBranches.Add(index, new List<RelocationTarget>() { target });
+                _linkedBranches.Add(index, new List<RelocationTarget>() {target});
             }
         }
+
         public void ClearBranched(int index)
         {
             if (_linkedBranches.ContainsKey(index))
@@ -402,6 +442,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _linkedBranches.Remove(index);
             }
         }
+
         public List<string> GetTags(int index)
         {
             if (_reference != null)
@@ -416,6 +457,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return null;
         }
+
         public void RemoveTag(int index, string tag)
         {
             if (_reference != null)
@@ -431,6 +473,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _tags[index].Remove(tag);
             }
         }
+
         public void AddTag(int index, string tag)
         {
             if (_reference != null)
@@ -438,11 +481,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _reference._manager.AddTag(index + _referenceIndex, tag);
                 return;
             }
+
             if (_tags.ContainsKey(index))
             {
                 if (_tags[index] == null)
                 {
-                    _tags[index] = new List<string>() { tag };
+                    _tags[index] = new List<string>() {tag};
                 }
                 else
                 {
@@ -451,9 +495,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                _tags.Add(index, new List<string>() { tag });
+                _tags.Add(index, new List<string>() {tag});
             }
         }
+
         public void ClearTags(int index)
         {
             if (_reference != null)
@@ -521,12 +566,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("{0}[{1}] 0x{2}", RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : "m" + _moduleID.ToString(), _sectionID, (_index * 4).ToString("X"));
+            return string.Format("{0}[{1}] 0x{2}",
+                RELNode._idNames.ContainsKey(_moduleID) ? RELNode._idNames[_moduleID] : "m" + _moduleID.ToString(),
+                _sectionID, (_index * 4).ToString("X"));
         }
 
         public override int GetHashCode()
         {
-            return (int)_moduleID ^ _sectionID ^ _index;
+            return (int) _moduleID ^ _sectionID ^ _index;
         }
 
         public override bool Equals(object obj)
@@ -539,6 +586,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public ModuleSectionNode Section => RELNode._files.ContainsKey(_moduleID) ? RELNode._files[_moduleID].Sections[_sectionID] : null;
+        public ModuleSectionNode Section => RELNode._files.ContainsKey(_moduleID)
+            ? RELNode._files[_moduleID].Sections[_sectionID]
+            : null;
     }
 }

@@ -11,17 +11,22 @@
         public override bool CanRead => true;
         public override bool CanSeek => true;
         public override bool CanWrite => true;
-        public override void Flush() { }
+
+        public override void Flush()
+        {
+        }
+
         public override long Length => _length;
+
         public override long Position
         {
             get => _position;
-            set => _position = (uint)value.Clamp(0, _length);
+            set => _position = (uint) value.Clamp(0, _length);
         }
 
         public UnsafeStream(VoidPtr address, uint length)
         {
-            _address = (byte*)address;
+            _address = (byte*) address;
             _length = length;
             _position = 0;
         }
@@ -35,16 +40,18 @@
 
             return _address[_position++];
         }
+
         public int Read(byte* dst, int length)
         {
-            uint size = Math.Min((uint)length, _length - _position);
+            uint size = Math.Min((uint) length, _length - _position);
             Memory.Move(dst, &_address[_position], size);
             _position += size;
-            return (int)size;
+            return (int) size;
         }
+
         public override int Read(byte[] buffer, int offset, int count)
         {
-            if ((offset + count) > buffer.Length)
+            if (offset + count > buffer.Length)
             {
                 throw new IndexOutOfRangeException();
             }
@@ -59,14 +66,32 @@
         {
             switch (origin)
             {
-                case SeekOrigin.Begin: { Position = offset; break; }
-                case SeekOrigin.Current: { Position = (_position + offset); break; }
-                case SeekOrigin.End: { Position = (_length + offset); break; }
+                case SeekOrigin.Begin:
+                {
+                    Position = offset;
+                    break;
+                }
+
+                case SeekOrigin.Current:
+                {
+                    Position = _position + offset;
+                    break;
+                }
+
+                case SeekOrigin.End:
+                {
+                    Position = _length + offset;
+                    break;
+                }
             }
+
             return _position;
         }
 
-        public override void SetLength(long value) { throw new NotImplementedException(); }
+        public override void SetLength(long value)
+        {
+            throw new NotImplementedException();
+        }
 
         public override void WriteByte(byte value)
         {
@@ -75,14 +100,16 @@
                 _address[_position++] = value;
             }
         }
+
         public void Write(byte* src, int length)
         {
-            uint size = Math.Min((uint)length, _length - _position);
+            uint size = Math.Min((uint) length, _length - _position);
             Memory.Move(_address, src, size);
         }
+
         public override void Write(byte[] buffer, int offset, int count)
         {
-            if ((offset + count) > buffer.Length)
+            if (offset + count > buffer.Length)
             {
                 throw new IndexOutOfRangeException();
             }

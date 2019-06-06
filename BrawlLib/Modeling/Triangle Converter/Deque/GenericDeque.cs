@@ -160,12 +160,13 @@ namespace System.Collections.Generic
             {
                 if (f.Next == null)
                 {
-                    f.Next = new Node(defaultValue) { Previous = f };
+                    f.Next = new Node(defaultValue) {Previous = f};
                 }
 
                 f = f.Next;
                 count++;
             }
+
             if (f != null)
             {
                 back = f;
@@ -233,7 +234,6 @@ namespace System.Collections.Generic
             // The new node to add to the front of the deque.
             Node newNode = new Node(item)
             {
-
                 // Link the new node to the front node. The current front node at 
                 // the front of the deque is now the second node in the deque.
                 Next = front
@@ -279,7 +279,6 @@ namespace System.Collections.Generic
             // The new node to add to the back of the deque.
             Node newNode = new Node(item)
             {
-
                 // Link the new node to the back node. The current back node at 
                 // the back of the deque is now the second to the last node in the
                 // deque.
@@ -546,7 +545,7 @@ namespace System.Collections.Generic
             }
         }
 
-        #endregion       
+        #endregion
 
         #endregion
 
@@ -594,7 +593,7 @@ namespace System.Collections.Generic
             else if (index >= array.Length)
             {
                 throw new ArgumentException("Index is equal to or greater " +
-                    "than the length of array.");
+                                            "than the length of array.");
             }
             else if (Count > array.Length - index)
             {

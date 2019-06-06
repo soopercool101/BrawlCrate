@@ -25,10 +25,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("MDL0 Nodes")]
         //public List<MDL0NodeType5> NodeType5Items { get { return _items5; } }
 
+        [Category("MDL0 Nodes")] public int DataLength => _len;
+
         [Category("MDL0 Nodes")]
-        public int DataLength => _len;
-        [Category("MDL0 Nodes")]
-        public object[] Items { get => _items.ToArray(); set => _items = value.ToList(); }
+        public object[] Items
+        {
+            get => _items.ToArray();
+            set => _items = value.ToList();
+        }
 
         public override bool OnInitialize()
         {

@@ -11,13 +11,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SHP0Node : NW4RAnimationNode
     {
-        internal SHP0v3* Header3 => (SHP0v3*)WorkingUncompressed.Address;
-        internal SHP0v4* Header4 => (SHP0v4*)WorkingUncompressed.Address;
+        internal SHP0v3* Header3 => (SHP0v3*) WorkingUncompressed.Address;
+        internal SHP0v4* Header4 => (SHP0v4*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SHP0;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(SHP0EntryNode) };
-        public override int[] SupportedVersions => new int[] { 3, 4 };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(SHP0EntryNode)};
+        public override int[] SupportedVersions => new int[] {3, 4};
 
-        public SHP0Node() { _version = 3; }
+        public SHP0Node()
+        {
+            _version = 3;
+        }
 
         private const string _category = "Vertex Morph Animation";
 
@@ -27,11 +30,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => base.FrameCount;
             set => base.FrameCount = value;
         }
+
         [Category(_category)]
         public override bool Loop
         {
             get => base.Loop;
-            set { base.Loop = value; UpdateChildFrameLimits(); }
+            set
+            {
+                base.Loop = value;
+                UpdateChildFrameLimits();
+            }
         }
 
         protected override void UpdateChildFrameLimits()
@@ -56,6 +64,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public void DeleteKeyframe(int index)
         {
             foreach (SHP0EntryNode e in Children)
@@ -101,7 +110,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 SHP0v4* header = Header4;
 
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -112,13 +121,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 bint* stringOffset = header->StringEntries;
                 for (int i = 0; i < header->_numEntries; i++)
                 {
-                    _strings.Add(new string((sbyte*)stringOffset + stringOffset[i]));
+                    _strings.Add(new string((sbyte*) stringOffset + stringOffset[i]));
                 }
 
                 if (header->_origPathOffset > 0)
                 {
                     _originalPath = header->OrigPath;
-                } (_userEntries = new UserDataCollection()).Read(header->UserData);
+                }
+
+                (_userEntries = new UserDataCollection()).Read(header->UserData);
 
                 return header->Group->_numEntries > 0;
             }
@@ -126,7 +137,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 SHP0v3* header = Header3;
 
-                if ((_name == null) && (header->_stringOffset != 0))
+                if (_name == null && header->_stringOffset != 0)
                 {
                     _name = header->ResourceString;
                 }
@@ -137,7 +148,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 bint* stringOffset = header->StringEntries;
                 for (int i = 0; i < header->_numEntries; i++)
                 {
-                    _strings.Add(new string((sbyte*)stringOffset + stringOffset[i]));
+                    _strings.Add(new string((sbyte*) stringOffset + stringOffset[i]));
                 }
 
                 if (header->_origPathOffset > 0)
@@ -163,14 +174,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceGroup* group;
             if (_version == 4)
             {
-                SHP0v4* header = (SHP0v4*)address;
-                *header = new SHP0v4(_loop, (ushort)(_numFrames), (ushort)_strings.Count);
+                SHP0v4* header = (SHP0v4*) address;
+                *header = new SHP0v4(_loop, (ushort) _numFrames, (ushort) _strings.Count);
                 group = header->Group;
             }
             else
             {
-                SHP0v3* header = (SHP0v3*)address;
-                *header = new SHP0v3(_loop, (ushort)(_numFrames), (ushort)_strings.Count);
+                SHP0v3* header = (SHP0v3*) address;
+                *header = new SHP0v3(_loop, (ushort) _numFrames, (ushort) _strings.Count);
                 group = header->Group;
             }
 
@@ -187,7 +198,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceEntry* rEntry = group->First;
             foreach (SHP0EntryNode n in Children)
             {
-                (rEntry++)->_dataOffset = (int)entryAddress - (int)group;
+                (rEntry++)->_dataOffset = (int) entryAddress - (int) group;
 
                 n._dataAddr = dataAddress;
                 n.Rebuild(entryAddress, n._entryLen, true);
@@ -195,13 +206,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 dataAddress += n._dataLen;
             }
 
-            ((SHP0v3*)address)->_stringListOffset = (int)dataAddress - (int)address;
+            ((SHP0v3*) address)->_stringListOffset = (int) dataAddress - (int) address;
 
             dataAddress += _strings.Count * 4;
 
             if (_userEntries.Count > 0 && _version == 4)
             {
-                _userEntries.Write(((SHP0v4*)address)->UserData = dataAddress);
+                _userEntries.Write(((SHP0v4*) address)->UserData = dataAddress);
             }
         }
 
@@ -238,17 +249,18 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength, StringTable stringTable)
+        protected internal override void PostProcess(VoidPtr bresAddress, VoidPtr dataAddress, int dataLength,
+                                                     StringTable stringTable)
         {
             base.PostProcess(bresAddress, dataAddress, dataLength, stringTable);
 
-            SHP0v3* header = (SHP0v3*)dataAddress;
+            SHP0v3* header = (SHP0v3*) dataAddress;
             if (_version == 4)
             {
-                ((SHP0v4*)dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
+                ((SHP0v4*) dataAddress)->ResourceStringAddress = stringTable[Name] + 4;
                 if (!string.IsNullOrEmpty(_originalPath))
                 {
-                    ((SHP0v4*)dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
+                    ((SHP0v4*) dataAddress)->OrigPathAddress = stringTable[_originalPath] + 4;
                 }
             }
             else
@@ -263,7 +275,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* stringPtr = header->StringEntries;
             for (int i = 0; i < header->_numEntries; i++)
             {
-                stringPtr[i] = ((int)stringTable[_strings[i]] + 4) - (int)stringPtr;
+                stringPtr[i] = (int) stringTable[_strings[i]] + 4 - (int) stringPtr;
             }
 
             ResourceGroup* group = header->Group;
@@ -274,18 +286,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             int index = 1;
             foreach (SHP0EntryNode n in Children)
             {
-                dataAddress = (VoidPtr)group + (rEntry++)->_dataOffset;
-                ResourceEntry.Build(group, index++, dataAddress, (BRESString*)stringTable[n.Name]);
+                dataAddress = (VoidPtr) group + (rEntry++)->_dataOffset;
+                ResourceEntry.Build(group, index++, dataAddress, (BRESString*) stringTable[n.Name]);
                 n.PostProcess(dataAddress, stringTable);
             }
 
             if (_version == 4)
             {
-                _userEntries.PostProcess(((SHP0v4*)dataAddress)->UserData, stringTable);
+                _userEntries.PostProcess(((SHP0v4*) dataAddress)->UserData, stringTable);
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((BRESCommonHeader*)source.Address)->_tag == SHP0v3.Tag ? new SHP0Node() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((BRESCommonHeader*) source.Address)->_tag == SHP0v3.Tag ? new SHP0Node() : null;
+        }
 
         public unsafe SHP0EntryNode FindOrCreateEntry(string name)
         {
@@ -308,6 +323,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         #region Extra Functions
+
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count specified by the user.
         /// </summary>
@@ -319,13 +335,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Resize(f.NewValue);
             }
         }
+
         /// <summary>
         /// Stretches or compresses all frames of the animation to fit a new frame count.
         /// </summary>
         public void Resize(int newFrameCount)
         {
             KeyframeEntry kfe = null;
-            float ratio = newFrameCount / (float)FrameCount;
+            float ratio = newFrameCount / (float) FrameCount;
             foreach (SHP0EntryNode s in Children)
             {
                 foreach (SHP0VertexSetNode e in s.Children)
@@ -335,9 +352,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         if ((kfe = e.GetKeyframe(x)) != null)
                         {
-                            int newFrame = (int)(x * ratio + 0.5f);
-                            float frameRatio = newFrame == 0 ? 0 : x / (float)newFrame;
-                            newArr.SetFrameValue(newFrame, kfe._value)._tangent = kfe._tangent * (float.IsNaN(frameRatio) ? 1 : frameRatio);
+                            int newFrame = (int) (x * ratio + 0.5f);
+                            float frameRatio = newFrame == 0 ? 0 : x / (float) newFrame;
+                            newArr.SetFrameValue(newFrame, kfe._value)._tangent =
+                                kfe._tangent * (float.IsNaN(frameRatio) ? 1 : frameRatio);
                         }
                     }
 
@@ -347,6 +365,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             FrameCount = newFrameCount;
         }
+
         /// <summary>
         /// Adds an animation opened by the user to the end of this one
         /// </summary>
@@ -360,12 +379,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (SHP0Node)NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = (SHP0Node) NodeFactory.FromFile(null, o.FileName)) != null)
                 {
                     Append(external);
                 }
             }
         }
+
         /// <summary>
         /// Adds an animation to the end of this one
         /// </summary>
@@ -381,12 +401,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                 foreach (SHP0VertexSetNode extEntry in w.Children)
                 {
                     SHP0VertexSetNode intEntry = null;
-                    if ((intEntry = (SHP0VertexSetNode)FindChild(w.Name + "/" + extEntry.Name, false)) == null)
+                    if ((intEntry = (SHP0VertexSetNode) FindChild(w.Name + "/" + extEntry.Name, false)) == null)
                     {
                         SHP0EntryNode wi = null;
-                        if ((wi = (SHP0EntryNode)FindChild(w.Name, false)) == null)
+                        if ((wi = (SHP0EntryNode) FindChild(w.Name, false)) == null)
                         {
-                            AddChild(wi = new SHP0EntryNode() { Name = FindName(null), _flags = w._flags });
+                            AddChild(wi = new SHP0EntryNode() {Name = FindName(null), _flags = w._flags});
                         }
 
                         SHP0VertexSetNode newIntEntry = new SHP0VertexSetNode(extEntry.Name);
@@ -395,7 +415,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if ((kfe = extEntry.GetKeyframe(x)) != null)
                             {
-                                newIntEntry.Keyframes.SetFrameValue(x + origIntCount, kfe._value)._tangent = kfe._tangent;
+                                newIntEntry.Keyframes.SetFrameValue(x + origIntCount, kfe._value)._tangent =
+                                    kfe._tangent;
                             }
                         }
 
@@ -414,6 +435,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public void AverageKeys()
         {
             foreach (SHP0EntryNode u in Children)
@@ -473,31 +495,67 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             SignalPropertyChange();
         }
+
         #endregion
     }
 
     public unsafe class SHP0EntryNode : ResourceNode
     {
-        internal SHP0Entry* Header => (SHP0Entry*)WorkingUncompressed.Address;
+        internal SHP0Entry* Header => (SHP0Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SHP0Entry;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(SHP0VertexSetNode) };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(SHP0VertexSetNode)};
 
         private List<short> _indices;
         public Bin32 _flags = 3;
         public int _indexCount, _fixedFlags;
 
         [Category("Vertex Morph Entry")]
-        public bool Enabled { get => _flags[0]; set { _flags[0] = value; SignalPropertyChange(); } }
+        public bool Enabled
+        {
+            get => _flags[0];
+            set
+            {
+                _flags[0] = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Category("Vertex Morph Entry")]
-        public bool UpdateVertices { get => _flags[1]; set { _flags[1] = value; SignalPropertyChange(); } }
+        public bool UpdateVertices
+        {
+            get => _flags[1];
+            set
+            {
+                _flags[1] = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Category("Vertex Morph Entry")]
-        public bool UpdateNormals { get => _flags[2]; set { _flags[2] = value; SignalPropertyChange(); } }
+        public bool UpdateNormals
+        {
+            get => _flags[2];
+            set
+            {
+                _flags[2] = value;
+                SignalPropertyChange();
+            }
+        }
+
         [Category("Vertex Morph Entry")]
-        public bool UpdateColors { get => _flags[3]; set { _flags[3] = value; SignalPropertyChange(); } }
+        public bool UpdateColors
+        {
+            get => _flags[3];
+            set
+            {
+                _flags[3] = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
-            if ((_name == null) && (Header->_stringOffset != 0))
+            if (_name == null && Header->_stringOffset != 0)
             {
                 _name = Header->ResourceString;
             }
@@ -508,7 +566,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _indices.Add(Header->Indicies[i]);
             }
 
-            _flags = (uint)(int)Header->_flags;
+            _flags = (uint) (int) Header->_flags;
             _indexCount = Header->_numIndices;
             _fixedFlags = Header->_fixedFlags;
 
@@ -520,9 +578,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             for (int i = 0; i < _indexCount; i++)
             {
                 string name;
-                if (_indices[i] < ((SHP0Node)Parent)._strings.Count && _indices[i] >= 0)
+                if (_indices[i] < ((SHP0Node) Parent)._strings.Count && _indices[i] >= 0)
                 {
-                    name = ((SHP0Node)Parent)._strings[_indices[i]];
+                    name = ((SHP0Node) Parent)._strings[_indices[i]];
                 }
                 else
                 {
@@ -541,7 +599,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _children.Add(n);
                     n._parent = this;
 
-                    n.Keyframes[0] = ((bfloat*)Header->EntryOffset)[i];
+                    n.Keyframes[0] = ((bfloat*) Header->EntryOffset)[i];
                 }
             }
         }
@@ -551,7 +609,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected internal virtual void PostProcess(VoidPtr dataAddress, StringTable stringTable)
         {
-            SHP0Entry* header = (SHP0Entry*)dataAddress;
+            SHP0Entry* header = (SHP0Entry*) dataAddress;
             header->ResourceStringAddress = stringTable[Name] + 4;
         }
 
@@ -570,17 +628,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            SHP0Entry* header = (SHP0Entry*)address;
+            SHP0Entry* header = (SHP0Entry*) address;
             VoidPtr addr = _dataAddr;
-            header->_numIndices = (short)Children.Count;
-            header->_nameIndex = (short)((SHP0Node)Parent)._strings.IndexOf(Name);
-            header->_flags = (int)(uint)_flags;
+            header->_numIndices = (short) Children.Count;
+            header->_nameIndex = (short) ((SHP0Node) Parent)._strings.IndexOf(Name);
+            header->_flags = (int) (uint) _flags;
             header->_indiciesOffset = 0x14 + Children.Count * 4;
             uint fixedflags = 0;
             foreach (SHP0VertexSetNode p in Children)
             {
                 p._dataAddr = addr;
-                header->Indicies[p.Index] = (short)((SHP0Node)Parent)._strings.IndexOf(p.Name);
+                header->Indicies[p.Index] = (short) ((SHP0Node) Parent)._strings.IndexOf(p.Name);
                 if (p._isFixed)
                 {
                     float value = 0;
@@ -588,17 +646,21 @@ namespace BrawlLib.SSBB.ResourceNodes
                     if ((kf = p.Keyframes.GetKeyframe(0)) != null)
                     {
                         value = kf._value;
-                    } ((bfloat*)header->EntryOffset)[p.Index] = value;
-                    fixedflags |= (1u << p.Index);
+                    }
+
+                    ((bfloat*) header->EntryOffset)[p.Index] = value;
+                    fixedflags |= 1u << p.Index;
                 }
                 else
                 {
-                    header->EntryOffset[p.Index] = (int)p._dataAddr - (int)&header->EntryOffset[p.Index];
+                    header->EntryOffset[p.Index] = (int) p._dataAddr - (int) &header->EntryOffset[p.Index];
                     p.Rebuild(p._dataAddr, p._calcSize, true);
                 }
+
                 addr += p._dataLen;
             }
-            header->_fixedFlags = (int)fixedflags;
+
+            header->_fixedFlags = (int) fixedflags;
         }
 
         public unsafe SHP0VertexSetNode FindOrCreateEntry(string name)
@@ -625,11 +687,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class SHP0VertexSetNode : ResourceNode, IKeyframeSource
     {
-        internal SHP0KeyframeEntries* Header => (SHP0KeyframeEntries*)WorkingUncompressed.Address;
+        internal SHP0KeyframeEntries* Header => (SHP0KeyframeEntries*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SHP0VertexSet;
 
         public int _dataLen;
         public VoidPtr _dataAddr;
+
         internal void SetSize(int count, bool looped)
         {
             Keyframes.FrameLimit = count + (looped ? 1 : 0);
@@ -637,10 +700,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             SignalPropertyChange();
         }
 
-        [Browsable(false)]
-        public int FrameCount => Keyframes.FrameLimit;
+        [Browsable(false)] public int FrameCount => Keyframes.FrameLimit;
 
         internal KeyframeArray _keyframes;
+
         [Browsable(false)]
         public KeyframeArray Keyframes
         {
@@ -648,7 +711,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_keyframes == null)
                 {
-                    _keyframes = AnimationConverter.DecodeSHP0Keyframes(Header, Parent != null ? Parent.Parent as SHP0Node : null);
+                    _keyframes =
+                        AnimationConverter.DecodeSHP0Keyframes(Header,
+                            Parent != null ? Parent.Parent as SHP0Node : null);
                 }
 
                 return _keyframes;
@@ -658,7 +723,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool _isFixed = false;
         public float _fixedValue;
 
-        public SHP0VertexSetNode(string name) { _name = name; }
+        public SHP0VertexSetNode(string name)
+        {
+            _name = name;
+        }
 
         public override bool OnInitialize()
         {
@@ -667,13 +735,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            return _dataLen = ((_isFixed = Keyframes._keyCount <= 1) ? 0 : Keyframes._keyCount * 12 + 4);
+            _isFixed = Keyframes._keyCount <= 1;
+            return _dataLen = _isFixed ? 0 : Keyframes._keyCount * 12 + 4;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            SHP0KeyframeEntries* header = (SHP0KeyframeEntries*)address;
-            header->_numEntries = (short)Keyframes._keyCount;
+            SHP0KeyframeEntries* header = (SHP0KeyframeEntries*) address;
+            header->_numEntries = (short) Keyframes._keyCount;
             header->_unk1 = 0;
 
             BVec3* entry = header->Entries;
@@ -687,7 +756,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override unsafe void Export(string outPath)
         {
             int length = OnCalculateSize(true);
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.RandomAccess))
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.None, 8, FileOptions.RandomAccess))
             {
                 stream.SetLength(length);
                 using (FileMap map = FileMap.FromStream(stream))
@@ -701,7 +771,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static bool _generateTangents = true;
 
-        public KeyframeEntry GetKeyframe(int index) { return Keyframes.GetKeyframe(index); }
+        public KeyframeEntry GetKeyframe(int index)
+        {
+            return Keyframes.GetKeyframe(index);
+        }
+
         public void SetKeyframe(int index, float value)
         {
             bool exists = Keyframes.GetKeyframe(index) != null;
@@ -721,6 +795,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             SignalPropertyChange();
         }
+
         public void RemoveKeyframe(int index)
         {
             KeyframeEntry k = Keyframes.Remove(index);
@@ -734,27 +809,56 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        [Browsable(false)]
-        public KeyframeArray[] KeyArrays => new KeyframeArray[] { Keyframes };
+        [Browsable(false)] public KeyframeArray[] KeyArrays => new KeyframeArray[] {Keyframes};
     }
 
     public class SHP0Keyframe
     {
         public float _index, _percentage, _tangent;
 
-        public static implicit operator SHP0Keyframe(Vector3 v) { return new SHP0Keyframe(v._x, v._y, v._z); }
-        public static implicit operator Vector3(SHP0Keyframe v) { return new Vector3(v._tangent, v._index, v._percentage); }
+        public static implicit operator SHP0Keyframe(Vector3 v)
+        {
+            return new SHP0Keyframe(v._x, v._y, v._z);
+        }
 
-        public SHP0Keyframe(float tan, float index, float percent) { _index = index; _percentage = percent; _tangent = tan; }
-        public SHP0Keyframe() { }
+        public static implicit operator Vector3(SHP0Keyframe v)
+        {
+            return new Vector3(v._tangent, v._index, v._percentage);
+        }
 
-        public float Index { get => _index; set => _index = value; }
-        public float Percentage { get => _percentage; set => _percentage = value; }
-        public float Tangent { get => _tangent; set => _tangent = value; }
+        public SHP0Keyframe(float tan, float index, float percent)
+        {
+            _index = index;
+            _percentage = percent;
+            _tangent = tan;
+        }
+
+        public SHP0Keyframe()
+        {
+        }
+
+        public float Index
+        {
+            get => _index;
+            set => _index = value;
+        }
+
+        public float Percentage
+        {
+            get => _percentage;
+            set => _percentage = value;
+        }
+
+        public float Tangent
+        {
+            get => _tangent;
+            set => _tangent = value;
+        }
 
         public override string ToString()
         {
-            return string.Format("Index={0}, Percentage={1}, Tangent={2}", _index, string.Format("{0}%", _percentage * 100.0f), _tangent);
+            return string.Format("Index={0}, Percentage={1}, Tangent={2}", _index,
+                string.Format("{0}%", _percentage * 100.0f), _tangent);
         }
     }
 }

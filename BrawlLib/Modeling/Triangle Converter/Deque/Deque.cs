@@ -65,7 +65,7 @@ namespace System.Collections
         /// <summary>
         /// Initializes a new instance of the Deque class.
         /// </summary>
-		public Deque()
+        public Deque()
         {
         }
 
@@ -153,7 +153,6 @@ namespace System.Collections
             // The new node to add to the front of the deque.
             Node newNode = new Node(obj)
             {
-
                 // Link the new node to the front node. The current front node at 
                 // the front of the deque is now the second node in the deque.
                 Next = front
@@ -199,7 +198,6 @@ namespace System.Collections
             // The new node to add to the back of the deque.
             Node newNode = new Node(obj)
             {
-
                 // Link the new node to the back node. The current back node at 
                 // the back of the deque is now the second to the last node in the
                 // deque.
@@ -830,7 +828,7 @@ namespace System.Collections
             else if (index >= array.Length)
             {
                 throw new ArgumentException("Index is equal to or greater " +
-                    "than the length of array.");
+                                            "than the length of array.");
             }
             else if (Count > array.Length - index)
             {

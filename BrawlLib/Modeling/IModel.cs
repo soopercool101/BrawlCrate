@@ -50,7 +50,10 @@ namespace BrawlLib.Modeling
         public bool _scaleBones = false;
         public bool _renderBonesAsPoints = false;
 
-        public ModelRenderAttributes() { }
+        public ModelRenderAttributes()
+        {
+        }
+
         public ModelRenderAttributes(SerializationInfo info, StreamingContext ctxt)
         {
             FieldInfo[] fields = GetType().GetFields();
@@ -60,6 +63,7 @@ namespace BrawlLib.Modeling
                 f.SetValue(this, info.GetValue(f.Name, t));
             }
         }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             FieldInfo[] fields = GetType().GetFields();

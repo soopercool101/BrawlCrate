@@ -11,6 +11,7 @@ namespace BrawlCrate.NodeWrappers
     public class TEX0Wrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static TEX0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -28,21 +29,31 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ReEncodeAction(object sender, EventArgs e) { GetInstance<TEX0Wrapper>().ReEncode(); }
+
+        protected static void ReEncodeAction(object sender, EventArgs e)
+        {
+            GetInstance<TEX0Wrapper>().ReEncode();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TEX0Wrapper w = GetInstance<TEX0Wrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
-        public TEX0Wrapper() { ContextMenuStrip = _menu; }
+        public TEX0Wrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public override string ExportFilter => FileFilters.TEX0;
 

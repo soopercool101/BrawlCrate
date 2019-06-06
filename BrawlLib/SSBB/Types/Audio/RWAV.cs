@@ -16,10 +16,19 @@ namespace BrawlLib.SSBBTypes
         public bint _dataOffset;
         public bint _dataLength;
 
-        public RWAVInfo* Info => (RWAVInfo*)(Address + _infoOffset);
-        public RWAVData* Data => (RWAVData*)(Address + _dataOffset);
+        public RWAVInfo* Info => (RWAVInfo*) (Address + _infoOffset);
+        public RWAVData* Data => (RWAVData*) (Address + _dataOffset);
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -30,7 +39,16 @@ namespace BrawlLib.SSBBTypes
         public SSBBEntryHeader _header;
         public WaveInfo _info;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -42,7 +60,17 @@ namespace BrawlLib.SSBBTypes
 
         //Audio Samples, align to 0x20
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public VoidPtr Data => Address + 8;
     }
 
@@ -68,15 +96,24 @@ namespace BrawlLib.SSBBTypes
         public buint _dataLocation;
         public buint _reserved; //0
 
-        public buint* OffsetTable => (buint*)(Address + _channelInfoTableOffset);
-        public ChannelInfo* GetChannelInfo(int index) { return (ChannelInfo*)(Address + OffsetTable[index]); }
-        public ADPCMInfo* GetADPCMInfo(int index) { return (ADPCMInfo*)(Address + GetChannelInfo(index)->_adpcmInfoOffset); }
+        public buint* OffsetTable => (buint*) (Address + _channelInfoTableOffset);
+
+        public ChannelInfo* GetChannelInfo(int index)
+        {
+            return (ChannelInfo*) (Address + OffsetTable[index]);
+        }
+
+        public ADPCMInfo* GetADPCMInfo(int index)
+        {
+            return (ADPCMInfo*) (Address + GetChannelInfo(index)->_adpcmInfoOffset);
+        }
 
         public int NumSamples
         {
             get => Get(_nibbles);
             set => _nibbles = Set(value);
         }
+
         public int LoopSample
         {
             get => Get(_loopStartSample);
@@ -85,16 +122,29 @@ namespace BrawlLib.SSBBTypes
 
         public int Get(int value)
         {
-            return _format._encoding == 2 ? (value / 16 * 14) + ((value % 16) - 2) : value;
+            return _format._encoding == 2 ? value / 16 * 14 + (value % 16 - 2) : value;
         }
+
         public int Set(int value)
         {
-            return _format._encoding == 2 ? ((8 * value) + 16) / 7 : value;
+            return _format._encoding == 2 ? (8 * value + 16) / 7 : value;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public int GetSize() { return Size + _format._channels * (0x20 + _format._encoding == 2 ? 0x30 : 0); }
+        public int GetSize()
+        {
+            return Size + _format._channels * (0x20 + _format._encoding == 2 ? 0x30 : 0);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -110,7 +160,16 @@ namespace BrawlLib.SSBBTypes
         public int _volBackRight; //1
         public bint _reserved; //0
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     public enum WaveEncoding
@@ -129,7 +188,12 @@ namespace BrawlLib.SSBBTypes
         public byte _sampleRate24;
 
         public AudioFormatInfo(byte encoding, byte looped, byte channels, byte unk)
-        { _encoding = encoding; _looped = looped; _channels = channels; _sampleRate24 = unk; }
+        {
+            _encoding = encoding;
+            _looped = looped;
+            _channels = channels;
+            _sampleRate24 = unk;
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -140,7 +204,10 @@ namespace BrawlLib.SSBBTypes
         public fixed short _coefs[16];
 
         public bushort _gain;
-        public bshort _ps; //Predictor and scale. This will be initialized to the predictor and scale value of the sample's first frame.
+
+        public bshort
+            _ps; //Predictor and scale. This will be initialized to the predictor and scale value of the sample's first frame.
+
         public bshort _yn1; //History data; used to maintain decoder state during sample playback.
         public bshort _yn2; //History data; used to maintain decoder state during sample playback.
         public bshort _lps; //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
@@ -152,7 +219,7 @@ namespace BrawlLib.SSBBTypes
         {
             fixed (short* ptr = _coefs)
             {
-                bshort* swap_ptr = (bshort*)ptr;
+                bshort* swap_ptr = (bshort*) ptr;
                 for (int i = 0; i < 16; i++)
                 {
                     swap_ptr[i] = o._coefs[i];
@@ -196,12 +263,13 @@ namespace BrawlLib.SSBBTypes
                 short[] arr = new short[16];
                 fixed (short* ptr = _coefs)
                 {
-                    bshort* sPtr = (bshort*)ptr;
+                    bshort* sPtr = (bshort*) ptr;
                     for (int i = 0; i < 16; i++)
                     {
                         arr[i] = sPtr[i];
                     }
                 }
+
                 return arr;
             }
         }

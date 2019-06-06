@@ -104,7 +104,7 @@ namespace System
             };
             foreach (ModelPanelViewportInfo v in s._viewports)
             {
-                v._backColor = (ARGBPixel)Color.Lavender;
+                v._backColor = (ARGBPixel) Color.Lavender;
             }
 
             //s._viewports[0]._percentages = new Vector4(0.0f, 0.5f, 0.5f, 1.0f);
@@ -115,7 +115,10 @@ namespace System
             return s;
         }
 
-        public ModelEditorSettings() { }
+        public ModelEditorSettings()
+        {
+        }
+
         public ModelEditorSettings(SerializationInfo info, StreamingContext ctxt)
         {
             FieldInfo[] fields = GetType().GetFields(); //Gets public fields only
@@ -151,7 +154,7 @@ namespace System
         {
             Stream stream = File.Open(filename, FileMode.Open);
             BinaryFormatter bFormatter = new BinaryFormatter();
-            ISerializable obj = (ISerializable)bFormatter.Deserialize(stream);
+            ISerializable obj = (ISerializable) bFormatter.Deserialize(stream);
             stream.Close();
             return obj;
         }

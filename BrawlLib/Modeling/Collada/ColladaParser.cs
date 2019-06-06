@@ -25,12 +25,19 @@ namespace BrawlLib.Modeling
             public static DecoderShell Import(string path)
             {
                 using (FileMap map = FileMap.FromFile(path))
-                using (XmlReader reader = new XmlReader(map.Address, map.Length))
                 {
-                    return new DecoderShell(reader);
+                    using (XmlReader reader = new XmlReader(map.Address, map.Length))
+                    {
+                        return new DecoderShell(reader);
+                    }
                 }
             }
-            ~DecoderShell() { Dispose(); }
+
+            ~DecoderShell()
+            {
+                Dispose();
+            }
+
             public void Dispose()
             {
                 foreach (GeometryEntry geo in _geometry)
@@ -77,6 +84,7 @@ namespace BrawlLib.Modeling
 
                 return null;
             }
+
             internal static NodeEntry FindNodeInternal(string name, NodeEntry node)
             {
                 NodeEntry e;
@@ -103,7 +111,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("version", true))
                     {
-                        string v = (string)_reader.Value;
+                        string v = (string) _reader.Value;
                         string[] s = v.Split('.');
                         int.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture.NumberFormat, out _v1);
                         int.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture.NumberFormat, out _v2);
@@ -151,6 +159,7 @@ namespace BrawlLib.Modeling
             }
 
             public float _scale = 1;
+
             private void ParseAsset()
             {
                 while (_reader.BeginElement())
@@ -161,7 +170,8 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("meter", true))
                             {
-                                float.TryParse((string)_reader.Value, NumberStyles.Any, CultureInfo.InvariantCulture.NumberFormat, out _scale);
+                                float.TryParse((string) _reader.Value, NumberStyles.Any,
+                                    CultureInfo.InvariantCulture.NumberFormat, out _scale);
                             }
                         }
                     }
@@ -182,11 +192,11 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("id", true))
                             {
-                                img._id = (string)_reader.Value;
+                                img._id = (string) _reader.Value;
                             }
                             else if (_reader.Name.Equals("name", true))
                             {
-                                img._name = (string)_reader.Value;
+                                img._name = (string) _reader.Value;
                             }
                         }
 
@@ -218,9 +228,11 @@ namespace BrawlLib.Modeling
 
                         _images.Add(img);
                     }
+
                     _reader.EndElement();
                 }
             }
+
             private void ParseLibMaterials()
             {
                 MaterialEntry mat;
@@ -233,11 +245,11 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("id", true))
                             {
-                                mat._id = (string)_reader.Value;
+                                mat._id = (string) _reader.Value;
                             }
                             else if (_reader.Name.Equals("name", true))
                             {
-                                mat._name = (string)_reader.Value;
+                                mat._name = (string) _reader.Value;
                             }
                         }
 
@@ -249,7 +261,9 @@ namespace BrawlLib.Modeling
                                 {
                                     if (_reader.Name.Equals("url", true))
                                     {
-                                        mat._effect = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                                        mat._effect = _reader.Value[0] == '#'
+                                            ? (string) (_reader.Value + 1)
+                                            : (string) _reader.Value;
                                     }
                                 }
                             }
@@ -263,6 +277,7 @@ namespace BrawlLib.Modeling
                     _reader.EndElement();
                 }
             }
+
             private void ParseLibEffects()
             {
                 while (_reader.BeginElement())
@@ -275,6 +290,7 @@ namespace BrawlLib.Modeling
                     _reader.EndElement();
                 }
             }
+
             private EffectEntry ParseEffect()
             {
                 EffectEntry eff = new EffectEntry();
@@ -283,11 +299,11 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("id", true))
                     {
-                        eff._id = (string)_reader.Value;
+                        eff._id = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("name", true))
                     {
-                        eff._name = (string)_reader.Value;
+                        eff._name = (string) _reader.Value;
                     }
                 }
 
@@ -322,14 +338,17 @@ namespace BrawlLib.Modeling
                                     _reader.EndElement();
                                 }
                             }
+
                             _reader.EndElement();
                         }
                     }
 
                     _reader.EndElement();
                 }
+
                 return eff;
             }
+
             private EffectNewParam ParseNewParam()
             {
                 EffectNewParam p = new EffectNewParam();
@@ -338,13 +357,14 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("sid", true))
                     {
-                        p._sid = (string)_reader.Value;
+                        p._sid = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("id", true))
                     {
-                        p._id = (string)_reader.Value;
+                        p._id = (string) _reader.Value;
                     }
                 }
+
                 while (_reader.BeginElement())
                 {
                     if (_reader.Name.Equals("surface", true))
@@ -371,6 +391,7 @@ namespace BrawlLib.Modeling
                                     }
                                 }
                             }
+
                             _reader.EndElement();
                         }
                     }
@@ -384,6 +405,7 @@ namespace BrawlLib.Modeling
 
                 return p;
             }
+
             private EffectSampler2D ParseSampler2D()
             {
                 EffectSampler2D s = new EffectSampler2D();
@@ -400,7 +422,9 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("url", true))
                             {
-                                s._url = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                                s._url = _reader.Value[0] == '#'
+                                    ? (string) (_reader.Value + 1)
+                                    : (string) _reader.Value;
                             }
                         }
                     }
@@ -426,6 +450,7 @@ namespace BrawlLib.Modeling
 
                 return s;
             }
+
             private EffectShaderEntry ParseShader(ShaderType type)
             {
                 EffectShaderEntry s = new EffectShaderEntry
@@ -511,6 +536,7 @@ namespace BrawlLib.Modeling
 
                 return s;
             }
+
             private LightEffectEntry ParseLightEffect(LightEffectType type)
             {
                 LightEffectEntry eff = new LightEffectEntry
@@ -530,11 +556,11 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("texture", true))
                             {
-                                eff._texture = (string)_reader.Value;
+                                eff._texture = (string) _reader.Value;
                             }
                             else if (_reader.Name.Equals("texcoord", true))
                             {
-                                eff._texCoord = (string)_reader.Value;
+                                eff._texCoord = (string) _reader.Value;
                             }
                         }
                     }
@@ -544,6 +570,7 @@ namespace BrawlLib.Modeling
 
                 return eff;
             }
+
             private void ParseLibGeometry()
             {
                 GeometryEntry geo;
@@ -556,11 +583,11 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("id", true))
                             {
-                                geo._id = (string)_reader.Value;
+                                geo._id = (string) _reader.Value;
                             }
                             else if (_reader.Name.Equals("name", true))
                             {
-                                geo._name = (string)_reader.Value;
+                                geo._name = (string) _reader.Value;
                             }
                         }
 
@@ -580,7 +607,7 @@ namespace BrawlLib.Modeling
                                         {
                                             if (_reader.Name.Equals("id", true))
                                             {
-                                                geo._verticesId = (string)_reader.Value;
+                                                geo._verticesId = (string) _reader.Value;
                                             }
                                         }
 
@@ -626,17 +653,20 @@ namespace BrawlLib.Modeling
                                     _reader.EndElement();
                                 }
                             }
+
                             _reader.EndElement();
                         }
 
                         _geometry.Add(geo);
                     }
+
                     _reader.EndElement();
                 }
             }
+
             private PrimitiveEntry ParsePrimitive(ColladaPrimitiveType type)
             {
-                PrimitiveEntry prim = new PrimitiveEntry() { _type = type };
+                PrimitiveEntry prim = new PrimitiveEntry() {_type = type};
                 PrimitiveFace p;
                 int val;
                 int stride = 0, elements = 0;
@@ -662,11 +692,11 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("material", true))
                     {
-                        prim._material = (string)_reader.Value;
+                        prim._material = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("count", true))
                     {
-                        prim._entryCount = int.Parse((string)_reader.Value);
+                        prim._entryCount = int.Parse((string) _reader.Value);
                     }
                 }
 
@@ -687,7 +717,7 @@ namespace BrawlLib.Modeling
                         //p._pointIndices.Capacity = stride * elements;
                         while (_reader.ReadValue(&val))
                         {
-                            indices.Add((ushort)val);
+                            indices.Add((ushort) val);
                         }
 
                         p._pointCount = indices.Count / elements;
@@ -727,6 +757,7 @@ namespace BrawlLib.Modeling
 
                 return prim;
             }
+
             private InputEntry ParseInput()
             {
                 InputEntry inp = new InputEntry();
@@ -735,32 +766,33 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("id", true))
                     {
-                        inp._id = (string)_reader.Value;
+                        inp._id = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("name", true))
                     {
-                        inp._name = (string)_reader.Value;
+                        inp._name = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("semantic", true))
                     {
-                        inp._semantic = (SemanticType)Enum.Parse(typeof(SemanticType), (string)_reader.Value, true);
+                        inp._semantic = (SemanticType) Enum.Parse(typeof(SemanticType), (string) _reader.Value, true);
                     }
                     else if (_reader.Name.Equals("set", true))
                     {
-                        inp._set = int.Parse((string)_reader.Value);
+                        inp._set = int.Parse((string) _reader.Value);
                     }
                     else if (_reader.Name.Equals("offset", true))
                     {
-                        inp._offset = int.Parse((string)_reader.Value);
+                        inp._offset = int.Parse((string) _reader.Value);
                     }
                     else if (_reader.Name.Equals("source", true))
                     {
-                        inp._source = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                        inp._source = _reader.Value[0] == '#' ? (string) (_reader.Value + 1) : (string) _reader.Value;
                     }
                 }
 
                 return inp;
             }
+
             private SourceEntry ParseSource()
             {
                 SourceEntry src = new SourceEntry();
@@ -769,7 +801,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("id", true))
                     {
-                        src._id = (string)_reader.Value;
+                        src._id = (string) _reader.Value;
                     }
                 }
 
@@ -785,18 +817,18 @@ namespace BrawlLib.Modeling
                             {
                                 if (_reader.Name.Equals("id", true))
                                 {
-                                    src._arrayId = (string)_reader.Value;
+                                    src._arrayId = (string) _reader.Value;
                                 }
                                 else if (_reader.Name.Equals("count", true))
                                 {
-                                    src._arrayCount = int.Parse((string)_reader.Value);
+                                    src._arrayCount = int.Parse((string) _reader.Value);
                                 }
                             }
 
                             UnsafeBuffer buffer = new UnsafeBuffer(src._arrayCount * 4);
                             src._arrayData = buffer;
 
-                            float* pOut = (float*)buffer.Address;
+                            float* pOut = (float*) buffer.Address;
                             for (int i = 0; i < src._arrayCount; i++)
                             {
                                 if (!_reader.ReadValue(pOut++))
@@ -816,18 +848,18 @@ namespace BrawlLib.Modeling
                             {
                                 if (_reader.Name.Equals("id", true))
                                 {
-                                    src._arrayId = (string)_reader.Value;
+                                    src._arrayId = (string) _reader.Value;
                                 }
                                 else if (_reader.Name.Equals("count", true))
                                 {
-                                    src._arrayCount = int.Parse((string)_reader.Value);
+                                    src._arrayCount = int.Parse((string) _reader.Value);
                                 }
                             }
 
                             UnsafeBuffer buffer = new UnsafeBuffer(src._arrayCount * 4);
                             src._arrayData = buffer;
 
-                            int* pOut = (int*)buffer.Address;
+                            int* pOut = (int*) buffer.Address;
                             for (int i = 0; i < src._arrayCount; i++)
                             {
                                 if (!_reader.ReadValue(pOut++))
@@ -847,11 +879,11 @@ namespace BrawlLib.Modeling
                             {
                                 if (_reader.Name.Equals("id", true))
                                 {
-                                    src._arrayId = (string)_reader.Value;
+                                    src._arrayId = (string) _reader.Value;
                                 }
                                 else if (_reader.Name.Equals("count", true))
                                 {
-                                    src._arrayCount = int.Parse((string)_reader.Value);
+                                    src._arrayCount = int.Parse((string) _reader.Value);
                                 }
                             }
 
@@ -872,7 +904,7 @@ namespace BrawlLib.Modeling
                                 }
                                 else
                                 {
-                                    list[i] = (string)_reader.Value;
+                                    list[i] = (string) _reader.Value;
                                 }
                             }
                         }
@@ -887,15 +919,17 @@ namespace BrawlLib.Modeling
                                 {
                                     if (_reader.Name.Equals("source", true))
                                     {
-                                        src._accessorSource = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                                        src._accessorSource = _reader.Value[0] == '#'
+                                            ? (string) (_reader.Value + 1)
+                                            : (string) _reader.Value;
                                     }
                                     else if (_reader.Name.Equals("count", true))
                                     {
-                                        src._accessorCount = int.Parse((string)_reader.Value);
+                                        src._accessorCount = int.Parse((string) _reader.Value);
                                     }
                                     else if (_reader.Name.Equals("stride", true))
                                     {
-                                        src._accessorStride = int.Parse((string)_reader.Value);
+                                        src._accessorStride = int.Parse((string) _reader.Value);
                                     }
                                 }
 
@@ -923,7 +957,7 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("id", false))
                             {
-                                id = (string)_reader.Value;
+                                id = (string) _reader.Value;
                             }
                         }
 
@@ -937,6 +971,7 @@ namespace BrawlLib.Modeling
                             _reader.EndElement();
                         }
                     }
+
                     _reader.EndElement();
                 }
             }
@@ -952,7 +987,9 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("source", false))
                     {
-                        skin._skinSource = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                        skin._skinSource = _reader.Value[0] == '#'
+                            ? (string) (_reader.Value + 1)
+                            : (string) _reader.Value;
                     }
                 }
 
@@ -984,7 +1021,7 @@ namespace BrawlLib.Modeling
                         {
                             if (_reader.Name.Equals("count", false))
                             {
-                                skin._weightCount = int.Parse((string)_reader.Value);
+                                skin._weightCount = int.Parse((string) _reader.Value);
                             }
                         }
 
@@ -1019,6 +1056,7 @@ namespace BrawlLib.Modeling
                                     }
                                 }
                             }
+
                             _reader.EndElement();
                         }
                     }
@@ -1063,7 +1101,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("id", true))
                     {
-                        sc._id = (string)_reader.Value;
+                        sc._id = (string) _reader.Value;
                     }
                 }
 
@@ -1071,7 +1109,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("name", true))
                     {
-                        sc._name = (string)_reader.Value;
+                        sc._name = (string) _reader.Value;
                     }
                 }
 
@@ -1096,19 +1134,19 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("id", true))
                     {
-                        node._id = (string)_reader.Value;
+                        node._id = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("name", true))
                     {
-                        node._name = (string)_reader.Value;
+                        node._name = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("sid", true))
                     {
-                        node._sid = (string)_reader.Value;
+                        node._sid = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("type", true))
                     {
-                        node._type = (NodeType)Enum.Parse(typeof(NodeType), (string)_reader.Value, true);
+                        node._type = (NodeType) Enum.Parse(typeof(NodeType), (string) _reader.Value, true);
                     }
                 }
 
@@ -1166,17 +1204,19 @@ namespace BrawlLib.Modeling
                                 {
                                     if (_reader.Name.Equals("visibility", true))
                                     {
-
                                     }
+
                                     _reader.EndElement();
                                 }
                             }
+
                             _reader.EndElement();
                         }
                     }
 
                     _reader.EndElement();
                 }
+
                 node._matrix = m;
                 node._invMatrix = mInv;
                 return node;
@@ -1193,7 +1233,7 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("url", true))
                     {
-                        c._url = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                        c._url = _reader.Value[0] == '#' ? (string) (_reader.Value + 1) : (string) _reader.Value;
                     }
                 }
 
@@ -1201,7 +1241,9 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("skeleton", true))
                     {
-                        c.skeletons.Add(_reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value);
+                        c.skeletons.Add(_reader.Value[0] == '#'
+                            ? (string) (_reader.Value + 1)
+                            : (string) _reader.Value);
                     }
 
                     if (_reader.Name.Equals("bind_material", true))
@@ -1239,11 +1281,11 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("symbol", true))
                     {
-                        mat._symbol = (string)_reader.Value;
+                        mat._symbol = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("target", true))
                     {
-                        mat._target = _reader.Value[0] == '#' ? (string)(_reader.Value + 1) : (string)_reader.Value;
+                        mat._target = _reader.Value[0] == '#' ? (string) (_reader.Value + 1) : (string) _reader.Value;
                     }
                 }
 
@@ -1256,8 +1298,10 @@ namespace BrawlLib.Modeling
 
                     _reader.EndElement();
                 }
+
                 return mat;
             }
+
             private VertexBind ParseVertexInput()
             {
                 VertexBind v = new VertexBind();
@@ -1266,15 +1310,15 @@ namespace BrawlLib.Modeling
                 {
                     if (_reader.Name.Equals("semantic", true))
                     {
-                        v._semantic = (string)_reader.Value;
+                        v._semantic = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("input_semantic", true))
                     {
-                        v._inputSemantic = (string)_reader.Value;
+                        v._inputSemantic = (string) _reader.Value;
                     }
                     else if (_reader.Name.Equals("input_set", true))
                     {
-                        v._inputSet = int.Parse((string)_reader.Value);
+                        v._inputSet = int.Parse((string) _reader.Value);
                     }
                 }
 
@@ -1284,7 +1328,7 @@ namespace BrawlLib.Modeling
             private Matrix ParseMatrix()
             {
                 Matrix m;
-                float* pM = (float*)&m;
+                float* pM = (float*) &m;
                 for (int y = 0; y < 4; y++)
                 {
                     for (int x = 0; x < 4; x++)
@@ -1295,11 +1339,12 @@ namespace BrawlLib.Modeling
 
                 return m;
             }
+
             private RGBAPixel ParseColor()
             {
                 float f;
                 RGBAPixel c;
-                byte* p = (byte*)&c;
+                byte* p = (byte*) &c;
                 for (int i = 0; i < 4; i++)
                 {
                     if (!_reader.ReadValue(&f))
@@ -1308,16 +1353,18 @@ namespace BrawlLib.Modeling
                     }
                     else
                     {
-                        p[i] = (byte)(f * 255.0f + 0.5f);
+                        p[i] = (byte) (f * 255.0f + 0.5f);
                     }
                 }
+
                 return c;
             }
+
             private Vector3 ParseVec3()
             {
                 float f;
                 Vector3 c;
-                float* p = (float*)&c;
+                float* p = (float*) &c;
                 for (int i = 0; i < 3; i++)
                 {
                     if (!_reader.ReadValue(&f))
@@ -1329,13 +1376,15 @@ namespace BrawlLib.Modeling
                         p[i] = f;
                     }
                 }
+
                 return c;
             }
+
             private Vector4 ParseVec4()
             {
                 float f;
                 Vector4 c;
-                float* p = (float*)&c;
+                float* p = (float*) &c;
                 for (int i = 0; i < 4; i++)
                 {
                     if (!_reader.ReadValue(&f))
@@ -1347,6 +1396,7 @@ namespace BrawlLib.Modeling
                         p[i] = f;
                     }
                 }
+
                 return c;
             }
         }
@@ -1356,22 +1406,33 @@ namespace BrawlLib.Modeling
             internal string _id, _name, _sid;
             internal object _node;
 
-            ~ColladaEntry() { Dispose(); }
-            public virtual void Dispose() { GC.SuppressFinalize(this); }
+            ~ColladaEntry()
+            {
+                Dispose();
+            }
+
+            public virtual void Dispose()
+            {
+                GC.SuppressFinalize(this);
+            }
         }
+
         private class ImageEntry : ColladaEntry
         {
             internal string _path;
         }
+
         private class MaterialEntry : ColladaEntry
         {
             internal string _effect;
         }
+
         private class EffectEntry : ColladaEntry
         {
             internal EffectShaderEntry _shader;
             internal List<EffectNewParam> _newParams = new List<EffectNewParam>();
         }
+
         private class GeometryEntry : ColladaEntry
         {
             internal List<SourceEntry> _sources = new List<SourceEntry>();
@@ -1392,6 +1453,7 @@ namespace BrawlLib.Modeling
                 GC.SuppressFinalize(this);
             }
         }
+
         private class SourceEntry : ColladaEntry
         {
             internal SourceType _arrayType;
@@ -1408,13 +1470,14 @@ namespace BrawlLib.Modeling
             {
                 if (_arrayData is UnsafeBuffer)
                 {
-                    ((UnsafeBuffer)_arrayData).Dispose();
+                    ((UnsafeBuffer) _arrayData).Dispose();
                 }
 
                 _arrayData = null;
                 GC.SuppressFinalize(this);
             }
         }
+
         private class InputEntry : ColladaEntry
         {
             internal SemanticType _semantic;
@@ -1423,6 +1486,7 @@ namespace BrawlLib.Modeling
             internal string _source;
             internal int _outputOffset;
         }
+
         private class PrimitiveEntry
         {
             internal ColladaPrimitiveType _type;
@@ -1436,12 +1500,14 @@ namespace BrawlLib.Modeling
 
             internal List<PrimitiveFace> _faces = new List<PrimitiveFace>();
         }
+
         private class PrimitiveFace
         {
             internal int _pointCount;
             internal int _faceCount;
             internal ushort[] _pointIndices;
         }
+
         private class SkinEntry : ColladaEntry
         {
             internal string _skinSource;
@@ -1465,6 +1531,7 @@ namespace BrawlLib.Modeling
                 GC.SuppressFinalize(this);
             }
         }
+
         private class SceneEntry : ColladaEntry
         {
             internal List<NodeEntry> _nodes = new List<NodeEntry>();
@@ -1483,6 +1550,7 @@ namespace BrawlLib.Modeling
                 return null;
             }
         }
+
         private class NodeEntry : ColladaEntry
         {
             internal NodeType _type = NodeType.NONE;
@@ -1491,12 +1559,14 @@ namespace BrawlLib.Modeling
             internal List<NodeEntry> _children = new List<NodeEntry>();
             internal List<InstanceEntry> _instances = new List<InstanceEntry>();
         }
+
         private enum InstanceType
         {
             Controller,
             Geometry,
             Node
         }
+
         private class InstanceEntry : ColladaEntry
         {
             internal InstanceType _type;
@@ -1504,17 +1574,20 @@ namespace BrawlLib.Modeling
             internal InstanceMaterial _material;
             internal List<string> skeletons = new List<string>();
         }
+
         private class InstanceMaterial : ColladaEntry
         {
             internal string _symbol, _target;
             internal List<VertexBind> _vertexBinds = new List<VertexBind>();
         }
+
         private class VertexBind : ColladaEntry
         {
             internal string _semantic;
             internal string _inputSemantic;
             internal int _inputSet;
         }
+
         private class EffectSampler2D
         {
             public string _source;
@@ -1522,17 +1595,20 @@ namespace BrawlLib.Modeling
             public string _wrapS, _wrapT;
             public string _minFilter, _magFilter;
         }
+
         private class EffectNewParam : ColladaEntry
         {
             public string _path;
             public EffectSampler2D _sampler2D;
         }
+
         private class EffectShaderEntry : ColladaEntry
         {
             internal ShaderType _type;
             internal float _shininess, _reflectivity, _transparency;
             internal List<LightEffectEntry> _effects = new List<LightEffectEntry>();
         }
+
         private class LightEffectEntry : ColladaEntry
         {
             internal LightEffectType _type;
@@ -1541,6 +1617,7 @@ namespace BrawlLib.Modeling
             internal string _texture;
             internal string _texCoord;
         }
+
         private enum ShaderType
         {
             None,
@@ -1548,6 +1625,7 @@ namespace BrawlLib.Modeling
             lambert,
             blinn
         }
+
         private enum LightEffectType
         {
             None,
@@ -1558,6 +1636,7 @@ namespace BrawlLib.Modeling
             specular,
             transparent
         }
+
         private enum ColladaPrimitiveType
         {
             None,
@@ -1569,6 +1648,7 @@ namespace BrawlLib.Modeling
             lines,
             linestrips
         }
+
         private enum SemanticType
         {
             None,
@@ -1583,6 +1663,7 @@ namespace BrawlLib.Modeling
             TEXTANGENT,
             TEXBINORMAL
         }
+
         private enum SourceType
         {
             None,
@@ -1590,6 +1671,7 @@ namespace BrawlLib.Modeling
             Int,
             Name
         }
+
         private enum NodeType
         {
             NODE,

@@ -9,6 +9,7 @@ namespace BrawlCrate.NodeWrappers
     public class ClassicStageTblWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static ClassicStageTblWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -31,18 +32,23 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<ClassicStageTblWrapper>().NewEntry();
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
-
         }
-        public ClassicStageTblWrapper() { ContextMenuStrip = _menu; }
+
+        public ClassicStageTblWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
+
         public void NewEntry()
         {
-            ((ClassicStageTblNode)_resource).CreateEntry();
+            ((ClassicStageTblNode) _resource).CreateEntry();
         }
     }
 }

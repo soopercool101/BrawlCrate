@@ -12,6 +12,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static TPLWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -28,23 +29,33 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<TPLWrapper>().ImportTexture(); }
+
+        protected static void NewEntryAction(object sender, EventArgs e)
+        {
+            GetInstance<TPLWrapper>().ImportTexture();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TPLWrapper w = GetInstance<TPLWrapper>();
             _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public TPLWrapper() { ContextMenuStrip = _menu; }
+        public TPLWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public override string ExportFilter => FileFilters.TPL;
 
@@ -53,7 +64,7 @@ namespace BrawlCrate.NodeWrappers
             int index = Program.OpenFile(FileFilters.Images, out string path);
             if (index == 8)
             {
-                TPLTextureNode t = new TPLTextureNode() { Name = "Texture" };
+                TPLTextureNode t = new TPLTextureNode() {Name = "Texture"};
                 _resource.AddChild(t);
                 t.Replace(path);
 
@@ -81,6 +92,7 @@ namespace BrawlCrate.NodeWrappers
     public class TPLTextureNodeWrapper : GenericWrapper
     {
         private static readonly ContextMenuStrip _menu;
+
         static TPLTextureNodeWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -97,21 +109,31 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ReEncodeAction(object sender, EventArgs e) { GetInstance<TPLTextureNodeWrapper>().ReEncode(); }
+
+        protected static void ReEncodeAction(object sender, EventArgs e)
+        {
+            GetInstance<TPLTextureNodeWrapper>().ReEncode();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             TPLTextureNodeWrapper w = GetInstance<TPLTextureNodeWrapper>();
             _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
-        public TPLTextureNodeWrapper() { ContextMenuStrip = _menu; }
+        public TPLTextureNodeWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public void ReEncode()
         {
@@ -135,7 +157,7 @@ namespace BrawlCrate.NodeWrappers
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
                 {
                     dlg.ImageSource = inStream;
-                    dlg.ShowDialog(MainForm.Instance, (TPLTextureNode)_resource);
+                    dlg.ShowDialog(MainForm.Instance, (TPLTextureNode) _resource);
                 }
             }
         }

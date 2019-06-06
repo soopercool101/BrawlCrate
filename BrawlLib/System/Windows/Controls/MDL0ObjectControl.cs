@@ -67,11 +67,12 @@ namespace System.Windows.Forms
                 _updating = true;
 
                 cboMaterial.SelectedIndex = drawCall.MaterialNode != null ? drawCall.MaterialNode.Index : -1;
-                cboVisBone.SelectedIndex = drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : -1;
+                cboVisBone.SelectedIndex =
+                    drawCall.VisibilityBoneNode != null ? drawCall.VisibilityBoneNode.BoneIndex : -1;
 
                 _prevDrawOrder = numDrawOrder.Value = drawCall.DrawPriority;
                 numDrawOrder.Enabled = !(chkDoesntMatter.Checked = drawCall.DrawPriority == 0);
-                cboDrawPass.SelectedIndex = (int)drawCall.DrawPass;
+                cboDrawPass.SelectedIndex = (int) drawCall.DrawPass;
                 lstDrawCalls.SetItemChecked(lstDrawCalls.SelectedIndex, drawCall._render);
 
                 _updating = false;
@@ -127,7 +128,7 @@ namespace System.Windows.Forms
             DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
             if (drawCall != null)
             {
-                drawCall.DrawPriority = (byte)numDrawOrder.Value;
+                drawCall.DrawPriority = (byte) numDrawOrder.Value;
             }
         }
 
@@ -210,7 +211,7 @@ namespace System.Windows.Forms
             DrawCall drawCall = lstDrawCalls.SelectedItem as DrawCall;
             if (drawCall != null)
             {
-                drawCall.DrawPass = (DrawCall.DrawPassType)cboDrawPass.SelectedIndex;
+                drawCall.DrawPass = (DrawCall.DrawPassType) cboDrawPass.SelectedIndex;
             }
         }
 

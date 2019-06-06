@@ -12,7 +12,8 @@ namespace System
 {
     public static class BitmapExtension
     {
-        public static Bitmap Resize(this Bitmap i, int width, int height, InterpolationMode mode = InterpolationMode.HighQualityBicubic)
+        public static Bitmap Resize(this Bitmap i, int width, int height,
+                                    InterpolationMode mode = InterpolationMode.HighQualityBicubic)
         {
             Bitmap r = new Bitmap(width, height);
             r.SetResolution(i.HorizontalResolution, i.VerticalResolution);
@@ -26,9 +27,11 @@ namespace System
                 {
                     //This fixes the antialiasing on the edges of the image
                     wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(i, new Rectangle(0, 0, r.Width, r.Height), 0, 0, i.Width, i.Height, GraphicsUnit.Pixel, wrapMode);
+                    graphics.DrawImage(i, new Rectangle(0, 0, r.Width, r.Height), 0, 0, i.Width, i.Height,
+                        GraphicsUnit.Pixel, wrapMode);
                 }
             }
+
             return r;
         }
 
@@ -38,14 +41,14 @@ namespace System
             {
                 //Indexed
                 Bitmap targetImage = new Bitmap(sourceImage.Width, sourceImage.Height,
-                  sourceImage.PixelFormat);
+                    sourceImage.PixelFormat);
                 BitmapData sourceData = sourceImage.LockBits(
-                  new Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
-                  ImageLockMode.ReadOnly, sourceImage.PixelFormat);
+                    new Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
+                    ImageLockMode.ReadOnly, sourceImage.PixelFormat);
                 BitmapData targetData = targetImage.LockBits(
-                  new Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
-                  ImageLockMode.WriteOnly, targetImage.PixelFormat);
-                Memory.Move(targetData.Scan0, sourceData.Scan0, (uint)sourceData.Stride * (uint)sourceData.Height);
+                    new Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
+                    ImageLockMode.WriteOnly, targetImage.PixelFormat);
+                Memory.Move(targetData.Scan0, sourceData.Scan0, (uint) sourceData.Stride * (uint) sourceData.Height);
                 sourceImage.UnlockBits(sourceData);
                 targetImage.UnlockBits(targetData);
                 targetImage.Palette = sourceImage.Palette;
@@ -65,7 +68,10 @@ namespace System
             }
         }
 
-        public static bool IsIndexed(this Bitmap bmp) { return (bmp.PixelFormat & PixelFormat.Indexed) != 0; }
+        public static bool IsIndexed(this Bitmap bmp)
+        {
+            return (bmp.PixelFormat & PixelFormat.Indexed) != 0;
+        }
         //public unsafe static int GetColorCount(this Bitmap bmp) { int alpha; bool grey; return GetColorCount(bmp, out alpha, out grey); }
         //public unsafe static int GetColorCount(this Bitmap bmp, out int alphaColors) { bool grey; return GetColorCount(bmp, out alphaColors, out grey); }
         //public unsafe static int GetColorCount(this Bitmap bmp, out int alphaColors, out bool isGreyscale)
@@ -77,9 +83,10 @@ namespace System
         {
             HashSet<ARGBPixel> colors = new HashSet<ARGBPixel>();
 
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb);
 
-            for (ARGBPixel* ptr = (ARGBPixel*)data.Scan0, c = ptr + (bmp.Width * bmp.Height); ptr < c;)
+            for (ARGBPixel* ptr = (ARGBPixel*) data.Scan0, c = ptr + bmp.Width * bmp.Height; ptr < c;)
             {
                 colors.Add(*ptr++);
             }
@@ -94,7 +101,7 @@ namespace System
             ColorPalette pal = bmp.Palette;
 
             float inc = 255.0f / pal.Entries.Length, c = 0;
-            for (int i = 0, z = 0; i < pal.Entries.Length; i++, c += inc, z = (int)c)
+            for (int i = 0, z = 0; i < pal.Entries.Length; i++, c += inc, z = (int) c)
             {
                 pal.Entries[i] = Color.FromArgb(z, z, z);
             }
@@ -131,7 +138,8 @@ namespace System
         //    return pal;
         //}
 
-        public static Bitmap Quantize(this Bitmap bmp, QuantizationAlgorithm algorithm, int numColors, WiiPixelFormat texFormat, WiiPaletteFormat palFormat, IProgressTracker progress)
+        public static Bitmap Quantize(this Bitmap bmp, QuantizationAlgorithm algorithm, int numColors,
+                                      WiiPixelFormat texFormat, WiiPaletteFormat palFormat, IProgressTracker progress)
         {
             return MedianCut.Quantize(bmp, numColors, texFormat, palFormat, progress);
         }
@@ -143,9 +151,22 @@ namespace System
             int entries = palette.Entries.Length;
             switch (format)
             {
-                case PixelFormat.Format4bppIndexed: { entries = Math.Min(entries, 16); break; }
-                case PixelFormat.Format8bppIndexed: { entries = Math.Min(entries, 256); break; }
-                default: { throw new ArgumentException("Pixel format is not an indexed format."); }
+                case PixelFormat.Format4bppIndexed:
+                {
+                    entries = Math.Min(entries, 16);
+                    break;
+                }
+
+                case PixelFormat.Format8bppIndexed:
+                {
+                    entries = Math.Min(entries, 256);
+                    break;
+                }
+
+                default:
+                {
+                    throw new ArgumentException("Pixel format is not an indexed format.");
+                }
             }
 
             Bitmap dst = new Bitmap(w, h, format)
@@ -153,13 +174,14 @@ namespace System
                 Palette = palette
             };
 
-            BitmapData sData = src.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+            BitmapData sData = src.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadOnly,
+                PixelFormat.Format32bppArgb);
             BitmapData dData = dst.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, format);
 
-            ARGBPixel* sPtr = (ARGBPixel*)sData.Scan0;
+            ARGBPixel* sPtr = (ARGBPixel*) sData.Scan0;
             for (int y = 0; y < h; y++)
             {
-                byte* dPtr = (byte*)dData.Scan0 + (y * dData.Stride);
+                byte* dPtr = (byte*) dData.Scan0 + y * dData.Stride;
                 for (int x = 0; x < w; x++)
                 {
                     ARGBPixel p = *sPtr++;
@@ -178,18 +200,18 @@ namespace System
                     if (format == PixelFormat.Format4bppIndexed)
                     {
                         byte val = *dPtr;
-                        if ((x % 2) == 0)
+                        if (x % 2 == 0)
                         {
-                            *dPtr = (byte)((bestIndex << 4) | (val & 0x0F));
+                            *dPtr = (byte) ((bestIndex << 4) | (val & 0x0F));
                         }
                         else
                         {
-                            *dPtr++ = (byte)((val & 0xF0) | (bestIndex & 0x0F));
+                            *dPtr++ = (byte) ((val & 0xF0) | (bestIndex & 0x0F));
                         }
                     }
                     else
                     {
-                        *dPtr++ = (byte)bestIndex;
+                        *dPtr++ = (byte) bestIndex;
                     }
                 }
             }
@@ -199,14 +221,16 @@ namespace System
 
             return dst;
         }
+
         public static unsafe void Clamp(this Bitmap bmp, ColorPalette palette)
         {
             int w = bmp.Width, h = bmp.Height, e = palette.Entries.Length;
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite,
+                PixelFormat.Format32bppArgb);
 
-            for (ARGBPixel* ptr = (ARGBPixel*)data.Scan0, ceil = ptr + (w * h); ptr < ceil;)
+            for (ARGBPixel* ptr = (ARGBPixel*) data.Scan0, ceil = ptr + w * h; ptr < ceil;)
             {
-                *ptr = (ARGBPixel)palette.Entries[palette.FindMatch(*ptr++)];
+                *ptr = (ARGBPixel) palette.Entries[palette.FindMatch(*ptr++)];
 
                 //ARGBPixel p = *ptr;
                 //int bestDist = Int32.MaxValue, bestIndex = 0;
@@ -222,29 +246,66 @@ namespace System
                 //}
                 //*ptr++ = (ARGBPixel)palette.Entries[bestIndex];
             }
+
             bmp.UnlockBits(data);
         }
 
         private unsafe delegate void PixelClamper(ARGBPixel* src);
+
         public static unsafe void Clamp(this Bitmap bmp, WiiPixelFormat format)
         {
             int w = bmp.Width, h = bmp.Height;
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite,
+                PixelFormat.Format32bppArgb);
 
             PixelClamper clmp;
             switch (format)
             {
-                case WiiPixelFormat.I4: { clmp = p => { *p = ((I4Pixel)(*p))[0]; }; break; }
-                case WiiPixelFormat.I8: { clmp = p => { *p = (ARGBPixel)(I8Pixel)(*p); }; break; }
-                case WiiPixelFormat.IA4: { clmp = p => { *p = (IA4Pixel)(*p); }; break; }
-                case WiiPixelFormat.IA8: { clmp = p => { *p = (IA8Pixel)(*p); }; break; }
-                case WiiPixelFormat.RGB565: { clmp = p => { *p = (ARGBPixel)(wRGB565Pixel)(*p); }; break; }
-                case WiiPixelFormat.RGB5A3: { clmp = p => { *p = (ARGBPixel)(wRGB5A3Pixel)(*p); }; break; }
+                case WiiPixelFormat.I4:
+                {
+                    clmp = p => { *p = ((I4Pixel) (*p))[0]; };
+                    break;
+                }
+
+                case WiiPixelFormat.I8:
+                {
+                    clmp = p => { *p = (ARGBPixel) (I8Pixel) (*p); };
+                    break;
+                }
+
+                case WiiPixelFormat.IA4:
+                {
+                    clmp = p => { *p = (IA4Pixel) (*p); };
+                    break;
+                }
+
+                case WiiPixelFormat.IA8:
+                {
+                    clmp = p => { *p = (IA8Pixel) (*p); };
+                    break;
+                }
+
+                case WiiPixelFormat.RGB565:
+                {
+                    clmp = p => { *p = (ARGBPixel) (wRGB565Pixel) (*p); };
+                    break;
+                }
+
+                case WiiPixelFormat.RGB5A3:
+                {
+                    clmp = p => { *p = (ARGBPixel) (wRGB5A3Pixel) (*p); };
+                    break;
+                }
+
                 case WiiPixelFormat.RGBA8:
-                default: { clmp = p => { }; break; }
+                default:
+                {
+                    clmp = p => { };
+                    break;
+                }
             }
 
-            for (ARGBPixel* ptr = (ARGBPixel*)data.Scan0, ceil = ptr + (w * h); ptr < ceil;)
+            for (ARGBPixel* ptr = (ARGBPixel*) data.Scan0, ceil = ptr + w * h; ptr < ceil;)
             {
                 clmp(ptr++);
             }
@@ -275,19 +336,22 @@ namespace System
             switch (format)
             {
                 case PixelFormat.Format4bppIndexed:
+                {
+                    for (int sy = skip / 2, dy = 0; sy < sh && dy < height; dy++, sy += skip)
                     {
-                        for (int sy = skip / 2, dy = 0; (sy < sh) && (dy < height); dy++, sy += skip)
+                        byte* sPtr = (byte*) srcData.Scan0 + sy * srcData.Stride;
+                        byte* dPtr = (byte*) dstData.Scan0 + dy * dstData.Stride;
+                        for (int sx = skip / 2, dx = 0; sx < sw && dx < width; dx++, sx += skip)
                         {
-                            byte* sPtr = (byte*)srcData.Scan0 + (sy * srcData.Stride);
-                            byte* dPtr = (byte*)dstData.Scan0 + (dy * dstData.Stride);
-                            for (int sx = skip / 2, dx = 0; (sx < sw) && (dx < width); dx++, sx += skip)
-                            {
-                                byte value = (sx % 2 == 0) ? (byte)(sPtr[sx >> 1] >> 4) : (byte)(sPtr[sx >> 1] & 0x0F);
-                                dPtr[dx >> 1] = (dx % 2 == 0) ? (byte)((value << 4) | (dPtr[dx >> 1] & 0x0F)) : (byte)((dPtr[dx >> 1] & 0xF0) | value);
-                            }
+                            byte value = sx % 2 == 0 ? (byte) (sPtr[sx >> 1] >> 4) : (byte) (sPtr[sx >> 1] & 0x0F);
+                            dPtr[dx >> 1] = dx % 2 == 0
+                                ? (byte) ((value << 4) | (dPtr[dx >> 1] & 0x0F))
+                                : (byte) ((dPtr[dx >> 1] & 0xF0) | value);
                         }
-                        break;
                     }
+
+                    break;
+                }
             }
 
             dst.UnlockBits(dstData);
@@ -295,11 +359,12 @@ namespace System
 
             return dst;
         }
+
         public static unsafe Bitmap GenerateMip(this Bitmap bmp, int level)
         {
             if (level <= 1)
             {
-                return (Bitmap)bmp.Clone();
+                return (Bitmap) bmp.Clone();
             }
 
             int scale = 1 << (level - 1);
@@ -310,23 +375,24 @@ namespace System
             //Step-scale indexed elements
             if (bmp.IsIndexed())
             {
-                BitmapData srcData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, bmp.PixelFormat);
+                BitmapData srcData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly,
+                    bmp.PixelFormat);
                 BitmapData dstData = dst.LockBits(new Rectangle(0, 0, w, h), ImageLockMode.ReadWrite, bmp.PixelFormat);
 
-                float xStep = (float)bmp.Width / w;
-                float yStep = (float)bmp.Height / h;
+                float xStep = (float) bmp.Width / w;
+                float yStep = (float) bmp.Height / h;
                 int x, y;
                 float fx, fy;
 
-                byte* sPtr, dPtr = (byte*)dstData.Scan0;
+                byte* sPtr, dPtr = (byte*) dstData.Scan0;
                 if (bmp.PixelFormat == PixelFormat.Format8bppIndexed)
                 {
                     for (y = 0, fy = 0.5f; y < h; y++, fy += yStep, dPtr += dstData.Stride)
                     {
-                        sPtr = (byte*)srcData.Scan0 + ((int)fy * srcData.Stride);
+                        sPtr = (byte*) srcData.Scan0 + (int) fy * srcData.Stride;
                         for (x = 0, fx = 0.5f; x < w; x++, fx += xStep)
                         {
-                            dPtr[x] = sPtr[(int)fx];
+                            dPtr[x] = sPtr[(int) fx];
                         }
                     }
                 }
@@ -334,11 +400,11 @@ namespace System
                 {
                     for (y = 0, fy = 0.5f; y < h; y++, fy += yStep, dPtr += dstData.Stride)
                     {
-                        sPtr = (byte*)srcData.Scan0 + ((int)fy * srcData.Stride);
+                        sPtr = (byte*) srcData.Scan0 + (int) fy * srcData.Stride;
                         int b = 0, ind;
                         for (x = 0, fx = 0.5f; x < w; x++, fx += xStep)
                         {
-                            ind = (int)fx;
+                            ind = (int) fx;
                             if ((x & 1) == 0)
                             {
                                 if ((ind & 1) == 0)
@@ -361,15 +427,15 @@ namespace System
                                     b |= sPtr[ind >> 1] & 0xF;
                                 }
 
-                                dPtr[x >> 1] = (byte)b;
+                                dPtr[x >> 1] = (byte) b;
                             }
                         }
+
                         if ((x & 1) != 0)
                         {
-                            dPtr[x >> 1] = (byte)b;
+                            dPtr[x >> 1] = (byte) b;
                         }
                     }
-
                 }
 
                 bmp.UnlockBits(srcData);
@@ -388,6 +454,7 @@ namespace System
                     g.DrawImage(bmp, new Rectangle(0, 0, w, h));
                 }
             }
+
             return dst;
         }
 
@@ -401,8 +468,8 @@ namespace System
                 BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
                 BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-                uint* inPtr = (uint*)inData.Scan0;
-                uint* outPtr = (uint*)outData.Scan0;
+                uint* inPtr = (uint*) inData.Scan0;
+                uint* outPtr = (uint*) outData.Scan0;
 
                 int length = Math.Abs(inData.Stride) * bmp.Height / sizeof(uint);
 
@@ -425,10 +492,11 @@ namespace System
                     for (int y = 0; y < bmp.Height; y++)
                     {
                         Color c = bmp.GetPixel(x, y);
-                        c = Color.FromArgb(c.A, (byte)~c.R, (byte)~c.G, (byte)~c.B);
+                        c = Color.FromArgb(c.A, (byte) ~c.R, (byte) ~c.G, (byte) ~c.B);
                         output.SetPixel(x, y, c);
                     }
                 }
+
                 return output;
             }
         }
@@ -443,8 +511,8 @@ namespace System
                 BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
                 BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-                uint* inPtr = (uint*)inData.Scan0;
-                uint* outPtr = (uint*)outData.Scan0;
+                uint* inPtr = (uint*) inData.Scan0;
+                uint* outPtr = (uint*) outData.Scan0;
 
                 int length = Math.Abs(inData.Stride) * bmp.Height / sizeof(uint);
 
@@ -467,17 +535,20 @@ namespace System
                     for (int y = 0; y < bmp.Height; y++)
                     {
                         Color c = bmp.GetPixel(x, y);
-                        c = Color.FromArgb((byte)~c.A, c);
+                        c = Color.FromArgb((byte) ~c.A, c);
                         output.SetPixel(x, y, c);
                     }
                 }
+
                 return output;
             }
         }
 
         public class NonMonochromeImageException : Exception
         {
-            public NonMonochromeImageException(string message) : base(message) { }
+            public NonMonochromeImageException(string message) : base(message)
+            {
+            }
         }
 
         public static unsafe Bitmap SwapAlphaAndRGB(this Bitmap bmp)
@@ -490,8 +561,8 @@ namespace System
                 BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
                 BitmapData outData = output.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-                uint* inPtr = (uint*)inData.Scan0;
-                uint* outPtr = (uint*)outData.Scan0;
+                uint* inPtr = (uint*) inData.Scan0;
+                uint* outPtr = (uint*) outData.Scan0;
 
                 int length = Math.Abs(inData.Stride) * bmp.Height / sizeof(uint);
 
@@ -499,15 +570,17 @@ namespace System
                 {
                     for (int i = 0; i < length; i++)
                     {
-                        byte A = (byte)(inPtr[i] >> 24);
-                        byte R = (byte)(inPtr[i] >> 16);
-                        byte G = (byte)(inPtr[i] >> 8);
-                        byte B = (byte)(inPtr[i]);
+                        byte A = (byte) (inPtr[i] >> 24);
+                        byte R = (byte) (inPtr[i] >> 16);
+                        byte G = (byte) (inPtr[i] >> 8);
+                        byte B = (byte) inPtr[i];
                         if (R != G || G != B)
                         {
-                            throw new NonMonochromeImageException("Cannot swap alpha and value channels on a monochrome image.");
+                            throw new NonMonochromeImageException(
+                                "Cannot swap alpha and value channels on a monochrome image.");
                         }
-                        outPtr[i] = (uint)(R << 24 | A << 16 | A << 8 | A);
+
+                        outPtr[i] = (uint) ((R << 24) | (A << 16) | (A << 8) | A);
                     }
                 }
                 finally
@@ -529,12 +602,15 @@ namespace System
                         Color c = bmp.GetPixel(x, y);
                         if (c.R != c.G || c.G != c.B)
                         {
-                            throw new NonMonochromeImageException("Cannot swap alpha and value channels on a monochrome image.");
+                            throw new NonMonochromeImageException(
+                                "Cannot swap alpha and value channels on a monochrome image.");
                         }
+
                         c = Color.FromArgb(c.R, c.A, c.A, c.A);
                         output.SetPixel(x, y, c);
                     }
                 }
+
                 return output;
             }
         }
@@ -555,12 +631,12 @@ namespace System
                 Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
                 BitmapData inData = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
 
-                uint* inPtr = (uint*)inData.Scan0;
+                uint* inPtr = (uint*) inData.Scan0;
 
                 int length = Math.Abs(inData.Stride) * bmp.Height / sizeof(uint);
 
                 pixels = new int[length];
-                Runtime.InteropServices.Marshal.Copy((IntPtr)inPtr, pixels, 0, length);
+                Runtime.InteropServices.Marshal.Copy((IntPtr) inPtr, pixels, 0, length);
 
                 bmp.UnlockBits(inData);
             }
@@ -584,7 +660,7 @@ namespace System
 
             foreach (int pixel in pixels)
             {
-                byte alpha = (byte)((pixel & 0xFF000000) >> 24);
+                byte alpha = (byte) ((pixel & 0xFF000000) >> 24);
                 if (alpha == 0)
                 {
                     colorsInTransparentSection.Add(pixel);
@@ -596,13 +672,14 @@ namespace System
             }
 
             return colorsInTransparentSection.Count > colorsInNonTransparenSection.Count
-                && colorsInTransparentSection.Count > 1;
+                   && colorsInTransparentSection.Count > 1;
         }
 
         public static void SaveTGA(this Bitmap bmp, string path)
         {
             TGA.ToFile(bmp, path);
         }
+
         public static void SaveTGA(this Bitmap bmp, FileStream stream)
         {
             TGA.ToStream(bmp, stream);
@@ -632,13 +709,14 @@ namespace System
                     _alphaColors++;
                 }
 
-                if ((_isGreyscale) && (!p.IsGreyscale()))
+                if (_isGreyscale && !p.IsGreyscale())
                 {
                     _isGreyscale = false;
                 }
             }
         }
     }
+
     public enum QuantizationAlgorithm
     {
         //WeightedAverage

@@ -8,16 +8,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class RSARFolderNode : ResourceNode
     {
-        internal RSARHeader* Header => (RSARHeader*)WorkingSource.Address;
+        internal RSARHeader* Header => (RSARHeader*) WorkingSource.Address;
         public override ResourceType ResourceFileType => ResourceType.RSARFolder;
+
         public override Type[] AllowedChildTypes => new Type[]
-                {
-                    typeof(RSARFolderNode),
-                    typeof(RSARSoundNode),
-                    typeof(RSARBankNode),
-                    typeof(RSARGroupNode),
-                    typeof(RSARPlayerInfoNode),
-                };
+        {
+            typeof(RSARFolderNode),
+            typeof(RSARSoundNode),
+            typeof(RSARBankNode),
+            typeof(RSARGroupNode),
+            typeof(RSARPlayerInfoNode),
+        };
 
         public int _listIndex;
 
@@ -27,7 +28,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is RSARNode))
+                while ((n = n.Parent) != null && !(n is RSARNode))
                 {
                     ;
                 }
@@ -45,7 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            len += pathLen + ((pathLen != 0) ? 1 : 0);
+            len += pathLen + (pathLen != 0 ? 1 : 0);
 
             sbyte* chars = stackalloc sbyte[len];
 
@@ -56,14 +57,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                     chars[i++] = *path++;
                 }
 
-                chars[i++] = (sbyte)'_';
+                chars[i++] = (sbyte) '_';
             }
 
             fixed (char* s = _name)
             {
                 for (int x = 0; i < len;)
                 {
-                    chars[i++] = (sbyte)s[x++];
+                    chars[i++] = (sbyte) s[x++];
                 }
             }
 
@@ -77,11 +78,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (n is RSARFolderNode)
                     {
-                        ((RSARFolderNode)n).GetStrings(chars, len, list, ref unusedFolders);
+                        ((RSARFolderNode) n).GetStrings(chars, len, list, ref unusedFolders);
                     }
                     else if (n is RSAREntryNode)
                     {
-                        ((RSAREntryNode)n).GetStrings(chars, len, list);
+                        ((RSAREntryNode) n).GetStrings(chars, len, list);
                     }
                 }
             }

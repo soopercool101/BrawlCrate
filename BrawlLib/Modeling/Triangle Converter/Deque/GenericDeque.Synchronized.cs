@@ -147,7 +147,7 @@ namespace System.Collections.Generic
             {
                 lock (root)
                 {
-                    return ((IEnumerable)deque).GetEnumerator();
+                    return ((IEnumerable) deque).GetEnumerator();
                 }
             }
 

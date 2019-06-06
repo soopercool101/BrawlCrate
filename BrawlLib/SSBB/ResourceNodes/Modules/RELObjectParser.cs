@@ -62,7 +62,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return null;
             }
 
-            string name = new string((sbyte*)(_objectSection.Header + relOffset));
+            string name = new string((sbyte*) (_objectSection.Header + relOffset));
 
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -76,14 +76,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (cmd != null)
             {
                 for (RelocationTarget r = cmd.GetTargetRelocation();
-                     r != null && (cmd = Manager.GetCommand(r._index)) != null;
-                     r._index += 2)
+                    r != null && (cmd = Manager.GetCommand(r._index)) != null;
+                    r._index += 2)
                 {
                     RelocationTarget inheritTarget = cmd.GetTargetRelocation();
                     RELType inheritance = ParseDeclaration(inheritTarget._index);
                     if (inheritance != null)
                     {
-                        InheritanceItemNode typeNode = new InheritanceItemNode(inheritance, Manager.GetUint(r._index + 1));
+                        InheritanceItemNode typeNode =
+                            new InheritanceItemNode(inheritance, Manager.GetUint(r._index + 1));
                         typeNode.Initialize(null, _objectSection.Header + r._index * 4, 0);
                         type.Inheritance.Add(typeNode);
                         inheritance.Inherited = true;
@@ -140,13 +141,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _parent = _objectSection
                 };
                 _objectSection._children.Add(obj);
-                new RELGroupNode() { _name = "Inheritance" }.Parent = obj;
+                new RELGroupNode() {_name = "Inheritance"}.Parent = obj;
                 foreach (InheritanceItemNode n in declaration.Inheritance)
                 {
                     n.Parent = obj.Children[0];
                 }
 
-                new RELGroupNode() { _name = "Functions" }.Parent = obj;
+                new RELGroupNode() {_name = "Functions"}.Parent = obj;
             }
 
             int baseRel = rel;
@@ -161,7 +162,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RelocationTarget t = cmd.GetTargetRelocation();
                 if (cmd.Apply(Manager.GetUint(rel), 0) != baseCmd.Apply(Manager.GetUint(baseRel), 0))
                 {
-
                     string methodName = string.Format("Function[{0}][{1}]", setIndex, methodIndex);
                     VoidPtr addr = null;
                     if (t != null && t._moduleID == (_objectSection.Root as ModuleNode).ID)
@@ -170,11 +170,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
 
                     new RELMethodNode()
-                    {
-                        _name = methodName,
-                        _cmd = cmd
-                    }
-                    .Initialize(obj.Children[1], addr, 0);
+                        {
+                            _name = methodName,
+                            _cmd = cmd
+                        }
+                        .Initialize(obj.Children[1], addr, 0);
 
                     methodIndex++;
                 }
@@ -188,6 +188,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     methodIndex = 0;
                     rel++;
                 }
+
                 rel++;
             }
 

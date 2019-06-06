@@ -31,7 +31,8 @@ namespace System.Windows.Forms
                 }
 
                 //Bone re-targeted. Get frame values and local point aligned to snapping plane.
-                if (GetTransformPoint(new Vector2(e.X, e.Y), out Vector3 point, panel.CurrentViewport, GetBoneWorldMtx(), _boneSelection))
+                if (GetTransformPoint(new Vector2(e.X, e.Y), out Vector3 point, panel.CurrentViewport,
+                    GetBoneWorldMtx(), _boneSelection))
                 {
                     _boneSelection.Update(ControlType, point, GetBoneInvWorldMtx() * point, SelectedBone.FrameState);
                     if (_boneSelection.IsMoving())
@@ -73,10 +74,12 @@ namespace System.Windows.Forms
                 }
 
                 //Vertex re-targeted. Get translation and point (aligned to snapping plane).
-                if (GetTransformPoint(new Vector2(e.X, e.Y), out Vector3 point, panel.CurrentViewport, VertexLoc.Value, _vertexSelection))
+                if (GetTransformPoint(new Vector2(e.X, e.Y), out Vector3 point, panel.CurrentViewport, VertexLoc.Value,
+                    _vertexSelection))
                 {
                     panel.CurrentViewport.AllowSelection = false;
-                    _vertexSelection.Update(ControlType, point, point * Matrix.TranslationMatrix(-VertexLoc.Value), Vector3.Zero, VertexLoc.Value, Vector3.One);
+                    _vertexSelection.Update(ControlType, point, point * Matrix.TranslationMatrix(-VertexLoc.Value),
+                        Vector3.Zero, VertexLoc.Value, Vector3.One);
                     if (_vertexSelection.IsMoving())
                     {
                         VertexChange(_selectedVertices);
@@ -120,7 +123,9 @@ namespace System.Windows.Forms
                             SelectVertex(_hiVertex, false);
                             verticesChanged = true;
                         }
-                        else { }
+                        else
+                        {
+                        }
                     }
                     else
                     {
@@ -265,7 +270,7 @@ namespace System.Windows.Forms
             {
                 Vector3 transform = new Vector3(), lPoint;
 
-                CoordinateType coord = _coordinateTypes[(int)ControlType];
+                CoordinateType coord = _coordinateTypes[(int) ControlType];
                 switch (ControlType)
                 {
                     case TransformType.Rotation:
@@ -359,11 +364,13 @@ namespace System.Windows.Forms
 
                         if (ControlType == TransformType.Scale)
                         {
-                            transform = ((localParentTransform * lPoint) / (localParentTransform * selection._lastPointLocal));
+                            transform = localParentTransform * lPoint /
+                                        (localParentTransform * selection._lastPointLocal);
                         }
                         else
                         {
-                            transform = localParentTransform * lPoint - localParentTransform * selection._lastPointLocal;
+                            transform = localParentTransform * lPoint -
+                                        localParentTransform * selection._lastPointLocal;
                         }
 
                         break;
@@ -374,15 +381,18 @@ namespace System.Windows.Forms
 
                 return transform;
             }
+
             return new Vector3();
         }
 
         public delegate void ApplyLocalBoneTransformFunc(int index, float offset);
+
         public ApplyLocalBoneTransformFunc[] _boneTransform;
 
         //Transforms are in order T, R, S
         //We have to edit the transform to before rotation has been applied for translation
         public bool _translateAfterRotation;
+
         public Matrix GetBoneInvWorldMtx()
         {
             if (SelectedBone == null)
@@ -401,6 +411,7 @@ namespace System.Windows.Forms
                 return SelectedBone.InverseMatrix;
             }
         }
+
         public Matrix GetBoneWorldMtx()
         {
             if (SelectedBone == null)
@@ -419,6 +430,7 @@ namespace System.Windows.Forms
                 return SelectedBone.Matrix;
             }
         }
+
         public Matrix GetBoneParentTransformMtx()
         {
             if (SelectedBone == null)
@@ -439,6 +451,7 @@ namespace System.Windows.Forms
         }
 
         private bool _createdNewBone = false;
+
         protected virtual unsafe void modelPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (_playing)
@@ -482,6 +495,7 @@ namespace System.Windows.Forms
                                     goto Top;
                                 }
                             }
+
                             newBone._entryIndex = model._linker.BoneCache.Length;
                         }
 
@@ -504,7 +518,7 @@ namespace System.Windows.Forms
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        _boneTransform[(int)ControlType](i, transform[i]);
+                        _boneTransform[(int) ControlType](i, transform[i]);
                     }
 
                     _boneSelection._lastPointLocal = GetBoneInvWorldMtx() * point.Value;
@@ -528,7 +542,8 @@ namespace System.Windows.Forms
                         case TransformType.Scale:
                             foreach (Vertex3 vertex in _selectedVertices)
                             {
-                                vertex.WeightedPosition = Maths.ScaleAboutPoint(vertex.WeightedPosition, center, transform);
+                                vertex.WeightedPosition =
+                                    Maths.ScaleAboutPoint(vertex.WeightedPosition, center, transform);
                             }
 
                             break;
@@ -536,7 +551,8 @@ namespace System.Windows.Forms
                         case TransformType.Rotation:
                             foreach (Vertex3 vertex in _selectedVertices)
                             {
-                                vertex.WeightedPosition = Maths.RotateAboutPoint(vertex.WeightedPosition, center, transform);
+                                vertex.WeightedPosition =
+                                    Maths.RotateAboutPoint(vertex.WeightedPosition, center, transform);
                             }
 
                             break;
@@ -563,18 +579,20 @@ namespace System.Windows.Forms
             //if not dragging a point AND (highlighting is allowed, or not but selecting)
             if (!_boneSelection.IsMoving() &&
                 !_vertexSelection.IsMoving() &&
-                (allowHighlight || (!allowHighlight && draggingSelection)))
+                (allowHighlight || !allowHighlight && draggingSelection))
             {
                 HighlightStuff(e, panel);
             }
         }
+
         #endregion
 
         #region Highlighting
 
         #region Targeting
 
-        private delegate void MouseMoveTargetType(ModelPanel panel, MouseEventArgs e, float depth, ModelPanelViewport v);
+        private delegate void
+            MouseMoveTargetType(ModelPanel panel, MouseEventArgs e, float depth, ModelPanelViewport v);
 
         private MouseMoveTargetType[] _mouseMoveTargetType;
 
@@ -594,15 +612,15 @@ namespace System.Windows.Forms
             }
 
             GetBone(panel, e, depth, v);
-
         }
+
         private void MouseMoveTargetVertex(
             ModelPanel panel,
             MouseEventArgs e,
             float depth,
             ModelPanelViewport v)
         {
-            if (VertexLoc.HasValue/* && v._renderAttrib._renderVertices*/)
+            if (VertexLoc.HasValue /* && v._renderAttrib._renderVertices*/)
             {
                 Vector3 center = VertexLoc.Value;
                 MouseMoveTarget(
@@ -629,7 +647,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            CoordinateType coord = _coordinateTypes[(int)ControlType];
+            CoordinateType coord = _coordinateTypes[(int) ControlType];
 
             //Get the location of the bone
             Vector3 center = transformMatrix.GetPoint();
@@ -646,7 +664,7 @@ namespace System.Windows.Forms
                 //Get the distance of the mouse point from the bone
                 float distance = point.TrueDistance(center);
 
-                if (Math.Abs(distance - radius) < (radius * _selectOrbScale)) //Point lies within orb radius
+                if (Math.Abs(distance - radius) < radius * _selectOrbScale) //Point lies within orb radius
                 {
                     selection._hiSphere = true;
 
@@ -660,16 +678,17 @@ namespace System.Windows.Forms
                     {
                         selection._hiX = true;
                     }
-                    else if (angles._x >= (180.0f - _axisSnapRange) || angles._x <= _axisSnapRange)
+                    else if (angles._x >= 180.0f - _axisSnapRange || angles._x <= _axisSnapRange)
                     {
                         selection._hiY = true;
                     }
-                    else if (angles._y >= (180.0f - _axisSnapRange) || angles._y <= _axisSnapRange)
+                    else if (angles._y >= 180.0f - _axisSnapRange || angles._y <= _axisSnapRange)
                     {
                         selection._hiZ = true;
                     }
                 }
-                else if (Math.Abs(distance - (radius * _circOrbScale)) < (radius * _selectOrbScale)) //Point lies on circ line
+                else if (Math.Abs(distance - radius * _circOrbScale) < radius * _selectOrbScale
+                ) //Point lies on circ line
                 {
                     selection._hiCirc = true;
                 }
@@ -683,7 +702,7 @@ namespace System.Windows.Forms
             {
                 //No more need to use depth!!! Just some nice math
 
-                if (_coordinateTypes[(int)ControlType] == CoordinateType.World)
+                if (_coordinateTypes[(int) ControlType] == CoordinateType.World)
                 {
                     transformMatrix = Matrix.TranslationMatrix(center) * Matrix.ScaleMatrix(transformMatrix.GetScale());
                 }
@@ -697,12 +716,12 @@ namespace System.Windows.Forms
                 {
                     Vector3 d =
                         coord == CoordinateType.World ? (planePoint - center) / radius :
-                        coord == CoordinateType.Local ? (invTransformMatrix * planePoint) / radius :
+                        coord == CoordinateType.Local ? invTransformMatrix * planePoint / radius :
                         (panel.Camera._matrix * planePoint - panel.Camera._matrix * center) / radius;
 
-                    if (d._x > -_axisSelectRange && d._x < (_axisLDist + 0.01f) &&
-                        d._y > -_axisSelectRange && d._y < (_axisLDist + 0.01f) &&
-                        d._z > -_axisSelectRange && d._z < (_axisLDist + 0.01f))
+                    if (d._x > -_axisSelectRange && d._x < _axisLDist + 0.01f &&
+                        d._y > -_axisSelectRange && d._y < _axisLDist + 0.01f &&
+                        d._z > -_axisSelectRange && d._z < _axisLDist + 0.01f)
                     {
                         testDiffs.Add(d);
                     }
@@ -779,9 +798,11 @@ namespace System.Windows.Forms
                             //Determine if the point is in the double or triple drag triangles
                             float halfDist = _scaleHalf2LDist;
                             float centerDist = _scaleHalf1LDist;
-                            if (diff.IsInTriangle(new Vector3(), new Vector3(halfDist, 0, 0), new Vector3(0, halfDist, 0)))
+                            if (diff.IsInTriangle(new Vector3(), new Vector3(halfDist, 0, 0),
+                                new Vector3(0, halfDist, 0)))
                             {
-                                if (diff.IsInTriangle(new Vector3(), new Vector3(centerDist, 0, 0), new Vector3(0, centerDist, 0)))
+                                if (diff.IsInTriangle(new Vector3(), new Vector3(centerDist, 0, 0),
+                                    new Vector3(0, centerDist, 0)))
                                 {
                                     selection._hiX = selection._hiY = selection._hiZ = true;
                                 }
@@ -790,9 +811,11 @@ namespace System.Windows.Forms
                                     selection._hiX = selection._hiY = true;
                                 }
                             }
-                            else if (diff.IsInTriangle(new Vector3(), new Vector3(halfDist, 0, 0), new Vector3(0, 0, halfDist)))
+                            else if (diff.IsInTriangle(new Vector3(), new Vector3(halfDist, 0, 0),
+                                new Vector3(0, 0, halfDist)))
                             {
-                                if (diff.IsInTriangle(new Vector3(), new Vector3(centerDist, 0, 0), new Vector3(0, 0, centerDist)))
+                                if (diff.IsInTriangle(new Vector3(), new Vector3(centerDist, 0, 0),
+                                    new Vector3(0, 0, centerDist)))
                                 {
                                     selection._hiX = selection._hiY = selection._hiZ = true;
                                 }
@@ -801,9 +824,11 @@ namespace System.Windows.Forms
                                     selection._hiX = selection._hiZ = true;
                                 }
                             }
-                            else if (diff.IsInTriangle(new Vector3(), new Vector3(0, halfDist, 0), new Vector3(0, 0, halfDist)))
+                            else if (diff.IsInTriangle(new Vector3(), new Vector3(0, halfDist, 0),
+                                new Vector3(0, 0, halfDist)))
                             {
-                                if (diff.IsInTriangle(new Vector3(), new Vector3(0, centerDist, 0), new Vector3(0, 0, centerDist)))
+                                if (diff.IsInTriangle(new Vector3(), new Vector3(0, centerDist, 0),
+                                    new Vector3(0, 0, centerDist)))
                                 {
                                     selection._hiX = selection._hiY = selection._hiZ = true;
                                 }
@@ -832,6 +857,7 @@ namespace System.Windows.Forms
         }
 
         #region Get Highlighted Point
+
         private void GetBone(ModelPanel panel, MouseEventArgs e, float depth, ModelPanelViewport v)
         {
             if (!_boneSelection.IsMoving() && depth < 1.0f)
@@ -891,9 +917,11 @@ namespace System.Windows.Forms
                     _hiBone.NodeColor = Color.Transparent;
                     panel.Invalidate();
                 }
+
                 _hiBone = null;
             }
         }
+
         private void GetVertex(ModelPanel panel, MouseEventArgs e, float depth, ModelPanelViewport v)
         {
             //Try targeting a vertex
@@ -978,6 +1006,7 @@ namespace System.Windows.Forms
                             }
                         }
                     }
+
                     if (selected)
                     {
                         OnSelectedVerticesChanged();
@@ -996,6 +1025,7 @@ namespace System.Windows.Forms
                             _hiVertex._highlightColor = Color.Transparent;
                             ModelPanel.CurrentViewport.AllowSelection = true;
                         }
+
                         if ((_hiVertex = vertex) != null)
                         {
                             update = true;
@@ -1003,6 +1033,7 @@ namespace System.Windows.Forms
                             panel.Cursor = Cursors.Cross;
                             ModelPanel.CurrentViewport.AllowSelection = false;
                         }
+
                         if (update)
                         {
                             panel.Invalidate();
@@ -1016,17 +1047,20 @@ namespace System.Windows.Forms
                             ModelPanel.CurrentViewport.AllowSelection = true;
                             panel.Invalidate();
                         }
+
                         _hiVertex = null;
                     }
                 }
             }
         }
+
         #endregion
 
         #endregion
 
         public IBoneNode _hiBone = null;
         public Vertex3 _hiVertex = null;
+
         public void HighlightStuff(MouseEventArgs e, ModelPanel panel)
         {
             panel.Capture();
@@ -1050,6 +1084,7 @@ namespace System.Windows.Forms
             }
 #endif
         }
+
         /// <summary>
         /// Does not call OnSelectedVerticesChanged()!
         /// </summary>
@@ -1061,7 +1096,7 @@ namespace System.Windows.Forms
                 //Then check to see if the 2D coordinates lie within the selection box.
                 //In Soviet Russia, vertices come to YOUUUUU
                 Vector3 screenTemp = panel.CurrentViewport.Camera.Project(v.WeightedPosition);
-                Vector2 screenPos = (Vector2)screenTemp;
+                Vector2 screenPos = (Vector2) screenTemp;
 
                 //This is the absolute depth value, regardless of obstructions
                 float vertexDepth = screenTemp._z;
@@ -1087,6 +1122,7 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public void ResetBoneColors()
         {
             if (_targetModels != null)
@@ -1118,6 +1154,7 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public void ClearSelectedVertices()
         {
             if (_targetModels != null)
@@ -1140,6 +1177,7 @@ namespace System.Windows.Forms
             _selectedVertices = new List<Vertex3>();
             OnSelectedVerticesChanged();
         }
+
         public void SelectAllVertices(IModel mdl)
         {
             if (mdl.SelectedObjectIndex >= 0 && mdl.SelectedObjectIndex < mdl.Objects.Length)
@@ -1169,6 +1207,7 @@ namespace System.Windows.Forms
 
             OnSelectedVerticesChanged();
         }
+
         public void SetSelectedVertices(List<Vertex3> list)
         {
             ClearSelectedVertices();

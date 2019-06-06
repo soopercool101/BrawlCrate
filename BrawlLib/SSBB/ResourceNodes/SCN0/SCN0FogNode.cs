@@ -10,11 +10,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0FogNode : SCN0EntryNode, IColorSource, IKeyframeSource
     {
-        internal SCN0Fog* Data => (SCN0Fog*)WorkingUncompressed.Address;
+        internal SCN0Fog* Data => (SCN0Fog*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SCN0Fog;
 
         private FogType _type = FogType.PerspectiveLinear;
-        public SCN0FogFlags _flags = (SCN0FogFlags)0xE0;
+        public SCN0FogFlags _flags = (SCN0FogFlags) 0xE0;
         public bool _constantColor = true;
         public KeyframeCollection _keyframes;
         internal List<RGBAPixel> _colors = new List<RGBAPixel>();
@@ -22,16 +22,39 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region IColorSource Members
 
-        public bool HasPrimary(int id) { return false; }
-        public ARGBPixel GetPrimaryColor(int id) { return new ARGBPixel(); }
-        public void SetPrimaryColor(int id, ARGBPixel color) { }
+        public bool HasPrimary(int id)
+        {
+            return false;
+        }
+
+        public ARGBPixel GetPrimaryColor(int id)
+        {
+            return new ARGBPixel();
+        }
+
+        public void SetPrimaryColor(int id, ARGBPixel color)
+        {
+        }
+
         [Browsable(false)]
-        public string PrimaryColorName(int id) { return null; }
+        public string PrimaryColorName(int id)
+        {
+            return null;
+        }
+
+        [Browsable(false)] public int TypeCount => 1;
+
         [Browsable(false)]
-        public int TypeCount => 1;
-        [Browsable(false)]
-        public int ColorCount(int id) { return (_numEntries == 0) ? 1 : _numEntries; }
-        public ARGBPixel GetColor(int index, int id) { return (_numEntries != 0 && index < _colors.Count) ? (ARGBPixel)_colors[index] : (ARGBPixel)_solidColor; }
+        public int ColorCount(int id)
+        {
+            return _numEntries == 0 ? 1 : _numEntries;
+        }
+
+        public ARGBPixel GetColor(int index, int id)
+        {
+            return _numEntries != 0 && index < _colors.Count ? (ARGBPixel) _colors[index] : (ARGBPixel) _solidColor;
+        }
+
         public void SetColor(int index, int id, ARGBPixel color)
         {
             if (_numEntries == 0)
@@ -45,10 +68,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             SignalPropertyChange();
         }
+
         public bool GetColorConstant(int id)
         {
             return ConstantColor;
         }
+
         public void SetColorConstant(int id, bool constant)
         {
             ConstantColor = constant;
@@ -78,11 +103,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-        [Category("Fog")]
-        public FogType Type { get => _type; set { _type = value; SignalPropertyChange(); } }
 
-        [Browsable(false)]
-        public int FrameCount => Keyframes.FrameLimit;
+        [Category("Fog")]
+        public FogType Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                SignalPropertyChange();
+            }
+        }
+
+        [Browsable(false)] public int FrameCount => Keyframes.FrameLimit;
 
         [Browsable(false)]
         public KeyframeCollection Keyframes
@@ -99,25 +132,42 @@ namespace BrawlLib.SSBB.ResourceNodes
                             DecodeKeyframes(
                                 KeyArrays[i],
                                 Data->_start.Address + i * 4,
-                                (int)_flags,
-                                (int)SCN0FogFlags.FixedStart + i * 0x20);
+                                (int) _flags,
+                                (int) SCN0FogFlags.FixedStart + i * 0x20);
                         }
                     }
                 }
+
                 return _keyframes;
             }
         }
 
-        [Browsable(false)]
-        public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
+        [Browsable(false)] public KeyframeArray[] KeyArrays => Keyframes._keyArrays;
 
         [Browsable(false)]
-        public List<RGBAPixel> Colors { get => _colors; set { _colors = value; SignalPropertyChange(); } }
+        public List<RGBAPixel> Colors
+        {
+            get => _colors;
+            set
+            {
+                _colors = value;
+                SignalPropertyChange();
+            }
+        }
 
         [Browsable(false)]
-        public RGBAPixel SolidColor { get => _solidColor; set { _solidColor = value; SignalPropertyChange(); } }
+        public RGBAPixel SolidColor
+        {
+            get => _solidColor;
+            set
+            {
+                _solidColor = value;
+                SignalPropertyChange();
+            }
+        }
 
         internal int _numEntries;
+
         [Browsable(false)]
         internal int NumEntries
         {
@@ -151,6 +201,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _solidColor = color;
             SignalPropertyChange();
         }
+
         public void MakeList()
         {
             _constantColor = false;
@@ -168,8 +219,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _colors = new List<RGBAPixel>();
 
             //Read header values
-            _flags = (SCN0FogFlags)Data->_flags;
-            _type = (FogType)(int)Data->_type;
+            _flags = (SCN0FogFlags) Data->_flags;
+            _type = (FogType) (int) Data->_type;
 
             //Don't bother reading data if the entry is null
             if (_name == "<null>")
@@ -179,8 +230,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Read fog color
             ReadColors(
-                (uint)_flags,
-                (uint)SCN0FogFlags.FixedColor,
+                (uint) _flags,
+                (uint) SCN0FogFlags.FixedColor,
                 ref _solidColor,
                 ref _colors,
                 FrameCount,
@@ -192,6 +243,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         private SCN0FogNode _match;
+
         public override int OnCalculateSize(bool force)
         {
             //If a previous fog node has the same exact color array as this one,
@@ -226,6 +278,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         private VoidPtr _matchAddr;
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             base.OnRebuild(address, length, force);
@@ -237,7 +290,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            SCN0Fog* header = (SCN0Fog*)address;
+            SCN0Fog* header = (SCN0Fog*) address;
 
             int flags = 0;
 
@@ -248,12 +301,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _dataAddrs[0],
                     header->_start.Address + i * 4,
                     ref flags,
-                    (int)SCN0FogFlags.FixedStart + i * 0x20);
+                    (int) SCN0FogFlags.FixedStart + i * 0x20);
             }
 
             _dataAddrs[1] += WriteColors(
                 ref flags,
-                (int)SCN0FogFlags.FixedColor,
+                (int) SCN0FogFlags.FixedColor,
                 _solidColor,
                 _colors,
                 _constantColor,
@@ -261,11 +314,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 header->_color.Address,
                 ref _matchAddr,
                 _match == null ? null : _match._matchAddr,
-                (RGBAPixel*)_dataAddrs[1]);
+                (RGBAPixel*) _dataAddrs[1]);
 
-            _flags = (SCN0FogFlags)flags;
-            header->_flags = (byte)flags;
-            header->_type = (int)_type;
+            _flags = (SCN0FogFlags) flags;
+            header->_flags = (byte) flags;
+            header->_type = (int) _type;
         }
 
         protected internal override void PostProcess(VoidPtr scn0Address, VoidPtr dataAddress, StringTable stringTable)
@@ -274,15 +327,16 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public static bool _generateTangents = true;
+
         public FogAnimationFrame GetAnimFrame(float index)
         {
             FogAnimationFrame frame;
-            float* dPtr = (float*)&frame;
+            float* dPtr = (float*) &frame;
             for (int x = 0; x < 2; x++)
             {
                 KeyframeArray a = KeyArrays[x];
                 *dPtr++ = a.GetFrameValue(index);
-                frame.SetBools(x, a.GetKeyframe((int)index) != null);
+                frame.SetBools(x, a.GetKeyframe((int) index) != null);
                 frame.Index = index;
             }
 
@@ -293,7 +347,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                int colorIndex = (int)Math.Truncate(index);
+                int colorIndex = (int) Math.Truncate(index);
                 Vector3 color = _colors[colorIndex];
                 if (colorIndex + 1 < _colors.Count)
                 {
@@ -301,15 +355,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                     Vector3 interp = _colors[colorIndex + 1];
                     color += (interp - color) * frac;
                 }
+
                 frame.Color = color;
             }
+
             frame.Type = Type;
             return frame;
         }
+
         public KeyframeEntry GetKeyframe(int keyFrameMode, int index)
         {
             return KeyArrays[keyFrameMode].GetKeyframe(index);
         }
+
         public void RemoveKeyframe(int keyFrameMode, int index)
         {
             KeyframeEntry k = KeyArrays[keyFrameMode].Remove(index);
@@ -320,6 +378,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
+
         public void SetKeyframe(int keyFrameMode, int index, float value)
         {
             KeyframeArray keys = KeyArrays[keyFrameMode];

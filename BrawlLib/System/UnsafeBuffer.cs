@@ -8,10 +8,23 @@ namespace System
         public VoidPtr Address => _data;
 
         private int _length;
-        public int Length { get => _length; set => _length = value; }
 
-        public UnsafeBuffer(int size) { _data = Marshal.AllocHGlobal(size); _length = size; }
-        ~UnsafeBuffer() { Dispose(); }
+        public int Length
+        {
+            get => _length;
+            set => _length = value;
+        }
+
+        public UnsafeBuffer(int size)
+        {
+            _data = Marshal.AllocHGlobal(size);
+            _length = size;
+        }
+
+        ~UnsafeBuffer()
+        {
+            Dispose();
+        }
 
         public VoidPtr this[int count, int stride] => _data[count, stride];
 
@@ -26,7 +39,10 @@ namespace System
                     GC.SuppressFinalize(this);
                 }
             }
-            catch (Exception e) { Console.WriteLine(e.ToString()); }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
     }
 }

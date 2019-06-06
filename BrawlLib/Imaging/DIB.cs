@@ -42,6 +42,7 @@ namespace BrawlLib.Imaging
             _stride = (width * Image.GetPixelFormatSize(format)).Align(32) / 8;
             _scan0 = Marshal.AllocHGlobal(_stride * _height);
         }
+
         public DIB(int width, int height, int wAlign, int hAlign, PixelFormat format)
         {
             _width = width;
@@ -53,13 +54,18 @@ namespace BrawlLib.Imaging
         }
 
 
-        public static DIB FromBitmap(Bitmap src) { return FromBitmap(src, src.PixelFormat); }
+        public static DIB FromBitmap(Bitmap src)
+        {
+            return FromBitmap(src, src.PixelFormat);
+        }
+
         public static DIB FromBitmap(Bitmap src, PixelFormat format)
         {
             DIB dib = new DIB(src.Width, src.Height, format);
             dib.ReadBitmap(src);
             return dib;
         }
+
         public static DIB FromBitmap(Bitmap src, int wAlign, int hAlign, PixelFormat format)
         {
             DIB dib = new DIB(src.Width, src.Height, wAlign, hAlign, format);
@@ -71,7 +77,11 @@ namespace BrawlLib.Imaging
         {
         }
 
-        ~DIB() { Dispose(); }
+        ~DIB()
+        {
+            Dispose();
+        }
+
         public void Dispose()
         {
             if (_scan0 != IntPtr.Zero)
@@ -107,7 +117,11 @@ namespace BrawlLib.Imaging
         //}
 
 
-        internal Bitmap ToBitmap() { return ToBitmap(_width, _height); }
+        internal Bitmap ToBitmap()
+        {
+            return ToBitmap(_width, _height);
+        }
+
         internal Bitmap ToBitmap(int w, int h)
         {
             Bitmap bmp = new Bitmap(w, h, _format);
@@ -115,8 +129,16 @@ namespace BrawlLib.Imaging
             return bmp;
         }
 
-        internal void ReadBitmap(Bitmap src) { ReadBitmap(src, 0, 0, _width, _height); }
-        internal void ReadBitmap(Bitmap src, int w, int h) { ReadBitmap(src, 0, 0, w, h); }
+        internal void ReadBitmap(Bitmap src)
+        {
+            ReadBitmap(src, 0, 0, _width, _height);
+        }
+
+        internal void ReadBitmap(Bitmap src, int w, int h)
+        {
+            ReadBitmap(src, 0, 0, w, h);
+        }
+
         internal void ReadBitmap(Bitmap src, int x, int y, int width, int height)
         {
             BitmapData data = src.LockBits(new Rectangle(x, y, width, height), ImageLockMode.ReadOnly, _format);
@@ -125,15 +147,20 @@ namespace BrawlLib.Imaging
             int xStart = (x * Image.GetPixelFormatSize(_format)).Align(8) / 8;
             for (int y2 = 0; y2 < height; y2++)
             {
-                VoidPtr dPtr = (int)_scan0 + (_stride * (y + y2) + xStart);
-                VoidPtr sPtr = (int)data.Scan0 + (data.Stride * (y + y2) + xStart);
-                Memory.Move(dPtr, sPtr, (uint)sStride);
+                VoidPtr dPtr = (int) _scan0 + _stride * (y + y2) + xStart;
+                VoidPtr sPtr = (int) data.Scan0 + data.Stride * (y + y2) + xStart;
+                Memory.Move(dPtr, sPtr, (uint) sStride);
             }
+
             src.UnlockBits(data);
             //src.UnlockBits(src.LockBits(new Rectangle(x, y, width, height), ImageLockMode.UserInputBuffer | ImageLockMode.ReadOnly, _format, BitmapData));
         }
 
-        internal void WriteBitmap(Bitmap dst, int width, int height) { WriteBitmap(dst, 0, 0, width, height); }
+        internal void WriteBitmap(Bitmap dst, int width, int height)
+        {
+            WriteBitmap(dst, 0, 0, width, height);
+        }
+
         internal void WriteBitmap(Bitmap dst, int x, int y, int width, int height)
         {
             BitmapData data = dst.LockBits(new Rectangle(x, y, width, height), ImageLockMode.WriteOnly, _format);
@@ -142,10 +169,11 @@ namespace BrawlLib.Imaging
             int xStart = (x * Image.GetPixelFormatSize(_format)).Align(8) / 8;
             for (int y2 = 0; y2 < height; y2++)
             {
-                VoidPtr sPtr = (int)_scan0 + (_stride * (y + y2) + xStart);
-                VoidPtr dPtr = (int)data.Scan0 + (data.Stride * (y + y2) + xStart);
-                Memory.Move(dPtr, sPtr, (uint)sStride);
+                VoidPtr sPtr = (int) _scan0 + _stride * (y + y2) + xStart;
+                VoidPtr dPtr = (int) data.Scan0 + data.Stride * (y + y2) + xStart;
+                Memory.Move(dPtr, sPtr, (uint) sStride);
             }
+
             dst.UnlockBits(data);
             //dst.UnlockBits(dst.LockBits(new Rectangle(x, y, width, height), ImageLockMode.UserInputBuffer | ImageLockMode.WriteOnly, _format, BitmapData));
         }
@@ -155,12 +183,12 @@ namespace BrawlLib.Imaging
             int bpp = Image.GetPixelFormatSize(_format);
             int linelen = (width * bpp) >> 3;
 
-            VoidPtr src = ((x * bpp) >> 3) + (y * _stride);
+            VoidPtr src = ((x * bpp) >> 3) + y * _stride;
 
 
             for (int i = 0; i < height; i++, dest += linelen, src += _stride)
             {
-                Memory.Move(dest, src, (uint)linelen);
+                Memory.Move(dest, src, (uint) linelen);
             }
         }
     }

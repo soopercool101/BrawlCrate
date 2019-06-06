@@ -19,6 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //#endif
 
         private static readonly List<ResourceParser> _parsers = new List<ResourceParser>();
+
         static NodeFactory()
         {
             Delegate del;
@@ -47,14 +48,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private static readonly Dictionary<string, Type> Forced = new Dictionary<string, Type>()
         {
-            { "MRG", typeof(MRGNode) },
-            { "MRGC", typeof(MRGNode) }, //Compressed MRG
-            { "DOL", typeof(DOLNode) },
-            { "REL", typeof(RELNode) },
+            {"MRG", typeof(MRGNode)},
+            {"MRGC", typeof(MRGNode)}, //Compressed MRG
+            {"DOL", typeof(DOLNode)},
+            {"REL", typeof(RELNode)},
         };
 
         //Parser commands must initialize the node before returning.
-        public static unsafe ResourceNode FromFile(ResourceNode parent, string path, FileOptions options = FileOptions.RandomAccess)
+        public static unsafe ResourceNode FromFile(ResourceNode parent, string path,
+                                                   FileOptions options = FileOptions.RandomAccess)
         {
             ResourceNode node = null;
             FileMap map = FileMap.FromFile(path, FileMapProtect.Read, 0, 0, options);
@@ -77,6 +79,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.Initialize(parent, source);
                         }
                     }
+
                     //else if (UseRawDataNode)
                     //{
                     //    (node = new RawDataNode(Path.GetFileNameWithoutExtension(path))).Initialize(parent, source);
@@ -90,12 +93,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                     map.Dispose();
                 }
             }
+
             return node;
         }
+
         public static ResourceNode FromAddress(ResourceNode parent, VoidPtr address, int length)
         {
             return FromSource(parent, new DataSource(address, length));
         }
+
         public static unsafe ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
             ResourceNode n = null;
@@ -112,8 +118,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     n.Initialize(parent, source, d);
                 }
             }
+
             return n;
         }
+
         public static ResourceNode GetRaw(VoidPtr address, int length)
         {
             return GetRaw(new DataSource(address, length));

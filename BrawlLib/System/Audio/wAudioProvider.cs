@@ -12,9 +12,10 @@ namespace System.Audio
         {
             _device = device ?? wAudioDevice.DefaultPlaybackDevice;
 
-            Guid guid = ((wAudioDevice)_device)._guid;
+            Guid guid = ((wAudioDevice) _device)._guid;
             DS.DirectSoundCreate8(&guid, out _ds8, IntPtr.Zero);
         }
+
         public override void Dispose()
         {
             base.Dispose();
@@ -36,10 +37,11 @@ namespace System.Audio
 
             WaveFormatEx fmt = new WaveFormatEx(target.Format, target.Channels, target.Frequency, target.BitsPerSample);
 
-            DS.DSBufferCapsFlags flags = DS.DSBufferCapsFlags.CtrlVolume | DS.DSBufferCapsFlags.LocDefer | DS.DSBufferCapsFlags.GlobalFocus | DS.DSBufferCapsFlags.GetCurrentPosition2;
-            DS.DSBufferDesc desc = new DS.DSBufferDesc((uint)size, flags, &fmt, Guid.Empty);
+            DS.DSBufferCapsFlags flags = DS.DSBufferCapsFlags.CtrlVolume | DS.DSBufferCapsFlags.LocDefer |
+                                         DS.DSBufferCapsFlags.GlobalFocus | DS.DSBufferCapsFlags.GetCurrentPosition2;
+            DS.DSBufferDesc desc = new DS.DSBufferDesc((uint) size, flags, &fmt, Guid.Empty);
 
-            return new wAudioBuffer(this, ref desc) { _source = target, _owner = this };
+            return new wAudioBuffer(this, ref desc) {_source = target, _owner = this};
         }
 
         public override string ToString()

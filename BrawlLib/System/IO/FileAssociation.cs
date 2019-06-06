@@ -14,9 +14,10 @@ namespace System.IO
                 case PlatformID.Win32NT:
                     return new wFileAssociation(extension);
 
-                    //case PlatformID.Unix:
-                    //    return new lFileAssociation(extension);
+                //case PlatformID.Unix:
+                //    return new lFileAssociation(extension);
             }
+
             return null;
         }
 
@@ -36,9 +37,10 @@ namespace System.IO
                 case PlatformID.Win32NT:
                     return new wFileType(name);
 
-                    //case PlatformID.Unix:
-                    //    return new lFileType(name);
+                //case PlatformID.Unix:
+                //    return new lFileType(name);
             }
+
             return null;
         }
 
@@ -51,20 +53,28 @@ namespace System.IO
 
         public static bool operator ==(FileType t1, FileType t2)
         {
-            return object.Equals(t1, t2);
+            return Equals(t1, t2);
         }
-        public static bool operator !=(FileType t1, FileType t2) { return !(t1 == t2); }
+
+        public static bool operator !=(FileType t1, FileType t2)
+        {
+            return !(t1 == t2);
+        }
 
         public override bool Equals(object obj)
         {
             if (obj is FileType)
             {
-                return _name.Equals(((FileType)obj)._name, StringComparison.OrdinalIgnoreCase);
+                return _name.Equals(((FileType) obj)._name, StringComparison.OrdinalIgnoreCase);
             }
 
             return base.Equals(obj);
         }
-        public override int GetHashCode() { return base.GetHashCode(); }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 
     internal class wFileAssociation : FileAssociation
@@ -85,7 +95,7 @@ namespace System.IO
             }
             set
             {
-                if ((value == null) || string.IsNullOrEmpty(value.Name))
+                if (value == null || string.IsNullOrEmpty(value.Name))
                 {
                     Delete();
                 }
@@ -106,11 +116,17 @@ namespace System.IO
         {
             if (!string.IsNullOrEmpty(_extension))
             {
-                try { Registry.ClassesRoot.DeleteSubKeyTree(_extension); }
-                catch (Exception) { }
+                try
+                {
+                    Registry.ClassesRoot.DeleteSubKeyTree(_extension);
+                }
+                catch (Exception)
+                {
+                }
             }
         }
     }
+
     internal class wFileType : FileType
     {
         private readonly string _regPath;
@@ -122,8 +138,13 @@ namespace System.IO
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    try { Registry.ClassesRoot.DeleteSubKeyTree(_name + "\\DefaultIcon"); }
-                    catch (Exception) { }
+                    try
+                    {
+                        Registry.ClassesRoot.DeleteSubKeyTree(_name + "\\DefaultIcon");
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
                 else
                 {
@@ -147,8 +168,13 @@ namespace System.IO
         {
             if (string.IsNullOrEmpty(command))
             {
-                try { Registry.ClassesRoot.DeleteSubKeyTree(string.Format("{0}\\shell\\{1}", _regPath, verb)); }
-                catch (Exception) { }
+                try
+                {
+                    Registry.ClassesRoot.DeleteSubKeyTree(string.Format("{0}\\shell\\{1}", _regPath, verb));
+                }
+                catch (Exception)
+                {
+                }
             }
             else
             {
@@ -156,7 +182,16 @@ namespace System.IO
             }
         }
 
-        public override void Delete() { try { Registry.ClassesRoot.DeleteSubKeyTree(_name); } catch (Exception) { } }
+        public override void Delete()
+        {
+            try
+            {
+                Registry.ClassesRoot.DeleteSubKeyTree(_name);
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 
     //internal class lFileAssociation : FileAssociation

@@ -2,6 +2,7 @@
 //  Simple application containing most functions for interfacing  \\
 //      with Github API, including Updater and BugSquish.         \\
 //================================================================\\
+
 using Octokit;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Net
                 string temp = File.ReadAllLines(AppPath + "\\Canary\\Branch")[1];
                 if (temp == null || temp == "")
                 {
-                    throw (new ArgumentNullException());
+                    throw new ArgumentNullException();
                 }
 
                 return temp;
@@ -48,7 +49,7 @@ namespace Net
                 string temp = File.ReadAllLines(AppPath + "\\Canary\\Branch")[0];
                 if (temp == null || temp == "")
                 {
-                    throw (new ArgumentNullException());
+                    throw new ArgumentNullException();
                 }
 
                 return temp;
@@ -68,12 +69,18 @@ namespace Net
 
         public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = new Credentials(System.Text.Encoding.Default.GetString(_rawData)) };
+        private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
+            {Credentials = new Credentials(System.Text.Encoding.Default.GetString(_rawData))};
 
-        public static async Task CheckUpdate() { await CheckUpdate(true); }
+        public static async Task CheckUpdate()
+        {
+            await CheckUpdate(true);
+        }
 
         // Used to check for and download non-canary releases (including documentation updates)
-        public static async Task CheckUpdate(bool Overwrite, string releaseTag = "", bool manual = false, string openFile = null, bool checkDocumentation = false, bool Automatic = false)
+        public static async Task CheckUpdate(bool Overwrite, string releaseTag = "", bool manual = false,
+                                             string openFile = null, bool checkDocumentation = false,
+                                             bool Automatic = false)
         {
             // If canary is active, disable it
             if (File.Exists(AppPath + "\\Canary\\Active"))
@@ -101,6 +108,7 @@ namespace Net
                             {
                                 MessageBox.Show("Unable to connect to GitHub. The website may be down.");
                             }
+
                             return;
                         }
                     }
@@ -120,6 +128,7 @@ namespace Net
                 {
                     goto UpdateDL;
                 }
+
                 // Remove all pre-release versions from the list (Prerelease versions are exclusively documentation updates)
                 releases = AllReleases.Where(r => !r.Prerelease).ToList();
                 if (releases[0].TagName != releaseTag)
@@ -139,7 +148,8 @@ namespace Net
                     catch (Exception e)
                     {
                         Console.WriteLine(e.Message);
-                        MessageBox.Show("ERROR: Documentation Version could not be found. Downloading the latest documentation release.");
+                        MessageBox.Show(
+                            "ERROR: Documentation Version could not be found. Downloading the latest documentation release.");
                         await ForceDownloadDocumentation();
                         try
                         {
@@ -150,9 +160,12 @@ namespace Net
                         catch (Exception e2)
                         {
                             Console.WriteLine(e2.Message);
-                            MessageBox.Show("ERROR: Documentation Version still could not be found. Please report this on Discord or Github.\n" + e2.Message);
+                            MessageBox.Show(
+                                "ERROR: Documentation Version still could not be found. Please report this on Discord or Github.\n" +
+                                e2.Message);
                         }
                     }
+
                     // Don't need to check for update unless the latest release is a prerelease (documentation is included in full releases)
                     if (AllReleases[0].Prerelease)
                     {
@@ -183,8 +196,10 @@ namespace Net
                     {
                         MessageBox.Show("No updates found.");
                     }
+
                     return;
                 }
+
                 // Show warnings as applicable to those using the automatic updater
                 if (Automatic)
                 {
@@ -192,7 +207,10 @@ namespace Net
                     {
                         if (release.Body.StartsWith("WARNING: "))
                         {
-                            DialogResult dr = MessageBox.Show(release.Body.Substring(0, release.Body.IndexOf("\n") - 1) + "\n\nWould you like to continue updating?", "Automatic Update Warning", MessageBoxButtons.YesNo);
+                            DialogResult dr = MessageBox.Show(
+                                release.Body.Substring(0, release.Body.IndexOf("\n") - 1) +
+                                "\n\nWould you like to continue updating?", "Automatic Update Warning",
+                                MessageBoxButtons.YesNo);
                             if (dr != DialogResult.Yes)
                             {
                                 return;
@@ -200,21 +218,32 @@ namespace Net
                         }
                         else
                         {
-                            DialogResult dr = MessageBox.Show(release.Body.Substring(release.Body.IndexOf("WARNING: ")) + "\n\nWould you like to continue updating?", "Automatic Update Warning", MessageBoxButtons.YesNo);
+                            DialogResult dr = MessageBox.Show(
+                                release.Body.Substring(release.Body.IndexOf("WARNING: ")) +
+                                "\n\nWould you like to continue updating?", "Automatic Update Warning",
+                                MessageBoxButtons.YesNo);
                             if (dr != DialogResult.Yes)
                             {
                                 return;
                             }
                         }
                     }
-                    if ((GetOpenWindowsCount() > 1) && MessageBox.Show("Update to " + release.Name + " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!", "Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
+
+                    if (GetOpenWindowsCount() > 1 &&
+                        MessageBox.Show(
+                            "Update to " + release.Name +
+                            " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!",
+                            "Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         return;
                     }
                 }
                 else // Allow the user to choose whether or not to download a release if not using the automatic updater
                 {
-                    if (MessageBox.Show(release.Name + " is available!\n\nThis release:\n\n" + release.Body + "\n\nUpdate now?" + (manual ? "\n\nThe program will be closed, and changes will not be saved!" : ""), "Update", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    if (MessageBox.Show(
+                            release.Name + " is available!\n\nThis release:\n\n" + release.Body + "\n\nUpdate now?" +
+                            (manual ? "\n\nThe program will be closed, and changes will not be saved!" : ""), "Update",
+                            MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         return;
                     }
@@ -242,9 +271,13 @@ namespace Net
         {
             try
             {
-                char[] slashes = { '\\', '/' };
+                char[] slashes = {'\\', '/'};
                 string[] repoData = currentRepo.Split(slashes);
-                Release release = await github.Repository.Release.Get(repoData[0], repoData[1], "Canary" + (currentBranch.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) ? "" : "-" + currentBranch));
+                Release release = await github.Repository.Release.Get(repoData[0], repoData[1],
+                    "Canary" + (currentBranch.Equals(mainBranch,
+                        StringComparison.OrdinalIgnoreCase)
+                        ? ""
+                        : "-" + currentBranch));
                 if (!force)
                 {
                     string oldID = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
@@ -255,32 +288,42 @@ namespace Net
                         {
                             MessageBox.Show("No updates found.");
                         }
+
                         return;
                     }
                 }
+
                 if (release == null || release.Assets.Count == 0)
                 {
                     throw new Exception();
                 }
-                if ((manual || GetOpenWindowsCount() > 1) && MessageBox.Show("Update to #" + release.TargetCommitish + " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!", "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
+
+                if ((manual || GetOpenWindowsCount() > 1) && MessageBox.Show(
+                        "Update to #" + release.TargetCommitish +
+                        " was found. Would you like to download now?\n\nAll current windows will be closed and changes will be lost!",
+                        "Canary Updater", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     return;
                 }
+
                 if (!File.Exists(AppPath + "\\Canary\\Old") && File.Exists(AppPath + "\\Canary\\New"))
                 {
                     File.Move(AppPath + "\\Canary\\New", AppPath + "\\Canary\\Old");
                 }
+
                 await DownloadRelease(release, true, true, manual, false, openFile);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                MessageBox.Show("ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
+                MessageBox.Show(
+                    "ERROR: Current Canary version could not be found. Canary has been disabled. The latest stable build will be downloaded instead.");
                 await ForceDownloadStable(openFile);
             }
         }
 
-        public static async Task DownloadRelease(Release release, bool Overwrite, bool Automatic, bool manual, bool Documentation, string openFile)
+        public static async Task DownloadRelease(Release release, bool Overwrite, bool Automatic, bool manual,
+                                                 bool Documentation, string openFile)
         {
             try
             {
@@ -308,21 +351,29 @@ namespace Net
                     string html = client.DownloadString(Asset.Url);
 
                     // The browser download link to the self extracting archive, hosted on github
-                    string URL = html.Substring(html.IndexOf("browser_download_url\":\"")).TrimEnd(new char[] { '}', '"' });
+                    string URL = html.Substring(html.IndexOf("browser_download_url\":\""))
+                                     .TrimEnd(new char[] {'}', '"'});
                     URL = URL.Substring(URL.IndexOf("http"));
 
                     // Download the update, using a download tracker
                     DLProgressWindow.finished = false;
-                    DLProgressWindow dlTrack = new DLProgressWindow(release.Name + (release.Name.ToLower().Contains("canary") ? " #" + release.TargetCommitish.Substring(0, 7) : ""), AppPath, URL);
+                    DLProgressWindow dlTrack = new DLProgressWindow(
+                        release.Name + (release.Name.ToLower().Contains("canary")
+                            ? " #" + release.TargetCommitish.Substring(0, 7)
+                            : ""), AppPath, URL);
                     while (!DLProgressWindow.finished)
                     {
                         // do nothing
                     }
+
                     dlTrack.Close();
                     dlTrack.Dispose();
                 }
+
                 // If the update didn't download properly, throw an error
-                if (!File.Exists(AppPath + "/temp.exe") || (new FileInfo(AppPath + "/temp.exe")).Length != DLProgressWindow.MaxValue || (new FileInfo(AppPath + "/temp.exe")).Length == 0)
+                if (!File.Exists(AppPath + "/temp.exe") ||
+                    new FileInfo(AppPath + "/temp.exe").Length != DLProgressWindow.MaxValue ||
+                    new FileInfo(AppPath + "/temp.exe").Length == 0)
                 {
                     MessageBox.Show("Error downloading update");
                     if (File.Exists(AppPath + "/temp.exe"))
@@ -332,6 +383,7 @@ namespace Net
 
                     return;
                 }
+
                 // Case 1: Cross-platform (Batch files won't work, so user will have to ), documentation update, or non-overwriting update
                 if (Process.GetProcessesByName("winlogon").Count() == 0 || Documentation || !Overwrite)
                 {
@@ -346,15 +398,23 @@ namespace Net
                             {
                                 File.Delete(AppPath + "\\temp.exe");
                             }
-                            MessageBox.Show("Documentation was successfully updated to " + ((release.Name.StartsWith("BrawlCrate Documentation", StringComparison.OrdinalIgnoreCase) && release.Name.Length > 26) ? release.Name.Substring(25) : release.Name) + (Automatic ? "\nThis documentation release:\n" + release.Body : ""));
+
+                            MessageBox.Show("Documentation was successfully updated to " +
+                                            (release.Name.StartsWith("BrawlCrate Documentation",
+                                                 StringComparison.OrdinalIgnoreCase) && release.Name.Length > 26
+                                                ? release.Name.Substring(25)
+                                                : release.Name) +
+                                            (Automatic ? "\nThis documentation release:\n" + release.Body : ""));
                         }
                     }
                     catch (Exception e)
                     {
                         MessageBox.Show("Error: " + e.Message);
                     }
+
                     return;
                 }
+
                 // Case 2: Windows (Can use a batch file to further automate the update)
                 WriteBatchScript(openFile);
                 Process updateBat = Process.Start(new ProcessStartInfo()
@@ -384,7 +444,8 @@ namespace Net
             string repoOwner = mainRepo.Split('/')[0];
             string repoName = mainRepo.Split('/')[1];
             // get Release
-            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName)).Where(r => r.Prerelease).ToList();
+            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName))
+                                              .Where(r => r.Prerelease).ToList();
             Release release = null;
 
             // This track is shared by canary updates. Ensure that a documentation release is found.
@@ -402,13 +463,15 @@ namespace Net
                 await DownloadRelease(release, true, true, false, true, "<null>");
             }
         }
+
         public static async Task ForceDownloadStable(string openFile = null)
         {
             await SetCanaryInactive();
             string repoOwner = mainRepo.Split('/')[0];
             string repoName = mainRepo.Split('/')[1];
             // get Release
-            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName)).Where(r => !r.Prerelease).ToList();
+            IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName))
+                                              .Where(r => !r.Prerelease).ToList();
             if (releases.Count > 0)
             {
                 await DownloadRelease(releases[0], true, true, false, false, openFile);
@@ -428,30 +491,37 @@ namespace Net
                 {
                     sw.WriteLine("del BrawlCrate.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/BrawlBox.exe"))
                 {
                     sw.WriteLine("del BrawlBox.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/BrawlScape.exe"))
                 {
                     sw.WriteLine("del BrawlScape.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/SmashBox.exe"))
                 {
                     sw.WriteLine("del SmashBox.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/StageBox.exe"))
                 {
                     sw.WriteLine("del StageBox.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/color_smash.exe"))
                 {
                     sw.WriteLine("del color_smash.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/sawndz.exe"))
                 {
                     sw.WriteLine("del sawndz.exe /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Updater.exe"))
                 {
                     sw.WriteLine("del sawndz.exe /s /f /q");
@@ -462,54 +532,67 @@ namespace Net
                 {
                     sw.WriteLine("del BrawlLib.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Octokit.dll"))
                 {
                     sw.WriteLine("del Octokit.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/OpenTK.dll"))
                 {
                     sw.WriteLine("del OpenTK.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/discord-rpc.dll"))
                 {
                     sw.WriteLine("del discord-rpc.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/IronPython.dll"))
                 {
                     sw.WriteLine("del IronPython.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/IronPython.Modules.dll"))
                 {
                     sw.WriteLine("del IronPython.Modules.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/IronPython.SQLite.dll"))
                 {
                     sw.WriteLine("del IronPython.SQLite.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/IronPython.Wpf.dll"))
                 {
                     sw.WriteLine("del OpenTK.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/IronPython.Wpf.dll"))
                 {
                     sw.WriteLine("del IronPython.Wpf.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Microsoft.Dynamic.dll"))
                 {
                     sw.WriteLine("del Microsoft.Dynamic.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Microsoft.Scripting.AspNet.dll"))
                 {
                     sw.WriteLine("del Microsoft.Scripting.AspNet.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Microsoft.Scripting.dll"))
                 {
                     sw.WriteLine("del Microsoft.Scripting.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Microsoft.Scripting.dll"))
                 {
                     sw.WriteLine("del Microsoft.Scripting.dll /s /f /q");
                 }
+
                 if (File.Exists(AppPath + "/Microsoft.Scripting.Metadata.dll"))
                 {
                     sw.WriteLine("del Microsoft.Scripting.Metadata.dll /s /f /q");
@@ -543,7 +626,8 @@ namespace Net
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
 
-                if (!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) || !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
+                if (!branchName.Equals(mainBranch, StringComparison.OrdinalIgnoreCase) ||
+                    !repo.Equals(mainRepo, StringComparison.OrdinalIgnoreCase))
                 {
                     using (StreamWriter sw = new StreamWriter(AppPath + "\\Canary\\Branch"))
                     {
@@ -556,6 +640,7 @@ namespace Net
                         {
                             sw.Write(branchName);
                         }
+
                         sw.Close();
                     }
                 }
@@ -585,6 +670,7 @@ namespace Net
                     sw.Write(repo);
                     sw.Close();
                 }
+
                 Console.WriteLine("Canary commit set. Sha was detected to be: " + result.Sha);
             }
             catch (Exception e)
@@ -602,6 +688,7 @@ namespace Net
             {
                 File.Create(AppPath + "\\Canary\\Active");
             }
+
             Console.WriteLine("Canary Active");
             await Task.Delay(1);
         }
@@ -640,6 +727,7 @@ namespace Net
                     // Assume that this is updating from an old version before branch data was tracked.
                     newBranch = oldBranch = "";
                 }
+
                 try
                 {
                     newRepo = File.ReadAllLines(AppPath + "\\Canary\\New")[4];
@@ -653,7 +741,8 @@ namespace Net
             }
             catch
             {
-                MessageBox.Show("Canary changelog could not be shown. Make sure to never disturb the \"Canary\" folder in the installation folder.");
+                MessageBox.Show(
+                    "Canary changelog could not be shown. Make sure to never disturb the \"Canary\" folder in the installation folder.");
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
@@ -661,6 +750,7 @@ namespace Net
 
                 return;
             }
+
             if (newSha == oldSha)
             {
                 MessageBox.Show("Welcome to BrawlCrate Canary! You were already on the latest commit.");
@@ -671,9 +761,13 @@ namespace Net
 
                 return;
             }
+
             if (newRepo != oldRepo)
             {
-                MessageBox.Show("Welcome to BrawlCrate Canary! You are now tracking the " + newBranch + " branch of the " + newRepo + " repository instead of the " + oldBranch + " branch of the " + oldRepo + " repository. Canary changelog is not supported when switching repositories, so please check online to see differences.");
+                MessageBox.Show("Welcome to BrawlCrate Canary! You are now tracking the " + newBranch +
+                                " branch of the " + newRepo + " repository instead of the " + oldBranch +
+                                " branch of the " + oldRepo +
+                                " repository. Canary changelog is not supported when switching repositories, so please check online to see differences.");
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
@@ -681,9 +775,12 @@ namespace Net
 
                 return;
             }
+
             if (newBranch != oldBranch)
             {
-                MessageBox.Show("Welcome to BrawlCrate Canary! You are now tracking the " + newBranch + " branch instead of the " + oldBranch + " branch. Canary changelog is not supported when switching branches, so please check the Discord for what's been changed.");
+                MessageBox.Show("Welcome to BrawlCrate Canary! You are now tracking the " + newBranch +
+                                " branch instead of the " + oldBranch +
+                                " branch. Canary changelog is not supported when switching branches, so please check the Discord for what's been changed.");
                 if (File.Exists(Filename))
                 {
                     File.Delete(Filename);
@@ -699,13 +796,13 @@ namespace Net
                 Console.WriteLine(s.Send("www.github.com").Status);
             }
 
-            char[] slashes = { '\\', '/' };
+            char[] slashes = {'\\', '/'};
             string[] repoData = currentRepo.Split(slashes);
 
             try
             {
                 Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
-                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = cr };
+                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 Branch branch;
                 try
                 {
@@ -718,12 +815,14 @@ namespace Net
                     currentBranch = mainBranch;
                     currentRepo = mainRepo;
                 }
+
                 ApiOptions options = new ApiOptions
                 {
                     PageSize = 120,
                     PageCount = 1
                 };
-                List<GitHubCommit> commits = (await github.Repository.Commit.GetAll(repoData[0], repoData[1], options)).ToList();
+                List<GitHubCommit> commits =
+                    (await github.Repository.Commit.GetAll(repoData[0], repoData[1], options)).ToList();
                 int i = -1;
                 bool foundCurrentCommit = false;
                 for (i = 0; i < commits.Count;)
@@ -734,6 +833,7 @@ namespace Net
                         commits.Remove(c);
                         continue;
                     }
+
                     foundCurrentCommit = true;
                     //var c = await github.Repository.Commit.Get("soopercool101", "BrawlCrate", branch.Commit.Sha);
                     if (c.Sha == oldSha || i >= 99)
@@ -743,6 +843,7 @@ namespace Net
 
                     i++;
                 }
+
                 for (int j = i; j >= 0; j--)
                 {
                     if (j >= commits.Count)
@@ -764,20 +865,26 @@ namespace Net
                     {
                         continue;
                     }
+
                     changelog += "\n\n========================================================\n\n";
                     try
                     {
-                        string s = ("#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '\\' + currentBranch + " by " + c.Author.Login + "\n");
+                        string s = "#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '\\' + currentBranch + " by " +
+                                   c.Author.Login + "\n";
                         changelog += s;
                     }
                     catch
                     {
-                        changelog += ("#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '\\' + currentBranch + "\n");
+                        changelog += "#" + c.Sha.Substring(0, 7) + "@" + currentRepo + '\\' + currentBranch + "\n";
                     }
+
                     changelog += c.Commit.Message;
                 }
+
                 changelog += "\n\n========================================================";
-                MessageBox.Show("Canary successfully updated from #" + oldSha.Substring(0, 7) + " to #" + newSha.Substring(0, 7)); // For some reason, without this, the changelog window never shows.
+                MessageBox.Show("Canary successfully updated from #" + oldSha.Substring(0, 7) + " to #" +
+                                newSha.Substring(0,
+                                    7)); // For some reason, without this, the changelog window never shows.
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
                 logWindow.ShowDialog();
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
@@ -816,6 +923,7 @@ namespace Net
                 {
                     MessageBox.Show(xp.Message);
                 }
+
                 goto TRY_AGAIN;
             }
             else if (p != null && p != default(Process))
@@ -848,15 +956,18 @@ namespace Net
             string Title,
             string Description)
         {
-            if (File.Exists(Updater.AppPath + "\\Canary\\Active") && !Updater.currentRepo.Equals(Updater.mainRepo, StringComparison.OrdinalIgnoreCase))
+            if (File.Exists(Updater.AppPath + "\\Canary\\Active") &&
+                !Updater.currentRepo.Equals(Updater.mainRepo, StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("Issue reporter does not allow reporting issues from forks. Please contact the owner of the repository to report your issue.");
+                MessageBox.Show(
+                    "Issue reporter does not allow reporting issues from forks. Please contact the owner of the repository to report your issue.");
                 return;
             }
+
             try
             {
                 Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
-                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) { Credentials = cr };
+                GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Release> releases = null;
                 IReadOnlyList<Issue> issues = null;
                 if (!TagName.StartsWith("BrawlCrate Canary", StringComparison.OrdinalIgnoreCase))
@@ -881,19 +992,26 @@ namespace Net
                         //This build's version tag does not match the latest release's tag on the repository.
                         //This bug may have been fixed by now. Tell the user to update to be allowed to submit bug reports.
 
-                        DialogResult UpdateResult = MessageBox.Show(releases[0].Name + " is available!\nYou cannot submit bug reports using an older version of the program.\nUpdate now?", "An update is available", MessageBoxButtons.YesNo);
+                        DialogResult UpdateResult =
+                            MessageBox.Show(
+                                releases[0].Name +
+                                " is available!\nYou cannot submit bug reports using an older version of the program.\nUpdate now?",
+                                "An update is available", MessageBoxButtons.YesNo);
                         if (UpdateResult == DialogResult.Yes)
                         {
-                            DialogResult OverwriteResult = MessageBox.Show("Overwrite current installation?", "", MessageBoxButtons.YesNoCancel);
+                            DialogResult OverwriteResult = MessageBox.Show("Overwrite current installation?", "",
+                                MessageBoxButtons.YesNoCancel);
                             if (OverwriteResult != DialogResult.Cancel)
                             {
                                 //Task t = Updater.ForceDownloadRelease();
                                 //t.Wait();
                             }
                         }
+
                         return;
                     }
                 }
+
                 bool found = false;
                 if (issues != null && !string.IsNullOrEmpty(StackTrace))
                 {
@@ -928,14 +1046,14 @@ namespace Net
                     NewIssue issue = new NewIssue(Title)
                     {
                         Body =
-                        Description +
-                        Environment.NewLine +
-                        Environment.NewLine +
-                        TagName +
-                        Environment.NewLine +
-                        ExceptionMessage +
-                        Environment.NewLine +
-                        StackTrace
+                            Description +
+                            Environment.NewLine +
+                            Environment.NewLine +
+                            TagName +
+                            Environment.NewLine +
+                            ExceptionMessage +
+                            Environment.NewLine +
+                            StackTrace
                     };
                     Issue x = await github.Issue.Create("BrawlCrate", "BrawlCrateIssues", issue);
                 }
@@ -983,7 +1101,8 @@ namespace Net
                         break;
                     case "-bu": //BrawlCrate update call
                         somethingDone = true;
-                        Task t2 = Updater.CheckUpdate(args[1] != "0", args[2], args[3] != "0", args[4], args[5] != "0", args[6] != "0");
+                        Task t2 = Updater.CheckUpdate(args[1] != "0", args[2], args[3] != "0", args[4], args[5] != "0",
+                            args[6] != "0");
                         t2.Wait();
                         break;
                     case "-buc": //BrawlCrate Canary update call
@@ -1011,6 +1130,7 @@ namespace Net
                                 }
                             }
                         }
+
                         Task t4 = Updater.WriteCanaryTime(t4arg1, t4arg2, t4arg3);
                         t4.Wait();
                         break;

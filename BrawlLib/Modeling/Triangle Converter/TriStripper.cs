@@ -49,7 +49,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
         {
             m_ImpTable = ImpTable;
             m_Nodes = NodeIds;
-            m_Triangles = new GraphArray<Triangle>((uint)TriIndices.Length / 3);
+            m_Triangles = new GraphArray<Triangle>((uint) TriIndices.Length / 3);
             m_StripID = 0;
             m_FirstRun = true;
             m_PrimitivesVector = new List<Primitive>();
@@ -66,7 +66,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             MakeConnectivityGraph(m_Triangles, TriIndices);
         }
 
-        private bool Cache => (CacheSize != 0);
+        private bool Cache => CacheSize != 0;
         private uint CacheSize => m_Cache.Size;
 
         public List<Primitive> Strip()
@@ -151,11 +151,12 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
             //Remove useless triangles
             //Note: we had to put all of them into the heap before to ensure coherency of the heap_array object
-            while ((!m_TriHeap.Empty) && (m_TriHeap.Top == 0))
+            while (!m_TriHeap.Empty && m_TriHeap.Top == 0)
             {
                 m_TriHeap.Pop();
             }
         }
+
         private void Stripify()
         {
             while (!m_TriHeap.Empty)
@@ -181,12 +182,13 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 }
 
                 //Eliminate all the triangles that have now become useless
-                while ((!m_TriHeap.Empty) && (m_TriHeap.Top == 0))
+                while (!m_TriHeap.Empty && m_TriHeap.Top == 0)
                 {
                     m_TriHeap.Pop();
                 }
             }
         }
+
         private void AddRemainingTriangles()
         {
             //Create the last indices array and fill it with all the triangles that couldn't be stripped
@@ -207,6 +209,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 m_PrimitivesVector.Add(p);
             }
         }
+
         private void ResetStripIDs()
         {
             foreach (Triangle r in m_Triangles)
@@ -228,7 +231,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 m_Candidates.RemoveAt(m_Candidates.Count - 1);
 
                 //Discard useless triangles from the candidate list
-                if ((m_Triangles[Candidate].Marked) || (m_TriHeap[Candidate] == 0))
+                if (m_Triangles[Candidate].Marked || m_TriHeap[Candidate] == 0)
                 {
                     continue;
                 }
@@ -236,7 +239,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 //Try to extend the triangle in the 3 possible forward directions
                 for (uint i = 0; i < 3; i++)
                 {
-                    Strip Strip = ExtendToStrip(Candidate, (TriOrder)i);
+                    Strip Strip = ExtendToStrip(Candidate, (TriOrder) i);
                     policy.Challenge(Strip, m_TriHeap[Strip.Start], m_Cache.HitCount);
 
                     m_Cache = CacheBackup;
@@ -247,7 +250,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 {
                     for (uint i = 0; i < 3; i++)
                     {
-                        Strip Strip = BackExtendToStrip(Candidate, (TriOrder)i, false);
+                        Strip Strip = BackExtendToStrip(Candidate, (TriOrder) i, false);
                         if (Strip != null)
                         {
                             policy.Challenge(Strip, m_TriHeap[Strip.Start], m_Cache.HitCount);
@@ -258,7 +261,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
                     for (uint i = 0; i < 3; i++)
                     {
-                        Strip Strip = BackExtendToStrip(Candidate, (TriOrder)i, true);
+                        Strip Strip = BackExtendToStrip(Candidate, (TriOrder) i, true);
                         if (Strip != null)
                         {
                             policy.Challenge(Strip, m_TriHeap[Strip.Start], m_Cache.HitCount);
@@ -268,8 +271,10 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     }
                 }
             }
+
             return policy.BestStrip;
         }
+
         private Strip ExtendToStrip(uint Start, TriOrder Order)
         {
             TriOrder StartOrder = Order;
@@ -290,7 +295,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             bool ClockWise = false;
 
             //Loop while we can further extend the strip
-            for (uint i = Start; (i < m_Triangles.Count) && (!Cache || ((Size + 2) < CacheSize)); Size++)
+            for (uint i = Start; i < m_Triangles.Count && (!Cache || Size + 2 < CacheSize); Size++)
             {
                 GraphArray<Triangle>.Node Node = m_Triangles[i];
                 GraphArray<Triangle>.Arc Link = LinkToNeighbour(Node, ClockWise, ref Order, false);
@@ -315,6 +320,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
             return new Strip(Start, StartOrder, Size);
         }
+
         private Strip BackExtendToStrip(uint Start, TriOrder Order, bool ClockWise)
         {
             m_CurrentNodes = new List<ushort>();
@@ -339,7 +345,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             GraphArray<Triangle>.Node Node = null;
 
             //Loop while we can further extend the strip
-            for (uint i = Start; !Cache || ((Size + 2) < CacheSize); Size++)
+            for (uint i = Start; !Cache || Size + 2 < CacheSize; Size++)
             {
                 Node = m_Triangles[i];
                 GraphArray<Triangle>.Arc Link = BackLinkToNeighbour(Node, ClockWise, ref Order);
@@ -378,7 +384,9 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
             return new Strip(Node.m_Elem.m_Index, Order, Size);
         }
+
         private bool _checkNodes = false;
+
         private bool TryAddNode(uint index)
         {
             if (!_checkNodes)
@@ -396,20 +404,23 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
                 m_CurrentNodes.Add(node);
             }
+
             return true;
         }
-        private GraphArray<Triangle>.Arc LinkToNeighbour(GraphArray<Triangle>.Node Node, bool ClockWise, ref TriOrder Order, bool NotSimulation)
+
+        private GraphArray<Triangle>.Arc LinkToNeighbour(GraphArray<Triangle>.Node Node, bool ClockWise,
+                                                         ref TriOrder Order, bool NotSimulation)
         {
             TriangleEdge Edge = LastEdge(Node.m_Elem, Order);
             for (uint i = Node.m_Begin; i < Node.m_End; i++)
             {
-                GraphArray<Triangle>.Arc Link = Node.Arcs[(int)i];
+                GraphArray<Triangle>.Arc Link = Node.Arcs[(int) i];
 
                 //Get the reference to the possible next triangle
                 Triangle Tri = Link.Terminal.m_Elem;
 
                 //Check whether it's already been used
-                if ((NotSimulation || (Tri.StripID != m_StripID)) && !Link.Terminal.Marked)
+                if ((NotSimulation || Tri.StripID != m_StripID) && !Link.Terminal.Marked)
                 {
                     //Does the current candidate triangle match the required position for the strip?
                     if (Edge.B == Tri.A && Edge.A == Tri.B && TryAddNode(Tri.C))
@@ -432,20 +443,23 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     }
                 }
             }
+
             return null;
         }
-        private GraphArray<Triangle>.Arc BackLinkToNeighbour(GraphArray<Triangle>.Node Node, bool ClockWise, ref TriOrder Order)
+
+        private GraphArray<Triangle>.Arc BackLinkToNeighbour(GraphArray<Triangle>.Node Node, bool ClockWise,
+                                                             ref TriOrder Order)
         {
             TriangleEdge Edge = FirstEdge(Node.m_Elem, Order);
             for (uint i = Node.m_Begin; i < Node.m_End; i++)
             {
-                GraphArray<Triangle>.Arc Link = Node.Arcs[(int)i];
+                GraphArray<Triangle>.Arc Link = Node.Arcs[(int) i];
 
                 //Get the reference to the possible previous triangle
                 Triangle Tri = Link.Terminal.m_Elem;
 
                 //Check whether it's already been used
-                if ((Tri.StripID != m_StripID) && !Link.Terminal.Marked)
+                if (Tri.StripID != m_StripID && !Link.Terminal.Marked)
                 {
                     //Does the current candidate triangle match the required position for the strip?
                     if (Edge.B == Tri.A && Edge.A == Tri.B && TryAddNode(Tri.C))
@@ -468,8 +482,10 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     }
                 }
             }
+
             return null;
         }
+
         private void BuildStrip(Strip Strip)
         {
             uint Start = Strip.Start;
@@ -514,17 +530,17 @@ namespace BrawlLib.Modeling.Triangle_Converter
             GraphArray<Triangle>.Node Node = m_Triangles[i];
             for (uint x = Node.m_Begin; x < Node.m_End; x++)
             {
-                GraphArray<Triangle>.Arc Link = Node.Arcs[(int)x];
+                GraphArray<Triangle>.Arc Link = Node.Arcs[(int) x];
 
                 uint j = Link.Terminal.m_Elem.m_Index;
-                if ((!m_Triangles[j].Marked) && (!m_TriHeap.Removed(j)))
+                if (!m_Triangles[j].Marked && !m_TriHeap.Removed(j))
                 {
                     uint NewDegree = m_TriHeap[j];
                     NewDegree = NewDegree - 1;
                     m_TriHeap.Update(j, NewDegree);
 
                     //Update the candidate list if cache is enabled
-                    if (Cache && (NewDegree > 0))
+                    if (Cache && NewDegree > 0)
                     {
                         m_Candidates.Add(j);
                     }
@@ -638,21 +654,21 @@ namespace BrawlLib.Modeling.Triangle_Converter
             uint ya = y.A;
             uint yb = y.B;
 
-            return ((xa < ya) || ((xa == ya) && (xb < yb))) ? -1 : 1;
+            return xa < ya || xa == ya && xb < yb ? -1 : 1;
         }
 
         private void MakeConnectivityGraph(GraphArray<Triangle> Triangles, uint[] Indices)
         {
-            Debug.Assert(Triangles.Count == (Indices.Length / 3));
+            Debug.Assert(Triangles.Count == Indices.Length / 3);
 
             //Fill the triangle data
             for (int i = 0; i < Triangles.Count; i++)
             {
-                Triangles[(uint)i].m_Elem = new Triangle(
-                    Indices[i * 3 + 0],
-                    Indices[i * 3 + 1],
-                    Indices[i * 3 + 2])
-                { m_Index = (uint)i };
+                Triangles[(uint) i].m_Elem = new Triangle(
+                        Indices[i * 3 + 0],
+                        Indices[i * 3 + 1],
+                        Indices[i * 3 + 2])
+                    {m_Index = (uint) i};
             }
 
             //Build an edge lookup table
@@ -664,6 +680,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 EdgeMap.Add(new TriEdge(Tri.B, Tri.C, i));
                 EdgeMap.Add(new TriEdge(Tri.C, Tri.A, i));
             }
+
             EdgeMap.Sort(EdgeComp);
 
             //Link neighbour triangles together using the lookup table
@@ -691,6 +708,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     hi = m - 1;
                 }
             }
+
             if (comp(list[lo], value) < 0)
             {
                 lo++;
@@ -706,10 +724,12 @@ namespace BrawlLib.Modeling.Triangle_Converter
             //(if so, it means that more than 2 triangles are sharing the same edge,
             //which is unlikely but not impossible)
             for (int i = BinarySearch(EdgeMap, Edge, EdgeComp);
-                i < EdgeMap.Count && Edge == EdgeMap[i]; i++)
+                i < EdgeMap.Count && Edge == EdgeMap[i];
+                i++)
             {
                 Triangles.InsertArc(Edge.TriPos, EdgeMap[i].TriPos);
             }
+
             //Note: degenerated triangles will also point themselves as neighbour triangles
         }
     }

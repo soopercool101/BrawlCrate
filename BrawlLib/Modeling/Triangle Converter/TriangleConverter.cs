@@ -34,7 +34,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
                 //Set up tristripper with remapped point ids
                 TriStripper stripper = new TriStripper(
-                    remapData._remapTable.Select(x => (uint)x).ToArray(),
+                    remapData._remapTable.Select(x => (uint) x).ToArray(),
                     points.Select(x => x.NodeID).ToArray(),
                     remapData._impTable);
                 stripper.SetCacheSize(_cacheSize);
@@ -67,8 +67,10 @@ namespace BrawlLib.Modeling.Triangle_Converter
                     else
                     {
                         faceCount += p.Indices.Count - 2;
-                        fpPrimitives.Add(new PointTriangleStrip() { _points = p.Indices.Select(x => points[remapData._impTable[x]]).ToList() });
+                        fpPrimitives.Add(new PointTriangleStrip()
+                            {_points = p.Indices.Select(x => points[remapData._impTable[x]]).ToList()});
                     }
+
                     pointCount += p.Indices.Count;
                 }
             }

@@ -9,22 +9,32 @@ namespace BrawlLib.SSBBTypes
         public const uint Size = 0x30;
         public const uint Tag = 0x00504854;
 
-        public BinTag _tag;                   // "THP\0"
-        public buint _version;                // version number
-        public buint _bufSize;                // max frame size for buffer computation
-        public buint _audioMaxSamples;        // max samples of audio data
+        public BinTag _tag; // "THP\0"
+        public buint _version; // version number
+        public buint _bufSize; // max frame size for buffer computation
+        public buint _audioMaxSamples; // max samples of audio data
 
-        public bfloat _frameRate;             // frame per seconds
-        public buint _numFrames;              // frame count
-        public buint _firstFrameSize;         // how much to load
-        public buint _movieDataSize;          // file size
+        public bfloat _frameRate; // frame per seconds
+        public buint _numFrames; // frame count
+        public buint _firstFrameSize; // how much to load
+        public buint _movieDataSize; // file size
 
-        public buint _compInfoDataOffsets;    // offset to component infomation data
-        public buint _offsetDataOffsets;      // offset to array of frame offsets
-        public buint _movieDataOffsets;       // offset to first frame (start of movie data) 
-        public buint _finalFrameDataOffsets;  // offset to final frame
+        public buint _compInfoDataOffsets; // offset to component infomation data
+        public buint _offsetDataOffsets; // offset to array of frame offsets
+        public buint _movieDataOffsets; // offset to first frame (start of movie data) 
+        public buint _finalFrameDataOffsets; // offset to final frame
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
+
         public VoidPtr FirstFrame => Address + _movieDataOffsets;
     }
 
@@ -34,14 +44,14 @@ namespace BrawlLib.SSBBTypes
         public buint _sndChannels;
         public buint _sndFrequency;
         public buint _sndNumSamples;
-        public buint _sndNumTracks;   // number of Tracks
+        public buint _sndNumTracks; // number of Tracks
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct THPVideoInfo
     {
-        public buint _xSize;      // width  of video
-        public buint _ySize;      // height of video
+        public buint _xSize; // width  of video
+        public buint _ySize; // height of video
         public buint _videoType;
 
         public enum VideoType
@@ -55,8 +65,8 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct THPFrameCompInfo
     {
-        public buint _numComponents;        // a number of Components in a frame
-        public fixed byte _frameComp[16];   // kind of Components
+        public buint _numComponents; // a number of Components in a frame
+        public fixed byte _frameComp[16]; // kind of Components
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -66,10 +76,11 @@ namespace BrawlLib.SSBBTypes
         public buint _frameSizePrevious;
         public buint _firstComp; //up to 16
 
-        public buint* CompAddr => (buint*)_firstComp.Address;
+        public buint* CompAddr => (buint*) _firstComp.Address;
+
         public VoidPtr GetComp(int numComp, int index)
         {
-            uint offset = 8 + 4 * (uint)numComp.Clamp(0, 15);
+            uint offset = 8 + 4 * (uint) numComp.Clamp(0, 15);
             for (int i = 0; i < index; i++)
             {
                 offset += CompAddr[i];
@@ -78,7 +89,16 @@ namespace BrawlLib.SSBBTypes
             return Address + offset;
         }
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        internal VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -105,9 +125,23 @@ namespace BrawlLib.SSBBTypes
         public bshort _c2yn1;
         public bshort _c2yn2;
 
-        internal VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        internal VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         internal VoidPtr Audio => Address + 0x50;
-        public byte* GetAudioChannel(int channel) { return (byte*)Audio + (uint)(channel * _blockSize); }
+
+        public byte* GetAudioChannel(int channel)
+        {
+            return (byte*) Audio + (uint) (channel * _blockSize);
+        }
 
         public short[] Coefs1
         {
@@ -116,15 +150,17 @@ namespace BrawlLib.SSBBTypes
                 short[] arr = new short[16];
                 fixed (short* ptr = _chan1Coefs)
                 {
-                    bshort* sPtr = (bshort*)ptr;
+                    bshort* sPtr = (bshort*) ptr;
                     for (int i = 0; i < 16; i++)
                     {
                         arr[i] = sPtr[i];
                     }
                 }
+
                 return arr;
             }
         }
+
         public short[] Coefs2
         {
             get
@@ -132,12 +168,13 @@ namespace BrawlLib.SSBBTypes
                 short[] arr = new short[16];
                 fixed (short* ptr = _chan2Coefs)
                 {
-                    bshort* sPtr = (bshort*)ptr;
+                    bshort* sPtr = (bshort*) ptr;
                     for (int i = 0; i < 16; i++)
                     {
                         arr[i] = sPtr[i];
                     }
                 }
+
                 return arr;
             }
         }

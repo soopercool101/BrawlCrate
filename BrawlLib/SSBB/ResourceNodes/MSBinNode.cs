@@ -16,15 +16,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             _strings.Clear();
 
-            byte* floor = (byte*)WorkingUncompressed.Address;
+            byte* floor = (byte*) WorkingUncompressed.Address;
             int length = WorkingUncompressed.Length;
-            bint* offsets = (bint*)floor;
+            bint* offsets = (bint*) floor;
             int index, last, current;
 
             for (index = 1, last = offsets[0]; last != length; index++)
             {
                 current = offsets[index];
-                if ((current < last) || (current > length))
+                if (current < last || current > length)
                 {
                     break;
                 }
@@ -33,6 +33,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 last = current;
             }
+
             return false;
         }
 
@@ -49,20 +50,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            bint* offsets = (bint*)address;
-            byte* current = (byte*)(offsets + _strings.Count + 1);
+            bint* offsets = (bint*) address;
+            byte* current = (byte*) (offsets + _strings.Count + 1);
             foreach (string s in _strings)
             {
-                *offsets++ = (int)current - (int)address;
+                *offsets++ = (int) current - (int) address;
                 current += MSBinDecoder.EncodeString(s, current);
             }
-            *offsets = (int)current - (int)address;
+
+            *offsets = (int) current - (int) address;
         }
 
         internal static ResourceNode TryParse(DataSource source)
         {
             int length = source.Length;
-            bint* offsets = (bint*)source.Address;
+            bint* offsets = (bint*) source.Address;
             int index, last, current;
 
             for (index = 0, last = 0; last != length; index++)
@@ -73,7 +75,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 current = offsets[index];
-                if ((current < last) || (current > length))
+                if (current < last || current > length)
                 {
                     return null;
                 }
@@ -81,7 +83,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 last = current;
             }
 
-            return (offsets[0] == (index << 2)) ? new MSBinNode() : null;
+            return offsets[0] == index << 2 ? new MSBinNode() : null;
         }
 
         public override unsafe void Export(string outPath)
@@ -111,6 +113,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     list.Add(s.Replace("<br/>", "\r\n"));
                 }
+
                 _strings = list;
                 SignalPropertyChange();
                 ForceReplacedEvent();

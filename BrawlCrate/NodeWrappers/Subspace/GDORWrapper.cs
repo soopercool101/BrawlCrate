@@ -11,6 +11,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static GDORWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -30,17 +31,24 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<GDORWrapper>().NewEntry(); }
+
+        protected static void NewEntryAction(object sender, EventArgs e)
+        {
+            GetInstance<GDORWrapper>().NewEntry();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[6].Enabled = _menu.Items[7].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             GDORWrapper w = GetInstance<GDORWrapper>();
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public void NewEntry()
@@ -56,6 +64,9 @@ namespace BrawlCrate.NodeWrappers
             _resource.AddChild(node);
         }
 
-        public GDORWrapper() { ContextMenuStrip = _menu; }
+        public GDORWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

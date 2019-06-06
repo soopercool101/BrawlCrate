@@ -14,14 +14,14 @@
             {
                 for (int i = 0; i < count; i++)
                 {
-                    result[i] = Disassemble(((buint*)ptr)[i]);
+                    result[i] = Disassemble(((buint*) ptr)[i]);
                 }
             }
             else
             {
                 for (int i = 0; i < count; i++)
                 {
-                    result[i] = Disassemble(((uint*)ptr)[i]);
+                    result[i] = Disassemble(((uint*) ptr)[i]);
                 }
             }
 
@@ -30,7 +30,7 @@
 
         public static PPCOpCode Disassemble(uint value)
         {
-            switch ((PPCMnemonic)(value & 0xFC000000))
+            switch ((PPCMnemonic) (value & 0xFC000000))
             {
                 case PPCMnemonic.vaddubm: return new PPCVaddubm(value);
                 case PPCMnemonic.mulli: return new PPCMulli(value);
@@ -44,11 +44,12 @@
                 case PPCMnemonic.bc: return new PPCBc(value);
                 case PPCMnemonic.b: return new PPCbx(value);
                 case PPCMnemonic.grp4C:
-                    switch ((PPCMnemonic)(value & 0xFC0007FE))
+                    switch ((PPCMnemonic) (value & 0xFC0007FE))
                     {
                         case PPCMnemonic.bclr: return new PPCblr(value);
                         case PPCMnemonic.bcctr: return new PPCbctr(value);
                     }
+
                     break;
                 case PPCMnemonic.rlwimi: return new PPCRlwimi(value);
                 case PPCMnemonic.rlwinm: return new PPCRlwinm(value);
@@ -60,7 +61,7 @@
                 case PPCMnemonic.andis_D: return new PPCAndi(value);
                 case PPCMnemonic.rldicl: return new PPCRldicl(value);
                 case PPCMnemonic.grp7C:
-                    switch ((PPCMnemonic)(value & 0xFC0007FE))
+                    switch ((PPCMnemonic) (value & 0xFC0007FE))
                     {
                         case PPCMnemonic.cmp: return new PPCCmp(value);
                         case PPCMnemonic.subfc: return new PPCSubc(value);
@@ -79,6 +80,7 @@
                         case PPCMnemonic.extsb: return new PPCExtsb(value);
                         case PPCMnemonic.mullw: return new PPCMullw(value);
                     }
+
                     break;
                 case PPCMnemonic.lwz: return new PPCLwz(value);
                 case PPCMnemonic.lwzu: return new PPCLwz(value);
@@ -107,8 +109,8 @@
                 case PPCMnemonic.ld: return new PPCLwz(value);
                 case PPCMnemonic.std: return new PPCStw(value);
             }
+
             return new PPCWord(value);
         }
-
     }
 }

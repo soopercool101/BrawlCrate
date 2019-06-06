@@ -180,17 +180,19 @@ namespace System.Windows.Forms
             // 
             // ctxBones
             // 
-            ctxBones.Items.AddRange(new ToolStripItem[] {
-            nameToolStripMenuItem,
-            boneIndex,
-            renameBoneToolStripMenuItem,
-            ctxBonesDivider1,
-            addToParentToolStripMenuItem,
-            addToNextUpToolStripMenuItem,
-            addToNextDownToolStripMenuItem,
-            ctxBonesDivider2,
-            moveUpToolStripMenuItem,
-            moveDownToolStripMenuItem});
+            ctxBones.Items.AddRange(new ToolStripItem[]
+            {
+                nameToolStripMenuItem,
+                boneIndex,
+                renameBoneToolStripMenuItem,
+                ctxBonesDivider1,
+                addToParentToolStripMenuItem,
+                addToNextUpToolStripMenuItem,
+                addToNextDownToolStripMenuItem,
+                ctxBonesDivider2,
+                moveUpToolStripMenuItem,
+                moveDownToolStripMenuItem
+            });
             ctxBones.Name = "ctxBones";
             ctxBones.Size = new Drawing.Size(175, 192);
             // 
@@ -278,23 +280,27 @@ namespace System.Windows.Forms
             panel1.PerformLayout();
             ctxBones.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
 
-        public BonesPanel() { InitializeComponent(); }
+        public BonesPanel()
+        {
+            InitializeComponent();
+        }
 
         public ModelEditorBase _mainWindow;
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IModel TargetModel
         {
             get => _mainWindow.TargetModel;
             set => _mainWindow.TargetModel = value;
         }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IBoneNode SelectedBone
         {
             get => _mainWindow.SelectedBone;
@@ -304,6 +310,7 @@ namespace System.Windows.Forms
         public TreeNode[] _treeNodes;
 
         public bool _updating;
+
         public void Reset()
         {
             _updating = true;
@@ -347,7 +354,8 @@ namespace System.Windows.Forms
             {
                 foreach (IBoneNode bone in TargetModel.BoneCache)
                 {
-                    if (addAll || (chkContains.Checked && bone.Name.Contains(text, StringComparison.OrdinalIgnoreCase)) || bone.Name.StartsWith(text, StringComparison.OrdinalIgnoreCase))
+                    if (addAll || chkContains.Checked && bone.Name.Contains(text, StringComparison.OrdinalIgnoreCase) ||
+                        bone.Name.StartsWith(text, StringComparison.OrdinalIgnoreCase))
                     {
                         lstBones.Items.Add(bone, bone.IsRendering);
                     }
@@ -374,12 +382,12 @@ namespace System.Windows.Forms
 
         private void RecursivePopulate(IBoneNode bone, TreeNodeCollection nodes)
         {
-            TreeNode node = new TreeNode() { Tag = bone, Text = bone.Name, Checked = bone.IsRendering };
+            TreeNode node = new TreeNode() {Tag = bone, Text = bone.Name, Checked = bone.IsRendering};
 
             _treeNodes[bone.BoneIndex] = node;
             nodes.Add(node);
 
-            foreach (IBoneNode b in ((ResourceNode)bone).Children)
+            foreach (IBoneNode b in ((ResourceNode) bone).Children)
             {
                 RecursivePopulate(b, node.Nodes);
             }
@@ -406,6 +414,7 @@ namespace System.Windows.Forms
         {
             SetBone(lstBones.SelectedItem as IBoneNode);
         }
+
         private void SetBone(IBoneNode bone)
         {
             if (SelectedBone != null)
@@ -431,7 +440,7 @@ namespace System.Windows.Forms
         {
             if (SelectedBone != null)
             {
-                new RenameDialog().ShowDialog(this, (ResourceNode)SelectedBone);
+                new RenameDialog().ShowDialog(this, (ResourceNode) SelectedBone);
             }
         }
 
@@ -439,12 +448,13 @@ namespace System.Windows.Forms
         {
             ctxBonesDivider1.Visible =
                 ctxBonesDivider2.Visible =
-                moveUpToolStripMenuItem.Visible =
-                moveDownToolStripMenuItem.Visible =
-                addToNextDownToolStripMenuItem.Visible =
-                addToNextUpToolStripMenuItem.Visible =
-                addToParentToolStripMenuItem.Visible =
-                boneTree.Visible = !(txtSearchBone.Visible = chkContains.Visible = lstBones.Visible = chkFlat.Checked);
+                    moveUpToolStripMenuItem.Visible =
+                        moveDownToolStripMenuItem.Visible =
+                            addToNextDownToolStripMenuItem.Visible =
+                                addToNextUpToolStripMenuItem.Visible =
+                                    addToParentToolStripMenuItem.Visible =
+                                        boneTree.Visible = !(txtSearchBone.Visible =
+                                            chkContains.Visible = lstBones.Visible = chkFlat.Checked);
 
             UpdateListToolDisplay();
         }

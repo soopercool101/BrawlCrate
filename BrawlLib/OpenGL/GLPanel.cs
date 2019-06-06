@@ -16,12 +16,13 @@ namespace BrawlLib.OpenGL
         public static void Reset(this Control c)
         {
             typeof(Control).InvokeMember("SetState", BindingFlags.NonPublic |
-            BindingFlags.InvokeMethod | BindingFlags.Instance, null,
-            c, new object[] { 0x400000, false });
+                                                     BindingFlags.InvokeMethod | BindingFlags.Instance, null,
+                c, new object[] {0x400000, false});
         }
     }
 
     public delegate void ViewportAction(GLViewport p);
+
     public abstract unsafe class GLPanel : UserControl, IEnumerable<GLViewport>
     {
         public static GLPanel Current
@@ -36,6 +37,7 @@ namespace BrawlLib.OpenGL
                 return _currentPanel;
             }
         }
+
         private static GLPanel _currentPanel = null;
 
         public TKContext Context => _ctx;
@@ -49,11 +51,9 @@ namespace BrawlLib.OpenGL
         protected List<GLViewport> _viewports = new List<GLViewport>();
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public GLViewport HighlightedViewport => _viewports.Count > 1 ?
-                    _highlightedViewport :
-                    _viewports.Count > 0 ?
-                    _viewports[0] :
-                    CurrentViewport;
+        public GLViewport HighlightedViewport => _viewports.Count > 1 ? _highlightedViewport :
+            _viewports.Count > 0 ? _viewports[0] :
+            CurrentViewport;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public GLViewport CurrentViewport
@@ -109,8 +109,10 @@ namespace BrawlLib.OpenGL
                 v._owner = null;
                 v.OnInvalidate -= Invalidate;
             }
+
             _viewports.Clear();
         }
+
         public void AddViewport(GLViewport v)
         {
             _viewports.Add(v);
@@ -118,6 +120,7 @@ namespace BrawlLib.OpenGL
             v.Resize();
             v.OnInvalidate += Invalidate;
         }
+
         public void RemoveViewport(GLViewport v)
         {
             if (_viewports.Contains(v))
@@ -129,6 +132,7 @@ namespace BrawlLib.OpenGL
                 Invalidate();
             }
         }
+
         public void RemoveViewport(int index)
         {
             if (index < 0 || index >= _viewports.Count)
@@ -147,6 +151,7 @@ namespace BrawlLib.OpenGL
             DisposeContext();
             base.Dispose(disposing);
         }
+
         private void DisposeContext()
         {
             if (_ctx != null)
@@ -179,18 +184,21 @@ namespace BrawlLib.OpenGL
                         x = v2;
                         diff._x = diff2;
                     }
+
                     diff2 = Math.Abs(p._y - v2.Percentages._y);
                     if (diff2 <= diff._y)
                     {
                         y = v2;
                         diff._y = diff2;
                     }
+
                     diff2 = Math.Abs(p._z - v2.Percentages._z);
                     if (diff2 <= diff._z)
                     {
                         z = v2;
                         diff._z = diff2;
                     }
+
                     diff2 = Math.Abs(p._w - v2.Percentages._w);
                     if (diff2 <= diff._w)
                     {
@@ -198,32 +206,41 @@ namespace BrawlLib.OpenGL
                         diff._w = diff2;
                     }
                 }
+
                 Vector4 average = new Vector4(0.0f, 0.0f, 1.0f, 1.0f);
                 if (diff._x > 0.0f && x != null)
                 {
                     average._x = (v.Percentages._x + x.Percentages._x) / 2.0f;
                     x.SetXPercentage(average._x);
                 }
+
                 if (diff._y > 0.0f && y != null)
                 {
                     average._y = (v.Percentages._y + y.Percentages._y) / 2.0f;
                     y.SetYPercentage(average._y);
                 }
+
                 if (diff._z > 0.0f && z != null)
                 {
                     average._z = (v.Percentages._z + z.Percentages._z) / 2.0f;
                     z.SetZPercentage(average._z);
                 }
+
                 if (diff._w > 0.0f && w != null)
                 {
                     average._w = (v.Percentages._w + w.Percentages._w) / 2.0f;
                     w.SetWPercentage(average._w);
                 }
+
                 v.SetPercentages(average);
             }
         }
 
-        public void BeginUpdate() { _updateCounter++; }
+        public void BeginUpdate()
+        {
+            _updateCounter++;
+        }
+
         public void EndUpdate()
         {
             if ((_updateCounter = Math.Max(_updateCounter - 1, 0)) == 0)
@@ -247,6 +264,7 @@ namespace BrawlLib.OpenGL
 
             _ctx.Capture();
         }
+
         public void Release()
         {
             if (_ctx != null)
@@ -261,7 +279,7 @@ namespace BrawlLib.OpenGL
 
             Capture();
 
-            Vector3 v = (Vector3)BackColor;
+            Vector3 v = (Vector3) BackColor;
             GL.ClearColor(v._x, v._y, v._z, 0.0f);
             GL.ClearDepth(1.0);
 
@@ -273,7 +291,11 @@ namespace BrawlLib.OpenGL
             base.OnLoad(e);
         }
 
-        protected virtual void OnReset(object sender, EventArgs e) { OnInit(_ctx); }
+        protected virtual void OnReset(object sender, EventArgs e)
+        {
+            OnInit(_ctx);
+        }
+
         protected virtual void OnContextChanged(bool isNowCurrent)
         {
             //Don't update anything if this context has just been released
@@ -297,7 +319,9 @@ namespace BrawlLib.OpenGL
             base.OnHandleDestroyed(e);
         }
 
-        protected override void OnPaintBackground(PaintEventArgs e) { }
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+        }
 
         public GLViewport GetViewport(int x, int y)
         {
@@ -333,12 +357,16 @@ namespace BrawlLib.OpenGL
             AddViewport(GLViewport.DefaultPerspective);
         }
 
-        public float GetDepth(Vector2 v) { return GetDepth((int)(v._x + 0.5f), (int)(v._y + 0.5f)); }
+        public float GetDepth(Vector2 v)
+        {
+            return GetDepth((int) (v._x + 0.5f), (int) (v._y + 0.5f));
+        }
 
         public virtual float GetDepth(int x, int y)
         {
             float val = 0;
-            GL.ReadPixels(x, Height - y, 1, 1, OpenTK.Graphics.OpenGL.PixelFormat.DepthComponent, PixelType.Float, ref val);
+            GL.ReadPixels(x, Height - y, 1, 1, OpenTK.Graphics.OpenGL.PixelFormat.DepthComponent, PixelType.Float,
+                ref val);
             return val;
         }
 
@@ -372,11 +400,16 @@ namespace BrawlLib.OpenGL
                         this.Reset(); //Stops the red X of death in its tracks
                     }
                 }
-                finally { Monitor.Exit(_ctx); }
+                finally
+                {
+                    Monitor.Exit(_ctx);
+                }
             }
         }
 
-        internal virtual void OnInit(TKContext ctx) { }
+        internal virtual void OnInit(TKContext ctx)
+        {
+        }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -424,8 +457,8 @@ namespace BrawlLib.OpenGL
                 angleY = 180.0f - angleY;
             }
 
-            float lenX = (float)(Math.Tan(angleX * Math.PI / 180.0) * a);
-            float lenY = (float)(Math.Tan(angleY * Math.PI / 180.0) * a);
+            float lenX = (float) (Math.Tan(angleX * Math.PI / 180.0) * a);
+            float lenY = (float) (Math.Tan(angleY * Math.PI / 180.0) * a);
 
             return new Vector3(point._x + lenX, point._y + lenY, z);
         }
@@ -456,7 +489,9 @@ namespace BrawlLib.OpenGL
             Wii.Graphics.ShaderGenerator._forceRecompile = false;
         }
 
-        protected virtual void OnRenderViewport(PaintEventArgs e, GLViewport v) { }
+        protected virtual void OnRenderViewport(PaintEventArgs e, GLViewport v)
+        {
+        }
 
         private void InitializeComponent()
         {
@@ -468,7 +503,14 @@ namespace BrawlLib.OpenGL
             ResumeLayout(false);
         }
 
-        public IEnumerator<GLViewport> GetEnumerator() { return _viewports.GetEnumerator(); }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<GLViewport> GetEnumerator()
+        {
+            return _viewports.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

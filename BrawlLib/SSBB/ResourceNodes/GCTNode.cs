@@ -10,20 +10,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class GCTNode : ResourceNode
     {
-        internal byte* Data => (byte*)WorkingUncompressed.Address;
+        internal byte* Data => (byte*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override bool AllowNullNames => true;
         public override bool AllowDuplicateNames => true;
 
         public string _gameName;
-        public string GameName { get => _gameName; set { _gameName = value; SignalPropertyChange(); } }
+
+        public string GameName
+        {
+            get => _gameName;
+            set
+            {
+                _gameName = value;
+                SignalPropertyChange();
+            }
+        }
 
         private GCTHeader* _header;
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
 
-            GCTCodeLine* lines = (GCTCodeLine*)Data + 1;
+            GCTCodeLine* lines = (GCTCodeLine*) Data + 1;
             while (true)
             {
                 GCTCodeLine line = *lines++;
@@ -33,8 +43,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            _header = (GCTHeader*)lines;
-            if (((uint)_header - (uint)Data) < WorkingUncompressed.Length)
+            _header = (GCTHeader*) lines;
+            if ((uint) _header - (uint) Data < WorkingUncompressed.Length)
             {
                 if (_header->_nameOffset > 0)
                 {
@@ -54,16 +64,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            GCTCodeEntry* entry = (GCTCodeEntry*)(_header + 1);
+            GCTCodeEntry* entry = (GCTCodeEntry*) (_header + 1);
             for (int i = 0; i < _header->_count; i++)
             {
-                new GCTCodeEntryNode(&entry[i]).Initialize(this, Data + entry[i]._codeOffset, (int)entry[i]._lineCount * GCTCodeLine.Size);
+                new GCTCodeEntryNode(&entry[i]).Initialize(this, Data + entry[i]._codeOffset,
+                    (int) entry[i]._lineCount * GCTCodeLine.Size);
             }
         }
 
         private CompactStringTable _stringTable;
 
         public bool _writeInfo = true;
+
         public override int OnCalculateSize(bool force)
         {
             int size = 16;
@@ -91,16 +103,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                         _stringTable.Add(n._description);
                     }
                 }
+
                 size += _stringTable.TotalSize;
             }
+
             return size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            List<GCTCodeEntryNode> enabledChildren = Children.Select(e => ((GCTCodeEntryNode)e)).Where(e => e._enabled).ToList();
+            List<GCTCodeEntryNode> enabledChildren =
+                Children.Select(e => (GCTCodeEntryNode) e).Where(e => e._enabled).ToList();
 
-            GCTCodeLine* line = (GCTCodeLine*)address;
+            GCTCodeLine* line = (GCTCodeLine*) address;
             *line++ = GCTCodeLine.Tag;
             foreach (GCTCodeEntryNode n in enabledChildren)
             {
@@ -113,34 +128,34 @@ namespace BrawlLib.SSBB.ResourceNodes
             *line++ = GCTCodeLine.End;
             if (_writeInfo)
             {
-                GCTHeader* hdr = (GCTHeader*)line;
-                hdr->_count = (uint)enabledChildren.Count;
+                GCTHeader* hdr = (GCTHeader*) line;
+                hdr->_count = (uint) enabledChildren.Count;
 
                 int offset = 12 + enabledChildren.Count * 16;
-                _stringTable.WriteTable((VoidPtr)hdr + offset);
+                _stringTable.WriteTable((VoidPtr) hdr + offset);
 
-                hdr->_idOffset = (uint)_stringTable[_name] - (uint)hdr;
+                hdr->_idOffset = (uint) _stringTable[_name] - (uint) hdr;
                 if (!string.IsNullOrEmpty(_gameName))
                 {
-                    hdr->_nameOffset = (uint)_stringTable[_gameName] - (uint)hdr;
+                    hdr->_nameOffset = (uint) _stringTable[_gameName] - (uint) hdr;
                 }
                 else
                 {
                     hdr->_nameOffset = 0;
                 }
 
-                GCTCodeEntry* entry = (GCTCodeEntry*)(hdr + 1);
+                GCTCodeEntry* entry = (GCTCodeEntry*) (hdr + 1);
                 uint codeOffset = 8;
                 foreach (GCTCodeEntryNode n in enabledChildren)
                 {
                     entry->_codeOffset = codeOffset;
-                    codeOffset += (uint)n._lines.Length * 8;
+                    codeOffset += (uint) n._lines.Length * 8;
 
-                    entry->_lineCount = (uint)n._lines.Length;
-                    entry->_nameOffset = (uint)_stringTable[n._name] - (uint)entry;
+                    entry->_lineCount = (uint) n._lines.Length;
+                    entry->_nameOffset = (uint) _stringTable[n._name] - (uint) entry;
                     if (!string.IsNullOrEmpty(n._description))
                     {
-                        entry->_descOffset = (uint)_stringTable[n._description] - (uint)entry;
+                        entry->_descOffset = (uint) _stringTable[n._description] - (uint) entry;
                     }
                     else
                     {
@@ -262,9 +277,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     break;
                                 }
 
-                                if (uint.TryParse(lines[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint val1))
+                                if (uint.TryParse(lines[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture,
+                                    out uint val1))
                                 {
-                                    if (uint.TryParse(lines[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint val2))
+                                    if (uint.TryParse(lines[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture,
+                                        out uint val2))
                                     {
                                         GCTCodeLine l = new GCTCodeLine(val1, val2);
                                         g.Add(l);
@@ -294,6 +311,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
                     }
                 }
+
                 if (anyEnabled == false)
                 {
                     // No codes enabled in file - enable all codes
@@ -303,6 +321,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
             }
+
             return node;
         }
 
@@ -310,14 +329,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             FileMap map = FileMap.FromFile(path, FileMapProtect.ReadWrite);
 
-            GCTCodeLine* data = (GCTCodeLine*)map.Address;
+            GCTCodeLine* data = (GCTCodeLine*) map.Address;
             if (GCTCodeLine.Tag._1 != data->_1 || GCTCodeLine.Tag._2 != data->_2)
             {
                 map.Dispose();
                 return null;
             }
 
-            data = (GCTCodeLine*)(map.Address + (uint)Helpers.RoundDown((uint)map.Length, 8) - GCTCodeLine.Size);
+            data = (GCTCodeLine*) (map.Address + (uint) Helpers.RoundDown((uint) map.Length, 8) - GCTCodeLine.Size);
             bool endFound = false;
             int i = 0;
             while (!endFound)
@@ -334,7 +353,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (endFound && i <= 0)
             {
-                data = (GCTCodeLine*)map.Address + 1;
+                data = (GCTCodeLine*) map.Address + 1;
 
                 string s = "";
                 while (true)
@@ -348,7 +367,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     s += line.ToStringNoSpace();
                 }
 
-                GCTNode g = new GCTNode() { _origPath = path };
+                GCTNode g = new GCTNode() {_origPath = path};
 
                 List<string> _unrecognized = new List<string>();
 
@@ -375,7 +394,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (s.Length > 0)
                     {
-                        MessageBox.Show(string.Format("{0} code{1} w{2} recognized.", g.Children.Count.ToString(), g.Children.Count > 1 ? "s" : "", g.Children.Count > 1 ? "ere" : "as"));
+                        MessageBox.Show(string.Format("{0} code{1} w{2} recognized.", g.Children.Count.ToString(),
+                            g.Children.Count > 1 ? "s" : "", g.Children.Count > 1 ? "ere" : "as"));
                     }
                 }
                 else
@@ -385,7 +405,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (s.Length > 0)
                 {
-                    g.AddChild(new GCTCodeEntryNode() { _name = "Unrecognized Code(s)", LinesNoSpaces = s, _enabled = true }, false);
+                    g.AddChild(
+                        new GCTCodeEntryNode() {_name = "Unrecognized Code(s)", LinesNoSpaces = s, _enabled = true},
+                        false);
                 }
 
                 if (g._name == null)
@@ -409,12 +431,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class GCTCodeEntryNode : ResourceNode
     {
-        internal GCTCodeLine* Header => (GCTCodeLine*)WorkingUncompressed.Address;
+        internal GCTCodeLine* Header => (GCTCodeLine*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override bool AllowNullNames => true;
         public override bool AllowDuplicateNames => true;
 
         public GCTCodeLine[] _lines = new GCTCodeLine[0];
+
         public string DisplayLines
         {
             get
@@ -455,7 +478,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string _description;
         public bool _enabled;
 
-        public GCTCodeEntryNode() { }
+        public GCTCodeEntryNode()
+        {
+        }
+
         public GCTCodeEntryNode(GCTCodeEntry* entry)
         {
             _name = entry->CodeName;
@@ -484,10 +510,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         public buint _idOffset;
         public buint _count;
 
-        public string GameName => new string((sbyte*)(Address + _nameOffset));
-        public string GameID => new string((sbyte*)(Address + _idOffset));
+        public string GameName => new string((sbyte*) (Address + _nameOffset));
+        public string GameID => new string((sbyte*) (Address + _idOffset));
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     public unsafe struct GCTCodeEntry
@@ -497,10 +532,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         public buint _nameOffset;
         public buint _descOffset;
 
-        public string CodeName => new string((sbyte*)(Address + _nameOffset));
-        public string CodeDesc => new string((sbyte*)(Address + _descOffset));
+        public string CodeName => new string((sbyte*) (Address + _nameOffset));
+        public string CodeDesc => new string((sbyte*) (Address + _descOffset));
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 
     public struct GCTCodeLine
@@ -520,12 +564,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return ((uint)_1).ToString("X8") + " " + ((uint)_2).ToString("X8");
+            return ((uint) _1).ToString("X8") + " " + ((uint) _2).ToString("X8");
         }
 
         public string ToStringNoSpace()
         {
-            return ((uint)_1).ToString("X8") + ((uint)_2).ToString("X8");
+            return ((uint) _1).ToString("X8") + ((uint) _2).ToString("X8");
         }
 
         public static GCTCodeLine FromString(string s)

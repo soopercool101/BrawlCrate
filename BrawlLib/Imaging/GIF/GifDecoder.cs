@@ -1,4 +1,5 @@
 #region .NET Disclaimer/Info
+
 //===============================================================================
 //
 // gOODiDEA, uland.com
@@ -11,9 +12,11 @@
 // $History:		$  
 //  
 //===============================================================================
-#endregion 
+
+#endregion
 
 #region Java
+
 /**
  * Class GifDecoder - Decodes a GIF file into one or more frames.
  * <br><pre>
@@ -35,7 +38,9 @@
  * @version 1.03 November 2003
  *
  */
+
 #endregion
+
 using System;
 using System.Collections;
 using System.Drawing;
@@ -46,7 +51,6 @@ namespace Gif.Components
 {
     public class GifDecoder
     {
-
         /**
 		 * File read status: No errors.
 		 */
@@ -95,6 +99,7 @@ namespace Gif.Components
 
         // last graphic control extension info
         protected int dispose = 0;
+
         // 0=no action; 1=leave in place; 2=restore to bg; 3=restore to prev
         protected int lastDispose = 0;
         protected bool transparency = false; // use transparent color
@@ -120,6 +125,7 @@ namespace Gif.Components
                 image = im;
                 delay = del;
             }
+
             public Image image;
             public int delay;
         }
@@ -134,10 +140,11 @@ namespace Gif.Components
         {
             //
             delay = -1;
-            if ((n >= 0) && (n < frameCount))
+            if (n >= 0 && n < frameCount)
             {
-                delay = ((GifFrame)frames[n]).delay;
+                delay = ((GifFrame) frames[n]).delay;
             }
+
             return delay;
         }
 
@@ -192,6 +199,7 @@ namespace Gif.Components
                     count++;
                 }
             }
+
             return pixels;
         }
 
@@ -247,13 +255,14 @@ namespace Gif.Components
                         Color c = Color.Empty;
                         if (transparency)
                         {
-                            c = Color.FromArgb(0, 0, 0, 0);     // assume background is transparent
+                            c = Color.FromArgb(0, 0, 0, 0); // assume background is transparent
                         }
                         else
                         {
                             c = Color.FromArgb(lastBgColor);
                             //						c = new Color(lastBgColor); // use given background color
                         }
+
                         Brush brush = new SolidBrush(c);
                         g.FillRectangle(brush, lastRect);
                         brush.Dispose();
@@ -289,19 +298,22 @@ namespace Gif.Components
                                 break;
                         }
                     }
+
                     line = iline;
                     iline += inc;
                 }
+
                 line += iy;
                 if (line < height)
                 {
                     int k = line * width;
                     int dx = k + ix; // start of line in dest
                     int dlim = dx + iw; // end of dest line
-                    if ((k + width) < dlim)
+                    if (k + width < dlim)
                     {
                         dlim = k + width; // past dest edge
                     }
+
                     int sx = i * iw; // start of line in source
                     while (dx < dlim)
                     {
@@ -312,10 +324,12 @@ namespace Gif.Components
                         {
                             dest[dx] = c;
                         }
+
                         dx++;
                     }
                 }
             }
+
             SetPixels(dest);
         }
 
@@ -327,10 +341,11 @@ namespace Gif.Components
         public Image GetFrame(int n)
         {
             Image im = null;
-            if ((n >= 0) && (n < frameCount))
+            if (n >= 0 && n < frameCount)
             {
-                im = ((GifFrame)frames[n]).image;
+                im = ((GifFrame) frames[n]).image;
             }
+
             return im;
         }
 
@@ -365,12 +380,14 @@ namespace Gif.Components
                         status = STATUS_FORMAT_ERROR;
                     }
                 }
+
                 inStream.Close();
             }
             else
             {
                 status = STATUS_OPEN_ERROR;
             }
+
             return status;
         }
 
@@ -405,8 +422,7 @@ namespace Gif.Components
             do
             {
                 count = ReadBlock();
-            }
-            while (count > 0);
+            } while (count > 0);
         }
 
         /**
@@ -435,10 +451,11 @@ namespace Gif.Components
                 bi,
                 pi;
 
-            if ((pixels == null) || (pixels.Length < npix))
+            if (pixels == null || pixels.Length < npix)
             {
                 pixels = new byte[npix]; // allocate new pixel array
             }
+
             if (prefix == null)
             {
                 prefix = new short[MaxStackSize];
@@ -466,7 +483,7 @@ namespace Gif.Components
             for (code = 0; code < clear; code++)
             {
                 prefix[code] = 0;
-                suffix[code] = (byte)code;
+                suffix[code] = (byte) code;
             }
 
             //  Decode GIF pixel stream.
@@ -491,6 +508,7 @@ namespace Gif.Components
 
                             bi = 0;
                         }
+
                         datum += (block[bi] & 0xff) << bits;
                         bits += 8;
                         bi++;
@@ -506,7 +524,7 @@ namespace Gif.Components
 
                     //  Interpret the code
 
-                    if ((code > available) || (code == end_of_information))
+                    if (code > available || code == end_of_information)
                     {
                         break;
                     }
@@ -520,6 +538,7 @@ namespace Gif.Components
                         old_code = NullCode;
                         continue;
                     }
+
                     if (old_code == NullCode)
                     {
                         pixelStack[top++] = suffix[code];
@@ -527,17 +546,20 @@ namespace Gif.Components
                         first = code;
                         continue;
                     }
+
                     in_code = code;
                     if (code == available)
                     {
-                        pixelStack[top++] = (byte)first;
+                        pixelStack[top++] = (byte) first;
                         code = old_code;
                     }
+
                     while (code > clear)
                     {
                         pixelStack[top++] = suffix[code];
                         code = prefix[code];
                     }
+
                     first = suffix[code] & 0xff;
 
                     //  Add a new string to the string table,
@@ -547,16 +569,17 @@ namespace Gif.Components
                         break;
                     }
 
-                    pixelStack[top++] = (byte)first;
-                    prefix[available] = (short)old_code;
-                    suffix[available] = (byte)first;
+                    pixelStack[top++] = (byte) first;
+                    prefix[available] = (short) old_code;
+                    suffix[available] = (byte) first;
                     available++;
-                    if (((available & code_mask) == 0)
-                        && (available < MaxStackSize))
+                    if ((available & code_mask) == 0
+                        && available < MaxStackSize)
                     {
                         code_size++;
                         code_mask += available;
                     }
+
                     old_code = in_code;
                 }
 
@@ -608,6 +631,7 @@ namespace Gif.Components
             {
                 status = STATUS_FORMAT_ERROR;
             }
+
             return curByte;
         }
 
@@ -645,6 +669,7 @@ namespace Gif.Components
                     status = STATUS_FORMAT_ERROR;
                 }
             }
+
             return n;
         }
 
@@ -667,6 +692,7 @@ namespace Gif.Components
             catch (IOException)
             {
             }
+
             if (n < nbytes)
             {
                 status = STATUS_FORMAT_ERROR;
@@ -678,12 +704,13 @@ namespace Gif.Components
                 int j = 0;
                 while (i < ncolors)
                 {
-                    uint r = (uint)(c[j++] & 0xff);
-                    uint g = (uint)(c[j++] & 0xff);
-                    uint b = (uint)(c[j++] & 0xff);
-                    tab[i++] = (int)(0xff000000 | (r << 16) | (g << 8) | b);
+                    uint r = (uint) (c[j++] & 0xff);
+                    uint g = (uint) (c[j++] & 0xff);
+                    uint b = (uint) (c[j++] & 0xff);
+                    tab[i++] = (int) (0xff000000 | (r << 16) | (g << 8) | b);
                 }
             }
+
             return tab;
         }
 
@@ -722,8 +749,9 @@ namespace Gif.Components
                                 string app = "";
                                 for (int i = 0; i < 11; i++)
                                 {
-                                    app += (char)block[i];
+                                    app += (char) block[i];
                                 }
+
                                 if (app.Equals("NETSCAPE2.0"))
                                 {
                                     ReadNetscapeExt();
@@ -738,6 +766,7 @@ namespace Gif.Components
                                 Skip();
                                 break;
                         }
+
                         break;
                     case 0x3b:
                         done = true;
@@ -752,7 +781,8 @@ namespace Gif.Components
 
             inStream.Position = offset;
 
-            using (ProgressWindow p = new ProgressWindow(owner, "Decoding Image...", "Reading file, please wait...", false))
+            using (ProgressWindow p = new ProgressWindow(owner, "Decoding Image...", "Reading file, please wait...",
+                false))
             {
                 p.Begin(0, frameCount, 0);
                 done = false;
@@ -779,8 +809,9 @@ namespace Gif.Components
                                     string app = "";
                                     for (int i = 0; i < 11; i++)
                                     {
-                                        app += (char)block[i];
+                                        app += (char) block[i];
                                     }
+
                                     if (app.Equals("NETSCAPE2.0"))
                                     {
                                         ReadNetscapeExt();
@@ -796,6 +827,7 @@ namespace Gif.Components
                                     Skip();
                                     break;
                             }
+
                             break;
 
                         case 0x3b: // terminator
@@ -810,6 +842,7 @@ namespace Gif.Components
                             break;
                     }
                 }
+
                 p.Finish();
             }
         }
@@ -826,6 +859,7 @@ namespace Gif.Components
             {
                 dispose = 1; // elect to keep old image if discretionary
             }
+
             transparency = (packed & 1) != 0;
             delay = ReadShort() * 10; // delay in milliseconds
             transIndex = Read(); // transparent color index
@@ -840,8 +874,9 @@ namespace Gif.Components
             string id = "";
             for (int i = 0; i < 6; i++)
             {
-                id += (char)Read();
+                id += (char) Read();
             }
+
             if (!id.StartsWith("GIF"))
             {
                 status = STATUS_FORMAT_ERROR;
@@ -884,8 +919,8 @@ namespace Gif.Components
             int packed = Read();
             lctFlag = (packed & 0x80) != 0; // 1 - local color table flag
             interlace = (packed & 0x40) != 0; // 2 - interlace flag
-                                              // 3 - sort flag
-                                              // 4-5 - reserved
+            // 3 - sort flag
+            // 4-5 - reserved
             lctSize = 2 << (packed & 7); // 6-8 - local color table size
 
             if (lctFlag)
@@ -901,6 +936,7 @@ namespace Gif.Components
                     bgColor = 0;
                 }
             }
+
             int save = 0;
             if (transparency)
             {
@@ -942,8 +978,8 @@ namespace Gif.Components
             {
                 act[transIndex] = save;
             }
-            ResetFrame();
 
+            ResetFrame();
         }
 
         /**
@@ -951,7 +987,6 @@ namespace Gif.Components
 		 */
         protected void ReadLSD()
         {
-
             // logical screen size
             width = ReadShort();
             height = ReadShort();
@@ -959,8 +994,8 @@ namespace Gif.Components
             // packed fields
             int packed = Read();
             gctFlag = (packed & 0x80) != 0; // 1   : global color table flag
-                                            // 2-4 : color resolution
-                                            // 5   : gct sort flag
+            // 2-4 : color resolution
+            // 5   : gct sort flag
             gctSize = 2 << (packed & 7); // 6-8 : gct size
 
             bgIndex = Read(); // background color index
@@ -982,7 +1017,7 @@ namespace Gif.Components
                     int b2 = block[2] & 0xff;
                     loopCount = (b2 << 8) | b1;
                 }
-            } while ((blockSize > 0) && !Error());
+            } while (blockSize > 0 && !Error());
         }
 
         /**
@@ -1018,7 +1053,7 @@ namespace Gif.Components
             do
             {
                 ReadBlock();
-            } while ((blockSize > 0) && !Error());
+            } while (blockSize > 0 && !Error());
         }
     }
 }

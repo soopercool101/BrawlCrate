@@ -36,31 +36,33 @@ namespace System
             switch (Environment.OSVersion.Platform)
             {
                 case PlatformID.Win32NT:
-                    {
-                        Win32.FillMemory(dest, length, value);
-                        break;
-                    }
-                case PlatformID.MacOSX:
-                    {
-                        OSX.memset(dest, value, length);
-                        break;
-                    }
-                case PlatformID.Unix:
-                    {
-                        if (Directory.Exists("/Applications")
-                            & Directory.Exists("/System")
-                            & Directory.Exists("/Users")
-                            & Directory.Exists("/Volumes"))
-                        {
-                            goto case PlatformID.MacOSX;
-                        }
-                        else
-                        {
-                            Linux.memset(dest, value, length);
-                        }
+                {
+                    Win32.FillMemory(dest, length, value);
+                    break;
+                }
 
-                        break;
+                case PlatformID.MacOSX:
+                {
+                    OSX.memset(dest, value, length);
+                    break;
+                }
+
+                case PlatformID.Unix:
+                {
+                    if (Directory.Exists("/Applications")
+                        & Directory.Exists("/System")
+                        & Directory.Exists("/Users")
+                        & Directory.Exists("/Volumes"))
+                    {
+                        goto case PlatformID.MacOSX;
                     }
+                    else
+                    {
+                        Linux.memset(dest, value, length);
+                    }
+
+                    break;
+                }
             }
         }
     }

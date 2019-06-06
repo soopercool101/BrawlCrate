@@ -12,11 +12,18 @@ namespace System.PowerPcAssembly
         protected List<PPCOperand> _operands = null;
 
         [Browsable(false)]
-        public PPCMnemonic Operation { get => (PPCMnemonic)(this & 0xFC000000); set { _data &= ~0xFC000000; _data |= ((uint)value & 0xFC000000); } }
-        [Browsable(false)]
-        public string Name => GetName();
-        [Browsable(false)]
-        public PPCOperand[] Operands => _operands.ToArray();
+        public PPCMnemonic Operation
+        {
+            get => (PPCMnemonic) (this & 0xFC000000);
+            set
+            {
+                _data &= ~0xFC000000;
+                _data |= (uint) value & 0xFC000000;
+            }
+        }
+
+        [Browsable(false)] public string Name => GetName();
+        [Browsable(false)] public PPCOperand[] Operands => _operands.ToArray();
 
         internal PPCOpCode(uint value)
         {
@@ -25,10 +32,25 @@ namespace System.PowerPcAssembly
             _operands = new List<PPCOperand>();
         }
 
-        public static implicit operator Bin32(PPCOpCode o) { return o._data; }
-        public static implicit operator PPCOpCode(Bin32 u) { return PowerPC.Disassemble(u); }
-        public static implicit operator uint(PPCOpCode o) { return o._data; }
-        public static implicit operator PPCOpCode(uint u) { return PowerPC.Disassemble(u); }
+        public static implicit operator Bin32(PPCOpCode o)
+        {
+            return o._data;
+        }
+
+        public static implicit operator PPCOpCode(Bin32 u)
+        {
+            return PowerPC.Disassemble(u);
+        }
+
+        public static implicit operator uint(PPCOpCode o)
+        {
+            return o._data;
+        }
+
+        public static implicit operator PPCOpCode(uint u)
+        {
+            return PowerPC.Disassemble(u);
+        }
 
         public virtual string GetName()
         {
@@ -56,7 +78,7 @@ namespace System.PowerPcAssembly
 
         public PPCOpCode Clone()
         {
-            return (PPCOpCode)MemberwiseClone();
+            return (PPCOpCode) MemberwiseClone();
         }
 
         object ICloneable.Clone()
@@ -75,8 +97,10 @@ namespace System.PowerPcAssembly
             _names.Add(".word");
         }
 
-        public override string GetFormattedOperands() { return string.Format("0x{0:X8}", (uint)_data._data); }
-
+        public override string GetFormattedOperands()
+        {
+            return string.Format("0x{0:X8}", (uint) _data._data);
+        }
     }
 
     //  vaddubm
@@ -87,76 +111,144 @@ namespace System.PowerPcAssembly
             _names.Add("vaddubm");
         }
 
-        public override string GetFormattedOperands() { return string.Format("0x{0:X8}", _data._data); }
+        public override string GetFormattedOperands()
+        {
+            return string.Format("0x{0:X8}", _data._data);
+        }
     }
 
     //  mulli
     public unsafe class PPCMulli : PPCOpCode
     {
-        public int LeftRegister { get => _operands[0].Value; set => _operands[0].Value = value; }
-        public int RightRegister { get => _operands[1].Value; set => _operands[1].Value = value; }
-        public int Value { get => _operands[2].Value; set => _operands[2].Value = value; }
+        public int LeftRegister
+        {
+            get => _operands[0].Value;
+            set => _operands[0].Value = value;
+        }
+
+        public int RightRegister
+        {
+            get => _operands[1].Value;
+            set => _operands[1].Value = value;
+        }
+
+        public int Value
+        {
+            get => _operands[2].Value;
+            set => _operands[2].Value = value;
+        }
 
         internal PPCMulli(uint value) : base(value)
         {
             _names.Add("mulli");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value
         }
     }
 
     //  mullw
     public unsafe class PPCMullw : PPCOpCode
     {
-        public int LeftRegister { get => _operands[0].Value; set => _operands[0].Value = value; }
-        public int RightRegister { get => _operands[1].Value; set => _operands[1].Value = value; }
-        public int Value { get => _operands[2].Value; set => _operands[2].Value = value; }
+        public int LeftRegister
+        {
+            get => _operands[0].Value;
+            set => _operands[0].Value = value;
+        }
+
+        public int RightRegister
+        {
+            get => _operands[1].Value;
+            set => _operands[1].Value = value;
+        }
+
+        public int Value
+        {
+            get => _operands[2].Value;
+            set => _operands[2].Value = value;
+        }
 
         internal PPCMullw(uint value) : base(value)
         {
-
             _names.Add("mullw");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));       //  [2] Immediate Value
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Immediate Value
         }
     }
 
     //  subfic
     public unsafe class PPCSubfic : PPCOpCode
     {
-        public int LeftRegister { get => _operands[0].Value; set => _operands[0].Value = value; }
-        public int RightRegister { get => _operands[1].Value; set => _operands[1].Value = value; }
-        public int Value { get => _operands[2].Value; set => _operands[2].Value = value; }
+        public int LeftRegister
+        {
+            get => _operands[0].Value;
+            set => _operands[0].Value = value;
+        }
+
+        public int RightRegister
+        {
+            get => _operands[1].Value;
+            set => _operands[1].Value = value;
+        }
+
+        public int Value
+        {
+            get => _operands[2].Value;
+            set => _operands[2].Value = value;
+        }
 
         internal PPCSubfic(uint value) : base(value)
         {
             _names.Add("subfic");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value            
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value            
         }
     }
 
     //  cmplwi, cmpldi
     public unsafe class PPCCmpli : PPCOpCode
     {
-        public int ConditionRegister { get => _operands[0].Value; set => _operands[0].Value = value; }
-        public bool Unknown { get => _operands[1].Value != 0; set => _operands[1].Value = value ? 1 : 0; }
-        public bool IsDouble { get => _operands[2].Value != 0; set => _operands[2].Value = value ? 1 : 0; }
-        public int LeftRegister { get => _operands[3].Value; set => _operands[3].Value = value; }
-        public int Value { get => _operands[4].Value; set => _operands[4].Value = value; }
+        public int ConditionRegister
+        {
+            get => _operands[0].Value;
+            set => _operands[0].Value = value;
+        }
+
+        public bool Unknown
+        {
+            get => _operands[1].Value != 0;
+            set => _operands[1].Value = value ? 1 : 0;
+        }
+
+        public bool IsDouble
+        {
+            get => _operands[2].Value != 0;
+            set => _operands[2].Value = value ? 1 : 0;
+        }
+
+        public int LeftRegister
+        {
+            get => _operands[3].Value;
+            set => _operands[3].Value = value;
+        }
+
+        public int Value
+        {
+            get => _operands[4].Value;
+            set => _operands[4].Value = value;
+        }
 
         internal PPCCmpli(uint value) : base(value)
         {
             _names.Add("cmplwi");
             _names.Add("cmpldi");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));       //  [0] Condition Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));             //  [1] Unknown
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));             //  [2] Is Double
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [3] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [4] Immediate Value
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [1] Unknown
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [2] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [3] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [4] Immediate Value
         }
 
         public override string GetName()
@@ -187,21 +279,45 @@ namespace System.PowerPcAssembly
     //  cmpwi, cmpdi
     public unsafe class PPCCmpi : PPCOpCode
     {
-        public int ConditionRegister { get => _operands[0].Value; set => _operands[0].Value = value; }
-        public bool Unknown { get => _operands[1].Value != 0; set => _operands[1].Value = value ? 1 : 0; }
-        public bool IsDouble { get => _operands[2].Value != 0; set => _operands[2].Value = value ? 1 : 0; }
-        public int LeftRegister { get => _operands[3].Value; set => _operands[3].Value = value; }
-        public int Value { get => _operands[4].Value; set => _operands[4].Value = value; }
+        public int ConditionRegister
+        {
+            get => _operands[0].Value;
+            set => _operands[0].Value = value;
+        }
+
+        public bool Unknown
+        {
+            get => _operands[1].Value != 0;
+            set => _operands[1].Value = value ? 1 : 0;
+        }
+
+        public bool IsDouble
+        {
+            get => _operands[2].Value != 0;
+            set => _operands[2].Value = value ? 1 : 0;
+        }
+
+        public int LeftRegister
+        {
+            get => _operands[3].Value;
+            set => _operands[3].Value = value;
+        }
+
+        public int Value
+        {
+            get => _operands[4].Value;
+            set => _operands[4].Value = value;
+        }
 
         internal PPCCmpi(uint value) : base(value)
         {
             _names.Add("cmpwi");
             _names.Add("cmpdi");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));       //  [0] Condition Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));             //  [1] Unknown
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));             //  [2] Is Double
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [3] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [4] Immediate Value
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [1] Unknown
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [2] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [3] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [4] Immediate Value
         }
 
         public override string GetName()
@@ -233,17 +349,32 @@ namespace System.PowerPcAssembly
     public unsafe class PPCAddic : PPCOpCode
     {
         public bool SetCr => Operation == PPCMnemonic.addic_D;
-        public int LeftRegister { get => _operands[0].Value; set => _operands[0].Value = value; }
-        public int RightRegister { get => _operands[1].Value; set => _operands[1].Value = value; }
-        public int ImmediateValue { get => _operands[2].Value; set => _operands[2].Value = value; }
+
+        public int LeftRegister
+        {
+            get => _operands[0].Value;
+            set => _operands[0].Value = value;
+        }
+
+        public int RightRegister
+        {
+            get => _operands[1].Value;
+            set => _operands[1].Value = value;
+        }
+
+        public int ImmediateValue
+        {
+            get => _operands[2].Value;
+            set => _operands[2].Value = value;
+        }
 
         internal PPCAddic(uint value) : base(value)
         {
             _names.Add("addic");
             _names.Add("subic");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value      
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value      
         }
 
         public override string GetName()
@@ -266,7 +397,6 @@ namespace System.PowerPcAssembly
 
             return name;
         }
-
     }
 
     //  addi, addis, subi, subis, li, lis
@@ -279,9 +409,9 @@ namespace System.PowerPcAssembly
             _names.Add("addi");
             _names.Add("subi");
             _names.Add("li");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
         public override string GetName()
@@ -326,7 +456,9 @@ namespace System.PowerPcAssembly
 
     public unsafe class PPCBranch : PPCOpCode
     {
-        internal PPCBranch(uint value) : base(value) { }
+        internal PPCBranch(uint value) : base(value)
+        {
+        }
 
         public int _offsetID;
 
@@ -349,29 +481,85 @@ namespace System.PowerPcAssembly
                     s = s.Substring(1);
                 }
 
-                s = (s.StartsWith("0x") ? s.Substring(2, Math.Min(s.Length - 2, 8)) : s.Substring(0, Math.Min(s.Length, 8)));
+                s = s.StartsWith("0x")
+                    ? s.Substring(2, Math.Min(s.Length - 2, 8))
+                    : s.Substring(0, Math.Min(s.Length, 8));
                 if (int.TryParse(s, Globalization.NumberStyles.HexNumber, null, out int offset))
                 {
-                    DataOffset = (offset * (neg ? -1 : 1));
+                    DataOffset = offset * (neg ? -1 : 1);
                 }
             }
         }
-        public bool Absolute { get => _operands[_offsetID + 1].Value != 0; set => _operands[_offsetID + 1].Value = value ? 1 : 0; }
-        public bool Link { get => _operands[_offsetID + 2].Value != 0; set => _operands[_offsetID + 2].Value = value ? 1 : 0; }
+
+        public bool Absolute
+        {
+            get => _operands[_offsetID + 1].Value != 0;
+            set => _operands[_offsetID + 1].Value = value ? 1 : 0;
+        }
+
+        public bool Link
+        {
+            get => _operands[_offsetID + 2].Value != 0;
+            set => _operands[_offsetID + 2].Value = value ? 1 : 0;
+        }
     }
 
     //  bc, bdnz, bdnzf, bdnzt, bdz, bdzf, bdzt, beq, bne, bgt, blt, bge, ble
     public unsafe class PPCBc : PPCBranch
     {
-        public bool IgnoreCr { get => _operands[0].Value != 0; set => _operands[0].Value = value ? 1 : 0; }
-        public bool CrState { get => _operands[1].Value != 0; set => _operands[1].Value = value ? 1 : 0; }
-        public bool IgnoreCtr { get => _operands[2].Value != 0; set => _operands[2].Value = value ? 1 : 0; }
-        public bool CtrState { get => _operands[3].Value != 0; set => _operands[3].Value = value ? 1 : 0; }
-        public bool Hint { get => _operands[4].Value != 0; set => _operands[4].Value = value ? 1 : 0; }
-        public int ConditionRegister { get => _operands[5].Value; set => _operands[5].Value = value; }
-        public int CompareType { get => _operands[6].Value; set => _operands[6].Value = value; }
-        public int BranchInputs { get => _operands[7].Value; set => _operands[7].Value = value; }
-        public int BranchOptions { get => _operands[8].Value; set => _operands[8].Value = value; }
+        public bool IgnoreCr
+        {
+            get => _operands[0].Value != 0;
+            set => _operands[0].Value = value ? 1 : 0;
+        }
+
+        public bool CrState
+        {
+            get => _operands[1].Value != 0;
+            set => _operands[1].Value = value ? 1 : 0;
+        }
+
+        public bool IgnoreCtr
+        {
+            get => _operands[2].Value != 0;
+            set => _operands[2].Value = value ? 1 : 0;
+        }
+
+        public bool CtrState
+        {
+            get => _operands[3].Value != 0;
+            set => _operands[3].Value = value ? 1 : 0;
+        }
+
+        public bool Hint
+        {
+            get => _operands[4].Value != 0;
+            set => _operands[4].Value = value ? 1 : 0;
+        }
+
+        public int ConditionRegister
+        {
+            get => _operands[5].Value;
+            set => _operands[5].Value = value;
+        }
+
+        public int CompareType
+        {
+            get => _operands[6].Value;
+            set => _operands[6].Value = value;
+        }
+
+        public int BranchInputs
+        {
+            get => _operands[7].Value;
+            set => _operands[7].Value = value;
+        }
+
+        public int BranchOptions
+        {
+            get => _operands[8].Value;
+            set => _operands[8].Value = value;
+        }
         //public string Offset
         //{
         //    get { return (_operands[9].Value < 0 ? "-" : "") + "0x" + Math.Abs(_operands[9].Value).ToString("X"); }
@@ -404,19 +592,18 @@ namespace System.PowerPcAssembly
             _names.Add("beq");
             _names.Add("bns");
             _names.Add("bso");
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1));              //  [0] Ignore Cr                       (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1));              //  [1] Cr State 0=false, 1=true        (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1));              //  [2] Ignore Ctr                      (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));              //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));              //  [4] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [5] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [6] Compare Type        (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [7] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [8] Branch Options (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1)); //  [0] Ignore Cr                       (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1)); //  [1] Cr State 0=false, 1=true        (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1)); //  [2] Ignore Ctr                      (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [4] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [5] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [6] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [7] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [8] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [9] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [10] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [11] Link
-
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [10] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [11] Link
         }
 
         public override string GetName()
@@ -429,7 +616,7 @@ namespace System.PowerPcAssembly
             string name = "";
             if (!IgnoreCr && IgnoreCtr)
             {
-                name = _names[3 + (CompareType * 2) + (CrState ? 1 : 0)];
+                name = _names[3 + CompareType * 2 + (CrState ? 1 : 0)];
             }
             else if (IgnoreCr && !IgnoreCtr)
             {
@@ -518,9 +705,9 @@ namespace System.PowerPcAssembly
             _offsetID = 0;
 
             _names.Add("b");
-            _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x3FFFFFC, 0x2000000));    //  [0] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));                        //  [1] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));                        //  [2] Link
+            _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x3FFFFFC, 0x2000000)); //  [0] Offset
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [1] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [2] Link
         }
 
         public override string GetName()
@@ -551,15 +738,59 @@ namespace System.PowerPcAssembly
     //  blr
     public unsafe class PPCblr : PPCBranch
     {
-        public bool IgnoreCr { get => _operands[0].Value != 0; set => _operands[0].Value = value ? 1 : 0; }
-        public bool CrState { get => _operands[1].Value != 0; set => _operands[1].Value = value ? 1 : 0; }
-        public bool IgnoreCtr { get => _operands[2].Value != 0; set => _operands[2].Value = value ? 1 : 0; }
-        public bool CtrState { get => _operands[3].Value != 0; set => _operands[3].Value = value ? 1 : 0; }
-        public bool Hint { get => _operands[4].Value != 0; set => _operands[4].Value = value ? 1 : 0; }
-        public int ConditionRegister { get => _operands[5].Value; set => _operands[5].Value = value; }
-        public int CompareType { get => _operands[6].Value; set => _operands[6].Value = value; }
-        public int BranchInputs { get => _operands[7].Value; set => _operands[7].Value = value; }
-        public int BranchOptions { get => _operands[8].Value; set => _operands[8].Value = value; }
+        public bool IgnoreCr
+        {
+            get => _operands[0].Value != 0;
+            set => _operands[0].Value = value ? 1 : 0;
+        }
+
+        public bool CrState
+        {
+            get => _operands[1].Value != 0;
+            set => _operands[1].Value = value ? 1 : 0;
+        }
+
+        public bool IgnoreCtr
+        {
+            get => _operands[2].Value != 0;
+            set => _operands[2].Value = value ? 1 : 0;
+        }
+
+        public bool CtrState
+        {
+            get => _operands[3].Value != 0;
+            set => _operands[3].Value = value ? 1 : 0;
+        }
+
+        public bool Hint
+        {
+            get => _operands[4].Value != 0;
+            set => _operands[4].Value = value ? 1 : 0;
+        }
+
+        public int ConditionRegister
+        {
+            get => _operands[5].Value;
+            set => _operands[5].Value = value;
+        }
+
+        public int CompareType
+        {
+            get => _operands[6].Value;
+            set => _operands[6].Value = value;
+        }
+
+        public int BranchInputs
+        {
+            get => _operands[7].Value;
+            set => _operands[7].Value = value;
+        }
+
+        public int BranchOptions
+        {
+            get => _operands[8].Value;
+            set => _operands[8].Value = value;
+        }
         //public string Offset
         //{
         //    get { return (_operands[9].Value < 0 ? "-" : "") + "0x" + Math.Abs(_operands[9].Value).ToString("X"); }
@@ -592,18 +823,18 @@ namespace System.PowerPcAssembly
             _names.Add("beq");
             _names.Add("bns");
             _names.Add("bso");
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1));              //  [0] Ignore Cr                       (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1));              //  [1] Cr State 0=false, 1=true        (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1));              //  [2] Ignore Ctr                      (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));              //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));              //  [4] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [5] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [6] Compare Type        (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [7] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [8] Branch Options (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1)); //  [0] Ignore Cr                       (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1)); //  [1] Cr State 0=false, 1=true        (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1)); //  [2] Ignore Ctr                      (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [4] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [5] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [6] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [7] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [8] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [9] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [10] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [11] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [10] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [11] Link
         }
 
         public override string GetName()
@@ -616,7 +847,7 @@ namespace System.PowerPcAssembly
             string name = "";
             if (!IgnoreCr && IgnoreCtr)
             {
-                name = _names[3 + (CompareType * 2) + (CrState ? 1 : 0)];
+                name = _names[3 + CompareType * 2 + (CrState ? 1 : 0)];
             }
             else if (IgnoreCr && !IgnoreCtr)
             {
@@ -672,15 +903,59 @@ namespace System.PowerPcAssembly
     //  bctr
     public unsafe class PPCbctr : PPCBranch
     {
-        public bool IgnoreCr { get => _operands[0].Value != 0; set => _operands[0].Value = value ? 1 : 0; }
-        public bool CrState { get => _operands[1].Value != 0; set => _operands[1].Value = value ? 1 : 0; }
-        public bool IgnoreCtr { get => _operands[2].Value != 0; set => _operands[2].Value = value ? 1 : 0; }
-        public bool CtrState { get => _operands[3].Value != 0; set => _operands[3].Value = value ? 1 : 0; }
-        public bool Hint { get => _operands[4].Value != 0; set => _operands[4].Value = value ? 1 : 0; }
-        public int ConditionRegister { get => _operands[5].Value; set => _operands[5].Value = value; }
-        public int CompareType { get => _operands[6].Value; set => _operands[6].Value = value; }
-        public int BranchInputs { get => _operands[7].Value; set => _operands[7].Value = value; }
-        public int BranchOptions { get => _operands[8].Value; set => _operands[8].Value = value; }
+        public bool IgnoreCr
+        {
+            get => _operands[0].Value != 0;
+            set => _operands[0].Value = value ? 1 : 0;
+        }
+
+        public bool CrState
+        {
+            get => _operands[1].Value != 0;
+            set => _operands[1].Value = value ? 1 : 0;
+        }
+
+        public bool IgnoreCtr
+        {
+            get => _operands[2].Value != 0;
+            set => _operands[2].Value = value ? 1 : 0;
+        }
+
+        public bool CtrState
+        {
+            get => _operands[3].Value != 0;
+            set => _operands[3].Value = value ? 1 : 0;
+        }
+
+        public bool Hint
+        {
+            get => _operands[4].Value != 0;
+            set => _operands[4].Value = value ? 1 : 0;
+        }
+
+        public int ConditionRegister
+        {
+            get => _operands[5].Value;
+            set => _operands[5].Value = value;
+        }
+
+        public int CompareType
+        {
+            get => _operands[6].Value;
+            set => _operands[6].Value = value;
+        }
+
+        public int BranchInputs
+        {
+            get => _operands[7].Value;
+            set => _operands[7].Value = value;
+        }
+
+        public int BranchOptions
+        {
+            get => _operands[8].Value;
+            set => _operands[8].Value = value;
+        }
         //public string Offset
         //{
         //    get { return (_operands[9].Value < 0 ? "-" : "") + "0x" + Math.Abs(_operands[9].Value).ToString("X"); }
@@ -713,20 +988,19 @@ namespace System.PowerPcAssembly
             _names.Add("beq");
             _names.Add("bns");
             _names.Add("bso");
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1));              //  [0] Ignore Cr                       (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1));              //  [1] Cr State 0=false, 1=true        (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1));              //  [2] Ignore Ctr                      (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));              //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));              //  [-] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [4] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [5] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1)); //  [0] Ignore Cr                       (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1)); //  [1] Cr State 0=false, 1=true        (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1)); //  [2] Ignore Ctr                      (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [-] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [4] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [5] Compare Type        (BO)
 
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [6] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [7] Branch Options (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [6] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [7] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [-] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [-] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [8] Link
-
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [-] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [8] Link
         }
 
         public override string GetName()
@@ -745,7 +1019,7 @@ namespace System.PowerPcAssembly
 
             if (!IgnoreCr && IgnoreCtr)
             {
-                name = _names[3 + (CompareType * 2) + (CrState ? 1 : 0)];
+                name = _names[3 + CompareType * 2 + (CrState ? 1 : 0)];
             }
             else if (IgnoreCr && !IgnoreCtr)
             {
@@ -800,16 +1074,20 @@ namespace System.PowerPcAssembly
     //  rlwimi
     public unsafe class PPCRlwimi : PPCOpCode
     {
-        public bool SetCr { get => _data[0]; set => _data[0] = value; }
+        public bool SetCr
+        {
+            get => _data[0];
+            set => _data[0] = value;
+        }
 
         internal PPCRlwimi(uint value) : base(value)
         {
             _names.Add("rlwimi");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       // [1] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       // [0] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F));            // [2] Roll Left
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F));             // [3] NAND Mask
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E));             // [4] AND Mask
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); // [1] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); // [0] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F)); // [2] Roll Left
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F)); // [3] NAND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E)); // [4] AND Mask
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            // [-] Set Cr
         }
 
@@ -827,11 +1105,11 @@ namespace System.PowerPcAssembly
         public PPCRlwinm(uint value) : base(value)
         {
             _names.Add("rlwinm");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       // [1] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       // [0] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F));            // [2] Roll Left
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F));             // [3] NAND Mask
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E));             // [4] AND Mask
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); // [1] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); // [0] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F)); // [2] Roll Left
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F)); // [3] NAND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E)); // [4] AND Mask
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            // [-] Set Cr
         }
 
@@ -849,11 +1127,11 @@ namespace System.PowerPcAssembly
         internal OpRlwmn(uint value) : base(value)
         {
             _names.Add("rlwmn");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       // [1] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       // [0] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));       // [2] Right Register 2
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F));             // [3] NAND Mask
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E));             // [4] AND Mask
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); // [1] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); // [0] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); // [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F)); // [3] NAND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E)); // [4] AND Mask
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            // [-] Set Cr      
         }
 
@@ -870,9 +1148,9 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("xor");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
         }
     }
 
@@ -884,9 +1162,9 @@ namespace System.PowerPcAssembly
         {
             _names.Add("or");
             _names.Add("mr");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
         }
 
         public override string GetName()
@@ -926,9 +1204,9 @@ namespace System.PowerPcAssembly
             _names.Add("ori");
             _names.Add("xori");
             _names.Add("nop");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value
         }
 
         public override string GetName()
@@ -977,9 +1255,9 @@ namespace System.PowerPcAssembly
         {
             _names.Add("andi.");
             _names.Add("andis.");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value
         }
 
         public override string GetName()
@@ -996,7 +1274,10 @@ namespace System.PowerPcAssembly
             _names.Add("rldicl");
         }
 
-        public override string GetFormattedOperands() { return string.Format("0x{0:X8}", this); }
+        public override string GetFormattedOperands()
+        {
+            return string.Format("0x{0:X8}", this);
+        }
     }
 
     // cmpw, cmpd
@@ -1008,11 +1289,11 @@ namespace System.PowerPcAssembly
         {
             _names.Add("cmpw");
             _names.Add("cmpd");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));       //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));           //  [-] Undefined
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));             //  [1] Is Double
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [2] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [3] Right 
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [1] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [2] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [3] Right 
         }
 
         public override string GetName()
@@ -1049,9 +1330,9 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("subc");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));             //  [-] Set Cr
         }
 
@@ -1070,9 +1351,9 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("slw");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));             //  [-] Set Cr
         }
 
@@ -1090,9 +1371,9 @@ namespace System.PowerPcAssembly
         internal PPCAnd(uint value) : base(value)
         {
             _names.Add("and");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));             //  [-] Set Cr
         }
 
@@ -1112,11 +1393,11 @@ namespace System.PowerPcAssembly
         {
             _names.Add("cmplw");
             _names.Add("cmpld");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));       //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));           //  [-] Undefined
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));             //  [1] Is Double
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [2] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [3] Right 
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [1] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [2] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [3] Right 
         }
 
         public override string GetName()
@@ -1153,9 +1434,9 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("sub");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            //  [-] Set Cr
         }
 
@@ -1175,8 +1456,8 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("cntlzw");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [1] Right 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right 
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            //  [-] Set Cr
         }
 
@@ -1195,8 +1476,8 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("cntlzd");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [1] Right 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right 
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            //  [-] Set Cr
         }
 
@@ -1215,9 +1496,9 @@ namespace System.PowerPcAssembly
             : base(value)
         {
             _names.Add("add");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));        //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));        //  [1] Right Register 1
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F));        //  [2] Right Register 2
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register 1
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); //  [2] Right Register 2
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            //  [-] Set Cr
         }
 
@@ -1233,8 +1514,8 @@ namespace System.PowerPcAssembly
         internal PPCMfspr(uint value) : base(value)
         {
             _names.Add("mfspr");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.SREGISTER, 16, 0x1F));      //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.SREGISTER, 16, 0x1F)); //  [1] Right Register
         }
     }
 
@@ -1244,8 +1525,8 @@ namespace System.PowerPcAssembly
         public PPCMtspr(uint value) : base(value)
         {
             _names.Add("mtspr");
-            _operands.Add(new PPCOperand(this, OperandType.SREGISTER, 16, 0x1F));      //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.SREGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register
         }
 
         public override string GetName()
@@ -1262,14 +1543,18 @@ namespace System.PowerPcAssembly
     //  extsh
     public unsafe class PPCExtsh : PPCOpCode
     {
-        public bool SetCr { get => _data[0]; set => _data[0] = value; }
+        public bool SetCr
+        {
+            get => _data[0];
+            set => _data[0] = value;
+        }
 
         internal PPCExtsh(uint value)
             : base(value)
         {
             _names.Add("extsh");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [1] Right 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right 
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            //  [-] Set Cr
         }
 
@@ -1282,14 +1567,18 @@ namespace System.PowerPcAssembly
     //  extsb
     public unsafe class PPCExtsb : PPCOpCode
     {
-        public bool SetCr { get => _data[0]; set => _data[0] = value; }
+        public bool SetCr
+        {
+            get => _data[0];
+            set => _data[0] = value;
+        }
 
         internal PPCExtsb(uint value)
             : base(value)
         {
             _names.Add("extsb");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [1] Right 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right 
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            //  [-] Set Cr
         }
 
@@ -1310,12 +1599,13 @@ namespace System.PowerPcAssembly
             _names.Add("lhz");
             _names.Add("lmw");
             _names.Add("ld");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
-        public bool Update => Operation == PPCMnemonic.lwzu || Operation == PPCMnemonic.lbzu || Operation == PPCMnemonic.lhzu || Operation == PPCMnemonic.lhau;
+        public bool Update => Operation == PPCMnemonic.lwzu || Operation == PPCMnemonic.lbzu ||
+                              Operation == PPCMnemonic.lhzu || Operation == PPCMnemonic.lhau;
 
         public bool LoadWord => Operation == PPCMnemonic.lwz || Operation == PPCMnemonic.lwzu;
         public bool LoadHalf => Operation == PPCMnemonic.lhz || Operation == PPCMnemonic.lhzu;
@@ -1361,7 +1651,6 @@ namespace System.PowerPcAssembly
             }
 
             return name;
-
         }
 
         public override string GetFormattedOperands()
@@ -1382,12 +1671,13 @@ namespace System.PowerPcAssembly
             _names.Add("sth");
             _names.Add("stmw");
             _names.Add("std");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));       //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value 
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
-        public bool Update => Operation == PPCMnemonic.stwu || Operation == PPCMnemonic.sthu || Operation == PPCMnemonic.stbu;
+        public bool Update => Operation == PPCMnemonic.stwu || Operation == PPCMnemonic.sthu ||
+                              Operation == PPCMnemonic.stbu;
 
         public bool StoreWord => Operation == PPCMnemonic.stw || Operation == PPCMnemonic.stwu;
         public bool StoreHalf => Operation == PPCMnemonic.sth || Operation == PPCMnemonic.sthu;
@@ -1445,9 +1735,9 @@ namespace System.PowerPcAssembly
         {
             _names.Add("lfs");
             _names.Add("lfd");
-            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F));      //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value 
+            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
         private bool Update => Operation == PPCMnemonic.lfsu || Operation == PPCMnemonic.lfdu;
@@ -1486,9 +1776,9 @@ namespace System.PowerPcAssembly
         {
             _names.Add("stfs");
             _names.Add("stfd");
-            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F));      //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));       //  [1] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000));   //  [2] Immediate Value 
+            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
         private bool Update => Operation == PPCMnemonic.stfsu || Operation == PPCMnemonic.stfdu;
@@ -1526,10 +1816,10 @@ namespace System.PowerPcAssembly
         internal OpFcmpu(uint value) : base(value)
         {
             _names.Add("fcmpu");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));       //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
             //_Operands.Add(new PPCOperand(OperandType.VAL, 21, 0x3));                 //  [-] Unknown
-            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 16, 0x1F));      //  [1] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 11, 0x1F));      //  [2] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 16, 0x1F)); //  [1] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 11, 0x1F)); //  [2] Right Register
         }
     }
 }

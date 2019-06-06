@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SCN0LightSetNode : SCN0EntryNode
     {
-        internal SCN0LightSet* Data => (SCN0LightSet*)WorkingUncompressed.Address;
+        internal SCN0LightSet* Data => (SCN0LightSet*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SCN0LightSet;
 
         public SCN0LightNode[] _lights = new SCN0LightNode[8];
@@ -35,16 +35,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 value = null;
             }
 
-            if (/*!*/string.IsNullOrEmpty(value))
-            //{
-            //    //for (; i < 8; i++)
-            //    //    if (GetLightName(i) == value && i != index)
-            //    //        return;
-            //    for (i = 0; i < index; i++)
-            //        if (String.IsNullOrEmpty(GetLightName(i)))
-            //            break;
-            //}
-            //else
+            if ( /*!*/string.IsNullOrEmpty(value))
+                //{
+                //    //for (; i < 8; i++)
+                //    //    if (GetLightName(i) == value && i != index)
+                //    //        return;
+                //    for (i = 0; i < index; i++)
+                //        if (String.IsNullOrEmpty(GetLightName(i)))
+                //            break;
+                //}
+                //else
             {
                 _lights[index] = null;
                 //int amt = 0;
@@ -63,7 +63,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             //if (i <= index)
             else
             {
-                _lights[i] = ((SCN0Node)Parent.Parent).GetFolder<SCN0LightNode>().FindChild(value, false) as SCN0LightNode;
+                _lights[i] =
+                    ((SCN0Node) Parent.Parent).GetFolder<SCN0LightNode>().FindChild(value, false) as SCN0LightNode;
                 //if (_lights[i] == null)
                 //{
                 //    int amt = 0;
@@ -81,60 +82,78 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Ambience))]
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Ambience))]
         public string Ambience
         {
             get => _ambient != null ? _ambient.Name : null;
             set
             {
-                _ambient = ((SCN0Node)Parent.Parent).GetFolder<SCN0AmbientLightNode>().FindChild(value, false) as SCN0AmbientLightNode;
+                _ambient =
+                    ((SCN0Node) Parent.Parent).GetFolder<SCN0AmbientLightNode>().FindChild(value, false) as
+                    SCN0AmbientLightNode;
                 SignalPropertyChange();
             }
         }
 
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light0
         {
             get => GetLightName(0);
             set => SetLight(0, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light1
         {
             get => GetLightName(1);
             set => SetLight(1, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light2
         {
             get => GetLightName(2);
             set => SetLight(2, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light3
         {
             get => GetLightName(3);
             set => SetLight(3, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light4
         {
             get => GetLightName(4);
             set => SetLight(4, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light5
         {
             get => GetLightName(5);
             set => SetLight(5, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light6
         {
             get => GetLightName(6);
             set => SetLight(6, value);
         }
-        [Category("Light Set"), TypeConverter(typeof(DropDownListSCN0Light))]
+
+        [Category("Light Set")]
+        [TypeConverter(typeof(DropDownListSCN0Light))]
         public string Light7
         {
             get => GetLightName(7);
@@ -152,14 +171,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void AttachNodes()
         {
-            SCN0Node node = (SCN0Node)Parent.Parent;
+            SCN0Node node = (SCN0Node) Parent.Parent;
             SCN0GroupNode g = node.GetFolder<SCN0LightNode>();
             bint* strings = Data->StringOffsets;
             if (g != null && !_replaced)
             {
                 for (int i = 0; i < Data->_numLights && i < 8; i++)
                 {
-                    _lights[i] = g.FindChild(new string((sbyte*)strings + strings[i]), false) as SCN0LightNode;
+                    _lights[i] = g.FindChild(new string((sbyte*) strings + strings[i]), false) as SCN0LightNode;
                 }
             }
 
@@ -204,7 +223,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnRebuild(address, length, force);
 
-            SCN0LightSet* header = (SCN0LightSet*)address;
+            SCN0LightSet* header = (SCN0LightSet*) address;
 
             int x = 0;
             for (int i = 0; i < 8; i++)
@@ -217,7 +236,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             header->_pad = 0;
             header->_id = -1;
-            header->_numLights = (byte)x;
+            header->_numLights = (byte) x;
             bshort* ids = header->IDs;
             int e = 0;
             while (e < 8)
@@ -230,7 +249,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.PostProcess(scn0Address, dataAddress, stringTable);
 
-            SCN0LightSet* header = (SCN0LightSet*)dataAddress;
+            SCN0LightSet* header = (SCN0LightSet*) dataAddress;
 
             if (_ambient != null && !string.IsNullOrEmpty(_ambient.Name))
             {
@@ -247,7 +266,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (!string.IsNullOrEmpty(GetLightName(i)))
                 {
-                    strings[i] = (int)stringTable[GetLightName(i)] + 4 - (int)strings;
+                    strings[i] = (int) stringTable[GetLightName(i)] + 4 - (int) strings;
                 }
                 else
                 {

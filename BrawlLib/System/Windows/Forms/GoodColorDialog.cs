@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+
 namespace System.Windows.Forms
 {
     public class GoodColorDialog : Form
@@ -34,7 +35,6 @@ namespace System.Windows.Forms
             ShowInTaskbar = false;
             Text = "Color Selector";
             ResumeLayout(false);
-
         }
 
         #endregion
@@ -46,6 +46,7 @@ namespace System.Windows.Forms
             get => goodColorControl21.Color;
             set => goodColorControl21.Color = value;
         }
+
         public bool EditAlpha
         {
             get => goodColorControl21.EditAlpha;
@@ -61,6 +62,7 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         public bool ShowOldColor
         {
             get => goodColorControl21.ShowOldColor;

@@ -6,7 +6,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmPointerNode : ClassMemberInstanceNode
     {
-        public override int GetSize() { return 4; }
+        public override int GetSize()
+        {
+            return 4;
+        }
 
         public override bool OnInitialize()
         {
@@ -15,25 +18,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _name = "Pointer" + Index;
             }
 
-            return *(bint*)Data != 0;
+            return *(bint*) Data != 0;
         }
 
         public override void OnPopulate()
         {
-            VoidPtr dataPtr = ((bint*)Data)->OffsetAddress;
+            VoidPtr dataPtr = ((bint*) Data)->OffsetAddress;
             switch (_memberType)
             {
                 case hkClassMember.Type.TYPE_STRUCT:
                     new HavokMetaObjectNode(_classNode)
-                    .Initialize(this, dataPtr, _classNode.Size);
+                        .Initialize(this, dataPtr, _classNode.Size);
                     break;
                 case hkClassMember.Type.TYPE_ENUM:
                 case hkClassMember.Type.TYPE_FLAGS:
                     new cmEnumNode()
-                    {
-                        _enumNode = _enumNode
-                    }
-                    .Initialize(this, dataPtr, (int)_memberFlags & 0x3F);
+                        {
+                            _enumNode = _enumNode
+                        }
+                        .Initialize(this, dataPtr, (int) _memberFlags & 0x3F);
                     break;
                 case hkClassMember.Type.TYPE_ARRAY:
                 case hkClassMember.Type.TYPE_HOMOGENEOUSARRAY:
@@ -55,6 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         instance.Initialize(this, dataPtr, instance.GetSize());
                     }
+
                     break;
             }
         }
@@ -66,7 +70,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-
         }
 
         public override void WriteParams(System.Xml.XmlWriter writer, Dictionary<HavokClassNode, int> classNodes)

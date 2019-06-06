@@ -8,7 +8,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class cmEnumNode : ClassMemberInstanceNode
     {
-        public override int GetSize() { return 0; }
+        public override int GetSize()
+        {
+            return 0;
+        }
 
         public Dictionary<string, int> _enums;
 
@@ -97,17 +100,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _enums.Add(e._name, e.Value);
             }
 
-            if (((int)_memberFlags & 0x8) != 0)
+            if (((int) _memberFlags & 0x8) != 0)
             {
-                _value = *(sbyte*)Data;
+                _value = *(sbyte*) Data;
             }
-            else if (((int)_memberFlags & 0x10) != 0)
+            else if (((int) _memberFlags & 0x10) != 0)
             {
-                _value = *(bshort*)Data;
+                _value = *(bshort*) Data;
             }
-            else if (((int)_memberFlags & 0x20) != 0)
+            else if (((int) _memberFlags & 0x20) != 0)
             {
-                _value = *(bint*)Data;
+                _value = *(bint*) Data;
             }
 
             return false;
@@ -115,17 +118,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            if (((int)_memberFlags & 0x8) != 0)
+            if (((int) _memberFlags & 0x8) != 0)
             {
-                *(sbyte*)address = (sbyte)_value;
+                *(sbyte*) address = (sbyte) _value;
             }
-            else if (((int)_memberFlags & 0x10) != 0)
+            else if (((int) _memberFlags & 0x10) != 0)
             {
-                *(bshort*)address = (short)_value;
+                *(bshort*) address = (short) _value;
             }
-            else if (((int)_memberFlags & 0x20) != 0)
+            else if (((int) _memberFlags & 0x20) != 0)
             {
-                *(bint*)address = _value;
+                *(bint*) address = _value;
             }
         }
 
@@ -134,9 +137,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             writer.WriteString(Value.Replace(", ", " "));
         }
     }
+
     public class DropDownListHavokEnum : StringConverter
     {
-        public override bool GetStandardValuesSupported(ITypeDescriptorContext context) { return true; }
+        public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             cmEnumNode enumNode = context.Instance as cmEnumNode;

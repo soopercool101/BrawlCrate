@@ -11,18 +11,26 @@ namespace BrawlLib.SSBB.ResourceNodes
         VoidPtr GetAddress();
         int GetLength();
     }
+
     public unsafe class RawDataNode : ResourceNode, IBufferNode
     {
-        internal byte* Header => (byte*)WorkingUncompressed.Address;
+        internal byte* Header => (byte*) WorkingUncompressed.Address;
 
         public UnsafeBuffer _buffer;
 
         public int Size => WorkingUncompressed.Length;
 
-        public RawDataNode() { }
-        public RawDataNode(string name) { _name = name; }
+        public RawDataNode()
+        {
+        }
 
-        [Browsable(true), TypeConverter(typeof(DropDownListCompression))]
+        public RawDataNode(string name)
+        {
+            _name = name;
+        }
+
+        [Browsable(true)]
+        [TypeConverter(typeof(DropDownListCompression))]
         public override string Compression
         {
             get => base.Compression;
@@ -33,7 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _buffer = new UnsafeBuffer(WorkingUncompressed.Length);
 
-            Memory.Move(_buffer.Address, Header, (uint)_buffer.Length);
+            Memory.Move(_buffer.Address, Header, (uint) _buffer.Length);
 
             return false;
         }
@@ -45,12 +53,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override unsafe void Export(string outPath)
         {
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.SequentialScan))
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.None, 8, FileOptions.SequentialScan))
             {
                 stream.SetLength(_buffer.Length);
                 using (FileMap map = FileMap.FromStream(stream))
                 {
-                    Memory.Move(map.Address, _buffer.Address, (uint)_buffer.Length);
+                    Memory.Move(map.Address, _buffer.Address, (uint) _buffer.Length);
                 }
             }
         }
@@ -58,7 +67,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             VoidPtr header = address;
-            Memory.Move(header, _buffer.Address, (uint)length);
+            Memory.Move(header, _buffer.Address, (uint) length);
         }
 
         public VoidPtr GetAddress()

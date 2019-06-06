@@ -13,6 +13,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static MRGWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -20,12 +21,12 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("ARChive", null, NewARCAction),
                 new ToolStripMenuItem("BRResource Pack", null, NewBRESAction),
                 new ToolStripMenuItem("MSBin", null, NewMSBinAction)
-                ));
+            ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
                 new ToolStripMenuItem("ARChive", null, ImportARCAction),
                 new ToolStripMenuItem("BRResource Pack", null, ImportBRESAction),
                 new ToolStripMenuItem("MSBin", null, ImportMSBinAction)
-                ));
+            ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Export All", null, ExportAllAction));
             _menu.Items.Add(new ToolStripMenuItem("Replace All", null, ReplaceAllAction));
@@ -42,39 +43,78 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewBRESAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewBRES(); }
-        protected static void NewARCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewARC(); }
-        protected static void NewMSBinAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewMSBin(); }
-        protected static void ImportBRESAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportBRES(); }
-        protected static void ImportARCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportARC(); }
-        protected static void ImportMSBinAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportMSBin(); }
-        protected static void ExportAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ExportAll(); }
-        protected static void ReplaceAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ReplaceAll(); }
+
+        protected static void NewBRESAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewBRES();
+        }
+
+        protected static void NewARCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewARC();
+        }
+
+        protected static void NewMSBinAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewMSBin();
+        }
+
+        protected static void ImportBRESAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportBRES();
+        }
+
+        protected static void ImportARCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportARC();
+        }
+
+        protected static void ImportMSBinAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportMSBin();
+        }
+
+        protected static void ExportAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ExportAll();
+        }
+
+        protected static void ReplaceAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ReplaceAll();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[7].Enabled = _menu.Items[8].Enabled = _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
+            _menu.Items[7].Enabled = _menu.Items[8].Enabled =
+                _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MRGWrapper w = GetInstance<MRGWrapper>();
 
             _menu.Items[7].Enabled = _menu.Items[14].Enabled = w.Parent != null;
-            _menu.Items[8].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[8].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[10].Enabled = w.PrevNode != null;
             _menu.Items[11].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public override string ExportFilter => "Multiple Resource Group (*.mrg)|*.mrg|" +
-                    "PAC Archive (*.pac)|*.pac|" +
-                    "Compressed PAC Archive (*.pcs)|*.pcs|" +
-                    "Archive Pair (*.pair)|*.pair";
+                                               "PAC Archive (*.pac)|*.pac|" +
+                                               "Compressed PAC Archive (*.pcs)|*.pcs|" +
+                                               "Archive Pair (*.pair)|*.pair";
 
-        public MRGWrapper() { ContextMenuStrip = _menu; }
+        public MRGWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public MRGNode NewMRG()
         {
-            MRGNode node = new MRGNode() { Name = _resource.FindName("NewMRG") };
+            MRGNode node = new MRGNode() {Name = _resource.FindName("NewMRG")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -82,9 +122,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public BRRESNode NewBRES()
         {
-            BRRESNode node = new BRRESNode() { FileType = ARCFileType.MiscData };
+            BRRESNode node = new BRRESNode() {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -92,9 +133,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public MSBinNode NewMSBin()
         {
-            MSBinNode node = new MSBinNode() { FileType = ARCFileType.MiscData };
+            MSBinNode node = new MSBinNode() {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -110,6 +152,7 @@ namespace BrawlCrate.NodeWrappers
                 NewMRG().Replace(path);
             }
         }
+
         public void ImportBRES()
         {
             if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
@@ -117,6 +160,7 @@ namespace BrawlCrate.NodeWrappers
                 NewBRES().Replace(path);
             }
         }
+
         public void ImportMSBin()
         {
             if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
@@ -128,7 +172,7 @@ namespace BrawlCrate.NodeWrappers
 
         public override void OnExport(string outPath, int filterIndex)
         {
-            ((MRGNode)_resource).Export(outPath);
+            ((MRGNode) _resource).Export(outPath);
         }
 
         public void ExportAll()
@@ -137,7 +181,9 @@ namespace BrawlCrate.NodeWrappers
             if (path == null)
             {
                 return;
-            } ((MRGNode)_resource).ExtractToFolder(path);
+            }
+
+            ((MRGNode) _resource).ExtractToFolder(path);
         }
 
         public void ReplaceAll()
@@ -146,7 +192,9 @@ namespace BrawlCrate.NodeWrappers
             if (path == null)
             {
                 return;
-            } ((MRGNode)_resource).ReplaceFromFolder(path);
+            }
+
+            ((MRGNode) _resource).ReplaceFromFolder(path);
         }
     }
 }

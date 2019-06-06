@@ -273,6 +273,7 @@ namespace System.Windows.Forms
                     }
                 }
             }
+
             Invalidate();
         }
 
@@ -313,14 +314,18 @@ namespace System.Windows.Forms
                 GLTexture bgTex = TKContext.FindOrCreate("TexBG", GLTexturePanel.CreateBG);
                 bgTex.Bind();
 
-                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
-                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
-                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
-                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS,
+                    (int) TextureWrapMode.Repeat);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT,
+                    (int) TextureWrapMode.Repeat);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
+                    (int) TextureMinFilter.Nearest);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
+                    (int) TextureMagFilter.Nearest);
 
                 float
-                    s = Width / (float)bgTex.Width,
-                    t = Height / (float)bgTex.Height;
+                    s = Width / (float) bgTex.Width,
+                    t = Height / (float) bgTex.Height;
 
                 GL.Begin(PrimitiveType.Quads);
 
@@ -360,7 +365,7 @@ namespace System.Windows.Forms
             float texHeight = texture.Height;
 
             float tAspect = texWidth / texHeight;
-            float wAspect = (float)Width / Height;
+            float wAspect = (float) Width / Height;
 
             float[] texCoord = new float[8];
 
@@ -379,7 +384,8 @@ namespace System.Windows.Forms
                 texCoord[1] = texCoord[3] = (yCorrect = tAspect / wAspect) / 2.0f + 0.5f;
                 texCoord[5] = texCoord[7] = 1.0f - texCoord[1];
 
-                bottomRight = new Vector2(halfW, ((Height - (Width / texWidth * texHeight)) / Height / 2.0f - 0.5f) * Height);
+                bottomRight = new Vector2(halfW,
+                    ((Height - Width / texWidth * texHeight) / Height / 2.0f - 0.5f) * Height);
                 topLeft = new Vector2(-halfW, -bottomRight._y);
             }
             else
@@ -395,13 +401,14 @@ namespace System.Windows.Forms
                 texCoord[2] = texCoord[4] = (xCorrect = wAspect / tAspect) / 2.0f + 0.5f;
                 texCoord[0] = texCoord[6] = 1.0f - texCoord[2];
 
-                bottomRight = new Vector2(1.0f - ((Width - (Height / texHeight * texWidth)) / Width / 2.0f - 0.5f) * Width, -halfH);
+                bottomRight =
+                    new Vector2(1.0f - ((Width - Height / texHeight * texWidth) / Width / 2.0f - 0.5f) * Width, -halfH);
                 topLeft = new Vector2(-bottomRight._x, halfH);
             }
 
             //Apply the texcoord bind transform first
             TextureFrameState state = _targetMatRef._bindState;
-            GL.MultMatrix((float*)&state._transform);
+            GL.MultMatrix((float*) &state._transform);
 
             //Translate the texture coordinates to match where the user dragged the camera
             //Divide by width and height to convert window units (0 to w, 0 to h) to texcoord units (0 to 1)
@@ -413,9 +420,10 @@ namespace System.Windows.Forms
             //The scale origin is the top left of the texture on the window (not of the window itself),
             //so we need to translate the center of the texture to that origin, 
             //scale it up or down, then translate it back to where it was.
-            OpenTK.Vector3 trans = new OpenTK.Vector3(-topLeft._x / Width * xCorrect, topLeft._y / Height * yCorrect, 0.0f);
+            OpenTK.Vector3 trans =
+                new OpenTK.Vector3(-topLeft._x / Width * xCorrect, topLeft._y / Height * yCorrect, 0.0f);
             GL.Translate(trans);
-            GL.Scale((OpenTK.Vector3)cam._scale);
+            GL.Scale((OpenTK.Vector3) cam._scale);
             GL.Translate(-trans);
 
             //Bind the material ref's texture
@@ -539,7 +547,7 @@ namespace System.Windows.Forms
 
         private void Zoom(float amt, float originX, float originY)
         {
-            float scale = (amt >= 0 ? amt / 2.0f : 2.0f / -amt);
+            float scale = amt >= 0 ? amt / 2.0f : 2.0f / -amt;
             Scale(scale, scale, scale);
         }
 
@@ -562,44 +570,49 @@ namespace System.Windows.Forms
                 bool ctrl = (mod & Keys.Control) != 0;
                 bool shift = (mod & Keys.Shift) != 0;
                 bool alt = (mod & Keys.Alt) != 0;
-                switch ((Keys)m.WParam)
+                switch ((Keys) m.WParam)
                 {
                     case Keys.NumPad8:
                     case Keys.Up:
-                        {
-                            Translate(0.0f, -_transFactor * 8, 0.0f);
-                            return true;
-                        }
+                    {
+                        Translate(0.0f, -_transFactor * 8, 0.0f);
+                        return true;
+                    }
+
                     case Keys.NumPad2:
                     case Keys.Down:
-                        {
-                            Translate(0.0f, _transFactor * 8, 0.0f);
-                            return true;
-                        }
+                    {
+                        Translate(0.0f, _transFactor * 8, 0.0f);
+                        return true;
+                    }
+
                     case Keys.NumPad6:
                     case Keys.Right:
-                        {
-                            Translate(_transFactor * 8, 0.0f, 0.0f);
-                            return true;
-                        }
+                    {
+                        Translate(_transFactor * 8, 0.0f, 0.0f);
+                        return true;
+                    }
+
                     case Keys.NumPad4:
                     case Keys.Left:
-                        {
-                            Translate(-_transFactor * 8, 0.0f, 0.0f);
-                            return true;
-                        }
+                    {
+                        Translate(-_transFactor * 8, 0.0f, 0.0f);
+                        return true;
+                    }
+
                     case Keys.Add:
                     case Keys.Oemplus:
-                        {
-                            Zoom(-_zoomFactor, 0, 0);
-                            return true;
-                        }
+                    {
+                        Zoom(-_zoomFactor, 0, 0);
+                        return true;
+                    }
+
                     case Keys.Subtract:
                     case Keys.OemMinus:
-                        {
-                            Zoom(_zoomFactor, 0, 0);
-                            return true;
-                        }
+                    {
+                        Zoom(_zoomFactor, 0, 0);
+                        return true;
+                    }
                 }
             }
 
@@ -628,6 +641,7 @@ namespace System.Windows.Forms
             public bool _dirty;
 
             public Vector2 _min, _max;
+
             public void CalcMinMax()
             {
                 _min = new Vector2(float.MaxValue);
@@ -638,7 +652,7 @@ namespace System.Windows.Forms
                     {
                         if (_manager._faceData[i] != null && _enabled[i - 4])
                         {
-                            Vector2* pSrc = (Vector2*)_manager._faceData[i].Address;
+                            Vector2* pSrc = (Vector2*) _manager._faceData[i].Address;
                             for (int x = 0; x < _manager._pointCount; x++, pSrc++)
                             {
                                 _min.Min(*pSrc);
@@ -702,12 +716,12 @@ namespace System.Windows.Forms
 
                 GL.EnableClientState(ArrayCap.VertexArray);
 
-                Vector2* pData = (Vector2*)_renderBuffer.Address;
+                Vector2* pData = (Vector2*) _renderBuffer.Address;
                 for (int i = 4; i < _manager._faceData.Length; i++)
                 {
                     if (_manager._faceData[i] != null && _enabled[i - 4])
                     {
-                        GL.VertexPointer(2, VertexPointerType.Float, _stride, (IntPtr)(pData++));
+                        GL.VertexPointer(2, VertexPointerType.Float, _stride, (IntPtr) pData++);
                     }
                 }
 
@@ -738,7 +752,7 @@ namespace System.Windows.Forms
                 }
 
                 //Set starting address
-                byte* pDst = (byte*)_renderBuffer.Address;
+                byte* pDst = (byte*) _renderBuffer.Address;
                 for (int i = 4; i < index; i++)
                 {
                     if (_manager._faceData[i] != null && _enabled[i - 4])
@@ -747,10 +761,10 @@ namespace System.Windows.Forms
                     }
                 }
 
-                Vector2* pSrc = (Vector2*)_manager._faceData[index].Address;
+                Vector2* pSrc = (Vector2*) _manager._faceData[index].Address;
                 for (int i = 0; i < _manager._pointCount; i++, pDst += _stride)
                 {
-                    *(Vector2*)pDst = *pSrc++;
+                    *(Vector2*) pDst = *pSrc++;
                 }
             }
         }

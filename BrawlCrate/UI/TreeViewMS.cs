@@ -39,7 +39,6 @@ namespace BrawlCrate
         }
 
 
-
         // Triggers
         //
         // (overriden method, and base class called to ensure events are triggered)
@@ -51,8 +50,8 @@ namespace BrawlCrate
 
             if (e.Action == TreeViewAction.ByMouse)
             {
-                bool bControl = (ModifierKeys == Keys.Control);
-                bool bShift = (ModifierKeys == Keys.Shift);
+                bool bControl = ModifierKeys == Keys.Control;
+                bool bShift = ModifierKeys == Keys.Shift;
 
                 // selecting twice the node while pressing CTRL ?
                 if (bControl && m_coll.Contains(e.Node))
@@ -90,8 +89,8 @@ namespace BrawlCrate
 
             if (e.Action == TreeViewAction.ByMouse)
             {
-                bool bControl = (ModifierKeys == Keys.Control);
-                bool bShift = (ModifierKeys == Keys.Shift);
+                bool bControl = ModifierKeys == Keys.Control;
+                bool bShift = ModifierKeys == Keys.Shift;
 
                 if (bControl)
                 {
@@ -99,11 +98,12 @@ namespace BrawlCrate
                     {
                         m_coll.Add(e.Node);
                     }
-                    else  // not new, remove it from the collection
+                    else // not new, remove it from the collection
                     {
                         removePaintFromNodes();
                         m_coll.Remove(e.Node);
                     }
+
                     paintSelectedNodes();
                 }
                 else
@@ -127,6 +127,7 @@ namespace BrawlCrate
                                 bottomnode = t;
                             }
                         }
+
                         if (bParent)
                         {
                             TreeNode n = bottomnode;
@@ -143,7 +144,8 @@ namespace BrawlCrate
                         // case 2 : nor the begin nor the end node are descendant one another
                         else
                         {
-                            if ((uppernode.Parent == null && bottomnode.Parent == null) || (uppernode.Parent != null && uppernode.Parent.Nodes.Contains(bottomnode))) // are they siblings ?
+                            if (uppernode.Parent == null && bottomnode.Parent == null || uppernode.Parent != null &&
+                                uppernode.Parent.Nodes.Contains(bottomnode)) // are they siblings ?
                             {
                                 int nIndexUpper = uppernode.Index;
                                 int nIndexBottom = bottomnode.Index;
@@ -168,7 +170,6 @@ namespace BrawlCrate
 
                                     nIndexUpper++;
                                 } // end while
-
                             }
                             else
                             {
@@ -197,12 +198,12 @@ namespace BrawlCrate
                             removePaintFromNodes();
                             m_coll.Clear();
                         }
+
                         m_coll.Add(e.Node);
                     }
                 }
             }
         }
-
 
 
         // Helpers
@@ -222,8 +223,9 @@ namespace BrawlCrate
             while (!bFound && n != null)
             {
                 n = n.Parent;
-                bFound = (n == parentNode);
+                bFound = n == parentNode;
             }
+
             return bFound;
         }
 
@@ -257,8 +259,6 @@ namespace BrawlCrate
                 n.BackColor = back;
                 n.ForeColor = fore;
             }
-
         }
-
     }
 }

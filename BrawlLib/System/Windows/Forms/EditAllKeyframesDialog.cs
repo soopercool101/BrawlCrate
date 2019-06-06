@@ -7,7 +7,10 @@ namespace System.Windows.Forms
         private int _type;
         private IKeyframeSource _target;
 
-        public EditAllKeyframesDialog() { InitializeComponent(); }
+        public EditAllKeyframesDialog()
+        {
+            InitializeComponent();
+        }
 
         public DialogResult ShowDialog(IWin32Window owner, int type, IKeyframeSource target)
         {
@@ -46,11 +49,16 @@ namespace System.Windows.Forms
                     }
                 }
             }
+
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) { DialogResult = DialogResult.Cancel; Close(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
         #region Designer
 
@@ -79,7 +87,7 @@ namespace System.Windows.Forms
             // 
             // btnCancel
             // 
-            btnCancel.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Location = new Drawing.Point(197, 38);
             btnCancel.Name = "btnCancel";
@@ -91,7 +99,7 @@ namespace System.Windows.Forms
             // 
             // btnOkay
             // 
-            btnOkay.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            btnOkay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnOkay.Location = new Drawing.Point(116, 38);
             btnOkay.Name = "btnOkay";
             btnOkay.Size = new Drawing.Size(75, 23);
@@ -136,8 +144,8 @@ namespace System.Windows.Forms
             Text = "Edit All Keyframes";
             ResumeLayout(false);
             PerformLayout();
-
         }
+
         #endregion
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

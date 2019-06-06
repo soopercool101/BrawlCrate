@@ -16,11 +16,11 @@ namespace System.Audio
         public WaveFormatEx(WaveFormatTag format, int channels, int frequency, int bitsPerSample)
         {
             wFormatTag = format;
-            nChannels = (ushort)channels;
-            nSamplesPerSec = (uint)frequency;
-            nBlockAlign = (ushort)(bitsPerSample * channels / 8);
+            nChannels = (ushort) channels;
+            nSamplesPerSec = (uint) frequency;
+            nBlockAlign = (ushort) (bitsPerSample * channels / 8);
             nAvgBytesPerSec = nBlockAlign * nSamplesPerSec;
-            wBitsPerSample = (ushort)bitsPerSample;
+            wBitsPerSample = (ushort) bitsPerSample;
             cbSize = 0;
         }
     }

@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal static byte[] LoadedKey = null;
 
-        internal ISOPartitionHeader* Header => (ISOPartitionHeader*)WorkingUncompressed.Address;
+        internal ISOPartitionHeader* Header => (ISOPartitionHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override string DataSize => "0x" + WorkingUncompressed.Map.BaseStream.Length.ToString("X");
 
@@ -27,6 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _gameName;
             set => _gameName = value.Substring(0, Math.Max(0x60, value.Length));
         }
+
         public override bool OnInitialize()
         {
             _name = Header->GameID;
@@ -35,6 +36,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ISOPartLists p = Get<ISOPartLists>(0x40000);
             return p._partitionCount > 0 || p._channelCount > 0;
         }
+
         public override void OnPopulate()
         {
             ISOPartLists p = Get<ISOPartLists>(0x40000);
@@ -43,23 +45,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             for (int i = 0; i < total; ++i)
             {
-                long offset = i < pCount ? (p.PartitionOffset + i * 8L) : (p.ChannelOffset + (i - pCount) * 8L);
+                long offset = i < pCount ? p.PartitionOffset + i * 8L : p.ChannelOffset + (i - pCount) * 8L;
                 PartitionTableEntry e = Get<PartitionTableEntry>(offset);
                 new ISOPartitionNode(e, i >= pCount).Create(this, e._offset * OffMult, 0x8000, false);
             }
         }
+
         internal static ResourceNode TryParse(DataSource source)
         {
-            ISOPartitionHeader* header = (ISOPartitionHeader*)source.Address;
+            ISOPartitionHeader* header = (ISOPartitionHeader*) source.Address;
             bool GCMatch = header->_tagGC == ISOPartitionHeader.GCTag;
             bool WiiMatch = header->_tagWii == ISOPartitionHeader.WiiTag;
             if ((GCMatch || WiiMatch) && (LoadedKey != null || LoadKey()))
             {
-                return new ISONode() { _isGC = GCMatch };
+                return new ISONode() {_isGC = GCMatch};
             }
 
             return null;
         }
+
         private static bool LoadKey()
         {
             if (File.Exists("key.bin"))
@@ -72,10 +76,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return true;
                 }
             }
+
             MessageBox.Show("Unable to load key.bin");
             return false;
         }
     }
+
     public unsafe class ISOPartitionNode : ISOEntryNode, IBufferNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
@@ -88,54 +94,41 @@ namespace BrawlLib.SSBB.ResourceNodes
         private List<TMDEntry> _tmdEntries;
         private uint _cachedBlock = uint.MaxValue;
         private PartitionInfo _info;
+
         private byte[] _titleKey, _iv;
         //private ISOPartitionHeader _header;
 
-        [Category("TMD")]
-        public RSAType RSA => _rsaType;
-        [Category("TMD")]
-        public byte[] RSASig => _rsaSig;
-        [Category("TMD")]
-        public byte Version => _tmd._version;
-        [Category("TMD")]
-        public byte CaCrlVersion => _tmd._caCrlVersion;
-        [Category("TMD")]
-        public byte SignerCrlVersion => _tmd._signerCrlVersion;
-        [Category("TMD")]
-        public int SysVersionLo => _tmd._sysVersionLo;
-        [Category("TMD")]
-        public int SysVersionHi => _tmd._sysVersionHi;
-        [Category("TMD")]
-        public short TitleID0 => _tmd._titleID0;
-        [Category("TMD")]
-        public short TitleID1 => _tmd._titleID1;
-        [Category("TMD")]
-        public string TitleTag => _tmd._titleTag;
-        [Category("TMD")]
-        public int TitleType => _tmd._titleType;
-        [Category("TMD")]
-        public short GroupID => _tmd._groupID;
-        [Category("TMD")]
-        public int AccessRights => _tmd._accessRights;
-        [Category("TMD")]
-        public short TitleVersion => _tmd._titleVersion;
-        [Category("TMD")]
-        public short NumContents => _tmd._numContents;
-        [Category("TMD")]
-        public short BootIndex => _tmd._bootIndex;
-        [Category("TMD")]
-        public TMDEntry[] Entries => _tmdEntries != null ? _tmdEntries.ToArray() : null;
-        [Category("TMD")]
-        public byte[] TitleKey => _titleKey;
-        [Category("TMD")]
-        public byte[] IV => _iv;
+        [Category("TMD")] public RSAType RSA => _rsaType;
+        [Category("TMD")] public byte[] RSASig => _rsaSig;
+        [Category("TMD")] public byte Version => _tmd._version;
+        [Category("TMD")] public byte CaCrlVersion => _tmd._caCrlVersion;
+        [Category("TMD")] public byte SignerCrlVersion => _tmd._signerCrlVersion;
+        [Category("TMD")] public int SysVersionLo => _tmd._sysVersionLo;
+        [Category("TMD")] public int SysVersionHi => _tmd._sysVersionHi;
+        [Category("TMD")] public short TitleID0 => _tmd._titleID0;
+        [Category("TMD")] public short TitleID1 => _tmd._titleID1;
+        [Category("TMD")] public string TitleTag => _tmd._titleTag;
+        [Category("TMD")] public int TitleType => _tmd._titleType;
+        [Category("TMD")] public short GroupID => _tmd._groupID;
+        [Category("TMD")] public int AccessRights => _tmd._accessRights;
+        [Category("TMD")] public short TitleVersion => _tmd._titleVersion;
+        [Category("TMD")] public short NumContents => _tmd._numContents;
+        [Category("TMD")] public short BootIndex => _tmd._bootIndex;
+        [Category("TMD")] public TMDEntry[] Entries => _tmdEntries != null ? _tmdEntries.ToArray() : null;
+        [Category("TMD")] public byte[] TitleKey => _titleKey;
+        [Category("TMD")] public byte[] IV => _iv;
 
         [Category("ISO Partition")]
         public PartitionTableEntry.Type PartitionType
         {
             get => _type;
-            set { _type = value; SignalPropertyChange(); }
+            set
+            {
+                _type = value;
+                SignalPropertyChange();
+            }
         }
+
         [Category("ISO Partition")]
         public string VirtualConsoleID
         {
@@ -153,6 +146,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public ISOPartitionNode(PartitionTableEntry entry, bool VC)
         {
             if (VC)
@@ -166,12 +160,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _type = entry.PartitionType;
             }
         }
+
         public enum RSAType : uint
         {
             None = 0,
             RSA2048 = 0x00010001,
             RSA4096 = 0x00010000,
         }
+
         public override bool OnInitialize()
         {
             base.OnInitialize();
@@ -181,17 +177,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             long tmdOffset = _info._tmdOffset * OffMult;
             uint sigType = Get<buint>(tmdOffset, true);
-            _rsaType = (RSAType)sigType;
+            _rsaType = (RSAType) sigType;
             if (sigType != 0)
             {
                 tmdOffset += 4L;
 
-                int size = 0x200 - (((int)sigType & 1) * 0x100);
+                int size = 0x200 - ((int) sigType & 1) * 0x100;
 
                 _rsaSig = GetBytes(tmdOffset, size, true);
 
                 tmdOffset += size;
-                tmdOffset = ((tmdOffset + 64 - 1) & ~(64 - 1));
+                tmdOffset = (tmdOffset + 64 - 1) & ~(64 - 1);
 
                 _tmd = Get<TMDInfo>(tmdOffset, true);
                 tmdOffset += TMDInfo.Size;
@@ -216,9 +212,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _titleKey = new byte[16];
                     ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
                     using (MemoryStream msDecrypt = new MemoryStream(encryptedKey))
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
-                        csDecrypt.Read(_titleKey, 0, 16);
+                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                        {
+                            csDecrypt.Read(_titleKey, 0, 16);
+                        }
                     }
                 }
             }
@@ -246,7 +244,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_rsaType != RSAType.None)
             {
                 decOffset = nOffset / BlockDataSize * BlockSize;
-                decSize = (nSize / BlockDataSize + 1) * BlockSize + (nOffset % BlockDataSize);
+                decSize = (nSize / BlockDataSize + 1) * BlockSize + nOffset % BlockDataSize;
             }
             else
             {
@@ -254,6 +252,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 decSize = nSize;
             }
         }
+
         public byte[] DecryptBlock(uint block)
         {
             if (block == _cachedBlock)
@@ -274,9 +273,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
                 using (MemoryStream msDecrypt = new MemoryStream(enc))
-                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                 {
-                    csDecrypt.Read(dec, 0, BlockDataSize);
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        csDecrypt.Read(dec, 0, BlockDataSize);
+                    }
                 }
             }
 
@@ -284,6 +285,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return dec;
         }
+
         public byte[] GetPartitionData(long offset, int size)
         {
             if (_rsaType == RSAType.None)
@@ -292,8 +294,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             List<byte> buffer = new List<byte>(size);
-            uint block = (uint)(offset / BlockDataSize);
-            int cacheOffset = (int)(offset % BlockDataSize);
+            uint block = (uint) (offset / BlockDataSize);
+            int cacheOffset = (int) (offset % BlockDataSize);
             int cacheSize;
 
             while (size > 0)
@@ -316,10 +318,23 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return buffer.ToArray();
         }
-        public bool IsValid() { return GetLength() > 0; }
-        public VoidPtr GetAddress() { return WorkingUncompressed.Address; }
-        public int GetLength() { return WorkingUncompressed.Length; }
+
+        public bool IsValid()
+        {
+            return GetLength() > 0;
+        }
+
+        public VoidPtr GetAddress()
+        {
+            return WorkingUncompressed.Address;
+        }
+
+        public int GetLength()
+        {
+            return WorkingUncompressed.Length;
+        }
     }
+
     public abstract unsafe class ISOEntryNode : ResourceNode
     {
         //ISOs are too big for file mapping,
@@ -339,29 +354,33 @@ namespace BrawlLib.SSBB.ResourceNodes
         public T ToStruct<T>(byte[] bytes) where T : struct
         {
             GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            T dataStruct = (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+            T dataStruct = (T) Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
             handle.Free();
 
             return dataStruct;
         }
+
         public T Get<T>(long offset, bool relative = false) where T : struct
         {
             return ToStruct<T>(GetBytes(offset, Marshal.SizeOf(default(T)), relative));
         }
+
         public UnsafeBuffer GetBuffer(long offset, int size, bool relative = false)
         {
             return GetBuffer(GetBytes(offset, size, relative));
         }
+
         public UnsafeBuffer GetBuffer(byte[] bytes)
         {
             UnsafeBuffer buffer = new UnsafeBuffer(bytes.Length);
             fixed (byte* b = &bytes[0])
             {
-                Memory.Move(buffer.Address, b, (uint)bytes.Length);
+                Memory.Move(buffer.Address, b, (uint) bytes.Length);
             }
 
             return buffer;
         }
+
         public byte[] GetBytes(long offset, int size, bool relative = false)
         {
             FileStream s = RootNode.WorkingUncompressed.Map.BaseStream;
@@ -370,6 +389,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             s.Read(data, 0, size);
             return data;
         }
+
         public void Create(ISOEntryNode parent, long offset, int size, bool relativeOffset)
         {
             _rootOffset = relativeOffset ? parent._rootOffset + offset : offset;
@@ -382,11 +402,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             parent._childBuffers.Add(buffer);
         }
+
         public void CreateChild(ResourceNode child, long offset, int size, bool relativeOffset)
         {
             if (child is ISOEntryNode)
             {
-                ((ISOEntryNode)child)._rootOffset = relativeOffset ? _rootOffset + offset : offset;
+                ((ISOEntryNode) child)._rootOffset = relativeOffset ? _rootOffset + offset : offset;
             }
 
             child._parent = this;

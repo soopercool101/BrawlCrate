@@ -4,16 +4,17 @@ namespace System
 {
     internal static unsafe class Linux
     {
-
         public const string libmName = "libm.so";
 
         [DllImport(libmName)]
         public static extern void memset(void* dest, byte value, uint length);
+
         [DllImport(libmName)]
         public static extern void memmove(void* dst, void* src, uint length);
 
         [DllImport(libmName)]
         public static extern void* mmap(void* addr, uint len, MMapProtect prot, MMapFlags flags, int fildes, uint off);
+
         [DllImport(libmName)]
         public static extern int munmap(void* addr, uint len);
 

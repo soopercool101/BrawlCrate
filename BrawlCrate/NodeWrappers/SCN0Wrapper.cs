@@ -13,11 +13,13 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static SCN0Wrapper()
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&New LightSet", null, newLightSetAction, Keys.Control | Keys.L));
-            _menu.Items.Add(new ToolStripMenuItem("&New Ambient Light", null, newAmbLightAction, Keys.Control | Keys.B));
+            _menu.Items.Add(new ToolStripMenuItem("&New Ambient Light", null, newAmbLightAction,
+                Keys.Control | Keys.B));
             _menu.Items.Add(new ToolStripMenuItem("&New Light", null, newLightAction, Keys.Control | Keys.H));
             _menu.Items.Add(new ToolStripMenuItem("&New FogSet", null, newFogSetAction, Keys.Control | Keys.F));
             _menu.Items.Add(new ToolStripMenuItem("&New Camera", null, newCameraAction, Keys.Control | Keys.C));
@@ -34,61 +36,91 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void newLightSetAction(object sender, EventArgs e) { GetInstance<SCN0Wrapper>().newLightSet(); }
-        protected static void newAmbLightAction(object sender, EventArgs e) { GetInstance<SCN0Wrapper>().newAmbLight(); }
-        protected static void newLightAction(object sender, EventArgs e) { GetInstance<SCN0Wrapper>().newLight(); }
-        protected static void newFogSetAction(object sender, EventArgs e) { GetInstance<SCN0Wrapper>().newFogSet(); }
-        protected static void newCameraAction(object sender, EventArgs e) { GetInstance<SCN0Wrapper>().newCamera(); }
+
+        protected static void newLightSetAction(object sender, EventArgs e)
+        {
+            GetInstance<SCN0Wrapper>().newLightSet();
+        }
+
+        protected static void newAmbLightAction(object sender, EventArgs e)
+        {
+            GetInstance<SCN0Wrapper>().newAmbLight();
+        }
+
+        protected static void newLightAction(object sender, EventArgs e)
+        {
+            GetInstance<SCN0Wrapper>().newLight();
+        }
+
+        protected static void newFogSetAction(object sender, EventArgs e)
+        {
+            GetInstance<SCN0Wrapper>().newFogSet();
+        }
+
+        protected static void newCameraAction(object sender, EventArgs e)
+        {
+            GetInstance<SCN0Wrapper>().newCamera();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[7].Enabled = _menu.Items[8].Enabled = _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
+            _menu.Items[7].Enabled = _menu.Items[8].Enabled =
+                _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             SCN0Wrapper w = GetInstance<SCN0Wrapper>();
             _menu.Items[7].Enabled = _menu.Items[14].Enabled = w.Parent != null;
-            _menu.Items[8].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[8].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[10].Enabled = w.PrevNode != null;
             _menu.Items[11].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public SCN0Wrapper() { ContextMenuStrip = _menu; }
+        public SCN0Wrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public override string ExportFilter => FileFilters.SCN0;
 
         public void newLightSet()
         {
-            SCN0EntryNode node = ((SCN0Node)_resource).CreateResource<SCN0LightSetNode>("NewLightSet");
+            SCN0EntryNode node = ((SCN0Node) _resource).CreateResource<SCN0LightSetNode>("NewLightSet");
             BaseWrapper res = FindResource(node, true);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
         }
+
         public void newAmbLight()
         {
-            SCN0EntryNode node = ((SCN0Node)_resource).CreateResource<SCN0AmbientLightNode>("NewAmbientLight");
+            SCN0EntryNode node = ((SCN0Node) _resource).CreateResource<SCN0AmbientLightNode>("NewAmbientLight");
             BaseWrapper res = FindResource(node, true);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
         }
+
         public void newLight()
         {
-            SCN0EntryNode node = ((SCN0Node)_resource).CreateResource<SCN0LightNode>("NewLight");
+            SCN0EntryNode node = ((SCN0Node) _resource).CreateResource<SCN0LightNode>("NewLight");
             BaseWrapper res = FindResource(node, true);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
         }
+
         public void newFogSet()
         {
-            SCN0EntryNode node = ((SCN0Node)_resource).CreateResource<SCN0FogNode>("NewFogSet");
+            SCN0EntryNode node = ((SCN0Node) _resource).CreateResource<SCN0FogNode>("NewFogSet");
             BaseWrapper res = FindResource(node, true);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
         }
+
         public void newCamera()
         {
-            SCN0EntryNode node = ((SCN0Node)_resource).CreateResource<SCN0CameraNode>("NewCamera");
+            SCN0EntryNode node = ((SCN0Node) _resource).CreateResource<SCN0CameraNode>("NewCamera");
             BaseWrapper res = FindResource(node, true);
             res.EnsureVisible();
             //res.TreeView.SelectedNode = res;
@@ -101,6 +133,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static SCN0CameraWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -118,7 +151,12 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ViewInterp(object sender, EventArgs e) { GetInstance<SCN0CameraWrapper>().ViewInterp(); }
+
+        protected static void ViewInterp(object sender, EventArgs e)
+        {
+            GetInstance<SCN0CameraWrapper>().ViewInterp();
+        }
+
         private void ViewInterp()
         {
             InterpolationForm f = MainForm.Instance.InterpolationForm;
@@ -131,23 +169,35 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             SCN0CameraWrapper w = GetInstance<SCN0CameraWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public SCN0CameraWrapper(IWin32Window owner) { _owner = owner; ContextMenuStrip = _menu; }
-        public SCN0CameraWrapper() { _owner = null; ContextMenuStrip = _menu; }
+        public SCN0CameraWrapper(IWin32Window owner)
+        {
+            _owner = owner;
+            ContextMenuStrip = _menu;
+        }
+
+        public SCN0CameraWrapper()
+        {
+            _owner = null;
+            ContextMenuStrip = _menu;
+        }
     }
 
     [NodeWrapper(ResourceType.SCN0Fog)]
@@ -156,6 +206,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static SCN0FogWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -173,7 +224,12 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ViewInterp(object sender, EventArgs e) { GetInstance<SCN0FogWrapper>().ViewInterp(); }
+
+        protected static void ViewInterp(object sender, EventArgs e)
+        {
+            GetInstance<SCN0FogWrapper>().ViewInterp();
+        }
+
         private void ViewInterp()
         {
             InterpolationForm f = MainForm.Instance.InterpolationForm;
@@ -186,23 +242,35 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             SCN0FogWrapper w = GetInstance<SCN0FogWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public SCN0FogWrapper(IWin32Window owner) { _owner = owner; ContextMenuStrip = _menu; }
-        public SCN0FogWrapper() { _owner = null; ContextMenuStrip = _menu; }
+        public SCN0FogWrapper(IWin32Window owner)
+        {
+            _owner = owner;
+            ContextMenuStrip = _menu;
+        }
+
+        public SCN0FogWrapper()
+        {
+            _owner = null;
+            ContextMenuStrip = _menu;
+        }
     }
 
     [NodeWrapper(ResourceType.SCN0Light)]
@@ -211,6 +279,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static SCN0LightWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -228,7 +297,12 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void ViewInterp(object sender, EventArgs e) { GetInstance<SCN0LightWrapper>().ViewInterp(); }
+
+        protected static void ViewInterp(object sender, EventArgs e)
+        {
+            GetInstance<SCN0LightWrapper>().ViewInterp();
+        }
+
         private void ViewInterp()
         {
             InterpolationForm f = MainForm.Instance.InterpolationForm;
@@ -241,22 +315,34 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             SCN0LightWrapper w = GetInstance<SCN0LightWrapper>();
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
 
         #endregion
 
-        public SCN0LightWrapper(IWin32Window owner) { _owner = owner; ContextMenuStrip = _menu; }
-        public SCN0LightWrapper() { _owner = null; ContextMenuStrip = _menu; }
+        public SCN0LightWrapper(IWin32Window owner)
+        {
+            _owner = owner;
+            ContextMenuStrip = _menu;
+        }
+
+        public SCN0LightWrapper()
+        {
+            _owner = null;
+            ContextMenuStrip = _menu;
+        }
     }
 }

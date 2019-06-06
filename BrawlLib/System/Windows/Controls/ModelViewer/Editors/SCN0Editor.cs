@@ -11,6 +11,7 @@ namespace System.Windows.Forms
     public class SCN0Editor : UserControl
     {
         #region Designer
+
         private void InitializeComponent()
         {
             tabControl1 = new TabControl();
@@ -976,8 +977,8 @@ namespace System.Windows.Forms
             // 
             // cboFogType
             // 
-            cboFogType.Anchor = ((AnchorStyles.Top | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            cboFogType.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                 | AnchorStyles.Right;
             cboFogType.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFogType.FormattingEnabled = true;
             cboFogType.Location = new Drawing.Point(47, 15);
@@ -1610,7 +1611,6 @@ namespace System.Windows.Forms
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
@@ -1746,35 +1746,62 @@ namespace System.Windows.Forms
             _transBoxes[1] = new NumericInputBox[2];
             _transBoxes[2] = new NumericInputBox[15];
 
-            _transBoxes[0][0] = numStartX; numStartX.Tag = 0;
-            _transBoxes[0][1] = numStartY; numStartY.Tag = 1;
-            _transBoxes[0][2] = numStartZ; numStartZ.Tag = 2;
-            _transBoxes[0][3] = numEndX; numEndX.Tag = 3;
-            _transBoxes[0][4] = numEndY; numEndY.Tag = 4;
-            _transBoxes[0][5] = numEndZ; numEndZ.Tag = 5;
-            _transBoxes[0][6] = numRefDist; numRefDist.Tag = 6;
-            _transBoxes[0][7] = numRefBright; numRefBright.Tag = 7;
-            _transBoxes[0][8] = numSpotCut; numSpotCut.Tag = 8;
-            _transBoxes[0][9] = numSpotBright; numSpotBright.Tag = 9;
+            _transBoxes[0][0] = numStartX;
+            numStartX.Tag = 0;
+            _transBoxes[0][1] = numStartY;
+            numStartY.Tag = 1;
+            _transBoxes[0][2] = numStartZ;
+            numStartZ.Tag = 2;
+            _transBoxes[0][3] = numEndX;
+            numEndX.Tag = 3;
+            _transBoxes[0][4] = numEndY;
+            numEndY.Tag = 4;
+            _transBoxes[0][5] = numEndZ;
+            numEndZ.Tag = 5;
+            _transBoxes[0][6] = numRefDist;
+            numRefDist.Tag = 6;
+            _transBoxes[0][7] = numRefBright;
+            numRefBright.Tag = 7;
+            _transBoxes[0][8] = numSpotCut;
+            numSpotCut.Tag = 8;
+            _transBoxes[0][9] = numSpotBright;
+            numSpotBright.Tag = 9;
 
-            _transBoxes[1][0] = numFogStartZ; numFogStartZ.Tag = 0;
-            _transBoxes[1][1] = numFogEndZ; numFogEndZ.Tag = 1;
+            _transBoxes[1][0] = numFogStartZ;
+            numFogStartZ.Tag = 0;
+            _transBoxes[1][1] = numFogEndZ;
+            numFogEndZ.Tag = 1;
 
-            _transBoxes[2][0] = numPosX; numPosX.Tag = 0;
-            _transBoxes[2][1] = numPosY; numPosY.Tag = 1;
-            _transBoxes[2][2] = numPosZ; numPosZ.Tag = 2;
-            _transBoxes[2][3] = numAspect; numAspect.Tag = 3;
-            _transBoxes[2][4] = numNearZ; numNearZ.Tag = 4;
-            _transBoxes[2][5] = numFarZ; numFarZ.Tag = 5;
-            _transBoxes[2][6] = numRotX; numRotX.Tag = 6;
-            _transBoxes[2][7] = numRotY; numRotY.Tag = 7;
-            _transBoxes[2][8] = numRotZ; numRotZ.Tag = 8;
-            _transBoxes[2][9] = numAimX; numAimX.Tag = 9;
-            _transBoxes[2][10] = numAimY; numAimY.Tag = 10;
-            _transBoxes[2][11] = numAimZ; numAimZ.Tag = 11;
-            _transBoxes[2][12] = numTwist; numTwist.Tag = 12;
-            _transBoxes[2][13] = numFovY; numFovY.Tag = 13;
-            _transBoxes[2][14] = numHeight; numHeight.Tag = 14;
+            _transBoxes[2][0] = numPosX;
+            numPosX.Tag = 0;
+            _transBoxes[2][1] = numPosY;
+            numPosY.Tag = 1;
+            _transBoxes[2][2] = numPosZ;
+            numPosZ.Tag = 2;
+            _transBoxes[2][3] = numAspect;
+            numAspect.Tag = 3;
+            _transBoxes[2][4] = numNearZ;
+            numNearZ.Tag = 4;
+            _transBoxes[2][5] = numFarZ;
+            numFarZ.Tag = 5;
+            _transBoxes[2][6] = numRotX;
+            numRotX.Tag = 6;
+            _transBoxes[2][7] = numRotY;
+            numRotY.Tag = 7;
+            _transBoxes[2][8] = numRotZ;
+            numRotZ.Tag = 8;
+            _transBoxes[2][9] = numAimX;
+            numAimX.Tag = 9;
+            _transBoxes[2][10] = numAimY;
+            numAimY.Tag = 10;
+            _transBoxes[2][11] = numAimZ;
+            numAimZ.Tag = 11;
+            _transBoxes[2][12] = numTwist;
+            numTwist.Tag = 12;
+            _transBoxes[2][13] = numFovY;
+            numFovY.Tag = 13;
+            _transBoxes[2][14] = numHeight;
+            numHeight.Tag = 14;
 
             cboFogType.DataSource = Enum.GetValues(typeof(FogType));
             cboLightType.DataSource = Enum.GetValues(typeof(LightType));
@@ -1784,25 +1811,35 @@ namespace System.Windows.Forms
             cboSpotFunc.DataSource = Enum.GetValues(typeof(SpotFn));
         }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SCN0Node SelectedAnimation
         {
             get => _mainWindow.SelectedSCN0;
             set => _mainWindow.SelectedSCN0 = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef { get => _mainWindow.TargetTexRef; set => _mainWindow.TargetTexRef = value; }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MDL0MaterialRefNode TargetTexRef
+        {
+            get => _mainWindow.TargetTexRef;
+            set => _mainWindow.TargetTexRef = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentFrame
         {
             get => _mainWindow.CurrentFrame;
             set => _mainWindow.CurrentFrame = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IModel TargetModel
         {
-            get => (MDL0Node)_mainWindow.TargetModel;
+            get => (MDL0Node) _mainWindow.TargetModel;
             set => _mainWindow.TargetModel = value;
         }
 
@@ -1825,6 +1862,7 @@ namespace System.Windows.Forms
                     case 3: return _fog;
                     case 4: return _camera;
                 }
+
                 return null;
             }
         }
@@ -1871,22 +1909,23 @@ namespace System.Windows.Forms
                 }
             }
         }
+
         internal unsafe void BoxChanged(object sender, EventArgs e)
         {
             NumericInputBox box = sender as NumericInputBox;
-            int index = (int)box.Tag;
+            int index = (int) box.Tag;
 
             if (SelectedAnimation != null && CurrentFrame >= 1 && Entry != null)
             {
-                KeyframeEntry key = float.IsNaN(box.Value) ?
-                    Entry.KeyArrays[index].Remove(CurrentFrame - 1) :
-                    Entry.KeyArrays[index].SetFrameValue(CurrentFrame - 1, box.Value);
+                KeyframeEntry key = float.IsNaN(box.Value)
+                    ? Entry.KeyArrays[index].Remove(CurrentFrame - 1)
+                    : Entry.KeyArrays[index].SetFrameValue(CurrentFrame - 1, box.Value);
 
                 if (key != null)
                 {
                     key._prev.GenerateTangent();
                     key._next.GenerateTangent();
-                    ((ResourceNode)Entry).SignalPropertyChange();
+                    ((ResourceNode) Entry).SignalPropertyChange();
                 }
             }
 
@@ -2046,9 +2085,9 @@ namespace System.Windows.Forms
                     chkLightClr.Checked = _light.ColorEnabled;
                     chkLightAlpha.Checked = _light.AlphaEnabled;
                     chkLightSpec.Checked = _light.SpecularEnabled;
-                    cboLightType.SelectedIndex = (int)_light.LightType;
-                    cboDistFunc.SelectedIndex = (int)_light.DistanceFunction;
-                    cboSpotFunc.SelectedIndex = (int)_light.SpotFunction;
+                    cboLightType.SelectedIndex = (int) _light.LightType;
+                    cboDistFunc.SelectedIndex = (int) _light.DistanceFunction;
+                    cboSpotFunc.SelectedIndex = (int) _light.SpotFunction;
                     break;
                 case 3:
                     _mainWindow._SCN0Fog = _fog = cboNodeList.SelectedItem as SCN0FogNode;
@@ -2056,10 +2095,11 @@ namespace System.Windows.Forms
                     break;
                 case 4:
                     _mainWindow._SCN0Camera = _camera = cboNodeList.SelectedItem as SCN0CameraNode;
-                    cboCamType.SelectedIndex = (int)_camera.Type;
-                    cboCamProj.SelectedIndex = (int)_camera.ProjectionType;
+                    cboCamType.SelectedIndex = (int) _camera.Type;
+                    cboCamProj.SelectedIndex = (int) _camera.ProjectionType;
                     break;
             }
+
             _mainWindow.KeyframePanel.TargetSequence = cboNodeList.SelectedItem as ResourceNode;
         }
 
@@ -2074,6 +2114,7 @@ namespace System.Windows.Forms
                 case 3: return new Drawing.Size(566, 70);
                 case 4: return new Drawing.Size(660, 120);
             }
+
             return new Drawing.Size(0, 0);
         }
 
@@ -2081,7 +2122,8 @@ namespace System.Windows.Forms
         {
             cboNodeList.Items.Clear();
             SCN0GroupNode g;
-            if (SelectedAnimation != null && (g = SelectedAnimation.GetFolder((SCN0GroupNode.GroupType)_tabIndex)) != null)
+            if (SelectedAnimation != null &&
+                (g = SelectedAnimation.GetFolder((SCN0GroupNode.GroupType) _tabIndex)) != null)
             {
                 Enabled = true;
                 foreach (SCN0EntryNode s in g.Children)
@@ -2105,6 +2147,7 @@ namespace System.Windows.Forms
         }
 
         public int _tabIndex = 0;
+
         public void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
             _tabIndex = e.TabPageIndex;
@@ -2141,7 +2184,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Ambience = cboAmb.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Ambience = cboAmb.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight0_SelectedIndexChanged(object sender, EventArgs e)
@@ -2151,7 +2195,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light0 = cboLight0.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light0 = cboLight0.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight1_SelectedIndexChanged(object sender, EventArgs e)
@@ -2161,7 +2206,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light1 = cboLight1.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light1 = cboLight1.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight2_SelectedIndexChanged(object sender, EventArgs e)
@@ -2171,7 +2217,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light2 = cboLight2.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light2 = cboLight2.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight3_SelectedIndexChanged(object sender, EventArgs e)
@@ -2181,7 +2228,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light3 = cboLight3.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light3 = cboLight3.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight4_SelectedIndexChanged(object sender, EventArgs e)
@@ -2191,7 +2239,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light4 = cboLight4.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light4 = cboLight4.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight5_SelectedIndexChanged(object sender, EventArgs e)
@@ -2201,7 +2250,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light5 = cboLight5.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light5 = cboLight5.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight6_SelectedIndexChanged(object sender, EventArgs e)
@@ -2211,7 +2261,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light6 = cboLight6.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light6 = cboLight6.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void lstLight7_SelectedIndexChanged(object sender, EventArgs e)
@@ -2221,7 +2272,8 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _lightSet.Light7 = cboLight7.SelectedItem.ToString(); UpdateSelectedLightSets();
+            _lightSet.Light7 = cboLight7.SelectedItem.ToString();
+            UpdateSelectedLightSets();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -2258,17 +2310,18 @@ namespace System.Windows.Forms
                 //Should work, but what if the point is calculated behind the camera?
                 if (SelectedAnimation != null && CurrentFrame >= 1 && Entry != null)
                 {
-                    KeyframeArray arr = Entry.KeyArrays[(int)numAimX.Tag];
+                    KeyframeArray arr = Entry.KeyArrays[(int) numAimX.Tag];
                     float x = arr.GetFrameValue(CurrentFrame);
 
-                    arr = Entry.KeyArrays[(int)numAimY.Tag];
+                    arr = Entry.KeyArrays[(int) numAimY.Tag];
                     float y = arr.GetFrameValue(CurrentFrame);
 
-                    arr = Entry.KeyArrays[(int)numAimZ.Tag];
+                    arr = Entry.KeyArrays[(int) numAimZ.Tag];
                     float z = arr.GetFrameValue(CurrentFrame);
 
                     Vector3 interpRefPoint = new Vector3(x, y, z);
-                    Vector2 screenMidPt = new Vector2(panel.CurrentViewport.Region.Width / 2, panel.CurrentViewport.Region.Height / 2);
+                    Vector2 screenMidPt = new Vector2(panel.CurrentViewport.Region.Width / 2,
+                        panel.CurrentViewport.Region.Height / 2);
 
                     Vector3 ray1 = panel.CurrentViewport.Camera.UnProject(screenMidPt._x, screenMidPt._y, 0.0f);
                     Vector3 ray2 = panel.CurrentViewport.Camera.UnProject(screenMidPt._x, screenMidPt._y, 1.0f);
@@ -2294,7 +2347,7 @@ namespace System.Windows.Forms
 
         private void lstCamProj_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProjectionType p = (ProjectionType)cboCamProj.SelectedIndex;
+            ProjectionType p = (ProjectionType) cboCamProj.SelectedIndex;
 
             if (_camera != null)
             {
@@ -2307,7 +2360,7 @@ namespace System.Windows.Forms
         {
             if (_fog != null)
             {
-                _fog.Type = (FogType)cboFogType.SelectedItem;
+                _fog.Type = (FogType) cboFogType.SelectedItem;
                 _mainWindow.UpdateModel();
             }
         }
@@ -2316,33 +2369,33 @@ namespace System.Windows.Forms
         {
             if (_camera != null)
             {
-                _camera.Type = (SCN0CameraType)cboCamType.SelectedIndex;
+                _camera.Type = (SCN0CameraType) cboCamType.SelectedIndex;
                 bool aim = _camera.Type == SCN0CameraType.Aim;
 
                 numAimX.ForeColor =
-                numAimY.ForeColor =
-                numAimZ.ForeColor =
-                numTwist.ForeColor =
-                aim ? Color.Black : Color.LightGray;
+                    numAimY.ForeColor =
+                        numAimZ.ForeColor =
+                            numTwist.ForeColor =
+                                aim ? Color.Black : Color.LightGray;
 
                 numRotX.ForeColor =
-                numRotY.ForeColor =
-                numRotZ.ForeColor =
-                aim ? Color.LightGray : Color.Black;
+                    numRotY.ForeColor =
+                        numRotZ.ForeColor =
+                            aim ? Color.LightGray : Color.Black;
             }
         }
 
         private void lstLightType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LightType t = (LightType)cboLightType.SelectedIndex;
+            LightType t = (LightType) cboLightType.SelectedIndex;
             switch (t)
             {
                 case LightType.Directional:
                     numSpotCut.ForeColor =
-                    numRefDist.ForeColor =
-                    numRefBright.ForeColor =
-                    cboDistFunc.ForeColor =
-                    cboSpotFunc.ForeColor = Color.LightGray;
+                        numRefDist.ForeColor =
+                            numRefBright.ForeColor =
+                                cboDistFunc.ForeColor =
+                                    cboSpotFunc.ForeColor = Color.LightGray;
                     break;
                 case LightType.Point:
                     numSpotCut.ForeColor = Color.LightGray;
@@ -2353,10 +2406,10 @@ namespace System.Windows.Forms
                     break;
                 case LightType.Spotlight:
                     numSpotCut.ForeColor =
-                    numRefDist.ForeColor =
-                    numRefBright.ForeColor =
-                    cboDistFunc.ForeColor =
-                    cboSpotFunc.ForeColor = Color.Black;
+                        numRefDist.ForeColor =
+                            numRefBright.ForeColor =
+                                cboDistFunc.ForeColor =
+                                    cboSpotFunc.ForeColor = Color.Black;
                     break;
             }
 
@@ -2371,7 +2424,7 @@ namespace System.Windows.Forms
         {
             if (_light != null)
             {
-                _light.DistanceFunction = (DistAttnFn)cboDistFunc.SelectedIndex;
+                _light.DistanceFunction = (DistAttnFn) cboDistFunc.SelectedIndex;
                 _mainWindow.UpdateModel();
             }
         }
@@ -2380,7 +2433,7 @@ namespace System.Windows.Forms
         {
             if (_light != null)
             {
-                _light.SpotFunction = (SpotFn)cboSpotFunc.SelectedIndex;
+                _light.SpotFunction = (SpotFn) cboSpotFunc.SelectedIndex;
                 _mainWindow.UpdateModel();
             }
         }
@@ -2433,10 +2486,11 @@ namespace System.Windows.Forms
         }
 
         private CameraAnimationFrame _tempCameraFrame;
+
         private unsafe void btnCut_Click(object sender, EventArgs e)
         {
             CameraAnimationFrame frame = new CameraAnimationFrame();
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 15; i++)
             {
@@ -2451,7 +2505,7 @@ namespace System.Windows.Forms
         private unsafe void btnCopy_Click(object sender, EventArgs e)
         {
             CameraAnimationFrame frame = new CameraAnimationFrame();
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 15; i++)
             {
@@ -2464,7 +2518,7 @@ namespace System.Windows.Forms
         private unsafe void btnPaste_Click(object sender, EventArgs e)
         {
             CameraAnimationFrame frame = _tempCameraFrame;
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 15; i++)
             {
@@ -2487,10 +2541,11 @@ namespace System.Windows.Forms
         }
 
         private FogAnimationFrame _tempFogFrame;
+
         private unsafe void button4_Click(object sender, EventArgs e)
         {
             FogAnimationFrame frame = new FogAnimationFrame();
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 2; i++)
             {
@@ -2503,7 +2558,7 @@ namespace System.Windows.Forms
         private unsafe void button3_Click(object sender, EventArgs e)
         {
             FogAnimationFrame frame = _tempFogFrame;
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 2; i++)
             {
@@ -2517,10 +2572,11 @@ namespace System.Windows.Forms
         }
 
         private LightAnimationFrame _tempLightFrame;
+
         private unsafe void lightCut_Click(object sender, EventArgs e)
         {
             LightAnimationFrame frame = new LightAnimationFrame();
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 10; i++)
             {
@@ -2535,7 +2591,7 @@ namespace System.Windows.Forms
         private unsafe void lightPaste_Click(object sender, EventArgs e)
         {
             LightAnimationFrame frame = _tempLightFrame;
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 10; i++)
             {
@@ -2551,7 +2607,7 @@ namespace System.Windows.Forms
         private unsafe void lightCopy_Click(object sender, EventArgs e)
         {
             LightAnimationFrame frame = new LightAnimationFrame();
-            float* p = (float*)&frame;
+            float* p = (float*) &frame;
 
             for (int i = 0; i < 10; i++)
             {
@@ -2580,7 +2636,7 @@ namespace System.Windows.Forms
             _mainWindow.InterpolationEditor.interpolationViewer._updating = true;
             if (box.BackColor == Color.Yellow)
             {
-                KeyframeEntry kfe = Entry.KeyArrays[(int)box.Tag].GetKeyframe(CurrentFrame - 1);
+                KeyframeEntry kfe = Entry.KeyArrays[(int) box.Tag].GetKeyframe(CurrentFrame - 1);
                 if (kfe != null)
                 {
                     _mainWindow.InterpolationEditor.SelectedKeyframe = kfe;
@@ -2598,7 +2654,7 @@ namespace System.Windows.Forms
         {
             NumericInputBox box = sender as NumericInputBox;
 
-            int type = (int)box.Tag;
+            int type = (int) box.Tag;
             if (_mainWindow.InterpolationEditor != null && _mainWindow.InterpolationEditor.Visible)
             {
                 if (_mainWindow.InterpolationEditor.SelectedMode != type)
@@ -2614,7 +2670,7 @@ namespace System.Windows.Forms
         {
             if (SelectedAnimation != null)
             {
-                SCN0EntryNode x = SelectedAnimation.CreateResource((SCN0GroupNode.GroupType)_tabIndex, null);
+                SCN0EntryNode x = SelectedAnimation.CreateResource((SCN0GroupNode.GroupType) _tabIndex, null);
                 UpdateNodeList();
                 cboNodeList.SelectedIndex = x.Index;
             }

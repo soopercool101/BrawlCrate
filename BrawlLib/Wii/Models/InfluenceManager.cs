@@ -84,12 +84,18 @@ namespace BrawlLib.Wii.Models
         }
 
         //Sorts influences
-        public void Sort() { _influences.Sort(Influence.Compare); }
+        public void Sort()
+        {
+            _influences.Sort(Influence.Compare);
+        }
     }
 
     public class Influence : IMatrixNode
     {
-        public override string ToString() { return ""; }
+        public override string ToString()
+        {
+            return "";
+        }
 
         internal List<IMatrixNodeUser> _references = new List<IMatrixNodeUser>();
         internal int _index;
@@ -101,7 +107,12 @@ namespace BrawlLib.Wii.Models
         /// Don't modify this array!
         /// </summary>
         public List<BoneWeight> Weights => _weights;
-        public List<IMatrixNodeUser> Users { get => _references; set => _references = value; }
+
+        public List<IMatrixNodeUser> Users
+        {
+            get => _references;
+            set => _references = value;
+        }
 
         public void AddWeight(BoneWeight weight)
         {
@@ -111,6 +122,7 @@ namespace BrawlLib.Wii.Models
                 weight.Bone.LinkedInfluences.Add(this);
             }
         }
+
         public void RemoveWeight(BoneWeight weight)
         {
             if (_weights.Contains(weight))
@@ -122,6 +134,7 @@ namespace BrawlLib.Wii.Models
                 }
             }
         }
+
         public void SetWeights(List<BoneWeight> newWeights)
         {
             foreach (BoneWeight b in _weights)
@@ -168,7 +181,7 @@ namespace BrawlLib.Wii.Models
                 {
                     if (!b.Locked) //Only normalize unlocked weights used in the calculation
                     {
-                        b.Weight = (float)Math.Round(b.Weight / denom * num, 7);
+                        b.Weight = (float) Math.Round(b.Weight / denom * num, 7);
                     }
                 }
             }
@@ -179,16 +192,15 @@ namespace BrawlLib.Wii.Models
             Influence i = new Influence();
             foreach (BoneWeight b in _weights)
             {
-                i.AddWeight(new BoneWeight(b.Bone, b.Weight) { Locked = b.Locked });
+                i.AddWeight(new BoneWeight(b.Bone, b.Weight) {Locked = b.Locked});
             }
 
             return i;
         }
 
-        [Browsable(false)]
-        public int NodeIndex => _index;
-        [Browsable(false)]
-        public Matrix Matrix => _matrix;
+        [Browsable(false)] public int NodeIndex => _index;
+        [Browsable(false)] public Matrix Matrix => _matrix;
+
         [Browsable(false)]
         public Matrix InverseMatrix
         {
@@ -206,21 +218,19 @@ namespace BrawlLib.Wii.Models
                     }
                 }
 
-                return (Matrix)_invMatrix;
+                return (Matrix) _invMatrix;
             }
         }
 
-        [Browsable(false)]
-        public bool IsPrimaryNode => false;
-        [Browsable(false)]
-        public bool IsWeighted => _weights.Count > 1;
-        [Browsable(false)]
-        public IBoneNode Bone => _weights[0].Bone;
+        [Browsable(false)] public bool IsPrimaryNode => false;
+        [Browsable(false)] public bool IsWeighted => _weights.Count > 1;
+        [Browsable(false)] public IBoneNode Bone => _weights[0].Bone;
 
         public Influence()
         {
             _weights = new List<BoneWeight>();
         }
+
         public Influence(List<BoneWeight> weights)
         {
             _weights = weights;
@@ -232,9 +242,10 @@ namespace BrawlLib.Wii.Models
                 }
             }
         }
+
         public Influence(IBoneNode bone)
         {
-            _weights = new List<BoneWeight> { new BoneWeight(bone) };
+            _weights = new List<BoneWeight> {new BoneWeight(bone)};
             if (!bone.LinkedInfluences.Contains(this))
             {
                 bone.LinkedInfluences.Add(this);
@@ -272,6 +283,7 @@ namespace BrawlLib.Wii.Models
                 _invMatrix = _matrix = Matrix.Identity;
             }
         }
+
         public static int Compare(Influence i1, Influence i2)
         {
             if (i1._weights.Count < i2._weights.Count)
@@ -296,10 +308,12 @@ namespace BrawlLib.Wii.Models
 
             return 0;
         }
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
+
         public override bool Equals(object obj)
         {
             if (obj is Influence)
@@ -309,6 +323,7 @@ namespace BrawlLib.Wii.Models
 
             return false;
         }
+
         public bool Equals(Influence inf)
         {
             bool found;
@@ -331,41 +346,80 @@ namespace BrawlLib.Wii.Models
             foreach (BoneWeight w1 in _weights)
             {
                 found = false;
-                foreach (BoneWeight w2 in inf._weights) { if (w1 == w2) { found = true; break; } }
+                foreach (BoneWeight w2 in inf._weights)
+                {
+                    if (w1 == w2)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
                 if (!found)
                 {
                     return false;
                 }
             }
+
             return true;
         }
-        public static bool operator ==(Influence i1, Influence i2) { return i1.Equals(i2); }
-        public static bool operator !=(Influence i1, Influence i2) { return !i1.Equals(i2); }
+
+        public static bool operator ==(Influence i1, Influence i2)
+        {
+            return i1.Equals(i2);
+        }
+
+        public static bool operator !=(Influence i1, Influence i2)
+        {
+            return !i1.Equals(i2);
+        }
     }
 
     public class BoneWeight
     {
-        public override string ToString() { return Bone.Name + " - " + Weight * 100.0f + "%"; }
+        public override string ToString()
+        {
+            return Bone.Name + " - " + Weight * 100.0f + "%";
+        }
 
         public IBoneNode Bone;
         public float Weight;
 
-        public bool Locked { get => Bone.Locked; set => Bone.Locked = value; }
+        public bool Locked
+        {
+            get => Bone.Locked;
+            set => Bone.Locked = value;
+        }
 
-        public BoneWeight() : this(null, 1.0f) { }
-        public BoneWeight(IBoneNode bone) : this(bone, 1.0f) { }
-        public BoneWeight(IBoneNode bone, float weight) { Bone = bone; Weight = weight; }
+        public BoneWeight() : this(null, 1.0f)
+        {
+        }
+
+        public BoneWeight(IBoneNode bone) : this(bone, 1.0f)
+        {
+        }
+
+        public BoneWeight(IBoneNode bone, float weight)
+        {
+            Bone = bone;
+            Weight = weight;
+        }
 
         public static bool operator ==(BoneWeight b1, BoneWeight b2)
         {
-            if (object.ReferenceEquals(b1, b2))
+            if (ReferenceEquals(b1, b2))
             {
                 return true;
             }
 
             return b1.Equals(b2);
         }
-        public static bool operator !=(BoneWeight b1, BoneWeight b2) { return !(b1 == b2); }
+
+        public static bool operator !=(BoneWeight b1, BoneWeight b2)
+        {
+            return !(b1 == b2);
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -375,13 +429,19 @@ namespace BrawlLib.Wii.Models
 
             if (obj is BoneWeight)
             {
-                if ((Bone == ((BoneWeight)obj).Bone) && (Math.Abs(Weight - ((BoneWeight)obj).Weight) < Collada._importOptions._weightPrecision))
+                if (Bone == ((BoneWeight) obj).Bone && Math.Abs(Weight - ((BoneWeight) obj).Weight) <
+                    Collada._importOptions._weightPrecision)
                 {
                     return true;
                 }
             }
+
             return false;
         }
-        public override int GetHashCode() { return base.GetHashCode(); }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

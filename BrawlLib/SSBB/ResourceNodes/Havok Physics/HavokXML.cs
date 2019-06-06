@@ -7,85 +7,89 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class HavokXML
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings() { Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace };
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings()
+            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+
         public static void Serialize(HavokNode node, string outFile)
         {
-            using (FileStream stream = new FileStream(outFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None, 0x1000, FileOptions.SequentialScan))
-            using (XmlWriter writer = XmlWriter.Create(stream, _writerSettings))
+            using (FileStream stream = new FileStream(outFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None,
+                0x1000, FileOptions.SequentialScan))
             {
-                writer.Flush();
-                stream.Position = 0;
-
-                node.Populate();
-
-                Dictionary<HavokClassNode, int> classIDs = new Dictionary<HavokClassNode, int>();
-                int i = 1;
-                foreach (HavokSectionNode s in node.Children)
+                using (XmlWriter writer = XmlWriter.Create(stream, _writerSettings))
                 {
-                    foreach (HavokClassNode c in s._classCache)
+                    writer.Flush();
+                    stream.Position = 0;
+
+                    node.Populate();
+
+                    Dictionary<HavokClassNode, int> classIDs = new Dictionary<HavokClassNode, int>();
+                    int i = 1;
+                    foreach (HavokSectionNode s in node.Children)
                     {
-                        if (!classIDs.ContainsKey(c))
+                        foreach (HavokClassNode c in s._classCache)
                         {
-                            classIDs.Add(c, i++);
-                        }
-                    }
-                }
-
-                //RecursiveGetClassIDsData(ref classIDs, node, node._dataSection);
-
-                HavokClassNode rootClass = node._dataSection.Children[0] as HavokClassNode;
-                List<HavokSectionNode> sections =
-                    node.Children.Select(x => x as HavokSectionNode)
-                    .Where(x => x != node._dataSection).ToList();
-                sections.Add(node._dataSection);
-
-                writer.WriteStartDocument();
-                {
-                    writer.WriteStartElement("hkpackfile");
-                    writer.WriteAttributeString("classversion", "11");
-                    writer.WriteAttributeString("contentsversion", "hk_2014.1.0-r1");
-                    writer.WriteAttributeString("toplevelobject", GetObjectName(classIDs, rootClass));
-                    writer.WriteAttributeString("maxpredicate", "21");
-                    writer.WriteAttributeString("predicates", "");
-                    {
-                        foreach (HavokSectionNode s in sections)
-                        {
-                            writer.WriteStartElement("hksection");
-                            writer.WriteAttributeString("name", s.Name == "Classes" ? "__types__" : "__data__");
+                            if (!classIDs.ContainsKey(c))
                             {
-                                for (int x = s._classCache.Count - 1; x >= 0; x--)
-                                {
-                                    HavokClassNode c = s._classCache[x];
-
-                                    //HavokCommonArrayNode array = null;
-                                    //if (c.Parent is cmPointerNode && c.Parent.Parent is HavokCommonArrayNode)
-                                    //    array = c.Parent.Parent as HavokCommonArrayNode;
-                                    //else if  (c.Parent is HavokCommonArrayNode)
-                                    //    array = c.Parent as HavokCommonArrayNode;
-                                    //if (array != null)
-                                    //{
-                                    //    //ResourceNode[] nodes = array.FindChildrenByClassType(null, typeof(HavokMetaObjectNode));
-                                    //    //if (nodes != null && nodes.Length > 0)
-                                    //        continue;
-                                    //}
-
-                                    writer.WriteStartElement("hkobject");
-                                    writer.WriteAttributeString("name", GetObjectName(classIDs, c));
-                                    writer.WriteAttributeString("class", SwapName(c._className));
-                                    writer.WriteAttributeString("signature", GetSignature(c._className));
-                                    {
-                                        c.WriteParams(writer, classIDs);
-                                    }
-                                    writer.WriteEndElement();
-                                }
-
+                                classIDs.Add(c, i++);
                             }
-                            writer.WriteEndElement();
                         }
                     }
-                    writer.WriteEndElement();
+
+                    //RecursiveGetClassIDsData(ref classIDs, node, node._dataSection);
+
+                    HavokClassNode rootClass = node._dataSection.Children[0] as HavokClassNode;
+                    List<HavokSectionNode> sections =
+                        node.Children.Select(x => x as HavokSectionNode)
+                            .Where(x => x != node._dataSection).ToList();
+                    sections.Add(node._dataSection);
+
+                    writer.WriteStartDocument();
+                    {
+                        writer.WriteStartElement("hkpackfile");
+                        writer.WriteAttributeString("classversion", "11");
+                        writer.WriteAttributeString("contentsversion", "hk_2014.1.0-r1");
+                        writer.WriteAttributeString("toplevelobject", GetObjectName(classIDs, rootClass));
+                        writer.WriteAttributeString("maxpredicate", "21");
+                        writer.WriteAttributeString("predicates", "");
+                        {
+                            foreach (HavokSectionNode s in sections)
+                            {
+                                writer.WriteStartElement("hksection");
+                                writer.WriteAttributeString("name", s.Name == "Classes" ? "__types__" : "__data__");
+                                {
+                                    for (int x = s._classCache.Count - 1; x >= 0; x--)
+                                    {
+                                        HavokClassNode c = s._classCache[x];
+
+                                        //HavokCommonArrayNode array = null;
+                                        //if (c.Parent is cmPointerNode && c.Parent.Parent is HavokCommonArrayNode)
+                                        //    array = c.Parent.Parent as HavokCommonArrayNode;
+                                        //else if  (c.Parent is HavokCommonArrayNode)
+                                        //    array = c.Parent as HavokCommonArrayNode;
+                                        //if (array != null)
+                                        //{
+                                        //    //ResourceNode[] nodes = array.FindChildrenByClassType(null, typeof(HavokMetaObjectNode));
+                                        //    //if (nodes != null && nodes.Length > 0)
+                                        //        continue;
+                                        //}
+
+                                        writer.WriteStartElement("hkobject");
+                                        writer.WriteAttributeString("name", GetObjectName(classIDs, c));
+                                        writer.WriteAttributeString("class", SwapName(c._className));
+                                        writer.WriteAttributeString("signature", GetSignature(c._className));
+                                        {
+                                            c.WriteParams(writer, classIDs);
+                                        }
+                                        writer.WriteEndElement();
+                                    }
+                                }
+                                writer.WriteEndElement();
+                            }
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndDocument();
                 }
-                writer.WriteEndDocument();
             }
         }
 
@@ -94,7 +98,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return "#" + classNodes[classNode].ToString().PadLeft(4, '0');
         }
 
-        private static void RecursiveGetClassIDsData(ref Dictionary<HavokClassNode, int> classIDs, HavokNode node, ResourceNode e)
+        private static void RecursiveGetClassIDsData(ref Dictionary<HavokClassNode, int> classIDs, HavokNode node,
+                                                     ResourceNode e)
         {
             if (e is HavokMetaObjectNode || e is hkClassNode)
             {
@@ -109,7 +114,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RecursiveGetClassIDsData(ref classIDs, node, e.Children[i]);
             }
         }
-        private static void RecursiveGetClassIDsClasses(ref Dictionary<HavokClassNode, int> classIDs, HavokNode node, ResourceNode e)
+
+        private static void RecursiveGetClassIDsClasses(ref Dictionary<HavokClassNode, int> classIDs, HavokNode node,
+                                                        ResourceNode e)
         {
             if (e is hkClassNode)
             {
@@ -119,6 +126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     HavokClassNode c = node.GetClassNode(type.ParentClass);
                     classIDs.Add(c, classIDs.Count + 1);
                 }
+
                 ResourceNode members = type.FindChild("Members", false);
                 foreach (hkClassMemberNode member in members.Children)
                 {
@@ -127,12 +135,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                         HavokClassNode c = node.GetClassNode(member._class);
                         classIDs.Add(c, classIDs.Count + 1);
                     }
+
                     if (!string.IsNullOrEmpty(member._enum))
                     {
                         HavokClassNode c = node.GetClassNode(member._enum);
                         classIDs.Add(c, classIDs.Count + 1);
                     }
                 }
+
                 if (!classIDs.ContainsKey(type))
                 {
                     classIDs.Add(type, classIDs.Count + 1);
@@ -149,6 +159,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return className;
         }
+
         public static string GetSignature(string className)
         {
             if (HardcodedName.ContainsKey(className))
@@ -158,17 +169,19 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             return "0x0";
         }
-        public static readonly Dictionary<string, KeyValuePair<string, string>> HardcodedName = new Dictionary<string, KeyValuePair<string, string>>()
-        {
-            { "hkClass", new KeyValuePair<string, string>("hkClass", "0x33d42383") },
-            { "hkClassEnum", new KeyValuePair<string, string>("hkClassEnum", "0x8a3609cf") },
 
-            { "hkxScene", new KeyValuePair<string, string>("hkxScene", "0xc093dd28") },
-            { "hkRootLevelContainer", new KeyValuePair<string, string>("hkRootLevelContainer", "0x2772c11e") },
+        public static readonly Dictionary<string, KeyValuePair<string, string>> HardcodedName =
+            new Dictionary<string, KeyValuePair<string, string>>()
+            {
+                {"hkClass", new KeyValuePair<string, string>("hkClass", "0x33d42383")},
+                {"hkClassEnum", new KeyValuePair<string, string>("hkClassEnum", "0x8a3609cf")},
 
-            { "hkSkeleton", new KeyValuePair<string, string>("hkaSkeleton", "0xfec1cedb") },
-            { "hkAnimationContainer", new KeyValuePair<string, string>("hkaAnimationContainer", "0x26859f4c") },
-            { "hkBone", new KeyValuePair<string, string>("hkaBone", "0") },
-        };
+                {"hkxScene", new KeyValuePair<string, string>("hkxScene", "0xc093dd28")},
+                {"hkRootLevelContainer", new KeyValuePair<string, string>("hkRootLevelContainer", "0x2772c11e")},
+
+                {"hkSkeleton", new KeyValuePair<string, string>("hkaSkeleton", "0xfec1cedb")},
+                {"hkAnimationContainer", new KeyValuePair<string, string>("hkaAnimationContainer", "0x26859f4c")},
+                {"hkBone", new KeyValuePair<string, string>("hkaBone", "0")},
+            };
     }
 }

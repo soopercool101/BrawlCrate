@@ -17,8 +17,10 @@ namespace System
 
                 i++;
             }
+
             return l.ToArray();
         }
+
         public static int[] Append(this Array a, int[] array)
         {
             List<int> values = new List<int>();
@@ -34,10 +36,12 @@ namespace System
 
             return values.ToArray();
         }
+
         public static int IndexOf(this Array a, object value)
         {
             return Array.IndexOf(a, value);
         }
+
         public static T[] SubArray<T>(this T[] data, int index, int length)
         {
             T[] result = new T[length];

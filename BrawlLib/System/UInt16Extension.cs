@@ -4,7 +4,7 @@
     {
         public static ushort Reverse(this ushort value)
         {
-            return (ushort)((value >> 8) | (value << 8));
+            return (ushort) ((value >> 8) | (value << 8));
         }
     }
 }

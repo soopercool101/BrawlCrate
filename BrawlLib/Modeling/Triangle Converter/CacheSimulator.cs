@@ -19,11 +19,13 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_PushHits = true;
             m_Cache = new Deque<uint>();
         }
+
         public void Clear()
         {
             ResetHitCount();
             m_Cache.Clear();
         }
+
         public void Resize(uint Size)
         {
             //m_Cache.Resize(Size, uint.MaxValue);
@@ -34,6 +36,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 m_Cache.PushFront(uint.MaxValue);
             }
         }
+
         public void Reset()
         {
             m_Cache.Clear();
@@ -45,11 +48,14 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
             ResetHitCount();
         }
+
         public void PushCacheHits(bool Enabled = true)
         {
             m_PushHits = Enabled;
         }
-        public uint Size => (uint)m_Cache.Count;
+
+        public uint Size => (uint) m_Cache.Count;
+
         public void Push(uint i, bool CountCacheHit = false)
         {
             if ((CountCacheHit || m_PushHits) && m_Cache.Contains(i))
@@ -71,6 +77,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_Cache.PushFront(i);
             m_Cache.PopBack();
         }
+
         public void Merge(CacheSimulator Backward, uint PossibleOverlap)
         {
             uint Overlap = Math.Min(PossibleOverlap, Size);
@@ -83,7 +90,11 @@ namespace BrawlLib.Modeling.Triangle_Converter
             m_NbHits += Backward.m_NbHits;
         }
 
-        public void ResetHitCount() { m_NbHits = 0; }
+        public void ResetHitCount()
+        {
+            m_NbHits = 0;
+        }
+
         public uint HitCount => m_NbHits;
     }
 }

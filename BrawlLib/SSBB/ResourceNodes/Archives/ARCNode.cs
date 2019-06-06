@@ -10,22 +10,28 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ARCNode : ARCEntryNode
     {
-        internal ARCHeader* Header => (ARCHeader*)WorkingUncompressed.Address;
+        internal ARCHeader* Header => (ARCHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ARC;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(ARCEntryNode) };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(ARCEntryNode)};
 
         [Browsable(false)]
-        public bool IsPair { get => _isPair; set => _isPair = value; }
+        public bool IsPair
+        {
+            get => _isPair;
+            set => _isPair = value;
+        }
+
         private bool _isPair;
 
         [Browsable(false)]
-        public bool IsStage => (Parent == null && _name.StartsWith("STG", StringComparison.OrdinalIgnoreCase));
+        public bool IsStage => Parent == null && _name.StartsWith("STG", StringComparison.OrdinalIgnoreCase);
 
 
         [Browsable(false)]
-        public bool IsFighter => (Parent == null && _name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase));
+        public bool IsFighter => Parent == null && _name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase);
 
-        private readonly Dictionary<ResourceNode, ARCFileHeader> _originalHeaders = new Dictionary<ResourceNode, ARCFileHeader>();
+        private readonly Dictionary<ResourceNode, ARCFileHeader> _originalHeaders =
+            new Dictionary<ResourceNode, ARCFileHeader>();
 
         public override void OnPopulate()
         {
@@ -42,6 +48,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     createdNode = new ARCEntryNode();
                     createdNode.Initialize(this, source);
                 }
+
                 _originalHeaders.Add(createdNode, *entry);
             }
         }
@@ -51,7 +58,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.Initialize(parent, origSource, uncompSource);
             if (_origPath != null)
             {
-                string path = Path.Combine(Path.GetDirectoryName(_origPath), Path.GetFileNameWithoutExtension(_origPath));
+                string path = Path.Combine(Path.GetDirectoryName(_origPath),
+                    Path.GetFileNameWithoutExtension(_origPath));
                 _isPair = File.Exists(path + ".pac") && File.Exists(path + ".pcs");
             }
         }
@@ -63,8 +71,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_numFiles > 0;
         }
 
-        public void ExtractToFolder(string outFolder) { ExtractToFolder(outFolder, ".tex0", ".mdl0"); }
-        public void ExtractToFolder(string outFolder, string imageExtension) { ExtractToFolder(outFolder, imageExtension, ".mdl0"); }
+        public void ExtractToFolder(string outFolder)
+        {
+            ExtractToFolder(outFolder, ".tex0", ".mdl0");
+        }
+
+        public void ExtractToFolder(string outFolder, string imageExtension)
+        {
+            ExtractToFolder(outFolder, imageExtension, ".mdl0");
+        }
+
         public void ExtractToFolder(string outFolder, string imageExtension, string modelExtension)
         {
             if (!Directory.Exists(outFolder))
@@ -77,11 +93,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (entry is ARCNode)
                 {
-                    ((ARCNode)entry).ExtractToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((ARCNode) entry).ExtractToFolder(
+                        Path.Combine(outFolder,
+                            entry.Name == null ||
+                            entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)
+                                ? "Null"
+                                : entry.Name), imageExtension, modelExtension);
                 }
                 else if (entry is BRRESNode)
                 {
-                    ((BRRESNode)entry).ExportToFolder(Path.Combine(outFolder, (entry.Name == null || entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)) ? "Null" : entry.Name), imageExtension, modelExtension);
+                    ((BRRESNode) entry).ExportToFolder(
+                        Path.Combine(outFolder,
+                            entry.Name == null ||
+                            entry.Name.Contains("<Null>", StringComparison.InvariantCultureIgnoreCase)
+                                ? "Null"
+                                : entry.Name), imageExtension, modelExtension);
                 }
                 else
                 {
@@ -95,7 +121,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     if (directChildrenExportedPaths.Contains(path))
                     {
-                        throw new Exception($"There is more than one node underneath {Name} with the name {entry.Name}.");
+                        throw new Exception(
+                            $"There is more than one node underneath {Name} with the name {entry.Name}.");
                     }
                     else
                     {
@@ -118,7 +145,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     dirs = dir.GetDirectories(entry.Name);
                     if (dirs.Length > 0)
                     {
-                        ((ARCNode)entry).ReplaceFromFolder(dirs[0].FullName);
+                        ((ARCNode) entry).ReplaceFromFolder(dirs[0].FullName);
                         continue;
                     }
                 }
@@ -127,12 +154,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     dirs = dir.GetDirectories(entry.Name);
                     if (dirs.Length > 0)
                     {
-                        ((BRRESNode)entry).ReplaceFromFolder(dirs[0].FullName);
+                        ((BRRESNode) entry).ReplaceFromFolder(dirs[0].FullName);
                         continue;
                     }
                     else
                     {
-                        ((BRRESNode)entry).ReplaceFromFolder(inFolder);
+                        ((BRRESNode) entry).ReplaceFromFolder(inFolder);
                         continue;
                     }
                 }
@@ -141,7 +168,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     string ext = FileFilters.GetDefaultExportAllExtension(entry.GetType());
                     foreach (FileInfo info in files)
                     {
-                        if (info.Extension.Equals(ext, StringComparison.OrdinalIgnoreCase) && info.Name.Equals(entry.Name + ext, StringComparison.OrdinalIgnoreCase))
+                        if (info.Extension.Equals(ext, StringComparison.OrdinalIgnoreCase) &&
+                            info.Name.Equals(entry.Name + ext, StringComparison.OrdinalIgnoreCase))
                         {
                             entry.Replace(info.FullName);
                             break;
@@ -153,7 +181,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override int OnCalculateSize(bool force)
         {
-            int size = ARCHeader.Size + (Children.Count * 0x20);
+            int size = ARCHeader.Size + Children.Count * 0x20;
             foreach (ResourceNode node in Children)
             {
                 size += node.CalculateSize(force).Align(0x20);
@@ -164,24 +192,27 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int size, bool force)
         {
-            ARCHeader* header = (ARCHeader*)address;
-            *header = new ARCHeader((ushort)Children.Count, Name);
+            ARCHeader* header = (ARCHeader*) address;
+            *header = new ARCHeader((ushort) Children.Count, Name);
 
             ARCFileHeader* entry = header->First;
             foreach (ResourceNode child in Children)
             {
                 if (child is ARCEntryNode node)
                 {
-                    *entry = new ARCFileHeader(node.FileType, node.FileIndex, node._calcSize, node.GroupID, node._redirectIndex);
+                    *entry = new ARCFileHeader(node.FileType, node.FileIndex, node._calcSize, node.GroupID,
+                        node._redirectIndex);
                 }
                 else if (_originalHeaders.TryGetValue(child, out ARCFileHeader origHeader))
                 {
-                    *entry = new ARCFileHeader(origHeader.FileType, origHeader.Index, child._calcSize, origHeader.GroupIndex, origHeader.ID);
+                    *entry = new ARCFileHeader(origHeader.FileType, origHeader.Index, child._calcSize,
+                        origHeader.GroupIndex, origHeader.ID);
                 }
                 else
                 {
                     throw new NotSupportedException("Cannot build a new ARCFileHeader for this node (not supported)");
                 }
+
                 child.Rebuild(entry->Data, entry->Length, force);
                 entry = entry->Next;
             }
@@ -229,11 +260,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             ExportPAC(path + ".pac");
             ExportPCS(path + ".pcs");
         }
+
         public void ExportPAC(string outPath)
         {
             Rebuild();
             ExportUncompressed(outPath);
         }
+
         public void ExportPCS(string outPath)
         {
             Rebuild();
@@ -243,28 +276,48 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                using (FileStream inStream = new FileStream(Path.GetTempFileName(), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 0x8, FileOptions.SequentialScan | FileOptions.DeleteOnClose))
-                using (FileStream outStream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None, 8, FileOptions.SequentialScan))
+                using (FileStream inStream = new FileStream(Path.GetTempFileName(), FileMode.OpenOrCreate,
+                    FileAccess.ReadWrite, FileShare.None, 0x8, FileOptions.SequentialScan | FileOptions.DeleteOnClose))
                 {
-                    Compressor.Compact(CompressionType.ExtendedLZ77, WorkingUncompressed.Address, WorkingUncompressed.Length, inStream, this);
-                    outStream.SetLength(inStream.Length);
-                    using (FileMap map = FileMap.FromStream(inStream))
-                    using (FileMap outMap = FileMap.FromStream(outStream))
+                    using (FileStream outStream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                        FileShare.None, 8, FileOptions.SequentialScan))
                     {
-                        Memory.Move(outMap.Address, map.Address, (uint)map.Length);
+                        Compressor.Compact(CompressionType.ExtendedLZ77, WorkingUncompressed.Address,
+                            WorkingUncompressed.Length, inStream, this);
+                        outStream.SetLength(inStream.Length);
+                        using (FileMap map = FileMap.FromStream(inStream))
+                        {
+                            using (FileMap outMap = FileMap.FromStream(outStream))
+                            {
+                                Memory.Move(outMap.Address, map.Address, (uint) map.Length);
+                            }
+                        }
                     }
                 }
             }
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((ARCHeader*)source.Address)->_tag == ARCHeader.Tag ? new ARCNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((ARCHeader*) source.Address)->_tag == ARCHeader.Tag ? new ARCNode() : null;
+        }
     }
 
     public unsafe class ARCEntryGroup : ResourceNode
     {
         internal byte _group;
+
         [Category("ARC Group")]
-        public byte GroupID { get => _group; set { _group = value; SignalPropertyChange(); UpdateName(); } }
+        public byte GroupID
+        {
+            get => _group;
+            set
+            {
+                _group = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
 
         public ARCEntryGroup(byte group)
         {
@@ -283,7 +336,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => _resourceType;
         public ResourceType _resourceType = ResourceType.ARCEntry;
 
-        [Browsable(true), TypeConverter(typeof(DropDownListCompression))]
+        [Browsable(true)]
+        [TypeConverter(typeof(DropDownListCompression))]
         public override string Compression
         {
             get => base.Compression;
@@ -291,18 +345,49 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         internal ARCFileType _fileType;
+
         [Category("ARC Entry")]
-        public ARCFileType FileType { get => _fileType; set { _fileType = value; SignalPropertyChange(); UpdateName(); } }
+        public ARCFileType FileType
+        {
+            get => _fileType;
+            set
+            {
+                _fileType = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
 
         internal short _fileIndex;
+
         [Category("ARC Entry")]
-        public short FileIndex { get => _fileIndex; set { _fileIndex = value; SignalPropertyChange(); UpdateName(); } }
+        public short FileIndex
+        {
+            get => _fileIndex;
+            set
+            {
+                _fileIndex = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
 
         internal byte _group;
-        [Category("ARC Entry")]
-        public byte GroupID { get => _group; set { _group = value; SignalPropertyChange(); UpdateName(); } }
 
-        [Category("ARC Entry"), Browsable(true)]
+        [Category("ARC Entry")]
+        public byte GroupID
+        {
+            get => _group;
+            set
+            {
+                _group = value;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
+
+        [Category("ARC Entry")]
+        [Browsable(true)]
         public int AbsoluteIndex => Index;
 
         internal short _redirectIndex = -1;
@@ -318,7 +403,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
 
-                if ((_redirectIndex = (short)((int)value).Clamp(-1, Parent.Children.Count - 1)) < 0)
+                if ((_redirectIndex = (short) ((int) value).Clamp(-1, Parent.Children.Count - 1)) < 0)
                 {
                     _resourceType = ResourceType.ARCEntry;
                     Name = GetName();
@@ -342,6 +427,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 fileType = System.Text.RegularExpressions.Regex.Replace(fileType, "(\\B[A-Z])", " $1");
             }
+
             string s = string.Format("{0} [{1}]", fileType, _fileIndex);
             if (_group != 0)
             {
@@ -366,7 +452,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (parent != null && (parent is MRGNode || RootNode is U8Node))
             {
                 _fileType = 0;
-                _fileIndex = (short)Parent._children.IndexOf(this);
+                _fileIndex = (short) Parent._children.IndexOf(this);
                 _group = 0;
                 _redirectIndex = 0;
 
@@ -377,7 +463,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (parent != null && !(parent is FileScanNode))
             {
-                ARCFileHeader* header = (ARCFileHeader*)(origSource.Address - 0x20);
+                ARCFileHeader* header = (ARCFileHeader*) (origSource.Address - 0x20);
                 _fileType = header->FileType;
                 _fileIndex = header->_index;
                 _group = header->_groupIndex;

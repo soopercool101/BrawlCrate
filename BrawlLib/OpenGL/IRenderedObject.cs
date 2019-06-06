@@ -10,17 +10,25 @@ namespace BrawlLib.OpenGL
         public virtual IObject Parent => null;
         public bool _render = true;
 
-        public virtual void Render(ModelPanelViewport viewport) { }
+        public virtual void Render(ModelPanelViewport viewport)
+        {
+        }
 
         public static int Sort(DrawCallBase x, DrawCallBase y)
         {
             return x.CompareTo(y);
         }
 
-        public virtual int CompareTo(DrawCallBase y) { return 0; }
+        public virtual int CompareTo(DrawCallBase y)
+        {
+            return 0;
+        }
 
-        public virtual void Bind() { }
+        public virtual void Bind()
+        {
+        }
     }
+
     public interface IRenderedObject
     {
         event EventHandler DrawCallsChanged;

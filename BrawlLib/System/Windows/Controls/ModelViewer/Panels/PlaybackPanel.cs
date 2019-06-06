@@ -33,16 +33,16 @@
             label15 = new Label();
             label1 = new Label();
             lblLoopFrame = new Label();
-            ((System.ComponentModel.ISupportInitialize)(numTotalFrames)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(numFPS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(numFrameIndex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) numTotalFrames).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) numFPS).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) numFrameIndex).BeginInit();
             SuspendLayout();
             // 
             // btnPlay
             // 
-            btnPlay.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            btnPlay.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                              | AnchorStyles.Left
+                                              | AnchorStyles.Right;
             btnPlay.Location = new Drawing.Point(69, 28);
             btnPlay.Margin = new Padding(1);
             btnPlay.Name = "btnPlay";
@@ -54,14 +54,16 @@
             // 
             // numTotalFrames
             // 
-            numTotalFrames.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            numTotalFrames.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numTotalFrames.Enabled = false;
             numTotalFrames.Location = new Drawing.Point(397, 5);
-            numTotalFrames.Maximum = new decimal(new int[] {
-            65536,
-            0,
-            0,
-            0});
+            numTotalFrames.Maximum = new decimal(new int[]
+            {
+                65536,
+                0,
+                0,
+                0
+            });
             numTotalFrames.Name = "numTotalFrames";
             numTotalFrames.Size = new Drawing.Size(52, 22);
             numTotalFrames.TabIndex = 19;
@@ -70,24 +72,30 @@
             // numFPS
             // 
             numFPS.Location = new Drawing.Point(53, 4);
-            numFPS.Maximum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            numFPS.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFPS.Maximum = new decimal(new int[]
+            {
+                2000,
+                0,
+                0,
+                0
+            });
+            numFPS.Minimum = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFPS.Name = "numFPS";
             numFPS.Size = new Drawing.Size(39, 22);
             numFPS.TabIndex = 15;
-            numFPS.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
+            numFPS.Value = new decimal(new int[]
+            {
+                60,
+                0,
+                0,
+                0
+            });
             numFPS.ValueChanged += new EventHandler(numFPS_ValueChanged);
             // 
             // label14
@@ -111,13 +119,15 @@
             // 
             // numFrameIndex
             // 
-            numFrameIndex.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            numFrameIndex.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numFrameIndex.Location = new Drawing.Point(334, 5);
-            numFrameIndex.Maximum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
+            numFrameIndex.Maximum = new decimal(new int[]
+            {
+                0,
+                0,
+                0,
+                0
+            });
             numFrameIndex.Name = "numFrameIndex";
             numFrameIndex.Size = new Drawing.Size(52, 22);
             numFrameIndex.TabIndex = 12;
@@ -125,8 +135,8 @@
             // 
             // btnPrevFrame
             // 
-            btnPrevFrame.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            btnPrevFrame.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                   | AnchorStyles.Left;
             btnPrevFrame.Enabled = false;
             btnPrevFrame.Location = new Drawing.Point(36, 28);
             btnPrevFrame.Margin = new Padding(1);
@@ -139,8 +149,8 @@
             // 
             // btnNextFrame
             // 
-            btnNextFrame.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Right);
+            btnNextFrame.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                   | AnchorStyles.Right;
             btnNextFrame.Enabled = false;
             btnNextFrame.Location = new Drawing.Point(384, 28);
             btnNextFrame.Margin = new Padding(1);
@@ -153,8 +163,8 @@
             // 
             // btnFirst
             // 
-            btnFirst.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left);
+            btnFirst.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                               | AnchorStyles.Left;
             btnFirst.Enabled = false;
             btnFirst.Location = new Drawing.Point(3, 28);
             btnFirst.Margin = new Padding(1);
@@ -167,8 +177,8 @@
             // 
             // btnLast
             // 
-            btnLast.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Right);
+            btnLast.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                              | AnchorStyles.Right;
             btnLast.Enabled = false;
             btnLast.Location = new Drawing.Point(417, 28);
             btnLast.Margin = new Padding(1);
@@ -181,7 +191,7 @@
             // 
             // label15
             // 
-            label15.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            label15.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label15.Location = new Drawing.Point(281, 5);
             label15.Name = "label15";
             label15.Size = new Drawing.Size(55, 20);
@@ -191,7 +201,7 @@
             // 
             // label1
             // 
-            label1.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.Location = new Drawing.Point(386, 4);
             label1.Name = "label1";
             label1.Size = new Drawing.Size(14, 20);
@@ -201,7 +211,7 @@
             // 
             // lblLoopFrame
             // 
-            lblLoopFrame.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
+            lblLoopFrame.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLoopFrame.AutoSize = true;
             lblLoopFrame.ForeColor = Drawing.Color.DarkRed;
             lblLoopFrame.Location = new Drawing.Point(194, 7);
@@ -228,17 +238,19 @@
             Controls.Add(label1);
             Name = "ModelPlaybackPanel";
             Size = new Drawing.Size(454, 65);
-            ((System.ComponentModel.ISupportInitialize)(numTotalFrames)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(numFPS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(numFrameIndex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) numTotalFrames).EndInit();
+            ((System.ComponentModel.ISupportInitialize) numFPS).EndInit();
+            ((System.ComponentModel.ISupportInitialize) numFrameIndex).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
 
-        public ModelPlaybackPanel() { InitializeComponent(); }
+        public ModelPlaybackPanel()
+        {
+            InitializeComponent();
+        }
 
         public ModelEditorBase _mainWindow;
 
@@ -310,7 +322,7 @@
             btnLast.Enabled = animFrame != loopMax;
             btnFirst.Enabled = animFrame > 1;
 
-            if (animFrame <= (float)numFrameIndex.Maximum)
+            if (animFrame <= (float) numFrameIndex.Maximum)
             {
                 numFrameIndex.Value = animFrame;
             }

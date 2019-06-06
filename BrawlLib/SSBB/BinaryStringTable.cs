@@ -12,7 +12,10 @@ namespace BrawlLib
         public List<BinaryStringEntry> Entries => _entries;
         public BinaryStringEntry RootEntry => _root;
 
-        public BinaryStringTable() { _entries.Add(_root); }
+        public BinaryStringTable()
+        {
+            _entries.Add(_root);
+        }
 
         public void Add(string s)
         {
@@ -36,7 +39,7 @@ namespace BrawlLib
                 isRight = current.IsRight(entry);
 
                 prev = current;
-                current = (isRight) ? current._right : current._left;
+                current = isRight ? current._right : current._left;
 
                 if (prev._id <= current._id)
                 {
@@ -54,12 +57,16 @@ namespace BrawlLib
             }
         }
 
-        public int GetTotalSize() { return (_entries.Count * 0x10) + 8; }
+        public int GetTotalSize()
+        {
+            return _entries.Count * 0x10 + 8;
+        }
+
         public void Write(VoidPtr address)
         {
-            ResourceGroup* group = (ResourceGroup*)address;
+            ResourceGroup* group = (ResourceGroup*) address;
             group->_numEntries = _entries.Count - 1;
-            group->_totalSize = (_entries.Count * 0x10) + 8;
+            group->_totalSize = _entries.Count * 0x10 + 8;
 
             ResourceEntry* pEntry = &group->_first;
             foreach (BinaryStringEntry e in _entries)
@@ -80,7 +87,7 @@ namespace BrawlLib
             _name = name;
             _index = index;
             _left = _right = this;
-            _id = (name == "") ? -1 : ((name.Length - 1) << 3) | CompareBits(name[name.Length - 1], 0);
+            _id = name == "" ? -1 : ((name.Length - 1) << 3) | CompareBits(name[name.Length - 1], 0);
         }
 
         public void InsertLeft(BinaryStringEntry entry)
@@ -128,6 +135,7 @@ namespace BrawlLib
                         _left = comparison;
                         _right = this;
                     }
+
                     return _id;
                 }
             }
@@ -135,9 +143,15 @@ namespace BrawlLib
             return 0;
         }
 
-        public bool IsRight(BinaryStringEntry entry) { return (_name.Length != entry._name.Length) ? false : ((entry._name[(_id >> 3)] >> (_id & 7)) & 1) != 0; }
+        public bool IsRight(BinaryStringEntry entry)
+        {
+            return _name.Length != entry._name.Length ? false : ((entry._name[_id >> 3] >> (_id & 7)) & 1) != 0;
+        }
 
-        public ResourceEntry GetEntry() { return new ResourceEntry(_id, _left._index, _right._index); }
+        public ResourceEntry GetEntry()
+        {
+            return new ResourceEntry(_id, _left._index, _right._index);
+        }
 
         private static int CompareBits(int b1, int b2)
         {

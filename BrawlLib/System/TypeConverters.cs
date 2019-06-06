@@ -6,11 +6,12 @@ namespace System
 {
     internal class UserDataConverter : ExpandableObjectConverter
     {
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destType)
         {
             if (destType == typeof(string) && value is UserDataClass)
             {
-                return ((UserDataClass)value).ToString();
+                return ((UserDataClass) value).ToString();
             }
 
             return base.ConvertTo(context, culture, value, destType);
@@ -22,7 +23,7 @@ namespace System
             {
                 try
                 {
-                    string s = (string)value;
+                    string s = (string) value;
                     string[] s2 = s.Split(':');
                     string[] s3 = s2[1].Split(',');
 
@@ -37,27 +38,31 @@ namespace System
 
                     return d;
                 }
-                catch { }
+                catch
+                {
+                }
             }
+
             return base.ConvertFrom(context, culture, value);
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destType)
         {
-            return (destType == typeof(UserDataClass)) ? true : base.CanConvertTo(context, destType);
+            return destType == typeof(UserDataClass) ? true : base.CanConvertTo(context, destType);
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
-            return (sourceType == typeof(string)) ? true : base.CanConvertFrom(context, sourceType);
+            return sourceType == typeof(string) ? true : base.CanConvertFrom(context, sourceType);
         }
     }
 
     internal class ExpandableObjectCustomConverter : ExpandableObjectConverter
     {
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destType)
         {
-            string s = (string)base.ConvertTo(context, culture, value, destType);
+            string s = (string) base.ConvertTo(context, culture, value, destType);
             return s.Substring(s.LastIndexOf('.') + 1);
         }
     }

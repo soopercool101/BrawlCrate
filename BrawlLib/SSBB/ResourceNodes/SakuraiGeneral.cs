@@ -11,6 +11,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe class TableEntryNode : SakuraiEntryNode
     {
         public static List<SakuraiSectionParser> _parsers = new List<SakuraiSectionParser>();
+
         static TableEntryNode()
         {
             AddParsers(Assembly.GetExecutingAssembly());
@@ -29,7 +30,8 @@ namespace BrawlLib.SSBBTypes
             {
                 if (t.IsSubclassOf(typeof(TableEntryNode)))
                 {
-                    if ((del = Delegate.CreateDelegate(typeof(SakuraiSectionParser), t, "TestType", false, false)) != null)
+                    if ((del = Delegate.CreateDelegate(typeof(SakuraiSectionParser), t, "TestType", false, false)) !=
+                        null)
                     {
                         _parsers.Add(del as SakuraiSectionParser);
                     }
@@ -52,24 +54,34 @@ namespace BrawlLib.SSBBTypes
         }
 
         [Browsable(false)]
-        public List<int> DataOffsets { get => _dataOffsets; set => _dataOffsets = value; }
+        public List<int> DataOffsets
+        {
+            get => _dataOffsets;
+            set => _dataOffsets = value;
+        }
+
         private List<int> _dataOffsets = new List<int>();
 
         [Browsable(false)]
-        public List<SakuraiEntryNode> References { get => _references; set => _references = value; }
+        public List<SakuraiEntryNode> References
+        {
+            get => _references;
+            set => _references = value;
+        }
+
         private List<SakuraiEntryNode> _references = new List<SakuraiEntryNode>();
 
         protected override void OnParse(VoidPtr address)
         {
-            _dataOffsets = new List<int>() { _offset };
+            _dataOffsets = new List<int>() {_offset};
 
-            int offset = *(bint*)address;
+            int offset = *(bint*) address;
 
             while (offset > 0)
             {
                 _dataOffsets.Add(offset);
 
-                offset = *(bint*)(BaseAddress + offset);
+                offset = *(bint*) (BaseAddress + offset);
 
                 //Infinite loops are NO GOOD
                 if (_dataOffsets.Contains(offset))
@@ -91,7 +103,7 @@ namespace BrawlLib.SSBBTypes
             if (_initSize > 0)
             {
                 _data = new byte[_initSize];
-                byte* b = (byte*)address;
+                byte* b = (byte*) address;
                 for (int i = 0; i < _data.Length; i++)
                 {
                     _data[i] = b[i];
@@ -111,7 +123,7 @@ namespace BrawlLib.SSBBTypes
         protected override void OnWrite(VoidPtr address)
         {
             RebuildAddress = address;
-            byte* header = (byte*)address;
+            byte* header = (byte*) address;
             if (_data != null)
             {
                 for (int i = 0; i < _data.Length; i++)
@@ -125,9 +137,14 @@ namespace BrawlLib.SSBBTypes
     public unsafe class IndexValue : SakuraiEntryNode
     {
         public int _value = 0;
-        public static explicit operator int(IndexValue val) { return val._value; }
+
+        public static explicit operator int(IndexValue val)
+        {
+            return val._value;
+        }
 
         public static bool _hexadecimal;
+
         public bool HexDisplay
         {
             get => _hexadecimal;
@@ -151,6 +168,7 @@ namespace BrawlLib.SSBBTypes
                         neg = true;
                         val = -val;
                     }
+
                     return (neg ? "-" : "") + val.ToString("X");
                 }
                 else
@@ -194,7 +212,7 @@ namespace BrawlLib.SSBBTypes
 
         protected override void OnParse(VoidPtr address)
         {
-            _value = *(bint*)address;
+            _value = *(bint*) address;
         }
 
         protected override int OnGetSize()
@@ -204,17 +222,19 @@ namespace BrawlLib.SSBBTypes
 
         protected override void OnWrite(VoidPtr address)
         {
-            *(bint*)(RebuildAddress = address) = _value;
+            *(bint*) (RebuildAddress = address) = _value;
         }
     }
 
     public unsafe class OffsetValue : SakuraiEntryNode
     {
-        [Category("Offset Entry")]
-        public int DataOffset => _dataOffset;
+        [Category("Offset Entry")] public int DataOffset => _dataOffset;
         private int _dataOffset = 0;
 
-        protected override void OnParse(VoidPtr address) { _dataOffset = *(bint*)address; }
+        protected override void OnParse(VoidPtr address)
+        {
+            _dataOffset = *(bint*) address;
+        }
     }
 
     /// <summary>
@@ -225,8 +245,15 @@ namespace BrawlLib.SSBBTypes
     {
         #region Child Enumeration
 
-        public IEnumerator<T> GetEnumerator() { return _entries.GetEnumerator(); }
-        IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _entries.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         public bool ContainsListCollection => false;
 
@@ -236,6 +263,7 @@ namespace BrawlLib.SSBBTypes
         }
 
         public int Count => _entries.Count;
+
         public T this[int i]
         {
             get
@@ -256,6 +284,7 @@ namespace BrawlLib.SSBBTypes
                 }
             }
         }
+
         private void Insert(int i, T e)
         {
             if (i >= 0)
@@ -272,11 +301,13 @@ namespace BrawlLib.SSBBTypes
                 SignalRebuildChange();
             }
         }
+
         private void Add(int i, T e)
         {
             _entries.Add(e);
             SignalRebuildChange();
         }
+
         internal void RemoveAt(int i)
         {
             if (i >= 0 && i < Count)
@@ -285,6 +316,7 @@ namespace BrawlLib.SSBBTypes
                 SignalRebuildChange();
             }
         }
+
         private void Clear()
         {
             if (Count != 0)
@@ -301,8 +333,17 @@ namespace BrawlLib.SSBBTypes
 
         public BindingList<T> Entries => _entries;
 
-        public EntryList(int stride, int count) { _stride = stride; _count = count; }
-        public EntryList(int stride) { _stride = stride; }
+        public EntryList(int stride, int count)
+        {
+            _stride = stride;
+            _count = count;
+        }
+
+        public EntryList(int stride)
+        {
+            _stride = stride;
+        }
+
         protected override void OnParse(VoidPtr address)
         {
             _entries = new BindingList<T>();
@@ -391,19 +432,16 @@ namespace BrawlLib.SSBBTypes
     //        }
     //    }
     //}
-
     public abstract unsafe class ListOffset : SakuraiEntryNode
     {
         private sListOffset hdr;
 
-        [Category("List Offset")]
-        public int StartOffset => hdr._startOffset;
-        [Category("List Offset")]
-        public int Count => hdr._listCount;
+        [Category("List Offset")] public int StartOffset => hdr._startOffset;
+        [Category("List Offset")] public int Count => hdr._listCount;
 
         protected override void OnParse(VoidPtr address)
         {
-            hdr = *(sListOffset*)address;
+            hdr = *(sListOffset*) address;
         }
     }
 }

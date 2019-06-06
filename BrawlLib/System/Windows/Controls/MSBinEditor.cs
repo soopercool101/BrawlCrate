@@ -6,7 +6,9 @@ namespace System.Windows.Forms
     public class MSBinEditor : UserControl
     {
         private MSBinNode _node;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MSBinNode CurrentNode
         {
             get => _node;
@@ -61,7 +63,7 @@ namespace System.Windows.Forms
 
             string s1 = txtEditor.Text;
             string s2 = listBox1.SelectedItem as string;
-            if ((s2 == null) || (s1 == s2))
+            if (s2 == null || s1 == s2)
             {
                 return;
             }
@@ -79,8 +81,8 @@ namespace System.Windows.Forms
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (_node == null)
@@ -96,6 +98,7 @@ namespace System.Windows.Forms
             listBox1.Items.Add(s);
             listBox1.SelectedIndex = index;
         }
+
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (_node == null)
@@ -156,6 +159,7 @@ namespace System.Windows.Forms
                 e.Handled = true;
             }
         }
+
         private void txtEditor_Leave(object sender, EventArgs e)
         {
             Apply();
@@ -234,7 +238,8 @@ namespace System.Windows.Forms
             // txtEditor
             // 
             txtEditor.Dock = DockStyle.Fill;
-            txtEditor.Font = new Drawing.Font("Courier New", 8.25F, Drawing.FontStyle.Regular, Drawing.GraphicsUnit.Point, 0);
+            txtEditor.Font = new Drawing.Font("Courier New", 8.25F, Drawing.FontStyle.Regular,
+                Drawing.GraphicsUnit.Point, 0);
             txtEditor.Location = new Drawing.Point(0, 0);
             txtEditor.Margin = new Padding(0);
             txtEditor.Multiline = true;
@@ -296,7 +301,6 @@ namespace System.Windows.Forms
             splitContainer2.Panel2.ResumeLayout(false);
             splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion

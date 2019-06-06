@@ -40,7 +40,16 @@ namespace BrawlLib.SSBB.Types
         public bshort _globalDefenseRatio;
         public bint _unknown4c;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public EventMatchFighterData* FighterDataPtr
         {
@@ -48,7 +57,7 @@ namespace BrawlLib.SSBB.Types
             {
                 fixed (EventMatchTblHeader* ptr = &this)
                 {
-                    return (EventMatchFighterData*)(ptr + 1);
+                    return (EventMatchFighterData*) (ptr + 1);
                 }
             }
         }

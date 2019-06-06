@@ -2,7 +2,10 @@
 {
     public class TransparentPanel : Panel
     {
-        public TransparentPanel() { SetStyle(ControlStyles.UserPaint, true); }
+        public TransparentPanel()
+        {
+            SetStyle(ControlStyles.UserPaint, true);
+        }
 
         private readonly bool _transparent = true;
 
@@ -27,7 +30,7 @@
         {
             if (m.Msg == 0x84)
             {
-                m.Result = (IntPtr)(-1);
+                m.Result = (IntPtr) (-1);
             }
             else
             {

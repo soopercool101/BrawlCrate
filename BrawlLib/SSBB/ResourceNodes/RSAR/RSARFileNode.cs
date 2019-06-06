@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 ResourceNode n = this;
-                while (((n = n.Parent) != null) && !(n is RSARNode))
+                while ((n = n.Parent) != null && !(n is RSARNode))
                 {
                     ;
                 }
@@ -51,12 +51,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
             }
+
             _name = string.Format("[{0}] {1}", _fileIndex, closestMatch);
         }
 
         public List<RSARGroupNode> _groupRefs = new List<RSARGroupNode>();
-        [Browsable(false)]
-        public RSARGroupNode[] GroupRefNodes => _groupRefs.ToArray();
+        [Browsable(false)] public RSARGroupNode[] GroupRefNodes => _groupRefs.ToArray();
 
         public virtual string[] GroupRefs => _groupRefs.Select(x => x.TreePath).ToArray();
 
@@ -64,8 +64,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public virtual string[] EntryRefs => _references.ToArray();
 
         public List<RSARSoundNode> _rsarSoundEntries = new List<RSARSoundNode>();
-        [Browsable(false)]
-        public RSARSoundNode[] Sounds => _rsarSoundEntries.ToArray();
+        [Browsable(false)] public RSARSoundNode[] Sounds => _rsarSoundEntries.ToArray();
+
         public void AddSoundRef(RSARSoundNode n)
         {
             if (!_rsarSoundEntries.Contains(n))
@@ -74,6 +74,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _references.Add(n.TreePath);
             }
         }
+
         public void RemoveSoundRef(RSARSoundNode n)
         {
             if (_rsarSoundEntries.Contains(n))
@@ -86,21 +87,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int _fileIndex;
         internal LabelItem[] _labels;
 
-        [Category("File Node"), Browsable(true)]
+        [Category("File Node")]
+        [Browsable(true)]
         public virtual int FileNodeIndex => _fileIndex;
 
         internal int _entryNumber;
-        [Category("Data"), Browsable(false)]
-        public int EntryNumber => _entryNumber;
+        [Category("Data")] [Browsable(false)] public int EntryNumber => _entryNumber;
 
-        [Category("Data"), Browsable(false)]
+        [Category("Data")]
+        [Browsable(false)]
         public virtual string InfoHeaderOffset
         {
             get
             {
                 if (RSARNode != null && _infoHdr != null)
                 {
-                    return ((uint)(_infoHdr - RSARNode.Header)).ToString("X");
+                    return ((uint) (_infoHdr - RSARNode.Header)).ToString("X");
                 }
                 else
                 {
@@ -108,35 +110,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         public VoidPtr _infoHdr;
 
-        [Category("Data"), Browsable(true)]
-        public virtual string AudioLength => _audioSource.Length.ToString("X");
-        [Category("Data"), Browsable(false)]
+        [Category("Data")] [Browsable(true)] public virtual string AudioLength => _audioSource.Length.ToString("X");
+
+        [Category("Data")]
+        [Browsable(false)]
         public virtual string AudioOffset
         {
             get
             {
                 if (RSARNode != null && _audioSource.Address != null)
                 {
-                    return ((uint)(_audioSource.Address - RSARNode.Header)).ToString("X");
-                }
-                else
-                {
-                    return "0";
-                }
-            }
-        }
-        [Category("Data"), Browsable(true)]
-        public virtual string DataLength => WorkingUncompressed.Length.ToString("X");
-        [Category("Data"), Browsable(false)]
-        public virtual string DataOffset
-        {
-            get
-            {
-                if (RSARNode != null && Data != null)
-                {
-                    return ((uint)(Data - RSARNode.Header)).ToString("X");
+                    return ((uint) (_audioSource.Address - RSARNode.Header)).ToString("X");
                 }
                 else
                 {
@@ -145,7 +132,30 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected virtual void GetStrings(LabelBuilder builder) { }
+        [Category("Data")]
+        [Browsable(true)]
+        public virtual string DataLength => WorkingUncompressed.Length.ToString("X");
+
+        [Category("Data")]
+        [Browsable(false)]
+        public virtual string DataOffset
+        {
+            get
+            {
+                if (RSARNode != null && Data != null)
+                {
+                    return ((uint) (Data - RSARNode.Header)).ToString("X");
+                }
+                else
+                {
+                    return "0";
+                }
+            }
+        }
+
+        protected virtual void GetStrings(LabelBuilder builder)
+        {
+        }
 
         public override bool OnInitialize()
         {
@@ -185,10 +195,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             //Get strings
             labl = new LabelBuilder();
             GetStrings(labl);
-            lablLen = (labl.Count == 0) ? 0 : labl.GetSize();
+            lablLen = labl.Count == 0 ? 0 : labl.GetSize();
             size = WorkingUncompressed.Length + lablLen + _audioSource.Length;
 
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+            using (FileStream stream =
+                new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
             {
                 stream.SetLength(size);
                 using (FileMap map = FileMap.FromStreamInternal(stream, FileMapProtect.ReadWrite, 0, size))
@@ -209,7 +220,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     //Write sound data
                     int audioLen = _audioSource.Length;
-                    Memory.Move(addr, _audioSource.Address, (uint)audioLen);
+                    Memory.Move(addr, _audioSource.Address, (uint) audioLen);
                     _audioSource.Close();
                     _audioSource = new DataSource(addr, audioLen);
                 }
@@ -218,7 +229,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected internal virtual void PostProcess(VoidPtr audioAddr, VoidPtr dataAddr)
         {
-
         }
     }
 }

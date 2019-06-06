@@ -6,8 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         private readonly RELType _type = null;
 
-        [Browsable(false)]
-        public RELType Type => _type;
+        [Browsable(false)] public RELType Type => _type;
 
         public int InheritanceCount => _type.Inheritance.Count;
 

@@ -11,9 +11,9 @@ namespace System
         {
             Vector3 nv = new Vector3
             {
-                _x = (float)((matrix[0] * vector._x) + (matrix[4] * vector._y) + (matrix[8] * vector._z) + matrix[12]),
-                _y = (float)((matrix[1] * vector._x) + (matrix[5] * vector._y) + (matrix[9] * vector._z) + matrix[13]),
-                _z = (float)((matrix[2] * vector._x) + (matrix[6] * vector._y) + (matrix[10] * vector._z) + matrix[14])
+                _x = (float) (matrix[0] * vector._x + matrix[4] * vector._y + matrix[8] * vector._z + matrix[12]),
+                _y = (float) (matrix[1] * vector._x + matrix[5] * vector._y + matrix[9] * vector._z + matrix[13]),
+                _z = (float) (matrix[2] * vector._x + matrix[6] * vector._y + matrix[10] * vector._z + matrix[14])
             };
 
             return nv;

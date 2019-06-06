@@ -12,7 +12,7 @@ namespace BrawlLib.Wii.Animations
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(BoneAnimation));
             Stream inputFile = new FileStream(input, FileMode.Open, FileAccess.Read);
-            BoneAnimation data = (BoneAnimation)serializer.ReadObject(inputFile);
+            BoneAnimation data = (BoneAnimation) serializer.ReadObject(inputFile);
 
             CHR0Node node = data.ToCHR0Node();
             node.Name = Path.GetFileNameWithoutExtension(input);
@@ -23,12 +23,9 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class BoneAnimation
     {
-        [DataMember]
-        private readonly int FrameCount = 0;
-        [DataMember]
-        private readonly bool Loop = false;
-        [DataMember]
-        private readonly ICollection<Bone> Bones = null;
+        [DataMember] private readonly int FrameCount = 0;
+        [DataMember] private readonly bool Loop = false;
+        [DataMember] private readonly ICollection<Bone> Bones = null;
 
         public CHR0Node ToCHR0Node()
         {
@@ -51,11 +48,9 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class Bone
     {
-        [DataMember]
-        private readonly string Name = null;
+        [DataMember] private readonly string Name = null;
 
-        [DataMember]
-        private readonly ICollection<Keyframe> Keyframes = null;
+        [DataMember] private readonly ICollection<Keyframe> Keyframes = null;
 
         public void AddToNode(CHR0Node parentNode)
         {
@@ -76,8 +71,7 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class Keyframe
     {
-        [DataMember]
-        private readonly int Frame = 0;
+        [DataMember] private readonly int Frame = 0;
         private float?[] _transformations;
 
         [DataMember]
@@ -86,12 +80,14 @@ namespace BrawlLib.Wii.Animations
             get => _transformations[0];
             set => SetTransformation(0, value);
         }
+
         [DataMember]
         private float? ScaleY
         {
             get => _transformations[1];
             set => SetTransformation(1, value);
         }
+
         [DataMember]
         private float? ScaleZ
         {
@@ -105,12 +101,14 @@ namespace BrawlLib.Wii.Animations
             get => _transformations[3];
             set => SetTransformation(3, value);
         }
+
         [DataMember]
         private float? RotationY
         {
             get => _transformations[4];
             set => SetTransformation(4, value);
         }
+
         [DataMember]
         private float? RotationZ
         {
@@ -124,12 +122,14 @@ namespace BrawlLib.Wii.Animations
             get => _transformations[6];
             set => SetTransformation(6, value);
         }
+
         [DataMember]
         private float? TranslationY
         {
             get => _transformations[7];
             set => SetTransformation(7, value);
         }
+
         [DataMember]
         private float? TranslationZ
         {
@@ -143,6 +143,7 @@ namespace BrawlLib.Wii.Animations
             {
                 _transformations = new float?[9];
             }
+
             _transformations[index] = value;
         }
 

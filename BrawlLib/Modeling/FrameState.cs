@@ -21,14 +21,14 @@ namespace BrawlLib.Modeling
             {
                 fixed (FrameState* f = &this)
                 {
-                    return ((float*)f)[index];
+                    return ((float*) f)[index];
                 }
             }
             set
             {
                 fixed (FrameState* f = &this)
                 {
-                    ((float*)f)[index] = value;
+                    ((float*) f)[index] = value;
                 }
             }
         }
@@ -36,17 +36,31 @@ namespace BrawlLib.Modeling
         public Vector3 Translate
         {
             get => _translate;
-            set { _translate = value; CalcTransforms(); }
+            set
+            {
+                _translate = value;
+                CalcTransforms();
+            }
         }
+
         public Vector3 Rotate
         {
             get => _rotate;
-            set { _rotate = value; CalcTransforms(); }
+            set
+            {
+                _rotate = value;
+                CalcTransforms();
+            }
         }
+
         public Vector3 Scale
         {
             get => _scale;
-            set { _scale = value; CalcTransforms(); }
+            set
+            {
+                _scale = value;
+                CalcTransforms();
+            }
         }
 
         public FrameState(CHRAnimationFrame frame)
@@ -57,6 +71,7 @@ namespace BrawlLib.Modeling
 
             CalcTransforms();
         }
+
         public FrameState(Vector3 scale, Vector3 rotation, Vector3 translation)
         {
             _scale = scale;
@@ -65,6 +80,7 @@ namespace BrawlLib.Modeling
 
             CalcTransforms();
         }
+
         public void CalcTransforms()
         {
             _transform = Matrix.TransformMatrix(_scale, _rotate, _translate);
@@ -77,7 +93,11 @@ namespace BrawlLib.Modeling
         }
 
         public static readonly FrameState Neutral = new FrameState(new Vector3(1.0f), new Vector3(), new Vector3());
-        public static explicit operator CHRAnimationFrame(FrameState state) { return new CHRAnimationFrame(state._scale, state._rotate, state._translate); }
+
+        public static explicit operator CHRAnimationFrame(FrameState state)
+        {
+            return new CHRAnimationFrame(state._scale, state._rotate, state._translate);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -99,14 +119,14 @@ namespace BrawlLib.Modeling
             {
                 fixed (TextureFrameState* f = &this)
                 {
-                    return ((float*)f)[index];
+                    return ((float*) f)[index];
                 }
             }
             set
             {
                 fixed (TextureFrameState* f = &this)
                 {
-                    ((float*)f)[index] = value;
+                    ((float*) f)[index] = value;
                 }
             }
         }
@@ -114,24 +134,57 @@ namespace BrawlLib.Modeling
         public Vector2 Translate
         {
             get => _translate;
-            set { _translate = value; CalcTransforms(); }
+            set
+            {
+                _translate = value;
+                CalcTransforms();
+            }
         }
+
         public float Rotate
         {
             get => _rotate;
-            set { _rotate = value; CalcTransforms(); }
+            set
+            {
+                _rotate = value;
+                CalcTransforms();
+            }
         }
+
         public Vector2 Scale
         {
             get => _scale;
-            set { _scale = value; CalcTransforms(); }
+            set
+            {
+                _scale = value;
+                CalcTransforms();
+            }
         }
+
         /// <summary>
         /// Bit flags used for texture matrix calculation
         /// </summary>
         public int Flags => _flags;
-        public TexMatrixMode MatrixMode { get => _matrixMode; set { _matrixMode = value; CalcTransforms(); } }
-        public bool Indirect { get => _indirect; set { _indirect = value; CalcTransforms(); } }
+
+        public TexMatrixMode MatrixMode
+        {
+            get => _matrixMode;
+            set
+            {
+                _matrixMode = value;
+                CalcTransforms();
+            }
+        }
+
+        public bool Indirect
+        {
+            get => _indirect;
+            set
+            {
+                _indirect = value;
+                CalcTransforms();
+            }
+        }
 
         public TextureFrameState(SRTAnimationFrame frame, TexMatrixMode matrixMode, bool indirect)
         {
@@ -144,7 +197,9 @@ namespace BrawlLib.Modeling
 
             CalcTransforms();
         }
-        public TextureFrameState(Vector2 scale, float rotation, Vector2 translation, TexMatrixMode matrixMode, bool indirect)
+
+        public TextureFrameState(Vector2 scale, float rotation, Vector2 translation, TexMatrixMode matrixMode,
+                                 bool indirect)
         {
             _scale = scale;
             _rotate = rotation;
@@ -178,7 +233,7 @@ namespace BrawlLib.Modeling
         public void CalcTransforms()
         {
             CalcFlags();
-            _transform = (Matrix)Matrix34.TextureMatrix(this);
+            _transform = (Matrix) Matrix34.TextureMatrix(this);
         }
 
         public override string ToString()
@@ -186,7 +241,12 @@ namespace BrawlLib.Modeling
             return string.Format("{0}, {1}, {2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
         }
 
-        public static readonly TextureFrameState Neutral = new TextureFrameState(new Vector2(1.0f), 0, new Vector2(), TexMatrixMode.MatrixMaya, false);
-        public static explicit operator SRTAnimationFrame(TextureFrameState state) { return new SRTAnimationFrame(state._scale, state._rotate, state._translate); }
+        public static readonly TextureFrameState Neutral =
+            new TextureFrameState(new Vector2(1.0f), 0, new Vector2(), TexMatrixMode.MatrixMaya, false);
+
+        public static explicit operator SRTAnimationFrame(TextureFrameState state)
+        {
+            return new SRTAnimationFrame(state._scale, state._rotate, state._translate);
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static ARCWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -24,13 +25,13 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Collision", null, NewCollisionAction),
                 new ToolStripMenuItem("BLOC", null, NewBLOCAction),
                 new ToolStripMenuItem("MSBin", null, NewMSBinAction)
-                ));
+            ));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
                 new ToolStripMenuItem("ARChive", null, ImportARCAction),
                 new ToolStripMenuItem("BRResource Pack", null, ImportBRESAction),
                 new ToolStripMenuItem("BLOC", null, ImportBLOCAction),
                 new ToolStripMenuItem("MSBin", null, ImportMSBinAction)
-                ));
+            ));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Preview All Models", null, PreviewAllAction));
             _menu.Items.Add(new ToolStripMenuItem("Export All", null, ExportAllAction));
@@ -48,44 +49,103 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewBRESAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewBRES(); }
-        protected static void NewARCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewARC(); }
-        protected static void NewMSBinAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewMSBin(); }
-        protected static void NewCollisionAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewCollision(); }
-        protected static void NewBLOCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().NewBLOC(); }
-        protected static void ImportBRESAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportBRES(); }
-        protected static void ImportARCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportARC(); }
-        protected static void ImportBLOCAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportBLOC(); }
-        protected static void ImportCollisionAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportCollision(); }
-        protected static void ImportMSBinAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ImportMSBin(); }
-        protected static void PreviewAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().PreviewAll(); }
-        protected static void ExportAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ExportAll(); }
-        protected static void ReplaceAllAction(object sender, EventArgs e) { GetInstance<ARCWrapper>().ReplaceAll(); }
+
+        protected static void NewBRESAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewBRES();
+        }
+
+        protected static void NewARCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewARC();
+        }
+
+        protected static void NewMSBinAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewMSBin();
+        }
+
+        protected static void NewCollisionAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewCollision();
+        }
+
+        protected static void NewBLOCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().NewBLOC();
+        }
+
+        protected static void ImportBRESAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportBRES();
+        }
+
+        protected static void ImportARCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportARC();
+        }
+
+        protected static void ImportBLOCAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportBLOC();
+        }
+
+        protected static void ImportCollisionAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportCollision();
+        }
+
+        protected static void ImportMSBinAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ImportMSBin();
+        }
+
+        protected static void PreviewAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().PreviewAll();
+        }
+
+        protected static void ExportAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ExportAll();
+        }
+
+        protected static void ReplaceAllAction(object sender, EventArgs e)
+        {
+            GetInstance<ARCWrapper>().ReplaceAll();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[8].Enabled = _menu.Items[9].Enabled = _menu.Items[11].Enabled = _menu.Items[12].Enabled = _menu.Items[15].Enabled = true;
+            _menu.Items[8].Enabled = _menu.Items[9].Enabled =
+                _menu.Items[11].Enabled = _menu.Items[12].Enabled = _menu.Items[15].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             ARCWrapper w = GetInstance<ARCWrapper>();
             _menu.Items[8].Enabled = _menu.Items[15].Enabled = w.Parent != null;
-            _menu.Items[9].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[9].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[11].Enabled = w.PrevNode != null;
             _menu.Items[12].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public override string ExportFilter => "PAC Archive (*.pac)|*.pac|" +
-                    "Compressed PAC Archive (*.pcs)|*.pcs|" +
-                    "Archive Pair (*.pair)|*.pair|" +
-                    "Multiple Resource Group (*.mrg)|*.mrg|" +
-                    "Compressed MRG (*.mrgc)|*.mrgc";
+                                               "Compressed PAC Archive (*.pcs)|*.pcs|" +
+                                               "Archive Pair (*.pair)|*.pair|" +
+                                               "Multiple Resource Group (*.mrg)|*.mrg|" +
+                                               "Compressed MRG (*.mrgc)|*.mrgc";
 
-        public ARCWrapper() { ContextMenuStrip = _menu; }
+        public ARCWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
 
         public ARCNode NewARC()
         {
-            ARCNode node = new ARCNode() { Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData };
+            ARCNode node = new ARCNode() {Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -93,9 +153,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public BRRESNode NewBRES()
         {
-            BRRESNode node = new BRRESNode() { FileType = ARCFileType.MiscData };
+            BRRESNode node = new BRRESNode() {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -103,9 +164,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public CollisionNode NewCollision()
         {
-            CollisionNode node = new CollisionNode() { FileType = ARCFileType.MiscData };
+            CollisionNode node = new CollisionNode() {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -113,9 +175,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public BLOCNode NewBLOC()
         {
-            BLOCNode node = new BLOCNode() { FileType = ARCFileType.MiscData };
+            BLOCNode node = new BLOCNode() {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -123,9 +186,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public MSBinNode NewMSBin()
         {
-            MSBinNode node = new MSBinNode() { FileType = ARCFileType.MiscData };
+            MSBinNode node = new MSBinNode() {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -141,6 +205,7 @@ namespace BrawlCrate.NodeWrappers
                 NewARC().Replace(path);
             }
         }
+
         public void ImportBRES()
         {
             if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
@@ -148,6 +213,7 @@ namespace BrawlCrate.NodeWrappers
                 NewBRES().Replace(path);
             }
         }
+
         public void ImportBLOC()
         {
             if (Program.OpenFile(FileFilters.BLOC, out string path) > 0)
@@ -155,6 +221,7 @@ namespace BrawlCrate.NodeWrappers
                 NewBLOC().Replace(path);
             }
         }
+
         public void ImportCollision()
         {
             if (Program.OpenFile(FileFilters.CollisionDef, out string path) > 0)
@@ -162,6 +229,7 @@ namespace BrawlCrate.NodeWrappers
                 NewBRES().Replace(path);
             }
         }
+
         public void ImportMSBin()
         {
             if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
@@ -174,10 +242,18 @@ namespace BrawlCrate.NodeWrappers
         {
             switch (filterIndex)
             {
-                case 1: ((ARCNode)_resource).Export(outPath); break;
-                case 2: ((ARCNode)_resource).ExportPCS(outPath); break;
-                case 3: ((ARCNode)_resource).ExportPair(outPath); break;
-                case 4: ((ARCNode)_resource).ExportAsMRG(outPath); break;
+                case 1:
+                    ((ARCNode) _resource).Export(outPath);
+                    break;
+                case 2:
+                    ((ARCNode) _resource).ExportPCS(outPath);
+                    break;
+                case 3:
+                    ((ARCNode) _resource).ExportPair(outPath);
+                    break;
+                case 4:
+                    ((ARCNode) _resource).ExportAsMRG(outPath);
+                    break;
             }
         }
 
@@ -198,10 +274,10 @@ namespace BrawlCrate.NodeWrappers
 
                     break;
                 case ResourceType.MDL0:
-                    models.Add((IModel)node);
+                    models.Add((IModel) node);
                     break;
                 case ResourceType.CollisionDef:
-                    collisions.Add((CollisionNode)node);
+                    collisions.Add((CollisionNode) node);
                     break;
             }
         }
@@ -220,7 +296,9 @@ namespace BrawlCrate.NodeWrappers
             if (path == null)
             {
                 return;
-            } ((ARCNode)_resource).ExtractToFolder(path);
+            }
+
+            ((ARCNode) _resource).ExtractToFolder(path);
         }
 
         public void ReplaceAll()
@@ -229,7 +307,9 @@ namespace BrawlCrate.NodeWrappers
             if (path == null)
             {
                 return;
-            } ((ARCNode)_resource).ReplaceFromFolder(path);
+            }
+
+            ((ARCNode) _resource).ReplaceFromFolder(path);
         }
     }
 }

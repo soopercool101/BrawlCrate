@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class THPNode : ResourceNode, IVideo
     {
-        internal THPFile* Header => (THPFile*)WorkingUncompressed.Address;
+        internal THPFile* Header => (THPFile*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private THPHeader hdr;
@@ -23,26 +23,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         private THPAudioInfo audio;
         private THPVideoInfo video;
 
-        [Category("THP Video Data")]
-        public uint Width => video._xSize;
-        [Category("THP Video Data")]
-        public uint Height => video._ySize;
-        [Category("THP Video Data")]
-        public uint Type => video._videoType;
+        [Category("THP Video Data")] public uint Width => video._xSize;
+        [Category("THP Video Data")] public uint Height => video._ySize;
+        [Category("THP Video Data")] public uint Type => video._videoType;
 
-        [Category("THP Audio Data")]
-        public uint Channels => audio._sndChannels;
-        [Category("THP Audio Data")]
-        public uint Frequency => audio._sndFrequency;
-        [Category("THP Audio Data")]
-        public uint NumSamples => audio._sndNumSamples;
-        [Category("THP Audio Data")]
-        public uint NumTracks => audio._sndNumTracks;
+        [Category("THP Audio Data")] public uint Channels => audio._sndChannels;
+        [Category("THP Audio Data")] public uint Frequency => audio._sndFrequency;
+        [Category("THP Audio Data")] public uint NumSamples => audio._sndNumSamples;
+        [Category("THP Audio Data")] public uint NumTracks => audio._sndNumTracks;
 
-        [Category("THP Header Data")]
-        public float FrameRate => hdr._frameRate;
-        [Category("THP Header Data")]
-        public uint NumFrames => hdr._numFrames;
+        [Category("THP Header Data")] public float FrameRate => hdr._frameRate;
+        [Category("THP Header Data")] public uint NumFrames => hdr._numFrames;
 
         public THPFrame[] _frames;
         public List<byte> _componentTypes;
@@ -52,7 +43,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            if ((_name == null) && (_origPath != null))
+            if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
@@ -103,11 +94,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnRebuild(address, length, force);
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((THPHeader*)source.Address)->_tag == THPHeader.Tag ? new THPNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((THPHeader*) source.Address)->_tag == THPHeader.Tag ? new THPNode() : null;
+        }
 
-        [Browsable(false)]
-        public int ImageCount => _frames.Length;
-        public Bitmap GetImage(int index) { return _frames[index.Clamp(0, ImageCount - 1)].GetImage(); }
+        [Browsable(false)] public int ImageCount => _frames.Length;
+
+        public Bitmap GetImage(int index)
+        {
+            return _frames[index.Clamp(0, ImageCount - 1)].GetImage();
+        }
 
         public int GetImageIndexAtFrame(int frame)
         {
@@ -223,11 +220,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 byte b1 = temp[i];
                 byte b2 = temp[i + 1];
-                ushort code = (ushort)((b1 << 8) | b2);
+                ushort code = (ushort) ((b1 << 8) | b2);
 
                 if (Enum.IsDefined(typeof(JpegMarkers), code))
                 {
-                    JpegMarkers m = (JpegMarkers)code;
+                    JpegMarkers m = (JpegMarkers) code;
                     if (m == JpegMarkers.EndOfImage)
                     {
                         end = i;
@@ -242,11 +239,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (b1 == 0xFF)
                 {
                     byte b2 = temp[i + 1];
-                    ushort code = (ushort)((b1 << 8) | b2);
+                    ushort code = (ushort) ((b1 << 8) | b2);
 
                     if (Enum.IsDefined(typeof(JpegMarkers), code))
                     {
-                        JpegMarkers m = (JpegMarkers)code;
+                        JpegMarkers m = (JpegMarkers) code;
                         if (m == JpegMarkers.EndOfImage && i == end)
                         {
                             break;
@@ -259,6 +256,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 i++;
                             }
                         }
+
                         if (m == JpegMarkers.StartOfScan)
                         {
                             begun = true;
@@ -274,18 +272,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
             }
+
             buffer = temp.ToArray();
 
-            return (Bitmap)new ImageConverter().ConvertFrom(buffer);
+            return (Bitmap) new ImageConverter().ConvertFrom(buffer);
         }
 
         private DataSource _source;
-        public THPFrameHeader* Header => (THPFrameHeader*)_source.Address;
-        public ThpAudioFrameHeader* Audio => (ThpAudioFrameHeader*)Header->GetComp(2, 1);
+        public THPFrameHeader* Header => (THPFrameHeader*) _source.Address;
+        public ThpAudioFrameHeader* Audio => (ThpAudioFrameHeader*) Header->GetComp(2, 1);
 
         public THPFrame(VoidPtr addr, uint size, THPNode node)
         {
-            _source = new DataSource(addr, (int)size);
+            _source = new DataSource(addr, (int) size);
             _node = node;
         }
     }
@@ -321,10 +320,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             byte* sPtr;
             short yn1 = 0, yn2 = 0;
 
-            _numChannels = (int)node.Channels;
-            _sampleRate = (int)node.Frequency;
-            _numSamples = (int)node.NumSamples;
-            _numBlocks = (int)node.NumFrames;
+            _numChannels = (int) node.Channels;
+            _sampleRate = (int) node.Frequency;
+            _numSamples = (int) node.NumSamples;
+            _numBlocks = (int) node.NumFrames;
 
             _blockStates = new ADPCMState[_numChannels, _numBlocks];
             _currentStates = new ADPCMState[_numChannels];
@@ -354,8 +353,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
 
                     //Get block state
-                    _blockStates[channel, frame] = new ADPCMState(sPtr, *sPtr, yn1, yn2, coefs); //Use ps from data stream
+                    _blockStates[channel, frame] =
+                        new ADPCMState(sPtr, *sPtr, yn1, yn2, coefs); //Use ps from data stream
                 }
+
                 _audioBlocks[frame] = new THPAudioBlock(header->_blockSize, header->_numSamples);
             }
         }
@@ -372,7 +373,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     break;
                 }
 
-                temp += (int)_audioBlocks[_blockId]._numSamples;
+                temp += (int) _audioBlocks[_blockId]._numSamples;
                 _blockId++;
             }
             //_samplePos = temp;
@@ -407,8 +408,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 foreach (ADPCMState state in _currentStates)
                 {
                     sample = state.ReadSample();
-                    outStream.WriteByte((byte)(sample & 0xFF));
-                    outStream.WriteByte((byte)(sample >> 8 & 0xFF));
+                    outStream.WriteByte((byte) (sample & 0xFF));
+                    outStream.WriteByte((byte) ((sample >> 8) & 0xFF));
                 }
             }
 
@@ -420,7 +421,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int x = 0;
             for (int i = 0; i < frame; i++)
             {
-                x += (int)_audioBlocks[i]._numSamples;
+                x += (int) _audioBlocks[i]._numSamples;
             }
 
             return x;
@@ -437,7 +438,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     break;
                 }
 
-                temp += (int)_audioBlocks[i]._numSamples;
+                temp += (int) _audioBlocks[i]._numSamples;
             }
         }
 
@@ -457,8 +458,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return false;
                 }
 
-                temp += (int)_audioBlocks[block++]._numSamples;
+                temp += (int) _audioBlocks[block++]._numSamples;
             }
+
             return false;
         }
 
@@ -469,9 +471,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int Samples => _numSamples;
         public int Channels => _numChannels;
         public int Frequency => _sampleRate;
-        public bool IsLooping { get => false; set { } }
-        public int LoopStartSample { get => 0; set { } }
-        public int LoopEndSample { get => _numSamples; set { } }
+
+        public bool IsLooping
+        {
+            get => false;
+            set { }
+        }
+
+        public int LoopStartSample
+        {
+            get => 0;
+            set { }
+        }
+
+        public int LoopEndSample
+        {
+            get => _numSamples;
+            set { }
+        }
 
         public int SamplePosition
         {
@@ -496,7 +513,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public int ReadSamples(VoidPtr destAddr, int numSamples)
         {
-            short* dPtr = (short*)destAddr;
+            short* dPtr = (short*) destAddr;
             int samples = Math.Min(numSamples, _numSamples - _samplePos);
 
             for (int i = 0; i < samples; i++, _samplePos++)
@@ -527,7 +544,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             SamplePosition = 0;
         }
 
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
 
         #endregion
     }

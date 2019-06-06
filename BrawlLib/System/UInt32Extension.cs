@@ -6,6 +6,7 @@
         {
             return ((value >> 24) & 0xFF) | (value << 24) | ((value >> 8) & 0xFF00) | ((value & 0xFF00) << 8);
         }
+
         public static uint Align(this uint value, uint align)
         {
             if (align <= 1)
@@ -21,6 +22,7 @@
 
             return value;
         }
+
         public static uint Clamp(this uint value, uint min, uint max)
         {
             return value < min ? min : value > max ? max : value;

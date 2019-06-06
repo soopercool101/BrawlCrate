@@ -20,22 +20,31 @@ namespace BrawlLib.SSBBTypes
         public bshort _stringLen;
         public bshort _padding; //0
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public string IdString
         {
-            get => new string((sbyte*)Address + 0x28);
+            get => new string((sbyte*) Address + 0x28);
             set
             {
                 int len = value.Length + 1;
-                _stringLen = (short)len;
+                _stringLen = (short) len;
 
-                byte* dPtr = (byte*)Address + 0x28;
+                byte* dPtr = (byte*) Address + 0x28;
                 fixed (char* sPtr = value)
                 {
                     for (int i = 0; i < len; i++)
                     {
-                        *dPtr++ = (byte)sPtr[i];
+                        *dPtr++ = (byte) sPtr[i];
                     }
                 }
 
@@ -50,7 +59,7 @@ namespace BrawlLib.SSBBTypes
             }
         }
 
-        public REFTypeObjectTable* Table => (REFTypeObjectTable*)(Address + 0x18 + _dataOffset);
+        public REFTypeObjectTable* Table => (REFTypeObjectTable*) (Address + 0x18 + _dataOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -61,20 +70,30 @@ namespace BrawlLib.SSBBTypes
 
         public EmitterDesc _descriptor;
 
-        public ParticleParameterHeader* Params => (ParticleParameterHeader*)(Address + _headerSize + 8);
+        public ParticleParameterHeader* Params => (ParticleParameterHeader*) (Address + _headerSize + 8);
 
-        public bushort* PtclTrackCount => (bushort*)((VoidPtr)Params + Params->headersize + 4);
+        public bushort* PtclTrackCount => (bushort*) ((VoidPtr) Params + Params->headersize + 4);
         public bushort* PtclInitTrackCount => PtclTrackCount + 1;
-        public bushort* EmitTrackCount => (bushort*)((VoidPtr)PtclTrackCount + 4 + *PtclTrackCount * 8);
+        public bushort* EmitTrackCount => (bushort*) ((VoidPtr) PtclTrackCount + 4 + *PtclTrackCount * 8);
         public bushort* EmitInitTrackCount => EmitTrackCount + 1;
 
-        public buint* PtclTrack => (buint*)((VoidPtr)PtclTrackCount + 4);
-        public buint* EmitTrack => (buint*)((VoidPtr)EmitTrackCount + 4);
+        public buint* PtclTrack => (buint*) ((VoidPtr) PtclTrackCount + 4);
+        public buint* EmitTrack => (buint*) ((VoidPtr) EmitTrackCount + 4);
 
-        public VoidPtr Animations => (VoidPtr)EmitTrackCount + 4 + *EmitTrackCount * 8;
+        public VoidPtr Animations => (VoidPtr) EmitTrackCount + 4 + *EmitTrackCount * 8;
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EmitterDesc
     {
@@ -114,7 +133,9 @@ namespace BrawlLib.SSBBTypes
         public sbyte _ptclLifeRandom;
         public sbyte _inheritChildPtclTranslate;
         public sbyte _emitEmitIntervalRandom;
+
         public sbyte _emitEmitRandom;
+
         //0x10
         public bfloat _emitEmit;
         public bushort _emitEmitStart;
@@ -122,31 +143,43 @@ namespace BrawlLib.SSBBTypes
         public bushort _emitEmitInterval;
         public sbyte _inheritPtclTranslate;
         public sbyte _inheritChildEmitTranslate;
+
         public bfloat _commonParam1;
+
         //0x20
         public bfloat _commonParam2;
         public bfloat _commonParam3;
         public bfloat _commonParam4;
+
         public bfloat _commonParam5;
+
         //0x30
         public bfloat _commonParam6;
         public bushort _emitEmitDiv;
         public sbyte _velInitVelocityRandom;
         public sbyte _velMomentumRandom;
         public bfloat _velPowerRadiationDir;
+
         public bfloat _velPowerYAxis;
+
         //0x40
         public bfloat _velPowerRandomDir;
         public bfloat _velPowerNormalDir;
         public bfloat _velDiffusionEmitterNormal;
+
         public bfloat _velPowerSpecDir;
+
         //0x50
         public bfloat _velDiffusionSpecDir;
+
         public BVec3 _velSpecDir;
+
         //0x60
         public BVec3 _scale;
         public BVec3 _rotate;
+
         public BVec3 _translate;
+
         //0x84
         public byte _lodNear;
         public byte _lodFar;
@@ -156,15 +189,35 @@ namespace BrawlLib.SSBBTypes
         public buint _randomSeed;
 
         public fixed byte _userdata[8];
+
         //0x94
         public EmitterDrawSetting9 _drawSetting;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EmitterDrawSetting7
     {
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         public bushort mFlags; // DrawFlag
 
@@ -172,7 +225,7 @@ namespace BrawlLib.SSBBTypes
         public byte mACmpComp1;
         public byte mACmpOp;
 
-        public byte mNumTevs;  // TEV uses stages 1 through 4
+        public byte mNumTevs; // TEV uses stages 1 through 4
         public byte mFlagClamp; // Obsolete
 
         public byte mIndirectTargetStage;
@@ -219,9 +272,9 @@ namespace BrawlLib.SSBBTypes
 
         //Length below is 0x48
 
-        public byte mZCompareFunc;          // GXCompare
+        public byte mZCompareFunc; // GXCompare
 
-        public byte mAlphaFlickType;        // AlphaFlickType
+        public byte mAlphaFlickType; // AlphaFlickType
 
         public bushort mAlphaFlickCycle;
         public byte mAlphaFlickRandom;
@@ -236,9 +289,9 @@ namespace BrawlLib.SSBBTypes
         public sbyte pivotY;
         public byte padding;
 
-        public byte ptcltype;                   // enum Type
+        public byte ptcltype; // enum Type
 
-        public byte typeOption;                 // Expression assistance
+        public byte typeOption; // Expression assistance
         // Billboard:
         //   enum BillboardAssist
         // Linear stripe/smooth stripe:
@@ -246,27 +299,28 @@ namespace BrawlLib.SSBBTypes
         // Other:
         //   enum Assist
 
-        public byte typeDir;                    // Movement direction
+        public byte typeDir; // Movement direction
         // Other:
         //   enum Ahead
         // Billboard:
         //   enum BillboardAhead
 
-        public byte typeAxis;                   // enum RotateAxis
+        public byte typeAxis; // enum RotateAxis
 
-        public byte typeOption0;                // Various types of parameters corresponding to the particle shapes
+        public byte typeOption0; // Various types of parameters corresponding to the particle shapes
         // Directional:
         //   Change vertical (Y) based on speed : 0=off, 1=on
         // Linear stripe/smooth stripe:
         //   Number of vertices in the tube (3+)
 
-        public byte typeOption1;                // Various types of parameters corresponding to the particle shapes
+        public byte typeOption1; // Various types of parameters corresponding to the particle shapes
         // Directional:
         //   enum Face
         // Smooth stripe
         //   Number of interpolation divisions (1+)
 
-        public byte typeOption2;                // Various types of parameters corresponding to the particle shapes
+        public byte typeOption2; // Various types of parameters corresponding to the particle shapes
+
         // Linear stripe/smooth stripe:
         //   enum StripeConnect
         //   | enum StripeInitialPrevAxis
@@ -280,15 +334,24 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct EmitterDrawSetting9
     {
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public bushort mFlags;     // DrawFlag
+        public bushort mFlags; // DrawFlag
 
         public byte mACmpComp0;
         public byte mACmpComp1;
         public byte mACmpOp;
 
-        public byte mNumTevs;   // TEV uses stages 1 through 4
+        public byte mNumTevs; // TEV uses stages 1 through 4
         public byte mFlagClamp; // Obsolete
 
         public byte mIndirectTargetStage;
@@ -335,9 +398,9 @@ namespace BrawlLib.SSBBTypes
 
         //Length below is 0x48
 
-        public byte mZCompareFunc;          // GXCompare
+        public byte mZCompareFunc; // GXCompare
 
-        public byte mAlphaFlickType;        // AlphaFlickType
+        public byte mAlphaFlickType; // AlphaFlickType
 
         public bushort mAlphaFlickCycle;
         public byte mAlphaFlickRandom;
@@ -352,9 +415,9 @@ namespace BrawlLib.SSBBTypes
         public sbyte pivotY;
         public byte padding;
 
-        public byte ptcltype;                   // enum Type
+        public byte ptcltype; // enum Type
 
-        public byte typeOption;                 // Expression assistance
+        public byte typeOption; // Expression assistance
         // Billboard:
         //   enum BillboardAssist
         // Linear stripe/smooth stripe:
@@ -362,27 +425,28 @@ namespace BrawlLib.SSBBTypes
         // Other:
         //   enum Assist
 
-        public byte typeDir;                    // Movement direction
+        public byte typeDir; // Movement direction
         // Other:
         //   enum Ahead
         // Billboard:
         //   enum BillboardAhead
 
-        public byte typeAxis;                   // enum RotateAxis
+        public byte typeAxis; // enum RotateAxis
 
-        public byte typeOption0;                // Various types of parameters corresponding to the particle shapes
+        public byte typeOption0; // Various types of parameters corresponding to the particle shapes
         // Directional:
         //   Change vertical (Y) based on speed : 0=off, 1=on
         // Linear stripe/smooth stripe:
         //   Number of vertices in the tube (3+)
 
-        public byte typeOption1;                // Various types of parameters corresponding to the particle shapes
+        public byte typeOption1; // Various types of parameters corresponding to the particle shapes
         // Directional:
         //   enum Face
         // Smooth stripe
         //   Number of interpolation divisions (1+)
 
-        public byte typeOption2;                // Various types of parameters corresponding to the particle shapes
+        public byte typeOption2; // Various types of parameters corresponding to the particle shapes
+
         // Linear stripe/smooth stripe:
         //   enum StripeConnect
         //   | enum StripeInitialPrevAxis
@@ -410,7 +474,7 @@ namespace BrawlLib.SSBBTypes
         DrawOrder = 0x0800, // 0x0800 0: normal order, 1: reverse order
         FogEnable = 0x1000, // 0x1000
         XYLinkSize = 0x2000, // 0x2000
-        XYLinkScale = 0x4000  // 0x4000
+        XYLinkScale = 0x4000 // 0x4000
     }
 
     [Flags]
@@ -426,32 +490,51 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct TevStageColor
     {
-        public byte mA;         // GXTevColorArg / GXTevAlphaArg
-        public byte mB;         // GXTevColorArg / GXTevAlphaArg
-        public byte mC;         // GXTevColorArg / GXTevAlphaArg
-        public byte mD;         // GXTevColorArg / GXTevAlphaArg
+        public byte mA; // GXTevColorArg / GXTevAlphaArg
+        public byte mB; // GXTevColorArg / GXTevAlphaArg
+        public byte mC; // GXTevColorArg / GXTevAlphaArg
+        public byte mD; // GXTevColorArg / GXTevAlphaArg
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct TevStageColorOp
     {
-        public byte mOp;        // GXTevOp
-        public byte mBias;      // GXTevBias
-        public byte mScale;     // GXTevScale
-        public byte mClamp;     // GXBool
-        public byte mOutReg;    // GXTevRegID
+        public byte mOp; // GXTevOp
+        public byte mBias; // GXTevBias
+        public byte mScale; // GXTevScale
+        public byte mClamp; // GXBool
+        public byte mOutReg; // GXTevRegID
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ReffBlendMode
     {
-        public byte mType;                      // GXBlendMode
-        public byte mSrcFactor;                 // GXBlendFactor
-        public byte mDstFactor;                 // GXBlendFactor
-        public byte mOp;                        // GXLogicOp
+        public byte mType; // GXBlendMode
+        public byte mSrcFactor; // GXBlendFactor
+        public byte mDstFactor; // GXBlendFactor
+        public byte mOp; // GXLogicOp
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -459,18 +542,19 @@ namespace BrawlLib.SSBBTypes
     {
         public enum RasColor
         {
-            Null = 0,      // No request
-            Lighting = 1   // Color lit by lighting
+            Null = 0, // No request
+            Lighting = 1 // Color lit by lighting
         }
+
         public enum TevColor
         {
-            Null = 0,            // No request
-            Layer1Primary = 1,   // Layer 1 primary color
+            Null = 0, // No request
+            Layer1Primary = 1, // Layer 1 primary color
             Layer1Secondary = 2, // Layer 1 Secondary Color
-            Layer2Primary = 3,   // Layer 2 primary color
+            Layer2Primary = 3, // Layer 2 primary color
             Layer2Secondary = 4, // Layer 2 Secondary Color
-            Layer1Multi = 5,     // Layer 1 primary color x secondary color
-            Layer2Multi = 6      // Layer 2 primary color x secondary color
+            Layer1Multi = 5, // Layer 1 primary color x secondary color
+            Layer2Multi = 6 // Layer 2 primary color x secondary color
         }
 
         public byte mRasColor; //Rasterize color (only channel 0): RasColor
@@ -507,14 +591,16 @@ namespace BrawlLib.SSBBTypes
             Simple,
             Hardware
         }
+
         public enum Type
         {
             None = 0,
             Ambient,
             Point
         }
-        public byte mMode;                  // Mode
-        public byte mType;                  // Type
+
+        public byte mMode; // Mode
+        public byte mType; // Type
 
         public RGBAPixel mAmbient;
         public RGBAPixel mDiffuse;
@@ -542,7 +628,7 @@ namespace BrawlLib.SSBBTypes
     public enum Assist
     {
         Normal = 0, // Render single Quad to Face surface
-        Cross       // Add Quads so they are orthogonal to Normals.
+        Cross // Add Quads so they are orthogonal to Normals.
     }
 
     // Expression assistance -- billboards
@@ -550,19 +636,19 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeOption member.
     public enum BillboardAssist
     {
-        Normal = 0,     // Normal
-        Y,              // Y-axis billboard
-        Directional,    // Billboard using the movement direction as its axis
-        NormalNoRoll    // Normal (no roll)
+        Normal = 0, // Normal
+        Y, // Y-axis billboard
+        Directional, // Billboard using the movement direction as its axis
+        NormalNoRoll // Normal (no roll)
     }
 
     // Expression assistance -- stripes
     public enum StripeAssist
     {
-        Normal = 0,          // Normal.
-        Cross,               // Add a surface orthogonal to the Normal.
-        Billboard,           // Always faces the screen.
-        Tube                 // Expression of a tube shape.
+        Normal = 0, // Normal.
+        Cross, // Add a surface orthogonal to the Normal.
+        Billboard, // Always faces the screen.
+        Tube // Expression of a tube shape.
     }
 
     // Movement direction (Y-axis) -- everything except billboard
@@ -570,14 +656,14 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeDir member.
     public enum Ahead
     {
-        Speed = 0,                   // Velocity vector direction
-        EmitterCenter,               // Relative position from the center of emitter
-        EmitterDesign,               // Emitter specified direction
-        Particle,                    // Difference in location from the previous particle
-        User,                        // User specified (unused)
-        NoDesign,                    // Unspecified
-        ParticleBoth,                // Difference in position with both neighboring particles
-        NoDesignYAxis,               // Unspecified (initialized as the world Y-axis)
+        Speed = 0, // Velocity vector direction
+        EmitterCenter, // Relative position from the center of emitter
+        EmitterDesign, // Emitter specified direction
+        Particle, // Difference in location from the previous particle
+        User, // User specified (unused)
+        NoDesign, // Unspecified
+        ParticleBoth, // Difference in position with both neighboring particles
+        NoDesignYAxis, // Unspecified (initialized as the world Y-axis)
     }
 
     // Movement direction (Y-axis) -- billboards
@@ -585,11 +671,11 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeDir member.
     public enum BillboardAhead
     {
-        Speed = 0,              // Velocity vector direction
-        EmitterCenter,          // Relative position from the center of emitter
-        EmitterDesign,          // Emitter specified direction
-        Particle,               // Difference in location from the previous particle
-        ParticleBoth,           // Difference in position with both neighboring particles
+        Speed = 0, // Velocity vector direction
+        EmitterCenter, // Relative position from the center of emitter
+        EmitterDesign, // Emitter specified direction
+        Particle, // Difference in location from the previous particle
+        ParticleBoth, // Difference in position with both neighboring particles
     }
 
     // Rotational axis to take into account when rendering
@@ -597,10 +683,10 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeAxis member.
     public enum RotateAxis
     {
-        OnlyX = 0,          // X-axis rotation only
-        OnlyY,              // Y-axis rotation only
-        OnlyZ,              // Z-axis rotation only
-        XYZ,                // 3-axis rotation
+        OnlyX = 0, // X-axis rotation only
+        OnlyY, // Y-axis rotation only
+        OnlyZ, // Z-axis rotation only
+        XYZ, // 3-axis rotation
     }
 
     // Base surface (polygon render surface)
@@ -617,9 +703,9 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeOption2. >> 0 & 7
     public enum StripeConnect
     {
-        None = 0,    // Does not connect
-        Ring,        // Both ends connected
-        Emitter,     // Connect between the newest particle and the emitter
+        None = 0, // Does not connect
+        Ring, // Both ends connected
+        Emitter, // Connect between the newest particle and the emitter
         //Mask = 0x07 // StripeConnect mask
     }
 
@@ -628,10 +714,10 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeOption2. >> 3 & 7
     public enum StripeInitialPrevAxis
     {
-        XAxis = 1,   // X-axis of the emitter
-        YAxis = 0,   // Y-axis of the emitter (assigned to 0 for compatibility)
-        ZAxis = 2,   // Z-axis of the emitter
-        XYZ = 3,      // Direction in emitter coordinates (1, 1, 1)
+        XAxis = 1, // X-axis of the emitter
+        YAxis = 0, // Y-axis of the emitter (assigned to 0 for compatibility)
+        ZAxis = 2, // Z-axis of the emitter
+        XYZ = 3, // Direction in emitter coordinates (1, 1, 1)
         //STRIPE_INITIAL_PREV_AXIS__MASK = 0x07 << 3          // Bitmask
     }
 
@@ -640,8 +726,8 @@ namespace BrawlLib.SSBBTypes
     // Stored in typeOption2. >> 6 & 3
     public enum StripeTexmapType
     {
-        Stretch = 0,    // Stretch the texture along the stripe's entire length.
-        Repeat = 1,     // Repeats the texture for each segment.
+        Stretch = 0, // Stretch the texture along the stripe's entire length.
+        Repeat = 1, // Repeats the texture for each segment.
         //STRIPE_TEXMAP_TYPE__MASK = 0x03 << 6
     }
 
@@ -651,8 +737,8 @@ namespace BrawlLib.SSBBTypes
     [Flags]
     public enum DirectionalPivot
     {
-        NoProcessing = 0 << 0,         // No processing
-        Billboard = 1 << 0,   // Convert into a billboard, with the movement direction as its axis
+        NoProcessing = 0 << 0, // No processing
+        Billboard = 1 << 0, // Convert into a billboard, with the movement direction as its axis
         //DIRECTIONAL_PIVOT__MASK = 0x03 << 0
     }
 
@@ -662,6 +748,7 @@ namespace BrawlLib.SSBBTypes
         public buint headersize;
         public ParticleParameterDesc paramDesc;
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct ParticleParameterDesc
     {
@@ -685,7 +772,7 @@ namespace BrawlLib.SSBBTypes
         public BVec2 textureTranslate3;
 
         //These three are texture data pointers
-        public uint mTexture1;    // 0..1: stage0,1, 2: Indirect
+        public uint mTexture1; // 0..1: stage0,1, 2: Indirect
         public uint mTexture2;
         public uint mTexture3;
 
@@ -785,11 +872,13 @@ namespace BrawlLib.SSBBTypes
         Tex2 = 108,
         TexInd = 112,
     }
+
     public enum v9AnimCurveTargetChild //curve flag = 5
     {
         //Updates: child
         Child = 0,
     }
+
     public enum v7AnimCurveTargetChild2 //curve flag = 5
     {
         //Updates: child
@@ -816,6 +905,7 @@ namespace BrawlLib.SSBBTypes
         Rotate = 12,
         Translate = 24,
     }
+
     public enum v9AnimCurveTargetEmitterFloat //curve flag = 11
     {
         //Updates: EmitterParam
@@ -982,6 +1072,7 @@ namespace BrawlLib.SSBBTypes
         PostField = 2,
         EmitterFloat = 11
     }
+
     [Flags]
     public enum AnimCurveHeaderProcessFlagType
     {
@@ -992,6 +1083,7 @@ namespace BrawlLib.SSBBTypes
         Turn = 0x40,
         Fitting = 0x80
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct AnimCurveHeader
     {
@@ -1012,16 +1104,27 @@ namespace BrawlLib.SSBBTypes
         public buint nameTable;
         public buint infoTable;
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct AnimCurveTableHeader
     {
         public bushort _count;
         public bushort _pad;
 
-        public AnimCurveKeyHeader* First => (AnimCurveKeyHeader*)(Address + 4);
+        public AnimCurveKeyHeader* First => (AnimCurveKeyHeader*) (Address + 4);
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct AnimCurveKeyHeader
     {
@@ -1030,11 +1133,28 @@ namespace BrawlLib.SSBBTypes
 
         public VoidPtr Data => Address + 8;
 
-        public AnimCurveKeyHeader* Next(int typeCount, int typeSize) { return (AnimCurveKeyHeader*)(Data + typeCount * typeSize + 4); }
-        public uint GetFrameIndex(int typeCount, int typeSize) { return *(buint*)(Data + typeCount * typeSize); }
+        public AnimCurveKeyHeader* Next(int typeCount, int typeSize)
+        {
+            return (AnimCurveKeyHeader*) (Data + typeCount * typeSize + 4);
+        }
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public uint GetFrameIndex(int typeCount, int typeSize)
+        {
+            return *(buint*) (Data + typeCount * typeSize);
+        }
+
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct PostFieldInfo
     {
@@ -1045,6 +1165,7 @@ namespace BrawlLib.SSBBTypes
             public BVec3 mRotate;
             public BVec3 mTranslate;
         }
+
         public AnimatableParams mAnimatableParams;
 
         public enum ControlSpeedType
@@ -1053,6 +1174,7 @@ namespace BrawlLib.SSBBTypes
             Limit = 1,
             Terminate = 2
         }
+
         public bfloat mReferenceSpeed;
         public byte mControlSpeedType;
 
@@ -1065,7 +1187,9 @@ namespace BrawlLib.SSBBTypes
             Sphere = 4,
             Cylinder = 5
         }
+
         public byte mCollisionShapeType;
+
         public enum ShapeOption
         {
             XZ = 0x00,
@@ -1076,25 +1200,30 @@ namespace BrawlLib.SSBBTypes
             Bottom = 0x42,
             None = 0x50
         }
+
         public enum ShapeOptionPlane
         {
             XZ = 0,
             XY = 1,
             YZ = 2
         }
+
         public enum ShapeOptionSphere
         {
             Whole = 0,
             Top = 1,
             Bottom = 2
         }
+
         public byte mCollisionShapeOption; // ShapeOptionPlane | ShapeOptionSphere
+
         public enum CollisionType
         {
             Border = 0, // Border
             Inner = 1, // Inside, +X, +Y, +Z
             Outer = 2 // Outside, -X, -Y, -Z
         }
+
         public byte mCollisionType;
 
         [Flags]
@@ -1107,6 +1236,7 @@ namespace BrawlLib.SSBBTypes
             CreateChildEmit = 0x20, // Child creation (emitter creation)
             Delete = 0x40 // Delete
         }
+
         public bushort mCollisionOption;
 
         public bushort mStartFrame;
@@ -1119,6 +1249,7 @@ namespace BrawlLib.SSBBTypes
             private EmitterInheritSetting mInheritSetting;
             public bushort mNameIdx;
         }
+
         public ChildOption mChildOption;
 
         [Flags]
@@ -1129,6 +1260,7 @@ namespace BrawlLib.SSBBTypes
             CenterOrigin = 0 << 1, // Center of the global origin
             CenterEmitter = 1 << 1 // Emitter center
         }
+
         public byte mWrapOption; // Bitwise OR of enum WrapOption
 
         public fixed byte padding[3];
@@ -1137,6 +1269,7 @@ namespace BrawlLib.SSBBTypes
         public BVec3 mWrapRotate;
         public BVec3 mWrapTranslate;
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct EmitterInheritSetting
     {

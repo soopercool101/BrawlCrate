@@ -16,7 +16,9 @@ namespace System.Windows.Forms
         private Label label2;
 
         private SHP0VertexSetNode _target;
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SHP0VertexSetNode TargetSequence
         {
             get => _target;
@@ -68,6 +70,7 @@ namespace System.Windows.Forms
                     numFrame.Value = 1;
                 }
             }
+
             listKeyframes.EndUpdate();
 
             RefreshPage();
@@ -75,7 +78,7 @@ namespace System.Windows.Forms
 
         private void numFrame_ValueChanged(object sender, EventArgs e)
         {
-            int page = (int)numFrame.Value - 1;
+            int page = (int) numFrame.Value - 1;
             if (_currentPage != page)
             {
                 _currentPage = page;
@@ -93,7 +96,7 @@ namespace System.Windows.Forms
                 UpdateBox(0);
 
                 btnPrev.Enabled = _currentPage > 0;
-                btnNext.Enabled = _currentPage < (_numFrames - 1);
+                btnNext.Enabled = _currentPage < _numFrames - 1;
 
                 listKeyframes.SelectedIndex = FindKeyframe(_currentPage);
             }
@@ -104,7 +107,7 @@ namespace System.Windows.Forms
             int count = listKeyframes.Items.Count;
             for (int i = 0; i < count; i++)
             {
-                if (((FloatKeyframe)listKeyframes.Items[i]).Index == index)
+                if (((FloatKeyframe) listKeyframes.Items[i]).Index == index)
                 {
                     return i;
                 }
@@ -130,7 +133,7 @@ namespace System.Windows.Forms
             NumericInputBox box = sender as NumericInputBox;
             FloatKeyframe kf;
             float val = box.Value / 100.0f;
-            int index = (int)box.Tag;
+            int index = (int) box.Tag;
             int x;
 
             if (val != _currentValue)
@@ -153,7 +156,7 @@ namespace System.Windows.Forms
                 {
                     if (kfIndex >= 0)
                     {
-                        kf = (FloatKeyframe)listKeyframes.Items[kfIndex];
+                        kf = (FloatKeyframe) listKeyframes.Items[kfIndex];
                         kf.Value = val;
                         listKeyframes.Items[kfIndex] = kf;
                     }
@@ -166,7 +169,7 @@ namespace System.Windows.Forms
                         };
 
                         int count = listKeyframes.Items.Count;
-                        for (x = 0; (x < count) && (((FloatKeyframe)listKeyframes.Items[x]).Index < _currentPage); x++)
+                        for (x = 0; x < count && ((FloatKeyframe) listKeyframes.Items[x]).Index < _currentPage; x++)
                         {
                             ;
                         }
@@ -188,13 +191,20 @@ namespace System.Windows.Forms
             int index = listKeyframes.SelectedIndex;
             if (index >= 0)
             {
-                FloatKeyframe f = (FloatKeyframe)listKeyframes.SelectedItem;
+                FloatKeyframe f = (FloatKeyframe) listKeyframes.SelectedItem;
                 numFrame.Value = f.Index + 1;
             }
         }
 
-        private void btnPrev_Click(object sender, EventArgs e) { numFrame.Value -= 1; }
-        private void btnNext_Click(object sender, EventArgs e) { numFrame.Value += 1; }
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            numFrame.Value -= 1;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            numFrame.Value += 1;
+        }
 
         #region Designer
 
@@ -221,7 +231,7 @@ namespace System.Windows.Forms
             groupBox1 = new GroupBox();
             panel1 = new Panel();
             label2 = new Label();
-            ((ISupportInitialize)(numFrame)).BeginInit();
+            ((ISupportInitialize) numFrame).BeginInit();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -264,19 +274,23 @@ namespace System.Windows.Forms
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(55, 3);
-            numFrame.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Minimum = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            numFrame.Value = new decimal(new int[]
+            {
+                1,
+                0,
+                0,
+                0
+            });
             numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
@@ -369,26 +383,47 @@ namespace System.Windows.Forms
             Controls.Add(panel1);
             Name = "ShpAnimEditControl";
             Size = new Drawing.Size(230, 202);
-            ((ISupportInitialize)(numFrame)).EndInit();
+            ((ISupportInitialize) numFrame).EndInit();
             groupBox1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-
         }
 
         #endregion
     }
+
     public class FloatKeyframe
     {
         private readonly KeyframeEntry _entry;
 
-        public FloatKeyframe() { _entry = new KeyframeEntry(-1, 0); }
-        public FloatKeyframe(KeyframeEntry e) { _entry = e; }
+        public FloatKeyframe()
+        {
+            _entry = new KeyframeEntry(-1, 0);
+        }
 
-        public int Index { get => _entry._index; set => _entry._index = value; }
-        public float Value { get => _entry._value; set => _entry._value = value; }
-        public float Tangent { get => _entry._tangent; set => _entry._tangent = value; }
+        public FloatKeyframe(KeyframeEntry e)
+        {
+            _entry = e;
+        }
+
+        public int Index
+        {
+            get => _entry._index;
+            set => _entry._index = value;
+        }
+
+        public float Value
+        {
+            get => _entry._value;
+            set => _entry._value = value;
+        }
+
+        public float Tangent
+        {
+            get => _entry._tangent;
+            set => _entry._tangent = value;
+        }
 
         public override string ToString()
         {

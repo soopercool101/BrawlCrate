@@ -7,12 +7,28 @@ namespace System.Windows.Forms
     public partial class DLProgressWindow : Form
     {
         private bool _canCancel = false, _cancelled = false;
-        public bool CanCancel { get => _canCancel; set => btnCancel.Visible = btnCancel.Enabled = _canCancel = value; }
-        public string Caption { get => label1.Text; set => label1.Text = value; }
+
+        public bool CanCancel
+        {
+            get => _canCancel;
+            set => btnCancel.Visible = btnCancel.Enabled = _canCancel = value;
+        }
+
+        public string Caption
+        {
+            get => label1.Text;
+            set => label1.Text = value;
+        }
+
         public static bool started = false;
         public static bool finished = false;
         public string PackageName;
-        public DLProgressWindow() { InitializeComponent(); }
+
+        public DLProgressWindow()
+        {
+            InitializeComponent();
+        }
+
         //private Control controlOwner;
         public DLProgressWindow(string packageName, string appPath, string dlLink) : this()
         {
@@ -40,7 +56,10 @@ namespace System.Windows.Forms
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e) { Cancel(); }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Cancel();
+        }
 
         public void Begin(long min, long max, float current)
         {
@@ -69,18 +88,21 @@ namespace System.Windows.Forms
 
             Application.DoEvents();
         }
+
         public void UpdateProgress()
         {
             progressBar1.CurrentValue = CurrentValue;
             progressBar1.MaxValue = MaxValue;
             if (!Caption.Equals("Download Completed"))
             {
-                Caption = "Downloading " + PackageName + ": " + (CurrentValue / 1048576.0).ToString("0.##") + "MB of " + (MaxValue / 1048576.0).ToString("0.##") + "MB";
+                Caption = "Downloading " + PackageName + ": " + (CurrentValue / 1048576.0).ToString("0.##") + "MB of " +
+                          (MaxValue / 1048576.0).ToString("0.##") + "MB";
             }
 
             Application.DoEvents();
             Thread.Sleep(0);
         }
+
         public void Finish()
         {
             if (Owner != null)
@@ -88,6 +110,7 @@ namespace System.Windows.Forms
                 Owner.Enabled = true;
             }
         }
+
         private void startDownload(string AppPath, string dlLink)
         {
             Thread thread = new Thread(() =>
@@ -97,9 +120,10 @@ namespace System.Windows.Forms
                     using (WebClient client = new WebClient())
                     {
                         client.Headers.Add("User-Agent: Other");
-                        client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
+                        client.DownloadProgressChanged +=
+                            new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
                         client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
-                        client.DownloadFileAsync(new Uri(dlLink), (AppPath + "\\temp.exe"));
+                        client.DownloadFileAsync(new Uri(dlLink), AppPath + "\\temp.exe");
                         Application.DoEvents();
                     }
                 }
@@ -113,30 +137,41 @@ namespace System.Windows.Forms
 
         private void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            BeginInvoke((MethodInvoker)delegate
+            BeginInvoke((MethodInvoker) delegate
             {
                 if (MaxValue == 1)
                 {
                     MaxValue = e.TotalBytesToReceive;
                     started = true;
                 }
+
                 CurrentValue = e.BytesReceived;
             });
         }
 
         private void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            BeginInvoke((MethodInvoker)delegate
+            BeginInvoke((MethodInvoker) delegate
             {
                 Caption = "Download Completed";
                 Thread.Sleep(10);
                 finished = true;
             });
         }
-        public void Cancel() { _cancelled = true; }
+
+        public void Cancel()
+        {
+            _cancelled = true;
+        }
+
         public static long MinValue = 0;
         public static long MaxValue = 1;
         public static long CurrentValue = 0;
-        public bool Cancelled { get => _cancelled; set => _cancelled = true; }
+
+        public bool Cancelled
+        {
+            get => _cancelled;
+            set => _cancelled = true;
+        }
     }
 }

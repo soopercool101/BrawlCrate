@@ -31,7 +31,7 @@ namespace System.Windows.Forms
             p.Controls.Add(save);
             Controls.Add(p);
 
-            foreach (Control c in new Control[] { chooser, save, p })
+            foreach (Control c in new Control[] {chooser, save, p})
             {
                 c.Margin = new Padding(0);
             }
@@ -39,7 +39,7 @@ namespace System.Windows.Forms
 
         private void save_Click(object sender, EventArgs e)
         {
-            AttributeInterpretation item = (AttributeInterpretation)chooser.SelectedItem;
+            AttributeInterpretation item = (AttributeInterpretation) chooser.SelectedItem;
             if (item != null)
             {
                 item.Save();
@@ -48,7 +48,7 @@ namespace System.Windows.Forms
 
         private void chooser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AttributeInterpretation item = (AttributeInterpretation)chooser.SelectedItem;
+            AttributeInterpretation item = (AttributeInterpretation) chooser.SelectedItem;
             if (item != null)
             {
                 AttributeArray = item.Array;
@@ -63,8 +63,10 @@ namespace System.Windows.Forms
             {
                 chooser.SelectedIndex = i;
             }
+
             return i;
         }
+
         public void AddRange(IEnumerable<AttributeInterpretation> arrs)
         {
             foreach (AttributeInterpretation arr in arrs)
@@ -72,6 +74,7 @@ namespace System.Windows.Forms
                 Add(arr);
             }
         }
+
         public void Remove(AttributeInterpretation arr)
         {
             chooser.Items.Remove(arr);
@@ -80,6 +83,7 @@ namespace System.Windows.Forms
                 AttributeArray = null;
             }
         }
+
         public void Clear()
         {
             chooser.Items.Clear();

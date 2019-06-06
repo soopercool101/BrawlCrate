@@ -36,23 +36,35 @@ namespace BrawlLib.SSBBTypes
             _stringOffset = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public bint* StringEntries => (bint*)(Address + _stringListOffset);
+        public bint* StringEntries => (bint*) (Address + _stringListOffset);
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -91,29 +103,41 @@ namespace BrawlLib.SSBBTypes
             _stringOffset = 0;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceGroup* Group => (ResourceGroup*)(Address + _dataOffset);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public bint* StringEntries => (bint*)(Address + _stringListOffset);
+        public ResourceGroup* Group => (ResourceGroup*) (Address + _dataOffset);
+
+        public bint* StringEntries => (bint*) (Address + _stringListOffset);
 
         public VoidPtr UserData
         {
             get => _userDataOffset == 0 ? null : Address + _userDataOffset;
-            set => _userDataOffset = (int)value - (int)Address;
+            set => _userDataOffset = (int) value - (int) Address;
         }
 
-        public string OrigPath => new string((sbyte*)OrigPathAddress);
+        public string OrigPath => new string((sbyte*) OrigPathAddress);
+
         public VoidPtr OrigPathAddress
         {
             get => Address + _origPathOffset;
-            set => _origPathOffset = (int)value - (int)Address;
+            set => _origPathOffset = (int) value - (int) Address;
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -129,23 +153,34 @@ namespace BrawlLib.SSBBTypes
         public bint _fixedFlags; //Bit is set if entry is fixed
         public bint _indiciesOffset;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
         //Aligned to 4 bytes
-        public bshort* Indicies => (bshort*)(Address + _indiciesOffset);
+        public bshort* Indicies => (bshort*) (Address + _indiciesOffset);
 
-        public bint* EntryOffset => (bint*)(Address + (_indiciesOffset - 4 * _numIndices));
+        public bint* EntryOffset => (bint*) (Address + (_indiciesOffset - 4 * _numIndices));
+
         public SHP0KeyframeEntries* GetEntry(int index)
         {
             bint* ptr = &EntryOffset[index];
-            return (SHP0KeyframeEntries*)((VoidPtr)ptr + *ptr);
+            return (SHP0KeyframeEntries*) ((VoidPtr) ptr + *ptr);
         }
 
-        public string ResourceString => new string((sbyte*)ResourceStringAddress);
+        public string ResourceString => new string((sbyte*) ResourceStringAddress);
+
         public VoidPtr ResourceStringAddress
         {
             get => Address + _stringOffset;
-            set => _stringOffset = (int)value - (int)Address;
+            set => _stringOffset = (int) value - (int) Address;
         }
     }
 
@@ -155,7 +190,17 @@ namespace BrawlLib.SSBBTypes
         public bshort _numEntries;
         public bshort _unk1;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public BVec3* Entries => (BVec3*)(Address + 4);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public BVec3* Entries => (BVec3*) (Address + 4);
     }
 }

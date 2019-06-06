@@ -13,15 +13,27 @@ namespace System
         internal MemoryEnumerator(void* address, int count)
         {
             _stride = Marshal.SizeOf(typeof(T));
-            _current = _base = (byte*)address;
-            _ceil = _base + (_stride * count);
+            _current = _base = (byte*) address;
+            _ceil = _base + _stride * count;
         }
 
-        public T Current => (T)Marshal.PtrToStructure((IntPtr)_current, typeof(T));
-        public void Dispose() { }
+        public T Current => (T) Marshal.PtrToStructure((IntPtr) _current, typeof(T));
+
+        public void Dispose()
+        {
+        }
+
         object Collections.IEnumerator.Current => Current;
-        public bool MoveNext() { return (_current += _stride) < _ceil; }
-        public void Reset() { _current = _base; }
+
+        public bool MoveNext()
+        {
+            return (_current += _stride) < _ceil;
+        }
+
+        public void Reset()
+        {
+            _current = _base;
+        }
     }
 
     public unsafe class MemoryList<T> : IList<T>, IEnumerable<T> where T : struct
@@ -32,15 +44,21 @@ namespace System
         private readonly bool _readOnly;
         private readonly byte* _base;
 
-        public MemoryList(void* address, int count) : this(address, count, count, true) { }
-        public MemoryList(void* address, int count, bool readOnly) : this(address, count, count, readOnly) { }
+        public MemoryList(void* address, int count) : this(address, count, count, true)
+        {
+        }
+
+        public MemoryList(void* address, int count, bool readOnly) : this(address, count, count, readOnly)
+        {
+        }
+
         public MemoryList(void* address, int count, int capacity, bool readOnly)
         {
             _count = count;
             _cap = capacity;
             _readOnly = readOnly;
             _stride = Marshal.SizeOf(typeof(T));
-            _base = (byte*)address;
+            _base = (byte*) address;
         }
 
         public int IndexOf(T item)
@@ -48,7 +66,7 @@ namespace System
             byte* p = _base;
             for (int i = 0; i < _count; i++, p += _stride)
             {
-                if (item.Equals(Marshal.PtrToStructure((IntPtr)p, typeof(T))))
+                if (item.Equals(Marshal.PtrToStructure((IntPtr) p, typeof(T))))
                 {
                     return i;
                 }
@@ -59,18 +77,18 @@ namespace System
 
         public void Insert(int index, T item)
         {
-            if (_readOnly || (_count >= _cap))
+            if (_readOnly || _count >= _cap)
             {
                 throw new AccessViolationException();
             }
 
-            if ((index >= _count) || (index < 0))
+            if (index >= _count || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
 
-            byte* p = _base + (index * _stride);
-            Memory.Move(p + _stride, p, (uint)((_count - index) * _stride));
+            byte* p = _base + index * _stride;
+            Memory.Move(p + _stride, p, (uint) ((_count - index) * _stride));
             _count++;
         }
 
@@ -81,13 +99,13 @@ namespace System
                 throw new AccessViolationException();
             }
 
-            if ((index >= _count) || (index < 0))
+            if (index >= _count || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
 
-            byte* p = _base + (index * _stride);
-            Memory.Move(p, p + _stride, (uint)((_count - 1 - index) * _stride));
+            byte* p = _base + index * _stride;
+            Memory.Move(p, p + _stride, (uint) ((_count - 1 - index) * _stride));
             _count--;
         }
 
@@ -95,12 +113,12 @@ namespace System
         {
             get
             {
-                if ((index >= _count) || (index < 0))
+                if (index >= _count || index < 0)
                 {
                     throw new IndexOutOfRangeException();
                 }
 
-                return (T)Marshal.PtrToStructure((IntPtr)(_base + index * _stride), typeof(T));
+                return (T) Marshal.PtrToStructure((IntPtr) (_base + index * _stride), typeof(T));
             }
             set
             {
@@ -109,31 +127,39 @@ namespace System
                     throw new AccessViolationException();
                 }
 
-                if ((index >= _count) || (index < 0))
+                if (index >= _count || index < 0)
                 {
                     throw new IndexOutOfRangeException();
                 }
 
-                Marshal.StructureToPtr(value, (IntPtr)(_base + index * _stride), false);
+                Marshal.StructureToPtr(value, (IntPtr) (_base + index * _stride), false);
             }
         }
 
         public void Add(T item)
         {
-            if (_readOnly || (_count >= _cap))
+            if (_readOnly || _count >= _cap)
             {
                 throw new AccessViolationException();
             }
 
-            Marshal.StructureToPtr(item, (IntPtr)(_base + _count * _stride), false);
+            Marshal.StructureToPtr(item, (IntPtr) (_base + _count * _stride), false);
             _count++;
         }
-        public void Clear() { _count = 0; }
-        public bool Contains(T item) { return IndexOf(item) >= 0; }
+
+        public void Clear()
+        {
+            _count = 0;
+        }
+
+        public bool Contains(T item)
+        {
+            return IndexOf(item) >= 0;
+        }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if ((arrayIndex + _count) > array.Length)
+            if (arrayIndex + _count > array.Length)
             {
                 throw new ArgumentException();
             }
@@ -162,11 +188,18 @@ namespace System
                 RemoveAt(index);
                 return true;
             }
+
             return false;
         }
 
-        public IEnumerator<T> GetEnumerator() { return new MemoryEnumerator<T>(_base, _count); }
-        Collections.IEnumerator Collections.IEnumerable.GetEnumerator() { return GetEnumerator(); }
-    }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return new MemoryEnumerator<T>(_base, _count);
+        }
 
+        Collections.IEnumerator Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
 }

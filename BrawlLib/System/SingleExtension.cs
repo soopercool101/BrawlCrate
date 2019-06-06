@@ -4,7 +4,7 @@
     {
         public static unsafe float Reverse(this float value)
         {
-            *(uint*)(&value) = ((uint*)&value)->Reverse();
+            *(uint*) &value = ((uint*) &value)->Reverse();
             return value;
         }
 
@@ -41,7 +41,7 @@
             //Dividing the value by the range and cutting off the decimal places
             //will return the number of multiples of whole ranges in the value.
             //Those multiples need to be subtracted out.
-            value -= range * (int)(value / range);
+            value -= range * (int) (value / range);
 
             //Now the value is in the range of +range to -range.
             //The value needs to be within +(range/2) to -(range/2).

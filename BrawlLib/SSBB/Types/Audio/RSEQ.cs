@@ -16,10 +16,19 @@ namespace BrawlLib.SSBBTypes
         public bint _lablOffset;
         public bint _lablLength;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public RSEQ_DATAHeader* Data => (RSEQ_DATAHeader*)(Address + _dataOffset);
-        public LABLHeader* Labl => (LABLHeader*)(Address + _lablOffset);
+        public RSEQ_DATAHeader* Data => (RSEQ_DATAHeader*) (Address + _dataOffset);
+        public LABLHeader* Labl => (LABLHeader*) (Address + _lablOffset);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -31,9 +40,18 @@ namespace BrawlLib.SSBBTypes
         public bint _size;
         public bint _baseOffset;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public VoidPtr MMLCommands => (Address + _baseOffset);
+        public VoidPtr MMLCommands => Address + _baseOffset;
     }
 
     public class MMLCommand
@@ -42,11 +60,15 @@ namespace BrawlLib.SSBBTypes
         public uint _value;
         public MMLCommand[] _ex;
 
-        public MMLCommand() { }
+        public MMLCommand()
+        {
+        }
+
         public MMLCommand(Mml cmd)
         {
             _cmd = cmd;
         }
+
         public MMLCommand(Mml cmd, uint value)
         {
             _cmd = cmd;
@@ -66,13 +88,13 @@ namespace BrawlLib.SSBBTypes
             List<MMLCommand> commands = new List<MMLCommand>();
 
             Mml cmd;
-            byte* addr = (byte*)address;
-            while ((cmd = (Mml)(*addr++)) != Mml.MML_FIN)
+            byte* addr = (byte*) address;
+            while ((cmd = (Mml) (*addr++)) != Mml.MML_FIN)
             {
                 MMLCommand mml = new MMLCommand(cmd);
                 if (cmd == Mml.MML_WAIT || cmd == Mml.MML_PRG)
                 {
-                    switch ((SeqArgType)(*addr++))
+                    switch ((SeqArgType) (*addr++))
                     {
                         case SeqArgType.SEQ_ARG_NONE:
                             addr++;
@@ -91,7 +113,7 @@ namespace BrawlLib.SSBBTypes
                 }
                 else if (cmd == Mml.MML_EX_COMMAND)
                 {
-                    switch ((MmlEx)(*addr++))
+                    switch ((MmlEx) (*addr++))
                     {
                         case MmlEx.MML_SETVAR: break;
                         case MmlEx.MML_ADDVAR: break;
@@ -113,9 +135,11 @@ namespace BrawlLib.SSBBTypes
                         case MmlEx.MML_CMP_NE: break;
                         case MmlEx.MML_USERPROC: break;
                     }
+
                     addr += 3;
                 }
             }
+
             commands.Add(new MMLCommand(Mml.MML_FIN, 0));
             return commands.ToArray();
         }
@@ -247,20 +271,29 @@ namespace BrawlLib.SSBBTypes
             _numEntries = count;
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public bint* EntryOffset => (bint*)(Address + 12);
+        public bint* EntryOffset => (bint*) (Address + 12);
 
         public LABLEntry* Get(int index)
         {
-            bint* offset = (bint*)(Address + 8);
-            return (LABLEntry*)((int)offset + offset[index + 1]);
+            bint* offset = (bint*) (Address + 8);
+            return (LABLEntry*) ((int) offset + offset[index + 1]);
         }
 
         public string GetString(int index)
         {
-            bint* offset = (bint*)(Address + 8);
-            return ((LABLEntry*)((int)offset + offset[index + 1]))->Name;
+            bint* offset = (bint*) (Address + 8);
+            return ((LABLEntry*) ((int) offset + offset[index + 1]))->Name;
         }
     }
 
@@ -272,9 +305,9 @@ namespace BrawlLib.SSBBTypes
 
         public void Set(uint id, string str)
         {
-            uint len = (uint)str.Length;
+            uint len = (uint) str.Length;
             int i = 0;
-            sbyte* dPtr = (sbyte*)(Address + 8);
+            sbyte* dPtr = (sbyte*) (Address + 8);
             char* sPtr;
 
             _id = id;
@@ -285,7 +318,7 @@ namespace BrawlLib.SSBBTypes
                 sPtr = s;
                 while (i++ < len)
                 {
-                    *dPtr++ = (sbyte)*sPtr++;
+                    *dPtr++ = (sbyte) *sPtr++;
                 }
             }
 
@@ -299,8 +332,17 @@ namespace BrawlLib.SSBBTypes
             }
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public string Name => new string((sbyte*)Address + 8);
+        public string Name => new string((sbyte*) Address + 8);
     }
 }

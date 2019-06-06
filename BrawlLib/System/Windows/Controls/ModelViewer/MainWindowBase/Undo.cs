@@ -101,6 +101,7 @@ namespace System.Windows.Forms
 
             AddState(state);
         }
+
         /// <summary>
         /// Call twice; before and after changes
         /// </summary>
@@ -168,6 +169,7 @@ namespace System.Windows.Forms
                 ModelPanel.EndUpdate();
             }
         }
+
         public void Redo()
         {
             _boneSelection.ResetActions();
@@ -210,6 +212,7 @@ namespace System.Windows.Forms
                 _resetCamera = false;
                 TargetModel = state._targetModel;
             }
+
             SelectedCHR0 = state._animation;
             CurrentFrame = state._frameIndex;
             CHR0Editor.chkUpdateBindPose.Checked = state._updateBindState;
@@ -250,6 +253,7 @@ namespace System.Windows.Forms
                 _resetCamera = false;
                 TargetModel = model;
             }
+
             SelectedCHR0 = n;
             CurrentFrame = frame;
 
@@ -265,14 +269,16 @@ namespace System.Windows.Forms
 
             if (current is BoneState)
             {
-                ApplyBoneState((BoneState)current);
+                ApplyBoneState((BoneState) current);
             }
             else if (current is VertexState)
             {
-                ApplyVertexState((VertexState)current);
+                ApplyVertexState((VertexState) current);
             }
         }
 
-        public virtual void UpdateUndoButtons() { }
+        public virtual void UpdateUndoButtons()
+        {
+        }
     }
 }

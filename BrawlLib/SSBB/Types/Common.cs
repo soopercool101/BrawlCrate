@@ -19,31 +19,37 @@ namespace BrawlLib.SSBBTypes
             _1 = _2 = _3 = _4 = 0;
             Set(tag);
         }
+
         public BinTag(uint tag, bool isLittleEndian)
         {
             _1 = _2 = _3 = _4 = 0;
             if (isLittleEndian)
             {
-                *(uint*)Address = tag;
+                *(uint*) Address = tag;
             }
             else
             {
-                *(buint*)Address = tag;
+                *(buint*) Address = tag;
             }
         }
+
         public uint Get(bool returnLittleEndian)
         {
             if (returnLittleEndian)
             {
-                return *(uint*)Address;
+                return *(uint*) Address;
             }
             else
             {
-                return *(buint*)Address;
+                return *(buint*) Address;
             }
         }
 
-        public string Get() { return new string(Address, 0, 4); }
+        public string Get()
+        {
+            return new string(Address, 0, 4);
+        }
+
         public void Set(string tag)
         {
             if (tag.Length > 4)
@@ -54,12 +60,36 @@ namespace BrawlLib.SSBBTypes
             tag.Write(Address);
         }
 
-        public static implicit operator BinTag(string r) { return new BinTag(r); }
-        public static implicit operator string(BinTag r) { return r.Get(); }
-        public static implicit operator BinTag(uint r) { return new BinTag(r, true); }
-        public static implicit operator uint(BinTag r) { return r.Get(true); }
+        public static implicit operator BinTag(string r)
+        {
+            return new BinTag(r);
+        }
 
-        public sbyte* Address { get { fixed (void* ptr = &this) { return (sbyte*)ptr; } } }
+        public static implicit operator string(BinTag r)
+        {
+            return r.Get();
+        }
+
+        public static implicit operator BinTag(uint r)
+        {
+            return new BinTag(r, true);
+        }
+
+        public static implicit operator uint(BinTag r)
+        {
+            return r.Get(true);
+        }
+
+        public sbyte* Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return (sbyte*) ptr;
+                }
+            }
+        }
 
         public override string ToString()
         {
@@ -72,8 +102,18 @@ namespace BrawlLib.SSBBTypes
         private VoidPtr _address;
         private uint _length;
 
-        public VoidPtr Address { get => _address; set => _address = value; }
-        public uint Length { get => _length; set => _length = value; }
+        public VoidPtr Address
+        {
+            get => _address;
+            set => _address = value;
+        }
+
+        public uint Length
+        {
+            get => _length;
+            set => _length = value;
+        }
+
         public VoidPtr EndAddress => _address + _length;
 
         public DataBlock(VoidPtr address, uint length)
@@ -87,9 +127,12 @@ namespace BrawlLib.SSBBTypes
     {
         private DataBlock _block;
 
-        public DataBlockCollection(DataBlock block) { _block = block; }
+        public DataBlockCollection(DataBlock block)
+        {
+            _block = block;
+        }
 
-        private buint* Data => (buint*)_block.EndAddress;
+        private buint* Data => (buint*) _block.EndAddress;
 
         public DataBlock this[int index] => new DataBlock(_block.Address + Data[index << 1], Data[(index << 1) + 1]);
     }
@@ -106,12 +149,36 @@ namespace BrawlLib.SSBBTypes
         public bushort _firstOffset;
         public bushort _numEntries;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public DataBlock DataBlock => new DataBlock(Address, Size);
 
-        public byte VersionMajor { get => ((byte*)_version.Address)[0]; set => ((byte*)_version.Address)[0] = value; }
-        public byte VersionMinor { get => ((byte*)_version.Address)[1]; set => ((byte*)_version.Address)[1] = value; }
-        public Endian Endian { get => (Endian)(short)_endian; set => _endian = (ushort)value; }
+        public byte VersionMajor
+        {
+            get => ((byte*) _version.Address)[0];
+            set => ((byte*) _version.Address)[0] = value;
+        }
+
+        public byte VersionMinor
+        {
+            get => ((byte*) _version.Address)[1];
+            set => ((byte*) _version.Address)[1] = value;
+        }
+
+        public Endian Endian
+        {
+            get => (Endian) (short) _endian;
+            set => _endian = (ushort) value;
+        }
 
         public DataBlockCollection Entries => new DataBlockCollection(DataBlock);
     }
@@ -128,12 +195,36 @@ namespace BrawlLib.SSBBTypes
         public bushort _version;
         public bint _length;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public DataBlock DataBlock => new DataBlock(Address, Size);
 
-        public byte VersionMajor { get => ((byte*)_version.Address)[0]; set => ((byte*)_version.Address)[0] = value; }
-        public byte VersionMinor { get => ((byte*)_version.Address)[1]; set => ((byte*)_version.Address)[1] = value; }
-        public Endian Endian { get => (Endian)(short)_endian; set => _endian = (ushort)value; }
+        public byte VersionMajor
+        {
+            get => ((byte*) _version.Address)[0];
+            set => ((byte*) _version.Address)[0] = value;
+        }
+
+        public byte VersionMinor
+        {
+            get => ((byte*) _version.Address)[1];
+            set => ((byte*) _version.Address)[1] = value;
+        }
+
+        public Endian Endian
+        {
+            get => (Endian) (short) _endian;
+            set => _endian = (ushort) value;
+        }
 
         public DataBlockCollection Entries => new DataBlockCollection(DataBlock);
     }
@@ -159,18 +250,36 @@ namespace BrawlLib.SSBBTypes
 
         public ruint(RefType refType, byte dataType, int data)
         {
-            _refType = (byte)refType;
+            _refType = (byte) refType;
             _dataType = dataType;
             _reserved = 0;
             _dataOffset = data;
         }
 
-        public VoidPtr Offset(VoidPtr baseAddr) { return baseAddr + _dataOffset; }
+        public VoidPtr Offset(VoidPtr baseAddr)
+        {
+            return baseAddr + _dataOffset;
+        }
 
-        public static implicit operator ruint(int r) { return new ruint() { _refType = 1, _dataOffset = r }; }
-        public static implicit operator int(ruint r) { return r._dataOffset; }
-        public static implicit operator ruint(uint r) { return new ruint() { _refType = 1, _dataOffset = (int)r }; }
-        public static implicit operator uint(ruint r) { return (uint)r._dataOffset; }
+        public static implicit operator ruint(int r)
+        {
+            return new ruint() {_refType = 1, _dataOffset = r};
+        }
+
+        public static implicit operator int(ruint r)
+        {
+            return r._dataOffset;
+        }
+
+        public static implicit operator ruint(uint r)
+        {
+            return new ruint() {_refType = 1, _dataOffset = (int) r};
+        }
+
+        public static implicit operator uint(ruint r)
+        {
+            return (uint) r._dataOffset;
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -180,17 +289,30 @@ namespace BrawlLib.SSBBTypes
 
         public bint _numEntries;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ruint* Entries => (ruint*)(Address + 4);
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public ruint* Entries => (ruint*) (Address + 4);
         public VoidPtr Data => Address + _numEntries * 8 + 4;
 
         public VoidPtr this[int index]
         {
-            get => (int)Entries[index];
-            set => Entries[index] = (int)value;
+            get => (int) Entries[index];
+            set => Entries[index] = (int) value;
         }
 
-        public VoidPtr Get(VoidPtr offset, int index) { return offset + Entries[index]; }
+        public VoidPtr Get(VoidPtr offset, int index)
+        {
+            return offset + Entries[index];
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -198,8 +320,18 @@ namespace BrawlLib.SSBBTypes
     {
         private ruint _first;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ruint* Entries => (ruint*)Address;
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public ruint* Entries => (ruint*) Address;
 
         public VoidPtr this[int index]
         {
@@ -207,13 +339,19 @@ namespace BrawlLib.SSBBTypes
             set => Entries[index] = value - Address;
         }
 
-        public VoidPtr Offset(VoidPtr offset) { return Address + offset; }
+        public VoidPtr Offset(VoidPtr offset)
+        {
+            return Address + offset;
+        }
 
-        public VoidPtr Get(int index) { return Address + Entries[index]; }
+        public VoidPtr Get(int index)
+        {
+            return Address + Entries[index];
+        }
 
         public void Set(int index, ruint.RefType refType, byte dataType, VoidPtr address)
         {
-            *((ruint*)Address + index) = new ruint(refType, dataType, (int)address - Address);
+            *((ruint*) Address + index) = new ruint(refType, dataType, (int) address - Address);
         }
     }
 
@@ -225,7 +363,17 @@ namespace BrawlLib.SSBBTypes
         public BinTag _tag;
         public bint _length;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
         public DataBlock DataBlock => new DataBlock(Address, Size);
     }
 
@@ -240,17 +388,34 @@ namespace BrawlLib.SSBBTypes
 
         public ResourceGroup(int numEntries)
         {
-            _totalSize = (numEntries * 0x10) + 0x18;
+            _totalSize = numEntries * 0x10 + 0x18;
             _numEntries = numEntries;
             _first = new ResourceEntry(0xFFFF, 0, 0, 0, 0);
         }
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public ResourceEntry* First => (ResourceEntry*)(Address + 0x18);
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public ResourceEntry* First => (ResourceEntry*) (Address + 0x18);
         public VoidPtr EndAddress => Address + _totalSize;
 
-        public IEnumerator<ResourcePair> GetEnumerator() { return new ResourceEnumerator((ResourceGroup*)Address); }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return new ResourceEnumerator((ResourceGroup*)Address); }
+        public IEnumerator<ResourcePair> GetEnumerator()
+        {
+            return new ResourceEnumerator((ResourceGroup*) Address);
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return new ResourceEnumerator((ResourceGroup*) Address);
+        }
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -276,11 +441,15 @@ namespace BrawlLib.SSBBTypes
             pEntry = &pGroup->_first;
         }
 
-        public ResourcePair Current => new ResourcePair() { Name = (sbyte*)pGroup + pEntry->_stringOffset, Data = (byte*)pGroup + pEntry->_dataOffset };
+        public ResourcePair Current => new ResourcePair()
+            {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
 
-        public void Dispose() { }
+        public void Dispose()
+        {
+        }
 
-        object System.Collections.IEnumerator.Current => (VoidPtr)pEntry;
+        object System.Collections.IEnumerator.Current => (VoidPtr) pEntry;
+
         public bool MoveNext()
         {
             if (index == count)
@@ -312,31 +481,80 @@ namespace BrawlLib.SSBBTypes
         public bint _stringOffset;
         public bint _dataOffset;
 
-        public int CharIndex { get => _id >> 3; set => _id = (ushort)((value << 3) | (_id & 0x7)); }
-        public int CharShift { get => _id & 0x7; set => _id = (ushort)((value & 0x7) | (_id & 0xFFF8)); }
+        public int CharIndex
+        {
+            get => _id >> 3;
+            set => _id = (ushort) ((value << 3) | (_id & 0x7));
+        }
 
-        public ResourceEntry(int id, int left, int right) : this(id, left, right, 0, 0) { }
-        public ResourceEntry(int id, int left, int right, int dataOffset) : this(id, left, right, dataOffset, 0) { }
+        public int CharShift
+        {
+            get => _id & 0x7;
+            set => _id = (ushort) ((value & 0x7) | (_id & 0xFFF8));
+        }
+
+        public ResourceEntry(int id, int left, int right) : this(id, left, right, 0, 0)
+        {
+        }
+
+        public ResourceEntry(int id, int left, int right, int dataOffset) : this(id, left, right, dataOffset, 0)
+        {
+        }
+
         public ResourceEntry(int id, int left, int right, int dataOffset, int stringOffset)
         {
-            _id = (ushort)id;
+            _id = (ushort) id;
             _flag = 0;
-            _leftIndex = (ushort)left;
-            _rightIndex = (ushort)right;
+            _leftIndex = (ushort) left;
+            _rightIndex = (ushort) right;
             _stringOffset = stringOffset;
             _dataOffset = dataOffset;
         }
 
-        private ResourceEntry* Address { get { fixed (ResourceEntry* ptr = &this) { return ptr; } } }
+        private ResourceEntry* Address
+        {
+            get
+            {
+                fixed (ResourceEntry* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
 
-        public VoidPtr DataAddress { get => (VoidPtr)Parent + _dataOffset; set => _dataOffset = (int)value - (int)Parent; }
-        public VoidPtr StringAddress { get => (VoidPtr)Parent + _stringOffset; set => _stringOffset = (int)value - (int)Parent; }
+        public VoidPtr DataAddress
+        {
+            get => (VoidPtr) Parent + _dataOffset;
+            set => _dataOffset = (int) value - (int) Parent;
+        }
 
-        public VoidPtr DataAddressRelative { get => _dataOffset.OffsetAddress; set => _dataOffset.OffsetAddress = value; }
-        public VoidPtr StringAddressRelative { get => _stringOffset.OffsetAddress; set => _stringOffset.OffsetAddress = value; }
+        public VoidPtr StringAddress
+        {
+            get => (VoidPtr) Parent + _stringOffset;
+            set => _stringOffset = (int) value - (int) Parent;
+        }
 
-        public string GetName() { return new string((sbyte*)StringAddress); }
-        public string GetNameRelative() { return new string((sbyte*)StringAddressRelative); }
+        public VoidPtr DataAddressRelative
+        {
+            get => _dataOffset.OffsetAddress;
+            set => _dataOffset.OffsetAddress = value;
+        }
+
+        public VoidPtr StringAddressRelative
+        {
+            get => _stringOffset.OffsetAddress;
+            set => _stringOffset.OffsetAddress = value;
+        }
+
+        public string GetName()
+        {
+            return new string((sbyte*) StringAddress);
+        }
+
+        public string GetNameRelative()
+        {
+            return new string((sbyte*) StringAddressRelative);
+        }
 
         public static void Build(ResourceGroup* group, int index, VoidPtr dataAddress, BRESString* pString)
         {
@@ -361,52 +579,53 @@ namespace BrawlLib.SSBBTypes
             }
 
             //Create a byte pointer to the struct's string data
-            byte* pChar = (byte*)pString + 4, sChar;
+            byte* pChar = (byte*) pString + 4, sChar;
 
             int eIndex = strLen - 1, eBits = pChar[eIndex].CompareBits(0), val;
-            *entry = new ResourceEntry((eIndex << 3) | eBits, index, index, (int)dataAddress - (int)group, (int)pChar - (int)group);
+            *entry = new ResourceEntry((eIndex << 3) | eBits, index, index, (int) dataAddress - (int) group,
+                (int) pChar - (int) group);
 
             //Continue while the previous id is greater than the current. Loop backs will stop the processing.
             //Continue while the entry id is less than or equal the current id. Being higher than the current id means we've found a place to insert.
-            while ((entry->_id <= current->_id) && (prev->_id > current->_id))
+            while (entry->_id <= current->_id && prev->_id > current->_id)
             {
                 if (entry->_id == current->_id)
                 {
-                    sChar = (byte*)group + current->_stringOffset;
+                    sChar = (byte*) group + current->_stringOffset;
 
                     //Rebuild new id relative to current entry
-                    for (eIndex = strLen; (eIndex-- > 0) && (pChar[eIndex] == sChar[eIndex]);)
+                    for (eIndex = strLen; eIndex-- > 0 && pChar[eIndex] == sChar[eIndex];)
                     {
                         ;
                     }
 
                     eBits = pChar[eIndex].CompareBits(sChar[eIndex]);
 
-                    entry->_id = (ushort)((eIndex << 3) | eBits);
+                    entry->_id = (ushort) ((eIndex << 3) | eBits);
 
                     if (((sChar[eIndex] >> eBits) & 1) != 0)
                     {
-                        entry->_leftIndex = (ushort)index;
+                        entry->_leftIndex = (ushort) index;
                         entry->_rightIndex = currentIndex;
                     }
                     else
                     {
                         entry->_leftIndex = currentIndex;
-                        entry->_rightIndex = (ushort)index;
+                        entry->_rightIndex = (ushort) index;
                     }
                 }
 
                 //Is entry to the right or left of current?
-                isRight = ((val = current->_id >> 3) < strLen) && (((pChar[val] >> (current->_id & 7)) & 1) != 0);
+                isRight = (val = current->_id >> 3) < strLen && ((pChar[val] >> (current->_id & 7)) & 1) != 0;
 
                 prev = current;
-                current = &list[currentIndex = (isRight) ? current->_rightIndex : current->_leftIndex];
+                current = &list[currentIndex = isRight ? current->_rightIndex : current->_leftIndex];
             }
 
-            sChar = (current->_stringOffset == 0) ? null : (byte*)group + current->_stringOffset;
-            val = sChar == null ? 0 : (int)(*(bint*)(sChar - 4));
+            sChar = current->_stringOffset == 0 ? null : (byte*) group + current->_stringOffset;
+            val = sChar == null ? 0 : (int) *(bint*) (sChar - 4);
 
-            if ((val == strLen) && (((sChar[eIndex] >> eBits) & 1) != 0))
+            if (val == strLen && ((sChar[eIndex] >> eBits) & 1) != 0)
             {
                 entry->_rightIndex = currentIndex;
             }
@@ -417,11 +636,11 @@ namespace BrawlLib.SSBBTypes
 
             if (isRight)
             {
-                prev->_rightIndex = (ushort)index;
+                prev->_rightIndex = (ushort) index;
             }
             else
             {
-                prev->_leftIndex = (ushort)index;
+                prev->_leftIndex = (ushort) index;
             }
         }
 
@@ -435,7 +654,7 @@ namespace BrawlLib.SSBBTypes
                     entry--;
                 }
 
-                return (ResourceGroup*)((uint)entry - 8);
+                return (ResourceGroup*) ((uint) entry - 8);
             }
         }
     }

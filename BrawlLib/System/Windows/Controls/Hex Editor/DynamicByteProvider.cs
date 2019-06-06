@@ -59,6 +59,7 @@ namespace Be.Windows.Forms
         public List<byte> Bytes => _bytes;
 
         #region IByteProvider Members
+
         /// <summary>
         /// True, when changes are done.
         /// </summary>
@@ -91,7 +92,10 @@ namespace Be.Windows.Forms
         /// </summary>
         /// <param name="index">the index of the byte to read</param>
         /// <returns>the byte</returns>
-        public byte ReadByte(long index) { return _bytes[(int)index]; }
+        public byte ReadByte(long index)
+        {
+            return _bytes[(int) index];
+        }
 
         /// <summary>
         /// Write a byte into the byte collection.
@@ -100,7 +104,7 @@ namespace Be.Windows.Forms
         /// <param name="value">the byte</param>
         public void WriteByte(long index, byte value)
         {
-            _bytes[(int)index] = value;
+            _bytes[(int) index] = value;
             OnChanged(EventArgs.Empty);
         }
 
@@ -118,8 +122,8 @@ namespace Be.Windows.Forms
                 return;
             }
 
-            int internal_index = (int)Math.Max(0, index);
-            int internal_length = (int)Math.Min((int)Length, length);
+            int internal_index = (int) Math.Max(0, index);
+            int internal_length = (int) Math.Min((int) Length, length);
             _bytes.RemoveRange(internal_index, internal_length);
 
             OnLengthChanged(EventArgs.Empty);
@@ -138,7 +142,7 @@ namespace Be.Windows.Forms
                 return;
             }
 
-            _bytes.InsertRange((int)index, bs);
+            _bytes.InsertRange((int) index, bs);
 
             OnLengthChanged(EventArgs.Empty);
             OnChanged(EventArgs.Empty);
@@ -172,7 +176,7 @@ namespace Be.Windows.Forms
         {
             return _supportsInsDel;
         }
-        #endregion
 
+        #endregion
     }
 }

@@ -11,6 +11,7 @@ namespace System.Audio
         {
             context = new AudioContext();
         }
+
         public override void Dispose()
         {
             base.Dispose();
@@ -22,7 +23,9 @@ namespace System.Audio
             context = null;
         }
 
-        public override void Attach(Control owner) { }
+        public override void Attach(Control owner)
+        {
+        }
 
         public override AudioBuffer CreateBuffer(IAudioStream target)
         {
@@ -30,7 +33,7 @@ namespace System.Audio
 
             WaveFormatEx fmt = new WaveFormatEx(target.Format, target.Channels, target.Frequency, target.BitsPerSample);
 
-            return new alAudioBuffer(this, fmt, target.Samples) { _source = target, _owner = this };
+            return new alAudioBuffer(this, fmt, target.Samples) {_source = target, _owner = this};
         }
 
         public override string ToString()

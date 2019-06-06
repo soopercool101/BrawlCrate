@@ -8,15 +8,17 @@ namespace BrawlLib.Wii.Textures
     {
         public override int BitsPerPixel => 32;
         public override int BlockWidth => 4;
+
         public override int BlockHeight => 4;
+
         //public override PixelFormat DecodedFormat { get { return PixelFormat.Format32bppArgb; } }
         public override WiiPixelFormat RawFormat => WiiPixelFormat.RGBA8;
 
         protected override void DecodeBlock(VoidPtr blockAddr, ARGBPixel* dPtr, int width)
         {
-            byte* s1 = (byte*)blockAddr;
+            byte* s1 = (byte*) blockAddr;
             byte* s2 = s1 + 32;
-            byte* d2 = (byte*)dPtr;
+            byte* d2 = (byte*) dPtr;
             for (int y = 0; y < 4; y++, d2 += (width - 4) << 2)
             {
                 for (int x = 0; x < 4; x++, d2 += 4)
@@ -37,7 +39,7 @@ namespace BrawlLib.Wii.Textures
 
         protected override void EncodeBlock(ARGBPixel* sPtr, VoidPtr blockAddr, int width)
         {
-            RGBA8Pixel* dPtr = (RGBA8Pixel*)blockAddr;
+            RGBA8Pixel* dPtr = (RGBA8Pixel*) blockAddr;
             for (int y = 0; y < BlockHeight; y++, sPtr += width)
             {
                 for (int x = 0; x < BlockWidth; dPtr = dPtr->Increase())
@@ -46,8 +48,8 @@ namespace BrawlLib.Wii.Textures
                 }
             }
         }
-
     }
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct RGBA8Pixel
     {
@@ -61,24 +63,29 @@ namespace BrawlLib.Wii.Textures
         {
             fixed (RGBA8Pixel* ptr = &this)
             {
-                return (RGBA8Pixel*)((uint)ptr + 2);
+                return (RGBA8Pixel*) ((uint) ptr + 2);
             }
         }
+
         public RGBA8Pixel* Jump(int num)
         {
             fixed (RGBA8Pixel* ptr = &this)
             {
-                return (RGBA8Pixel*)((uint)ptr + (num << 1));
+                return (RGBA8Pixel*) ((uint) ptr + (num << 1));
             }
         }
+
         public static explicit operator ARGBPixel(RGBA8Pixel p)
         {
-            return new ARGBPixel() { A = p.A, R = p.R, G = p.G, B = p.B };
+            return new ARGBPixel() {A = p.A, R = p.R, G = p.G, B = p.B};
         }
 
         public void Set(ARGBPixel* p)
         {
-            A = p->A; R = p->R; G = p->G; B = p->B;
+            A = p->A;
+            R = p->R;
+            G = p->G;
+            B = p->B;
         }
     }
 }

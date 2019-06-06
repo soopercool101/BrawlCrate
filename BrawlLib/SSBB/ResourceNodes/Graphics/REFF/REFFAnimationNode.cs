@@ -14,14 +14,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public buint* _ptclTrackAddr, _emitTrackAddr;
         public List<uint> _ptclTrack, _emitTrack;
 
-        [Category("Animation Table")]
-        public ushort PtclTrackCount => _ptclTrackCount;
-        [Category("Animation Table")]
-        public ushort PtclInitTrackCount => _ptclInitTrackCount;
-        [Category("Animation Table")]
-        public ushort EmitTrackCount => _emitTrackCount;
-        [Category("Animation Table")]
-        public ushort EmitInitTrackCount => _emitInitTrackCount;
+        [Category("Animation Table")] public ushort PtclTrackCount => _ptclTrackCount;
+        [Category("Animation Table")] public ushort PtclInitTrackCount => _ptclInitTrackCount;
+        [Category("Animation Table")] public ushort EmitTrackCount => _emitTrackCount;
+        [Category("Animation Table")] public ushort EmitInitTrackCount => _emitInitTrackCount;
 
         public override bool OnInitialize()
         {
@@ -37,19 +33,21 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr += PtclTrackCount; //skip nulled pointers to size list
             for (int i = 0; i < PtclTrackCount; i++)
             {
-                new REFFAnimationNode() { _isPtcl = true }.Initialize(this, First + offset, (int)*addr);
-                offset += (int)*addr++;
+                new REFFAnimationNode() {_isPtcl = true}.Initialize(this, First + offset, (int) *addr);
+                offset += (int) *addr++;
             }
+
             addr = _emitTrackAddr;
             addr += EmitTrackCount; //skip nulled pointers to size list
             for (int i = 0; i < EmitTrackCount; i++)
             {
-                new REFFAnimationNode().Initialize(this, First + offset, (int)*addr);
-                offset += (int)*addr++;
+                new REFFAnimationNode().Initialize(this, First + offset, (int) *addr);
+                offset += (int) *addr++;
             }
         }
 
         public ushort ptcl, emit;
+
         public override int OnCalculateSize(bool force)
         {
             ptcl = 0;
@@ -69,29 +67,32 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 size += e.CalculateSize(true);
             }
+
             return size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            buint* addr = (buint*)address;
-            ((bushort*)addr)[0] = ptcl;
-            ((bushort*)addr)[1] = _ptclInitTrackCount;
+            buint* addr = (buint*) address;
+            ((bushort*) addr)[0] = ptcl;
+            ((bushort*) addr)[1] = _ptclInitTrackCount;
             addr += ptcl + 1;
             foreach (REFFAnimationNode e in Children)
             {
                 if (e._isPtcl)
                 {
-                    *addr++ = (uint)e._calcSize;
+                    *addr++ = (uint) e._calcSize;
                 }
-            } ((bushort*)addr)[0] = emit;
-            ((bushort*)addr)[1] = _emitInitTrackCount;
+            }
+
+            ((bushort*) addr)[0] = emit;
+            ((bushort*) addr)[1] = _emitInitTrackCount;
             addr += emit + 1;
             foreach (REFFAnimationNode e in Children)
             {
                 if (!e._isPtcl)
                 {
-                    *addr++ = (uint)e._calcSize;
+                    *addr++ = (uint) e._calcSize;
                 }
             }
 
@@ -118,7 +119,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class REFFAnimationNode : ResourceNode
     {
-        internal AnimCurveHeader* Header => (AnimCurveHeader*)WorkingUncompressed.Address;
+        internal AnimCurveHeader* Header => (AnimCurveHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.REFFAnimationList;
 
         internal AnimCurveHeader _hdr = new AnimCurveHeader();
@@ -135,40 +136,47 @@ namespace BrawlLib.SSBB.ResourceNodes
         public AnimType Type
         {
             get => _isPtcl ? AnimType.Particle : AnimType.Emitter;
-            set { _isPtcl = value == AnimType.Particle; SignalPropertyChange(); }
+            set
+            {
+                _isPtcl = value == AnimType.Particle;
+                SignalPropertyChange();
+            }
         }
+
         //[Category("Animation")]
         //public byte Magic { get { return _hdr.magic; } }
-        [Category("Effect Animation"), TypeConverter(typeof(DropDownListReffAnimType))]
+        [Category("Effect Animation")]
+        [TypeConverter(typeof(DropDownListReffAnimType))]
         public string KindType
         {
             get
             {
-                if (((REFFNode)Parent.Parent.Parent).VersionMinor == 9)
+                if (((REFFNode) Parent.Parent.Parent).VersionMinor == 9)
                 {
                     switch (CurveFlag)
                     {
                         case AnimCurveType.ParticleByte:
                         case AnimCurveType.ParticleFloat:
-                            return ((v9AnimCurveTargetByteFloat)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetByteFloat) _hdr.kindType).ToString();
                         case AnimCurveType.ParticleRotate:
-                            return ((v9AnimCurveTargetRotateFloat)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetRotateFloat) _hdr.kindType).ToString();
                         case AnimCurveType.ParticleTexture:
-                            return ((v9AnimCurveTargetPtclTex)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetPtclTex) _hdr.kindType).ToString();
                         case AnimCurveType.Child:
-                            return ((v9AnimCurveTargetChild)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetChild) _hdr.kindType).ToString();
                         case AnimCurveType.Field:
-                            return ((v9AnimCurveTargetField)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetField) _hdr.kindType).ToString();
                         case AnimCurveType.PostField:
-                            return ((v9AnimCurveTargetPostField)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetPostField) _hdr.kindType).ToString();
                         case AnimCurveType.EmitterFloat:
-                            return ((v9AnimCurveTargetEmitterFloat)_hdr.kindType).ToString();
+                            return ((v9AnimCurveTargetEmitterFloat) _hdr.kindType).ToString();
                     }
                 }
                 else
                 {
-                    return ((AnimCurveTarget7)_hdr.kindType).ToString();
+                    return ((AnimCurveTarget7) _hdr.kindType).ToString();
                 }
+
                 //switch (CurveFlag)
                 //{
                 //    case AnimCurveType.ParticleByte:
@@ -192,7 +200,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 int i = 0;
-                if (((REFFNode)Parent.Parent.Parent).VersionMinor == 9)
+                if (((REFFNode) Parent.Parent.Parent).VersionMinor == 9)
                 {
                     switch (CurveFlag)
                     {
@@ -201,11 +209,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetByteFloat a;
                             if (Enum.TryParse(value, true, out a))
                             {
-                                _hdr.kindType = (byte)a;
+                                _hdr.kindType = (byte) a;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -213,11 +221,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetRotateFloat b;
                             if (Enum.TryParse(value, true, out b))
                             {
-                                _hdr.kindType = (byte)b;
+                                _hdr.kindType = (byte) b;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -225,11 +233,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetPtclTex c;
                             if (Enum.TryParse(value, true, out c))
                             {
-                                _hdr.kindType = (byte)c;
+                                _hdr.kindType = (byte) c;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -237,11 +245,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetChild d;
                             if (Enum.TryParse(value, true, out d))
                             {
-                                _hdr.kindType = (byte)d;
+                                _hdr.kindType = (byte) d;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -249,11 +257,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetField e;
                             if (Enum.TryParse(value, true, out e))
                             {
-                                _hdr.kindType = (byte)e;
+                                _hdr.kindType = (byte) e;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -261,11 +269,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetPostField f;
                             if (Enum.TryParse(value, true, out f))
                             {
-                                _hdr.kindType = (byte)f;
+                                _hdr.kindType = (byte) f;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -273,11 +281,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             v9AnimCurveTargetEmitterFloat g;
                             if (Enum.TryParse(value, true, out g))
                             {
-                                _hdr.kindType = (byte)g;
+                                _hdr.kindType = (byte) g;
                             }
                             else if (int.TryParse(value, out i))
                             {
-                                _hdr.kindType = (byte)i;
+                                _hdr.kindType = (byte) i;
                             }
 
                             break;
@@ -287,43 +295,68 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (int.TryParse(value, out i))
                     {
-                        _hdr.kindType = (byte)i;
+                        _hdr.kindType = (byte) i;
                     }
                 }
+
                 SignalPropertyChange();
             }
         }
-        [Category("Effect Animation")]
-        public AnimCurveType CurveFlag => (AnimCurveType)_hdr.curveFlag; //set { hdr.curveFlag = (byte)value; SignalPropertyChange(); } }
-        [Category("Effect Animation")]
-        public byte KindEnable => _hdr.kindEnable;
-        [Category("Effect Animation")]
-        public AnimCurveHeaderProcessFlagType ProcessFlag => (AnimCurveHeaderProcessFlagType)_hdr.processFlag;
-        [Category("Effect Animation")]
-        public byte LoopCount => _hdr.loopCount;
 
         [Category("Effect Animation")]
-        public ushort RandomSeed { get => _hdr.randomSeed; set { _random = new Random(_hdr.randomSeed = value); SignalPropertyChange(); } }
+        public AnimCurveType CurveFlag =>
+            (AnimCurveType) _hdr.curveFlag; //set { hdr.curveFlag = (byte)value; SignalPropertyChange(); } }
+
+        [Category("Effect Animation")] public byte KindEnable => _hdr.kindEnable;
+
         [Category("Effect Animation")]
-        public ushort FrameCount { get => _hdr.frameLength; set { _hdr.frameLength = value; SignalPropertyChange(); } }
+        public AnimCurveHeaderProcessFlagType ProcessFlag => (AnimCurveHeaderProcessFlagType) _hdr.processFlag;
+
+        [Category("Effect Animation")] public byte LoopCount => _hdr.loopCount;
+
+        [Category("Effect Animation")]
+        public ushort RandomSeed
+        {
+            get => _hdr.randomSeed;
+            set
+            {
+                _random = new Random(_hdr.randomSeed = value);
+                SignalPropertyChange();
+            }
+        }
+
+        [Category("Effect Animation")]
+        public ushort FrameCount
+        {
+            get => _hdr.frameLength;
+            set
+            {
+                _hdr.frameLength = value;
+                SignalPropertyChange();
+            }
+        }
         //[Category("Animation")]
         //public ushort Padding { get { return _hdr.padding; } }
 
-        [Category("Effect Animation")]
-        public uint KeyTableSize => _hdr.keyTable;
-        [Category("Effect Animation")]
-        public uint RangeTableSize => _hdr.rangeTable;
-        [Category("Effect Animation")]
-        public uint RandomTableSize => _hdr.randomTable;
-        [Category("Effect Animation")]
-        public uint NameTableSize => _hdr.nameTable;
-        [Category("Effect Animation")]
-        public uint InfoTableSize => _hdr.infoTable;
+        [Category("Effect Animation")] public uint KeyTableSize => _hdr.keyTable;
+        [Category("Effect Animation")] public uint RangeTableSize => _hdr.rangeTable;
+        [Category("Effect Animation")] public uint RandomTableSize => _hdr.randomTable;
+        [Category("Effect Animation")] public uint NameTableSize => _hdr.nameTable;
+        [Category("Effect Animation")] public uint InfoTableSize => _hdr.infoTable;
 
         private Random _random = null;
 
         [Category("Name Table")]
-        public string[] Names { get => _names.ToArray(); set { _names = value.ToList(); SignalPropertyChange(); } }
+        public string[] Names
+        {
+            get => _names.ToArray();
+            set
+            {
+                _names = value.ToList();
+                SignalPropertyChange();
+            }
+        }
+
         public List<string> _names = new List<string>();
 
         public override bool OnInitialize()
@@ -341,6 +374,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     enabledIndices.Add(i);
                 }
             }
+
             switch (CurveFlag)
             {
                 case AnimCurveType.ParticleByte:
@@ -432,7 +466,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-
         }
 
         public override int OnCalculateSize(bool force)
@@ -448,32 +481,39 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class REFFPostFieldInfoNode : ResourceNode
     {
-        internal PostFieldInfo* Header => (PostFieldInfo*)WorkingUncompressed.Address;
+        internal PostFieldInfo* Header => (PostFieldInfo*) WorkingUncompressed.Address;
 
         private PostFieldInfo hdr;
 
+        [Category("Post Field Info")] public Vector3 Scale => hdr.mAnimatableParams.mSize;
+        [Category("Post Field Info")] public Vector3 Rotation => hdr.mAnimatableParams.mRotate;
+        [Category("Post Field Info")] public Vector3 Translation => hdr.mAnimatableParams.mTranslate;
+        [Category("Post Field Info")] public float ReferenceSpeed => hdr.mReferenceSpeed;
+
         [Category("Post Field Info")]
-        public Vector3 Scale => hdr.mAnimatableParams.mSize;
+        public PostFieldInfo.ControlSpeedType ControlSpeedType =>
+            (PostFieldInfo.ControlSpeedType) hdr.mControlSpeedType;
+
         [Category("Post Field Info")]
-        public Vector3 Rotation => hdr.mAnimatableParams.mRotate;
+        public PostFieldInfo.CollisionShapeType CollisionShapeType =>
+            (PostFieldInfo.CollisionShapeType) hdr.mCollisionShapeType;
+
         [Category("Post Field Info")]
-        public Vector3 Translation => hdr.mAnimatableParams.mTranslate;
+        public PostFieldInfo.ShapeOption ShapeOption =>
+            CollisionShapeType == PostFieldInfo.CollisionShapeType.Sphere ||
+            CollisionShapeType == PostFieldInfo.CollisionShapeType.Plane
+                ? (PostFieldInfo.ShapeOption) (((int) CollisionShapeType << 2) | hdr.mCollisionShapeOption)
+                : PostFieldInfo.ShapeOption.None;
+
         [Category("Post Field Info")]
-        public float ReferenceSpeed => hdr.mReferenceSpeed;
+        public PostFieldInfo.CollisionType CollisionType => (PostFieldInfo.CollisionType) hdr.mCollisionType;
+
         [Category("Post Field Info")]
-        public PostFieldInfo.ControlSpeedType ControlSpeedType => (PostFieldInfo.ControlSpeedType)hdr.mControlSpeedType;
-        [Category("Post Field Info")]
-        public PostFieldInfo.CollisionShapeType CollisionShapeType => (PostFieldInfo.CollisionShapeType)hdr.mCollisionShapeType;
-        [Category("Post Field Info")]
-        public PostFieldInfo.ShapeOption ShapeOption => CollisionShapeType == PostFieldInfo.CollisionShapeType.Sphere || CollisionShapeType == PostFieldInfo.CollisionShapeType.Plane ? (PostFieldInfo.ShapeOption)(((int)CollisionShapeType << 2) | hdr.mCollisionShapeOption) : PostFieldInfo.ShapeOption.None;
-        [Category("Post Field Info")]
-        public PostFieldInfo.CollisionType CollisionType => (PostFieldInfo.CollisionType)hdr.mCollisionType;
-        [Category("Post Field Info")]
-        public PostFieldInfo.CollisionOption CollisionOption => (PostFieldInfo.CollisionOption)(short)hdr.mCollisionOption;
-        [Category("Post Field Info")]
-        public ushort StartFrame => hdr.mStartFrame;
-        [Category("Post Field Info")]
-        public Vector3 SpeedFactor => hdr.mSpeedFactor;
+        public PostFieldInfo.CollisionOption CollisionOption =>
+            (PostFieldInfo.CollisionOption) (short) hdr.mCollisionOption;
+
+        [Category("Post Field Info")] public ushort StartFrame => hdr.mStartFrame;
+        [Category("Post Field Info")] public Vector3 SpeedFactor => hdr.mSpeedFactor;
 
         public override bool OnInitialize()
         {
@@ -490,6 +530,5 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public class REFFKeyframeArray
     {
-
     }
 }

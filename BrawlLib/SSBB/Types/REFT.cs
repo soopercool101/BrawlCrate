@@ -19,22 +19,31 @@ namespace BrawlLib.SSBBTypes
         public bshort _stringLen;
         public bshort _padding; //0
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
         public string IdString
         {
-            get => new string((sbyte*)Address + 0x28);
+            get => new string((sbyte*) Address + 0x28);
             set
             {
                 int len = value.Length + 1;
-                _stringLen = (short)len;
+                _stringLen = (short) len;
 
-                byte* dPtr = (byte*)Address + 0x28;
+                byte* dPtr = (byte*) Address + 0x28;
                 fixed (char* sPtr = value)
                 {
                     for (int i = 0; i < len; i++)
                     {
-                        *dPtr++ = (byte)sPtr[i];
+                        *dPtr++ = (byte) sPtr[i];
                     }
                 }
 
@@ -46,7 +55,7 @@ namespace BrawlLib.SSBBTypes
             }
         }
 
-        public REFTypeObjectTable* Table => (REFTypeObjectTable*)(Address + 0x18 + _dataOffset);
+        public REFTypeObjectTable* Table => (REFTypeObjectTable*) (Address + 0x18 + _dataOffset);
     }
 
     public unsafe struct REFTypeObjectTable
@@ -58,40 +67,59 @@ namespace BrawlLib.SSBBTypes
         public bushort _entries;
         public bushort _pad;
 
-        public VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
-        public REFTypeObjectEntry* First => (REFTypeObjectEntry*)(Address + 8);
+        public REFTypeObjectEntry* First => (REFTypeObjectEntry*) (Address + 8);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct REFTypeObjectEntry
     {
         public bshort _strLen;
+
         public string Name
         {
-            get => new string((sbyte*)Address + 2);
+            get => new string((sbyte*) Address + 2);
             set
             {
-                _strLen = (short)(value.Length + 1);
-                value.Write((sbyte*)Address + 2);
+                _strLen = (short) (value.Length + 1);
+                value.Write((sbyte*) Address + 2);
             }
         }
 
         public int DataOffset
         {
-            get => (int)*(buint*)((byte*)Address + 2 + _strLen);
-            set => *(buint*)((byte*)Address + 2 + _strLen) = (uint)value;
+            get => (int) *(buint*) ((byte*) Address + 2 + _strLen);
+            set => *(buint*) ((byte*) Address + 2 + _strLen) = (uint) value;
         }
 
         public int DataLength
         {
-            get => (int)*(buint*)((byte*)Address + 2 + _strLen + 4);
-            set => *(buint*)((byte*)Address + 2 + _strLen + 4) = (uint)value;
+            get => (int) *(buint*) ((byte*) Address + 2 + _strLen + 4);
+            set => *(buint*) ((byte*) Address + 2 + _strLen + 4) = (uint) value;
         }
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
-        public REFTypeObjectEntry* Next => (REFTypeObjectEntry*)(Address + 10 + _strLen);
+        public REFTypeObjectEntry* Next => (REFTypeObjectEntry*) (Address + 10 + _strLen);
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -112,9 +140,19 @@ namespace BrawlLib.SSBBTypes
         public byte _reserved;
         public bfloat _lod_bias;
 
-        private VoidPtr Address { get { fixed (void* p = &this) { return p; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* p = &this)
+                {
+                    return p;
+                }
+            }
+        }
 
-        public REFTImageHeader(ushort width, ushort height, byte format, byte pltFormat, ushort colors, uint imgSize, byte lod)
+        public REFTImageHeader(ushort width, ushort height, byte format, byte pltFormat, ushort colors, uint imgSize,
+                               byte lod)
         {
             _unknown = 0;
             _width = width;
@@ -123,7 +161,7 @@ namespace BrawlLib.SSBBTypes
             _format = format;
             _pltFormat = pltFormat;
             _colorCount = colors;
-            _pltSize = (uint)colors * 2;
+            _pltSize = (uint) colors * 2;
             _mipmap = lod;
             _min_filt = 0;
             _mag_filt = 0;

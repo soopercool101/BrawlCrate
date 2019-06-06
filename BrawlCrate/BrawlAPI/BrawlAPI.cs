@@ -18,8 +18,10 @@ namespace BrawlCrate.API
     {
         public static bool PythonEnabled => Engine.GetSearchPaths().Count > 0;
 
-        public static bool FSharpEnabled => Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
-                    fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
+        public static bool FSharpEnabled =>
+            Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
+            fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
+
         private static string fsi_path;
 
         public static string PythonPath
@@ -70,6 +72,7 @@ namespace BrawlCrate.API
             // Hook the main form's resourceTree selection changed event to add contextMenu items to nodewrapper
             MainForm.Instance.resourceTree.SelectionChanged += ResourceTree_SelectionChanged;
         }
+
         internal static ScriptEngine Engine { get; set; }
         internal static ScriptRuntime Runtime { get; set; }
 
@@ -88,10 +91,13 @@ namespace BrawlCrate.API
                     string tempPath = Path.Combine(Path.GetTempPath(), $"BrawlCrate-{Guid.NewGuid()}.fsx");
                     using (StreamReader srIn = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read)))
                     {
-                        using (StreamWriter swOut = new StreamWriter(new FileStream(tempPath, FileMode.Create, FileAccess.Write)))
+                        using (StreamWriter swOut =
+                            new StreamWriter(new FileStream(tempPath, FileMode.Create, FileAccess.Write)))
                         {
-                            swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(NodeFactory)).Location.Replace('\\', '/')}\"");
-                            swOut.WriteLine($"#r \"{Assembly.GetAssembly(typeof(MainForm)).Location.Replace('\\', '/')}\"");
+                            swOut.WriteLine(
+                                $"#r \"{Assembly.GetAssembly(typeof(NodeFactory)).Location.Replace('\\', '/')}\"");
+                            swOut.WriteLine(
+                                $"#r \"{Assembly.GetAssembly(typeof(MainForm)).Location.Replace('\\', '/')}\"");
                             string line;
                             while ((line = srIn.ReadLine()) != null)
                             {
@@ -128,7 +134,9 @@ namespace BrawlCrate.API
                 }
                 else
                 {
-                    MessageBox.Show("F# was not found to be properly installed on this system. Please install F# and try again.", "BrawlAPI");
+                    MessageBox.Show(
+                        "F# was not found to be properly installed on this system. Please install F# and try again.",
+                        "BrawlAPI");
                 }
             }
             else if (PythonEnabled)
@@ -166,6 +174,7 @@ namespace BrawlCrate.API
                 }
             }
         }
+
         internal static bool CreatePlugin(string path, bool loader)
         {
             try
@@ -174,10 +183,13 @@ namespace BrawlCrate.API
                 {
                     FSharpInstall();
                 }
-                if ((path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled) || (path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled))
+
+                if (path.EndsWith(".py", StringComparison.OrdinalIgnoreCase) && !PythonEnabled ||
+                    path.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase) && !FSharpEnabled)
                 {
                     return false;
                 }
+
                 ScriptSource script = Engine.CreateScriptSourceFromFile(path);
                 CompiledCode code = script.Compile();
                 ScriptScope scope = Engine.CreateScope();
@@ -189,6 +201,7 @@ namespace BrawlCrate.API
                 {
                     script.Execute();
                 }
+
                 return true;
             }
             catch (SyntaxErrorException e)
@@ -216,8 +229,10 @@ namespace BrawlCrate.API
                     ShowMessage(msg, Path.GetFileName(path));
                 }
             }
+
             return false;
         }
+
         internal static void ConvertPlugin(string path)
         {
             string text = File.ReadAllText(path);
@@ -236,7 +251,7 @@ namespace BrawlCrate.API
             {
                 if (Directory.Exists(settingPath + "\\Lib"))
                 {
-                    searchPaths.Add($"{ settingPath }\\Lib");
+                    searchPaths.Add($"{settingPath}\\Lib");
                 }
                 else
                 {
@@ -255,17 +270,18 @@ namespace BrawlCrate.API
                 {
                     if (d.FullName.StartsWith("C:\\Python") && Directory.Exists(d.FullName + "\\Lib"))
                     {
-                        searchPaths.Add($"{ d.FullName }\\Lib");
+                        searchPaths.Add($"{d.FullName}\\Lib");
                         break;
                     }
                 }
             }
+
             // Then see if there's a directory included in the installation (This can also be used for additional modules or a primary install, so add it in addition)
-            if (Directory.Exists($"{ Application.StartupPath }\\Python"))
+            if (Directory.Exists($"{Application.StartupPath}\\Python"))
             {
-                if (!searchPaths.Contains($"{ Application.StartupPath }\\Python"))
+                if (!searchPaths.Contains($"{Application.StartupPath}\\Python"))
                 {
-                    searchPaths.Add($"{ Application.StartupPath }\\Python");
+                    searchPaths.Add($"{Application.StartupPath}\\Python");
                 }
             }
 
@@ -275,8 +291,12 @@ namespace BrawlCrate.API
                 {
                     if (manual)
                     {
-                        MessageBox.Show("Python was found to be installed in: \n" + searchPaths[0] + "\nAdditional modules can be installed in this path or by placing them in the \"Python\" folder in your BrawlCrate installation.", "BrawlAPI");
+                        MessageBox.Show(
+                            "Python was found to be installed in: \n" + searchPaths[0] +
+                            "\nAdditional modules can be installed in this path or by placing them in the \"Python\" folder in your BrawlCrate installation.",
+                            "BrawlAPI");
                     }
+
                     Properties.Settings.Default.PythonInstallationPath = searchPaths[0];
                     Properties.Settings.Default.Save();
                 }
@@ -289,13 +309,18 @@ namespace BrawlCrate.API
                             Properties.Settings.Default.PythonInstallationPath = "(none)";
                             Properties.Settings.Default.Save();
                         }
-                        MessageBox.Show("Python installation could not be automatically detected. Install the latest version of Python 2.7 and try again, or browse manually to your Python installation directory.", "BrawlAPI");
+
+                        MessageBox.Show(
+                            "Python installation could not be automatically detected. Install the latest version of Python 2.7 and try again, or browse manually to your Python installation directory.",
+                            "BrawlAPI");
                     }
                     else
                     {
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
                         {
-                            if (MessageBox.Show("Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.", "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
+                            if (MessageBox.Show(
+                                    "Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.",
+                                    "BrawlAPI", MessageBoxButtons.YesNo) == DialogResult.Yes
                                 && dlg.ShowDialog() == DialogResult.OK)
                             {
                                 searchPaths.Add(dlg.SelectedPath);
@@ -304,7 +329,9 @@ namespace BrawlCrate.API
                             }
                             else if (!force)
                             {
-                                MessageBox.Show("Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.", "BrawlAPI");
+                                MessageBox.Show(
+                                    "Python installation not found. Python plugins and loaders will be disabled. The python installation path can be changed in the settings.",
+                                    "BrawlAPI");
                                 Properties.Settings.Default.PythonInstallationPath = "(none)";
                                 Properties.Settings.Default.Save();
                             }
@@ -320,16 +347,19 @@ namespace BrawlCrate.API
         internal static void FSharpInstall(bool manual = false, bool force = false)
         {
             fsi_path = Properties.Settings.Default.FSharpInstallationPath;
-            if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) && (force || fsi_path == null || fsi_path == ""))
+            if (Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
+                (force || fsi_path == null || fsi_path == ""))
             {
                 fsi_path =
-                        new[] {
+                    new[]
+                        {
                             ".",
                             Environment.GetEnvironmentVariable("ProgramFiles"),
                             Environment.GetEnvironmentVariable("ProgramFiles(x86)")
                         }
                         .Where(s => s != null)
-                        .SelectMany(s => new[] {
+                        .SelectMany(s => new[]
+                        {
                             Path.Combine(s, "Microsoft SDKs", "F#"),
                             Path.Combine(s, "Microsoft Visual Studio")
                         })
@@ -339,15 +369,19 @@ namespace BrawlCrate.API
                         .FirstOrDefault(s => File.Exists(s));
                 if (fsi_path == null)
                 {
-                    if (DialogResult.OK == MessageBox.Show("F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio? You may have to restart the program for changes to take effect.", "BrawlAPI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
+                    if (DialogResult.OK == MessageBox.Show(
+                            "F# Interactive (fsi.exe) was not found. Would you like to install the Build Tools for Visual Studio? You may have to restart the program for changes to take effect.",
+                            "BrawlAPI", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
                     {
-                        Process.Start("https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
+                        Process.Start(
+                            "https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2017");
                     }
                     else
                     {
                         fsi_path = "(none)";
                     }
                 }
+
                 if (!string.IsNullOrEmpty(fsi_path))
                 {
                     Properties.Settings.Default.FSharpInstallationPath = fsi_path;
@@ -362,28 +396,33 @@ namespace BrawlCrate.API
 
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
         {
-            TreeView resourceTree = (TreeView)sender;
-            if ((resourceTree.SelectedNode is BaseWrapper))
+            TreeView resourceTree = (TreeView) sender;
+            if (resourceTree.SelectedNode is BaseWrapper)
             {
-                BaseWrapper wrapper = (BaseWrapper)resourceTree.SelectedNode;
+                BaseWrapper wrapper = (BaseWrapper) resourceTree.SelectedNode;
                 Type type = wrapper.GetType();
 
                 if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
                 {
-                    if (wrapper.ContextMenuStrip.Items.Count == 0 || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
+                    if (wrapper.ContextMenuStrip.Items.Count == 0 ||
+                        wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
                     {
                         if (wrapper.ContextMenuStrip.Items.Count != 0)
                         {
                             wrapper.ContextMenuStrip.Items.Add(new ToolStripSeparator());
                         }
+
                         wrapper.ContextMenuStrip.Items.Add(new ToolStripMenuItem("Plugins"));
                     }
-                    (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem)?.DropDown.Items.AddRange(ContextMenuHooks[type]);
+
+                    (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem)
+                        ?.DropDown.Items.AddRange(ContextMenuHooks[type]);
                 }
             }
         }
 
         #region Exposed API members
+
         public static ResourceNode RootNode
         {
             get
@@ -398,8 +437,9 @@ namespace BrawlCrate.API
                 }
             }
         }
-        public static ResourceNode SelectedNode => ((BaseWrapper)MainForm.Instance.resourceTree.SelectedNode).Resource;
-        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper)MainForm.Instance.resourceTree.SelectedNode;
+
+        public static ResourceNode SelectedNode => ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource;
+        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
 
         public static void ShowMessage(string msg, string title)
         {
@@ -449,6 +489,7 @@ namespace BrawlCrate.API
                 }
             }
         }
+
         public static string OpenFolderDialog()
         {
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
@@ -463,6 +504,7 @@ namespace BrawlCrate.API
                 }
             }
         }
+
         public static string SaveFileDialog()
         {
             using (SaveFileDialog dlg = new SaveFileDialog())
@@ -477,6 +519,7 @@ namespace BrawlCrate.API
                 }
             }
         }
+
         #endregion
     }
 }

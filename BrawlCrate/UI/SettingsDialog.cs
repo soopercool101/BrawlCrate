@@ -18,7 +18,8 @@ namespace BrawlCrate
                 {
                     foreach (string s in info._extensions)
                     {
-                        if (!s.Equals("dat", StringComparison.OrdinalIgnoreCase) && !s.Equals("bin", StringComparison.OrdinalIgnoreCase))
+                        if (!s.Equals("dat", StringComparison.OrdinalIgnoreCase) &&
+                            !s.Equals("bin", StringComparison.OrdinalIgnoreCase))
                         {
                             _assocList.Add(FileAssociation.Get("." + s));
                             _typeList.Add(FileType.Get("SSBB." + s.ToUpper()));
@@ -115,7 +116,8 @@ namespace BrawlCrate
                     {
                         if (s != "dat" && s != "bin")
                         {
-                            listView1.Items.Add(new ListViewItem() { Text = string.Format("{0} (*.{1})", info._name, s) });
+                            listView1.Items.Add(new ListViewItem()
+                                {Text = string.Format("{0} (*.{1})", info._name, s)});
                         }
                     }
                 }
@@ -130,7 +132,7 @@ namespace BrawlCrate
                 int index = 0;
                 foreach (ListViewItem i in listView1.Items)
                 {
-                    if ((check = i.Checked) != (bool)i.Tag)
+                    if ((check = i.Checked) != (bool) i.Tag)
                     {
                         if (check)
                         {
@@ -142,10 +144,13 @@ namespace BrawlCrate
                             _typeList[index].Delete();
                             _assocList[index].Delete();
                         }
+
                         i.Tag = check;
                     }
+
                     index++;
                 }
+
                 listView1.Sort();
                 if (datFileAssociation.Checked)
                 {
@@ -157,6 +162,7 @@ namespace BrawlCrate
                     FileType.Get("SSBB.DAT").Delete();
                     FileAssociation.Get(".dat").Delete();
                 }
+
                 if (binFileAssociation.Checked)
                 {
                     FileAssociation.Get(".bin").FileType = FileType.Get("SSBB.BIN");
@@ -170,17 +176,22 @@ namespace BrawlCrate
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show(null, "Unable to access the registry to set file associations.\nRun the program as administrator and try again.", "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(null,
+                    "Unable to access the registry to set file associations.\nRun the program as administrator and try again.",
+                    "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
-                MessageBox.Show(null, "Unable to access the registry to set file associations.\nRun the program as administrator and try again.", "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(null,
+                    "Unable to access the registry to set file associations.\nRun the program as administrator and try again.",
+                    "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 btnApply.Enabled = false;
             }
         }
+
         private void SettingsDialog_Shown(object sender, EventArgs e)
         {
             int index = 0;
@@ -189,9 +200,9 @@ namespace BrawlCrate
             {
                 try
                 {
-                    if ((_typeList[index] == _assocList[index].FileType) &&
-                        (!string.IsNullOrEmpty(cmd = _typeList[index].GetCommand("open"))) &&
-                        (cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0))
+                    if (_typeList[index] == _assocList[index].FileType &&
+                        !string.IsNullOrEmpty(cmd = _typeList[index].GetCommand("open")) &&
+                        cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         i.Tag = i.Checked = true;
                     }
@@ -202,24 +213,30 @@ namespace BrawlCrate
                 }
                 catch
                 {
-
                 }
+
                 index++;
             }
 
             _updating = true;
             try
             {
-                datFileAssociation.Checked = ((!string.IsNullOrEmpty(cmd = FileType.Get("SSBB.DAT").GetCommand("open"))) &&
-                            (cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0));
+                datFileAssociation.Checked = !string.IsNullOrEmpty(cmd = FileType.Get("SSBB.DAT").GetCommand("open")) &&
+                                             cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0;
             }
-            catch { }
+            catch
+            {
+            }
+
             try
             {
-                binFileAssociation.Checked = ((!string.IsNullOrEmpty(cmd = FileType.Get("SSBB.BIN").GetCommand("open"))) &&
-                            (cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0));
+                binFileAssociation.Checked = !string.IsNullOrEmpty(cmd = FileType.Get("SSBB.BIN").GetCommand("open")) &&
+                                             cmd.IndexOf(Program.FullPath, StringComparison.OrdinalIgnoreCase) >= 0;
             }
-            catch { }
+            catch
+            {
+            }
+
             chkDocUpdates.Checked = MainForm.Instance.GetDocumentationUpdates;
             updaterBehaviorGroupbox.Enabled = !Program.Canary;
             if (MainForm.Instance.UpdateAutomatically)
@@ -309,10 +326,12 @@ namespace BrawlCrate
         {
             btnApply.Enabled = true;
         }
+
         private void btnApply_Click(object sender, EventArgs e)
         {
             Apply();
         }
+
         private void btnOkay_Click(object sender, EventArgs e)
         {
             if (btnApply.Enabled)
@@ -323,6 +342,7 @@ namespace BrawlCrate
             DialogResult = DialogResult.OK;
             Close();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -333,98 +353,98 @@ namespace BrawlCrate
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("ARChive Pack (*.pac)");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Compressed ARChive Pack (*.pcs)");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("ARChive (*.arc)");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Compressed ARChive (*.szs)");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Resource Pack (*.brres)");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Model Pack (*.brmdl)");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Texture Pack (*.brtex)");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("MSBin Message List (*.msbin)");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Sound Archive (*.brsar)");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Sound Stream (*.brstm)");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Texture (*.tex0)");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Palette (*.plt0)");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Model (*.mdl0)");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Model Animation (*.chr0)");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Texture Animation (*.srt0)");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Vertex Morph (*.shp0)");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Texture Pattern (*.pat0)");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Bone Visibility (*.vis0)");
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Scene Settings (*.scn0)");
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Color Sequence (*.clr0)");
-            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Effect List (*.efls)");
-            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Effect Parameters (*.breff)");
-            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Effect Textures (*.breft)");
-            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Sound Stream (*.brwsd)");
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Sound Bank (*.brbnk)");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Sound Sequence (*.brseq)");
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Static Module (*.dol)");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Relocatable Module (*.rel)");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Texture Archive (*.tpl)");
-            chkShowPropDesc = new System.Windows.Forms.CheckBox();
-            chkShowHex = new System.Windows.Forms.CheckBox();
-            chkDocUpdates = new System.Windows.Forms.CheckBox();
-            chkCanary = new System.Windows.Forms.CheckBox();
-            tabControl1 = new System.Windows.Forms.TabControl();
-            tabGeneral = new System.Windows.Forms.TabPage();
-            grpBoxMDL0General = new System.Windows.Forms.GroupBox();
-            chkBoxMDL0Compatibility = new System.Windows.Forms.CheckBox();
-            grpBoxAudioGeneral = new System.Windows.Forms.GroupBox();
-            chkBoxAutoPlayAudio = new System.Windows.Forms.CheckBox();
-            grpBoxMainFormGeneral = new System.Windows.Forms.GroupBox();
-            lblRecentFiles = new System.Windows.Forms.Label();
-            recentFileCountBox = new System.Windows.Forms.NumericInputBox();
-            grpBoxFileNameDisplayGeneral = new System.Windows.Forms.GroupBox();
-            rdoShowShortName = new System.Windows.Forms.RadioButton();
-            rdoShowFullPath = new System.Windows.Forms.RadioButton();
-            tabCompression = new System.Windows.Forms.TabPage();
-            groupBoxModuleCompression = new System.Windows.Forms.GroupBox();
-            chkBoxModuleCompress = new System.Windows.Forms.CheckBox();
-            groupBoxStageCompression = new System.Windows.Forms.GroupBox();
-            chkBoxStageCompress = new System.Windows.Forms.CheckBox();
-            groupBoxFighterCompression = new System.Windows.Forms.GroupBox();
-            chkBoxFighterPacDecompress = new System.Windows.Forms.CheckBox();
-            chkBoxFighterPcsCompress = new System.Windows.Forms.CheckBox();
-            tabFileAssociations = new System.Windows.Forms.TabPage();
-            genericFileAssociationBox = new System.Windows.Forms.GroupBox();
-            binFileAssociation = new System.Windows.Forms.CheckBox();
-            datFileAssociation = new System.Windows.Forms.CheckBox();
-            lblAdminApproval = new System.Windows.Forms.Label();
-            btnApply = new System.Windows.Forms.Button();
-            associatiedFilesBox = new System.Windows.Forms.GroupBox();
-            checkBox1 = new System.Windows.Forms.CheckBox();
-            listView1 = new System.Windows.Forms.ListView();
-            columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            tabBrawlAPI = new System.Windows.Forms.TabPage();
-            grpBoxFSharpAPI = new System.Windows.Forms.GroupBox();
-            txtBoxFSharpPath = new System.Windows.Forms.TextBox();
-            btnFSharpBrowse = new System.Windows.Forms.Button();
-            btnFSharpDetect = new System.Windows.Forms.Button();
-            label2 = new System.Windows.Forms.Label();
-            grpBoxPythonAPI = new System.Windows.Forms.GroupBox();
-            txtBoxPythonPath = new System.Windows.Forms.TextBox();
-            btnPythonBrowse = new System.Windows.Forms.Button();
-            btnPythonDetect = new System.Windows.Forms.Button();
-            label1 = new System.Windows.Forms.Label();
-            grpBoxAPIGeneral = new System.Windows.Forms.GroupBox();
-            chkBoxAPIEnableLoaders = new System.Windows.Forms.CheckBox();
-            chkBoxEnableAPI = new System.Windows.Forms.CheckBox();
-            tabDiscord = new System.Windows.Forms.TabPage();
-            grpBoxDiscordRPC = new System.Windows.Forms.GroupBox();
-            chkBoxEnableDiscordRPC = new System.Windows.Forms.CheckBox();
-            grpBoxDiscordRPCType = new System.Windows.Forms.GroupBox();
-            DiscordRPCCustomName = new System.Windows.Forms.TextBox();
-            rdoDiscordRPCNameCustom = new System.Windows.Forms.RadioButton();
-            rdoDiscordRPCNameExternal = new System.Windows.Forms.RadioButton();
-            rdoDiscordRPCNameInternal = new System.Windows.Forms.RadioButton();
-            rdoDiscordRPCNameDisabled = new System.Windows.Forms.RadioButton();
-            tabUpdater = new System.Windows.Forms.TabPage();
-            grpBoxCanary = new System.Windows.Forms.GroupBox();
-            updaterBehaviorGroupbox = new System.Windows.Forms.GroupBox();
-            rdoAutoUpdate = new System.Windows.Forms.RadioButton();
-            rdoCheckManual = new System.Windows.Forms.RadioButton();
-            rdoCheckStartup = new System.Windows.Forms.RadioButton();
+            ListViewItem listViewItem1 = new ListViewItem("ARChive Pack (*.pac)");
+            ListViewItem listViewItem2 = new ListViewItem("Compressed ARChive Pack (*.pcs)");
+            ListViewItem listViewItem3 = new ListViewItem("ARChive (*.arc)");
+            ListViewItem listViewItem4 = new ListViewItem("Compressed ARChive (*.szs)");
+            ListViewItem listViewItem5 = new ListViewItem("Resource Pack (*.brres)");
+            ListViewItem listViewItem6 = new ListViewItem("Model Pack (*.brmdl)");
+            ListViewItem listViewItem7 = new ListViewItem("Texture Pack (*.brtex)");
+            ListViewItem listViewItem8 = new ListViewItem("MSBin Message List (*.msbin)");
+            ListViewItem listViewItem9 = new ListViewItem("Sound Archive (*.brsar)");
+            ListViewItem listViewItem10 = new ListViewItem("Sound Stream (*.brstm)");
+            ListViewItem listViewItem11 = new ListViewItem("Texture (*.tex0)");
+            ListViewItem listViewItem12 = new ListViewItem("Palette (*.plt0)");
+            ListViewItem listViewItem13 = new ListViewItem("Model (*.mdl0)");
+            ListViewItem listViewItem14 = new ListViewItem("Model Animation (*.chr0)");
+            ListViewItem listViewItem15 = new ListViewItem("Texture Animation (*.srt0)");
+            ListViewItem listViewItem16 = new ListViewItem("Vertex Morph (*.shp0)");
+            ListViewItem listViewItem17 = new ListViewItem("Texture Pattern (*.pat0)");
+            ListViewItem listViewItem18 = new ListViewItem("Bone Visibility (*.vis0)");
+            ListViewItem listViewItem19 = new ListViewItem("Scene Settings (*.scn0)");
+            ListViewItem listViewItem20 = new ListViewItem("Color Sequence (*.clr0)");
+            ListViewItem listViewItem21 = new ListViewItem("Effect List (*.efls)");
+            ListViewItem listViewItem22 = new ListViewItem("Effect Parameters (*.breff)");
+            ListViewItem listViewItem23 = new ListViewItem("Effect Textures (*.breft)");
+            ListViewItem listViewItem24 = new ListViewItem("Sound Stream (*.brwsd)");
+            ListViewItem listViewItem25 = new ListViewItem("Sound Bank (*.brbnk)");
+            ListViewItem listViewItem26 = new ListViewItem("Sound Sequence (*.brseq)");
+            ListViewItem listViewItem27 = new ListViewItem("Static Module (*.dol)");
+            ListViewItem listViewItem28 = new ListViewItem("Relocatable Module (*.rel)");
+            ListViewItem listViewItem29 = new ListViewItem("Texture Archive (*.tpl)");
+            chkShowPropDesc = new CheckBox();
+            chkShowHex = new CheckBox();
+            chkDocUpdates = new CheckBox();
+            chkCanary = new CheckBox();
+            tabControl1 = new TabControl();
+            tabGeneral = new TabPage();
+            grpBoxMDL0General = new GroupBox();
+            chkBoxMDL0Compatibility = new CheckBox();
+            grpBoxAudioGeneral = new GroupBox();
+            chkBoxAutoPlayAudio = new CheckBox();
+            grpBoxMainFormGeneral = new GroupBox();
+            lblRecentFiles = new Label();
+            recentFileCountBox = new NumericInputBox();
+            grpBoxFileNameDisplayGeneral = new GroupBox();
+            rdoShowShortName = new RadioButton();
+            rdoShowFullPath = new RadioButton();
+            tabCompression = new TabPage();
+            groupBoxModuleCompression = new GroupBox();
+            chkBoxModuleCompress = new CheckBox();
+            groupBoxStageCompression = new GroupBox();
+            chkBoxStageCompress = new CheckBox();
+            groupBoxFighterCompression = new GroupBox();
+            chkBoxFighterPacDecompress = new CheckBox();
+            chkBoxFighterPcsCompress = new CheckBox();
+            tabFileAssociations = new TabPage();
+            genericFileAssociationBox = new GroupBox();
+            binFileAssociation = new CheckBox();
+            datFileAssociation = new CheckBox();
+            lblAdminApproval = new Label();
+            btnApply = new Button();
+            associatiedFilesBox = new GroupBox();
+            checkBox1 = new CheckBox();
+            listView1 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            tabBrawlAPI = new TabPage();
+            grpBoxFSharpAPI = new GroupBox();
+            txtBoxFSharpPath = new TextBox();
+            btnFSharpBrowse = new Button();
+            btnFSharpDetect = new Button();
+            label2 = new Label();
+            grpBoxPythonAPI = new GroupBox();
+            txtBoxPythonPath = new TextBox();
+            btnPythonBrowse = new Button();
+            btnPythonDetect = new Button();
+            label1 = new Label();
+            grpBoxAPIGeneral = new GroupBox();
+            chkBoxAPIEnableLoaders = new CheckBox();
+            chkBoxEnableAPI = new CheckBox();
+            tabDiscord = new TabPage();
+            grpBoxDiscordRPC = new GroupBox();
+            chkBoxEnableDiscordRPC = new CheckBox();
+            grpBoxDiscordRPCType = new GroupBox();
+            DiscordRPCCustomName = new TextBox();
+            rdoDiscordRPCNameCustom = new RadioButton();
+            rdoDiscordRPCNameExternal = new RadioButton();
+            rdoDiscordRPCNameInternal = new RadioButton();
+            rdoDiscordRPCNameDisabled = new RadioButton();
+            tabUpdater = new TabPage();
+            grpBoxCanary = new GroupBox();
+            updaterBehaviorGroupbox = new GroupBox();
+            rdoAutoUpdate = new RadioButton();
+            rdoCheckManual = new RadioButton();
+            rdoCheckStartup = new RadioButton();
             tabControl1.SuspendLayout();
             tabGeneral.SuspendLayout();
             grpBoxMDL0General.SuspendLayout();
@@ -459,7 +479,7 @@ namespace BrawlCrate
             chkShowPropDesc.TabIndex = 7;
             chkShowPropDesc.Text = "Show property description box when available";
             chkShowPropDesc.UseVisualStyleBackColor = true;
-            chkShowPropDesc.CheckedChanged += new System.EventHandler(chkShowPropDesc_CheckedChanged);
+            chkShowPropDesc.CheckedChanged += new EventHandler(chkShowPropDesc_CheckedChanged);
             // 
             // chkShowHex
             // 
@@ -470,7 +490,7 @@ namespace BrawlCrate
             chkShowHex.TabIndex = 9;
             chkShowHex.Text = "Show hexadecimal for files without previews";
             chkShowHex.UseVisualStyleBackColor = true;
-            chkShowHex.CheckedChanged += new System.EventHandler(chkShowHex_CheckedChanged);
+            chkShowHex.CheckedChanged += new EventHandler(chkShowHex_CheckedChanged);
             // 
             // chkDocUpdates
             // 
@@ -481,7 +501,7 @@ namespace BrawlCrate
             chkDocUpdates.TabIndex = 11;
             chkDocUpdates.Text = "Receive documentation updates";
             chkDocUpdates.UseVisualStyleBackColor = true;
-            chkDocUpdates.CheckedChanged += new System.EventHandler(chkDocUpdates_CheckedChanged);
+            chkDocUpdates.CheckedChanged += new EventHandler(chkDocUpdates_CheckedChanged);
             // 
             // chkCanary
             // 
@@ -492,7 +512,7 @@ namespace BrawlCrate
             chkCanary.TabIndex = 13;
             chkCanary.Text = "Opt into BrawlCrate Canary (Experimental) updates";
             chkCanary.UseVisualStyleBackColor = true;
-            chkCanary.CheckedChanged += new System.EventHandler(chkCanary_CheckedChanged);
+            chkCanary.CheckedChanged += new EventHandler(chkCanary_CheckedChanged);
             // 
             // tabControl1
             // 
@@ -502,7 +522,7 @@ namespace BrawlCrate
             tabControl1.Controls.Add(tabBrawlAPI);
             tabControl1.Controls.Add(tabDiscord);
             tabControl1.Controls.Add(tabUpdater);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new System.Drawing.Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -517,15 +537,15 @@ namespace BrawlCrate
             tabGeneral.Controls.Add(grpBoxMainFormGeneral);
             tabGeneral.Location = new System.Drawing.Point(4, 22);
             tabGeneral.Name = "tabGeneral";
-            tabGeneral.Padding = new System.Windows.Forms.Padding(3);
+            tabGeneral.Padding = new Padding(3);
             tabGeneral.Size = new System.Drawing.Size(365, 452);
             tabGeneral.TabIndex = 0;
             tabGeneral.Text = "General";
             // 
             // grpBoxMDL0General
             // 
-            grpBoxMDL0General.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxMDL0General.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                        | AnchorStyles.Right;
             grpBoxMDL0General.Controls.Add(chkBoxMDL0Compatibility);
             grpBoxMDL0General.Location = new System.Drawing.Point(8, 241);
             grpBoxMDL0General.Name = "grpBoxMDL0General";
@@ -543,12 +563,12 @@ namespace BrawlCrate
             chkBoxMDL0Compatibility.TabIndex = 7;
             chkBoxMDL0Compatibility.Text = "Use compatibility mode";
             chkBoxMDL0Compatibility.UseVisualStyleBackColor = true;
-            chkBoxMDL0Compatibility.CheckedChanged += new System.EventHandler(chkBoxMDL0Compatibility_CheckedChanged);
+            chkBoxMDL0Compatibility.CheckedChanged += new EventHandler(chkBoxMDL0Compatibility_CheckedChanged);
             // 
             // grpBoxAudioGeneral
             // 
-            grpBoxAudioGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxAudioGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                         | AnchorStyles.Right;
             grpBoxAudioGeneral.Controls.Add(chkBoxAutoPlayAudio);
             grpBoxAudioGeneral.Location = new System.Drawing.Point(8, 182);
             grpBoxAudioGeneral.Name = "grpBoxAudioGeneral";
@@ -566,12 +586,12 @@ namespace BrawlCrate
             chkBoxAutoPlayAudio.TabIndex = 7;
             chkBoxAutoPlayAudio.Text = "Automatically play audio nodes";
             chkBoxAutoPlayAudio.UseVisualStyleBackColor = true;
-            chkBoxAutoPlayAudio.CheckedChanged += new System.EventHandler(chkBoxAutoPlayAudio_CheckedChanged);
+            chkBoxAutoPlayAudio.CheckedChanged += new EventHandler(chkBoxAutoPlayAudio_CheckedChanged);
             // 
             // grpBoxMainFormGeneral
             // 
-            grpBoxMainFormGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxMainFormGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                            | AnchorStyles.Right;
             grpBoxMainFormGeneral.Controls.Add(lblRecentFiles);
             grpBoxMainFormGeneral.Controls.Add(recentFileCountBox);
             grpBoxMainFormGeneral.Controls.Add(grpBoxFileNameDisplayGeneral);
@@ -604,12 +624,12 @@ namespace BrawlCrate
             recentFileCountBox.Size = new System.Drawing.Size(100, 20);
             recentFileCountBox.TabIndex = 11;
             recentFileCountBox.Text = "0";
-            recentFileCountBox.TextChanged += new System.EventHandler(RecentFileCountBox_TextChanged);
+            recentFileCountBox.TextChanged += new EventHandler(RecentFileCountBox_TextChanged);
             // 
             // grpBoxFileNameDisplayGeneral
             // 
-            grpBoxFileNameDisplayGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxFileNameDisplayGeneral.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
+                                                                      | AnchorStyles.Right;
             grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowShortName);
             grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowFullPath);
             grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 89);
@@ -629,7 +649,7 @@ namespace BrawlCrate
             rdoShowShortName.TabStop = true;
             rdoShowShortName.Text = "Show filename";
             rdoShowShortName.UseVisualStyleBackColor = true;
-            rdoShowShortName.CheckedChanged += new System.EventHandler(RdoPathDisplay_CheckedChanged);
+            rdoShowShortName.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
             // 
             // rdoShowFullPath
             // 
@@ -641,7 +661,7 @@ namespace BrawlCrate
             rdoShowFullPath.TabStop = true;
             rdoShowFullPath.Text = "Show full path";
             rdoShowFullPath.UseVisualStyleBackColor = true;
-            rdoShowFullPath.CheckedChanged += new System.EventHandler(RdoPathDisplay_CheckedChanged);
+            rdoShowFullPath.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
             // 
             // tabCompression
             // 
@@ -651,15 +671,15 @@ namespace BrawlCrate
             tabCompression.Controls.Add(groupBoxFighterCompression);
             tabCompression.Location = new System.Drawing.Point(4, 22);
             tabCompression.Name = "tabCompression";
-            tabCompression.Padding = new System.Windows.Forms.Padding(3);
+            tabCompression.Padding = new Padding(3);
             tabCompression.Size = new System.Drawing.Size(365, 452);
             tabCompression.TabIndex = 3;
             tabCompression.Text = "Compression";
             // 
             // groupBoxModuleCompression
             // 
-            groupBoxModuleCompression.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            groupBoxModuleCompression.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                                | AnchorStyles.Right;
             groupBoxModuleCompression.Controls.Add(chkBoxModuleCompress);
             groupBoxModuleCompression.Location = new System.Drawing.Point(8, 146);
             groupBoxModuleCompression.Name = "groupBoxModuleCompression";
@@ -677,12 +697,12 @@ namespace BrawlCrate
             chkBoxModuleCompress.TabIndex = 7;
             chkBoxModuleCompress.Text = "Automatically compress files (not recommended)";
             chkBoxModuleCompress.UseVisualStyleBackColor = true;
-            chkBoxModuleCompress.CheckedChanged += new System.EventHandler(chkBoxModuleCompress_CheckedChanged);
+            chkBoxModuleCompress.CheckedChanged += new EventHandler(chkBoxModuleCompress_CheckedChanged);
             // 
             // groupBoxStageCompression
             // 
-            groupBoxStageCompression.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            groupBoxStageCompression.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                               | AnchorStyles.Right;
             groupBoxStageCompression.Controls.Add(chkBoxStageCompress);
             groupBoxStageCompression.Location = new System.Drawing.Point(8, 87);
             groupBoxStageCompression.Name = "groupBoxStageCompression";
@@ -700,12 +720,12 @@ namespace BrawlCrate
             chkBoxStageCompress.TabIndex = 7;
             chkBoxStageCompress.Text = "Automatically compress files";
             chkBoxStageCompress.UseVisualStyleBackColor = true;
-            chkBoxStageCompress.CheckedChanged += new System.EventHandler(chkBoxStageCompress_CheckedChanged);
+            chkBoxStageCompress.CheckedChanged += new EventHandler(chkBoxStageCompress_CheckedChanged);
             // 
             // groupBoxFighterCompression
             // 
-            groupBoxFighterCompression.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            groupBoxFighterCompression.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                                 | AnchorStyles.Right;
             groupBoxFighterCompression.Controls.Add(chkBoxFighterPacDecompress);
             groupBoxFighterCompression.Controls.Add(chkBoxFighterPcsCompress);
             groupBoxFighterCompression.Location = new System.Drawing.Point(8, 6);
@@ -724,7 +744,7 @@ namespace BrawlCrate
             chkBoxFighterPacDecompress.TabIndex = 7;
             chkBoxFighterPacDecompress.Text = "Automatically decompress PAC files";
             chkBoxFighterPacDecompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPacDecompress.CheckedChanged += new System.EventHandler(chkBoxFighterPacDecompress_CheckedChanged);
+            chkBoxFighterPacDecompress.CheckedChanged += new EventHandler(chkBoxFighterPacDecompress_CheckedChanged);
             // 
             // chkBoxFighterPcsCompress
             // 
@@ -735,7 +755,7 @@ namespace BrawlCrate
             chkBoxFighterPcsCompress.TabIndex = 9;
             chkBoxFighterPcsCompress.Text = "Automatically compress PCS files";
             chkBoxFighterPcsCompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPcsCompress.CheckedChanged += new System.EventHandler(chkBoxFighterPcsCompress_CheckedChanged);
+            chkBoxFighterPcsCompress.CheckedChanged += new EventHandler(chkBoxFighterPcsCompress_CheckedChanged);
             // 
             // tabFileAssociations
             // 
@@ -751,8 +771,8 @@ namespace BrawlCrate
             // 
             // genericFileAssociationBox
             // 
-            genericFileAssociationBox.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            genericFileAssociationBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
+                                                                   | AnchorStyles.Right;
             genericFileAssociationBox.Controls.Add(binFileAssociation);
             genericFileAssociationBox.Controls.Add(datFileAssociation);
             genericFileAssociationBox.Location = new System.Drawing.Point(8, 341);
@@ -771,7 +791,7 @@ namespace BrawlCrate
             binFileAssociation.TabIndex = 9;
             binFileAssociation.Text = "Associate with .bin files";
             binFileAssociation.UseVisualStyleBackColor = true;
-            binFileAssociation.CheckedChanged += new System.EventHandler(BinFileAssociation_CheckedChanged);
+            binFileAssociation.CheckedChanged += new EventHandler(BinFileAssociation_CheckedChanged);
             // 
             // datFileAssociation
             // 
@@ -782,13 +802,14 @@ namespace BrawlCrate
             datFileAssociation.TabIndex = 8;
             datFileAssociation.Text = "Associate with .dat files";
             datFileAssociation.UseVisualStyleBackColor = true;
-            datFileAssociation.CheckedChanged += new System.EventHandler(DatFileAssociation_CheckedChanged);
+            datFileAssociation.CheckedChanged += new EventHandler(DatFileAssociation_CheckedChanged);
             // 
             // lblAdminApproval
             // 
-            lblAdminApproval.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
-            lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblAdminApproval.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
+                                                          | AnchorStyles.Right;
+            lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F,
+                System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             lblAdminApproval.ForeColor = System.Drawing.Color.Red;
             lblAdminApproval.Location = new System.Drawing.Point(3, 426);
             lblAdminApproval.Name = "lblAdminApproval";
@@ -799,20 +820,20 @@ namespace BrawlCrate
             // 
             // btnApply
             // 
-            btnApply.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            btnApply.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnApply.Location = new System.Drawing.Point(287, 424);
             btnApply.Name = "btnApply";
             btnApply.Size = new System.Drawing.Size(75, 23);
             btnApply.TabIndex = 4;
             btnApply.Text = "Apply";
             btnApply.UseVisualStyleBackColor = true;
-            btnApply.Click += new System.EventHandler(btnApply_Click);
+            btnApply.Click += new EventHandler(btnApply_Click);
             // 
             // associatiedFilesBox
             // 
-            associatiedFilesBox.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            associatiedFilesBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                          | AnchorStyles.Left
+                                                          | AnchorStyles.Right;
             associatiedFilesBox.Controls.Add(checkBox1);
             associatiedFilesBox.Controls.Add(listView1);
             associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
@@ -824,27 +845,29 @@ namespace BrawlCrate
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = (System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right);
+            checkBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             checkBox1.Location = new System.Drawing.Point(242, 303);
             checkBox1.Name = "checkBox1";
-            checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            checkBox1.RightToLeft = RightToLeft.Yes;
             checkBox1.Size = new System.Drawing.Size(104, 20);
             checkBox1.TabIndex = 5;
             checkBox1.Text = "Check All";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += new System.EventHandler(checkBox1_CheckedChanged);
+            checkBox1.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
             // 
             // listView1
             // 
-            listView1.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                | AnchorStyles.Left
+                                                | AnchorStyles.Right;
             listView1.AutoArrange = false;
-            listView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            listView1.BorderStyle = BorderStyle.FixedSingle;
             listView1.CheckBoxes = true;
-            listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            columnHeader1});
-            listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            listView1.Columns.AddRange(new ColumnHeader[]
+            {
+                columnHeader1
+            });
+            listView1.HeaderStyle = ColumnHeaderStyle.None;
             listView1.HideSelection = false;
             listViewItem1.StateImageIndex = 0;
             listViewItem1.Tag = "";
@@ -879,44 +902,46 @@ namespace BrawlCrate
             listViewItem27.StateImageIndex = 0;
             listViewItem28.StateImageIndex = 0;
             listViewItem29.StateImageIndex = 0;
-            listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20,
-            listViewItem21,
-            listViewItem22,
-            listViewItem23,
-            listViewItem24,
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28,
-            listViewItem29});
+            listView1.Items.AddRange(new ListViewItem[]
+            {
+                listViewItem1,
+                listViewItem2,
+                listViewItem3,
+                listViewItem4,
+                listViewItem5,
+                listViewItem6,
+                listViewItem7,
+                listViewItem8,
+                listViewItem9,
+                listViewItem10,
+                listViewItem11,
+                listViewItem12,
+                listViewItem13,
+                listViewItem14,
+                listViewItem15,
+                listViewItem16,
+                listViewItem17,
+                listViewItem18,
+                listViewItem19,
+                listViewItem20,
+                listViewItem21,
+                listViewItem22,
+                listViewItem23,
+                listViewItem24,
+                listViewItem25,
+                listViewItem26,
+                listViewItem27,
+                listViewItem28,
+                listViewItem29
+            });
             listView1.Location = new System.Drawing.Point(6, 19);
             listView1.MultiSelect = false;
             listView1.Name = "listView1";
             listView1.Size = new System.Drawing.Size(337, 278);
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = System.Windows.Forms.View.Details;
-            listView1.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(listView1_ItemChecked);
+            listView1.View = View.Details;
+            listView1.ItemChecked += new ItemCheckedEventHandler(listView1_ItemChecked);
             // 
             // columnHeader1
             // 
@@ -931,15 +956,15 @@ namespace BrawlCrate
             tabBrawlAPI.Controls.Add(grpBoxAPIGeneral);
             tabBrawlAPI.Location = new System.Drawing.Point(4, 22);
             tabBrawlAPI.Name = "tabBrawlAPI";
-            tabBrawlAPI.Padding = new System.Windows.Forms.Padding(3);
+            tabBrawlAPI.Padding = new Padding(3);
             tabBrawlAPI.Size = new System.Drawing.Size(365, 452);
             tabBrawlAPI.TabIndex = 5;
             tabBrawlAPI.Text = "BrawlAPI";
             // 
             // grpBoxFSharpAPI
             // 
-            grpBoxFSharpAPI.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxFSharpAPI.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                      | AnchorStyles.Right;
             grpBoxFSharpAPI.Controls.Add(txtBoxFSharpPath);
             grpBoxFSharpAPI.Controls.Add(btnFSharpBrowse);
             grpBoxFSharpAPI.Controls.Add(btnFSharpDetect);
@@ -953,38 +978,38 @@ namespace BrawlCrate
             // 
             // txtBoxFSharpPath
             // 
-            txtBoxFSharpPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            txtBoxFSharpPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                       | AnchorStyles.Right;
             txtBoxFSharpPath.Location = new System.Drawing.Point(11, 38);
             txtBoxFSharpPath.Name = "txtBoxFSharpPath";
             txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
             txtBoxFSharpPath.TabIndex = 3;
             txtBoxFSharpPath.Text = "(none)";
-            txtBoxFSharpPath.TextChanged += new System.EventHandler(TxtBoxFSharpPath_TextChanged);
+            txtBoxFSharpPath.TextChanged += new EventHandler(TxtBoxFSharpPath_TextChanged);
             // 
             // btnFSharpBrowse
             // 
-            btnFSharpBrowse.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnFSharpBrowse.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                      | AnchorStyles.Right;
             btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
             btnFSharpBrowse.Name = "btnFSharpBrowse";
             btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
             btnFSharpBrowse.TabIndex = 21;
             btnFSharpBrowse.Text = "...";
             btnFSharpBrowse.UseVisualStyleBackColor = true;
-            btnFSharpBrowse.Click += new System.EventHandler(BtnFSharpBrowse_Click);
+            btnFSharpBrowse.Click += new EventHandler(BtnFSharpBrowse_Click);
             // 
             // btnFSharpDetect
             // 
-            btnFSharpDetect.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnFSharpDetect.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                      | AnchorStyles.Right;
             btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
             btnFSharpDetect.Name = "btnFSharpDetect";
             btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
             btnFSharpDetect.TabIndex = 22;
             btnFSharpDetect.Text = "Auto-Detect";
             btnFSharpDetect.UseVisualStyleBackColor = true;
-            btnFSharpDetect.Click += new System.EventHandler(BtnFSharpDetect_Click);
+            btnFSharpDetect.Click += new EventHandler(BtnFSharpDetect_Click);
             // 
             // label2
             // 
@@ -997,8 +1022,8 @@ namespace BrawlCrate
             // 
             // grpBoxPythonAPI
             // 
-            grpBoxPythonAPI.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxPythonAPI.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                      | AnchorStyles.Right;
             grpBoxPythonAPI.Controls.Add(txtBoxPythonPath);
             grpBoxPythonAPI.Controls.Add(btnPythonBrowse);
             grpBoxPythonAPI.Controls.Add(btnPythonDetect);
@@ -1012,38 +1037,38 @@ namespace BrawlCrate
             // 
             // txtBoxPythonPath
             // 
-            txtBoxPythonPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            txtBoxPythonPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                       | AnchorStyles.Right;
             txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
             txtBoxPythonPath.Name = "txtBoxPythonPath";
             txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
             txtBoxPythonPath.TabIndex = 3;
             txtBoxPythonPath.Text = "(none)";
-            txtBoxPythonPath.TextChanged += new System.EventHandler(TxtBoxPythonPath_TextChanged);
+            txtBoxPythonPath.TextChanged += new EventHandler(TxtBoxPythonPath_TextChanged);
             // 
             // btnPythonBrowse
             // 
-            btnPythonBrowse.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnPythonBrowse.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                      | AnchorStyles.Right;
             btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
             btnPythonBrowse.Name = "btnPythonBrowse";
             btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
             btnPythonBrowse.TabIndex = 21;
             btnPythonBrowse.Text = "...";
             btnPythonBrowse.UseVisualStyleBackColor = true;
-            btnPythonBrowse.Click += new System.EventHandler(BtnPythonBrowse_Click);
+            btnPythonBrowse.Click += new EventHandler(BtnPythonBrowse_Click);
             // 
             // btnPythonDetect
             // 
-            btnPythonDetect.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right);
+            btnPythonDetect.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                                      | AnchorStyles.Right;
             btnPythonDetect.Location = new System.Drawing.Point(266, 36);
             btnPythonDetect.Name = "btnPythonDetect";
             btnPythonDetect.Size = new System.Drawing.Size(75, 24);
             btnPythonDetect.TabIndex = 22;
             btnPythonDetect.Text = "Auto-Detect";
             btnPythonDetect.UseVisualStyleBackColor = true;
-            btnPythonDetect.Click += new System.EventHandler(BtnPythonDetect_Click);
+            btnPythonDetect.Click += new EventHandler(BtnPythonDetect_Click);
             // 
             // label1
             // 
@@ -1056,8 +1081,8 @@ namespace BrawlCrate
             // 
             // grpBoxAPIGeneral
             // 
-            grpBoxAPIGeneral.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxAPIGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                       | AnchorStyles.Right;
             grpBoxAPIGeneral.Controls.Add(chkBoxAPIEnableLoaders);
             grpBoxAPIGeneral.Controls.Add(chkBoxEnableAPI);
             grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
@@ -1076,7 +1101,7 @@ namespace BrawlCrate
             chkBoxAPIEnableLoaders.TabIndex = 8;
             chkBoxAPIEnableLoaders.Text = "Enable Loaders";
             chkBoxAPIEnableLoaders.UseVisualStyleBackColor = true;
-            chkBoxAPIEnableLoaders.CheckedChanged += new System.EventHandler(ChkBoxAPIEnableLoaders_CheckedChanged);
+            chkBoxAPIEnableLoaders.CheckedChanged += new EventHandler(ChkBoxAPIEnableLoaders_CheckedChanged);
             // 
             // chkBoxEnableAPI
             // 
@@ -1087,7 +1112,7 @@ namespace BrawlCrate
             chkBoxEnableAPI.TabIndex = 7;
             chkBoxEnableAPI.Text = "Enable BrawlAPI";
             chkBoxEnableAPI.UseVisualStyleBackColor = true;
-            chkBoxEnableAPI.CheckedChanged += new System.EventHandler(ChkBoxEnableAPI_CheckedChanged);
+            chkBoxEnableAPI.CheckedChanged += new EventHandler(ChkBoxEnableAPI_CheckedChanged);
             // 
             // tabDiscord
             // 
@@ -1095,15 +1120,15 @@ namespace BrawlCrate
             tabDiscord.Controls.Add(grpBoxDiscordRPC);
             tabDiscord.Location = new System.Drawing.Point(4, 22);
             tabDiscord.Name = "tabDiscord";
-            tabDiscord.Padding = new System.Windows.Forms.Padding(3);
+            tabDiscord.Padding = new Padding(3);
             tabDiscord.Size = new System.Drawing.Size(365, 452);
             tabDiscord.TabIndex = 4;
             tabDiscord.Text = "Discord";
             // 
             // grpBoxDiscordRPC
             // 
-            grpBoxDiscordRPC.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxDiscordRPC.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                       | AnchorStyles.Right;
             grpBoxDiscordRPC.Controls.Add(chkBoxEnableDiscordRPC);
             grpBoxDiscordRPC.Controls.Add(grpBoxDiscordRPCType);
             grpBoxDiscordRPC.Location = new System.Drawing.Point(8, 6);
@@ -1122,12 +1147,12 @@ namespace BrawlCrate
             chkBoxEnableDiscordRPC.TabIndex = 1;
             chkBoxEnableDiscordRPC.Text = "Enable Discord Rich Presence";
             chkBoxEnableDiscordRPC.UseVisualStyleBackColor = true;
-            chkBoxEnableDiscordRPC.CheckedChanged += new System.EventHandler(ChkBoxEnableDiscordRPC_CheckedChanged);
+            chkBoxEnableDiscordRPC.CheckedChanged += new EventHandler(ChkBoxEnableDiscordRPC_CheckedChanged);
             // 
             // grpBoxDiscordRPCType
             // 
-            grpBoxDiscordRPCType.Anchor = ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxDiscordRPCType.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
+                                                              | AnchorStyles.Right;
             grpBoxDiscordRPCType.Controls.Add(DiscordRPCCustomName);
             grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameCustom);
             grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameExternal);
@@ -1142,14 +1167,14 @@ namespace BrawlCrate
             // 
             // DiscordRPCCustomName
             // 
-            DiscordRPCCustomName.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            DiscordRPCCustomName.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                           | AnchorStyles.Right;
             DiscordRPCCustomName.Location = new System.Drawing.Point(30, 88);
             DiscordRPCCustomName.Name = "DiscordRPCCustomName";
             DiscordRPCCustomName.Size = new System.Drawing.Size(301, 20);
             DiscordRPCCustomName.TabIndex = 2;
             DiscordRPCCustomName.Text = "My Mod";
-            DiscordRPCCustomName.TextChanged += new System.EventHandler(DiscordRPCCustomName_TextChanged);
+            DiscordRPCCustomName.TextChanged += new EventHandler(DiscordRPCCustomName_TextChanged);
             // 
             // rdoDiscordRPCNameCustom
             // 
@@ -1160,7 +1185,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameCustom.TabIndex = 3;
             rdoDiscordRPCNameCustom.TabStop = true;
             rdoDiscordRPCNameCustom.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameCustom.CheckedChanged += new System.EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            rdoDiscordRPCNameCustom.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameExternal
             // 
@@ -1172,7 +1197,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameExternal.TabStop = true;
             rdoDiscordRPCNameExternal.Text = "Use external filename";
             rdoDiscordRPCNameExternal.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameExternal.CheckedChanged += new System.EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            rdoDiscordRPCNameExternal.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameInternal
             // 
@@ -1184,7 +1209,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameInternal.TabStop = true;
             rdoDiscordRPCNameInternal.Text = "Use internal filename";
             rdoDiscordRPCNameInternal.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameInternal.CheckedChanged += new System.EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            rdoDiscordRPCNameInternal.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameDisabled
             // 
@@ -1196,7 +1221,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameDisabled.TabStop = true;
             rdoDiscordRPCNameDisabled.Text = "Disabled";
             rdoDiscordRPCNameDisabled.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameDisabled.CheckedChanged += new System.EventHandler(DiscordRPCNameSettings_CheckedChanged);
+            rdoDiscordRPCNameDisabled.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // tabUpdater
             // 
@@ -1204,15 +1229,15 @@ namespace BrawlCrate
             tabUpdater.Controls.Add(updaterBehaviorGroupbox);
             tabUpdater.Location = new System.Drawing.Point(4, 22);
             tabUpdater.Name = "tabUpdater";
-            tabUpdater.Padding = new System.Windows.Forms.Padding(3);
+            tabUpdater.Padding = new Padding(3);
             tabUpdater.Size = new System.Drawing.Size(365, 452);
             tabUpdater.TabIndex = 1;
             tabUpdater.Text = "Updater";
             // 
             // grpBoxCanary
             // 
-            grpBoxCanary.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            grpBoxCanary.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                   | AnchorStyles.Right;
             grpBoxCanary.Controls.Add(chkCanary);
             grpBoxCanary.Location = new System.Drawing.Point(8, 132);
             grpBoxCanary.Name = "grpBoxCanary";
@@ -1223,8 +1248,8 @@ namespace BrawlCrate
             // 
             // updaterBehaviorGroupbox
             // 
-            updaterBehaviorGroupbox.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right);
+            updaterBehaviorGroupbox.Anchor = AnchorStyles.Top | AnchorStyles.Left
+                                                              | AnchorStyles.Right;
             updaterBehaviorGroupbox.Controls.Add(rdoAutoUpdate);
             updaterBehaviorGroupbox.Controls.Add(rdoCheckManual);
             updaterBehaviorGroupbox.Controls.Add(rdoCheckStartup);
@@ -1235,7 +1260,7 @@ namespace BrawlCrate
             updaterBehaviorGroupbox.TabIndex = 14;
             updaterBehaviorGroupbox.TabStop = false;
             updaterBehaviorGroupbox.Text = "Updater Behavior";
-            updaterBehaviorGroupbox.Enter += new System.EventHandler(groupBox2_Enter);
+            updaterBehaviorGroupbox.Enter += new EventHandler(groupBox2_Enter);
             // 
             // rdoAutoUpdate
             // 
@@ -1247,7 +1272,7 @@ namespace BrawlCrate
             rdoAutoUpdate.TabStop = true;
             rdoAutoUpdate.Text = "Automatic";
             rdoAutoUpdate.UseVisualStyleBackColor = true;
-            rdoAutoUpdate.CheckedChanged += new System.EventHandler(updaterBehavior_CheckedChanged);
+            rdoAutoUpdate.CheckedChanged += new EventHandler(updaterBehavior_CheckedChanged);
             // 
             // rdoCheckManual
             // 
@@ -1275,12 +1300,12 @@ namespace BrawlCrate
             // 
             ClientSize = new System.Drawing.Size(373, 478);
             Controls.Add(tabControl1);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "SettingsDialog";
             Text = "Settings";
-            Load += new System.EventHandler(SettingsDialog_Load);
-            Shown += new System.EventHandler(SettingsDialog_Shown);
+            Load += new EventHandler(SettingsDialog_Load);
+            Shown += new EventHandler(SettingsDialog_Shown);
             tabControl1.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             grpBoxMDL0General.ResumeLayout(false);
@@ -1320,8 +1345,8 @@ namespace BrawlCrate
             updaterBehaviorGroupbox.ResumeLayout(false);
             updaterBehaviorGroupbox.PerformLayout();
             ResumeLayout(false);
-
         }
+
         #endregion
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1346,7 +1371,6 @@ namespace BrawlCrate
 
         private void SettingsDialog_Load(object sender, EventArgs e)
         {
-
         }
 
         private void chkShowHex_CheckedChanged(object sender, EventArgs e)
@@ -1375,10 +1399,12 @@ namespace BrawlCrate
             _updating = true;
             if (!Program.Canary)
             {
-                DialogResult dc = MessageBox.Show(this, "Are you sure you'd like to receive BrawlCrate canary updates? " +
+                DialogResult dc = MessageBox.Show(this,
+                    "Are you sure you'd like to receive BrawlCrate canary updates? " +
                     "These updates will happen more often and include features as they are developed, but will come at the cost of stability. " +
                     "If you do take this track, it is highly recommended to join our discord server: https://discord.gg/s7c8763 \n\n" +
-                    "If you select yes, the update will begin immediately, so make sure your work is saved.", "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
+                    "If you select yes, the update will begin immediately, so make sure your work is saved.",
+                    "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
                 if (dc == DialogResult.Yes)
                 {
                     //Program.ForceDownloadCanary();
@@ -1387,21 +1413,22 @@ namespace BrawlCrate
             else
             {
                 DialogResult dc = MessageBox.Show(this, "Are you sure you'd like to return to the stable build? " +
-                    "Please note that there may be issues saving settings between the old version and the next update. " +
-                    "If you a bug caused you to move off this build, please report it on our discord server: https://discord.gg/s7c8763 \n\n" +
-                    "If you select yes, the downgrade will begin immediately, so make sure your work is saved.", "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
+                                                        "Please note that there may be issues saving settings between the old version and the next update. " +
+                                                        "If you a bug caused you to move off this build, please report it on our discord server: https://discord.gg/s7c8763 \n\n" +
+                                                        "If you select yes, the downgrade will begin immediately, so make sure your work is saved.",
+                    "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
                 if (dc == DialogResult.Yes)
                 {
                     //Program.ForceDownloadStable();
                 }
             }
+
             chkCanary.Checked = Program.Canary;
             _updating = false;
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void updaterBehavior_CheckedChanged(object sender, EventArgs e)
@@ -1409,13 +1436,15 @@ namespace BrawlCrate
             if (!_updating)
             {
                 MainForm.Instance.UpdateAutomatically = rdoAutoUpdate.Checked;
-                MainForm.Instance.CheckUpdatesOnStartup = (rdoAutoUpdate.Checked || rdoCheckStartup.Checked);
+                MainForm.Instance.CheckUpdatesOnStartup = rdoAutoUpdate.Checked || rdoCheckStartup.Checked;
             }
         }
 
         private void btnCanaryBranch_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(this, "Warning: Switching branches or repositories can be unstable unless you know what you're doing. You should generally stay on the brawlcrate-master branch unless directed otherwise for testing purposes. You can reset to the default for either field by leaving it blank.", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show(this,
+                    "Warning: Switching branches or repositories can be unstable unless you know what you're doing. You should generally stay on the brawlcrate-master branch unless directed otherwise for testing purposes. You can reset to the default for either field by leaving it blank.",
+                    "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 //string cRepo = MainForm.currentRepo;
                 //string cBranch = MainForm.currentBranch;
@@ -1468,7 +1497,9 @@ namespace BrawlCrate
             {
                 if (chkBoxModuleCompress.Checked)
                 {
-                    if (MessageBox.Show("Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?", "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                    if (MessageBox.Show(
+                            "Warning: Module compression does not save much space and can reduce editablity of modules. Are you sure you want to turn this on?",
+                            "Module Compressor", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         _updating = true;
                         chkBoxModuleCompress.Checked = false;
@@ -1476,6 +1507,7 @@ namespace BrawlCrate
                         return;
                     }
                 }
+
                 MainForm.Instance.AutoCompressModules = chkBoxModuleCompress.Checked;
             }
         }
@@ -1617,6 +1649,7 @@ namespace BrawlCrate
                 }
             }
         }
+
         private void BtnPythonDetect_Click(object sender, EventArgs e)
         {
             _updating = true;
@@ -1646,10 +1679,14 @@ namespace BrawlCrate
                 {
                     if (Directory.Exists(txtBoxFSharpPath.Text.Substring(0, txtBoxFSharpPath.Text.LastIndexOf('\\'))))
                     {
-                        f.InitialDirectory = txtBoxFSharpPath.Text.Substring(0, txtBoxFSharpPath.Text.LastIndexOf('\\'));
+                        f.InitialDirectory =
+                            txtBoxFSharpPath.Text.Substring(0, txtBoxFSharpPath.Text.LastIndexOf('\\'));
                     }
                 }
-                catch { }
+                catch
+                {
+                }
+
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     txtBoxFSharpPath.Text = f.FileName;
@@ -1671,6 +1708,7 @@ namespace BrawlCrate
             {
                 return;
             }
+
             bool value = chkBoxAPIEnableLoaders.Checked;
 
             Properties.Settings.Default.APILoadersEnabled = value;

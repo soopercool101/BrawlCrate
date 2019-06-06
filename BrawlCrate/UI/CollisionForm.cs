@@ -11,7 +11,8 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollisionForm));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(CollisionForm));
             collisionEditor1 = new CollisionEditor();
             SuspendLayout();
             // 
@@ -33,20 +34,29 @@ namespace System.Windows.Forms
             Name = "CollisionForm";
             Text = "Collision Editor";
             ResumeLayout(false);
-
         }
 
         #endregion
 
         private CollisionNode _node;
 
-        public CollisionForm() { InitializeComponent(); Text = Program.AssemblyTitle + " - Collision Editor"; }
+        public CollisionForm()
+        {
+            InitializeComponent();
+            Text = Program.AssemblyTitle + " - Collision Editor";
+        }
 
         public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
         {
             _node = node;
-            try { return ShowDialog(owner); }
-            finally { _node = null; }
+            try
+            {
+                return ShowDialog(owner);
+            }
+            finally
+            {
+                _node = null;
+            }
         }
 
         protected override void OnShown(EventArgs e)

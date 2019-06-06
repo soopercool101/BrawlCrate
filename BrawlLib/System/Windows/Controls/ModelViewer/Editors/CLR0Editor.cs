@@ -7,6 +7,7 @@ namespace System.Windows.Forms
     public class CLR0Editor : UserControl
     {
         #region Designer
+
         private void InitializeComponent()
         {
             label1 = new Label();
@@ -30,18 +31,20 @@ namespace System.Windows.Forms
             // 
             lstTarget.DropDownStyle = ComboBoxStyle.DropDownList;
             lstTarget.FormattingEnabled = true;
-            lstTarget.Items.AddRange(new object[] {
-            "Color0",
-            "Color1",
-            "Ambient0",
-            "Ambient1",
-            "TevColorReg0",
-            "TevColorReg1",
-            "TevColorReg2",
-            "TevKonstReg0",
-            "TevKonstReg1",
-            "TevKonstReg2",
-            "TevKonstReg3"});
+            lstTarget.Items.AddRange(new object[]
+            {
+                "Color0",
+                "Color1",
+                "Ambient0",
+                "Ambient1",
+                "TevColorReg0",
+                "TevColorReg1",
+                "TevColorReg2",
+                "TevKonstReg0",
+                "TevKonstReg1",
+                "TevKonstReg2",
+                "TevKonstReg3"
+            });
             lstTarget.Location = new Drawing.Point(-1, 18);
             lstTarget.Name = "lstTarget";
             lstTarget.Size = new Drawing.Size(100, 21);
@@ -78,7 +81,6 @@ namespace System.Windows.Forms
             Size = new Drawing.Size(256, 74);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-
         }
 
         #endregion
@@ -90,22 +92,32 @@ namespace System.Windows.Forms
         private Panel panel1;
         public ComboBox lstTarget;
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public MDL0MaterialRefNode TargetTexRef { get => _mainWindow.TargetTexRef; set => _mainWindow.TargetTexRef = value; }
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public MDL0MaterialRefNode TargetTexRef
+        {
+            get => _mainWindow.TargetTexRef;
+            set => _mainWindow.TargetTexRef = value;
+        }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentFrame
         {
             get => _mainWindow.CurrentFrame;
             set => _mainWindow.CurrentFrame = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public IModel TargetModel
         {
             get => _mainWindow.TargetModel;
             set => _mainWindow.TargetModel = value;
         }
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public CLR0Node SelectedAnimation
         {
             get => _mainWindow.SelectedCLR0;
@@ -138,14 +150,16 @@ namespace System.Windows.Forms
 
             lstTarget.SelectedIndex = 0;
         }
+
         public CLR0MaterialNode _mat;
         public CLR0MaterialEntryNode _entry;
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _mat = listBox1.Items[listBox1.SelectedIndex] as CLR0MaterialNode;
             if (_mat.Children.Count > 0)
             {
-                lstTarget.SelectedIndex = (int)((CLR0MaterialEntryNode)_mat.Children[0]).Target;
+                lstTarget.SelectedIndex = (int) ((CLR0MaterialEntryNode) _mat.Children[0]).Target;
             }
             else
             {
@@ -169,6 +183,7 @@ namespace System.Windows.Forms
                     _mainWindow.KeyframePanel.chkEnabled.Checked = false;
                     _mainWindow.KeyframePanel.chkConstant.Checked = false;
                 }
+
                 return;
             }
 

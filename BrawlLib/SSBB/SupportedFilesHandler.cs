@@ -238,12 +238,14 @@ namespace BrawlLib.SSBB
                     //if (!rawExtName.Contains("*"))
                     n += (x != 0 ? ";" : "") + ext;
                 }
+
                 filter2 += (i != 0 ? ";" : "") + n;
                 if (!doNotAdd)
                 {
                     filter += (i != 0 ? ", " : "") + n;
                 }
             }
+
             return filter + ")" + filter2;
         }
 
@@ -310,7 +312,15 @@ namespace BrawlLib.SSBB
             _extensions = extensions;
         }
 
-        public string Filter { get { string s = ExtensionsFilter; return _name + " (" + s.Replace(";", ", ") + ")|" + s; } }
+        public string Filter
+        {
+            get
+            {
+                string s = ExtensionsFilter;
+                return _name + " (" + s.Replace(";", ", ") + ")|" + s;
+            }
+        }
+
         public string ExtensionsFilter
         {
             get
@@ -334,6 +344,7 @@ namespace BrawlLib.SSBB
 
                     first = false;
                 }
+
                 return filter;
             }
         }

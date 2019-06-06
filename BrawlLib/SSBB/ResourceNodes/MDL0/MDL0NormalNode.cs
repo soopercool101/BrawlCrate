@@ -8,12 +8,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MDL0NormalNode : MDL0EntryNode
     {
-        internal MDL0NormalData* Header => (MDL0NormalData*)WorkingUncompressed.Address;
+        internal MDL0NormalData* Header => (MDL0NormalData*) WorkingUncompressed.Address;
         //protected override int DataLength { get { return Header->_dataLen; } }
 
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0NormalData _hdr = new MDL0NormalData() { _type = (int)WiiVertexComponentType.Float };
+        private MDL0NormalData _hdr = new MDL0NormalData() {_type = (int) WiiVertexComponentType.Float};
 
         public enum NormalType
         {
@@ -22,23 +22,40 @@ namespace BrawlLib.SSBB.ResourceNodes
             NBT3 = 2, // one index per each of N/B/T
         }
 
-        [Category("Normal Data")]
-        public int ID => _hdr._index;
-        [Category("Normal Data")]
-        public NormalType Type => (NormalType)(int)_hdr._isNBT;
-        [Category("Normal Data")]
-        public WiiVertexComponentType Format => (WiiVertexComponentType)(int)_hdr._type;
-        [Category("Normal Data")]
-        public int Divisor => _hdr._divisor;
-        [Category("Normal Data")]
-        public int EntryStride => _hdr._entryStride;
-        [Category("Normal Data")]
-        public int NumEntries => _hdr._numVertices;
+        [Category("Normal Data")] public int ID => _hdr._index;
+        [Category("Normal Data")] public NormalType Type => (NormalType) (int) _hdr._isNBT;
+        [Category("Normal Data")] public WiiVertexComponentType Format => (WiiVertexComponentType) (int) _hdr._type;
+        [Category("Normal Data")] public int Divisor => _hdr._divisor;
+        [Category("Normal Data")] public int EntryStride => _hdr._entryStride;
+        [Category("Normal Data")] public int NumEntries => _hdr._numVertices;
 
-        public bool ForceRebuild { get => _forceRebuild; set { if (_forceRebuild != value) { _forceRebuild = value; SignalPropertyChange(); } } }
-        public bool ForceFloat { get => _forceFloat; set { if (_forceFloat != value) { _forceFloat = value; } } }
+        public bool ForceRebuild
+        {
+            get => _forceRebuild;
+            set
+            {
+                if (_forceRebuild != value)
+                {
+                    _forceRebuild = value;
+                    SignalPropertyChange();
+                }
+            }
+        }
+
+        public bool ForceFloat
+        {
+            get => _forceFloat;
+            set
+            {
+                if (_forceFloat != value)
+                {
+                    _forceFloat = value;
+                }
+            }
+        }
 
         private Vector3[] _normals;
+
         public Vector3[] Normals
         {
             get => _normals ?? (_normals = VertexCodec.ExtractNormals(Header));
@@ -66,7 +83,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //SetSizeInternal(_hdr._dataLen);
 
-            if ((_name == null) && (Header->_stringOffset != 0))
+            if (_name == null && Header->_stringOffset != 0)
             {
                 _name = Header->ResourceString;
             }
@@ -77,6 +94,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public VertexCodec _enc;
         public bool _forceRebuild = false;
         public bool _forceFloat = false;
+
         public override int OnCalculateSize(bool force)
         {
             if (Model._isImport || _forceRebuild)
@@ -94,18 +112,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (Model._isImport || _forceRebuild)
             {
-                MDL0NormalData* header = (MDL0NormalData*)address;
+                MDL0NormalData* header = (MDL0NormalData*) address;
 
                 header->_dataLen = length;
                 header->_dataOffset = 0x20;
                 header->_index = _entryIndex;
                 header->_isNBT = 0;
-                header->_type = (int)_enc._type;
-                header->_divisor = (byte)_enc._scale;
-                header->_entryStride = (byte)_enc._dstStride;
-                header->_numVertices = (ushort)_enc._srcCount;
+                header->_type = (int) _enc._type;
+                header->_divisor = (byte) _enc._scale;
+                header->_entryStride = (byte) _enc._dstStride;
+                header->_numVertices = (ushort) _enc._srcCount;
 
-                _enc.Write(Normals, (byte*)header + 0x20);
+                _enc.Write(Normals, (byte*) header + 0x20);
                 _enc.Dispose();
                 _enc = null;
 
@@ -119,9 +137,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected internal override void PostProcess(VoidPtr mdlAddress, VoidPtr dataAddress, StringTable stringTable)
         {
-            MDL0NormalData* header = (MDL0NormalData*)dataAddress;
-            header->_mdl0Offset = (int)mdlAddress - (int)dataAddress;
-            header->_stringOffset = (int)stringTable[Name] + 4 - (int)dataAddress;
+            MDL0NormalData* header = (MDL0NormalData*) dataAddress;
+            header->_mdl0Offset = (int) mdlAddress - (int) dataAddress;
+            header->_stringOffset = (int) stringTable[Name] + 4 - (int) dataAddress;
             header->_index = Index;
         }
     }
