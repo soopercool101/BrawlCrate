@@ -203,7 +203,7 @@ namespace BrawlLib.SSBB
             }
         }
 
-        private const int MaxExtensionsInAllFilter = 5;
+        private static readonly int MaxExtensionsInAllFilter = Files.Length;
 
         public static string GetAllSupportedFilter(SupportedFileInfo[] files, bool editableOnly = false)
         {
@@ -212,7 +212,7 @@ namespace BrawlLib.SSBB
 
             //The "all supported formats" string needs (*.*) in it
             //or else the window will display EVERY SINGLE FILTER
-            bool doNotAdd = files.Length > MaxExtensionsInAllFilter;
+            bool doNotAdd = files.Length >= MaxExtensionsInAllFilter;
             if (doNotAdd)
             {
                 filter += "*.*";
