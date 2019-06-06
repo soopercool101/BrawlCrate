@@ -110,3 +110,6 @@ Thumbs.db
 .DS_Store
 
 .vs/
+
+# Rust build
+[Tt]arget
