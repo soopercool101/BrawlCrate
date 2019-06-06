@@ -19,7 +19,8 @@ namespace BrawlCrate
                     foreach (string s in info._extensions)
                     {
                         if (!s.Equals("dat", StringComparison.OrdinalIgnoreCase) &&
-                            !s.Equals("bin", StringComparison.OrdinalIgnoreCase))
+                            !s.Equals("bin", StringComparison.OrdinalIgnoreCase) &&
+                            !s.Equals("txt", StringComparison.OrdinalIgnoreCase))
                         {
                             _assocList.Add(FileAssociation.Get("." + s));
                             _typeList.Add(FileType.Get("SSBB." + s.ToUpper()));
@@ -114,7 +115,9 @@ namespace BrawlCrate
                 {
                     foreach (string s in info._extensions)
                     {
-                        if (s != "dat" && s != "bin")
+                        if (!s.Equals("dat", StringComparison.OrdinalIgnoreCase) &&
+                            !s.Equals("bin", StringComparison.OrdinalIgnoreCase) &&
+                            !s.Equals("txt", StringComparison.OrdinalIgnoreCase))
                         {
                             listView1.Items.Add(new ListViewItem()
                                 {Text = string.Format("{0} (*.{1})", info._name, s)});
