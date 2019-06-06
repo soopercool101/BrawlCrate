@@ -13,14 +13,9 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "PCS Compressed File Archive", "pcs"),
             new SupportedFileInfo(true, "U8 ARC File Archive", "arc"),
             new SupportedFileInfo(false, "Archive Pair", "pair"),
-            //new SupportedFileInfo(true, "RARC File Archive", "rarc"),
             new SupportedFileInfo(true, "MRG Resource Group", "mrg"),
             new SupportedFileInfo(true, "MRG Compressed Resource Group", "mrgc"),
             new SupportedFileInfo(true, "SZS Compressed Archive", "szs"),
-            //new SupportedFileInfo(true, "SZP Compressed Archive", "szp"),
-#if DEBUG
-            new SupportedFileInfo(true, "Wii/GC Disc Image", "iso"),
-#endif
 
             //NW4R Model Resources
             new SupportedFileInfo(true, "NW4R Resource Pack", "brres"),
@@ -48,18 +43,6 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "NW4R Color Sequence", "clr0"),
             new SupportedFileInfo(true, "NW4R Scene Settings", "scn0"),
 
-            //NW4R XML
-            //new SupportedFileInfo(true, "NW4R XML Model", "rmdl"),
-            //new SupportedFileInfo(true, "NW4R XML Texture", "rtex"),
-            //new SupportedFileInfo(true, "NW4R XML Palette", "rplt"),
-            //new SupportedFileInfo(true, "NW4R XML Bone Animation", "rcha"),
-            //new SupportedFileInfo(true, "NW4R XML Texture Animation", "rtsa"),
-            //new SupportedFileInfo(true, "NW4R XML Vertex Morph", "rsha"),
-            //new SupportedFileInfo(true, "NW4R XML Visibility Sequence", "rvia"),
-            //new SupportedFileInfo(true, "NW4R XML Texture Pattern", "rtpa"),
-            //new SupportedFileInfo(true, "NW4R XML Color Sequence", "rcla"),
-            //new SupportedFileInfo(true, "NW4R XML Scene Settings", "rsca"),
-
             //NW4R Audio
             new SupportedFileInfo(true, "NW4R Audio Stream", "brstm"),
             new SupportedFileInfo(true, "NW4C Audio Stream", "bcstm"),
@@ -84,27 +67,35 @@ namespace BrawlLib.SSBB
 
             //Brawl-specific files
             new SupportedFileInfo(true, "Brawl Message Pack", "msbin"),
+            
+            //Brawl stage files
             new SupportedFileInfo(true, "Brawl Stage Collision File", "coll"),
             new SupportedFileInfo(true, "Brawl Stage Parameters File", "stpm"),
-            new SupportedFileInfo(true, "Brawl Stage Trap Data File", "stdt"),
+            new SupportedFileInfo(true, "Brawl Stage Trap Data Table File", "stdt"),
             new SupportedFileInfo(true, "Brawl Stage Collision Attributes File", "scla"),
-
-            //Subspace Emissary files
+            new SupportedFileInfo(true, "Brawl TBCL File", "tbcl"),
+            new SupportedFileInfo(true, "Brawl TBGC File", "tbgc"),
+            new SupportedFileInfo(true, "Brawl TBGD File", "tbgd"),
+            new SupportedFileInfo(true, "Brawl TBGM File", "tbgm"),
+            new SupportedFileInfo(true, "Brawl TBLV File", "tblv"),
+            new SupportedFileInfo(true, "Brawl TBRM File", "tbrm"),
+            new SupportedFileInfo(true, "Brawl TBST File", "tbst"),
+            
+            //Brawl Subspace Emissary files
             new SupportedFileInfo(true, "BLOC Adventure Archive", "bloc"),
+            new SupportedFileInfo(true, "Brawl GEG1 File", "geg1"),
 
-            //Gamecube
-            //new SupportedFileInfo(true, "J3D v3 Model", "bmd"),
-            //new SupportedFileInfo(true, "J3D v4 Model", "bdl"),
-            //new SupportedFileInfo(true, "Luigi's Mansion GC model", "bin"),
+            //MDL0 subfiles
+            new SupportedFileInfo(false, "MDL0 Material", "mdl0mat"),
+            new SupportedFileInfo(false, "MDL0 Shader", "mdl0shade"),
+            new SupportedFileInfo(false, "MDL0 Bone", "mdl0bone"),
 
-            //Wii U
-            //new SupportedFileInfo(true, "Wii U Archive", "sarc"),
-            //new SupportedFileInfo(true, "Wii U Resource Pack", "bfres"),
-            //new SupportedFileInfo(true, "Wii U Model", "fmdl"),
-            //new SupportedFileInfo(true, "Wii U Texture", "ftex"),
-            //new SupportedFileInfo(true, "Wii U Skeletal Animation", "fska"),
-
+            //Gecko Codes
             new SupportedFileInfo(true, "GCT Code List", "gct"),
+
+            //Brawl Mod Files
+            new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
+            new SupportedFileInfo(true, "BrawlEx Configuration", "bx"),
 
             //The following files are not for direct editing
 
@@ -121,6 +112,8 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "Uncompressed PCM", "wav"),
             new SupportedFileInfo(false, "3D Object Mesh", "obj"),
             new SupportedFileInfo(false, "JSON File", "json"),
+            new SupportedFileInfo(true, "Data File", "dat"),
+            new SupportedFileInfo(true, "Binary File", "bin"),
             new SupportedFileInfo(false, "Raw Data File", "*"),
         };
 
