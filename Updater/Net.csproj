@@ -44,6 +44,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Net.Program</StartupObject>
+    <AssemblyVersion>30.0.0.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
