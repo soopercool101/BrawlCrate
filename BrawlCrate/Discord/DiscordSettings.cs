@@ -15,13 +15,13 @@ namespace BrawlCrate.Discord
         }
 
         // Fields to be saved between runs
-        public static bool enabled = true;
-        public static string userPickedImageKey = "brawlcrate";
-        public static ModNameType modNameType = ModNameType.Disabled;
-        public static string workString = "Working on";
-        public static string userNamedMod = "My Mod";
-        public static bool showTimeElapsed = true;
-        public static bool DiscordControllerSet;
+        private static bool enabled = true;
+        private static string userPickedImageKey = "";
+        private static ModNameType modNameType = ModNameType.Disabled;
+        private static readonly string workString = "Working on";
+        private static string userNamedMod = "My Mod";
+        private static bool showTimeElapsed = true;
+        private static bool DiscordControllerSet;
 
         // Should be initialized when the program starts
         public static readonly long startTime = (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
@@ -43,7 +43,7 @@ namespace BrawlCrate.Discord
 
             DiscordController.presence = new DiscordRpc.RichPresence()
             {
-                smallImageKey = "",
+                smallImageKey = userPickedImageKey,
                 smallImageText = "",
                 largeImageKey = "brawlcrate",
                 largeImageText = Program.AssemblyTitle
@@ -181,9 +181,6 @@ namespace BrawlCrate.Discord
                 string tabName = MainForm.Instance.RootNode.Text;
                 switch (modNameType)
                 {
-                    case ModNameType.Disabled:
-                        DiscordController.presence.state = "";
-                        break;
                     case ModNameType.UserDefined:
                         DiscordController.presence.state = userNamedMod;
                         break;
