@@ -152,18 +152,38 @@ namespace BrawlCrate
                     if (args.Length >= 2)
                     {
                         editor.TargetNode = GCTEditor.LoadGCT(args[1]);
+                        if (editor.TargetNode != null)
+                        {
+                            _rootPath = args[1];
+                        }
                     }
-
+                    MainForm.UpdateDiscordRPC();
                     Application.Run(editor);
+
+                    if (CanRunDiscordRPC)
+                    {
+                        Discord.DiscordRpc.ClearPresence();
+                        Discord.DiscordRpc.Shutdown();
+                    }
                     return;
                 }
-                else if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
+                if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase) || args[0].EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor
                     {
                         TargetNode = GCTEditor.LoadGCT(args[0])
                     };
+                    if (editor.TargetNode != null)
+                    {
+                        _rootPath = args[0];
+                    }
+                    MainForm.UpdateDiscordRPC();
                     Application.Run(editor);
+                    if (CanRunDiscordRPC)
+                    {
+                        Discord.DiscordRpc.ClearPresence();
+                        Discord.DiscordRpc.Shutdown();
+                    }
                     return;
                 }
             }

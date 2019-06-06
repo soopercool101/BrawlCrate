@@ -48,9 +48,13 @@ namespace BrawlCrate.Discord
                 largeImageKey = "brawlcrate",
                 largeImageText = Program.AssemblyTitle
             };
-            ResourceNode root = MainForm.Instance.RootNode?.Resource;
+            ResourceNode root = MainForm.Instance?.RootNode?.Resource;
             string rootName = root?.Name;
-            if (MainForm.Instance.RootNode == null)
+            if ((MainForm.Instance != null && MainForm.Instance.GCTEditorInstance.Visible) || (Program.RootPath != null && (Program.RootPath.EndsWith(".gct", StringComparison.OrdinalIgnoreCase) || Program.RootPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))))
+            {
+                DiscordController.presence.details = workString + " codes";
+            }
+            else if (root == null)
             {
                 DiscordController.presence.details = "Idling";
             }

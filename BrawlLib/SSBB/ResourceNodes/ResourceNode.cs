@@ -1108,12 +1108,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren)
         {
-            if (string.IsNullOrEmpty(path))
-            {
-                return root;
-            }
-
-            if (root.Name.Equals(path, StringComparison.OrdinalIgnoreCase))
+            if (string.IsNullOrEmpty(path) || root == null || root.Name.Equals(path, StringComparison.OrdinalIgnoreCase))
             {
                 return root;
             }

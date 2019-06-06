@@ -54,6 +54,7 @@ namespace BrawlCrate
 
         public MainForm()
         {
+            this.gctEdit = new GCTEditor();
             InitializeComponent();
             Text = Program.AssemblyTitle;
 
@@ -749,7 +750,7 @@ namespace BrawlCrate
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
-        public void UpdateDiscordRPC()
+        public static void UpdateDiscordRPC()
         {
             if (Program.CanRunDiscordRPC)
             {
@@ -919,9 +920,13 @@ namespace BrawlCrate
             }
         }
 
+        private readonly GCTEditor gctEdit;
+        public GCTEditor GCTEditorInstance => gctEdit;
+
         private void gCTEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new GCTEditor().Show();
+            gctEdit.Show();
+            UpdateDiscordRPC();
         }
 
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)

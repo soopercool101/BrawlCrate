@@ -92,6 +92,7 @@ namespace BrawlLib.SSBB
 
             //Gecko Codes
             new SupportedFileInfo(true, "GCT Code List", "gct"),
+            new SupportedFileInfo(true, "Text File", "txt"),
 
             //Brawl Mod Files
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
@@ -108,7 +109,6 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "Graphics Interchange Format", "gif"),
 
             //Misc
-            new SupportedFileInfo(false, "Text File", "txt"),
             new SupportedFileInfo(false, "Uncompressed PCM", "wav"),
             new SupportedFileInfo(false, "3D Object Mesh", "obj"),
             new SupportedFileInfo(false, "JSON File", "json"),
