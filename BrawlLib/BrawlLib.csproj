@@ -21,8 +21,8 @@
     <AssemblyTitle>BrawlLib v0.24</AssemblyTitle>
     <Product>BrawlLib</Product>
     <Copyright>Copyright © 2009 - 2017 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky</Copyright>
-    <AssemblyVersion>0.25.0.0</AssemblyVersion>
-    <FileVersion>0.25.1.0</FileVersion>
+    <AssemblyVersion>0.27.0.0</AssemblyVersion>
+    <FileVersion>0.27.0.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Platforms>AnyCPU;x64;x86</Platforms>
