@@ -388,19 +388,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
 
-                if (g.Children.Count > 0)
-                {
-                    if (s.Length > 0)
-                    {
-                        MessageBox.Show(string.Format("{0} code{1} w{2} recognized.", g.Children.Count.ToString(),
-                            g.Children.Count > 1 ? "s" : "", g.Children.Count > 1 ? "ere" : "as"));
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("This GCT does not contain any recognizable codes.");
-                }
-
                 if (s.Length > 0)
                 {
                     g.AddChild(
