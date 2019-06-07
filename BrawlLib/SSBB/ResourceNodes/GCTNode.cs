@@ -221,12 +221,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node._name = lastLine;
                         }
 
-                        lastLine = sr.ReadLine();
-                        if (!string.IsNullOrEmpty(lastLine))
-                        {
-                            node._gameName = lastLine;
-                        }
-
                         while (!sr.EndOfStream)
                         {
                             while (string.IsNullOrEmpty(lastLine = sr.ReadLine()))
@@ -307,7 +301,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                             e._enabled = codeEnabled ?? false;
                             e._lines = g.ToArray();
                             e._description = string.Join(Environment.NewLine, description);
-                            node.AddChild(e, false);
+                            if (e._lines.Length > 0)
+                            {
+                                node.AddChild(e, false);
+                            }
                         }
                     }
                 }
