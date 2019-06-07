@@ -45,7 +45,7 @@ namespace BrawlCrate.Discord
                 controllerSet = true;
             }
 
-            DiscordController.presence = new DiscordRpc.RichPresence()
+            DiscordController.presence = new DiscordRpc.RichPresence
             {
                 smallImageKey = userPickedImageKey,
                 smallImageText = "",
