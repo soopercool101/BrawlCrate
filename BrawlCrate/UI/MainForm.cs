@@ -54,7 +54,6 @@ namespace BrawlCrate
 
         public MainForm()
         {
-            this.gctEdit = new GCTEditor();
             InitializeComponent();
             Text = Program.AssemblyTitle;
 
@@ -416,7 +415,7 @@ namespace BrawlCrate
             resourceTree_SelectionChanged(null, null);
 
             UpdateName();
-            UpdateDiscordRPC();
+            UpdateDiscordRPC(null, null);
         }
 
         public void UpdateName()
@@ -750,7 +749,7 @@ namespace BrawlCrate
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
-        public static void UpdateDiscordRPC()
+        public static void UpdateDiscordRPC(object sender, EventArgs e)
         {
             if (Program.CanRunDiscordRPC)
             {
@@ -774,7 +773,7 @@ namespace BrawlCrate
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            UpdateDiscordRPC();
+            UpdateDiscordRPC(null,null);
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -920,13 +919,14 @@ namespace BrawlCrate
             }
         }
 
-        private readonly GCTEditor gctEdit;
-        public GCTEditor GCTEditorInstance => gctEdit;
 
-        private void gCTEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GCTEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gctEdit.Show();
-            UpdateDiscordRPC();
+            GCTEditor g = new GCTEditor();
+            g.FormClosed += UpdateDiscordRPC;
+            g.OpenFileChanged += UpdateDiscordRPC;
+            g.Show();
+            UpdateDiscordRPC(null, null);
         }
 
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)

@@ -1,6 +1,7 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BrawlCrate.Discord
 {
@@ -15,20 +16,23 @@ namespace BrawlCrate.Discord
         }
 
         // Fields to be saved between runs
-        private static bool enabled = true;
+        private static bool _enabled = true;
         private static string userPickedImageKey = "";
         private static ModNameType modNameType = ModNameType.Disabled;
         private static readonly string workString = "Working on";
         private static string userNamedMod = "My Mod";
         private static bool showTimeElapsed = true;
-        private static bool DiscordControllerSet;
+
+        private static bool controllerSet;
+        public static bool DiscordControllerSet => controllerSet;
+        public static bool DiscordRPCEnabled => _enabled;
 
         // Should be initialized when the program starts
         public static readonly long startTime = (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
 
         public static void Update()
         {
-            if (!enabled)
+            if (!_enabled)
             {
                 DiscordRpc.ClearPresence();
                 DiscordRpc.Shutdown();
@@ -38,7 +42,7 @@ namespace BrawlCrate.Discord
             if (!DiscordControllerSet)
             {
                 DiscordController.Initialize();
-                DiscordControllerSet = true;
+                controllerSet = true;
             }
 
             DiscordController.presence = new DiscordRpc.RichPresence()
@@ -50,7 +54,23 @@ namespace BrawlCrate.Discord
             };
             ResourceNode root = MainForm.Instance?.RootNode?.Resource;
             string rootName = root?.Name;
-            if ((MainForm.Instance != null && MainForm.Instance.GCTEditorInstance.Visible) || (Program.RootPath != null && (Program.RootPath.EndsWith(".gct", StringComparison.OrdinalIgnoreCase) || Program.RootPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))))
+            bool hasGct = (rootName?.EndsWith(".gct") ?? false) || (rootName?.EndsWith(".txt") ?? false);
+            GCTEditor gctEditor = null;
+            if (!hasGct)
+            {
+                FormCollection fc = Application.OpenForms;
+                foreach (Form frm in fc)
+                {
+                    if (frm is GCTEditor)
+                    {
+                        hasGct = true;
+                        gctEditor = frm as GCTEditor;
+                        break;
+                    }
+                }
+            }
+
+            if (hasGct)
             {
                 DiscordController.presence.details = workString + " codes";
             }
@@ -176,25 +196,53 @@ namespace BrawlCrate.Discord
                 DiscordController.presence.details = workString + " a mod";
             }
 
-            if (MainForm.Instance.RootNode != null)
+            if (hasGct || MainForm.Instance.RootNode != null)
             {
-                string tabName = MainForm.Instance.RootNode.Text;
                 switch (modNameType)
                 {
                     case ModNameType.UserDefined:
                         DiscordController.presence.state = userNamedMod;
                         break;
                     case ModNameType.AutoInternal:
-                        DiscordController.presence.state =
-                            MainForm.Instance.RootNode == null || MainForm.Instance.RootNode.Name == null ||
-                            rootName.Equals("<null>", StringComparison.OrdinalIgnoreCase)
+                        if (gctEditor != null)
+                        {
+                            DiscordController.presence.state = gctEditor.TargetNode?.Name ?? "";
+                        }
+                        else if (hasGct)
+                        {
+                            DiscordController.presence.state = string.IsNullOrEmpty(Program.RootPath)
                                 ? ""
-                                : rootName;
+                                : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1, Program.RootPath.LastIndexOf('\\') - Program.RootPath.LastIndexOf('.'));
+                        }
+                        else
+                        {
+                            DiscordController.presence.state =
+                                MainForm.Instance.RootNode == null || MainForm.Instance.RootNode.Name == null ||
+                                rootName.Equals("<null>", StringComparison.OrdinalIgnoreCase)
+                                    ? ""
+                                    : rootName;
+                        }
                         break;
                     case ModNameType.AutoExternal:
-                        DiscordController.presence.state = Program.RootPath == null || Program.RootPath == ""
-                            ? ""
-                            : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1);
+                        if (gctEditor != null)
+                        {
+                            try
+                            {
+                                DiscordController.presence.state =
+                                    gctEditor.TargetNode._origPath.Substring(
+                                        gctEditor.TargetNode._origPath.LastIndexOf('\\') + 1);
+                            }
+                            catch
+                            {
+                                DiscordController.presence.state = "";
+                            }
+                        }
+                        else
+                        {
+                            DiscordController.presence.state = string.IsNullOrEmpty(Program.RootPath)
+                                ? ""
+                                : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1);
+                        }
                         break;
                     default:
                         DiscordController.presence.state = "";
@@ -215,15 +263,15 @@ namespace BrawlCrate.Discord
             if (Properties.Settings.Default.DiscordRPCEnabled && !DiscordControllerSet)
             {
                 DiscordController.Initialize();
-                DiscordControllerSet = true;
+                controllerSet = true;
             }
-            else if (enabled != Properties.Settings.Default.DiscordRPCEnabled && enabled == false)
+            else if (_enabled != Properties.Settings.Default.DiscordRPCEnabled && _enabled == false)
             {
                 DiscordController.Initialize();
-                DiscordControllerSet = true;
+                controllerSet = true;
             }
 
-            enabled = Properties.Settings.Default.DiscordRPCEnabled;
+            _enabled = Properties.Settings.Default.DiscordRPCEnabled;
             if (Properties.Settings.Default.DiscordRPCNameType == null)
             {
                 Properties.Settings.Default.DiscordRPCNameType = ModNameType.Disabled;

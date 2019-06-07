@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBB;
+﻿using BrawlCrate.Discord;
+using BrawlLib.SSBB;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -278,25 +279,32 @@ namespace BrawlCrate
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
 
             Discord.DiscordSettings.LoadSettings();
-            grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked = Discord.DiscordSettings.enabled;
-            if (Discord.DiscordSettings.modNameType == Discord.DiscordSettings.ModNameType.Disabled)
+            grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked = Discord.DiscordSettings.DiscordRPCEnabled;
+            Discord.DiscordSettings.ModNameType? modnametype = Properties.Settings.Default.DiscordRPCNameType;
+            if (modnametype == Discord.DiscordSettings.ModNameType.Disabled)
             {
                 rdoDiscordRPCNameDisabled.Checked = true;
             }
-            else if (Discord.DiscordSettings.modNameType == Discord.DiscordSettings.ModNameType.UserDefined)
+            else if (modnametype == Discord.DiscordSettings.ModNameType.UserDefined)
             {
                 rdoDiscordRPCNameCustom.Checked = true;
             }
-            else if (Discord.DiscordSettings.modNameType == Discord.DiscordSettings.ModNameType.AutoInternal)
+            else if (modnametype == Discord.DiscordSettings.ModNameType.AutoInternal)
             {
                 rdoDiscordRPCNameInternal.Checked = true;
             }
-            else if (Discord.DiscordSettings.modNameType == Discord.DiscordSettings.ModNameType.AutoExternal)
+            else if (modnametype == Discord.DiscordSettings.ModNameType.AutoExternal)
             {
                 rdoDiscordRPCNameExternal.Checked = true;
             }
+            else
+            {
+                rdoDiscordRPCNameDisabled.Checked = true;
+                Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.Disabled;
+                Properties.Settings.Default.Save();
+            }
 
-            DiscordRPCCustomName.Text = Discord.DiscordSettings.userNamedMod;
+            DiscordRPCCustomName.Text = Properties.Settings.Default.DiscordRPCNameCustom;
             DiscordRPCCustomName.Enabled = rdoDiscordRPCNameCustom.Checked;
             DiscordRPCCustomName.ReadOnly = !rdoDiscordRPCNameCustom.Checked;
 

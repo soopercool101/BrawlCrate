@@ -11,6 +11,14 @@ namespace System.Windows.Forms
 {
     public partial class GCTEditor : Form
     {
+        public event EventHandler OpenFileChanged;
+
+        protected virtual void OnOpenFileChanged(object sender,EventArgs e)
+        {
+            EventHandler handler = OpenFileChanged;
+            handler?.Invoke(this, e);
+        }
+
         public GCTEditor()
         {
             InitializeComponent();
@@ -74,7 +82,7 @@ namespace System.Windows.Forms
                         lstCodes.Items[0].Selected = true;
                     }
                 }
-
+                OnOpenFileChanged(null, null);
                 _updating = false;
             }
         }
@@ -128,7 +136,7 @@ namespace System.Windows.Forms
         {
             try
             {
-                if (string.IsNullOrEmpty(node._origPath))
+                if (string.IsNullOrEmpty(node._origPath) || node._origPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                 {
                     return SaveAs(node, writeInfo);
                 }

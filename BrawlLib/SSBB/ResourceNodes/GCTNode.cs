@@ -322,6 +322,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
+            node._origPath = path;
             return node;
         }
 

@@ -611,7 +611,7 @@ namespace BrawlCrate
             this.gCTEditorToolStripMenuItem.Name = "gCTEditorToolStripMenuItem";
             this.gCTEditorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gCTEditorToolStripMenuItem.Text = "Code Manager";
-            this.gCTEditorToolStripMenuItem.Click += new System.EventHandler(this.gCTEditorToolStripMenuItem_Click);
+            this.gCTEditorToolStripMenuItem.Click += new System.EventHandler(this.GCTEditorToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 

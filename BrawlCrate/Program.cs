@@ -157,7 +157,7 @@ namespace BrawlCrate
                             _rootPath = args[1];
                         }
                     }
-                    MainForm.UpdateDiscordRPC();
+                    MainForm.UpdateDiscordRPC(null, null);
                     Application.Run(editor);
 
                     if (CanRunDiscordRPC)
@@ -177,7 +177,7 @@ namespace BrawlCrate
                     {
                         _rootPath = args[0];
                     }
-                    MainForm.UpdateDiscordRPC();
+                    MainForm.UpdateDiscordRPC(null, null);
                     Application.Run(editor);
                     if (CanRunDiscordRPC)
                     {
@@ -335,13 +335,16 @@ namespace BrawlCrate
                 return false;
             }
 
-            if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
             {
                 GCTEditor editor = new GCTEditor
                 {
                     TargetNode = GCTEditor.LoadGCT(path)
                 };
+                editor.FormClosed += MainForm.UpdateDiscordRPC;
+                editor.OpenFileChanged += MainForm.UpdateDiscordRPC;
                 editor.Show();
+                MainForm.UpdateDiscordRPC(null, null);
                 return true;
             }
 
