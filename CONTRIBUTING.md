@@ -15,4 +15,4 @@ The main project to build is "BrawlCrate".
 
 Make sure NuGet dependencies are installed before building the project. This should be automatically done during the first build, but if it's not done automatically, you will get build errors regarding "IronPython" dependencies are missing.
 
-Please select "x86" CPU architecture when building the solution. The default selection is "Any CPU" and this could lead to the project being built in x64 architecture, which may not work properly (due to BrawlCrate code that assumes 32-bit pointers.)
+Please select "x86" CPU architecture when building the solution. The default selection is "Any CPU" and this could lead to the project being built in x64 architecture, which may not work properly (due to BrawlBox code that assumes 32-bit pointers.)
