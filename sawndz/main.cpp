@@ -1,8 +1,11 @@
 #include <cstdio>
-#include <iostream>
-#include <fstream>
-#include <windows.h>
 #include <cstring>
+
+#include <fstream>
+#include <iostream>
+
+#include <windows.h>
+
 
 using namespace std;
 
@@ -158,7 +161,7 @@ void SawndInsert2()
     if (!Copy.good())
     {
         printf("Error Opening sawnd.sawnd\n");
-        printf(strerror(errno));
+        printf("%s", strerror(errno));
         return;
     }
     Copy.seekg(1);
@@ -171,7 +174,7 @@ void SawndInsert2()
     if (!Orig.good())
     {
         printf("Error Opening brsar file: %s\n", brsarName);
-        printf(strerror(errno));
+        printf("%s", strerror(errno));
         return;
     }
     Orig.seekg(24);
@@ -196,7 +199,7 @@ void SawndInsert2()
         if (grid == groupe)
         {
             grak = i;
-            printf("%d\n", grid);
+            printf("%llu\n", grid);
             group_offset = info_address + 8 + address;
             break;
         }
@@ -317,8 +320,10 @@ void SawndInsert2()
 void SawndInsert1()
 {
     char* data;
-    unsigned long long group_offset,
-                       size, progress, samples;
+    unsigned long long group_offset;
+    unsigned long long size;
+    unsigned long long progress;
+    unsigned long long samples;
     long long grak;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
@@ -351,7 +356,7 @@ void SawndInsert1()
         if (grid == groupe)
         {
             grak = i;
-            printf("%d\n", grid);
+            printf("%llu\n", grid);
             group_offset = info_address + 8 + address;
             break;
         }
@@ -490,15 +495,16 @@ void SawndCreate(long long group)
 {
     printf("Creating the .sawnd file... Please wait.\n");
     char* data;
-    unsigned long long group_offset,
-                       size, progress;
+    unsigned long long group_offset;
+    unsigned long long size;
+    unsigned long long progress;
     long long size_difference;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary | ios::app);
     if (!Copy.good())
     {
         printf("Error creating sawnd.sawnd\n");
-        printf(strerror(errno));
+        printf("%s", strerror(errno));
         return;
     }
     Copy.put(2);
@@ -508,7 +514,7 @@ void SawndCreate(long long group)
     if (!Orig.good())
     {
         printf("Error Opening BRSAR %s\n", brsarName);
-        printf(strerror(errno));
+        printf("%s", strerror(errno));
         return;
     }
     Orig.seekg(24);
@@ -532,7 +538,7 @@ void SawndCreate(long long group)
         grid = readint();
         if (grid == group)
         {
-            printf("%d\n", grid);
+            printf("%llu\n", grid);
             group_offset = info_address + 8 + address;
             break;
         }
@@ -615,7 +621,7 @@ void Hex(long long group)
         grid = readint();
         if (grid == group)
         {
-            printf("%d\n", grid);
+            printf("%llu\n", grid);
             group_offset = info_address + 8 + address;
             break;
         }
@@ -673,19 +679,42 @@ void Insert(long long group, long long collection, long long wave, int frequency
 
     char* data;
     int col_ide;
-    unsigned long long address, info_address, relocation_address, group_num, grprel_baseoff, grid, group_offset,
-                       col_num, col_rel, col_id, col_offset, base_rwsd, base_data, rwsd_offset, rwsd_length, data_offset
-                       , data_length,
-                       WAVE_offset, wave_num, wave_offset, samples, old_size, new_size, grak, a, basewave_offset,
-                       mydata;
-    long long size_difference, org_size_difference;
+    unsigned long long address;
+    unsigned long long info_address;
+    unsigned long long relocation_address;
+    unsigned long long group_num;
+    unsigned long long grprel_baseoff;
+    unsigned long long grid;
+    unsigned long long group_offset;
+    unsigned long long col_num;
+    unsigned long long col_rel;
+    unsigned long long col_id;
+    unsigned long long col_offset;
+    unsigned long long base_rwsd;
+    unsigned long long base_data;
+    unsigned long long rwsd_offset;
+    unsigned long long rwsd_length;
+    unsigned long long data_offset;
+    unsigned long long data_length;
+    unsigned long long WAVE_offset;
+    unsigned long long wave_num;
+    unsigned long long wave_offset;
+    unsigned long long samples;
+    unsigned long long old_size;
+    unsigned long long new_size;
+    unsigned long long grak;
+    unsigned long long a;
+    unsigned long long basewave_offset;
+    unsigned long long mydata;
+    long long size_difference;
+    long long org_size_difference;
 
 
     // FIRST: Read the number of bytes of the sound.
     Copy.open(spdFile, ios::in | ios::out | ios::binary);
     Copy.seekg(0, ios::end);
     new_size = Copy.tellg();
-    printf("new size inst %d\n", new_size);
+    printf("new size inst %llu\n", new_size);
     Copy.close();
     if (new_size < 500)
     {
@@ -700,7 +729,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     if (!Orig.good())
     {
         printf("Error Opening BRSAR\n");
-        printf(strerror(errno));
+        printf("%s", strerror(errno));
         return;
     }
 
@@ -727,7 +756,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
         if (grid == group)
         {
             grak = i;
-            printf("%d\n", grid);
+            printf("%llu\n", grid);
             group_offset = info_address + 8 + address;
             break;
         }
@@ -958,7 +987,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     if (!Copy.good())
     {
         printf("Error Opening sawnd.spd\n");
-        printf(strerror(errno));
+        printf("%s", strerror(errno));
         return;
     }
     //  printf("Opened Sawnd.spd\n");
@@ -1013,7 +1042,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     delete[] data;
     // WAVE parameters.
     go(wave_offset + 2);
-    if (loop)
+    if (loop != 0)
     {
         Orig.put(0);
     }
@@ -1194,9 +1223,9 @@ int main(int argc, char** argv)
         printf("EXCEPTION");
         if (errno)
         {
-            printf(strerror(errno));
+            printf("%s", strerror(errno));
         }
-        printf(e.what());
+        printf("%s", e.what());
         Sleep(1000);
     }
     return 0;
