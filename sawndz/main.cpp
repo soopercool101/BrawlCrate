@@ -767,7 +767,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     address = readint();
     Orig.seekg(info_address + 8 + address, ios::beg);
     col_num = readint();
-    if (col_num <= 0)
+    if (col_num == 0)
     {
         printf(
             "ERROR: The group has no collections.\nProcess stopped, no changes were done to brsar, you may use it again without loading backup.");
