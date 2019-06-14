@@ -4,12 +4,11 @@
     <AssemblyName>Updater</AssemblyName>
     <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>BrawlCrate updater</AssemblyTitle>
-    <Company>Brawltools</Company>
+    <Company>BrawlCrate</Company>
     <Product>BrawlCrate</Product>
     <Description>Simple application that updates a BrawlCrate installation</Description>
-    <Copyright>Copyright © Tommy Burrows - (Sammi Husky)</Copyright>
+    <Copyright>Copyright © soopercool101, Sammi Husky</Copyright>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,7 +43,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Net.Program</StartupObject>
-    <AssemblyVersion>30.0.0.0</AssemblyVersion>
+    <AssemblyVersion>35.0.0.0</AssemblyVersion>
+    <Authors>soopercool101, Sammi Husky</Authors>
+    <PackageId>BrawlCrate Updater</PackageId>
+    <FileVersion>35.0.0.0</FileVersion>
+    <Version>35.0.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>

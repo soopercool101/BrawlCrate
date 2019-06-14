@@ -22,12 +22,12 @@
     <AssemblyTitle>BrawlCrate NEXT</AssemblyTitle>
     <Product>BrawlCrate</Product>
     <Description>This program is provided as-is without any warranty, implied or otherwise. By using this program, the end user agrees to take full responsibility regarding its proper and lawful use. The authors/hosts/distributors cannot be held responsible for any damage resulting in the use of this program, nor can they be held accountable for the manner in which it is used.</Description>
-    <Copyright>Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky
+    <Copyright>Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
+BrawlBox Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky
 Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     <AssemblyVersion>0.27.0.0</AssemblyVersion>
     <FileVersion>0.27.0.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -44,16 +44,12 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DefineConstants>DEBUG</DefineConstants>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <DefineConstants>DEBUG</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <WarningLevel>4</WarningLevel>
@@ -61,8 +57,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DefineConstants>DEBUG</DefineConstants>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
-    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
@@ -87,6 +81,9 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BrawlCrate.Program</StartupObject>
+    <Version>27.0.0</Version>
+    <Authors>soopercool101, MarioDox, Syvkal, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
+    <Company>BrawlCrate</Company>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>

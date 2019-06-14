@@ -18,13 +18,13 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>BrawlLib v0.24</AssemblyTitle>
-    <Product>BrawlLib</Product>
-    <Copyright>Copyright © 2009 - 2017 Bryan Moulton, BlackJax96, libertyernie &amp;&amp; Sammi Husky</Copyright>
+    <AssemblyTitle>BrawlCrateLib</AssemblyTitle>
+    <Product>BrawlCrateLib</Product>
+    <Copyright>Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
+BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Copyright>
     <AssemblyVersion>0.27.0.0</AssemblyVersion>
     <FileVersion>0.27.0.0</FileVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -86,6 +86,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent />
+    <PackageId>BrawlCrateLib</PackageId>
+    <Company>BrawlCrateLib</Company>
+    <Authors>soopercool101, MarioDox, Syvkal, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
+    <Version>27.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="OpenTK" Version="3.0.1" />

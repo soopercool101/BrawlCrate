@@ -323,7 +323,7 @@ namespace System.Windows.Forms
 
         private void BoxValueChanged(object sender, EventArgs e)
         {
-            if (_updating)
+            if (_updating || !(sender is Control))
             {
                 return;
             }
@@ -354,7 +354,7 @@ namespace System.Windows.Forms
 
             _form.AllowedUndos = (uint) Math.Abs(_boxes[21].Value);
 
-            int i = (int) (sender as NumericInputBox).Tag;
+            int i = (int) ((Control) sender).Tag;
 
             if (i == 3 || i == 10 || i == 14)
             {
