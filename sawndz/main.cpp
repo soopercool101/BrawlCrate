@@ -1,8 +1,3 @@
-/*
-Original Sawndz code by Jaklub
-DLL version by Agoaj
-*/
-
 #include <cstdio>
 #include <iostream>
 #include <fstream>
@@ -21,8 +16,7 @@ fstream Orig, Copy;
 
 void CopyData(long long size)
 {
-    char* data;
-    data = new char[size];
+    char* data = new char[size];
     printf("%lld\n", size);
     Orig.read(data, size);
     Copy.write(data, size);
@@ -35,12 +29,11 @@ void RemoveSpace(long long offset, long long size)
     printf("%lld offset.\n", offset);
     printf("%lld bytes to alter.\n", size);
 
-    long long brsarsize;
     char a;
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Copy.open("temp.brsar", ios::in | ios::out | ios::app | ios::binary);
     Orig.seekg(0, ios::end);
-    brsarsize = Orig.tellg();
+    long long brsarsize = Orig.tellg();
 
     Orig.seekg(0, ios::beg);
     Copy.seekg(0, ios::beg);
@@ -66,12 +59,11 @@ void EmptySpace(long long offset, long long size)
     printf("%lld offset.\n", offset);
     printf("%lld bytes to alter.\n", size);
 
-    long long brsarsize;
     char a;
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Copy.open("temp.brsar", ios::in | ios::out | ios::app | ios::binary);
     Orig.seekg(0, ios::end);
-    brsarsize = Orig.tellg();
+    long long brsarsize = Orig.tellg();
 
     Orig.seekg(0, ios::beg);
     Copy.seekg(0, ios::beg);
@@ -82,7 +74,7 @@ void EmptySpace(long long offset, long long size)
     int prevPercent = 0;
     for (long long i = 0; i < size; i++)
     {
-        percent = (i * 100) / size;
+        percent = i * 100 / size;
         if (percent >= prevPercent + 10)
         {
             printf("#");
@@ -103,21 +95,19 @@ void EmptySpace(long long offset, long long size)
 
 int readint()
 {
-    int a, b, c, d;
-    a = Orig.get();
-    b = Orig.get();
-    c = Orig.get();
-    d = Orig.get();
+    int a = Orig.get();
+    int b = Orig.get();
+    int c = Orig.get();
+    int d = Orig.get();
     return a * 256 * 256 * 256 + b * 256 * 256 + c * 256 + d;
 }
 
 int readintc()
 {
-    int a, b, c, d;
-    a = Copy.get();
-    b = Copy.get();
-    c = Copy.get();
-    d = Copy.get();
+    int a = Copy.get();
+    int b = Copy.get();
+    int c = Copy.get();
+    int d = Copy.get();
     return a * 256 * 256 * 256 + b * 256 * 256 + c * 256 + d;
 }
 
@@ -160,12 +150,9 @@ int sign(int a)
 void SawndInsert2()
 {
     char* data;
-    int groupe;
-    unsigned long long address, info_address, relocation_address, group_num, grprel_baseoff, grid, group_offset,
-                       base_rwsd, size, progress, samples, col_rel, col_num, total_size, old_size, collect_rel, col_id,
-                       l2, o2;
-    long long size_difference, grak;
-    int o;
+    unsigned long long group_offset;
+    unsigned long long samples;
+    long long grak;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
     if (!Copy.good())
@@ -175,10 +162,10 @@ void SawndInsert2()
         return;
     }
     Copy.seekg(1);
-    groupe = readintc();
+    int groupe = readintc();
     printf("target group: %d\n", groupe);
     Copy.seekg(5);
-    total_size = readintc();
+    unsigned long long total_size = readintc();
     // Find the group data.
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     if (!Orig.good())
@@ -188,18 +175,18 @@ void SawndInsert2()
         return;
     }
     Orig.seekg(24);
-    address = readint();
-    info_address = address;
-    relocation_address = info_address + 44;
+    unsigned long long address = readint();
+    unsigned long long info_address = address;
+    unsigned long long relocation_address = info_address + 44;
     // Go to the offset to Group Relocation Group (relative to 0x08 in INFO Header)
     Orig.seekg(relocation_address, ios::beg);
     address = readint();
     // Read number of entries
     Orig.seekg(info_address + 8 + address, ios::beg);
-    group_num = readint();
-    grprel_baseoff = info_address + address + 16;
+    unsigned long long group_num = readint();
+    unsigned long long grprel_baseoff = info_address + address + 16;
     // Find the group.
-    grid = -1;
+    unsigned long long grid = -1;
     for (int i = 0; i < group_num; i++)
     {
         Orig.seekg(grprel_baseoff + i * 8, ios::beg);
@@ -224,33 +211,33 @@ void SawndInsert2()
         return;
     }
     go(group_offset + 16);
-    base_rwsd = readint();
+    unsigned long long base_rwsd = readint();
     go(group_offset + 28);
-    old_size = readint();
-    size_difference = total_size - old_size;
+    unsigned long long old_size = readint();
+    long long size_difference = total_size - old_size;
     // Pick the collection relocation group address
     go(info_address + 36);
     address = readint();
-    collect_rel = info_address + 8 + address;
+    unsigned long long collect_rel = info_address + 8 + address;
     // -------MODIFYING-------
     // First, collections as subgroups and collections.
     go(group_offset + 36);
     address = readint();
-    col_rel = address + info_address + 8;
+    unsigned long long col_rel = address + info_address + 8;
     go(col_rel);
-    col_num = readint();
+    unsigned long long col_num = readint();
     printf("Modifying Collections\n");
     for (int i = 0; i < col_num; i++)
     {
         Copy.seekg(17 + 12 * i);
-        l2 = readintc();
+        unsigned long long l2 = readintc();
         Copy.seekg(13 + 12 * i);
-        o2 = readintc();
+        unsigned long long o2 = readintc();
 
         go(col_rel + 8 + 8 * i);
         address = readint();
         go(info_address + 8 + address);
-        col_id = readint();
+        unsigned long long col_id = readint();
         go(collect_rel + 8 + 8 * col_id);
         address = readint();
         go(info_address + 8 + address + 4);
@@ -314,14 +301,13 @@ void SawndInsert2()
     }
     Orig.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
     Copy.open(brsarName, ios::in | ios::out | ios::binary);
-    long long edn;
     Orig.seekg(0, ios::end);
-    edn = Orig.tellg();
+    long long edn = Orig.tellg();
     Copy.seekp(base_rwsd);
     Orig.seekg(9 + col_num * 12);
     for (long long i = 9 + col_num * 12; i < edn; i++)
     {
-        o = Orig.get();
+        int o = Orig.get();
         Copy.put(o);
     }
     printf("Done.");
@@ -331,34 +317,31 @@ void SawndInsert2()
 void SawndInsert1()
 {
     char* data;
-    int groupe;
-    unsigned long long address, info_address, relocation_address, group_num, grprel_baseoff, grid, group_offset,
-                       base_rwsd, size, progress, samples, col_rel, col_num, total_size, old_size, collect_rel, col_id,
-                       l2, o2;
-    long long size_difference, grak;
-    int o;
+    unsigned long long group_offset,
+                       size, progress, samples;
+    long long grak;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
     Copy.seekg(1);
-    groupe = readintc();
+    int groupe = readintc();
     printf("target group: %d\n", groupe);
     Copy.seekg(5);
-    total_size = readintc();
+    unsigned long long total_size = readintc();
     // Find the group data.
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Orig.seekg(24);
-    address = readint();
-    info_address = address;
-    relocation_address = info_address + 44;
+    unsigned long long address = readint();
+    unsigned long long info_address = address;
+    unsigned long long relocation_address = info_address + 44;
     // Go to the offset to Group Relocation Group (relative to 0x08 in INFO Header)
     Orig.seekg(relocation_address, ios::beg);
     address = readint();
     // Read number of entries
     Orig.seekg(info_address + 8 + address, ios::beg);
-    group_num = readint();
-    grprel_baseoff = info_address + address + 16;
+    unsigned long long group_num = readint();
+    unsigned long long grprel_baseoff = info_address + address + 16;
     // Find the group.
-    grid = -1;
+    unsigned long long grid = -1;
     for (int i = 0; i < group_num; i++)
     {
         Orig.seekg(grprel_baseoff + i * 8, ios::beg);
@@ -383,32 +366,32 @@ void SawndInsert1()
         return;
     }
     go(group_offset + 16);
-    base_rwsd = readint();
+    unsigned long long base_rwsd = readint();
     go(group_offset + 28);
-    old_size = readint();
-    size_difference = total_size - old_size;
+    unsigned long long old_size = readint();
+    long long size_difference = total_size - old_size;
     // Pick the collection relocation group address
     go(info_address + 36);
     address = readint();
-    collect_rel = info_address + 8 + address;
+    unsigned long long collect_rel = info_address + 8 + address;
     // -------MODIFYING-------
     // First, collections as subgroups and collections.
     go(group_offset + 36);
     address = readint();
-    col_rel = address + info_address + 8;
+    unsigned long long col_rel = address + info_address + 8;
     go(col_rel);
-    col_num = readint();
+    unsigned long long col_num = readint();
     for (int i = 0; i < col_num; i++)
     {
         Copy.seekg(17 + 12 * i);
-        l2 = readintc();
+        unsigned long long l2 = readintc();
         Copy.seekg(13 + 12 * i);
-        o2 = readintc();
+        unsigned long long o2 = readintc();
 
         go(col_rel + 8 + 8 * i);
         address = readint();
         go(info_address + 8 + address);
-        col_id = readint();
+        unsigned long long col_id = readint();
         go(collect_rel + 8 + 8 * col_id);
         address = readint();
         go(info_address + 8 + address + 4);
@@ -474,7 +457,7 @@ void SawndInsert1()
     Orig.seekg(9 + col_num * 12);
     for (long long i = 0; i < total_size; i++)
     {
-        o = Orig.get();
+        int o = Orig.get();
         Copy.put(o);
     }
     printf("Done.");
@@ -484,10 +467,9 @@ void SawndInsert1()
 void Sawnd()
 {
     printf("Inserting the .sawnd file... Please wait.\n");
-    char a;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
-    a = Copy.get();
+    char a = Copy.get();
     if (a != 1 && a != 2)
     {
         printf("This version of .sawnd file is not supported.");
@@ -508,10 +490,9 @@ void SawndCreate(long long group)
 {
     printf("Creating the .sawnd file... Please wait.\n");
     char* data;
-    unsigned long long address, info_address, relocation_address, group_num, grprel_baseoff, grid, group_offset,
-                       base_rwsd, size, progress, samples, col_rel, col_num, total_size;
+    unsigned long long group_offset,
+                       size, progress;
     long long size_difference;
-    int o;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary | ios::app);
     if (!Copy.good())
@@ -531,18 +512,18 @@ void SawndCreate(long long group)
         return;
     }
     Orig.seekg(24);
-    address = readint();
-    info_address = address;
-    relocation_address = info_address + 44;
+    unsigned long long address = readint();
+    unsigned long long info_address = address;
+    unsigned long long relocation_address = info_address + 44;
     // Go to the offset to Group Relocation Group (relative to 0x08 in INFO Header)
     Orig.seekg(relocation_address, ios::beg);
     address = readint();
     // Read number of entries
     Orig.seekg(info_address + 8 + address, ios::beg);
-    group_num = readint();
-    grprel_baseoff = info_address + address + 16;
+    unsigned long long group_num = readint();
+    unsigned long long grprel_baseoff = info_address + address + 16;
     // Find the group.
-    grid = -1;
+    unsigned long long grid = -1;
     for (int i = 0; i < group_num; i++)
     {
         Orig.seekg(grprel_baseoff + i * 8, ios::beg);
@@ -566,20 +547,20 @@ void SawndCreate(long long group)
         return;
     }
     go(group_offset + 16);
-    base_rwsd = readint();
+    unsigned long long base_rwsd = readint();
     go(group_offset + 20);
-    total_size = 0;
+    unsigned long long total_size = 0;
     total_size += readint();
     go(group_offset + 28);
     total_size += readint();
     go(group_offset + 28);
-    samples = readint();
+    unsigned long long samples = readint();
     writeintc(samples);
     go(group_offset + 36);
     address = readint();
-    col_rel = info_address + 8 + address;
+    unsigned long long col_rel = info_address + 8 + address;
     go(col_rel);
-    col_num = readint();
+    unsigned long long col_num = readint();
     for (int i = 0; i < col_num; i++)
     {
         go(col_rel + 8 + i * 8);
@@ -599,7 +580,7 @@ void SawndCreate(long long group)
     Sleep(500);
     for (long long i = 0; i < total_size; i++)
     {
-        o = Orig.get();
+        int o = Orig.get();
         Copy.put(o);
     }
     Copy.close();
@@ -610,24 +591,22 @@ void Hex(long long group)
 {
     printf("Inserting the hex packet... Please wait.\n");
 
-    char* data;
-    unsigned long long address, info_address, relocation_address, group_num, grprel_baseoff, grid, group_offset,
-                       base_rwsd, size, progress;
+    unsigned long long group_offset;
 
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Orig.seekg(24);
-    address = readint();
-    info_address = address;
-    relocation_address = info_address + 44;
+    unsigned long long address = readint();
+    unsigned long long info_address = address;
+    unsigned long long relocation_address = info_address + 44;
     // Go to the offset to Group Relocation Group (relative to 0x08 in INFO Header)
     Orig.seekg(relocation_address, ios::beg);
     address = readint();
     // Read number of entries
     Orig.seekg(info_address + 8 + address, ios::beg);
-    group_num = readint();
-    grprel_baseoff = info_address + address + 16;
+    unsigned long long group_num = readint();
+    unsigned long long grprel_baseoff = info_address + address + 16;
     // Find the group.
-    grid = -1;
+    unsigned long long grid = -1;
     for (int i = 0; i < group_num; i++)
     {
         Orig.seekg(grprel_baseoff + i * 8, ios::beg);
@@ -650,15 +629,15 @@ void Hex(long long group)
         return;
     }
     Orig.seekg(group_offset + 16);
-    base_rwsd = readint();
+    unsigned long long base_rwsd = readint();
 
     Copy.open("hex.hex", ios::in | ios::out | ios::binary);
     Copy.seekg(0, ios::end);
-    size = Copy.tellg();
+    unsigned long long size = Copy.tellg();
     Copy.seekg(0, ios::beg);
-    data = new char[10240];
+    char* data = new char[10240];
     Orig.seekp(base_rwsd);
-    progress = 0;
+    unsigned long long progress = 0;
     while (progress < size - 10240)
     {
         Copy.read(data, 10240);
@@ -836,7 +815,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     // Samples number divided by 2 and rounded up next is the byte number.
     Orig.seekg(wave_offset + 12);
     samples = readint();
-    if ((samples / 2 * 2) == samples)
+    if (samples / 2 * 2 == samples)
     {
         old_size = samples / 2;
     }
@@ -995,7 +974,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     while (address < samples - 256)
     {
         //printf("address = %d", address);
-        percentCompleted = (address * 100) / samples;
+        percentCompleted = address * 100 / samples;
         if (percentCompleted >= prevPercentCompleted + 10)
         {
             unsigned char percentChar = 178;
@@ -1088,8 +1067,8 @@ void Insert(long long group, long long collection, long long wave, int frequency
 int main(int argc, char** argv)
 {
     setbuf(stdout, nullptr);
-    Orig.exceptions(ios::badbit || ios::failbit);
-    Copy.exceptions(ios::badbit || ios::failbit);
+    Orig.exceptions(ios::badbit);
+    Copy.exceptions(ios::badbit);
     printf("Sawndz 0.13\n2010-2011 Jaklub\n2012 Agoaj\n\nspecial thanks to mastaklo, ssbbtailsfan, stickman, VILE\n");
     try
     {
