@@ -32,7 +32,6 @@ void RemoveSpace(long long offset, long long size)
     printf("%lld offset.\n", offset);
     printf("%lld bytes to alter.\n", size);
 
-    char a;
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Copy.open("temp.brsar", ios::in | ios::out | ios::app | ios::binary);
     Orig.seekg(0, ios::end);
@@ -62,7 +61,6 @@ void EmptySpace(long long offset, long long size)
     printf("%lld offset.\n", offset);
     printf("%lld bytes to alter.\n", size);
 
-    char a;
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Copy.open("temp.brsar", ios::in | ios::out | ios::app | ios::binary);
     Orig.seekg(0, ios::end);
@@ -76,7 +74,7 @@ void EmptySpace(long long offset, long long size)
     int prevPercent = 0;
     for (long long i = 0; i < size; i++)
     {
-        int percent = i * 100 / size;
+        const int percent = i * 100 / size;
         if (percent >= prevPercent + 10)
         {
             printf("#");
@@ -151,7 +149,6 @@ int sign(int a)
 
 void SawndInsert2()
 {
-    char* data;
     unsigned long long group_offset = 0;
     unsigned long long samples;
     long long grak = 0;
@@ -318,10 +315,7 @@ void SawndInsert2()
 
 void SawndInsert1()
 {
-    char* data;
     unsigned long long group_offset = 0;
-    unsigned long long size;
-    unsigned long long progress;
     unsigned long long samples;
     long long grak = 0;
 
@@ -493,11 +487,7 @@ void Sawnd()
 void SawndCreate(long long group)
 {
     printf("Creating the .sawnd file... Please wait.\n");
-    char* data;
-    unsigned long long group_offset;
-    unsigned long long size;
-    unsigned long long progress;
-    long long size_difference;
+    unsigned long long group_offset = 0;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary | ios::app);
     if (!Copy.good())
@@ -596,7 +586,7 @@ void Hex(long long group)
 {
     printf("Inserting the hex packet... Please wait.\n");
 
-    unsigned long long group_offset;
+    unsigned long long group_offset = 0;
 
     Orig.open(brsarName, ios::in | ios::out | ios::binary);
     Orig.seekg(24);
