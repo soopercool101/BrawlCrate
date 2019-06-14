@@ -73,11 +73,10 @@ void EmptySpace(long long offset, long long size)
 
     CopyData(offset);
     printf("__________\n");
-    int percent = 0;
     int prevPercent = 0;
     for (long long i = 0; i < size; i++)
     {
-        percent = i * 100 / size;
+        int percent = i * 100 / size;
         if (percent >= prevPercent + 10)
         {
             printf("#");
@@ -153,9 +152,9 @@ int sign(int a)
 void SawndInsert2()
 {
     char* data;
-    unsigned long long group_offset;
+    unsigned long long group_offset = 0;
     unsigned long long samples;
-    long long grak;
+    long long grak = 0;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
     if (!Copy.good())
@@ -320,11 +319,11 @@ void SawndInsert2()
 void SawndInsert1()
 {
     char* data;
-    unsigned long long group_offset;
+    unsigned long long group_offset = 0;
     unsigned long long size;
     unsigned long long progress;
     unsigned long long samples;
-    long long grak;
+    long long grak = 0;
 
     Copy.open("sawnd.sawnd", ios::in | ios::out | ios::binary);
     Copy.seekg(1);
@@ -582,7 +581,7 @@ void SawndCreate(long long group)
         writeintc(samples);
     }
     go(base_rwsd);
-    printf("Size: %lld\n", total_size);
+    printf("Size: %llu\n", total_size);
     Sleep(500);
     for (long long i = 0; i < total_size; i++)
     {
@@ -685,7 +684,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     unsigned long long group_num;
     unsigned long long grprel_baseoff;
     unsigned long long grid;
-    unsigned long long group_offset;
+    unsigned long long group_offset = 0;
     unsigned long long col_num;
     unsigned long long col_rel;
     unsigned long long col_id;
@@ -821,7 +820,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     data_length = readint();
     // Find the WAVE header.
     Orig.seekg(base_rwsd + rwsd_offset + 24);
-    printf("%lld\n", rwsd_offset);
+    printf("%llu\n", rwsd_offset);
     address = readint();
     WAVE_offset = base_rwsd + rwsd_offset + address;
     // Count WAVEs.
@@ -853,8 +852,8 @@ void Insert(long long group, long long collection, long long wave, int frequency
         old_size = samples / 2 + 1;
     }
     size_difference = new_size - old_size;
-    printf("new size: %lld\n", new_size);
-    printf("old size: %lld\n", old_size);
+    printf("new size: %llu\n", new_size);
+    printf("old size: %llu\n", old_size);
     printf("size difference: %lld\n", size_difference);
     if (size_difference % 16 != 0)
     {
@@ -996,17 +995,15 @@ void Insert(long long group, long long collection, long long wave, int frequency
     Copy.seekp(0, ios::beg);
     data = new char[256];
     address = 0;
-    unsigned long long percentCompleted = 0;
     unsigned long long prevPercentCompleted = 10;
     printf("Copying Sound\n");
     printf("___________\n");
     while (address < samples - 256)
     {
         //printf("address = %d", address);
-        percentCompleted = address * 100 / samples;
+        unsigned long long percentCompleted = address * 100 / samples;
         if (percentCompleted >= prevPercentCompleted + 10)
         {
-            unsigned char percentChar = 178;
             printf("#");
             prevPercentCompleted = percentCompleted;
         }
@@ -1051,7 +1048,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
         Orig.put(1);
     }
     go(wave_offset + 3);
-    printf("wave %lld\n", wave_offset);
+    printf("wave %llu\n", wave_offset);
     Sleep(2000);
     Orig.seekp(wave_offset + 3);
     Orig.put(frequency >> 16);
@@ -1218,7 +1215,7 @@ int main(int argc, char** argv)
         Sleep(1000);
         return 0;
     }
-    catch (std::exception e)
+    catch (std::exception &e)
     {
         printf("EXCEPTION");
         if (errno)
