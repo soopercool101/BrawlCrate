@@ -1,0 +1,19 @@
+ft_wario Section [1]: 0x00001997
+Starting costume for Overalls' boneset
+
+The first costume that uses the Overalls' boneset.
+
+Default (Byte): 06 (0x06)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined
+
+ft_wario Section [1]: 0x000019BB
+Ending costume for Overalls' boneset
+
+The last costume that uses the Overalls' boneset.
+
+Default (Byte): 11 (0x0B)
+
+	/EndDescription
+0001    // Flags for which bytes are underlined

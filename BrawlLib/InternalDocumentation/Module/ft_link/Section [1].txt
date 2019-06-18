@@ -1,0 +1,9 @@
+ft_link Section [1]: 0x0000A230
+Shield hit SFX 
+
+The sfx played when Link's shield hits a projectile.
+
+Default (Short): 544 (0x0220)
+
+	/EndDescription
+0011    // Flags for which bytes are underlined
