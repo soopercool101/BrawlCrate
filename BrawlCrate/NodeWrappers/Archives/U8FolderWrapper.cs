@@ -18,14 +18,12 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("Ne&w", null,
-                //new ToolStripMenuItem("RLYT", null, NewRlytAction),
                 new ToolStripMenuItem("TPL", null, NewTplAction),
                 //new ToolStripMenuItem("RFNT", null, NewRfntAction),
                 //new ToolStripMenuItem("WAV", null, NewWavAction),
                 new ToolStripMenuItem("BRRES", null, NewBrresAction),
                 new ToolStripMenuItem("Folder", null, NewFolderAction)));
             _menu.Items.Add(new ToolStripMenuItem("&Import", null,
-                //new ToolStripMenuItem("RLYT", null, ImportRlytAction),
                 new ToolStripMenuItem("TPL", null, ImportTplAction),
                 //new ToolStripMenuItem("RFNT", null, ImportRfntAction),
                 //new ToolStripMenuItem("WAV", null, ImportWavAction),
@@ -47,11 +45,6 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
-        }
-
-        protected static void NewRlytAction(object sender, EventArgs e)
-        {
-            GetInstance<U8FolderWrapper>().NewRlyt();
         }
 
         protected static void NewTplAction(object sender, EventArgs e)
@@ -158,15 +151,6 @@ namespace BrawlCrate.NodeWrappers
         public U8FolderWrapper()
         {
             ContextMenuStrip = _menu;
-        }
-
-        public void NewRlyt()
-        {
-            //RlytNode node = ((U8FolderNode)_resource).CreateResource<RlytNode>("NewRLYT");
-            //BaseWrapper res = this.FindResource(node, true);
-            //res = res.FindResource(node, false);
-            //res.EnsureVisible();
-            //res.TreeView.SelectedNode = res;
         }
 
         public void NewTpl()

@@ -237,31 +237,10 @@ namespace BrawlCrate.NodeWrappers
 
         public override void OnExport(string outPath, int filterIndex)
         {
-            if (outPath.Contains("."))
-            {
-                switch (outPath.Substring(outPath.ToLowerInvariant().LastIndexOf(".")))
-                {
-                    case ".pcs":
-                        ((ARCNode)_resource).ExportPCS(outPath);
-                        break;
-                    case ".pair":
-                        ((ARCNode)_resource).ExportPair(outPath);
-                        break;
-                    case ".mrg":
-                        ((ARCNode)_resource).ExportAsMRG(outPath);
-                        break;
-                    default:
-                        ((ARCNode)_resource).Export(outPath);
-                        break;
-                }
-            }
-            else
-            {
-                ((ARCNode)_resource).Export(outPath);
-            }
+            ((ARCNode)_resource).Export(outPath);
         }
 
-        private void LoadModels(ResourceNode node, List<IModel> models, List<CollisionNode> collisions)
+        public void LoadModels(ResourceNode node, List<IModel> models, List<CollisionNode> collisions)
         {
             switch (node.ResourceFileType)
             {

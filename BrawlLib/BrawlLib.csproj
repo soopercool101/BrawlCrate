@@ -103,15 +103,12 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="System\ComponentModel\CustomPropertyDescriptor.cs" />
-    <None Include="System\ComponentModel\DelegatePropertyDescriptor.cs" />
     <Compile Update="Modeling\Collada\ColladaImportDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Modeling\Collada\ColladaParser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <None Include="Modeling\XMLExporter.cs" />
     <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,10 +131,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <Compile Update="Modeling\Collada\ColladaImporter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <None Include="SSBB\ResourceNodes\Modules\Relocation.cs" />
-    <None Include="SSBB\Types\RLYT.cs" />
-    <None Include="System\PowerPCAssembly\PPCData.cs" />
-    <None Include="System\PowerPCAssembly\Assembly.cs" />
     <Compile Update="System\Windows\Controls\Hex Editor\BuiltInContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -315,10 +308,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <Compile Update="System\Windows\Controls\PowerPcDisassembler.Designer.cs">
       <DependentUpon>PowerPcDisassembler.cs</DependentUpon>
     </Compile>
-    <None Include="System\Windows\Controls\Hex Editor\HexBox.snk" />
-    <None Include="System\Windows\Forms\GradientDialog2.cs">
-      <SubType>Form</SubType>
-    </None>
     <Compile Update="System\Windows\Controls\EditAllDialog\CHR0.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -527,47 +516,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Update="System\Windows\Forms\TextureConverterDialog.resx">
       <DependentUpon>TextureConverterDialog.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BrawlLib.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="System\ComponentModel\CustomPropertyDescriptor.cs" />
-    <Compile Remove="System\ComponentModel\DelegatePropertyDescriptor.cs" />
-    <Compile Remove="Modeling\XMLExporter.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Archives\RARCNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Archives\BFRESNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Graphics\FTEXNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Archives\SARCNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\J3DNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Graphics\BTINode.cs" />
-    <Compile Remove="SSBB\Types\BMD.cs" />
-    <Compile Remove="SSBB\Types\BTI.cs" />
-    <Compile Remove="SSBB\Types\RARC.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Modules\Relocation.cs" />
-    <Compile Remove="SSBB\Types\RLYT.cs" />
-    <Compile Remove="System\PowerPCAssembly\Assembly.cs" />
-    <Compile Remove="System\PowerPCAssembly\PPCData.cs" />
-    <Compile Remove="System\Windows\Forms\GradientDialog2.cs" />
-    <Compile Remove="System\Audio\G726.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\ADSJNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GBLKNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GDORNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GEG1Node.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GMOTNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GMOVNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GMPSNode.cs" />
-    <Compile Remove="SSBB\ResourceNodes\Subspace\GSNDNode.cs" />
-    <Compile Remove="SSBB\Types\Subspace\ADSJ.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GBLK.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GDOR.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GEG1.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GMOT.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GMOV.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GMPS.cs" />
-    <Compile Remove="SSBB\Types\Subspace\GSND.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Properties\Settings.settings">
