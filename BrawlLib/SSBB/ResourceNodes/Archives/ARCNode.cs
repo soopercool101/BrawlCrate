@@ -30,6 +30,187 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
         public bool IsFighter => Parent == null && _name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase);
 
+        #region MyRegion
+
+        [Category("Models")]
+        public int NumModels
+        {
+            get
+            {
+                if (Properties.Settings.Default.CompatibilityMode)
+                {
+                    return -1;
+                }
+
+                if (_children == null)
+                {
+                    Populate();
+                    if (_children == null)
+                    {
+                        return 0;
+                    }
+                }
+
+                int count = 0;
+                foreach (ARCEntryNode b in Children)
+                {
+                    if (b is BRRESNode brresNode)
+                    {
+                        count += brresNode.NumModels;
+                    }
+                    else if (b is ARCNode node && node.NumModels > -1)
+                    {
+                        count += node.NumModels;
+                    }
+                }
+
+                return count;
+            }
+        }
+        [Category("Models"), Description("How many points are stored in the models in this ARC and sent to the GPU every frame. A lower value is better.")]
+        public int NumFacepoints
+        {
+            get
+            {
+                if (Properties.Settings.Default.CompatibilityMode)
+                {
+                    return -1;
+                }
+
+                if (_children == null)
+                {
+                    Populate();
+                    if (_children == null)
+                    {
+                        return 0;
+                    }
+                }
+
+                int count = 0;
+                foreach (ARCEntryNode b in Children)
+                {
+                    if (b is BRRESNode node)
+                    {
+                        count += node.NumFacepoints;
+                    }
+                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                    {
+                        count += arcNode.NumFacepoints;
+                    }
+                }
+
+                return count;
+            }
+        }
+        [Browsable(true)]
+        [Category("Models"), Description("How many individual vertices models in this ARC have. A vertex in this case is only a point in space with its associated influence.")]
+        public int NumVertices
+        {
+            get
+            {
+                if (Properties.Settings.Default.CompatibilityMode)
+                {
+                    return -1;
+                }
+
+                if (_children == null)
+                {
+                    Populate();
+                    if (_children == null)
+                    {
+                        return 0;
+                    }
+                }
+
+                int count = 0;
+                foreach (ARCEntryNode b in Children)
+                {
+                    if (b is BRRESNode node)
+                    {
+                        count += node.NumVertices;
+                    }
+                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                    {
+                        count += arcNode.NumVertices;
+                    }
+                }
+
+                return count;
+            }
+        }
+        [Category("Models"), Description("The total number of individual triangle faces models in this ARC have.")]
+        public int NumTriangles
+        {
+            get
+            {
+                if (Properties.Settings.Default.CompatibilityMode)
+                {
+                    return -1;
+                }
+
+                if (_children == null)
+                {
+                    Populate();
+                    if (_children == null)
+                    {
+                        return 0;
+                    }
+                }
+
+                int count = 0;
+                foreach (ARCEntryNode b in Children)
+                {
+                    if (b is BRRESNode node)
+                    {
+                        count += node.NumTriangles;
+                    }
+                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                    {
+                        count += arcNode.NumTriangles;
+                    }
+                }
+
+                return count;
+            }
+        }
+        [Category("Models"), Description("The total number of matrices used in this ARC (bones + weighted influences).")]
+        public int NumNodes
+        {
+            get
+            {
+                if (Properties.Settings.Default.CompatibilityMode)
+                {
+                    return -1;
+                }
+
+                if (_children == null)
+                {
+                    Populate();
+                    if (_children == null)
+                    {
+                        return 0;
+                    }
+                }
+
+                int count = 0;
+                foreach (ARCEntryNode b in Children)
+                {
+                    if (b is BRRESNode node)
+                    {
+                        count += node.NumNodes;
+                    }
+                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                    {
+                        count += arcNode.NumNodes;
+                    }
+                }
+
+                return count;
+            }
+        }
+
+        #endregion
+
         private readonly Dictionary<ResourceNode, ARCFileHeader> _originalHeaders =
             new Dictionary<ResourceNode, ARCFileHeader>();
 
