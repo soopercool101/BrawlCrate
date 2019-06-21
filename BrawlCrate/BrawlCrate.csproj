@@ -217,128 +217,9 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ARC.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Unknown.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BRES.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TEX0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PLT0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MDL0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MSG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\B.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CHR.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\G.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RSAR.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RSTM.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\S.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\T.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\EFLS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\REFF.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CLR.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\VIS.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Coll.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SHP.png" />
-    <None Include="Resources\SRT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AI.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AIPD.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ATKD.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CE.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MDef.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Event.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PAT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\REFT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\IMG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SCN0.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\STPM.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BrawlBox.ico" />
-    <Content Include="Resources\SCLA.png" />
-    <None Include="Resources\SharedTEX0.png" />
-    <None Include="Resources\BGMG.png" />
-    <None Include="Resources\REL.png" />
-    <None Include="Resources\Redirect.png" />
-    <None Include="Resources\GMPS.png" />
-    <None Include="Resources\GBLK.png" />
-    <None Include="Resources\ADSJ.png" />
-    <None Include="Resources\GMOT.png" />
-    <None Include="Resources\GSND.png" />
-    <None Include="Resources\ENEMY.png" />
-    <None Include="Resources\GMOV.png" />
-    <None Include="Resources\GEG1.png" />
-    <None Include="Resources\GDOR.png" />
-    <None Include="Resources\STDT.png" />
-    <None Include="Resources\BLOCEntry.png" />
-    <None Include="Resources\BLOC.png" />
-    <None Include="Resources\REFFEntry.png" />
     <None Include="Changelog.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\U8.png" />
-    <None Include="Resources\plt.png" />
-    <None Include="Resources\TPL.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrawlLib\BrawlLib.csproj" />
@@ -346,12 +227,6 @@ Super Smash Bros. Brawl © 2008 Nintendo and HAL Laboratory</Copyright>
   <ItemGroup>
     <None Update="discord-rpc.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Loaders\Example Loader %28RFNT%29.py">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="Plugins\Examples\Dump Textures.py">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
