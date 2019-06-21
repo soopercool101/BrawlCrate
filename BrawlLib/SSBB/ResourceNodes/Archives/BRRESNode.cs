@@ -39,6 +39,48 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Group->_numEntries > 0;
         }
 
+        public bool HasFolder<T>() where T : BRESEntryNode
+        {
+            if (!HasChildren)
+            {
+                return false;
+            }
+
+            foreach (BRESGroupNode gr in Children)
+            {
+                if (gr.HasChildren)
+                {
+                    if (gr.Children[0] is T)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public BRESGroupNode GetFolder<T>() where T : BRESEntryNode
+        {
+            if (!HasChildren)
+            {
+                return null;
+            }
+
+            foreach (BRESGroupNode gr in Children)
+            {
+                if (gr.HasChildren)
+                {
+                    if (gr.Children[0] is T)
+                    {
+                        return gr;
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public BRESGroupNode GetOrCreateFolder<T>() where T : BRESEntryNode
         {
             string groupName;

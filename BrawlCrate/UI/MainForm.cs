@@ -607,9 +607,75 @@ namespace BrawlCrate
                     previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
-                else if (node is IRenderedObject)
+                else if (node is BRRESNode brresNode && brresNode.HasFolder<MDL0Node>())
+                {
+                    BRESGroupNode modelGroup = brresNode.GetFolder<MDL0Node>();
+                    newControl = modelPanel1;
+                    float minX = 0;
+                    float minY = 0;
+                    float minZ = 0;
+                    float maxX = 0;
+                    float maxY = 0;
+                    float maxZ = 0;
+                    foreach (MDL0Node model in modelGroup.Children)
+                    {
+                        if (model._children == null)
+                        {
+                            model.Populate(0);
+                        }
+
+                        model.ResetToBindState();
+
+                        modelPanel1.AddTarget(model);
+                        Box b = model.GetBox();
+                        if (b.Min._x < minX)
+                        {
+                            minX = b.Min._x;
+                        }
+
+                        if (b.Min._y < minY)
+                        {
+                            minY = b.Min._y;
+                        }
+
+                        if (b.Min._z < minZ)
+                        {
+                            minZ = b.Min._z;
+                        }
+
+                        if (b.Max._x > maxX)
+                        {
+                            maxX = b.Max._x;
+                        }
+
+                        if (b.Max._y > maxY)
+                        {
+                            maxY = b.Max._y;
+                        }
+
+                        if (b.Max._z > maxZ)
+                        {
+                            maxZ = b.Max._z;
+                        }
+                    }
+                    modelPanel1.SetCamWithBox(new Box(new Vector3(minX, minY, minZ), new Vector3(maxX, maxY, maxZ)));
+                }
+                else if (node is IRenderedObject o)
                 {
                     newControl = modelPanel1;
+                    //Model panel has to be loaded first to display model correctly
+                    if (node._children == null)
+                    {
+                        node.Populate(0);
+                    }
+
+                    if (o is IModel m && ModelEditControl.Instances.Count == 0)
+                    {
+                        m.ResetToBindState();
+                    }
+
+                    modelPanel1.AddTarget(o);
+                    modelPanel1.SetCamWithBox(o.GetBox());
                 }
                 else if (node is STDTNode)
                 {
@@ -719,25 +785,7 @@ namespace BrawlCrate
                 _currentControl.Dock = DockStyle.Fill;
             }
 
-            //Model panel has to be loaded first to display model correctly
-            if (_currentControl is ModelPanel)
-            {
-                if (node._children == null)
-                {
-                    node.Populate(0);
-                }
-
-                if (node is IModel && ModelEditControl.Instances.Count == 0)
-                {
-                    IModel m = node as IModel;
-                    m.ResetToBindState();
-                }
-
-                IRenderedObject o = node as IRenderedObject;
-                modelPanel1.AddTarget(o);
-                modelPanel1.SetCamWithBox(o.GetBox());
-            }
-            else if (_currentControl is MDL0ObjectControl)
+            if (_currentControl is MDL0ObjectControl)
             {
                 mdL0ObjectControl1.SetTarget(node as MDL0ObjectNode);
             }
