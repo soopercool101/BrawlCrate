@@ -1040,10 +1040,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 //Extract points from header, which will be disposed of
                 Vector3[] v = node.Vertices;
-                node._forceRebuild = true;
+                node.ForceRebuild = true;
                 if (node.Format == WiiVertexComponentType.Float)
                 {
-                    node._forceFloat = true;
+                    node.ForceFloat = true;
                 }
             }
 

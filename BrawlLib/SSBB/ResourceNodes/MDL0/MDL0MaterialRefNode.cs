@@ -105,7 +105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         if (n._vertexNode.Format != WiiVertexComponentType.Float)
                         {
-                            n._vertexNode._forceRebuild = n._vertexNode._forceFloat = value;
+                            n._vertexNode.ForceRebuild = n._vertexNode.ForceFloat = value;
                         }
                     }
                 }

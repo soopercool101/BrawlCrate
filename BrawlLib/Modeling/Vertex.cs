@@ -327,7 +327,7 @@ namespace BrawlLib.Modeling
         {
             MDL0VertexNode node = ((MDL0ObjectNode) _parent)._vertexNode;
 
-            if (node == null)
+            if (node == null || _facepoints.Count < 1 || node.Vertices.Length <= _facepoints[0]._vertexIndex)
             {
                 return;
             }

@@ -181,7 +181,7 @@ namespace System.Windows.Forms
 
                 if (a._object._vertexNode.Format != WiiVertexComponentType.Float)
                 {
-                    a._object._vertexNode._forceRebuild = a._object._vertexNode._forceFloat = chkUseStrips.Checked;
+                    a._object._vertexNode.ForceRebuild = a._object._vertexNode.ForceFloat = chkUseStrips.Checked;
                 }
             }
 

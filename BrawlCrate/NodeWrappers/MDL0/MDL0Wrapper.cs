@@ -440,7 +440,7 @@ namespace BrawlCrate.NodeWrappers
             MDL0VertexNode node = new MDL0VertexNode() {Name = "VertexSet" + ((MDL0Node) _resource)._vertList.Count};
             node.Vertices = new Vector3[] {new Vector3(0)};
             g.AddChild(node, true);
-            node._forceRebuild = true;
+            node.ForceRebuild = true;
             node.Rebuild(true);
             node.SignalPropertyChange();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlCrate.Discord
 {
@@ -9,8 +10,8 @@ namespace BrawlCrate.Discord
         private static DiscordRpc.EventHandlers handlers;
 
         private static readonly string applicationId =
-            Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary") &&
-            File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Canary\\Active")
+            Directory.Exists(Application.StartupPath + "\\Canary") &&
+            File.Exists(Application.StartupPath + "\\Canary\\Active")
                 ? "545788780980994078"
                 : "545732315658059801";
 
