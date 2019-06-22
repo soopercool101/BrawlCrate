@@ -278,22 +278,23 @@ namespace BrawlCrate
             grpBoxPythonAPI.Enabled = chkBoxEnableAPI.Checked;
             grpBoxFSharpAPI.Enabled = chkBoxEnableAPI.Checked;
 
-            Discord.DiscordSettings.LoadSettings();
-            grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked = Discord.DiscordSettings.DiscordRPCEnabled;
-            Discord.DiscordSettings.ModNameType? modnametype = Properties.Settings.Default.DiscordRPCNameType;
-            if (modnametype == Discord.DiscordSettings.ModNameType.Disabled)
+            DiscordSettings.LoadSettings();
+            grpBoxDiscordRPCType.Enabled = DiscordSettings.DiscordRPCEnabled;
+            chkBoxEnableDiscordRPC.Checked = DiscordSettings.DiscordRPCEnabled;
+            DiscordSettings.ModNameType? modnametype = Properties.Settings.Default.DiscordRPCNameType;
+            if (modnametype == DiscordSettings.ModNameType.Disabled)
             {
                 rdoDiscordRPCNameDisabled.Checked = true;
             }
-            else if (modnametype == Discord.DiscordSettings.ModNameType.UserDefined)
+            else if (modnametype == DiscordSettings.ModNameType.UserDefined)
             {
                 rdoDiscordRPCNameCustom.Checked = true;
             }
-            else if (modnametype == Discord.DiscordSettings.ModNameType.AutoInternal)
+            else if (modnametype == DiscordSettings.ModNameType.AutoInternal)
             {
                 rdoDiscordRPCNameInternal.Checked = true;
             }
-            else if (modnametype == Discord.DiscordSettings.ModNameType.AutoExternal)
+            else if (modnametype == DiscordSettings.ModNameType.AutoExternal)
             {
                 rdoDiscordRPCNameExternal.Checked = true;
             }
@@ -1538,7 +1539,7 @@ namespace BrawlCrate
                 Properties.Settings.Default.DiscordRPCEnabled = chkBoxEnableDiscordRPC.Checked;
                 Properties.Settings.Default.Save();
                 grpBoxDiscordRPCType.Enabled = chkBoxEnableDiscordRPC.Checked;
-                Discord.DiscordSettings.LoadSettings(true);
+                DiscordSettings.LoadSettings(true);
             }
         }
 
@@ -1548,25 +1549,25 @@ namespace BrawlCrate
             {
                 if (rdoDiscordRPCNameDisabled.Checked)
                 {
-                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.Disabled;
+                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.Disabled;
                 }
                 else if (rdoDiscordRPCNameInternal.Checked)
                 {
-                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.AutoInternal;
+                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.AutoInternal;
                 }
                 else if (rdoDiscordRPCNameExternal.Checked)
                 {
-                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.AutoExternal;
+                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.AutoExternal;
                 }
                 else if (rdoDiscordRPCNameCustom.Checked)
                 {
-                    Properties.Settings.Default.DiscordRPCNameType = Discord.DiscordSettings.ModNameType.UserDefined;
+                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.UserDefined;
                 }
 
                 DiscordRPCCustomName.Enabled = rdoDiscordRPCNameCustom.Checked;
                 DiscordRPCCustomName.ReadOnly = !rdoDiscordRPCNameCustom.Checked;
                 Properties.Settings.Default.Save();
-                Discord.DiscordSettings.LoadSettings(true);
+                DiscordSettings.LoadSettings(true);
             }
         }
 
@@ -1576,7 +1577,7 @@ namespace BrawlCrate
             Properties.Settings.Default.Save();
             if (rdoDiscordRPCNameCustom.Checked)
             {
-                Discord.DiscordSettings.LoadSettings(true);
+                DiscordSettings.LoadSettings(true);
             }
         }
 

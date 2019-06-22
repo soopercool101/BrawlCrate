@@ -212,7 +212,8 @@ namespace BrawlCrate.Discord
                         {
                             DiscordController.presence.state = string.IsNullOrEmpty(Program.RootPath)
                                 ? ""
-                                : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1, Program.RootPath.LastIndexOf('\\') - Program.RootPath.LastIndexOf('.'));
+                                : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1,
+                                    Program.RootPath.LastIndexOf('\\') - Program.RootPath.LastIndexOf('.'));
                         }
                         else
                         {
@@ -222,6 +223,7 @@ namespace BrawlCrate.Discord
                                     ? ""
                                     : rootName;
                         }
+
                         break;
                     case ModNameType.AutoExternal:
                         if (gctEditor != null)
@@ -243,6 +245,7 @@ namespace BrawlCrate.Discord
                                 ? ""
                                 : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1);
                         }
+
                         break;
                     default:
                         DiscordController.presence.state = "";

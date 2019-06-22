@@ -6,32 +6,33 @@ namespace System.Audio
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct G726State
     {
-        public short sr0, sr1;	/* Reconstructed signal with delays 0 and 1 */
-        public short a1r, a2r;	/* Triggered 2nd order predictor coeffs. */
-        public short b1r;		/* Triggered 6nd order predictor coeffs */
+        public short sr0, sr1; /* Reconstructed signal with delays 0 and 1 */
+        public short a1r, a2r; /* Triggered 2nd order predictor coeffs. */
+        public short b1r; /* Triggered 6nd order predictor coeffs */
         public short b2r;
         public short b3r;
         public short b4r;
         public short b5r;
         public short b6r;
-        public short dq5;		/* Quantized difference signal with delays 5 to 0 */
+        public short dq5; /* Quantized difference signal with delays 5 to 0 */
         public short dq4;
         public short dq3;
         public short dq2;
         public short dq1;
         public short dq0;
-        public short dmsp;		/* Short term average of the F(I) sequence */
-        public short dmlp;		/* Long term average of the F(I) sequence */
-        public short apr;		/* Triggered unlimited speed control parameter */
-        public short yup;		/* Fast quantizer scale factor */
-        public short tdr;		/* Triggered tone detector */
-        public short pk0, pk1;	/* sign of dq+sez with delays 0 and 1 */
-        public int ylp;		/* Slow quantizer scale factor */
+        public short dmsp; /* Short term average of the F(I) sequence */
+        public short dmlp; /* Long term average of the F(I) sequence */
+        public short apr; /* Triggered unlimited speed control parameter */
+        public short yup; /* Fast quantizer scale factor */
+        public short tdr; /* Triggered tone detector */
+        public short pk0, pk1; /* sign of dq+sez with delays 0 and 1 */
+        public int ylp; /* Slow quantizer scale factor */
     }
 
-    public unsafe static class G726
+    public static unsafe class G726
     {
-        internal static void G726_encode(short* inp_buf, short* out_buf, int smpno, byte* law, short rate, short r, G726State* state)
+        internal static void G726_encode(short* inp_buf, short* out_buf, int smpno, byte* law, short rate, short r,
+                                         G726State* state)
         {
             short s;
             short d, i;
@@ -43,8 +44,27 @@ namespace System.Audio
             short u1, u2, u3, u4, u5, u6;
             short a1, a2, b1, b2, b3, b4, b5, b6;
             short dqln;
-            short a1p, a2p, a1t, a2t, b1p, b2p, b3p, b4p, b5p, b6p, dq6, pk2,
-                            sr2, wa1, wa2, wb1, wb2, wb3, wb4, wb5, wb6;
+            short a1p,
+                a2p,
+                a1t,
+                a2t,
+                b1p,
+                b2p,
+                b3p,
+                b4p,
+                b5p,
+                b6p,
+                dq6,
+                pk2,
+                sr2,
+                wa1,
+                wa2,
+                wb1,
+                wb2,
+                wb3,
+                wb4,
+                wb5,
+                wb6;
             short dml, dln, app, dql, dms;
             short dqs, tdp;
             short sez;
@@ -57,7 +77,9 @@ namespace System.Audio
             if (*law == '1')
             {
                 for (j = 0; j < smpno; j++)
+                {
                     inp_buf[j] ^= 85;
+                }
             }
 
             /* Process all desired samples in inp_buf to out_buf; The comments about
@@ -177,27 +199,27 @@ namespace System.Audio
                 G726_triga(&tr, &app, &state->apr);
 
                 /* Remaining of 4.2.6: update of all `b's */
-                G726_xor(&state->dq1, &dq, &u1);	/* Here, b1 */
+                G726_xor(&state->dq1, &dq, &u1); /* Here, b1 */
                 G726_upb(rate, &u1, &b1, &dq, &b1p);
                 G726_trigb(&tr, &b1p, &state->b1r);
 
-                G726_xor(&state->dq2, &dq, &u2);	/* Here, b2 */
+                G726_xor(&state->dq2, &dq, &u2); /* Here, b2 */
                 G726_upb(rate, &u2, &b2, &dq, &b2p);
                 G726_trigb(&tr, &b2p, &state->b2r);
 
-                G726_xor(&state->dq3, &dq, &u3);	/* Here, b3 */
+                G726_xor(&state->dq3, &dq, &u3); /* Here, b3 */
                 G726_upb(rate, &u3, &b3, &dq, &b3p);
                 G726_trigb(&tr, &b3p, &state->b3r);
 
-                G726_xor(&state->dq4, &dq, &u4);	/* Here, b4 */
+                G726_xor(&state->dq4, &dq, &u4); /* Here, b4 */
                 G726_upb(rate, &u4, &b4, &dq, &b4p);
                 G726_trigb(&tr, &b4p, &state->b4r);
 
-                G726_xor(&state->dq5, &dq, &u5);	/* Here, b5 */
+                G726_xor(&state->dq5, &dq, &u5); /* Here, b5 */
                 G726_upb(rate, &u5, &b5, &dq, &b5p);
                 G726_trigb(&tr, &b5p, &state->b5r);
 
-                G726_xor(&dq6, &dq, &u6);	/* At last, b6 */
+                G726_xor(&dq6, &dq, &u6); /* At last, b6 */
                 G726_upb(rate, &u6, &b6, &dq, &b6p);
                 G726_trigb(&tr, &b6p, &state->b6r);
             }
@@ -242,13 +264,14 @@ namespace System.Audio
 
          ----------------------------------------------------------------------------
         */
-        private static void G726_decode(short* inp_buf, short* out_buf, int smpno, byte* law, short rate, short r, G726State* state)
+        private static void G726_decode(short* inp_buf, short* out_buf, int smpno, byte* law, short rate, short r,
+                                        G726State* state)
         {
             short i;
             short y;
             short sigpk;
             short sr, tr;
-            short sp, dlnx, dsx, sd, slx, dlx, dx;	/* these are unique to
+            short sp, dlnx, dsx, sd, slx, dlx, dx; /* these are unique to
 							 * the decoder */
             int yl;
             short yu;
@@ -256,8 +279,27 @@ namespace System.Audio
             short u1, u2, u3, u4, u5, u6;
             short a1, a2, b1, b2, b3, b4, b5, b6;
             short dqln;
-            short a1p, a2p, a1t, a2t, b1p, b2p, b3p, b4p, b5p, b6p, dq6, pk2,
-                            sr2, wa1, wa2, wb1, wb2, wb3, wb4, wb5, wb6;
+            short a1p,
+                a2p,
+                a1t,
+                a2t,
+                b1p,
+                b2p,
+                b3p,
+                b4p,
+                b5p,
+                b6p,
+                dq6,
+                pk2,
+                sr2,
+                wa1,
+                wa2,
+                wb1,
+                wb2,
+                wb3,
+                wb4,
+                wb5,
+                wb6;
             short dml, app, dql, dms;
             short dqs, tdp;
             short sez;
@@ -381,27 +423,27 @@ namespace System.Audio
                 G726_triga(&tr, &app, &state->apr);
 
                 /* Remaining of 4.2.6: update of all `b's */
-                G726_xor(&state->dq1, &dq, &u1);	/* Here, b1 */
+                G726_xor(&state->dq1, &dq, &u1); /* Here, b1 */
                 G726_upb(rate, &u1, &b1, &dq, &b1p);
                 G726_trigb(&tr, &b1p, &state->b1r);
 
-                G726_xor(&state->dq2, &dq, &u2);	/* Here, b2 */
+                G726_xor(&state->dq2, &dq, &u2); /* Here, b2 */
                 G726_upb(rate, &u2, &b2, &dq, &b2p);
                 G726_trigb(&tr, &b2p, &state->b2r);
 
-                G726_xor(&state->dq3, &dq, &u3);	/* Here, b3 */
+                G726_xor(&state->dq3, &dq, &u3); /* Here, b3 */
                 G726_upb(rate, &u3, &b3, &dq, &b3p);
                 G726_trigb(&tr, &b3p, &state->b3r);
 
-                G726_xor(&state->dq4, &dq, &u4);	/* Here, b4 */
+                G726_xor(&state->dq4, &dq, &u4); /* Here, b4 */
                 G726_upb(rate, &u4, &b4, &dq, &b4p);
                 G726_trigb(&tr, &b4p, &state->b4r);
 
-                G726_xor(&state->dq5, &dq, &u5);	/* Here, b5 */
+                G726_xor(&state->dq5, &dq, &u5); /* Here, b5 */
                 G726_upb(rate, &u5, &b5, &dq, &b5p);
                 G726_trigb(&tr, &b5p, &state->b5r);
 
-                G726_xor(&dq6, &dq, &u6);	/* At last, b6 */
+                G726_xor(&dq6, &dq, &u6); /* At last, b6 */
                 G726_upb(rate, &u6, &b6, &dq, &b6p);
                 G726_trigb(&tr, &b6p, &state->b6r);
             }
@@ -410,9 +452,10 @@ namespace System.Audio
             if (*law == '1')
             {
                 for (j = 0; j < smpno; j++)
+                {
                     out_buf[j] ^= 85;
+                }
             }
-
         }
         /* ...................... end of G726_decode() ...................... */
 
@@ -465,18 +508,18 @@ namespace System.Audio
                 else
                 {
                     sig = 0;
-
                 }
+
                 iexp = s1 / 16;
 
                 mant = s1 - (iexp << 4);
-                ss = (iexp == 0) ?
-                  (short)((mant << 1) + 1 + sig) :
-                  (short)((1 << (iexp - 1)) * ((mant << 1) + 33) + sig);
+                ss = iexp == 0
+                    ? (short) ((mant << 1) + 1 + sig)
+                    : (short) ((1 << (iexp - 1)) * ((mant << 1) + 33) + sig);
 
-                sss = (short)(ss / 4096);
-                ssm = (short)(ss & 4095);
-                ssq = (short)(ssm << 1);
+                sss = (short) (ss / 4096);
+                ssm = (short) (ss & 4095);
+                ssq = (short) (ssm << 1);
             }
             else
             {
@@ -493,20 +536,18 @@ namespace System.Audio
                     sig = 0;
                     s1 ^= 127;
                 }
+
                 iexp = s1 / 16;
 
                 mant = s1 - (iexp << 4);
 
-                ss = (iexp == 0) ?
-                  (short)((mant << 1) + sig) :
-                  (short)((1 << iexp) * ((mant << 1) + 33) - 33 + sig);
+                ss = iexp == 0 ? (short) ((mant << 1) + sig) : (short) ((1 << iexp) * ((mant << 1) + 33) - 33 + sig);
 
-                sss = (short)(ss / 8192);
-                ssq = (short)(ss & 8191);
+                sss = (short) (ss / 8192);
+                ssq = (short) (ss & 8191);
             }
 
-            *sl = (sss == 0) ? ssq : (short)((16384 - ssq) & 16383);
-
+            *sl = sss == 0 ? ssq : (short) ((16384 - ssq) & 16383);
         }
         /* ...................... end of G726_expand() ...................... */
 
@@ -549,22 +590,21 @@ namespace System.Audio
             int sl1, sei, sli;
             short ses, sls;
 
-            sls = (short)(*sl >> 13);
+            sls = (short) (*sl >> 13);
 
             sl1 = *sl;
             se1 = *se;
 
             /* Sign extension */
-            sli = (sls == 0) ? sl1 : (sl1 + 49152);
+            sli = sls == 0 ? sl1 : sl1 + 49152;
 
-            ses = (short)(*se >> 14);
+            ses = (short) (*se >> 14);
 
             /* Sign extension */
-            sei = (ses == 0) ? se1 : (se1 + 32768);
+            sei = ses == 0 ? se1 : se1 + 32768;
 
             /* 16 bit TC */
-            *d = (short)((sli + 65536 - sei) & 65535);
-
+            *d = (short) ((sli + 65536 - sei) & 65535);
         }
         /* ......................... end of G726_subta() ......................... */
 
@@ -598,51 +638,80 @@ namespace System.Audio
             int d1;
             int dqm, exp_;
 
-            *ds = (short)(*d >> 15);
+            *ds = (short) (*d >> 15);
 
             d1 = *d;
 
             /* Convert from 2-complement to signed magnitude */
-            dqm = (*ds != 0) ? ((65536 - d1) & 32767) : d1;
+            dqm = *ds != 0 ? (65536 - d1) & 32767 : d1;
 
             /* Compute exponent */
             if (dqm >= 16384)
+            {
                 exp_ = 14;
+            }
             else if (dqm >= 8192)
+            {
                 exp_ = 13;
+            }
             else if (dqm >= 4096)
+            {
                 exp_ = 12;
+            }
             else if (dqm >= 2048)
+            {
                 exp_ = 11;
+            }
             else if (dqm >= 1024)
+            {
                 exp_ = 10;
+            }
             else if (dqm >= 512)
+            {
                 exp_ = 9;
+            }
             else if (dqm >= 256)
+            {
                 exp_ = 8;
+            }
             else if (dqm >= 128)
+            {
                 exp_ = 7;
+            }
             else if (dqm >= 64)
+            {
                 exp_ = 6;
+            }
             else if (dqm >= 32)
+            {
                 exp_ = 5;
+            }
             else if (dqm >= 16)
+            {
                 exp_ = 4;
+            }
             else if (dqm >= 8)
+            {
                 exp_ = 3;
+            }
             else if (dqm >= 4)
+            {
                 exp_ = 2;
+            }
             else if (dqm >= 2)
+            {
                 exp_ = 1;
+            }
             else
+            {
                 exp_ = 0;
+            }
 
             /* Compute approximation log2(1+x) = x */
             mant = ((dqm << 7) >> exp_) & 127;
 
             /* Combine mantissa and exponent (7 and 4) bits into a 11-bit word */
-            *dl = (short)((exp_ << 7) + mant);
-
+            *dl = (short) ((exp_ << 7) + mant);
         }
         /* ........................ end of G726_log() ....................... */
 
@@ -683,113 +752,193 @@ namespace System.Audio
             if (rate == 4)
             {
                 if (*dln >= 3972)
+                {
                     *i = 1;
+                }
                 else if (*dln >= 2048)
+                {
                     *i = 15;
+                }
                 else if (*dln >= 400)
+                {
                     *i = 7;
+                }
                 else if (*dln >= 349)
+                {
                     *i = 6;
+                }
                 else if (*dln >= 300)
+                {
                     *i = 5;
+                }
                 else if (*dln >= 246)
+                {
                     *i = 4;
+                }
                 else if (*dln >= 178)
+                {
                     *i = 3;
+                }
                 else if (*dln >= 80)
+                {
                     *i = 2;
+                }
                 else
+                {
                     *i = 1;
+                }
 
                 /* Adjust for sign */
                 if (*ds != 0)
-                    *i = (short)(15 - *i);
+                {
+                    *i = (short) (15 - *i);
+                }
 
                 if (*i == 0)
+                {
                     *i = 15;
-            }				/* ......... end of 32 kbit part ........... */
+                }
+            } /* ......... end of 32 kbit part ........... */
 
 
             else if (rate == 3)
             {
                 if (*dln >= 2048)
+                {
                     *i = 7;
+                }
                 else if (*dln >= 331)
+                {
                     *i = 3;
+                }
                 else if (*dln >= 218)
+                {
                     *i = 2;
+                }
                 else if (*dln >= 8)
+                {
                     *i = 1;
+                }
                 else if (*dln >= 0)
+                {
                     *i = 7;
+                }
 
                 /* Adjust for sign */
                 if (*ds != 0)
-                    *i = (short)(7 - *i);
+                {
+                    *i = (short) (7 - *i);
+                }
 
                 if (*i == 0)
+                {
                     *i = 7;
-            }				/* ......... end of 24 kbit part ........... */
+                }
+            } /* ......... end of 24 kbit part ........... */
 
             else if (rate == 2)
             {
                 if (*dln >= 2048)
+                {
                     *i = 0;
+                }
                 else if (*dln >= 261)
+                {
                     *i = 1;
+                }
                 else
+                {
                     *i = 0;
+                }
 
                 /* Adjust for sign */
                 if (*ds != 0)
-                    *i = (short)(3 - *i);
-            }				/* ......... end of 16 kbit part ........... */
+                {
+                    *i = (short) (3 - *i);
+                }
+            } /* ......... end of 16 kbit part ........... */
 
             else
             {
                 if (*dln >= 4080)
+                {
                     *i = 2;
+                }
                 else if (*dln >= 3974)
+                {
                     *i = 1;
+                }
                 else if (*dln >= 2048)
+                {
                     *i = 31;
+                }
                 else if (*dln >= 553)
+                {
                     *i = 15;
+                }
                 else if (*dln >= 528)
+                {
                     *i = 14;
+                }
                 else if (*dln >= 502)
+                {
                     *i = 13;
+                }
                 else if (*dln >= 475)
+                {
                     *i = 12;
+                }
                 else if (*dln >= 445)
+                {
                     *i = 11;
+                }
                 else if (*dln >= 413)
+                {
                     *i = 10;
+                }
                 else if (*dln >= 378)
+                {
                     *i = 9;
+                }
                 else if (*dln >= 339)
+                {
                     *i = 8;
+                }
                 else if (*dln >= 298)
+                {
                     *i = 7;
+                }
                 else if (*dln >= 250)
+                {
                     *i = 6;
+                }
                 else if (*dln >= 198)
+                {
                     *i = 5;
+                }
                 else if (*dln >= 139)
+                {
                     *i = 4;
+                }
                 else if (*dln >= 68)
+                {
                     *i = 3;
+                }
                 else if (*dln >= 0)
+                {
                     *i = 2;
+                }
 
                 if (*ds != 0)
-                    *i = (short)(31 - *i);
+                {
+                    *i = (short) (31 - *i);
+                }
 
                 if (*i == 0)
+                {
                     *i = 31;
-
-            }				/* ......... end of 40 kbit part ........... */
-
+                }
+            } /* ......... end of 40 kbit part ........... */
         }
         /* ........................ end of G726_quan() ........................ */
 
@@ -827,8 +976,7 @@ namespace System.Audio
         */
         private static void G726_subtb(short* dl, short* y, short* dln)
         {
-            *dln = (short)((*dl + 4096 - (*y >> 2)) & 4095);
-
+            *dln = (short) ((*dl + 4096 - (*y >> 2)) & 4095);
         }
         /* ........................ end of G726_subtb() ........................ */
 
@@ -866,8 +1014,7 @@ namespace System.Audio
         */
         private static void G726_adda(short* dqln, short* y, short* dql)
         {
-            *dql = (short)((*dqln + (*y >> 2)) & 4095);
-
+            *dql = (short) ((*dqln + (*y >> 2)) & 4095);
         }
         /* ....................... end of G726_adda() ....................... */
 
@@ -908,7 +1055,7 @@ namespace System.Audio
             int ds, dmn, dex, dqt;
 
             /* Extract 4-bit exponent */
-            ds = (*dql >> 11);
+            ds = *dql >> 11;
             dex = (*dql >> 7) & 15;
 
             /* Extract 7-bit mantissa */
@@ -917,10 +1064,10 @@ namespace System.Audio
             dqt = dmn + 128;
 
             /* Convert mantissa to linear using the approx. 2**x = 1+x */
-            dqmag = (ds != 0) ? 0 : ((dqt << 7) >> (14 - dex));
+            dqmag = ds != 0 ? 0 : (dqt << 7) >> (14 - dex);
 
             /* Attach sign bit to signed mag. word */
-            *dq = (short)((*dqs << 15) + dqmag);
+            *dq = (short) ((*dqs << 15) + dqmag);
         }
         /* ..................... end of G726_antilog() ..................... */
 
@@ -955,12 +1102,19 @@ namespace System.Audio
 
          ----------------------------------------------------------------------
         */
-        private static short[] tab1 = new short[] { 2048, 4, 135, 213, 273, 323, 373, 425, 425, 373, 323, 273, 213, 135, 4, 2048 };
-        private static short[] tab2 = new short[] { 2048, 135, 273, 373, 373, 273, 135, 2048 };
-        private static short[] tab3 = new short[] { 116, 365, 365, 116 };
-        private static short[] tab4 = new short[]{2048, 4030, 28, 104, 169, 224, 274, 318, 358, 395, 429,
-      459, 488, 514, 539, 566, 566, 539, 514, 488, 459, 429, 395, 358, 318, 274, 224,
-    169, 104, 28, 4030, 2048};
+        private static short[] tab1 = new short[]
+            {2048, 4, 135, 213, 273, 323, 373, 425, 425, 373, 323, 273, 213, 135, 4, 2048};
+
+        private static short[] tab2 = new short[] {2048, 135, 273, 373, 373, 273, 135, 2048};
+        private static short[] tab3 = new short[] {116, 365, 365, 116};
+
+        private static short[] tab4 = new short[]
+        {
+            2048, 4030, 28, 104, 169, 224, 274, 318, 358, 395, 429,
+            459, 488, 514, 539, 566, 566, 539, 514, 488, 459, 429, 395, 358, 318, 274, 224,
+            169, 104, 28, 4030, 2048
+        };
+
         private static void G726_reconst(short rate, short* i, short* dqln, short* dqs)
         {
             if (rate == 4)
@@ -970,11 +1124,11 @@ namespace System.Audio
                 //425, 373, 323, 273, 213, 135, 4, 2048};
 
                 /* Extract sign */
-                *dqs = (short)(*i >> 3);
+                *dqs = (short) (*i >> 3);
 
                 /* Table look-up */
                 *dqln = tab1[*i];
-            }				/* ............... end of 32 kbit part
+            } /* ............... end of 32 kbit part
 				 * ................. */
 
             else if (rate == 3)
@@ -982,12 +1136,11 @@ namespace System.Audio
                 /* Initialized data */
                 //static short    tab[8] = {2048, 135, 273, 373, 373, 273, 135, 2048};
 
-                *dqs = (short)(*i >> 2);
+                *dqs = (short) (*i >> 2);
 
                 /* Table look-up */
                 *dqln = tab2[*i];
-
-            }				/* ............... end of 24 kbit part
+            } /* ............... end of 24 kbit part
 				 * ................. */
 
 
@@ -996,12 +1149,11 @@ namespace System.Audio
                 /* Initialized data */
                 //static short    tab[4] = {116, 365, 365, 116};
 
-                *dqs = (short)(*i >> 1);
+                *dqs = (short) (*i >> 1);
 
                 /* Table look-up */
                 *dqln = tab3[*i];
-
-            }				/* ............... end of 16 kbit part
+            } /* ............... end of 16 kbit part
 				 * ................. */
             else
             {
@@ -1010,15 +1162,12 @@ namespace System.Audio
                 //  459, 488, 514, 539, 566, 566, 539, 514, 488, 459, 429, 395, 358, 318, 274, 224,
                 //169, 104, 28, 4030, 2048};
 
-                *dqs = (short)(*i >> 4);
+                *dqs = (short) (*i >> 4);
 
                 /* Table look-up */
                 *dqln = tab4[*i];
-
-            }				/* ................ end of 40 kbit part
+            } /* ................ end of 40 kbit part
 				 * ................... */
-
-
         }
         /* ....................... end of G726_reconst() ....................... */
 
@@ -1054,8 +1203,7 @@ namespace System.Audio
         */
         private static void G726_delaya(short* r, short* x, short* y)
         {
-            *y = (*r == 0) ? *x : (short)0;
-
+            *y = *r == 0 ? *x : (short) 0;
         }
         /* ....................... end of G726_delaya() ....................... */
 
@@ -1091,8 +1239,7 @@ namespace System.Audio
         */
         private static void G726_delayb(short* r, short* x, short* y)
         {
-            *y = (*r == 0) ? *x : (short)544;
-
+            *y = *r == 0 ? *x : (short) 544;
         }
         /* ....................... end of G726_delayb() ....................... */
 
@@ -1128,8 +1275,7 @@ namespace System.Audio
         */
         private static void G726_delayc(short* r, int* x, int* y)
         {
-            *y = (*r == 0) ? *x : 34816;
-
+            *y = *r == 0 ? *x : 34816;
         }
         /* ....................... end of G726_delayc() ....................... */
 
@@ -1165,8 +1311,7 @@ namespace System.Audio
         */
         private static void G726_delayd(short* r, short* x, short* y)
         {
-            *y = (*r == 0) ? *x : (short)32;
-
+            *y = *r == 0 ? *x : (short) 32;
         }
         /* ....................... end of G726_delayd() ....................... */
 
@@ -1210,13 +1355,12 @@ namespace System.Audio
             wi1 = *wi;
             y1 = *y;
             dif = ((wi1 << 5) + 131072 - y1) & 131071;
-            difs = (dif >> 16);
+            difs = dif >> 16;
 
             /* Time constant is 1/32; sign extension */
-            difsx = (difs == 0) ? (dif >> 5) : ((dif >> 5) + 4096);
+            difsx = difs == 0 ? dif >> 5 : (dif >> 5) + 4096;
 
-            *yut = (short)((y1 + difsx) & 8191);
-
+            *yut = (short) ((y1 + difsx) & 8191);
         }
         /* ....................... end of G726_filte() ....................... */
 
@@ -1260,13 +1404,12 @@ namespace System.Audio
             yup1 = *yup;
             dif1 = 1048576 - *yl;
             dif = (yup1 + (dif1 >> 6)) & 16383;
-            difs = (dif >> 13);
+            difs = dif >> 13;
 
             /* Sign extension */
-            difsx = (difs == 0) ? dif : (dif + 507904);
+            difsx = difs == 0 ? dif : dif + 507904;
 
             *ylp = (*yl + difsx) & 524287;
-
         }
         /* ....................... end of G726_filte() ....................... */
 
@@ -1301,10 +1444,13 @@ namespace System.Audio
 
          ----------------------------------------------------------------------
         */
-        private static short[] tab5 = new short[] { 4084, 18, 41, 64, 112, 198, 355, 1122 };
-        private static short[] tab6 = new short[] { 4092, 30, 137, 582 };
-        private static short[] tab7 = new short[] { 4074, 439 };
-        private static short[] tab8 = new short[] { 14, 14, 24, 39, 40, 41, 58, 100, 141, 179, 219, 280, 358, 440, 529, 696 };
+        private static short[] tab5 = new short[] {4084, 18, 41, 64, 112, 198, 355, 1122};
+        private static short[] tab6 = new short[] {4092, 30, 137, 582};
+        private static short[] tab7 = new short[] {4074, 439};
+
+        private static short[] tab8 = new short[]
+            {14, 14, 24, 39, 40, 41, 58, 100, 141, 179, 219, 280, 358, 440, 529, 696};
+
         private static void G726_functw(short rate, short* i, short* wi)
         {
             if (rate == 4)
@@ -1313,42 +1459,30 @@ namespace System.Audio
                 //static short    tab[8] = {4084, 18, 41, 64, 112, 198, 355, 1122};
                 short im, _is;
 
-                _is = (short)(*i >> 3);
+                _is = (short) (*i >> 3);
 
-                im = (_is == 0) ? (short)(*i & 7) : (short)((15 - *i) & 7);
+                im = _is == 0 ? (short) (*i & 7) : (short) ((15 - *i) & 7);
 
                 /* Scale factor multiplier */
                 *wi = tab5[im];
-
-
-            }				/* ................. end of 32 kbit part
+            } /* ................. end of 32 kbit part
 				 * .............. */
-
-
-
 
 
             else if (rate == 3)
             {
-
                 /* Initialized data */
                 //static short    tab[4] = {4092, 30, 137, 582};
                 short im, _is;
 
 
-                _is = (short)(*i >> 2);
+                _is = (short) (*i >> 2);
 
-                im = (_is == 0) ? (short)(*i & 3) : (short)((7 - *i) & 3);
+                im = _is == 0 ? (short) (*i & 3) : (short) ((7 - *i) & 3);
 
                 *wi = tab6[im];
-
-
-
-            }				/* ................. end of 24 kbit part
+            } /* ................. end of 24 kbit part
 				 * .............. */
-
-
-
 
 
             else if (rate == 2)
@@ -1358,17 +1492,13 @@ namespace System.Audio
                 short im, _is;
 
 
-                _is = (short)(*i >> 1);
+                _is = (short) (*i >> 1);
 
-                im = (_is == 0) ? (short)(*i & 1) : (short)((3 - *i) & 1);
+                im = _is == 0 ? (short) (*i & 1) : (short) ((3 - *i) & 1);
 
                 *wi = tab7[im];
-
-            }				/* ................. end of 16 kbit part
+            } /* ................. end of 16 kbit part
 				 * .............. */
-
-
-
 
 
             else
@@ -1378,12 +1508,12 @@ namespace System.Audio
                 //440, 529, 696};
                 short im, _is;
 
-                _is = (short)(*i >> 4);
+                _is = (short) (*i >> 4);
 
-                im = (_is == 0) ? (short)(*i & 15) : (short)((31 - *i) & 15);
+                im = _is == 0 ? (short) (*i & 15) : (short) ((31 - *i) & 15);
 
                 *wi = tab8[im];
-            }				/* ................. end of 40 kbit part
+            } /* ................. end of 40 kbit part
 				 * .............. */
         }
         /* ....................... end of G726_functw() ....................... */
@@ -1422,16 +1552,21 @@ namespace System.Audio
         {
             short gell, geul;
 
-            geul = (short)(((*yut + 11264) & 16383) >> 13);
-            gell = (short)(((*yut + 15840) & 16383) >> 13);
+            geul = (short) (((*yut + 11264) & 16383) >> 13);
+            gell = (short) (((*yut + 15840) & 16383) >> 13);
 
             if (gell == 1)
-                *yup = 544;			/* Lower limit is 1.06 */
+            {
+                *yup = 544; /* Lower limit is 1.06 */
+            }
             else if (geul == 0)
-                *yup = 5120;		/* Upper limit is 10.0 */
+            {
+                *yup = 5120; /* Upper limit is 10.0 */
+            }
             else
+            {
                 *yup = *yut;
-
+            }
         }
         /* ....................... end of G726_limb() ....................... */
 
@@ -1479,19 +1614,18 @@ namespace System.Audio
 
             /* Compute difference */
             dif = (yu1 + 16384 - (*yl >> 6)) & 16383;
-            difs = (dif >> 13);
+            difs = dif >> 13;
 
             /* Compute magnitude of difference */
-            difm = (difs == 0) ? dif : ((16384 - dif) & 8191);
+            difm = difs == 0 ? dif : (16384 - dif) & 8191;
 
             /* Compute magnitude of product */
-            prodm = ((difm * al1) >> 6);
+            prodm = (difm * al1) >> 6;
 
             /* Convert magnitude to two's complement */
-            prod = (difs == 0) ? prodm : ((16384 - prodm) & 16383);
+            prod = difs == 0 ? prodm : (16384 - prodm) & 16383;
 
-            *y = (short)(((*yl >> 6) + prod) & 8191);
-
+            *y = (short) (((*yl >> 6) + prod) & 8191);
         }
         /* ....................... end of G726_mix() ....................... */
 
@@ -1531,14 +1665,13 @@ namespace System.Audio
             short dif;
 
             /* Compute difference */
-            dif = (short)(((*fi << 9) + 8192 - *dms) & 8191);
-            difs = (short)(dif >> 12);
+            dif = (short) (((*fi << 9) + 8192 - *dms) & 8191);
+            difs = (short) (dif >> 12);
 
             /* Time constant is 1/32, sign extension */
-            difsx = (difs == 0) ? (short)(dif >> 5) : (short)((dif >> 5) + 3840);
+            difsx = difs == 0 ? (short) (dif >> 5) : (short) ((dif >> 5) + 3840);
 
-            *dmsp = (short)((difsx + *dms) & 4095);
-
+            *dmsp = (short) ((difsx + *dms) & 4095);
         }
         /* ....................... end of G726_filta() ....................... */
 
@@ -1584,13 +1717,12 @@ namespace System.Audio
 
             /* Compute difference */
             dif = ((fi1 << 11) + 32768 - dml1) & 32767;
-            difs = (dif >> 14);
+            difs = dif >> 14;
 
             /* Time constant is 1/28, sign extension */
-            difsx = (difs == 0) ? (dif >> 7) : ((dif >> 7) + 16128);
+            difsx = difs == 0 ? dif >> 7 : (dif >> 7) + 16128;
 
-            *dmlp = (short)((difsx + dml1) & 16383);
-
+            *dmlp = (short) ((difsx + dml1) & 16383);
         }
         /* ....................... end of G726_filtb() ....................... */
 
@@ -1630,14 +1762,13 @@ namespace System.Audio
             short dif;
 
             /* Compute difference */
-            dif = (short)(((*ax << 9) + 2048 - *ap) & 2047);
-            difs = (short)(dif >> 10);
+            dif = (short) (((*ax << 9) + 2048 - *ap) & 2047);
+            difs = (short) (dif >> 10);
 
             /* Time constant is 1/16, sign extension */
-            difsx = (difs == 0) ? (short)(dif >> 4) : (short)((dif >> 4) + 896);
+            difsx = difs == 0 ? (short) (dif >> 4) : (short) ((dif >> 4) + 896);
 
-            *app = (short)((difsx + *ap) & 1023);
-
+            *app = (short) ((difsx + *ap) & 1023);
         }
         /* .................... end of G726_filtc() .................... */
 
@@ -1671,10 +1802,11 @@ namespace System.Audio
 
          ----------------------------------------------------------------------
         */
-        private static short[] tab9 = new short[] { 0, 0, 0, 1, 1, 1, 3, 7 };
-        private static short[] tab10 = new short[] { 0, 1, 2, 7 };
-        private static short[] tab11 = new short[] { 0, 7 };
-        private static short[] tab12 = new short[] { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 3, 4, 5, 6, 6 };
+        private static short[] tab9 = new short[] {0, 0, 0, 1, 1, 1, 3, 7};
+        private static short[] tab10 = new short[] {0, 1, 2, 7};
+        private static short[] tab11 = new short[] {0, 7};
+        private static short[] tab12 = new short[] {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 3, 4, 5, 6, 6};
+
         private static void G726_functf(short rate, short* i, short* fi)
         {
             short im, _is;
@@ -1684,12 +1816,12 @@ namespace System.Audio
                 /* Initialized data */
                 //static short    tab[8] = {0, 0, 0, 1, 1, 1, 3, 7};
 
-                _is = (short)(*i >> 3);
+                _is = (short) (*i >> 3);
 
-                im = (_is == 0) ? (short)(*i & 7) : (short)((15 - *i) & 7);
+                im = _is == 0 ? (short) (*i & 7) : (short) ((15 - *i) & 7);
 
                 *fi = tab9[im];
-            }				/* ................ end of 32 kbit part
+            } /* ................ end of 32 kbit part
 				 * ................. */
 
             else if (rate == 3)
@@ -1697,13 +1829,12 @@ namespace System.Audio
                 /* Initialized data */
                 //static short    tab[4] = {0, 1, 2, 7};
 
-                _is = (short)(*i >> 2);
+                _is = (short) (*i >> 2);
 
-                im = (_is == 0) ? (short)(*i & 3) : (short)((7 - *i) & 3);
+                im = _is == 0 ? (short) (*i & 3) : (short) ((7 - *i) & 3);
 
                 *fi = tab10[im];
-
-            }				/* ................ end of 24 kbit part
+            } /* ................ end of 24 kbit part
 				 * ................. */
             else if (rate == 2)
             {
@@ -1711,13 +1842,12 @@ namespace System.Audio
                 //static short    tab[2] = {0, 7};
 
 
-                _is = (short)(*i >> 1);
+                _is = (short) (*i >> 1);
 
-                im = (_is == 0) ? (short)(*i & 1) : (short)((3 - *i) & 1);
+                im = _is == 0 ? (short) (*i & 1) : (short) ((3 - *i) & 1);
 
                 *fi = tab11[im];
-
-            }				/* ................ end of 16 kbit part
+            } /* ................ end of 16 kbit part
 				 * ................. */
 
             else
@@ -1726,13 +1856,12 @@ namespace System.Audio
                 //static short    tab[16] = {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 3, 4, 5, 6, 6};
 
 
-                _is = (short)(*i >> 4);
+                _is = (short) (*i >> 4);
 
-                im = (_is == 0) ? (short)(*i & 15) : (short)((31 - *i) & 15);
+                im = _is == 0 ? (short) (*i & 15) : (short) ((31 - *i) & 15);
 
                 *fi = tab12[im];
-
-            }				/* ................ end of 40 kbit part
+            } /* ................ end of 40 kbit part
 				 * ................. */
         }
         /* ...................... end of G726_functf() ...................... */
@@ -1769,8 +1898,7 @@ namespace System.Audio
         */
         private static void G726_lima(short* ap, short* al)
         {
-            *al = (*ap >= 256) ? (short)64 : (short)(*ap >> 2);
-
+            *al = *ap >= 256 ? (short) 64 : (short) (*ap >> 2);
         }
         /* ....................... end of G726_lima() ....................... */
 
@@ -1817,17 +1945,16 @@ namespace System.Audio
 
             /* Compute difference */
             dif = ((dmsp1 << 2) + 32768 - dmlp1) & 32767;
-            difs = (dif >> 14);
+            difs = dif >> 14;
 
             /* Compute magnitude of difference */
-            difm = (difs == 0) ? dif : ((32768 - dif) & 16383);
+            difm = difs == 0 ? dif : (32768 - dif) & 16383;
 
             /* Compute threshold */
-            dthr = (dmlp1 >> 3);
+            dthr = dmlp1 >> 3;
 
             /* Quantize speed control parameter */
-            *ax = (*y >= 1536 && difm < dthr && *tdp == 0) ? (short)0 : (short)1;
-
+            *ax = *y >= 1536 && difm < dthr && *tdp == 0 ? (short) 0 : (short) 1;
         }
         /* ....................... end of G726_subtc() ....................... */
 
@@ -1863,8 +1990,7 @@ namespace System.Audio
         */
         private static void G726_triga(short* tr, short* app, short* apr)
         {
-            *apr = (*tr == 0) ? (*app) : (short)256;
-
+            *apr = *tr == 0 ? *app : (short) 256;
         }
         /* ....................... end of G726_triga() ....................... */
 
@@ -1901,31 +2027,31 @@ namespace System.Audio
 
          ----------------------------------------------------------------------
         */
-        private static void G726_accum(short* wa1, short* wa2, short* wb1, short* wb2, short* wb3, short* wb4, short* wb5, short* wb6, short* se, short* sez)
+        private static void G726_accum(short* wa1, short* wa2, short* wb1, short* wb2, short* wb3, short* wb4,
+                                       short* wb5, short* wb6, short* se, short* sez)
         {
             uint sezi;
             uint wa11, wa21, wb11, wb21, wb31, wb41, wb51, wb61, sei;
 
             /* Preamble */
-            wa11 = (uint)*wa1;
-            wa21 = (uint)*wa2;
-            wb11 = (uint)*wb1;
-            wb21 = (uint)*wb2;
-            wb31 = (uint)*wb3;
-            wb41 = (uint)*wb4;
-            wb51 = (uint)*wb5;
-            wb61 = (uint)*wb6;
+            wa11 = (uint) *wa1;
+            wa21 = (uint) *wa2;
+            wb11 = (uint) *wb1;
+            wb21 = (uint) *wb2;
+            wb31 = (uint) *wb3;
+            wb41 = (uint) *wb4;
+            wb51 = (uint) *wb5;
+            wb61 = (uint) *wb6;
 
             /* Sum of partial signal estimate */
             sezi = (((((((((wb11 + wb21) & 65535) + wb31) & 65535)
-                    + wb41) & 65535) + wb51) & 65535) + wb61) & 65535;
+                        + wb41) & 65535) + wb51) & 65535) + wb61) & 65535;
 
             /* Complete sum for signal estimate */
             sei = (((sezi + wa21) & 65535) + wa11) & 65535;
 
-            *sez = (short)(sezi >> 1);
-            *se = (short)(sei >> 1);
-
+            *sez = (short) (sezi >> 1);
+            *se = (short) (sei >> 1);
         }
         /* ....................... end of G726_accum() ....................... */
 
@@ -1967,22 +2093,21 @@ namespace System.Audio
             short dqs, ses;
 
             /* Preamble */
-            dq1 = (uint)*dq & 65535;
-            se1 = (uint)*se;
+            dq1 = (uint) *dq & 65535;
+            se1 = (uint) *se;
 
             /* Sign */
-            dqs = (short)((*dq >> 15) & 1);
+            dqs = (short) ((*dq >> 15) & 1);
 
             /* Convert signed magnitude to 2's complement */
-            dqi = (dqs == 0) ? dq1 : ((65536 - (dq1 & 32767)) & 65535);
+            dqi = dqs == 0 ? dq1 : (65536 - (dq1 & 32767)) & 65535;
 
-            ses = (short)(*se >> 14);
+            ses = (short) (*se >> 14);
 
             /* Sign extension */
-            sei = (ses == 0) ? se1 : ((1 << 15) + se1);
+            sei = ses == 0 ? se1 : (1 << 15) + se1;
 
-            *sr = (short)((dqi + sei) & 65535);
-
+            *sr = (short) ((dqi + sei) & 65535);
         }
         /* ....................... end of G726_addb() ....................... */
 
@@ -2027,25 +2152,24 @@ namespace System.Audio
             uint sez1;
 
             /* Preamble */
-            dq1 = (uint)*dq & 65535;
-            sez1 = (uint)*sez;
+            dq1 = (uint) *dq & 65535;
+            sez1 = (uint) *sez;
 
             /* Get sign */
-            dqs = (short)((*dq >> 15) & 1);
+            dqs = (short) ((*dq >> 15) & 1);
 
             /* Convert signed magnitude to 2's compelemnent */
-            dqi = (dqs == 0) ? dq1 : ((65536 - (dq1 & 32767)) & 65535);
+            dqi = dqs == 0 ? dq1 : (65536 - (dq1 & 32767)) & 65535;
 
-            sezs = (short)(*sez >> 14);
+            sezs = (short) (*sez >> 14);
 
             /* Sign extension */
-            sezi = (sezs == 0) ? sez1 : (sez1 + 32768);
+            sezi = sezs == 0 ? sez1 : sez1 + 32768;
 
             dqsez = (dqi + sezi) & 65535;
 
-            *pk0 = (short)(dqsez >> 15);
-            *sigpk = (dqsez == 0) ? (short)1 : (short)0;
-
+            *pk0 = (short) (dqsez >> 15);
+            *sigpk = dqsez == 0 ? (short) 1 : (short) 0;
         }
         /* ....................... end of G726_addc() ....................... */
 
@@ -2092,43 +2216,74 @@ namespace System.Audio
 
             /* Exponent */
             if (mag >= 16384)
+            {
                 exp_ = 15;
+            }
             else if (mag >= 8192)
+            {
                 exp_ = 14;
+            }
             else if (mag >= 4096)
+            {
                 exp_ = 13;
+            }
             else if (mag >= 2048)
+            {
                 exp_ = 12;
+            }
             else if (mag >= 1024)
+            {
                 exp_ = 11;
+            }
             else if (mag >= 512)
+            {
                 exp_ = 10;
+            }
             else if (mag >= 256)
+            {
                 exp_ = 9;
+            }
             else if (mag >= 128)
+            {
                 exp_ = 8;
+            }
             else if (mag >= 64)
+            {
                 exp_ = 7;
+            }
             else if (mag >= 32)
+            {
                 exp_ = 6;
+            }
             else if (mag >= 16)
+            {
                 exp_ = 5;
+            }
             else if (mag >= 8)
+            {
                 exp_ = 4;
+            }
             else if (mag >= 4)
+            {
                 exp_ = 3;
+            }
             else if (mag >= 2)
+            {
                 exp_ = 2;
+            }
             else if (mag == 1)
+            {
                 exp_ = 1;
+            }
             else
+            {
                 exp_ = 0;
+            }
 
             /* Compute mantissa w/a 1 in the most sig. bit */
-            mant = (mag == 0) ? (1 << 5) : ((mag << 6) >> exp_);
+            mant = mag == 0 ? 1 << 5 : (mag << 6) >> exp_;
             /* Combine sign, exponent and mantissa (1,4,6) bits in a word */
-            *dq0 = (short)((dqs << 10) + (exp_ << 6) + mant);
-
+            *dq0 = (short) ((dqs << 10) + (exp_ << 6) + mant);
         }
         /* ....................... end of G726_floata() ....................... */
 
@@ -2171,51 +2326,82 @@ namespace System.Audio
             srr = *sr & 65535;
 
             /* Sign */
-            srs = (srr >> 15);
+            srs = srr >> 15;
 
             /* Compute magnitude */
-            mag = (srs == 0) ? srr : ((65536 - srr) & 32767);
+            mag = srs == 0 ? srr : (65536 - srr) & 32767;
 
             /* Exponent */
             if (mag >= 16384)
+            {
                 exp_ = 15;
+            }
             else if (mag >= 8192)
+            {
                 exp_ = 14;
+            }
             else if (mag >= 4096)
+            {
                 exp_ = 13;
+            }
             else if (mag >= 2048)
+            {
                 exp_ = 12;
+            }
             else if (mag >= 1024)
+            {
                 exp_ = 11;
+            }
             else if (mag >= 512)
+            {
                 exp_ = 10;
+            }
             else if (mag >= 256)
+            {
                 exp_ = 9;
+            }
             else if (mag >= 128)
+            {
                 exp_ = 8;
+            }
             else if (mag >= 64)
+            {
                 exp_ = 7;
+            }
             else if (mag >= 32)
+            {
                 exp_ = 6;
+            }
             else if (mag >= 16)
+            {
                 exp_ = 5;
+            }
             else if (mag >= 8)
+            {
                 exp_ = 4;
+            }
             else if (mag >= 4)
+            {
                 exp_ = 3;
+            }
             else if (mag >= 2)
+            {
                 exp_ = 2;
+            }
             else if (mag == 1)
+            {
                 exp_ = 1;
+            }
             else
+            {
                 exp_ = 0;
+            }
 
             /* Compute mantissa w/a 1 in the most sig. bit */
-            mant = (mag == 0) ? (1 << 5) : ((mag << 6) >> exp_);
+            mant = mag == 0 ? 1 << 5 : (mag << 6) >> exp_;
 
             /* Combine sign, exponent and mantissa (1,4,6) bits in a word */
-            *sr0 = (short)((srs << 10) + (exp_ << 6) + mant);
-
+            *sr0 = (short) ((srs << 10) + (exp_ << 6) + mant);
         }
         /* ....................... end of G726_floatb() ....................... */
 
@@ -2263,64 +2449,89 @@ namespace System.Audio
 
             /* Sign */
             ans = an & 32768;
-            ans = (ans >> 15);
+            ans = ans >> 15;
 
             /* Convert 2's complement to signed magnitude */
-            anmag = (ans == 0) ? (an >> 2) : ((16384 - (an >> 2)) & 8191);
+            anmag = ans == 0 ? an >> 2 : (16384 - (an >> 2)) & 8191;
 
             /* Exponent */
             if (anmag >= 4096)
+            {
                 anexp = 13;
+            }
             else if (anmag >= 2048)
+            {
                 anexp = 12;
+            }
             else if (anmag >= 1024)
+            {
                 anexp = 11;
+            }
             else if (anmag >= 512)
+            {
                 anexp = 10;
+            }
             else if (anmag >= 256)
+            {
                 anexp = 9;
+            }
             else if (anmag >= 128)
+            {
                 anexp = 8;
+            }
             else if (anmag >= 64)
+            {
                 anexp = 7;
+            }
             else if (anmag >= 32)
+            {
                 anexp = 6;
+            }
             else if (anmag >= 16)
+            {
                 anexp = 5;
+            }
             else if (anmag >= 8)
+            {
                 anexp = 4;
+            }
             else if (anmag >= 4)
+            {
                 anexp = 3;
+            }
             else if (anmag >= 2)
+            {
                 anexp = 2;
+            }
             else if (anmag == 1)
+            {
                 anexp = 1;
+            }
             else
+            {
                 anexp = 0;
+            }
 
             /* Compute mantissa w/a 1 in the most sig. bit */
-            anmant = (anmag == 0) ? (1 << 5) : ((anmag << 6) >> anexp);
+            anmant = anmag == 0 ? 1 << 5 : (anmag << 6) >> anexp;
 
             /* Split floating point word into sign, exponent and mantissa */
-            srns = (srn1 >> 10);
+            srns = srn1 >> 10;
             srnexp = (srn1 >> 6) & 15;
             srnmant = srn1 & 63;
 
             /* Floating point multiplication */
             wans = srns ^ ans;
             wanexp = srnexp + anexp;
-            wanmant = ((srnmant * anmant) + 48) >> 4;
+            wanmant = (srnmant * anmant + 48) >> 4;
 
             /* Convert floating point to magnitude */
-            wanmag = (wanexp <= 26) ?
-              (wanmant << 7) >> (26 - wanexp) :
-              ((wanmant << 7) << (wanexp - 26)) & 32767;
+            wanmag = wanexp <= 26 ? (wanmant << 7) >> (26 - wanexp) : (wanmant << 7 << (wanexp - 26)) & 32767;
 
             /* Convert mag. to 2's complement */
-            wan = (wans == 0) ? wanmag : ((65536 - wanmag) & 65535);
+            wan = wans == 0 ? wanmag : (65536 - wanmag) & 65535;
 
-            *WAn = (short)wan;
-
+            *WAn = (short) wan;
         }
         /* ....................... end of G726_fmult() ....................... */
 
@@ -2361,18 +2572,23 @@ namespace System.Audio
 
             a2t1 = *a2t & 65535;
 
-            a2ul = 12288;			/* Upper limit of +.75 */
-            a2ll = 53248;			/* Lower limit of -.75 */
+            a2ul = 12288; /* Upper limit of +.75 */
+            a2ll = 53248; /* Lower limit of -.75 */
 
             if (a2t1 >= 32768 && a2t1 <= a2ll)
+            {
                 a2p1 = a2ll;
+            }
             else if (a2t1 >= a2ul && a2t1 <= 32767)
+            {
                 a2p1 = a2ul;
+            }
             else
+            {
                 a2p1 = a2t1;
+            }
 
-            *a2p = (short)a2p1;
-
+            *a2p = (short) a2p1;
         }
         /* ....................... end of G726_limc() ....................... */
 
@@ -2424,14 +2640,19 @@ namespace System.Audio
             a1ll = (a2p1 + 65536 - ome) & 65535;
 
             if (a1t1 >= 32768 && a1t1 <= a1ll)
+            {
                 a1p1 = a1ll;
+            }
             else if (a1t1 >= a1ul && a1t1 <= 32767)
+            {
                 a1p1 = a1ul;
+            }
             else
+            {
                 a1p1 = a1t1;
+            }
 
-            *a1p = (short)a1p1;
-
+            *a1p = (short) a1p1;
         }
         /* ....................... end of G726_limd() ....................... */
 
@@ -2467,8 +2688,7 @@ namespace System.Audio
         */
         private static void G726_trigb(short* tr, short* ap, short* ar)
         {
-            *ar = (*tr == 0) ? *ap : (short)0;
-
+            *ar = *tr == 0 ? *ap : (short) 0;
         }
         /* ....................... end of G726_trigb() ....................... */
 
@@ -2512,21 +2732,20 @@ namespace System.Audio
             /* Preamble */
             a11 = *a1 & 65535;
 
-            pks = (short)((*pk0) ^ (*pk1));
+            pks = (short) (*pk0 ^ *pk1);
 
             /* Gain is +/- (3/256) */
-            uga1 = (*sigpk == 1) ? 0 : ((pks == 0) ? 192 : 65344);
+            uga1 = *sigpk == 1 ? 0 : pks == 0 ? 192 : 65344;
 
-            a1s = (a11 >> 15);
+            a1s = a11 >> 15;
 
             /* Leak factor is (1/256) */
-            ash = (a11 >> 8);
-            ula1 = ((a1s == 0) ? (65536 - ash) : (65536 - (ash + 65280))) & 65535;
+            ash = a11 >> 8;
+            ula1 = (a1s == 0 ? 65536 - ash : 65536 - (ash + 65280)) & 65535;
 
             /* Compute update */
             ua1 = (uga1 + ula1) & 65535;
-            *a1t = (short)((a11 + ua1) & 65535);
-
+            *a1t = (short) ((a11 + ua1) & 65535);
         }
         /* ....................... end of G726_upa1() ....................... */
 
@@ -2560,7 +2779,8 @@ namespace System.Audio
 
          ----------------------------------------------------------------------
         */
-        private static void G726_upa2(short* pk0, short* pk1, short* pk2, short* a2, short* a1, short* sigpk, short* a2t)
+        private static void G726_upa2(short* pk0, short* pk1, short* pk2, short* a2, short* a1, short* sigpk,
+                                      short* a2t)
         {
             int uga2a, uga2b, uga2s;
             int a11, a21, fa, fa1;
@@ -2574,37 +2794,39 @@ namespace System.Audio
             a21 = *a2 & 65535;
 
             /* 1 bit xors */
-            pks1 = (short)(*pk0 ^ *pk1);
-            pks2 = (short)(*pk0 ^ *pk2);
+            pks1 = (short) (*pk0 ^ *pk1);
+            pks2 = (short) (*pk0 ^ *pk2);
 
-            uga2a = (pks2 == 0) ? 16384 : 114688;
+            uga2a = pks2 == 0 ? 16384 : 114688;
 
-            a1s = (short)(*a1 >> 15);
+            a1s = (short) (*a1 >> 15);
 
             /* Implement f(a1) w/ limiting at +/-(1/2) */
             if (a1s == 0)
-                fa1 = (a11 <= 8191) ? (a11 << 2) : (8191 << 2);
+            {
+                fa1 = a11 <= 8191 ? a11 << 2 : 8191 << 2;
+            }
             else
-                fa1 = (a11 >= 57345) ? ((a11 << 2) & 131071) : (24577 << 2);
+            {
+                fa1 = a11 >= 57345 ? (a11 << 2) & 131071 : 24577 << 2;
+            }
 
             /* Attach sign to the result of f(a1) */
-            fa = (pks1 != 0) ? fa1 : ((131072 - fa1) & 131071);
+            fa = pks1 != 0 ? fa1 : (131072 - fa1) & 131071;
 
             uga2b = (uga2a + fa) & 131071;
-            uga2s = (uga2b >> 16);
+            uga2s = uga2b >> 16;
 
-            uga2 = (*sigpk == 1) ? 0 :
-              ((uga2s != 0) ? ((uga2b >> 7) + 64512) : (uga2b >> 7));
+            uga2 = *sigpk == 1 ? 0 :
+                uga2s != 0 ? (uga2b >> 7) + 64512 : uga2b >> 7;
 
-            a2s = (short)(*a2 >> 15);
+            a2s = (short) (*a2 >> 15);
 
-            ula2 = (a2s == 0) ? (65536 - (a21 >> 7)) & 65535 :
-              (65536 - ((a21 >> 7) + 65024)) & 65535;
+            ula2 = a2s == 0 ? (65536 - (a21 >> 7)) & 65535 : (65536 - ((a21 >> 7) + 65024)) & 65535;
 
             /* Compute update */
             ua2 = (uga2 + ula2) & 65535;
-            *a2t = (short)((a21 + ua2) & 65535);
-
+            *a2t = (short) ((a21 + ua2) & 65535);
         }
         /* ....................... end of G726_upa2() ....................... */
 
@@ -2651,35 +2873,33 @@ namespace System.Audio
 
             unchecked
             {
-                dqmag = (short)(*dq & 32767);
+                dqmag = (short) (*dq & 32767);
                 if (rate != 5)
                 {
                     leak = 8;
-                    param = (short)65280;
+                    param = (short) 65280;
                 }
                 else
                 {
                     leak = 9;
-                    param = (short)65408;
+                    param = (short) 65408;
                 }
             }
-            /* gain is 0 or +/- (1/128) */
-            ugb = (dqmag == 0) ? 0 : ((*u == 0) ? 128 : 65408);
 
-            bs = (bb >> 15);
+            /* gain is 0 or +/- (1/128) */
+            ugb = dqmag == 0 ? 0 : *u == 0 ? 128 : 65408;
+
+            bs = bb >> 15;
 
             /* Leak factor is (1/256 or 1/512 for 40 kbit/s) */
 
-            ulb = (bs == 0) ?
-              ((65536 - (bb >> leak)) & 65535) :
-              ((65536 - ((bb >> leak) + param)) & 65535);
+            ulb = bs == 0 ? (65536 - (bb >> leak)) & 65535 : (65536 - ((bb >> leak) + param)) & 65535;
 
             /* Compute update */
             ub = (ugb + ulb) & 65535;
             /*  aux = bb + ub;*/
 
-            *bp = (short)((bb + ub) & 65535);
-
+            *bp = (short) ((bb + ub) & 65535);
         }
         /* ....................... end of G726_upb() ....................... */
 
@@ -2720,12 +2940,11 @@ namespace System.Audio
             short dqns;
             short dqs;
 
-            dqs = (short)((*dq >> 15) & 1);
+            dqs = (short) ((*dq >> 15) & 1);
 
-            dqns = (short)(*dqn >> 10);
+            dqns = (short) (*dqn >> 10);
 
-            *u = (short)(dqs ^ dqns);
-
+            *u = (short) (dqs ^ dqns);
         }
         /* ....................... end of G726_xor() ....................... */
 
@@ -2765,8 +2984,7 @@ namespace System.Audio
 
             a2p1 = *a2p & 65535;
 
-            *tdp = (a2p1 >= 32768 && a2p1 < 53760) ? (short)1 : (short)0;
-
+            *tdp = a2p1 >= 32768 && a2p1 < 53760 ? (short) 1 : (short) 0;
         }
         /* ....................... end of G726_tone() ....................... */
 
@@ -2809,22 +3027,21 @@ namespace System.Audio
             short ylfrac;
             int thr1, thr2;
 
-            dqmag = (short)(*dq & 32767);
+            dqmag = (short) (*dq & 32767);
 
-            ylint = (short)(*yl >> 15);
+            ylint = (short) (*yl >> 15);
 
-            ylfrac = (short)((*yl >> 10) & 31);
+            ylfrac = (short) ((*yl >> 10) & 31);
 
             thr1 = (ylfrac + 32) << ylint;
 
-            thr2 = (ylint > 9) ? 31744 : thr1;
+            thr2 = ylint > 9 ? 31744 : thr1;
 
             dqthr = (thr2 + (thr2 >> 1)) >> 1;
 
             dqmag1 = dqmag;
 
-            *tr = (dqmag1 > dqthr && *td == 1) ? (short)1 : (short)0;
-
+            *tr = dqmag1 > dqthr && *td == 1 ? (short) 1 : (short) 0;
         }
         /* ....................... end of G726_trans() ....................... */
 
@@ -2870,51 +3087,59 @@ namespace System.Audio
             short _is;
             int srr;
 
-            _is = (short)(*sr >> 15);
-            srr = (*sr & 65535);
+            _is = (short) (*sr >> 15);
+            srr = *sr & 65535;
 
             /* Convert 2-complement to signed magnitude */
-            im = (_is == 0) ? srr : ((65536 - srr) & 32767);
+            im = _is == 0 ? srr : (65536 - srr) & 32767;
 
             /* Compress ... */
             if (*law == '1')
             {
-
                 /* Next line added by J.Patel to fix a with test vector ri40fa.o */
-                im = (*sr == -32768) ? 2 : im; /* *** */
+                im = *sr == -32768 ? 2 : im; /* *** */
 
-                imag = (_is == 0) ? (short)(im >> 1) : (short)((im + 1) >> 1);
+                imag = _is == 0 ? (short) (im >> 1) : (short) ((im + 1) >> 1);
 
                 if (_is != 0)
+                {
                     --imag;
+                }
 
                 /* Saturation */
                 if (imag > 4095)
+                {
                     imag = 4095;
+                }
 
                 iesp = 7;
                 for (i = 1; i <= 7; ++i)
                 {
                     imag += imag;
                     if (imag >= 4096)
+                    {
                         break;
-                    iesp = (short)(7 - i);
+                    }
+
+                    iesp = (short) (7 - i);
                 }
 
                 imag &= 4095;
 
-                imag = (short)(imag >> 8);
-                *sp = (_is == 0) ? (short)(imag + (iesp << 4)) : (short)(imag + (iesp << 4) + 128);
+                imag = (short) (imag >> 8);
+                *sp = _is == 0 ? (short) (imag + (iesp << 4)) : (short) (imag + (iesp << 4) + 128);
 
                 /* Sign bit inversion */
                 *sp ^= 128;
             }
             else
             {
-                imag = (short)im;
+                imag = (short) im;
 
                 if (imag > 8158)
-                    imag = 8158;              /* Saturation */
+                {
+                    imag = 8158; /* Saturation */
+                }
 
                 ++imag;
                 iesp = 0;
@@ -2925,22 +3150,24 @@ namespace System.Audio
                     for (iesp = 1; iesp <= 8; ++iesp)
                     {
                         ofst1 = ofst;
-                        ofst += (short)(1 << (iesp + 5));
+                        ofst += (short) (1 << (iesp + 5));
                         if (imag <= ofst)
+                        {
                             break;
+                        }
                     }
-                    imag -= (short)(ofst1 + 1);
+
+                    imag -= (short) (ofst1 + 1);
                 }
 
-                imag /= (short)(1 << (iesp + 1));
+                imag /= (short) (1 << (iesp + 1));
 
-                *sp = (_is == 0) ? (short)(imag + (iesp << 4)) : (short)(imag + (iesp << 4) + 128);
+                *sp = _is == 0 ? (short) (imag + (iesp << 4)) : (short) (imag + (iesp << 4) + 128);
 
                 /* Sign bit inversion */
                 *sp ^= 128;
                 *sp ^= 127;
             }
-
         }
         /* ....................... end of G726_compress()....................... */
 
@@ -2981,176 +3208,278 @@ namespace System.Audio
 
             if (rate == 4)
             {
-                _is = (short)(*i >> 3);
+                _is = (short) (*i >> 3);
 
-                im = (_is == 0) ? (short)(*i + 8) : (short)(*i & 7);
+                im = _is == 0 ? (short) (*i + 8) : (short) (*i & 7);
 
                 /* Find value of `id' as in Table 17/G.726 */
                 if (*dlnx >= 3972)
+                {
                     id = 9;
+                }
                 else if (*dlnx >= 2048)
+                {
                     id = 7;
+                }
                 else if (*dlnx >= 400)
+                {
                     id = 15;
+                }
                 else if (*dlnx >= 349)
+                {
                     id = 14;
+                }
                 else if (*dlnx >= 300)
+                {
                     id = 13;
+                }
                 else if (*dlnx >= 246)
+                {
                     id = 12;
+                }
                 else if (*dlnx >= 178)
+                {
                     id = 11;
+                }
                 else if (*dlnx >= 80)
+                {
                     id = 10;
+                }
                 else
+                {
                     id = 9;
+                }
 
                 /* Account for the negative part of the table */
                 if (*dsx != 0)
-                    id = (short)(15 - id);
+                {
+                    id = (short) (15 - id);
+                }
 
                 if (id == 8)
+                {
                     id = 7;
-            }				/* ............... end of 32 kbit part
+                }
+            } /* ............... end of 32 kbit part
 				 * ................. */
             else if (rate == 3)
             {
-                _is = (short)(*i >> 2);
+                _is = (short) (*i >> 2);
 
-                im = (_is == 0) ? (short)(*i + 4) : (short)(*i & 3);
+                im = _is == 0 ? (short) (*i + 4) : (short) (*i & 3);
 
                 /* Find value of `id' as in the Table 18/G.726 */
                 if (*dlnx >= 2048)
+                {
                     id = 3;
+                }
                 else if (*dlnx >= 331)
+                {
                     id = 7;
+                }
                 else if (*dlnx >= 218)
+                {
                     id = 6;
+                }
                 else if (*dlnx >= 8)
+                {
                     id = 5;
+                }
                 else if (*dlnx >= 0)
+                {
                     id = 3;
+                }
 
 
                 if (*dsx != 0)
-                    id = (short)(7 - id);
+                {
+                    id = (short) (7 - id);
+                }
 
                 if (id == 4)
+                {
                     id = 3;
-            }				/* ............... end of 24 kbit part
+                }
+            } /* ............... end of 24 kbit part
 				 * ................. */
             else if (rate == 2)
             {
-                _is = (short)(*i >> 1);
+                _is = (short) (*i >> 1);
 
-                im = (_is == 0) ? (short)(*i + 2) : (short)(*i & 1);
+                im = _is == 0 ? (short) (*i + 2) : (short) (*i & 1);
 
                 /* Find value of `id' as in the Table 19/G.726 */
                 if (*dlnx >= 2048)
+                {
                     id = 2;
+                }
                 else if (*dlnx >= 261)
+                {
                     id = 3;
+                }
                 else if (*dlnx >= 0)
+                {
                     id = 2;
+                }
 
                 if (*dsx != 0)
-                    id = (short)(3 - id);
-
-            }				/* ............... end of 16 kbit part
+                {
+                    id = (short) (3 - id);
+                }
+            } /* ............... end of 16 kbit part
 				 * ................. */
             else
             {
-                _is = (short)(*i >> 4);
+                _is = (short) (*i >> 4);
 
-                im = (_is == 0) ? (short)(*i + 16) : (short)(*i & 15);
+                im = _is == 0 ? (short) (*i + 16) : (short) (*i & 15);
 
                 /* Find value of `id' as in the Table 16/G.726 */
 
                 if (*dlnx >= 4080)
+                {
                     id = 18;
+                }
                 else if (*dlnx >= 3974)
+                {
                     id = 17;
+                }
                 else if (*dlnx >= 2048)
+                {
                     id = 15;
+                }
                 else if (*dlnx >= 553)
+                {
                     id = 31;
+                }
                 else if (*dlnx >= 528)
+                {
                     id = 30;
+                }
                 else if (*dlnx >= 502)
+                {
                     id = 29;
+                }
                 else if (*dlnx >= 475)
+                {
                     id = 28;
+                }
                 else if (*dlnx >= 445)
+                {
                     id = 27;
+                }
                 else if (*dlnx >= 413)
+                {
                     id = 26;
+                }
                 else if (*dlnx >= 378)
+                {
                     id = 25;
+                }
                 else if (*dlnx >= 339)
+                {
                     id = 24;
+                }
                 else if (*dlnx >= 298)
+                {
                     id = 23;
+                }
                 else if (*dlnx >= 250)
+                {
                     id = 22;
+                }
                 else if (*dlnx >= 198)
+                {
                     id = 21;
+                }
                 else if (*dlnx >= 139)
+                {
                     id = 20;
+                }
                 else if (*dlnx >= 68)
+                {
                     id = 19;
+                }
                 else if (*dlnx >= 0)
+                {
                     id = 18;
+                }
 
                 if (*dsx != 0)
-                    id = (short)(31 - id);
+                {
+                    id = (short) (31 - id);
+                }
 
                 if (id == 16)
+                {
                     id = 15;
-
-            }				/* ............... end of 40 kbit part
+                }
+            } /* ............... end of 40 kbit part
 				 * ................. */
 
             /* Choose sd as sp, sp+ or sp- */
 
-            ss = (short)((*sp & 128) >> 7);
-            mask = (short)(*sp & 127);
+            ss = (short) ((*sp & 128) >> 7);
+            mask = (short) (*sp & 127);
 
-            if (*law == '1')		/* ......... A-law */
+            if (*law == '1') /* ......... A-law */
             {
                 if (id > im && ss == 1 && mask == 0)
+                {
                     ss = 0;
+                }
                 else if (id > im && ss == 1 && mask != 0)
+                {
                     mask--;
+                }
                 else if (id > im && ss == 0 && mask != 127)
+                {
                     mask++;
+                }
                 else if (id < im && ss == 1 && mask != 127)
+                {
                     mask++;
+                }
                 else if (id < im && ss == 0 && mask == 0)
+                {
                     ss = 1;
+                }
                 else if (id < im && ss == 0 && mask != 0)
+                {
                     mask--;
+                }
             }
             else
-            {				/* ......... u-law */
+            {
+                /* ......... u-law */
                 if (id > im && ss == 1 && mask == 127)
                 {
                     ss = 0;
                     mask--;
                 }
                 else if (id > im && ss == 1 && mask != 127)
+                {
                     mask++;
+                }
                 else if (id > im && ss == 0 && mask != 0)
+                {
                     mask--;
+                }
                 else if (id < im && ss == 1 && mask != 0)
+                {
                     mask--;
+                }
                 else if (id < im && ss == 0 && mask == 127)
+                {
                     ss = 1;
+                }
                 else if (id < im && ss == 0 && mask != 127)
+                {
                     mask++;
+                }
             }
 
-            *sd = (short)(mask + (ss << 7));
-
+            *sd = (short) (mask + (ss << 7));
         }
     }
 }

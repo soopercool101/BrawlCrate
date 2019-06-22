@@ -67,7 +67,7 @@ namespace BrawlLib.SSBB
 
             //Brawl-specific files
             new SupportedFileInfo(true, "Brawl Message Pack", "msbin"),
-            
+
             //Brawl stage files
             new SupportedFileInfo(true, "Brawl Stage Collision File", "coll"),
             new SupportedFileInfo(true, "Brawl Stage Parameters File", "stpm"),
@@ -80,7 +80,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Brawl TBLV File", "tblv"),
             new SupportedFileInfo(true, "Brawl TBRM File", "tbrm"),
             new SupportedFileInfo(true, "Brawl TBST File", "tbst"),
-            
+
             //Brawl Subspace Emissary files
             new SupportedFileInfo(true, "BLOC Adventure Archive", "bloc"),
             new SupportedFileInfo(true, "Brawl GEG1 File", "geg1"),
@@ -152,9 +152,11 @@ namespace BrawlLib.SSBB
             return infoArray;
         }
 
-        public static string CompleteFilterEditableOnly => GetAllSupportedFilter(true) + "|" + GetListFilter(true) + "|All Files (*.*)|*.*";
+        public static string CompleteFilterEditableOnly =>
+            GetAllSupportedFilter(true) + "|" + GetListFilter(true) + "|All Files (*.*)|*.*";
 
-        public static string CompleteFilter => GetAllSupportedFilter(false) + "|" + GetListFilter(false) + "|All Files (*.*)|*.*";
+        public static string CompleteFilter =>
+            GetAllSupportedFilter(false) + "|" + GetListFilter(false) + "|All Files (*.*)|*.*";
 
         public static string GetCompleteFilter(params string[] extensions)
         {

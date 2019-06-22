@@ -13,7 +13,7 @@ namespace System.Windows.Forms
     {
         public event EventHandler OpenFileChanged;
 
-        protected virtual void OnOpenFileChanged(object sender,EventArgs e)
+        protected virtual void OnOpenFileChanged(object sender, EventArgs e)
         {
             EventHandler handler = OpenFileChanged;
             handler?.Invoke(this, e);
@@ -82,6 +82,7 @@ namespace System.Windows.Forms
                         lstCodes.Items[0].Selected = true;
                     }
                 }
+
                 OnOpenFileChanged(null, null);
                 _updating = false;
             }
@@ -136,7 +137,8 @@ namespace System.Windows.Forms
         {
             try
             {
-                if (string.IsNullOrEmpty(node._origPath) || node._origPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                if (string.IsNullOrEmpty(node._origPath) ||
+                    node._origPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                 {
                     return SaveAs(node, writeInfo);
                 }

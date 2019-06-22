@@ -610,13 +610,15 @@ namespace BrawlCrate
                 else if (node is ARCNode arcNode && arcNode.NumTriangles > 0)
                 {
                     newControl = modelPanel1;
-                    RenderARC(arcNode, out float minX, out float minY, out float minZ, out float maxX, out float maxY, out float maxZ);
+                    RenderARC(arcNode, out float minX, out float minY, out float minZ, out float maxX, out float maxY,
+                        out float maxZ);
                     modelPanel1.SetCamWithBox(new Box(new Vector3(minX, minY, minZ), new Vector3(maxX, maxY, maxZ)));
                 }
                 else if (node is BRRESNode brresNode && brresNode.NumTriangles > 0)
                 {
                     newControl = modelPanel1;
-                    RenderBRRES(brresNode, out float minX, out float minY, out float minZ, out float maxX, out float maxY, out float maxZ);
+                    RenderBRRES(brresNode, out float minX, out float minY, out float minZ, out float maxX,
+                        out float maxY, out float maxZ);
                     modelPanel1.SetCamWithBox(new Box(new Vector3(minX, minY, minZ), new Vector3(maxX, maxY, maxZ)));
                 }
                 else if (node is IRenderedObject o)
@@ -759,7 +761,7 @@ namespace BrawlCrate
         #region MyRegion
 
         public void RenderARC(ARCNode arcNode, out float minX, out float minY, out float minZ, out float maxX,
-                                out float maxY, out float maxZ)
+                              out float maxY, out float maxZ)
         {
             minX = 0;
             minY = 0;
@@ -771,7 +773,8 @@ namespace BrawlCrate
             {
                 if (resource is BRRESNode brresNode && brresNode.NumTriangles > 0)
                 {
-                    RenderBRRES(brresNode, out float bMinX, out float bMinY, out float bMinZ, out float bMaxX, out float bMaxY, out float bMaxZ);
+                    RenderBRRES(brresNode, out float bMinX, out float bMinY, out float bMinZ, out float bMaxX,
+                        out float bMaxY, out float bMaxZ);
                     if (bMinX < minX)
                     {
                         minX = bMinX;
@@ -804,7 +807,8 @@ namespace BrawlCrate
                 }
                 else if (resource is ARCNode subArcNode && subArcNode.NumTriangles > 0)
                 {
-                    RenderARC(subArcNode, out float aMinX, out float aMinY, out float aMinZ, out float aMaxX, out float aMaxY, out float aMaxZ);
+                    RenderARC(subArcNode, out float aMinX, out float aMinY, out float aMinZ, out float aMaxX,
+                        out float aMaxY, out float aMaxZ);
                     if (aMinX < minX)
                     {
                         minX = aMinX;
@@ -917,7 +921,7 @@ namespace BrawlCrate
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            UpdateDiscordRPC(null,null);
+            UpdateDiscordRPC(null, null);
         }
 
         protected override void OnClosing(CancelEventArgs e)

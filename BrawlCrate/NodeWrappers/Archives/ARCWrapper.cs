@@ -237,7 +237,7 @@ namespace BrawlCrate.NodeWrappers
 
         public override void OnExport(string outPath, int filterIndex)
         {
-            ((ARCNode)_resource).Export(outPath);
+            ((ARCNode) _resource).Export(outPath);
         }
 
         public void LoadModels(ResourceNode node, List<IModel> models, List<CollisionNode> collisions)

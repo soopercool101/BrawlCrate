@@ -197,19 +197,19 @@ namespace BrawlCrate.NodeWrappers
                 switch (outPath.Substring(outPath.ToLowerInvariant().LastIndexOf(".")))
                 {
                     case ".szs":
-                        ((U8Node)_resource).ExportSZS(outPath);
+                        ((U8Node) _resource).ExportSZS(outPath);
                         break;
                     case ".pair":
-                        ((U8Node)_resource).ExportPair(outPath);
+                        ((U8Node) _resource).ExportPair(outPath);
                         break;
                     default:
-                        ((U8Node)_resource).Export(outPath);
+                        ((U8Node) _resource).Export(outPath);
                         break;
                 }
             }
             else
             {
-                ((U8Node)_resource).Export(outPath);
+                ((U8Node) _resource).Export(outPath);
             }
         }
 

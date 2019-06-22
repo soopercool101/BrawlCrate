@@ -157,6 +157,7 @@ namespace BrawlCrate
                             _rootPath = args[1];
                         }
                     }
+
                     MainForm.UpdateDiscordRPC(null, null);
                     Application.Run(editor);
 
@@ -165,9 +166,12 @@ namespace BrawlCrate
                         Discord.DiscordRpc.ClearPresence();
                         Discord.DiscordRpc.Shutdown();
                     }
+
                     return;
                 }
-                if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase) || args[0].EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+
+                if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase) ||
+                    args[0].EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                 {
                     GCTEditor editor = new GCTEditor
                     {
@@ -177,6 +181,7 @@ namespace BrawlCrate
                     {
                         _rootPath = args[0];
                     }
+
                     MainForm.UpdateDiscordRPC(null, null);
                     Application.Run(editor);
                     if (CanRunDiscordRPC)
@@ -184,6 +189,7 @@ namespace BrawlCrate
                         Discord.DiscordRpc.ClearPresence();
                         Discord.DiscordRpc.Shutdown();
                     }
+
                     return;
                 }
             }
@@ -335,7 +341,8 @@ namespace BrawlCrate
                 return false;
             }
 
-            if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase) || path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase) ||
+                path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
             {
                 GCTEditor editor = new GCTEditor
                 {
