@@ -305,7 +305,7 @@ namespace BrawlLib.SSBB
             Name = name;
             if (extensions == null || extensions.Length == 0)
             {
-                throw new Exception("No extensions for file type \"" + Name + "\".");
+                throw new ArgumentException("No extensions for file type \"" + Name + "\".");
             }
 
             Extensions = extensions;
@@ -317,7 +317,7 @@ namespace BrawlLib.SSBB
             Name = name;
             if (extensions == null || extensions.Length == 0)
             {
-                throw new Exception("No extensions for file type \"" + Name + "\".");
+                throw new ArgumentException("No extensions for file type \"" + Name + "\".");
             }
 
             Extensions = extensions;
