@@ -15,17 +15,12 @@ namespace BrawlCrate
         {
             foreach (SupportedFileInfo info in SupportedFilesHandler.Files)
             {
-                if (info._forEditing)
+                if (info.Associatable)
                 {
-                    foreach (string s in info._extensions)
+                    foreach (string s in info.Extensions)
                     {
-                        if (!s.Equals("dat", StringComparison.OrdinalIgnoreCase) &&
-                            !s.Equals("bin", StringComparison.OrdinalIgnoreCase) &&
-                            !s.Equals("txt", StringComparison.OrdinalIgnoreCase))
-                        {
-                            _assocList.Add(FileAssociation.Get("." + s));
-                            _typeList.Add(FileType.Get("SSBB." + s.ToUpper()));
-                        }
+                        _assocList.Add(FileAssociation.Get("." + s));
+                        _typeList.Add(FileType.Get("SSBB." + s.ToUpper()));
                     }
                 }
             }
@@ -112,17 +107,12 @@ namespace BrawlCrate
             listView1.Items.Clear();
             foreach (SupportedFileInfo info in SupportedFilesHandler.Files)
             {
-                if (info._forEditing)
+                if (info.Associatable)
                 {
-                    foreach (string s in info._extensions)
+                    foreach (string s in info.Extensions)
                     {
-                        if (!s.Equals("dat", StringComparison.OrdinalIgnoreCase) &&
-                            !s.Equals("bin", StringComparison.OrdinalIgnoreCase) &&
-                            !s.Equals("txt", StringComparison.OrdinalIgnoreCase))
-                        {
-                            listView1.Items.Add(new ListViewItem()
-                                {Text = string.Format("{0} (*.{1})", info._name, s)});
-                        }
+                        listView1.Items.Add(new ListViewItem()
+                            {Text = string.Format("{0} (*.{1})", info.Name, s)});
                     }
                 }
             }

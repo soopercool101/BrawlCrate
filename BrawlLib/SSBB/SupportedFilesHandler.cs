@@ -92,7 +92,7 @@ namespace BrawlLib.SSBB
 
             //Gecko Codes
             new SupportedFileInfo(true, "GCT Code List", "gct"),
-            new SupportedFileInfo(true, "Text File", "txt"),
+            new SupportedFileInfo(true, false, "Text File", "txt"),
 
             //Brawl Mod Files
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
@@ -112,8 +112,8 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "Uncompressed PCM", "wav"),
             new SupportedFileInfo(false, "3D Object Mesh", "obj"),
             new SupportedFileInfo(false, "JSON File", "json"),
-            new SupportedFileInfo(true, "Data File", "dat"),
-            new SupportedFileInfo(true, "Binary File", "bin"),
+            new SupportedFileInfo(true, false, "Data File", "dat"),
+            new SupportedFileInfo(true, false, "Binary File", "bin"),
             new SupportedFileInfo(false, "Raw Data File", "*"),
         };
 
@@ -128,7 +128,7 @@ namespace BrawlLib.SSBB
             SupportedFileInfo[] infoArray = new SupportedFileInfo[extensions.Length];
             foreach (SupportedFileInfo fileInfo in Files)
             {
-                foreach (string ext in fileInfo._extensions)
+                foreach (string ext in fileInfo.Extensions)
                 {
                     int index = extensions.IndexOf(ext);
                     if (index >= 0 && !infoArray.Contains(fileInfo))
@@ -168,7 +168,7 @@ namespace BrawlLib.SSBB
             switch (files.Length)
             {
                 case 0:
-                case 1 when files[0]._extensions[0].Equals("*"):
+                case 1 when files[0].Extensions[0].Equals("*"):
                     return "All Files (*.*)|*.*";
                 case 1: //No need for the "all supported" filter if there's only one supported filter
                     return GetListFilter(files) + "|All Files (*.*)|*.*";
@@ -216,7 +216,7 @@ namespace BrawlLib.SSBB
             IEnumerable<SupportedFileInfo> e;
             if (editableOnly)
             {
-                e = files.Where(x => x._forEditing);
+                e = files.Where(x => x.ForEditing);
             }
             else
             {
@@ -274,7 +274,7 @@ namespace BrawlLib.SSBB
             IEnumerable<SupportedFileInfo> e;
             if (editableOnly)
             {
-                e = files.Where(x => x._forEditing);
+                e = files.Where(x => x.ForEditing);
             }
             else
             {
@@ -293,20 +293,34 @@ namespace BrawlLib.SSBB
 
     public class SupportedFileInfo
     {
-        public string _name;
-        public string[] _extensions;
-        public bool _forEditing;
+        public string Name;
+        public string[] Extensions;
+        public bool ForEditing;
+        public bool Associatable;
 
         public SupportedFileInfo(bool forEditing, string name, params string[] extensions)
         {
-            _forEditing = forEditing;
-            _name = name;
+            ForEditing = forEditing;
+            Associatable = forEditing;
+            Name = name;
             if (extensions == null || extensions.Length == 0)
             {
-                throw new Exception("No extensions for file type \"" + _name + "\".");
+                throw new Exception("No extensions for file type \"" + Name + "\".");
             }
 
-            _extensions = extensions;
+            Extensions = extensions;
+        }
+        public SupportedFileInfo(bool forEditing, bool associate, string name, params string[] extensions)
+        {
+            ForEditing = forEditing;
+            Associatable = associate;
+            Name = name;
+            if (extensions == null || extensions.Length == 0)
+            {
+                throw new Exception("No extensions for file type \"" + Name + "\".");
+            }
+
+            Extensions = extensions;
         }
 
         public string Filter
@@ -314,7 +328,7 @@ namespace BrawlLib.SSBB
             get
             {
                 string s = ExtensionsFilter;
-                return _name + " (" + s.Replace(";", ", ") + ")|" + s;
+                return Name + " (" + s.Replace(";", ", ") + ")|" + s;
             }
         }
 
@@ -324,7 +338,7 @@ namespace BrawlLib.SSBB
             {
                 string filter = "";
                 bool first = true;
-                foreach (string ext in _extensions)
+                foreach (string ext in Extensions)
                 {
                     if (!first)
                     {
