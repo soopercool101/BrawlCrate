@@ -2560,16 +2560,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                     for (int i = 0; i < p._vertices.Count; i++)
                     {
                         Vertex3 v = p._vertices[i];
-                        if (v._faceDataIndices != null)
+                        if (v.FaceDataIndices != null)
                         {
-                            for (int m = 0; m < v._faceDataIndices.Count; m++)
+                            for (int m = 0; m < v.FaceDataIndices.Count; m++)
                             {
-                                int fIndex = v._faceDataIndices[m];
+                                int fIndex = v.FaceDataIndices[m];
                                 if (fIndex < p._pointCount && fIndex >= 0)
                                 {
                                     if (p._faceData[1] != null && poly._normalNode != null)
                                     {
-                                        int normalIndex = v._facepoints[m]._normalIndex;
+                                        int normalIndex = v.Facepoints[m]._normalIndex;
                                         if (normalIndex >= 0 && normalIndex < poly._normalNode.Normals.Length)
                                         {
                                             ((Vector3*) p._faceData[1].Address)[fIndex] =
@@ -2583,7 +2583,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         {
                                             if (p._faceData[c + 2] != null && poly._colorSet[c] != null)
                                             {
-                                                int colorIndex = v._facepoints[m]._colorIndices[c];
+                                                int colorIndex = v.Facepoints[m]._colorIndices[c];
                                                 if (colorIndex >= 0 && colorIndex < poly._colorSet[c].Colors.Length)
                                                 {
                                                     ((RGBAPixel*) p._faceData[c + 2].Address)[fIndex] =
@@ -2637,10 +2637,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                                 foreach (MDL0VertexNode vNode in nodes)
                                 {
-                                    if (vNode != null && v3._facepoints[0]._vertexIndex < vNode.Vertices.Length)
+                                    if (vNode != null && v3.Facepoints[0]._vertexIndex < vNode.Vertices.Length)
                                     {
                                         v3._weightedPosition +=
-                                            v3.GetMatrix() * vNode.Vertices[v3._facepoints[0]._vertexIndex] *
+                                            v3.GetMatrix() * vNode.Vertices[v3.Facepoints[0]._vertexIndex] *
                                             weights[x];
                                     }
 
@@ -2692,9 +2692,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 {
                                     Vertex3 v3 = p._vertices[i];
                                     int m = 0;
-                                    foreach (Facepoint r in v3._facepoints)
+                                    foreach (Facepoint r in v3.Facepoints)
                                     {
-                                        int nIndex = v3._faceDataIndices[m++];
+                                        int nIndex = v3.FaceDataIndices[m++];
 
                                         Vector3 weightedNormal =
                                             v3.GetMatrix().GetRotationMatrix() * pData[nIndex] * baseWeight;
@@ -2761,9 +2761,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     {
                                         Vertex3 v3 = p._vertices[i];
                                         int m = 0;
-                                        foreach (Facepoint r in v3._facepoints)
+                                        foreach (Facepoint r in v3.Facepoints)
                                         {
-                                            int cIndex = v3._faceDataIndices[m++];
+                                            int cIndex = v3.FaceDataIndices[m++];
                                             if (cIndex < p._pointCount)
                                             {
                                                 Vector4 color =

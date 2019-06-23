@@ -802,8 +802,8 @@ namespace BrawlLib.Wii.Models
                 //Add vertex to list using raw value.
                 for (int i = 0; i < RemapTable.Count; i++)
                 {
-                    Vertex3 v = new Vertex3(pVert[RemapTable[i]]) {_facepoints = _points[i]};
-                    foreach (Facepoint f in v._facepoints)
+                    Vertex3 v = new Vertex3(pVert[RemapTable[i]]) {Facepoints = _points[i]};
+                    foreach (Facepoint f in v.Facepoints)
                     {
                         f._vertex = v;
                     }
@@ -824,8 +824,8 @@ namespace BrawlLib.Wii.Models
                         mtx = nodeTable[node];
                     }
 
-                    Vertex3 v = new Vertex3(pVert[x & 0xFFFF], mtx) {_facepoints = _points[i]};
-                    foreach (Facepoint f in v._facepoints)
+                    Vertex3 v = new Vertex3(pVert[x & 0xFFFF], mtx) {Facepoints = _points[i]};
+                    foreach (Facepoint f in v.Facepoints)
                     {
                         f._vertex = v;
                     }

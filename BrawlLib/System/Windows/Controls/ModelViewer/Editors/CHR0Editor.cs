@@ -1560,7 +1560,7 @@ namespace System.Windows.Forms
                     for (int i = 0; i < o._manager._vertices.Count; i++)
                     {
                         Vertex3 vec = o._manager._vertices[i];
-                        o._vertexNode.Vertices[o._manager._vertices[i]._facepoints[0]._vertexIndex] =
+                        o._vertexNode.Vertices[o._manager._vertices[i].Facepoints[0]._vertexIndex] =
                             vec.WeightedPosition;
                     }
 

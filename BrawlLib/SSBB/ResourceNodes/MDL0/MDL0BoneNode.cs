@@ -824,7 +824,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
                         if (pData != null)
                         {
-                            foreach (int i in v._faceDataIndices)
+                            foreach (int i in v.FaceDataIndices)
                             {
                                 pData[i] *= rm;
                             }
@@ -841,7 +841,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                     if (o._manager._faceData[1] != null)
                     {
                         Vector3* pData = (Vector3*) o._manager._faceData[1].Address;
-                        foreach (int i in v._faceDataIndices)
+                        foreach (int i in v.FaceDataIndices)
                         {
                             pData[i] *= rm;
                         }
@@ -863,7 +863,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
 
                     if (pData != null)
                     {
-                        foreach (int i in v._faceDataIndices)
+                        foreach (int i in v.FaceDataIndices)
                         {
                             pData[i] *= rm;
                         }
@@ -911,7 +911,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                                     foreach (Vertex3 v in o._manager._vertices)
                                     {
                                         v._position *= inf.Matrix;
-                                        foreach (int i in v._faceDataIndices)
+                                        foreach (int i in v.FaceDataIndices)
                                         {
                                             pData[i] *= inf.Matrix.GetRotationMatrix();
                                         }
@@ -926,7 +926,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                                     {
                                         Influence inf = (Influence) v.MatrixNode;
                                         v._position *= inf.Matrix;
-                                        foreach (int i in v._faceDataIndices)
+                                        foreach (int i in v.FaceDataIndices)
                                         {
                                             pData[i] *= inf.Matrix.GetRotationMatrix();
                                         }
@@ -955,7 +955,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                                     foreach (Vertex3 v in o._manager._vertices)
                                     {
                                         v._position *= inf.InverseMatrix;
-                                        foreach (int i in v._faceDataIndices)
+                                        foreach (int i in v.FaceDataIndices)
                                         {
                                             pData[i] *= inf.InverseMatrix.GetRotationMatrix();
                                         }
@@ -970,7 +970,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
                                     {
                                         Influence inf = (Influence) v.MatrixNode;
                                         v._position *= inf.InverseMatrix;
-                                        foreach (int i in v._faceDataIndices)
+                                        foreach (int i in v.FaceDataIndices)
                                         {
                                             pData[i] *= inf.InverseMatrix.GetRotationMatrix();
                                         }

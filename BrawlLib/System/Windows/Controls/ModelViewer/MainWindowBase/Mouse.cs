@@ -1019,17 +1019,17 @@ namespace System.Windows.Forms
                         Vector3 point = v.UnProject(e.X, e.Y, depth);
                         Vertex3 vertex = CompareVertexDistance(point);
                         bool update = false;
-                        if (_hiVertex != null && !_hiVertex._selected)
+                        if (_hiVertex != null && !_hiVertex.Selected)
                         {
                             update = true;
-                            _hiVertex._highlightColor = Color.Transparent;
+                            _hiVertex.HighlightColor = Color.Transparent;
                             ModelPanel.CurrentViewport.AllowSelection = true;
                         }
 
                         if ((_hiVertex = vertex) != null)
                         {
                             update = true;
-                            _hiVertex._highlightColor = Color.Orange;
+                            _hiVertex.HighlightColor = Color.Orange;
                             panel.Cursor = Cursors.Cross;
                             ModelPanel.CurrentViewport.AllowSelection = false;
                         }
@@ -1041,9 +1041,9 @@ namespace System.Windows.Forms
                     }
                     else if (_hiVertex != null)
                     {
-                        if (!_hiVertex._selected)
+                        if (!_hiVertex.Selected)
                         {
-                            _hiVertex._highlightColor = Color.Transparent;
+                            _hiVertex.HighlightColor = Color.Transparent;
                             ModelPanel.CurrentViewport.AllowSelection = true;
                             panel.Invalidate();
                         }
@@ -1114,7 +1114,7 @@ namespace System.Windows.Forms
                         {
                             SelectVertex(v, false);
                         }
-                        else if (!v._selected)
+                        else if (!v.Selected)
                         {
                             SelectVertex(v, true);
                         }

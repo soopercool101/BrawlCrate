@@ -437,7 +437,7 @@ namespace BrawlLib.Modeling
             {
                 if (*pIndex >= 0 && *pIndex < _vertices.Count)
                 {
-                    _vertices[*pIndex]._faceDataIndices.Add(x);
+                    _vertices[*pIndex].FaceDataIndices.Add(x);
                 }
             }
 
@@ -1814,7 +1814,7 @@ namespace BrawlLib.Modeling
                                     f._vertex = _vertices[id];
                                 }
 
-                                f._vertexIndex = f._vertex._facepoints[0]._vertexIndex;
+                                f._vertexIndex = f._vertex.Facepoints[0]._vertexIndex;
                             }
                         }
 
@@ -1875,9 +1875,9 @@ namespace BrawlLib.Modeling
             {
                 foreach (Vertex3 v in _vertices)
                 {
-                    for (int i = 0; i < v._faceDataIndices.Count; i++)
+                    for (int i = 0; i < v.FaceDataIndices.Count; i++)
                     {
-                        _facepoints[v._faceDataIndices[i]] = v._facepoints[i];
+                        _facepoints[v.FaceDataIndices[i]] = v.Facepoints[i];
                     }
                 }
             }
@@ -2219,7 +2219,7 @@ namespace BrawlLib.Modeling
 
             foreach (Vertex3 v in _vertices)
             {
-                Color w = v._highlightColor != Color.Transparent ? v._highlightColor :
+                Color w = v.HighlightColor != Color.Transparent ? v.HighlightColor :
                     singleBind != null && singleBind == weightTarget ? Color.Red : v.GetWeightColor(weightTarget);
                 if (w != Color.Transparent)
                 {
@@ -2340,7 +2340,7 @@ namespace BrawlLib.Modeling
             int x = 0;
             foreach (Vertex3 v in _vertices)
             {
-                foreach (Facepoint f in v._facepoints)
+                foreach (Facepoint f in v.Facepoints)
                 {
                     f._vertexIndex = x;
                     f._vertex = v;
@@ -2405,9 +2405,9 @@ namespace BrawlLib.Modeling
             Vector3* pData = (Vector3*) _faceData[1].Address;
             foreach (Vertex3 v in _vertices)
             {
-                for (int i = 0; i < v._faceDataIndices.Count; i++)
+                for (int i = 0; i < v.FaceDataIndices.Count; i++)
                 {
-                    v._facepoints[i]._normalIndex = Array.IndexOf(node.Normals, pData[v._faceDataIndices[i]]);
+                    v.Facepoints[i]._normalIndex = Array.IndexOf(node.Normals, pData[v.FaceDataIndices[i]]);
                 }
             }
         }
@@ -2469,9 +2469,9 @@ namespace BrawlLib.Modeling
             RGBAPixel* pData = (RGBAPixel*) _faceData[id + 2].Address;
             foreach (Vertex3 v in _vertices)
             {
-                for (int i = 0; i < v._faceDataIndices.Count; i++)
+                for (int i = 0; i < v.FaceDataIndices.Count; i++)
                 {
-                    v._facepoints[i]._colorIndices[id] = Array.IndexOf(node.Colors, pData[v._faceDataIndices[i]]);
+                    v.Facepoints[i]._colorIndices[id] = Array.IndexOf(node.Colors, pData[v.FaceDataIndices[i]]);
                 }
             }
         }
@@ -2533,9 +2533,9 @@ namespace BrawlLib.Modeling
             Vector2* pData = (Vector2*) _faceData[id + 4].Address;
             foreach (Vertex3 v in _vertices)
             {
-                for (int i = 0; i < v._faceDataIndices.Count; i++)
+                for (int i = 0; i < v.FaceDataIndices.Count; i++)
                 {
-                    v._facepoints[i]._UVIndices[id] = Array.IndexOf(node.Points, pData[v._faceDataIndices[i]]);
+                    v.Facepoints[i]._UVIndices[id] = Array.IndexOf(node.Points, pData[v.FaceDataIndices[i]]);
                 }
             }
         }
