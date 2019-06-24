@@ -607,36 +607,10 @@ namespace BrawlCrate
                     previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
-                else if (node is ARCNode arcNode && arcNode.NumTriangles > 0)
+                else if ((node is ARCNode arcNode && arcNode.NumTriangles > 0) || (node is BRRESNode brresNode && brresNode.NumTriangles > 0) || node is IRenderedObject o)
                 {
                     newControl = modelPanel1;
-                    RenderARC(arcNode, out float minX, out float minY, out float minZ, out float maxX, out float maxY,
-                        out float maxZ);
-                    modelPanel1.SetCamWithBox(new Box(new Vector3(minX, minY, minZ), new Vector3(maxX, maxY, maxZ)));
-                }
-                else if (node is BRRESNode brresNode && brresNode.NumTriangles > 0)
-                {
-                    newControl = modelPanel1;
-                    RenderBRRES(brresNode, out float minX, out float minY, out float minZ, out float maxX,
-                        out float maxY, out float maxZ);
-                    modelPanel1.SetCamWithBox(new Box(new Vector3(minX, minY, minZ), new Vector3(maxX, maxY, maxZ)));
-                }
-                else if (node is IRenderedObject o)
-                {
-                    newControl = modelPanel1;
-                    //Model panel has to be loaded first to display model correctly
-                    if (node._children == null)
-                    {
-                        node.Populate(0);
-                    }
-
-                    if (o is IModel m && ModelEditControl.Instances.Count == 0)
-                    {
-                        m.ResetToBindState();
-                    }
-
-                    modelPanel1.AddTarget(o);
-                    modelPanel1.SetCamWithBox(o.GetBox());
+                    RenderSelected(node);
                 }
                 else if (node is STDTNode)
                 {
@@ -758,83 +732,123 @@ namespace BrawlCrate
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
-        #region MyRegion
+        #region Rendering
 
-        public void RenderARC(ARCNode arcNode, out float minX, out float minY, out float minZ, out float maxX,
-                              out float maxY, out float maxZ)
+        public static void RenderSelected(ResourceNode node)
         {
-            minX = 0;
-            minY = 0;
-            minZ = 0;
-            maxX = 0;
-            maxY = 0;
-            maxZ = 0;
+            float? minX = null;
+            float? minY = null;
+            float? minZ = null;
+            float? maxX = null;
+            float? maxY = null;
+            float? maxZ = null;
+            if (node == null)
+            {
+                return;
+            }
+            if (node is ARCNode arcNode)
+            {
+                RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+            }
+            else if (node is BRRESNode brresNode)
+            {
+                RenderBRRES(brresNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+            }
+            else if (node is IRenderedObject o)
+            {
+                //Model panel has to be loaded first to display model correctly
+                if (node._children == null)
+                {
+                    node.Populate(0);
+                }
+
+                if (o is IModel m && ModelEditControl.Instances.Count == 0)
+                {
+                    m.ResetToBindState();
+                }
+
+                Instance.modelPanel1.AddTarget(o, false);
+                Instance.modelPanel1.SetCamWithBox(o.GetBox());
+                return;
+            }
+            Instance.modelPanel1.SetCamWithBox(new Box(new Vector3(minX ?? 0, minY ?? 0, minZ ?? 0), new Vector3(maxX ?? 0, maxY ?? 0, maxZ ?? 0)));
+        }
+
+        public static void RenderARC(ARCNode arcNode, out float? minX, out float? minY, out float? minZ, out float? maxX,
+                              out float? maxY, out float? maxZ)
+        {
+            minX = null;
+            minY = null;
+            minZ = null;
+            maxX = null;
+            maxY = null;
+            maxZ = null;
             foreach (ResourceNode resource in arcNode.Children)
             {
                 if (resource is BRRESNode brresNode && brresNode.NumTriangles > 0)
                 {
-                    RenderBRRES(brresNode, out float bMinX, out float bMinY, out float bMinZ, out float bMaxX,
-                        out float bMaxY, out float bMaxZ);
-                    if (bMinX < minX)
+                    RenderBRRES(brresNode, out float? bMinX, out float? bMinY, out float? bMinZ, out float? bMaxX,
+                        out float? bMaxY, out float? bMaxZ);
+                    if (minX == null || bMinX < minX)
                     {
                         minX = bMinX;
                     }
 
-                    if (bMinY < minY)
+                    if (minY == null || bMinY < minY)
                     {
                         minY = bMinY;
                     }
 
-                    if (bMinZ < minZ)
+                    if (minZ == null || bMinZ < minZ)
                     {
                         minZ = bMinZ;
                     }
 
-                    if (bMaxX > maxX)
+                    if (maxX == null || bMaxX > maxX)
                     {
                         maxX = bMaxX;
                     }
 
-                    if (bMaxY > maxY)
+                    if (maxY == null || bMaxY > maxY)
                     {
                         maxY = bMaxY;
                     }
 
-                    if (bMaxZ > maxZ)
+                    if (maxZ == null || bMaxZ > maxZ)
                     {
                         maxZ = bMaxZ;
                     }
                 }
                 else if (resource is ARCNode subArcNode && subArcNode.NumTriangles > 0)
                 {
-                    RenderARC(subArcNode, out float aMinX, out float aMinY, out float aMinZ, out float aMaxX,
-                        out float aMaxY, out float aMaxZ);
-                    if (aMinX < minX)
+                    RenderARC(subArcNode, out float? aMinX, out float? aMinY, out float? aMinZ, out float? aMaxX,
+                        out float? aMaxY, out float? aMaxZ);
+                    if (minX == null || aMinX < minX)
                     {
                         minX = aMinX;
                     }
 
-                    if (aMinY < minY)
+                    if (minY == null || aMinY < minY)
                     {
                         minY = aMinY;
                     }
 
-                    if (aMinZ < minZ)
+                    if (minZ == null || aMinZ < minZ)
                     {
                         minZ = aMinZ;
                     }
 
-                    if (aMaxX > maxX)
+                    if (maxX == null || aMaxX > maxX)
                     {
                         maxX = aMaxX;
                     }
 
-                    if (aMaxY > maxY)
+                    if (maxY == null || aMaxY > maxY)
                     {
                         maxY = aMaxY;
                     }
 
-                    if (aMaxZ > maxZ)
+                    if (maxZ == null || aMaxZ > maxZ)
                     {
                         maxZ = aMaxZ;
                     }
@@ -842,15 +856,15 @@ namespace BrawlCrate
             }
         }
 
-        public void RenderBRRES(BRRESNode brresNode, out float minX, out float minY, out float minZ, out float maxX,
-                                out float maxY, out float maxZ)
+        public static void RenderBRRES(BRRESNode brresNode, out float? minX, out float? minY, out float? minZ, out float? maxX,
+                                out float? maxY, out float? maxZ)
         {
-            minX = 0;
-            minY = 0;
-            minZ = 0;
-            maxX = 0;
-            maxY = 0;
-            maxZ = 0;
+            minX = null;
+            minY = null;
+            minZ = null;
+            maxX = null;
+            maxY = null;
+            maxZ = null;
             BRESGroupNode modelGroup = brresNode.GetFolder<MDL0Node>();
             foreach (MDL0Node model in modelGroup.Children)
             {
@@ -861,34 +875,35 @@ namespace BrawlCrate
 
                 model.ResetToBindState();
 
-                modelPanel1.AddTarget(model);
+                Instance.modelPanel1.AddTarget(model, false);
                 Box b = model.GetBox();
-                if (b.Min._x < minX)
+
+                if (minX == null || b.Min._x < minX)
                 {
                     minX = b.Min._x;
                 }
 
-                if (b.Min._y < minY)
+                if (minY == null || b.Min._y < minY)
                 {
                     minY = b.Min._y;
                 }
 
-                if (b.Min._z < minZ)
+                if (minZ == null || b.Min._z < minZ)
                 {
                     minZ = b.Min._z;
                 }
 
-                if (b.Max._x > maxX)
+                if (maxX == null || b.Max._x > maxX)
                 {
                     maxX = b.Max._x;
                 }
 
-                if (b.Max._y > maxY)
+                if (maxY == null || b.Max._y > maxY)
                 {
                     maxY = b.Max._y;
                 }
 
-                if (b.Max._z > maxZ)
+                if (maxZ == null || b.Max._z > maxZ)
                 {
                     maxZ = b.Max._z;
                 }

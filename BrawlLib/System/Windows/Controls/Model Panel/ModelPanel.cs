@@ -118,6 +118,11 @@ namespace System.Windows.Forms
 
         public void AddTarget(IRenderedObject target)
         {
+            AddTarget(target, true);
+        }
+
+        public void AddTarget(IRenderedObject target, bool invalidate)
+        {
             if (_renderList.Contains(target))
             {
                 return;
@@ -134,6 +139,10 @@ namespace System.Windows.Forms
             }
 
             _drawCalls.AddRange(target.DrawCalls);
+            if (_drawCalls.Count <= 0)
+            {
+                return;
+            }
             _drawCalls.Sort(DrawCallSort);
 
             if (target is ResourceNode)
@@ -141,7 +150,10 @@ namespace System.Windows.Forms
                 _resourceList.Add(target as ResourceNode);
             }
 
-            Invalidate();
+            if (invalidate)
+            {
+                Invalidate();
+            }
         }
 
         public void RemoveTarget(IRenderedObject target, bool refreshReferences = true)
