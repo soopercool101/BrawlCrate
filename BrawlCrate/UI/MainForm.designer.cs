@@ -30,9 +30,9 @@ namespace BrawlCrate
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.ModelPanelViewport modelPanelViewport1 = new System.Windows.Forms.ModelPanelViewport();
             BrawlLib.OpenGL.GLCamera glCamera1 = new BrawlLib.OpenGL.GLCamera();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.resourceTree = new BrawlCrate.ResourceTree();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -85,11 +85,11 @@ namespace BrawlCrate
             this.gCTEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.runScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pluginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reloadPluginsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,12 +110,13 @@ namespace BrawlCrate
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.resourceTree);
+            this.splitContainer1.Panel1.Controls.Add(this.menuStrip1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(617, 387);
-            this.splitContainer1.SplitterDistance = 224;
+            this.splitContainer1.Size = new System.Drawing.Size(676, 404);
+            this.splitContainer1.SplitterDistance = 236;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
             this.splitContainer1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseDown);
@@ -133,7 +134,7 @@ namespace BrawlCrate
             this.resourceTree.Name = "resourceTree";
             this.resourceTree.SelectedImageIndex = 0;
             this.resourceTree.ShowIcons = true;
-            this.resourceTree.Size = new System.Drawing.Size(224, 387);
+            this.resourceTree.Size = new System.Drawing.Size(236, 404);
             this.resourceTree.TabIndex = 0;
             this.resourceTree.SelectionChanged += new System.EventHandler(this.resourceTree_SelectionChanged);
             // 
@@ -170,8 +171,8 @@ namespace BrawlCrate
             this.splitContainer2.Panel2.Controls.Add(this.rsarGroupEditor);
             this.splitContainer2.Panel2.Controls.Add(this.soundPackControl1);
             this.splitContainer2.Panel2.Controls.Add(this.msBinEditor1);
-            this.splitContainer2.Size = new System.Drawing.Size(389, 387);
-            this.splitContainer2.SplitterDistance = 192;
+            this.splitContainer2.Size = new System.Drawing.Size(436, 404);
+            this.splitContainer2.SplitterDistance = 200;
             this.splitContainer2.TabIndex = 3;
             this.splitContainer2.TabStop = false;
             this.splitContainer2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseDown);
@@ -185,7 +186,7 @@ namespace BrawlCrate
             this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid1.Name = "propertyGrid1";
             this.propertyGrid1.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid1.Size = new System.Drawing.Size(389, 192);
+            this.propertyGrid1.Size = new System.Drawing.Size(436, 200);
             this.propertyGrid1.TabIndex = 2;
             this.propertyGrid1.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.propertyGrid1_SelectedGridItemChanged);
             // 
@@ -291,7 +292,7 @@ namespace BrawlCrate
             this.previewPanel2.Location = new System.Drawing.Point(0, 0);
             this.previewPanel2.Name = "previewPanel2";
             this.previewPanel2.RenderingTarget = null;
-            this.previewPanel2.Size = new System.Drawing.Size(370, 122);
+            this.previewPanel2.Size = new System.Drawing.Size(401, 123);
             this.previewPanel2.TabIndex = 16;
             this.previewPanel2.Visible = false;
             // 
@@ -400,14 +401,14 @@ namespace BrawlCrate
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.pluginToolStripMenuItem,
-            this.helpToolStripMenuItem});
+                this.fileToolStripMenuItem,
+                this.editToolStripMenuItem,
+                this.toolsToolStripMenuItem,
+                this.pluginToolStripMenuItem,
+                this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(617, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(211, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -487,7 +488,7 @@ namespace BrawlCrate
             // bRSTMAudioStreamToolStripMenuItem
             // 
             this.bRSTMAudioStreamToolStripMenuItem.Name = "bRSTMAudioStreamToolStripMenuItem";
-            this.bRSTMAudioStreamToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.bRSTMAudioStreamToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.bRSTMAudioStreamToolStripMenuItem.Text = "BRSTM Audio Stream";
             this.bRSTMAudioStreamToolStripMenuItem.Click += new System.EventHandler(this.bRStmAudioToolStripMenuItem_Click);
             // 
@@ -504,21 +505,21 @@ namespace BrawlCrate
             // eFLSEffectListToolStripMenuItem
             // 
             this.eFLSEffectListToolStripMenuItem.Name = "eFLSEffectListToolStripMenuItem";
-            this.eFLSEffectListToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.eFLSEffectListToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.eFLSEffectListToolStripMenuItem.Text = "EFLS Effect List";
             this.eFLSEffectListToolStripMenuItem.Click += new System.EventHandler(this.eFLSEffectListToolStripMenuItem_Click);
             // 
             // rEFFParticlesToolStripMenuItem
             // 
             this.rEFFParticlesToolStripMenuItem.Name = "rEFFParticlesToolStripMenuItem";
-            this.rEFFParticlesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.rEFFParticlesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.rEFFParticlesToolStripMenuItem.Text = "REFF Particles";
             this.rEFFParticlesToolStripMenuItem.Click += new System.EventHandler(this.rEFFParticlesToolStripMenuItem_Click);
             // 
             // rEFTParticleTexturesToolStripMenuItem
             // 
             this.rEFTParticleTexturesToolStripMenuItem.Name = "rEFTParticleTexturesToolStripMenuItem";
-            this.rEFTParticleTexturesToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.rEFTParticleTexturesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.rEFTParticleTexturesToolStripMenuItem.Text = "REFT Particle Textures";
             this.rEFTParticleTexturesToolStripMenuItem.Click += new System.EventHandler(this.rEFTParticleTexturesToolStripMenuItem_Click);
             // 
@@ -596,7 +597,7 @@ namespace BrawlCrate
             this.runScriptToolStripMenuItem,
             this.reloadPluginsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // settingsToolStripMenuItem
@@ -624,6 +625,13 @@ namespace BrawlCrate
             this.runScriptToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.runScriptToolStripMenuItem.Text = "Run Script..";
             this.runScriptToolStripMenuItem.Click += new System.EventHandler(this.runScriptToolStripMenuItem_Click);
+            // 
+            // reloadPluginsToolStripMenuItem
+            // 
+            this.reloadPluginsToolStripMenuItem.Name = "reloadPluginsToolStripMenuItem";
+            this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
+            this.reloadPluginsToolStripMenuItem.Click += new System.EventHandler(this.reloadPluginsToolStripMenuItem_Click);
             // 
             // pluginToolStripMenuItem
             // 
@@ -654,21 +662,13 @@ namespace BrawlCrate
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click_1);
             // 
-            // reloadPluginsToolStripMenuItem
-            // 
-            this.reloadPluginsToolStripMenuItem.Name = "reloadPluginsToolStripMenuItem";
-            this.reloadPluginsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.reloadPluginsToolStripMenuItem.Text = "Reload Plugins";
-            this.reloadPluginsToolStripMenuItem.Click += new System.EventHandler(this.reloadPluginsToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 411);
+            this.ClientSize = new System.Drawing.Size(676, 428);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.menuStrip1);
             this.Icon = BrawlLib.Properties.Resources.Icon;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
