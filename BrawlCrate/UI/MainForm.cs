@@ -1180,6 +1180,22 @@ namespace BrawlCrate
                 }
             }
         }
+
+        private void ShowChangelogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.Canary)
+            {
+                if (Program.CanRunGithubApp(true, out string path))
+                {
+                    Process.Start(new ProcessStartInfo()
+                    {
+                        FileName = path,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        Arguments = string.Format("-canarylog"),
+                    });
+                }
+            }
+        }
     }
 
     public class RecentFileHandler : Component
