@@ -16,8 +16,6 @@ namespace BrawlCrate
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(ModelForm));
             modelEditControl1 = new ModelEditControl();
             SuspendLayout();
             // 

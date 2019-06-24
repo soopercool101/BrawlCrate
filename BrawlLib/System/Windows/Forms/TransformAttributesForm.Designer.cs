@@ -23,7 +23,6 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransformAttributesForm));
 			this.transformAttributesControl1 = new System.Windows.Forms.TransformAttributesControl();
 			this.btnOkay = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();

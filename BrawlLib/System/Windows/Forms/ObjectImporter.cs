@@ -279,8 +279,6 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(ObjectImporter));
             btnCancel = new Button();
             btnOkay = new Button();
             label1 = new Label();

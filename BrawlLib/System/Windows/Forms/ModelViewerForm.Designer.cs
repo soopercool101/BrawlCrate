@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelViewerForm));
             this.modelPanel1 = new System.Windows.Forms.ModelPanel();
             this.SuspendLayout();
             // 

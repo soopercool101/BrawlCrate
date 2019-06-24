@@ -11,8 +11,6 @@ namespace System.Windows.Forms
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(CollisionForm));
             collisionEditor1 = new CollisionEditor();
             SuspendLayout();
             // 

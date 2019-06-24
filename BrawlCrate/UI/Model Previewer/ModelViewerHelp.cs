@@ -39,8 +39,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(ModelViewerHelp));
             btnOkay = new Button();
             richTextBox1 = new RichTextBox();
             SuspendLayout();

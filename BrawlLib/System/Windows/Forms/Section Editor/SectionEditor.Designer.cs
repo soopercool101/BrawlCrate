@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SectionEditor));
             this.grpSettings = new System.Windows.Forms.GroupBox();
             this.chkBSSSection = new System.Windows.Forms.CheckBox();
             this.chkCodeSection = new System.Windows.Forms.CheckBox();
