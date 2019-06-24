@@ -1195,6 +1195,14 @@ namespace BrawlCrate
                     });
                 }
             }
+            else
+            {
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = $"{Application.StartupPath}\\Changelog.txt",
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                });
+            }
         }
     }
 
