@@ -228,7 +228,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float ShadowVerticalAngle
+        public float ShadowPitch
         {
             get => _values.GetFloat(5);
             set
@@ -239,7 +239,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float ShadowHorizontalAngle
+        public float ShadowYaw
         {
             get => _values.GetFloat(6);
             set
@@ -272,7 +272,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float CameraAngle
+        public float CameraFOV
         {
             get => _values.GetFloat(9);
             set
@@ -382,7 +382,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value20
+        public float StarKOCamTilt
         {
             get => _values.GetFloat(19);
             set
@@ -393,7 +393,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value21
+        public float FinalSmashCamTilt
         {
             get => _values.GetFloat(20);
             set
@@ -404,7 +404,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value22
+        public float CameraRight
         {
             get => _values.GetFloat(21);
             set
@@ -415,7 +415,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value23
+        public float CameraLeft
         {
             get => _values.GetFloat(22);
             set
@@ -624,7 +624,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value42
+        public float OlimarFinalCamAngle
         {
             get => _values.GetFloat(41);
             set
@@ -635,7 +635,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value43
+        public float IceClimbersFinalPosX
         {
             get => _values.GetFloat(42);
             set
@@ -646,7 +646,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value44
+        public float IceClimbersFinalPosY
         {
             get => _values.GetFloat(43);
             set
@@ -657,7 +657,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value45
+        public float IceClimbersFinalPosZ
         {
             get => _values.GetFloat(44);
             set
@@ -668,7 +668,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value46
+        public float IceClimbersFinalScaleX
         {
             get => _values.GetFloat(45);
             set
@@ -679,7 +679,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value47
+        public float IceClimbersFinalScaleY
         {
             get => _values.GetFloat(46);
             set
@@ -690,7 +690,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public float Value48
+        public float PitFinalPalutenaScale
         {
             get => _values.GetFloat(47);
             set
@@ -844,7 +844,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("STPM Values")]
-        public int Value59
+        public int EchoMultiplier
         {
             get => _values.GetInt(58);
             set
@@ -917,7 +917,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = "STPMEntry" + id;
+                _name = "STPMEntry " + id;
             }
 
             _values = new STPMValueManager((VoidPtr) Header + 4);
