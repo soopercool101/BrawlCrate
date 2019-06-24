@@ -1,5 +1,8 @@
 ﻿using BrawlLib.SSBBTypes;
 using System;
+using System.Linq;
+using System.Windows.Forms;
+using Be.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -18,23 +21,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             version = 1;
             unk1 = 0;
             unk2 = 0;
-            entries = new UnsafeBuffer(numEntries * 4);
-            if (address == null)
+            while (EntryList.Count < numEntries)
             {
-                byte* pOut = (byte*) entries.Address;
-                for (int i = 0; i < numEntries * 4; i++)
-                {
-                    *pOut++ = 0;
-                }
-            }
-            else
-            {
-                byte* pIn = (byte*) address;
-                byte* pOut = (byte*) entries.Address;
-                for (int i = 0; i < numEntries * 4; i++)
-                {
-                    *pOut++ = *pIn++;
-                }
+                EntryList.Add(0);
             }
         }
 
@@ -43,9 +32,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             version = Header->_version;
             unk1 = Header->_unk1;
             unk2 = Header->_unk2;
-            EntryOffset = Header->_entryOffset;
-            entries = new UnsafeBuffer(WorkingUncompressed.Length - EntryOffset);
-            Memory.Move(entries.Address, Header->Entries, (uint) entries.Length);
+            _entryOffset = Header->_entryOffset;
+            for (int i = 0; i < WorkingUncompressed.Length - EntryOffset; i += 4)
+            {
+                EntryList.Add(((byte*)Header->Entries)[i + 3]);
+                EntryList.Add(((byte*)Header->Entries)[i + 2]);
+                EntryList.Add(((byte*)Header->Entries)[i + 1]);
+                EntryList.Add(((byte*)Header->Entries)[i]);
+            }
             return false;
         }
 
@@ -62,7 +56,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_unk2 = unk2;
             header->_version = version;
             header->_entryOffset = EntryOffset;
-            Memory.Move(header->Entries, entries.Address, (uint) entries.Length);
+            for (int i = 0; i*4 < EntryList.Count; i++)
+            {
+                header->Entries[i] = GetFloat(i);
+            }
         }
 
         internal static ResourceNode TryParse(DataSource source)
