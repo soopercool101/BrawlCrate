@@ -214,20 +214,16 @@ namespace BrawlCrate.API
                 string msg = $"SystemExit in \"{Path.GetFileName(path)}\"\n{e.Message}";
                 ShowMessage(msg, Path.GetFileName(path));
             }
-
             catch (Exception e)
             {
                 if (e.Message.Contains("BrawlBox") ||
                     e.Message.Contains("bboxapi"))
                 {
                     ConvertPlugin(path);
-                    CreatePlugin(path, loader);
+                    return CreatePlugin(path, loader);
                 }
-                else
-                {
-                    string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
-                    ShowMessage(msg, Path.GetFileName(path));
-                }
+                string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
+                ShowMessage(msg, Path.GetFileName(path));
             }
 
             return false;
@@ -249,14 +245,7 @@ namespace BrawlCrate.API
             // First, search the directory found in the settings (unless force is active)
             if (!force && !settingPath.Equals("") && Directory.Exists(settingPath))
             {
-                if (Directory.Exists(settingPath + "\\Lib"))
-                {
-                    searchPaths.Add($"{settingPath}\\Lib");
-                }
-                else
-                {
-                    searchPaths.Add(settingPath);
-                }
+                searchPaths.Add(Directory.Exists($"{settingPath}\\Lib") ? $"{settingPath}\\Lib" : settingPath);
             }
             // Then check for Python 2.7 (The recommended version for iron python) in its default installation directory
             else if (Directory.Exists("C:\\Python27\\Lib"))
@@ -268,7 +257,7 @@ namespace BrawlCrate.API
             {
                 foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
                 {
-                    if (d.FullName.StartsWith("C:\\Python") && Directory.Exists(d.FullName + "\\Lib"))
+                    if (d.FullName.StartsWith("C:\\Python") && Directory.Exists($"{d.FullName}\\Lib"))
                     {
                         searchPaths.Add($"{d.FullName}\\Lib");
                         break;
