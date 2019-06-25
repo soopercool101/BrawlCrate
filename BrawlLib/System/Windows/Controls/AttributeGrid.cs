@@ -423,10 +423,7 @@ namespace System.Windows.Forms
             }
             else if (AttributeArray[i]._type == 5)
             {
-                attributes.Rows[i][1] =
-                    Convert.ToString(TargetNode.GetInt(i), 2)
-                           .PadLeft(32,
-                               '0'); //attributes.Rows[i][1] = String.Join(" ", Regex.Split(Convert.ToString((int)((bint*)TargetNode.AttributeAddress)[i], 2).PadLeft(16, '0'), "(?<=^(.{4})+)"));
+                attributes.Rows[i][1] = Convert.ToString(TargetNode.GetInt(i), 2).PadLeft(32, '0');
             }
             else
             {
@@ -575,10 +572,6 @@ namespace System.Windows.Forms
 
         private void dtgrdAttributes_CurrentCellChanged(object sender, EventArgs e)
         {
-            lblColor.Visible = false;
-            lblCNoA.Visible = false;
-            btnInf.Visible = false;
-            btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
@@ -604,17 +597,26 @@ namespace System.Windows.Forms
                 : AttributeArray[index]._type == 5 ? rdoFlags
                 : rdoFloat).Checked = true;
 
-            if (AttributeArray[index]._type == 3)
+            switch (AttributeArray[index]._type)
             {
-                lblColor.Visible = true;
-                lblCNoA.Visible = true;
-                lblColor.BackColor = (Color) TargetNode.GetRGBAPixel(index);
-                lblCNoA.BackColor = Color.FromArgb(TargetNode.GetRGBAPixel(index).R, TargetNode.GetRGBAPixel(index).G,
-                    TargetNode.GetRGBAPixel(index).B);
-            }
-            else if (AttributeArray[index]._type == 0)
-            {
-                btnInf.Visible = btnMinusInf.Visible = true;
+                case 3:
+                    lblColor.Visible = true;
+                    lblCNoA.Visible = true;
+                    lblColor.BackColor = (Color) TargetNode.GetRGBAPixel(index);
+                    lblCNoA.BackColor = Color.FromArgb(TargetNode.GetRGBAPixel(index).R, TargetNode.GetRGBAPixel(index).G,
+                        TargetNode.GetRGBAPixel(index).B);
+                    break;
+                case 0:
+                case 2:
+                    btnInf.Visible = true;
+                    btnMinusInf.Visible = true;
+                    break;
+                default:
+                    lblColor.Visible = false;
+                    lblCNoA.Visible = false;
+                    btnInf.Visible = false;
+                    btnMinusInf.Visible = false;
+                    break;
             }
         }
 
@@ -645,16 +647,13 @@ namespace System.Windows.Forms
 
         private void radioButtonsChanged(object sender, EventArgs e)
         {
-            lblColor.Visible = false;
-            lblCNoA.Visible = false;
-            btnInf.Visible = btnMinusInf.Visible = false;
             if (dtgrdAttributes.CurrentCell == null)
             {
                 return;
             }
 
             int index = dtgrdAttributes.CurrentCell.RowIndex;
-            int ntype =
+            int nType =
                 rdoFloat.Checked ? 0
                 : rdoInt.Checked ? 1
                 : rdoColor.Checked ? 3
@@ -662,9 +661,9 @@ namespace System.Windows.Forms
                 : rdoUnknown.Checked ? 4
                 : rdoFlags.Checked ? 5
                 : -1;
-            if (ntype != AttributeArray[index]._type)
+            if (nType != AttributeArray[index]._type)
             {
-                AttributeArray[index]._type = ntype;
+                AttributeArray[index]._type = nType;
                 if (DictionaryChanged != null)
                 {
                     DictionaryChanged.Invoke(this, EventArgs.Empty);
@@ -673,14 +672,23 @@ namespace System.Windows.Forms
                 RefreshRow(index);
             }
 
-            if (ntype == 3)
+            switch (nType)
             {
-                lblColor.Visible = true;
-                lblCNoA.Visible = true;
-            }
-            else if (ntype == 0)
-            {
-                btnInf.Visible = btnMinusInf.Visible = true;
+                case 3:
+                    lblColor.Visible = true;
+                    lblCNoA.Visible = true;
+                    break;
+                case 0:
+                case 2:
+                    btnInf.Visible = true;
+                    btnMinusInf.Visible = true;
+                    break;
+                default:
+                    lblColor.Visible = false;
+                    lblCNoA.Visible = false;
+                    btnInf.Visible = false;
+                    btnMinusInf.Visible = false;
+                    break;
             }
         }
 
