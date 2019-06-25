@@ -612,13 +612,11 @@ namespace BrawlCrate
                     newControl = modelPanel1;
                     RenderSelected(node);
                 }
-                else if (node is STDTNode)
+                else if (node is StageTableNode stageTableNode)
                 {
-                    STDTNode stdt = (STDTNode) node;
-
                     attributeGrid1.Clear();
-                    attributeGrid1.AddRange(stdt.GetPossibleInterpretations());
-                    attributeGrid1.TargetNode = stdt;
+                    attributeGrid1.AddRange(stageTableNode.GetPossibleInterpretations());
+                    attributeGrid1.TargetNode = stageTableNode;
                     newControl = attributeGrid1;
                 }
 

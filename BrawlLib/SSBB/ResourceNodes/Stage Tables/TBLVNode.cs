@@ -1,28 +1,16 @@
 ﻿using BrawlLib.SSBBTypes;
 using System;
-using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class STDTNode : StageTableNode
+    public unsafe class TBLVNode : StageTableNode
     {
-        public override ResourceType ResourceFileType => ResourceType.STDT;
-        internal STDT* Header => (STDT*) WorkingUncompressed.Address;
-        internal override string DocumentationSubDirectory => "STDT";
+        public override ResourceType ResourceFileType => ResourceType.TBLV;
+        internal TBLV* Header => (TBLV*)WorkingUncompressed.Address;
+        internal override string DocumentationSubDirectory => "TBLV";
+        internal override int EntryOffset => 0x10;
 
-        [Category("Stage Data Table")]
-        [DisplayName("Version")]
-        public override int Unknown0
-        {
-            get => unk0;
-            set
-            {
-                unk0 = value;
-                SignalPropertyChange();
-            }
-        }
-
-        public STDTNode(int numEntries)
+        public TBLVNode(int numEntries)
         {
             unk0 = 1;
             unk1 = 0;
@@ -35,10 +23,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            unk0 = Header->_version;
+            unk0 = Header->_unk0;
             unk1 = Header->_unk1;
             unk2 = Header->_unk2;
-            _entryOffset = Header->_entryOffset;
             for (int i = 0; i < WorkingUncompressed.Length - EntryOffset; i += 4)
             {
                 EntryList.Add(((byte*)Header->Entries)[i + 3]);
@@ -51,18 +38,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected override string GetName()
         {
-            return base.GetName("Stage Trap Data Table");
+            return base.GetName("TBLV");
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STDT* header = (STDT*) address;
-            header->_tag = STDT.Tag;
+            TBLV* header = (TBLV*)address;
+            header->_tag = TBLV.Tag;
+            header->_unk0 = unk0;
             header->_unk1 = unk1;
             header->_unk2 = unk2;
-            header->_version = unk0;
-            header->_entryOffset = EntryOffset;
-            for (int i = 0; i*4 < EntryList.Count; i++)
+            for (int i = 0; i * 4 < EntryList.Count; i++)
             {
                 header->Entries[i] = GetFloat(i);
             }
@@ -70,7 +56,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((STDT*) source.Address)->_tag == STDT.Tag ? new STDTNode(0) : null;
+            return ((TBLV*)source.Address)->_tag == TBLV.Tag ? new TBLVNode(0) : null;
         }
     }
 }

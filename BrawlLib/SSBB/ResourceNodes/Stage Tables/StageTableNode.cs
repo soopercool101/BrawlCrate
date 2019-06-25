@@ -10,20 +10,26 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public abstract unsafe class StageTableNode : ARCEntryNode, IAttributeList
     {
-        internal static int EntrySize => 4;
+        internal virtual int EntrySize => 4;
 
         internal virtual string DocumentationSubDirectory => "";
 
-        internal int version, unk1, unk2, _entryOffset;
-        [Category("Stage Data Table")] public virtual int NumEntries => EntryList.Count / EntrySize;
+        internal int unk0;
+        internal int unk1;
+        internal int unk2;
+        internal int _entryOffset;
+
+        [Browsable(false)]
+        [Category("Stage Data Table")]
+        public virtual int NumEntries => EntryList.Count / EntrySize;
 
         [Category("Stage Data Table")]
-        public virtual int Version
+        public virtual int Unknown0
         {
-            get => version;
+            get => unk0;
             set
             {
-                version = value;
+                unk0 = value;
                 SignalPropertyChange();
             }
         }

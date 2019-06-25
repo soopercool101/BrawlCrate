@@ -4,11 +4,11 @@ using System.ComponentModel;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class STDTNode : StageTableNode
+    public unsafe class TBCLNode : StageTableNode
     {
-        public override ResourceType ResourceFileType => ResourceType.STDT;
-        internal STDT* Header => (STDT*) WorkingUncompressed.Address;
-        internal override string DocumentationSubDirectory => "STDT";
+        public override ResourceType ResourceFileType => ResourceType.TBCL;
+        internal TBCL* Header => (TBCL*)WorkingUncompressed.Address;
+        internal override string DocumentationSubDirectory => "TBCL";
 
         [Category("Stage Data Table")]
         [DisplayName("Version")]
@@ -22,7 +22,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public STDTNode(int numEntries)
+        public TBCLNode(int numEntries)
         {
             unk0 = 1;
             unk1 = 0;
@@ -51,18 +51,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected override string GetName()
         {
-            return base.GetName("Stage Trap Data Table");
+            return base.GetName("TBCL");
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            STDT* header = (STDT*) address;
-            header->_tag = STDT.Tag;
+            TBCL* header = (TBCL*)address;
+            header->_tag = TBCL.Tag;
             header->_unk1 = unk1;
             header->_unk2 = unk2;
             header->_version = unk0;
             header->_entryOffset = EntryOffset;
-            for (int i = 0; i*4 < EntryList.Count; i++)
+            for (int i = 0; i * 4 < EntryList.Count; i++)
             {
                 header->Entries[i] = GetFloat(i);
             }
@@ -70,7 +70,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((STDT*) source.Address)->_tag == STDT.Tag ? new STDTNode(0) : null;
+            return ((TBCL*)source.Address)->_tag == TBCL.Tag ? new TBCLNode(0) : null;
         }
     }
 }
