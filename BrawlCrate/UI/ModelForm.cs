@@ -263,7 +263,7 @@ namespace BrawlCrate
             }
             else
             {
-                Text = Text = Program.AssemblyTitleFull + " - Advanced Model Editor";
+                Text = $"{Program.AssemblyTitleFull} - Advanced Model Editor";
             }
         }
 
