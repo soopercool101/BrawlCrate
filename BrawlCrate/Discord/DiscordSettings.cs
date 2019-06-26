@@ -50,7 +50,7 @@ namespace BrawlCrate.Discord
                 smallImageKey = UserPickedImageKey,
                 smallImageText = "",
                 largeImageKey = "brawlcrate",
-                largeImageText = Program.AssemblyTitle
+                largeImageText = Program.AssemblyTitleFull
             };
             ResourceNode root = MainForm.Instance?.RootNode?.Resource;
             string rootName = root?.Name;

@@ -33,6 +33,11 @@ namespace System.Windows.Forms
         {
             if (chkForceClose.Checked)
             {
+                if (Program.CanRunDiscordRPC)
+                {
+                    BrawlCrate.Discord.DiscordRpc.ClearPresence();
+                    BrawlCrate.Discord.DiscordRpc.Shutdown();
+                }
                 Environment.Exit(0);
             }
 
@@ -50,8 +55,8 @@ namespace System.Windows.Forms
             //Send the issue to the repository
             if (Program.CanRunGithubApp(true, out string path))
             {
-                string args = string.Format("-bi {0} \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
-                    Program.TagName,
+                string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
+                    Program.Canary ? Program.AssemblyTitleFull : Program.TagName,
                     _exception.Message.Replace("\"", "\\\""),
                     _exception.StackTrace.Replace("\"", "\\\""),
                     txtTitle.Text.Replace("\"", "\\\""),
@@ -108,7 +113,7 @@ namespace System.Windows.Forms
             {
                 txtDescription.ForeColor = Color.Gray;
                 txtDescription.Text =
-                    "Explain what you were doing that caused the bug. This will be posted publicly at https://github.com/BrawlCrate/BrawlCrateIssues/issues, so do not put any personal information here. It may be beneficial to you to sign your report with a username unless you wish to stay anonymous.";
+                    "Explain in detail what you were doing that caused the bug. Reproducable steps and/or links to files that were worked on will make the bug much easier to fix. This will be posted publicly at https://github.com/BrawlCrate/BrawlCrateIssues/issues, so do not put any personal information here. It may be beneficial to you to sign your report with a username unless you wish to stay anonymous. It is also very helpful to report the issue on our Discord at https://discord.gg/s7c8763";
             }
         }
 

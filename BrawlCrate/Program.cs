@@ -16,7 +16,8 @@ namespace BrawlCrate
         //Make sure this matches the tag name of the release on github exactly
         public static readonly string TagName = "BrawlCrate_v0.26Hotfix1";
 
-        public static readonly string AssemblyTitle;
+        public static readonly string AssemblyTitleFull;
+        public static readonly string AssemblyTitleShort;
         public static readonly string AssemblyDescription;
         public static readonly string AssemblyCopyright;
         public static readonly string FullPath;
@@ -52,11 +53,14 @@ namespace BrawlCrate
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
-            AssemblyTitle = Canary
-                ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[1]
+            AssemblyTitleFull = Canary
+                ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2]
                 : ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
                                                     .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
+            AssemblyTitleShort = AssemblyTitleFull.Contains("#")
+                ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8)
+                : AssemblyTitleFull;
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
                                                 .GetExecutingAssembly()

@@ -41,7 +41,7 @@ namespace System.Windows.Forms
         public CollisionForm()
         {
             InitializeComponent();
-            Text = Program.AssemblyTitle + " - Collision Editor";
+            Text = Program.AssemblyTitleFull + " - Collision Editor";
         }
 
         public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)

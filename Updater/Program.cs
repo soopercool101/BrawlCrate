@@ -993,10 +993,10 @@ namespace Net
             {
                 Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
-                IReadOnlyList<Release> releases = null;
                 IReadOnlyList<Issue> issues = null;
-                if (!TagName.StartsWith("BrawlCrate Canary", StringComparison.OrdinalIgnoreCase))
+                if (!TagName.ToLower().Contains("canary"))
                 {
+                    IReadOnlyList<Release> releases = null;
                     try
                     {
                         releases = await github.Repository.Release.GetAll("soopercool101", "BrawlCrate");
@@ -1012,7 +1012,7 @@ namespace Net
                         return;
                     }
 
-                    if (releases != null && releases.Count > 0 && releases[0].TagName != TagName)
+                    if (releases.Count > 0 && releases[0].TagName != TagName)
                     {
                         //This build's version tag does not match the latest release's tag on the repository.
                         //This bug may have been fixed by now. Tell the user to update to be allowed to submit bug reports.

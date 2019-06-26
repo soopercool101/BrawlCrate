@@ -12,7 +12,7 @@ namespace BrawlCrate
         public AboutForm()
         {
             InitializeComponent();
-            lblName.Text = Program.AssemblyTitle;
+            lblName.Text = Program.AssemblyTitleFull;
             txtDescription.Text = Program.AssemblyDescription;
             lblCopyright.Text = Program.AssemblyCopyright;
             lblBrawlLib.Text = "Using " + Program.BrawlLibTitle;

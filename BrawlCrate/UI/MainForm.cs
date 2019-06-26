@@ -55,7 +55,7 @@ namespace BrawlCrate
         public MainForm()
         {
             InitializeComponent();
-            Text = Program.AssemblyTitle;
+            Text = Program.AssemblyTitleFull;
 
             _autoUpdate = Properties.Settings.Default.UpdateAutomatically;
             _displayPropertyDescription = Properties.Settings.Default.DisplayPropertyDescriptionWhenAvailable;
@@ -422,14 +422,14 @@ namespace BrawlCrate
         {
             if (Program.RootPath != null)
             {
-                Text = string.Format("{0} - {1}", Program.AssemblyTitle,
+                Text = string.Format("{0} - {1}", Program.AssemblyTitleShort,
                     ShowFullPath
                         ? Program.RootPath
                         : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1));
             }
             else
             {
-                Text = Program.AssemblyTitle;
+                Text = Program.AssemblyTitleFull;
             }
 #if DEBUG
             Text += " DEBUG";
