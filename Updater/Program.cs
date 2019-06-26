@@ -905,6 +905,11 @@ namespace Net
                                     newSha.Substring(0,
                                         7)); // For some reason, without this, the changelog window never shows.
                 }
+                else
+                {
+                    MessageBox.Show(
+                        "The last 100 Canary commits will be shown. For a more in-depth view of changes, visit https://github.com/soopercool101/BrawlCrateNext/commits/master");
+                }
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
                 logWindow.ShowDialog();
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
