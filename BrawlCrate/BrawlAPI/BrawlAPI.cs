@@ -20,7 +20,7 @@ namespace BrawlCrate.API
 
         public static bool FSharpEnabled =>
             Environment.OSVersion.Platform.ToString().StartsWith("win", StringComparison.OrdinalIgnoreCase) &&
-            fsi_path != null && fsi_path != "" && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
+            !string.IsNullOrEmpty(fsi_path) && !fsi_path.Equals("(none)", StringComparison.OrdinalIgnoreCase);
 
         private static string fsi_path;
 
@@ -386,9 +386,8 @@ namespace BrawlCrate.API
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
         {
             TreeView resourceTree = (TreeView) sender;
-            if (resourceTree.SelectedNode is BaseWrapper)
+            if (resourceTree.SelectedNode is BaseWrapper wrapper)
             {
-                BaseWrapper wrapper = (BaseWrapper) resourceTree.SelectedNode;
                 Type type = wrapper.GetType();
 
                 if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
