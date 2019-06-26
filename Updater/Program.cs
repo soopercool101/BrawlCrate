@@ -841,7 +841,7 @@ namespace Net
                 };
                 List<GitHubCommit> commits =
                     (await github.Repository.Commit.GetAll(repoData[0], repoData[1], options)).ToList();
-                int i = -1;
+                int i;
                 bool foundCurrentCommit = false;
                 for (i = 0; i < commits.Count;)
                 {
@@ -899,9 +899,12 @@ namespace Net
                 }
 
                 changelog += "\n\n========================================================";
-                MessageBox.Show("Canary successfully updated from #" + oldSha.Substring(0, 7) + " to #" +
-                                newSha.Substring(0,
-                                    7)); // For some reason, without this, the changelog window never shows.
+                if (!string.IsNullOrEmpty(oldSha))
+                {
+                    MessageBox.Show("Canary successfully updated from #" + oldSha.Substring(0, 7) + " to #" +
+                                    newSha.Substring(0,
+                                        7)); // For some reason, without this, the changelog window never shows.
+                }
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
                 logWindow.ShowDialog();
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
