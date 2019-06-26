@@ -565,11 +565,6 @@ namespace Net
 
                 if (File.Exists(AppPath + "/IronPython.Wpf.dll"))
                 {
-                    sw.WriteLine("del OpenTK.dll /s /f /q");
-                }
-
-                if (File.Exists(AppPath + "/IronPython.Wpf.dll"))
-                {
                     sw.WriteLine("del IronPython.Wpf.dll /s /f /q");
                 }
 
@@ -581,11 +576,6 @@ namespace Net
                 if (File.Exists(AppPath + "/Microsoft.Scripting.AspNet.dll"))
                 {
                     sw.WriteLine("del Microsoft.Scripting.AspNet.dll /s /f /q");
-                }
-
-                if (File.Exists(AppPath + "/Microsoft.Scripting.dll"))
-                {
-                    sw.WriteLine("del Microsoft.Scripting.dll /s /f /q");
                 }
 
                 if (File.Exists(AppPath + "/Microsoft.Scripting.dll"))
@@ -713,6 +703,7 @@ namespace Net
             string newRepo;
             string oldRepo;
             string Filename = AppPath + "\\Canary\\Old";
+            bool showErrors = true;
             try
             {
                 newSha = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
@@ -725,7 +716,8 @@ namespace Net
                 catch
                 {
                     // Assume that this is updating from an old version before branch data was tracked.
-                    newBranch = oldBranch = "";
+                    newBranch = "";
+                    oldBranch = "";
                 }
 
                 try
@@ -741,14 +733,42 @@ namespace Net
             }
             catch
             {
-                MessageBox.Show(
-                    "Canary changelog could not be shown. Make sure to never disturb the \"Canary\" folder in the installation folder.");
-                if (File.Exists(Filename))
+                try
                 {
-                    File.Delete(Filename);
-                }
+                    newSha = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+                    oldSha = "";
+                    try
+                    {
+                        newBranch = File.ReadAllLines(AppPath + "\\Canary\\New")[3];
+                        oldBranch = newBranch;
+                    }
+                    catch
+                    {
+                        // Assume that this is updating from an old version before branch data was tracked.
+                        newBranch = "";
+                        oldBranch = "";
+                    }
 
-                return;
+                    try
+                    {
+                        newRepo = File.ReadAllLines(AppPath + "\\Canary\\New")[4];
+                        oldRepo = newRepo;
+                    }
+                    catch
+                    {
+                        // Assume that this is updating from an old version before repo data was tracked.
+                        newRepo = "";
+                        oldRepo = "";
+                    }
+
+                    showErrors = false;
+                }
+                catch
+                {
+                    MessageBox.Show(
+                        "Canary changelog could not be shown. Make sure to never disturb the \"Canary\" folder in the installation folder.");
+                    return;
+                }
             }
 
             if (newSha == oldSha)
@@ -803,15 +823,13 @@ namespace Net
             {
                 Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
-                Branch branch;
                 try
                 {
-                    branch = await github.Repository.Branch.Get(repoData[0], repoData[1], currentBranch);
+                    await github.Repository.Branch.Get(repoData[0], repoData[1], currentBranch);
                 }
                 catch
                 {
                     repoData = mainRepo.Split(slashes);
-                    branch = await github.Repository.Branch.Get(repoData[0], repoData[1], mainBranch);
                     currentBranch = mainBranch;
                     currentRepo = mainRepo;
                 }
@@ -835,7 +853,6 @@ namespace Net
                     }
 
                     foundCurrentCommit = true;
-                    //var c = await github.Repository.Commit.Get("soopercool101", "BrawlCrate", branch.Commit.Sha);
                     if (c.Sha == oldSha || i >= 99)
                     {
                         break;
@@ -851,7 +868,7 @@ namespace Net
                         continue;
                     }
 
-                    if (j == 99)
+                    if (j == 99 && showErrors)
                     {
                         changelog += "\n\nMax commits reached. Showing last 100.";
                     }
@@ -1003,8 +1020,8 @@ namespace Net
                                 MessageBoxButtons.YesNoCancel);
                             if (OverwriteResult != DialogResult.Cancel)
                             {
-                                //Task t = Updater.ForceDownloadRelease();
-                                //t.Wait();
+                                Task t = Updater.ForceDownloadStable();
+                                t.Wait();
                             }
                         }
 
