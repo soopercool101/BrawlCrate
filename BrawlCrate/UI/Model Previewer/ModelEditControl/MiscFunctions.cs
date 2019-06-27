@@ -29,7 +29,7 @@ namespace System.Windows.Forms
                 _targetModels.Add(model);
             }
 
-            ModelPanel.AddTarget(model);
+            ModelPanel.AddTarget(model, false);
             model.ResetToBindState();
         }
 
