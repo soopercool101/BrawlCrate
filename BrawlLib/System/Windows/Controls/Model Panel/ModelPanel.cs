@@ -83,14 +83,11 @@ namespace System.Windows.Forms
             }
 
             cam.Reset();
+
+            cam.Translate(frontMidPt._x, frontMidPt._y, Maths.Max(distX, distY, max._z) + 2.0f);
             if (CurrentViewport.GetProjectionType() == ViewportProjection.Orthographic)
             {
-                cam.Translate(frontMidPt._x, frontMidPt._y, frontMidPt._z);
                 cam.Zoom(Maths.Max(distX, distY, max._z) / (Maths.Max(Size.Height, Size.Width) * 0.01f));
-            }
-            else
-            {
-                cam.Translate(frontMidPt._x, frontMidPt._y, Maths.Max(distX, distY, max._z) + 2.0f);
             }
             Invalidate();
         }
