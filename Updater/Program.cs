@@ -922,7 +922,6 @@ namespace Net
             catch (Exception e)
             {
                 MessageBox.Show("Canary Changelog could not be shown:\n" + e.Message);
-                return;
             }
         }
 
@@ -1161,12 +1160,16 @@ namespace Net
                         break;
                     case "-dlCanary": // Force download the latest Canary build
                         somethingDone = true;
-                        Task t5 = Updater.CheckCanaryUpdate(args[1], false, true);
+                        Task t5a = Updater.SetCanaryActive();
+                        t5a.Wait();
+                        Task t5 = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null, false, true);
                         t5.Wait();
                         break;
                     case "-dlStable": // Force download the latest Stable build
                         somethingDone = true;
-                        Task t6 = Updater.ForceDownloadStable(args[1]);
+                        Task t6a = Updater.SetCanaryInactive();
+                        t6a.Wait();
+                        Task t6 = Updater.ForceDownloadStable(args.Length > 1 ? args[1] : null);
                         t6.Wait();
                         break;
                     case "-dlDoc": // Force download the latest Documentation build

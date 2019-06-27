@@ -96,12 +96,22 @@ namespace BrawlCrate
         {
             InitializeComponent();
 
-            tabUpdater.Enabled = tabUpdater.Visible =
-                MainForm.Instance.checkForUpdatesToolStripMenuItem.Enabled;
+            tabUpdater.Enabled = true;
+            tabUpdater.Visible = true;
+            tabDiscord.Enabled = true;
+            tabDiscord.Visible = true;
 
-            if (!MainForm.Instance.checkForUpdatesToolStripMenuItem.Enabled)
+            if (!Program.CanRunGithubApp(false, out _))
             {
+                tabUpdater.Enabled = false;
+                tabUpdater.Visible = false;
                 tabControl1.TabPages.Remove(tabUpdater);
+            }
+            if (!Program.CanRunDiscordRPC)
+            {
+                tabDiscord.Enabled = false;
+                tabDiscord.Visible = false;
+                tabControl1.TabPages.Remove(tabDiscord);
             }
 
             listView1.Items.Clear();
@@ -112,7 +122,7 @@ namespace BrawlCrate
                     foreach (string s in info.Extensions)
                     {
                         listView1.Items.Add(new ListViewItem()
-                            {Text = string.Format("{0} (*.{1})", info.Name, s)});
+                            {Text = $"{info.Name} (*.{s})"});
                     }
                 }
             }
@@ -122,11 +132,11 @@ namespace BrawlCrate
         {
             try
             {
-                bool check;
                 int index = 0;
                 foreach (ListViewItem i in listView1.Items)
                 {
-                    if ((check = i.Checked) != (bool) i.Tag)
+                    bool check = i.Checked;
+                    if (check != (bool) i.Tag)
                     {
                         if (check)
                         {
@@ -173,12 +183,18 @@ namespace BrawlCrate
                 MessageBox.Show(null,
                     "Unable to access the registry to set file associations.\nRun the program as administrator and try again.",
                     "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblAdminApproval.Visible = true;
+                btnApply.Visible = false;
+                associatiedFilesBox.Enabled = false;
             }
             catch (Exception)
             {
                 MessageBox.Show(null,
                     "Unable to access the registry to set file associations.\nRun the program as administrator and try again.",
                     "Insufficient Privileges", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblAdminApproval.Visible = true;
+                btnApply.Visible = false;
+                associatiedFilesBox.Enabled = false;
             }
             finally
             {
@@ -272,27 +288,25 @@ namespace BrawlCrate
             grpBoxDiscordRPCType.Enabled = DiscordSettings.DiscordRPCEnabled;
             chkBoxEnableDiscordRPC.Checked = DiscordSettings.DiscordRPCEnabled;
             DiscordSettings.ModNameType? modnametype = Properties.Settings.Default.DiscordRPCNameType;
-            if (modnametype == DiscordSettings.ModNameType.Disabled)
+            switch (modnametype)
             {
-                rdoDiscordRPCNameDisabled.Checked = true;
-            }
-            else if (modnametype == DiscordSettings.ModNameType.UserDefined)
-            {
-                rdoDiscordRPCNameCustom.Checked = true;
-            }
-            else if (modnametype == DiscordSettings.ModNameType.AutoInternal)
-            {
-                rdoDiscordRPCNameInternal.Checked = true;
-            }
-            else if (modnametype == DiscordSettings.ModNameType.AutoExternal)
-            {
-                rdoDiscordRPCNameExternal.Checked = true;
-            }
-            else
-            {
-                rdoDiscordRPCNameDisabled.Checked = true;
-                Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.Disabled;
-                Properties.Settings.Default.Save();
+                case DiscordSettings.ModNameType.Disabled:
+                    rdoDiscordRPCNameDisabled.Checked = true;
+                    break;
+                case DiscordSettings.ModNameType.UserDefined:
+                    rdoDiscordRPCNameCustom.Checked = true;
+                    break;
+                case DiscordSettings.ModNameType.AutoInternal:
+                    rdoDiscordRPCNameInternal.Checked = true;
+                    break;
+                case DiscordSettings.ModNameType.AutoExternal:
+                    rdoDiscordRPCNameExternal.Checked = true;
+                    break;
+                default:
+                    rdoDiscordRPCNameDisabled.Checked = true;
+                    Properties.Settings.Default.DiscordRPCNameType = DiscordSettings.ModNameType.Disabled;
+                    Properties.Settings.Default.Save();
+                    break;
             }
 
             DiscordRPCCustomName.Text = Properties.Settings.Default.DiscordRPCNameCustom;
@@ -309,7 +323,6 @@ namespace BrawlCrate
         {
             try
             {
-                //throw (new Exception());
                 lblAdminApproval.Visible = false;
                 btnApply.Visible = true;
                 associatiedFilesBox.Enabled = true;
@@ -332,23 +345,6 @@ namespace BrawlCrate
         private void btnApply_Click(object sender, EventArgs e)
         {
             Apply();
-        }
-
-        private void btnOkay_Click(object sender, EventArgs e)
-        {
-            if (btnApply.Enabled)
-            {
-                Apply();
-            }
-
-            DialogResult = DialogResult.OK;
-            Close();
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         #region Designer
@@ -1409,7 +1405,7 @@ namespace BrawlCrate
                     "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
                 if (dc == DialogResult.Yes)
                 {
-                    //Program.ForceDownloadCanary();
+                    Program.ForceDownloadCanary();
                 }
             }
             else
@@ -1421,7 +1417,7 @@ namespace BrawlCrate
                     "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
                 if (dc == DialogResult.Yes)
                 {
-                    //Program.ForceDownloadStable();
+                    Program.ForceDownloadStable();
                 }
             }
 

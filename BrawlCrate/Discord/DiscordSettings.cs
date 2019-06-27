@@ -61,12 +61,14 @@ namespace BrawlCrate.Discord
                 FormCollection fc = Application.OpenForms;
                 foreach (Form frm in fc)
                 {
-                    if (frm is GCTEditor)
+                    if (!(frm is GCTEditor editor))
                     {
-                        hasGct = true;
-                        gctEditor = frm as GCTEditor;
-                        break;
+                        continue;
                     }
+
+                    hasGct = true;
+                    gctEditor = editor;
+                    break;
                 }
             }
 

@@ -632,5 +632,46 @@ namespace BrawlCrate
         }
 
         public static bool CanRunDiscordRPC => File.Exists($"{Application.StartupPath}\\discord-rpc.dll");
+
+        public static void ForceDownloadStable()
+        {
+            try
+            {
+                if (CanRunGithubApp(true, out string path))
+                {
+                        Process git = Process.Start(new ProcessStartInfo()
+                        {
+                            FileName = path,
+                            WindowStyle = ProcessWindowStyle.Hidden,
+                            Arguments = $"-dlStable {RootPath}",
+                        });
+                        git.WaitForExit();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+        public static void ForceDownloadCanary()
+        {
+            try
+            {
+                if (CanRunGithubApp(true, out string path))
+                {
+                    Process git = Process.Start(new ProcessStartInfo()
+                    {
+                        FileName = path,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        Arguments = $"-dlCanary {RootPath}",
+                    });
+                    git.WaitForExit();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
     }
 }
