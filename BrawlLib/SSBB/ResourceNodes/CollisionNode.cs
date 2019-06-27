@@ -63,6 +63,39 @@ namespace BrawlLib.SSBB.ResourceNodes
                    _objects.Count * ColObject.Size;
         }
 
+        public void CalculateCamBoundaries(out float? minX, out float? minY, out float? maxX, out float? maxY)
+        {
+            minX = null;
+            minY = null;
+            maxX = null;
+            maxY = null;
+            foreach (CollisionObject o in _objects)
+            {
+                foreach (CollisionLink l in o._points)
+                {
+                    if (minX == null || l.Value._x < minX)
+                    {
+                        minX = l.Value._x;
+                    }
+
+                    if (minY == null || l.Value._y < minY)
+                    {
+                        minY = l.Value._y;
+                    }
+
+                    if (maxX == null || l.Value._x > maxX)
+                    {
+                        maxX = l.Value._x;
+                    }
+
+                    if (maxY == null || l.Value._y > maxY)
+                    {
+                        maxY = l.Value._y;
+                    }
+                }
+            }
+        }
+
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             CollisionHeader* header = (CollisionHeader*) address;

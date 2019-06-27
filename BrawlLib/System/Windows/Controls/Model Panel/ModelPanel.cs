@@ -83,7 +83,15 @@ namespace System.Windows.Forms
             }
 
             cam.Reset();
-            cam.Translate(frontMidPt._x, frontMidPt._y, Maths.Max(distX, distY, max._z) + 2.0f);
+            if (CurrentViewport.GetProjectionType() == ViewportProjection.Orthographic)
+            {
+                cam.Translate(frontMidPt._x, frontMidPt._y, frontMidPt._z);
+                cam.Zoom(Maths.Max(distX, distY, max._z) / (Maths.Max(Size.Height, Size.Width) * 0.01f));
+            }
+            else
+            {
+                cam.Translate(frontMidPt._x, frontMidPt._y, Maths.Max(distX, distY, max._z) + 2.0f);
+            }
             Invalidate();
         }
 
@@ -155,6 +163,20 @@ namespace System.Windows.Forms
                 Invalidate();
             }
         }
+        public void AddTarget(CollisionNode target, bool invalidate)
+        {
+            if (_collisions.Contains(target))
+            {
+                return;
+            }
+
+            _collisions.Add(target);
+
+            if (invalidate)
+            {
+                Invalidate();
+            }
+        }
 
         public void RemoveTarget(IRenderedObject target, bool refreshReferences = true)
         {
@@ -204,6 +226,7 @@ namespace System.Windows.Forms
 
             _renderList.Clear();
             _drawCalls.Clear();
+            _collisions.Clear();
         }
 
         public void AddReference(ResourceNode node, bool refreshReferences = true)
@@ -611,6 +634,7 @@ namespace System.Windows.Forms
             ctx._states["_Node_Refs"] = _resourceList;
         }
 
+        public List<CollisionNode> _collisions = new List<CollisionNode>();
         protected override void OnRenderViewport(PaintEventArgs e, GLViewport v)
         {
             ModelPanelViewport viewport = v as ModelPanelViewport;
@@ -664,6 +688,14 @@ namespace System.Windows.Forms
 
             viewport.RenderForeground(v == CurrentViewport, _viewports.Count == 1);
 
+            foreach (CollisionNode c in _collisions)
+            {
+                foreach (CollisionObject o in c._objects)
+                {
+                    o._render = true;
+                }
+                c.Render();
+            }
             GL.Disable(EnableCap.ScissorTest);
         }
 

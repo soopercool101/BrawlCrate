@@ -607,7 +607,7 @@ namespace BrawlCrate
                     previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
-                else if ((node is ARCNode arcNode && arcNode.NumTriangles > 0) || (node is BRRESNode brresNode && brresNode.NumTriangles > 0) || node is IRenderedObject o)
+                else if ((node is ARCNode arcNode && arcNode.NumTriangles > 0) || (node is BRRESNode brresNode && brresNode.NumTriangles > 0) || node is IRenderedObject || node is CollisionNode)
                 {
                     newControl = modelPanel1;
                     RenderSelected(node);
@@ -744,31 +744,37 @@ namespace BrawlCrate
             {
                 return;
             }
-            if (node is ARCNode arcNode)
+            Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Perspective);
+            switch (node)
             {
-                RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
-            }
-            else if (node is BRRESNode brresNode)
-            {
-                RenderBRRES(brresNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
-            }
-            else if (node is IRenderedObject o)
-            {
-                //Model panel has to be loaded first to display model correctly
-                if (node._children == null)
-                {
-                    node.Populate(0);
-                }
+                case CollisionNode collNode:
+                    Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
+                    Instance.modelPanel1.AddTarget(collNode, false);
+                    collNode.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
+                    break;
+                case ARCNode arcNode:
+                    RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+                    break;
+                case BRRESNode brresNode:
+                    RenderBRRES(brresNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);
+                    break;
+                case IRenderedObject o:
+                    //Model panel has to be loaded first to display model correctly
+                    if (node._children == null)
+                    {
+                        node.Populate(0);
+                    }
 
-                if (o is IModel m && ModelEditControl.Instances.Count == 0)
-                {
-                    m.ResetToBindState();
-                }
+                    if (o is IModel m && ModelEditControl.Instances.Count == 0)
+                    {
+                        m.ResetToBindState();
+                    }
 
-                Instance.modelPanel1.AddTarget(o, false);
-                Instance.modelPanel1.SetCamWithBox(o.GetBox());
-                return;
+                    Instance.modelPanel1.AddTarget(o, false);
+                    Instance.modelPanel1.SetCamWithBox(o.GetBox());
+                    return;
             }
+
             Instance.modelPanel1.SetCamWithBox(new Box(new Vector3(minX ?? 0, minY ?? 0, minZ ?? 0), new Vector3(maxX ?? 0, maxY ?? 0, maxZ ?? 0)));
         }
 
