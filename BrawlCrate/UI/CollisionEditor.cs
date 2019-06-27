@@ -1297,9 +1297,10 @@ namespace System.Windows.Forms
                         modelNode.Nodes.Add(new TreeNode(bone._name) {Tag = bone, Checked = true});
                     }
 
-                    _modelPanel.AddTarget(n);
+                    _modelPanel.AddTarget(n, false);
                     n.ResetToBindState();
                 }
+                Invalidate();
             }
 
             modelTree.EndUpdate();

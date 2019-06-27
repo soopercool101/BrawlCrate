@@ -115,7 +115,7 @@ namespace System.Windows.Forms
                 _targetModels.Add(model);
             }
 
-            ModelPanel.AddTarget(model);
+            ModelPanel.AddTarget(model, false);
             model.ResetToBindState();
         }
 
@@ -133,7 +133,7 @@ namespace System.Windows.Forms
 
             if ((_targetModel = newModel) != null)
             {
-                ModelPanel.AddTarget(_targetModel);
+                ModelPanel.AddTarget(_targetModel, false);
                 _targetModel.IsTargetModel = true;
                 ClearSelectedVertices();
             }
@@ -153,7 +153,7 @@ namespace System.Windows.Forms
             }
 
             OnModelChanged();
-
+            Invalidate();
             TargetModelChanged?.Invoke(this, null);
         }
 

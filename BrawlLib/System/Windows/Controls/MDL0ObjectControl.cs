@@ -50,7 +50,7 @@ namespace System.Windows.Forms
                 //lstDrawCalls.DisplayMember = "";
                 //lstDrawCalls.ValueMember = "_isXLU";
 
-                modelPanel.AddTarget(o);
+                modelPanel.AddTarget(o, false);
                 //if (o._drawCalls.Count > 0)
                 //    lstDrawCalls.SelectedIndex = 0;
                 modelPanel.SetCamWithBox(o.GetBox());

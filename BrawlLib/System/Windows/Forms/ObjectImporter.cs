@@ -224,7 +224,7 @@ namespace System.Windows.Forms
 
             _node.IsRendering = true;
             modelPanel1.ClearTargets();
-            modelPanel1.AddTarget(_node);
+            modelPanel1.AddTarget(_node, false);
             modelPanel1.SetCamWithBox(_node.GetBox());
         }
 
@@ -261,7 +261,7 @@ namespace System.Windows.Forms
                 _baseInf = _externalModel._linker.BoneCache[0];
                 baseBone.Text = _baseInf.ToString();
 
-                modelPanel1.AddTarget(_externalModel);
+                modelPanel1.AddTarget(_externalModel, false);
                 modelPanel1.SetCamWithBox(_externalModel.GetBox());
             }
             else
