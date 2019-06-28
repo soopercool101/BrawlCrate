@@ -238,7 +238,7 @@ namespace BrawlCrate
                     }
                     else
                     {
-                        Say(string.Format("Error: Unable to find node or path '{0}'!", args[1]));
+                        Say($"Error: Unable to find node or path '{args[1]}'!");
                     }
                 }
 
