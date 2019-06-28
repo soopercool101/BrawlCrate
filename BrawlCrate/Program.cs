@@ -238,7 +238,7 @@ namespace BrawlCrate
                     }
                     else
                     {
-                        Say($"Error: Unable to find node or path '{args[1]}'!");
+                        MessageBox.Show($"Error: Unable to find node or path '{args[1]}'!");
                     }
                 }
 
@@ -264,11 +264,6 @@ namespace BrawlCrate
                     Discord.DiscordRpc.Shutdown();
                 }
             }
-        }
-
-        public static void Say(string msg)
-        {
-            MessageBox.Show(msg);
         }
 
         public static bool New<T>() where T : ResourceNode
@@ -341,7 +336,7 @@ namespace BrawlCrate
 
             if (!File.Exists(path))
             {
-                Say("File does not exist.");
+                MessageBox.Show("File does not exist.");
                 return false;
             }
 
@@ -375,14 +370,14 @@ namespace BrawlCrate
                 else
                 {
                     _rootPath = null;
-                    Say("Unable to recognize input file.");
+                    MessageBox.Show("Unable to recognize input file.");
                     MainForm.Instance.Reset();
                 }
 #if !DEBUG
             }
             catch (Exception x)
             {
-                Say(x.ToString());
+                MessageBox.Show(x.ToString());
             }
 #endif
 
@@ -456,7 +451,7 @@ namespace BrawlCrate
                 }
                 catch (Exception x)
                 {
-                    Say(x.Message);
+                    MessageBox.Show(x.Message);
                 }
 #endif
             }
@@ -502,7 +497,7 @@ namespace BrawlCrate
             }
             catch (Exception ex)
             {
-                Say(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
 #endif
             fileName = null;
@@ -606,7 +601,7 @@ namespace BrawlCrate
                 }
                 catch (Exception x)
                 {
-                    Say(x.Message);
+                    MessageBox.Show(x.Message);
                 }
                 //finally { }
 #endif
