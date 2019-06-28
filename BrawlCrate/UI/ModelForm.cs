@@ -259,11 +259,11 @@ namespace BrawlCrate
             if (modelEditControl1.TargetModel != null)
             {
                 Text = string.Format("{1} - Advanced Model Editor - {0}",
-                    ((ResourceNode) modelEditControl1.TargetModel).Name, Program.AssemblyTitleFull);
+                    ((ResourceNode) modelEditControl1.TargetModel).Name, Program.AssemblyTitleShort);
             }
             else
             {
-                Text = $"{Program.AssemblyTitleFull} - Advanced Model Editor";
+                Text = $"{Program.AssemblyTitleShort} - Advanced Model Editor";
             }
         }
 
