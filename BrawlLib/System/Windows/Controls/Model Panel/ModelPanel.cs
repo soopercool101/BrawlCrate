@@ -80,6 +80,12 @@ namespace System.Windows.Forms
                     distY = halfExtents._y / tan; //The camera's distance from the model's midpoint in respect to Y
                     distX = distY * ratio;
                 }
+                else if (halfExtents._x != 0.0f)
+                {
+                    float ratio = halfExtents._y / halfExtents._x;
+                    distX = halfExtents._x / tan; //The camera's distance from the model's midpoint in respect to Y
+                    distY = distX * ratio;
+                }
             }
 
             cam.Reset();
