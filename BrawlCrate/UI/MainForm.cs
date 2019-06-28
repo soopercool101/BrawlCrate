@@ -341,6 +341,7 @@ namespace BrawlCrate
                 BrawlLib.Properties.Settings.Default.HideMDL0Errors =
                     BrawlLib.Properties.Settings.Default.CompatibilityMode = _compatibilityMode;
                 BrawlLib.Properties.Settings.Default.Save();
+                resourceTree_SelectionChanged(null, null);
             }
         }
 
@@ -370,6 +371,7 @@ namespace BrawlCrate
 
                 Properties.Settings.Default.PreviewBRRESModels = _showBRRESPreviews;
                 Properties.Settings.Default.Save();
+                resourceTree_SelectionChanged(null, null);
             }
         }
         private bool _showBRRESPreviews;
@@ -383,6 +385,7 @@ namespace BrawlCrate
 
                 Properties.Settings.Default.PreviewARCModels = _showARCPreviews;
                 Properties.Settings.Default.Save();
+                resourceTree_SelectionChanged(null, null);
             }
         }
         private bool _showARCPreviews;
