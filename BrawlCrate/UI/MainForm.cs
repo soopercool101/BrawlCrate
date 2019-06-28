@@ -786,40 +786,59 @@ namespace BrawlCrate
             maxX = null;
             maxY = null;
             maxZ = null;
+            MDL0Node stagePosition = null;
             foreach (ResourceNode resource in arcNode.Children)
             {
-                if (resource is BRRESNode brresNode && brresNode.NumTriangles > 0)
+                if (resource is BRRESNode brresNode)
                 {
-                    RenderBRRES(brresNode, out float? bMinX, out float? bMinY, out float? bMinZ, out float? bMaxX,
-                        out float? bMaxY, out float? bMaxZ);
-                    if (minX == null || bMinX < minX)
+                    if (brresNode.NumTriangles > 0)
                     {
-                        minX = bMinX;
-                    }
+                        RenderBRRES(brresNode, out float? bMinX, out float? bMinY, out float? bMinZ, out float? bMaxX,
+                            out float? bMaxY, out float? bMaxZ);
+                        if (minX == null || bMinX < minX)
+                        {
+                            minX = bMinX;
+                        }
 
-                    if (minY == null || bMinY < minY)
-                    {
-                        minY = bMinY;
-                    }
+                        if (minY == null || bMinY < minY)
+                        {
+                            minY = bMinY;
+                        }
 
-                    if (minZ == null || bMinZ < minZ)
-                    {
-                        minZ = bMinZ;
-                    }
+                        if (minZ == null || bMinZ < minZ)
+                        {
+                            minZ = bMinZ;
+                        }
 
-                    if (maxX == null || bMaxX > maxX)
-                    {
-                        maxX = bMaxX;
-                    }
+                        if (maxX == null || bMaxX > maxX)
+                        {
+                            maxX = bMaxX;
+                        }
 
-                    if (maxY == null || bMaxY > maxY)
-                    {
-                        maxY = bMaxY;
-                    }
+                        if (maxY == null || bMaxY > maxY)
+                        {
+                            maxY = bMaxY;
+                        }
 
-                    if (maxZ == null || bMaxZ > maxZ)
+                        if (maxZ == null || bMaxZ > maxZ)
+                        {
+                            maxZ = bMaxZ;
+                        }
+                    }
+                    else if (stagePosition == null && brresNode.NumNodes >= 30)
                     {
-                        maxZ = bMaxZ;
+                        try
+                        {
+                            MDL0Node check = brresNode.GetFolder<MDL0Node>().Children[0] as MDL0Node;
+                            if (check.Name.Equals("stgposition", StringComparison.OrdinalIgnoreCase) ||
+                                check.Name.Equals("stageposition", StringComparison.OrdinalIgnoreCase))
+                            {
+                                stagePosition = check;
+                            }
+                        }
+                        catch
+                        {
+                        }
                     }
                 }
                 else if (resource is ARCNode subArcNode && subArcNode.NumTriangles > 0)
@@ -855,6 +874,22 @@ namespace BrawlCrate
                     {
                         maxZ = aMaxZ;
                     }
+                }
+            }
+
+            // Use stage position to determine boundaries programatically
+            if (stagePosition != null)
+            {
+                MDL0BoneNode cam0N = stagePosition.FindBone("CamLimit0N");
+                MDL0BoneNode cam1N = stagePosition.FindBone("CamLimit1N");
+                if (cam0N != null && cam1N != null)
+                {
+                    minX = cam0N.Translation._x;
+                    minY = cam0N.Translation._y;
+                    minZ = 0;
+                    maxX = cam1N.Translation._x;
+                    maxY = cam1N.Translation._y;
+                    maxZ = 0;
                 }
             }
         }
