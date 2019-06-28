@@ -90,6 +90,8 @@ namespace BrawlCrate
         private Button btnPythonDetect;
         private Label label1;
         private TextBox txtBoxPythonPath;
+        private CheckBox chkBoxRenderARC;
+        private CheckBox chkBoxRenderBRRES;
         private CheckBox chkShowPropDesc;
 
         public SettingsDialog()
@@ -107,6 +109,7 @@ namespace BrawlCrate
                 tabUpdater.Visible = false;
                 tabControl1.TabPages.Remove(tabUpdater);
             }
+
             if (!Program.CanRunDiscordRPC)
             {
                 tabDiscord.Enabled = false;
@@ -274,6 +277,8 @@ namespace BrawlCrate
             chkBoxModuleCompress.Checked = MainForm.Instance.AutoCompressModules;
             chkBoxAutoPlayAudio.Checked = MainForm.Instance.AutoPlayAudio;
             chkBoxMDL0Compatibility.Checked = MainForm.Instance.CompatibilityMode;
+            chkBoxRenderBRRES.Checked = MainForm.Instance.ShowBRRESPreviews;
+            chkBoxRenderARC.Checked = MainForm.Instance.ShowARCPreviews;
             recentFileCountBox.Value = Properties.Settings.Default.RecentFilesMax;
             chkBoxEnableAPI.Checked = Properties.Settings.Default.APIEnabled;
             chkBoxAPIEnableLoaders.Checked = Properties.Settings.Default.APILoadersEnabled;
@@ -387,6 +392,8 @@ namespace BrawlCrate
             tabControl1 = new TabControl();
             tabGeneral = new TabPage();
             grpBoxMDL0General = new GroupBox();
+            chkBoxRenderARC = new CheckBox();
+            chkBoxRenderBRRES = new CheckBox();
             chkBoxMDL0Compatibility = new CheckBox();
             grpBoxAudioGeneral = new GroupBox();
             chkBoxAutoPlayAudio = new CheckBox();
@@ -544,13 +551,37 @@ namespace BrawlCrate
             // 
             grpBoxMDL0General.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                         | AnchorStyles.Right;
+            grpBoxMDL0General.Controls.Add(chkBoxRenderARC);
+            grpBoxMDL0General.Controls.Add(chkBoxRenderBRRES);
             grpBoxMDL0General.Controls.Add(chkBoxMDL0Compatibility);
             grpBoxMDL0General.Location = new System.Drawing.Point(8, 241);
             grpBoxMDL0General.Name = "grpBoxMDL0General";
-            grpBoxMDL0General.Size = new System.Drawing.Size(349, 53);
+            grpBoxMDL0General.Size = new System.Drawing.Size(349, 94);
             grpBoxMDL0General.TabIndex = 19;
             grpBoxMDL0General.TabStop = false;
             grpBoxMDL0General.Text = "Models";
+            // 
+            // chkBoxRenderARC
+            // 
+            chkBoxRenderARC.AutoSize = true;
+            chkBoxRenderARC.Location = new System.Drawing.Point(10, 68);
+            chkBoxRenderARC.Name = "chkBoxRenderARC";
+            chkBoxRenderARC.Size = new System.Drawing.Size(146, 17);
+            chkBoxRenderARC.TabIndex = 9;
+            chkBoxRenderARC.Text = "Render previews for ARC";
+            chkBoxRenderARC.UseVisualStyleBackColor = true;
+            chkBoxRenderARC.CheckedChanged += new EventHandler(ChkBoxRenderARC_CheckedChanged);
+            // 
+            // chkBoxRenderBRRES
+            // 
+            chkBoxRenderBRRES.AutoSize = true;
+            chkBoxRenderBRRES.Location = new System.Drawing.Point(10, 45);
+            chkBoxRenderBRRES.Name = "chkBoxRenderBRRES";
+            chkBoxRenderBRRES.Size = new System.Drawing.Size(161, 17);
+            chkBoxRenderBRRES.TabIndex = 8;
+            chkBoxRenderBRRES.Text = "Render previews for BRRES";
+            chkBoxRenderBRRES.UseVisualStyleBackColor = true;
+            chkBoxRenderBRRES.CheckedChanged += new EventHandler(ChkBoxRenderBRRES_CheckedChanged);
             // 
             // chkBoxMDL0Compatibility
             // 
@@ -588,8 +619,8 @@ namespace BrawlCrate
             // 
             // grpBoxMainFormGeneral
             // 
-            grpBoxMainFormGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                            | AnchorStyles.Right;
+            grpBoxMainFormGeneral.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                            | AnchorStyles.Right);
             grpBoxMainFormGeneral.Controls.Add(lblRecentFiles);
             grpBoxMainFormGeneral.Controls.Add(recentFileCountBox);
             grpBoxMainFormGeneral.Controls.Add(grpBoxFileNameDisplayGeneral);
@@ -626,8 +657,8 @@ namespace BrawlCrate
             // 
             // grpBoxFileNameDisplayGeneral
             // 
-            grpBoxFileNameDisplayGeneral.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
-                                                                      | AnchorStyles.Right;
+            grpBoxFileNameDisplayGeneral.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
+                                                                                      | AnchorStyles.Right);
             grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowShortName);
             grpBoxFileNameDisplayGeneral.Controls.Add(rdoShowFullPath);
             grpBoxFileNameDisplayGeneral.Location = new System.Drawing.Point(6, 89);
@@ -676,8 +707,8 @@ namespace BrawlCrate
             // 
             // groupBoxModuleCompression
             // 
-            groupBoxModuleCompression.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                                | AnchorStyles.Right;
+            groupBoxModuleCompression.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                                | AnchorStyles.Right);
             groupBoxModuleCompression.Controls.Add(chkBoxModuleCompress);
             groupBoxModuleCompression.Location = new System.Drawing.Point(8, 146);
             groupBoxModuleCompression.Name = "groupBoxModuleCompression";
@@ -699,8 +730,8 @@ namespace BrawlCrate
             // 
             // groupBoxStageCompression
             // 
-            groupBoxStageCompression.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                               | AnchorStyles.Right;
+            groupBoxStageCompression.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                               | AnchorStyles.Right);
             groupBoxStageCompression.Controls.Add(chkBoxStageCompress);
             groupBoxStageCompression.Location = new System.Drawing.Point(8, 87);
             groupBoxStageCompression.Name = "groupBoxStageCompression";
@@ -722,8 +753,8 @@ namespace BrawlCrate
             // 
             // groupBoxFighterCompression
             // 
-            groupBoxFighterCompression.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                                 | AnchorStyles.Right;
+            groupBoxFighterCompression.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                                 | AnchorStyles.Right);
             groupBoxFighterCompression.Controls.Add(chkBoxFighterPacDecompress);
             groupBoxFighterCompression.Controls.Add(chkBoxFighterPcsCompress);
             groupBoxFighterCompression.Location = new System.Drawing.Point(8, 6);
@@ -769,8 +800,8 @@ namespace BrawlCrate
             // 
             // genericFileAssociationBox
             // 
-            genericFileAssociationBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
-                                                                   | AnchorStyles.Right;
+            genericFileAssociationBox.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
+                                                                                   | AnchorStyles.Right);
             genericFileAssociationBox.Controls.Add(binFileAssociation);
             genericFileAssociationBox.Controls.Add(datFileAssociation);
             genericFileAssociationBox.Location = new System.Drawing.Point(8, 341);
@@ -804,10 +835,10 @@ namespace BrawlCrate
             // 
             // lblAdminApproval
             // 
-            lblAdminApproval.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
-                                                          | AnchorStyles.Right;
+            lblAdminApproval.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
+                                                                          | AnchorStyles.Right);
             lblAdminApproval.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F,
-                System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+                System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (byte) 0);
             lblAdminApproval.ForeColor = System.Drawing.Color.Red;
             lblAdminApproval.Location = new System.Drawing.Point(3, 426);
             lblAdminApproval.Name = "lblAdminApproval";
@@ -818,7 +849,7 @@ namespace BrawlCrate
             // 
             // btnApply
             // 
-            btnApply.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnApply.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Right);
             btnApply.Location = new System.Drawing.Point(287, 424);
             btnApply.Name = "btnApply";
             btnApply.Size = new System.Drawing.Size(75, 23);
@@ -829,9 +860,9 @@ namespace BrawlCrate
             // 
             // associatiedFilesBox
             // 
-            associatiedFilesBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                          | AnchorStyles.Left
-                                                          | AnchorStyles.Right;
+            associatiedFilesBox.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                          | AnchorStyles.Left
+                                                                          | AnchorStyles.Right);
             associatiedFilesBox.Controls.Add(checkBox1);
             associatiedFilesBox.Controls.Add(listView1);
             associatiedFilesBox.Location = new System.Drawing.Point(8, 6);
@@ -843,7 +874,7 @@ namespace BrawlCrate
             // 
             // checkBox1
             // 
-            checkBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            checkBox1.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Right);
             checkBox1.Location = new System.Drawing.Point(242, 303);
             checkBox1.Name = "checkBox1";
             checkBox1.RightToLeft = RightToLeft.Yes;
@@ -855,9 +886,9 @@ namespace BrawlCrate
             // 
             // listView1
             // 
-            listView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                | AnchorStyles.Left
-                                                | AnchorStyles.Right;
+            listView1.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                | AnchorStyles.Left
+                                                                | AnchorStyles.Right);
             listView1.AutoArrange = false;
             listView1.BorderStyle = BorderStyle.FixedSingle;
             listView1.CheckBoxes = true;
@@ -961,8 +992,8 @@ namespace BrawlCrate
             // 
             // grpBoxFSharpAPI
             // 
-            grpBoxFSharpAPI.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                      | AnchorStyles.Right;
+            grpBoxFSharpAPI.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                      | AnchorStyles.Right);
             grpBoxFSharpAPI.Controls.Add(txtBoxFSharpPath);
             grpBoxFSharpAPI.Controls.Add(btnFSharpBrowse);
             grpBoxFSharpAPI.Controls.Add(btnFSharpDetect);
@@ -976,8 +1007,8 @@ namespace BrawlCrate
             // 
             // txtBoxFSharpPath
             // 
-            txtBoxFSharpPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                       | AnchorStyles.Right;
+            txtBoxFSharpPath.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                       | AnchorStyles.Right);
             txtBoxFSharpPath.Location = new System.Drawing.Point(11, 38);
             txtBoxFSharpPath.Name = "txtBoxFSharpPath";
             txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
@@ -987,8 +1018,8 @@ namespace BrawlCrate
             // 
             // btnFSharpBrowse
             // 
-            btnFSharpBrowse.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                      | AnchorStyles.Right;
+            btnFSharpBrowse.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                      | AnchorStyles.Right);
             btnFSharpBrowse.Location = new System.Drawing.Point(236, 36);
             btnFSharpBrowse.Name = "btnFSharpBrowse";
             btnFSharpBrowse.Size = new System.Drawing.Size(24, 24);
@@ -999,8 +1030,8 @@ namespace BrawlCrate
             // 
             // btnFSharpDetect
             // 
-            btnFSharpDetect.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                      | AnchorStyles.Right;
+            btnFSharpDetect.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                      | AnchorStyles.Right);
             btnFSharpDetect.Location = new System.Drawing.Point(266, 36);
             btnFSharpDetect.Name = "btnFSharpDetect";
             btnFSharpDetect.Size = new System.Drawing.Size(75, 24);
@@ -1020,8 +1051,8 @@ namespace BrawlCrate
             // 
             // grpBoxPythonAPI
             // 
-            grpBoxPythonAPI.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                      | AnchorStyles.Right;
+            grpBoxPythonAPI.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                      | AnchorStyles.Right);
             grpBoxPythonAPI.Controls.Add(txtBoxPythonPath);
             grpBoxPythonAPI.Controls.Add(btnPythonBrowse);
             grpBoxPythonAPI.Controls.Add(btnPythonDetect);
@@ -1035,8 +1066,8 @@ namespace BrawlCrate
             // 
             // txtBoxPythonPath
             // 
-            txtBoxPythonPath.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                       | AnchorStyles.Right;
+            txtBoxPythonPath.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                       | AnchorStyles.Right);
             txtBoxPythonPath.Location = new System.Drawing.Point(11, 38);
             txtBoxPythonPath.Name = "txtBoxPythonPath";
             txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
@@ -1046,8 +1077,8 @@ namespace BrawlCrate
             // 
             // btnPythonBrowse
             // 
-            btnPythonBrowse.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                      | AnchorStyles.Right;
+            btnPythonBrowse.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                      | AnchorStyles.Right);
             btnPythonBrowse.Location = new System.Drawing.Point(236, 36);
             btnPythonBrowse.Name = "btnPythonBrowse";
             btnPythonBrowse.Size = new System.Drawing.Size(24, 24);
@@ -1058,8 +1089,8 @@ namespace BrawlCrate
             // 
             // btnPythonDetect
             // 
-            btnPythonDetect.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                                                      | AnchorStyles.Right;
+            btnPythonDetect.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Bottom
+                                                                      | AnchorStyles.Right);
             btnPythonDetect.Location = new System.Drawing.Point(266, 36);
             btnPythonDetect.Name = "btnPythonDetect";
             btnPythonDetect.Size = new System.Drawing.Size(75, 24);
@@ -1079,8 +1110,8 @@ namespace BrawlCrate
             // 
             // grpBoxAPIGeneral
             // 
-            grpBoxAPIGeneral.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                       | AnchorStyles.Right;
+            grpBoxAPIGeneral.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                       | AnchorStyles.Right);
             grpBoxAPIGeneral.Controls.Add(chkBoxAPIEnableLoaders);
             grpBoxAPIGeneral.Controls.Add(chkBoxEnableAPI);
             grpBoxAPIGeneral.Location = new System.Drawing.Point(8, 6);
@@ -1125,8 +1156,8 @@ namespace BrawlCrate
             // 
             // grpBoxDiscordRPC
             // 
-            grpBoxDiscordRPC.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                       | AnchorStyles.Right;
+            grpBoxDiscordRPC.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                       | AnchorStyles.Right);
             grpBoxDiscordRPC.Controls.Add(chkBoxEnableDiscordRPC);
             grpBoxDiscordRPC.Controls.Add(grpBoxDiscordRPCType);
             grpBoxDiscordRPC.Location = new System.Drawing.Point(8, 6);
@@ -1149,8 +1180,8 @@ namespace BrawlCrate
             // 
             // grpBoxDiscordRPCType
             // 
-            grpBoxDiscordRPCType.Anchor = AnchorStyles.Bottom | AnchorStyles.Left
-                                                              | AnchorStyles.Right;
+            grpBoxDiscordRPCType.Anchor = (AnchorStyles) (AnchorStyles.Bottom | AnchorStyles.Left
+                                                                              | AnchorStyles.Right);
             grpBoxDiscordRPCType.Controls.Add(DiscordRPCCustomName);
             grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameCustom);
             grpBoxDiscordRPCType.Controls.Add(rdoDiscordRPCNameExternal);
@@ -1165,8 +1196,8 @@ namespace BrawlCrate
             // 
             // DiscordRPCCustomName
             // 
-            DiscordRPCCustomName.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                           | AnchorStyles.Right;
+            DiscordRPCCustomName.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                           | AnchorStyles.Right);
             DiscordRPCCustomName.Location = new System.Drawing.Point(30, 88);
             DiscordRPCCustomName.Name = "DiscordRPCCustomName";
             DiscordRPCCustomName.Size = new System.Drawing.Size(301, 20);
@@ -1234,8 +1265,8 @@ namespace BrawlCrate
             // 
             // grpBoxCanary
             // 
-            grpBoxCanary.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                   | AnchorStyles.Right;
+            grpBoxCanary.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                   | AnchorStyles.Right);
             grpBoxCanary.Controls.Add(chkCanary);
             grpBoxCanary.Location = new System.Drawing.Point(8, 132);
             grpBoxCanary.Name = "grpBoxCanary";
@@ -1246,8 +1277,8 @@ namespace BrawlCrate
             // 
             // updaterBehaviorGroupbox
             // 
-            updaterBehaviorGroupbox.Anchor = AnchorStyles.Top | AnchorStyles.Left
-                                                              | AnchorStyles.Right;
+            updaterBehaviorGroupbox.Anchor = (AnchorStyles) (AnchorStyles.Top | AnchorStyles.Left
+                                                                              | AnchorStyles.Right);
             updaterBehaviorGroupbox.Controls.Add(rdoAutoUpdate);
             updaterBehaviorGroupbox.Controls.Add(rdoCheckManual);
             updaterBehaviorGroupbox.Controls.Add(rdoCheckStartup);
@@ -1516,6 +1547,9 @@ namespace BrawlCrate
             {
                 MainForm.Instance.CompatibilityMode = chkBoxMDL0Compatibility.Checked;
             }
+
+            chkBoxRenderBRRES.Enabled = !chkBoxMDL0Compatibility.Checked;
+            chkBoxRenderARC.Enabled = !chkBoxMDL0Compatibility.Checked;
         }
 
         private void ChkBoxEnableDiscordRPC_CheckedChanged(object sender, EventArgs e)
@@ -1720,6 +1754,22 @@ namespace BrawlCrate
                 {
                     API.BrawlAPI.CreatePlugin(str, true);
                 }
+            }
+        }
+
+        private void ChkBoxRenderBRRES_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating)
+            {
+                MainForm.Instance.ShowBRRESPreviews = chkBoxRenderBRRES.Checked;
+            }
+        }
+
+        private void ChkBoxRenderARC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!_updating)
+            {
+                MainForm.Instance.ShowARCPreviews = chkBoxRenderARC.Checked;
             }
         }
     }

@@ -68,6 +68,8 @@ namespace BrawlCrate
             _autoCompressStages = BrawlLib.Properties.Settings.Default.AutoCompressStages;
             _autoPlayAudio = Properties.Settings.Default.AutoPlayAudio;
             _showFullPath = Properties.Settings.Default.ShowFullPath;
+            _showBRRESPreviews = Properties.Settings.Default.PreviewBRRESModels;
+            _showARCPreviews = Properties.Settings.Default.PreviewARCModels;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
             if (CheckUpdatesOnStartup)
@@ -359,6 +361,32 @@ namespace BrawlCrate
 
         private bool _showFullPath;
 
+        public bool ShowBRRESPreviews
+        {
+            get => _showBRRESPreviews;
+            set
+            {
+                _showBRRESPreviews = value;
+
+                Properties.Settings.Default.PreviewBRRESModels = _showBRRESPreviews;
+                Properties.Settings.Default.Save();
+            }
+        }
+        private bool _showBRRESPreviews;
+
+        public bool ShowARCPreviews
+        {
+            get => _showARCPreviews;
+            set
+            {
+                _showARCPreviews = value;
+
+                Properties.Settings.Default.PreviewARCModels = _showARCPreviews;
+                Properties.Settings.Default.Save();
+            }
+        }
+        private bool _showARCPreviews;
+
         private void UpdatePropertyDescriptionBox(GridItem item)
         {
             if (!DisplayPropertyDescriptionsWhenAvailable)
@@ -606,7 +634,10 @@ namespace BrawlCrate
                     previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
-                else if ((node is ARCNode arcNode && arcNode.NumTriangles > 0) || (node is BRRESNode brresNode && brresNode.NumTriangles > 0) || node is IRenderedObject || node is CollisionNode)
+                else if (node is CollisionNode || !CompatibilityMode &&
+                         (node is IRenderedObject ||
+                          ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
+                          ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
                 {
                     newControl = modelPanel1;
                     RenderSelected(node);
