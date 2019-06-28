@@ -834,11 +834,23 @@ namespace System.Windows.Forms
             }
         }
 
+        private Drawing.Point? lastCursorPos = null;
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
             if (_selecting)
             {
                 _selEnd = new Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
+            }
+
+            if (!_grabbing && lastCursorPos != null)
+            {
+                Cursor.Show();
+                lastCursorPos = null;
+            }
+            else if (_grabbing && lastCursorPos == null)
+            {
+                Cursor.Hide();
+                lastCursorPos = Cursor.Position;
             }
 
             int x = e.X - Region.X;
@@ -848,8 +860,12 @@ namespace System.Windows.Forms
             {
                 lock (ctx)
                 {
-                    int xDiff = x - _lastX;
-                    int yDiff = _lastY - y;
+                    int xDiff = _grabbing && lastCursorPos != null
+                        ? Cursor.Position.X - lastCursorPos.Value.X
+                        : x - _lastX;
+                    int yDiff = _grabbing && lastCursorPos != null
+                        ? lastCursorPos.Value.Y - Cursor.Position.Y
+                        : _lastY - y;
 
                     Keys mod = Control.ModifierKeys;
                     bool ctrl = (mod & Keys.Control) != 0;
@@ -888,8 +904,15 @@ namespace System.Windows.Forms
                         Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
                     }
                 }
+                if (_grabbing)
+                {
+                    if (lastCursorPos == null)
+                    {
+                        lastCursorPos = Cursor.Position;
+                    }
+                    Cursor.Position = (Drawing.Point)lastCursorPos;
+                }
             }
-
             _lastX = x;
             _lastY = y;
 
