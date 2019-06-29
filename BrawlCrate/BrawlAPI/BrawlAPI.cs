@@ -455,14 +455,7 @@ namespace BrawlCrate.API
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    return dlg.FileName;
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
             }
         }
 
@@ -470,14 +463,7 @@ namespace BrawlCrate.API
         {
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    return dlg.SelectedPath;
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
         }
 
@@ -485,14 +471,7 @@ namespace BrawlCrate.API
         {
             using (SaveFileDialog dlg = new SaveFileDialog())
             {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    return dlg.FileName;
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
             }
         }
 
