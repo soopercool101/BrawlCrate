@@ -411,22 +411,10 @@ namespace BrawlCrate.API
 
         #region Exposed API members
 
-        public static ResourceNode RootNode
-        {
-            get
-            {
-                if (MainForm.Instance.RootNode != null)
-                {
-                    return MainForm.Instance.RootNode.Resource;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
-
-        public static ResourceNode SelectedNode => ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource;
+        public static ResourceNode RootNode => MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
+        public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
+            ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
+            : null;
         public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
 
         public static void ShowMessage(string msg, string title)
