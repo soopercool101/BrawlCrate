@@ -424,14 +424,12 @@ namespace BrawlCrate.API
 
         public static bool? ShowYesNoPrompt(string msg, string title)
         {
-            DialogResult result = MessageBox.Show(msg, title, MessageBoxButtons.YesNo);
-            return result == DialogResult.Yes;
+            return MessageBox.Show(msg, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
         public static bool? ShowOKCancelPrompt(string msg, string title)
         {
-            DialogResult result = MessageBox.Show(msg, title, MessageBoxButtons.OKCancel);
-            return result == DialogResult.OK;
+            return MessageBox.Show(msg, title, MessageBoxButtons.OKCancel) == DialogResult.OK;
         }
 
         public static void AddLoader(PluginLoader loader)
