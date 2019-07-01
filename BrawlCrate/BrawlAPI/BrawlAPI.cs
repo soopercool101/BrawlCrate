@@ -477,8 +477,17 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
-        /// To be called by API, adds context menu items based solely on Wrapper type.
+        /// To be called by API, adds context menu items to a wrapper.
+        ///
+        /// This is kept for compatibility purposes. The second definition for this function offers far more extensibility.
         /// </summary>
+        /// <param name="wrapper">
+        ///     The wrapper which new items will be added to.
+        /// </param>
+        /// <param name="items">
+        ///     One or more ToolStrip menu items that will be added to the context menu.
+        ///     These should be defined as much as possible in the script itself.
+        /// </param>
         public static void AddContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
             if (ContextMenuHooks.ContainsKey(wrapper))
@@ -493,7 +502,10 @@ namespace BrawlCrate.API
                         {
                             continue;
                         }
-
+                        if (string.IsNullOrEmpty(item.ToolTipText))
+                        {
+                            item.ToolTipText = items[0].ToolTipText;
+                        }
                         for (int j = 0; j < items[0].DropDownItems.Count; j++)
                         {
                             ToolStripItem item2 = items[0].DropDownItems[j];
@@ -512,50 +524,59 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
-        /// To be called by API, adds context menu items based solely on Wrapper type.
-        ///
-        /// Adds all items to a submenu with a name from variable "subMenuName"
+        /// To be called by API, adds context menu items to a wrapper with additional options.
         /// </summary>
-        public static void AddContextMenuItem(Type wrapper, string subMenuName, params ToolStripMenuItem[] items)
-        {
-            AddContextMenuItem(wrapper, subMenuName, null, items);
-        }
-
-        /// <summary>
-        /// To be called by API, adds context menu items based on Wrapper type and a given conditional defined by the script.
-        /// </summary>
-        public static void AddContextMenuItem(Type wrapper, EventHandler conditional, params ToolStripMenuItem[] items)
+        /// <param name="wrapper">
+        ///     The wrapper which new items will be added to.
+        /// </param>
+        /// <param name="subMenuName">
+        ///     (Optional) If not null or empty, a submenu which nodes will be defined under.
+        /// </param>
+        /// <param name="description">
+        ///     (Optional) If not null or empty, a string that will appear on mouseover.
+        ///     Will be added to the menu if the items are in a submenu, or added to all items otherwise.
+        /// </param>
+        /// <param name="conditional">
+        ///     (Optional) If not null, a function that will be run every time the dropdown is activated.
+        ///     Most useful to change an item's enabled state.
+        /// </param>
+        /// <param name="items">
+        ///     One or more ToolStrip menu items that will be added to the context menu.
+        ///     These should be defined as much as possible in the script itself.
+        /// </param>
+        public static void AddContextMenuItem(Type wrapper, string subMenuName, string description, EventHandler conditional, params ToolStripMenuItem[] items)
         {
             if (conditional != null)
             {
                 foreach (ToolStripMenuItem item in items)
                 {
                     item.EnabledChanged += conditional;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(subMenuName))
+            {
+                ToolStripMenuItem t = new ToolStripMenuItem(subMenuName);
+                foreach (ToolStripMenuItem item in items)
+                {
+                    t.DropDownItems.Add(item);
+                }
+                if (!string.IsNullOrEmpty(description))
+                {
+                    t.ToolTipText = description;
+                }
+                AddContextMenuItem(wrapper, t);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                foreach (ToolStripMenuItem item in items)
+                {
+                    item.ToolTipText += description;
                 }
             }
             AddContextMenuItem(wrapper, items);
-        }
-
-        /// <summary>
-        /// To be called by API, adds context menu items based on Wrapper type and a given conditional defined by the script.
-        ///
-        /// Adds all items to a submenu with a name from variable "subMenuName"
-        /// </summary>
-        public static void AddContextMenuItem(Type wrapper, string subMenuName, EventHandler conditional, params ToolStripMenuItem[] items)
-        {
-            ToolStripMenuItem t = new ToolStripMenuItem(subMenuName);
-            if (conditional != null)
-            {
-                foreach (ToolStripMenuItem item in items)
-                {
-                    item.EnabledChanged += conditional;
-                }
-            }
-            foreach (ToolStripMenuItem item in items)
-            {
-                t.DropDownItems.Add(item);
-            }
-            AddContextMenuItem(wrapper, t);
         }
         public static string OpenFileDialog()
         {
