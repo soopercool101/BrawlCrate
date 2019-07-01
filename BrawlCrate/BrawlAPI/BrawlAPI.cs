@@ -411,6 +411,7 @@ namespace BrawlCrate.API
                             {
                                 i.Enabled = false;
                                 i.Enabled = true;
+                                i.Visible = i.Enabled;
                             }
                         }
                     }
@@ -419,14 +420,7 @@ namespace BrawlCrate.API
                     {
                         if (item.DropDownItems.Count > 0)
                         {
-                            item.Enabled = false;
-                            foreach (ToolStripMenuItem i in item.DropDownItems)
-                            {
-                                if (!item.Enabled)
-                                {
-                                    item.Enabled = i.Enabled;
-                                }
-                            }
+                            item.Enabled = item.HasDropDownItems;
                         }
                         if (item.Enabled)
                         {
