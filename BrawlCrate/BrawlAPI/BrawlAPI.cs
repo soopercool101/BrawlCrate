@@ -403,10 +403,31 @@ namespace BrawlCrate.API
                         // Toggle enabled state to activate the "EnabledChanged" event. This will allow conditionals to evaluate
                         item.Enabled = false;
                         item.Enabled = true;
+
+                        // Implementation only allows for single-nested dropdowns, so ensure those get properly initialized as well
+                        if (item.DropDownItems.Count > 0)
+                        {
+                            foreach (ToolStripMenuItem i in item.DropDownItems)
+                            {
+                                i.Enabled = false;
+                                i.Enabled = true;
+                            }
+                        }
                     }
                     List<ToolStripItem> items = new List<ToolStripItem>();
                     foreach (ToolStripMenuItem item in ContextMenuHooks[type])
                     {
+                        if (item.DropDownItems.Count > 0)
+                        {
+                            item.Enabled = false;
+                            foreach (ToolStripMenuItem i in item.DropDownItems)
+                            {
+                                if (!item.Enabled)
+                                {
+                                    item.Enabled = i.Enabled;
+                                }
+                            }
+                        }
                         if (item.Enabled)
                         {
                             items.Add(item);
@@ -468,6 +489,26 @@ namespace BrawlCrate.API
         {
             if (ContextMenuHooks.ContainsKey(wrapper))
             {
+                if (items.Length == 1 && items[0].HasDropDownItems)
+                {
+                    // Combine same-named submenus
+                    for(int i = 0; i < ContextMenuHooks[wrapper].Length; i++)
+                    {
+                        ToolStripMenuItem item = ContextMenuHooks[wrapper][i];
+                        if (!item.HasDropDownItems || item.Text != items[0].Text)
+                        {
+                            continue;
+                        }
+
+                        for (int j = 0; j < items[0].DropDownItems.Count; j++)
+                        {
+                            ToolStripItem item2 = items[0].DropDownItems[j];
+                            item.DropDownItems.Add(item2);
+                        }
+
+                        return;
+                    }
+                }
                 ContextMenuHooks[wrapper] = ContextMenuHooks[wrapper].Append(items);
             }
             else
@@ -491,9 +532,12 @@ namespace BrawlCrate.API
         /// </summary>
         public static void AddContextMenuItem(Type wrapper, EventHandler conditional, params ToolStripMenuItem[] items)
         {
-            foreach (ToolStripMenuItem item in items)
+            if (conditional != null)
             {
-                item.EnabledChanged += conditional;
+                foreach (ToolStripMenuItem item in items)
+                {
+                    item.EnabledChanged += conditional;
+                }
             }
             AddContextMenuItem(wrapper, items);
         }
@@ -508,7 +552,10 @@ namespace BrawlCrate.API
             ToolStripMenuItem t = new ToolStripMenuItem(subMenuName);
             if (conditional != null)
             {
-                t.EnabledChanged += conditional;
+                foreach (ToolStripMenuItem item in items)
+                {
+                    item.EnabledChanged += conditional;
+                }
             }
             foreach (ToolStripMenuItem item in items)
             {
