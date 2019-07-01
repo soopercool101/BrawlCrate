@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.SSBB.ResourceNodes;
 using IronPython.Hosting;
+using IronPython.Modules;
 using IronPython.Runtime.Exceptions;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
@@ -388,10 +389,33 @@ namespace BrawlCrate.API
             TreeView resourceTree = (TreeView) sender;
             if (resourceTree.SelectedNode is BaseWrapper wrapper)
             {
+                // Remove plugins list as necessary
+                while (wrapper.ContextMenuStrip.Items.Count > 0 && (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins" || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
+                {
+                    wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
+                }
                 Type type = wrapper.GetType();
 
                 if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
                 {
+                    foreach (ToolStripMenuItem item in ContextMenuHooks[type])
+                    {
+                        // Toggle enabled state to activate the "EnabledChanged" event. This will allow conditionals to evaluate
+                        item.Enabled = false;
+                        item.Enabled = true;
+                    }
+                    List<ToolStripItem> items = new List<ToolStripItem>();
+                    foreach (ToolStripMenuItem item in ContextMenuHooks[type])
+                    {
+                        if (item.Enabled)
+                        {
+                            items.Add(item);
+                        }
+                    }
+                    if (items.Count <= 0)
+                    {
+                        return;
+                    }
                     if (wrapper.ContextMenuStrip.Items.Count == 0 ||
                         wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
                     {
@@ -404,7 +428,7 @@ namespace BrawlCrate.API
                     }
 
                     (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] as ToolStripMenuItem)
-                        ?.DropDown.Items.AddRange(ContextMenuHooks[type]);
+                        ?.DropDown.Items.AddRange(items.ToArray());
                 }
             }
         }
@@ -437,11 +461,14 @@ namespace BrawlCrate.API
             Loaders.Add(loader);
         }
 
+        /// <summary>
+        /// To be called by API, adds context menu items based solely on Wrapper type.
+        /// </summary>
         public static void AddContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
         {
             if (ContextMenuHooks.ContainsKey(wrapper))
             {
-                ContextMenuHooks[wrapper].Append(items);
+                ContextMenuHooks[wrapper] = ContextMenuHooks[wrapper].Append(items);
             }
             else
             {
@@ -449,6 +476,46 @@ namespace BrawlCrate.API
             }
         }
 
+        /// <summary>
+        /// To be called by API, adds context menu items based solely on Wrapper type.
+        ///
+        /// Adds all items to a submenu with a name from variable "subMenuName"
+        /// </summary>
+        public static void AddContextMenuItem(Type wrapper, string subMenuName, params ToolStripMenuItem[] items)
+        {
+            AddContextMenuItem(wrapper, subMenuName, null, items);
+        }
+
+        /// <summary>
+        /// To be called by API, adds context menu items based on Wrapper type and a given conditional defined by the script.
+        /// </summary>
+        public static void AddContextMenuItem(Type wrapper, EventHandler conditional, params ToolStripMenuItem[] items)
+        {
+            foreach (ToolStripMenuItem item in items)
+            {
+                item.EnabledChanged += conditional;
+            }
+            AddContextMenuItem(wrapper, items);
+        }
+
+        /// <summary>
+        /// To be called by API, adds context menu items based on Wrapper type and a given conditional defined by the script.
+        ///
+        /// Adds all items to a submenu with a name from variable "subMenuName"
+        /// </summary>
+        public static void AddContextMenuItem(Type wrapper, string subMenuName, EventHandler conditional, params ToolStripMenuItem[] items)
+        {
+            ToolStripMenuItem t = new ToolStripMenuItem(subMenuName);
+            if (conditional != null)
+            {
+                t.EnabledChanged += conditional;
+            }
+            foreach (ToolStripMenuItem item in items)
+            {
+                t.DropDownItems.Add(item);
+            }
+            AddContextMenuItem(wrapper, t);
+        }
         public static string OpenFileDialog()
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
