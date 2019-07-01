@@ -1,7 +1,6 @@
 from BrawlCrate.NodeWrappers import ARCWrapper
 from BrawlCrate.API import *
 from BrawlLib.SSBB.ResourceNodes import *
-import struct
 from System.Windows.Forms import ToolStripMenuItem
 from System import String
 
@@ -16,7 +15,7 @@ def export_to_results(sender, event_args):
         if count:
             BrawlAPI.ShowMessage(str(count) + " BRRESs were successfully exported to " + folder, "Success")
         else:
-            BrawlAPI.ShowMessage('No textures were found in the open file','Error')
+            BrawlAPI.ShowMessage('No BRRESs were found in the open file','Error')
 
 def EnableCheck(sender, event_args):
     sender.Enabled = BrawlAPI.SelectedNode.Name.Equals("char_bust_tex_lz77")
