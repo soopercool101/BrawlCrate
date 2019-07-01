@@ -2,6 +2,7 @@
 using Microsoft.Scripting.Hosting;
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlCrate.API
 {
@@ -35,7 +36,7 @@ namespace BrawlCrate.API
                 else
                 {
                     string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
-                    BrawlAPI.ShowMessage(msg, Path.GetFileName(Script.Path));
+                    MessageBox.Show(msg, Path.GetFileName(Script.Path));
                 }
             }
         }

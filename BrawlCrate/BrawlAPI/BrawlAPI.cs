@@ -151,12 +151,12 @@ namespace BrawlCrate.API
                 catch (SyntaxErrorException e)
                 {
                     string msg = $"Syntax error in \"{Path.GetFileName(path)}\"\n{e.Message}";
-                    ShowMessage(msg, Path.GetFileName(path));
+                    MessageBox.Show(msg, Path.GetFileName(path));
                 }
                 catch (SystemExitException e)
                 {
                     string msg = $"SystemExit in \"{Path.GetFileName(path)}\"\n{e.Message}";
-                    ShowMessage(msg, Path.GetFileName(path));
+                    MessageBox.Show(msg, Path.GetFileName(path));
                 }
                 catch (Exception e)
                 {
@@ -169,7 +169,7 @@ namespace BrawlCrate.API
                     else
                     {
                         string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
-                        ShowMessage(msg, Path.GetFileName(path));
+                        MessageBox.Show(msg, Path.GetFileName(path));
                     }
                 }
             }
@@ -207,12 +207,12 @@ namespace BrawlCrate.API
             catch (SyntaxErrorException e)
             {
                 string msg = $"Syntax error in \"{Path.GetFileName(path)}\"\n{e.Message}";
-                ShowMessage(msg, Path.GetFileName(path));
+                MessageBox.Show(msg, Path.GetFileName(path));
             }
             catch (SystemExitException e)
             {
                 string msg = $"SystemExit in \"{Path.GetFileName(path)}\"\n{e.Message}";
-                ShowMessage(msg, Path.GetFileName(path));
+                MessageBox.Show(msg, Path.GetFileName(path));
             }
             catch (Exception e)
             {
@@ -223,7 +223,7 @@ namespace BrawlCrate.API
                     return CreatePlugin(path, loader);
                 }
                 string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
-                ShowMessage(msg, Path.GetFileName(path));
+                MessageBox.Show(msg, Path.GetFileName(path));
             }
 
             return false;
