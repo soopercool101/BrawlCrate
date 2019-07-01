@@ -1,5 +1,8 @@
-from BrawlCrate.NodeWrappers import ARCWrapper
+__author__ = "soopercool101"
+__version__ = "1.0.0"
+
 from BrawlCrate.API import *
+from BrawlCrate.NodeWrappers import ARCWrapper
 from BrawlLib.SSBB.ResourceNodes import *
 from System.Windows.Forms import ToolStripMenuItem
 
@@ -9,8 +12,9 @@ def export_to_results(sender, event_args):
     if folder:
         for child in BrawlAPI.SelectedNode.Children:
             if isinstance(child, BRRESNode):
-                child.ExportUncompressed(folder + "/MenSelchrFaceB" + ("%02d" % (child.FileIndex,)) + "0.brres");
-                count += 1;
+                if(child.HasChildren):
+                    child.ExportUncompressed(folder + "/MenSelchrFaceB" + ("%02d" % (child.FileIndex,)) + "0.brres");
+                    count += 1;
         if count:
             BrawlAPI.ShowMessage(str(count) + " BRRESs were successfully exported to " + folder, "Success")
         else:
