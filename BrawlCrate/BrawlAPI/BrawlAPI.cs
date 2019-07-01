@@ -83,7 +83,7 @@ namespace BrawlCrate.API
 
         internal static void RunScript(string path)
         {
-            if (Path.GetExtension(path).Equals(".fsx", StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(path) && Path.GetExtension(path).Equals(".fsx", StringComparison.OrdinalIgnoreCase))
             {
                 FSharpInstall();
                 if (FSharpEnabled)
