@@ -7,9 +7,16 @@ from System import String
 
 def export_to_results(sender, event_args):
     folder = BrawlAPI.OpenFolderDialog()
-    for child in BrawlAPI.SelectedNode.Children:
-        if isinstance(child, BRRESNode):
-            child.ExportUncompressed(folder + "/MenSelchrFaceB" + ("%02d" % (child.FileIndex,)) + "0.brres");
+    count = 0;
+    if folder:
+        for child in BrawlAPI.SelectedNode.Children:
+            if isinstance(child, BRRESNode):
+                child.ExportUncompressed(folder + "/MenSelchrFaceB" + ("%02d" % (child.FileIndex,)) + "0.brres");
+                count += 1;
+        if count:
+            BrawlAPI.ShowMessage(str(count) + " BRRESs were successfully exported to " + folder, "Success")
+        else:
+            BrawlAPI.ShowMessage('No textures were found in the open file','Error')
 
 def EnableCheck(sender, event_args):
     sender.Enabled = BrawlAPI.SelectedNode.Name.Equals("char_bust_tex_lz77")
