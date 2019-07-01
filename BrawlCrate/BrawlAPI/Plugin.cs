@@ -46,11 +46,14 @@ namespace BrawlCrate.API
         internal static ResourceNode TryParse(DataSource source)
         {
             ResourceNode n = null;
-            foreach (PluginLoader ldr in BrawlAPI.Loaders)
+            using (UnsafeStream s = new UnsafeStream(source.Address, (uint)source.Length))
             {
-                if ((n = ldr.TryParse(new UnsafeStream(source.Address, (uint) source.Length))) != null)
+                foreach (PluginLoader ldr in BrawlAPI.Loaders)
                 {
-                    break;
+                    if ((n = ldr.TryParse(s)) != null)
+                    {
+                        break;
+                    }
                 }
             }
 
