@@ -230,7 +230,7 @@ namespace BrawlCrate.API
         /// </summary>
         /// <param name="loader">
         ///     The message that will appear in the body of the MessageBox
-        /// </param>=
+        /// </param>
         public static void AddLoader(PluginLoader loader)
         {
             Loaders.Add(loader);
