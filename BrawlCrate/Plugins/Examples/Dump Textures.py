@@ -5,10 +5,10 @@ from BrawlLib.Imaging import IImageSource
 def tex_search(node): # Recursive function to scan for all image nodes in the file
     if isinstance(node, IImageSource):
         return [node] # If it's an image node, include it in the list
-    list = []
+    tex_list = []
     for child in node.Children:
-        list += tex_search(child) # Otherwise, keep looking for children
-    return list
+        tex_list += tex_search(child) # Otherwise, keep looking for children
+    return tex_list
 
 if BrawlAPI.RootNode != None:
     root = BrawlAPI.RootNode
