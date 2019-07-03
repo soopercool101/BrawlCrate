@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class CollisionNode : ARCEntryNode
     {
-        internal CollisionHeader* Header => (CollisionHeader*) WorkingUncompressed.Address;
+        internal CollisionHeader* Header => (CollisionHeader*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
 
         public List<CollisionObject> _objects = new List<CollisionObject>();
@@ -98,7 +98,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            CollisionHeader* header = (CollisionHeader*) address;
+            CollisionHeader* header = (CollisionHeader*)address;
             *header = new CollisionHeader(_pointCount, _planeCount, _objects.Count, _unk1);
 
             BVec2* pPoint = header->Points;
@@ -176,7 +176,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 }
                                 else
                                 {
-                                    pPlane[rlink = tmp]._link1 = (short) iPlane; //Left link, which means the end!
+                                    pPlane[rlink = tmp]._link1 = (short)iPlane; //Left link, which means the end!
                                 }
                             }
                             else
@@ -236,7 +236,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            CollisionHeader* header = (CollisionHeader*) source.Address;
+            CollisionHeader* header = (CollisionHeader*)source.Address;
 
             if (header->_numPoints < 0 || header->_numPlanes < 0 || header->_numObjects < 0 || header->_unk1 < 0)
             {
@@ -267,12 +267,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             CollisionNode external = null;
             OpenFileDialog o = new OpenFileDialog
             {
-                Filter = "Collision (*.coll)|*.coll",
-                Title = "Please select a collision to merge with."
+                Filter = FileFilters.CollisionDef,
+                Title = "Please select a collision to merge with"
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (CollisionNode) NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = (CollisionNode)NodeFactory.FromFile(null, o.FileName)) != null)
                 {
                     MergeWith(external);
                 }
@@ -297,41 +297,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _linkedBone;
             set
             {
-                if (_linkedBone != null)
-                {
-                    foreach (CollisionPlane p in _planes)
-                    {
-                        if (p.LinkLeft != null)
-                        {
-                            p.LinkLeft._rawValue = _linkedBone.Matrix * p.LinkLeft._rawValue;
-                        }
-
-                        if (p.LinkRight != null)
-                        {
-                            p.LinkRight._rawValue = _linkedBone.Matrix * p.LinkRight._rawValue;
-                        }
-                    }
-                }
-
                 if ((_linkedBone = value) != null)
                 {
                     _boneIndex = _linkedBone.BoneIndex;
                     _boneName = _linkedBone.Name;
                     _modelName = _linkedBone.Model.Name;
                     _flags[1] = false;
-
-                    foreach (CollisionPlane p in _planes)
-                    {
-                        if (p.LinkLeft != null)
-                        {
-                            p.LinkLeft._rawValue = _linkedBone.InverseMatrix * p.LinkLeft._rawValue;
-                        }
-
-                        if (p.LinkRight != null)
-                        {
-                            p.LinkRight._rawValue = _linkedBone.InverseMatrix * p.LinkRight._rawValue;
-                        }
-                    }
                 }
                 else
                 {
@@ -375,7 +346,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unk1 = entry->_unk1;
             _unk2 = entry->_unk2;
             _unk3 = entry->_unk3;
-            _flags = (ushort) entry->_flags;
+            _flags = (ushort)entry->_flags;
             _unk5 = entry->_unk5;
             _unk6 = entry->_unk6;
             _boneIndex = entry->_boneIndex;
@@ -452,6 +423,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 p.DrawPlanes(p);
             }
+
+            foreach (CollisionLink l in _points)
+            {
+                l.Render(true);
+            }
         }
 
         public override string ToString()
@@ -503,7 +479,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public CollisionLink(CollisionObject parent, Vector2 value)
         {
             _parent = parent;
-            _rawValue = value;
+            Value = value;
             _parent._points.Add(this);
         }
 
@@ -661,6 +637,44 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public void Render(bool newMethod)
+        {
+            if (!newMethod)
+            {
+                Render();
+                return;
+            }
+
+            Color4 clr = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
+            float mult = 1.0f;
+            foreach (CollisionPlane p in _members)
+            {
+                if (p.LinkLeft == this && p.IsLeftLedge || p.LinkRight == this && p.IsRightLedge)
+                {
+                    clr = new Color4(1.0f, 0.0f, 1.0f, 1.0f);
+                    mult = 3.0f;
+                    break;
+                }
+            }
+
+            if (_highlight)
+            {
+                GL.Color4(1.0f, 1.0f, 0.0f, 1.0f);
+            }
+            else
+            {
+                GL.Color4(clr);
+            }
+
+            Vector2 v = Value;
+
+            GL.Disable(EnableCap.CullFace);
+            TKContext.DrawBox(
+                new Vector3(v._x - mult * BoxRadius, v._y - mult * BoxRadius, LineWidth),
+                new Vector3(v._x + mult * BoxRadius, v._y + mult * BoxRadius, -LineWidth));
+            GL.Enable(EnableCap.CullFace);
+        }
+
         public void Render()
         {
             Render(1.0f);
@@ -684,9 +698,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             Vector2 v = Value;
 
+            GL.Disable(EnableCap.CullFace);
             TKContext.DrawBox(
                 new Vector3(v._x - mult * BoxRadius, v._y - mult * BoxRadius, LineWidth),
                 new Vector3(v._x + mult * BoxRadius, v._y + mult * BoxRadius, -LineWidth));
+            GL.Enable(EnableCap.CullFace);
         }
     }
 
@@ -713,7 +729,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 switch (_type = value)
                 {
                     case CollisionPlaneType.Floor:
-                        if (PointLeft._x > PointRight._x)
+                        if (PointLeft._x > PointRight._x && !IsRotating)
                         {
                             SwapLinks();
                         }
@@ -721,7 +737,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
 
                     case CollisionPlaneType.Ceiling:
-                        if (PointLeft._x < PointRight._x)
+                        if (PointLeft._x < PointRight._x && !IsRotating)
                         {
                             SwapLinks();
                         }
@@ -729,7 +745,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
 
                     case CollisionPlaneType.RightWall:
-                        if (PointLeft._y < PointRight._y)
+                        if (PointLeft._y < PointRight._y && !IsRotating)
                         {
                             SwapLinks();
                         }
@@ -737,7 +753,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
 
                     case CollisionPlaneType.LeftWall:
-                        if (PointLeft._y > PointRight._y)
+                        if (PointLeft._y > PointRight._y && !IsRotating)
                         {
                             SwapLinks();
                         }
@@ -770,6 +786,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => (_type & CollisionPlaneType.RightWall) != 0;
             set => _type = (_type & ~CollisionPlaneType.RightWall) | (value ? CollisionPlaneType.RightWall : 0);
         }
+
+        public bool IsWall => (_type & CollisionPlaneType.RightWall) != 0 || (_type & CollisionPlaneType.LeftWall) != 0;
 
         public bool IsCharacters
         {
@@ -925,12 +943,28 @@ namespace BrawlLib.SSBB.ResourceNodes
         public CollisionLink Split(Vector2 point)
         {
             CollisionLink link = new CollisionLink(_parent, point);
-            CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight);
+            CollisionPlane plane = new CollisionPlane(_parent, link, _linkRight)
+            {
+                _material = _material,
+                _flags = _flags,
+                _flags2 = _flags2,
+                _type = _type
+            };
+            if (IsRightLedge)
+            {
+                IsRightLedge = false;
+            }
+
+            if (IsLeftLedge)
+            {
+                plane.IsLeftLedge = false;
+            }
+
             LinkRight = link;
             return link;
         }
 
-        private void SwapLinks()
+        public void SwapLinks()
         {
             CollisionLink l = _linkLeft;
             _linkLeft = _linkRight;
@@ -951,6 +985,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
+            float alpha = 0.8f;
+
+            if (!IsCharacters && (IsItems || IsPokemonTrainer))
+            {
+                alpha = 0.5f;
+            }
+
             Color4 clr = new Color4(1.0f, 0.0f, 1.0f, 1.0f);
             Vector2 l = _linkLeft.Value;
             Vector2 r = _linkRight.Value;
@@ -968,64 +1009,62 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (lev == 1)
             {
-                GL.Color4(1.0f, 0.5f, 0.5f, 0.8f);
+                GL.Color4(1.0f, 0.5f, 0.5f, alpha);
             }
             else
             {
-                GL.Color4(0.9f, 0.0f, 0.9f, 0.8f);
+                GL.Color4(0.9f, 0.0f, 0.9f, alpha);
             }
 
-            if (p._type == CollisionPlaneType.Floor && lev == 0 && !IsFallThrough)
+            if (p._type == CollisionPlaneType.Floor && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.9f, 0.9f, 0.8f);
+                GL.Color4(0.0f, 0.9f, 0.9f, alpha);
             }
-            else if (p._type == CollisionPlaneType.Ceiling && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.Ceiling && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.9f, 0.0f, 0.0f, 0.8f);
+                GL.Color4(0.9f, 0.0f, 0.0f, alpha);
             }
-            else if (p._type == CollisionPlaneType.LeftWall && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.LeftWall && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.9f, 0.0f, 0.8f);
+                GL.Color4(0.0f, 0.9f, 0.0f, alpha);
             }
-            else if (p._type == CollisionPlaneType.RightWall && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.RightWall && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.9f, 0.0f, 0.8f);
+                GL.Color4(0.0f, 0.9f, 0.0f, alpha);
             }
-            else if (p._type == CollisionPlaneType.None && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.None && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(1.0f, 1.0f, 1.0f, 0.6f);
+                GL.Color4(1.0f, 1.0f, 1.0f, alpha);
             }
-            else if (p._type != CollisionPlaneType.None && lev == 0 && !IsFallThrough)
+            else if (p._type != CollisionPlaneType.None && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.0f, 0.0f, 0.8f);
+                GL.Color4(0.0f, 0.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.Floor && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(1.0f, 1.0f, 0.0f, 0.8f);
+                GL.Color4(1.0f, 1.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.RightWall && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.45f, 1.0f, 0.0f, 0.8f);
+                GL.Color4(0.45f, 1.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.LeftWall && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.45f, 1.0f, 0.0f, 0.8f);
+                GL.Color4(0.45f, 1.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.Ceiling && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.9f, 0.3f, 0.0f, 0.8f);
+                GL.Color4(0.9f, 0.3f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.None && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.65f, 0.65f, 0.35f, 0.6f);
+                GL.Color4(0.65f, 0.65f, 0.35f, alpha);
             }
             else if (p._type != CollisionPlaneType.None && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.5f, 0.5f, 0.0f, 0.8f);
+                GL.Color4(0.5f, 0.5f, 0.0f, alpha);
             }
 
-            /*if (p.HasUnknownFlag) { GL.Color4(0.0f, 0.0f, 0.0f, 0.8f); }
-            else if (p.IsUnknownStageBox) { GL.Color4(1.0f, 1.0f, 1.0f, 0.6f); }*/
 
             GL.Begin(PrimitiveType.Quads);
             GL.Vertex3(l._x, l._y, 10.0f);
@@ -1034,63 +1073,69 @@ namespace BrawlLib.SSBB.ResourceNodes
             GL.Vertex3(r._x, r._y, 10.0f);
             GL.End();
 
+            alpha = 0.8f;
+
+            if (!IsCharacters && (IsItems || IsPokemonTrainer))
+            {
+                alpha = 0.5f;
+            }
+
             if (lev == 1)
             {
-                GL.Color4(0.7f, 0.2f, 0.2f, 0.8f);
+                GL.Color4(0.7f, 0.2f, 0.2f, alpha);
             }
             else
             {
-                GL.Color4(0.6f, 0.0f, 0.6f, 0.8f);
+                GL.Color4(0.6f, 0.0f, 0.6f, alpha);
             }
 
-
-            if (p._type == CollisionPlaneType.Floor && lev == 0 && !IsFallThrough)
+            if (p._type == CollisionPlaneType.Floor && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.9f, 0.9f, 0.8f);
+                GL.Color4(0.0f, 0.9f, 0.9f, alpha);
             }
-            else if (p._type == CollisionPlaneType.Ceiling && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.Ceiling && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.9f, 0.0f, 0.0f, 0.8f);
+                GL.Color4(0.9f, 0.0f, 0.0f, alpha);
             }
-            else if (p._type == CollisionPlaneType.LeftWall && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.LeftWall && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.9f, 0.0f, 0.8f);
+                GL.Color4(0.0f, 0.9f, 0.0f, alpha);
             }
-            else if (p._type == CollisionPlaneType.RightWall && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.RightWall && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.9f, 0.0f, 0.8f);
+                GL.Color4(0.0f, 0.9f, 0.0f, alpha);
             }
-            else if (p._type == CollisionPlaneType.None && lev == 0 && !IsFallThrough)
+            else if (p._type == CollisionPlaneType.None && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(1.0f, 1.0f, 1.0f, 0.6f);
+                GL.Color4(1.0f, 1.0f, 1.0f, alpha);
             }
-            else if (p._type != CollisionPlaneType.None && lev == 0 && !IsFallThrough)
+            else if (p._type != CollisionPlaneType.None && lev == 0 && !p.IsFallThrough)
             {
-                GL.Color4(0.0f, 0.0f, 0.0f, 0.8f);
+                GL.Color4(0.0f, 0.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.Floor && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(1.0f, 1.0f, 0.0f, 0.8f);
+                GL.Color4(1.0f, 1.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.RightWall && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.45f, 1.0f, 0.0f, 0.8f);
+                GL.Color4(0.45f, 1.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.LeftWall && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.45f, 1.0f, 0.0f, 0.8f);
+                GL.Color4(0.45f, 1.0f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.Ceiling && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.9f, 0.3f, 0.0f, 0.8f);
+                GL.Color4(0.9f, 0.3f, 0.0f, alpha);
             }
             else if (p._type == CollisionPlaneType.None && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.65f, 0.65f, 0.35f, 0.6f);
+                GL.Color4(0.65f, 0.65f, 0.35f, alpha);
             }
             else if (p._type != CollisionPlaneType.None && p.IsFallThrough && lev == 0)
             {
-                GL.Color4(0.5f, 0.5f, 0.0f, 0.8f);
+                GL.Color4(0.5f, 0.5f, 0.0f, alpha);
             }
 
             GL.Begin(PrimitiveType.Lines);
@@ -1099,27 +1144,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             GL.Vertex3(l._x, l._y, -10.0f);
             GL.Vertex3(r._x, r._y, -10.0f);
             GL.End();
-
-            if (p.IsRightLedge && p.IsLeftLedge)
-            {
-                _linkLeft.Render(clr, 3.0f);
-                _linkRight.Render(clr, 3.0f);
-            }
-            else if (p.IsLeftLedge && !p.IsRightLedge)
-            {
-                _linkLeft.Render(clr, 3.0f);
-                _linkRight.Render();
-            }
-            else if (p.IsRightLedge && !p.IsLeftLedge)
-            {
-                _linkLeft.Render();
-                _linkRight.Render(clr, 3.0f);
-            }
-            else
-            {
-                _linkLeft.Render();
-                _linkRight.Render();
-            }
         }
     }
 }
