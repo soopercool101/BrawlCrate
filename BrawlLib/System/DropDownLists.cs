@@ -711,15 +711,40 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             ARCEntryNode entry = context.Instance as ARCEntryNode;
-            if (entry.Parent == null)
+            List<ARCEntryNode> list = new List<ARCEntryNode>();
+            list.Add(new ARCEntryNode());
+
+            if (entry.Parent != null)
+            {
+                list.AddRange(entry.Parent.Children.Select(x => x as ARCEntryNode).ToList());
+                list.Remove(entry);
+            }
+
+            return new StandardValuesCollection(list);
+        }
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+                                         Type destinationType)
+        {
+            if (destinationType == typeof(string) && value is ARCEntryNode node)
+            {
+                return node.AbsoluteIndex < 0 ? "None" : $"{node.AbsoluteIndex.ToString()}. {node.Name}";
+            }
+            else if (destinationType == typeof(ARCEntryNode) && value is string str)
             {
                 return null;
             }
 
-            List<ARCEntryNode> list = entry.Parent.Children.Select(x => x as ARCEntryNode).ToList();
-            list.Remove(entry);
-            return new StandardValuesCollection(list);
+            return base.ConvertTo(context, culture, value, destinationType);
         }
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            if (value is ARCEntryNode node)
+            {
+                return $"{node.AbsoluteIndex.ToString()}. {node.Name}";
+            }
+            return base.ConvertFrom(context, culture, value);
+        }
+
     }
 
     public class DropDownListEnemies : StringConverter

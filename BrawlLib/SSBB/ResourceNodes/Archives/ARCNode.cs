@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -14,7 +15,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.ARC;
         public override Type[] AllowedChildTypes => new Type[] {typeof(ARCEntryNode)};
 
+#if !DEBUG
         [Browsable(false)]
+#endif
         public bool IsPair
         {
             get => _isPair;
@@ -23,14 +26,55 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private bool _isPair;
 
+#if !DEBUG
         [Browsable(false)]
-        public bool IsStage => Parent == null && _name.StartsWith("STG", StringComparison.OrdinalIgnoreCase);
+#endif
+        public bool IsStage => _isStage; //set { _isStage = value; } }
+        private bool _isStage;
 
-
+#if !DEBUG
         [Browsable(false)]
-        public bool IsFighter => Parent == null && _name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase);
+#endif
+        public bool IsFighter => _isFighter; // set { _isFighter = value; } }
+        private bool _isFighter;
 
-        #region MyRegion
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public bool IsItemTable => _isItemTable; // set { _isFighter = value; } }
+        private bool _isItemTable;
+
+        [Browsable(true)]
+        public string SpecialARC
+        {
+            get
+            {
+                if (IsFighter)
+                {
+                    return "Fighter";
+                }
+                else if (IsStage)
+                {
+                    return "Stage";
+                }
+                else if (IsItemTable)
+                {
+                    return "Item Table";
+                }
+                else if (Parent != null && Parent is ARCNode)
+                {
+                    if (((ARCNode) Parent).SpecialARC.EndsWith("SubNode") ||
+                        ((ARCNode) Parent).SpecialARC.Equals("<None>"))
+                    {
+                        return ((ARCNode) Parent).SpecialARC;
+                    }
+
+                    return ((ARCNode) Parent).SpecialARC + " SubNode";
+                }
+
+                return "<None>";
+            }
+        }
 
         [Category("Models")]
         public int NumModels
@@ -219,7 +263,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        #endregion
 
         private readonly Dictionary<ResourceNode, ARCFileHeader> _originalHeaders =
             new Dictionary<ResourceNode, ARCFileHeader>();
@@ -259,6 +302,46 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
             _name = Header->Name;
+            _isStage = false;
+            _isFighter = false;
+            _isItemTable = false;
+            if (_name.Length >= 3 && AbsoluteIndex == -1)
+            {
+                if (_name.Substring(0, 3).Equals("STG", StringComparison.OrdinalIgnoreCase))
+                {
+                    _isStage = true;
+                    Console.WriteLine(_name + " Generating MetaData");
+                }
+                else if (_name.Substring(0, 3).Equals("FIT", StringComparison.OrdinalIgnoreCase))
+                {
+                    _isFighter = true;
+                }
+            }
+
+            if (_name.StartsWith("ItmMelee", StringComparison.OrdinalIgnoreCase))
+            {
+                _isItemTable = true;
+            }
+
+            if (Compression == "LZ77" && Header->_numFiles > 0)
+            {
+                if (_parent != null)
+                {
+                    if (_parent is ARCNode)
+                    {
+                        if (((ARCNode) _parent).IsStage && Properties.Settings.Default.AutoCompressStages)
+                        {
+                            // Console.WriteLine(_parent._name);
+                            if (Enum.TryParse("ExtendedLZ77", out CompressionType type))
+                            {
+                                _compression = type;
+                                SignalPropertyChange();
+                            }
+                        }
+                    }
+                }
+            }
+
             return Header->_numFiles > 0;
         }
 
@@ -326,8 +409,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void ReplaceFromFolder(string inFolder)
         {
+            ReplaceFromFolder(inFolder, ".tex0");
+        }
+
+        public void ReplaceFromFolder(string inFolder, string imageExtension)
+        {
             DirectoryInfo dir = new DirectoryInfo(inFolder);
-            FileInfo[] files = dir.GetFiles();
             DirectoryInfo[] dirs;
             foreach (ARCEntryNode entry in Children)
             {
@@ -336,46 +423,38 @@ namespace BrawlLib.SSBB.ResourceNodes
                     dirs = dir.GetDirectories(entry.Name);
                     if (dirs.Length > 0)
                     {
-                        ((ARCNode) entry).ReplaceFromFolder(dirs[0].FullName);
-                        continue;
+                        ((ARCNode) entry).ReplaceFromFolder(dirs[0].FullName, imageExtension);
                     }
                 }
                 else if (entry is BRRESNode)
                 {
-                    dirs = dir.GetDirectories(entry.Name);
-                    if (dirs.Length > 0)
-                    {
-                        ((BRRESNode) entry).ReplaceFromFolder(dirs[0].FullName);
-                        continue;
-                    }
-                    else
-                    {
-                        ((BRRESNode) entry).ReplaceFromFolder(inFolder);
-                        continue;
-                    }
-                }
-                else
-                {
-                    string ext = FileFilters.GetDefaultExportAllExtension(entry.GetType());
-                    foreach (FileInfo info in files)
-                    {
-                        if (info.Extension.Equals(ext, StringComparison.OrdinalIgnoreCase) &&
-                            info.Name.Equals(entry.Name + ext, StringComparison.OrdinalIgnoreCase))
-                        {
-                            entry.Replace(info.FullName);
-                            break;
-                        }
-                    }
+                    ((BRRESNode) entry).ReplaceFromFolder(inFolder, imageExtension);
                 }
             }
         }
 
         public override int OnCalculateSize(bool force)
         {
+            return OnCalculateSize(force, true);
+        }
+
+        public int OnCalculateSize(bool force, bool rebuilding)
+        {
             int size = ARCHeader.Size + Children.Count * 0x20;
             foreach (ResourceNode node in Children)
             {
-                size += node.CalculateSize(force).Align(0x20);
+                if (rebuilding)
+                {
+                    size += node.CalculateSize(force).Align(0x20);
+                }
+                else if (!(node is RELNode))
+                {
+                    size += node.OnCalculateSize(force).Align(0x20);
+                }
+                else
+                {
+                    //size += (int)node.uncompSize.Align(0x20);
+                }
             }
 
             return size;
@@ -423,8 +502,27 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 ExportPCS(outPath);
             }
-            //else if (outPath.EndsWith(".pac", StringComparison.OrdinalIgnoreCase))
-            //    ExportPAC(outPath);
+            else if (outPath.EndsWith(".mariopast", StringComparison.OrdinalIgnoreCase))
+            {
+                ExportMarioPast(outPath);
+            }
+            else if (outPath.EndsWith(".metalgear", StringComparison.OrdinalIgnoreCase))
+            {
+                ExportMetalGear(outPath);
+            }
+            else if (outPath.EndsWith(".village", StringComparison.OrdinalIgnoreCase))
+            {
+                ExportVillage(outPath);
+            }
+            else if (outPath.EndsWith(".tengan", StringComparison.OrdinalIgnoreCase))
+            {
+                ExportTengan(outPath);
+            }
+            else if (outPath.EndsWith(".pac", StringComparison.OrdinalIgnoreCase) && IsFighter &&
+                     Properties.Settings.Default.AutoDecompressFighterPAC)
+            {
+                ExportPAC(outPath);
+            }
             else
             {
                 base.Export(outPath);
@@ -452,6 +550,147 @@ namespace BrawlLib.SSBB.ResourceNodes
             ExportPCS(path + ".pcs");
         }
 
+        // STGMARIOPAST uses 00/01
+        public void ExportMarioPast(string path)
+        {
+            if (Path.HasExtension(path))
+            {
+                path = path.Substring(0, path.LastIndexOf('.'));
+            }
+
+            char aslIndicator = '\0';
+            // Check if ASL is used
+            if (path.Contains("_") && path.Length >= 2 && path[path.Length - 2] == '_')
+            {
+                aslIndicator = path.ToCharArray()[path.Length - 1];
+            }
+
+            path = path.Substring(0, path.LastIndexOf('\\'));
+            // Export with or without ASL depending on if the file used ASL or not
+            if (aslIndicator != '\0')
+            {
+                ExportPAC(path + "\\STGMARIOPAST_00_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGMARIOPAST_01_" + aslIndicator + ".pac");
+            }
+            else
+            {
+                ExportPAC(path + "\\STGMARIOPAST_00.pac");
+                ExportPAC(path + "\\STGMARIOPAST_01.pac");
+            }
+        }
+
+        // STGMETALGEAR uses 00, 01, and 02
+        public void ExportMetalGear(string path)
+        {
+            if (Path.HasExtension(path))
+            {
+                path = path.Substring(0, path.LastIndexOf('.'));
+            }
+
+            char aslIndicator = '\0';
+            // Check if ASL is used
+            if (path.Contains("_") && path.Length > 1 && path[path.Length - 2] == '_')
+            {
+                aslIndicator = path.ToCharArray()[path.Length - 1];
+            }
+
+            path = path.Substring(0, path.LastIndexOf('\\'));
+            // Export with or without ASL depending on if the file used ASL or not
+            if (aslIndicator != '\0')
+            {
+                ExportPAC(path + "\\STGMETALGEAR_00_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGMETALGEAR_01_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGMETALGEAR_02_" + aslIndicator + ".pac");
+            }
+            else
+            {
+                ExportPAC(path + "\\STGMETALGEAR_00.pac");
+                ExportPAC(path + "\\STGMETALGEAR_01.pac");
+                ExportPAC(path + "\\STGMETALGEAR_02.pac");
+            }
+        }
+
+        // STGVILLAGE uses 00, 01, 02, and 03
+        public void ExportVillage(string path)
+        {
+            if (Path.HasExtension(path))
+            {
+                path = path.Substring(0, path.LastIndexOf('.'));
+            }
+
+            char aslIndicator = '\0';
+            // Check if ASL is used
+            if (path.Contains("_") && path.Length >= 2 && path[path.Length - 2] == '_')
+            {
+                aslIndicator = path.ToCharArray()[path.Length - 1];
+            }
+
+            path = path.Substring(0, path.LastIndexOf('\\'));
+            // Export with or without ASL depending on if the file used ASL or not
+            if (aslIndicator != '\0')
+            {
+                ExportPAC(path + "\\STGVILLAGE_00_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGVILLAGE_01_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGVILLAGE_02_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGVILLAGE_03_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGVILLAGE_04_" + aslIndicator + ".pac");
+            }
+            else
+            {
+                ExportPAC(path + "\\STGVILLAGE_00.pac");
+                ExportPAC(path + "\\STGVILLAGE_01.pac");
+                ExportPAC(path + "\\STGVILLAGE_02.pac");
+                ExportPAC(path + "\\STGVILLAGE_03.pac");
+                ExportPAC(path + "\\STGVILLAGE_04.pac");
+            }
+        }
+
+        // STGTENGAN uses 1, 2, 3
+        public void ExportTengan(string path)
+        {
+            if (Path.HasExtension(path))
+            {
+                path = path.Substring(0, path.LastIndexOf('.'));
+            }
+
+            char aslIndicator = '\0';
+            // Check if ASL is used
+            if (path.Contains("_") && path.Length >= 2 && path[path.Length - 2] == '_')
+            {
+                aslIndicator = path.ToCharArray()[path.Length - 1];
+            }
+
+            // Check to make sure they meant this as ASL and not as a type indicator
+            if (path.LastIndexOf('\\') < path.Length - 1 &&
+                path.Substring(path.LastIndexOf('\\') + 1)
+                    .StartsWith("STGTENGAN_", StringComparison.OrdinalIgnoreCase) &&
+                (aslIndicator == '1' || aslIndicator == '2' || aslIndicator == '3') &&
+                path.LastIndexOf('_') == path.IndexOf('_'))
+            {
+                if (MessageBox.Show(
+                        "Would you like to use the detected '" + aslIndicator +
+                        "' as the ASL indicator for the three files?", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    aslIndicator = '\0';
+                }
+            }
+
+            path = path.Substring(0, path.LastIndexOf('\\'));
+            // Export with or without ASL depending on if the file used ASL or not
+            if (aslIndicator != '\0')
+            {
+                ExportPAC(path + "\\STGTENGAN_1_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGTENGAN_2_" + aslIndicator + ".pac");
+                ExportPAC(path + "\\STGTENGAN_3_" + aslIndicator + ".pac");
+            }
+            else
+            {
+                ExportPAC(path + "\\STGTENGAN_1.pac");
+                ExportPAC(path + "\\STGTENGAN_2.pac");
+                ExportPAC(path + "\\STGTENGAN_3.pac");
+            }
+        }
+
         public void ExportPAC(string outPath)
         {
             Rebuild();
@@ -461,7 +700,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void ExportPCS(string outPath)
         {
             Rebuild();
-            if (_compression != CompressionType.None)
+            if (_compression != CompressionType.None || !Properties.Settings.Default.AutoCompressFighterPCS)
             {
                 base.Export(outPath);
             }
@@ -589,26 +828,86 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _redirectIndex;
             set
             {
-                if (value == Index || value == _redirectIndex)
+                if (value == _redirectIndex)
                 {
                     return;
                 }
 
-                if ((_redirectIndex = (short) ((int) value).Clamp(-1, Parent.Children.Count - 1)) < 0)
+                if (Parent == null || (_redirectIndex = (short) ((int) value).Clamp(-1, Parent.Children.Count - 1)) < 0)
                 {
                     _resourceType = ResourceType.ARCEntry;
-                    Name = GetName();
                 }
                 else
                 {
                     _resourceType = ResourceType.Redirect;
-                    Name = "Redirect → " + _redirectIndex;
                 }
+
+                UpdateRedirectTarget();
+                UpdateName();
             }
         }
 
-        public ARCEntryNode RedirectTargetNode = null;
-        public ARCEntryNode UpdateRedirectTarget()
+        [Category("ARC Entry")]
+        [Browsable(false)]
+        public string RedirectTargetName
+        {
+            get
+            {
+                if (RedirectTargetNode == null)
+                {
+                    return "None";
+                }
+
+                return $"{(RedirectTargetNode as ARCEntryNode).AbsoluteIndex.ToString()}. {RedirectTargetNode.Name}";
+            }
+        }
+
+        [Category("ARC Entry")]
+        [TypeConverter(typeof(DropDownListARCEntry))]
+        public string RedirectTarget
+        {
+            get => RedirectTargetName;
+            set
+            {
+                try
+                {
+                    if (Int16.TryParse(value.Substring(0, value.IndexOf(".")),
+                        out short absIndex))
+                    {
+                        RedirectIndex = absIndex;
+                        if (Parent.Children.Count < absIndex)
+                        {
+                            RedirectTargetNode = Parent.Children[absIndex];
+                        }
+                        SignalPropertyChange();
+                        UpdateName();
+                        return;
+                    }
+                }
+                catch
+                {
+                    if (Int16.TryParse(value, out short absIndex))
+                    {
+                        RedirectIndex = absIndex;
+                        if (Parent.Children.Count < absIndex)
+                        {
+                            RedirectTargetNode = Parent.Children[absIndex];
+                        }
+                        SignalPropertyChange();
+                        UpdateName();
+                        return;
+                    }
+                }
+                RedirectTargetNode = null;
+                RedirectIndex = -1;
+                SignalPropertyChange();
+                UpdateName();
+            }
+        }
+
+        public ResourceNode RedirectTargetNode = null;
+
+        public ResourceNode UpdateRedirectTarget()
         {
             try
             {
@@ -616,15 +915,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     RedirectTargetNode = null;
                 }
-                RedirectTargetNode = (ARCEntryNode)Parent.Children[RedirectIndex];
+
+                RedirectTargetNode = (ARCEntryNode) Parent.Children[RedirectIndex];
             }
             catch
             {
                 RedirectTargetNode = null;
             }
+
             UpdateProperties();
             return RedirectTargetNode;
         }
+
         protected virtual string GetName()
         {
             return GetName(_fileType.ToString());
@@ -640,13 +942,28 @@ namespace BrawlLib.SSBB.ResourceNodes
             string s = string.Format("{0} [{1}]", fileType, _fileIndex);
             if (_group != 0)
             {
-                s += " [Group " + _group + "]";
+                s += $" [Group {_group}]";
+            }
+
+            if (_redirectIndex != -1)
+            {
+                s += $" (Redirect → {(RedirectTargetNode == null ? _redirectIndex.ToString() : RedirectTargetName)})";
             }
 
             return s;
         }
 
-        protected void UpdateName()
+        public bool isModelData()
+        {
+            return FileType == ARCFileType.ModelData;
+        }
+
+        public bool isTextureData()
+        {
+            return FileType == ARCFileType.TextureData;
+        }
+
+        public void UpdateName()
         {
             if (!(this is ARCNode))
             {
@@ -680,15 +997,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (_name == null)
                 {
-                    if (_redirectIndex != -1)
+                    if (_redirectIndex != -1 && _resourceType != ResourceType.MSBin)
                     {
                         _resourceType = ResourceType.Redirect;
-                        _name = "Redirect → " + _redirectIndex;
+                        UpdateRedirectTarget();
                     }
-                    else
-                    {
-                        _name = GetName();
-                    }
+
+                    _name = GetName();
                 }
             }
             else if (_name == null)

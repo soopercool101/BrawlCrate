@@ -1324,7 +1324,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             {
                                 try
                                 {
-                                    ARCEntryNode tempBres = a.RedirectTargetNode;
+                                    ARCEntryNode tempBres = a.RedirectTargetNode as ARCEntryNode;
                                     RedirectStart:
                                     if (tempBres.GroupID != group)
                                     {
@@ -1337,7 +1337,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         }
                                         else if (tempBres.RedirectTargetNode != null)
                                         {
-                                            tempBres = tempBres.RedirectTargetNode;
+                                            tempBres = tempBres.RedirectTargetNode as ARCEntryNode;
                                             goto RedirectStart;
                                         }
                                     }
