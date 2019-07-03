@@ -691,7 +691,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public CollisionLink _linkLeft, _linkRight;
 
-        public CollisionPlaneMaterial _material;
+        public byte _material;
         public CollisionPlaneFlags _flags;
         public CollisionPlaneType _type;
         public CollisionPlaneFlags2 _flags2;

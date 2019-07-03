@@ -1266,6 +1266,95 @@ namespace BrawlLib.SSBB.ResourceNodes
             return nodes.ToArray();
         }
 
+        // Currently only works for MDL0
+        public ResourceNode[] FindChildrenByTypeInGroup(string path, ResourceType type, byte group)
+        {
+            if (!string.IsNullOrEmpty(path))
+            {
+                ResourceNode node = FindChild(path, false);
+                if (node != null)
+                {
+                    if (!(node is ARCEntryNode && ((ARCEntryNode)node).GroupID != group))
+                    {
+                        return node.FindChildrenByTypeInGroup(null, type, group);
+                    }
+                }
+            }
+
+            List<ResourceNode> nodes = new List<ResourceNode>();
+            ResourceNode attemptedArc = null;
+            EnumTypeInternal(nodes, type);
+            if (nodes[0] is BRESEntryNode)
+            {
+                attemptedArc = ((BRESEntryNode)nodes[0]).BRESNode.Parent;
+            }
+            else if (nodes[0] is ARCEntryNode)
+            {
+                attemptedArc = nodes[0].Parent;
+            }
+            try
+            {
+                if (this is ARCNode)
+                {
+                    attemptedArc = this;
+                }
+                else if (nodes[0] is BRESEntryNode)
+                {
+                    attemptedArc = ((BRESEntryNode)nodes[0]).BRESNode.Parent;
+                }
+                else if (nodes[0] is ARCEntryNode)
+                {
+                    attemptedArc = nodes[0].Parent;
+                }
+                nodes = new List<ResourceNode>();
+                if (attemptedArc != null && type == ResourceType.MDL0)
+                {
+                    foreach (ARCEntryNode a in attemptedArc.Children)
+                    {
+                        if (a.GroupID == group)
+                        {
+                            if (a is BRRESNode)
+                            {
+                                foreach (MDL0Node m in ((BRRESNode)a).GetFolder<MDL0Node>().Children)
+                                {
+                                    nodes.Add(m);
+                                }
+                            }
+                            else if (a.RedirectTargetNode != null)
+                            {
+                                try
+                                {
+                                    ARCEntryNode tempBres = a.RedirectTargetNode;
+                                    RedirectStart:
+                                    if (tempBres.GroupID != group)
+                                    {
+                                        if (tempBres is BRRESNode)
+                                        {
+                                            foreach (MDL0Node m in ((BRRESNode)tempBres).GetFolder<MDL0Node>().Children)
+                                            {
+                                                nodes.Add(m);
+                                            }
+                                        }
+                                        else if (tempBres.RedirectTargetNode != null)
+                                        {
+                                            tempBres = tempBres.RedirectTargetNode;
+                                            goto RedirectStart;
+                                        }
+                                    }
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+
+            return nodes.ToArray();
+        }
         private void EnumTypeInternal(List<ResourceNode> list, ResourceType type)
         {
             if (ResourceFileType == type)

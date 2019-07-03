@@ -117,6 +117,158 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Collision0x00" xml:space="preserve">
+    <value>Basic</value>
+    <comment>Default collision, used for many different objects</comment>
+  </data>
+  <data name="Collision0x01" xml:space="preserve">
+    <value>Rock</value>
+    <comment>Used for Spear Pillar lower floor, PS1 Mountain</comment>
+  </data>
+  <data name="Collision0x02" xml:space="preserve">
+    <value>Grass</value>
+    <comment>Used for grass or leaves</comment>
+  </data>
+  <data name="Collision0x03" xml:space="preserve">
+    <value>Soil</value>
+    <comment>Used for PS2 mountain</comment>
+  </data>
+  <data name="Collision0x04" xml:space="preserve">
+    <value>Wood</value>
+    <comment>Used for trees (PS1 Fire) and logs/planks (Jungle Japes)</comment>
+  </data>
+  <data name="Collision0x05" xml:space="preserve">
+    <value>Light Metal</value>
+    <comment>Used for thin metal platforms</comment>
+  </data>
+  <data name="Collision0x06" xml:space="preserve">
+    <value>Heavy Metal</value>
+    <comment>Used for thick metal platforms</comment>
+  </data>
+  <data name="Collision0x07" xml:space="preserve">
+    <value>Carpet</value>
+    <comment>Used by Rainbow Cruise</comment>
+  </data>
+  <data name="Collision0x08" xml:space="preserve">
+    <value>Alien</value>
+    <comment>Only used for Brinstar side platforms</comment>
+  </data>
+  <data name="Collision0x09" xml:space="preserve">
+    <value>Bulborb</value>
+    <comment>Used for Bulborb collision in Distant Planet</comment>
+  </data>
+  <data name="Collision0x0A" xml:space="preserve">
+    <value>Water</value>
+    <comment>Used for splash effects (Summit when sunk)</comment>
+  </data>
+  <data name="Collision0x0B" xml:space="preserve">
+    <value>Rubber</value>
+    <comment>Used for the Trowlon subspace enemy</comment>
+  </data>
+  <data name="Collision0x0C" xml:space="preserve">
+    <value>Slippery</value>
+    <comment>Unknown where this is used, but has ice traction</comment>
+  </data>
+  <data name="Collision0x0D" xml:space="preserve">
+    <value>Snow</value>
+    <comment>Used for snowy surfaces that aren't slippery (SSE)</comment>
+  </data>
+  <data name="Collision0x0E" xml:space="preserve">
+    <value>Icy Snow</value>
+    <comment>Used for Summit and PS2 Ice Transformation</comment>
+  </data>
+  <data name="Collision0x0F" xml:space="preserve">
+    <value>Game &amp; Watch</value>
+    <comment>Used for all Flat Zone platforms</comment>
+  </data>
+  <data name="Collision0x10" xml:space="preserve">
+    <value>Subspace Ice</value>
+    <comment>Used some places in Subspace (Purple floor where the door to Tabuu is)</comment>
+  </data>
+  <data name="Collision0x11" xml:space="preserve">
+    <value>Checkered</value>
+    <comment>Used for Green Greens's checkerboard platforms and the present skin of rolling crates</comment>
+  </data>
+  <data name="Collision0x12" xml:space="preserve">
+    <value>Spike Hazard (Target Test Only)</value>
+    <comment>Used for Spike Hazards in Target Test levels and collision hazard #1 for SSE stages. Crashes or has no effect on stages not using a target test module</comment>
+  </data>
+  <data name="Collision0x13" xml:space="preserve">
+    <value>Hazard 2 (Subspace Only)</value>
+    <comment>Used for hitboxes on certain SSE levels (180002). Crashes or has no effect on versus stages</comment>
+  </data>
+  <data name="Collision0x14" xml:space="preserve">
+    <value>Hazard 3 (Subspace Only)</value>
+    <comment>Used for hitboxes on certain SSE levels. Crashes or has no effect on versus stages</comment>
+  </data>
+  <data name="Collision0x15" xml:space="preserve">
+    <value>Electroplankton</value>
+    <comment>Used for Hanenbow leaves</comment>
+  </data>
+  <data name="Collision0x16" xml:space="preserve">
+    <value>Cloud</value>
+    <comment>Used for clouds on Summit and Skyworld</comment>
+  </data>
+  <data name="Collision0x17" xml:space="preserve">
+    <value>Subspace</value>
+    <comment>Used for Subspace levels, Tabuu's Residence</comment>
+  </data>
+  <data name="Collision0x18" xml:space="preserve">
+    <value>Stone Bricks</value>
+    <comment>Used for Spear Pillar upper level</comment>
+  </data>
+  <data name="Collision0x19" xml:space="preserve">
+    <value>Dustless</value>
+    <comment>Unknown, doesn't generate dust clouds when landing</comment>
+  </data>
+  <data name="Collision0x1A" xml:space="preserve">
+    <value>Mario Bros.</value>
+    <comment>Used for Mario Bros.</comment>
+  </data>
+  <data name="Collision0x1B" xml:space="preserve">
+    <value>Grate</value>
+    <comment>Used for Delfino Plaza's main platform</comment>
+  </data>
+  <data name="Collision0x1C" xml:space="preserve">
+    <value>Sand</value>
+    <comment>Used for sand (Unknown where used)</comment>
+  </data>
+  <data name="Collision0x1D" xml:space="preserve">
+    <value>Home-Run Contest</value>
+    <comment>Used for Home Run Contest, makes Olimar only spawn Purple Pikmin</comment>
+  </data>
+  <data name="Collision0x1E" xml:space="preserve">
+    <value>Water (No Splash)</value>
+    <comment>Used for Distant Planet slope during rain</comment>
+  </data>
+  <data name="Collision0x1F" xml:space="preserve">
+    <value>Unknown 0x1F</value>
+    <comment>Unknown where this is used, but is available in standard stages</comment>
+  </data>
+  <data name="CollisionExpansion" xml:space="preserve">
+    <value>CollEx</value>
+    <comment>Expanded collisions. Require SCLA edits or they won't work properly</comment>
+  </data>
+  <data name="CollisionTypeCeiling" xml:space="preserve">
+    <value>Ceiling</value>
+    <comment>Ceiling</comment>
+  </data>
+  <data name="CollisionTypeFloor" xml:space="preserve">
+    <value>Floor</value>
+    <comment>Floor</comment>
+  </data>
+  <data name="CollisionTypeLeftWall" xml:space="preserve">
+    <value>Left Wall</value>
+    <comment>Left Wall</comment>
+  </data>
+  <data name="CollisionTypeNone" xml:space="preserve">
+    <value>None</value>
+    <comment>Not a wall, floor, or ceiling</comment>
+  </data>
+  <data name="CollisionTypeRightWall" xml:space="preserve">
+    <value>Right Wall</value>
+    <comment>Right Wall</comment>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

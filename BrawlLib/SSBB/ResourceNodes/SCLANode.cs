@@ -26,9 +26,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
-            //if (_name == null)
-            //_name = "Stage Collision Attributes";
-
             return Header->_count > 0;
         }
 
@@ -64,6 +61,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                 r.Rebuild(address + offset, _entrySize, true);
                 offset += _entrySize;
             }
+        }
+
+        public SCLAEntryNode FindSCLAEntry(uint id)
+        {
+            if (Children == null || Children.Count == 0)
+            {
+                return null;
+            }
+
+            foreach (SCLAEntryNode se in Children)
+            {
+                if (se.CollisionMaterialID == id)
+                {
+                    return se;
+                }
+            }
+
+            return null;
         }
 
         // Fill missing SCLA entries with default values
@@ -247,32 +262,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_index >= 0 && _index <= 255)
             {
-                byte _indexTest;
-                _indexTest = (byte) _index;
-                if (Enum.IsDefined(typeof(CollisionPlaneMaterial), _indexTest))
-                {
-                    _name = ((CollisionPlaneMaterial) _index).ToString() + " [" + _index + "]";
-                    return;
-                }
+                _name = CollisionTerrain.Terrains[_index].Name + " [" + _index + "]";
             }
-
-            _name = "Entry [" + _index + "]";
+            else
+            {
+                _name = "Entry [" + _index + "]";
+            }
         }
 
         private void generateSCLAEntryName()
         {
             if (_index >= 0 && _index <= 255)
             {
-                byte _indexTest;
-                _indexTest = (byte) _index;
-                if (Enum.IsDefined(typeof(CollisionPlaneMaterial), _indexTest))
-                {
-                    Name = ((CollisionPlaneMaterial) _index).ToString() + " [" + _index + "]";
-                    return;
-                }
+                Name = CollisionTerrain.Terrains[_index].Name + " [" + _index + "]";
             }
-
-            Name = "Entry [" + _index + "]";
+            else
+            {
+                Name = "Entry [" + _index + "]";
+            }
         }
 
         public override int OnCalculateSize(bool force)
@@ -437,13 +444,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                 // If index 1 - 4 are different, return full string
                 if (_index1 != _index2 || _index1 != _index3 || _index1 != _index4)
                 {
-                    return string.Format(
-                        "{0} {1} {2} {3} {4} {5} {6} {7} | Report this to soopercool101 if you see this message", _unk1,
-                        _unk2, _unk3, _unk4, _index1, _index2, _index3, _index4);
+                    return $"{_unk1} {_unk2} {_unk3} {_unk4} {_index1} {_index2} {_index3} {_index4}";
                 }
 
                 // Otherwise only show the first index (All seem to be edited in tandem)
-                return string.Format("{0} {1} {2} {3} {4}", _unk1, _unk2, _unk3, _unk4, _index1);
+                return $"{_unk1} {_unk2} {_unk3} {_unk4} {_index1}";
             }
 
             public static implicit operator SCLASubEntry(SCLASubEntryClass val)

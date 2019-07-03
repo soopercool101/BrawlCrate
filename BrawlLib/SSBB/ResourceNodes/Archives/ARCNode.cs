@@ -607,6 +607,24 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public ARCEntryNode RedirectTargetNode = null;
+        public ARCEntryNode UpdateRedirectTarget()
+        {
+            try
+            {
+                if (RedirectIndex == -1 || Parent == null || Parent.Children.Count <= RedirectIndex)
+                {
+                    RedirectTargetNode = null;
+                }
+                RedirectTargetNode = (ARCEntryNode)Parent.Children[RedirectIndex];
+            }
+            catch
+            {
+                RedirectTargetNode = null;
+            }
+            UpdateProperties();
+            return RedirectTargetNode;
+        }
         protected virtual string GetName()
         {
             return GetName(_fileType.ToString());
