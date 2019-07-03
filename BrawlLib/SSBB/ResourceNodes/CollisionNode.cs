@@ -742,7 +742,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public bool IsMultipleTypes => IsFloor && (IsWall || IsCeiling) || (IsWall && IsCeiling) || (IsLeftWall && IsRightWall);
+        public bool IsMultipleTypes => GetPlaneType() == null;
 
         public bool IsNone => _type == 0;
 
@@ -772,6 +772,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool IsWall => IsLeftWall || IsRightWall;
 
+        public CollisionPlaneType? GetPlaneType()
+        {
+            switch (Type)
+            {
+                case CollisionPlaneType.Ceiling:
+                case CollisionPlaneType.Floor:
+                case CollisionPlaneType.LeftWall:
+                case CollisionPlaneType.RightWall:
+                case CollisionPlaneType.None:
+                    return Type;
+                default:
+                    return null; // If multiple types
+            }
+        }
+
         public CollisionPlaneType? GetCurrentType()
         {
             if (!IsRotating || IsNone)
@@ -785,11 +800,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     case CollisionPlaneType.None:
                         return Type;
                     default:
-                        return null;
+                        return null; // If multiple types
                 }
             }
 
             double angle = GetAngleDegrees();
+
             if (Math.Abs(angle) <= 45)
             {
                 return CollisionPlaneType.Floor;
@@ -801,56 +817,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             return angle < 0 ? CollisionPlaneType.RightWall : CollisionPlaneType.LeftWall;
-        }
-
-        public bool IsCurrentlyFloor
-        {
-            get
-            {
-                if (!IsRotating)
-                {
-                    return IsFloor;
-                }
-                if (IsNone)
-                {
-                    return false;
-                }
-                double angle = GetAngleDegrees();
-                return Math.Abs(angle) <= 45;
-            }
-        }
-        public bool IsCurrentlyCeiling
-        {
-            get
-            {
-                if (!IsRotating)
-                {
-                    return IsCeiling;
-                }
-                if (IsNone)
-                {
-                    return false;
-                }
-                double angle = GetAngleDegrees();
-                return Math.Abs(angle) >= 135;
-            }
-        }
-
-        public bool IsCurrentlyWall
-        {
-            get
-            {
-                if (!IsRotating)
-                {
-                    return IsWall;
-                }
-                if (IsNone)
-                {
-                    return false;
-                }
-                double angle = Math.Abs(GetAngleDegrees());
-                return (angle > 45 && angle < 135);
-            }
         }
 
         public bool CollidableByCharacters => !IsNone && (IsCharacters || (!IsPokemonTrainer && !IsItems));
