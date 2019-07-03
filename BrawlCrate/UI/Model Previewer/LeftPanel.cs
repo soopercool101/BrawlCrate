@@ -1159,7 +1159,7 @@ namespace System.Windows.Forms
 
             if (TargetCollision != null)
             {
-                foreach (CollisionObject obj in TargetCollision._objects)
+                foreach (CollisionObject obj in TargetCollision.Children)
                 {
                     lstObjects.Items.Add(obj, obj._render);
                 }

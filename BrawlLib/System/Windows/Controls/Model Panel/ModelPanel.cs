@@ -693,7 +693,7 @@ namespace System.Windows.Forms
 
             foreach (CollisionNode c in _collisions)
             {
-                foreach (CollisionObject o in c._objects)
+                foreach (CollisionObject o in c.Children)
                 {
                     o._render = true;
                 }

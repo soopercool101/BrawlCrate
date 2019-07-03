@@ -554,7 +554,7 @@ namespace System.Windows.Forms
             Vector2 v2 = new Vector2(point._x, point._y);
             foreach (CollisionNode coll in _collisions)
             {
-                foreach (CollisionObject obj in coll._objects)
+                foreach (CollisionObject obj in coll.Children)
                 {
                     if (obj._render)
                     {
@@ -1113,7 +1113,7 @@ namespace System.Windows.Forms
             {
                 foreach (CollisionNode m in _collisions)
                 {
-                    foreach (CollisionObject o in m._objects)
+                    foreach (CollisionObject o in m.Children)
                     {
                         o._render = RenderCollisions;
                     }
@@ -1121,7 +1121,7 @@ namespace System.Windows.Forms
             }
             else if (TargetCollision != null)
             {
-                foreach (CollisionObject o in TargetCollision._objects)
+                foreach (CollisionObject o in TargetCollision.Children)
                 {
                     o._render = RenderCollisions;
                 }

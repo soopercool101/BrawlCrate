@@ -1315,7 +1315,7 @@ namespace System.Windows.Forms
 
             if (_targetNode != null)
             {
-                foreach (CollisionObject obj in _targetNode._objects)
+                foreach (CollisionObject obj in _targetNode.Children)
                 {
                     obj._render = true;
                     lstObjects.Items.Add(obj, true);
@@ -1364,7 +1364,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _targetNode._objects.Remove(_selectedObject);
+            _targetNode.Children.Remove(_selectedObject);
             lstObjects.Items.Remove(_selectedObject);
             _selectedObject = null;
             ClearSelection();
@@ -1375,7 +1375,7 @@ namespace System.Windows.Forms
         private void newObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _selectedObject = new CollisionObject();
-            _targetNode._objects.Add(_selectedObject);
+            _targetNode.Children.Add(_selectedObject);
             lstObjects.Items.Add(_selectedObject, true);
             lstObjects.SelectedItem = _selectedObject;
             //TargetNode.SignalPropertyChange();
@@ -1474,7 +1474,7 @@ namespace System.Windows.Forms
 
         private void UpdateSelection(bool finish)
         {
-            foreach (CollisionObject obj in _targetNode._objects)
+            foreach (CollisionObject obj in _targetNode.Children)
             {
                 foreach (CollisionLink link in obj._points)
                 {
@@ -1703,7 +1703,7 @@ namespace System.Windows.Forms
                     point = (Vector2) target;
 
                     //Hit-detect points first
-                    foreach (CollisionObject obj in _targetNode._objects)
+                    foreach (CollisionObject obj in _targetNode.Children)
                     {
                         if (obj._render)
                         {
@@ -1766,7 +1766,7 @@ namespace System.Windows.Forms
                     CollisionPlane bestMatch = null;
 
                     //Hit-detect planes finding best match
-                    foreach (CollisionObject obj in _targetNode._objects)
+                    foreach (CollisionObject obj in _targetNode.Children)
                     {
                         if (obj._render)
                         {

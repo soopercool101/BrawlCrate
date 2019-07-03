@@ -2100,7 +2100,7 @@ namespace System.Windows.Forms
                 _collisions.Add(collision);
             }
 
-            foreach (CollisionObject o in collision._objects)
+            foreach (CollisionObject o in collision.Children)
             {
                 o._render = true;
             }

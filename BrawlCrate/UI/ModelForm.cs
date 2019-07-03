@@ -191,7 +191,7 @@ namespace BrawlCrate
                     modelEditControl1.AppendTarget(node);
 
                     // Link bones
-                    foreach (CollisionObject obj in node._objects)
+                    foreach (CollisionObject obj in node.Children)
                     {
                         if (obj._modelName == "" || obj._boneName == "")
                         {

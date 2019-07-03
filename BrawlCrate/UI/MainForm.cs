@@ -637,7 +637,7 @@ namespace BrawlCrate
                     previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
-                else if (node is CollisionNode || !CompatibilityMode &&
+                else if (node is CollisionNode || node is CollisionObject || !CompatibilityMode &&
                          (node is IRenderedObject ||
                           ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
                           ShowBRRESPreviews && node is BRRESNode brresNode && brresNode.NumTriangles > 0))
@@ -784,6 +784,13 @@ namespace BrawlCrate
                     Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
                     Instance.modelPanel1.AddTarget(collNode, false);
                     collNode.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
+                    break;
+                case CollisionObject collObj:
+                    CollisionNode collNodeTemp = new CollisionNode();
+                    collNodeTemp.AddChild(collObj);
+                    Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
+                    Instance.modelPanel1.AddTarget(collNodeTemp, false);
+                    collNodeTemp.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
                     break;
                 case ARCNode arcNode:
                     RenderARC(arcNode, out minX, out minY, out minZ, out maxX, out maxY, out maxZ);

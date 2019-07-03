@@ -5,6 +5,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -13,8 +14,6 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal CollisionHeader* Header => (CollisionHeader*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
-
-        public List<CollisionObject> _objects = new List<CollisionObject>();
 
         [Browsable(false)]
         public bool IsRendering
@@ -31,16 +30,18 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
-            _objects.Clear();
+            _unk1 = Header->_unk1;
+
+            return Header->_numObjects > 0;
+        }
+
+        public override void OnPopulate()
+        {
             ColObject* obj = Header->Objects;
             for (int i = Header->_numObjects; i-- > 0;)
             {
-                _objects.Add(new CollisionObject(this, obj++));
+                new CollisionObject().Initialize(this, new DataSource(obj++, ColObject.Size));
             }
-
-            _unk1 = Header->_unk1;
-
-            return false;
         }
 
         protected override string GetName()
@@ -53,14 +54,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int OnCalculateSize(bool force)
         {
             _pointCount = _planeCount = 0;
-            foreach (CollisionObject obj in _objects)
+            foreach (CollisionObject obj in Children)
             {
                 _pointCount += obj._points.Count;
                 _planeCount += obj._planes.Count;
             }
 
             return CollisionHeader.Size + _pointCount * 8 + _planeCount * ColPlane.Size +
-                   _objects.Count * ColObject.Size;
+                   Children.Count * ColObject.Size;
         }
 
         public void CalculateCamBoundaries(out float? minX, out float? minY, out float? maxX, out float? maxY)
@@ -69,7 +70,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             minY = null;
             maxX = null;
             maxY = null;
-            foreach (CollisionObject o in _objects)
+            foreach (CollisionObject o in Children)
             {
                 foreach (CollisionLink l in o._points)
                 {
@@ -99,7 +100,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             CollisionHeader* header = (CollisionHeader*)address;
-            *header = new CollisionHeader(_pointCount, _planeCount, _objects.Count, _unk1);
+            *header = new CollisionHeader(_pointCount, _planeCount, Children.Count, _unk1);
 
             BVec2* pPoint = header->Points;
             ColPlane* pPlane = header->Planes;
@@ -114,7 +115,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             CollisionPlane current, next;
             CollisionLink link;
-            foreach (CollisionObject obj in _objects)
+            foreach (CollisionObject obj in Children)
             {
                 //Sets bounds and entry indices
                 obj.Prepare();
@@ -213,7 +214,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             GL.Enable(EnableCap.CullFace);
             GL.CullFace(CullFaceMode.Front);
 
-            foreach (CollisionObject obj in _objects)
+            foreach (CollisionObject obj in Children)
             {
                 obj.Render();
             }
@@ -222,7 +223,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public Box GetBox()
         {
             Box box = Box.ExpandableVolume;
-            foreach (CollisionObject obj in _objects)
+            foreach (CollisionObject obj in Children)
             {
                 foreach (CollisionPlane plane in obj._planes)
                 {
@@ -281,17 +282,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MergeWith(CollisionNode external)
         {
-            foreach (CollisionObject co in external._objects)
+            foreach (CollisionObject co in external.Children)
             {
-                _objects.Add(co);
+                AddChild(co);
             }
 
             SignalPropertyChange();
         }
     }
 
-    public unsafe class CollisionObject
+    public unsafe class CollisionObject : ResourceNode
     {
+        [Browsable(false)]
         public MDL0BoneNode LinkedBone
         {
             get => _linkedBone;
@@ -339,29 +341,32 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
         }
 
-        public CollisionObject(CollisionNode parent, ColObject* entry)
+        internal ColObject* Header => (ColObject*)WorkingUncompressed.Address;
+
+        public override bool OnInitialize()
         {
-            _modelName = entry->ModelName;
-            _boneName = entry->BoneName;
-            _unk1 = entry->_unk1;
-            _unk2 = entry->_unk2;
-            _unk3 = entry->_unk3;
-            _flags = (ushort)entry->_flags;
-            _unk5 = entry->_unk5;
-            _unk6 = entry->_unk6;
-            _boneIndex = entry->_boneIndex;
-            _boxMax = entry->_boxMax;
-            _boxMin = entry->_boxMin;
+            CollisionNode parentColl = Parent as CollisionNode;
+            _modelName = Header->ModelName;
+            _boneName = Header->BoneName;
+            _unk1 = Header->_unk1;
+            _unk2 = Header->_unk2;
+            _unk3 = Header->_unk3;
+            _flags = (ushort)Header->_flags;
+            _unk5 = Header->_unk5;
+            _unk6 = Header->_unk6;
+            _boneIndex = Header->_boneIndex;
+            _boxMax = Header->_boxMax;
+            _boxMin = Header->_boxMin;
 
-            int pointCount = entry->_pointCount;
-            int pointOffset = entry->_pointOffset;
-            int planeCount = entry->_planeCount;
-            int planeOffset = entry->_planeIndex;
+            int pointCount = Header->_pointCount;
+            int pointOffset = Header->_pointOffset;
+            int planeCount = Header->_planeCount;
+            int planeOffset = Header->_planeIndex;
 
-            ColPlane* pPlane = &parent.Header->Planes[planeOffset];
+            ColPlane* pPlane = &parentColl.Header->Planes[planeOffset];
 
             //Decode points
-            BVec2* pPtr = &parent.Header->Points[pointOffset];
+            BVec2* pPtr = &parentColl.Header->Points[pointOffset];
             for (int i = 0; i < pointCount; i++)
             {
                 new CollisionLink(this, *pPtr++);
@@ -375,6 +380,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     new CollisionPlane(this, pPlane++, pointOffset);
                 }
             }
+
+            _name = "Collision Object";
+
+            return false;
         }
 
         //Calculate bounds, and reset indices
