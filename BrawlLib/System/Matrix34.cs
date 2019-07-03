@@ -3,6 +3,7 @@ using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
 using BrawlLib.Wii.Animations;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -65,7 +66,7 @@ namespace System
         public Matrix34 GetTranslation()
         {
             Matrix34 m = Identity;
-            float* p = (float*) &m;
+            float* p = (float*)&m;
             fixed (float* s = _data)
             {
                 p[3] = s[3];
@@ -79,7 +80,7 @@ namespace System
         public static Matrix34 ScaleMatrix(float x, float y, float z)
         {
             Matrix34 m = new Matrix34();
-            float* p = (float*) &m;
+            float* p = (float*)&m;
             p[0] = x;
             p[5] = y;
             p[10] = z;
@@ -89,7 +90,7 @@ namespace System
         public static Matrix34 TranslationMatrix(float x, float y, float z)
         {
             Matrix34 m = new Matrix34();
-            float* p = (float*) &m;
+            float* p = (float*)&m;
             p[3] = x;
             p[7] = y;
             p[11] = z;
@@ -100,10 +101,10 @@ namespace System
         public static Matrix34 RotationMatrixX(float x)
         {
             Matrix34 m = new Matrix34();
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
-            float cosx = (float) Math.Cos(x / 180.0f * Math.PI);
-            float sinx = (float) Math.Sin(x / 180.0f * Math.PI);
+            float cosx = (float)Math.Cos(x / 180.0f * Math.PI);
+            float sinx = (float)Math.Sin(x / 180.0f * Math.PI);
 
             p[0] = 1.0f;
             p[5] = cosx;
@@ -117,10 +118,10 @@ namespace System
         public static Matrix34 RotationMatrixRX(float x)
         {
             Matrix34 m = new Matrix34();
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
-            float cosx = (float) Math.Cos(x / 180.0f * Math.PI);
-            float sinx = (float) Math.Sin(x / 180.0f * Math.PI);
+            float cosx = (float)Math.Cos(x / 180.0f * Math.PI);
+            float sinx = (float)Math.Sin(x / 180.0f * Math.PI);
 
             p[0] = 1.0f;
             p[5] = cosx;
@@ -134,10 +135,10 @@ namespace System
         public static Matrix34 RotationMatrixY(float y)
         {
             Matrix34 m = new Matrix34();
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
-            float cosy = (float) Math.Cos(y / 180.0f * Math.PI);
-            float siny = (float) Math.Sin(y / 180.0f * Math.PI);
+            float cosy = (float)Math.Cos(y / 180.0f * Math.PI);
+            float siny = (float)Math.Sin(y / 180.0f * Math.PI);
 
             p[5] = 1.0f;
 
@@ -152,10 +153,10 @@ namespace System
         public static Matrix34 RotationMatrixRY(float y)
         {
             Matrix34 m = new Matrix34();
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
-            float cosy = (float) Math.Cos(y / 180.0f * Math.PI);
-            float siny = (float) Math.Sin(y / 180.0f * Math.PI);
+            float cosy = (float)Math.Cos(y / 180.0f * Math.PI);
+            float siny = (float)Math.Sin(y / 180.0f * Math.PI);
 
             p[5] = 1.0f;
 
@@ -170,8 +171,8 @@ namespace System
         public void RotateX(float x)
         {
             float var1, var2;
-            float cosx = (float) Math.Cos(x / 180.0f * Math.PI);
-            float sinx = (float) Math.Sin(x / 180.0f * Math.PI);
+            float cosx = (float)Math.Cos(x / 180.0f * Math.PI);
+            float sinx = (float)Math.Sin(x / 180.0f * Math.PI);
 
             fixed (float* p = _data)
             {
@@ -195,8 +196,8 @@ namespace System
         public void RotateY(float y)
         {
             float var1, var2;
-            float cosy = (float) Math.Cos(y / 180.0f * Math.PI);
-            float siny = (float) Math.Sin(y / 180.0f * Math.PI);
+            float cosy = (float)Math.Cos(y / 180.0f * Math.PI);
+            float siny = (float)Math.Sin(y / 180.0f * Math.PI);
 
             fixed (float* p = _data)
             {
@@ -220,8 +221,8 @@ namespace System
         public void RotateZ(float z)
         {
             float var1, var2;
-            float cosz = (float) Math.Cos(z / 180.0f * Math.PI);
-            float sinz = (float) Math.Sin(z / 180.0f * Math.PI);
+            float cosz = (float)Math.Cos(z / 180.0f * Math.PI);
+            float sinz = (float)Math.Sin(z / 180.0f * Math.PI);
 
             fixed (float* p = _data)
             {
@@ -244,15 +245,15 @@ namespace System
 
         public static Matrix34 RotationMatrix(float x, float y, float z)
         {
-            float cosx = (float) Math.Cos(x / 180.0f * Math.PI);
-            float sinx = (float) Math.Sin(x / 180.0f * Math.PI);
-            float cosy = (float) Math.Cos(y / 180.0f * Math.PI);
-            float siny = (float) Math.Sin(y / 180.0f * Math.PI);
-            float cosz = (float) Math.Cos(z / 180.0f * Math.PI);
-            float sinz = (float) Math.Sin(z / 180.0f * Math.PI);
+            float cosx = (float)Math.Cos(x / 180.0f * Math.PI);
+            float sinx = (float)Math.Sin(x / 180.0f * Math.PI);
+            float cosy = (float)Math.Cos(y / 180.0f * Math.PI);
+            float siny = (float)Math.Sin(y / 180.0f * Math.PI);
+            float cosz = (float)Math.Cos(z / 180.0f * Math.PI);
+            float sinz = (float)Math.Sin(z / 180.0f * Math.PI);
 
             Matrix34 m = Identity;
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
             p[5] = cosx;
             p[6] = -sinx;
@@ -260,14 +261,14 @@ namespace System
             p[10] = cosx;
 
             Matrix34 m2 = Identity;
-            float* p2 = (float*) &m2;
+            float* p2 = (float*)&m2;
             p2[0] = cosy;
             p2[2] = siny;
             p2[8] = -siny;
             p2[10] = cosy;
 
             Matrix34 m3 = Identity;
-            float* p3 = (float*) &m3;
+            float* p3 = (float*)&m3;
             p3[0] = cosz;
             p3[1] = -sinz;
             p3[4] = sinz;
@@ -291,15 +292,15 @@ namespace System
 
         public static Matrix34 TransformationMatrix(Vector3 scale, Vector3 rotation, Vector3 translation)
         {
-            float cosx = (float) Math.Cos(rotation._x / 180.0 * Math.PI);
-            float sinx = (float) Math.Sin(rotation._x / 180.0 * Math.PI);
-            float cosy = (float) Math.Cos(rotation._y / 180.0 * Math.PI);
-            float siny = (float) Math.Sin(rotation._y / 180.0 * Math.PI);
-            float cosz = (float) Math.Cos(rotation._z / 180.0 * Math.PI);
-            float sinz = (float) Math.Sin(rotation._z / 180.0 * Math.PI);
+            float cosx = (float)Math.Cos(rotation._x / 180.0 * Math.PI);
+            float sinx = (float)Math.Sin(rotation._x / 180.0 * Math.PI);
+            float cosy = (float)Math.Cos(rotation._y / 180.0 * Math.PI);
+            float siny = (float)Math.Sin(rotation._y / 180.0 * Math.PI);
+            float cosz = (float)Math.Cos(rotation._z / 180.0 * Math.PI);
+            float sinz = (float)Math.Sin(rotation._z / 180.0 * Math.PI);
 
             Matrix34 m;
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
             p[0] = scale._x * cosy * cosz;
             p[1] = scale._y * (sinx * siny * cosz - cosx * sinz);
@@ -319,12 +320,12 @@ namespace System
 
         public static Matrix34 ReverseTransformMatrix(Vector3 scale, Vector3 rotation, Vector3 translation)
         {
-            float cosx = (float) Math.Cos(rotation._x / 180.0 * Math.PI);
-            float sinx = (float) Math.Sin(rotation._x / 180.0 * Math.PI);
-            float cosy = (float) Math.Cos(rotation._y / 180.0 * Math.PI);
-            float siny = (float) Math.Sin(rotation._y / 180.0 * Math.PI);
-            float cosz = (float) Math.Cos(rotation._z / 180.0 * Math.PI);
-            float sinz = (float) Math.Sin(rotation._z / 180.0 * Math.PI);
+            float cosx = (float)Math.Cos(rotation._x / 180.0 * Math.PI);
+            float sinx = (float)Math.Sin(rotation._x / 180.0 * Math.PI);
+            float cosy = (float)Math.Cos(rotation._y / 180.0 * Math.PI);
+            float siny = (float)Math.Sin(rotation._y / 180.0 * Math.PI);
+            float cosz = (float)Math.Cos(rotation._z / 180.0 * Math.PI);
+            float sinz = (float)Math.Sin(rotation._z / 180.0 * Math.PI);
 
             scale._x = 1 / scale._x;
             scale._y = 1 / scale._y;
@@ -334,7 +335,7 @@ namespace System
             translation._z = -translation._z;
 
             Matrix34 m;
-            float* p = (float*) &m;
+            float* p = (float*)&m;
 
             p[0] = scale._x * cosy * cosz;
             p[1] = scale._x * cosy * sinz;
@@ -385,7 +386,7 @@ namespace System
             Matrix34 m = Identity;
             if (state.Flags != 7)
             {
-                MtxArray[state.Indirect ? 0 : 1 + ((int) state.MatrixMode).Clamp(0, 2) * 7 + state.Flags]((float*) &m,
+                MtxArray[state.Indirect ? 0 : 1 + ((int)state.MatrixMode).Clamp(0, 2) * 7 + state.Flags]((float*)&m,
                     state);
             }
 
@@ -394,8 +395,8 @@ namespace System
 
         private static void BasicMtx(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             d[0] = state.Scale._x * cosR;
             d[1] = -state.Scale._y * sinR;
@@ -416,8 +417,8 @@ namespace System
 
         private static void MayaMtxR(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sin = 0.5f * sinR;
             float cos = 0.5f - 0.5f * cosR;
@@ -438,8 +439,8 @@ namespace System
 
         private static void MayaMtxSR(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sxcr = state.Scale._x * cosR;
             float sxsr = state.Scale._x * sinR;
@@ -456,8 +457,8 @@ namespace System
 
         private static void MayaMtxRT(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sin = 0.5f * sinR;
             float cos = 0.5f - 0.5f * cosR;
@@ -480,8 +481,8 @@ namespace System
 
         private static void MayaMtxSRT(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sin = 0.5f * sinR - 0.5f;
             float cos = -0.5f * cosR;
@@ -507,8 +508,8 @@ namespace System
 
         private static void XSIMtxR(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             d[0] = cosR;
             d[1] = -sinR;
@@ -526,8 +527,8 @@ namespace System
 
         private static void XSIMtxSR(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sxcr = state.Scale._x * cosR;
             float sxsr = state.Scale._x * sinR;
@@ -544,8 +545,8 @@ namespace System
 
         private static void XSIMtxRT(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             d[0] = cosR;
             d[1] = -sinR;
@@ -565,8 +566,8 @@ namespace System
 
         private static void XSIMtxSRT(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sxcr = state.Scale._x * cosR;
             float sxsr = state.Scale._x * sinR;
@@ -595,8 +596,8 @@ namespace System
 
         private static void MaxMtxR(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             d[0] = cosR;
             d[1] = sinR;
@@ -614,8 +615,8 @@ namespace System
 
         private static void MaxMtxSR(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sxcr = state.Scale._x * cosR;
             float sxsr = state.Scale._x * sinR;
@@ -632,8 +633,8 @@ namespace System
 
         private static void MaxMtxRT(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             d[0] = cosR;
             d[1] = sinR;
@@ -653,8 +654,8 @@ namespace System
 
         private static void MaxMtxSRT(float* d, TextureFrameState state)
         {
-            float sinR = (float) Math.Sin(state.Rotate * Maths._deg2radf);
-            float cosR = (float) Math.Cos(state.Rotate * Maths._deg2radf);
+            float sinR = (float)Math.Sin(state.Rotate * Maths._deg2radf);
+            float cosR = (float)Math.Cos(state.Rotate * Maths._deg2radf);
 
             float sxcr = state.Scale._x * cosR;
             float sxsr = state.Scale._x * sinR;
@@ -729,7 +730,7 @@ namespace System
                                               float transT)
         {
             // find the cotangent of half the (YZ) field of view
-            float cot = 1.0f / (float) Math.Tan(Maths._deg2rad * (fovY * 0.5f));
+            float cot = 1.0f / (float)Math.Tan(Maths._deg2rad * (fovY * 0.5f));
             return new Matrix34(
                 cot / aspect * scaleS, 0.0f, -transS, 0.0f,
                 0.0f, cot * scaleT, -transT, 0.0f,
@@ -751,12 +752,12 @@ namespace System
             GLCamera cam = v.Camera;
             if (refCam >= 0 && node != null && node.CameraGroup != null && refCam < node.CameraGroup.Children.Count)
             {
-                SCN0CameraNode camNode = (SCN0CameraNode) node.CameraGroup.Children[refCam];
+                SCN0CameraNode camNode = (SCN0CameraNode)node.CameraGroup.Children[refCam];
                 camNode.GetModelViewMatrix(frame, out Matrix cm, out Matrix cmInv);
-                return (Matrix) EnvironmentTexMtx() * cm.GetRotationMatrix();
+                return (Matrix)EnvironmentTexMtx() * cm.GetRotationMatrix();
             }
 
-            return (Matrix) EnvironmentTexMtx() * v.Camera._matrix.GetRotationMatrix();
+            return (Matrix)EnvironmentTexMtx() * v.Camera._matrix.GetRotationMatrix();
         }
 
         public static Matrix EnvLightMap(int refLight, SCN0Node node, ModelPanelViewport v, float frame)
@@ -813,13 +814,13 @@ namespace System
                 vUp._x, vUp._y, vUp._z, 0.0f,
                 -vLook._x, -vLook._y, -vLook._z, 0.0f);
 
-            m34 = (Matrix34) ((Matrix) m34 * invCamMtx);
+            m34 = (Matrix34)((Matrix)m34 * invCamMtx);
 
             m34[3] = 0.0f;
             m34[7] = 0.0f;
             m34[11] = 0.0f;
 
-            return (Matrix) (envMtx * m34);
+            return (Matrix)(envMtx * m34);
 
             //return (Matrix)envMtx * Matrix.RotationMatrix(new Vector3().LookatAngles((Vector3)v._posLight) * Maths._rad2degf);
         }
@@ -840,15 +841,15 @@ namespace System
             {
                 // Set so that the image is projected from the specified camera.
                 // Transform to the viewing coordinate system of the specified camera
-                SCN0CameraNode camNode = (SCN0CameraNode) node.CameraGroup.Children[ref_camera];
+                SCN0CameraNode camNode = (SCN0CameraNode)node.CameraGroup.Children[ref_camera];
                 camNode.GetModelViewMatrix(frame, out Matrix cm, out Matrix cmInv);
                 camMtx = cm * cam._matrix;
-                projMtx = (Matrix) ProjectionTexMtx(camNode, frame);
+                projMtx = (Matrix)ProjectionTexMtx(camNode, frame);
             }
             else
             {
                 camMtx = cam._matrix;
-                projMtx = (Matrix) ProjectionTexMtx(cam);
+                projMtx = (Matrix)ProjectionTexMtx(cam);
             }
 
             return projMtx * camMtx;
@@ -901,7 +902,7 @@ namespace System
             Matrix camMtx = cam._matrixInverse;
             Matrix invCamMtx = cam._matrix;
 
-            Matrix34 m34 = (Matrix34) camMtx;
+            Matrix34 m34 = (Matrix34)camMtx;
             camLook._x = -m34[8];
             camLook._y = -m34[9];
             camLook._z = -m34[10];
@@ -947,16 +948,17 @@ namespace System
 
                 if (node != null && node.CameraGroup != null && refCam < node.CameraGroup.Children.Count)
                 {
-                    camNode = (SCN0CameraNode) node.CameraGroup.Children[refCam];
+                    camNode = (SCN0CameraNode)node.CameraGroup.Children[refCam];
                 }
                 else
                 {
+                    camNode = new SCN0CameraNode();
                 }
 
                 camNode.GetModelViewMatrix(frame, out Matrix cM, out Matrix cMInv);
 
                 // Map from the midpoint of the view camera and the specified camera.
-                Matrix34 lgtCam = (Matrix34) cM;
+                Matrix34 lgtCam = (Matrix34)cM;
                 camUp._x = lgtCam[4];
                 camUp._y = lgtCam[5];
                 camUp._z = lgtCam[6];
@@ -966,7 +968,7 @@ namespace System
             }
             else
             {
-                return (Matrix) finalMtx;
+                return (Matrix)finalMtx;
             }
 
             vLook.Normalize();
@@ -978,12 +980,12 @@ namespace System
                 vUp._x, vUp._y, vUp._z, 0.0f,
                 vLook._x, vLook._y, vLook._z, 0.0f);
 
-            m34 = (Matrix34) ((Matrix) m34 * invCamMtx);
+            m34 = (Matrix34)((Matrix)m34 * invCamMtx);
             m34[3] = 0.0f;
             m34[7] = 0.0f;
             m34[11] = 0.0f;
 
-            return (Matrix) (finalMtx * m34);
+            return (Matrix)(finalMtx * m34);
         }
 
         private static unsafe Vector3 GetLightLook(
@@ -995,7 +997,7 @@ namespace System
             if (node != null && node.LightGroup != null && refLight < node.LightGroup.Children.Count && refLight >= 0)
             {
                 //SCN0 light exists
-                SCN0LightNode lightNode = (SCN0LightNode) node.LightGroup.Children[refLight];
+                SCN0LightNode lightNode = (SCN0LightNode)node.LightGroup.Children[refLight];
                 start = lightNode.GetStart(frame);
                 end = lightNode.GetEnd(frame);
                 lightType = lightNode.LightType;
@@ -1003,7 +1005,7 @@ namespace System
             }
             else //Use the model viewer light settings by default
             {
-                start = (Vector3) v._posLight;
+                start = (Vector3)v._posLight;
                 end = new Vector3();
                 lightType = LightType.Directional;
                 specEnabled = true;
@@ -1044,7 +1046,7 @@ namespace System
         {
             Matrix34 m2 = this;
 
-            float* s1 = (float*) &m2, s2 = (float*) m;
+            float* s1 = (float*)&m2, s2 = (float*)m;
 
             fixed (float* p = _data)
             {
@@ -1085,7 +1087,7 @@ namespace System
 
         public void Add(Matrix34* m)
         {
-            float* s = (float*) m;
+            float* s = (float*)m;
             fixed (float* d = _data)
             {
                 for (int i = 0; i < 12; i++)
@@ -1097,7 +1099,7 @@ namespace System
 
         public void Subtract(Matrix34* m)
         {
-            float* s = (float*) m;
+            float* s = (float*)m;
             fixed (float* d = _data)
             {
                 for (int i = 0; i < 12; i++)
@@ -1122,7 +1124,7 @@ namespace System
         {
             Matrix34 m;
 
-            float* s1 = (float*) &m1, s2 = (float*) &m2, p = (float*) &m;
+            float* s1 = (float*)&m1, s2 = (float*)&m2, p = (float*)&m;
 
             int index = 0;
             float val;
@@ -1149,7 +1151,7 @@ namespace System
 
         public static bool operator ==(Matrix34 m1, Matrix34 m2)
         {
-            float* p1 = (float*) &m1, p2 = (float*) &m2;
+            float* p1 = (float*)&m1, p2 = (float*)&m2;
             for (int i = 0; i < 12; i++)
             {
                 if (*p1++ != *p2++)
@@ -1170,7 +1172,7 @@ namespace System
         {
             if (obj is Matrix34)
             {
-                return (Matrix34) obj == this;
+                return (Matrix34)obj == this;
             }
 
             return base.Equals(obj);
@@ -1185,6 +1187,12 @@ namespace System
         {
             fixed (float* p = _data)
             {
+                if (CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator.Contains(","))
+                {
+                    return string.Format("({0} {1} {2} {3})({4} {5} {6} {7})({8} {9} {10} {11})", p[0], p[1], p[2],
+                        p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11]);
+                }
+
                 return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})", p[0], p[1], p[2], p[3],
                     p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11]);
             }
