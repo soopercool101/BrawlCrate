@@ -841,11 +841,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                              (value ? CollisionPlaneFlags2.PokemonTrainer : 0);
         }
 
-        public bool IsUnknownStageBox
+        public bool IsUnknownSSE
         {
-            get => (_flags2 & CollisionPlaneFlags2.UnknownStageBox) != 0;
-            set => _flags2 = (_flags2 & ~CollisionPlaneFlags2.UnknownStageBox) |
-                             (value ? CollisionPlaneFlags2.UnknownStageBox : 0);
+            get => (_flags2 & CollisionPlaneFlags2.UnknownSSE) != 0;
+            set => _flags2 = (_flags2 & ~CollisionPlaneFlags2.UnknownSSE) |
+                             (value ? CollisionPlaneFlags2.UnknownSSE : 0);
         }
 
         public bool IsFallThrough

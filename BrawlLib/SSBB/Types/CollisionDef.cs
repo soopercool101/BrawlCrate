@@ -263,7 +263,7 @@ namespace BrawlLib.SSBBTypes
         Characters = 0x0010, // Characters (Also allows Items and PT to interact)
         Items = 0x0020, // Items
         PokemonTrainer = 0x0040, // Pokemon Trainer
-        UnknownStageBox = 0x0080 // Unknown, used in the SSE
+        UnknownSSE = 0x0080 // Unknown, used in the SSE
     }
 
     [Flags]
