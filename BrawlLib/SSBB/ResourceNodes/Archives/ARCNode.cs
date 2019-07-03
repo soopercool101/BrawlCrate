@@ -462,6 +462,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int size, bool force)
         {
+            if (RedirectTargetNode != null)
+            {
+                _redirectIndex = (short)(RedirectTargetNode as ARCEntryNode).AbsoluteIndex;
+            }
             ARCHeader* header = (ARCHeader*) address;
             *header = new ARCHeader((ushort) Children.Count, Name);
 

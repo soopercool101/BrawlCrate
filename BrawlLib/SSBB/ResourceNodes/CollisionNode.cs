@@ -15,6 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal CollisionHeader* Header => (CollisionHeader*)WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
+        public override Type[] AllowedChildTypes => new Type[] { typeof(CollisionObject) };
 
         [Browsable(false)]
         public bool IsRendering

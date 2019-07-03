@@ -196,6 +196,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        public bool IsStagePosition =>
+            (Name.ToLower().StartsWith("stgposition", StringComparison.OrdinalIgnoreCase) ||
+             Name.StartsWith("stageposition", StringComparison.OrdinalIgnoreCase)) &&
+            (NumFacepoints == 0 && NumVertices == 0 && NumTriangles == 0);
+
         #endregion
 
         #region Immediate accessors
@@ -1826,7 +1831,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public static MDL0Node FromFile(string path, FileOptions options = FileOptions.RandomAccess)
         {
             //string ext = Path.GetExtension(path);
-            if (path.EndsWith(".mdl0", StringComparison.OrdinalIgnoreCase))
+            if (path.EndsWith(".mdl0", StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(Path.GetExtension(path)) || path.EndsWith(".tmp", StringComparison.OrdinalIgnoreCase))
             {
                 return NodeFactory.FromFile(null, path, options) as MDL0Node;
             }

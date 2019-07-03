@@ -717,6 +717,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             Replace(fileName, FileMapProtect.Read, FileOptions.SequentialScan);
         }
 
+        public virtual unsafe void Replace(ResourceNode node)
+        {
+            string path = Path.GetTempFileName();
+            node.Export(path);
+            Replace(path);
+        }
+
         public virtual unsafe void Replace(string fileName, FileMapProtect prot, FileOptions options)
         {
             //Name = Path.GetFileNameWithoutExtension(fileName);
