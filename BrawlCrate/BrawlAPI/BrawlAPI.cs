@@ -387,10 +387,10 @@ namespace BrawlCrate.API
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
         {
             TreeView resourceTree = (TreeView) sender;
-            if (resourceTree.SelectedNode is BaseWrapper wrapper)
+            if (resourceTree.SelectedNode is BaseWrapper wrapper && wrapper.ContextMenuStrip != null)
             {
                 // Remove plugins list as necessary
-                while (wrapper.ContextMenuStrip.Items.Count > 0 && (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins" || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
+                while (wrapper.ContextMenuStrip != null && wrapper.ContextMenuStrip.Items.Count > 0 && (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins" || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
                 {
                     wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
                 }

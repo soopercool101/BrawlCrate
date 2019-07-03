@@ -221,7 +221,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void Delete()
         {
-            if (Parent == null)
+            if (Parent == null || Form.ActiveForm != MainForm.Instance)
             {
                 return;
             }

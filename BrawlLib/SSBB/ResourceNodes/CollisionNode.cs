@@ -5,6 +5,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -381,7 +382,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            _name = "Collision Object";
+            _name = $"Collision Object [{Parent.Children.Count}]";
 
             return false;
         }
@@ -437,10 +438,16 @@ namespace BrawlLib.SSBB.ResourceNodes
                 l.Render();
             }
         }
-
-        public override string ToString()
+        public override unsafe void Export(string outPath)
         {
-            return "Collision Object";
+            if (outPath.EndsWith(".coll", StringComparison.OrdinalIgnoreCase))
+            {
+                CollisionNode node = new CollisionNode();
+                node.Children.Add(this);
+                node.Export(outPath);
+                return;
+            }
+            base.Export(outPath);
         }
     }
 
@@ -778,7 +785,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return false;
                 }
                 double angle = GetAngleDegrees();
-                return angle <= 45 || angle >= 315;
+                return Math.Abs(angle) <= 45;
             }
         }
         public bool IsCurrentlyCeiling
@@ -794,7 +801,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return false;
                 }
                 double angle = GetAngleDegrees();
-                return angle >= 135 && angle <= 225;
+                return Math.Abs(angle) >= 135;
             }
         }
 
@@ -810,8 +817,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return false;
                 }
-                double angle = GetAngleDegrees();
-                return (angle > 45 && angle < 135) || (angle > 225 && angle < 315);
+                double angle = Math.Abs(GetAngleDegrees());
+                return (angle > 45 && angle < 135);
             }
         }
 

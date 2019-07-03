@@ -787,7 +787,7 @@ namespace BrawlCrate
                     break;
                 case CollisionObject collObj:
                     CollisionNode collNodeTemp = new CollisionNode();
-                    collNodeTemp.AddChild(collObj);
+                    collNodeTemp.Children.Add(collObj);
                     Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Orthographic);
                     Instance.modelPanel1.AddTarget(collNodeTemp, false);
                     collNodeTemp.CalculateCamBoundaries(out minX, out minY, out maxX, out maxY);
