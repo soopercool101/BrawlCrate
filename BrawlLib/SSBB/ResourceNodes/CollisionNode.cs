@@ -794,16 +794,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return CollisionPlaneType.Floor;
             }
-            else if (Math.Abs(angle) >= 135)
+
+            if (Math.Abs(angle) >= 135)
             {
                 return CollisionPlaneType.Ceiling;
             }
-            else
-            {
-                return angle > 0 ? CollisionPlaneType.RightWall : CollisionPlaneType.LeftWall;
-            }
 
-            return null;
+            return angle < 0 ? CollisionPlaneType.RightWall : CollisionPlaneType.LeftWall;
         }
 
         public bool IsCurrentlyFloor
