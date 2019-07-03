@@ -772,6 +772,40 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool IsWall => IsLeftWall || IsRightWall;
 
+        public CollisionPlaneType? GetCurrentType()
+        {
+            if (!IsRotating || IsNone)
+            {
+                switch (Type)
+                {
+                    case CollisionPlaneType.Ceiling:
+                    case CollisionPlaneType.Floor:
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                    case CollisionPlaneType.None:
+                        return Type;
+                    default:
+                        return null;
+                }
+            }
+
+            double angle = GetAngleDegrees();
+            if (Math.Abs(angle) <= 45)
+            {
+                return CollisionPlaneType.Floor;
+            }
+            else if (Math.Abs(angle) >= 135)
+            {
+                return CollisionPlaneType.Ceiling;
+            }
+            else
+            {
+                return angle > 0 ? CollisionPlaneType.RightWall : CollisionPlaneType.LeftWall;
+            }
+
+            return null;
+        }
+
         public bool IsCurrentlyFloor
         {
             get
@@ -912,7 +946,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             float yDiff = _linkRight.Value._y - _linkLeft.Value._y;
             if (xDiff == 0.0f)
             {
-                return yDiff < 0 ? Math.PI / 2 : -Math.PI / 2;
+                return yDiff > 0 ? Math.PI / 2 : -Math.PI / 2;
+            }
+            if (yDiff == 0.0f)
+            {
+                return xDiff > 0 ? 0 : Math.PI;
             }
 
             return Math.Atan2(yDiff, xDiff);
@@ -1062,48 +1100,46 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (!IsFallThrough)
             {
-                if (IsMultipleTypes)
+                switch (GetCurrentType())
                 {
-                    GL.Color4(0.0f, 0.0f, 0.0f, alpha);
-                }
-                else if (IsCurrentlyFloor)
-                {
-                    GL.Color4(0.0f, 0.9f, 0.9f, alpha);
-                }
-                else if (IsCurrentlyCeiling)
-                {
-                    GL.Color4(0.9f, 0.0f, 0.0f, alpha);
-                }
-                else if (IsCurrentlyWall)
-                {
-                    GL.Color4(0.0f, 0.9f, 0.0f, alpha);
-                }
-                else
-                {
-                    GL.Color4(1.0f, 1.0f, 1.0f, alpha);
+                    case CollisionPlaneType.None:
+                        GL.Color4(1.0f, 1.0f, 1.0f, alpha);
+                        break;
+                    case CollisionPlaneType.Floor:
+                        GL.Color4(0.0f, 0.9f, 0.9f, alpha);
+                        break;
+                    case CollisionPlaneType.Ceiling:
+                        GL.Color4(0.9f, 0.0f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                        GL.Color4(0.0f, 0.9f, 0.0f, alpha);
+                        break;
+                    default:
+                        GL.Color4(0.0f, 0.0f, 0.0f, alpha);
+                        break;
                 }
             }
             else
             {
-                if (IsMultipleTypes)
+                switch (GetCurrentType())
                 {
-                    GL.Color4(0.5f, 0.5f, 0.0f, alpha);
-                }
-                else if (IsCurrentlyFloor)
-                {
-                    GL.Color4(1.0f, 1.0f, 0.0f, alpha);
-                }
-                else if (IsCurrentlyCeiling)
-                {
-                    GL.Color4(0.45f, 1.0f, 0.0f, alpha);
-                }
-                else if (IsCurrentlyWall)
-                {
-                    GL.Color4(0.9f, 0.3f, 0.0f, alpha);
-                }
-                else
-                {
-                    GL.Color4(0.65f, 0.65f, 0.35f, alpha);
+                    case CollisionPlaneType.None:
+                        GL.Color4(0.65f, 0.65f, 0.35f, alpha);
+                        break;
+                    case CollisionPlaneType.Floor:
+                        GL.Color4(1.0f, 1.0f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.Ceiling:
+                        GL.Color4(0.9f, 0.3f, 0.0f, alpha);
+                        break;
+                    case CollisionPlaneType.LeftWall:
+                    case CollisionPlaneType.RightWall:
+                        GL.Color4(0.45f, 1.0f, 0.0f, alpha);
+                        break;
+                    default:
+                        GL.Color4(0.5f, 0.5f, 0.0f, alpha);
+                        break;
                 }
             }
 
