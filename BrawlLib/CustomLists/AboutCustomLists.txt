@@ -1,0 +1,14 @@
+﻿Custom Lists Functionality Documentation
+
+Starting in v0.9, this program has the option to write-in your own stage or fighter lists, which will be used for drop-down menus.
+These lists are used when selecting options for single-player modes such as events, all-star, or classic, as well as for the editing of BrawlEx configuration files.
+List generation is dependent on specific things being present in specific columns. Invalid lines will be ignored and will not be added to the lists.
+If you mess up on these files, delete them and a new default version will be generated automatically the next time you start the program.
+No matter the order presented in the txt file, the lists will always be sorted by the relevant Index #.
+
+You can add comments on any line after the name has ended using "//". The comment and any spaces or tabs before it will be ignored when generating the name list.
+
+Flags:
+X: No lists will include this line, regardless of if the contents are valid or not
++s: Only lists used for single-player functionality (Classic Mode, Event matches) will include this line (if its contents are valid)
+-s: Lists used for single-player functionality will ignore this line

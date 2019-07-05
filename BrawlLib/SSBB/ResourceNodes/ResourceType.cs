@@ -171,18 +171,42 @@
         //Subspace Emmisary
         GDOR = 0x5D27,
         GEG1 = 0x5D28,
-        ENEMY = 0x5d29,
-        GMOV = 0x5d2A,
+        ENEMY = 0x5D29,
+        GMOV = 0x5D2A,
         GSND = 0x5D2B,
         GMOT = 0x5D2C,
         ADSJ = 0x5D2D,
         GBLK = 0x5D2E,
         GMPS = 0x5D2F,
         BGMG = 0x5F32,
+        GDBF = 0x5D35,
+        GWAT = 0x5D36,
+        GCAM = 0x5D37,
+        GITM = 0x5D38,
+        GIB2 = 0x5D39,
 
         FMDL = 0x6D00,
 
         Havok = 0x8500,
         HavokGroup = 0x8501,
+
+        //BrawlEx
+        COSC = 0x8600,
+        CSSC = 0x8700,
+        CSSCEntry = 0x8D00,
+        FCFG = 0x8800,
+        RSTC = 0x8900,
+        RSTCGroup = 0x8901,
+        SLTC = 0x8A00,
+
+        // Project M
+        MASQ = 0x8B00,
+        MASQEntry = 0x8C00,
+
+        // Items
+        ItemFreqNode = 0x8B01,
+        ItemFreqTableNode = 0x8C01,
+        ItemFreqTableGroupNode = 0x8D01,
+        ItemFreqEntryNode = 0x8D3A,
     }
 }
