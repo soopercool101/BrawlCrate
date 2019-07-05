@@ -12,7 +12,8 @@ namespace BrawlCrate.API
         ///
         ///     Returns null if there is no open file.
         /// </value>
-        public static ResourceNode RootNode => MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
+        public static ResourceNode RootNode =>
+            MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
 
         /// <value>
         ///     The currently selected node on the Main Form. Useful for context menu items.
@@ -20,7 +21,7 @@ namespace BrawlCrate.API
         ///     Returns null if there is no selected file
         /// </value>
         public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
-            ? ((BaseWrapper)MainForm.Instance.resourceTree.SelectedNode).Resource
+            ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
             : null;
 
         /// <value>
@@ -28,7 +29,7 @@ namespace BrawlCrate.API
         ///
         ///     Returns null if there is no selected file
         /// </value>
-        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper)MainForm.Instance.resourceTree.SelectedNode;
+        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
 
         /// <summary>
         ///     Shows a MessageBox with the given message and title, and the default "OK" option.
@@ -104,10 +105,12 @@ namespace BrawlCrate.API
                         {
                             continue;
                         }
+
                         if (string.IsNullOrEmpty(item.ToolTipText))
                         {
                             item.ToolTipText = items[0].ToolTipText;
                         }
+
                         for (int j = 0; j < items[0].DropDownItems.Count; j++)
                         {
                             ToolStripItem item2 = items[0].DropDownItems[j];
@@ -117,6 +120,7 @@ namespace BrawlCrate.API
                         return;
                     }
                 }
+
                 ContextMenuHooks[wrapper] = ContextMenuHooks[wrapper].Append(items);
             }
             else
@@ -146,7 +150,8 @@ namespace BrawlCrate.API
         ///     One or more ToolStrip menu items that will be added to the context menu.
         ///     These should be defined as much as possible in the script itself.
         /// </param>
-        public static void AddContextMenuItem(Type wrapper, string subMenuName, string description, EventHandler conditional, params ToolStripMenuItem[] items)
+        public static void AddContextMenuItem(Type wrapper, string subMenuName, string description,
+                                              EventHandler conditional, params ToolStripMenuItem[] items)
         {
             if (conditional != null)
             {
@@ -163,10 +168,12 @@ namespace BrawlCrate.API
                 {
                     t.DropDownItems.Add(item);
                 }
+
                 if (!string.IsNullOrEmpty(description))
                 {
                     t.ToolTipText = description;
                 }
+
                 AddContextMenuItem(wrapper, t);
                 return;
             }
@@ -178,6 +185,7 @@ namespace BrawlCrate.API
                     item.ToolTipText += description;
                 }
             }
+
             AddContextMenuItem(wrapper, items);
         }
 

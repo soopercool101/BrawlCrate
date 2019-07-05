@@ -41,11 +41,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             _entryOffset = Header->_entryOffset;
             for (int i = 0; i < WorkingUncompressed.Length - EntryOffset; i += 4)
             {
-                EntryList.Add(((byte*)Header->Entries)[i + 3]);
-                EntryList.Add(((byte*)Header->Entries)[i + 2]);
-                EntryList.Add(((byte*)Header->Entries)[i + 1]);
-                EntryList.Add(((byte*)Header->Entries)[i]);
+                EntryList.Add(((byte*) Header->Entries)[i + 3]);
+                EntryList.Add(((byte*) Header->Entries)[i + 2]);
+                EntryList.Add(((byte*) Header->Entries)[i + 1]);
+                EntryList.Add(((byte*) Header->Entries)[i]);
             }
+
             return false;
         }
 
@@ -62,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_unk2 = unk2;
             header->_version = unk0;
             header->_entryOffset = EntryOffset;
-            for (int i = 0; i*4 < EntryList.Count; i++)
+            for (int i = 0; i * 4 < EntryList.Count; i++)
             {
                 header->Entries[i] = GetFloat(i);
             }

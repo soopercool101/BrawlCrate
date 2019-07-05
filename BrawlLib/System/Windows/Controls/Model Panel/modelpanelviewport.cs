@@ -835,6 +835,7 @@ namespace System.Windows.Forms
         }
 
         private Drawing.Point? lastCursorPos = null;
+
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
             if (_selecting)
@@ -904,15 +905,18 @@ namespace System.Windows.Forms
                         Translate(-xDiff * TranslationScale, -yDiff * TranslationScale, 0.0f);
                     }
                 }
+
                 if (_grabbing)
                 {
                     if (lastCursorPos == null)
                     {
                         lastCursorPos = Cursor.Position;
                     }
-                    Cursor.Position = (Drawing.Point)lastCursorPos;
+
+                    Cursor.Position = (Drawing.Point) lastCursorPos;
                 }
             }
+
             _lastX = x;
             _lastY = y;
 

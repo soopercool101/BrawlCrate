@@ -91,7 +91,7 @@ namespace BrawlLib.SSBBTypes
         public byte _dataLocationType; //WaveDataLocationType
         public byte _pad;
         public bint _loopStartSample;
-        public bint _nibbles; //Includes ALL data, not just samples
+        public bint _nibbles;                 //Includes ALL data, not just samples
         public buint _channelInfoTableOffset; //0x1C, offset to bint offset array for each channel
         public buint _dataLocation;
         public buint _reserved; //0
@@ -153,12 +153,12 @@ namespace BrawlLib.SSBBTypes
         public const int Size = 0x1C;
 
         public bint _channelDataOffset; //offset to samples to read
-        public bint _adpcmInfoOffset; //offset to ADPCMInfo from start of WaveInfo struct
-        public int _volFrontLeft; //1
-        public int _volFrontRight; //1
-        public int _volBackLeft; //1
-        public int _volBackRight; //1
-        public bint _reserved; //0
+        public bint _adpcmInfoOffset;   //offset to ADPCMInfo from start of WaveInfo struct
+        public int _volFrontLeft;       //1
+        public int _volFrontRight;      //1
+        public int _volBackLeft;        //1
+        public int _volBackRight;       //1
+        public bint _reserved;          //0
 
         private VoidPtr Address
         {
@@ -210,7 +210,10 @@ namespace BrawlLib.SSBBTypes
 
         public bshort _yn1; //History data; used to maintain decoder state during sample playback.
         public bshort _yn2; //History data; used to maintain decoder state during sample playback.
-        public bshort _lps; //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
+
+        public bshort
+            _lps; //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
+
         public bshort _lyn1; //History data for the loop point. If the sample does not loop, this value is zero.
         public bshort _lyn2; //History data for the loop point. If the sample does not loop, this value is zero.
         public short _pad;

@@ -47,7 +47,7 @@ namespace BrawlCrate.API
         internal static ResourceNode TryParse(DataSource source)
         {
             ResourceNode n = null;
-            using (UnsafeStream s = new UnsafeStream(source.Address, (uint)source.Length))
+            using (UnsafeStream s = new UnsafeStream(source.Address, (uint) source.Length))
             {
                 foreach (PluginLoader ldr in BrawlAPI.Loaders)
                 {

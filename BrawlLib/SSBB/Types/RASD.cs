@@ -116,10 +116,10 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct AnimEventFrameInfo
     {
-        public int _startFrame; // event start frame
-        public int _endFrame; // event end frame
-        public byte _frameFlag; // frame processing option flag
-        public sbyte _loopOffset; // number of playback loops
+        public int _startFrame;    // event start frame
+        public int _endFrame;      // event end frame
+        public byte _frameFlag;    // frame processing option flag
+        public sbyte _loopOffset;  // number of playback loops
         public byte _loopInterval; // playback loop interval after loopCount
         public byte _reserved;
 
@@ -138,8 +138,8 @@ namespace BrawlLib.SSBBTypes
     [Flags]
     public enum FrameFlag
     {
-        TriggerEvent = 1, // trigger-type event
-        EndFrameInfinite = 2, // end frame is infinitely large
+        TriggerEvent = 1,      // trigger-type event
+        EndFrameInfinite = 2,  // end frame is infinitely large
         StartFrameInfinite = 4 // start frame is infinitely large negative number
     }
 }

@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class TBCLNode : StageTableNode
     {
         public override ResourceType ResourceFileType => ResourceType.TBCL;
-        internal TBCL* Header => (TBCL*)WorkingUncompressed.Address;
+        internal TBCL* Header => (TBCL*) WorkingUncompressed.Address;
         internal override string DocumentationSubDirectory => "TBCL";
 
         [Category("Stage Data Table")]
@@ -41,11 +41,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             _entryOffset = Header->_entryOffset;
             for (int i = 0; i < WorkingUncompressed.Length - EntryOffset; i += 4)
             {
-                EntryList.Add(((byte*)Header->Entries)[i + 3]);
-                EntryList.Add(((byte*)Header->Entries)[i + 2]);
-                EntryList.Add(((byte*)Header->Entries)[i + 1]);
-                EntryList.Add(((byte*)Header->Entries)[i]);
+                EntryList.Add(((byte*) Header->Entries)[i + 3]);
+                EntryList.Add(((byte*) Header->Entries)[i + 2]);
+                EntryList.Add(((byte*) Header->Entries)[i + 1]);
+                EntryList.Add(((byte*) Header->Entries)[i]);
             }
+
             return false;
         }
 
@@ -56,7 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            TBCL* header = (TBCL*)address;
+            TBCL* header = (TBCL*) address;
             header->_tag = TBCL.Tag;
             header->_unk1 = unk1;
             header->_unk2 = unk2;
@@ -70,7 +71,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((TBCL*)source.Address)->_tag == TBCL.Tag ? new TBCLNode(0) : null;
+            return ((TBCL*) source.Address)->_tag == TBCL.Tag ? new TBCLNode(0) : null;
         }
     }
 }

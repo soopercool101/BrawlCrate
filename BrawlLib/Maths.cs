@@ -11,7 +11,7 @@
         public const float _deg2radf = (float) _deg2rad;
 
         public const float _pif = (float) Math.PI;
-        public const float _halfPif = (float)(Math.PI / 2.0);
+        public const float _halfPif = (float) (Math.PI / 2.0);
 
         public static float CosLawGetSide(float angle, float a, float b)
         {

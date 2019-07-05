@@ -406,27 +406,27 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public enum PanMode
     {
-        Dual, // Perform position processing for stereo as two monaural channels.
+        Dual,   // Perform position processing for stereo as two monaural channels.
         Balance // Process the volume balance for the left and right channels.
     }
 
     public enum PanCurve
     {
-        Sqrt, // Square root curve. The volume will be -3 dB in the center and 0 dB at both ends.
-        Sqrt0DB, // Square root curve. The volume will be 0 dB in the center and +3 dB at both ends.
-        Sqrt0DBClamp, // Square root curve. The volume will be 0 dB in the center and 0 dB at both ends.
-        SinCos, // Trigonometric curve. The volume will be -3 dB in the center and 0 dB at both ends.
-        SinCos0DB, // Trigonometric curve. The volume will be 0 dB in the center and +3 dB at both ends.
+        Sqrt,           // Square root curve. The volume will be -3 dB in the center and 0 dB at both ends.
+        Sqrt0DB,        // Square root curve. The volume will be 0 dB in the center and +3 dB at both ends.
+        Sqrt0DBClamp,   // Square root curve. The volume will be 0 dB in the center and 0 dB at both ends.
+        SinCos,         // Trigonometric curve. The volume will be -3 dB in the center and 0 dB at both ends.
+        SinCos0DB,      // Trigonometric curve. The volume will be 0 dB in the center and +3 dB at both ends.
         SinCos0DBClamp, // Trigonometric curve. The volume will be 0 dB in the center and 0 dB at both ends.
-        Linear, // Linear curve. The volume will be -6 dB in the center and 0 dB at both ends.
-        Linear0DB, // Linear curve. The volume will be 0 dB in the center and +6 dB at both ends.
-        Linear0DBClamp // Linear curve. The volume will be 0 dB in the center and 0 dB at both ends.
+        Linear,         // Linear curve. The volume will be -6 dB in the center and 0 dB at both ends.
+        Linear0DB,      // Linear curve. The volume will be 0 dB in the center and +6 dB at both ends.
+        Linear0DBClamp  // Linear curve. The volume will be 0 dB in the center and 0 dB at both ends.
     }
 
     public enum DecayCurve
     {
         Logarithmic = 1, // Logarithmic curve
-        Linear = 2 // Linear curve
+        Linear = 2       // Linear curve
     }
 
     public enum RegionTableType

@@ -30,7 +30,7 @@ namespace BrawlLib.Wii.Audio
             _symbLen += entries._stringLength;
 
             //Mask entries
-            _symbLen += 32; //Headers
+            _symbLen += 32;                                    //Headers
             _symbLen += (entries._strings.Count * 2 - 4) * 20; //Entries
 
             //Align
@@ -478,10 +478,10 @@ namespace BrawlLib.Wii.Audio
             for (int i = 0; i < 4; ++i)
             {
                 _strings.AddRange(_tempStrings
-                                  .Where(x => x._type == i)
-                                  .OrderBy(x => x._index)
-                                  .Select(x => x._name
-                                                .ToString()));
+                    .Where(x => x._type == i)
+                    .OrderBy(x => x._index)
+                    .Select(x => x._name
+                        .ToString()));
             }
 
             foreach (string s in _strings)

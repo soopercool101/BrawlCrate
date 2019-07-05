@@ -67,7 +67,7 @@ namespace System.Windows.Forms
             //TODO: get this working
 
             int height = 512; //temporary - need to calculate width
-            int width = 512; //temporary - need to calculate height
+            int width = 512;  //temporary - need to calculate height
 
 
             texCoordRenderer1.Capture();

@@ -15,6 +15,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static CSSCWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -34,20 +35,28 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<CSSCWrapper>().NewEntry(); }
+
+        protected static void NewEntryAction(object sender, EventArgs e)
+        {
+            GetInstance<CSSCWrapper>().NewEntry();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             CSSCWrapper w = GetInstance<CSSCWrapper>();
-            _menu.Items[0].Enabled = (w._resource.Children.Count < 50);
+            _menu.Items[0].Enabled = w._resource.Children.Count < 50;
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public override string ExportFilter => FileFilters.CSSC;
@@ -65,13 +74,23 @@ namespace BrawlCrate.NodeWrappers
             };
             if (_resource.HasChildren)
             {
-                node._costumeID = (byte)(((CSSCEntryNode)(_resource.Children[_resource.Children.Count - 1]))._costumeID + 1);
+                node._costumeID =
+                    (byte) (((CSSCEntryNode) _resource.Children[_resource.Children.Count - 1])._costumeID + 1);
             }
-            node._name = "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode)_resource)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + node._costumeID.ToString("00") + (BrawlExColorID.Colors.Length > node._colorID ? " - " + BrawlExColorID.Colors[node._colorID].Name : "");
+
+            node._name =
+                "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(
+                    ((CSSCNode) _resource)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex,
+                    "+S") + node._costumeID.ToString("00") + (BrawlExColorID.Colors.Length > node._colorID
+                    ? " - " + BrawlExColorID.Colors[node._colorID].Name
+                    : "");
             _resource.AddChild(node);
         }
 
-        public CSSCWrapper() { ContextMenuStrip = _menu; }
+        public CSSCWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 
     [NodeWrapper(ResourceType.CSSCEntry)]
@@ -80,6 +99,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static CSSCEntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -98,15 +118,23 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void OpenCostumeAction(object sender, EventArgs e) { GetInstance<CSSCEntryWrapper>().OpenCostume(); }
+
+        protected static void OpenCostumeAction(object sender, EventArgs e)
+        {
+            GetInstance<CSSCEntryWrapper>().OpenCostume();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[1].Visible = _menu.Items[0].Visible = _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _menu.Items[1].Visible = _menu.Items[0].Visible = _menu.Items[0].Enabled = _menu.Items[3].Enabled =
+                _menu.Items[4].Enabled =
+                    _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             CSSCEntryWrapper w = GetInstance<CSSCEntryWrapper>();
-            List<string> files = ((CSSCEntryNode)w._resource).GetCostumeFilePath(Program.RootPath);
+            List<string> files = ((CSSCEntryNode) w._resource).GetCostumeFilePath(Program.RootPath);
             _menu.Items[0].Enabled = _menu.Items[1].Visible = _menu.Items[0].Visible = files.Count != 0;
             if (files.Count >= 1)
             {
@@ -120,16 +148,18 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
             }
+
             _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public void OpenCostume()
         {
-            List<string> files = ((CSSCEntryNode)_resource).GetCostumeFilePath(Program.RootPath);
+            List<string> files = ((CSSCEntryNode) _resource).GetCostumeFilePath(Program.RootPath);
             foreach (string s in files)
             {
                 Process BrawlCrate = Process.Start(new ProcessStartInfo()
@@ -140,6 +170,9 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public CSSCEntryWrapper() { ContextMenuStrip = _menu; }
+        public CSSCEntryWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

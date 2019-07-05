@@ -441,7 +441,7 @@ namespace BrawlLib.Modeling
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                     .Name; // Remove unecessary reference to "end" bones
+                                        .Name; // Remove unecessary reference to "end" bones
                             }
                             else
                             {
@@ -461,7 +461,7 @@ namespace BrawlLib.Modeling
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                         .Name; // Remove unecessary reference to "end" bones
+                                            .Name; // Remove unecessary reference to "end" bones
                                 }
                                 else
                                 {
@@ -482,7 +482,7 @@ namespace BrawlLib.Modeling
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                     .Name; // Remove unecessary reference to "end" bones
+                                        .Name; // Remove unecessary reference to "end" bones
                             }
 
                             foreach (DrawCall dc in obj._drawCalls)
@@ -494,7 +494,7 @@ namespace BrawlLib.Modeling
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                         .Name; // Remove unecessary reference to "end" bones
+                                            .Name; // Remove unecessary reference to "end" bones
                                 }
                             }
                         }

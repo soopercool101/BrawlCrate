@@ -80,9 +80,9 @@ namespace System
                 //Swap sorted list, creating a new remap table in the process
                 for (int i = 0; i < impCount; i++)
                 {
-                    tmp = sorted[i]; //Get index
+                    tmp = sorted[i];            //Get index
                     sorted[i] = _impTable[tmp]; //Set sorted entry to imp index
-                    _impTable[tmp] = i; //Set imp entry to remap index
+                    _impTable[tmp] = i;         //Set imp entry to remap index
                 }
 
                 //Re-index remap

@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public uint _bssAlign = 8;
         public uint _fixSize;
 
-        public byte? _stageID; // null if it's not a stage .rel
+        public byte? _stageID;  // null if it's not a stage .rel
         public byte[] _itemIDs; // null if it's not an online training room .rel
 
         [Category("Relocatable Module")]

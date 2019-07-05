@@ -9,8 +9,8 @@ namespace BrawlLib.SSBBTypes
         public const uint Tag1 = 0x57E0E057;
         public const uint Tag2 = 0x10C0C010;
 
-        public uint _tag1; //0x57E0E057
-        public uint _tag2; //0x10C0C010
+        public uint _tag1;    //0x57E0E057
+        public uint _tag2;    //0x10C0C010
         public bint _userTag; //0
         public bint _classVersion;
 
@@ -23,7 +23,7 @@ namespace BrawlLib.SSBBTypes
         public bint _sectionCount; //3
 
         //Index of the offset section for class data
-        public bint _dataSectionIndex; //1
+        public bint _dataSectionIndex;  //1
         public bint _dataSectionOffset; //0
 
         //Index of the offset section for class names
@@ -68,7 +68,7 @@ namespace BrawlLib.SSBBTypes
     {
         public fixed byte _name[19];
 
-        public byte _pad; //0xFF
+        public byte _pad;        //0xFF
         public bint _dataOffset; //Main header is the base
 
         //Offsets to indices struct. _dataOffset is the base for everything.
@@ -104,7 +104,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct PhysicsClassName
     {
         public buint _signature; //How to calculate?
-        public byte _nine; //9
+        public byte _nine;       //9
 
         public string Name => new string((sbyte*) Address + 5);
 
@@ -126,7 +126,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct LocalPatch
     {
         public bint _pointerOffset; //Offset to a uint pointer
-        public bint _dataOffset; //Offset to the pointer's data
+        public bint _dataOffset;    //Offset to the pointer's data
 
         private VoidPtr Address
         {
@@ -163,7 +163,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct ClassNamePatch
     {
         public bint _dataOffset; //Data Offset
-        public bint _unknown; //0
+        public bint _unknown;    //0
 
         //Relative to start of class names data
         //points directly to string
@@ -185,7 +185,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct hkVariant
     {
         public bint _objectPtr; //void*
-        public bint _classPtr; //hkClass*
+        public bint _classPtr;  //hkClass*
 
         private VoidPtr Address
         {
@@ -202,7 +202,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkClass
     {
-        public bint _namePtr; //char*
+        public bint _namePtr;   //char*
         public bint _parentPtr; //hkClass*
         public bint _size;
         public bint _interfaceCount;
@@ -211,8 +211,8 @@ namespace BrawlLib.SSBBTypes
         public bint _propertyPtr; //hkClassMember*
         public bint _propertyCount;
         public bint _defaultsPtr; //void*
-        public bint _attribPtr; //hkCustomAttributes*
-        public bint _flags; //0 = none, 1 = not serializable
+        public bint _attribPtr;   //hkCustomAttributes*
+        public bint _flags;       //0 = none, 1 = not serializable
         public bint _version;
 
         private VoidPtr Address
@@ -340,7 +340,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkClassEnum
     {
-        public bint _namePtr; //char*
+        public bint _namePtr;    //char*
         public bint _entriesPtr; //HavokClassEnumEntry*
         public bint _enumCount;
 
@@ -359,7 +359,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct HavokClassEnumEntry
     {
-        public bint _value; //The number the string represents
+        public bint _value;   //The number the string represents
         public bint _namePtr; //char*
 
         private VoidPtr Address
@@ -377,10 +377,10 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkClassMember
     {
-        public bint _namePtr; //char*
-        public bint _classPtr; //hkClass*
-        public bint _enumPtr; //hkClassEnum*
-        public byte _type; //The type of data in the struct itself
+        public bint _namePtr;     //char*
+        public bint _classPtr;    //hkClass*
+        public bint _enumPtr;     //hkClassEnum*
+        public byte _type;        //The type of data in the struct itself
         public byte _pointedType; //The type of data being pointed to
         public bshort _arraySize;
         public bushort _flags;
@@ -503,7 +503,7 @@ namespace BrawlLib.SSBBTypes
             FLAGS_NONE = 0,
 
             //1, 2, 4?
-            DEPRECATED_SIZE_8 = 8, //Deprecated
+            DEPRECATED_SIZE_8 = 8,   //Deprecated
             DEPRECATED_SIZE_16 = 16, //Deprecated
             DEPRECATED_SIZE_32 = 32, //Deprecated
 
@@ -639,7 +639,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkNamedVariant
     {
-        public bint _namePtr; //char*
+        public bint _namePtr;      //char*
         public bint _classNamePtr; //char*
         public hkVariant _variantInfo;
 
@@ -658,10 +658,10 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct hkxScene
     {
-        public bint _modellerPtr; //char*
-        public bint _assetPtr; //char*
+        public bint _modellerPtr;   //char*
+        public bint _assetPtr;      //char*
         public bfloat _sceneLength; //Time in seconds
-        public bint _rootNodePtr; //hkxNode*
+        public bint _rootNodePtr;   //hkxNode*
 
         private VoidPtr Address
         {
@@ -694,7 +694,7 @@ namespace BrawlLib.SSBBTypes
         public bint _numAnnotations;
 
         public bint _userPropertiesPtr; //char*
-        public byte _selected; //bool, 0 = false, anything else = true
+        public byte _selected;          //bool, 0 = false, anything else = true
 
         public fixed byte _pad[3];
 

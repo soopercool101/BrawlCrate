@@ -11,11 +11,11 @@ namespace BrawlLib.SSBBTypes
         public const uint Tag = 0x54464552;
 
         public NW4RCommonHeader _header;
-        public uint _tag; //Same as header
+        public uint _tag;        //Same as header
         public bint _dataLength; //Size of second REFT block. (file size - 0x18)
         public bint _dataOffset; //Offset from itself. Begins first entry
-        public bint _linkPrev; //0
-        public bint _linkNext; //0
+        public bint _linkPrev;   //0
+        public bint _linkNext;   //0
         public bshort _stringLen;
         public bshort _padding; //0
 

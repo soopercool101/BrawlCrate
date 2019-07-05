@@ -14,7 +14,17 @@ namespace BrawlLib.SSBBTypes
         public bint _unk2;
         public bint _entryOffset;
 
-        public VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
-        public bfloat* Entries => (bfloat*)(Address + _entryOffset);
+        public VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
+
+        public bfloat* Entries => (bfloat*) (Address + _entryOffset);
     }
 }

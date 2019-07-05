@@ -146,8 +146,8 @@ namespace BrawlLib.SSBBTypes
         }
 
         public StrmDataInfo* Part1 => (StrmDataInfo*) _entries[0]; //Audio info
-        public RuintList* Part2 => (RuintList*) _entries[1]; //ADPC block flags?
-        public RuintList* Part3 => (RuintList*) _entries[2]; //ADPCMInfo array, one for each channel?
+        public RuintList* Part2 => (RuintList*) _entries[1];       //ADPC block flags?
+        public RuintList* Part3 => (RuintList*) _entries[2];       //ADPCMInfo array, one for each channel?
 
         public ADPCMInfo* GetChannelInfo(int index)
         {
@@ -184,10 +184,10 @@ namespace BrawlLib.SSBBTypes
         public bint _numBlocks;
         public bint _blockSize;
         public bint _samplesPerBlock; //0x3800
-        public bint _lastBlockSize; //Without padding
+        public bint _lastBlockSize;   //Without padding
         public bint _lastBlockSamples;
         public bint _lastBlockTotal; //Includes padding
-        public bint _dataInterval; //0x3800
+        public bint _dataInterval;   //0x3800
         public bint _bitsPerSample;
 
         public unsafe StrmDataInfo(CSTMDataInfo o, int dataOffset)

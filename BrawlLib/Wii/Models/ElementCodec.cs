@@ -450,7 +450,7 @@ namespace BrawlLib.Wii.Models
                         }
                         else
                         {
-                            Stride += format; //Add to stride (the length of the facepoints)
+                            Stride += format;  //Add to stride (the length of the facepoints)
                             pDef->Output = 12; //Set the output
                             *pCom++ = (byte) DecodeOp.ElementIndexed;
                         }
@@ -480,7 +480,7 @@ namespace BrawlLib.Wii.Models
                         }
                         else
                         {
-                            Stride += format; //Add to stride (the length of the facepoints)
+                            Stride += format;  //Add to stride (the length of the facepoints)
                             pDef->Output = 12; //Set the output
                             *pCom++ = (byte) DecodeOp.ElementIndexed;
                         }

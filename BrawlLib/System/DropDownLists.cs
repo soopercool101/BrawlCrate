@@ -317,7 +317,7 @@ namespace System
         {
             RSAREntryNode n = context.Instance as RSAREntryNode;
             return new StandardValuesCollection(n.RSARNode.Files.Where(x => x is RBNKNode || x is RSARExtFileNode)
-                                                 .Select(r => r.ToString()).ToList());
+                .Select(r => r.ToString()).ToList());
         }
     }
 
@@ -377,7 +377,7 @@ namespace System
         {
             RSARFileEntryNode n = context.Instance as RSARFileEntryNode;
             return new StandardValuesCollection(n.Parent.Parent.Children[1].Children.Select(r => r.ToString())
-                                                 .ToList());
+                .ToList());
         }
     }
 
@@ -397,7 +397,7 @@ namespace System
             }
 
             return new StandardValuesCollection(n.SoundFileNode.Children[0].Children.Select(r => r.ToString())
-                                                 .ToList());
+                .ToList());
         }
     }
 
@@ -722,6 +722,7 @@ namespace System
 
             return new StandardValuesCollection(list);
         }
+
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
                                          Type destinationType)
         {
@@ -736,15 +737,16 @@ namespace System
 
             return base.ConvertTo(context, culture, value, destinationType);
         }
+
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             if (value is ARCEntryNode node)
             {
                 return $"{node.AbsoluteIndex.ToString()}. {node.Name}";
             }
+
             return base.ConvertFrom(context, culture, value);
         }
-
     }
 
     public class DropDownListEnemies : StringConverter
@@ -776,8 +778,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib
-                                                .SSBB.Stage.Stages
-                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                .SSBB.Stage.Stages
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -822,8 +824,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib
-                                                .SSBB.Item.Items
-                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                .SSBB.Item.Items
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -868,8 +870,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib
-                                                .SSBB.Fighter.Fighters
-                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                .SSBB.Fighter.Fighters
+                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)

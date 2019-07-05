@@ -11,6 +11,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static RSTCGroupWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -22,18 +23,29 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<RSTCGroupWrapper>().NewEntry(); }
-        protected static void ClearAction(object sender, EventArgs e) { GetInstance<RSTCGroupWrapper>().Clear(); }
+
+        protected static void NewEntryAction(object sender, EventArgs e)
+        {
+            GetInstance<RSTCGroupWrapper>().NewEntry();
+        }
+
+        protected static void ClearAction(object sender, EventArgs e)
+        {
+            GetInstance<RSTCGroupWrapper>().Clear();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[0].Enabled = _menu.Items[2].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSTCGroupWrapper w = GetInstance<RSTCGroupWrapper>();
-            _menu.Items[0].Enabled = (w._resource.Children.Count < 100);
+            _menu.Items[0].Enabled = w._resource.Children.Count < 100;
             _menu.Items[2].Enabled = w._resource.HasChildren;
         }
+
         #endregion
 
         //public override string ExportFilter { get { return FileFilters.RSTCGroup; } }
@@ -44,6 +56,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 return;
             }
+
             RSTCEntryNode node = new RSTCEntryNode
             {
                 FighterID = 0x0,
@@ -67,6 +80,9 @@ namespace BrawlCrate.NodeWrappers
             w.Expand();
         }
 
-        public RSTCGroupWrapper() { ContextMenuStrip = _menu; }
+        public RSTCGroupWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.Types
         public byte _unknown0a;
         public byte _unknown0b;
         public bint _timeLimit; // if 0, time counts up
-        public bint _flags10; // 0x20000000: timer visible; 0x40000000: hide countdown
+        public bint _flags10;   // 0x20000000: timer visible; 0x40000000: hide countdown
         public bfloat _unknown14;
         public byte _flags18; // 0x80: hide damage values
         public byte _isTeamGame;

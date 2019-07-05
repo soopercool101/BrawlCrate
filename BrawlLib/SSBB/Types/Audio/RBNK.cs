@@ -142,10 +142,10 @@ namespace BrawlLib.SSBBTypes
         public byte _volume;
         public byte _pan;
         public byte _surroundPan;
-        public bfloat _pitch; //1.0
-        public ruint _lfoTableRef; //control = 0, data = 0
-        public ruint _graphEnvTablevRef; //control = 0, data = 0
+        public bfloat _pitch;             //1.0
+        public ruint _lfoTableRef;        //control = 0, data = 0
+        public ruint _graphEnvTablevRef;  //control = 0, data = 0
         public ruint _randomizerTableRef; //control = 0, data = 0
-        public bint _reserved; //0
+        public bint _reserved;            //0
     }
 }

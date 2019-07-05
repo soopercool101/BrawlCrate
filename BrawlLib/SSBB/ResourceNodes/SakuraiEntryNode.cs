@@ -86,10 +86,10 @@ namespace BrawlLib.SSBBTypes
         public SakuraiArchiveNode _root;
 
         public int
-            _offset, //The initial offset of this entry when first parsed
-            _index, //The entry's child index when first parsed
+            _offset,        //The initial offset of this entry when first parsed
+            _index,         //The entry's child index when first parsed
             _initSize = -1, //The size of this entry when first parsed.
-            _calcSize; //This size of this entry after GetSize() has been called.
+            _calcSize;      //This size of this entry after GetSize() has been called.
 
         //Sometimes a section will reference an entry contained in another section.
         //This keeps track of that

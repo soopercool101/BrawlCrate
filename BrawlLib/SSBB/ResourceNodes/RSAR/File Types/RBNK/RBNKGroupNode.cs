@@ -42,7 +42,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int count = header->_list._numEntries;
 
             LabelItem[] list = ((RBNKNode) _parent)._labels; //Get labels from parent
-            ((RBNKNode) _parent)._labels = null; //Clear labels, no more use for them!
+            ((RBNKNode) _parent)._labels = null;             //Clear labels, no more use for them!
 
             for (int i = 0; i < count; i++)
             {

@@ -12,7 +12,7 @@ namespace BrawlLib.SSBBTypes
         public BinTag _tag;
         public bushort _endian;
         public bushort _version;
-        public buint _fileSize; //Total size of resource package file
+        public buint _fileSize;     //Total size of resource package file
         public bushort _rootOffset; //Offset to root entry
         public bushort _numSections;
 

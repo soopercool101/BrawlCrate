@@ -44,9 +44,9 @@ namespace BrawlCrate.Discord
 
         public static void ErrorCallback(int errorCode, string message)
         {
-            System.Windows.Forms.MessageBox.Show("Discord Rich Presence Error " + errorCode + "\n\n" + message,
-                "Discord Rich Presence", System.Windows.Forms.MessageBoxButtons.OK,
-                System.Windows.Forms.MessageBoxIcon.Error);
+            MessageBox.Show("Discord Rich Presence Error " + errorCode + "\n\n" + message,
+                "Discord Rich Presence", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
     }
 }

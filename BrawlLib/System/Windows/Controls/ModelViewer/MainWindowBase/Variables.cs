@@ -11,7 +11,7 @@ namespace System.Windows.Forms
         public const float _orbRadius = 1.0f;
         public const float _circRadius = 1.2f;
         public const float _axisSnapRange = 7.0f;
-        public const float _selectRange = 0.03f; //Selection error range for orb and circ
+        public const float _selectRange = 0.03f;     //Selection error range for orb and circ
         public const float _axisSelectRange = 0.15f; //Selection error range for axes
         public const float _selectOrbScale = _selectRange / _orbRadius;
         public const float _circOrbScale = _circRadius / _orbRadius;

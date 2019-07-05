@@ -607,7 +607,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const uint Size = 0x04;
 
-        public bushort _id; //Node Id
+        public bushort _id;    //Node Id
         public bushort _index; //Node Index
 
         public int Id
@@ -1183,15 +1183,15 @@ namespace BrawlLib.SSBBTypes
         //Specifying it will forcibly omit sending the display list(s) held by this material (even if this material is animated).
         public enum MatUsageFlags : uint
         {
-            DO_NOT_SEND_PIXDL = 0x00000001, // Does not send the data in ResPixDL
-            DO_NOT_SEND_TEVCOLORDL = 0x00000002, // Does not send the data in ResTevColorDL
-            DO_NOT_SEND_TEXCOORDSCALEDL = 0x00000004, // Does not send the data in ResTexCoordScaleDL
+            DO_NOT_SEND_PIXDL = 0x00000001,            // Does not send the data in ResPixDL
+            DO_NOT_SEND_TEVCOLORDL = 0x00000002,       // Does not send the data in ResTevColorDL
+            DO_NOT_SEND_TEXCOORDSCALEDL = 0x00000004,  // Does not send the data in ResTexCoordScaleDL
             DO_NOT_SEND_INDMTXANDSCALEDL = 0x00000008, // Does not send the data in ResIndMtxAndScaleDL
-            DO_NOT_SEND_CHANDL = 0x00000010, // Does not send the data in ResChanDL
-            DO_NOT_SEND_GENMODE2DL = 0x00000020, // Does not send the data in ResGenMode2DL
-            DO_NOT_SEND_TEXCOORDGENDL = 0x00000040, // Does not send the data in ResTexCoordGenDL
-            DO_NOT_SEND_TEXMTXDL = 0x00000080, // Does not send the data in ResTexMtxDL
-            MASK_DO_NOT_SENDDL = 0x000000ff, // Mask
+            DO_NOT_SEND_CHANDL = 0x00000010,           // Does not send the data in ResChanDL
+            DO_NOT_SEND_GENMODE2DL = 0x00000020,       // Does not send the data in ResGenMode2DL
+            DO_NOT_SEND_TEXCOORDGENDL = 0x00000040,    // Does not send the data in ResTexCoordGenDL
+            DO_NOT_SEND_TEXMTXDL = 0x00000080,         // Does not send the data in ResTexMtxDL
+            MASK_DO_NOT_SENDDL = 0x000000ff,           // Mask
 
             TRANSPARENCY_MODE_XLU =
                 0x80000000 // This is set when transparency_mode has been set to xlu in the intermediate file.
@@ -1681,7 +1681,7 @@ namespace BrawlLib.SSBBTypes
         public BPMemory Mem15;
         public KSel _Value15; //KSel 7 - BA
 
-        public byte Reg16; //0x61
+        public byte Reg16;     //0x61
         public BPMemory Mem16; //IREF
         public RAS1_IRef _Value16;
 
@@ -1697,15 +1697,15 @@ namespace BrawlLib.SSBBTypes
 
         public const int Size = 0x30;
 
-        public BPCommand _mask; //KSel Mask - Selection Mode (XRB = 0, XGA = 0)
-        public BPCommand _ksel; //KSel
-        public BPCommand _tref; //TRef
+        public BPCommand _mask;         //KSel Mask - Selection Mode (XRB = 0, XGA = 0)
+        public BPCommand _ksel;         //KSel
+        public BPCommand _tref;         //TRef
         public BPCommand _evenColorEnv; //Color Env Even
-        public BPCommand _oddColorEnv; //Color Env Odd (Optional)
+        public BPCommand _oddColorEnv;  //Color Env Odd (Optional)
         public BPCommand _evenAlphaEnv; //Alpha Env Even
-        public BPCommand _oddAlphaEnv; //Alpha Env Odd (Optional)
-        public BPCommand _evenCmd; //CMD (Indirect Texture) Even
-        public BPCommand _oddCmd; //CMD (Indirect Texture) Odd (Optional)
+        public BPCommand _oddAlphaEnv;  //Alpha Env Odd (Optional)
+        public BPCommand _evenCmd;      //CMD (Indirect Texture) Even
+        public BPCommand _oddCmd;       //CMD (Indirect Texture) Odd (Optional)
 
         public static readonly StageGroup Default = new StageGroup()
         {
@@ -1848,8 +1848,8 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct PrimDataGroup
     {
         public bint _bufferSize; //The amount of bytes usable
-        public bint _size; //The amount of bytes actually used
-        public bint _offset; //Offset to the data. Relative to this struct
+        public bint _size;       //The amount of bytes actually used
+        public bint _offset;     //Offset to the data. Relative to this struct
 
         private VoidPtr Address
         {
@@ -1971,8 +1971,8 @@ namespace BrawlLib.SSBBTypes
         public buint VtxFmtHi;
 
         //XF Vertex Specs
-        public byte XFCmd; //0x10
-        public bushort Length; //0x0000
+        public byte XFCmd;            //0x10
+        public bushort Length;        //0x0000
         public bushort XFSetVtxSpecs; //0x1008
         public XFVertexSpecs VtxSpecs;
         public byte pad0;

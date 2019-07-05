@@ -504,9 +504,9 @@ namespace BrawlLib.Wii.Animations
 
             //Find the entry just before the specified index
             for (entry = _keyRoot._next; //Get the first entry
-                entry != _keyRoot && //Make sure it's not the root
-                entry._index <= index; //Its index must be less than or equal to the current index
-                entry = entry._next) //Get the next entry
+                entry != _keyRoot &&     //Make sure it's not the root
+                entry._index <= index;   //Its index must be less than or equal to the current index
+                entry = entry._next)     //Get the next entry
             {
                 if (entry._index == index)
                 {

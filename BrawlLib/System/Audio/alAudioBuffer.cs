@@ -210,8 +210,8 @@ namespace System.Audio
         {
             switch (channels)
             {
-                case 1: return bits == 8 ? ALFormat.Mono8 : ALFormat.Mono16;
-                case 2: return bits == 8 ? ALFormat.Stereo8 : ALFormat.Stereo16;
+                case 1:  return bits == 8 ? ALFormat.Mono8 : ALFormat.Mono16;
+                case 2:  return bits == 8 ? ALFormat.Stereo8 : ALFormat.Stereo16;
                 default: throw new NotSupportedException("The specified sound format is not supported.");
             }
         }

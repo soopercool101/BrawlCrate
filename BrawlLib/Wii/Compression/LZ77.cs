@@ -11,7 +11,7 @@ namespace BrawlLib.Wii.Compression
     {
         public const int WindowMask = 0xFFF;
         public const int WindowLength = 4096; //12 bits - 1, 1 - 4096
-        public int PatternLength = 18; //4 bits + 3, 3 - 18
+        public int PatternLength = 18;        //4 bits + 3, 3 - 18
         public const int MinMatch = 3;
         private VoidPtr _dataAddr;
         private readonly ushort* _Next;

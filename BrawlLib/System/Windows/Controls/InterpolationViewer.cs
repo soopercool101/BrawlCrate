@@ -23,24 +23,24 @@ namespace System.Windows.Forms
         internal bool _updating = false;
 
         private KeyframeEntry _selKey = null; //The currently selected keyframe
-        private KeyframeEntry _hiKey = null; //The keyframe the mouse is hovering over
+        private KeyframeEntry _hiKey = null;  //The keyframe the mouse is hovering over
 
         private Vector2? _slopePoint = null;
         private Vector2 _origPos;
         private KeyframeEntry _keyRoot = null; //The first keyframe in the array
 
-        private const float _lineWidth = 1.5f; //The size of lines
+        private const float _lineWidth = 1.5f;  //The size of lines
         private const float _pointWidth = 5.0f; //The size of points
 
-        private int _frame; //The current frame index
+        private int _frame;          //The current frame index
         private int _frameLimit = 0; //The overall number of frames
 
-        private float _xScale; //Width/Frames ratio
-        private float _yScale; //Height/Values ratio
-        private float _prevX; //Previous mouse point X
-        private float _prevY; //Previous mouse point Y
-        private float _tanLen = 5.0f; //The length of tangent values
-        private float _precision = 4.0f; //The step value for lines drawn to represent interpolation
+        private float _xScale;                  //Width/Frames ratio
+        private float _yScale;                  //Height/Values ratio
+        private float _prevX;                   //Previous mouse point X
+        private float _prevY;                   //Previous mouse point Y
+        private float _tanLen = 5.0f;           //The length of tangent values
+        private float _precision = 4.0f;        //The step value for lines drawn to represent interpolation
         private float _minVal = float.MaxValue; //The minimum value in all keyframes
         private float _maxVal = float.MinValue; //The maximum value in all keyframes
 
@@ -49,7 +49,7 @@ namespace System.Windows.Forms
                 false; //Determines if the user can drag keyframe values across frames or to change the value
 
         private bool _drawTans = true; //Determines if tangents should be rendered
-        private bool _syncStartEnd; //If true, the first and last keyframe values and tangents will be synchronized
+        private bool _syncStartEnd;    //If true, the first and last keyframe values and tangents will be synchronized
 
         private bool
             _allKeys = true; //Determines if all keyframes should be rendered, or only the selected one and its neighbors

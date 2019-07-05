@@ -20,8 +20,8 @@ namespace BrawlLib.SSBBTypes
         public buint _unk5; //0
         public buint _texCoord0Offset;
         public buint _texCoord1Offset; //Usually 0
-        public buint _unk8; //0
-        public buint _unk9; //0
+        public buint _unk8;            //0
+        public buint _unk9;            //0
         public buint _shaderOffset;
         public buint _batchOffset;
         public buint _bonesOffset;

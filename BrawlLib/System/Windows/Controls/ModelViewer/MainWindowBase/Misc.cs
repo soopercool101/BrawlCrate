@@ -476,6 +476,7 @@ namespace System.Windows.Forms
             {
                 TargetModel = _targetModels[0];
             }
+
             Invalidate();
         }
 

@@ -413,16 +413,16 @@ namespace BrawlLib.Wii.Textures
         {
             switch (format)
             {
-                case WiiPixelFormat.I4: return I4;
-                case WiiPixelFormat.IA4: return IA4;
-                case WiiPixelFormat.I8: return I8;
-                case WiiPixelFormat.IA8: return IA8;
+                case WiiPixelFormat.I4:     return I4;
+                case WiiPixelFormat.IA4:    return IA4;
+                case WiiPixelFormat.I8:     return I8;
+                case WiiPixelFormat.IA8:    return IA8;
                 case WiiPixelFormat.RGB565: return RGB565;
                 case WiiPixelFormat.RGB5A3: return RGB5A3;
-                case WiiPixelFormat.CI4: return CI4;
-                case WiiPixelFormat.CI8: return CI8;
-                case WiiPixelFormat.CMPR: return CMPR;
-                case WiiPixelFormat.RGBA8: return RGBA8;
+                case WiiPixelFormat.CI4:    return CI4;
+                case WiiPixelFormat.CI8:    return CI8;
+                case WiiPixelFormat.CMPR:   return CMPR;
+                case WiiPixelFormat.RGBA8:  return RGBA8;
             }
 
             return null;

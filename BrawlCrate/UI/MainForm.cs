@@ -374,6 +374,7 @@ namespace BrawlCrate
                 resourceTree_SelectionChanged(null, null);
             }
         }
+
         private bool _showBRRESPreviews;
 
         public bool ShowARCPreviews
@@ -388,6 +389,7 @@ namespace BrawlCrate
                 resourceTree_SelectionChanged(null, null);
             }
         }
+
         private bool _showARCPreviews;
 
         private void UpdatePropertyDescriptionBox(GridItem item)
@@ -777,6 +779,7 @@ namespace BrawlCrate
             {
                 return;
             }
+
             Instance.modelPanel1.CurrentViewport.SetProjectionType(ViewportProjection.Perspective);
             switch (node)
             {
@@ -815,11 +818,13 @@ namespace BrawlCrate
                     return;
             }
 
-            Instance.modelPanel1.SetCamWithBox(new Vector3(minX ?? 0, minY ?? 0, minZ ?? 0), new Vector3(maxX ?? 0, maxY ?? 0, maxZ ?? 0));
+            Instance.modelPanel1.SetCamWithBox(new Vector3(minX ?? 0, minY ?? 0, minZ ?? 0),
+                new Vector3(maxX ?? 0, maxY ?? 0, maxZ ?? 0));
         }
 
-        public static void RenderARC(ARCNode arcNode, out float? minX, out float? minY, out float? minZ, out float? maxX,
-                              out float? maxY, out float? maxZ)
+        public static void RenderARC(ARCNode arcNode, out float? minX, out float? minY, out float? minZ,
+                                     out float? maxX,
+                                     out float? maxY, out float? maxZ)
         {
             minX = null;
             minY = null;
@@ -935,8 +940,9 @@ namespace BrawlCrate
             }
         }
 
-        public static void RenderBRRES(BRRESNode brresNode, out float? minX, out float? minY, out float? minZ, out float? maxX,
-                                out float? maxY, out float? maxZ)
+        public static void RenderBRRES(BRRESNode brresNode, out float? minX, out float? minY, out float? minZ,
+                                       out float? maxX,
+                                       out float? maxY, out float? maxZ)
         {
             minX = null;
             minY = null;

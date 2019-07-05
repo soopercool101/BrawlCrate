@@ -144,8 +144,8 @@ namespace BrawlLib.SSBBTypes
         public const int Size = 0x14;
 
         public bushort _flags;
-        public bshort _bit; //ResourceEntry _id
-        public bint _leftId; //ResourceEntry _leftIndex
+        public bshort _bit;   //ResourceEntry _id
+        public bint _leftId;  //ResourceEntry _leftIndex
         public bint _rightId; //ResourceEntry _rightIndex
         public bint _stringId;
         public bint _index;
@@ -516,11 +516,11 @@ namespace BrawlLib.SSBBTypes
             }
         }
 
-        public RuintList* Sounds => (RuintList*) _collection[0]; //INFOSoundEntry
-        public RuintList* Banks => (RuintList*) _collection[1]; //INFOBankEntry
+        public RuintList* Sounds => (RuintList*) _collection[0];     //INFOSoundEntry
+        public RuintList* Banks => (RuintList*) _collection[1];      //INFOBankEntry
         public RuintList* PlayerInfo => (RuintList*) _collection[2]; //INFOPlayerInfoEntry
-        public RuintList* Files => (RuintList*) _collection[3]; //INFOFileEntry
-        public RuintList* Groups => (RuintList*) _collection[4]; //INFOGroupHeader
+        public RuintList* Files => (RuintList*) _collection[3];      //INFOFileEntry
+        public RuintList* Groups => (RuintList*) _collection[4];     //INFOGroupHeader
         public INFOFooter* Footer => (INFOFooter*) _collection[5];
 
         public INFOSoundEntry* GetSound(int i)
@@ -576,10 +576,10 @@ namespace BrawlLib.SSBBTypes
         public bint _fileId;
         public bint _playerId; // 0
         public ruint _param3dRefOffset;
-        public byte _volume; //0x20
+        public byte _volume;         //0x20
         public byte _playerPriority; //0x40
         public byte _soundType;
-        public byte _remoteFilter; //0x00
+        public byte _remoteFilter;  //0x00
         public ruint _soundInfoRef; //dataType: 0 = null, 1 = SeqSoundInfo, 2 = StrmSoundInfo, 3 = WaveSoundInfo
         public bint _userParam1;
         public bint _userParam2;
@@ -677,10 +677,10 @@ namespace BrawlLib.SSBBTypes
 
         public bint _stringId;
         public byte _playableSoundCount;
-        public byte _padding; //0
+        public byte _padding;     //0
         public bushort _padding2; //0
-        public buint _heapSize; //0
-        public buint _reserved; //0
+        public buint _heapSize;   //0
+        public buint _reserved;   //0
     }
 
     #endregion
@@ -701,11 +701,11 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 0x1C;
 
-        public buint _headerLen; //Includes padding. Set to file size if external file.
-        public buint _dataLen; //Includes padding. Zero if external file.
-        public bint _entryNumber; //-1
+        public buint _headerLen;    //Includes padding. Set to file size if external file.
+        public buint _dataLen;      //Includes padding. Zero if external file.
+        public bint _entryNumber;   //-1
         public ruint _stringOffset; //External file path, only for BGMs. Path is relative to sound folder
-        public ruint _listOffset; //List of groups this file belongs to. Empty if external file.
+        public ruint _listOffset;   //List of groups this file belongs to. Empty if external file.
 
         public RuintList* GetList(VoidPtr baseAddr)
         {
@@ -762,13 +762,13 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 0x28;
 
-        public bint _stringId; //string id
-        public bint _entryNum; //always -1
+        public bint _stringId;        //string id
+        public bint _entryNum;        //always -1
         public ruint _extFilePathRef; //0
-        public bint _headerOffset; //Absolute offset from RSAR file. //RWSD Location
-        public bint _headerLength; //Total length of all headers in contained sets.
-        public bint _waveDataOffset; //Absolute offset from RSAR file.
-        public bint _waveDataLength; //Total length of all data in contained sets.
+        public bint _headerOffset;    //Absolute offset from RSAR file. //RWSD Location
+        public bint _headerLength;    //Total length of all headers in contained sets.
+        public bint _waveDataOffset;  //Absolute offset from RSAR file.
+        public bint _waveDataLength;  //Total length of all data in contained sets.
         public ruint _listOffset;
 
         public RuintList* GetCollection(VoidPtr offset)
@@ -785,8 +785,8 @@ namespace BrawlLib.SSBBTypes
         public bint _fileId;
         public bint _headerOffset; //Offset to data, relative to headerOffset above
         public bint _headerLength; //File data length, excluding labels and audio
-        public bint _dataOffset; //Offset to audio, relative to waveDataOffset above
-        public bint _dataLength; //Audio length
+        public bint _dataOffset;   //Offset to audio, relative to waveDataOffset above
+        public bint _dataLength;   //Audio length
         public bint _reserved;
 
         public override string ToString()

@@ -74,7 +74,7 @@ namespace Gif.Components
 		   ------------------- */
         protected static readonly int maxnetpos = netsize - 1;
         protected static readonly int netbiasshift = 4; /* bias for colour values */
-        protected static readonly int ncycles = 100; /* no. of learning cycles */
+        protected static readonly int ncycles = 100;    /* no. of learning cycles */
 
         /* defs for freq and bias */
         protected static readonly int intbiasshift = 16; /* bias for fractions */
@@ -89,10 +89,10 @@ namespace Gif.Components
 
         /* defs for decreasing radius factor */
         protected static readonly int initrad = netsize >> 3; /* for 256 cols, radius starts */
-        protected static readonly int radiusbiasshift = 6; /* at 32.0 biased by 6 bits */
+        protected static readonly int radiusbiasshift = 6;    /* at 32.0 biased by 6 bits */
         protected static readonly int radiusbias = 1 << radiusbiasshift;
         protected static readonly int initradius = initrad * radiusbias; /* and decreases by a */
-        protected static readonly int radiusdec = 30; /* factor of 1/30 each cycle */
+        protected static readonly int radiusdec = 30;                    /* factor of 1/30 each cycle */
 
         /* defs for decreasing alpha factor */
         protected static readonly int alphabiasshift = 10; /* alpha starts at 1.0 */
@@ -110,7 +110,7 @@ namespace Gif.Components
 		-------------------------- */
 
         protected UnsafeBuffer thepicture; /* the input image itself */
-        protected int lengthcount; /* lengthcount = H*W*3 */
+        protected int lengthcount;         /* lengthcount = H*W*3 */
 
         protected int samplefac; /* sampling factor 1..30 */
 
@@ -361,7 +361,7 @@ namespace Gif.Components
             bestd = 1000; /* biggest possible dist is 256*3 */
             best = -1;
             i = netindex[g]; /* index on g */
-            j = i - 1; /* start at netindex[g] and work outwards */
+            j = i - 1;       /* start at netindex[g] and work outwards */
 
             while (i < netsize || j >= 0)
             {

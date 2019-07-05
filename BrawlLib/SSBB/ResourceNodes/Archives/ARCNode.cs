@@ -30,18 +30,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)]
 #endif
         public bool IsStage => _isStage; //set { _isStage = value; } }
+
         private bool _isStage;
 
 #if !DEBUG
         [Browsable(false)]
 #endif
         public bool IsFighter => _isFighter; // set { _isFighter = value; } }
+
         private bool _isFighter;
 
 #if !DEBUG
         [Browsable(false)]
 #endif
         public bool IsItemTable => _isItemTable; // set { _isFighter = value; } }
+
         private bool _isItemTable;
 
         [Browsable(true)]
@@ -464,8 +467,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (RedirectTargetNode != null)
             {
-                _redirectIndex = (short)(RedirectTargetNode as ARCEntryNode).AbsoluteIndex;
+                _redirectIndex = (short) (RedirectTargetNode as ARCEntryNode).AbsoluteIndex;
             }
+
             ARCHeader* header = (ARCHeader*) address;
             *header = new ARCHeader((ushort) Children.Count, Name);
 
@@ -875,7 +879,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 try
                 {
-                    if (Int16.TryParse(value.Substring(0, value.IndexOf(".")),
+                    if (short.TryParse(value.Substring(0, value.IndexOf(".")),
                         out short absIndex))
                     {
                         RedirectIndex = absIndex;
@@ -883,6 +887,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             RedirectTargetNode = Parent.Children[absIndex];
                         }
+
                         SignalPropertyChange();
                         UpdateName();
                         return;
@@ -890,18 +895,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 catch
                 {
-                    if (Int16.TryParse(value, out short absIndex))
+                    if (short.TryParse(value, out short absIndex))
                     {
                         RedirectIndex = absIndex;
                         if (Parent.Children.Count < absIndex)
                         {
                             RedirectTargetNode = Parent.Children[absIndex];
                         }
+
                         SignalPropertyChange();
                         UpdateName();
                         return;
                     }
                 }
+
                 RedirectTargetNode = null;
                 RedirectIndex = -1;
                 SignalPropertyChange();

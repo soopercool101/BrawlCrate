@@ -141,8 +141,8 @@ namespace System.PowerPcAssembly
         internal PPCMulli(uint value) : base(value)
         {
             _names.Add("mulli");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value
         }
     }
@@ -201,8 +201,8 @@ namespace System.PowerPcAssembly
         internal PPCSubfic(uint value) : base(value)
         {
             _names.Add("subfic");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value            
         }
     }
@@ -244,10 +244,10 @@ namespace System.PowerPcAssembly
         {
             _names.Add("cmplwi");
             _names.Add("cmpldi");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [1] Unknown
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [2] Is Double
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [3] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));     //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));           //  [1] Unknown
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));           //  [2] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [3] Left Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [4] Immediate Value
         }
 
@@ -313,10 +313,10 @@ namespace System.PowerPcAssembly
         {
             _names.Add("cmpwi");
             _names.Add("cmpdi");
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [1] Unknown
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [2] Is Double
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [3] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7));     //  [0] Condition Register
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));           //  [1] Unknown
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));           //  [2] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [3] Left Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [4] Immediate Value
         }
 
@@ -372,8 +372,8 @@ namespace System.PowerPcAssembly
         {
             _names.Add("addic");
             _names.Add("subic");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value      
         }
 
@@ -409,8 +409,8 @@ namespace System.PowerPcAssembly
             _names.Add("addi");
             _names.Add("subi");
             _names.Add("li");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
@@ -592,18 +592,23 @@ namespace System.PowerPcAssembly
             _names.Add("beq");
             _names.Add("bns");
             _names.Add("bso");
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1)); //  [0] Ignore Cr                       (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1)); //  [1] Cr State 0=false, 1=true        (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1)); //  [2] Ignore Ctr                      (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [4] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [5] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [6] Compare Type        (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [7] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [8] Branch Options (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 25,
+                0x1)); //  [0] Ignore Cr                       (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 24,
+                0x1)); //  [1] Cr State 0=false, 1=true        (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 23,
+                0x1)); //  [2] Ignore Ctr                      (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22,
+                0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21,
+                0x1));                                                                  //  [4] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [5] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [6] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [7] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [8] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [9] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [10] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [11] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [10] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [11] Link
         }
 
         public override string GetName()
@@ -706,8 +711,8 @@ namespace System.PowerPcAssembly
 
             _names.Add("b");
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x3FFFFFC, 0x2000000)); //  [0] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [1] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [2] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));                     //  [1] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));                     //  [2] Link
         }
 
         public override string GetName()
@@ -823,18 +828,23 @@ namespace System.PowerPcAssembly
             _names.Add("beq");
             _names.Add("bns");
             _names.Add("bso");
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1)); //  [0] Ignore Cr                       (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1)); //  [1] Cr State 0=false, 1=true        (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1)); //  [2] Ignore Ctr                      (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [4] Hint 0=unlikely, 1=likely (BI)
-            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [5] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [6] Compare Type        (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [7] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [8] Branch Options (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 25,
+                0x1)); //  [0] Ignore Cr                       (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 24,
+                0x1)); //  [1] Cr State 0=false, 1=true        (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 23,
+                0x1)); //  [2] Ignore Ctr                      (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22,
+                0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21,
+                0x1));                                                                  //  [4] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7));        //  [5] Condition Register  (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));              //  [6] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [7] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [8] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [9] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [10] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [11] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [10] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [11] Link
         }
 
         public override string GetName()
@@ -988,19 +998,23 @@ namespace System.PowerPcAssembly
             _names.Add("beq");
             _names.Add("bns");
             _names.Add("bso");
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 25, 0x1)); //  [0] Ignore Cr                       (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 24, 0x1)); //  [1] Cr State 0=false, 1=true        (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 23, 0x1)); //  [2] Ignore Ctr                      (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1)); //  [3] Ctr State 0=not zero, 1=zero    (BI)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [-] Hint 0=unlikely, 1=likely (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 25,
+                0x1)); //  [0] Ignore Cr                       (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 24,
+                0x1)); //  [1] Cr State 0=false, 1=true        (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 23,
+                0x1)); //  [2] Ignore Ctr                      (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 22,
+                0x1));                                                           //  [3] Ctr State 0=not zero, 1=zero    (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));       //  [-] Hint 0=unlikely, 1=likely (BI)
             _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 18, 0x7)); //  [4] Condition Register  (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3)); //  [5] Compare Type        (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x3));       //  [5] Compare Type        (BO)
 
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F)); //  [6] Branch Inputs (BO)
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F)); //  [7] Branch Options (BI)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1F));             //  [6] Branch Inputs (BO)
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 16, 0x1F));             //  [7] Branch Options (BI)
             _operands.Add(new PPCOperand(this, OperandType.OFFSET, 0, 0x7FFC, 0x8000)); //  [-] Offset
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1)); //  [-] Absolute
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1)); //  [8] Link
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 1, 0x1));               //  [-] Absolute
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));               //  [8] Link
         }
 
         public override string GetName()
@@ -1085,9 +1099,9 @@ namespace System.PowerPcAssembly
             _names.Add("rlwimi");
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); // [1] Left Register
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); // [0] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F)); // [2] Roll Left
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F)); // [3] NAND Mask
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E)); // [4] AND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F));      // [2] Roll Left
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F));       // [3] NAND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E));       // [4] AND Mask
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            // [-] Set Cr
         }
 
@@ -1107,9 +1121,9 @@ namespace System.PowerPcAssembly
             _names.Add("rlwinm");
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); // [1] Left Register
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); // [0] Right Register
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F)); // [2] Roll Left
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F)); // [3] NAND Mask
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E)); // [4] AND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 11, 0x1F));      // [2] Roll Left
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F));       // [3] NAND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E));       // [4] AND Mask
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            // [-] Set Cr
         }
 
@@ -1130,8 +1144,8 @@ namespace System.PowerPcAssembly
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); // [1] Left Register
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); // [0] Right Register
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 11, 0x1F)); // [2] Right Register 2
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F)); // [3] NAND Mask
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E)); // [4] AND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 6, 0x1F));       // [3] NAND Mask
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x3E));       // [4] AND Mask
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x1));            // [-] Set Cr      
         }
 
@@ -1204,8 +1218,8 @@ namespace System.PowerPcAssembly
             _names.Add("ori");
             _names.Add("xori");
             _names.Add("nop");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value
         }
 
@@ -1255,8 +1269,8 @@ namespace System.PowerPcAssembly
         {
             _names.Add("andi.");
             _names.Add("andis.");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value
         }
 
@@ -1291,7 +1305,7 @@ namespace System.PowerPcAssembly
             _names.Add("cmpd");
             _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));           //  [-] Undefined
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [1] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));       //  [1] Is Double
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [2] Left Register
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [3] Right 
         }
@@ -1395,7 +1409,7 @@ namespace System.PowerPcAssembly
             _names.Add("cmpld");
             _operands.Add(new PPCOperand(this, OperandType.CREGISTER, 23, 0x7)); //  [0] Condition Register
             //_Operands.Add(new PPCOperand(this, OperandType.VAL, 22, 0x1));           //  [-] Undefined
-            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1)); //  [1] Is Double
+            _operands.Add(new PPCOperand(this, OperandType.VAL, 21, 0x1));       //  [1] Is Double
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [2] Left Register
             _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [3] Right 
         }
@@ -1514,7 +1528,7 @@ namespace System.PowerPcAssembly
         internal PPCMfspr(uint value) : base(value)
         {
             _names.Add("mfspr");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));  //  [0] Left Register
             _operands.Add(new PPCOperand(this, OperandType.SREGISTER, 16, 0x1F)); //  [1] Right Register
         }
     }
@@ -1526,7 +1540,7 @@ namespace System.PowerPcAssembly
         {
             _names.Add("mtspr");
             _operands.Add(new PPCOperand(this, OperandType.SREGISTER, 16, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));  //  [1] Right Register
         }
 
         public override string GetName()
@@ -1599,8 +1613,8 @@ namespace System.PowerPcAssembly
             _names.Add("lhz");
             _names.Add("lmw");
             _names.Add("ld");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
@@ -1671,8 +1685,8 @@ namespace System.PowerPcAssembly
             _names.Add("sth");
             _names.Add("stmw");
             _names.Add("std");
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 21, 0x1F));     //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
@@ -1735,8 +1749,8 @@ namespace System.PowerPcAssembly
         {
             _names.Add("lfs");
             _names.Add("lfd");
-            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F));    //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 
@@ -1776,8 +1790,8 @@ namespace System.PowerPcAssembly
         {
             _names.Add("stfs");
             _names.Add("stfd");
-            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F)); //  [0] Left Register
-            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F)); //  [1] Right Register
+            _operands.Add(new PPCOperand(this, OperandType.FREGISTER, 21, 0x1F));    //  [0] Left Register
+            _operands.Add(new PPCOperand(this, OperandType.REGISTER, 16, 0x1F));     //  [1] Right Register
             _operands.Add(new PPCOperand(this, OperandType.VAL, 0, 0x7FFF, 0x8000)); //  [2] Immediate Value 
         }
 

@@ -57,8 +57,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             header->_unk2 = unk2;
             header->_unk3 = unk3;
             header->_numEntries = Children[0].Children.Count;
-            Children[0].Rebuild(address, 0x0, true); //rebuild CEEntries
-            int EntrySize = Children[0].CalculateSize(true); //Caluculate CEEntry's size
+            Children[0].Rebuild(address, 0x0, true);          //rebuild CEEntries
+            int EntrySize = Children[0].CalculateSize(true);  //Caluculate CEEntry's size
             int offset = EntrySize + header->entryOffsets[0]; //set first CEString offset
             for (int i = 0; i < Children[1].Children.Count; i++)
             {

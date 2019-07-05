@@ -1122,7 +1122,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (path.Contains("/") && path.Substring(0, path.IndexOf('/'))
-                                          .Equals(root.Name, StringComparison.OrdinalIgnoreCase))
+                    .Equals(root.Name, StringComparison.OrdinalIgnoreCase))
             {
                 return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren);
             }
@@ -1281,7 +1281,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 ResourceNode node = FindChild(path, false);
                 if (node != null)
                 {
-                    if (!(node is ARCEntryNode && ((ARCEntryNode)node).GroupID != group))
+                    if (!(node is ARCEntryNode && ((ARCEntryNode) node).GroupID != group))
                     {
                         return node.FindChildrenByTypeInGroup(null, type, group);
                     }
@@ -1293,12 +1293,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             EnumTypeInternal(nodes, type);
             if (nodes[0] is BRESEntryNode)
             {
-                attemptedArc = ((BRESEntryNode)nodes[0]).BRESNode.Parent;
+                attemptedArc = ((BRESEntryNode) nodes[0]).BRESNode.Parent;
             }
             else if (nodes[0] is ARCEntryNode)
             {
                 attemptedArc = nodes[0].Parent;
             }
+
             try
             {
                 if (this is ARCNode)
@@ -1307,12 +1308,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else if (nodes[0] is BRESEntryNode)
                 {
-                    attemptedArc = ((BRESEntryNode)nodes[0]).BRESNode.Parent;
+                    attemptedArc = ((BRESEntryNode) nodes[0]).BRESNode.Parent;
                 }
                 else if (nodes[0] is ARCEntryNode)
                 {
                     attemptedArc = nodes[0].Parent;
                 }
+
                 nodes = new List<ResourceNode>();
                 if (attemptedArc != null && type == ResourceType.MDL0)
                 {
@@ -1322,7 +1324,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if (a is BRRESNode)
                             {
-                                foreach (MDL0Node m in ((BRRESNode)a).GetFolder<MDL0Node>().Children)
+                                foreach (MDL0Node m in ((BRRESNode) a).GetFolder<MDL0Node>().Children)
                                 {
                                     nodes.Add(m);
                                 }
@@ -1337,7 +1339,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     {
                                         if (tempBres is BRRESNode)
                                         {
-                                            foreach (MDL0Node m in ((BRRESNode)tempBres).GetFolder<MDL0Node>().Children)
+                                            foreach (MDL0Node m in ((BRRESNode) tempBres).GetFolder<MDL0Node>()
+                                                .Children)
                                             {
                                                 nodes.Add(m);
                                             }
@@ -1349,7 +1352,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         }
                                     }
                                 }
-                                catch { }
+                                catch
+                                {
+                                }
                             }
                         }
                     }
@@ -1357,11 +1362,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             catch
             {
-
             }
 
             return nodes.ToArray();
         }
+
         private void EnumTypeInternal(List<ResourceNode> list, ResourceType type)
         {
             if (ResourceFileType == type)

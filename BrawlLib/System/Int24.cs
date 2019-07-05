@@ -13,9 +13,9 @@ namespace System
             {
                 switch (index)
                 {
-                    case 0: return _dat0;
-                    case 1: return _dat1;
-                    case 2: return _dat2;
+                    case 0:  return _dat0;
+                    case 1:  return _dat1;
+                    case 2:  return _dat2;
                     default: return 0;
                 }
             }

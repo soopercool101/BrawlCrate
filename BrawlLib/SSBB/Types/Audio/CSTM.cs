@@ -446,9 +446,9 @@ namespace BrawlLib.SSBBTypes
         public short
             _ps; //Predictor and scale. This will be initialized to the predictor and scale value of the sample's first frame.
 
-        public short _yn1; //History data; used to maintain decoder state during sample playback.
-        public short _yn2; //History data; used to maintain decoder state during sample playback.
-        public short _lps; //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
+        public short _yn1;  //History data; used to maintain decoder state during sample playback.
+        public short _yn2;  //History data; used to maintain decoder state during sample playback.
+        public short _lps;  //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
         public short _lyn1; //History data for the loop point. If the sample does not loop, this value is zero.
         public short _lyn2; //History data for the loop point. If the sample does not loop, this value is zero.
         public short _pad;

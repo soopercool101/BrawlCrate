@@ -69,33 +69,33 @@ namespace Gif.Components
         protected Stream inStream;
         protected int status;
 
-        protected int width; // full image width
-        protected int height; // full image height
-        protected bool gctFlag; // global color table used
-        protected int gctSize; // size of global color table
+        protected int width;         // full image width
+        protected int height;        // full image height
+        protected bool gctFlag;      // global color table used
+        protected int gctSize;       // size of global color table
         protected int loopCount = 1; // iterations; 0 = repeat forever
 
         protected int[] gct; // global color table
         protected int[] lct; // local color table
         protected int[] act; // active color table
 
-        protected int bgIndex; // background color index
-        protected int bgColor; // background color
+        protected int bgIndex;     // background color index
+        protected int bgColor;     // background color
         protected int lastBgColor; // previous bg color
         protected int pixelAspect; // pixel aspect ratio
 
-        protected bool lctFlag; // local color table flag
+        protected bool lctFlag;   // local color table flag
         protected bool interlace; // interlace flag
-        protected int lctSize; // local color table size
+        protected int lctSize;    // local color table size
 
         protected int ix, iy, iw, ih; // current image rectangle
         protected Rectangle lastRect; // last image rect
-        protected Image image; // current frame
+        protected Image image;        // current frame
         protected Bitmap bitmap;
         protected Image lastImage; // previous frame
 
         protected byte[] block = new byte[256]; // current data block
-        protected int blockSize = 0; // block size
+        protected int blockSize = 0;            // block size
 
         // last graphic control extension info
         protected int dispose = 0;
@@ -103,8 +103,8 @@ namespace Gif.Components
         // 0=no action; 1=leave in place; 2=restore to bg; 3=restore to prev
         protected int lastDispose = 0;
         protected bool transparency = false; // use transparent color
-        protected int delay = 0; // delay in milliseconds
-        protected int transIndex; // transparent color index
+        protected int delay = 0;             // delay in milliseconds
+        protected int transIndex;            // transparent color index
 
         protected static readonly int MaxStackSize = 4096;
         // max decoder pixel stack size
@@ -307,7 +307,7 @@ namespace Gif.Components
                 if (line < height)
                 {
                     int k = line * width;
-                    int dx = k + ix; // start of line in dest
+                    int dx = k + ix;    // start of line in dest
                     int dlim = dx + iw; // end of dest line
                     if (k + width < dlim)
                     {
@@ -852,8 +852,8 @@ namespace Gif.Components
 		 */
         protected void ReadGraphicControlExt()
         {
-            Read(); // block size
-            int packed = Read(); // packed fields
+            Read();                         // block size
+            int packed = Read();            // packed fields
             dispose = (packed & 0x1c) >> 2; // disposal method
             if (dispose == 0)
             {
@@ -862,8 +862,8 @@ namespace Gif.Components
 
             transparency = (packed & 1) != 0;
             delay = ReadShort() * 10; // delay in milliseconds
-            transIndex = Read(); // transparent color index
-            Read(); // block terminator
+            transIndex = Read();      // transparent color index
+            Read();                   // block terminator
         }
 
         /**
@@ -917,7 +917,7 @@ namespace Gif.Components
             ih = ReadShort();
 
             int packed = Read();
-            lctFlag = (packed & 0x80) != 0; // 1 - local color table flag
+            lctFlag = (packed & 0x80) != 0;   // 1 - local color table flag
             interlace = (packed & 0x40) != 0; // 2 - interlace flag
             // 3 - sort flag
             // 4-5 - reserved
@@ -926,7 +926,7 @@ namespace Gif.Components
             if (lctFlag)
             {
                 lct = ReadColorTable(lctSize); // read table
-                act = lct; // make local table active
+                act = lct;                     // make local table active
             }
             else
             {
@@ -998,7 +998,7 @@ namespace Gif.Components
             // 5   : gct sort flag
             gctSize = 2 << (packed & 7); // 6-8 : gct size
 
-            bgIndex = Read(); // background color index
+            bgIndex = Read();     // background color index
             pixelAspect = Read(); // pixel aspect ratio
         }
 

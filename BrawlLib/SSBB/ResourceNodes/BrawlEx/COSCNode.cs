@@ -8,27 +8,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class COSCNode : ResourceNode
     {
-        internal COSC* Header => (COSC*)WorkingUncompressed.Address;
+        internal COSC* Header => (COSC*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.COSC;
 
-        public uint _tag;                   // 0x00 - Uneditable; COSC
-        public uint _size;                  // 0x04 - Uneditable; Should be "40"
-        public uint _version;               // 0x08 - Version; Only parses "2" currently
-        public byte _editFlag1;             // 0x0C - Unused?
-        public byte _editFlag2;             // 0x0D - Unused?
-        public byte _editFlag3;             // 0X0E - Unused?
-        public byte _hasSecondary;          // 0X0F - 00 is not transforming, 01 is transforming. Possibly could be set automatically based on if a secondary character slot is FF or not?
-        public byte _cosmeticID;            // 0x10 - Cosmetic slot; Parse as hex?
-        public byte _unknown0x11;           // 0x11
-        public byte _primaryCharSlot;       // 0x12 - Primary Character Slot (Parse as hex?)
-        public byte _secondaryCharSlot;     // 0x13 - Secondary Character Slot (Parse as hex?)
-        public byte _franchise;             // 0x14 - Make this a list
-        public byte _unknown0x15;           // 0x15
-        public byte _unknown0x16;           // 0x16
-        public byte _unknown0x17;           // 0x17
-        public uint _announcerSFX;          // 0x18 - Announcer Call
-        public uint _unknown0x1C;           // 0x1C
-        public string _victoryName;         // 0x20 - 32 characters
+        public uint _tag;       // 0x00 - Uneditable; COSC
+        public uint _size;      // 0x04 - Uneditable; Should be "40"
+        public uint _version;   // 0x08 - Version; Only parses "2" currently
+        public byte _editFlag1; // 0x0C - Unused?
+        public byte _editFlag2; // 0x0D - Unused?
+        public byte _editFlag3; // 0X0E - Unused?
+
+        public byte
+            _hasSecondary; // 0X0F - 00 is not transforming, 01 is transforming. Possibly could be set automatically based on if a secondary character slot is FF or not?
+
+        public byte _cosmeticID;        // 0x10 - Cosmetic slot; Parse as hex?
+        public byte _unknown0x11;       // 0x11
+        public byte _primaryCharSlot;   // 0x12 - Primary Character Slot (Parse as hex?)
+        public byte _secondaryCharSlot; // 0x13 - Secondary Character Slot (Parse as hex?)
+        public byte _franchise;         // 0x14 - Make this a list
+        public byte _unknown0x15;       // 0x15
+        public byte _unknown0x16;       // 0x16
+        public byte _unknown0x17;       // 0x17
+        public uint _announcerSFX;      // 0x18 - Announcer Call
+        public uint _unknown0x1C;       // 0x1C
+        public string _victoryName;     // 0x20 - 32 characters
 
         public byte[] _victoryNameArray = new byte[32];
 
@@ -151,7 +154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            COSC* hdr = (COSC*)address;
+            COSC* hdr = (COSC*) address;
             hdr->_tag = _tag;
             hdr->_size = _size;
             hdr->_version = _version;
@@ -510,8 +513,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _victoryNameArray[29] = Header->_victoryNameArray[29];
             _victoryNameArray[30] = Header->_victoryNameArray[30];
             _victoryNameArray[31] = Header->_victoryNameArray[31];
-            _victoryName = System.Text.Encoding.UTF8.GetString(_victoryNameArray).TrimEnd(new char[] { '\0' });
-            if ((_name == null) && (_origPath != null))
+            _victoryName = System.Text.Encoding.UTF8.GetString(_victoryNameArray).TrimEnd(new char[] {'\0'});
+            if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
@@ -520,6 +523,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((COSC*)source.Address)->_tag == COSC.Tag ? new COSCNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((COSC*) source.Address)->_tag == COSC.Tag ? new COSCNode() : null;
+        }
     }
 }

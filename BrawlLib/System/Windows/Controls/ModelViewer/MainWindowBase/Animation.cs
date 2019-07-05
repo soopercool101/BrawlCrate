@@ -27,7 +27,7 @@ namespace System.Windows.Forms
                 case NW4RAnimType.VIS: return SelectedVIS0;
                 case NW4RAnimType.SCN: return SelectedSCN0;
                 case NW4RAnimType.CLR: return SelectedCLR0;
-                default: return null;
+                default:               return null;
             }
         }
 

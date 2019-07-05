@@ -38,6 +38,7 @@ namespace System.Windows.Forms
                     BrawlCrate.Discord.DiscordRpc.ClearPresence();
                     BrawlCrate.Discord.DiscordRpc.Shutdown();
                 }
+
                 Environment.Exit(0);
             }
 

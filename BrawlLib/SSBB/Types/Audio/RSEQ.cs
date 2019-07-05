@@ -115,24 +115,24 @@ namespace BrawlLib.SSBBTypes
                 {
                     switch ((MmlEx) (*addr++))
                     {
-                        case MmlEx.MML_SETVAR: break;
-                        case MmlEx.MML_ADDVAR: break;
-                        case MmlEx.MML_SUBVAR: break;
-                        case MmlEx.MML_MULVAR: break;
-                        case MmlEx.MML_DIVVAR: break;
+                        case MmlEx.MML_SETVAR:   break;
+                        case MmlEx.MML_ADDVAR:   break;
+                        case MmlEx.MML_SUBVAR:   break;
+                        case MmlEx.MML_MULVAR:   break;
+                        case MmlEx.MML_DIVVAR:   break;
                         case MmlEx.MML_SHIFTVAR: break;
-                        case MmlEx.MML_RANDVAR: break;
-                        case MmlEx.MML_ANDVAR: break;
-                        case MmlEx.MML_ORVAR: break;
-                        case MmlEx.MML_XORVAR: break;
-                        case MmlEx.MML_NOTVAR: break;
-                        case MmlEx.MML_MODVAR: break;
-                        case MmlEx.MML_CMP_EQ: break;
-                        case MmlEx.MML_CMP_GE: break;
-                        case MmlEx.MML_CMP_GT: break;
-                        case MmlEx.MML_CMP_LE: break;
-                        case MmlEx.MML_CMP_LT: break;
-                        case MmlEx.MML_CMP_NE: break;
+                        case MmlEx.MML_RANDVAR:  break;
+                        case MmlEx.MML_ANDVAR:   break;
+                        case MmlEx.MML_ORVAR:    break;
+                        case MmlEx.MML_XORVAR:   break;
+                        case MmlEx.MML_NOTVAR:   break;
+                        case MmlEx.MML_MODVAR:   break;
+                        case MmlEx.MML_CMP_EQ:   break;
+                        case MmlEx.MML_CMP_GE:   break;
+                        case MmlEx.MML_CMP_GT:   break;
+                        case MmlEx.MML_CMP_LE:   break;
+                        case MmlEx.MML_CMP_LT:   break;
+                        case MmlEx.MML_CMP_NE:   break;
                         case MmlEx.MML_USERPROC: break;
                     }
 

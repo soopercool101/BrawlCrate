@@ -33,14 +33,14 @@
 
     public enum GXCompare
     {
-        Never, //GX_NEVER,
-        Less, //GX_LESS,
-        Equal, //GX_EQUAL,
-        LessOrEqual, //GX_LEQUAL,
-        Greater, //GX_GREATER,
-        NotEqual, //GX_NEQUAL,
+        Never,          //GX_NEVER,
+        Less,           //GX_LESS,
+        Equal,          //GX_EQUAL,
+        LessOrEqual,    //GX_LEQUAL,
+        Greater,        //GX_GREATER,
+        NotEqual,       //GX_NEQUAL,
         GreaterOrEqual, //GX_GEQUAL,
-        Always //GX_ALWAYS
+        Always          //GX_ALWAYS
     }
 
     public enum GXBlendMode
@@ -53,22 +53,22 @@
 
     public enum GXLogicOp
     {
-        Clear, //GX_LO_CLEAR,
-        And, //GX_LO_AND,
-        ReverseAnd, //GX_LO_REVAND,
-        Copy, //GX_LO_COPY,
-        InverseAnd, //GX_LO_INVAND,
+        Clear,       //GX_LO_CLEAR,
+        And,         //GX_LO_AND,
+        ReverseAnd,  //GX_LO_REVAND,
+        Copy,        //GX_LO_COPY,
+        InverseAnd,  //GX_LO_INVAND,
         NoOperation, //GX_LO_NOOP,
         ExclusiveOr, //GX_LO_XOR,
-        Or, //GX_LO_OR,
-        NotOr, //GX_LO_NOR,
-        Equivalent, //GX_LO_EQUIV,
-        Inverse, //GX_LO_INV,
-        ReverseOr, //GX_LO_REVOR,
+        Or,          //GX_LO_OR,
+        NotOr,       //GX_LO_NOR,
+        Equivalent,  //GX_LO_EQUIV,
+        Inverse,     //GX_LO_INV,
+        ReverseOr,   //GX_LO_REVOR,
         InverseCopy, //GX_LO_INVCOPY,
-        InverseOr, //GX_LO_INVOR,
-        NotAnd, //GX_LO_NAND,
-        Set //GX_LO_SET
+        InverseOr,   //GX_LO_INVOR,
+        NotAnd,      //GX_LO_NAND,
+        Set          //GX_LO_SET
     }
 
     public enum ColorChannel
@@ -81,41 +81,41 @@
 
     public enum ColorArg
     {
-        OutputColor, //GX_CC_CPREV,
-        OutputAlpha, //GX_CC_APREV,
-        Color0, //GX_CC_C0,
-        Alpha0, //GX_CC_A0,
-        Color1, //GX_CC_C1,
-        Alpha1, //GX_CC_A1,
-        Color2, //GX_CC_C2,
-        Alpha2, //GX_CC_A2,
-        TextureColor, //GX_CC_TEXC,
-        TextureAlpha, //GX_CC_TEXA,
-        RasterColor, //GX_CC_RASC,
-        RasterAlpha, //GX_CC_RASA,
-        One, //GX_CC_ONE, //1
-        Half, //GX_CC_HALF, //0.5
+        OutputColor,            //GX_CC_CPREV,
+        OutputAlpha,            //GX_CC_APREV,
+        Color0,                 //GX_CC_C0,
+        Alpha0,                 //GX_CC_A0,
+        Color1,                 //GX_CC_C1,
+        Alpha1,                 //GX_CC_A1,
+        Color2,                 //GX_CC_C2,
+        Alpha2,                 //GX_CC_A2,
+        TextureColor,           //GX_CC_TEXC,
+        TextureAlpha,           //GX_CC_TEXA,
+        RasterColor,            //GX_CC_RASC,
+        RasterAlpha,            //GX_CC_RASA,
+        One,                    //GX_CC_ONE, //1
+        Half,                   //GX_CC_HALF, //0.5
         ConstantColorSelection, //GX_CC_KONST,
-        Zero //GX_CC_ZERO //0
+        Zero                    //GX_CC_ZERO //0
     }
 
     public enum AlphaArg
     {
-        OutputAlpha, //GX_CA_APREV,
-        Alpha0, //GX_CA_A0,
-        Alpha1, //GX_CA_A1,
-        Alpha2, //GX_CA_A2,
-        TextureAlpha, //GX_CA_TEXA,
-        RasterAlpha, //GX_CA_RASA,
+        OutputAlpha,            //GX_CA_APREV,
+        Alpha0,                 //GX_CA_A0,
+        Alpha1,                 //GX_CA_A1,
+        Alpha2,                 //GX_CA_A2,
+        TextureAlpha,           //GX_CA_TEXA,
+        RasterAlpha,            //GX_CA_RASA,
         ConstantAlphaSelection, //GX_CA_KONST,
-        Zero //GX_CA_ZERO //0
+        Zero                    //GX_CA_ZERO //0
     }
 
     public enum Bias
     {
-        Zero, //GX_TB_ZERO,
+        Zero,    //GX_TB_ZERO,
         AddHalf, //GX_TB_ADDHALF,
-        SubHalf //GX_TB_SUBHALF
+        SubHalf  //GX_TB_SUBHALF
     }
 
     public enum TevStageID
@@ -233,14 +233,14 @@
 
     public enum AlphaCompare
     {
-        Never, //COMPARE_NEVER = 0,
-        Less, //COMPARE_LESS,
-        Equal, //COMPARE_EQUAL,
-        LessOrEqual, //COMPARE_LEQUAL,
-        Greater, //COMPARE_GREATER,
-        NotEqual, //COMPARE_NEQUAL,
+        Never,          //COMPARE_NEVER = 0,
+        Less,           //COMPARE_LESS,
+        Equal,          //COMPARE_EQUAL,
+        LessOrEqual,    //COMPARE_LEQUAL,
+        Greater,        //COMPARE_GREATER,
+        NotEqual,       //COMPARE_NEQUAL,
         GreaterOrEqual, //COMPARE_GEQUAL,
-        Always //COMPARE_ALWAYS
+        Always          //COMPARE_ALWAYS
     }
 
     public enum TevSwapSel
@@ -256,7 +256,7 @@
         MultiplyBy1, //GX_CS_SCALE_1,
         MultiplyBy2, //GX_CS_SCALE_2,
         MultiplyBy4, //GX_CS_SCALE_4,
-        DivideBy2 //GX_CS_DIVIDE_2
+        DivideBy2    //GX_CS_DIVIDE_2
     }
 
     public enum ProjectionType
@@ -276,9 +276,9 @@
 
     public enum AlphaOp
     {
-        And, //ALPHAOP_AND = 0,
-        Or, //ALPHAOP_OR,
-        ExclusiveOr, //ALPHAOP_XOR,
+        And,               //ALPHAOP_AND = 0,
+        Or,                //ALPHAOP_OR,
+        ExclusiveOr,       //ALPHAOP_XOR,
         InverseExclusiveOr //ALPHAOP_XNOR
     }
 
@@ -301,11 +301,11 @@
     public enum ColorSelChan
     {
         //Rasterized color selections
-        LightChannel0, //RAS1_CC_0 = 0, // Color channel 0 
-        LightChannel1, //RAS1_CC_1 = 1, // Color channel 1 
-        BumpAlpha = 5, //RAS1_CC_B = 5, // Indirect texture bump alpha 
+        LightChannel0,           //RAS1_CC_0 = 0, // Color channel 0 
+        LightChannel1,           //RAS1_CC_1 = 1, // Color channel 1 
+        BumpAlpha = 5,           //RAS1_CC_B = 5, // Indirect texture bump alpha 
         NormalizedBumpAlpha = 6, //RAS1_CC_BN = 6, // Indirect texture bump alpha, normalized 0-255 
-        Zero = 7, //RAS1_CC_Z = 7 // Set color value to zero 
+        Zero = 7,                //RAS1_CC_Z = 7 // Set color value to zero 
     }
 
     public enum ChannelID
@@ -314,10 +314,10 @@
         GX_COLOR1,
         GX_ALPHA0,
         GX_ALPHA1,
-        GX_COLOR0A0, // Color 0 + Alpha 0
-        GX_COLOR1A1, // Color 1 + Alpha 1
-        GX_COLOR_ZERO, // RGBA = 0
-        GX_ALPHA_BUMP, // bump alpha 0 - 248, RGB = 0
+        GX_COLOR0A0,    // Color 0 + Alpha 0
+        GX_COLOR1A1,    // Color 1 + Alpha 1
+        GX_COLOR_ZERO,  // RGBA = 0
+        GX_ALPHA_BUMP,  // bump alpha 0 - 248, RGB = 0
         GX_ALPHA_BUMPN, // normalized bump alpha, 0 - 255, RGB = 0
         GX_COLOR_NULL = 0xff
     }
@@ -413,15 +413,15 @@
         IndirectTexStg0, //GX_INDTEXSTAGE0,
         IndirectTexStg1, //GX_INDTEXSTAGE1,
         IndirectTexStg2, //GX_INDTEXSTAGE2,
-        IndirectTexStg3 //GX_INDTEXSTAGE3
+        IndirectTexStg3  //GX_INDTEXSTAGE3
     }
 
     public enum IndTexAlphaSel
     {
         Off, //GX_ITBA_OFF,
-        S, //GX_ITBA_S,
-        T, //GX_ITBA_T,
-        U //GX_ITBA_U
+        S,   //GX_ITBA_S,
+        T,   //GX_ITBA_T,
+        U    //GX_ITBA_U
     }
 
     public enum IndTexFormat
@@ -435,49 +435,49 @@
     public enum IndTexBiasSel
     {
         None, //GX_ITB_NONE,
-        S, //GX_ITB_S,
-        T, //GX_ITB_T,
-        ST, //GX_ITB_ST,
-        U, //GX_ITB_U,
-        SU, //GX_ITB_SU,
-        TU, //GX_ITB_TU,
-        STU //GX_ITB_STU
+        S,    //GX_ITB_S,
+        T,    //GX_ITB_T,
+        ST,   //GX_ITB_ST,
+        U,    //GX_ITB_U,
+        SU,   //GX_ITB_SU,
+        TU,   //GX_ITB_TU,
+        STU   //GX_ITB_STU
     }
 
     public enum IndTexMtxID
     {
-        NoMatrix, //GX_ITM_OFF,
-        Matrix0, //GX_ITM_0,
-        Matrix1, //GX_ITM_1,
-        Matrix2, //GX_ITM_2,
+        NoMatrix,     //GX_ITM_OFF,
+        Matrix0,      //GX_ITM_0,
+        Matrix1,      //GX_ITM_1,
+        Matrix2,      //GX_ITM_2,
         MatrixS0 = 5, //GX_ITM_S0 = 5,
-        MatrixS1, //GX_ITM_S1,
-        MatrixS2, //GX_ITM_S2,
+        MatrixS1,     //GX_ITM_S1,
+        MatrixS2,     //GX_ITM_S2,
         MatrixT0 = 9, //GX_ITM_T0 = 9,
-        MatrixT1, //GX_ITM_T1,
-        MatrixT2, //GX_ITM_T2
+        MatrixT1,     //GX_ITM_T1,
+        MatrixT2,     //GX_ITM_T2
     }
 
     public enum IndTexWrap
     {
-        NoWrap, //GX_ITW_OFF,		// no wrapping
+        NoWrap,  //GX_ITW_OFF,		// no wrapping
         Wrap256, //GX_ITW_256,		// wrap 256
         Wrap128, //GX_ITW_128,		// wrap 128
-        Wrap64, //GX_ITW_64, 		// wrap 64
-        Wrap32, //GX_ITW_32, 		// wrap 32
-        Wrap16, //GX_ITW_16, 		// wrap 16
-        Wrap0, //GX_ITW_0, 		    // wrap 0
+        Wrap64,  //GX_ITW_64, 		// wrap 64
+        Wrap32,  //GX_ITW_32, 		// wrap 32
+        Wrap16,  //GX_ITW_16, 		// wrap 16
+        Wrap0,   //GX_ITW_0, 		    // wrap 0
     }
 
     public enum IndTexScale
     {
-        DivideBy1, //GX_ITS_1,		// Scale by 1.
-        DivideBy2, //GX_ITS_2,		// Scale by 1/2.
-        DivideBy4, //GX_ITS_4,		// Scale by 1/4.
-        DivideBy8, //GX_ITS_8,		// Scale by 1/8.
-        DivideBy16, //GX_ITS_16,		// Scale by 1/16.
-        DivideBy32, //GX_ITS_32,		// Scale by 1/32.
-        DivideBy64, //GX_ITS_64,		// Scale by 1/64.
+        DivideBy1,   //GX_ITS_1,		// Scale by 1.
+        DivideBy2,   //GX_ITS_2,		// Scale by 1/2.
+        DivideBy4,   //GX_ITS_4,		// Scale by 1/4.
+        DivideBy8,   //GX_ITS_8,		// Scale by 1/8.
+        DivideBy16,  //GX_ITS_16,		// Scale by 1/16.
+        DivideBy32,  //GX_ITS_32,		// Scale by 1/32.
+        DivideBy64,  //GX_ITS_64,		// Scale by 1/64.
         DivideBy128, //GX_ITS_128,   // Scale by 1/128.
         DivideBy256, //GX_ITS_256	// Scale by 1/256.
     }
@@ -557,32 +557,32 @@
     public enum TexInputForm
     {
         AB11, //XF_TEX_AB11 = 0x0,
-        ABC1 //XF_TEX_ABC1 = 0x1
+        ABC1  //XF_TEX_ABC1 = 0x1
     }
 
     public enum TexTexgenType
     {
-        Regular, //XF_TEXGEN_REGULAR = 0x0,
+        Regular,   //XF_TEXGEN_REGULAR = 0x0,
         EmbossMap, //XF_TEXGEN_EMBOSS_MAP = 0x1,
-        Color0, //XF_TEXGEN_COLOR_STRGBC0 = 0x2,
-        Color1, //XF_TEXGEN_COLOR_STRGBC1 = 0x3
+        Color0,    //XF_TEXGEN_COLOR_STRGBC0 = 0x2,
+        Color1,    //XF_TEXGEN_COLOR_STRGBC1 = 0x3
     }
 
     public enum TexSourceRow
     {
-        Geometry, //XF_GEOM_INROW = 0x0,
-        Normals, //XF_NORMAL_INROW = 0x1,
-        Colors, //XF_COLORS_INROW = 0x2,
+        Geometry,   //XF_GEOM_INROW = 0x0,
+        Normals,    //XF_NORMAL_INROW = 0x1,
+        Colors,     //XF_COLORS_INROW = 0x2,
         BinormalsT, //XF_BINORMAL_T_INROW = 0x3,
         BinormalsB, //XF_BINORMAL_B_INROW = 0x4,
-        TexCoord0, //XF_TEX0_INROW = 0x5,
-        TexCoord1, //XF_TEX1_INROW  = 0x6,
-        TexCoord2, //XF_TEX2_INROW  = 0x7,
-        TexCoord3, //XF_TEX3_INROW =  0x8,
-        TexCoord4, //XF_TEX4_INROW  = 0x9,
-        TexCoord5, //XF_TEX5_INROW =  0xA,
-        TexCoord6, //XF_TEX6_INROW =  0xB,
-        TexCoord7, //XF_TEX7_INROW =  0xC
+        TexCoord0,  //XF_TEX0_INROW = 0x5,
+        TexCoord1,  //XF_TEX1_INROW  = 0x6,
+        TexCoord2,  //XF_TEX2_INROW  = 0x7,
+        TexCoord3,  //XF_TEX3_INROW =  0x8,
+        TexCoord4,  //XF_TEX4_INROW  = 0x9,
+        TexCoord5,  //XF_TEX5_INROW =  0xA,
+        TexCoord6,  //XF_TEX6_INROW =  0xB,
+        TexCoord7,  //XF_TEX7_INROW =  0xC
     }
 
     public enum SpotFn

@@ -7,10 +7,20 @@ namespace BrawlLib.SSBBTypes
     public unsafe struct MasqueradeEntry
     {
         public const int Size = 0x02;
+
         // 2 bytes repeatedly
         public byte _colorID;
         public byte _costumeID;
 
-        private VoidPtr Address { get { fixed (void* ptr = &this) { return ptr; } } }
+        private VoidPtr Address
+        {
+            get
+            {
+                fixed (void* ptr = &this)
+                {
+                    return ptr;
+                }
+            }
+        }
     }
 }

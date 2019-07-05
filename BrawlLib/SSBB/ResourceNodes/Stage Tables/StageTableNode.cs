@@ -73,8 +73,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return EntryOffset + EntryList.Count;
         }
 
-        [Browsable(false)]
-        public List<byte> EntryList = new List<byte>();
+        [Browsable(false)] public List<byte> EntryList = new List<byte>();
 
         public void SetFloat(int index, float value)
         {
@@ -140,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             char[] delims = {',', 'R', 'G', 'B', 'A', ':', ' '};
             string[] arr = value.Split(delims, StringSplitOptions.RemoveEmptyEntries);
-            
+
             if (arr.Length == 4)
             {
                 byte.TryParse(arr[0], out p.R);
@@ -148,7 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 byte.TryParse(arr[2], out p.B);
                 byte.TryParse(arr[3], out p.A);
             }
-            
+
             if (pOld != p)
             {
                 byte[] newValue = BitConverter.GetBytes(p);
@@ -195,7 +194,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 hex += EntryList[curIndex].ToString("X2");
             }
-            return hex;// + ((int) ((bint*) AttributeAddress)[index]).ToString("X8");
+
+            return hex; // + ((int) ((bint*) AttributeAddress)[index]).ToString("X8");
         }
 
         public virtual IEnumerable<AttributeInterpretation> GetPossibleInterpretations()

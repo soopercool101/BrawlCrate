@@ -6,7 +6,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class TBSTNode : StageTableNode
     {
         public override ResourceType ResourceFileType => ResourceType.TBST;
-        internal TBST* Header => (TBST*)WorkingUncompressed.Address;
+        internal TBST* Header => (TBST*) WorkingUncompressed.Address;
         internal override string DocumentationSubDirectory => "TBST";
         internal override int EntryOffset => 0x10;
 
@@ -28,11 +28,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             unk2 = Header->_unk2;
             for (int i = 0; i < WorkingUncompressed.Length - EntryOffset; i += 4)
             {
-                EntryList.Add(((byte*)Header->Entries)[i + 3]);
-                EntryList.Add(((byte*)Header->Entries)[i + 2]);
-                EntryList.Add(((byte*)Header->Entries)[i + 1]);
-                EntryList.Add(((byte*)Header->Entries)[i]);
+                EntryList.Add(((byte*) Header->Entries)[i + 3]);
+                EntryList.Add(((byte*) Header->Entries)[i + 2]);
+                EntryList.Add(((byte*) Header->Entries)[i + 1]);
+                EntryList.Add(((byte*) Header->Entries)[i]);
             }
+
             return false;
         }
 
@@ -43,7 +44,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            TBST* header = (TBST*)address;
+            TBST* header = (TBST*) address;
             header->_tag = TBST.Tag;
             header->_unk0 = unk0;
             header->_unk1 = unk1;
@@ -56,7 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            return ((TBST*)source.Address)->_tag == TBST.Tag ? new TBSTNode(0) : null;
+            return ((TBST*) source.Address)->_tag == TBST.Tag ? new TBSTNode(0) : null;
         }
     }
 }

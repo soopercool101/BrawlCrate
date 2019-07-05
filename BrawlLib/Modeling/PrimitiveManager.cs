@@ -1505,12 +1505,12 @@ namespace BrawlLib.Modeling
                             }
 
                             break;
-                        case 4: //Tex 1
-                        case 5: //Tex 2
-                        case 6: //Tex 3
-                        case 7: //Tex 4
-                        case 8: //Tex 5
-                        case 9: //Tex 6
+                        case 4:  //Tex 1
+                        case 5:  //Tex 2
+                        case 6:  //Tex 3
+                        case 7:  //Tex 4
+                        case 8:  //Tex 5
+                        case 9:  //Tex 6
                         case 10: //Tex 7
                         case 11: //Tex 8
                             vert = null;
@@ -1917,12 +1917,12 @@ namespace BrawlLib.Modeling
                                 for (int i = 0; i < _pointCount; i++)
                                 {
                                     _facepoints[i]._colorIndices[x - 2] = Array
-                                                                          .IndexOf(
-                                                                              ((MDL0ObjectNode) ((MDL0Node) Collada
-                                                                                      .CurrentModel)
-                                                                                  ._objList[_newClrObj[x - 2]])
-                                                                              ._manager.GetColors(x - 2, false),
-                                                                              *pIn2++).ClampMin(0);
+                                        .IndexOf(
+                                            ((MDL0ObjectNode) ((MDL0Node) Collada
+                                                    .CurrentModel)
+                                                ._objList[_newClrObj[x - 2]])
+                                            ._manager.GetColors(x - 2, false),
+                                            *pIn2++).ClampMin(0);
                                 }
                             }
                         }

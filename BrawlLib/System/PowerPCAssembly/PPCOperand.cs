@@ -60,23 +60,23 @@
 
                 switch (_opType)
                 {
-                    case OperandType.VAL: return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
-                    case OperandType.UVAL: return string.Format("0x{0:X}", val);
-                    case OperandType.OFFSET: return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
-                    case OperandType.UOFFSET: return string.Format("0x{0:X}", val);
-                    case OperandType.REGISTER: return string.Format("r{0}", val);
+                    case OperandType.VAL:       return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
+                    case OperandType.UVAL:      return string.Format("0x{0:X}", val);
+                    case OperandType.OFFSET:    return (val < 0 ? "-" : "") + string.Format("0x{0:X}", Math.Abs(val));
+                    case OperandType.UOFFSET:   return string.Format("0x{0:X}", val);
+                    case OperandType.REGISTER:  return string.Format("r{0}", val);
                     case OperandType.FREGISTER: return string.Format("f{0}", val);
                     case OperandType.CREGISTER: return string.Format("cr{0}", val);
                     case OperandType.VREGISTER: return string.Format("v{0}", val);
                     case OperandType.SREGISTER:
                         switch (val)
                         {
-                            case 0: return "mq";
-                            case 1: return "xer";
-                            case 4: return "rtcu";
-                            case 5: return "rtcl";
-                            case 8: return "lr";
-                            case 9: return "ctr";
+                            case 0:  return "mq";
+                            case 1:  return "xer";
+                            case 4:  return "rtcu";
+                            case 5:  return "rtcl";
+                            case 8:  return "lr";
+                            case 9:  return "ctr";
                             case 18: return "dsisr";
                             case 19: return "dar";
                             case 22: return "dec";

@@ -95,6 +95,7 @@ namespace System.Windows.Forms
             {
                 cam.Zoom(Maths.Max(distX, distY, max._z) / (Maths.Max(Size.Height, Size.Width) * 0.01f));
             }
+
             Invalidate();
         }
 
@@ -154,6 +155,7 @@ namespace System.Windows.Forms
             {
                 return;
             }
+
             _drawCalls.Sort(DrawCallSort);
 
             if (target is ResourceNode)
@@ -166,6 +168,7 @@ namespace System.Windows.Forms
                 Invalidate();
             }
         }
+
         public void AddTarget(CollisionNode target, bool invalidate)
         {
             if (_collisions.Contains(target))
@@ -638,6 +641,7 @@ namespace System.Windows.Forms
         }
 
         public List<CollisionNode> _collisions = new List<CollisionNode>();
+
         protected override void OnRenderViewport(PaintEventArgs e, GLViewport v)
         {
             ModelPanelViewport viewport = v as ModelPanelViewport;
@@ -697,8 +701,10 @@ namespace System.Windows.Forms
                 {
                     o._render = true;
                 }
+
                 c.Render();
             }
+
             GL.Disable(EnableCap.ScissorTest);
         }
 

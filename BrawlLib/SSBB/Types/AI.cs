@@ -62,7 +62,7 @@ namespace BrawlLib.SSBBTypes
     {
         public bint _unk1;
         public bint _numEntries; //number of offsets
-        public bint _unk2; //0x1
+        public bint _unk2;       //0x1
         public bint _unk3;
 
         public VoidPtr Address

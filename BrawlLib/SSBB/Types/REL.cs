@@ -11,18 +11,18 @@ namespace BrawlLib.SSBBTypes
         public ModuleInfo _info;
 
         //0x20
-        public buint _bssSize; //Size of bss section
+        public buint _bssSize;   //Size of bss section
         public buint _relOffset; //Offset to relocations
         public buint _impOffset; //Offset to imports
-        public buint _impSize; //Size of import entry headers
+        public buint _impSize;   //Size of import entry headers
 
         //0x30
 
         //IDs of sections that contain these
-        public byte _prologSection; //1
-        public byte _epilogSection; //1
+        public byte _prologSection;     //1
+        public byte _epilogSection;     //1
         public byte _unresolvedSection; //1
-        public byte _bssSection; //0
+        public byte _bssSection;        //0
 
         //Offsets into certain sections specified above
         public buint _prologOffset;
@@ -31,7 +31,7 @@ namespace BrawlLib.SSBBTypes
 
         //0x40
         public buint _moduleAlign; //Alignment of this module (32 bytes)
-        public buint _bssAlign; //Alignment of the command list for this module (8 bytes)
+        public buint _bssAlign;    //Alignment of the command list for this module (8 bytes)
 
         public buint
             _commandOffset; //Offset to the command list for this module (not to the entry, but directly to the array)
@@ -126,9 +126,9 @@ namespace BrawlLib.SSBBTypes
         public const int Size = 8;
 
         public bushort _prevOffset; //Offset from the last command in the modified section
-        public RELLinkType _type; //The command used to edit the modified section
-        public byte _section; //The target section
-        public buint _value; //Offset relative to the target section's address
+        public RELLinkType _type;   //The command used to edit the modified section
+        public byte _section;       //The target section
+        public buint _value;        //Offset relative to the target section's address
 
         private VoidPtr Address
         {
@@ -164,7 +164,7 @@ namespace BrawlLib.SSBBTypes
         SetBranchConditionDestination2 = 0xC,
         SetBranchConditionDestination3 = 0xD,
         IncrementOffset = 0xC9, //Previous offset can only reach 0xFFFF. This command resets it
-        Section = 0xCA, //Sets the section to be modified by all following commands
+        Section = 0xCA,         //Sets the section to be modified by all following commands
         End = 0xCB,
         MrkRef = 0xCC
     }
@@ -197,13 +197,13 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 0x20;
 
-        public buint _id; // Unique identifier for the module
-        public ModuleLink _link; // Doubly linked list of modules
-        public buint _numSections; // # of sections
+        public buint _id;                // Unique identifier for the module
+        public ModuleLink _link;         // Doubly linked list of modules
+        public buint _numSections;       // # of sections
         public buint _sectionInfoOffset; // Offset to section info table
-        public buint _nameOffset; // Offset to module name
-        public buint _nameSize; // Size of module name
-        public buint _version; // Version number
+        public buint _nameOffset;        // Offset to module name
+        public buint _nameSize;          // Size of module name
+        public buint _version;           // Version number
 
         private VoidPtr Address
         {

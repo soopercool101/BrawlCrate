@@ -59,9 +59,9 @@ namespace Gif.Components
         //              James A. Woods         (decvax!ihnp4!ames!jaw)
         //              Joe Orost              (decvax!vax135!petsd!joe)
 
-        private int n_bits; // number of bits/code
-        private readonly int maxbits = BITS; // user settable max # bits/code
-        private int maxcode; // maximum code, given n_bits
+        private int n_bits;                          // number of bits/code
+        private readonly int maxbits = BITS;         // user settable max # bits/code
+        private int maxcode;                         // maximum code, given n_bits
         private readonly int maxmaxcode = 1 << BITS; // should NEVER generate this code
 
         private readonly int[] htab = new int[HSIZE];

@@ -1205,7 +1205,7 @@ int main(int argc, char** argv)
         Sleep(1000);
         return 0;
     }
-    catch (std::exception &e)
+    catch (std::exception& e)
     {
         printf("EXCEPTION");
         if (errno)

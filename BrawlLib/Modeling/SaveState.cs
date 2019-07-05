@@ -35,7 +35,7 @@ namespace BrawlLib.Modeling
     public class BoneState : SaveState
     {
         public bool _updateBindState; //This will update the actual mesh when the bone is moved
-        public bool _updateBoneOnly; //This means the bones won't affect the mesh when moved
+        public bool _updateBoneOnly;  //This means the bones won't affect the mesh when moved
         public int _frameIndex = 0;
         public CHR0Node _animation;
         public IBoneNode[] _bones;

@@ -352,7 +352,7 @@ namespace Net
 
                     // The browser download link to the self extracting archive, hosted on github
                     string URL = html.Substring(html.IndexOf("browser_download_url\":\""))
-                                     .TrimEnd(new char[] {'}', '"'});
+                        .TrimEnd(new char[] {'}', '"'});
                     URL = URL.Substring(URL.IndexOf("http"));
 
                     // Download the update, using a download tracker
@@ -445,7 +445,7 @@ namespace Net
             string repoName = mainRepo.Split('/')[1];
             // get Release
             IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName))
-                                              .Where(r => r.Prerelease).ToList();
+                .Where(r => r.Prerelease).ToList();
             Release release = null;
 
             // This track is shared by canary updates. Ensure that a documentation release is found.
@@ -471,7 +471,7 @@ namespace Net
             string repoName = mainRepo.Split('/')[1];
             // get Release
             IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName))
-                                              .Where(r => !r.Prerelease).ToList();
+                .Where(r => !r.Prerelease).ToList();
             if (releases.Count > 0)
             {
                 await DownloadRelease(releases[0], true, true, false, false, openFile);
@@ -910,6 +910,7 @@ namespace Net
                     MessageBox.Show(
                         "The last 100 Canary commits will be shown. For a more in-depth view of changes, visit https://github.com/soopercool101/BrawlCrateNext/commits/master");
                 }
+
                 CanaryChangelogViewer logWindow = new CanaryChangelogViewer(newSha.Substring(0, 7), changelog);
                 logWindow.ShowDialog();
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");

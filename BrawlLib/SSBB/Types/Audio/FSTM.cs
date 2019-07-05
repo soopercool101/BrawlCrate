@@ -442,7 +442,10 @@ namespace BrawlLib.SSBBTypes
 
         public bshort _yn1; //History data; used to maintain decoder state during sample playback.
         public bshort _yn2; //History data; used to maintain decoder state during sample playback.
-        public bshort _lps; //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
+
+        public bshort
+            _lps; //Predictor/scale for the loop point frame. If the sample does not loop, this value is zero.
+
         public bshort _lyn1; //History data for the loop point. If the sample does not loop, this value is zero.
         public bshort _lyn2; //History data for the loop point. If the sample does not loop, this value is zero.
         public bshort _pad;

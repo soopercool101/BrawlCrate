@@ -603,7 +603,8 @@ namespace System.Windows.Forms
                     lblColor.Visible = true;
                     lblCNoA.Visible = true;
                     lblColor.BackColor = (Color) TargetNode.GetRGBAPixel(index);
-                    lblCNoA.BackColor = Color.FromArgb(TargetNode.GetRGBAPixel(index).R, TargetNode.GetRGBAPixel(index).G,
+                    lblCNoA.BackColor = Color.FromArgb(TargetNode.GetRGBAPixel(index).R,
+                        TargetNode.GetRGBAPixel(index).G,
                         TargetNode.GetRGBAPixel(index).B);
                     break;
                 case 0:

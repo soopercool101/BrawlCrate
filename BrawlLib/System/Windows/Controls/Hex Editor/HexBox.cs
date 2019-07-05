@@ -937,11 +937,11 @@ namespace Be.Windows.Forms
                     {
                         _messageHandlers = new Dictionary<Keys, MessageDelegate>
                         {
-                            {Keys.Left, new MessageDelegate(PreProcessWmKeyDown_Left)}, // move left
-                            {Keys.Up, new MessageDelegate(PreProcessWmKeyDown_Up)}, // move up
-                            {Keys.Right, new MessageDelegate(PreProcessWmKeyDown_Right)}, // move right
-                            {Keys.Down, new MessageDelegate(PreProcessWmKeyDown_Down)}, // move down
-                            {Keys.PageUp, new MessageDelegate(PreProcessWmKeyDown_PageUp)}, // move pageup
+                            {Keys.Left, new MessageDelegate(PreProcessWmKeyDown_Left)},         // move left
+                            {Keys.Up, new MessageDelegate(PreProcessWmKeyDown_Up)},             // move up
+                            {Keys.Right, new MessageDelegate(PreProcessWmKeyDown_Right)},       // move right
+                            {Keys.Down, new MessageDelegate(PreProcessWmKeyDown_Down)},         // move down
+                            {Keys.PageUp, new MessageDelegate(PreProcessWmKeyDown_PageUp)},     // move pageup
                             {Keys.PageDown, new MessageDelegate(PreProcessWmKeyDown_PageDown)}, // move page down
                             {
                                 Keys.Left | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftLeft)
@@ -954,18 +954,18 @@ namespace Be.Windows.Forms
                             }, // move right with selection
                             {
                                 Keys.Down | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftDown)
-                            }, // move down with selection
-                            {Keys.Tab, new MessageDelegate(PreProcessWmKeyDown_Tab)}, // switch to string view
-                            {Keys.Back, new MessageDelegate(PreProcessWmKeyDown_Back)}, // back
+                            },                                                              // move down with selection
+                            {Keys.Tab, new MessageDelegate(PreProcessWmKeyDown_Tab)},       // switch to string view
+                            {Keys.Back, new MessageDelegate(PreProcessWmKeyDown_Back)},     // back
                             {Keys.Delete, new MessageDelegate(PreProcessWmKeyDown_Delete)}, // delete
-                            {Keys.Home, new MessageDelegate(PreProcessWmKeyDown_Home)}, // move to home
-                            {Keys.End, new MessageDelegate(PreProcessWmKeyDown_End)}, // move to end
+                            {Keys.Home, new MessageDelegate(PreProcessWmKeyDown_Home)},     // move to home
+                            {Keys.End, new MessageDelegate(PreProcessWmKeyDown_End)},       // move to end
                             {
                                 Keys.ShiftKey | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftShiftKey)
-                            }, // begin selection process
+                            },                                                                          // begin selection process
                             {Keys.C | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlC)}, // copy 
                             {Keys.X | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlX)}, // cut
-                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)} // paste
+                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)}  // paste
                         };
                     }
 

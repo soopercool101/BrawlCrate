@@ -187,11 +187,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             typeof(cmQSTransformNode),
             typeof(cmMat4Node),
             typeof(cmMat4Node), //Transform is hkRotation(Mat3) + Trans(Vec4), so just a Mat4
-            null, //Zero
+            null,               //Zero
             typeof(cmPointerNode),
             typeof(cmPointerNode), //Function Pointer
-            typeof(cmArrayNode), //Array
-            null, //In Place Array
+            typeof(cmArrayNode),   //Array
+            null,                  //In Place Array
             typeof(cmEnumNode),
             typeof(HavokMetaObjectNode),
             typeof(cmSimpleArrayNode),

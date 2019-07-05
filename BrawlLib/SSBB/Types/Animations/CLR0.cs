@@ -161,15 +161,15 @@ namespace BrawlLib.SSBBTypes
     {
         LightChannel0MaterialColor, // GX_COLOR0A0
         LightChannel1MaterialColor, // GX_COLOR1A1
-        LightChannel0AmbientColor, // GX_COLOR0A0
-        LightChannel1AmbientColor, // GX_COLOR1A1
-        ColorRegister0, // GX_TEVREG0
-        ColorRegister1, // GX_TEVREG1
-        ColorRegister2, // GX_TEVREG2
-        ConstantColorRegister0, // GX_KCOLOR0
-        ConstantColorRegister1, // GX_KCOLOR1
-        ConstantColorRegister2, // GX_KCOLOR2
-        ConstantColorRegister3, // GX_KCOLOR3
+        LightChannel0AmbientColor,  // GX_COLOR0A0
+        LightChannel1AmbientColor,  // GX_COLOR1A1
+        ColorRegister0,             // GX_TEVREG0
+        ColorRegister1,             // GX_TEVREG1
+        ColorRegister2,             // GX_TEVREG2
+        ConstantColorRegister0,     // GX_KCOLOR0
+        ConstantColorRegister1,     // GX_KCOLOR1
+        ConstantColorRegister2,     // GX_KCOLOR2
+        ConstantColorRegister3,     // GX_KCOLOR3
     }
 
     [Flags]

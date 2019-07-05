@@ -310,6 +310,7 @@ namespace BrawlLib.SSBB
 
             Extensions = extensions;
         }
+
         public SupportedFileInfo(bool forEditing, bool associate, string name, params string[] extensions)
         {
             ForEditing = forEditing;

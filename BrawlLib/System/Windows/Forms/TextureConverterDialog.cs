@@ -655,21 +655,21 @@ namespace System.Windows.Forms
                 int palSize = PaletteSize(0x40);
                 lblDataSize.Text = string.Format("{0:n0}B",
                     TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize);
+                        .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize);
             }
             else if (_origREFT != null || _reftParent != null)
             {
                 int palSize = PaletteSize(0);
                 lblDataSize.Text = string.Format("{0:n0}B",
                     TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize);
+                        .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize);
             }
             else if (_origTPL != null || _tplParent != null)
             {
                 int palSize = PaletteSize(0xC);
                 lblDataSize.Text = string.Format("{0:n0}B",
                     TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize);
+                        .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize);
             }
         }
 

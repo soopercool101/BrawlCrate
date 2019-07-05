@@ -11,7 +11,7 @@ namespace BrawlLib.SSBBTypes
         public bint _fileSize;
         public bint _lookupOffset;
         public bint _lookupEntryCount;
-        public bint _sectionCount; //Has string entry
+        public bint _sectionCount;            //Has string entry
         public bint _externalSubRoutineCount; //Has string entry
         public int _pad1, _pad2, _pad3;
 

@@ -8,7 +8,7 @@ namespace System.Audio
     {
         public short sr0, sr1; /* Reconstructed signal with delays 0 and 1 */
         public short a1r, a2r; /* Triggered 2nd order predictor coeffs. */
-        public short b1r; /* Triggered 6nd order predictor coeffs */
+        public short b1r;      /* Triggered 6nd order predictor coeffs */
         public short b2r;
         public short b3r;
         public short b4r;
@@ -20,13 +20,13 @@ namespace System.Audio
         public short dq2;
         public short dq1;
         public short dq0;
-        public short dmsp; /* Short term average of the F(I) sequence */
-        public short dmlp; /* Long term average of the F(I) sequence */
-        public short apr; /* Triggered unlimited speed control parameter */
-        public short yup; /* Fast quantizer scale factor */
-        public short tdr; /* Triggered tone detector */
+        public short dmsp;     /* Short term average of the F(I) sequence */
+        public short dmlp;     /* Long term average of the F(I) sequence */
+        public short apr;      /* Triggered unlimited speed control parameter */
+        public short yup;      /* Fast quantizer scale factor */
+        public short tdr;      /* Triggered tone detector */
         public short pk0, pk1; /* sign of dq+sez with delays 0 and 1 */
-        public int ylp; /* Slow quantizer scale factor */
+        public int ylp;        /* Slow quantizer scale factor */
     }
 
     public static unsafe class G726

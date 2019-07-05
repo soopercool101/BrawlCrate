@@ -84,7 +84,8 @@ namespace BrawlCrate.API
 
         internal static void RunScript(string path)
         {
-            if (!string.IsNullOrEmpty(path) && Path.GetExtension(path).Equals(".fsx", StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrEmpty(path) &&
+                Path.GetExtension(path).Equals(".fsx", StringComparison.OrdinalIgnoreCase))
             {
                 FSharpInstall();
                 if (FSharpEnabled)
@@ -223,6 +224,7 @@ namespace BrawlCrate.API
                     ConvertPlugin(path);
                     return CreatePlugin(path, loader);
                 }
+
                 string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(path));
             }
@@ -390,10 +392,13 @@ namespace BrawlCrate.API
             if (resourceTree.SelectedNode is BaseWrapper wrapper && wrapper.ContextMenuStrip != null)
             {
                 // Remove plugins list as necessary
-                while (wrapper.ContextMenuStrip != null && wrapper.ContextMenuStrip.Items.Count > 0 && (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins" || wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
+                while (wrapper.ContextMenuStrip != null && wrapper.ContextMenuStrip.Items.Count > 0 &&
+                       (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins" ||
+                        wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
                 {
                     wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
                 }
+
                 Type type = wrapper.GetType();
 
                 if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
@@ -415,6 +420,7 @@ namespace BrawlCrate.API
                             }
                         }
                     }
+
                     List<ToolStripItem> items = new List<ToolStripItem>();
                     foreach (ToolStripMenuItem item in ContextMenuHooks[type])
                     {
@@ -422,15 +428,18 @@ namespace BrawlCrate.API
                         {
                             item.Enabled = item.HasDropDownItems;
                         }
+
                         if (item.Enabled)
                         {
                             items.Add(item);
                         }
                     }
+
                     if (items.Count <= 0)
                     {
                         return;
                     }
+
                     if (wrapper.ContextMenuStrip.Items.Count == 0 ||
                         wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
                     {

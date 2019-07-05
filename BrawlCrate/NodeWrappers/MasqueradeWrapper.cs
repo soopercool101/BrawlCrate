@@ -14,6 +14,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static MasqueradeWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -33,20 +34,28 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void NewEntryAction(object sender, EventArgs e) { GetInstance<MasqueradeWrapper>().NewEntry(); }
+
+        protected static void NewEntryAction(object sender, EventArgs e)
+        {
+            GetInstance<MasqueradeWrapper>().NewEntry();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled =
+                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MasqueradeWrapper w = GetInstance<MasqueradeWrapper>();
-            _menu.Items[0].Enabled = (w._resource.Children.Count < 50);
+            _menu.Items[0].Enabled = w._resource.Children.Count < 50;
             _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public override string ExportFilter => FileFilters.MASQ;
@@ -64,30 +73,37 @@ namespace BrawlCrate.NodeWrappers
             };
             if (_resource.HasChildren)
             {
-                byte nextID = (byte)(((MasqueradeEntryNode)(_resource.Children[_resource.Children.Count - 1]))._costumeID + 1);
-                if (((MasqueradeNode)_resource)._cosmeticSlot == 21 && (
-                    nextID == 15 ||
-                    nextID == 31 ||
-                    nextID == 47 ||
-                    nextID == 63))
+                byte nextID =
+                    (byte) (((MasqueradeEntryNode) _resource.Children[_resource.Children.Count - 1])._costumeID + 1);
+                if (((MasqueradeNode) _resource)._cosmeticSlot == 21 && (
+                        nextID == 15 ||
+                        nextID == 31 ||
+                        nextID == 47 ||
+                        nextID == 63))
                 {
                     ++nextID; // Prevent wario edge cases
                 }
 
                 node._costumeID = nextID;
             }
+
             _resource.AddChild(node);
             node.regenName();
         }
 
-        public MasqueradeWrapper() { ContextMenuStrip = _menu; }
+        public MasqueradeWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
+
     [NodeWrapper(ResourceType.MASQEntry)]
     internal class MasqueradeEntryWrapper : GenericWrapper
     {
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
         static MasqueradeEntryWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -106,15 +122,23 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
-        protected static void OpenCostumeAction(object sender, EventArgs e) { GetInstance<MasqueradeEntryWrapper>().OpenCostume(); }
+
+        protected static void OpenCostumeAction(object sender, EventArgs e)
+        {
+            GetInstance<MasqueradeEntryWrapper>().OpenCostume();
+        }
+
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[1].Visible = _menu.Items[0].Visible = _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled = _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _menu.Items[1].Visible = _menu.Items[0].Visible = _menu.Items[0].Enabled = _menu.Items[3].Enabled =
+                _menu.Items[4].Enabled =
+                    _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
         }
+
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MasqueradeEntryWrapper w = GetInstance<MasqueradeEntryWrapper>();
-            List<string> files = ((MasqueradeEntryNode)w._resource).GetCostumeFilePath(Program.RootPath);
+            List<string> files = ((MasqueradeEntryNode) w._resource).GetCostumeFilePath(Program.RootPath);
             _menu.Items[0].Enabled = _menu.Items[1].Visible = _menu.Items[0].Visible = files.Count != 0;
             if (files.Count >= 1)
             {
@@ -128,16 +152,18 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
             }
+
             _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = ((w._resource.IsDirty) || (w._resource.IsBranch));
+            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _menu.Items[6].Enabled = w.PrevNode != null;
             _menu.Items[7].Enabled = w.NextNode != null;
         }
+
         #endregion
 
         public void OpenCostume()
         {
-            List<string> files = ((MasqueradeEntryNode)_resource).GetCostumeFilePath(Program.RootPath);
+            List<string> files = ((MasqueradeEntryNode) _resource).GetCostumeFilePath(Program.RootPath);
             foreach (string s in files)
             {
                 Process BrawlCrate = Process.Start(new ProcessStartInfo()
@@ -148,6 +174,9 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public MasqueradeEntryWrapper() { ContextMenuStrip = _menu; }
+        public MasqueradeEntryWrapper()
+        {
+            ContextMenuStrip = _menu;
+        }
     }
 }

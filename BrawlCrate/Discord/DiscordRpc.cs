@@ -39,19 +39,19 @@ namespace BrawlCrate.Discord
         [StructLayout(LayoutKind.Sequential)]
         public struct RichPresenceStruct
         {
-            public IntPtr state; /* max 128 bytes */
+            public IntPtr state;   /* max 128 bytes */
             public IntPtr details; /* max 128 bytes */
             public long startTimestamp;
             public long endTimestamp;
-            public IntPtr largeImageKey; /* max 32 bytes */
+            public IntPtr largeImageKey;  /* max 32 bytes */
             public IntPtr largeImageText; /* max 128 bytes */
-            public IntPtr smallImageKey; /* max 32 bytes */
+            public IntPtr smallImageKey;  /* max 32 bytes */
             public IntPtr smallImageText; /* max 128 bytes */
-            public IntPtr partyId; /* max 128 bytes */
+            public IntPtr partyId;        /* max 128 bytes */
             public int partySize;
             public int partyMax;
-            public IntPtr matchSecret; /* max 128 bytes */
-            public IntPtr joinSecret; /* max 128 bytes */
+            public IntPtr matchSecret;    /* max 128 bytes */
+            public IntPtr joinSecret;     /* max 128 bytes */
             public IntPtr spectateSecret; /* max 128 bytes */
             public bool instance;
         }
@@ -103,19 +103,19 @@ namespace BrawlCrate.Discord
             private RichPresenceStruct _presence;
             private readonly List<IntPtr> _buffers = new List<IntPtr>(10);
 
-            public string state; /* max 128 bytes */
+            public string state;   /* max 128 bytes */
             public string details; /* max 128 bytes */
             public long startTimestamp;
             public long endTimestamp;
-            public string largeImageKey; /* max 32 bytes */
+            public string largeImageKey;  /* max 32 bytes */
             public string largeImageText; /* max 128 bytes */
-            public string smallImageKey; /* max 32 bytes */
+            public string smallImageKey;  /* max 32 bytes */
             public string smallImageText; /* max 128 bytes */
-            public string partyId; /* max 128 bytes */
+            public string partyId;        /* max 128 bytes */
             public int partySize;
             public int partyMax;
-            public string matchSecret; /* max 128 bytes */
-            public string joinSecret; /* max 128 bytes */
+            public string matchSecret;    /* max 128 bytes */
+            public string joinSecret;     /* max 128 bytes */
             public string spectateSecret; /* max 128 bytes */
             public bool instance;
 

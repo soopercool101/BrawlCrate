@@ -56,24 +56,24 @@ namespace BrawlCrate
             AssemblyTitleFull = Canary
                 ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2]
                 : ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
-                                                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
             AssemblyTitleShort = AssemblyTitleFull.Contains("#")
                 ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8)
                 : AssemblyTitleFull;
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
-                                                .GetExecutingAssembly()
-                                                .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
+                    .GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
                 .Description;
             AssemblyCopyright =
                 ((AssemblyCopyrightAttribute) Assembly
-                                              .GetExecutingAssembly()
-                                              .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
+                    .GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
                 .Copyright;
             BrawlLibTitle = ((AssemblyTitleAttribute) Assembly
-                                                      .GetAssembly(typeof(ResourceNode))
-                                                      .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                    .GetAssembly(typeof(ResourceNode))
+                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
             _openDlg = new OpenFileDialog();
@@ -634,13 +634,13 @@ namespace BrawlCrate
             {
                 if (CanRunGithubApp(true, out string path))
                 {
-                        Process git = Process.Start(new ProcessStartInfo()
-                        {
-                            FileName = path,
-                            WindowStyle = ProcessWindowStyle.Hidden,
-                            Arguments = $"-dlStable {RootPath}",
-                        });
-                        git.WaitForExit();
+                    Process git = Process.Start(new ProcessStartInfo()
+                    {
+                        FileName = path,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        Arguments = $"-dlStable {RootPath}",
+                    });
+                    git.WaitForExit();
                 }
             }
             catch (Exception e)
@@ -648,6 +648,7 @@ namespace BrawlCrate
                 MessageBox.Show(e.Message);
             }
         }
+
         public static void ForceDownloadCanary()
         {
             try

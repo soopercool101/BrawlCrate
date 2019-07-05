@@ -29,7 +29,7 @@ namespace BrawlLib.BrawlCrate
         public static readonly int internalNameIndex = 52;
         public static readonly int nameIndex = 69;
         public static readonly int minimumLength = nameIndex + 1;
-        private static readonly char[] trimChars = { ' ', '\t' };
+        private static readonly char[] trimChars = {' ', '\t'};
         public static bool generated = false;
 
         public static string FromID(int id, int idOffset, string flagToIgnore)
@@ -41,9 +41,11 @@ namespace BrawlLib.BrawlCrate
 
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(idOffset).StartsWith("0X" + id.ToString("X2").ToUpper()))
+                if (s.Length >= minimumLength &&
+                    s.ToUpper().Substring(idOffset).StartsWith("0X" + id.ToString("X2").ToUpper()))
                 {
-                    if (!s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith(flagToIgnore))
+                    if (!s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                        !s.ToUpper().Substring(flagIndex).StartsWith(flagToIgnore))
                     {
                         return s.Substring(nameIndex).Trim(trimChars);
                     }
@@ -62,11 +64,14 @@ namespace BrawlLib.BrawlCrate
 
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(idOffset).StartsWith("0X" + id.ToString("X2").ToUpper()))
+                if (s.Length >= minimumLength &&
+                    s.ToUpper().Substring(idOffset).StartsWith("0X" + id.ToString("X2").ToUpper()))
                 {
-                    if (!s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith(flagToIgnore))
+                    if (!s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                        !s.ToUpper().Substring(flagIndex).StartsWith(flagToIgnore))
                     {
-                        string intName = s.Substring(internalNameIndex, (nameIndex - internalNameIndex) - 1).Trim(trimChars);
+                        string intName = s.Substring(internalNameIndex, nameIndex - internalNameIndex - 1)
+                            .Trim(trimChars);
                         if (intName.Length > 0)
                         {
                             return intName;
@@ -101,12 +106,19 @@ namespace BrawlLib.BrawlCrate
             Assembly assembly = Assembly.GetExecutingAssembly();
             try
             {
-                string resourceName = ("BrawlLib.CustomLists." + (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2).Equals("en", StringComparison.OrdinalIgnoreCase) ? "" : (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2).ToLower() + '.')) + "FighterList.txt");
+                string resourceName = "BrawlLib.CustomLists." +
+                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)
+                                          .Equals("en", StringComparison.OrdinalIgnoreCase)
+                                          ? ""
+                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()
+                                                .Substring(0, 2).ToLower() + '.') + "FighterList.txt";
                 string listDefault = "";
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream))
                 {
-                    listDefault = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        listDefault = reader.ReadToEnd();
+                    }
                 }
 
                 File.WriteAllText(listName, listDefault);
@@ -116,16 +128,19 @@ namespace BrawlLib.BrawlCrate
                 string resourceName = "BrawlLib.CustomLists.FighterList.txt";
                 string listDefault = "";
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream))
                 {
-                    listDefault = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        listDefault = reader.ReadToEnd();
+                    }
                 }
 
                 File.WriteAllText(listName, listDefault);
             }
         }
 
-        private static readonly byte[] listV1Hash = { 0xD2, 0x03, 0xA9, 0x9E, 0x92, 0xD4, 0xCC, 0xCB, 0xD4, 0xBD, 0x85, 0x28, 0xD8, 0x7C, 0x72, 0xB4 };
+        private static readonly byte[] listV1Hash =
+            {0xD2, 0x03, 0xA9, 0x9E, 0x92, 0xD4, 0xCC, 0xCB, 0xD4, 0xBD, 0x85, 0x28, 0xD8, 0x7C, 0x72, 0xB4};
 
         public static bool GenerateLists()
         {
@@ -154,6 +169,7 @@ namespace BrawlLib.BrawlCrate
                     }
                 }
             }
+
             if (fileOutdated)
             {
                 File.Delete(listName);
@@ -182,6 +198,7 @@ namespace BrawlLib.BrawlCrate
 
                 fileList[i] = fileList[i].TrimEnd(trimChars);
             }
+
             GenerateSlotLists();
             GenerateFighterLists();
             GenerateCSSSlotList();
@@ -202,20 +219,24 @@ namespace BrawlLib.BrawlCrate
             {
                 generated = GenerateLists();
             }
+
             // Generate the single player and multiplayer slot values
             slotIDList = new List<Fighter>();
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(slotIDIndex).StartsWith("0X") && !s.ToUpper().Substring(flagIndex).StartsWith("X"))
+                if (s.Length >= minimumLength && s.ToUpper().Substring(slotIDIndex).StartsWith("0X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("X"))
                 {
                     if (!s.ToUpper().Substring(flagIndex).StartsWith("-S"))
                     {
-                        singlePlayerSlotIDList.Add(new Fighter(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16), FromID(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16), slotIDIndex, "-S")));
+                        singlePlayerSlotIDList.Add(new Fighter(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16),
+                            FromID(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16), slotIDIndex, "-S")));
                     }
 
                     if (!s.ToUpper().Substring(flagIndex).StartsWith("+S"))
                     {
-                        slotIDList.Add(new Fighter(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16), FromID(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16), slotIDIndex, "+S")));
+                        slotIDList.Add(new Fighter(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16),
+                            FromID(Convert.ToByte(s.Substring(slotIDIndex + 2, 2), 16), slotIDIndex, "+S")));
                     }
                 }
             }
@@ -227,22 +248,28 @@ namespace BrawlLib.BrawlCrate
             {
                 generated = GenerateLists();
             }
+
             // Generate the single player and multiplayer slot values
             fighterIDList = new List<Fighter>();
             fighterIDLongList = new List<Fighter>();
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(fighterIDIndex).StartsWith("0X") && !s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith("+S"))
+                if (s.Length >= minimumLength && s.ToUpper().Substring(fighterIDIndex).StartsWith("0X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("+S"))
                 {
                     // Don't add "0xFF - None" to the long list (uses 0xFFFFFFFF instead)
                     if (!(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16) == 0xFF))
                     {
-                        fighterIDLongList.Add(new Fighter(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16), FromID(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16), fighterIDIndex, "+S")));
+                        fighterIDLongList.Add(new Fighter(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16),
+                            FromID(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16), fighterIDIndex, "+S")));
                     }
 
-                    fighterIDList.Add(new Fighter(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16), FromID(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16), fighterIDIndex, "+S")));
+                    fighterIDList.Add(new Fighter(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16),
+                        FromID(Convert.ToByte(s.Substring(fighterIDIndex + 2, 2), 16), fighterIDIndex, "+S")));
                 }
             }
+
             fighterIDLongList.Add(new Fighter(0xFFFFFFFF, "None"));
         }
 
@@ -255,9 +282,12 @@ namespace BrawlLib.BrawlCrate
 
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(cssSlotIDIndex).StartsWith("0X") && !s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith("+S"))
+                if (s.Length >= minimumLength && s.ToUpper().Substring(cssSlotIDIndex).StartsWith("0X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("+S"))
                 {
-                    cssSlotIDList.Add(new Fighter(Convert.ToByte(s.Substring(cssSlotIDIndex + 2, 2), 16), FromID(Convert.ToByte(s.Substring(cssSlotIDIndex + 2, 2), 16), cssSlotIDIndex, "+S")));
+                    cssSlotIDList.Add(new Fighter(Convert.ToByte(s.Substring(cssSlotIDIndex + 2, 2), 16),
+                        FromID(Convert.ToByte(s.Substring(cssSlotIDIndex + 2, 2), 16), cssSlotIDIndex, "+S")));
                 }
             }
         }
@@ -271,9 +301,12 @@ namespace BrawlLib.BrawlCrate
 
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(cosmeticIDIndex).StartsWith("0X") && !s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith("+S"))
+                if (s.Length >= minimumLength && s.ToUpper().Substring(cosmeticIDIndex).StartsWith("0X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("+S"))
                 {
-                    cosmeticIDList.Add(new Fighter(Convert.ToByte(s.Substring(cosmeticIDIndex + 2, 2), 16), FromID(Convert.ToByte(s.Substring(cosmeticIDIndex + 2, 2), 16), cosmeticIDIndex, "+S")));
+                    cosmeticIDList.Add(new Fighter(Convert.ToByte(s.Substring(cosmeticIDIndex + 2, 2), 16),
+                        FromID(Convert.ToByte(s.Substring(cosmeticIDIndex + 2, 2), 16), cosmeticIDIndex, "+S")));
                 }
             }
         }
@@ -292,7 +325,7 @@ namespace BrawlLib.BrawlCrate
         private static readonly int internalNameIndex = 16;
         private static readonly int nameIndex = 32;
         private static readonly int minimumLength = nameIndex + 1;
-        private static readonly char[] trimChars = { ' ', '\t' };
+        private static readonly char[] trimChars = {' ', '\t'};
         private static bool generated = false;
 
         public static string FromID(int id)
@@ -304,7 +337,10 @@ namespace BrawlLib.BrawlCrate
 
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(idIndex).StartsWith("0X" + id.ToString("X2").ToUpper()) && !s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith("-S"))
+                if (s.Length >= minimumLength &&
+                    s.ToUpper().Substring(idIndex).StartsWith("0X" + id.ToString("X2").ToUpper()) &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("-S"))
                 {
                     return s.Substring(nameIndex).Trim(trimChars);
                 }
@@ -327,9 +363,11 @@ namespace BrawlLib.BrawlCrate
                 exID = pacName.ToUpper().Substring(6);
                 isExStage = true;
             }
+
             foreach (string s in fileList)
             {
-                if (s.ToUpper().Substring(internalNameIndex).StartsWith(pacName.ToUpper()) || (isExStage && s.ToUpper().Substring(internalNameIndex).StartsWith("EX" + exID)))
+                if (s.ToUpper().Substring(internalNameIndex).StartsWith(pacName.ToUpper()) ||
+                    isExStage && s.ToUpper().Substring(internalNameIndex).StartsWith("EX" + exID))
                 {
                     return s.Substring(nameIndex).Trim(trimChars);
                 }
@@ -343,12 +381,19 @@ namespace BrawlLib.BrawlCrate
             Assembly assembly = Assembly.GetExecutingAssembly();
             try
             {
-                string resourceName = ("BrawlLib.CustomLists." + (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2).Equals("en", StringComparison.OrdinalIgnoreCase) ? "" : (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2).ToLower() + '.')) + "StageList.txt");
+                string resourceName = "BrawlLib.CustomLists." +
+                                      (System.Threading.Thread.CurrentThread.CurrentUICulture.ToString().Substring(0, 2)
+                                          .Equals("en", StringComparison.OrdinalIgnoreCase)
+                                          ? ""
+                                          : System.Threading.Thread.CurrentThread.CurrentUICulture.ToString()
+                                                .Substring(0, 2).ToLower() + '.') + "StageList.txt";
                 string listDefault = "";
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream))
                 {
-                    listDefault = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        listDefault = reader.ReadToEnd();
+                    }
                 }
 
                 File.WriteAllText(listName, listDefault);
@@ -358,9 +403,11 @@ namespace BrawlLib.BrawlCrate
                 string resourceName = "BrawlLib.CustomLists.StageList.txt";
                 string listDefault = "";
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream))
                 {
-                    listDefault = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        listDefault = reader.ReadToEnd();
+                    }
                 }
 
                 File.WriteAllText(listName, listDefault);
@@ -394,13 +441,17 @@ namespace BrawlLib.BrawlCrate
 
                 fileList[i] = fileList[i].TrimEnd(trimChars);
             }
+
             foreach (string s in fileList)
             {
-                if (s.Length >= minimumLength && s.ToUpper().Substring(idIndex).StartsWith("0X") && !s.ToUpper().Substring(flagIndex).StartsWith("X") && !s.ToUpper().Substring(flagIndex).StartsWith("-S"))
+                if (s.Length >= minimumLength && s.ToUpper().Substring(idIndex).StartsWith("0X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("X") &&
+                    !s.ToUpper().Substring(flagIndex).StartsWith("-S"))
                 {
                     stageList.Add(new Stage(Convert.ToByte(s.Substring(idIndex + 2, 2), 16), true));
                 }
             }
+
             // Order the list by IDs
             stageList = stageList.OrderBy(o => o.ID).ToList();
             return true;

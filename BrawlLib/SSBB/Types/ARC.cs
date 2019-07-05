@@ -9,7 +9,7 @@ namespace BrawlLib.SSBBTypes
         public const int Size = 0x40;
         public const uint Tag = 0x00435241;
 
-        public uint _tag; //ARC
+        public uint _tag;       //ARC
         public ushort _version; //0x0101
         public bushort _numFiles;
         private readonly uint _unk1;

@@ -8,31 +8,31 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class SLTCNode : ResourceNode
     {
-        internal SLTC* Header => (SLTC*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.SLTC;
+        internal SLTC* Header => (SLTC*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.SLTC;
 
-        public uint _tag;                           // 0x00 - Uneditable; SLTC
-        public uint _size;                          // 0x04 - Uneditable; Should be "40"
-        public uint _version;                       // 0x08 - Version; Only parses "2" currently
-        public byte _editFlag1;                     // 0x0C - Unused?
-        public byte _editFlag2;                     // 0x0D - Unused?
-        public byte _editFlag3;                     // 0X0E - Unused?
-        public byte _setSlotCharacters;             // 0X0F - 00 is not set, 01 is set
-        public uint _slot1;                         // 0x10
-        public uint _slot2;                         // 0x14
-        public uint _slot3;                         // 0x18
-        public uint _slot4;                         // 0x1C
-        public uint _victoryTheme;                  // 0x20 - Victory Theme
-        public byte _recordSlot;                    // 0x24 - Record Bank
-        public byte _unknown0x25;                   // 0x25 - Seems to always be 0xCC
-        public byte _unknown0x26;                   // 0x26 - Seems to always be 0xCC
-        public byte _unknown0x27;                   // 0x27 - Seems to always be 0xCC
-        public uint _announcerSFX;                  // 0x28 - Announcer voiceline for victory screen
-        public uint _unknown0x2C;                   // 0x2C - Appears to always be 0xCCCCCCCC
-        public float _victoryCamera1;               // 0x30 - Camera Distance
-        public float _victoryCamera2;               // 0x34 - Camera Distance
-        public float _victoryCamera3;               // 0x38 - Camera Distance
-        public float _victoryCamera4;               // 0x3C - Camera Distance
+        public uint _tag;               // 0x00 - Uneditable; SLTC
+        public uint _size;              // 0x04 - Uneditable; Should be "40"
+        public uint _version;           // 0x08 - Version; Only parses "2" currently
+        public byte _editFlag1;         // 0x0C - Unused?
+        public byte _editFlag2;         // 0x0D - Unused?
+        public byte _editFlag3;         // 0X0E - Unused?
+        public byte _setSlotCharacters; // 0X0F - 00 is not set, 01 is set
+        public uint _slot1;             // 0x10
+        public uint _slot2;             // 0x14
+        public uint _slot3;             // 0x18
+        public uint _slot4;             // 0x1C
+        public uint _victoryTheme;      // 0x20 - Victory Theme
+        public byte _recordSlot;        // 0x24 - Record Bank
+        public byte _unknown0x25;       // 0x25 - Seems to always be 0xCC
+        public byte _unknown0x26;       // 0x26 - Seems to always be 0xCC
+        public byte _unknown0x27;       // 0x27 - Seems to always be 0xCC
+        public uint _announcerSFX;      // 0x28 - Announcer voiceline for victory screen
+        public uint _unknown0x2C;       // 0x2C - Appears to always be 0xCCCCCCCC
+        public float _victoryCamera1;   // 0x30 - Camera Distance
+        public float _victoryCamera2;   // 0x34 - Camera Distance
+        public float _victoryCamera3;   // 0x38 - Camera Distance
+        public float _victoryCamera4;   // 0x3C - Camera Distance
 
         public byte[] _victoryNameArray = new byte[32];
 
@@ -210,14 +210,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             // This node has no children
         }
 
-        public override int OnCalculateSize(bool force, bool rebuilding = true)
+        public override int OnCalculateSize(bool force)
         {
             return SLTC.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            SLTC* hdr = (SLTC*)address;
+            SLTC* hdr = (SLTC*) address;
             hdr->_tag = _tag;
             hdr->_size = _size;
             hdr->_version = _version;
@@ -266,7 +266,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _victoryCamera2 = Header->_victoryCamera2;
             _victoryCamera3 = Header->_victoryCamera3;
             _victoryCamera4 = Header->_victoryCamera4;
-            if ((_name == null) && (_origPath != null))
+            if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
@@ -275,6 +275,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((SLTC*)source.Address)->_tag == SLTC.Tag ? new SLTCNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((SLTC*) source.Address)->_tag == SLTC.Tag ? new SLTCNode() : null;
+        }
     }
 }

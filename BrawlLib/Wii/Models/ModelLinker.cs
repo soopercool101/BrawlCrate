@@ -116,17 +116,17 @@ namespace BrawlLib.Wii.Models
         public int Version = 9;
 
         //Build relocation offsets in this order:
-        public ResourceGroup* Defs; //1
-        public ResourceGroup* Bones; //2
-        public ResourceGroup* Vertices; //6
-        public ResourceGroup* Normals; //7
-        public ResourceGroup* Colors; //8
-        public ResourceGroup* UVs; //9
+        public ResourceGroup* Defs;      //1
+        public ResourceGroup* Bones;     //2
+        public ResourceGroup* Vertices;  //6
+        public ResourceGroup* Normals;   //7
+        public ResourceGroup* Colors;    //8
+        public ResourceGroup* UVs;       //9
         public ResourceGroup* Materials; //3
-        public ResourceGroup* Shaders; //4
-        public ResourceGroup* Objects; //5
-        public ResourceGroup* Textures; //10
-        public ResourceGroup* Palettes; //11
+        public ResourceGroup* Shaders;   //4
+        public ResourceGroup* Objects;   //5
+        public ResourceGroup* Textures;  //10
+        public ResourceGroup* Palettes;  //11
         public ResourceGroup* FurVectors;
         public ResourceGroup* FurLayerCoords;
 
@@ -187,12 +187,12 @@ namespace BrawlLib.Wii.Models
                 if (remake)
                 {
                     BoneCache = Model._boneGroup.FindChildrenByType(null, ResourceType.MDL0Bone)
-                                     .Select(x => x as MDL0BoneNode).ToArray();
+                        .Select(x => x as MDL0BoneNode).ToArray();
                 }
                 else
                 {
                     BoneCache = Model._boneGroup.FindChildrenByType(null, ResourceType.MDL0Bone)
-                                     .Select(x => x as MDL0BoneNode).OrderBy(x => x.BoneIndex).ToArray();
+                        .Select(x => x as MDL0BoneNode).OrderBy(x => x.BoneIndex).ToArray();
                 }
             }
             else

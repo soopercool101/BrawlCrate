@@ -9,19 +9,19 @@ namespace BrawlLib.SSBBTypes
         public const uint Size = 0x30;
         public const uint Tag = 0x00504854;
 
-        public BinTag _tag; // "THP\0"
-        public buint _version; // version number
-        public buint _bufSize; // max frame size for buffer computation
+        public BinTag _tag;            // "THP\0"
+        public buint _version;         // version number
+        public buint _bufSize;         // max frame size for buffer computation
         public buint _audioMaxSamples; // max samples of audio data
 
-        public bfloat _frameRate; // frame per seconds
-        public buint _numFrames; // frame count
+        public bfloat _frameRate;     // frame per seconds
+        public buint _numFrames;      // frame count
         public buint _firstFrameSize; // how much to load
-        public buint _movieDataSize; // file size
+        public buint _movieDataSize;  // file size
 
-        public buint _compInfoDataOffsets; // offset to component infomation data
-        public buint _offsetDataOffsets; // offset to array of frame offsets
-        public buint _movieDataOffsets; // offset to first frame (start of movie data) 
+        public buint _compInfoDataOffsets;   // offset to component infomation data
+        public buint _offsetDataOffsets;     // offset to array of frame offsets
+        public buint _movieDataOffsets;      // offset to first frame (start of movie data) 
         public buint _finalFrameDataOffsets; // offset to final frame
 
         private VoidPtr Address
@@ -65,7 +65,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal unsafe struct THPFrameCompInfo
     {
-        public buint _numComponents; // a number of Components in a frame
+        public buint _numComponents;      // a number of Components in a frame
         public fixed byte _frameComp[16]; // kind of Components
     }
 

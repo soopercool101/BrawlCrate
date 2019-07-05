@@ -55,10 +55,10 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 0x10;
 
-        public bshort _brresID1; //-1 if no brres, otherwise brres ID
-        public bshort _brresID2; //brres ID
+        public bshort _brresID1;   //-1 if no brres, otherwise brres ID
+        public bshort _brresID2;   //brres ID
         public bint _stringOffset; //From file, 0 is empty string
-        public bint _re3dOffset; //From file
+        public bint _re3dOffset;   //From file
         public int _unk;
 
         public EFLSEntry(int id1, int id2, int stringOffset, int unk)

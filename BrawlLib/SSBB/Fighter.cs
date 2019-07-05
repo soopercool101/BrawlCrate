@@ -7,6 +7,7 @@
         /// See: http://opensa.dantarion.com/wiki/Character_Slots
         /// </summary>
         public uint ID { get; private set; }
+
         /// <summary>
         /// The fighter name (e.g. "Yoshi").
         /// </summary>
@@ -26,7 +27,7 @@
         public static readonly Fighter[] Fighters = new Fighter[]
         {
             //          ID     Display Name     
-			new Fighter(0x00, "Mario"),
+            new Fighter(0x00, "Mario"),
             new Fighter(0x01, "Donkey Kong"),
             new Fighter(0x02, "Link"),
             new Fighter(0x03, "Samus"),

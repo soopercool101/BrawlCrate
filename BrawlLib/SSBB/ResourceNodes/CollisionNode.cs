@@ -13,9 +13,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class CollisionNode : ARCEntryNode
     {
-        internal CollisionHeader* Header => (CollisionHeader*)WorkingUncompressed.Address;
+        internal CollisionHeader* Header => (CollisionHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
-        public override Type[] AllowedChildTypes => new Type[] { typeof(CollisionObject) };
+        public override Type[] AllowedChildTypes => new Type[] {typeof(CollisionObject)};
 
         [Browsable(false)]
         public bool IsRendering
@@ -101,7 +101,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            CollisionHeader* header = (CollisionHeader*)address;
+            CollisionHeader* header = (CollisionHeader*) address;
             *header = new CollisionHeader(_pointCount, _planeCount, Children.Count, _unk1);
 
             BVec2* pPoint = header->Points;
@@ -179,7 +179,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 }
                                 else
                                 {
-                                    pPlane[rlink = tmp]._link1 = (short)iPlane; //Left link, which means the end!
+                                    pPlane[rlink = tmp]._link1 = (short) iPlane; //Left link, which means the end!
                                 }
                             }
                             else
@@ -239,7 +239,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source)
         {
-            CollisionHeader* header = (CollisionHeader*)source.Address;
+            CollisionHeader* header = (CollisionHeader*) source.Address;
 
             if (header->_numPoints < 0 || header->_numPlanes < 0 || header->_numObjects < 0 || header->_unk1 < 0)
             {
@@ -275,7 +275,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (CollisionNode)NodeFactory.FromFile(null, o.FileName)) != null)
+                if ((external = (CollisionNode) NodeFactory.FromFile(null, o.FileName)) != null)
                 {
                     MergeWith(external);
                 }
@@ -343,7 +343,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
         }
 
-        internal ColObject* Header => (ColObject*)WorkingUncompressed.Address;
+        internal ColObject* Header => (ColObject*) WorkingUncompressed.Address;
 
         public override bool OnInitialize()
         {
@@ -353,7 +353,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unk1 = Header->_unk1;
             _unk2 = Header->_unk2;
             _unk3 = Header->_unk3;
-            _flags = (ushort)Header->_flags;
+            _flags = (ushort) Header->_flags;
             _unk5 = Header->_unk5;
             _unk6 = Header->_unk6;
             _boneIndex = Header->_boneIndex;
@@ -439,6 +439,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 l.Render();
             }
         }
+
         public override unsafe void Export(string outPath)
         {
             if (outPath.EndsWith(".coll", StringComparison.OrdinalIgnoreCase))
@@ -448,6 +449,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 node.Export(outPath);
                 return;
             }
+
             base.Export(outPath);
         }
     }
@@ -820,8 +822,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return angle < 0 ? CollisionPlaneType.RightWall : CollisionPlaneType.LeftWall;
         }
 
-        public bool CollidableByCharacters => !IsNone && (IsCharacters || (!IsPokemonTrainer && !IsItems));
-        
+        public bool CollidableByCharacters => !IsNone && (IsCharacters || !IsPokemonTrainer && !IsItems);
+
         public bool IsCharacters
         {
             get => (_flags2 & CollisionPlaneFlags2.Characters) != 0;
@@ -912,6 +914,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 return yDiff > 0 ? Math.PI / 2 : -Math.PI / 2;
             }
+
             if (yDiff == 0.0f)
             {
                 return xDiff > 0 ? 0 : Math.PI;

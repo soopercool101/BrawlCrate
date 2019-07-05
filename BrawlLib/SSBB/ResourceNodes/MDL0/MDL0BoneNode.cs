@@ -1121,7 +1121,7 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             Vector3 rot = ((int) BillboardSetting & 1) == 0
                 ? //If perspective
                 worldState.Translate.LookatAngles(camPoint) * Maths._rad2degf
-                : //Point at camera position
+                :       //Point at camera position
                 camRot; //Set parallel to the camera
 
             switch (BillboardSetting)

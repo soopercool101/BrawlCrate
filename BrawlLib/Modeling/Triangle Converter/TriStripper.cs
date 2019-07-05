@@ -624,7 +624,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 case TriOrder.ABC: return new TriangleEdge(Triangle.A, Triangle.B);
                 case TriOrder.BCA: return new TriangleEdge(Triangle.B, Triangle.C);
                 case TriOrder.CAB: return new TriangleEdge(Triangle.C, Triangle.A);
-                default: return new TriangleEdge(0, 0);
+                default:           return new TriangleEdge(0, 0);
             }
         }
 
@@ -635,7 +635,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
                 case TriOrder.ABC: return new TriangleEdge(Triangle.B, Triangle.C);
                 case TriOrder.BCA: return new TriangleEdge(Triangle.C, Triangle.A);
                 case TriOrder.CAB: return new TriangleEdge(Triangle.A, Triangle.B);
-                default: return new TriangleEdge(0, 0);
+                default:           return new TriangleEdge(0, 0);
             }
         }
 

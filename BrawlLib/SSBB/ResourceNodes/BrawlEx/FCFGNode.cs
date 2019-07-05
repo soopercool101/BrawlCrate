@@ -8,35 +8,42 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class FCFGNode : ResourceNode
     {
-        internal FCFG* Header => (FCFG*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.FCFG;
+        internal FCFG* Header => (FCFG*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.FCFG;
 
-        public uint _tag;                               // 0x00 - Uneditable; FCFG (Or FITC)
-        public uint _size;                              // 0x04 - Uneditable; Should be "100"
-        public uint _version;                           // 0x08 - Version; Only parses "2" currently
-        public byte _editFlag1;                         // 0x0C - Unused?
-        public byte _editFlag2;                         // 0x0D - Unused?
-        public byte _editFlag3;                         // 0X0E - Unused?
-        public byte _editFlag4;                         // 0X0F - Unused?
-        public byte _kirbyCopyColorFlags;               // 0x10 - 0 = No file; 1 = Per Color files; 2: One Kirby file
-        public byte _entryColorFlags;                   // 0x11
-        public byte _resultColorFlags;                  // 0x12
-        public CharacterLoadFlags _characterLoadFlags;  // 0x13 - http://opensa.dantarion.com/wiki/Load_Flags
-        public byte _finalSmashColorFlags;              // 0x14 - 0x00 = no file; 0x01 = per color files; 
-        public byte _unknown0x15;                       // 0x15
-        public CostumeLoadFlags _colorFlags;            // 0x16
-        public uint _entryArticleFlag;                  // 0x18
-        public uint _soundbank;                         // 0x1C - Parse as list
-        public uint _kirbySoundbank;                    // 0x20
-        public uint _unknown0x24;                       // 0x24
-        public uint _unknown0x28;                       // 0x28
-        public uint _unknown0x2C;                       // 0x2C
+        public uint _tag;                              // 0x00 - Uneditable; FCFG (Or FITC)
+        public uint _size;                             // 0x04 - Uneditable; Should be "100"
+        public uint _version;                          // 0x08 - Version; Only parses "2" currently
+        public byte _editFlag1;                        // 0x0C - Unused?
+        public byte _editFlag2;                        // 0x0D - Unused?
+        public byte _editFlag3;                        // 0X0E - Unused?
+        public byte _editFlag4;                        // 0X0F - Unused?
+        public byte _kirbyCopyColorFlags;              // 0x10 - 0 = No file; 1 = Per Color files; 2: One Kirby file
+        public byte _entryColorFlags;                  // 0x11
+        public byte _resultColorFlags;                 // 0x12
+        public CharacterLoadFlags _characterLoadFlags; // 0x13 - http://opensa.dantarion.com/wiki/Load_Flags
+        public byte _finalSmashColorFlags;             // 0x14 - 0x00 = no file; 0x01 = per color files; 
+        public byte _unknown0x15;                      // 0x15
+        public CostumeLoadFlags _colorFlags;           // 0x16
+        public uint _entryArticleFlag;                 // 0x18
+        public uint _soundbank;                        // 0x1C - Parse as list
+        public uint _kirbySoundbank;                   // 0x20
+        public uint _unknown0x24;                      // 0x24
+        public uint _unknown0x28;                      // 0x28
+        public uint _unknown0x2C;                      // 0x2C
 
         // Name stuff. Name should be no more than 16 characters (technical max for filenames is 20 but internal name lowers the limit)
-        public byte[] _pacNameArray = new byte[48];     // 0x30 - 48 characters; Auto generate from name: (name-lower)/Fit(name).pac
-        public byte[] _kirbyPacNameArray = new byte[48];// 0x60 - 48 characters; Auto generate from name: kirby/FitKirby(name).pac
-        public byte[] _moduleNameArray = new byte[32];  // 0x90 - 32 characters; Auto generate from name: ft_(name-lower).rel
-        public byte[] _internalNameArray = new byte[16];// 0xB0 - 16 characters; Auto generate from name: (name-upper)
+        public byte[]
+            _pacNameArray = new byte[48]; // 0x30 - 48 characters; Auto generate from name: (name-lower)/Fit(name).pac
+
+        public byte[]
+            _kirbyPacNameArray =
+                new byte[48]; // 0x60 - 48 characters; Auto generate from name: kirby/FitKirby(name).pac
+
+        public byte[]
+            _moduleNameArray = new byte[32]; // 0x90 - 32 characters; Auto generate from name: ft_(name-lower).rel
+
+        public byte[] _internalNameArray = new byte[16]; // 0xB0 - 16 characters; Auto generate from name: (name-upper)
 
         // Strings
         public string _fighterName;
@@ -46,23 +53,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         public string _internalName;
 
         // IC Constants
-        public uint _jabFlag;                           // 0xC0 - Usage unknown
-        public uint _jabCount;                          // 0xC4 - Number of jabs in combo
-        public uint _hasRapidJab;                       // 0xC8 - Whether the fighter has a rapid jab
-        public uint _canTilt;                           // 0xCC - Whether the fighter can angle their forward tilt attack
-        public uint _fSmashCount;                       // 0xD0 - Number of attacks in Fsmash chain
-        public uint _airJumpCount;                      // 0xD4 - Number of mid-air jumps the fighter has
-        public uint _canGlide;                          // 0xD8 - Whether the fighter can glide
-        public uint _canCrawl;                          // 0xDC - Whether the fighter can crawl
-        public uint _dashAttackIntoCrouch;              // 0xE0 - Whether the fighter's dash attack puts them in a crouching position
-        public uint _canWallJump;                       // 0xE4 - Whether the fighter can jump off walls
-        public uint _canCling;                          // 0xE8 - Whether the fighter can cling to walls
-        public uint _canZAir;                           // 0xEC - Whether the fighter can use an aerial tether
-        public uint _u12Flag;                           // 0xF0 - Usage unknown
-        public uint _u13Flag;                           // 0xF4 - Usage unknown
+        public uint _jabFlag;              // 0xC0 - Usage unknown
+        public uint _jabCount;             // 0xC4 - Number of jabs in combo
+        public uint _hasRapidJab;          // 0xC8 - Whether the fighter has a rapid jab
+        public uint _canTilt;              // 0xCC - Whether the fighter can angle their forward tilt attack
+        public uint _fSmashCount;          // 0xD0 - Number of attacks in Fsmash chain
+        public uint _airJumpCount;         // 0xD4 - Number of mid-air jumps the fighter has
+        public uint _canGlide;             // 0xD8 - Whether the fighter can glide
+        public uint _canCrawl;             // 0xDC - Whether the fighter can crawl
+        public uint _dashAttackIntoCrouch; // 0xE0 - Whether the fighter's dash attack puts them in a crouching position
+        public uint _canWallJump;          // 0xE4 - Whether the fighter can jump off walls
+        public uint _canCling;             // 0xE8 - Whether the fighter can cling to walls
+        public uint _canZAir;              // 0xEC - Whether the fighter can use an aerial tether
+        public uint _u12Flag;              // 0xF0 - Usage unknown
+        public uint _u13Flag;              // 0xF4 - Usage unknown
 
-        public uint _textureLoad;                       // 0xF8 - 0/1/2/3/4/5
-        public uint _aiController;                      // 0xFC
+        public uint _textureLoad;  // 0xF8 - 0/1/2/3/4/5
+        public uint _aiController; // 0xFC
 
         [Browsable(false)]
         [Flags]
@@ -95,6 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             CostumeFlag11 = 0x0800,
             UnknownFlag_A = 0x1000,
             UnknownFlag_B = 0x2000,
+
             // Theoretical Flags
             UnknownFlag_C = 0x4000,
             UnknownFlag_D = 0x8000
@@ -134,7 +142,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             MultiAirJump = 0x00000002
         }
 
-        [Category("\t\tFighter"), Description("The fighter's file name. Editing this will automatically change the other properties in the fighter group.")]
+        [Category("\t\tFighter")]
+        [Description(
+            "The fighter's file name. Editing this will automatically change the other properties in the fighter group.")]
         [DisplayName("Fighter File Name")]
         public string FighterName
         {
@@ -161,7 +171,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\t\tFighter"), Description("This is changed automatically when the fighter name is changed (So change that first)")]
+        [Category("\t\tFighter")]
+        [Description("This is changed automatically when the fighter name is changed (So change that first)")]
         [DisplayName("Pac File Name")]
         public string PacName
         {
@@ -184,7 +195,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\t\tFighter"), Description("This is changed automatically when the fighter name is changed (So change that first)")]
+        [Category("\t\tFighter")]
+        [Description("This is changed automatically when the fighter name is changed (So change that first)")]
         [DisplayName("Kirby Pac File Name")]
         public string KirbyPacName
         {
@@ -207,7 +219,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\t\tFighter"), Description("This is changed automatically when the fighter name is changed (So change that first)")]
+        [Category("\t\tFighter")]
+        [Description("This is changed automatically when the fighter name is changed (So change that first)")]
         [DisplayName("Module File Name")]
         public string ModuleName
         {
@@ -231,16 +244,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public bool _hasInternalName = true;
+
         [Browsable(false)]
-        [Category("\t\tFighter"), Description("Whether or not the fighter has an internal name. Never appears to be set to false.")]
+        [Category("\t\tFighter")]
+        [Description("Whether or not the fighter has an internal name. Never appears to be set to false.")]
         [DisplayName("Has Internal Name")]
         public bool HasInternalName
         {
             get => _hasInternalName;
-            set { _hasInternalName = value; SignalPropertyChange(); }
+            set
+            {
+                _hasInternalName = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("\t\tFighter"), Description("This is changed automatically when the fighter name is changed (So change that first)")]
+        [Category("\t\tFighter")]
+        [Description("This is changed automatically when the fighter name is changed (So change that first)")]
         [DisplayName("Internal Fighter Name")]
         public string InternalFighterName
         {
@@ -283,7 +303,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         [DisplayName("Automatic Internal Fighter Name")]
         public string AutoInternalFighterName => _fighterName.ToUpper();
 
-        [Category("\tAbilities"), Description("Specifies whether the fighter can crawl.")]
+        [Category("\tAbilities")]
+        [Description("Specifies whether the fighter can crawl.")]
         [DisplayName("Can Crawl")]
         public bool CanCrawl
         {
@@ -295,7 +316,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tAbilities"), Description("Specifies whether the fighter can angle their forward tilt attack.")]
+        [Category("\tAbilities")]
+        [Description("Specifies whether the fighter can angle their forward tilt attack.")]
         [DisplayName("Can Angle Forward Tilt")]
         public bool CanFTilt
         {
@@ -307,7 +329,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tAbilities"), Description("Specifies whether the fighter can glide.")]
+        [Category("\tAbilities")]
+        [Description("Specifies whether the fighter can glide.")]
         [DisplayName("Can Glide")]
         public bool CanGlide
         {
@@ -319,7 +342,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tAbilities"), Description("Specifies whether the fighter can cling to walls.")]
+        [Category("\tAbilities")]
+        [Description("Specifies whether the fighter can cling to walls.")]
         [DisplayName("Can Wall Cling")]
         public bool CanWallCling
         {
@@ -331,7 +355,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tAbilities"), Description("Specifies whether the fighter can wall jump.")]
+        [Category("\tAbilities")]
+        [Description("Specifies whether the fighter can wall jump.")]
         [DisplayName("Can Wall Jump")]
         public bool CanWallJump
         {
@@ -343,7 +368,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tAbilities"), Description("Specifies whether the fighter can execute an aerial tether using Z.")]
+        [Category("\tAbilities")]
+        [Description("Specifies whether the fighter can execute an aerial tether using Z.")]
         [DisplayName("Can Z-Air")]
         public bool CanZAir
         {
@@ -356,19 +382,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(true)]
-        [Category("\tCharacteristics"), Description("Specifies the number of mid-air jumps for the fighter.")]
+        [Category("\tCharacteristics")]
+        [Description("Specifies the number of mid-air jumps for the fighter.")]
         [DisplayName("Air Jump Count")]
         public AirJumpFlags AirJumpCount
         {
-            get => (AirJumpFlags)_airJumpCount;
+            get => (AirJumpFlags) _airJumpCount;
             set
             {
-                _airJumpCount = (uint)value;
+                _airJumpCount = (uint) value;
                 SignalPropertyChange();
             }
         }
 
-        [Category("\tCharacteristics"), Description("Specifies whether the fighter will enter the crouch position after a dash attack.")]
+        [Category("\tCharacteristics")]
+        [Description("Specifies whether the fighter will enter the crouch position after a dash attack.")]
         [DisplayName("Dash Attack Into Crouch")]
         public bool DAIntoCrouch
         {
@@ -380,7 +408,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tCharacteristics"), Description("Specifies how many times the fighter can chain their forward smash.")]
+        [Category("\tCharacteristics")]
+        [Description("Specifies how many times the fighter can chain their forward smash.")]
         [DisplayName("Forward Smash Count")]
         public uint FSmashCount
         {
@@ -392,7 +421,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tCharacteristics"), Description("Specifies whether the fighter will use a rapid jab at the end of their jab combo.")]
+        [Category("\tCharacteristics")]
+        [Description("Specifies whether the fighter will use a rapid jab at the end of their jab combo.")]
         [DisplayName("Has Rapid Jab")]
         public bool HasRapidJab
         {
@@ -405,7 +435,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
 
-        [Category("\tCharacteristics"), Description("Specifies the number of hits for the fighter's jab combo.")]
+        [Category("\tCharacteristics")]
+        [Description("Specifies the number of hits for the fighter's jab combo.")]
         [DisplayName("Jab Count")]
         public uint JabCount
         {
@@ -417,7 +448,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tCharacteristics"), Description("Usage Unknown.")]
+        [Category("\tCharacteristics")]
+        [Description("Usage Unknown.")]
         [DisplayName("Jab Flag")]
         public string JabFlag
         {
@@ -436,7 +468,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume00
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag00) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag00) | (value ? CostumeLoadFlags.CostumeFlag00 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag00) |
+                              (value ? CostumeLoadFlags.CostumeFlag00 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -444,7 +481,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume01
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag01) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag01) | (value ? CostumeLoadFlags.CostumeFlag01 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag01) |
+                              (value ? CostumeLoadFlags.CostumeFlag01 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -452,7 +494,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume02
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag02) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag02) | (value ? CostumeLoadFlags.CostumeFlag02 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag02) |
+                              (value ? CostumeLoadFlags.CostumeFlag02 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -460,7 +507,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume03
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag03) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag03) | (value ? CostumeLoadFlags.CostumeFlag03 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag03) |
+                              (value ? CostumeLoadFlags.CostumeFlag03 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -468,7 +520,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume04
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag04) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag04) | (value ? CostumeLoadFlags.CostumeFlag04 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag04) |
+                              (value ? CostumeLoadFlags.CostumeFlag04 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -476,7 +533,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume05
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag05) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag05) | (value ? CostumeLoadFlags.CostumeFlag05 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag05) |
+                              (value ? CostumeLoadFlags.CostumeFlag05 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -484,7 +546,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume06
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag06) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag06) | (value ? CostumeLoadFlags.CostumeFlag06 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag06) |
+                              (value ? CostumeLoadFlags.CostumeFlag06 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -492,7 +559,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume07
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag07) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag07) | (value ? CostumeLoadFlags.CostumeFlag07 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag07) |
+                              (value ? CostumeLoadFlags.CostumeFlag07 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -500,7 +572,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume08
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag08) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag08) | (value ? CostumeLoadFlags.CostumeFlag08 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag08) |
+                              (value ? CostumeLoadFlags.CostumeFlag08 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -508,7 +585,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume09
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag09) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag09) | (value ? CostumeLoadFlags.CostumeFlag09 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag09) |
+                              (value ? CostumeLoadFlags.CostumeFlag09 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -516,7 +598,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume10
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag10) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag10) | (value ? CostumeLoadFlags.CostumeFlag10 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag10) |
+                              (value ? CostumeLoadFlags.CostumeFlag10 : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Category("\tCostumes")]
@@ -524,110 +611,175 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool HasCostume11
         {
             get => (_colorFlags & CostumeLoadFlags.CostumeFlag11) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag11) | (value ? CostumeLoadFlags.CostumeFlag11 : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.CostumeFlag11) |
+                              (value ? CostumeLoadFlags.CostumeFlag11 : 0);
+                SignalPropertyChange();
+            }
         }
 
-        [Category("\tCostumes"), Description("Normally set to True for every character except Mr. Game & Watch.")]
+        [Category("\tCostumes")]
+        [Description("Normally set to True for every character except Mr. Game & Watch.")]
         [DisplayName("Unknown Flag A")]
         public bool UnknownFlagA
         {
             get => (_colorFlags & CostumeLoadFlags.UnknownFlag_A) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_A) | (value ? CostumeLoadFlags.UnknownFlag_A : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_A) |
+                              (value ? CostumeLoadFlags.UnknownFlag_A : 0);
+                SignalPropertyChange();
+            }
         }
 
-        [Category("\tCostumes"), Description("Usage unknown.")]
+        [Category("\tCostumes")]
+        [Description("Usage unknown.")]
         [DisplayName("Unknown Flag B")]
         public bool UnknownFlagB
         {
             get => (_colorFlags & CostumeLoadFlags.UnknownFlag_B) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_B) | (value ? CostumeLoadFlags.UnknownFlag_B : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_B) |
+                              (value ? CostumeLoadFlags.UnknownFlag_B : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Browsable(false)]
-        [Category("\tCostumes"), Description("Usage unknown. Theoretical.")]
+        [Category("\tCostumes")]
+        [Description("Usage unknown. Theoretical.")]
         [DisplayName("Unknown Flag C")]
         public bool UnknownFlagC
         {
             get => (_colorFlags & CostumeLoadFlags.UnknownFlag_C) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_C) | (value ? CostumeLoadFlags.UnknownFlag_C : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_C) |
+                              (value ? CostumeLoadFlags.UnknownFlag_C : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Browsable(false)]
-        [Category("\tCostumes"), Description("Usage unknown. Theoretical.")]
+        [Category("\tCostumes")]
+        [Description("Usage unknown. Theoretical.")]
         [DisplayName("Unknown Flag D")]
         public bool UnknownFlagD
         {
             get => (_colorFlags & CostumeLoadFlags.UnknownFlag_D) != 0;
-            set { _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_D) | (value ? CostumeLoadFlags.UnknownFlag_D : 0); SignalPropertyChange(); }
+            set
+            {
+                _colorFlags = (_colorFlags & ~CostumeLoadFlags.UnknownFlag_D) |
+                              (value ? CostumeLoadFlags.UnknownFlag_D : 0);
+                SignalPropertyChange();
+            }
         }
 
         public bool _hasPac = true;
-        [Category("\tResources"), Description("Whether or not the fighter has a .pac file. Normally only set to false for unused characters.")]
+
+        [Category("\tResources")]
+        [Description("Whether or not the fighter has a .pac file. Normally only set to false for unused characters.")]
         [DisplayName("Has Pac")]
         public bool HasPac
         {
             get => _hasPac;
-            set { _hasPac = value; SignalPropertyChange(); }
+            set
+            {
+                _hasPac = value;
+                SignalPropertyChange();
+            }
         }
 
         public bool _hasModule = true;
-        [Category("\tResources"), Description("Whether or not the fighter has a .rel file. Normally only set to false for unused characters.")]
+
+        [Category("\tResources")]
+        [Description("Whether or not the fighter has a .rel file. Normally only set to false for unused characters.")]
         [DisplayName("Has Module")]
         public bool HasModule
         {
             get => _hasModule;
-            set { _hasModule = value; SignalPropertyChange(); }
+            set
+            {
+                _hasModule = value;
+                SignalPropertyChange();
+            }
         }
 
-        [Category("\tResources"), Description("Use one MotionEtc file instead of splitting them.")]
+        [Category("\tResources")]
+        [Description("Use one MotionEtc file instead of splitting them.")]
         [DisplayName("Merge Motion/Etc.")]
         public bool MergeMotionEtc
         {
             get => (_characterLoadFlags & CharacterLoadFlags.MergeMotionEtcFlag) != 0;
-            set { _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.MergeMotionEtcFlag) | (value ? CharacterLoadFlags.MergeMotionEtcFlag : 0); SignalPropertyChange(); }
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.MergeMotionEtcFlag) |
+                                      (value ? CharacterLoadFlags.MergeMotionEtcFlag : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Browsable(true)]
-        [Category("\tResources"), Description("What (if any) FitEntry files will be loaded.")]
+        [Category("\tResources")]
+        [Description("What (if any) FitEntry files will be loaded.")]
         [TypeConverter(typeof(EnumConverter))]
         [DisplayName("Entry Load Type")]
         public EntryResultLoadFlags EntryLoadType
         {
-            get => (EntryResultLoadFlags)_entryColorFlags;
-            set { _entryColorFlags = (byte)value; SignalPropertyChange(); }
+            get => (EntryResultLoadFlags) _entryColorFlags;
+            set
+            {
+                _entryColorFlags = (byte) value;
+                SignalPropertyChange();
+            }
         }
 
         [Browsable(true)]
-        [Category("\tResources"), Description("What (if any) FitResult files will be loaded.")]
+        [Category("\tResources")]
+        [Description("What (if any) FitResult files will be loaded.")]
         [TypeConverter(typeof(EnumConverter))]
         [DisplayName("Results Load Type")]
         public EntryResultLoadFlags ResultLoadType
         {
-            get => (EntryResultLoadFlags)_resultColorFlags;
-            set { _resultColorFlags = (byte)value; SignalPropertyChange(); }
+            get => (EntryResultLoadFlags) _resultColorFlags;
+            set
+            {
+                _resultColorFlags = (byte) value;
+                SignalPropertyChange();
+            }
         }
 
         // Set automatically by the Kirby Load Type
         public bool _hasKirbyHat = true;
+
         [Browsable(false)]
-        [Category("\tResources"), Description("Whether or not the fighter has a Kirby hat. Normally set to false for characters like Giga Bowser, WarioMan, or the Alloys.")]
+        [Category("\tResources")]
+        [Description(
+            "Whether or not the fighter has a Kirby hat. Normally set to false for characters like Giga Bowser, WarioMan, or the Alloys.")]
         [DisplayName("Has Kirby Hat")]
         public bool HasKirbyHat
         {
             get => _hasKirbyHat;
-            set { _hasKirbyHat = value; SignalPropertyChange(); }
+            set
+            {
+                _hasKirbyHat = value;
+                SignalPropertyChange();
+            }
         }
 
         [Browsable(true)]
-        [Category("\tResources"), Description("What (if any) Kirby Hat files will be loaded.")]
+        [Category("\tResources")]
+        [Description("What (if any) Kirby Hat files will be loaded.")]
         [TypeConverter(typeof(EnumConverter))]
         [DisplayName("Kirby Hat Load Type")]
         public KirbyLoadFlags KirbyLoadType
         {
-            get => (KirbyLoadFlags)_kirbyCopyColorFlags;
+            get => (KirbyLoadFlags) _kirbyCopyColorFlags;
             set
             {
-                _kirbyCopyColorFlags = (byte)value;
+                _kirbyCopyColorFlags = (byte) value;
                 if (_kirbyCopyColorFlags == 0x00)
                 {
                     HasKirbyHat = false;
@@ -642,24 +794,31 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Browsable(false)]
-        [Category("\tResources"), Description("Whether to load a FitFinal")]
+        [Category("\tResources")]
+        [Description("Whether to load a FitFinal")]
         [DisplayName("Load Final Smash")]
         public bool LoadFitFinal
         {
             get => (_characterLoadFlags & CharacterLoadFlags.FinalSmashFilesFlag) != 0;
-            set { _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.FinalSmashFilesFlag) | (value ? CharacterLoadFlags.FinalSmashFilesFlag : 0); SignalPropertyChange(); }
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.FinalSmashFilesFlag) |
+                                      (value ? CharacterLoadFlags.FinalSmashFilesFlag : 0);
+                SignalPropertyChange();
+            }
         }
 
         [Browsable(true)]
-        [Category("\tResources"), Description("What (if any) FitFinal files will be loaded.")]
+        [Category("\tResources")]
+        [Description("What (if any) FitFinal files will be loaded.")]
         [TypeConverter(typeof(EnumConverter))]
         [DisplayName("Final Load Type")]
         public FinalLoadFlags FinalLoadType
         {
-            get => (FinalLoadFlags)_finalSmashColorFlags;
+            get => (FinalLoadFlags) _finalSmashColorFlags;
             set
             {
-                _finalSmashColorFlags = (byte)value;
+                _finalSmashColorFlags = (byte) value;
                 if (_finalSmashColorFlags == 0x00)
                 {
                     LoadFitFinal = false;
@@ -673,15 +832,22 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tSound"), Description("Normally set to false for characters whose Final Smash is accompanied by music.")]
+        [Category("\tSound")]
+        [Description("Normally set to false for characters whose Final Smash is accompanied by music.")]
         [DisplayName("Final Smash Music Flag")]
         public bool FinalSmashMusic
         {
             get => (_characterLoadFlags & CharacterLoadFlags.FinalSmashMusicOffFlag) != 0;
-            set { _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.FinalSmashMusicOffFlag) | (value ? CharacterLoadFlags.FinalSmashMusicOffFlag : 0); SignalPropertyChange(); }
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.FinalSmashMusicOffFlag) |
+                                      (value ? CharacterLoadFlags.FinalSmashMusicOffFlag : 0);
+                SignalPropertyChange();
+            }
         }
 
-        [Category("\tSound"), Description("Specifies the sound bank that is loaded for the fighter.")]
+        [Category("\tSound")]
+        [Description("Specifies the sound bank that is loaded for the fighter.")]
         [DisplayName("Sound Bank")]
         public string SoundBank
         {
@@ -695,7 +861,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("\tSound"), Description("Specifies the sound bank that is loaded for the fighter.")]
+        [Category("\tSound")]
+        [Description("Specifies the sound bank that is loaded for the fighter.")]
         [DisplayName("Kirby Sound Bank")]
         public string KirbySoundBank
         {
@@ -722,7 +889,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Misc"), Description("Usage Unknown.")]
+        [Category("Misc")]
+        [Description("Usage Unknown.")]
         [DisplayName("Entry Flag")]
         public string EntryFlag
         {
@@ -736,15 +904,22 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Misc"), Description("Normally set to True for Ice Climbers and Olimar")]
+        [Category("Misc")]
+        [Description("Normally set to True for Ice Climbers and Olimar")]
         [DisplayName("Ik Physics Flag")]
         public bool IkPhysics
         {
             get => (_characterLoadFlags & CharacterLoadFlags.IkPhysicsFlag) != 0;
-            set { _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.IkPhysicsFlag) | (value ? CharacterLoadFlags.IkPhysicsFlag : 0); SignalPropertyChange(); }
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.IkPhysicsFlag) |
+                                      (value ? CharacterLoadFlags.IkPhysicsFlag : 0);
+                SignalPropertyChange();
+            }
         }
 
-        [Category("Misc"), Description("Specifies what Texture Loader to use when loading the fighter's entry articles.")]
+        [Category("Misc")]
+        [Description("Specifies what Texture Loader to use when loading the fighter's entry articles.")]
         [DisplayName("Texture Loader")]
         public string TextureLoader
         {
@@ -758,7 +933,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Misc"), Description("Usage Unknown.")]
+        [Category("Misc")]
+        [Description("Usage Unknown.")]
         [DisplayName("U12 Flag")]
         public string U12Flag
         {
@@ -772,7 +948,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Misc"), Description("Usage Unknown.")]
+        [Category("Misc")]
+        [Description("Usage Unknown.")]
         [DisplayName("U13 Flag")]
         public string U13Flag
         {
@@ -786,22 +963,28 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Misc"), Description("Normally set to False for Mario, Luigi, Popo, Nana, and Pit")]
+        [Category("Misc")]
+        [Description("Normally set to False for Mario, Luigi, Popo, Nana, and Pit")]
         [DisplayName("Work Manage Flag")]
         public bool WorkManage
         {
             get => (_characterLoadFlags & CharacterLoadFlags.WorkManageFlag) != 0;
-            set { _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.WorkManageFlag) | (value ? CharacterLoadFlags.WorkManageFlag : 0); SignalPropertyChange(); }
+            set
+            {
+                _characterLoadFlags = (_characterLoadFlags & ~CharacterLoadFlags.WorkManageFlag) |
+                                      (value ? CharacterLoadFlags.WorkManageFlag : 0);
+                SignalPropertyChange();
+            }
         }
 
-        public override int OnCalculateSize(bool force, bool rebuilding = true)
+        public override int OnCalculateSize(bool force)
         {
             return FCFG.Size;
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            FCFG* hdr = (FCFG*)address;
+            FCFG* hdr = (FCFG*) address;
             hdr->_tag = FCFG.Tag1;
             hdr->_size = _size;
             hdr->_version = _version;
@@ -812,10 +995,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             hdr->_kirbyCopyColorFlags = _kirbyCopyColorFlags;
             hdr->_entryColorFlags = _entryColorFlags;
             hdr->_resultColorFlags = _resultColorFlags;
-            hdr->_characterLoadFlags = (byte)_characterLoadFlags;
+            hdr->_characterLoadFlags = (byte) _characterLoadFlags;
             hdr->_finalSmashColorFlags = _finalSmashColorFlags;
             hdr->_unknown0x15 = _unknown0x15;
-            hdr->_colorFlags = (ushort)_colorFlags;
+            hdr->_colorFlags = (ushort) _colorFlags;
             hdr->_entryArticleFlag = _entryArticleFlag;
             hdr->_soundbank = _soundbank;
             hdr->_kirbySoundbank = _kirbySoundbank;
@@ -911,10 +1094,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             _kirbyCopyColorFlags = Header->_kirbyCopyColorFlags;
             _entryColorFlags = Header->_entryColorFlags;
             _resultColorFlags = Header->_resultColorFlags;
-            _characterLoadFlags = (CharacterLoadFlags)Header->_characterLoadFlags;
+            _characterLoadFlags = (CharacterLoadFlags) Header->_characterLoadFlags;
             _finalSmashColorFlags = Header->_finalSmashColorFlags;
             _unknown0x15 = Header->_unknown0x15;
-            _colorFlags = (CostumeLoadFlags)((ushort)Header->_colorFlags);
+            _colorFlags = (CostumeLoadFlags) (ushort) Header->_colorFlags;
             _entryArticleFlag = Header->_entryArticleFlag;
             _soundbank = Header->_soundbank;
             _kirbySoundbank = Header->_kirbySoundbank;
@@ -942,15 +1125,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _internalNameArray[i] = Header->_internalNameArray[i];
             }
 
-            _pacName = System.Text.Encoding.UTF8.GetString(_pacNameArray).Substring(0, System.Text.Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0')).TrimEnd(new char[] { '\0' });
-            _kirbyPacName = System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).Substring(0, System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0')).TrimEnd(new char[] { '\0' });
-            _moduleName = System.Text.Encoding.UTF8.GetString(_moduleNameArray).Substring(0, System.Text.Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0')).TrimEnd(new char[] { '\0' });
-            _internalName = System.Text.Encoding.UTF8.GetString(_internalNameArray).Substring(0, System.Text.Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0')).TrimEnd(new char[] { '\0' });
+            _pacName = System.Text.Encoding.UTF8.GetString(_pacNameArray)
+                .Substring(0, System.Text.Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0'))
+                .TrimEnd(new char[] {'\0'});
+            _kirbyPacName = System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray)
+                .Substring(0, System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0'))
+                .TrimEnd(new char[] {'\0'});
+            _moduleName = System.Text.Encoding.UTF8.GetString(_moduleNameArray)
+                .Substring(0, System.Text.Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0'))
+                .TrimEnd(new char[] {'\0'});
+            _internalName = System.Text.Encoding.UTF8.GetString(_internalNameArray)
+                .Substring(0, System.Text.Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0'))
+                .TrimEnd(new char[] {'\0'});
             try
             {
                 if (_pacName.ToUpper().LastIndexOf(".PAC") > 0 && _pacName.ToUpper().Contains("/FIT"))
                 {
-                    _fighterName = _pacName.Substring(_pacName.ToUpper().LastIndexOf("/FIT") + 4, _pacName.ToUpper().LastIndexOf(".PAC") - (_pacName.ToUpper().LastIndexOf("/FIT") + 4));
+                    _fighterName = _pacName.Substring(_pacName.ToUpper().LastIndexOf("/FIT") + 4,
+                        _pacName.ToUpper().LastIndexOf(".PAC") - (_pacName.ToUpper().LastIndexOf("/FIT") + 4));
                 }
                 else
                 {
@@ -961,22 +1153,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 _fighterName = _internalName;
             }
-            if (System.Text.Encoding.UTF8.GetString(_pacNameArray).ToUpper().TrimEnd(new char[] { '\0' }).EndsWith("\0X"))
+
+            if (System.Text.Encoding.UTF8.GetString(_pacNameArray).ToUpper().TrimEnd(new char[] {'\0'}).EndsWith("\0X"))
             {
                 _hasPac = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).ToUpper().TrimEnd(new char[] { '\0' }).EndsWith("\0X"))
+            if (System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).ToUpper().TrimEnd(new char[] {'\0'})
+                .EndsWith("\0X"))
             {
                 _hasKirbyHat = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_moduleNameArray).ToUpper().TrimEnd(new char[] { '\0' }).EndsWith("\0X"))
+            if (System.Text.Encoding.UTF8.GetString(_moduleNameArray).ToUpper().TrimEnd(new char[] {'\0'})
+                .EndsWith("\0X"))
             {
                 _hasModule = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_internalNameArray).ToUpper().TrimEnd(new char[] { '\0' }).EndsWith("\0X"))
+            if (System.Text.Encoding.UTF8.GetString(_internalNameArray).ToUpper().TrimEnd(new char[] {'\0'})
+                .EndsWith("\0X"))
             {
                 _hasInternalName = false;
             }
@@ -999,7 +1195,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _textureLoad = Header->_textureLoad;
             _aiController = Header->_aiController;
 
-            if ((_name == null) && (_origPath != null))
+            if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
@@ -1007,6 +1203,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return (((FCFG*)source.Address)->_tag == FCFG.Tag1 || ((FCFG*)source.Address)->_tag == FCFG.Tag2) ? new FCFGNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((FCFG*) source.Address)->_tag == FCFG.Tag1 || ((FCFG*) source.Address)->_tag == FCFG.Tag2
+                ? new FCFGNode()
+                : null;
+        }
     }
 }

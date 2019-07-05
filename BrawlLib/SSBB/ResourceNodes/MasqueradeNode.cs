@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MasqueradeNode : ResourceNode
     {
         internal VoidPtr Header => WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MASQ;
+        public override ResourceType ResourceFileType => ResourceType.MASQ;
 
         public byte _cosmeticSlot; // Recieved from filename since it isn't referenced internally
         public static readonly byte Size = 0x66;
@@ -111,10 +111,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             MasqueradeEntryNode end = new MasqueradeEntryNode(true);
-            for (int i = 0; i < MasqueradeNode.Size / 2; i++)
+            for (int i = 0; i < Size / 2; i++)
             {
-                new MasqueradeEntryNode().Initialize(this, new DataSource((Header)[i, 2], 2));
-                MasqueradeEntryNode m = (MasqueradeEntryNode)Children[Children.Count - 1];
+                new MasqueradeEntryNode().Initialize(this, new DataSource(Header[i, 2], 2));
+                MasqueradeEntryNode m = (MasqueradeEntryNode) Children[Children.Count - 1];
                 if (m.Color == end.Color && m.CostumeID == end.CostumeID)
                 {
                     RemoveChild(m);
@@ -133,6 +133,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 r.Rebuild(address + offset, 2, true);
                 offset += 2;
             }
+
             MasqueradeEntryNode end = new MasqueradeEntryNode(true);
             end.Rebuild(address + offset, 2, true);
             offset += 2;
@@ -144,15 +145,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override int OnCalculateSize(bool force, bool rebuilding = true)
+        public override int OnCalculateSize(bool force)
         {
-            return MasqueradeNode.Size;
+            return Size;
         }
 
         public override bool OnInitialize()
         {
             byte.TryParse(Path.GetFileNameWithoutExtension(_origPath), out _cosmeticSlot);
-            if ((_name == null) && (_origPath != null))
+            if (_name == null && _origPath != null)
             {
                 _name = MasqueradeIDs[_cosmeticSlot];
             }
@@ -163,8 +164,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class MasqueradeEntryNode : ResourceNode
     {
-        internal CSSCEntry* Header => (CSSCEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MASQEntry;
+        internal CSSCEntry* Header => (CSSCEntry*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.MASQEntry;
 
         public byte _colorID;
         public byte _costumeID;
@@ -178,7 +179,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         // Defaults to the costume end marker
         public MasqueradeEntryNode(bool end)
         {
-            _colorID = (byte)(end ? 0x0C : 0x00);
+            _colorID = (byte) (end ? 0x0C : 0x00);
             _costumeID = 0x00;
         }
 
@@ -189,13 +190,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => _costumeID;
             set
             {
-                if (((MasqueradeNode)Parent)._cosmeticSlot == 21 && (
-                    value == 15 ||
-                    value == 31 ||
-                    value == 47 ||
-                    value == 63))
+                if (((MasqueradeNode) Parent)._cosmeticSlot == 21 && (
+                        value == 15 ||
+                        value == 31 ||
+                        value == 47 ||
+                        value == 63))
                 {
-                    if (System.Windows.Forms.MessageBox.Show("Costume slot " + value + " is known to be bugged for WarioMan. Are you sure you'd like to proceed?", "Warning", System.Windows.Forms.MessageBoxButtons.YesNo) != System.Windows.Forms.DialogResult.Yes)
+                    if (System.Windows.Forms.MessageBox.Show(
+                            "Costume slot " + value +
+                            " is known to be bugged for WarioMan. Are you sure you'd like to proceed?", "Warning",
+                            System.Windows.Forms.MessageBoxButtons.YesNo) != System.Windows.Forms.DialogResult.Yes)
                     {
                         return;
                     }
@@ -221,7 +225,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override int OnCalculateSize(bool force, bool rebuilding = true)
+        public override int OnCalculateSize(bool force)
         {
             return CSSCEntry.Size;
         }
@@ -232,7 +236,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             _costumeID = Header->_costumeID;
             if (_name == null)
             {
-                _name = "Fit" + MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode)Parent)._cosmeticSlot] + _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
+                _name = "Fit" + MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot] +
+                        _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID
+                            ? " - " + BrawlExColorID.Colors[_colorID].Name
+                            : "");
             }
 
             return false;
@@ -240,12 +247,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void regenName()
         {
-            Name = "Fit" + MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode)Parent)._cosmeticSlot] + _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
+            Name = "Fit" + MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot] +
+                   _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID
+                       ? " - " + BrawlExColorID.Colors[_colorID].Name
+                       : "");
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            CSSCEntry* hdr = (CSSCEntry*)address;
+            CSSCEntry* hdr = (CSSCEntry*) address;
             hdr->_colorID = _colorID;
             hdr->_costumeID = _costumeID;
         }
@@ -253,18 +263,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         public List<string> GetCostumeFilePath(string currentPath)
         {
             List<string> files = new List<string>();
-            if ((currentPath = currentPath.Substring(0, currentPath.LastIndexOf('\\'))).EndsWith("pf\\info\\costumeslots", StringComparison.OrdinalIgnoreCase))
+            if ((currentPath = currentPath.Substring(0, currentPath.LastIndexOf('\\'))).EndsWith(
+                "pf\\info\\costumeslots", StringComparison.OrdinalIgnoreCase))
             {
-                currentPath = currentPath.Substring(0, currentPath.LastIndexOf("info", StringComparison.OrdinalIgnoreCase));
-                List<string> internalNames = MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode)Parent)._cosmeticSlot].Split('/').ToList<string>();
+                currentPath = currentPath.Substring(0,
+                    currentPath.LastIndexOf("info", StringComparison.OrdinalIgnoreCase));
+                List<string> internalNames = MasqueradeNode
+                    .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot].Split('/').ToList<string>();
                 foreach (string s in internalNames)
                 {
-                    if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") + ".pac"))
+                    if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +
+                                    ".pac"))
                     {
-                        files.Add(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") + ".pac");
+                        files.Add(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +
+                                  ".pac");
                     }
                 }
             }
+
             return files;
         }
     }

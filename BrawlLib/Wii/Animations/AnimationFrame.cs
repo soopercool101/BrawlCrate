@@ -106,15 +106,15 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: return Scale._x;
-                    case 1: return Scale._y;
-                    case 2: return Scale._z;
-                    case 3: return Rotation._x;
-                    case 4: return Rotation._y;
-                    case 5: return Rotation._z;
-                    case 6: return Translation._x;
-                    case 7: return Translation._y;
-                    case 8: return Translation._z;
+                    case 0:  return Scale._x;
+                    case 1:  return Scale._y;
+                    case 2:  return Scale._z;
+                    case 3:  return Rotation._x;
+                    case 4:  return Rotation._y;
+                    case 5:  return Rotation._z;
+                    case 6:  return Translation._x;
+                    case 7:  return Translation._y;
+                    case 8:  return Translation._z;
                     default: return float.NaN;
                 }
             }
@@ -252,11 +252,11 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: return Scale._x;
-                    case 1: return Scale._y;
-                    case 2: return Rotation;
-                    case 3: return Translation._x;
-                    case 4: return Translation._y;
+                    case 0:  return Scale._x;
+                    case 1:  return Scale._y;
+                    case 2:  return Rotation;
+                    case 3:  return Translation._x;
+                    case 4:  return Translation._y;
                     default: return float.NaN;
                 }
             }
@@ -351,8 +351,8 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: return Start;
-                    case 1: return End;
+                    case 0:  return Start;
+                    case 1:  return End;
                     default: return float.NaN;
                 }
             }
@@ -539,16 +539,16 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: return Start._x;
-                    case 1: return Start._y;
-                    case 2: return Start._z;
-                    case 3: return End._x;
-                    case 4: return End._y;
-                    case 5: return End._z;
-                    case 6: return RefDist;
-                    case 7: return RefBright;
-                    case 8: return SpotCutoff;
-                    case 9: return SpotBright;
+                    case 0:  return Start._x;
+                    case 1:  return Start._y;
+                    case 2:  return Start._z;
+                    case 3:  return End._x;
+                    case 4:  return End._y;
+                    case 5:  return End._z;
+                    case 6:  return RefDist;
+                    case 7:  return RefBright;
+                    case 8:  return SpotCutoff;
+                    case 9:  return SpotBright;
                     default: return float.NaN;
                 }
             }
@@ -730,16 +730,16 @@ namespace BrawlLib.Wii.Animations
             {
                 switch (index)
                 {
-                    case 0: return Pos._x;
-                    case 1: return Pos._y;
-                    case 2: return Pos._z;
-                    case 3: return Aspect;
-                    case 4: return NearZ;
-                    case 5: return FarZ;
-                    case 6: return Rot._x;
-                    case 7: return Rot._y;
-                    case 8: return Rot._z;
-                    case 9: return Aim._x;
+                    case 0:  return Pos._x;
+                    case 1:  return Pos._y;
+                    case 2:  return Pos._z;
+                    case 3:  return Aspect;
+                    case 4:  return NearZ;
+                    case 5:  return FarZ;
+                    case 6:  return Rot._x;
+                    case 7:  return Rot._y;
+                    case 8:  return Rot._z;
+                    case 9:  return Aim._x;
                     case 10: return Aim._y;
                     case 11: return Aim._z;
                     case 12: return Twist;

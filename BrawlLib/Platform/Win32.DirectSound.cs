@@ -97,9 +97,9 @@ namespace System
                 Surround5Point1 = 0x00000009,
 
                 StereoGeometryMin = 0x00050000, //   5 degrees
-                GeometryNarrow = 0x000A0000, //  10 degrees
-                GeometryWide = 0x00140000, //  20 degrees
-                GeometryMax = 0x00B40000 // 180 degrees
+                GeometryNarrow = 0x000A0000,    //  10 degrees
+                GeometryWide = 0x00140000,      //  20 degrees
+                GeometryMax = 0x00B40000        // 180 degrees
             }
 
             #endregion

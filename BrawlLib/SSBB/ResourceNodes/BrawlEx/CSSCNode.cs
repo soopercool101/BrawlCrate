@@ -10,26 +10,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class CSSCNode : ResourceNode
     {
-        internal CSSC* Header => (CSSC*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CSSC;
+        internal CSSC* Header => (CSSC*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.CSSC;
 
-        public uint _tag;                   // 0x00 - Uneditable; CSSC
-        public uint _size;                  // 0x04 - Uneditable; Should be "40"
-        public uint _version;               // 0x08 - Version; Only parses "2" currently
-        public byte _editFlag1;             // 0x0C - Unused?
-        public byte _editFlag2;             // 0x0D - Unused?
-        public byte _editFlag3;             // 0X0E - Unused?
-        public byte _editFlag4;             // 0x0F - 0x01 = Set Primary Character/Secondary Character; 0x02 = Set Cosmetic Slot; 0x03 = Set both; Use Booleans for both?
-        public byte _primaryCharSlot;       // 0x10 - Primary Character Slot: Only used when set in _editFlag4
-        public byte _secondaryCharSlot;     // 0x11 - Secondary Character Slot: Only used when set in _editFlag4
-        public byte _recordSlot;            // 0x12 - Record Bank
-        public byte _cosmeticSlot;          // 0x13 - Only used when set in _editFlag4
-        public uint _wiimoteSFX;            // 0x14
-        public uint _unknown0x18;           // 0x18 - Seemingly padding
-        public uint _status;                // 0x1C - I have no idea what this is
+        public uint _tag;       // 0x00 - Uneditable; CSSC
+        public uint _size;      // 0x04 - Uneditable; Should be "40"
+        public uint _version;   // 0x08 - Version; Only parses "2" currently
+        public byte _editFlag1; // 0x0C - Unused?
+        public byte _editFlag2; // 0x0D - Unused?
+        public byte _editFlag3; // 0X0E - Unused?
+
+        public byte
+            _editFlag4; // 0x0F - 0x01 = Set Primary Character/Secondary Character; 0x02 = Set Cosmetic Slot; 0x03 = Set both; Use Booleans for both?
+
+        public byte _primaryCharSlot;   // 0x10 - Primary Character Slot: Only used when set in _editFlag4
+        public byte _secondaryCharSlot; // 0x11 - Secondary Character Slot: Only used when set in _editFlag4
+        public byte _recordSlot;        // 0x12 - Record Bank
+        public byte _cosmeticSlot;      // 0x13 - Only used when set in _editFlag4
+        public uint _wiimoteSFX;        // 0x14
+        public uint _unknown0x18;       // 0x18 - Seemingly padding
+        public uint _status;            // 0x1C - I have no idea what this is
 
 
         private bool _primarySecondarySet;
+
         [Category("Character")]
         [DisplayName("Set Primary/Secondary")]
         public bool SetPrimarySecondary
@@ -83,6 +87,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         private bool _cosmeticSlotSet;
+
         [Category("Cosmetics")]
         [DisplayName("Set Cosmetic Slot")]
         public bool SetCosmeticSlot
@@ -143,10 +148,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             CSSCEntryNode end = new CSSCEntryNode(true);
-            for (int i = 0; i < ((_size - 0x20) / 2); i++)
+            for (int i = 0; i < (_size - 0x20) / 2; i++)
             {
                 new CSSCEntryNode().Initialize(this, new DataSource((*Header)[i], 2));
-                CSSCEntryNode c = (CSSCEntryNode)Children[Children.Count - 1];
+                CSSCEntryNode c = (CSSCEntryNode) Children[Children.Count - 1];
                 if (c.Color == end.Color && c.CostumeID == end.CostumeID)
                 {
                     RemoveChild(c);
@@ -158,10 +163,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            CSSC* hdr = (CSSC*)address;
+            CSSC* hdr = (CSSC*) address;
             *hdr = new CSSC();
             hdr->_tag = _tag;
-            hdr->_size = (buint)(OnCalculateSize(true));
+            hdr->_size = (buint) OnCalculateSize(true);
             hdr->_version = _version;
             hdr->_editFlag1 = _editFlag1;
             hdr->_editFlag2 = _editFlag2;
@@ -192,6 +197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 r.Rebuild(address + offset, 2, true);
                 offset += 2;
             }
+
             CSSCEntryNode end = new CSSCEntryNode(true);
             end.Rebuild(address + offset, 2, true);
             offset += 2;
@@ -201,6 +207,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 blank.Rebuild(address + offset, 2, true);
                 offset += 2;
             }
+
             /*for (int i = 0; i < Children.Count; i++)
             {
                 ResourceNode r = Children[i];
@@ -217,15 +224,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             }*/
         }
 
-        public override int OnCalculateSize(bool force, bool rebuilding = true)
+        public override int OnCalculateSize(bool force)
         {
             int extraBytes = 0;
-            while ((0x20 + ((Children.Count + 1) * 2) + extraBytes) % 16 != 0)
+            while ((0x20 + (Children.Count + 1) * 2 + extraBytes) % 16 != 0)
             {
                 extraBytes++;
             }
 
-            return (0x20 + ((Children.Count + 1) * 2) + extraBytes) < CSSC.Size ? CSSC.Size : (0x20 + ((Children.Count + 1) * 2) + extraBytes);
+            return 0x20 + (Children.Count + 1) * 2 + extraBytes < CSSC.Size
+                ? CSSC.Size
+                : 0x20 + (Children.Count + 1) * 2 + extraBytes;
         }
 
         public override bool OnInitialize()
@@ -244,9 +253,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _wiimoteSFX = Header->_wiimoteSFX;
             _unknown0x18 = Header->_unknown0x18;
             _status = Header->_status;
-            _cosmeticSlotSet = ((_editFlag4 & 0x02) != 0);
-            _primarySecondarySet = ((_editFlag4 & 0x01) != 0);
-            if ((_name == null) && (_origPath != null))
+            _cosmeticSlotSet = (_editFlag4 & 0x02) != 0;
+            _primarySecondarySet = (_editFlag4 & 0x01) != 0;
+            if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);
             }
@@ -254,13 +263,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        internal static ResourceNode TryParse(DataSource source) { return ((CSSC*)source.Address)->_tag == CSSC.Tag ? new CSSCNode() : null; }
+        internal static ResourceNode TryParse(DataSource source)
+        {
+            return ((CSSC*) source.Address)->_tag == CSSC.Tag ? new CSSCNode() : null;
+        }
     }
 
     public unsafe class CSSCEntryNode : ResourceNode
     {
-        internal CSSCEntry* Header => (CSSCEntry*)WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.CSSCEntry;
+        internal CSSCEntry* Header => (CSSCEntry*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.CSSCEntry;
 
         public byte _colorID;
         public byte _costumeID;
@@ -274,7 +286,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         // Defaults to the costume end marker
         public CSSCEntryNode(bool end)
         {
-            _colorID = (byte)(end ? 0x0C : 0x00);
+            _colorID = (byte) (end ? 0x0C : 0x00);
             _costumeID = 0x00;
         }
 
@@ -305,7 +317,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public override int OnCalculateSize(bool force, bool rebuilding = true)
+        public override int OnCalculateSize(bool force)
         {
             return CSSCEntry.Size;
         }
@@ -316,7 +328,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _costumeID = Header->_costumeID;
             if (_name == null)
             {
-                _name = "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode)Parent)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
+                _name = "Fit" + BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                            BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + _costumeID.ToString("00") +
+                        (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
             }
 
             return false;
@@ -324,12 +338,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void regenName()
         {
-            Name = "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode)Parent)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
+            Name = "Fit" + BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                       BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + _costumeID.ToString("00") +
+                   (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
         }
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
-            CSSCEntry* hdr = (CSSCEntry*)address;
+            CSSCEntry* hdr = (CSSCEntry*) address;
             hdr->_colorID = _colorID;
             hdr->_costumeID = _costumeID;
         }
@@ -337,18 +353,25 @@ namespace BrawlLib.SSBB.ResourceNodes
         public List<string> GetCostumeFilePath(string currentPath)
         {
             List<string> files = new List<string>();
-            if ((currentPath = currentPath.Substring(0, currentPath.LastIndexOf('\\'))).EndsWith("pf\\BrawlEx\\CSSSlotConfig", StringComparison.OrdinalIgnoreCase))
+            if ((currentPath = currentPath.Substring(0, currentPath.LastIndexOf('\\'))).EndsWith(
+                "pf\\BrawlEx\\CSSSlotConfig", StringComparison.OrdinalIgnoreCase))
             {
-                currentPath = currentPath.Substring(0, currentPath.LastIndexOf("brawlex", StringComparison.OrdinalIgnoreCase));
-                List<string> internalNames = BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode)Parent)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S").Split('/').ToList<string>();
+                currentPath = currentPath.Substring(0,
+                    currentPath.LastIndexOf("brawlex", StringComparison.OrdinalIgnoreCase));
+                List<string> internalNames = BrawlCrate.FighterNameGenerators
+                    .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                        BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S").Split('/').ToList<string>();
                 foreach (string s in internalNames)
                 {
-                    if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") + ".pac"))
+                    if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +
+                                    ".pac"))
                     {
-                        files.Add(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") + ".pac");
+                        files.Add(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +
+                                  ".pac");
                     }
                 }
             }
+
             return files;
         }
     }

@@ -257,7 +257,7 @@ namespace BrawlLib.SSBBTypes
         public bshort _id; //ambient set here as id at runtime
         public byte _numLights;
         public byte _pad;
-        public fixed int _entries[8]; //string offsets
+        public fixed int _entries[8];    //string offsets
         public fixed short _lightIds[8]; //entry ids are set here at runtime
 
         private VoidPtr Address
@@ -356,9 +356,9 @@ namespace BrawlLib.SSBBTypes
     public enum LightType : ushort
     {
         //All use pos and color
-        Point = 0x0, //Don't use aim, use dist func
+        Point = 0x0,       //Don't use aim, use dist func
         Directional = 0x1, //Use aim
-        Spotlight = 0x2, //Use aim, spot func and dist func
+        Spotlight = 0x2,   //Use aim, spot func and dist func
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
