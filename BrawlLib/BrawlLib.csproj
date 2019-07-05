@@ -394,6 +394,9 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <Compile Update="System\Windows\Forms\StageModuleConverter.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="System\Windows\Forms\HexEntryBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="System\Windows\Controls\StringInputComboBox.cs">
       <SubType>Component</SubType>
     </Compile>

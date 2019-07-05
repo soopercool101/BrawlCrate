@@ -119,6 +119,7 @@ namespace BrawlLib
         public static string FMDL =
             SupportedFilesHandler.GetCompleteFilter("fmdl");
 
+        // Brawl Stage Files
         public static string STPM =
             SupportedFilesHandler.GetCompleteFilter("stpm");
 
@@ -127,6 +128,41 @@ namespace BrawlLib
 
         public static string SCLA =
             SupportedFilesHandler.GetCompleteFilter("scla");
+
+        public static string TBCL =
+            SupportedFilesHandler.GetCompleteFilter("tbcl");
+
+        public static string TBGC =
+            SupportedFilesHandler.GetCompleteFilter("tbgc");
+
+        public static string TBGD =
+            SupportedFilesHandler.GetCompleteFilter("tbgd");
+
+        public static string TBGM =
+            SupportedFilesHandler.GetCompleteFilter("tbgm");
+
+        public static string TBLV =
+            SupportedFilesHandler.GetCompleteFilter("tblv");
+
+        public static string TBRM =
+            SupportedFilesHandler.GetCompleteFilter("tbrm");
+
+        public static string TBST =
+            SupportedFilesHandler.GetCompleteFilter("tbst");
+
+        // Subspace files
+        public static string GEG1 =
+            SupportedFilesHandler.GetCompleteFilter("geg1");
+
+        // MDL0 subnodes
+        public static string MDL0Material =
+            SupportedFilesHandler.GetCompleteFilter("mdl0mat");
+
+        public static string MDL0Shader =
+            SupportedFilesHandler.GetCompleteFilter("mdl0shade");
+
+        public static string MDL0Bone =
+            SupportedFilesHandler.GetCompleteFilter("mdl0bone");
 
         public static string Raw =
             SupportedFilesHandler.GetCompleteFilter("*");
@@ -137,6 +173,24 @@ namespace BrawlLib
 
         public static string Havok =
             SupportedFilesHandler.GetCompleteFilter("hkx", "xml");
+
+        public static string COSC =
+            SupportedFilesHandler.GetCompleteFilter("dat", "bx");
+
+        public static string CSSC =
+            SupportedFilesHandler.GetCompleteFilter("dat", "bx");
+
+        public static string FCFG =
+            SupportedFilesHandler.GetCompleteFilter("dat", "bx");
+
+        public static string RSTC =
+            SupportedFilesHandler.GetCompleteFilter("bx", "dat");
+
+        public static string SLTC =
+            SupportedFilesHandler.GetCompleteFilter("dat", "bx");
+
+        public static string MASQ =
+            SupportedFilesHandler.GetCompleteFilter("masq", "bin", "dat", "*");
 
         /// <summary>
         /// Maps node types to the default extension when using Export All.
