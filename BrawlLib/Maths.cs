@@ -3,19 +3,15 @@
     public static unsafe class Maths
     {
         private const double _double2fixmagic = 68719476736.0f * 1.5f;
-        public const double _rad2deg = 180.0 / Math.PI;
 
+        public const double _rad2deg = 180.0 / Math.PI;
         public const double _deg2rad = Math.PI / 180.0;
 
-        //public const double _rad2deg = 180.0 / _pif;
-        //public const double _deg2rad = _pif / 180.0;
         public const float _rad2degf = (float) _rad2deg;
         public const float _deg2radf = (float) _deg2rad;
-        public const float _halfPif = (float) (Math.PI / 2.0);
 
         public const float _pif = (float) Math.PI;
-        //public const float _halfPif = (float)(_pif / 2.0);
-        //public const float _pif = 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930382f;
+        public const float _halfPif = (float)(Math.PI / 2.0);
 
         public static float CosLawGetSide(float angle, float a, float b)
         {
@@ -137,9 +133,6 @@
             *l++ *= *r++;
             *l++ *= *r++;
             *l++ *= *r++;
-            //for (int i = 3; i-- > 0; )
-            //    l[i] *= r[i];
-            //return l;
         }
 
         public static void FMult3(float* l, float r)
@@ -147,9 +140,6 @@
             *l++ *= r;
             *l++ *= r;
             *l++ *= r;
-            //for (int i = 3; i-- > 0; )
-            //    l[i] *= r;
-            //return l;
         }
 
         public static void FAdd3(float* l, float* r)
@@ -157,9 +147,6 @@
             *l++ += *r++;
             *l++ += *r++;
             *l++ += *r++;
-            //for (int i = 3; i-- > 0; )
-            //    l[i] += r[i];
-            //return l;
         }
 
         public static void FAdd3(float* l, float r)
@@ -167,9 +154,6 @@
             *l++ += r;
             *l++ += r;
             *l++ += r;
-            //for (int i = 3; i-- > 0; )
-            //    l[i] += r;
-            //return l;
         }
 
         public static void FSub3(float* l, float* r)
@@ -177,9 +161,6 @@
             *l++ -= *r++;
             *l++ -= *r++;
             *l++ -= *r++;
-            //for (int i = 3; i-- > 0; )
-            //    l[i] -= r[i];
-            //return l;
         }
 
         public static float Power(float value, int amount)
