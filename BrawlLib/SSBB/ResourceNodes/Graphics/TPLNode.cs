@@ -10,10 +10,22 @@ using System.IO;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class TPLNode : ARCEntryNode
+    public unsafe class TPLNode : ARCEntryNode, IImageSource
     {
         public override ResourceType ResourceFileType => ResourceType.TPL;
         internal TPLHeader* Header => (TPLHeader*) WorkingUncompressed.Address;
+
+        public int ImageCount => Children.Count;
+
+        public Bitmap GetImage(int index)
+        {
+            if (index >= Children.Count || !(Children[0] is TPLTextureNode))
+            {
+                return null;
+            }
+
+            return (Children[index] as TPLTextureNode).GetImage(0);
+        }
 
         public override string Name
         {
