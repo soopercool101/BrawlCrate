@@ -1,4 +1,5 @@
-﻿using BrawlLib.IO;
+﻿using BrawlLib.Imaging;
+using BrawlLib.IO;
 using BrawlLib.SSBBTypes;
 using Gif.Components;
 using System;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class BRRESNode : ARCEntryNode
+    public unsafe class BRRESNode : ARCEntryNode, IImageSource
     {
         internal BRESHeader* Header => (BRESHeader*) WorkingUncompressed.Address;
 
@@ -21,6 +22,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.BRES;
 
         public override Type[] AllowedChildTypes => new Type[] {typeof(BRESGroupNode)};
+
+
+        public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
+
+        public Bitmap GetImage(int index)
+        {
+            if (GetFolder<TEX0Node>() == null || GetFolder<TEX0Node>().Children.Count <= index)
+            {
+                return null;
+            }
+
+            return (GetFolder<TEX0Node>().Children[index] as IImageSource).GetImage(0);
+        }
 
         #region Model Counters
 

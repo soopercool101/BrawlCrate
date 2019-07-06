@@ -634,11 +634,6 @@ namespace BrawlCrate
                         newControl = audioPlaybackPanel1;
                     }
                 }
-                else if (node is IImageSource)
-                {
-                    previewPanel2.RenderingTarget = (IImageSource) node;
-                    newControl = previewPanel2;
-                }
                 else if (node is CollisionNode || node is CollisionObject || !CompatibilityMode &&
                          (node is IRenderedObject ||
                           ShowARCPreviews && node is ARCNode arcNode && arcNode.NumTriangles > 0 ||
@@ -646,6 +641,11 @@ namespace BrawlCrate
                 {
                     newControl = modelPanel1;
                     RenderSelected(node);
+                }
+                else if (node is IImageSource)
+                {
+                    previewPanel2.RenderingTarget = (IImageSource)node;
+                    newControl = previewPanel2;
                 }
                 else if (node is StageTableNode stageTableNode)
                 {
