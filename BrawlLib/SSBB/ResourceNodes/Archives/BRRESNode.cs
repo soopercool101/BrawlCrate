@@ -23,7 +23,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override Type[] AllowedChildTypes => new Type[] {typeof(BRESGroupNode)};
 
-
         public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
 
         public Bitmap GetImage(int index)
@@ -774,10 +773,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class BRESGroupNode : ResourceNode
+    public unsafe class BRESGroupNode : ResourceNode, IImageSource
     {
         internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.BRESGroup;
+
+        public int ImageCount => (Children.Count > 0 && Children[0] is IImageSource) ? Children.Count : 0;
+
+        public Bitmap GetImage(int index)
+        {
+            if (Children.Count <= index || !(Children[index] is IImageSource))
+            {
+                return null;
+            }
+
+            return (Children[index] as IImageSource).GetImage(0);
+        }
 
         public override Type[] AllowedChildTypes
         {
