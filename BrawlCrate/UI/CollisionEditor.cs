@@ -2621,7 +2621,7 @@ namespace System.Windows.Forms
             _modelPanel.ResetCamera();
         }
 
-        // StageBox Perspective viewer
+        // BrawlCrate Perspective viewer
         protected void btnPerspectiveCam_Click(object sender, EventArgs e)
         {
             if (_updating)
@@ -2638,7 +2638,7 @@ namespace System.Windows.Forms
             }
         }
 
-        // StageBox Orthographic viewer
+        // BrawlCrate Orthographic viewer
         protected void btnOrthographicCam_Click(object sender, EventArgs e)
         {
             if (_updating)

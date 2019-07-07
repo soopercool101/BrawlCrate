@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB
         /// </summary>
         public string PacBasename { get; private set; }
 
-        // StageBox extra stage data
+        // BrawlCrate extra stage data
 
         /// <summary>
         /// Indexes of the used ModelDatas in the base stage
