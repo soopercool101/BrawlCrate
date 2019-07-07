@@ -258,12 +258,29 @@ namespace BrawlCrate.API
             // Finally, search for any other Python installations in their default directories
             else
             {
-                foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
+                // Search the new installation path for Python
+                foreach (DirectoryInfo d in Directory
+                    .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString()).GetDirectories().Reverse())
                 {
-                    if (d.FullName.StartsWith("C:\\Python") && Directory.Exists($"{d.FullName}\\Lib"))
+                    if (d.FullName.StartsWith(
+                            $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Python") &&
+                        Directory.Exists($"{d.FullName}\\Lib"))
                     {
                         searchPaths.Add($"{d.FullName}\\Lib");
                         break;
+                    }
+                }
+
+                // Search the old installation path for Python
+                if (searchPaths.Count == 0)
+                {
+                    foreach (DirectoryInfo d in Directory.CreateDirectory("C:\\").GetDirectories().Reverse())
+                    {
+                        if (d.FullName.StartsWith("C:\\Python") && Directory.Exists($"{d.FullName}\\Lib"))
+                        {
+                            searchPaths.Add($"{d.FullName}\\Lib");
+                            break;
+                        }
                     }
                 }
             }
