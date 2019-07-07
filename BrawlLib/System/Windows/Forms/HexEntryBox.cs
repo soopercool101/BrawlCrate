@@ -74,7 +74,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public DialogResult ShowDialog()
+        public new DialogResult ShowDialog()
         {
             Text = title;
             label2.Text = lowerText;
