@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class CollisionNode : ARCEntryNode
+    public unsafe class CollisionNode : ARCEntryNode, IRenderedObject
     {
         internal CollisionHeader* Header => (CollisionHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CollisionDef;
@@ -209,6 +209,50 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        #region Rendering
+
+        public event EventHandler DrawCallsChanged;
+
+        public List<DrawCallBase> DrawCalls
+        {
+            get
+            {
+                List<DrawCallBase> calls = new List<DrawCallBase>();
+                foreach (CollisionObject o in Children)
+                {
+                    foreach (DrawCallBase d in o.DrawCalls)
+                    {
+                        calls.Add(d);
+                    }
+                }
+
+                return calls;
+            }
+        }
+
+        public bool Attached { get; }
+
+        public void Attach()
+        {
+
+        }
+
+        public void Detach()
+        {
+
+        }
+        public void Refresh()
+        {
+
+        }
+        public void PreRender(ModelPanelViewport v)
+        {
+            foreach (CollisionObject o in Children)
+            {
+                o._render = _render;
+            }
+        }
+
         public void Render()
         {
             GL.Disable(EnableCap.Lighting);
@@ -227,15 +271,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             Box box = Box.ExpandableVolume;
             foreach (CollisionObject obj in Children)
             {
-                foreach (CollisionPlane plane in obj._planes)
-                {
-                    box.ExpandVolume(new Vector3(plane.PointLeft._x, plane.PointLeft._y, 0));
-                    box.ExpandVolume(new Vector3(plane.PointRight._x, plane.PointRight._y, 0));
-                }
+                box.ExpandVolume(obj.GetBox());
             }
 
             return box;
         }
+        
+        #endregion
 
         internal static ResourceNode TryParse(DataSource source)
         {
@@ -293,7 +335,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class CollisionObject : ResourceNode
+    public unsafe class CollisionObject : ResourceNode, IRenderedObject
     {
         [Browsable(false)]
         public MDL0BoneNode LinkedBone
@@ -422,6 +464,68 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        #region Rendering
+
+        public event EventHandler DrawCallsChanged;
+
+        public List<DrawCallBase> DrawCalls
+        {
+            get
+            {
+                List<DrawCallBase> calls = new List<DrawCallBase>();
+                foreach (CollisionPlane p in _planes)
+                {
+                    calls.Add(p);
+                }
+
+                foreach (CollisionLink l in _points)
+                {
+                    calls.Add(l);
+                }
+
+                return calls;
+            }
+        }
+
+        public bool IsRendering { get; set; }
+        public bool Attached { get; }
+
+        public void Attach()
+        {
+
+        }
+
+        public void Detach()
+        {
+
+        }
+        public void Refresh()
+        {
+
+        }
+        public void PreRender(ModelPanelViewport v)
+        {
+            foreach (CollisionPlane p in _planes)
+            {
+                p._render = _render;
+            }
+
+            GL.PushAttrib(AttribMask.AllAttribBits);
+
+            GL.Disable(EnableCap.DepthTest);
+        }
+
+        public Box GetBox()
+        {
+            Box box = Box.ExpandableVolume;
+            foreach (CollisionLink link in _points)
+            {
+                box.ExpandVolume(new Vector3(link.Value._x, link.Value._y, 0));
+            }
+            return box;
+        }
+
+        // Depreciating
         internal unsafe void Render()
         {
             if (!_render)
@@ -431,14 +535,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             foreach (CollisionPlane p in _planes)
             {
-                p.Render();
+                p.Render(null);
             }
 
             foreach (CollisionLink l in _points)
             {
-                l.Render();
+                l.Render(null);
             }
         }
+
+        #endregion
+
 
         public override unsafe void Export(string outPath)
         {
@@ -454,7 +561,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class CollisionLink
+    public unsafe class CollisionLink : DrawCallBase
     {
         private const float BoxRadius = 0.15f;
         private const float LineWidth = 11.0f;
@@ -655,8 +762,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public void Render()
+        public override void Render(ModelPanelViewport v)
         {
+            if (!_render)
+            {
+                return;
+            }
             Color4 clr = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
             float mult = 1.0f;
             foreach (CollisionPlane p in _members)
@@ -678,17 +789,17 @@ namespace BrawlLib.SSBB.ResourceNodes
                 GL.Color4(clr);
             }
 
-            Vector2 v = Value;
+            Vector2 vec = Value;
 
             GL.Disable(EnableCap.CullFace);
             TKContext.DrawBox(
-                new Vector3(v._x - mult * BoxRadius, v._y - mult * BoxRadius, LineWidth),
-                new Vector3(v._x + mult * BoxRadius, v._y + mult * BoxRadius, -LineWidth));
+                new Vector3(vec._x - mult * BoxRadius, vec._y - mult * BoxRadius, LineWidth),
+                new Vector3(vec._x + mult * BoxRadius, vec._y + mult * BoxRadius, -LineWidth));
             GL.Enable(EnableCap.CullFace);
         }
     }
 
-    public unsafe class CollisionPlane
+    public unsafe class CollisionPlane : DrawCallBase
     {
         public int _encodeIndex;
 
@@ -698,8 +809,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         public CollisionPlaneFlags _flags;
         public CollisionPlaneType _type;
         public CollisionPlaneFlags2 _flags2;
-
-        public bool _render = true;
 
         public CollisionObject _parent;
 
@@ -980,6 +1089,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             LinkLeft = left;
             LinkRight = right;
+
+            _render = true;
         }
 
         public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
@@ -989,6 +1100,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _flags = entry->_flags;
             _type = entry->Type;
             _flags2 = entry->Flags2;
+
+            _render = true;
         }
 
         public CollisionLink Split(Vector2 point)
@@ -1029,7 +1142,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _parent._planes.Remove(this);
         }
 
-        internal void Render()
+        #region Rendering
+
+        public override void Render(ModelPanelViewport viewport)
         {
             if (!_render)
             {
@@ -1124,5 +1239,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             GL.Vertex3(r._x, r._y, -10.0f);
             GL.End();
         }
+
+        #endregion
     }
 }
