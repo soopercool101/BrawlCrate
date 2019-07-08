@@ -3,6 +3,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+// ReSharper disable UnusedMember.Global
 
 namespace BrawlCrate.API
 {
