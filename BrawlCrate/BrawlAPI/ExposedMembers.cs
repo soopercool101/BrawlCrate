@@ -8,42 +8,42 @@ namespace BrawlCrate.API
 {
     public static partial class BrawlAPI
     {
-        /// <value>
+        /// <summary>
         ///     The root node of the opened file.
         ///
         ///     Returns null if there is no open file.
-        /// </value>
+        /// </summary>
         public static ResourceNode RootNode =>
             MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
 
-        /// <value>
+        /// <summary>
         ///     The wrapper for the root node of the opened file.
         ///
         ///     Returns null if there is no open file.
-        /// </value>
+        /// </summary>
         public static BaseWrapper RootNodeWrapper => MainForm.Instance.RootNode;
 
-        /// <value>
+        /// <summary>
         ///     The currently selected node on the Main Form. Useful for context menu items.
         ///
-        ///     Returns null if there is no selected file
-        /// </value>
+        ///     Returns null if there is no selected file.
+        /// </summary>
         public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
             ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
             : null;
 
-        /// <value>
+        /// <summary>
         ///     The wrapper for the currently selected node on the Main Form. Useful for context menu items.
         ///
-        ///     Returns null if there is no selected file
-        /// </value>
+        ///     Returns null if there is no selected file.
+        /// </summary>
         public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
 
-        /// <value>
-        ///     Returns a list of all nodes in the open file
+        /// <summary>
+        ///     Returns a list of all nodes in the open file.
         ///
-        ///     Returns null if there is no open file
-        /// </value>
+        ///     Returns null if there is no open file.
+        /// </summary>
         public static List<ResourceNode> NodeList
         {
             get
@@ -59,13 +59,13 @@ namespace BrawlCrate.API
             }
         }
 
-        /// <value>
+        /// <summary>
         ///     Returns a list of all node wrappers in the open file.
         ///
-        ///     Note that this function is generally slow due to the implementation of ResourceTrees. For general usage, NodeList works best
+        ///     Note that this function is generally slow due to the implementation of ResourceTrees; for general usage, NodeList works best.
         ///
-        ///     Returns null if there is no open file
-        /// </value>
+        ///     Returns null if there is no open file.
+        /// </summary>
         public static List<BaseWrapper> NodeWrapperList
         {
             get
@@ -95,13 +95,13 @@ namespace BrawlCrate.API
         /// <summary>
         ///     Shows a MessageBox with the given message and title, and the default "OK" option.
         ///
-        ///     Doesn't return a value, and is just used to show the user messages
+        ///     Doesn't return a value, and is just used to show the user messages.
         /// </summary>
         /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox
+        ///     The message that will appear in the body of the MessageBox.
         /// </param>
         /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox
+        ///     The title text that will show in the TitleBar of the MessageBox.
         /// </param>
         public static void ShowMessage(string msg, string title)
         {
@@ -114,10 +114,10 @@ namespace BrawlCrate.API
         ///     Returns true if "Yes" is clicked, and false otherwise.
         /// </summary>
         /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox
+        ///     The message that will appear in the body of the MessageBox.
         /// </param>
         /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox
+        ///     The title text that will show in the TitleBar of the MessageBox.
         /// </param>
         public static bool? ShowYesNoPrompt(string msg, string title)
         {
@@ -130,10 +130,10 @@ namespace BrawlCrate.API
         ///     Returns true if "OK" is clicked, and false otherwise.
         /// </summary>
         /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox
+        ///     The message that will appear in the body of the MessageBox.
         /// </param>
         /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox
+        ///     The title text that will show in the TitleBar of the MessageBox.
         /// </param>
         public static bool? ShowOKCancelPrompt(string msg, string title)
         {
@@ -295,10 +295,10 @@ namespace BrawlCrate.API
         /// <summary>
         ///     Adds an additional loader.
         ///
-        ///     Not very necessary with the current loader implementation, kept for compatibility purposes with BBoxAPI
+        ///     Not very necessary with the current loader implementation, kept for compatibility purposes with BBoxAPI.
         /// </summary>
         /// <param name="loader">
-        ///     The message that will appear in the body of the MessageBox
+        ///     The message that will appear in the body of the MessageBox.
         /// </param>
         public static void AddLoader(PluginLoader loader)
         {
