@@ -27,7 +27,7 @@ namespace BrawlCrate.API
         /// <summary>
         ///     The currently selected node on the Main Form. Useful for context menu items.
         ///
-        ///     Returns null if there is no selected file.
+        ///     Returns null if there is no selected node.
         /// </summary>
         public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
             ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
@@ -36,9 +36,53 @@ namespace BrawlCrate.API
         /// <summary>
         ///     The wrapper for the currently selected node on the Main Form. Useful for context menu items.
         ///
-        ///     Returns null if there is no selected file.
+        ///     Returns null if there is no selected node.
         /// </summary>
         public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
+
+        /// <summary>
+        ///     The currently selected nodes on the Main Form, if multiple are selected
+        ///
+        ///     Returns null if there are no selected nodes.
+        /// </summary>
+        public static List<ResourceNode> SelectedNodes
+        {
+            get
+            {
+                List<ResourceNode> nodes = new List<ResourceNode>();
+                if (MainForm.Instance.resourceTree.SelectedNodes != null)
+                {
+                    foreach (BaseWrapper b in MainForm.Instance.resourceTree.SelectedNodes)
+                    {
+                        nodes.Add(b.Resource);
+                    }
+                }
+
+                return nodes;
+            }
+        }
+
+        /// <summary>
+        ///     The wrappers for the currently selected nodes on the Main Form.
+        ///
+        ///     Returns null if there are no selected nodes.
+        /// </summary>
+        public static List<BaseWrapper> SelectedNodeWrappers
+        {
+            get
+            {
+                List<BaseWrapper> wrappers = new List<BaseWrapper>();
+                if (MainForm.Instance.resourceTree.SelectedNodes != null)
+                {
+                    foreach (BaseWrapper b in MainForm.Instance.resourceTree.SelectedNodes)
+                    {
+                        wrappers.Add(b);
+                    }
+                }
+
+                return wrappers;
+            }
+        }
 
         /// <summary>
         ///     Returns a list of all nodes in the open file.
