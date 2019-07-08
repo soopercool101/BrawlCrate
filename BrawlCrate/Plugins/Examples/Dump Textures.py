@@ -1,7 +1,5 @@
 from BrawlCrate.API import BrawlAPI
 from BrawlLib.SSBB.ResourceNodes import *
-from BrawlLib.Imaging import IImageSource
-from System.Collections.Generic import List
 from BrawlCrate.NodeWrappers import *
 
 def tex_search(): # Recursive function to scan for all image nodes in the file
