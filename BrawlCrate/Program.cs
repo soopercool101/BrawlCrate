@@ -424,6 +424,7 @@ namespace BrawlCrate
 
         public static bool Save()
         {
+            MainForm.Instance.resourceTree_SelectionChanged("Saving File", EventArgs.Empty);
             if (_rootNode != null)
             {
 #if !DEBUG
@@ -439,13 +440,14 @@ namespace BrawlCrate
                     if (!force && !_rootNode.IsDirty)
                     {
                         MessageBox.Show("No changes have been made.");
+                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
                         return false;
                     }
 
                     _rootNode.Merge(force);
                     _rootNode.Export(_rootPath);
                     _rootNode.IsDirty = false;
-
+                    MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
                     return true;
 #if !DEBUG
                 }
@@ -455,7 +457,7 @@ namespace BrawlCrate
                 }
 #endif
             }
-
+            MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
             return false;
         }
 
@@ -582,6 +584,7 @@ namespace BrawlCrate
 
         internal static bool SaveAs()
         {
+            MainForm.Instance.resourceTree_SelectionChanged("Saving File", EventArgs.Empty);
             if (MainForm.Instance.RootNode is GenericWrapper)
             {
 #if !DEBUG
@@ -595,6 +598,7 @@ namespace BrawlCrate
                         _rootPath = path;
                         MainForm.Instance.UpdateName();
                         w.Resource.IsDirty = false;
+                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
                         return true;
                     }
 #if !DEBUG
@@ -607,6 +611,7 @@ namespace BrawlCrate
 #endif
             }
 
+            MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
             return false;
         }
 
