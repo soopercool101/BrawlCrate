@@ -111,48 +111,6 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <EmbeddedResource Include="CustomLists\StageList.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrawlManagerLib\AboutBSM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\AboutBSM.Designer.cs">
-      <DependentUpon>AboutBSM.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrawlManagerLib\BrawlSplitter.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\ProgressDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\ProgressDialog.Designer.cs">
-      <DependentUpon>ProgressDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrawlManagerLib\CopyDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\CopyDialog.Designer.cs">
-      <DependentUpon>CopyDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrawlManagerLib\NameDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\Songs\SongNameBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\Songs\SongNameBar.Designer.cs">
-      <DependentUpon>SongNameBar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrawlManagerLib\Songs\SongPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\Songs\SongPanel.Designer.cs">
-      <DependentUpon>SongPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BrawlManagerLib\TextBoxDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BrawlManagerLib\TextBoxDialog.Designer.cs">
-      <DependentUpon>TextBoxDialog.cs</DependentUpon>
-    </Compile>
     <Compile Update="Modeling\Collada\ColladaImportDialog.cs">
       <SubType>Form</SubType>
     </Compile>
