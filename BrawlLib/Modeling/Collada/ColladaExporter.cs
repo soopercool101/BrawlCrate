@@ -188,6 +188,10 @@ namespace BrawlLib.Modeling
                         {
                             foreach (MDL0MaterialRefNode mr in mat.Children)
                             {
+                                if (string.IsNullOrEmpty(mr._texture?.Name))
+                                {
+                                    continue;
+                                }
                                 writer.WriteStartElement("newparam");
                                 writer.WriteAttributeString("sid", mr._texture.Name + "-surface");
                                 {
