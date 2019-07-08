@@ -1,6 +1,7 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BrawlCrate.API
@@ -14,6 +15,13 @@ namespace BrawlCrate.API
         /// </value>
         public static ResourceNode RootNode =>
             MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
+
+        /// <value>
+        ///     The wrapper for the root node of the opened file.
+        ///
+        ///     Returns null if there is no open file.
+        /// </value>
+        public static BaseWrapper RootNodeWrapper => MainForm.Instance.RootNode;
 
         /// <value>
         ///     The currently selected node on the Main Form. Useful for context menu items.
@@ -30,6 +38,58 @@ namespace BrawlCrate.API
         ///     Returns null if there is no selected file
         /// </value>
         public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
+
+        /// <value>
+        ///     Returns a list of all nodes in the open file
+        ///
+        ///     Returns null if there is no open file
+        /// </value>
+        public static List<ResourceNode> NodeList
+        {
+            get
+            {
+                List<ResourceNode> nodes = new List<ResourceNode>();
+
+                if (RootNodeWrapper != null)
+                {
+                    foreach (TreeNode n in RootNodeWrapper.TreeView.Nodes)
+                    {
+                        if (n is BaseWrapper b)
+                        {
+                            nodes.Add(b.Resource);
+                        }
+                    }
+                }
+
+                return nodes;
+            }
+        }
+
+        /// <value>
+        ///     Returns a list of all node wrappers in the open file
+        ///
+        ///     Returns null if there is no open file
+        /// </value>
+        public static List<BaseWrapper> NodeWrapperList
+        {
+            get
+            {
+                List<BaseWrapper> wrappers = new List<BaseWrapper>();
+
+                if (RootNodeWrapper != null)
+                {
+                    foreach (TreeNode n in RootNodeWrapper.TreeView.Nodes)
+                    {
+                        if (n is BaseWrapper b)
+                        {
+                            wrappers.Add(b);
+                        }
+                    }
+                }
+
+                return wrappers;
+            }
+        }
 
         /// <summary>
         ///     Shows a MessageBox with the given message and title, and the default "OK" option.
