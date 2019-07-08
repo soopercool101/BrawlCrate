@@ -2,6 +2,8 @@ from BrawlCrate.API import BrawlAPI
 from BrawlLib.SSBB.ResourceNodes import *
 from BrawlLib.Imaging import IImageSource
 
+# DEPRECIATED due to the new preview system. Working on a rewrite.
+
 def tex_search(node): # Recursive function to scan for all image nodes in the file
     if isinstance(node, IImageSource):
         return [node] # If it's an image node, include it in the list
