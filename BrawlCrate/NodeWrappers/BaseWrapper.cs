@@ -185,6 +185,26 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
+        public static BaseWrapper[] GetAllNodes(BaseWrapper root)
+        {
+            List<BaseWrapper> result = new List<BaseWrapper>();
+            result.Add(root);
+            foreach (TreeNode child in root.Nodes)
+            {
+                if (child is BaseWrapper b && b.Resource != null)
+                {
+                    bool expanded = b.IsExpanded;
+                    b.Expand();
+                    result.AddRange(GetAllNodes(b));
+                    if (!expanded)
+                    {
+                        b.Collapse();
+                    }
+                }
+            }
+            return result.ToArray();
+        }
+
         protected internal virtual void OnUpdateProperties(object sender, EventArgs e)
         {
             MainForm.Instance.propertyGrid1.Refresh();

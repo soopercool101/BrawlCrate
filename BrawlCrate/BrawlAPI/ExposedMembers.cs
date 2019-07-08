@@ -50,15 +50,9 @@ namespace BrawlCrate.API
             {
                 List<ResourceNode> nodes = new List<ResourceNode>();
 
-                if (RootNodeWrapper != null)
+                if (RootNode != null)
                 {
-                    foreach (TreeNode n in RootNodeWrapper.TreeView.Nodes)
-                    {
-                        if (n is BaseWrapper b)
-                        {
-                            nodes.Add(b.Resource);
-                        }
-                    }
+                    nodes.AddRange(ResourceNode.FindAllSubNodes(RootNode));
                 }
 
                 return nodes;
@@ -66,7 +60,9 @@ namespace BrawlCrate.API
         }
 
         /// <value>
-        ///     Returns a list of all node wrappers in the open file
+        ///     Returns a list of all node wrappers in the open file.
+        ///
+        ///     Note that this function is generally slow due to the implementation of ResourceTrees. For general usage, NodeList works best
         ///
         ///     Returns null if there is no open file
         /// </value>
@@ -78,13 +74,18 @@ namespace BrawlCrate.API
 
                 if (RootNodeWrapper != null)
                 {
-                    foreach (TreeNode n in RootNodeWrapper.TreeView.Nodes)
+                    MainForm.Instance.resourceTree.Hide();
+
+                    TreeNodeCollection treeNodes = RootNodeWrapper.TreeView.Nodes;
+                    foreach (TreeNode n in treeNodes)
                     {
                         if (n is BaseWrapper b)
                         {
-                            wrappers.Add(b);
+                            wrappers.AddRange(BaseWrapper.GetAllNodes(b));
                         }
                     }
+
+                    MainForm.Instance.resourceTree.Show();
                 }
 
                 return wrappers;

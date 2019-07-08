@@ -1113,6 +1113,23 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Child Node Searches
 
+        public static ResourceNode[] FindAllSubNodes(ResourceNode root)
+        {
+            List<ResourceNode> resourceNodes = new List<ResourceNode>();
+            if (root != null)
+            {
+                resourceNodes.Add(root);
+                if (root.HasChildren)
+                {
+                    foreach (ResourceNode r in root.Children)
+                    {
+                        resourceNodes.AddRange(FindAllSubNodes(r));
+                    }
+                }
+            }
+            return resourceNodes.ToArray();
+        }
+
         public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren)
         {
             if (string.IsNullOrEmpty(path) || root == null ||
