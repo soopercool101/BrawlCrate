@@ -95,9 +95,12 @@ namespace BrawlLib.SSBB.ResourceNodes
             _bitFlags = _memberType == hkClassMember.Type.TYPE_FLAGS;
 
             _enums = new Dictionary<string, int>();
-            foreach (hkClassEnumEntryNode e in _enumNode.Children)
+            if (_enumNode != null)
             {
-                _enums.Add(e._name, e.Value);
+                foreach (hkClassEnumEntryNode e in _enumNode.Children)
+                {
+                    _enums.Add(e._name, e.Value);
+                }
             }
 
             if (((int) _memberFlags & 0x8) != 0)

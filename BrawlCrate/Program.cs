@@ -11,7 +11,7 @@ using BrawlLib.Modeling;
 
 namespace BrawlCrate
 {
-    internal static class Program
+    public static class Program
     {
         //Make sure this matches the tag name of the release on github exactly
         public static readonly string TagName = "BrawlCrate_v0.26Hotfix1";
@@ -329,6 +329,11 @@ namespace BrawlCrate
 
         public static bool Open(string path)
         {
+            return Open(path, true);
+        }
+
+        public static bool Open(string path, bool showErrors)
+        {
             if (string.IsNullOrEmpty(path))
             {
                 return false;
@@ -336,7 +341,10 @@ namespace BrawlCrate
 
             if (!File.Exists(path))
             {
-                MessageBox.Show("File does not exist.");
+                if (showErrors)
+                {
+                    MessageBox.Show("File does not exist.");
+                }
                 return false;
             }
 
@@ -370,14 +378,20 @@ namespace BrawlCrate
                 else
                 {
                     _rootPath = null;
-                    MessageBox.Show("Unable to recognize input file.");
+                    if (showErrors)
+                    {
+                        MessageBox.Show("Unable to recognize input file.");
+                    }
                     MainForm.Instance.Reset();
                 }
 #if !DEBUG
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.ToString());
+                if (showErrors)
+                {
+                    MessageBox.Show(x.ToString());
+                }
             }
 #endif
 
