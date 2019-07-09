@@ -157,24 +157,24 @@ namespace BrawlLib.SSBB.ResourceNodes
         //    _dataBuffer = newBuffer;
         //}
 
-        public void Resize(int newSize)
-        {
-            //int diff = (newSize.RoundDown(4) - _dataBuffer.Length) / 4;
-            //if (diff == 0)
-            //    return;
-            //if (diff > 0)
-            //    for (int i = 0; i < diff; i++)
-            //        _relocations.Add(new Relocation(this, _relocations.Count));
-            //else if (diff < 0)
-            //    _relocations.RemoveRange(_relocations.Count + diff, -diff);
-
-            //UnsafeBuffer newBuffer = new UnsafeBuffer(newSize);
-            //int max = Math.Min(_dataBuffer.Length, newBuffer.Length);
-            //if (max > 0)
-            //    Memory.Move(newBuffer.Address, _dataBuffer.Address, (uint)max);
-
-            //_dataBuffer.Dispose();
-            //_dataBuffer = newBuffer;
-        }
+        //public void Resize(int newSize)
+        //{
+        //    int diff = (newSize.RoundDown(4) - _dataBuffer.Length) / 4;
+        //    if (diff == 0)
+        //        return;
+        //    if (diff > 0)
+        //        for (int i = 0; i < diff; i++)
+        //            _relocations.Add(new Relocation(this, _relocations.Count));
+        //    else if (diff < 0)
+        //        _relocations.RemoveRange(_relocations.Count + diff, -diff);
+        //
+        //    UnsafeBuffer newBuffer = new UnsafeBuffer(newSize);
+        //    int max = Math.Min(_dataBuffer.Length, newBuffer.Length);
+        //    if (max > 0)
+        //        Memory.Move(newBuffer.Address, _dataBuffer.Address, (uint)max);
+        //
+        //    _dataBuffer.Dispose();
+        //    _dataBuffer = newBuffer;
+        //}
     }
 }
