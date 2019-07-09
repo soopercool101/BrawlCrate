@@ -99,15 +99,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 int count = 0;
-                foreach (ARCEntryNode b in Children)
+                foreach (ResourceNode c in Children)
                 {
-                    if (b is BRRESNode brresNode)
+                    if (c is ARCEntryNode b)
                     {
-                        count += brresNode.NumModels;
-                    }
-                    else if (b is ARCNode node && node.NumModels > -1)
-                    {
-                        count += node.NumModels;
+                        if (b is BRRESNode brresNode)
+                        {
+                            count += brresNode.NumModels;
+                        }
+                        else if (b is ARCNode node && node.NumModels > -1)
+                        {
+                            count += node.NumModels;
+                        }
                     }
                 }
 
@@ -137,15 +140,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 int count = 0;
-                foreach (ARCEntryNode b in Children)
+                foreach (ResourceNode c in Children)
                 {
-                    if (b is BRRESNode node)
+                    if (c is ARCEntryNode b)
                     {
-                        count += node.NumFacepoints;
-                    }
-                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
-                    {
-                        count += arcNode.NumFacepoints;
+                        if (b is BRRESNode node)
+                        {
+                            count += node.NumFacepoints;
+                        }
+                        else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                        {
+                            count += arcNode.NumFacepoints;
+                        }
                     }
                 }
 
@@ -176,15 +182,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 int count = 0;
-                foreach (ARCEntryNode b in Children)
+                foreach (ResourceNode c in Children)
                 {
-                    if (b is BRRESNode node)
+                    if (c is ARCEntryNode b)
                     {
-                        count += node.NumVertices;
-                    }
-                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
-                    {
-                        count += arcNode.NumVertices;
+                        if (b is BRRESNode node)
+                        {
+                            count += node.NumVertices;
+                        }
+                        else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                        {
+                            count += arcNode.NumVertices;
+                        }
                     }
                 }
 
@@ -213,15 +222,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 int count = 0;
-                foreach (ARCEntryNode b in Children)
+                foreach (ResourceNode c in Children)
                 {
-                    if (b is BRRESNode node)
+                    if (c is ARCEntryNode b)
                     {
-                        count += node.NumTriangles;
-                    }
-                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
-                    {
-                        count += arcNode.NumTriangles;
+                        if (b is BRRESNode node)
+                        {
+                            count += node.NumTriangles;
+                        }
+                        else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                        {
+                            count += arcNode.NumTriangles;
+                        }
                     }
                 }
 
@@ -250,15 +262,18 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 int count = 0;
-                foreach (ARCEntryNode b in Children)
+                foreach (ResourceNode c in Children)
                 {
-                    if (b is BRRESNode node)
+                    if (c is ARCEntryNode b)
                     {
-                        count += node.NumNodes;
-                    }
-                    else if (b is ARCNode arcNode && arcNode.NumModels > -1)
-                    {
-                        count += arcNode.NumNodes;
+                        if (b is BRRESNode node)
+                        {
+                            count += node.NumNodes;
+                        }
+                        else if (b is ARCNode arcNode && arcNode.NumModels > -1)
+                        {
+                            count += arcNode.NumNodes;
+                        }
                     }
                 }
 
