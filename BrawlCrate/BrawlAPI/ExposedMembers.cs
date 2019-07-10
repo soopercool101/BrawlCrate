@@ -154,6 +154,22 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
+        ///     Shows a MessageBox with the given message and title, the default "OK" option, and a Warning symbol.
+        ///
+        ///     Doesn't return a value, and is just used to show the user messages.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static void ShowWarning(string msg, string title)
+        {
+            MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        /// <summary>
         ///     Shows a MessageBox with the given message and title, the default "OK" option, and an Error symbol.
         ///
         ///     Doesn't return a value, and is just used to show the user messages.
