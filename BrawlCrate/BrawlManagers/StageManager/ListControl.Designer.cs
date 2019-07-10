@@ -1,4 +1,4 @@
-﻿namespace BrawlStageManager {
+﻿namespace BrawlCrate.StageManager {
 	partial class ListControl {
 		/// <summary> 
 		/// Required designer variable.
@@ -25,7 +25,7 @@
 		private void InitializeComponent() {
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.msBinEditor1 = new BrawlStageManager.MSBinViewer();
+			this.msBinEditor1 = new BrawlCrate.StageManager.MSBinViewer();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -72,6 +72,6 @@
 
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Panel panel1;
-		private BrawlStageManager.MSBinViewer msBinEditor1;
+		private BrawlCrate.StageManager.MSBinViewer msBinEditor1;
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SSSEditor
+namespace BrawlCrate.SSSEditor
 {
     public class UpDownKeyAwareRadioButton : RadioButton
     {

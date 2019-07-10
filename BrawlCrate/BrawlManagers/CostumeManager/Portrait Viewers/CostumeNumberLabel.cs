@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public class CostumeNumberLabel : Label
     {

@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace BrawlSongManager.SongExport
+namespace BrawlCrate.SongManager.SongExport
 {
     internal class SongEditor
     {

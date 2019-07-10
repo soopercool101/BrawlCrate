@@ -381,7 +381,7 @@ namespace BrawlCrate
             // 
             this.pluginToolStripMenuItem.Name = "pluginToolStripMenuItem";
             this.pluginToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.pluginToolStripMenuItem.Text = "Plugins";
+            this.pluginToolStripMenuItem.Text = "&Plugins";
             // 
             // helpToolStripMenuItem
             // 
@@ -396,21 +396,21 @@ namespace BrawlCrate
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // showChangelogToolStripMenuItem
             // 
             this.showChangelogToolStripMenuItem.Name = "showChangelogToolStripMenuItem";
-            this.showChangelogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showChangelogToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.showChangelogToolStripMenuItem.Text = "Show Changelog";
             this.showChangelogToolStripMenuItem.Click += new System.EventHandler(this.ShowChangelogToolStripMenuItem_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click_1);
             // 

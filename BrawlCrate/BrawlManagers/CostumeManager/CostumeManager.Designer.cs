@@ -1,4 +1,4 @@
-﻿namespace BrawlCostumeManager {
+﻿namespace BrawlCrate.CostumeManager {
 	partial class CostumeManager {
 		/// <summary>
 		/// Required designer variable.
@@ -56,12 +56,12 @@
 			this.brawlSplitter2 = new BrawlManagerLib.BrawlSplitter();
 			this.globalPVsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.brawlSplitter1 = new BrawlManagerLib.BrawlSplitter();
-			this.modelManager1 = new BrawlCostumeManager.ModelManager();
-			this.cssPortraitViewer1 = new BrawlCostumeManager.CSSPortraitViewer();
-			this.infoStockIconViewer1 = new BrawlCostumeManager.InfoStockIconViewer();
-			this.costumeNumberLabel = new BrawlCostumeManager.CostumeNumberLabel();
-			this.battlePortraitViewer1 = new BrawlCostumeManager.BattleSinglePortraitViewer();
-			this.resultPortraitViewer1 = new BrawlCostumeManager.ResultSinglePortraitViewer();
+			this.modelManager1 = new BrawlCrate.CostumeManager.ModelManager();
+			this.cssPortraitViewer1 = new BrawlCrate.CostumeManager.CSSPortraitViewer();
+			this.infoStockIconViewer1 = new BrawlCrate.CostumeManager.InfoStockIconViewer();
+			this.costumeNumberLabel = new BrawlCrate.CostumeManager.CostumeNumberLabel();
+			this.battlePortraitViewer1 = new BrawlCrate.CostumeManager.BattleSinglePortraitViewer();
+			this.resultPortraitViewer1 = new BrawlCrate.CostumeManager.ResultSinglePortraitViewer();
 			this.use16ptFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
 			this.splitContainer2.Panel1.SuspendLayout();

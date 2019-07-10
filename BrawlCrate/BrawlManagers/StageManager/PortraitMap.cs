@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlStageManager {
+namespace BrawlCrate.StageManager {
 	public class PortraitMap {
 		public static string[] StageOrder = {
 			"",

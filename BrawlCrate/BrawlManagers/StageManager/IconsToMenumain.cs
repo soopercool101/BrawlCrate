@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public static class IconsToMenumain
     {
@@ -45,7 +45,7 @@ namespace BrawlStageManager
             }
             else
             {
-                Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("BrawlStageManager.XX.png");
+                Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("BrawlCrate.StageManager.XX.png");
                 if (stream != null)
                 {
                     Image.FromStream(stream).Save(xx_png);

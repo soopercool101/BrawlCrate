@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class NameCreatorDialog : Form
     {

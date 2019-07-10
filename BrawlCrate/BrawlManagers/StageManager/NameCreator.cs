@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public class NameCreator
     {

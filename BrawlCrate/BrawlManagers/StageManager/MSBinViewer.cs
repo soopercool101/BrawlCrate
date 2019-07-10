@@ -4,7 +4,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public class MSBinViewer : UserControl
     {

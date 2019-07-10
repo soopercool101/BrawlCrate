@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SSSEditor
+namespace BrawlCrate.SSSEditor
 {
     public class StagePair
     {

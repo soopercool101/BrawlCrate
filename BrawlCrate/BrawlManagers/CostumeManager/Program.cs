@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     internal static class Program
     {

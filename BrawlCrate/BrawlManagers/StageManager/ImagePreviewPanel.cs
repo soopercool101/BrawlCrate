@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public class ImagePreviewPanel : Panel
     {
@@ -163,7 +163,7 @@ namespace BrawlStageManager
             else
             {
                 Stream stream = Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("BrawlStageManager.border.png");
+                    .GetManifestResourceStream("BrawlCrate.StageManager.border.png");
                 if (stream == null)
                 {
                     MessageBox.Show(

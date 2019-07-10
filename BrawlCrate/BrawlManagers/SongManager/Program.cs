@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
-namespace BrawlSongManager
+namespace BrawlCrate.SongManager
 {
     public static class Program
     {

@@ -6,7 +6,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 using BrawlManagerLib;
 
-namespace SSSEditor
+namespace BrawlCrate.SSSEditor
 {
     public partial class SSSPrev : UserControl
     {

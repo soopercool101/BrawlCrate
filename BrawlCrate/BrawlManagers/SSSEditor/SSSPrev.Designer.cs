@@ -1,4 +1,4 @@
-﻿namespace SSSEditor {
+﻿namespace BrawlCrate.SSSEditor {
 	partial class SSSPrev {
 		/// <summary> 
 		/// Required designer variable.

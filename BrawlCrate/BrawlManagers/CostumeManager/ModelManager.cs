@@ -11,7 +11,7 @@ using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using System.Timers;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public partial class ModelManager : UserControl
     {
@@ -146,7 +146,7 @@ namespace BrawlCostumeManager
             _delayedPath = delayedPath;
             if (!string.IsNullOrWhiteSpace(_delayedPath))
             {
-                Timer tmp_timer = new Timer(1000);
+                System.Timers.Timer tmp_timer = new System.Timers.Timer(1000);
                 tmp_timer.AutoReset = false;
                 tmp_timer.Elapsed += new ElapsedEventHandler(initializeModelPanel);
                 tmp_timer.Enabled = true;

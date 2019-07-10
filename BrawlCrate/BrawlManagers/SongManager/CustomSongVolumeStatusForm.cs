@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlSongManager
+namespace BrawlCrate.SongManager
 {
     public partial class CustomSongVolumeStatusForm : Form
     {

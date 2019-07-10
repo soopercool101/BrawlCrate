@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public class PortraitMap
     {

@@ -1,4 +1,4 @@
-﻿namespace BrawlSongManager {
+﻿namespace BrawlCrate.SongManager {
 	partial class MainForm {
 		/// <summary>
 		/// Required designer variable.
@@ -31,7 +31,7 @@
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customSongVolumeEditor1 = new BrawlSongManager.CustomSongVolumeEditor();
+            this.customSongVolumeEditor1 = new BrawlCrate.SongManager.CustomSongVolumeEditor();
             this.songPanel1 = new BrawlManagerLib.SongPanel();
             this.rightLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();

@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class StageInfoControl : UserControl
     {

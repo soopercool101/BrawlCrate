@@ -1,4 +1,4 @@
-﻿namespace BrawlCostumeManager {
+﻿namespace BrawlCrate.CostumeManager {
 	partial class SinglePortraitViewer {
 		/// <summary> 
 		/// Required designer variable.

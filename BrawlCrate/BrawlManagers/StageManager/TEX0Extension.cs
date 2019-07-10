@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public static class TEX0Extension
     {

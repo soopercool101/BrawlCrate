@@ -9,7 +9,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
 using BrawlManagerLib;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public class InfoStockIconViewer : PortraitViewer
     {

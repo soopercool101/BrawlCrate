@@ -11,7 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace SSSEditor
+namespace BrawlCrate.SSSEditor
 {
     /// <summary>
     /// cshtml base class. Only exists for Intellisense.

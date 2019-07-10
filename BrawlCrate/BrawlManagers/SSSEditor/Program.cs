@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SSSEditor
+namespace BrawlCrate.SSSEditor
 {
     internal static class Program
     {
@@ -79,7 +79,7 @@ namespace SSSEditor
 
             findFiles(args);
 
-            Application.Run(new SSSEditorForm(gct, pac));
+            Application.Run(new BrawlCrate.SSSEditorForm(gct, pac));
         }
 
         private static void accessLibraries()

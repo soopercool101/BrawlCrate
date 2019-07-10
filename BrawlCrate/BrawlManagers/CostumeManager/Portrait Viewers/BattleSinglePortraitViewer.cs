@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public class BattleSinglePortraitViewer : SinglePortraitViewer
     {

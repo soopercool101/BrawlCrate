@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using BrawlManagerLib;
 using System.Globalization;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public partial class CostumeManager : Form
     {

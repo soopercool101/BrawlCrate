@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class CopyPacRelDialog : Form
     {

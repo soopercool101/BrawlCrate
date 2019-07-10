@@ -1,4 +1,4 @@
-﻿namespace BrawlStageManager {
+﻿namespace BrawlCrate.StageManager {
 	partial class MainForm {
 		/// <summary>
 		/// Required designer variable.
@@ -119,11 +119,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.brawlSplitter5 = new BrawlManagerLib.BrawlSplitter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.stageInfoControl1 = new BrawlStageManager.StageInfoControl();
+            this.stageInfoControl1 = new BrawlCrate.StageManager.StageInfoControl();
             this.brawlSplitter3 = new BrawlManagerLib.BrawlSplitter();
             this.brawlSplitter1 = new BrawlManagerLib.BrawlSplitter();
             this.brawlSplitter2 = new BrawlManagerLib.BrawlSplitter();
-            this.portraitViewer1 = new BrawlStageManager.PortraitViewer();
+            this.portraitViewer1 = new BrawlCrate.StageManager.PortraitViewer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeft)).BeginInit();
             this.splitContainerLeft.Panel1.SuspendLayout();
             this.splitContainerLeft.Panel2.SuspendLayout();

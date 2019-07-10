@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class ListControl : UserControl
     {

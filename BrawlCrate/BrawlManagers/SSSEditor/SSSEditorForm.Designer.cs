@@ -1,5 +1,5 @@
-﻿namespace SSSEditor {
-	partial class SSSEditorForm {
+﻿namespace BrawlCrate.SSSEditor {
+	partial class BrawlCrate.SSSEditorForm {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -23,7 +23,7 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SSSEditorForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrawlCrate.SSSEditorForm));
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,13 +42,13 @@
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabMyMusic2 = new System.Windows.Forms.TabPage();
-			this.myMusic2 = new SSSEditor.SSSPrev();
+			this.myMusic2 = new BrawlCrate.SSSEditor.SSSPrev();
 			this.tabMyMusic1 = new System.Windows.Forms.TabPage();
-			this.myMusic1 = new SSSEditor.SSSPrev();
+			this.myMusic1 = new BrawlCrate.SSSEditor.SSSPrev();
 			this.tabPreview2 = new System.Windows.Forms.TabPage();
-			this.sssPrev2 = new SSSEditor.SSSPrev();
+			this.sssPrev2 = new BrawlCrate.SSSEditor.SSSPrev();
 			this.tabPreview1 = new System.Windows.Forms.TabPage();
-			this.sssPrev1 = new SSSEditor.SSSPrev();
+			this.sssPrev1 = new BrawlCrate.SSSEditor.SSSPrev();
 			this.tblColorCodeKeys = new System.Windows.Forms.TableLayoutPanel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
@@ -404,7 +404,7 @@
 			this.tabControl1.Size = new System.Drawing.Size(1184, 537);
 			this.tabControl1.TabIndex = 3;
 			// 
-			// SSSEditorForm
+			// BrawlCrate.SSSEditorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -413,7 +413,7 @@
 			this.Controls.Add(this.menuStrip1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
-			this.Name = "SSSEditorForm";
+			this.Name = "BrawlCrate.SSSEditorForm";
 			this.Text = "SSS Editor";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();

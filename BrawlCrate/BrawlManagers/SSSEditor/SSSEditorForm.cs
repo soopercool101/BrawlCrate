@@ -13,9 +13,9 @@ using RazorEngine.Templating;
 using System.Drawing.Imaging;
 using Newtonsoft.Json;
 
-namespace SSSEditor
+namespace BrawlCrate.SSSEditor
 {
-    public partial class SSSEditorForm : Form
+    public partial class BrawlCrate.SSSEditorForm : Form
     {
         // Source data
         private CustomSSSCodeset sss;
@@ -43,7 +43,7 @@ namespace SSSEditor
 
         #endregion
 
-        public SSSEditorForm(string gct, string pac)
+        public BrawlCrate.SSSEditorForm(string gct, string pac)
         {
             InitializeComponent();
             foreach (Control c in tblColorCodeKeys.Controls)

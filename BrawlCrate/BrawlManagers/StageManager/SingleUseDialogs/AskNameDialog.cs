@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class AskNameDialog : Form
     {

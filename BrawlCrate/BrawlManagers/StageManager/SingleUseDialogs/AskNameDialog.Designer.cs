@@ -1,4 +1,4 @@
-﻿namespace BrawlStageManager {
+﻿namespace BrawlCrate.StageManager {
 	partial class AskNameDialog {
 		/// <summary>
 		/// Required designer variable.

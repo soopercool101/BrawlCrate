@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace BrawlSongManager.SongExport
+namespace BrawlCrate.SongManager.SongExport
 {
     /// <summary>
     /// Contains logic for user to import music song files with a format like

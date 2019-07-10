@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public static class SongsByStageID
     {

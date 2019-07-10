@@ -6,13 +6,13 @@ using System.Windows.Forms;
 using BrawlManagerLib;
 using System.Reflection;
 
-namespace BrawlSongManager
+namespace BrawlCrate.SongManager
 {
     [DefaultEvent("ValueChanged")]
     public partial class CustomSongVolumeEditor : UserControl
     {
         private static Image SPEAKER =
-            new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("BrawlSongManager.speaker.png"));
+            new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("BrawlCrate.SongManager.speaker.png"));
 
         public bool ChangeMadeSinceCSVLoaded { get; private set; }
 

@@ -1,4 +1,4 @@
-﻿namespace BrawlStageManager {
+﻿namespace BrawlCrate.StageManager {
 	partial class EnterSizeDialog {
 		/// <summary>
 		/// Required designer variable.

@@ -1,4 +1,4 @@
-﻿namespace BrawlStageManager.SingleUseDialogs {
+﻿namespace BrawlCrate.StageManager.SingleUseDialogs {
 	partial class RandomSelectEditNamesDialog {
 		/// <summary>
 		/// Required designer variable.

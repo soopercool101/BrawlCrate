@@ -11,7 +11,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 using BrawlLib;
 
-namespace BrawlCostumeManager
+namespace BrawlCrate.CostumeManager
 {
     public abstract partial class SinglePortraitViewer : PortraitViewer
     {

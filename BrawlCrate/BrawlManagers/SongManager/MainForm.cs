@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using BrawlManagerLib;
 using System.Linq;
 using System.Drawing;
-using BrawlSongManager.SongExport;
+using BrawlCrate.SongManager.SongExport;
 
-namespace BrawlSongManager
+namespace BrawlCrate.SongManager
 {
     public partial class MainForm : Form
     {

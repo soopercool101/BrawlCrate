@@ -1,4 +1,4 @@
-﻿namespace BrawlStageManager {
+﻿namespace BrawlCrate.StageManager {
 	partial class ModifyPAT0Dialog {
 		/// <summary>
 		/// Required designer variable.

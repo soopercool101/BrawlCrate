@@ -8,11 +8,11 @@ using System.IO;
 using BrawlLib.Wii.Textures;
 using BrawlManagerLib;
 using System.Diagnostics;
-using BrawlStageManager.SingleUseDialogs;
+using BrawlCrate.StageManager.SingleUseDialogs;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class MainForm : Form
     {
@@ -293,7 +293,7 @@ namespace BrawlStageManager
                 texNodes = new List<MDL0TextureNode>();
                 foreach (ResourceNode node in allNodes)
                 {
-                    if (node.ResourceType == ResourceType.MSBin)
+                    if (node.ResourceFileType == ResourceType.MSBin)
                     {
                         msBinNodes.Add((MSBinNode) node); // This is an MSBin node - add it to the list
                     }

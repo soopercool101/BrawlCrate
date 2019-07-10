@@ -11,10 +11,10 @@ using BrawlLib.Wii.Textures;
 using BrawlManagerLib;
 using System.Reflection;
 using System.Diagnostics;
-using BrawlStageManager.SingleUseDialogs;
+using BrawlCrate.StageManager.SingleUseDialogs;
 using System.Threading.Tasks;
 
-namespace BrawlStageManager
+namespace BrawlCrate.StageManager
 {
     public partial class PortraitViewer : UserControl
     {
@@ -451,7 +451,7 @@ namespace BrawlStageManager
         private void AddNewTEX0(object sender, string filename)
         {
             BRRESNode md80 = sc_selmap.FindChild("Misc Data [80]", false) as BRRESNode;
-            string dir = Path.Combine(Path.GetTempPath(), "BrawlStageManager-newimage-" + Guid.NewGuid());
+            string dir = Path.Combine(Path.GetTempPath(), "BrawlCrate.StageManager-newimage-" + Guid.NewGuid());
             Directory.CreateDirectory(dir);
             string temp = Path.Combine(dir, GetTexInfoFor(sender).pat0.Texture + Path.GetExtension(filename));
             File.Copy(filename, temp);
@@ -1375,7 +1375,7 @@ namespace BrawlStageManager
                             if (overlayFile != null)
                             {
                                 Stream stream = Assembly.GetExecutingAssembly()
-                                    .GetManifestResourceStream("BrawlStageManager." + overlayFile);
+                                    .GetManifestResourceStream("BrawlCrate.StageManager." + overlayFile);
                                 if (stream != null)
                                 {
                                     Image overlayImage = Image.FromStream(stream) as Bitmap;
