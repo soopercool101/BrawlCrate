@@ -1,0 +1,100 @@
+﻿Brawl Stage Manager 4.1.1 - July 2018
+Copyright © 2018 libertyernie
+http://lakora.us/brawl/stagemanager
+http://github.com/libertyernie/BrawlManagers
+
+Brawl Stage Manager is a program that uses BrawlLib to help you see and
+organize the stages, module files, and stage portraits that are installed on
+your SD card (or in whatever folder, on whatever device, you use for Brawl
+hacks.) It can also add PAT0 entries for expansion stages (with an automated
+process) and change certain PAT0 entries (through a special dialog.)
+
+Changes in 4.1.1:
+  * BrawlLib (StageBox) updated (to StageBox 0.8 hotfix 1)
+
+----------------------------------------
+
+Hint: In the "change directory" dialog, select your SD card and hit OK. If
+there are no .pac files in the root of your SD card, the program should jump
+to /private/wii/app/RSBE/pf/stage/melee or /projectm/pf/stage/melee instead,
+if it exists. (Try using the "Start in" field in the shortcut properties.)
+You can also run BrawlStageManager.exe from the root of your SD card for the
+same effect.
+
+KEYBOARD SHORTCUTS:
+PageUp:             Go up one stage (focus does not need to be on the stage list)
+PageDown:           Go down one stage (focus does not need to be on the stage list)
+Tilde (~):          Display PAT0 modification dialog
+Left bracket ([):   Replace border around icon (4-pixel margin) with pixels from
+                    border.png in application folder, or one that comes with Stage
+                    Manager if no border.png exists
+Right bracket (]):  Generate a new FrontStname using a configurable font
+
+-------- Notes --------
+
+You can copy your icons to the sc_selcharacter2 (Random Stage Select menu) and
+to the mu_menumain (for My Music) from the Tools menu.
+* For sc_selcharacter2, Stage Manager will read your Custom SSS code (if any)
+  to figure out which stages will be selectable and copy the icons accordingly.
+* For mu_menumain, Stage Manager will replace each of the STGCUSTOM icons with
+  a warning icon for My Music only. (MenSelmapIcon.XX will be used if present;
+  otherwise, an icon embedded in BrawlStageManager.exe will be used instead.)
+  Music titles will also be copied from info.pac if it exists.
+
+-------- Detailed Instructions --------
+
+The left side of the window has a list of stage .PAC files in the current
+directory; you can change the directory through the Options menu. Choosing a
+stage file will display:
+    * The filename, root node name, and filesize of the .PAC
+    * The filename, internal name, and filesize of the matching .rel file (if it exists)
+      * By default, the program searches for .rel files in ../../module, but
+        through the Options menu you can tell the program to search the current
+        directory instead.
+      * If the .rel file has the wrong ID for the stage it's replacing, a button
+        will appear allowing you to fix it automatically.
+    * Any MSBin nodes in the .pac file, starting with the last (shown by default)
+      * Some stage authors often put info about the stage in these nodes. This
+        program will display them read-only; you can edit them with BrawlBox.
+    * If Options>Render Models is checked: the 3D models that make up the stage itself
+      * You can hide a particular texture by unchecking it in the Model Textures list
+      * Note: using "Preview All Models" in BrawlBox is another way to examine a stage
+    * If Options>Load .brstms is checked: any .brstms associated with the stage
+      * Select the .brstm from the small menu to the left of the audio player.
+      * You can export or delete the .brstm by right-clicking the menu.
+      * You can replace the .brstm by dragging a new .brstm onto the audio player.
+You can use Page Up and Page Down to go up and down the stage list, even when
+it doesn't have focus.
+
+Stage Manager can also perform certain operations on stage and .rel files:
+    * Right-click on the button to pull up a menu, which lets you delete the
+      .pac file or the .rel file. You can also export both files, a .brstm
+      file (in some cases), and all stage portraits to a folder, which you
+      can then import later by dragging the folder onto the center panel.
+    * Drag and drop a .pac file onto the left-hand stage list to copy it to the
+      working directory. The program will ask what filename to save it as.
+    * Drag and drop a .pac or .rel file onto the center information display to
+      replace the current .pac or .rel file. Windows will ask before overwriting.
+
+The right sidebar will display (top to bottom):
+    * Stage preview (MelSelmapPrevbase)
+    * Stage icon (MenSelmapIcon)
+    * Icon number (PAT0 key; XX in MenSelmapIconXX)
+    * "Generate name" button  (same as "]" button on keyboard)
+    * Stage name (MenSelmapFrontStname)
+    * Series icon (normally MenSelchrMark, but in my pack I sometimes rename
+      it to SeriesIcon to avoid confusion)
+    * Game logo (MenSelmapMark)
+    * A filesize bar that compares your sc_selmap size to the one in the game -
+      going over this limit could cause freezing at the stage select screen!
+To replace one of these images, drag and drop an image file onto it. You can
+also right-click on the image and choose Replace or Export.
+
+All of these textures are looked up in the PAT0 entries in the common5, so
+they will match the ones you see in-game. You can edit the PAT0 entries for
+MenSelchrMark and MenSelmapMark using the Modify PAT0 button (or by pressing
+the tilde (~) button on your keyboard.)
+
+Project M 3.6 splits the stage preview (MenSelmapPrevbase) into two parts; you
+can replace these parts individually by dragging and dropping a PNG or GIF
+file onto the "PM 3.6 top" or "PM 3.6 alt" boxes.

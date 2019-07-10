@@ -1,0 +1,126 @@
+﻿Brawl Stage Manager 4.1.1 - July 2018
+Copyright © 2018 libertyernie
+http://lakora.us/brawl/ssseditor
+http://github.com/libertyernie/BrawlManagers
+
+SSS Editor is a .NET application for managing the Custom SSS code, on its own
+or within a Brawl or Project M codeset. The program allows modification and
+reordering of the stage/icon pair definitions, as well as the order and number
+of icons on the Brawl and Melee screens. You can also preview what the SSS or
+My Music screens would look like (2nd-5th tabs).
+
+To run, the program needs a .txt or .gct file that contains the Custom SSS
+code, and a common5/sc_selmap/mu_menumain file (which will not be modified.)
+
+Changes in 4.1.1:
+  * BrawlLib (StageBox) updated (to StageBox 0.8 hotfix 1)
+
+Notes:
+  * Internet Explorer 8 or higher is required.
+  * Three additional libraries are included: Microsoft.AspNet.Razor (part
+    of Microsoft's ASP.NET), RazorEngine (a templating engine built around
+    Razor), and Newtonsoft.Json (a JSON library for communicating with the
+    embedded web browser.)
+    * Although new versions of Microsoft.AspNet.Razor are open source, this one
+      (which runs on .NET 4.0) is not, so check the licensing terms here:
+      http://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm
+
+-------- Stage Control Guide --------
+
+C | Icon | 0. [ BATTLEFIELD    ↓] mmm [X]
+C | Icon | [PP] [ss] SS II [ii] [↑][↓]
+
+BATTLEFIELD    The stage to load. You can choose a stage from the dropdown or use
+               the "ss" field (see below) to enter a stage ID in decimal.
+mmm            The song that plays on the stage - only appears if you have a
+               Stage-Dependent Song Loader code for this stage in your codeset.
+C              A color indicating whether your stage will be shown on My Music
+               and/or chosen on random - see below.
+
+##            (hex) The item's position in the list you're currently looking at.
+PP            (hex) The position on column of the stage/icon definition.
+                    On columns 2 and 3, change this value to determine which stage appears.
+ss            (dec) The stage ID. Editable on column 1.
+SS            (hex) The stage ID.
+II            (hex) The icon ID.
+ii            (dec) The icon ID. Editable on column 1.
+
+To change a stage's position in the list, use the up/down buttons on the right.
+When clicking multiple times, you can click a button once and then press the spacebar repeatedly.
+
+-------- Detailed documentation --------
+
+The first column - Stage/Icon Pairs - edits the third part of the Custom SSS code (see below.) Each entry has three elements - the stage, the icon, and its position in the list.
+
+* To change the stage, use the drop-down list to select the .pac file to load
+  or use the second number box (the first one represents the index in the
+  column and can only be changed by moving up and down.)
+* To change the icon/name/stage preview, use the right-hand number box to
+  enter the number of the icon. For example, to show MenSelmapIcon.12, you
+  would enter 12. (Anything besides 01-31 or 50-59 requires the PAT0 entries
+  in your common5 to be correct - the PAT0 key is actually what you're
+  entering here.)
+* The bar on the left-hand side of the entry shows whether your stage will
+  show up on My Music (green/red) and whether it will be available on random
+  (green/yellow.) This is determined by the stage's position in the list.
+  * If any stages are orange, they might show up on random if certain other
+    stages are chosen.
+  * Note: if you have the "enable random expansion stages" code on, EVERY
+    stage will be selectable on random, regardless of the in-game setting.
+
+The second and third columns determine the stage order and number of stages
+on each page. The maximum number of stages on one page is 39.
+To change the stage/icon, use the left-hand number box to enter the number
+that you see in the corresponding box on column 1.
+
+IMPORTANT: If you have 39 stages on page 2, one of them should be the stage
+with the yellow bar! Otherwise, you'll end up with 40 when you go to My Music,
+and the game will freeze.
+
+-------- SSS Preview --------
+
+Tabs 2 through 5 will give you a rough preview of what the SSS looks like.
+You can't edit the layout from SSS Editor; instead, use BrawlBox to edit the
+animation MenSelmapPos_TopN__0 (normal) or MenSelmapPos_TopN__1 (My Music),
+frame (n+2), where "n" is the number of icons on the screen.
+
+If you want to look at the My Music layout, you should manually load
+mu_menumain.pac instead of common5.pac - this is where Brawl reads
+the My Music data from!
+
+-------- Custom SSS code (behind the scenes) --------
+
+The Custom SSS code [Spunit, Phantom Wings] has this format:
+046B8F5C 7C802378
+046B8F64 7C6300AE
+040AF618 5460083C
+040AF68C 38840002
+040AF6AC 5463083C
+040AF6C0 88030001
+040AF6E8 3860FFFF
+040AF59C 3860000C
+060B91C8 00000018
+BFA10014 7CDF3378
+7CBE2B78 7C7D1B78
+2D05FFFF 418A0014
+006B929C 000000XX
+066B99D8 000000XX
+-------- -------- (Page 1)
+006B92A4 000000YY
+066B9A58 000000YY
+-------- -------- (Page 2)
+06407AAC 000000ZZ
+-------- -------- (Stage/Icon List)
+
+XX = # of bytes in Page 1 section
+YY = # of bytes in Page 2 section
+ZZ = # of bytes in stage/icon list section
+
+The stage/icon list in part 3 of the code takes the format:
+[stage][icon][stage][icon] [stage][icon][stage][icon] ...
+where [stage] is the stage ID - the same one used in modifying the .rel files - and icon is the icon number, in hex.
+The 41st value is reserved for the Menu icon on My Music, so its value doesn't make any difference, but it should be skipped over when adding expansion stages.
+
+The page 1 and page 2 sections take the format:
+[index][index][index][index] [index][index][index][index] ...
+where [index] is a reference to the stage/icon list below. For example, putting "0C" here would refer to the 13th stage defined in the list (you count from 0, and 0C = 12 in decimal.)
