@@ -8,7 +8,7 @@ from System.Windows.Forms import ToolStripMenuItem
 
 # Function to ensure the context menu item is only active if it's the CSP ARC
 def EnableCheck(sender, event_args):
-    sender.Enabled = (BrawlAPI.SelectedNode is not null and BrawlAPI.SelectedNode.Name == "char_bust_tex_lz77")
+    sender.Enabled = (BrawlAPI.SelectedNode is not None and BrawlAPI.SelectedNode.Name == "char_bust_tex_lz77")
 
 # Function to export CSP BRRESs in the selected ARC
 def export_to_results(sender, event_args):
