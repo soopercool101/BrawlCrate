@@ -250,6 +250,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             foreach (CollisionObject o in Children)
             {
                 o._render = _render;
+                o.PreRender(v);
             }
         }
 
@@ -510,9 +511,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 p._render = _render;
             }
 
-            GL.PushAttrib(AttribMask.AllAttribBits);
+            foreach (CollisionLink l in _points)
+            {
+                l._render = _render;
+            }
 
-            GL.Disable(EnableCap.DepthTest);
+            GL.Clear(ClearBufferMask.DepthBufferBit);
+            GL.Enable(EnableCap.DepthTest);
         }
 
         public Box GetBox()
@@ -535,11 +540,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             foreach (CollisionPlane p in _planes)
             {
+                p._render = _render;
                 p.Render(null);
             }
 
             foreach (CollisionLink l in _points)
             {
+                l._render = _render;
                 l.Render(null);
             }
         }
