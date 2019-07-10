@@ -22,6 +22,6 @@ if BrawlAPI.RootNode != None: # If there is a valid open file
         if count: # If any textures are found, show the user a success message
             BrawlAPI.ShowMessage(str(count) + " textures were successfully exported to " + folder, "Success")
         else: # If no textures are found, show an error message
-            BrawlAPI.ShowMessage('No textures were found in the open file','Error')
+            BrawlAPI.ShowError('No textures were found in the open file','Error')
 else: # Show an error message if there is no valid file open
-    BrawlAPI.ShowMessage('Cannot find Root Node (is a file open?)','Error')
+    BrawlAPI.ShowError('Cannot find Root Node (is a file open?)','Error')
