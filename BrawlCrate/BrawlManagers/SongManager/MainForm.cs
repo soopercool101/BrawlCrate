@@ -14,7 +14,7 @@ namespace BrawlCrate.SongManager
 {
     public partial class MainForm : Form
     {
-        public static readonly string[] GCT_PATHS = new string[]
+        public static readonly string[] GCT_PATHS = new []
         {
             "RSBE01.gct",
             "/data/gecko/codes/RSBE01.gct",

@@ -470,7 +470,7 @@ namespace BrawlCrate.StageManager
             // Special code for the root directory of a drive
             if (pacFiles.Length == 0)
             {
-                foreach (string subpath in new string[]
+                foreach (string subpath in new []
                 {
                     "\\private\\wii\\app\\RSBE\\pf\\stage\\melee",
                     "\\projectm\\pf\\stage\\melee"

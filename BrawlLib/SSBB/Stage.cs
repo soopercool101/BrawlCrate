@@ -159,31 +159,31 @@ namespace BrawlLib.SSBB
             get
             {
                 string s = PacBasename;
-                return s == "starfox" ? new string[] {"STGSTARFOX_GDIFF.pac"} :
-                    s == "emblem" ? new string[]
+                return s == "starfox" ? new [] {"STGSTARFOX_GDIFF.pac"} :
+                    s == "emblem" ? new []
                     {
                         "STGEMBLEM_00.pac",
                         "STGEMBLEM_01.pac",
                         "STGEMBLEM_02.pac"
                     } :
-                    s == "mariopast" ? new string[]
+                    s == "mariopast" ? new []
                     {
                         "STGMARIOPAST_00.pac",
                         "STGMARIOPAST_01.pac"
                     } :
-                    s == "metalgear" ? new string[]
+                    s == "metalgear" ? new []
                     {
                         "STGMETALGEAR_00.pac",
                         "STGMETALGEAR_01.pac",
                         "STGMETALGEAR_02.pac"
                     } :
-                    s == "tengan" ? new string[]
+                    s == "tengan" ? new []
                     {
                         "STGTENGAN_1.pac",
                         "STGTENGAN_2.pac",
                         "STGTENGAN_3.pac"
                     } :
-                    s == "village" ? new string[]
+                    s == "village" ? new []
                     {
                         "STGVILLAGE_00.pac",
                         "STGVILLAGE_01.pac",
@@ -192,7 +192,7 @@ namespace BrawlLib.SSBB
                         "STGVILLAGE_04.pac"
                     } :
                     s == "custom" ? new string[0] :
-                    new string[] {"STG" + s.ToUpper() + ".pac"};
+                    new [] {"STG" + s.ToUpper() + ".pac"};
             }
         }
 

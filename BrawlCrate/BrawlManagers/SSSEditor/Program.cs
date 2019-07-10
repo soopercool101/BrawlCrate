@@ -79,7 +79,7 @@ namespace BrawlCrate.SSSEditor
 
             findFiles(args);
 
-            Application.Run(new BrawlCrate.SSSEditorForm(gct, pac));
+            Application.Run(new SSEEditorForm(gct, pac));
         }
 
         private static void accessLibraries()

@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 
 namespace BrawlCrate.SSSEditor
 {
-    public partial class BrawlCrate.SSSEditorForm : Form
+    public partial class SSEEditorForm : Form
     {
         // Source data
         private CustomSSSCodeset sss;
@@ -43,7 +43,7 @@ namespace BrawlCrate.SSSEditor
 
         #endregion
 
-        public BrawlCrate.SSSEditorForm(string gct, string pac)
+        public SSEEditorForm(string gct, string pac)
         {
             InitializeComponent();
             foreach (Control c in tblColorCodeKeys.Controls)
@@ -322,7 +322,7 @@ namespace BrawlCrate.SSSEditor
                 {
                     CustomSSSCodeset candidateSSS = null;
 
-                    string[] gctPaths = new string[]
+                    string[] gctPaths = new []
                     {
                         "codes/RSBE01.gct",
                         "data/gecko/codes/RSBE01.gct",
@@ -347,10 +347,10 @@ namespace BrawlCrate.SSSEditor
                     }
 
                     string root = null;
-                    foreach (string folder in new string[]
+                    foreach (string folder in new []
                         {"/private/wii/app/RSBE/pf", "/projectm/pf", "/minusery/pf", "/LegacyTE/pf", "/LegacyXP/pf"})
                     {
-                        foreach (string file in new string[]
+                        foreach (string file in new []
                         {
                             "/menu2/sc_selmap.pac", "/menu2/sc_selmap_en.pac", "system/common5.pac",
                             "system/common5_en.pac"
