@@ -47,7 +47,9 @@ Default (Float): 45 (0x42340000)
 	/EndDescription
 0
 
-0x038
+Car Speed
+(Float) Speed at which cars travel (affects both forward and backward speed, cars stop when there's another car in front)
+
 Default (Float): 0.45 (0x3EE66666)
 	/EndDescription
 0

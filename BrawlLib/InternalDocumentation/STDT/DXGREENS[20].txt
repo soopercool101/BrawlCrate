@@ -56,12 +56,16 @@ Default (Float): 9 (0x41100000)
 	/EndDescription
 0
 
-0x03C
+Blocks Maximum Speed
+(Float) Falling Blocks maximum speed (they always start at 0 speed)
+
 Default (Float): 5 (0x40A00000)
 	/EndDescription
 0
 
-0x040
+Blocks Acceleration
+(Float) Falling Blocks acceleration
+
 Default (Float): 0.02 (0x3CA3D70A)
 	/EndDescription
 0
@@ -87,8 +91,8 @@ Default (Float): 0.24 (0x3E75C28F)
 	/EndDescription
 0
 
-0x050
-Default: 0 (Could be int or float - be careful)
+Wind Area Width (removal)
+(Float) The width (in the direction the wind is blowing) that has to be removed out of the Wind Area Width (0x54) of the wind's area of effect
 
 Default (Float): 0 (0x00000000)
 	/EndDescription
@@ -158,12 +162,16 @@ Default (Float): 16 (0x41800000)
 	/EndDescription
 0
 
-0x07C
+Apples Min Spawn Height
+(Float) The minimum spawn height of Apples
+
 Default (Float): 25 (0x41C80000)
 	/EndDescription
 0
 
-0x080
+Apples Max Spawn Height
+(Float) The maximum spawn height of Apples
+
 Default (Float): 35 (0x420C0000)
 	/EndDescription
 0

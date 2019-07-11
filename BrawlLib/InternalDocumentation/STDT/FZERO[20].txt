@@ -1,0 +1,118 @@
+0x014
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+Warning Sign duration
+(Float) Warning Sign duration frame count (can be repeated multiple times to match transition)
+
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+0x01C
+Default (Float): 0.6 (0x3F19999A)
+	/EndDescription
+0
+
+0x020
+Default (Float): 1.3 (0x3FA66666)
+	/EndDescription
+0
+
+0x024
+Default (Float): 0.7 (0x3F333333)
+	/EndDescription
+0
+
+On Track Transition duration
+(Float) On Track Transition duration frame count (not used when cars drive in playable area)
+
+Default (Float): 360 (0x43B40000)
+	/EndDescription
+0
+
+0x02C
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 25 (0x41C80000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 0.8 (0x3F4CCCCD)
+	/EndDescription
+0
+
+0x044
+Default (Float): 1.2 (0x3F99999A)
+	/EndDescription
+0
+
+0x048
+Default (Float): 0.15 (0x3E19999A)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 16 (0x41800000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+0x058
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 10 (0x41200000)
+	/EndDescription
+0
+
+0x060
+Default (Float): 1.5 (0x3FC00000)
+	/EndDescription
+0
+
+0x064
+Default (Float): 2 (0x40000000)
+	/EndDescription
+0
+
+0x068
+Default (Float): 60 (0x42700000)
+	/EndDescription
+0
+
+0x06C
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0

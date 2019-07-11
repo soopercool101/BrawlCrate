@@ -1,0 +1,102 @@
+Kart Acceleration
+(Float) Kart Acceleration
+
+Default (Float): 0.01 (0x3C23D70A)
+	/EndDescription
+0
+
+0x018
+Default (Float): 0.05 (0x3D4CCCCD)
+	/EndDescription
+0
+
+Kart Max Speed
+(Float) Kart Maximum Speed
+
+Default (Float): 6 (0x40C00000)
+	/EndDescription
+0
+
+0x020
+Default (Float): 0.5 (0x3F000000)
+	/EndDescription
+0
+
+0x024
+Default (Float): 0.8 (0x3F4CCCCD)
+	/EndDescription
+0
+
+Last Place Acceleration
+(Float) Acceleration gained when last place (can surpass Max Speed)
+
+Default (Float): 1.2 (0x3F99999A)
+	/EndDescription
+0
+
+Arrow Warning duration
+(Float) Arrow Warning duration (won't end if karts are near curve)
+
+Default (Float): 120 (0x42F00000)
+	/EndDescription
+0
+
+0x030
+Default (Float): 5 (0x40A00000)
+	/EndDescription
+0
+
+0x034
+Default (Float): 1800 (0x44E10000)
+	/EndDescription
+0
+
+0x038
+Default (Float): 500 (0x43FA0000)
+	/EndDescription
+0
+
+0x03C
+Default (Float): 300 (0x43960000)
+	/EndDescription
+0
+
+0x040
+Default (Float): 180 (0x43340000)
+	/EndDescription
+0
+
+~0x044
+Default (Unknown Type): (0x08000000)
+	/EndDescription
+4
+
+0x048
+Default (Float): 5400 (0x45A8C000)
+	/EndDescription
+0
+
+0x04C
+Default (Float): 7200 (0x45E10000)
+	/EndDescription
+0
+
+0x050
+Default (Float): 0,25 (0x3E800000)
+	/EndDescription
+0
+
+0x054
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0
+
+0x058
+Default (Float): 900 (0x44610000)
+	/EndDescription
+0
+
+0x05C
+Default (Float): 600 (0x44160000)
+	/EndDescription
+0

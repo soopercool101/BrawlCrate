@@ -2379,8 +2379,7 @@ namespace System.Windows.Forms
 
             foreach (MDL0Node m in _models)
             {
-                if (m.Name.Contains("StgPosition", StringComparison.OrdinalIgnoreCase) ||
-                    m.Name.Contains("stagePosition", StringComparison.OrdinalIgnoreCase))
+                if (m.IsStagePosition)
                 {
                     stgPos = m;
                     break;

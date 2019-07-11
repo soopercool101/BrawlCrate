@@ -197,7 +197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public bool IsStagePosition =>
-            (Name.ToLower().StartsWith("stgposition", StringComparison.OrdinalIgnoreCase) ||
+            (Name.StartsWith("stgposition", StringComparison.OrdinalIgnoreCase) ||
              Name.StartsWith("stageposition", StringComparison.OrdinalIgnoreCase)) && NumFacepoints == 0 &&
             NumVertices == 0 && NumTriangles == 0;
 
