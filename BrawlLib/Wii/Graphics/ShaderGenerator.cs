@@ -867,7 +867,7 @@ namespace BrawlLib.Wii.Graphics
                 string error = WriteStage(stage);
                 if (error != null)
                 {
-                    return new string[] {error};
+                    return new [] {error};
                 }
 
                 wl();
@@ -1567,7 +1567,7 @@ namespace BrawlLib.Wii.Graphics
                 Console.WriteLine(info + "\n\n");
 
                 //Split the source by new lines
-                string[] s = source.Split(new string[] {NewLine}, StringSplitOptions.None);
+                string[] s = source.Split(new [] {NewLine}, StringSplitOptions.None);
 
                 //Add the line number to the source so we can go right to errors on specific lines
                 int lineNumber = 1;
@@ -1631,7 +1631,7 @@ namespace BrawlLib.Wii.Graphics
                         }
 
                         string[] shadSplit = shaderStages[i].Split(
-                            new string[] {NewLine},
+                            new [] {NewLine},
                             StringSplitOptions.None);
 
                         foreach (string line in shadSplit)

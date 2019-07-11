@@ -59,6 +59,10 @@ namespace BrawlCrate
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.costumeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.songManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stageManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gCTEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.runScriptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -336,7 +340,7 @@ namespace BrawlCrate
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
-            this.gCTEditorToolStripMenuItem,
+            this.managersToolStripMenuItem,
             this.toolStripSeparator2,
             this.runScriptToolStripMenuItem,
             this.reloadPluginsToolStripMenuItem});
@@ -350,6 +354,17 @@ namespace BrawlCrate
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem.Text = "&Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click_1);
+            //
+            // managersToolStripMenuItem
+            //
+            this.managersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gCTEditorToolStripMenuItem,
+            this.costumeManagerToolStripMenuItem,
+            this.songManagerToolStripMenuItem,
+            this.stageManagerToolStripMenuItem});
+            this.managersToolStripMenuItem.Name = "managersToolStripMenuItem";
+            this.managersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.managersToolStripMenuItem.Text = "Managers";
             // 
             // gCTEditorToolStripMenuItem
             // 
@@ -357,6 +372,27 @@ namespace BrawlCrate
             this.gCTEditorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gCTEditorToolStripMenuItem.Text = "Code Manager";
             this.gCTEditorToolStripMenuItem.Click += new System.EventHandler(this.GCTEditorToolStripMenuItem_Click);
+            // 
+            // costumeManagerToolStripMenuItem
+            // 
+            this.costumeManagerToolStripMenuItem.Name = "costumeManagerToolStripMenuItem";
+            this.costumeManagerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.costumeManagerToolStripMenuItem.Text = "Costume Manager";
+            this.costumeManagerToolStripMenuItem.Click += new System.EventHandler(this.CostumeManagerToolStripMenuItem_Click);
+            // 
+            // songManagerToolStripMenuItem
+            // 
+            this.songManagerToolStripMenuItem.Name = "songManagerToolStripMenuItem";
+            this.songManagerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.songManagerToolStripMenuItem.Text = "Song Manager";
+            this.songManagerToolStripMenuItem.Click += new System.EventHandler(this.SongManagerToolStripMenuItem_Click);
+            // 
+            // stageManagerToolStripMenuItem
+            // 
+            this.stageManagerToolStripMenuItem.Name = "stageManagerToolStripMenuItem";
+            this.stageManagerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.stageManagerToolStripMenuItem.Text = "Stage Manager";
+            this.stageManagerToolStripMenuItem.Click += new System.EventHandler(this.StageManagerToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -381,7 +417,7 @@ namespace BrawlCrate
             // 
             this.pluginToolStripMenuItem.Name = "pluginToolStripMenuItem";
             this.pluginToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.pluginToolStripMenuItem.Text = "Plugins";
+            this.pluginToolStripMenuItem.Text = "&Plugins";
             // 
             // helpToolStripMenuItem
             // 
@@ -396,21 +432,21 @@ namespace BrawlCrate
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // showChangelogToolStripMenuItem
             // 
             this.showChangelogToolStripMenuItem.Name = "showChangelogToolStripMenuItem";
-            this.showChangelogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showChangelogToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.showChangelogToolStripMenuItem.Text = "Show Changelog";
             this.showChangelogToolStripMenuItem.Click += new System.EventHandler(this.ShowChangelogToolStripMenuItem_Click);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click_1);
             // 
@@ -742,6 +778,10 @@ namespace BrawlCrate
         public ToolStripMenuItem editToolStripMenuItem;
         private VideoPlaybackPanel videoPlaybackPanel1;
         private ToolStripMenuItem gCTEditorToolStripMenuItem;
+        private ToolStripMenuItem managersToolStripMenuItem;
+        private ToolStripMenuItem costumeManagerToolStripMenuItem;
+        private ToolStripMenuItem songManagerToolStripMenuItem;
+        private ToolStripMenuItem stageManagerToolStripMenuItem;
         private ToolStripMenuItem recentFilesToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         public ToolStripMenuItem checkForUpdatesToolStripMenuItem;

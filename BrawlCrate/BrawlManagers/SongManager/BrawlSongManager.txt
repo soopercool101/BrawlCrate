@@ -1,0 +1,93 @@
+﻿Brawl Stage Manager 4.1.1 - July 2018
+Copyright © 2018 libertyernie
+http://lakora.us/brawl/songmanager
+http://github.com/libertyernie/BrawlManagers
+
+Brawl Song Manager is a program that uses BrawlLib to quickly view which BRSTM
+music files are installed on your SD card (or in whatever folder, on whatever
+device, you use for Brawl hacks.)
+
+Changes in 4.1.1:
+  * BrawlLib (StageBox) updated (to StageBox 0.8 hotfix 1)
+
+----------------------------------------
+
+The left side of the window has a list of .BRSTM music files in the current
+directory; you can change the directory through the File menu. When you choose
+a .BRSTM file, the right side of the window will display the playback module
+from BrawlBox, allowing you to listen to the song.
+
+In the bottom-left corner is a control for modifying the Custom Song Volume
+code, which will be read from your GCT codeset if it exists. You can also use
+it to add the code to your GCT. If a warning or speaker icon appears in the
+corner of this editor bar, mouse over the icon for more information.
+
+To replace a song, drag the new .BRSTM or .WAV onto the main panel.
+To add a song, drag a .BRSTM or .WAV onto the menu and enter a filename.
+Right-click the .BRSTM in the menu for other options (Export, Rename, Delete).
+
+KEYBOARD SHORTCUTS:
+PageUp:      go up one song (focus does not need to be on the song list)
+PageDown:    go down one song (focus does not need to be on the song list)
+
+----------------------------------------
+
+If you have an info.pac file in ..\..\info2\info.pac, ..\..\info2\info_en.pac,
+or .\info.pac, then the program will load that file and allow you to change
+song titles (when applicable) - unless you have Misc Data [140].msbin in the
+current directory, in which case the program loads that instead. You can save
+your changes through the File menu or by pressing Enter in the text box.
+The "Restore" button resets the song title to the one loaded from info.pac,
+while the "Default" button loads the default Brawl name for that slot.
+
+If you have an info_training file, that will be updated as well. If song names
+in the two files are different, the text box will be colored red.
+
+----------------------------------------
+
+Use the "change directory" dialog to select the folder that has BRSTM files in
+it. This could be sound/strm (or sound/sfx with the Custom Sound Engine.)
+
+Hint: In the "change directory" dialog, select your SD card and hit OK. If
+there are no .brstm files in the root of your SD card, the program should jump
+to /private/wii/app/RSBE/pf/sound/strm or /projectm/pf/sound/strm instead, if
+one exists. (Try using the "Start in" field in the shortcut properties, or
+running BrawlSongManager.exe from the root of your SD card.)
+
+----------------------------------------
+
+Importing and Exporting Song Files
+
+Both importing and exporting first require changing directory to an appropriate
+"SD  card". Then under the Tools menu there are options to import or export 
+song files.
+
+Export will output songs on the current SD card to the folder you choose. In 
+the directory you choose it will create a number of directories for each stage
+and inside each stage directory it will place the songs for that stage. Songs
+that do not have a custom file on the SD card will have place-holders exported
+as empty files that users can then replace. The empty files will be ignored 
+when importing.
+
+After songs have been exported, users can edit song volumes or titles, or even
+replace songs. The only requirement is that the file name format conforms to
+the format specified below. The 'game-file-name' should remain unchanged, and 
+there should only be one of each 'game-file-name'.
+
+Import will scan (recursively) in the directory you choose for *.brstm files 
+that match the file name format specified below. Any matching files will be 
+copied onto the current SD card with the appropriate "game-file-name" as the
+file name. mu_menumain.pac and info.pac will updated, and if found on the SD
+card, training_info.pac and the GCT codes will also be updated. Note that the
+stage directories are ignored when importing (they are just an aid for users). 
+
+The file name format for the files exported / imported is:
+    <game-file-name>.<volume>.<song-title>.brstm 
+Some examples of this format are:
+    W05.35.Yoshi's Island (Melee).brstm
+    Y05.0.Boss Battle Song 1.brstm
+    
+When imported, a volume of 0 will reset the volume for that song to default, 
+while volumes above 127 (the max) will be set to 127.
+
+----------------------------------------

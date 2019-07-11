@@ -9,8 +9,8 @@ namespace BrawlLib.Wii.Animations
 {
     public class AnimFormat
     {
-        private static readonly string[] types = new string[] {"scale", "rotate", "translate"};
-        private static readonly string[] axes = new string[] {"X", "Y", "Z"};
+        private static readonly string[] types = new [] {"scale", "rotate", "translate"};
+        private static readonly string[] axes = new [] {"X", "Y", "Z"};
 
         public static void Serialize(CHR0Node node, bool bake, string output)
         {
