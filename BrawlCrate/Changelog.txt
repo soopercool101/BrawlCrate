@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.26 Hotfix 1
+BrawlCrate - v0.27
 Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -18,6 +18,16 @@ they be held accountable for the manner in which it is used.
 
  - BrawlCrate v0.27?
  . Rebuilt over the latest BrawlBox source
+ 
+  - BrawlCrate v0.26 Hotfix 2 - (7/8/2019)
+ . Fix issue in which Shaders could be initialized with null names
+ . Fix crashes caused by VIS0 syncing
+ . Fix crashes when moving vertices
+ . Fix issue where an exported DAE could not be reimported
+ . Fix bug in which vertex edits could not be saved
+ . Fix bug in which Final Smash flags for Fighter Configs switched the None/Single flag
+ . Fix bug in which generating metal materials for a model that doesn't currently have them would result in the metal texture being set to "<null>"
+ . Fix bug in which exporting a model with "<null>" textures would crash the program
  
  - BrawlCrate v0.26 Hotfix 1 - (5/16/2019)
  . Fix issue where shaders could not be properly selected
