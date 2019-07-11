@@ -1,0 +1,26 @@
+st_halberd Section [4]: 0x00000018
+On Ship sequence start
+
+How many frames to be On Ship sequence (enables hazards, ship collisions, usually is the same amount of frames of the animation in the .pac file.)
+
+Default (Float): 720 (0x44340000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_halberd Section [4]: 0x00000034
+On Ship sequence start
+
+How many frames to be On Ship sequence (enables hazards, ship collisions, usually is the same amount of frames of the animation in the .pac file.)
+
+Default (Float): 5100 (0x459F0000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
+
+st_halberd Section [4]: 0x0000005c
+Loop restart after On Ship sequence
+
+How many frames to restart the loop after On Ship sequence (linked to 0x34, usually is the same amount of frames of the loop animation in the .pac file.)
+
+Default (Float): 1200 (0x44960000)
+	/EndDescription
+1111    // Flags for which bytes are underlined
