@@ -1177,6 +1177,36 @@ namespace BrawlCrate
             UpdateDiscordRPC(null, null);
         }
 
+        private CostumeManager.MainForm cm;
+        private void CostumeManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cm == null || cm.IsDisposed)
+            {
+                cm = new CostumeManager.MainForm();
+            }
+            cm.FormClosed += UpdateDiscordRPC;
+            //m.OpenFileChanged += UpdateDiscordRPC;
+            cm.Show();
+            UpdateDiscordRPC(null, null);
+        }
+
+        private void SongManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SongManager.MainForm m = new SongManager.MainForm(null, true, true, true);
+            m.FormClosed += UpdateDiscordRPC;
+            //m.OpenFileChanged += UpdateDiscordRPC;
+            m.Show();
+            UpdateDiscordRPC(null, null);
+        }
+        private void StageManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StageManager.MainForm m = new StageManager.MainForm(null, true);
+            m.FormClosed += UpdateDiscordRPC;
+            //m.OpenFileChanged += UpdateDiscordRPC;
+            m.Show();
+            UpdateDiscordRPC(null, null);
+        }
+
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             Program.Open(((RecentFileHandler.FileMenuItem) e.ClickedItem).FileName);

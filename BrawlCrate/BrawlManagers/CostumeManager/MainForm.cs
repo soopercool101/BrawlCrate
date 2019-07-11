@@ -13,30 +13,22 @@ using System.Globalization;
 
 namespace BrawlCrate.CostumeManager
 {
-    public partial class CostumeManager : Form
+    public partial class MainForm : Form
     {
         private static string _title = "";
 
-        private List<PortraitViewer> portraitViewers;
-        private PortraitMap pmap;
+        private List<PortraitViewer> portraitViewers = new List<PortraitViewer>();
+        private PortraitMap pmap = new PortraitMap();
 
         public bool Swap_Wario;
 
-        public CostumeManager()
+        public MainForm()
         {
             _title = "BrawlCrate Costume Manager " +
                     BrawlCrate.Program.AssemblyTitleShort.Substring(
                         BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
             InitializeComponent();
-            pmap = new PortraitMap();
-            try
-            {
-                Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            }
-            catch (Exception)
-            {
-                Icon = BrawlLib.Properties.Resources.Icon;
-            }
+            Icon = BrawlLib.Properties.Resources.Icon;
 
             portraitViewers = new List<PortraitViewer>
                 {cssPortraitViewer1, resultPortraitViewer1, battlePortraitViewer1, infoStockIconViewer1};

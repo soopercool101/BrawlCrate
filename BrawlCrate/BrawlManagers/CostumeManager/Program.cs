@@ -27,7 +27,7 @@ namespace BrawlCrate.CostumeManager
                 return;
             }
 
-            Application.Run(new CostumeManager());
+            Application.Run(new MainForm());
         }
 
         private static void accessLibraries()

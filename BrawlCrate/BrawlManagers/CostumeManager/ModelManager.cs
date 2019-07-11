@@ -124,9 +124,9 @@ namespace BrawlCrate.CostumeManager
                             (newroot as ARCNode).ExportPAC(pac.FullName);
                             (newroot as ARCNode).ExportPCS(pcs.FullName);
 
-                            if (ParentForm is CostumeManager)
+                            if (ParentForm is MainForm)
                             {
-                                (ParentForm as CostumeManager).updateCostumeSelectionPane();
+                                (ParentForm as MainForm).updateCostumeSelectionPane();
                             }
 
                             LoadFile(_path);

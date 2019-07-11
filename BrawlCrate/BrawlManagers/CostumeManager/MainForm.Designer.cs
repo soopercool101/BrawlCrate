@@ -1,5 +1,5 @@
 ﻿namespace BrawlCrate.CostumeManager {
-	partial class CostumeManager {
+	partial class MainForm {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -24,7 +24,6 @@
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CostumeManager));
 			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
 			this.listBox2 = new System.Windows.Forms.ListBox();
@@ -171,7 +170,6 @@
 			this.toolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.toolStripDropDownButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.use16ptFontToolStripMenuItem});
-			this.toolStripDropDownButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton3.Image")));
 			this.toolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripDropDownButton3.Name = "toolStripDropDownButton3";
 			this.toolStripDropDownButton3.Size = new System.Drawing.Size(45, 22);
@@ -428,7 +426,7 @@
 			this.use16ptFontToolStripMenuItem.Text = "Use 16pt font";
 			this.use16ptFontToolStripMenuItem.Click += new System.EventHandler(this.use16ptFontToolStripMenuItem_Click);
 			// 
-			// CostumeManager
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -441,7 +439,7 @@
 			this.Controls.Add(this.brawlSplitter2);
 			this.Controls.Add(this.otherPVsFlowLayoutPanel);
 			this.Controls.Add(this.toolStrip1);
-			this.Name = "CostumeManager";
+			this.Name = "MainForm";
 			this.Text = "Brawl Costume Manager";
 			this.splitContainer2.Panel1.ResumeLayout(false);
 			this.splitContainer2.Panel2.ResumeLayout(false);

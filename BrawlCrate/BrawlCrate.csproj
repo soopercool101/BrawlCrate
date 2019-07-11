@@ -110,6 +110,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="BrawlManagers\CostumeManager\BrawlCostumeManager.txt" />
+    <None Remove="BrawlManagers\CostumeManager\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BrawlManagers\CostumeManager\BrawlCostumeManager.txt" />
+    <Content Include="BrawlManagers\CostumeManager\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="DynamicLanguageRuntime" Version="1.2.2" />
     <PackageReference Include="IronPython" Version="2.7.9" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
