@@ -82,7 +82,10 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>RD /S /Q "$(TargetDir)"</PreBuildEvent>
+    <PreBuildEvent>if not '$(ConfigurationName)' == 'Debug' (
+  RD /S /Q "$(TargetDir)"
+)
+%windir%\system32\xcopy "$(ProjectDir)InternalDocumentation\*" "$(TargetDir)\InternalDocumentation\" /Y /I /S</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent />
