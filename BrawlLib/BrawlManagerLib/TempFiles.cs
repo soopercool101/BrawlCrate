@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -60,16 +61,23 @@ namespace BrawlManagerLib
         public static void DeleteAll()
         {
             List<Exception> exceptions = new List<Exception>();
-            foreach (string s in Directory.EnumerateFiles(Path.Combine(Path.GetTempPath(), SUBDIR)))
+            try
             {
-                try
+                foreach (string s in Directory.EnumerateFiles(Path.Combine(Path.GetTempPath(), SUBDIR)))
                 {
-                    File.Delete(s);
+                    try
+                    {
+                        File.Delete(s);
+                    }
+                    catch (Exception e)
+                    {
+                        exceptions.Add(e);
+                    }
                 }
-                catch (Exception e)
-                {
-                    exceptions.Add(e);
-                }
+            }
+            catch (Exception e)
+            {
+                exceptions.Add(e);
             }
 
             if (exceptions.Count == 0)
@@ -84,10 +92,10 @@ namespace BrawlManagerLib
                 }
             }
 
-            if (exceptions.Count > 0)
-            {
-                throw new TempFileCleanupException(exceptions);
-            }
+            //if (exceptions.Count > 0)
+            //{
+            //    throw new TempFileCleanupException(exceptions);
+            //}
         }
 
         /// <summary>

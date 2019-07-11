@@ -923,11 +923,11 @@ namespace BrawlCrate.StageManager
             open((FileInfo) listBox1.SelectedItem);
             if (listBox1.SelectedItem == null)
             {
-                brawlBoxStageToolStripMenuItem.Text = "No stage loaded";
+                brawlCrateStageToolStripMenuItem.Text = "No stage loaded";
             }
             else
             {
-                brawlBoxStageToolStripMenuItem.Text = listBox1.SelectedItem.ToString();
+                brawlCrateStageToolStripMenuItem.Text = listBox1.SelectedItem.ToString();
             }
         }
 
@@ -1316,39 +1316,29 @@ namespace BrawlCrate.StageManager
             new AboutBSM(null, System.Reflection.Assembly.GetExecutingAssembly()).ShowDialog(this);
         }
 
-        private void brawlBoxStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void brawlCrateStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string exeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            if (File.Exists(exeDir + "/BrawlBox.exe"))
+            string filepath = ((FileInfo)listBox1.SelectedItem)?.FullName;
+            if (!string.IsNullOrEmpty(filepath))
             {
-                if (listBox1.SelectedItem == null)
-                {
-                    return;
-                }
-
-                string filepath = ((FileInfo) listBox1.SelectedItem).FullName;
-                Process.Start(exeDir + "/BrawlBox.exe", '"' + filepath + '"');
-            }
-            else
-            {
-                MessageBox.Show(this, "Could not find BrawlBox.exe.");
+                BrawlCrate.Program.Open(filepath);
+                BrawlCrate.MainForm.Instance.Focus();
             }
         }
 
-        private void brawlBoxcommon5scselmapToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void brawlCratecommon5scselmapToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            string exeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            if (!File.Exists(exeDir + "/BrawlBox.exe"))
+            if (!File.Exists(portraitViewer1.OpenFilePath))
             {
-                MessageBox.Show(this, "Could not find BrawlBox.exe.");
-            }
-            else if (!File.Exists(portraitViewer1.OpenFilePath))
-            {
-                MessageBox.Show(this, "Could not find " + portraitViewer1.OpenFilePath + ".");
+                if (!String.IsNullOrEmpty(portraitViewer1.OpenFilePath))
+                {
+                    MessageBox.Show(this, "Could not find " + portraitViewer1.OpenFilePath + ".");
+                }
             }
             else
             {
-                Process.Start(exeDir + "/BrawlBox.exe", '"' + portraitViewer1.OpenFilePath + '"');
+                BrawlCrate.Program.Open(new FileInfo(portraitViewer1.OpenFilePath).FullName);
+                BrawlCrate.MainForm.Instance.Focus();
             }
         }
 
