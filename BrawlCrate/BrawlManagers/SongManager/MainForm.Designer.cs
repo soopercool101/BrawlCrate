@@ -146,7 +146,7 @@
             this.customSongVolumeEditor1.SongFilename = null;
             this.customSongVolumeEditor1.TabIndex = 2;
             this.customSongVolumeEditor1.Value = ((byte)(0));
-            this.customSongVolumeEditor1.VolumeIcon = ((System.Drawing.Image)(resources.GetObject("customSongVolumeEditor1.VolumeIcon")));
+            //this.customSongVolumeEditor1.VolumeIcon = ((System.Drawing.Image)(resources.GetObject("customSongVolumeEditor1.VolumeIcon")));
             this.customSongVolumeEditor1.ValueChanged += new System.EventHandler(this.customSongVolumeEditor1_ValueChanged);
             // 
             // songPanel1
