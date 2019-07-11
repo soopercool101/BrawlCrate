@@ -413,7 +413,7 @@ namespace BrawlCrate.CostumeManager
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            new AboutBSM(Icon, System.Reflection.Assembly.GetExecutingAssembly()).ShowDialog(this);
+            AboutForm.Instance.ShowDialog(this);
         }
 
         private void updateMewtwoHatForCurrentKirbyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -421,7 +421,7 @@ namespace BrawlCrate.CostumeManager
             string kirby, hat;
 
             FighterFile ff = (FighterFile) listBox2.SelectedItem;
-            if (pmap.CharBustTexFor("kirby") != ff.CharNum)
+            if (ff == null || pmap.CharBustTexFor("kirby") != ff.CharNum)
             {
                 MessageBox.Show(this, "Select a Kirby costume before using this feature.");
                 return;

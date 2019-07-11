@@ -434,7 +434,7 @@ namespace BrawlCrate.SongManager
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AboutBSM(Icon, System.Reflection.Assembly.GetExecutingAssembly()).ShowDialog(this);
+            AboutForm.Instance.ShowDialog(this);
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)

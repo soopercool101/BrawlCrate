@@ -1317,7 +1317,7 @@ namespace BrawlCrate.StageManager
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AboutBSM(null, System.Reflection.Assembly.GetExecutingAssembly()).ShowDialog(this);
+            AboutForm.Instance.ShowDialog(this);
         }
 
         private void brawlCrateStageToolStripMenuItem_Click(object sender, EventArgs e)
