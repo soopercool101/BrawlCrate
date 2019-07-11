@@ -117,6 +117,10 @@ namespace BrawlCrate.StageManager
                 path = path ?? Directory.GetCurrentDirectory();
             }
 
+            Text = "BrawlCrate Stage Manager" +
+                         BrawlCrate.Program.AssemblyTitleShort.Substring(
+                             BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
+
             moduleFolderLocation = "../../module";
 
             // Later commands to change the titlebar assume there is a hyphen in the title somewhere

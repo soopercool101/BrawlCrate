@@ -82,6 +82,10 @@ namespace BrawlCrate.SongManager
             groupSongsByStageToolStripMenuItem.Checked = groupSongs;
             listType = groupSongs ? ListType.GroupByStage : ListType.FilesInDir;
 
+            Text = "BrawlCrate Song Manager" +
+                   BrawlCrate.Program.AssemblyTitleShort.Substring(
+                       BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
+
             // Later commands to change the titlebar assume there is a hypen in the title somewhere
             Text += " -";
 
@@ -133,6 +137,10 @@ namespace BrawlCrate.SongManager
 
         private void changeDirectory(string newpath)
         {
+            if (newpath == null)
+            {
+                newpath = CurrentDirectory;
+            }
             CurrentDirectory = newpath;                                   // Update the program's working directory
             Text = Text.Substring(0, Text.IndexOf('-')) + "- " + newpath; // Update titlebar
 

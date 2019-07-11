@@ -24,7 +24,7 @@ namespace BrawlCrate.CostumeManager
 
         public MainForm()
         {
-            _title = "BrawlCrate Costume Manager " +
+            _title = "BrawlCrate Costume Manager" +
                     BrawlCrate.Program.AssemblyTitleShort.Substring(
                         BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
             InitializeComponent();
