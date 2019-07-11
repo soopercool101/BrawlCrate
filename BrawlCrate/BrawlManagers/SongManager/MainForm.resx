@@ -117,29 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>126, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="customSongVolumeEditor1.VolumeIcon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAJUSURBVDhPtYtdSJNhGIbfEqv1h2CYZRFh0EkkWJJnnnWw
-        YlFjptDBkHDO6YkyWMOxCKEfSApq/qCbtTk3M0Xd3H+bzm9jOp2LbThTFKZ5MLH1TeiH6G5uXwdChR50
-        wcX7Ps9z3+S/Ul9fv5/57h4ej5c1OGhzaLUjzcxqd7S1GaXByfsYHZbT8uaxYma9MxobHWcGdcqP35Is
-        bKwWQf3aYGROO0OjcatDfiGWFllYnmNhauwxFJ3TXOb8b9q7PGWeCVVyhjoLPr8Osns3EJstgs1imZXL
-        VQeY2N8xm6fH6TUOPoQP4xZXiFoBG4lIFlbeP8CoY0nCxP5Mb3+gej6kxs/EQSwET+JK6VXcuV2C79F9
-        iFMn4LYOxaRPowVMfDsNDe3HLE7vcjxaBiRYCJhykJNTAO71QnyZ3Iukg2DRXgmTPdzBVLbT2+9rmZ+S
-        ITlN8CNE4NMQkD0slHPOg7YR0AaCmDYbVv0z+rk6WMrUMjS32IuH3r5KxJy5oL0En90EK0aCJ6JsDDw6
-        hMQwQfxNyh6CsOYS9H1GG1PN0K01G0POCiSpTPlrygU9weULR9FUfQ6bQwTrqXldR7CqIhjrk6BVTVWm
-        y61dhvJ3JgXWnAWgqXxsuPKxOZ6H2HAu7nILoZCVIDF6HPGRU2k/GfIQ1V9En0YZEUkGckm3Wtfp947A
-        Y3qBCVMHfHYlAm4tIj49Fmd0mJvUIkjp4Xf1wGvtSmc8ppegXGZIZQ9vEqFQeLqmRsSp5IvZW/IFkpRN
-        bH6tPK0g/abm1O53ZsuKqqprYrH4yC9qlGL61GlcLwAAAABJRU5ErkJggg==
-</value>
+  <data name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>126, 17</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAEBAAAAEAIABoBAAARgAAACAgAAABACAAqBAAAK4EAAAwMAAAAQAgAKglAABWFQAAQEAAAAEA
@@ -677,5 +661,9 @@
         AAAAAAAHwAAAAAAAAAfAAAAAAA///8AAAAAAD///wAAAAAAP///AAAAAAA///8AAAAAAD///wAAAAAAP
         ///AAAAAAA///8AAAAAAD///wAAAAAAP///AAAAAAA///8AAAAAAD////////////////////////w==
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="customSongVolumeEditor1.VolumeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>speaker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

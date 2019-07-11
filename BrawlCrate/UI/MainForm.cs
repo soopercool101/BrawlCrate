@@ -1192,7 +1192,7 @@ namespace BrawlCrate
 
         private void SongManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SongManager.MainForm m = new SongManager.MainForm(null, true, true, true);
+            SongManager.MainForm m = new SongManager.MainForm(null, true, true, false);
             m.FormClosed += UpdateDiscordRPC;
             //m.OpenFileChanged += UpdateDiscordRPC;
             m.Show();

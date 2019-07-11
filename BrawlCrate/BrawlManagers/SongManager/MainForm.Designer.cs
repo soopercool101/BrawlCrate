@@ -403,7 +403,7 @@
             this.ClientSize = new System.Drawing.Size(592, 314);
             this.Controls.Add(this.splitContainerTop);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = BrawlLib.Properties.Resources.Icon;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
