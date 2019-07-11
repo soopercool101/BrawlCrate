@@ -139,7 +139,7 @@ namespace BrawlCrate.SongManager
         {
             if (newpath == null)
             {
-                newpath = CurrentDirectory;
+                newpath = CurrentDirectory.LastIndexOf("pf") > 0 ? CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("pf")) : CurrentDirectory;
             }
             CurrentDirectory = newpath;                                   // Update the program's working directory
             Text = Text.Substring(0, Text.IndexOf('-')) + "- " + newpath; // Update titlebar
