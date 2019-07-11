@@ -317,20 +317,7 @@ namespace BrawlCrate.CostumeManager
 
         public static string[] TexturesToDisable =
         {
-            "SamusTexASpc", "SamusTexBSpc", "SamusRef", "SamusTexC", "SamusTexD", "SamusTexDSpc",
-            "Spe",                                                      // remove sphere
-            "Yoshi_Egg",                                                // remove egg
-            "PlyKirby5KEyeYellow.1",                                    // remove Final Smash eyes
-            "Pikachu_eyesYellow.00",                                    // remove Final Smash eyes
-            "PeachTexEyeHigh", "PeachTexEyeWhite", "PeachTexEyeYellow", // remove black eyes
-            "ZeldaEyeHigh",                                             // remove black eyes
-            "IceclimberTexCYellow.00",                                  // remove Final Smash eyes
-            "FitPikminRef", "FitPikminRef05",                           // remove helmet
-            "FitLucas_EyeYellow.00",
-            "FitPurin00EyeYellow.00",
-//			"FitToonLink_EyeWhite.0", "FitToonLink_EyeYellow", // remove FS eyes (and eye whites, so you can see the pupils)
-            "FitSonicBodyMask", "FitSonicHeadMask", "FitSonicEyeHighlight", // remove gray Sonic
-//			"FitSonicEnv01", "FitSonicEnv04", "FitSonicSphere", // remove sphere
+            // Removed implementation that doesn't work well at all
         };
 
         public static Dictionary<string, int[]> PolygonsToDisable = new Dictionary<string, int[]>
