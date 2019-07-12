@@ -35,12 +35,12 @@ namespace BrawlCrate.CostumeManager
             InitializeComponent();
             foreach (PortraitViewerTextureData atd in textureData)
             {
-                additionalTexturesPanel.Controls.Add(atd.Panel);
+                additionalTexturesPanel.Controls.Add(atd.TexturePanel);
                 atd.OnUpdate = delegate(PortraitViewerTextureData sender) { UpdateImage(_charNum, _costumeNum); };
 
                 ToolStripMenuItem copyPreview = new ToolStripMenuItem("Copy preview");
-                copyPreview.Click += (o, e) => Clipboard.SetImage(atd.Panel.BackgroundImage);
-                atd.Panel.ContextMenuStrip.Items.Add(copyPreview);
+                copyPreview.Click += (o, e) => Clipboard.SetImage(atd.TexturePanel.BackgroundImage);
+                atd.TexturePanel.ContextMenuStrip.Items.Add(copyPreview);
             }
 
             UpdateDirectory();

@@ -36,7 +36,7 @@ namespace BrawlCrate.CostumeManager
         {
             InitializeComponent();
             mainTexture = new PortraitViewerTextureData(PortraitWidth, PortraitHeight, this);
-            additionalTexturesPanel.Controls.Add(mainTexture.Panel);
+            additionalTexturesPanel.Controls.Add(mainTexture.TexturePanel);
             mainTexture.OnUpdate = delegate(PortraitViewerTextureData sender) { UpdateImage(_charNum, _costumeNum); };
 
             _charNum = -1;

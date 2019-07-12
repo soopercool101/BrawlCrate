@@ -40,11 +40,11 @@ namespace BrawlCrate.CostumeManager
                 if (_texture != null)
                 {
                     Bitmap bitmap = new Bitmap(_texture.GetImage(0), Size);
-                    Panel.BackgroundImage = bitmap;
+                    TexturePanel.BackgroundImage = bitmap;
                 }
                 else
                 {
-                    Panel.BackgroundImage = null;
+                    TexturePanel.BackgroundImage = null;
                 }
             }
         }
@@ -54,35 +54,35 @@ namespace BrawlCrate.CostumeManager
             Texture = node == null ? null : GetTEX0Func(node, charNum, costumeNum) as TEX0Node;
         }
 
-        private Panel _panel;
+        private Panel _texturePanel;
 
-        public Panel Panel
+        public Panel TexturePanel
         {
             get
             {
-                if (_panel == null)
+                if (_texturePanel == null)
                 {
-                    _panel = new Panel()
+                    _texturePanel = new Panel()
                     {
                         Size = Size, AllowDrop = true, Margin = Padding.Empty,
                         BackgroundImageLayout = ImageLayout.Stretch
                     };
-                    _panel.DragEnter += _panel_DragEnter;
-                    _panel.DragDrop += _panel_DragDrop;
-                    _panel.ContextMenuStrip = new ContextMenuStrip();
+                    _texturePanel.DragEnter += TexturePanelDragEnter;
+                    _texturePanel.DragDrop += TexturePanelDragDrop;
+                    _texturePanel.ContextMenuStrip = new ContextMenuStrip();
 
                     ToolStripMenuItem replace = new ToolStripMenuItem() {Text = "Replace"};
                     replace.Click += replace_Click;
-                    _panel.ContextMenuStrip.Items.Add(replace);
+                    _texturePanel.ContextMenuStrip.Items.Add(replace);
                     ToolStripMenuItem export = new ToolStripMenuItem() {Text = "Export"};
                     export.Click += export_Click;
-                    _panel.ContextMenuStrip.Items.Add(export);
+                    _texturePanel.ContextMenuStrip.Items.Add(export);
                     ToolStripMenuItem copy = new ToolStripMenuItem() {Text = "Copy Texture"};
                     copy.Click += copy_Click;
-                    _panel.ContextMenuStrip.Items.Add(copy);
+                    _texturePanel.ContextMenuStrip.Items.Add(copy);
                 }
 
-                return _panel;
+                return _texturePanel;
             }
         }
 
@@ -149,7 +149,7 @@ namespace BrawlCrate.CostumeManager
             }
         }
 
-        private void _panel_DragEnter(object sender, DragEventArgs e)
+        private void TexturePanelDragEnter(object sender, DragEventArgs e)
         {
             if (_texture != null && e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -167,12 +167,12 @@ namespace BrawlCrate.CostumeManager
             }
         }
 
-        private void _panel_DragDrop(object sender, DragEventArgs e)
+        private void TexturePanelDragDrop(object sender, DragEventArgs e)
         {
             if (e.Effect == DragDropEffects.Copy)
             {
                 string filename = (e.Data.GetData(DataFormats.FileDrop) as string[])[0];
-                _panel.BeginInvoke(new Action(() => { Replace(filename, false); }));
+                _texturePanel.BeginInvoke(new Action(() => { Replace(filename, false); }));
             }
         }
 

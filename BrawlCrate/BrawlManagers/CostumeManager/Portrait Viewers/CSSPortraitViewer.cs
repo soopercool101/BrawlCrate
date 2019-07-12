@@ -63,12 +63,12 @@ namespace BrawlCrate.CostumeManager
             InitializeComponent();
             foreach (PortraitViewerTextureData atd in textureData)
             {
-                additionalTexturesPanel.Controls.Add(atd.Panel);
+                additionalTexturesPanel.Controls.Add(atd.TexturePanel);
                 atd.OnUpdate = delegate(PortraitViewerTextureData sender) { UpdateImage(_charNum, _costumeNum); };
 
                 ToolStripMenuItem copyPreview = new ToolStripMenuItem("Copy preview");
-                copyPreview.Click += (o, e) => Clipboard.SetImage(atd.Panel.BackgroundImage);
-                atd.Panel.ContextMenuStrip.Items.Add(copyPreview);
+                copyPreview.Click += (o, e) => Clipboard.SetImage(atd.TexturePanel.BackgroundImage);
+                atd.TexturePanel.ContextMenuStrip.Items.Add(copyPreview);
             }
 
             UpdateDirectory();
@@ -99,7 +99,7 @@ namespace BrawlCrate.CostumeManager
 
         private void OverlayName()
         {
-            Image orig = textureData[0].Panel.BackgroundImage;
+            Image orig = textureData[0].TexturePanel.BackgroundImage;
 
             Bitmap name = new Bitmap(textureData[1].Texture.GetImage(0));
             Bitmap swapped = BitmapUtilities.AlphaSwap(name);
@@ -117,7 +117,7 @@ namespace BrawlCrate.CostumeManager
                 new Point(131, 98),
                 new Point(-3, 127)
             });
-            textureData[0].Panel.BackgroundImage = overlaid;
+            textureData[0].TexturePanel.BackgroundImage = overlaid;
         }
 
         public override void UpdateDirectory()
