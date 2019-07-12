@@ -315,21 +315,9 @@ namespace BrawlCrate.CostumeManager
         }
 
 
-        public static string[] TexturesToDisable =
-        {
-            // Removed implementation that doesn't work well at all
-        };
+        public static string[] TexturesToDisable = { };
 
         public static Dictionary<string, int[]> PolygonsToDisable = new Dictionary<string, int[]>();
-            //{"mario", new int[] {4, 5, 6, 7, 12, 13}},      // open eyelids
-            //{"luigi", new int[] {5, 8, 9, 10, 11, 12, 17}}, // open eyelids
-            //{"ness", new int[] {1, 2, 5, 6}},               // remove wild "intro" hair and FS eyes
-            //{"zelda", new int[] {19, 21, 25}},              // open eyelids
-            //{"olimar", new int[] {5}},                      // "close" eyelids (normal facial expression for Olimar)
-            //{
-            //    "sonic", new int[] {10, 11, 14, 15, 16, 18, 20, 21, 22, 24, 26, 27, 28, 29, 30}
-            //},                          // open eyelids, remove sphere, etc.
-            //{"dedede", new int[] {19}}, // remove inflated Dedede
 
         public Bitmap GrabScreenshot(bool withTransparency)
         {
