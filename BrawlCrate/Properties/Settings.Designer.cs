@@ -295,5 +295,17 @@ namespace BrawlCrate.Properties {
                 this["PreviewARCModels"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BuildPath {
+            get {
+                return ((string)(this["BuildPath"]));
+            }
+            set {
+                this["BuildPath"] = value;
+            }
+        }
     }
 }

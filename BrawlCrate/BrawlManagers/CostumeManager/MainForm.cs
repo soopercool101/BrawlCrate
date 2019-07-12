@@ -24,6 +24,11 @@ namespace BrawlCrate.CostumeManager
 
         public MainForm()
         {
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
+            {
+                Environment.CurrentDirectory = Properties.Settings.Default.BuildPath;
+            }
+
             _title = "BrawlCrate Costume Manager" +
                     BrawlCrate.Program.AssemblyTitleShort.Substring(
                         BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
@@ -32,6 +37,7 @@ namespace BrawlCrate.CostumeManager
 
             portraitViewers = new List<PortraitViewer>
                 {cssPortraitViewer1, resultPortraitViewer1, battlePortraitViewer1, infoStockIconViewer1};
+
 
             if (!new DirectoryInfo("fighter").Exists)
             {
@@ -42,6 +48,10 @@ namespace BrawlCrate.CostumeManager
                 else if (new DirectoryInfo("/projectm/pf/fighter").Exists)
                 {
                     Environment.CurrentDirectory = "/projectm/pf";
+                }
+                else if (new DirectoryInfo("/pf/fighter").Exists)
+                {
+                    Environment.CurrentDirectory = "/pf";
                 }
             }
 

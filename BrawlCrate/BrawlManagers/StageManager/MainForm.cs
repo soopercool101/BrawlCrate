@@ -104,11 +104,16 @@ namespace BrawlCrate.StageManager
 
         public MainForm(string path, bool useRelDescription)
         {
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
+            {
+                Environment.CurrentDirectory = Properties.Settings.Default.BuildPath;
+            }
+
             InitializeComponent();
 
             try
             {
-                path = path ?? Directory.GetCurrentDirectory();
+                path = path ?? Environment.CurrentDirectory;
             }
             catch (Exception e)
             {

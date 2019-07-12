@@ -3,10 +3,8 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
-using System.Audio;
 using System.Collections.Generic;
 using BrawlManagerLib;
-using System.Linq;
 using System.Drawing;
 using BrawlCrate.SongManager.SongExport;
 
@@ -14,8 +12,7 @@ namespace BrawlCrate.SongManager
 {
     public partial class MainForm : Form
     {
-        public static readonly string[] GCT_PATHS = new []
-        {
+        public static readonly string[] GCT_PATHS = {
             "RSBE01.gct",
             "/data/gecko/codes/RSBE01.gct",
             "/codes/RSBE01.gct",
@@ -23,6 +20,10 @@ namespace BrawlCrate.SongManager
             "/LegacyXP/RSBE01.gct",
             "../../../../codes/RSBE01.gct",
             "../../../../../../../codes/RSBE01.gct",
+            "../../../RSBE01.gct",
+            "../../../../RSBE01.gct",
+            "../../../../../../RSBE01.gct",
+            "../../../../../../../RSBE01.gct",
         };
 
         /// <summary>
@@ -66,15 +67,20 @@ namespace BrawlCrate.SongManager
             }
         }
 
-        private bool autoplay = false;
-        private bool autoplayNext = false;
+        private bool autoplay;
+        private bool autoplayNext;
 
-        private const string chooseLabel = "Choose a stage from the list on the left-hand side.",
-            loadingLabel = "Loading...",
-            couldNotOpenLabel = "Could not open the .PAC file.";
+        private const string ChooseLabel = "Choose a stage from the list on the left-hand side.";
 
         public MainForm(string path, bool loadNames, bool loadBrstms, bool groupSongs)
         {
+            if (path == null && !string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
+            {
+                Environment.CurrentDirectory = Properties.Settings.Default.BuildPath;
+            }
+
+            path = path ?? Environment.CurrentDirectory;
+
             InitializeComponent();
 
             loadNamesFromInfopacToolStripMenuItem.Checked = songPanel1.LoadNames = loadNames;
@@ -93,7 +99,7 @@ namespace BrawlCrate.SongManager
             loadBrstms = loadBRSTMPlayerToolStripMenuItem.Checked;
             autoplay = whenSongEndsStartPlayingNextSongToolStripMenuItem.Checked;
 
-            RightControl = chooseLabel;
+            RightControl = ChooseLabel;
 
             // Drag and drop for the left and right sides of the window. The dragEnter and dragDrop methods will check which panel the file is dropped onto.
             listBox1.AllowDrop = true;
@@ -111,7 +117,7 @@ namespace BrawlCrate.SongManager
             if (fi == null)
             {
                 // No .brstm file selected (i.e. you just opened the program)
-                RightControl = chooseLabel;
+                RightControl = ChooseLabel;
                 customSongVolumeEditor1.SongFilename = null;
             }
             else
@@ -145,7 +151,7 @@ namespace BrawlCrate.SongManager
             Text = Text.Substring(0, Text.IndexOf('-')) + "- " + newpath; // Update titlebar
 
             DirectoryInfo dirInfo = new DirectoryInfo(CurrentDirectory);
-            RightControl = chooseLabel;
+            RightControl = ChooseLabel;
             brstmFiles = dirInfo.GetFiles("*.brstm");
 
             // Special code for the root directory of a drive
@@ -232,7 +238,7 @@ namespace BrawlCrate.SongManager
             int selected = listBox1.SelectedIndex;
 
             DirectoryInfo dir = new DirectoryInfo(CurrentDirectory);
-            RightControl = chooseLabel;
+            RightControl = ChooseLabel;
             brstmFiles = dir.GetFiles("*.brstm");
 
             Array.Sort(brstmFiles, delegate(FileInfo f1, FileInfo f2)
