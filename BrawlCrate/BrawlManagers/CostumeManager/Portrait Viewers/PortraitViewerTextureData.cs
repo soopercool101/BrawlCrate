@@ -60,7 +60,7 @@ namespace BrawlCrate.CostumeManager
         {
             get
             {
-                if (_texturePanel == null)
+                if (_texturePanel == null || _texturePanel.IsDisposed)
                 {
                     _texturePanel = new Panel()
                     {
