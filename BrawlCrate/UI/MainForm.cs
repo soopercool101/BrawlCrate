@@ -1177,16 +1177,11 @@ namespace BrawlCrate
             UpdateDiscordRPC(null, null);
         }
 
-        private CostumeManager.MainForm cm;
         private void CostumeManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (cm == null || cm.IsDisposed)
-            {
-                cm = new CostumeManager.MainForm();
-            }
-            cm.FormClosed += UpdateDiscordRPC;
-            //m.OpenFileChanged += UpdateDiscordRPC;
-            cm.Show();
+            CostumeManager.MainForm m = new CostumeManager.MainForm();
+            m.FormClosed += UpdateDiscordRPC;
+            m.Show();
             UpdateDiscordRPC(null, null);
         }
 
@@ -1194,15 +1189,14 @@ namespace BrawlCrate
         {
             SongManager.MainForm m = new SongManager.MainForm(null, true, true, false);
             m.FormClosed += UpdateDiscordRPC;
-            //m.OpenFileChanged += UpdateDiscordRPC;
             m.Show();
             UpdateDiscordRPC(null, null);
         }
+
         private void StageManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StageManager.MainForm m = new StageManager.MainForm(null, true);
             m.FormClosed += UpdateDiscordRPC;
-            //m.OpenFileChanged += UpdateDiscordRPC;
             m.Show();
             UpdateDiscordRPC(null, null);
         }
