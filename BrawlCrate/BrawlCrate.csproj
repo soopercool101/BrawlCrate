@@ -110,25 +110,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="BrawlManagers\CostumeManager\BrawlCostumeManager.txt" />
-    <None Remove="BrawlManagers\CostumeManager\icon.ico" />
-    <None Remove="BrawlManagers\SongManager\BrawlSongManager.txt" />
-    <None Remove="BrawlManagers\SongManager\sicon.ico" />
     <None Remove="BrawlManagers\SongManager\speaker.png" />
     <None Remove="BrawlManagers\StageManager\border.png" />
-    <None Remove="BrawlManagers\StageManager\BrawlStageManager.txt" />
     <None Remove="BrawlManagers\StageManager\button-l.png" />
     <None Remove="BrawlManagers\StageManager\button-start.png" />
     <None Remove="BrawlManagers\StageManager\button-z.png" />
-    <None Remove="BrawlManagers\StageManager\icon.ico" />
     <None Remove="BrawlManagers\StageManager\XX.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BrawlManagers\CostumeManager\BrawlCostumeManager.txt" />
-    <Content Include="BrawlManagers\CostumeManager\icon.ico" />
-    <Content Include="BrawlManagers\SongManager\sicon.ico" />
-    <Content Include="BrawlManagers\StageManager\BrawlStageManager.txt" />
-    <Content Include="BrawlManagers\StageManager\icon.ico" />
     <EmbeddedResource Include="BrawlManagers\SongManager\speaker.png" />
     <EmbeddedResource Include="BrawlManagers\StageManager\border.png" />
     <EmbeddedResource Include="BrawlManagers\StageManager\button-l.png" />
@@ -254,9 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrawlLib\BrawlLib.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BrawlManagers\SongManager\BrawlSongManager.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Update="discord-rpc.dll">
