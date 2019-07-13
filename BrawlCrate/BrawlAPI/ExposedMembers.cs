@@ -9,6 +9,8 @@ namespace BrawlCrate.API
 {
     public static partial class BrawlAPI
     {
+        #region Nodes
+
         /// <summary>
         ///     The root node of the opened file.
         ///
@@ -18,32 +20,18 @@ namespace BrawlCrate.API
             MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
 
         /// <summary>
-        ///     The wrapper for the root node of the opened file.
-        ///
-        ///     Returns null if there is no open file.
-        /// </summary>
-        public static BaseWrapper RootNodeWrapper => MainForm.Instance.RootNode;
-
-        /// <summary>
         ///     The currently selected node on the Main Form. Useful for context menu items.
         ///
         ///     Returns null if there is no selected node.
         /// </summary>
         public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
-            ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
+            ? ((BaseWrapper)MainForm.Instance.resourceTree.SelectedNode).Resource
             : null;
-
-        /// <summary>
-        ///     The wrapper for the currently selected node on the Main Form. Useful for context menu items.
-        ///
-        ///     Returns null if there is no selected node.
-        /// </summary>
-        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
 
         /// <summary>
         ///     The currently selected nodes on the Main Form, if multiple are selected
         ///
-        ///     Returns null if there are no selected nodes.
+        ///     Returns an empty list if there are no selected nodes.
         /// </summary>
         public static List<ResourceNode> SelectedNodes
         {
@@ -61,6 +49,44 @@ namespace BrawlCrate.API
                 return nodes;
             }
         }
+
+        /// <summary>
+        ///     Returns a full list of all nodes in the open file.
+        ///
+        ///     Returns an empty list if there is no open file.
+        /// </summary>
+        public static List<ResourceNode> NodeList
+        {
+            get
+            {
+                List<ResourceNode> nodes = new List<ResourceNode>();
+
+                if (RootNode != null)
+                {
+                    nodes.AddRange(ResourceNode.FindAllSubNodes(RootNode));
+                }
+
+                return nodes;
+            }
+        }
+
+        #endregion
+
+        #region Wrappers
+
+        /// <summary>
+        ///     The wrapper for the root node of the opened file.
+        ///
+        ///     Returns null if there is no open file.
+        /// </summary>
+        public static BaseWrapper RootNodeWrapper => MainForm.Instance.RootNode;
+
+        /// <summary>
+        ///     The wrapper for the currently selected node on the Main Form. Useful for context menu items.
+        ///
+        ///     Returns null if there is no selected node.
+        /// </summary>
+        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper)MainForm.Instance.resourceTree.SelectedNode;
 
         /// <summary>
         ///     The wrappers for the currently selected nodes on the Main Form.
@@ -85,31 +111,11 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
-        ///     Returns a list of all nodes in the open file.
-        ///
-        ///     Returns null if there is no open file.
-        /// </summary>
-        public static List<ResourceNode> NodeList
-        {
-            get
-            {
-                List<ResourceNode> nodes = new List<ResourceNode>();
-
-                if (RootNode != null)
-                {
-                    nodes.AddRange(ResourceNode.FindAllSubNodes(RootNode));
-                }
-
-                return nodes;
-            }
-        }
-
-        /// <summary>
-        ///     Returns a list of all node wrappers in the open file.
+        ///     Returns a full list of all node wrappers in the open file.
         ///
         ///     Note that this function is generally slow due to the implementation of ResourceTrees; for general usage, NodeList works best.
         ///
-        ///     Returns null if there is no open file.
+        ///     Returns an empty list if there is no open file.
         /// </summary>
         public static List<BaseWrapper> NodeWrapperList
         {
@@ -136,6 +142,10 @@ namespace BrawlCrate.API
                 return wrappers;
             }
         }
+
+        #endregion
+
+        #region Dialog Boxes
 
         /// <summary>
         ///     Shows a MessageBox with the given message and title, and the default "OK" option.
@@ -170,6 +180,40 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
+        ///     Shows a MessageBox with the given message and title, "Yes/No" options, and a Warning symbol.
+        ///
+        ///     Returns true if "Yes" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowYesNoWarning(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                   == DialogResult.Yes;
+        }
+
+        /// <summary>
+        ///     Shows a MessageBox with the given message and title, "OK/Cancel" options, and a Warning symbol.
+        ///
+        ///     Returns true if "OK" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowOKCancelWarning(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                   == DialogResult.OK;
+        }
+
+        /// <summary>
         ///     Shows a MessageBox with the given message and title, the default "OK" option, and an Error symbol.
         ///
         ///     Doesn't return a value, and is just used to show the user messages.
@@ -186,6 +230,40 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
+        ///     Shows a MessageBox with the given message and title, "Yes/No" options, and an Error symbol.
+        ///
+        ///     Returns true if "Yes" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowYesNoError(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.YesNo, MessageBoxIcon.Error)
+                   == DialogResult.Yes;
+        }
+
+        /// <summary>
+        ///     Shows a MessageBox with the given message and title, "OK/Cancel" options, and an Error symbol.
+        ///
+        ///     Returns true if "OK" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowOKCancelError(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Error)
+                   == DialogResult.OK;
+        }
+
+        /// <summary>
         ///     Shows a MessageBox with the given message and title, with options for "Yes" or "No".
         ///
         ///     Returns true if "Yes" is clicked, and false otherwise.
@@ -196,7 +274,7 @@ namespace BrawlCrate.API
         /// <param name="title">
         ///     The title text that will show in the TitleBar of the MessageBox.
         /// </param>
-        public static bool? ShowYesNoPrompt(string msg, string title)
+        public static bool ShowYesNoPrompt(string msg, string title)
         {
             return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
@@ -212,10 +290,56 @@ namespace BrawlCrate.API
         /// <param name="title">
         ///     The title text that will show in the TitleBar of the MessageBox.
         /// </param>
-        public static bool? ShowOKCancelPrompt(string msg, string title)
+        public static bool ShowOKCancelPrompt(string msg, string title)
         {
             return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel) == DialogResult.OK;
         }
+
+        /// <summary>
+        ///     Opens an open file dialog, prompting the user to select a file.
+        ///
+        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        public static string OpenFileDialog()
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an Open Folder Dialog, prompting the user to select a folder.
+        ///
+        ///     Returns the path of the folder that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        public static string OpenFolderDialog()
+        {
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+            {
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens a save file dialog, prompting the user to save a file.
+        ///
+        ///     *DOES NOT ACTUALLY SAVE ANYTHING BY ITSELF!*
+        ///     Additional scripting must be done if you want to actually save anything.
+        ///
+        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        public static string SaveFileDialog()
+        {
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        #endregion
+
+        #region Context Menus
 
         /// <summary>
         ///     To be called by API, adds context menu items to a wrapper.
@@ -327,47 +451,9 @@ namespace BrawlCrate.API
             AddContextMenuItem(wrapper, items);
         }
 
-        /// <summary>
-        ///     Opens an open file dialog, prompting the user to select a file.
-        ///
-        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
-        /// </summary>
-        public static string OpenFileDialog()
-        {
-            using (OpenFileDialog dlg = new OpenFileDialog())
-            {
-                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
-            }
-        }
+        #endregion
 
-        /// <summary>
-        ///     Opens an Open Folder Dialog, prompting the user to select a folder.
-        ///
-        ///     Returns the path of the folder that the user chose, or an empty string if the dialog was cancelled.
-        /// </summary>
-        public static string OpenFolderDialog()
-        {
-            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
-            {
-                return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
-            }
-        }
-
-        /// <summary>
-        ///     Opens a save file dialog, prompting the user to save a file.
-        ///
-        ///     *DOES NOT ACTUALLY SAVE ANYTHING BY ITSELF!*
-        ///     Scripting must be done if you want to actually save anything.
-        ///
-        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
-        /// </summary>
-        public static string SaveFileDialog()
-        {
-            using (SaveFileDialog dlg = new SaveFileDialog())
-            {
-                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
-            }
-        }
+        #region Other
 
         /// <summary>
         ///     Adds an additional loader.
@@ -381,5 +467,7 @@ namespace BrawlCrate.API
         {
             Loaders.Add(loader);
         }
+
+        #endregion
     }
 }
