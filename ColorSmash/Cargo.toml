@@ -1,0 +1,11 @@
+[package]
+name = "color_smash"
+version = "0.3.2"
+authors = ["soopercool101 <soopercoolstages@gmail.com>, Peter Hatch <petershatch@gmail.com>"]
+
+[dependencies]
+image = "*"
+getopts = "*"
+num = "*"
+ordered-float = "*"
+png = "*"
