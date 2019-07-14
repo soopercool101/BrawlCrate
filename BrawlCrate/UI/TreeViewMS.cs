@@ -131,7 +131,7 @@ namespace BrawlCrate
                         if (bParent)
                         {
                             TreeNode n = bottomnode;
-                            while (n != uppernode.Parent)
+                            while (n != (uppernode?.Parent ?? bottomnode))
                             {
                                 if (!m_coll.Contains(n)) // new node ?
                                 {

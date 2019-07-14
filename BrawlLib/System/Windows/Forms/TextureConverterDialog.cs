@@ -10,6 +10,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Media.Imaging;
+using BrawlLib.Modeling.Triangle_Converter;
 
 namespace System.Windows.Forms
 {
@@ -109,7 +110,7 @@ namespace System.Windows.Forms
         private NumericUpDown numMIPPreview;
         private Label label12;
         private GCHandle? _pixelData;
-        private CheckBox chkImportPalette;
+        public CheckBox ChkImportPalette;
         private CheckBox chkSwapRGB;
         private CheckBox chkSwapAlpha;
         private CheckBox chkSwapAlphaRGB;
@@ -149,6 +150,8 @@ namespace System.Windows.Forms
 
             cboAlgorithm.SelectedItem = QuantizationAlgorithm.MedianCut;
         }
+
+        public bool Automatic = false;
 
         public DialogResult ShowDialog(IWin32Window owner, BRRESNode parent)
         {
@@ -387,6 +390,11 @@ namespace System.Windows.Forms
             {
                 cboFormat.SelectedItem = InitialFormat;
             }
+
+            if (Automatic)
+            {
+                btnOkay_Click(null, null);
+            }
         }
 
         public bool LoadImages(string path)
@@ -614,7 +622,7 @@ namespace System.Windows.Forms
                 case WiiPixelFormat.CI4:
                 case WiiPixelFormat.CI8:
                 {
-                    if (chkImportPalette.Enabled && chkImportPalette.Checked)
+                    if (ChkImportPalette.Enabled && ChkImportPalette.Checked)
                     {
                         _indexed = ImportPalette();
                     }
@@ -680,7 +688,7 @@ namespace System.Windows.Forms
                 return 0;
             }
 
-            if (chkImportPalette.Enabled && chkImportPalette.Checked)
+            if (ChkImportPalette.Enabled && ChkImportPalette.Checked)
             {
                 return _source.Palette.Entries.Length.Align(16) * 2 + formatOverhead;
             }
@@ -825,19 +833,19 @@ namespace System.Windows.Forms
                 // Checks if the image is not being resized
                 if (_source == _base)
                 {
-                    chkImportPalette.Enabled = true;
+                    ChkImportPalette.Enabled = true;
                     FixImportPaletteDependentFields();
                     return;
                 }
             }
 
-            chkImportPalette.Enabled = false;
+            ChkImportPalette.Enabled = false;
             FixImportPaletteDependentFields();
         }
 
         private void FixImportPaletteDependentFields()
         {
-            if (chkImportPalette.Enabled && chkImportPalette.Checked)
+            if (ChkImportPalette.Enabled && ChkImportPalette.Checked)
             {
                 numPaletteCount.Enabled = false;
                 cboAlgorithm.Enabled = false;
@@ -1109,7 +1117,7 @@ namespace System.Windows.Forms
             btnOkay = new Button();
             btnCancel = new Button();
             grpPalette = new GroupBox();
-            chkImportPalette = new CheckBox();
+            ChkImportPalette = new CheckBox();
             cboAlgorithm = new ComboBox();
             label8 = new Label();
             numPaletteCount = new NumericUpDown();
@@ -1361,7 +1369,7 @@ namespace System.Windows.Forms
             // 
             grpPalette.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                  | AnchorStyles.Right;
-            grpPalette.Controls.Add(chkImportPalette);
+            grpPalette.Controls.Add(ChkImportPalette);
             grpPalette.Controls.Add(cboAlgorithm);
             grpPalette.Controls.Add(label8);
             grpPalette.Controls.Add(numPaletteCount);
@@ -1378,13 +1386,13 @@ namespace System.Windows.Forms
             // 
             // chkImportPalette
             // 
-            chkImportPalette.Location = new Drawing.Point(9, 95);
-            chkImportPalette.Name = "chkImportPalette";
-            chkImportPalette.Size = new Drawing.Size(164, 17);
-            chkImportPalette.TabIndex = 6;
-            chkImportPalette.Text = "Import Palette";
-            chkImportPalette.UseVisualStyleBackColor = true;
-            chkImportPalette.CheckedChanged += new EventHandler(chkImportPalette_CheckedChanged);
+            ChkImportPalette.Location = new Drawing.Point(9, 95);
+            ChkImportPalette.Name = "ChkImportPalette";
+            ChkImportPalette.Size = new Drawing.Size(164, 17);
+            ChkImportPalette.TabIndex = 6;
+            ChkImportPalette.Text = "Import Palette";
+            ChkImportPalette.UseVisualStyleBackColor = true;
+            ChkImportPalette.CheckedChanged += new EventHandler(chkImportPalette_CheckedChanged);
             // 
             // cboAlgorithm
             // 

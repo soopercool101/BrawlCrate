@@ -188,6 +188,22 @@ namespace BrawlCrate
             }
         }
 
+        public void OnToolsMenuOpen(object sender, EventArgs e)
+        {
+            bool allTex0 = resourceTree.SelectedNodes.Count > 1;
+            foreach (TreeNode n in resourceTree.SelectedNodes)
+            {
+                if (!(n is TEX0Wrapper))
+                {
+                    allTex0 = false;
+                    break;
+                }
+            }
+
+            colorSmashToolStripMenuItem.Enabled = allTex0;
+            colorSmashToolStripMenuItem.Visible = allTex0;
+        }
+
         public bool DisplayPropertyDescriptionsWhenAvailable
         {
             get => _displayPropertyDescription;
