@@ -17,6 +17,7 @@ namespace BrawlCrate
             DirectoryInfo outputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\out\\");
             try
             {
+                // Clear the directories. If they aren't empty, the implementation WILL NOT work
                 foreach (FileInfo f in outputDir.GetFiles())
                 {
                     try
@@ -40,16 +41,19 @@ namespace BrawlCrate
                     }
                 }
 
+                // If this was selected via keycode when it's invalid, return without error
                 if (MainForm.Instance.resourceTree.SelectedNodes.Count <= 1)
                 {
                     return;
                 }
 
+                // Throw error if color smash directory isn't empty
                 if (inputDir.GetFiles().Length > 0 || outputDir.GetFiles().Length > 0)
                 {
                     MessageBox.Show(
-                        "One or more files exist in the required color smash folder. Please delete these nodes manually and try again",
+                        "One or more files exist in the required Color Smash folder. Please delete these nodes manually and try again",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 short paletteCount = 0;
@@ -57,8 +61,16 @@ namespace BrawlCrate
                 Dictionary<int, string> names = new Dictionary<int, string>();
                 BRRESNode b = (((TEX0Wrapper)MainForm.Instance.resourceTree.SelectedNodes[0]).Resource as TEX0Node)?
                     .BRESNode;
+                if (b == null)
+                {
+                    MessageBox.Show(
+                        "The BRRES could not be found. Color Smashing is only supported for TEX0 nodes in BRRES groups",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
                 {
+                    // If this was selected via keycode when it's invalid, return without error
                     if (!(n is TEX0Wrapper))
                     {
                         return;
