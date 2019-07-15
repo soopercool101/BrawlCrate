@@ -151,7 +151,7 @@ namespace System.Windows.Forms
             cboAlgorithm.SelectedItem = QuantizationAlgorithm.MedianCut;
         }
 
-        public bool Automatic = false;
+        public bool Automatic { get; set; }
 
         public DialogResult ShowDialog(IWin32Window owner, BRRESNode parent)
         {

@@ -9,7 +9,7 @@ using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate
 {
-    public class ColorSmash
+    public static class ColorSmash
     {
         public static void ColorSmashTex0(object sender, EventArgs e)
         {
@@ -26,7 +26,7 @@ namespace BrawlCrate
                     }
                     catch
                     {
-
+                        // ignored
                     }
                 }
                 foreach (FileInfo f in inputDir.GetFiles())
@@ -37,7 +37,7 @@ namespace BrawlCrate
                     }
                     catch
                     {
-
+                        // ignored
                     }
                 }
 
@@ -112,7 +112,7 @@ namespace BrawlCrate
                     t.Remove();
                 }
 
-                Process cSmash = Process.Start(new ProcessStartInfo()
+                Process cSmash = Process.Start(new ProcessStartInfo
                 {
                     FileName = Program.AppPath + "\\color_smash.exe",
                     WindowStyle = ProcessWindowStyle.Hidden,
@@ -182,10 +182,6 @@ namespace BrawlCrate
                     }
                 }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 foreach (FileInfo f in outputDir.GetFiles())
@@ -196,7 +192,7 @@ namespace BrawlCrate
                     }
                     catch
                     {
-
+                        // ignored
                     }
                 }
                 try
@@ -205,8 +201,9 @@ namespace BrawlCrate
                 }
                 catch
                 {
-
+                    // ignored
                 }
+
                 foreach (FileInfo f in inputDir.GetFiles())
                 {
                     try
@@ -215,7 +212,7 @@ namespace BrawlCrate
                     }
                     catch
                     {
-
+                        // ignored
                     }
                 }
                 try
@@ -224,7 +221,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
-
+                    // ignored
                 }
             }
         }
