@@ -2,6 +2,7 @@
 using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 
@@ -12,13 +13,16 @@ namespace BrawlLib.SSBB.ResourceNodes
     //Factory is for initializing root node, and unknown child nodes.
     public static class NodeFactory
     {
-#if DEBUG
-        private const bool UseRawDataNode = true;
-#else
-        private const bool UseRawDataNode = false;
-#endif
-
         private static readonly List<ResourceParser> _parsers = new List<ResourceParser>();
+
+        private static readonly Dictionary<string, Type> Forced = new Dictionary<string, Type>
+        {
+            {"MRG", typeof(MRGNode)},
+            {"MRGC", typeof(MRGNode)}, //Compressed MRG
+            {"DOL", typeof(DOLNode)},
+            {"REL", typeof(RELNode)},
+            {"MASQ", typeof(MasqueradeNode)}
+        };
 
         static NodeFactory()
         {
@@ -34,7 +38,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            foreach (Type t in Assembly.GetEntryAssembly().GetTypes())
+            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes())
             {
                 if (t.IsSubclassOf(typeof(ResourceNode)))
                 {
@@ -46,18 +50,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private static readonly Dictionary<string, Type> Forced = new Dictionary<string, Type>()
-        {
-            {"MRG", typeof(MRGNode)},
-            {"MRGC", typeof(MRGNode)}, //Compressed MRG
-            {"DOL", typeof(DOLNode)},
-            {"REL", typeof(RELNode)},
-            {"MASQ", typeof(MasqueradeNode)}
-        };
-
         //Parser commands must initialize the node before returning.
-        public static unsafe ResourceNode FromFile(ResourceNode parent, string path,
-                                                   FileOptions options = FileOptions.RandomAccess)
+        public static ResourceNode FromFile(ResourceNode parent, string path,
+                                            FileOptions options = FileOptions.RandomAccess)
         {
             ResourceNode node = null;
             FileMap map = FileMap.FromFile(path, FileMapProtect.Read, 0, 0, options);
@@ -66,14 +61,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 DataSource source = new DataSource(map);
                 if ((node = FromSource(parent, source)) == null)
                 {
-                    string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper();
+                    string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
-                    if (ext.Equals("BIN") && byte.TryParse(Path.GetFileNameWithoutExtension(path), out byte r))
-                    {
-                        node = Activator.CreateInstance(typeof(MasqueradeNode)) as ResourceNode;
-                        node?.Initialize(parent, source);
-                    }
-                    else if (Forced.ContainsKey(ext) && (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
+                    if (Forced.ContainsKey(ext) &&
+                        (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
                     {
                         FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
                         if (uncompressedMap != null)
@@ -85,10 +76,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                             node.Initialize(parent, source);
                         }
                     }
-                    else if (UseRawDataNode)
+#if DEBUG
+                    else
                     {
-                        (node = new RawDataNode(Path.GetFileNameWithoutExtension(path))).Initialize(parent, source);
+                        node = new RawDataNode(Path.GetFileNameWithoutExtension(path));
+                        node.Initialize(parent, source);
                     }
+#endif
                 }
             }
             finally
@@ -107,7 +101,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return FromSource(parent, new DataSource(address, length));
         }
 
-        public static unsafe ResourceNode FromSource(ResourceNode parent, DataSource source)
+        public static ResourceNode FromSource(ResourceNode parent, DataSource source)
         {
             ResourceNode n = null;
             if ((n = GetRaw(source)) != null)
@@ -117,10 +111,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             else
             {
                 FileMap uncomp = Compressor.TryExpand(ref source);
-                DataSource d;
-                if (uncomp != null && (n = GetRaw(d = new DataSource(uncomp))) != null)
+                if (uncomp != null)
                 {
-                    n.Initialize(parent, source, d);
+                    DataSource d = new DataSource(uncomp);
+                    n = GetRaw(d);
+                    n?.Initialize(parent, source, d);
                 }
             }
 
