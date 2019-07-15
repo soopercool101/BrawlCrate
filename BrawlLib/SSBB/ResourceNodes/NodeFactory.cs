@@ -51,8 +51,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         //Parser commands must initialize the node before returning.
-        public static ResourceNode FromFile(ResourceNode parent, string path,
-                                            FileOptions options = FileOptions.RandomAccess)
+        public static ResourceNode FromFile(ResourceNode parent, string path)
+        {
+            return FromFile(parent, path, FileOptions.RandomAccess);
+        }
+
+        public static ResourceNode FromFile(ResourceNode parent, string path, FileOptions options)
         {
             ResourceNode node = null;
             FileMap map = FileMap.FromFile(path, FileMapProtect.Read, 0, 0, options);
