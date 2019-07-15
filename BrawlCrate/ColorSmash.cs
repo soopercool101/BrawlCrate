@@ -100,18 +100,19 @@ namespace BrawlCrate
 
                         if (paletteCount < 256)
                         {
-                            if (!t.HasPalette)
+                            if (!t.HasPalette || t.GetPaletteNode() == null)
                             {
                                 paletteCount = 256;
                             }
-                            if (t.HasPalette && t.GetPaletteNode() != null &&
+                            else if (t.HasPalette && t.GetPaletteNode() != null &&
                                 t.GetPaletteNode().Palette.Entries.Length > paletteCount)
                             {
-                                paletteCount = (short)Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
+                                paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
                             }
                         }
                     }
                 }
+
                 if (index == int.MaxValue)
                 {
                     MessageBox.Show("Could not properly get the index of the images", "Error",

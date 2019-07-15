@@ -129,6 +129,8 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
 
+            Automatic = false;
+
             numH.Maximum = numW.Maximum = decimal.MaxValue;
 
             dlgOpen.Filter = FileFilters.Images;
