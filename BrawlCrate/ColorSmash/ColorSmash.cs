@@ -1,22 +1,25 @@
-﻿using System;
+﻿using BrawlCrate.NodeWrappers;
+using BrawlLib.SSBB.ResourceNodes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using BrawlCrate.NodeWrappers;
-using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate
 {
     public static class ColorSmash
     {
+        public static bool CanRunColorSmash => File.Exists($"{Program.AppPath}\\color_smash.exe");
+
         public static void ColorSmashTex0(object sender, EventArgs e)
         {
             if (!CanRunColorSmash)
             {
                 return;
             }
+
             DirectoryInfo inputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\");
             DirectoryInfo outputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\out\\");
             try
@@ -109,7 +112,7 @@ namespace BrawlCrate
                                 paletteCount = 256;
                             }
                             else if (t.HasPalette && t.GetPaletteNode() != null &&
-                                t.GetPaletteNode().Palette.Entries.Length > paletteCount)
+                                     t.GetPaletteNode().Palette.Entries.Length > paletteCount)
                             {
                                 paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
                             }
@@ -143,7 +146,7 @@ namespace BrawlCrate
                 {
                     FileName = Program.AppPath + "\\color_smash.exe",
                     WindowStyle = ProcessWindowStyle.Hidden,
-                    Arguments = $"-c RGB5A3 -n {paletteCount}",
+                    Arguments = $"-c RGB5A3 -n {paletteCount}"
                 });
                 cSmash?.WaitForExit();
 
@@ -259,7 +262,5 @@ namespace BrawlCrate
                 }
             }
         }
-
-        public static bool CanRunColorSmash => File.Exists($"{Program.AppPath}\\color_smash.exe");
     }
 }
