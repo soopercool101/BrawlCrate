@@ -95,11 +95,20 @@ namespace BrawlCrate
                         {
                             index = placement;
                         }
+
                         t.Export($"{inputDir.FullName}\\{placement:D5}.png");
-                        if (t.HasPalette && t.GetPaletteNode() != null &&
-                            t.GetPaletteNode().Palette.Entries.Length > paletteCount)
+
+                        if (paletteCount < 256)
                         {
-                            paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
+                            if (!t.HasPalette)
+                            {
+                                paletteCount = 256;
+                            }
+                            if (t.HasPalette && t.GetPaletteNode() != null &&
+                                t.GetPaletteNode().Palette.Entries.Length > paletteCount)
+                            {
+                                paletteCount = (short)Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
+                            }
                         }
                     }
                 }
