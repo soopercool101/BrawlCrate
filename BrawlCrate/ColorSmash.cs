@@ -29,6 +29,7 @@ namespace BrawlCrate
                         // ignored
                     }
                 }
+
                 foreach (FileInfo f in inputDir.GetFiles())
                 {
                     try
@@ -59,7 +60,7 @@ namespace BrawlCrate
                 short paletteCount = 0;
                 List<TEX0Node> textureList = new List<TEX0Node>();
                 Dictionary<int, string> names = new Dictionary<int, string>();
-                BRRESNode b = (((TEX0Wrapper)MainForm.Instance.resourceTree.SelectedNodes[0]).Resource as TEX0Node)?
+                BRRESNode b = (((TEX0Wrapper) MainForm.Instance.resourceTree.SelectedNodes[0]).Resource as TEX0Node)?
                     .BRESNode;
                 if (b == null)
                 {
@@ -68,6 +69,8 @@ namespace BrawlCrate
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                int index = int.MaxValue;
                 foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
                 {
                     // If this was selected via keycode when it's invalid, return without error
@@ -76,7 +79,7 @@ namespace BrawlCrate
                         return;
                     }
 
-                    if (((TEX0Wrapper)n).Resource is TEX0Node t)
+                    if (((TEX0Wrapper) n).Resource is TEX0Node t)
                     {
                         if (t.BRESNode != b)
                         {
@@ -84,16 +87,27 @@ namespace BrawlCrate
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+
                         textureList.Add(t);
                         int placement = t.Parent.Children.IndexOf(t);
                         names.Add(placement, t.Name);
+                        if (placement < index)
+                        {
+                            index = placement;
+                        }
                         t.Export($"{inputDir.FullName}\\{placement:D5}.png");
                         if (t.HasPalette && t.GetPaletteNode() != null &&
                             t.GetPaletteNode().Palette.Entries.Length > paletteCount)
                         {
-                            paletteCount = (short)Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
+                            paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
                         }
                     }
+                }
+                if (index == int.MaxValue)
+                {
+                    MessageBox.Show("Could not properly get the index of the images", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 if (paletteCount == 0)
@@ -101,14 +115,13 @@ namespace BrawlCrate
                     paletteCount = 256;
                 }
 
-                int index = textureList[0].Parent.Children.IndexOf(textureList[0]);
-
                 foreach (TEX0Node t in textureList)
                 {
                     if (t.HasPalette && t.GetPaletteNode() != null)
                     {
                         t.GetPaletteNode().Remove();
                     }
+
                     t.Remove();
                 }
 
@@ -142,8 +155,11 @@ namespace BrawlCrate
                         textureList.Add(t);
                         dlg.Dispose();
                         t.OriginalPath = "";
+                        texGroup.RemoveChild(t);
+                        texGroup.InsertChild(t, false, index + count);
                         count++;
                     }
+
                     f2.Delete();
                 }
 
@@ -177,6 +193,8 @@ namespace BrawlCrate
 
                             dlg.Dispose();
                             t.OriginalPath = "";
+                            texGroup.RemoveChild(t);
+                            texGroup.InsertChild(t, false, index + count);
                             count++;
                         }
                     }
@@ -195,6 +213,7 @@ namespace BrawlCrate
                         // ignored
                     }
                 }
+
                 try
                 {
                     outputDir.Delete();
@@ -215,6 +234,7 @@ namespace BrawlCrate
                         // ignored
                     }
                 }
+
                 try
                 {
                     inputDir.Delete();
