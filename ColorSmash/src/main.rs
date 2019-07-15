@@ -54,10 +54,7 @@ fn main() {
         println!("{}", error);
         std::process::exit(1);
     });
-
-    //if matches.free.is_empty() {
-    //    exit_with_bad_args("No input file specified.", program, options);
-    //}
+    
     let num_colors: u32 = matches
         .opt_get_default("colors", 256)
         .unwrap_or_else(|error| {
@@ -69,9 +66,13 @@ fn main() {
     
     let mut input_files: Vec<String> = Vec::new();
     let in_path = app_path.to_owned() + "/cs";
+    
+    // Ensure input/output directories are properly created
+    assert!(Path::new(&(in_path.to_owned())).is_dir() || std::fs::create_dir(in_path.to_owned()).is_ok());
+    assert!(Path::new(&(in_path.to_owned() + "/out")).is_dir() || std::fs::create_dir(in_path.to_owned() + "/out").is_ok());
+    
 	let paths = fs::read_dir(in_path).unwrap();
     for path in paths {
-		//println!("{}", path.unwrap().path().display().to_string());
 		let temp = String::from(path.unwrap().path().display().to_string());
 		if temp.ends_with(".png") {
 			input_files.push(temp);

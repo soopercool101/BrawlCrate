@@ -15,7 +15,8 @@ namespace BrawlCrate
 
         public static void ColorSmashTex0(object sender, EventArgs e)
         {
-            if (!CanRunColorSmash)
+            // If this was selected via keycode when it's invalid, return without error
+            if (!CanRunColorSmash || MainForm.Instance.resourceTree.SelectedNodes.Count <= 1)
             {
                 return;
             }
@@ -47,12 +48,6 @@ namespace BrawlCrate
                     {
                         // ignored
                     }
-                }
-
-                // If this was selected via keycode when it's invalid, return without error
-                if (MainForm.Instance.resourceTree.SelectedNodes.Count <= 1)
-                {
-                    return;
                 }
 
                 // Throw error if color smash directory isn't empty
