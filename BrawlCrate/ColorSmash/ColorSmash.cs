@@ -13,6 +13,10 @@ namespace BrawlCrate
     {
         public static void ColorSmashTex0(object sender, EventArgs e)
         {
+            if (!CanRunColorSmash)
+            {
+                return;
+            }
             DirectoryInfo inputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\");
             DirectoryInfo outputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\out\\");
             try
@@ -255,5 +259,7 @@ namespace BrawlCrate
                 }
             }
         }
+
+        public static bool CanRunColorSmash => File.Exists($"{Program.AppPath}\\color_smash.exe");
     }
 }

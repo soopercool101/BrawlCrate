@@ -190,6 +190,13 @@ namespace BrawlCrate
 
         public void OnToolsMenuOpen(object sender, EventArgs e)
         {
+            if (!ColorSmash.CanRunColorSmash)
+            {
+                colorSmashToolStripMenuItem.Enabled = false;
+                colorSmashToolStripMenuItem.Visible = false;
+                return;
+            }
+
             bool allTex0 = resourceTree.SelectedNodes.Count > 1;
             foreach (TreeNode n in resourceTree.SelectedNodes)
             {

@@ -631,7 +631,7 @@ namespace BrawlCrate
 
         public static bool CanRunGithubApp(bool showMessages, out string path)
         {
-            path = $"{Application.StartupPath}\\Updater.exe";
+            path = $"{AppPath}\\Updater.exe";
             if (!File.Exists(path))
             {
                 if (showMessages)
@@ -645,7 +645,7 @@ namespace BrawlCrate
             return true;
         }
 
-        public static bool CanRunDiscordRPC => File.Exists($"{Application.StartupPath}\\discord-rpc.dll");
+        public static bool CanRunDiscordRPC => File.Exists($"{AppPath}\\discord-rpc.dll");
 
         public static void ForceDownloadStable()
         {
