@@ -26,26 +26,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         static NodeFactory()
         {
-            Delegate del;
             foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
             {
-                if (t.IsSubclassOf(typeof(ResourceNode)))
-                {
-                    if ((del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false)) != null)
-                    {
-                        _parsers.Add(del as ResourceParser);
-                    }
-                }
+                AddParser(t);
             }
 
             foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes())
             {
-                if (t.IsSubclassOf(typeof(ResourceNode)))
+                AddParser(t);
+            }
+        }
+
+        public static void AddParser(Type t)
+        {
+            if (t.IsSubclassOf(typeof(ResourceNode)))
+            {
+                Delegate del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false);
+                if (del != null)
                 {
-                    if ((del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false)) != null)
-                    {
-                        _parsers.Add(del as ResourceParser);
-                    }
+                    _parsers.Add(del as ResourceParser);
                 }
             }
         }
