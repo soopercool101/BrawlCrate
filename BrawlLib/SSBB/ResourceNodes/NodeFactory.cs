@@ -12,11 +12,11 @@ namespace BrawlLib.SSBB.ResourceNodes
     //Factory is for initializing root node, and unknown child nodes.
     public static class NodeFactory
     {
-        //#if DEBUG
-        //        private const bool UseRawDataNode = true;
-        //#else
+#if DEBUG
+        private const bool UseRawDataNode = true;
+#else
         private const bool UseRawDataNode = false;
-        //#endif
+#endif
 
         private static readonly List<ResourceParser> _parsers = new List<ResourceParser>();
 
@@ -67,24 +67,28 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if ((node = FromSource(parent, source)) == null)
                 {
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper();
-                    if (Forced.ContainsKey(ext))
+
+                    if (ext.Equals("BIN") && byte.TryParse(Path.GetFileNameWithoutExtension(path), out byte r))
                     {
-                        node = Activator.CreateInstance(Forced[ext]) as ResourceNode;
-                        FileMap uncomp = Compressor.TryExpand(ref source, false);
-                        if (uncomp != null)
+                        node = Activator.CreateInstance(typeof(MasqueradeNode)) as ResourceNode;
+                        node?.Initialize(parent, source);
+                    }
+                    else if (Forced.ContainsKey(ext) && (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
+                    {
+                        FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
+                        if (uncompressedMap != null)
                         {
-                            node.Initialize(parent, source, new DataSource(uncomp));
+                            node.Initialize(parent, source, new DataSource(uncompressedMap));
                         }
                         else
                         {
                             node.Initialize(parent, source);
                         }
                     }
-
-                    //else if (UseRawDataNode)
-                    //{
-                    //    (node = new RawDataNode(Path.GetFileNameWithoutExtension(path))).Initialize(parent, source);
-                    //}
+                    else if (UseRawDataNode)
+                    {
+                        (node = new RawDataNode(Path.GetFileNameWithoutExtension(path))).Initialize(parent, source);
+                    }
                 }
             }
             finally
