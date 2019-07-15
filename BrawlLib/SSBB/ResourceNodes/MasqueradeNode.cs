@@ -272,11 +272,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                     .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot].Split('/').ToList<string>();
                 foreach (string s in internalNames)
                 {
-                    if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +
-                                    ".pac"))
+                    if (File.Exists($"{currentPath}\\fighter\\{s}\\Fit{s}{_costumeID:00}.pac"))
                     {
-                        files.Add(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +
-                                  ".pac");
+                        files.Add($"{currentPath}\\fighter\\{s}\\Fit{s}{_costumeID:00}.pac");
                     }
                 }
             }
