@@ -1,5 +1,6 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.SSBB.ResourceNodes;
+using BrawlLib.Wii.Textures;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -157,6 +158,8 @@ namespace BrawlCrate
                         dlg.ImageSource = f.FullName;
                         dlg.ChkImportPalette.Checked = true;
                         dlg.Automatic = true;
+                        dlg.StartingFormat = WiiPixelFormat.CI8;
+
                         if (dlg.ShowDialog(MainForm.Instance, b) != DialogResult.OK)
                         {
                             continue;
@@ -196,8 +199,8 @@ namespace BrawlCrate
                         using (TextureConverterDialog dlg = new TextureConverterDialog())
                         {
                             dlg.ImageSource = f.FullName;
-                            dlg.ChkImportPalette.Checked = true;
                             dlg.Automatic = true;
+                            
                             if (dlg.ShowDialog(MainForm.Instance, b) != DialogResult.OK)
                             {
                                 continue;

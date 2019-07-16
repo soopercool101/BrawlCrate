@@ -305,6 +305,7 @@ namespace System.Windows.Forms
             }
         }
 
+        public WiiPixelFormat? StartingFormat = null;
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -375,10 +376,15 @@ namespace System.Windows.Forms
                 _updating = false;
                 UpdatePreview();
             }
+            else if (StartingFormat != null)
+            {
+                cboFormat.SelectedItem = StartingFormat;
+            }
             else
             {
                 Recommend();
             }
+
 
             if (InitialSize != null)
             {
@@ -1070,7 +1076,7 @@ namespace System.Windows.Forms
         private Button btnRecommend;
         private NumericUpDown numLOD;
         private Label label5;
-        private ComboBox cboFormat;
+        public ComboBox cboFormat;
         private Label label4;
         private GroupBox groupBox2;
         private Label lblTransparencies;
