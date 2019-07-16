@@ -100,9 +100,12 @@ namespace BrawlCrate.API
                 List<BaseWrapper> wrappers = new List<BaseWrapper>();
                 if (MainForm.Instance.resourceTree.SelectedNodes != null)
                 {
-                    foreach (BaseWrapper b in MainForm.Instance.resourceTree.SelectedNodes)
+                    foreach (TreeNode treeNode in MainForm.Instance.resourceTree.SelectedNodes)
                     {
-                        wrappers.Add(b);
+                        if (treeNode is BaseWrapper b)
+                        {
+                            wrappers.Add(b);
+                        }
                     }
                 }
 
