@@ -181,10 +181,13 @@ namespace BrawlCrate
                     f2.Delete();
                 }
 
-                textureList.Remove(textureList.Last());
-                foreach (TEX0Node t in textureList)
+                if (textureList.Count > 0)
                 {
-                    t.SharesData = true;
+                    textureList.Remove(textureList.Last());
+                    foreach (TEX0Node t in textureList)
+                    {
+                        t.SharesData = true;
+                    }
                 }
 
                 if (inputDir.GetFiles().Length > 0)
