@@ -167,8 +167,11 @@ namespace BrawlCrate
                         textureList.Add(t);
                         dlg.Dispose();
                         t.OriginalPath = "";
-                        texGroup.RemoveChild(t);
-                        texGroup.InsertChild(t, false, index + count);
+                        if (texGroup.Children.Count > count + 1)
+                        {
+                            texGroup.RemoveChild(t);
+                            texGroup.InsertChild(t, false, index + count);
+                        }
                         count++;
                     }
 
@@ -205,8 +208,11 @@ namespace BrawlCrate
 
                             dlg.Dispose();
                             t.OriginalPath = "";
-                            texGroup.RemoveChild(t);
-                            texGroup.InsertChild(t, false, index + count);
+                            if (texGroup.Children.Count > count + 1)
+                            {
+                                texGroup.RemoveChild(t);
+                                texGroup.InsertChild(t, false, index + count);
+                            }
                             count++;
                         }
                     }
