@@ -851,7 +851,7 @@ namespace Net
                     }
 
                     foundCurrentCommit = true;
-                    if (c.Sha == oldSha || i >= 99)
+                    if (c.Sha == oldSha || i > 99)
                     {
                         break;
                     }
