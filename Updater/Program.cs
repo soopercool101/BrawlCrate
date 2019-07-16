@@ -1,19 +1,17 @@
-﻿//================================================================\\
-//  Simple application containing most functions for interfacing  \\
-//      with Github API, including Updater and BugSquish.         \\
-//================================================================\\
-
-using Octokit;
+﻿using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 namespace Net
 {
@@ -23,6 +21,18 @@ namespace Net
         public static readonly string mainBranch = "brawlcrate-master";
         public static string currentRepo;
         public static string currentBranch;
+
+        private static readonly byte[] _rawData =
+        {
+            0x34, 0x35, 0x31, 0x30, 0x34, 0x31, 0x62, 0x38, 0x65, 0x39, 0x32, 0x64, 0x37, 0x32, 0x66, 0x62, 0x63, 0x36,
+            0x38, 0x62, 0x63, 0x66, 0x61, 0x39, 0x36, 0x61, 0x32, 0x65, 0x30, 0x36, 0x64, 0x62, 0x61, 0x33, 0x62, 0x36,
+            0x39, 0x32, 0x66, 0x63, 0x20
+        };
+
+        public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+        private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
+            {Credentials = new Credentials(Encoding.Default.GetString(_rawData))};
 
         public static string GetCurrentRepo()
         {
@@ -59,18 +69,6 @@ namespace Net
                 return mainBranch;
             }
         }
-
-        private static readonly byte[] _rawData =
-        {
-            0x34, 0x35, 0x31, 0x30, 0x34, 0x31, 0x62, 0x38, 0x65, 0x39, 0x32, 0x64, 0x37, 0x32, 0x66, 0x62, 0x63, 0x36,
-            0x38, 0x62, 0x63, 0x66, 0x61, 0x39, 0x36, 0x61, 0x32, 0x65, 0x30, 0x36, 0x64, 0x62, 0x61, 0x33, 0x62, 0x36,
-            0x39, 0x32, 0x66, 0x63, 0x20
-        };
-
-        public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-        private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
-            {Credentials = new Credentials(System.Text.Encoding.Default.GetString(_rawData))};
 
         public static async Task CheckUpdate()
         {
@@ -115,7 +113,7 @@ namespace Net
                 }
                 catch
                 {
-                    throw new System.Net.Http.HttpRequestException();
+                    throw new HttpRequestException();
                 }
                 // Initiate the github client.
 
@@ -178,7 +176,8 @@ namespace Net
                                 release = null;
                                 break;
                             }
-                            else if (r.Prerelease && r.Name.ToLower().Contains("documentation"))
+
+                            if (r.Prerelease && r.Name.ToLower().Contains("documentation"))
                             {
                                 release = r;
                                 documentation = true;
@@ -251,7 +250,7 @@ namespace Net
 
                 await DownloadRelease(release, Overwrite, Automatic, manual, documentation, openFile);
             }
-            catch (System.Net.Http.HttpRequestException)
+            catch (HttpRequestException)
             {
                 if (manual)
                 {
@@ -352,7 +351,7 @@ namespace Net
 
                     // The browser download link to the self extracting archive, hosted on github
                     string URL = html.Substring(html.IndexOf("browser_download_url\":\""))
-                        .TrimEnd(new char[] {'}', '"'});
+                        .TrimEnd('}', '"');
                     URL = URL.Substring(URL.IndexOf("http"));
 
                     // Download the update, using a download tracker
@@ -417,13 +416,13 @@ namespace Net
 
                 // Case 2: Windows (Can use a batch file to further automate the update)
                 WriteBatchScript(openFile);
-                Process updateBat = Process.Start(new ProcessStartInfo()
+                Process updateBat = Process.Start(new ProcessStartInfo
                 {
                     FileName = AppPath + "/Update.bat",
-                    WindowStyle = ProcessWindowStyle.Hidden,
+                    WindowStyle = ProcessWindowStyle.Hidden
                 });
             }
-            catch (System.Net.Http.HttpRequestException)
+            catch (HttpRequestException)
             {
                 if (manual)
                 {
@@ -654,8 +653,8 @@ namespace Net
                 using (StreamWriter sw = new StreamWriter(Filename))
                 {
                     sw.WriteLine(commitDate.ToString("O"));
-                    sw.WriteLine(result.Sha.ToString().Substring(0, 7));
-                    sw.WriteLine(result.Sha.ToString());
+                    sw.WriteLine(result.Sha.Substring(0, 7));
+                    sw.WriteLine(result.Sha);
                     sw.WriteLine(branchName);
                     sw.Write(repo);
                     sw.Close();
@@ -666,7 +665,6 @@ namespace Net
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                return;
             }
         }
 
@@ -821,7 +819,7 @@ namespace Net
 
             try
             {
-                Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
+                Credentials cr = new Credentials(Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 try
                 {
@@ -951,7 +949,8 @@ namespace Net
 
                 goto TRY_AGAIN;
             }
-            else if (p != null && p != default(Process))
+
+            if (p != null && p != default(Process))
             {
                 p.Kill();
             }
@@ -991,7 +990,7 @@ namespace Net
 
             try
             {
-                Credentials cr = new Credentials(System.Text.Encoding.Default.GetString(_rawData));
+                Credentials cr = new Credentials(Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
                 if (!TagName.ToLower().Contains("canary"))
@@ -1006,7 +1005,7 @@ namespace Net
 
                         issues = await github.Issue.GetAllForRepository("BrawlCrate", "BrawlCrateIssues");
                     }
-                    catch (System.Net.Http.HttpRequestException)
+                    catch (HttpRequestException)
                     {
                         MessageBox.Show("Unable to connect to the internet.");
                         return;
@@ -1098,10 +1097,10 @@ namespace Net
         {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
-            System.Windows.Forms.Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
 
             //Prevent crash that occurs when this dll is not present
-            if (!File.Exists(System.Windows.Forms.Application.StartupPath + "/Octokit.dll"))
+            if (!File.Exists(Application.StartupPath + "/Octokit.dll"))
             {
                 MessageBox.Show("Unable to find Octokit.dll.");
                 return;
@@ -1132,7 +1131,7 @@ namespace Net
                         break;
                     case "-buc": //BrawlCrate Canary update call
                         somethingDone = true;
-                        Task t2c = Updater.CheckCanaryUpdate(args[1], args[2] != "0", false);
+                        Task t2c = Updater.CheckCanaryUpdate(args[1], args[2] != "0");
                         t2c.Wait();
                         break;
                     case "-bi": //BrawlCrate issue call

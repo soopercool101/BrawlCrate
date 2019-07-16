@@ -5,41 +5,33 @@ namespace System.Windows.Forms
 {
     public class DLProgressBar : UserControl
     {
-        private float _min = 0.0f, _max = 1.0f, _current = 0.0f;
-
-        public float MinValue
-        {
-            get => _min;
-            set => _min = value;
-        }
-
-        public float MaxValue
-        {
-            get => _max;
-            set => _max = value;
-        }
-
-        public float CurrentValue
-        {
-            get => _current;
-            set
-            {
-                _current = Math.Max(Math.Min(value, _max), _min);
-                Invalidate();
-            }
-        }
-
-        public float Percent
-        {
-            get => (_current - _min) / (_max - _min);
-            set => CurrentValue = (_max - _min) * value;
-        }
+        private float _current;
 
         public DLProgressBar()
         {
             SetStyle(
                 ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer |
                 ControlStyles.Opaque, true);
+        }
+
+        public float MinValue { get; set; } = 0.0f;
+
+        public float MaxValue { get; set; } = 1.0f;
+
+        public float CurrentValue
+        {
+            get => _current;
+            set
+            {
+                _current = Math.Max(Math.Min(value, MaxValue), MinValue);
+                Invalidate();
+            }
+        }
+
+        public float Percent
+        {
+            get => (_current - MinValue) / (MaxValue - MinValue);
+            set => CurrentValue = (MaxValue - MinValue) * value;
         }
 
         protected override void OnPaint(PaintEventArgs e)

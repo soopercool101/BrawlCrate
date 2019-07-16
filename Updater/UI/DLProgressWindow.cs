@@ -6,22 +6,13 @@ namespace System.Windows.Forms
 {
     public partial class DLProgressWindow : Form
     {
-        private bool _canCancel = false, _cancelled = false;
+        public static bool started;
+        public static bool finished;
 
-        public bool CanCancel
-        {
-            get => _canCancel;
-            set => btnCancel.Visible = btnCancel.Enabled = _canCancel = value;
-        }
-
-        public string Caption
-        {
-            get => label1.Text;
-            set => label1.Text = value;
-        }
-
-        public static bool started = false;
-        public static bool finished = false;
+        public static long MinValue;
+        public static long MaxValue = 1;
+        public static long CurrentValue;
+        private bool _canCancel, _cancelled;
         public string PackageName;
 
         public DLProgressWindow()
@@ -54,6 +45,24 @@ namespace System.Windows.Forms
             {
                 UpdateProgress();
             }
+        }
+
+        public bool CanCancel
+        {
+            get => _canCancel;
+            set => btnCancel.Visible = btnCancel.Enabled = _canCancel = value;
+        }
+
+        public string Caption
+        {
+            get => label1.Text;
+            set => label1.Text = value;
+        }
+
+        public bool Cancelled
+        {
+            get => _cancelled;
+            set => _cancelled = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -121,8 +130,8 @@ namespace System.Windows.Forms
                     {
                         client.Headers.Add("User-Agent: Other");
                         client.DownloadProgressChanged +=
-                            new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                        client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                            client_DownloadProgressChanged;
+                        client.DownloadFileCompleted += client_DownloadFileCompleted;
                         client.DownloadFileAsync(new Uri(dlLink), AppPath + "\\temp.exe");
                         Application.DoEvents();
                     }
@@ -162,16 +171,6 @@ namespace System.Windows.Forms
         public void Cancel()
         {
             _cancelled = true;
-        }
-
-        public static long MinValue = 0;
-        public static long MaxValue = 1;
-        public static long CurrentValue = 0;
-
-        public bool Cancelled
-        {
-            get => _cancelled;
-            set => _cancelled = true;
         }
     }
 }
