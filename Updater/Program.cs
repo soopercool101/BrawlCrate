@@ -859,7 +859,12 @@ namespace Net
                     i++;
                 }
 
-                for (int j = i; j >= 0; j--)
+                if (i == 0)
+                {
+                    MessageBox.Show("No changes were found.");
+                }
+
+                for (int j = i - 1; j >= 0; j--)
                 {
                     if (j >= commits.Count)
                     {
