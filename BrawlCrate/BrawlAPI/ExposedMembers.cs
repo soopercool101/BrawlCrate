@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 // ReSharper disable UnusedMember.Global
 
@@ -307,7 +308,108 @@ namespace BrawlCrate.API
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
+                dlg.Multiselect = false;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an open file dialog, prompting the user to select a file.
+        ///
+        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the form.
+        /// </param>
+        public static string OpenFileDialog(string title)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Multiselect = false;
+                dlg.Title = title;
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an open file dialog, prompting the user to select a file.
+        ///
+        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the form.
+        /// </param>
+        /// <param name="filter">
+        ///     The file filter to use for the open file dialog. Use the formatting found here:
+        ///     https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter
+        ///
+        ///     You can also reference the pre-programmed filters from FileFilters.cs
+        /// </param>
+        public static string OpenFileDialog(string title, string filter)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Multiselect = false;
+                dlg.Title = title;
+                dlg.Filter = filter;
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an open file dialog, prompting the user to select multiple files
+        ///
+        ///     Returns the paths of the files that the user chose, or null if the dialog was cancelled.
+        /// </summary>
+        public static string[] OpenMultiFileDialog()
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Multiselect = true;
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : null;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an open file dialog, prompting the user to select multiple files
+        ///
+        ///     Returns the paths of the files that the user chose, or null if the dialog was cancelled.
+        /// </summary>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the form.
+        /// </param>
+        public static string[] OpenMultiFileDialog(string title)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Multiselect = true;
+                dlg.Title = title;
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : null;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an open file dialog, prompting the user to select multiple files
+        ///
+        ///     Returns the paths of the files that the user chose, or null if the dialog was cancelled.
+        /// </summary>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the form.
+        /// </param>
+        /// <param name="filter">
+        ///     The file filter to use for the open file dialog. Use the formatting found here:
+        ///     https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter
+        ///
+        ///     You can also reference the pre-programmed filters from FileFilters.cs
+        /// </param>
+        public static string[] OpenMultiFileDialog(string title, string filter)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Multiselect = true;
+                dlg.Title = title;
+                dlg.Filter = filter;
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : null;
             }
         }
 
@@ -320,6 +422,23 @@ namespace BrawlCrate.API
         {
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
             {
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens an Open Folder Dialog, prompting the user to select a folder.
+        ///
+        ///     Returns the path of the folder that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        /// <param name="description">
+        ///     The description of the folder dialog.
+        /// </param>
+        public static string OpenFolderDialog(string description)
+        {
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+            {
+                dlg.Description = description;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
         }
