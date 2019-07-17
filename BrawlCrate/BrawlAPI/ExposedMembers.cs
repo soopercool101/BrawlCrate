@@ -3,6 +3,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 // ReSharper disable UnusedMember.Global
 
 namespace BrawlCrate.API
@@ -25,7 +26,7 @@ namespace BrawlCrate.API
         ///     Returns null if there is no selected node.
         /// </summary>
         public static ResourceNode SelectedNode => MainForm.Instance.resourceTree.SelectedNode != null
-            ? ((BaseWrapper)MainForm.Instance.resourceTree.SelectedNode).Resource
+            ? ((BaseWrapper) MainForm.Instance.resourceTree.SelectedNode).Resource
             : null;
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace BrawlCrate.API
         ///
         ///     Returns null if there is no selected node.
         /// </summary>
-        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper)MainForm.Instance.resourceTree.SelectedNode;
+        public static BaseWrapper SelectedNodeWrapper => (BaseWrapper) MainForm.Instance.resourceTree.SelectedNode;
 
         /// <summary>
         ///     The wrappers for the currently selected nodes on the Main Form.
@@ -116,7 +117,8 @@ namespace BrawlCrate.API
         /// <summary>
         ///     Returns a full list of all node wrappers in the open file.
         ///
-        ///     Note that this function is generally slow due to the implementation of ResourceTrees; for general usage, NodeList works best.
+        ///     Note that this function is generally slow due to the implementation of ResourceTrees; for general usage, NodeList
+        ///     works best.
         ///
         ///     Returns an empty list if there is no open file.
         /// </summary>
@@ -149,6 +151,8 @@ namespace BrawlCrate.API
         #endregion
 
         #region Dialog Boxes
+
+        #region No Input
 
         /// <summary>
         ///     Shows a MessageBox with the given message and title, and the default "OK" option.
@@ -183,6 +187,42 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
+        ///     Shows a MessageBox with the given message and title, the default "OK" option, and an Error symbol.
+        ///
+        ///     Doesn't return a value, and is just used to show the user messages.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static void ShowError(string msg, string title)
+        {
+            MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion
+
+        #region User Input
+
+        /// <summary>
+        ///     Shows a MessageBox with the given message and title, with options for "Yes" or "No".
+        ///
+        ///     Returns true if "Yes" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowYesNoPrompt(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
+        }
+
+        /// <summary>
         ///     Shows a MessageBox with the given message and title, "Yes/No" options, and a Warning symbol.
         ///
         ///     Returns true if "Yes" is clicked, and false otherwise.
@@ -197,39 +237,6 @@ namespace BrawlCrate.API
         {
             return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                    == DialogResult.Yes;
-        }
-
-        /// <summary>
-        ///     Shows a MessageBox with the given message and title, "OK/Cancel" options, and a Warning symbol.
-        ///
-        ///     Returns true if "OK" is clicked, and false otherwise.
-        /// </summary>
-        /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox.
-        /// </param>
-        /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox.
-        /// </param>
-        public static bool ShowOKCancelWarning(string msg, string title)
-        {
-            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
-                   == DialogResult.OK;
-        }
-
-        /// <summary>
-        ///     Shows a MessageBox with the given message and title, the default "OK" option, and an Error symbol.
-        ///
-        ///     Doesn't return a value, and is just used to show the user messages.
-        /// </summary>
-        /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox.
-        /// </param>
-        /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox.
-        /// </param>
-        public static void ShowError(string msg, string title)
-        {
-            MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -250,6 +257,39 @@ namespace BrawlCrate.API
         }
 
         /// <summary>
+        ///     Shows a MessageBox with the given message and title, with options for "OK" or "Cancel".
+        ///
+        ///     Returns true if "OK" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowOKCancelPrompt(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel) == DialogResult.OK;
+        }
+
+        /// <summary>
+        ///     Shows a MessageBox with the given message and title, "OK/Cancel" options, and a Warning symbol.
+        ///
+        ///     Returns true if "OK" is clicked, and false otherwise.
+        /// </summary>
+        /// <param name="msg">
+        ///     The message that will appear in the body of the MessageBox.
+        /// </param>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the MessageBox.
+        /// </param>
+        public static bool ShowOKCancelWarning(string msg, string title)
+        {
+            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
+                   == DialogResult.OK;
+        }
+
+        /// <summary>
         ///     Shows a MessageBox with the given message and title, "OK/Cancel" options, and an Error symbol.
         ///
         ///     Returns true if "OK" is clicked, and false otherwise.
@@ -266,37 +306,13 @@ namespace BrawlCrate.API
                    == DialogResult.OK;
         }
 
-        /// <summary>
-        ///     Shows a MessageBox with the given message and title, with options for "Yes" or "No".
-        ///
-        ///     Returns true if "Yes" is clicked, and false otherwise.
-        /// </summary>
-        /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox.
-        /// </param>
-        /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox.
-        /// </param>
-        public static bool ShowYesNoPrompt(string msg, string title)
-        {
-            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
-        }
+        #endregion
 
-        /// <summary>
-        ///     Shows a MessageBox with the given message and title, with options for "OK" or "Cancel".
-        ///
-        ///     Returns true if "OK" is clicked, and false otherwise.
-        /// </summary>
-        /// <param name="msg">
-        ///     The message that will appear in the body of the MessageBox.
-        /// </param>
-        /// <param name="title">
-        ///     The title text that will show in the TitleBar of the MessageBox.
-        /// </param>
-        public static bool ShowOKCancelPrompt(string msg, string title)
-        {
-            return MessageBox.Show(MainForm.Instance, msg, title, MessageBoxButtons.OKCancel) == DialogResult.OK;
-        }
+        #region Save/Open Dialogs
+
+        #region Open
+
+        #region Single File
 
         /// <summary>
         ///     Opens an open file dialog, prompting the user to select a file.
@@ -355,6 +371,10 @@ namespace BrawlCrate.API
             }
         }
 
+        #endregion
+
+        #region Multiple Files
+
         /// <summary>
         ///     Opens an open file dialog, prompting the user to select multiple files
         ///
@@ -412,6 +432,10 @@ namespace BrawlCrate.API
             }
         }
 
+        #endregion
+
+        #region Folders
+
         /// <summary>
         ///     Opens an Open Folder Dialog, prompting the user to select a folder.
         ///
@@ -441,6 +465,12 @@ namespace BrawlCrate.API
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
         }
+
+        #endregion
+
+        #endregion
+
+        #region Save
 
         /// <summary>
         ///     Opens a save file dialog, prompting the user to save a file.
@@ -504,6 +534,10 @@ namespace BrawlCrate.API
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
             }
         }
+
+        #endregion
+
+        #endregion
 
         #endregion
 
