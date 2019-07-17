@@ -2,7 +2,6 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 // ReSharper disable UnusedMember.Global
 
@@ -449,12 +448,59 @@ namespace BrawlCrate.API
         ///     *DOES NOT ACTUALLY SAVE ANYTHING BY ITSELF!*
         ///     Additional scripting must be done if you want to actually save anything.
         ///
-        ///     Returns the path of the file that the user chose, or an empty string if the dialog was cancelled.
+        ///     Returns the save path that the user chose, or an empty string if the dialog was cancelled.
         /// </summary>
         public static string SaveFileDialog()
         {
             using (SaveFileDialog dlg = new SaveFileDialog())
             {
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens a save file dialog, prompting the user to save a file.
+        ///
+        ///     *DOES NOT ACTUALLY SAVE ANYTHING BY ITSELF!*
+        ///     Additional scripting must be done if you want to actually save anything.
+        ///
+        ///     Returns the save path that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the form.
+        /// </param>
+        public static string SaveFileDialog(string title)
+        {
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                dlg.Title = title;
+                return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
+            }
+        }
+
+        /// <summary>
+        ///     Opens a save file dialog, prompting the user to save a file.
+        ///
+        ///     *DOES NOT ACTUALLY SAVE ANYTHING BY ITSELF!*
+        ///     Additional scripting must be done if you want to actually save anything.
+        ///
+        ///     Returns the save path that the user chose, or an empty string if the dialog was cancelled.
+        /// </summary>
+        /// <param name="title">
+        ///     The title text that will show in the TitleBar of the form.
+        /// </param>
+        /// <param name="filter">
+        ///     The file filter to use for the open file dialog. Use the formatting found here:
+        ///     https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter
+        ///
+        ///     You can also reference the pre-programmed filters from FileFilters.cs
+        /// </param>
+        public static string SaveFileDialog(string title, string filter)
+        {
+            using (SaveFileDialog dlg = new SaveFileDialog())
+            {
+                dlg.Title = title;
+                dlg.Filter = filter;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
             }
         }
