@@ -277,10 +277,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             bfloat* part2 = Header->part2;
-            while (part2 < (bfloat*) (VoidPtr) Header + WorkingUncompressed.Length)
+            if (part2 != null && part2->Address >= Header->Address && part2->Address > 0)
             {
-                entries.Add(*part2);
-                part2++;
+                while (part2 < Header->Address + WorkingUncompressed.Length)
+                {
+                    entries.Add(*part2);
+                    part2++;
+                }
             }
 
             id = Header->_ID;
