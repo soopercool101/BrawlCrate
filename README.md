@@ -8,3 +8,5 @@ BrawlBox and BrawlLib were developed initially by [Kryal](https://code.google.co
 Current BrawlCrate contributors: soopercool101
 
 Join the [Brawl Stage Compendium Discord](https://discord.gg/s7c8763) to talk to the developers.
+
+Older versions can be found on the [BrawlCrate-depreciated repository](https://github.com/soopercool101/BrawlCrate).
