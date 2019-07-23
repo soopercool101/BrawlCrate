@@ -1,5 +1,6 @@
 BrawlCrateLib / BrawlCrate
 ==========
+[![GitHub release](https://img.shields.io/github/release/soopercool101/BrawlCrate.svg)](https://github.com/soopercool101/BrawlCrate/releases/latest)
 
 BrawlCrate is a BrawlBox fork with a variety of features aiming to improve ease of modding for Super Smash Bros. Brawl.
 
