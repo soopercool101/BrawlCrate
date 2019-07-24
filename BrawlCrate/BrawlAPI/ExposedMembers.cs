@@ -655,6 +655,105 @@ namespace BrawlCrate.API
 
         #endregion
 
+        #region Program
+
+        /// <summary>
+        ///     Attempts to open the file using a given path.
+        ///
+        ///     Returns true if the file is successfully loaded, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path of the file that is to be opened.
+        /// </param>
+        public static bool OpenFile(string path)
+        {
+            return Program.Open(path);
+        }
+
+        /// <summary>
+        ///     Attempts to open the file using a given path.
+        ///     Any error messages (including "file not found") are not shown to the user.
+        ///
+        ///     Returns true if the file is successfully loaded, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path of the file that is to be opened.
+        /// </param>
+        public static bool OpenFileNoErrors(string path)
+        {
+            return Program.Open(path, false);
+        }
+
+        /// <summary>
+        ///     Attempts to save the opened file.
+        ///
+        ///     Returns true if the file is successfully saved, and false otherwise.
+        /// </summary>
+        public static bool SaveFile()
+        {
+            return Program.Save();
+        }
+
+        /// <summary>
+        ///     Prompts the user to save the open file to a directory.
+        ///
+        ///     Returns true if the file is successfully saved, and false otherwise.
+        /// </summary>
+        public static bool SaveFileAs()
+        {
+            return Program.SaveAs();
+        }
+
+        /// <summary>
+        ///     Attempts to save the opened file to a given path.
+        ///
+        ///     Returns true if the file is successfully saved, and false otherwise.
+        /// </summary>
+        /// <param name="path">
+        ///     The path to which the file should be saved
+        /// </param>
+        public static bool SaveFileAs(string path)
+        {
+            try
+            {
+                MainForm.Instance.RootNode.Resource.Export(path);
+                Program._rootPath = path;
+                MainForm.Instance.UpdateName();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        ///     Closes the open file, leaving the editor on the idle screen.
+        ///
+        ///     If the open file has unsaved changes, prompts the user to save them.
+        ///
+        ///     Returns true if the file is successfully closed, and false otherwise.
+        /// </summary>
+        public static bool CloseFile()
+        {
+            return Program.Close();
+        }
+
+        /// <summary>
+        ///     Closes the open file, leaving the editor on the idle screen.
+        ///
+        ///     Will close regardless of unsaved changes.
+        ///
+        ///     Returns true if the file is successfully closed, and false otherwise.
+        /// </summary>
+        public static bool ForceCloseFile()
+        {
+            return Program.Close(true);
+        }
+
+        #endregion
+
         #region Other
 
         /// <summary>

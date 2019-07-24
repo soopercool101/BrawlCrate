@@ -183,7 +183,7 @@ namespace BrawlCrate
             {
                 if (manual)
                 {
-                    MessageBox.Show(e.Message);
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
