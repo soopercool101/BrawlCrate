@@ -209,34 +209,9 @@ namespace Ookii.Dialogs
 
         #region Activation Context
 
-        [DllImport("Kernel32.dll", SetLastError = true)]
-        public static extern ActivationContextSafeHandle CreateActCtx(ref ACTCTX actctx);
-
         [DllImport("kernel32.dll")]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
         public static extern void ReleaseActCtx(IntPtr hActCtx);
-
-        [DllImport("Kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool ActivateActCtx(ActivationContextSafeHandle hActCtx, out IntPtr lpCookie);
-
-        [DllImport("Kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool DeactivateActCtx(uint dwFlags, IntPtr lpCookie);
-
-        public const int ACTCTX_FLAG_ASSEMBLY_DIRECTORY_VALID = 0x004;
-
-        public struct ACTCTX
-        {
-            public int cbSize;
-            public uint dwFlags;
-            public string lpSource;
-            public ushort wProcessorArchitecture;
-            public ushort wLangId;
-            public string lpAssemblyDirectory;
-            public string lpResourceName;
-            public string lpApplicationName;
-        }
 
         #endregion
 
@@ -714,42 +689,6 @@ namespace Ookii.Dialogs
             LocalMachine = 2,
             Enterprise = 3
         }
-
-        [SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable")]
-        internal struct CREDUI_INFO
-        {
-            public int cbSize;
-            public IntPtr hwndParent;
-            [MarshalAs(UnmanagedType.LPWStr)] public string pszMessageText;
-            [MarshalAs(UnmanagedType.LPWStr)] public string pszCaptionText;
-            public IntPtr hbmBanner;
-        }
-
-        [DllImport("credui.dll", CharSet = CharSet.Unicode)]
-        internal static extern CredUIReturnCodes CredUIPromptForCredentials(
-            ref CREDUI_INFO pUiInfo,
-            string targetName,
-            IntPtr Reserved,
-            int dwAuthError,
-            StringBuilder pszUserName,
-            uint ulUserNameMaxChars,
-            StringBuilder pszPassword,
-            uint ulPaswordMaxChars,
-            [MarshalAs(UnmanagedType.Bool)] [In] [Out]
-            ref bool pfSave,
-            CREDUI_FLAGS dwFlags);
-
-        [DllImport("credui.dll", CharSet = CharSet.Unicode)]
-        public static extern CredUIReturnCodes CredUIPromptForWindowsCredentials(
-            ref CREDUI_INFO pUiInfo,
-            uint dwAuthError,
-            ref uint pulAuthPackage,
-            IntPtr pvInAuthBuffer,
-            uint ulInAuthBufferSize,
-            out IntPtr ppvOutAuthBuffer,
-            out uint pulOutAuthBufferSize,
-            [MarshalAs(UnmanagedType.Bool)] ref bool pfSave,
-            CredUIWinFlags dwFlags);
 
         [DllImport("advapi32.dll", CharSet = CharSet.Unicode, EntryPoint = "CredReadW", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
