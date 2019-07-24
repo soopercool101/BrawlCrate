@@ -1,10 +1,10 @@
+using Ookii.Dialogs.Interop;
 using System;
 using System.ComponentModel;
 using System.Drawing.Design;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Ookii.Dialogs.Interop;
 
 namespace Ookii.Dialogs
 {
@@ -24,8 +24,8 @@ namespace Ookii.Dialogs
     [Description("Prompts the user to select a folder.")]
     public sealed class VistaFolderBrowserDialog : CommonDialog
     {
-        private string _description;
         private readonly FolderBrowserDialog _downlevelDialog;
+        private string _description;
         private Environment.SpecialFolder _rootFolder;
         private string _selectedPath;
 

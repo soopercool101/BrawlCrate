@@ -1,9 +1,9 @@
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using Microsoft.Win32.SafeHandles;
 
 namespace Ookii.Dialogs
 {
