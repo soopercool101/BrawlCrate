@@ -66,10 +66,10 @@
       <Value Profile="(Default)">My Mod</Value>
     </Setting>
     <Setting Name="PreviewBRRESModels" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="PreviewARCModels" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="BuildPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
