@@ -420,7 +420,7 @@ namespace BrawlCrate.SongManager
 
         private void changeDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
             fbd.SelectedPath = CurrentDirectory;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
@@ -430,7 +430,7 @@ namespace BrawlCrate.SongManager
 
         private void openFallbackDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
             fbd.SelectedPath = FallbackDirectory;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
@@ -670,7 +670,7 @@ namespace BrawlCrate.SongManager
         private void exportMusicSongsToolStripMenuItem_Click(object sender, EventArgs eva)
         {
             CloseCurrentResources();
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
             fbd.Description = "Select folder to export to:";
             fbd.SelectedPath = CurrentDirectory;
             if (fbd.ShowDialog() == DialogResult.OK)
@@ -709,7 +709,7 @@ namespace BrawlCrate.SongManager
         private void importMusicSongsToolStripMenuItem_Click(object sender, EventArgs eva)
         {
             CloseCurrentResources();
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
             fbd.Description = "Select folder to import from:";
             fbd.SelectedPath = CurrentDirectory;
             if (fbd.ShowDialog() == DialogResult.OK)

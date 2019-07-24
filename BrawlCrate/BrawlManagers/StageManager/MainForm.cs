@@ -18,7 +18,7 @@ namespace BrawlCrate.StageManager
     {
         private static OpenFileDialog OpenDialog = new OpenFileDialog();
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
-        private static FolderBrowserDialog FolderDialog = new FolderBrowserDialog();
+        private static Ookii.Dialogs.VistaFolderBrowserDialog FolderDialog = new Ookii.Dialogs.VistaFolderBrowserDialog();
 
         #region Folder-scope variables
 

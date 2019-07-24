@@ -443,7 +443,7 @@ namespace BrawlCrate.API
         /// </summary>
         public static string OpenFolderDialog()
         {
-            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
             {
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
@@ -459,7 +459,7 @@ namespace BrawlCrate.API
         /// </param>
         public static string OpenFolderDialog(string description)
         {
-            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+            using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
             {
                 dlg.Description = description;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;

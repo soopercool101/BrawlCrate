@@ -25,7 +25,7 @@ namespace BrawlCrate
 
         private static readonly OpenFileDialog _openDlg;
         private static readonly SaveFileDialog _saveDlg;
-        private static readonly FolderBrowserDialog _folderDlg;
+        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog _folderDlg;
 
         internal static ResourceNode _rootNode;
 
@@ -78,7 +78,7 @@ namespace BrawlCrate
 
             _openDlg = new OpenFileDialog();
             _saveDlg = new SaveFileDialog();
-            _folderDlg = new FolderBrowserDialog();
+            _folderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
