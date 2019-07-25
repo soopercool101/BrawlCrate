@@ -1,5 +1,5 @@
 ﻿
-BrawlCrate - v0.27
+BrawlCrate - v0.30
 Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal
 BrawlBox  © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie & Sammi Husky
 
@@ -16,9 +16,69 @@ they be held accountable for the manner in which it is used.
 |************ BrawlCrate Change Log ************|
  ===============================================
 
- - BrawlCrate v0.27?
+ - BrawlCrate v0.30 - (xx/xx/2019)
  . Rebuilt over the latest BrawlBox source
- 
+   - Many functions have been rewritten from scratch and many bugs have been fixed due to this migration
+   - No longer uses "lib" folder to improve compatibility
+ . .NET Framework updated from 4.0 to 4.7.2 for BrawlCrate and BrawlLib
+ . .NET Framework updated from 4.5.2 to 4.7.2 for the Updater
+ . OpenTK updated from v1.1.0.0 to v3.0.1.0
+ . Add "Show Changelog" button to the help menu
+ . Add ports of BrawlManagers from https://github.com/libertyernie/BrawlManagers
+ . New Color Smash method: Multi-select nodes and select Color Smash from the Tools menu
+ . Panning on the modelviewer freezes the mouse to allow for smoother movement
+ . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
+ . Add MainForm previewing of textures in a BRRES or TPL
+ . Add MainForm previewing of Collision Nodes
+ . Collision Objects are now parsed as children of Collision Nodes
+ . Collision planes with the "Rotating" flag will now change color based on their angle, matching Brawl's implementation
+ . Color Smash Utility can make its own folders
+ . Discord RPC now detects code manager and BrawlManagers
+ . ".txt" GCTs can now be directly opened
+ . Add "All Files" filter when opening files
+ . bboxapi changed to BrawlAPI
+   - Python is no longer included in the installation. Path will be automatically searched for on first boot.
+   - F# path is now saved to a setting, greatly reducing runtime for F# scripts
+   - Add migration feature so that plugins/loaders designed for bboxapi will automatically be converted to BrawlAPI scripts when run
+   - Plugin-created dropdown items now appear in a Plugins submenu
+   - Plugins now are sorted into submenus based on subfolders
+   - Add various additional exposed members for API and extensive documentation (found at https://github.com/soopercool101/BrawlCrateNext/blob/master/BrawlCrate/BrawlAPI/ExposedMembers.cs)
+     . SelectedNodes
+     . NodeList
+     . RootNodeWrapper
+     . SelectedNodesWrappers
+     . NodeWrapperList
+     . ShowWarning
+     . ShowError
+     . ShowYesNoWarning
+     . ShowYesNoError
+     . ShowOKCancelWarning
+     . ShowOKCancelError
+     . OpenMultiFileDialog
+     . OpenFile
+     . OpenFileNoErrors
+     . SaveFile
+     . SaveFileAs
+     . CloseFile
+     . ForceCloseFile
+   - Add additional overrides for more functionality for the following exposed members
+     . OpenFileDialog
+	   - Add support for title and filters
+     . OpenFolderDialog
+	   - Add support for description
+     . SaveFileDialog
+	   - Add support for title and filters
+     . AddContextMenuItem
+	   - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
+   - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a file
+   - Added Example Loader that dumps CSPs as RSPs
+ . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
+ . Speed up rendering logic
+ . Folder select dialog now uses the Vista and later styled folder select
+ . Fix bug in which CE Nodes would crash when populating Events
+ . Fix bug in which opening a GCT directly would crash the program
+
+
   - BrawlCrate v0.26 Hotfix 2 - (7/8/2019)
  . Fix issue in which Shaders could be initialized with null names
  . Fix crashes caused by VIS0 syncing
