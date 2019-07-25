@@ -258,15 +258,17 @@ namespace BrawlLib.Wii.Animations
                 return _value + diff * time;
             }
 
-            float tan = _tangent, nextTan = next._tangent;
+            float tan = _tangent;
+            float nextTan = next._tangent;
+
             if (prevDouble || oneApart)
             {
-                tan = (next._value - _value) / (next._index - _index);
+                // Do nothing, as this doesn't seem to work properly //tan = (next._value - _value) / (next._index - _index);
             }
 
             if (nextDouble || oneApart)
             {
-                nextTan = (next._value - _value) / (next._index - _index);
+                // Do nothing, as this doesn't seem to work properly //nextTan = (next._value - _value) / (next._index - _index);
             }
 
             //Interpolate using a hermite curve
@@ -284,32 +286,7 @@ namespace BrawlLib.Wii.Animations
         /// </summary>
         public float Interpolate(float offset, bool forceLinear = false)
         {
-            // Original newer build implementation: (to-do, figure out what they were doing/what went wrong)
-            // return Interpolate(offset, _next._index - _index, _next, forceLinear);
-            if (offset == 0)
-            {
-                return _value;
-            }
-
-            int span = _next._index - _index;
-            if (offset == span)
-            {
-                return _next._value;
-            }
-
-            float diff = _next._value - _value;
-
-            if (forceLinear)
-            {
-                return _value + diff / span * offset;
-            }
-
-            float time = offset / span;
-            float inv = time - 1.0f;
-
-            return _value
-                   + offset * inv * (inv * _tangent + time * _next._tangent)
-                   + time * time * (3.0f - 2.0f * time) * diff;
+            return Interpolate(offset, _next._index - _index, _next, forceLinear);
         }
 
         private const bool RoundTangent = true;
