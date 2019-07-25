@@ -284,7 +284,32 @@ namespace BrawlLib.Wii.Animations
         /// </summary>
         public float Interpolate(float offset, bool forceLinear = false)
         {
-            return Interpolate(offset, _next._index - _index, _next, forceLinear);
+            // Original newer build implementation: (to-do, figure out what they were doing/what went wrong)
+            // return Interpolate(offset, _next._index - _index, _next, forceLinear);
+            if (offset == 0)
+            {
+                return _value;
+            }
+
+            int span = _next._index - _index;
+            if (offset == span)
+            {
+                return _next._value;
+            }
+
+            float diff = _next._value - _value;
+
+            if (forceLinear)
+            {
+                return _value + diff / span * offset;
+            }
+
+            float time = offset / span;
+            float inv = time - 1.0f;
+
+            return _value
+                   + offset * inv * (inv * _tangent + time * _next._tangent)
+                   + time * time * (3.0f - 2.0f * time) * diff;
         }
 
         private const bool RoundTangent = true;
