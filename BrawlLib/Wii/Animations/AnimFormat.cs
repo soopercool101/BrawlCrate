@@ -289,16 +289,16 @@ namespace BrawlLib.Wii.Animations
                                             secondFixed = true;
                                             if (firstFixed)
                                             {
-                                                float.TryParse(s[9], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[9].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out angle2);
-                                                float.TryParse(s[10], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[10].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out weight2);
                                             }
                                             else
                                             {
-                                                float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[7].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out angle2);
-                                                float.TryParse(s[8], NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[8].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out weight2);
                                             }
 
