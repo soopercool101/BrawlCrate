@@ -247,12 +247,15 @@ namespace BrawlLib.Wii.Animations
 
                                     string[] s = line.Split(' ');
 
+                                    for (int si = 0; si < s.Length; si++)
+                                    {
+                                        s[si] = s[si].Trim('\n', ';', ' ');
+                                    }
+
                                     float.TryParse(s[0], NumberStyles.Number, CultureInfo.InvariantCulture,
                                         out float inVal);
                                     float.TryParse(s[1], NumberStyles.Number, CultureInfo.InvariantCulture,
                                         out float outVal);
-
-                                    float finalTan = 0;
 
                                     float weight1 = 0;
                                     float weight2 = 0;
@@ -289,16 +292,16 @@ namespace BrawlLib.Wii.Animations
                                             secondFixed = true;
                                             if (firstFixed)
                                             {
-                                                float.TryParse(s[9].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[9], NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out angle2);
-                                                float.TryParse(s[10].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[10], NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out weight2);
                                             }
                                             else
                                             {
-                                                float.TryParse(s[7].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[7], NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out angle2);
-                                                float.TryParse(s[8].Trim(';', ' '), NumberStyles.Number, CultureInfo.InvariantCulture,
+                                                float.TryParse(s[8], NumberStyles.Number, CultureInfo.InvariantCulture,
                                                     out weight2);
                                             }
 
@@ -317,19 +320,17 @@ namespace BrawlLib.Wii.Animations
                                     {
                                         if (bothFixed)
                                         {
-                                            finalTan = (float) Math.Tan((angle1 + angle2) / 2 * Maths._deg2radf) *
+                                            x._tangent = (float) Math.Tan((angle1 + angle2) / 2 * Maths._deg2radf) *
                                                        ((weight1 + weight2) / 2);
                                         }
                                         else if (firstFixed)
                                         {
-                                            finalTan = (float) Math.Tan(angle1 * Maths._deg2radf) * weight1;
+                                            x._tangent = (float) Math.Tan(angle1 * Maths._deg2radf) * weight1;
                                         }
                                         else
                                         {
-                                            finalTan = (float) Math.Tan(angle2 * Maths._deg2radf) * weight2;
+                                            x._tangent = (float) Math.Tan(angle2 * Maths._deg2radf) * weight2;
                                         }
-
-                                        x._tangent = finalTan;
                                     }
                                 }
 
