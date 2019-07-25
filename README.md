@@ -2,6 +2,7 @@ BrawlCrateLib / BrawlCrate
 ==========
 [![GitHub release](https://img.shields.io/github/release/soopercool101/BrawlCrate.svg)](https://github.com/soopercool101/BrawlCrate/releases/latest)
 [![GitHub downloads](https://img.shields.io/github/downloads/soopercool101/brawlcratenext/total.svg)](https://github.com/soopercool101/BrawlCrateNext/releases)
+[![GitHub latest downloads](https://img.shields.io/github/downloads/soopercool101/BrawlCrateNext/latest/total)](https://github.com/soopercool101/BrawlCrate/releases/latest)
 [![Appveyor build status](https://ci.appveyor.com/api/projects/status/github/soopercool101/BrawlCrateNext?branch=master&svg=true)](https://ci.appveyor.com/project/soopercool101/BrawlCrateNext)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e7a263be2c174b0390ae413455bbfcc5)](https://www.codacy.com/app/soopercoolstages/BrawlCrateNext?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=soopercool101/BrawlCrateNext&amp;utm_campaign=Badge_Grade)
 [![Discord](https://img.shields.io/discord/299006136512806912.svg?logo=discord)](https://discord.gg/s7c8763)
