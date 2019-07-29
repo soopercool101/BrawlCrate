@@ -109,7 +109,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>RD /S /Q "$(TargetDir)"</PreBuildEvent>
+    <PreBuildEvent Condition=" '$(Configuration)'!='Mono' ">RD /S /Q "$(TargetDir)"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent />
