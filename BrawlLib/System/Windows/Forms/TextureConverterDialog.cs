@@ -9,7 +9,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
+#if !MONO
 using System.Windows.Media.Imaging;
+#endif
 using BrawlLib.Modeling.Triangle_Converter;
 
 namespace System.Windows.Forms
@@ -452,6 +454,7 @@ namespace System.Windows.Forms
         // May want to extend this to work with Indexed4, Indexed2, or Indexed1 formats in the future.
         private bool LoadImagesPreservingPaletteInfo(string path)
         {
+#if !MONO
             Stream sourceStream = new FileStream(_imageSource, FileMode.Open, FileAccess.Read, FileShare.Read);
             PngBitmapDecoder decoder = new PngBitmapDecoder(sourceStream, BitmapCreateOptions.PreservePixelFormat,
                 BitmapCacheOption.Default);
@@ -478,10 +481,8 @@ namespace System.Windows.Forms
                 bmp.Palette = newPalette;
                 return LoadImages(bmp, pixelData);
             }
-            else
-            {
-                return LoadImages((Bitmap) Image.FromFile(path));
-            }
+#endif
+            return LoadImages((Bitmap) Image.FromFile(path));
         }
 
         private Bitmap ImportPalette()
@@ -1069,7 +1070,7 @@ namespace System.Windows.Forms
             Close();
         }
 
-        #region Designer
+#region Designer
 
         private CheckBox chkPreview;
         private GroupBox groupBox1;
@@ -1773,7 +1774,7 @@ namespace System.Windows.Forms
             ResumeLayout(false);
         }
 
-        #endregion
+#endregion
 
         private void btnApplyDims_Click(object sender, EventArgs e)
         {

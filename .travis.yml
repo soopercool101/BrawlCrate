@@ -1,3 +1,3 @@
 language: csharp
 install: nuget restore BrawlCrateNext.sln
-script: msbuild /p:Configuration=Release BrawlCrateNext.sln
+script: msbuild /p:Configuration=Mono BrawlCrateNext.sln
