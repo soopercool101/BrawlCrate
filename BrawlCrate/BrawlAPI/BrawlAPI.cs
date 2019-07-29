@@ -325,7 +325,11 @@ namespace BrawlCrate.API
                     }
                     else
                     {
+#if !MONO
                         using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+                        using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+#endif
                         {
                             if (MessageBox.Show(
                                     "Python installation could not be detected, would you like to locate it now? If Python is not installed, the plugin system will be disabled.",

@@ -137,7 +137,11 @@ namespace System.Windows.Forms
 
         private void ScreenCapBgLocText_Click(object sender, EventArgs e)
         {
+#if !MONO
             using (Ookii.Dialogs.VistaFolderBrowserDialog d = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+            using (FolderBrowserDialog d = new FolderBrowserDialog())
+#endif
             {
                 d.SelectedPath = ScreenCapBgLocText.Text;
                 d.Description = "Choose a place to automatically save screen captures.";
@@ -371,7 +375,11 @@ namespace System.Windows.Forms
 
         private void LiveTextureFolderPath_Click(object sender, EventArgs e)
         {
+#if !MONO
             using (Ookii.Dialogs.VistaFolderBrowserDialog d = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+            using (FolderBrowserDialog d = new FolderBrowserDialog())
+#endif
             {
                 d.SelectedPath = LiveTextureFolderPath.Text;
                 d.Description = "Choose a place to automatically scan for textures to apply when modified.";

@@ -14,7 +14,11 @@ namespace System.Windows.Forms
         private OpenFileDialog dlgOpen;
         private SaveFileDialog dlgSave;
         private IContainer components;
+#if !MONO
         private Ookii.Dialogs.VistaFolderBrowserDialog folderBrowserDialog1;
+#else
+        private FolderBrowserDialog folderBrowserDialog1;
+#endif
         private Panel pnlKeyframes;
         private ImageList imageList1;
         private ContextMenuStrip ctxBones;
@@ -41,7 +45,11 @@ namespace System.Windows.Forms
             components = new Container();
             dlgOpen = new OpenFileDialog();
             dlgSave = new SaveFileDialog();
+#if !MONO
             folderBrowserDialog1 = new Ookii.Dialogs.VistaFolderBrowserDialog();
+#else
+            folderBrowserDialog1 = new FolderBrowserDialog();
+#endif
             pnlKeyframes = new Panel();
             pnlBones = new Panel();
             lstBones = new CheckedListBox();

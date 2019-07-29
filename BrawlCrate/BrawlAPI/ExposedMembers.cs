@@ -443,7 +443,11 @@ namespace BrawlCrate.API
         /// </summary>
         public static string OpenFolderDialog()
         {
+#if !MONO
             using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+#endif
             {
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
@@ -459,18 +463,22 @@ namespace BrawlCrate.API
         /// </param>
         public static string OpenFolderDialog(string description)
         {
+#if !MONO
             using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+#endif
             {
                 dlg.Description = description;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : string.Empty;
             }
         }
 
-        #endregion
+#endregion
 
-        #endregion
+#endregion
 
-        #region Save
+#region Save
 
         /// <summary>
         ///     Opens a save file dialog, prompting the user to save a file.
@@ -535,13 +543,13 @@ namespace BrawlCrate.API
             }
         }
 
-        #endregion
+#endregion
 
-        #endregion
+#endregion
 
-        #endregion
+#endregion
 
-        #region Context Menus
+#region Context Menus
 
         /// <summary>
         ///     To be called by API, adds context menu items to a wrapper.
@@ -653,9 +661,9 @@ namespace BrawlCrate.API
             AddContextMenuItem(wrapper, items);
         }
 
-        #endregion
+#endregion
 
-        #region Program
+#region Program
 
         /// <summary>
         ///     Attempts to open the file using a given path.
@@ -752,9 +760,9 @@ namespace BrawlCrate.API
             return Program.Close(true);
         }
 
-        #endregion
+#endregion
 
-        #region Other
+#region Other
 
         /// <summary>
         ///     Adds an additional loader.
@@ -769,6 +777,6 @@ namespace BrawlCrate.API
             Loaders.Add(loader);
         }
 
-        #endregion
+#endregion
     }
 }

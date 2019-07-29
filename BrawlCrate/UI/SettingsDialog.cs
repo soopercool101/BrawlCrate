@@ -1672,7 +1672,11 @@ namespace BrawlCrate
 
         private void BtnPythonBrowse_Click(object sender, EventArgs e)
         {
+#if !MONO
             using (Ookii.Dialogs.VistaFolderBrowserDialog f = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+            using (FolderBrowserDialog f = new FolderBrowserDialog())
+#endif
             {
                 f.Description = "Python Installation Path (2.7 preferred)";
                 if (f.ShowDialog() == DialogResult.OK)

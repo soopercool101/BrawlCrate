@@ -236,8 +236,12 @@ namespace BrawlCrate.CostumeManager
 
         private void changeDirectory_Click(object sender, EventArgs e)
         {
+#if !MONO
             Ookii.Dialogs.VistaFolderBrowserDialog fbd = new Ookii.Dialogs.VistaFolderBrowserDialog();
-//			fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
+#else
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+#endif
+            //			fbd.SelectedPath = CurrentDirectory; // Uncomment this if you want the "change directory" dialog to start with the current directory selected
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 Environment.CurrentDirectory = fbd.SelectedPath;

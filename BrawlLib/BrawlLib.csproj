@@ -133,6 +133,28 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
         <Reference Include="PresentationCore" />
       </ItemGroup>
     </When>
+    <When Condition=" '$(Configuration)'=='Mono' ">
+      <ItemGroup>
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\Interop\COMGuids.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\Interop\ErrorHelper.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\Interop\ShellComInterfaces.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\Interop\ShellWrapperDefinitions.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\Interop\WindowHandleWrapper.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\NativeMethods.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\SafeHandles.cs" />
+        <Compile Remove="System\Windows\Forms\Ookii.Dialogs\VistaFolderBrowserDialog.cs" />
+      </ItemGroup>
+      <ItemGroup>
+        <None Include="System\Windows\Forms\Ookii.Dialogs\Interop\COMGuids.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\Interop\ErrorHelper.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\Interop\ShellComInterfaces.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\Interop\ShellWrapperDefinitions.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\Interop\WindowHandleWrapper.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\NativeMethods.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\SafeHandles.cs" />
+        <None Include="System\Windows\Forms\Ookii.Dialogs\VistaFolderBrowserDialog.cs" />
+      </ItemGroup>
+    </When>
   </Choose>
   <ItemGroup>
     <Reference Include="System.ServiceModel.Web" />

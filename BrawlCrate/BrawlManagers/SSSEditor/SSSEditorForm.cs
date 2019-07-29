@@ -316,7 +316,11 @@ namespace BrawlCrate.SSSEditor
 
         private void openSDCardRootToolStripMenuItem_Click(object sender, EventArgs e)
         {
+#if !MONO
             using (Ookii.Dialogs.VistaFolderBrowserDialog dialog = new Ookii.Dialogs.VistaFolderBrowserDialog())
+#else
+            using (FolderBrowserDialog dialog = new FolderBrowserDialog())
+#endif
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
