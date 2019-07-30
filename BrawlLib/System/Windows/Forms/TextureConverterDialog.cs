@@ -1070,7 +1070,7 @@ namespace System.Windows.Forms
             Close();
         }
 
-#region Designer
+        #region Designer
 
         private CheckBox chkPreview;
         private GroupBox groupBox1;
@@ -1774,7 +1774,7 @@ namespace System.Windows.Forms
             ResumeLayout(false);
         }
 
-#endregion
+        #endregion
 
         private void btnApplyDims_Click(object sender, EventArgs e)
         {
