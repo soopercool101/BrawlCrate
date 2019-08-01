@@ -1,3 +1,6 @@
 language: csharp
 install: nuget restore BrawlCrateNext.sln
 script: msbuild /p:Configuration=Mono BrawlCrateNext.sln
+os:
+  - linux
+  - osx
