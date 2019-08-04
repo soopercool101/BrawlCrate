@@ -14,7 +14,7 @@ namespace BrawlCrate
     internal static class Program
     {
         //Make sure this matches the tag name of the release on github exactly
-        public static readonly string TagName = "BrawlCrate_v0.26Hotfix2";
+        public static readonly string TagName = "BrawlCrate_v0.26Hotfix3";
 
         public static readonly string AssemblyTitleFull;
         public static readonly string AssemblyTitleShort;
