@@ -72,14 +72,21 @@ they be held accountable for the manner in which it is used.
 	   - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
    - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a file
    - Added Example Loader that dumps CSPs as RSPs
+ . Add ability to directly import materials and shaders to an MDL0
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
- . Folder select dialog now uses the Vista and later styled folder select
+ . Folder select dialog now uses the Vista and later styled folder select when on Windows
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
-
-
-  - BrawlCrate v0.26 Hotfix 2 - (7/8/2019)
+ . Fix bug in which sorting MDL0 Textures would sort objects instead
+ 
+ - BrawlCrate v0.26 Hotfix 3 - (7/25/2019)
+ . Improve interpolation function to match v0.71 in all aspects
+ . Fix anim importer to properly parse weighting
+ . Fix anim exporter to properly export tangents
+ . Fix issue where module annotation buttons were missing
+ 
+ - BrawlCrate v0.26 Hotfix 2 - (7/8/2019)
  . Fix issue in which Shaders could be initialized with null names
  . Fix crashes caused by VIS0 syncing
  . Fix crashes when moving vertices
@@ -842,7 +849,7 @@ they be held accountable for the manner in which it is used.
  . All fields in the property grid expand automatically when selecting a new node (#145)
  . Property grid scroll position maintained when changing nodes (#146)
  . Improvements in classic mode editing in common2 (#151)
- . Added a checkbox in the texture converter to swap the main and alpha channels (for IA4 textures from old versions of BrawlCrate)
+ . Added a checkbox in the texture converter to swap the main and alpha channels (for IA4 textures from old versions of BrawlBox)
  . Renamed STPM fields 15, 16, 17, and 19 to HorizontalRotationFactor, VerticalRotationFactor, CharacterBubbleBufferMultiplier, and CameraSpeed (#168)
  . The default transformation in the Edit All Animations dialog is now to do nothing (#171)
  . Updater.exe now allows TLS 1.2 connections (#172)
@@ -862,10 +869,10 @@ they be held accountable for the manner in which it is used.
  . Avoid memory leak when using OpenAL for audio
 
  Initial Release (3/11/17)
- . Added a facility for writing BrawlCrate plugins in Python (bboxapi). A sample plugin is included.
+ . Added a facility for writing BrawlBox plugins in Python (bboxapi). A sample plugin is included.
  . Added support for more filetypes in Export All and Replace All
  . Changed Export All and Replace All to create/use subfolders for children of ARC and BRES nodes
- . Added multi-select support (using Ctrl or Shift buttons) to the BrawlCrate tree view. If all selected nodes are CHR0 animations or individual CHR0 entries, you can launch the "Edit All Animations" dialog from the right-click menu.
+ . Added multi-select support (using Ctrl or Shift buttons) to the BrawlBox tree view. If all selected nodes are CHR0 animations or individual CHR0 entries, you can launch the "Edit All Animations" dialog from the right-click menu.
  . Changed the default scale value in "Edit All Animations" to from 0 to 1
  . Fixed a bug where animations that were only changed because of "Edit All" weren't saved
  . Added support for encoding and decoding 16-bit PCM in RSTM containers
@@ -928,7 +935,7 @@ they be held accountable for the manner in which it is used.
  . Fixed bug in the CHR0 text importer where scale and translation values would be switched
 
  Hotfix 1 (8/15/15)
- . Fixed bug where double clicking on a GCT associated with BrawlCrate would open the editor but not the actual file clicked on
+ . Fixed bug where double clicking on a GCT associated with BrawlBox would open the editor but not the actual file clicked on
  . Fixed bug where the weight editor would not update when selecting vertices in the model viewer
  . Fixed bug where if the weight editor or vertex editor were not visible, they would not update with vertex selections
  . Fixed bug importing PMD models
@@ -946,7 +953,7 @@ they be held accountable for the manner in which it is used.
  . Fixed bug importing an animation from a text file
  . Fixed bug where the bug reporter didn't send the report to github
  . Fixed bug where the link to the issues page in the bug reporter would not open when clicked
- . Changed bug reporter to submit the issue to https://github.com/BrawlCrate/BrawlCrateIssues/issues
+ . Changed bug reporter to submit the issue to https://github.com/BrawlBox/BrawlBoxIssues/issues
 
  Initial Release (8/9/2015)
  . Added checkbox to the CHR0 editor in the model editor that appears only on frame 0 (the bind frame) called "Update Mesh Bind Pose". This will literally change the vertices and normals to match the bone position instead of treating the transformations like an animation.
@@ -964,7 +971,7 @@ they be held accountable for the manner in which it is used.
  . Fixed bug dealing with CHR0, SRT0, SHP0 and SCN0 interpolation under certain circumstances. 
  . Fixed bug where the "Save As" function in the file editor's right click menu in the model editor would do nothing
  . Named some previously unknown values in STPM
- . Downgraded BrawlCrate back to .NET 4.0 for maximum compatibility and moved all .NET 4.5 code into the updater application. This means you will not be able to automatically update or submit bug reports without .NET 4.5, but BrawlCrate itself will still work.
+ . Downgraded BrawlBox back to .NET 4.0 for maximum compatibility and moved all .NET 4.5 code into the updater application. This means you will not be able to automatically update or submit bug reports without .NET 4.5, but BrawlBox itself will still work.
  . Moved "Export GLSL Shader" on MDL0 material right click menu to be above the delete button.
 
  - v0.76 - BrawlLib v0.23
@@ -994,7 +1001,7 @@ they be held accountable for the manner in which it is used.
 	- Indirect textures, including normal maps and fur maps
 	- Projection (texture stays the same in relation to the screen), Env Spec (texture faces point between ref camera and ref light), Env Light (texture faces light) texture reference map modes
 	- Blending of some intensity textures (there's a hard line where the texture should blend into the background nicely instead)
-	- Binormals for texture coordinates (Binormals are not supported by BrawlCrate at all)
+	- Binormals for texture coordinates (Binormals are not supported by BrawlBox at all)
 	- "Emboss Map" for texture reference "Type", "EmbossSource" and "EmbossLight" (under XF TexGen Flags)
 	- "CompareBeforeTexture" under Z Mode in material properties (this allows for comparing depth before any texture transparency is applied)
 . Added options to MDL0 bone right click menu to move the current bone to the end of the bone array or regenerate the bone array (all bone indices are reassigned). 
@@ -1002,7 +1009,7 @@ You can also change the bone's Bone Index in the array. This doesn't have an eff
 . Moved "AutoMetalMaterials" option from the MDL0 properties to the right click menu under the name "Regenerate Metal Materials".
 . Added options to automatically rename all vertex, normal, uv and color sets in an MDL0 in the MDL0 right click menu under "Auto Name Assets".
 . Updated the "Reimport Meshes" option in the MDL0 right click menu to handle a wider variety of scenarios 
-(this button will allow you to reimport the meshes of a model from a Collada .dae while preserving all other edits made in BrawlCrate)
+(this button will allow you to reimport the meshes of a model from a Collada .dae while preserving all other edits made in BrawlBox)
 . Changed SCN0 right click menu to display but not highlight a newly added node (this allows you to add many entries at once with the shortcut keys)
 . Added file manager to model editor, allowing you to open models and animations from multiple files at once. Expand the right panel in the model editor and 
 change the dropdown to "Files". Right click a file in the list for more options, double click to open that file in the main window.
@@ -1022,11 +1029,11 @@ Transforms are applied in order of Translate, Rotate, Scale, so this option chan
 	- Current Viewport -> Lighting -> Enabled: This will enable or disable built-in lighting in the viewport. SCN0 lighting may still be applied.
 	- General -> Scale bone with camera: This will keep each bone at a fixed size on the screen. Especially useful for stage editing.
 	- General -> Display bones as points: This will render each bone as a point instead of an orb with axes. Useful for reducing visual clutter, such as when viewing bones that are close together (like fingers).
-	- General -> Hide main window: hides the main BrawlCrate window when the model editor is open.
+	- General -> Hide main window: hides the main BrawlBox window when the model editor is open.
 	- General -> Per pixel lighting: This renders models with more accurate lighting calculations. This isn't what the Wii uses, but it usually looks better than per vertex lighting (especially with specular highlights).
 . Fixed undo/redo in the model editor. Doesn't seem to have any issues anymore.
 . Added support for rotating and scaling vertex selections (you can use E, R, T to change the transform control).
-. Fixed bug saving/reading SCN0 lights; SCN0s saved in older versions of BrawlCrate may not open properly anymore
+. Fixed bug saving/reading SCN0 lights; SCN0s saved in older versions of BrawlBox may not open properly anymore
 . Added option to enable or disable billboard bones in the model viewer (View -> Model -> Billboard Bones)
 . Added option to display SCN0 light and camera indicators in the model viewer when editing an SCN0 (View -> Animations -> Show SCN0 Lights/Cameras)
 . Added "Average" button to vertex editor (the vertex editor is accessible by pressing J in the model editor). This will move all selected vertices to an average point between all of them.
@@ -1034,7 +1041,7 @@ Transforms are applied in order of Translate, Rotate, Scale, so this option chan
 . Fixed interpolation between the first and last keyframes on a looped animation if they are not the on THE first and last frames
 . Fixed parsing RGBA6 color entries
 . Renamed several MDL0 shader/material property/value names to be more intuitive and consistent
-. Fixed bug reloading a texture with the realtime texture folder (in the model editor, Tools -> Live Texture Folder. This allows you to edit an image externally and BrawlCrate will load it on the model without any interaction necessary)
+. Fixed bug reloading a texture with the realtime texture folder (in the model editor, Tools -> Live Texture Folder. This allows you to edit an image externally and BrawlBox will load it on the model without any interaction necessary)
 . Added "Bone Edit Mode" to the CHR0 editor in the model editor. When on frame 0 (the bind frame), this is a checkbox that allows you to move bones without moving any rigged model meshes (good for stage making)
 . Support for changing an MDL0 object's single bind influence without the object itself moving (also good for stage making)
 . When changing a color in the color array editor in the model editor, the changed color will immediately reflect in the viewer as you change the value in the dialog (CLR0, SCN0 light/ambient/specular color, etc)
@@ -1099,14 +1106,14 @@ Initial Release (2/19/2015):
 	. Added checkboxes to bone tree view in the model viewer
 	. Added support for editing SCLA (no new entry adding yet - found in Brawl stages next to the STPM entry)
 	. Added animated GIF to PAT0 + textures converter. Right click BRRES -> Import -> Animated GIF
-	. Added support for setting BrawlCrate as the default GCT editor so that you can double click a GCT to open it directly in the editor (Skips opening BrawlCrate)
-	. Added support for opening GCT files directly from the File -> Open dialog or via command line (BrawlCrate.exe /gct), (BrawlCrate.exe /gct "<path>"), or (BrawlCrate.exe "<path>.gct")
+	. Added support for setting BrawlBox as the default GCT editor so that you can double click a GCT to open it directly in the editor (Skips opening BrawlBox)
+	. Added support for opening GCT files directly from the File -> Open dialog or via command line (BrawlBox.exe /gct), (BrawlBox.exe /gct "<path>"), or (BrawlBox.exe "<path>.gct")
 	. Added hexadecimal color code textbox to color picker control
 	. Added helpful text that displays on the model viewer's animation playback panel to clarify if the last frame is the loop frame (this frame is not read by the game; it is used for interpolation)
 	. Updated color property grid editor to display before and after colors with alpha and okay/cancel buttons
 	. Updated the texture coordinate renderer to display lines in neon green (to stand out from the texture) and show object dropdown to change what coordinates are shown
 	. Updated color array editor right click menu paste to allow for pasting only color, only alpha, or both
-	. Updated splitters in the main BrawlCrate window to update the controls as they are dragged
+	. Updated splitters in the main BrawlBox window to update the controls as they are dragged
 	. Moved "Edit All Models" option from File -> Options -> Settings in the previous version to "Target Model -> Edit All".
 	. Updated Collada model importer to rig unrigged objects to their own bone located at the center of their mesh
 	. Updated "Snap bones to collisions" setting to snap while translating a bone instead of when the bone is released
@@ -1151,7 +1158,7 @@ Initial Release (2/19/2015):
 	. Added the option to manually set a bone's billboard reference bone.
 
  - v0.74- (12/25/2014) - BrawlLib v0.21
-	. BrawlCrate can now check for updates on startup (can be enabled via Tools->Settings) or when you go to Help->"Check for updates" and automatically install that update for you, in another folder or in place of the current version.
+	. BrawlBox can now check for updates on startup (can be enabled via Tools->Settings) or when you go to Help->"Check for updates" and automatically install that update for you, in another folder or in place of the current version.
 	. Support for adding new collision nodes to ARC via right click.
 	. Support for adding new BLOC to ARC via right click.
 	. Support for editing and adding the following nodes found in BLOC archives:
@@ -1159,7 +1166,7 @@ Initial Release (2/19/2015):
 		- ADSJ StepJump files, required to link rooms and levels.
 		- GDOR Adventure door files, requires rooms linked via ADSJ.
 	. Support for item frequency nodes.
-	. BrawlCrate now displays redirected nodes with their own icon
+	. BrawlBox now displays redirected nodes with their own icon
 	. Fixed setting redirect index.
 	. Fixed embedded module files (common2 and common3) not parsing.
 	. Fixed BBox crashing when no vertices exist in Target model.
@@ -1211,7 +1218,7 @@ Initial Release (2/19/2015):
 		. Ledge grab collisions have their appropriate link rendered purple.
 	. Update OpenTK library to latest stable release for optimizations
 	. Module names internalized (rather then pulled from external text file) and shown in properties as ModuleName
-	. BrawlCrate icon replaced with 256x256 version
+	. BrawlBox icon replaced with 256x256 version
 
  - v0.73a- (6/28/2014) - BrawlLib v0.20a
 	. Interpolation Editor changes (TheShyGuy)
@@ -1240,8 +1247,8 @@ Initial Release (2/19/2015):
 	. Fixed MSBin encoding for empty strings
 
  - v0.72- (5/3/2014) - BrawlLib v0.19L (libertyernie's fork)
-	. BrawlCrate will display an error dialog if it tries to start without OpenTK.dll
-	. The BrawlCrate "About" screen now shows what version of BrawlLib is being used
+	. BrawlBox will display an error dialog if it tries to start without OpenTK.dll
+	. The BrawlBox "About" screen now shows what version of BrawlLib is being used
 	. Unknown nodes export as .dat files
 	. See also the changelog of BrawlLib 0.19L
 
@@ -1301,7 +1308,7 @@ Initial Release (2/19/2015):
 	. Fixed "Replace All" button on ARC right click menu
 	. Fixed MDL0 object importer
 	. Updated the keyframe panel in the model viewer
-	. Made animation frames able to be copied and pasted in different instances of BrawlCrate
+	. Made animation frames able to be copied and pasted in different instances of BrawlBox
 	. Updated model viewer to internally retain all changes to settings; no more external settings file.
 	. Model viewer settings can be exported, imported, and reset to default.
 	. Updated the display of TPL entries
@@ -1315,7 +1322,7 @@ Initial Release (2/19/2015):
 	. Fixed issue when opening collision viewer for the first time
 	. Fixed collision plane culling (was inside-out) and removed 2D selection overlay from collision viewer
 	. Fixed problem where texture matrices would be removed but leave empty bytes in the object
-	. Moved collision editor and model viewer code out of Brawllib and into BrawlCrate
+	. Moved collision editor and model viewer code out of Brawllib and into BrawlBox
 	. Removed wireframe mode from the polygons button and moved it to a seperate menu button
 	. Added support for viewing THPs (video and audio may desync though)
 
@@ -1598,7 +1605,7 @@ Initial Release (2/19/2015):
 	. Added minor speed tweak to LZ77 decompression.
 
 - v0.58 - (09/29/2009) - BrawlLib v0.02
-	. Name has changed to BrawlCrate (previously SmashBox)
+	. Name has changed to BrawlBox (previously SmashBox)
 	. Program has been separated, allowing for the creation of BrawlLib.
 	. Now has minor Linux support.
 	. Audio nodes/controls have been temporarily disabled until BrawlLib can be updated.
