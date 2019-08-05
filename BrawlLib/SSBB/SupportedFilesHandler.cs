@@ -335,11 +335,9 @@ namespace BrawlLib.SSBB
             get
             {
                 string s = ExtensionsFilter;
-                if (Name.EndsWith(")", StringComparison.OrdinalIgnoreCase))
-                {
-                    return $"{Name}|{s}";
-                }
-                return $"{Name} ({s.Replace(";", ", ")})|{s}";
+                return Name.EndsWith(")", StringComparison.OrdinalIgnoreCase)
+                    ? $"{Name}|{s}"
+                    : $"{Name} ({s.Replace(";", ", ")})|{s}";
             }
         }
 
