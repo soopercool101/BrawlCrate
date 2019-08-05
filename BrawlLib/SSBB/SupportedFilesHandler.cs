@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "PAC File Archive", "pac"),
             new SupportedFileInfo(true, "PCS Compressed File Archive", "pcs"),
             new SupportedFileInfo(true, "U8 ARC File Archive", "arc"),
-            new SupportedFileInfo(false, "Archive Pair", "pair"),
+            new SupportedFileInfo(false, "Archive Pair (*.pac & *.pcs)", "pair"),
             new SupportedFileInfo(true, "MRG Resource Group", "mrg"),
             new SupportedFileInfo(true, "MRG Compressed Resource Group", "mrgc"),
             new SupportedFileInfo(true, "SZS Compressed Archive", "szs"),
@@ -80,6 +80,12 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Brawl TBLV File", "tblv"),
             new SupportedFileInfo(true, "Brawl TBRM File", "tbrm"),
             new SupportedFileInfo(true, "Brawl TBST File", "tbst"),
+
+            //Multi-file stages
+            new SupportedFileInfo(false, "Mushroomy Kingdom (STGMARIOPAST_00_*.pac & STGMARIOPAST_01_*.pac)", "mariopast"),
+            new SupportedFileInfo(false, "Shadow Moses Island (STGMETALGEAR_00_*, STGMETALGEAR_01_*.pac, & STGMETALGEAR_02_*.pac)", "metalgear"),
+            new SupportedFileInfo(false, "Smashville (STGVILLAGE_00_*.pac, STGVILLAGE_01_*.pac, STGVILLAGE_02_*.pac, STGVILLAGE_03_*.pac, & STGVILLAGE_04_*.pac)", "village"),
+            new SupportedFileInfo(false, "Spear Pillar (STGTENGAN_1_*.pac, STGTENGAN_2_*.pac, & STGTENGAN_3_*.pac)", "tengan"),
 
             //Brawl Subspace Emissary files
             new SupportedFileInfo(true, "BLOC Adventure Archive", "bloc"),
@@ -198,7 +204,7 @@ namespace BrawlLib.SSBB
             }
         }
 
-        private static readonly int MaxExtensionsInAllFilter = Files.Length;
+        private static readonly int MaxExtensionsInAllFilter = 10;
 
         public static string GetAllSupportedFilter(SupportedFileInfo[] files, bool editableOnly = false)
         {
@@ -207,7 +213,7 @@ namespace BrawlLib.SSBB
 
             //The "all supported formats" string needs (*.*) in it
             //or else the window will display EVERY SINGLE FILTER
-            bool doNotAdd = files.Length >= MaxExtensionsInAllFilter;
+            bool doNotAdd = files.Length > MaxExtensionsInAllFilter;
             if (doNotAdd)
             {
                 filter += "*.*";
@@ -329,7 +335,11 @@ namespace BrawlLib.SSBB
             get
             {
                 string s = ExtensionsFilter;
-                return Name + " (" + s.Replace(";", ", ") + ")|" + s;
+                if (Name.EndsWith(")", StringComparison.OrdinalIgnoreCase))
+                {
+                    return $"{Name}|{s}";
+                }
+                return $"{Name} ({s.Replace(";", ", ")})|{s}";
             }
         }
 
