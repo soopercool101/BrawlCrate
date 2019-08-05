@@ -449,7 +449,7 @@ namespace System.Windows.Forms
             ModelPanel.Invalidate();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModelPanel.RemoveTarget(TargetModel);
             _targetModels.Remove(TargetModel);

@@ -68,8 +68,8 @@
             this.lstCodes = new System.Windows.Forms.ListView();
             this.dlgSave = new System.Windows.Forms.SaveFileDialog();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._moveDownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.panel3.SuspendLayout();
@@ -452,23 +452,23 @@
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.moveUpToolStripMenuItem,
-            this.moveDownToolStripMenuItem,
+            this._moveUpToolStripMenuItem,
+            this._moveDownToolStripMenuItem,
             this.removeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(165, 82);
             // 
-            // moveUpToolStripMenuItem
+            // _moveUpToolStripMenuItem
             // 
-            this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            this.moveUpToolStripMenuItem.Size = new System.Drawing.Size(164, 26);
-            this.moveUpToolStripMenuItem.Text = "Move Up";
+            this._moveUpToolStripMenuItem.Name = "_moveUpToolStripMenuItem";
+            this._moveUpToolStripMenuItem.Size = new System.Drawing.Size(164, 26);
+            this._moveUpToolStripMenuItem.Text = "Move Up";
             // 
-            // moveDownToolStripMenuItem
+            // _moveDownToolStripMenuItem
             // 
-            this.moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            this.moveDownToolStripMenuItem.Size = new System.Drawing.Size(164, 26);
-            this.moveDownToolStripMenuItem.Text = "Move Down";
+            this._moveDownToolStripMenuItem.Name = "_moveDownToolStripMenuItem";
+            this._moveDownToolStripMenuItem.Size = new System.Drawing.Size(164, 26);
+            this._moveDownToolStripMenuItem.Text = "Move Down";
             // 
             // removeToolStripMenuItem
             // 
@@ -543,8 +543,8 @@
         private SaveFileDialog dlgSave;
         private CheckBox checkBox1;
         private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem moveUpToolStripMenuItem;
-        private ToolStripMenuItem moveDownToolStripMenuItem;
+        private ToolStripMenuItem _moveUpToolStripMenuItem;
+        private ToolStripMenuItem _moveDownToolStripMenuItem;
         private ToolStripMenuItem removeToolStripMenuItem;
         private TextBox textBox1;
         private Splitter splitter1;

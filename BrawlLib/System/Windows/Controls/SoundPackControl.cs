@@ -36,7 +36,7 @@ namespace System.Windows.Forms
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem makeAllExternalToolStripMenuItem;
         private ToolStripMenuItem makeAllInternalToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem _deleteToolStripMenuItem;
 
         private void InitializeComponent()
         {
@@ -52,7 +52,7 @@ namespace System.Windows.Forms
             mnuPath = new ToolStripMenuItem();
             mnuExport = new ToolStripMenuItem();
             mnuReplace = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
+            _deleteToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             newFileToolStripMenuItem = new ToolStripMenuItem();
             rWSDToolStripMenuItem = new ToolStripMenuItem();
@@ -136,7 +136,7 @@ namespace System.Windows.Forms
                 mnuPath,
                 mnuExport,
                 mnuReplace,
-                deleteToolStripMenuItem
+                _deleteToolStripMenuItem
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Drawing.Size(138, 108);
@@ -163,12 +163,12 @@ namespace System.Windows.Forms
             mnuReplace.Text = "Replace";
             mnuReplace.Click += new EventHandler(mnuReplace_Click);
             // 
-            // deleteToolStripMenuItem
+            // _deleteToolStripMenuItem
             // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Drawing.Size(137, 26);
-            deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
+            _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
+            _deleteToolStripMenuItem.Size = new Drawing.Size(137, 26);
+            _deleteToolStripMenuItem.Text = "Delete";
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -519,7 +519,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _selectedItem._node.Remove();
             lstSets.Items.Remove(_selectedItem);

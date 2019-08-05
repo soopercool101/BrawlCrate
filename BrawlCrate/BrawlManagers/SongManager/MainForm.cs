@@ -462,7 +462,7 @@ namespace BrawlCrate.SongManager
             refreshDirectory();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             songPanel1.Delete();
             refreshDirectory();

@@ -68,7 +68,7 @@ namespace System.Windows.Forms
         protected ToolStripSeparator toolStripMenuItem3;
         protected ToolStripSeparator assignSeperatorToolStripMenuItem;
         protected ToolStripSeparator toolStripMenuItem1;
-        protected ToolStripMenuItem deleteToolStripMenuItem;
+        protected ToolStripMenuItem _deleteToolStripMenuItem;
         protected TextBox txtModel;
         protected Label label3;
         protected Panel panel2;
@@ -116,7 +116,7 @@ namespace System.Windows.Forms
         private ToolStripMenuItem splitToolStripMenuItem;
         private ToolStripMenuItem mergeToolStripMenuItem;
         private ToolStripMenuItem flipToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem1;
+        private ToolStripMenuItem _deleteToolStripMenuItem1;
         private ToolStripMenuItem transformToolStripMenuItem;
         private ToolStripMenuItem alignXToolStripMenuItem;
         private ToolStripMenuItem alignYToolStripMenuItem;
@@ -147,7 +147,7 @@ namespace System.Windows.Forms
             toolStripMenuItem2 = new ToolStripSeparator();
             snapToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripSeparator();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
+            _deleteToolStripMenuItem = new ToolStripMenuItem();
             panel3 = new Panel();
             pnlPlaneProps = new Panel();
             groupBoxFlags2 = new GroupBox();
@@ -220,7 +220,7 @@ namespace System.Windows.Forms
             splitToolStripMenuItem = new ToolStripMenuItem();
             mergeToolStripMenuItem = new ToolStripMenuItem();
             flipToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem1 = new ToolStripMenuItem();
+            _deleteToolStripMenuItem1 = new ToolStripMenuItem();
             transformToolStripMenuItem = new ToolStripMenuItem();
             alignXToolStripMenuItem = new ToolStripMenuItem();
             alignYToolStripMenuItem = new ToolStripMenuItem();
@@ -418,7 +418,7 @@ namespace System.Windows.Forms
                 toolStripMenuItem2,
                 snapToolStripMenuItem,
                 toolStripMenuItem1,
-                deleteToolStripMenuItem
+                _deleteToolStripMenuItem
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new System.Drawing.Size(238, 132);
@@ -467,13 +467,13 @@ namespace System.Windows.Forms
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new System.Drawing.Size(234, 6);
             // 
-            // deleteToolStripMenuItem
+            // _deleteToolStripMenuItem
             // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Delete;
-            deleteToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
+            _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
+            _deleteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Delete;
+            _deleteToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            _deleteToolStripMenuItem.Text = "Delete";
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // panel3
             // 
@@ -1218,7 +1218,7 @@ namespace System.Windows.Forms
                 splitToolStripMenuItem,
                 mergeToolStripMenuItem,
                 flipToolStripMenuItem,
-                deleteToolStripMenuItem1
+                _deleteToolStripMenuItem1
             });
             contextMenuStrip3.Name = "contextMenuStrip3";
             contextMenuStrip3.Size = new System.Drawing.Size(184, 208);
@@ -1256,12 +1256,12 @@ namespace System.Windows.Forms
             flipToolStripMenuItem.Text = "Flip";
             flipToolStripMenuItem.Click += new EventHandler(btnFlipColl_Click);
             // 
-            // deleteToolStripMenuItem1
+            // _deleteToolStripMenuItem1
             // 
-            deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            deleteToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
-            deleteToolStripMenuItem1.Text = "Delete";
-            deleteToolStripMenuItem1.Click += new EventHandler(btnDelete_Click);
+            _deleteToolStripMenuItem1.Name = "_deleteToolStripMenuItem1";
+            _deleteToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
+            _deleteToolStripMenuItem1.Text = "Delete";
+            _deleteToolStripMenuItem1.Click += new EventHandler(btnDelete_Click);
             // 
             // transformToolStripMenuItem
             // 
@@ -1595,7 +1595,7 @@ namespace System.Windows.Forms
             SnapObject();
         }
 
-        protected void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        protected void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_selectedObject == null)
             {

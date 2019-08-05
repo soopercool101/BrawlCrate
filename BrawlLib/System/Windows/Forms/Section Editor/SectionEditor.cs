@@ -529,7 +529,7 @@ namespace System.Windows.Forms
             hexBox1.PasteHex(true);
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hexBox1.Delete();
         }

@@ -19,6 +19,11 @@ namespace BrawlCrate.NodeWrappers
 
         private static ToolStripMenuItem _changeSoundToolStripMenuItem;
         private static ToolStripMenuItem _viewFileToolStripMenuItem;
+        private static ToolStripMenuItem _replaceToolStripMenuItem;
+        private static ToolStripMenuItem _restoreToolStripMenuItem;
+        private static ToolStripMenuItem _moveUpToolStripMenuItem;
+        private static ToolStripMenuItem _moveDownToolStripMenuItem;
+        private static ToolStripMenuItem _deleteToolStripMenuItem;
 
         static RSARSoundWrapper()
         {
@@ -27,14 +32,14 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(_viewFileToolStripMenuItem = new ToolStripMenuItem("View File", null, ViewFileAction, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(_restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(_moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(_moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(_deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -53,11 +58,11 @@ namespace BrawlCrate.NodeWrappers
         {
             _changeSoundToolStripMenuItem.Enabled = true;
             _viewFileToolStripMenuItem.Enabled = true;
-            replaceToolStripMenuItem.Enabled = true;
-            deleteToolStripMenuItem.Enabled = true;
-            restoreToolStripMenuItem.Enabled = true;
-            moveUpToolStripMenuItem.Enabled = true;
-            moveDownToolStripMenuItem.Enabled = true;
+            _replaceToolStripMenuItem.Enabled = true;
+            _deleteToolStripMenuItem.Enabled = true;
+            _restoreToolStripMenuItem.Enabled = true;
+            _moveUpToolStripMenuItem.Enabled = true;
+            _moveDownToolStripMenuItem.Enabled = true;
         }
 
         private static void MenuOpening(object sender, CancelEventArgs e)
@@ -66,9 +71,9 @@ namespace BrawlCrate.NodeWrappers
             RSARSoundNode n = w._resource as RSARSoundNode;
             _changeSoundToolStripMenuItem.Enabled = n._waveDataNode != null;
             _viewFileToolStripMenuItem.Enabled = n.SoundFileNode != null;
-            replaceToolStripMenuItem.Enabled = w.Parent != null;
-            deleteToolStripMenuItem.Enabled = w.Parent != null;
-            restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _replaceToolStripMenuItem.Enabled = w.Parent != null;
+            _deleteToolStripMenuItem.Enabled = w.Parent != null;
+            _restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion

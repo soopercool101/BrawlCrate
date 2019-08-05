@@ -295,7 +295,7 @@ namespace BrawlCrate.CostumeManager
             listBox2.SelectedIndex = listBox2.IndexFromPoint(listBox2.PointToClient(Cursor.Position));
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string toDelete = (listBox2.SelectedItem as FighterFile).FullName;
             if (Path.HasExtension(toDelete))

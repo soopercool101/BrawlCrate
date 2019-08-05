@@ -30,7 +30,7 @@
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.copyToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.copyToOtherPacpcsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this._deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.changeDirectory = new System.Windows.Forms.ToolStripButton();
 			this.toolStripDropDownButton3 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -116,7 +116,7 @@
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToToolStripMenuItem,
             this.copyToOtherPacpcsToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this._deleteToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(193, 70);
 			this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
@@ -135,12 +135,12 @@
 			this.copyToOtherPacpcsToolStripMenuItem.Text = "Copy to other pac/pcs";
 			this.copyToOtherPacpcsToolStripMenuItem.Click += new System.EventHandler(this.copyToOtherPacpcsToolStripMenuItem_Click);
 			// 
-			// deleteToolStripMenuItem
+			// _deleteToolStripMenuItem
 			// 
-			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-			this.deleteToolStripMenuItem.Text = "Delete";
-			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+			this._deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
+			this._deleteToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+			this._deleteToolStripMenuItem.Text = "Delete";
+			this._deleteToolStripMenuItem.Click += new System.EventHandler(this._deleteToolStripMenuItem_Click);
 			// 
 			// toolStrip1
 			// 
@@ -470,7 +470,7 @@
 		private System.Windows.Forms.ToolStripMenuItem cBlissCheckbox;
 		private System.Windows.Forms.ToolStripSeparator separator;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem _deleteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem copyToToolStripMenuItem;
 		private BattleSinglePortraitViewer battlePortraitViewer1;
 		private System.Windows.Forms.ToolStripMenuItem updateSSSStockIconsToolStripMenuItem;

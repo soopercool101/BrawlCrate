@@ -15,6 +15,11 @@ namespace BrawlCrate.NodeWrappers
 
         private static ToolStripMenuItem _newEntryToolStripMenuItem;
         private static ToolStripMenuItem _clearListToolStripMenuItem;
+        private static ToolStripMenuItem _replaceToolStripMenuItem;
+        private static ToolStripMenuItem _restoreToolStripMenuItem;
+        private static ToolStripMenuItem _moveUpToolStripMenuItem;
+        private static ToolStripMenuItem _moveDownToolStripMenuItem;
+        private static ToolStripMenuItem _deleteToolStripMenuItem;
 
         static RSTCWrapper()
         {
@@ -29,8 +34,8 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("From Random List to CSS List", null, SyncCSSAction)));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(_restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
@@ -76,9 +81,9 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _newEntryToolStripMenuItem.Enabled = true;
-            replaceToolStripMenuItem.Enabled = true;
-            deleteToolStripMenuItem.Enabled = true;
-            restoreToolStripMenuItem.Enabled = true;
+            _replaceToolStripMenuItem.Enabled = true;
+            _deleteToolStripMenuItem.Enabled = true;
+            _restoreToolStripMenuItem.Enabled = true;
             _clearListToolStripMenuItem.Enabled = true;
         }
 
@@ -88,9 +93,9 @@ namespace BrawlCrate.NodeWrappers
             ResourceNode r = w._resource;
             _newEntryToolStripMenuItem.Enabled = ((RSTCNode) r).cssList.Children.Count <= 100 || 
                                                  ((RSTCNode) r).randList.Children.Count <= 100;
-            replaceToolStripMenuItem.Enabled = w.Parent != null;
-            deleteToolStripMenuItem.Enabled = w.Parent != null;
-            restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _replaceToolStripMenuItem.Enabled = w.Parent != null;
+            _deleteToolStripMenuItem.Enabled = w.Parent != null;
+            _restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             _clearListToolStripMenuItem.Enabled =
                 ((RSTCNode) r).cssList.Children.Count > 0 || ((RSTCNode) r).randList.Children.Count > 0;
         }

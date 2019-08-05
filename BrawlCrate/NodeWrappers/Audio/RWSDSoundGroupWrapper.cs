@@ -11,6 +11,11 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+        private static ToolStripMenuItem _replaceToolStripMenuItem;
+        private static ToolStripMenuItem _restoreToolStripMenuItem;
+        private static ToolStripMenuItem _moveUpToolStripMenuItem;
+        private static ToolStripMenuItem _moveDownToolStripMenuItem;
+        private static ToolStripMenuItem _deleteToolStripMenuItem;
 
         static RWSDSoundGroupWrapper()
         {
@@ -18,13 +23,13 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Import New Sound", null, CreateAction, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(_moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(_moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(_deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -60,29 +65,29 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            if (replaceToolStripMenuItem != null)
+            if (_replaceToolStripMenuItem != null)
             {
-                replaceToolStripMenuItem.Enabled = true;
+                _replaceToolStripMenuItem.Enabled = true;
             }
 
-            if (restoreToolStripMenuItem != null)
+            if (_restoreToolStripMenuItem != null)
             {
-                restoreToolStripMenuItem.Enabled = true;
+                _restoreToolStripMenuItem.Enabled = true;
             }
 
-            if (moveUpToolStripMenuItem != null)
+            if (_moveUpToolStripMenuItem != null)
             {
-                moveUpToolStripMenuItem.Enabled = true;
+                _moveUpToolStripMenuItem.Enabled = true;
             }
 
-            if (moveDownToolStripMenuItem != null)
+            if (_moveDownToolStripMenuItem != null)
             {
-                moveDownToolStripMenuItem.Enabled = true;
+                _moveDownToolStripMenuItem.Enabled = true;
             }
 
-            if (deleteToolStripMenuItem != null)
+            if (_deleteToolStripMenuItem != null)
             {
-                deleteToolStripMenuItem.Enabled = true;
+                _deleteToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -90,29 +95,29 @@ namespace BrawlCrate.NodeWrappers
         {
             var w = GetInstance<RWSDSoundGroupWrapper>();
 
-            if (replaceToolStripMenuItem != null)
+            if (_replaceToolStripMenuItem != null)
             {
-                replaceToolStripMenuItem.Enabled = w.Parent != null;
+                _replaceToolStripMenuItem.Enabled = w.Parent != null;
             }
 
-            if (restoreToolStripMenuItem != null)
+            if (_restoreToolStripMenuItem != null)
             {
-                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+                _restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             }
 
-            if (moveUpToolStripMenuItem != null)
+            if (_moveUpToolStripMenuItem != null)
             {
-                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+                _moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             }
 
-            if (moveDownToolStripMenuItem != null)
+            if (_moveDownToolStripMenuItem != null)
             {
-                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+                _moveDownToolStripMenuItem.Enabled = w.NextNode != null;
             }
 
-            if (deleteToolStripMenuItem != null)
+            if (_deleteToolStripMenuItem != null)
             {
-                deleteToolStripMenuItem.Enabled = w.Parent != null;
+                _deleteToolStripMenuItem.Enabled = w.Parent != null;
             }
         }
 

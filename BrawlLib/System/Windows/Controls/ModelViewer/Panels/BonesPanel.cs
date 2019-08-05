@@ -35,8 +35,8 @@ namespace System.Windows.Forms
         private ToolStripMenuItem addToNextUpToolStripMenuItem;
         private ToolStripMenuItem addToNextDownToolStripMenuItem;
         private ToolStripSeparator ctxBonesDivider2;
-        private ToolStripMenuItem moveUpToolStripMenuItem;
-        private ToolStripMenuItem moveDownToolStripMenuItem;
+        private ToolStripMenuItem _moveUpToolStripMenuItem;
+        private ToolStripMenuItem _moveDownToolStripMenuItem;
         private ToolStripMenuItem nameToolStripMenuItem;
         private Panel pnlBones;
 
@@ -67,8 +67,8 @@ namespace System.Windows.Forms
             addToNextUpToolStripMenuItem = new ToolStripMenuItem();
             addToNextDownToolStripMenuItem = new ToolStripMenuItem();
             ctxBonesDivider2 = new ToolStripSeparator();
-            moveUpToolStripMenuItem = new ToolStripMenuItem();
-            moveDownToolStripMenuItem = new ToolStripMenuItem();
+            _moveUpToolStripMenuItem = new ToolStripMenuItem();
+            _moveDownToolStripMenuItem = new ToolStripMenuItem();
             imageList1 = new ImageList(components);
             pnlKeyframes.SuspendLayout();
             pnlBones.SuspendLayout();
@@ -198,8 +198,8 @@ namespace System.Windows.Forms
                 addToNextUpToolStripMenuItem,
                 addToNextDownToolStripMenuItem,
                 ctxBonesDivider2,
-                moveUpToolStripMenuItem,
-                moveDownToolStripMenuItem
+                _moveUpToolStripMenuItem,
+                _moveDownToolStripMenuItem
             });
             ctxBones.Name = "ctxBones";
             ctxBones.Size = new Drawing.Size(175, 192);
@@ -256,19 +256,19 @@ namespace System.Windows.Forms
             ctxBonesDivider2.Name = "ctxBonesDivider2";
             ctxBonesDivider2.Size = new Drawing.Size(171, 6);
             // 
-            // moveUpToolStripMenuItem
+            // _moveUpToolStripMenuItem
             // 
-            moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
-            moveUpToolStripMenuItem.Size = new Drawing.Size(174, 22);
-            moveUpToolStripMenuItem.Text = "Move Up";
-            moveUpToolStripMenuItem.Click += new EventHandler(moveUpToolStripMenuItem_Click);
+            _moveUpToolStripMenuItem.Name = "_moveUpToolStripMenuItem";
+            _moveUpToolStripMenuItem.Size = new Drawing.Size(174, 22);
+            _moveUpToolStripMenuItem.Text = "Move Up";
+            _moveUpToolStripMenuItem.Click += new EventHandler(_moveUpToolStripMenuItem_Click);
             // 
-            // moveDownToolStripMenuItem
+            // _moveDownToolStripMenuItem
             // 
-            moveDownToolStripMenuItem.Name = "moveDownToolStripMenuItem";
-            moveDownToolStripMenuItem.Size = new Drawing.Size(174, 22);
-            moveDownToolStripMenuItem.Text = "Move Down";
-            moveDownToolStripMenuItem.Click += new EventHandler(moveDownToolStripMenuItem_Click);
+            _moveDownToolStripMenuItem.Name = "_moveDownToolStripMenuItem";
+            _moveDownToolStripMenuItem.Size = new Drawing.Size(174, 22);
+            _moveDownToolStripMenuItem.Text = "Move Down";
+            _moveDownToolStripMenuItem.Click += new EventHandler(_moveDownToolStripMenuItem_Click);
             // 
             // imageList1
             // 
@@ -456,8 +456,8 @@ namespace System.Windows.Forms
         {
             ctxBonesDivider1.Visible =
                 ctxBonesDivider2.Visible =
-                    moveUpToolStripMenuItem.Visible =
-                        moveDownToolStripMenuItem.Visible =
+                    _moveUpToolStripMenuItem.Visible =
+                        _moveDownToolStripMenuItem.Visible =
                             addToNextDownToolStripMenuItem.Visible =
                                 addToNextUpToolStripMenuItem.Visible =
                                     addToParentToolStripMenuItem.Visible =
@@ -593,7 +593,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void moveUpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _moveUpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResourceNode node = SelectedBone as ResourceNode;
             if (node != null && node.MoveUp())
@@ -620,7 +620,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void moveDownToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _moveDownToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResourceNode node = SelectedBone as ResourceNode;
             if (node != null && node.MoveDown())

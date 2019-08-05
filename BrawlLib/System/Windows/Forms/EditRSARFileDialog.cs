@@ -202,7 +202,7 @@ namespace System.Windows.Forms
             dataReplace.Name = "dataReplace";
             dataReplace.Size = new Drawing.Size(181, 26);
             dataReplace.Text = "Replace";
-            dataReplace.Click += new EventHandler(replaceToolStripMenuItem_Click);
+            dataReplace.Click += new EventHandler(_replaceToolStripMenuItem_Click);
             // 
             // dataExport
             // 
@@ -524,7 +524,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataListBox.SelectedIndex < 0)
             {

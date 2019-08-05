@@ -30,7 +30,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customSongVolumeEditor1 = new BrawlCrate.SongManager.CustomSongVolumeEditor();
             this.songPanel1 = new BrawlManagerLib.SongPanel();
             this.rightLabel = new System.Windows.Forms.Label();
@@ -108,7 +108,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportToolStripMenuItem,
             this.renameToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this._deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(118, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
@@ -127,12 +127,12 @@
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem
+            // _deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this._deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
+            this._deleteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this._deleteToolStripMenuItem.Text = "Delete";
+            this._deleteToolStripMenuItem.Click += new System.EventHandler(this._deleteToolStripMenuItem_Click);
             // 
             // customSongVolumeEditor1
             // 
@@ -434,7 +434,7 @@
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem _deleteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadNamesFromInfopacToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem loadBRSTMPlayerToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

@@ -51,7 +51,7 @@ namespace System.Windows.Forms
         private TransparentPanel overObjPnl;
         private TransparentPanel overTexPnl;
         private ToolStripMenuItem createNewToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem _deleteToolStripMenuItem;
         private ToolStripMenuItem chkLoop;
         private ContextMenuStrip ctxAnimList;
         private ToolStripMenuItem AnimListNewAnim;
@@ -118,7 +118,7 @@ namespace System.Windows.Forms
             toolStripMenuItem3 = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripMenuItem();
             renameToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
+            _deleteToolStripMenuItem = new ToolStripMenuItem();
             createNewToolStripMenuItem = new ToolStripMenuItem();
             overObjPnl = new TransparentPanel();
             spltObjTex = new ProxySplitter();
@@ -552,7 +552,7 @@ namespace System.Windows.Forms
                 toolStripMenuItem3,
                 toolStripMenuItem4,
                 renameToolStripMenuItem,
-                deleteToolStripMenuItem,
+                _deleteToolStripMenuItem,
                 createNewToolStripMenuItem
             });
             ctxAnim.Name = "ctxAnim";
@@ -628,7 +628,7 @@ namespace System.Windows.Forms
             toolStripMenuItem4.Name = "toolStripMenuItem4";
             toolStripMenuItem4.Size = new Drawing.Size(234, 26);
             toolStripMenuItem4.Text = "Replace...";
-            toolStripMenuItem4.Click += new EventHandler(replaceToolStripMenuItem_Click);
+            toolStripMenuItem4.Click += new EventHandler(_replaceToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
@@ -637,12 +637,12 @@ namespace System.Windows.Forms
             renameToolStripMenuItem.Text = "Rename";
             renameToolStripMenuItem.Click += new EventHandler(renameToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem
+            // _deleteToolStripMenuItem
             // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Drawing.Size(234, 26);
-            deleteToolStripMenuItem.Text = "Delete";
-            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
+            _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
+            _deleteToolStripMenuItem.Size = new Drawing.Size(234, 26);
+            _deleteToolStripMenuItem.Text = "Delete";
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // createNewToolStripMenuItem
             // 
@@ -1806,7 +1806,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BRESEntryNode node;
             if ((node = _mainWindow.TargetAnimation as BRESEntryNode) == null)
@@ -2027,7 +2027,7 @@ namespace System.Windows.Forms
             overTexPnl.Invalidate();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _mainWindow.TargetAnimation.Remove();
             _mainWindow.TargetAnimation = null;

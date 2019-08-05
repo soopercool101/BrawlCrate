@@ -12,6 +12,11 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+        private static ToolStripMenuItem _replaceToolStripMenuItem;
+        private static ToolStripMenuItem _restoreToolStripMenuItem;
+        private static ToolStripMenuItem _moveUpToolStripMenuItem;
+        private static ToolStripMenuItem _moveDownToolStripMenuItem;
+        private static ToolStripMenuItem _deleteToolStripMenuItem;
 
         static MDL0GroupWrapper()
         {
@@ -47,29 +52,29 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            if (replaceToolStripMenuItem != null)
+            if (_replaceToolStripMenuItem != null)
             {
-                replaceToolStripMenuItem.Enabled = true;
+                _replaceToolStripMenuItem.Enabled = true;
             }
 
-            if (restoreToolStripMenuItem != null)
+            if (_restoreToolStripMenuItem != null)
             {
-                restoreToolStripMenuItem.Enabled = true;
+                _restoreToolStripMenuItem.Enabled = true;
             }
 
-            if (moveUpToolStripMenuItem != null)
+            if (_moveUpToolStripMenuItem != null)
             {
-                moveUpToolStripMenuItem.Enabled = true;
+                _moveUpToolStripMenuItem.Enabled = true;
             }
 
-            if (moveDownToolStripMenuItem != null)
+            if (_moveDownToolStripMenuItem != null)
             {
-                moveDownToolStripMenuItem.Enabled = true;
+                _moveDownToolStripMenuItem.Enabled = true;
             }
 
-            if (deleteToolStripMenuItem != null)
+            if (_deleteToolStripMenuItem != null)
             {
-                deleteToolStripMenuItem.Enabled = true;
+                _deleteToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -77,29 +82,29 @@ namespace BrawlCrate.NodeWrappers
         {
             var w = GetInstance<MDL0GroupWrapper>();
 
-            if (replaceToolStripMenuItem != null)
+            if (_replaceToolStripMenuItem != null)
             {
-                replaceToolStripMenuItem.Enabled = w.Parent != null;
+                _replaceToolStripMenuItem.Enabled = w.Parent != null;
             }
 
-            if (restoreToolStripMenuItem != null)
+            if (_restoreToolStripMenuItem != null)
             {
-                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+                _restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             }
 
-            if (moveUpToolStripMenuItem != null)
+            if (_moveUpToolStripMenuItem != null)
             {
-                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+                _moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
             }
 
-            if (moveDownToolStripMenuItem != null)
+            if (_moveDownToolStripMenuItem != null)
             {
-                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+                _moveDownToolStripMenuItem.Enabled = w.NextNode != null;
             }
 
-            if (deleteToolStripMenuItem != null)
+            if (_deleteToolStripMenuItem != null)
             {
-                deleteToolStripMenuItem.Enabled = w.Parent != null;
+                _deleteToolStripMenuItem.Enabled = w.Parent != null;
             }
         }
 

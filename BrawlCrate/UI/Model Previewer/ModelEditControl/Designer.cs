@@ -42,7 +42,7 @@ namespace System.Windows.Forms
         private ToolStripMenuItem syncKinectToolStripMenuItem;
         private ToolStripMenuItem targetModelToolStripMenuItem;
         private ToolStripMenuItem hideFromSceneToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem;
+        private ToolStripMenuItem _deleteToolStripMenuItem;
         private ToolStripMenuItem hideAllOtherModelsToolStripMenuItem;
         private ToolStripMenuItem deleteAllOtherModelsToolStripMenuItem;
         private ToolStripMenuItem modelToolStripMenuItem;
@@ -293,7 +293,7 @@ namespace System.Windows.Forms
             targetModelToolStripMenuItem = new ToolStripMenuItem();
             chkEditAll = new ToolStripMenuItem();
             hideFromSceneToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
+            _deleteToolStripMenuItem = new ToolStripMenuItem();
             hideAllOtherModelsToolStripMenuItem = new ToolStripMenuItem();
             deleteAllOtherModelsToolStripMenuItem = new ToolStripMenuItem();
             chkExternalAnims = new ToolStripMenuItem();
@@ -1417,7 +1417,7 @@ namespace System.Windows.Forms
             {
                 chkEditAll,
                 hideFromSceneToolStripMenuItem,
-                deleteToolStripMenuItem,
+                _deleteToolStripMenuItem,
                 hideAllOtherModelsToolStripMenuItem,
                 deleteAllOtherModelsToolStripMenuItem,
                 chkExternalAnims,
@@ -1442,12 +1442,12 @@ namespace System.Windows.Forms
             hideFromSceneToolStripMenuItem.Text = "Hide from scene";
             hideFromSceneToolStripMenuItem.Click += new EventHandler(hideFromSceneToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem
+            // _deleteToolStripMenuItem
             // 
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Drawing.Size(299, 26);
-            deleteToolStripMenuItem.Text = "Delete from scene";
-            deleteToolStripMenuItem.Click += new EventHandler(deleteToolStripMenuItem_Click);
+            _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
+            _deleteToolStripMenuItem.Size = new Drawing.Size(299, 26);
+            _deleteToolStripMenuItem.Text = "Delete from scene";
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // hideAllOtherModelsToolStripMenuItem
             // 
