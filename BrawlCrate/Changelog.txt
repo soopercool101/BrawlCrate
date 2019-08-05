@@ -1694,16 +1694,12 @@ Initial Release (2/19/2015):
 |*********** Requirements ***********|
  ====================================
  
-* BrawlCrate: Microsoft .Net Framework v4.5.1
-	http://www.microsoft.com/en-us/download/details.aspx?id=40779 (Offline installer)
-	http://www.microsoft.com/en-us/download/details.aspx?id=40773 (Web installer)
-
-* BrawlLib: Microsoft .Net Framework v4.0
-	http://www.microsoft.com/en-us/download/details.aspx?id=17718
+* BrawlCrate: Microsoft .Net Framework v4.7.2
+	https://dotnet.microsoft.com/download/thank-you/net472
 	
 * A video card that supports OpenGL 1.1 or higher (OpenGL 2.1 is required to enable shaders).
 
-Non-Windows users can try running BrawlCrate with mono (32-bit only), or with wine (use a separate WINEPREFIX and `winetricks dotnet40`).
+Non-Windows users can try running BrawlCrate with mono (32-bit only), or with wine (use a separate WINEPREFIX and `winetricks dotnet472`).
 
  ====================================
 |********* Acknowledgements *********|
