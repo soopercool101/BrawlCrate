@@ -26,11 +26,11 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Group", null, NewGroupAction)
             ));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -64,18 +64,6 @@ namespace BrawlCrate.NodeWrappers
         protected static void NewGroupAction(object sender, EventArgs e)
         {
             GetInstance<RSARFolderWrapper>().NewGroup();
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[2].Enabled = _menu.Items[3].Enabled = true;
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            GenericWrapper w = GetInstance<GenericWrapper>();
-            _menu.Items[2].Enabled = w.PrevNode != null;
-            _menu.Items[3].Enabled = w.NextNode != null;
         }
 
         #endregion

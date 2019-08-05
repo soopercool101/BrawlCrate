@@ -15,23 +15,24 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+        private static ToolStripMenuItem _newEntryToolStripMenuItem;
 
         static CSSCWrapper()
         {
             _menu = new ContextMenuStrip();
 
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
+            _menu.Items.Add(_newEntryToolStripMenuItem = new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -41,20 +42,25 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<CSSCWrapper>().NewEntry();
         }
 
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[0].Enabled = _menu.Items[3].Enabled = _menu.Items[4].Enabled =
-                _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[10].Enabled = true;
+            _newEntryToolStripMenuItem.Enabled = true;
+            replaceToolStripMenuItem.Enabled = true;
+            deleteToolStripMenuItem.Enabled = true;
+            restoreToolStripMenuItem.Enabled = true;
+            moveUpToolStripMenuItem.Enabled = true;
+            moveDownToolStripMenuItem.Enabled = true;
         }
 
-        private static void MenuOpening(object sender, CancelEventArgs e)
+        protected new static void MenuOpening(object sender, CancelEventArgs e)
         {
             CSSCWrapper w = GetInstance<CSSCWrapper>();
-            _menu.Items[0].Enabled = w._resource.Children.Count < 50;
-            _menu.Items[3].Enabled = _menu.Items[10].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
-            _menu.Items[6].Enabled = w.PrevNode != null;
-            _menu.Items[7].Enabled = w.NextNode != null;
+            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
+            replaceToolStripMenuItem.Enabled = w.Parent != null;
+            deleteToolStripMenuItem.Enabled = w.Parent != null;
+            restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            moveDownToolStripMenuItem.Enabled = w.NextNode != null;
         }
 
         #endregion
@@ -100,21 +106,24 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
+        private static ToolStripMenuItem _openCostumeToolStripMenuItem;
+        private static ToolStripSeparator _openCostumeToolStripSeparator;
+
         static CSSCEntryWrapper()
         {
             _menu = new ContextMenuStrip();
 
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Open Costume File", null, OpenCostumeAction));
-            _menu.Items.Add(new ToolStripSeparator());
+            _menu.Items.Add(_openCostumeToolStripMenuItem = new ToolStripMenuItem("Open Costume File", null, OpenCostumeAction));
+            _menu.Items.Add(_openCostumeToolStripSeparator = new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -124,35 +133,49 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<CSSCEntryWrapper>().OpenCostume();
         }
 
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[1].Visible = _menu.Items[0].Visible = _menu.Items[0].Enabled = _menu.Items[3].Enabled =
-                _menu.Items[4].Enabled =
-                    _menu.Items[6].Enabled = _menu.Items[7].Enabled = _menu.Items[9].Enabled = true;
+            _openCostumeToolStripMenuItem.Enabled = true;
+            _openCostumeToolStripMenuItem.Visible = true;
+            _openCostumeToolStripSeparator.Visible = true;
+            replaceToolStripMenuItem.Enabled = true;
+            deleteToolStripMenuItem.Enabled = true;
+            restoreToolStripMenuItem.Enabled = true;
+            moveUpToolStripMenuItem.Enabled = true;
+            moveDownToolStripMenuItem.Enabled = true;
         }
 
-        private static void MenuOpening(object sender, CancelEventArgs e)
+        protected new static void MenuOpening(object sender, CancelEventArgs e)
         {
             CSSCEntryWrapper w = GetInstance<CSSCEntryWrapper>();
+
             List<string> files = ((CSSCEntryNode) w._resource).GetCostumeFilePath(Program.RootPath);
-            _menu.Items[0].Enabled = _menu.Items[1].Visible = _menu.Items[0].Visible = files.Count != 0;
+
+            _openCostumeToolStripMenuItem.Enabled = files.Count != 0;
+            _openCostumeToolStripMenuItem.Visible = files.Count != 0;
+            _openCostumeToolStripSeparator.Visible = files.Count != 0;
             if (files.Count >= 1)
             {
-                _menu.Items[0].Text = "Open ";
+                _openCostumeToolStripMenuItem.Text = "Open ";
                 for (int i = 0; i < files.Count; i++)
                 {
-                    _menu.Items[0].Text += files[i].Substring(files[i].LastIndexOf('\\') + 1);
+                    _openCostumeToolStripMenuItem.Text += files[i].Substring(files[i].LastIndexOf('\\') + 1);
                     if (i + 1 < files.Count)
                     {
-                        _menu.Items[0].Text += " and ";
+                        _openCostumeToolStripMenuItem.Text += " and ";
+                    }
+                    else
+                    {
+                        _openCostumeToolStripMenuItem.Text += ", ";
                     }
                 }
             }
 
-            _menu.Items[3].Enabled = _menu.Items[9].Enabled = w.Parent != null;
-            _menu.Items[4].Enabled = w._resource.IsDirty || w._resource.IsBranch;
-            _menu.Items[6].Enabled = w.PrevNode != null;
-            _menu.Items[7].Enabled = w.NextNode != null;
+            replaceToolStripMenuItem.Enabled = w.Parent != null;
+            deleteToolStripMenuItem.Enabled = w.Parent != null;
+            restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            moveDownToolStripMenuItem.Enabled = w.NextNode != null;
         }
 
         #endregion
@@ -162,7 +185,7 @@ namespace BrawlCrate.NodeWrappers
             List<string> files = ((CSSCEntryNode) _resource).GetCostumeFilePath(Program.RootPath);
             foreach (string s in files)
             {
-                Process BrawlCrate = Process.Start(new ProcessStartInfo()
+                Process.Start(new ProcessStartInfo()
                 {
                     FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BrawlCrate.exe",
                     Arguments = "\"" + s + "\"",

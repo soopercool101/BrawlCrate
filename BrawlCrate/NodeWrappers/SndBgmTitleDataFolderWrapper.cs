@@ -16,7 +16,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&New Entry", null, NewEntryAction, Keys.Control | Keys.H));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -24,14 +24,6 @@ namespace BrawlCrate.NodeWrappers
         private static void NewEntryAction(object sender, EventArgs e)
         {
             GetInstance<SndBgmTitleDataFolderWrapper>().NewEntry();
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
         }
 
         public SndBgmTitleDataFolderWrapper()

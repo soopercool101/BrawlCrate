@@ -13,12 +13,15 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
+        private static ToolStripMenuItem _newEntryToolStripMenuItem;
+        private static ToolStripMenuItem _clearListToolStripMenuItem;
+
         static RSTCWrapper()
         {
             _menu = new ContextMenuStrip();
 
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Add New Entry (Both Lists)", null, NewEntryAction,
+            _menu.Items.Add(_newEntryToolStripMenuItem = new ToolStripMenuItem("Add New Entry (Both Lists)", null, NewEntryAction,
                 Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Sync Lists", null,
@@ -26,12 +29,12 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("From Random List to CSS List", null, SyncCSSAction)));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Clear Lists", null, ClearAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(_clearListToolStripMenuItem = new ToolStripMenuItem("Clear Lists", null, ClearAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -70,20 +73,25 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RSTCWrapper>().SyncCSS();
         }
 
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[0].Enabled = _menu.Items[5].Enabled = _menu.Items[6].Enabled = _menu.Items[10].Enabled = true;
+            _newEntryToolStripMenuItem.Enabled = true;
+            replaceToolStripMenuItem.Enabled = true;
+            deleteToolStripMenuItem.Enabled = true;
+            restoreToolStripMenuItem.Enabled = true;
+            _clearListToolStripMenuItem.Enabled = true;
         }
 
-        private static void MenuOpening(object sender, CancelEventArgs e)
+        protected new static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSTCWrapper w = GetInstance<RSTCWrapper>();
             ResourceNode r = w._resource;
-            _menu.Items[0].Enabled = ((RSTCNode) r).cssList.Children.Count <= 100 ||
-                                     ((RSTCNode) r).randList.Children.Count <= 100;
-            _menu.Items[5].Enabled = w.Parent != null;
-            _menu.Items[6].Enabled = w._resource.IsDirty || w._resource.IsBranch;
-            _menu.Items[10].Enabled =
+            _newEntryToolStripMenuItem.Enabled = ((RSTCNode) r).cssList.Children.Count <= 100 || 
+                                                 ((RSTCNode) r).randList.Children.Count <= 100;
+            replaceToolStripMenuItem.Enabled = w.Parent != null;
+            deleteToolStripMenuItem.Enabled = w.Parent != null;
+            restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _clearListToolStripMenuItem.Enabled =
                 ((RSTCNode) r).cssList.Children.Count > 0 || ((RSTCNode) r).randList.Children.Count > 0;
         }
 

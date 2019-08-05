@@ -23,14 +23,14 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("Open Unresolved Function", null, UnresolvedAction));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -53,21 +53,6 @@ namespace BrawlCrate.NodeWrappers
         protected static void UnresolvedAction(object sender, EventArgs e)
         {
             GetInstance<RELWrapper>().Unresolved();
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[7].Enabled = _menu.Items[8].Enabled =
-                _menu.Items[10].Enabled = _menu.Items[11].Enabled = _menu.Items[14].Enabled = true;
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            RELWrapper w = GetInstance<RELWrapper>();
-            _menu.Items[7].Enabled = _menu.Items[14].Enabled = w.Parent != null;
-            _menu.Items[8].Enabled = w._resource.IsDirty || w._resource.IsBranch;
-            _menu.Items[10].Enabled = w.PrevNode != null;
-            _menu.Items[11].Enabled = w.NextNode != null;
         }
 
         #endregion
@@ -175,7 +160,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("O&pen in Memory Viewer", null, OpenAction, Keys.Control | Keys.P));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -188,17 +173,6 @@ namespace BrawlCrate.NodeWrappers
         protected static void Export2Action(object sender, EventArgs e)
         {
             GetInstance<RELSectionWrapper>().Export2();
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[3].Enabled = true;
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            RELSectionWrapper w = GetInstance<RELSectionWrapper>();
-            _menu.Items[3].Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion
@@ -251,7 +225,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("O&pen in Memory Viewer", null, OpenAction, Keys.Control | Keys.P));
             _menu.Items.Add(new ToolStripSeparator());
             //_menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -259,18 +233,6 @@ namespace BrawlCrate.NodeWrappers
         protected static void OpenAction(object sender, EventArgs e)
         {
             GetInstance<RELMethodWrapper>().Open();
-        }
-
-        //protected static void Export2Action(object sender, EventArgs e) { GetInstance<RELMethodWrapper>().Export2(); }
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[2].Enabled = true;
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            RELMethodWrapper w = GetInstance<RELMethodWrapper>();
-            _menu.Items[2].Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion
@@ -343,7 +305,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("O&pen in Memory Viewer", null, OpenAction, Keys.Control | Keys.P));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -356,17 +318,6 @@ namespace BrawlCrate.NodeWrappers
         protected static void Export2Action(object sender, EventArgs e)
         {
             GetInstance<RELInheritanceWrapper>().Export2();
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[3].Enabled = true;
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            RELInheritanceWrapper w = GetInstance<RELInheritanceWrapper>();
-            _menu.Items[3].Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion

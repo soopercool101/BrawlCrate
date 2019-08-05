@@ -15,24 +15,12 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
 
-            _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-            _menu.Items[0].Enabled = _menu.Items[1].Enabled = true;
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            TEVStageWrapper w = GetInstance<TEVStageWrapper>();
-            _menu.Items[0].Enabled = w.PrevNode != null;
-            _menu.Items[1].Enabled = w.NextNode != null;
         }
 
         public override void MoveUp(bool select)

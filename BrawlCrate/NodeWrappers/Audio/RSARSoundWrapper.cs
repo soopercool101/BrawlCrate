@@ -17,21 +17,24 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
+        private static ToolStripMenuItem _changeSoundToolStripMenuItem;
+        private static ToolStripMenuItem _viewFileToolStripMenuItem;
+
         static RSARSoundWrapper()
         {
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Change Sound", null, ChangeSoundAction, Keys.Control | Keys.W));
-            _menu.Items.Add(new ToolStripMenuItem("View File", null, ViewFileAction, Keys.Control | Keys.I));
+            _menu.Items.Add(_changeSoundToolStripMenuItem = new ToolStripMenuItem("Change Sound", null, ChangeSoundAction, Keys.Control | Keys.W));
+            _menu.Items.Add(_viewFileToolStripMenuItem = new ToolStripMenuItem("View File", null, ViewFileAction, Keys.Control | Keys.I));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
+            _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -46,19 +49,26 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RSARSoundWrapper>().ViewFile();
         }
 
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[0].Enabled = _menu.Items[1].Enabled = _menu.Items[3].Enabled = _menu.Items[5].Enabled = true;
+            _changeSoundToolStripMenuItem.Enabled = true;
+            _viewFileToolStripMenuItem.Enabled = true;
+            replaceToolStripMenuItem.Enabled = true;
+            deleteToolStripMenuItem.Enabled = true;
+            restoreToolStripMenuItem.Enabled = true;
+            moveUpToolStripMenuItem.Enabled = true;
+            moveDownToolStripMenuItem.Enabled = true;
         }
 
-        private static void MenuOpening(object sender, CancelEventArgs e)
+        protected new static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSARSoundWrapper w = GetInstance<RSARSoundWrapper>();
             RSARSoundNode n = w._resource as RSARSoundNode;
-            _menu.Items[0].Enabled = n._waveDataNode != null;
-            _menu.Items[1].Enabled = n.SoundFileNode != null;
-            _menu.Items[3].Enabled = w.Parent != null;
-            _menu.Items[5].Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            _changeSoundToolStripMenuItem.Enabled = n._waveDataNode != null;
+            _viewFileToolStripMenuItem.Enabled = n.SoundFileNode != null;
+            replaceToolStripMenuItem.Enabled = w.Parent != null;
+            deleteToolStripMenuItem.Enabled = w.Parent != null;
+            restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
         }
 
         #endregion

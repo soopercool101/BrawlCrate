@@ -26,15 +26,6 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0GroupWrapper>().CreateNode();
         }
 
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
-            MDL0GroupWrapper w = GetInstance<MDL0GroupWrapper>();
-        }
-
         private void CreateNode()
         {
             MDL0GroupNode group = _resource as MDL0GroupNode;

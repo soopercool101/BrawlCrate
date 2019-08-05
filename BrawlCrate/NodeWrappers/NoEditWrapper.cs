@@ -13,17 +13,9 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            //_menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            //_menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
         }
 
         public NoEditEntryWrapper()
@@ -41,17 +33,9 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            //_menu.Items.Add(new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            //_menu.Items.Add(replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
-        }
-
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
-        {
-        }
-
-        private static void MenuOpening(object sender, CancelEventArgs e)
-        {
         }
 
         public NoEditFolderWrapper()

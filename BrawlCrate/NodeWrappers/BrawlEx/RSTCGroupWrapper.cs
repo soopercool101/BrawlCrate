@@ -12,14 +12,18 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
+        private static ToolStripMenuItem _newEntryToolStripMenuItem;
+        private static ToolStripMenuItem _clearListToolStripMenuItem;
+
+
         static RSTCGroupWrapper()
         {
             _menu = new ContextMenuStrip();
 
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
+            _menu.Items.Add(_newEntryToolStripMenuItem = new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(new ToolStripMenuItem("Clear List", null, ClearAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(_clearListToolStripMenuItem = new ToolStripMenuItem("Clear List", null, ClearAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -34,16 +38,17 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RSTCGroupWrapper>().Clear();
         }
 
-        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _menu.Items[0].Enabled = _menu.Items[2].Enabled = true;
+            _newEntryToolStripMenuItem.Enabled = true;
+            _clearListToolStripMenuItem.Enabled = true;
         }
 
-        private static void MenuOpening(object sender, CancelEventArgs e)
+        protected new static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSTCGroupWrapper w = GetInstance<RSTCGroupWrapper>();
-            _menu.Items[0].Enabled = w._resource.Children.Count < 100;
-            _menu.Items[2].Enabled = w._resource.HasChildren;
+            _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 100;
+            _clearListToolStripMenuItem.Enabled = w._resource.HasChildren;
         }
 
         #endregion
