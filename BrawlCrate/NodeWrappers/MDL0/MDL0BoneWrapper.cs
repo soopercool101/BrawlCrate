@@ -73,7 +73,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0BoneWrapper>().Regen();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             moveUpToolStripMenuItem.Enabled = true;
             moveDownToolStripMenuItem.Enabled = true;
@@ -82,7 +82,7 @@ namespace BrawlCrate.NodeWrappers
             _addToNextDownToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0BoneWrapper w = GetInstance<MDL0BoneWrapper>();
             moveUpToolStripMenuItem.Enabled = w.PrevNode != null;

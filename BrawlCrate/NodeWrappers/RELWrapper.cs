@@ -55,6 +55,64 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RELWrapper>().Unresolved();
         }
 
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<RELWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
+        }
+
         #endregion
 
         public RELWrapper()
@@ -175,6 +233,64 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RELSectionWrapper>().Export2();
         }
 
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<RELSectionWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
+        }
+
         #endregion
 
         public RELSectionWrapper()
@@ -233,6 +349,64 @@ namespace BrawlCrate.NodeWrappers
         protected static void OpenAction(object sender, EventArgs e)
         {
             GetInstance<RELMethodWrapper>().Open();
+        }
+
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<RELMethodWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
         }
 
         #endregion
@@ -318,6 +492,64 @@ namespace BrawlCrate.NodeWrappers
         protected static void Export2Action(object sender, EventArgs e)
         {
             GetInstance<RELInheritanceWrapper>().Export2();
+        }
+
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<RELInheritanceWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
         }
 
         #endregion

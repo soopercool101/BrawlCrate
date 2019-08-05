@@ -49,7 +49,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RSARSoundWrapper>().ViewFile();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _changeSoundToolStripMenuItem.Enabled = true;
             _viewFileToolStripMenuItem.Enabled = true;
@@ -60,7 +60,7 @@ namespace BrawlCrate.NodeWrappers
             moveDownToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSARSoundWrapper w = GetInstance<RSARSoundWrapper>();
             RSARSoundNode n = w._resource as RSARSoundNode;

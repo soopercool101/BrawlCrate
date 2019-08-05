@@ -73,7 +73,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RSTCWrapper>().SyncCSS();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _newEntryToolStripMenuItem.Enabled = true;
             replaceToolStripMenuItem.Enabled = true;
@@ -82,7 +82,7 @@ namespace BrawlCrate.NodeWrappers
             _clearListToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSTCWrapper w = GetInstance<RSTCWrapper>();
             ResourceNode r = w._resource;

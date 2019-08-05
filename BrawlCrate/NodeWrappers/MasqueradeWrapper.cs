@@ -42,7 +42,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MasqueradeWrapper>().NewEntry();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _newEntryToolStripMenuItem.Enabled = true;
             replaceToolStripMenuItem.Enabled = true;
@@ -52,7 +52,7 @@ namespace BrawlCrate.NodeWrappers
             moveDownToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MasqueradeWrapper w = GetInstance<MasqueradeWrapper>();
             _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
@@ -138,7 +138,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MasqueradeEntryWrapper>().OpenCostume();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _openCostumeToolStripMenuItem.Enabled = true;
             _openCostumeToolStripMenuItem.Visible = true;
@@ -150,7 +150,7 @@ namespace BrawlCrate.NodeWrappers
             moveDownToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MasqueradeEntryWrapper w = GetInstance<MasqueradeEntryWrapper>();
 

@@ -233,7 +233,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0Wrapper>().SortTexture();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             replaceToolStripMenuItem.Enabled = true;
             deleteToolStripMenuItem.Enabled = true;
@@ -244,7 +244,7 @@ namespace BrawlCrate.NodeWrappers
             _importShaderToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0Wrapper w = GetInstance<MDL0Wrapper>();
             replaceToolStripMenuItem.Enabled = w.Parent != null;

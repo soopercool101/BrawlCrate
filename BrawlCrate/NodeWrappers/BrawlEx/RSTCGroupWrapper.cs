@@ -38,13 +38,13 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<RSTCGroupWrapper>().Clear();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _newEntryToolStripMenuItem.Enabled = true;
             _clearListToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             RSTCGroupWrapper w = GetInstance<RSTCGroupWrapper>();
             _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 100;

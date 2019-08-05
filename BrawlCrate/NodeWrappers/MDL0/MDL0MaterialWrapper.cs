@@ -44,14 +44,14 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0MaterialWrapper>().ExportShader();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             moveUpToolStripMenuItem.Enabled = true;
             moveDownToolStripMenuItem.Enabled = true;
             _addNewRefToolStripMenuItem.Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0MaterialWrapper w = GetInstance<MDL0MaterialWrapper>();
             moveUpToolStripMenuItem.Enabled = w.PrevNode != null;

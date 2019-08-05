@@ -33,12 +33,12 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0ShaderWrapper>().CreateStage();
         }
 
-        protected new static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _menu.Items[6].Enabled = true;
         }
 
-        protected new static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0ShaderWrapper w = GetInstance<MDL0ShaderWrapper>();
             _menu.Items[6].Enabled = w._resource.Children.Count < 16; //16 stages max!

@@ -29,7 +29,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(deleteToolStripMenuItem = new ToolStripMenuItem("GENERIC: &Delete", null, DeleteAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -69,7 +69,7 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().Rename();
         }
 
-        protected static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             if (replaceToolStripMenuItem != null)
             {
@@ -97,9 +97,10 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        protected static void MenuOpening(object sender, CancelEventArgs e)
+        private static void MenuOpening(object sender, CancelEventArgs e)
         {
             GenericWrapper w = GetInstance<GenericWrapper>();
+
             if (replaceToolStripMenuItem != null)
             {
                 replaceToolStripMenuItem.Enabled = w.Parent != null;

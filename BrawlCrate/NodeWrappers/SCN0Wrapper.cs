@@ -62,6 +62,64 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<SCN0Wrapper>().newCamera();
         }
 
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<SCN0Wrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
+        }
+
         #endregion
 
         public SCN0Wrapper()
@@ -155,6 +213,64 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<SCN0CameraWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
+        }
+
         #endregion
 
         public SCN0CameraWrapper(IWin32Window owner)
@@ -210,6 +326,64 @@ namespace BrawlCrate.NodeWrappers
                 {
                     e.SetTarget(_resource as IKeyframeSource);
                 }
+            }
+        }
+
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<SCN0FogWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
             }
         }
 
@@ -270,7 +444,65 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
         }
-        
+
+        private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = true;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = true;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = true;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private static void MenuOpening(object sender, CancelEventArgs e)
+        {
+            var w = GetInstance<SCN0LightWrapper>();
+
+            if (replaceToolStripMenuItem != null)
+            {
+                replaceToolStripMenuItem.Enabled = w.Parent != null;
+            }
+
+            if (restoreToolStripMenuItem != null)
+            {
+                restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            }
+
+            if (moveUpToolStripMenuItem != null)
+            {
+                moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            }
+
+            if (moveDownToolStripMenuItem != null)
+            {
+                moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            }
+
+            if (deleteToolStripMenuItem != null)
+            {
+                deleteToolStripMenuItem.Enabled = w.Parent != null;
+            }
+        }
+
         #endregion
 
         public SCN0LightWrapper(IWin32Window owner)
