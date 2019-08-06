@@ -324,23 +324,28 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Collision Binding"), DisplayName("Linked Bone")]
         public string LinkBone => _boneName;
         
+        [Category("Flags")]
         public bool UnknownFlag
         {
             get => (_flags & ColObjFlags.Unknown) != 0;
             set => _flags = (_flags & ~ColObjFlags.Unknown) | (value ? ColObjFlags.Unknown : 0);
         }
         
-        [Description("Controls whether or not a collision will follow a linked bone")]
+        [Category("Flags"), Description("Controls whether or not a collision will follow a linked bone")]
         public bool Independent
         {
             get => (_flags & ColObjFlags.Independent) != 0;
             set => _flags = (_flags & ~ColObjFlags.Independent) | (value ? ColObjFlags.Independent : 0);
         }
+
+        [Category("Flags")]
         public bool ModuleControlled
         {
             get => (_flags & ColObjFlags.ModuleControlled) != 0;
             set => _flags = (_flags & ~ColObjFlags.ModuleControlled) | (value ? ColObjFlags.ModuleControlled : 0);
         }
+
+        [Category("Flags")]
         public bool UnknownSSEFlag
         {
             get => (_flags & ColObjFlags.SSEUnknown) != 0;
@@ -378,6 +383,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             CollisionNode parentColl = Parent as CollisionNode;
+            _name = $"Collision Object [{Parent.Children.Count}]";
             _modelName = Header->ModelName;
             _boneName = Header->BoneName;
             _unk1 = Header->_unk1;
@@ -409,11 +415,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (pPlane->_point1 != pPlane->_point2)
                 {
-                    new CollisionPlane(this, pPlane++, pointOffset);
+                    new CollisionPlane(this, pPlane, pointOffset);
                 }
-            }
 
-            _name = $"Collision Object [{Parent.Children.Count}]";
+                ++pPlane;
+            }
 
             return false;
         }
