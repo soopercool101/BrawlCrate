@@ -1498,9 +1498,9 @@ namespace System.Windows.Forms
 
                 txtModel.Text = _selectedObject._modelName;
                 txtBone.Text = _selectedObject._boneName;
-                chkObjUnk.Checked = _selectedObject._flags[0];
-                chkObjModule.Checked = _selectedObject._flags[2];
-                chkObjSSEUnk.Checked = _selectedObject._flags[3];
+                chkObjUnk.Checked = _selectedObject.UnknownFlag;
+                chkObjModule.Checked = _selectedObject.ModuleControlled;
+                chkObjSSEUnk.Checked = _selectedObject.UnknownSSEFlag;
             }
 
             _updating = false;
@@ -4160,7 +4160,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _selectedObject._flags[0] = chkObjUnk.Checked;
+            _selectedObject.UnknownFlag = chkObjUnk.Checked;
             TargetNode.SignalPropertyChange();
         }
 
@@ -4175,7 +4175,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _selectedObject._flags[2] = chkObjModule.Checked;
+            _selectedObject.ModuleControlled = chkObjModule.Checked;
             TargetNode.SignalPropertyChange();
         }
 
@@ -4186,7 +4186,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            _selectedObject._flags[3] = chkObjSSEUnk.Checked;
+            _selectedObject.UnknownSSEFlag = chkObjSSEUnk.Checked;
             TargetNode.SignalPropertyChange();
         }
 

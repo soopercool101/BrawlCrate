@@ -205,7 +205,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 *pObj++ = new ColObject(cPlane, iPlane - cPlane, cPoint, iPoint - cPoint, obj._boxMin, obj._boxMax,
                     obj._modelName, obj._boneName,
-                    obj._unk1, obj._unk2, obj._unk3, obj._flags, obj._unk5, obj._unk6, obj._boneIndex);
+                    obj._unk1, obj._unk2, obj._unk3, (int)obj._flags, obj._unk5, obj._unk6, obj._boneIndex);
             }
         }
 
@@ -306,29 +306,59 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _boneIndex = _linkedBone.BoneIndex;
                     _boneName = _linkedBone.Name;
                     _modelName = _linkedBone.Model.Name;
-                    _flags[1] = false;
+                    Independent = false;
                 }
                 else
                 {
                     _boneIndex = -1;
                     _boneName = "";
                     _modelName = "";
-                    _flags[1] = true;
+                    Independent = true;
                 }
             }
+        }
+
+        [Category("Collision Binding"), DisplayName("Linked Model")]
+        public string LinkModel => _modelName;
+
+        [Category("Collision Binding"), DisplayName("Linked Bone")]
+        public string LinkBone => _boneName;
+        
+        public bool UnknownFlag
+        {
+            get => (_flags & ColObjFlags.Unknown) != 0;
+            set => _flags = (_flags & ~ColObjFlags.Unknown) | (value ? ColObjFlags.Unknown : 0);
+        }
+        
+        [Description("Controls whether or not a collision will follow a linked bone")]
+        public bool Independent
+        {
+            get => (_flags & ColObjFlags.Independent) != 0;
+            set => _flags = (_flags & ~ColObjFlags.Independent) | (value ? ColObjFlags.Independent : 0);
+        }
+        public bool ModuleControlled
+        {
+            get => (_flags & ColObjFlags.ModuleControlled) != 0;
+            set => _flags = (_flags & ~ColObjFlags.ModuleControlled) | (value ? ColObjFlags.ModuleControlled : 0);
+        }
+        public bool UnknownSSEFlag
+        {
+            get => (_flags & ColObjFlags.SSEUnknown) != 0;
+            set => _flags = (_flags & ~ColObjFlags.SSEUnknown) | (value ? ColObjFlags.SSEUnknown : 0);
         }
 
         public MDL0BoneNode _linkedBone = null;
 
         public Vector2 _boxMin, _boxMax;
         public int _unk1, _unk2, _unk3, _unk5, _unk6, _boneIndex;
-        public Bin16 _flags;
+        public ColObjFlags _flags;
 
         public List<CollisionPlane> _planes = new List<CollisionPlane>();
         public bool _render = true;
         public string _modelName = "", _boneName = "";
 
-        public enum Flags
+        [Flags]
+        public enum ColObjFlags : ushort
         {
             None = 0,
             Unknown = 1,
@@ -353,7 +383,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unk1 = Header->_unk1;
             _unk2 = Header->_unk2;
             _unk3 = Header->_unk3;
-            _flags = (ushort) Header->_flags;
+            _flags = (ColObjFlags)(ushort)Header->_flags;
             _unk5 = Header->_unk5;
             _unk6 = Header->_unk6;
             _boneIndex = Header->_boneIndex;
@@ -469,7 +499,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_parent == null || _parent.LinkedBone == null)
+                if (_parent?.LinkedBone == null)
                 {
                     return _rawValue;
                 }
@@ -478,7 +508,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             set
             {
-                if (_parent == null || _parent.LinkedBone == null)
+                if (_parent?.LinkedBone == null)
                 {
                     _rawValue = value;
                     return;
@@ -794,18 +824,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (!IsRotating || IsNone)
             {
-                switch (Type)
-                {
-                    case CollisionPlaneType.Ceiling:
-                    case CollisionPlaneType.Floor:
-                    case CollisionPlaneType.LeftWall:
-                    case CollisionPlaneType.RightWall:
-                    case CollisionPlaneType.None:
-                        return Type;
-                    default:
-                        return null; // If multiple types
-                }
+                return GetPlaneType(); // Use the standard formula
             }
+
+            // Check based on angle
 
             double angle = GetAngleDegrees();
 
