@@ -429,10 +429,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //CollisionPlane plane;
             for (int i = 0; i < planeCount; i++)
             {
-                if (pPlane->_point1 != pPlane->_point2)
-                {
-                    new CollisionPlane(this, pPlane, pointOffset);
-                }
+                new CollisionPlane(this, pPlane, pointOffset);
 
                 ++pPlane;
             }
@@ -1022,8 +1019,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             _parent = parent;
             _parent._planes.Add(this);
 
-            LinkLeft = left;
-            LinkRight = right;
+            _linkLeft = left;
+            _linkLeft._members.Add(this);
+            _linkRight = right;
+            _linkRight._members.Add(this);
         }
 
         public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
