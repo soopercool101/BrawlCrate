@@ -378,6 +378,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool _render = true;
         public string _modelName = "", _boneName = "";
 
+        public bool hasSingleLinkedCollisions;
+
         [Flags]
         public enum ColObjFlags : ushort
         {
@@ -430,7 +432,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             for (int i = 0; i < planeCount; i++)
             {
                 new CollisionPlane(this, pPlane, pointOffset);
-
+                if (pPlane->_point1 == pPlane->_point2)
+                {
+                    hasSingleLinkedCollisions = true;
+                }
                 ++pPlane;
             }
 
@@ -708,13 +713,82 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Color4 clr = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
             float mult = 1.0f;
+            bool hasMultiple = false;
+            bool hasLedge = false;
             foreach (CollisionPlane p in _members)
             {
-                if (p.LinkLeft == this && p.IsLeftLedge || p.LinkRight == this && p.IsRightLedge)
+                if (!hasLedge && (p.LinkLeft == this && p.IsLeftLedge || p.LinkRight == this && p.IsRightLedge))
                 {
-                    clr = new Color4(1.0f, 0.0f, 1.0f, 1.0f);
+                    hasLedge = true;
+                    if (!hasMultiple)
+                    {
+                        clr = new Color4(1.0f, 0.0f, 1.0f, 1.0f);
+                    }
                     mult = 3.0f;
-                    break;
+                    if (!_parent.hasSingleLinkedCollisions || hasMultiple)
+                    {
+                        break;
+                    }
+                }
+
+                if (_parent.hasSingleLinkedCollisions && !hasMultiple && p.LinkLeft == p.LinkRight)
+                {
+                    hasMultiple = true;
+                    float alpha = 1.0f;
+
+                    if (!p.IsCharacters && (p.IsItems || p.IsPokemonTrainer))
+                    {
+                        alpha = 0.5f;
+                    }
+                    if (!p.IsFallThrough)
+                    {
+                        switch (p.Type)
+                        {
+                            case CollisionPlaneType.None:
+                                clr = new Color4(1.0f, 1.0f, 1.0f, alpha);
+                                break;
+                            case CollisionPlaneType.Floor:
+                                clr = new Color4(0.0f, 0.9f, 0.9f, alpha);
+                                break;
+                            case CollisionPlaneType.Ceiling:
+                                clr = new Color4(0.9f, 0.0f, 0.0f, alpha);
+                                break;
+                            case CollisionPlaneType.LeftWall:
+                            case CollisionPlaneType.RightWall:
+                                clr = new Color4(0.0f, 0.9f, 0.0f, alpha);
+                                break;
+                            default:
+                                clr = new Color4(0.0f, 0.0f, 0.0f, alpha);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (p.Type)
+                        {
+                            case CollisionPlaneType.None:
+                                clr = new Color4(0.65f, 0.65f, 0.35f, alpha);
+                                break;
+                            case CollisionPlaneType.Floor:
+                                clr = new Color4(1.0f, 1.0f, 0.0f, alpha);
+                                break;
+                            case CollisionPlaneType.Ceiling:
+                                clr = new Color4(0.9f, 0.3f, 0.0f, alpha);
+                                break;
+                            case CollisionPlaneType.LeftWall:
+                            case CollisionPlaneType.RightWall:
+                                clr = new Color4(0.45f, 1.0f, 0.0f, alpha);
+                                break;
+                            default:
+                                clr = new Color4(0.5f, 0.5f, 0.0f, alpha);
+                                break;
+                        }
+                    }
+
+                    if (hasLedge)
+                    {
+                        break;
+                    }
                 }
             }
 
