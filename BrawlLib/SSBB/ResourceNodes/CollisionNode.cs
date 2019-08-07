@@ -713,6 +713,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             Color4 clr = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
             float mult = 1.0f;
+            float alpha = 1.0f;
             bool hasMultiple = false;
             bool hasLedge = false;
             foreach (CollisionPlane p in _members)
@@ -734,7 +735,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (_parent.hasSingleLinkedCollisions && !hasMultiple && p.LinkLeft == p.LinkRight)
                 {
                     hasMultiple = true;
-                    float alpha = 1.0f;
 
                     if (!p.IsCharacters && (p.IsItems || p.IsPokemonTrainer))
                     {
@@ -794,7 +794,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_highlight)
             {
-                GL.Color4(1.0f, 1.0f, 0.0f, 1.0f);
+                if (hasMultiple)
+                {
+                    GL.Color4(0.9f, 0.0f, 0.9f, alpha);
+                }
+                else
+                {
+                    GL.Color4(1.0f, 1.0f, 0.0f, 1.0f);
+                }
             }
             else
             {
