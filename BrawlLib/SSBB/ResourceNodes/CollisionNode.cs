@@ -1155,7 +1155,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal void Render()
         {
-            if (!_render)
+            if (!_render || LinkLeft == LinkRight)
             {
                 return;
             }

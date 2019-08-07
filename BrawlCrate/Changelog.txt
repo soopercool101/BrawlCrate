@@ -32,6 +32,7 @@ they be held accountable for the manner in which it is used.
  . Add MainForm previewing of Collision Nodes
  . Collision Objects are now parsed as children of Collision Nodes
  . Collision planes with the "Rotating" flag will now change color based on their angle, matching Brawl's implementation
+ . Add rudimentary editing support for single-linked collisions
  . Color Smash Utility can make its own folders
  . Discord RPC now detects code manager and BrawlManagers
  . ".txt" GCTs can now be directly opened
@@ -76,6 +77,7 @@ they be held accountable for the manner in which it is used.
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
+ . Fix bug in which certain collision planes would be ignored on object population (fixes New Pork City issues)
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
  . Fix bug in which sorting MDL0 Textures would sort objects instead
