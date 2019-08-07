@@ -159,7 +159,6 @@
     <EmbeddedResource Include="BrawlManagers\StageManager\XX.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DynamicLanguageRuntime" Version="1.2.2" />
     <PackageReference Include="IronPython" Version="2.7.9" />
   </ItemGroup>
   <ItemGroup>
