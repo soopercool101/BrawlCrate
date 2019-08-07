@@ -160,7 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="IronPython" Version="2.7.9" />
-    <PackageReference Include="IronPython.StdLib" Version="2.7.9" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Windows.Forms" />
