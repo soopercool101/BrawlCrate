@@ -137,36 +137,33 @@ namespace BrawlCrate
             {
                 if (Program.CanRunGithubApp(manual, out string path))
                 {
-                    if (Program.Canary)
+#if CANARY
+                    Process git = Process.Start(new ProcessStartInfo()
                     {
-                        Process git = Process.Start(new ProcessStartInfo()
+                        FileName = path,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        Arguments = $"-buc \"{Program.RootPath ?? "<null>"}\" {(manual ? "1" : "0")}"
+                    });
+                    git?.WaitForExit();
+                    if (File.Exists(Program.AppPath + "\\Canary\\Old"))
+                    {
+                        Process changelog = Process.Start(new ProcessStartInfo()
                         {
                             FileName = path,
                             WindowStyle = ProcessWindowStyle.Hidden,
-                            Arguments = $"-buc \"{Program.RootPath ?? "<null>"}\" {(manual ? "1" : "0")}"
+                            Arguments = "-canarylog"
                         });
-                        git.WaitForExit();
-                        if (File.Exists(Program.AppPath + "\\Canary\\Old"))
-                        {
-                            Process changelog = Process.Start(new ProcessStartInfo()
-                            {
-                                FileName = path,
-                                WindowStyle = ProcessWindowStyle.Hidden,
-                                Arguments = "-canarylog"
-                            });
-                            changelog.WaitForExit();
-                        }
+                        changelog.WaitForExit();
                     }
-                    else
+#else
+                    Process.Start(new ProcessStartInfo()
                     {
-                        Process.Start(new ProcessStartInfo()
-                        {
-                            FileName = path,
-                            WindowStyle = ProcessWindowStyle.Hidden,
-                            Arguments =
-                                $"-bu 1 \"{Program.TagName}\" {(manual ? "1" : "0")} \"{Program.RootPath ?? "<null>"}\" {(_docUpdates ? "1" : "0")} {(!manual && _autoUpdate ? "1" : "0")}"
-                        });
-                    }
+                        FileName = path,
+                        WindowStyle = ProcessWindowStyle.Hidden,
+                        Arguments =
+                            $"-bu 1 \"{Program.TagName}\" {(manual ? "1" : "0")} \"{Program.RootPath ?? "<null>"}\" {(_docUpdates ? "1" : "0")} {(!manual && _autoUpdate ? "1" : "0")}"
+                    });
+#endif
                 }
                 else
                 {
@@ -788,7 +785,7 @@ namespace BrawlCrate
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
-        #region Rendering
+#region Rendering
 
         public static void RenderSelected(ResourceNode node)
         {
@@ -1018,7 +1015,7 @@ namespace BrawlCrate
             }
         }
 
-        #endregion
+#endregion
 
         public static void UpdateDiscordRPC(object sender, EventArgs e)
         {
@@ -1066,7 +1063,7 @@ namespace BrawlCrate
             }
         }
 
-        #region File Menu
+#region File Menu
 
         private void aRCArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1123,7 +1120,7 @@ namespace BrawlCrate
             Close();
         }
 
-        #endregion
+#endregion
 
         private void fileResizerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1330,26 +1327,23 @@ namespace BrawlCrate
 
         private void ShowChangelogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Program.Canary)
-            {
-                if (Program.CanRunGithubApp(true, out string path))
-                {
-                    Process.Start(new ProcessStartInfo()
-                    {
-                        FileName = path,
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        Arguments = string.Format("-canarylog"),
-                    });
-                }
-            }
-            else
+#if CANARY
+            if (Program.CanRunGithubApp(true, out string path))
             {
                 Process.Start(new ProcessStartInfo()
                 {
-                    FileName = $"{Application.StartupPath}\\Changelog.txt",
+                    FileName = path,
                     WindowStyle = ProcessWindowStyle.Hidden,
+                    Arguments = "-canarylog",
                 });
             }
+#else
+            Process.Start(new ProcessStartInfo()
+            {
+                FileName = $"{Application.StartupPath}\\Changelog.txt",
+                WindowStyle = ProcessWindowStyle.Hidden,
+            });
+#endif
         }
     }
 

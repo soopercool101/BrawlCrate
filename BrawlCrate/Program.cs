@@ -48,23 +48,19 @@ namespace BrawlCrate
         public static string AppPath;
         public static string RootPath => _rootPath;
 
-        public static bool Canary => Directory.Exists(AppPath + "\\Canary") &&
-                                     File.Exists(AppPath + "\\Canary\\Active") &&
-                                     File.Exists(AppPath + "\\Canary\\New");
-
         static Program()
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
             AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
-            AssemblyTitleFull = Canary
-                ? "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2]
-                : ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
-                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
-                .Title;
-            AssemblyTitleShort = AssemblyTitleFull.Contains("#")
-                ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8)
-                : AssemblyTitleFull;
+#if CANARY
+            AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+            AssemblyTitleShort = AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8);
+#else
+            AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
+                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+            AssemblyTitleShort = AssemblyTitleFull;
+#endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
                     .GetExecutingAssembly()

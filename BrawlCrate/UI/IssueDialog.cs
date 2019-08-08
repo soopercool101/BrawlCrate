@@ -56,8 +56,13 @@ namespace System.Windows.Forms
             //Send the issue to the repository
             if (Program.CanRunGithubApp(true, out string path))
             {
+#if CANARY
+                string programTitle = Program.AssemblyTitleFull;
+#else
+                string programTitle = Program.TagName;
+#endif
                 string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
-                    Program.Canary ? Program.AssemblyTitleFull : Program.TagName,
+                    programTitle,
                     _exception.Message.Replace("\"", "\\\""),
                     _exception.StackTrace.Replace("\"", "\\\""),
                     txtTitle.Text.Replace("\"", "\\\""),

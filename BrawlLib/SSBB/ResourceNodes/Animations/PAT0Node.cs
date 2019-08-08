@@ -1140,7 +1140,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// <summary>
         /// Sorts the order of texture entries by their frame index.
         /// </summary>
-        public void SortChildren()
+        public override void SortChildren()
         {
             Top:
             for (int i = 0; i < Children.Count; i++)

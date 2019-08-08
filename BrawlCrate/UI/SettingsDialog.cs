@@ -251,7 +251,13 @@ namespace BrawlCrate
             }
 
             chkDocUpdates.Checked = MainForm.Instance.GetDocumentationUpdates;
-            updaterBehaviorGroupbox.Enabled = !Program.Canary;
+#if CANARY
+            updaterBehaviorGroupbox.Enabled = false;
+            chkCanary.Checked = true;
+#else
+            updaterBehaviorGroupbox.Enabled = true;
+            chkCanary.Checked = false;
+#endif
             if (MainForm.Instance.UpdateAutomatically)
             {
                 rdoAutoUpdate.Checked = true;
@@ -267,7 +273,6 @@ namespace BrawlCrate
 
             rdoShowFullPath.Checked = MainForm.Instance.ShowFullPath;
             rdoShowShortName.Checked = !MainForm.Instance.ShowFullPath;
-            chkCanary.Checked = Program.Canary;
             chkShowPropDesc.Checked = MainForm.Instance.DisplayPropertyDescriptionsWhenAvailable;
             chkShowHex.Checked = MainForm.Instance.ShowHex;
             chkBoxAutoPlayAudio.Checked = MainForm.Instance.AutoPlayAudio;
@@ -1426,33 +1431,31 @@ namespace BrawlCrate
             }
 
             _updating = true;
-            if (!Program.Canary)
-            {
-                DialogResult dc = MessageBox.Show(this,
+#if CANARY
+            DialogResult dc = MessageBox.Show(this,
                     "Are you sure you'd like to receive BrawlCrate canary updates? " +
                     "These updates will happen more often and include features as they are developed, but will come at the cost of stability. " +
                     "If you do take this track, it is highly recommended to join our discord server: https://discord.gg/s7c8763 \n\n" +
                     "If you select yes, the update will begin immediately, so make sure your work is saved.",
                     "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
-                if (dc == DialogResult.Yes)
-                {
-                    Program.ForceDownloadCanary();
-                }
-            }
-            else
+            if (dc == DialogResult.Yes)
             {
-                DialogResult dc = MessageBox.Show(this, "Are you sure you'd like to return to the stable build? " +
-                                                        "Please note that there may be issues saving settings between the old version and the next update. " +
-                                                        "If you a bug caused you to move off this build, please report it on our discord server: https://discord.gg/s7c8763 \n\n" +
-                                                        "If you select yes, the downgrade will begin immediately, so make sure your work is saved.",
-                    "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
-                if (dc == DialogResult.Yes)
-                {
-                    Program.ForceDownloadStable();
-                }
+                Program.ForceDownloadCanary();
             }
+            chkCanary.Checked = true;
+#else
+            DialogResult dc = MessageBox.Show(this, "Are you sure you'd like to return to the stable build? " +
+                                                    "Please note that there may be issues saving settings between the old version and the next update. " +
+                                                    "If you a bug caused you to move off this build, please report it on our discord server: https://discord.gg/s7c8763 \n\n" +
+                                                    "If you select yes, the downgrade will begin immediately, so make sure your work is saved.",
+                "BrawlCrate Canary Updater", MessageBoxButtons.YesNo);
+            if (dc == DialogResult.Yes)
+            {
+                Program.ForceDownloadStable();
+            }
+            chkCanary.Checked = false;
+#endif
 
-            chkCanary.Checked = Program.Canary;
             _updating = false;
         }
 
