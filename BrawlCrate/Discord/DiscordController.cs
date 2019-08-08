@@ -10,10 +10,11 @@ namespace BrawlCrate.Discord
         private static DiscordRpc.EventHandlers handlers;
 
         private static readonly string applicationId =
-            Directory.Exists(Application.StartupPath + "\\Canary") &&
-            File.Exists(Application.StartupPath + "\\Canary\\Active")
-                ? "545788780980994078"
-                : "545732315658059801";
+#if CANARY
+            "545788780980994078";
+#else
+            "545732315658059801";
+#endif
 
         /// <summary>
         ///     Initializes Discord RPC

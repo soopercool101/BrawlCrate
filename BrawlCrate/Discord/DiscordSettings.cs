@@ -49,7 +49,11 @@ namespace BrawlCrate.Discord
             {
                 smallImageKey = UserPickedImageKey,
                 smallImageText = "",
+#if CANARY
+                largeImageKey = "canary",
+#else
                 largeImageKey = "brawlcrate",
+#endif
                 largeImageText = Program.AssemblyTitleFull
             };
             ResourceNode root = MainForm.Instance?.RootNode?.Resource;
