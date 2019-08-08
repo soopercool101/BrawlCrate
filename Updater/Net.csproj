@@ -10,7 +10,7 @@
     <Copyright>Copyright © soopercool101, Sammi Husky</Copyright>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Configurations>Debug;Release;Mono</Configurations>
+    <Configurations>Debug;Release;Mono;Canary</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
@@ -34,6 +34,13 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
+    <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
+    <DefineConstants />
+    <Prefer32Bit>true</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mono|AnyCPU'">
     <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
     <DefineConstants />
@@ -45,11 +52,19 @@
     <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
     <DefineConstants />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x86'">
+    <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
+    <DefineConstants />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mono|x86'">
     <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
     <DefineConstants />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
+    <DefineConstants />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x64'">
     <OutputPath>bin\Any CPU\$(Configuration)\</OutputPath>
     <DefineConstants />
   </PropertyGroup>
@@ -77,6 +92,12 @@
     <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants />
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mono|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants />
@@ -90,6 +111,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants />
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants />
     <Prefer32Bit>true</Prefer32Bit>
