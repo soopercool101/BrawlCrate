@@ -22,7 +22,7 @@ they be held accountable for the manner in which it is used.
    - No longer uses "lib" folder to improve compatibility
  . .NET Framework updated from 4.0 to 4.7.2 for BrawlCrate and BrawlLib
  . .NET Framework updated from 4.5.2 to 4.7.2 for the Updater
- . OpenTK updated from v1.1.0.0 to v3.0.1.0
+ . OpenTK updated from v1.1.0 to v3.1.0
  . Add "Show Changelog" button to the help menu
  . Add ports of BrawlManagers from https://github.com/libertyernie/BrawlManagers
  . New Color Smash method: Multi-select nodes and select Color Smash from the Tools menu
