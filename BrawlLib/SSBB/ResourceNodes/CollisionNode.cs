@@ -735,8 +735,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (_parent.hasSingleLinkedCollisions && !hasMultiple && p.LinkLeft == p.LinkRight)
                 {
                     hasMultiple = true;
-
-                    if (!p.IsCharacters && (p.IsItems || p.IsPokemonTrainer))
+                    if (!p.CollidableByCharacters)
                     {
                         alpha = 0.5f;
                     }
@@ -944,7 +943,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return angle < 0 ? CollisionPlaneType.RightWall : CollisionPlaneType.LeftWall;
         }
 
-        public bool CollidableByCharacters => !IsNone && (IsCharacters || !IsPokemonTrainer && !IsItems);
+        public bool CollidableByCharacters => IsCharacters || !IsPokemonTrainer && !IsItems;
 
         public bool IsCharacters
         {
@@ -1162,7 +1161,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             float alpha = 0.8f;
 
-            if (!IsCharacters && (IsItems || IsPokemonTrainer))
+            if (!CollidableByCharacters)
             {
                 alpha = 0.5f;
             }
