@@ -1020,12 +1020,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _flags = (_flags & ~CollisionPlaneFlags.Unknown4) | (value ? CollisionPlaneFlags.Unknown4 : 0);
         }
 
-        public bool HasUnknownFlag
-        {
-            get => (_flags & CollisionPlaneFlags.Unknown1) != 0 || (_flags & CollisionPlaneFlags.Unknown3) != 0 ||
-                   (_flags & CollisionPlaneFlags.Unknown4) != 0;
-            set { }
-        }
+        public bool HasUnknownFlag => IsUnknownFlag1 || IsUnknownFlag3 || IsUnknownFlag4 || IsUnknownSSE;
 
         public double GetAngleRadians()
         {
