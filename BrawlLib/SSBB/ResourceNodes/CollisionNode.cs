@@ -930,6 +930,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             double angle = GetAngleDegrees();
 
+            if (double.IsNaN(angle))
+            {
+                return GetPlaneType();
+            }
+
             if (Math.Abs(angle) <= 45)
             {
                 return CollisionPlaneType.Floor;
@@ -1024,6 +1029,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public double GetAngleRadians()
         {
+            if (LinkLeft == LinkRight)
+            {
+                return Double.NaN;
+            }
             float xDiff = _linkRight.Value._x - _linkLeft.Value._x;
             float yDiff = _linkRight.Value._y - _linkLeft.Value._y;
             if (xDiff == 0.0f)
