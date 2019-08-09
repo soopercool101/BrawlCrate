@@ -13,29 +13,41 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
-        private static ToolStripMenuItem _addToParentToolStripMenuItem;
-        private static ToolStripMenuItem _addToNextUpToolStripMenuItem;
-        private static ToolStripMenuItem _addToNextDownToolStripMenuItem;
-        private static ToolStripMenuItem _replaceToolStripMenuItem;
-        private static ToolStripMenuItem _restoreToolStripMenuItem;
-        private static ToolStripMenuItem _moveUpToolStripMenuItem;
-        private static ToolStripMenuItem _moveDownToolStripMenuItem;
-        private static ToolStripMenuItem _deleteToolStripMenuItem;
+        private static readonly ToolStripMenuItem _addToParentToolStripMenuItem;
+        private static readonly ToolStripMenuItem _addToNextUpToolStripMenuItem;
+        private static readonly ToolStripMenuItem _addToNextDownToolStripMenuItem;
+
+        private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
+            new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
+
+        private static readonly ToolStripMenuItem RestoreToolStripMenuItem =
+            new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T);
+
+        private static readonly ToolStripMenuItem MoveUpToolStripMenuItem =
+            new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up);
+
+        private static readonly ToolStripMenuItem MoveDownToolStripMenuItem =
+            new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down);
+
+        private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
+            new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
         static MDL0BoneWrapper()
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(_moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
-            _menu.Items.Add(_addToParentToolStripMenuItem = new ToolStripMenuItem("Add To &Parent", null, AddToParentAction,
+            _menu.Items.Add(MoveUpToolStripMenuItem);
+            _menu.Items.Add(MoveDownToolStripMenuItem);
+            _menu.Items.Add(_addToParentToolStripMenuItem = new ToolStripMenuItem("Add To &Parent", null,
+                AddToParentAction,
                 Keys.Control | Keys.Shift | Keys.Up));
             _menu.Items.Add(_addToNextUpToolStripMenuItem = new ToolStripMenuItem("Add To Next &Up", null, AddUpAction,
                 Keys.Control | Keys.Alt | Keys.Up));
-            _menu.Items.Add(_addToNextDownToolStripMenuItem = new ToolStripMenuItem("Add To Next D&own", null, AddDownAction,
+            _menu.Items.Add(_addToNextDownToolStripMenuItem = new ToolStripMenuItem("Add To Next D&own", null,
+                AddDownAction,
                 Keys.Control | Keys.Alt | Keys.Down));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Move to end of bone array", null, RemapAction));
@@ -43,7 +55,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(
                 new ToolStripMenuItem("Add New Child", null, CreateAction, Keys.Control | Keys.Alt | Keys.N));
-            _menu.Items.Add(_deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -80,8 +92,8 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _moveUpToolStripMenuItem.Enabled = true;
-            _moveDownToolStripMenuItem.Enabled = true;
+            MoveUpToolStripMenuItem.Enabled = true;
+            MoveDownToolStripMenuItem.Enabled = true;
             _addToParentToolStripMenuItem.Enabled = true;
             _addToNextUpToolStripMenuItem.Enabled = true;
             _addToNextDownToolStripMenuItem.Enabled = true;
@@ -90,8 +102,8 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0BoneWrapper w = GetInstance<MDL0BoneWrapper>();
-            _moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
-            _moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             _addToParentToolStripMenuItem.Enabled = w.Parent != null && w._resource.Parent is MDL0BoneNode;
             _addToNextUpToolStripMenuItem.Enabled = w.PrevNode != null;
             _addToNextDownToolStripMenuItem.Enabled = w.NextNode != null;

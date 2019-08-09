@@ -16,13 +16,23 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
-        private static ToolStripMenuItem _newShaderToolStripMenuItem;
-        private static ToolStripMenuItem _importShaderToolStripMenuItem;
-        private static ToolStripMenuItem _replaceToolStripMenuItem;
-        private static ToolStripMenuItem _restoreToolStripMenuItem;
-        private static ToolStripMenuItem _moveUpToolStripMenuItem;
-        private static ToolStripMenuItem _moveDownToolStripMenuItem;
-        private static ToolStripMenuItem _deleteToolStripMenuItem;
+        private static readonly ToolStripMenuItem _newShaderToolStripMenuItem;
+        private static readonly ToolStripMenuItem _importShaderToolStripMenuItem;
+
+        private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
+            new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
+
+        private static readonly ToolStripMenuItem RestoreToolStripMenuItem =
+            new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T);
+
+        private static readonly ToolStripMenuItem MoveUpToolStripMenuItem =
+            new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up);
+
+        private static readonly ToolStripMenuItem MoveDownToolStripMenuItem =
+            new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down);
+
+        private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
+            new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
         static MDL0Wrapper()
         {
@@ -30,16 +40,17 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&Preview", null, PreviewAction, Keys.Control | Keys.P));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
-            _menu.Items.Add(_restoreToolStripMenuItem = new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T));
+            _menu.Items.Add(ReplaceToolStripMenuItem);
+            _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(_moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(MoveUpToolStripMenuItem);
+            _menu.Items.Add(MoveDownToolStripMenuItem);
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("Ne&w Asset", null,
                 new ToolStripMenuItem("&Material", null, NewMaterialAction, Keys.Control | Keys.M),
-                _newShaderToolStripMenuItem = new ToolStripMenuItem("S&hader", null, NewShaderAction, Keys.Control | Keys.H),
+                _newShaderToolStripMenuItem =
+                    new ToolStripMenuItem("S&hader", null, NewShaderAction, Keys.Control | Keys.H),
                 new ToolStripMenuItem("Vertices", null, NewVertexAction),
                 new ToolStripMenuItem("Normals", null, NewNormalAction),
                 new ToolStripMenuItem("Colors", null, NewColorAction),
@@ -78,7 +89,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("(&Re)generate Metal Materials", null, MetalAction));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -240,11 +251,11 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _replaceToolStripMenuItem.Enabled = true;
-            _deleteToolStripMenuItem.Enabled = true;
-            _restoreToolStripMenuItem.Enabled = true;
-            _moveUpToolStripMenuItem.Enabled = true;
-            _moveDownToolStripMenuItem.Enabled = true;
+            ReplaceToolStripMenuItem.Enabled = true;
+            DeleteToolStripMenuItem.Enabled = true;
+            RestoreToolStripMenuItem.Enabled = true;
+            MoveUpToolStripMenuItem.Enabled = true;
+            MoveDownToolStripMenuItem.Enabled = true;
             _newShaderToolStripMenuItem.Enabled = true;
             _importShaderToolStripMenuItem.Enabled = true;
         }
@@ -252,22 +263,22 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0Wrapper w = GetInstance<MDL0Wrapper>();
-            _replaceToolStripMenuItem.Enabled = w.Parent != null;
-            _deleteToolStripMenuItem.Enabled = w.Parent != null;
-            _restoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
-            _moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
-            _moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            ReplaceToolStripMenuItem.Enabled = w.Parent != null;
+            DeleteToolStripMenuItem.Enabled = w.Parent != null;
+            RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
+            MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             if (((MDL0Node) w._resource)._shadList != null && ((MDL0Node) w._resource)._matList != null)
             {
                 _newShaderToolStripMenuItem.Enabled =
                     ((MDL0Node) w._resource)._shadList.Count < ((MDL0Node) w._resource)._matList.Count;
                 _importShaderToolStripMenuItem.Enabled =
-                    ((MDL0Node)w._resource)._shadList.Count < ((MDL0Node)w._resource)._matList.Count;
+                    ((MDL0Node) w._resource)._shadList.Count < ((MDL0Node) w._resource)._matList.Count;
             }
             else
             {
-                _newShaderToolStripMenuItem.Enabled = ((MDL0Node)w._resource)._matList != null;
-                _importShaderToolStripMenuItem.Enabled = ((MDL0Node)w._resource)._matList != null;
+                _newShaderToolStripMenuItem.Enabled = ((MDL0Node) w._resource)._matList != null;
+                _importShaderToolStripMenuItem.Enabled = ((MDL0Node) w._resource)._matList != null;
             }
         }
 
@@ -343,7 +354,8 @@ namespace BrawlCrate.NodeWrappers
                 return shader;
             }
 
-            MessageBox.Show("Shader could not be added. Make sure that you do not have more shaders than materials", "Error");
+            MessageBox.Show("Shader could not be added. Make sure that you do not have more shaders than materials",
+                "Error");
             return null;
         }
 
@@ -409,7 +421,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NameMaterial()
         {
-            MDL0Node model = ((MDL0Node)_resource);
+            MDL0Node model = (MDL0Node) _resource;
             MDL0GroupNode g = model._matGroup;
             int i = 0;
             if (g != null)
@@ -423,7 +435,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NameObject()
         {
-            MDL0Node model = ((MDL0Node)_resource);
+            MDL0Node model = (MDL0Node) _resource;
             MDL0GroupNode g = model._objGroup;
             int i = 0;
             if (g != null)
@@ -729,49 +741,49 @@ namespace BrawlCrate.NodeWrappers
         public void SortMaterial()
         {
             int index = Index;
-            ((MDL0Node)_resource).MaterialGroup.SortChildren();
+            ((MDL0Node) _resource).MaterialGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortVertex()
         {
             int index = Index;
-            ((MDL0Node)_resource).VertexGroup.SortChildren();
+            ((MDL0Node) _resource).VertexGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortNormal()
         {
             int index = Index;
-            ((MDL0Node)_resource).NormalGroup.SortChildren();
+            ((MDL0Node) _resource).NormalGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortColor()
         {
             int index = Index;
-            ((MDL0Node)_resource).ColorGroup.SortChildren();
+            ((MDL0Node) _resource).ColorGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortUV()
         {
             int index = Index;
-            ((MDL0Node)_resource).UVGroup.SortChildren();
+            ((MDL0Node) _resource).UVGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortObject()
         {
             int index = Index;
-            ((MDL0Node)_resource).PolygonGroup.SortChildren();
+            ((MDL0Node) _resource).PolygonGroup.SortChildren();
             RefreshView(_resource);
         }
 
         public void SortTexture()
         {
             int index = Index;
-            ((MDL0Node)_resource).TextureGroup.SortChildren();
+            ((MDL0Node) _resource).TextureGroup.SortChildren();
             RefreshView(_resource);
         }
 

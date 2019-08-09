@@ -202,6 +202,7 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
             }
+
             return result.ToArray();
         }
 

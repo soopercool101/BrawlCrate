@@ -12,11 +12,21 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-        private static ToolStripMenuItem _replaceToolStripMenuItem;
-        private static ToolStripMenuItem _restoreToolStripMenuItem;
-        private static ToolStripMenuItem _moveUpToolStripMenuItem;
-        private static ToolStripMenuItem _moveDownToolStripMenuItem;
-        private static ToolStripMenuItem _deleteToolStripMenuItem;
+
+        private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
+            new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
+
+        private static readonly ToolStripMenuItem RestoreToolStripMenuItem =
+            new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T);
+
+        private static readonly ToolStripMenuItem MoveUpToolStripMenuItem =
+            new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up);
+
+        private static readonly ToolStripMenuItem MoveDownToolStripMenuItem =
+            new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down);
+
+        private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
+            new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
         static MDL0PolygonWrapper()
         {
@@ -25,13 +35,13 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(_moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(MoveUpToolStripMenuItem);
+            _menu.Items.Add(MoveDownToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(DeleteToolStripMenuItem);
         }
 
         protected static void OptimizeAction(object sender, EventArgs e)

@@ -12,8 +12,8 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
-        private static ToolStripMenuItem _newEntryToolStripMenuItem;
-        private static ToolStripMenuItem _clearListToolStripMenuItem;
+        private static readonly ToolStripMenuItem _newEntryToolStripMenuItem;
+        private static readonly ToolStripMenuItem _clearListToolStripMenuItem;
 
 
         static RSTCGroupWrapper()
@@ -21,9 +21,11 @@ namespace BrawlCrate.NodeWrappers
             _menu = new ContextMenuStrip();
 
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(_newEntryToolStripMenuItem = new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
+            _menu.Items.Add(_newEntryToolStripMenuItem =
+                new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_clearListToolStripMenuItem = new ToolStripMenuItem("Clear List", null, ClearAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(_clearListToolStripMenuItem =
+                new ToolStripMenuItem("Clear List", null, ClearAction, Keys.Control | Keys.Delete));
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }

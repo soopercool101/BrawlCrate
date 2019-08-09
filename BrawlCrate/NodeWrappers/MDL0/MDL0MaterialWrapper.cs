@@ -13,28 +13,38 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
-        private static ToolStripMenuItem _addNewRefToolStripMenuItem;
-        private static ToolStripMenuItem _replaceToolStripMenuItem;
-        private static ToolStripMenuItem _restoreToolStripMenuItem;
-        private static ToolStripMenuItem _moveUpToolStripMenuItem;
-        private static ToolStripMenuItem _moveDownToolStripMenuItem;
-        private static ToolStripMenuItem _deleteToolStripMenuItem;
+        private static readonly ToolStripMenuItem _addNewRefToolStripMenuItem;
+
+        private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
+            new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
+
+        private static readonly ToolStripMenuItem RestoreToolStripMenuItem =
+            new ToolStripMenuItem("Res&tore", null, RestoreAction, Keys.Control | Keys.T);
+
+        private static readonly ToolStripMenuItem MoveUpToolStripMenuItem =
+            new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up);
+
+        private static readonly ToolStripMenuItem MoveDownToolStripMenuItem =
+            new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down);
+
+        private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
+            new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
         static MDL0MaterialWrapper()
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
-            _menu.Items.Add(_replaceToolStripMenuItem = new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R));
+            _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_moveUpToolStripMenuItem = new ToolStripMenuItem("Move &Up", null, MoveUpAction, Keys.Control | Keys.Up));
-            _menu.Items.Add(_moveDownToolStripMenuItem = new ToolStripMenuItem("Move D&own", null, MoveDownAction, Keys.Control | Keys.Down));
+            _menu.Items.Add(MoveUpToolStripMenuItem);
+            _menu.Items.Add(MoveDownToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(_addNewRefToolStripMenuItem = new ToolStripMenuItem("Add New Reference", null, CreateAction,
                 Keys.Control | Keys.Alt | Keys.N));
             _menu.Items.Add(new ToolStripMenuItem("Export GLSL Shader", null, ExportShaderAction));
             _menu.Items.Add(new ToolStripSeparator());
-            _menu.Items.Add(_deleteToolStripMenuItem = new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete));
+            _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
         }
@@ -51,16 +61,16 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
-            _moveUpToolStripMenuItem.Enabled = true;
-            _moveDownToolStripMenuItem.Enabled = true;
+            MoveUpToolStripMenuItem.Enabled = true;
+            MoveDownToolStripMenuItem.Enabled = true;
             _addNewRefToolStripMenuItem.Enabled = true;
         }
 
         private static void MenuOpening(object sender, CancelEventArgs e)
         {
             MDL0MaterialWrapper w = GetInstance<MDL0MaterialWrapper>();
-            _moveUpToolStripMenuItem.Enabled = w.PrevNode != null;
-            _moveDownToolStripMenuItem.Enabled = w.NextNode != null;
+            MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
+            MoveDownToolStripMenuItem.Enabled = w.NextNode != null;
             _addNewRefToolStripMenuItem.Enabled = w._resource.Children.Count < 8; //8 mat refs max!
         }
 
