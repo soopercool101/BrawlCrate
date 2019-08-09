@@ -843,12 +843,12 @@ namespace System.Windows.Forms
                 _selEnd = new Drawing.Point(e.X - Region.X, WorldToLocalY(e.Y));
             }
 
-            if (!_grabbing && lastCursorPos != null)
+            if (!_grabbing && !_scrolling && lastCursorPos != null)
             {
                 Cursor.Show();
                 lastCursorPos = null;
             }
-            else if (_grabbing && lastCursorPos == null)
+            else if ((_grabbing || _scrolling) && lastCursorPos == null)
             {
                 Cursor.Hide();
                 lastCursorPos = Cursor.Position;
@@ -861,10 +861,10 @@ namespace System.Windows.Forms
             {
                 lock (ctx)
                 {
-                    int xDiff = _grabbing && lastCursorPos != null
+                    int xDiff = lastCursorPos != null
                         ? Cursor.Position.X - lastCursorPos.Value.X
                         : x - _lastX;
-                    int yDiff = _grabbing && lastCursorPos != null
+                    int yDiff = lastCursorPos != null
                         ? lastCursorPos.Value.Y - Cursor.Position.Y
                         : _lastY - y;
 
@@ -887,7 +887,7 @@ namespace System.Windows.Forms
 
                     if (_scrolling)
                     {
-                        Translate(0, 0, yDiff * 0.01f);
+                        Translate(0, 0, -yDiff * 0.01f);
                     }
                     else if (ctrl)
                     {
@@ -906,7 +906,7 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (_grabbing)
+                if (_grabbing || _scrolling)
                 {
                     if (lastCursorPos == null)
                     {
