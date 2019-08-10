@@ -1106,7 +1106,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             _linkLeft = left;
             _linkLeft._members.Add(this);
             _linkRight = right;
-            _linkRight._members.Add(this);
+            if (_linkLeft != _linkRight)
+            {
+                _linkRight._members.Add(this);
+            }
         }
 
         public CollisionPlane(CollisionObject parent, ColPlane* entry, int offset)
