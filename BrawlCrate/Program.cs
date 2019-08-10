@@ -380,6 +380,7 @@ namespace BrawlCrate
                 if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
                 {
                     MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
                     return true;
                 }
                 else
@@ -390,7 +391,6 @@ namespace BrawlCrate
                         MessageBox.Show("Unable to recognize input file.");
                     }
                     MainForm.Instance.Reset();
-                    MainForm.Instance.RecentFilesHandler.AddFile(path);
                 }
 #if !DEBUG
             }
