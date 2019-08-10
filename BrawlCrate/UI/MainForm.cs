@@ -28,7 +28,7 @@ namespace BrawlCrate
         private SettingsDialog _settings;
         private SettingsDialog Settings => _settings ?? (_settings = new SettingsDialog());
 
-        private readonly RecentFileHandler RecentFileHandler;
+        public readonly RecentFileHandler RecentFilesHandler;
 
         private InterpolationForm _interpolationForm = null;
 
@@ -95,7 +95,7 @@ namespace BrawlCrate
 
             modelPanel1.CurrentViewport._allowSelection = false;
 
-            RecentFileHandler = new RecentFileHandler(components)
+            RecentFilesHandler = new RecentFileHandler(components)
             {
                 RecentFileToolStripItem = recentFilesToolStripMenuItem
             };
@@ -1057,10 +1057,6 @@ namespace BrawlCrate
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int i = Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile);
-            if (i != 0 && Program.Open(inFile))
-            {
-                RecentFileHandler.AddFile(inFile);
-            }
         }
 
 #region File Menu
@@ -1427,8 +1423,11 @@ namespace BrawlCrate
                 int alreadyIn = GetIndexOfRecentFile(fileName);
                 if (alreadyIn != -1) // remove it
                 {
-                    recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);
                     Settings.Default.RecentFiles.RemoveAt(alreadyIn);
+                    if (recentFileToolStripItem.DropDownItems.Count > alreadyIn)
+                    {
+                        recentFileToolStripItem.DropDownItems.RemoveAt(alreadyIn);
+                    }
                 }
                 else if (alreadyIn == 0) // it´s the latest file so return
                 {
@@ -1439,11 +1438,15 @@ namespace BrawlCrate
                 Settings.Default.RecentFiles.Insert(0, fileName);
                 recentFileToolStripItem.DropDownItems.Insert(0, new FileMenuItem(fileName));
 
-                // remove the last one, if max size is reached
-                if (Settings.Default.RecentFiles.Count > Settings.Default.RecentFilesMax)
+                // remove any beyond the max size, if max size is reached
+                while (Settings.Default.RecentFiles.Count > Settings.Default.RecentFilesMax)
+                {
+                    Settings.Default.RecentFiles.RemoveAt(Settings.Default.RecentFilesMax);
+                }
+
+                while (recentFileToolStripItem.DropDownItems.Count > Settings.Default.RecentFilesMax)
                 {
                     recentFileToolStripItem.DropDownItems.RemoveAt(Settings.Default.RecentFilesMax);
-                    Settings.Default.RecentFiles.RemoveAt(Settings.Default.RecentFilesMax);
                 }
 
                 // enable the menu item if it´s disabled
@@ -1457,6 +1460,7 @@ namespace BrawlCrate
             }
             catch
             {
+                // ignored
             }
         }
 

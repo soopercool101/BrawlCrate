@@ -164,6 +164,7 @@ namespace BrawlCrate
                         {
                             _rootPath = args[1];
                         }
+                        MainForm.Instance?.RecentFilesHandler?.AddFile(args[1]);
                     }
 
                     MainForm.UpdateDiscordRPC(null, null);
@@ -191,6 +192,7 @@ namespace BrawlCrate
                     }
 
                     MainForm.UpdateDiscordRPC(null, null);
+                    MainForm.Instance?.RecentFilesHandler?.AddFile(args[0]);
                     Application.Run(editor);
                     if (CanRunDiscordRPC)
                     {
@@ -363,6 +365,7 @@ namespace BrawlCrate
                 editor.OpenFileChanged += MainForm.UpdateDiscordRPC;
                 editor.Show();
                 MainForm.UpdateDiscordRPC(null, null);
+                MainForm.Instance.RecentFilesHandler.AddFile(path);
                 return true;
             }
 
@@ -387,6 +390,7 @@ namespace BrawlCrate
                         MessageBox.Show("Unable to recognize input file.");
                     }
                     MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
                 }
 #if !DEBUG
             }
