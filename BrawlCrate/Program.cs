@@ -667,7 +667,7 @@ namespace BrawlCrate
                         WindowStyle = ProcessWindowStyle.Hidden,
                         Arguments = $"-dlStable {RootPath}",
                     });
-                    git.WaitForExit();
+                    git?.WaitForExit();
                 }
             }
             catch (Exception e)
@@ -688,7 +688,7 @@ namespace BrawlCrate
                         WindowStyle = ProcessWindowStyle.Hidden,
                         Arguments = $"-dlCanary {RootPath}",
                     });
-                    git.WaitForExit();
+                    git?.WaitForExit();
                 }
             }
             catch (Exception e)
