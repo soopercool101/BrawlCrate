@@ -153,7 +153,7 @@ namespace BrawlCrate
                             WindowStyle = ProcessWindowStyle.Hidden,
                             Arguments = "-canarylog"
                         });
-                        changelog.WaitForExit();
+                        changelog?.WaitForExit();
                     }
 #else
                     Process.Start(new ProcessStartInfo()

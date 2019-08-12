@@ -392,7 +392,7 @@ namespace Net
                         // For documentation updates, ensure temp.exe is properly deleted and show changelog if the download was automated.
                         if (Documentation)
                         {
-                            update.WaitForExit();
+                            update?.WaitForExit();
                             if (File.Exists(AppPath + "\\temp.exe"))
                             {
                                 File.Delete(AppPath + "\\temp.exe");

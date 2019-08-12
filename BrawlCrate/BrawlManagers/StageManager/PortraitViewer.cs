@@ -1069,7 +1069,7 @@ namespace BrawlCrate.StageManager
 
             using (Process p = Process.Start(start))
             {
-                p.WaitForExit();
+                p?.WaitForExit();
                 if (!File.Exists(tempfile))
                 {
                     MessageBox.Show(this,
