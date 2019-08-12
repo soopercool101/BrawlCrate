@@ -1056,7 +1056,10 @@ namespace BrawlCrate
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int i = Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile);
+            if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile) != 0)
+            {
+                Program.Open(inFile);
+            }
         }
 
 #region File Menu
