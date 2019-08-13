@@ -59,7 +59,7 @@ namespace BrawlCrate
 #else
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
                     .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
-            AssemblyTitleShort = AssemblyTitleFull;
+            AssemblyTitleShort = AssemblyTitleFull.Contains("Hotfix") ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf("Hotfix")).Trim(' ') : AssemblyTitleFull;
 #endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
