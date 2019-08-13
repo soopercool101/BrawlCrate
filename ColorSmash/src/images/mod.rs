@@ -281,7 +281,7 @@ where
         .zip(rgb_palettes.into_iter())
         .zip(alpha_palettes.into_iter())
     {
-        let mut output = &try!(File::create(output_path));
+        let output = &try!(File::create(output_path));
         let mut encoder = png::Encoder::new(output, width, height);
         encoder
             .set(png::ColorType::Indexed)
