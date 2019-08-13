@@ -157,7 +157,7 @@ void SawndInsert2()
     if (!Copy.good())
     {
         printf("Error Opening sawnd.sawnd\n");
-        printf("%s", strerror(errno));
+        //printf("%s", strerror(errno));
         return;
     }
     Copy.seekg(1);
@@ -170,7 +170,7 @@ void SawndInsert2()
     if (!Orig.good())
     {
         printf("Error Opening brsar file: %s\n", brsarName);
-        printf("%s", strerror(errno));
+        //printf("%s", strerror(errno));
         return;
     }
     Orig.seekg(24);
@@ -493,7 +493,7 @@ void SawndCreate(long long group)
     if (!Copy.good())
     {
         printf("Error creating sawnd.sawnd\n");
-        printf("%s", strerror(errno));
+        //printf("%s", strerror(errno));
         return;
     }
     Copy.put(2);
@@ -503,7 +503,7 @@ void SawndCreate(long long group)
     if (!Orig.good())
     {
         printf("Error Opening BRSAR %s\n", brsarName);
-        printf("%s", strerror(errno));
+        //printf("%s", strerror(errno));
         return;
     }
     Orig.seekg(24);
@@ -718,7 +718,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     if (!Orig.good())
     {
         printf("Error Opening BRSAR\n");
-        printf("%s", strerror(errno));
+        //printf("%s", strerror(errno));
         return;
     }
 
@@ -976,7 +976,7 @@ void Insert(long long group, long long collection, long long wave, int frequency
     if (!Copy.good())
     {
         printf("Error Opening sawnd.spd\n");
-        printf("%s", strerror(errno));
+        //printf("%s", strerror(errno));
         return;
     }
     //  printf("Opened Sawnd.spd\n");
@@ -1210,7 +1210,7 @@ int main(int argc, char** argv)
         printf("EXCEPTION");
         if (errno)
         {
-            printf("%s", strerror(errno));
+            //printf("%s", strerror(errno));
         }
         printf("%s", e.what());
         Sleep(1000);
