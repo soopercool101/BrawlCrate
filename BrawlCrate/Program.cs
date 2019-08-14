@@ -117,12 +117,16 @@ namespace BrawlCrate
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            if (e.ExceptionObject is Exception)
+            if (e.ExceptionObject is Exception ex)
             {
                 List<ResourceNode> dirty = GetDirtyFiles();
-                Exception ex = e.ExceptionObject as Exception;
                 IssueDialog d = new IssueDialog(ex, dirty);
                 d.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show($"Unhandled exception of type {e.ExceptionObject?.GetType()}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
