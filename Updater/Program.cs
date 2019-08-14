@@ -274,6 +274,13 @@ namespace Updater
                 string[] repoData = currentRepo.Split(slashes);
                 Release release =
                     await github.Repository.Release.Get(repoData[0], repoData[1], $"Canary-{currentBranch}");
+
+                if (release == null || release.Assets.Count == 0)
+                {
+                    MessageBox.Show($"Error: Canary release for {currentRepo}@{currentBranch} could not be found. Update failed.");
+                    return;
+                }
+
                 if (!force)
                 {
                     string oldID = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
@@ -287,11 +294,6 @@ namespace Updater
 
                         return;
                     }
-                }
-
-                if (release == null || release.Assets.Count == 0)
-                {
-                    throw new Exception();
                 }
 
                 if ((manual || GetOpenWindowsCount() > 1) && MessageBox.Show(
