@@ -277,7 +277,9 @@ namespace Updater
 
                 if (release == null || release.Assets.Count == 0)
                 {
-                    MessageBox.Show($"Error: Canary release for {currentRepo}@{currentBranch} could not be found. Update failed.");
+                    MessageBox.Show(
+                        $"Error: Canary release for {currentRepo}@{currentBranch} could not be found. Update failed.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
