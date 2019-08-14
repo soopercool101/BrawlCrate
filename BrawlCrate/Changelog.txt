@@ -30,6 +30,8 @@ they be held accountable for the manner in which it is used.
  . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
  . Add MainForm previewing of textures in a BRRES or TPL
  . Add MainForm previewing of Collision Nodes
+ . Add support for Subspace Stages as Special ARC Nodes
+   - Now supports auto-compression when the stage setting is active
  . Collision Objects are now parsed as children of Collision Nodes
  . Collision planes with the "Rotating" flag will now change color based on their angle, matching Brawl's implementation
  . Add rudimentary editing support for single-linked collisions
@@ -74,6 +76,8 @@ they be held accountable for the manner in which it is used.
    - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a file
    - Added Example Loader that dumps CSPs as RSPs
  . Add ability to directly import materials and shaders to an MDL0
+ . Add new iconography for Canary builds
+ . Add support for longform assembly title, to be used for hotfixes
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
