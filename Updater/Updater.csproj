@@ -75,7 +75,7 @@
     <DefineConstants />
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Net.Program</StartupObject>
+    <StartupObject>Updater.Program</StartupObject>
     <AssemblyVersion>35.0.0.0</AssemblyVersion>
     <Authors>soopercool101, Sammi Husky</Authors>
     <PackageId>BrawlCrate Updater</PackageId>

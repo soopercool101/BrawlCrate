@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Application = System.Windows.Forms.Application;
 
-namespace Net
+namespace Updater
 {
     public static class Updater
     {
