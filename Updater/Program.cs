@@ -17,8 +17,8 @@ namespace Updater
 {
     public static class Updater
     {
-        public static readonly string mainRepo = "soopercool101/BrawlCrate";
-        public static readonly string mainBranch = "brawlcrate-master";
+        public static readonly string mainRepo = "soopercool101/BrawlCrateNext";
+        public static readonly string mainBranch = "master";
         public static string currentRepo;
         public static string currentBranch;
 
