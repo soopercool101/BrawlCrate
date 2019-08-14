@@ -4,4 +4,3 @@ script: msbuild /p:Configuration=Mono BrawlCrateNext.sln
 os:
   - linux
   - osx
-  - windows
