@@ -73,7 +73,7 @@ they be held accountable for the manner in which it is used.
 	   - Add support for title and filters
      . AddContextMenuItem
 	   - Allow context menu items to be contextually hidden, in submenus, and have a mouseover description
-   - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a file
+   - Example Plugin: Dump Textures now dumps non-TEX0 textures and prompts the user to select a folder
    - Added Example Loader that dumps CSPs as RSPs
  . Add ability to directly import materials and shaders to an MDL0
  . Add new iconography for Canary builds
