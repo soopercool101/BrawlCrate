@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlCrate", "BrawlCrate\Br
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlLib", "BrawlLib\BrawlLib.csproj", "{462D0BBF-CE82-405B-8848-2F91E9E14C55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net", "Updater\Net.csproj", "{9FAFC886-08B5-4922-BECC-E03D84FF15B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Updater", "Updater\Updater.csproj", "{9FAFC886-08B5-4922-BECC-E03D84FF15B0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sawndz", "sawndz\sawndz.vcxproj", "{D72045EE-2630-49F1-9668-435FDA84D73A}"
 EndProject

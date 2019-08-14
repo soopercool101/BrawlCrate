@@ -17,7 +17,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <AssemblyTitle>BrawlCrateLib</AssemblyTitle>
     <Product>BrawlCrateLib</Product>
     <Copyright>Copyright © 2018 - 2019 soopercool101, MarioDox, Syvkal

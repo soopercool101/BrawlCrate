@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <PlatformTarget>x86</PlatformTarget>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
