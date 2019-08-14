@@ -424,11 +424,11 @@ namespace BrawlLib.Properties {
                     return PartyBallIcon;
                 }
 #if CANARY
-                object obj = ResourceManager.GetObject("CanaryIcon", resourceCulture);
+                return CanaryIcon;
 #else
                 object obj = ResourceManager.GetObject("Icon", resourceCulture);
-#endif
                 return ((System.Drawing.Icon)(obj));
+#endif
             }
         }
         
