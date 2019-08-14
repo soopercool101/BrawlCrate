@@ -55,10 +55,18 @@ namespace BrawlCrate
             AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
 #if CANARY
             AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
+            if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+            {
+                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
+            }
             AssemblyTitleShort = AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8);
 #else
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
                     .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+            if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
+            {
+                AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
+            }
             AssemblyTitleShort = AssemblyTitleFull.Contains("Hotfix") ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf("Hotfix")).Trim(' ') : AssemblyTitleFull;
 #endif
             AssemblyDescription =
