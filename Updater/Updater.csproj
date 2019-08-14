@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <AssemblyName>Updater</AssemblyName>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AssemblyTitle>BrawlCrate updater</AssemblyTitle>
     <Company>BrawlCrate</Company>
     <Product>BrawlCrate</Product>
