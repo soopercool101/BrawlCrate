@@ -29,28 +29,28 @@ namespace BrawlLib.SSBB.ResourceNodes
 #if !DEBUG
         [Browsable(false)]
 #endif
-        public bool IsSubspace => _isSubspace; //set { _isStage = value; } }
+        public bool IsSubspace => _isSubspace;
 
         private bool _isSubspace;
 
 #if !DEBUG
         [Browsable(false)]
 #endif
-        public bool IsStage => _isStage; //set { _isStage = value; } }
+        public bool IsStage => _isStage;
 
         private bool _isStage;
 
 #if !DEBUG
         [Browsable(false)]
 #endif
-        public bool IsFighter => _isFighter; // set { _isFighter = value; } }
+        public bool IsFighter => _isFighter;
 
         private bool _isFighter;
 
 #if !DEBUG
         [Browsable(false)]
 #endif
-        public bool IsItemTable => _isItemTable; // set { _isFighter = value; } }
+        public bool IsItemTable => _isItemTable;
 
         private bool _isItemTable;
 
