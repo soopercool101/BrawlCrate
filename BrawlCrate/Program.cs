@@ -133,8 +133,8 @@ namespace BrawlCrate
             }
             else
             {
-                MessageBox.Show($"Unhandled exception of type {e.ExceptionObject?.GetType() ?? e.GetType()}", 
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Unhandled exception of type {e.ExceptionObject?.GetType()}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
