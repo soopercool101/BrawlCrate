@@ -29,6 +29,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 #if !DEBUG
         [Browsable(false)]
 #endif
+        public bool IsSubspace => _isSubspace; //set { _isStage = value; } }
+
+        private bool _isSubspace;
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
         public bool IsStage => _isStage; //set { _isStage = value; } }
 
         private bool _isStage;
@@ -58,6 +65,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else if (IsStage)
                 {
+                    if (IsSubspace)
+                    {
+                        return "Subspace Stage";
+                    }
                     return "Stage";
                 }
                 else if (IsItemTable)
@@ -334,9 +345,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     _isFighter = true;
                 }
+                else if ((_name.Length == 6 || _name.Length == 7) && int.TryParse(_name.Substring(0, 6), out _))
+                {
+                    _isStage = true;
+                    _isSubspace = true;
+                }
             }
 
-            if (_name.StartsWith("ItmMelee", StringComparison.OrdinalIgnoreCase))
+            if (_name.StartsWith("Itm", StringComparison.OrdinalIgnoreCase) && _name.EndsWith("Gen", StringComparison.OrdinalIgnoreCase))
             {
                 _isItemTable = true;
             }
