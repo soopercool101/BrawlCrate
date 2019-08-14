@@ -272,11 +272,8 @@ namespace Updater
             {
                 char[] slashes = {'\\', '/'};
                 string[] repoData = currentRepo.Split(slashes);
-                Release release = await github.Repository.Release.Get(repoData[0], repoData[1],
-                    "Canary" + (currentBranch.Equals(mainBranch,
-                        StringComparison.OrdinalIgnoreCase)
-                        ? ""
-                        : "-" + currentBranch));
+                Release release =
+                    await github.Repository.Release.Get(repoData[0], repoData[1], $"Canary-{currentBranch}");
                 if (!force)
                 {
                     string oldID = File.ReadAllLines(AppPath + "\\Canary\\New")[2];
