@@ -71,7 +71,7 @@ impl Color for Rgb5a3 {
                 let b = (b_float * 31.0).round() as u16;
                 (1 << 15) | (r << 10) | (g << 5) | b
             }
-            1...6 => {
+            1..=6 => {
                 let r = (r_float * 15.0).round() as u16;
                 let g = (g_float * 15.0).round() as u16;
                 let b = (b_float * 15.0).round() as u16;
