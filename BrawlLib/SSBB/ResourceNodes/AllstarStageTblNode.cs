@@ -1,7 +1,6 @@
 ﻿using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
-using System.Linq;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -158,6 +157,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 _fighterID = value;
+                Name = BrawlCrate.FighterNameGenerators.FromID(_fighterID, BrawlCrate.FighterNameGenerators.slotIDIndex,
+                    "-S");
                 SignalPropertyChange();
             }
         }
@@ -191,8 +192,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                Fighter fighter = Fighter.Fighters.Where(s => s.ID == FighterID).FirstOrDefault();
-                _name = "Fighter: 0x" + FighterID.ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
+                _name = BrawlCrate.FighterNameGenerators.FromID(_fighterID,
+                    BrawlCrate.FighterNameGenerators.slotIDIndex, "-S");
             }
 
             return true;

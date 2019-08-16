@@ -740,6 +740,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public virtual bool RetainChildrenOnReplace => false;
 
+        [Browsable(false)] public virtual bool supportsCompression => true;
+
         public virtual unsafe void ReplaceRaw(FileMap map)
         {
             if (_children != null && !RetainChildrenOnReplace)
@@ -758,9 +760,17 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             _replSrc = new DataSource(map);
 
-            FileMap uncompMap = Compressor.TryExpand(ref _replSrc, false);
-            _compression = _replSrc.Compression;
-            _replUncompSrc = uncompMap != null ? new DataSource(uncompMap) : _replSrc;
+            if (supportsCompression)
+            {
+                FileMap uncompMap = Compressor.TryExpand(ref _replSrc, false);
+                _compression = _replSrc.Compression;
+                _replUncompSrc = uncompMap != null ? new DataSource(uncompMap) : _replSrc;
+            }
+            else
+            {
+                _compression = CompressionType.None;
+                _replUncompSrc = _replSrc;
+            }
 
             _replaced = true;
             if (!OnInitialize() && !RetainChildrenOnReplace)

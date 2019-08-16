@@ -1,7 +1,6 @@
 ﻿using BrawlLib.SSBB.Types;
 using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -20,7 +19,6 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public byte Unknown01       { get { return data._unknown01; }        set { data._unknown01 = value;        SignalPropertyChange(); } }
         public ushort OffenseRatio
         {
             get => data._offenseRatio;
@@ -71,7 +69,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public byte Unknown09       { get { return data._unknown09; }        set { data._unknown09 = value;        SignalPropertyChange(); } }
+        public byte Unknown09
+        {
+            get => data._unknown09;
+            set
+            {
+                data._unknown09 = value;
+                SignalPropertyChange();
+            }
+        }
+
         public short InitialHitPoints
         {
             get => data._initialHitPoints;
@@ -138,6 +145,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             set
             {
                 data._fighterID = value;
+                Name = BrawlCrate.FighterNameGenerators.FromID(data._fighterID,
+                    BrawlCrate.FighterNameGenerators.slotIDIndex, "-S");
                 SignalPropertyChange();
             }
         }
@@ -152,8 +161,26 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public byte Unknown02  { get { return data._unknown02; }          set { data._unknown02 = value;    SignalPropertyChange(); } }
-        //public byte Unknown03  { get { return data._unknown03; }          set { data._unknown03 = value;    SignalPropertyChange(); } }
+        public byte Unknown02
+        {
+            get => data._unknown02;
+            set
+            {
+                data._unknown02 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public byte Unknown03
+        {
+            get => data._unknown03;
+            set
+            {
+                data._unknown03 = value;
+                SignalPropertyChange();
+            }
+        }
+
         public float Scale
         {
             get => data._scale;
@@ -173,9 +200,36 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
-        //public byte Unknown09  { get { return data._unknown09; }          set { data._unknown09 = value;    SignalPropertyChange(); } }
-        //public byte Unknown0a  { get { return data._unknown0a; }          set { data._unknown0a = value;    SignalPropertyChange(); } }
-        //public byte Unknown0b  { get { return data._unknown0b; }          set { data._unknown0b = value;    SignalPropertyChange(); } }
+
+        public byte Unknown09
+        {
+            get => data._unknown09;
+            set
+            {
+                data._unknown09 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public byte Unknown0a
+        {
+            get => data._unknown0a;
+            set
+            {
+                data._unknown0a = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public byte Unknown0b
+        {
+            get => data._unknown0b;
+            set
+            {
+                data._unknown0b = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
@@ -202,7 +256,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             VoidPtr ptr = WorkingUncompressed.Address + sizeof(EventMatchFighterHeader);
-            foreach (string s in new [] {"Easy", "Normal", "Hard"})
+            foreach (string s in new string[] {"Easy", "Normal", "Hard"})
             {
                 DataSource source = new DataSource(ptr, sizeof(EventMatchDifficultyData));
                 EventMatchDifficultyNode node = new EventMatchDifficultyNode();
@@ -235,8 +289,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void UpdateName()
         {
-            Fighter fighter = Fighter.Fighters.Where(s => s.ID == FighterID).FirstOrDefault();
-            Name = "Fighter: 0x" + FighterID.ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
+            Name = BrawlCrate.FighterNameGenerators.FromID(FighterID, BrawlCrate.FighterNameGenerators.slotIDIndex,
+                "-S");
         }
     }
 
@@ -264,7 +318,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [DisplayName("Event Extension")] public bint EventExtension => _header._eventExtension;
 
-        //public bint Unknown04 { get { return _header._unknown04; } set { _header._unknown04 = value; } }
+        public bint Unknown04
+        {
+            get => _header._unknown04;
+            set => _header._unknown04 = value;
+        }
 
         [DisplayName("Match Type")]
         public MatchTypeEnum MatchType
@@ -277,9 +335,35 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public byte Unknown09 { get { return _header._unknown09; } set { _header._unknown09 = value; SignalPropertyChange(); } }
-        //public byte Unknown0a { get { return _header._unknown0a; } set { _header._unknown0a = value; SignalPropertyChange(); } }
-        //public byte Unknown0b { get { return _header._unknown0b; } set { _header._unknown0b = value; SignalPropertyChange(); } }
+        public byte Unknown09
+        {
+            get => _header._unknown09;
+            set
+            {
+                _header._unknown09 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public byte Unknown0a
+        {
+            get => _header._unknown0a;
+            set
+            {
+                _header._unknown0a = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public byte Unknown0b
+        {
+            get => _header._unknown0b;
+            set
+            {
+                _header._unknown0b = value;
+                SignalPropertyChange();
+            }
+        }
 
         [DisplayName("Time Limit")]
         public int TimeLimit
@@ -328,23 +412,32 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public bool UnknownFlag_10_80000000
-        //{
-        //    get
-        //    {
-        //        return (_header._flags10 & 0x80000000) != 0;
-        //    }
-        //    set
-        //    {
-        //        SignalPropertyChange();
-        //        if (value)
-        //            _header._flags10 |= unchecked((int)0x80000000);
-        //        else
-        //            _header._flags10 &= ~unchecked((int)0x80000000);
-        //    }
-        //}
+        public bool UnknownFlag_10_80000000
+        {
+            get => (_header._flags10 & 0x80000000) != 0;
+            set
+            {
+                SignalPropertyChange();
+                if (value)
+                {
+                    _header._flags10 |= unchecked((int) 0x80000000);
+                }
+                else
+                {
+                    _header._flags10 &= ~unchecked((int) 0x80000000);
+                }
+            }
+        }
 
-        //public float Unknown14 { get { return _header._unknown14; } set { _header._unknown14 = value; SignalPropertyChange(); } }
+        public float Unknown14
+        {
+            get => _header._unknown14;
+            set
+            {
+                _header._unknown14 = value;
+                SignalPropertyChange();
+            }
+        }
 
         [DisplayName("Hide Damage Values")]
         public bool HideDamageValues
@@ -386,8 +479,25 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public byte Unknown1c { get { return _header._unknown1c; } set { _header._unknown1c = value; SignalPropertyChange(); } }
-        //public byte Unknown1d { get { return _header._unknown1d; } set { _header._unknown1d = value; SignalPropertyChange(); } }
+        public byte Unknown1c
+        {
+            get => _header._unknown1c;
+            set
+            {
+                _header._unknown1c = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public byte Unknown1d
+        {
+            get => _header._unknown1d;
+            set
+            {
+                _header._unknown1d = value;
+                SignalPropertyChange();
+            }
+        }
 
         [DisplayName("Stage")]
         [TypeConverter(typeof(DropDownListStageIDs))]
@@ -413,27 +523,72 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public bool UnknownFlag_20_10000000
-        //{
-        //    get
-        //    {
-        //        return (_header._flags20 & 0x10000000) != 0;
-        //    }
-        //    set
-        //    {
-        //        SignalPropertyChange();
-        //        if (value)
-        //            _header._flags20 |= unchecked((int)0x10000000);
-        //        else
-        //            _header._flags20 &= ~unchecked((int)0x10000000);
-        //    }
-        //}
+        public bool UnknownFlag_20_10000000
+        {
+            get => (_header._flags20 & 0x10000000) != 0;
+            set
+            {
+                SignalPropertyChange();
+                if (value)
+                {
+                    _header._flags20 |= unchecked((int) 0x10000000);
+                }
+                else
+                {
+                    _header._flags20 &= ~unchecked((int) 0x10000000);
+                }
+            }
+        }
 
-        //public int Unknown24 { get { return _header._unknown24; } set { _header._unknown24 = value; SignalPropertyChange(); } }
-        //public int Unknown28 { get { return _header._unknown28; } set { _header._unknown28 = value; SignalPropertyChange(); } }
-        //public int Unknown2c { get { return _header._unknown2c; } set { _header._unknown2c = value; SignalPropertyChange(); } }
-        //public int Unknown30 { get { return _header._unknown30; } set { _header._unknown30 = value; SignalPropertyChange(); } }
-        //public int Unknown34 { get { return _header._unknown34; } set { _header._unknown34 = value; SignalPropertyChange(); } }
+        public int Unknown24
+        {
+            get => _header._unknown24;
+            set
+            {
+                _header._unknown24 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public int Unknown28
+        {
+            get => _header._unknown28;
+            set
+            {
+                _header._unknown28 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public int Unknown2c
+        {
+            get => _header._unknown2c;
+            set
+            {
+                _header._unknown2c = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public int Unknown30
+        {
+            get => _header._unknown30;
+            set
+            {
+                _header._unknown30 = value;
+                SignalPropertyChange();
+            }
+        }
+
+        public int Unknown34
+        {
+            get => _header._unknown34;
+            set
+            {
+                _header._unknown34 = value;
+                SignalPropertyChange();
+            }
+        }
 
         [DisplayName("Game Speed")]
         public float GameSpeed
@@ -457,21 +612,22 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //public bool UnknownFlag_40_80000000
-        //{
-        //    get
-        //    {
-        //        return (_header._flags40 & 0x80000000) != 0;
-        //    }
-        //    set
-        //    {
-        //        SignalPropertyChange();
-        //        if (value)
-        //            _header._flags40 |= unchecked((int)0x80000000);
-        //        else
-        //            _header._flags40 &= ~unchecked((int)0x80000000);
-        //    }
-        //}
+        public bool UnknownFlag_40_80000000
+        {
+            get => (_header._flags40 & 0x80000000) != 0;
+            set
+            {
+                SignalPropertyChange();
+                if (value)
+                {
+                    _header._flags40 |= unchecked((int) 0x80000000);
+                }
+                else
+                {
+                    _header._flags40 &= ~unchecked((int) 0x80000000);
+                }
+            }
+        }
 
         [DisplayName("Song ID")]
         public int SongID
@@ -506,8 +662,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        //[DisplayName("Unknown")]
-        //public bint Unknown4c { get { return _header._unknown4c; } set { _header._unknown4c = value; SignalPropertyChange(); } }
+        public bint Unknown4c
+        {
+            get => _header._unknown4c;
+            set
+            {
+                _header._unknown4c = value;
+                SignalPropertyChange();
+            }
+        }
 
         public override bool OnInitialize()
         {
