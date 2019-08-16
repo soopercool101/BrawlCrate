@@ -35,10 +35,10 @@ if (!$env:APPVEYOR_REPO_COMMIT) {
   $env:APPVEYOR_REPO_COMMIT="$(git log -1 --pretty="%H")"
 }
 
-$AUTHOR_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%aN")"
-$COMMITTER_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%cN")"
-$COMMIT_SUBJECT="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%s")" -replace "`"", "`"`""
-$COMMIT_MESSAGE="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%b")" -replace "`"", "`"`""
+$AUTHOR_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%aN")" -replace "`"", "'"
+$COMMITTER_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%cN")" -replace "`"", "'"
+$COMMIT_SUBJECT="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%s")" -replace "`"", "'"
+$COMMIT_MESSAGE="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%b")" -replace "`"", "'"
 
 if ($AUTHOR_NAME -eq $COMMITTER_NAME) {
   $CREDITS="$AUTHOR_NAME authored & committed"
