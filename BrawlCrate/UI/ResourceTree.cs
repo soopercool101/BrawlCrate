@@ -78,7 +78,13 @@ namespace BrawlCrate
                         Resources.REL,
                         Resources.BGMG, //50
                         Resources.SharedTEX0,
-                        Resources.SCLA
+                        Resources.SCLA,
+                        Resources.GDBF,
+                        Resources.GWAT,
+                        Resources.GCAM, //55
+                        Resources.GITM,
+                        Resources.GIB2,
+                        Resources.itembox
                     });
                 }
 

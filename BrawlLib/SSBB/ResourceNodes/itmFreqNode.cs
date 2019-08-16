@@ -8,14 +8,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ItmFreqNode : ARCEntryNode
     {
-        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
-        internal ItmFreqHeader* Header => (ItmFreqHeader*) WorkingUncompressed.Address;
+        public override ResourceType ResourceFileType => ResourceType.ItemFreqNode;
+        public override bool supportsCompression => false;
 
-        internal ItmFreqTableList* TList =>
-            (ItmFreqTableList*) (WorkingUncompressed.Address + Header->_DataLength - 0x08);
+        //internal ItmFreqHeader* Header { get { return (ItmFreqHeader*)WorkingUncompressed.Address; } }
+        internal ItmFreqTableList* TableList => (ItmFreqTableList*) (WorkingUncompressed.Address + _dataLength - 0x08);
 
         private ItmFreqOffEntry _t1, _t2, _t3, _t4, _t5;
 
+        public ItmFreqNode()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Children.Add(new TableNode() {Name = "Table [" + i + "]"});
+            }
+        }
 
         // Header variables
         private bint _dataLength, _fileSize, _DTableCount, _offCount = 0;
@@ -34,6 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
+            ItmFreqHeader* Header = (ItmFreqHeader*) WorkingUncompressed.Address;
             _dataLength = Header->_DataLength;
             _fileSize = Header->_Length;
             _DTableCount = Header->_DataTable;
@@ -43,15 +51,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             _pPointerList = BaseAddress + _dataLength;
             _strings.Add("genParamSet");
 
-            _t1 = TList->_table1;
-            _t2 = TList->_table2;
-            _t3 = TList->_table3;
-            _t4 = TList->_table4;
-            _t5 = TList->_table5;
+            _t1 = TableList->_table1;
+            _t2 = TableList->_table2;
+            _t3 = TableList->_table3;
+            _t4 = TableList->_table4;
+            _t5 = TableList->_table5;
 
             for (int i = 0; i < 5; i++)
             {
-                if (TList->Entries[i]._count > 0)
+                if (TableList->Entries[i]._count > 0)
                 {
                     _numTables++;
                 }
@@ -87,7 +95,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 // if they are not initialized, the size of the file will be thrown off by the
                 // size of the missing entries.
 
-                ItmFreqOffEntry* table = (ItmFreqOffEntry*) ((int) TList + i * 8);
+                ItmFreqOffEntry* table = (ItmFreqOffEntry*) ((int) TableList + i * 8);
                 DataSource TableSource = new DataSource(table, 0x08);
                 new TableNode().Initialize(this, TableSource);
             }
@@ -176,12 +184,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TableNode : ItmFreqBaseNode
     {
-        internal ItmFreqOffEntry* Header => (ItmFreqOffEntry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
+        //internal ItmFreqOffEntry* Header { get { return (ItmFreqOffEntry*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceFileType => ResourceType.ItemFreqTableNode;
+        public override bool supportsCompression => false;
 
         private int _entryOffset;
 
-        [Browsable(false)]
+        //[Browsable(false)]
         public int Offset
         {
             get => _entryOffset;
@@ -194,7 +203,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private int _count;
 
-        [Browsable(false)]
+        //[Browsable(false)]
         public int Count
         {
             get => _count;
@@ -209,12 +218,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
+            ItmFreqOffEntry* Header = (ItmFreqOffEntry*) WorkingUncompressed.Address;
             _entryOffset = Header->_offset;
             _count = Header->_count;
 
             if (_name == null)
             {
-                _name = string.Format("Table[{0}]", Index);
+                _name = string.Format("Table [{0}]", Index);
             }
 
             return _count > 0;
@@ -258,13 +268,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class TableGroupNode : ItmFreqBaseNode
     {
-        internal ItmFreqGroup* Header => (ItmFreqGroup*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
+        //internal ItmFreqGroup* Header { get { return (ItmFreqGroup*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceFileType => ResourceType.ItemFreqTableGroupNode;
+        public override bool supportsCompression => false;
 
         private bint _unk0;
 
         [Category("Group Node")]
-        public bint Unknown0
+        public int Unknown0
         {
             get => _unk0;
             set
@@ -277,7 +288,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private bint _unk1;
 
         [Category("Group Node")]
-        public bint Unknown1
+        public int Unknown1
         {
             get => _unk1;
             set
@@ -290,7 +301,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private bint _unk2;
 
         [Category("Group Node")]
-        public bint Unknown2
+        public int Unknown2
         {
             get => _unk2;
             set
@@ -303,7 +314,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private bint _unk3;
 
         [Category("Group Node")]
-        public bint Unknown3
+        public int Unknown3
         {
             get => _unk3;
             set
@@ -323,6 +334,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
+            ItmFreqGroup* Header = (ItmFreqGroup*) WorkingUncompressed.Address;
             _unk0 = Header->_unknown0;
             _unk1 = Header->_unknown1;
             _unk2 = Header->_unknown2;
@@ -332,7 +344,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = string.Format("Group[{0}]", Index);
+                _name = string.Format("Group [{0}]", Index);
             }
 
             return Header->_entryCount > 0;
@@ -381,27 +393,28 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class ItmFreqEntryNode : ItmFreqBaseNode
     {
-        internal ItmFreqEntry* Header => (ItmFreqEntry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceFileType => ResourceType.Unknown;
+        //internal ItmFreqEntry* Header { get { return (ItmFreqEntry*)WorkingUncompressed.Address; } }
+        public override ResourceType ResourceFileType => ResourceType.ItemFreqEntryNode;
+        public override bool supportsCompression => false;
 
         private int _id;
+        private readonly Item _item;
 
-        //private readonly Item _item;
         [Category("Item")]
         [DisplayName("Item ID")]
         [Description("The ID of the item to spawn.")]
         [TypeConverter(typeof(DropDownListItemIDs))]
         public int ItemID
         {
-            get => Header->_ID;
+            get => _id;
             set
             {
-                if (Header->_ID < 0 || value < 0)
+                if (_id < 0 || value < 0)
                 {
                     return;
                 }
 
-                Header->_ID = value;
+                _id = value;
                 SignalPropertyChange();
                 UpdateName();
             }
@@ -409,9 +422,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private int _costumeID;
 
-        [DisplayName("Costume ID")]
+        [DisplayName("SubItem ID")]
         [Category("Item")]
-        [Description("Item costume to use. (e.x Present Barrel/Crate)")]
+        [Description(
+            "Item subset to use. For Barrels, Crates, and Rolling Crates, this determines the costume used. For Bob-Ombs, setting to 1 causes Sudden Death Behavior.")]
         public int SubID
         {
             get => _costumeID;
@@ -470,7 +484,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool OnInitialize()
         {
             base.OnInitialize();
-
+            ItmFreqEntry* Header = (ItmFreqEntry*) WorkingUncompressed.Address;
             _id = Header->_ID;
             _costumeID = Header->_subItem;
             _frequency = Header->_frequency;
