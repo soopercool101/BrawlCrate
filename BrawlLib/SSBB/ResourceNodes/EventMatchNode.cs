@@ -325,7 +325,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [DisplayName("Event Extension")] public bint EventExtension => _header._eventExtension;
 
         [Category("Unknown")]
-        public bint Unknown04
+        public int Unknown04
         {
             get => _header._unknown04;
             set => _header._unknown04 = value;
@@ -684,7 +684,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         [Category("Unknown")]
-        public bint Unknown4c
+        public int Unknown4c
         {
             get => _header._unknown4c;
             set
