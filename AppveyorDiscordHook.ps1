@@ -25,6 +25,8 @@ Switch ($STATUS) {
     Break
   }
   default {
+    $EMBED_COLOR=‭8421504‬
+    $STATUS_MESSAGE=$STATUS
     Write-Output "Default!"
     Break
   }
