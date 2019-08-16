@@ -69,6 +69,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown09
         {
             get => data._unknown09;
@@ -161,6 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown02
         {
             get => data._unknown02;
@@ -171,6 +173,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown03
         {
             get => data._unknown03;
@@ -201,6 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown09
         {
             get => data._unknown09;
@@ -211,6 +215,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown0a
         {
             get => data._unknown0a;
@@ -221,6 +226,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown0b
         {
             get => data._unknown0b;
@@ -318,6 +324,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [DisplayName("Event Extension")] public bint EventExtension => _header._eventExtension;
 
+        [Category("Unknown")]
         public bint Unknown04
         {
             get => _header._unknown04;
@@ -335,6 +342,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown09
         {
             get => _header._unknown09;
@@ -345,6 +353,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown0a
         {
             get => _header._unknown0a;
@@ -355,6 +364,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown0b
         {
             get => _header._unknown0b;
@@ -412,6 +422,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public bool UnknownFlag_10_80000000
         {
             get => (_header._flags10 & 0x80000000) != 0;
@@ -429,6 +440,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public float Unknown14
         {
             get => _header._unknown14;
@@ -479,6 +491,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown1c
         {
             get => _header._unknown1c;
@@ -489,6 +502,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public byte Unknown1d
         {
             get => _header._unknown1d;
@@ -523,6 +537,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public bool UnknownFlag_20_10000000
         {
             get => (_header._flags20 & 0x10000000) != 0;
@@ -540,6 +555,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public int Unknown24
         {
             get => _header._unknown24;
@@ -550,6 +566,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public int Unknown28
         {
             get => _header._unknown28;
@@ -560,6 +577,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public int Unknown2c
         {
             get => _header._unknown2c;
@@ -570,6 +588,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public int Unknown30
         {
             get => _header._unknown30;
@@ -580,6 +599,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public int Unknown34
         {
             get => _header._unknown34;
@@ -612,6 +632,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public bool UnknownFlag_40_80000000
         {
             get => (_header._flags40 & 0x80000000) != 0;
@@ -662,6 +683,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        [Category("Unknown")]
         public bint Unknown4c
         {
             get => _header._unknown4c;
