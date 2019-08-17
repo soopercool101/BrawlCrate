@@ -313,7 +313,7 @@ namespace BrawlManagerLib
             return Delete(path, FileOperationFlags.FOF_WANTNUKEWARNING);
         }
 
-        public static string SantizeFilename(string filename)
+        public static string SanitizeFilename(string filename)
         {
             string invalidChars =
                 System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));

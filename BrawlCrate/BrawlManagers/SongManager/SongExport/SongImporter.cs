@@ -161,7 +161,7 @@ namespace BrawlCrate.SongManager.SongExport
 
             importedSongs.Add(filename, file.Name);
 
-            if (FileOperations.SantizeFilename(curSong.DefaultName) == title)
+            if (FileOperations.SanitizeFilename(curSong.DefaultName) == title)
             {
                 title = curSong.DefaultName;
             }

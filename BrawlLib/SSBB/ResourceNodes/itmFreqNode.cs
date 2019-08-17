@@ -20,7 +20,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < 5; i++)
             {
-                Children.Add(new TableNode() {Name = "Table [" + i + "]"});
+                Children.Add(new ItmTableNode() {Name = "Table [" + i + "]"});
             }
         }
 
@@ -97,7 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 ItmFreqOffEntry* table = (ItmFreqOffEntry*) ((int) TableList + i * 8);
                 DataSource TableSource = new DataSource(table, 0x08);
-                new TableNode().Initialize(this, TableSource);
+                new ItmTableNode().Initialize(this, TableSource);
             }
         }
 
@@ -160,7 +160,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int OnCalculateSize(bool force)
         {
             int size = ItmFreqHeader.Size;
-            foreach (TableNode node in Children)
+            foreach (ItmTableNode node in Children)
             {
                 size += node.CalculateSize(true);
             }
@@ -182,7 +182,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class TableNode : ItmFreqBaseNode
+    public unsafe class ItmTableNode : ItmFreqBaseNode
     {
         //internal ItmFreqOffEntry* Header { get { return (ItmFreqOffEntry*)WorkingUncompressed.Address; } }
         public override ResourceType ResourceFileType => ResourceType.ItemFreqTableNode;

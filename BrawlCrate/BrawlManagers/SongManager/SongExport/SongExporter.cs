@@ -98,7 +98,7 @@ namespace BrawlCrate.SongManager.SongExport
                 {
                     string cur = (string) curObj;
                     bgw.ReportProgress(i * 100 / stageSongs.Length, "Exporting songs for stage: " + cur);
-                    cur = FileOperations.SantizeFilename(cur);
+                    cur = FileOperations.SanitizeFilename(cur);
                     if (ExportStageDirs)
                     {
                         currentDir = exportDir.CreateSubdirectory(cur).FullName;
@@ -129,7 +129,7 @@ namespace BrawlCrate.SongManager.SongExport
                 vol = song.DefaultVolume.Value.ToString();
             }
 
-            string title = FileOperations.SantizeFilename(song.DefaultName);
+            string title = FileOperations.SanitizeFilename(song.DefaultName);
             string destFilename = srcName + "." + vol + "." + title + cur.File.Extension;
             string dest = Path.Combine(currentDir, destFilename);
 
