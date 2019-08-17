@@ -54,7 +54,7 @@ if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/pull/$env:APPVEYOR_PULL_REQUEST_NUMBER"
 }
 else {
-  $URL=""
+  $URL="https://github.com/$env:APPVEYOR_REPO_NAME/commit/$env:APPVEYOR_REPO_COMMIT"
 }
 
 $BUILD_VERSION = [uri]::EscapeDataString($env:APPVEYOR_BUILD_VERSION)

@@ -51,7 +51,7 @@ fi
 if [[ $TRAVIS_PULL_REQUEST != false ]]; then
   URL="https://github.com/$TRAVIS_REPO_SLUG/pull/$TRAVIS_PULL_REQUEST"
 else
-  URL=""
+  URL="https://github.com/$TRAVIS_REPO_SLUG/commit/$TRAVIS_COMMIT"
 fi
 
 TIMESTAMP=$(date --utc +%FT%TZ)
