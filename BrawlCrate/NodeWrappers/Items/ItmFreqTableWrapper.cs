@@ -42,10 +42,10 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
 
-        public TableGroupNode NewEntry()
+        public ItmTableGroupNode NewEntry()
         {
             int childCount = _resource.Children == null ? 0 : _resource.Children.Count;
-            TableGroupNode node = new TableGroupNode() {Name = "Group [" + childCount + "]"};
+            ItmTableGroupNode node = new ItmTableGroupNode() {Name = "Group [" + childCount + "]"};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

@@ -236,7 +236,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 ItmFreqGroup* group = (ItmFreqGroup*) (BaseAddress + Offset + i * 0x14);
                 DataSource GroupSource = new DataSource(group, 0x14);
-                new TableGroupNode().Initialize(this, GroupSource);
+                new ItmTableGroupNode().Initialize(this, GroupSource);
             }
         }
 
@@ -257,7 +257,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override int OnCalculateSize(bool force)
         {
             int size = ItmFreqOffEntry.Size;
-            foreach (TableGroupNode node in Children)
+            foreach (ItmTableGroupNode node in Children)
             {
                 size += node.CalculateSize(force);
             }
@@ -266,7 +266,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
     }
 
-    public unsafe class TableGroupNode : ItmFreqBaseNode
+    public unsafe class ItmTableGroupNode : ItmFreqBaseNode
     {
         //internal ItmFreqGroup* Header { get { return (ItmFreqGroup*)WorkingUncompressed.Address; } }
         public override ResourceType ResourceFileType => ResourceType.ItemFreqTableGroupNode;
