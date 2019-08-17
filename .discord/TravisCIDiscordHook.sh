@@ -33,7 +33,7 @@ case $TRAVIS_OS_NAME in
     ;;
 
   * )
-    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/88px-Windows_logo_-_2012_derivative.svg.png"
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_–_2012_(dark_blue).svg/1024px-Windows_logo_–_2012_(dark_blue).svg.png"
     ;;
 esac
 
