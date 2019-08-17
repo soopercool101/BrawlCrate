@@ -175,6 +175,7 @@ namespace BrawlCrate
                             texGroup.RemoveChild(t);
                             texGroup.InsertChild(t, false, index + count);
                         }
+
                         count++;
                     }
 
@@ -203,7 +204,7 @@ namespace BrawlCrate
                         {
                             dlg.ImageSource = f.FullName;
                             dlg.Automatic = true;
-                            
+
                             if (dlg.ShowDialog(MainForm.Instance, b) != DialogResult.OK)
                             {
                                 continue;
@@ -219,6 +220,7 @@ namespace BrawlCrate
                                 texGroup.RemoveChild(t);
                                 texGroup.InsertChild(t, false, index + count);
                             }
+
                             count++;
                         }
                     }

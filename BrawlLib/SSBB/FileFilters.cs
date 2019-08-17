@@ -8,7 +8,8 @@ namespace BrawlLib
     public static class FileFilters
     {
         public static string ARCExport =
-            SupportedFilesHandler.GetCompleteFilter("pac", "pcs", "pair", "mrg", "mariopast", "metalgear", "tengan", "village");
+            SupportedFilesHandler.GetCompleteFilter("pac", "pcs", "pair", "mrg", "mariopast", "metalgear", "tengan",
+                "village");
 
         public static string ARCImport =
             SupportedFilesHandler.GetCompleteFilter("pac", "pcs", "mrg");

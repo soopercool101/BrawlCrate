@@ -308,6 +308,7 @@ namespace System.Windows.Forms
         }
 
         public WiiPixelFormat? StartingFormat = null;
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);

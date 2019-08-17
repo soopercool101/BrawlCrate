@@ -1138,6 +1138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
             }
+
             return resourceNodes.ToArray();
         }
 

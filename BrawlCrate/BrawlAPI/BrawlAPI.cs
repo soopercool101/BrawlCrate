@@ -326,7 +326,8 @@ namespace BrawlCrate.API
                     else
                     {
 #if !MONO
-                        using (Ookii.Dialogs.VistaFolderBrowserDialog dlg = new Ookii.Dialogs.VistaFolderBrowserDialog())
+                        using (Ookii.Dialogs.VistaFolderBrowserDialog dlg
+                            = new Ookii.Dialogs.VistaFolderBrowserDialog())
 #else
                         using (FolderBrowserDialog dlg = new FolderBrowserDialog())
 #endif

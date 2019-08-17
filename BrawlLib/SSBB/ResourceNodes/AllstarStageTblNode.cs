@@ -209,7 +209,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             VoidPtr ptr = WorkingUncompressed.Address + 8;
-            foreach (string s in new [] {"Easy", "Normal", "Hard", "Very Hard", "Intense"})
+            foreach (string s in new[] {"Easy", "Normal", "Hard", "Very Hard", "Intense"})
             {
                 DataSource source = new DataSource(ptr, sizeof(AllstarDifficultyData));
                 AllstarDifficultyNode node = new AllstarDifficultyNode();

@@ -14,7 +14,7 @@ namespace BrawlCrate.StageManager
         private static Dictionary<int, string[]> dict = new Dictionary<int, string[]>()
         {
             {
-                1, new []
+                1, new[]
                 {
                     // Battlefield
                     "X04",
@@ -25,7 +25,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                2, new []
+                2, new[]
                 {
                     // Final Destination
                     "X05",
@@ -36,7 +36,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                3, new []
+                3, new[]
                 {
                     // Delfino Plaza
                     "A13",
@@ -47,7 +47,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                4, new []
+                4, new[]
                 {
                     // Luigi's Mansion
                     "A09",
@@ -58,7 +58,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                5, new []
+                5, new[]
                 {
                     // Mushroomy Kingdom
                     "A01",
@@ -70,7 +70,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                6, new []
+                6, new[]
                 {
                     // Mario Circuit
                     "A20",
@@ -83,7 +83,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                8, new []
+                8, new[]
                 {
                     // Rumble Falls
                     "B01",
@@ -96,7 +96,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                51, new []
+                51, new[]
                 {
                     // Bridge of Eldin
                     "C02",
@@ -111,7 +111,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                9, new []
+                9, new[]
                 {
                     // Pirate Ship
                     "C15",
@@ -125,7 +125,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                11, new []
+                11, new[]
                 {
                     // Norfair
                     "D01",
@@ -137,7 +137,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                12, new []
+                12, new[]
                 {
                     // Frigate Orpheon
                     "D04",
@@ -149,7 +149,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                13, new []
+                13, new[]
                 {
                     // Yoshi's Island (Brawl)
                     "E02",
@@ -161,7 +161,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                14, new []
+                14, new[]
                 {
                     // Halberd
                     "F06",
@@ -179,7 +179,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                19, new []
+                19, new[]
                 {
                     // Lylat Cruise
                     "G10",
@@ -196,7 +196,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                20, new []
+                20, new[]
                 {
                     // Pokemon Stadium 2
                     "H01",
@@ -207,7 +207,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                21, new []
+                21, new[]
                 {
                     // Spear Pillar
                     "H06",
@@ -218,7 +218,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                22, new []
+                22, new[]
                 {
                     // Port Town Aero Dive
                     "I01",
@@ -236,7 +236,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                25, new []
+                25, new[]
                 {
                     // Castle Siege
                     "J02",
@@ -254,7 +254,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                28, new []
+                28, new[]
                 {
                     // WarioWare Inc.
                     "M01",
@@ -277,7 +277,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                29, new []
+                29, new[]
                 {
                     // Distant Planet
                     "L06",
@@ -292,7 +292,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                33, new []
+                33, new[]
                 {
                     // Smashville
                     "N01",
@@ -309,7 +309,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                32, new []
+                32, new[]
                 {
                     // New Pork City
                     "K07",
@@ -321,7 +321,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                23, new []
+                23, new[]
                 {
                     // Summit
                     "Q07",
@@ -332,7 +332,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                30, new []
+                30, new[]
                 {
                     // Skyworld
                     "P01",
@@ -342,7 +342,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                7, new []
+                7, new[]
                 {
                     // 75 m
                     "B04",
@@ -351,7 +351,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                31, new []
+                31, new[]
                 {
                     // Mario Bros.
                     "A17",
@@ -362,7 +362,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                24, new []
+                24, new[]
                 {
                     // Flat Zone 2
                     "R04",
@@ -371,7 +371,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                36, new []
+                36, new[]
                 {
                     // PictoChat
                     "R02",
@@ -386,14 +386,14 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                37, new []
+                37, new[]
                 {
                     // Hanenbow
                     "R03",
                 }
             },
             {
-                34, new []
+                34, new[]
                 {
                     // Shadow Moses Island
                     "S06",
@@ -408,7 +408,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                35, new []
+                35, new[]
                 {
                     // Green Hill Zone
                     "U01",
@@ -426,7 +426,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                41, new []
+                41, new[]
                 {
                     // Temple
                     "C03",
@@ -434,7 +434,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                42, new []
+                42, new[]
                 {
                     // Yoshi's Island (Melee)
                     "W05",
@@ -442,7 +442,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                43, new []
+                43, new[]
                 {
                     // Jungle Japes
                     "W03",
@@ -450,7 +450,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                44, new []
+                44, new[]
                 {
                     // Onett
                     "W12",
@@ -458,7 +458,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                48, new []
+                48, new[]
                 {
                     // Corneria
                     "W08",
@@ -466,7 +466,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                47, new []
+                47, new[]
                 {
                     // Rainbow Cruise
                     "W02",
@@ -474,7 +474,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                45, new []
+                45, new[]
                 {
                     // Green Greens
                     "W07",
@@ -482,7 +482,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                49, new []
+                49, new[]
                 {
                     // Big Blue
                     "W11",
@@ -490,7 +490,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                50, new []
+                50, new[]
                 {
                     // Brinstar
                     "W27",
@@ -498,7 +498,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                46, new []
+                46, new[]
                 {
                     // Pokemon Stadium
                     "W09",
@@ -507,7 +507,7 @@ namespace BrawlCrate.StageManager
                 }
             },
             {
-                55, new []
+                55, new[]
                 {
                     // Online Training
                     "X07",
@@ -558,7 +558,7 @@ namespace BrawlCrate.StageManager
             stageId = modifier[stageId];
             if (stageId == 5 && filename.StartsWith("stgmariopast_00"))
             {
-                return new []
+                return new[]
                 {
                     "A01",
                     "A16",
@@ -567,7 +567,7 @@ namespace BrawlCrate.StageManager
             }
             else if (stageId == 5 && filename.StartsWith("stgmariopast_01"))
             {
-                return new []
+                return new[]
                 {
                     "A02",
                     "A03",

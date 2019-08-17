@@ -69,6 +69,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         return "Subspace Stage";
                     }
+
                     return "Stage";
                 }
                 else if (IsItemTable)
@@ -352,7 +353,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            if (_name.StartsWith("Itm", StringComparison.OrdinalIgnoreCase) && _name.EndsWith("Gen", StringComparison.OrdinalIgnoreCase))
+            if (_name.StartsWith("Itm", StringComparison.OrdinalIgnoreCase) &&
+                _name.EndsWith("Gen", StringComparison.OrdinalIgnoreCase))
             {
                 _isItemTable = true;
             }

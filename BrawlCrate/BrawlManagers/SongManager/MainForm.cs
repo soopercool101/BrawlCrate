@@ -12,7 +12,8 @@ namespace BrawlCrate.SongManager
 {
     public partial class MainForm : Form
     {
-        public static readonly string[] GCT_PATHS = {
+        public static readonly string[] GCT_PATHS =
+        {
             "RSBE01.gct",
             "/data/gecko/codes/RSBE01.gct",
             "/codes/RSBE01.gct",
@@ -89,8 +90,8 @@ namespace BrawlCrate.SongManager
             listType = groupSongs ? ListType.GroupByStage : ListType.FilesInDir;
 
             Text = "BrawlCrate Song Manager" +
-                   BrawlCrate.Program.AssemblyTitleShort.Substring(
-                       BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
+                   Program.AssemblyTitleShort.Substring(
+                       Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
 
             // Later commands to change the titlebar assume there is a hypen in the title somewhere
             Text += " -";
@@ -145,8 +146,11 @@ namespace BrawlCrate.SongManager
         {
             if (newpath == null)
             {
-                newpath = CurrentDirectory.LastIndexOf("pf") > 0 ? CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("pf")) : CurrentDirectory;
+                newpath = CurrentDirectory.LastIndexOf("pf") > 0
+                    ? CurrentDirectory.Substring(0, CurrentDirectory.LastIndexOf("pf"))
+                    : CurrentDirectory;
             }
+
             CurrentDirectory = newpath;                                   // Update the program's working directory
             Text = Text.Substring(0, Text.IndexOf('-')) + "- " + newpath; // Update titlebar
 

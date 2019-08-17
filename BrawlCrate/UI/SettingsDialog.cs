@@ -1453,6 +1453,7 @@ namespace BrawlCrate
             {
                 Program.ForceDownloadStable();
             }
+
             chkCanary.Checked = false;
 #endif
 

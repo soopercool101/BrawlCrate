@@ -62,12 +62,15 @@ namespace BrawlCrate
             AssemblyTitleShort = AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8);
 #else
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
-                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+                .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
-            AssemblyTitleShort = AssemblyTitleFull.Contains("Hotfix") ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf("Hotfix")).Trim(' ') : AssemblyTitleFull;
+
+            AssemblyTitleShort = AssemblyTitleFull.Contains("Hotfix")
+                ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf("Hotfix")).Trim(' ')
+                : AssemblyTitleFull;
 #endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
@@ -176,6 +179,7 @@ namespace BrawlCrate
                         {
                             _rootPath = args[1];
                         }
+
                         MainForm.Instance?.RecentFilesHandler?.AddFile(args[1]);
                     }
 
@@ -363,6 +367,7 @@ namespace BrawlCrate
                 {
                     MessageBox.Show("File does not exist.");
                 }
+
                 return false;
             }
 
@@ -402,6 +407,7 @@ namespace BrawlCrate
                     {
                         MessageBox.Show("Unable to recognize input file.");
                     }
+
                     MainForm.Instance.Reset();
                 }
 #if !DEBUG
@@ -491,6 +497,7 @@ namespace BrawlCrate
                 }
 #endif
             }
+
             MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
             return false;
         }

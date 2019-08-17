@@ -12,7 +12,8 @@ namespace BrawlCrate.SongManager
     public partial class CustomSongVolumeEditor : UserControl
     {
         private static Image SPEAKER =
-            new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("BrawlCrate.BrawlManagers.SongManager.speaker.png"));
+            new Bitmap(Assembly.GetExecutingAssembly()
+                .GetManifestResourceStream("BrawlCrate.BrawlManagers.SongManager.speaker.png"));
 
         public bool ChangeMadeSinceCSVLoaded { get; private set; }
 

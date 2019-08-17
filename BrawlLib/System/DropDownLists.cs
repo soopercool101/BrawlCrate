@@ -806,8 +806,8 @@ namespace System
             if (destinationType == typeof(string) && value != null &&
                 (value.GetType() == typeof(byte) || value.GetType() == typeof(int)))
             {
-                BrawlAITypes stage = BrawlAITypes.AITypes.Where(s => s.AIID == (byte)value).FirstOrDefault();
-                return "0x" + ((byte)value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
+                BrawlAITypes stage = BrawlAITypes.AITypes.Where(s => s.AIID == (byte) value).FirstOrDefault();
+                return "0x" + ((byte) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
             else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
                      value.GetType() == typeof(string))
@@ -856,9 +856,9 @@ namespace System
         {
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
-                BrawlLib.SSBB.Stage stage = BrawlLib.SSBB.Stage.RelList.Where(s => s.ID == (int)value)
+                BrawlLib.SSBB.Stage stage = BrawlLib.SSBB.Stage.RelList.Where(s => s.ID == (int) value)
                     .FirstOrDefault();
-                return "0x" + ((int)value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
+                return "0x" + ((int) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
             else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
                      value.GetType() == typeof(string))
@@ -1008,6 +1008,7 @@ namespace System
             return base.ConvertTo(context, culture, value, destinationType);
         }
     }
+
     public class DropDownListFighterIDs_Hardcoded : ByteConverter
     {
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
@@ -1046,8 +1047,8 @@ namespace System
             if (destinationType == typeof(string) && value.GetType() == typeof(byte))
             {
                 BrawlLib.SSBB.Fighter fighter =
-                    BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte)value).FirstOrDefault();
-                return "0x" + ((byte)value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
+                    BrawlLib.SSBB.Fighter.Fighters.Where(s => s.ID == (byte) value).FirstOrDefault();
+                return "0x" + ((byte) value).ToString("X2") + (fighter == null ? "" : " - " + fighter.Name);
             }
             else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
                      value.GetType() == typeof(string))

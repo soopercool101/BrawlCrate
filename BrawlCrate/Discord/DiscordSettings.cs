@@ -73,18 +73,21 @@ namespace BrawlCrate.Discord
                         usingManager = true;
                         break;
                     }
+
                     if (frm is SongManager.MainForm)
                     {
                         DiscordController.presence.details = "Managing Songs";
                         usingManager = true;
                         break;
                     }
+
                     if (frm is StageManager.MainForm)
                     {
                         DiscordController.presence.details = "Managing Stages";
                         usingManager = true;
                         break;
                     }
+
                     if (!(frm is GCTEditor editor))
                     {
                         continue;
@@ -108,7 +111,7 @@ namespace BrawlCrate.Discord
                 }
                 else if (Program.RootPath == null)
                 {
-                    if (root is ARCNode && ((ARCNode)root).IsStage)
+                    if (root is ARCNode && ((ARCNode) root).IsStage)
                     {
                         if (rootName.StartsWith("STGRESULT", StringComparison.OrdinalIgnoreCase))
                         {
@@ -126,7 +129,7 @@ namespace BrawlCrate.Discord
                 }
                 else if (root is ARCNode)
                 {
-                    if (((ARCNode)root).IsStage)
+                    if (((ARCNode) root).IsStage)
                     {
                         if (rootName.StartsWith("STGRESULT", StringComparison.OrdinalIgnoreCase))
                         {
@@ -137,7 +140,7 @@ namespace BrawlCrate.Discord
                             DiscordController.presence.details = WorkString + " a stage";
                         }
                     }
-                    else if (((ARCNode)root).IsFighter)
+                    else if (((ARCNode) root).IsFighter)
                     {
                         if (rootName.EndsWith("0") ||
                             rootName.EndsWith("1") ||

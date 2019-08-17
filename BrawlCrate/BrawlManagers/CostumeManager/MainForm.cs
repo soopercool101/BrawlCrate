@@ -30,8 +30,8 @@ namespace BrawlCrate.CostumeManager
             }
 
             _title = "BrawlCrate Costume Manager" +
-                    Program.AssemblyTitleShort.Substring(
-                        Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
+                     Program.AssemblyTitleShort.Substring(
+                         Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
             InitializeComponent();
             Icon = BrawlLib.Properties.Resources.Icon;
 

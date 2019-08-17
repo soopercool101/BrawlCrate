@@ -528,7 +528,8 @@ namespace BrawlCrate
             BaseWrapper w;
             ResourceNode node = null;
             bool disable2nd = false;
-            if (!(sender != null && sender.ToString().Equals("Saving File")) && resourceTree.SelectedNode is BaseWrapper &&
+            if (!(sender != null && sender.ToString().Equals("Saving File")) &&
+                resourceTree.SelectedNode is BaseWrapper &&
                 (node = (w = resourceTree.SelectedNode as BaseWrapper).Resource) != null)
             {
                 Action setScrollOffset = null;
@@ -664,7 +665,7 @@ namespace BrawlCrate
                 }
                 else if (node is IImageSource)
                 {
-                    previewPanel2.RenderingTarget = (IImageSource)node;
+                    previewPanel2.RenderingTarget = (IImageSource) node;
                     newControl = previewPanel2;
                 }
                 else if (node is StageTableNode stageTableNode)
@@ -785,7 +786,7 @@ namespace BrawlCrate
             selectedType = resourceTree.SelectedNode == null ? null : resourceTree.SelectedNode.GetType();
         }
 
-#region Rendering
+        #region Rendering
 
         public static void RenderSelected(ResourceNode node)
         {
@@ -1015,7 +1016,7 @@ namespace BrawlCrate
             }
         }
 
-#endregion
+        #endregion
 
         public static void UpdateDiscordRPC(object sender, EventArgs e)
         {
@@ -1062,7 +1063,7 @@ namespace BrawlCrate
             }
         }
 
-#region File Menu
+        #region File Menu
 
         private void aRCArchiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1119,7 +1120,7 @@ namespace BrawlCrate
             Close();
         }
 
-#endregion
+        #endregion
 
         private void fileResizerToolStripMenuItem_Click(object sender, EventArgs e)
         {

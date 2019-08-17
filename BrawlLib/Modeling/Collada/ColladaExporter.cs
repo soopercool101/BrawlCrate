@@ -192,6 +192,7 @@ namespace BrawlLib.Modeling
                                 {
                                     continue;
                                 }
+
                                 writer.WriteStartElement("newparam");
                                 writer.WriteAttributeString("sid", mr._texture.Name + "-surface");
                                 {
@@ -1299,8 +1300,8 @@ namespace BrawlLib.Modeling
 
         public static void Serialize(CHR0Node[] animations, float fps, bool bake, string outFile)
         {
-            string[] types = new [] {"scale", "rotate", "translate"};
-            string[] axes = new [] {"X", "Y", "Z"};
+            string[] types = new[] {"scale", "rotate", "translate"};
+            string[] axes = new[] {"X", "Y", "Z"};
             bool first = true;
 
             using (FileStream stream = new FileStream(outFile, FileMode.Create, FileAccess.ReadWrite, FileShare.None,

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBB.ResourceNodes;
 using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace BrawlCrate.CostumeManager
 {
@@ -146,7 +147,7 @@ namespace BrawlCrate.CostumeManager
             _delayedPath = delayedPath;
             if (!string.IsNullOrWhiteSpace(_delayedPath))
             {
-                System.Timers.Timer tmp_timer = new System.Timers.Timer(1000);
+                Timer tmp_timer = new Timer(1000);
                 tmp_timer.AutoReset = false;
                 tmp_timer.Elapsed += new ElapsedEventHandler(initializeModelPanel);
                 tmp_timer.Enabled = true;

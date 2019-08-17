@@ -205,7 +205,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 *pObj++ = new ColObject(cPlane, iPlane - cPlane, cPoint, iPoint - cPoint, obj._boxMin, obj._boxMax,
                     obj._modelName, obj._boneName,
-                    obj._unk1, obj._unk2, obj._unk3, (int)obj._flags, obj._unk5, obj._unk6, obj._boneIndex);
+                    obj._unk1, obj._unk2, obj._unk3, (int) obj._flags, obj._unk5, obj._unk6, obj._boneIndex);
             }
         }
 
@@ -318,12 +318,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        [Category("Collision Binding"), DisplayName("Linked Model")]
+        [Category("Collision Binding")]
+        [DisplayName("Linked Model")]
         public string LinkModel => _modelName;
 
-        [Category("Collision Binding"), DisplayName("Linked Bone")]
+        [Category("Collision Binding")]
+        [DisplayName("Linked Bone")]
         public string LinkBone => _boneName;
-        
+
         [Category("Flags")]
         public bool UnknownFlag
         {
@@ -334,8 +336,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 SignalPropertyChange();
             }
         }
-        
-        [Category("Flags"), Description("Controls whether or not a collision will follow a linked bone")]
+
+        [Category("Flags")]
+        [Description("Controls whether or not a collision will follow a linked bone")]
         public bool Independent
         {
             get => (_flags & ColObjFlags.Independent) != 0;
@@ -407,7 +410,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _unk1 = Header->_unk1;
             _unk2 = Header->_unk2;
             _unk3 = Header->_unk3;
-            _flags = (ColObjFlags)(ushort)Header->_flags;
+            _flags = (ColObjFlags) (ushort) Header->_flags;
             _unk5 = Header->_unk5;
             _unk6 = Header->_unk6;
             _boneIndex = Header->_boneIndex;
@@ -436,6 +439,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     hasSingleLinkedCollisions = true;
                 }
+
                 ++pPlane;
             }
 
@@ -725,6 +729,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         clr = new Color4(1.0f, 0.0f, 1.0f, 1.0f);
                     }
+
                     mult = 3.0f;
                     if (!_parent.hasSingleLinkedCollisions || hasMultiple)
                     {
@@ -739,6 +744,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         alpha = 0.5f;
                     }
+
                     if (!p.IsFallThrough)
                     {
                         switch (p.Type)
@@ -1031,8 +1037,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (LinkLeft == LinkRight)
             {
-                return Double.NaN;
+                return double.NaN;
             }
+
             float xDiff = _linkRight.Value._x - _linkLeft.Value._x;
             float yDiff = _linkRight.Value._y - _linkLeft.Value._y;
             if (xDiff == 0.0f)

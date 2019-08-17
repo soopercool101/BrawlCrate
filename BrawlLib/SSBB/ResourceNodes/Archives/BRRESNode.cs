@@ -778,7 +778,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ResourceGroup* Group => (ResourceGroup*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.BRESGroup;
 
-        public int ImageCount => (Children.Count > 0 && Children[0] is IImageSource) ? Children.Count : 0;
+        public int ImageCount => Children.Count > 0 && Children[0] is IImageSource ? Children.Count : 0;
 
         public Bitmap GetImage(int index)
         {

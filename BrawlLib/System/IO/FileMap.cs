@@ -63,7 +63,7 @@ namespace BrawlLib.IO
         {
             FileStream stream;
             FileMap map;
-            
+
             // Use a temp file in order to prevent writelocks
             string tempPath = Path.GetTempFileName();
             File.Copy(path, tempPath, true);

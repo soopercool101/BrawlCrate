@@ -82,10 +82,15 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, "Brawl TBST File", "tbst"),
 
             //Multi-file stages
-            new SupportedFileInfo(false, "Mushroomy Kingdom (STGMARIOPAST_00_*.pac & STGMARIOPAST_01_*.pac)", "mariopast"),
-            new SupportedFileInfo(false, "Shadow Moses Island (STGMETALGEAR_00_*, STGMETALGEAR_01_*.pac, & STGMETALGEAR_02_*.pac)", "metalgear"),
-            new SupportedFileInfo(false, "Smashville (STGVILLAGE_00_*.pac, STGVILLAGE_01_*.pac, STGVILLAGE_02_*.pac, STGVILLAGE_03_*.pac, & STGVILLAGE_04_*.pac)", "village"),
-            new SupportedFileInfo(false, "Spear Pillar (STGTENGAN_1_*.pac, STGTENGAN_2_*.pac, & STGTENGAN_3_*.pac)", "tengan"),
+            new SupportedFileInfo(false, "Mushroomy Kingdom (STGMARIOPAST_00_*.pac & STGMARIOPAST_01_*.pac)",
+                "mariopast"),
+            new SupportedFileInfo(false,
+                "Shadow Moses Island (STGMETALGEAR_00_*, STGMETALGEAR_01_*.pac, & STGMETALGEAR_02_*.pac)", "metalgear"),
+            new SupportedFileInfo(false,
+                "Smashville (STGVILLAGE_00_*.pac, STGVILLAGE_01_*.pac, STGVILLAGE_02_*.pac, STGVILLAGE_03_*.pac, & STGVILLAGE_04_*.pac)",
+                "village"),
+            new SupportedFileInfo(false, "Spear Pillar (STGTENGAN_1_*.pac, STGTENGAN_2_*.pac, & STGTENGAN_3_*.pac)",
+                "tengan"),
 
             //Brawl Subspace Emissary files
             new SupportedFileInfo(true, "BLOC Adventure Archive", "bloc"),

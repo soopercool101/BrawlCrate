@@ -19,7 +19,8 @@ namespace BrawlCrate.StageManager
         private static OpenFileDialog OpenDialog = new OpenFileDialog();
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
 #if !MONO
-        private static Ookii.Dialogs.VistaFolderBrowserDialog FolderDialog = new Ookii.Dialogs.VistaFolderBrowserDialog();
+        private static Ookii.Dialogs.VistaFolderBrowserDialog FolderDialog =
+            new Ookii.Dialogs.VistaFolderBrowserDialog();
 #else
         private static FolderBrowserDialog FolderDialog = new FolderBrowserDialog();
 #endif
@@ -127,8 +128,8 @@ namespace BrawlCrate.StageManager
             }
 
             Text = "BrawlCrate Stage Manager" +
-                         BrawlCrate.Program.AssemblyTitleShort.Substring(
-                             BrawlCrate.Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
+                   Program.AssemblyTitleShort.Substring(
+                       Program.AssemblyTitleShort.IndexOf(" ", StringComparison.Ordinal));
 
             moduleFolderLocation = "../../module";
 
@@ -483,7 +484,7 @@ namespace BrawlCrate.StageManager
             // Special code for the root directory of a drive
             if (pacFiles.Length == 0)
             {
-                foreach (string subpath in new []
+                foreach (string subpath in new[]
                 {
                     "\\private\\wii\\app\\RSBE\\pf\\stage\\melee",
                     "\\projectm\\pf\\stage\\melee"
@@ -1331,10 +1332,10 @@ namespace BrawlCrate.StageManager
 
         private void brawlCrateStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filepath = ((FileInfo)listBox1.SelectedItem)?.FullName;
+            string filepath = ((FileInfo) listBox1.SelectedItem)?.FullName;
             if (!string.IsNullOrEmpty(filepath))
             {
-                BrawlCrate.Program.Open(filepath);
+                Program.Open(filepath);
                 BrawlCrate.MainForm.Instance.Focus();
             }
         }
@@ -1343,14 +1344,14 @@ namespace BrawlCrate.StageManager
         {
             if (!File.Exists(portraitViewer1.OpenFilePath))
             {
-                if (!String.IsNullOrEmpty(portraitViewer1.OpenFilePath))
+                if (!string.IsNullOrEmpty(portraitViewer1.OpenFilePath))
                 {
                     MessageBox.Show(this, "Could not find " + portraitViewer1.OpenFilePath + ".");
                 }
             }
             else
             {
-                BrawlCrate.Program.Open(new FileInfo(portraitViewer1.OpenFilePath).FullName);
+                Program.Open(new FileInfo(portraitViewer1.OpenFilePath).FullName);
                 BrawlCrate.MainForm.Instance.Focus();
             }
         }

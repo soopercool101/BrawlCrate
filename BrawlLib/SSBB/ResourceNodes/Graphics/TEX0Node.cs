@@ -158,6 +158,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     GetPaletteNode().Name = value;
                 }
+
                 base.Name = value;
             }
         }
