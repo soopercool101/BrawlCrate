@@ -31,7 +31,7 @@ Switch ($STATUS) {
     Break
   }
 }
-$AVATAR="https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/BrawlCrate/Discord/CanaryAvatar.png"
+$AVATAR="https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/CanaryAvatar.png"
 
 if (!$env:APPVEYOR_REPO_COMMIT) {
   $env:APPVEYOR_REPO_COMMIT="$(git log -1 --pretty="%H")"

@@ -5,10 +5,10 @@ os:
   - linux
   - osx
 after_success:
-  - wget https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/TravisCIDiscordHook.sh
+  - wget https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/TravisCIDiscordHook.sh
   - chmod +x TravisCIDiscordHook.sh
   - ./TravisCIDiscordHook.sh success $WEBHOOK_URL
 after_failure:
-  - wget https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/TravisCIDiscordHook.sh
+  - wget https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/TravisCIDiscordHook.sh
   - chmod +x TravisCIDiscordHook.sh
   - ./TravisCIDiscordHook.sh failure $WEBHOOK_URL

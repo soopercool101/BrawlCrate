@@ -23,7 +23,7 @@ case $1 in
     ;;
 esac
 
-AVATAR="https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/BrawlCrate/Discord/CanaryAvatar.png"
+AVATAR="https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/CanaryAvatar.png"
 AUTHOR_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%aN")"
 COMMITTER_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%cN")"
 COMMIT_SUBJECT="$(git log -1 "$TRAVIS_COMMIT" --pretty="%s")"
