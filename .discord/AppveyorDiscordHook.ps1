@@ -37,8 +37,8 @@ if (!$env:APPVEYOR_REPO_COMMIT) {
   $env:APPVEYOR_REPO_COMMIT="$(git log -1 --pretty="%H")"
 }
 
-$AUTHOR_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%aN")" -replace "`"", "'"
-$COMMITTER_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%cN")" -replace "`"", "'"
+$AUTHOR_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%aN")"
+$COMMITTER_NAME="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%cN")"
 $COMMIT_SUBJECT="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%s")" -replace "`"", "'"
 $COMMIT_MESSAGE="$(git log -1 "$env:APPVEYOR_REPO_COMMIT" --pretty="%b")" -replace "`"", "'"
 
@@ -54,7 +54,7 @@ if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
   $URL="https://github.com/$env:APPVEYOR_REPO_NAME/pull/$env:APPVEYOR_PULL_REQUEST_NUMBER"
 }
 else {
-  $URL=""
+  $URL="https://github.com/$env:APPVEYOR_REPO_NAME/releases/tag/Canary-$env:APPVEYOR_REPO_BRANCH"
 }
 
 $BUILD_VERSION = [uri]::EscapeDataString($env:APPVEYOR_BUILD_VERSION)
