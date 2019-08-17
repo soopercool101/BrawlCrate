@@ -23,11 +23,24 @@ case $1 in
     ;;
 esac
 
-AVATAR="https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/CanaryAvatar.png"
+case $TRAVIS_OS_NAME in
+  "linux" )
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tux_Mono.svg/800px-Tux_Mono.svg.png"
+    ;;
+
+  "osx" )
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/800px-Apple_logo_grey.svg.png"
+    ;;
+
+  * )
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/88px-Windows_logo_-_2012_derivative.svg.png"
+    ;;
+esac
+
 AUTHOR_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%aN")"
 COMMITTER_NAME="$(git log -1 "$TRAVIS_COMMIT" --pretty="%cN")"
-COMMIT_SUBJECT="$(git log -1 "$TRAVIS_COMMIT" --pretty="%s")" | tr '"' '' | tr "'" ""
-COMMIT_MESSAGE="$(git log -1 "$TRAVIS_COMMIT" --pretty="%b")" | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | tr '"' '' | tr "'" ""
+COMMIT_SUBJECT="$(git log -1 "$TRAVIS_COMMIT" --pretty="%s")" | tr -d '"' | tr -d "'"
+COMMIT_MESSAGE="$(git log -1 "$TRAVIS_COMMIT" --pretty="%b")" | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | tr -d '"' | tr -d "'"
 
 if [ "$AUTHOR_NAME" == "$COMMITTER_NAME" ]; then
   CREDITS="$AUTHOR_NAME authored & committed"
@@ -44,7 +57,7 @@ fi
 TIMESTAMP=$(date --utc +%FT%TZ)
 WEBHOOK_DATA='{
   "username": "",
-  "avatar_url": "'$AVATAR'",
+  "avatar_url": "https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/CanaryAvatar.png",
   "embeds": [ {
     "color": '$EMBED_COLOR',
     "author": {
