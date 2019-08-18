@@ -16,6 +16,14 @@ namespace BrawlCrate
         //Make sure this matches the tag name of the release on github exactly
         public static readonly string TagName = "BrawlCrate_v0.26Hotfix3";
 
+        public static readonly string UpdateMessage = $@"Updated to BrawlCrate NEXT! This release:
+- Is a test of the new automated release system
+- Let's see how this goes
+- It should, in theory, be foolproof
+
+Full changelog can be found in the installation folder:
+{AppDomain.CurrentDomain.BaseDirectory}Changelog.txt";
+
         public static readonly string AssemblyTitleFull;
         public static readonly string AssemblyTitleShort;
         public static readonly string AssemblyDescription;
@@ -216,6 +224,20 @@ namespace BrawlCrate
                         Discord.DiscordRpc.Shutdown();
                     }
 
+                    return;
+                }
+
+                // Writes the latest changelog to a text file
+                if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
+                {
+                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'), UpdateMessage.IndexOf("Full changelog can be found in the installation folder", StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
+                    Console.WriteLine(changelog);
+                    string tag = args.Length >= 2 ? args[1] : "test";
+                    string fileName = $@"{AppPath}changelog-{tag.ToLower()}.txt";
+                    using (StreamWriter file = new StreamWriter(fileName))
+                    {
+                        file.Write(changelog);
+                    }
                     return;
                 }
             }
@@ -599,7 +621,7 @@ namespace BrawlCrate
 
         public static string ApplyExtension(string path, string filter, int filterIndex)
         {
-            if (Path.HasExtension(path) && !int.TryParse(Path.GetExtension(path), out int tmp))
+            if (Path.HasExtension(path) && !int.TryParse(Path.GetExtension(path), out int _))
             {
                 return path;
             }
