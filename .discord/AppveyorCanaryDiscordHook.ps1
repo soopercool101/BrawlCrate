@@ -74,16 +74,6 @@ $WEBHOOK_DATA="{
     ""description"": ""$COMMIT_MESSAGE $CREDITS"",
     ""fields"": [
       {
-        ""name"": ""Commit"",
-        ""value"": ""[``$($env:APPVEYOR_REPO_COMMIT.substring(0, 7))``](https://github.com/$env:APPVEYOR_REPO_NAME/commit/$env:APPVEYOR_REPO_COMMIT)"",
-        ""inline"": true
-      },
-      {
-        ""name"": ""Branch"",
-        ""value"": ""[``$env:APPVEYOR_REPO_BRANCH``](https://github.com/$env:APPVEYOR_REPO_NAME/tree/$env:APPVEYOR_REPO_BRANCH)"",
-        ""inline"": true
-      },
-      {
         ""name"": ""Configuration"",
         ""value"": ""[``$env:CONFIGURATION``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
         ""inline"": true
@@ -91,6 +81,18 @@ $WEBHOOK_DATA="{
       {
         ""name"": ""Platform"",
         ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
+        ""inline"": true
+      }
+    ],
+    ""fields"": [
+      {
+        ""name"": ""Commit"",
+        ""value"": ""[``$($env:APPVEYOR_REPO_COMMIT.substring(0, 7))``](https://github.com/$env:APPVEYOR_REPO_NAME/commit/$env:APPVEYOR_REPO_COMMIT)"",
+        ""inline"": true
+      },
+      {
+        ""name"": ""Branch"",
+        ""value"": ""[``$env:APPVEYOR_REPO_BRANCH``](https://github.com/$env:APPVEYOR_REPO_NAME/tree/$env:APPVEYOR_REPO_BRANCH)"",
         ""inline"": true
       }
     ],
