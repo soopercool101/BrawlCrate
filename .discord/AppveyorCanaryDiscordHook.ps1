@@ -31,7 +31,7 @@ Switch ($STATUS) {
     Break
   }
 }
-$AVATAR="https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/CanaryAvatar.png"
+$AVATAR="https://raw.githubusercontent.com/$env:APPVEYOR_REPO_NAME/$env:APPVEYOR_REPO_BRANCH/.discord/CanaryAvatar.png"
 
 if (!$env:APPVEYOR_REPO_COMMIT) {
   $env:APPVEYOR_REPO_COMMIT="$(git log -1 --pretty="%H")"
@@ -82,12 +82,12 @@ $WEBHOOK_DATA="{
         ""name"": ""Branch"",
         ""value"": ""[``$env:APPVEYOR_REPO_BRANCH``](https://github.com/$env:APPVEYOR_REPO_NAME/tree/$env:APPVEYOR_REPO_BRANCH)"",
         ""inline"": true
-      }
+      },
       {
         ""name"": ""Configuration"",
         ""value"": ""[``$env:CONFIGURATION``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
         ""inline"": true
-      }
+      },
       {
         ""name"": ""Platform"",
         ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
