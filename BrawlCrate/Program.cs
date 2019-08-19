@@ -232,8 +232,7 @@ Full changelog can be found in the installation folder:
                 {
                     string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'), UpdateMessage.IndexOf("Full changelog can be found in the installation folder", StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
                     Console.WriteLine(changelog);
-                    string tag = args.Length >= 2 ? args[1] : "";
-                    string fileName = $@"{AppPath}changelog-{tag.ToLower()}.txt";
+                    string fileName = $@"{AppPath}changelog-newest.txt";
                     using (StreamWriter file = new StreamWriter(fileName))
                     {
                         file.Write(changelog);
