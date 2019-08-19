@@ -83,13 +83,23 @@ $WEBHOOK_DATA="{
         ""value"": ""[``$env:APPVEYOR_REPO_BRANCH``](https://github.com/$env:APPVEYOR_REPO_NAME/tree/$env:APPVEYOR_REPO_BRANCH)"",
         ""inline"": true
       }
+      {
+        ""name"": ""Configuration"",
+        ""value"": ""[``$env:CONFIGURATION``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
+        ""inline"": true
+      }
+      {
+        ""name"": ""Platform"",
+        ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
+        ""inline"": true
+      }
     ],
     ""timestamp"": ""$TIMESTAMP""
   } ]
 }"
 
 Invoke-RestMethod -Uri "$WEBHOOK_URL" -Method "POST" -UserAgent "AppVeyor-Webhook" `
-  -ContentType "application/json" -Header @{"X-Author"="k3rn31p4nic#8383"} `
+  -ContentType "application/json" -Header @{"X-Author"="soopercool101#0101"} `
   -Body $WEBHOOK_DATA
 
 Write-Output "[Webhook]: Successfully sent the webhook."
