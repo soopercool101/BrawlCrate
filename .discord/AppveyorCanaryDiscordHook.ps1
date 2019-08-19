@@ -74,17 +74,10 @@ $WEBHOOK_DATA="{
     ""description"": ""$COMMIT_MESSAGE $CREDITS"",
     ""fields"": [
       {
-        ""name"": ""Configuration"",
-        ""value"": ""[``$env:CONFIGURATION``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
-        ""inline"": true
-      },
-      {
         ""name"": ""Platform"",
         ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
         ""inline"": true
-      }
-    ],
-    ""fields"": [
+      },
       {
         ""name"": ""Commit"",
         ""value"": ""[``$($env:APPVEYOR_REPO_COMMIT.substring(0, 7))``](https://github.com/$env:APPVEYOR_REPO_NAME/commit/$env:APPVEYOR_REPO_COMMIT)"",
