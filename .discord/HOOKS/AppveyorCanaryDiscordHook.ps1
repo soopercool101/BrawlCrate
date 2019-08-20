@@ -31,7 +31,7 @@ Switch ($STATUS) {
     Break
   }
 }
-$AVATAR="https://raw.githubusercontent.com/$env:APPVEYOR_REPO_NAME/$env:APPVEYOR_REPO_BRANCH/.discord/CanaryAvatar.png"
+$AVATAR="https://raw.githubusercontent.com/$env:APPVEYOR_REPO_NAME/$env:APPVEYOR_REPO_COMMIT/.discord/AVATARS/CanaryAvatar.png"
 
 if (!$env:APPVEYOR_REPO_COMMIT) {
   $env:APPVEYOR_REPO_COMMIT="$(git log -1 --pretty="%H")"
@@ -75,7 +75,7 @@ $WEBHOOK_DATA="{
     ""fields"": [
       {
         ""name"": ""Platform"",
-        ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_REPO_NAME/build/job/$env:APPVEYOR_JOB_ID)"",
+        ""value"": ""[``$env:PLATFORM``](https://ci.appveyor.com/project/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/build/job/$env:APPVEYOR_JOB_ID)"",
         ""inline"": true
       },
       {

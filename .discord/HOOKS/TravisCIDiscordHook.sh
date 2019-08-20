@@ -25,15 +25,15 @@ esac
 
 case $TRAVIS_OS_NAME in
   "linux" )
-    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tux_Mono.svg/800px-Tux_Mono.svg.png"
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tux_Mono.svg/32px-Tux_Mono.svg.png"
     ;;
 
   "osx" )
-    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/800px-Apple_logo_grey.svg.png"
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/32px-Apple_logo_grey.svg.png"
     ;;
 
   * )
-    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_–_2012_(dark_blue).svg/1024px-Windows_logo_–_2012_(dark_blue).svg.png"
+    AVATAR="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Windows_logo_–_2012_(dark_blue).svg/32px-Windows_logo_–_2012_(dark_blue).svg.png"
     ;;
 esac
 
@@ -57,7 +57,7 @@ fi
 TIMESTAMP=$(date --utc +%FT%TZ)
 WEBHOOK_DATA='{
   "username": "",
-  "avatar_url": "https://raw.githubusercontent.com/soopercool101/BrawlCrateNext/master/.discord/CanaryAvatar.png",
+  "avatar_url": "https://raw.githubusercontent.com/$TRAVIS_REPO_SLUG/$TRAVIS_COMMIT/.discord/AVATARS/CanaryAvatar.png",
   "embeds": [ {
     "color": '$EMBED_COLOR',
     "author": {
@@ -69,6 +69,11 @@ WEBHOOK_DATA='{
     "url": "'"$URL"'",
     "description": "'"${COMMIT_MESSAGE//$'\n'/ }"\\n\\n"$CREDITS"'",
     "fields": [
+      {
+        "name": "Platform",
+        "value": "'"[\`$TRAVIS_OS_NAME\`]($TRAVIS_JOB_WEB_URL)"'",
+        "inline": true
+      },
       {
         "name": "Commit",
         "value": "'"[\`${TRAVIS_COMMIT:0:7}\`](https://github.com/$TRAVIS_REPO_SLUG/commit/$TRAVIS_COMMIT)"'",
