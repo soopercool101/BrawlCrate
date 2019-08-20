@@ -3,7 +3,7 @@
 if [ -z "$2" ]; then
   echo -e "WARNING!!\nYou need to pass the WEBHOOK_URL environment variable as the second argument to this script.\nFor details & guide, visit: https://github.com/DiscordHooks/travis-ci-discord-webhook" && exit
 fi
-
+echo -e "https://raw.githubusercontent.com/$TRAVIS_REPO_SLUG/$TRAVIS_COMMIT/.discord/AVATARS/CanaryAvatar.png\\n"
 echo -e "[Webhook]: Sending webhook to Discord...\\n";
 
 case $1 in
