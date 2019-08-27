@@ -398,7 +398,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override bool supportsCompression => false;
 
         private int _id;
-        private readonly Item _item;
 
         [Category("Item")]
         [DisplayName("Item ID")]
