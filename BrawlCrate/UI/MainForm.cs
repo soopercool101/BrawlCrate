@@ -1020,22 +1020,29 @@ namespace BrawlCrate
 
         public static void UpdateDiscordRPC(object sender, EventArgs e)
         {
-            if (Program.CanRunDiscordRPC)
+            try
             {
-                if (Discord.DiscordSettings.DiscordControllerSet)
+                if (Program.CanRunDiscordRPC)
                 {
-                    Discord.DiscordSettings.Update();
-                }
-                else
-                {
-                    Process[] px = Process.GetProcessesByName("BrawlCrate");
-                    if (px.Length == 1)
+                    if (Discord.DiscordSettings.DiscordControllerSet)
                     {
-                        Discord.DiscordRpc.ClearPresence();
+                        Discord.DiscordSettings.Update();
                     }
+                    else
+                    {
+                        Process[] px = Process.GetProcessesByName("BrawlCrate");
+                        if (px.Length == 1)
+                        {
+                            Discord.DiscordRpc.ClearPresence();
+                        }
 
-                    Discord.DiscordSettings.LoadSettings(true);
+                        Discord.DiscordSettings.LoadSettings(true);
+                    }
                 }
+            }
+            catch
+            {
+                // Discord RPC doesn't need to work always
             }
         }
 

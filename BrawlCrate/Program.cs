@@ -193,11 +193,17 @@ Full changelog can be found in the installation folder:
 
                     MainForm.UpdateDiscordRPC(null, null);
                     Application.Run(editor);
-
-                    if (CanRunDiscordRPC)
+                    try
                     {
-                        Discord.DiscordRpc.ClearPresence();
-                        Discord.DiscordRpc.Shutdown();
+                        if (CanRunDiscordRPC)
+                        {
+                            Discord.DiscordRpc.ClearPresence();
+                            Discord.DiscordRpc.Shutdown();
+                        }
+                    }
+                    catch
+                    {
+                        // Discord RPC doesn't need to work always
                     }
 
                     return;
@@ -218,10 +224,17 @@ Full changelog can be found in the installation folder:
                     MainForm.UpdateDiscordRPC(null, null);
                     MainForm.Instance?.RecentFilesHandler?.AddFile(args[0]);
                     Application.Run(editor);
-                    if (CanRunDiscordRPC)
+                    try
                     {
-                        Discord.DiscordRpc.ClearPresence();
-                        Discord.DiscordRpc.Shutdown();
+                        if (CanRunDiscordRPC)
+                        {
+                            Discord.DiscordRpc.ClearPresence();
+                            Discord.DiscordRpc.Shutdown();
+                        }
+                    }
+                    catch
+                    {
+                        // Discord RPC doesn't need to work always
                     }
 
                     return;
@@ -301,10 +314,17 @@ Full changelog can be found in the installation folder:
             finally
             {
                 Close(true);
-                if (CanRunDiscordRPC)
+                try
                 {
-                    Discord.DiscordRpc.ClearPresence();
-                    Discord.DiscordRpc.Shutdown();
+                    if (CanRunDiscordRPC)
+                    {
+                        Discord.DiscordRpc.ClearPresence();
+                        Discord.DiscordRpc.Shutdown();
+                    }
+                }
+                catch
+                {
+                    // Discord RPC doesn't need to work always
                 }
             }
         }

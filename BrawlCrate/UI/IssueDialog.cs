@@ -33,10 +33,17 @@ namespace System.Windows.Forms
         {
             if (chkForceClose.Checked)
             {
-                if (Program.CanRunDiscordRPC)
+                try
                 {
-                    BrawlCrate.Discord.DiscordRpc.ClearPresence();
-                    BrawlCrate.Discord.DiscordRpc.Shutdown();
+                    if (Program.CanRunDiscordRPC)
+                    {
+                        BrawlCrate.Discord.DiscordRpc.ClearPresence();
+                        BrawlCrate.Discord.DiscordRpc.Shutdown();
+                    }
+                }
+                catch
+                {
+                    // Discord RPC doesn't need to work always
                 }
 
                 Environment.Exit(0);
