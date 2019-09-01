@@ -766,12 +766,10 @@ namespace BrawlCrate.API
         #region Other
 
         /// <summary>
-        ///     Adds an additional loader.
-        ///
-        ///     Not very necessary with the current loader implementation, kept for compatibility purposes with BBoxAPI.
+        ///     Adds a loader to parse a specific user-defined file type.
         /// </summary>
         /// <param name="loader">
-        ///     The message that will appear in the body of the MessageBox.
+        ///     The loader to be added.
         /// </param>
         public static void AddLoader(PluginLoader loader)
         {
