@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using BrawlLib.BrawlCrate;
-
 namespace BrawlLib.Properties {
     using System;
     
@@ -65,9 +63,19 @@ namespace BrawlLib.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        public static System.Drawing.Icon CanaryIcon {
+        public static System.Drawing.Icon BrawlCrateCanaryIcon {
             get {
-                object obj = ResourceManager.GetObject("CanaryIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("BrawlCrateCanaryIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon BrawlCrateIcon {
+            get {
+                object obj = ResourceManager.GetObject("BrawlCrateIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -413,25 +421,24 @@ namespace BrawlLib.Properties {
                 return ResourceManager.GetString("CollisionTypeRightWall", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Gets the current icon to be used by the program
         /// </summary>
         public static System.Drawing.Icon Icon {
             get {
-                if (PerSessionSettings.Birthday)
+                if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
                 {
                     return PartyBallIcon;
                 }
 #if CANARY
-                return CanaryIcon;
+                return BrawlCrateCanaryIcon;
 #else
-                object obj = ResourceManager.GetObject("Icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return BrawlCrateIcon;
 #endif
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>

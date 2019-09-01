@@ -13,9 +13,20 @@ namespace BrawlCrate
 {
     internal static class Program
     {
-        //Make sure this matches the tag name of the release on github exactly
+        /// <summary>
+        ///  Used internally by updater protocols. Checks latest release tag name versus this value.
+        ///
+        ///  If this isn't equal to the latest release, it assumes it needs to update.
+        ///  MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
+        /// </summary>
         public static readonly string TagName = "BrawlCrate_v0.26Hotfix3";
 
+        /// <summary>
+        ///  Shows upon first launch of a given stable release assuming that automated updating is on.
+        ///
+        ///  This mirrors what is included in the GitHub release notes, so if automatic updating is off,
+        ///  assume that the user already saw this with the update prompt.
+        /// </summary>
         public static readonly string UpdateMessage = $@"Updated to BrawlCrate NEXT! This release:
 - Is a test of the new automated release system
 - Let's see how this goes
@@ -60,7 +71,7 @@ Full changelog can be found in the installation folder:
         {
             Application.EnableVisualStyles();
             FullPath = Process.GetCurrentProcess().MainModule.FileName;
-            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe"));
+            AppPath = FullPath.Substring(0, FullPath.LastIndexOf("BrawlCrate.exe", StringComparison.OrdinalIgnoreCase));
 #if CANARY
             AssemblyTitleFull = "BrawlCrate NEXT Canary #" + File.ReadAllLines(AppPath + "\\Canary\\New")[2];
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
@@ -106,6 +117,8 @@ Full changelog can be found in the installation folder:
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.ThreadException += Application_ThreadException;
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+
+            // Set default values for settings immediately, to prevent possible errors down the line
             if (BrawlLib.Properties.Settings.Default.Codes == null)
             {
                 BrawlLib.Properties.Settings.Default.Codes = new List<CodeStorage>();
@@ -244,7 +257,6 @@ Full changelog can be found in the installation folder:
                 if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
                 {
                     string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'), UpdateMessage.IndexOf("Full changelog can be found in the installation folder", StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
-                    Console.WriteLine(changelog);
                     string fileName = $@"{AppPath}changelog-newest.txt";
                     using (StreamWriter file = new StreamWriter(fileName))
                     {
