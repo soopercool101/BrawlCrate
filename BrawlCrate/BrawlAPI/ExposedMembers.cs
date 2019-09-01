@@ -763,7 +763,7 @@ namespace BrawlCrate.API
 
         #endregion
 
-        #region Other
+        #region Loaders
 
         /// <summary>
         ///     Adds a loader to parse a specific user-defined file type.
