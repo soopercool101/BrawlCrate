@@ -363,7 +363,7 @@ namespace Updater
                     await KillOpenWindows();
                 }
 
-                // Check if we were passed in the overwrite paramter, and if not create a new folder to extract in.
+                // Check if we were passed in the overwrite parameter, and if not create a new folder to extract in.
                 if (!Overwrite)
                 {
                     Directory.CreateDirectory(AppPath + "/" + release.TagName);
@@ -667,22 +667,18 @@ namespace Updater
                 string repoOwner = repo.Split('/')[0];
                 string repoName = repo.Split('/')[1];
 
-                Branch branch;
-                GitHubCommit result;
-                DateTimeOffset commitDate;
-                branch = await github.Repository.Branch.Get(repoOwner, repoName, branchName);
-                result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
-                commitDate = result.Commit.Author.Date;
-                commitDate = commitDate.ToUniversalTime();
-                string Filename = AppPath + "\\Canary\\New";
-                if (File.Exists(Filename))
+                Branch branch = await github.Repository.Branch.Get(repoOwner, repoName, branchName);
+                GitHubCommit result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
+                DateTimeOffset buildDate = DateTimeOffset.UtcNow;
+                string filename = AppPath + "\\Canary\\New";
+                if (File.Exists(filename))
                 {
-                    File.Delete(Filename);
+                    File.Delete(filename);
                 }
 
-                using (StreamWriter sw = new StreamWriter(Filename))
+                using (StreamWriter sw = new StreamWriter(filename))
                 {
-                    sw.WriteLine(commitDate.ToString("O"));
+                    sw.WriteLine(buildDate.ToString("O"));
                     sw.WriteLine(result.Sha.Substring(0, 7));
                     sw.WriteLine(result.Sha);
                     sw.WriteLine(branchName);
@@ -1170,7 +1166,7 @@ namespace Updater
                         break;
                     case "-buc": //BrawlCrate Canary update call
                         somethingDone = true;
-                        Task t2c = Updater.CheckCanaryUpdate(args[1], args[2] != "0");
+                        Task t2c = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null, args.Length > 2 && args[2] != "0");
                         t2c.Wait();
                         break;
                     case "-bi": //BrawlCrate issue call
