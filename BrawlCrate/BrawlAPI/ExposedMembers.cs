@@ -2,6 +2,7 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 // ReSharper disable UnusedMember.Global
@@ -763,7 +764,7 @@ namespace BrawlCrate.API
 
         #endregion
 
-        #region Loaders
+        #region Parsing
 
         /// <summary>
         ///     Adds parsing for a specific user-defined file type.
@@ -774,6 +775,29 @@ namespace BrawlCrate.API
         public static void AddResourceParser(PluginResourceParser resourceParser)
         {
             ResourceParsers.Add(resourceParser);
+        }
+
+        #endregion
+
+        #region Debugging
+
+        /// <summary>
+        ///     Writes a message to the the console (if debugging) and the Trace log (if enabled).
+        ///
+        ///     To be used for debugging purposes only. This function call will do nothing in release builds.
+        ///     For compatibility purposes, this function will still be callable in release builds.
+        /// </summary>
+        /// <param name="msg">
+        ///     The string to be written to the console.
+        /// </param>
+        public static void WriteToConsole(string msg)
+        {
+#if DEBUG
+            Console.WriteLine(msg);
+#endif
+#if TRACE
+            Trace.WriteLine(msg);
+#endif
         }
 
         #endregion
