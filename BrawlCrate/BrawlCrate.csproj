@@ -171,17 +171,21 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\Any CPU\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\Any CPU\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Any CPU\Canary\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mono|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Any CPU\Mono\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="BrawlManagers\SongManager\speaker.png" />
