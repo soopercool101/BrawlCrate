@@ -327,7 +327,16 @@ namespace Updater
         {
             try
             {
-                ReleaseAsset Asset = release.Assets[0];
+                string platform = null;
+                try
+                {
+                    platform = File.ReadAllLines(AppPath + "\\Canary\\New")[5];
+                }
+                catch
+                {
+                    platform = "";
+                }
+                ReleaseAsset Asset = release.Assets.Any(a => a.Name.Contains(platform)) ? release.Assets.First(a => a.Name.Contains(platform)) : release.Assets[0];
 
                 // If open windows need to be closed, ensure they are all properly closed
                 if (Overwrite && !Documentation)
@@ -601,7 +610,7 @@ namespace Updater
         }
 
         // Used when building for releases
-        public static async Task WriteCanaryTime(string commitid = null, string branchName = null, string repo = null)
+        public static async Task WriteCanaryTime(string commitid = null, string branchName = null, string repo = null, string platform = null)
         {
             try
             {
@@ -612,6 +621,7 @@ namespace Updater
 
                 branchName = branchName ?? mainBranch;
                 repo = repo ?? mainRepo;
+                platform = platform ?? "x86";
 
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
@@ -657,7 +667,8 @@ namespace Updater
                     sw.WriteLine(result.Sha.Substring(0, 7));
                     sw.WriteLine(result.Sha);
                     sw.WriteLine(branchName);
-                    sw.Write(repo);
+                    sw.WriteLine(repo);
+                    sw.Write(platform);
                     sw.Close();
                 }
 
@@ -1147,21 +1158,12 @@ namespace Updater
                         break;
                     case "-bcommitTime": //Called on build to ensure time is saved
                         somethingDone = true;
-                        string t4arg1 = null, t4arg2 = null, t4arg3 = null;
-                        if (args.Length > 1)
-                        {
-                            t4arg1 = args[1];
-                            if (args.Length > 2)
-                            {
-                                t4arg2 = args[2];
-                                if (args.Length > 3)
-                                {
-                                    t4arg3 = args[3];
-                                }
-                            }
-                        }
+                        string t4arg1 = args.Length > 1 ? args[1] : null;
+                        string t4arg2 = args.Length > 2 ? args[2] : null;
+                        string t4arg3 = args.Length > 3 ? args[3] : null;
+                        string t4arg4 = args.Length > 4 ? args[4] : null;
 
-                        Task t4 = Updater.WriteCanaryTime(t4arg1, t4arg2, t4arg3);
+                        Task t4 = Updater.WriteCanaryTime(t4arg1, t4arg2, t4arg3, t4arg4);
                         t4.Wait();
                         break;
                     case "-dlCanary": // Force download the latest Canary build
