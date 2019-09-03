@@ -21,6 +21,7 @@ namespace Updater
         public static readonly string mainBranch = "master";
         public static string currentRepo;
         public static string currentBranch;
+        public static string platform;
 
         private static readonly byte[] _rawData =
         {
@@ -68,6 +69,21 @@ namespace Updater
             {
                 return mainBranch;
             }
+        }
+
+        public static string GetCurrentPlatform()
+        {
+            string p;
+            try
+            {
+                p = File.ReadAllLines(AppPath + "\\Canary\\New")[5];
+            }
+            catch
+            {
+                p = "x86";
+            }
+
+            return p;
         }
 
         public static async Task CheckUpdate()
@@ -296,6 +312,18 @@ namespace Updater
 
                         return;
                     }
+
+                    ReleaseAsset Asset = release.Assets.First(a => a.Name.Contains(platform));
+                    if (Asset != null)
+                    {
+                        GitHubCommit c =
+                            await github.Repository.Commit.Get(repoData[0], repoData[1], release.TargetCommitish);
+                        if (Asset.CreatedAt.UtcDateTime <= c.Commit.Committer.Date)
+                        {
+                            // Asset has not yet been updated
+                            return;
+                        }
+                    }
                 }
 
                 if ((manual || GetOpenWindowsCount() > 1) && MessageBox.Show(
@@ -327,15 +355,6 @@ namespace Updater
         {
             try
             {
-                string platform = null;
-                try
-                {
-                    platform = File.ReadAllLines(AppPath + "\\Canary\\New")[5];
-                }
-                catch
-                {
-                    platform = "";
-                }
                 ReleaseAsset Asset = release.Assets.Any(a => a.Name.Contains(platform)) ? release.Assets.First(a => a.Name.Contains(platform)) : release.Assets[0];
 
                 // If open windows need to be closed, ensure they are all properly closed
@@ -1007,6 +1026,7 @@ namespace Updater
 
             try
             {
+                TagName += $" {Updater.platform}";
                 Credentials cr = new Credentials(Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
@@ -1062,8 +1082,7 @@ namespace Updater
                         {
                             string desc = i.Body;
                             if (desc.Contains(StackTrace) &&
-                                desc.Contains(ExceptionMessage) &&
-                                desc.Contains(TagName))
+                                desc.Contains(ExceptionMessage))
                             {
                                 found = true;
                                 IssueUpdate update = i.ToUpdate();
@@ -1073,6 +1092,8 @@ namespace Updater
                                     Environment.NewLine +
                                     Description +
                                     Environment.NewLine +
+                                    Environment.NewLine +
+                                    TagName +
                                     Environment.NewLine +
                                     i.Body;
 
@@ -1126,6 +1147,7 @@ namespace Updater
             bool somethingDone = false;
             Updater.currentRepo = Updater.GetCurrentRepo();
             Updater.currentBranch = Updater.GetCurrentBranch();
+            Updater.platform = Updater.GetCurrentPlatform();
             if (args.Length > 0)
             {
                 switch (args[0])
