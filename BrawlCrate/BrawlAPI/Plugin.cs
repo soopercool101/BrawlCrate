@@ -19,6 +19,8 @@ namespace BrawlCrate.API
         public ScriptSource Script { get; set; }
         public ScriptScope Scope { get; set; }
 
+        private bool _converted = false;
+
         public void Execute()
         {
             try
@@ -27,31 +29,35 @@ namespace BrawlCrate.API
             }
             catch (Exception e)
             {
-                if (e.Message.Contains("BrawlBox") ||
-                    e.Message.Contains("bboxapi"))
+                if (!_converted)
                 {
-                    BrawlAPI.ConvertPlugin(Script.Path);
-                    Execute();
+                    _converted = true;
+                    foreach (string s in BrawlAPI.DepreciatedStrings)
+                    {
+                        if (e.Message.Contains(s))
+                        {
+                            BrawlAPI.ConvertPlugin(Script.Path);
+                            Execute();
+                            return;
+                        }
+                    }
                 }
-                else
-                {
-                    string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
-                    MessageBox.Show(msg, Path.GetFileName(Script.Path));
-                }
+                string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
+                MessageBox.Show(msg, Path.GetFileName(Script.Path));
             }
         }
     }
 
-    public class PluginLoader : ResourceNode
+    public class PluginResourceParser : ResourceNode
     {
         internal static ResourceNode TryParse(DataSource source)
         {
             ResourceNode n = null;
             using (UnsafeStream s = new UnsafeStream(source.Address, (uint) source.Length))
             {
-                foreach (PluginLoader ldr in BrawlAPI.Loaders)
+                foreach (PluginResourceParser p in BrawlAPI.ResourceParsers)
                 {
-                    if ((n = ldr.TryParse(s)) != null)
+                    if ((n = p.TryParse(s)) != null)
                     {
                         break;
                     }

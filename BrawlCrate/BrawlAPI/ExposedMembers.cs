@@ -766,14 +766,14 @@ namespace BrawlCrate.API
         #region Loaders
 
         /// <summary>
-        ///     Adds a loader to parse a specific user-defined file type.
+        ///     Adds parsing for a specific user-defined file type.
         /// </summary>
-        /// <param name="loader">
-        ///     The loader to be added.
+        /// <param name="resourceParser">
+        ///     The PluginResourceParser to be added.
         /// </param>
-        public static void AddLoader(PluginLoader loader)
+        public static void AddResourceParser(PluginResourceParser resourceParser)
         {
-            Loaders.Add(loader);
+            ResourceParsers.Add(resourceParser);
         }
 
         #endregion

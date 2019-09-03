@@ -51,7 +51,7 @@ namespace BrawlCrate.API
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
             Plugins = new List<PluginScript>();
-            Loaders = new List<PluginLoader>();
+            ResourceParsers = new List<PluginResourceParser>();
             Engine = Python.CreateEngine();
             Runtime = Engine.Runtime;
 
@@ -78,9 +78,36 @@ namespace BrawlCrate.API
         internal static ScriptRuntime Runtime { get; set; }
 
         internal static List<PluginScript> Plugins { get; set; }
-        internal static List<PluginLoader> Loaders { get; set; }
+        internal static List<PluginResourceParser> ResourceParsers { get; set; }
 
         internal static Dictionary<Type, ToolStripMenuItem[]> ContextMenuHooks { get; set; }
+
+        /// <summary>
+        ///     Contains function/variable names that have been renamed since older versions of bboxapi or BrawlAPI.
+        ///
+        ///     This allows for maximum compatibility with little room for user error.
+        /// </summary>
+        internal static readonly string[] DepreciatedStrings = new[]
+        {
+            "BrawlBox",     // BrawlBox namespace is "BrawlCrate" in this program
+            "bboxapi",      // API system is now named "BrawlAPI"
+            "PluginLoader", // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "AddLoader"     // Renamed to better reflect what it does (loaders do not have to be parsers)
+        };
+
+        /// <summary>
+        ///     Contains the new names of anything defined in the DepreciatedStrings array.
+        ///     Corresponds 1:1 with DepreciatedStrings.
+        ///
+        ///     This allows for maximum compatibility with little room for user error.
+        /// </summary>
+        internal static readonly string[] ReplacementStrings = new[]
+        {
+            "BrawlCrate",
+            "BrawlAPI",
+            "PluginResourceParser",
+            "AddResourceParser"
+        };
 
         internal static void RunScript(string path)
         {
@@ -162,17 +189,17 @@ namespace BrawlCrate.API
                 }
                 catch (Exception e)
                 {
-                    if (e.Message.Contains("BrawlBox") ||
-                        e.Message.Contains("bboxapi"))
+                    foreach (string s in DepreciatedStrings)
                     {
-                        ConvertPlugin(path);
-                        RunScript(path);
+                        if (e.Message.Contains(s))
+                        {
+                            ConvertPlugin(path);
+                            RunScript(path);
+                            return;
+                        }
                     }
-                    else
-                    {
-                        string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
-                        MessageBox.Show(msg, Path.GetFileName(path));
-                    }
+                    string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
+                    MessageBox.Show(msg, Path.GetFileName(path));
                 }
             }
         }
@@ -218,13 +245,14 @@ namespace BrawlCrate.API
             }
             catch (Exception e)
             {
-                if (e.Message.Contains("BrawlBox") ||
-                    e.Message.Contains("bboxapi"))
+                foreach (string s in BrawlAPI.DepreciatedStrings)
                 {
-                    ConvertPlugin(path);
-                    return CreatePlugin(path, loader);
+                    if (e.Message.Contains(s))
+                    {
+                        ConvertPlugin(path);
+                        return CreatePlugin(path, loader);
+                    }
                 }
-
                 string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(path));
             }
@@ -235,8 +263,10 @@ namespace BrawlCrate.API
         internal static void ConvertPlugin(string path)
         {
             string text = File.ReadAllText(path);
-            text = text.Replace("BrawlBox", "BrawlCrate");
-            text = text.Replace("bboxapi", "BrawlAPI");
+            for (int i = 0; i < DepreciatedStrings.Length; i++)
+            {
+                text = text.Replace(DepreciatedStrings[i], ReplacementStrings[i]);
+            }
             File.WriteAllText(path, text);
         }
 

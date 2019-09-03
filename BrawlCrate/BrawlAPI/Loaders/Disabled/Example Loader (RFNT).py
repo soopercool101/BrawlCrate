@@ -4,7 +4,7 @@ from BrawlLib.SSBB.ResourceNodes import *
 import struct
 from System.Windows.Forms import ToolStripMenuItem
 
-class RFNTNode(PluginLoader):
+class RFNTNode(PluginResourceParser):
     # Set our resource type (Dictates nodewrapper and icon)
     def get_ResourceType(self):
         return ResourceType.NoEditFolder
@@ -12,14 +12,13 @@ class RFNTNode(PluginLoader):
     # Called by super class to check if this loader matches the data
     def TryParse(self, stream):
         src = file(stream)
-        src.seek(5,0)
-        i = struct.unpack('>I', src.read(4))[0]
+        src.seek(0,0)
+        tag = ""
+        tag = tag.join(struct.unpack('>4s', src.read(4)))
 
         #if yes, return an instance of our class.
-        #if i == 0x52464E54: #RFNT
-        #    return RFNTNode()
-        #else:
-        #    return None
+        if tag == "RFNT": #RFNT
+            return RFNTNode()
         return None
 
     def OnInitialize(self):
@@ -32,7 +31,4 @@ def doSomething_handler(sender, event_args):
 
 # Create an instance of our node class and add it to the API loader cache
 node = RFNTNode()
-BrawlAPI.AddLoader(node)
-
-# Add a button to our right click menu
-#BrawlAPI.AddContextMenuItem(ARCWrapper, ToolStripMenuItem("Do Something", None, doSomething_handler))
+BrawlAPI.AddResourceParser(node)

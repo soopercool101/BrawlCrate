@@ -103,7 +103,7 @@ namespace BrawlCrate
             if (Properties.Settings.Default.APIEnabled)
             {
                 BrawlAPI.Plugins.Clear();
-                BrawlAPI.Loaders.Clear();
+                BrawlAPI.ResourceParsers.Clear();
                 string plugins = $"{Application.StartupPath}/Plugins";
                 string loaders = $"{Application.StartupPath}/Loaders";
 

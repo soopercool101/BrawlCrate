@@ -1754,7 +1754,7 @@ namespace BrawlCrate
             Properties.Settings.Default.APILoadersEnabled = value;
             Properties.Settings.Default.Save();
 
-            API.BrawlAPI.Loaders.Clear();
+            API.BrawlAPI.ResourceParsers.Clear();
 
             if (value)
             {
