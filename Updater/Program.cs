@@ -317,7 +317,7 @@ namespace Updater
                         return;
                     }
 
-                    ReleaseAsset Asset = release.Assets.First(a => a.Name.Contains(platform.Replace(" ", ".")));
+                    ReleaseAsset Asset = release.Assets.First(a => a.Name.Contains(platform));
                     if (Asset != null)
                     {
                         GitHubCommit c =
@@ -359,8 +359,8 @@ namespace Updater
         {
             try
             {
-                ReleaseAsset Asset = release.Assets.Any(a => a.Name.Contains(platform.Replace(" ", ".")))
-                    ? release.Assets.First(a => a.Name.Contains(platform.Replace(" ", ".")))
+                ReleaseAsset Asset = release.Assets.Any(a => a.Name.Contains(platform))
+                    ? release.Assets.First(a => a.Name.Contains(platform))
                     : release.Assets[0];
 
                 // If open windows need to be closed, ensure they are all properly closed
