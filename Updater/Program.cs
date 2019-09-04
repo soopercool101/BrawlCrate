@@ -19,9 +19,9 @@ namespace Updater
     {
         public static readonly string mainRepo = "soopercool101/BrawlCrateNext";
         public static readonly string mainBranch = "master";
-        public static string currentRepo;
-        public static string currentBranch;
-        public static string platform;
+        public static string currentRepo = GetCurrentRepo();
+        public static string currentBranch = GetCurrentBranch();
+        public static string platform = GetCurrentPlatform();
 
         private static readonly byte[] _rawData =
         {
@@ -1148,9 +1148,6 @@ namespace Updater
             }
 
             bool somethingDone = false;
-            Updater.currentRepo = Updater.GetCurrentRepo();
-            Updater.currentBranch = Updater.GetCurrentBranch();
-            Updater.platform = Updater.GetCurrentPlatform();
             if (args.Length > 0)
             {
                 switch (args[0])

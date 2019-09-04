@@ -768,6 +768,8 @@ namespace BrawlCrate.API
 
         /// <summary>
         ///     Adds parsing for a specific user-defined file type.
+        ///
+        ///     In bboxapi, this was originally "AddLoader"
         /// </summary>
         /// <param name="resourceParser">
         ///     The PluginResourceParser to be added.
