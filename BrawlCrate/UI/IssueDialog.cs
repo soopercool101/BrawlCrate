@@ -72,7 +72,7 @@ namespace System.Windows.Forms
                 // Add inner exception if available
                 if (_exception.InnerException != null)
                 {
-                    exceptionMessage += "\" \"";
+                    exceptionMessage += " ";
                     exceptionMessage += _exception.InnerException.Message.Replace("\"", "\\\"");
                 }
                 string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
