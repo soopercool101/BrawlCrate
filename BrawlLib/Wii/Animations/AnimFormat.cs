@@ -99,6 +99,12 @@ namespace BrawlLib.Wii.Animations
                 while (true)
                 {
                     line = file.ReadLine();
+
+                    if (line == null)
+                    {
+                        break;
+                    }
+
                     int i = line.IndexOf(' ');
                     string tag = line.Substring(0, i);
 
