@@ -171,21 +171,21 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>4</WarningLevel>
-    <OutputPath>bin\Any CPU\Debug\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>4</WarningLevel>
-    <OutputPath>bin\Any CPU\Release\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Any CPU\Canary\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mono|AnyCPU'">
     <WarningLevel>4</WarningLevel>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Any CPU\Mono\</OutputPath>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="BrawlManagers\SongManager\speaker.png" />
