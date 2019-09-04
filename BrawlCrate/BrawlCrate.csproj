@@ -68,6 +68,7 @@
     <Prefer32Bit>true</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DefineConstants>DEBUG</DefineConstants>
@@ -95,6 +96,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Canary|x86'">
     <DefineConstants>CANARY</DefineConstants>
@@ -102,6 +104,7 @@
     <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>true</Optimize>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mono|x86'">
     <DefineConstants>MONO</DefineConstants>
@@ -109,6 +112,7 @@
     <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>true</Optimize>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DefineConstants />

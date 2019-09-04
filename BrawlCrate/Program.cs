@@ -14,18 +14,18 @@ namespace BrawlCrate
     internal static class Program
     {
         /// <summary>
-        ///  Used internally by updater protocols. Checks latest release tag name versus this value.
-        ///
-        ///  If this isn't equal to the latest release, it assumes it needs to update.
-        ///  MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
+        ///     Used internally by updater protocols. Checks latest release tag name versus this value.
+        /// 
+        ///     If this isn't equal to the latest release, it assumes it needs to update.
+        ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
         public static readonly string TagName = "BrawlCrate_v0.26Hotfix3";
 
         /// <summary>
-        ///  Shows upon first launch of a given stable release assuming that automated updating is on.
-        ///
-        ///  This mirrors what is included in the GitHub release notes, so if automatic updating is off,
-        ///  assume that the user already saw this with the update prompt.
+        ///     Shows upon first launch of a given stable release assuming that automated updating is on.
+        /// 
+        ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
+        ///     assume that the user already saw this with the update prompt.
         /// </summary>
         public static readonly string UpdateMessage = $@"Updated to BrawlCrate NEXT! This release:
 - Is a test of the new automated release system
