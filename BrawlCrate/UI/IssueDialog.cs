@@ -68,9 +68,16 @@ namespace System.Windows.Forms
 #else
                 string programTitle = Program.TagName;
 #endif
+                string exceptionMessage = _exception.Message.Replace("\"", "\\\"");
+                // Add inner exception if available
+                if (_exception.InnerException != null)
+                {
+                    exceptionMessage += "\" \"";
+                    exceptionMessage += _exception.InnerException.Message.Replace("\"", "\\\"");
+                }
                 string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
                     programTitle,
-                    _exception.Message.Replace("\"", "\\\""),
+                    exceptionMessage,
                     _exception.StackTrace.Replace("\"", "\\\""),
                     txtTitle.Text.Replace("\"", "\\\""),
                     string.IsNullOrEmpty(txtDescription.Text) || txtDescription.ForeColor == Color.Gray
