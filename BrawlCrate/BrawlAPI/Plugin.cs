@@ -42,6 +42,7 @@ namespace BrawlCrate.API
                         }
                     }
                 }
+
                 string msg = $"Error running plugin \"{Path.GetFileName(Script.Path)}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(Script.Path));
             }

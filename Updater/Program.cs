@@ -88,13 +88,17 @@ namespace Updater
 
         public static async Task CheckUpdate()
         {
-            await CheckUpdate(true);
+            await CheckUpdate(true, "", true, null, true, true);
+        }
+
+        public static async Task CheckUpdate(bool overwrite)
+        {
+            await CheckUpdate(overwrite, "", true, null, true, true);
         }
 
         // Used to check for and download non-canary releases (including documentation updates)
-        public static async Task CheckUpdate(bool Overwrite, string releaseTag = "", bool manual = false,
-                                             string openFile = null, bool checkDocumentation = false,
-                                             bool Automatic = false)
+        public static async Task CheckUpdate(bool overwrite, string releaseTag, bool manual, string openFile,
+                                             bool checkDocumentation, bool automatic)
         {
             // If canary is active, disable it
             if (File.Exists(AppPath + "\\Canary\\Active"))
@@ -216,7 +220,7 @@ namespace Updater
                 }
 
                 // Show warnings as applicable to those using the automatic updater
-                if (Automatic)
+                if (automatic)
                 {
                     if (release.Body.Contains("WARNING: "))
                     {
@@ -264,7 +268,7 @@ namespace Updater
                     }
                 }
 
-                await DownloadRelease(release, Overwrite, Automatic, manual, documentation, openFile);
+                await DownloadRelease(release, overwrite, automatic, manual, documentation, openFile);
             }
             catch (HttpRequestException)
             {
@@ -282,7 +286,7 @@ namespace Updater
             }
         }
 
-        public static async Task CheckCanaryUpdate(string openFile = null, bool manual = false, bool force = false)
+        public static async Task CheckCanaryUpdate(string openFile, bool manual, bool force)
         {
             try
             {
@@ -350,8 +354,8 @@ namespace Updater
             }
         }
 
-        public static async Task DownloadRelease(Release release, bool Overwrite, bool Automatic, bool manual,
-                                                 bool Documentation, string openFile)
+        public static async Task DownloadRelease(Release release, bool overwrite, bool automatic, bool manual,
+                                                 bool documentation, string openFile)
         {
             try
             {
@@ -360,13 +364,13 @@ namespace Updater
                     : release.Assets[0];
 
                 // If open windows need to be closed, ensure they are all properly closed
-                if (Overwrite && !Documentation)
+                if (overwrite && !documentation)
                 {
                     await KillOpenWindows();
                 }
 
                 // Check if we were passed in the overwrite parameter, and if not create a new folder to extract in.
-                if (!Overwrite)
+                if (!overwrite)
                 {
                     Directory.CreateDirectory(AppPath + "/" + release.TagName);
                     AppPath += "/" + release.TagName;
@@ -415,13 +419,13 @@ namespace Updater
                 }
 
                 // Case 1: Cross-platform (Batch files won't work, so user will have to ), documentation update, or non-overwriting update
-                if (Process.GetProcessesByName("winlogon").Count() == 0 || Documentation || !Overwrite)
+                if (Process.GetProcessesByName("winlogon").Count() == 0 || documentation || !overwrite)
                 {
                     try
                     {
                         Process update = Process.Start(AppPath + "/temp.exe", "-o\"" + AppPath + "\" -y");
                         // For documentation updates, ensure temp.exe is properly deleted and show changelog if the download was automated.
-                        if (Documentation)
+                        if (documentation)
                         {
                             update?.WaitForExit();
                             if (File.Exists(AppPath + "\\temp.exe"))
@@ -434,7 +438,7 @@ namespace Updater
                                                  StringComparison.OrdinalIgnoreCase) && release.Name.Length > 26
                                                 ? release.Name.Substring(25)
                                                 : release.Name) +
-                                            (Automatic ? "\nThis documentation release:\n" + release.Body : ""));
+                                            (automatic ? "\nThis documentation release:\n" + release.Body : ""));
                         }
                     }
                     catch (Exception e)
@@ -494,7 +498,7 @@ namespace Updater
             }
         }
 
-        public static async Task ForceDownloadStable(string openFile = null)
+        public static async Task ForceDownloadStable(string openFile)
         {
             await SetCanaryInactive();
             string repoOwner = mainRepo.Split('/')[0];
@@ -631,7 +635,7 @@ namespace Updater
         }
 
         // Used when building for releases
-        public static async Task WriteCanaryTime(string commitid = null, string branchName = null, string repo = null, string platform = null)
+        public static async Task WriteCanaryTime(string commitid, string branchName, string repo, string canaryPlatform)
         {
             try
             {
@@ -642,7 +646,7 @@ namespace Updater
 
                 branchName = branchName ?? mainBranch;
                 repo = repo ?? mainRepo;
-                platform = platform ?? "x86";
+                canaryPlatform = canaryPlatform ?? "x86";
 
                 DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
                 CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
@@ -670,7 +674,8 @@ namespace Updater
                 string repoName = repo.Split('/')[1];
 
                 Branch branch = await github.Repository.Branch.Get(repoOwner, repoName, branchName);
-                GitHubCommit result = await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
+                GitHubCommit result =
+                    await github.Repository.Commit.Get(repoOwner, repoName, commitid ?? branch.Commit.Sha);
                 DateTimeOffset buildDate = DateTimeOffset.UtcNow;
                 string filename = AppPath + "\\Canary\\New";
                 if (File.Exists(filename))
@@ -685,7 +690,7 @@ namespace Updater
                     sw.WriteLine(result.Sha);
                     sw.WriteLine(branchName);
                     sw.WriteLine(repo);
-                    sw.Write(platform);
+                    sw.Write(canaryPlatform);
                     sw.Close();
                 }
 
@@ -1062,7 +1067,7 @@ namespace Updater
                                 MessageBoxButtons.YesNoCancel);
                             if (OverwriteResult != DialogResult.Cancel)
                             {
-                                Task t = Updater.ForceDownloadStable();
+                                Task t = Updater.ForceDownloadStable("");
                                 t.Wait();
                             }
                         }
@@ -1168,7 +1173,8 @@ namespace Updater
                         break;
                     case "-buc": //BrawlCrate Canary update call
                         somethingDone = true;
-                        Task t2c = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null, args.Length > 2 && args[2] != "0");
+                        Task t2c = Updater.CheckCanaryUpdate(args.Length > 1 ? args[1] : null,
+                            args.Length > 2 && args[2] != "0", false);
                         t2c.Wait();
                         break;
                     case "-bi": //BrawlCrate issue call

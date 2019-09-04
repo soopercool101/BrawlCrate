@@ -256,12 +256,15 @@ Full changelog can be found in the installation folder:
                 // Writes the latest changelog to a text file
                 if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
                 {
-                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'), UpdateMessage.IndexOf("Full changelog can be found in the installation folder", StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
+                    string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
+                        UpdateMessage.IndexOf("Full changelog can be found in the installation folder",
+                            StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
                     string fileName = $@"{AppPath}changelog-newest.txt";
                     using (StreamWriter file = new StreamWriter(fileName))
                     {
                         file.Write(changelog);
                     }
+
                     return;
                 }
             }

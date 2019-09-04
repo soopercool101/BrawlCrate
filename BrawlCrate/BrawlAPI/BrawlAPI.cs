@@ -198,6 +198,7 @@ namespace BrawlCrate.API
                             return;
                         }
                     }
+
                     string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
                     MessageBox.Show(msg, Path.GetFileName(path));
                 }
@@ -245,7 +246,7 @@ namespace BrawlCrate.API
             }
             catch (Exception e)
             {
-                foreach (string s in BrawlAPI.DepreciatedStrings)
+                foreach (string s in DepreciatedStrings)
                 {
                     if (e.Message.Contains(s))
                     {
@@ -253,6 +254,7 @@ namespace BrawlCrate.API
                         return CreatePlugin(path, loader);
                     }
                 }
+
                 string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";
                 MessageBox.Show(msg, Path.GetFileName(path));
             }
@@ -267,6 +269,7 @@ namespace BrawlCrate.API
             {
                 text = text.Replace(DepreciatedStrings[i], ReplacementStrings[i]);
             }
+
             File.WriteAllText(path, text);
         }
 
