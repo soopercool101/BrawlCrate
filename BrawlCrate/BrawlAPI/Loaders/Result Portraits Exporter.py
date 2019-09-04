@@ -32,7 +32,7 @@ def export_to_results(sender, event_args):
             # Otherwise, print error message
             BrawlAPI.ShowError('No BRRESs were found in the open file','Error')
 
-# Add a button to our right click menu.
+# Add a button to our right click menu. In this case, adds a button to the right click menu for any ARC named "char_bust_tex_lz77"
 #
 # Arguments are (in order) as follows:
 # Wrapper: Denotes which wrapper the context menu items will be added to
