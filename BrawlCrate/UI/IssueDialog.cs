@@ -19,7 +19,7 @@ namespace System.Windows.Forms
             InitializeComponent();
 
             Text = e.GetType().ToString();
-            txtStack.Text = e.Message + "\n" + e.StackTrace;
+            txtStack.Text = e.Message + " " + (e.InnerException?.Message ?? "") + "\n" + e.StackTrace;
 
             lstChangedFiles.Visible =
                 lblChangedFiles.Visible =
