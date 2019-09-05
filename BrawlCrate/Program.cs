@@ -27,13 +27,12 @@ namespace BrawlCrate
         ///     This mirrors what is included in the GitHub release notes, so if automatic updating is off,
         ///     assume that the user already saw this with the update prompt.
         /// </summary>
-        public static readonly string UpdateMessage = $@"Updated to BrawlCrate NEXT! This release:
+        public static readonly string UpdateMessage = @"Updated to BrawlCrate NEXT! This release:
 - Is a test of the new automated release system
 - Let's see how this goes
 - It should, in theory, be foolproof
 
-Full changelog can be found in the installation folder:
-{AppDomain.CurrentDomain.BaseDirectory}Changelog.txt";
+Full changelog can be viewed from the help menu.";
 
         public static readonly string AssemblyTitleFull;
         public static readonly string AssemblyTitleShort;

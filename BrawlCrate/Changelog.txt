@@ -29,7 +29,7 @@ they be held accountable for the manner in which it is used.
  . Panning on the modelviewer freezes the mouse to allow for smoother movement
  . Add MainForm previewing of Models for BRRES and ARC nodes (check the settings)
  . Add MainForm previewing of textures in a BRRES or TPL
- . Add MainForm previewing of Collision Nodes
+ . Add MainForm previewing of Collision Nodes and Collision Objects
  . Add support for Subspace Stages as Special ARC Nodes
    - Now supports auto-compression when the stage setting is active
  . Collision Objects are now parsed as children of Collision Nodes
@@ -42,7 +42,6 @@ they be held accountable for the manner in which it is used.
  . bboxapi changed to BrawlAPI
    - Python is no longer included in the installation. Path will be automatically searched for on first boot.
    - F# path is now saved to a setting, greatly reducing runtime for F# scripts
-   - Add migration feature so that plugins/loaders designed for bboxapi will automatically be converted to BrawlAPI scripts when run
    - Plugin-created dropdown items now appear in a Plugins submenu
    - Plugins now are sorted into submenus based on subfolders
    - Add various additional exposed members for API and extensive documentation (found at https://github.com/soopercool101/BrawlCrateNext/blob/master/BrawlCrate/BrawlAPI/ExposedMembers.cs)
@@ -64,6 +63,15 @@ they be held accountable for the manner in which it is used.
      . SaveFileAs
      . CloseFile
      . ForceCloseFile
+     . WriteToConsole (only useful when debugging)
+   - Change function/variable names to properly reflect usage
+     . "AddLoader" -> "AddResourceParser"
+     . "PluginLoader" -> "PluginResourceParser"
+   - Add migration feature so that plugins/loaders designed for bboxapi will automatically be converted to BrawlAPI scripts when run
+     . "BrawlBox" -> "BrawlCrate"
+     . "bboxapi" -> "BrawlAPI"
+     . "AddLoader" -> "AddResourceParser"
+     . "PluginLoader" -> "PluginResourceParser"
    - Add additional overrides for more functionality for the following exposed members
      . OpenFileDialog
 	   - Add support for title and filters
