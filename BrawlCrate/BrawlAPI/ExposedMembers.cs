@@ -17,8 +17,7 @@ namespace BrawlCrate.API
         ///
         ///     Returns null if there is no open file.
         /// </summary>
-        public static ResourceNode RootNode =>
-            MainForm.Instance.RootNode != null ? MainForm.Instance.RootNode.Resource : null;
+        public static ResourceNode RootNode => MainForm.Instance.RootNode?.Resource;
 
         /// <summary>
         ///     The currently selected node on the Main Form. Useful for context menu items.

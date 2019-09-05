@@ -226,6 +226,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
+                    // ignored
                 }
 
                 index++;
@@ -239,6 +240,7 @@ namespace BrawlCrate
             }
             catch
             {
+                // ignored
             }
 
             try
@@ -248,6 +250,7 @@ namespace BrawlCrate
             }
             catch
             {
+                // ignored
             }
 
             chkDocUpdates.Checked = MainForm.Instance.GetDocumentationUpdates;
@@ -324,12 +327,12 @@ namespace BrawlCrate
             DiscordRPCCustomName.ReadOnly = !rdoDiscordRPCNameCustom.Checked;
 
             _updating = false;
-            checkAdminAccess();
+            CheckAdminAccess();
             btnApply.Enabled = false;
         }
 
         // Unimplemented
-        private bool checkAdminAccess()
+        private bool CheckAdminAccess()
         {
             try
             {
@@ -347,12 +350,12 @@ namespace BrawlCrate
             }
         }
 
-        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void ListView1_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             btnApply.Enabled = true;
         }
 
-        private void btnApply_Click(object sender, EventArgs e)
+        private void BtnApply_Click(object sender, EventArgs e)
         {
             Apply();
         }
@@ -489,7 +492,7 @@ namespace BrawlCrate
             chkShowPropDesc.TabIndex = 7;
             chkShowPropDesc.Text = "Show property description box when available";
             chkShowPropDesc.UseVisualStyleBackColor = true;
-            chkShowPropDesc.CheckedChanged += new EventHandler(chkShowPropDesc_CheckedChanged);
+            chkShowPropDesc.CheckedChanged += new EventHandler(ChkShowPropDesc_CheckedChanged);
             // 
             // chkShowHex
             // 
@@ -500,7 +503,7 @@ namespace BrawlCrate
             chkShowHex.TabIndex = 9;
             chkShowHex.Text = "Show hexadecimal for files without previews";
             chkShowHex.UseVisualStyleBackColor = true;
-            chkShowHex.CheckedChanged += new EventHandler(chkShowHex_CheckedChanged);
+            chkShowHex.CheckedChanged += new EventHandler(ChkShowHex_CheckedChanged);
             // 
             // chkDocUpdates
             // 
@@ -511,7 +514,7 @@ namespace BrawlCrate
             chkDocUpdates.TabIndex = 11;
             chkDocUpdates.Text = "Receive documentation updates";
             chkDocUpdates.UseVisualStyleBackColor = true;
-            chkDocUpdates.CheckedChanged += new EventHandler(chkDocUpdates_CheckedChanged);
+            chkDocUpdates.CheckedChanged += new EventHandler(ChkDocUpdates_CheckedChanged);
             // 
             // chkCanary
             // 
@@ -522,7 +525,7 @@ namespace BrawlCrate
             chkCanary.TabIndex = 13;
             chkCanary.Text = "Opt into BrawlCrate Canary (Experimental) updates";
             chkCanary.UseVisualStyleBackColor = true;
-            chkCanary.CheckedChanged += new EventHandler(chkCanary_CheckedChanged);
+            chkCanary.CheckedChanged += new EventHandler(ChkCanary_CheckedChanged);
             // 
             // tabControl1
             // 
@@ -597,7 +600,7 @@ namespace BrawlCrate
             chkBoxMDL0Compatibility.TabIndex = 7;
             chkBoxMDL0Compatibility.Text = "Use compatibility mode";
             chkBoxMDL0Compatibility.UseVisualStyleBackColor = true;
-            chkBoxMDL0Compatibility.CheckedChanged += new EventHandler(chkBoxMDL0Compatibility_CheckedChanged);
+            chkBoxMDL0Compatibility.CheckedChanged += new EventHandler(ChkBoxMDL0Compatibility_CheckedChanged);
             // 
             // grpBoxAudioGeneral
             // 
@@ -620,7 +623,7 @@ namespace BrawlCrate
             chkBoxAutoPlayAudio.TabIndex = 7;
             chkBoxAutoPlayAudio.Text = "Automatically play audio nodes";
             chkBoxAutoPlayAudio.UseVisualStyleBackColor = true;
-            chkBoxAutoPlayAudio.CheckedChanged += new EventHandler(chkBoxAutoPlayAudio_CheckedChanged);
+            chkBoxAutoPlayAudio.CheckedChanged += new EventHandler(ChkBoxAutoPlayAudio_CheckedChanged);
             // 
             // grpBoxMainFormGeneral
             // 
@@ -731,7 +734,7 @@ namespace BrawlCrate
             chkBoxModuleCompress.TabIndex = 7;
             chkBoxModuleCompress.Text = "Automatically compress files (not recommended)";
             chkBoxModuleCompress.UseVisualStyleBackColor = true;
-            chkBoxModuleCompress.CheckedChanged += new EventHandler(chkBoxModuleCompress_CheckedChanged);
+            chkBoxModuleCompress.CheckedChanged += new EventHandler(ChkBoxModuleCompress_CheckedChanged);
             // 
             // groupBoxStageCompression
             // 
@@ -754,7 +757,7 @@ namespace BrawlCrate
             chkBoxStageCompress.TabIndex = 7;
             chkBoxStageCompress.Text = "Automatically compress files";
             chkBoxStageCompress.UseVisualStyleBackColor = true;
-            chkBoxStageCompress.CheckedChanged += new EventHandler(chkBoxStageCompress_CheckedChanged);
+            chkBoxStageCompress.CheckedChanged += new EventHandler(ChkBoxStageCompress_CheckedChanged);
             // 
             // groupBoxFighterCompression
             // 
@@ -778,7 +781,7 @@ namespace BrawlCrate
             chkBoxFighterPacDecompress.TabIndex = 7;
             chkBoxFighterPacDecompress.Text = "Automatically decompress PAC files";
             chkBoxFighterPacDecompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPacDecompress.CheckedChanged += new EventHandler(chkBoxFighterPacDecompress_CheckedChanged);
+            chkBoxFighterPacDecompress.CheckedChanged += new EventHandler(ChkBoxFighterPacDecompress_CheckedChanged);
             // 
             // chkBoxFighterPcsCompress
             // 
@@ -789,7 +792,7 @@ namespace BrawlCrate
             chkBoxFighterPcsCompress.TabIndex = 9;
             chkBoxFighterPcsCompress.Text = "Automatically compress PCS files";
             chkBoxFighterPcsCompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPcsCompress.CheckedChanged += new EventHandler(chkBoxFighterPcsCompress_CheckedChanged);
+            chkBoxFighterPcsCompress.CheckedChanged += new EventHandler(ChkBoxFighterPcsCompress_CheckedChanged);
             // 
             // tabFileAssociations
             // 
@@ -861,7 +864,7 @@ namespace BrawlCrate
             btnApply.TabIndex = 4;
             btnApply.Text = "Apply";
             btnApply.UseVisualStyleBackColor = true;
-            btnApply.Click += new EventHandler(btnApply_Click);
+            btnApply.Click += new EventHandler(BtnApply_Click);
             // 
             // associatiedFilesBox
             // 
@@ -887,7 +890,7 @@ namespace BrawlCrate
             checkBox1.TabIndex = 5;
             checkBox1.Text = "Check All";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
+            checkBox1.CheckedChanged += new EventHandler(CheckBox1_CheckedChanged);
             // 
             // listView1
             // 
@@ -975,7 +978,7 @@ namespace BrawlCrate
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
-            listView1.ItemChecked += new ItemCheckedEventHandler(listView1_ItemChecked);
+            listView1.ItemChecked += new ItemCheckedEventHandler(ListView1_ItemChecked);
             // 
             // columnHeader1
             // 
@@ -1294,7 +1297,6 @@ namespace BrawlCrate
             updaterBehaviorGroupbox.TabIndex = 14;
             updaterBehaviorGroupbox.TabStop = false;
             updaterBehaviorGroupbox.Text = "Updater Behavior";
-            updaterBehaviorGroupbox.Enter += new EventHandler(groupBox2_Enter);
             // 
             // rdoAutoUpdate
             // 
@@ -1306,7 +1308,7 @@ namespace BrawlCrate
             rdoAutoUpdate.TabStop = true;
             rdoAutoUpdate.Text = "Automatic";
             rdoAutoUpdate.UseVisualStyleBackColor = true;
-            rdoAutoUpdate.CheckedChanged += new EventHandler(updaterBehavior_CheckedChanged);
+            rdoAutoUpdate.CheckedChanged += new EventHandler(UpdaterBehavior_CheckedChanged);
             // 
             // rdoCheckManual
             // 
@@ -1338,7 +1340,6 @@ namespace BrawlCrate
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "SettingsDialog";
             Text = "Settings";
-            Load += new EventHandler(SettingsDialog_Load);
             Shown += new EventHandler(SettingsDialog_Shown);
             tabControl1.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
@@ -1383,7 +1384,7 @@ namespace BrawlCrate
 
         #endregion
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1395,7 +1396,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkShowPropDesc_CheckedChanged(object sender, EventArgs e)
+        private void ChkShowPropDesc_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1403,11 +1404,7 @@ namespace BrawlCrate
             }
         }
 
-        private void SettingsDialog_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void chkShowHex_CheckedChanged(object sender, EventArgs e)
+        private void ChkShowHex_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1415,7 +1412,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkDocUpdates_CheckedChanged(object sender, EventArgs e)
+        private void ChkDocUpdates_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1423,7 +1420,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkCanary_CheckedChanged(object sender, EventArgs e)
+        private void ChkCanary_CheckedChanged(object sender, EventArgs e)
         {
             if (_updating)
             {
@@ -1460,11 +1457,7 @@ namespace BrawlCrate
             _updating = false;
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-        }
-
-        private void updaterBehavior_CheckedChanged(object sender, EventArgs e)
+        private void UpdaterBehavior_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1473,7 +1466,7 @@ namespace BrawlCrate
             }
         }
 
-        private void btnCanaryBranch_Click(object sender, EventArgs e)
+        private void BtnCanaryBranch_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(this,
                     "Warning: Switching branches or repositories can be unstable unless you know what you're doing. You should generally stay on the brawlcrate-master branch unless directed otherwise for testing purposes. You can reset to the default for either field by leaving it blank.",
@@ -1492,7 +1485,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkBoxAutoPlayAudio_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxAutoPlayAudio_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1500,7 +1493,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkBoxFighterPacDecompress_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxFighterPacDecompress_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1508,7 +1501,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkBoxFighterPcsCompress_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxFighterPcsCompress_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1516,7 +1509,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkBoxStageCompress_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxStageCompress_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1524,7 +1517,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkBoxModuleCompress_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxModuleCompress_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1545,7 +1538,7 @@ namespace BrawlCrate
             }
         }
 
-        private void chkBoxMDL0Compatibility_CheckedChanged(object sender, EventArgs e)
+        private void ChkBoxMDL0Compatibility_CheckedChanged(object sender, EventArgs e)
         {
             if (!_updating)
             {
@@ -1754,15 +1747,7 @@ namespace BrawlCrate
             Properties.Settings.Default.APILoadersEnabled = value;
             Properties.Settings.Default.Save();
 
-            API.BrawlAPI.ResourceParsers.Clear();
-
-            if (value)
-            {
-                foreach (string str in Directory.EnumerateFiles($"{Application.StartupPath}/Loaders", "*.py"))
-                {
-                    API.BrawlAPI.CreatePlugin(str, true);
-                }
-            }
+            MessageBox.Show("Please re-open the program for changes to be applied.");
         }
 
         private void ChkBoxRenderBRRES_CheckedChanged(object sender, EventArgs e)
