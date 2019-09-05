@@ -93,6 +93,7 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
  . Fix bug in which sorting MDL0 Textures would sort objects instead
+ . Sped up booting and removed splash screen accordingly
  
  - BrawlCrate v0.26 Hotfix 3 - (7/25/2019)
  . Improve interpolation function to match v0.71 in all aspects
