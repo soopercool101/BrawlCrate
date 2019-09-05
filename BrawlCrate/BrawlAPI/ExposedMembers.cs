@@ -2,7 +2,6 @@
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 // ReSharper disable UnusedMember.Global
@@ -798,7 +797,7 @@ namespace BrawlCrate.API
             Console.WriteLine(msg);
 #endif
 #if TRACE
-            Trace.WriteLine(msg);
+            System.Diagnostics.Trace.WriteLine(msg);
 #endif
         }
 

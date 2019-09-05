@@ -1,7 +1,6 @@
 ﻿using BrawlCrate.NodeWrappers;
 using BrawlLib.SSBB.ResourceNodes;
 using IronPython.Hosting;
-using IronPython.Modules;
 using IronPython.Runtime.Exceptions;
 using Microsoft.Scripting;
 using Microsoft.Scripting.Hosting;
