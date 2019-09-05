@@ -111,7 +111,11 @@ namespace BrawlCrate.Discord
                 }
                 else if (Program.RootPath == null)
                 {
-                    if (root is ARCNode && ((ARCNode) root).IsStage)
+                    if (((ARCNode)root).IsSubspace)
+                    {
+                        DiscordController.presence.details = WorkString + " a subspace stage";
+                    }
+                    else if (root is ARCNode && ((ARCNode) root).IsStage)
                     {
                         if (rootName.StartsWith("STGRESULT", StringComparison.OrdinalIgnoreCase))
                         {
@@ -129,7 +133,11 @@ namespace BrawlCrate.Discord
                 }
                 else if (root is ARCNode)
                 {
-                    if (((ARCNode) root).IsStage)
+                    if (((ARCNode) root).IsSubspace)
+                    {
+                        DiscordController.presence.details = WorkString + " a subspace stage";
+                    }
+                    else if (((ARCNode) root).IsStage)
                     {
                         if (rootName.StartsWith("STGRESULT", StringComparison.OrdinalIgnoreCase))
                         {
