@@ -103,7 +103,7 @@ namespace BrawlCrate.Discord
             {
                 if (hasGct)
                 {
-                    DiscordController.presence.details = WorkString + " codes";
+                    DiscordController.presence.details = "Managing codes";
                 }
                 else if (root == null)
                 {
