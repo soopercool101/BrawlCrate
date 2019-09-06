@@ -35,8 +35,8 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine("timeUnit ntsc;");
                 file.WriteLine("linearUnit cm;");
                 file.WriteLine("angularUnit deg;");
-                file.WriteLine("startTime 1;");
-                file.WriteLine($"endTime {node.FrameCount};");
+                file.WriteLine("startTime 0;");
+                file.WriteLine($"endTime {node.FrameCount - 1};");
                 foreach (CHR0EntryNode e in node.Children)
                 {
                     MDL0BoneNode bone = model.FindChild("Bones/" + e.Name, true) as MDL0BoneNode;
@@ -46,6 +46,7 @@ namespace BrawlLib.Wii.Animations
                     }
 
                     KeyframeCollection c = e.Keyframes;
+                    int counter = 0;
                     for (int index = 0; index < 9; index++)
                     {
                         KeyframeArray array = c._keyArrays[index];
@@ -55,8 +56,8 @@ namespace BrawlLib.Wii.Animations
                             continue;
                         }
 
-                        file.WriteLine("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5}", types[index / 3], axes[index % 3],
-                            e.Name, 0, bone.Children.Count, index < 6 ? index + 3 : index - 6);
+                        file.WriteLine("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5};", types[index / 3], axes[index % 3],
+                            e.Name, 0, bone.Children.Count, counter);
                         file.WriteLine("animData {");
                         file.WriteLine("  input time;");
                         file.WriteLine($"  output {(index > 2 && index < 6 ? "angular" : "linear")};");
@@ -66,23 +67,18 @@ namespace BrawlLib.Wii.Animations
                         file.WriteLine("  keys {");
                         for (KeyframeEntry entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
-                            float angle = (float) Math.Atan(entry._tangent) * Maths._rad2degf;
-                            file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
-                                entry._index + 1,
+                            file.WriteLine("    {0} {1} {2} {2} {3} {4} {5};",
+                                entry._index,
                                 entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                "fixed",
-                                "fixed",
+                                "auto", //single ? "auto" : "fixed",
                                 "1",
                                 "1",
-                                "0",
-                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                "1",
-                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                "1");
+                                "0");
                         }
 
                         file.WriteLine("  }");
                         file.WriteLine("}");
+                        counter++;
                     }
                 }
             }
