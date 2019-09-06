@@ -67,7 +67,7 @@ namespace BrawlLib.Wii.Animations
                         for (KeyframeEntry entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
                             float angle = (float) Math.Atan(entry._tangent) * Maths._rad2degf;
-                            file.WriteLine(" {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
+                            file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
                                 entry._index + 1,
                                 entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
                                 "fixed",
