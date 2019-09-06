@@ -1,8 +1,6 @@
-from BrawlCrate.NodeWrappers import ARCWrapper
 from BrawlCrate.API import *
 from BrawlLib.SSBB.ResourceNodes import *
 import struct
-from System.Windows.Forms import ToolStripMenuItem
 
 class RFNTNode(PluginResourceParser):
     # Set our resource type (Dictates nodewrapper and icon)
