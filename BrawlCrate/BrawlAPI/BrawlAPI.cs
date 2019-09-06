@@ -88,10 +88,10 @@ namespace BrawlCrate.API
         /// </summary>
         internal static readonly string[] DepreciatedStrings = new[]
         {
-            "BrawlBox",     // BrawlBox namespace is "BrawlCrate" in this program
-            "bboxapi",      // API system is now named "BrawlAPI"
-            "PluginLoader", // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddLoader"     // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "BrawlBox",             // BrawlBox namespace is "BrawlCrate" in this program
+            "bboxapi",              // API system is now named "BrawlAPI"
+            "PluginLoader",         // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "AddLoader"             // Renamed to better reflect what it does (loaders do not have to be parsers)
         };
 
         /// <summary>
@@ -102,10 +102,10 @@ namespace BrawlCrate.API
         /// </summary>
         internal static readonly string[] ReplacementStrings = new[]
         {
-            "BrawlCrate",
-            "BrawlAPI",
-            "PluginResourceParser",
-            "AddResourceParser"
+            "BrawlCrate",           // BrawlBox namespace is "BrawlCrate" in this program
+            "BrawlAPI",             // API system is now named "BrawlAPI"
+            "PluginResourceParser", // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "AddResourceParser"     // Renamed to better reflect what it does (loaders do not have to be parsers)
         };
 
         internal static void RunScript(string path)
