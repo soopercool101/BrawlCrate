@@ -118,7 +118,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOkay
             // 
@@ -129,7 +129,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // RenameDialog
             // 

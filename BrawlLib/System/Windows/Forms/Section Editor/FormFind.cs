@@ -31,8 +31,8 @@ namespace System.Windows.Forms
             _mainWindow = mainWindow;
             HexBox = _mainWindow.hexBox1;
             FindOptions = _mainWindow._findOptions;
-            rbString.CheckedChanged += new EventHandler(rb_CheckedChanged);
-            rbHex.CheckedChanged += new EventHandler(rb_CheckedChanged);
+            rbString.CheckedChanged += rb_CheckedChanged;
+            rbHex.CheckedChanged += rb_CheckedChanged;
         }
 
         private void ByteProvider_Changed(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace System.Windows.Forms
             // 
             resources.ApplyResources(txtFind, "txtFind");
             txtFind.Name = "txtFind";
-            txtFind.TextChanged += new EventHandler(txtString_TextChanged);
+            txtFind.TextChanged += (txtString_TextChanged);
             // 
             // rbString
             // 
@@ -111,14 +111,14 @@ namespace System.Windows.Forms
             // 
             resources.ApplyResources(btnOK, "btnOK");
             btnOK.Name = "btnOK";
-            btnOK.Click += new EventHandler(btnOK_Click);
+            btnOK.Click += (btnOK_Click);
             // 
             // btnCancel
             // 
             resources.ApplyResources(btnCancel, "btnCancel");
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Name = "btnCancel";
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += (btnCancel_Click);
             // 
             // groupBox1
             // 
@@ -145,12 +145,12 @@ namespace System.Windows.Forms
             // 
             // timerPercent
             // 
-            timerPercent.Tick += new EventHandler(timerPercent_Tick);
+            timerPercent.Tick += (timerPercent_Tick);
             // 
             // timer
             // 
             timer.Interval = 50;
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Tick += (timer_Tick);
             // 
             // hexFind
             // 
@@ -198,7 +198,7 @@ namespace System.Windows.Forms
             Name = "FormFind";
             ShowIcon = false;
             ShowInTaskbar = false;
-            Activated += new EventHandler(FormFind_Activated);
+            Activated += (FormFind_Activated);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
@@ -236,7 +236,7 @@ namespace System.Windows.Forms
 
             byte[] hex = _findOptions.Hex ?? new byte[0];
             hexFind.ByteProvider = new DynamicByteProvider(hex);
-            hexFind.ByteProvider.Changed += new EventHandler(ByteProvider_Changed);
+            hexFind.ByteProvider.Changed += ByteProvider_Changed;
         }
 
         private void rb_CheckedChanged(object sender, EventArgs e)

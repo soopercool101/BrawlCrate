@@ -73,7 +73,7 @@ namespace System.Windows.Forms
             lstColors.Size = new Drawing.Size(334, 218);
             lstColors.TabIndex = 1;
             lstColors.DrawItem += new DrawItemEventHandler(lstColors_DrawItem);
-            lstColors.DoubleClick += new EventHandler(lstColors_DoubleClick);
+            lstColors.DoubleClick += lstColors_DoubleClick;
             lstColors.KeyDown += new KeyEventHandler(lstColors_KeyDown);
             lstColors.MouseDown += new MouseEventHandler(lstColors_MouseDown);
             // 
@@ -97,7 +97,7 @@ namespace System.Windows.Forms
             selectAllToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.A;
             selectAllToolStripMenuItem.Size = new Drawing.Size(164, 22);
             selectAllToolStripMenuItem.Text = "Select All";
-            selectAllToolStripMenuItem.Click += new EventHandler(selectAllToolStripMenuItem_Click);
+            selectAllToolStripMenuItem.Click += selectAllToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -110,7 +110,7 @@ namespace System.Windows.Forms
             copyToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
             copyToolStripMenuItem.Size = new Drawing.Size(164, 22);
             copyToolStripMenuItem.Text = "Copy";
-            copyToolStripMenuItem.Click += new EventHandler(copyToolStripMenuItem_Click);
+            copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             // 
             // pasteToolStripMenuItem
             // 
@@ -135,7 +135,7 @@ namespace System.Windows.Forms
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Drawing.Size(164, 22);
             editToolStripMenuItem.Text = "Edit...";
-            editToolStripMenuItem.Click += new EventHandler(editToolStripMenuItem_Click);
+            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // lblBase
             // 
@@ -148,7 +148,7 @@ namespace System.Windows.Forms
             lblBase.Size = new Drawing.Size(149, 20);
             lblBase.TabIndex = 2;
             lblBase.TextAlign = ContentAlignment.MiddleLeft;
-            lblBase.Click += new EventHandler(lblBase_Click);
+            lblBase.Click += lblBase_Click;
             // 
             // lblColor
             // 
@@ -158,7 +158,7 @@ namespace System.Windows.Forms
             lblColor.Name = "lblColor";
             lblColor.Size = new Drawing.Size(41, 14);
             lblColor.TabIndex = 3;
-            lblColor.Click += new EventHandler(lblBase_Click);
+            lblColor.Click += lblBase_Click;
             // 
             // pnlPrimary
             // 
@@ -182,28 +182,28 @@ namespace System.Windows.Forms
             lblCNoA.Name = "lblCNoA";
             lblCNoA.Size = new Drawing.Size(41, 14);
             lblCNoA.TabIndex = 4;
-            lblCNoA.Click += new EventHandler(lblBase_Click);
+            lblCNoA.Click += lblBase_Click;
             // 
             // allToolStripMenuItem1
             // 
             allToolStripMenuItem1.Name = "allToolStripMenuItem1";
             allToolStripMenuItem1.Size = new Drawing.Size(152, 22);
             allToolStripMenuItem1.Text = "All";
-            allToolStripMenuItem1.Click += new EventHandler(allToolStripMenuItem_Click);
+            allToolStripMenuItem1.Click += allToolStripMenuItem_Click;
             // 
             // colorToolStripMenuItem1
             // 
             colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
             colorToolStripMenuItem1.Size = new Drawing.Size(152, 22);
             colorToolStripMenuItem1.Text = "Color";
-            colorToolStripMenuItem1.Click += new EventHandler(colorToolStripMenuItem_Click);
+            colorToolStripMenuItem1.Click += colorToolStripMenuItem_Click;
             // 
             // alphaToolStripMenuItem1
             // 
             alphaToolStripMenuItem1.Name = "alphaToolStripMenuItem1";
             alphaToolStripMenuItem1.Size = new Drawing.Size(152, 22);
             alphaToolStripMenuItem1.Text = "Alpha";
-            alphaToolStripMenuItem1.Click += new EventHandler(alphaToolStripMenuItem_Click);
+            alphaToolStripMenuItem1.Click += alphaToolStripMenuItem_Click;
             // 
             // CLRControl
             // 

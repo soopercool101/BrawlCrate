@@ -44,7 +44,7 @@ namespace System.Windows.Forms
             lblStartText.Size = new Drawing.Size(154, 20);
             lblStartText.TabIndex = 4;
             lblStartText.TextAlign = ContentAlignment.MiddleCenter;
-            lblStartText.Click += new EventHandler(lblStartText_Click);
+            lblStartText.Click += lblStartText_Click;
             // 
             // label2
             // 
@@ -62,7 +62,7 @@ namespace System.Windows.Forms
             lblStartColor.Name = "lblStartColor";
             lblStartColor.Size = new Drawing.Size(40, 20);
             lblStartColor.TabIndex = 2;
-            lblStartColor.Click += new EventHandler(lblStartText_Click);
+            lblStartColor.Click += lblStartText_Click;
             // 
             // lblEndText
             // 
@@ -74,7 +74,7 @@ namespace System.Windows.Forms
             lblEndText.Size = new Drawing.Size(154, 20);
             lblEndText.TabIndex = 4;
             lblEndText.TextAlign = ContentAlignment.MiddleCenter;
-            lblEndText.Click += new EventHandler(lblEndText_Click);
+            lblEndText.Click += lblEndText_Click;
             // 
             // label4
             // 
@@ -92,7 +92,7 @@ namespace System.Windows.Forms
             lblEndColor.Name = "lblEndColor";
             lblEndColor.Size = new Drawing.Size(40, 20);
             lblEndColor.TabIndex = 2;
-            lblEndColor.Click += new EventHandler(lblEndText_Click);
+            lblEndColor.Click += lblEndText_Click;
             // 
             // btnOkay
             // 
@@ -103,7 +103,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 6;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // btnCancel
             // 
@@ -114,7 +114,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnCopy
             // 
@@ -124,7 +124,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 9;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += new EventHandler(btnCopy_Click);
+            btnCopy.Click += btnCopy_Click;
             // 
             // pnlPreview
             // 

@@ -35,8 +35,8 @@ namespace System.Windows.Forms
             trackBar1.Size = new Drawing.Size(378, 45);
             trackBar1.TabIndex = 0;
             trackBar1.TickFrequency = 2;
-            trackBar1.UserSeek += new EventHandler(trackBar1_UserSeek);
-            trackBar1.ValueChanged += new EventHandler(trackBar1_ValueChanged);
+            trackBar1.UserSeek += trackBar1_UserSeek;
+            trackBar1.ValueChanged += trackBar1_ValueChanged;
             // 
             // btnPlay
             // 
@@ -47,7 +47,7 @@ namespace System.Windows.Forms
             btnPlay.TabIndex = 1;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += new EventHandler(btnPlay_Click);
+            btnPlay.Click += btnPlay_Click;
             // 
             // btnRewind
             // 
@@ -58,7 +58,7 @@ namespace System.Windows.Forms
             btnRewind.TabIndex = 2;
             btnRewind.Text = "|<";
             btnRewind.UseVisualStyleBackColor = true;
-            btnRewind.Click += new EventHandler(btnRewind_Click);
+            btnRewind.Click += btnRewind_Click;
             // 
             // chkLoop
             // 
@@ -69,7 +69,7 @@ namespace System.Windows.Forms
             chkLoop.TabIndex = 3;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += chkLoop_CheckedChanged;
             // 
             // lblProgress
             // 

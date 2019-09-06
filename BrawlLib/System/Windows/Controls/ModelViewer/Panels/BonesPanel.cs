@@ -108,7 +108,7 @@ namespace System.Windows.Forms
             lstBones.Size = new Drawing.Size(160, 373);
             lstBones.TabIndex = 32;
             lstBones.ItemCheck += new ItemCheckEventHandler(lstBones_ItemCheck);
-            lstBones.SelectedValueChanged += new EventHandler(lstBones_SelectedValueChanged);
+            lstBones.SelectedValueChanged += lstBones_SelectedValueChanged;
             lstBones.KeyDown += new KeyEventHandler(lstBones_KeyDown);
             lstBones.MouseDown += new MouseEventHandler(lstBones_MouseDown);
             // 
@@ -151,9 +151,9 @@ namespace System.Windows.Forms
             txtSearchBone.TabIndex = 30;
             txtSearchBone.Text = "Search for a bone...";
             txtSearchBone.Visible = false;
-            txtSearchBone.TextChanged += new EventHandler(textBox1_TextChanged);
-            txtSearchBone.Enter += new EventHandler(textBox1_Enter);
-            txtSearchBone.Leave += new EventHandler(textBox1_Leave);
+            txtSearchBone.TextChanged += textBox1_TextChanged;
+            txtSearchBone.Enter += textBox1_Enter;
+            txtSearchBone.Leave += textBox1_Leave;
             // 
             // chkContains
             // 
@@ -168,7 +168,7 @@ namespace System.Windows.Forms
             chkContains.Text = "Contains";
             chkContains.UseVisualStyleBackColor = false;
             chkContains.Visible = false;
-            chkContains.CheckedChanged += new EventHandler(chkContains_CheckedChanged);
+            chkContains.CheckedChanged += chkContains_CheckedChanged;
             // 
             // chkFlat
             // 
@@ -184,7 +184,7 @@ namespace System.Windows.Forms
             chkFlat.TabIndex = 31;
             chkFlat.Text = "Flat";
             chkFlat.UseVisualStyleBackColor = false;
-            chkFlat.CheckedChanged += new EventHandler(chkFlat_CheckedChanged);
+            chkFlat.CheckedChanged += chkFlat_CheckedChanged;
             // 
             // ctxBones
             // 
@@ -223,7 +223,7 @@ namespace System.Windows.Forms
             renameBoneToolStripMenuItem.Name = "renameBoneToolStripMenuItem";
             renameBoneToolStripMenuItem.Size = new Drawing.Size(174, 22);
             renameBoneToolStripMenuItem.Text = "Rename";
-            renameBoneToolStripMenuItem.Click += new EventHandler(renameBoneToolStripMenuItem_Click);
+            renameBoneToolStripMenuItem.Click += renameBoneToolStripMenuItem_Click;
             // 
             // ctxBonesDivider1
             // 
@@ -235,21 +235,21 @@ namespace System.Windows.Forms
             addToParentToolStripMenuItem.Name = "addToParentToolStripMenuItem";
             addToParentToolStripMenuItem.Size = new Drawing.Size(174, 22);
             addToParentToolStripMenuItem.Text = "Add To Parent";
-            addToParentToolStripMenuItem.Click += new EventHandler(addToParentToolStripMenuItem_Click);
+            addToParentToolStripMenuItem.Click += addToParentToolStripMenuItem_Click;
             // 
             // addToNextUpToolStripMenuItem
             // 
             addToNextUpToolStripMenuItem.Name = "addToNextUpToolStripMenuItem";
             addToNextUpToolStripMenuItem.Size = new Drawing.Size(174, 22);
             addToNextUpToolStripMenuItem.Text = "Add To Next Up";
-            addToNextUpToolStripMenuItem.Click += new EventHandler(addToNextUpToolStripMenuItem_Click);
+            addToNextUpToolStripMenuItem.Click += addToNextUpToolStripMenuItem_Click;
             // 
             // addToNextDownToolStripMenuItem
             // 
             addToNextDownToolStripMenuItem.Name = "addToNextDownToolStripMenuItem";
             addToNextDownToolStripMenuItem.Size = new Drawing.Size(174, 22);
             addToNextDownToolStripMenuItem.Text = "Add To Next Down";
-            addToNextDownToolStripMenuItem.Click += new EventHandler(addToNextDownToolStripMenuItem_Click);
+            addToNextDownToolStripMenuItem.Click += addToNextDownToolStripMenuItem_Click;
             // 
             // ctxBonesDivider2
             // 
@@ -261,14 +261,14 @@ namespace System.Windows.Forms
             _moveUpToolStripMenuItem.Name = "_moveUpToolStripMenuItem";
             _moveUpToolStripMenuItem.Size = new Drawing.Size(174, 22);
             _moveUpToolStripMenuItem.Text = "Move Up";
-            _moveUpToolStripMenuItem.Click += new EventHandler(_moveUpToolStripMenuItem_Click);
+            _moveUpToolStripMenuItem.Click += _moveUpToolStripMenuItem_Click;
             // 
             // _moveDownToolStripMenuItem
             // 
             _moveDownToolStripMenuItem.Name = "_moveDownToolStripMenuItem";
             _moveDownToolStripMenuItem.Size = new Drawing.Size(174, 22);
             _moveDownToolStripMenuItem.Text = "Move Down";
-            _moveDownToolStripMenuItem.Click += new EventHandler(_moveDownToolStripMenuItem_Click);
+            _moveDownToolStripMenuItem.Click += _moveDownToolStripMenuItem_Click;
             // 
             // imageList1
             // 
@@ -281,7 +281,7 @@ namespace System.Windows.Forms
             Controls.Add(pnlKeyframes);
             Name = "BonesPanel";
             Size = new Drawing.Size(164, 398);
-            SizeChanged += new EventHandler(BonesPanel_SizeChanged);
+            SizeChanged += BonesPanel_SizeChanged;
             pnlKeyframes.ResumeLayout(false);
             pnlBones.ResumeLayout(false);
             panel1.ResumeLayout(false);

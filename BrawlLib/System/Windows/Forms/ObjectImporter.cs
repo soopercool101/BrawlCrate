@@ -305,7 +305,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOkay
             // 
@@ -316,7 +316,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // label1
             // 
@@ -338,7 +338,7 @@ namespace System.Windows.Forms
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Drawing.Size(121, 21);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -359,7 +359,7 @@ namespace System.Windows.Forms
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Drawing.Size(121, 21);
             comboBox2.TabIndex = 6;
-            comboBox2.SelectedIndexChanged += new EventHandler(comboBox2_SelectedIndexChanged);
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // comboBox3
             // 
@@ -387,7 +387,7 @@ namespace System.Windows.Forms
             checkBox1.TabIndex = 8;
             checkBox1.Text = "Merge both models";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += new EventHandler(checkBox1_CheckedChanged);
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // label3
             // 

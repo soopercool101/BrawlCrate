@@ -374,7 +374,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
+            numFrame.ValueChanged += numFrame_ValueChanged;
             // 
             // lblFrameCount
             // 
@@ -395,7 +395,7 @@ namespace System.Windows.Forms
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += new EventHandler(btnPrev_Click);
+            btnPrev.Click += btnPrev_Click;
             // 
             // btnNext
             // 
@@ -407,7 +407,7 @@ namespace System.Windows.Forms
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += new EventHandler(btnNext_Click);
+            btnNext.Click += btnNext_Click;
             // 
             // listKeyframes
             // 
@@ -420,7 +420,7 @@ namespace System.Windows.Forms
             listKeyframes.Name = "listKeyframes";
             listKeyframes.Size = new Drawing.Size(279, 104);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
+            listKeyframes.SelectedIndexChanged += listKeyframes_SelectedIndexChanged;
             // 
             // groupBox1
             // 
@@ -511,7 +511,7 @@ namespace System.Windows.Forms
             numSpotBright.Size = new Drawing.Size(70, 20);
             numSpotBright.TabIndex = 19;
             numSpotBright.Text = "0";
-            numSpotBright.ValueChanged += new EventHandler(BoxChanged);
+            numSpotBright.ValueChanged += BoxChanged;
             // 
             // label6
             // 
@@ -536,7 +536,7 @@ namespace System.Windows.Forms
             numRefBright.Size = new Drawing.Size(70, 20);
             numRefBright.TabIndex = 13;
             numRefBright.Text = "0";
-            numRefBright.ValueChanged += new EventHandler(BoxChanged);
+            numRefBright.ValueChanged += BoxChanged;
             // 
             // label3
             // 
@@ -594,7 +594,7 @@ namespace System.Windows.Forms
             numStartY.Size = new Drawing.Size(70, 20);
             numStartY.TabIndex = 4;
             numStartY.Text = "0";
-            numStartY.ValueChanged += new EventHandler(BoxChanged);
+            numStartY.ValueChanged += BoxChanged;
             // 
             // label10
             // 
@@ -620,7 +620,7 @@ namespace System.Windows.Forms
             numEndZ.Size = new Drawing.Size(70, 20);
             numEndZ.TabIndex = 8;
             numEndZ.Text = "0";
-            numEndZ.ValueChanged += new EventHandler(BoxChanged);
+            numEndZ.ValueChanged += BoxChanged;
             // 
             // numStartX
             // 
@@ -634,7 +634,7 @@ namespace System.Windows.Forms
             numStartX.Size = new Drawing.Size(70, 20);
             numStartX.TabIndex = 3;
             numStartX.Text = "0";
-            numStartX.ValueChanged += new EventHandler(BoxChanged);
+            numStartX.ValueChanged += BoxChanged;
             // 
             // numRefDist
             // 
@@ -648,7 +648,7 @@ namespace System.Windows.Forms
             numRefDist.Size = new Drawing.Size(70, 20);
             numRefDist.TabIndex = 12;
             numRefDist.Text = "0";
-            numRefDist.ValueChanged += new EventHandler(BoxChanged);
+            numRefDist.ValueChanged += BoxChanged;
             // 
             // numEndX
             // 
@@ -662,7 +662,7 @@ namespace System.Windows.Forms
             numEndX.Size = new Drawing.Size(70, 20);
             numEndX.TabIndex = 6;
             numEndX.Text = "0";
-            numEndX.ValueChanged += new EventHandler(BoxChanged);
+            numEndX.ValueChanged += BoxChanged;
             // 
             // numEndY
             // 
@@ -676,7 +676,7 @@ namespace System.Windows.Forms
             numEndY.Size = new Drawing.Size(70, 20);
             numEndY.TabIndex = 7;
             numEndY.Text = "0";
-            numEndY.ValueChanged += new EventHandler(BoxChanged);
+            numEndY.ValueChanged += BoxChanged;
             // 
             // numSpotCut
             // 
@@ -690,7 +690,7 @@ namespace System.Windows.Forms
             numSpotCut.Size = new Drawing.Size(70, 20);
             numSpotCut.TabIndex = 11;
             numSpotCut.Text = "0";
-            numSpotCut.ValueChanged += new EventHandler(BoxChanged);
+            numSpotCut.ValueChanged += BoxChanged;
             // 
             // numStartZ
             // 
@@ -704,7 +704,7 @@ namespace System.Windows.Forms
             numStartZ.Size = new Drawing.Size(70, 20);
             numStartZ.TabIndex = 5;
             numStartZ.Text = "0";
-            numStartZ.ValueChanged += new EventHandler(BoxChanged);
+            numStartZ.ValueChanged += BoxChanged;
             // 
             // label9
             // 

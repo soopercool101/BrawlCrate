@@ -45,7 +45,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // btnCancel
             // 
@@ -56,7 +56,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // pnlColors
             // 
@@ -101,7 +101,7 @@ namespace System.Windows.Forms
             chkAlpha.TabIndex = 6;
             chkAlpha.Text = "Show Alpha";
             chkAlpha.UseVisualStyleBackColor = true;
-            chkAlpha.CheckedChanged += new EventHandler(chkAlpha_CheckedChanged);
+            chkAlpha.CheckedChanged += chkAlpha_CheckedChanged;
             // 
             // pnlNew
             // 
@@ -130,7 +130,7 @@ namespace System.Windows.Forms
             goodColorControl1.ShowAlpha = true;
             goodColorControl1.Size = new Drawing.Size(314, 186);
             goodColorControl1.TabIndex = 2;
-            goodColorControl1.ColorChanged += new EventHandler(goodColorControl1_ColorChanged);
+            goodColorControl1.ColorChanged += goodColorControl1_ColorChanged;
             // 
             // GoodColorControl2
             // 

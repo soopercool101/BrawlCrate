@@ -163,7 +163,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // btnCancel
             // 
@@ -174,7 +174,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // txtPath
             // 
@@ -195,7 +195,7 @@ namespace System.Windows.Forms
             btnBrowse.TabIndex = 3;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += new EventHandler(btnBrowse_Click);
+            btnBrowse.Click += btnBrowse_Click;
             // 
             // groupBox1
             // 
@@ -269,7 +269,7 @@ namespace System.Windows.Forms
             btnPlay.TabIndex = 7;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += new EventHandler(btnPlay_Click);
+            btnPlay.Click += btnPlay_Click;
             // 
             // btnRewind
             // 
@@ -280,7 +280,7 @@ namespace System.Windows.Forms
             btnRewind.TabIndex = 8;
             btnRewind.Text = "|<";
             btnRewind.UseVisualStyleBackColor = true;
-            btnRewind.Click += new EventHandler(btnRewind_Click);
+            btnRewind.Click += btnRewind_Click;
             // 
             // pnlInfo
             // 
@@ -342,7 +342,7 @@ namespace System.Windows.Forms
             btnSeekEnd.TabIndex = 13;
             btnSeekEnd.Text = ">|";
             btnSeekEnd.UseVisualStyleBackColor = true;
-            btnSeekEnd.Click += new EventHandler(btnSeekEnd_Click);
+            btnSeekEnd.Click += btnSeekEnd_Click;
             // 
             // btnLoopRW
             // 
@@ -354,7 +354,7 @@ namespace System.Windows.Forms
             btnLoopRW.TabIndex = 12;
             btnLoopRW.Text = "<";
             btnLoopRW.UseVisualStyleBackColor = true;
-            btnLoopRW.Click += new EventHandler(btnLoopRW_Click);
+            btnLoopRW.Click += btnLoopRW_Click;
             // 
             // btnFFwd
             // 
@@ -366,7 +366,7 @@ namespace System.Windows.Forms
             btnFFwd.TabIndex = 11;
             btnFFwd.Text = ">";
             btnFFwd.UseVisualStyleBackColor = true;
-            btnFFwd.Click += new EventHandler(btnFFwd_Click);
+            btnFFwd.Click += btnFFwd_Click;
             // 
             // chkLoop
             // 
@@ -377,7 +377,7 @@ namespace System.Windows.Forms
             chkLoop.TabIndex = 10;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += chkLoop_CheckedChanged;
             // 
             // pnlLoop
             // 
@@ -414,7 +414,7 @@ namespace System.Windows.Forms
             pnlLoopEnd.Name = "pnlLoopEnd";
             pnlLoopEnd.Size = new Drawing.Size(0, 12);
             pnlLoopEnd.TabIndex = 2;
-            pnlLoopEnd.SizeChanged += new EventHandler(pnlLoopEnd_SizeChanged);
+            pnlLoopEnd.SizeChanged += pnlLoopEnd_SizeChanged;
             // 
             // spltStart
             // 
@@ -435,7 +435,7 @@ namespace System.Windows.Forms
             pnlLoopStart.Name = "pnlLoopStart";
             pnlLoopStart.Size = new Drawing.Size(0, 12);
             pnlLoopStart.TabIndex = 1;
-            pnlLoopStart.SizeChanged += new EventHandler(pnlLoopStart_SizeChanged);
+            pnlLoopStart.SizeChanged += pnlLoopStart_SizeChanged;
             // 
             // grpLoop
             // 
@@ -462,7 +462,7 @@ namespace System.Windows.Forms
             btnEndSet.TabIndex = 13;
             btnEndSet.Text = "*";
             btnEndSet.UseVisualStyleBackColor = true;
-            btnEndSet.Click += new EventHandler(btnEndSet_Click);
+            btnEndSet.Click += btnEndSet_Click;
             // 
             // btnStartSet
             // 
@@ -472,7 +472,7 @@ namespace System.Windows.Forms
             btnStartSet.TabIndex = 4;
             btnStartSet.Text = "*";
             btnStartSet.UseVisualStyleBackColor = true;
-            btnStartSet.Click += new EventHandler(btnStartSet_Click);
+            btnStartSet.Click += btnStartSet_Click;
             // 
             // numLoopStart
             // 
@@ -487,7 +487,7 @@ namespace System.Windows.Forms
             numLoopStart.Name = "numLoopStart";
             numLoopStart.Size = new Drawing.Size(81, 20);
             numLoopStart.TabIndex = 10;
-            numLoopStart.ValueChanged += new EventHandler(numLoopStart_ValueChanged);
+            numLoopStart.ValueChanged += numLoopStart_ValueChanged;
             // 
             // numLoopEnd
             // 
@@ -502,7 +502,7 @@ namespace System.Windows.Forms
             numLoopEnd.Name = "numLoopEnd";
             numLoopEnd.Size = new Drawing.Size(81, 20);
             numLoopEnd.TabIndex = 11;
-            numLoopEnd.ValueChanged += new EventHandler(numLoopEnd_ValueChanged);
+            numLoopEnd.ValueChanged += numLoopEnd_ValueChanged;
             // 
             // lblEnd
             // 
@@ -540,12 +540,12 @@ namespace System.Windows.Forms
             chkLoopEnable.TabIndex = 13;
             chkLoopEnable.Text = "Enable";
             chkLoopEnable.UseVisualStyleBackColor = true;
-            chkLoopEnable.CheckedChanged += new EventHandler(chkLoopEnable_CheckedChanged);
+            chkLoopEnable.CheckedChanged += chkLoopEnable_CheckedChanged;
             // 
             // tmrUpdate
             // 
             tmrUpdate.Interval = 17;
-            tmrUpdate.Tick += new EventHandler(tmrUpdate_Tick);
+            tmrUpdate.Tick += tmrUpdate_Tick;
             // 
             // customTrackBar1
             // 
@@ -555,8 +555,8 @@ namespace System.Windows.Forms
             customTrackBar1.Name = "customTrackBar1";
             customTrackBar1.Size = new Drawing.Size(314, 45);
             customTrackBar1.TabIndex = 4;
-            customTrackBar1.UserSeek += new EventHandler(customTrackBar1_UserSeek);
-            customTrackBar1.ValueChanged += new EventHandler(customTrackBar1_ValueChanged);
+            customTrackBar1.UserSeek += customTrackBar1_UserSeek;
+            customTrackBar1.ValueChanged += customTrackBar1_ValueChanged;
             // 
             // groupBox3
             // 

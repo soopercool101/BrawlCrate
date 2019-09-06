@@ -47,7 +47,7 @@ namespace Be.Windows.Forms
         internal BuiltInContextMenu(HexBox hexBox)
         {
             _hexBox = hexBox;
-            _hexBox.ByteProviderChanged += new EventHandler(HexBox_ByteProviderChanged);
+            _hexBox.ByteProviderChanged += HexBox_ByteProviderChanged;
         }
 
         /// <summary>

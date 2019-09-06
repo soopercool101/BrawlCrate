@@ -15,7 +15,7 @@ namespace System.Windows.Forms
             InitializeComponent();
 
             Paint += new PaintEventHandler(UserControl1_Paint);
-            Resize += new EventHandler(UserControl1_Resize);
+            Resize += UserControl1_Resize;
         }
 
         private void UserControl1_Resize(object sender, EventArgs e)

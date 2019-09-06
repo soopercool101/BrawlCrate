@@ -138,7 +138,7 @@ namespace BrawlCrate
             SetStyle(ControlStyles.UserMouse, true);
 
             _timer.Interval = 200;
-            _timer.Tick += new EventHandler(timer_Tick);
+            _timer.Tick += timer_Tick;
 
             AllowDrop = true;
 
@@ -146,7 +146,7 @@ namespace BrawlCrate
             DragOver += new DragEventHandler(treeView1_DragOver);
             DragDrop += new DragEventHandler(treeView1_DragDrop);
             DragEnter += new DragEventHandler(treeView1_DragEnter);
-            DragLeave += new EventHandler(treeView1_DragLeave);
+            DragLeave += treeView1_DragLeave;
             GiveFeedback += new GiveFeedbackEventHandler(treeView1_GiveFeedback);
 
             m_DelegateOpenFile = new DelegateOpenFile(ImportFile);

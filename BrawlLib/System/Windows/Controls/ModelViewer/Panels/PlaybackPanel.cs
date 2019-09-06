@@ -50,7 +50,7 @@
             btnPlay.TabIndex = 14;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += new EventHandler(btnPlay_Click);
+            btnPlay.Click += btnPlay_Click;
             // 
             // numTotalFrames
             // 
@@ -67,7 +67,7 @@
             numTotalFrames.Name = "numTotalFrames";
             numTotalFrames.Size = new Drawing.Size(52, 22);
             numTotalFrames.TabIndex = 19;
-            numTotalFrames.ValueChanged += new EventHandler(numTotalFrames_ValueChanged);
+            numTotalFrames.ValueChanged += numTotalFrames_ValueChanged;
             // 
             // numFPS
             // 
@@ -96,7 +96,7 @@
                 0,
                 0
             });
-            numFPS.ValueChanged += new EventHandler(numFPS_ValueChanged);
+            numFPS.ValueChanged += numFPS_ValueChanged;
             // 
             // label14
             // 
@@ -115,7 +115,7 @@
             chkLoop.TabIndex = 16;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += chkLoop_CheckedChanged;
             // 
             // numFrameIndex
             // 
@@ -131,7 +131,7 @@
             numFrameIndex.Name = "numFrameIndex";
             numFrameIndex.Size = new Drawing.Size(52, 22);
             numFrameIndex.TabIndex = 12;
-            numFrameIndex.ValueChanged += new EventHandler(numFrameIndex_ValueChanged);
+            numFrameIndex.ValueChanged += numFrameIndex_ValueChanged;
             // 
             // btnPrevFrame
             // 
@@ -145,7 +145,7 @@
             btnPrevFrame.TabIndex = 11;
             btnPrevFrame.Text = "<";
             btnPrevFrame.UseVisualStyleBackColor = true;
-            btnPrevFrame.Click += new EventHandler(btnPrevFrame_Click);
+            btnPrevFrame.Click += btnPrevFrame_Click;
             // 
             // btnNextFrame
             // 
@@ -159,7 +159,7 @@
             btnNextFrame.TabIndex = 10;
             btnNextFrame.Text = ">";
             btnNextFrame.UseVisualStyleBackColor = true;
-            btnNextFrame.Click += new EventHandler(btnNextFrame_Click);
+            btnNextFrame.Click += btnNextFrame_Click;
             // 
             // btnFirst
             // 
@@ -173,7 +173,7 @@
             btnFirst.TabIndex = 20;
             btnFirst.Text = "|<";
             btnFirst.UseVisualStyleBackColor = true;
-            btnFirst.Click += new EventHandler(btnFirst_Click);
+            btnFirst.Click += btnFirst_Click;
             // 
             // btnLast
             // 
@@ -187,7 +187,7 @@
             btnLast.TabIndex = 21;
             btnLast.Text = ">|";
             btnLast.UseVisualStyleBackColor = true;
-            btnLast.Click += new EventHandler(btnLast_Click);
+            btnLast.Click += btnLast_Click;
             // 
             // label15
             // 

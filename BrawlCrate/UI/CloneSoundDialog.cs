@@ -43,7 +43,7 @@ namespace BrawlCrate
             txtName.Name = "txtName";
             txtName.Size = new System.Drawing.Size(99, 20);
             txtName.TabIndex = 2;
-            txtName.TextChanged += new EventHandler(txtName_TextChanged);
+            txtName.TextChanged += txtName_TextChanged;
             // 
             // btnOk
             // 
@@ -54,7 +54,7 @@ namespace BrawlCrate
             btnOk.TabIndex = 3;
             btnOk.Text = "Okay";
             btnOk.UseVisualStyleBackColor = true;
-            btnOk.Click += new EventHandler(btnOk_Click);
+            btnOk.Click += btnOk_Click;
             // 
             // btnCancel
             // 
@@ -65,7 +65,7 @@ namespace BrawlCrate
             btnCancel.TabIndex = 4;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // treeResource
             // 
@@ -81,7 +81,7 @@ namespace BrawlCrate
             treeResource.ShowIcons = true;
             treeResource.Size = new System.Drawing.Size(291, 200);
             treeResource.TabIndex = 0;
-            treeResource.SelectionChanged += new EventHandler(treeResource_SelectionChanged);
+            treeResource.SelectionChanged += treeResource_SelectionChanged;
             // 
             // CloneSoundDialog
             // 

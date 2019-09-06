@@ -125,7 +125,7 @@ namespace BrawlLib.Modeling
             button1.TabIndex = 9;
             button1.Text = "Okay";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += new EventHandler(button1_Click);
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -137,7 +137,7 @@ namespace BrawlLib.Modeling
             button2.TabIndex = 10;
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += new EventHandler(button2_Click);
+            button2.Click += button2_Click;
             // 
             // panel1
             // 

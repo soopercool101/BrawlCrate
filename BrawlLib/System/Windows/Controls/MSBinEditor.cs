@@ -202,7 +202,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new Drawing.Size(256, 85);
             listBox1.TabIndex = 1;
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // panel2
             // 
@@ -223,7 +223,7 @@ namespace System.Windows.Forms
             btnRemove.TabIndex = 4;
             btnRemove.Text = "-";
             btnRemove.UseVisualStyleBackColor = true;
-            btnRemove.Click += new EventHandler(btnRemove_Click);
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnAdd
             // 
@@ -233,7 +233,7 @@ namespace System.Windows.Forms
             btnAdd.TabIndex = 3;
             btnAdd.Text = "+";
             btnAdd.UseVisualStyleBackColor = true;
-            btnAdd.Click += new EventHandler(btnAdd_Click);
+            btnAdd.Click += btnAdd_Click;
             // 
             // txtEditor
             // 
@@ -247,7 +247,7 @@ namespace System.Windows.Forms
             txtEditor.ScrollBars = ScrollBars.Both;
             txtEditor.Size = new Drawing.Size(285, 122);
             txtEditor.TabIndex = 3;
-            txtEditor.TextChanged += new EventHandler(txtEditor_TextChanged);
+            txtEditor.TextChanged += txtEditor_TextChanged;
             txtEditor.KeyDown += new KeyEventHandler(txtEditor_KeyDown);
             // 
             // splitContainer1

@@ -110,7 +110,7 @@ namespace BrawlCrate.CostumeManager
             saveButton.TabIndex = 2;
             saveButton.Text = "Save info.pac";
             saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += new EventHandler(saveButton_Click);
+            saveButton.Click += saveButton_Click;
             // 
             // InfoStockIconViewer
             // 

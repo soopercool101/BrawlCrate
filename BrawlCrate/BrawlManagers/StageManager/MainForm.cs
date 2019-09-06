@@ -165,22 +165,22 @@ namespace BrawlCrate.StageManager
 
             foreach (object item in selmapMarkFormat.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += new EventHandler(switchSelmapMarkFormat);
+                ((ToolStripMenuItem) item).Click += switchSelmapMarkFormat;
             }
 
             foreach (object item in prevbaseSize.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += new EventHandler(switchPrevbaseSize);
+                ((ToolStripMenuItem) item).Click += switchPrevbaseSize;
             }
 
             foreach (object item in frontstnameSizeToolStripMenuItem.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += new EventHandler(switchFrontstnameSize);
+                ((ToolStripMenuItem) item).Click += switchFrontstnameSize;
             }
 
             foreach (object item in selmapMarkSizeToolStripMenuItem.DropDownItems)
             {
-                ((ToolStripMenuItem) item).Click += new EventHandler(switchSelmapMarkSize);
+                ((ToolStripMenuItem) item).Click += switchSelmapMarkSize;
             }
 
             fileToolStripMenuItem.DropDownOpening += (o, e) =>

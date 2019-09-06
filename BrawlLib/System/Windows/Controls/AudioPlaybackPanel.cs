@@ -43,7 +43,7 @@ namespace System.Windows.Forms
             btnPlay.TabIndex = 1;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
-            btnPlay.Click += new EventHandler(btnPlay_Click);
+            btnPlay.Click += btnPlay_Click;
             // 
             // btnRewind
             // 
@@ -53,7 +53,7 @@ namespace System.Windows.Forms
             btnRewind.TabIndex = 2;
             btnRewind.Text = "|<";
             btnRewind.UseVisualStyleBackColor = true;
-            btnRewind.Click += new EventHandler(btnRewind_Click);
+            btnRewind.Click += btnRewind_Click;
             // 
             // chkLoop
             // 
@@ -63,7 +63,7 @@ namespace System.Windows.Forms
             chkLoop.TabIndex = 3;
             chkLoop.Text = "Loop";
             chkLoop.UseVisualStyleBackColor = true;
-            chkLoop.CheckedChanged += new EventHandler(chkLoop_CheckedChanged);
+            chkLoop.CheckedChanged += chkLoop_CheckedChanged;
             // 
             // lblProgress
             // 
@@ -79,7 +79,7 @@ namespace System.Windows.Forms
             // tmrUpdate
             // 
             tmrUpdate.Interval = 10;
-            tmrUpdate.Tick += new EventHandler(tmrUpdate_Tick);
+            tmrUpdate.Tick += tmrUpdate_Tick;
             // 
             // lstStreams
             // 
@@ -90,7 +90,7 @@ namespace System.Windows.Forms
             lstStreams.Name = "lstStreams";
             lstStreams.Size = new Drawing.Size(73, 21);
             lstStreams.TabIndex = 5;
-            lstStreams.SelectedIndexChanged += new EventHandler(lstStreams_SelectedIndexChanged);
+            lstStreams.SelectedIndexChanged += lstStreams_SelectedIndexChanged;
             // 
             // panel2
             // 
@@ -115,7 +115,7 @@ namespace System.Windows.Forms
             trackBarVolume.TabIndex = 6;
             trackBarVolume.TickFrequency = 25;
             trackBarVolume.Value = 100;
-            trackBarVolume.ValueChanged += new EventHandler(customTrackBar1_ValueChanged);
+            trackBarVolume.ValueChanged += customTrackBar1_ValueChanged;
             // 
             // trackBarPosition
             // 
@@ -126,8 +126,8 @@ namespace System.Windows.Forms
             trackBarPosition.Size = new Drawing.Size(377, 45);
             trackBarPosition.TabIndex = 0;
             trackBarPosition.TickFrequency = 2;
-            trackBarPosition.UserSeek += new EventHandler(trackBar1_UserSeek);
-            trackBarPosition.ValueChanged += new EventHandler(trackBar1_ValueChanged);
+            trackBarPosition.UserSeek += trackBar1_UserSeek;
+            trackBarPosition.ValueChanged += trackBar1_ValueChanged;
             // 
             // AudioPlaybackPanel
             // 

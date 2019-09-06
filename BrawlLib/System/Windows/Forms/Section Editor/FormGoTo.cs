@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             btnCancel.Size = new Drawing.Size(75, 23);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += (btnCancel_Click);
             // 
             // btnOK
             // 
@@ -93,7 +93,7 @@ namespace System.Windows.Forms
             btnOK.Size = new Drawing.Size(75, 23);
             btnOK.TabIndex = 2;
             btnOK.Text = "OK";
-            btnOK.Click += new EventHandler(btnOK_Click);
+            btnOK.Click += (btnOK_Click);
             // 
             // groupBox2
             // 
@@ -170,7 +170,7 @@ namespace System.Windows.Forms
             chkHex.TabStop = true;
             chkHex.Text = "Hex";
             chkHex.UseVisualStyleBackColor = true;
-            chkHex.CheckedChanged += new EventHandler(chkHex_CheckedChanged);
+            chkHex.CheckedChanged += (chkHex_CheckedChanged);
             // 
             // label1
             // 
@@ -187,7 +187,7 @@ namespace System.Windows.Forms
             txtOffset.Name = "txtOffset";
             txtOffset.Size = new Drawing.Size(224, 22);
             txtOffset.TabIndex = 15;
-            txtOffset.TextChanged += new EventHandler(textBox1_TextChanged);
+            txtOffset.TextChanged += (textBox1_TextChanged);
             // 
             // FormGoTo
             // 
@@ -208,7 +208,7 @@ namespace System.Windows.Forms
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Goto";
-            Activated += new EventHandler(FormGoTo_Activated);
+            Activated += (FormGoTo_Activated);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);

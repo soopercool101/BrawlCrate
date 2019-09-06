@@ -164,7 +164,7 @@ namespace System.Windows.Forms
 
             foreach (NumericInputBox b in _boxes)
             {
-                b.ValueChanged += new EventHandler(BoxValueChanged);
+                b.ValueChanged += BoxValueChanged;
             }
 
             _updating = true;
@@ -596,7 +596,7 @@ namespace System.Windows.Forms
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Visible = false;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOkay
             // 
@@ -607,7 +607,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // label1
             // 
@@ -737,7 +737,7 @@ namespace System.Windows.Forms
             chkLightDirectional.Text = "Directional";
             chkLightDirectional.UseVisualStyleBackColor = true;
             chkLightDirectional.Visible = false;
-            chkLightDirectional.CheckedChanged += new EventHandler(chkLightDirectional_CheckedChanged);
+            chkLightDirectional.CheckedChanged += chkLightDirectional_CheckedChanged;
             // 
             // chkLightEnabled
             // 
@@ -748,7 +748,7 @@ namespace System.Windows.Forms
             chkLightEnabled.TabIndex = 44;
             chkLightEnabled.Text = "Enabled";
             chkLightEnabled.UseVisualStyleBackColor = true;
-            chkLightEnabled.CheckedChanged += new EventHandler(chkLightEnabled_CheckedChanged);
+            chkLightEnabled.CheckedChanged += chkLightEnabled_CheckedChanged;
             // 
             // label23
             // 
@@ -757,7 +757,7 @@ namespace System.Windows.Forms
             label23.Name = "label23";
             label23.Size = new Drawing.Size(40, 20);
             label23.TabIndex = 43;
-            label23.Click += new EventHandler(label23_Click);
+            label23.Click += label23_Click;
             // 
             // label22
             // 
@@ -766,7 +766,7 @@ namespace System.Windows.Forms
             label22.Name = "label22";
             label22.Size = new Drawing.Size(40, 20);
             label22.TabIndex = 42;
-            label22.Click += new EventHandler(label22_Click);
+            label22.Click += label22_Click;
             // 
             // label21
             // 
@@ -775,7 +775,7 @@ namespace System.Windows.Forms
             label21.Name = "label21";
             label21.Size = new Drawing.Size(40, 20);
             label21.TabIndex = 41;
-            label21.Click += new EventHandler(label21_Click);
+            label21.Click += label21_Click;
             // 
             // label19
             // 
@@ -784,7 +784,7 @@ namespace System.Windows.Forms
             label19.Name = "label19";
             label19.Size = new Drawing.Size(40, 20);
             label19.TabIndex = 11;
-            label19.Click += new EventHandler(label19_Click);
+            label19.Click += label19_Click;
             // 
             // ez
             // 
@@ -1065,7 +1065,7 @@ namespace System.Windows.Forms
             chkDefaultPos.TabIndex = 27;
             chkDefaultPos.Text = "Default";
             chkDefaultPos.UseVisualStyleBackColor = true;
-            chkDefaultPos.CheckedChanged += new EventHandler(chkDefaultPos_CheckedChanged);
+            chkDefaultPos.CheckedChanged += chkDefaultPos_CheckedChanged;
             // 
             // chkCurrentPos
             // 
@@ -1078,7 +1078,7 @@ namespace System.Windows.Forms
             chkCurrentPos.TabStop = true;
             chkCurrentPos.Text = "Current";
             chkCurrentPos.UseVisualStyleBackColor = true;
-            chkCurrentPos.CheckedChanged += new EventHandler(chkCurrentPos_CheckedChanged);
+            chkCurrentPos.CheckedChanged += chkCurrentPos_CheckedChanged;
             // 
             // label26
             // 
@@ -1236,7 +1236,7 @@ namespace System.Windows.Forms
             cboProjection.Name = "cboProjection";
             cboProjection.Size = new Drawing.Size(198, 21);
             cboProjection.TabIndex = 12;
-            cboProjection.SelectedIndexChanged += new EventHandler(cboProjection_SelectedIndexChanged);
+            cboProjection.SelectedIndexChanged += cboProjection_SelectedIndexChanged;
             // 
             // farZ
             // 
@@ -1395,7 +1395,7 @@ namespace System.Windows.Forms
             lblCol1Color.Name = "lblCol1Color";
             lblCol1Color.Size = new Drawing.Size(40, 20);
             lblCol1Color.TabIndex = 5;
-            lblCol1Color.Click += new EventHandler(lblCol1Color_Click);
+            lblCol1Color.Click += lblCol1Color_Click;
             // 
             // lblLineColor
             // 
@@ -1404,7 +1404,7 @@ namespace System.Windows.Forms
             lblLineColor.Name = "lblLineColor";
             lblLineColor.Size = new Drawing.Size(40, 20);
             lblLineColor.TabIndex = 8;
-            lblLineColor.Click += new EventHandler(lblLineColor_Click);
+            lblLineColor.Click += lblLineColor_Click;
             // 
             // lblCol1Text
             // 
@@ -1455,7 +1455,7 @@ namespace System.Windows.Forms
             lblOrbColor.Name = "lblOrbColor";
             lblOrbColor.Size = new Drawing.Size(40, 20);
             lblOrbColor.TabIndex = 5;
-            lblOrbColor.Click += new EventHandler(lblOrbColor_Click);
+            lblOrbColor.Click += lblOrbColor_Click;
             // 
             // lblOrbText
             // 
@@ -1497,7 +1497,7 @@ namespace System.Windows.Forms
             chkRetrieveCorrAnims.TabIndex = 40;
             chkRetrieveCorrAnims.Text = "Retreieve animations with corresponding name";
             chkRetrieveCorrAnims.UseVisualStyleBackColor = true;
-            chkRetrieveCorrAnims.CheckedChanged += new EventHandler(chkRetrieveCorrAnims_CheckedChanged);
+            chkRetrieveCorrAnims.CheckedChanged += chkRetrieveCorrAnims_CheckedChanged;
             // 
             // chkSyncTexToObj
             // 
@@ -1508,7 +1508,7 @@ namespace System.Windows.Forms
             chkSyncTexToObj.TabIndex = 41;
             chkSyncTexToObj.Text = "Sync texture list with selected object";
             chkSyncTexToObj.UseVisualStyleBackColor = true;
-            chkSyncTexToObj.CheckedChanged += new EventHandler(chkSyncTexToObj_CheckedChanged);
+            chkSyncTexToObj.CheckedChanged += chkSyncTexToObj_CheckedChanged;
             // 
             // chkSyncObjToVIS
             // 
@@ -1519,7 +1519,7 @@ namespace System.Windows.Forms
             chkSyncObjToVIS.TabIndex = 42;
             chkSyncObjToVIS.Text = "Sync object list checkbox changes to selected VIS0";
             chkSyncObjToVIS.UseVisualStyleBackColor = true;
-            chkSyncObjToVIS.CheckedChanged += new EventHandler(chkSyncObjToVIS_CheckedChanged);
+            chkSyncObjToVIS.CheckedChanged += chkSyncObjToVIS_CheckedChanged;
             // 
             // chkDisableBonesOnPlay
             // 
@@ -1530,7 +1530,7 @@ namespace System.Windows.Forms
             chkDisableBonesOnPlay.TabIndex = 43;
             chkDisableBonesOnPlay.Text = "Disable bones when playing animaton";
             chkDisableBonesOnPlay.UseVisualStyleBackColor = true;
-            chkDisableBonesOnPlay.CheckedChanged += new EventHandler(chkDisableBonesOnPlay_CheckedChanged);
+            chkDisableBonesOnPlay.CheckedChanged += chkDisableBonesOnPlay_CheckedChanged;
             // 
             // chkDisableHighlight
             // 
@@ -1541,7 +1541,7 @@ namespace System.Windows.Forms
             chkDisableHighlight.TabIndex = 44;
             chkDisableHighlight.Text = "Disable realtime highlighting in viewport";
             chkDisableHighlight.UseVisualStyleBackColor = true;
-            chkDisableHighlight.CheckedChanged += new EventHandler(chkDisableHighlight_CheckedChanged);
+            chkDisableHighlight.CheckedChanged += chkDisableHighlight_CheckedChanged;
             // 
             // chkSnapBonesToFloor
             // 
@@ -1552,7 +1552,7 @@ namespace System.Windows.Forms
             chkSnapBonesToFloor.TabIndex = 46;
             chkSnapBonesToFloor.Text = "Snap dragged bones to floor collisions";
             chkSnapBonesToFloor.UseVisualStyleBackColor = true;
-            chkSnapBonesToFloor.CheckedChanged += new EventHandler(chkSnapBonesToFloor_CheckedChanged);
+            chkSnapBonesToFloor.CheckedChanged += chkSnapBonesToFloor_CheckedChanged;
             // 
             // tabControl1
             // 
@@ -1588,7 +1588,7 @@ namespace System.Windows.Forms
             chkTextOverlays.TabIndex = 46;
             chkTextOverlays.Text = "Enable text overlays";
             chkTextOverlays.UseVisualStyleBackColor = true;
-            chkTextOverlays.CheckedChanged += new EventHandler(chkTextOverlays_CheckedChanged);
+            chkTextOverlays.CheckedChanged += chkTextOverlays_CheckedChanged;
             // 
             // tabPage2
             // 
@@ -1620,7 +1620,7 @@ namespace System.Windows.Forms
             chkPixelLighting.TabIndex = 52;
             chkPixelLighting.Text = "Per pixel lighting (as opposed to per vertex)";
             chkPixelLighting.UseVisualStyleBackColor = true;
-            chkPixelLighting.CheckedChanged += new EventHandler(chkPixelLighting_CheckedChanged);
+            chkPixelLighting.CheckedChanged += chkPixelLighting_CheckedChanged;
             // 
             // chkHideMainWindow
             // 
@@ -1631,7 +1631,7 @@ namespace System.Windows.Forms
             chkHideMainWindow.TabIndex = 51;
             chkHideMainWindow.Text = "Hide main window";
             chkHideMainWindow.UseVisualStyleBackColor = true;
-            chkHideMainWindow.CheckedChanged += new EventHandler(chkHideMainWindow_CheckedChanged);
+            chkHideMainWindow.CheckedChanged += chkHideMainWindow_CheckedChanged;
             // 
             // chkUsePointsAsBones
             // 
@@ -1642,7 +1642,7 @@ namespace System.Windows.Forms
             chkUsePointsAsBones.TabIndex = 50;
             chkUsePointsAsBones.Text = "Display bones as points";
             chkUsePointsAsBones.UseVisualStyleBackColor = true;
-            chkUsePointsAsBones.CheckedChanged += new EventHandler(chkUsePointsAsBones_CheckedChanged);
+            chkUsePointsAsBones.CheckedChanged += chkUsePointsAsBones_CheckedChanged;
             // 
             // chkScaleBones
             // 
@@ -1653,7 +1653,7 @@ namespace System.Windows.Forms
             chkScaleBones.TabIndex = 49;
             chkScaleBones.Text = "Scale bones with camera";
             chkScaleBones.UseVisualStyleBackColor = true;
-            chkScaleBones.CheckedChanged += new EventHandler(chkScaleBones_CheckedChanged);
+            chkScaleBones.CheckedChanged += chkScaleBones_CheckedChanged;
             // 
             // chkSaveWindowPosition
             // 
@@ -1664,7 +1664,7 @@ namespace System.Windows.Forms
             chkSaveWindowPosition.TabIndex = 48;
             chkSaveWindowPosition.Text = "Save window position and dimensions";
             chkSaveWindowPosition.UseVisualStyleBackColor = true;
-            chkSaveWindowPosition.CheckedChanged += new EventHandler(chkSaveWindowPosition_CheckedChanged);
+            chkSaveWindowPosition.CheckedChanged += chkSaveWindowPosition_CheckedChanged;
             // 
             // chkMaximize
             // 
@@ -1675,7 +1675,7 @@ namespace System.Windows.Forms
             chkMaximize.TabIndex = 47;
             chkMaximize.Text = "Maximize window upon opening";
             chkMaximize.UseVisualStyleBackColor = true;
-            chkMaximize.CheckedChanged += new EventHandler(chkMaximize_CheckedChanged);
+            chkMaximize.CheckedChanged += chkMaximize_CheckedChanged;
             // 
             // maxUndoCount
             // 
@@ -1689,7 +1689,7 @@ namespace System.Windows.Forms
             maxUndoCount.Size = new Drawing.Size(66, 20);
             maxUndoCount.TabIndex = 37;
             maxUndoCount.Text = "0";
-            maxUndoCount.ValueChanged += new EventHandler(maxUndoCount_ValueChanged);
+            maxUndoCount.ValueChanged += maxUndoCount_ValueChanged;
             // 
             // tabPage3
             // 
@@ -1728,7 +1728,7 @@ namespace System.Windows.Forms
             chkTanCam.TabIndex = 55;
             chkTanCam.Text = "SCN0 Camera";
             chkTanCam.UseVisualStyleBackColor = true;
-            chkTanCam.CheckedChanged += new EventHandler(chkTanCam_CheckedChanged);
+            chkTanCam.CheckedChanged += chkTanCam_CheckedChanged;
             // 
             // chkTanFog
             // 
@@ -1739,7 +1739,7 @@ namespace System.Windows.Forms
             chkTanFog.TabIndex = 54;
             chkTanFog.Text = "SCN0 Fog";
             chkTanFog.UseVisualStyleBackColor = true;
-            chkTanFog.CheckedChanged += new EventHandler(chkTanFog_CheckedChanged);
+            chkTanFog.CheckedChanged += chkTanFog_CheckedChanged;
             // 
             // chkTanLight
             // 
@@ -1750,7 +1750,7 @@ namespace System.Windows.Forms
             chkTanLight.TabIndex = 53;
             chkTanLight.Text = "SCN0 Light";
             chkTanLight.UseVisualStyleBackColor = true;
-            chkTanLight.CheckedChanged += new EventHandler(chkTanLight_CheckedChanged);
+            chkTanLight.CheckedChanged += chkTanLight_CheckedChanged;
             // 
             // chkTanSHP
             // 
@@ -1761,7 +1761,7 @@ namespace System.Windows.Forms
             chkTanSHP.TabIndex = 52;
             chkTanSHP.Text = "SHP0";
             chkTanSHP.UseVisualStyleBackColor = true;
-            chkTanSHP.CheckedChanged += new EventHandler(chkTanSHP_CheckedChanged);
+            chkTanSHP.CheckedChanged += chkTanSHP_CheckedChanged;
             // 
             // chkTanSRT
             // 
@@ -1772,7 +1772,7 @@ namespace System.Windows.Forms
             chkTanSRT.TabIndex = 51;
             chkTanSRT.Text = "SRT0";
             chkTanSRT.UseVisualStyleBackColor = true;
-            chkTanSRT.CheckedChanged += new EventHandler(chkTanSRT_CheckedChanged);
+            chkTanSRT.CheckedChanged += chkTanSRT_CheckedChanged;
             // 
             // chkTanCHR
             // 
@@ -1783,7 +1783,7 @@ namespace System.Windows.Forms
             chkTanCHR.TabIndex = 50;
             chkTanCHR.Text = "CHR0";
             chkTanCHR.UseVisualStyleBackColor = true;
-            chkTanCHR.CheckedChanged += new EventHandler(chkTanCHR_CheckedChanged);
+            chkTanCHR.CheckedChanged += chkTanCHR_CheckedChanged;
             // 
             // chkPrecalcBoxes
             // 
@@ -1794,7 +1794,7 @@ namespace System.Windows.Forms
             chkPrecalcBoxes.TabIndex = 48;
             chkPrecalcBoxes.Text = "Display precalculated bounding boxes on frame 0";
             chkPrecalcBoxes.UseVisualStyleBackColor = true;
-            chkPrecalcBoxes.CheckedChanged += new EventHandler(chkPrecalcBoxes_CheckedChanged);
+            chkPrecalcBoxes.CheckedChanged += chkPrecalcBoxes_CheckedChanged;
             // 
             // panel1
             // 
@@ -1817,7 +1817,7 @@ namespace System.Windows.Forms
             btnResetSettings.TabIndex = 5;
             btnResetSettings.Text = "Reset";
             btnResetSettings.UseVisualStyleBackColor = true;
-            btnResetSettings.Click += new EventHandler(btnResetSettings_Click);
+            btnResetSettings.Click += btnResetSettings_Click;
             // 
             // btnImportSettings
             // 
@@ -1828,7 +1828,7 @@ namespace System.Windows.Forms
             btnImportSettings.Text = "Import";
             btnImportSettings.UseVisualStyleBackColor = true;
             btnImportSettings.Visible = false;
-            btnImportSettings.Click += new EventHandler(btnImportSettings_Click);
+            btnImportSettings.Click += btnImportSettings_Click;
             // 
             // btnExportSettings
             // 
@@ -1840,7 +1840,7 @@ namespace System.Windows.Forms
             btnExportSettings.Text = "Export";
             btnExportSettings.UseVisualStyleBackColor = true;
             btnExportSettings.Visible = false;
-            btnExportSettings.Click += new EventHandler(btnExportSettings_Click);
+            btnExportSettings.Click += btnExportSettings_Click;
             // 
             // ModelViewerSettingsDialog
             // 

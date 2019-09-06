@@ -95,7 +95,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnOkay
             // 
@@ -106,7 +106,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += new EventHandler(btnOkay_Click);
+            btnOkay.Click += btnOkay_Click;
             // 
             // label1
             // 
@@ -124,7 +124,7 @@ namespace System.Windows.Forms
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Drawing.Size(98, 21);
             comboBox1.TabIndex = 4;
-            comboBox1.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // EditDialog
             // 

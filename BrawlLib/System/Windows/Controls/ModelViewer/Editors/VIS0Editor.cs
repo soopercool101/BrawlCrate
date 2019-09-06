@@ -22,7 +22,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new Drawing.Size(202, 47);
             listBox1.TabIndex = 3;
-            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // VIS0Editor
             // 

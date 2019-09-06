@@ -40,8 +40,8 @@ namespace System.Windows.Forms
 
             if (KeyframePanel != null)
             {
-                KeyframePanel.visEditor.EntryChanged += new EventHandler(VISEntryChanged);
-                KeyframePanel.visEditor.IndexChanged += new EventHandler(VISIndexChanged);
+                KeyframePanel.visEditor.EntryChanged += VISEntryChanged;
+                KeyframePanel.visEditor.IndexChanged += VISIndexChanged;
             }
 
             ModelPanel.PreRender += EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender);

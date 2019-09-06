@@ -75,6 +75,7 @@ namespace System.Windows.Forms
                     exceptionMessage += " ";
                     exceptionMessage += _exception.InnerException.Message.Replace("\"", "\\\"");
                 }
+
                 string args = string.Format("-bi \"{0}\" \"{1}\" \"{2}\" \"{3}\" \"{4}\"",
                     programTitle,
                     exceptionMessage,

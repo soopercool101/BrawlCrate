@@ -31,8 +31,8 @@ namespace BrawlCrate
             modelEditControl1.TabIndex = 0;
             modelEditControl1.TargetAnimation = null;
             modelEditControl1.TargetAnimType = NW4RAnimType.CHR;
-            modelEditControl1.TargetModelChanged += new EventHandler(TargetModelChanged);
-            modelEditControl1.ModelViewerChanged += new EventHandler(ModelViewerChanged);
+            modelEditControl1.TargetModelChanged += TargetModelChanged;
+            modelEditControl1.ModelViewerChanged += ModelViewerChanged;
             // 
             // ModelForm
             // 
