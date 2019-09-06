@@ -188,14 +188,11 @@ namespace BrawlCrate.API
                 }
                 catch (Exception e)
                 {
-                    foreach (string s in DepreciatedStrings)
+                    if (DepreciatedStrings.Any(s => e.Message.Contains(s)))
                     {
-                        if (e.Message.Contains(s))
-                        {
-                            ConvertPlugin(path);
-                            RunScript(path);
-                            return;
-                        }
+                        ConvertPlugin(path);
+                        RunScript(path);
+                        return;
                     }
 
                     string msg = $"Error running script \"{Path.GetFileName(path)}\"\n{e.Message}";
@@ -245,13 +242,10 @@ namespace BrawlCrate.API
             }
             catch (Exception e)
             {
-                foreach (string s in DepreciatedStrings)
+                if (DepreciatedStrings.Any(s => e.Message.Contains(s)))
                 {
-                    if (e.Message.Contains(s))
-                    {
-                        ConvertPlugin(path);
-                        return CreatePlugin(path, loader);
-                    }
+                    ConvertPlugin(path);
+                    return CreatePlugin(path, loader);
                 }
 
                 string msg = $"Error loading plugin or loader \"{Path.GetFileName(path)}\"\n{e.Message}";

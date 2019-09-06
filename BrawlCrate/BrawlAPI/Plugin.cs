@@ -2,6 +2,7 @@
 using Microsoft.Scripting.Hosting;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.API
@@ -32,14 +33,11 @@ namespace BrawlCrate.API
                 if (!_converted)
                 {
                     _converted = true;
-                    foreach (string s in BrawlAPI.DepreciatedStrings)
+                    if (BrawlAPI.DepreciatedStrings.Any(s => e.Message.Contains(s)))
                     {
-                        if (e.Message.Contains(s))
-                        {
-                            BrawlAPI.ConvertPlugin(Script.Path);
-                            Execute();
-                            return;
-                        }
+                        BrawlAPI.ConvertPlugin(Script.Path);
+                        Execute();
+                        return;
                     }
                 }
 
