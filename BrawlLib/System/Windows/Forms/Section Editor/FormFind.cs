@@ -87,7 +87,7 @@ namespace System.Windows.Forms
             // 
             resources.ApplyResources(txtFind, "txtFind");
             txtFind.Name = "txtFind";
-            txtFind.TextChanged += (txtString_TextChanged);
+            txtFind.TextChanged += txtString_TextChanged;
             // 
             // rbString
             // 
@@ -111,14 +111,14 @@ namespace System.Windows.Forms
             // 
             resources.ApplyResources(btnOK, "btnOK");
             btnOK.Name = "btnOK";
-            btnOK.Click += (btnOK_Click);
+            btnOK.Click += btnOK_Click;
             // 
             // btnCancel
             // 
             resources.ApplyResources(btnCancel, "btnCancel");
             btnCancel.DialogResult = DialogResult.Cancel;
             btnCancel.Name = "btnCancel";
-            btnCancel.Click += (btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // groupBox1
             // 
@@ -145,12 +145,12 @@ namespace System.Windows.Forms
             // 
             // timerPercent
             // 
-            timerPercent.Tick += (timerPercent_Tick);
+            timerPercent.Tick += timerPercent_Tick;
             // 
             // timer
             // 
             timer.Interval = 50;
-            timer.Tick += (timer_Tick);
+            timer.Tick += timer_Tick;
             // 
             // hexFind
             // 
@@ -198,7 +198,7 @@ namespace System.Windows.Forms
             Name = "FormFind";
             ShowIcon = false;
             ShowInTaskbar = false;
-            Activated += (FormFind_Activated);
+            Activated += FormFind_Activated;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
