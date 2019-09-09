@@ -1029,7 +1029,6 @@ namespace Updater
 
             try
             {
-                TagName += $" {Updater.platform}";
                 Credentials cr = new Credentials(Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
@@ -1076,6 +1075,7 @@ namespace Updater
                     }
                 }
 
+                TagName += $" {Updater.platform}";
                 bool found = false;
                 if (issues != null && !string.IsNullOrEmpty(StackTrace))
                 {
