@@ -12,7 +12,7 @@ namespace BrawlLib.Wii.Animations
         private static readonly string[] types = new[] {"scale", "rotate", "translate"};
         private static readonly string[] axes = new[] {"X", "Y", "Z"};
 
-        public static void Serialize(CHR0Node node, bool bake, string output)
+        public static void Serialize(CHR0Node node, string output)
         {
             MDL0Node model;
 
