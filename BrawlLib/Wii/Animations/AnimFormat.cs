@@ -67,13 +67,19 @@ namespace BrawlLib.Wii.Animations
                         file.WriteLine("  keys {");
                         for (KeyframeEntry entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
-                            file.WriteLine("    {0} {1} {2} {2} {3} {4} {5};",
+                            float angle = (float) Math.Atan(entry._tangent) * Maths._rad2degf;
+                            file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
                                 entry._index,
                                 entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                                "auto", //single ? "auto" : "fixed",
+                                "fixed",
+                                "fixed",
                                 "1",
                                 "1",
-                                "0");
+                                "0",
+                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
+                                "1",
+                                angle.ToString(CultureInfo.InvariantCulture.NumberFormat),
+                                "1");
                         }
 
                         file.WriteLine("  }");
