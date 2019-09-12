@@ -17,6 +17,8 @@ namespace Updater
 {
     public static class Updater
     {
+        public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
         public static readonly string mainRepo = "soopercool101/BrawlCrateNext";
         public static readonly string mainBranch = "master";
         public static string currentRepo = GetCurrentRepo();
@@ -30,8 +32,6 @@ namespace Updater
             0x39, 0x32, 0x66, 0x63, 0x20
         };
 
-        public static string AppPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
         private static readonly GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate"))
             {Credentials = new Credentials(Encoding.Default.GetString(_rawData))};
 
@@ -40,7 +40,7 @@ namespace Updater
             try
             {
                 string temp = File.ReadAllLines(AppPath + "\\Canary\\Branch")[1];
-                if (temp == null || temp == "")
+                if (string.IsNullOrEmpty(temp))
                 {
                     throw new ArgumentNullException();
                 }
@@ -58,7 +58,7 @@ namespace Updater
             try
             {
                 string temp = File.ReadAllLines(AppPath + "\\Canary\\Branch")[0];
-                if (temp == null || temp == "")
+                if (string.IsNullOrEmpty(temp))
                 {
                     throw new ArgumentNullException();
                 }
@@ -1029,7 +1029,6 @@ namespace Updater
 
             try
             {
-                TagName += $" {Updater.platform}";
                 Credentials cr = new Credentials(Encoding.Default.GetString(_rawData));
                 GitHubClient github = new GitHubClient(new ProductHeaderValue("BrawlCrate")) {Credentials = cr};
                 IReadOnlyList<Issue> issues = null;
@@ -1076,6 +1075,7 @@ namespace Updater
                     }
                 }
 
+                TagName += $" {Updater.platform}";
                 bool found = false;
                 if (issues != null && !string.IsNullOrEmpty(StackTrace))
                 {
@@ -1233,7 +1233,11 @@ namespace Updater
             else if (args.Length == 0)
             {
                 somethingDone = true;
+#if CANARY
+                Task t = Updater.CheckCanaryUpdate("", true, false);
+#else
                 Task t = Updater.CheckUpdate(true);
+#endif
                 t.Wait();
             }
 

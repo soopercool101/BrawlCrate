@@ -157,6 +157,9 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
     <Company>BrawlCrateLib</Company>
     <Authors>soopercool101, MarioDox, Syvkal, Bryan Moulton, BlackJax96, libertyernie, Sammi Husky</Authors>
     <Version>27.0.0</Version>
+    <PreBuildEvent>if not '$(ConfigurationName)' == 'Debug' (
+  RD /S /Q "$(TargetDir)"
+)</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="CustomLists\FighterList.txt" />

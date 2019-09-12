@@ -95,7 +95,7 @@ namespace System.Windows.Forms
             else
             {
                 MessageBox.Show(
-                    ".NET version 4.5 is required to run the updater, which is used to submit the bug report.");
+                    "An error was thrown when sending the issue. Make sure the Updater.exe is undisturbed.");
             }
 
             if (chkForceClose.Checked)

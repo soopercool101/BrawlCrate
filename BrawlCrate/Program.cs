@@ -86,9 +86,7 @@ Full changelog can be viewed from the help menu.";
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
 
-            AssemblyTitleShort = AssemblyTitleFull.Contains("Hotfix")
-                ? AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf("Hotfix")).Trim(' ')
-                : AssemblyTitleFull;
+            AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "h");
 #endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
@@ -144,6 +142,7 @@ Full changelog can be viewed from the help menu.";
             Exception ex = e.Exception;
             IssueDialog d = new IssueDialog(ex, dirty);
             d.ShowDialog();
+            d.Dispose();
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -153,6 +152,7 @@ Full changelog can be viewed from the help menu.";
                 List<ResourceNode> dirty = GetDirtyFiles();
                 IssueDialog d = new IssueDialog(ex, dirty);
                 d.ShowDialog();
+                d.Dispose();
             }
             else
             {
