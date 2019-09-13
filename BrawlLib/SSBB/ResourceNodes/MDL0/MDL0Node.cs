@@ -249,10 +249,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public List<ResourceNode> DefinitionsList => _defList;
         [Browsable(false)] public List<ResourceNode> BoneList => _boneList;
-
-        [Browsable(false)]
-        public List<ResourceNode> RecursiveBoneList => BoneGroup.ChildrenRecursive;
-
+        [Browsable(false)] public List<ResourceNode> RecursiveBoneList => BoneGroup?.ChildrenRecursive ?? new List<ResourceNode>();
         [Browsable(false)] public List<ResourceNode> MaterialList => _matList;
         [Browsable(false)] public List<ResourceNode> ShaderList => _shadList;
         [Browsable(false)] public List<ResourceNode> VertexList => _vertList;
