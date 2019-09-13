@@ -27,7 +27,7 @@ namespace BrawlLib.Wii.Animations
             {
                 return;
             }
-
+            model.Populate();
             using (StreamWriter file = new StreamWriter(output))
             {
                 file.WriteLine("animVersion 1.1;");
@@ -37,11 +37,21 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine("angularUnit deg;");
                 file.WriteLine("startTime 0;");
                 file.WriteLine($"endTime {node.FrameCount - 1};");
-                foreach (CHR0EntryNode e in node.Children)
+                foreach (MDL0BoneNode b in model.RecursiveBoneList)
                 {
-                    MDL0BoneNode bone = model.FindChild("Bones/" + e.Name, true) as MDL0BoneNode;
-                    if (bone == null)
+                    CHR0EntryNode e = null;
+                    foreach (CHR0EntryNode ce in node.Children)
                     {
+                        if (ce.Name == b.Name)
+                        {
+                            e = ce;
+                            break;
+                        }
+                    }
+
+                    if (e == null)
+                    {
+                        file.WriteLine($"anim {b.Name} 0 {b.Children.Count} 0;");
                         continue;
                     }
 
@@ -57,7 +67,7 @@ namespace BrawlLib.Wii.Animations
                         }
 
                         file.WriteLine("anim {0}.{0}{1} {0}{1} {2} {3} {4} {5};", types[index / 3], axes[index % 3],
-                            e.Name, 0, bone.Children.Count, counter);
+                            e.Name, 0, b.Children.Count, counter);
                         file.WriteLine("animData {");
                         file.WriteLine("  input time;");
                         file.WriteLine($"  output {(index > 2 && index < 6 ? "angular" : "linear")};");

@@ -212,6 +212,28 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
+        /// <summary>
+        ///     Used primarily to get bone lists. Kept for all resource nodes for utility.
+        /// </summary>
+        [Browsable(false)]
+        public List<ResourceNode> ChildrenRecursive
+        {
+            get
+            {
+                List<ResourceNode> childrenAndSubchildren = new List<ResourceNode>();
+                if (Children != null)
+                {
+                    foreach (ResourceNode r in Children)
+                    {
+                        childrenAndSubchildren.Add(r);
+                        childrenAndSubchildren.AddRange(r.ChildrenRecursive);
+                    }
+                }
+
+                return childrenAndSubchildren;
+            }
+        }
+
         [Browsable(false)] public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);
         [Browsable(false)] public bool IsCompressed => _compression != CompressionType.None;
 
