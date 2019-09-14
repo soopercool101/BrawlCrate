@@ -45,7 +45,7 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine($"endTime {node.FrameCount - 1};");
                 foreach (MDL0BoneNode b in model.RecursiveBoneList)
                 {
-                    if (!(node.FindChild(b.Name, true) is CHR0EntryNode e))
+                    if (!(node.FindChild(b.Name, false) is CHR0EntryNode e))
                     {
                         file.WriteLine($"anim {b.Name} 0 {b.Children.Count} 0;");
                         continue;
