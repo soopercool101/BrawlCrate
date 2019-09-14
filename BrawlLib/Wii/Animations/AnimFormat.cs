@@ -27,6 +27,12 @@ namespace BrawlLib.Wii.Animations
             {
                 return;
             }
+
+            Serialize(node, output, model);
+        }
+
+        public static void Serialize(CHR0Node node, string output, MDL0Node model)
+        {
             model.Populate();
             using (StreamWriter file = new StreamWriter(output))
             {
@@ -39,17 +45,7 @@ namespace BrawlLib.Wii.Animations
                 file.WriteLine($"endTime {node.FrameCount - 1};");
                 foreach (MDL0BoneNode b in model.RecursiveBoneList)
                 {
-                    CHR0EntryNode e = null;
-                    foreach (CHR0EntryNode ce in node.Children)
-                    {
-                        if (ce.Name == b.Name)
-                        {
-                            e = ce;
-                            break;
-                        }
-                    }
-
-                    if (e == null)
+                    if (!(node.FindChild(b.Name, true) is CHR0EntryNode e))
                     {
                         file.WriteLine($"anim {b.Name} 0 {b.Children.Count} 0;");
                         continue;
