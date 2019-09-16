@@ -96,6 +96,13 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which sorting MDL0 Textures would sort objects instead
  . Sped up booting and removed splash screen accordingly
  
+ - BrawlCrate v0.26b Hotfix 1 - (9/16/2019)
+ . Fix bug in which animations for models with non-sequential bonesets wouldn't export as anim properly
+ 
+ - BrawlCrate v0.26b - (9/13/2019)
+ . Rewrite anim exporter. Maya now correctly reads BrawlCrate-exported anim files
+ . Fix bug in which attempting to sort MDL0 textures sorted objects instead
+ 
  - BrawlCrate v0.26 Hotfix 3 - (7/25/2019)
  . Improve interpolation function to match v0.71 in all aspects
  . Fix anim importer to properly parse weighting
