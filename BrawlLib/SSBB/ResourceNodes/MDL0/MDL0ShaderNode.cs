@@ -17,15 +17,27 @@ namespace BrawlLib.SSBB.ResourceNodes
         public KSelSwapBlock _swapBlock = KSelSwapBlock.Default;
         public List<MDL0MaterialNode> _materials = new List<MDL0MaterialNode>();
 
-        public sbyte
-            _ref0 = -1,
-            _ref1 = -1,
-            _ref2 = -1,
-            _ref3 = -1,
-            _ref4 = -1,
-            _ref5 = -1,
-            _ref6 = -1,
-            _ref7 = -1;
+        public sbyte Ref0 = -1;
+        public sbyte Ref1 = -1;
+        public sbyte Ref2 = -1;
+        public sbyte Ref3 = -1;
+        public sbyte Ref4 = -1;
+        public sbyte Ref5 = -1;
+        public sbyte Ref6 = -1;
+        public sbyte Ref7 = -1;
+
+        public void SetAllRefs(sbyte value)
+        {
+            Ref0 = value;
+            Ref1 = value;
+            Ref2 = value;
+            Ref3 = value;
+            Ref4 = value;
+            Ref5 = value;
+            Ref6 = value;
+            Ref7 = value;
+            SignalPropertyChange();
+        }
 
         public string[] _fragShaderSource = null;
 
@@ -346,10 +358,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's first texture reference for use.")]
         public bool TextureRef0
         {
-            get => _ref0 != -1;
+            get => Ref0 != -1;
             set
             {
-                _ref0 = (sbyte) (value ? 0 : -1);
+                Ref0 = (sbyte) (value ? 0 : -1);
                 SignalPropertyChange();
             }
         }
@@ -359,10 +371,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's second texture reference for use.")]
         public bool TextureRef1
         {
-            get => _ref1 != -1;
+            get => Ref1 != -1;
             set
             {
-                _ref1 = (sbyte) (value ? 1 : -1);
+                Ref1 = (sbyte) (value ? 1 : -1);
                 SignalPropertyChange();
             }
         }
@@ -372,10 +384,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's third texture reference for use.")]
         public bool TextureRef2
         {
-            get => _ref2 != -1;
+            get => Ref2 != -1;
             set
             {
-                _ref2 = (sbyte) (value ? 2 : -1);
+                Ref2 = (sbyte) (value ? 2 : -1);
                 SignalPropertyChange();
             }
         }
@@ -385,10 +397,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's fourth texture reference for use.")]
         public bool TextureRef3
         {
-            get => _ref3 != -1;
+            get => Ref3 != -1;
             set
             {
-                _ref3 = (sbyte) (value ? 3 : -1);
+                Ref3 = (sbyte) (value ? 3 : -1);
                 SignalPropertyChange();
             }
         }
@@ -398,10 +410,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's fifth texture reference for use.")]
         public bool TextureRef4
         {
-            get => _ref4 != -1;
+            get => Ref4 != -1;
             set
             {
-                _ref4 = (sbyte) (value ? 4 : -1);
+                Ref4 = (sbyte) (value ? 4 : -1);
                 SignalPropertyChange();
             }
         }
@@ -411,10 +423,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's sixth texture reference for use.")]
         public bool TextureRef5
         {
-            get => _ref5 != -1;
+            get => Ref5 != -1;
             set
             {
-                _ref5 = (sbyte) (value ? 5 : -1);
+                Ref5 = (sbyte) (value ? 5 : -1);
                 SignalPropertyChange();
             }
         }
@@ -424,10 +436,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's seventh texture reference for use.")]
         public bool TextureRef6
         {
-            get => _ref6 != -1;
+            get => Ref6 != -1;
             set
             {
-                _ref6 = (sbyte) (value ? 6 : -1);
+                Ref6 = (sbyte) (value ? 6 : -1);
                 SignalPropertyChange();
             }
         }
@@ -437,10 +449,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Description("Enables the material's eighth texture reference for use.")]
         public bool TextureRef7
         {
-            get => _ref7 != -1;
+            get => Ref7 != -1;
             set
             {
-                _ref7 = (sbyte) (value ? 7 : -1);
+                Ref7 = (sbyte) (value ? 7 : -1);
                 SignalPropertyChange();
             }
         }
@@ -469,14 +481,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void Default(bool change)
         {
-            _ref0 =
-                _ref1 =
-                    _ref2 =
-                        _ref3 =
-                            _ref4 =
-                                _ref5 =
-                                    _ref6 =
-                                        _ref7 = -1;
+            SetAllRefs(-1);
 
             MDL0TEVStageNode stage = new MDL0TEVStageNode();
             AddChild(stage, change);
@@ -486,40 +491,33 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _autoMetal = true;
 
-            _ref0 =
-                _ref1 =
-                    _ref2 =
-                        _ref3 =
-                            _ref4 =
-                                _ref5 =
-                                    _ref6 =
-                                        _ref7 = -1;
+            SetAllRefs(-1);
 
             switch ((_texCount = texcount) - 1)
             {
                 case 0:
-                    _ref0 = 0;
+                    Ref0 = 0;
                     break;
                 case 1:
-                    _ref1 = 1;
+                    Ref1 = 1;
                     break;
                 case 2:
-                    _ref2 = 2;
+                    Ref2 = 2;
                     break;
                 case 3:
-                    _ref3 = 3;
+                    Ref3 = 3;
                     break;
                 case 4:
-                    _ref4 = 4;
+                    Ref4 = 4;
                     break;
                 case 5:
-                    _ref5 = 5;
+                    Ref5 = 5;
                     break;
                 case 6:
-                    _ref6 = 6;
+                    Ref6 = 6;
                     break;
                 case 7:
-                    _ref7 = 7;
+                    Ref7 = 7;
                     break;
             }
 
@@ -541,14 +539,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override bool OnInitialize()
         {
-            _ref0 = Header->_ref0;
-            _ref1 = Header->_ref1;
-            _ref2 = Header->_ref2;
-            _ref3 = Header->_ref3;
-            _ref4 = Header->_ref4;
-            _ref5 = Header->_ref5;
-            _ref6 = Header->_ref6;
-            _ref7 = Header->_ref7;
+            Ref0 = Header->_ref0;
+            Ref1 = Header->_ref1;
+            Ref2 = Header->_ref2;
+            Ref3 = Header->_ref3;
+            Ref4 = Header->_ref4;
+            Ref5 = Header->_ref5;
+            Ref6 = Header->_ref6;
+            Ref7 = Header->_ref7;
 
             //Attach to materials
             byte* pHeader = (byte*) Header;
@@ -630,14 +628,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             header->_stages = Stages;
 
-            header->_ref0 = _ref0;
-            header->_ref1 = _ref1;
-            header->_ref2 = _ref2;
-            header->_ref3 = _ref3;
-            header->_ref4 = _ref4;
-            header->_ref5 = _ref5;
-            header->_ref6 = _ref6;
-            header->_ref7 = _ref7;
+            header->_ref0 = Ref0;
+            header->_ref1 = Ref1;
+            header->_ref2 = Ref2;
+            header->_ref3 = Ref3;
+            header->_ref4 = Ref4;
+            header->_ref5 = Ref5;
+            header->_ref6 = Ref6;
+            header->_ref7 = Ref7;
 
             header->_pad0 = 0;
             header->_pad1 = 0;

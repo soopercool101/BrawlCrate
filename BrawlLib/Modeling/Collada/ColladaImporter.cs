@@ -41,7 +41,7 @@ namespace BrawlLib.Modeling
             switch (type)
             {
                 case ImportType.MDL0:
-                    MDL0Node m = new MDL0Node()
+                    MDL0Node m = new MDL0Node
                     {
                         _name = Path.GetFileNameWithoutExtension(filePath),
                         _version = _importOptions._modelVersion.Clamp(8, 11)
@@ -88,16 +88,16 @@ namespace BrawlLib.Modeling
                     {
                         case ImportType.MDL0:
                             MDL0Node m = (MDL0Node) model;
-                            MDL0ShaderNode shadNode = new MDL0ShaderNode()
+                            MDL0ShaderNode shadNode = new MDL0ShaderNode
                             {
-                                _ref0 = 0,
-                                _ref1 = -1,
-                                _ref2 = -1,
-                                _ref3 = -1,
-                                _ref4 = -1,
-                                _ref5 = -1,
-                                _ref6 = -1,
-                                _ref7 = -1,
+                                Ref0 = 0,
+                                Ref1 = -1,
+                                Ref2 = -1,
+                                Ref3 = -1,
+                                Ref4 = -1,
+                                Ref5 = -1,
+                                Ref6 = -1,
+                                Ref7 = -1,
                             };
 
                             shadNode._parent = m._shadGroup;
