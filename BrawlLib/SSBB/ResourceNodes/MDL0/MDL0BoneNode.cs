@@ -570,6 +570,17 @@ Y: Only the Y axis is allowed to rotate. Is affected by the parent bone's rotati
             }
         }
 
+        [Category("Bone")]
+        public BoneFlags Flags
+        {
+            get => _boneFlags;
+            set
+            {
+                _boneFlags = value;
+                SignalPropertyChange();
+            }
+        }
+
         //[Category("Kinect Settings"), Browsable(true)]
         //public SkeletonJoint Joint
         //{
