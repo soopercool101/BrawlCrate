@@ -458,7 +458,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => string.Format("Shader {0}", Index);
+            get => string.IsNullOrEmpty(base.Name) ? $"Shader {Index}" : base.Name;
             set => base.Name = value;
         }
 
