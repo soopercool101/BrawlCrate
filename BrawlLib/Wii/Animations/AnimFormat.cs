@@ -28,6 +28,11 @@ namespace BrawlLib.Wii.Animations
                 return;
             }
 
+            Serialize(node, output, model);
+        }
+
+        public static void Serialize(CHR0Node node, string output, MDL0Node model)
+        {
             model.Populate();
             using (StreamWriter file = new StreamWriter(output))
             {
