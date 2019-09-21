@@ -148,7 +148,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             MoveDefActionNode prev;
             VoidPtr addr = &Header->_first;
@@ -210,7 +210,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             new MoveDefActionNode("1", false, this).Initialize(this, &Header[0], 8);
             new MoveDefActionNode("2", false, this).Initialize(this, &Header[2], 8);

@@ -195,7 +195,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_nameSpace != 0 || Header->_id != 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             FDefEvent* ev = Header;
             if (!_isBlank)

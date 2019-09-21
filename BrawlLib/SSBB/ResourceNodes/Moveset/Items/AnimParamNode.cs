@@ -62,7 +62,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public VoidPtr dataHeaderAddr;
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             #region Populate
 

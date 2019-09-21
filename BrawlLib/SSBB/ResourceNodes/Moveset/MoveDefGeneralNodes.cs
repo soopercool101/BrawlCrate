@@ -139,7 +139,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             bint* entry = Start;
             for (int i = 0; i < Count; i++)
@@ -264,7 +264,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             bint* entry = Start;
             for (int i = 0; i < Count; i++)

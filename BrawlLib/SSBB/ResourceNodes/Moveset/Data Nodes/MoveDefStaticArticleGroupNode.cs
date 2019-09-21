@@ -26,7 +26,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             VoidPtr addr = BaseAddress + DataOffset;
             for (int i = 0; i < Count; i++)

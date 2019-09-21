@@ -86,7 +86,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public MoveDefGlideNode glide;
         public MoveDefCrawlNode crawl;
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (UnknownSection1Offset != 0)
             {
@@ -197,7 +197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             bint* addr = (bint*) (BaseAddress + DataOffset);
             for (int i = 0; i < Count; i++)
@@ -351,7 +351,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             bint* addr = (bint*) (BaseAddress + DataOffset);
             for (int i = 0; i < Count; i++)
@@ -463,7 +463,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return ListOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             bint* addr = (bint*) (BaseAddress + ListOffset);
             for (int i = 0; i < ListCount; i++)
@@ -654,7 +654,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             byte* addr = Header;
             for (int i = 0; i < Count; i++)
@@ -958,7 +958,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return EntryOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             FDefMiscUnk3Entry* addr = (FDefMiscUnk3Entry*) (BaseAddress + EntryOffset);
             for (int i = EntryOffset; i < _offset; i += 16)
@@ -1083,7 +1083,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             FDefHurtBox* entry = Start;
             for (int i = 0; i < Count; i++)
@@ -1683,7 +1683,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             FDefMiscUnkType1* header = Start;
             for (int i = 0; i < Count; i++)
@@ -1847,7 +1847,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             FDefLedgegrab* entry = Start;
             for (int i = 0; i < Count; i++)
@@ -2389,7 +2389,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < ListCount; i++)
             {
@@ -2492,7 +2492,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < ListCount; i++)
             {

@@ -4645,7 +4645,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             _subRoutines = new SortedDictionary<int, MoveDefActionNode>();
             _externalRefs = new List<ResourceNode>();
@@ -5119,7 +5119,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public List<MoveDefEntryNode> _sectionList;
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             _sectionList = new List<MoveDefEntryNode>();
 
@@ -5212,7 +5212,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int i = 0;
             foreach (int offset in ActionOffsets)

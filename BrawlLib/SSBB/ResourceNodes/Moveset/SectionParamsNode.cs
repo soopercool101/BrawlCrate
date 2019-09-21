@@ -212,7 +212,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //return offsets.Values.Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int x = 0;
             foreach (FDefListOffset list in offsets.Values)
@@ -395,7 +395,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -433,7 +433,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Size / 32 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Size / 32; i++)
             {

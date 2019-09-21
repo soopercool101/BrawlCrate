@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             ActionOverride* entry = Start;
             while (entry->_commandListOffset > 0)
@@ -122,7 +122,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _commandListOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             new MoveDefActionNode("Action" + _actionId, false, this).Initialize(this,
                 new DataSource((VoidPtr) (BaseAddress + _commandListOffset), 0));

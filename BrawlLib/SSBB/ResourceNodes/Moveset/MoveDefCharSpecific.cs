@@ -27,7 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
@@ -86,7 +86,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -147,7 +147,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset1 > 0 || DataOffset2 > 0 || DataOffset3 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {
@@ -221,7 +221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -501,7 +501,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Offset1 > 0 || Offset2 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (Offset1 > 0)
             {
@@ -602,7 +602,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Offset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             new MoveDefSectionParamNode() {_name = "Data"}.Initialize(this, BaseAddress + Offset, 0);
         }
@@ -708,7 +708,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
@@ -860,7 +860,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
@@ -926,7 +926,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             new MoveDefActionNode("Action", false, this).Initialize(this, BaseAddress + DataOffset, 0);
         }
@@ -1013,7 +1013,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        //protected override void OnPopulate()
+        //public override void OnPopulate()
         //{
         //    new MoveDefActionNode("Action", false, this).Initialize(this, BaseAddress + DataOffset, 0);
         //}
@@ -1090,7 +1090,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
@@ -1163,7 +1163,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset1 > 0 || DataOffset2 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int size = -1;
 
@@ -1288,7 +1288,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset1 > 0 || DataOffset2 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {
@@ -1356,7 +1356,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset1 > 0 || DataOffset2 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {
@@ -1463,7 +1463,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                    DataOffset6 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {
@@ -1558,7 +1558,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                    DataOffset6 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {
@@ -1650,7 +1650,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset1 > 0 || DataOffset2 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {

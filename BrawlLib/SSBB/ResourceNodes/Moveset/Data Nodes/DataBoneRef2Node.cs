@@ -74,7 +74,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return EntryOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             bint* addr = (bint*) (BaseAddress + EntryOffset);
             for (int i = 0; i < EntryCount; i++)

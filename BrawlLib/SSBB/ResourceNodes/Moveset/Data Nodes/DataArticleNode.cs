@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public List<MoveDefEntryNode> _extraEntries;
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int off = 0;
             int actionCount = 0;
@@ -1448,7 +1448,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Offset > 0 && Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             VoidPtr addr = BaseAddress + Offset;
             for (int i = 0; i < count; i++)
@@ -1498,7 +1498,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("List Offset")] public int Count => hdr._listCount;
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset > 0)
             {

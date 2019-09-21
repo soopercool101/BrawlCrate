@@ -24,7 +24,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             ActionFlags* addr = First;
             for (int i = 0; i < Count; i++)

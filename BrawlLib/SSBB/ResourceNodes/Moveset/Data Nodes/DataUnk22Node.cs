@@ -49,7 +49,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _actionOffset > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             new MoveDefActionNode("Action", false, this).Initialize(this, BaseAddress + _actionOffset, 0);
         }

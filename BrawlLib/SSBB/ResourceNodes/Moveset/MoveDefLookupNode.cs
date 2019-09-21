@@ -26,7 +26,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             MoveDefLookupOffsetNode o;
             bint* addr = First;

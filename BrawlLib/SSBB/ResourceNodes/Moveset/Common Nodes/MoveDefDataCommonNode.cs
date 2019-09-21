@@ -97,7 +97,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public VoidPtr dataHeaderAddr;
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             #region Populate
 
@@ -335,7 +335,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset1 > 0 || DataOffset2 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             if (DataOffset1 > 0)
             {
@@ -406,7 +406,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Size / 12 > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Size / 12; i++)
             {
@@ -481,7 +481,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return DataOffset > 0 && Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -580,7 +580,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -650,7 +650,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Count > 0;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             for (int i = 0; i < Count; i++)
             {
@@ -683,7 +683,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             int i = 0;
             foreach (int offset in ActionOffsets)
@@ -716,7 +716,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return true;
         }
 
-        protected override void OnPopulate()
+        public override void OnPopulate()
         {
             new MoveDefSectionParamNode() {_name = "Data"}.Initialize(this, BaseAddress + DataOffset, 168);
         }
