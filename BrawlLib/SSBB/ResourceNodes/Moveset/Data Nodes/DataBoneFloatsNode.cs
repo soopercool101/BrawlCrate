@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             return Children.Count * 0x1C;
@@ -186,7 +186,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             return 0x1C;

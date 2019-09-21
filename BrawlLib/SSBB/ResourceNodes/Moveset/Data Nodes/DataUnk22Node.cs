@@ -54,7 +54,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             new MoveDefActionNode("Action", false, this).Initialize(this, BaseAddress + _actionOffset, 0);
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = Children.Count > 0 ? 1 : 0;
             return 12;

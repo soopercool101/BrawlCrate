@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //new MoveDefActionOverrideEntryNode().Initialize(this, new DataSource((VoidPtr)(entry), 8));
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             int size = 8; //Size of terminator entry

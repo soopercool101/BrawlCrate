@@ -92,7 +92,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             int size = 16;
             _lookupCount = Children.Count > 0 ? 1 : 0;

@@ -626,7 +626,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public FDefSubActionStringTable subActionStrings;
         public VoidPtr actionAddr;
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _buildHeader = true;
             _lookupCount = 0;
@@ -1457,7 +1457,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = Children.Count > 0 ? 1 : 0;
             return 24 + Children.Count * 4;
@@ -1579,7 +1579,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             _entryLength = 8;
@@ -1659,7 +1659,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             return 16;
@@ -1763,7 +1763,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             return (flags & 2) == 2 ? 24 : 20;

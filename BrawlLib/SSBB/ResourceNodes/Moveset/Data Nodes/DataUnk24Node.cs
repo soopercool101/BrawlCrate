@@ -35,7 +35,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = Children.Count > 0 ? 1 : 0;
             return Children.Count * 4 + 8;

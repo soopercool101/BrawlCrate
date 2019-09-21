@@ -1048,7 +1048,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             part7Len = 0,
             part8Len = 0;
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             zssFirstOffset = warioSwing4StringOffset = -1;
             _entryLength = 124 + _extraOffsets.Count * 4;

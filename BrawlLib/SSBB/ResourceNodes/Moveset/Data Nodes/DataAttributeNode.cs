@@ -840,7 +840,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             //attributes->_unk158 = _unk158;
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             return 0x2E4;

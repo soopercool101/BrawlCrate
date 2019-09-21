@@ -209,7 +209,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             SetSizeInternal(Children.Count * 8 + 8);
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             int size = 8; //Terminator event size

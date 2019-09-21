@@ -162,7 +162,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             _entryLength = 40;
@@ -217,7 +217,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             new MoveDefActionNode("3", false, this).Initialize(this, &Header[4], 8);
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = Children.Count > 0 ? 1 : 0;
             _entryLength = 8;

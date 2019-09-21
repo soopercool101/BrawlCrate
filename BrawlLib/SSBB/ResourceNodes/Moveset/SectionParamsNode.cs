@@ -347,7 +347,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //        PostProcessOffsets(x);
         //}
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             _entryLength = attributeBuffer.Length;
@@ -403,7 +403,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             int size = 0;
 
@@ -441,7 +441,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             _lookupCount = 0;
             return _entryLength = 32 * Children.Count;

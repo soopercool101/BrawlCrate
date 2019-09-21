@@ -4739,7 +4739,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public static LookupManager _lookupOffsets;
         public int lookupCount = 0, lookupLen = 0;
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             int size = 0x20;
             _postProcessNodes = new List<MoveDefEntryNode>();

@@ -20,7 +20,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override ResourceType ResourceType => ResourceType.Event;
 
-        protected override int OnCalculateSize(bool force)
+        public override int OnCalculateSize(bool force)
         {
             int size = 8;
             _lookupCount = Children.Count > 0 ? 1 : 0;
