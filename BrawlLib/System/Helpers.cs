@@ -337,6 +337,85 @@ namespace System
 
             return str;
         }
+
+
+
+
+
+        public static string GetComparisonSign(long value)
+        {
+            switch (value)
+            {
+                case 0: return "<";
+                case 1: return "<=";
+                case 2: return "==";
+                case 3: return "!=";
+                case 4: return ">=";
+                case 5: return ">";
+                default: return "(" + value + ")";
+            }
+        }
+
+        public static int TabUpEvents(uint eventId)
+        {
+            switch (eventId)
+            {
+                case 0x00040100:
+                case 0x000A0100:
+                case 0x000A0200:
+                case 0x000A0300:
+                case 0x000A0400:
+                case 0x000B0100:
+                case 0x000B0200:
+                case 0x000B0300:
+                case 0x000B0400:
+                case 0x000C0100:
+                case 0x000C0200:
+                case 0x000C0300:
+                case 0x000C0400:
+                case 0x000D0200:
+                case 0x000D0400:
+                case 0x000E0000:
+                case 0x00100200:
+                case 0x00110100:
+                case 0x00120000:
+                    return 1;
+                default:
+                    return 0;
+            }
+        }
+
+        public static int TabDownEvents(uint eventId)
+        {
+            switch (eventId)
+            {
+                case 0x00050000:
+                case 0x000B0100:
+                case 0x000B0200:
+                case 0x000B0300:
+                case 0x000B0400:
+                case 0x000C0100:
+                case 0x000C0200:
+                case 0x000C0300:
+                case 0x000C0400:
+                case 0x000D0200:
+                case 0x000D0400:
+                case 0x000E0000:
+                case 0x000F0000:
+                case 0x00110100:
+                case 0x00120000:
+                case 0x00130000:
+                    return 1;
+                default:
+                    return 0;
+            }
+        }
+
+        public static float UnScalar(long value)
+        {
+            return (float)value / 60000f;
+        }
+
     }
 
     public class ReferenceEqualityComparer : EqualityComparer<object>
@@ -694,4 +773,5 @@ namespace System
         SFX254,
         SFX255
     };
+
 }

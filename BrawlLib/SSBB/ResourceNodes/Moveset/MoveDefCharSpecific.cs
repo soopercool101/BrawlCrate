@@ -265,7 +265,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class SZerosuitExtraParams8Node : MoveDefCharSpecificNode
     {
         internal SZerosuitExtraParams8* Header => (SZerosuitExtraParams8*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int count, offset;
 
@@ -316,7 +316,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class Wario6 : MoveDefCharSpecificNode
     {
         internal WarioExtraParams6* Header => (WarioExtraParams6*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public byte _unk1;
         public byte _unk2;
@@ -488,7 +488,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class Wario8 : MoveDefCharSpecificNode
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         [Category("Extra Offset 8")] public int Offset1 => Header[0];
 
@@ -559,7 +559,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class Yoshi9 : MoveDefCharSpecificNode
     {
         internal YoshiExtraParams9* Header => (YoshiExtraParams9*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private float unk1, unk2;
         private int offset;
@@ -1013,10 +1013,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        //public override void OnPopulate()
-        //{
-        //    new MoveDefActionNode("Action", false, this).Initialize(this, BaseAddress + DataOffset, 0);
-        //}
+        public override void OnPopulate()
+        {
+            new MoveDefActionNode("Action", false, this).Initialize(this, BaseAddress + DataOffset, 0);
+        }
 
         public override int OnCalculateSize(bool force)
         {

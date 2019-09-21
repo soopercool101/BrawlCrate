@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefSectionParamNode : MoveDefCharSpecificNode
     {
         internal byte* Header => (byte*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public List<AttributeInfo> _info;
         public string OldName;

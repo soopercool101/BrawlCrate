@@ -260,7 +260,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefModelVisRefNode : MoveDefEntryNode
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDefMdlVisRef;
+        public override ResourceType ResourceFileType => ResourceType.MDefMdlVisRef;
 
         internal int i = 0;
 
@@ -292,7 +292,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefBoneSwitchNode : MoveDefEntryNode
     {
         internal FDefListOffset* Header => (FDefListOffset*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDefMdlVisSwitch;
+        public override ResourceType ResourceFileType => ResourceType.MDefMdlVisSwitch;
 
         internal int i = 0;
 
@@ -327,7 +327,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefModelVisGroupNode : MoveDefEntryNode
     {
         internal FDefListOffset* Header => (FDefListOffset*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDefMdlVisGroup;
+        public override ResourceType ResourceFileType => ResourceType.MDefMdlVisGroup;
 
         internal int i = 0;
 

@@ -54,7 +54,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefActionFlagsEntryNode : MoveDefEntryNode
     {
         internal ActionFlags* Header => (ActionFlags*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int flags1, flags2, flags3;
         public uint flags4;
@@ -183,7 +183,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal FDefSubActionFlag* Header => (FDefSubActionFlag*) WorkingUncompressed.Address;
 
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         //public Dictionary<string, FDefSubActionFlag> Flags { get { return flags; } set { flags = value; } }
 

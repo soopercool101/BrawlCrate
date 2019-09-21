@@ -434,7 +434,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefCommonUnk7EntryNode : MoveDefEntryNode
     {
         internal FDefCommonUnk7Entry* Header => (FDefCommonUnk7Entry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int unk1, unk2;
         public short unk3, unk4;
@@ -510,7 +510,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefCommonUnk7EntryListEntryNode : MoveDefEntryNode
     {
         internal FDefCommonUnk7EntryListEntry* Header => (FDefCommonUnk7EntryListEntry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public float unk1, unk2;
 

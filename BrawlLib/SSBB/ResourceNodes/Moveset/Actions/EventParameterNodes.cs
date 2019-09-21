@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefEventParameterNode : MoveDefEntryNode
     {
         internal FDefEventArgument* Header => (FDefEventArgument*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Parameter;
+        public override ResourceType ResourceFileType => ResourceType.Parameter;
 
         public int _value = 0;
 

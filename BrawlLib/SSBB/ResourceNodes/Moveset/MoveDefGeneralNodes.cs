@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class MoveDefActionListNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.MDefActionList;
+        public override ResourceType ResourceFileType => ResourceType.MDefActionList;
         public List<List<int>> ActionOffsets = new List<List<int>>();
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
@@ -45,18 +45,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public class MoveDefSubRoutineListNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.MDefSubroutineList;
+        public override ResourceType ResourceFileType => ResourceType.MDefSubroutineList;
     }
 
     public class MoveDefGroupNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEditEntry;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
     }
 
     public unsafe class MoveDefRawDataNode : MoveDefExternalNode
     {
         internal byte* Header => (byte*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal byte[] data;
 
@@ -169,7 +169,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefBoneIndexNode : MoveDefEntryNode
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal int boneIndex = 0;
 
@@ -294,7 +294,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefIndexNode : MoveDefEntryNode
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal int i = 0;
 
@@ -337,7 +337,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefOffsetNode : MoveDefEntryNode
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal int i = 0;
 

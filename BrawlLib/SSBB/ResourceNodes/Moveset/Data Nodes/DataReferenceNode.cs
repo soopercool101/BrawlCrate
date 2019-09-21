@@ -16,7 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefReferenceNode : MoveDefEntryNode
     {
         internal FDefStringEntry* Header => (FDefStringEntry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDefRefList;
+        public override ResourceType ResourceFileType => ResourceType.MDefRefList;
 
         private FDefStringTable* stringTable;
 
@@ -61,7 +61,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefReferenceEntryNode : MoveDefExternalNode
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int[] Offsets => _offsets.ToArray();
 

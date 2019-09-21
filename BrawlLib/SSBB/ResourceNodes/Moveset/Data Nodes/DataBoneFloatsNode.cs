@@ -54,7 +54,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefUnk17EntryNode : MoveDefEntryNode
     {
         internal Unk17Entry* Header => (Unk17Entry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int boneIndex;
         private float f1, f2, f3, f4, f5, f6;

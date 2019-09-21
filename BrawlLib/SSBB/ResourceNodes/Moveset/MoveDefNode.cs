@@ -138,7 +138,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int offsetID = 0;
         public bool isExtra = false;
 
-        public virtual ResourceType ResourceType => ResourceType.NoEditEntry;
+        public override ResourceType ResourceFileType => ResourceType.NoEditEntry;
 
         public override bool OnInitialize()
         {
@@ -191,7 +191,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return new ActionEventInfo(id, id.ToString("X"), "No Description Available.", null, null);
         }
 
-        public void SortChildren()
+        public override void SortChildren()
         {
             _children.Sort(Compare);
         }
@@ -267,7 +267,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public abstract unsafe class MoveDefExternalNode : MoveDefEntryNode
     {
-        public virtual ResourceType ResourceType => ResourceType.NoEditEntry;
+        public override ResourceType ResourceFileType => ResourceType.NoEditEntry;
 
         public List<int> _offsets = new List<int>();
         public List<MoveDefEntryNode> _refs = new List<MoveDefEntryNode>();
@@ -290,20 +290,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefHeader* Header => (FDefHeader*) WorkingUncompressed.Address;
         internal int dataSize, lookupOffset, numLookupEntries, numDataTable, numExternalSubRoutine;
 
-        //internal static ResourceNode TryParse(DataSource source) 
-        //{
-        //    VoidPtr addr = source.Address;
-        //    FDefHeader* header = (FDefHeader*)addr;
+        internal static ResourceNode TryParse(DataSource source) 
+        {
+            VoidPtr addr = source.Address;
+            FDefHeader* header = (FDefHeader*)addr;
 
-        //    if (header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0)
-        //        return null;
+            if (header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0)
+                return null;
 
-        //    if (header->_fileSize > source.Length || header->_lookupOffset > source.Length)
-        //        return null;
+            if (header->_fileSize > source.Length || header->_lookupOffset > source.Length)
+                return null;
 
 
-        //    return new MoveDefNode();
-        //}
+            return new MoveDefNode();
+        }
 
         public static SortedDictionary<long, ActionEventInfo> EventDictionary =
             new SortedDictionary<long, ActionEventInfo>();
@@ -3475,7 +3475,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0Node Model => _model;
 
-        public virtual ResourceType ResourceType => ResourceType.MDef;
+        public override ResourceType ResourceFileType => ResourceType.MDef;
         public VoidPtr BaseAddress;
 
         [Category("Moveset Definition")] public string DataSize => "0x" + dataSize.ToString("X");

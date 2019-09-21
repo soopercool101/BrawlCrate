@@ -143,6 +143,7 @@
 
         //Moveset
         MDef = 0x4B1A,
+        NoEdit = 0x1001,
         NoEditFolder = 0x4C01,
         NoEditEntry = 0x4C00,
         MDefActionGroup = 0x4D01,

@@ -391,7 +391,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefUnkSection9DataNode : MoveDefEntryNode
     {
         internal FDefMiscSection9Data* Header => (FDefMiscSection9Data*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int _unk1, _unk4;
         public float _unk2, _unk3;
@@ -510,7 +510,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class UnkSection5Node : MoveDefEntryNode
     {
         internal FDefMiscSection5* Header => (FDefMiscSection5*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int _unk1, _unk2, _unk3, _unk4;
 
@@ -588,7 +588,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class UnkSection1Node : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal bint* values => (bint*) WorkingUncompressed.Address;
 
@@ -706,7 +706,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MiscData2Node : MoveDefCharSpecificNode
     {
         internal UnkDataMiscOff2* Header => (UnkDataMiscOff2*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private UnkDataMiscOff2 hdr;
 
@@ -1004,7 +1004,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class UnknownSection3EntryNode : MoveDefEntryNode
     {
         internal FDefMiscUnk3Entry* Header => (FDefMiscUnk3Entry*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private int _unk1, _unk2, _pad1, _pad2;
 
@@ -1067,7 +1067,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefMiscHurtBoxesNode : MoveDefEntryNode
     {
         internal FDefHurtBox* Start => (FDefHurtBox*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.MDefHurtboxList;
+        public override ResourceType ResourceFileType => ResourceType.MDefHurtboxList;
 
         internal int Count = 0;
 
@@ -1111,7 +1111,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefHurtBoxNode : MoveDefEntryNode
     {
         internal FDefHurtBox* Header => (FDefHurtBox*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal Vector3 _offst, _stretch;
         internal float _radius;
@@ -1711,7 +1711,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefSectionsUnk1NodeEntry : MoveDefEntryNode
     {
         internal FDefMiscUnkType1* Header => (FDefMiscUnkType1*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal int boneIndex = 0;
         internal float x, y, width, height;
@@ -1875,7 +1875,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefLedgegrabNode : MoveDefEntryNode
     {
         internal FDefLedgegrab* Header => (FDefLedgegrab*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal float x, y, width, height;
 
@@ -1950,7 +1950,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefMultiJumpNode : MoveDefEntryNode
     {
         internal FDefMultiJump* Header => (FDefMultiJump*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal float unk1, unk2, unk3, horizontalBoost;
         internal List<float> hops, unks;
@@ -2185,7 +2185,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class MoveDefGlideNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal bfloat* floatval => (bfloat*) WorkingUncompressed.Address;
 
@@ -2267,7 +2267,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefCrawlNode : MoveDefEntryNode
     {
         internal FDefCrawl* Header => (FDefCrawl*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal float forward, backward;
 
@@ -2319,7 +2319,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefTetherNode : MoveDefEntryNode
     {
         internal FDefTether* Header => (FDefTether*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         internal int numHangFrame = 0;
         internal float unk1;

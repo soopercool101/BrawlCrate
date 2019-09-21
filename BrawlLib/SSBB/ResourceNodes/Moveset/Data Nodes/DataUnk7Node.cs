@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal buint* _value1 => (buint*) WorkingUncompressed.Address;
         internal buint* _value2 => (buint*) (WorkingUncompressed.Address + 4);
 
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private Bin32 v1, v2;
 

@@ -95,6 +95,14 @@ namespace BrawlCrate
             this.rsarGroupEditor = new System.Windows.Forms.RSARGroupEditor();
             this.soundPackControl1 = new System.Windows.Forms.SoundPackControl();
             this.msBinEditor1 = new System.Windows.Forms.MSBinEditor();
+
+
+            this.eventDescription1 = new System.Windows.Forms.EventDescription();
+            this.attributeControl = new System.Windows.Forms.AttributeGrid2();
+            this.articleAttributeGrid = new System.Windows.Forms.ArticleAttributeGrid();
+            this.offsetEditor1 = new System.Windows.Forms.OffsetEditor();
+            this.movesetEditor1 = new System.Windows.Forms.ScriptEditor();
+
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -494,6 +502,11 @@ namespace BrawlCrate
             this.splitContainer2.Panel2.Controls.Add(this.visEditor);
             this.splitContainer2.Panel2.Controls.Add(this.clrControl);
             this.splitContainer2.Panel2.Controls.Add(this.rsarGroupEditor);
+            this.splitContainer2.Panel2.Controls.Add(this.eventDescription1);
+            this.splitContainer2.Panel2.Controls.Add(this.attributeControl);
+            this.splitContainer2.Panel2.Controls.Add(this.articleAttributeGrid);
+            this.splitContainer2.Panel2.Controls.Add(this.movesetEditor1);
+            this.splitContainer2.Panel2.Controls.Add(this.offsetEditor1);
             this.splitContainer2.Panel2.Controls.Add(this.soundPackControl1);
             this.splitContainer2.Panel2.Controls.Add(this.msBinEditor1);
             this.splitContainer2.Size = new System.Drawing.Size(436, 428);
@@ -503,6 +516,58 @@ namespace BrawlCrate
             this.splitContainer2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseDown);
             this.splitContainer2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseMove);
             this.splitContainer2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseUp);
+
+
+            // 
+            // articleAttributeGrid
+            // 
+            this.articleAttributeGrid.Location = new System.Drawing.Point(0, 0);
+            this.articleAttributeGrid.Name = "articleAttributeGrid";
+            this.articleAttributeGrid.Size = new System.Drawing.Size(479, 305);
+            this.articleAttributeGrid.TabIndex = 9;
+            this.articleAttributeGrid.Visible = false;
+
+            // 
+            // attributeControl
+            // 
+            this.attributeControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.attributeControl.Location = new System.Drawing.Point(0, 0);
+            this.attributeControl.Name = "attributeControl";
+            this.attributeControl.Size = new System.Drawing.Size(399, 202);
+            this.attributeControl.TabIndex = 0;
+            this.attributeControl.Visible = false;
+
+            // 
+            // eventDescription1
+            // 
+            this.eventDescription1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eventDescription1.Location = new System.Drawing.Point(0, 0);
+            this.eventDescription1.Name = "eventDescription1";
+            this.eventDescription1.Size = new System.Drawing.Size(399, 202);
+            this.eventDescription1.TabIndex = 1;
+            this.eventDescription1.Visible = false;
+
+            // 
+            // movesetEditor1
+            // 
+            this.movesetEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.movesetEditor1.Location = new System.Drawing.Point(0, 0);
+            this.movesetEditor1.Name = "movesetEditor1";
+            this.movesetEditor1.Padding = new System.Windows.Forms.Padding(1);
+            this.movesetEditor1.Size = new System.Drawing.Size(399, 202);
+            this.movesetEditor1.TabIndex = 0;
+            this.movesetEditor1.Visible = false;
+
+            // 
+            // offsetEditor1
+            // 
+            this.offsetEditor1.Location = new System.Drawing.Point(0, 0);
+            this.offsetEditor1.Name = "offsetEditor1";
+            this.offsetEditor1.Size = new System.Drawing.Size(296, 105);
+            this.offsetEditor1.TabIndex = 8;
+            this.offsetEditor1.Visible = false;
+
+
             // 
             // propertyGrid1
             // 
@@ -776,13 +841,13 @@ namespace BrawlCrate
         private CLRControl clrControl;
         private RSARGroupEditor rsarGroupEditor;
         private VisEditor visEditor;
-        //private ScriptEditor movesetEditor1;
-        //private EventDescription eventDescription1;
+        private ScriptEditor movesetEditor1;
+        private EventDescription eventDescription1;
         private TexAnimEditControl texAnimEditControl;
         private ShpAnimEditControl shpAnimEditControl;
-        //private AttributeGrid attributeControl;
-        //private OffsetEditor offsetEditor1;
-        //private ArticleAttributeGrid articleAttributeGrid;
+        private AttributeGrid2 attributeControl;
+        private OffsetEditor offsetEditor1;
+        private ArticleAttributeGrid articleAttributeGrid;
         private SCN0LightEditControl scN0LightEditControl1;
         private SCN0CameraEditControl scN0CameraEditControl1;
         private SCN0FogEditControl scN0FogEditControl1;

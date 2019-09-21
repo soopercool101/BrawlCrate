@@ -1393,7 +1393,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CollDataType0 : MoveDefEntryNode
     {
         internal collData0* Header => (collData0*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int type, offset, count;
         public float unk1, unk2, unk3;
@@ -1610,7 +1610,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CollDataType1 : MoveDefEntryNode
     {
         internal collData1* Header => (collData1*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int type;
         public float unk1, unk2, unk3;
@@ -1680,7 +1680,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class CollDataType2 : MoveDefEntryNode
     {
         internal collData2* Header => (collData2*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         public int type, flags;
         public float unk1, unk2, unk3, unk4;

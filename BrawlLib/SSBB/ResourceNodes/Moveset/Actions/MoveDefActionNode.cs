@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class MoveDefSubActionGroupNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.MDefSubActionGroup;
+        public override ResourceType ResourceFileType => ResourceType.MDefSubActionGroup;
         public override bool AllowDuplicateNames => true;
 
         public override string ToString()
@@ -51,7 +51,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public class MoveDefActionGroupNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.MDefActionGroup;
+        public override ResourceType ResourceFileType => ResourceType.MDefActionGroup;
 
         public override string ToString()
         {

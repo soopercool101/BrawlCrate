@@ -3,6 +3,7 @@ using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -543,9 +544,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (levels < 0)
             {
-                foreach (ResourceNode r in Children)
+                //Debug.WriteLine(this.Name);
+                if (this.Name != "[29] SubRoutines")
                 {
-                    r.Populate();
+                    foreach (ResourceNode r in Children)
+                    {
+                        //Debug.WriteLine(Children.Capacity);
+                        r.Populate();
+                    }
                 }
             }
             else if (_children == null || _children.Count == 0)

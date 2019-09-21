@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefAttributeNode : MoveDefEntryNode
     {
         internal FDefAttributes* Header => (FDefAttributes*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.Unknown;
+        public override ResourceType ResourceFileType => ResourceType.Unknown;
 
         private UnsafeBuffer attributeBuffer;
 

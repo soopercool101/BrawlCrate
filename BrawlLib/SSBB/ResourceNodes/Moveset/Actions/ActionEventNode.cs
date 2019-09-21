@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal byte nameSpace, id, numArguments, unk1;
         internal List<FDefEventArgument> arguments = new List<FDefEventArgument>();
 
-        public override ResourceType ResourceType => ResourceType.Event;
+        public override ResourceType ResourceFileType => ResourceType.Event;
 
         public override int OnCalculateSize(bool force)
         {
