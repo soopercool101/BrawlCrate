@@ -23,15 +23,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 base.Name = value;
                 if (Parent is MoveDefArticleNode)
                 {
-                    Root.Params[(Parent as MoveDefArticleNode).ArticleStringID].NewName = value;
+                    Root.Params[(Parent as MoveDefArticleNode).ArticleStringID]._newName = value;
                 }
                 else if (Parent is MoveDefSectionParamNode)
                 {
-                    Root.Params[TreePath].NewName = value;
+                    Root.Params[TreePath]._newName = value;
                 }
                 else
                 {
-                    Root.Params[OldName].NewName = value;
+                    Root.Params[OldName]._newName = value;
                 }
 
                 MoveDefNode._dictionaryChanged = true;
@@ -58,7 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public Dictionary<int, FDefListOffset> offsets;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             offsets = new Dictionary<int, FDefListOffset>();
 
@@ -77,10 +77,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (Root.Params.ContainsKey((Parent as MoveDefArticleNode).ArticleStringID + "/" + _name))
                 {
                     data = Root.Params[(Parent as MoveDefArticleNode).ArticleStringID + "/" + _name];
-                    _info = data.Attributes;
-                    if (!string.IsNullOrEmpty(data.NewName))
+                    _info = data._attributes;
+                    if (!string.IsNullOrEmpty(data._newName))
                     {
-                        _name = data.NewName;
+                        _name = data._newName;
                     }
                 }
                 else
@@ -93,10 +93,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (Root.Params.ContainsKey(TreePath))
                 {
                     data = Root.Params[TreePath];
-                    _info = data.Attributes;
-                    if (!string.IsNullOrEmpty(data.NewName))
+                    _info = data._attributes;
+                    if (!string.IsNullOrEmpty(data._newName))
                     {
-                        _name = data.NewName;
+                        _name = data._newName;
                     }
                 }
                 else
@@ -107,10 +107,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             else if (Root != null && Root.Params.ContainsKey(Name))
             {
                 data = Root.Params[Name];
-                _info = data.Attributes;
-                if (!string.IsNullOrEmpty(data.NewName))
+                _info = data._attributes;
+                if (!string.IsNullOrEmpty(data._newName))
                 {
-                    _name = data.NewName;
+                    _name = data._newName;
                 }
             }
             else
@@ -192,8 +192,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!Root.Params.ContainsKey(id))
                 {
                     Root.Params.Add(id, new SectionParamInfo());
-                    Root.Params[id].Attributes = _info;
-                    Root.Params[id].NewName = _name;
+                    Root.Params[id]._attributes = _info;
+                    Root.Params[id]._newName = _name;
                     data = Root.Params[id];
                 }
             }
@@ -202,8 +202,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!Root.Params.ContainsKey(TreePath))
                 {
                     Root.Params.Add(TreePath, new SectionParamInfo());
-                    Root.Params[TreePath].Attributes = _info;
-                    Root.Params[TreePath].NewName = _name;
+                    Root.Params[TreePath]._attributes = _info;
+                    Root.Params[TreePath]._newName = _name;
                     data = Root.Params[TreePath];
                 }
             }
@@ -285,7 +285,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //}
 
         //public bool notRoot = false;
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             //Top:
 
@@ -389,7 +389,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _name = "Data" + ID;
             return Count > 0;
@@ -415,7 +415,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             base.OnRebuild(address, length, force);
@@ -426,7 +426,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal FDefHurtBox* First => (FDefHurtBox*) WorkingUncompressed.Address;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _offsets.Add(_offset);
@@ -447,7 +447,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _entryLength = 32 * Children.Count;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefHurtBox* data = (FDefHurtBox*) address;

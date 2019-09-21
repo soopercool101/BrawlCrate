@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal Unk17Entry* First => (Unk17Entry*) WorkingUncompressed.Address;
         private int Count = 0;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _extOverride = true;
             base.OnInitialize();
@@ -40,7 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 0x1C;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             Unk17Entry* data = (Unk17Entry*) address;
@@ -173,7 +173,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name => Bone;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             boneIndex = Header->_boneIndex;
 
@@ -192,7 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 0x1C;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             Unk17Entry* data = (Unk17Entry*) address;

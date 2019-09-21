@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _extOverride = true;
             base.OnInitialize();
@@ -41,7 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             bint* addr = (bint*) address;
@@ -95,7 +95,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -116,7 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             *(bint*) address = i;

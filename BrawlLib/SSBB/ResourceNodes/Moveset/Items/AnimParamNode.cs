@@ -53,7 +53,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
 

@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _unk1 = Header->_unk1;
@@ -176,7 +176,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _entryLength + _childLength;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             VoidPtr addr = address;
             _entryOffset = addr;
@@ -204,7 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal bint* Header => (bint*) WorkingUncompressed.Address;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             return true;
@@ -230,7 +230,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _entryLength + _childLength;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             VoidPtr addr = address;
             foreach (MoveDefSectionParamNode p in Children)

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
-    public unsafe class MoveDefArticleNode : MoveDefEntryNode, IRenderedObject
+    public unsafe class MoveDefArticleNode : MoveDefEntryNode
     {
         internal Article* Header => (Article*) WorkingUncompressed.Address;
 
@@ -110,7 +110,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool Static = false;
         public bool extraOffset = false;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
 
@@ -859,7 +859,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool _buildHeader = true;
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             aFlags = sFlags = aStart = sMStart = sGStart = sSStart = visStart = off1 = off2 = off3 = 0;
 
@@ -1336,7 +1336,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
-
+        /*
         public int currentSubAction = 0;
         public MDL0Node Model = null;
 
@@ -1387,6 +1387,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+        */
     }
 
     public unsafe class CollDataType0 : MoveDefEntryNode
@@ -1436,7 +1437,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             type = Header->type;
@@ -1463,7 +1464,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 24 + Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             bint* addr = (bint*) address;
             foreach (MoveDefBoneIndexNode b in Children)
@@ -1532,14 +1533,14 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             hdr = *Header;
             return hdr._startOffset > 0;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             bint* offsets = (bint*) address;
             VoidPtr dataAddr = address;
@@ -1649,7 +1650,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             type = Header->type;
@@ -1665,7 +1666,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             collData1* data = (collData1*) address;
@@ -1741,7 +1742,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             type = Header->type;
@@ -1769,7 +1770,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return (flags & 2) == 2 ? 24 : 20;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             collData2* data = (collData2*) address;

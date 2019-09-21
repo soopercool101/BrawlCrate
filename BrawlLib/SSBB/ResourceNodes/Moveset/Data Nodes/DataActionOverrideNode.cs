@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ActionOverride* Start => (ActionOverride*) WorkingUncompressed.Address;
         public override ResourceType ResourceType => ResourceType.MDefActionOverrideList;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             return true;
@@ -45,7 +45,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _entryLength = size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
 
@@ -85,7 +85,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefActionOverrideEntryNode : MoveDefEntryNode
     {
         internal ActionOverride* Header => (ActionOverride*) WorkingUncompressed.Address;
-        public override ResourceType ResourceType => ResourceType.NoEdit;
+        public override ResourceType ResourceType => ResourceType.NoEditEntry;
 
         public int _actionId, _commandListOffset;
 
@@ -104,7 +104,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Action Override")] public int CommandListOffset => _commandListOffset;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _actionId = Header->_actionID;
             _commandListOffset = Header->_commandListOffset;

@@ -199,7 +199,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public SortedList<int, MoveDefEntryNode> _articles;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             unk27 = Header->Unknown27;
             unk28 = Header->Unknown28;
@@ -1056,7 +1056,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _entryLength + _childLength;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             MovesetConverter.BuildData(this, (MovesetHeader*) dataHeaderAddr, address, length, force);
         }

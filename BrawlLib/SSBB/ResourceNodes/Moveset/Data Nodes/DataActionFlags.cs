@@ -18,7 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             return Count > 0;
@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
 
@@ -151,7 +151,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Action" + (Index + (Parent.Name == "Action Flags" ? 274 : 0));
@@ -168,7 +168,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             ActionFlags* header = (ActionFlags*) address;
@@ -204,7 +204,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public List<string> _names = new List<string>();
         public List<FDefSubActionFlag> _flags = new List<FDefSubActionFlag>();
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "SubAction Flags";

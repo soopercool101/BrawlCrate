@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _value = Header->_data;
             return base.OnInitialize();
@@ -57,7 +57,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 8;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefEventArgument* header = (FDefEventArgument*) address;
@@ -91,7 +91,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -145,7 +145,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -188,7 +188,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -252,7 +252,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -306,7 +306,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -360,7 +360,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -425,7 +425,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Value";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -462,7 +462,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Unknown";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -563,7 +563,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Offset";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
 
@@ -680,7 +680,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Scalar";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -712,7 +712,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Boolean";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -777,7 +777,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override float RealValue => base.RealValue;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -905,7 +905,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Requirement";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -1116,7 +1116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Flags";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -1544,7 +1544,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name != null ? name : "Special Flags";
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {

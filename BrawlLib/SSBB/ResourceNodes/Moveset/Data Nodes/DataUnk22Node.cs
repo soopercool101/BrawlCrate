@@ -37,7 +37,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Unknown Offset 22")] public int ActionOffset => _actionOffset;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Unknown 22";
@@ -60,7 +60,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 12;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefUnk22* data = (FDefUnk22*) address;

@@ -364,7 +364,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => arguments = value;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if ((int) Header == (int) BaseAddress)
             {
@@ -601,6 +601,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public HitboxFlagsNode flags;
         public SpecialHitboxFlagsNode specialFlags;
 
+        /*
         #region Offensive Collision
 
         public unsafe void RenderOffensiveCollision(ResourceNode[] bl, TKContext c, Vector3 cam,
@@ -1211,5 +1212,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         //}
 
         #endregion
+        */
     }
 }

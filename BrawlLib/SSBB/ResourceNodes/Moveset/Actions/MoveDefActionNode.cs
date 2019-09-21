@@ -140,7 +140,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _offsets.Add(_offset);
             _build = true;
@@ -227,7 +227,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             int off = 0;
             foreach (MoveDefEventNode e in Children)

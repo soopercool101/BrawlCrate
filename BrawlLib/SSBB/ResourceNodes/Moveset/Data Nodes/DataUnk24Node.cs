@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int DataOffset => Header->_startOffset;
         public int Count => Header->_listCount;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -41,7 +41,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 4 + 8;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             bint* addr = (bint*) address;
             foreach (MoveDefIndexNode b in Children)

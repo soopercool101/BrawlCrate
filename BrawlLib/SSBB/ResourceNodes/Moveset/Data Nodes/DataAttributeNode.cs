@@ -437,7 +437,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region OnInitRebuildCalc
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             attributeBuffer = new UnsafeBuffer(0x2E4);
@@ -640,7 +640,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             byte* pIn = (byte*) attributeBuffer.Address;

@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceType => ResourceType.MDefActionList;
         public List<List<int>> ActionOffsets = new List<List<int>>();
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             bint* addr = (bint*) address;
             int count = 0;
@@ -50,7 +50,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public class MoveDefGroupNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEdit;
+        public override ResourceType ResourceType => ResourceType.NoEditEntry;
     }
 
     public unsafe class MoveDefRawDataNode : MoveDefExternalNode
@@ -65,7 +65,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if ((Parent as MoveDefEntryNode)._offset != _offset)
             {
@@ -104,7 +104,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //    }
         //}
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             byte* header = (byte*) address;
@@ -133,7 +133,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = "[" + Count + "] " + nameType;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             return Count > 0;
@@ -154,7 +154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             bint* addr = (bint*) address;
@@ -221,7 +221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name => Bone;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             boneIndex = *Header;
@@ -239,7 +239,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             *(bint*) address = boneIndex;
@@ -257,7 +257,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = "[" + Count + "] " + nameType;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _extOverride = true;
             base.OnInitialize();
@@ -279,7 +279,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             bint* addr = (bint*) address;
@@ -309,7 +309,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -327,7 +327,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             *(bint*) address = i;
@@ -343,7 +343,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Offset Entry")] public int DataOffset => i;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             i = *Header;
@@ -377,7 +377,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("List Offset")] public int Count => hdr._listCount;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             hdr = *Header;

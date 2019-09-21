@@ -61,7 +61,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Bone References")] public int EntryCount => Header->_count;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Hand Bones";
@@ -89,7 +89,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 24 + Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             bint* addr = (bint*) address;
 

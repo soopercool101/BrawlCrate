@@ -15,6 +15,63 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.ARC;
         public override Type[] AllowedChildTypes => new Type[] {typeof(ARCEntryNode)};
 
+
+        #region SpecialNames
+
+        public static List<string> SpecialName = new List<string>()
+        {
+            "FitCaptain",
+            "FitDedede",
+            "FitDiddy",
+            "FitDonkey",
+            "FitFalco",
+            "FitFox",
+            "FitGameWatch",
+            "FitGanon",
+            "FitGKoopa",
+            "FitIke",
+            "FitKirby",
+            "FitKoopa",
+            "FitLink",
+            "FitLucario",
+            "FitLucas",
+            "FitLuigi",
+            "FitMario",
+            "FitMarth",
+            "FitMetaknight",
+            "FitNess",
+            "FitPeach",
+            "FitPikachu",
+            "FitPikmin",
+            "FitPit",
+            "FitPokeFushigisou",
+            "FitPokeLizardon",
+            "FitPokeTrainer",
+            "FitPokeZenigame",
+            "FitPopo",
+            "FitPurin",
+            "FitRobot",
+            "FitSamus",
+            "FitSheik",
+            "FitSnake",
+            "FitSonic",
+            "FitSZerosuit",
+            "FitToonLink",
+            "FitWario",
+            "FitWarioMan",
+            "FitWolf",
+            "FitYoshi",
+            "FitZakoBall",
+            "FitZakoBoy",
+            "FitZakoChild",
+            "FitZakoGirl",
+            "FitZelda",
+            "Fighter"
+        };
+
+        #endregion
+
+
 #if !DEBUG
         [Browsable(false)]
 #endif

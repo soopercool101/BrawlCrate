@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Model Visibility")] public int DefaultsCount => hdr._defaultsCount;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Model Visibility";
@@ -140,7 +140,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _lookupOffsets = new List<int>();
 
@@ -266,7 +266,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Offset Entry")] public int DataOffset => i;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             i = *Header;
@@ -315,7 +315,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             offset = Header->_startOffset;
@@ -337,7 +337,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Bone Group")] public int Count => count;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             offset = Header->_startOffset;

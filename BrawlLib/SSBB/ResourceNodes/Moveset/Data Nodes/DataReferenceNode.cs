@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private bool populated = false;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _name = "References";
             for (int i = 0; i < WorkingUncompressed.Length / 8; i++)
@@ -66,7 +66,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int[] Offsets => _offsets.ToArray();
 
         [HandleProcessCorruptedStateExceptions]
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _offsets = new List<int>();
             _offsets.Add(_offset);

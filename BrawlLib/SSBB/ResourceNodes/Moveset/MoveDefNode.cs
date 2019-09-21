@@ -138,9 +138,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int offsetID = 0;
         public bool isExtra = false;
 
-        public override ResourceType ResourceType => ResourceType.NoEdit;
+        public virtual ResourceType ResourceType => ResourceType.NoEditEntry;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (Root == null)
             {
@@ -267,7 +267,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public abstract unsafe class MoveDefExternalNode : MoveDefEntryNode
     {
-        public override ResourceType ResourceType => ResourceType.NoEdit;
+        public virtual ResourceType ResourceType => ResourceType.NoEditEntry;
 
         public List<int> _offsets = new List<int>();
         public List<MoveDefEntryNode> _refs = new List<MoveDefEntryNode>();
@@ -3475,7 +3475,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0Node Model => _model;
 
-        public override ResourceType ResourceType => ResourceType.MDef;
+        public virtual ResourceType ResourceType => ResourceType.MDef;
         public VoidPtr BaseAddress;
 
         [Category("Moveset Definition")] public string DataSize => "0x" + dataSize.ToString("X");
@@ -3485,7 +3485,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public static SortedDictionary<int, MoveDefEntryNode> nodeDictionary =
             new SortedDictionary<int, MoveDefEntryNode>();
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             if (_name == null)
             {
@@ -4615,8 +4615,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         name = sr.ReadLine();
                         SectionParamInfo info = new SectionParamInfo();
-                        info.NewName = sr.ReadLine();
-                        info.Attributes = new List<AttributeInfo>();
+                        info._newName = sr.ReadLine();
+                        info._attributes = new List<AttributeInfo>();
                         while (true && !sr.EndOfStream)
                         {
                             if (string.IsNullOrEmpty(attrName = sr.ReadLine()))
@@ -4629,7 +4629,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 i._name = attrName;
                                 i._description = sr.ReadLine();
                                 i._type = int.Parse(sr.ReadLine());
-                                info.Attributes.Add(i);
+                                info._attributes.Add(i);
                                 sr.ReadLine();
                             }
                         }
@@ -4824,7 +4824,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private int refCount = 0;
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             //Children are built in order but before their parent! 
 
@@ -5074,7 +5074,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             stringTable = (FDefStringTable*) table;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
 
@@ -5201,7 +5201,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             for (int i = 0; i < WorkingUncompressed.Length / 4; i++)

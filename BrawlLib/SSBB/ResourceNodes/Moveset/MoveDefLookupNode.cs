@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _name = "Lookup Entries";
             Populate();
@@ -98,7 +98,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public bool remove = false;
 
         [HandleProcessCorruptedStateExceptions]
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             //ResourceNode n;
             //if ((n = Root.FindNode(DataOffset)) != null)

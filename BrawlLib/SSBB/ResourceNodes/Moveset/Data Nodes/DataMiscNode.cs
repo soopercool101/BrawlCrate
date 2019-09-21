@@ -63,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             misc = *Header;
@@ -186,7 +186,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Misc Collision Data")] public int Count => Header->_listCount;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -244,7 +244,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _lookupOffsets = new List<int>();
 
@@ -340,7 +340,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int DataOffset => Header->_startOffset;
         public int Count => Header->_listCount;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -366,7 +366,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 8 + Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             bint* addr = (bint*) address;
             foreach (MoveDefIndexNode b in Children)
@@ -446,7 +446,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Misc Collision Data")] public int ListCount => count;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -478,7 +478,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 24 + Children.Count * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _lookupOffsets = new List<int>();
 
@@ -558,7 +558,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Unknown Section 5";
@@ -575,7 +575,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefMiscSection5* header = (FDefMiscSection5*) address;
@@ -605,7 +605,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _name = "Misc Section 1";
             base.OnInitialize();
@@ -625,7 +625,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _entries.Length * 4;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             for (int i = 0; i < _entries.Length; i++)
@@ -646,7 +646,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc Section 2";
@@ -671,7 +671,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 32;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             foreach (MiscData2Node d in Children)
@@ -864,7 +864,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _name = "Unk" + Index;
             base.OnInitialize();
@@ -878,7 +878,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 32;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             UnkDataMiscOff2* data = (UnkDataMiscOff2*) address;
@@ -942,7 +942,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc Item Bones";
@@ -973,7 +973,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 28 + Children.Count * 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             FDefMiscUnk3Entry* data = (FDefMiscUnk3Entry*) address;
             foreach (UnknownSection3EntryNode e in Children)
@@ -1034,7 +1034,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("Unk Section 3 Entry")] public int Pad2 => _pad2;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Entry" + Index;
@@ -1053,7 +1053,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefMiscUnk3Entry* header = (FDefMiscUnk3Entry*) address;
@@ -1076,7 +1076,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc HurtBoxes";
@@ -1098,7 +1098,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 0x20;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             for (int i = 0; i < Children.Count; i++)
@@ -1244,7 +1244,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name => Bone;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _offst = Header->_offset;
@@ -1263,7 +1263,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 0x20;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefHurtBox* header = (FDefHurtBox*) address;
@@ -1342,7 +1342,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             Vector3 bonepos = BoneNode._frameMatrix.GetPoint();
             Vector3 bonerot = BoneNode._frameMatrix.GetAngles();
-            Vector3 bonescl = BoneNode.RecursiveScale();
+            Vector3 bonescl = BoneNode._frameMatrix.GetScale(); // TODO: FIX (maybe), using wrong scale -> should be recursive scale
 
             bonescl *= _radius;
             Matrix m = Matrix.TransformMatrix(bonescl, bonerot, bonepos);
@@ -1581,7 +1581,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 GL.End();
             }
 
-            Vector3 scale = BoneNode.RecursiveScale();
+            Vector3 scale = BoneNode._frameMatrix.GetScale(); //TODO: Same problem
 
             // six faces
             GL.Begin(BeginMode.Quads);
@@ -1676,7 +1676,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc Final Smash Aura";
@@ -1698,7 +1698,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 0x14;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             for (int i = 0; i < Children.Count; i++)
@@ -1799,7 +1799,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name => Bone;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             boneIndex = Header->_boneIndex;
             x = Header->_x;
@@ -1818,7 +1818,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 0x14;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefMiscUnkType1* header = (FDefMiscUnkType1*) address;
@@ -1840,7 +1840,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Count = count;
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc LedgeGrabs";
@@ -1862,7 +1862,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Children.Count * 16;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             for (int i = 0; i < Children.Count; i++)
@@ -1914,7 +1914,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -1936,7 +1936,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 0x10;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefLedgegrab* header = (FDefLedgegrab*) address;
@@ -2033,7 +2033,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc MultiJump";
@@ -2105,7 +2105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             int off = 0;
             if (hops.Count > 1)
@@ -2221,7 +2221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //[Category("Glide Attribute")]
         //public int Unknown2 { get { return intEntry2; } set { intEntry2 = value; SignalPropertyChange(); } }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc Glide";
@@ -2244,7 +2244,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 84;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             for (int i = 0; i < 20; i++)
@@ -2293,7 +2293,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             _name = "Misc Crawl";
             forward = Header->_forward;
@@ -2307,7 +2307,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 8;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefCrawl* header = (FDefCrawl*) address;
@@ -2346,7 +2346,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "Misc Tether";
@@ -2361,7 +2361,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return 8;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             _entryOffset = address;
             FDefTether* header = (FDefTether*) address;
@@ -2376,7 +2376,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int StartOffset, ListCount;
         public bool seperate = false;
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             if (_name == null)
@@ -2414,7 +2414,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size;
         }
 
-        protected internal override void OnRebuild(VoidPtr address, int length, bool force)
+        public override void OnRebuild(VoidPtr address, int length, bool force)
         {
             int sndOff = 0, mainOff = 0;
             foreach (MoveDefSoundDataNode r in Children)
@@ -2483,7 +2483,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
         }
 
-        protected override bool OnInitialize()
+        public override bool OnInitialize()
         {
             base.OnInitialize();
             _name = "SoundData" + Index;
