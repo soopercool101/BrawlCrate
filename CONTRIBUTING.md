@@ -4,7 +4,7 @@
 
 There are some software requirements to set up the solution:
 
-1.  [Visual Studio (2019 or later)](https://visualstudio.microsoft.com/vs/)
+1.  [Visual Studio (2017 or later)](https://visualstudio.microsoft.com/vs/)
 2.  [.NET Framework v4.7.2 Developer Pack](https://dotnet.microsoft.com/download/thank-you/net472-developer-pack)
 3.  [Rustup](https://win.rustup.rs/)
 4.  [Microsoft Visual C++ v142](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
