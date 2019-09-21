@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28917.182
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrawlCrate", "BrawlCrate\BrawlCrate.csproj", "{0B8588FD-74EE-4A7D-A397-91EA3F6A2C77}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -110,7 +110,6 @@ Global
 		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|x86.ActiveCfg = Release|Win32
 		{D72045EE-2630-49F1-9668-435FDA84D73A}.Canary|x86.Build.0 = Release|Win32
 		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|Any CPU.Build.0 = Debug|Win32
 		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|x64.ActiveCfg = Debug|Win32
 		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|x86.ActiveCfg = Debug|Win32
 		{D72045EE-2630-49F1-9668-435FDA84D73A}.Debug|x86.Build.0 = Debug|Win32
