@@ -172,7 +172,7 @@ namespace BrawlLib.Modeling
                                                 {
                                                     if (p._sid == l._texture)
                                                     {
-                                                        path = p._sampler2D._url;
+                                                        path = p._sampler2D._url.Trim();
                                                         if (!string.IsNullOrEmpty(p._sampler2D._source))
                                                         {
                                                             foreach (EffectNewParam p2 in eff._newParams)

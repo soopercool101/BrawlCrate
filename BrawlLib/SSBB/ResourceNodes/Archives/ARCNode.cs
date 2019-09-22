@@ -498,9 +498,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnRebuild(VoidPtr address, int size, bool force)
         {
-            if (RedirectTargetNode != null)
+            if (RedirectNode != null)
             {
-                _redirectIndex = (short) (RedirectTargetNode as ARCEntryNode).AbsoluteIndex;
+                _redirectIndex = (short?) (RedirectNode as ARCEntryNode)?.AbsoluteIndex ?? -1;
             }
 
             ARCHeader* header = (ARCHeader*) address;
@@ -894,12 +894,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (RedirectTargetNode == null)
+                if (redirectTargetNode == null)
                 {
                     return "None";
                 }
 
-                return $"{(RedirectTargetNode as ARCEntryNode).AbsoluteIndex.ToString()}. {RedirectTargetNode.Name}";
+                return $"{(redirectTargetNode as ARCEntryNode).AbsoluteIndex.ToString()}. {redirectTargetNode.Name}";
             }
         }
 
@@ -918,7 +918,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         RedirectIndex = absIndex;
                         if (Parent.Children.Count < absIndex)
                         {
-                            RedirectTargetNode = Parent.Children[absIndex];
+                            redirectTargetNode = Parent.Children[absIndex];
                         }
 
                         SignalPropertyChange();
@@ -933,7 +933,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         RedirectIndex = absIndex;
                         if (Parent.Children.Count < absIndex)
                         {
-                            RedirectTargetNode = Parent.Children[absIndex];
+                            redirectTargetNode = Parent.Children[absIndex];
                         }
 
                         SignalPropertyChange();
@@ -942,33 +942,33 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                 }
 
-                RedirectTargetNode = null;
+                redirectTargetNode = null;
                 RedirectIndex = -1;
                 SignalPropertyChange();
                 UpdateName();
             }
         }
 
-        public ResourceNode RedirectTargetNode = null;
+#if DEBUG
+        [Browsable(true)]
+#endif
+        public ResourceNode RedirectNode => redirectTargetNode;
+
+        protected ResourceNode redirectTargetNode;
 
         public ResourceNode UpdateRedirectTarget()
         {
-            try
+            if (RedirectIndex == -1 || Parent == null || Parent.Children.Count <= RedirectIndex)
             {
-                if (RedirectIndex == -1 || Parent == null || Parent.Children.Count <= RedirectIndex)
-                {
-                    RedirectTargetNode = null;
-                }
+                redirectTargetNode = null;
+                UpdateProperties();
+                return null;
+            }
 
-                RedirectTargetNode = (ARCEntryNode) Parent.Children[RedirectIndex];
-            }
-            catch
-            {
-                RedirectTargetNode = null;
-            }
+            redirectTargetNode = Parent?.Children[RedirectIndex];
 
             UpdateProperties();
-            return RedirectTargetNode;
+            return redirectTargetNode;
         }
 
         protected virtual string GetName()
@@ -991,7 +991,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_redirectIndex != -1)
             {
-                s += $" (Redirect → {(RedirectTargetNode == null ? _redirectIndex.ToString() : RedirectTargetName)})";
+                s += $" (Redirect → {(redirectTargetNode == null ? _redirectIndex.ToString() : RedirectTargetName)})";
             }
 
             return s;
@@ -1053,6 +1053,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             else if (_name == null)
             {
                 _name = Path.GetFileName(_origPath);
+            }
+
+            if (RedirectIndex != -1)
+            {
+                UpdateRedirectTarget();
             }
         }
 
