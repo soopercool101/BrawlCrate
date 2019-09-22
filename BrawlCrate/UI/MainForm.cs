@@ -81,7 +81,7 @@ namespace BrawlCrate
 #endif
 
             soundPackControl1._grid = propertyGrid1;
-            soundPackControl1.lstSets.SmallImageList = ResourceTree.Images;
+            soundPackControl1.lstSets.SmallImageList = Icons.ImageList;
             foreach (Control c in splitContainer2.Panel2.Controls)
             {
                 c.Visible = false;

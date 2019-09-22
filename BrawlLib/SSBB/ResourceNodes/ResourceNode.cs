@@ -133,7 +133,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         public DataSource WorkingUncompressed => _replUncompSrc != DataSource.Empty ? _replUncompSrc : _uncompSource;
 
         [Browsable(false)] public virtual bool HasChildren => _children == null || _children.Count != 0;
-        [Browsable(false)] public virtual ResourceType ResourceFileType => ResourceType.Unknown;
+
+#if DEBUG
+        [Category("DEBUG")]
+        [Browsable(true)]
+#else
+        [Browsable(false)]
+#endif
+        public virtual ResourceType ResourceFileType => ResourceType.Unknown;
 
         [Browsable(false)]
         public virtual string TreePathAbsolute => _parent == null ? Name : _parent.TreePathAbsolute + "/" + Name;
@@ -545,14 +552,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             else if (levels < 0)
             {
                 //Debug.WriteLine(this.Name);
-                if (this.Name != "[29] SubRoutines")
-                {
-                    foreach (ResourceNode r in Children)
+                //if (this.Name != "[29] SubRoutines")
+                //{
+                    for (int i = 0; i < Children.Count; i++ ) //ResourceNode r in Children)
                     {
-                        //Debug.WriteLine(Children.Capacity);
-                        r.Populate();
+                        Children[i].Populate();
                     }
-                }
+                //}
+                //else
+                //{
+                //    Debug.WriteLine(this.ToString());
+                //}
             }
             else if (_children == null || _children.Count == 0)
             {

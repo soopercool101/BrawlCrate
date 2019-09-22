@@ -11,86 +11,6 @@ namespace BrawlCrate
 {
     public class ResourceTree : TreeViewMS
     {
-        private static ImageList _imgList;
-
-        public static ImageList Images
-        {
-            get
-            {
-                if (_imgList == null)
-                {
-                    _imgList = new ImageList
-                    {
-                        ImageSize = new Size(24, 24),
-                        ColorDepth = ColorDepth.Depth32Bit
-                    };
-                    _imgList.Images.AddRange(new Image[]
-                    {
-                        Resources.Unknown, //0
-                        Resources.Folder,
-                        Resources.ARC,
-                        Resources.BRES,
-                        Resources.MSG,
-                        Resources.TEX0, //5
-                        Resources.PLT0,
-                        Resources.MDL0,
-                        Resources.CHR,
-                        Resources.CLR,
-                        Resources.VIS, //10
-                        Resources.SHP,
-                        Resources.SRT,
-                        Resources.RSAR,
-                        Resources.RSTM,
-                        Resources.S, //15
-                        Resources.G,
-                        Resources.T,
-                        Resources.B,
-                        Resources.EFLS,
-                        Resources.Coll, //20
-                        Resources.REFF,
-                        Resources.AI,
-                        Resources.AIPD,
-                        Resources.ATKD,
-                        Resources.CE, //25
-                        Resources.MDef,
-                        Resources.Event,
-                        Resources.REFT,
-                        Resources.PAT,
-                        Resources.IMG, //30
-                        Resources.SCN0,
-                        Resources.STPM,
-                        Resources.TPL,
-                        Resources.Palette,
-                        Resources.U8, //35
-                        Resources.REFFEntry,
-                        Resources.BLOC,
-                        Resources.STDT,
-                        Resources.GDOR,
-                        Resources.GEG1, //40
-                        Resources.ENEMY,
-                        Resources.GMOV,
-                        Resources.GSND,
-                        Resources.GMOT,
-                        Resources.ADSJ, //45
-                        Resources.GBLK,
-                        Resources.GMPS,
-                        Resources.Redirect,
-                        Resources.REL,
-                        Resources.BGMG, //50
-                        Resources.SharedTEX0,
-                        Resources.SCLA,
-                        Resources.GDBF,
-                        Resources.GWAT,
-                        Resources.GCAM, //55
-                        Resources.GITM,
-                        Resources.GIB2,
-                        Resources.itembox
-                    });
-                }
-
-                return _imgList;
-            }
-        }
 
         public event EventHandler SelectionChanged;
 
@@ -112,7 +32,7 @@ namespace BrawlCrate
             set
             {
                 _allowIcons = value;
-                ImageList = _allowIcons ? Images : null;
+                ImageList = _allowIcons ? Icons.ImageList : null;
             }
         }
 
@@ -299,7 +219,7 @@ namespace BrawlCrate
 
             Graphics gfx = Graphics.FromImage(bmp);
 
-            gfx.DrawImage(Images.Images[SelectedNode.ImageIndex], 0, 0);
+            gfx.DrawImage(Icons.ImageList.Images[SelectedNode.ImageIndex], 0, 0);
 
             gfx.DrawString(_dragNode.Text,
                 Font,
