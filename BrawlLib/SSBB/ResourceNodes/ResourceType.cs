@@ -146,6 +146,7 @@
         NoEdit,
         NoEditFolder,
         NoEditEntry,
+        MDefAction,
         MDefActionGroup,
         MDefSubActionGroup,
         MDefMdlVisRef,

@@ -63,6 +63,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class MoveDefActionNode : MoveDefExternalNode
     {
+        public override ResourceType ResourceFileType => ResourceType.MDefAction;
+
         internal FDefEvent* Header => (FDefEvent*) WorkingUncompressed.Address;
 
         public override string ToString()

@@ -123,6 +123,8 @@ namespace BrawlCrate
             //Moveset
             {ResourceType.MDef, Resources.MDef},
             {ResourceType.NoEditFolder, Resources.Folder},
+            {ResourceType.NoEditEntry, Resources.Folder},
+            {ResourceType.MDefAction, Resources.MDefAction},
             {ResourceType.MDefActionGroup, Resources.Folder},
             {ResourceType.MDefSubActionGroup, Resources.Folder},
             {ResourceType.MDefMdlVisGroup, Resources.Folder},

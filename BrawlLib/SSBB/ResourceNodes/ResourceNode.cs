@@ -142,6 +142,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 #endif
         public virtual ResourceType ResourceFileType => ResourceType.Unknown;
 
+#if DEBUG
+        [Category("DEBUG")]
+        [Browsable(true)]
+#else
+        [Browsable(false)]
+#endif
+        public String NodeType => this.GetType().ToString();
+
         [Browsable(false)]
         public virtual string TreePathAbsolute => _parent == null ? Name : _parent.TreePathAbsolute + "/" + Name;
 
