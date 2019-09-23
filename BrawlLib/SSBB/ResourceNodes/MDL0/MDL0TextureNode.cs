@@ -218,7 +218,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private int _index = -1;
         private int _program = -1;
-        private bool _isMetal = false;
+        private bool _isMetal;
         private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
             _index = index;
