@@ -5,6 +5,7 @@ using System.Text;
 using BrawlLib.OpenGL;
 using BrawlLib.SSBBTypes;
 using System.ComponentModel;
+using System.Diagnostics;
 using BrawlLib.SSBB.ResourceNodes;
 using OpenTK.Graphics.OpenGL;
 
@@ -397,6 +398,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                         _name = MoveDefNode.EventDictionary[temp]._name + " (Unknown == " + unk1 + ")";
                         _event = temp;
                     }
+                    else
+                    {
+                        _name = Helpers.Hex8(_event);
+                    }
                 }
                 else
                 {
@@ -421,7 +426,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Remove();
                 return false;
             }
-
+            
             for (int i = 0; i < numArguments; i++)
             {
                 FDefEventArgument e;
