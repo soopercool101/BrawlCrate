@@ -303,7 +303,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            if (RootNode is ARCNode arc && arc.IsFighter && isMetal && Name.Equals("metal00", StringComparison.Ordinal))
+            if (isMetal && RootNode is ARCNode arc && arc.IsFighter && Name.Equals("metal00", StringComparison.Ordinal))
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 string resourceName = "BrawlLib.HardcodedFiles.Textures.metal00.tex0";
