@@ -163,7 +163,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
   <ItemGroup>
     <None Remove="CustomLists\FighterList.txt" />
     <None Remove="CustomLists\StageList.txt" />
-    <None Remove="Hardcoded Files\Textures\metal00.tex0" />
+    <None Remove="HardcodedFiles\Textures\metal00.tex0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="OpenTK" Version="3.1.0" />
@@ -191,7 +191,7 @@ BrawlLib Copyright © 2009 - 2019 Bryan Moulton, BlackJax96, libertyernie, Sammi
   <ItemGroup>
     <EmbeddedResource Include="CustomLists\FighterList.txt" />
     <EmbeddedResource Include="CustomLists\StageList.txt" />
-    <EmbeddedResource Include="Hardcoded Files\Textures\metal00.tex0" />
+    <EmbeddedResource Include="HardcodedFiles\Textures\metal00.tex0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Modeling\Collada\ColladaImportDialog.cs">

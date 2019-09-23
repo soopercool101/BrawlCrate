@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using BrawlLib.SSBBTypes;
 
 namespace BrawlLib.SSBB.ResourceNodes
@@ -154,7 +155,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                Load(mRef.Index, shaderProgramHandle, Model);
+                Load(mRef.Index, shaderProgramHandle, Model, mRef.Parent?.Name.EndsWith("_ExtMtl") ?? false);
             }
 
             ApplyGLTextureParameters(mRef);
@@ -212,10 +213,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TKContext.CurrentContext.Capture();
-            Load(-1, -1, Model);
+            Load(-1, -1, Model, false);
         }
 
-        private unsafe void Load(int index, int program, MDL0Node model)
+        private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
             if (TKContext.CurrentContext == null)
             {
@@ -246,6 +247,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
+            TEX0Node tNode;
             if (bmp == null && (Source == null || !(Source is TEX0Node)) && TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
                 List<ResourceNode> nodes = RootNode.ChildrenRecursive;
@@ -273,7 +275,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                         continue;
                     }
                     //Search node itself first
-                    TEX0Node tNode;
                     if ((tNode = b.FindChild("Textures(NW4R)/" + Name, false, StringComparison.Ordinal) as TEX0Node) != null)
                     {
                         Source = tNode;
@@ -293,11 +294,31 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (bmp != null)
             {
                 Texture.Attach(bmp);
+                return;
             }
-            else
+
+            if (RootNode is ARCNode arc && arc.IsFighter && isMetal && Name.Equals("metal00", StringComparison.Ordinal))
             {
-                Texture.Default();
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                string resourceName = "BrawlLib.HardcodedFiles.Textures.metal00.tex0";
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    if (stream == null)
+                    {
+                        Texture.Default();
+                        return;
+                    }
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        stream.CopyTo(ms);
+                        tNode = NodeFactory.FromSource(null, new DataSource(ms)) as TEX0Node;
+                        Texture.Attach(tNode, _palette);
+                    }
+                }
+
+                return;
             }
+            Texture.Default();
         }
 
         private Bitmap SearchDirectory(string path)

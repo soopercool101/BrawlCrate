@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -51,6 +52,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             Address = map.Address;
             Length = map.Length;
             Map = map;
+            Compression = compression;
+        }
+
+        public DataSource(MemoryStream ms) : this(ms, CompressionType.None)
+        {
+        }
+
+        public DataSource(MemoryStream ms, CompressionType compression)
+        {
+            ms.Position = 0;
+            Address = Marshal.AllocHGlobal((int)ms.Length);
+            Marshal.Copy(ms.ToArray(), 0, Address, (int)ms.Length);
+            Length = (int)ms.Length;
+            Map = null;
             Compression = compression;
         }
 
