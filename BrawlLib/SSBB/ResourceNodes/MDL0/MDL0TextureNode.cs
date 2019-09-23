@@ -271,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         redirect = true;
                     }
-                    else if ((b = n as BRRESNode) == null)
+                    else if (a == null || (b = n as BRRESNode) == null)
                     {
                         continue;
                     }
