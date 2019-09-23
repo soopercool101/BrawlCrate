@@ -106,6 +106,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, false, "Text File", "txt"),
 
             //Brawl Mod Files
+            new SupportedFileInfo(false, "Sawnd Soundbank File", "sawnd"),
             new SupportedFileInfo(true, "Masquerade Costume File", "masq"),
             new SupportedFileInfo(true, "BrawlEx Configuration", "bx"),
 
