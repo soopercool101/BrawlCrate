@@ -213,11 +213,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TKContext.CurrentContext.Capture();
-            Load(-1, -1, Model, false);
+            Load(_index, _program, Model, _isMetal);
         }
 
+        private int _index = -1;
+        private int _program = -1;
+        private bool _isMetal = false;
         private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
+            _index = index;
+            _program = program;
+            _isMetal = isMetal;
             if (TKContext.CurrentContext == null)
             {
                 return;
