@@ -27,7 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             }
             foreach (string s in _files)
             {
-                NodeFactory.FromFile(this, s);
+                NodeFactory.FromFile(this, s).Populate();
             }
             base.OnPopulate();
         }
