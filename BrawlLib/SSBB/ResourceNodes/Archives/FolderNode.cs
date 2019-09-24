@@ -19,21 +19,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
         private string[] _directories;
         private string[] _files;
 
-        //public void OnPopulate()
-        //{
-        //    foreach (ResourceNode c in Children)
-        //    {
-        //        c.OnPopulate();
-        //    }
-        //}
-
-        public override bool OnInitialize()
+        public override void OnPopulate()
         {
-            this._name = new DirectoryInfo(Path).Name;
-            this._directories = Directory.GetDirectories(this.Path);
-            this._files = Directory.GetFiles(this.Path);
-            base.OnInitialize();
-
             foreach (string s in _directories)
             {
                 NodeFactory.FromFolder(this, s);
@@ -42,6 +29,15 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             {
                 NodeFactory.FromFile(this, s);
             }
+            base.OnPopulate();
+        }
+
+        public override bool OnInitialize()
+        {
+            this._name = new DirectoryInfo(Path).Name;
+            this._directories = Directory.GetDirectories(this.Path);
+            this._files = Directory.GetFiles(this.Path);
+            base.OnInitialize();
 
             return true;
         }
