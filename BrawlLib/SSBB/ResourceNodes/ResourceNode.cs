@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -53,6 +54,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             Address = map.Address;
             Length = map.Length;
             Map = map;
+            Compression = compression;
+        }
+
+        public DataSource(MemoryStream ms) : this(ms, CompressionType.None)
+        {
+        }
+
+        public DataSource(MemoryStream ms, CompressionType compression)
+        {
+            ms.Position = 0;
+            Address = Marshal.AllocHGlobal((int)ms.Length);
+            Marshal.Copy(ms.ToArray(), 0, Address, (int)ms.Length);
+            Length = (int)ms.Length;
+            Map = null;
             Compression = compression;
         }
 
@@ -1181,7 +1196,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return resourceNodes.ToArray();
         }
 
-        public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren)
+        public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren, StringComparison compare)
         {
             if (string.IsNullOrEmpty(path) || root == null ||
                 root.Name.Equals(path, StringComparison.OrdinalIgnoreCase))
@@ -1190,15 +1205,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (path.Contains("/") && path.Substring(0, path.IndexOf('/'))
-                    .Equals(root.Name, StringComparison.OrdinalIgnoreCase))
+                    .Equals(root.Name, compare))
             {
-                return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren);
+                return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren, compare);
             }
 
-            return root.FindChild(path, searchChildren);
+            return root.FindChild(path, searchChildren, compare);
         }
 
         public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type)
+        {
+            return FindChildByType(path, searchChildren, type, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type, StringComparison compare)
         {
             if (path == null)
             {
@@ -1211,9 +1231,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 string next = path.Substring(0, path.IndexOf('/'));
                 foreach (ResourceNode n in Children)
                 {
-                    if (n.Name != null && n.Name.Equals(next, StringComparison.OrdinalIgnoreCase))
+                    if (n.Name != null && n.Name.Equals(next, compare))
                     {
-                        if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren)) != null &&
+                        if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren, compare)) != null &&
                             node.ResourceFileType == type)
                         {
                             return node;
@@ -1226,7 +1246,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //Search direct children first
                 foreach (ResourceNode n in Children)
                 {
-                    if (n.Name != null && n.Name.Equals(path, StringComparison.OrdinalIgnoreCase) &&
+                    if (n.Name != null && n.Name.Equals(path, compare) &&
                         n.ResourceFileType == type)
                     {
                         return n;
@@ -1250,6 +1270,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public ResourceNode FindChild(string path, bool searchChildren)
         {
+           return FindChild(path, searchChildren, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public ResourceNode FindChild(string path, bool searchChildren, StringComparison compare)
+        {
             ResourceNode node = null;
             if (path == null)
             {
@@ -1261,9 +1286,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 string next = path.Substring(0, path.IndexOf('/'));
                 foreach (ResourceNode n in Children)
                 {
-                    if (n.Name != null && n.Name.Equals(next, StringComparison.OrdinalIgnoreCase))
+                    if (n.Name != null && n.Name.Equals(next, compare))
                     {
-                        if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren)) != null)
+                        if ((node = FindNode(n, path.Substring(next.Length + 1), searchChildren, compare)) != null)
                         {
                             return node;
                         }
@@ -1275,7 +1300,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //Search direct children first
                 foreach (ResourceNode n in Children)
                 {
-                    if (n.Name != null && n.Name.Equals(path, StringComparison.OrdinalIgnoreCase))
+                    if (n.Name != null && n.Name.Equals(path, compare))
                     {
                         return n;
                     }
@@ -1286,7 +1311,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach (ResourceNode n in Children.ToArray())
                 {
-                    if ((node = n.FindChild(path, true)) != null)
+                    if ((node = n.FindChild(path, true, compare)) != null)
                     {
                         return node;
                     }
@@ -1397,11 +1422,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     nodes.Add(m);
                                 }
                             }
-                            else if (a.RedirectTargetNode != null)
+                            else if (a.RedirectNode != null)
                             {
                                 try
                                 {
-                                    ARCEntryNode tempBres = a.RedirectTargetNode as ARCEntryNode;
+                                    ARCEntryNode tempBres = a.RedirectNode as ARCEntryNode;
                                     RedirectStart:
                                     if (tempBres.GroupID != group)
                                     {
@@ -1413,9 +1438,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                                                 nodes.Add(m);
                                             }
                                         }
-                                        else if (tempBres.RedirectTargetNode != null)
+                                        else if (tempBres.RedirectNode != null)
                                         {
-                                            tempBres = tempBres.RedirectTargetNode as ARCEntryNode;
+                                            tempBres = tempBres.RedirectNode as ARCEntryNode;
                                             goto RedirectStart;
                                         }
                                     }

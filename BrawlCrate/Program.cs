@@ -301,7 +301,7 @@ Full changelog can be viewed from the help menu.";
 
                 if (args.Length >= 2)
                 {
-                    ResourceNode target = ResourceNode.FindNode(RootNode, args[1], true);
+                    ResourceNode target = ResourceNode.FindNode(RootNode, args[1], true, StringComparison.OrdinalIgnoreCase);
                     if (target != null)
                     {
                         MainForm.Instance.TargetResource(target);

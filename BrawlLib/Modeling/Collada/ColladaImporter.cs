@@ -68,8 +68,8 @@ namespace BrawlLib.Modeling
                     //Extract images, removing duplicates
                     foreach (ImageEntry img in shell._images)
                     {
-                        string name = img._path != null
-                            ? Path.GetFileNameWithoutExtension(img._path)
+                        string name = !string.IsNullOrEmpty(img._path.Trim())
+                            ? Path.GetFileNameWithoutExtension(img._path.Trim())
                             : img._name ?? img._id;
 
                         switch (type)
@@ -172,7 +172,7 @@ namespace BrawlLib.Modeling
                                                 {
                                                     if (p._sid == l._texture)
                                                     {
-                                                        path = p._sampler2D._url;
+                                                        path = p._sampler2D._url.Trim();
                                                         if (!string.IsNullOrEmpty(p._sampler2D._source))
                                                         {
                                                             foreach (EffectNewParam p2 in eff._newParams)
