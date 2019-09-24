@@ -335,22 +335,20 @@ namespace BrawlLib.SSBB.ResourceNodes
             _isStage = false;
             _isFighter = false;
             _isItemTable = false;
-            if (_name.Length >= 3 && AbsoluteIndex == -1)
+
+            if (_name.StartsWith("STG", StringComparison.OrdinalIgnoreCase))
             {
-                if (_name.Substring(0, 3).Equals("STG", StringComparison.OrdinalIgnoreCase))
-                {
-                    _isStage = true;
-                    Console.WriteLine(_name + " Generating MetaData");
-                }
-                else if (_name.Substring(0, 3).Equals("FIT", StringComparison.OrdinalIgnoreCase))
-                {
-                    _isFighter = true;
-                }
-                else if ((_name.Length == 6 || _name.Length == 7) && int.TryParse(_name.Substring(0, 6), out _))
-                {
-                    _isStage = true;
-                    _isSubspace = true;
-                }
+                _isStage = true;
+                Console.WriteLine(_name + " Generating MetaData");
+            }
+            else if (_name.StartsWith("FIT", StringComparison.OrdinalIgnoreCase))
+            {
+                _isFighter = true;
+            }
+            else if ((_name.Length == 6 || _name.Length == 7) && int.TryParse(_name.Substring(0, 6), out _))
+            {
+                _isStage = true;
+                _isSubspace = true;
             }
 
             if (_name.StartsWith("Itm", StringComparison.OrdinalIgnoreCase) &&
