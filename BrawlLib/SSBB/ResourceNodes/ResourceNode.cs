@@ -230,23 +230,23 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// <summary>
         ///     Used primarily to get bone lists. Kept for all resource nodes for utility.
         /// </summary>
-        [Browsable(false)]
-        public List<ResourceNode> ChildrenRecursive
+        public List<ResourceNode> GetChildrenRecursive()
         {
-            get
+            List<ResourceNode> childrenAndSubchildren = new List<ResourceNode>();
+            if (Children == null)
             {
-                List<ResourceNode> childrenAndSubchildren = new List<ResourceNode>();
-                if (Children != null)
-                {
-                    foreach (ResourceNode r in Children)
-                    {
-                        childrenAndSubchildren.Add(r);
-                        childrenAndSubchildren.AddRange(r.ChildrenRecursive);
-                    }
-                }
-
-                return childrenAndSubchildren;
+                Populate();
             }
+            if (Children != null)
+            {
+                foreach (ResourceNode r in Children)
+                {
+                    childrenAndSubchildren.Add(r);
+                    childrenAndSubchildren.AddRange(r.GetChildrenRecursive());
+                }
+            }
+
+            return childrenAndSubchildren;
         }
 
         [Browsable(false)] public int Index => _parent == null ? -1 : _parent.Children.IndexOf(this);

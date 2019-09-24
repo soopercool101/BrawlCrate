@@ -213,11 +213,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TKContext.CurrentContext.Capture();
-            Load(-1, -1, Model, false);
+            Load(_index, _program, Model, _isMetal);
         }
 
+        private int _index = -1;
+        private int _program = -1;
+        private bool _isMetal;
         private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
+            _index = index;
+            _program = program;
+            _isMetal = isMetal;
             if (TKContext.CurrentContext == null)
             {
                 return;
@@ -250,7 +256,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             TEX0Node tNode;
             if (bmp == null && (Source == null || !(Source is TEX0Node)) && TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
-                List<ResourceNode> nodes = RootNode.ChildrenRecursive;
+                List<ResourceNode> nodes = RootNode.GetChildrenRecursive();
                 if (model?.BRESNode?.Parent != null)
                 {
                     nodes = model.BRESNode.Parent.Children;
@@ -265,7 +271,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         redirect = true;
                     }
-                    else if ((b = n as BRRESNode) == null)
+                    else if (a == null || (b = n as BRRESNode) == null)
                     {
                         continue;
                     }
@@ -297,7 +303,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return;
             }
 
-            if (RootNode is ARCNode arc && arc.IsFighter && isMetal && Name.Equals("metal00", StringComparison.Ordinal))
+            if (isMetal && RootNode is ARCNode arc && arc.IsFighter && Name.Equals("metal00", StringComparison.Ordinal))
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 string resourceName = "BrawlLib.HardcodedFiles.Textures.metal00.tex0";
