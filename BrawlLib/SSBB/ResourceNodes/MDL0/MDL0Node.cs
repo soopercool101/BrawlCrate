@@ -256,7 +256,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 List<MDL0BoneNode> bones = new List<MDL0BoneNode>();
                 if (BoneGroup != null)
                 {
-                    foreach (ResourceNode r in BoneGroup.ChildrenRecursive)
+                    foreach (ResourceNode r in BoneGroup.GetChildrenRecursive())
                     {
                         if (r is MDL0BoneNode b)
                         {
