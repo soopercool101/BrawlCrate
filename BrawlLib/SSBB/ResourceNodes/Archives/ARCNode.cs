@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -1088,7 +1089,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _name = GetName();
                 }
             }
-            else if (parent != null && !(parent is FileScanNode))
+            else if (parent != null && !(parent is FileScanNode) && !(parent is FolderNode))
             {
                 ARCFileHeader* header = (ARCFileHeader*) (origSource.Address - 0x20);
                 _fileType = header->FileType;

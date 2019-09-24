@@ -559,18 +559,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (levels < 0)
             {
-                //Debug.WriteLine(this.Name);
-                //if (this.Name != "[29] SubRoutines")
-                //{
-                    for (int i = 0; i < Children.Count; i++ ) //ResourceNode r in Children)
-                    {
-                        Children[i].Populate();
-                    }
-                //}
-                //else
-                //{
-                //    Debug.WriteLine(this.ToString());
-                //}
+                for (int i = 0; i < Children.Count; i++ )
+                {
+                    Children[i].Populate();
+                }
             }
             else if (_children == null || _children.Count == 0)
             {

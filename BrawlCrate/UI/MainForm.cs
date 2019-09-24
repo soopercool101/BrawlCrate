@@ -1393,6 +1393,14 @@ namespace BrawlCrate
             });
 #endif
         }
+
+        private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.OpenFolderFile(out string inFile) != 0)
+            {
+                Program.OpenFolder(inFile);
+            }
+        }
     }
 
     public class RecentFileHandler : Component

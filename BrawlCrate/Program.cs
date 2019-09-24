@@ -481,6 +481,90 @@ Full changelog can be viewed from the help menu.";
             return false;
         }
 
+        public static int OpenFolderFile(out string fileName)
+        {
+#if !DEBUG
+            try
+            {
+#endif
+            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            {
+                fileName = _folderDlg.SelectedPath;
+                return 1;
+            }
+#if !DEBUG
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+#endif
+            fileName = null;
+            return 0;
+        }
+
+        public static bool OpenFolder(string path)
+        {
+            return OpenFolder(path, true);
+        }
+
+        public static bool OpenFolder(string path, bool showErrors)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            if (!Directory.Exists(path))
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show("Directory does not exist.");
+                }
+
+                return false;
+            }
+
+            if (!Close())
+            {
+                return false;
+            }
+#if !DEBUG
+            try
+            {
+#endif
+            if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
+            {
+                MainForm.Instance.Reset();
+                MainForm.Instance.RecentFilesHandler.AddFile(path);
+                return true;
+            }
+            else
+            {
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
+                }
+
+                MainForm.Instance.Reset();
+            }
+#if !DEBUG
+            }
+            catch (Exception x)
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show(x.ToString());
+                }
+            }
+#endif
+
+            Close();
+
+            return false;
+        }
+
         public static unsafe void Scan(FileMap map, FileScanNode node)
         {
             using (ProgressWindow progress = new ProgressWindow(MainForm.Instance, "File Scanner",
