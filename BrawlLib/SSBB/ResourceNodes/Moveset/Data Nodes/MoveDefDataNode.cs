@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -225,7 +225,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             #region Populate
 
-            if (ARCNode.SpecialName.Contains(RootNode.Name) && RootNode.Name != "Fighter")
+            if (RootNode is ARCNode && (RootNode as ARCNode).IsFighter)
             {
                 int commonActionFlagsCount = 0;
                 int actionFlagsCount = 0;
@@ -898,7 +898,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     y++;
                 }
 
-                misc.Populate(0);
+                misc.Populate();
 
                 //if (_extraEntries.Count > 0)
                 //{

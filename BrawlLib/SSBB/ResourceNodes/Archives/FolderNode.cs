@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -40,9 +40,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             }
             foreach (string s in _files)
             {
-                ResourceNode node = NodeFactory.FromFile(null, s);
-                node.Populate();
-                node.Parent = this;
+                NodeFactory.FromFile(this, s);
             }
 
             return true;
