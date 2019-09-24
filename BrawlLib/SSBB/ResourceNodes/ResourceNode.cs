@@ -140,7 +140,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Properties
 
         [Browsable(false)] public string FilePath => _origPath;
-        [Browsable(false)] public ResourceNode RootNode => _parent == null || _parent == this || _parent is FolderNode ? this : _parent.RootNode;
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public ResourceNode RootNode => _parent == null || _parent == this || _parent is FolderNode ? this : _parent.RootNode;
         [Browsable(false)] public DataSource OriginalSource => _origSource;
         [Browsable(false)] public DataSource UncompressedSource => _uncompSource;
         [Browsable(false)] public DataSource WorkingSource => _replSrc != DataSource.Empty ? _replSrc : _origSource;
