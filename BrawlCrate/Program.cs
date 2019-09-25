@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlCrate
 {
@@ -623,7 +624,10 @@ Full changelog can be viewed from the help menu.";
                         return false;
                     }
 
-                    _rootNode.Merge(force);
+                    if (!(_rootNode is FolderNode))
+                    {
+                        _rootNode.Merge(force);
+                    }
                     _rootNode.Export(_rootPath);
                     _rootNode.IsDirty = false;
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);

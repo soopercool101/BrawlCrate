@@ -260,10 +260,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             if (Children != null)
             {
-                foreach (ResourceNode r in Children)
+                for (int i = 0; i < Children.Count; i++)//ResourceNode r in Children)
                 {
-                    childrenAndSubchildren.Add(r);
-                    childrenAndSubchildren.AddRange(r.GetChildrenRecursive());
+                    childrenAndSubchildren.Add(Children[i]);
+                    childrenAndSubchildren.AddRange(Children[i].GetChildrenRecursive());
                 }
             }
 
@@ -301,7 +301,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 #else
         [Browsable(false)]
 #endif
-        public bool IsDirty
+        public virtual bool IsDirty
         {
             get
             {
