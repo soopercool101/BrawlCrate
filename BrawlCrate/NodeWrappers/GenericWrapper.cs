@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -11,6 +13,9 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
 
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
@@ -31,6 +36,8 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
+            _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -58,6 +65,11 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().Export();
         }
 
+        protected static void DuplicateAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().Duplicate();
+        }
+
         protected static void ReplaceAction(object sender, EventArgs e)
         {
             GetInstance<GenericWrapper>().Replace();
@@ -80,6 +92,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
             MoveUpToolStripMenuItem.Enabled = true;
@@ -91,6 +104,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GenericWrapper w = GetInstance<GenericWrapper>();
 
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
@@ -256,6 +270,25 @@ namespace BrawlCrate.NodeWrappers
             {
                 dlg.ShowDialog(MainForm.Instance, _resource);
             }
+        }
+
+        public virtual void Duplicate()
+        {
+            if (_resource.Parent == null)
+            {
+                return;
+            }
+            string tempPath = Path.GetTempFileName();
+            _resource.Export(tempPath);
+            ResourceNode rNode2 = NodeFactory.FromFile(null, tempPath, _resource.GetType());
+            int n = 0;
+            int index = 0;
+            while (_resource.Parent.FindChildrenByName(rNode2.Name).Length >= 1)
+            {
+                index = _resource.Parent.FindChildrenByName(rNode2.Name).Last().Index;
+                rNode2.Name = $"{_resource.Name} ({++n})";
+            }
+            _resource.Parent.InsertChild(rNode2, true, index + 1);
         }
     }
 }
