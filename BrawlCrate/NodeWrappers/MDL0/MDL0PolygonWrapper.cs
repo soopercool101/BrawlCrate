@@ -35,7 +35,6 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("O&ptimize Mesh", null, OptimizeAction, Keys.Control | Keys.P));
-            _menu.Items.Add(new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -53,11 +52,6 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<MDL0PolygonWrapper>().Optimize();
         }
 
-        protected static void DuplicateAction(object sender, EventArgs e)
-        {
-            GetInstance<MDL0PolygonWrapper>().Duplicate();
-        }
-
         #endregion
 
         public override string ExportFilter => FileFilters.Object;
@@ -68,7 +62,7 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
 
-        public void Duplicate()
+        public override void Duplicate()
         {
             MDL0ObjectNode node = ((MDL0ObjectNode) _resource).HardCopy();
             node.Name += " - Copy";
@@ -78,7 +72,10 @@ namespace BrawlCrate.NodeWrappers
 
         public void Optimize()
         {
-            new ObjectOptimizerForm().ShowDialog((MDL0ObjectNode) _resource);
+            using (ObjectOptimizerForm opt = new ObjectOptimizerForm())
+            {
+                opt.ShowDialog((MDL0ObjectNode) _resource);
+            }
         }
     }
 }

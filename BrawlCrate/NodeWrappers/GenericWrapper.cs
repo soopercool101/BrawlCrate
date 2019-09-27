@@ -281,12 +281,26 @@ namespace BrawlCrate.NodeWrappers
             _resource.Export(tempPath);
             ResourceNode rNode2 = NodeFactory.FromFile(null, tempPath, _resource.GetType());
             int n = 0;
-            int index = 0;
+            int index = _resource.Index;
+            // Copy ARCEntryNode data, which is contained in the containing ARC, not the node itself
+            if (rNode2 is ARCEntryNode)
+            {
+                ((ARCEntryNode) rNode2).FileIndex = ((ARCEntryNode) _resource).FileIndex;
+                ((ARCEntryNode) rNode2).FileType = ((ARCEntryNode) _resource).FileType;
+                ((ARCEntryNode)rNode2).GroupID = ((ARCEntryNode)_resource).GroupID;
+                ((ARCEntryNode)rNode2).RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
+            }
+            // Copy the name directly in cases where name isn't saved
+            rNode2.Name = _resource.Name;
+            // Set the name programatically (based on Windows' implementation)
             while (_resource.Parent.FindChildrenByName(rNode2.Name).Length >= 1)
             {
+                // Get the last index of the last duplicated node in order to place it after that one
                 index = _resource.Parent.FindChildrenByName(rNode2.Name).Last().Index;
+                // Set the name based on the number of duplicate nodes found
                 rNode2.Name = $"{_resource.Name} ({++n})";
             }
+            // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(rNode2, true, index + 1);
         }
     }

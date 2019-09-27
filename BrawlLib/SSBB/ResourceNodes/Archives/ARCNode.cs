@@ -957,7 +957,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected ResourceNode redirectTargetNode;
 
-        public ResourceNode UpdateRedirectTarget()
+        /// <summary>
+        ///     Sets the Redirect Target Node based on the RedirectIndex.
+        ///
+        ///     In the interest of keeping redirects node-centric, should be called only on load unless RedirectIndex is set manually.
+        /// </summary>
+        /// <returns>
+        ///     Returns the new Redirect Target.
+        /// </returns>
+        private ResourceNode UpdateRedirectTarget()
         {
             if (RedirectIndex == -1 || Parent == null || Parent.Children.Count <= RedirectIndex)
             {
