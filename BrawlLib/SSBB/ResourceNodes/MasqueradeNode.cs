@@ -155,7 +155,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             byte.TryParse(Path.GetFileNameWithoutExtension(_origPath), out _cosmeticSlot);
             if (_name == null && _origPath != null)
             {
-                _name = MasqueradeIDs[_cosmeticSlot];
+                _name = _cosmeticSlot >= MasqueradeIDs.Length ? $"{_cosmeticSlot}" : MasqueradeIDs[_cosmeticSlot];
             }
 
             return true;
@@ -236,10 +236,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             _costumeID = Header->_costumeID;
             if (_name == null)
             {
-                _name = "Fit" + MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot] +
-                        _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID
-                            ? " - " + BrawlExColorID.Colors[_colorID].Name
-                            : "");
+                regenName();
+                IsDirty = false;
             }
 
             return false;
@@ -247,7 +245,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void regenName()
         {
-            Name = "Fit" + MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot] +
+            Name = "Fit" +
+                   (((MasqueradeNode)Parent)._cosmeticSlot >= MasqueradeNode.MasqueradeInternalNames.Length ?
+                        $"Fighter{((MasqueradeNode)Parent)._cosmeticSlot}_"
+                        : MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode)Parent)._cosmeticSlot]) +
                    _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID
                        ? " - " + BrawlExColorID.Colors[_colorID].Name
                        : "");
@@ -263,6 +264,10 @@ namespace BrawlLib.SSBB.ResourceNodes
         public List<string> GetCostumeFilePath(string currentPath)
         {
             List<string> files = new List<string>();
+            if (((MasqueradeNode)Parent)._cosmeticSlot >= MasqueradeNode.MasqueradeInternalNames.Length)
+            {
+                return files;
+            }
             if ((currentPath = currentPath.Substring(0, currentPath.LastIndexOf('\\'))).EndsWith(
                 "pf\\info\\costumeslots", StringComparison.OrdinalIgnoreCase))
             {
