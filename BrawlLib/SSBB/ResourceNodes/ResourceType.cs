@@ -47,6 +47,7 @@
 
         //Misc
         CollisionDef = 0x1314,
+        CollisionObj = 0x1300,
         MSBin = 0x1404,
         STPM = 0x1520,
         STDT = 0x5B26,
