@@ -22,6 +22,10 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
         {
             get
             {
+                if (_denySave)
+                {
+                    return false;
+                }
                 if (HasChanged)
                 {
                     return true;
