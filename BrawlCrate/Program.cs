@@ -89,6 +89,10 @@ Full changelog can be viewed from the help menu.";
 
             AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "h");
 #endif
+#if DEBUG
+            AssemblyTitleFull += " DEBUG";
+            AssemblyTitleShort += " DEBUG";
+#endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
                     .GetExecutingAssembly()

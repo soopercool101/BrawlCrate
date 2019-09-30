@@ -76,8 +76,6 @@ namespace BrawlCrate
             {
                 CheckUpdates(false);
             }
-#else
-            Text += " DEBUG";
 #endif
 
             soundPackControl1._grid = propertyGrid1;
@@ -483,9 +481,6 @@ namespace BrawlCrate
             {
                 Text = Program.AssemblyTitleFull;
             }
-#if DEBUG
-            Text += " DEBUG";
-#endif
         }
 
         public void TargetResource(ResourceNode n)
