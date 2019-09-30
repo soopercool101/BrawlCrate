@@ -34,8 +34,8 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
-        private static readonly ToolStripMenuItem ExportAllToolStripMenuItem =
-            new ToolStripMenuItem("&Export All", null, ExportAllAction, Keys.Control | Keys.E);
+        private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
 
         static GenericWrapper()
         {
@@ -54,7 +54,7 @@ namespace BrawlCrate.NodeWrappers
             _menu.Closing += MenuClosing;
 
             _multiSelectMenu = new ContextMenuStrip();
-            _multiSelectMenu.Items.Add(ExportAllToolStripMenuItem);
+            _multiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
         }
 
         protected static void MoveUpAction(object sender, EventArgs e)
@@ -72,9 +72,9 @@ namespace BrawlCrate.NodeWrappers
             GetInstance<GenericWrapper>().Export();
         }
 
-        protected static void ExportAllAction(object sender, EventArgs e)
+        protected static void ExportSelectedAction(object sender, EventArgs e)
         {
-            GetInstance<GenericWrapper>().ExportAll();
+            GetInstance<GenericWrapper>().ExportSelected();
         }
 
         protected static void DuplicateAction(object sender, EventArgs e)
@@ -221,7 +221,7 @@ namespace BrawlCrate.NodeWrappers
             return 1;
         }
 
-        public virtual void ExportAll()
+        public virtual void ExportSelected()
         {
             string folder = Program.ChooseFolder();
             if (string.IsNullOrEmpty(folder))
@@ -265,6 +265,8 @@ namespace BrawlCrate.NodeWrappers
 
                 n.Export($"{folder}\\{System.Text.RegularExpressions.Regex.Replace($"{n.Name}{ext ?? ""}", invalidRegStr, "")}");
             }
+
+            MessageBox.Show($"{nodes.Count} nodes successfully exported to {folder}", "Export Selected");
         }
 
 

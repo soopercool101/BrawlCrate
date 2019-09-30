@@ -7,7 +7,7 @@ namespace System.Windows.Forms
         public ExportAllFormatDialog(Type t, string filters)
         {
             InitializeComponent();
-            label1.Text = $"Output format for {t}:";
+            label1.Text = $"Output format for {t.Name}:";
             string[] source = filters.Split('|');
             for (int i = 0; i < source.Length; i += 2)
             {

@@ -227,7 +227,8 @@ namespace BrawlCrate
                 if (!type.IsAssignableFrom(singleNode.GetType()))
                 {
                     // More than one type of node is selected
-                    return null;
+                    // Return the generic multi-select menu
+                    return new GenericWrapper().MultiSelectMenuStrip;
                 }
             }
 
