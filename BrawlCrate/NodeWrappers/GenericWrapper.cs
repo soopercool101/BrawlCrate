@@ -344,6 +344,11 @@ namespace BrawlCrate.NodeWrappers
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath);
             ResourceNode rNode2 = NodeFactory.FromFile(null, tempPath, _resource.GetType());
+            if (rNode2 == null)
+            {
+                MessageBox.Show("The node could not be duplicated correctly.");
+                return;
+            }
             int n = 0;
             int index = _resource.Index;
             // Copy ARCEntryNode data, which is contained in the containing ARC, not the node itself
@@ -367,7 +372,5 @@ namespace BrawlCrate.NodeWrappers
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(rNode2, true, index + 1);
         }
-
-
     }
 }
