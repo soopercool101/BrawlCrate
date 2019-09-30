@@ -473,7 +473,7 @@ namespace BrawlCrate.NodeWrappers
 
             if (hasTextures)
             {
-                ExportAllFormatDialog dialog = new ExportAllFormatDialog();
+                ExportAllFormatDialog dialog = new ExportAllFormatDialog(typeof(TEX0Node), FileFilters.TEX0);
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -500,7 +500,7 @@ namespace BrawlCrate.NodeWrappers
                 return;
             }
 
-            ExportAllFormatDialog dialog = new ExportAllFormatDialog();
+            ExportAllFormatDialog dialog = new ExportAllFormatDialog(typeof(TEX0Node), FileFilters.TEX0);
             dialog.label1.Text = "Input format for textures:";
 
             if (dialog.ShowDialog() == DialogResult.OK)

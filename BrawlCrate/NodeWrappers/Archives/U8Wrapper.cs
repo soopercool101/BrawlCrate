@@ -292,7 +292,7 @@ namespace BrawlCrate.NodeWrappers
 
             if (hasTextures)
             {
-                ExportAllFormatDialog dialog = new ExportAllFormatDialog();
+                ExportAllFormatDialog dialog = new ExportAllFormatDialog(typeof(TEX0Node), FileFilters.TEX0);
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
@@ -306,7 +306,7 @@ namespace BrawlCrate.NodeWrappers
 
             if (hasModels)
             {
-                ExportAllFormatDialog dialog = new ExportAllFormatDialog(true);
+                ExportAllFormatDialog dialog = new ExportAllFormatDialog(typeof(MDL0Node), FileFilters.MDL0Export);
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {

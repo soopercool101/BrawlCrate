@@ -167,6 +167,7 @@ namespace BrawlLib
 
         public static string Raw =
             SupportedFilesHandler.GetCompleteFilter("*");
+
         //Some files already have an extension in their name,
         //or sometimes the user will want to add the extension themselves.
         //Not only that, but '.dat' might be assigned to something else on their computer.

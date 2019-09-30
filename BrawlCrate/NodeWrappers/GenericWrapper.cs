@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -8,11 +9,12 @@ using BrawlLib.SSBB.ResourceNodes;
 namespace BrawlCrate.NodeWrappers
 {
     //Contains generic members inherited by all sub-classed nodes
-    public class GenericWrapper : BaseWrapper
+    public class GenericWrapper : BaseWrapper, MultiSelectableWrapper
     {
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip _multiSelectMenu;
 
         private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
             new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
@@ -32,6 +34,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
+        private static readonly ToolStripMenuItem ExportAllToolStripMenuItem =
+            new ToolStripMenuItem("&Export All", null, ExportAllAction, Keys.Control | Keys.E);
+
         static GenericWrapper()
         {
             _menu = new ContextMenuStrip();
@@ -47,6 +52,9 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
+
+            _multiSelectMenu = new ContextMenuStrip();
+            _multiSelectMenu.Items.Add(ExportAllToolStripMenuItem);
         }
 
         protected static void MoveUpAction(object sender, EventArgs e)
@@ -62,6 +70,11 @@ namespace BrawlCrate.NodeWrappers
         protected static void ExportAction(object sender, EventArgs e)
         {
             GetInstance<GenericWrapper>().Export();
+        }
+
+        protected static void ExportAllAction(object sender, EventArgs e)
+        {
+            GetInstance<GenericWrapper>().ExportAll();
         }
 
         protected static void DuplicateAction(object sender, EventArgs e)
@@ -124,6 +137,8 @@ namespace BrawlCrate.NodeWrappers
             _owner = null;
             ContextMenuStrip = _menu;
         }
+
+        public virtual ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
 
         public void MoveUp()
         {
@@ -205,6 +220,53 @@ namespace BrawlCrate.NodeWrappers
 
             return 1;
         }
+
+        public virtual void ExportAll()
+        {
+            string folder = Program.ChooseFolder();
+            if (string.IsNullOrEmpty(folder))
+            {
+                return;
+            }
+            Dictionary<Type, string> extensions = new Dictionary<Type, string>();
+            List<ResourceNode> nodes = new List<ResourceNode>();
+            foreach (TreeNode tNode in MainForm.Instance.resourceTree.SelectedNodes)
+            {
+                if (tNode is GenericWrapper g)
+                {
+                    nodes.Add(g._resource);
+                    if (!extensions.ContainsKey(g._resource.GetType()))
+                    {
+                        extensions.Add(g._resource.GetType(), g.ExportFilter);
+                    }
+                }
+            }
+
+            Dictionary<Type, string> chosenExtensions = new Dictionary<Type, string>();
+            foreach (KeyValuePair<Type, string> ext in extensions)
+            {
+                ExportAllFormatDialog dialog = new ExportAllFormatDialog(ext.Key, ext.Value);
+
+                if (dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
+                {
+                    chosenExtensions.Add(ext.Key, dialog.SelectedExtension);
+                }
+            }
+
+            string invalidChars = System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
+            foreach (ResourceNode n in nodes)
+            {
+                chosenExtensions.TryGetValue(n.GetType(), out string ext);
+                if (!string.IsNullOrEmpty(ext) && !ext.StartsWith("."))
+                {
+                    ext = ext.Insert(0, ".");
+                }
+
+                n.Export($"{folder}\\{System.Text.RegularExpressions.Regex.Replace($"{n.Name}{ext ?? ""}", invalidRegStr, "")}");
+            }
+        }
+
 
         public virtual string Export()
         {
@@ -303,5 +365,7 @@ namespace BrawlCrate.NodeWrappers
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(rNode2, true, index + 1);
         }
+
+
     }
 }
