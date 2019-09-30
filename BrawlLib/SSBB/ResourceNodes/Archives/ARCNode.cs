@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -14,6 +15,63 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ARCHeader* Header => (ARCHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ARC;
         public override Type[] AllowedChildTypes => new Type[] {typeof(ARCEntryNode)};
+
+
+        #region SpecialNames
+
+        public static List<string> SpecialName = new List<string>()
+        {
+            "FitCaptain",
+            "FitDedede",
+            "FitDiddy",
+            "FitDonkey",
+            "FitFalco",
+            "FitFox",
+            "FitGameWatch",
+            "FitGanon",
+            "FitGKoopa",
+            "FitIke",
+            "FitKirby",
+            "FitKoopa",
+            "FitLink",
+            "FitLucario",
+            "FitLucas",
+            "FitLuigi",
+            "FitMario",
+            "FitMarth",
+            "FitMetaknight",
+            "FitNess",
+            "FitPeach",
+            "FitPikachu",
+            "FitPikmin",
+            "FitPit",
+            "FitPokeFushigisou",
+            "FitPokeLizardon",
+            "FitPokeTrainer",
+            "FitPokeZenigame",
+            "FitPopo",
+            "FitPurin",
+            "FitRobot",
+            "FitSamus",
+            "FitSheik",
+            "FitSnake",
+            "FitSonic",
+            "FitSZerosuit",
+            "FitToonLink",
+            "FitWario",
+            "FitWarioMan",
+            "FitWolf",
+            "FitYoshi",
+            "FitZakoBall",
+            "FitZakoBoy",
+            "FitZakoChild",
+            "FitZakoGirl",
+            "FitZelda",
+            "Fighter"
+        };
+
+        #endregion
+
 
 #if !DEBUG
         [Browsable(false)]
@@ -1040,7 +1098,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _name = GetName();
                 }
             }
-            else if (parent != null && !(parent is FileScanNode))
+            else if (parent != null && !(parent is FileScanNode) && !(parent is FolderNode))
             {
                 ARCFileHeader* header = (ARCFileHeader*) (origSource.Address - 0x20);
                 _fileType = header->FileType;

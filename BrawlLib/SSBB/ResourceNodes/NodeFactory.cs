@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -152,6 +153,16 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             return n;
+        }
+
+        public static ResourceNode FromFolder(ResourceNode parent, string path)
+        {
+
+            FolderNode node = new FolderNode();
+            node.Path = path;
+            node.Initialize(parent, new VoidPtr(), 0);
+            node.OnPopulate();
+            return node;
         }
     }
 }

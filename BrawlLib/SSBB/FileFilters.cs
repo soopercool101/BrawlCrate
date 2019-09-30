@@ -194,6 +194,9 @@ namespace BrawlLib
         public static string MASQ =
             SupportedFilesHandler.GetCompleteFilter("masq", "bin", "dat", "*");
 
+        public static string MDef =
+            SupportedFilesHandler.GetCompleteFilter("moveset");
+
         /// <summary>
         /// Maps node types to the default extension when using Export All.
         /// Nodes that are inside a BRES do not need to be defined here - they will get an extension assigned in BRRESNode.cs.

@@ -81,7 +81,7 @@ namespace BrawlCrate
 #endif
 
             soundPackControl1._grid = propertyGrid1;
-            soundPackControl1.lstSets.SmallImageList = ResourceTree.Images;
+            soundPackControl1.lstSets.SmallImageList = Icons.ImageList;
             foreach (Control c in splitContainer2.Panel2.Controls)
             {
                 c.Visible = false;
@@ -506,8 +506,12 @@ namespace BrawlCrate
             animEditControl.TargetSequence = null;
             texAnimEditControl.TargetSequence = null;
             shpAnimEditControl.TargetSequence = null;
+            articleAttributeGrid.TargetNode = null;
+            offsetEditor1.TargetNode = null;
             msBinEditor1.CurrentNode = null;
             //soundPackControl1.TargetNode = null;
+            movesetEditor1.TargetNode = null;
+            attributeControl.TargetNode = null;
             clrControl.ColorSource = null;
             visEditor.TargetNode = null;
             scN0CameraEditControl1.TargetSequence = null;
@@ -628,6 +632,43 @@ namespace BrawlCrate
                 {
                     visEditor.TargetNode = node as VIS0EntryNode;
                     newControl = visEditor;
+                }
+                else if (node is MoveDefActionNode)
+                {
+                    movesetEditor1.TargetNode = node as MoveDefActionNode;
+                    newControl = movesetEditor1;
+                }
+                else if (node is MoveDefEventOffsetNode)
+                {
+                    offsetEditor1.TargetNode = node as MoveDefEventOffsetNode;
+                    newControl = offsetEditor1;
+                }
+                else if (node is MoveDefEventNode)
+                {
+                    //if (node.Parent is MoveDefLookupEntry1Node)
+                    //    eventDescription1.SetTarget((node as MoveDefLookupEntry1Node).EventInfo, -1);
+                    //else
+                    eventDescription1.SetTarget((node as MoveDefEventNode).EventInfo, -1);
+                    newControl = eventDescription1;
+                }
+                else if (node is MoveDefEventParameterNode)
+                {
+                    //if (node.Parent is MoveDefLookupEntry1Node)
+                    //    eventDescription1.SetTarget((node.Parent as MoveDefLookupEntry1Node).EventInfo, node.Index == -1 ? -2 : node.Index);
+                    //else
+                    eventDescription1.SetTarget((node.Parent as MoveDefEventNode).EventInfo,
+                        node.Index == -1 ? -2 : node.Index);
+                    newControl = eventDescription1;
+                }
+                else if (node is MoveDefAttributeNode)
+                {
+                    attributeControl.TargetNode = node as MoveDefAttributeNode;
+                    newControl = attributeControl;
+                }
+                else if (node is MoveDefSectionParamNode)
+                {
+                    articleAttributeGrid.TargetNode = node as MoveDefSectionParamNode;
+                    newControl = articleAttributeGrid;
                 }
                 else if (node is SCN0CameraNode)
                 {
@@ -1351,6 +1392,14 @@ namespace BrawlCrate
                 WindowStyle = ProcessWindowStyle.Hidden,
             });
 #endif
+        }
+
+        private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.OpenFolderFile(out string inFile) != 0)
+            {
+                Program.OpenFolder(inFile);
+            }
         }
     }
 

@@ -1,14 +1,16 @@
-﻿using BrawlLib.IO;
+using BrawlLib.IO;
 using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -138,7 +140,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Properties
 
         [Browsable(false)] public string FilePath => _origPath;
-        [Browsable(false)] public ResourceNode RootNode => _parent == null || _parent == this ? this : _parent.RootNode;
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public ResourceNode RootNode => _parent == null || _parent == this || _parent is FolderNode ? this : _parent.RootNode;
         [Browsable(false)] public DataSource OriginalSource => _origSource;
         [Browsable(false)] public DataSource UncompressedSource => _uncompSource;
         [Browsable(false)] public DataSource WorkingSource => _replSrc != DataSource.Empty ? _replSrc : _origSource;
@@ -147,7 +153,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         public DataSource WorkingUncompressed => _replUncompSrc != DataSource.Empty ? _replUncompSrc : _uncompSource;
 
         [Browsable(false)] public virtual bool HasChildren => _children == null || _children.Count != 0;
-        [Browsable(false)] public virtual ResourceType ResourceFileType => ResourceType.Unknown;
+
+#if DEBUG
+        [Category("DEBUG")]
+        [Browsable(true)]
+#else
+        [Browsable(false)]
+#endif
+        public virtual ResourceType ResourceFileType => ResourceType.Unknown;
+
+#if DEBUG
+        [Category("DEBUG")]
+        [Browsable(true)]
+#else
+        [Browsable(false)]
+#endif
+        public String NodeType => this.GetType().ToString();
 
         [Browsable(false)]
         public virtual string TreePathAbsolute => _parent == null ? Name : _parent.TreePathAbsolute + "/" + Name;
@@ -239,10 +260,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             if (Children != null)
             {
-                foreach (ResourceNode r in Children)
+                for (int i = 0; i < Children.Count; i++)//ResourceNode r in Children)
                 {
-                    childrenAndSubchildren.Add(r);
-                    childrenAndSubchildren.AddRange(r.GetChildrenRecursive());
+                    childrenAndSubchildren.Add(Children[i]);
+                    childrenAndSubchildren.AddRange(Children[i].GetChildrenRecursive());
                 }
             }
 
@@ -280,7 +301,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 #else
         [Browsable(false)]
 #endif
-        public bool IsDirty
+        public virtual bool IsDirty
         {
             get
             {
@@ -558,9 +579,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (levels < 0)
             {
-                foreach (ResourceNode r in Children)
+                for (int i = 0; i < Children.Count; i++ )
                 {
-                    r.Populate();
+                    Children[i].Populate();
                 }
             }
             else if (_children == null || _children.Count == 0)
