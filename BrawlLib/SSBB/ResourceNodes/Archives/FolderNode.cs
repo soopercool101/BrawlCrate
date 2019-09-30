@@ -22,7 +22,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
         {
             get
             {
-                if (_denySave)
+                if (!AllowSaving)
                 {
                     return false;
                 }

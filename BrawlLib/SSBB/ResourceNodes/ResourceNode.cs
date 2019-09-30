@@ -294,14 +294,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)] public bool HasMerged => _merged;
 
         [Category("Saving")]
-        [Description("If false, the node will not be rebuilt on save (normally set automatically based on if changes are made)")]
-        public virtual bool RebuildNode
-        {
-            get => IsDirty;
-            set => _denySave = value;
-        }
-
-        protected bool _denySave;
+        [Description("If false, the node will not be allowed to be rebuilt on save")]
+        public virtual bool AllowSaving { get; set; }
 
         //Can be any of the following: children have branched, children have changed, current has changed
         //Node needs to be rebuilt.
@@ -315,7 +309,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_denySave)
+                if (!AllowSaving)
                 {
                     return false;
                 }
