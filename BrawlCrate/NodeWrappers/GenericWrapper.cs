@@ -365,7 +365,7 @@ namespace BrawlCrate.NodeWrappers
             while (_resource.Parent.FindChildrenByName(rNode2.Name).Length >= 1)
             {
                 // Get the last index of the last duplicated node in order to place it after that one
-                index = _resource.Parent.FindChildrenByName(rNode2.Name).Last().Index;
+                index = Math.Max(index, _resource.Parent.FindChildrenByName(rNode2.Name).Last().Index);
                 // Set the name based on the number of duplicate nodes found
                 rNode2.Name = $"{_resource.Name} ({++n})";
             }

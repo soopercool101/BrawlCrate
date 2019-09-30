@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using BrawlLib;
@@ -29,14 +30,14 @@ namespace BrawlCrate.NodeWrappers
             int n = 0;
             int index = _resource.Index;
             // Copy the name directly in cases where name isn't saved
-            cNode.Name = _resource.Name;
+            cNode.Children[0].Name = _resource.Name;
             // Set the name programatically (based on Windows' implementation)
-            while (_resource.Parent.FindChildrenByName(cNode.Name).Length >= 1)
+            while (_resource.Parent.FindChildrenByName(cNode.Children[0].Name).Length >= 1)
             {
                 // Get the last index of the last duplicated node in order to place it after that one
-                index = _resource.Parent.FindChildrenByName(cNode.Name).Last().Index;
+                index = Math.Max(index, _resource.Parent.FindChildrenByName(cNode.Children[0].Name).Last().Index);
                 // Set the name based on the number of duplicate nodes found
-                cNode.Name = $"{_resource.Name} ({++n})";
+                cNode.Children[0].Name = $"{_resource.Name} ({++n})";
             }
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(cNode.Children[0], true, index + 1);
