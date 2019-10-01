@@ -782,7 +782,7 @@ namespace BrawlCrate.API
         #region Debugging
 
         /// <summary>
-        ///     Writes a message to the the console (if debugging) and the Trace log (if enabled).
+        ///     Writes a message to the the console and debug log (if debugging) and the Trace log (if enabled).
         ///
         ///     To be used for debugging purposes only. This function call will do nothing in release builds.
         ///     For compatibility purposes, this function will still be callable in release builds.
@@ -794,6 +794,7 @@ namespace BrawlCrate.API
         {
 #if DEBUG
             Console.WriteLine(msg);
+            System.Diagnostics.Debug.WriteLine(msg);
 #endif
 #if TRACE
             System.Diagnostics.Trace.WriteLine(msg);

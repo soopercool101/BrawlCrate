@@ -14,7 +14,7 @@ namespace BrawlCrate.NodeWrappers
         #region Menu
 
         private static readonly ContextMenuStrip _menu;
-        private static readonly ContextMenuStrip _multiSelectMenu;
+        private static readonly ContextMenuStrip MultiSelectMenu;
 
         private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
             new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
@@ -53,8 +53,8 @@ namespace BrawlCrate.NodeWrappers
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
 
-            _multiSelectMenu = new ContextMenuStrip();
-            _multiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            MultiSelectMenu = new ContextMenuStrip();
+            MultiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
         }
 
         protected static void MoveUpAction(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
 
-        public virtual ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
+        public virtual ContextMenuStrip MultiSelectMenuStrip => MultiSelectMenu;
 
         public void MoveUp()
         {

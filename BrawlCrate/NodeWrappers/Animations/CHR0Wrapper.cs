@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CHR0)]
-    public class CHR0Wrapper : GenericWrapper, MultiSelectableWrapper
+    public class CHR0Wrapper : GenericWrapper
     {
         #region Menu
 
@@ -160,7 +160,7 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.CHR0Entry)]
-    public class CHR0EntryWrapper : GenericWrapper, MultiSelectableWrapper
+    public class CHR0EntryWrapper : GenericWrapper
     {
         #region Menu
 
