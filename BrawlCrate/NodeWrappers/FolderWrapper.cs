@@ -61,11 +61,7 @@ namespace BrawlCrate.NodeWrappers
 
             string dir = ((FolderNode) _resource).Path;
             base.Delete();
-            foreach (FileInfo f in Directory.CreateDirectory(dir).GetFiles())
-            {
-                f.Delete();
-            }
-            Directory.Delete(dir);
+            Directory.Delete(dir, true);
         }
     }
 }
