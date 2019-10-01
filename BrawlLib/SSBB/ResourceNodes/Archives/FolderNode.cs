@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 {
     public class FolderNode : ResourceNode
     {
-        public override ResourceType ResourceFileType => ResourceType.Container;
+        public override ResourceType ResourceFileType => ResourceType.Folder;
 
         public List<ResourceNode> _list;
 

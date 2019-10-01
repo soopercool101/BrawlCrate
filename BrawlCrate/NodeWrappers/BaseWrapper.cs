@@ -304,10 +304,9 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
 
-                for (int i = 0; i < _resource.Children.Count; i++)//ResourceNode n in _resource.Children)
+                foreach (ResourceNode n in _resource.Children)
                 {
-                    _resource.Children[i].Populate(0);
-                    Nodes.Add(Wrap(_owner, _resource.Children[i]));
+                    Nodes.Add(Wrap(_owner, n));
                 }
 
                 _discovered = true;

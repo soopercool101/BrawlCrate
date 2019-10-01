@@ -169,7 +169,9 @@ namespace BrawlCrate
             {ResourceType.ItemFreqNode, Resources.Folder},
             {ResourceType.ItemFreqTableNode, Resources.Folder},
             {ResourceType.ItemFreqTableGroupNode, Resources.Folder},
-            {ResourceType.ItemFreqEntryNode, Resources.itembox}
+            {ResourceType.ItemFreqEntryNode, Resources.itembox},
+
+            {ResourceType.Folder, Resources.Folder}
         };
 
         public static int getImageIndex(ResourceType resResourceFileType)

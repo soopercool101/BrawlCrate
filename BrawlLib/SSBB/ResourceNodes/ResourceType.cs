@@ -211,5 +211,7 @@
         ItemFreqTableNode,
         ItemFreqTableGroupNode,
         ItemFreqEntryNode,
+
+        Folder
     }
 }
