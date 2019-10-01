@@ -60,7 +60,6 @@ namespace BrawlCrate
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorSmashToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.costumeManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.songManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -358,7 +357,6 @@ namespace BrawlCrate
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorSmashToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.managersToolStripMenuItem,
             this.toolStripSeparator2,
@@ -367,17 +365,6 @@ namespace BrawlCrate
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
-            this.toolsToolStripMenuItem.DropDownOpening += new System.EventHandler(this.OnToolsMenuOpen);
-            //
-            // colorSmashToolStripMenuItem
-            //
-            this.colorSmashToolStripMenuItem.Enabled = false;
-            this.colorSmashToolStripMenuItem.Visible = false;
-            this.colorSmashToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.colorSmashToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift | Keys.C;
-            this.colorSmashToolStripMenuItem.Name = "colorSmashToolStripMenuItem";
-            this.colorSmashToolStripMenuItem.Text = "Color Smash";
-            this.colorSmashToolStripMenuItem.Click += new System.EventHandler(ColorSmash.ColorSmashTex0);
             // 
             // settingsToolStripMenuItem
             // 
@@ -868,7 +855,6 @@ namespace BrawlCrate
         private VideoPlaybackPanel videoPlaybackPanel1;
         private ToolStripMenuItem gCTEditorToolStripMenuItem;
         private ToolStripMenuItem managersToolStripMenuItem;
-        private ToolStripMenuItem colorSmashToolStripMenuItem;
         private ToolStripMenuItem costumeManagerToolStripMenuItem;
         private ToolStripMenuItem songManagerToolStripMenuItem;
         private ToolStripMenuItem stageManagerToolStripMenuItem;
