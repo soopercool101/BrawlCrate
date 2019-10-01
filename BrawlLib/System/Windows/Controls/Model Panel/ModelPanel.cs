@@ -764,6 +764,7 @@ namespace System.Windows.Forms
 
         public event RenderStateEvent
             RenderFloorChanged,
+            RenderMetalsChanged,
             FirstPersonCameraChanged,
             RenderBonesChanged,
             RenderModelBoxChanged,
@@ -810,6 +811,21 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 RenderFloorChanged?.Invoke(this, value);
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool RenderMetals
+        {
+            get => CurrentViewport._renderAttrib._renderMetal;
+            set
+            {
+                CurrentViewport._renderAttrib._renderMetal = value;
+
+                Invalidate();
+
+                RenderMetalsChanged?.Invoke(this, value);
             }
         }
 

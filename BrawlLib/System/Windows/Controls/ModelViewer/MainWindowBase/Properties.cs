@@ -27,6 +27,14 @@ namespace System.Windows.Forms
 
         [Browsable(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool RenderMetals
+        {
+            get => ModelPanel.RenderMetals;
+            set => ModelPanel.RenderMetals = value;
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RenderBones
         {
             get => ModelPanel.RenderBones;

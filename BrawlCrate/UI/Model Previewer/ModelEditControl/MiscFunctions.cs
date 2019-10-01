@@ -1100,6 +1100,16 @@ namespace System.Windows.Forms
             }
         }
 
+        private void ModelPanel_RenderMetalsChanged(ModelPanel panel, bool value)
+        {
+            if (ModelPanel == panel && !_updating)
+            {
+                _updating = true;
+                toggleMetals.Checked = value;
+                _updating = false;
+            }
+        }
+
         private void OnRenderCollisionsChanged()
         {
             if (_updating)

@@ -1456,6 +1456,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             GL.MatrixMode(MatrixMode.Texture);
 
             bool anyRendered = false;
+
             if (material != null)
             {
                 if (!useShaders)
@@ -2267,6 +2268,10 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             ModelRenderAttributes attrib = viewport._renderAttrib;
             MDL0MaterialNode mat = MaterialNode;
+            if (attrib._renderMetal && !mat.IsMetal && mat.MetalMaterial != null)
+            {
+                mat = mat.MetalMaterial;
+            }
             if (attrib._renderPolygons)
             {
                 bool shaders = attrib._renderShaders && mat != null;

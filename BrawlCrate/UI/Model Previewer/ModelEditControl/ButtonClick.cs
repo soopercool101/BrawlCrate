@@ -116,6 +116,14 @@ namespace System.Windows.Forms
             }
         }
 
+        private void toggleMetals_Event(object sender, EventArgs e)
+        {
+            if (!_updating)
+            {
+                RenderMetals = !RenderMetals;
+            }
+        }
+
         private void wireframeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
