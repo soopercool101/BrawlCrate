@@ -53,7 +53,7 @@
 			this.app.TabIndex = 1;
 			this.app.TargetStreams = null;
 			this.app.Volume = null;
-			this.app.AudioEnded += this.app_AudioEnded;
+			this.app.AudioEnded += new System.EventHandler(this.app_AudioEnded);
 			// 
 			// panel1
 			// 
@@ -107,7 +107,7 @@
 			0,
 			0,
 			0});
-			this.nudVolume.ValueChanged += this.nudVolume_ValueChanged;
+			this.nudVolume.ValueChanged += new System.EventHandler(this.nudVolume_ValueChanged);
 			// 
 			// SongPanel
 			// 

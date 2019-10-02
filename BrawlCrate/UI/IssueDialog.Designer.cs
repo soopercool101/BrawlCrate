@@ -62,8 +62,8 @@
             this.txtTitle.Size = new System.Drawing.Size(264, 20);
             this.txtTitle.TabIndex = 0;
             this.txtTitle.Text = "Write a quick one-sentence summary of the bug";
-            this.txtTitle.Enter += this.txtTitle_Enter;
-            this.txtTitle.Leave += this.txtTitle_Leave;
+            this.txtTitle.Enter += new System.EventHandler(this.txtTitle_Enter);
+            this.txtTitle.Leave += new System.EventHandler(this.txtTitle_Leave);
             // 
             // label1
             // 
@@ -97,10 +97,10 @@
             this.txtDescription.Size = new System.Drawing.Size(304, 104);
             this.txtDescription.TabIndex = 3;
             this.txtDescription.Text = resources.GetString("txtDescription.Text");
-            this.txtDescription.LinkClicked += this.txtDescription_LinkClicked;
-            this.txtDescription.Enter += this.txtDescription_Enter;
-            this.txtDescription.Leave += this.txtDescription_Leave;
-            this.txtDescription.MouseDown += this.txtDescription_MouseUp;
+            this.txtDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.txtDescription_LinkClicked);
+            this.txtDescription.Enter += new System.EventHandler(this.txtDescription_Enter);
+            this.txtDescription.Leave += new System.EventHandler(this.txtDescription_Leave);
+            this.txtDescription.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtDescription_MouseUp);
             // 
             // txtStack
             // 
@@ -145,7 +145,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Send";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += this.button1_Click;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -156,7 +156,7 @@
             this.button2.TabIndex = 8;
             this.button2.Text = "Close without sending";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += this.button2_Click;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -206,21 +206,21 @@
             this.saveAsToolStripMenuItem});
             this.ctxFile.Name = "ctxFile";
             this.ctxFile.Size = new System.Drawing.Size(115, 48);
-            this.ctxFile.Opening += this.ctxFile_Opening;
+            this.ctxFile.Opening += new System.ComponentModel.CancelEventHandler(this.ctxFile_Opening);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += this.saveToolStripMenuItem_Click;
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
-            this.saveAsToolStripMenuItem.Click += this.saveAsToolStripMenuItem_Click;
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // spltChangedFiles
             // 

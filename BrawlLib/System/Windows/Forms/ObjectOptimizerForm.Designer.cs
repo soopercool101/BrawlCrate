@@ -64,7 +64,7 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += this.btnCancel_Click;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOkay
             // 
@@ -75,7 +75,7 @@
             this.btnOkay.TabIndex = 5;
             this.btnOkay.Text = "&Okay";
             this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += this.btnOkay_Click;
+            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
             // 
             // chkPushCacheHits
             // 
@@ -88,7 +88,7 @@
             this.chkPushCacheHits.TabIndex = 7;
             this.chkPushCacheHits.Text = "Push Cache Hits";
             this.chkPushCacheHits.UseVisualStyleBackColor = true;
-            this.chkPushCacheHits.CheckedChanged += this.Update;
+            this.chkPushCacheHits.CheckedChanged += new System.EventHandler(this.Update);
             // 
             // label1
             // 
@@ -148,7 +148,7 @@
             this.chkUseStrips.TabIndex = 15;
             this.chkUseStrips.Text = "Use Tristrips";
             this.chkUseStrips.UseVisualStyleBackColor = true;
-            this.chkUseStrips.CheckedChanged += this.Update;
+            this.chkUseStrips.CheckedChanged += new System.EventHandler(this.Update);
             // 
             // lblOldCount
             // 
@@ -181,7 +181,7 @@
             this.chkForceCCW.TabIndex = 18;
             this.chkForceCCW.Text = "Force CCW";
             this.chkForceCCW.UseVisualStyleBackColor = true;
-            this.chkForceCCW.CheckedChanged += this.Update;
+            this.chkForceCCW.CheckedChanged += new System.EventHandler(this.Update);
             // 
             // chkAllowIncrease
             // 
@@ -192,7 +192,7 @@
             this.chkAllowIncrease.TabIndex = 19;
             this.chkAllowIncrease.Text = "Allow Increase";
             this.chkAllowIncrease.UseVisualStyleBackColor = true;
-            this.chkAllowIncrease.CheckedChanged += this.Update;
+            this.chkAllowIncrease.CheckedChanged += new System.EventHandler(this.Update);
             // 
             // numMinStripLen
             // 
@@ -204,7 +204,7 @@
             this.numMinStripLen.Size = new System.Drawing.Size(51, 20);
             this.numMinStripLen.TabIndex = 12;
             this.numMinStripLen.Text = "2";
-            this.numMinStripLen.ValueChanged += this.Update;
+            this.numMinStripLen.ValueChanged += new System.EventHandler(this.Update);
             // 
             // numCacheSize
             // 
@@ -216,7 +216,7 @@
             this.numCacheSize.Size = new System.Drawing.Size(51, 20);
             this.numCacheSize.TabIndex = 11;
             this.numCacheSize.Text = "52";
-            this.numCacheSize.ValueChanged += this.Update;
+            this.numCacheSize.ValueChanged += new System.EventHandler(this.Update);
             // 
             // ObjectOptimizerForm
             // 

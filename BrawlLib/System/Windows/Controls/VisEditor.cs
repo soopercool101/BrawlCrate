@@ -40,10 +40,10 @@ namespace System.Windows.Forms
             listBox1.SelectionMode = SelectionMode.MultiExtended;
             listBox1.Size = new Drawing.Size(310, 264);
             listBox1.TabIndex = 0;
-            listBox1.DrawItem += listBox1_DrawItem;
+            listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
-            listBox1.KeyDown += listBox1_KeyDown;
-            listBox1.MouseDoubleClick += listBox1_MouseDoubleClick;
+            listBox1.KeyDown += new KeyEventHandler(listBox1_KeyDown);
+            listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_MouseDoubleClick);
             // 
             // panel1
             // 

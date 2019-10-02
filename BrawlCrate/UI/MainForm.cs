@@ -1442,7 +1442,7 @@ namespace BrawlCrate
 
         private void Init()
         {
-            Settings.Default.PropertyChanged += Default_PropertyChanged;
+            Settings.Default.PropertyChanged += new PropertyChangedEventHandler(Default_PropertyChanged);
         }
 
         public void AddFile(string fileName)

@@ -107,10 +107,10 @@ namespace System.Windows.Forms
             lstBones.Name = "lstBones";
             lstBones.Size = new Drawing.Size(160, 373);
             lstBones.TabIndex = 32;
-            lstBones.ItemCheck += lstBones_ItemCheck;
+            lstBones.ItemCheck += new ItemCheckEventHandler(lstBones_ItemCheck);
             lstBones.SelectedValueChanged += lstBones_SelectedValueChanged;
-            lstBones.KeyDown += lstBones_KeyDown;
-            lstBones.MouseDown += lstBones_MouseDown;
+            lstBones.KeyDown += new KeyEventHandler(lstBones_KeyDown);
+            lstBones.MouseDown += new MouseEventHandler(lstBones_MouseDown);
             // 
             // boneTree
             // 
@@ -126,9 +126,9 @@ namespace System.Windows.Forms
             boneTree.Size = new Drawing.Size(160, 373);
             boneTree.TabIndex = 29;
             boneTree.Visible = false;
-            boneTree.AfterCheck += boneTree_AfterCheck;
-            boneTree.AfterSelect += boneTree_AfterSelect;
-            boneTree.MouseDown += lstBones_MouseDown;
+            boneTree.AfterCheck += new TreeViewEventHandler(boneTree_AfterCheck);
+            boneTree.AfterSelect += new TreeViewEventHandler(boneTree_AfterSelect);
+            boneTree.MouseDown += new MouseEventHandler(lstBones_MouseDown);
             // 
             // panel1
             // 

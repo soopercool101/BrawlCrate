@@ -47,7 +47,7 @@
             this.propertyGrid1.Size = new System.Drawing.Size(287, 76);
             this.propertyGrid1.TabIndex = 3;
             this.propertyGrid1.ToolbarVisible = false;
-            this.propertyGrid1.PropertyValueChanged += this.propertyGrid1_PropertyValueChanged;
+            this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
             // 
             // label1
             // 
@@ -66,7 +66,7 @@
             this.cboOpCode.Name = "cboOpCode";
             this.cboOpCode.Size = new System.Drawing.Size(96, 21);
             this.cboOpCode.TabIndex = 0;
-            this.cboOpCode.SelectedIndexChanged += this.cboOpCode_SelectedIndexChanged;
+            this.cboOpCode.SelectedIndexChanged += new System.EventHandler(this.cboOpCode_SelectedIndexChanged);
             // 
             // panel2
             // 
@@ -99,7 +99,7 @@
             this.btnGoToBranch.Text = "Go to branch";
             this.btnGoToBranch.UseVisualStyleBackColor = true;
             this.btnGoToBranch.Visible = false;
-            this.btnGoToBranch.Click += this.btnGoToBranch_Click;
+            this.btnGoToBranch.Click += new System.EventHandler(this.btnGoToBranch_Click);
             // 
             // PPCOpCodeEditControl
             // 

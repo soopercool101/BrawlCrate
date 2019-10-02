@@ -163,13 +163,13 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(144, 477);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += this.listBox1_SelectedIndexChanged;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // stageContextMenu
             // 
             this.stageContextMenu.Name = "contextMenuStrip1";
             this.stageContextMenu.Size = new System.Drawing.Size(61, 4);
-            this.stageContextMenu.Opening += this.stageContextMenu_Opening;
+            this.stageContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.stageContextMenu_Opening);
             // 
             // clbTextures
             // 
@@ -237,13 +237,13 @@
             this.listBoxSongs.Name = "listBoxSongs";
             this.listBoxSongs.Size = new System.Drawing.Size(90, 131);
             this.listBoxSongs.TabIndex = 8;
-            this.listBoxSongs.SelectedIndexChanged += this.listBoxSongs_SelectedIndexChanged;
+            this.listBoxSongs.SelectedIndexChanged += new System.EventHandler(this.listBoxSongs_SelectedIndexChanged);
             // 
             // songContextMenu
             // 
             this.songContextMenu.Name = "songContextMenu";
             this.songContextMenu.Size = new System.Drawing.Size(61, 4);
-            this.songContextMenu.Opening += this.songContextMenu_Opening;
+            this.songContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.songContextMenu_Opening);
             // 
             // msBinPanel
             // 
@@ -258,28 +258,28 @@
             this.exportpacrelToolStripMenuItem.Name = "exportpacrelToolStripMenuItem";
             this.exportpacrelToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.exportpacrelToolStripMenuItem.Text = "Export .pac/.rel/images";
-            this.exportpacrelToolStripMenuItem.Click += this.exportpacrelToolStripMenuItem_Click;
+            this.exportpacrelToolStripMenuItem.Click += new System.EventHandler(this.exportpacrelToolStripMenuItem_Click);
             // 
             // deletepacrelToolStripMenuItem
             // 
             this.deletepacrelToolStripMenuItem.Name = "deletepacrelToolStripMenuItem";
             this.deletepacrelToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.deletepacrelToolStripMenuItem.Text = "Delete .pac/.rel";
-            this.deletepacrelToolStripMenuItem.Click += this.deletepacrelToolStripMenuItem_Click;
+            this.deletepacrelToolStripMenuItem.Click += new System.EventHandler(this.deletepacrelToolStripMenuItem_Click);
             // 
             // exportbrstmToolStripMenuItem
             // 
             this.exportbrstmToolStripMenuItem.Name = "exportbrstmToolStripMenuItem";
             this.exportbrstmToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.exportbrstmToolStripMenuItem.Text = "Export .brstm";
-            this.exportbrstmToolStripMenuItem.Click += this.exportbrstmToolStripMenuItem_Click;
+            this.exportbrstmToolStripMenuItem.Click += new System.EventHandler(this.exportbrstmToolStripMenuItem_Click);
             // 
             // deletebrstmToolStripMenuItem
             // 
             this.deletebrstmToolStripMenuItem.Name = "deletebrstmToolStripMenuItem";
             this.deletebrstmToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.deletebrstmToolStripMenuItem.Text = "Delete .brstm";
-            this.deletebrstmToolStripMenuItem.Click += this.deletebrstmToolStripMenuItem_Click;
+            this.deletebrstmToolStripMenuItem.Click += new System.EventHandler(this.deletebrstmToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -320,14 +320,14 @@
             this.changeDirectoryToolStripMenuItem.Name = "changeDirectoryToolStripMenuItem";
             this.changeDirectoryToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.changeDirectoryToolStripMenuItem.Text = "Change directory...";
-            this.changeDirectoryToolStripMenuItem.Click += this.changeDirectoryToolStripMenuItem_Click;
+            this.changeDirectoryToolStripMenuItem.Click += new System.EventHandler(this.changeDirectoryToolStripMenuItem_Click);
             // 
             // loadCustomSSSToolStripMenuItem
             // 
             this.loadCustomSSSToolStripMenuItem.Name = "loadCustomSSSToolStripMenuItem";
             this.loadCustomSSSToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.loadCustomSSSToolStripMenuItem.Text = "Manually load GCT codeset";
-            this.loadCustomSSSToolStripMenuItem.Click += this.loadCustomSSSToolStripMenuItem_Click;
+            this.loadCustomSSSToolStripMenuItem.Click += new System.EventHandler(this.loadCustomSSSToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -366,21 +366,21 @@
             this.saveCommon5scselmapToolStripMenuItem.Name = "saveCommon5scselmapToolStripMenuItem";
             this.saveCommon5scselmapToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.saveCommon5scselmapToolStripMenuItem.Text = "Save";
-            this.saveCommon5scselmapToolStripMenuItem.Click += this.saveCommon5scselmapToolStripMenuItem_Click;
+            this.saveCommon5scselmapToolStripMenuItem.Click += new System.EventHandler(this.saveCommon5scselmapToolStripMenuItem_Click);
             // 
             // exportAllMiscData80ToolStripMenuItem
             // 
             this.exportAllMiscData80ToolStripMenuItem.Name = "exportAllMiscData80ToolStripMenuItem";
             this.exportAllMiscData80ToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.exportAllMiscData80ToolStripMenuItem.Text = "Export all (Misc Data [80])";
-            this.exportAllMiscData80ToolStripMenuItem.Click += this.exportAllMiscData80ToolStripMenuItem_Click;
+            this.exportAllMiscData80ToolStripMenuItem.Click += new System.EventHandler(this.exportAllMiscData80ToolStripMenuItem_Click);
             // 
             // saveInfopacToolStripMenuItem
             // 
             this.saveInfopacToolStripMenuItem.Name = "saveInfopacToolStripMenuItem";
             this.saveInfopacToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.saveInfopacToolStripMenuItem.Text = "Save info.pac";
-            this.saveInfopacToolStripMenuItem.Click += this.saveInfopacToolStripMenuItem_Click;
+            this.saveInfopacToolStripMenuItem.Click += new System.EventHandler(this.saveInfopacToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -392,14 +392,14 @@
             this.exportAllToolStripMenuItem.Name = "exportAllToolStripMenuItem";
             this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.exportAllToolStripMenuItem.Text = "Export all stages";
-            this.exportAllToolStripMenuItem.Click += this.exportAllToolStripMenuItem_Click;
+            this.exportAllToolStripMenuItem.Click += new System.EventHandler(this.exportAllToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += this.exitToolStripMenuItem_Click;
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -415,7 +415,7 @@
             this.use16ptFontToolStripMenuItem.Name = "use16ptFontToolStripMenuItem";
             this.use16ptFontToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.use16ptFontToolStripMenuItem.Text = "Use 16pt font";
-            this.use16ptFontToolStripMenuItem.Click += this.use16ptFontToolStripMenuItem_Click;
+            this.use16ptFontToolStripMenuItem.Click += new System.EventHandler(this.use16ptFontToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
@@ -449,7 +449,7 @@
             this.useTextureConverterToolStripMenuItem.Name = "useTextureConverterToolStripMenuItem";
             this.useTextureConverterToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.useTextureConverterToolStripMenuItem.Text = "Use Texture Converter";
-            this.useTextureConverterToolStripMenuItem.Click += this.useTextureConverterToolStripMenuItem_Click;
+            this.useTextureConverterToolStripMenuItem.Click += new System.EventHandler(this.useTextureConverterToolStripMenuItem_Click);
             // 
             // useAFixedStageListToolStripMenuItem
             // 
@@ -457,14 +457,14 @@
             this.useAFixedStageListToolStripMenuItem.Name = "useAFixedStageListToolStripMenuItem";
             this.useAFixedStageListToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.useAFixedStageListToolStripMenuItem.Text = "Use stage list from GCT codeset (SSS+ASL)";
-            this.useAFixedStageListToolStripMenuItem.Click += this.useAFixedStageListToolStripMenuItem_Click;
+            this.useAFixedStageListToolStripMenuItem.Click += new System.EventHandler(this.useAFixedStageListToolStripMenuItem_Click);
             // 
             // backgroundColorToolStripMenuItem
             // 
             this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
             this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.backgroundColorToolStripMenuItem.Text = "Right panel BG color...";
-            this.backgroundColorToolStripMenuItem.Click += this.backgroundColorToolStripMenuItem_Click;
+            this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -479,7 +479,7 @@
             this.loadStagepacsToolStripMenuItem.Name = "loadStagepacsToolStripMenuItem";
             this.loadStagepacsToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.loadStagepacsToolStripMenuItem.Text = "Load stage .pacs";
-            this.loadStagepacsToolStripMenuItem.Click += this.loadStagepacsToolStripMenuItem_Click;
+            this.loadStagepacsToolStripMenuItem.Click += new System.EventHandler(this.loadStagepacsToolStripMenuItem_Click);
             // 
             // renderModels
             // 
@@ -513,7 +513,7 @@
             this.cse2xToolStripMenuItem.Name = "cse2xToolStripMenuItem";
             this.cse2xToolStripMenuItem.Size = new System.Drawing.Size(88, 22);
             this.cse2xToolStripMenuItem.Text = "2.x";
-            this.cse2xToolStripMenuItem.Click += this.cse2xToolStripMenuItem_Click;
+            this.cse2xToolStripMenuItem.Click += new System.EventHandler(this.cse2xToolStripMenuItem_Click);
             // 
             // cse3xToolStripMenuItem
             // 
@@ -522,7 +522,7 @@
             this.cse3xToolStripMenuItem.Name = "cse3xToolStripMenuItem";
             this.cse3xToolStripMenuItem.Size = new System.Drawing.Size(88, 22);
             this.cse3xToolStripMenuItem.Text = "3.x";
-            this.cse3xToolStripMenuItem.Click += this.cse3xToolStripMenuItem_Click;
+            this.cse3xToolStripMenuItem.Click += new System.EventHandler(this.cse3xToolStripMenuItem_Click);
             // 
             // separator1
             // 
@@ -543,7 +543,7 @@
             this.sameToolStripMenuItem.Name = "sameToolStripMenuItem";
             this.sameToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.sameToolStripMenuItem.Text = "Same";
-            this.sameToolStripMenuItem.Click += this.sameToolStripMenuItem_Click;
+            this.sameToolStripMenuItem.Click += new System.EventHandler(this.sameToolStripMenuItem_Click);
             // 
             // moduleToolStripMenuItem
             // 
@@ -552,7 +552,7 @@
             this.moduleToolStripMenuItem.Name = "moduleToolStripMenuItem";
             this.moduleToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.moduleToolStripMenuItem.Text = "..\\..\\module";
-            this.moduleToolStripMenuItem.Click += this.moduleToolStripMenuItem_Click;
+            this.moduleToolStripMenuItem.Click += new System.EventHandler(this.moduleToolStripMenuItem_Click);
             // 
             // useFullrelNamesToolStripMenuItem
             // 
@@ -562,7 +562,7 @@
             this.useFullrelNamesToolStripMenuItem.Name = "useFullrelNamesToolStripMenuItem";
             this.useFullrelNamesToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.useFullrelNamesToolStripMenuItem.Text = "Use full .rel names";
-            this.useFullrelNamesToolStripMenuItem.Click += this.useFullrelNamesToolStripMenuItem_Click;
+            this.useFullrelNamesToolStripMenuItem.Click += new System.EventHandler(this.useFullrelNamesToolStripMenuItem_Click);
             // 
             // differentrelsForAlternateStagesPM36ToolStripMenuItem
             // 
@@ -572,7 +572,7 @@
             this.differentrelsForAlternateStagesPM36ToolStripMenuItem.Name = "differentrelsForAlternateStagesPM36ToolStripMenuItem";
             this.differentrelsForAlternateStagesPM36ToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.differentrelsForAlternateStagesPM36ToolStripMenuItem.Text = "Different .rels for alternate stages (PM 3.6)";
-            this.differentrelsForAlternateStagesPM36ToolStripMenuItem.Click += this.differentrelsForAlternateStagesPM36ToolStripMenuItem_Click;
+            this.differentrelsForAlternateStagesPM36ToolStripMenuItem.Click += new System.EventHandler(this.differentrelsForAlternateStagesPM36ToolStripMenuItem_Click);
             // 
             // separator2
             // 
@@ -587,7 +587,7 @@
             this.selmapMarkPreviewToolStripMenuItem.Name = "selmapMarkPreviewToolStripMenuItem";
             this.selmapMarkPreviewToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.selmapMarkPreviewToolStripMenuItem.Text = "Portrait previews";
-            this.selmapMarkPreviewToolStripMenuItem.Click += this.selmapMarkPreviewToolStripMenuItem_Click;
+            this.selmapMarkPreviewToolStripMenuItem.Click += new System.EventHandler(this.selmapMarkPreviewToolStripMenuItem_Click);
             // 
             // selmapMarkFormat
             // 
@@ -643,7 +643,7 @@
             this.frontStnameGenerationFontToolStripMenuItem.Name = "frontStnameGenerationFontToolStripMenuItem";
             this.frontStnameGenerationFontToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.frontStnameGenerationFontToolStripMenuItem.Text = "FrontStname font...";
-            this.frontStnameGenerationFontToolStripMenuItem.Click += this.frontStnameGenerationFontToolStripMenuItem_Click;
+            this.frontStnameGenerationFontToolStripMenuItem.Click += new System.EventHandler(this.frontStnameGenerationFontToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -669,14 +669,14 @@
             this.snapshotPortraiticonToolStripMenuItem.Name = "snapshotPortraiticonToolStripMenuItem";
             this.snapshotPortraiticonToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.snapshotPortraiticonToolStripMenuItem.Text = "Snapshot -> portrait/icon";
-            this.snapshotPortraiticonToolStripMenuItem.Click += this.snapshotPortraiticonToolStripMenuItem_Click;
+            this.snapshotPortraiticonToolStripMenuItem.Click += new System.EventHandler(this.snapshotPortraiticonToolStripMenuItem_Click);
             // 
             // repaintIconBorderToolStripMenuItem
             // 
             this.repaintIconBorderToolStripMenuItem.Name = "repaintIconBorderToolStripMenuItem";
             this.repaintIconBorderToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.repaintIconBorderToolStripMenuItem.Text = "Repaint icon border ([)";
-            this.repaintIconBorderToolStripMenuItem.Click += this.repaintIconBorderToolStripMenuItem_Click;
+            this.repaintIconBorderToolStripMenuItem.Click += new System.EventHandler(this.repaintIconBorderToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -688,14 +688,14 @@
             this.updateMumenumainToolStripMenuItem.Name = "updateMumenumainToolStripMenuItem";
             this.updateMumenumainToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.updateMumenumainToolStripMenuItem.Text = "Update mu_menumain";
-            this.updateMumenumainToolStripMenuItem.Click += this.updateMumenumainToolStripMenuItem_Click;
+            this.updateMumenumainToolStripMenuItem.Click += new System.EventHandler(this.updateMumenumainToolStripMenuItem_Click);
             // 
             // updateScselcharacter2ToolStripMenuItem
             // 
             this.updateScselcharacter2ToolStripMenuItem.Name = "updateScselcharacter2ToolStripMenuItem";
             this.updateScselcharacter2ToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.updateScselcharacter2ToolStripMenuItem.Text = "Update stage pics in sc_selcharacter2";
-            this.updateScselcharacter2ToolStripMenuItem.Click += this.updateScselcharacter2ToolStripMenuItem_Click;
+            this.updateScselcharacter2ToolStripMenuItem.Click += new System.EventHandler(this.updateScselcharacter2ToolStripMenuItem_Click);
             // 
             // separator4
             // 
@@ -707,14 +707,14 @@
             this.addMenSelmapMarksToolStripMenuItem.Name = "addMenSelmapMarksToolStripMenuItem";
             this.addMenSelmapMarksToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.addMenSelmapMarksToolStripMenuItem.Text = "Add SelmapMarks/SelchrMarks";
-            this.addMenSelmapMarksToolStripMenuItem.Click += this.addMenSelmapMarksToolStripMenuItem_Click;
+            this.addMenSelmapMarksToolStripMenuItem.Click += new System.EventHandler(this.addMenSelmapMarksToolStripMenuItem_Click);
             // 
             // listMenSelmapMarkUsageToolStripMenuItem
             // 
             this.listMenSelmapMarkUsageToolStripMenuItem.Name = "listMenSelmapMarkUsageToolStripMenuItem";
             this.listMenSelmapMarkUsageToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.listMenSelmapMarkUsageToolStripMenuItem.Text = "List MenSelmapMark usage";
-            this.listMenSelmapMarkUsageToolStripMenuItem.Click += this.listMenSelmapMarkUsageToolStripMenuItem_Click;
+            this.listMenSelmapMarkUsageToolStripMenuItem.Click += new System.EventHandler(this.listMenSelmapMarkUsageToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -726,7 +726,7 @@
             this.addmissingPAT0EntriesToolStripMenuItem.Name = "addmissingPAT0EntriesToolStripMenuItem";
             this.addmissingPAT0EntriesToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.addmissingPAT0EntriesToolStripMenuItem.Text = "Prepare sc_selmap for expansion stages";
-            this.addmissingPAT0EntriesToolStripMenuItem.Click += this.addmissingPAT0EntriesToolStripMenuItem_Click;
+            this.addmissingPAT0EntriesToolStripMenuItem.Click += new System.EventHandler(this.addmissingPAT0EntriesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
@@ -738,7 +738,7 @@
             this.resizeAllPrevbasesToolStripMenuItem.Name = "resizeAllPrevbasesToolStripMenuItem";
             this.resizeAllPrevbasesToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
             this.resizeAllPrevbasesToolStripMenuItem.Text = "Resize all Prevbases";
-            this.resizeAllPrevbasesToolStripMenuItem.Click += this.resizeAllPrevbasesToolStripMenuItem_Click;
+            this.resizeAllPrevbasesToolStripMenuItem.Click += new System.EventHandler(this.resizeAllPrevbasesToolStripMenuItem_Click);
             // 
             // resizeToolStripMenuItem
             // 
@@ -781,7 +781,7 @@
             this.x96ToolStripMenuItem.Name = "x96ToolStripMenuItem";
             this.x96ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.x96ToolStripMenuItem.Text = "96x96";
-            this.x96ToolStripMenuItem.Click += this.switchPrevbaseSize;
+            this.x96ToolStripMenuItem.Click += new System.EventHandler(this.switchPrevbaseSize);
             // 
             // x88ToolStripMenuItem
             // 
@@ -847,7 +847,7 @@
             this.texturesToolStripMenuItem.Name = "texturesToolStripMenuItem";
             this.texturesToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.texturesToolStripMenuItem.Text = "Model Textures";
-            this.texturesToolStripMenuItem.Click += this.texturesToolStripMenuItem_Click;
+            this.texturesToolStripMenuItem.Click += new System.EventHandler(this.texturesToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -862,7 +862,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += this.aboutToolStripMenuItem_Click;
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // brawlCrateToolStripMenuItem
             // 
@@ -879,14 +879,14 @@
             this.brawlCrateStageToolStripMenuItem.Name = "brawlCrateStageToolStripMenuItem";
             this.brawlCrateStageToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.brawlCrateStageToolStripMenuItem.Text = "No stage loaded";
-            this.brawlCrateStageToolStripMenuItem.Click += this.brawlCrateStageToolStripMenuItem_Click;
+            this.brawlCrateStageToolStripMenuItem.Click += new System.EventHandler(this.brawlCrateStageToolStripMenuItem_Click);
             // 
             // brawlCrateCommon5scselmapToolStripMenuItem1
             // 
             this.brawlCrateCommon5scselmapToolStripMenuItem1.Name = "brawlCrateCommon5scselmapToolStripMenuItem1";
             this.brawlCrateCommon5scselmapToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.brawlCrateCommon5scselmapToolStripMenuItem1.Text = "common5/sc_selmap";
-            this.brawlCrateCommon5scselmapToolStripMenuItem1.Click += this.brawlCratecommon5scselmapToolStripMenuItem1_Click;
+            this.brawlCrateCommon5scselmapToolStripMenuItem1.Click += new System.EventHandler(this.brawlCratecommon5scselmapToolStripMenuItem1_Click);
             // 
             // panel2
             // 
@@ -988,7 +988,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Brawl Stage Manager";
-            this.KeyDown += this.MainForm_KeyDown;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.splitContainerLeft.Panel1.ResumeLayout(false);
             this.splitContainerLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeft)).EndInit();

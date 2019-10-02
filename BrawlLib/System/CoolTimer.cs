@@ -248,8 +248,8 @@ namespace System
             //};
             //using (BackgroundWorker b = new BackgroundWorker())
             //{
-            //    b.DoWork += work;
-            //    //b.RunWorkerCompleted += completed;
+            //    b.DoWork += new DoWorkEventHandler(work);
+            //    //b.RunWorkerCompleted += new RunWorkerCompletedEventHandler(completed);
             //    b.RunWorkerAsync();
             //}
             //}

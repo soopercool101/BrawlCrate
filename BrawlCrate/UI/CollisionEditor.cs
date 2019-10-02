@@ -300,9 +300,9 @@ namespace System.Windows.Forms
             modelTree.Name = "modelTree";
             modelTree.Size = new System.Drawing.Size(209, 225);
             modelTree.TabIndex = 4;
-            modelTree.AfterCheck += modelTree_AfterCheck;
-            modelTree.BeforeSelect += modelTree_BeforeSelect;
-            modelTree.AfterSelect += modelTree_AfterSelect;
+            modelTree.AfterCheck += new TreeViewEventHandler(modelTree_AfterCheck);
+            modelTree.BeforeSelect += new TreeViewCancelEventHandler(modelTree_BeforeSelect);
+            modelTree.AfterSelect += new TreeViewEventHandler(modelTree_AfterSelect);
             // 
             // contextMenuStrip2
             // 
@@ -315,7 +315,7 @@ namespace System.Windows.Forms
             });
             contextMenuStrip2.Name = "contextMenuStrip2";
             contextMenuStrip2.Size = new System.Drawing.Size(239, 76);
-            contextMenuStrip2.Opening += contextMenuStrip2_Opening;
+            contextMenuStrip2.Opening += new CancelEventHandler(contextMenuStrip2_Opening);
             // 
             // assignToolStripMenuItem
             // 
@@ -403,9 +403,9 @@ namespace System.Windows.Forms
             lstObjects.Name = "lstObjects";
             lstObjects.Size = new System.Drawing.Size(209, 82);
             lstObjects.TabIndex = 1;
-            lstObjects.ItemCheck += lstObjects_ItemCheck;
+            lstObjects.ItemCheck += new ItemCheckEventHandler(lstObjects_ItemCheck);
             lstObjects.SelectedValueChanged += lstObjects_SelectedValueChanged;
-            lstObjects.MouseDown += lstObjects_MouseDown;
+            lstObjects.MouseDown += new MouseEventHandler(lstObjects_MouseDown);
             // 
             // contextMenuStrip1
             // 
@@ -422,7 +422,7 @@ namespace System.Windows.Forms
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new System.Drawing.Size(238, 132);
-            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
+            contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
             // 
             // newObjectToolStripMenuItem
             // 
@@ -943,12 +943,12 @@ namespace System.Windows.Forms
             _modelPanel.Name = "_modelPanel";
             _modelPanel.Size = new System.Drawing.Size(481, 442);
             _modelPanel.TabIndex = 0;
-            _modelPanel.PreRender += _modelPanel_PreRender;
-            _modelPanel.PostRender += _modelPanel_PostRender;
-            _modelPanel.KeyDown += _modelPanel_KeyDown;
-            _modelPanel.MouseDown += _modelPanel_MouseDown;
-            _modelPanel.MouseMove += _modelPanel_MouseMove;
-            _modelPanel.MouseUp += _modelPanel_MouseUp;
+            _modelPanel.PreRender += new GLRenderEventHandler(_modelPanel_PreRender);
+            _modelPanel.PostRender += new GLRenderEventHandler(_modelPanel_PostRender);
+            _modelPanel.KeyDown += new KeyEventHandler(_modelPanel_KeyDown);
+            _modelPanel.MouseDown += new MouseEventHandler(_modelPanel_MouseDown);
+            _modelPanel.MouseMove += new MouseEventHandler(_modelPanel_MouseMove);
+            _modelPanel.MouseUp += new MouseEventHandler(_modelPanel_MouseUp);
             // 
             // panel1
             // 
@@ -1222,7 +1222,7 @@ namespace System.Windows.Forms
             });
             contextMenuStrip3.Name = "contextMenuStrip3";
             contextMenuStrip3.Size = new System.Drawing.Size(184, 208);
-            contextMenuStrip3.Opening += contextMenuStrip3_Opening;
+            contextMenuStrip3.Opening += new CancelEventHandler(contextMenuStrip3_Opening);
             // 
             // moveToNewObjectToolStripMenuItem
             // 

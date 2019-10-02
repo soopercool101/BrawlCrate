@@ -190,9 +190,9 @@ namespace Be.Windows.Forms
 
             public virtual void Activate()
             {
-                _hexBox.MouseDown += BeginMouseSelection;
-                _hexBox.MouseMove += UpdateMouseSelection;
-                _hexBox.MouseUp += EndMouseSelection;
+                _hexBox.MouseDown += new MouseEventHandler(BeginMouseSelection);
+                _hexBox.MouseMove += new MouseEventHandler(UpdateMouseSelection);
+                _hexBox.MouseUp += new MouseEventHandler(EndMouseSelection);
             }
 
             public virtual void Deactivate()
@@ -1602,7 +1602,7 @@ namespace Be.Windows.Forms
         public HexBox()
         {
             _vScrollBar = new VScrollBar();
-            _vScrollBar.Scroll += vScrollBar_Scroll;
+            _vScrollBar.Scroll += new ScrollEventHandler(vScrollBar_Scroll);
             _vScrollBar.Cursor = Cursors.Default;
 
             _builtInContextMenu = new BuiltInContextMenu(this);

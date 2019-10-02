@@ -1978,8 +1978,8 @@ namespace System.Windows.Forms
             Name = "ModelEditControl";
             Size = new Drawing.Size(805, 475);
             SizeChanged += ModelEditControl_SizeChanged;
-            DragDrop += OnDragDrop;
-            DragEnter += OnDragEnter;
+            DragDrop += new DragEventHandler(OnDragDrop);
+            DragEnter += new DragEventHandler(OnDragEnter);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             controlPanel.ResumeLayout(false);
