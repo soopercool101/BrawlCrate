@@ -190,16 +190,16 @@ namespace Be.Windows.Forms
 
             public virtual void Activate()
             {
-                _hexBox.MouseDown += new MouseEventHandler(BeginMouseSelection);
-                _hexBox.MouseMove += new MouseEventHandler(UpdateMouseSelection);
-                _hexBox.MouseUp += new MouseEventHandler(EndMouseSelection);
+                _hexBox.MouseDown += BeginMouseSelection;
+                _hexBox.MouseMove += UpdateMouseSelection;
+                _hexBox.MouseUp += EndMouseSelection;
             }
 
             public virtual void Deactivate()
             {
-                _hexBox.MouseDown -= new MouseEventHandler(BeginMouseSelection);
-                _hexBox.MouseMove -= new MouseEventHandler(UpdateMouseSelection);
-                _hexBox.MouseUp -= new MouseEventHandler(EndMouseSelection);
+                _hexBox.MouseDown -= BeginMouseSelection;
+                _hexBox.MouseMove -= UpdateMouseSelection;
+                _hexBox.MouseUp -= EndMouseSelection;
             }
 
             #endregion
@@ -285,7 +285,7 @@ namespace Be.Windows.Forms
 
                 MessageDelegate messageHandler = hasMessageHandler
                     ? MessageHandlers[keyData]
-                    : messageHandler = new MessageDelegate(PreProcessWmKeyDown_Default);
+                    : messageHandler = PreProcessWmKeyDown_Default;
 
                 return messageHandler(ref m);
             }
@@ -937,35 +937,35 @@ namespace Be.Windows.Forms
                     {
                         _messageHandlers = new Dictionary<Keys, MessageDelegate>
                         {
-                            {Keys.Left, new MessageDelegate(PreProcessWmKeyDown_Left)},         // move left
-                            {Keys.Up, new MessageDelegate(PreProcessWmKeyDown_Up)},             // move up
-                            {Keys.Right, new MessageDelegate(PreProcessWmKeyDown_Right)},       // move right
-                            {Keys.Down, new MessageDelegate(PreProcessWmKeyDown_Down)},         // move down
-                            {Keys.PageUp, new MessageDelegate(PreProcessWmKeyDown_PageUp)},     // move pageup
-                            {Keys.PageDown, new MessageDelegate(PreProcessWmKeyDown_PageDown)}, // move page down
+                            {Keys.Left, PreProcessWmKeyDown_Left},         // move left
+                            {Keys.Up, PreProcessWmKeyDown_Up},             // move up
+                            {Keys.Right, PreProcessWmKeyDown_Right},       // move right
+                            {Keys.Down, PreProcessWmKeyDown_Down},         // move down
+                            {Keys.PageUp, PreProcessWmKeyDown_PageUp},     // move pageup
+                            {Keys.PageDown, PreProcessWmKeyDown_PageDown}, // move page down
                             {
-                                Keys.Left | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftLeft)
+                                Keys.Left | Keys.Shift, PreProcessWmKeyDown_ShiftLeft
                             }, // move left with selection
                             {
-                                Keys.Up | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftUp)
+                                Keys.Up | Keys.Shift, PreProcessWmKeyDown_ShiftUp
                             }, // move up with selection
                             {
-                                Keys.Right | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftRight)
+                                Keys.Right | Keys.Shift, PreProcessWmKeyDown_ShiftRight
                             }, // move right with selection
                             {
-                                Keys.Down | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftDown)
+                                Keys.Down | Keys.Shift, PreProcessWmKeyDown_ShiftDown
                             },                                                              // move down with selection
-                            {Keys.Tab, new MessageDelegate(PreProcessWmKeyDown_Tab)},       // switch to string view
-                            {Keys.Back, new MessageDelegate(PreProcessWmKeyDown_Back)},     // back
-                            {Keys.Delete, new MessageDelegate(PreProcessWmKeyDown_Delete)}, // delete
-                            {Keys.Home, new MessageDelegate(PreProcessWmKeyDown_Home)},     // move to home
-                            {Keys.End, new MessageDelegate(PreProcessWmKeyDown_End)},       // move to end
+                            {Keys.Tab, PreProcessWmKeyDown_Tab},       // switch to string view
+                            {Keys.Back, PreProcessWmKeyDown_Back},     // back
+                            {Keys.Delete, PreProcessWmKeyDown_Delete}, // delete
+                            {Keys.Home, PreProcessWmKeyDown_Home},     // move to home
+                            {Keys.End, PreProcessWmKeyDown_End},       // move to end
                             {
-                                Keys.ShiftKey | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftShiftKey)
+                                Keys.ShiftKey | Keys.Shift, PreProcessWmKeyDown_ShiftShiftKey
                             },                                                                          // begin selection process
-                            {Keys.C | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlC)}, // copy 
-                            {Keys.X | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlX)}, // cut
-                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)}  // paste
+                            {Keys.C | Keys.Control, PreProcessWmKeyDown_ControlC}, // copy 
+                            {Keys.X | Keys.Control, PreProcessWmKeyDown_ControlX}, // cut
+                            {Keys.V | Keys.Control, PreProcessWmKeyDown_ControlV}  // paste
                         };
                     }
 
@@ -1602,7 +1602,7 @@ namespace Be.Windows.Forms
         public HexBox()
         {
             _vScrollBar = new VScrollBar();
-            _vScrollBar.Scroll += new ScrollEventHandler(vScrollBar_Scroll);
+            _vScrollBar.Scroll += vScrollBar_Scroll;
             _vScrollBar.Cursor = Cursors.Default;
 
             _builtInContextMenu = new BuiltInContextMenu(this);
@@ -3821,7 +3821,7 @@ namespace Be.Windows.Forms
 
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged -= new EventHandler(byteProvider_LengthChanged);
+                    _byteProvider.LengthChanged -= byteProvider_LengthChanged;
                 }
 
                 _byteProvider = value;

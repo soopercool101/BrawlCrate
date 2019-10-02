@@ -280,7 +280,7 @@ namespace System.Windows.Forms
             splitter2.Size = new Drawing.Size(107, 3);
             splitter2.TabIndex = 0;
             splitter2.TabStop = false;
-            splitter2.SplitterMoved += new SplitterEventHandler(splitter2_SplitterMoved);
+            splitter2.SplitterMoved += splitter2_SplitterMoved;
             // 
             // panel4
             // 

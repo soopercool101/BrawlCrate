@@ -137,7 +137,7 @@ namespace System.Windows.Forms
             InitializeComponent();
 
             _timer = new CoolTimer();
-            _timer.RenderFrame += new EventHandler<FrameEventArgs>(RenderUpdate);
+            _timer.RenderFrame += RenderUpdate;
 
             previewPanel1.LeftClicked += previewPanel1_LeftClicked;
             previewPanel1.RightClicked += previewPanel1_RightClicked;

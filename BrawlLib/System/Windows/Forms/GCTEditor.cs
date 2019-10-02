@@ -23,7 +23,7 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
             txtCode.TextChanged += txtCode_TextChanged;
-            lstCodes.ItemChecked += new ItemCheckedEventHandler(lstCodes_ItemChecked);
+            lstCodes.ItemChecked += lstCodes_ItemChecked;
             lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
 
             string title =

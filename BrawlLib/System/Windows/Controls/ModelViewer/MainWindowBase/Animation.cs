@@ -166,7 +166,7 @@ namespace System.Windows.Forms
             {
                 if (PlaybackPanel.InvokeRequired)
                 {
-                    Action<int, int> d = new Action<int, int>(PlaybackPanel.UpdateInterface);
+                    Action<int, int> d = PlaybackPanel.UpdateInterface;
                     Invoke(d, new object[] {_animFrame, loopMax});
                 }
                 else
@@ -378,7 +378,7 @@ namespace System.Windows.Forms
                     {
                         if (KeyframePanel.InvokeRequired)
                         {
-                            Action<int> d = new Action<int>(KeyframePanel.UpdateCurrentFrame);
+                            Action<int> d = KeyframePanel.UpdateCurrentFrame;
                             Invoke(d, new object[] {_animFrame});
                         }
 

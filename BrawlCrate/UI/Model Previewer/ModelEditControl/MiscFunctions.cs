@@ -349,7 +349,7 @@ namespace System.Windows.Forms
                                 if (leftPanel.InvokeRequired)
                                 {
                                     Action<int, int, bool, MDL0ObjectNode> d =
-                                        new Action<int, int, bool, MDL0ObjectNode>(leftPanel.SetRenderState);
+                                        leftPanel.SetRenderState;
                                     Invoke(d, new object[] {objKey.Key, i, render, obj});
                                 }
                                 else

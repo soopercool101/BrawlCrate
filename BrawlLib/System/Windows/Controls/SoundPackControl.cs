@@ -104,10 +104,10 @@ namespace System.Windows.Forms
             lstSets.TabIndex = 0;
             lstSets.UseCompatibleStateImageBehavior = false;
             lstSets.View = View.Details;
-            lstSets.ColumnClick += new ColumnClickEventHandler(lstSets_ColumnClick);
+            lstSets.ColumnClick += lstSets_ColumnClick;
             lstSets.SelectedIndexChanged += lstSets_SelectedIndexChanged;
             lstSets.DoubleClick += lstSets_DoubleClick;
-            lstSets.KeyDown += new KeyEventHandler(lstSets_KeyDown);
+            lstSets.KeyDown += lstSets_KeyDown;
             // 
             // clmType
             // 
@@ -140,7 +140,7 @@ namespace System.Windows.Forms
             });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new Drawing.Size(138, 108);
-            contextMenuStrip1.Opening += new CancelEventHandler(contextMenuStrip1_Opening);
+            contextMenuStrip1.Opening += contextMenuStrip1_Opening;
             // 
             // mnuPath
             // 
@@ -347,7 +347,7 @@ namespace System.Windows.Forms
 
             if (lstSets.InvokeRequired)
             {
-                delUpdate callbackMethod = new delUpdate(Update);
+                delUpdate callbackMethod = Update;
                 Invoke(callbackMethod, lstSets);
             }
             else
