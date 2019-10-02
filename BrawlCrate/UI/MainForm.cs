@@ -722,7 +722,7 @@ namespace BrawlCrate
                 if ((editToolStripMenuItem.DropDown =
                     Instance.resourceTree.SelectedNodes.Count > 1
                     ? Instance.resourceTree.GetMultiSelectMenuStrip()
-                    : w.ContextMenuStrip) != null)
+                    : w?.ContextMenuStrip) != null)
                 {
                     editToolStripMenuItem.Enabled = true;
                 }
