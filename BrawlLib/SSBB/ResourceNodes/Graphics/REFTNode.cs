@@ -170,7 +170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             try
             {
-                if (HasPlt == true)
+                if (HasPlt)
                 {
                     return TextureConverter.DecodeIndexed((byte*) Header + 0x20, Width, Height, Palette, index + 1,
                         _format);

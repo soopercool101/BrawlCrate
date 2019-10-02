@@ -189,7 +189,7 @@ namespace System.Windows.Forms
 
                 case Keys.Decimal:
                 case Keys.OemPeriod:
-                    if (Text.IndexOf('.') != -1 || Integer == true)
+                    if (Text.IndexOf('.') != -1 || Integer)
                     {
                         e.SuppressKeyPress = true;
                     }

@@ -379,23 +379,20 @@ namespace BrawlCrate
 
         private static bool CompareToType(Type compared, Type to)
         {
-            Type bType;
             if (compared == to)
             {
                 return true;
             }
-            else
-            {
-                bType = compared.BaseType;
-                while (bType != null && bType != typeof(ResourceNode))
-                {
-                    if (to == bType)
-                    {
-                        return true;
-                    }
 
-                    bType = bType.BaseType;
+            Type bType = compared.BaseType;
+            while (bType != null && bType != typeof(ResourceNode))
+            {
+                if (to == bType)
+                {
+                    return true;
                 }
+
+                bType = bType.BaseType;
             }
 
             return false;
@@ -408,29 +405,26 @@ namespace BrawlCrate
 
         private static bool CompareTypes(Type type1, Type type2)
         {
-            Type bType1, bType2;
             if (type1 == type2)
             {
                 return true;
             }
-            else
-            {
-                bType2 = type2.BaseType;
-                while (bType2 != null && bType2 != typeof(ResourceNode))
-                {
-                    bType1 = type1.BaseType;
-                    while (bType1 != null && bType1 != typeof(ResourceNode))
-                    {
-                        if (bType1 == bType2)
-                        {
-                            return true;
-                        }
 
-                        bType1 = bType1.BaseType;
+            Type bType2 = type2.BaseType;
+            while (bType2 != null && bType2 != typeof(ResourceNode))
+            {
+                Type bType1 = type1.BaseType;
+                while (bType1 != null && bType1 != typeof(ResourceNode))
+                {
+                    if (bType1 == bType2)
+                    {
+                        return true;
                     }
 
-                    bType2 = bType2.BaseType;
+                    bType1 = bType1.BaseType;
                 }
+
+                bType2 = bType2.BaseType;
             }
 
             return false;
@@ -443,40 +437,39 @@ namespace BrawlCrate
                 return false;
             }
 
-            bool good = false;
             int destIndex = dropping.Index;
 
-            good = CompareTypes(dragging, dropping);
+            bool good = CompareTypes(dragging, dropping);
 
             //if (dropping.Parent is BRESGroupNode)
             foreach (Type t in dropping.Parent.AllowedChildTypes)
             {
+                // ReSharper disable once AssignmentInConditionalExpression
                 if (good = CompareToType(dragging.GetType(), t))
                 {
                     break;
                 }
             }
 
-            if (good)
+            if (!good)
             {
-                if (dragging.Parent != null)
-                {
-                    dragging.Parent.RemoveChild(dragging);
-                }
-
-                if (destIndex < dropping.Parent.Children.Count)
-                {
-                    dropping.Parent.InsertChild(dragging, true, destIndex);
-                }
-                else
-                {
-                    dropping.Parent.AddChild(dragging, true);
-                }
-
-                dragging.OnMoved();
+                return false;
             }
 
-            return good;
+            dragging.Parent?.RemoveChild(dragging);
+
+            if (destIndex < dropping.Parent.Children.Count)
+            {
+                dropping.Parent.InsertChild(dragging, true, destIndex);
+            }
+            else
+            {
+                dropping.Parent.AddChild(dragging, true);
+            }
+
+            dragging.OnMoved();
+
+            return true;
         }
 
         private static bool TryAddChild(ResourceNode dragging, ResourceNode dropping)
@@ -492,6 +485,7 @@ namespace BrawlCrate
             {
                 foreach (Type t in dropping.AllowedChildTypes)
                 {
+                    // ReSharper disable once AssignmentInConditionalExpression
                     if (good = CompareToType(dt, t))
                     {
                         break;

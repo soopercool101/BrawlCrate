@@ -813,7 +813,7 @@ namespace System.Windows.Forms
                 return Helpers.Hex(requirement);
             }
 
-            if (not == true)
+            if (not)
             {
                 return "Not " + iRequirements[requirement];
             }

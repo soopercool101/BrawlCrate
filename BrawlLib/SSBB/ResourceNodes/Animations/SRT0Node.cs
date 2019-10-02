@@ -775,7 +775,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             int index = Index;
-            if (_indirect == true && ((SRT0TextureNode) Parent.Children[Index + 1])._indirect == false ||
+            if (_indirect && ((SRT0TextureNode) Parent.Children[Index + 1])._indirect == false ||
                 _textureIndex > ((SRT0TextureNode) Parent.Children[Index + 1])._textureIndex &&
                 _indirect == ((SRT0TextureNode) Parent.Children[Index + 1])._indirect)
             {
@@ -795,7 +795,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             int index = Index;
-            if (_indirect == false && ((SRT0TextureNode) Parent.Children[Index - 1])._indirect == true ||
+            if (_indirect == false && ((SRT0TextureNode) Parent.Children[Index - 1])._indirect ||
                 _textureIndex < ((SRT0TextureNode) Parent.Children[Index - 1])._textureIndex &&
                 _indirect == ((SRT0TextureNode) Parent.Children[Index - 1])._indirect)
             {

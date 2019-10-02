@@ -435,7 +435,7 @@ namespace System.Windows.Forms
             }
             else
             {
-                if (Enabled != false)
+                if (Enabled)
                 {
                     Enabled = false;
                 }

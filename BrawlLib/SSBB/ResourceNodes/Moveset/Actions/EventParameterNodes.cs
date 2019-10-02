@@ -952,7 +952,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 return requirement.ToString("X");
             }
 
-            if (not == true)
+            if (not)
             {
                 return "Not " + (arg = Root.iRequirements[requirement]);
             }

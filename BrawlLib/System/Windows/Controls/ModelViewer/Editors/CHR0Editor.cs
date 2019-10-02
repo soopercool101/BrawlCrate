@@ -1250,7 +1250,7 @@ namespace System.Windows.Forms
 
             if (e.Button == MouseButtons.Right)
             {
-                if (box.Enabled == true)
+                if (box.Enabled)
                 {
                     box.ContextMenuStrip = ctxBox;
                     Source.Text = box.Text;

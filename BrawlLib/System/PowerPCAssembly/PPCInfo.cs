@@ -703,7 +703,7 @@ namespace System.PowerPcAssembly
                     result.Add(search[i]);
                     found = true;
                 }
-                else if (found == true)
+                else if (found)
                 {
                     break;
                 }

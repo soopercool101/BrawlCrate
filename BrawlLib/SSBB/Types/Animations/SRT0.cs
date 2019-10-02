@@ -395,7 +395,7 @@ namespace BrawlLib.SSBBTypes
 
         public bool GetFixed(int i)
         {
-            return _data[i + 5] != false;
+            return _data[i + 5];
         }
 
         public void SetFixed(int index, bool p)

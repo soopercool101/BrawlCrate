@@ -610,7 +610,7 @@ namespace BrawlLib.Modeling
                         goto Finish;
                 }
 
-                if (newGroup == true)
+                if (newGroup)
                 {
                     newGroup = false;
                 }
@@ -1246,7 +1246,7 @@ namespace BrawlLib.Modeling
             if (indices[0] > -1 && _faceData[0] != null) //Positions
             {
                 _arrayFlags.HasPositions = true;
-                fmt = forceDirect != null && forceDirect.Length > 0 && forceDirect[0] == true
+                fmt = forceDirect != null && forceDirect.Length > 0 && forceDirect[0]
                     ? XFDataFormat.Direct
                     : (XFDataFormat) (GetVertices(false).Length > byte.MaxValue ? 3 : 2);
                 _descList.Add(new FacepointAttribute(GXAttribute.Position, fmt));
@@ -1262,7 +1262,7 @@ namespace BrawlLib.Modeling
             if (indices[1] > -1 && _faceData[1] != null) //Normals
             {
                 _arrayFlags.HasNormals = true;
-                fmt = forceDirect != null && forceDirect.Length > 1 && forceDirect[1] == true
+                fmt = forceDirect != null && forceDirect.Length > 1 && forceDirect[1]
                     ? XFDataFormat.Direct
                     : (XFDataFormat) (GetNormals(false).Length > byte.MaxValue ? 3 : 2);
                 _descList.Add(new FacepointAttribute(GXAttribute.Normal, fmt));
@@ -1281,7 +1281,7 @@ namespace BrawlLib.Modeling
                 {
                     _arrayFlags.SetHasColor(i - 2, true);
 
-                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i] == true
+                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i]
                         ? XFDataFormat.Direct
                         : (XFDataFormat) (GetColors(i - 2, false).Length > byte.MaxValue ? 3 : 2);
 
@@ -1301,7 +1301,7 @@ namespace BrawlLib.Modeling
                 if (indices[i] > -1 && _faceData[i] != null) //UVs
                 {
                     _arrayFlags.SetHasUVs(i - 4, true);
-                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i] == true
+                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i]
                         ? XFDataFormat.Direct
                         : (XFDataFormat) (GetUVs(i - 4, false).Length > byte.MaxValue ? 3 : 2);
                     _descList.Add(new FacepointAttribute((GXAttribute) (i + 9), fmt));

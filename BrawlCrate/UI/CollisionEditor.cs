@@ -3436,7 +3436,7 @@ namespace System.Windows.Forms
             }
             else if (allNoLedge)
             {
-                if (chkRightLedge.Checked == true)
+                if (chkRightLedge.Checked)
                 {
                     chkRightLedge.Checked = false;
                 }

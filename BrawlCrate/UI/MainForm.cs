@@ -391,7 +391,7 @@ namespace BrawlCrate
         {
             if (!DisplayPropertyDescriptionsWhenAvailable)
             {
-                if (propertyGrid1.HelpVisible != false)
+                if (propertyGrid1.HelpVisible)
                 {
                     propertyGrid1.HelpVisible = false;
                 }
