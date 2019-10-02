@@ -292,6 +292,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal static ResourceNode TryParse(DataSource source) 
         {
+            if (MSBinNode.TryParse(source) != null)
+            {
+                return null;
+            }
+
             VoidPtr addr = source.Address;
             FDefHeader* header = (FDefHeader*)addr;
 
