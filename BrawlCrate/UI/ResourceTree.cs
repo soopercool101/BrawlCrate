@@ -178,12 +178,6 @@ namespace BrawlCrate
             EndUpdate();
         }
 
-        protected override void OnBeforeSelect(TreeViewCancelEventArgs e)
-        {
-            base.OnBeforeSelect(e);
-            SelectionChanged?.Invoke(this, null);
-        }
-
         protected override void OnAfterSelect(TreeViewEventArgs e)
         {
             SelectedNode = e.Node;
