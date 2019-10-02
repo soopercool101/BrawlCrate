@@ -180,9 +180,14 @@ namespace BrawlCrate
 
         protected override void OnAfterSelect(TreeViewEventArgs e)
         {
-            SelectedNode = e.Node;
+            bool refresh = _selected == e.Node;
+            base.SelectedNode = e.Node;
             base.OnAfterSelect(e);
-            SelectionChanged?.Invoke(this, null);
+            SelectedNode = e.Node;
+            if (refresh)
+            {
+                SelectionChanged?.Invoke(this, null);
+            }
         }
 
         protected override void OnBeforeExpand(TreeViewCancelEventArgs e)
