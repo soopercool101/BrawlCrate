@@ -719,7 +719,10 @@ namespace BrawlCrate
                     }
                 }
 
-                if ((editToolStripMenuItem.DropDown = w.ContextMenuStrip) != null)
+                if ((editToolStripMenuItem.DropDown =
+                    Instance.resourceTree.SelectedNodes.Count > 1
+                    ? Instance.resourceTree.GetMultiSelectMenuStrip()
+                    : w.ContextMenuStrip) != null)
                 {
                     editToolStripMenuItem.Enabled = true;
                 }

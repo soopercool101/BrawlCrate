@@ -132,7 +132,7 @@ namespace BrawlCrate
             base.WndProc(ref m);
         }
 
-        private ContextMenuStrip GetMultiSelectMenuStrip()
+        public ContextMenuStrip GetMultiSelectMenuStrip()
         {
             System.Collections.Generic.List<TreeNode> nodes = SelectedNodes;
             MultiSelectableWrapper singleNode = SelectedNode as MultiSelectableWrapper;
