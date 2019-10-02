@@ -155,7 +155,7 @@ namespace BrawlCrate
             foreach (TreeNode node in nodes)
             {
                 Type type = node.GetType();
-                if (!type.IsAssignableFrom(singleNode.GetType()))
+                if (!type.IsInstanceOfType(singleNode))
                 {
                     // More than one type of node is selected
                     // Return the generic multi-select menu
