@@ -1988,7 +1988,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public bool _updating = false;
+        public bool _updating;
 
         private void label19_Click(object sender, EventArgs e)
         {

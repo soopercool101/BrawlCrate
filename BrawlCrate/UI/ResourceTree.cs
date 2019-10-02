@@ -24,7 +24,7 @@ namespace BrawlCrate
             set => _allowContextMenus = value;
         }
 
-        private bool _allowIcons = false;
+        private bool _allowIcons;
 
         [DefaultValue(false)]
         public bool ShowIcons
@@ -217,8 +217,8 @@ namespace BrawlCrate
             base.Dispose(disposing);
         }
 
-        private TreeNode _dragNode = null;
-        private TreeNode _tempDropNode = null;
+        private TreeNode _dragNode;
+        private TreeNode _tempDropNode;
         private readonly Timer _timer = new Timer();
 
         private readonly ImageList imageListDrag = new ImageList();
@@ -616,7 +616,7 @@ namespace BrawlCrate
         }
     }
 
-    public class DragHelper
+    public static class DragHelper
     {
         [DllImport("comctl32.dll")]
         public static extern bool InitCommonControls();

@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefEventArgument* Header => (FDefEventArgument*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Parameter;
 
-        public int _value = 0;
+        public int _value;
 
         [Browsable(false)] public virtual ArgVarType _type => ArgVarType.Value;
 
@@ -965,7 +965,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class HitboxFlagsNode : MoveDefEventParameterNode
     {
-        internal HitboxFlags val = new HitboxFlags();
+        internal HitboxFlags val;
 
         public string HexValue
         {
@@ -1202,7 +1202,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class SpecialHitboxFlagsNode : MoveDefEventParameterNode
     {
-        internal SpecialHitboxFlags val = new SpecialHitboxFlags();
+        internal SpecialHitboxFlags val;
 
         public string HexValue
         {
@@ -1229,7 +1229,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             sleep,
             flinch;
 
-        public Bin16 hitBits = new Bin16();
+        public Bin16 hitBits;
 
         [Category("Special Hitbox Flags")]
         public int AngleFlipping

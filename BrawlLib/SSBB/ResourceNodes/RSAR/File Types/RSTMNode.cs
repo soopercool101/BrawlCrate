@@ -127,7 +127,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return false;
         }
 
-        public static bool ADPCMConversionWarningShown = false;
+        public static bool ADPCMConversionWarningShown;
 
         public static void ShowADPCMConversionWarning()
         {

@@ -2156,7 +2156,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _isTargetModel = value;
         }
 
-        private bool _isTargetModel = false;
+        private bool _isTargetModel;
 
         public ModelRenderAttributes _renderAttribs = new ModelRenderAttributes();
         public bool _ignoreModelViewerAttribs = false;
@@ -2164,9 +2164,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int _selectedObjectIndex = -1;
 
         [Browsable(false)] public bool Attached => _attached;
-        private bool _attached = false;
-        private SHP0Node _currentSHP = null;
-        private float _currentSHPIndex = 0;
+        private bool _attached;
+        private SHP0Node _currentSHP;
+        private float _currentSHPIndex;
 
         public Dictionary<string, Dictionary<int, List<int>>> VIS0Indices;
 

@@ -346,7 +346,7 @@ namespace System.Windows.Forms
             Toggle();
         }
 
-        public bool _updating = false;
+        public bool _updating;
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

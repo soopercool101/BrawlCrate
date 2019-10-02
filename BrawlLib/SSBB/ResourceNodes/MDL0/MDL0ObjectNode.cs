@@ -599,13 +599,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int _numFaces;
         public int _nodeId;
         public int _defBufferSize = 0xE0;
-        public int _flag = 0;
+        public int _flag;
 
         public int[] _nodeCache;
-        private int _tableLen = 0;
+        private int _tableLen;
 
         internal short[] _elementIndices = new short[14];
-        public bool _forceRebuild = false, _reOptimized = false;
+        public bool _forceRebuild, _reOptimized;
 
         internal List<IMatrixNode> _influences;
         public BindingList<DrawCall> _drawCalls = new BindingList<DrawCall>();
@@ -1352,7 +1352,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _attached = value;
         }
 
-        public bool _attached = false;
+        public bool _attached;
 
         public Box GetBox()
         {
@@ -2029,7 +2029,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0BoneNode _visBoneNode;
         internal MDL0MaterialNode _material;
         internal bool _isXLU;
-        internal byte _drawOrder = 0;
+        internal byte _drawOrder;
 
         [Category("Object Draw Call")]
         [TypeConverter(typeof(DropDownListMaterialsDrawCall))]

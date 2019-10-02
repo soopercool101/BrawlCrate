@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.MDL0Material;
         public override bool AllowDuplicateNames => true;
 
-        public bool _updating = false;
+        public bool _updating;
 
         public MDL0MaterialNode()
         {
@@ -74,7 +74,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _lightSetIndex = 20,
             _fogIndex = 4;
 
-        private Bin32 _usageFlags = new Bin32();
+        private Bin32 _usageFlags;
         public CullMode _cull = CullMode.Cull_None;
         public uint _texMtxFlags;
 
@@ -1625,7 +1625,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             }
         }
 
-        internal int _dataAlign = 0, _mdlOffset = 0;
+        internal int _dataAlign, _mdlOffset = 0;
 
         public override int OnCalculateSize(bool force)
         {
@@ -1923,11 +1923,11 @@ For example, if the shader has two stages but this number is 1, the second stage
         }
 
         public string _vertexShaderSource;
-        public int _vertexShaderHandle = 0;
+        public int _vertexShaderHandle;
         public string _fragShaderSource;
-        public int _fragShaderHandle = 0;
-        public int _programHandle = 0;
-        public bool _internalForceRemake = false;
+        public int _fragShaderHandle;
+        public int _programHandle;
+        public bool _internalForceRemake;
 
         public void UseProgram(MDL0ObjectNode node, bool forceRemake = false)
         {
@@ -2243,7 +2243,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             }
         }
 
-        public bool _scn0Applied = false;
+        public bool _scn0Applied;
         public Vector4 _ambientLight;
         public FogAnimationFrame _fog;
         public GLSLLightFrame[] _lights = new GLSLLightFrame[8];
@@ -2371,7 +2371,7 @@ For example, if the shader has two stages but this number is 1, the second stage
 
     public class LightChannel
     {
-        public MDL0MaterialNode _parent = null;
+        public MDL0MaterialNode _parent;
         public LightingChannelFlags _flags;
         public RGBAPixel _matColor, _ambColor;
         public LightChannelControl _color, _alpha;

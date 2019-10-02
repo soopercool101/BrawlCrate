@@ -385,7 +385,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
             return new Strip(Node.m_Elem.m_Index, Order, Size);
         }
 
-        private bool _checkNodes = false;
+        private bool _checkNodes;
 
         private bool TryAddNode(uint index)
         {

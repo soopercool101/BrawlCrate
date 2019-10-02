@@ -15,7 +15,7 @@ namespace System.Windows.Forms
             modelPanel.RenderShadersChanged += modelPanel_RenderShadersChanged;
         }
 
-        private MDL0ObjectNode _targetObject = null;
+        private MDL0ObjectNode _targetObject;
 
         private void modelPanel_RenderShadersChanged(ModelPanel panel, bool value)
         {
@@ -57,7 +57,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void lstDrawCalls_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -179,7 +179,7 @@ namespace System.Windows.Forms
             modelPanel.RenderBones = !modelPanel.RenderBones;
         }
 
-        private float _prevDrawOrder = 0;
+        private float _prevDrawOrder;
 
         private void chkDoesntMatter_CheckedChanged(object sender, EventArgs e)
         {

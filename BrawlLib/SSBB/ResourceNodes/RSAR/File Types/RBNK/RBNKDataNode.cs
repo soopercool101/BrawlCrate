@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal RBNKInstParam* Header => (RBNKInstParam*) WorkingUncompressed.Address;
 
-        public RBNKInstParam hdr = new RBNKInstParam();
+        public RBNKInstParam hdr;
         private RSARFileAudioNode _soundNode;
 
         [Browsable(false)]
@@ -310,7 +310,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal IndexTable* Header => (IndexTable*) WorkingUncompressed.Address;
 
-        private IndexTable hdr = new IndexTable();
+        private IndexTable hdr;
 
         [Browsable(false)]
         public byte Min
@@ -404,7 +404,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         [Browsable(false)] public byte[] Keys => _keys;
         public byte[] _keys = new byte[0];
-        private bool _rebuildType = false; //true is range, false is index
+        private bool _rebuildType; //true is range, false is index
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
@@ -496,7 +496,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class RBNKNullNode : RBNKDataEntryNode
     {
-        public bool _invalid = false;
+        public bool _invalid;
 
         public override bool OnInitialize()
         {

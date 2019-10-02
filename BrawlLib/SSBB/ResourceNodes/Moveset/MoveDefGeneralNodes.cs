@@ -125,7 +125,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefBoneIndicesNode : MoveDefEntryNode
     {
         internal bint* Start => (bint*) WorkingUncompressed.Address;
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefBoneIndicesNode(string nameType, int count)
         {
@@ -171,7 +171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal bint* Header => (bint*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        internal int boneIndex = 0;
+        internal int boneIndex;
 
         [Browsable(false)]
         public MDL0BoneNode BoneNode
@@ -249,7 +249,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefIndicesNode : MoveDefEntryNode
     {
         internal bint* Start => (bint*) WorkingUncompressed.Address;
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefIndicesNode(string nameType, int count)
         {
@@ -296,7 +296,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal bint* Header => (bint*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        internal int i = 0;
+        internal int i;
 
         [Category("Index Entry")]
         public int ItemIndex
@@ -339,7 +339,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal bint* Header => (bint*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        internal int i = 0;
+        internal int i;
 
         [Category("Offset Entry")] public int DataOffset => i;
 

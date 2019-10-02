@@ -906,7 +906,7 @@ namespace System.Windows.Forms
             set => _vis0Updating = value;
         }
 
-        private bool _vis0Updating = false;
+        private bool _vis0Updating;
 
         public virtual void ApplyVIS0ToInterface()
         {

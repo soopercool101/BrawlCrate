@@ -360,7 +360,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public class SectionDataGroupNode : MoveDefEntryNode
     {
         internal VoidPtr First => (VoidPtr) WorkingUncompressed.Address;
-        public int Count = 0, EntrySize = 0, ID = 0;
+        public int Count, EntrySize, ID;
 
         private SectionDataGroupNode(int count, int size, int id)
         {

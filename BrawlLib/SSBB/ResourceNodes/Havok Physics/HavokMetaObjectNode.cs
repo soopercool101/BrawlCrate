@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public override ResourceType ResourceFileType => ResourceType.NoEditFolder;
 
-        private List<hkClassMemberNode> _memberArray = null;
+        private List<hkClassMemberNode> _memberArray;
 
         public HavokMetaObjectNode()
         {

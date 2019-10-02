@@ -28,8 +28,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public int _constructorIndex, _destructorIndex, _unresolvedIndex;
-        private int _referenceIndex = 0;
-        private ModuleDataNode _reference = null;
+        private int _referenceIndex;
+        private ModuleDataNode _reference;
 
         public RelocationManager(ModuleDataNode data)
         {

@@ -561,7 +561,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private RBNKEntryNode _baseEntry = null;
+        private RBNKEntryNode _baseEntry;
 
         private void button1_Click(object sender, EventArgs e)
         {

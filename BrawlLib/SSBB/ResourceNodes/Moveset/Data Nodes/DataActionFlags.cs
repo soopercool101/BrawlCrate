@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefActionFlagsNode : MoveDefEntryNode
     {
         internal ActionFlags* First => (ActionFlags*) WorkingUncompressed.Address;
-        private int Count = 0;
+        private int Count;
 
         public MoveDefActionFlagsNode(string name, int count)
         {

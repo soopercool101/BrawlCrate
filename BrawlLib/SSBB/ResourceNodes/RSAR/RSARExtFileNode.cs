@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public uint _extFileSize = 0;
+        public uint _extFileSize;
         internal string _extPath;
 
         [Browsable(false)]

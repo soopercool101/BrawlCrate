@@ -1154,7 +1154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)] public KeyframeArray SpotCut => Keyframes[8];
         [Browsable(false)] public KeyframeArray SpecShininess => Keyframes[9];
 
-        private KeyframeCollection _keyframes = null;
+        private KeyframeCollection _keyframes;
 
         [Browsable(false)]
         public KeyframeCollection Keyframes

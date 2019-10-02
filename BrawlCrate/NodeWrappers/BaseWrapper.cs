@@ -47,7 +47,7 @@ namespace BrawlCrate.NodeWrappers
     {
         protected static readonly ContextMenuStrip _emptyMenu = new ContextMenuStrip();
 
-        protected bool _discovered = false;
+        protected bool _discovered;
 
         protected ResourceNode _resource;
         public ResourceNode Resource => _resource;

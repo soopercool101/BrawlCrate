@@ -30,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public ModuleSectionNode[] _sections = null;
+        public ModuleSectionNode[] _sections;
 
         public uint _id;
         public int _linkNext; //0
@@ -518,7 +518,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private class ImportData
         {
             public bool _newSection = true;
-            public uint _lastOffset = 0;
+            public uint _lastOffset;
         }
 
         public void GenerateImports()

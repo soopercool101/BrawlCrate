@@ -28,7 +28,7 @@ namespace BrawlLib.SSBBTypes
 
         //The lookup manager stores all offsets to offsets in the file.
         public LookupManager _lookupManager;
-        public int _lookupCount = 0, _lookupLen = 0;
+        public int _lookupCount, _lookupLen;
 
         public int _sectionCount, _referenceCount;
 

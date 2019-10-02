@@ -2111,7 +2111,7 @@ namespace Be.Windows.Forms
             _caretVisible = false;
         }
 
-        private bool inStringArea = false;
+        private bool inStringArea;
 
         private void SetCaretPosition(Point p)
         {
@@ -3893,7 +3893,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private bool _groupSeparatorVisible = false;
+        private bool _groupSeparatorVisible;
 
         /// <summary>
         /// Gets or sets the visibility of the column info
@@ -3919,7 +3919,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private bool _columnInfoVisible = false;
+        private bool _columnInfoVisible;
 
         /// <summary>
         /// Gets or sets the visibility of a line info.
@@ -3945,7 +3945,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private bool _lineInfoVisible = false;
+        private bool _lineInfoVisible;
 
         /// <summary>
         /// Gets or sets the offset of a line info.
@@ -3969,7 +3969,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private long _lineInfoOffset = 0;
+        private long _lineInfoOffset;
 
         /// <summary>
         /// Gets or sets the hex box´s border style.
@@ -4174,7 +4174,7 @@ namespace Be.Windows.Forms
         public Brush SelectionBackBrush => _selectionBackBrush ??
                                            (_selectionBackBrush = new SolidBrush(_selectionBackColor));
 
-        private Brush _selectionBackBrush = null;
+        private Brush _selectionBackBrush;
 
         /// <summary>
         /// Gets or sets the foreground color for the selected bytes.
@@ -4198,7 +4198,7 @@ namespace Be.Windows.Forms
         public Brush SelectionForeBrush => _selectionForeBrush ??
                                            (_selectionForeBrush = new SolidBrush(_selectionForeColor));
 
-        private Brush _selectionForeBrush = null;
+        private Brush _selectionForeBrush;
 
         /// <summary>
         /// Gets or sets the color for the relocations with commands.
@@ -4222,7 +4222,7 @@ namespace Be.Windows.Forms
         public Brush RelocationBrush => _relocationBrush ??
                                         (_relocationBrush = new SolidBrush(_relocationColor));
 
-        private Brush _relocationBrush = null;
+        private Brush _relocationBrush;
 
         /// <summary>
         /// Gets or sets the color for the relocations with commands.
@@ -4245,7 +4245,7 @@ namespace Be.Windows.Forms
         public Brush CommandBrush => _commandBrush ??
                                      (_commandBrush = new SolidBrush(_commandColor));
 
-        private Brush _commandBrush = null;
+        private Brush _commandBrush;
 
         /// <summary>
         /// Gets or sets the color for code branch relocations.
@@ -4268,7 +4268,7 @@ namespace Be.Windows.Forms
         public Brush BlrBrush => _blrBrush ??
                                  (_blrBrush = new SolidBrush(_blrColor));
 
-        private Brush _blrBrush = null;
+        private Brush _blrBrush;
 
         /// <summary>
         /// Gets or sets the color for code branch relocations.
@@ -4291,7 +4291,7 @@ namespace Be.Windows.Forms
         public Brush LinkedBranchBrush => _linkedBranchBrush ??
                                           (_linkedBranchBrush = new SolidBrush(_linkedBranchColor));
 
-        private Brush _linkedBranchBrush = null;
+        private Brush _linkedBranchBrush;
 
         /// <summary>
         /// Gets or sets the color for relocations that are branched to.
@@ -4314,7 +4314,7 @@ namespace Be.Windows.Forms
         public Brush BranchOffsetBrush => _branchOffsetBrush ??
                                           (_branchOffsetBrush = new SolidBrush(_branchOffsetColor));
 
-        private Brush _branchOffsetBrush = null;
+        private Brush _branchOffsetBrush;
 
         /// <summary>
         /// Gets or sets the color for the selected bytes.
@@ -4337,7 +4337,7 @@ namespace Be.Windows.Forms
         public Brush SelectedBrush => _selectedBrush ??
                                       (_selectedBrush = new SolidBrush(_selectedColor));
 
-        private Brush _selectedBrush = null;
+        private Brush _selectedBrush;
 
         /// <summary>
         /// Gets or sets the visibility of a shadow selection.

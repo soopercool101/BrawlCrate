@@ -47,16 +47,16 @@ namespace System.Collections.Generic
         #region Fields
 
         // The node at the front of the deque.
-        public Node front = null;
+        public Node front;
 
         // The node at the back of the deque.
-        public Node back = null;
+        public Node back;
 
         // The number of elements in the deque.
-        private int count = 0;
+        private int count;
 
         // The version of the deque.
-        private long version = 0;
+        private long version;
 
         #endregion
 

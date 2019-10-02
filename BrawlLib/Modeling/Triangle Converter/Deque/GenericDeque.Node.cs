@@ -10,9 +10,9 @@ namespace System.Collections.Generic
         {
             private T value;
 
-            private Node previous = null;
+            private Node previous;
 
-            private Node next = null;
+            private Node next;
 
             public Node(T value)
             {

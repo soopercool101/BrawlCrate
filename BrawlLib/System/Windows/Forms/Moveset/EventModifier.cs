@@ -430,7 +430,7 @@ namespace System.Windows.Forms
         public MoveDefEventNode origEvent;
 
         private MoveDefEventNode eventData => newEvent;
-        private MoveDefEventNode newEv = null;
+        private MoveDefEventNode newEv;
 
         private MoveDefEventNode newEvent
         {
@@ -469,7 +469,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public MoveDefEventParameterNode param = null;
+        public MoveDefEventParameterNode param;
 
         //Display the event's name, offset and parameters.
         public void DisplayEvent()
@@ -562,7 +562,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public bool _updating = false;
+        public bool _updating;
 
         public FormEventList frmEventList;
 

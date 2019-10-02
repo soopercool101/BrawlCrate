@@ -651,8 +651,8 @@ namespace System.Windows.Forms
         private IAudioStream _sourceStream;
 
         private DateTime _sampleTime;
-        private bool _playing = false;
-        private bool _updating = false;
+        private bool _playing;
+        private bool _updating;
 
         public BrstmConverterDialog()
         {
@@ -1011,7 +1011,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public int _type = 0;
+        public int _type;
 
         private void btnOkay_Click(object sender, EventArgs e)
         {

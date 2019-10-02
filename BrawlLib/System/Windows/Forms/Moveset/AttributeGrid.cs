@@ -107,7 +107,7 @@ namespace System.Windows.Forms
         private DataGridView dtgrdAttributes;
         public RichTextBox description;
         private Splitter splitter1;
-        public bool called = false;
+        public bool called;
 
         private MoveDefAttributeNode _targetNode;
 
@@ -273,7 +273,7 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void description_TextChanged(object sender, EventArgs e)
         {

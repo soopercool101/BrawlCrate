@@ -209,7 +209,7 @@ namespace Be.Windows.Forms
             set => _selectAllMenuItemText = value;
         }
 
-        private string _selectAllMenuItemText = null;
+        private string _selectAllMenuItemText;
 
         /// <summary>
         /// Gets the text of the "Cut" ContextMenuStrip item.
@@ -244,7 +244,7 @@ namespace Be.Windows.Forms
             set => _cutMenuItemImage = value;
         }
 
-        private Image _cutMenuItemImage = null;
+        private Image _cutMenuItemImage;
 
         /// <summary>
         /// Gets or sets the image of the "Copy" ContextMenuStrip item.
@@ -257,7 +257,7 @@ namespace Be.Windows.Forms
             set => _copyMenuItemImage = value;
         }
 
-        private Image _copyMenuItemImage = null;
+        private Image _copyMenuItemImage;
 
         /// <summary>
         /// Gets or sets the image of the "Paste" ContextMenuStrip item.
@@ -270,7 +270,7 @@ namespace Be.Windows.Forms
             set => _pasteMenuItemImage = value;
         }
 
-        private Image _pasteMenuItemImage = null;
+        private Image _pasteMenuItemImage;
 
         /// <summary>
         /// Gets or sets the image of the "Select All" ContextMenuStrip item.
@@ -283,6 +283,6 @@ namespace Be.Windows.Forms
             set => _selectAllMenuItemImage = value;
         }
 
-        private Image _selectAllMenuItemImage = null;
+        private Image _selectAllMenuItemImage;
     }
 }

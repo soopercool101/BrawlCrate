@@ -30,13 +30,13 @@ namespace System.Windows.Forms
             }
         }
 
-        private Bitmap _base = null, _source, _preview, _indexed;
+        private Bitmap _base, _source, _preview, _indexed;
         private ColorInformation _colorInfo;
 
         private UnsafeBuffer _cmprBuffer;
 
         //private ColorPalette _tempPalette;
-        private bool _previewing = true, _updating = false;
+        private bool _previewing = true, _updating;
 
         private string _imageSource;
 
@@ -155,7 +155,7 @@ namespace System.Windows.Forms
             cboAlgorithm.SelectedItem = QuantizationAlgorithm.MedianCut;
         }
 
-        public bool Automatic = false;
+        public bool Automatic;
 
         public DialogResult ShowDialog(IWin32Window owner, BRRESNode parent)
         {

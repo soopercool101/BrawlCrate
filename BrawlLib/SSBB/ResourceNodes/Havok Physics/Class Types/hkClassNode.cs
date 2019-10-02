@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal hkClass* Header => (hkClass*) WorkingUncompressed.Address;
 
-        public List<hkClassNode> _inheritance = null;
+        public List<hkClassNode> _inheritance;
 
         private int _interfaceCount, _enumCount, _memberCount, _version, _size, _flags, _defaultsPtr;
         private string _parentName;

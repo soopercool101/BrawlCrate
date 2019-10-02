@@ -257,7 +257,7 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void description_TextChanged(object sender, EventArgs e)
         {

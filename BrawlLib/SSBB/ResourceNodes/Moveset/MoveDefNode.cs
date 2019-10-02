@@ -19,11 +19,11 @@ namespace BrawlLib.SSBB.ResourceNodes
         //Variables specific for rebuilding
         [Browsable(false)] public VoidPtr _rebuildBase => Root._rebuildBase;
 
-        public int _lookupCount = 0;
+        public int _lookupCount;
         public List<int> _lookupOffsets = new List<int>();
 
         public VoidPtr _entryOffset = 0;
-        public int _entryLength = 0, _childLength = 0;
+        public int _entryLength, _childLength;
 
         [Browsable(false)] public int _rebuildOffset => (int) _entryOffset - (int) _rebuildBase;
 
@@ -129,13 +129,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public MoveDefExternalNode _extNode = null;
+        public MoveDefExternalNode _extNode;
         public bool _extOverride = false;
 
         private VoidPtr data = null;
         private VoidPtr dAddr => data == null ? data = Data : data;
 
-        public int offsetID = 0;
+        public int offsetID;
         public bool isExtra = false;
 
         public override ResourceType ResourceFileType => ResourceType.NoEditEntry;
@@ -3438,12 +3438,12 @@ namespace BrawlLib.SSBB.ResourceNodes
         public SortedList<int, string> _paths = new SortedList<int, string>();
         public SortedList<int, string> Paths => _paths;
 
-        public string[] iRequirements = null;
-        public string[] iAirGroundStats = null;
-        public string[] iCollisionStats = null;
-        public string[] iGFXFiles = null;
-        public AttributeInfo[] AttributeArray = null;
-        public Dictionary<string, SectionParamInfo> Params = null;
+        public string[] iRequirements;
+        public string[] iAirGroundStats;
+        public string[] iCollisionStats;
+        public string[] iGFXFiles;
+        public AttributeInfo[] AttributeArray;
+        public Dictionary<string, SectionParamInfo> Params;
 
         public MoveDefActionListNode _subActions;
         public MoveDefActionListNode _actions;
@@ -4737,7 +4737,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public List<MoveDefEntryNode> _postProcessNodes;
         public VoidPtr _rebuildBase;
         public static LookupManager _lookupOffsets;
-        public int lookupCount = 0, lookupLen = 0;
+        public int lookupCount, lookupLen;
 
         public override int OnCalculateSize(bool force)
         {
@@ -4822,7 +4822,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return size + (lookupLen = lookupCount * 4) + refTable.TotalSize;
         }
 
-        private int refCount = 0;
+        private int refCount;
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {
@@ -5066,7 +5066,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefStringEntry* Header => (FDefStringEntry*) WorkingUncompressed.Address;
         private Dictionary<NameSizeGroup, FDefStringEntry> DataTable = new Dictionary<NameSizeGroup, FDefStringEntry>();
         private FDefStringTable* stringTable;
-        public int DataSize = 0, dataOffset = 0;
+        public int DataSize, dataOffset;
 
         public MoveDefSectionNode(int dataSize, VoidPtr table)
         {

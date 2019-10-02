@@ -308,8 +308,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         private readonly int _numChannels;
         private readonly int _numBlocks;
 
-        private int _samplePos = 0;
-        public int _blockId = 0;
+        private int _samplePos;
+        public int _blockId;
 
         private readonly ADPCMState[,] _blockStates;
         internal ADPCMState[] _currentStates;

@@ -10,9 +10,9 @@ namespace System.Windows.Forms
         public uint _allowedUndos = 50;
         public List<SaveState> _undoSaves = new List<SaveState>();
         public List<SaveState> _redoSaves = new List<SaveState>();
-        public int _saveIndex = 0;
+        public int _saveIndex;
         public bool AwaitingRedoSave => _currentUndo != null;
-        public bool _undoing = false;
+        public bool _undoing;
 
         public SaveState _currentUndo;
 

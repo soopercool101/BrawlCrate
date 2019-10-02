@@ -273,7 +273,7 @@ namespace BrawlCrate
         {
             public ModelForm TargetForm { get; set; }
 
-            private bool _mainWindowFocused = false;
+            private bool _mainWindowFocused;
 
             public bool PreFilterMessage(ref Message m)
             {

@@ -310,7 +310,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)] public KeyframeArray FovY => Keyframes[13];
         [Browsable(false)] public KeyframeArray Height => Keyframes[14];
 
-        private KeyframeCollection _keyframes = null;
+        private KeyframeCollection _keyframes;
 
         [Browsable(false)]
         public KeyframeCollection Keyframes

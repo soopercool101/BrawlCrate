@@ -993,7 +993,7 @@ namespace BrawlLib.Wii.Graphics
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ConstantAlpha
     {
-        public static readonly ConstantAlpha Default = new ConstantAlpha();
+        public static readonly ConstantAlpha Default;
 
         public byte Pad, Enable, Value;
     }

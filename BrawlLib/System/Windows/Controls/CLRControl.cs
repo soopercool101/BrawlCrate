@@ -224,7 +224,7 @@ namespace System.Windows.Forms
 
         public event EventHandler CurrentColorChanged;
 
-        public int _colorId = 0;
+        public int _colorId;
 
         public int ColorID
         {

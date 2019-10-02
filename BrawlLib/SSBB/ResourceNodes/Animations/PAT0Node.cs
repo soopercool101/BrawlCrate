@@ -1197,7 +1197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public float _frame;
         public ushort _texFileIndex, _pltFileIndex;
 
-        public string _tex = null, _plt = null;
+        public string _tex, _plt;
 
         public override ResourceType ResourceFileType => ResourceType.PAT0TextureEntry;
         public override bool AllowDuplicateNames => true;
@@ -1442,7 +1442,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _textureNode.GetImage(index, _paletteNode);
         }
 
-        public TEX0Node _textureNode = null;
-        public PLT0Node _paletteNode = null;
+        public TEX0Node _textureNode;
+        public PLT0Node _paletteNode;
     }
 }

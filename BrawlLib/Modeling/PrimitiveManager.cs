@@ -95,11 +95,11 @@ namespace BrawlLib.Modeling
         //Set these in OnCalculateSize!
         public bool _remakePrimitives; //Otherwise, copies previous raw primitive values
         public bool _isWeighted;
-        public int _primitiveSize = 0;
+        public int _primitiveSize;
         public List<FacepointAttribute> _descList;
         public List<VertexAttributeFormat> _fmtList;
         public XFArrayFlags _arrayFlags;
-        public int _fpStride = 0;
+        public int _fpStride;
         public List<PrimitiveGroup> _primGroups = new List<PrimitiveGroup>();
 
         internal int[] _newClrObj = new int[2];

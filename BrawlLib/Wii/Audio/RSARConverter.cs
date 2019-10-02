@@ -399,7 +399,7 @@ namespace BrawlLib.Wii.Audio
 
     public class RSAREntryList
     {
-        public int _stringLength = 0;
+        public int _stringLength;
         public List<string> _strings = new List<string>();
         public List<RSARStringEntryState> _tempStrings = new List<RSARStringEntryState>();
         public List<RSAREntryNode> _sounds = new List<RSAREntryNode>();

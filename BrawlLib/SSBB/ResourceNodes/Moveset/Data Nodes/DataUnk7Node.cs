@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefUnk7Node : MoveDefEntryNode
     {
         internal long* Start => (long*) WorkingUncompressed.Address;
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefUnk7Node(int count)
         {

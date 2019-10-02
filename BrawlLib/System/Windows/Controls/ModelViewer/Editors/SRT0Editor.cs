@@ -977,7 +977,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public int type = 0;
+        public int type;
 
         private void box_MouseDown(object sender, MouseEventArgs e)
         {

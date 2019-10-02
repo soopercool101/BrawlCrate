@@ -79,8 +79,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public bool _isBlank = false;
-        public bool _build = false;
+        public bool _isBlank;
+        public bool _build;
 
         [Category("Script")]
         public bool ForceWrite

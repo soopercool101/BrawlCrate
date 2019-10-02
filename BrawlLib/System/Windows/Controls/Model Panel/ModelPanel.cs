@@ -36,7 +36,7 @@ namespace System.Windows.Forms
         private readonly List<KeyValuePair<ModelPanelViewport, DragFlags>> _dragging =
             new List<KeyValuePair<ModelPanelViewport, DragFlags>>();
 
-        public bool _draggingViewports = false;
+        public bool _draggingViewports;
 
         public BindingList<IRenderedObject> _renderList = new BindingList<IRenderedObject>();
         public List<DrawCallBase> _drawCalls = new List<DrawCallBase>();

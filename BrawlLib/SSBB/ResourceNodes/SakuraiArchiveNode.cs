@@ -17,7 +17,7 @@ namespace BrawlLib.SSBBTypes
         public int _dataSize;
 
         [Browsable(false)] public bool Initializing => _initializing;
-        public bool _initializing = false;
+        public bool _initializing;
 
         /// <summary>
         /// Returns the address after the moveset header that all offsets use as a base.
@@ -55,7 +55,7 @@ namespace BrawlLib.SSBBTypes
             set => _rebuildNeeded = value;
         }
 
-        private bool _rebuildNeeded = false;
+        private bool _rebuildNeeded;
 
         /// <summary>
         /// List of external subroutines located in Fighter.pac.
@@ -360,7 +360,7 @@ namespace BrawlLib.SSBBTypes
         /// </summary>
         public static SakuraiArchiveBuilder Builder => _currentlyBuilding == null ? null : _currentlyBuilding._builder;
 
-        public static SakuraiArchiveNode _currentlyBuilding = null;
+        public static SakuraiArchiveNode _currentlyBuilding;
 
         public bool IsRebuilding => _builder != null && _builder.IsRebuilding;
         public bool IsCalculatingSize => _builder != null && _builder.IsCalculatingSize;

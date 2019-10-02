@@ -708,7 +708,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("SRT0 Texture Entry")] public SRT0Code Flags => _code;
 #endif
 
-        public bool _indirect = false;
+        public bool _indirect;
 
         [Category("SRT0 Texture Entry")]
         public bool Indirect

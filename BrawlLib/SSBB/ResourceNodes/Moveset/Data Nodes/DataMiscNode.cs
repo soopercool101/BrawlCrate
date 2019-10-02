@@ -639,7 +639,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal byte* Header => (byte*) WorkingUncompressed.Address;
 
-        private int Count = 0;
+        private int Count;
 
         public UnknownSection2Node(int count)
         {
@@ -1069,7 +1069,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefHurtBox* Start => (FDefHurtBox*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.MDefHurtboxList;
 
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefMiscHurtBoxesNode(int count)
         {
@@ -1115,7 +1115,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal Vector3 _offst, _stretch;
         internal float _radius;
-        internal HurtBoxFlags flags = new HurtBoxFlags();
+        internal HurtBoxFlags flags;
 
         [Browsable(false)]
         public MDL0BoneNode BoneNode
@@ -1669,7 +1669,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefSectionUnk1Node : MoveDefEntryNode
     {
         internal FDefMiscUnkType1* Start => (FDefMiscUnkType1*) WorkingUncompressed.Address;
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefSectionUnk1Node(int count)
         {
@@ -1713,7 +1713,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefMiscUnkType1* Header => (FDefMiscUnkType1*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        internal int boneIndex = 0;
+        internal int boneIndex;
         internal float x, y, width, height;
 
         [Browsable(false)]
@@ -1833,7 +1833,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefLedgegrabsNode : MoveDefEntryNode
     {
         internal FDefLedgegrab* Start => (FDefLedgegrab*) WorkingUncompressed.Address;
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefLedgegrabsNode(int count)
         {
@@ -2194,7 +2194,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal float[] floatEntries;
 
-        internal int intEntry1 = 0;
+        internal int intEntry1;
         //internal int intEntry2 = 0;
 
         [Category("Glide Attribute")]
@@ -2321,7 +2321,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefTether* Header => (FDefTether*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        internal int numHangFrame = 0;
+        internal int numHangFrame;
         internal float unk1;
 
         [Category("Tether Entry")]

@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefActionPreNode : MoveDefEntryNode
     {
         internal bint* Start => (bint*) WorkingUncompressed.Address;
-        internal int Count = 0;
+        internal int Count;
 
         public MoveDefActionPreNode(int count)
         {
@@ -58,7 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal bint* Header => (bint*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        internal int i = 0;
+        internal int i;
 
         [Category("Action Pre")] public int Value => i;
 

@@ -111,9 +111,9 @@ namespace System.Windows.Forms
 
         #endregion
 
-        private bool _loop = false;
+        private bool _loop;
 
-        private bool _isPlaying = false;
+        private bool _isPlaying;
         //private bool _isScrolling = false;
 
         private DateTime _frameTime;
@@ -352,7 +352,7 @@ namespace System.Windows.Forms
             previewPanel1.btnLeft.Visible = previewPanel1.btnRight.Visible = true;
         }
 
-        private int _frame = 0;
+        private int _frame;
 
         private void btnPlay_Click(object sender, EventArgs e)
         {

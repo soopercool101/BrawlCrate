@@ -4,12 +4,12 @@
     {
         public class PPCOperand
         {
-            private readonly PPCOpCode _owner = null;
+            private readonly PPCOpCode _owner;
 
             private readonly OperandType _opType = OperandType.VAL;
-            private readonly int _bitShift = 0;
-            private readonly uint _bitMask = 0;
-            private readonly uint _negBit = 0;
+            private readonly int _bitShift;
+            private readonly uint _bitMask;
+            private readonly uint _negBit;
             private readonly string _name;
 
             public int Value

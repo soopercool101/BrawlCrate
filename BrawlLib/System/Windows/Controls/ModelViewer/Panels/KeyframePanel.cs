@@ -481,7 +481,7 @@ namespace System.Windows.Forms
             return -1;
         }
 
-        public bool _updating = false;
+        public bool _updating;
 
         private unsafe void listKeyframes_SelectedIndexChanged(object sender, EventArgs e)
         {

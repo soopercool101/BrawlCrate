@@ -849,7 +849,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public int FrameCount => Keyframes.FrameLimit;
 
-        internal KeyframeCollection _keyframes = null;
+        internal KeyframeCollection _keyframes;
 
         [Browsable(false)]
         public KeyframeCollection Keyframes

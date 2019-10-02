@@ -59,7 +59,7 @@
 
         //Sets whether the buffer manages looping.
         //Use this with Source.
-        internal bool _loop = false;
+        internal bool _loop;
 
         public bool Loop
         {

@@ -4,7 +4,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class RELObjectNode : RELEntryNode
     {
-        private readonly RELType _type = null;
+        private readonly RELType _type;
 
         [Browsable(false)] public RELType Type => _type;
 

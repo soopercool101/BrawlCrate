@@ -118,7 +118,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected internal DataSource _origSource, _uncompSource;
         protected internal DataSource _replSrc, _replUncompSrc;
 
-        protected internal bool _changed, _merged, _disposed = false;
+        protected internal bool _changed, _merged, _disposed;
         protected internal CompressionType _compression;
 
         public string _name, _origPath;
@@ -783,7 +783,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //Causes a deviation in the resource tree. This node and all child nodes will be backed by a temporary file until the tree is merged.
         //Causes parent node(s) to become dirty.
         //Replace will reference the file in a new DataSource.
-        public bool _replaced = false;
+        public bool _replaced;
 
         public virtual unsafe void Replace(string fileName)
         {

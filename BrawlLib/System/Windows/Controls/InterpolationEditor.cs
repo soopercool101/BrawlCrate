@@ -275,7 +275,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void interpolationViewer1_SelectedKeyframeChanged(object sender, EventArgs e)
         {

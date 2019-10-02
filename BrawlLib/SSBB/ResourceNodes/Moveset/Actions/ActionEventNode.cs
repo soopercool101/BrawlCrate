@@ -336,7 +336,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Category("MoveDef Event")] public uint ArgumentOffset => argOffset;
 
-        public uint argOffset = 0;
+        public uint argOffset;
 
         [Category("MoveDef Event Argument")]
         public ArgVarType[] Type
@@ -601,8 +601,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MoveDefNode Root;
         public int HitboxID = -1, HitboxSize = 0;
-        public uint _event = 0;
-        public Event EventData = null;
+        public uint _event;
+        public Event EventData;
         public HitboxFlagsNode flags;
         public SpecialHitboxFlagsNode specialFlags;
 

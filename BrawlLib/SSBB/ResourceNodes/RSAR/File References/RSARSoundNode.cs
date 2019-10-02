@@ -36,9 +36,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override ResourceType ResourceFileType => ResourceType.RSARSound;
 
         public Sound3DParam _sound3dParam;
-        public WaveSoundInfo _waveInfo = new WaveSoundInfo();
-        public StrmSoundInfo _strmInfo = new StrmSoundInfo();
-        public SeqSoundInfo _seqInfo = new SeqSoundInfo();
+        public WaveSoundInfo _waveInfo;
+        public StrmSoundInfo _strmInfo;
+        public SeqSoundInfo _seqInfo;
 
         public RSEQLabelNode _seqLabl;
         public RSARFileNode _soundFileNode;

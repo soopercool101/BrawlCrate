@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         internal List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0FurPosData hdr = new MDL0FurPosData();
+        private MDL0FurPosData hdr;
 
         [Category("Fur Layer Vertex Data")] public int TotalLen => hdr._dataLen;
         [Category("Fur Layer Vertex Data")] public int MDL0Offset => hdr._mdl0Offset;
@@ -85,8 +85,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public VertexCodec _enc;
-        public bool _forceRebuild = false;
-        public bool _forceFloat = false;
+        public bool _forceRebuild;
+        public bool _forceFloat;
 
         public override int OnCalculateSize(bool force)
         {

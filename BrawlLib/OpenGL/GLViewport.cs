@@ -16,7 +16,7 @@ namespace BrawlLib.OpenGL
         protected Rectangle _region;
 
         protected GLTexture _bgImage = null;
-        protected bool _updateImage = false;
+        protected bool _updateImage;
         protected BGImageType _bgType = BGImageType.Stretch;
         protected Image _backImg;
         protected Color _backColor = Color.FromKnownColor(KnownColor.Control);

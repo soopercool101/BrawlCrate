@@ -20,7 +20,7 @@ namespace BrawlCrate.API
         public ScriptSource Script { get; set; }
         public ScriptScope Scope { get; set; }
 
-        private bool _converted = false;
+        private bool _converted;
 
         public void Execute()
         {

@@ -12,13 +12,13 @@ namespace BrawlLib.OpenGL
     public unsafe class TKContext : IDisposable
     {
         private IGraphicsContext _context;
-        private IWindowInfo _winInfo = null;
+        private IWindowInfo _winInfo;
         public IWindowInfo WindowInfo => _winInfo;
 
         //These provide a way to manage which context is in use to avoid errors
         public static List<TKContext> BoundContexts => _boundContexts ?? (_boundContexts = new List<TKContext>());
         public static List<TKContext> _boundContexts;
-        public static TKContext CurrentContext = null;
+        public static TKContext CurrentContext;
 
         internal Dictionary<string, object> _states = new Dictionary<string, object>();
 
@@ -63,9 +63,9 @@ namespace BrawlLib.OpenGL
         }
 
         public static bool _shadersSupported = true;
-        public static int _versionMax = 0;
-        public static int _versionMin = 0;
-        public static bool _anyContextInitialized = false;
+        public static int _versionMax;
+        public static int _versionMin;
+        public static bool _anyContextInitialized;
 
         public Control _window;
 
@@ -173,7 +173,7 @@ namespace BrawlLib.OpenGL
         }
 
         public bool Resetting => _resetting;
-        private bool _resetting = false;
+        private bool _resetting;
 
         public void Reset()
         {

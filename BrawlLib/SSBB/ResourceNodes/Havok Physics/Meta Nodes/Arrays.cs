@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class HavokCommonArrayNode : ClassMemberInstanceNode
     {
         protected VoidPtr dataAddr = null;
-        protected int count = 0;
+        protected int count;
 
         public override bool OnInitialize()
         {

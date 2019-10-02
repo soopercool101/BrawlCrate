@@ -38,7 +38,7 @@ namespace BrawlLib.OpenGL
             }
         }
 
-        private static GLPanel _currentPanel = null;
+        private static GLPanel _currentPanel;
 
         public TKContext Context => _ctx;
         protected TKContext _ctx;

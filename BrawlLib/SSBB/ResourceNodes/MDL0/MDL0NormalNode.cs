@@ -92,8 +92,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public VertexCodec _enc;
-        public bool _forceRebuild = false;
-        public bool _forceFloat = false;
+        public bool _forceRebuild;
+        public bool _forceFloat;
 
         public override int OnCalculateSize(bool force)
         {

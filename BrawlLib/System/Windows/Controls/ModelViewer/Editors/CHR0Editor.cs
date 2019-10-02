@@ -1230,7 +1230,7 @@ namespace System.Windows.Forms
             _mainWindow.InterpolationEditor.interpolationViewer._updating = false;
         }
 
-        public int type = 0;
+        public int type;
 
         private void box_MouseDown(object sender, MouseEventArgs e)
         {

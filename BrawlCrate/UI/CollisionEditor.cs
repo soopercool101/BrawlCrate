@@ -1350,8 +1350,8 @@ namespace System.Windows.Forms
         protected CollisionState save;
         protected List<CollisionState> undoSaves = new List<CollisionState>();
         protected List<CollisionState> redoSaves = new List<CollisionState>();
-        protected int saveIndex = 0;
-        protected bool hasMoved = false;
+        protected int saveIndex;
+        protected bool hasMoved;
 
         public CollisionEditor()
         {

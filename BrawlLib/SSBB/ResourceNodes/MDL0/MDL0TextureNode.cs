@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public PLT0Node _palette = null;
+        public PLT0Node _palette;
 
         internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, string palette = null)
         {

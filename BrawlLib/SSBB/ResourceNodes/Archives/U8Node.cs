@@ -196,7 +196,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int entryLength = 0;
+        private int entryLength;
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {

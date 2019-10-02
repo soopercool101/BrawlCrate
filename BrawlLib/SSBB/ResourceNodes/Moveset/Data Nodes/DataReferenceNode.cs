@@ -27,7 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             stringTable = (FDefStringTable*) table;
         }
 
-        private bool populated = false;
+        private bool populated;
 
         public override bool OnInitialize()
         {

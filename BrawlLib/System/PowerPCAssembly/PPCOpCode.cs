@@ -8,8 +8,8 @@ namespace System.PowerPcAssembly
     {
         protected Bin32 _data = 0;
 
-        protected List<string> _names = null;
-        protected List<PPCOperand> _operands = null;
+        protected List<string> _names;
+        protected List<PPCOperand> _operands;
 
         [Browsable(false)]
         public PPCMnemonic Operation

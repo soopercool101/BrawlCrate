@@ -30,7 +30,7 @@ namespace BrawlLib.BrawlCrate
         public static readonly int nameIndex = 69;
         public static readonly int minimumLength = nameIndex + 1;
         private static readonly char[] trimChars = {' ', '\t'};
-        public static bool generated = false;
+        public static bool generated;
 
         public static string FromID(int id, int idOffset, string flagToIgnore)
         {
@@ -326,7 +326,7 @@ namespace BrawlLib.BrawlCrate
         private static readonly int nameIndex = 32;
         private static readonly int minimumLength = nameIndex + 1;
         private static readonly char[] trimChars = {' ', '\t'};
-        private static bool generated = false;
+        private static bool generated;
 
         public static string FromID(int id)
         {

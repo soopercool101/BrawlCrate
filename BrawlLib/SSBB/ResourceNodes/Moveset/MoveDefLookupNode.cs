@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefLookupNode : MoveDefEntryNode
     {
         internal bint* First => (bint*) WorkingUncompressed.Address;
-        private int Count = 0;
+        private int Count;
 
         public MoveDefLookupNode(int count)
         {

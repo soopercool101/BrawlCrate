@@ -1621,7 +1621,7 @@ namespace BrawlBox.NodeWrappers
 
         #endregion
 
-        private static bool shown = false;
+        private static bool shown;
 
         public MDefSubroutineListWrapper()
         {
@@ -1697,7 +1697,7 @@ namespace BrawlBox.NodeWrappers
     [NodeWrapper(ResourceType.MDefRefList)]
     internal class MDefRefListWrapper : GenericWrapper
     {
-        private static bool shown = false;
+        private static bool shown;
 
         #region Menu
 

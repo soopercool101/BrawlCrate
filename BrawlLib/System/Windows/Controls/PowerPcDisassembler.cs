@@ -11,7 +11,7 @@ namespace System.Windows.Forms
         internal RelocationManager _manager;
         public int _baseOffset, _sectionOffset;
         public List<PPCOpCode> _codes = new List<PPCOpCode>();
-        public bool _updating = false;
+        public bool _updating;
         public SectionEditor _editor;
 
         public void SetTarget(RELMethodNode node)

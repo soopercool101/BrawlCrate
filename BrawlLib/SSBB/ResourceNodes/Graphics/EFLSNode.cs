@@ -46,7 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return Header->_numEntries > 0;
         }
 
-        internal int RE3DOffset = 0;
+        internal int RE3DOffset;
 
         public override int OnCalculateSize(bool force)
         {

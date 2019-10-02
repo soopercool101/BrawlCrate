@@ -186,7 +186,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _showOld = false;
+        private bool _showOld;
 
         public bool ShowOldColor
         {
@@ -281,7 +281,7 @@ namespace System.Windows.Forms
             return UITypeEditorEditStyle.DropDown;
         }
 
-        private IWindowsFormsEditorService _service = null;
+        private IWindowsFormsEditorService _service;
 
         public override object EditValue(
             ITypeDescriptorContext context,

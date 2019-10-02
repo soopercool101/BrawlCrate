@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class MoveDefUnk17Node : MoveDefEntryNode
     {
         internal Unk17Entry* First => (Unk17Entry*) WorkingUncompressed.Address;
-        private int Count = 0;
+        private int Count;
 
         public override bool OnInitialize()
         {

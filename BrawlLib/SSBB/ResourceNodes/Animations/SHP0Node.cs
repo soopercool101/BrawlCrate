@@ -720,7 +720,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public bool _isFixed = false;
+        public bool _isFixed;
         public float _fixedValue;
 
         public SHP0VertexSetNode(string name)

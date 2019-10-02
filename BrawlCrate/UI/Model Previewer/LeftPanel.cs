@@ -732,10 +732,10 @@ namespace System.Windows.Forms
         public List<ListViewGroup> _AnimGroupsExternal = new List<ListViewGroup>();
 
         public bool _syncPat0 = false;
-        private bool _updating = false;
+        private bool _updating;
         public string _lastSelected = null;
-        public SRT0Node _srt0Selection = null;
-        public PAT0Node _pat0Selection = null;
+        public SRT0Node _srt0Selection;
+        public PAT0Node _pat0Selection;
         private IObject _selectedObject;
         private MDL0TextureNode _selectedTexture;
 

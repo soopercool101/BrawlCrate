@@ -310,7 +310,7 @@ namespace System.Windows.Forms
         private DataGridView dtgrdAttributes;
         public RichTextBox description;
         private Splitter splitter1;
-        public bool called = false;
+        public bool called;
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel1;
         private RadioButton rdoFloat;
@@ -621,7 +621,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void description_TextChanged(object sender, EventArgs e)
         {

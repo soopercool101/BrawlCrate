@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int _tableLen = 0;
+        private int _tableLen;
 
         public override int OnCalculateSize(bool force)
         {

@@ -1942,7 +1942,7 @@ namespace System.Windows.Forms
             _mainWindow.UpdateModel();
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         public void UpdateSelectedLightSets()
         {
@@ -2146,7 +2146,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public int _tabIndex = 0;
+        public int _tabIndex;
 
         public void tabControl1_Selected(object sender, TabControlEventArgs e)
         {

@@ -283,7 +283,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public bool called = false;
+        public bool called;
 
         public ScriptEditor()
         {

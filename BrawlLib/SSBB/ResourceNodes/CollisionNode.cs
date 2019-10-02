@@ -373,7 +373,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public MDL0BoneNode _linkedBone = null;
+        public MDL0BoneNode _linkedBone;
 
         public Vector2 _boxMin, _boxMax;
         public int _unk1, _unk2, _unk3, _unk5, _unk6, _boneIndex;

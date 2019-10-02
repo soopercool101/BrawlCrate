@@ -98,10 +98,10 @@ namespace System.Windows.Forms
 
         private readonly ScreenTextHandler _text;
 
-        public bool _textEnabled = false;
-        public bool _allowSelection = false;
-        public bool _selecting = false;
-        public bool _showCamCoords = false;
+        public bool _textEnabled;
+        public bool _allowSelection;
+        public bool _selecting;
+        public bool _showCamCoords;
 
         public delegate void ZoomDel(float amt, bool invoked);
 
@@ -834,7 +834,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private Drawing.Point? lastCursorPos = null;
+        private Drawing.Point? lastCursorPos;
 
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {

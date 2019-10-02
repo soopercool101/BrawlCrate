@@ -2,7 +2,7 @@
 {
     public class CustomTrackBar : TrackBar
     {
-        private bool _isScrolling = false;
+        private bool _isScrolling;
 
         public event EventHandler UserSeek;
 

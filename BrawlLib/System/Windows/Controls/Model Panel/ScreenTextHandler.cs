@@ -19,8 +19,8 @@ namespace System.Windows.Forms
         private readonly Dictionary<string, TextData> _text = new Dictionary<string, TextData>();
         public int Count => _text.Count;
 
-        private Drawing.Size _size = new Drawing.Size();
-        private Bitmap _bitmap = null;
+        private Drawing.Size _size;
+        private Bitmap _bitmap;
         private int _texId = -1;
 
         public Vector3 this[string text]

@@ -22,18 +22,18 @@ namespace System.Windows.Forms
 
         internal bool _updating = false;
 
-        private KeyframeEntry _selKey = null; //The currently selected keyframe
-        private KeyframeEntry _hiKey = null;  //The keyframe the mouse is hovering over
+        private KeyframeEntry _selKey; //The currently selected keyframe
+        private KeyframeEntry _hiKey;  //The keyframe the mouse is hovering over
 
-        private Vector2? _slopePoint = null;
+        private Vector2? _slopePoint;
         private Vector2 _origPos;
-        private KeyframeEntry _keyRoot = null; //The first keyframe in the array
+        private KeyframeEntry _keyRoot; //The first keyframe in the array
 
         private const float _lineWidth = 1.5f;  //The size of lines
         private const float _pointWidth = 5.0f; //The size of points
 
         private int _frame;          //The current frame index
-        private int _frameLimit = 0; //The overall number of frames
+        private int _frameLimit; //The overall number of frames
 
         private float _xScale;                  //Width/Frames ratio
         private float _yScale;                  //Height/Values ratio
@@ -45,8 +45,7 @@ namespace System.Windows.Forms
         private float _maxVal = float.MinValue; //The maximum value in all keyframes
 
         private bool
-            _keyDraggingAllowed =
-                false; //Determines if the user can drag keyframe values across frames or to change the value
+            _keyDraggingAllowed; //Determines if the user can drag keyframe values across frames or to change the value
 
         private bool _drawTans = true; //Determines if tangents should be rendered
         private bool _syncStartEnd;    //If true, the first and last keyframe values and tangents will be synchronized
@@ -55,10 +54,10 @@ namespace System.Windows.Forms
             _allKeys = true; //Determines if all keyframes should be rendered, or only the selected one and its neighbors
 
         private bool
-            _genTans = false; //True if tangents should be automatically generated when affected keyframes change
+            _genTans; //True if tangents should be automatically generated when affected keyframes change
 
-        private bool _lockIncs = false; //Determines if the scales can be changed on resize
-        private bool _dragging = false; //True if the user is dragging a keyframe or tangent slope
+        private bool _lockIncs; //Determines if the scales can be changed on resize
+        private bool _dragging; //True if the user is dragging a keyframe or tangent slope
 
         private static bool _alterSelTangent_Drag = true;
         private static bool _alterAdjTangents_KeyFrame_Drag = true;

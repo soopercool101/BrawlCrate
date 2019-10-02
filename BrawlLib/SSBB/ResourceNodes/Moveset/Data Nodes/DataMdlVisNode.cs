@@ -262,7 +262,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal bint* Header => (bint*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.MDefMdlVisRef;
 
-        internal int i = 0;
+        internal int i;
 
         [Category("Offset Entry")] public int DataOffset => i;
 

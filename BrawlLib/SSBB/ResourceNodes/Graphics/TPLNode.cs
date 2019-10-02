@@ -63,7 +63,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int size = 0, texHdrLen = 0, pltHdrLen = 0, texLen = 0, pltLen = 0;
+        private int size, texHdrLen, pltHdrLen, texLen, pltLen;
 
         public override int OnCalculateSize(bool force)
         {

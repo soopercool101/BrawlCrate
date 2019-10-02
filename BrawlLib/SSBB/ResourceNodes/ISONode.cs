@@ -11,14 +11,14 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class ISONode : ISOEntryNode
     {
-        internal static byte[] LoadedKey = null;
+        internal static byte[] LoadedKey;
 
         internal ISOPartitionHeader* Header => (ISOPartitionHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
         public override string DataSize => "0x" + WorkingUncompressed.Map.BaseStream.Length.ToString("X");
 
         private string _gameName;
-        public bool _isGC = false;
+        public bool _isGC;
         protected ISOCommonPartInfo _partInfo;
 
         [Category("ISO Disc Image")]

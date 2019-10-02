@@ -47,16 +47,16 @@ namespace System.Collections
         #region Fields
 
         // The node at the front of the deque.
-        private Node front = null;
+        private Node front;
 
         // The node at the back of the deque.
-        private Node back = null;
+        private Node back;
 
         // The number of elements in the deque.
-        private int count = 0;
+        private int count;
 
         // The version of the deque.
-        private long version = 0;
+        private long version;
 
         #endregion
 
@@ -474,9 +474,9 @@ namespace System.Collections
         {
             private readonly object value;
 
-            private Node previous = null;
+            private Node previous;
 
-            private Node next = null;
+            private Node next;
 
             public Node(object value)
             {
@@ -509,9 +509,9 @@ namespace System.Collections
 
             private Node currentNode;
 
-            private object current = null;
+            private object current;
 
-            private bool moveResult = false;
+            private bool moveResult;
 
             private readonly long version;
 

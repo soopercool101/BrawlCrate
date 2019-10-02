@@ -30,7 +30,7 @@ namespace BrawlCrate
 
         public readonly RecentFileHandler RecentFilesHandler;
 
-        private InterpolationForm _interpolationForm = null;
+        private InterpolationForm _interpolationForm;
 
         public InterpolationForm InterpolationForm
         {
@@ -1380,7 +1380,7 @@ namespace BrawlCrate
 
     public class RecentFileHandler : Component
     {
-        private IContainer components = null;
+        private IContainer components;
 
         protected override void Dispose(bool disposing)
         {

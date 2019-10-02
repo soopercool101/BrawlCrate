@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class UserDataCollectionPropertyDescriptor : PropertyDescriptor
     {
-        private readonly UserDataCollection collection = null;
+        private readonly UserDataCollection collection;
         private readonly int index = -1;
 
         public UserDataCollectionPropertyDescriptor(UserDataCollection coll, int idx) : base("#" + idx.ToString(), null)

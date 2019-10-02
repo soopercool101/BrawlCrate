@@ -122,9 +122,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal AnimCurveHeader* Header => (AnimCurveHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.REFFAnimationList;
 
-        internal AnimCurveHeader _hdr = new AnimCurveHeader();
+        internal AnimCurveHeader _hdr;
 
-        public bool _isPtcl = false;
+        public bool _isPtcl;
 
         public enum AnimType
         {
@@ -344,7 +344,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Effect Animation")] public uint NameTableSize => _hdr.nameTable;
         [Category("Effect Animation")] public uint InfoTableSize => _hdr.infoTable;
 
-        private Random _random = null;
+        private Random _random;
 
         [Category("Name Table")]
         public string[] Names

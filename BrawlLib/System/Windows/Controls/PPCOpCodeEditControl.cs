@@ -6,7 +6,7 @@ namespace System.Windows.Forms
     {
         public PPCOpCode _code;
         public bool _canFollowBranch;
-        private bool _updating = false;
+        private bool _updating;
 
         public void SetCode(PPCOpCode code)
         {

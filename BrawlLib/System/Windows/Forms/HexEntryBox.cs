@@ -6,7 +6,7 @@ namespace System.Windows.Forms
     {
         public string title = "BrawlCrate Hex Entry Box";
         public string lowerText = "Enter hex:";
-        public int numBytes = 0;
+        public int numBytes;
         private static readonly Regex hexCheck = new Regex(@"^[0-9A-Fa-f\r\n]+$");
 
         public HexEntryBox()

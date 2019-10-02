@@ -107,7 +107,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public bool dedede => ArticleStringID == "ArticleType1_14" && RootNode.Name == "FitDedede";
 
-        public bool Static = false;
+        public bool Static;
         public bool extraOffset = false;
 
         public override bool OnInitialize()

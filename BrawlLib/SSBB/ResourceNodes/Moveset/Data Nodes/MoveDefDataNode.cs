@@ -156,7 +156,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _name = name;
         }
 
-        public MoveDefGroupNode _articleGroup = null;
+        public MoveDefGroupNode _articleGroup;
 
         public MoveDefFlagsNode _animFlags;
         public MoveDefAttributeNode attributes, sseAttributes;

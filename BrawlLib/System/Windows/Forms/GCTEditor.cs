@@ -41,7 +41,7 @@ namespace System.Windows.Forms
             base.OnShown(e);
         }
 
-        private bool _isOpen = false;
+        private bool _isOpen;
         private GCTCodeEntryNode _codeEntry;
 
         private GCTNode _targetNode;
@@ -225,7 +225,7 @@ namespace System.Windows.Forms
             TargetNode = null;
         }
 
-        private bool _updating = false;
+        private bool _updating;
         public int _codeEntrySavedIndex = -1;
 
         private void lstCodes_SelectedIndexChanged(object sender, EventArgs e)

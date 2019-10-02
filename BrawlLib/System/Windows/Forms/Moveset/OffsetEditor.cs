@@ -229,7 +229,7 @@ namespace System.Windows.Forms
             UpdateText();
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         public OffsetEditor()
         {
