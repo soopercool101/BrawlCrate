@@ -1,6 +1,6 @@
 ﻿namespace System.Windows.Forms
 {
-    partial class NumericEntryBox
+    partial class NumericInputForm
     {
         /// <summary>
         /// Required designer variable.

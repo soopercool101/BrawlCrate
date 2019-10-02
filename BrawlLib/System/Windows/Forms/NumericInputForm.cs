@@ -1,11 +1,11 @@
 ﻿namespace System.Windows.Forms
 {
-    public partial class NumericEntryBox : Form
+    public partial class NumericInputForm : Form
     {
         public string title = "Numeric Entry Box";
         public string lowerText = "Error; No arguments given";
 
-        public NumericEntryBox()
+        public NumericInputForm()
         {
             InitializeComponent();
         }

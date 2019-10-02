@@ -22,6 +22,55 @@ namespace BrawlCrate
                 return;
             }
 
+            short paletteCount = 0;
+            foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+            {
+                if (n is TEX0Wrapper tw)
+                {
+                    TEX0Node t = (TEX0Node)tw.Resource;
+                    if (paletteCount < 256)
+                    {
+                        if (!t.HasPalette || t.GetPaletteNode() == null)
+                        {
+                            paletteCount = 256;
+                        }
+                        else if (t.HasPalette && t.GetPaletteNode() != null &&
+                                 t.GetPaletteNode().Palette.Entries.Length > paletteCount)
+                        {
+                            paletteCount = (short)Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
+                        }
+                    }
+                }
+
+            }
+
+            if (paletteCount == 0)
+            {
+                paletteCount = 256;
+            }
+
+            using (NumericInputForm frm = new NumericInputForm())
+            {
+                if (frm.ShowDialog("Color Smasher", "How many colors?", paletteCount) == DialogResult.OK)
+                {
+                    ColorSmashTex0(frm.NewValue);
+                }
+            }
+        }
+
+        public static void ColorSmashTex0()
+        {
+            ColorSmashTex0(null);
+        }
+
+        public static void ColorSmashTex0(int? paletteCount) 
+        {
+            // If this was selected via keycode when it's invalid, return without error
+            if (!CanRunColorSmash || MainForm.Instance.resourceTree.SelectedNodes.Count <= 1)
+            {
+                return;
+            }
+
             DirectoryInfo inputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\");
             DirectoryInfo outputDir = Directory.CreateDirectory(Program.AppPath + "\\cs\\out\\");
             try
@@ -60,7 +109,6 @@ namespace BrawlCrate
                     return;
                 }
 
-                short paletteCount = 0;
                 List<TEX0Node> textureList = new List<TEX0Node>();
                 Dictionary<int, string> names = new Dictionary<int, string>();
                 BRRESNode b = (((TEX0Wrapper) MainForm.Instance.resourceTree.SelectedNodes[0]).Resource as TEX0Node)?
@@ -74,6 +122,11 @@ namespace BrawlCrate
                 }
 
                 int index = int.MaxValue;
+                bool detectPalettes = paletteCount == null;
+                if (detectPalettes)
+                {
+                    paletteCount = 0;
+                }
                 foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
                 {
                     // If this was selected via keycode when it's invalid, return without error
@@ -101,7 +154,7 @@ namespace BrawlCrate
 
                         t.Export($"{inputDir.FullName}\\{placement:D5}.png");
 
-                        if (paletteCount < 256)
+                        if (detectPalettes && paletteCount < 256)
                         {
                             if (!t.HasPalette || t.GetPaletteNode() == null)
                             {
@@ -123,7 +176,7 @@ namespace BrawlCrate
                     return;
                 }
 
-                if (paletteCount == 0)
+                if (detectPalettes && paletteCount == 0)
                 {
                     paletteCount = 256;
                 }
@@ -228,37 +281,13 @@ namespace BrawlCrate
             }
             finally
             {
-                foreach (FileInfo f in outputDir.GetFiles())
-                {
-                    try
-                    {
-                        f.Delete();
-                    }
-                    catch
-                    {
-                        // ignored
-                    }
-                }
-
                 try
                 {
-                    outputDir.Delete();
+                    Directory.Delete(inputDir.FullName);
                 }
                 catch
                 {
                     // ignored
-                }
-
-                foreach (FileInfo f in inputDir.GetFiles())
-                {
-                    try
-                    {
-                        f.Delete();
-                    }
-                    catch
-                    {
-                        // ignored
-                    }
                 }
 
                 try
