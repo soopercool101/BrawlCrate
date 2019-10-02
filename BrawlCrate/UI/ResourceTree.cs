@@ -493,19 +493,18 @@ namespace BrawlCrate
                 }
             }
 
-            if (good)
+            if (!good)
             {
-                if (dragging.Parent != null)
-                {
-                    dragging.Parent.RemoveChild(dragging);
-                }
-
-                dropping.AddChild(dragging);
-
-                dragging.OnMoved();
+                return false;
             }
 
-            return good;
+            dragging.Parent?.RemoveChild(dragging);
+
+            dropping.AddChild(dragging);
+
+            dragging.OnMoved();
+
+            return true;
         }
 
         private void treeView1_DragDrop(object sender, DragEventArgs e)
@@ -517,51 +516,41 @@ namespace BrawlCrate
 
             if (a != null)
             {
-                string s = null;
                 for (int i = 0; i < a.Length; i++)
                 {
-                    s = a.GetValue(i).ToString();
+                    string s = a.GetValue(i).ToString();
                     BeginInvoke(m_DelegateOpenFile, s, dropNode);
                 }
             }
-            else
+            else if (_dragNode != dropNode)
             {
-                if (_dragNode != dropNode)
+                BaseWrapper drag = (BaseWrapper) _dragNode;
+                BaseWrapper drop = (BaseWrapper) dropNode;
+                ResourceNode dragging = drag.Resource;
+                ResourceNode dropping = drop.Resource;
+
+                if (dropping.Parent == null)
                 {
-                    BaseWrapper drag = (BaseWrapper) _dragNode;
-                    BaseWrapper drop = (BaseWrapper) dropNode;
-                    ResourceNode dragging = drag.Resource;
-                    ResourceNode dropping = drop.Resource;
-
-                    if (dropping.Parent == null)
-                    {
-                        goto End;
-                    }
-
-                    bool ok = false;
-                    if (ModifierKeys == Keys.Shift)
-                    {
-                        ok = TryAddChild(dragging, dropping);
-                    }
-                    else
-                    {
-                        ok = TryDrop(dragging, dropping);
-                    }
-
-                    if (ok)
-                    {
-                        BaseWrapper b = FindResource(dragging);
-                        if (b != null)
-                        {
-                            b.EnsureVisible();
-                            SelectedNode = b;
-                        }
-                    }
-
-                    End:
-                    _dragNode = null;
-                    _timer.Enabled = false;
+                    goto End;
                 }
+
+                bool ok = ModifierKeys == Keys.Shift
+                    ? TryAddChild(dragging, dropping)
+                    : TryDrop(dragging, dropping);
+
+                if (ok)
+                {
+                    BaseWrapper b = FindResource(dragging);
+                    if (b != null)
+                    {
+                        b.EnsureVisible();
+                        SelectedNode = b;
+                    }
+                }
+
+                End:
+                _dragNode = null;
+                _timer.Enabled = false;
             }
         }
 
