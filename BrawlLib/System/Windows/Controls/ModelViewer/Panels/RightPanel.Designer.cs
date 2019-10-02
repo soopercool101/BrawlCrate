@@ -49,7 +49,7 @@
             this.editor.Name = "editor";
             this.editor.Size = new System.Drawing.Size(230, 21);
             this.editor.TabIndex = 0;
-            this.editor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.editor.SelectedIndexChanged += this.comboBox1_SelectedIndexChanged;
             // 
             // panel1
             // 

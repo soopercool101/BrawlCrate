@@ -91,7 +91,7 @@
 			this.btnImpact.TabIndex = 1;
 			this.btnImpact.Text = "22.5pt Impact";
 			this.btnImpact.UseVisualStyleBackColor = true;
-			this.btnImpact.Click += new System.EventHandler(this.btnImpact_Click);
+			this.btnImpact.Click += this.btnImpact_Click;
 			// 
 			// btnEdo
 			// 
@@ -102,7 +102,7 @@
 			this.btnEdo.TabIndex = 2;
 			this.btnEdo.Text = "22pt Edo SZ Bold";
 			this.btnEdo.UseVisualStyleBackColor = true;
-			this.btnEdo.Click += new System.EventHandler(this.btnEdo_Click);
+			this.btnEdo.Click += this.btnEdo_Click;
 			// 
 			// btnCustom
 			// 
@@ -113,7 +113,7 @@
 			this.btnCustom.TabIndex = 3;
 			this.btnCustom.Text = "Custom font...";
 			this.btnCustom.UseVisualStyleBackColor = true;
-			this.btnCustom.Click += new System.EventHandler(this.btnCustom_Click);
+			this.btnCustom.Click += this.btnCustom_Click;
 			// 
 			// nudOffset
 			// 
@@ -164,7 +164,7 @@
 			this.btnClearFont.TabIndex = 7;
 			this.btnClearFont.Text = "X";
 			this.btnClearFont.UseVisualStyleBackColor = true;
-			this.btnClearFont.Click += new System.EventHandler(this.btnClearFont_Click);
+			this.btnClearFont.Click += this.btnClearFont_Click;
 			// 
 			// tableLayoutPanel2
 			// 
@@ -192,7 +192,7 @@
 			this.btnOkay.TabIndex = 0;
 			this.btnOkay.Text = "OK";
 			this.btnOkay.UseVisualStyleBackColor = true;
-			this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+			this.btnOkay.Click += this.btnOkay_Click;
 			// 
 			// btnCancel
 			// 
@@ -223,7 +223,7 @@
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(54, 33);
 			this.label1.TabIndex = 10;
-			this.label1.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
+			this.label1.DoubleClick += this.label1_DoubleClick;
 			// 
 			// NameCreatorDialog
 			// 
@@ -233,7 +233,7 @@
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "NameCreatorDialog";
 			this.Text = "Choose a font";
-			this.Load += new System.EventHandler(this.NameCreatorDialog_Load);
+			this.Load += this.NameCreatorDialog_Load;
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.tableLayoutPanel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nudOffset)).EndInit();

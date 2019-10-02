@@ -110,7 +110,7 @@ namespace System.Windows.Forms
             pnlNew.Name = "pnlNew";
             pnlNew.Size = new Drawing.Size(90, 37);
             pnlNew.TabIndex = 6;
-            pnlNew.Paint += new PaintEventHandler(pnlNew_Paint);
+            pnlNew.Paint += pnlNew_Paint;
             // 
             // pnlOld
             // 
@@ -119,7 +119,7 @@ namespace System.Windows.Forms
             pnlOld.Name = "pnlOld";
             pnlOld.Size = new Drawing.Size(90, 37);
             pnlOld.TabIndex = 5;
-            pnlOld.Paint += new PaintEventHandler(pnlOld_Paint);
+            pnlOld.Paint += pnlOld_Paint;
             // 
             // goodColorControl1
             // 

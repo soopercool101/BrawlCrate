@@ -248,7 +248,7 @@ namespace System.Windows.Forms
             txtEditor.Size = new Drawing.Size(285, 122);
             txtEditor.TabIndex = 3;
             txtEditor.TextChanged += txtEditor_TextChanged;
-            txtEditor.KeyDown += new KeyEventHandler(txtEditor_KeyDown);
+            txtEditor.KeyDown += txtEditor_KeyDown;
             // 
             // splitContainer1
             // 
@@ -263,7 +263,7 @@ namespace System.Windows.Forms
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Paint += new PaintEventHandler(splitContainer1_Panel2_Paint);
+            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
             splitContainer1.Panel2Collapsed = true;
             splitContainer1.Size = new Drawing.Size(285, 122);
             splitContainer1.SplitterDistance = 74;

@@ -83,7 +83,7 @@ namespace System.Windows.Forms
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Drawing.Size(33, 22);
             btnAdd.Text = "Add";
-            btnAdd.Click += new EventHandler(btnAdd_Click);
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnRemove
             // 
@@ -93,7 +93,7 @@ namespace System.Windows.Forms
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Drawing.Size(54, 22);
             btnRemove.Text = "Remove";
-            btnRemove.Click += new EventHandler(btnRemove_Click);
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnModify
             // 
@@ -103,7 +103,7 @@ namespace System.Windows.Forms
             btnModify.Name = "btnModify";
             btnModify.Size = new Drawing.Size(49, 22);
             btnModify.Text = "Modify";
-            btnModify.Click += new EventHandler(btnModify_Click);
+            btnModify.Click += btnModify_Click;
             // 
             // btnUp
             // 
@@ -113,7 +113,7 @@ namespace System.Windows.Forms
             btnUp.Name = "btnUp";
             btnUp.Size = new Drawing.Size(23, 22);
             btnUp.Text = "▲";
-            btnUp.Click += new EventHandler(btnUp_Click);
+            btnUp.Click += btnUp_Click;
             // 
             // btnDown
             // 
@@ -123,7 +123,7 @@ namespace System.Windows.Forms
             btnDown.Name = "btnDown";
             btnDown.Size = new Drawing.Size(23, 22);
             btnDown.Text = "▼";
-            btnDown.Click += new EventHandler(btnDown_Click);
+            btnDown.Click += btnDown_Click;
             // 
             // panel2
             // 
@@ -159,7 +159,7 @@ namespace System.Windows.Forms
             btnCopy.Name = "btnCopy";
             btnCopy.Size = new Drawing.Size(39, 20);
             btnCopy.Text = "Copy";
-            btnCopy.Click += new EventHandler(btnCopy_Click);
+            btnCopy.Click += btnCopy_Click;
             // 
             // btnCut
             // 
@@ -169,7 +169,7 @@ namespace System.Windows.Forms
             btnCut.Name = "btnCut";
             btnCut.Size = new Drawing.Size(30, 20);
             btnCut.Text = "Cut";
-            btnCut.Click += new EventHandler(btnCut_Click);
+            btnCut.Click += btnCut_Click;
             // 
             // btnPaste
             // 
@@ -179,7 +179,7 @@ namespace System.Windows.Forms
             btnPaste.Name = "btnPaste";
             btnPaste.Size = new Drawing.Size(39, 20);
             btnPaste.Text = "Paste";
-            btnPaste.Click += new EventHandler(btnPaste_Click);
+            btnPaste.Click += btnPaste_Click;
             // 
             // btnCopyText
             // 
@@ -189,7 +189,7 @@ namespace System.Windows.Forms
             btnCopyText.Name = "btnCopyText";
             btnCopyText.Size = new Drawing.Size(64, 20);
             btnCopyText.Text = "Copy Text";
-            btnCopyText.Click += new EventHandler(btnCopyText_Click);
+            btnCopyText.Click += btnCopyText_Click;
             // 
             // EventList
             // 
@@ -202,8 +202,8 @@ namespace System.Windows.Forms
             EventList.SelectionMode = SelectionMode.MultiExtended;
             EventList.Size = new Drawing.Size(324, 161);
             EventList.TabIndex = 16;
-            EventList.SelectedIndexChanged += new EventHandler(EventList_SelectedIndexChanged);
-            EventList.DoubleClick += new EventHandler(EventList_DoubleClick);
+            EventList.SelectedIndexChanged += EventList_SelectedIndexChanged;
+            EventList.DoubleClick += EventList_DoubleClick;
             // 
             // splitter1
             // 

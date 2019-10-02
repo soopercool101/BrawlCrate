@@ -97,8 +97,8 @@
             this.lstDrawCalls.Name = "lstDrawCalls";
             this.lstDrawCalls.Size = new System.Drawing.Size(214, 33);
             this.lstDrawCalls.TabIndex = 0;
-            this.lstDrawCalls.SelectedIndexChanged += new System.EventHandler(this.lstDrawCalls_SelectedIndexChanged);
-            this.lstDrawCalls.DoubleClick += new System.EventHandler(this.lstDrawCalls_DoubleClick);
+            this.lstDrawCalls.SelectedIndexChanged += this.lstDrawCalls_SelectedIndexChanged;
+            this.lstDrawCalls.DoubleClick += this.lstDrawCalls_DoubleClick;
             // 
             // panel5
             // 
@@ -119,7 +119,7 @@
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.Click += this.btnDelete_Click;
             // 
             // btnNew
             // 
@@ -130,7 +130,7 @@
             this.btnNew.TabIndex = 0;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.btnNew.Click += this.btnNew_Click;
             // 
             // panel1
             // 
@@ -167,7 +167,7 @@
             this.numDrawOrder.Size = new System.Drawing.Size(31, 20);
             this.numDrawOrder.TabIndex = 5;
             this.numDrawOrder.Text = "0";
-            this.numDrawOrder.ValueChanged += new System.EventHandler(this.numDrawOrder_ValueChanged);
+            this.numDrawOrder.ValueChanged += this.numDrawOrder_ValueChanged;
             // 
             // chkDoesntMatter
             // 
@@ -178,7 +178,7 @@
             this.chkDoesntMatter.TabIndex = 6;
             this.chkDoesntMatter.Text = "Doesn\'t matter";
             this.chkDoesntMatter.UseVisualStyleBackColor = true;
-            this.chkDoesntMatter.CheckedChanged += new System.EventHandler(this.chkDoesntMatter_CheckedChanged);
+            this.chkDoesntMatter.CheckedChanged += this.chkDoesntMatter_CheckedChanged;
             // 
             // label3
             // 
@@ -213,7 +213,7 @@
             this.cboDrawPass.Name = "cboDrawPass";
             this.cboDrawPass.Size = new System.Drawing.Size(129, 21);
             this.cboDrawPass.TabIndex = 5;
-            this.cboDrawPass.SelectedIndexChanged += new System.EventHandler(this.cboDrawPass_SelectedIndexChanged);
+            this.cboDrawPass.SelectedIndexChanged += this.cboDrawPass_SelectedIndexChanged;
             // 
             // label4
             // 
@@ -245,7 +245,7 @@
             this.cboVisBone.Name = "cboVisBone";
             this.cboVisBone.Size = new System.Drawing.Size(129, 21);
             this.cboVisBone.TabIndex = 3;
-            this.cboVisBone.SelectedIndexChanged += new System.EventHandler(this.cboVisBone_SelectedIndexChanged);
+            this.cboVisBone.SelectedIndexChanged += this.cboVisBone_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -277,7 +277,7 @@
             this.cboMaterial.Name = "cboMaterial";
             this.cboMaterial.Size = new System.Drawing.Size(129, 21);
             this.cboMaterial.TabIndex = 1;
-            this.cboMaterial.SelectedIndexChanged += new System.EventHandler(this.cboMaterial_SelectedIndexChanged);
+            this.cboMaterial.SelectedIndexChanged += this.cboMaterial_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -308,21 +308,21 @@
             this.shadersToolStripMenuItem.Name = "shadersToolStripMenuItem";
             this.shadersToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.shadersToolStripMenuItem.Text = "Shaders";
-            this.shadersToolStripMenuItem.Click += new System.EventHandler(this.shadersToolStripMenuItem_Click);
+            this.shadersToolStripMenuItem.Click += this.shadersToolStripMenuItem_Click;
             // 
             // bonesToolStripMenuItem
             // 
             this.bonesToolStripMenuItem.Name = "bonesToolStripMenuItem";
             this.bonesToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.bonesToolStripMenuItem.Text = "Bones";
-            this.bonesToolStripMenuItem.Click += new System.EventHandler(this.bonesToolStripMenuItem_Click);
+            this.bonesToolStripMenuItem.Click += this.bonesToolStripMenuItem_Click;
             // 
             // floorToolStripMenuItem
             // 
             this.floorToolStripMenuItem.Name = "floorToolStripMenuItem";
             this.floorToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.floorToolStripMenuItem.Text = "Floor";
-            this.floorToolStripMenuItem.Click += new System.EventHandler(this.floorToolStripMenuItem_Click);
+            this.floorToolStripMenuItem.Click += this.floorToolStripMenuItem_Click;
             // 
             // panel7
             // 

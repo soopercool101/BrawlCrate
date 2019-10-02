@@ -39,7 +39,7 @@ namespace System.Windows.Forms
             listBox.Name = "comboBox1";
             listBox.Size = new Drawing.Size(121, 21);
             listBox.TabIndex = 0;
-            listBox.SelectedIndexChanged += new EventHandler(comboBox1_SelectedIndexChanged);
+            listBox.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -69,7 +69,7 @@ namespace System.Windows.Forms
             indexBox.Name = "comboBox2";
             indexBox.Size = new Drawing.Size(121, 21);
             indexBox.TabIndex = 2;
-            indexBox.SelectedIndexChanged += new EventHandler(comboBox2_SelectedIndexChanged);
+            indexBox.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -89,7 +89,7 @@ namespace System.Windows.Forms
             typeBox.Name = "comboBox3";
             typeBox.Size = new Drawing.Size(74, 21);
             typeBox.TabIndex = 4;
-            typeBox.SelectedIndexChanged += new EventHandler(comboBox3_SelectedIndexChanged);
+            typeBox.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
             // 
             // richTextBox1
             // 
@@ -130,7 +130,7 @@ namespace System.Windows.Forms
             button1.TabIndex = 6;
             button1.Text = "Okay";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += new EventHandler(button1_Click);
+            button1.Click += button1_Click;
             // 
             // OffsetEditor
             // 

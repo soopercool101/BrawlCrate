@@ -73,12 +73,12 @@ namespace BrawlCrate
 
             AllowDrop = true;
 
-            ItemDrag += new ItemDragEventHandler(treeView_ItemDrag);
-            DragOver += new DragEventHandler(treeView1_DragOver);
-            DragDrop += new DragEventHandler(treeView1_DragDrop);
-            DragEnter += new DragEventHandler(treeView1_DragEnter);
+            ItemDrag += treeView_ItemDrag;
+            DragOver += treeView1_DragOver;
+            DragDrop += treeView1_DragDrop;
+            DragEnter += treeView1_DragEnter;
             DragLeave += treeView1_DragLeave;
-            GiveFeedback += new GiveFeedbackEventHandler(treeView1_GiveFeedback);
+            GiveFeedback += treeView1_GiveFeedback;
 
             m_DelegateOpenFile = new DelegateOpenFile(ImportFile);
         }

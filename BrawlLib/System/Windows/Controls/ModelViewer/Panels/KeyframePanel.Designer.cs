@@ -55,7 +55,7 @@ namespace System.Windows.Forms
             this.listKeyframes.Size = new System.Drawing.Size(275, 357);
             this.listKeyframes.TabIndex = 18;
             this.listKeyframes.Visible = false;
-            this.listKeyframes.SelectedIndexChanged += new System.EventHandler(this.listKeyframes_SelectedIndexChanged);
+            this.listKeyframes.SelectedIndexChanged += this.listKeyframes_SelectedIndexChanged;
             // 
             // visEditor
             // 
@@ -76,7 +76,7 @@ namespace System.Windows.Forms
             this.chkEnabled.TabIndex = 1;
             this.chkEnabled.Text = "Enabled";
             this.chkEnabled.UseVisualStyleBackColor = true;
-            this.chkEnabled.CheckedChanged += new System.EventHandler(this.chkEnabled_CheckedChanged);
+            this.chkEnabled.CheckedChanged += this.chkEnabled_CheckedChanged;
             // 
             // chkConstant
             // 
@@ -87,7 +87,7 @@ namespace System.Windows.Forms
             this.chkConstant.TabIndex = 0;
             this.chkConstant.Text = "Constant";
             this.chkConstant.UseVisualStyleBackColor = true;
-            this.chkConstant.CheckedChanged += new System.EventHandler(this.chkConstant_CheckedChanged);
+            this.chkConstant.CheckedChanged += this.chkConstant_CheckedChanged;
             // 
             // clrControl
             // 
@@ -122,7 +122,7 @@ namespace System.Windows.Forms
             this.lstTypes.Name = "lstTypes";
             this.lstTypes.Size = new System.Drawing.Size(139, 21);
             this.lstTypes.TabIndex = 0;
-            this.lstTypes.SelectedIndexChanged += new System.EventHandler(this.lstTypes_SelectedIndexChanged);
+            this.lstTypes.SelectedIndexChanged += this.lstTypes_SelectedIndexChanged;
             // 
             // visChkPanel
             // 

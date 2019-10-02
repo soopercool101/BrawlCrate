@@ -138,7 +138,7 @@
             this.chkBSSSection.TabIndex = 14;
             this.chkBSSSection.Text = "Is BSS Section";
             this.chkBSSSection.UseVisualStyleBackColor = true;
-            this.chkBSSSection.CheckedChanged += new System.EventHandler(this.chkBSSSection_CheckedChanged);
+            this.chkBSSSection.CheckedChanged += this.chkBSSSection_CheckedChanged;
             // 
             // chkCodeSection
             // 
@@ -151,7 +151,7 @@
             this.chkCodeSection.TabIndex = 13;
             this.chkCodeSection.Text = "Is Code Section";
             this.chkCodeSection.UseVisualStyleBackColor = true;
-            this.chkCodeSection.CheckedChanged += new System.EventHandler(this.chkCodeSection_CheckedChanged);
+            this.chkCodeSection.CheckedChanged += this.chkCodeSection_CheckedChanged;
             // 
             // grpRelocInfo
             // 
@@ -188,8 +188,8 @@
             this.lstLinked.Name = "lstLinked";
             this.lstLinked.Size = new System.Drawing.Size(165, 82);
             this.lstLinked.TabIndex = 10;
-            this.lstLinked.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstLinked_DrawItem);
-            this.lstLinked.DoubleClick += new System.EventHandler(this.lstLinked_DoubleClick);
+            this.lstLinked.DrawItem += this.lstLinked_DrawItem;
+            this.lstLinked.DoubleClick += this.lstLinked_DoubleClick;
             // 
             // label1
             // 
@@ -240,7 +240,7 @@
             this.propertyGrid1.Size = new System.Drawing.Size(165, 144);
             this.propertyGrid1.TabIndex = 0;
             this.propertyGrid1.ToolbarVisible = false;
-            this.propertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGrid1_PropertyValueChanged);
+            this.propertyGrid1.PropertyValueChanged += this.propertyGrid1_PropertyValueChanged;
             // 
             // panel1
             // 
@@ -262,7 +262,7 @@
             this.btnNewCmd.TabIndex = 7;
             this.btnNewCmd.Text = "New";
             this.btnNewCmd.UseVisualStyleBackColor = true;
-            this.btnNewCmd.Click += new System.EventHandler(this.btnNewCmd_Click);
+            this.btnNewCmd.Click += this.btnNewCmd_Click;
             // 
             // btnDelCmd
             // 
@@ -273,7 +273,7 @@
             this.btnDelCmd.TabIndex = 3;
             this.btnDelCmd.Text = "Delete";
             this.btnDelCmd.UseVisualStyleBackColor = true;
-            this.btnDelCmd.Click += new System.EventHandler(this.btnDelCmd_Click);
+            this.btnDelCmd.Click += this.btnDelCmd_Click;
             // 
             // btnOpenTarget
             // 
@@ -284,7 +284,7 @@
             this.btnOpenTarget.TabIndex = 8;
             this.btnOpenTarget.Text = "Open";
             this.btnOpenTarget.UseVisualStyleBackColor = true;
-            this.btnOpenTarget.Click += new System.EventHandler(this.btnOpenTarget_Click);
+            this.btnOpenTarget.Click += this.btnOpenTarget_Click;
             // 
             // label2
             // 
@@ -317,7 +317,7 @@
             this.chkUnresolved.TabIndex = 2;
             this.chkUnresolved.Text = "Is Unresolved Function";
             this.chkUnresolved.UseVisualStyleBackColor = true;
-            this.chkUnresolved.CheckedChanged += new System.EventHandler(this.chkUnresolved_CheckedChanged);
+            this.chkUnresolved.CheckedChanged += this.chkUnresolved_CheckedChanged;
             // 
             // chkDestructor
             // 
@@ -328,7 +328,7 @@
             this.chkDestructor.TabIndex = 1;
             this.chkDestructor.Text = "Is Destructor Function";
             this.chkDestructor.UseVisualStyleBackColor = true;
-            this.chkDestructor.CheckedChanged += new System.EventHandler(this.chkDestructor_CheckedChanged);
+            this.chkDestructor.CheckedChanged += this.chkDestructor_CheckedChanged;
             // 
             // chkConstructor
             // 
@@ -339,7 +339,7 @@
             this.chkConstructor.TabIndex = 0;
             this.chkConstructor.Text = "Is Constructor Function";
             this.chkConstructor.UseVisualStyleBackColor = true;
-            this.chkConstructor.CheckedChanged += new System.EventHandler(this.chkConstructor_CheckedChanged);
+            this.chkConstructor.CheckedChanged += this.chkConstructor_CheckedChanged;
             // 
             // panel3
             // 
@@ -359,7 +359,7 @@
             this.btnRemoveWord.TabIndex = 13;
             this.btnRemoveWord.Text = "Remove Word";
             this.btnRemoveWord.UseVisualStyleBackColor = true;
-            this.btnRemoveWord.Click += new System.EventHandler(this.btnRemoveWord_Click);
+            this.btnRemoveWord.Click += this.btnRemoveWord_Click;
             // 
             // btnInsertWord
             // 
@@ -369,7 +369,7 @@
             this.btnInsertWord.TabIndex = 12;
             this.btnInsertWord.Text = "Insert Word";
             this.btnInsertWord.UseVisualStyleBackColor = true;
-            this.btnInsertWord.Click += new System.EventHandler(this.btnInsertWord_Click);
+            this.btnInsertWord.Click += this.btnInsertWord_Click;
             // 
             // menuStrip1
             // 
@@ -399,7 +399,7 @@
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            this.exportToolStripMenuItem.Click += this.exportToolStripMenuItem_Click;
             // 
             // exportInitializedToolStripMenuItem
             // 
@@ -408,14 +408,14 @@
             this.exportInitializedToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.exportInitializedToolStripMenuItem.Text = "Export Initialized";
             this.exportInitializedToolStripMenuItem.Visible = false;
-            this.exportInitializedToolStripMenuItem.Click += new System.EventHandler(this.exportInitializedToolStripMenuItem_Click);
+            this.exportInitializedToolStripMenuItem.Click += this.exportInitializedToolStripMenuItem_Click;
             // 
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
             this.importToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.importToolStripMenuItem.Text = "Replace";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            this.importToolStripMenuItem.Click += this.importToolStripMenuItem_Click;
             // 
             // gotoToolStripMenuItem
             // 
@@ -432,7 +432,7 @@
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.copyToolStripMenuItem.Click += this.copyToolStripMenuItem_Click;
             // 
             // pasteOverwriteToolStripMenuItem
             // 
@@ -440,7 +440,7 @@
             this.pasteOverwriteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteOverwriteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.pasteOverwriteToolStripMenuItem.Text = "Paste";
-            this.pasteOverwriteToolStripMenuItem.Click += new System.EventHandler(this.pasteOverwriteToolStripMenuItem_Click);
+            this.pasteOverwriteToolStripMenuItem.Click += this.pasteOverwriteToolStripMenuItem_Click;
             // 
             // searchToolStripMenuItem
             // 
@@ -459,7 +459,7 @@
             this.gotoToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.gotoToolStripMenuItem2.Size = new System.Drawing.Size(196, 22);
             this.gotoToolStripMenuItem2.Text = "Goto...";
-            this.gotoToolStripMenuItem2.Click += new System.EventHandler(this.gotoToolStripMenuItem2_Click);
+            this.gotoToolStripMenuItem2.Click += this.gotoToolStripMenuItem2_Click;
             // 
             // findToolStripMenuItem1
             // 
@@ -467,7 +467,7 @@
             this.findToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.findToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
             this.findToolStripMenuItem1.Text = "Find";
-            this.findToolStripMenuItem1.Click += new System.EventHandler(this.findToolStripMenuItem1_Click);
+            this.findToolStripMenuItem1.Click += this.findToolStripMenuItem1_Click;
             // 
             // findNextToolStripMenuItem
             // 
@@ -475,7 +475,7 @@
             this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.findNextToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.findNextToolStripMenuItem.Text = "Find Next";
-            this.findNextToolStripMenuItem.Click += new System.EventHandler(this.findNextToolStripMenuItem_Click);
+            this.findNextToolStripMenuItem.Click += this.findNextToolStripMenuItem_Click;
             // 
             // findPreviousToolStripMenuItem
             // 
@@ -483,7 +483,7 @@
             this.findPreviousToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F3)));
             this.findPreviousToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.findPreviousToolStripMenuItem.Text = "Find Previous";
-            this.findPreviousToolStripMenuItem.Click += new System.EventHandler(this.findPreviousToolStripMenuItem_Click);
+            this.findPreviousToolStripMenuItem.Click += this.findPreviousToolStripMenuItem_Click;
             // 
             // displayToolStripMenuItem
             // 
@@ -503,7 +503,7 @@
             this.highlightBlr.Name = "highlightBlr";
             this.highlightBlr.Size = new System.Drawing.Size(165, 22);
             this.highlightBlr.Text = "Highlight blr";
-            this.highlightBlr.CheckedChanged += new System.EventHandler(this.highlightBlr_CheckedChanged);
+            this.highlightBlr.CheckedChanged += this.highlightBlr_CheckedChanged;
             // 
             // displayInitialized
             // 
@@ -511,7 +511,7 @@
             this.displayInitialized.Name = "displayInitialized";
             this.displayInitialized.Size = new System.Drawing.Size(165, 22);
             this.displayInitialized.Text = "Display Initialized";
-            this.displayInitialized.CheckedChanged += new System.EventHandler(this.displayInitialized_CheckedChanged);
+            this.displayInitialized.CheckedChanged += this.displayInitialized_CheckedChanged;
             // 
             // displayStringsToolStripMenuItem
             // 
@@ -521,7 +521,7 @@
             this.displayStringsToolStripMenuItem.Name = "displayStringsToolStripMenuItem";
             this.displayStringsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.displayStringsToolStripMenuItem.Text = "Display strings";
-            this.displayStringsToolStripMenuItem.CheckedChanged += new System.EventHandler(this.displayStringsToolStripMenuItem_CheckedChanged);
+            this.displayStringsToolStripMenuItem.CheckedChanged += this.displayStringsToolStripMenuItem_CheckedChanged;
             // 
             // pnlLeft
             // 
@@ -593,12 +593,12 @@
             this.hexBox1.TabIndex = 3;
             this.hexBox1.UseFixedBytesPerLine = true;
             this.hexBox1.VScrollBarVisible = true;
-            this.hexBox1.SelectionStartChanged += new System.EventHandler(this.hexBox1_SelectionStartChanged);
-            this.hexBox1.SelectionLengthChanged += new System.EventHandler(this.hexBox1_SelectionLengthChanged);
-            this.hexBox1.CurrentLineChanged += new System.EventHandler(this.hexBox1_CurrentLineChanged);
-            this.hexBox1.CurrentPositionInLineChanged += new System.EventHandler(this.hexBox1_CurrentPositionInLineChanged);
-            this.hexBox1.Copied += new System.EventHandler(this.hexBox1_Copied);
-            this.hexBox1.CopiedHex += new System.EventHandler(this.hexBox1_CopiedHex);
+            this.hexBox1.SelectionStartChanged += this.hexBox1_SelectionStartChanged;
+            this.hexBox1.SelectionLengthChanged += this.hexBox1_SelectionLengthChanged;
+            this.hexBox1.CurrentLineChanged += this.hexBox1_CurrentLineChanged;
+            this.hexBox1.CurrentPositionInLineChanged += this.hexBox1_CurrentPositionInLineChanged;
+            this.hexBox1.Copied += this.hexBox1_Copied;
+            this.hexBox1.CopiedHex += this.hexBox1_CopiedHex;
             // 
             // statusStrip
             // 
@@ -747,7 +747,7 @@
             this.txtBin8.Size = new System.Drawing.Size(44, 20);
             this.txtBin8.TabIndex = 12;
             this.txtBin8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin8.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin8.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin7
             // 
@@ -759,7 +759,7 @@
             this.txtBin7.Size = new System.Drawing.Size(44, 20);
             this.txtBin7.TabIndex = 11;
             this.txtBin7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin7.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin7.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin6
             // 
@@ -771,7 +771,7 @@
             this.txtBin6.Size = new System.Drawing.Size(44, 20);
             this.txtBin6.TabIndex = 10;
             this.txtBin6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin6.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin6.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin5
             // 
@@ -783,7 +783,7 @@
             this.txtBin5.Size = new System.Drawing.Size(44, 20);
             this.txtBin5.TabIndex = 9;
             this.txtBin5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin5.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin5.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin4
             // 
@@ -795,7 +795,7 @@
             this.txtBin4.Size = new System.Drawing.Size(44, 20);
             this.txtBin4.TabIndex = 8;
             this.txtBin4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin4.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin4.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin3
             // 
@@ -807,7 +807,7 @@
             this.txtBin3.Size = new System.Drawing.Size(44, 20);
             this.txtBin3.TabIndex = 7;
             this.txtBin3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin3.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin3.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin2
             // 
@@ -819,7 +819,7 @@
             this.txtBin2.Size = new System.Drawing.Size(44, 20);
             this.txtBin2.TabIndex = 6;
             this.txtBin2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin2.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin2.TextChanged += this.txtBin1_TextChanged;
             // 
             // txtBin1
             // 
@@ -831,7 +831,7 @@
             this.txtBin1.Size = new System.Drawing.Size(44, 20);
             this.txtBin1.TabIndex = 5;
             this.txtBin1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBin1.TextChanged += new System.EventHandler(this.txtBin1_TextChanged);
+            this.txtBin1.TextChanged += this.txtBin1_TextChanged;
             // 
             // label6
             // 
@@ -851,7 +851,7 @@
             this.txtInt.Name = "txtInt";
             this.txtInt.Size = new System.Drawing.Size(111, 20);
             this.txtInt.TabIndex = 3;
-            this.txtInt.TextChanged += new System.EventHandler(this.txtInt_TextChanged);
+            this.txtInt.TextChanged += this.txtInt_TextChanged;
             // 
             // txtFloat
             // 
@@ -861,7 +861,7 @@
             this.txtFloat.Name = "txtFloat";
             this.txtFloat.Size = new System.Drawing.Size(111, 20);
             this.txtFloat.TabIndex = 2;
-            this.txtFloat.TextChanged += new System.EventHandler(this.txtFloat_TextChanged);
+            this.txtFloat.TextChanged += this.txtFloat_TextChanged;
             // 
             // label4
             // 
@@ -904,7 +904,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SectionEditor";
             this.Text = "Section Editor";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += this.Form2_Load;
             this.grpSettings.ResumeLayout(false);
             this.grpSettings.PerformLayout();
             this.grpRelocInfo.ResumeLayout(false);

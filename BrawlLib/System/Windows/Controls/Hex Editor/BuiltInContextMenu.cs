@@ -87,7 +87,7 @@ namespace Be.Windows.Forms
                 _selectAllToolStripMenuItem = new ToolStripMenuItem(SelectAllMenuItemTextInternal,
                     SelectAllMenuItemImage, new EventHandler(SelectAllMenuItem_Click));
                 cms.Items.Add(_selectAllToolStripMenuItem);
-                cms.Opening += new CancelEventHandler(BuildInContextMenuStrip_Opening);
+                cms.Opening += BuildInContextMenuStrip_Opening;
 
                 _contextMenuStrip = cms;
             }

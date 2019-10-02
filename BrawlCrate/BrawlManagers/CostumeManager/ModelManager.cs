@@ -149,7 +149,7 @@ namespace BrawlCrate.CostumeManager
             {
                 Timer tmp_timer = new Timer(1000);
                 tmp_timer.AutoReset = false;
-                tmp_timer.Elapsed += new ElapsedEventHandler(initializeModelPanel);
+                tmp_timer.Elapsed += initializeModelPanel;
                 tmp_timer.Enabled = true;
             }
         }
