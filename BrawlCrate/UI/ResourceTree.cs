@@ -2,6 +2,7 @@
 using BrawlCrate.Properties;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -49,6 +50,16 @@ namespace BrawlCrate
                 }
 
                 _selected = base.SelectedNode = value;
+                SelectionChanged?.Invoke(this, null);
+            }
+        }
+
+        public new List<TreeNode> SelectedNodes
+        {
+            get => base.SelectedNodes;
+            set
+            {
+                base.SelectedNodes = value;
                 SelectionChanged?.Invoke(this, null);
             }
         }
@@ -167,10 +178,17 @@ namespace BrawlCrate
             EndUpdate();
         }
 
+        protected override void OnBeforeSelect(TreeViewCancelEventArgs e)
+        {
+            base.OnBeforeSelect(e);
+            SelectionChanged?.Invoke(this, null);
+        }
+
         protected override void OnAfterSelect(TreeViewEventArgs e)
         {
             SelectedNode = e.Node;
             base.OnAfterSelect(e);
+            SelectionChanged?.Invoke(this, null);
         }
 
         protected override void OnBeforeExpand(TreeViewCancelEventArgs e)
