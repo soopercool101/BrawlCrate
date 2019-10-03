@@ -541,7 +541,7 @@ Full changelog can be viewed from the help menu.";
             if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
             {
                 MainForm.Instance.Reset();
-                MainForm.Instance.RecentFilesHandler.AddFile(path);
+                MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
                 return true;
             }
             else

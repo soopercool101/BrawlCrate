@@ -1246,7 +1246,15 @@ namespace BrawlCrate
 
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            Program.Open(((RecentFileHandler.FileMenuItem) e.ClickedItem).FileName);
+            string fileName = ((RecentFileHandler.FileMenuItem) e.ClickedItem).FileName;
+            if (fileName.EndsWith("\\"))
+            {
+                Program.OpenFolder(fileName);
+            }
+            else
+            {
+                Program.Open(fileName);
+            }
         }
 
         private void checkForUpdatesToolStripMenuItem_Click_1(object sender, EventArgs e)
