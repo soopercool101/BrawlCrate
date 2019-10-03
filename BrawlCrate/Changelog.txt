@@ -19,7 +19,6 @@ they be held accountable for the manner in which it is used.
  - BrawlCrate v0.30 - (xx/xx/2019)
  . Rebuilt over the latest BrawlBox source
    - Many functions have been rewritten from scratch and many bugs have been fixed due to this migration
-   - No longer uses "lib" folder to improve compatibility
  . .NET Framework updated from 4.0 to 4.7.2 for BrawlCrate and BrawlLib
  . .NET Framework updated from 4.5.2 to 4.7.2 for the Updater
  . OpenTK updated from v1.1.0 to v3.1.0
@@ -96,6 +95,7 @@ they be held accountable for the manner in which it is used.
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
  . Folder select dialog now uses the Vista and later styled folder select when on Windows
+ . No longer use "lib" folder to improve compatibility
  . Fix bug in which certain collision planes would be ignored on object population (fixes New Pork City issues)
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
