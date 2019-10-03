@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using BrawlCrate.NodeWrappers;
 
 namespace BrawlCrate
 {
@@ -35,6 +37,34 @@ namespace BrawlCrate
                 m_coll.Clear();
                 m_coll = value;
                 paintSelectedNodes();
+            }
+        }
+
+        public Type SelectedType
+        {
+            get
+            {
+                Type t = SelectedNode?.GetType();
+                if (SelectedNodes.Count > 1)
+                {
+                    foreach (TreeNode n in SelectedNodes)
+                    {
+                        if (!n.GetType().IsAssignableFrom(t))
+                        {
+                            if (n.GetType().IsAssignableFrom(typeof(GenericWrapper)))
+                            {
+                                t = typeof(GenericWrapper);
+                            }
+                            else
+                            {
+                                t = null;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                return t;
             }
         }
 

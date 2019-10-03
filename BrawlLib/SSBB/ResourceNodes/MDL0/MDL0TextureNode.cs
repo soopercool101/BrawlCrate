@@ -276,7 +276,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         continue;
                     }
 
-                    if (a.FileType != ARCFileType.TextureData || (!redirect && bres != null && bres.GroupID != b.GroupID))
+                    if (a.FileType != ARCFileType.TextureData || !redirect && bres != null && bres.GroupID != b.GroupID)
                     {
                         continue;
                     }

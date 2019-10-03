@@ -660,6 +660,116 @@ namespace BrawlCrate.API
             AddContextMenuItem(wrapper, items);
         }
 
+        /// <summary>
+        ///     To be called by API, adds context menu items to a wrapper's multi-selection menu.
+        ///
+        ///     The second definition for this function offers far more extensibility.
+        /// </summary>
+        /// <param name="wrapper">
+        ///     The wrapper which new items will be added to.
+        /// </param>
+        /// <param name="items">
+        ///     One or more ToolStrip menu items that will be added to the context menu.
+        ///     These should be defined as much as possible in the script itself.
+        /// </param>
+        public static void AddMultiSelectContextMenuItem(Type wrapper, params ToolStripMenuItem[] items)
+        {
+            if (MultiSelectContextMenuHooks.ContainsKey(wrapper))
+            {
+                if (items.Length == 1 && items[0].HasDropDownItems)
+                {
+                    // Combine same-named submenus
+                    for (int i = 0; i < MultiSelectContextMenuHooks[wrapper].Length; i++)
+                    {
+                        ToolStripMenuItem item = MultiSelectContextMenuHooks[wrapper][i];
+                        if (!item.HasDropDownItems || item.Text != items[0].Text)
+                        {
+                            continue;
+                        }
+
+                        if (string.IsNullOrEmpty(item.ToolTipText))
+                        {
+                            item.ToolTipText = items[0].ToolTipText;
+                        }
+
+                        for (int j = 0; j < items[0].DropDownItems.Count; j++)
+                        {
+                            ToolStripItem item2 = items[0].DropDownItems[j];
+                            item.DropDownItems.Add(item2);
+                        }
+
+                        return;
+                    }
+                }
+
+                MultiSelectContextMenuHooks[wrapper] = MultiSelectContextMenuHooks[wrapper].Append(items);
+            }
+            else
+            {
+                MultiSelectContextMenuHooks.Add(wrapper, items);
+            }
+        }
+
+        /// <summary>
+        ///     To be called by API, adds context menu items to a wrapper's multi-selection menu with additional options.
+        /// </summary>
+        /// <param name="wrapper">
+        ///     The wrapper which new items will be added to.
+        /// </param>
+        /// <param name="subMenuName">
+        ///     (Optional) If not null or empty, a submenu which nodes will be defined under.
+        /// </param>
+        /// <param name="description">
+        ///     (Optional) If not null or empty, a string that will appear on mouseover.
+        ///     Will be added to the menu if the items are in a submenu, or added to all items otherwise.
+        /// </param>
+        /// <param name="conditional">
+        ///     (Optional) If not null, a function that will be run every time the dropdown is activated.
+        ///     Most useful to change an item's enabled state.
+        /// </param>
+        /// <param name="items">
+        ///     One or more ToolStrip menu items that will be added to the context menu.
+        ///     These should be defined as much as possible in the script itself.
+        /// </param>
+        public static void AddMultiSelectContextMenuItem(Type wrapper, string subMenuName, string description,
+                                              EventHandler conditional, params ToolStripMenuItem[] items)
+        {
+            if (conditional != null)
+            {
+                foreach (ToolStripMenuItem item in items)
+                {
+                    item.EnabledChanged += conditional;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(subMenuName))
+            {
+                ToolStripMenuItem t = new ToolStripMenuItem(subMenuName);
+                foreach (ToolStripMenuItem item in items)
+                {
+                    t.DropDownItems.Add(item);
+                }
+
+                if (!string.IsNullOrEmpty(description))
+                {
+                    t.ToolTipText = description;
+                }
+
+                AddMultiSelectContextMenuItem(wrapper, t);
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                foreach (ToolStripMenuItem item in items)
+                {
+                    item.ToolTipText += description;
+                }
+            }
+
+            AddMultiSelectContextMenuItem(wrapper, items);
+        }
+
         #endregion
 
         #region Program
