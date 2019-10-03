@@ -208,7 +208,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             IEnumerable<AttributeInterpretation> q = from f in Formats
-                                                     where EntryOffset + f.NumEntries * 4 == WorkingUncompressed.Length
+                                                     where NumEntries == f.NumEntries
                                                      select f;
 
             bool any_match_name = q.Any(f => string.Equals(

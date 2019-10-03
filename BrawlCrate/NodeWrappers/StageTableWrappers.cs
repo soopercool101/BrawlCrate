@@ -87,23 +87,16 @@ namespace BrawlCrate.NodeWrappers
         public void Resize()
         {
             NumericInputForm n = new NumericInputForm();
-            StageTableNode t = _resource as StageTableNode;
-            if (n.ShowDialog("Resize", "Enter the new size:", t.NumEntries) == DialogResult.OK)
+            if (_resource is StageTableNode t && n.ShowDialog("Resize", "Enter the new size:", t.NumEntries) == DialogResult.OK)
             {
                 List<byte> newList = new List<byte>();
                 for (int i = 0; i < n.NewValue * 4; i++)
                 {
-                    if (i < t.EntryList.Count)
-                    {
-                        newList.Add(t.EntryList[i]);
-                    }
-                    else
-                    {
-                        newList.Add(0);
-                    }
+                    newList.Add(i < t.EntryList.Count ? t.EntryList[i] : (byte) 0);
                 }
 
                 t.EntryList = newList;
+                MainForm.Instance.resourceTree_SelectionChanged(this, null);
             }
         }
     }
