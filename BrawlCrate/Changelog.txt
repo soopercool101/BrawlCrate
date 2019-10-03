@@ -59,6 +59,7 @@ they be held accountable for the manner in which it is used.
      . ShowYesNoError
      . ShowOKCancelWarning
      . ShowOKCancelError
+	 . AddMultiSelectContextMenuItem
      . OpenMultiFileDialog
      . OpenFile
      . OpenFileNoErrors
@@ -90,6 +91,7 @@ they be held accountable for the manner in which it is used.
  . Add ability to directly import materials and shaders to an MDL0
  . Add new iconography for Canary builds
  . Add support for longform assembly title, to be used for hotfixes
+ . Add ability to resize Stage Data Tables
  . Duplicate now works for most node types
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
