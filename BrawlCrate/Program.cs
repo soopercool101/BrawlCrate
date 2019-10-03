@@ -81,7 +81,8 @@ Full changelog can be viewed from the help menu.";
             AssemblyTitleShort = AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8);
 #else
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
-                .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+                                                                  .GetCustomAttributes(typeof(AssemblyTitleAttribute),
+                                                                      false)[0]).Title;
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
@@ -95,17 +96,17 @@ Full changelog can be viewed from the help menu.";
 #endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
-                    .GetExecutingAssembly()
-                    .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
+                                                .GetExecutingAssembly()
+                                                .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
                 .Description;
             AssemblyCopyright =
                 ((AssemblyCopyrightAttribute) Assembly
-                    .GetExecutingAssembly()
-                    .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
+                                              .GetExecutingAssembly()
+                                              .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
                 .Copyright;
             BrawlLibTitle = ((AssemblyTitleAttribute) Assembly
-                    .GetAssembly(typeof(ResourceNode))
-                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                                                      .GetAssembly(typeof(ResourceNode))
+                                                      .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
             _openDlg = new OpenFileDialog();
@@ -261,8 +262,10 @@ Full changelog can be viewed from the help menu.";
                 if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
                 {
                     string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
-                        UpdateMessage.IndexOf("Full changelog can be found in the installation folder",
-                            StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
+                        UpdateMessage.IndexOf(
+                            "Full changelog can be found in the installation folder",
+                            StringComparison.OrdinalIgnoreCase) -
+                        UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
                     string fileName = $@"{AppPath}changelog-newest.txt";
                     using (StreamWriter file = new StreamWriter(fileName))
                     {
@@ -306,7 +309,8 @@ Full changelog can be viewed from the help menu.";
 
                 if (args.Length >= 2)
                 {
-                    ResourceNode target = ResourceNode.FindNode(RootNode, args[1], true, StringComparison.OrdinalIgnoreCase);
+                    ResourceNode target =
+                        ResourceNode.FindNode(RootNode, args[1], true, StringComparison.OrdinalIgnoreCase);
                     if (target != null)
                     {
                         MainForm.Instance.TargetResource(target);
@@ -454,22 +458,22 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-                if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
+            if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
+            {
+                MainForm.Instance.Reset();
+                MainForm.Instance.RecentFilesHandler.AddFile(path);
+                return true;
+            }
+            else
+            {
+                _rootPath = null;
+                if (showErrors)
                 {
-                    MainForm.Instance.Reset();
-                    MainForm.Instance.RecentFilesHandler.AddFile(path);
-                    return true;
+                    MessageBox.Show("Unable to recognize input file.");
                 }
-                else
-                {
-                    _rootPath = null;
-                    if (showErrors)
-                    {
-                        MessageBox.Show("Unable to recognize input file.");
-                    }
 
-                    MainForm.Instance.Reset();
-                }
+                MainForm.Instance.Reset();
+            }
 #if !DEBUG
             }
             catch (Exception x)
@@ -544,16 +548,14 @@ Full changelog can be viewed from the help menu.";
                 MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
                 return true;
             }
-            else
-            {
-                _rootPath = null;
-                if (showErrors)
-                {
-                    MessageBox.Show("Unable to recognize input file.");
-                }
 
-                MainForm.Instance.Reset();
+            _rootPath = null;
+            if (showErrors)
+            {
+                MessageBox.Show("Unable to recognize input file.");
             }
+
+            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -615,27 +617,28 @@ Full changelog can be viewed from the help menu.";
                 try
                 {
 #endif
-                    if (_rootPath == null)
-                    {
-                        return SaveAs();
-                    }
+                if (_rootPath == null)
+                {
+                    return SaveAs();
+                }
 
-                    bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
-                    if (!force && !_rootNode.IsDirty)
-                    {
-                        MessageBox.Show("No changes have been made.");
-                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                        return false;
-                    }
-
-                    if (!(_rootNode is FolderNode))
-                    {
-                        _rootNode.Merge(force);
-                    }
-                    _rootNode.Export(_rootPath);
-                    _rootNode.IsDirty = false;
+                bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
+                if (!force && !_rootNode.IsDirty)
+                {
+                    MessageBox.Show("No changes have been made.");
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                    return true;
+                    return false;
+                }
+
+                if (!(_rootNode is FolderNode))
+                {
+                    _rootNode.Merge(force);
+                }
+
+                _rootNode.Export(_rootPath);
+                _rootNode.IsDirty = false;
+                MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                return true;
 #if !DEBUG
                 }
                 catch (Exception x)
@@ -671,18 +674,16 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-                if (_openDlg.ShowDialog() == DialogResult.OK)
+            if (_openDlg.ShowDialog() == DialogResult.OK)
+            {
+                fileName = _openDlg.FileName;
+                if (categorize && _openDlg.FilterIndex == 1)
                 {
-                    fileName = _openDlg.FileName;
-                    if (categorize && _openDlg.FilterIndex == 1)
-                    {
-                        return CategorizeFilter(_openDlg.FileName, filter);
-                    }
-                    else
-                    {
-                        return _openDlg.FilterIndex;
-                    }
+                    return CategorizeFilter(_openDlg.FileName, filter);
                 }
+
+                return _openDlg.FilterIndex;
+            }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -779,16 +780,16 @@ Full changelog can be viewed from the help menu.";
                 try
                 {
 #endif
-                    GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
-                    string path = w.Export();
-                    if (path != null)
-                    {
-                        _rootPath = path;
-                        MainForm.Instance.UpdateName();
-                        w.Resource.IsDirty = false;
-                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                        return true;
-                    }
+                GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
+                string path = w.Export();
+                if (path != null)
+                {
+                    _rootPath = path;
+                    MainForm.Instance.UpdateName();
+                    w.Resource.IsDirty = false;
+                    MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                    return true;
+                }
 #if !DEBUG
                 }
                 catch (Exception x)
@@ -810,7 +811,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (showMessages)
                 {
-                    MessageBox.Show("Could not find " + path);
+                    MessageBox.Show($"Could not find {path}");
                 }
 
                 return false;

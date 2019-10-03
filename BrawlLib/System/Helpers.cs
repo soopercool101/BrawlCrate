@@ -342,12 +342,12 @@ namespace System
         {
             switch (value)
             {
-                case 0: return "<";
-                case 1: return "<=";
-                case 2: return "==";
-                case 3: return "!=";
-                case 4: return ">=";
-                case 5: return ">";
+                case 0:  return "<";
+                case 1:  return "<=";
+                case 2:  return "==";
+                case 3:  return "!=";
+                case 4:  return ">=";
+                case 5:  return ">";
                 default: return "(" + value + ")";
             }
         }
@@ -409,9 +409,8 @@ namespace System
 
         public static float UnScalar(long value)
         {
-            return (float)value / 60000f;
+            return (float) value / 60000f;
         }
-
     }
 
     public class ReferenceEqualityComparer : EqualityComparer<object>
@@ -769,5 +768,4 @@ namespace System
         SFX254,
         SFX255
     };
-
 }

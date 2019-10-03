@@ -18,6 +18,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
         public string Path;
         private string[] _directories;
         private string[] _files;
+
         public override bool IsDirty
         {
             get
@@ -26,6 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
                 {
                     return false;
                 }
+
                 if (HasChanged)
                 {
                     return true;
@@ -73,8 +75,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
                     c.Export(c._origPath);
                 }
             }
-            
-            this.IsDirty = false;
+
+            IsDirty = false;
         }
 
         public override void OnPopulate()
@@ -83,20 +85,22 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
             {
                 NodeFactory.FromFolder(this, s);
             }
+
             foreach (string s in _files)
             {
                 ResourceNode node = NodeFactory.FromFile(this, s);
                 node._origPath = s;
             }
+
             base.OnPopulate();
         }
 
         public override bool OnInitialize()
         {
-            this._name = new DirectoryInfo(Path).Name;
-            this._directories = Directory.GetDirectories(this.Path);
-            this._files = Directory.GetFiles(this.Path);
-            this.IsDirty = false;
+            _name = new DirectoryInfo(Path).Name;
+            _directories = Directory.GetDirectories(Path);
+            _files = Directory.GetFiles(Path);
+            IsDirty = false;
             base.OnInitialize();
 
             return true;

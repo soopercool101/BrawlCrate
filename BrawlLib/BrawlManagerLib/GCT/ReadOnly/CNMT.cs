@@ -51,11 +51,11 @@ namespace BrawlManagerLib
                 int bytes = data[lineskip + 7];
 
                 byte[] byteArray = data
-                    .Skip(lineskip)
-                    .Skip(8)
-                    .Take(bytes)
-                    .TakeWhile(c => c != 0)
-                    .ToArray();
+                                   .Skip(lineskip)
+                                   .Skip(8)
+                                   .Take(bytes)
+                                   .TakeWhile(c => c != 0)
+                                   .ToArray();
                 string str = Encoding.UTF8.GetString(byteArray);
                 if (Map.TryGetValue((ushort) songId1, out string existing) && existing != str)
                 {

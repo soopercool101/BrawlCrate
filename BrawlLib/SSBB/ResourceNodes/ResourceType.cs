@@ -47,7 +47,7 @@
 
         //Misc
         CollisionDef,
-		CollisionObj,
+        CollisionObj,
         MSBin,
         STPM,
         STDT,

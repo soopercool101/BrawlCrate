@@ -868,7 +868,7 @@ namespace BrawlLib.Wii.Models
             if (mdl._hasOpa && polyList != null)
             {
                 DrawCall[] objects = polyList.SelectMany(x => ((MDL0ObjectNode) x)._drawCalls)
-                    .Where(x => x.DrawPass == DrawCall.DrawPassType.Opaque).ToArray();
+                                             .Where(x => x.DrawPass == DrawCall.DrawPassType.Opaque).ToArray();
 
                 Array.Sort(objects, DrawCall.DrawCompare);
 
@@ -895,7 +895,7 @@ namespace BrawlLib.Wii.Models
             if (mdl._hasXlu && polyList != null)
             {
                 DrawCall[] objects = polyList.SelectMany(x => ((MDL0ObjectNode) x)._drawCalls)
-                    .Where(x => x.DrawPass == DrawCall.DrawPassType.Transparent).ToArray();
+                                             .Where(x => x.DrawPass == DrawCall.DrawPassType.Transparent).ToArray();
 
                 Array.Sort(objects, DrawCall.DrawCompare);
 

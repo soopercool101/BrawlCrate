@@ -732,7 +732,7 @@ namespace BrawlCrate.API
         ///     These should be defined as much as possible in the script itself.
         /// </param>
         public static void AddMultiSelectContextMenuItem(Type wrapper, string subMenuName, string description,
-                                              EventHandler conditional, params ToolStripMenuItem[] items)
+                                                         EventHandler conditional, params ToolStripMenuItem[] items)
         {
             if (conditional != null)
             {

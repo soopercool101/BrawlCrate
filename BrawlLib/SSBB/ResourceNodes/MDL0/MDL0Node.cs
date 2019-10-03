@@ -249,7 +249,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public List<ResourceNode> DefinitionsList => _defList;
         [Browsable(false)] public List<ResourceNode> BoneList => _boneList;
-        [Browsable(false)] public List<MDL0BoneNode> AllBones
+
+        [Browsable(false)]
+        public List<MDL0BoneNode> AllBones
         {
             get
             {
@@ -263,12 +265,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                             bones.Add(b);
                         }
                     }
+
                     bones = bones.OrderBy(o => o.BoneIndex).ToList();
                 }
 
                 return bones;
             }
         }
+
         [Browsable(false)] public List<ResourceNode> MaterialList => _matList;
         [Browsable(false)] public List<ResourceNode> ShaderList => _shadList;
         [Browsable(false)] public List<ResourceNode> VertexList => _vertList;

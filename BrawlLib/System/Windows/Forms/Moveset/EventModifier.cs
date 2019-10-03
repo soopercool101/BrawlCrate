@@ -143,7 +143,8 @@ namespace System.Windows.Forms
                                                                              | AnchorStyles.Right);
             lblParamDescription.BackColor = SystemColors.Control;
             lblParamDescription.BorderStyle = BorderStyle.Fixed3D;
-            lblParamDescription.Font = new Font("Microsoft Sans Serif", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point,
+            lblParamDescription.Font = new Font("Microsoft Sans Serif", 9.75F, Drawing.FontStyle.Regular,
+                GraphicsUnit.Point,
                 (byte) 0);
             lblParamDescription.Location = new Drawing.Point(2, 140);
             lblParamDescription.Name = "lblParamDescription";
@@ -742,7 +743,8 @@ namespace System.Windows.Forms
                     }
 
                     (param._extNode = param.Root._externalRefs[comboBox2.SelectedIndex] as MoveDefExternalNode)._refs
-                        .Add(param);
+                                                                                                               .Add(
+                                                                                                                   param);
                 }
             }
             else

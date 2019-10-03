@@ -109,16 +109,16 @@ namespace System.Windows.Forms
         public void ShowDialog(IWin32Window owner, IEnumerable<ResourceNode> nodes)
         {
             _nodes = nodes
-                .Select(n => n as CHR0Node)
-                .Where(n => n != null)
-                .ToArray();
+                     .Select(n => n as CHR0Node)
+                     .Where(n => n != null)
+                     .ToArray();
             if (!_nodes.Any())
             {
                 editAllCHR0Editor1.OnlyEntryNodesSelected();
                 _entries = nodes
-                    .Select(n => n as CHR0EntryNode)
-                    .Where(n => n != null)
-                    .ToArray();
+                           .Select(n => n as CHR0EntryNode)
+                           .Where(n => n != null)
+                           .ToArray();
             }
 
             _enabled = new bool[5];

@@ -283,6 +283,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             eventAddr++; //Terminate
         }
+
         /*
         #region Scripting
 

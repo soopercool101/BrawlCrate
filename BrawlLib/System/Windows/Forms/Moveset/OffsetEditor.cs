@@ -362,7 +362,8 @@ namespace System.Windows.Forms
 
                     (_targetNode._extNode =
                             _targetNode.Root._externalRefs[indexBox.SelectedIndex] as MoveDefExternalNode)._refs
-                        .Add(_targetNode);
+                                                                                                          .Add(
+                                                                                                              _targetNode);
                     _targetNode.Name = _targetNode._extNode.Name;
                 }
             }

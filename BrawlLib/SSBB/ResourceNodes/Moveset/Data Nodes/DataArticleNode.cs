@@ -209,7 +209,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             else
                             {
                                 actions.Children[i].Children
-                                    .Add(new MoveDefActionNode("Entry", true, actions.Children[i]));
+                                       .Add(new MoveDefActionNode("Entry", true, actions.Children[i]));
                             }
 
                             off = *((bint*) (BaseAddress + _extraOffsets[0]) + i);
@@ -221,7 +221,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             else
                             {
                                 actions.Children[i].Children
-                                    .Add(new MoveDefActionNode("Exit", true, actions.Children[i]));
+                                       .Add(new MoveDefActionNode("Exit", true, actions.Children[i]));
                             }
                         }
                         else
@@ -1336,6 +1336,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
         }
+
         /*
         public int currentSubAction = 0;
         public MDL0Node Model = null;

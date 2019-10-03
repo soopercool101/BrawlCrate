@@ -416,7 +416,7 @@ namespace System
         {
             RSAREntryNode n = context.Instance as RSAREntryNode;
             return new StandardValuesCollection(n.RSARNode.Files.Where(x => x is RBNKNode || x is RSARExtFileNode)
-                .Select(r => r.ToString()).ToList());
+                                                 .Select(r => r.ToString()).ToList());
         }
     }
 
@@ -476,7 +476,7 @@ namespace System
         {
             RSARFileEntryNode n = context.Instance as RSARFileEntryNode;
             return new StandardValuesCollection(n.Parent.Parent.Children[1].Children.Select(r => r.ToString())
-                .ToList());
+                                                 .ToList());
         }
     }
 
@@ -496,7 +496,7 @@ namespace System
             }
 
             return new StandardValuesCollection(n.SoundFileNode.Children[0].Children.Select(r => r.ToString())
-                .ToList());
+                                                 .ToList());
         }
     }
 
@@ -877,7 +877,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlAITypes.AITypes
-                .Select(s => "0x" + s.AIID.ToString("X2") + " - " + s.Name).ToList());
+                                                            .Select(s => "0x" + s.AIID.ToString("X2") + " - " + s.Name)
+                                                            .ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -928,7 +929,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib.SSBB.Stage.RelList
-                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                                                        .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
+                                                        .ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -956,7 +958,7 @@ namespace System
             if (destinationType == typeof(string) && value != null && value.GetType() == typeof(int))
             {
                 BrawlLib.SSBB.Stage stage = BrawlLib.SSBB.Stage.RelList.Where(s => s.ID == (int) value)
-                    .FirstOrDefault();
+                                                    .FirstOrDefault();
                 return "0x" + ((int) value).ToString("X2") + (stage == null ? "" : " - " + stage.Name);
             }
             else if ((destinationType == typeof(int) || destinationType == typeof(byte)) && value != null &&
@@ -979,8 +981,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib
-                .SSBB.Stage.Stages
-                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                                                .SSBB.Stage.Stages
+                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -1025,8 +1027,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib
-                .SSBB.Item.Items
-                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                                                .SSBB.Item.Items
+                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -1071,8 +1073,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib
-                .SSBB.Fighter.Fighters
-                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                                                .SSBB.Fighter.Fighters
+                                                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
@@ -1118,7 +1120,8 @@ namespace System
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             return new StandardValuesCollection(BrawlLib.SSBB.Fighter.Fighters
-                .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name).ToList());
+                                                        .Select(s => "0x" + s.ID.ToString("X2") + " - " + s.Name)
+                                                        .ToList());
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)

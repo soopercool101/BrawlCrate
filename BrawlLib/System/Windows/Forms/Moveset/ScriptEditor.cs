@@ -7,7 +7,6 @@ using System.IO;
 
 namespace System.Windows.Forms
 {
-    
     public partial class ScriptEditor : UserControl
     {
         #region Designer
@@ -52,7 +51,8 @@ namespace System.Windows.Forms
             description.BackColor = SystemColors.Control;
             description.BorderStyle = BorderStyle.Fixed3D;
             description.Dock = DockStyle.Fill;
-            description.Font = new Font("Microsoft Sans Serif", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point, (byte) 0);
+            description.Font = new Font("Microsoft Sans Serif", 9.75F, Drawing.FontStyle.Regular, GraphicsUnit.Point,
+                (byte) 0);
             description.Location = new Drawing.Point(0, 25);
             description.Name = "description";
             description.Size = new Drawing.Size(324, 70);

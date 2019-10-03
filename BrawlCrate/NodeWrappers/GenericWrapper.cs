@@ -228,6 +228,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 return;
             }
+
             Dictionary<Type, string> extensions = new Dictionary<Type, string>();
             List<ResourceNode> nodes = new List<ResourceNode>();
             foreach (TreeNode tNode in MainForm.Instance.resourceTree.SelectedNodes)
@@ -253,7 +254,8 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
 
-            string invalidChars = System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+            string invalidChars =
+                System.Text.RegularExpressions.Regex.Escape(new string(Path.GetInvalidFileNameChars()));
             string invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
             foreach (ResourceNode n in nodes)
             {
@@ -263,7 +265,8 @@ namespace BrawlCrate.NodeWrappers
                     ext = ext.Insert(0, ".");
                 }
 
-                n.Export($"{folder}\\{System.Text.RegularExpressions.Regex.Replace($"{n.Name}{ext ?? ""}", invalidRegStr, "")}");
+                n.Export(
+                    $"{folder}\\{System.Text.RegularExpressions.Regex.Replace($"{n.Name}{ext ?? ""}", invalidRegStr, "")}");
             }
 
             MessageBox.Show($"{nodes.Count} nodes successfully exported to {folder}", "Export Selected");
@@ -341,6 +344,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 return;
             }
+
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath);
             ResourceNode rNode2 = NodeFactory.FromFile(null, tempPath, _resource.GetType());
@@ -349,6 +353,7 @@ namespace BrawlCrate.NodeWrappers
                 MessageBox.Show("The node could not be duplicated correctly.");
                 return;
             }
+
             int n = 0;
             int index = _resource.Index;
             // Copy ARCEntryNode data, which is contained in the containing ARC, not the node itself
@@ -356,9 +361,10 @@ namespace BrawlCrate.NodeWrappers
             {
                 ((ARCEntryNode) rNode2).FileIndex = ((ARCEntryNode) _resource).FileIndex;
                 ((ARCEntryNode) rNode2).FileType = ((ARCEntryNode) _resource).FileType;
-                ((ARCEntryNode)rNode2).GroupID = ((ARCEntryNode)_resource).GroupID;
-                ((ARCEntryNode)rNode2).RedirectIndex = ((ARCEntryNode)_resource).RedirectIndex;
+                ((ARCEntryNode) rNode2).GroupID = ((ARCEntryNode) _resource).GroupID;
+                ((ARCEntryNode) rNode2).RedirectIndex = ((ARCEntryNode) _resource).RedirectIndex;
             }
+
             // Copy the name directly in cases where name isn't saved
             rNode2.Name = _resource.Name;
             // Set the name programatically (based on Windows' implementation)
@@ -369,6 +375,7 @@ namespace BrawlCrate.NodeWrappers
                 // Set the name based on the number of duplicate nodes found
                 rNode2.Name = $"{_resource.Name} ({++n})";
             }
+
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(rNode2, true, index + 1);
         }

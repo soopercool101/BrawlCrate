@@ -64,9 +64,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public DataSource(MemoryStream ms, CompressionType compression)
         {
             ms.Position = 0;
-            Address = Marshal.AllocHGlobal((int)ms.Length);
-            Marshal.Copy(ms.ToArray(), 0, Address, (int)ms.Length);
-            Length = (int)ms.Length;
+            Address = Marshal.AllocHGlobal((int) ms.Length);
+            Marshal.Copy(ms.ToArray(), 0, Address, (int) ms.Length);
+            Length = (int) ms.Length;
             Map = null;
             Compression = compression;
         }
@@ -144,7 +144,9 @@ namespace BrawlLib.SSBB.ResourceNodes
 #if !DEBUG
         [Browsable(false)]
 #endif
-        public ResourceNode RootNode => _parent == null || _parent == this || _parent is FolderNode ? this : _parent.RootNode;
+        public ResourceNode RootNode =>
+            _parent == null || _parent == this || _parent is FolderNode ? this : _parent.RootNode;
+
         [Browsable(false)] public DataSource OriginalSource => _origSource;
         [Browsable(false)] public DataSource UncompressedSource => _uncompSource;
         [Browsable(false)] public DataSource WorkingSource => _replSrc != DataSource.Empty ? _replSrc : _origSource;
@@ -168,7 +170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 #else
         [Browsable(false)]
 #endif
-        public String NodeType => this.GetType().ToString();
+        public string NodeType => GetType().ToString();
 
         [Browsable(false)]
         public virtual string TreePathAbsolute => _parent == null ? Name : _parent.TreePathAbsolute + "/" + Name;
@@ -258,9 +260,10 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 Populate();
             }
+
             if (Children != null)
             {
-                for (int i = 0; i < Children.Count; i++)//ResourceNode r in Children)
+                for (int i = 0; i < Children.Count; i++) //ResourceNode r in Children)
                 {
                     childrenAndSubchildren.Add(Children[i]);
                     childrenAndSubchildren.AddRange(Children[i].GetChildrenRecursive());
@@ -319,6 +322,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return false;
                 }
+
                 if (HasChanged)
                 {
                     return true;
@@ -593,7 +597,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (levels < 0)
             {
-                for (int i = 0; i < Children.Count; i++ )
+                for (int i = 0; i < Children.Count; i++)
                 {
                     Children[i].Populate();
                 }
@@ -872,11 +876,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
 #endif
-                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
-                    FileShare.ReadWrite, 8, FileOptions.SequentialScan))
-                {
-                    Export(stream);
-                }
+            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+            {
+                Export(stream);
+            }
 #if !DEBUG
             }
             catch
@@ -1214,7 +1218,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return resourceNodes.ToArray();
         }
 
-        public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren, StringComparison compare)
+        public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren,
+                                            StringComparison compare)
         {
             if (string.IsNullOrEmpty(path) || root == null ||
                 root.Name.Equals(path, StringComparison.OrdinalIgnoreCase))
@@ -1223,7 +1228,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (path.Contains("/") && path.Substring(0, path.IndexOf('/'))
-                    .Equals(root.Name, compare))
+                                          .Equals(root.Name, compare))
             {
                 return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren, compare);
             }
@@ -1236,7 +1241,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return FindChildByType(path, searchChildren, type, StringComparison.OrdinalIgnoreCase);
         }
 
-        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type, StringComparison compare)
+        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type,
+                                            StringComparison compare)
         {
             if (path == null)
             {
@@ -1288,7 +1294,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public ResourceNode FindChild(string path, bool searchChildren)
         {
-           return FindChild(path, searchChildren, StringComparison.OrdinalIgnoreCase);
+            return FindChild(path, searchChildren, StringComparison.OrdinalIgnoreCase);
         }
 
         public ResourceNode FindChild(string path, bool searchChildren, StringComparison compare)
@@ -1451,7 +1457,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         if (tempBres is BRRESNode)
                                         {
                                             foreach (MDL0Node m in ((BRRESNode) tempBres).GetFolder<MDL0Node>()
-                                                .Children)
+                                                                                         .Children)
                                             {
                                                 nodes.Add(m);
                                             }

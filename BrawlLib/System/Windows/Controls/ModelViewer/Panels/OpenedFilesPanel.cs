@@ -252,27 +252,27 @@ namespace System.Windows.Forms
             try
             {
 #endif
-                if (As)
+            if (As)
+            {
+                using (SaveFileDialog d = new SaveFileDialog())
                 {
-                    using (SaveFileDialog d = new SaveFileDialog())
+                    d.InitialDirectory = current._origPath.Substring(0, current._origPath.LastIndexOf('\\'));
+                    d.Filter = string.Format("(*{0})|*{0}", Path.GetExtension(current._origPath));
+                    d.Title = "Please choose a location to save this file.";
+                    if (d.ShowDialog(this) == DialogResult.OK)
                     {
-                        d.InitialDirectory = current._origPath.Substring(0, current._origPath.LastIndexOf('\\'));
-                        d.Filter = string.Format("(*{0})|*{0}", Path.GetExtension(current._origPath));
-                        d.Title = "Please choose a location to save this file.";
-                        if (d.ShowDialog(this) == DialogResult.OK)
-                        {
-                            current.Merge();
-                            current.Export(d.FileName);
-                        }
+                        current.Merge();
+                        current.Export(d.FileName);
                     }
                 }
-                else
-                {
-                    current.Merge();
-                    current.Export(current._origPath);
-                }
+            }
+            else
+            {
+                current.Merge();
+                current.Export(current._origPath);
+            }
 
-                return true;
+            return true;
 #if !DEBUG
             }
             catch (Exception x)

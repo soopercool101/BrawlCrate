@@ -126,7 +126,7 @@ namespace BrawlCrate.NodeWrappers
                 string[] t = ShaderGenerator.GenTEVFragShader();
                 System.IO.File.WriteAllText(s.FileName,
                     ShaderGenerator.CombineFragShader(m, t, mat.ActiveShaderStages)
-                        .Replace("\n", Environment.NewLine));
+                                   .Replace("\n", Environment.NewLine));
             }
 
             ShaderGenerator.ClearTarget();

@@ -426,7 +426,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 Remove();
                 return false;
             }
-            
+
             for (int i = 0; i < numArguments; i++)
             {
                 FDefEventArgument e;

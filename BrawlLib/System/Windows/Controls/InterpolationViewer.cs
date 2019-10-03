@@ -32,7 +32,7 @@ namespace System.Windows.Forms
         private const float _lineWidth = 1.5f;  //The size of lines
         private const float _pointWidth = 5.0f; //The size of points
 
-        private int _frame;          //The current frame index
+        private int _frame;      //The current frame index
         private int _frameLimit; //The overall number of frames
 
         private float _xScale;                  //Width/Frames ratio

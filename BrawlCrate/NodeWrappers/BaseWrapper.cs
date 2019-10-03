@@ -133,7 +133,8 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
 
-                SelectedImageIndex = ImageIndex = Icons.getImageIndex(res.ResourceFileType);//((int)res.ResourceFileType & 0xFF);
+                SelectedImageIndex =
+                    ImageIndex = Icons.getImageIndex(res.ResourceFileType); //((int)res.ResourceFileType & 0xFF);
 
                 res.SelectChild += OnSelectChild;
                 res.ChildAdded += OnChildAdded;

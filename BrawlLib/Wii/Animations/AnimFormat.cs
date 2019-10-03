@@ -9,8 +9,8 @@ namespace BrawlLib.Wii.Animations
 {
     public class AnimFormat
     {
-        private static readonly string[] types = { "scale", "rotate", "translate" };
-        private static readonly string[] axes = { "X", "Y", "Z" };
+        private static readonly string[] types = {"scale", "rotate", "translate"};
+        private static readonly string[] axes = {"X", "Y", "Z"};
 
         public static void Serialize(CHR0Node node, string output)
         {
@@ -23,7 +23,7 @@ namespace BrawlLib.Wii.Animations
             };
 
             if (dlgOpen.ShowDialog() != DialogResult.OK ||
-                (model = (MDL0Node)NodeFactory.FromFile(null, dlgOpen.FileName)) == null)
+                (model = (MDL0Node) NodeFactory.FromFile(null, dlgOpen.FileName)) == null)
             {
                 return;
             }
@@ -74,7 +74,7 @@ namespace BrawlLib.Wii.Animations
                         file.WriteLine("  keys {");
                         for (KeyframeEntry entry = array._keyRoot._next; entry != array._keyRoot; entry = entry._next)
                         {
-                            float angle = (float)Math.Atan(entry._tangent) * Maths._rad2degf;
+                            float angle = (float) Math.Atan(entry._tangent) * Maths._rad2degf;
                             file.WriteLine("    {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10};",
                                 entry._index,
                                 entry._value.ToString(CultureInfo.InvariantCulture.NumberFormat),
@@ -99,7 +99,7 @@ namespace BrawlLib.Wii.Animations
 
         public static CHR0Node Read(string input)
         {
-            CHR0Node node = new CHR0Node() { _name = Path.GetFileNameWithoutExtension(input) };
+            CHR0Node node = new CHR0Node() {_name = Path.GetFileNameWithoutExtension(input)};
             using (StreamReader file = new StreamReader(input))
             {
                 float start = 0.0f;
@@ -145,7 +145,7 @@ namespace BrawlLib.Wii.Animations
                     }
                 }
 
-                int frameCount = (int)(end - start + 1.5f);
+                int frameCount = (int) (end - start + 1.5f);
                 node.FrameCount = frameCount;
 
                 while (true)
@@ -233,7 +233,7 @@ namespace BrawlLib.Wii.Animations
 
                         if ((e = node.FindChild(bone, false) as CHR0EntryNode) == null)
                         {
-                            e = new CHR0EntryNode() { _name = bone };
+                            e = new CHR0EntryNode() {_name = bone};
                             node.AddChild(e);
                         }
 
@@ -327,7 +327,7 @@ namespace BrawlLib.Wii.Animations
                                     bool anyFixed = secondFixed || firstFixed;
                                     bool bothFixed = secondFixed && firstFixed;
 
-                                    KeyframeEntry x = e.SetKeyframe(mode, (int)(inVal - 0.5f), outVal, true);
+                                    KeyframeEntry x = e.SetKeyframe(mode, (int) (inVal - 0.5f), outVal, true);
                                     if (!anyFixed)
                                     {
                                         l.Add(x);
@@ -336,16 +336,16 @@ namespace BrawlLib.Wii.Animations
                                     {
                                         if (bothFixed)
                                         {
-                                            x._tangent = (float)Math.Tan((angle1 + angle2) / 2 * Maths._deg2radf) *
+                                            x._tangent = (float) Math.Tan((angle1 + angle2) / 2 * Maths._deg2radf) *
                                                          ((weight1 + weight2) / 2);
                                         }
                                         else if (firstFixed)
                                         {
-                                            x._tangent = (float)Math.Tan(angle1 * Maths._deg2radf) * weight1;
+                                            x._tangent = (float) Math.Tan(angle1 * Maths._deg2radf) * weight1;
                                         }
                                         else
                                         {
-                                            x._tangent = (float)Math.Tan(angle2 * Maths._deg2radf) * weight2;
+                                            x._tangent = (float) Math.Tan(angle2 * Maths._deg2radf) * weight2;
                                         }
                                     }
                                 }

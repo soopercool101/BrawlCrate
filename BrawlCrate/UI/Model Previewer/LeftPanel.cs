@@ -1109,7 +1109,7 @@ namespace System.Windows.Forms
                 if (_selectedObject is MDL0ObjectNode)
                 {
                     foreach (MDL0MaterialRefNode tref in ((MDL0ObjectNode) _selectedObject)
-                        ._drawCalls[0].MaterialNode.Children)
+                                                         ._drawCalls[0].MaterialNode.Children)
                     {
                         lstTextures.Items.Add(tref.TextureNode, tref.TextureNode.Enabled);
                     }
@@ -1438,7 +1438,7 @@ namespace System.Windows.Forms
                 {
                     TargetTexRef = _selectedObject != null
                         ? ((MDL0ObjectNode) _selectedObject)
-                        ._drawCalls[0].MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode
+                          ._drawCalls[0].MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode
                         : null;
                 }
             }

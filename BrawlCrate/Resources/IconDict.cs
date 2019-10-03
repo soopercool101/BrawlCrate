@@ -62,7 +62,7 @@ namespace BrawlCrate
 
             //Modules
             {ResourceType.REL, Resources.REL},
-            
+
             //Misc
             {ResourceType.CollisionDef, Resources.Coll},
             {ResourceType.MSBin, Resources.MSG},

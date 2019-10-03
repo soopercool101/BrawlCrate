@@ -27,7 +27,7 @@ namespace BrawlCrate
             {
                 if (n is TEX0Wrapper tw)
                 {
-                    TEX0Node t = (TEX0Node)tw.Resource;
+                    TEX0Node t = (TEX0Node) tw.Resource;
                     if (paletteCount < 256)
                     {
                         if (!t.HasPalette || t.GetPaletteNode() == null)
@@ -37,11 +37,10 @@ namespace BrawlCrate
                         else if (t.HasPalette && t.GetPaletteNode() != null &&
                                  t.GetPaletteNode().Palette.Entries.Length > paletteCount)
                         {
-                            paletteCount = (short)Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
+                            paletteCount = (short) Math.Min(t.GetPaletteNode().Palette.Entries.Length, 256);
                         }
                     }
                 }
-
             }
 
             if (paletteCount == 0)
@@ -63,7 +62,7 @@ namespace BrawlCrate
             ColorSmashTex0(null);
         }
 
-        public static void ColorSmashTex0(int? paletteCount) 
+        public static void ColorSmashTex0(int? paletteCount)
         {
             // If this was selected via keycode when it's invalid, return without error
             if (!CanRunColorSmash || MainForm.Instance.resourceTree.SelectedNodes.Count <= 1)
@@ -127,6 +126,7 @@ namespace BrawlCrate
                 {
                     paletteCount = 0;
                 }
+
                 foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
                 {
                     // If this was selected via keycode when it's invalid, return without error

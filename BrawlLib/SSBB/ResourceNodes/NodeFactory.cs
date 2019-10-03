@@ -77,8 +77,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
-                    if(!(t is null) && (node = Activator.CreateInstance(t) as ResourceNode) != null
-                        || Forced.ContainsKey(ext) && (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
+                    if (!(t is null) && (node = Activator.CreateInstance(t) as ResourceNode) != null
+                        || Forced.ContainsKey(ext) &&
+                        (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
                     {
                         FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
                         if (uncompressedMap != null)
@@ -157,7 +158,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public static ResourceNode FromFolder(ResourceNode parent, string path)
         {
-
             FolderNode node = new FolderNode();
             node.Path = path;
             node.Initialize(parent, new VoidPtr(), 0);

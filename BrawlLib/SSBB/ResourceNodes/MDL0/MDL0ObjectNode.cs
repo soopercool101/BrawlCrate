@@ -2272,6 +2272,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 mat = mat.MetalMaterial;
             }
+
             if (attrib._renderPolygons)
             {
                 bool shaders = attrib._renderShaders && mat != null;

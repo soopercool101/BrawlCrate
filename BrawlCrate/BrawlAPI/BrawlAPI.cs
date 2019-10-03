@@ -90,10 +90,10 @@ namespace BrawlCrate.API
         /// </summary>
         internal static readonly string[] DepreciatedStrings = new[]
         {
-            "BrawlBox",             // BrawlBox namespace is "BrawlCrate" in this program
-            "bboxapi",              // API system is now named "BrawlAPI"
-            "PluginLoader",         // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddLoader"             // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "BrawlBox",     // BrawlBox namespace is "BrawlCrate" in this program
+            "bboxapi",      // API system is now named "BrawlAPI"
+            "PluginLoader", // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "AddLoader"     // Renamed to better reflect what it does (loaders do not have to be parsers)
         };
 
         /// <summary>
@@ -288,7 +288,8 @@ namespace BrawlCrate.API
             {
                 // Search the new installation path for Python
                 foreach (DirectoryInfo d in Directory
-                    .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString()).GetDirectories().Reverse())
+                                            .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString())
+                                            .GetDirectories().Reverse())
                 {
                     if (d.FullName.StartsWith(
                             $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Python") &&
@@ -440,7 +441,8 @@ namespace BrawlCrate.API
         {
             TreeViewMS resourceTree = (TreeViewMS) sender;
             Type type = resourceTree.SelectedType;
-            if (resourceTree.SelectedNodes.Count > 1 && type != null && type.GetInterfaces().Contains(typeof(MultiSelectableWrapper)))
+            if (resourceTree.SelectedNodes.Count > 1 && type != null &&
+                type.GetInterfaces().Contains(typeof(MultiSelectableWrapper)))
             {
                 // Get the correct multi-select context menu
                 ContextMenuStrip menu = type == typeof(GenericWrapper)
@@ -455,7 +457,8 @@ namespace BrawlCrate.API
                     menu.Items.RemoveAt(menu.Items.Count - 1);
                 }
 
-                if (menu != null && MultiSelectContextMenuHooks.ContainsKey(type) && MultiSelectContextMenuHooks[type].Length > 0)
+                if (menu != null && MultiSelectContextMenuHooks.ContainsKey(type) &&
+                    MultiSelectContextMenuHooks[type].Length > 0)
                 {
                     foreach (ToolStripMenuItem item in MultiSelectContextMenuHooks[type])
                     {
@@ -511,7 +514,8 @@ namespace BrawlCrate.API
             {
                 // Remove plugins list as necessary
                 while (wrapper.ContextMenuStrip != null && wrapper.ContextMenuStrip.Items.Count > 0 &&
-                       (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text.Equals("Plugins") ||
+                       (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text
+                               .Equals("Plugins") ||
                         wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
                 {
                     wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
@@ -563,7 +567,8 @@ namespace BrawlCrate.API
                     }
 
                     if (wrapper.ContextMenuStrip.Items.Count == 0 ||
-                        !wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text.Equals("Plugins"))
+                        !wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text
+                                .Equals("Plugins"))
                     {
                         if (wrapper.ContextMenuStrip.Items.Count != 0)
                         {

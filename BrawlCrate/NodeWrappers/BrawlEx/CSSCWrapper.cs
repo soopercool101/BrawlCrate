@@ -108,8 +108,10 @@ namespace BrawlCrate.NodeWrappers
 
             node._name =
                 "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(
-                    ((CSSCNode) _resource)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex,
-                    "+S") + node._costumeID.ToString("00") + (BrawlExColorID.Colors.Length > node._colorID
+                    ((CSSCNode) _resource)._cosmeticSlot,
+                    BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex,
+                    "+S") + node._costumeID.ToString("00") +
+                (BrawlExColorID.Colors.Length > node._colorID
                     ? " - " + BrawlExColorID.Colors[node._colorID].Name
                     : "");
             _resource.AddChild(node);

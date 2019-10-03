@@ -19,14 +19,17 @@ namespace BrawlCrate.NodeWrappers
             {
                 return;
             }
+
             string tempPath = Path.GetTempFileName();
             _resource.Export(tempPath + ".coll");
-            CollisionNode cNode = NodeFactory.FromFile(null, tempPath + ".coll", typeof(CollisionNode)) as CollisionNode;
+            CollisionNode cNode =
+                NodeFactory.FromFile(null, tempPath + ".coll", typeof(CollisionNode)) as CollisionNode;
             if (cNode == null)
             {
                 MessageBox.Show("The node could not be duplicated correctly.");
                 return;
             }
+
             int n = 0;
             int index = _resource.Index;
             // Copy the name directly in cases where name isn't saved
@@ -39,6 +42,7 @@ namespace BrawlCrate.NodeWrappers
                 // Set the name based on the number of duplicate nodes found
                 cNode.Children[0].Name = $"{_resource.Name} ({++n})";
             }
+
             // Place the node in the same containing parent, after the last duplicated node.
             _resource.Parent.InsertChild(cNode.Children[0], true, index + 1);
         }

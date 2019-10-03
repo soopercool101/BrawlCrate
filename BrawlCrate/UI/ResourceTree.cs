@@ -12,7 +12,6 @@ namespace BrawlCrate
 {
     public class ResourceTree : TreeViewMS
     {
-
         public event EventHandler SelectionChanged;
 
         private bool _allowContextMenus = true;
@@ -145,7 +144,7 @@ namespace BrawlCrate
 
         public ContextMenuStrip GetMultiSelectMenuStrip()
         {
-            System.Collections.Generic.List<TreeNode> nodes = SelectedNodes;
+            List<TreeNode> nodes = SelectedNodes;
             MultiSelectableWrapper singleNode = SelectedNode as MultiSelectableWrapper;
             if (singleNode == null)
             {

@@ -954,7 +954,7 @@ namespace Be.Windows.Forms
                             }, // move right with selection
                             {
                                 Keys.Down | Keys.Shift, PreProcessWmKeyDown_ShiftDown
-                            },                                                              // move down with selection
+                            },                                         // move down with selection
                             {Keys.Tab, PreProcessWmKeyDown_Tab},       // switch to string view
                             {Keys.Back, PreProcessWmKeyDown_Back},     // back
                             {Keys.Delete, PreProcessWmKeyDown_Delete}, // delete
@@ -962,7 +962,7 @@ namespace Be.Windows.Forms
                             {Keys.End, PreProcessWmKeyDown_End},       // move to end
                             {
                                 Keys.ShiftKey | Keys.Shift, PreProcessWmKeyDown_ShiftShiftKey
-                            },                                                                          // begin selection process
+                            },                                                     // begin selection process
                             {Keys.C | Keys.Control, PreProcessWmKeyDown_ControlC}, // copy 
                             {Keys.X | Keys.Control, PreProcessWmKeyDown_ControlX}, // cut
                             {Keys.V | Keys.Control, PreProcessWmKeyDown_ControlV}  // paste

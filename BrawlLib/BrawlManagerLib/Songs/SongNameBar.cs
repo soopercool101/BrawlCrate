@@ -207,7 +207,7 @@ namespace BrawlManagerLib
 
                     // info found; try info_training in same directory
                     string trainingpath = _currentFile.Replace("info.pac", "info_training.pac")
-                        .Replace("info_en.pac", "info_training_en.pac");
+                                                      .Replace("info_en.pac", "info_training_en.pac");
                     if (trainingpath != _currentFile && new FileInfo(trainingpath).Exists)
                     {
                         _currentTrainingFile = trainingpath;

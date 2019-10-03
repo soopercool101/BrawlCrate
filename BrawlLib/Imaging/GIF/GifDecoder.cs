@@ -95,7 +95,7 @@ namespace Gif.Components
         protected Image lastImage; // previous frame
 
         protected byte[] block = new byte[256]; // current data block
-        protected int blockSize;            // block size
+        protected int blockSize;                // block size
 
         // last graphic control extension info
         protected int dispose;
@@ -103,8 +103,8 @@ namespace Gif.Components
         // 0=no action; 1=leave in place; 2=restore to bg; 3=restore to prev
         protected int lastDispose;
         protected bool transparency; // use transparent color
-        protected int delay;             // delay in milliseconds
-        protected int transIndex;            // transparent color index
+        protected int delay;         // delay in milliseconds
+        protected int transIndex;    // transparent color index
 
         protected static readonly int MaxStackSize = 4096;
         // max decoder pixel stack size

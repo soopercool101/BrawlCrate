@@ -1375,7 +1375,8 @@ namespace BrawlCrate.StageManager
                             if (overlayFile != null)
                             {
                                 Stream stream = Assembly.GetExecutingAssembly()
-                                    .GetManifestResourceStream("BrawlCrate.StageManager." + overlayFile);
+                                                        .GetManifestResourceStream(
+                                                            "BrawlCrate.StageManager." + overlayFile);
                                 if (stream != null)
                                 {
                                     Image overlayImage = Image.FromStream(stream) as Bitmap;

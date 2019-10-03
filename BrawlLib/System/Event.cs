@@ -33,7 +33,7 @@ namespace System
 
             lParameters = (eventEvent & 0xFF00) / 0x100;
 
-            Array.Resize<Param>(ref parameters, (int)lParameters);
+            Array.Resize<Param>(ref parameters, (int) lParameters);
             for (int i = 0; i < lParameters; i++)
             {
                 parameters[i] = new Param();

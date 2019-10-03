@@ -290,7 +290,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal FDefHeader* Header => (FDefHeader*) WorkingUncompressed.Address;
         internal int dataSize, lookupOffset, numLookupEntries, numDataTable, numExternalSubRoutine;
 
-        internal static ResourceNode TryParse(DataSource source) 
+        internal static ResourceNode TryParse(DataSource source)
         {
             if (MSBinNode.TryParse(source) != null)
             {
@@ -298,13 +298,17 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             VoidPtr addr = source.Address;
-            FDefHeader* header = (FDefHeader*)addr;
+            FDefHeader* header = (FDefHeader*) addr;
 
             if (header->_pad1 != 0 || header->_pad2 != 0 || header->_pad3 != 0)
+            {
                 return null;
+            }
 
             if (header->_fileSize > source.Length || header->_lookupOffset > source.Length)
+            {
                 return null;
+            }
 
 
             return new MoveDefNode();

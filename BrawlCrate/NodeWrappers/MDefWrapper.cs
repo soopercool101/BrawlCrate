@@ -805,7 +805,8 @@ namespace BrawlBox.NodeWrappers
                         new ActionEventInfo()
                         {
                             Params = new string[_resource.Children.Count],
-                            pDescs = new string[_resource.Children.Count], _description = temp.Name, idNumber = ev
+                            pDescs = new string[_resource.Children.Count], _description = temp.Name,
+                            idNumber = ev
                         });
                 }
 
@@ -848,7 +849,8 @@ namespace BrawlBox.NodeWrappers
                         new ActionEventInfo()
                         {
                             Params = new string[_resource.Children.Count],
-                            pDescs = new string[_resource.Children.Count], _syntax = temp.Name, idNumber = ev
+                            pDescs = new string[_resource.Children.Count], _syntax = temp.Name,
+                            idNumber = ev
                         });
                 }
 
@@ -1122,9 +1124,13 @@ namespace BrawlBox.NodeWrappers
                 node.AddChild(new MoveDefActionNode("Entry", true, _resource));
                 node.AddChild(new MoveDefActionNode("Exit", true, _resource));
                 (_resource as MoveDefEntryNode).Root.data.actionFlags.AddChild(new MoveDefActionFlagsEntryNode()
-                    {Name = "Action" + ((_resource as MoveDefEntryNode).Root.data.actionFlags.Children.Count + 274)});
+                {
+                    Name = "Action" + ((_resource as MoveDefEntryNode).Root.data.actionFlags.Children.Count + 274)
+                });
                 (_resource as MoveDefEntryNode).Root.data.actionPre.AddChild(new MoveDefActionPreEntryNode()
-                    {Name = "Action" + (_resource as MoveDefEntryNode).Root.data.actionPre.Children.Count});
+                {
+                    Name = "Action" + (_resource as MoveDefEntryNode).Root.data.actionPre.Children.Count
+                });
             }
 
             _resource.AddChild(node);

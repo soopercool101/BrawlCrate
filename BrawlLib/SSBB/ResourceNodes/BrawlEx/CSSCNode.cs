@@ -329,7 +329,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             if (_name == null)
             {
                 _name = "Fit" + BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                            BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + _costumeID.ToString("00") +
+                            BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") +
+                        _costumeID.ToString("00") +
                         (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
             }
 
@@ -339,7 +340,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void regenName()
         {
             Name = "Fit" + BrawlCrate.FighterNameGenerators.InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                       BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") + _costumeID.ToString("00") +
+                       BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S") +
+                   _costumeID.ToString("00") +
                    (BrawlExColorID.Colors.Length > _colorID ? " - " + BrawlExColorID.Colors[_colorID].Name : "");
         }
 
@@ -359,8 +361,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 currentPath = currentPath.Substring(0,
                     currentPath.LastIndexOf("brawlex", StringComparison.OrdinalIgnoreCase));
                 List<string> internalNames = BrawlCrate.FighterNameGenerators
-                    .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
-                        BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S").Split('/').ToList<string>();
+                                                       .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
+                                                           BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S")
+                                                       .Split('/').ToList<string>();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +

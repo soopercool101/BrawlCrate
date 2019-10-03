@@ -198,8 +198,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (System.Windows.Forms.MessageBox.Show(
                             "Costume slot " + value +
-                            " is known to be bugged for WarioMan. Are you sure you'd like to proceed?", "Warning",
-                            System.Windows.Forms.MessageBoxButtons.YesNo) != System.Windows.Forms.DialogResult.Yes)
+                            " is known to be bugged for WarioMan. Are you sure you'd like to proceed?",
+                            "Warning",
+                            System.Windows.Forms.MessageBoxButtons.YesNo) !=
+                        System.Windows.Forms.DialogResult.Yes)
                     {
                         return;
                     }
@@ -246,9 +248,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void regenName()
         {
             Name = "Fit" +
-                   (((MasqueradeNode)Parent)._cosmeticSlot >= MasqueradeNode.MasqueradeInternalNames.Length ?
-                        $"Fighter{((MasqueradeNode)Parent)._cosmeticSlot}_"
-                        : MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode)Parent)._cosmeticSlot]) +
+                   (((MasqueradeNode) Parent)._cosmeticSlot >= MasqueradeNode.MasqueradeInternalNames.Length
+                       ? $"Fighter{((MasqueradeNode) Parent)._cosmeticSlot}_"
+                       : MasqueradeNode.MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot]) +
                    _costumeID.ToString("00") + (BrawlExColorID.Colors.Length > _colorID
                        ? " - " + BrawlExColorID.Colors[_colorID].Name
                        : "");
@@ -264,17 +266,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         public List<string> GetCostumeFilePath(string currentPath)
         {
             List<string> files = new List<string>();
-            if (((MasqueradeNode)Parent)._cosmeticSlot >= MasqueradeNode.MasqueradeInternalNames.Length)
+            if (((MasqueradeNode) Parent)._cosmeticSlot >= MasqueradeNode.MasqueradeInternalNames.Length)
             {
                 return files;
             }
+
             if ((currentPath = currentPath.Substring(0, currentPath.LastIndexOf('\\'))).EndsWith(
                 "pf\\info\\costumeslots", StringComparison.OrdinalIgnoreCase))
             {
                 currentPath = currentPath.Substring(0,
                     currentPath.LastIndexOf("info", StringComparison.OrdinalIgnoreCase));
                 List<string> internalNames = MasqueradeNode
-                    .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot].Split('/').ToList<string>();
+                                             .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot]
+                                             .Split('/').ToList<string>();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists($"{currentPath}\\fighter\\{s}\\Fit{s}{_costumeID:00}.pac"))

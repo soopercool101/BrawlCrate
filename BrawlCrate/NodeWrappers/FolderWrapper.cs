@@ -45,7 +45,7 @@ namespace BrawlCrate.NodeWrappers
         {
             ContextMenuStrip = _menu;
         }
-        
+
         public override void Delete()
         {
             if (Parent == null || Form.ActiveForm != MainForm.Instance)
