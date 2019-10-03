@@ -487,7 +487,6 @@ namespace BrawlCrate.API
                         {
                             items.Add(item);
                         }
-                        item.Visible = item.Enabled;
                     }
 
                     if (items.Count <= 0)
@@ -556,7 +555,6 @@ namespace BrawlCrate.API
                         {
                             items.Add(item);
                         }
-                        item.Visible = item.Enabled;
                     }
 
                     if (items.Count <= 0)
