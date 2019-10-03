@@ -62,15 +62,15 @@ namespace BrawlCrate.API
 
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
-            Assembly brawllib = Assembly.GetAssembly(typeof(ResourceNode));
+            Assembly brawlLib = Assembly.GetAssembly(typeof(ResourceNode));
 
             Runtime.LoadAssembly(mainAssembly);
-            Runtime.LoadAssembly(brawllib);
+            Runtime.LoadAssembly(brawlLib);
             Runtime.LoadAssembly(typeof(string).Assembly);
             Runtime.LoadAssembly(typeof(Uri).Assembly);
             Runtime.LoadAssembly(typeof(Form).Assembly);
 
-            // Hook the main form's resourceTree selection changed event to add contextMenu items to nodewrapper
+            // Hook the main form's resourceTree selection changed event to add contextMenu items to wrappers
             MainForm.Instance.resourceTree.SelectionChanged += ResourceTree_SelectionChanged;
         }
 
