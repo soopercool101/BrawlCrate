@@ -410,27 +410,29 @@ namespace System.Windows.Forms
 
                     outPath += "\\" + name + i + extension;
                     bool okay = true;
-                    if (extension.Equals(".png"))
+                    if (extension.Equals(".png", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Png);
                     }
-                    else if (extension.Equals(".tga"))
+                    else if (extension.Equals(".tga", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.SaveTGA(outPath);
                     }
-                    else if (extension.Equals(".tiff") || extension.Equals(".tif"))
+                    else if (extension.Equals(".tiff", StringComparison.OrdinalIgnoreCase) ||
+                             extension.Equals(".tif", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Tiff);
                     }
-                    else if (extension.Equals(".bmp"))
+                    else if (extension.Equals(".bmp", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Bmp);
                     }
-                    else if (extension.Equals(".jpg") || outPath.EndsWith(".jpeg"))
+                    else if (extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                             outPath.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Jpeg);
                     }
-                    else if (extension.Equals(".gif"))
+                    else if (extension.Equals(".gif", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Gif);
                     }
