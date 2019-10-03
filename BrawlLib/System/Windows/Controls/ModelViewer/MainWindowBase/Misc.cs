@@ -497,11 +497,11 @@ namespace System.Windows.Forms
             OpenFile(file, true, true, true);
         }
 
-        public virtual void OpenFile(string file, bool models = true, bool animations = true, bool etc = true)
+        public virtual void OpenFile(string file, bool models, bool animations = true, bool etc = true)
         {
-            ResourceNode node = null;
             try
             {
+                ResourceNode node;
                 if ((node = NodeFactory.FromFile(null, file)) != null)
                 {
                     _openedFiles.Add(node);
