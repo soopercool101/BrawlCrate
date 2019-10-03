@@ -519,6 +519,7 @@ namespace BrawlCrate.StageManager
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
 
                     return null;

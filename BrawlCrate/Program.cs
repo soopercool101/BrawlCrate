@@ -464,16 +464,14 @@ Full changelog can be viewed from the help menu.";
                 MainForm.Instance.RecentFilesHandler.AddFile(path);
                 return true;
             }
-            else
-            {
-                _rootPath = null;
-                if (showErrors)
-                {
-                    MessageBox.Show("Unable to recognize input file.");
-                }
 
-                MainForm.Instance.Reset();
+            _rootPath = null;
+            if (showErrors)
+            {
+                MessageBox.Show("Unable to recognize input file.");
             }
+
+            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -597,6 +595,7 @@ Full changelog can be viewed from the help menu.";
                             }
                             catch
                             {
+                                // ignored
                             }
                         }
                     }

@@ -196,6 +196,7 @@ namespace BrawlCrate.SongManager
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
 
                     return null;

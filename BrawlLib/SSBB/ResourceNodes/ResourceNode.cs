@@ -1471,6 +1471,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 }
                                 catch
                                 {
+                                    // ignored
                                 }
                             }
                         }
@@ -1479,6 +1480,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             catch
             {
+                // ignored
             }
 
             return nodes.ToArray();

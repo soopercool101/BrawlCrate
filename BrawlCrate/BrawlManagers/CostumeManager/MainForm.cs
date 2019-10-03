@@ -100,6 +100,7 @@ namespace BrawlCrate.CostumeManager
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
 
                     return null;

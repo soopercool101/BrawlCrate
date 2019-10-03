@@ -334,6 +334,7 @@ namespace System.Windows.Forms
             }
             catch
             {
+                // ignored
             }
 
             AnimatedGifEncoder e = new AnimatedGifEncoder();
@@ -451,6 +452,7 @@ namespace System.Windows.Forms
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 

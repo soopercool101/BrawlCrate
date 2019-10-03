@@ -326,6 +326,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 

@@ -57,6 +57,7 @@ namespace BrawlLib.OpenGL
             }
             catch
             {
+                // ignored
             }
 
             _states.Clear();

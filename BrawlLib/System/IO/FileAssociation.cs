@@ -122,6 +122,7 @@ namespace System.IO
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
         }
@@ -144,6 +145,7 @@ namespace System.IO
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
                 }
                 else
@@ -174,6 +176,7 @@ namespace System.IO
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
             else
@@ -190,6 +193,7 @@ namespace System.IO
             }
             catch (Exception)
             {
+                // ignored
             }
         }
     }

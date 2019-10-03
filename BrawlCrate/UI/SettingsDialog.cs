@@ -1718,6 +1718,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
+                    // ignored
                 }
 
                 if (f.ShowDialog() == DialogResult.OK)

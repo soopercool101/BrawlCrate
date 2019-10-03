@@ -740,6 +740,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
+                    // ignored
                 }
 
                 editToolStripMenuItem.Enabled = false;
@@ -921,6 +922,7 @@ namespace BrawlCrate
                         }
                         catch
                         {
+                            // ignored
                         }
                     }
                 }

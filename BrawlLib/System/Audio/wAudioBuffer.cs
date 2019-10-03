@@ -113,6 +113,7 @@ namespace System.Audio
             }
             catch
             {
+                // ignored
             }
         }
 
