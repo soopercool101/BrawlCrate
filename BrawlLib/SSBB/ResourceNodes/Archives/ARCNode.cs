@@ -1058,7 +1058,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_redirectIndex != -1)
             {
-                s += $" (Redirect → {(redirectTargetNode == null ? _redirectIndex.ToString() : RedirectTargetName)})";
+                s += $" (Redirect → {(redirectTargetNode == null ? _redirectIndex.ToString() : RedirectNode.Name)})";
             }
 
             return s;
