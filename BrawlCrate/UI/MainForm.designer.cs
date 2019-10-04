@@ -42,7 +42,6 @@ namespace BrawlCrate
             this.bRRESResourcePackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.u8FileArchiveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tPLTextureArchiveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.audioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bRSTMAudioStreamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.effectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eFLSEffectListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -190,7 +189,7 @@ namespace BrawlCrate
             // 
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivesToolStripMenuItem,
-            this.audioToolStripMenuItem,
+            this.bRSTMAudioStreamToolStripMenuItem,
             this.effectsToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
@@ -234,14 +233,6 @@ namespace BrawlCrate
             this.tPLTextureArchiveToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
             this.tPLTextureArchiveToolStripMenuItem1.Text = "TPL Texture Archive";
             this.tPLTextureArchiveToolStripMenuItem1.Click += new System.EventHandler(this.tPLTextureArchiveToolStripMenuItem_Click);
-            // 
-            // audioToolStripMenuItem
-            // 
-            this.audioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bRSTMAudioStreamToolStripMenuItem});
-            this.audioToolStripMenuItem.Name = "audioToolStripMenuItem";
-            this.audioToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.audioToolStripMenuItem.Text = "Audio";
             // 
             // bRSTMAudioStreamToolStripMenuItem
             // 
@@ -866,7 +857,6 @@ namespace BrawlCrate
         private ToolStripMenuItem bRRESResourcePackToolStripMenuItem;
         private ToolStripMenuItem u8FileArchiveToolStripMenuItem1;
         private ToolStripMenuItem tPLTextureArchiveToolStripMenuItem1;
-        private ToolStripMenuItem audioToolStripMenuItem;
         private ToolStripMenuItem bRSTMAudioStreamToolStripMenuItem;
         private ToolStripMenuItem effectsToolStripMenuItem;
         private ToolStripMenuItem eFLSEffectListToolStripMenuItem;
