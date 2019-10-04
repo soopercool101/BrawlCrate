@@ -46,6 +46,16 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
 
+        public override string Export()
+        {
+            if (Program.SaveFolder(out string outPath))
+            {
+                _resource.Export(outPath);
+            }
+
+            return outPath;
+        }
+
         public override void Delete()
         {
             if (Parent == null || Form.ActiveForm != MainForm.Instance)
@@ -59,7 +69,7 @@ namespace BrawlCrate.NodeWrappers
                 return;
             }
 
-            string dir = ((FolderNode) _resource).Path;
+            string dir = ((FolderNode) _resource).FolderPath;
             base.Delete();
             Directory.Delete(dir, true);
         }

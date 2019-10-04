@@ -331,7 +331,7 @@ Full changelog can be viewed from the help menu.";
                 }
                 else
                 {
-                    throw x;
+                    throw;
                 }
             }
             finally
@@ -725,6 +725,18 @@ Full changelog can be viewed from the help menu.";
             return fIndex;
         }
 
+        public static bool SaveFolder(out string folderName)
+        {
+            folderName = null;
+            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            {
+                folderName = _folderDlg.SelectedPath;
+                return true;
+            }
+
+            return false;
+        }
+
         public static int CategorizeFilter(string path, string filter)
         {
             string ext = "*" + Path.GetExtension(path);
@@ -784,6 +796,12 @@ Full changelog can be viewed from the help menu.";
                 if (path != null)
                 {
                     _rootPath = path;
+                    RootNode._origPath = path;
+                    if (w is FolderWrapper)
+                    {
+                        w.Resource.Name = w.Resource.OrigFileName;
+                        w.Text = w.Resource.Name;
+                    }
                     MainForm.Instance.UpdateName();
                     w.Resource.IsDirty = false;
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);

@@ -15,7 +15,8 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 
         public List<ResourceNode> _list;
 
-        public string Path;
+        public string FolderPath => Parent != null && Parent is FolderNode f ? $"{f.FolderPath}\\{Name}" : _origPath;
+
         private string[] _directories;
         private string[] _files;
 
@@ -68,11 +69,12 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 
         public override unsafe void Export(string outPath)
         {
+            Directory.CreateDirectory(outPath);
             foreach (ResourceNode c in Children)
             {
-                if (c.IsDirty)
+                if (c.IsDirty || !outPath.Equals(FolderPath))
                 {
-                    c.Export(c._origPath);
+                    c.Export($"{outPath}\\{c.OrigFileName}");
                 }
             }
 
@@ -97,9 +99,9 @@ namespace BrawlLib.SSBB.ResourceNodes.Archives
 
         public override bool OnInitialize()
         {
-            _name = new DirectoryInfo(Path).Name;
-            _directories = Directory.GetDirectories(Path);
-            _files = Directory.GetFiles(Path);
+            _name = new DirectoryInfo(_origPath).Name;
+            _directories = Directory.GetDirectories(_origPath);
+            _files = Directory.GetFiles(_origPath);
             IsDirty = false;
             base.OnInitialize();
 

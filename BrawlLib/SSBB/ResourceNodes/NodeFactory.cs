@@ -159,7 +159,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public static ResourceNode FromFolder(ResourceNode parent, string path)
         {
             FolderNode node = new FolderNode();
-            node.Path = path;
+            node._origPath = path;
             node.Initialize(parent, new VoidPtr(), 0);
             node.OnPopulate();
             return node;
