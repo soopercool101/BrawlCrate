@@ -90,6 +90,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ExportSawnd(string outPath)
         {
+            _resource.RootNode.Rebuild();
             bool swapEndian = BitConverter.IsLittleEndian;
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
                 FileShare.ReadWrite, 8, FileOptions.SequentialScan))
