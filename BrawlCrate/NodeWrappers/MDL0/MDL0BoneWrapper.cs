@@ -247,7 +247,7 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
 
-            MDL0BoneNode bone = new MDL0BoneNode() {Name = name, _entryIndex = model._linker.BoneCache.Length};
+            MDL0BoneNode bone = new MDL0BoneNode {Name = name, _entryIndex = model._linker.BoneCache.Length};
             bone.FrameState = bone.BindState = FrameState.Neutral;
             _resource.AddChild(bone, true);
 

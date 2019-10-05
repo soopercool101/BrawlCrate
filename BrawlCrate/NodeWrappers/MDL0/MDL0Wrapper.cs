@@ -575,7 +575,7 @@ namespace BrawlCrate.NodeWrappers
                 model._vertList = g.Children;
             }
 
-            MDL0VertexNode node = new MDL0VertexNode() {Name = "VertexSet" + ((MDL0Node) _resource)._vertList.Count};
+            MDL0VertexNode node = new MDL0VertexNode {Name = "VertexSet" + ((MDL0Node) _resource)._vertList.Count};
             node.Vertices = new Vector3[] {new Vector3(0)};
             g.AddChild(node, true);
             node.ForceRebuild = true;
@@ -599,7 +599,7 @@ namespace BrawlCrate.NodeWrappers
                 model._normList = g.Children;
             }
 
-            MDL0NormalNode node = new MDL0NormalNode() {Name = "NormalSet" + ((MDL0Node) _resource)._normList.Count};
+            MDL0NormalNode node = new MDL0NormalNode {Name = "NormalSet" + ((MDL0Node) _resource)._normList.Count};
             node.Normals = new Vector3[] {new Vector3(0)};
             g.AddChild(node, true);
             node._forceRebuild = true;
@@ -623,8 +623,8 @@ namespace BrawlCrate.NodeWrappers
                 model._colorList = g.Children;
             }
 
-            MDL0ColorNode node = new MDL0ColorNode() {Name = "ColorSet" + ((MDL0Node) _resource)._colorList.Count};
-            node.Colors = new RGBAPixel[] {new RGBAPixel() {A = 255, R = 128, G = 128, B = 128}};
+            MDL0ColorNode node = new MDL0ColorNode {Name = "ColorSet" + ((MDL0Node) _resource)._colorList.Count};
+            node.Colors = new RGBAPixel[] {new RGBAPixel {A = 255, R = 128, G = 128, B = 128}};
             g.AddChild(node, true);
 
             node.Rebuild(true);
@@ -647,7 +647,7 @@ namespace BrawlCrate.NodeWrappers
                 model._uvList = g.Children;
             }
 
-            MDL0UVNode node = new MDL0UVNode() {Name = "#" + ((MDL0Node) _resource)._uvList.Count};
+            MDL0UVNode node = new MDL0UVNode {Name = "#" + ((MDL0Node) _resource)._uvList.Count};
             node.Points = new Vector2[] {new Vector2(0)};
             g.AddChild(node, true);
             node._forceRebuild = true;

@@ -365,7 +365,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     s += line.ToStringNoSpace();
                 }
 
-                GCTNode g = new GCTNode() {_origPath = path};
+                GCTNode g = new GCTNode {_origPath = path};
 
                 List<string> _unrecognized = new List<string>();
 
@@ -376,7 +376,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         int index = -1;
                         if ((index = s.IndexOf(c._code)) >= 0)
                         {
-                            g.AddChild(new GCTCodeEntryNode()
+                            g.AddChild(new GCTCodeEntryNode
                             {
                                 _name = c._name,
                                 _description = c._description,
@@ -391,7 +391,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (s.Length > 0)
                 {
                     g.AddChild(
-                        new GCTCodeEntryNode() {_name = "Unrecognized Code(s)", LinesNoSpaces = s, _enabled = true},
+                        new GCTCodeEntryNode {_name = "Unrecognized Code(s)", LinesNoSpaces = s, _enabled = true},
                         false);
                 }
 

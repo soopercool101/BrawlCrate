@@ -192,13 +192,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     BaseAddress + ActionFlagsStart, actionCount * 16);
                 if (ActionsStart > 0 || dedede && _extraOffsets[0] > 0)
                 {
-                    actions = new MoveDefActionListNode() {_name = "Actions"};
+                    actions = new MoveDefActionListNode {_name = "Actions"};
                     actions.Parent = this;
                     for (int i = 0; i < actionCount; i++)
                     {
                         if (pikmin)
                         {
-                            actions.AddChild(new MoveDefActionGroupNode() {_name = "Action" + i}, false);
+                            actions.AddChild(new MoveDefActionGroupNode {_name = "Action" + i}, false);
 
                             off = *((bint*) (BaseAddress + ActionsStart) + i);
                             if (off > 0)
@@ -243,7 +243,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (SubactionFlagsStart > 0)
             {
-                subActionFlags = new MoveDefFlagsNode() {_parent = this};
+                subActionFlags = new MoveDefFlagsNode {_parent = this};
                 subActionFlags.Initialize(this, BaseAddress + SubactionFlagsStart, subactions * 8);
 
                 if (subactions == 0)
@@ -257,39 +257,39 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (dedede)
                 {
-                    subActions = new MoveDefGroupNode() {Name = "SubActions"};
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Waddle Dee"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Waddle Doo"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Gyro"}, false);
+                    subActions = new MoveDefGroupNode {Name = "SubActions"};
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Waddle Dee"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Waddle Doo"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Gyro"}, false);
                     populateCount = 3;
                     child = true;
                 }
                 else if (pikmin)
                 {
-                    subActions = new MoveDefGroupNode() {Name = "SubActions"};
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Red"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Yellow"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Blue"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Purple"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "White"}, false);
+                    subActions = new MoveDefGroupNode {Name = "SubActions"};
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Red"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Yellow"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Blue"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Purple"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "White"}, false);
                     populateCount = 5;
                     child = true;
                     bias = 1;
                 }
                 else if (ArticleStringID == "ArticleType1_61" && RootNode.Name == "FitKirby")
                 {
-                    subActions = new MoveDefGroupNode() {Name = "SubActions"};
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "100 Ton Stone"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Thwomp Stone"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Spike Ball"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Stone Kirby"}, false);
-                    subActions.AddChild(new MoveDefActionListNode() {_name = "Happy Stone"}, false);
+                    subActions = new MoveDefGroupNode {Name = "SubActions"};
+                    subActions.AddChild(new MoveDefActionListNode {_name = "100 Ton Stone"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Thwomp Stone"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Spike Ball"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Stone Kirby"}, false);
+                    subActions.AddChild(new MoveDefActionListNode {_name = "Happy Stone"}, false);
                     populateCount = 5;
                     child = true;
                 }
                 else
                 {
-                    subActions = new MoveDefActionListNode() {_name = "SubActions"};
+                    subActions = new MoveDefActionListNode {_name = "SubActions"};
                 }
 
                 subActions.Parent = this;
@@ -311,7 +311,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     for (int i = 0; i < subactions && i < subActionFlags._names.Count; i++)
                     {
                         Base.AddChild(
-                            new MoveDefSubActionGroupNode()
+                            new MoveDefSubActionGroupNode
                             {
                                 _name = subActionFlags._names[i], _flags = subActionFlags._flags[i]._Flags,
                                 _inTransTime = subActionFlags._flags[i]._InTranslationTime
@@ -399,18 +399,18 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (CollisionData != 0)
             {
-                (data1 = new CollisionDataNode() {_name = "Collision Data"}).Initialize(this,
+                (data1 = new CollisionDataNode {_name = "Collision Data"}).Initialize(this,
                     BaseAddress + CollisionData, 8);
             }
 
             if (DataOffset2 != 0)
             {
-                (data2 = new Data2ListNode() {_name = "Data2"}).Initialize(this, BaseAddress + DataOffset2, 8);
+                (data2 = new Data2ListNode {_name = "Data2"}).Initialize(this, BaseAddress + DataOffset2, 8);
             }
 
             if (DataOffset3 != 0)
             {
-                (data3 = new MoveDefSectionParamNode() {_name = "Data3"}).Initialize(this, BaseAddress + DataOffset3,
+                (data3 = new MoveDefSectionParamNode {_name = "Data3"}).Initialize(this, BaseAddress + DataOffset3,
                     0);
             }
 
@@ -447,7 +447,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                              ArticleStringID == "ArticleType1_4" && RootNode.Name == "FitWario" ||
                              ArticleStringID == "ArticleType1_5" && RootNode.Name == "FitWarioMan"))
                 {
-                    MoveDefParamListNode p = new MoveDefParamListNode() {_name = "ParamList" + index};
+                    MoveDefParamListNode p = new MoveDefParamListNode {_name = "ParamList" + index};
                     p.Initialize(this, BaseAddress + i, 0);
                     entry = p;
                 }
@@ -461,7 +461,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         case 3:
                         case 4:
                         case 5:
-                            p = new MoveDefKirbyArticleP1Node() {offsetID = index};
+                            p = new MoveDefKirbyArticleP1Node {offsetID = index};
                             break;
                         case 6:
                         case 8:
@@ -486,22 +486,22 @@ namespace BrawlLib.SSBB.ResourceNodes
                     switch (index)
                     {
                         case 1:
-                            p = new MoveDefUnk17Node() {_name = "Bone Floats"};
+                            p = new MoveDefUnk17Node {_name = "Bone Floats"};
                             break;
                         case 2:
-                            p = new HitDataListOffsetNode() {_name = "HitDataList" + index};
+                            p = new HitDataListOffsetNode {_name = "HitDataList" + index};
                             break;
                         case 3:
                             p = new Fox11Falco9Wolf11Article3Node();
                             break;
                         case 4:
-                            p = new ActionOffsetNode() {_name = "Data" + index};
+                            p = new ActionOffsetNode {_name = "Data" + index};
                             break;
                         case 5:
-                            p = new SecondaryActionOffsetNode() {_name = "Data" + index};
+                            p = new SecondaryActionOffsetNode {_name = "Data" + index};
                             break;
                         case 6:
-                            p = new Fox11Falco9Wolf11PopoArticle63Node() {offsetID = index};
+                            p = new Fox11Falco9Wolf11PopoArticle63Node {offsetID = index};
                             break;
                     }
 
@@ -519,10 +519,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     switch (index)
                     {
                         case 23:
-                            p = new ActionOffsetNode() {_name = "Data" + index};
+                            p = new ActionOffsetNode {_name = "Data" + index};
                             break;
                         case 24:
-                            p = new SecondaryActionOffsetNode() {_name = "Data" + index};
+                            p = new SecondaryActionOffsetNode {_name = "Data" + index};
                             break;
                     }
 
@@ -535,7 +535,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else if (index == 3 && ArticleStringID == "ArticleType1_14" && RootNode.Name == "FitPopo")
                 {
-                    Fox11Falco9Wolf11PopoArticle63Node p = new Fox11Falco9Wolf11PopoArticle63Node() {offsetID = index};
+                    Fox11Falco9Wolf11PopoArticle63Node p = new Fox11Falco9Wolf11PopoArticle63Node {offsetID = index};
                     p.Initialize(this, BaseAddress + i, 0);
                     entry = p;
                 }
@@ -545,10 +545,10 @@ namespace BrawlLib.SSBB.ResourceNodes
                     switch (index)
                     {
                         case 5:
-                            p = new ActionOffsetNode() {_name = "Data" + index};
+                            p = new ActionOffsetNode {_name = "Data" + index};
                             break;
                         case 6:
-                            p = new SecondaryActionOffsetNode() {_name = "Data" + index};
+                            p = new SecondaryActionOffsetNode {_name = "Data" + index};
                             break;
                     }
 
@@ -568,7 +568,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else if (index == 3 && ArticleStringID == "ArticleType1_4" && RootNode.Name == "FitGanon" ||
                          index == 1 && ArticleStringID == "ArticleType1_7" && RootNode.Name == "FitSonic")
                 {
-                    MoveDefHitDataListNode p = new MoveDefHitDataListNode() {_name = "HitData"};
+                    MoveDefHitDataListNode p = new MoveDefHitDataListNode {_name = "HitData"};
                     p.Initialize(this, BaseAddress + i, 0);
                     entry = p;
                 }
@@ -579,7 +579,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         MoveDefExternalNode e = Root.IsExternal(i);
                         if (e != null && e.Name.Contains("hitData"))
                         {
-                            MoveDefHitDataListNode p = new MoveDefHitDataListNode() {_name = e.Name};
+                            MoveDefHitDataListNode p = new MoveDefHitDataListNode {_name = e.Name};
                             p.Initialize(this, new DataSource(BaseAddress + i, 0));
                             entry = p;
                         }
@@ -596,7 +596,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 d.Initialize(this, BaseAddress + i, 0);
                                 for (int x = 0; x < count; x++)
                                 {
-                                    new MoveDefSectionParamNode() {_name = "Part" + x}.Initialize(d,
+                                    new MoveDefSectionParamNode {_name = "Part" + x}.Initialize(d,
                                         BaseAddress + i + x * size, size);
                                 }
                             }
@@ -605,13 +605,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                         {
                             if (e != null && e.Name.Contains("hitData"))
                             {
-                                MoveDefHitDataListNode p = new MoveDefHitDataListNode() {_name = e.Name};
+                                MoveDefHitDataListNode p = new MoveDefHitDataListNode {_name = e.Name};
                                 entry = p;
                                 p.Initialize(this, new DataSource(BaseAddress + i, 0));
                             }
                             else
                             {
-                                (entry = new MoveDefSectionParamNode() {_name = "ExtraParams" + index}).Initialize(this,
+                                (entry = new MoveDefSectionParamNode {_name = "ExtraParams" + index}).Initialize(this,
                                     BaseAddress + i, 0);
                             }
                         }
@@ -1146,7 +1146,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         if (i == 0)
                         {
-                            *subActionFlagsAddr = new FDefSubActionFlag()
+                            *subActionFlagsAddr = new FDefSubActionFlag
                             {
                                 _Flags = grp._flags, _InTranslationTime = grp._inTransTime,
                                 _stringOffset = (int) subActionStrings[grp.Name] - (int) _rebuildBase
@@ -1508,24 +1508,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                 bint* addr = (bint*) (BaseAddress + DataOffset);
                 for (int i = 0; i < Count; i++)
                 {
-                    (o = new MoveDefOffsetNode() {_name = "Entry"}).Initialize(this, addr++, 4);
+                    (o = new MoveDefOffsetNode {_name = "Entry"}).Initialize(this, addr++, 4);
                     if (o.DataOffset > 0)
                     {
                         int value = *(int*) (BaseAddress + o.DataOffset);
                         switch (value)
                         {
                             case 0:
-                                new CollDataType0() {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset, 0);
+                                new CollDataType0 {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset, 0);
                                 break;
                             case 1:
-                                new CollDataType1() {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset, 0);
+                                new CollDataType1 {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset, 0);
                                 break;
                             case 2:
-                                new CollDataType2() {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset, 0);
+                                new CollDataType2 {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset, 0);
                                 break;
                             default:
                                 Console.WriteLine(value);
-                                new MoveDefSectionParamNode() {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset,
+                                new MoveDefSectionParamNode {_name = "Data"}.Initialize(o, BaseAddress + o.DataOffset,
                                     0);
                                 break;
                         }

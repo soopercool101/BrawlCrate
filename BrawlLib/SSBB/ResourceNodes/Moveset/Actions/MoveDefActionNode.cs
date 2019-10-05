@@ -250,8 +250,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 e._entryOffset = eventAddr;
-                *eventAddr = new FDefEvent()
-                    {_id = e.id, _nameSpace = e.nameSpace, _numArguments = (byte) e.Children.Count, _unk1 = e.unk1};
+                *eventAddr = new FDefEvent {_id = e.id, _nameSpace = e.nameSpace, _numArguments = (byte) e.Children.Count, _unk1 = e.unk1};
                 if (e.Children.Count > 0)
                 {
                     eventAddr->_argumentOffset = (uint) paramAddr - (uint) _rebuildBase;
@@ -268,7 +267,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     p._entryOffset = paramAddr;
                     if (p._type != ArgVarType.Offset)
                     {
-                        *paramAddr = new FDefEventArgument() {_type = (int) p._type, _data = p._value};
+                        *paramAddr = new FDefEventArgument {_type = (int) p._type, _data = p._value};
                     }
                     else
                     {

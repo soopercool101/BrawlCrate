@@ -273,7 +273,7 @@ namespace BrawlLib.SSBBTypes
 
         public SRT0Code Code
         {
-            get => new SRT0Code() {_data = (uint) _code};
+            get => new SRT0Code {_data = (uint) _code};
             set => _code = (uint) value._data;
         }
 
@@ -306,7 +306,7 @@ namespace BrawlLib.SSBBTypes
 
     public struct SRT0Code
     {
-        public static SRT0Code Default = new SRT0Code() {_data = 0x3FF};
+        public static SRT0Code Default = new SRT0Code {_data = 0x3FF};
 
         //0000 0000 0000 0000 0000 0000 0000 0001       Always set
 

@@ -161,7 +161,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (Header->_propertyPtr != 0 && Header->_propertyCount > 0)
             {
-                HavokGroupNode memberGroup = new HavokGroupNode() {_name = "Members"};
+                HavokGroupNode memberGroup = new HavokGroupNode {_name = "Members"};
                 memberGroup.Parent = this;
                 hkClassMember* member = (hkClassMember*) Header->_propertyPtr.OffsetAddress;
                 for (int i = 0; i < Header->_propertyCount; i++, member++)
@@ -172,7 +172,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (Header->_enumPtr != 0 && Header->_enumCount > 0)
             {
-                HavokGroupNode enumGroup = new HavokGroupNode() {_name = "Enums"};
+                HavokGroupNode enumGroup = new HavokGroupNode {_name = "Enums"};
                 enumGroup.Parent = this;
                 hkClassEnum* Enum = (hkClassEnum*) Header->_enumPtr.OffsetAddress;
                 for (int i = 0; i < Header->_enumCount; i++, Enum++)
@@ -186,7 +186,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 hkCustomAttributes* attribHeader = (hkCustomAttributes*) Header->_attribPtr.OffsetAddress;
                 if (attribHeader->_count > 0)
                 {
-                    HavokGroupNode attribGroup = new HavokGroupNode() {_name = "Attributes"};
+                    HavokGroupNode attribGroup = new HavokGroupNode {_name = "Attributes"};
                     attribGroup.Parent = this;
                     HavokAttribute* attrib = (HavokAttribute*) attribHeader->_attribPtr.OffsetAddress;
                     for (int i = 0; i < attribHeader->_count; i++, attrib++)

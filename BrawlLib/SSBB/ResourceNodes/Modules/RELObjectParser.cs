@@ -141,13 +141,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                     _parent = _objectSection
                 };
                 _objectSection._children.Add(obj);
-                new RELGroupNode() {_name = "Inheritance"}.Parent = obj;
+                new RELGroupNode {_name = "Inheritance"}.Parent = obj;
                 foreach (InheritanceItemNode n in declaration.Inheritance)
                 {
                     n.Parent = obj.Children[0];
                 }
 
-                new RELGroupNode() {_name = "Functions"}.Parent = obj;
+                new RELGroupNode {_name = "Functions"}.Parent = obj;
             }
 
             int baseRel = rel;
@@ -169,7 +169,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         addr = _objectSection.Root.Children[t._sectionID].WorkingUncompressed.Address + t._index * 4;
                     }
 
-                    new RELMethodNode()
+                    new RELMethodNode
                         {
                             _name = methodName,
                             _cmd = cmd

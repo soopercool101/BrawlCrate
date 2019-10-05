@@ -33,7 +33,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr += PtclTrackCount; //skip nulled pointers to size list
             for (int i = 0; i < PtclTrackCount; i++)
             {
-                new REFFAnimationNode() {_isPtcl = true}.Initialize(this, First + offset, (int) *addr);
+                new REFFAnimationNode {_isPtcl = true}.Initialize(this, First + offset, (int) *addr);
                 offset += (int) *addr++;
             }
 

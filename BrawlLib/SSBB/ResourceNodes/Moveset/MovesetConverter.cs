@@ -731,7 +731,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             FDefSubActionFlag* flags = (FDefSubActionFlag*) dataAddress;
             foreach (MoveDefSubActionGroupNode g in RootNode._subActions.Children)
             {
-                *flags = new FDefSubActionFlag()
+                *flags = new FDefSubActionFlag
                 {
                     _InTranslationTime = g._inTransTime, _Flags = g._flags,
                     _stringOffset = g.Name == "<null>" ? 0 : (int) node.subActionTable[g.Name] - (int) baseAddress

@@ -160,7 +160,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (CollisionData != 0)
             {
-                (collisionData = new CollisionDataNode() {_name = "Misc Collision Data"}).Initialize(this,
+                (collisionData = new CollisionDataNode {_name = "Misc Collision Data"}).Initialize(this,
                     new DataSource(BaseAddress + CollisionData, 0));
             }
 
@@ -202,7 +202,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* addr = (bint*) (BaseAddress + DataOffset);
             for (int i = 0; i < Count; i++)
             {
-                MoveDefOffsetNode offset = new MoveDefOffsetNode() {_name = "Entry" + i};
+                MoveDefOffsetNode offset = new MoveDefOffsetNode {_name = "Entry" + i};
                 offset.Initialize(this, addr++, 4);
 
                 if (offset.DataOffset == 0)
@@ -356,7 +356,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* addr = (bint*) (BaseAddress + DataOffset);
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefIndexNode() {_name = "Entry" + i}.Initialize(this, addr++, 4);
+                new MoveDefIndexNode {_name = "Entry" + i}.Initialize(this, addr++, 4);
             }
         }
 
@@ -2498,7 +2498,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < ListCount; i++)
             {
-                new MoveDefIndexNode() {_name = "SFX" + i}.Initialize(this,
+                new MoveDefIndexNode {_name = "SFX" + i}.Initialize(this,
                     new DataSource(BaseAddress + StartOffset + i * 4, 0x4));
             }
         }

@@ -11,7 +11,7 @@ namespace BrawlCrate.StageManager
     {
         #region mapping
 
-        private static Dictionary<int, string[]> dict = new Dictionary<int, string[]>()
+        private static Dictionary<int, string[]> dict = new Dictionary<int, string[]>
         {
             {
                 1, new[]

@@ -137,7 +137,7 @@ namespace BrawlCrate.NodeWrappers
 
         public MRGNode NewMRG()
         {
-            MRGNode node = new MRGNode() {Name = _resource.FindName("NewMRG")};
+            MRGNode node = new MRGNode {Name = _resource.FindName("NewMRG")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -148,7 +148,7 @@ namespace BrawlCrate.NodeWrappers
 
         public BRRESNode NewBRES()
         {
-            BRRESNode node = new BRRESNode() {FileType = ARCFileType.MiscData};
+            BRRESNode node = new BRRESNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -159,7 +159,7 @@ namespace BrawlCrate.NodeWrappers
 
         public MSBinNode NewMSBin()
         {
-            MSBinNode node = new MSBinNode() {FileType = ARCFileType.MiscData};
+            MSBinNode node = new MSBinNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

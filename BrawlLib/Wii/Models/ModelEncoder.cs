@@ -443,7 +443,7 @@ namespace BrawlLib.Wii.Models
                                 Collada._importOptions._singleColorNodeEntries = le.ToArray();
 
                                 ColorCodec col = new ColorCodec(Collada._importOptions._singleColorNodeEntries);
-                                linker._colors = new List<ColorCodec>() {col};
+                                linker._colors = new List<ColorCodec> {col};
                                 assetLen += col._dataLen.Align(0x20) + 0x20;
                                 entries = 1;
                             }
@@ -1076,7 +1076,7 @@ namespace BrawlLib.Wii.Models
                 index = 0;
                 foreach (VertexCodec c in linker._uvs)
                 {
-                    MDL0UVNode node = new MDL0UVNode() {_name = "#" + index};
+                    MDL0UVNode node = new MDL0UVNode {_name = "#" + index};
 
                     if (form != null)
                     {

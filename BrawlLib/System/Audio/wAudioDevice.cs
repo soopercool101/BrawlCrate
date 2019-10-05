@@ -43,7 +43,7 @@ namespace System.Audio
             {
                 Guid g1 = Win32.DirectSound.DefaultPlaybackGuid;
                 Win32.DirectSound.GetDeviceID(ref g1, out Guid g2);
-                wAudioDevice dev = new wAudioDevice() {_guid = g2};
+                wAudioDevice dev = new wAudioDevice {_guid = g2};
 
                 GCHandle handle = GCHandle.Alloc(dev);
                 try
@@ -65,7 +65,7 @@ namespace System.Audio
             {
                 Guid g1 = Win32.DirectSound.DefaultVoicePlaybackGuid;
                 Win32.DirectSound.GetDeviceID(ref g1, out Guid g2);
-                wAudioDevice dev = new wAudioDevice() {_guid = g2};
+                wAudioDevice dev = new wAudioDevice {_guid = g2};
 
                 GCHandle handle = GCHandle.Alloc(dev);
                 try

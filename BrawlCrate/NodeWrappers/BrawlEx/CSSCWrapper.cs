@@ -231,7 +231,7 @@ namespace BrawlCrate.NodeWrappers
             List<string> files = ((CSSCEntryNode) _resource).GetCostumeFilePath(Program.RootPath);
             foreach (string s in files)
             {
-                Process.Start(new ProcessStartInfo()
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BrawlCrate.exe",
                     Arguments = "\"" + s + "\"",

@@ -141,7 +141,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return null;
                 }
 
-                MoveDefEventNode newEv = new MoveDefEventNode() {_parent = node};
+                MoveDefEventNode newEv = new MoveDefEventNode {_parent = node};
 
                 string id = lines[0];
                 uint idNumber = Convert.ToUInt32(id, 16);
@@ -215,7 +215,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if ((_event == 0x06000D00 || _event == 0x06150F00 || _event == 0x062B0D00) && i == 12)
                 {
                     child = new HitboxFlagsNode(info != null && i < info.Params.Length ? info.Params[i] : "Value")
-                        {_value = value, val = new HitboxFlags() {data = value}};
+                        {_value = value, val = new HitboxFlags {data = value}};
                     (child as HitboxFlagsNode).GetFlags();
                 }
                 else if ((_event == 0x06000D00 || _event == 0x06150F00 || _event == 0x062B0D00) &&
@@ -236,7 +236,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     child =
                         new SpecialHitboxFlagsNode(info != null && i < info.Params.Length ? info.Params[i] : "Value")
-                            {_value = value, val = new SpecialHitboxFlags() {data = value}};
+                            {_value = value, val = new SpecialHitboxFlags {data = value}};
                     (child as SpecialHitboxFlagsNode).GetFlags();
                 }
                 else //Not a special value
@@ -414,7 +414,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (!Root._events.ContainsKey(_event))
             {
-                Root._events.Add(_event, new List<MoveDefEventNode>() {this});
+                Root._events.Add(_event, new List<MoveDefEventNode> {this});
             }
             else
             {

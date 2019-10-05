@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0NormalData _hdr = new MDL0NormalData() {_type = (int) WiiVertexComponentType.Float};
+        private MDL0NormalData _hdr = new MDL0NormalData {_type = (int) WiiVertexComponentType.Float};
 
         public enum NormalType
         {

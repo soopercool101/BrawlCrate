@@ -73,7 +73,7 @@ namespace BrawlLib.SSBBTypes
 
         protected override void OnParse(VoidPtr address)
         {
-            _dataOffsets = new List<int>() {_offset};
+            _dataOffsets = new List<int> {_offset};
 
             int offset = *(bint*) address;
 

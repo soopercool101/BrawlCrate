@@ -697,7 +697,7 @@ namespace BrawlLib.Modeling
             {
                 Error = "There was a problem creating a new object for " + (node._name ?? node._id);
 
-                MDL0ObjectNode poly = new MDL0ObjectNode()
+                MDL0ObjectNode poly = new MDL0ObjectNode
                 {
                     _manager = manager,
                     _name = node._name ?? node._id,
@@ -741,7 +741,7 @@ namespace BrawlLib.Modeling
                     Error = string.Format("There was a problem rigging {0} to a single bone.", poly._name);
 
                     Box box = poly.GetBox();
-                    MDL0BoneNode bone = new MDL0BoneNode()
+                    MDL0BoneNode bone = new MDL0BoneNode
                     {
                         Scale = Vector3.One,
                         Translation = (box.Max + box.Min) / 2.0f,
@@ -815,8 +815,8 @@ namespace BrawlLib.Modeling
             Error = "There was a problem creating a default material and shader.";
             if (model._matList.Count == 0 && model._objList.Count != 0)
             {
-                MDL0MaterialNode mat = new MDL0MaterialNode() {_name = "Default",};
-                (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode()
+                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default",};
+                (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                 {
                     RasterColor = ColorSelChan.LightChannel0,
                     AlphaSelectionD = AlphaArg.RasterAlpha,

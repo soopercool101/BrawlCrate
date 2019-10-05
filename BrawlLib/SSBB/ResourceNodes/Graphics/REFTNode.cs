@@ -50,8 +50,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFTypeObjectEntry* Entry = table->First;
             for (int i = 0; i < table->_entries; i++, Entry = Entry->Next)
             {
-                new REFTEntryNode()
-                        {_name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength + 0x20}
+                new REFTEntryNode {_name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength + 0x20}
                     .Initialize(this,
                         new DataSource((byte*) table->Address + Entry->DataOffset, Entry->DataLength + 0x20));
             }

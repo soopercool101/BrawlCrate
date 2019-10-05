@@ -245,7 +245,7 @@ namespace BrawlCrate
             {
                 //IsMdiContainer = true;
                 //modelEditControl1.ModelViewerForm.MdiParent = this;
-                Application.AddMessageFilter(mouseMessageFilter = new MouseMoveMessageFilter() {TargetForm = this});
+                Application.AddMessageFilter(mouseMessageFilter = new MouseMoveMessageFilter {TargetForm = this});
             }
             else
             {

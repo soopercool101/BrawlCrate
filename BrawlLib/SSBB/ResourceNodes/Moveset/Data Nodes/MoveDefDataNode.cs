@@ -213,7 +213,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* current = (bint*) Header;
             for (int i = 0; i < 27; i++)
             {
-                specialOffsets.Add(new SpecialOffset() {Index = i, Offset = *current++ + (i == 2 ? 1 : 0)});
+                specialOffsets.Add(new SpecialOffset {Index = i, Offset = *current++ + (i == 2 ? 1 : 0)});
             }
 
             CalculateDataLen();
@@ -233,8 +233,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 List<int> ActionOffsets;
 
                 MoveDefActionListNode subActions =
-                        new MoveDefActionListNode() {_name = "SubAction Scripts", _parent = this},
-                    actions = new MoveDefActionListNode() {_name = "Action Scripts", _parent = this};
+                        new MoveDefActionListNode {_name = "SubAction Scripts", _parent = this},
+                    actions = new MoveDefActionListNode {_name = "Action Scripts", _parent = this};
 
                 bint* actionOffset;
 
@@ -417,7 +417,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     //Set up groups
                     for (int i = 0; i < count; i++)
                     {
-                        actions.AddChild(new MoveDefActionGroupNode() {_name = "Action" + (i + 274), offsetID = i},
+                        actions.AddChild(new MoveDefActionGroupNode {_name = "Action" + (i + 274), offsetID = i},
                             false);
                     }
 
@@ -446,7 +446,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (specialOffsets[0].Size != 0)
                 {
-                    (_animFlags = new MoveDefFlagsNode() {offsetID = 0, _parent = this}).Initialize(this,
+                    (_animFlags = new MoveDefFlagsNode {offsetID = 0, _parent = this}).Initialize(this,
                         BaseAddress + specialOffsets[0].Offset, specialOffsets[0].Size);
                 }
 
@@ -480,7 +480,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
 
                         subActions.AddChild(
-                            new MoveDefSubActionGroupNode()
+                            new MoveDefSubActionGroupNode
                             {
                                 _name = name, _flags = _animFlags._flags[i]._Flags,
                                 _inTransTime = _animFlags._flags[i]._InTranslationTime
@@ -504,61 +504,61 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (specialOffsets[1].Size != 0)
                 {
-                    (mdlVisibility = new MoveDefModelVisibilityNode() {offsetID = 1}).Initialize(this,
+                    (mdlVisibility = new MoveDefModelVisibilityNode {offsetID = 1}).Initialize(this,
                         BaseAddress + specialOffsets[1].Offset, 0);
                 }
 
                 if (specialOffsets[19].Size != 0)
                 {
-                    (boneRef2 = new MoveDefBoneRef2Node() {offsetID = 19}).Initialize(this,
+                    (boneRef2 = new MoveDefBoneRef2Node {offsetID = 19}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[19].Offset, 0));
                 }
 
                 if (specialOffsets[24].Size != 0)
                 {
-                    (unk24 = new MoveDefUnk24Node() {offsetID = 24}).Initialize(this,
+                    (unk24 = new MoveDefUnk24Node {offsetID = 24}).Initialize(this,
                         BaseAddress + specialOffsets[24].Offset, 8);
                 }
 
                 if (specialOffsets[22].Size != 0)
                 {
-                    (unk22 = new MoveDefUnk22Node() {offsetID = 22}).Initialize(this,
+                    (unk22 = new MoveDefUnk22Node {offsetID = 22}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[22].Offset, 0));
                 }
 
                 if (specialOffsets[25].Size != 0)
                 {
-                    (staticArticles = new MoveDefStaticArticleGroupNode() {_name = "Static Articles", offsetID = 25})
+                    (staticArticles = new MoveDefStaticArticleGroupNode {_name = "Static Articles", offsetID = 25})
                         .Initialize(this, new DataSource(BaseAddress + specialOffsets[25].Offset, 8));
                 }
 
                 if (specialOffsets[26].Size != 0)
                 {
-                    (entryArticle = new MoveDefArticleNode() {Static = true, _name = "Entry Article", offsetID = 26})
+                    (entryArticle = new MoveDefArticleNode {Static = true, _name = "Entry Article", offsetID = 26})
                         .Initialize(this, new DataSource(BaseAddress + specialOffsets[26].Offset, 0));
                 }
 
                 if (specialOffsets[8].Size != 0)
                 {
-                    (actionInterrupts = new MoveDefActionInterruptsNode() {offsetID = 8}).Initialize(this,
+                    (actionInterrupts = new MoveDefActionInterruptsNode {offsetID = 8}).Initialize(this,
                         BaseAddress + specialOffsets[8].Offset, 8);
                 }
 
                 if (specialOffsets[16].Size != 0)
                 {
-                    (boneFloats1 = new MoveDefUnk17Node() {_name = "Bone Floats 1", offsetID = 16}).Initialize(this,
+                    (boneFloats1 = new MoveDefUnk17Node {_name = "Bone Floats 1", offsetID = 16}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[16].Offset, 0));
                 }
 
                 if (specialOffsets[17].Size != 0)
                 {
-                    (boneFloats2 = new MoveDefUnk17Node() {_name = "Bone Floats 2", offsetID = 17}).Initialize(this,
+                    (boneFloats2 = new MoveDefUnk17Node {_name = "Bone Floats 2", offsetID = 17}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[17].Offset, 0));
                 }
 
                 if (specialOffsets[23].Size != 0)
                 {
-                    (boneFloats3 = new MoveDefUnk17Node() {_name = "Bone Floats 3", offsetID = 23}).Initialize(this,
+                    (boneFloats3 = new MoveDefUnk17Node {_name = "Bone Floats 3", offsetID = 23}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[23].Offset, 0));
                 }
 
@@ -571,13 +571,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (specialOffsets[20].Size != 0)
                 {
-                    (override1 = new MoveDefActionOverrideNode() {offsetID = 20}).Initialize(this,
+                    (override1 = new MoveDefActionOverrideNode {offsetID = 20}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[20].Offset, 0));
                 }
 
                 if (specialOffsets[21].Size != 0)
                 {
-                    (override2 = new MoveDefActionOverrideNode() {offsetID = 21}).Initialize(this,
+                    (override2 = new MoveDefActionOverrideNode {offsetID = 21}).Initialize(this,
                         new DataSource(BaseAddress + specialOffsets[21].Offset, 0));
                 }
 
@@ -588,15 +588,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     if (y == 2 && RootNode.Name == "FitPokeTrainer")
                     {
-                        MoveDefSoundDatasNode p = new MoveDefSoundDatasNode()
-                            {isExtra = true, seperate = true, _name = "Sound Data 2"};
+                        MoveDefSoundDatasNode p = new MoveDefSoundDatasNode {isExtra = true, seperate = true, _name = "Sound Data 2"};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
                     else if (y == 49 && RootNode.Name == "FitKirby")
                     {
-                        MoveDefKirbyParamList49Node p = new MoveDefKirbyParamList49Node()
-                            {isExtra = true, offsetID = y};
+                        MoveDefKirbyParamList49Node p = new MoveDefKirbyParamList49Node {isExtra = true, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
@@ -624,33 +622,31 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                     else if ((y == 51 || y == 52) && RootNode.Name == "FitKirby")
                     {
-                        MoveDefKirbyParamList5152Node p = new MoveDefKirbyParamList5152Node()
-                            {isExtra = true, offsetID = y};
+                        MoveDefKirbyParamList5152Node p = new MoveDefKirbyParamList5152Node {isExtra = true, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
                     else if (y == 7 && RootNode.Name == "FitPit" || y == 13 && RootNode.Name == "FitRobot")
                     {
-                        Pit7Robot13Node p = new Pit7Robot13Node() {isExtra = true, offsetID = y};
+                        Pit7Robot13Node p = new Pit7Robot13Node {isExtra = true, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
                     else if (y == 8 && RootNode.Name == "FitLucario")
                     {
-                        HitDataListOffsetNode p = new HitDataListOffsetNode()
-                            {isExtra = true, _name = "HitDataList" + y, offsetID = y};
+                        HitDataListOffsetNode p = new HitDataListOffsetNode {isExtra = true, _name = "HitDataList" + y, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
                     else if (y > 9 && RootNode.Name == "FitYoshi")
                     {
-                        Yoshi9 p = new Yoshi9() {isExtra = true, offsetID = y};
+                        Yoshi9 p = new Yoshi9 {isExtra = true, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
                     else if (y == 15 && RootNode.Name == "FitDedede")
                     {
-                        Data2ListNode p = new Data2ListNode() {isExtra = true, offsetID = y};
+                        Data2ListNode p = new Data2ListNode {isExtra = true, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
@@ -661,26 +657,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                         y == 4 && RootNode.Name == "FitPit" ||
                         y == 7 && RootNode.Name == "FitToonLink")
                     {
-                        MoveDefHitDataListNode p = new MoveDefHitDataListNode()
-                            {isExtra = true, _name = "HitDataList" + y, offsetID = y};
+                        MoveDefHitDataListNode p = new MoveDefHitDataListNode {isExtra = true, _name = "HitDataList" + y, offsetID = y};
                         p.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(p);
                     }
                     else if (y == 6 && RootNode.Name.StartsWith("FitWario"))
                     {
-                        warioParams6 = new Wario6() {isExtra = true, offsetID = y};
+                        warioParams6 = new Wario6 {isExtra = true, offsetID = y};
                         warioParams6.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(warioParams6);
                     }
                     else if (y == 8 && RootNode.Name.StartsWith("FitWario"))
                     {
-                        warioParams8 = new Wario8() {isExtra = true, offsetID = y};
+                        warioParams8 = new Wario8 {isExtra = true, offsetID = y};
                         warioParams8.Initialize(this, new DataSource(BaseAddress + DataOffset, 0));
                         _extraEntries.Add(warioParams8);
                     }
                     else if (y == 8 && RootNode.Name == "FitSZerosuit")
                     {
-                        (zssParams8 = new SZerosuitExtraParams8Node() {isExtra = true, offsetID = y}).Initialize(this,
+                        (zssParams8 = new SZerosuitExtraParams8Node {isExtra = true, offsetID = y}).Initialize(this,
                             BaseAddress + DataOffset, 32);
                         _extraEntries.Add(zssParams8);
                     }
@@ -690,8 +685,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                         if (y == 0)
                         {
-                            nanaSubActions = new MoveDefActionListNode()
-                                {_name = "Nana SubAction Scripts", isExtra = true};
+                            nanaSubActions = new MoveDefActionListNode {_name = "Nana SubAction Scripts", isExtra = true};
                         }
 
                         actionOffset = (bint*) (BaseAddress + DataOffset);
@@ -731,7 +725,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 }
 
                                 nanaSubActions.AddChild(
-                                    new MoveDefSubActionGroupNode()
+                                    new MoveDefSubActionGroupNode
                                     {
                                         _name = name, _flags = _animFlags._flags[i]._Flags,
                                         _inTransTime = _animFlags._flags[i]._InTranslationTime
@@ -747,7 +741,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
                     else if (y == 10 && RootNode.Name == "FitPopo")
                     {
-                        (nanaSoundData = new MoveDefSoundDatasNode() {_name = "Nana Sound Data", isExtra = true})
+                        (nanaSoundData = new MoveDefSoundDatasNode {_name = "Nana Sound Data", isExtra = true})
                             .Initialize(this, (VoidPtr) Header + 124 + y * 4, 8);
                         _extraEntries.Add(null);
                     }
@@ -774,7 +768,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         d.Initialize(this, BaseAddress + DataOffset, 0);
                                         for (int i = 0; i < o; i++)
                                         {
-                                            new MoveDefSectionParamNode() {_name = "Part" + i, _extOverride = i == 0}
+                                            new MoveDefSectionParamNode {_name = "Part" + i, _extOverride = i == 0}
                                                 .Initialize(d, BaseAddress + DataOffset + d.Size / o * i, d.Size / o);
                                         }
 
@@ -782,8 +776,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     }
                                     else
                                     {
-                                        MoveDefSectionParamNode p = new MoveDefSectionParamNode()
-                                            {_name = "ExtraParams" + y, isExtra = true, offsetID = y};
+                                        MoveDefSectionParamNode p = new MoveDefSectionParamNode {_name = "ExtraParams" + y, isExtra = true, offsetID = y};
                                         p.Initialize(this, BaseAddress + DataOffset, 0);
                                         entry = p;
                                     }
@@ -809,8 +802,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                             d.Initialize(this, BaseAddress + DataOffset, 0);
                                             for (int i = 0; i < o; i++)
                                             {
-                                                new MoveDefSectionParamNode()
-                                                    {_name = "Part" + i, _extOverride = i == 0}.Initialize(d,
+                                                new MoveDefSectionParamNode {_name = "Part" + i, _extOverride = i == 0}.Initialize(d,
                                                     BaseAddress + DataOffset + d.Size / o * i, d.Size / o);
                                             }
 
@@ -818,8 +810,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         }
                                         else
                                         {
-                                            MoveDefSectionParamNode p = new MoveDefSectionParamNode()
-                                                {_name = "ExtraParams" + y, isExtra = true, offsetID = y};
+                                            MoveDefSectionParamNode p = new MoveDefSectionParamNode {_name = "ExtraParams" + y, isExtra = true, offsetID = y};
                                             p.Initialize(this, BaseAddress + DataOffset, 0);
                                             entry = p;
                                         }
@@ -828,12 +819,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     {
                                         if (_articleGroup == null)
                                         {
-                                            _articleGroup = new MoveDefGroupNode() {_name = "Articles"};
+                                            _articleGroup = new MoveDefGroupNode {_name = "Articles"};
                                             _articleGroup.Initialize(this, BaseAddress + DataOffset, 0);
                                         }
 
-                                        (entry = new MoveDefArticleNode()
-                                                {offsetID = y, Static = true, isExtra = true, extraOffset = true})
+                                        (entry = new MoveDefArticleNode {offsetID = y, Static = true, isExtra = true, extraOffset = true})
                                             .Initialize(_articleGroup, BaseAddress + DataOffset, 0);
                                         _articles.Add(entry._offset, entry);
                                     }
@@ -859,7 +849,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         d.Initialize(this, BaseAddress + DataOffset, 0);
                                         for (int i = 0; i < o; i++)
                                         {
-                                            new MoveDefSectionParamNode() {_name = "Part" + i, _extOverride = i == 0}
+                                            new MoveDefSectionParamNode {_name = "Part" + i, _extOverride = i == 0}
                                                 .Initialize(d, BaseAddress + DataOffset + d.Size / o * i, d.Size / o);
                                         }
 
@@ -867,8 +857,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                     }
                                     else
                                     {
-                                        MoveDefSectionParamNode p = new MoveDefSectionParamNode()
-                                            {_name = "ExtraParams" + y, isExtra = true, offsetID = y};
+                                        MoveDefSectionParamNode p = new MoveDefSectionParamNode {_name = "ExtraParams" + y, isExtra = true, offsetID = y};
                                         p.Initialize(this, BaseAddress + DataOffset, 0);
                                         entry = p;
                                     }
@@ -877,12 +866,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 {
                                     if (_articleGroup == null)
                                     {
-                                        _articleGroup = new MoveDefGroupNode() {_name = "Articles"};
+                                        _articleGroup = new MoveDefGroupNode {_name = "Articles"};
                                         _articleGroup.Initialize(this, BaseAddress + DataOffset, 0);
                                     }
 
-                                    (entry = new MoveDefArticleNode()
-                                            {offsetID = y, isExtra = true, Static = true, extraOffset = true})
+                                    (entry = new MoveDefArticleNode {offsetID = y, isExtra = true, Static = true, extraOffset = true})
                                         .Initialize(_articleGroup, BaseAddress + DataOffset, 0);
                                     _articles.Add(entry._offset, entry);
                                 }

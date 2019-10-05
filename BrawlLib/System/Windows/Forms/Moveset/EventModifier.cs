@@ -439,7 +439,7 @@ namespace System.Windows.Forms
             {
                 if (newEv == null)
                 {
-                    newEv = new MoveDefEventNode() {_parent = origEvent.Parent};
+                    newEv = new MoveDefEventNode {_parent = origEvent.Parent};
 
                     newEv.EventID = origEvent._event;
                     ActionEventInfo info = origEvent.EventInfo;
@@ -577,7 +577,7 @@ namespace System.Windows.Forms
             //Retrieve and setup the new event according to the new event Event.
             if (frmEventList.status == DialogResult.OK)
             {
-                newEv = new MoveDefEventNode() {_parent = origEvent.Parent};
+                newEv = new MoveDefEventNode {_parent = origEvent.Parent};
 
                 newEvent.EventID = (uint) frmEventList.eventEvent;
                 ActionEventInfo info = newEvent.EventInfo;

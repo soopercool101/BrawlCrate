@@ -1090,7 +1090,7 @@ namespace System.Windows.Forms
                     CHR0EntryNode entry = null;
                     if ((entry = SelectedAnimation.FindChild(name, false) as CHR0EntryNode) == null)
                     {
-                        entry = new CHR0EntryNode() {Name = name};
+                        entry = new CHR0EntryNode {Name = name};
                         SelectedAnimation.AddChild(entry);
                         entry.SetSize(SelectedAnimation.FrameCount, SelectedAnimation.Loop);
                     }

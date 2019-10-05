@@ -137,7 +137,7 @@ namespace System.Windows.Forms
 
         public virtual void InitHotkeyList()
         {
-            _hotkeyList = new List<HotKeyInfo>()
+            _hotkeyList = new List<HotKeyInfo>
             {
                 new HotKeyInfo(Keys.G, false, false, false, HotkeyRefreshReferences),
                 new HotKeyInfo(Keys.U, false, false, false, HotkeyResetCamera),

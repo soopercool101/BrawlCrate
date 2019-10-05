@@ -754,7 +754,7 @@ namespace BrawlBox.NodeWrappers
                 else
                 {
                     MoveDefNode.EventDictionary.Add(ev,
-                        new ActionEventInfo()
+                        new ActionEventInfo
                         {
                             Params = new string[_resource.Children.Count],
                             pDescs = new string[_resource.Children.Count], _name = temp.Name, idNumber = ev
@@ -802,7 +802,7 @@ namespace BrawlBox.NodeWrappers
                 else
                 {
                     MoveDefNode.EventDictionary.Add(ev,
-                        new ActionEventInfo()
+                        new ActionEventInfo
                         {
                             Params = new string[_resource.Children.Count],
                             pDescs = new string[_resource.Children.Count], _description = temp.Name,
@@ -846,7 +846,7 @@ namespace BrawlBox.NodeWrappers
                 else
                 {
                     MoveDefNode.EventDictionary.Add(ev,
-                        new ActionEventInfo()
+                        new ActionEventInfo
                         {
                             Params = new string[_resource.Children.Count],
                             pDescs = new string[_resource.Children.Count], _syntax = temp.Name,
@@ -934,7 +934,7 @@ namespace BrawlBox.NodeWrappers
                 if (!MoveDefNode.EventDictionary.ContainsKey(ev))
                 {
                     MoveDefNode.EventDictionary.Add(ev,
-                        new ActionEventInfo()
+                        new ActionEventInfo
                         {
                             Params = new string[_resource.Parent.Children.Count],
                             pDescs = new string[_resource.Parent.Children.Count], idNumber = ev
@@ -979,7 +979,7 @@ namespace BrawlBox.NodeWrappers
                 if (!MoveDefNode.EventDictionary.ContainsKey(ev))
                 {
                     MoveDefNode.EventDictionary.Add(ev,
-                        new ActionEventInfo()
+                        new ActionEventInfo
                         {
                             Params = new string[_resource.Parent.Children.Count],
                             pDescs = new string[_resource.Parent.Children.Count], idNumber = ev
@@ -1034,7 +1034,7 @@ namespace BrawlBox.NodeWrappers
 
         public void NewHurtbox()
         {
-            MoveDefHurtBoxNode node = new MoveDefHurtBoxNode() {Enabled = true};
+            MoveDefHurtBoxNode node = new MoveDefHurtBoxNode {Enabled = true};
             _resource.AddChild(node);
             BaseWrapper res = FindResource(node, false);
             res.EnsureVisible();
@@ -1088,7 +1088,7 @@ namespace BrawlBox.NodeWrappers
                 MoveDefArticleNode article = node as MoveDefArticleNode;
                 if (_resource.Children[0] is MoveDefSubActionGroupNode)
                 {
-                    node = new MoveDefSubActionGroupNode() {Name = "SubAction" + _resource.Children.Count};
+                    node = new MoveDefSubActionGroupNode {Name = "SubAction" + _resource.Children.Count};
                     node.AddChild(new MoveDefActionNode("Main", true, _resource));
                     node.AddChild(new MoveDefActionNode("GFX", true, _resource));
                     node.AddChild(new MoveDefActionNode("SFX", true, _resource));
@@ -1097,7 +1097,7 @@ namespace BrawlBox.NodeWrappers
                 {
                     if (article.pikmin)
                     {
-                        node = new MoveDefActionGroupNode() {Name = "Action" + _resource.Children.Count};
+                        node = new MoveDefActionGroupNode {Name = "Action" + _resource.Children.Count};
                         node.AddChild(new MoveDefActionNode("Entry", true, _resource));
                         node.AddChild(new MoveDefActionNode("Exit", true, _resource));
                     }
@@ -1106,13 +1106,12 @@ namespace BrawlBox.NodeWrappers
                         node = new MoveDefActionNode("Action" + _resource.Children.Count, true, _resource);
                     }
 
-                    article.actionFlags.AddChild(new MoveDefActionFlagsEntryNode()
-                        {Name = "Action" + article.actionFlags.Children.Count});
+                    article.actionFlags.AddChild(new MoveDefActionFlagsEntryNode {Name = "Action" + article.actionFlags.Children.Count});
                 }
             }
             else if (_resource.Children[0] is MoveDefSubActionGroupNode)
             {
-                node = new MoveDefSubActionGroupNode() {Name = "SubAction" + _resource.Children.Count};
+                node = new MoveDefSubActionGroupNode {Name = "SubAction" + _resource.Children.Count};
                 node.AddChild(new MoveDefActionNode("Main", true, _resource));
                 node.AddChild(new MoveDefActionNode("GFX", true, _resource));
                 node.AddChild(new MoveDefActionNode("SFX", true, _resource));
@@ -1120,14 +1119,14 @@ namespace BrawlBox.NodeWrappers
             }
             else if (_resource.Children[0] is MoveDefActionGroupNode)
             {
-                node = new MoveDefActionGroupNode() {Name = "Action" + (_resource.Children.Count + 274)};
+                node = new MoveDefActionGroupNode {Name = "Action" + (_resource.Children.Count + 274)};
                 node.AddChild(new MoveDefActionNode("Entry", true, _resource));
                 node.AddChild(new MoveDefActionNode("Exit", true, _resource));
-                (_resource as MoveDefEntryNode).Root.data.actionFlags.AddChild(new MoveDefActionFlagsEntryNode()
+                (_resource as MoveDefEntryNode).Root.data.actionFlags.AddChild(new MoveDefActionFlagsEntryNode
                 {
                     Name = "Action" + ((_resource as MoveDefEntryNode).Root.data.actionFlags.Children.Count + 274)
                 });
-                (_resource as MoveDefEntryNode).Root.data.actionPre.AddChild(new MoveDefActionPreEntryNode()
+                (_resource as MoveDefEntryNode).Root.data.actionPre.AddChild(new MoveDefActionPreEntryNode
                 {
                     Name = "Action" + (_resource as MoveDefEntryNode).Root.data.actionPre.Children.Count
                 });
@@ -1426,7 +1425,7 @@ namespace BrawlBox.NodeWrappers
         {
             foreach (MoveDefModelVisRefNode r in _resource.Parent.Children)
             {
-                MoveDefBoneSwitchNode node = new MoveDefBoneSwitchNode() {Name = "BoneSwitch" + r.Children.Count};
+                MoveDefBoneSwitchNode node = new MoveDefBoneSwitchNode {Name = "BoneSwitch" + r.Children.Count};
                 r.AddChild(node);
             }
         }
@@ -1494,8 +1493,7 @@ namespace BrawlBox.NodeWrappers
 
         public void NewGroup()
         {
-            MoveDefModelVisGroupNode node = new MoveDefModelVisGroupNode()
-                {Name = "BoneGroup" + _resource.Children.Count};
+            MoveDefModelVisGroupNode node = new MoveDefModelVisGroupNode {Name = "BoneGroup" + _resource.Children.Count};
             _resource.AddChild(node);
             BaseWrapper res = FindResource(node, false);
             res.EnsureVisible();
@@ -1691,7 +1689,7 @@ namespace BrawlBox.NodeWrappers
 
         public void NewActionGroup()
         {
-            MoveDefActionOverrideEntryNode node = new MoveDefActionOverrideEntryNode() {Name = "Action0 Override"};
+            MoveDefActionOverrideEntryNode node = new MoveDefActionOverrideEntryNode {Name = "Action0 Override"};
             node.Children.Add(new MoveDefActionNode("Action0", true, node));
             _resource.AddChild(node);
             BaseWrapper res = FindResource(node, false);
@@ -1729,7 +1727,7 @@ namespace BrawlBox.NodeWrappers
 
         public void NewRef()
         {
-            MoveDefReferenceEntryNode node = new MoveDefReferenceEntryNode() {Name = "NewRef"};
+            MoveDefReferenceEntryNode node = new MoveDefReferenceEntryNode {Name = "NewRef"};
             _resource.AddChild(node);
             if (!shown)
             {

@@ -382,7 +382,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 MDL0MaterialNode n = (MDL0MaterialNode) _matList[x];
                 if (!n.IsMetal && n.MetalMaterial == null)
                 {
-                    MDL0MaterialNode node = new MDL0MaterialNode()
+                    MDL0MaterialNode node = new MDL0MaterialNode
                     {
                         _updating = true,
                         Name = n.Name + "_ExtMtl",
@@ -405,7 +405,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             mr.HasTextureMatrix = true;
                             node.Rebuild(true);
 
-                            mr._texMtxFlags = new XFTexMtxInfo()
+                            mr._texMtxFlags = new XFTexMtxInfo
                             {
                                 Projection = TexProjection.STQ,
                                 InputForm = TexInputForm.ABC1,
@@ -676,7 +676,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            MDL0MaterialNode node = new MDL0MaterialNode() {_name = _matGroup.FindName(name)};
+            MDL0MaterialNode node = new MDL0MaterialNode {_name = _matGroup.FindName(name)};
             _matGroup.AddChild(node, false);
 
             SignalPropertyChange();
@@ -694,7 +694,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            MDL0MaterialNode node = new MDL0MaterialNode() {_name = _matGroup.FindName(name), XLUMaterial = true};
+            MDL0MaterialNode node = new MDL0MaterialNode {_name = _matGroup.FindName(name), XLUMaterial = true};
             _matGroup.AddChild(node, false);
 
             SignalPropertyChange();
@@ -2206,11 +2206,11 @@ namespace BrawlLib.SSBB.ResourceNodes
                             if (!VIS0Indices.ContainsKey(c._visBoneNode.Name))
                             {
                                 VIS0Indices.Add(c._visBoneNode.Name,
-                                    new Dictionary<int, List<int>>() {{i, new List<int>() {x}}});
+                                    new Dictionary<int, List<int>> {{i, new List<int> {x}}});
                             }
                             else if (!VIS0Indices[c._visBoneNode.Name].ContainsKey(i))
                             {
-                                VIS0Indices[c._visBoneNode.Name].Add(i, new List<int>() {x});
+                                VIS0Indices[c._visBoneNode.Name].Add(i, new List<int> {x});
                             }
                             else if (!VIS0Indices[c._visBoneNode.Name][i].Contains(x))
                             {

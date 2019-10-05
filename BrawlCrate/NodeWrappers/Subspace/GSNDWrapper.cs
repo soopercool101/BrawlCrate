@@ -82,7 +82,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            GSNDEntryNode node = new GSNDEntryNode() {Name = "NewEntry", Trigger = "00000100"};
+            GSNDEntryNode node = new GSNDEntryNode {Name = "NewEntry", Trigger = "00000100"};
             _resource.AddChild(node);
         }
 

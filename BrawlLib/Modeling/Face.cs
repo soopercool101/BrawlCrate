@@ -443,7 +443,7 @@ namespace BrawlLib.Modeling
 
         public override List<Facepoint> Points
         {
-            get => new List<Facepoint>() {_x, _y, _z};
+            get => new List<Facepoint> {_x, _y, _z};
             set
             {
                 _x = value[0];
@@ -529,7 +529,7 @@ namespace BrawlLib.Modeling
 
         public override List<Facepoint> Points
         {
-            get => new List<Facepoint>() {_x, _y};
+            get => new List<Facepoint> {_x, _y};
             set
             {
                 _x = value[0];

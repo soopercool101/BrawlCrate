@@ -1243,7 +1243,7 @@ namespace BrawlCrate.StageManager
 
         private void resizeAllPrevbasesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EnterSizeDialog dialog = new EnterSizeDialog()
+            EnterSizeDialog dialog = new EnterSizeDialog
             {
                 SizeEntry = portraitViewer1.prevbaseResizeTo ?? new Size(176, 176)
             };

@@ -70,7 +70,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (VersionMinor >= 2)
             {
-                new RWARNode() {_name = "Audio"}.Initialize(this, _audioSource.Address, _audioSource.Length);
+                new RWARNode {_name = "Audio"}.Initialize(this, _audioSource.Address, _audioSource.Length);
             }
         }
 

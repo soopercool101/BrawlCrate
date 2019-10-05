@@ -101,7 +101,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GSNDNode NewGSND()
         {
-            GSNDNode node = new GSNDNode() {Name = _resource.FindName("NewGSND")};
+            GSNDNode node = new GSNDNode {Name = _resource.FindName("NewGSND")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -112,7 +112,7 @@ namespace BrawlCrate.NodeWrappers
 
         public ADSJNode NewADSJ()
         {
-            ADSJNode node = new ADSJNode() {Name = _resource.FindName("NewADSJ")};
+            ADSJNode node = new ADSJNode {Name = _resource.FindName("NewADSJ")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -123,7 +123,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GDORNode NewGDOR()
         {
-            GDORNode node = new GDORNode() {Name = _resource.FindName("NewGDOR")};
+            GDORNode node = new GDORNode {Name = _resource.FindName("NewGDOR")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

@@ -54,7 +54,7 @@ namespace BrawlLib.Wii.Textures
                 byte c = index % 2 == 0
                     ? (byte) ((_data & 0xF0) | (_data >> 4))
                     : (byte) ((_data & 0x0F) | (_data << 4));
-                return new ARGBPixel() {A = 0xFF, R = c, G = c, B = c};
+                return new ARGBPixel {A = 0xFF, R = c, G = c, B = c};
             }
             set
             {
@@ -71,7 +71,7 @@ namespace BrawlLib.Wii.Textures
             int value = (p.R + p.G + p.B + 1) /
                         3;                                   // Extra 1 added to get effect of rounding to nearest instead of rounding down
             value = Convert.ToInt32(value * (15.0 / 255.0)); // Convert from 8 bits to 4
-            return new I4Pixel() {_data = (byte) ((value << 4) | value)};
+            return new I4Pixel {_data = (byte) ((value << 4) | value)};
         }
     }
 }

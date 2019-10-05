@@ -167,7 +167,7 @@ namespace BrawlCrate.CostumeManager
             return null;
         }
 
-        private static Dictionary<int, int[]> PortraitToCostumeMappings = new Dictionary<int, int[]>()
+        private static Dictionary<int, int[]> PortraitToCostumeMappings = new Dictionary<int, int[]>
         {
             {0, new int[] {0, 6, 3, 4, 5, 2}},
             {1, new int[] {0, 4, 1, 3, 2, 5}},

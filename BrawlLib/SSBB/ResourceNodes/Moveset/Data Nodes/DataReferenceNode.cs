@@ -51,7 +51,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 populated = true;
                 foreach (KeyValuePair<string, FDefStringEntry> ex in exSubRoutineTable)
                 {
-                    new MoveDefReferenceEntryNode() {_name = ex.Key}.Initialize(this,
+                    new MoveDefReferenceEntryNode {_name = ex.Key}.Initialize(this,
                         new DataSource(BaseAddress + ex.Value._dataOffset, 4));
                 }
             }

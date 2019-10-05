@@ -307,7 +307,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void CreateEntry()
         {
-            AddChild(new SRT0EntryNode() {Name = FindName("NewMaterial")});
+            AddChild(new SRT0EntryNode {Name = FindName("NewMaterial")});
         }
 
         #region Extra Functions
@@ -397,7 +397,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         SRT0EntryNode wi = null;
                         if ((wi = (SRT0EntryNode) FindChild(w.Name, false)) == null)
                         {
-                            AddChild(wi = new SRT0EntryNode() {Name = FindName(null)});
+                            AddChild(wi = new SRT0EntryNode {Name = FindName(null)});
                         }
 
                         SRT0TextureNode newIntEntry = new SRT0TextureNode(extEntry.Index, extEntry.Indirect)
@@ -591,7 +591,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Export(string outPath)
         {
-            StringTable table = new StringTable() {Name};
+            StringTable table = new StringTable {Name};
 
             int totalLength = OnCalculateSize(true) + table.GetTotalSize();
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
@@ -1012,7 +1012,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public SRTAnimationFrame GetAnimFrame(int index)
         {
-            SRTAnimationFrame frame = new SRTAnimationFrame() {Index = index};
+            SRTAnimationFrame frame = new SRTAnimationFrame {Index = index};
             float* dPtr = (float*) &frame;
             for (int x = 0; x < 5; x++)
             {

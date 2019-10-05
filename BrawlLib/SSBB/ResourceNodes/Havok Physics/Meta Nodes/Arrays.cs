@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                     case hkClassMember.Type.TYPE_ENUM:
                     case hkClassMember.Type.TYPE_FLAGS:
-                        new cmEnumNode()
+                        new cmEnumNode
                             {
                                 _enumNode = _enumNode
                             }

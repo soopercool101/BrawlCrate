@@ -772,7 +772,7 @@ namespace System.PowerPcAssembly
 
         public static implicit operator PPCID(uint u)
         {
-            return new PPCID() {_mask = u};
+            return new PPCID {_mask = u};
         }
     }
 

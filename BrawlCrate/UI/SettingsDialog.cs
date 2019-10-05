@@ -124,8 +124,7 @@ namespace BrawlCrate
                 {
                     foreach (string s in info.Extensions)
                     {
-                        listView1.Items.Add(new ListViewItem()
-                            {Text = $"{info.Name} (*.{s})"});
+                        listView1.Items.Add(new ListViewItem {Text = $"{info.Name} (*.{s})"});
                     }
                 }
             }

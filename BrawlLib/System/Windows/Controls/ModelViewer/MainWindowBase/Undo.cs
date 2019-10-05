@@ -89,7 +89,7 @@ namespace System.Windows.Forms
         /// </summary>
         public void BoneChange(params IBoneNode[] bones)
         {
-            SaveState state = new BoneState()
+            SaveState state = new BoneState
             {
                 _bones = bones,
                 _frameStates = bones.Select(x => x.FrameState).ToArray(),
@@ -107,7 +107,7 @@ namespace System.Windows.Forms
         /// </summary>
         public void VertexChange(List<Vertex3> vertices)
         {
-            SaveState state = new VertexState()
+            SaveState state = new VertexState
             {
                 _chr0 = _chr0,
                 _animFrame = CurrentFrame,

@@ -36,7 +36,7 @@ namespace BrawlCrate
             }
         }
 
-        private static readonly Dictionary<ResourceType, Bitmap> IconDictionary = new Dictionary<ResourceType, Bitmap>()
+        private static readonly Dictionary<ResourceType, Bitmap> IconDictionary = new Dictionary<ResourceType, Bitmap>
         {
             //Base Types
             {ResourceType.Unknown, Resources.Unknown},

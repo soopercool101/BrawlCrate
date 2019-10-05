@@ -908,7 +908,7 @@ namespace System.Windows.Forms
                 CHR0EntryNode entry = n.FindChild(_name, false) as CHR0EntryNode;
                 if (entry == null)
                 {
-                    entry = new CHR0EntryNode() {_name = _name};
+                    entry = new CHR0EntryNode {_name = _name};
                     n.AddChild(entry);
                 }
 

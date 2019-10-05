@@ -49,7 +49,7 @@ namespace BrawlCrate.NodeWrappers
         public ItmTableGroupNode NewEntry()
         {
             int childCount = _resource.Children == null ? 0 : _resource.Children.Count;
-            ItmTableGroupNode node = new ItmTableGroupNode() {Name = "Group [" + childCount + "]"};
+            ItmTableGroupNode node = new ItmTableGroupNode {Name = "Group [" + childCount + "]"};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

@@ -522,7 +522,7 @@ namespace System.Windows.Forms
         {
             base.InitHotkeyList();
 
-            List<HotKeyInfo> temp = new List<HotKeyInfo>()
+            List<HotKeyInfo> temp = new List<HotKeyInfo>
             {
                 new HotKeyInfo(Keys.A, true, false, false, HotkeySelectAllVertices),
                 new HotKeyInfo(Keys.A, false, false, false, HotkeyToggleLeftPanel),
@@ -607,7 +607,7 @@ namespace System.Windows.Forms
 
         public ModelEditorSettings CollectSettings()
         {
-            ModelEditorSettings settings = new ModelEditorSettings()
+            ModelEditorSettings settings = new ModelEditorSettings
             {
                 RetrieveCorrAnims = RetrieveCorrespondingAnimations,
                 DisplayExternalAnims = chkExternalAnims.Checked,

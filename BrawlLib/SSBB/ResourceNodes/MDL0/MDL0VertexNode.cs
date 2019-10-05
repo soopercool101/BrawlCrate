@@ -12,7 +12,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0VertexData* Header => (MDL0VertexData*) WorkingUncompressed.Address;
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0VertexData _hdr = new MDL0VertexData() {_type = (int) WiiVertexComponentType.Float};
+        private MDL0VertexData _hdr = new MDL0VertexData {_type = (int) WiiVertexComponentType.Float};
 
         [Category("Vertex Data")] public int ID => _hdr._index;
         [Category("Vertex Data")] public bool IsXYZ => _hdr._isXYZ != 0;

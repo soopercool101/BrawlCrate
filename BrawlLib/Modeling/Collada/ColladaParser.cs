@@ -666,7 +666,7 @@ namespace BrawlLib.Modeling
 
             private PrimitiveEntry ParsePrimitive(ColladaPrimitiveType type)
             {
-                PrimitiveEntry prim = new PrimitiveEntry() {_type = type};
+                PrimitiveEntry prim = new PrimitiveEntry {_type = type};
                 PrimitiveFace p;
                 int val;
                 int stride = 0, elements = 0;

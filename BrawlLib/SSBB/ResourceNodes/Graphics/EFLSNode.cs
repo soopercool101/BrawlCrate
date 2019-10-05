@@ -92,7 +92,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             EFLSHeader* header = Header;
             for (int i = 0; i < header->_numEntries; i++)
             {
-                new EFLSEntryNode() {_name = header->GetString(i)}.Initialize(this, &header->Entries[i], 0);
+                new EFLSEntryNode {_name = header->GetString(i)}.Initialize(this, &header->Entries[i], 0);
             }
         }
 

@@ -82,7 +82,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            GDOREntryNode node = new GDOREntryNode()
+            GDOREntryNode node = new GDOREntryNode
             {
                 Name = "NewEntry",
                 Trigger0 = "00000100",

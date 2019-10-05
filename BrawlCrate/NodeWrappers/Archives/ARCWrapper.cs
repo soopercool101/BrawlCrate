@@ -125,6 +125,7 @@ namespace BrawlCrate.NodeWrappers
         {
             GetInstance<ARCWrapper>().NewSCLA();
         }
+
         protected static void NewSTPMAction(object sender, EventArgs e)
         {
             GetInstance<ARCWrapper>().NewSTPM();
@@ -336,7 +337,7 @@ namespace BrawlCrate.NodeWrappers
 
         public ARCNode NewARC()
         {
-            ARCNode node = new ARCNode() {Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData};
+            ARCNode node = new ARCNode {Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -347,7 +348,7 @@ namespace BrawlCrate.NodeWrappers
 
         public BRRESNode NewBRES()
         {
-            BRRESNode node = new BRRESNode() {FileType = ARCFileType.MiscData};
+            BRRESNode node = new BRRESNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -358,7 +359,7 @@ namespace BrawlCrate.NodeWrappers
 
         public CollisionNode NewCollision()
         {
-            CollisionNode node = new CollisionNode() {FileType = ARCFileType.MiscData};
+            CollisionNode node = new CollisionNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -369,7 +370,7 @@ namespace BrawlCrate.NodeWrappers
 
         public BLOCNode NewBLOC()
         {
-            BLOCNode node = new BLOCNode() {FileType = ARCFileType.MiscData};
+            BLOCNode node = new BLOCNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -380,7 +381,7 @@ namespace BrawlCrate.NodeWrappers
 
         public MSBinNode NewMSBin()
         {
-            MSBinNode node = new MSBinNode() {FileType = ARCFileType.MiscData};
+            MSBinNode node = new MSBinNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -391,7 +392,7 @@ namespace BrawlCrate.NodeWrappers
 
         public SCLANode NewSCLA()
         {
-            SCLANode node = new SCLANode() {FileType = ARCFileType.MiscData};
+            SCLANode node = new SCLANode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -402,7 +403,7 @@ namespace BrawlCrate.NodeWrappers
 
         public STPMNode NewSTPM()
         {
-            STPMNode node = new STPMNode() { FileType = ARCFileType.MiscData };
+            STPMNode node = new STPMNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -413,7 +414,7 @@ namespace BrawlCrate.NodeWrappers
 
         public STDTNode NewSTDT(int numEntries)
         {
-            STDTNode node = new STDTNode(numEntries) { FileType = ARCFileType.MiscData };
+            STDTNode node = new STDTNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -424,7 +425,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBCLNode NewTBCL(int numEntries)
         {
-            TBCLNode node = new TBCLNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBCLNode node = new TBCLNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -435,7 +436,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBGCNode NewTBGC(int numEntries)
         {
-            TBGCNode node = new TBGCNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBGCNode node = new TBGCNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -446,7 +447,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBGDNode NewTBGD(int numEntries)
         {
-            TBGDNode node = new TBGDNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBGDNode node = new TBGDNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -457,7 +458,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBGMNode NewTBGM(int numEntries)
         {
-            TBGMNode node = new TBGMNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBGMNode node = new TBGMNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -468,7 +469,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBLVNode NewTBLV(int numEntries)
         {
-            TBLVNode node = new TBLVNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBLVNode node = new TBLVNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -479,7 +480,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBRMNode NewTBRM(int numEntries)
         {
-            TBRMNode node = new TBRMNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBRMNode node = new TBRMNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -490,7 +491,7 @@ namespace BrawlCrate.NodeWrappers
 
         public TBSTNode NewTBST(int numEntries)
         {
-            TBSTNode node = new TBSTNode(numEntries) { FileType = ARCFileType.MiscData };
+            TBSTNode node = new TBSTNode(numEntries) {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -498,10 +499,10 @@ namespace BrawlCrate.NodeWrappers
             w.TreeView.SelectedNode = w;
             return node;
         }
+
         public HavokNode NewHavok()
         {
-            HavokNode node = new HavokNode()
-                { Name = _resource.FindName("NewHavokData"), FileType = ARCFileType.MiscData };
+            HavokNode node = new HavokNode {Name = _resource.FindName("NewHavokData"), FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -512,7 +513,7 @@ namespace BrawlCrate.NodeWrappers
 
         public ARCEntryNode NewRedirect()
         {
-            ARCEntryNode node = new ARCEntryNode() { FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect };
+            ARCEntryNode node = new ARCEntryNode {FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect};
             _resource.AddChild(node);
             node.RedirectIndex = 0;
 

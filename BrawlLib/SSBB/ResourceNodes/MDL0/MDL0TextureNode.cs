@@ -16,7 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         static MDL0TextureNode()
         {
-            _folderWatcher = new FileSystemWatcher() {Filter = "*.*", IncludeSubdirectories = false};
+            _folderWatcher = new FileSystemWatcher {Filter = "*.*", IncludeSubdirectories = false};
         }
 
         //internal MDL0Texture* Header { get { return (MDL0Texture*)WorkingUncompressed.Address; } }

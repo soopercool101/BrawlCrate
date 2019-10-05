@@ -209,7 +209,7 @@ namespace BrawlLib.Wii.Models
 
         public static ModelLinker Prepare(MDL0Node model)
         {
-            ModelLinker linker = new ModelLinker()
+            ModelLinker linker = new ModelLinker
             {
                 Model = model,
                 Version = model._version

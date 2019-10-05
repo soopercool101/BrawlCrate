@@ -249,7 +249,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 data.Initialize(this, addr, size * count);
                 for (int i = 0; i < list._listCount; i++)
                 {
-                    new MoveDefSectionParamNode() {_name = name == null ? "Part" + i : name}.Initialize(data,
+                    new MoveDefSectionParamNode {_name = name == null ? "Part" + i : name}.Initialize(data,
                         addr + i * size, size);
                 }
 
@@ -399,7 +399,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefSectionParamNode() {_name = "Part" + i}.Initialize(this, First + i * EntrySize, EntrySize);
+                new MoveDefSectionParamNode {_name = "Part" + i}.Initialize(this, First + i * EntrySize, EntrySize);
             }
         }
 
@@ -437,7 +437,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Size / 32; i++)
             {
-                new MoveDefHurtBoxNode() {_extOverride = true}.Initialize(this, First + i, 32);
+                new MoveDefHurtBoxNode {_extOverride = true}.Initialize(this, First + i, 32);
             }
         }
 

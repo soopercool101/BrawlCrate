@@ -90,7 +90,7 @@ namespace BrawlCrate.NodeWrappers
             int index = Program.OpenFile(FileFilters.Images, out string path);
             if (index == 8)
             {
-                TPLTextureNode t = new TPLTextureNode() {Name = "Texture"};
+                TPLTextureNode t = new TPLTextureNode {Name = "Texture"};
                 _resource.AddChild(t);
                 t.Replace(path);
 

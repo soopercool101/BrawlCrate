@@ -31,7 +31,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             VoidPtr addr = BaseAddress + DataOffset;
             for (int i = 0; i < Count; i++)
             {
-                MoveDefArticleNode d = new MoveDefArticleNode() {Static = true};
+                MoveDefArticleNode d = new MoveDefArticleNode {Static = true};
                 d.Initialize(this, addr + i * 56, 56);
             }
         }

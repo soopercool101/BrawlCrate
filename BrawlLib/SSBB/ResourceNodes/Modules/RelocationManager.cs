@@ -373,7 +373,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_linkedCommands[index] == null)
                 {
-                    _linkedCommands[index] = new List<RelocationTarget>() {target};
+                    _linkedCommands[index] = new List<RelocationTarget> {target};
                 }
                 else
                 {
@@ -382,7 +382,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                _linkedCommands.Add(index, new List<RelocationTarget>() {target});
+                _linkedCommands.Add(index, new List<RelocationTarget> {target});
             }
         }
 
@@ -421,7 +421,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_linkedBranches[index] == null)
                 {
-                    _linkedBranches[index] = new List<RelocationTarget>() {target};
+                    _linkedBranches[index] = new List<RelocationTarget> {target};
                 }
                 else
                 {
@@ -430,7 +430,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                _linkedBranches.Add(index, new List<RelocationTarget>() {target});
+                _linkedBranches.Add(index, new List<RelocationTarget> {target});
             }
         }
 
@@ -486,7 +486,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_tags[index] == null)
                 {
-                    _tags[index] = new List<string>() {tag};
+                    _tags[index] = new List<string> {tag};
                 }
                 else
                 {
@@ -495,7 +495,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                _tags.Add(index, new List<string>() {tag});
+                _tags.Add(index, new List<string> {tag});
             }
         }
 

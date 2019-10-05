@@ -94,19 +94,19 @@ namespace BrawlCrate.NodeWrappers
             ResourceNode emitter;
             if (node.VersionMinor == 9)
             {
-                e.AddChild(emitter = new REFFEmitterNode9() {_name = "Emitter"});
+                e.AddChild(emitter = new REFFEmitterNode9 {_name = "Emitter"});
             }
             else
             {
-                e.AddChild(emitter = new REFFEmitterNode7() {_name = "Emitter"});
+                e.AddChild(emitter = new REFFEmitterNode7 {_name = "Emitter"});
             }
 
             emitter.AddChild(new REFFTEVStage(0));
             emitter.AddChild(new REFFTEVStage(1));
             emitter.AddChild(new REFFTEVStage(2));
             emitter.AddChild(new REFFTEVStage(3));
-            e.AddChild(new REFFParticleNode() {_name = "Particle"});
-            e.AddChild(new REFFAnimationListNode() {_name = "Animations"});
+            e.AddChild(new REFFParticleNode {_name = "Particle"});
+            e.AddChild(new REFFAnimationListNode {_name = "Animations"});
             _resource.AddChild(e);
             BaseWrapper w = FindResource(e, true);
             w.EnsureVisible();

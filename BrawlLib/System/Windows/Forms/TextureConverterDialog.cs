@@ -978,20 +978,19 @@ namespace System.Windows.Forms
             }
             else if (_tplParent != null)
             {
-                _origTPL = new TPLTextureNode() {Name = "Texture"};
+                _origTPL = new TPLTextureNode {Name = "Texture"};
                 _tplParent.AddChild(_origTPL);
                 _origTPL.ReplaceRaw(_textureData);
                 if (_paletteData != null)
                 {
-                    _origTPLPlt = new TPLPaletteNode() {Name = "Palette"};
+                    _origTPLPlt = new TPLPaletteNode {Name = "Palette"};
                     _origTPL.AddChild(_origTPLPlt);
                     _origTPLPlt.ReplaceRaw(_paletteData);
                 }
             }
             else if (_reftParent != null)
             {
-                _reftParent.AddChild(_origREFT = new REFTEntryNode()
-                    {Name = Path.GetFileNameWithoutExtension(_imageSource)});
+                _reftParent.AddChild(_origREFT = new REFTEntryNode {Name = Path.GetFileNameWithoutExtension(_imageSource)});
                 _origREFT.ReplaceRaw(_textureData);
             }
             else if (_origTEX0 != null)
@@ -1055,7 +1054,7 @@ namespace System.Windows.Forms
                     }
                     else
                     {
-                        _origTPLPlt = new TPLPaletteNode() {_name = "Palette"};
+                        _origTPLPlt = new TPLPaletteNode {_name = "Palette"};
                         _origTPL.AddChild(_origTPLPlt);
                         _origTPLPlt.ReplaceRaw(_paletteData);
                     }

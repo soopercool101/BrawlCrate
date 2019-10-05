@@ -527,7 +527,7 @@ namespace System.Windows.Forms
 
         private void rWSDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RWSDNode node = new RWSDNode()
+            RWSDNode node = new RWSDNode
             {
                 _name = string.Format("[{0}] RWSD", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
@@ -541,7 +541,7 @@ namespace System.Windows.Forms
 
         private void rSEQToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RSEQNode node = new RSEQNode()
+            RSEQNode node = new RSEQNode
             {
                 _name = string.Format("[{0}] RSEQ", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
@@ -554,7 +554,7 @@ namespace System.Windows.Forms
 
         private void rBNKToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RBNKNode node = new RBNKNode()
+            RBNKNode node = new RBNKNode
             {
                 _name = string.Format("[{0}] RBNK", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
@@ -568,7 +568,7 @@ namespace System.Windows.Forms
 
         private void externalReferenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RSARExtFileNode node = new RSARExtFileNode()
+            RSARExtFileNode node = new RSARExtFileNode
             {
                 _name = string.Format("[{0}] External", _targetNode.Files.Count),
                 _fileIndex = _targetNode.Files.Count
@@ -581,11 +581,11 @@ namespace System.Windows.Forms
 
         private void rSTMToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() {Filter = SupportedFilesHandler.GetCompleteFilter("wav")})
+            using (OpenFileDialog ofd = new OpenFileDialog {Filter = SupportedFilesHandler.GetCompleteFilter("wav")})
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    RSTMNode r = new RSTMNode() {_fileIndex = _targetNode.Files.Count};
+                    RSTMNode r = new RSTMNode {_fileIndex = _targetNode.Files.Count};
                     using (BrstmConverterDialog dlg = new BrstmConverterDialog())
                     {
                         dlg.AudioSource = ofd.FileName;

@@ -26,7 +26,7 @@ namespace System.Windows.Forms
 
         public ModelPanelViewportInfo GetInfo()
         {
-            return new ModelPanelViewportInfo()
+            return new ModelPanelViewportInfo
             {
                 _ambient = _ambient,
                 _backColor = (ARGBPixel) BackgroundColor,
@@ -1158,17 +1158,17 @@ namespace System.Windows.Forms
 
         #region Default Viewports
 
-        public new static ModelPanelViewport DefaultPerspective => new ModelPanelViewport()
+        public new static ModelPanelViewport DefaultPerspective => new ModelPanelViewport
         {
             _type = ViewportProjection.Perspective,
             _camera = new GLCamera(),
             _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
         };
 
-        private new static ModelPanelViewport BaseOrtho => new ModelPanelViewport()
+        private new static ModelPanelViewport BaseOrtho => new ModelPanelViewport
         {
             _type = ViewportProjection.Orthographic,
-            _camera = new GLCamera()
+            _camera = new GLCamera
             {
                 _ortho = true,
                 _nearZ = -10000.0f,

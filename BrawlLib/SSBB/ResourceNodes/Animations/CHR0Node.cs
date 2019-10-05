@@ -418,7 +418,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 CHR0EntryNode node = null;
                 KeyframeEntry kfe = null;
 
-                CHR0EntryNode entry = new CHR0EntryNode() {Name = _extTarget.Name};
+                CHR0EntryNode entry = new CHR0EntryNode {Name = _extTarget.Name};
                 entry.SetSize(_extTarget.FrameCount, Loop);
 
                 //Apply all external keyframes to current entry.
@@ -556,7 +556,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 CHR0EntryNode intEntry = null;
                 if ((intEntry = (CHR0EntryNode) FindChild(extEntry.Name, false)) == null)
                 {
-                    CHR0EntryNode newIntEntry = new CHR0EntryNode() {Name = extEntry.Name};
+                    CHR0EntryNode newIntEntry = new CHR0EntryNode {Name = extEntry.Name};
                     newIntEntry.SetSize(extEntry.FrameCount + origIntCount, Loop);
                     for (int x = 0; x < extEntry.FrameCount; x++)
                     {
@@ -1171,7 +1171,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public CHRAnimationFrame GetAnimFrame(int index, bool returnOutFrame = false)
         {
-            CHRAnimationFrame frame = new CHRAnimationFrame() {Index = index};
+            CHRAnimationFrame frame = new CHRAnimationFrame {Index = index};
             float* dPtr = (float*) &frame;
             for (int x = 0; x < 9; x++)
             {

@@ -1822,7 +1822,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ObjectNode HardCopy()
         {
-            MDL0ObjectNode o = new MDL0ObjectNode()
+            MDL0ObjectNode o = new MDL0ObjectNode
             {
                 _manager = _manager.HardCopy(),
                 Name = Name,

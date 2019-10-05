@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFTypeObjectEntry* Entry = table->First;
             for (int i = 0; i < table->_entries; i++, Entry = Entry->Next)
             {
-                new REFFEntryNode() {_name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength}
+                new REFFEntryNode {_name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength}
                     .Initialize(this, new DataSource((byte*) table->Address + Entry->DataOffset, Entry->DataLength));
             }
         }
@@ -119,7 +119,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             new REFFParticleNode().Initialize(this, Header->Params, (int) Header->Params->headersize);
-            new REFFAnimationListNode()
+            new REFFAnimationListNode
                 {
                     _ptclTrackCount = *Header->PtclTrackCount,
                     _ptclInitTrackCount = *Header->PtclInitTrackCount,

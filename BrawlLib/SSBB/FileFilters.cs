@@ -201,7 +201,7 @@ namespace BrawlLib
         /// Maps node types to the default extension when using Export All.
         /// Nodes that are inside a BRES do not need to be defined here - they will get an extension assigned in BRRESNode.cs.
         /// </summary>
-        private static readonly Dictionary<Type, string> DefaultExportAllExtensions = new Dictionary<Type, string>()
+        private static readonly Dictionary<Type, string> DefaultExportAllExtensions = new Dictionary<Type, string>
         {
             [typeof(MDL0Node)] = "mdl0",
             [typeof(TEX0Node)] = "png",

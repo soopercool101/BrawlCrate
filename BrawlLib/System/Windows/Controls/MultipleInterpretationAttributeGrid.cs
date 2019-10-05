@@ -8,21 +8,21 @@ namespace System.Windows.Forms
 
         public MultipleInterpretationAttributeGrid() : base()
         {
-            chooser = new ComboBox()
+            chooser = new ComboBox
             {
                 Dock = DockStyle.Fill,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
             chooser.SelectedIndexChanged += chooser_SelectedIndexChanged;
 
-            Button save = new Button()
+            Button save = new Button
             {
                 Dock = DockStyle.Right,
                 Text = "Save"
             };
             save.Click += save_Click;
 
-            Panel p = new Panel()
+            Panel p = new Panel
             {
                 Dock = DockStyle.Top,
                 Size = chooser.PreferredSize

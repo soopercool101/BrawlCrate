@@ -390,7 +390,7 @@ namespace System.Windows.Forms
 
         private void RecursivePopulate(IBoneNode bone, TreeNodeCollection nodes)
         {
-            TreeNode node = new TreeNode() {Tag = bone, Text = bone.Name, Checked = bone.IsRendering};
+            TreeNode node = new TreeNode {Tag = bone, Text = bone.Name, Checked = bone.IsRendering};
 
             _treeNodes[bone.BoneIndex] = node;
             nodes.Add(node);

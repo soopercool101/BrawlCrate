@@ -324,7 +324,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int x = 0;
             for (int i = 0; i < 7; i++, x++)
             {
-                new ModuleSectionNode()
+                new ModuleSectionNode
                 {
                     _isCodeSection = true, _name = string.Format("[{0}] Text{1}", x, i),
                     _dataOffset = (int) Header->TextOffset[i], _dataSize = Header->TextSize[i]
@@ -333,7 +333,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             for (int i = 0; i < 11; i++, x++)
             {
-                new ModuleSectionNode()
+                new ModuleSectionNode
                 {
                     _name = string.Format("[{0}] Data{1}", x, i), _dataOffset = (int) Header->DataOffset[i],
                     _dataSize = Header->DataSize[i]

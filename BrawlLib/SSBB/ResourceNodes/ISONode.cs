@@ -58,7 +58,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bool WiiMatch = header->_tagWii == ISOPartitionHeader.WiiTag;
             if ((GCMatch || WiiMatch) && (LoadedKey != null || LoadKey()))
             {
-                return new ISONode() {_isGC = GCMatch};
+                return new ISONode {_isGC = GCMatch};
             }
 
             return null;

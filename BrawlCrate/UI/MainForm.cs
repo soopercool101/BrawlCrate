@@ -154,7 +154,7 @@ namespace BrawlCrate
                         changelog?.WaitForExit();
                     }
 #else
-                    Process.Start(new ProcessStartInfo()
+                    Process.Start(new ProcessStartInfo
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
@@ -1313,7 +1313,7 @@ namespace BrawlCrate
 
         private void runScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog()
+            using (OpenFileDialog dlg = new OpenFileDialog
             {
                 Filter =
                     "All supported files (.py, .fsx)|*.py;*.fsx|Python file (.py)|*.py|F# script (.fsx)|*.fsx|All Files|*"
@@ -1371,7 +1371,7 @@ namespace BrawlCrate
                 });
             }
 #else
-            Process.Start(new ProcessStartInfo()
+            Process.Start(new ProcessStartInfo
             {
                 FileName = $"{Application.StartupPath}\\Changelog.txt",
                 WindowStyle = ProcessWindowStyle.Hidden,

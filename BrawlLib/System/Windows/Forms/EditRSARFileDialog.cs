@@ -643,7 +643,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            RWSDDataNode d = new RWSDDataNode()
+            RWSDDataNode d = new RWSDDataNode
             {
                 _name = string.Format("[{0}]Data", TargetNode.Children[0].Children.Count)
             };

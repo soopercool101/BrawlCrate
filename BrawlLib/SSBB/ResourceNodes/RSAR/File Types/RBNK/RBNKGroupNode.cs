@@ -168,7 +168,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             VoidPtr offset = &Header->_list;
             for (int i = 0; i < Header->_list._numEntries; i++)
             {
-                new WAVESoundNode() {_offset = offset}.Initialize(this, Header->_list.Get(offset, i), 0);
+                new WAVESoundNode {_offset = offset}.Initialize(this, Header->_list.Get(offset, i), 0);
             }
 
             foreach (WAVESoundNode n in Children)

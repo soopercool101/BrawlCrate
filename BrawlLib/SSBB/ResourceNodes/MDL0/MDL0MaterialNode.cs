@@ -122,7 +122,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(KonstDesc + "KSel_0.")]
         public GXColorS10 ConstantColor0
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevKonstBlock.TevReg0Lo.RB, A = _tevKonstBlock.TevReg0Lo.AG, B = _tevKonstBlock.TevReg0Hi.RB,
                 G = _tevKonstBlock.TevReg0Hi.AG
@@ -147,7 +147,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(KonstDesc + "KSel_1.")]
         public GXColorS10 ConstantColor1
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevKonstBlock.TevReg1Lo.RB, A = _tevKonstBlock.TevReg1Lo.AG, B = _tevKonstBlock.TevReg1Hi.RB,
                 G = _tevKonstBlock.TevReg1Hi.AG
@@ -172,7 +172,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(KonstDesc + "KSel_2.")]
         public GXColorS10 ConstantColor2
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevKonstBlock.TevReg2Lo.RB, A = _tevKonstBlock.TevReg2Lo.AG, B = _tevKonstBlock.TevReg2Hi.RB,
                 G = _tevKonstBlock.TevReg2Hi.AG
@@ -197,7 +197,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(KonstDesc + "KSel_3.")]
         public GXColorS10 ConstantColor3
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevKonstBlock.TevReg3Lo.RB, A = _tevKonstBlock.TevReg3Lo.AG, B = _tevKonstBlock.TevReg3Hi.RB,
                 G = _tevKonstBlock.TevReg3Hi.AG
@@ -231,7 +231,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(ColorDesc + "Color0 and Alpha0.")]
         public GXColorS10 Color0
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevColorBlock.TevReg1Lo.RB, A = _tevColorBlock.TevReg1Lo.AG, B = _tevColorBlock.TevReg1Hi0.RB,
                 G = _tevColorBlock.TevReg1Hi0.AG
@@ -264,7 +264,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(ColorDesc + "Color1 and Alpha1.")]
         public GXColorS10 Color1
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevColorBlock.TevReg2Lo.RB, A = _tevColorBlock.TevReg2Lo.AG, B = _tevColorBlock.TevReg2Hi0.RB,
                 G = _tevColorBlock.TevReg2Hi0.AG
@@ -297,7 +297,7 @@ Those properties can use this color as an argument. This color is referred to as
         [Description(ColorDesc + "Color2 and Alpha2.")]
         public GXColorS10 Color2
         {
-            get => new GXColorS10()
+            get => new GXColorS10
             {
                 R = _tevColorBlock.TevReg3Lo.RB, A = _tevColorBlock.TevReg3Lo.AG, B = _tevColorBlock.TevReg3Hi0.RB,
                 G = _tevColorBlock.TevReg3Hi0.AG
@@ -1413,7 +1413,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                         mr._texMatrixEffect.SCNCamera = -1;
                         mr._texMatrixEffect.SCNLight = -1;
 
-                        XFTexMtxInfo info = new XFTexMtxInfo()
+                        XFTexMtxInfo info = new XFTexMtxInfo
                         {
                             Projection = TexProjection.STQ,
                             InputForm = TexInputForm.ABC1,

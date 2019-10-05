@@ -23,42 +23,42 @@ namespace System
 
         public static VoidPtr operator +(VoidPtr p1, uint addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address + addr};
+            return new VoidPtr {address = (byte*) p1.address + addr};
         }
 
         public static VoidPtr operator -(VoidPtr p1, uint addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address - addr};
+            return new VoidPtr {address = (byte*) p1.address - addr};
         }
 
         public static VoidPtr operator +(VoidPtr p1, int addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address + addr};
+            return new VoidPtr {address = (byte*) p1.address + addr};
         }
 
         public static VoidPtr operator -(VoidPtr p1, int addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address - addr};
+            return new VoidPtr {address = (byte*) p1.address - addr};
         }
 
         public static VoidPtr operator +(VoidPtr p1, ulong addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address + addr};
+            return new VoidPtr {address = (byte*) p1.address + addr};
         }
 
         public static VoidPtr operator -(VoidPtr p1, ulong addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address - addr};
+            return new VoidPtr {address = (byte*) p1.address - addr};
         }
 
         public static VoidPtr operator +(VoidPtr p1, long addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address + addr};
+            return new VoidPtr {address = (byte*) p1.address + addr};
         }
 
         public static VoidPtr operator -(VoidPtr p1, long addr)
         {
-            return new VoidPtr() {address = (byte*) p1.address - addr};
+            return new VoidPtr {address = (byte*) p1.address - addr};
         }
 
         public static bool operator >(VoidPtr p1, VoidPtr p2)
@@ -106,7 +106,7 @@ namespace System
 
         public static implicit operator VoidPtr(void* ptr)
         {
-            return new VoidPtr() {address = ptr};
+            return new VoidPtr {address = ptr};
         }
 
         public static implicit operator uint(VoidPtr ptr)
@@ -116,7 +116,7 @@ namespace System
 
         public static implicit operator VoidPtr(uint ptr)
         {
-            return new VoidPtr() {address = (void*) ptr};
+            return new VoidPtr {address = (void*) ptr};
         }
 
         public static implicit operator int(VoidPtr ptr)
@@ -126,7 +126,7 @@ namespace System
 
         public static implicit operator VoidPtr(int ptr)
         {
-            return new VoidPtr() {address = (void*) ptr};
+            return new VoidPtr {address = (void*) ptr};
         }
 
         public static implicit operator ulong(VoidPtr ptr)
@@ -136,7 +136,7 @@ namespace System
 
         public static implicit operator VoidPtr(ulong ptr)
         {
-            return new VoidPtr() {address = (void*) ptr};
+            return new VoidPtr {address = (void*) ptr};
         }
 
         public static implicit operator long(VoidPtr ptr)
@@ -146,12 +146,12 @@ namespace System
 
         public static implicit operator VoidPtr(long ptr)
         {
-            return new VoidPtr() {address = (void*) ptr};
+            return new VoidPtr {address = (void*) ptr};
         }
 
         public static implicit operator VoidPtr(IntPtr ptr)
         {
-            return new VoidPtr() {address = (void*) ptr};
+            return new VoidPtr {address = (void*) ptr};
         }
 
         public static implicit operator IntPtr(VoidPtr ptr)

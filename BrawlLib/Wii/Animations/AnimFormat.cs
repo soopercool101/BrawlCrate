@@ -99,7 +99,7 @@ namespace BrawlLib.Wii.Animations
 
         public static CHR0Node Read(string input)
         {
-            CHR0Node node = new CHR0Node() {_name = Path.GetFileNameWithoutExtension(input)};
+            CHR0Node node = new CHR0Node {_name = Path.GetFileNameWithoutExtension(input)};
             using (StreamReader file = new StreamReader(input))
             {
                 float start = 0.0f;
@@ -233,7 +233,7 @@ namespace BrawlLib.Wii.Animations
 
                         if ((e = node.FindChild(bone, false) as CHR0EntryNode) == null)
                         {
-                            e = new CHR0EntryNode() {_name = bone};
+                            e = new CHR0EntryNode {_name = bone};
                             node.AddChild(e);
                         }
 

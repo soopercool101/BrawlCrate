@@ -7,8 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public unsafe class HavokXML
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings()
-            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
 
         public static void Serialize(HavokNode node, string outFile)
         {
@@ -171,7 +170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public static readonly Dictionary<string, KeyValuePair<string, string>> HardcodedName =
-            new Dictionary<string, KeyValuePair<string, string>>()
+            new Dictionary<string, KeyValuePair<string, string>>
             {
                 {"hkClass", new KeyValuePair<string, string>("hkClass", "0x33d42383")},
                 {"hkClassEnum", new KeyValuePair<string, string>("hkClassEnum", "0x8a3609cf")},

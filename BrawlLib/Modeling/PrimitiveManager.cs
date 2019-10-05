@@ -114,7 +114,7 @@ namespace BrawlLib.Modeling
         /// </summary>
         public PrimitiveManager HardCopy()
         {
-            PrimitiveManager p = new PrimitiveManager()
+            PrimitiveManager p = new PrimitiveManager
             {
                 _vertices = _vertices,
                 _indices = new UnsafeBuffer(_indices.Length),
@@ -548,7 +548,7 @@ namespace BrawlLib.Modeling
                     if (newGroup == false)
                     {
                         groups.Add(group);
-                        group = new PrimitiveGroup() {_offset = (uint) (pData - 1 - pStart)};
+                        group = new PrimitiveGroup {_offset = (uint) (pData - 1 - pStart)};
                         newGroup = true;
                     }
 
@@ -615,7 +615,7 @@ namespace BrawlLib.Modeling
                     newGroup = false;
                 }
 
-                group._headers.Add(new PrimitiveHeader() {Type = (WiiPrimitiveType) cmd, Entries = value});
+                group._headers.Add(new PrimitiveHeader {Type = (WiiPrimitiveType) cmd, Entries = value});
 
                 pData += 2;
 
@@ -1223,7 +1223,7 @@ namespace BrawlLib.Modeling
             _descList = new List<FacepointAttribute>();
             _fpStride = 0;
             XFDataFormat fmt;
-            _arrayFlags = new XFArrayFlags() {_data = 0};
+            _arrayFlags = new XFArrayFlags {_data = 0};
 
             if (_isWeighted)
             {
@@ -1805,7 +1805,7 @@ namespace BrawlLib.Modeling
                         Vector3* pIn0 = (Vector3*) _faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
                         {
-                            Facepoint f = _facepoints[i] = new Facepoint() {_index = i};
+                            Facepoint f = _facepoints[i] = new Facepoint {_index = i};
                             if (_vertices.Count != 0)
                             {
                                 ushort id = *pIndex++;
@@ -1863,7 +1863,7 @@ namespace BrawlLib.Modeling
                 ushort* pIndex = (ushort*) _indices.Address;
                 for (int i = 0; i < _pointCount; i++)
                 {
-                    Facepoint f = _facepoints[i] = new Facepoint() {_index = i};
+                    Facepoint f = _facepoints[i] = new Facepoint {_index = i};
                     f._vertexIndex = *pIndex++;
                     if (f._vertexIndex < _vertices.Count && f._vertexIndex >= 0)
                     {

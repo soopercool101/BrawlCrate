@@ -895,7 +895,7 @@ namespace System.Windows.Forms
                 hexBox1.Focus();
             }
 
-            Message m = new Message() {WParam = (IntPtr) (16 | 65536)};
+            Message m = new Message {WParam = (IntPtr) (16 | 65536)};
             hexBox1._ki.PreProcessWmKeyUp(ref m);
         }
 

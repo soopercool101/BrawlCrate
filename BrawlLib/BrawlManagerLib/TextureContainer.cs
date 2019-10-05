@@ -81,7 +81,7 @@ namespace BrawlManagerLib
 
         private void populate(out Texture tex, string path)
         {
-            tex = new Texture()
+            tex = new Texture
             {
                 tex0 = null,
                 ForThisFrameIndex = false,

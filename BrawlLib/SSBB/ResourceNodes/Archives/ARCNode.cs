@@ -19,7 +19,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region SpecialNames
 
-        public static List<string> SpecialName = new List<string>()
+        public static List<string> SpecialName = new List<string>
         {
             "FitCaptain",
             "FitDedede",

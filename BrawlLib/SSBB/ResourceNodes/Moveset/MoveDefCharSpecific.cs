@@ -32,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefSectionParamNode() {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
+                new MoveDefSectionParamNode {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
                     size);
             }
         }
@@ -90,7 +90,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Count; i++)
             {
-                new MiscData2Node() {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * 32, 32);
+                new MiscData2Node {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * 32, 32);
             }
         }
 
@@ -151,19 +151,19 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (DataOffset1 > 0)
             {
-                new MoveDefHitDataListNode() {_name = "HitDataList1", offsetID = 0}.Initialize(this,
+                new MoveDefHitDataListNode {_name = "HitDataList1", offsetID = 0}.Initialize(this,
                     BaseAddress + DataOffset1, 0);
             }
 
             if (DataOffset2 > 0)
             {
-                new MoveDefHitDataListNode() {_name = "HitDataList2", offsetID = 1}.Initialize(this,
+                new MoveDefHitDataListNode {_name = "HitDataList2", offsetID = 1}.Initialize(this,
                     BaseAddress + DataOffset2, 0);
             }
 
             if (DataOffset3 > 0)
             {
-                new MoveDefHitDataListNode() {_name = "HitDataList3", offsetID = 2}.Initialize(this,
+                new MoveDefHitDataListNode {_name = "HitDataList3", offsetID = 2}.Initialize(this,
                     BaseAddress + DataOffset3, 0);
             }
         }
@@ -225,7 +225,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefHurtBoxNode() {_extOverride = true}.Initialize(this, BaseAddress + DataOffset + i * 32, 32);
+                new MoveDefHurtBoxNode {_extOverride = true}.Initialize(this, BaseAddress + DataOffset + i * 32, 32);
             }
         }
 
@@ -505,13 +505,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (Offset1 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Data1", offsetID = 0}.Initialize(this, BaseAddress + Offset1,
+                new MoveDefSectionParamNode {_name = "Data1", offsetID = 0}.Initialize(this, BaseAddress + Offset1,
                     0);
             }
 
             if (Offset2 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Data2", offsetID = 1}.Initialize(this, BaseAddress + Offset2,
+                new MoveDefSectionParamNode {_name = "Data2", offsetID = 1}.Initialize(this, BaseAddress + Offset2,
                     0);
             }
         }
@@ -604,7 +604,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            new MoveDefSectionParamNode() {_name = "Data"}.Initialize(this, BaseAddress + Offset, 0);
+            new MoveDefSectionParamNode {_name = "Data"}.Initialize(this, BaseAddress + Offset, 0);
         }
 
         public override int OnCalculateSize(bool force)
@@ -713,7 +713,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefSectionParamNode() {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
+                new MoveDefSectionParamNode {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
                     size);
             }
         }
@@ -865,7 +865,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefHurtBoxNode() {_name = "HitData" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
+                new MoveDefHurtBoxNode {_name = "HitData" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
                     size);
             }
         }
@@ -1095,7 +1095,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             int size = Root.GetSize(DataOffset) / Count;
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefSectionParamNode() {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
+                new MoveDefSectionParamNode {_name = "Part" + i}.Initialize(this, BaseAddress + DataOffset + i * size,
                     size);
             }
         }
@@ -1174,11 +1174,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (size > 0)
             {
-                MoveDefGroupNode g1 = new MoveDefGroupNode() {_name = "Data1", offsetID = 0};
+                MoveDefGroupNode g1 = new MoveDefGroupNode {_name = "Data1", offsetID = 0};
                 g1.Initialize(this, BaseAddress + DataOffset1, size * Count);
                 for (int i = 0; i < Count; i++)
                 {
-                    new MoveDefSectionParamNode() {_name = "Part" + i}.Initialize(g1,
+                    new MoveDefSectionParamNode {_name = "Part" + i}.Initialize(g1,
                         BaseAddress + DataOffset1 + i * size, size);
                 }
             }
@@ -1192,11 +1192,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (size > 0)
             {
-                MoveDefGroupNode g2 = new MoveDefGroupNode() {_name = "Data2", offsetID = 1};
+                MoveDefGroupNode g2 = new MoveDefGroupNode {_name = "Data2", offsetID = 1};
                 g2.Initialize(this, BaseAddress + DataOffset2, size * Count);
                 for (int i = 0; i < Count; i++)
                 {
-                    new MoveDefSectionParamNode() {_name = "Part" + i}.Initialize(g2,
+                    new MoveDefSectionParamNode {_name = "Part" + i}.Initialize(g2,
                         BaseAddress + DataOffset2 + i * size, size);
                 }
             }
@@ -1292,13 +1292,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (DataOffset1 > 0)
             {
-                new MoveDefKirbyArticleP1pt2Node() {_name = "Params1", offsetID = 0}.Initialize(this,
+                new MoveDefKirbyArticleP1pt2Node {_name = "Params1", offsetID = 0}.Initialize(this,
                     BaseAddress + DataOffset1, 0);
             }
 
             if (DataOffset2 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params2", offsetID = 1}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params2", offsetID = 1}.Initialize(this,
                     BaseAddress + DataOffset2, 0);
             }
         }
@@ -1360,21 +1360,21 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (DataOffset1 > 0)
             {
-                MoveDefGroupNode g = new MoveDefGroupNode() {_name = "Data1", offsetID = 0};
+                MoveDefGroupNode g = new MoveDefGroupNode {_name = "Data1", offsetID = 0};
                 g.Initialize(this, BaseAddress + DataOffset1, 0);
                 for (int i = 0; i < Count1; i++)
                 {
-                    MoveDefOffsetNode d = new MoveDefOffsetNode() {_name = "Offset" + i};
+                    MoveDefOffsetNode d = new MoveDefOffsetNode {_name = "Offset" + i};
                     d.Initialize(g, BaseAddress + DataOffset1 + i * 4, 4);
                     if (d.DataOffset > 0)
                     {
-                        MoveDefListOffsetNode o = new MoveDefListOffsetNode() {_name = "Data"};
+                        MoveDefListOffsetNode o = new MoveDefListOffsetNode {_name = "Data"};
                         o.Initialize(d, BaseAddress + d.DataOffset, 0);
                         for (int x = 0; x < o.Count; x++)
                         {
-                            MoveDefOffsetNode d2 = new MoveDefOffsetNode() {_name = "Offset" + i};
+                            MoveDefOffsetNode d2 = new MoveDefOffsetNode {_name = "Offset" + i};
                             d2.Initialize(o, BaseAddress + o.DataOffset + x * 4, 4);
-                            new MoveDefIndexNode() {_name = "Index" + x}.Initialize(d2, BaseAddress + d2.DataOffset, 0);
+                            new MoveDefIndexNode {_name = "Index" + x}.Initialize(d2, BaseAddress + d2.DataOffset, 0);
                         }
                     }
                 }
@@ -1382,21 +1382,21 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (DataOffset2 > 0)
             {
-                MoveDefGroupNode g = new MoveDefGroupNode() {_name = "Data2", offsetID = 1};
+                MoveDefGroupNode g = new MoveDefGroupNode {_name = "Data2", offsetID = 1};
                 g.Initialize(this, BaseAddress + DataOffset2, 0);
                 for (int i = 0; i < Count2; i++)
                 {
-                    MoveDefOffsetNode d = new MoveDefOffsetNode() {_name = "Offset" + i};
+                    MoveDefOffsetNode d = new MoveDefOffsetNode {_name = "Offset" + i};
                     d.Initialize(g, BaseAddress + DataOffset2 + i * 4, 4);
                     if (d.DataOffset > 0)
                     {
-                        MoveDefListOffsetNode o = new MoveDefListOffsetNode() {_name = "Data"};
+                        MoveDefListOffsetNode o = new MoveDefListOffsetNode {_name = "Data"};
                         o.Initialize(d, BaseAddress + d.DataOffset, 0);
                         for (int x = 0; x < o.Count; x++)
                         {
-                            MoveDefOffsetNode d2 = new MoveDefOffsetNode() {_name = "Offset" + i};
+                            MoveDefOffsetNode d2 = new MoveDefOffsetNode {_name = "Offset" + i};
                             d2.Initialize(o, BaseAddress + o.DataOffset + x * 4, 4);
-                            new MoveDefIndexNode() {_name = "Index" + x}.Initialize(d2, BaseAddress + d2.DataOffset, 0);
+                            new MoveDefIndexNode {_name = "Index" + x}.Initialize(d2, BaseAddress + d2.DataOffset, 0);
                         }
                     }
                 }
@@ -1467,37 +1467,37 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (DataOffset1 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params1", offsetID = 0}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params1", offsetID = 0}.Initialize(this,
                     BaseAddress + DataOffset1, 0);
             }
 
             if (DataOffset2 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params2", offsetID = 1}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params2", offsetID = 1}.Initialize(this,
                     BaseAddress + DataOffset2, 0);
             }
 
             if (DataOffset3 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params3", offsetID = 2}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params3", offsetID = 2}.Initialize(this,
                     BaseAddress + DataOffset3, 0);
             }
 
             if (DataOffset4 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params4", offsetID = 3}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params4", offsetID = 3}.Initialize(this,
                     BaseAddress + DataOffset4, 0);
             }
 
             if (DataOffset5 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params5", offsetID = 4}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params5", offsetID = 4}.Initialize(this,
                     BaseAddress + DataOffset5, 0);
             }
 
             if (DataOffset6 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params6", offsetID = 5}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params6", offsetID = 5}.Initialize(this,
                     BaseAddress + DataOffset6, 0);
             }
         }
@@ -1562,37 +1562,37 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (DataOffset1 > 0)
             {
-                new MoveDefKirbyParamList49pt2Node() {_name = "Params1", offsetID = 0}.Initialize(this,
+                new MoveDefKirbyParamList49pt2Node {_name = "Params1", offsetID = 0}.Initialize(this,
                     BaseAddress + DataOffset1, 0);
             }
 
             if (DataOffset2 > 0)
             {
-                new MoveDefKirbyParamList49pt2Node() {_name = "Params2", offsetID = 1}.Initialize(this,
+                new MoveDefKirbyParamList49pt2Node {_name = "Params2", offsetID = 1}.Initialize(this,
                     BaseAddress + DataOffset2, 0);
             }
 
             if (DataOffset3 > 0)
             {
-                new MoveDefKirbyParamList49pt2Node() {_name = "Params3", offsetID = 2}.Initialize(this,
+                new MoveDefKirbyParamList49pt2Node {_name = "Params3", offsetID = 2}.Initialize(this,
                     BaseAddress + DataOffset3, 0);
             }
 
             if (DataOffset4 > 0)
             {
-                new MoveDefKirbyParamList49pt2Node() {_name = "Params4", offsetID = 3}.Initialize(this,
+                new MoveDefKirbyParamList49pt2Node {_name = "Params4", offsetID = 3}.Initialize(this,
                     BaseAddress + DataOffset4, 0);
             }
 
             if (DataOffset5 > 0)
             {
-                new MoveDefKirbyParamList49pt2Node() {_name = "Params5", offsetID = 4}.Initialize(this,
+                new MoveDefKirbyParamList49pt2Node {_name = "Params5", offsetID = 4}.Initialize(this,
                     BaseAddress + DataOffset5, 0);
             }
 
             if (DataOffset6 > 0)
             {
-                new MoveDefKirbyParamList49pt2Node() {_name = "Params6", offsetID = 5}.Initialize(this,
+                new MoveDefKirbyParamList49pt2Node {_name = "Params6", offsetID = 5}.Initialize(this,
                     BaseAddress + DataOffset6, 0);
             }
         }
@@ -1654,13 +1654,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (DataOffset1 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params1", offsetID = 0}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params1", offsetID = 0}.Initialize(this,
                     BaseAddress + DataOffset1, 0);
             }
 
             if (DataOffset2 > 0)
             {
-                new MoveDefSectionParamNode() {_name = "Params2", offsetID = 1}.Initialize(this,
+                new MoveDefSectionParamNode {_name = "Params2", offsetID = 1}.Initialize(this,
                     BaseAddress + DataOffset2, 0);
             }
         }

@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 i++)
             {
                 MoveDefModelVisRefNode offset;
-                (offset = new MoveDefModelVisRefNode() {_name = "Reference" + (i + 1)}).Initialize(this,
+                (offset = new MoveDefModelVisRefNode {_name = "Reference" + (i + 1)}).Initialize(this,
                     entries + i * 4, 4);
 
                 if (offset.DataOffset == 0)
@@ -56,14 +56,14 @@ namespace BrawlLib.SSBB.ResourceNodes
                 for (int c = 0; c < EntryCount; c++)
                 {
                     MoveDefBoneSwitchNode Switch;
-                    (Switch = new MoveDefBoneSwitchNode() {_name = "BoneSwitch" + c}).Initialize(offset,
+                    (Switch = new MoveDefBoneSwitchNode {_name = "BoneSwitch" + c}).Initialize(offset,
                         offAddr + c * 8, 8);
                     int sCount = Switch.Count;
                     VoidPtr gAddr = BaseAddress + Switch.DataOffset;
                     for (int s = 0; s < sCount; s++)
                     {
                         MoveDefModelVisGroupNode Group;
-                        (Group = new MoveDefModelVisGroupNode() {_name = "BoneGroup" + s}).Initialize(Switch,
+                        (Group = new MoveDefModelVisGroupNode {_name = "BoneGroup" + s}).Initialize(Switch,
                             gAddr + s * 8, 8);
                         int gCount = Group.Count;
                         VoidPtr bAddr = BaseAddress + Group.DataOffset;

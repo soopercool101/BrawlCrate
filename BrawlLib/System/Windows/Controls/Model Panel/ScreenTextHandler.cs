@@ -29,7 +29,7 @@ namespace System.Windows.Forms
             {
                 if (!_text.ContainsKey(text))
                 {
-                    _text.Add(text, new TextData() {_string = text});
+                    _text.Add(text, new TextData {_string = text});
                 }
 
                 _text[text]._positions.Add(value);

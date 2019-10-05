@@ -241,7 +241,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = new AttributeInfo()
+                arr[i] = new AttributeInfo
                 {
                     _name = "0x" + index.ToString("X3")
                 };

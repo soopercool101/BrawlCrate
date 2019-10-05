@@ -32,7 +32,7 @@ namespace BrawlLib.Wii.Graphics
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GXAlphaFunction
     {
-        public static readonly GXAlphaFunction Default = new GXAlphaFunction() {_data = 0x3F};
+        public static readonly GXAlphaFunction Default = new GXAlphaFunction {_data = 0x3F};
         //0000 0000 0000 0000 1111 1111   ref0
         //0000 0000 1111 1111 0000 0000   ref1
         //0000 0111 0000 0000 0000 0000   comp0
@@ -64,7 +64,7 @@ namespace BrawlLib.Wii.Graphics
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ZMode
     {
-        public static readonly ZMode Default = new ZMode() {_data = 0x17};
+        public static readonly ZMode Default = new ZMode {_data = 0x17};
 
         //0000 0001    Enable Depth Test
         //0000 1110    Depth Function
@@ -95,7 +95,7 @@ namespace BrawlLib.Wii.Graphics
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct BlendMode
     {
-        public static readonly BlendMode Default = new BlendMode() {_data = 0x34A0};
+        public static readonly BlendMode Default = new BlendMode {_data = 0x34A0};
 
         //0000 0000 0000 0001    EnableBlend
         //0000 0000 0000 0010    EnableLogic
@@ -950,7 +950,7 @@ namespace BrawlLib.Wii.Graphics
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ColorReg
     {
-        public static readonly ColorReg Konstant = new ColorReg() {_dat0 = 0x80};
+        public static readonly ColorReg Konstant = new ColorReg {_dat0 = 0x80};
 
         //0000 0000 0000 1111 1111 1111 Red (Lo) / Blue (Hi)
         //0111 1111 1111 0000 0000 0000 Alpha (Lo) /Green (Hi)

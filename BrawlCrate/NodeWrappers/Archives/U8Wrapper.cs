@@ -149,7 +149,7 @@ namespace BrawlCrate.NodeWrappers
 
         public U8FolderNode NewFolder()
         {
-            U8FolderNode node = new U8FolderNode() {Name = _resource.FindName("NewFolder")};
+            U8FolderNode node = new U8FolderNode {Name = _resource.FindName("NewFolder")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -160,7 +160,7 @@ namespace BrawlCrate.NodeWrappers
 
         public ARCNode NewARC()
         {
-            ARCNode node = new ARCNode() {Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData};
+            ARCNode node = new ARCNode {Name = _resource.FindName("NewARChive"), FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -171,7 +171,7 @@ namespace BrawlCrate.NodeWrappers
 
         public BRRESNode NewBRES()
         {
-            BRRESNode node = new BRRESNode() {FileType = ARCFileType.MiscData};
+            BRRESNode node = new BRRESNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -182,7 +182,7 @@ namespace BrawlCrate.NodeWrappers
 
         public MSBinNode NewMSBin()
         {
-            MSBinNode node = new MSBinNode() {FileType = ARCFileType.MiscData};
+            MSBinNode node = new MSBinNode {FileType = ARCFileType.MiscData};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

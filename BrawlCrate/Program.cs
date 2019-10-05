@@ -846,7 +846,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (CanRunGithubApp(true, out string path))
                 {
-                    Process git = Process.Start(new ProcessStartInfo()
+                    Process git = Process.Start(new ProcessStartInfo
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
@@ -867,7 +867,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (CanRunGithubApp(true, out string path))
                 {
-                    Process git = Process.Start(new ProcessStartInfo()
+                    Process git = Process.Start(new ProcessStartInfo
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,

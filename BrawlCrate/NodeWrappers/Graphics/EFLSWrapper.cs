@@ -83,7 +83,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            EFLSEntryNode node = new EFLSEntryNode() {Name = "<null>"};
+            EFLSEntryNode node = new EFLSEntryNode {Name = "<null>"};
             _resource.AddChild(node);
         }
 
@@ -172,7 +172,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            RE3DEntryNode node = new RE3DEntryNode() {Name = "BoneNameHere", Effect = "EffectNameHere"};
+            RE3DEntryNode node = new RE3DEntryNode {Name = "BoneNameHere", Effect = "EffectNameHere"};
             _resource.AddChild(node);
         }
 

@@ -87,7 +87,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             bint* current = (bint*) Header;
             for (int i = 0; i < 25; i++)
             {
-                specialOffsets.Add(new SpecialOffset() {Index = i, Offset = *current++});
+                specialOffsets.Add(new SpecialOffset {Index = i, Offset = *current++});
             }
 
             CalculateDataLen();
@@ -105,7 +105,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 List<int> ActionOffsets;
 
-                MoveDefActionListNode actions = new MoveDefActionListNode() {_name = "Action Scripts", _parent = this};
+                MoveDefActionListNode actions = new MoveDefActionListNode {_name = "Action Scripts", _parent = this};
 
                 bint* actionOffset;
 
@@ -136,7 +136,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             name = (r == 0 || r == 2 ? "" : "SSE ") + (r < 2 ? "Global " : "") + "IC-Basics";
                         }
 
-                        new MoveDefSectionParamNode() {_name = name, offsetID = r}.Initialize(this,
+                        new MoveDefSectionParamNode {_name = name, offsetID = r}.Initialize(this,
                             BaseAddress + s.Offset, 0);
                     }
 
@@ -149,13 +149,13 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (specialOffsets[7].Size != 0)
                 {
-                    new MoveDefCommonUnk7ListNode() {_name = "Unknown7", offsetID = 7}.Initialize(this,
+                    new MoveDefCommonUnk7ListNode {_name = "Unknown7", offsetID = 7}.Initialize(this,
                         BaseAddress + specialOffsets[7].Offset, 0);
                 }
 
                 if (specialOffsets[11].Size != 0)
                 {
-                    new MoveDefUnk11Node() {_name = "Unknown11", offsetID = 11}.Initialize(this,
+                    new MoveDefUnk11Node {_name = "Unknown11", offsetID = 11}.Initialize(this,
                         BaseAddress + specialOffsets[11].Offset, 0);
                 }
 
@@ -173,25 +173,25 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 if (specialOffsets[21].Size != 0)
                 {
-                    new MoveDefCommonUnk21Node() {offsetID = 21}.Initialize(this,
+                    new MoveDefCommonUnk21Node {offsetID = 21}.Initialize(this,
                         BaseAddress + specialOffsets[21].Offset, 0);
                 }
 
                 if (specialOffsets[22].Size != 0)
                 {
-                    new MoveDefParamListNode() {_name = "Unknown22", offsetID = 22}.Initialize(this,
+                    new MoveDefParamListNode {_name = "Unknown22", offsetID = 22}.Initialize(this,
                         BaseAddress + specialOffsets[22].Offset, 0);
                 }
 
                 if (specialOffsets[23].Size != 0)
                 {
-                    new MoveDefParamsOffsetNode() {_name = "Unknown23", offsetID = 23}.Initialize(this,
+                    new MoveDefParamsOffsetNode {_name = "Unknown23", offsetID = 23}.Initialize(this,
                         BaseAddress + specialOffsets[23].Offset, 0);
                 }
 
                 if (specialOffsets[17].Size != 0)
                 {
-                    new MoveDefPatternPowerMulNode() {_name = "Unknown17", offsetID = 17}.Initialize(this,
+                    new MoveDefPatternPowerMulNode {_name = "Unknown17", offsetID = 17}.Initialize(this,
                         BaseAddress + specialOffsets[17].Offset, 0);
                 }
 
@@ -213,7 +213,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     //Set up groups
                     for (int i = 0; i < count; i++)
                     {
-                        actions.AddChild(new MoveDefActionGroupNode() {_name = "Action" + i}, false);
+                        actions.AddChild(new MoveDefActionGroupNode {_name = "Action" + i}, false);
                     }
 
                     //Add children
@@ -409,7 +409,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Size / 12; i++)
             {
-                new MoveDefCommonUnk7EntryNode() {_extOverride = true}.Initialize(this, First + i, 12);
+                new MoveDefCommonUnk7EntryNode {_extOverride = true}.Initialize(this, First + i, 12);
             }
         }
 
@@ -484,7 +484,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefCommonUnk7EntryListEntryNode() {_name = "Entry" + i}.Initialize(this,
+                new MoveDefCommonUnk7EntryListEntryNode {_name = "Entry" + i}.Initialize(this,
                     BaseAddress + DataOffset + i * 8, 8);
             }
         }
@@ -583,7 +583,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefUnk11EntryNode() {_name = "Entry" + i}.Initialize(this, BaseAddress + DataOffset + i * 12,
+                new MoveDefUnk11EntryNode {_name = "Entry" + i}.Initialize(this, BaseAddress + DataOffset + i * 12,
                     12);
             }
         }
@@ -653,7 +653,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < Count; i++)
             {
-                new MoveDefIndexNode() {_name = "Index" + i}.Initialize(this, BaseAddress + DataOffset + i * 4, 4);
+                new MoveDefIndexNode {_name = "Index" + i}.Initialize(this, BaseAddress + DataOffset + i * 4, 4);
             }
         }
     }
@@ -717,7 +717,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void OnPopulate()
         {
-            new MoveDefSectionParamNode() {_name = "Data"}.Initialize(this, BaseAddress + DataOffset, 168);
+            new MoveDefSectionParamNode {_name = "Data"}.Initialize(this, BaseAddress + DataOffset, 168);
         }
     }
 

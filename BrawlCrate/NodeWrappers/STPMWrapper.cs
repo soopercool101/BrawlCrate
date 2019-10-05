@@ -85,7 +85,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void NewEntry()
         {
-            STPMEntryNode node = new STPMEntryNode() {Name = "NewEntry"};
+            STPMEntryNode node = new STPMEntryNode {Name = "NewEntry"};
             _resource.AddChild(node);
         }
 

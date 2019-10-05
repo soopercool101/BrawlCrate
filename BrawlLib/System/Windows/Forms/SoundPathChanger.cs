@@ -137,7 +137,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public OpenFileDialog dlg = new OpenFileDialog()
+        public OpenFileDialog dlg = new OpenFileDialog
         {
             DefaultExt =
                 "All RSAR Files (*.brstm, *.rwsd, *.rbnk, *.rseq)|*.brstm;*.rwsd;*.rbnk;*.rseq|" +
