@@ -160,7 +160,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 57;
             btnCancel.Text = "* - Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnDone
             // 
@@ -171,7 +171,7 @@ namespace System.Windows.Forms
             btnDone.TabIndex = 56;
             btnDone.Text = "* - Done";
             btnDone.UseVisualStyleBackColor = true;
-            btnDone.Click += new EventHandler(btnDone_Click);
+            btnDone.Click += btnDone_Click;
             // 
             // lblName2
             // 
