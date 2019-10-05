@@ -160,7 +160,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 57;
             btnCancel.Text = "* - Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            //btnCancel.Click += new EventHandler(btnCancel_Click);
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnDone
             // 
@@ -171,7 +171,7 @@ namespace System.Windows.Forms
             btnDone.TabIndex = 56;
             btnDone.Text = "* - Done";
             btnDone.UseVisualStyleBackColor = true;
-            //btnDone.Click += new EventHandler(btnDone_Click);
+            btnDone.Click += new EventHandler(btnDone_Click);
             // 
             // lblName2
             // 
@@ -664,6 +664,30 @@ namespace System.Windows.Forms
         }
 
         public event EventHandler Completed;
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            status = DialogResult.Cancel;
+
+            Completed?.Invoke(this, null);
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            if (newEv == null) //No changes were made.
+            {
+                btnCancel_Click(sender, e);
+                return;
+            }
+
+            status = DialogResult.OK;
+            int index = origEvent.Index;
+            MoveDefActionNode action = origEvent.Parent as MoveDefActionNode;
+            origEvent.Remove();
+            action.InsertChild(newEvent, true, index);
+
+            Completed?.Invoke(this, null);
+        }
 
         public object _oldSelectedObject;
 

@@ -145,7 +145,6 @@ namespace System.Windows.Forms
 
         #endregion
 
-        private int index = -2;
         private ComboBox listBox;
         private Label label1;
         private Label label2;

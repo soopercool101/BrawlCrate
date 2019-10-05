@@ -103,7 +103,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (RootNode is ARCNode && (RootNode as ARCNode).IsFighter)
             {
-                MoveDefGroupNode g;
                 List<int> ActionOffsets;
 
                 MoveDefActionListNode actions = new MoveDefActionListNode() {_name = "Action Scripts", _parent = this};

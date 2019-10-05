@@ -399,8 +399,6 @@ namespace BrawlLib.SSBB.ResourceNodes
                     break;
             }
 
-            Dictionary<int, KeyValuePair<int, float>> values;
-
             VoidPtr offset = (VoidPtr) Header + 0x20;
             if (KeyTableSize > 4)
             {

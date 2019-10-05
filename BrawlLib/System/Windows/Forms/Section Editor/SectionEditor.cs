@@ -1048,7 +1048,6 @@ namespace System.Windows.Forms
 
             CommandChanged();
             hexBox1.Focus();
-            _relocationsChanged = true;
         }
 
         private void btnDelCmd_Click(object sender, EventArgs e)
@@ -1057,14 +1056,12 @@ namespace System.Windows.Forms
 
             CommandChanged();
             hexBox1.Focus();
-            _relocationsChanged = true;
         }
 
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             propertyGrid1.Refresh();
             hexBox1.Invalidate();
-            _relocationsChanged = true;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -1343,8 +1340,6 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _relocationsChanged;
-
         private void Apply()
         {
             if (hexBox1.ByteProvider == null)
@@ -1537,7 +1532,7 @@ namespace System.Windows.Forms
 
         private void chkConstructor_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating || SelectedRelocationIndex == null)
+            if (_updating)
             {
                 return;
             }
@@ -1565,7 +1560,7 @@ namespace System.Windows.Forms
 
         private void chkDestructor_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating || SelectedRelocationIndex == null)
+            if (_updating)
             {
                 return;
             }
@@ -1593,7 +1588,7 @@ namespace System.Windows.Forms
 
         private void chkUnresolved_CheckedChanged(object sender, EventArgs e)
         {
-            if (_updating || SelectedRelocationIndex == null)
+            if (_updating)
             {
                 return;
             }
