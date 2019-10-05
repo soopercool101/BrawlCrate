@@ -12,7 +12,7 @@ namespace System.Windows.Forms
 {
     public unsafe partial class SectionEditor : Form
     {
-        public ModuleSectionNode _section = null;
+        public ModuleSectionNode _section;
         public RelocationManager _manager;
 
         public static List<SectionEditor> _openedSections = new List<SectionEditor>();
@@ -420,7 +420,7 @@ namespace System.Windows.Forms
             //PosChanged();
         }
 
-        private int annotationIndex = 0;
+        private int annotationIndex;
 
         private void PosChanged()
         {
@@ -828,7 +828,7 @@ namespace System.Windows.Forms
         }
 
         internal FindOptions _findOptions = new FindOptions();
-        private FormFind _formFind = null;
+        private FormFind _formFind;
 
         private FormFind ShowFind()
         {
@@ -1150,7 +1150,7 @@ namespace System.Windows.Forms
             e.DrawFocusRectangle();
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void txtFloat_TextChanged(object sender, EventArgs e)
         {
@@ -1343,7 +1343,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public bool _relocationsChanged = false;
+        private bool _relocationsChanged;
 
         private void Apply()
         {

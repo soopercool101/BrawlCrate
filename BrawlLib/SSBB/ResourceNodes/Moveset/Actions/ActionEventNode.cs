@@ -711,7 +711,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     m = Matrix.TransformMatrix(new Vector3(0.5f),
                         (globpos + bonepos).LookatAngles(cam) * Maths._rad2degf, new Vector3(0));
                     GL.MultMatrix((float*) &m);
-                    GL.Begin(BeginMode.Quads);
+                    GL.Begin(PrimitiveType.Quads);
                     for (int i = 0; i < 16; i += 2)
                     {
                         GL.Vertex3(Math.Cos((i - 1) * Math.PI / 8) * 0.5, Math.Sin((i - 1) * Math.PI / 8) * 0.5, 0);
@@ -733,7 +733,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     m = Matrix.TransformMatrix(new Vector3(1), new Vector3(a, angleflip, 0), new Vector3());
                     GL.MultMatrix((float*) &m);
-                    GL.Begin(BeginMode.Quads);
+                    GL.Begin(PrimitiveType.Quads);
                     // left face
                     GL.Vertex3(0.1, 0.1, 0);
                     GL.Vertex3(0.1, 0.1, 1);
@@ -787,7 +787,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             double ang1 = j * (drawangle / 2) / 180 * Math.PI;
                             double ang2 = (j + 1) * (drawangle / 2) / 180 * Math.PI;
                             int q = 0;
-                            GL.Begin(BeginMode.LineStrip);
+                            GL.Begin(PrimitiveType.LineStrip);
                             GL.Vertex3(Math.Cos(ang1), Math.Sin(ang1), 0);
                             GL.Vertex3(Math.Cos(ang2), Math.Sin(ang2), 0);
                             GL.End();
@@ -886,7 +886,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         -globpos._y / Helpers.UnScalar(size), -globpos._z / Helpers.UnScalar(size));
                     GL.Translate(reversepos._x, reversepos._y, reversepos._z);
                     GL.Color4(1.0f, 0.0f, 0.0f, 0.5f);
-                    GL.Begin(BeginMode.Lines);
+                    GL.Begin(PrimitiveType.Lines);
                     GL.Vertex3(-1, -1, -1); // stretch lines
                     GL.Vertex3(-1 - reversepos._x, -1 - reversepos._y, -1 - reversepos._z);
                     GL.Vertex3(-1, -1, 1);
@@ -904,19 +904,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                     GL.Vertex3(1, 1, 1);
                     GL.Vertex3(1 - reversepos._x, 1 - reversepos._y, 1 - reversepos._z);
                     GL.End();
-                    GL.Begin(BeginMode.LineLoop); // root box
+                    GL.Begin(PrimitiveType.LineLoop); // root box
                     GL.Vertex3(-1, -1, -1);
                     GL.Vertex3(-1, -1, 1);
                     GL.Vertex3(-1, 1, 1);
                     GL.Vertex3(-1, 1, -1);
                     GL.End();
-                    GL.Begin(BeginMode.LineLoop);
+                    GL.Begin(PrimitiveType.LineLoop);
                     GL.Vertex3(1, -1, -1);
                     GL.Vertex3(1, -1, 1);
                     GL.Vertex3(1, 1, 1);
                     GL.Vertex3(1, 1, -1);
                     GL.End();
-                    GL.Begin(BeginMode.Lines);
+                    GL.Begin(PrimitiveType.Lines);
                     GL.Vertex3(-1, -1, -1);
                     GL.Vertex3(1, -1, -1);
                     GL.Vertex3(-1, -1, 1);
@@ -961,7 +961,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     }
 
                     GL.Translate(reversepos._x, reversepos._y, reversepos._z);
-                    GL.Begin(BeginMode.Lines); // stretch lines
+                    GL.Begin(PrimitiveType.Lines); // stretch lines
                     GL.Vertex3(1, 0, 0);
                     GL.Vertex3(1 - reversepos._x, 0 - reversepos._y, 0 - reversepos._z);
                     GL.Vertex3(-1, 0, 0);
@@ -1003,7 +1003,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     m = Matrix.TransformMatrix(new Vector3(0.5f),
                         (globpos + bonepos).LookatAngles(cam) * Maths._rad2degf, new Vector3(0));
                     GL.MultMatrix((float*) &m);
-                    GL.Begin(BeginMode.Quads);
+                    GL.Begin(PrimitiveType.Quads);
                     for (int i = 0; i < 16; i += 2)
                     {
                         GL.Vertex3(Math.Cos((i - 1) * Math.PI / 8) * 0.5, Math.Sin((i - 1) * Math.PI / 8) * 0.5, 0);
@@ -1025,7 +1025,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                     m = Matrix.TransformMatrix(new Vector3(1), new Vector3(a, angleflip, 0), new Vector3());
                     GL.MultMatrix((float*) &m);
-                    GL.Begin(BeginMode.Quads);
+                    GL.Begin(PrimitiveType.Quads);
                     // left face
                     GL.Vertex3(0.1, 0.1, 0);
                     GL.Vertex3(0.1, 0.1, 1);
@@ -1079,7 +1079,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             double ang1 = j * (drawangle / 2) / 180 * Math.PI;
                             double ang2 = (j + 1) * (drawangle / 2) / 180 * Math.PI;
                             int q = 0;
-                            GL.Begin(BeginMode.LineStrip);
+                            GL.Begin(PrimitiveType.LineStrip);
                             GL.Vertex3(Math.Cos(ang1), Math.Sin(ang1), 0);
                             GL.Vertex3(Math.Cos(ang2), Math.Sin(ang2), 0);
                             GL.End();
