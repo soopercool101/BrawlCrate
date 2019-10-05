@@ -27,7 +27,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             unk0 = 1;
             unk1 = 0;
             unk2 = 0;
-            while (EntryList.Count < numEntries)
+            while (NumEntries < numEntries)
             {
                 EntryList.Add(0);
             }

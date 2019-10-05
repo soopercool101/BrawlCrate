@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)]
         [Category("Stage Data Table")]
-        public virtual int NumEntries => EntryList.Count / EntrySize;
+        public int NumEntries => EntryList.Count / EntrySize;
 
         [Category("Stage Data Table")]
         public virtual int Unknown0
