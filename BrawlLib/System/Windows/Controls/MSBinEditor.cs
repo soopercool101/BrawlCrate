@@ -216,10 +216,10 @@ namespace System.Windows.Forms
             btnMoveDown = new Button();
             btnMoveUp = new Button();
             panel2.SuspendLayout();
-            ((ISupportInitialize)splitContainer1).BeginInit();
+            ((ISupportInitialize) splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
-            ((ISupportInitialize)splitContainer2).BeginInit();
+            ((ISupportInitialize) splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
@@ -283,7 +283,7 @@ namespace System.Windows.Forms
             txtEditor.Size = new System.Drawing.Size(277, 164);
             txtEditor.TabIndex = 3;
             txtEditor.TextChanged += txtEditor_TextChanged;
-            txtEditor.KeyDown += new KeyEventHandler(txtEditor_KeyDown);
+            txtEditor.KeyDown += txtEditor_KeyDown;
             // 
             // splitContainer1
             // 
@@ -298,7 +298,7 @@ namespace System.Windows.Forms
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Paint += new PaintEventHandler(splitContainer1_Panel2_Paint);
+            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
             splitContainer1.Panel2Collapsed = true;
             splitContainer1.Size = new System.Drawing.Size(277, 164);
             splitContainer1.SplitterDistance = 74;
@@ -351,11 +351,11 @@ namespace System.Windows.Forms
             panel2.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
-            ((ISupportInitialize)splitContainer1).EndInit();
+            ((ISupportInitialize) splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel2.ResumeLayout(false);
-            ((ISupportInitialize)splitContainer2).EndInit();
+            ((ISupportInitialize) splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             ResumeLayout(false);
         }

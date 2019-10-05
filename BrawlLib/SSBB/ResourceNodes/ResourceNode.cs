@@ -122,11 +122,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected internal CompressionType _compression;
 
         public string _name, _origPath;
+
         [Category("DEBUG")]
 #if !DEBUG
         [Browsable(false)]
 #endif
         public string OrigFileName => Path.GetFileName(_origPath);
+
         public ResourceNode _parent;
         public List<ResourceNode> _children = new List<ResourceNode>();
 
@@ -881,11 +883,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             try
             {
 #endif
-            using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
-                FileShare.ReadWrite, 8, FileOptions.SequentialScan))
-            {
-                Export(stream);
-            }
+                using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
+                    FileShare.ReadWrite, 8, FileOptions.SequentialScan))
+                {
+                    Export(stream);
+                }
 #if !DEBUG
             }
             catch

@@ -1958,55 +1958,55 @@ For example, if the shader has two stages but this number is 1, the second stage
                 try
                 {
 #endif
-                if (_programHandle > 0)
-                {
-                    if (_vertexShaderHandle > 0)
+                    if (_programHandle > 0)
                     {
-                        DeleteShader(ref _vertexShaderHandle);
+                        if (_vertexShaderHandle > 0)
+                        {
+                            DeleteShader(ref _vertexShaderHandle);
+                        }
+
+                        if (_fragShaderHandle > 0)
+                        {
+                            DeleteShader(ref _fragShaderHandle);
+                        }
+
+                        GL.DeleteProgram(_programHandle);
+                        _programHandle = 0;
                     }
 
-                    if (_fragShaderHandle > 0)
+                    ShaderGenerator.SetTarget(this);
+
+                    if (updateShaderFrag)
                     {
-                        DeleteShader(ref _fragShaderHandle);
+                        ShaderNode._fragShaderSource = ShaderGenerator.GenTEVFragShader();
                     }
 
-                    GL.DeleteProgram(_programHandle);
-                    _programHandle = 0;
-                }
+                    if (updateVert)
+                    {
+                        _vertexShaderSource = ShaderGenerator.GenVertexShader();
+                    }
 
-                ShaderGenerator.SetTarget(this);
+                    if (updateMatFrag)
+                    {
+                        _fragShaderSource = ShaderGenerator.GenMaterialFragShader();
+                    }
 
-                if (updateShaderFrag)
-                {
-                    ShaderNode._fragShaderSource = ShaderGenerator.GenTEVFragShader();
-                }
+                    string combineFrag = ShaderGenerator.CombineFragShader(
+                        _fragShaderSource,
+                        ShaderNode == null ? null : ShaderNode._fragShaderSource,
+                        ActiveShaderStages);
 
-                if (updateVert)
-                {
-                    _vertexShaderSource = ShaderGenerator.GenVertexShader();
-                }
+                    GenShader(ref _vertexShaderHandle, _vertexShaderSource, true);
+                    GenShader(ref _fragShaderHandle, combineFrag, false);
 
-                if (updateMatFrag)
-                {
-                    _fragShaderSource = ShaderGenerator.GenMaterialFragShader();
-                }
+                    ShaderGenerator.ClearTarget();
 
-                string combineFrag = ShaderGenerator.CombineFragShader(
-                    _fragShaderSource,
-                    ShaderNode == null ? null : ShaderNode._fragShaderSource,
-                    ActiveShaderStages);
+                    _programHandle = GL.CreateProgram();
 
-                GenShader(ref _vertexShaderHandle, _vertexShaderSource, true);
-                GenShader(ref _fragShaderHandle, combineFrag, false);
+                    GL.AttachShader(_programHandle, _vertexShaderHandle);
+                    GL.AttachShader(_programHandle, _fragShaderHandle);
 
-                ShaderGenerator.ClearTarget();
-
-                _programHandle = GL.CreateProgram();
-
-                GL.AttachShader(_programHandle, _vertexShaderHandle);
-                GL.AttachShader(_programHandle, _fragShaderHandle);
-
-                GL.LinkProgram(_programHandle);
+                    GL.LinkProgram(_programHandle);
 
 #if DEBUG
                 GL.GetProgram(_programHandle, GetProgramParameterName.LinkStatus, out int status);

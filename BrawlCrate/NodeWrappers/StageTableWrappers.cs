@@ -87,7 +87,8 @@ namespace BrawlCrate.NodeWrappers
         public void Resize()
         {
             NumericInputForm n = new NumericInputForm();
-            if (_resource is StageTableNode t && n.ShowDialog("Resize", "Enter the new size:", t.NumEntries) == DialogResult.OK)
+            if (_resource is StageTableNode t &&
+                n.ShowDialog("Resize", "Enter the new size:", t.NumEntries) == DialogResult.OK)
             {
                 List<byte> newList = new List<byte>();
                 for (int i = 0; i < n.NewValue * 4; i++)

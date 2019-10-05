@@ -458,20 +458,20 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-            if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
-            {
+                if ((_rootNode = NodeFactory.FromFile(null, _rootPath = path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
+                }
+
                 MainForm.Instance.Reset();
-                MainForm.Instance.RecentFilesHandler.AddFile(path);
-                return true;
-            }
-
-            _rootPath = null;
-            if (showErrors)
-            {
-                MessageBox.Show("Unable to recognize input file.");
-            }
-
-            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -494,11 +494,11 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-            if (_folderDlg.ShowDialog() == DialogResult.OK)
-            {
-                fileName = _folderDlg.SelectedPath;
-                return 1;
-            }
+                if (_folderDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = _folderDlg.SelectedPath;
+                    return 1;
+                }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -540,20 +540,20 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-            if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
-            {
+                if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
+                }
+
                 MainForm.Instance.Reset();
-                MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
-                return true;
-            }
-
-            _rootPath = null;
-            if (showErrors)
-            {
-                MessageBox.Show("Unable to recognize input file.");
-            }
-
-            MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -616,28 +616,28 @@ Full changelog can be viewed from the help menu.";
                 try
                 {
 #endif
-                if (_rootPath == null)
-                {
-                    return SaveAs();
-                }
+                    if (_rootPath == null)
+                    {
+                        return SaveAs();
+                    }
 
-                bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
-                if (!force && !_rootNode.IsDirty)
-                {
-                    MessageBox.Show("No changes have been made.");
+                    bool force = Control.ModifierKeys == (Keys.Control | Keys.Shift);
+                    if (!force && !_rootNode.IsDirty)
+                    {
+                        MessageBox.Show("No changes have been made.");
+                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                        return false;
+                    }
+
+                    if (!(_rootNode is FolderNode))
+                    {
+                        _rootNode.Merge(force);
+                    }
+
+                    _rootNode.Export(_rootPath);
+                    _rootNode.IsDirty = false;
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                    return false;
-                }
-
-                if (!(_rootNode is FolderNode))
-                {
-                    _rootNode.Merge(force);
-                }
-
-                _rootNode.Export(_rootPath);
-                _rootNode.IsDirty = false;
-                MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                return true;
+                    return true;
 #if !DEBUG
                 }
                 catch (Exception x)
@@ -673,16 +673,16 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-            if (_openDlg.ShowDialog() == DialogResult.OK)
-            {
-                fileName = _openDlg.FileName;
-                if (categorize && _openDlg.FilterIndex == 1)
+                if (_openDlg.ShowDialog() == DialogResult.OK)
                 {
-                    return CategorizeFilter(_openDlg.FileName, filter);
-                }
+                    fileName = _openDlg.FileName;
+                    if (categorize && _openDlg.FilterIndex == 1)
+                    {
+                        return CategorizeFilter(_openDlg.FileName, filter);
+                    }
 
-                return _openDlg.FilterIndex;
-            }
+                    return _openDlg.FilterIndex;
+                }
 #if !DEBUG
             }
             catch (Exception ex)
@@ -791,22 +791,23 @@ Full changelog can be viewed from the help menu.";
                 try
                 {
 #endif
-                GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
-                string path = w.Export();
-                if (path != null)
-                {
-                    _rootPath = path;
-                    RootNode._origPath = path;
-                    if (w is FolderWrapper)
+                    GenericWrapper w = MainForm.Instance.RootNode as GenericWrapper;
+                    string path = w.Export();
+                    if (path != null)
                     {
-                        w.Resource.Name = w.Resource.OrigFileName;
-                        w.Text = w.Resource.Name;
+                        _rootPath = path;
+                        RootNode._origPath = path;
+                        if (w is FolderWrapper)
+                        {
+                            w.Resource.Name = w.Resource.OrigFileName;
+                            w.Text = w.Resource.Name;
+                        }
+
+                        MainForm.Instance.UpdateName();
+                        w.Resource.IsDirty = false;
+                        MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
+                        return true;
                     }
-                    MainForm.Instance.UpdateName();
-                    w.Resource.IsDirty = false;
-                    MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
-                    return true;
-                }
 #if !DEBUG
                 }
                 catch (Exception x)

@@ -18,6 +18,8 @@ namespace Be.Windows.Forms
     [ToolboxBitmap(typeof(HexBox), "HexBox.bmp")]
     public class HexBox : Control
     {
+        private const bool _debug = false;
+
         private SectionEditor _sectionEditor;
 
         public SectionEditor SectionEditor
@@ -30,6 +32,9 @@ namespace Be.Windows.Forms
         public SolidBrush GrayBrush = new SolidBrush(Color.Gray);
         public SolidBrush BlueBrush = new SolidBrush(Color.Blue);
         public SolidBrush GreenBrush = new SolidBrush(Color.Green);
+
+        public List<string> annotationDescriptions = new List<string>();
+        public List<string> annotationUnderlines = new List<string>();
 
         #region IKeyInterpreter interface
 
@@ -197,9 +202,9 @@ namespace Be.Windows.Forms
 
             public virtual void Deactivate()
             {
-                _hexBox.MouseDown -= BeginMouseSelection;
-                _hexBox.MouseMove -= UpdateMouseSelection;
-                _hexBox.MouseUp -= EndMouseSelection;
+                _hexBox.MouseDown -= new MouseEventHandler(BeginMouseSelection);
+                _hexBox.MouseMove -= new MouseEventHandler(UpdateMouseSelection);
+                _hexBox.MouseUp -= new MouseEventHandler(EndMouseSelection);
             }
 
             #endregion
@@ -208,6 +213,11 @@ namespace Be.Windows.Forms
 
             private void BeginMouseSelection(object sender, MouseEventArgs e)
             {
+                if (_debug)
+                {
+                    System.Diagnostics.Debug.WriteLine("BeginMouseSelection()", "KeyInterpreter");
+                }
+
                 if (e.Button != MouseButtons.Left)
                 {
                     return;
@@ -272,6 +282,11 @@ namespace Be.Windows.Forms
 
             public virtual bool PreProcessWmKeyDown(ref Message m)
             {
+                if (_debug)
+                {
+                    System.Diagnostics.Debug.WriteLine("PreProcessWmKeyDown(ref Message m)", "KeyInterpreter");
+                }
+
                 Keys vc = (Keys) m.WParam.ToInt32();
 
                 Keys keyData = vc | ModifierKeys;
@@ -285,7 +300,7 @@ namespace Be.Windows.Forms
 
                 MessageDelegate messageHandler = hasMessageHandler
                     ? MessageHandlers[keyData]
-                    : messageHandler = PreProcessWmKeyDown_Default;
+                    : messageHandler = new MessageDelegate(PreProcessWmKeyDown_Default);
 
                 return messageHandler(ref m);
             }
@@ -884,6 +899,11 @@ namespace Be.Windows.Forms
 
             public virtual bool PreProcessWmKeyUp(ref Message m)
             {
+                if (_debug)
+                {
+                    System.Diagnostics.Debug.WriteLine("PreProcessWmKeyUp(ref Message m)", "KeyInterpreter");
+                }
+
                 Keys vc = (Keys) m.WParam.ToInt32();
 
                 Keys keyData = vc | ModifierKeys;
@@ -937,35 +957,35 @@ namespace Be.Windows.Forms
                     {
                         _messageHandlers = new Dictionary<Keys, MessageDelegate>
                         {
-                            {Keys.Left, PreProcessWmKeyDown_Left},         // move left
-                            {Keys.Up, PreProcessWmKeyDown_Up},             // move up
-                            {Keys.Right, PreProcessWmKeyDown_Right},       // move right
-                            {Keys.Down, PreProcessWmKeyDown_Down},         // move down
-                            {Keys.PageUp, PreProcessWmKeyDown_PageUp},     // move pageup
-                            {Keys.PageDown, PreProcessWmKeyDown_PageDown}, // move page down
+                            {Keys.Left, new MessageDelegate(PreProcessWmKeyDown_Left)},         // move left
+                            {Keys.Up, new MessageDelegate(PreProcessWmKeyDown_Up)},             // move up
+                            {Keys.Right, new MessageDelegate(PreProcessWmKeyDown_Right)},       // move right
+                            {Keys.Down, new MessageDelegate(PreProcessWmKeyDown_Down)},         // move down
+                            {Keys.PageUp, new MessageDelegate(PreProcessWmKeyDown_PageUp)},     // move pageup
+                            {Keys.PageDown, new MessageDelegate(PreProcessWmKeyDown_PageDown)}, // move page down
                             {
-                                Keys.Left | Keys.Shift, PreProcessWmKeyDown_ShiftLeft
+                                Keys.Left | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftLeft)
                             }, // move left with selection
                             {
-                                Keys.Up | Keys.Shift, PreProcessWmKeyDown_ShiftUp
+                                Keys.Up | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftUp)
                             }, // move up with selection
                             {
-                                Keys.Right | Keys.Shift, PreProcessWmKeyDown_ShiftRight
+                                Keys.Right | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftRight)
                             }, // move right with selection
                             {
-                                Keys.Down | Keys.Shift, PreProcessWmKeyDown_ShiftDown
-                            },                                         // move down with selection
-                            {Keys.Tab, PreProcessWmKeyDown_Tab},       // switch to string view
-                            {Keys.Back, PreProcessWmKeyDown_Back},     // back
-                            {Keys.Delete, PreProcessWmKeyDown_Delete}, // delete
-                            {Keys.Home, PreProcessWmKeyDown_Home},     // move to home
-                            {Keys.End, PreProcessWmKeyDown_End},       // move to end
+                                Keys.Down | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftDown)
+                            },                                                              // move down with selection
+                            {Keys.Tab, new MessageDelegate(PreProcessWmKeyDown_Tab)},       // switch to string view
+                            {Keys.Back, new MessageDelegate(PreProcessWmKeyDown_Back)},     // back
+                            {Keys.Delete, new MessageDelegate(PreProcessWmKeyDown_Delete)}, // delete
+                            {Keys.Home, new MessageDelegate(PreProcessWmKeyDown_Home)},     // move to home
+                            {Keys.End, new MessageDelegate(PreProcessWmKeyDown_End)},       // move to end
                             {
-                                Keys.ShiftKey | Keys.Shift, PreProcessWmKeyDown_ShiftShiftKey
-                            },                                                     // begin selection process
-                            {Keys.C | Keys.Control, PreProcessWmKeyDown_ControlC}, // copy 
-                            {Keys.X | Keys.Control, PreProcessWmKeyDown_ControlX}, // cut
-                            {Keys.V | Keys.Control, PreProcessWmKeyDown_ControlV}  // paste
+                                Keys.ShiftKey | Keys.Shift, new MessageDelegate(PreProcessWmKeyDown_ShiftShiftKey)
+                            },                                                                          // begin selection process
+                            {Keys.C | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlC)}, // copy 
+                            {Keys.X | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlX)}, // cut
+                            {Keys.V | Keys.Control, new MessageDelegate(PreProcessWmKeyDown_ControlV)}  // paste
                         };
                     }
 
@@ -1116,6 +1136,11 @@ namespace Be.Windows.Forms
 
             public virtual PointF GetCaretPointF(long byteIndex)
             {
+                if (_debug)
+                {
+                    System.Diagnostics.Debug.WriteLine("GetCaretPointF()", "KeyInterpreter");
+                }
+
                 return _hexBox.GetBytePointF(byteIndex);
             }
 
@@ -1265,6 +1290,11 @@ namespace Be.Windows.Forms
 
             public override PointF GetCaretPointF(long byteIndex)
             {
+                if (_debug)
+                {
+                    System.Diagnostics.Debug.WriteLine("GetCaretPointF()", "StringKeyInterpreter");
+                }
+
                 Point gp = _hexBox.GetGridBytePoint(byteIndex);
                 return _hexBox.GetByteStringPointF(gp);
             }
@@ -1602,7 +1632,7 @@ namespace Be.Windows.Forms
         public HexBox()
         {
             _vScrollBar = new VScrollBar();
-            _vScrollBar.Scroll += vScrollBar_Scroll;
+            _vScrollBar.Scroll += _vScrollBar_Scroll;
             _vScrollBar.Cursor = Cursors.Default;
 
             _builtInContextMenu = new BuiltInContextMenu(this);
@@ -1629,7 +1659,7 @@ namespace Be.Windows.Forms
 
         #region Scroll methods
 
-        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
+        private void _vScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             switch (e.Type)
             {
@@ -1694,6 +1724,11 @@ namespace Be.Windows.Forms
 
         private void UpdateScrollSize()
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("UpdateScrollSize()", "HexBox");
+            }
+
             // calc scroll bar info
             if (VScrollBarVisible && _byteProvider != null && _byteProvider.Length > 0 && _iHexMaxHBytes != 0)
             {
@@ -1735,6 +1770,11 @@ namespace Be.Windows.Forms
 
         private void UpdateVScroll()
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("UpdateVScroll()", "HexBox");
+            }
+
             int max = ToScrollMax(_scrollVmax);
 
             if (max > 0)
@@ -1870,6 +1910,11 @@ namespace Be.Windows.Forms
         /// </summary>
         public void ScrollByteIntoView()
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("ScrollByteIntoView()", "HexBox");
+            }
+
             ScrollByteIntoView(_bytePos);
         }
 
@@ -1879,6 +1924,11 @@ namespace Be.Windows.Forms
         /// <param name="index">the index of the byte</param>
         public void ScrollByteIntoView(long index)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("ScrollByteIntoView(long index)", "HexBox");
+            }
+
             if (_byteProvider == null || _keyInterpreter == null)
             {
                 return;
@@ -1903,6 +1953,11 @@ namespace Be.Windows.Forms
 
         private void ReleaseSelection()
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("ReleaseSelection()", "HexBox");
+            }
+
             if (_selectionLength == 0)
             {
                 return;
@@ -2075,6 +2130,11 @@ namespace Be.Windows.Forms
                 return;
             }
 
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("CreateCaret()", "HexBox");
+            }
+
             // define the caret width depending on InsertActive mode
             int caretWidth = InsertActive ? 1 : (int) _charSize.Width;
             int caretHeight = (int) _charSize.Height;
@@ -2094,6 +2154,11 @@ namespace Be.Windows.Forms
                 return;
             }
 
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("UpdateCaret()", "HexBox");
+            }
+
             long byteIndex = _bytePos - _startByte;
             PointF p = _keyInterpreter.GetCaretPointF(byteIndex);
             p.X += _byteCharacterPos * _charSize.Width;
@@ -2107,14 +2172,24 @@ namespace Be.Windows.Forms
                 return;
             }
 
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("DestroyCaret()", "HexBox");
+            }
+
             NativeMethods.DestroyCaret();
             _caretVisible = false;
         }
 
-        private bool inStringArea;
+        private bool inStringArea = false;
 
         private void SetCaretPosition(Point p)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("SetCaretPosition()", "HexBox");
+            }
+
             if (_byteProvider == null || _keyInterpreter == null)
             {
                 return;
@@ -2155,6 +2230,11 @@ namespace Be.Windows.Forms
 
         private BytePositionInfo GetHexBytePositionInfo(Point p)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("GetHexBytePositionInfo()", "HexBox");
+            }
+
             long bytePos;
             int byteCharaterPos;
 
@@ -2188,6 +2268,11 @@ namespace Be.Windows.Forms
 
         private BytePositionInfo GetStringBytePositionInfo(Point p)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("GetStringBytePositionInfo()", "HexBox");
+            }
+
             long bytePos;
             int byteCharacterPos;
 
@@ -2301,6 +2386,10 @@ namespace Be.Windows.Forms
 
                 buffer1 = options.Hex;
             }
+            else if (options.Type == FindType.Annotations)
+            {
+                return FindNextAnnotations(options);
+            }
 
             int buffer1Length = buffer1.Length;
 
@@ -2356,7 +2445,7 @@ namespace Be.Windows.Forms
         /// -2 if Find was aborted.</returns>
         public long FindPrev(FindOptions options)
         {
-            long startIndex = SelectionStart;
+            long startIndex = SelectionStart - 1;
             int match = 0;
 
             byte[] buffer1 = null;
@@ -2403,6 +2492,10 @@ namespace Be.Windows.Forms
 
                 buffer1 = options.Hex;
             }
+            else if (options.Type == FindType.Annotations)
+            {
+                return FindPrevAnnotations(options);
+            }
 
             int buffer1Length = buffer1.Length;
 
@@ -2443,6 +2536,354 @@ namespace Be.Windows.Forms
                     ScrollByteIntoView(_bytePos);
 
                     return bytePos;
+                }
+            }
+
+            return -1;
+        }
+
+        public long FindNextAnnotations(FindOptions options)
+        {
+            long startIndex = SelectionStart + SelectionLength;
+            _abortFind = false;
+
+            for (long pos = startIndex.RoundUp(4); pos < _byteProvider.Length; pos += 4)
+            {
+                if (_abortFind)
+                {
+                    return -2;
+                }
+
+                if (pos % 1000 == 0) // for performance reasons: DoEvents only 1 times per 1000 loops
+                {
+                    Application.DoEvents();
+                }
+
+                if (annotationDescriptions.Count > pos / 4)
+                {
+                    if (options.MatchCase)
+                    {
+                        if (annotationDescriptions[(int) (pos / 4)]
+                            .Contains(Encoding.Default.GetString(options.FindBuffer)))
+                        {
+                            int posOffset = 0;
+                            int byteCount = 4;
+                            if (SectionEditor != null)
+                            {
+                                if (annotationUnderlines[(int) (pos / 4)].StartsWith("0000") ||
+                                    annotationUnderlines[(int) (pos / 4)].StartsWith("1111") ||
+                                    annotationUnderlines[(int) (pos / 4)].StartsWith("011"))
+                                {
+                                    SectionEditor.rdo4byte.Checked = true;
+                                }
+                                else
+                                {
+                                    bool firstFound = false;
+                                    int numBytes = 0;
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].StartsWith("1") ? 1 : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                    }
+
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].Substring(1).StartsWith("1")
+                                        ? 1
+                                        : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                        posOffset = 1;
+                                    }
+
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].Substring(2).StartsWith("1")
+                                        ? 1
+                                        : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                        posOffset = 2;
+                                    }
+
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].Substring(3).StartsWith("1")
+                                        ? 1
+                                        : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                        posOffset = 3;
+                                    }
+
+                                    byteCount -= posOffset;
+                                    if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
+                                                                                              .Contains("11"))
+                                    {
+                                        SectionEditor.rdo2byte.Checked = true;
+                                        byteCount = 2;
+                                    }
+                                    else if (numBytes == 1)
+                                    {
+                                        SectionEditor.rdo1byte.Checked = true;
+                                        byteCount = 1;
+                                    }
+                                    else
+                                    {
+                                        SectionEditor.rdo4byte.Checked = true;
+                                        posOffset = 0;
+                                        byteCount = 4;
+                                    }
+                                }
+                            }
+
+                            Select(pos + posOffset, byteCount);
+                            ScrollByteIntoView(pos + _selectionLength);
+                            ScrollByteIntoView(pos);
+                            return pos;
+                        }
+                    }
+                    else if (annotationDescriptions[(int) (pos / 4)].Contains(
+                        Encoding.Default.GetString(options.FindBuffer), StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        int posOffset = 0;
+                        int byteCount = 4;
+                        if (SectionEditor != null)
+                        {
+                            if (annotationUnderlines[(int) (pos / 4)].StartsWith("0000") ||
+                                annotationUnderlines[(int) (pos / 4)].StartsWith("1111") ||
+                                annotationUnderlines[(int) (pos / 4)].StartsWith("011"))
+                            {
+                                SectionEditor.rdo4byte.Checked = true;
+                            }
+                            else
+                            {
+                                bool firstFound = false;
+                                int numBytes = 0;
+                                numBytes += annotationUnderlines[(int) (pos / 4)].StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                }
+
+                                numBytes += annotationUnderlines[(int) (pos / 4)].Substring(1).StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                    posOffset = 1;
+                                }
+
+                                numBytes += annotationUnderlines[(int) (pos / 4)].Substring(2).StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                    posOffset = 2;
+                                }
+
+                                numBytes += annotationUnderlines[(int) (pos / 4)].Substring(3).StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                    posOffset = 3;
+                                }
+
+                                byteCount -= posOffset;
+                                if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
+                                                                                          .Contains("11"))
+                                {
+                                    SectionEditor.rdo2byte.Checked = true;
+                                    byteCount = 2;
+                                }
+                                else if (numBytes == 1)
+                                {
+                                    SectionEditor.rdo1byte.Checked = true;
+                                    byteCount = 1;
+                                }
+                                else
+                                {
+                                    SectionEditor.rdo4byte.Checked = true;
+                                    posOffset = 0;
+                                    byteCount = 4;
+                                }
+                            }
+                        }
+
+                        Select(pos + posOffset, byteCount);
+                        ScrollByteIntoView(pos + _selectionLength);
+                        ScrollByteIntoView(pos);
+                        return pos;
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+        public long FindPrevAnnotations(FindOptions options)
+        {
+            long startIndex = SelectionStart;
+            _abortFind = false;
+
+            for (long pos = startIndex.RoundDown(4) - 4; pos > 0; pos -= 4)
+            {
+                if (_abortFind)
+                {
+                    return -2;
+                }
+
+                if (pos % 1000 == 0) // for performance reasons: DoEvents only 1 times per 1000 loops
+                {
+                    Application.DoEvents();
+                }
+
+                if (annotationDescriptions.Count > pos / 4)
+                {
+                    if (options.MatchCase)
+                    {
+                        if (annotationDescriptions[(int) (pos / 4)]
+                            .Contains(Encoding.Default.GetString(options.FindBuffer)))
+                        {
+                            int posOffset = 0;
+                            int byteCount = 4;
+                            if (SectionEditor != null)
+                            {
+                                if (annotationUnderlines[(int) (pos / 4)].StartsWith("0000") ||
+                                    annotationUnderlines[(int) (pos / 4)].StartsWith("1111") ||
+                                    annotationUnderlines[(int) (pos / 4)].StartsWith("011"))
+                                {
+                                    SectionEditor.rdo4byte.Checked = true;
+                                }
+                                else
+                                {
+                                    bool firstFound = false;
+                                    int numBytes = 0;
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].StartsWith("1") ? 1 : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                    }
+
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].Substring(1).StartsWith("1")
+                                        ? 1
+                                        : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                        posOffset = 1;
+                                    }
+
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].Substring(2).StartsWith("1")
+                                        ? 1
+                                        : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                        posOffset = 2;
+                                    }
+
+                                    numBytes += annotationUnderlines[(int) (pos / 4)].Substring(3).StartsWith("1")
+                                        ? 1
+                                        : 0;
+                                    if (numBytes > 0 && !firstFound)
+                                    {
+                                        firstFound = true;
+                                        posOffset = 3;
+                                    }
+
+                                    byteCount -= posOffset;
+                                    if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
+                                                                                              .Contains("11"))
+                                    {
+                                        SectionEditor.rdo2byte.Checked = true;
+                                        byteCount = 2;
+                                    }
+                                    else if (numBytes == 1)
+                                    {
+                                        SectionEditor.rdo1byte.Checked = true;
+                                        byteCount = 1;
+                                    }
+                                    else
+                                    {
+                                        SectionEditor.rdo4byte.Checked = true;
+                                        posOffset = 0;
+                                        byteCount = 4;
+                                    }
+                                }
+                            }
+
+                            Select(pos + posOffset, byteCount);
+                            ScrollByteIntoView(pos + _selectionLength);
+                            ScrollByteIntoView(pos);
+                            return pos;
+                        }
+                    }
+                    else if (annotationDescriptions[(int) (pos / 4)].Contains(
+                        Encoding.Default.GetString(options.FindBuffer), StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        int posOffset = 0;
+                        int byteCount = 4;
+                        if (SectionEditor != null)
+                        {
+                            if (annotationUnderlines[(int) (pos / 4)].StartsWith("0000") ||
+                                annotationUnderlines[(int) (pos / 4)].StartsWith("1111") ||
+                                annotationUnderlines[(int) (pos / 4)].StartsWith("011"))
+                            {
+                                SectionEditor.rdo4byte.Checked = true;
+                            }
+                            else
+                            {
+                                bool firstFound = false;
+                                int numBytes = 0;
+                                numBytes += annotationUnderlines[(int) (pos / 4)].StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                }
+
+                                numBytes += annotationUnderlines[(int) (pos / 4)].Substring(1).StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                    posOffset = 1;
+                                }
+
+                                numBytes += annotationUnderlines[(int) (pos / 4)].Substring(2).StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                    posOffset = 2;
+                                }
+
+                                numBytes += annotationUnderlines[(int) (pos / 4)].Substring(3).StartsWith("1") ? 1 : 0;
+                                if (numBytes > 0 && !firstFound)
+                                {
+                                    firstFound = true;
+                                    posOffset = 3;
+                                }
+
+                                byteCount -= posOffset;
+                                if (numBytes == 2 && annotationUnderlines[(int) (pos / 4)].Substring(0, 4)
+                                                                                          .Contains("11"))
+                                {
+                                    SectionEditor.rdo2byte.Checked = true;
+                                    byteCount = 2;
+                                }
+                                else if (numBytes == 1)
+                                {
+                                    SectionEditor.rdo1byte.Checked = true;
+                                    byteCount = 1;
+                                }
+                                else
+                                {
+                                    SectionEditor.rdo4byte.Checked = true;
+                                    posOffset = 0;
+                                    byteCount = 4;
+                                }
+                            }
+                        }
+
+                        Select(pos + posOffset, byteCount);
+                        ScrollByteIntoView(pos + _selectionLength);
+                        ScrollByteIntoView(pos);
+                        return pos;
+                    }
                 }
             }
 
@@ -2653,10 +3094,24 @@ namespace Be.Windows.Forms
                 buffer = b.ToArray();
             }
 
-            ((DynamicFileByteProvider) _byteProvider)._supportsInsDel = true;
-            _byteProvider.DeleteBytes(_bytePos, buffer.Length);
-            _byteProvider.InsertBytes(_bytePos, buffer);
-            ((DynamicFileByteProvider) _byteProvider)._supportsInsDel = false;
+            if (_byteProvider is DynamicFileByteProvider)
+            {
+                ((DynamicFileByteProvider) _byteProvider)._supportsInsDel = true;
+                _byteProvider.DeleteBytes(_bytePos, buffer.Length);
+                _byteProvider.InsertBytes(_bytePos, buffer);
+                ((DynamicFileByteProvider) _byteProvider)._supportsInsDel = false;
+            }
+            else if (_byteProvider is DynamicByteProvider)
+            {
+                ((DynamicByteProvider) _byteProvider)._supportsInsDel = true;
+                _byteProvider.DeleteBytes(_bytePos, buffer.Length);
+                _byteProvider.InsertBytes(_bytePos, buffer);
+                ((DynamicByteProvider) _byteProvider)._supportsInsDel = false;
+            }
+            else
+            {
+                return;
+            }
 
             SetPosition(_bytePos + buffer.Length, 0);
 
@@ -2883,6 +3338,11 @@ namespace Be.Windows.Forms
                 return;
             }
 
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("OnPaint " + DateTime.Now.ToString(), "HexBox");
+            }
+
             // draw only in the content rectangle, so exclude the border and the scrollbar.
             Region r = new Region(ClientRectangle);
             r.Exclude(_recContent);
@@ -2980,7 +3440,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private RelCommand GetBrushes(int index, ref Brush foreColor, ref Brush backColor)
+        private RelCommand GetBrushes(int index, ref Brush foreColor, ref Brush backColor, bool allowSelection)
         {
             //bool specialFunc = false; //_prolog || _epilog || _unresolved
 
@@ -3015,7 +3475,7 @@ namespace Be.Windows.Forms
             bool cmd = command != null && !command.IsHalf;
 
             backColor =
-                _sectionEditor.SelectedRelocationIndex == index ? SelectedBrush :
+                _sectionEditor.SelectedRelocationIndex == index && allowSelection ? SelectedBrush :
                 cmd ? CommandBrush :
                 null;
 
@@ -3048,27 +3508,67 @@ namespace Be.Windows.Forms
         {
             if (isSelectedByte && isKeyInterpreterActive)
             {
-                PaintHexStringSelected(g, b, SelectionForeBrush, SelectionBackBrush, gridPoint);
+                PaintHexStringSelected(g, b, offset, SelectionForeBrush, SelectionBackBrush, gridPoint);
             }
             else if (backBrush != null)
             {
-                PaintHexStringSelected(g, b, foreBrush, backBrush, gridPoint);
+                PaintHexStringSelected(g, b, offset, foreBrush, backBrush, gridPoint);
             }
             else
             {
-                PaintHexString(g, b, foreBrush, gridPoint);
+                PaintHexString(g, b, offset, foreBrush, gridPoint);
             }
         }
 
-        private void PaintHexString(Graphics g, byte b, Brush brush, Point gridPoint)
+        private void PaintHexString(Graphics g, byte b, long offset, Brush brush, Point gridPoint)
         {
             PointF bytePointF = GetBytePointF(gridPoint);
 
             string sB = ConvertByteToHex(b);
+            Font tempFont = Font;
 
-            g.DrawString(sB.Substring(0, 1), Font, brush, bytePointF, _stringFormat);
+            if (annotationDescriptions != null && annotationDescriptions.Count > (int) (offset / 4))
+            {
+                if (!annotationDescriptions[(int) (offset / 4)].StartsWith("Default: 0x") &&
+                    annotationUnderlines[(int) (offset / 4)].Substring((int) (offset % 4)).StartsWith("1") &&
+                    annotationDescriptions[(int) (offset / 4)].Length > 0)
+                {
+                    tempFont = new Font(Font, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
+                }
+            }
+
+            int winVersion = -1;
+            try
+            {
+                if (Environment.OSVersion.ToString().StartsWith("Microsoft Windows NT "))
+                {
+                    int.TryParse(
+                        Environment.OSVersion.ToString()
+                                   .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
+                                       Environment.OSVersion.ToString().IndexOf(".") -
+                                       (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
+                }
+            }
+            catch
+            {
+                winVersion = -1;
+            }
+
+            g.DrawString(sB.Substring(0, 1), tempFont, brush,
+                new PointF(bytePointF.X,
+                    bytePointF.Y +
+                    (Environment.OSVersion.ToString() == "Microsoft Windows NT 6.2.9200.0" || winVersion >= 10
+                        ? sB.Substring(0, 1) == "A" ||
+                          tempFont.Italic && !(sB.Substring(0, 1) == "1" || sB.Substring(0, 1) == "4") ? 2 : 0
+                        : 0)), _stringFormat);
             bytePointF.X += _charSize.Width;
-            g.DrawString(sB.Substring(1, 1), Font, brush, bytePointF, _stringFormat);
+            g.DrawString(sB.Substring(1, 1), tempFont, brush,
+                new PointF(bytePointF.X,
+                    bytePointF.Y +
+                    (Environment.OSVersion.ToString() == "Microsoft Windows NT 6.2.9200.0" || winVersion >= 10
+                        ? sB.Substring(1, 1) == "A" ||
+                          tempFont.Italic && !(sB.Substring(1, 1) == "1" || sB.Substring(1, 1) == "4") ? 2 : 0
+                        : 0)), _stringFormat);
         }
 
         private void PaintColumnInfo(Graphics g, byte b, Brush brush, int col)
@@ -3082,7 +3582,8 @@ namespace Be.Windows.Forms
             g.DrawString(sB.Substring(1, 1), Font, brush, headerPointF, _stringFormat);
         }
 
-        private void PaintHexStringSelected(Graphics g, byte b, Brush brush, Brush brushBack, Point gridPoint)
+        private void PaintHexStringSelected(Graphics g, byte b, long offset, Brush brush, Brush brushBack,
+                                            Point gridPoint)
         {
             string sB = b.ToString(_hexStringFormat, System.Threading.Thread.CurrentThread.CurrentCulture);
             if (sB.Length == 1)
@@ -3096,17 +3597,69 @@ namespace Be.Windows.Forms
             bool isFirstLineChar = gridPoint.X == 0;
             float bcWidth = isLastLineChar ? _charSize.Width * 2.3f : _charSize.Width * 3;
             float t = isFirstLineChar ? 0 : 3;
+            Font tempFont = Font;
+
+            if (annotationDescriptions != null && annotationDescriptions.Count > (int) (offset / 4))
+            {
+                if (!annotationDescriptions[(int) (offset / 4)].StartsWith("Default: 0x") &&
+                    annotationUnderlines[(int) (offset / 4)].Substring((int) (offset % 4)).StartsWith("1") &&
+                    annotationDescriptions[(int) (offset / 4)].Length > 0)
+                {
+                    tempFont = new Font(Font, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
+                }
+            }
+
+            int winVersion = -1;
+            try
+            {
+                if (Environment.OSVersion.ToString().StartsWith("Microsoft Windows NT "))
+                {
+                    int.TryParse(
+                        Environment.OSVersion.ToString()
+                                   .Substring(Environment.OSVersion.ToString().LastIndexOf(" ") + 1,
+                                       Environment.OSVersion.ToString().IndexOf(".") -
+                                       (Environment.OSVersion.ToString().LastIndexOf(" ") + 1)), out winVersion);
+                }
+            }
+            catch
+            {
+                winVersion = -1;
+            }
 
             g.FillRectangle(brushBack, bytePointF.X - t, bytePointF.Y, bcWidth, _charSize.Height);
-            g.DrawString(sB.Substring(0, 1), Font, brush, bytePointF, _stringFormat);
+            g.DrawString(sB.Substring(0, 1), tempFont, brush,
+                new PointF(bytePointF.X,
+                    bytePointF.Y +
+                    (Environment.OSVersion.ToString() == "Microsoft Windows NT 6.2.9200.0" || winVersion >= 10
+                        ? sB.Substring(0, 1) == "A" ||
+                          tempFont.Italic && !(sB.Substring(0, 1) == "1" || sB.Substring(0, 1) == "4") ? 2 : 0
+                        : 0)), _stringFormat);
             bytePointF.X += _charSize.Width;
-            g.DrawString(sB.Substring(1, 1), Font, brush, bytePointF, _stringFormat);
+            g.DrawString(sB.Substring(1, 1), tempFont, brush,
+                new PointF(bytePointF.X,
+                    bytePointF.Y +
+                    (Environment.OSVersion.ToString() == "Microsoft Windows NT 6.2.9200.0" || winVersion >= 10
+                        ? sB.Substring(1, 1) == "A" ||
+                          tempFont.Italic && !(sB.Substring(1, 1) == "1" || sB.Substring(1, 1) == "4") ? 2 : 0
+                        : 0)), _stringFormat);
         }
+
+        public int byteCount = 4;
 
         private void PaintHexAndStringView(Graphics g, long startByte, long endByte)
         {
             Brush foreBrush = GetDefaultForeColor();
             Brush backBrush = null;
+
+            if (_selectionBackBrush == null)
+            {
+                _selectionBackBrush = new SolidBrush(_selectionBackColor);
+            }
+
+            if (_selectionForeBrush == null)
+            {
+                _selectionForeBrush = new SolidBrush(_selectionForeColor);
+            }
 
             int counter = 0;
             long intern_endByte = Math.Min(_byteProvider.Length - 1, endByte + _iHexMaxHBytes);
@@ -3129,7 +3682,8 @@ namespace Be.Windows.Forms
                         ((uint) _byteProvider.ReadByte(x + 3) << 0);
 
                     RelCommand cmd = null;
-                    if (_sectionEditor != null && (cmd = GetBrushes(index, ref foreBrush, ref backBrush)) != null)
+                    if (_sectionEditor != null &&
+                        (cmd = GetBrushes(index, ref foreBrush, ref backBrush, false)) != null)
                     {
                         word = cmd.Apply(word, 0);
                     }
@@ -3139,10 +3693,24 @@ namespace Be.Windows.Forms
                     {
                         Point gridPoint = GetGridBytePoint(counter);
                         PointF byteStringPointF = GetByteStringPointF(gridPoint);
+                        /*if (byteCount >= 4)
+                            GetBrushes(index, ref foreBrush, ref backBrush, true);*/
 
                         if (half && u > 1)
                         {
                             backBrush = CommandBrush;
+                        }
+
+                        if (byteCount != 0)
+                        {
+                            if (_bytePos / byteCount == offset / byteCount)
+                            {
+                                GetBrushes(index, ref foreBrush, ref backBrush, true);
+                            }
+                            else if (!(half && u > 1))
+                            {
+                                GetBrushes(index, ref foreBrush, ref backBrush, false);
+                            }
                         }
 
                         byte b = _byteProvider.ReadByte(x + u);
@@ -3192,7 +3760,8 @@ namespace Be.Windows.Forms
 
                     if (_stringViewVisible)
                     {
-                        if (isSelectedByte && isStringKeyInterpreterActive)
+                        if (isSelectedByte && isStringKeyInterpreterActive && _selectionBackBrush != null &&
+                            _selectionForeBrush != null)
                         {
                             g.FillRectangle(_selectionBackBrush, byteStringPointF.X, byteStringPointF.Y,
                                 _charSize.Width, _charSize.Height);
@@ -3821,13 +4390,13 @@ namespace Be.Windows.Forms
 
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged -= byteProvider_LengthChanged;
+                    _byteProvider.LengthChanged -= new EventHandler(_byteProvider_LengthChanged);
                 }
 
                 _byteProvider = value;
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged += byteProvider_LengthChanged;
+                    _byteProvider.LengthChanged += _byteProvider_LengthChanged;
                 }
 
                 OnByteProviderChanged(EventArgs.Empty);
@@ -3893,7 +4462,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private bool _groupSeparatorVisible;
+        private bool _groupSeparatorVisible = false;
 
         /// <summary>
         /// Gets or sets the visibility of the column info
@@ -3919,7 +4488,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private bool _columnInfoVisible;
+        private bool _columnInfoVisible = false;
 
         /// <summary>
         /// Gets or sets the visibility of a line info.
@@ -3945,7 +4514,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private bool _lineInfoVisible;
+        private bool _lineInfoVisible = false;
 
         /// <summary>
         /// Gets or sets the offset of a line info.
@@ -3969,7 +4538,7 @@ namespace Be.Windows.Forms
             }
         }
 
-        private long _lineInfoOffset;
+        private long _lineInfoOffset = 0;
 
         /// <summary>
         /// Gets or sets the hex box´s border style.
@@ -4174,7 +4743,7 @@ namespace Be.Windows.Forms
         public Brush SelectionBackBrush => _selectionBackBrush ??
                                            (_selectionBackBrush = new SolidBrush(_selectionBackColor));
 
-        private Brush _selectionBackBrush;
+        private Brush _selectionBackBrush = null;
 
         /// <summary>
         /// Gets or sets the foreground color for the selected bytes.
@@ -4198,7 +4767,7 @@ namespace Be.Windows.Forms
         public Brush SelectionForeBrush => _selectionForeBrush ??
                                            (_selectionForeBrush = new SolidBrush(_selectionForeColor));
 
-        private Brush _selectionForeBrush;
+        private Brush _selectionForeBrush = null;
 
         /// <summary>
         /// Gets or sets the color for the relocations with commands.
@@ -4222,7 +4791,7 @@ namespace Be.Windows.Forms
         public Brush RelocationBrush => _relocationBrush ??
                                         (_relocationBrush = new SolidBrush(_relocationColor));
 
-        private Brush _relocationBrush;
+        private Brush _relocationBrush = null;
 
         /// <summary>
         /// Gets or sets the color for the relocations with commands.
@@ -4245,7 +4814,7 @@ namespace Be.Windows.Forms
         public Brush CommandBrush => _commandBrush ??
                                      (_commandBrush = new SolidBrush(_commandColor));
 
-        private Brush _commandBrush;
+        private Brush _commandBrush = null;
 
         /// <summary>
         /// Gets or sets the color for code branch relocations.
@@ -4268,7 +4837,7 @@ namespace Be.Windows.Forms
         public Brush BlrBrush => _blrBrush ??
                                  (_blrBrush = new SolidBrush(_blrColor));
 
-        private Brush _blrBrush;
+        private Brush _blrBrush = null;
 
         /// <summary>
         /// Gets or sets the color for code branch relocations.
@@ -4291,7 +4860,7 @@ namespace Be.Windows.Forms
         public Brush LinkedBranchBrush => _linkedBranchBrush ??
                                           (_linkedBranchBrush = new SolidBrush(_linkedBranchColor));
 
-        private Brush _linkedBranchBrush;
+        private Brush _linkedBranchBrush = null;
 
         /// <summary>
         /// Gets or sets the color for relocations that are branched to.
@@ -4314,7 +4883,7 @@ namespace Be.Windows.Forms
         public Brush BranchOffsetBrush => _branchOffsetBrush ??
                                           (_branchOffsetBrush = new SolidBrush(_branchOffsetColor));
 
-        private Brush _branchOffsetBrush;
+        private Brush _branchOffsetBrush = null;
 
         /// <summary>
         /// Gets or sets the color for the selected bytes.
@@ -4337,7 +4906,7 @@ namespace Be.Windows.Forms
         public Brush SelectedBrush => _selectedBrush ??
                                       (_selectedBrush = new SolidBrush(_selectedColor));
 
-        private Brush _selectedBrush;
+        private Brush _selectedBrush = null;
 
         /// <summary>
         /// Gets or sets the visibility of a shadow selection.
@@ -4650,7 +5219,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnInsertActiveChanged(EventArgs e)
         {
-            InsertActiveChanged?.Invoke(this, e);
+            if (InsertActiveChanged != null)
+            {
+                InsertActiveChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4659,7 +5231,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnReadOnlyChanged(EventArgs e)
         {
-            ReadOnlyChanged?.Invoke(this, e);
+            if (ReadOnlyChanged != null)
+            {
+                ReadOnlyChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4668,7 +5243,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnByteProviderChanged(EventArgs e)
         {
-            ByteProviderChanged?.Invoke(this, e);
+            if (ByteProviderChanged != null)
+            {
+                ByteProviderChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4677,7 +5255,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnSelectionStartChanged(EventArgs e)
         {
-            SelectionStartChanged?.Invoke(this, e);
+            if (SelectionStartChanged != null)
+            {
+                SelectionStartChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4686,7 +5267,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnSelectionLengthChanged(EventArgs e)
         {
-            SelectionLengthChanged?.Invoke(this, e);
+            if (SelectionLengthChanged != null)
+            {
+                SelectionLengthChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4695,7 +5279,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnLineInfoVisibleChanged(EventArgs e)
         {
-            LineInfoVisibleChanged?.Invoke(this, e);
+            if (LineInfoVisibleChanged != null)
+            {
+                LineInfoVisibleChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4704,7 +5291,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnColumnInfoVisibleChanged(EventArgs e)
         {
-            ColumnInfoVisibleChanged?.Invoke(this, e);
+            if (ColumnInfoVisibleChanged != null)
+            {
+                ColumnInfoVisibleChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4713,7 +5303,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnGroupSeparatorVisibleChanged(EventArgs e)
         {
-            GroupSeparatorVisibleChanged?.Invoke(this, e);
+            if (GroupSeparatorVisibleChanged != null)
+            {
+                GroupSeparatorVisibleChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4722,7 +5315,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnStringViewVisibleChanged(EventArgs e)
         {
-            StringViewVisibleChanged?.Invoke(this, e);
+            if (StringViewVisibleChanged != null)
+            {
+                StringViewVisibleChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4731,7 +5327,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnBorderStyleChanged(EventArgs e)
         {
-            BorderStyleChanged?.Invoke(this, e);
+            if (BorderStyleChanged != null)
+            {
+                BorderStyleChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4740,7 +5339,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnUseFixedBytesPerLineChanged(EventArgs e)
         {
-            UseFixedBytesPerLineChanged?.Invoke(this, e);
+            if (UseFixedBytesPerLineChanged != null)
+            {
+                UseFixedBytesPerLineChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4749,7 +5351,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnGroupSizeChanged(EventArgs e)
         {
-            GroupSizeChanged?.Invoke(this, e);
+            if (GroupSizeChanged != null)
+            {
+                GroupSizeChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4758,7 +5363,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnBytesPerLineChanged(EventArgs e)
         {
-            BytesPerLineChanged?.Invoke(this, e);
+            if (BytesPerLineChanged != null)
+            {
+                BytesPerLineChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4767,7 +5375,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnVScrollBarVisibleChanged(EventArgs e)
         {
-            VScrollBarVisibleChanged?.Invoke(this, e);
+            if (VScrollBarVisibleChanged != null)
+            {
+                VScrollBarVisibleChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4776,7 +5387,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnHexCasingChanged(EventArgs e)
         {
-            HexCasingChanged?.Invoke(this, e);
+            if (HexCasingChanged != null)
+            {
+                HexCasingChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4785,7 +5399,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnHorizontalByteCountChanged(EventArgs e)
         {
-            HorizontalByteCountChanged?.Invoke(this, e);
+            if (HorizontalByteCountChanged != null)
+            {
+                HorizontalByteCountChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4794,7 +5411,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnVerticalByteCountChanged(EventArgs e)
         {
-            VerticalByteCountChanged?.Invoke(this, e);
+            if (VerticalByteCountChanged != null)
+            {
+                VerticalByteCountChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4803,7 +5423,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCurrentLineChanged(EventArgs e)
         {
-            CurrentLineChanged?.Invoke(this, e);
+            if (CurrentLineChanged != null)
+            {
+                CurrentLineChanged(this, e);
+            }
         }
 
         /// <summary>
@@ -4812,7 +5435,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCurrentPositionInLineChanged(EventArgs e)
         {
-            CurrentPositionInLineChanged?.Invoke(this, e);
+            if (CurrentPositionInLineChanged != null)
+            {
+                CurrentPositionInLineChanged(this, e);
+            }
         }
 
 
@@ -4822,7 +5448,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCopied(EventArgs e)
         {
-            Copied?.Invoke(this, e);
+            if (Copied != null)
+            {
+                Copied(this, e);
+            }
         }
 
         /// <summary>
@@ -4831,7 +5460,10 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected virtual void OnCopiedHex(EventArgs e)
         {
-            CopiedHex?.Invoke(this, e);
+            if (CopiedHex != null)
+            {
+                CopiedHex(this, e);
+            }
         }
 
         /// <summary>
@@ -4840,6 +5472,11 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("OnMouseDown()", "HexBox");
+            }
+
             if (!Focused)
             {
                 Focus();
@@ -4881,6 +5518,11 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnGotFocus(EventArgs e)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("OnGotFocus()", "HexBox");
+            }
+
             base.OnGotFocus(e);
 
             CreateCaret();
@@ -4892,12 +5534,17 @@ namespace Be.Windows.Forms
         /// <param name="e">An EventArgs that contains the event data.</param>
         protected override void OnLostFocus(EventArgs e)
         {
+            if (_debug)
+            {
+                System.Diagnostics.Debug.WriteLine("OnLostFocus()", "HexBox");
+            }
+
             base.OnLostFocus(e);
 
             DestroyCaret();
         }
 
-        private void byteProvider_LengthChanged(object sender, EventArgs e)
+        private void _byteProvider_LengthChanged(object sender, EventArgs e)
         {
             UpdateScrollSize();
         }

@@ -15,7 +15,12 @@ namespace Be.Windows.Forms
         /// <summary>
         /// Used for Hex Find operations
         /// </summary>
-        Hex
+        Hex,
+
+        /// <summary>
+        /// Used for Annotation Searching operations
+        /// </summary>
+        Annotations
     }
 
     /// <summary>
@@ -94,7 +99,7 @@ namespace Be.Windows.Forms
         /// </summary>
         private void UpdateFindBuffer()
         {
-            string text = Text ?? string.Empty;
+            string text = Text != null ? Text : string.Empty;
             FindBuffer = Encoding.ASCII.GetBytes(text);
             FindBufferLowerCase = Encoding.ASCII.GetBytes(text.ToLower());
             FindBufferUpperCase = Encoding.ASCII.GetBytes(text.ToUpper());

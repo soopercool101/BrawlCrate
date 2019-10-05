@@ -23,6 +23,7 @@ namespace System.Windows.Forms
         private Timer timer;
         private FlowLayoutPanel flowLayoutPanel1;
         private IContainer components;
+        private RadioButton rdoAnnotations;
         private readonly SectionEditor _mainWindow;
 
         public FormFind(SectionEditor mainWindow)
@@ -31,6 +32,7 @@ namespace System.Windows.Forms
             _mainWindow = mainWindow;
             HexBox = _mainWindow.hexBox1;
             FindOptions = _mainWindow._findOptions;
+            rdoAnnotations.CheckedChanged += rb_CheckedChanged;
             rbString.CheckedChanged += rb_CheckedChanged;
             rbHex.CheckedChanged += rb_CheckedChanged;
         }
@@ -64,22 +66,24 @@ namespace System.Windows.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            components = new Container();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormFind));
-            txtFind = new TextBox();
-            rbString = new RadioButton();
-            rbHex = new RadioButton();
-            label1 = new Label();
-            btnOK = new Button();
-            btnCancel = new Button();
-            groupBox1 = new GroupBox();
-            lblPercent = new Label();
-            lblFinding = new Label();
-            chkMatchCase = new CheckBox();
-            timerPercent = new Timer(components);
-            timer = new Timer(components);
-            hexFind = new HexBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(FormFind));
+            txtFind = new System.Windows.Forms.TextBox();
+            rbString = new System.Windows.Forms.RadioButton();
+            rbHex = new System.Windows.Forms.RadioButton();
+            label1 = new System.Windows.Forms.Label();
+            btnOK = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            lblPercent = new System.Windows.Forms.Label();
+            lblFinding = new System.Windows.Forms.Label();
+            chkMatchCase = new System.Windows.Forms.CheckBox();
+            timerPercent = new System.Windows.Forms.Timer(components);
+            timer = new System.Windows.Forms.Timer(components);
+            hexFind = new Be.Windows.Forms.HexBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            rdoAnnotations = new System.Windows.Forms.RadioButton();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -91,8 +95,8 @@ namespace System.Windows.Forms
             // 
             // rbString
             // 
-            resources.ApplyResources(rbString, "rbString");
             rbString.Checked = true;
+            resources.ApplyResources(rbString, "rbString");
             rbString.Name = "rbString";
             rbString.TabStop = true;
             // 
@@ -104,7 +108,7 @@ namespace System.Windows.Forms
             // label1
             // 
             resources.ApplyResources(label1, "label1");
-            label1.ForeColor = Drawing.Color.Blue;
+            label1.ForeColor = System.Drawing.Color.Blue;
             label1.Name = "label1";
             // 
             // btnOK
@@ -116,7 +120,7 @@ namespace System.Windows.Forms
             // btnCancel
             // 
             resources.ApplyResources(btnCancel, "btnCancel");
-            btnCancel.DialogResult = DialogResult.Cancel;
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             btnCancel.Name = "btnCancel";
             btnCancel.Click += btnCancel_Click;
             // 
@@ -134,7 +138,7 @@ namespace System.Windows.Forms
             // lblFinding
             // 
             resources.ApplyResources(lblFinding, "lblFinding");
-            lblFinding.ForeColor = Drawing.Color.Blue;
+            lblFinding.ForeColor = System.Drawing.Color.Blue;
             lblFinding.Name = "lblFinding";
             // 
             // chkMatchCase
@@ -155,33 +159,36 @@ namespace System.Windows.Forms
             // hexFind
             // 
             resources.ApplyResources(hexFind, "hexFind");
-            // 
-            // 
-            // 
-            //this.hexFind.BuiltInContextMenu.CopyMenuItemImage = global::Be.HexEditor.images.CopyHS;
-            //this.hexFind.BuiltInContextMenu.CopyMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CopyMenuItemText");
-            //this.hexFind.BuiltInContextMenu.CutMenuItemImage = global::Be.HexEditor.images.CutHS;
-            //this.hexFind.BuiltInContextMenu.CutMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.CutMenuItemText");
-            //this.hexFind.BuiltInContextMenu.PasteMenuItemImage = global::Be.HexEditor.images.PasteHS;
-            //this.hexFind.BuiltInContextMenu.PasteMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.PasteMenuItemText");
-            //this.hexFind.BuiltInContextMenu.SelectAllMenuItemText = resources.GetString("hexFind.BuiltInContextMenu.SelectAllMenuItemText");
-            hexFind.InfoForeColor = Drawing.Color.Empty;
+            hexFind.BlrColor = System.Drawing.Color.FromArgb(255, 255, 100);
+            hexFind.BranchOffsetColor = System.Drawing.Color.Plum;
+            hexFind.ColumnDividerColor = System.Drawing.Color.Empty;
+            hexFind.CommandColor = System.Drawing.Color.FromArgb(200, 255, 200);
+            hexFind.InfoForeColor = System.Drawing.Color.Empty;
+            hexFind.LinkedBranchColor = System.Drawing.Color.Orange;
             hexFind.Name = "hexFind";
-            hexFind.ShadowSelectionColor = Drawing.Color.FromArgb(100, 60, 188, 255);
+            hexFind.SectionEditor = null;
+            hexFind.SelectedColor = System.Drawing.Color.FromArgb(200, 255, 255);
+            hexFind.ShadowSelectionColor = System.Drawing.Color.FromArgb(100, 60, 188, 255);
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Controls.Add(label1);
             flowLayoutPanel1.Controls.Add(groupBox1);
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // rdoAnnotations
+            // 
+            resources.ApplyResources(rdoAnnotations, "rdoAnnotations");
+            rdoAnnotations.Name = "rdoAnnotations";
             // 
             // FormFind
             // 
             AcceptButton = btnOK;
             resources.ApplyResources(this, "$this");
-            BackColor = Drawing.SystemColors.Control;
+            BackColor = System.Drawing.SystemColors.Control;
             CancelButton = btnCancel;
+            Controls.Add(rdoAnnotations);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(chkMatchCase);
             Controls.Add(lblPercent);
@@ -192,7 +199,7 @@ namespace System.Windows.Forms
             Controls.Add(rbString);
             Controls.Add(txtFind);
             Controls.Add(hexFind);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormFind";
@@ -228,20 +235,34 @@ namespace System.Windows.Forms
             chkMatchCase.Checked = _findOptions.MatchCase;
 
             rbHex.Checked = _findOptions.Type == FindType.Hex;
+            rdoAnnotations.Checked = _findOptions.Type == FindType.Annotations;
 
             if (hexFind.ByteProvider != null)
             {
-                hexFind.ByteProvider.Changed -= ByteProvider_Changed;
+                hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
             }
 
-            byte[] hex = _findOptions.Hex ?? new byte[0];
+            byte[] hex = _findOptions.Hex != null ? _findOptions.Hex : new byte[0];
             hexFind.ByteProvider = new DynamicByteProvider(hex);
             hexFind.ByteProvider.Changed += ByteProvider_Changed;
+
+            txtFind.Enabled = rbString.Checked || rdoAnnotations.Checked;
+            hexFind.Enabled = !txtFind.Enabled;
+            if (txtFind.Enabled)
+            {
+                txtFind.Focus();
+            }
+            else
+            {
+                hexFind.Focus();
+            }
+
+            ValidateFind();
         }
 
         private void rb_CheckedChanged(object sender, EventArgs e)
         {
-            txtFind.Enabled = rbString.Checked;
+            txtFind.Enabled = rbString.Checked || rdoAnnotations.Checked;
             hexFind.Enabled = !txtFind.Enabled;
 
             if (txtFind.Enabled)
@@ -266,7 +287,7 @@ namespace System.Windows.Forms
 
         private void FormFind_Activated(object sender, EventArgs e)
         {
-            if (rbString.Checked)
+            if (rbString.Checked || rdoAnnotations.Checked)
             {
                 txtFind.Focus();
             }
@@ -283,7 +304,7 @@ namespace System.Windows.Forms
             DynamicByteProvider provider = hexFind.ByteProvider as DynamicByteProvider;
             _findOptions.Hex = provider.Bytes.ToArray();
             _findOptions.Text = txtFind.Text;
-            _findOptions.Type = rbHex.Checked ? FindType.Hex : FindType.Text;
+            _findOptions.Type = rbHex.Checked ? FindType.Hex : rbString.Checked ? FindType.Text : FindType.Annotations;
             _findOptions.MatchCase = chkMatchCase.Checked;
             _findOptions.IsValid = true;
 
@@ -306,7 +327,7 @@ namespace System.Windows.Forms
             timerPercent.Stop();
             _finding = false;
             txtFind.Enabled = chkMatchCase.Enabled = rbHex.Enabled = rbString.Enabled
-                = hexFind.Enabled = btnOK.Enabled = true;
+                = rdoAnnotations.Enabled = hexFind.Enabled = btnOK.Enabled = true;
         }
 
         private void UpdateUIToFindingState()
@@ -315,7 +336,7 @@ namespace System.Windows.Forms
             timer.Start();
             timerPercent.Start();
             txtFind.Enabled = chkMatchCase.Enabled = rbHex.Enabled = rbString.Enabled
-                = hexFind.Enabled = btnOK.Enabled = false;
+                = rdoAnnotations.Enabled = hexFind.Enabled = btnOK.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -337,18 +358,8 @@ namespace System.Windows.Forms
 
         private void ValidateFind()
         {
-            bool isValid = false;
-            if (rbString.Checked && txtFind.Text.Length > 0)
-            {
-                isValid = true;
-            }
-
-            if (rbHex.Checked && hexFind.ByteProvider.Length > 0)
-            {
-                isValid = true;
-            }
-
-            btnOK.Enabled = isValid;
+            btnOK.Enabled = (rbString.Checked || rdoAnnotations.Checked) && txtFind.Text.Length > 0 ||
+                            rbHex.Checked && hexFind.ByteProvider.Length > 0;
         }
 
         private void timer_Tick(object sender, EventArgs e)
