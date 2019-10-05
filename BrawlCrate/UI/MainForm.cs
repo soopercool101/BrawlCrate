@@ -676,9 +676,9 @@ namespace BrawlCrate
                     newControl = modelPanel1;
                     RenderSelected(node);
                 }
-                else if (node is IImageSource)
+                else if (node is IImageSource i && i.ImageCount > 0)
                 {
-                    previewPanel2.RenderingTarget = (IImageSource) node;
+                    previewPanel2.RenderingTarget = i;
                     newControl = previewPanel2;
                 }
                 else if (node is StageTableNode stageTableNode)
