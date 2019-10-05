@@ -52,7 +52,7 @@
             this.lstFiles.Name = "lstFiles";
             this.lstFiles.Size = new System.Drawing.Size(136, 315);
             this.lstFiles.TabIndex = 0;
-            this.lstFiles.SelectedIndexChanged += this.lstFiles_SelectedIndexChanged;
+            this.lstFiles.SelectedIndexChanged += new System.EventHandler(this.lstFiles_SelectedIndexChanged);
             // 
             // splitContainer1
             // 
@@ -85,7 +85,7 @@
             this.btnEdit.Text = "Edit File";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += this.btnEdit_Click;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnMoveDown
             // 
@@ -96,7 +96,7 @@
             this.btnMoveDown.Text = "Move Down";
             this.btnMoveDown.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMoveDown.UseVisualStyleBackColor = true;
-            this.btnMoveDown.Click += this.btnMoveDown_Click;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // btnMoveUp
             // 
@@ -107,7 +107,7 @@
             this.btnMoveUp.Text = "Move Up";
             this.btnMoveUp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMoveUp.UseVisualStyleBackColor = true;
-            this.btnMoveUp.Click += this.btnMoveUp_Click;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnRemove
             // 
@@ -118,7 +118,7 @@
             this.btnRemove.Text = "Remove";
             this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += this.btnRemove_Click;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -129,7 +129,7 @@
             this.btnAdd.Text = "Add File";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += this.btnAdd_Click;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // cboAllFiles
             // 

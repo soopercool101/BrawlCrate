@@ -127,7 +127,7 @@
             this.chkUseOut.Size = new System.Drawing.Size(15, 14);
             this.chkUseOut.TabIndex = 16;
             this.chkUseOut.UseVisualStyleBackColor = true;
-            this.chkUseOut.CheckedChanged += this.chkUseOut_CheckedChanged;
+            this.chkUseOut.CheckedChanged += new System.EventHandler(this.chkUseOut_CheckedChanged);
             // 
             // label11
             // 
@@ -150,7 +150,7 @@
             this.numOutFrame.Size = new System.Drawing.Size(60, 20);
             this.numOutFrame.TabIndex = 14;
             this.numOutFrame.Text = "0";
-            this.numOutFrame.ValueChanged += this.numOutFrame_ValueChanged;
+            this.numOutFrame.ValueChanged += new System.EventHandler(this.numOutFrame_ValueChanged);
             // 
             // label10
             // 
@@ -173,7 +173,7 @@
             this.numInFrame.Size = new System.Drawing.Size(60, 20);
             this.numInFrame.TabIndex = 12;
             this.numInFrame.Text = "0";
-            this.numInFrame.ValueChanged += this.numInFrame_ValueChanged;
+            this.numInFrame.ValueChanged += new System.EventHandler(this.numInFrame_ValueChanged);
             // 
             // label6
             // 
@@ -216,7 +216,7 @@
             this.numOutTan.Size = new System.Drawing.Size(60, 20);
             this.numOutTan.TabIndex = 7;
             this.numOutTan.Text = "0";
-            this.numOutTan.ValueChanged += this.numOutTan_ValueChanged;
+            this.numOutTan.ValueChanged += new System.EventHandler(this.numOutTan_ValueChanged);
             // 
             // numOutVal
             // 
@@ -229,7 +229,7 @@
             this.numOutVal.Size = new System.Drawing.Size(60, 20);
             this.numOutVal.TabIndex = 8;
             this.numOutVal.Text = "0";
-            this.numOutVal.ValueChanged += this.numOutVal_ValueChanged;
+            this.numOutVal.ValueChanged += new System.EventHandler(this.numOutVal_ValueChanged);
             // 
             // label5
             // 
@@ -272,7 +272,7 @@
             this.numInTan.Size = new System.Drawing.Size(60, 20);
             this.numInTan.TabIndex = 0;
             this.numInTan.Text = "0";
-            this.numInTan.ValueChanged += this.numInTan_ValueChanged;
+            this.numInTan.ValueChanged += new System.EventHandler(this.numInTan_ValueChanged);
             // 
             // numInValue
             // 
@@ -285,7 +285,7 @@
             this.numInValue.Size = new System.Drawing.Size(60, 20);
             this.numInValue.TabIndex = 2;
             this.numInValue.Text = "0";
-            this.numInValue.ValueChanged += this.numInValue_ValueChanged;
+            this.numInValue.ValueChanged += new System.EventHandler(this.numInValue_ValueChanged);
             // 
             // menuStrip1
             // 
@@ -317,7 +317,7 @@
             this.chkViewOne.Name = "chkViewOne";
             this.chkViewOne.Size = new System.Drawing.Size(294, 22);
             this.chkViewOne.Text = "View keyframe only";
-            this.chkViewOne.CheckedChanged += this.chkAllKeys_CheckedChanged;
+            this.chkViewOne.CheckedChanged += new System.EventHandler(this.chkAllKeys_CheckedChanged);
             // 
             // chkRenderTans
             // 
@@ -327,7 +327,7 @@
             this.chkRenderTans.Name = "chkRenderTans";
             this.chkRenderTans.Size = new System.Drawing.Size(294, 22);
             this.chkRenderTans.Text = "Show tangents";
-            this.chkRenderTans.CheckedChanged += this.chkRenderTans_CheckedChanged;
+            this.chkRenderTans.CheckedChanged += new System.EventHandler(this.chkRenderTans_CheckedChanged);
             // 
             // chkTanStrength
             // 
@@ -335,7 +335,7 @@
             this.chkTanStrength.Size = new System.Drawing.Size(294, 22);
             this.chkTanStrength.Text = "Show tangent strength";
             this.chkTanStrength.Visible = false;
-            this.chkTanStrength.Click += this.chkTanStrength_Click;
+            this.chkTanStrength.Click += new System.EventHandler(this.chkTanStrength_Click);
             // 
             // chkTanAngle
             // 
@@ -343,7 +343,7 @@
             this.chkTanAngle.Size = new System.Drawing.Size(294, 22);
             this.chkTanAngle.Text = "Tangent angle (deg) instead of slope (y/x)";
             this.chkTanAngle.Visible = false;
-            this.chkTanAngle.Click += this.chkTanAngle_Click;
+            this.chkTanAngle.Click += new System.EventHandler(this.chkTanAngle_Click);
             // 
             // optionsToolStripMenuItem
             // 
@@ -371,7 +371,7 @@
             this.chkSyncStartEnd.Name = "chkSyncStartEnd";
             this.chkSyncStartEnd.Size = new System.Drawing.Size(228, 22);
             this.chkSyncStartEnd.Text = "Sync start and end keyframes";
-            this.chkSyncStartEnd.CheckedChanged += this.chkSyncStartEnd_CheckedChanged;
+            this.chkSyncStartEnd.CheckedChanged += new System.EventHandler(this.chkSyncStartEnd_CheckedChanged);
             // 
             // chkKeyDrag
             // 
@@ -379,7 +379,7 @@
             this.chkKeyDrag.Name = "chkKeyDrag";
             this.chkKeyDrag.Size = new System.Drawing.Size(228, 22);
             this.chkKeyDrag.Text = "Draggable keyframes";
-            this.chkKeyDrag.CheckedChanged += this.chkKeyDrag_CheckedChanged;
+            this.chkKeyDrag.CheckedChanged += new System.EventHandler(this.chkKeyDrag_CheckedChanged);
             // 
             // chkGenTans
             // 
@@ -390,7 +390,7 @@
             this.chkGenTans.Name = "chkGenTans";
             this.chkGenTans.Size = new System.Drawing.Size(228, 22);
             this.chkGenTans.Text = "Generate tangents";
-            this.chkGenTans.CheckedChanged += this.chkGenTans_CheckedChanged;
+            this.chkGenTans.CheckedChanged += new System.EventHandler(this.chkGenTans_CheckedChanged);
             // 
             // mItem_genTan_alterSelTanOnDrag
             // 
@@ -400,7 +400,7 @@
             this.mItem_genTan_alterSelTanOnDrag.Name = "mItem_genTan_alterSelTanOnDrag";
             this.mItem_genTan_alterSelTanOnDrag.Size = new System.Drawing.Size(240, 22);
             this.mItem_genTan_alterSelTanOnDrag.Text = "Alter Selected Tangent On Drag";
-            this.mItem_genTan_alterSelTanOnDrag.CheckedChanged += this.mItem_genTan_alterSelTanOnDrag_CheckedChanged;
+            this.mItem_genTan_alterSelTanOnDrag.CheckedChanged += new System.EventHandler(this.mItem_genTan_alterSelTanOnDrag_CheckedChanged);
             // 
             // mItem_genTan_alterAdjTan
             // 
@@ -414,7 +414,7 @@
             this.mItem_genTan_alterAdjTan.Name = "mItem_genTan_alterAdjTan";
             this.mItem_genTan_alterAdjTan.Size = new System.Drawing.Size(240, 22);
             this.mItem_genTan_alterAdjTan.Text = "Alter Adjacent Tangents";
-            this.mItem_genTan_alterAdjTan.CheckedChanged += this.mItem_genTan_alterAdjTan_CheckedChanged;
+            this.mItem_genTan_alterAdjTan.CheckedChanged += new System.EventHandler(this.mItem_genTan_alterAdjTan_CheckedChanged);
             // 
             // mItem_genTan_alterAdjTan_OnSet
             // 
@@ -424,7 +424,7 @@
             this.mItem_genTan_alterAdjTan_OnSet.Name = "mItem_genTan_alterAdjTan_OnSet";
             this.mItem_genTan_alterAdjTan_OnSet.Size = new System.Drawing.Size(163, 22);
             this.mItem_genTan_alterAdjTan_OnSet.Text = "KeyFrame Create";
-            this.mItem_genTan_alterAdjTan_OnSet.CheckedChanged += this.mItem_genTan_alterAdjTan_OnSet_CheckedChanged;
+            this.mItem_genTan_alterAdjTan_OnSet.CheckedChanged += new System.EventHandler(this.mItem_genTan_alterAdjTan_OnSet_CheckedChanged);
             // 
             // mItem_genTan_alterAdjTan_OnDel
             // 
@@ -434,7 +434,7 @@
             this.mItem_genTan_alterAdjTan_OnDel.Name = "mItem_genTan_alterAdjTan_OnDel";
             this.mItem_genTan_alterAdjTan_OnDel.Size = new System.Drawing.Size(163, 22);
             this.mItem_genTan_alterAdjTan_OnDel.Text = "KeyFrame Delete";
-            this.mItem_genTan_alterAdjTan_OnDel.CheckedChanged += this.mItem_genTan_alterAdjTan_OnDel_CheckedChanged;
+            this.mItem_genTan_alterAdjTan_OnDel.CheckedChanged += new System.EventHandler(this.mItem_genTan_alterAdjTan_OnDel_CheckedChanged);
             // 
             // mItem_genTan_alterAdjTan_OnDrag
             // 
@@ -444,7 +444,7 @@
             this.mItem_genTan_alterAdjTan_OnDrag.Name = "mItem_genTan_alterAdjTan_OnDrag";
             this.mItem_genTan_alterAdjTan_OnDrag.Size = new System.Drawing.Size(163, 22);
             this.mItem_genTan_alterAdjTan_OnDrag.Text = "KeyFrame Drag";
-            this.mItem_genTan_alterAdjTan_OnDrag.CheckedChanged += this.mItem_genTan_alterAdjTan_OnDrag_CheckedChanged;
+            this.mItem_genTan_alterAdjTan_OnDrag.CheckedChanged += new System.EventHandler(this.mItem_genTan_alterAdjTan_OnDrag_CheckedChanged);
             // 
             // editKeyframeToolStripMenuItem
             // 
@@ -471,28 +471,28 @@
             this.chkLinear.Name = "chkLinear";
             this.chkLinear.Size = new System.Drawing.Size(148, 22);
             this.chkLinear.Text = "Make Linear";
-            this.chkLinear.Click += this.chkLinear_Click;
+            this.chkLinear.Click += new System.EventHandler(this.chkLinear_Click);
             // 
             // chkSmooth
             // 
             this.chkSmooth.Name = "chkSmooth";
             this.chkSmooth.Size = new System.Drawing.Size(148, 22);
             this.chkSmooth.Text = "Make Smooth";
-            this.chkSmooth.Click += this.chkSmooth_Click;
+            this.chkSmooth.Click += new System.EventHandler(this.chkSmooth_Click);
             // 
             // chkFlat
             // 
             this.chkFlat.Name = "chkFlat";
             this.chkFlat.Size = new System.Drawing.Size(148, 22);
             this.chkFlat.Text = "Make Flat";
-            this.chkFlat.Click += this.chkFlat_Click;
+            this.chkFlat.Click += new System.EventHandler(this.chkFlat_Click);
             // 
             // BreakKey
             // 
             this.BreakKey.Name = "BreakKey";
             this.BreakKey.Size = new System.Drawing.Size(141, 22);
             this.BreakKey.Text = "Break In/Out";
-            this.BreakKey.Click += this.chkBreakKey_Click;
+            this.BreakKey.Click += new System.EventHandler(this.chkBreakKey_Click);
             // 
             // cbTransform
             // 
@@ -512,7 +512,7 @@
             this.cbTransform.Name = "cbTransform";
             this.cbTransform.Size = new System.Drawing.Size(121, 21);
             this.cbTransform.TabIndex = 6;
-            this.cbTransform.SelectedIndexChanged += this.comboBox1_SelectedIndexChanged;
+            this.cbTransform.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -574,7 +574,7 @@
             this.numPrecision.Size = new System.Drawing.Size(40, 20);
             this.numPrecision.TabIndex = 8;
             this.numPrecision.Text = "4";
-            this.numPrecision.ValueChanged += this.numPrecision_ValueChanged;
+            this.numPrecision.ValueChanged += new System.EventHandler(this.numPrecision_ValueChanged);
             // 
             // nibTanLen
             // 
@@ -588,7 +588,7 @@
             this.nibTanLen.Size = new System.Drawing.Size(40, 20);
             this.nibTanLen.TabIndex = 6;
             this.nibTanLen.Text = "3";
-            this.nibTanLen.ValueChanged += this.numTanLen_ValueChanged;
+            this.nibTanLen.ValueChanged += new System.EventHandler(this.numTanLen_ValueChanged);
             // 
             // numFrameVal
             // 
@@ -602,7 +602,7 @@
             this.numFrameVal.Size = new System.Drawing.Size(40, 20);
             this.numFrameVal.TabIndex = 4;
             this.numFrameVal.Text = "0";
-            this.numFrameVal.ValueChanged += this.numFrameVal_ValueChanged;
+            this.numFrameVal.ValueChanged += new System.EventHandler(this.numFrameVal_ValueChanged);
             // 
             // interpolationViewer
             // 

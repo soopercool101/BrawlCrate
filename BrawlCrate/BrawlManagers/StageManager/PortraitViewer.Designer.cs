@@ -72,7 +72,7 @@
 			this.saveButton.TabIndex = 2;
 			this.saveButton.Text = "Save";
 			this.saveButton.UseVisualStyleBackColor = true;
-			this.saveButton.Click += this.saveButton_Click;
+			this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
 			// 
 			// flowLayoutPanel1
 			// 
@@ -139,8 +139,8 @@
 			this.lblLegacyBottomRight.TabIndex = 19;
 			this.lblLegacyBottomRight.Text = "Z";
 			this.lblLegacyBottomRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblLegacyBottomRight.DragDrop += this.lblLegacyBottomRight_DragDrop;
-			this.lblLegacyBottomRight.DragEnter += this.AltImage_DragEnter;
+			this.lblLegacyBottomRight.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblLegacyBottomRight_DragDrop);
+			this.lblLegacyBottomRight.DragEnter += new System.Windows.Forms.DragEventHandler(this.AltImage_DragEnter);
 			// 
 			// lblLegacyBottomLeft
 			// 
@@ -153,8 +153,8 @@
 			this.lblLegacyBottomLeft.TabIndex = 18;
 			this.lblLegacyBottomLeft.Text = "L";
 			this.lblLegacyBottomLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblLegacyBottomLeft.DragDrop += this.lblLegacyBottomLeft_DragDrop;
-			this.lblLegacyBottomLeft.DragEnter += this.AltImage_DragEnter;
+			this.lblLegacyBottomLeft.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblLegacyBottomLeft_DragDrop);
+			this.lblLegacyBottomLeft.DragEnter += new System.Windows.Forms.DragEventHandler(this.AltImage_DragEnter);
 			// 
 			// lblLegacyCenter
 			// 
@@ -167,8 +167,8 @@
 			this.lblLegacyCenter.TabIndex = 16;
 			this.lblLegacyCenter.Text = "Main";
 			this.lblLegacyCenter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblLegacyCenter.DragDrop += this.lblLegacyCenter_DragDrop;
-			this.lblLegacyCenter.DragEnter += this.AltImage_DragEnter;
+			this.lblLegacyCenter.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblLegacyCenter_DragDrop);
+			this.lblLegacyCenter.DragEnter += new System.Windows.Forms.DragEventHandler(this.AltImage_DragEnter);
 			// 
 			// lblLegacyTop
 			// 
@@ -181,8 +181,8 @@
 			this.lblLegacyTop.TabIndex = 15;
 			this.lblLegacyTop.Text = "Start";
 			this.lblLegacyTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblLegacyTop.DragDrop += this.lblLegacyTop_DragDrop;
-			this.lblLegacyTop.DragEnter += this.AltImage_DragEnter;
+			this.lblLegacyTop.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblLegacyTop_DragDrop);
+			this.lblLegacyTop.DragEnter += new System.Windows.Forms.DragEventHandler(this.AltImage_DragEnter);
 			// 
 			// lblLegacy
 			// 
@@ -206,8 +206,8 @@
 			this.lblPMAlt.TabIndex = 13;
 			this.lblPMAlt.Text = "Alt";
 			this.lblPMAlt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblPMAlt.DragDrop += this.lblPMAlt_DragDrop;
-			this.lblPMAlt.DragEnter += this.AltImage_DragEnter;
+			this.lblPMAlt.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblPMAlt_DragDrop);
+			this.lblPMAlt.DragEnter += new System.Windows.Forms.DragEventHandler(this.AltImage_DragEnter);
 			// 
 			// lblPMTop
 			// 
@@ -220,8 +220,8 @@
 			this.lblPMTop.TabIndex = 12;
 			this.lblPMTop.Text = "Main";
 			this.lblPMTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.lblPMTop.DragDrop += this.lblPMTop_DragDrop;
-			this.lblPMTop.DragEnter += this.AltImage_DragEnter;
+			this.lblPMTop.DragDrop += new System.Windows.Forms.DragEventHandler(this.lblPMTop_DragDrop);
+			this.lblPMTop.DragEnter += new System.Windows.Forms.DragEventHandler(this.AltImage_DragEnter);
 			// 
 			// lblPM
 			// 
@@ -269,7 +269,7 @@
 			this.btnGenerateName.Text = "Generate name -- ]";
 			this.btnGenerateName.UseVisualStyleBackColor = true;
 			this.btnGenerateName.Visible = false;
-			this.btnGenerateName.Click += this.btnGenerateName_Click;
+			this.btnGenerateName.Click += new System.EventHandler(this.btnGenerateName_Click);
 			// 
 			// lblIconTex
 			// 
@@ -335,7 +335,7 @@
 			this.modifyPAT0.TabIndex = 9;
 			this.modifyPAT0.Text = "Modify PAT0 mapping (~)";
 			this.modifyPAT0.UseVisualStyleBackColor = true;
-			this.modifyPAT0.Click += this.modifyPAT0_Click;
+			this.modifyPAT0.Click += new System.EventHandler(this.modifyPAT0_Click);
 			// 
 			// PortraitViewer
 			// 

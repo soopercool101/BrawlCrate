@@ -78,9 +78,9 @@
             this.grdDisassembler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdDisassembler.Size = new System.Drawing.Size(312, 174);
             this.grdDisassembler.TabIndex = 1;
-            this.grdDisassembler.RowEnter += this.grdDisassembler_RowEnter;
-            this.grdDisassembler.SelectionChanged += this.grdDisassembler_SelectionChanged;
-            this.grdDisassembler.DoubleClick += this.grdDisassembler_DoubleClick;
+            this.grdDisassembler.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDisassembler_RowEnter);
+            this.grdDisassembler.SelectionChanged += new System.EventHandler(this.grdDisassembler_SelectionChanged);
+            this.grdDisassembler.DoubleClick += new System.EventHandler(this.grdDisassembler_DoubleClick);
             // 
             // Column1
             // 
@@ -138,9 +138,9 @@
             this.splitContainer1.Size = new System.Drawing.Size(312, 304);
             this.splitContainer1.SplitterDistance = 174;
             this.splitContainer1.TabIndex = 4;
-            this.splitContainer1.MouseDown += this.splitContainer_MouseDown;
-            this.splitContainer1.MouseMove += this.splitContainer_MouseMove;
-            this.splitContainer1.MouseUp += this.splitContainer_MouseUp;
+            this.splitContainer1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseDown);
+            this.splitContainer1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseMove);
+            this.splitContainer1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer_MouseUp);
             // 
             // PPCDisassembler
             // 

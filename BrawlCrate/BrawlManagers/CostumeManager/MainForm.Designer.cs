@@ -80,7 +80,7 @@
 			this.listBox1.Name = "listBox1";
 			this.listBox1.Size = new System.Drawing.Size(206, 187);
 			this.listBox1.TabIndex = 0;
-			this.listBox1.SelectedIndexChanged += this.listBox1_SelectedIndexChanged;
+			this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 			// 
 			// splitContainer2
 			// 
@@ -109,7 +109,7 @@
 			this.listBox2.Name = "listBox2";
 			this.listBox2.Size = new System.Drawing.Size(206, 190);
 			this.listBox2.TabIndex = 0;
-			this.listBox2.SelectedIndexChanged += this.listBox2_SelectedIndexChanged;
+			this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
 			// 
 			// contextMenuStrip1
 			// 
@@ -119,28 +119,28 @@
             this._deleteToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
 			this.contextMenuStrip1.Size = new System.Drawing.Size(193, 70);
-			this.contextMenuStrip1.Opening += this.contextMenuStrip1_Opening;
+			this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
 			// 
 			// copyToToolStripMenuItem
 			// 
 			this.copyToToolStripMenuItem.Name = "copyToToolStripMenuItem";
 			this.copyToToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
 			this.copyToToolStripMenuItem.Text = "Copy to...";
-			this.copyToToolStripMenuItem.Click += this.copyToToolStripMenuItem_Click;
+			this.copyToToolStripMenuItem.Click += new System.EventHandler(this.copyToToolStripMenuItem_Click);
 			// 
 			// copyToOtherPacpcsToolStripMenuItem
 			// 
 			this.copyToOtherPacpcsToolStripMenuItem.Name = "copyToOtherPacpcsToolStripMenuItem";
 			this.copyToOtherPacpcsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
 			this.copyToOtherPacpcsToolStripMenuItem.Text = "Copy to other pac/pcs";
-			this.copyToOtherPacpcsToolStripMenuItem.Click += this.copyToOtherPacpcsToolStripMenuItem_Click;
+			this.copyToOtherPacpcsToolStripMenuItem.Click += new System.EventHandler(this.copyToOtherPacpcsToolStripMenuItem_Click);
 			// 
 			// _deleteToolStripMenuItem
 			// 
 			this._deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
 			this._deleteToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
 			this._deleteToolStripMenuItem.Text = "Delete";
-			this._deleteToolStripMenuItem.Click += this._deleteToolStripMenuItem_Click;
+			this._deleteToolStripMenuItem.Click += new System.EventHandler(this._deleteToolStripMenuItem_Click);
 			// 
 			// toolStrip1
 			// 
@@ -163,7 +163,7 @@
 			this.changeDirectory.Name = "changeDirectory";
 			this.changeDirectory.Size = new System.Drawing.Size(103, 22);
 			this.changeDirectory.Text = "Change Directory";
-			this.changeDirectory.Click += this.changeDirectory_Click;
+			this.changeDirectory.Click += new System.EventHandler(this.changeDirectory_Click);
 			// 
 			// toolStripDropDownButton3
 			// 
@@ -192,21 +192,21 @@
 			this.screenshotPortraitsToolStripMenuItem.Name = "screenshotPortraitsToolStripMenuItem";
 			this.screenshotPortraitsToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
 			this.screenshotPortraitsToolStripMenuItem.Text = "Screenshot -> portraits";
-			this.screenshotPortraitsToolStripMenuItem.Click += this.screenshotPortraitsToolStripMenuItem_Click;
+			this.screenshotPortraitsToolStripMenuItem.Click += new System.EventHandler(this.screenshotPortraitsToolStripMenuItem_Click);
 			// 
 			// updateSSSStockIconsToolStripMenuItem
 			// 
 			this.updateSSSStockIconsToolStripMenuItem.Name = "updateSSSStockIconsToolStripMenuItem";
 			this.updateSSSStockIconsToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
 			this.updateSSSStockIconsToolStripMenuItem.Text = "Copy stock icons to SSS";
-			this.updateSSSStockIconsToolStripMenuItem.Click += this.updateSSSStockIconsToolStripMenuItem_Click;
+			this.updateSSSStockIconsToolStripMenuItem.Click += new System.EventHandler(this.updateSSSStockIconsToolStripMenuItem_Click);
 			// 
 			// updateMewtwoHatForCurrentKirbyToolStripMenuItem
 			// 
 			this.updateMewtwoHatForCurrentKirbyToolStripMenuItem.Name = "updateMewtwoHatForCurrentKirbyToolStripMenuItem";
 			this.updateMewtwoHatForCurrentKirbyToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
 			this.updateMewtwoHatForCurrentKirbyToolStripMenuItem.Text = "Update Mewtwo hat for current Kirby";
-			this.updateMewtwoHatForCurrentKirbyToolStripMenuItem.Click += this.updateMewtwoHatForCurrentKirbyToolStripMenuItem_Click;
+			this.updateMewtwoHatForCurrentKirbyToolStripMenuItem.Click += new System.EventHandler(this.updateMewtwoHatForCurrentKirbyToolStripMenuItem_Click);
 			// 
 			// toolStripDropDownButton1
 			// 
@@ -233,7 +233,7 @@
 			this.limitModelViewerToolStripMenuItem.Name = "limitModelViewerToolStripMenuItem";
 			this.limitModelViewerToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
 			this.limitModelViewerToolStripMenuItem.Text = "Limit model viewer to 256x320";
-			this.limitModelViewerToolStripMenuItem.Click += this.limitModelViewerToolStripMenuItem_Click;
+			this.limitModelViewerToolStripMenuItem.Click += new System.EventHandler(this.limitModelViewerToolStripMenuItem_Click);
 			// 
 			// defaultZoomLevelToolStripMenuItem
 			// 
@@ -243,7 +243,7 @@
 			this.defaultZoomLevelToolStripMenuItem.Name = "defaultZoomLevelToolStripMenuItem";
 			this.defaultZoomLevelToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
 			this.defaultZoomLevelToolStripMenuItem.Text = "+-20 default X bounds";
-			this.defaultZoomLevelToolStripMenuItem.Click += this.defaultZoomLevelToolStripMenuItem_Click;
+			this.defaultZoomLevelToolStripMenuItem.Click += new System.EventHandler(this.defaultZoomLevelToolStripMenuItem_Click);
 			// 
 			// separator2
 			// 
@@ -258,7 +258,7 @@
 			this.hidePolygonsCheckbox.Name = "hidePolygonsCheckbox";
 			this.hidePolygonsCheckbox.Size = new System.Drawing.Size(274, 22);
 			this.hidePolygonsCheckbox.Text = "Hide certain polygons/textures";
-			this.hidePolygonsCheckbox.Click += this.hidePolygonsCheckbox_Click;
+			this.hidePolygonsCheckbox.Click += new System.EventHandler(this.hidePolygonsCheckbox_Click);
 			// 
 			// swapPortraitsForWarioStylesToolStripMenuItem
 			// 
@@ -267,7 +267,7 @@
 			this.swapPortraitsForWarioStylesToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
 			this.swapPortraitsForWarioStylesToolStripMenuItem.Text = "Swap portraits for Wario styles";
 			this.swapPortraitsForWarioStylesToolStripMenuItem.Visible = false;
-			this.swapPortraitsForWarioStylesToolStripMenuItem.Click += this.swapPortraitsForWarioStylesToolStripMenuItem_Click;
+			this.swapPortraitsForWarioStylesToolStripMenuItem.Click += new System.EventHandler(this.swapPortraitsForWarioStylesToolStripMenuItem_Click);
 			// 
 			// cBlissCheckbox
 			// 
@@ -275,7 +275,7 @@
 			this.cBlissCheckbox.Name = "cBlissCheckbox";
 			this.cBlissCheckbox.Size = new System.Drawing.Size(274, 22);
 			this.cBlissCheckbox.Text = "Use cBliss costume/portrait mappings";
-			this.cBlissCheckbox.Click += this.cBlissCheckbox_Click;
+			this.cBlissCheckbox.Click += new System.EventHandler(this.cBlissCheckbox_Click);
 			// 
 			// projectMCheckbox
 			// 
@@ -283,7 +283,7 @@
 			this.projectMCheckbox.Name = "projectMCheckbox";
 			this.projectMCheckbox.Size = new System.Drawing.Size(274, 22);
 			this.projectMCheckbox.Text = "Use Project M 3.6 mappings";
-			this.projectMCheckbox.Click += this.projectMCheckbox_Click;
+			this.projectMCheckbox.Click += new System.EventHandler(this.projectMCheckbox_Click);
 			// 
 			// separator
 			// 
@@ -298,14 +298,14 @@
 			this.nameportraitPreviewToolStripMenuItem.Name = "nameportraitPreviewToolStripMenuItem";
 			this.nameportraitPreviewToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
 			this.nameportraitPreviewToolStripMenuItem.Text = "Name/portrait preview";
-			this.nameportraitPreviewToolStripMenuItem.Click += this.nameportraitPreviewToolStripMenuItem_Click;
+			this.nameportraitPreviewToolStripMenuItem.Click += new System.EventHandler(this.nameportraitPreviewToolStripMenuItem_Click);
 			// 
 			// backgroundColorToolStripMenuItem
 			// 
 			this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
 			this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
 			this.backgroundColorToolStripMenuItem.Text = "Right panel BG color...";
-			this.backgroundColorToolStripMenuItem.Click += this.backgroundColorToolStripMenuItem_Click;
+			this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
 			// 
 			// toolStripButton1
 			// 
@@ -314,7 +314,7 @@
 			this.toolStripButton1.Name = "toolStripButton1";
 			this.toolStripButton1.Size = new System.Drawing.Size(44, 22);
 			this.toolStripButton1.Text = "About";
-			this.toolStripButton1.Click += this.toolStripButton1_Click;
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
 			// 
 			// otherPVsFlowLayoutPanel
 			// 
@@ -424,7 +424,7 @@
 			this.use16ptFontToolStripMenuItem.Name = "use16ptFontToolStripMenuItem";
 			this.use16ptFontToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.use16ptFontToolStripMenuItem.Text = "Use 16pt font";
-			this.use16ptFontToolStripMenuItem.Click += this.use16ptFontToolStripMenuItem_Click;
+			this.use16ptFontToolStripMenuItem.Click += new System.EventHandler(this.use16ptFontToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 

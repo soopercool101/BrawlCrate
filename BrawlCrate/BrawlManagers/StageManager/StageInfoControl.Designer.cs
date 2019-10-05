@@ -195,7 +195,7 @@
 			this.relButton.Text = "Fix";
 			this.relButton.UseVisualStyleBackColor = false;
 			this.relButton.Visible = false;
-			this.relButton.Click += this.relButton_Click;
+			this.relButton.Click += new System.EventHandler(this.relButton_Click);
 			// 
 			// panelLeft
 			// 
