@@ -537,7 +537,24 @@ namespace BrawlCrate
                 propertyGrid1.SelectedObject = node;
                 setScrollOffset?.Invoke();
 
+#if DEBUG
+                if(ShowHex && !(node is RELEntryNode || node is RELNode))
+                {
+                    if (node.WorkingUncompressed.Length > 0)
+                    {
+                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                                (byte*)node.WorkingUncompressed.Address,
+                                node.WorkingUncompressed.Length,
+                                node.WorkingUncompressed.Length,
+                                FileAccess.ReadWrite))
+                            { _supportsInsDel = false };
+                        newControl = hexBox1;
+                    }
+                }
+                else if (ShowHex && node is IBufferNode d)
+#else
                 if (ShowHex && node is IBufferNode d)
+#endif
                 {
                     if (d.IsValid())
                     {
@@ -702,8 +719,11 @@ namespace BrawlCrate
                         }
                     }
                 }
-
-                if (newControl == null && Instance.ShowHex && !(node is RELEntryNode || node is RELNode))
+#if DEBUG
+                if (newControl == null && !(node is RELEntryNode || node is RELNode))
+#else
+                if (newControl == null && ShowHex && !(node is RELEntryNode || node is RELNode))
+#endif
                 {
                     if (node.WorkingUncompressed.Length > 0)
                     {
