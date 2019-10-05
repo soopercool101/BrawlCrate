@@ -538,9 +538,8 @@ namespace BrawlCrate
                 propertyGrid1.SelectedObject = node;
                 setScrollOffset?.Invoke();
 
-                if (node is IBufferNode && ShowHex)
+                if (ShowHex && node is IBufferNode d)
                 {
-                    IBufferNode d = node as IBufferNode;
                     if (d.IsValid())
                     {
                         hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
@@ -552,19 +551,19 @@ namespace BrawlCrate
                         newControl = hexBox1;
                     }
                 }
-                else if (node is RSARGroupNode)
+                else if (node is RSARGroupNode groupNode)
                 {
-                    rsarGroupEditor.LoadGroup(node as RSARGroupNode);
+                    rsarGroupEditor.LoadGroup(groupNode);
                     newControl = rsarGroupEditor;
                 }
-                else if (node is RELMethodNode)
+                else if (node is RELMethodNode methodNode)
                 {
-                    ppcDisassembler1.SetTarget((RELMethodNode) node);
+                    ppcDisassembler1.SetTarget(methodNode);
                     newControl = ppcDisassembler1;
                 }
-                else if (node is IVideo)
+                else if (node is IVideo video)
                 {
-                    videoPlaybackPanel1.TargetSource = node as IVideo;
+                    videoPlaybackPanel1.TargetSource = video;
                     newControl = videoPlaybackPanel1;
                 }
                 else if (node is MDL0MaterialRefNode)
@@ -575,52 +574,52 @@ namespace BrawlCrate
                 {
                     newControl = mdL0ObjectControl1;
                 }
-                else if (node is MSBinNode)
+                else if (node is MSBinNode binNode)
                 {
-                    msBinEditor1.CurrentNode = node as MSBinNode;
+                    msBinEditor1.CurrentNode = binNode;
                     newControl = msBinEditor1;
                 }
-                else if (node is CHR0EntryNode)
+                else if (node is CHR0EntryNode chr0EntryNode)
                 {
-                    animEditControl.TargetSequence = node as CHR0EntryNode;
+                    animEditControl.TargetSequence = chr0EntryNode;
                     newControl = animEditControl;
                 }
-                else if (node is SRT0TextureNode)
+                else if (node is SRT0TextureNode textureNode)
                 {
-                    texAnimEditControl.TargetSequence = node as SRT0TextureNode;
+                    texAnimEditControl.TargetSequence = textureNode;
                     newControl = texAnimEditControl;
                 }
-                else if (node is SHP0VertexSetNode)
+                else if (node is SHP0VertexSetNode setNode)
                 {
-                    shpAnimEditControl.TargetSequence = node as SHP0VertexSetNode;
+                    shpAnimEditControl.TargetSequence = setNode;
                     newControl = shpAnimEditControl;
                 }
-                else if (node is RSARNode)
+                else if (node is RSARNode rsarNode)
                 {
-                    soundPackControl1.TargetNode = node as RSARNode;
+                    soundPackControl1.TargetNode = rsarNode;
                     newControl = soundPackControl1;
                 }
-                else if (node is VIS0EntryNode)
+                else if (node is VIS0EntryNode entryNode)
                 {
-                    visEditor.TargetNode = node as VIS0EntryNode;
+                    visEditor.TargetNode = entryNode;
                     newControl = visEditor;
                 }
-                else if (node is MoveDefActionNode)
+                else if (node is MoveDefActionNode actionNode)
                 {
-                    movesetEditor1.TargetNode = node as MoveDefActionNode;
+                    movesetEditor1.TargetNode = actionNode;
                     newControl = movesetEditor1;
                 }
-                else if (node is MoveDefEventOffsetNode)
+                else if (node is MoveDefEventOffsetNode offsetNode)
                 {
-                    offsetEditor1.TargetNode = node as MoveDefEventOffsetNode;
+                    offsetEditor1.TargetNode = offsetNode;
                     newControl = offsetEditor1;
                 }
-                else if (node is MoveDefEventNode)
+                else if (node is MoveDefEventNode eventNode)
                 {
                     //if (node.Parent is MoveDefLookupEntry1Node)
                     //    eventDescription1.SetTarget((node as MoveDefLookupEntry1Node).EventInfo, -1);
                     //else
-                    eventDescription1.SetTarget((node as MoveDefEventNode).EventInfo, -1);
+                    eventDescription1.SetTarget(eventNode.EventInfo, -1);
                     newControl = eventDescription1;
                 }
                 else if (node is MoveDefEventParameterNode)
@@ -632,36 +631,36 @@ namespace BrawlCrate
                         node.Index == -1 ? -2 : node.Index);
                     newControl = eventDescription1;
                 }
-                else if (node is MoveDefAttributeNode)
+                else if (node is MoveDefAttributeNode attributeNode)
                 {
-                    attributeControl.TargetNode = node as MoveDefAttributeNode;
+                    attributeControl.TargetNode = attributeNode;
                     newControl = attributeControl;
                 }
-                else if (node is MoveDefSectionParamNode)
+                else if (node is MoveDefSectionParamNode paramNode)
                 {
-                    articleAttributeGrid.TargetNode = node as MoveDefSectionParamNode;
+                    articleAttributeGrid.TargetNode = paramNode;
                     newControl = articleAttributeGrid;
                 }
-                else if (node is SCN0CameraNode)
+                else if (node is SCN0CameraNode cameraNode)
                 {
-                    scN0CameraEditControl1.TargetSequence = node as SCN0CameraNode;
+                    scN0CameraEditControl1.TargetSequence = cameraNode;
                     newControl = scN0CameraEditControl1;
                 }
-                else if (node is SCN0LightNode)
+                else if (node is SCN0LightNode lightNode)
                 {
-                    scN0LightEditControl1.TargetSequence = node as SCN0LightNode;
+                    scN0LightEditControl1.TargetSequence = lightNode;
                     newControl = scN0LightEditControl1;
                     disable2nd = true;
                 }
-                else if (node is SCN0FogNode)
+                else if (node is SCN0FogNode fogNode)
                 {
-                    scN0FogEditControl1.TargetSequence = node as SCN0FogNode;
+                    scN0FogEditControl1.TargetSequence = fogNode;
                     newControl = scN0FogEditControl1;
                     disable2nd = true;
                 }
-                else if (node is IAudioSource)
+                else if (node is IAudioSource audioSource)
                 {
-                    audioPlaybackPanel1.TargetSource = node as IAudioSource;
+                    audioPlaybackPanel1.TargetSource = audioSource;
                     IAudioStream[] sources = audioPlaybackPanel1.TargetSource.CreateStreams();
                     if (sources != null && sources.Length > 0 && sources[0] != null)
                     {
@@ -689,10 +688,10 @@ namespace BrawlCrate
                     newControl = attributeGrid1;
                 }
 
-                if (node is IColorSource && !disable2nd)
+                if (node is IColorSource source && !disable2nd)
                 {
-                    clrControl.ColorSource = node as IColorSource;
-                    if (((IColorSource) node).ColorCount(0) > 0)
+                    clrControl.ColorSource = source;
+                    if (source.ColorCount(0) > 0)
                     {
                         if (newControl != null)
                         {
@@ -719,17 +718,10 @@ namespace BrawlCrate
                     }
                 }
 
-                if ((editToolStripMenuItem.DropDown =
-                        Instance.resourceTree.SelectedNodes.Count > 1
-                            ? Instance.resourceTree.GetMultiSelectMenuStrip()
-                            : w?.ContextMenuStrip) != null)
-                {
-                    editToolStripMenuItem.Enabled = true;
-                }
-                else
-                {
-                    editToolStripMenuItem.Enabled = false;
-                }
+                editToolStripMenuItem.Enabled = (editToolStripMenuItem.DropDown =
+                                                    Instance.resourceTree.SelectedNodes.Count > 1
+                                                        ? Instance.resourceTree.GetMultiSelectMenuStrip()
+                                                        : w?.ContextMenuStrip) != null;
             }
             else
             {
