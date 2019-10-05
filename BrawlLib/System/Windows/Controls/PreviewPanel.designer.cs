@@ -43,7 +43,7 @@
             this.btnLeft.TabIndex = 0;
             this.btnLeft.Text = "<";
             this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            this.btnLeft.Click += this.btnLeft_Click;
             // 
             // btnRight
             // 
@@ -55,7 +55,7 @@
             this.btnRight.TabIndex = 1;
             this.btnRight.Text = ">";
             this.btnRight.UseVisualStyleBackColor = true;
-            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            this.btnRight.Click += this.btnRight_Click;
             // 
             // PreviewPanel2
             // 

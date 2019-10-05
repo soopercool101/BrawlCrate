@@ -108,7 +108,7 @@
             this.checkBox1.TabIndex = 4;
             this.checkBox1.Text = "Save GCT with info";
             this.checkBox1.UseVisualStyleBackColor = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += this.checkBox1_CheckedChanged;
             // 
             // txtPath
             // 
@@ -148,28 +148,28 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.openToolStripMenuItem.Click += this.btnBrowse_Click;
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.btnClose_Click);
+            this.closeToolStripMenuItem.Click += this.btnClose_Click;
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.btnSave_Click);
+            this.saveToolStripMenuItem.Click += this.btnSave_Click;
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.saveAsToolStripMenuItem.Text = "Save As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.btnSaveAs_Click);
+            this.saveAsToolStripMenuItem.Click += this.btnSaveAs_Click;
             // 
             // optionsToolStripMenuItem
             // 
@@ -189,42 +189,42 @@
             this.rememberAllCodesToolStripMenuItem.Name = "rememberAllCodesToolStripMenuItem";
             this.rememberAllCodesToolStripMenuItem.Size = new System.Drawing.Size(324, 26);
             this.rememberAllCodesToolStripMenuItem.Text = "Remember all codes in this file";
-            this.rememberAllCodesToolStripMenuItem.Click += new System.EventHandler(this.rememberAllCodesToolStripMenuItem_Click);
+            this.rememberAllCodesToolStripMenuItem.Click += this.rememberAllCodesToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(324, 26);
             this.toolStripMenuItem1.Text = "Forget all codes in this file";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.toolStripMenuItem1.Click += this.toolStripMenuItem1_Click;
             // 
             // forgetAllCodesToolStripMenuItem
             // 
             this.forgetAllCodesToolStripMenuItem.Name = "forgetAllCodesToolStripMenuItem";
             this.forgetAllCodesToolStripMenuItem.Size = new System.Drawing.Size(324, 26);
             this.forgetAllCodesToolStripMenuItem.Text = "Forget all codes";
-            this.forgetAllCodesToolStripMenuItem.Click += new System.EventHandler(this.forgetAllCodesToolStripMenuItem_Click);
+            this.forgetAllCodesToolStripMenuItem.Click += this.forgetAllCodesToolStripMenuItem_Click;
             // 
             // saveAllRememberedCodesToGCTToolStripMenuItem
             // 
             this.saveAllRememberedCodesToGCTToolStripMenuItem.Name = "saveAllRememberedCodesToGCTToolStripMenuItem";
             this.saveAllRememberedCodesToGCTToolStripMenuItem.Size = new System.Drawing.Size(324, 26);
             this.saveAllRememberedCodesToGCTToolStripMenuItem.Text = "Save all remembered codes to file";
-            this.saveAllRememberedCodesToGCTToolStripMenuItem.Click += new System.EventHandler(this.saveAllRememberedCodesToGCTToolStripMenuItem_Click);
+            this.saveAllRememberedCodesToGCTToolStripMenuItem.Click += this.saveAllRememberedCodesToGCTToolStripMenuItem_Click;
             // 
             // loadCodesToRememberToolStripMenuItem
             // 
             this.loadCodesToRememberToolStripMenuItem.Name = "loadCodesToRememberToolStripMenuItem";
             this.loadCodesToRememberToolStripMenuItem.Size = new System.Drawing.Size(324, 26);
             this.loadCodesToRememberToolStripMenuItem.Text = "Load codes to remember from file";
-            this.loadCodesToRememberToolStripMenuItem.Click += new System.EventHandler(this.loadCodesToRememberToolStripMenuItem_Click);
+            this.loadCodesToRememberToolStripMenuItem.Click += this.loadCodesToRememberToolStripMenuItem_Click;
             // 
             // loadRememberedCodesAsNewFileToolStripMenuItem
             // 
             this.loadRememberedCodesAsNewFileToolStripMenuItem.Name = "loadRememberedCodesAsNewFileToolStripMenuItem";
             this.loadRememberedCodesAsNewFileToolStripMenuItem.Size = new System.Drawing.Size(324, 26);
             this.loadRememberedCodesAsNewFileToolStripMenuItem.Text = "Load remembered codes as new file";
-            this.loadRememberedCodesAsNewFileToolStripMenuItem.Click += new System.EventHandler(this.loadRememberedCodesAsNewFileToolStripMenuItem_Click);
+            this.loadRememberedCodesAsNewFileToolStripMenuItem.Click += this.loadRememberedCodesAsNewFileToolStripMenuItem_Click;
             // 
             // panel1
             // 
@@ -291,7 +291,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 21;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.TextChanged += this.textBox1_TextChanged;
             // 
             // btnDeleteCode
             // 
@@ -302,7 +302,7 @@
             this.btnDeleteCode.TabIndex = 20;
             this.btnDeleteCode.Text = "Delete";
             this.btnDeleteCode.UseVisualStyleBackColor = true;
-            this.btnDeleteCode.Click += new System.EventHandler(this.btnDeleteCode_Click);
+            this.btnDeleteCode.Click += this.btnDeleteCode_Click;
             // 
             // btnAddRemoveCode
             // 
@@ -315,7 +315,7 @@
             this.btnAddRemoveCode.TabIndex = 22;
             this.btnAddRemoveCode.Text = "Remember Code";
             this.btnAddRemoveCode.UseVisualStyleBackColor = true;
-            this.btnAddRemoveCode.Click += new System.EventHandler(this.btnAddRemoveCode_Click);
+            this.btnAddRemoveCode.Click += this.btnAddRemoveCode_Click;
             // 
             // splitter2
             // 
@@ -346,7 +346,7 @@
             this.txtDesc.Size = new System.Drawing.Size(281, 77);
             this.txtDesc.TabIndex = 6;
             this.txtDesc.Text = "";
-            this.txtDesc.TextChanged += new System.EventHandler(this.txtDesc_TextChanged);
+            this.txtDesc.TextChanged += this.txtDesc_TextChanged;
             // 
             // label4
             // 
@@ -381,7 +381,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(314, 22);
             this.txtName.TabIndex = 4;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
+            this.txtName.TextChanged += this.txtName_TextChanged;
             // 
             // label2
             // 
@@ -398,7 +398,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(60, 22);
             this.txtID.TabIndex = 2;
-            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
+            this.txtID.TextChanged += this.txtID_TextChanged;
             // 
             // label1
             // 
@@ -417,7 +417,7 @@
             this.btnNewCode.TabIndex = 19;
             this.btnNewCode.Text = "New Code";
             this.btnNewCode.UseVisualStyleBackColor = true;
-            this.btnNewCode.Click += new System.EventHandler(this.btnNewCode_Click);
+            this.btnNewCode.Click += this.btnNewCode_Click;
             // 
             // panel2
             // 

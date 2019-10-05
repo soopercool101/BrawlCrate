@@ -42,7 +42,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Remove";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += this.btnAdd_Click;
             // 
             // nudVolume
             // 
@@ -56,7 +56,7 @@
             this.nudVolume.Name = "nudVolume";
             this.nudVolume.Size = new System.Drawing.Size(95, 20);
             this.nudVolume.TabIndex = 1;
-            this.nudVolume.ValueChanged += new System.EventHandler(this.nudVolume_ValueChanged);
+            this.nudVolume.ValueChanged += this.nudVolume_ValueChanged;
             // 
             // pictureBox1
             // 

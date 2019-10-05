@@ -83,7 +83,7 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += this.btnCancel_Click;
             // 
             // btnOkay
             // 
@@ -94,7 +94,7 @@
             this.btnOkay.TabIndex = 5;
             this.btnOkay.Text = "&Okay";
             this.btnOkay.UseVisualStyleBackColor = true;
-            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+            this.btnOkay.Click += this.btnOkay_Click;
             // 
             // FrameCountChanger
             // 

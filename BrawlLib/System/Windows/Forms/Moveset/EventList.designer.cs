@@ -44,8 +44,8 @@
             this.lstEvents.Name = "lstEvents";
             this.lstEvents.Size = new System.Drawing.Size(208, 212);
             this.lstEvents.TabIndex = 0;
-            this.lstEvents.SelectedIndexChanged += new System.EventHandler(this.lstEvents_SelectedIndexChanged);
-            this.lstEvents.DoubleClick += new System.EventHandler(this.btnDone_Click);
+            this.lstEvents.SelectedIndexChanged += this.lstEvents_SelectedIndexChanged;
+            this.lstEvents.DoubleClick += this.btnDone_Click;
             // 
             // btnCancel
             // 
@@ -56,7 +56,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += this.btnCancel_Click;
             // 
             // btnDone
             // 
@@ -67,7 +67,7 @@
             this.btnDone.TabIndex = 2;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            this.btnDone.Click += this.btnDone_Click;
             // 
             // txtEventId
             // 
@@ -77,7 +77,7 @@
             this.txtEventId.Name = "txtEventId";
             this.txtEventId.Size = new System.Drawing.Size(80, 20);
             this.txtEventId.TabIndex = 3;
-            this.txtEventId.TextChanged += new System.EventHandler(this.txtEventId_TextChanged);
+            this.txtEventId.TextChanged += this.txtEventId_TextChanged;
             // 
             // FormEventList
             // 
@@ -93,8 +93,8 @@
             this.Name = "FormEventList";
             this.ShowIcon = false;
             this.Text = "Events";
-            this.Load += new System.EventHandler(this.FormEventList_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEventList_FormClosing);
+            this.Load += this.FormEventList_Load;
+            this.FormClosing += this.FormEventList_FormClosing;
             this.ResumeLayout(false);
             this.PerformLayout();
 

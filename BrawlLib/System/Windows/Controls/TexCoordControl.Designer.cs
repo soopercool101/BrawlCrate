@@ -57,7 +57,7 @@
             this.comboObj.Name = "comboObj";
             this.comboObj.Size = new System.Drawing.Size(135, 21);
             this.comboObj.TabIndex = 2;
-            this.comboObj.SelectedIndexChanged += new System.EventHandler(this.comboObj_SelectedIndexChanged);
+            this.comboObj.SelectedIndexChanged += this.comboObj_SelectedIndexChanged;
             // 
             // comboUVs
             // 
@@ -69,7 +69,7 @@
             this.comboUVs.Name = "comboUVs";
             this.comboUVs.Size = new System.Drawing.Size(120, 21);
             this.comboUVs.TabIndex = 1;
-            this.comboUVs.SelectedIndexChanged += new System.EventHandler(this.comboUVs_SelectedIndexChanged);
+            this.comboUVs.SelectedIndexChanged += this.comboUVs_SelectedIndexChanged;
             // 
             // btnExport
             // 
@@ -81,7 +81,7 @@
             this.btnExport.Text = "Export As Image";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Visible = false;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.btnExport.Click += this.btnExport_Click;
             // 
             // texCoordRenderer1
             // 

@@ -84,7 +84,7 @@
 			this.btnOkay.TabIndex = 5;
 			this.btnOkay.Text = "OK";
 			this.btnOkay.UseVisualStyleBackColor = true;
-			this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
+			this.btnOkay.Click += this.btnOkay_Click;
 			// 
 			// ModifyPAT0Dialog
 			// 
