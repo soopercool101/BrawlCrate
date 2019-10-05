@@ -911,7 +911,7 @@ namespace BrawlCrate.StageManager
                 return;
             }
 
-            using (ProgressWindow w = new ProgressWindow() {CanCancel = false})
+            using (ProgressWindow w = new ProgressWindow {CanCancel = false})
             {
                 w.Begin(0, 60, 0);
                 for (int i = 1; i < 60; i++)
@@ -1054,7 +1054,7 @@ namespace BrawlCrate.StageManager
         {
             string exeDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string tempfile = TempFiles.Create(".png");
-            ProcessStartInfo start = new ProcessStartInfo()
+            ProcessStartInfo start = new ProcessStartInfo
             {
                 WorkingDirectory = exeDir,
                 FileName = File.Exists(exeDir + "\\genname.bat") ? "genname.bat" : "genname.exe",
@@ -1375,7 +1375,8 @@ namespace BrawlCrate.StageManager
                             if (overlayFile != null)
                             {
                                 Stream stream = Assembly.GetExecutingAssembly()
-                                    .GetManifestResourceStream("BrawlCrate.StageManager." + overlayFile);
+                                                        .GetManifestResourceStream(
+                                                            "BrawlCrate.StageManager." + overlayFile);
                                 if (stream != null)
                                 {
                                     Image overlayImage = Image.FromStream(stream) as Bitmap;

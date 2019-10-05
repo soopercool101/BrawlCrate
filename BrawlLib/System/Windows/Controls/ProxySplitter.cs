@@ -31,7 +31,7 @@
             Dock = DockStyle.Left;
         }
 
-        private bool _dragging = false;
+        private bool _dragging;
         private int _lastX, _lastY;
 
         protected override void OnMouseDown(MouseEventArgs e)

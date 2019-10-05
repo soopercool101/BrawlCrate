@@ -13,8 +13,7 @@ namespace BrawlLib.Modeling
 {
     public unsafe partial class Collada
     {
-        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings()
-            {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
+        private static readonly XmlWriterSettings _writerSettings = new XmlWriterSettings {Indent = true, IndentChars = "\t", NewLineChars = "\r\n", NewLineHandling = NewLineHandling.Replace};
 
         public static void Serialize(MDL0Node model, string outFile)
         {
@@ -1098,10 +1097,10 @@ namespace BrawlLib.Modeling
                             }
 
                             writer.WriteString(Array.IndexOf(bones, w.Bone)
-                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
                             writer.WriteString(" ");
                             writer.WriteString(Array.IndexOf(weightSet, w.Weight)
-                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
                         }
                     }
                 }
@@ -1121,10 +1120,10 @@ namespace BrawlLib.Modeling
                             }
 
                             writer.WriteString(Array.IndexOf(bones, w.Bone)
-                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
                             writer.WriteString(" ");
                             writer.WriteString(Array.IndexOf(weightSet, w.Weight)
-                                .ToString(CultureInfo.InvariantCulture.NumberFormat));
+                                                    .ToString(CultureInfo.InvariantCulture.NumberFormat));
                         }
                     }
                 }
@@ -1380,8 +1379,8 @@ namespace BrawlLib.Modeling
 
                                                         writer.WriteString(
                                                             (entry._index / fps).ToString(CultureInfo
-                                                                .InvariantCulture
-                                                                .NumberFormat));
+                                                                                          .InvariantCulture
+                                                                                          .NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array
@@ -1444,7 +1443,7 @@ namespace BrawlLib.Modeling
 
                                                         writer.WriteString(
                                                             entry._value.ToString(CultureInfo
-                                                                .InvariantCulture.NumberFormat));
+                                                                                  .InvariantCulture.NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array
@@ -1494,7 +1493,7 @@ namespace BrawlLib.Modeling
 
                                                         writer.WriteString(
                                                             entry._tangent.ToString(CultureInfo
-                                                                .InvariantCulture.NumberFormat));
+                                                                                    .InvariantCulture.NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array
@@ -1544,7 +1543,7 @@ namespace BrawlLib.Modeling
 
                                                         writer.WriteString(
                                                             entry._tangent.ToString(CultureInfo
-                                                                .InvariantCulture.NumberFormat));
+                                                                                    .InvariantCulture.NumberFormat));
                                                     }
                                                 }
                                                 writer.WriteEndElement(); //float_array

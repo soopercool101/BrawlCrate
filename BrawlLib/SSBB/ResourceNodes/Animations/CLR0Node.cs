@@ -360,7 +360,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < _entries.Count; i++)
             {
-                new CLR0MaterialEntryNode()
+                new CLR0MaterialEntryNode
                     {
                         _target = (EntryTarget) _entries[i],
                         _constant = (((uint) _flags >> (_entries[i] * 2)) & 2) == 2
@@ -411,7 +411,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal CLR0MaterialEntry* Header => (CLR0MaterialEntry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CLR0MaterialEntry;
 
-        public bool _constant = false;
+        public bool _constant;
 
         [Category("CLR0 Material Entry")]
         public bool Constant
@@ -484,7 +484,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal ARGBPixel _solidColor = new ARGBPixel();
+        internal ARGBPixel _solidColor;
 
         [Browsable(false)]
         public ARGBPixel SolidColor

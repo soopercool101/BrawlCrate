@@ -60,7 +60,7 @@ namespace BrawlLib.Wii.Textures
         public static implicit operator ARGBPixel(IA4Pixel p)
         {
             byte i = p.Intensity;
-            return new ARGBPixel() {A = p.Alpha, R = i, G = i, B = i};
+            return new ARGBPixel {A = p.Alpha, R = i, G = i, B = i};
         }
 
         public static implicit operator IA4Pixel(ARGBPixel p)
@@ -70,7 +70,7 @@ namespace BrawlLib.Wii.Textures
                 3;                                                   // Extra 1 added to get effect of rounding to nearest instead of rounding down
             intensity = Convert.ToInt32(intensity * (15.0 / 255.0)); // Convert intensity from 8 bits to 4
             int alpha = Convert.ToInt32(p.A * (15.0 / 255.0));       // Convert alpha from 8 bits to 4
-            return new IA4Pixel() {data = (byte) ((alpha << 4) | intensity)};
+            return new IA4Pixel {data = (byte) ((alpha << 4) | intensity)};
         }
     }
 }

@@ -125,7 +125,7 @@ namespace BrawlLib.Wii.Audio
             for (int i = 0; i < channels; i++)
             {
                 table[i] = (uint) &channelInfo[i] - (uint) wave;
-                channelInfo[i] = new ChannelInfo()
+                channelInfo[i] = new ChannelInfo
                 {
                     _volBackLeft = 1,
                     _volBackRight = 1,

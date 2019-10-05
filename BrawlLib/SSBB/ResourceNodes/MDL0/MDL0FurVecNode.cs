@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         internal List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0FurVecData hdr = new MDL0FurVecData();
+        private MDL0FurVecData hdr;
 
         [Category("Fur Vector Data")] public int TotalLen => hdr._dataLen;
         [Category("Fur Vector Data")] public int MDL0Offset => hdr._mdl0Offset;

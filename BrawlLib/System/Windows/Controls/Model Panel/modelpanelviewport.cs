@@ -26,7 +26,7 @@ namespace System.Windows.Forms
 
         public ModelPanelViewportInfo GetInfo()
         {
-            return new ModelPanelViewportInfo()
+            return new ModelPanelViewportInfo
             {
                 _ambient = _ambient,
                 _backColor = (ARGBPixel) BackgroundColor,
@@ -98,10 +98,10 @@ namespace System.Windows.Forms
 
         private readonly ScreenTextHandler _text;
 
-        public bool _textEnabled = false;
-        public bool _allowSelection = false;
-        public bool _selecting = false;
-        public bool _showCamCoords = false;
+        public bool _textEnabled;
+        public bool _allowSelection;
+        public bool _selecting;
+        public bool _showCamCoords;
 
         public delegate void ZoomDel(float amt, bool invoked);
 
@@ -834,7 +834,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private Drawing.Point? lastCursorPos = null;
+        private Drawing.Point? lastCursorPos;
 
         public void HandleMouseMove(TKContext ctx, MouseEventArgs e)
         {
@@ -1158,17 +1158,17 @@ namespace System.Windows.Forms
 
         #region Default Viewports
 
-        public new static ModelPanelViewport DefaultPerspective => new ModelPanelViewport()
+        public new static ModelPanelViewport DefaultPerspective => new ModelPanelViewport
         {
             _type = ViewportProjection.Perspective,
             _camera = new GLCamera(),
             _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
         };
 
-        private new static ModelPanelViewport BaseOrtho => new ModelPanelViewport()
+        private new static ModelPanelViewport BaseOrtho => new ModelPanelViewport
         {
             _type = ViewportProjection.Orthographic,
-            _camera = new GLCamera()
+            _camera = new GLCamera
             {
                 _ortho = true,
                 _nearZ = -10000.0f,

@@ -441,7 +441,7 @@ namespace BrawlLib.Modeling
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                        .Name; // Remove unecessary reference to "end" bones
+                                     .Name; // Remove unecessary reference to "end" bones
                             }
                             else
                             {
@@ -461,7 +461,7 @@ namespace BrawlLib.Modeling
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                            .Name; // Remove unecessary reference to "end" bones
+                                         .Name; // Remove unecessary reference to "end" bones
                                 }
                                 else
                                 {
@@ -482,7 +482,7 @@ namespace BrawlLib.Modeling
                             {
                                 obj.SingleBind =
                                     m.FindBone(obj.SingleBind).Parent
-                                        .Name; // Remove unecessary reference to "end" bones
+                                     .Name; // Remove unecessary reference to "end" bones
                             }
 
                             foreach (DrawCall dc in obj._drawCalls)
@@ -494,7 +494,7 @@ namespace BrawlLib.Modeling
                                 {
                                     dc.VisibilityBone =
                                         m.FindBone(dc.VisibilityBone).Parent
-                                            .Name; // Remove unecessary reference to "end" bones
+                                         .Name; // Remove unecessary reference to "end" bones
                                 }
                             }
                         }
@@ -697,7 +697,7 @@ namespace BrawlLib.Modeling
             {
                 Error = "There was a problem creating a new object for " + (node._name ?? node._id);
 
-                MDL0ObjectNode poly = new MDL0ObjectNode()
+                MDL0ObjectNode poly = new MDL0ObjectNode
                 {
                     _manager = manager,
                     _name = node._name ?? node._id,
@@ -741,7 +741,7 @@ namespace BrawlLib.Modeling
                     Error = string.Format("There was a problem rigging {0} to a single bone.", poly._name);
 
                     Box box = poly.GetBox();
-                    MDL0BoneNode bone = new MDL0BoneNode()
+                    MDL0BoneNode bone = new MDL0BoneNode
                     {
                         Scale = Vector3.One,
                         Translation = (box.Max + box.Min) / 2.0f,
@@ -815,8 +815,8 @@ namespace BrawlLib.Modeling
             Error = "There was a problem creating a default material and shader.";
             if (model._matList.Count == 0 && model._objList.Count != 0)
             {
-                MDL0MaterialNode mat = new MDL0MaterialNode() {_name = "Default",};
-                (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode()
+                MDL0MaterialNode mat = new MDL0MaterialNode {_name = "Default",};
+                (mat.ShaderNode = new MDL0ShaderNode()).AddChild(new MDL0TEVStageNode
                 {
                     RasterColor = ColorSelChan.LightChannel0,
                     AlphaSelectionD = AlphaArg.RasterAlpha,
@@ -1203,20 +1203,20 @@ namespace BrawlLib.Modeling
             public bool _fltVerts = true;
             public bool _fltNrms = true;
             public bool _fltUVs = true;
-            public bool _addClrs = false;
+            public bool _addClrs;
             public bool _rmpClrs = true;
             public bool _rmpMats = true;
-            public bool _forceCCW = false;
+            public bool _forceCCW;
             public bool _useReg = true;
-            public bool _ignoreColors = false;
+            public bool _ignoreColors;
             public CullMode _culling = CullMode.Cull_None;
             public RGBAPixel _dfltClr = new RGBAPixel(128, 128, 128, 255);
             public uint _cacheSize = 52;
             public uint _minStripLen = 2;
             public bool _pushCacheHits = true;
             public bool _useTristrips = true;
-            public bool _setOrigPath = false;
-            public bool _blenderBoneFix = false;
+            public bool _setOrigPath;
+            public bool _blenderBoneFix;
             public float _weightPrecision = 0.0001f;
             public int _modelVersion = 9;
             public bool _useOneNode = true;

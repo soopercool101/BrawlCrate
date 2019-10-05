@@ -129,11 +129,11 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "Raw Data File", "*"),
         };
 
-        private static string _allSupportedFilter = null;
-        private static string _filterList = null;
+        private static string _allSupportedFilter;
+        private static string _filterList;
 
-        private static string _allSupportedFilterEditable = null;
-        private static string _filterListEditable = null;
+        private static string _allSupportedFilterEditable;
+        private static string _filterListEditable;
 
         public static SupportedFileInfo[] GetInfo(params string[] extensions)
         {

@@ -54,9 +54,9 @@ namespace Gif.Components
         protected Color transparent = Color.Empty; // transparent color if given
         protected int transIndex;                  // transparent index in color table
         protected int repeat = -1;                 // no repeat
-        protected int delay = 0;                   // frame delay (hundredths)
+        protected int delay;                       // frame delay (hundredths)
 
-        protected bool started = false; // ready to output frames
+        protected bool started; // ready to output frames
 
         //	protected BinaryWriter bw;
         protected FileStream fs;
@@ -69,10 +69,10 @@ namespace Gif.Components
         protected bool[] usedEntry = new bool[256]; // active palette entries
         protected int palSize = 7;                  // color table size (bits-1)
         protected int dispose = -1;                 // disposal code (-1 = use default)
-        protected bool closeStream = false;         // close stream when finished
+        protected bool closeStream;                 // close stream when finished
         protected bool firstFrame = true;
-        protected bool sizeSet = false; // if false, get size from first frame
-        protected int sample = 10;      // default sample interval for quantizer
+        protected bool sizeSet;    // if false, get size from first frame
+        protected int sample = 10; // default sample interval for quantizer
 
         /**
 		 * Sets the delay time between each frame, or changes it

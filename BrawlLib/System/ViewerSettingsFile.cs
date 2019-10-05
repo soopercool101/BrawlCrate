@@ -65,7 +65,7 @@ namespace System
         /// </summary>
         public static ModelEditorSettings Default()
         {
-            ModelEditorSettings s = new ModelEditorSettings()
+            ModelEditorSettings s = new ModelEditorSettings
             {
                 RetrieveCorrAnims = true,
                 SyncTexToObj = false,
@@ -94,7 +94,7 @@ namespace System
                 _lineDeselectedColor = new ARGBPixel(255, 128, 0, 0),
                 _floorColor = new ARGBPixel(255, 128, 128, 191),
 
-                _viewports = new List<ModelPanelViewportInfo>()
+                _viewports = new List<ModelPanelViewportInfo>
                 {
                     ModelPanelViewport.DefaultPerspective.GetInfo(),
                     //ModelPanelViewport.DefaultFront.GetInfo(),

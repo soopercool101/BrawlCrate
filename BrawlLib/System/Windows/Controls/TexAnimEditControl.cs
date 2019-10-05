@@ -75,7 +75,7 @@ namespace System.Windows.Forms
                             }
                         }
 
-                        if (check == true)
+                        if (check)
                         {
                             listKeyframes.Items.Add(a);
                             check = false;

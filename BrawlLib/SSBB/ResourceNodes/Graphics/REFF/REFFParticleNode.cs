@@ -10,8 +10,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal ParticleParameterHeader* Params => (ParticleParameterHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.Unknown;
 
-        private ParticleParameterHeader hdr = new ParticleParameterHeader();
-        private ParticleParameterDesc desc = new ParticleParameterDesc();
+        private ParticleParameterHeader hdr;
+        private ParticleParameterDesc desc;
 
         //[Category("Particle Parameters")]
         //public uint HeaderSize { get { return hdr.headersize; } }

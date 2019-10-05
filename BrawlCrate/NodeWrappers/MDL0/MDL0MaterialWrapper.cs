@@ -15,6 +15,9 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ToolStripMenuItem _addNewRefToolStripMenuItem;
 
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
+
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
 
@@ -34,6 +37,7 @@ namespace BrawlCrate.NodeWrappers
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(new ToolStripMenuItem("Re&name", null, RenameAction, Keys.Control | Keys.N));
             _menu.Items.Add(new ToolStripSeparator());
@@ -122,7 +126,7 @@ namespace BrawlCrate.NodeWrappers
                 string[] t = ShaderGenerator.GenTEVFragShader();
                 System.IO.File.WriteAllText(s.FileName,
                     ShaderGenerator.CombineFragShader(m, t, mat.ActiveShaderStages)
-                        .Replace("\n", Environment.NewLine));
+                                   .Replace("\n", Environment.NewLine));
             }
 
             ShaderGenerator.ClearTarget();

@@ -8,6 +8,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using BrawlLib.Modeling;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlCrate
 {
@@ -80,7 +81,8 @@ Full changelog can be viewed from the help menu.";
             AssemblyTitleShort = AssemblyTitleFull.Substring(0, AssemblyTitleFull.IndexOf('#') + 8);
 #else
             AssemblyTitleFull = ((AssemblyTitleAttribute) Assembly.GetExecutingAssembly()
-                .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0]).Title;
+                                                                  .GetCustomAttributes(typeof(AssemblyTitleAttribute),
+                                                                      false)[0]).Title;
             if (BrawlLib.BrawlCrate.PerSessionSettings.Birthday)
             {
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
@@ -88,19 +90,23 @@ Full changelog can be viewed from the help menu.";
 
             AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "h");
 #endif
+#if DEBUG
+            AssemblyTitleFull += " DEBUG";
+            AssemblyTitleShort += " DEBUG";
+#endif
             AssemblyDescription =
                 ((AssemblyDescriptionAttribute) Assembly
-                    .GetExecutingAssembly()
-                    .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
+                                                .GetExecutingAssembly()
+                                                .GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false)[0])
                 .Description;
             AssemblyCopyright =
                 ((AssemblyCopyrightAttribute) Assembly
-                    .GetExecutingAssembly()
-                    .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
+                                              .GetExecutingAssembly()
+                                              .GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false)[0])
                 .Copyright;
             BrawlLibTitle = ((AssemblyTitleAttribute) Assembly
-                    .GetAssembly(typeof(ResourceNode))
-                    .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
+                                                      .GetAssembly(typeof(ResourceNode))
+                                                      .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
             _openDlg = new OpenFileDialog();
@@ -256,8 +262,10 @@ Full changelog can be viewed from the help menu.";
                 if (args[0].Equals("/changelog", StringComparison.OrdinalIgnoreCase))
                 {
                     string changelog = UpdateMessage.Substring(UpdateMessage.IndexOf('-'),
-                        UpdateMessage.IndexOf("Full changelog can be found in the installation folder",
-                            StringComparison.OrdinalIgnoreCase) - UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
+                        UpdateMessage.IndexOf(
+                            "Full changelog can be found in the installation folder",
+                            StringComparison.OrdinalIgnoreCase) -
+                        UpdateMessage.IndexOf('-')).Trim('\r', '\n', ' ');
                     string fileName = $@"{AppPath}changelog-newest.txt";
                     using (StreamWriter file = new StreamWriter(fileName))
                     {
@@ -301,7 +309,8 @@ Full changelog can be viewed from the help menu.";
 
                 if (args.Length >= 2)
                 {
-                    ResourceNode target = ResourceNode.FindNode(RootNode, args[1], true, StringComparison.OrdinalIgnoreCase);
+                    ResourceNode target =
+                        ResourceNode.FindNode(RootNode, args[1], true, StringComparison.OrdinalIgnoreCase);
                     if (target != null)
                     {
                         MainForm.Instance.TargetResource(target);
@@ -322,7 +331,7 @@ Full changelog can be viewed from the help menu.";
                 }
                 else
                 {
-                    throw x;
+                    throw;
                 }
             }
             finally
@@ -455,16 +464,96 @@ Full changelog can be viewed from the help menu.";
                     MainForm.Instance.RecentFilesHandler.AddFile(path);
                     return true;
                 }
-                else
-                {
-                    _rootPath = null;
-                    if (showErrors)
-                    {
-                        MessageBox.Show("Unable to recognize input file.");
-                    }
 
-                    MainForm.Instance.Reset();
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
                 }
+
+                MainForm.Instance.Reset();
+#if !DEBUG
+            }
+            catch (Exception x)
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show(x.ToString());
+                }
+            }
+#endif
+
+            Close();
+
+            return false;
+        }
+
+        public static int OpenFolderFile(out string fileName)
+        {
+#if !DEBUG
+            try
+            {
+#endif
+                if (_folderDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileName = _folderDlg.SelectedPath;
+                    return 1;
+                }
+#if !DEBUG
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+#endif
+            fileName = null;
+            return 0;
+        }
+
+        public static bool OpenFolder(string path)
+        {
+            return OpenFolder(path, true);
+        }
+
+        public static bool OpenFolder(string path, bool showErrors)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                return false;
+            }
+
+            if (!Directory.Exists(path))
+            {
+                if (showErrors)
+                {
+                    MessageBox.Show("Directory does not exist.");
+                }
+
+                return false;
+            }
+
+            if (!Close())
+            {
+                return false;
+            }
+#if !DEBUG
+            try
+            {
+#endif
+                if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
+                {
+                    MainForm.Instance.Reset();
+                    MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
+                    return true;
+                }
+
+                _rootPath = null;
+                if (showErrors)
+                {
+                    MessageBox.Show("Unable to recognize input file.");
+                }
+
+                MainForm.Instance.Reset();
 #if !DEBUG
             }
             catch (Exception x)
@@ -506,6 +595,7 @@ Full changelog can be viewed from the help menu.";
                             }
                             catch
                             {
+                                // ignored
                             }
                         }
                     }
@@ -539,7 +629,11 @@ Full changelog can be viewed from the help menu.";
                         return false;
                     }
 
-                    _rootNode.Merge(force);
+                    if (!(_rootNode is FolderNode))
+                    {
+                        _rootNode.Merge(force);
+                    }
+
                     _rootNode.Export(_rootPath);
                     _rootNode.IsDirty = false;
                     MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
@@ -586,10 +680,8 @@ Full changelog can be viewed from the help menu.";
                     {
                         return CategorizeFilter(_openDlg.FileName, filter);
                     }
-                    else
-                    {
-                        return _openDlg.FilterIndex;
-                    }
+
+                    return _openDlg.FilterIndex;
                 }
 #if !DEBUG
             }
@@ -631,6 +723,18 @@ Full changelog can be viewed from the help menu.";
             }
 
             return fIndex;
+        }
+
+        public static bool SaveFolder(out string folderName)
+        {
+            folderName = null;
+            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            {
+                folderName = _folderDlg.SelectedPath;
+                return true;
+            }
+
+            return false;
         }
 
         public static int CategorizeFilter(string path, string filter)
@@ -692,6 +796,13 @@ Full changelog can be viewed from the help menu.";
                     if (path != null)
                     {
                         _rootPath = path;
+                        RootNode._origPath = path;
+                        if (w is FolderWrapper)
+                        {
+                            w.Resource.Name = w.Resource.OrigFileName;
+                            w.Text = w.Resource.Name;
+                        }
+
                         MainForm.Instance.UpdateName();
                         w.Resource.IsDirty = false;
                         MainForm.Instance.resourceTree_SelectionChanged(null, EventArgs.Empty);
@@ -718,7 +829,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (showMessages)
                 {
-                    MessageBox.Show("Could not find " + path);
+                    MessageBox.Show($"Could not find {path}");
                 }
 
                 return false;
@@ -735,7 +846,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (CanRunGithubApp(true, out string path))
                 {
-                    Process git = Process.Start(new ProcessStartInfo()
+                    Process git = Process.Start(new ProcessStartInfo
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,
@@ -756,7 +867,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (CanRunGithubApp(true, out string path))
                 {
-                    Process git = Process.Start(new ProcessStartInfo()
+                    Process git = Process.Start(new ProcessStartInfo
                     {
                         FileName = path,
                         WindowStyle = ProcessWindowStyle.Hidden,

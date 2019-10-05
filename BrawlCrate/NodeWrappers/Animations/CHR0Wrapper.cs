@@ -10,11 +10,14 @@ using System.Windows.Forms;
 namespace BrawlCrate.NodeWrappers
 {
     [NodeWrapper(ResourceType.CHR0)]
-    public class CHR0Wrapper : GenericWrapper, MultiSelectableWrapper
+    public class CHR0Wrapper : GenericWrapper
     {
         #region Menu
 
         private static readonly ContextMenuStrip _menu, _multiSelectMenu;
+
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
 
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
@@ -31,6 +34,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
+        private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
+
         static CHR0Wrapper()
         {
             _menu = new ContextMenuStrip();
@@ -42,6 +48,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Res&ize", null, ResizeAction)));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -55,6 +62,8 @@ namespace BrawlCrate.NodeWrappers
 
             _multiSelectMenu = new ContextMenuStrip();
             _multiSelectMenu.Items.Add(new ToolStripMenuItem("Edit All", null, EditAllAction));
+            _multiSelectMenu.Items.Add(new ToolStripSeparator());
+            _multiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
         }
 
         protected static void NewBoneAction(object sender, EventArgs e)
@@ -84,6 +93,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
             MoveUpToolStripMenuItem.Enabled = true;
@@ -95,6 +105,7 @@ namespace BrawlCrate.NodeWrappers
         {
             CHR0Wrapper w = GetInstance<CHR0Wrapper>();
 
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
@@ -112,7 +123,7 @@ namespace BrawlCrate.NodeWrappers
         public override string ExportFilter => FileFilters.CHR0Export;
         public override string ImportFilter => FileFilters.CHR0Import;
 
-        public ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
+        public override ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
 
         public void NewBone()
         {
@@ -154,11 +165,14 @@ namespace BrawlCrate.NodeWrappers
     }
 
     [NodeWrapper(ResourceType.CHR0Entry)]
-    public class CHR0EntryWrapper : GenericWrapper, MultiSelectableWrapper
+    public class CHR0EntryWrapper : GenericWrapper
     {
         #region Menu
 
         private static readonly ContextMenuStrip _menu, _multiSelectMenu;
+
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
 
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
@@ -175,12 +189,16 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
+        private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
+
         static CHR0EntryWrapper()
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("View Interpolation", null, ViewInterp, Keys.Control | Keys.T));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -194,6 +212,8 @@ namespace BrawlCrate.NodeWrappers
 
             _multiSelectMenu = new ContextMenuStrip();
             _multiSelectMenu.Items.Add(new ToolStripMenuItem("Edit All", null, EditAllAction));
+            _multiSelectMenu.Items.Add(new ToolStripSeparator());
+            _multiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
         }
 
         protected static void EditAllAction(object sender, EventArgs e)
@@ -221,6 +241,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
             MoveUpToolStripMenuItem.Enabled = true;
@@ -232,6 +253,7 @@ namespace BrawlCrate.NodeWrappers
         {
             CHR0EntryWrapper w = GetInstance<CHR0EntryWrapper>();
 
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
@@ -253,7 +275,7 @@ namespace BrawlCrate.NodeWrappers
             ContextMenuStrip = _menu;
         }
 
-        public ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
+        public override ContextMenuStrip MultiSelectMenuStrip => _multiSelectMenu;
 
         private static void EditAll(IEnumerable<BaseWrapper> wrappers)
         {

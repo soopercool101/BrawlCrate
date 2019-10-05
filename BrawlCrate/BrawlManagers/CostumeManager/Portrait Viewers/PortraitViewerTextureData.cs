@@ -62,7 +62,7 @@ namespace BrawlCrate.CostumeManager
             {
                 if (_texturePanel == null || _texturePanel.IsDisposed)
                 {
-                    _texturePanel = new Panel()
+                    _texturePanel = new Panel
                     {
                         Size = Size, AllowDrop = true, Margin = Padding.Empty,
                         BackgroundImageLayout = ImageLayout.Stretch
@@ -71,13 +71,13 @@ namespace BrawlCrate.CostumeManager
                     _texturePanel.DragDrop += TexturePanelDragDrop;
                     _texturePanel.ContextMenuStrip = new ContextMenuStrip();
 
-                    ToolStripMenuItem replace = new ToolStripMenuItem() {Text = "Replace"};
+                    ToolStripMenuItem replace = new ToolStripMenuItem {Text = "Replace"};
                     replace.Click += replace_Click;
                     _texturePanel.ContextMenuStrip.Items.Add(replace);
-                    ToolStripMenuItem export = new ToolStripMenuItem() {Text = "Export"};
+                    ToolStripMenuItem export = new ToolStripMenuItem {Text = "Export"};
                     export.Click += export_Click;
                     _texturePanel.ContextMenuStrip.Items.Add(export);
-                    ToolStripMenuItem copy = new ToolStripMenuItem() {Text = "Copy Texture"};
+                    ToolStripMenuItem copy = new ToolStripMenuItem {Text = "Copy Texture"};
                     copy.Click += copy_Click;
                     _texturePanel.ContextMenuStrip.Items.Add(copy);
                 }

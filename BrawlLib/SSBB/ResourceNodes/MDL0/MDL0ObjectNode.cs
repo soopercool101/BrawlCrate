@@ -599,13 +599,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         public int _numFaces;
         public int _nodeId;
         public int _defBufferSize = 0xE0;
-        public int _flag = 0;
+        public int _flag;
 
         public int[] _nodeCache;
-        private int _tableLen = 0;
+        private int _tableLen;
 
         internal short[] _elementIndices = new short[14];
-        public bool _forceRebuild = false, _reOptimized = false;
+        public bool _forceRebuild, _reOptimized;
 
         internal List<IMatrixNode> _influences;
         public BindingList<DrawCall> _drawCalls = new BindingList<DrawCall>();
@@ -1352,7 +1352,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             set => _attached = value;
         }
 
-        public bool _attached = false;
+        public bool _attached;
 
         public Box GetBox()
         {
@@ -1456,6 +1456,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             GL.MatrixMode(MatrixMode.Texture);
 
             bool anyRendered = false;
+
             if (material != null)
             {
                 if (!useShaders)
@@ -1821,7 +1822,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ObjectNode HardCopy()
         {
-            MDL0ObjectNode o = new MDL0ObjectNode()
+            MDL0ObjectNode o = new MDL0ObjectNode
             {
                 _manager = _manager.HardCopy(),
                 Name = Name,
@@ -2028,7 +2029,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0BoneNode _visBoneNode;
         internal MDL0MaterialNode _material;
         internal bool _isXLU;
-        internal byte _drawOrder = 0;
+        internal byte _drawOrder;
 
         [Category("Object Draw Call")]
         [TypeConverter(typeof(DropDownListMaterialsDrawCall))]
@@ -2267,6 +2268,11 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             ModelRenderAttributes attrib = viewport._renderAttrib;
             MDL0MaterialNode mat = MaterialNode;
+            if (attrib._renderMetal && !mat.IsMetal && mat.MetalMaterial != null)
+            {
+                mat = mat.MetalMaterial;
+            }
+
             if (attrib._renderPolygons)
             {
                 bool shaders = attrib._renderShaders && mat != null;

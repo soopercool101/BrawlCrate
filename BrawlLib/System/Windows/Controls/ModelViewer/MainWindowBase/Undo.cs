@@ -10,9 +10,9 @@ namespace System.Windows.Forms
         public uint _allowedUndos = 50;
         public List<SaveState> _undoSaves = new List<SaveState>();
         public List<SaveState> _redoSaves = new List<SaveState>();
-        public int _saveIndex = 0;
+        public int _saveIndex;
         public bool AwaitingRedoSave => _currentUndo != null;
-        public bool _undoing = false;
+        public bool _undoing;
 
         public SaveState _currentUndo;
 
@@ -89,7 +89,7 @@ namespace System.Windows.Forms
         /// </summary>
         public void BoneChange(params IBoneNode[] bones)
         {
-            SaveState state = new BoneState()
+            SaveState state = new BoneState
             {
                 _bones = bones,
                 _frameStates = bones.Select(x => x.FrameState).ToArray(),
@@ -107,7 +107,7 @@ namespace System.Windows.Forms
         /// </summary>
         public void VertexChange(List<Vertex3> vertices)
         {
-            SaveState state = new VertexState()
+            SaveState state = new VertexState
             {
                 _chr0 = _chr0,
                 _animFrame = CurrentFrame,

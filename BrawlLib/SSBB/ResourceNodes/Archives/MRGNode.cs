@@ -85,7 +85,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int offset = 0;
+        private int offset;
 
         public override int OnCalculateSize(bool force)
         {

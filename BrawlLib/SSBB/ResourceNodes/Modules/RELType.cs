@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public class RELType
     {
         private string _fullName = "";
-        private bool _inherited = false;
+        private bool _inherited;
         private readonly List<InheritanceItemNode> _inheritance = new List<InheritanceItemNode>();
 
         public string FullName

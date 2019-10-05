@@ -12,6 +12,9 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ContextMenuStrip _menu;
 
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
+
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
 
@@ -37,6 +40,7 @@ namespace BrawlCrate.NodeWrappers
             ));
 
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -66,6 +70,7 @@ namespace BrawlCrate.NodeWrappers
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
             MoveUpToolStripMenuItem.Enabled = true;
@@ -77,6 +82,7 @@ namespace BrawlCrate.NodeWrappers
         {
             BLOCWrapper w = GetInstance<BLOCWrapper>();
 
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
@@ -95,7 +101,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GSNDNode NewGSND()
         {
-            GSNDNode node = new GSNDNode() {Name = _resource.FindName("NewGSND")};
+            GSNDNode node = new GSNDNode {Name = _resource.FindName("NewGSND")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -106,7 +112,7 @@ namespace BrawlCrate.NodeWrappers
 
         public ADSJNode NewADSJ()
         {
-            ADSJNode node = new ADSJNode() {Name = _resource.FindName("NewADSJ")};
+            ADSJNode node = new ADSJNode {Name = _resource.FindName("NewADSJ")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);
@@ -117,7 +123,7 @@ namespace BrawlCrate.NodeWrappers
 
         public GDORNode NewGDOR()
         {
-            GDORNode node = new GDORNode() {Name = _resource.FindName("NewGDOR")};
+            GDORNode node = new GDORNode {Name = _resource.FindName("NewGDOR")};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

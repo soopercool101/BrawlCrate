@@ -96,7 +96,7 @@ namespace System.Windows.Forms
             GL.Viewport(0, 0, height, width);
 
             //TODO: Make a copy of the renderer camera here, but with no transformations
-            GLCamera cam = new GLCamera()
+            GLCamera cam = new GLCamera
             {
                 _projectionMatrix = texCoordRenderer1.CurrentViewport.Camera._projectionMatrix,
                 _projectionInverse = texCoordRenderer1.CurrentViewport.Camera._projectionInverse,

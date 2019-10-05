@@ -162,9 +162,9 @@ namespace System.Windows.Forms
             lstObjects.Name = "lstObjects";
             lstObjects.Size = new Drawing.Size(170, 45);
             lstObjects.TabIndex = 4;
-            lstObjects.ItemCheck += new ItemCheckEventHandler(lstPolygons_ItemCheck);
+            lstObjects.ItemCheck += lstPolygons_ItemCheck;
             lstObjects.SelectedValueChanged += lstPolygons_SelectedValueChanged;
-            lstObjects.KeyDown += new KeyEventHandler(lstPolygons_KeyDown);
+            lstObjects.KeyDown += lstPolygons_KeyDown;
             lstObjects.Leave += lstObjects_Leave;
             // 
             // spltDrawCalls
@@ -187,7 +187,7 @@ namespace System.Windows.Forms
             lstDrawCalls.Size = new Drawing.Size(170, 34);
             lstDrawCalls.TabIndex = 0;
             lstDrawCalls.Visible = false;
-            lstDrawCalls.ItemCheck += new ItemCheckEventHandler(lstDrawCalls_ItemCheck);
+            lstDrawCalls.ItemCheck += lstDrawCalls_ItemCheck;
             lstDrawCalls.SelectedIndexChanged += lstDrawCalls_SelectedIndexChanged;
             lstDrawCalls.DoubleClick += lstDrawCalls_DoubleClick;
             // 
@@ -269,8 +269,8 @@ namespace System.Windows.Forms
             listAnims.UseCompatibleStateImageBehavior = false;
             listAnims.View = View.Details;
             listAnims.SelectedIndexChanged += listAnims_SelectedIndexChanged;
-            listAnims.KeyDown += new KeyEventHandler(listAnims_KeyDown);
-            listAnims.MouseDown += new MouseEventHandler(listAnims_MouseDown);
+            listAnims.KeyDown += listAnims_KeyDown;
+            listAnims.MouseDown += listAnims_MouseDown;
             // 
             // nameColumn
             // 
@@ -286,7 +286,7 @@ namespace System.Windows.Forms
             });
             ctxAnimList.Name = "ctxAnim";
             ctxAnimList.Size = new Drawing.Size(235, 30);
-            ctxAnimList.Opening += new CancelEventHandler(ctxAnimList_Opening);
+            ctxAnimList.Opening += ctxAnimList_Opening;
             // 
             // AnimListNewAnim
             // 
@@ -426,7 +426,7 @@ namespace System.Windows.Forms
             });
             ctxTextures.Name = "ctxTextures";
             ctxTextures.Size = new Drawing.Size(147, 192);
-            ctxTextures.Opening += new CancelEventHandler(ctxTextures_Opening);
+            ctxTextures.Opening += ctxTextures_Opening;
             // 
             // sourceToolStripMenuItem
             // 
@@ -508,11 +508,11 @@ namespace System.Windows.Forms
             lstTextures.Name = "lstTextures";
             lstTextures.Size = new Drawing.Size(170, 116);
             lstTextures.TabIndex = 7;
-            lstTextures.ItemCheck += new ItemCheckEventHandler(lstTextures_ItemCheck);
+            lstTextures.ItemCheck += lstTextures_ItemCheck;
             lstTextures.SelectedValueChanged += lstTextures_SelectedValueChanged;
-            lstTextures.KeyDown += new KeyEventHandler(lstTextures_KeyDown);
+            lstTextures.KeyDown += lstTextures_KeyDown;
             lstTextures.Leave += lstTextures_Leave;
-            lstTextures.MouseDown += new MouseEventHandler(lstTextures_MouseDown);
+            lstTextures.MouseDown += lstTextures_MouseDown;
             // 
             // chkAllTextures
             // 
@@ -557,7 +557,7 @@ namespace System.Windows.Forms
             });
             ctxAnim.Name = "ctxAnim";
             ctxAnim.Size = new Drawing.Size(235, 218);
-            ctxAnim.Opening += new CancelEventHandler(ctxAnim_Opening);
+            ctxAnim.Opening += ctxAnim_Opening;
             // 
             // toolStripMenuItem2
             // 
@@ -658,7 +658,7 @@ namespace System.Windows.Forms
             overObjPnl.Name = "overObjPnl";
             overObjPnl.Size = new Drawing.Size(170, 45);
             overObjPnl.TabIndex = 8;
-            overObjPnl.Paint += new PaintEventHandler(overObjPnl_Paint);
+            overObjPnl.Paint += overObjPnl_Paint;
             // 
             // spltObjTex
             // 
@@ -668,7 +668,7 @@ namespace System.Windows.Forms
             spltObjTex.Name = "spltObjTex";
             spltObjTex.Size = new Drawing.Size(172, 4);
             spltObjTex.TabIndex = 4;
-            spltObjTex.Dragged += new SplitterEventHandler(spltObjTex_Dragged);
+            spltObjTex.Dragged += spltObjTex_Dragged;
             // 
             // spltAnimObj
             // 
@@ -678,7 +678,7 @@ namespace System.Windows.Forms
             spltAnimObj.Name = "spltAnimObj";
             spltAnimObj.Size = new Drawing.Size(172, 4);
             spltAnimObj.TabIndex = 1;
-            spltAnimObj.Dragged += new SplitterEventHandler(spltAnimObj_Dragged);
+            spltAnimObj.Dragged += spltAnimObj_Dragged;
             // 
             // overTexPnl
             // 
@@ -687,7 +687,7 @@ namespace System.Windows.Forms
             overTexPnl.Name = "overTexPnl";
             overTexPnl.Size = new Drawing.Size(170, 116);
             overTexPnl.TabIndex = 9;
-            overTexPnl.Paint += new PaintEventHandler(overTexPnl_Paint);
+            overTexPnl.Paint += overTexPnl_Paint;
             // 
             // LeftPanel
             // 
@@ -732,10 +732,10 @@ namespace System.Windows.Forms
         public List<ListViewGroup> _AnimGroupsExternal = new List<ListViewGroup>();
 
         public bool _syncPat0 = false;
-        private bool _updating = false;
+        private bool _updating;
         public string _lastSelected = null;
-        public SRT0Node _srt0Selection = null;
-        public PAT0Node _pat0Selection = null;
+        public SRT0Node _srt0Selection;
+        public PAT0Node _pat0Selection;
         private IObject _selectedObject;
         private MDL0TextureNode _selectedTexture;
 
@@ -1109,7 +1109,7 @@ namespace System.Windows.Forms
                 if (_selectedObject is MDL0ObjectNode)
                 {
                     foreach (MDL0MaterialRefNode tref in ((MDL0ObjectNode) _selectedObject)
-                        ._drawCalls[0].MaterialNode.Children)
+                                                         ._drawCalls[0].MaterialNode.Children)
                     {
                         lstTextures.Items.Add(tref.TextureNode, tref.TextureNode.Enabled);
                     }
@@ -1438,7 +1438,7 @@ namespace System.Windows.Forms
                 {
                     TargetTexRef = _selectedObject != null
                         ? ((MDL0ObjectNode) _selectedObject)
-                        ._drawCalls[0].MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode
+                          ._drawCalls[0].MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode
                         : null;
                 }
             }

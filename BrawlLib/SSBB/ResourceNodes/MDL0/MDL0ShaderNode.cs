@@ -39,7 +39,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             SignalPropertyChange();
         }
 
-        public string[] _fragShaderSource = null;
+        public string[] _fragShaderSource;
 
         [Category("Swap Mode Table")]
         [Browsable(true)]
@@ -464,13 +464,15 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public bool _enabled = true;
-        public bool _autoMetal = false;
+        public bool _autoMetal;
         public int _texCount = -1;
         public bool _rendered = false;
 
         public override string Name
         {
-            get => string.IsNullOrEmpty(base.Name) ? $"Shader {Index}" : base.Name;
+            get => string.IsNullOrEmpty(base.Name) || base.Name.Equals("<null>", StringComparison.OrdinalIgnoreCase)
+                ? $"Shader {Index}"
+                : base.Name;
             set => base.Name = value;
         }
 

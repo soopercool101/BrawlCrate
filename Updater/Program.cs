@@ -386,7 +386,7 @@ namespace Updater
 
                     // The browser download link to the self extracting archive, hosted on github
                     string URL = html.Substring(html.IndexOf("browser_download_url\":\""))
-                        .TrimEnd('}', '"');
+                                     .TrimEnd('}', '"');
                     URL = URL.Substring(URL.IndexOf("http"));
 
                     // Download the update, using a download tracker
@@ -479,7 +479,7 @@ namespace Updater
             string repoName = mainRepo.Split('/')[1];
             // get Release
             IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName))
-                .Where(r => r.Prerelease).ToList();
+                                              .Where(r => r.Prerelease).ToList();
             Release release = null;
 
             // This track is shared by canary updates. Ensure that a documentation release is found.
@@ -505,7 +505,7 @@ namespace Updater
             string repoName = mainRepo.Split('/')[1];
             // get Release
             IReadOnlyList<Release> releases = (await github.Repository.Release.GetAll(repoOwner, repoName))
-                .Where(r => !r.Prerelease).ToList();
+                                              .Where(r => !r.Prerelease).ToList();
             if (releases.Count > 0)
             {
                 await DownloadRelease(releases[0], true, true, false, false, openFile);

@@ -260,7 +260,7 @@ namespace System.Windows.Forms
             _updating = false;
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         internal unsafe void TexChanged(object sender, EventArgs e)
         {

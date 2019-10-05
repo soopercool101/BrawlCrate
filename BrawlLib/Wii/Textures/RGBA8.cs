@@ -77,7 +77,7 @@ namespace BrawlLib.Wii.Textures
 
         public static explicit operator ARGBPixel(RGBA8Pixel p)
         {
-            return new ARGBPixel() {A = p.A, R = p.R, G = p.G, B = p.B};
+            return new ARGBPixel {A = p.A, R = p.R, G = p.G, B = p.B};
         }
 
         public void Set(ARGBPixel* p)

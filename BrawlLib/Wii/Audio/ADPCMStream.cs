@@ -17,7 +17,7 @@ namespace BrawlLib.Wii.Audio
         private readonly int _loopStartSample, _loopEndSample;
         private readonly bool _isLooped;
         private bool _useLoop;
-        private int _samplePos = 0;
+        private int _samplePos;
 
         private readonly ADPCMState[,] _blockStates;
         private readonly ADPCMState[] _loopStates;
@@ -271,7 +271,7 @@ namespace BrawlLib.Wii.Audio
             }
         }
 
-        private readonly int _startChannel = 0;
+        private readonly int _startChannel;
 
         private void RefreshStates()
         {

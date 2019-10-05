@@ -196,6 +196,7 @@ namespace BrawlCrate.SongManager
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
 
                     return null;
@@ -569,7 +570,7 @@ namespace BrawlCrate.SongManager
         {
             if (splitContainerTop.Panel2Collapsed)
             {
-                ReadOnlySearchableRichTextBox r = new ReadOnlySearchableRichTextBox()
+                ReadOnlySearchableRichTextBox r = new ReadOnlySearchableRichTextBox
                 {
                     Dock = DockStyle.Fill,
                     Text = ReadOnlySearchableRichTextBox.HELP + "\n\n" + SongsByStage.DEFAULTS,

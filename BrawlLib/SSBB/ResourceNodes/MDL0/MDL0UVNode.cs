@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0UVData* Header => (MDL0UVData*) WorkingUncompressed.Address;
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0UVData _hdr = new MDL0UVData() {_format = (int) WiiVertexComponentType.Float};
+        private MDL0UVData _hdr = new MDL0UVData {_format = (int) WiiVertexComponentType.Float};
 
         [Category("UV Data")] public int ID => _hdr._index;
         [Category("UV Data")] public bool IsST => _hdr._isST != 0;
@@ -86,8 +86,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public VertexCodec _enc;
-        public bool _forceRebuild = false;
-        public bool _forceFloat = false;
+        public bool _forceRebuild;
+        public bool _forceFloat;
 
         public override int OnCalculateSize(bool force)
         {

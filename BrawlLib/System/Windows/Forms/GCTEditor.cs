@@ -23,7 +23,7 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
             txtCode.TextChanged += txtCode_TextChanged;
-            lstCodes.ItemChecked += new ItemCheckedEventHandler(lstCodes_ItemChecked);
+            lstCodes.ItemChecked += lstCodes_ItemChecked;
             lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
 
             string title =
@@ -41,7 +41,7 @@ namespace System.Windows.Forms
             base.OnShown(e);
         }
 
-        private bool _isOpen = false;
+        private bool _isOpen;
         private GCTCodeEntryNode _codeEntry;
 
         private GCTNode _targetNode;
@@ -73,7 +73,7 @@ namespace System.Windows.Forms
                     txtPath.Text = _targetNode._origPath;
                     txtID.Text = _targetNode._name;
                     txtName.Text = _targetNode.GameName;
-                    lstCodes.Items.AddRange(_targetNode.Children.Select(s => new ListViewItem()
+                    lstCodes.Items.AddRange(_targetNode.Children.Select(s => new ListViewItem
                     {
                         Text = s.Name, Checked = ((GCTCodeEntryNode) s)._enabled, Tag = s
                     }).ToArray());
@@ -225,7 +225,7 @@ namespace System.Windows.Forms
             TargetNode = null;
         }
 
-        private bool _updating = false;
+        private bool _updating;
         public int _codeEntrySavedIndex = -1;
 
         private void lstCodes_SelectedIndexChanged(object sender, EventArgs e)
@@ -357,9 +357,9 @@ namespace System.Windows.Forms
                 TargetNode = new GCTNode();
             }
 
-            GCTCodeEntryNode n = new GCTCodeEntryNode() {_name = "New Code"};
+            GCTCodeEntryNode n = new GCTCodeEntryNode {_name = "New Code"};
             TargetNode.AddChild(n);
-            lstCodes.Items.Add(new ListViewItem() {Text = n.Name, Checked = n._enabled, Tag = n});
+            lstCodes.Items.Add(new ListViewItem {Text = n.Name, Checked = n._enabled, Tag = n});
         }
 
         private void txtCode_TextChanged(object sender, EventArgs e)
@@ -544,8 +544,7 @@ namespace System.Windows.Forms
 
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage()
-                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
         }
@@ -634,8 +633,7 @@ namespace System.Windows.Forms
 
                 if (!found)
                 {
-                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage()
-                        {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
+                    BrawlLib.Properties.Settings.Default.Codes.Add(new CodeStorage {_name = r._name, _description = r._description, _code = r.LinesNoSpaces});
                 }
             }
 
@@ -651,8 +649,7 @@ namespace System.Windows.Forms
             };
             foreach (CodeStorage w in BrawlLib.Properties.Settings.Default.Codes)
             {
-                node.AddChild(new GCTCodeEntryNode()
-                    {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
+                node.AddChild(new GCTCodeEntryNode {_name = w._name, _description = w._description, LinesNoSpaces = w._code});
             }
 
             TargetNode = node;

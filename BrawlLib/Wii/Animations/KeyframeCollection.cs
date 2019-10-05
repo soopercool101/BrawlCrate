@@ -18,7 +18,7 @@ namespace BrawlLib.Wii.Animations
 
         public KeyframeArray this[int index] => _keyArrays[index.Clamp(0, _keyArrays.Length - 1)];
 
-        private bool _looped = false;
+        private bool _looped;
 
         public bool Loop
         {
@@ -352,9 +352,9 @@ namespace BrawlLib.Wii.Animations
     public unsafe class KeyframeArray
     {
         internal KeyframeEntry _keyRoot;
-        internal int _keyCount = 0;
+        internal int _keyCount;
 
-        private bool _looped = false;
+        private bool _looped;
 
         public bool Loop
         {

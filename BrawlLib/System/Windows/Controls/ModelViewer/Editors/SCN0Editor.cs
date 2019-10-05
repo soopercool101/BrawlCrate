@@ -159,7 +159,7 @@ namespace System.Windows.Forms
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Drawing.Size(659, 126);
             tabControl1.TabIndex = 0;
-            tabControl1.Selected += new TabControlEventHandler(tabControl1_Selected);
+            tabControl1.Selected += tabControl1_Selected;
             // 
             // LightSets
             // 
@@ -524,7 +524,7 @@ namespace System.Windows.Forms
             numSpotBright.TabIndex = 38;
             numSpotBright.Text = "0";
             numSpotBright.ValueChanged += BoxChanged;
-            numSpotBright.MouseDown += new MouseEventHandler(box_MouseDown);
+            numSpotBright.MouseDown += box_MouseDown;
             // 
             // label24
             // 
@@ -562,7 +562,7 @@ namespace System.Windows.Forms
             numStartZ.TabIndex = 26;
             numStartZ.Text = "0";
             numStartZ.ValueChanged += BoxChanged;
-            numStartZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numStartZ.MouseDown += box_MouseDown;
             // 
             // numRefBright
             // 
@@ -577,7 +577,7 @@ namespace System.Windows.Forms
             numRefBright.TabIndex = 36;
             numRefBright.Text = "0";
             numRefBright.ValueChanged += BoxChanged;
-            numRefBright.MouseDown += new MouseEventHandler(box_MouseDown);
+            numRefBright.MouseDown += box_MouseDown;
             // 
             // numSpotCut
             // 
@@ -592,7 +592,7 @@ namespace System.Windows.Forms
             numSpotCut.TabIndex = 34;
             numSpotCut.Text = "0";
             numSpotCut.ValueChanged += BoxChanged;
-            numSpotCut.MouseDown += new MouseEventHandler(box_MouseDown);
+            numSpotCut.MouseDown += box_MouseDown;
             // 
             // label19
             // 
@@ -618,7 +618,7 @@ namespace System.Windows.Forms
             numEndY.TabIndex = 28;
             numEndY.Text = "0";
             numEndY.ValueChanged += BoxChanged;
-            numEndY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numEndY.MouseDown += box_MouseDown;
             // 
             // label20
             // 
@@ -644,7 +644,7 @@ namespace System.Windows.Forms
             numEndX.TabIndex = 27;
             numEndX.Text = "0";
             numEndX.ValueChanged += BoxChanged;
-            numEndX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numEndX.MouseDown += box_MouseDown;
             // 
             // label21
             // 
@@ -670,7 +670,7 @@ namespace System.Windows.Forms
             numRefDist.TabIndex = 35;
             numRefDist.Text = "0";
             numRefDist.ValueChanged += BoxChanged;
-            numRefDist.MouseDown += new MouseEventHandler(box_MouseDown);
+            numRefDist.MouseDown += box_MouseDown;
             // 
             // label22
             // 
@@ -696,7 +696,7 @@ namespace System.Windows.Forms
             numStartX.TabIndex = 23;
             numStartX.Text = "0";
             numStartX.ValueChanged += BoxChanged;
-            numStartX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numStartX.MouseDown += box_MouseDown;
             // 
             // numStartY
             // 
@@ -711,7 +711,7 @@ namespace System.Windows.Forms
             numStartY.TabIndex = 25;
             numStartY.Text = "0";
             numStartY.ValueChanged += BoxChanged;
-            numStartY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numStartY.MouseDown += box_MouseDown;
             // 
             // numEndZ
             // 
@@ -726,7 +726,7 @@ namespace System.Windows.Forms
             numEndZ.TabIndex = 30;
             numEndZ.Text = "0";
             numEndZ.ValueChanged += BoxChanged;
-            numEndZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numEndZ.MouseDown += box_MouseDown;
             // 
             // label23
             // 
@@ -923,7 +923,7 @@ namespace System.Windows.Forms
             numFogEndZ.TabIndex = 10;
             numFogEndZ.Text = "0";
             numFogEndZ.ValueChanged += BoxChanged;
-            numFogEndZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numFogEndZ.MouseDown += box_MouseDown;
             // 
             // numFogStartZ
             // 
@@ -938,7 +938,7 @@ namespace System.Windows.Forms
             numFogStartZ.TabIndex = 9;
             numFogStartZ.Text = "0";
             numFogStartZ.ValueChanged += BoxChanged;
-            numFogStartZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numFogStartZ.MouseDown += box_MouseDown;
             // 
             // label17
             // 
@@ -1108,7 +1108,7 @@ namespace System.Windows.Forms
             numPosZ.TabIndex = 5;
             numPosZ.Text = "0";
             numPosZ.ValueChanged += BoxChanged;
-            numPosZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numPosZ.MouseDown += box_MouseDown;
             // 
             // btnCut
             // 
@@ -1164,7 +1164,7 @@ namespace System.Windows.Forms
             numAimX.TabIndex = 11;
             numAimX.Text = "0";
             numAimX.ValueChanged += BoxChanged;
-            numAimX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numAimX.MouseDown += box_MouseDown;
             // 
             // numFarZ
             // 
@@ -1179,7 +1179,7 @@ namespace System.Windows.Forms
             numFarZ.TabIndex = 29;
             numFarZ.Text = "0";
             numFarZ.ValueChanged += BoxChanged;
-            numFarZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numFarZ.MouseDown += box_MouseDown;
             // 
             // numRotY
             // 
@@ -1194,7 +1194,7 @@ namespace System.Windows.Forms
             numRotY.TabIndex = 7;
             numRotY.Text = "0";
             numRotY.ValueChanged += BoxChanged;
-            numRotY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numRotY.MouseDown += box_MouseDown;
             // 
             // numNearZ
             // 
@@ -1209,7 +1209,7 @@ namespace System.Windows.Forms
             numNearZ.TabIndex = 28;
             numNearZ.Text = "0";
             numNearZ.ValueChanged += BoxChanged;
-            numNearZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numNearZ.MouseDown += box_MouseDown;
             // 
             // numRotX
             // 
@@ -1224,7 +1224,7 @@ namespace System.Windows.Forms
             numRotX.TabIndex = 6;
             numRotX.Text = "0";
             numRotX.ValueChanged += BoxChanged;
-            numRotX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numRotX.MouseDown += box_MouseDown;
             // 
             // label12
             // 
@@ -1251,7 +1251,7 @@ namespace System.Windows.Forms
             numTwist.TabIndex = 12;
             numTwist.Text = "0";
             numTwist.ValueChanged += BoxChanged;
-            numTwist.MouseDown += new MouseEventHandler(box_MouseDown);
+            numTwist.MouseDown += box_MouseDown;
             // 
             // label13
             // 
@@ -1278,7 +1278,7 @@ namespace System.Windows.Forms
             numPosX.TabIndex = 3;
             numPosX.Text = "0";
             numPosX.ValueChanged += BoxChanged;
-            numPosX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numPosX.MouseDown += box_MouseDown;
             // 
             // numAspect
             // 
@@ -1293,7 +1293,7 @@ namespace System.Windows.Forms
             numAspect.TabIndex = 25;
             numAspect.Text = "0";
             numAspect.ValueChanged += BoxChanged;
-            numAspect.MouseDown += new MouseEventHandler(box_MouseDown);
+            numAspect.MouseDown += box_MouseDown;
             // 
             // numRotZ
             // 
@@ -1308,7 +1308,7 @@ namespace System.Windows.Forms
             numRotZ.TabIndex = 8;
             numRotZ.Text = "0";
             numRotZ.ValueChanged += BoxChanged;
-            numRotZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numRotZ.MouseDown += box_MouseDown;
             // 
             // numHeight
             // 
@@ -1323,7 +1323,7 @@ namespace System.Windows.Forms
             numHeight.TabIndex = 24;
             numHeight.Text = "0";
             numHeight.ValueChanged += BoxChanged;
-            numHeight.MouseDown += new MouseEventHandler(box_MouseDown);
+            numHeight.MouseDown += box_MouseDown;
             // 
             // numPosY
             // 
@@ -1338,7 +1338,7 @@ namespace System.Windows.Forms
             numPosY.TabIndex = 4;
             numPosY.Text = "0";
             numPosY.ValueChanged += BoxChanged;
-            numPosY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numPosY.MouseDown += box_MouseDown;
             // 
             // label10
             // 
@@ -1387,7 +1387,7 @@ namespace System.Windows.Forms
             numAimY.TabIndex = 21;
             numAimY.Text = "0";
             numAimY.ValueChanged += BoxChanged;
-            numAimY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numAimY.MouseDown += box_MouseDown;
             // 
             // label2
             // 
@@ -1413,7 +1413,7 @@ namespace System.Windows.Forms
             numAimZ.TabIndex = 19;
             numAimZ.Text = "0";
             numAimZ.ValueChanged += BoxChanged;
-            numAimZ.MouseDown += new MouseEventHandler(box_MouseDown);
+            numAimZ.MouseDown += box_MouseDown;
             // 
             // label3
             // 
@@ -1450,7 +1450,7 @@ namespace System.Windows.Forms
             numFovY.TabIndex = 13;
             numFovY.Text = "0";
             numFovY.ValueChanged += BoxChanged;
-            numFovY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numFovY.MouseDown += box_MouseDown;
             // 
             // panel1
             // 
@@ -1942,7 +1942,7 @@ namespace System.Windows.Forms
             _mainWindow.UpdateModel();
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         public void UpdateSelectedLightSets()
         {
@@ -2146,7 +2146,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public int _tabIndex = 0;
+        public int _tabIndex;
 
         public void tabControl1_Selected(object sender, TabControlEventArgs e)
         {

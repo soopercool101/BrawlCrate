@@ -305,7 +305,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private static readonly Dictionary<string, Type> _classNodeTypes = new Dictionary<string, Type>()
+        private static readonly Dictionary<string, Type> _classNodeTypes = new Dictionary<string, Type>
         {
             {"hkClass", typeof(hkClassNode)},
             {"hkClassEnum", typeof(hkClassEnumNode)},

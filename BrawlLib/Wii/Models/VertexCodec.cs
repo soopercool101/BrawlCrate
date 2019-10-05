@@ -43,7 +43,7 @@ namespace BrawlLib.Wii.Models
             _pData = null;
         }
 
-        private readonly bool _forceFloat = false;
+        private readonly bool _forceFloat;
 
         public VertexCodec(Vector3[] vertices, bool removeZ, bool forceFloat)
         {

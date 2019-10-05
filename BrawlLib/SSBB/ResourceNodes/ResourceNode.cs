@@ -1,14 +1,16 @@
-﻿using BrawlLib.IO;
+using BrawlLib.IO;
 using BrawlLib.Wii.Compression;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -62,9 +64,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         public DataSource(MemoryStream ms, CompressionType compression)
         {
             ms.Position = 0;
-            Address = Marshal.AllocHGlobal((int)ms.Length);
-            Marshal.Copy(ms.ToArray(), 0, Address, (int)ms.Length);
-            Length = (int)ms.Length;
+            Address = Marshal.AllocHGlobal((int) ms.Length);
+            Marshal.Copy(ms.ToArray(), 0, Address, (int) ms.Length);
+            Length = (int) ms.Length;
             Map = null;
             Compression = compression;
         }
@@ -116,10 +118,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         protected internal DataSource _origSource, _uncompSource;
         protected internal DataSource _replSrc, _replUncompSrc;
 
-        protected internal bool _changed, _merged, _disposed = false;
+        protected internal bool _changed, _merged, _disposed;
         protected internal CompressionType _compression;
 
         public string _name, _origPath;
+
+        [Category("DEBUG")]
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public string OrigFileName => Path.GetFileName(_origPath);
+
         public ResourceNode _parent;
         public List<ResourceNode> _children = new List<ResourceNode>();
 
@@ -138,7 +147,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         #region Properties
 
         [Browsable(false)] public string FilePath => _origPath;
-        [Browsable(false)] public ResourceNode RootNode => _parent == null || _parent == this ? this : _parent.RootNode;
+
+#if !DEBUG
+        [Browsable(false)]
+#endif
+        public ResourceNode RootNode =>
+            _parent == null || _parent == this || _parent is FolderNode ? this : _parent.RootNode;
+
         [Browsable(false)] public DataSource OriginalSource => _origSource;
         [Browsable(false)] public DataSource UncompressedSource => _uncompSource;
         [Browsable(false)] public DataSource WorkingSource => _replSrc != DataSource.Empty ? _replSrc : _origSource;
@@ -147,7 +162,22 @@ namespace BrawlLib.SSBB.ResourceNodes
         public DataSource WorkingUncompressed => _replUncompSrc != DataSource.Empty ? _replUncompSrc : _uncompSource;
 
         [Browsable(false)] public virtual bool HasChildren => _children == null || _children.Count != 0;
-        [Browsable(false)] public virtual ResourceType ResourceFileType => ResourceType.Unknown;
+
+#if DEBUG
+        [Category("DEBUG")]
+        [Browsable(true)]
+#else
+        [Browsable(false)]
+#endif
+        public virtual ResourceType ResourceFileType => ResourceType.Unknown;
+
+#if DEBUG
+        [Category("DEBUG")]
+        [Browsable(true)]
+#else
+        [Browsable(false)]
+#endif
+        public string NodeType => GetType().ToString();
 
         [Browsable(false)]
         public virtual string TreePathAbsolute => _parent == null ? Name : _parent.TreePathAbsolute + "/" + Name;
@@ -237,12 +267,13 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 Populate();
             }
+
             if (Children != null)
             {
-                foreach (ResourceNode r in Children)
+                for (int i = 0; i < Children.Count; i++) //ResourceNode r in Children)
                 {
-                    childrenAndSubchildren.Add(r);
-                    childrenAndSubchildren.AddRange(r.GetChildrenRecursive());
+                    childrenAndSubchildren.Add(Children[i]);
+                    childrenAndSubchildren.AddRange(Children[i].GetChildrenRecursive());
                 }
             }
 
@@ -272,6 +303,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)] public bool HasMerged => _merged;
 
+        [Category("Saving")]
+        [Description("If false, the node and its children will not be allowed to be rebuilt on save")]
+        public virtual bool AllowSaving
+        {
+            get => _allowSave && (Parent?.AllowSaving ?? true);
+            set => _allowSave = value;
+        }
+
+        private bool _allowSave = true;
+
         //Can be any of the following: children have branched, children have changed, current has changed
         //Node needs to be rebuilt.
 #if DEBUG
@@ -280,10 +321,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 #else
         [Browsable(false)]
 #endif
-        public bool IsDirty
+        public virtual bool IsDirty
         {
             get
             {
+                if (!AllowSaving)
+                {
+                    return false;
+                }
+
                 if (HasChanged)
                 {
                     return true;
@@ -558,9 +604,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (levels < 0)
             {
-                foreach (ResourceNode r in Children)
+                for (int i = 0; i < Children.Count; i++)
                 {
-                    r.Populate();
+                    Children[i].Populate();
                 }
             }
             else if (_children == null || _children.Count == 0)
@@ -748,7 +794,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         //Causes a deviation in the resource tree. This node and all child nodes will be backed by a temporary file until the tree is merged.
         //Causes parent node(s) to become dirty.
         //Replace will reference the file in a new DataSource.
-        public bool _replaced = false;
+        public bool _replaced;
 
         public virtual unsafe void Replace(string fileName)
         {
@@ -1179,7 +1225,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return resourceNodes.ToArray();
         }
 
-        public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren, StringComparison compare)
+        public static ResourceNode FindNode(ResourceNode root, string path, bool searchChildren,
+                                            StringComparison compare)
         {
             if (string.IsNullOrEmpty(path) || root == null ||
                 root.Name.Equals(path, StringComparison.OrdinalIgnoreCase))
@@ -1188,7 +1235,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             if (path.Contains("/") && path.Substring(0, path.IndexOf('/'))
-                    .Equals(root.Name, compare))
+                                          .Equals(root.Name, compare))
             {
                 return root.FindChild(path.Substring(path.IndexOf('/') + 1), searchChildren, compare);
             }
@@ -1201,7 +1248,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             return FindChildByType(path, searchChildren, type, StringComparison.OrdinalIgnoreCase);
         }
 
-        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type, StringComparison compare)
+        public ResourceNode FindChildByType(string path, bool searchChildren, ResourceType type,
+                                            StringComparison compare)
         {
             if (path == null)
             {
@@ -1253,7 +1301,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public ResourceNode FindChild(string path, bool searchChildren)
         {
-           return FindChild(path, searchChildren, StringComparison.OrdinalIgnoreCase);
+            return FindChild(path, searchChildren, StringComparison.OrdinalIgnoreCase);
         }
 
         public ResourceNode FindChild(string path, bool searchChildren, StringComparison compare)
@@ -1416,7 +1464,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                         if (tempBres is BRRESNode)
                                         {
                                             foreach (MDL0Node m in ((BRRESNode) tempBres).GetFolder<MDL0Node>()
-                                                .Children)
+                                                                                         .Children)
                                             {
                                                 nodes.Add(m);
                                             }
@@ -1430,6 +1478,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                                 }
                                 catch
                                 {
+                                    // ignored
                                 }
                             }
                         }
@@ -1438,6 +1487,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             catch
             {
+                // ignored
             }
 
             return nodes.ToArray();

@@ -16,7 +16,7 @@ namespace BrawlLib.OpenGL
         protected Rectangle _region;
 
         protected GLTexture _bgImage = null;
-        protected bool _updateImage = false;
+        protected bool _updateImage;
         protected BGImageType _bgType = BGImageType.Stretch;
         protected Image _backImg;
         protected Color _backColor = Color.FromKnownColor(KnownColor.Control);
@@ -242,17 +242,17 @@ namespace BrawlLib.OpenGL
             Invalidate();
         }
 
-        public static GLViewport DefaultPerspective => new GLViewport()
+        public static GLViewport DefaultPerspective => new GLViewport
         {
             _type = ViewportProjection.Perspective,
             _camera = new GLCamera(),
             _percentages = new Vector4(0.0f, 0.0f, 1.0f, 1.0f),
         };
 
-        public static GLViewport BaseOrtho => new GLViewport()
+        public static GLViewport BaseOrtho => new GLViewport
         {
             _type = ViewportProjection.Orthographic,
-            _camera = new GLCamera()
+            _camera = new GLCamera
             {
                 _ortho = true,
                 _nearZ = -10000.0f,

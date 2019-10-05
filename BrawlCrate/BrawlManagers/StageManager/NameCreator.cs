@@ -44,7 +44,7 @@ namespace BrawlCrate.StageManager
             bool corner = fontData.Corner;
             int x = corner ? -4 : 104;
             int y = corner ? 62 : 28 - fontData.VerticalOffset;
-            g.DrawString(text, fontData.Font, new SolidBrush(Color.White), x, y, new StringFormat()
+            g.DrawString(text, fontData.Font, new SolidBrush(Color.White), x, y, new StringFormat
             {
                 Alignment = corner ? StringAlignment.Near : StringAlignment.Center,
                 LineAlignment = corner ? StringAlignment.Far : StringAlignment.Center,
@@ -58,13 +58,13 @@ namespace BrawlCrate.StageManager
             Graphics g = Graphics.FromImage(b);
             g.FillRectangle(new SolidBrush(Color.Black), 0, 0, 208, 56);
             g.DrawString(line1, fontData.Font, new SolidBrush(Color.White), 104, 13 - fontData.VerticalOffset,
-                new StringFormat()
+                new StringFormat
                 {
                     Alignment = StringAlignment.Center,
                     LineAlignment = StringAlignment.Center,
                 });
             g.DrawString(line2, fontData.Font, new SolidBrush(Color.White), 104, 43 - fontData.VerticalOffset,
-                new StringFormat()
+                new StringFormat
                 {
                     Alignment = StringAlignment.Center,
                     LineAlignment = StringAlignment.Center,

@@ -187,12 +187,12 @@ namespace BrawlLib.Wii.Models
                 if (remake)
                 {
                     BoneCache = Model._boneGroup.FindChildrenByType(null, ResourceType.MDL0Bone)
-                        .Select(x => x as MDL0BoneNode).ToArray();
+                                     .Select(x => x as MDL0BoneNode).ToArray();
                 }
                 else
                 {
                     BoneCache = Model._boneGroup.FindChildrenByType(null, ResourceType.MDL0Bone)
-                        .Select(x => x as MDL0BoneNode).OrderBy(x => x.BoneIndex).ToArray();
+                                     .Select(x => x as MDL0BoneNode).OrderBy(x => x.BoneIndex).ToArray();
                 }
             }
             else
@@ -209,7 +209,7 @@ namespace BrawlLib.Wii.Models
 
         public static ModelLinker Prepare(MDL0Node model)
         {
-            ModelLinker linker = new ModelLinker()
+            ModelLinker linker = new ModelLinker
             {
                 Model = model,
                 Version = model._version

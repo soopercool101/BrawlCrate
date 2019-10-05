@@ -2,6 +2,7 @@
 using BrawlCrate.Properties;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -11,87 +12,6 @@ namespace BrawlCrate
 {
     public class ResourceTree : TreeViewMS
     {
-        private static ImageList _imgList;
-
-        public static ImageList Images
-        {
-            get
-            {
-                if (_imgList == null)
-                {
-                    _imgList = new ImageList
-                    {
-                        ImageSize = new Size(24, 24),
-                        ColorDepth = ColorDepth.Depth32Bit
-                    };
-                    _imgList.Images.AddRange(new Image[]
-                    {
-                        Resources.Unknown, //0
-                        Resources.Folder,
-                        Resources.ARC,
-                        Resources.BRES,
-                        Resources.MSG,
-                        Resources.TEX0, //5
-                        Resources.PLT0,
-                        Resources.MDL0,
-                        Resources.CHR,
-                        Resources.CLR,
-                        Resources.VIS, //10
-                        Resources.SHP,
-                        Resources.SRT,
-                        Resources.RSAR,
-                        Resources.RSTM,
-                        Resources.S, //15
-                        Resources.G,
-                        Resources.T,
-                        Resources.B,
-                        Resources.EFLS,
-                        Resources.Coll, //20
-                        Resources.REFF,
-                        Resources.AI,
-                        Resources.AIPD,
-                        Resources.ATKD,
-                        Resources.CE, //25
-                        Resources.MDef,
-                        Resources.Event,
-                        Resources.REFT,
-                        Resources.PAT,
-                        Resources.IMG, //30
-                        Resources.SCN0,
-                        Resources.STPM,
-                        Resources.TPL,
-                        Resources.Palette,
-                        Resources.U8, //35
-                        Resources.REFFEntry,
-                        Resources.BLOC,
-                        Resources.STDT,
-                        Resources.GDOR,
-                        Resources.GEG1, //40
-                        Resources.ENEMY,
-                        Resources.GMOV,
-                        Resources.GSND,
-                        Resources.GMOT,
-                        Resources.ADSJ, //45
-                        Resources.GBLK,
-                        Resources.GMPS,
-                        Resources.Redirect,
-                        Resources.REL,
-                        Resources.BGMG, //50
-                        Resources.SharedTEX0,
-                        Resources.SCLA,
-                        Resources.GDBF,
-                        Resources.GWAT,
-                        Resources.GCAM, //55
-                        Resources.GITM,
-                        Resources.GIB2,
-                        Resources.itembox
-                    });
-                }
-
-                return _imgList;
-            }
-        }
-
         public event EventHandler SelectionChanged;
 
         private bool _allowContextMenus = true;
@@ -103,7 +23,7 @@ namespace BrawlCrate
             set => _allowContextMenus = value;
         }
 
-        private bool _allowIcons = false;
+        private bool _allowIcons;
 
         [DefaultValue(false)]
         public bool ShowIcons
@@ -112,7 +32,7 @@ namespace BrawlCrate
             set
             {
                 _allowIcons = value;
-                ImageList = _allowIcons ? Images : null;
+                ImageList = _allowIcons ? Icons.ImageList : null;
             }
         }
 
@@ -133,6 +53,16 @@ namespace BrawlCrate
             }
         }
 
+        public new List<TreeNode> SelectedNodes
+        {
+            get => base.SelectedNodes;
+            set
+            {
+                base.SelectedNodes = value;
+                SelectionChanged?.Invoke(this, null);
+            }
+        }
+
         public ResourceTree()
         {
             SetStyle(ControlStyles.UserMouse, true);
@@ -142,14 +72,14 @@ namespace BrawlCrate
 
             AllowDrop = true;
 
-            ItemDrag += new ItemDragEventHandler(treeView_ItemDrag);
-            DragOver += new DragEventHandler(treeView1_DragOver);
-            DragDrop += new DragEventHandler(treeView1_DragDrop);
-            DragEnter += new DragEventHandler(treeView1_DragEnter);
+            ItemDrag += treeView_ItemDrag;
+            DragOver += treeView1_DragOver;
+            DragDrop += treeView1_DragDrop;
+            DragEnter += treeView1_DragEnter;
             DragLeave += treeView1_DragLeave;
-            GiveFeedback += new GiveFeedbackEventHandler(treeView1_GiveFeedback);
+            GiveFeedback += treeView1_GiveFeedback;
 
-            m_DelegateOpenFile = new DelegateOpenFile(ImportFile);
+            m_DelegateOpenFile = ImportFile;
         }
 
         public BaseWrapper FindResource(ResourceNode node)
@@ -212,9 +142,9 @@ namespace BrawlCrate
             base.WndProc(ref m);
         }
 
-        private ContextMenuStrip GetMultiSelectMenuStrip()
+        public ContextMenuStrip GetMultiSelectMenuStrip()
         {
-            System.Collections.Generic.List<TreeNode> nodes = SelectedNodes;
+            List<TreeNode> nodes = SelectedNodes;
             MultiSelectableWrapper singleNode = SelectedNode as MultiSelectableWrapper;
             if (singleNode == null)
             {
@@ -224,10 +154,11 @@ namespace BrawlCrate
             foreach (TreeNode node in nodes)
             {
                 Type type = node.GetType();
-                if (!type.IsAssignableFrom(singleNode.GetType()))
+                if (!type.IsInstanceOfType(singleNode))
                 {
                     // More than one type of node is selected
-                    return null;
+                    // Return the generic multi-select menu
+                    return new GenericWrapper().MultiSelectMenuStrip;
                 }
             }
 
@@ -248,8 +179,14 @@ namespace BrawlCrate
 
         protected override void OnAfterSelect(TreeViewEventArgs e)
         {
-            SelectedNode = e.Node;
+            bool refresh = _selected == e.Node;
+            base.SelectedNode = e.Node;
             base.OnAfterSelect(e);
+            SelectedNode = e.Node;
+            if (refresh)
+            {
+                SelectionChanged?.Invoke(this, null);
+            }
         }
 
         protected override void OnBeforeExpand(TreeViewCancelEventArgs e)
@@ -279,8 +216,8 @@ namespace BrawlCrate
             base.Dispose(disposing);
         }
 
-        private TreeNode _dragNode = null;
-        private TreeNode _tempDropNode = null;
+        private TreeNode _dragNode;
+        private TreeNode _tempDropNode;
         private readonly Timer _timer = new Timer();
 
         private readonly ImageList imageListDrag = new ImageList();
@@ -299,7 +236,7 @@ namespace BrawlCrate
 
             Graphics gfx = Graphics.FromImage(bmp);
 
-            gfx.DrawImage(Images.Images[SelectedNode.ImageIndex], 0, 0);
+            gfx.DrawImage(Icons.ImageList.Images[SelectedNode.ImageIndex], 0, 0);
 
             gfx.DrawString(_dragNode.Text,
                 Font,
@@ -389,6 +326,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 
@@ -441,23 +379,20 @@ namespace BrawlCrate
 
         private static bool CompareToType(Type compared, Type to)
         {
-            Type bType;
             if (compared == to)
             {
                 return true;
             }
-            else
-            {
-                bType = compared.BaseType;
-                while (bType != null && bType != typeof(ResourceNode))
-                {
-                    if (to == bType)
-                    {
-                        return true;
-                    }
 
-                    bType = bType.BaseType;
+            Type bType = compared.BaseType;
+            while (bType != null && bType != typeof(ResourceNode))
+            {
+                if (to == bType)
+                {
+                    return true;
                 }
+
+                bType = bType.BaseType;
             }
 
             return false;
@@ -470,29 +405,26 @@ namespace BrawlCrate
 
         private static bool CompareTypes(Type type1, Type type2)
         {
-            Type bType1, bType2;
             if (type1 == type2)
             {
                 return true;
             }
-            else
-            {
-                bType2 = type2.BaseType;
-                while (bType2 != null && bType2 != typeof(ResourceNode))
-                {
-                    bType1 = type1.BaseType;
-                    while (bType1 != null && bType1 != typeof(ResourceNode))
-                    {
-                        if (bType1 == bType2)
-                        {
-                            return true;
-                        }
 
-                        bType1 = bType1.BaseType;
+            Type bType2 = type2.BaseType;
+            while (bType2 != null && bType2 != typeof(ResourceNode))
+            {
+                Type bType1 = type1.BaseType;
+                while (bType1 != null && bType1 != typeof(ResourceNode))
+                {
+                    if (bType1 == bType2)
+                    {
+                        return true;
                     }
 
-                    bType2 = bType2.BaseType;
+                    bType1 = bType1.BaseType;
                 }
+
+                bType2 = bType2.BaseType;
             }
 
             return false;
@@ -505,40 +437,39 @@ namespace BrawlCrate
                 return false;
             }
 
-            bool good = false;
             int destIndex = dropping.Index;
 
-            good = CompareTypes(dragging, dropping);
+            bool good = CompareTypes(dragging, dropping);
 
             //if (dropping.Parent is BRESGroupNode)
             foreach (Type t in dropping.Parent.AllowedChildTypes)
             {
+                // ReSharper disable once AssignmentInConditionalExpression
                 if (good = CompareToType(dragging.GetType(), t))
                 {
                     break;
                 }
             }
 
-            if (good)
+            if (!good)
             {
-                if (dragging.Parent != null)
-                {
-                    dragging.Parent.RemoveChild(dragging);
-                }
-
-                if (destIndex < dropping.Parent.Children.Count)
-                {
-                    dropping.Parent.InsertChild(dragging, true, destIndex);
-                }
-                else
-                {
-                    dropping.Parent.AddChild(dragging, true);
-                }
-
-                dragging.OnMoved();
+                return false;
             }
 
-            return good;
+            dragging.Parent?.RemoveChild(dragging);
+
+            if (destIndex < dropping.Parent.Children.Count)
+            {
+                dropping.Parent.InsertChild(dragging, true, destIndex);
+            }
+            else
+            {
+                dropping.Parent.AddChild(dragging, true);
+            }
+
+            dragging.OnMoved();
+
+            return true;
         }
 
         private static bool TryAddChild(ResourceNode dragging, ResourceNode dropping)
@@ -554,6 +485,7 @@ namespace BrawlCrate
             {
                 foreach (Type t in dropping.AllowedChildTypes)
                 {
+                    // ReSharper disable once AssignmentInConditionalExpression
                     if (good = CompareToType(dt, t))
                     {
                         break;
@@ -561,19 +493,18 @@ namespace BrawlCrate
                 }
             }
 
-            if (good)
+            if (!good)
             {
-                if (dragging.Parent != null)
-                {
-                    dragging.Parent.RemoveChild(dragging);
-                }
-
-                dropping.AddChild(dragging);
-
-                dragging.OnMoved();
+                return false;
             }
 
-            return good;
+            dragging.Parent?.RemoveChild(dragging);
+
+            dropping.AddChild(dragging);
+
+            dragging.OnMoved();
+
+            return true;
         }
 
         private void treeView1_DragDrop(object sender, DragEventArgs e)
@@ -585,51 +516,41 @@ namespace BrawlCrate
 
             if (a != null)
             {
-                string s = null;
                 for (int i = 0; i < a.Length; i++)
                 {
-                    s = a.GetValue(i).ToString();
+                    string s = a.GetValue(i).ToString();
                     BeginInvoke(m_DelegateOpenFile, s, dropNode);
                 }
             }
-            else
+            else if (_dragNode != dropNode)
             {
-                if (_dragNode != dropNode)
+                BaseWrapper drag = (BaseWrapper) _dragNode;
+                BaseWrapper drop = (BaseWrapper) dropNode;
+                ResourceNode dragging = drag.Resource;
+                ResourceNode dropping = drop.Resource;
+
+                if (dropping.Parent == null)
                 {
-                    BaseWrapper drag = (BaseWrapper) _dragNode;
-                    BaseWrapper drop = (BaseWrapper) dropNode;
-                    ResourceNode dragging = drag.Resource;
-                    ResourceNode dropping = drop.Resource;
-
-                    if (dropping.Parent == null)
-                    {
-                        goto End;
-                    }
-
-                    bool ok = false;
-                    if (ModifierKeys == Keys.Shift)
-                    {
-                        ok = TryAddChild(dragging, dropping);
-                    }
-                    else
-                    {
-                        ok = TryDrop(dragging, dropping);
-                    }
-
-                    if (ok)
-                    {
-                        BaseWrapper b = FindResource(dragging);
-                        if (b != null)
-                        {
-                            b.EnsureVisible();
-                            SelectedNode = b;
-                        }
-                    }
-
-                    End:
-                    _dragNode = null;
-                    _timer.Enabled = false;
+                    goto End;
                 }
+
+                bool ok = ModifierKeys == Keys.Shift
+                    ? TryAddChild(dragging, dropping)
+                    : TryDrop(dragging, dropping);
+
+                if (ok)
+                {
+                    BaseWrapper b = FindResource(dragging);
+                    if (b != null)
+                    {
+                        b.EnsureVisible();
+                        SelectedNode = b;
+                    }
+                }
+
+                End:
+                _dragNode = null;
+                _timer.Enabled = false;
             }
         }
 
@@ -695,7 +616,7 @@ namespace BrawlCrate
         }
     }
 
-    public class DragHelper
+    public static class DragHelper
     {
         [DllImport("comctl32.dll")]
         public static extern bool InitCommonControls();

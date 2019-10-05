@@ -776,8 +776,8 @@ namespace BrawlLib.Modeling
             int offset = 0;
             foreach (ModelMaterial m in _materials)
             {
-                PrimitiveManager manager = new PrimitiveManager() {_pointCount = (int) m._faceVertCount};
-                MDL0ObjectNode p = new MDL0ObjectNode()
+                PrimitiveManager manager = new PrimitiveManager {_pointCount = (int) m._faceVertCount};
+                MDL0ObjectNode p = new MDL0ObjectNode
                 {
                     _manager = manager,
                     _drawCalls = new System.ComponentModel.BindingList<DrawCall>()

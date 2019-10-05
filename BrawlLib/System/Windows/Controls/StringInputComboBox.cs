@@ -28,7 +28,7 @@ namespace System.Windows.Forms
 
                 UpdateText();
 
-                if (check == true)
+                if (check)
                 {
                     _oldValue = Text;
                     check = false;

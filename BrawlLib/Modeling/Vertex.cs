@@ -296,8 +296,8 @@ namespace BrawlLib.Modeling
         }
 
         internal float _baseWeight = 0;
-        internal float[] _weights = null;
-        internal MDL0VertexNode[] _nodes = null;
+        internal float[] _weights;
+        internal MDL0VertexNode[] _nodes;
         internal Vector3 _bCenter = new Vector3();
 
         public void SetPosition(MDL0VertexNode node, Vector3 pos)
@@ -393,7 +393,7 @@ namespace BrawlLib.Modeling
         }
 
         public Color HighlightColor = Color.Transparent;
-        private bool _selected = false;
+        private bool _selected;
 
         [Browsable(false)]
         public bool Selected

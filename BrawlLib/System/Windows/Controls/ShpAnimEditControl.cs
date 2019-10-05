@@ -10,7 +10,7 @@ namespace System.Windows.Forms
         private int _numFrames;
 
         private int _currentPage = 1;
-        private float _currentValue = 0;
+        private float _currentValue;
         private readonly NumericInputBox[] _boxes = new NumericInputBox[1];
         private Panel panel1;
         private Label label2;

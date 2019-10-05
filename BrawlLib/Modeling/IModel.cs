@@ -38,6 +38,7 @@ namespace BrawlLib.Modeling
         public bool _renderPolygons = true;
         public bool _renderWireframe = false;
         public bool _renderBones = false;
+        public bool _renderMetal = false;
         public bool _renderVertices = false;
         public bool _renderNormals = false;
         public bool _dontRenderOffscreen = false;

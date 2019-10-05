@@ -349,7 +349,7 @@ namespace System.Windows.Forms
                                 if (leftPanel.InvokeRequired)
                                 {
                                     Action<int, int, bool, MDL0ObjectNode> d =
-                                        new Action<int, int, bool, MDL0ObjectNode>(leftPanel.SetRenderState);
+                                        leftPanel.SetRenderState;
                                     Invoke(d, new object[] {objKey.Key, i, render, obj});
                                 }
                                 else
@@ -522,7 +522,7 @@ namespace System.Windows.Forms
         {
             base.InitHotkeyList();
 
-            List<HotKeyInfo> temp = new List<HotKeyInfo>()
+            List<HotKeyInfo> temp = new List<HotKeyInfo>
             {
                 new HotKeyInfo(Keys.A, true, false, false, HotkeySelectAllVertices),
                 new HotKeyInfo(Keys.A, false, false, false, HotkeyToggleLeftPanel),
@@ -607,7 +607,7 @@ namespace System.Windows.Forms
 
         public ModelEditorSettings CollectSettings()
         {
-            ModelEditorSettings settings = new ModelEditorSettings()
+            ModelEditorSettings settings = new ModelEditorSettings
             {
                 RetrieveCorrAnims = RetrieveCorrespondingAnimations,
                 DisplayExternalAnims = chkExternalAnims.Checked,
@@ -1096,6 +1096,16 @@ namespace System.Windows.Forms
             {
                 _updating = true;
                 //scaleBonesToolStripMenuItem.Checked = value;
+                _updating = false;
+            }
+        }
+
+        private void ModelPanel_RenderMetalsChanged(ModelPanel panel, bool value)
+        {
+            if (ModelPanel == panel && !_updating)
+            {
+                _updating = true;
+                toggleMetals.Checked = value;
                 _updating = false;
             }
         }

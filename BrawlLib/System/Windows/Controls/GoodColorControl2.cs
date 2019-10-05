@@ -110,7 +110,7 @@ namespace System.Windows.Forms
             pnlNew.Name = "pnlNew";
             pnlNew.Size = new Drawing.Size(90, 37);
             pnlNew.TabIndex = 6;
-            pnlNew.Paint += new PaintEventHandler(pnlNew_Paint);
+            pnlNew.Paint += pnlNew_Paint;
             // 
             // pnlOld
             // 
@@ -119,7 +119,7 @@ namespace System.Windows.Forms
             pnlOld.Name = "pnlOld";
             pnlOld.Size = new Drawing.Size(90, 37);
             pnlOld.TabIndex = 5;
-            pnlOld.Paint += new PaintEventHandler(pnlOld_Paint);
+            pnlOld.Paint += pnlOld_Paint;
             // 
             // goodColorControl1
             // 
@@ -186,7 +186,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _showOld = false;
+        private bool _showOld;
 
         public bool ShowOldColor
         {
@@ -281,7 +281,7 @@ namespace System.Windows.Forms
             return UITypeEditorEditStyle.DropDown;
         }
 
-        private IWindowsFormsEditorService _service = null;
+        private IWindowsFormsEditorService _service;
 
         public override object EditValue(
             ITypeDescriptorContext context,

@@ -16,7 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         static MDL0TextureNode()
         {
-            _folderWatcher = new FileSystemWatcher() {Filter = "*.*", IncludeSubdirectories = false};
+            _folderWatcher = new FileSystemWatcher {Filter = "*.*", IncludeSubdirectories = false};
         }
 
         //internal MDL0Texture* Header { get { return (MDL0Texture*)WorkingUncompressed.Address; } }
@@ -132,7 +132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public PLT0Node _palette = null;
+        public PLT0Node _palette;
 
         internal unsafe void Prepare(MDL0MaterialRefNode mRef, int shaderProgramHandle, string palette = null)
         {
@@ -219,6 +219,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private int _index = -1;
         private int _program = -1;
         private bool _isMetal;
+
         private unsafe void Load(int index, int program, MDL0Node model, bool isMetal)
         {
             _index = index;
@@ -254,7 +255,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TEX0Node tNode;
-            if (bmp == null && (Source == null || !(Source is TEX0Node)) && TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
+            if (bmp == null && (Source == null || !(Source is TEX0Node)) &&
+                TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
                 List<ResourceNode> nodes = RootNode.GetChildrenRecursive();
                 if (model?.BRESNode?.Parent != null)
@@ -267,7 +269,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                     ARCEntryNode a;
                     BRRESNode b;
                     bool redirect = false;
-                    if ((a = n as ARCEntryNode) != null && bres != null && bres.GroupID == a.GroupID && (b = a.RedirectNode as BRRESNode) != null)
+                    if ((a = n as ARCEntryNode) != null && bres != null && bres.GroupID == a.GroupID &&
+                        (b = a.RedirectNode as BRRESNode) != null)
                     {
                         redirect = true;
                     }
@@ -276,17 +279,20 @@ namespace BrawlLib.SSBB.ResourceNodes
                         continue;
                     }
 
-                    if (a.FileType != ARCFileType.TextureData || (!redirect && bres != null && bres.GroupID != b.GroupID))
+                    if (a.FileType != ARCFileType.TextureData || !redirect && bres != null && bres.GroupID != b.GroupID)
                     {
                         continue;
                     }
+
                     //Search node itself first
-                    if ((tNode = b.FindChild("Textures(NW4R)/" + Name, false, StringComparison.Ordinal) as TEX0Node) != null)
+                    if ((tNode = b.FindChild("Textures(NW4R)/" + Name, false, StringComparison.Ordinal) as TEX0Node) !=
+                        null)
                     {
                         Source = tNode;
                         Texture.Attach(tNode, _palette);
                         return;
                     }
+
                     //Then search the directory
                     bmp = SearchDirectory(n._origPath);
 
@@ -314,6 +320,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         Texture.Default();
                         return;
                     }
+
                     using (MemoryStream ms = new MemoryStream())
                     {
                         stream.CopyTo(ms);
@@ -324,6 +331,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 return;
             }
+
             Texture.Default();
         }
 

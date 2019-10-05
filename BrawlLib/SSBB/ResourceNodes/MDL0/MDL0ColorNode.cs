@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0ColorData* Header => (MDL0ColorData*) WorkingUncompressed.Address;
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0ColorData _hdr = new MDL0ColorData();
+        private MDL0ColorData _hdr;
 
         [Category("Color Data")] public int ID => _hdr._index;
         [Category("Color Data")] public bool IsRGBA => _hdr._isRGBA != 0;

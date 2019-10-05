@@ -354,7 +354,7 @@ namespace System.Windows.Forms
         public NumericInputBox numPosY;
         private Label label1;
         public NumericInputBox numPosX;
-        private int _colorIndex = 0;
+        private int _colorIndex;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         public NumericInputBox numNormZ;
@@ -368,7 +368,7 @@ namespace System.Windows.Forms
         private Label colorBox;
         public MDL0BoneNode _targetBone;
 
-        public bool _updating = false;
+        public bool _updating;
         private Button btnAverage;
         private Label label7;
         private ComboBox comboBox1;
@@ -435,7 +435,7 @@ namespace System.Windows.Forms
             }
             else
             {
-                if (Enabled != false)
+                if (Enabled)
                 {
                     Enabled = false;
                 }

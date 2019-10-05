@@ -24,7 +24,7 @@ namespace BrawlManagerLib
 
         public static void ShowDialog(string text, string title = "")
         {
-            new TextBoxDialog()
+            new TextBoxDialog
             {
                 DisplayText = text,
                 Text = title

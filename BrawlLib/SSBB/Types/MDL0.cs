@@ -981,7 +981,7 @@ namespace BrawlLib.SSBBTypes
         public bfloat TexRotation;
         public BVec2 TexTranslation;
 
-        public static readonly TextureSRT Default = new TextureSRT()
+        public static readonly TextureSRT Default = new TextureSRT
         {
             TexScale = new Vector2(1),
             TexRotation = 0,
@@ -1031,7 +1031,7 @@ namespace BrawlLib.SSBBTypes
             }
         }
 
-        public static readonly TexMtxEffect Default = new TexMtxEffect()
+        public static readonly TexMtxEffect Default = new TexMtxEffect
         {
             SCNCamera = -1,
             SCNLight = -1,
@@ -1054,7 +1054,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct MDL0TexSRTData
     {
-        public static readonly MDL0TexSRTData Default = new MDL0TexSRTData()
+        public static readonly MDL0TexSRTData Default = new MDL0TexSRTData
         {
             Tex1Flags = TextureSRT.Default,
             Tex2Flags = TextureSRT.Default,
@@ -1337,7 +1337,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct MatDLData
     {
-        public static readonly MatDLData Default = new MatDLData()
+        public static readonly MatDLData Default = new MatDLData
         {
             _mode = MatModeBlock.Default,
             _color = MatTevColorBlock.Default,
@@ -1355,7 +1355,7 @@ namespace BrawlLib.SSBBTypes
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct MatIndMtxBlock
     {
-        public static readonly MatIndMtxBlock Default = new MatIndMtxBlock()
+        public static readonly MatIndMtxBlock Default = new MatIndMtxBlock
         {
             bpReg1 = 0x61,
             RAS1_SS0 = BPMemory.BPMEM_RAS1_SS0,
@@ -1430,7 +1430,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 32;
 
-        public static readonly MatModeBlock Default = new MatModeBlock()
+        public static readonly MatModeBlock Default = new MatModeBlock
         {
             _alphafuncCmd = 0xF361,
             AlphaFunction = GXAlphaFunction.Default,
@@ -1465,7 +1465,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 64;
 
-        public static readonly MatTevColorBlock Default = new MatTevColorBlock()
+        public static readonly MatTevColorBlock Default = new MatTevColorBlock
         {
             _tr1LCmd = 0xE261,
             _tr1HCmd0 = 0xE361,
@@ -1516,7 +1516,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 64;
 
-        public static readonly MatTevKonstBlock Default = new MatTevKonstBlock()
+        public static readonly MatTevKonstBlock Default = new MatTevKonstBlock
         {
             _tr0LoCmd = 0xE061,
             TevReg0Lo = ColorReg.Konstant,
@@ -1561,7 +1561,7 @@ namespace BrawlLib.SSBBTypes
     {
         public const int Size = 64;
 
-        public static readonly KSelSwapBlock Default = new KSelSwapBlock()
+        public static readonly KSelSwapBlock Default = new KSelSwapBlock
         {
             Reg00 = 0x61,
             Reg01 = 0x61,
@@ -1707,7 +1707,7 @@ namespace BrawlLib.SSBBTypes
         public BPCommand _evenCmd;      //CMD (Indirect Texture) Even
         public BPCommand _oddCmd;       //CMD (Indirect Texture) Odd (Optional)
 
-        public static readonly StageGroup Default = new StageGroup()
+        public static readonly StageGroup Default = new StageGroup
         {
             _mask = new BPCommand(true) {Mem = BPMemory.BPMEM_BP_MASK, Data = new BUInt24(0xFFFFF0)},
             _ksel = new BPCommand(true) {Mem = BPMemory.BPMEM_TEV_KSEL0},
@@ -1985,7 +1985,7 @@ namespace BrawlLib.SSBBTypes
         public bushort CPSetUVATC; //0x0890
         public buint UVATC;
 
-        public static readonly MDL0PolygonDefs Default = new MDL0PolygonDefs()
+        public static readonly MDL0PolygonDefs Default = new MDL0PolygonDefs
         {
             CPSetFmtLo = 0x0850,
             CPSetFmtHi = 0x0860,

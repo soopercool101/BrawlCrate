@@ -32,9 +32,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             _texEnabled = useTex;
         }
 
-        public ColorEnv _colorEnv = new ColorEnv();
-        public AlphaEnv _alphaEnv = new AlphaEnv();
-        public CMD _cmd = new CMD();
+        public ColorEnv _colorEnv;
+        public AlphaEnv _alphaEnv;
+        public CMD _cmd;
         public TevKColorSel _kcSel;
         public TevKAlphaSel _kaSel;
         public TexMapID _texMapID;

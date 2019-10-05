@@ -4,7 +4,7 @@ namespace System.Windows.Forms
 {
     public partial class ModelEditControl : ModelEditorBase
     {
-        public int prevHeight = 0, prevWidth = 0;
+        public int prevHeight, prevWidth;
 
         public void ToggleWeightEditor()
         {

@@ -172,6 +172,7 @@ namespace System.Windows.Forms
         private ToolStripMenuItem afterRotationToolStripMenuItem;
         private ToolStripMenuItem btnWeightEditor;
         private ToolStripMenuItem btnVertexEditor;
+        private ToolStripMenuItem toggleMetals;
         public RightPanel rightPanel;
 
         private void InitializeComponent()
@@ -341,6 +342,7 @@ namespace System.Windows.Forms
             vertexEditor = new VertexEditor();
             rightPanel = new RightPanel();
             leftPanel = new LeftPanel();
+            toggleMetals = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             controlPanel.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -427,7 +429,7 @@ namespace System.Windows.Forms
             });
             menuStrip1.Location = new Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Drawing.Size(358, 28);
+            menuStrip1.Size = new Drawing.Size(421, 28);
             menuStrip1.TabIndex = 13;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -442,21 +444,21 @@ namespace System.Windows.Forms
                 closeToolStripMenuItem
             });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Drawing.Size(44, 24);
+            fileToolStripMenuItem.Size = new Drawing.Size(37, 20);
             fileToolStripMenuItem.Text = "File";
             // 
             // newSceneToolStripMenuItem
             // 
             newSceneToolStripMenuItem.Name = "newSceneToolStripMenuItem";
             newSceneToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            newSceneToolStripMenuItem.Size = new Drawing.Size(210, 26);
+            newSceneToolStripMenuItem.Size = new Drawing.Size(175, 22);
             newSceneToolStripMenuItem.Text = "New Scene";
             newSceneToolStripMenuItem.Click += newSceneToolStripMenuItem_Click;
             // 
             // openModelsToolStripMenuItem
             // 
             openModelsToolStripMenuItem.Name = "openModelsToolStripMenuItem";
-            openModelsToolStripMenuItem.Size = new Drawing.Size(210, 26);
+            openModelsToolStripMenuItem.Size = new Drawing.Size(175, 22);
             openModelsToolStripMenuItem.Text = "Load Models";
             openModelsToolStripMenuItem.Click += openFileToolStripMenuItem_Click;
             // 
@@ -469,14 +471,14 @@ namespace System.Windows.Forms
                 saveAsToolStripMenuItem
             });
             openAnimationsToolStripMenuItem.Name = "openAnimationsToolStripMenuItem";
-            openAnimationsToolStripMenuItem.Size = new Drawing.Size(210, 26);
+            openAnimationsToolStripMenuItem.Size = new Drawing.Size(175, 22);
             openAnimationsToolStripMenuItem.Text = "Animations";
             // 
             // btnOpenClose
             // 
             btnOpenClose.Name = "btnOpenClose";
             btnOpenClose.ShortcutKeys = Keys.Control | Keys.O;
-            btnOpenClose.Size = new Drawing.Size(225, 26);
+            btnOpenClose.Size = new Drawing.Size(186, 22);
             btnOpenClose.Text = "Load";
             btnOpenClose.Click += btnLoadAnimations_Click;
             // 
@@ -484,7 +486,7 @@ namespace System.Windows.Forms
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            saveToolStripMenuItem.Size = new Drawing.Size(225, 26);
+            saveToolStripMenuItem.Size = new Drawing.Size(186, 22);
             saveToolStripMenuItem.Text = "Save ";
             saveToolStripMenuItem.Click += btnSave_Click;
             // 
@@ -493,21 +495,21 @@ namespace System.Windows.Forms
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             saveAsToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Shift
                                                                 | Keys.S;
-            saveAsToolStripMenuItem.Size = new Drawing.Size(225, 26);
+            saveAsToolStripMenuItem.Size = new Drawing.Size(186, 22);
             saveAsToolStripMenuItem.Text = "Save As";
             saveAsToolStripMenuItem.Click += btnSaveAs_Click;
             // 
             // openMovesetToolStripMenuItem
             // 
             openMovesetToolStripMenuItem.Name = "openMovesetToolStripMenuItem";
-            openMovesetToolStripMenuItem.Size = new Drawing.Size(210, 26);
+            openMovesetToolStripMenuItem.Size = new Drawing.Size(175, 22);
             openMovesetToolStripMenuItem.Text = "Load Moveset";
             openMovesetToolStripMenuItem.Visible = false;
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Drawing.Size(210, 26);
+            closeToolStripMenuItem.Size = new Drawing.Size(175, 22);
             closeToolStripMenuItem.Text = "Close Window";
             closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
             // 
@@ -521,7 +523,7 @@ namespace System.Windows.Forms
                 settingsToolStripMenuItem
             });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Drawing.Size(73, 24);
+            editToolStripMenuItem.Size = new Drawing.Size(61, 20);
             editToolStripMenuItem.Text = "Options";
             // 
             // btnUndo
@@ -998,7 +1000,7 @@ namespace System.Windows.Forms
             showCameraCoordinatesToolStripMenuItem.Size = new Drawing.Size(259, 26);
             showCameraCoordinatesToolStripMenuItem.Text = "Show Camera Coordinates";
             showCameraCoordinatesToolStripMenuItem.Click +=
-                new EventHandler(showCameraCoordinatesToolStripMenuItem_Click);
+                showCameraCoordinatesToolStripMenuItem_Click;
             // 
             // firstPersonCameraToolStripMenuItem
             // 
@@ -1038,7 +1040,7 @@ namespace System.Windows.Forms
             removeCurrentViewportToolStripMenuItem.Size = new Drawing.Size(259, 26);
             removeCurrentViewportToolStripMenuItem.Text = "Remove Current Viewport";
             removeCurrentViewportToolStripMenuItem.Click +=
-                new EventHandler(removeCurrentViewportToolStripMenuItem_Click);
+                removeCurrentViewportToolStripMenuItem_Click;
             // 
             // modelToolStripMenuItem
             // 
@@ -1047,6 +1049,7 @@ namespace System.Windows.Forms
                 toggleBones,
                 togglePolygons,
                 toggleVertices,
+                toggleMetals,
                 toggleCollisions,
                 wireframeToolStripMenuItem,
                 toggleNormals,
@@ -1162,6 +1165,14 @@ namespace System.Windows.Forms
             chkBillboardBones.Size = new Drawing.Size(189, 26);
             chkBillboardBones.Text = "Billboard Bones";
             chkBillboardBones.Click += chkBillboardBones_Click;
+            // 
+            // toggleMetals
+            // 
+            toggleMetals.Name = "toggleMetals";
+            toggleMetals.Size = new System.Drawing.Size(159, 22);
+            toggleMetals.Text = "Metals";
+            toggleMetals.ShortcutKeyDisplayString = "M Key";
+            toggleMetals.Click += toggleMetals_Event;
             // 
             // fileTypesToolStripMenuItem
             // 
@@ -1359,7 +1370,7 @@ namespace System.Windows.Forms
             averageAllStartEndTangentsToolStripMenuItem.Size = new Drawing.Size(311, 26);
             averageAllStartEndTangentsToolStripMenuItem.Text = "Average all start/end keyframes";
             averageAllStartEndTangentsToolStripMenuItem.Click +=
-                new EventHandler(averageAllStartEndTangentsToolStripMenuItem_Click);
+                averageAllStartEndTangentsToolStripMenuItem_Click;
             // 
             // averageboneStartendTangentsToolStripMenuItem
             // 
@@ -1368,7 +1379,7 @@ namespace System.Windows.Forms
             averageboneStartendTangentsToolStripMenuItem.Size = new Drawing.Size(311, 26);
             averageboneStartendTangentsToolStripMenuItem.Text = "Average entry start/end keyframes";
             averageboneStartendTangentsToolStripMenuItem.Click +=
-                new EventHandler(averageboneStartendTangentsToolStripMenuItem_Click);
+                averageboneStartendTangentsToolStripMenuItem_Click;
             // 
             // liveTextureFolderToolStripMenuItem
             // 
@@ -1462,7 +1473,7 @@ namespace System.Windows.Forms
             deleteAllOtherModelsToolStripMenuItem.Size = new Drawing.Size(299, 26);
             deleteAllOtherModelsToolStripMenuItem.Text = "Delete all other models";
             deleteAllOtherModelsToolStripMenuItem.Click +=
-                new EventHandler(deleteAllOtherModelsToolStripMenuItem_Click);
+                deleteAllOtherModelsToolStripMenuItem_Click;
             // 
             // chkExternalAnims
             // 
@@ -1774,23 +1785,23 @@ namespace System.Windows.Forms
             modelPanel.Name = "modelPanel";
             modelPanel.Size = new Drawing.Size(397, 359);
             modelPanel.TabIndex = 0;
-            modelPanel.RenderFloorChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderFloorChanged);
-            modelPanel.FirstPersonCameraChanged += new ModelPanel.RenderStateEvent(modelPanel_FirstPersonCameraChanged);
-            modelPanel.RenderBonesChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderBonesChanged);
-            modelPanel.RenderModelBoxChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderModelBoxChanged);
-            modelPanel.RenderObjectBoxChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderObjectBoxChanged);
-            modelPanel.RenderVisBoneBoxChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderVisBoneBoxChanged);
-            modelPanel.RenderOffscreenChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderOffscreenChanged);
-            modelPanel.RenderVerticesChanged += new ModelPanel.RenderStateEvent(ModelPanel_RenderVerticesChanged);
-            modelPanel.RenderNormalsChanged += new ModelPanel.RenderStateEvent(modelPanel_RenderNormalsChanged);
-            modelPanel.RenderPolygonsChanged += new ModelPanel.RenderStateEvent(ModelPanel_RenderPolygonsChanged);
-            modelPanel.RenderWireframeChanged += new ModelPanel.RenderStateEvent(ModelPanel_RenderWireframeChanged);
-            modelPanel.UseBindStateBoxesChanged += new ModelPanel.RenderStateEvent(ModelPanel_UseBindStateBoxesChanged);
-            modelPanel.ApplyBillboardBonesChanged +=
-                new ModelPanel.RenderStateEvent(ModelPanel_ApplyBillboardBonesChanged);
-            modelPanel.RenderShadersChanged += new ModelPanel.RenderStateEvent(ModelPanel_RenderShadersChanged);
-            modelPanel.ScaleBonesChanged += new ModelPanel.RenderStateEvent(ModelPanel_ScaleBonesChanged);
-            modelPanel.OnCurrentViewportChanged += new ViewportAction(modelPanel_OnCurrentViewportChanged);
+            modelPanel.RenderMetalsChanged += ModelPanel_RenderMetalsChanged;
+            modelPanel.RenderFloorChanged += modelPanel_RenderFloorChanged;
+            modelPanel.FirstPersonCameraChanged += modelPanel_FirstPersonCameraChanged;
+            modelPanel.RenderBonesChanged += modelPanel_RenderBonesChanged;
+            modelPanel.RenderModelBoxChanged += modelPanel_RenderModelBoxChanged;
+            modelPanel.RenderObjectBoxChanged += modelPanel_RenderObjectBoxChanged;
+            modelPanel.RenderVisBoneBoxChanged += modelPanel_RenderVisBoneBoxChanged;
+            modelPanel.RenderOffscreenChanged += modelPanel_RenderOffscreenChanged;
+            modelPanel.RenderVerticesChanged += ModelPanel_RenderVerticesChanged;
+            modelPanel.RenderNormalsChanged += modelPanel_RenderNormalsChanged;
+            modelPanel.RenderPolygonsChanged += ModelPanel_RenderPolygonsChanged;
+            modelPanel.RenderWireframeChanged += ModelPanel_RenderWireframeChanged;
+            modelPanel.UseBindStateBoxesChanged += ModelPanel_UseBindStateBoxesChanged;
+            modelPanel.ApplyBillboardBonesChanged += ModelPanel_ApplyBillboardBonesChanged;
+            modelPanel.RenderShadersChanged += ModelPanel_RenderShadersChanged;
+            modelPanel.ScaleBonesChanged += ModelPanel_ScaleBonesChanged;
+            modelPanel.OnCurrentViewportChanged += modelPanel_OnCurrentViewportChanged;
             // 
             // label1
             // 
@@ -1967,8 +1978,8 @@ namespace System.Windows.Forms
             Name = "ModelEditControl";
             Size = new Drawing.Size(805, 475);
             SizeChanged += ModelEditControl_SizeChanged;
-            DragDrop += new DragEventHandler(OnDragDrop);
-            DragEnter += new DragEventHandler(OnDragEnter);
+            DragDrop += OnDragDrop;
+            DragEnter += OnDragEnter;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             controlPanel.ResumeLayout(false);
@@ -2028,7 +2039,7 @@ namespace System.Windows.Forms
                 LiveTextureFolderPath.Text =
                     applicationFolder;
 
-            _openFileDelegate = new DelegateOpenFile(OpenFile);
+            _openFileDelegate = OpenFile;
 
             models.DataSource = ModelPanel._renderList;
 

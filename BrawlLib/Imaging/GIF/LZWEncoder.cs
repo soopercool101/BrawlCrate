@@ -68,11 +68,11 @@ namespace Gif.Components
         private readonly int[] codetab = new int[HSIZE];
         private readonly int hsize = HSIZE; // for dynamic table sizing
 
-        private int free_ent = 0; // first unused entry
+        private int free_ent; // first unused entry
 
         // block compression parameters -- after all codes are used up,
         // and compression rate changes, start over.
-        private bool clear_flg = false;
+        private bool clear_flg;
 
         // Algorithm:  use open addressing double hashing (no chaining) on the
         // prefix code / next character combination.  We do a variant of Knuth's
@@ -105,8 +105,8 @@ namespace Gif.Components
         // fit in it exactly).  Use the VAX insv instruction to insert each
         // code in turn.  When the buffer fills up empty it and start over.
 
-        private int cur_accum = 0;
-        private int cur_bits = 0;
+        private int cur_accum;
+        private int cur_bits;
 
         private readonly int[] masks =
         {

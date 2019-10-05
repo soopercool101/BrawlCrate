@@ -330,12 +330,12 @@ namespace BrawlLib.Imaging
 
         public static implicit operator RGBAPixel(ARGBPixel p)
         {
-            return new RGBAPixel() {A = p.A, B = p.B, G = p.G, R = p.R};
+            return new RGBAPixel {A = p.A, B = p.B, G = p.G, R = p.R};
         }
 
         public static implicit operator ARGBPixel(RGBAPixel p)
         {
-            return new ARGBPixel() {A = p.A, B = p.B, G = p.G, R = p.R};
+            return new ARGBPixel {A = p.A, B = p.B, G = p.G, R = p.R};
         }
 
         public static explicit operator Color(RGBAPixel p)
@@ -559,12 +559,12 @@ namespace BrawlLib.Imaging
 
         public static explicit operator RGBPixel(ARGBPixel p)
         {
-            return new RGBPixel() {R = p.R, G = p.G, B = p.B};
+            return new RGBPixel {R = p.R, G = p.G, B = p.B};
         }
 
         public static explicit operator ARGBPixel(RGBPixel p)
         {
-            return new ARGBPixel() {A = 0xFF, R = p.R, G = p.G, B = p.B};
+            return new ARGBPixel {A = 0xFF, R = p.R, G = p.G, B = p.B};
         }
 
         public static explicit operator Color(RGBPixel p)
@@ -574,12 +574,12 @@ namespace BrawlLib.Imaging
 
         public static explicit operator RGBPixel(Color p)
         {
-            return new RGBPixel() {R = p.R, G = p.G, B = p.B};
+            return new RGBPixel {R = p.R, G = p.G, B = p.B};
         }
 
         public static RGBPixel FromIntensity(byte value)
         {
-            return new RGBPixel() {R = value, G = value, B = value};
+            return new RGBPixel {R = value, G = value, B = value};
         }
 
         public override string ToString()
@@ -755,19 +755,17 @@ namespace BrawlLib.Imaging
 
         public static explicit operator GXColorS10(ARGBPixel p)
         {
-            return new GXColorS10() {A = p.A, B = p.B, G = p.G, R = p.R};
+            return new GXColorS10 {A = p.A, B = p.B, G = p.G, R = p.R};
         }
 
         public static explicit operator ARGBPixel(GXColorS10 p)
         {
-            return new ARGBPixel()
-                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new ARGBPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static explicit operator RGBAPixel(GXColorS10 p)
         {
-            return new RGBAPixel()
-                {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
+            return new RGBAPixel {A = (byte) (p.A & 0xFF), B = (byte) (p.B & 0xFF), G = (byte) (p.G & 0xFF), R = (byte) (p.R & 0xFF)};
         }
 
         public static implicit operator Vector4(GXColorS10 p)

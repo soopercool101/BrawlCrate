@@ -221,7 +221,7 @@ namespace System.Windows.Forms
             lstBoneWeights.Name = "lstBoneWeights";
             lstBoneWeights.Size = new Drawing.Size(130, 103);
             lstBoneWeights.TabIndex = 0;
-            lstBoneWeights.DrawItem += new DrawItemEventHandler(lstBoneWeights_DrawItem);
+            lstBoneWeights.DrawItem += lstBoneWeights_DrawItem;
             lstBoneWeights.SelectedIndexChanged += lstBoneWeights_SelectedIndexChanged;
             // 
             // WeightEditor
@@ -413,7 +413,7 @@ namespace System.Windows.Forms
             ResetList();
         }
 
-        public float _weightTotal = 0;
+        public float _weightTotal;
         private Dictionary<string, float[]> _totals = new Dictionary<string, float[]>();
         public List<IBoneNode> _bones;
 
@@ -459,7 +459,7 @@ namespace System.Windows.Forms
         }
 
         public bool _updating = false;
-        public List<MDL0ObjectNode> _anyConverted = null;
+        public List<MDL0ObjectNode> _anyConverted;
 
         public void SetWeight(float value)
         {
@@ -842,8 +842,8 @@ namespace System.Windows.Forms
             //_mainWindow.AnimCtrlPnl.Height += diff;
         }
 
-        private bool _resizing = false;
-        private int o = 0;
+        private bool _resizing;
+        private int o;
 
         private void splitter2_MouseDown(object sender, MouseEventArgs e)
         {

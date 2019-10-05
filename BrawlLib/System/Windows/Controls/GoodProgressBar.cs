@@ -5,7 +5,7 @@ namespace System.Windows.Forms
 {
     public class GoodProgressBar : UserControl
     {
-        private float _min = 0.0f, _max = 1.0f, _current = 0.0f;
+        private float _min, _max = 1.0f, _current;
 
         public float MinValue
         {

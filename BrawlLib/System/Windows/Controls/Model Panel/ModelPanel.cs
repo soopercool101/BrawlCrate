@@ -36,7 +36,7 @@ namespace System.Windows.Forms
         private readonly List<KeyValuePair<ModelPanelViewport, DragFlags>> _dragging =
             new List<KeyValuePair<ModelPanelViewport, DragFlags>>();
 
-        public bool _draggingViewports = false;
+        public bool _draggingViewports;
 
         public BindingList<IRenderedObject> _renderList = new BindingList<IRenderedObject>();
         public List<DrawCallBase> _drawCalls = new List<DrawCallBase>();
@@ -764,6 +764,7 @@ namespace System.Windows.Forms
 
         public event RenderStateEvent
             RenderFloorChanged,
+            RenderMetalsChanged,
             FirstPersonCameraChanged,
             RenderBonesChanged,
             RenderModelBoxChanged,
@@ -810,6 +811,21 @@ namespace System.Windows.Forms
                 Invalidate();
 
                 RenderFloorChanged?.Invoke(this, value);
+            }
+        }
+
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public bool RenderMetals
+        {
+            get => CurrentViewport._renderAttrib._renderMetal;
+            set
+            {
+                CurrentViewport._renderAttrib._renderMetal = value;
+
+                Invalidate();
+
+                RenderMetalsChanged?.Invoke(this, value);
             }
         }
 

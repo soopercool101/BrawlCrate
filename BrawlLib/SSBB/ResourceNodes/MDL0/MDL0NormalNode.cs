@@ -13,7 +13,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public MDL0ObjectNode[] Objects => _objects.ToArray();
         public List<MDL0ObjectNode> _objects = new List<MDL0ObjectNode>();
-        private MDL0NormalData _hdr = new MDL0NormalData() {_type = (int) WiiVertexComponentType.Float};
+        private MDL0NormalData _hdr = new MDL0NormalData {_type = (int) WiiVertexComponentType.Float};
 
         public enum NormalType
         {
@@ -92,8 +92,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public VertexCodec _enc;
-        public bool _forceRebuild = false;
-        public bool _forceFloat = false;
+        public bool _forceRebuild;
+        public bool _forceFloat;
 
         public override int OnCalculateSize(bool force)
         {

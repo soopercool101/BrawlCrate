@@ -53,7 +53,7 @@ namespace BrawlManagerLib
             ButtonLength = 64;
             AllowResizing = true;
 
-            Button = new Button()
+            Button = new Button
             {
                 Cursor = Cursors.Default,
                 FlatStyle = FlatStyle.Popup

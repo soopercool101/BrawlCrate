@@ -229,7 +229,9 @@ namespace BrawlManagerLib
             if (AlternateStageLoaderData.TryGetDefinition(filename, out AlternateStageEntry entry))
             {
                 foreach (AlternateStageEntry.Alternate alt in entry.ButtonActivated.Where(b =>
-                    filename.EndsWith($"_{b.Letter}.pac", StringComparison.InvariantCultureIgnoreCase)))
+                    filename.EndsWith($"_{b.Letter}.pac",
+                        StringComparison
+                            .InvariantCultureIgnoreCase)))
                 {
                     Song newSong = AltStageSongForcer.GetSong(stageID, alt.ButtonMask, originalSong);
                     if (newSong.ID != originalSong.ID)

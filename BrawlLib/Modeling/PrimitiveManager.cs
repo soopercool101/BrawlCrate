@@ -95,11 +95,11 @@ namespace BrawlLib.Modeling
         //Set these in OnCalculateSize!
         public bool _remakePrimitives; //Otherwise, copies previous raw primitive values
         public bool _isWeighted;
-        public int _primitiveSize = 0;
+        public int _primitiveSize;
         public List<FacepointAttribute> _descList;
         public List<VertexAttributeFormat> _fmtList;
         public XFArrayFlags _arrayFlags;
-        public int _fpStride = 0;
+        public int _fpStride;
         public List<PrimitiveGroup> _primGroups = new List<PrimitiveGroup>();
 
         internal int[] _newClrObj = new int[2];
@@ -114,7 +114,7 @@ namespace BrawlLib.Modeling
         /// </summary>
         public PrimitiveManager HardCopy()
         {
-            PrimitiveManager p = new PrimitiveManager()
+            PrimitiveManager p = new PrimitiveManager
             {
                 _vertices = _vertices,
                 _indices = new UnsafeBuffer(_indices.Length),
@@ -548,7 +548,7 @@ namespace BrawlLib.Modeling
                     if (newGroup == false)
                     {
                         groups.Add(group);
-                        group = new PrimitiveGroup() {_offset = (uint) (pData - 1 - pStart)};
+                        group = new PrimitiveGroup {_offset = (uint) (pData - 1 - pStart)};
                         newGroup = true;
                     }
 
@@ -610,12 +610,12 @@ namespace BrawlLib.Modeling
                         goto Finish;
                 }
 
-                if (newGroup == true)
+                if (newGroup)
                 {
                     newGroup = false;
                 }
 
-                group._headers.Add(new PrimitiveHeader() {Type = (WiiPrimitiveType) cmd, Entries = value});
+                group._headers.Add(new PrimitiveHeader {Type = (WiiPrimitiveType) cmd, Entries = value});
 
                 pData += 2;
 
@@ -1223,7 +1223,7 @@ namespace BrawlLib.Modeling
             _descList = new List<FacepointAttribute>();
             _fpStride = 0;
             XFDataFormat fmt;
-            _arrayFlags = new XFArrayFlags() {_data = 0};
+            _arrayFlags = new XFArrayFlags {_data = 0};
 
             if (_isWeighted)
             {
@@ -1246,7 +1246,7 @@ namespace BrawlLib.Modeling
             if (indices[0] > -1 && _faceData[0] != null) //Positions
             {
                 _arrayFlags.HasPositions = true;
-                fmt = forceDirect != null && forceDirect.Length > 0 && forceDirect[0] == true
+                fmt = forceDirect != null && forceDirect.Length > 0 && forceDirect[0]
                     ? XFDataFormat.Direct
                     : (XFDataFormat) (GetVertices(false).Length > byte.MaxValue ? 3 : 2);
                 _descList.Add(new FacepointAttribute(GXAttribute.Position, fmt));
@@ -1262,7 +1262,7 @@ namespace BrawlLib.Modeling
             if (indices[1] > -1 && _faceData[1] != null) //Normals
             {
                 _arrayFlags.HasNormals = true;
-                fmt = forceDirect != null && forceDirect.Length > 1 && forceDirect[1] == true
+                fmt = forceDirect != null && forceDirect.Length > 1 && forceDirect[1]
                     ? XFDataFormat.Direct
                     : (XFDataFormat) (GetNormals(false).Length > byte.MaxValue ? 3 : 2);
                 _descList.Add(new FacepointAttribute(GXAttribute.Normal, fmt));
@@ -1281,7 +1281,7 @@ namespace BrawlLib.Modeling
                 {
                     _arrayFlags.SetHasColor(i - 2, true);
 
-                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i] == true
+                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i]
                         ? XFDataFormat.Direct
                         : (XFDataFormat) (GetColors(i - 2, false).Length > byte.MaxValue ? 3 : 2);
 
@@ -1301,7 +1301,7 @@ namespace BrawlLib.Modeling
                 if (indices[i] > -1 && _faceData[i] != null) //UVs
                 {
                     _arrayFlags.SetHasUVs(i - 4, true);
-                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i] == true
+                    fmt = forceDirect != null && forceDirect.Length > i && forceDirect[i]
                         ? XFDataFormat.Direct
                         : (XFDataFormat) (GetUVs(i - 4, false).Length > byte.MaxValue ? 3 : 2);
                     _descList.Add(new FacepointAttribute((GXAttribute) (i + 9), fmt));
@@ -1805,7 +1805,7 @@ namespace BrawlLib.Modeling
                         Vector3* pIn0 = (Vector3*) _faceData[x].Address;
                         for (int i = 0; i < _pointCount; i++)
                         {
-                            Facepoint f = _facepoints[i] = new Facepoint() {_index = i};
+                            Facepoint f = _facepoints[i] = new Facepoint {_index = i};
                             if (_vertices.Count != 0)
                             {
                                 ushort id = *pIndex++;
@@ -1863,7 +1863,7 @@ namespace BrawlLib.Modeling
                 ushort* pIndex = (ushort*) _indices.Address;
                 for (int i = 0; i < _pointCount; i++)
                 {
-                    Facepoint f = _facepoints[i] = new Facepoint() {_index = i};
+                    Facepoint f = _facepoints[i] = new Facepoint {_index = i};
                     f._vertexIndex = *pIndex++;
                     if (f._vertexIndex < _vertices.Count && f._vertexIndex >= 0)
                     {
@@ -1917,12 +1917,12 @@ namespace BrawlLib.Modeling
                                 for (int i = 0; i < _pointCount; i++)
                                 {
                                     _facepoints[i]._colorIndices[x - 2] = Array
-                                        .IndexOf(
-                                            ((MDL0ObjectNode) ((MDL0Node) Collada
-                                                    .CurrentModel)
-                                                ._objList[_newClrObj[x - 2]])
-                                            ._manager.GetColors(x - 2, false),
-                                            *pIn2++).ClampMin(0);
+                                                                          .IndexOf(
+                                                                              ((MDL0ObjectNode) ((MDL0Node) Collada
+                                                                                      .CurrentModel)
+                                                                                  ._objList[_newClrObj[x - 2]])
+                                                                              ._manager.GetColors(x - 2, false),
+                                                                              *pIn2++).ClampMin(0);
                                 }
                             }
                         }

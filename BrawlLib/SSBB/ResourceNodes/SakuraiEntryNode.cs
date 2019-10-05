@@ -93,13 +93,13 @@ namespace BrawlLib.SSBBTypes
 
         //Sometimes a section will reference an entry contained in another section.
         //This keeps track of that
-        public TableEntryNode _externalEntry = null;
+        public TableEntryNode _externalEntry;
 
         private VoidPtr _rebuildAddress = null;
-        public int _entryLength = 0, _childLength = 0;
+        public int _entryLength, _childLength;
 
         [Browsable(false)] public int LookupCount => _lookupCount;
-        private int _lookupCount = 0;
+        private int _lookupCount;
 
         private List<VoidPtr> _lookupAddresses;
 

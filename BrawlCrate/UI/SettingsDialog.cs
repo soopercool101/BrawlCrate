@@ -124,8 +124,7 @@ namespace BrawlCrate
                 {
                     foreach (string s in info.Extensions)
                     {
-                        listView1.Items.Add(new ListViewItem()
-                            {Text = $"{info.Name} (*.{s})"});
+                        listView1.Items.Add(new ListViewItem {Text = $"{info.Name} (*.{s})"});
                     }
                 }
             }
@@ -978,7 +977,7 @@ namespace BrawlCrate
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
-            listView1.ItemChecked += new ItemCheckedEventHandler(ListView1_ItemChecked);
+            listView1.ItemChecked += ListView1_ItemChecked;
             // 
             // columnHeader1
             // 
@@ -1718,6 +1717,7 @@ namespace BrawlCrate
                 }
                 catch
                 {
+                    // ignored
                 }
 
                 if (f.ShowDialog() == DialogResult.OK)

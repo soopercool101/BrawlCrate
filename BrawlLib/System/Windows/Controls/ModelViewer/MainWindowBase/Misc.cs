@@ -44,11 +44,11 @@ namespace System.Windows.Forms
                 KeyframePanel.visEditor.IndexChanged += VISIndexChanged;
             }
 
-            ModelPanel.PreRender += EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender);
-            ModelPanel.PostRender += EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender);
-            ModelPanel.MouseDown += EventMouseDown = new MouseEventHandler(modelPanel1_MouseDown);
-            ModelPanel.MouseMove += EventMouseMove = new MouseEventHandler(modelPanel1_MouseMove);
-            ModelPanel.MouseUp += EventMouseUp = new MouseEventHandler(modelPanel1_MouseUp);
+            ModelPanel.PreRender += EventPreRender = modelPanel1_PreRender;
+            ModelPanel.PostRender += EventPostRender = modelPanel1_PostRender;
+            ModelPanel.MouseDown += EventMouseDown = modelPanel1_MouseDown;
+            ModelPanel.MouseMove += EventMouseMove = modelPanel1_MouseMove;
+            ModelPanel.MouseUp += EventMouseUp = modelPanel1_MouseUp;
 
             if (PlaybackPanel != null)
             {
@@ -334,6 +334,7 @@ namespace System.Windows.Forms
             }
             catch
             {
+                // ignored
             }
 
             AnimatedGifEncoder e = new AnimatedGifEncoder();
@@ -409,27 +410,29 @@ namespace System.Windows.Forms
 
                     outPath += "\\" + name + i + extension;
                     bool okay = true;
-                    if (extension.Equals(".png"))
+                    if (extension.Equals(".png", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Png);
                     }
-                    else if (extension.Equals(".tga"))
+                    else if (extension.Equals(".tga", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.SaveTGA(outPath);
                     }
-                    else if (extension.Equals(".tiff") || extension.Equals(".tif"))
+                    else if (extension.Equals(".tiff", StringComparison.OrdinalIgnoreCase) ||
+                             extension.Equals(".tif", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Tiff);
                     }
-                    else if (extension.Equals(".bmp"))
+                    else if (extension.Equals(".bmp", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Bmp);
                     }
-                    else if (extension.Equals(".jpg") || outPath.EndsWith(".jpeg"))
+                    else if (extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                             outPath.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Jpeg);
                     }
-                    else if (extension.Equals(".gif"))
+                    else if (extension.Equals(".gif", StringComparison.OrdinalIgnoreCase))
                     {
                         bmp.Save(outPath, ImageFormat.Gif);
                     }
@@ -451,6 +454,7 @@ namespace System.Windows.Forms
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 
@@ -493,11 +497,11 @@ namespace System.Windows.Forms
             OpenFile(file, true, true, true);
         }
 
-        public virtual void OpenFile(string file, bool models = true, bool animations = true, bool etc = true)
+        public virtual void OpenFile(string file, bool models, bool animations = true, bool etc = true)
         {
-            ResourceNode node = null;
             try
             {
+                ResourceNode node;
                 if ((node = NodeFactory.FromFile(null, file)) != null)
                 {
                     _openedFiles.Add(node);

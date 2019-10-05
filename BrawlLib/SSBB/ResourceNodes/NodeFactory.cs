@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using BrawlLib.SSBB.ResourceNodes.Archives;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -52,10 +53,20 @@ namespace BrawlLib.SSBB.ResourceNodes
         //Parser commands must initialize the node before returning.
         public static ResourceNode FromFile(ResourceNode parent, string path)
         {
-            return FromFile(parent, path, FileOptions.RandomAccess);
+            return FromFile(parent, path, FileOptions.RandomAccess, null);
+        }
+
+        public static ResourceNode FromFile(ResourceNode parent, string path, Type t)
+        {
+            return FromFile(parent, path, FileOptions.RandomAccess, t);
         }
 
         public static ResourceNode FromFile(ResourceNode parent, string path, FileOptions options)
+        {
+            return FromFile(parent, path, options, null);
+        }
+
+        public static ResourceNode FromFile(ResourceNode parent, string path, FileOptions options, Type t)
         {
             ResourceNode node = null;
             FileMap map = FileMap.FromFile(path, FileMapProtect.Read, 0, 0, options);
@@ -66,7 +77,8 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     string ext = path.Substring(path.LastIndexOf('.') + 1).ToUpper(CultureInfo.InvariantCulture);
 
-                    if (Forced.ContainsKey(ext) &&
+                    if (!(t is null) && (node = Activator.CreateInstance(t) as ResourceNode) != null
+                        || Forced.ContainsKey(ext) &&
                         (node = Activator.CreateInstance(Forced[ext]) as ResourceNode) != null)
                     {
                         FileMap uncompressedMap = Compressor.TryExpand(ref source, false);
@@ -142,6 +154,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             return n;
+        }
+
+        public static ResourceNode FromFolder(ResourceNode parent, string path)
+        {
+            FolderNode node = new FolderNode();
+            node._origPath = path;
+            node.Initialize(parent, new VoidPtr(), 0);
+            node.OnPopulate();
+            return node;
         }
     }
 }

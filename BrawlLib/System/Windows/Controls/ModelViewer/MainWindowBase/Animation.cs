@@ -166,7 +166,7 @@ namespace System.Windows.Forms
             {
                 if (PlaybackPanel.InvokeRequired)
                 {
-                    Action<int, int> d = new Action<int, int>(PlaybackPanel.UpdateInterface);
+                    Action<int, int> d = PlaybackPanel.UpdateInterface;
                     Invoke(d, new object[] {_animFrame, loopMax});
                 }
                 else
@@ -378,7 +378,7 @@ namespace System.Windows.Forms
                     {
                         if (KeyframePanel.InvokeRequired)
                         {
-                            Action<int> d = new Action<int>(KeyframePanel.UpdateCurrentFrame);
+                            Action<int> d = KeyframePanel.UpdateCurrentFrame;
                             Invoke(d, new object[] {_animFrame});
                         }
 
@@ -906,7 +906,7 @@ namespace System.Windows.Forms
             set => _vis0Updating = value;
         }
 
-        private bool _vis0Updating = false;
+        private bool _vis0Updating;
 
         public virtual void ApplyVIS0ToInterface()
         {

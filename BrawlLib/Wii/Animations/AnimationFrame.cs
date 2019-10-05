@@ -12,7 +12,7 @@ namespace BrawlLib.Wii.Animations
         public static readonly CHRAnimationFrame Identity =
             new CHRAnimationFrame(new Vector3(1.0f), new Vector3(), new Vector3());
 
-        public static readonly CHRAnimationFrame Empty = new CHRAnimationFrame();
+        public static readonly CHRAnimationFrame Empty;
 
         public Vector3 Scale;
         public Vector3 Rotation;
@@ -191,7 +191,7 @@ namespace BrawlLib.Wii.Animations
     public struct SRTAnimationFrame
     {
         public static readonly SRTAnimationFrame Identity = new SRTAnimationFrame(new Vector2(1.0f), 0, new Vector2());
-        public static readonly SRTAnimationFrame Empty = new SRTAnimationFrame();
+        public static readonly SRTAnimationFrame Empty;
 
         public Vector2 Scale;
         public float Rotation;
@@ -315,7 +315,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct FogAnimationFrame
     {
-        public static readonly FogAnimationFrame Empty = new FogAnimationFrame();
+        public static readonly FogAnimationFrame Empty;
 
         public float Start;
         public float End;
@@ -395,7 +395,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GLSLLightFrame
     {
-        public static readonly GLSLLightFrame Empty = new GLSLLightFrame();
+        public static readonly GLSLLightFrame Empty;
 
         //These three vars are used by both specular and diffuse
         public int Enabled; //Don't apply this light if 0
@@ -460,7 +460,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct LightAnimationFrame
     {
-        public static readonly LightAnimationFrame Empty = new LightAnimationFrame();
+        public static readonly LightAnimationFrame Empty;
 
         public Vector3 Start;
         public Vector3 End;
@@ -629,7 +629,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct CameraAnimationFrame
     {
-        public static readonly CameraAnimationFrame Empty = new CameraAnimationFrame();
+        public static readonly CameraAnimationFrame Empty;
 
         public Vector3 Pos;
         public float Aspect;

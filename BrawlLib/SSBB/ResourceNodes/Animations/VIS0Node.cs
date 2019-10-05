@@ -347,7 +347,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 VIS0EntryNode _intEntry = null;
                 if ((_intEntry = (VIS0EntryNode) FindChild(_extEntry.Name, false)) == null)
                 {
-                    VIS0EntryNode newIntEntry = new VIS0EntryNode() {Name = _extEntry.Name};
+                    VIS0EntryNode newIntEntry = new VIS0EntryNode {Name = _extEntry.Name};
 
                     newIntEntry._entryCount = -1;
                     newIntEntry.EntryCount = _extEntry.EntryCount + origIntCount;

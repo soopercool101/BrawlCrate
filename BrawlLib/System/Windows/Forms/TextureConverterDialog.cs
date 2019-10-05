@@ -30,13 +30,13 @@ namespace System.Windows.Forms
             }
         }
 
-        private Bitmap _base = null, _source, _preview, _indexed;
+        private Bitmap _base, _source, _preview, _indexed;
         private ColorInformation _colorInfo;
 
         private UnsafeBuffer _cmprBuffer;
 
         //private ColorPalette _tempPalette;
-        private bool _previewing = true, _updating = false;
+        private bool _previewing = true, _updating;
 
         private string _imageSource;
 
@@ -155,7 +155,7 @@ namespace System.Windows.Forms
             cboAlgorithm.SelectedItem = QuantizationAlgorithm.MedianCut;
         }
 
-        public bool Automatic = false;
+        public bool Automatic;
 
         public DialogResult ShowDialog(IWin32Window owner, BRRESNode parent)
         {
@@ -673,21 +673,21 @@ namespace System.Windows.Forms
                 int palSize = PaletteSize(0x40);
                 lblDataSize.Text = string.Format("{0:n0}B",
                     TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                        .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize);
+                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize);
             }
             else if (_origREFT != null || _reftParent != null)
             {
                 int palSize = PaletteSize(0);
                 lblDataSize.Text = string.Format("{0:n0}B",
                     TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                        .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize);
+                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize);
             }
             else if (_origTPL != null || _tplParent != null)
             {
                 int palSize = PaletteSize(0xC);
                 lblDataSize.Text = string.Format("{0:n0}B",
                     TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                        .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize);
+                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize);
             }
         }
 
@@ -978,20 +978,19 @@ namespace System.Windows.Forms
             }
             else if (_tplParent != null)
             {
-                _origTPL = new TPLTextureNode() {Name = "Texture"};
+                _origTPL = new TPLTextureNode {Name = "Texture"};
                 _tplParent.AddChild(_origTPL);
                 _origTPL.ReplaceRaw(_textureData);
                 if (_paletteData != null)
                 {
-                    _origTPLPlt = new TPLPaletteNode() {Name = "Palette"};
+                    _origTPLPlt = new TPLPaletteNode {Name = "Palette"};
                     _origTPL.AddChild(_origTPLPlt);
                     _origTPLPlt.ReplaceRaw(_paletteData);
                 }
             }
             else if (_reftParent != null)
             {
-                _reftParent.AddChild(_origREFT = new REFTEntryNode()
-                    {Name = Path.GetFileNameWithoutExtension(_imageSource)});
+                _reftParent.AddChild(_origREFT = new REFTEntryNode {Name = Path.GetFileNameWithoutExtension(_imageSource)});
                 _origREFT.ReplaceRaw(_textureData);
             }
             else if (_origTEX0 != null)
@@ -1055,7 +1054,7 @@ namespace System.Windows.Forms
                     }
                     else
                     {
-                        _origTPLPlt = new TPLPaletteNode() {_name = "Palette"};
+                        _origTPLPlt = new TPLPaletteNode {_name = "Palette"};
                         _origTPL.AddChild(_origTPLPlt);
                         _origTPLPlt.ReplaceRaw(_paletteData);
                     }

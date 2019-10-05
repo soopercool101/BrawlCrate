@@ -43,7 +43,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public bool _locked; //For the weight editor
 
-        public Box _extents = new Box();
+        public Box _extents;
         public BoneFlags _boneFlags = (BoneFlags) 0x11F;
         public BillboardFlags _billboardFlags;
         public MDL0BoneNode _bbRefNode;

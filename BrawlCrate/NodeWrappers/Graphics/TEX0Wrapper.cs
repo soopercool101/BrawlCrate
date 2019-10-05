@@ -10,7 +10,13 @@ namespace BrawlCrate.NodeWrappers
     [NodeWrapper(ResourceType.SharedTEX0)]
     public class TEX0Wrapper : GenericWrapper
     {
+        #region Menu
+
         private static readonly ContextMenuStrip _menu;
+        private static readonly ContextMenuStrip MultiSelectMenu;
+
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
 
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
@@ -27,12 +33,19 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ToolStripMenuItem DeleteToolStripMenuItem =
             new ToolStripMenuItem("&Delete", null, DeleteAction, Keys.Control | Keys.Delete);
 
+        private static readonly ToolStripMenuItem ColorSmashSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Color Smash", null, ColorSmash.ColorSmashTex0, Keys.Control | Keys.Shift | Keys.C);
+
+        private static readonly ToolStripMenuItem ExportSelectedToolStripMenuItem =
+            new ToolStripMenuItem("&Export Selected", null, ExportSelectedAction, Keys.Control | Keys.E);
+
         static TEX0Wrapper()
         {
             _menu = new ContextMenuStrip();
             _menu.Items.Add(new ToolStripMenuItem("&Re-Encode", null, ReEncodeAction));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -43,10 +56,18 @@ namespace BrawlCrate.NodeWrappers
             _menu.Items.Add(DeleteToolStripMenuItem);
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
+
+            MultiSelectMenu = new ContextMenuStrip();
+            MultiSelectMenu.Items.Add(ColorSmashSelectedToolStripMenuItem);
+            MultiSelectMenu.Items.Add(new ToolStripSeparator());
+            MultiSelectMenu.Items.Add(ExportSelectedToolStripMenuItem);
+            MultiSelectMenu.Opening += MultiMenuOpening;
+            MultiSelectMenu.Closing += MultiMenuClosing;
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
             MoveUpToolStripMenuItem.Enabled = true;
@@ -58,6 +79,7 @@ namespace BrawlCrate.NodeWrappers
         {
             TEX0Wrapper w = GetInstance<TEX0Wrapper>();
 
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
             MoveUpToolStripMenuItem.Enabled = w.PrevNode != null;
@@ -65,10 +87,39 @@ namespace BrawlCrate.NodeWrappers
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
         }
 
+        private static void MultiMenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            ColorSmashSelectedToolStripMenuItem.Enabled = true;
+        }
+
+        private static void MultiMenuOpening(object sender, CancelEventArgs e)
+        {
+            TEX0Wrapper w = GetInstance<TEX0Wrapper>();
+            if (!ColorSmash.CanRunColorSmash)
+            {
+                ColorSmashSelectedToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                foreach (TreeNode n in MainForm.Instance.resourceTree.SelectedNodes)
+                {
+                    if (!(n is TEX0Wrapper t) || t._resource.Parent == null || t._resource.Parent != w._resource.Parent)
+                    {
+                        ColorSmashSelectedToolStripMenuItem.Enabled = false;
+                        break;
+                    }
+                }
+            }
+        }
+
         protected static void ReEncodeAction(object sender, EventArgs e)
         {
             GetInstance<TEX0Wrapper>().ReEncode();
         }
+
+        #endregion
+
+        public override ContextMenuStrip MultiSelectMenuStrip => MultiSelectMenu;
 
         public TEX0Wrapper()
         {

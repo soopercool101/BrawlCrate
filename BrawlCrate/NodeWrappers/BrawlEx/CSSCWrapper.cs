@@ -17,6 +17,9 @@ namespace BrawlCrate.NodeWrappers
         private static readonly ContextMenuStrip _menu;
         private static readonly ToolStripMenuItem _newEntryToolStripMenuItem;
 
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
+
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
 
@@ -41,6 +44,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Add New Entry", null, NewEntryAction, Keys.Control | Keys.J));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -61,6 +65,7 @@ namespace BrawlCrate.NodeWrappers
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             _newEntryToolStripMenuItem.Enabled = true;
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             DeleteToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
@@ -72,6 +77,7 @@ namespace BrawlCrate.NodeWrappers
         {
             CSSCWrapper w = GetInstance<CSSCWrapper>();
             _newEntryToolStripMenuItem.Enabled = w._resource.Children.Count < 50;
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
@@ -102,8 +108,10 @@ namespace BrawlCrate.NodeWrappers
 
             node._name =
                 "Fit" + BrawlLib.BrawlCrate.FighterNameGenerators.InternalNameFromID(
-                    ((CSSCNode) _resource)._cosmeticSlot, BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex,
-                    "+S") + node._costumeID.ToString("00") + (BrawlExColorID.Colors.Length > node._colorID
+                    ((CSSCNode) _resource)._cosmeticSlot,
+                    BrawlLib.BrawlCrate.FighterNameGenerators.cosmeticIDIndex,
+                    "+S") + node._costumeID.ToString("00") +
+                (BrawlExColorID.Colors.Length > node._colorID
                     ? " - " + BrawlExColorID.Colors[node._colorID].Name
                     : "");
             _resource.AddChild(node);
@@ -124,6 +132,9 @@ namespace BrawlCrate.NodeWrappers
 
         private static readonly ToolStripMenuItem _openCostumeToolStripMenuItem;
         private static ToolStripSeparator _openCostumeToolStripSeparator;
+
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
 
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
@@ -149,6 +160,7 @@ namespace BrawlCrate.NodeWrappers
                 new ToolStripMenuItem("Open Costume File", null, OpenCostumeAction));
             _menu.Items.Add(_openCostumeToolStripSeparator = new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Items.Add(RestoreToolStripMenuItem);
             _menu.Items.Add(new ToolStripSeparator());
@@ -170,6 +182,7 @@ namespace BrawlCrate.NodeWrappers
             _openCostumeToolStripMenuItem.Enabled = true;
             _openCostumeToolStripMenuItem.Visible = true;
             _openCostumeToolStripSeparator.Visible = true;
+            DuplicateToolStripMenuItem.Enabled = true;
             ReplaceToolStripMenuItem.Enabled = true;
             DeleteToolStripMenuItem.Enabled = true;
             RestoreToolStripMenuItem.Enabled = true;
@@ -203,6 +216,7 @@ namespace BrawlCrate.NodeWrappers
                 }
             }
 
+            DuplicateToolStripMenuItem.Enabled = w.Parent != null;
             ReplaceToolStripMenuItem.Enabled = w.Parent != null;
             DeleteToolStripMenuItem.Enabled = w.Parent != null;
             RestoreToolStripMenuItem.Enabled = w._resource.IsDirty || w._resource.IsBranch;
@@ -217,7 +231,7 @@ namespace BrawlCrate.NodeWrappers
             List<string> files = ((CSSCEntryNode) _resource).GetCostumeFilePath(Program.RootPath);
             foreach (string s in files)
             {
-                Process.Start(new ProcessStartInfo()
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = AppDomain.CurrentDomain.BaseDirectory + "\\BrawlCrate.exe",
                     Arguments = "\"" + s + "\"",

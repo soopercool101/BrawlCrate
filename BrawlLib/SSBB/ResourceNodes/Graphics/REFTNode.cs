@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return header->Table->_entries > 0;
         }
 
-        private int _tableLen = 0;
+        private int _tableLen;
 
         public override int OnCalculateSize(bool force)
         {
@@ -50,8 +50,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             REFTypeObjectEntry* Entry = table->First;
             for (int i = 0; i < table->_entries; i++, Entry = Entry->Next)
             {
-                new REFTEntryNode()
-                        {_name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength + 0x20}
+                new REFTEntryNode {_name = Entry->Name, _offset = Entry->DataOffset, _length = Entry->DataLength + 0x20}
                     .Initialize(this,
                         new DataSource((byte*) table->Address + Entry->DataOffset, Entry->DataLength + 0x20));
             }
@@ -170,7 +169,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             try
             {
-                if (HasPlt == true)
+                if (HasPlt)
                 {
                     return TextureConverter.DecodeIndexed((byte*) Header + 0x20, Width, Height, Palette, index + 1,
                         _format);

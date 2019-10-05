@@ -4,35 +4,11 @@ namespace System.Windows.Forms
 {
     public partial class ExportAllFormatDialog : Form
     {
-        public ExportAllFormatDialog()
+        public ExportAllFormatDialog(Type t, string filters)
         {
             InitializeComponent();
-            string[] source = FileFilters.TEX0.Split('|');
-            for (int i = 0; i < source.Length; i += 2)
-            {
-                if (source[i] == "NW4R Texture (*.tex0)")
-                {
-                    comboBox1.Items.Add(new FormatForExportAllDialog("NW4R Texture (*.tex0 / *.plt0)", source[i + 1]));
-                }
-                else if (!source[i].StartsWith("All"))
-                {
-                    comboBox1.Items.Add(new FormatForExportAllDialog(source[i], source[i + 1]));
-                }
-            }
-
-            comboBox1.SelectedIndex = 0;
-        }
-
-        public ExportAllFormatDialog(bool isModels)
-        {
-            if (!isModels)
-            {
-                return;
-            }
-
-            InitializeComponent();
-            label1.Text = "Output format for models:";
-            string[] source = FileFilters.MDL0Export.Split('|');
+            label1.Text = $"Output format for {t.Name}:";
+            string[] source = filters.Split('|');
             for (int i = 0; i < source.Length; i += 2)
             {
                 if (!source[i].StartsWith("All"))
@@ -41,11 +17,18 @@ namespace System.Windows.Forms
                 }
             }
 
+            if (comboBox1.Items.Count == 0)
+            {
+                return;
+            }
+
             comboBox1.SelectedIndex = 0;
         }
 
         public string SelectedExtension =>
             ((FormatForExportAllDialog) comboBox1.SelectedItem).extension.Replace("*", "");
+
+        public bool Valid => comboBox1.Items.Count > 0;
     }
 
     public class FormatForExportAllDialog

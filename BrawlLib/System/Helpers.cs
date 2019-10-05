@@ -337,6 +337,80 @@ namespace System
 
             return str;
         }
+
+        public static string GetComparisonSign(long value)
+        {
+            switch (value)
+            {
+                case 0:  return "<";
+                case 1:  return "<=";
+                case 2:  return "==";
+                case 3:  return "!=";
+                case 4:  return ">=";
+                case 5:  return ">";
+                default: return "(" + value + ")";
+            }
+        }
+
+        public static int TabUpEvents(uint eventId)
+        {
+            switch (eventId)
+            {
+                case 0x00040100:
+                case 0x000A0100:
+                case 0x000A0200:
+                case 0x000A0300:
+                case 0x000A0400:
+                case 0x000B0100:
+                case 0x000B0200:
+                case 0x000B0300:
+                case 0x000B0400:
+                case 0x000C0100:
+                case 0x000C0200:
+                case 0x000C0300:
+                case 0x000C0400:
+                case 0x000D0200:
+                case 0x000D0400:
+                case 0x000E0000:
+                case 0x00100200:
+                case 0x00110100:
+                case 0x00120000:
+                    return 1;
+                default:
+                    return 0;
+            }
+        }
+
+        public static int TabDownEvents(uint eventId)
+        {
+            switch (eventId)
+            {
+                case 0x00050000:
+                case 0x000B0100:
+                case 0x000B0200:
+                case 0x000B0300:
+                case 0x000B0400:
+                case 0x000C0100:
+                case 0x000C0200:
+                case 0x000C0300:
+                case 0x000C0400:
+                case 0x000D0200:
+                case 0x000D0400:
+                case 0x000E0000:
+                case 0x000F0000:
+                case 0x00110100:
+                case 0x00120000:
+                case 0x00130000:
+                    return 1;
+                default:
+                    return 0;
+            }
+        }
+
+        public static float UnScalar(long value)
+        {
+            return (float) value / 60000f;
+        }
     }
 
     public class ReferenceEqualityComparer : EqualityComparer<object>
@@ -362,4 +436,336 @@ namespace System
         public string _newName;
         public List<AttributeInfo> _attributes;
     }
+
+    public enum HitboxType
+    {
+        Typeless,
+        Head,
+        Body,
+        Butt,
+        Hand,
+        Elbow,
+        Foot,
+        Knee,
+        Throwing,
+        Weapon,
+        Sword,
+        Hammer,
+        Explosive,
+        Spin,
+        Bite,
+        Magic,
+        PK,
+        Bow,
+        Type18,
+        Bat,
+        Umbrella,
+        Pikmin,
+        Water,
+        Whip,
+        Tail,
+        Energy,
+        Type26,
+        Type27,
+        Type28,
+        Type29,
+        Type30,
+        Type31
+    };
+
+    public enum HitboxEffect
+    {
+        Normal,
+        None,
+        Slash,
+        Electric,
+        Freezing,
+        Flame,
+        Coin,
+        Reverse,
+        Slip,
+        Sleep,
+        Effect10,
+        Bury,
+        Stun,
+        Effect13,
+        Flower,
+        Effect15,
+        Effect16,
+        Grass,
+        Water,
+        Darkness,
+        Paralyze,
+        Aura,
+        Plunge,
+        Down,
+        Flinchless,
+        Effect25,
+        Effect26,
+        Effect27,
+        Effect28,
+        Effect29,
+        Effect30,
+        Effect31
+    };
+
+    public enum HitboxSFX
+    {
+        None,
+        SFX1,
+        Unique,
+        SFX3,
+        SFX4,
+        SFX5,
+        SFX6,
+        SFX7,
+        WeakPunch,
+        MediumPunch,
+        StrongPunch,
+        SFX11,
+        WeakPunch2,
+        MediumPunch2,
+        StrongPunch2,
+        SFX15,
+        WeakKick,
+        MediumKick,
+        StrongKick,
+        SFX19,
+        WeakKick2,
+        MediumKick2,
+        StrongKick2,
+        SFX23,
+        WeakSlash,
+        MediumSlash,
+        StrongSlash,
+        SFX27,
+        WeakSlash2,
+        MediumSlash2,
+        StrongSlash2,
+        SFX31,
+        Coin1,
+        Coin2,
+        Coin3,
+        Coin4,
+        Coin5,
+        Coin6,
+        Coin7,
+        Coin8,
+        MediumClonk,
+        StrongClonk,
+        Ping,
+        SFX43,
+        WeakClonk2,
+        MediumClock2,
+        Ping2,
+        SFX47,
+        WeakPaperHit,
+        MediumPaperHit,
+        StrongPaperHit,
+        SFX51,
+        SFX52,
+        SFX53,
+        SFX54,
+        SFX55,
+        WeakShock,
+        MediumShock,
+        StrongShock,
+        SFX59,
+        SFX60,
+        SFX61,
+        SFX62,
+        SFX63,
+        WeakBurn,
+        MediumBurn,
+        StrongBurn,
+        SFX67,
+        SFX68,
+        SFX69,
+        SFX70,
+        SFX71,
+        WeakSplash,
+        MediumSplash,
+        StrongSplash,
+        SFX75,
+        SFX76,
+        SFX77,
+        SFX78,
+        SFX79,
+        SFX80,
+        SFX81,
+        SFX82,
+        SFX83,
+        SFX84,
+        SFX85,
+        SFX86,
+        SFX87,
+        SmallExplosion,
+        MediumExplosion,
+        LargeExplosion,
+        HugeExplosion,
+        SFX92,
+        SFX93,
+        SFX94,
+        SFX95,
+        SFX96,
+        SFX97,
+        SFX98,
+        SFX99,
+        SFX100,
+        SFX101,
+        SFX102,
+        SFX103,
+        WeakThud,
+        MediumThud,
+        StrongThud,
+        HugeThud,
+        SFX108,
+        SFX109,
+        SFX110,
+        SFX111,
+        WeakSlam,
+        MediumSlam,
+        StrongSlam,
+        HugeSlam,
+        SFX116,
+        SFX117,
+        SFX118,
+        SFX119,
+        WeakThwomp,
+        MediumThwomp,
+        StrongThwomp,
+        HugeThwomp,
+        SFX124,
+        SFX125,
+        SFX126,
+        SFX127,
+        WeakMagicZap,
+        MediumMagicZap,
+        StrongMagicZap,
+        HugeMagicZap,
+        SFX132,
+        SFX133,
+        SFX134,
+        SFX135,
+        WeakShell,
+        MediumShell,
+        StrongShell,
+        SFX139,
+        SFX140,
+        SFX141,
+        SFX142,
+        SFX143,
+        WeakSlap,
+        SFX145,
+        StrongSlap,
+        SFX147,
+        SFX148,
+        SFX149,
+        SFX150,
+        SFX151,
+        FryingPan,
+        SFX153,
+        SFX154,
+        SFX155,
+        SFX156,
+        SFX157,
+        SFX158,
+        SFX159,
+        SFX160,
+        WeakGolfClub,
+        StrongGolfClub,
+        SFX163,
+        SFX164,
+        SFX165,
+        SFX166,
+        SFX167,
+        WeakRacket,
+        SFX169,
+        StrongRacket,
+        SFX171,
+        SFX172,
+        SFX173,
+        SFX174,
+        SFX175,
+        WeakAura,
+        MediumAura,
+        StrongAura,
+        SFX179,
+        SFX180,
+        SFX181,
+        SFX182,
+        SFX183,
+        SFX184,
+        SFX185,
+        SFX186,
+        SFX187,
+        SFX188,
+        SFX189,
+        SFX190,
+        SFX191,
+        SFX192,
+        SFX193,
+        SFX194,
+        SFX195,
+        SFX196,
+        SFX197,
+        SFX198,
+        SFX199,
+        SFX200,
+        SFX201,
+        SFX202,
+        SFX203,
+        SFX204,
+        SFX205,
+        SFX206,
+        SFX207,
+        SFX208,
+        SFX209,
+        SFX210,
+        SFX211,
+        SFX212,
+        SFX213,
+        SFX214,
+        SFX215,
+        SFX216,
+        SFX217,
+        BatCrack,
+        SFX219,
+        SFX220,
+        SFX221,
+        SFX222,
+        SFX223,
+        SFX224,
+        SFX225,
+        SFX226,
+        SFX227,
+        SFX228,
+        SFX229,
+        SFX230,
+        SFX231,
+        SFX232,
+        SFX233,
+        SFX234,
+        SFX235,
+        SFX236,
+        SFX237,
+        SFX238,
+        SFX239,
+        SFX240,
+        SFX241,
+        SFX242,
+        SFX243,
+        SFX244,
+        SFX245,
+        SFX246,
+        SFX247,
+        SFX248,
+        SFX249,
+        SFX250,
+        SFX251,
+        SFX252,
+        SFX253,
+        SFX254,
+        SFX255
+    };
 }

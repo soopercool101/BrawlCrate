@@ -406,7 +406,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         SHP0EntryNode wi = null;
                         if ((wi = (SHP0EntryNode) FindChild(w.Name, false)) == null)
                         {
-                            AddChild(wi = new SHP0EntryNode() {Name = FindName(null), _flags = w._flags});
+                            AddChild(wi = new SHP0EntryNode {Name = FindName(null), _flags = w._flags});
                         }
 
                         SHP0VertexSetNode newIntEntry = new SHP0VertexSetNode(extEntry.Name);
@@ -720,7 +720,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public bool _isFixed = false;
+        public bool _isFixed;
         public float _fixedValue;
 
         public SHP0VertexSetNode(string name)

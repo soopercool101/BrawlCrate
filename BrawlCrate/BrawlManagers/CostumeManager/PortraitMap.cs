@@ -167,7 +167,7 @@ namespace BrawlCrate.CostumeManager
             return null;
         }
 
-        private static Dictionary<int, int[]> PortraitToCostumeMappings = new Dictionary<int, int[]>()
+        private static Dictionary<int, int[]> PortraitToCostumeMappings = new Dictionary<int, int[]>
         {
             {0, new int[] {0, 6, 3, 4, 5, 2}},
             {1, new int[] {0, 4, 1, 3, 2, 5}},
@@ -338,8 +338,8 @@ namespace BrawlCrate.CostumeManager
         public IEnumerable<string> GetKnownFighterNames()
         {
             return (from f in KnownFighters select f.Name)
-                .Concat(from f in additionalFighters select f.Name)
-                .Distinct();
+                   .Concat(from f in additionalFighters select f.Name)
+                   .Distinct();
         }
 
         public virtual bool ContainsMapping(int index)
@@ -358,7 +358,8 @@ namespace BrawlCrate.CostumeManager
         private int GetCharBustTexIndex(string name)
         {
             IEnumerable<Fighter> q = additionalFighters.Concat(KnownFighters)
-                .Where(f => string.Equals(f.Name, name, StringComparison.InvariantCultureIgnoreCase));
+                                                       .Where(f => string.Equals(f.Name, name,
+                                                           StringComparison.InvariantCultureIgnoreCase));
             if (!q.Any())
             {
                 throw new Exception("No known fighter found with name " + name + ".");

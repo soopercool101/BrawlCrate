@@ -10,7 +10,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 {
     public class UserDataCollectionPropertyDescriptor : PropertyDescriptor
     {
-        private readonly UserDataCollection collection = null;
+        private readonly UserDataCollection collection;
         private readonly int index = -1;
 
         public UserDataCollectionPropertyDescriptor(UserDataCollection coll, int idx) : base("#" + idx.ToString(), null)
@@ -73,7 +73,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             for (int i = 0; i < count; i++, pEntry++)
             {
                 UserDataEntry* entry = (UserDataEntry*) ((VoidPtr) group + pEntry->_dataOffset);
-                UserDataClass d = new UserDataClass() {_name = new string((sbyte*) group + pEntry->_stringOffset)};
+                UserDataClass d = new UserDataClass {_name = new string((sbyte*) group + pEntry->_stringOffset)};
                 VoidPtr addr = (VoidPtr) entry + entry->_dataOffset;
                 d._type = entry->Type;
                 if (d._type != UserValueType.String)

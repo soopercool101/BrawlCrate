@@ -16,8 +16,8 @@ namespace System
             _targetRenderPeriod,
             _updateTime,
             _renderTime,
-            _nextRender = 0.0,
-            _nextUpdate = 0.0;
+            _nextRender,
+            _nextUpdate;
 
         private readonly Stopwatch _updateWatch = new Stopwatch(), _renderWatch = new Stopwatch();
 
@@ -385,7 +385,7 @@ namespace System
             UpdateFrame?.Invoke(this, e);
         }
 
-        private bool _running = false;
+        private bool _running;
         public bool IsRunning => _running;
 
         public void Stop()

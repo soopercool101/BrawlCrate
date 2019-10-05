@@ -4,7 +4,7 @@ namespace System.Windows.Forms
 {
     public class NumericInputBox : TextBox
     {
-        public float _previousValue = 0.0f;
+        public float _previousValue;
         public float? _value;
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -57,8 +57,8 @@ namespace System.Windows.Forms
 
         public float _minValue = float.MinValue;
         public float _maxValue = float.MaxValue;
-        public bool _integral = false;
-        public bool _integer = false;
+        public bool _integral;
+        public bool _integer;
 
         public event EventHandler ValueChanged;
 
@@ -189,7 +189,7 @@ namespace System.Windows.Forms
 
                 case Keys.Decimal:
                 case Keys.OemPeriod:
-                    if (Text.IndexOf('.') != -1 || Integer == true)
+                    if (Text.IndexOf('.') != -1 || Integer)
                     {
                         e.SuppressKeyPress = true;
                     }

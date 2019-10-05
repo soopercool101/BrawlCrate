@@ -8,7 +8,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     public unsafe class HavokCommonArrayNode : ClassMemberInstanceNode
     {
         protected VoidPtr dataAddr = null;
-        protected int count = 0;
+        protected int count;
 
         public override bool OnInitialize()
         {
@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                     case hkClassMember.Type.TYPE_ENUM:
                     case hkClassMember.Type.TYPE_FLAGS:
-                        new cmEnumNode()
+                        new cmEnumNode
                             {
                                 _enumNode = _enumNode
                             }

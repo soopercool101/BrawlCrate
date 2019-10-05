@@ -295,6 +295,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
     public unsafe class CollisionObject : ResourceNode
     {
+        public override ResourceType ResourceFileType => ResourceType.CollisionObj;
+
         [Browsable(false)]
         public MDL0BoneNode LinkedBone
         {
@@ -371,7 +373,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public MDL0BoneNode _linkedBone = null;
+        public MDL0BoneNode _linkedBone;
 
         public Vector2 _boxMin, _boxMax;
         public int _unk1, _unk2, _unk3, _unk5, _unk6, _boneIndex;
@@ -504,6 +506,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 CollisionNode node = new CollisionNode();
                 node.Children.Add(this);
+                node.SignalPropertyChange();
                 node.Export(outPath);
                 return;
             }
@@ -547,10 +550,6 @@ namespace BrawlLib.SSBB.ResourceNodes
         }
 
         public List<CollisionPlane> _members = new List<CollisionPlane>();
-
-        public CollisionLink()
-        {
-        }
 
         public CollisionLink(CollisionObject parent, Vector2 value)
         {

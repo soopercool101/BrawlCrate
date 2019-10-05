@@ -52,12 +52,12 @@ namespace BrawlLib.Wii.Textures
 
         public static explicit operator RGBPixel(I8Pixel p)
         {
-            return new RGBPixel() {R = p._value, G = p._value, B = p._value};
+            return new RGBPixel {R = p._value, G = p._value, B = p._value};
         }
 
         public static explicit operator I8Pixel(ARGBPixel p)
         {
-            return new I8Pixel()
+            return new I8Pixel
             {
                 _value = (byte) ((p.R + p.G + p.B + 1) / 3)
             }; // Extra 1 added to get effect of rounding to nearest instead of rounding down

@@ -508,7 +508,8 @@ namespace Gif.Components
                     }
                     catch (Exception)
                     {
-                    } // prevents 1.3 miscompilation
+                        // prevents 1.3 miscompilation
+                    }
                 }
 
                 if (k > lo)
@@ -522,6 +523,7 @@ namespace Gif.Components
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
                 }
             }

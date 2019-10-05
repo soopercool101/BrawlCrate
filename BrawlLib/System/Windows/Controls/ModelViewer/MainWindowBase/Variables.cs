@@ -158,7 +158,7 @@ namespace System.Windows.Forms
 
         public static Color _floorHue = Color.FromArgb(255, 128, 128, 191);
 
-        public static BindingList<NW4RAnimType> _editableAnimTypes = new BindingList<NW4RAnimType>()
+        public static BindingList<NW4RAnimType> _editableAnimTypes = new BindingList<NW4RAnimType>
         {
             NW4RAnimType.CHR,
             NW4RAnimType.SRT,

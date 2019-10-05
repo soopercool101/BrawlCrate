@@ -869,7 +869,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _texMatrixEffect.SCNLight = -1;
             _texMatrixEffect.MapMode = MappingMethod.TexCoord;
 
-            _texMtxFlags = new XFTexMtxInfo()
+            _texMtxFlags = new XFTexMtxInfo
             {
                 Projection = TexProjection.ST,
                 InputForm = TexInputForm.AB11,

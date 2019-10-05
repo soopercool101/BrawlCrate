@@ -203,6 +203,7 @@ namespace BrawlCrate.CostumeManager
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
         }

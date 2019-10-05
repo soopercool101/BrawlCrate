@@ -263,7 +263,7 @@ namespace BrawlLib.SSBBTypes
 
         public static implicit operator ruint(int r)
         {
-            return new ruint() {_refType = 1, _dataOffset = r};
+            return new ruint {_refType = 1, _dataOffset = r};
         }
 
         public static implicit operator int(ruint r)
@@ -273,7 +273,7 @@ namespace BrawlLib.SSBBTypes
 
         public static implicit operator ruint(uint r)
         {
-            return new ruint() {_refType = 1, _dataOffset = (int) r};
+            return new ruint {_refType = 1, _dataOffset = (int) r};
         }
 
         public static implicit operator uint(ruint r)
@@ -441,8 +441,7 @@ namespace BrawlLib.SSBBTypes
             pEntry = &pGroup->_first;
         }
 
-        public ResourcePair Current => new ResourcePair()
-            {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
+        public ResourcePair Current => new ResourcePair {Name = (sbyte*) pGroup + pEntry->_stringOffset, Data = (byte*) pGroup + pEntry->_dataOffset};
 
         public void Dispose()
         {

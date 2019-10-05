@@ -40,6 +40,7 @@ namespace System
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 

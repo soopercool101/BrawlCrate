@@ -17,7 +17,7 @@ namespace BrawlLib.SSBB
 
         public void Add(uint tag, string str)
         {
-            _labels.Add(new LabelItem() {Tag = tag, String = str});
+            _labels.Add(new LabelItem {Tag = tag, String = str});
         }
 
         public int GetSize()

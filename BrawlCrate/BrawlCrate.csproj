@@ -282,9 +282,6 @@
     <Compile Update="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UI\MainForm.designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Update="UI\ModelForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -399,7 +399,7 @@ namespace BrawlLib.Wii.Audio
 
     public class RSAREntryList
     {
-        public int _stringLength = 0;
+        public int _stringLength;
         public List<string> _strings = new List<string>();
         public List<RSARStringEntryState> _tempStrings = new List<RSARStringEntryState>();
         public List<RSAREntryNode> _sounds = new List<RSAREntryNode>();
@@ -478,10 +478,10 @@ namespace BrawlLib.Wii.Audio
             for (int i = 0; i < 4; ++i)
             {
                 _strings.AddRange(_tempStrings
-                    .Where(x => x._type == i)
-                    .OrderBy(x => x._index)
-                    .Select(x => x._name
-                        .ToString()));
+                                  .Where(x => x._type == i)
+                                  .OrderBy(x => x._index)
+                                  .Select(x => x._name
+                                                .ToString()));
             }
 
             foreach (string s in _strings)

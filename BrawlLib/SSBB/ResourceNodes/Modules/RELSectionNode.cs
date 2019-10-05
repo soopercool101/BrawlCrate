@@ -16,7 +16,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Browsable(false)] public override uint ASMOffset => (uint) _dataOffset;
 
         public bool _isCodeSection = false;
-        public bool _isBSSSection = false;
+        public bool _isBSSSection;
         public int _dataOffset;
         public uint _endBufferSize;
         public uint _dataSize;

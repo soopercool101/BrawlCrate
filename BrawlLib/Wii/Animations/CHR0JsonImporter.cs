@@ -23,9 +23,16 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class BoneAnimation
     {
-        [DataMember] private readonly int FrameCount = 0;
-        [DataMember] private readonly bool Loop = false;
-        [DataMember] private readonly ICollection<Bone> Bones = null;
+        [DataMember] private readonly int FrameCount;
+        [DataMember] private readonly bool Loop;
+        [DataMember] private readonly ICollection<Bone> Bones;
+
+        public BoneAnimation()
+        {
+            FrameCount = 1;
+            Loop = false;
+            Bones = new List<Bone>();
+        }
 
         public CHR0Node ToCHR0Node()
         {
@@ -48,9 +55,15 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class Bone
     {
-        [DataMember] private readonly string Name = null;
+        [DataMember] private readonly string Name;
 
-        [DataMember] private readonly ICollection<Keyframe> Keyframes = null;
+        [DataMember] private readonly ICollection<Keyframe> Keyframes;
+
+        public Bone()
+        {
+            Name = "TopN";
+            Keyframes = new List<Keyframe>();
+        }
 
         public void AddToNode(CHR0Node parentNode)
         {
@@ -71,8 +84,13 @@ namespace BrawlLib.Wii.Animations
     [DataContract]
     internal class Keyframe
     {
-        [DataMember] private readonly int Frame = 0;
+        [DataMember] private readonly int Frame;
         private float?[] _transformations;
+
+        internal Keyframe()
+        {
+            Frame = 0;
+        }
 
         [DataMember]
         private float? ScaleX

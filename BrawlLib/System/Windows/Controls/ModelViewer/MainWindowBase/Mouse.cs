@@ -450,7 +450,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private bool _createdNewBone = false;
+        private bool _createdNewBone;
 
         protected virtual unsafe void modelPanel1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1058,8 +1058,8 @@ namespace System.Windows.Forms
 
         #endregion
 
-        public IBoneNode _hiBone = null;
-        public Vertex3 _hiVertex = null;
+        public IBoneNode _hiBone;
+        public Vertex3 _hiVertex;
 
         public void HighlightStuff(MouseEventArgs e, ModelPanel panel)
         {

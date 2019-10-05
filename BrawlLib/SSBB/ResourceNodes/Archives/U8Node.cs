@@ -35,7 +35,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (entry->isFolder)
                 {
-                    e = new U8FolderNode() {_u8Index = i, _name = new string(table + entry->_stringOffset)};
+                    e = new U8FolderNode {_u8Index = i, _name = new string(table + entry->_stringOffset)};
 
                     e._name = new string(table + entry->_stringOffset);
                     e._u8Index = i;
@@ -196,7 +196,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private int entryLength = 0;
+        private int entryLength;
 
         public override void OnRebuild(VoidPtr address, int length, bool force)
         {

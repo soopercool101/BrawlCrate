@@ -89,7 +89,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        internal RGBAPixel _solidColor = new RGBAPixel();
+        internal RGBAPixel _solidColor;
 
         [Browsable(false)]
         public RGBAPixel SolidColor

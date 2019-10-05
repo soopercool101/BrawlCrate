@@ -46,7 +46,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 for (int i = 0; i < count; i++)
                 {
                     LABLEntry* entry = labl->Get(i);
-                    _labels[i] = new LabelItem() {String = entry->Name, Tag = entry->_id};
+                    _labels[i] = new LabelItem {String = entry->Name, Tag = entry->_id};
                 }
 
                 len += labl->_size;
@@ -109,7 +109,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else if (VersionMinor >= 3)
             {
-                new RWARNode() {_name = "Audio"}.Initialize(this, _audioSource.Address, _audioSource.Length);
+                new RWARNode {_name = "Audio"}.Initialize(this, _audioSource.Address, _audioSource.Length);
             }
 
             //Get labels
@@ -134,7 +134,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         int x = ((WaveSoundInfo*) entry->GetSoundInfoRef(offset))->_soundIndex;
                         if (x >= 0 && x < count2)
                         {
-                            _labels[x] = new LabelItem() {Tag = i, String = symb2->GetStringEntry(entry->_stringId)};
+                            _labels[x] = new LabelItem {Tag = i, String = symb2->GetStringEntry(entry->_stringId)};
                         }
                     }
                 }
@@ -149,7 +149,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
 
                 RWSD_DATAEntry* entry = (RWSD_DATAEntry*) list->Get(list, i);
-                RWSDDataNode node = new RWSDDataNode() {_name = name};
+                RWSDDataNode node = new RWSDDataNode {_name = name};
                 node._offset = list;
                 node.Initialize(Children[0], entry, 0);
             }

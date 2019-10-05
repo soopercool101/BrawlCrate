@@ -33,7 +33,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             addr += PtclTrackCount; //skip nulled pointers to size list
             for (int i = 0; i < PtclTrackCount; i++)
             {
-                new REFFAnimationNode() {_isPtcl = true}.Initialize(this, First + offset, (int) *addr);
+                new REFFAnimationNode {_isPtcl = true}.Initialize(this, First + offset, (int) *addr);
                 offset += (int) *addr++;
             }
 
@@ -122,9 +122,9 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal AnimCurveHeader* Header => (AnimCurveHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.REFFAnimationList;
 
-        internal AnimCurveHeader _hdr = new AnimCurveHeader();
+        internal AnimCurveHeader _hdr;
 
-        public bool _isPtcl = false;
+        public bool _isPtcl;
 
         public enum AnimType
         {
@@ -344,7 +344,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Effect Animation")] public uint NameTableSize => _hdr.nameTable;
         [Category("Effect Animation")] public uint InfoTableSize => _hdr.infoTable;
 
-        private Random _random = null;
+        private Random _random;
 
         [Category("Name Table")]
         public string[] Names
@@ -375,16 +375,19 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
+            int size = 0;
             switch (CurveFlag)
             {
                 case AnimCurveType.ParticleByte:
+                    size = 1;
                     break;
                 case AnimCurveType.ParticleFloat:
+                    size = 4;
                     break;
                 case AnimCurveType.ParticleRotate:
+                    size = 1;
                     break;
                 case AnimCurveType.ParticleTexture:
-
                     break;
                 case AnimCurveType.Child:
                     break;
@@ -396,49 +399,51 @@ namespace BrawlLib.SSBB.ResourceNodes
                     break;
             }
 
-            //Dictionary<int, KeyValuePair<int, float>> values;
+            VoidPtr offset = (VoidPtr) Header + 0x20;
+            if (KeyTableSize > 4)
+            {
+                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
+                AnimCurveKeyHeader* key = hdr->First;
+                for (int i = 0; i < hdr->_count; i++, key = key->Next(enabledIndices.Count, size))
+                {
+                    key->GetFrameIndex(enabledIndices.Count, size);
+                }
+            }
 
-            //VoidPtr offset = (VoidPtr)Header + 0x20;
-            //if (KeyTableSize > 4)
-            //{
-            //    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
-            //    AnimCurveKeyHeader* key = hdr->First;
-            //    for (int i = 0; i < hdr->_count; i++, key = key->Next(enabledIndices.Count, size))
-            //    {
-            //        key->GetFrameIndex(enabledIndices.Count, size);
-            //    }
-            //}
-            //offset += KeyTableSize;
-            //if (RangeTableSize > 4)
-            //{
-            //    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
+            offset += KeyTableSize;
+            if (RangeTableSize > 4)
+            {
+                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
+            }
 
-            //}
-            //offset += RangeTableSize;
-            //if (RandomTableSize > 4)
-            //{
-            //    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
+            offset += RangeTableSize;
+            if (RandomTableSize > 4)
+            {
+                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
+            }
 
-            //}
-            //offset += RandomTableSize;
-            //if (NameTableSize > 4)
-            //{
-            //    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
+            offset += RandomTableSize;
+            if (NameTableSize > 4)
+            {
+                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
 
-            //    _names = new List<string>();
-            //    bushort* addr = (bushort*)((VoidPtr)hdr + 4 + hdr->_count * 4);
-            //    for (int i = 0; i < hdr->_count; i++, addr = (bushort*)((VoidPtr)addr + 2 + *addr))
-            //        _names.Add(new String((sbyte*)addr + 2));
-            //}
-            //offset += NameTableSize;
-            //if (InfoTableSize > 4)
-            //{
-            //    AnimCurveTableHeader* hdr = (AnimCurveTableHeader*)offset;
-            //    //switch ((v9AnimCurveTargetField)_hdr.kindType)
-            //    //{
+                _names = new List<string>();
+                bushort* addr = (bushort*) ((VoidPtr) hdr + 4 + hdr->_count * 4);
+                for (int i = 0; i < hdr->_count; i++, addr = (bushort*) ((VoidPtr) addr + 2 + *addr))
+                {
+                    _names.Add(new string((sbyte*) addr + 2));
+                }
+            }
 
-            //    //}
-            //}
+            offset += NameTableSize;
+            if (InfoTableSize > 4)
+            {
+                AnimCurveTableHeader* hdr = (AnimCurveTableHeader*) offset;
+                //switch ((v9AnimCurveTargetField)_hdr.kindType)
+                //{
+
+                //}
+            }
 
 #if DEBUG
             if (CurveFlag == AnimCurveType.EmitterFloat || CurveFlag == AnimCurveType.PostField)

@@ -22,7 +22,7 @@ namespace System.Windows.Forms
         private Label baseBone;
         private ModelPanel modelPanel1;
         private Panel panel1;
-        private bool _mergeModels = false;
+        private bool _mergeModels;
 
         public ObjectImporter()
         {

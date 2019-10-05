@@ -4,6 +4,7 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using BrawlLib;
 
 namespace System.Windows.Forms
 {
@@ -115,6 +116,14 @@ namespace System.Windows.Forms
             }
         }
 
+        private void toggleMetals_Event(object sender, EventArgs e)
+        {
+            if (!_updating)
+            {
+                RenderMetals = !RenderMetals;
+            }
+        }
+
         private void wireframeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_updating)
@@ -174,7 +183,7 @@ namespace System.Windows.Forms
         private void imageFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Just use an existing dialog with the same basic function
-            using (ExportAllFormatDialog d = new ExportAllFormatDialog())
+            using (ExportAllFormatDialog d = new ExportAllFormatDialog(typeof(TEX0Node), FileFilters.TEX0))
             {
                 d.Text = "Choose texture format";
                 d.comboBox1.Items.RemoveAt(6); //TEX0

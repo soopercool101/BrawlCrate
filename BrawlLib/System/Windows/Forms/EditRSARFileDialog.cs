@@ -280,7 +280,7 @@ namespace System.Windows.Forms
             splitter2.Size = new Drawing.Size(107, 3);
             splitter2.TabIndex = 0;
             splitter2.TabStop = false;
-            splitter2.SplitterMoved += new SplitterEventHandler(splitter2_SplitterMoved);
+            splitter2.SplitterMoved += splitter2_SplitterMoved;
             // 
             // panel4
             // 
@@ -561,7 +561,7 @@ namespace System.Windows.Forms
             }
         }
 
-        private RBNKEntryNode _baseEntry = null;
+        private RBNKEntryNode _baseEntry;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -643,7 +643,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            RWSDDataNode d = new RWSDDataNode()
+            RWSDDataNode d = new RWSDDataNode
             {
                 _name = string.Format("[{0}]Data", TargetNode.Children[0].Children.Count)
             };

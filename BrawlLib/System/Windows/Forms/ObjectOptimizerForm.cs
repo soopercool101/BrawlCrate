@@ -17,7 +17,7 @@ namespace System.Windows.Forms
         private ResourceNode _target;
         private int _originalPointCount, _newPointCount;
         private readonly List<ObjectOptimization> _results = new List<ObjectOptimization>();
-        private bool _processPending = false, _endPending = false;
+        private bool _processPending, _endPending;
 
         public DialogResult ShowDialog(ResourceNode o)
         {
@@ -203,7 +203,7 @@ namespace System.Windows.Forms
             Close();
         }
 
-        private bool _updating = false;
+        private bool _updating;
         private BackgroundWorker b;
 
         private void Update(object sender, EventArgs e)

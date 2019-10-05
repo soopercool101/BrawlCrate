@@ -4,7 +4,7 @@ namespace System.Windows.Forms
 {
     public partial class ProgressWindow : Form, IProgressTracker
     {
-        private bool _canCancel = false, _cancelled = false;
+        private bool _canCancel, _cancelled;
 
         public bool CanCancel
         {

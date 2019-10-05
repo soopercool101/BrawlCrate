@@ -183,7 +183,7 @@ namespace System.Windows.Forms
             numScaleY.TabIndex = 18;
             numScaleY.Text = "0";
             numScaleY.ValueChanged += BoxChangedCreateUndo;
-            numScaleY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numScaleY.MouseDown += box_MouseDown;
             // 
             // add
             // 
@@ -209,7 +209,7 @@ namespace System.Windows.Forms
             numRot.TabIndex = 15;
             numRot.Text = "0";
             numRot.ValueChanged += BoxChangedCreateUndo;
-            numRot.MouseDown += new MouseEventHandler(box_MouseDown);
+            numRot.MouseDown += box_MouseDown;
             // 
             // toolStripSeparator1
             // 
@@ -235,7 +235,7 @@ namespace System.Windows.Forms
             numTransX.TabIndex = 3;
             numTransX.Text = "0";
             numTransX.ValueChanged += BoxChangedCreateUndo;
-            numTransX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numTransX.MouseDown += box_MouseDown;
             // 
             // numTransY
             // 
@@ -249,7 +249,7 @@ namespace System.Windows.Forms
             numTransY.TabIndex = 13;
             numTransY.Text = "0";
             numTransY.ValueChanged += BoxChangedCreateUndo;
-            numTransY.MouseDown += new MouseEventHandler(box_MouseDown);
+            numTransY.MouseDown += box_MouseDown;
             // 
             // lblTransX
             // 
@@ -355,7 +355,7 @@ namespace System.Windows.Forms
             numScaleX.TabIndex = 36;
             numScaleX.Text = "0";
             numScaleX.ValueChanged += BoxChangedCreateUndo;
-            numScaleX.MouseDown += new MouseEventHandler(box_MouseDown);
+            numScaleX.MouseDown += box_MouseDown;
             // 
             // AllScale
             // 
@@ -977,7 +977,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public int type = 0;
+        public int type;
 
         private void box_MouseDown(object sender, MouseEventArgs e)
         {
@@ -997,7 +997,7 @@ namespace System.Windows.Forms
 
             if (e.Button == MouseButtons.Right)
             {
-                if (box.Enabled == true)
+                if (box.Enabled)
                 {
                     box.ContextMenuStrip = ctxBox;
                     Source.Text = box.Text;

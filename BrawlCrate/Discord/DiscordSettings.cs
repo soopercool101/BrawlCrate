@@ -183,7 +183,7 @@ namespace BrawlCrate.Discord
                         DiscordController.presence.details = WorkString + " UI";
                     }
                     else if (Program.RootPath.Substring(0, Program.RootPath.LastIndexOf('\\'))
-                        .EndsWith("\\stage\\adventure"))
+                                    .EndsWith("\\stage\\adventure"))
                     {
                         DiscordController.presence.details = WorkString + " a subspace stage";
                     }
@@ -201,7 +201,7 @@ namespace BrawlCrate.Discord
                     }
                     else if (rootName.StartsWith("home_", StringComparison.OrdinalIgnoreCase)
                              && Program.RootPath.Substring(0, Program.RootPath.LastIndexOf('\\'))
-                                 .EndsWith("\\system\\homebutton"))
+                                       .EndsWith("\\system\\homebutton"))
                     {
                         DiscordController.presence.details = WorkString + " the home menu";
                     }
@@ -212,7 +212,7 @@ namespace BrawlCrate.Discord
                     else if ((MainForm.Instance.RootNode.Name.StartsWith("Itm") ||
                               Program.RootPath.Substring(0, Program.RootPath.LastIndexOf('\\')).EndsWith("\\item") ||
                               Program.RootPath.Substring(0, Program.RootPath.LastIndexOf('\\'))
-                                  .Substring(0, Program.RootPath.LastIndexOf('\\')).EndsWith("\\item"))
+                                     .Substring(0, Program.RootPath.LastIndexOf('\\')).EndsWith("\\item"))
                              && (rootName.EndsWith("Brres") || rootName.EndsWith("Param")))
                     {
                         DiscordController.presence.details = WorkString + " an item";
@@ -252,7 +252,8 @@ namespace BrawlCrate.Discord
                                 DiscordController.presence.state = string.IsNullOrEmpty(Program.RootPath)
                                     ? ""
                                     : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1,
-                                        Program.RootPath.LastIndexOf('\\') - Program.RootPath.LastIndexOf('.'));
+                                        Program.RootPath.LastIndexOf('\\') -
+                                        Program.RootPath.LastIndexOf('.'));
                             }
                             else
                             {

@@ -521,7 +521,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         PAT0EntryNode wi = null;
                         if ((wi = (PAT0EntryNode) FindChild(w.Name, false)) == null)
                         {
-                            AddChild(wi = new PAT0EntryNode() {Name = FindName(null)});
+                            AddChild(wi = new PAT0EntryNode {Name = FindName(null)});
                         }
 
                         PAT0TextureNode newIntEntry = new PAT0TextureNode(_extEntry._texFlags, _extEntry.TextureIndex);
@@ -529,7 +529,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         wi.AddChild(newIntEntry);
                         foreach (PAT0TextureEntryNode e in _extEntry.Children)
                         {
-                            PAT0TextureEntryNode q = new PAT0TextureEntryNode() {_frame = e._frame + origIntCount};
+                            PAT0TextureEntryNode q = new PAT0TextureEntryNode {_frame = e._frame + origIntCount};
                             newIntEntry.AddChild(q);
 
                             q.Texture = e.Texture;
@@ -540,7 +540,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     {
                         foreach (PAT0TextureEntryNode e in _extEntry.Children)
                         {
-                            PAT0TextureEntryNode q = new PAT0TextureEntryNode() {_frame = e._frame + origIntCount};
+                            PAT0TextureEntryNode q = new PAT0TextureEntryNode {_frame = e._frame + origIntCount};
                             _intEntry.AddChild(q);
 
                             q.Texture = e.Texture;
@@ -1132,7 +1132,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void CreateEntry()
         {
             float value = Children.Count > 0 ? ((PAT0TextureEntryNode) Children[Children.Count - 1])._frame + 1 : 0;
-            PAT0TextureEntryNode node = new PAT0TextureEntryNode() {_frame = value};
+            PAT0TextureEntryNode node = new PAT0TextureEntryNode {_frame = value};
             AddChild(node);
             node.Texture = "NewTexture";
         }
@@ -1197,7 +1197,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public float _frame;
         public ushort _texFileIndex, _pltFileIndex;
 
-        public string _tex = null, _plt = null;
+        public string _tex, _plt;
 
         public override ResourceType ResourceFileType => ResourceType.PAT0TextureEntry;
         public override bool AllowDuplicateNames => true;
@@ -1442,7 +1442,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return _textureNode.GetImage(index, _paletteNode);
         }
 
-        public TEX0Node _textureNode = null;
-        public PLT0Node _paletteNode = null;
+        public TEX0Node _textureNode;
+        public PLT0Node _paletteNode;
     }
 }

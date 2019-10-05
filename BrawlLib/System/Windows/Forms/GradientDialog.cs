@@ -133,7 +133,7 @@ namespace System.Windows.Forms
             pnlPreview.Name = "pnlPreview";
             pnlPreview.Size = new Drawing.Size(250, 27);
             pnlPreview.TabIndex = 8;
-            pnlPreview.Paint += new PaintEventHandler(pnlPreview_Paint);
+            pnlPreview.Paint += pnlPreview_Paint;
             // 
             // GradientDialog
             // 

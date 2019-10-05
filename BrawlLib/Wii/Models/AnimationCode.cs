@@ -18,7 +18,7 @@ namespace BrawlLib.Wii.Animations
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct AnimationCode
     {
-        public static AnimationCode Default = new AnimationCode() {_data = 0x3FE07F};
+        public static AnimationCode Default = new AnimationCode {_data = 0x3FE07F};
 
         public Bin32 _data;
 
@@ -249,7 +249,7 @@ namespace BrawlLib.Wii.Animations
 
         public static implicit operator AnimationCode(uint data)
         {
-            return new AnimationCode() {_data = data};
+            return new AnimationCode {_data = data};
         }
 
         public static implicit operator uint(AnimationCode code)

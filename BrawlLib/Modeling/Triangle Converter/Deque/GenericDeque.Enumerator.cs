@@ -11,14 +11,14 @@ namespace System.Collections.Generic
 
             private Node currentNode;
 
-            private T current = default(T);
+            private T current;
 
-            private bool moveResult = false;
+            private bool moveResult;
 
             private readonly long version;
 
             // A value indicating whether the enumerator has been disposed.
-            private bool disposed = false;
+            private bool disposed;
 
             public Enumerator(Deque<T> owner)
             {

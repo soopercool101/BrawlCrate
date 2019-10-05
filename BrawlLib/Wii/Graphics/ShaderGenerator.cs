@@ -23,9 +23,9 @@ namespace BrawlLib.Wii.Graphics
             }
         }
 
-        private static bool _pixelLighting = false;
+        private static bool _pixelLighting;
 
-        public static bool _forceRecompile = false;
+        public static bool _forceRecompile;
 
         //Determines if the final shader should be written to the console for review
 #if DEBUG
@@ -40,9 +40,9 @@ namespace BrawlLib.Wii.Graphics
         //Red fragment shader, just to test if it's working
         private static readonly bool TestFrag = false;
 
-        private static string _shaderCode = null;
+        private static string _shaderCode;
 #if DEBUG
-        private static bool _vertex = false;
+        private static bool _vertex;
 #endif
         private static string[] swapModeTable;
 
@@ -1195,7 +1195,7 @@ namespace BrawlLib.Wii.Graphics
             }
         }
 
-        private static int tabCount = 0;
+        private static int tabCount;
         public const string NewLine = "\n";
 
         public static void Reset()

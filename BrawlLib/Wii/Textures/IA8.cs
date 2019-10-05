@@ -49,12 +49,12 @@ namespace BrawlLib.Wii.Textures
 
         public static implicit operator ARGBPixel(IA8Pixel p)
         {
-            return new ARGBPixel() {A = p.alpha, R = p.intensity, G = p.intensity, B = p.intensity};
+            return new ARGBPixel {A = p.alpha, R = p.intensity, G = p.intensity, B = p.intensity};
         }
 
         public static implicit operator IA8Pixel(ARGBPixel p)
         {
-            return new IA8Pixel()
+            return new IA8Pixel
             {
                 intensity = (byte) ((p.R + p.G + p.B + 1) / 3), alpha = p.A
             }; // Extra 1 added to get effect of rounding to nearest instead of rounding down
@@ -67,7 +67,7 @@ namespace BrawlLib.Wii.Textures
 
         public static explicit operator IA8Pixel(Color p)
         {
-            return new IA8Pixel()
+            return new IA8Pixel
             {
                 intensity = (byte) ((p.R + p.G + p.B + 1) / 3), alpha = p.A
             }; // Extra 1 added to get effect of rounding to nearest instead of rounding down

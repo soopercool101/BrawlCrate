@@ -135,7 +135,7 @@ namespace BrawlManagerLib
                                     child.Children.FirstOrDefault() as SndBgmTitleDataNode;
                                 if (sndBgmTitleData != null)
                                 {
-                                    common2_titledata = sndBgmTitleData.Children.Select(n => new SongIndexEntry()
+                                    common2_titledata = sndBgmTitleData.Children.Select(n => new SongIndexEntry
                                     {
                                         ID = (ushort) ((SndBgmTitleEntryNode) n).ID,
                                         Index = ((SndBgmTitleEntryNode) n).SongTitleIndex
@@ -155,7 +155,7 @@ namespace BrawlManagerLib
 
             if (common2_titledata.Count == 0)
             {
-                common2_titledata = SongIDMap.Songs.Where(s => s.InfoPacIndex != null).Select(s => new SongIndexEntry()
+                common2_titledata = SongIDMap.Songs.Where(s => s.InfoPacIndex != null).Select(s => new SongIndexEntry
                 {
                     ID = s.ID,
                     Index = s.InfoPacIndex ?? 0
@@ -207,7 +207,7 @@ namespace BrawlManagerLib
 
                     // info found; try info_training in same directory
                     string trainingpath = _currentFile.Replace("info.pac", "info_training.pac")
-                        .Replace("info_en.pac", "info_training_en.pac");
+                                                      .Replace("info_en.pac", "info_training_en.pac");
                     if (trainingpath != _currentFile && new FileInfo(trainingpath).Exists)
                     {
                         _currentTrainingFile = trainingpath;

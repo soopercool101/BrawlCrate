@@ -41,7 +41,7 @@ namespace BrawlCrate
             Controls.Add(modelEditControl1);
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "ModelForm";
-            FormClosing += new FormClosingEventHandler(ModelForm_FormClosing);
+            FormClosing += ModelForm_FormClosing;
             ResumeLayout(false);
         }
 
@@ -199,13 +199,13 @@ namespace BrawlCrate
                         }
 
                         MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
-                            .FirstOrDefault() as MDL0Node;
+                                                .FirstOrDefault() as MDL0Node;
 
                         if (model != null)
                         {
                             MDL0BoneNode bone =
                                 model._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                                    .FirstOrDefault() as MDL0BoneNode;
+                                     .FirstOrDefault() as MDL0BoneNode;
                             if (bone != null)
                             {
                                 obj._linkedBone = bone;
@@ -245,7 +245,7 @@ namespace BrawlCrate
             {
                 //IsMdiContainer = true;
                 //modelEditControl1.ModelViewerForm.MdiParent = this;
-                Application.AddMessageFilter(mouseMessageFilter = new MouseMoveMessageFilter() {TargetForm = this});
+                Application.AddMessageFilter(mouseMessageFilter = new MouseMoveMessageFilter {TargetForm = this});
             }
             else
             {
@@ -273,7 +273,7 @@ namespace BrawlCrate
         {
             public ModelForm TargetForm { get; set; }
 
-            private bool _mainWindowFocused = false;
+            private bool _mainWindowFocused;
 
             public bool PreFilterMessage(ref Message m)
             {

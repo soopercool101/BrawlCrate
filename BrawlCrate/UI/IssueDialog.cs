@@ -85,7 +85,7 @@ namespace System.Windows.Forms
                         ? ""
                         : txtDescription.Text.Replace("\"", "\\\""));
 
-                Process.Start(new ProcessStartInfo()
+                Process.Start(new ProcessStartInfo
                 {
                     FileName = path,
                     WindowStyle = ProcessWindowStyle.Hidden,

@@ -143,7 +143,7 @@ namespace BrawlLib.Wii.Audio
                 ADPCMInfo** pAdpcm = (ADPCMInfo**) adpcData;
                 for (int i = 0; i < channels; i++)
                 {
-                    *(pAdpcm[i] = head->GetChannelInfo(i)) = new ADPCMInfo() {_pad = 0};
+                    *(pAdpcm[i] = head->GetChannelInfo(i)) = new ADPCMInfo {_pad = 0};
                 }
 
                 //Create buffer for each channel

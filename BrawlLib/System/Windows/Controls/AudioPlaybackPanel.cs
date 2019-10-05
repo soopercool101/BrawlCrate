@@ -147,10 +147,10 @@ namespace System.Windows.Forms
 
         #endregion
 
-        private bool _updating = false;
-        private bool _loop = false;
+        private bool _updating;
+        private bool _loop;
 
-        private bool _isPlaying = false;
+        private bool _isPlaying;
         //private bool _isScrolling = false;
 
         private DateTime _sampleTime;
@@ -562,7 +562,7 @@ namespace System.Windows.Forms
             Seek(trackBarPosition.Value);
         }
 
-        private int _targetIndex = 0;
+        private int _targetIndex;
 
         private void lstStreams_SelectedIndexChanged(object sender, EventArgs e)
         {

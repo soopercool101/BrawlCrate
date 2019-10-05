@@ -550,7 +550,7 @@ namespace System.Windows.Forms
             _mainWindow.UpdateModel();
         }
 
-        private bool updating = false;
+        private bool updating;
 
         public unsafe void ResetBox()
         {

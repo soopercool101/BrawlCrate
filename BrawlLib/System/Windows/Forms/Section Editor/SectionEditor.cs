@@ -12,10 +12,14 @@ namespace System.Windows.Forms
 {
     public unsafe partial class SectionEditor : Form
     {
-        public ModuleSectionNode _section = null;
+        public ModuleSectionNode _section;
         public RelocationManager _manager;
 
         public static List<SectionEditor> _openedSections = new List<SectionEditor>();
+
+        private readonly List<string> annotationTitles = new List<string>();
+        private readonly List<string> annotationDescriptions = new List<string>();
+        private readonly List<string> annotationUnderlineValues = new List<string>();
 
         public SectionEditor(ModuleSectionNode section)
         {
@@ -67,6 +71,13 @@ namespace System.Windows.Forms
             panel5.Enabled = true;
         }
 
+        protected override void OnClientSizeChanged(EventArgs e)
+        {
+            hexBox1.Height = pnlHexEditor.Height - (btnSaveAnnotation.Height + annotationTitle.Height +
+                                                    annotationDescription.Height + statusStrip.Height);
+            base.OnClientSizeChanged(e);
+        }
+
         private void ppcOpCodeEditControl1_OnBranchFollowed()
         {
             //See if the target is already in this REL
@@ -112,9 +123,189 @@ namespace System.Windows.Forms
         private void Init()
         {
             SetByteProvider();
+            LoadAnnotations();
             //UpdateFileSizeStatus();
 
             //ppcDisassembler1.TargetNode = _section;
+        }
+
+        private void LoadAnnotations()
+        {
+            annotationIndex = 0;
+            annotationTitles.Clear();
+            annotationDescription.Clear();
+            if (_section == null || _section.Root == null || hexBox1.ByteProvider == null ||
+                hexBox1.ByteProvider.Length < 4)
+            {
+                chkAnnotations.Checked = false;
+                return;
+            }
+
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation"))
+            {
+                if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module"))
+                {
+                    if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" +
+                                         "\\Module\\" + _section.Root.Name))
+                    {
+                        if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
+                                        _section.Root.Name + '\\' + _section.Name + ".txt"))
+                        {
+                            LoadAnnotationsFromFile(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" +
+                                                    "\\Module\\" + _section.Root.Name + '\\' + _section.Name + ".txt");
+                            return;
+                        }
+                    }
+                }
+            }
+
+            bool updateStatusChanged = false;
+            if (!_updating)
+            {
+                _updating = true;
+                updateStatusChanged = true;
+            }
+
+            for (int i = 0; i * 4 < hexBox1.ByteProvider.Length; i++)
+            {
+                annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
+                byte[] bytes = new byte[]
+                {
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0),
+                };
+                annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
+                                           bytes[1].ToString("X2") + bytes[0].ToString("X2"));
+                annotationUnderlineValues.Add("1111    // Flags for which bytes are underlined");
+            }
+
+            if (annotationTitles.Count > 0)
+            {
+                annotationTitle.Text = annotationTitles[0];
+                annotationDescription.Text = annotationDescriptions[0];
+                btn1underline.Checked = annotationUnderlineValues[0].StartsWith("1");
+                btn2underline.Checked = annotationUnderlineValues[0].Substring(1).StartsWith("1");
+                btn3underline.Checked = annotationUnderlineValues[0].Substring(2).StartsWith("1");
+                btn4underline.Checked = annotationUnderlineValues[0].Substring(3).StartsWith("1");
+            }
+
+            hexBox1.annotationDescriptions = annotationDescriptions;
+            hexBox1.annotationUnderlines = annotationUnderlineValues;
+
+            if (updateStatusChanged)
+            {
+                _updating = false;
+            }
+        }
+
+        private void LoadAnnotationsFromFile(string filename)
+        {
+            bool updateStatusChanged = false;
+            if (!_updating)
+            {
+                _updating = true;
+                updateStatusChanged = true;
+            }
+
+            int index = 0;
+            if (filename != null && File.Exists(filename))
+            {
+                string titleHeader = _section.Root.Name + " " + _section.Name + ": 0x";
+                using (StreamReader sr = new StreamReader(filename))
+                {
+                    while (!sr.EndOfStream && index < hexBox1.ByteProvider.Length)
+                    {
+                        string newTitle = sr.ReadLine();
+                        if (int.TryParse(newTitle.Substring(titleHeader.Length), NumberStyles.HexNumber,
+                            CultureInfo.InvariantCulture, out int nextIndex))
+                        {
+                            while (index < nextIndex / 4)
+                            {
+                                annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" +
+                                                     (index * 4).ToString("X8"));
+                                byte[] bytes = new byte[]
+                                {
+                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 3),
+                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 2),
+                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 1),
+                                    hexBox1.ByteProvider.ReadByte((long) index * 4 + 0),
+                                };
+                                annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") +
+                                                           bytes[2].ToString("X2") + bytes[1].ToString("X2") +
+                                                           bytes[0].ToString("X2"));
+                                annotationUnderlineValues.Add("1111    // Flags for which bytes are underlined");
+                                index++;
+                            }
+                        }
+
+                        annotationTitles.Add(newTitle);
+                        string temp = sr.ReadLine();
+                        if (temp.Equals("\t/EndDescription", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            annotationDescriptions.Add("No Description Available.");
+                        }
+                        else
+                        {
+                            annotationDescriptions.Add("");
+                        }
+
+                        while (!temp.Equals("\t/EndDescription", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            annotationDescriptions[annotationDescriptions.Count - 1] += temp;
+                            annotationDescriptions[annotationDescriptions.Count - 1] += '\n';
+                            temp = sr.ReadLine();
+                        }
+
+                        if (annotationDescriptions[annotationDescriptions.Count - 1].EndsWith("\n"))
+                        {
+                            annotationDescriptions[annotationDescriptions.Count - 1] =
+                                annotationDescriptions[annotationDescriptions.Count - 1].Substring(0,
+                                    annotationDescriptions[annotationDescriptions.Count - 1].Length - 1);
+                        }
+
+                        annotationUnderlineValues.Add(sr.ReadLine());
+                        sr.ReadLine();
+                        index++;
+                    }
+
+                    sr.Close();
+                }
+            }
+
+            for (int i = annotationTitles.Count; i * 4 < hexBox1.ByteProvider.Length; i++)
+            {
+                annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
+                byte[] bytes = new byte[]
+                {
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 1),
+                    hexBox1.ByteProvider.ReadByte((long) i * 4 + 0),
+                };
+                annotationDescriptions.Add("Default: 0x" + bytes[3].ToString("X2") + bytes[2].ToString("X2") +
+                                           bytes[1].ToString("X2") + bytes[0].ToString("X2"));
+                annotationUnderlineValues.Add("1111    // Flags for which bytes are underlined");
+            }
+
+            if (annotationTitles.Count > 0)
+            {
+                annotationTitle.Text = annotationTitles[0];
+                annotationDescription.Text = annotationDescriptions[0];
+                btn1underline.Checked = annotationUnderlineValues[0].StartsWith("1");
+                btn2underline.Checked = annotationUnderlineValues[0].Substring(1).StartsWith("1");
+                btn3underline.Checked = annotationUnderlineValues[0].Substring(2).StartsWith("1");
+                btn4underline.Checked = annotationUnderlineValues[0].Substring(3).StartsWith("1");
+            }
+
+            hexBox1.annotationDescriptions = annotationDescriptions;
+            hexBox1.annotationUnderlines = annotationUnderlineValues;
+
+            if (updateStatusChanged)
+            {
+                _updating = false;
+            }
         }
 
         private void SetByteProvider()
@@ -229,6 +420,8 @@ namespace System.Windows.Forms
             //PosChanged();
         }
 
+        private int annotationIndex;
+
         private void PosChanged()
         {
             toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
@@ -236,6 +429,7 @@ namespace System.Windows.Forms
 
             long offset = hexBox1.SelectionStart;
             long t = offset.RoundDown(4);
+            long t2 = offset.RoundDown(rdo4byte.Checked ? 4 : rdo2byte.Checked ? 2 : 1);
 
             _updating = true;
 
@@ -248,65 +442,164 @@ namespace System.Windows.Forms
                 SelectedRelocationIndex = -1;
             }
 
-            grpValue.Text = "Value @ 0x" + t.ToString("X");
+            grpValue.Text = "Value @ 0x" + t2.ToString("X");
             if (t + 3 < hexBox1.ByteProvider.Length)
             {
+                if (t / 4 < annotationTitles.Count)
+                {
+                    annotationTitle.Text = annotationTitles[(int) (t / 4)];
+                    annotationDescription.Text = annotationDescriptions[(int) (t / 4)];
+                    btn1underline.Checked = annotationUnderlineValues[(int) (t / 4)].StartsWith("1");
+                    btn2underline.Checked = annotationUnderlineValues[(int) (t / 4)].Substring(1).StartsWith("1");
+                    btn3underline.Checked = annotationUnderlineValues[(int) (t / 4)].Substring(2).StartsWith("1");
+                    btn4underline.Checked = annotationUnderlineValues[(int) (t / 4)].Substring(3).StartsWith("1");
+                    annotationIndex = (int) (t / 4);
+                }
+
                 grpValue.Enabled = !_section._isBSSSection;
-                byte[] bytes = new byte[]
+                if (rdo4byte.Checked)
                 {
-                    //Read in little endian
-                    hexBox1.ByteProvider.ReadByte(t + 3),
-                    hexBox1.ByteProvider.ReadByte(t + 2),
-                    hexBox1.ByteProvider.ReadByte(t + 1),
-                    hexBox1.ByteProvider.ReadByte(t + 0),
-                };
+                    byte[] bytes = new byte[]
+                    {
+                        //Read in little endian
+                        hexBox1.ByteProvider.ReadByte(t + 3),
+                        hexBox1.ByteProvider.ReadByte(t + 2),
+                        hexBox1.ByteProvider.ReadByte(t + 1),
+                        hexBox1.ByteProvider.ReadByte(t + 0),
+                    };
 
-                //Reverse byte order to big endian
-                txtByte1.Text = bytes[3].ToString("X2");
-                txtByte2.Text = bytes[2].ToString("X2");
-                txtByte3.Text = bytes[1].ToString("X2");
-                txtByte4.Text = bytes[0].ToString("X2");
+                    //Reverse byte order to big endian
+                    txtByte1.Text = bytes[3].ToString("X2");
+                    txtByte2.Text = bytes[2].ToString("X2");
+                    txtByte3.Text = bytes[1].ToString("X2");
+                    txtByte4.Text = bytes[0].ToString("X2");
 
-                //BitConverter converts from little endian
-                float f = BitConverter.ToSingle(bytes, 0);
-                if (float.TryParse(txtFloat.Text, out float z))
-                {
-                    if (z != f)
+                    //BitConverter converts from little endian
+                    float f = BitConverter.ToSingle(bytes, 0);
+                    if (float.TryParse(txtFloat.Text, out float z))
+                    {
+                        if (z != f)
+                        {
+                            txtFloat.Text = f.ToString();
+                        }
+                    }
+                    else
                     {
                         txtFloat.Text = f.ToString();
                     }
-                }
-                else
-                {
-                    txtFloat.Text = f.ToString();
-                }
 
-                int i = BitConverter.ToInt32(bytes, 0);
-                if (int.TryParse(txtInt.Text, out int w))
-                {
-                    if (w != i)
+                    int i = BitConverter.ToInt32(bytes, 0);
+                    if (int.TryParse(txtInt.Text, out int w))
+                    {
+                        if (w != i)
+                        {
+                            txtInt.Text = i.ToString();
+                            //if (_section.HasCode && ppcDisassembler1.Visible)
+                            //    ppcDisassembler1.UpdateRow(SelectedRelocationIndex - _startIndex);
+                        }
+                    }
+                    else
                     {
                         txtInt.Text = i.ToString();
-                        //if (_section.HasCode && ppcDisassembler1.Visible)
-                        //    ppcDisassembler1.UpdateRow(SelectedRelocationIndex - _startIndex);
                     }
+
+                    string bin = ((Bin32) (uint) i).ToString();
+                    string[] bins = bin.Split(' ');
+
+                    txtBin1.Text = bins[0];
+                    txtBin2.Text = bins[1];
+                    txtBin3.Text = bins[2];
+                    txtBin4.Text = bins[3];
+                    txtBin5.Text = bins[4];
+                    txtBin6.Text = bins[5];
+                    txtBin7.Text = bins[6];
+                    txtBin8.Text = bins[7];
                 }
-                else
+                else if (rdo2byte.Checked)
                 {
-                    txtInt.Text = i.ToString();
+                    t = offset.RoundDown(2);
+                    byte[] bytes = new byte[]
+                    {
+                        //Read in little endian
+                        hexBox1.ByteProvider.ReadByte(t + 1),
+                        hexBox1.ByteProvider.ReadByte(t + 0),
+                    };
+                    //Reverse byte order to big endian
+                    txtByte1.Text = bytes[1].ToString("X2");
+                    txtByte2.Text = bytes[0].ToString("X2");
+                    txtByte3.Text = "";
+                    txtByte4.Text = "";
+
+                    txtFloat.Text = "";
+
+                    int i = BitConverter.ToInt16(bytes, 0);
+                    if (int.TryParse(txtInt.Text, out int w))
+                    {
+                        if (w != i)
+                        {
+                            txtInt.Text = i.ToString();
+                            //if (_section.HasCode && ppcDisassembler1.Visible)
+                            //    ppcDisassembler1.UpdateRow(SelectedRelocationIndex - _startIndex);
+                        }
+                    }
+                    else
+                    {
+                        txtInt.Text = i.ToString();
+                    }
+
+                    string bin = ((Bin16) (uint) i).ToString();
+                    string[] bins = bin.Split(' ');
+
+                    txtBin1.Text = bins[0];
+                    txtBin2.Text = bins[1];
+                    txtBin3.Text = bins[2];
+                    txtBin4.Text = bins[3];
+                    txtBin5.Text = "";
+                    txtBin6.Text = "";
+                    txtBin7.Text = "";
+                    txtBin8.Text = "";
                 }
+                else if (rdo1byte.Checked)
+                {
+                    t = offset;
+                    byte[] bytes = new byte[]
+                    {
+                        hexBox1.ByteProvider.ReadByte(t)
+                    };
+                    txtByte1.Text = bytes[0].ToString("X2");
+                    txtByte2.Text = "";
+                    txtByte3.Text = "";
+                    txtByte4.Text = "";
 
-                string bin = ((Bin32) (uint) i).ToString();
-                string[] bins = bin.Split(' ');
+                    txtFloat.Text = "";
 
-                txtBin1.Text = bins[0];
-                txtBin2.Text = bins[1];
-                txtBin3.Text = bins[2];
-                txtBin4.Text = bins[3];
-                txtBin5.Text = bins[4];
-                txtBin6.Text = bins[5];
-                txtBin7.Text = bins[6];
-                txtBin8.Text = bins[7];
+                    byte i = bytes[0];
+                    if (int.TryParse(txtInt.Text, out int w))
+                    {
+                        if (w != i)
+                        {
+                            txtInt.Text = i.ToString();
+                            //if (_section.HasCode && ppcDisassembler1.Visible)
+                            //    ppcDisassembler1.UpdateRow(SelectedRelocationIndex - _startIndex);
+                        }
+                    }
+                    else
+                    {
+                        txtInt.Text = i.ToString();
+                    }
+
+                    string bin = ((Bin8) i).ToString();
+                    string[] bins = bin.Split(' ');
+
+                    txtBin1.Text = bins[0];
+                    txtBin2.Text = bins[1];
+                    txtBin3.Text = "";
+                    txtBin4.Text = "";
+                    txtBin5.Text = "";
+                    txtBin6.Text = "";
+                    txtBin7.Text = "";
+                    txtBin8.Text = "";
+                }
             }
             else
             {
@@ -529,13 +822,13 @@ namespace System.Windows.Forms
             hexBox1.PasteHex(true);
         }
 
-        private void _deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             hexBox1.Delete();
         }
 
         internal FindOptions _findOptions = new FindOptions();
-        private FormFind _formFind = null;
+        private FormFind _formFind;
 
         private FormFind ShowFind()
         {
@@ -602,7 +895,7 @@ namespace System.Windows.Forms
                 hexBox1.Focus();
             }
 
-            Message m = new Message() {WParam = (IntPtr) (16 | 65536)};
+            Message m = new Message {WParam = (IntPtr) (16 | 65536)};
             hexBox1._ki.PreProcessWmKeyUp(ref m);
         }
 
@@ -672,7 +965,7 @@ namespace System.Windows.Forms
         {
             pnlHexEditor.Dock = chkCodeSection.Checked ? DockStyle.Right : DockStyle.Fill;
             pnlFunctions.Visible = ppcDisassembler1.Visible = splitter2.Visible = chkCodeSection.Checked;
-            txtFloat.Enabled = txtInt.Enabled = !chkCodeSection.Checked;
+            //txtFloat.Enabled = txtInt.Enabled = !chkCodeSection.Checked;
 
             if (chkCodeSection.Checked)
             {
@@ -755,7 +1048,6 @@ namespace System.Windows.Forms
 
             CommandChanged();
             hexBox1.Focus();
-            _relocationsChanged = true;
         }
 
         private void btnDelCmd_Click(object sender, EventArgs e)
@@ -764,14 +1056,12 @@ namespace System.Windows.Forms
 
             CommandChanged();
             hexBox1.Focus();
-            _relocationsChanged = true;
         }
 
         private void propertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             propertyGrid1.Refresh();
             hexBox1.Invalidate();
-            _relocationsChanged = true;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -857,7 +1147,7 @@ namespace System.Windows.Forms
             e.DrawFocusRectangle();
         }
 
-        private bool _updating = false;
+        private bool _updating;
 
         private void txtFloat_TextChanged(object sender, EventArgs e)
         {
@@ -877,6 +1167,16 @@ namespace System.Windows.Forms
                 hexBox1.Invalidate();
                 PosChanged();
             }
+            else if (txtFloat.Text == "")
+            {
+                long t = Position.RoundDown(4);
+                hexBox1.ByteProvider.WriteByte(t + 3, 0);
+                hexBox1.ByteProvider.WriteByte(t + 2, 0);
+                hexBox1.ByteProvider.WriteByte(t + 1, 0);
+                hexBox1.ByteProvider.WriteByte(t + 0, 0);
+                hexBox1.Invalidate();
+                PosChanged();
+            }
         }
 
         private void txtInt_TextChanged(object sender, EventArgs e)
@@ -886,16 +1186,70 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (int.TryParse(txtInt.Text, out int i))
+            long l;
+            if (rdo4byte.Checked)
             {
-                long t = Position.RoundDown(4);
-                byte* b = (byte*) &i;
-                hexBox1.ByteProvider.WriteByte(t + 3, b[0]);
-                hexBox1.ByteProvider.WriteByte(t + 2, b[1]);
-                hexBox1.ByteProvider.WriteByte(t + 1, b[2]);
-                hexBox1.ByteProvider.WriteByte(t + 0, b[3]);
-                hexBox1.Invalidate();
-                PosChanged();
+                if (long.TryParse(txtInt.Text, out l))
+                {
+                    long t = Position.RoundDown(4);
+                    int i = (int) l.Clamp(int.MinValue, int.MaxValue);
+                    byte* b = (byte*) &i;
+                    hexBox1.ByteProvider.WriteByte(t + 3, b[0]);
+                    hexBox1.ByteProvider.WriteByte(t + 2, b[1]);
+                    hexBox1.ByteProvider.WriteByte(t + 1, b[2]);
+                    hexBox1.ByteProvider.WriteByte(t + 0, b[3]);
+                    hexBox1.Invalidate();
+                    PosChanged();
+                }
+                else if (txtInt.Text == "")
+                {
+                    long t = Position.RoundDown(4);
+                    hexBox1.ByteProvider.WriteByte(t + 3, 0);
+                    hexBox1.ByteProvider.WriteByte(t + 2, 0);
+                    hexBox1.ByteProvider.WriteByte(t + 1, 0);
+                    hexBox1.ByteProvider.WriteByte(t + 0, 0);
+                    hexBox1.Invalidate();
+                    PosChanged();
+                }
+            }
+            else if (rdo2byte.Checked)
+            {
+                if (long.TryParse(txtInt.Text, out l))
+                {
+                    long t = Position.RoundDown(2);
+                    short s = (short) l.Clamp(short.MinValue, short.MaxValue);
+                    byte* b = (byte*) &s;
+                    hexBox1.ByteProvider.WriteByte(t + 1, b[0]);
+                    hexBox1.ByteProvider.WriteByte(t + 0, b[1]);
+                    hexBox1.Invalidate();
+                    PosChanged();
+                }
+                else if (txtInt.Text == "")
+                {
+                    long t = Position.RoundDown(2);
+                    hexBox1.ByteProvider.WriteByte(t + 1, 0);
+                    hexBox1.ByteProvider.WriteByte(t + 0, 0);
+                    hexBox1.Invalidate();
+                    PosChanged();
+                }
+            }
+            else
+            {
+                if (long.TryParse(txtInt.Text, out l))
+                {
+                    long t = Position;
+                    byte b = (byte) l.Clamp(byte.MinValue, byte.MaxValue);
+                    hexBox1.ByteProvider.WriteByte(t, b);
+                    hexBox1.Invalidate();
+                    PosChanged();
+                }
+                else if (txtInt.Text == "")
+                {
+                    long t = Position;
+                    hexBox1.ByteProvider.WriteByte(t, 0);
+                    hexBox1.Invalidate();
+                    PosChanged();
+                }
             }
         }
 
@@ -920,32 +1274,71 @@ namespace System.Windows.Forms
                 }
             }
 
-            Bin32 b = Bin32.FromString(txtBin1.Text + " " + txtBin2.Text + " " + txtBin3.Text + " " + txtBin4.Text +
-                                       " " + txtBin5.Text + " " + txtBin6.Text + " " + txtBin7.Text + " " +
-                                       txtBin8.Text);
-            long t = Position.RoundDown(4);
+            if (rdo4byte.Checked)
+            {
+                Bin32 b = Bin32.FromString(txtBin1.Text + " " + txtBin2.Text + " " + txtBin3.Text + " " + txtBin4.Text +
+                                           " " + txtBin5.Text + " " + txtBin6.Text + " " + txtBin7.Text + " " +
+                                           txtBin8.Text);
+                long t = Position.RoundDown(4);
 
-            byte
-                b1 = (byte) ((b >> 00) & 0xFF),
-                b2 = (byte) ((b >> 08) & 0xFF),
-                b3 = (byte) ((b >> 16) & 0xFF),
-                b4 = (byte) ((b >> 24) & 0xFF);
+                byte
+                    b1 = (byte) ((b >> 00) & 0xFF),
+                    b2 = (byte) ((b >> 08) & 0xFF),
+                    b3 = (byte) ((b >> 16) & 0xFF),
+                    b4 = (byte) ((b >> 24) & 0xFF);
 
-            txtByte1.Text = b1.ToString();
-            txtByte2.Text = b2.ToString();
-            txtByte3.Text = b3.ToString();
-            txtByte4.Text = b4.ToString();
+                txtByte1.Text = b1.ToString();
+                txtByte2.Text = b2.ToString();
+                txtByte3.Text = b3.ToString();
+                txtByte4.Text = b4.ToString();
 
-            hexBox1.ByteProvider.WriteByte(t + 3, b1);
-            hexBox1.ByteProvider.WriteByte(t + 2, b2);
-            hexBox1.ByteProvider.WriteByte(t + 1, b3);
-            hexBox1.ByteProvider.WriteByte(t + 0, b4);
+                hexBox1.ByteProvider.WriteByte(t + 3, b1);
+                hexBox1.ByteProvider.WriteByte(t + 2, b2);
+                hexBox1.ByteProvider.WriteByte(t + 1, b3);
+                hexBox1.ByteProvider.WriteByte(t + 0, b4);
 
-            hexBox1.Invalidate();
-            PosChanged();
+                hexBox1.Invalidate();
+                PosChanged();
+            }
+            else if (rdo2byte.Checked)
+            {
+                Bin16 b = Bin16.FromString(txtBin1.Text + " " + txtBin2.Text + " " + txtBin3.Text + " " + txtBin4.Text);
+                long t = Position.RoundDown(2);
+
+                byte
+                    b1 = (byte) ((b >> 00) & 0xFF),
+                    b2 = (byte) ((b >> 08) & 0xFF);
+
+                txtByte1.Text = b1.ToString();
+                txtByte2.Text = b2.ToString();
+                txtByte3.Text = "";
+                txtByte4.Text = "";
+
+                hexBox1.ByteProvider.WriteByte(t + 1, b1);
+                hexBox1.ByteProvider.WriteByte(t + 0, b2);
+
+                hexBox1.Invalidate();
+                PosChanged();
+            }
+            else
+            {
+                Bin8 b = Bin8.FromString(txtBin1.Text + " " + txtBin2.Text);
+                long t = Position;
+
+                byte
+                    b1 = (byte) ((b >> 00) & 0xFF);
+
+                txtByte1.Text = b1.ToString();
+                txtByte2.Text = "";
+                txtByte3.Text = "";
+                txtByte4.Text = "";
+
+                hexBox1.ByteProvider.WriteByte(t, b1);
+
+                hexBox1.Invalidate();
+                PosChanged();
+            }
         }
-
-        public bool _relocationsChanged = false;
 
         private void Apply()
         {
@@ -1221,6 +1614,104 @@ namespace System.Windows.Forms
             }
         }
 
+        private void chkAnnotations_CheckedChanged(object sender, EventArgs e)
+        {
+            btn1underline.Visible = btn2underline.Visible = btn3underline.Visible = btn4underline.Visible =
+                annotationDescription.Visible =
+                    annotationTitle.Visible = btnSaveAnnotation.Visible = chkAnnotations.Checked;
+            splitContainer1.Panel2Collapsed = !chkAnnotations.Checked;
+        }
+
+        private void description_TextChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            if (annotationDescriptions.Count > annotationIndex)
+            {
+                annotationDescriptions[annotationIndex] = annotationDescription.Text;
+            }
+
+            hexBox1.annotationDescriptions = annotationDescriptions;
+            hexBox1.annotationUnderlines = annotationUnderlineValues;
+            hexBox1.Invalidate();
+        }
+
+        private void annotationDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", e.LinkText);
+        }
+
+        private void btnSaveAnnotation_Click(object sender, EventArgs e)
+        {
+            if (_updating || annotationDescriptions.Count <= 0)
+            {
+                return;
+            }
+
+            SaveAnnotation();
+        }
+
+        public void SaveAnnotation()
+        {
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation");
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module");
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
+                                      _section.Root.Name);
+            string Filename = AppDomain.CurrentDomain.BaseDirectory + "InternalDocumentation" + "\\Module\\" +
+                              _section.Root.Name + '\\' + _section.Name + ".txt";
+            string dir = Path.GetDirectoryName(Filename);
+            if (File.Exists(Filename))
+            {
+                if (DialogResult.Yes != MessageBox.Show("Overwrite " + Filename + "?", "Overwrite",
+                        MessageBoxButtons.YesNo))
+                {
+                    return;
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(Filename))
+            {
+                bool firstLine = true;
+                //foreach (AttributeInfo attr in Array) {
+                for (int i = 0; i < annotationTitles.Count && i < annotationDescriptions.Count; i++)
+                {
+                    if ((!annotationDescriptions[i].StartsWith("Default: 0x") ||
+                         annotationDescriptions[i].Length != 19) && annotationDescriptions[i].Length > 0)
+                    {
+                        if (!firstLine)
+                        {
+                            sw.WriteLine();
+                            sw.WriteLine();
+                        }
+
+                        firstLine = false;
+                        sw.WriteLine(annotationTitles[i]);
+                        sw.WriteLine(annotationDescriptions[i]);
+                        sw.WriteLine("\t/EndDescription");
+                        sw.Write(annotationUnderlineValues[i]);
+                    }
+                }
+            }
+        }
+
+        private void byteCount_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_updating)
+            {
+                return;
+            }
+
+            label4.Text = rdo4byte.Checked ? "Integer:" : rdo2byte.Checked ? "Short:" : "Byte:";
+            txtBin3.Enabled = txtBin4.Enabled = !rdo1byte.Checked;
+            txtBin5.Enabled = txtBin6.Enabled = txtBin7.Enabled = txtBin8.Enabled = rdo4byte.Checked;
+            txtFloat.Enabled = rdo4byte.Checked; //= (!chkCodeSection.Checked && rdo4byte.Checked);
+            hexBox1.byteCount = rdo4byte.Checked ? 4 : rdo2byte.Checked ? 2 : 1;
+            PosChanged();
+        }
+
         public RelocationTarget GetBranchOffsetRelocation()
         {
             if (TargetBranch != null &&
@@ -1235,6 +1726,77 @@ namespace System.Windows.Forms
             }
 
             return null;
+        }
+
+        private void annotationDescription_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem menuItem = new MenuItem("Cut");
+                menuItem.Click += CutAction;
+                menuItem.Enabled = annotationDescription.SelectedText.Length > 0;
+                contextMenu.MenuItems.Add(menuItem);
+                menuItem = new MenuItem("Copy");
+                menuItem.Click += CopyAction;
+                menuItem.Enabled = annotationDescription.SelectedText.Length > 0;
+                contextMenu.MenuItems.Add(menuItem);
+                menuItem = new MenuItem("Paste")
+                {
+                    Enabled = Clipboard.ContainsText()
+                };
+                menuItem.Click += PasteAction;
+                contextMenu.MenuItems.Add(menuItem);
+
+                annotationDescription.ContextMenu = contextMenu;
+            }
+        }
+
+        private void CutAction(object sender, EventArgs e)
+        {
+            annotationDescription.Cut();
+        }
+
+        private void CopyAction(object sender, EventArgs e)
+        {
+            Clipboard.SetText(annotationDescription.SelectedText);
+        }
+
+        private void btnUnderline_CheckedChanged(object sender, EventArgs e)
+        {
+            btn1underline.Font = new Font(btn1underline.Font,
+                btn1underline.Checked ? Drawing.FontStyle.Underline : Drawing.FontStyle.Regular);
+            btn2underline.Font = new Font(btn2underline.Font,
+                btn2underline.Checked ? Drawing.FontStyle.Underline : Drawing.FontStyle.Regular);
+            btn3underline.Font = new Font(btn3underline.Font,
+                btn3underline.Checked ? Drawing.FontStyle.Underline : Drawing.FontStyle.Regular);
+            btn4underline.Font = new Font(btn4underline.Font,
+                btn4underline.Checked ? Drawing.FontStyle.Underline : Drawing.FontStyle.Regular);
+            if (_updating)
+            {
+                return;
+            }
+
+            if (annotationDescriptions.Count > annotationIndex)
+            {
+                annotationUnderlineValues[annotationIndex] = "";
+                annotationUnderlineValues[annotationIndex] += btn1underline.Checked ? 1 : 0;
+                annotationUnderlineValues[annotationIndex] += btn2underline.Checked ? 1 : 0;
+                annotationUnderlineValues[annotationIndex] += btn3underline.Checked ? 1 : 0;
+                annotationUnderlineValues[annotationIndex] += btn4underline.Checked ? 1 : 0;
+                annotationUnderlineValues[annotationIndex] += "    // Flags for which bytes are underlined";
+            }
+
+            hexBox1.annotationUnderlines = annotationUnderlineValues;
+            hexBox1.Invalidate();
+        }
+
+        private void PasteAction(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                annotationDescription.Paste();
+            }
         }
     }
 }

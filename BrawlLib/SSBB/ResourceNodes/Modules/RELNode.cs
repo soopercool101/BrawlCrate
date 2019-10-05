@@ -30,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public ModuleSectionNode[] _sections = null;
+        public ModuleSectionNode[] _sections;
 
         public uint _id;
         public int _linkNext; //0
@@ -518,7 +518,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         private class ImportData
         {
             public bool _newSection = true;
-            public uint _lastOffset = 0;
+            public uint _lastOffset;
         }
 
         public void GenerateImports()
@@ -559,13 +559,13 @@ namespace BrawlLib.SSBB.ResourceNodes
                         _imports.Add(moduleID, links = new List<RELLink>());
 
                         //Create new temporary import data
-                        tempImports.Add(moduleID, impData = new ImportData() {_newSection = true, _lastOffset = 0});
+                        tempImports.Add(moduleID, impData = new ImportData {_newSection = true, _lastOffset = 0});
                     }
 
                     //This is true when a new section is being evaluated.
                     if (impData._newSection)
                     {
-                        links.Add(new RELLink() {_type = RELLinkType.Section, _section = (byte) s.Index});
+                        links.Add(new RELLink {_type = RELLinkType.Section, _section = (byte) s.Index});
                         impData._newSection = false;
                     }
 
@@ -582,8 +582,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         impData._lastOffset += 0xFFFF;
                         diff = offset - impData._lastOffset;
 
-                        links.Add(new RELLink()
-                            {_type = RELLinkType.IncrementOffset, _section = 0, _value = 0, _prevOffset = 0xFFFF});
+                        links.Add(new RELLink {_type = RELLinkType.IncrementOffset, _section = 0, _value = 0, _prevOffset = 0xFFFF});
                     }
 
                     //Gather the link information
@@ -592,8 +591,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     uint val = command._addend;
 
                     //Write command link
-                    links.Add(new RELLink()
-                        {_type = type, _section = targetSection, _value = val, _prevOffset = (ushort) diff});
+                    links.Add(new RELLink {_type = type, _section = targetSection, _value = val, _prevOffset = (ushort) diff});
 
                     //Don't bother adding the difference, 
                     //just set the exact offset as the last offset
@@ -603,7 +601,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             foreach (List<RELLink> cmds in _imports.Values)
             {
-                cmds.Add(new RELLink() {_type = RELLinkType.End});
+                cmds.Add(new RELLink {_type = RELLinkType.End});
             }
         }
 
@@ -865,7 +863,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #region Module ID Names
 
-        public static SortedList<uint, string> _idNames = new SortedList<uint, string>()
+        public static SortedList<uint, string> _idNames = new SortedList<uint, string>
         {
             {0, "main.dol"},
             {1, "sora_scene"},

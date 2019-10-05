@@ -73,7 +73,7 @@ namespace BrawlLib.SSBBTypes
 
         protected override void OnParse(VoidPtr address)
         {
-            _dataOffsets = new List<int>() {_offset};
+            _dataOffsets = new List<int> {_offset};
 
             int offset = *(bint*) address;
 
@@ -136,7 +136,7 @@ namespace BrawlLib.SSBBTypes
 
     public unsafe class IndexValue : SakuraiEntryNode
     {
-        public int _value = 0;
+        public int _value;
 
         public static explicit operator int(IndexValue val)
         {
@@ -229,7 +229,7 @@ namespace BrawlLib.SSBBTypes
     public unsafe class OffsetValue : SakuraiEntryNode
     {
         [Category("Offset Entry")] public int DataOffset => _dataOffset;
-        private int _dataOffset = 0;
+        private int _dataOffset;
 
         protected override void OnParse(VoidPtr address)
         {

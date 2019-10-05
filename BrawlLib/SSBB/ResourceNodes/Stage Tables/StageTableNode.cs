@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         [Browsable(false)]
         [Category("Stage Data Table")]
-        public virtual int NumEntries => EntryList.Count / EntrySize;
+        public int NumEntries => EntryList.Count / EntrySize;
 
         [Category("Stage Data Table")]
         public virtual int Unknown0
@@ -208,7 +208,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             IEnumerable<AttributeInterpretation> q = from f in Formats
-                                                     where EntryOffset + f.NumEntries * 4 == WorkingUncompressed.Length
+                                                     where NumEntries == f.NumEntries
                                                      select f;
 
             bool any_match_name = q.Any(f => string.Equals(
@@ -241,7 +241,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = new AttributeInfo()
+                arr[i] = new AttributeInfo
                 {
                     _name = "0x" + index.ToString("X3")
                 };

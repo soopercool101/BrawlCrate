@@ -432,7 +432,7 @@ namespace BrawlLib.Wii.Graphics
             bool hasUVs = false;
             for (int i = 0; i < 8; i++)
             {
-                if (GetHasUVs(i) == true)
+                if (GetHasUVs(i))
                 {
                     hasUVs = true;
                     uvs += i.ToString() + " ";
@@ -443,7 +443,7 @@ namespace BrawlLib.Wii.Graphics
             bool hasColors = false;
             for (int i = 0; i < 2; i++)
             {
-                if (GetHasUVs(i) == true)
+                if (GetHasUVs(i))
                 {
                     hasColors = true;
                     colors += i.ToString() + " ";

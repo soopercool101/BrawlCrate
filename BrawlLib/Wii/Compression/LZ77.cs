@@ -78,7 +78,7 @@ namespace BrawlLib.Wii.Compression
 
             while (remaining > 0)
             {
-                blockBuffer = new List<byte>() {0};
+                blockBuffer = new List<byte> {0};
                 for (bitCount = 0, control = 0; bitCount < 8 && remaining > 0; bitCount++)
                 {
                     control <<= 1;

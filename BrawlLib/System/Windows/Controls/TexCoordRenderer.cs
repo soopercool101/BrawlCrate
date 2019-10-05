@@ -24,7 +24,7 @@ namespace System.Windows.Forms
         private List<int> _uvSetIndices, _objIndices;
         public int _uvIndex = -1, _objIndex = -1;
 
-        private MDL0MaterialRefNode _targetMatRef = null;
+        private MDL0MaterialRefNode _targetMatRef;
         private MDL0TextureNode Tex0 => _targetMatRef == null ? null : _targetMatRef.TextureNode;
         private GLTexture GLTex => Tex0 == null ? null : Tex0.Texture;
 
@@ -477,8 +477,8 @@ namespace System.Windows.Forms
             GL.Disable(EnableCap.ScissorTest);
         }
 
-        private bool _grabbing = false;
-        private int _lastX = 0, _lastY = 0;
+        private bool _grabbing;
+        private int _lastX, _lastY;
         private readonly float _transFactor = 0.05f;
         private readonly float _zoomFactor = 2.5f;
 
@@ -636,7 +636,7 @@ namespace System.Windows.Forms
             public bool _isEnabled;
             public int _stride;
             public PrimitiveManager _manager;
-            public UnsafeBuffer _renderBuffer = null;
+            public UnsafeBuffer _renderBuffer;
             public bool[] _enabled = new bool[8];
             public bool _dirty;
 

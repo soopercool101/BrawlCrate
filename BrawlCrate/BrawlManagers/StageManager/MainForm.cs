@@ -157,11 +157,11 @@ namespace BrawlCrate.StageManager
 
             // Drag and drop for the left and right sides of the window. The dragEnter and dragDrop methods will check which panel the file is dropped onto.
             panel2.AllowDrop = true;
-            panel2.DragEnter += new DragEventHandler(dragEnter);
-            panel2.DragDrop += new DragEventHandler(dragDrop);
+            panel2.DragEnter += dragEnter;
+            panel2.DragDrop += dragDrop;
             listBox1.AllowDrop = true;
-            listBox1.DragEnter += new DragEventHandler(dragEnter);
-            listBox1.DragDrop += new DragEventHandler(dragDrop);
+            listBox1.DragEnter += dragEnter;
+            listBox1.DragDrop += dragDrop;
 
             foreach (object item in selmapMarkFormat.DropDownItems)
             {
@@ -519,6 +519,7 @@ namespace BrawlCrate.StageManager
                     }
                     catch (Exception)
                     {
+                        // ignored
                     }
 
                     return null;
@@ -1242,7 +1243,7 @@ namespace BrawlCrate.StageManager
 
         private void resizeAllPrevbasesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EnterSizeDialog dialog = new EnterSizeDialog()
+            EnterSizeDialog dialog = new EnterSizeDialog
             {
                 SizeEntry = portraitViewer1.prevbaseResizeTo ?? new Size(176, 176)
             };

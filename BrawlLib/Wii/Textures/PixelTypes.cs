@@ -12,12 +12,12 @@ namespace BrawlLib.Wii.Textures
 
         public static explicit operator wRGBXPixel(ARGBPixel p)
         {
-            return new wRGBXPixel() {R = p.R, G = p.G, B = p.B, X = 0};
+            return new wRGBXPixel {R = p.R, G = p.G, B = p.B, X = 0};
         }
 
         public static explicit operator ARGBPixel(wRGBXPixel p)
         {
-            return new ARGBPixel() {A = 0xFF, R = p.R, G = p.G, B = p.B};
+            return new ARGBPixel {A = 0xFF, R = p.R, G = p.G, B = p.B};
         }
     }
 
@@ -28,12 +28,12 @@ namespace BrawlLib.Wii.Textures
 
         public static explicit operator wRGBAPixel(ARGBPixel p)
         {
-            return new wRGBAPixel() {A = p.A, R = p.R, G = p.G, B = p.B};
+            return new wRGBAPixel {A = p.A, R = p.R, G = p.G, B = p.B};
         }
 
         public static explicit operator ARGBPixel(wRGBAPixel p)
         {
-            return new ARGBPixel() {A = p.A, R = p.R, G = p.G, B = p.B};
+            return new ARGBPixel {A = p.A, R = p.R, G = p.G, B = p.B};
         }
     }
 
@@ -84,12 +84,12 @@ namespace BrawlLib.Wii.Textures
 
         public static explicit operator wRGBPixel(ARGBPixel p)
         {
-            return new wRGBPixel() {R = p.R, G = p.G, B = p.B};
+            return new wRGBPixel {R = p.R, G = p.G, B = p.B};
         }
 
         public static explicit operator ARGBPixel(wRGBPixel p)
         {
-            return new ARGBPixel() {A = 0xFF, R = p.R, G = p.G, B = p.B};
+            return new ARGBPixel {A = 0xFF, R = p.R, G = p.G, B = p.B};
         }
     }
 
@@ -175,7 +175,7 @@ namespace BrawlLib.Wii.Textures
             g = Convert.ToInt32(g * (255.0 / 63.0));
             b = val & 0x1F;
             b = Convert.ToInt32(b * (255.0 / 31.0));
-            return new RGBPixel() {R = (byte) r, G = (byte) g, B = (byte) b};
+            return new RGBPixel {R = (byte) r, G = (byte) g, B = (byte) b};
         }
 
         public static explicit operator Color(wRGB565Pixel p)
@@ -275,7 +275,7 @@ namespace BrawlLib.Wii.Textures
                 b |= b << 4;
             }
 
-            return new ARGBPixel() {A = (byte) a, R = (byte) r, G = (byte) g, B = (byte) b};
+            return new ARGBPixel {A = (byte) a, R = (byte) r, G = (byte) g, B = (byte) b};
         }
 
         public static explicit operator wRGB5A3Pixel(ARGBPixel p)

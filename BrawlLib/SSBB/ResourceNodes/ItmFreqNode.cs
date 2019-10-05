@@ -20,7 +20,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             for (int i = 0; i < 5; i++)
             {
-                Children.Add(new ItmTableNode() {Name = "Table [" + i + "]"});
+                Children.Add(new ItmTableNode {Name = "Table [" + i + "]"});
             }
         }
 

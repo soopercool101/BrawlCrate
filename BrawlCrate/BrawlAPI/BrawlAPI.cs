@@ -49,6 +49,7 @@ namespace BrawlCrate.API
         static BrawlAPI()
         {
             ContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
+            MultiSelectContextMenuHooks = new Dictionary<Type, ToolStripMenuItem[]>();
             Plugins = new List<PluginScript>();
             ResourceParsers = new List<PluginResourceParser>();
             Engine = Python.CreateEngine();
@@ -61,15 +62,15 @@ namespace BrawlCrate.API
 
             //Import BrawlCrate and Brawllib
             Assembly mainAssembly = Assembly.GetExecutingAssembly();
-            Assembly brawllib = Assembly.GetAssembly(typeof(ResourceNode));
+            Assembly brawlLib = Assembly.GetAssembly(typeof(ResourceNode));
 
             Runtime.LoadAssembly(mainAssembly);
-            Runtime.LoadAssembly(brawllib);
+            Runtime.LoadAssembly(brawlLib);
             Runtime.LoadAssembly(typeof(string).Assembly);
             Runtime.LoadAssembly(typeof(Uri).Assembly);
             Runtime.LoadAssembly(typeof(Form).Assembly);
 
-            // Hook the main form's resourceTree selection changed event to add contextMenu items to nodewrapper
+            // Hook the main form's resourceTree selection changed event to add contextMenu items to wrappers
             MainForm.Instance.resourceTree.SelectionChanged += ResourceTree_SelectionChanged;
         }
 
@@ -80,6 +81,7 @@ namespace BrawlCrate.API
         internal static List<PluginResourceParser> ResourceParsers { get; set; }
 
         internal static Dictionary<Type, ToolStripMenuItem[]> ContextMenuHooks { get; set; }
+        internal static Dictionary<Type, ToolStripMenuItem[]> MultiSelectContextMenuHooks { get; set; }
 
         /// <summary>
         ///     Contains function/variable names that have been renamed since older versions of bboxapi or BrawlAPI.
@@ -88,10 +90,10 @@ namespace BrawlCrate.API
         /// </summary>
         internal static readonly string[] DepreciatedStrings = new[]
         {
-            "BrawlBox",             // BrawlBox namespace is "BrawlCrate" in this program
-            "bboxapi",              // API system is now named "BrawlAPI"
-            "PluginLoader",         // Renamed to better reflect what it does (loaders do not have to be parsers)
-            "AddLoader"             // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "BrawlBox",     // BrawlBox namespace is "BrawlCrate" in this program
+            "bboxapi",      // API system is now named "BrawlAPI"
+            "PluginLoader", // Renamed to better reflect what it does (loaders do not have to be parsers)
+            "AddLoader"     // Renamed to better reflect what it does (loaders do not have to be parsers)
         };
 
         /// <summary>
@@ -286,7 +288,8 @@ namespace BrawlCrate.API
             {
                 // Search the new installation path for Python
                 foreach (DirectoryInfo d in Directory
-                    .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString()).GetDirectories().Reverse())
+                                            .CreateDirectory(Environment.SpecialFolder.ApplicationData.ToString())
+                                            .GetDirectories().Reverse())
                 {
                     if (d.FullName.StartsWith(
                             $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Python") &&
@@ -436,18 +439,93 @@ namespace BrawlCrate.API
 
         private static void ResourceTree_SelectionChanged(object sender, EventArgs e)
         {
-            TreeView resourceTree = (TreeView) sender;
-            if (resourceTree.SelectedNode is BaseWrapper wrapper && wrapper.ContextMenuStrip != null)
+            TreeViewMS resourceTree = (TreeViewMS) sender;
+            Type type = resourceTree.SelectedType;
+            if (resourceTree.SelectedNodes.Count > 1 && type != null &&
+                type.GetInterfaces().Contains(typeof(MultiSelectableWrapper)))
+            {
+                // Get the correct multi-select context menu
+                ContextMenuStrip menu = type == typeof(GenericWrapper)
+                    ? new GenericWrapper().MultiSelectMenuStrip
+                    : ((MultiSelectableWrapper) resourceTree.SelectedNode).MultiSelectMenuStrip;
+
+                // Remove plugins list as necessary
+                while (menu != null && menu.Items.Count > 0 &&
+                       (menu.Items[menu.Items.Count - 1].Text.Equals("Plugins") ||
+                        menu.Items[menu.Items.Count - 1] is ToolStripSeparator))
+                {
+                    menu.Items.RemoveAt(menu.Items.Count - 1);
+                }
+
+                if (menu != null && MultiSelectContextMenuHooks.ContainsKey(type) &&
+                    MultiSelectContextMenuHooks[type].Length > 0)
+                {
+                    foreach (ToolStripMenuItem item in MultiSelectContextMenuHooks[type])
+                    {
+                        // Toggle enabled state to activate the "EnabledChanged" event. This will allow conditionals to evaluate
+                        item.Enabled = false;
+                        item.Enabled = true;
+
+                        // Implementation only allows for single-nested dropdowns, so ensure those get properly initialized as well
+                        if (item.DropDownItems.Count > 0)
+                        {
+                            foreach (ToolStripMenuItem i in item.DropDownItems)
+                            {
+                                i.Enabled = false;
+                                i.Enabled = true;
+                                i.Visible = i.Enabled;
+                            }
+                        }
+                    }
+
+                    List<ToolStripItem> items = new List<ToolStripItem>();
+                    foreach (ToolStripMenuItem item in MultiSelectContextMenuHooks[type])
+                    {
+                        if (item.DropDownItems.Count > 0)
+                        {
+                            item.Enabled = item.HasDropDownItems;
+                        }
+
+                        if (item.Enabled)
+                        {
+                            items.Add(item);
+                        }
+                    }
+
+                    if (items.Count <= 0)
+                    {
+                        return;
+                    }
+
+                    if (menu.Items.Count == 0 || !menu.Items[menu.Items.Count - 1].Text.Equals("Plugins"))
+                    {
+                        if (menu.Items.Count != 0)
+                        {
+                            menu.Items.Add(new ToolStripSeparator());
+                        }
+
+                        menu.Items.Add(new ToolStripMenuItem("Plugins"));
+                    }
+
+                    (menu.Items[menu.Items.Count - 1] as ToolStripMenuItem)?.DropDown.Items.AddRange(items.ToArray());
+                }
+            }
+            else if (resourceTree.SelectedNode is GenericWrapper wrapper && wrapper.ContextMenuStrip != null)
             {
                 // Remove plugins list as necessary
                 while (wrapper.ContextMenuStrip != null && wrapper.ContextMenuStrip.Items.Count > 0 &&
-                       (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text == "Plugins" ||
+                       (wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text
+                               .Equals("Plugins") ||
                         wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1] is ToolStripSeparator))
                 {
                     wrapper.ContextMenuStrip.Items.RemoveAt(wrapper.ContextMenuStrip.Items.Count - 1);
                 }
 
-                Type type = wrapper.GetType();
+                // Type should never be null, but just in case
+                if (type == null)
+                {
+                    type = resourceTree.SelectedNode.GetType();
+                }
 
                 if (ContextMenuHooks.ContainsKey(type) && ContextMenuHooks[type].Length > 0)
                 {
@@ -489,7 +567,8 @@ namespace BrawlCrate.API
                     }
 
                     if (wrapper.ContextMenuStrip.Items.Count == 0 ||
-                        wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text != "Plugins")
+                        !wrapper.ContextMenuStrip.Items[wrapper.ContextMenuStrip.Items.Count - 1].Text
+                                .Equals("Plugins"))
                     {
                         if (wrapper.ContextMenuStrip.Items.Count != 0)
                         {

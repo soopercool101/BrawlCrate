@@ -72,10 +72,10 @@ namespace System.Windows.Forms
             lstColors.SelectionMode = SelectionMode.MultiExtended;
             lstColors.Size = new Drawing.Size(334, 218);
             lstColors.TabIndex = 1;
-            lstColors.DrawItem += new DrawItemEventHandler(lstColors_DrawItem);
+            lstColors.DrawItem += lstColors_DrawItem;
             lstColors.DoubleClick += lstColors_DoubleClick;
-            lstColors.KeyDown += new KeyEventHandler(lstColors_KeyDown);
-            lstColors.MouseDown += new MouseEventHandler(lstColors_MouseDown);
+            lstColors.KeyDown += lstColors_KeyDown;
+            lstColors.MouseDown += lstColors_MouseDown;
             // 
             // ctxMenu
             // 
@@ -212,7 +212,7 @@ namespace System.Windows.Forms
             DoubleBuffered = true;
             Name = "CLRControl";
             Size = new Drawing.Size(334, 242);
-            KeyDown += new KeyEventHandler(CLRControl_KeyDown);
+            KeyDown += CLRControl_KeyDown;
             ctxMenu.ResumeLayout(false);
             pnlPrimary.ResumeLayout(false);
             ResumeLayout(false);
@@ -224,7 +224,7 @@ namespace System.Windows.Forms
 
         public event EventHandler CurrentColorChanged;
 
-        public int _colorId = 0;
+        public int _colorId;
 
         public int ColorID
         {

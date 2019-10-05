@@ -10,6 +10,9 @@ namespace BrawlCrate.NodeWrappers
     {
         private static readonly ContextMenuStrip _menu;
 
+        private static readonly ToolStripMenuItem DuplicateToolStripMenuItem =
+            new ToolStripMenuItem("&Duplicate", null, DuplicateAction, Keys.Control | Keys.D);
+
         private static readonly ToolStripMenuItem ReplaceToolStripMenuItem =
             new ToolStripMenuItem("&Replace", null, ReplaceAction, Keys.Control | Keys.R);
 
@@ -19,6 +22,7 @@ namespace BrawlCrate.NodeWrappers
             //_menu.Items.Add(new ToolStripMenuItem("&New Group", null, NewEntryAction, Keys.Control | Keys.H));
             //_menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
+            _menu.Items.Add(DuplicateToolStripMenuItem);
             _menu.Items.Add(ReplaceToolStripMenuItem);
             _menu.Opening += MenuOpening;
             _menu.Closing += MenuClosing;
@@ -45,7 +49,7 @@ namespace BrawlCrate.NodeWrappers
         public ItmTableGroupNode NewEntry()
         {
             int childCount = _resource.Children == null ? 0 : _resource.Children.Count;
-            ItmTableGroupNode node = new ItmTableGroupNode() {Name = "Group [" + childCount + "]"};
+            ItmTableGroupNode node = new ItmTableGroupNode {Name = "Group [" + childCount + "]"};
             _resource.AddChild(node);
 
             BaseWrapper w = FindResource(node, false);

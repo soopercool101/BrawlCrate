@@ -46,7 +46,7 @@ namespace BrawlCrate.StageManager
             else
             {
                 Stream stream = Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("BrawlCrate.StageManager.XX.png");
+                                        .GetManifestResourceStream("BrawlCrate.StageManager.XX.png");
                 if (stream != null)
                 {
                     Image.FromStream(stream).Save(xx_png);
