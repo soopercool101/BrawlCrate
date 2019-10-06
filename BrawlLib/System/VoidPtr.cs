@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace System
 {
@@ -202,6 +203,17 @@ namespace System
             byte f = *p1;
             *p1 = *p2;
             *p2 = f;
+        }
+
+        public byte[] ToArray(int length)
+        {
+            List<byte> bytes = new List<byte>();
+            for (int i = 0; i <= length; i++)
+            {
+                bytes.Add(this[i, 1].Byte);
+            }
+
+            return bytes.ToArray();
         }
     }
 }

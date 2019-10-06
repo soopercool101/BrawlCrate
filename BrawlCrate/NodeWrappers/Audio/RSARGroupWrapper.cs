@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
 using Microsoft.Scripting.Utils;
+using System.Collections.Generic;
 
 namespace BrawlCrate.NodeWrappers
 {
@@ -95,13 +96,24 @@ namespace BrawlCrate.NodeWrappers
             using (FileStream stream = new FileStream(outPath, FileMode.OpenOrCreate, FileAccess.ReadWrite,
                 FileShare.ReadWrite, 8, FileOptions.SequentialScan))
             {
+                // Write the version (2)
                 stream.Write(new byte[] {2}, 0, 1);
                 byte[] id = BitConverter.GetBytes((_resource as RSARGroupNode).StringId);
                 if (swapEndian)
                 {
                     id = id.ToReverseArray();
                 }
+                // Write the ID
                 stream.Write(id, 0, 4);
+
+                // Write something(?) from the group
+
+                // Write the files
+                foreach (RSARFileNode f in ((RSARGroupNode) _resource).Files)
+                {
+                    stream.Write(f.WorkingUncompressed.Address.ToArray(f.WorkingUncompressed.Length), 0,
+                        f.WorkingUncompressed.Length);
+                }
             }
         }
     }
