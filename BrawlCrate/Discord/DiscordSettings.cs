@@ -67,21 +67,21 @@ namespace BrawlCrate.Discord
                 FormCollection fc = Application.OpenForms;
                 foreach (Form frm in fc)
                 {
-                    if (frm is CostumeManager.MainForm)
+                    if (frm is CostumeManager.CostumeManagerForm)
                     {
                         DiscordController.presence.details = "Managing Costumes";
                         usingManager = true;
                         break;
                     }
 
-                    if (frm is SongManager.MainForm)
+                    if (frm is SongManager.SongManagerForm)
                     {
                         DiscordController.presence.details = "Managing Songs";
                         usingManager = true;
                         break;
                     }
 
-                    if (frm is StageManager.MainForm)
+                    if (frm is StageManager.StageManagerForm)
                     {
                         DiscordController.presence.details = "Managing Stages";
                         usingManager = true;

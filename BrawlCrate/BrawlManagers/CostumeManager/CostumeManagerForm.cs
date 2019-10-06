@@ -13,7 +13,7 @@ using System.Globalization;
 
 namespace BrawlCrate.CostumeManager
 {
-    public partial class MainForm : Form
+    public partial class CostumeManagerForm : Form
     {
         private static string _title = "";
 
@@ -22,7 +22,7 @@ namespace BrawlCrate.CostumeManager
 
         public bool Swap_Wario;
 
-        public MainForm()
+        public CostumeManagerForm()
         {
             if (!string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
             {

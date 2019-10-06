@@ -197,7 +197,7 @@ Full changelog can be viewed from the help menu.";
             {
                 if (args[0].Equals("/gct", StringComparison.OrdinalIgnoreCase))
                 {
-                    GCTEditor editor = new GCTEditor();
+                    GCTEditor editor = new GCTEditor(AssemblyTitleFull);
                     if (args.Length >= 2)
                     {
                         editor.TargetNode = GCTEditor.LoadGCT(args[1]);
@@ -230,7 +230,7 @@ Full changelog can be viewed from the help menu.";
                 if (args[0].EndsWith(".gct", StringComparison.OrdinalIgnoreCase) ||
                     args[0].EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                 {
-                    GCTEditor editor = new GCTEditor
+                    GCTEditor editor = new GCTEditor(AssemblyTitleFull)
                     {
                         TargetNode = GCTEditor.LoadGCT(args[0])
                     };
@@ -438,7 +438,7 @@ Full changelog can be viewed from the help menu.";
             if (path.EndsWith(".gct", StringComparison.OrdinalIgnoreCase) ||
                 path.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
             {
-                GCTEditor editor = new GCTEditor
+                GCTEditor editor = new GCTEditor(AssemblyTitleFull)
                 {
                     TargetNode = GCTEditor.LoadGCT(path)
                 };

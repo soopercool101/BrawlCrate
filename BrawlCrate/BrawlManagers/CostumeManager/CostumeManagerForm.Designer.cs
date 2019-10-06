@@ -1,5 +1,5 @@
 ﻿namespace BrawlCrate.CostumeManager {
-	partial class MainForm {
+	partial class CostumeManagerForm {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -426,7 +426,7 @@
 			this.use16ptFontToolStripMenuItem.Text = "Use 16pt font";
 			this.use16ptFontToolStripMenuItem.Click += new System.EventHandler(this.use16ptFontToolStripMenuItem_Click);
 			// 
-			// MainForm
+			// CostumeManagerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -439,7 +439,7 @@
 			this.Controls.Add(this.brawlSplitter2);
 			this.Controls.Add(this.otherPVsFlowLayoutPanel);
 			this.Controls.Add(this.toolStrip1);
-			this.Name = "MainForm";
+			this.Name = "CostumeManagerForm";
 			this.Text = "Brawl Costume Manager";
 			this.splitContainer2.Panel1.ResumeLayout(false);
 			this.splitContainer2.Panel2.ResumeLayout(false);

@@ -18,7 +18,6 @@ namespace System.Windows.Forms
             EventHandler handler = OpenFileChanged;
             handler?.Invoke(this, e);
         }
-
         public GCTEditor()
         {
             InitializeComponent();
@@ -26,11 +25,21 @@ namespace System.Windows.Forms
             lstCodes.ItemChecked += lstCodes_ItemChecked;
             lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
 
-            string title =
-                ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(
-                    Assembly.GetEntryAssembly(), typeof(AssemblyTitleAttribute), false)).Title;
+            Text = ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(),
+                typeof(AssemblyTitleAttribute), false)).Title + " - Code Manager";
 
-            Text = title + " - Code Manager";
+            checkBox1.Checked = BrawlLib.Properties.Settings.Default.SaveGCTWithInfo;
+        }
+
+        public GCTEditor(string assemblyTitle)
+        {
+            InitializeComponent();
+            txtCode.TextChanged += txtCode_TextChanged;
+            lstCodes.ItemChecked += lstCodes_ItemChecked;
+            lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
+
+            Text = "BrawlCrate Code Manager" +
+                   assemblyTitle.Substring(assemblyTitle.IndexOf(" ", StringComparison.Ordinal));
 
             checkBox1.Checked = BrawlLib.Properties.Settings.Default.SaveGCTWithInfo;
         }

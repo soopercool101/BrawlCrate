@@ -112,7 +112,7 @@ namespace BrawlCrate.SongManager
             }
             else if (CSV == null)
             {
-                VolumeToolTip = "No GCT file found in: " + string.Join(", ", MainForm.GCT_PATHS);
+                VolumeToolTip = "No GCT file found in: " + string.Join(", ", SongManagerForm.GCT_PATHS);
                 VolumeIcon = SPEAKER;
 
                 btnAdd.Visible = false;

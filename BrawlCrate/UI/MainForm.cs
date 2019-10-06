@@ -1223,7 +1223,7 @@ namespace BrawlCrate
 
         private void GCTEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GCTEditor g = new GCTEditor();
+            GCTEditor g = new GCTEditor(Program.AssemblyTitleFull);
             g.FormClosed += UpdateDiscordRPC;
             g.OpenFileChanged += UpdateDiscordRPC;
             g.Show();
@@ -1232,7 +1232,7 @@ namespace BrawlCrate
 
         private void CostumeManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CostumeManager.MainForm m = new CostumeManager.MainForm();
+            CostumeManager.CostumeManagerForm m = new CostumeManager.CostumeManagerForm();
             m.FormClosed += UpdateDiscordRPC;
             m.Show();
             UpdateDiscordRPC(null, null);
@@ -1240,7 +1240,7 @@ namespace BrawlCrate
 
         private void SongManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SongManager.MainForm m = new SongManager.MainForm(null, true, true, false);
+            SongManager.SongManagerForm m = new SongManager.SongManagerForm(null, true, true, false);
             m.FormClosed += UpdateDiscordRPC;
             m.Show();
             UpdateDiscordRPC(null, null);
@@ -1248,7 +1248,7 @@ namespace BrawlCrate
 
         private void StageManagerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StageManager.MainForm m = new StageManager.MainForm(null, true);
+            StageManager.StageManagerForm m = new StageManager.StageManagerForm(null, true);
             m.FormClosed += UpdateDiscordRPC;
             m.Show();
             UpdateDiscordRPC(null, null);
