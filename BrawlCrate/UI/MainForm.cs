@@ -538,18 +538,15 @@ namespace BrawlCrate
                 setScrollOffset?.Invoke();
 
 #if DEBUG
-                if(ShowHex && !(node is RELEntryNode || node is RELNode))
+                if(ShowHex && !(node is RELEntryNode || node is RELNode) && node.WorkingUncompressed.Length > 0)
                 {
-                    if (node.WorkingUncompressed.Length > 0)
-                    {
-                        hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
-                                (byte*)node.WorkingUncompressed.Address,
-                                node.WorkingUncompressed.Length,
-                                node.WorkingUncompressed.Length,
-                                FileAccess.ReadWrite))
-                            { _supportsInsDel = false };
-                        newControl = hexBox1;
-                    }
+                    hexBox1.ByteProvider = new Be.Windows.Forms.DynamicFileByteProvider(new UnmanagedMemoryStream(
+                            (byte*)node.WorkingUncompressed.Address,
+                            node.WorkingUncompressed.Length,
+                            node.WorkingUncompressed.Length,
+                            FileAccess.ReadWrite))
+                        { _supportsInsDel = false };
+                    newControl = hexBox1;
                 }
                 else if (ShowHex && node is IBufferNode d)
 #else
