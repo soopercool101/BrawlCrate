@@ -115,7 +115,7 @@ namespace System.Windows.Forms
         {
             OpenFileDialog d = new OpenFileDialog
             {
-                Filter = "GCT/Text File|*.gct;*.txt|GCT File|*.gct|Text File|*.txt"
+                Filter = BrawlLib.FileFilters.GCT
             };
             if (d.ShowDialog(this) != DialogResult.OK)
             {

@@ -102,7 +102,7 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(false, "MDL0 Bone", "mdl0bone"),
 
             //Gecko Codes
-            new SupportedFileInfo(true, "GCT Code List", "gct"),
+            new SupportedFileInfo(true, "Gecko Code Table", "gct"),
             new SupportedFileInfo(true, false, "Text File", "txt"),
 
             //Brawl Mod Files
