@@ -431,10 +431,7 @@ namespace System.Windows.Forms
 
             interpolationViewer.Invalidate();
             ((ResourceNode) _targetNode).SignalPropertyChange();
-            if (_mainWindow != null)
-            {
-                _mainWindow.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
-            }
+            _mainWindow?.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
 
             if (chkSyncStartEnd.Checked)
             {
@@ -634,10 +631,7 @@ namespace System.Windows.Forms
             kf._value = numOutVal.Value;
             interpolationViewer.Invalidate();
             ((ResourceNode) _targetNode).SignalPropertyChange();
-            if (_mainWindow != null)
-            {
-                _mainWindow.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
-            }
+            _mainWindow?.KeyframePanel.UpdateKeyframe(interpolationViewer.SelectedKeyframe._index);
 
             if (chkSyncStartEnd.Checked)
             {
@@ -683,10 +677,7 @@ namespace System.Windows.Forms
                 else
                 {
                     KeyframeEntry second = SelectedKeyframe.Second;
-                    if (second != null)
-                    {
-                        second.Remove();
-                    }
+                    second?.Remove();
                 }
 
                 interpolationViewer.Invalidate();

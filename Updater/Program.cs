@@ -989,10 +989,7 @@ namespace Updater
                 goto TRY_AGAIN;
             }
 
-            if (p != null)
-            {
-                p.Kill();
-            }
+            p?.Kill();
         }
 
         public static int GetOpenWindowsCount()

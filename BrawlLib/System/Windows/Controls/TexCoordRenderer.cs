@@ -51,10 +51,7 @@ namespace System.Windows.Forms
                 _attached = new List<ResourceNode>();
             }
 
-            if (Tex0 != null)
-            {
-                Tex0.Unbind();
-            }
+            Tex0?.Unbind();
 
             _attached.Clear();
 
@@ -66,20 +63,14 @@ namespace System.Windows.Forms
 
             _attached.Add(_targetMatRef);
 
-            if (Tex0 != null)
-            {
-                Tex0.Prepare(_targetMatRef, -1);
-            }
+            Tex0?.Prepare(_targetMatRef, -1);
 
             //Dispose of all old UV buffers
             if (_renderInfo != null)
             {
                 foreach (RenderInfo info in _renderInfo)
                 {
-                    if (info._renderBuffer != null)
-                    {
-                        info._renderBuffer.Dispose();
-                    }
+                    info._renderBuffer?.Dispose();
                 }
             }
 
@@ -725,20 +716,11 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (_manager._triangles != null)
-                {
-                    _manager._triangles.Render();
-                }
+                _manager._triangles?.Render();
 
-                if (_manager._lines != null)
-                {
-                    _manager._lines.Render();
-                }
+                _manager._lines?.Render();
 
-                if (_manager._points != null)
-                {
-                    _manager._points.Render();
-                }
+                _manager._points?.Render();
 
                 GL.DisableClientState(ArrayCap.VertexArray);
             }

@@ -69,10 +69,7 @@ namespace BrawlLib.Wii.Models
                 {
                     foreach (UnsafeBuffer b in Assets[i])
                     {
-                        if (b != null)
-                        {
-                            b.Dispose();
-                        }
+                        b?.Dispose();
                     }
 
                     Assets[i] = null;

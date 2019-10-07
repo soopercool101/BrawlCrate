@@ -58,10 +58,7 @@ namespace BrawlCrate.CostumeManager
             {
                 foreach (ResourceNode node in bres_cache.Values)
                 {
-                    if (node != null)
-                    {
-                        node.Dispose();
-                    }
+                    node?.Dispose();
                 }
             }
 

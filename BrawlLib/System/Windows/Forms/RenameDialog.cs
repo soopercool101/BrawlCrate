@@ -66,13 +66,10 @@ namespace System.Windows.Forms
             }
 
             //Also change palette node
-            if (_node is TEX0Node)
+            PLT0Node plt = (_node as TEX0Node)?.GetPaletteNode();
+            if (plt != null)
             {
-                PLT0Node plt = ((TEX0Node) _node).GetPaletteNode();
-                if (plt != null)
-                {
-                    plt.Name = name;
-                }
+                plt.Name = name;
             }
 
             _node.Name = name;

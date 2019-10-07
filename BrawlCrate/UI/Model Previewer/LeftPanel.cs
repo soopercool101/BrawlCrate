@@ -1114,7 +1114,7 @@ namespace System.Windows.Forms
                     }
                 }
             }
-            else if (TargetModel != null)
+            else
             {
                 //Add all model textures
                 if (TargetModel is MDL0Node && (n = ((ResourceNode) TargetModel).FindChild("Textures", false)) != null)
@@ -1951,9 +1951,9 @@ namespace System.Windows.Forms
                                     g.DrawRectangle(Pens.Black, r);
                                 }
                             }
-                            else if (_pat0Selection != null)
+                            else
                             {
-                                if (_pat0Selection.FindChildByType(c.MaterialNode.Name, false,
+                                if (_pat0Selection?.FindChildByType(c.MaterialNode.Name, false,
                                         ResourceType.PAT0Entry) != null)
                                 {
                                     Rectangle r = lstObjects.GetItemRectangle(i);
@@ -1997,9 +1997,9 @@ namespace System.Windows.Forms
                                         g.DrawRectangle(Pens.Black, r);
                                     }
                                 }
-                                else if (_pat0Selection != null)
+                                else
                                 {
-                                    if (_pat0Selection.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index,
+                                    if (_pat0Selection?.FindChildByType(c.MaterialNode.Name + "/Texture" + rn.Index,
                                             false, ResourceType.PAT0Texture) != null)
                                     {
                                         Rectangle r = lstTextures.GetItemRectangle(i);

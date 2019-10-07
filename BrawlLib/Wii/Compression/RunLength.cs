@@ -97,10 +97,7 @@ namespace BrawlLib.Wii.Compression
 
             int chunkCount = (int) Math.Ceiling((double) srcLen / _threadChunk);
 
-            if (progress != null)
-            {
-                progress.Begin(0, srcLen, 0);
-            }
+            progress?.Begin(0, srcLen, 0);
 
             _contractions = new List<Contraction>[chunkCount];
 
@@ -296,10 +293,7 @@ namespace BrawlLib.Wii.Compression
 
             outStream.Flush();
 
-            if (progress != null)
-            {
-                progress.Finish();
-            }
+            progress?.Finish();
 
             return (int) outStream.Length;
         }

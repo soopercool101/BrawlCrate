@@ -275,10 +275,7 @@ namespace System.Windows.Forms
                 InterpolationFormOpen = false;
                 interpolationEditorToolStripMenuItem.Enabled = false;
 
-                if (_interpolationForm != null)
-                {
-                    _interpolationForm.Close();
-                }
+                _interpolationForm?.Close();
             }
             else
             {
@@ -540,10 +537,7 @@ namespace System.Windows.Forms
             }
 
             NW4RAnimationNode node = TargetAnimation;
-            if (node is CHR0Node)
-            {
-                (node as CHR0Node).Port((MDL0Node) TargetModel);
-            }
+            (node as CHR0Node)?.Port((MDL0Node) TargetModel);
 
             AnimChanged();
         }
@@ -556,10 +550,7 @@ namespace System.Windows.Forms
             }
 
             NW4RAnimationNode node = TargetAnimation;
-            if (node is CHR0Node)
-            {
-                (node as CHR0Node).MergeWith();
-            }
+            (node as CHR0Node)?.MergeWith();
 
             AnimChanged();
         }
@@ -588,9 +579,9 @@ namespace System.Windows.Forms
             {
                 (node as PAT0Node).Append();
             }
-            else if (node is VIS0Node)
+            else
             {
-                (node as VIS0Node).Append();
+                (node as VIS0Node)?.Append();
             }
 
             AnimChanged();
@@ -620,9 +611,9 @@ namespace System.Windows.Forms
             {
                 (node as PAT0Node).Resize();
             }
-            else if (node is VIS0Node)
+            else
             {
-                (node as VIS0Node).Resize();
+                (node as VIS0Node)?.Resize();
             }
 
             AnimChanged();
@@ -631,20 +622,11 @@ namespace System.Windows.Forms
         private void averageAllStartEndTangentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NW4RAnimationNode n = TargetAnimation;
-            if (n is CHR0Node)
-            {
-                ((CHR0Node) n).AverageKeys();
-            }
+            (n as CHR0Node)?.AverageKeys();
 
-            if (n is SRT0Node)
-            {
-                ((SRT0Node) n).AverageKeys();
-            }
+            (n as SRT0Node)?.AverageKeys();
 
-            if (n is SHP0Node)
-            {
-                ((SHP0Node) n).AverageKeys();
-            }
+            (n as SHP0Node)?.AverageKeys();
         }
 
         private void averageboneStartendTangentsToolStripMenuItem_Click(object sender, EventArgs e)

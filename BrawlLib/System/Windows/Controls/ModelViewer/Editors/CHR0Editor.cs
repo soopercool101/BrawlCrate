@@ -1162,13 +1162,8 @@ namespace System.Windows.Forms
 
         private void btnClean_Click(object sender, EventArgs e)
         {
-            if (!(TargetModel is MDL0Node))
-            {
-                return;
-            }
-
-            ResourceNode group = ((MDL0Node) TargetModel)._boneGroup;
-            if (group == null)
+            ResourceNode group = (TargetModel as MDL0Node)?._boneGroup;
+            if (@group == null)
             {
                 return;
             }
@@ -1388,12 +1383,7 @@ namespace System.Windows.Forms
 
         private void removeAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null)
-            {
-                return;
-            }
-
-            CHR0EntryNode _target = SelectedAnimation.FindChild(TargetBone.Name, false) as CHR0EntryNode;
+            CHR0EntryNode _target = SelectedAnimation?.FindChild(TargetBone.Name, false) as CHR0EntryNode;
             if (_target != null)
             {
                 _target.Keyframes._keyArrays[type]._keyRoot = new KeyframeEntry(-1, type <= 2 ? 1 : 0);

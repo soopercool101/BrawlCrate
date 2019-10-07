@@ -352,10 +352,7 @@ namespace BrawlCrate.NodeWrappers
                 shader.Rebuild(true);
 
                 BaseWrapper b = FindResource(shader, true);
-                if (b != null)
-                {
-                    b.EnsureVisible();
-                }
+                b?.EnsureVisible();
 
                 return shader;
             }
@@ -407,10 +404,7 @@ namespace BrawlCrate.NodeWrappers
             mat.Rebuild(true);
 
             BaseWrapper b = FindResource(mat, true);
-            if (b != null)
-            {
-                b.EnsureVisible();
-            }
+            b?.EnsureVisible();
 
             return mat;
         }
@@ -796,10 +790,7 @@ namespace BrawlCrate.NodeWrappers
         private void RecalcBoundingBoxes()
         {
             MDL0Node model = _resource as MDL0Node;
-            if (model != null)
-            {
-                model.CalculateBoundingBoxes();
-            }
+            model?.CalculateBoundingBoxes();
         }
     }
 }

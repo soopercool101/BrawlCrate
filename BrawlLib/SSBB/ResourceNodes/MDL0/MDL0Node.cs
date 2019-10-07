@@ -979,10 +979,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             //Remove object from external, add to internal
-            if (repObj.Parent != null)
-            {
-                repObj.Parent.RemoveChild(repObj);
-            }
+            repObj.Parent?.RemoveChild(repObj);
 
             if (_objGroup == null)
             {
@@ -2288,9 +2285,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     foreach (MDL0ObjectNode p in _objList)
                     {
-                        if (p.IsRendering && p._manager != null)
+                        if (p.IsRendering)
                         {
-                            p._manager.RenderVertices(p._matrixNode, weightTarget, depthPass, camera);
+                            p._manager?.RenderVertices(p._matrixNode, weightTarget, depthPass, camera);
                         }
                     }
                 }

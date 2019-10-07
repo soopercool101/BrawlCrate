@@ -548,12 +548,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public MoveDefActionNode GetAction()
         {
             ResourceNode r = Root.FindNode(RawOffset);
-            if (r is MoveDefActionNode)
-            {
-                return r as MoveDefActionNode;
-            }
-
-            return null;
+            return r as MoveDefActionNode;
         }
 
         public MoveDefActionNode action;

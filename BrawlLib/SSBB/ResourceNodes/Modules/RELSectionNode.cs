@@ -116,10 +116,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Dispose()
         {
-            if (_dataBuffer != null)
-            {
-                _dataBuffer.Dispose();
-            }
+            _dataBuffer?.Dispose();
 
             base.Dispose();
         }

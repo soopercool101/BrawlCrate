@@ -93,10 +93,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             UpdateCurrentControl();
             SignalPropertyChange();
             Parent.Parent.SignalPropertyChange();
-            if (RSARNode != null)
-            {
-                RSARNode.SignalPropertyChange();
-            }
+            RSARNode?.SignalPropertyChange();
         }
 
         public override unsafe void Export(string outPath)

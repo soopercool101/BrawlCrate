@@ -54,10 +54,7 @@ namespace BrawlLib.Wii.Audio
                 samplesPerBlock = blockLen / 8 * 14;
             }
 
-            if (progress != null)
-            {
-                progress.Begin(0, totalSamples * channels * 3, 0);
-            }
+            progress?.Begin(0, totalSamples * channels * 3, 0);
 
             blocks = (totalSamples + (samplesPerBlock - 1)) / samplesPerBlock;
 
@@ -238,10 +235,7 @@ namespace BrawlLib.Wii.Audio
                 Marshal.FreeHGlobal((IntPtr) channelBuffers[i]);
             }
 
-            if (progress != null)
-            {
-                progress.Finish();
-            }
+            progress?.Finish();
 
             return map;
         }

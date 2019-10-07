@@ -86,10 +86,7 @@ namespace BrawlLib.OpenGL
             {
                 foreach (Bitmap bmp in _textures)
                 {
-                    if (bmp != null)
-                    {
-                        bmp.Dispose();
-                    }
+                    bmp?.Dispose();
                 }
 
                 _textures = null;

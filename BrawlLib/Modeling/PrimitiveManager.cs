@@ -2179,20 +2179,11 @@ namespace BrawlLib.Modeling
 
         public void RenderMesh()
         {
-            if (_triangles != null)
-            {
-                _triangles.Render();
-            }
+            _triangles?.Render();
 
-            if (_lines != null)
-            {
-                _lines.Render();
-            }
+            _lines?.Render();
 
-            if (_points != null)
-            {
-                _points.Render();
-            }
+            _points?.Render();
         }
 
         public static Color DefaultVertColor = Color.FromArgb(0, 128, 0);

@@ -273,14 +273,8 @@ namespace BrawlCrate.NodeWrappers
         private void ViewInterp()
         {
             InterpolationForm f = MainForm.Instance.InterpolationForm;
-            if (f != null)
-            {
-                InterpolationEditor e = f._interpolationEditor;
-                if (e != null)
-                {
-                    e.SetTarget(_resource as IKeyframeSource);
-                }
-            }
+            InterpolationEditor e = f?._interpolationEditor;
+            e?.SetTarget(_resource as IKeyframeSource);
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)

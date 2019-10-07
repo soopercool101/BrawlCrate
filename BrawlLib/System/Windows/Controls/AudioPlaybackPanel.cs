@@ -387,10 +387,7 @@ namespace System.Windows.Forms
             if (_provider == null)
             {
                 _provider = AudioProvider.Create(null);
-                if (_provider != null)
-                {
-                    _provider.Attach(this);
-                }
+                _provider?.Attach(this);
             }
 
             chkLoop.Checked = false;
@@ -442,10 +439,7 @@ namespace System.Windows.Forms
             if (_isPlaying)
             {
                 Stop();
-                if (CurrentBuffer != null)
-                {
-                    CurrentBuffer.Seek(sample);
-                }
+                CurrentBuffer?.Seek(sample);
 
                 Play();
             }
@@ -499,10 +493,7 @@ namespace System.Windows.Forms
             tmrUpdate.Stop();
 
             //Stop device
-            if (CurrentBuffer != null)
-            {
-                CurrentBuffer.Stop();
-            }
+            CurrentBuffer?.Stop();
 
             btnPlay.Text = "Play";
         }

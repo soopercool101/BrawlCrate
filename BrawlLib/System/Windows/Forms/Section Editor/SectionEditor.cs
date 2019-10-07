@@ -309,10 +309,7 @@ namespace System.Windows.Forms
 
         private void SetByteProvider()
         {
-            if (hexBox1.ByteProvider != null)
-            {
-                ((DynamicFileByteProvider) hexBox1.ByteProvider).Dispose();
-            }
+            ((DynamicFileByteProvider) hexBox1.ByteProvider)?.Dispose();
 
             hexBox1.ByteProvider =
                 new DynamicFileByteProvider(new UnmanagedMemoryStream((byte*) _section._dataBuffer.Address,
@@ -1397,10 +1394,7 @@ namespace System.Windows.Forms
                     }
                 }
 
-                if (d._stream != null)
-                {
-                    d._stream.Dispose();
-                }
+                d._stream?.Dispose();
 
                 d._stream = new UnmanagedMemoryStream((byte*) newBuffer.Address, newBuffer.Length, newBuffer.Length,
                     FileAccess.ReadWrite);

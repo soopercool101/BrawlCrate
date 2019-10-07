@@ -791,17 +791,11 @@ namespace BrawlLib.Modeling
                     if (singlebind && poly._matrixNode == null)
                     {
                         //Reassign reference entries
-                        if (poly._manager._vertices[0].MatrixNode != null)
-                        {
-                            poly._manager._vertices[0].MatrixNode.Users.Add(poly);
-                        }
+                        poly._manager._vertices[0].MatrixNode?.Users.Add(poly);
 
                         foreach (Vertex3 v in poly._manager._vertices)
                         {
-                            if (v.MatrixNode != null)
-                            {
-                                v.MatrixNode.Users.Remove(v);
-                            }
+                            v.MatrixNode?.Users.Remove(v);
                         }
 
                         poly._nodeId = -2; //Continued on polygon rebuild
@@ -942,10 +936,7 @@ namespace BrawlLib.Modeling
             Error = "There was a problem writing the model.";
 
             //Clean the model and then build it!
-            if (model != null)
-            {
-                model.FinishImport();
-            }
+            model?.FinishImport();
         }
 
         public static ImportOptions _importOptions = new ImportOptions();

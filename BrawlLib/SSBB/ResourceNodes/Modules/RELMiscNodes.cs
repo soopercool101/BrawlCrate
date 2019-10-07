@@ -23,14 +23,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (Root != null)
-                {
-                    return Root.WorkingUncompressed.Address;
-                }
-                else
-                {
-                    return null;
-                }
+                return Root?.WorkingUncompressed.Address;
             }
         }
 

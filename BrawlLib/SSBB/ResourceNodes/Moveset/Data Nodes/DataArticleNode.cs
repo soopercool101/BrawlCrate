@@ -471,10 +471,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         case 9: break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }
@@ -505,10 +502,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }
@@ -526,10 +520,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }
@@ -552,10 +543,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             break;
                     }
 
-                    if (p != null)
-                    {
-                        p.Initialize(this, BaseAddress + i, 0);
-                    }
+                    p?.Initialize(this, BaseAddress + i, 0);
 
                     entry = p;
                 }

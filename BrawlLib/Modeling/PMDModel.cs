@@ -336,10 +336,7 @@ namespace BrawlLib.Modeling
 
         public static void Write(BinaryWriter writer)
         {
-            if (_header != null)
-            {
-                _header.Write(writer);
-            }
+            _header?.Write(writer);
 
             if (_vertices == null)
             {
@@ -915,19 +912,13 @@ namespace BrawlLib.Modeling
                     if (singlebind && p._matrixNode == null)
                     {
                         //Increase reference count ahead of time for rebuild
-                        if (p._manager._vertices[0].MatrixNode != null)
-                        {
-                            //p._manager._vertices[0].MatrixNode.ReferenceCount++;
-                            p._manager._vertices[0].MatrixNode.Users.Add(p);
-                        }
+                        //p._manager._vertices[0].MatrixNode.ReferenceCount++;
+                        p._manager._vertices[0].MatrixNode?.Users.Add(p);
 
                         foreach (Vertex3 v in p._manager._vertices)
                         {
-                            if (v.MatrixNode != null)
-                            {
-                                //v.MatrixNode.ReferenceCount--;
-                                v.MatrixNode.Users.Remove(v);
-                            }
+                            //v.MatrixNode.ReferenceCount--;
+                            v.MatrixNode?.Users.Remove(v);
                         }
 
                         p._nodeId = -2; //Continued on polygon rebuild

@@ -125,10 +125,7 @@ namespace BrawlCrate.CostumeManager
                             (newroot as ARCNode).ExportPAC(pac.FullName);
                             (newroot as ARCNode).ExportPCS(pcs.FullName);
 
-                            if (ParentForm is CostumeManagerForm)
-                            {
-                                (ParentForm as CostumeManagerForm).updateCostumeSelectionPane();
-                            }
+                            (ParentForm as CostumeManagerForm)?.updateCostumeSelectionPane();
 
                             LoadFile(_path);
                         }
@@ -232,13 +229,10 @@ namespace BrawlCrate.CostumeManager
                 foreach (string texname in TexturesToDisable)
                 {
                     ResourceNode textureGroup = model.TextureGroup;
-                    if (textureGroup != null)
+                    MDL0TextureNode tex = textureGroup?.FindChild(texname, false) as MDL0TextureNode;
+                    if (tex != null)
                     {
-                        MDL0TextureNode tex = textureGroup.FindChild(texname, false) as MDL0TextureNode;
-                        if (tex != null)
-                        {
-                            tex.Enabled = false;
-                        }
+                        tex.Enabled = false;
                     }
                 }
             }

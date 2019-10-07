@@ -341,10 +341,7 @@ Those properties can use this color as an argument. This color is referred to as
                     return;
                 }
 
-                if (_shader != null)
-                {
-                    _shader._materials.Remove(this);
-                }
+                _shader?._materials.Remove(this);
 
                 if ((_shader = value) != null)
                 {
@@ -1232,10 +1229,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                 {
                     _lightSetIndex = value;
 
-                    if (MetalMaterial != null)
-                    {
-                        MetalMaterial.UpdateAsMetal();
-                    }
+                    MetalMaterial?.UpdateAsMetal();
 
                     SignalPropertyChange();
                 }
@@ -1252,10 +1246,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                 if (!CheckIfMetal())
                 {
                     _fogIndex = value;
-                    if (MetalMaterial != null)
-                    {
-                        MetalMaterial.UpdateAsMetal();
-                    }
+                    MetalMaterial?.UpdateAsMetal();
 
                     SignalPropertyChange();
                 }
@@ -2839,10 +2830,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             set
             {
                 _binary[1] = value;
-                if (_parent != null)
-                {
-                    _parent._parent.SignalPropertyChange();
-                }
+                _parent?._parent.SignalPropertyChange();
             }
         }
 
@@ -2853,10 +2841,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             set
             {
                 _binary[0] = value != 0;
-                if (_parent != null)
-                {
-                    _parent._parent.SignalPropertyChange();
-                }
+                _parent?._parent.SignalPropertyChange();
             }
         }
 
@@ -2867,10 +2852,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             set
             {
                 _binary[6] = value != 0;
-                if (_parent != null)
-                {
-                    _parent._parent.SignalPropertyChange();
-                }
+                _parent?._parent.SignalPropertyChange();
             }
         }
 
@@ -2881,10 +2863,7 @@ For example, if the shader has two stages but this number is 1, the second stage
             set
             {
                 _binary[7, 2] = (uint) value;
-                if (_parent != null)
-                {
-                    _parent._parent.SignalPropertyChange();
-                }
+                _parent?._parent.SignalPropertyChange();
             }
         }
 
@@ -2915,10 +2894,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                     _binary[10] = false;
                 }
 
-                if (_parent != null)
-                {
-                    _parent._parent.SignalPropertyChange();
-                }
+                _parent?._parent.SignalPropertyChange();
             }
         }
 
@@ -2934,10 +2910,7 @@ For example, if the shader has two stages but this number is 1, the second stage
                 _binary[11, 4] = val & 0xF;
                 _binary[2, 4] = (val >> 4) & 0xF;
 
-                if (_parent != null)
-                {
-                    _parent._parent.SignalPropertyChange();
-                }
+                _parent?._parent.SignalPropertyChange();
             }
         }
     }

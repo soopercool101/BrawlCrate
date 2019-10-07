@@ -1648,18 +1648,12 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         internal void Weight()
         {
-            if (_manager != null)
-            {
-                _manager.Weight();
-            }
+            _manager?.Weight();
         }
 
         internal void Unweight(bool updateAssets)
         {
-            if (_manager != null)
-            {
-                _manager.Unweight(updateAssets);
-            }
+            _manager?.Unweight(updateAssets);
         }
 
         internal override void Bind()
@@ -1682,26 +1676,17 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             _attached = false;
 
-            if (Model != null)
-            {
-                Model.Detach();
-            }
+            Model?.Detach();
         }
 
         public void Refresh()
         {
-            if (Model != null)
-            {
-                Model.Refresh();
-            }
+            Model?.Refresh();
         }
 
         public void PreRender(ModelPanelViewport v)
         {
-            if (Model != null)
-            {
-                Model.PreRender(v);
-            }
+            Model?.PreRender(v);
         }
 
         #endregion
@@ -1934,10 +1919,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 foreach (Vertex3 vertex in _manager._vertices)
                 {
-                    if (vertex.MatrixNode != null)
-                    {
-                        vertex.MatrixNode.Users.Remove(vertex);
-                    }
+                    vertex.MatrixNode?.Users.Remove(vertex);
                 }
             }
 
@@ -2099,10 +2081,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return;
                 }
 
-                if (_material != null)
-                {
-                    _material._objects.Remove(_parentObject);
-                }
+                _material?._objects.Remove(_parentObject);
 
                 if ((_material = value) != null)
                 {

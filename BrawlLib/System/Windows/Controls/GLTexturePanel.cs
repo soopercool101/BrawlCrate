@@ -44,10 +44,7 @@ namespace System.Windows.Forms
 
         protected override void OnResize(EventArgs e)
         {
-            if (_ctx != null)
-            {
-                _ctx.Update();
-            }
+            _ctx?.Update();
 
             UpdateProjection();
 

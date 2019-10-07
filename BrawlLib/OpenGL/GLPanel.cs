@@ -267,10 +267,7 @@ namespace BrawlLib.OpenGL
 
         public void Release()
         {
-            if (_ctx != null)
-            {
-                _ctx.Release();
-            }
+            _ctx?.Release();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -465,10 +462,7 @@ namespace BrawlLib.OpenGL
 
         protected override void OnResize(EventArgs e)
         {
-            if (_ctx != null)
-            {
-                _ctx.Update();
-            }
+            _ctx?.Update();
 
             foreach (GLViewport v in _viewports)
             {

@@ -167,12 +167,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_itemIDs == null)
-                {
-                    return null;
-                }
-
-                return _itemIDs[0];
+                return _itemIDs?[0];
             }
             set
             {
@@ -193,12 +188,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_itemIDs == null)
-                {
-                    return null;
-                }
-
-                return _itemIDs[1];
+                return _itemIDs?[1];
             }
             set
             {
@@ -219,12 +209,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_itemIDs == null)
-                {
-                    return null;
-                }
-
-                return _itemIDs[2];
+                return _itemIDs?[2];
             }
             set
             {
@@ -245,12 +230,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_itemIDs == null)
-                {
-                    return null;
-                }
-
-                return _itemIDs[3];
+                return _itemIDs?[3];
             }
             set
             {
@@ -480,10 +460,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                             continue;
                         }
 
-                        if (section != null)
-                        {
-                            section._manager.SetCommand(offset.RoundDown(4) / 4, new RelCommand(x, section, link));
-                        }
+                        section?._manager.SetCommand(offset.RoundDown(4) / 4, new RelCommand(x, section, link));
                     }
                 }
 

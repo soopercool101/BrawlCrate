@@ -50,12 +50,7 @@ namespace System.Windows.Forms
         {
             get
             {
-                if (_targetModel is MDL0Node)
-                {
-                    return ((MDL0Node) _targetModel).VIS0Indices;
-                }
-
-                return null;
+                return (_targetModel as MDL0Node)?.VIS0Indices;
             }
         }
 

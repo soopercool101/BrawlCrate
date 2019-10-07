@@ -897,10 +897,7 @@ namespace System.Windows.Forms
 
             tmrUpdate.Stop();
 
-            if (_buffer != null)
-            {
-                _buffer.Stop();
-            }
+            _buffer?.Stop();
 
             btnPlay.Text = "Play";
         }

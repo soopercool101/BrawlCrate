@@ -1554,15 +1554,12 @@ namespace System.Windows.Forms
                     MDL0Node model = _models.Where(m => m is MDL0Node && ((ResourceNode) m).Name == obj._modelName)
                                             .FirstOrDefault() as MDL0Node;
 
-                    if (model != null)
+                    MDL0BoneNode bone =
+                        model?._linker.BoneCache.Where(b => b.Name == obj._boneName)
+                             .FirstOrDefault() as MDL0BoneNode;
+                    if (bone != null)
                     {
-                        MDL0BoneNode bone =
-                            model._linker.BoneCache.Where(b => b.Name == obj._boneName)
-                                 .FirstOrDefault() as MDL0BoneNode;
-                        if (bone != null)
-                        {
-                            obj._linkedBone = bone;
-                        }
+                        obj._linkedBone = bone;
                     }
 
                     /*if (!obj._flags[1])
@@ -2350,19 +2347,13 @@ namespace System.Windows.Forms
             GL.Enable(EnableCap.DepthTest);
 
             //Render objects
-            if (_targetNode != null)
-            {
-                _targetNode.Render();
-            }
+            _targetNode?.Render();
 
             if (_modelPanel.RenderBones)
             {
                 foreach (IRenderedObject o in _modelPanel._renderList)
                 {
-                    if (o is IModel)
-                    {
-                        ((IModel) o).RenderBones(_modelPanel.CurrentViewport);
-                    }
+                    (o as IModel)?.RenderBones(_modelPanel.CurrentViewport);
                 }
             }
 

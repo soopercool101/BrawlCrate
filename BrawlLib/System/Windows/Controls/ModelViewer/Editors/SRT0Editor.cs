@@ -1147,14 +1147,8 @@ namespace System.Windows.Forms
 
         private void removeAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SelectedAnimation == null)
-            {
-                return;
-            }
-
             SRT0TextureNode _target =
-                SelectedAnimation.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as
-                    SRT0TextureNode;
+                SelectedAnimation?.FindChild(TargetTexRef.Parent.Name + "/Texture" + TargetTexRef.Index, true) as SRT0TextureNode;
             if (_target != null)
             {
                 _target.Keyframes._keyArrays[type]._keyRoot = new KeyframeEntry(-1, type < 2 ? 1 : 0);

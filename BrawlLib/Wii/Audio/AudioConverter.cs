@@ -141,10 +141,7 @@ namespace BrawlLib.Wii.Audio
                 }
             }
 
-            if (progress != null)
-            {
-                progress.Update(initValue + samples);
-            }
+            progress?.Update(initValue + samples);
 
             sChunkBuffer[0] = 1.0;
             for (int y = 1; y <= 2; y++)

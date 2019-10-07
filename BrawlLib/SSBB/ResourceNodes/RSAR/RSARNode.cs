@@ -359,9 +359,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     ((RSARFolderNode) n).GetStrings(null, 0, _entryList, ref unusedFolders);
                 }
-                else if (n is RSAREntryNode)
+                else
                 {
-                    ((RSAREntryNode) n).GetStrings(null, 0, _entryList);
+                    (n as RSAREntryNode)?.GetStrings(null, 0, _entryList);
                 }
             }
 

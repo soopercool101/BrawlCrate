@@ -158,10 +158,7 @@ namespace System.Windows.Forms
             if (_isPlaying)
             {
                 //TODO: Sync video to audio
-                if (_buffer != null)
-                {
-                    _buffer.Fill();
-                }
+                _buffer?.Fill();
 
                 trackBar1.Value = ++_frame;
 
@@ -280,10 +277,7 @@ namespace System.Windows.Forms
             _frame = frame.Clamp(0, (int) _targetSource.NumFrames - 1);
             trackBar1.Value = _frame + 1;
 
-            if (_buffer != null)
-            {
-                _buffer.Seek((int) Math.Round(frame / _targetSource.FrameRate * _targetSource.Frequency, 0));
-            }
+            _buffer?.Seek((int) Math.Round(frame / _targetSource.FrameRate * _targetSource.Frequency, 0));
 
             if (temp)
             {
@@ -343,10 +337,7 @@ namespace System.Windows.Forms
             _timer.Stop();
 
             //Stop device
-            if (_buffer != null)
-            {
-                _buffer.Stop();
-            }
+            _buffer?.Stop();
 
             btnPlay.Text = "Play";
             previewPanel1.btnLeft.Visible = previewPanel1.btnRight.Visible = true;

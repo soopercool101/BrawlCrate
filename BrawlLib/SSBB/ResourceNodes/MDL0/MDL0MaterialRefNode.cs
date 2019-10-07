@@ -718,18 +718,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 t.Bind();
                 t.Prepare(this, prog, PAT0Palette);
             }
-            else if (_texture != null)
+            else
             {
-                _texture.Prepare(this, prog);
+                _texture?.Prepare(this, prog);
             }
         }
 
         internal override void Unbind()
         {
-            if (_texture != null)
-            {
-                _texture.Unbind();
-            }
+            _texture?.Unbind();
 
             foreach (MDL0TextureNode t in PAT0Textures.Values)
             {

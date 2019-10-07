@@ -420,18 +420,15 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (Compression == "LZ77" && Header->_numFiles > 0)
             {
-                if (_parent != null)
+                if (_parent is ARCNode)
                 {
-                    if (_parent is ARCNode)
+                    if (((ARCNode) _parent).IsStage && Properties.Settings.Default.AutoCompressStages)
                     {
-                        if (((ARCNode) _parent).IsStage && Properties.Settings.Default.AutoCompressStages)
+                        // Console.WriteLine(_parent._name);
+                        if (Enum.TryParse("ExtendedLZ77", out CompressionType type))
                         {
-                            // Console.WriteLine(_parent._name);
-                            if (Enum.TryParse("ExtendedLZ77", out CompressionType type))
-                            {
-                                _compression = type;
-                                SignalPropertyChange();
-                            }
+                            _compression = type;
+                            SignalPropertyChange();
                         }
                     }
                 }
@@ -521,9 +518,9 @@ namespace BrawlLib.SSBB.ResourceNodes
                         ((ARCNode) entry).ReplaceFromFolder(dirs[0].FullName, imageExtension);
                     }
                 }
-                else if (entry is BRRESNode)
+                else
                 {
-                    ((BRRESNode) entry).ReplaceFromFolder(inFolder, imageExtension);
+                    (entry as BRRESNode)?.ReplaceFromFolder(inFolder, imageExtension);
                 }
             }
         }

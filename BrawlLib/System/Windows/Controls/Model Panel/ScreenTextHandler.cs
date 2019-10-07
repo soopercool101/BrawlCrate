@@ -61,10 +61,7 @@ namespace System.Windows.Forms
             {
                 _size = _viewport.Region.Size;
 
-                if (_bitmap != null)
-                {
-                    _bitmap.Dispose();
-                }
+                _bitmap?.Dispose();
 
                 if (_texId != -1)
                 {

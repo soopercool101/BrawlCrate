@@ -130,10 +130,7 @@ namespace BrawlCrate.CostumeManager
             {
                 string fileName = _openDlg.FileName;
                 Replace(fileName, true);
-                if (OnUpdate != null)
-                {
-                    OnUpdate(this);
-                }
+                OnUpdate?.Invoke(this);
             }
         }
 
@@ -213,10 +210,7 @@ namespace BrawlCrate.CostumeManager
                         dlg.ImageSource = filename;
                         if (dlg.ShowDialog(null, Texture) == DialogResult.OK)
                         {
-                            if (OnUpdate != null)
-                            {
-                                OnUpdate(this);
-                            }
+                            OnUpdate?.Invoke(this);
                         }
                     }
                 }
@@ -235,10 +229,7 @@ namespace BrawlCrate.CostumeManager
                         Texture.Replace(filename);
                     }
 
-                    if (OnUpdate != null)
-                    {
-                        OnUpdate(this);
-                    }
+                    OnUpdate?.Invoke(this);
                 }
             }
         }

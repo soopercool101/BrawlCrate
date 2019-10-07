@@ -40,10 +40,7 @@ namespace System.Windows.Forms
         private void save_Click(object sender, EventArgs e)
         {
             AttributeInterpretation item = (AttributeInterpretation) chooser.SelectedItem;
-            if (item != null)
-            {
-                item.Save();
-            }
+            item?.Save();
         }
 
         private void chooser_SelectedIndexChanged(object sender, EventArgs e)

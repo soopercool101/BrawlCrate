@@ -963,9 +963,9 @@ namespace System.Windows.Forms
                         m.RenderVertices(true, SelectedBone, v.Camera);
                     }
                 }
-                else if (TargetModel != null)
+                else
                 {
-                    TargetModel.RenderVertices(true, SelectedBone, v.Camera);
+                    TargetModel?.RenderVertices(true, SelectedBone, v.Camera);
                 }
             }
 

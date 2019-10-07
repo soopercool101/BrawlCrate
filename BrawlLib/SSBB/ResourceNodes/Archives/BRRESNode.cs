@@ -749,10 +749,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         }
 
                         progress.Finish();
-                        if (prev != null)
-                        {
-                            prev.Dispose();
-                        }
+                        prev?.Dispose();
                     }
                 }
 

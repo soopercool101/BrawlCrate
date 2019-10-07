@@ -232,10 +232,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                 Remove();
                 _parent = value;
-                if (_parent != null)
-                {
-                    _parent.Children.Add(this);
-                }
+                _parent?.Children.Add(this);
             }
         }
 
@@ -718,10 +715,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public virtual void Remove()
         {
-            if (_parent != null)
-            {
-                _parent.RemoveChild(this);
-            }
+            _parent?.RemoveChild(this);
         }
 
         public virtual void RemoveChild(ResourceNode child)

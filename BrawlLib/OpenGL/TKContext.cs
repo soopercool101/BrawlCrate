@@ -49,9 +49,9 @@ namespace BrawlLib.OpenGL
                     {
                         (o as GLDisplayList).Delete();
                     }
-                    else if (o is GLTexture)
+                    else
                     {
-                        (o as GLTexture).Delete();
+                        (o as GLTexture)?.Delete();
                     }
                 }
             }
@@ -101,10 +101,7 @@ namespace BrawlLib.OpenGL
         public void Dispose()
         {
             Release();
-            if (_context != null)
-            {
-                _context.Dispose();
-            }
+            _context?.Dispose();
 
             if (BoundContexts.Contains(this))
             {
@@ -132,10 +129,7 @@ namespace BrawlLib.OpenGL
                 if (force || CurrentContext != this)
                 {
                     //Release the current context if it exists
-                    if (CurrentContext != null)
-                    {
-                        CurrentContext.Release();
-                    }
+                    CurrentContext?.Release();
 
                     //Make this context the current one
                     CurrentContext = this;

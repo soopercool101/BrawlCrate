@@ -1,4 +1,5 @@
-﻿using BrawlCrate.API;
+﻿using Be.Windows.Forms;
+using BrawlCrate.API;
 using BrawlCrate.NodeWrappers;
 using BrawlCrate.Properties;
 using BrawlLib.Imaging;
@@ -491,10 +492,7 @@ namespace BrawlCrate
             ppcDisassembler1.SetTarget(null, 0, null);
             modelPanel1.ClearAll();
             mdL0ObjectControl1.SetTarget(null);
-            if (hexBox1.ByteProvider != null)
-            {
-                ((Be.Windows.Forms.DynamicFileByteProvider) hexBox1.ByteProvider).Dispose();
-            }
+            ((DynamicFileByteProvider) hexBox1.ByteProvider)?.Dispose();
 
             Control newControl = null;
             Control newControl2 = null;
@@ -1405,9 +1403,9 @@ namespace BrawlCrate
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && components != null)
+            if (disposing)
             {
-                components.Dispose();
+                components?.Dispose();
             }
 
             base.Dispose(disposing);
@@ -2321,9 +2319,9 @@ namespace BrawlCrate
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && components != null)
+            if (disposing)
             {
-                components.Dispose();
+                components?.Dispose();
             }
 
             base.Dispose(disposing);

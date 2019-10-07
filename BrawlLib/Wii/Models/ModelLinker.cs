@@ -252,10 +252,7 @@ namespace BrawlLib.Wii.Models
 
                 if (resType == MR.Bones)
                 {
-                    if (form != null)
-                    {
-                        form.Say("Writing Bones");
-                    }
+                    form?.Say("Writing Bones");
 
                     MDL0Bone* pBone = (MDL0Bone*) pData;
                     foreach (MDL0BoneNode e in BoneCache)
@@ -277,10 +274,7 @@ namespace BrawlLib.Wii.Models
                     MDL0GroupNode mats = Groups[(int) MR.Materials];
                     MDL0Material* mHeader;
 
-                    if (form != null)
-                    {
-                        form.Say("Writing Shaders");
-                    }
+                    form?.Say("Writing Shaders");
 
                     //Write data without headers
                     foreach (ResourceNode e in group.Children)
@@ -315,10 +309,7 @@ namespace BrawlLib.Wii.Models
                 {
                     foreach (ResourceNode r in group.Children)
                     {
-                        if (form != null)
-                        {
-                            form.Say("Writing " + resType.ToString() + " - " + r.Name);
-                        }
+                        form?.Say("Writing " + resType.ToString() + " - " + r.Name);
 
                         len = r._calcSize;
                         r.Rebuild(pData, len, true); //Forced to fix object node ids and align materials
@@ -346,10 +337,7 @@ namespace BrawlLib.Wii.Models
                         {
                             //Console.WriteLine("Rebuilding the " + group.Name);
 
-                            if (form != null)
-                            {
-                                form.Say("Writing the " + resType.ToString() + " - " + e.Name);
-                            }
+                            form?.Say("Writing the " + resType.ToString() + " - " + e.Name);
 
                             len = e._calcSize;
                             e.Rebuild(pData, len, true); //Forced just in case we need to convert to float.

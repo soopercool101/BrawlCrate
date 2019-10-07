@@ -61,10 +61,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         private void PatchPointers()
         {
-            if (_buffer != null)
-            {
-                _buffer.Dispose();
-            }
+            _buffer?.Dispose();
 
             //Make a copy of the file's data that we can patch with offsets
             _buffer = new UnsafeBuffer(WorkingUncompressed.Length);

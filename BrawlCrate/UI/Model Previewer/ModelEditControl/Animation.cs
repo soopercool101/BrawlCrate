@@ -69,9 +69,9 @@ namespace System.Windows.Forms
         /// </summary>
         private void HandleFirstPersonCamera()
         {
-            if (FirstPersonCamera && _scn0 != null && scn0Editor._camera != null)
+            if (FirstPersonCamera && _scn0 != null)
             {
-                scn0Editor._camera.SetCamera(ModelPanel.CurrentViewport, CurrentFrame - 1, _retainAspect);
+                scn0Editor._camera?.SetCamera(ModelPanel.CurrentViewport, CurrentFrame - 1, _retainAspect);
             }
         }
 

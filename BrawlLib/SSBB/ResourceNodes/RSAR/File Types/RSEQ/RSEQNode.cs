@@ -78,10 +78,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override void Remove()
         {
-            if (RSARNode != null)
-            {
-                RSARNode.Files.Remove(this);
-            }
+            RSARNode?.Files.Remove(this);
 
             base.Remove();
         }

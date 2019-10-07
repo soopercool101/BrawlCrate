@@ -233,15 +233,9 @@ namespace BrawlLib.IO
 
         public override void Dispose()
         {
-            if (_mappedFile != null)
-            {
-                _mappedFile.Dispose();
-            }
+            _mappedFile?.Dispose();
 
-            if (_mappedFileAccessor != null)
-            {
-                _mappedFileAccessor.Dispose();
-            }
+            _mappedFileAccessor?.Dispose();
 
             base.Dispose();
         }

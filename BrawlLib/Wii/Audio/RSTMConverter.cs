@@ -55,10 +55,7 @@ namespace BrawlLib.Wii.Audio
                 totalSamples = samples = stream.Samples;
             }
 
-            if (progress != null)
-            {
-                progress.Begin(0, totalSamples * channels * 3, 0);
-            }
+            progress?.Begin(0, totalSamples * channels * 3, 0);
 
             blocks = (totalSamples + samplesPerBlock - 1) / samplesPerBlock;
 
@@ -338,10 +335,7 @@ namespace BrawlLib.Wii.Audio
                 }
             }
 
-            if (progress != null)
-            {
-                progress.Finish();
-            }
+            progress?.Finish();
 
             return map;
         }

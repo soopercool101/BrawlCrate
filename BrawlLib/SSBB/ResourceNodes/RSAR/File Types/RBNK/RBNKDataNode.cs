@@ -298,10 +298,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                 }
 
-                if (e != null)
-                {
-                    e.Initialize(this, addr, 0);
-                }
+                e?.Initialize(this, addr, 0);
             }
         }
     }
@@ -377,10 +374,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         break;
                 }
 
-                if (e != null)
-                {
-                    e.Initialize(this, addr, 0);
-                }
+                e?.Initialize(this, addr, 0);
             }
         }
     }

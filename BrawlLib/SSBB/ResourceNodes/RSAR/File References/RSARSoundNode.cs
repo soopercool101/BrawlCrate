@@ -658,10 +658,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _soundFileNode.Children[0].Children.Count > _waveInfo._soundIndex)
             {
                 _waveDataNode = _soundFileNode.Children[0].Children[_waveInfo._soundIndex] as RWSDDataNode;
-                if (_waveDataNode != null)
-                {
-                    _waveDataNode._refs.Add(this);
-                }
+                _waveDataNode?._refs.Add(this);
             }
 
             return false;

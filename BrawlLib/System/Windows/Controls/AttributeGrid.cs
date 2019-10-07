@@ -445,10 +445,7 @@ namespace System.Windows.Forms
             if (AttributeArray[index]._name != name)
             {
                 AttributeArray[index]._name = name;
-                if (DictionaryChanged != null)
-                {
-                    DictionaryChanged.Invoke(this, EventArgs.Empty);
-                }
+                DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 return;
             }
@@ -564,10 +561,7 @@ namespace System.Windows.Forms
                 attributes.Rows[index][1] = TargetNode.GetRGBAPixel(index).ToString();
             }
 
-            if (CellEdited != null)
-            {
-                CellEdited.Invoke(this, EventArgs.Empty);
-            }
+            CellEdited?.Invoke(this, EventArgs.Empty);
         }
 
         private void dtgrdAttributes_CurrentCellChanged(object sender, EventArgs e)
@@ -634,10 +628,7 @@ namespace System.Windows.Forms
             if (index >= 0 && AttributeArray.Length > index)
             {
                 AttributeArray[index]._description = description.Text;
-                if (DictionaryChanged != null)
-                {
-                    DictionaryChanged.Invoke(this, EventArgs.Empty);
-                }
+                DictionaryChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -665,10 +656,7 @@ namespace System.Windows.Forms
             if (nType != AttributeArray[index]._type)
             {
                 AttributeArray[index]._type = nType;
-                if (DictionaryChanged != null)
-                {
-                    DictionaryChanged.Invoke(this, EventArgs.Empty);
-                }
+                DictionaryChanged?.Invoke(this, EventArgs.Empty);
 
                 RefreshRow(index);
             }

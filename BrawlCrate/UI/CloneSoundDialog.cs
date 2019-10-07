@@ -157,26 +157,23 @@ namespace BrawlCrate
             };
             _parentNode.AddChild(_newNode);
 
-            if (treeResource.SelectedNode != null)
+            RSARSoundNode existing = ((BaseWrapper) treeResource.SelectedNode)?.Resource as RSARSoundNode;
+            if (existing != null)
             {
-                RSARSoundNode existing = ((BaseWrapper) treeResource.SelectedNode).Resource as RSARSoundNode;
-                if (existing != null)
-                {
-                    _newNode._sound3dParam = existing._sound3dParam;
-                    _newNode._waveInfo = existing._waveInfo;
-                    _newNode._seqInfo = existing._seqInfo;
-                    _newNode._strmInfo = existing._strmInfo;
+                _newNode._sound3dParam = existing._sound3dParam;
+                _newNode._waveInfo = existing._waveInfo;
+                _newNode._seqInfo = existing._seqInfo;
+                _newNode._strmInfo = existing._strmInfo;
 
-                    _newNode._fileId = existing._fileId;
-                    _newNode._playerId = existing._playerId;
-                    _newNode._volume = existing._volume;
-                    _newNode._playerPriority = existing._playerPriority;
-                    _newNode._soundType = existing._soundType;
-                    _newNode._remoteFilter = existing._remoteFilter;
-                    _newNode._panMode = existing._panMode;
-                    _newNode._panCurve = existing._panCurve;
-                    _newNode._actorPlayerId = existing._actorPlayerId;
-                }
+                _newNode._fileId = existing._fileId;
+                _newNode._playerId = existing._playerId;
+                _newNode._volume = existing._volume;
+                _newNode._playerPriority = existing._playerPriority;
+                _newNode._soundType = existing._soundType;
+                _newNode._remoteFilter = existing._remoteFilter;
+                _newNode._panMode = existing._panMode;
+                _newNode._panCurve = existing._panCurve;
+                _newNode._actorPlayerId = existing._actorPlayerId;
             }
 
             DialogResult = DialogResult.OK;

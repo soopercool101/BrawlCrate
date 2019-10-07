@@ -99,46 +99,31 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void SetInt(int index, int value)
         {
             *((bint*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetFloat(int index, float value)
         {
             *((bfloat*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetBin(int index, Bin32 value)
         {
             *((Bin32*) DataNode._dataBuffer.Address + index + _referenceIndex) = value;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetCode(int index, PPCOpCode code)
         {
             *((buint*) DataNode._dataBuffer.Address + index + _referenceIndex) = (uint) code;
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         public void SetString(int index, string value)
         {
             value.Write((sbyte*) DataNode._dataBuffer.Address + (index + _referenceIndex) * 4);
-            if (_data._linkedEditor != null)
-            {
-                _data._linkedEditor.hexBox1.Invalidate();
-            }
+            _data._linkedEditor?.hexBox1.Invalidate();
         }
 
         #region TargetRelocation

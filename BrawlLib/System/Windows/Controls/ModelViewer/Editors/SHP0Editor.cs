@@ -367,12 +367,8 @@ namespace System.Windows.Forms
                 }
 
                 ResourceNode set = SelectedAnimation.FindChild(SelectedSource, false);
-                if (set == null)
-                {
-                    return null;
-                }
 
-                return set.FindChild(SelectedDestination, false) as SHP0VertexSetNode;
+                return set?.FindChild(SelectedDestination, false) as SHP0VertexSetNode;
             }
         }
 

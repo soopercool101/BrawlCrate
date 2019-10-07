@@ -342,10 +342,7 @@ namespace System.Windows.Forms
 
         private void selectionControl_Closed(object sender, EventArgs e)
         {
-            if (_service != null)
-            {
-                _service.CloseDropDown();
-            }
+            _service?.CloseDropDown();
         }
     }
 }

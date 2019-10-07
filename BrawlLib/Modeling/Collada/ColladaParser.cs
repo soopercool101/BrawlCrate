@@ -1468,10 +1468,7 @@ namespace BrawlLib.Modeling
 
             public override void Dispose()
             {
-                if (_arrayData is UnsafeBuffer)
-                {
-                    ((UnsafeBuffer) _arrayData).Dispose();
-                }
+                (_arrayData as UnsafeBuffer)?.Dispose();
 
                 _arrayData = null;
                 GC.SuppressFinalize(this);

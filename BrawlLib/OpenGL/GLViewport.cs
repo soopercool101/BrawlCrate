@@ -71,10 +71,7 @@ namespace BrawlLib.OpenGL
             get => _backImg;
             set
             {
-                if (_backImg != null)
-                {
-                    _backImg.Dispose();
-                }
+                _backImg?.Dispose();
 
                 _backImg = value;
                 _updateImage = true;

@@ -109,10 +109,7 @@ namespace BrawlLib.SSBBTypes
         /// </summary>
         public void SignalRebuildChange()
         {
-            if (_root != null)
-            {
-                _root.RebuildEntries.Add(this);
-            }
+            _root?.RebuildEntries.Add(this);
 
             HasChanged = true;
         }

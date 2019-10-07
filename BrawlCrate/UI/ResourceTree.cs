@@ -192,10 +192,7 @@ namespace BrawlCrate
         protected override void OnBeforeExpand(TreeViewCancelEventArgs e)
         {
             base.OnBeforeExpand(e);
-            if (e.Node is BaseWrapper)
-            {
-                ((BaseWrapper) e.Node).OnExpand();
-            }
+            (e.Node as BaseWrapper)?.OnExpand();
         }
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)

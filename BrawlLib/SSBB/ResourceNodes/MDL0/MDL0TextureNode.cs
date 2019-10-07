@@ -126,10 +126,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void SetPalette(PLT0Node plt)
         {
             _palette = plt;
-            if (Texture != null)
-            {
-                Texture.SetPalette(_palette);
-            }
+            Texture?.SetPalette(_palette);
         }
 
         public PLT0Node _palette;
@@ -232,10 +229,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             GetSource();
 
-            if (Texture != null)
-            {
-                Texture.Delete();
-            }
+            Texture?.Delete();
 
 
             Texture = new GLTexture();

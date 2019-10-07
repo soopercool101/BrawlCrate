@@ -181,21 +181,18 @@ namespace BrawlLib.Modeling
                 WriteMaterial(writer, c._material);
             }
 
-            if (poly._manager != null)
+            if (poly._manager?._triangles != null)
             {
-                if (poly._manager._triangles != null)
-                {
-                    WriteTriList(writer, poly._manager);
-                }
-                //if (poly._manager._lines != null)
-                //{
-
-                //}
-                //if (poly._manager._points != null)
-                //{
-
-                //}
+                WriteTriList(writer, poly._manager);
             }
+            //if (poly._manager._lines != null)
+            //{
+
+            //}
+            //if (poly._manager._points != null)
+            //{
+
+            //}
         }
 
         //private static void WriteTriFan(StreamWriter writer, Primitive p)

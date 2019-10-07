@@ -466,12 +466,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         public void AverageKeys(string baseName, string morphName)
         {
             SHP0EntryNode w = FindChild(baseName, false) as SHP0EntryNode;
-            if (w == null)
-            {
-                return;
-            }
 
-            SHP0VertexSetNode t = w.FindChild(morphName, false) as SHP0VertexSetNode;
+            SHP0VertexSetNode t = w?.FindChild(morphName, false) as SHP0VertexSetNode;
             if (t == null)
             {
                 return;

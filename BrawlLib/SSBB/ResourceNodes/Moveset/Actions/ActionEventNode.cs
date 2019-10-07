@@ -527,10 +527,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                         else
                         {
                             MoveDefActionNode n = Root.GetAction(list, type, index);
-                            if (n != null)
-                            {
-                                n._actionRefs.Add(this);
-                            }
+                            n?._actionRefs.Add(this);
                         }
                     }
 
