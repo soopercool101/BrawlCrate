@@ -40,7 +40,7 @@ they be held accountable for the manner in which it is used.
  . Color Smash Utility can make its own folders
  . Discord RPC now detects code manager and BrawlManagers
  . ".txt" GCTs can now be directly opened
- . Add "All Files" filter when opening files
+ . Add "All Files" filter when opening or saving files
  . bboxapi changed to BrawlAPI
    - Python is no longer included in the installation. Path will be automatically searched for on first boot.
    - F# path is now saved to a setting, greatly reducing runtime for F# scripts
