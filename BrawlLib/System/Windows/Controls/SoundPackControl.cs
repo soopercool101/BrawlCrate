@@ -82,7 +82,7 @@ namespace System.Windows.Forms
             // 
             lstSets.AutoArrange = false;
             lstSets.BorderStyle = BorderStyle.None;
-            lstSets.Columns.AddRange(new ColumnHeader[]
+            lstSets.Columns.AddRange(new[]
             {
                 clmIndex,
                 clmType,

@@ -24,7 +24,7 @@
             return Name;
         }
 
-        public static readonly Fighter[] Fighters = new Fighter[]
+        public static readonly Fighter[] Fighters = new[]
         {
             //          ID     Display Name     
             new Fighter(0x00, "Mario"),

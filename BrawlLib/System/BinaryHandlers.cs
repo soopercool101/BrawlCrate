@@ -88,7 +88,7 @@ namespace System
 
         public static Bin32 FromString(string s)
         {
-            char[] delims = new char[] {',', '(', ')', ' '};
+            char[] delims = new[] {',', '(', ')', ' '};
 
             uint b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
@@ -209,7 +209,7 @@ namespace System
 
         public static Bin24 FromString(string s)
         {
-            char[] delims = new char[] {',', '(', ')', ' '};
+            char[] delims = new[] {',', '(', ')', ' '};
 
             uint b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
@@ -316,7 +316,7 @@ namespace System
 
         public static Bin16 FromString(string s)
         {
-            char[] delims = new char[] {',', '(', ')', ' '};
+            char[] delims = new[] {',', '(', ')', ' '};
 
             ushort b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
@@ -423,7 +423,7 @@ namespace System
 
         public static Bin8 FromString(string s)
         {
-            char[] delims = new char[] {',', '(', ')', ' '};
+            char[] delims = new[] {',', '(', ')', ' '};
 
             byte b = 0;
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);

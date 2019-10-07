@@ -14,8 +14,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal CHR0v4_3* Header4_3 => (CHR0v4_3*) WorkingUncompressed.Address;
         internal CHR0v5* Header5 => (CHR0v5*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CHR0;
-        public override Type[] AllowedChildTypes => new Type[] {typeof(CHR0EntryNode)};
-        public override int[] SupportedVersions => new int[] {4, 5};
+        public override Type[] AllowedChildTypes => new[] {typeof(CHR0EntryNode)};
+        public override int[] SupportedVersions => new[] {4, 5};
 
         public CHR0Node()
         {
@@ -192,7 +192,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (outPath.EndsWith(".dae", StringComparison.OrdinalIgnoreCase))
             {
-                Collada.Serialize(new CHR0Node[] {this}, 60.0f, false, outPath);
+                Collada.Serialize(new[] {this}, 60.0f, false, outPath);
             }
             else if (outPath.EndsWith(".anim", StringComparison.OrdinalIgnoreCase))
             {

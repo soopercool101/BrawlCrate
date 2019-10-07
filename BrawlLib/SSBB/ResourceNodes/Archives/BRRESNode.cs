@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override ResourceType ResourceFileType => ResourceType.BRES;
 
-        public override Type[] AllowedChildTypes => new Type[] {typeof(BRESGroupNode)};
+        public override Type[] AllowedChildTypes => new[] {typeof(BRESGroupNode)};
 
         public int ImageCount => GetFolder<TEX0Node>()?.Children.Count ?? 0;
 
@@ -794,25 +794,25 @@ namespace BrawlLib.SSBB.ResourceNodes
                 switch (Type)
                 {
                     case BRESGroupType.Textures:
-                        return new Type[] {typeof(TEX0Node)};
+                        return new[] {typeof(TEX0Node)};
                     case BRESGroupType.Palettes:
-                        return new Type[] {typeof(PLT0Node)};
+                        return new[] {typeof(PLT0Node)};
                     case BRESGroupType.Models:
-                        return new Type[] {typeof(MDL0Node)};
+                        return new[] {typeof(MDL0Node)};
                     case BRESGroupType.CHR0:
-                        return new Type[] {typeof(CHR0Node)};
+                        return new[] {typeof(CHR0Node)};
                     case BRESGroupType.CLR0:
-                        return new Type[] {typeof(CLR0Node)};
+                        return new[] {typeof(CLR0Node)};
                     case BRESGroupType.SRT0:
-                        return new Type[] {typeof(SRT0Node)};
+                        return new[] {typeof(SRT0Node)};
                     case BRESGroupType.SHP0:
-                        return new Type[] {typeof(SHP0Node)};
+                        return new[] {typeof(SHP0Node)};
                     case BRESGroupType.VIS0:
-                        return new Type[] {typeof(VIS0Node)};
+                        return new[] {typeof(VIS0Node)};
                     case BRESGroupType.SCN0:
-                        return new Type[] {typeof(SCN0Node)};
+                        return new[] {typeof(SCN0Node)};
                     case BRESGroupType.PAT0:
-                        return new Type[] {typeof(PAT0Node)};
+                        return new[] {typeof(PAT0Node)};
                     default:
                         return new Type[] { };
                 }

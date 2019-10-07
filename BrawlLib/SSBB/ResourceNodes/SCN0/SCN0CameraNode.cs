@@ -166,7 +166,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        public SCN0CameraFlags[] Ordered = new SCN0CameraFlags[]
+        public SCN0CameraFlags[] Ordered = new[]
         {
             SCN0CameraFlags.PosXConstant,
             SCN0CameraFlags.PosYConstant,

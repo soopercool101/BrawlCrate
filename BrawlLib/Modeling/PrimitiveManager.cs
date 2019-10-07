@@ -126,7 +126,7 @@ namespace BrawlLib.Modeling
                     : new GLPrimitive(_triangles._indices.Length, PrimitiveType.Triangles),
                 _lines = _lines == null ? null : new GLPrimitive(_lines._indices.Length, PrimitiveType.Lines),
                 _points = _points == null ? null : new GLPrimitive(_points._indices.Length, PrimitiveType.Points),
-                _dirty = new bool[] {true, true, true, true, true, true, true, true, true, true, true, true},
+                _dirty = new[] {true, true, true, true, true, true, true, true, true, true, true, true},
                 _primGroups = _primGroups,
             };
             Memory.Move(p._indices.Address, _indices.Address, (uint) _indices.Length);

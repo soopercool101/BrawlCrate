@@ -21,7 +21,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal MDL0Header* Header => (MDL0Header*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.MDL0;
         public override int DataAlign => 0x20;
-        public override int[] SupportedVersions => new int[] {8, 9, 10, 11};
+        public override int[] SupportedVersions => new[] {8, 9, 10, 11};
 
         public MDL0Node()
         {

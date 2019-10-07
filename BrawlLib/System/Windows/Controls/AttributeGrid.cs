@@ -481,7 +481,7 @@ namespace System.Windows.Forms
                 RGBAPixel p = new RGBAPixel();
 
                 string s = value.ToString();
-                char[] delims = new char[] {',', 'R', 'G', 'B', 'A', ':', ' '};
+                char[] delims = new[] {',', 'R', 'G', 'B', 'A', ':', ' '};
                 string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 
                 if (arr.Length == 4)

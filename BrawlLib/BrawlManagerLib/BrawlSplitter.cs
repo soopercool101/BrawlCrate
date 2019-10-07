@@ -96,7 +96,7 @@ namespace BrawlManagerLib
                     int right = Button.Width / 2 + 4;
                     if (ControlToHide.Visible ^ (Dock == DockStyle.Bottom || Dock == DockStyle.Left))
                     {
-                        e.Graphics.FillPolygon(brush, new Point[]
+                        e.Graphics.FillPolygon(brush, new[]
                         {
                             new Point(Button.Width / 2, top),
                             new Point(left, bottom),
@@ -105,7 +105,7 @@ namespace BrawlManagerLib
                     }
                     else
                     {
-                        e.Graphics.FillPolygon(brush, new Point[]
+                        e.Graphics.FillPolygon(brush, new[]
                         {
                             new Point(Button.Width / 2, bottom),
                             new Point(left, top),
@@ -121,7 +121,7 @@ namespace BrawlManagerLib
                     int right = Button.Width / 2 + 2;
                     if (ControlToHide.Visible ^ (Dock == DockStyle.Bottom || Dock == DockStyle.Left))
                     {
-                        e.Graphics.FillPolygon(brush, new Point[]
+                        e.Graphics.FillPolygon(brush, new[]
                         {
                             new Point(right, Button.Height / 2),
                             new Point(left, top),
@@ -130,7 +130,7 @@ namespace BrawlManagerLib
                     }
                     else
                     {
-                        e.Graphics.FillPolygon(brush, new Point[]
+                        e.Graphics.FillPolygon(brush, new[]
                         {
                             new Point(left, Button.Height / 2),
                             new Point(right, top),

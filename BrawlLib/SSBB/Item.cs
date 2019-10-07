@@ -23,7 +23,7 @@
             return Name;
         }
 
-        public static readonly Item[] Items = new Item[]
+        public static readonly Item[] Items = new[]
         {
             //        ID    Display Name     
             new Item(0x00, "Assist Trophy"),

@@ -513,7 +513,7 @@ namespace BrawlCrate
                         {
                             object scrollOffset = c.GetType().GetMethod("GetScrollOffset").Invoke(c, null);
                             setScrollOffset = () =>
-                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new object[] {scrollOffset});
+                                c.GetType().GetMethod("SetScrollOffset").Invoke(c, new[] {scrollOffset});
                             break;
                         }
                     }

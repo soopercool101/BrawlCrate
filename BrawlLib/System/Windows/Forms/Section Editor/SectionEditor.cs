@@ -168,7 +168,7 @@ namespace System.Windows.Forms
             for (int i = 0; i * 4 < hexBox1.ByteProvider.Length; i++)
             {
                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
-                byte[] bytes = new byte[]
+                byte[] bytes = new[]
                 {
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
@@ -224,7 +224,7 @@ namespace System.Windows.Forms
                             {
                                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" +
                                                      (index * 4).ToString("X8"));
-                                byte[] bytes = new byte[]
+                                byte[] bytes = new[]
                                 {
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 3),
                                     hexBox1.ByteProvider.ReadByte((long) index * 4 + 2),
@@ -276,7 +276,7 @@ namespace System.Windows.Forms
             for (int i = annotationTitles.Count; i * 4 < hexBox1.ByteProvider.Length; i++)
             {
                 annotationTitles.Add(_section.Root.Name + " " + _section.Name + ": 0x" + (i * 4).ToString("X8"));
-                byte[] bytes = new byte[]
+                byte[] bytes = new[]
                 {
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 3),
                     hexBox1.ByteProvider.ReadByte((long) i * 4 + 2),
@@ -455,7 +455,7 @@ namespace System.Windows.Forms
                 grpValue.Enabled = !_section._isBSSSection;
                 if (rdo4byte.Checked)
                 {
-                    byte[] bytes = new byte[]
+                    byte[] bytes = new[]
                     {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 3),
@@ -514,7 +514,7 @@ namespace System.Windows.Forms
                 else if (rdo2byte.Checked)
                 {
                     t = offset.RoundDown(2);
-                    byte[] bytes = new byte[]
+                    byte[] bytes = new[]
                     {
                         //Read in little endian
                         hexBox1.ByteProvider.ReadByte(t + 1),
@@ -558,7 +558,7 @@ namespace System.Windows.Forms
                 else if (rdo1byte.Checked)
                 {
                     t = offset;
-                    byte[] bytes = new byte[]
+                    byte[] bytes = new[]
                     {
                         hexBox1.ByteProvider.ReadByte(t)
                     };

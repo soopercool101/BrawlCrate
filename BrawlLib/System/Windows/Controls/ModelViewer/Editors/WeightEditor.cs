@@ -434,7 +434,7 @@ namespace System.Windows.Forms
                         if (!_totals.ContainsKey(b.Bone.Name))
                         {
                             _bones.Add(b.Bone);
-                            _totals.Add(b.Bone.Name, new float[] {b.Weight, 1});
+                            _totals.Add(b.Bone.Name, new[] {b.Weight, 1});
                         }
                         else
                         {

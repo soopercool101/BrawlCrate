@@ -20,7 +20,7 @@ namespace System.BrawlEx
             return Name;
         }
 
-        public static readonly FranchiseIcon[] Icons = new FranchiseIcon[]
+        public static readonly FranchiseIcon[] Icons = new[]
         {
             //                ID     Display Name
             new FranchiseIcon(0x00, "Super Mario"),
@@ -64,7 +64,7 @@ namespace System.BrawlEx
             return Name;
         }
 
-        public static readonly BrawlExColorID[] Colors = new BrawlExColorID[]
+        public static readonly BrawlExColorID[] Colors = new[]
         {
             //                 ID     Display Name
             new BrawlExColorID(0x00, "Red (Team Color)"),
@@ -98,7 +98,7 @@ namespace System.BrawlEx
             return Name;
         }
 
-        public static readonly RecordBank[] Records = new RecordBank[]
+        public static readonly RecordBank[] Records = new[]
         {
             //             ID     Display Name
             new RecordBank(0x00, "Mario"),
@@ -155,7 +155,7 @@ namespace System.BrawlEx
             return Name;
         }
 
-        public static readonly AIController[] aIControllers = new AIController[]
+        public static readonly AIController[] aIControllers = new[]
         {
             //            ID     Display Name     
             new AIController(0x00, "Mario"),

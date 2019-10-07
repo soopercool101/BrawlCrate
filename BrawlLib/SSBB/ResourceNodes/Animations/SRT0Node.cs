@@ -13,8 +13,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal SRT0v4* Header4 => (SRT0v4*) WorkingUncompressed.Address;
         internal SRT0v5* Header5 => (SRT0v5*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SRT0;
-        public override Type[] AllowedChildTypes => new Type[] {typeof(SRT0EntryNode)};
-        public override int[] SupportedVersions => new int[] {4, 5};
+        public override Type[] AllowedChildTypes => new[] {typeof(SRT0EntryNode)};
+        public override int[] SupportedVersions => new[] {4, 5};
 
         public SRT0Node()
         {
@@ -510,7 +510,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal SRT0Entry* Header => (SRT0Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SRT0Entry;
-        public override Type[] AllowedChildTypes => new Type[] {typeof(SRT0TextureNode)};
+        public override Type[] AllowedChildTypes => new[] {typeof(SRT0TextureNode)};
 
         public int[] _usageIndices = new int[11];
 

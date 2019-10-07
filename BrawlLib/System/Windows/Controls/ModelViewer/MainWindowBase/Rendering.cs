@@ -292,7 +292,7 @@ namespace System.Windows.Forms
             Screen
         }
 
-        public CoordinateType[] _coordinateTypes = new CoordinateType[]
+        public CoordinateType[] _coordinateTypes = new[]
         {
             CoordinateType.Local, //T
             CoordinateType.Local, //R

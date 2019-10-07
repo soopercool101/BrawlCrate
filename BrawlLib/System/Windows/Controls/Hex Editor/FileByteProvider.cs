@@ -157,7 +157,7 @@ namespace Be.Windows.Forms
                     _fileStream.Position = index;
                 }
 
-                _fileStream.Write(new byte[] {value}, 0, 1);
+                _fileStream.Write(new[] {value}, 0, 1);
             }
 
             _writes.Clear();

@@ -75,7 +75,7 @@ namespace Be.Windows.Forms
         /// <returns></returns>
         public virtual char ToChar(byte b)
         {
-            string encoded = _ebcdicEncoding.GetString(new byte[] {b});
+            string encoded = _ebcdicEncoding.GetString(new[] {b});
             return encoded.Length > 0 ? encoded[0] : '.';
         }
 
@@ -86,7 +86,7 @@ namespace Be.Windows.Forms
         /// <returns></returns>
         public virtual byte ToByte(char c)
         {
-            byte[] decoded = _ebcdicEncoding.GetBytes(new char[] {c});
+            byte[] decoded = _ebcdicEncoding.GetBytes(new[] {c});
             return decoded.Length > 0 ? decoded[0] : (byte) 0;
         }
 

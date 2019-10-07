@@ -131,7 +131,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public virtual IAudioStream[] CreateStreams()
         {
-            return new IAudioStream[] {_stream};
+            return new[] {_stream};
         }
     }
 

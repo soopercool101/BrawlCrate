@@ -246,7 +246,7 @@ namespace System.Windows.Forms
             // listAnims
             // 
             listAnims.AutoArrange = false;
-            listAnims.Columns.AddRange(new ColumnHeader[]
+            listAnims.Columns.AddRange(new[]
             {
                 nameColumn
             });
@@ -255,7 +255,7 @@ namespace System.Windows.Forms
             listAnims.Dock = DockStyle.Fill;
             listViewGroup2.Header = "Animations";
             listViewGroup2.Name = "grpAnims";
-            listAnims.Groups.AddRange(new ListViewGroup[]
+            listAnims.Groups.AddRange(new[]
             {
                 listViewGroup2
             });

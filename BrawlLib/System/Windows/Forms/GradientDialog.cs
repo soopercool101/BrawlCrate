@@ -242,7 +242,7 @@ namespace System.Windows.Forms
 
         private void UpdateBrush()
         {
-            _gradBrush.LinearColors = new Color[] {_startColor, _endColor};
+            _gradBrush.LinearColors = new[] {_startColor, _endColor};
             pnlPreview.Invalidate();
         }
 

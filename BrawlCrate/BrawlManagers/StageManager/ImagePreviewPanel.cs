@@ -229,7 +229,7 @@ namespace BrawlCrate.StageManager
             }
 
             index = filter.IndexOf('.', index);
-            int len = Math.Max(filter.Length, filter.IndexOfAny(new char[] {';', '|'})) - index;
+            int len = Math.Max(filter.Length, filter.IndexOfAny(new[] {';', '|'})) - index;
 
             string ext = filter.Substring(index, len);
 

@@ -111,7 +111,7 @@ namespace BrawlCrate.CostumeManager
                 new Rectangle(0, 0, 128, 128),
                 new Rectangle(0, 0, 128, 128),
                 GraphicsUnit.Pixel);
-            g.DrawImage(blurred, new Point[]
+            g.DrawImage(blurred, new[]
             {
                 new Point(0, 98),
                 new Point(131, 98),

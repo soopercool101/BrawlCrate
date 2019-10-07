@@ -101,7 +101,7 @@ namespace System.Windows.Forms
             numB.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numB.Location = new Drawing.Point(23, 116);
-            numB.Maximum = new decimal(new int[]
+            numB.Maximum = new decimal(new[]
             {
                 255,
                 0,
@@ -117,7 +117,7 @@ namespace System.Windows.Forms
             numG.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numG.Location = new Drawing.Point(23, 97);
-            numG.Maximum = new decimal(new int[]
+            numG.Maximum = new decimal(new[]
             {
                 255,
                 0,
@@ -133,7 +133,7 @@ namespace System.Windows.Forms
             numR.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numR.Location = new Drawing.Point(23, 78);
-            numR.Maximum = new decimal(new int[]
+            numR.Maximum = new decimal(new[]
             {
                 255,
                 0,
@@ -149,7 +149,7 @@ namespace System.Windows.Forms
             numH.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numH.Location = new Drawing.Point(23, 6);
-            numH.Maximum = new decimal(new int[]
+            numH.Maximum = new decimal(new[]
             {
                 360,
                 0,
@@ -213,7 +213,7 @@ namespace System.Windows.Forms
             numA.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numA.Location = new Drawing.Point(23, 135);
-            numA.Maximum = new decimal(new int[]
+            numA.Maximum = new decimal(new[]
             {
                 255,
                 0,
@@ -223,7 +223,7 @@ namespace System.Windows.Forms
             numA.Name = "numA";
             numA.Size = new Drawing.Size(47, 20);
             numA.TabIndex = 15;
-            numA.Value = new decimal(new int[]
+            numA.Value = new decimal(new[]
             {
                 255,
                 0,
@@ -376,7 +376,7 @@ namespace System.Windows.Forms
         private readonly PathGradientBrush _squareBrush;
 
         //private GraphicsPath _squarePath;
-        private readonly Color[] _boxColors = new Color[]
+        private readonly Color[] _boxColors = new[]
             {Color.Black, Color.White, Color.Black, Color.Black, Color.Black};
 
         private readonly LinearGradientBrush _barBrush;
@@ -406,7 +406,7 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
 
-            _boxes = new NumericUpDown[] {numH, numS, numV, numR, numG, numB, numA};
+            _boxes = new[] {numH, numS, numV, numR, numG, numB, numA};
             for (int i = 0; i < _boxes.Length; i++)
             {
                 _boxes[i].ValueChanged += OnBoxChanged;
@@ -419,7 +419,7 @@ namespace System.Windows.Forms
             //_squarePath.AddRectangle(r);
             //_squareBrush = new PathGradientBrush(_squarePath);
 
-            _squareBrush = new PathGradientBrush(new PointF[]
+            _squareBrush = new PathGradientBrush(new[]
             {
                 new PointF(r.Width, 0),
                 new PointF(r.Width, r.Height),
@@ -437,9 +437,9 @@ namespace System.Windows.Forms
 
             ColorBlend blend = new ColorBlend
             {
-                Colors = new Color[]
+                Colors = new[]
                     {Color.Red, Color.Yellow, Color.Lime, Color.Cyan, Color.Blue, Color.Magenta, Color.Red},
-                Positions = new float[] {0, p, p * 2, p * 3, p * 4, p * 5, 1.0f}
+                Positions = new[] {0, p, p * 2, p * 3, p * 4, p * 5, 1.0f}
             };
 
             _barBrush.InterpolationColors = blend;

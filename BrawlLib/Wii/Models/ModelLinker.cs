@@ -43,7 +43,7 @@ namespace BrawlLib.Wii.Models
             return false;
         }
 
-        internal static readonly Type[] TypeBank = new Type[]
+        internal static readonly Type[] TypeBank = new[]
         {
             typeof(MDL0DefNode), //0, special handling
             typeof(MDL0BoneNode),
@@ -60,7 +60,7 @@ namespace BrawlLib.Wii.Models
             typeof(MDL0FurPosNode),
         };
 
-        internal static readonly MR[] OrderBank = new MR[]
+        internal static readonly MR[] OrderBank = new[]
         {
             MR.Textures,
             MR.Palettes,
@@ -77,7 +77,7 @@ namespace BrawlLib.Wii.Models
             MR.UVs,
         };
 
-        public static readonly List<MR>[] IndexBank = new List<MR>[]
+        public static readonly List<MR>[] IndexBank = new[]
         {
             null, //0
             null, //1
@@ -87,22 +87,22 @@ namespace BrawlLib.Wii.Models
             null, //5
             null, //6
             null, //7
-            new List<MR>(new MR[]
+            new List<MR>(new[]
             {
                 MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.Materials, MR.Shaders,
                 MR.Objects, MR.Textures, MR.Palettes
             }),
-            new List<MR>(new MR[]
+            new List<MR>(new[]
             {
                 MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.Materials, MR.Shaders,
                 MR.Objects, MR.Textures, MR.Palettes
             }),
-            new List<MR>(new MR[]
+            new List<MR>(new[]
             {
                 MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.FurVectors, MR.FurLayerCoords,
                 MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes
             }),
-            new List<MR>(new MR[]
+            new List<MR>(new[]
             {
                 MR.Definitions, MR.Bones, MR.Vertices, MR.Normals, MR.Colors, MR.UVs, MR.FurVectors, MR.FurLayerCoords,
                 MR.Materials, MR.Shaders, MR.Objects, MR.Textures, MR.Palettes

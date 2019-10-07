@@ -38,7 +38,7 @@ namespace System.Windows.Forms
 
         #endregion
 
-        private static readonly Stage[] stageList = new Stage[]
+        private static readonly Stage[] stageList = new[]
         {
             new Stage(0, "STGCUSTOM##.pac", "st_custom##.rel"),
             new Stage(1, "Battlefield", "st_battle.rel"),

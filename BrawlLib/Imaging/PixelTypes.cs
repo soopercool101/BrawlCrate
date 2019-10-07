@@ -367,7 +367,7 @@ namespace BrawlLib.Imaging
 
         public static implicit operator uint(RGBAPixel p)
         {
-            return BitConverter.ToUInt32(new byte[] {p.R, p.G, p.B, p.A}, 0);
+            return BitConverter.ToUInt32(new[] {p.R, p.G, p.B, p.A}, 0);
         }
 
         public RGBAPixel(byte r, byte g, byte b, byte a)

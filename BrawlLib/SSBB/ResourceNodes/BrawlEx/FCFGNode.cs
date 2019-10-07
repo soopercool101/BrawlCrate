@@ -1127,16 +1127,16 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             _pacName = System.Text.Encoding.UTF8.GetString(_pacNameArray)
                              .Substring(0, System.Text.Encoding.UTF8.GetString(_pacNameArray).IndexOf('\0'))
-                             .TrimEnd(new char[] {'\0'});
+                             .TrimEnd(new[] {'\0'});
             _kirbyPacName = System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray)
                                   .Substring(0, System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).IndexOf('\0'))
-                                  .TrimEnd(new char[] {'\0'});
+                                  .TrimEnd(new[] {'\0'});
             _moduleName = System.Text.Encoding.UTF8.GetString(_moduleNameArray)
                                 .Substring(0, System.Text.Encoding.UTF8.GetString(_moduleNameArray).IndexOf('\0'))
-                                .TrimEnd(new char[] {'\0'});
+                                .TrimEnd(new[] {'\0'});
             _internalName = System.Text.Encoding.UTF8.GetString(_internalNameArray)
                                   .Substring(0, System.Text.Encoding.UTF8.GetString(_internalNameArray).IndexOf('\0'))
-                                  .TrimEnd(new char[] {'\0'});
+                                  .TrimEnd(new[] {'\0'});
             try
             {
                 if (_pacName.ToUpper().LastIndexOf(".PAC") > 0 && _pacName.ToUpper().Contains("/FIT"))
@@ -1154,24 +1154,24 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _fighterName = _internalName;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_pacNameArray).ToUpper().TrimEnd(new char[] {'\0'}).EndsWith("\0X"))
+            if (System.Text.Encoding.UTF8.GetString(_pacNameArray).ToUpper().TrimEnd(new[] {'\0'}).EndsWith("\0X"))
             {
                 _hasPac = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).ToUpper().TrimEnd(new char[] {'\0'})
+            if (System.Text.Encoding.UTF8.GetString(_kirbyPacNameArray).ToUpper().TrimEnd(new[] {'\0'})
                       .EndsWith("\0X"))
             {
                 _hasKirbyHat = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_moduleNameArray).ToUpper().TrimEnd(new char[] {'\0'})
+            if (System.Text.Encoding.UTF8.GetString(_moduleNameArray).ToUpper().TrimEnd(new[] {'\0'})
                       .EndsWith("\0X"))
             {
                 _hasModule = false;
             }
 
-            if (System.Text.Encoding.UTF8.GetString(_internalNameArray).ToUpper().TrimEnd(new char[] {'\0'})
+            if (System.Text.Encoding.UTF8.GetString(_internalNameArray).ToUpper().TrimEnd(new[] {'\0'})
                       .EndsWith("\0X"))
             {
                 _hasInternalName = false;

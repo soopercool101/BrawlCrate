@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal SCN0v4* Header4 => (SCN0v4*) WorkingUncompressed.Address;
         internal SCN0v5* Header5 => (SCN0v5*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SCN0;
-        public override int[] SupportedVersions => new int[] {4, 5};
+        public override int[] SupportedVersions => new[] {4, 5};
 
         public SCN0Node()
         {
@@ -366,7 +366,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             //Use an index array to remap and write groups in proper order.
-            int[] indices = new int[] {-1, -1, -1, -1, -1};
+            int[] indices = new[] {-1, -1, -1, -1, -1};
 
             //Loop through groups and set index, length and count
             foreach (SCN0GroupNode g in Children)
@@ -466,7 +466,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             ResourceEntry* rEntry = group->First;
 
             int index = 1;
-            int[] indices = new int[] {-1, -1, -1, -1, -1};
+            int[] indices = new[] {-1, -1, -1, -1, -1};
             foreach (SCN0GroupNode g in Children)
             {
                 indices[(int) g._type] = g.Index;

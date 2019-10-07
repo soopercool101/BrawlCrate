@@ -680,7 +680,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            return new IAudioStream[] {_stream};
+            return new[] {_stream};
         }
 
         public override int OnCalculateSize(bool force)
