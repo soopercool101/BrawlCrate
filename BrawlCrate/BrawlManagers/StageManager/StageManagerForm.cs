@@ -14,7 +14,7 @@ using System.Text;
 
 namespace BrawlCrate.StageManager
 {
-    public partial class MainForm : Form
+    public partial class StageManagerForm : Form
     {
         private static OpenFileDialog OpenDialog = new OpenFileDialog();
         private static SaveFileDialog SaveDialog = new SaveFileDialog();
@@ -107,7 +107,7 @@ namespace BrawlCrate.StageManager
 
         #endregion
 
-        public MainForm(string path, bool useRelDescription)
+        public StageManagerForm(string path, bool useRelDescription)
         {
             if (!string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
             {

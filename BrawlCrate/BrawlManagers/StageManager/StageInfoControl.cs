@@ -231,7 +231,7 @@ namespace BrawlCrate.StageManager
             {
                 if (_relFile.Exists)
                 {
-                    // If there is a rel, display the filename/name/size (this is done for .pac files in MainForm)
+                    // If there is a rel, display the filename/name/size (this is done for .pac files in StageManagerForm)
                     _relFile.Refresh();
                     setRelLabels(_relFile.Name + ":", getModuleName(_relFile), "(" + _relFile.Length + " bytes)");
                     relName.ForeColor = Color.Black;

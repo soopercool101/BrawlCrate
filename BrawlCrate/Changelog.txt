@@ -99,6 +99,7 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which certain collision planes would be ignored on object population (fixes New Pork City issues)
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
+ . Fix bug in which GCTs made with Code Manager would incorrectly detect the first line of code as a code title, breaking the codeset
  . Sped up booting and removed splash screen accordingly
  
  - BrawlCrate v0.26b Hotfix 1 - (9/16/2019)

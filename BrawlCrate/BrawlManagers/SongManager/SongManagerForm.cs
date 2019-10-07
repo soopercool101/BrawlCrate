@@ -10,7 +10,7 @@ using BrawlCrate.SongManager.SongExport;
 
 namespace BrawlCrate.SongManager
 {
-    public partial class MainForm : Form
+    public partial class SongManagerForm : Form
     {
         public static readonly string[] GCT_PATHS =
         {
@@ -73,7 +73,7 @@ namespace BrawlCrate.SongManager
 
         private const string ChooseLabel = "Choose a stage from the list on the left-hand side.";
 
-        public MainForm(string path, bool loadNames, bool loadBrstms, bool groupSongs)
+        public SongManagerForm(string path, bool loadNames, bool loadBrstms, bool groupSongs)
         {
             if (path == null && !string.IsNullOrEmpty(Properties.Settings.Default.BuildPath))
             {
@@ -585,7 +585,7 @@ namespace BrawlCrate.SongManager
             }
         }
 
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        private void SongManagerForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.PageDown)
             {
