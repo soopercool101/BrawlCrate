@@ -108,7 +108,7 @@ namespace BrawlLib.OpenGL
 
         public unsafe void SetPalette(PLT0Node plt)
         {
-            if (_source != null && _source is TEX0Node)
+            if (_source is TEX0Node)
             {
                 Attach((TEX0Node) _source, plt);
             }

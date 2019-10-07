@@ -872,8 +872,7 @@ namespace System.Windows.Forms
             bool inBRRES,
             ListViewGroup externalGroup = null)
         {
-            bool ib = inBRRES || TargetModel != null && TargetModel is MDL0Node &&
-                      node == ((MDL0Node) TargetModel).BRESNode;
+            bool ib = inBRRES || TargetModel is MDL0Node && node == ((MDL0Node) TargetModel).BRESNode;
 
             if (!_mainWindow.chkBRRESAnims.Checked && ib)
             {
@@ -994,7 +993,7 @@ namespace System.Windows.Forms
 
             listAnims.Groups.Clear();
 
-            if (TargetModel != null && TargetModel is MDL0Node)
+            if (TargetModel is MDL0Node)
             {
                 _AnimGroupBRRES.Header = string.Format("In BRRES ({0})", TargetModel.ToString());
                 _AnimGroupNotBRRES.Header = string.Format("Not in BRRES ({0})", TargetModel.ToString());
@@ -1433,8 +1432,7 @@ namespace System.Windows.Forms
                     _selectedTexture.ObjOnly = true;
                 }
 
-                if (_selectedObject is MDL0ObjectNode &&
-                    ((MDL0ObjectNode) _selectedObject)._drawCalls[0].MaterialNode != null)
+                if ((_selectedObject as MDL0ObjectNode)?._drawCalls[0].MaterialNode != null)
                 {
                     TargetTexRef = _selectedObject != null
                         ? ((MDL0ObjectNode) _selectedObject)
@@ -1561,7 +1559,7 @@ namespace System.Windows.Forms
         private void replaceTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = lstTextures.SelectedIndex;
-            if (_selectedTexture != null && _selectedTexture.Source is TEX0Node)
+            if (_selectedTexture?.Source is TEX0Node)
             {
                 TEX0Node node = _selectedTexture.Source as TEX0Node;
                 using (TextureConverterDialog dlg = new TextureConverterDialog())
@@ -1679,7 +1677,7 @@ namespace System.Windows.Forms
 
         private void exportTextureToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_selectedTexture != null && _selectedTexture.Source is TEX0Node)
+            if (_selectedTexture?.Source is TEX0Node)
             {
                 TEX0Node node = _selectedTexture.Source as TEX0Node;
                 using (SaveFileDialog dlgSave = new SaveFileDialog())
@@ -1978,7 +1976,7 @@ namespace System.Windows.Forms
             Graphics g = e.Graphics;
             ResourceNode rn = null;
 
-            if (_selectedObject != null && _selectedObject is MDL0ObjectNode)
+            if (_selectedObject is MDL0ObjectNode)
             {
                 for (int i = 0; i < lstTextures.Items.Count; i++)
                 {
@@ -2076,7 +2074,7 @@ namespace System.Windows.Forms
         private void inModelsBRRESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResourceNode r = TargetModel as ResourceNode;
-            if (r == null || r.Parent == null || r.Parent.Parent == null || !(r.Parent.Parent is BRRESNode))
+            if (!(r?.Parent?.Parent is BRRESNode))
             {
                 return;
             }
@@ -2109,8 +2107,7 @@ namespace System.Windows.Forms
         private void ctxAnimList_Opening(object sender, CancelEventArgs e)
         {
             ResourceNode r = TargetModel as ResourceNode;
-            bool targetBRRES = !(r == null || r.Parent == null || r.Parent.Parent == null ||
-                                 !(r.Parent.Parent is BRRESNode));
+            bool targetBRRES = !(!(r?.Parent?.Parent is BRRESNode));
 
             if (!targetBRRES)
             {
@@ -2290,7 +2287,7 @@ namespace System.Windows.Forms
         private void lstDrawCalls_SelectedIndexChanged(object sender, EventArgs e)
         {
             DrawCall c = lstDrawCalls.SelectedItem as DrawCall;
-            if (c != null && c.MaterialNode != null)
+            if (c?.MaterialNode != null)
             {
                 TargetTexRef = _selectedTexture != null
                     ? c.MaterialNode.FindChild(_selectedTexture.Name, true) as MDL0MaterialRefNode

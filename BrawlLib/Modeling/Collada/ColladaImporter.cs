@@ -725,7 +725,7 @@ namespace BrawlLib.Modeling
                 model.ResetToBindState();
 
                 //Attach single-bind
-                if (parent != null && parent is MDL0BoneNode)
+                if (parent is MDL0BoneNode)
                 {
                     MDL0BoneNode bone = (MDL0BoneNode) parent;
                     poly.DeferUpdateAssets();

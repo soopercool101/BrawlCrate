@@ -73,11 +73,7 @@ namespace System.Windows.Forms
 
             foreach (ObjectOptimization a in form._results)
             {
-                if (a == null ||
-                    a._object == null ||
-                    a._object._manager == null ||
-                    a._object._manager._triangles == null ||
-                    a._facepoints == null)
+                if (a?._object?._manager?._triangles == null || a._facepoints == null)
                 {
                     return;
                 }

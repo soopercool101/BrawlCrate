@@ -198,7 +198,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         [Category("Object Data")] public int FacepointCount => _numFacepoints;
 
         [Category("Object Data")]
-        public int VertexCount => _manager == null || _manager._vertices == null ? 0 : _manager._vertices.Count;
+        public int VertexCount => _manager?._vertices == null ? 0 : _manager._vertices.Count;
 
         [Category("Object Data")] public int FaceCount => _numFaces;
 
@@ -1356,7 +1356,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public Box GetBox()
         {
-            if (_manager == null || _manager._vertices == null)
+            if (_manager?._vertices == null)
             {
                 return new Box();
             }
@@ -2258,7 +2258,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             MDL0Node model = _parentObject.Model;
-            bool usesOffset = model != null && model._matrixOffset != null;
+            bool usesOffset = model?._matrixOffset != null;
             if (usesOffset)
             {
                 GL.PushMatrix();

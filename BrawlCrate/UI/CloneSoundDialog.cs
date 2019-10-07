@@ -194,7 +194,7 @@ namespace BrawlCrate
             if (txtName.Text != "")
             {
                 GenericWrapper node = treeResource.SelectedNode as GenericWrapper;
-                btnOk.Enabled = node != null && node.Resource is RSARSoundNode;
+                btnOk.Enabled = node?.Resource is RSARSoundNode;
             }
             else
             {

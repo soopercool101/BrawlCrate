@@ -411,7 +411,7 @@ namespace System.Windows.Forms
 
             SHP0Indices = new Dictionary<int, List<int>>();
 
-            if (SelectedAnimation != null && TargetModel != null && TargetModel is MDL0Node)
+            if (SelectedAnimation != null && TargetModel is MDL0Node)
             {
                 List<string> names1 = new List<string>(), names2 = new List<string>();
                 MDL0Node model = TargetModel as MDL0Node;
@@ -626,10 +626,7 @@ namespace System.Windows.Forms
             //UVs are not morphed so there's no need to set them
 
             if (SelectedAnimation == null ||
-                SelectedSource == null ||
-                TargetModel == null ||
-                TargetModel.Objects == null ||
-                TargetModel.Objects.Length == 0)
+                SelectedSource == null || TargetModel?.Objects == null || TargetModel.Objects.Length == 0)
             {
                 return;
             }

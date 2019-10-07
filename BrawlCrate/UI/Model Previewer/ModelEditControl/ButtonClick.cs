@@ -534,7 +534,7 @@ namespace System.Windows.Forms
 
         private void portToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (TargetModel == null || !(TargetModel is MDL0Node))
+            if (!(TargetModel is MDL0Node))
             {
                 return;
             }

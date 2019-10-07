@@ -397,8 +397,7 @@ namespace BrawlCrate
             }
             else
             {
-                propertyGrid1.HelpVisible = item != null && item.PropertyDescriptor != null &&
-                                            !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
+                propertyGrid1.HelpVisible = item?.PropertyDescriptor != null && !string.IsNullOrEmpty(item.PropertyDescriptor.Description);
             }
         }
 

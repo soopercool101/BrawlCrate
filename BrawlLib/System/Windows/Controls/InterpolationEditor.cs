@@ -332,7 +332,7 @@ namespace System.Windows.Forms
                     interpolationViewer1_FrameChanged(this, null);
                 }
 
-                if (_mainWindow != null && _mainWindow.KeyframePanel != null)
+                if (_mainWindow?.KeyframePanel != null)
                 {
                     if (indexChanged)
                     {

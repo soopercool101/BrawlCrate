@@ -56,7 +56,7 @@ namespace BrawlLib.Modeling
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Facepoint))
+            if (!(obj is Facepoint))
             {
                 return false;
             }

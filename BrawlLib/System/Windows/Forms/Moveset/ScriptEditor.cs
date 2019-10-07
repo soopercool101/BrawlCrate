@@ -510,8 +510,7 @@ namespace System.Windows.Forms
                             TargetNode.Root.GetBoneIndex(ref id);
                         }
 
-                        if (_targetNode.Model != null && _targetNode.Model._linker.BoneCache != null &&
-                            _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
+                        if (_targetNode.Model?._linker.BoneCache != null && _targetNode.Model._linker.BoneCache.Length > id && id >= 0)
                         {
                             return _targetNode.Model._linker.BoneCache[id].Name;
                         }
@@ -763,8 +762,7 @@ namespace System.Windows.Forms
                 case 0x04000200:
                     if (index == 0)
                     {
-                        if (TargetNode.Parent != null && TargetNode.Parent.Parent != null &&
-                            TargetNode.Parent.Parent.Name.StartsWith("Article"))
+                        if (TargetNode.Parent?.Parent != null && TargetNode.Parent.Parent.Name.StartsWith("Article"))
                         {
                             ResourceNode sa = TargetNode.Parent.Parent.FindChild("SubActions", false);
                             if (sa != null)

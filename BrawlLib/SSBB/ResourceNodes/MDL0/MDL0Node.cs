@@ -302,7 +302,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Box box = Box.ExpandableVolume;
             foreach (MDL0ObjectNode o in _objList)
             {
-                if (o._manager != null && o._manager._vertices != null)
+                if (o._manager?._vertices != null)
                 {
                     foreach (Vertex3 vertex in o._manager._vertices)
                     {
@@ -2127,7 +2127,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             get
             {
-                if (_linker != null && _linker.BoneCache != null)
+                if (_linker?.BoneCache != null)
                 {
                     return _linker.BoneCache.Select(x => x as IBoneNode).ToArray();
                 }
@@ -2579,7 +2579,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 foreach (MDL0ObjectNode poly in _objList)
                 {
                     PrimitiveManager p = poly._manager;
-                    if (p == null || p._vertices == null || p._faceData == null)
+                    if (p?._vertices == null || p._faceData == null)
                     {
                         continue;
                     }

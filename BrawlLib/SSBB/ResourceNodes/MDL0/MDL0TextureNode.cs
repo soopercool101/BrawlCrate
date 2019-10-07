@@ -255,7 +255,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
 
             TEX0Node tNode;
-            if (bmp == null && (Source == null || !(Source is TEX0Node)) &&
+            if (bmp == null && (!(Source is TEX0Node)) &&
                 TKContext.CurrentContext._states.ContainsKey("_Node_Refs"))
             {
                 List<ResourceNode> nodes = RootNode.GetChildrenRecursive();

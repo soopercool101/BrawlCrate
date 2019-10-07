@@ -134,7 +134,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     return "Item Table";
                 }
-                else if (Parent != null && Parent is ARCNode)
+                else if (Parent is ARCNode)
                 {
                     if (((ARCNode) Parent).SpecialARC.EndsWith("SubNode") ||
                         ((ARCNode) Parent).SpecialARC.Equals("<None>"))

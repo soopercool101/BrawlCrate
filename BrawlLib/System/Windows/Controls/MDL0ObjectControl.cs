@@ -228,7 +228,7 @@ namespace System.Windows.Forms
                 drawCall._render = !drawCall._render;
                 lstDrawCalls.SetItemChecked(lstDrawCalls.SelectedIndex, drawCall._render);
 
-                if (_targetObject != null && _targetObject.Model != null)
+                if (_targetObject?.Model != null)
                 {
                     TKContext.InvalidateModelPanels(_targetObject.Model);
                 }

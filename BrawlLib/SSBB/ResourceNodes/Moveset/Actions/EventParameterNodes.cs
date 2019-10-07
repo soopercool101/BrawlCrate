@@ -497,7 +497,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 //    return;
                 //}
                 ResourceNode r = Root.FindNode(value);
-                if (r != null && r is MoveDefActionNode)
+                if (r is MoveDefActionNode)
                 {
                     _value = value;
                     SignalPropertyChange();
@@ -548,7 +548,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public MoveDefActionNode GetAction()
         {
             ResourceNode r = Root.FindNode(RawOffset);
-            if (r != null && r is MoveDefActionNode)
+            if (r is MoveDefActionNode)
             {
                 return r as MoveDefActionNode;
             }

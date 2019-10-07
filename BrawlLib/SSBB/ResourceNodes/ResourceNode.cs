@@ -576,7 +576,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public virtual bool ToParent()
         {
-            if (Parent != null && Parent is MDL0BoneNode)
+            if (Parent is MDL0BoneNode)
             {
                 return true;
             }

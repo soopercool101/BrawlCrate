@@ -1009,7 +1009,7 @@ namespace System.Windows.Forms
                 }
                 else if (_paletteData != null)
                 {
-                    if (_origTEX0.Parent == null || _origTEX0.Parent.Parent == null)
+                    if (_origTEX0.Parent?.Parent == null)
                     {
                         _paletteData.Dispose();
                         _paletteData = null;

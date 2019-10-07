@@ -970,7 +970,7 @@ namespace Updater
             Process[] px = Process.GetProcessesByName("BrawlCrate");
             Process[] pToClose = px.Where(x => x.MainModule.FileName.Equals(AppPath + "\\BrawlCrate.exe")).ToArray();
             Process p = px.FirstOrDefault(x => x.MainModule.FileName.Equals(AppPath + "\\BrawlCrate.exe"));
-            if (p != null && p != default(Process) && px != null && pToClose != null && pToClose.Length > 1)
+            if (p != null && px != null && pToClose != null && pToClose.Length > 1)
             {
                 try
                 {
@@ -989,7 +989,7 @@ namespace Updater
                 goto TRY_AGAIN;
             }
 
-            if (p != null && p != default(Process))
+            if (p != null)
             {
                 p.Kill();
             }

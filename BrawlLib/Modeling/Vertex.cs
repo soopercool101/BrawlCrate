@@ -35,7 +35,7 @@ namespace BrawlLib.Modeling
 
         public IMatrixNode GetMatrixNode()
         {
-            if (_parent != null && _parent.MatrixNode != null)
+            if (_parent?.MatrixNode != null)
             {
                 return _parent.MatrixNode;
             }

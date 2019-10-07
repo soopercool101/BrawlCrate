@@ -1239,7 +1239,7 @@ namespace System.Windows.Forms
             if (da.GetDataPresent("SRTAnimationFrame"))
             {
                 object o = da.GetData("SRTAnimationFrame");
-                if (o != null && o is SRTAnimationFrame)
+                if (o is SRTAnimationFrame)
                 {
                     SRTAnimationFrame frame = (SRTAnimationFrame) o;
 

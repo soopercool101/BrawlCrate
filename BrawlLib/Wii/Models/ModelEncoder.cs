@@ -620,7 +620,7 @@ namespace BrawlLib.Wii.Models
             {
                 foreach (MDL0ObjectNode obj1 in model._objList)
                 {
-                    if (obj1 == null || obj1._drawCalls == null || obj1._drawCalls.Count == 0)
+                    if (obj1?._drawCalls == null || obj1._drawCalls.Count == 0)
                     {
                         continue;
                     }

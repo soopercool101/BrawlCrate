@@ -217,7 +217,7 @@ namespace System.Windows.Forms
 
                 _uvSetNames.Clear();
                 _uvSetNames.Add(_uvSetIndices.Count == 1 ? model._uvList[_uvSetIndices[0]].Name : "All");
-                if (model != null && model._uvList != null && _uvSetIndices.Count != 1)
+                if (model?._uvList != null && _uvSetIndices.Count != 1)
                 {
                     foreach (int i in _uvSetIndices)
                     {
@@ -253,7 +253,7 @@ namespace System.Windows.Forms
                         info._enabled = new bool[8];
                         for (int x = 0; x < 8; x++)
                         {
-                            if (info._manager != null && info._manager._faceData[x + 4] != null)
+                            if (info._manager?._faceData[x + 4] != null)
                             {
                                 info._enabled[x] = !singleUV || _uvIndex == x;
                             }
@@ -266,7 +266,7 @@ namespace System.Windows.Forms
                     info._enabled = new bool[8];
                     for (int x = 0; x < 8; x++)
                     {
-                        if (info._manager != null && info._manager._faceData[x + 4] != null)
+                        if (info._manager?._faceData[x + 4] != null)
                         {
                             info._enabled[x] = !singleUV || _uvIndex == r++;
                         }
@@ -646,7 +646,7 @@ namespace System.Windows.Forms
             {
                 _min = new Vector2(float.MaxValue);
                 _max = new Vector2(float.MinValue);
-                if (_manager != null && _manager._faceData != null)
+                if (_manager?._faceData != null)
                 {
                     for (int i = 4; i < _manager._faceData.Length; i++)
                     {

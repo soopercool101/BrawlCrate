@@ -262,7 +262,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 _entryIndex = value;
 
                 MDL0Node model = Model;
-                if (model != null && model._linker != null && model._linker.BoneCache != null)
+                if (model?._linker?.BoneCache != null)
                 {
                     if (down)
                     {

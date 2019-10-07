@@ -185,9 +185,7 @@ namespace System.Windows.Forms
                 {
                     if (CurrentFrame == 0 &&
                         TargetAnimType == NW4RAnimType.CHR &&
-                        CHR0Editor.chkMoveBoneOnly.Checked &&
-                        TargetModel != null &&
-                        TargetModel is MDL0Node)
+                        CHR0Editor.chkMoveBoneOnly.Checked && TargetModel is MDL0Node)
                     {
                         MDL0Node m = TargetModel as MDL0Node;
                         m._dontUpdateMesh = true;
@@ -213,7 +211,7 @@ namespace System.Windows.Forms
 
             _createdNewBone = false;
 
-            bool temp = TargetModel != null && TargetModel is MDL0Node;
+            bool temp = TargetModel is MDL0Node;
             if (temp)
             {
                 MDL0Node m = TargetModel as MDL0Node;

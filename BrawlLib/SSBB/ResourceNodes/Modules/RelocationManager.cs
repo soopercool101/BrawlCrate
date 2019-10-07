@@ -34,7 +34,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public RelocationManager(ModuleDataNode data)
         {
             _data = data;
-            if (DataNode == null || DataNode._manager == null)
+            if (DataNode?._manager == null)
             {
                 //Initialize
                 _linkedCommands = new SortedList<int, List<RelocationTarget>>();

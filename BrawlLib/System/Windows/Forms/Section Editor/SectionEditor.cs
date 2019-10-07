@@ -134,8 +134,7 @@ namespace System.Windows.Forms
             annotationIndex = 0;
             annotationTitles.Clear();
             annotationDescription.Clear();
-            if (_section == null || _section.Root == null || hexBox1.ByteProvider == null ||
-                hexBox1.ByteProvider.Length < 4)
+            if (_section?.Root == null || hexBox1.ByteProvider == null || hexBox1.ByteProvider.Length < 4)
             {
                 chkAnnotations.Checked = false;
                 return;
@@ -1136,7 +1135,7 @@ namespace System.Windows.Forms
             if (e.Index >= 0)
             {
                 RelocationTarget r = lstLinked.Items[e.Index] as RelocationTarget;
-                if (r != null && r.Section != null)
+                if (r?.Section != null)
                 {
                     PPCOpCode code = r.Section._manager.GetCode(r._index);
                     Color c = code is PPCBranch ? Color.Blue : Color.Red;

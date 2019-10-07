@@ -44,10 +44,8 @@ namespace System.Windows.Forms
                 DeathBone1 = null;
 
             //Get bones and render spawns if checked
-            if (_targetModel != null &&
-                _targetModel is MDL0Node &&
-                (((ResourceNode) _targetModel).Name.Contains("StgPosition") ||
-                 ((ResourceNode) _targetModel).Name.Contains("stagePosition")))
+            if (_targetModel is MDL0Node && (((ResourceNode) _targetModel).Name.Contains("StgPosition") ||
+                                             ((ResourceNode) _targetModel).Name.Contains("stagePosition")))
             {
                 stgPos = _targetModel as MDL0Node;
             }

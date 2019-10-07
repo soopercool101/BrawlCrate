@@ -182,7 +182,7 @@ namespace BrawlLib.Wii.Models
 
         public void RegenerateBoneCache(bool remake = false)
         {
-            if (Model != null && Model._boneGroup != null)
+            if (Model?._boneGroup != null)
             {
                 if (remake)
                 {

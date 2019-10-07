@@ -1494,7 +1494,7 @@ namespace System.Windows.Forms
             if (da.GetDataPresent("AnimationFrame"))
             {
                 object o = da.GetData("AnimationFrame");
-                if (o != null && o is CHRAnimationFrame)
+                if (o is CHRAnimationFrame)
                 {
                     CHRAnimationFrame frame = (CHRAnimationFrame) o;
 
@@ -1553,7 +1553,7 @@ namespace System.Windows.Forms
 
         private void bakeVertexPositionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (TargetModel != null && TargetModel is MDL0Node && TargetModel.Objects != null)
+            if (TargetModel is MDL0Node && TargetModel.Objects != null)
             {
                 foreach (MDL0ObjectNode o in TargetModel.Objects)
                 {

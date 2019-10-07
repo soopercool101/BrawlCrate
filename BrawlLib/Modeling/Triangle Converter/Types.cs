@@ -67,7 +67,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is TriangleEdge))
+            if (!(obj is TriangleEdge))
             {
                 return false;
             }
@@ -111,7 +111,7 @@ namespace BrawlLib.Modeling.Triangle_Converter
 
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is TriEdge))
+            if (!(obj is TriEdge))
             {
                 return false;
             }

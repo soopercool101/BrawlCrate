@@ -45,7 +45,7 @@ namespace BrawlCrate.StageManager
         {
             using (FontDialog d = new FontDialog())
             {
-                if (Settings != null && Settings.Font != null)
+                if (Settings?.Font != null)
                 {
                     d.Font = Settings.Font;
                 }

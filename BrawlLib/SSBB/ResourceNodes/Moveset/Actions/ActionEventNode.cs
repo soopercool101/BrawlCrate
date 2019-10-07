@@ -241,7 +241,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else //Not a special value
                 {
-                    if (EventInfo != null && EventInfo.Enums != null && EventInfo.Enums.ContainsKey(i))
+                    if (EventInfo?.Enums != null && EventInfo.Enums.ContainsKey(i))
                     {
                         child = new MoveDefEventValueEnumNode(info != null && i < info.Params.Length
                             ? info.Params[i]
@@ -434,8 +434,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 arguments.Add(e = *header);
 
                 string param = null;
-                if (EventInfo != null && EventInfo.Params != null && EventInfo.Params.Length != 0 &&
-                    EventInfo.Params.Length > i)
+                if (EventInfo?.Params != null && EventInfo.Params.Length != 0 && EventInfo.Params.Length > i)
                 {
                     param = string.IsNullOrEmpty(EventInfo.Params[i]) ? null : EventInfo.Params[i];
                 }
@@ -460,7 +459,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else if ((ArgVarType) (int) e._type == ArgVarType.Value)
                 {
-                    if (EventInfo != null && EventInfo.Enums != null && EventInfo.Enums.ContainsKey(i))
+                    if (EventInfo?.Enums != null && EventInfo.Enums.ContainsKey(i))
                     {
                         new MoveDefEventValueEnumNode(param) {Enums = EventInfo.Enums[i].ToArray()}.Initialize(this,
                             header, 8);

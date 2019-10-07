@@ -521,7 +521,7 @@ namespace System.Windows.Forms
             if (node != null && node.ToParent())
             {
                 TreeNode bone = _treeNodes[SelectedBone.BoneIndex], parent = null;
-                if (bone != null && bone.Parent != null)
+                if (bone?.Parent != null)
                 {
                     parent = bone.Parent;
                 }
@@ -547,7 +547,7 @@ namespace System.Windows.Forms
             if (node != null && node.AddUp())
             {
                 TreeNode bone = _treeNodes[SelectedBone.BoneIndex], prev = null;
-                if (bone != null && bone.PrevNode != null)
+                if (bone?.PrevNode != null)
                 {
                     prev = bone.PrevNode;
                 }
@@ -573,7 +573,7 @@ namespace System.Windows.Forms
             if (node != null && node.AddDown())
             {
                 TreeNode bone = _treeNodes[SelectedBone.BoneIndex], next = null;
-                if (bone != null && bone.NextNode != null)
+                if (bone?.NextNode != null)
                 {
                     next = bone.NextNode;
                 }
@@ -599,7 +599,7 @@ namespace System.Windows.Forms
             if (node != null && node.MoveUp())
             {
                 TreeNode bone = _treeNodes[SelectedBone.BoneIndex], prev = null;
-                if (bone != null && bone.PrevVisibleNode != null)
+                if (bone?.PrevVisibleNode != null)
                 {
                     prev = bone.PrevVisibleNode;
                 }
@@ -626,7 +626,7 @@ namespace System.Windows.Forms
             if (node != null && node.MoveDown())
             {
                 TreeNode bone = _treeNodes[SelectedBone.BoneIndex], next = null;
-                if (bone != null && bone.NextVisibleNode != null)
+                if (bone?.NextVisibleNode != null)
                 {
                     next = bone.NextVisibleNode;
                 }
@@ -692,7 +692,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (e.Node != null && e.Node.Tag is IBoneNode)
+            if (e.Node?.Tag is IBoneNode)
             {
                 (e.Node.Tag as IBoneNode).IsRendering = e.Node.Checked;
                 _mainWindow.ModelPanel.Invalidate();

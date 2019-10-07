@@ -552,7 +552,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             //Attach to materials
             byte* pHeader = (byte*) Header;
-            if (Model != null && Model._matList != null)
+            if (Model?._matList != null)
             {
                 foreach (MDL0MaterialNode mat in Model._matList)
                 {

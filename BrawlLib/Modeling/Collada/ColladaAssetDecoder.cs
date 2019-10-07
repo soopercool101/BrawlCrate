@@ -89,7 +89,7 @@ namespace BrawlLib.Modeling
             for (int i = 0; i < boneCount; i++)
             {
                 NodeEntry entry = scene.FindNode(jointStringArray[i]);
-                if (entry != null && entry._node != null)
+                if (entry?._node != null)
                 {
                     boneList[i] = entry._node as IBoneNode;
                 }
@@ -229,7 +229,7 @@ namespace BrawlLib.Modeling
                         v = vertList[*pVInd];
                     }
 
-                    if (v != null && v.MatrixNode != null)
+                    if (v?.MatrixNode != null)
                     {
                         if (v.MatrixNode.Weights.Count > 1)
                         {
