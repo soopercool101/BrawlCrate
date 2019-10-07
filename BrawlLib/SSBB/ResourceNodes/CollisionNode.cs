@@ -267,7 +267,6 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MergeWith()
         {
-            CollisionNode external = null;
             OpenFileDialog o = new OpenFileDialog
             {
                 Filter = FileFilters.CollisionDef,
@@ -275,7 +274,8 @@ namespace BrawlLib.SSBB.ResourceNodes
             };
             if (o.ShowDialog() == DialogResult.OK)
             {
-                if ((external = (CollisionNode) NodeFactory.FromFile(null, o.FileName)) != null)
+                CollisionNode external = (CollisionNode) NodeFactory.FromFile(null, o.FileName, typeof(CollisionNode));
+                if (external != null)
                 {
                     MergeWith(external);
                 }
@@ -284,7 +284,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void MergeWith(CollisionNode external)
         {
-            foreach (CollisionObject co in external.Children)
+            foreach (ResourceNode co in external.Children)
             {
                 AddChild(co);
             }

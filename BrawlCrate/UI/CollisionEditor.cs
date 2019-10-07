@@ -14,10 +14,11 @@ namespace System.Windows.Forms
 {
     public unsafe class CollisionEditor : UserControl
     {
+        protected virtual bool ErrorChecking => true;
+
         #region Designer
 
         public ModelPanel _modelPanel;
-        protected bool _errorChecking = true;
         protected SplitContainer undoToolStrip;
         protected SplitContainer redoToolStrip;
         protected CheckBox chkAllModels;
@@ -1514,7 +1515,7 @@ namespace System.Windows.Forms
             modelTree.Nodes.Clear();
             _models.Clear();
 
-            if (_targetNode != null && _targetNode._parent != null)
+            if (_targetNode?._parent != null)
             {
                 foreach (MDL0Node n in _targetNode._parent.FindChildrenByTypeInGroup(null, ResourceType.MDL0,
                     _targetNode.GroupID))
@@ -2917,7 +2918,7 @@ namespace System.Windows.Forms
             foreach (CollisionPlane plane in _selectedPlanes)
             {
                 plane.Type = (CollisionPlaneType) cboType.SelectedItem;
-                if (!plane.IsRotating)
+                if (ErrorChecking && !plane.IsRotating)
                 {
                     if (!plane.IsFloor)
                     {
@@ -2950,7 +2951,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypeCharacters_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -2994,7 +2995,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypeItems_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3032,7 +3033,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypePokemonTrainer_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3070,7 +3071,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkTypeRotating_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3143,7 +3144,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkFallThrough_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3212,7 +3213,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkLeftLedge_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3346,7 +3347,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkRightLedge_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3484,7 +3485,7 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (!_errorChecking)
+            if (!ErrorChecking)
             {
                 chkNoWalljump_CheckedChanged_NoErrorHandling(sender, e);
                 return;
@@ -3731,14 +3732,14 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (numX.Text == "" && _errorChecking)
+            if (numX.Text == "" && ErrorChecking)
             {
                 return;
             }
 
             foreach (CollisionLink link in _selectedLinks)
             {
-                if (link._parent == null || link._parent.LinkedBone == null)
+                if (link._parent?.LinkedBone == null)
                 {
                     link._rawValue._x = numX.Value;
                 }
@@ -3760,14 +3761,14 @@ namespace System.Windows.Forms
                 return;
             }
 
-            if (numY.Text == "" && _errorChecking)
+            if (numY.Text == "" && ErrorChecking)
             {
                 return;
             }
 
             foreach (CollisionLink link in _selectedLinks)
             {
-                if (link._parent == null || link._parent.LinkedBone == null)
+                if (link._parent?.LinkedBone == null)
                 {
                     link._rawValue._y = numY.Value;
                 }
@@ -3825,9 +3826,9 @@ namespace System.Windows.Forms
 
         protected void modelTree_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Tag is MDL0Node)
+            if (e.Node.Tag is MDL0Node node)
             {
-                ((MDL0Node) e.Node.Tag).IsRendering = e.Node.Checked;
+                node.IsRendering = e.Node.Checked;
                 if (!_updating)
                 {
                     _updating = true;
@@ -3839,9 +3840,9 @@ namespace System.Windows.Forms
                     _updating = false;
                 }
             }
-            else if (e.Node.Tag is MDL0BoneNode)
+            else if (e.Node.Tag is MDL0BoneNode boneNode)
             {
-                ((MDL0BoneNode) e.Node.Tag)._render = e.Node.Checked;
+                boneNode._render = e.Node.Checked;
             }
 
             if (!_updating)
@@ -3852,42 +3853,35 @@ namespace System.Windows.Forms
 
         protected void modelTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (e.Node != null)
+            if (e.Node?.Tag is MDL0BoneNode)
             {
-                if (e.Node.Tag is MDL0BoneNode)
-                {
-                    MDL0BoneNode bone = e.Node.Tag as MDL0BoneNode;
-                    bone._boneColor = Color.FromArgb(255, 0, 0);
-                    bone._nodeColor = Color.FromArgb(255, 128, 0);
-                    _modelPanel.Invalidate();
-                }
+                MDL0BoneNode bone = e.Node.Tag as MDL0BoneNode;
+                bone._boneColor = Color.FromArgb(255, 0, 0);
+                bone._nodeColor = Color.FromArgb(255, 128, 0);
+                _modelPanel.Invalidate();
             }
         }
 
         protected void modelTree_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (node != null)
+            if (node?.Tag is MDL0BoneNode bone)
             {
-                if (node.Tag is MDL0BoneNode)
-                {
-                    MDL0BoneNode bone = node.Tag as MDL0BoneNode;
-                    bone._nodeColor = bone._boneColor = Color.Transparent;
-                    _modelPanel.Invalidate();
-                }
+                bone._nodeColor = bone._boneColor = Color.Transparent;
+                _modelPanel.Invalidate();
             }
         }
 
         protected void btnRelink_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (_selectedObject == null || node == null || !(node.Tag is MDL0BoneNode))
+            if (_selectedObject == null || !(node?.Tag is MDL0BoneNode bone))
             {
                 return;
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
+            _selectedObject.LinkedBone = bone;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             TargetNode.SignalPropertyChange();
             _modelPanel.Invalidate();
@@ -3896,13 +3890,13 @@ namespace System.Windows.Forms
         protected void btnRelinkNoMove_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (_selectedObject == null || node == null || !(node.Tag is MDL0BoneNode))
+            if (_selectedObject == null || !(node?.Tag is MDL0BoneNode bone))
             {
                 return;
             }
 
             txtBone.Text = _selectedObject._boneName = node.Text;
-            _selectedObject.LinkedBone = (MDL0BoneNode) node.Tag;
+            _selectedObject.LinkedBone = bone;
             txtModel.Text = _selectedObject._modelName = node.Parent.Text;
             if (_selectedObject._points != null)
             {
@@ -3980,7 +3974,7 @@ namespace System.Windows.Forms
 
         protected void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
         {
-            if (modelTree.SelectedNode == null || !(modelTree.SelectedNode.Tag is MDL0BoneNode))
+            if (!(modelTree.SelectedNode?.Tag is MDL0BoneNode))
             {
                 e.Cancel = true;
             }
@@ -4017,7 +4011,7 @@ namespace System.Windows.Forms
         protected void snapToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             TreeNode node = modelTree.SelectedNode;
-            if (node == null || !(node.Tag is MDL0BoneNode))
+            if (!(node?.Tag is MDL0BoneNode))
             {
                 return;
             }

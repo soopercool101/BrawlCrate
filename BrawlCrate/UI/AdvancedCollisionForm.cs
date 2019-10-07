@@ -1,0 +1,82 @@
+﻿using BrawlCrate;
+using BrawlLib.SSBB.ResourceNodes;
+
+namespace System.Windows.Forms
+{
+    public class AdvancedCollisionForm : Form
+    {
+        #region Designer
+
+        private AdvancedCollisionEditor collisionEditor1;
+
+        private void InitializeComponent()
+        {
+            collisionEditor1 = new AdvancedCollisionEditor();
+            SuspendLayout();
+            // 
+            // collisionEditor1
+            // 
+            collisionEditor1.BackColor = Drawing.Color.Lavender;
+            collisionEditor1.Dock = DockStyle.Fill;
+            collisionEditor1.Location = new Drawing.Point(0, 0);
+            collisionEditor1.Name = "collisionEditor1";
+            collisionEditor1.Size = new Drawing.Size(800, 600);
+            collisionEditor1.TabIndex = 0;
+            // 
+            // CollisionForm
+            // 
+            ClientSize = new Drawing.Size(800, 600);
+            Controls.Add(collisionEditor1);
+            Icon = BrawlLib.Properties.Resources.Icon;
+            MinimizeBox = false;
+            Name = "AdvancedCollisionForm";
+            Text = "Advanced Collision Editor";
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private CollisionNode _node;
+
+        public AdvancedCollisionForm()
+        {
+            InitializeComponent();
+            Text = $"{Program.AssemblyTitleShort} - Advanced Collision Editor";
+        }
+
+        public DialogResult ShowDialog(IWin32Window owner, CollisionNode node)
+        {
+            _node = node;
+            try
+            {
+                return ShowDialog(owner);
+            }
+            finally
+            {
+                _node = null;
+            }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            collisionEditor1.TargetNode = _node;
+            collisionEditor1._modelPanel.Capture();
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            collisionEditor1.TargetNode = null;
+            collisionEditor1._modelPanel.Release();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            MainForm.Instance.Visible = true;
+            MainForm.Instance.Refresh();
+        }
+    }
+}

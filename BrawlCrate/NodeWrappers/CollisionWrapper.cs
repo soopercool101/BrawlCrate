@@ -34,7 +34,11 @@ namespace BrawlCrate.NodeWrappers
         static CollisionWrapper()
         {
             _menu = new ContextMenuStrip();
-            _menu.Items.Add(new ToolStripMenuItem("&Preview", null, EditAction, Keys.Control | Keys.P));
+            _menu.Items.Add(new ToolStripMenuItem("&Preview / Edit", null, EditAction, Keys.Control | Keys.P));
+            _menu.Items.Add(new ToolStripMenuItem("&Advanced Editor", null, AdvancedEditAction,
+                Keys.Control | Keys.Shift | Keys.P));
+            _menu.Items.Add(new ToolStripSeparator());
+            _menu.Items.Add(new ToolStripMenuItem("&Merge", null, MergeAction, Keys.Control | Keys.M));
             _menu.Items.Add(new ToolStripSeparator());
             _menu.Items.Add(new ToolStripMenuItem("&Export", null, ExportAction, Keys.Control | Keys.E));
             _menu.Items.Add(DuplicateToolStripMenuItem);
@@ -50,9 +54,19 @@ namespace BrawlCrate.NodeWrappers
             _menu.Closing += MenuClosing;
         }
 
-        protected static void EditAction(object sender, EventArgs e)
+        private static void EditAction(object sender, EventArgs e)
         {
             GetInstance<CollisionWrapper>().Preview();
+        }
+
+        private static void AdvancedEditAction(object sender, EventArgs e)
+        {
+            GetInstance<CollisionWrapper>().AdvancedEdit();
+        }
+
+        private static void MergeAction(object sender, EventArgs e)
+        {
+            GetInstance<CollisionWrapper>().Merge();
         }
 
         private static void MenuClosing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -91,6 +105,29 @@ namespace BrawlCrate.NodeWrappers
             using (CollisionForm frm = new CollisionForm())
             {
                 frm.ShowDialog(null, _resource as CollisionNode);
+            }
+        }
+
+        private void Merge()
+        {
+            ((CollisionNode)_resource).MergeWith();
+            MainForm.Instance.resourceTree_SelectionChanged(this, null);
+        }
+
+        private void AdvancedEdit()
+        {
+            DialogResult CollisionResult = MessageBox.Show(
+                @"Please note: The advanced collision editor is for experimental purposes only.
+Unless you really know what you're doing, the regular collision editor is overall better for the same purposes.
+
+Are you sure you'd like to open in the Advanced Editor?",
+                "Open Advanced Editor", MessageBoxButtons.YesNo);
+            if (CollisionResult == DialogResult.Yes)
+            {
+                using (AdvancedCollisionForm frm = new AdvancedCollisionForm())
+                {
+                    frm.ShowDialog(null, _resource as CollisionNode);
+                }
             }
         }
     }
