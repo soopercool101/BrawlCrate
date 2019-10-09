@@ -91,7 +91,7 @@ namespace BrawlCrate.NodeWrappers
                 n.ShowDialog("Resize", "Enter the new size:", t.NumEntries) == DialogResult.OK)
             {
                 List<byte> newList = new List<byte>();
-                for (int i = 0; i < n.NewValue * 4; i++)
+                for (int i = 0; i < n.NewValue * t.NumEntries; i++)
                 {
                     newList.Add(i < t.EntryList.Count ? t.EntryList[i] : (byte) 0);
                 }
