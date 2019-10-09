@@ -887,6 +887,20 @@ namespace BrawlCrate.API
             ResourceParsers.Add(resourceParser);
         }
 
+        /// <summary>
+        ///     Adds a wrapper for a specific user-defined file type.
+        /// </summary>
+        /// <typeparam name="TypeWrapper">
+        ///     The wrapper to be used.
+        /// </typeparam>
+        /// <param name="resourceType">
+        ///     The resource file type to attach the wrapper to.
+        /// </param>
+        public static void AddWrapper<TypeWrapper>(ResourceType resourceType) where TypeWrapper : BaseWrapper
+        {
+            NodeWrapperAttribute.AddWrapper(resourceType, typeof(TypeWrapper));
+        }
+
         #endregion
 
         #region Debugging

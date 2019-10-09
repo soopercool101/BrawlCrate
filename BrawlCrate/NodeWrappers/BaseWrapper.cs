@@ -40,6 +40,11 @@ namespace BrawlCrate.NodeWrappers
                 return _wrappers;
             }
         }
+
+        public static void AddWrapper(ResourceType r, Type t)
+        {
+            _wrappers[r] = t;
+        }
     }
 
     [Serializable]

@@ -66,6 +66,7 @@ they be held accountable for the manner in which it is used.
      . SaveFileAs
      . CloseFile
      . ForceCloseFile
+	 . AddWrapper
      . WriteToConsole (only useful when debugging)
    - Change function/variable names to properly reflect usage
      . "AddLoader" -> "AddResourceParser"
