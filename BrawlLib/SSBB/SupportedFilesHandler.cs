@@ -99,7 +99,6 @@ namespace BrawlLib.SSBB
             //MDL0 subfiles
             new SupportedFileInfo(false, "MDL0 Material", "mdl0mat"),
             new SupportedFileInfo(false, "MDL0 Shader", "mdl0shade"),
-            new SupportedFileInfo(false, "MDL0 Bone", "mdl0bone"),
 
             //Gecko Codes
             new SupportedFileInfo(true, "Gecko Code Table", "gct"),

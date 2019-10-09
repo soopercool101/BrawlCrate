@@ -1,4 +1,5 @@
-﻿using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib;
+using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -132,6 +133,8 @@ namespace BrawlCrate.NodeWrappers
         }
 
         #endregion
+
+        public override string ExportFilter => FileFilters.MDL0Shader;
 
         public MDL0ShaderWrapper()
         {

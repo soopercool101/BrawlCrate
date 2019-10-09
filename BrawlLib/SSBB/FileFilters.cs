@@ -162,9 +162,6 @@ namespace BrawlLib
         public static string MDL0Shader =
             SupportedFilesHandler.GetCompleteFilter("mdl0shade");
 
-        public static string MDL0Bone =
-            SupportedFilesHandler.GetCompleteFilter("mdl0bone");
-
         public static string Raw =
             SupportedFilesHandler.GetCompleteFilter("*");
 
