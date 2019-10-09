@@ -133,73 +133,89 @@ namespace BrawlCrate.NodeWrappers
 
         protected static void NewSTDTAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("STDT Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewSTDT(entryCount.NewValue);
+                if (entryCount.ShowDialog("STDT Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewSTDT(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBCLAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBCL Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBCL(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBCL Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBCL(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBGCAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBGC Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBGC(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBGC Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBGC(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBGDAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBGD Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBGD(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBGD Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBGD(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBGMAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBGM Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBGM(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBGM Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBGM(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBLVAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBLV Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBLV(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBLV Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBLV(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBRMAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBRM Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBRM(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBRM Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBRM(entryCount.NewValue);
+                }
             }
         }
 
         protected static void NewTBSTAction(object sender, EventArgs e)
         {
-            NumericInputForm entryCount = new NumericInputForm();
-            if (entryCount.ShowDialog("TBST Generation", "Number of Entries:") == DialogResult.OK)
+            using (NumericInputForm entryCount = new NumericInputForm())
             {
-                GetInstance<ARCWrapper>().NewTBST(entryCount.NewValue);
+                if (entryCount.ShowDialog("TBST Generation", "Number of Entries:") == DialogResult.OK)
+                {
+                    GetInstance<ARCWrapper>().NewTBST(entryCount.NewValue);
+                }
             }
         }
 
@@ -513,7 +529,8 @@ namespace BrawlCrate.NodeWrappers
 
         public ARCEntryNode NewRedirect()
         {
-            ARCEntryNode node = new ARCEntryNode {FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect};
+            ARCEntryNode node = new ARCEntryNode
+                {FileType = ARCFileType.MiscData, _resourceType = ResourceType.Redirect};
             _resource.AddChild(node);
             node.RedirectIndex = 0;
 
