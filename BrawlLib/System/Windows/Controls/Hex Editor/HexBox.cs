@@ -3307,7 +3307,7 @@ namespace Be.Windows.Forms
             Brush brush = new SolidBrush(InfoForeColor);
             PointF headerPointF = new PointF(_recLineInfo.X, _recColumnInfo.Y);
 
-            g.DrawString(string.Format("Offset({0})", _offsetDisplay == OffsetDisplay.Hex ? "h" : "d"), Font, brush,
+            g.DrawString($"Offset({(_offsetDisplay == OffsetDisplay.Hex ? "h" : "d")})", Font, brush,
                 headerPointF, _stringFormat);
 
             for (int col = 0; col < _iHexMaxHBytes; col++)

@@ -367,7 +367,7 @@ namespace BrawlLib.Modeling
 
         public override string ToString()
         {
-            return string.Format("Nodes: {0} - Primitives: {1}", _nodes.Count, _headers.Count);
+            return $"Nodes: {_nodes.Count} - Primitives: {_headers.Count}";
         }
     }
 

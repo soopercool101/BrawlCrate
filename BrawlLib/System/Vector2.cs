@@ -227,7 +227,7 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1})", _x, _y);
+            return $"({_x},{_y})";
         }
 
         public bool Contained(Vector2 start, Vector2 end, float expansion)

@@ -416,7 +416,7 @@ namespace System.Windows.Forms
                 }
 
                 double n = Math.Floor(Math.Log10(_colorSource.ColorCount(_colorId)) + 1);
-                g.DrawString(string.Format("[{0}]  -  {1}", index.ToString().PadLeft((int) n, ' '), p.ToPaddedString()),
+                g.DrawString($"[{index.ToString().PadLeft((int) n, ' ')}]  -  {p.ToPaddedString()}",
                     _renderFont, Brushes.Black, 4.0f, e.Bounds.Y - 2);
 
                 r.X += textWidth;

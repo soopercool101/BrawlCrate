@@ -803,8 +803,8 @@ namespace System.Windows.Forms
             _sampleTime = new DateTime((long) _sourceStream.Samples * 10000000 / _sourceStream.Frequency);
 
             txtPath.Text = _initialStream != null ? "Internal audio" : path;
-            lblFrequency.Text = string.Format("{0} Hz", _sourceStream.Frequency);
-            lblSamples.Text = string.Format("{0}", _sourceStream.Samples);
+            lblFrequency.Text = $"{_sourceStream.Frequency} Hz";
+            lblSamples.Text = $"{_sourceStream.Samples}";
 
             customTrackBar1.Value = 0;
             customTrackBar1.TickStyle = TickStyle.None;
@@ -854,7 +854,7 @@ namespace System.Windows.Forms
             if (_sourceStream != null)
             {
                 DateTime t = new DateTime((long) customTrackBar1.Value * 10000000 / _sourceStream.Frequency);
-                lblPlayTime.Text = string.Format("{0:mm:ss.ff} / {1:mm:ss.ff}", t, _sampleTime);
+                lblPlayTime.Text = $"{t:mm:ss.ff} / {_sampleTime:mm:ss.ff}";
             }
             else
             {
@@ -1004,7 +1004,7 @@ namespace System.Windows.Forms
             set
             {
                 _type = value;
-                Text = string.Format("{0} Import", _type == 0 ? "Brstm" : "Wave");
+                Text = $"{(_type == 0 ? "Brstm" : "Wave")} Import";
             }
         }
 
@@ -1024,7 +1024,7 @@ namespace System.Windows.Forms
             if (_initialStream == null)
             {
                 using (ProgressWindow progress = new ProgressWindow(this,
-                    string.Format("{0} Converter", _type == 0 ? "Brstm" : "Wave"), "Encoding, please wait...", false))
+                    $"{(_type == 0 ? "Brstm" : "Wave")} Converter", "Encoding, please wait...", false))
                 {
                     switch (_type)
                     {

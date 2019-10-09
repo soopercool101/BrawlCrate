@@ -32,7 +32,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = string.Format("[{0}]Audio", Index);
+                _name = $"[{Index}]Audio";
             }
 
             Info = *(WaveInfo*) WorkingUncompressed.Address;

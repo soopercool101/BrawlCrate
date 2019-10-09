@@ -331,14 +331,14 @@ namespace BrawlLib.Wii.Graphics
 
         public string asColor()
         {
-            return string.Format("IsSpecial: {0} | Scale: {1} | Color Format: {2}", IsSpecial ? "True" : "False",
-                Scale.ToString(), ColorFormat);
+            return
+                $"IsSpecial: {(IsSpecial ? "True" : "False")} | Scale: {Scale.ToString()} | Color Format: {ColorFormat}";
         }
 
         public override string ToString()
         {
-            return string.Format("IsSpecial: {0} | Scale: {1} | Data Format: {2}", IsSpecial ? "True" : "False",
-                Scale.ToString(), DataFormat);
+            return
+                $"IsSpecial: {(IsSpecial ? "True" : "False")} | Scale: {Scale.ToString()} | Data Format: {DataFormat}";
         }
     }
 

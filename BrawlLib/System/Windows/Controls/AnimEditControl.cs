@@ -79,7 +79,7 @@ namespace System.Windows.Forms
                     _currentPage = 0;
                     numFrame.Value = 1;
                     numFrame.Maximum = _numFrames;
-                    lblFrameCount.Text = string.Format("/ {0}", _numFrames);
+                    lblFrameCount.Text = $"/ {_numFrames}";
                 }
                 else
                 {

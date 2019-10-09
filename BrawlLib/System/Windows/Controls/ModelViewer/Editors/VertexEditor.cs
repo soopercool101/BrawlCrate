@@ -455,7 +455,7 @@ namespace System.Windows.Forms
 
                 if (nonNull)
                 {
-                    label7.Text = string.Format("{0} vertices selected", _targetVertices.Count);
+                    label7.Text = $"{_targetVertices.Count} vertices selected";
                 }
                 else
                 {

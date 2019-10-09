@@ -301,7 +301,7 @@ namespace BrawlLib.Wii.Compression
         public static int CompactYAZ0(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAZ0",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 0);
             }
@@ -310,7 +310,7 @@ namespace BrawlLib.Wii.Compression
         public static int CompactYAY0(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength - YAY0",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 1);
             }
@@ -319,7 +319,7 @@ namespace BrawlLib.Wii.Compression
         public static int Compact(VoidPtr srcAddr, int srcLen, Stream outStream, ResourceNode r)
         {
             using (ProgressWindow prog = new ProgressWindow(r.RootNode._mainForm, "RunLength",
-                string.Format("Compressing {0}, please wait...", r.Name), false))
+                $"Compressing {r.Name}, please wait...", false))
             {
                 return new RunLength().Compress(srcAddr, srcLen, outStream, prog, 2);
             }

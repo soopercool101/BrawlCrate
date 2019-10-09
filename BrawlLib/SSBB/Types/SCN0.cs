@@ -601,7 +601,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("Tangent={0}, Index={1}, Value={2}", _tangent, _index, _value);
+            return $"Tangent={_tangent}, Index={_index}, Value={_value}";
         }
     }
 
@@ -650,7 +650,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("Tangent={0}, Index={1}, Value={2}", _tangent, _index, _value);
+            return $"Tangent={_tangent}, Index={_index}, Value={_value}";
         }
     }
 }

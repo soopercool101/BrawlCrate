@@ -370,10 +370,9 @@ namespace BrawlLib.Modeling
                         string w2 = obj._weighted ? "\nOne or more vertices may not be weighted correctly." : "";
                         string n = node._name ?? node._id;
 
-                        Error = string.Format(
-                            "There was a problem decoding {0}weighted primitives for the object {1}.{2}", w, n, w2);
+                        Error = $"There was a problem decoding {w}weighted primitives for the object {n}.{w2}";
 
-                        Say(string.Format("Decoding {0}weighted primitives for {1}...", w, n));
+                        Say($"Decoding {w}weighted primitives for {n}...");
 
                         obj.Initialize(model, shell);
                     }
@@ -738,7 +737,7 @@ namespace BrawlLib.Modeling
                 }
                 else if (model._boneList.Count == 0)
                 {
-                    Error = string.Format("There was a problem rigging {0} to a single bone.", poly._name);
+                    Error = $"There was a problem rigging {poly._name} to a single bone.";
 
                     Box box = poly.GetBox();
                     MDL0BoneNode bone = new MDL0BoneNode
@@ -760,8 +759,7 @@ namespace BrawlLib.Modeling
                 }
                 else
                 {
-                    Error = string.Format("There was a problem checking if {0} is rigged to a single bone.",
-                        poly._name);
+                    Error = $"There was a problem checking if {poly._name} is rigged to a single bone.";
 
                     foreach (DrawCall c in poly._drawCalls)
                     {

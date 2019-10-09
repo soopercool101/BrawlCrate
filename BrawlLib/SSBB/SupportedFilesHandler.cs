@@ -155,7 +155,7 @@ namespace BrawlLib.SSBB
             {
                 if (!string.IsNullOrEmpty(s = extensions[i]))
                 {
-                    infoArray[i] = new SupportedFileInfo(false, string.Format("{0} File", s.ToUpper()), s);
+                    infoArray[i] = new SupportedFileInfo(false, $"{s.ToUpper()} File", s);
                 }
             }
 

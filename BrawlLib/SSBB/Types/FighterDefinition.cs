@@ -559,8 +559,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("TransInTime:{0}; Flags:{1}; StringOff:{2}", _InTranslationTime, _Flags.ToString(),
-                (int) _stringOffset);
+            return $"TransInTime:{_InTranslationTime}; Flags:{_Flags.ToString()}; StringOff:{(int) _stringOffset}";
         }
 
         public VoidPtr Address

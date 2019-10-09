@@ -533,8 +533,7 @@ namespace System.Windows.Forms
                 Vector3 point = Camera.GetPoint().Round(3);
                 Vector3 rot = Camera._rotation.Round(3);
                 _text[
-                    string.Format("Position\nX: {0}\nY: {1}\nZ: {2}\n\nRotation\nX: {3}\nY: {4}\nZ: {5}", point._x,
-                        point._y, point._z, rot._x, rot._y, rot._z)] = new Vector3(5.0f, 5.0f, 0.5f);
+                    $"Position\nX: {point._x}\nY: {point._y}\nZ: {point._z}\n\nRotation\nX: {rot._x}\nY: {rot._y}\nZ: {rot._z}"] = new Vector3(5.0f, 5.0f, 0.5f);
             }
 
             //Render selection overlay and/or text overlays

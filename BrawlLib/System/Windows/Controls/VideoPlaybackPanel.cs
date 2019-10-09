@@ -259,8 +259,7 @@ namespace System.Windows.Forms
 
             _frame = trackBar1.Value - 1;
             DateTime t = new DateTime((long) ((trackBar1.Value - 1) * 10000000.0f / _targetSource.FrameRate));
-            lblProgress.Text = string.Format("{0:mm:ss.ff} / {1:mm:ss.ff} - Frame {2} of {3}", t, _frameTime,
-                _frame + 1, TargetSource.NumFrames);
+            lblProgress.Text = $"{t:mm:ss.ff} / {_frameTime:mm:ss.ff} - Frame {_frame + 1} of {TargetSource.NumFrames}";
 
             previewPanel1.CurrentIndex = _targetSource.GetImageIndexAtFrame(_frame);
         }

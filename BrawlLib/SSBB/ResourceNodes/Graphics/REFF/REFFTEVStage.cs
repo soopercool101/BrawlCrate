@@ -7,7 +7,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         public REFFTEVStage(int index)
         {
-            _name = string.Format("Stage{0}", index);
+            _name = $"Stage{index}";
         }
 
         public override ResourceType ResourceFileType => ResourceType.TEVStage;
@@ -328,7 +328,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void Default()
         {
-            Name = string.Format("Stage{0}", Index);
+            Name = $"Stage{Index}";
 
             AlphaSelectionA = AlphaArg.Zero;
             AlphaSelectionB = AlphaArg.Zero;

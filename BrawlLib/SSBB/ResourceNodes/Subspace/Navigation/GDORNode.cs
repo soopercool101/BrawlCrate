@@ -386,7 +386,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _trigger2 = Header->Trigger2;
             if (_name == null)
             {
-                _name = string.Format("Door[{0}]", _doorIndex);
+                _name = $"Door[{_doorIndex}]";
             }
 
             return false;

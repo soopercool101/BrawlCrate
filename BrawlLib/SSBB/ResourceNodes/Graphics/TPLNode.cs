@@ -29,7 +29,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => _name ?? string.Format("TPL{0}", Index);
+            get => _name ?? $"TPL{Index}";
             set => base.Name = value;
         }
 
@@ -170,7 +170,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => string.Format("Texture{0}", Index);
+            get => $"Texture{Index}";
             set => base.Name = value;
         }
 

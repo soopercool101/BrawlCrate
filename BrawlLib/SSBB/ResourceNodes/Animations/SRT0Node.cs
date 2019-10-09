@@ -1083,7 +1083,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("Index={0}, Value={1}, Tangent={2}", _index, _value, _tangent);
+            return $"Index={_index}, Value={_value}, Tangent={_tangent}";
         }
     }
 }

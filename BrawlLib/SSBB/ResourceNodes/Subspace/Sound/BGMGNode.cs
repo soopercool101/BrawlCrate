@@ -141,7 +141,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_name == null)
             {
-                _name = string.Format("Song[{0}]", Index);
+                _name = $"Song[{Index}]";
             }
 
             return false;

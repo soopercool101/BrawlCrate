@@ -853,8 +853,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("Index={0}, Percentage={1}, Tangent={2}", _index,
-                string.Format("{0}%", _percentage * 100.0f), _tangent);
+            return $"Index={_index}, Percentage={$"{_percentage * 100.0f}%"}, Tangent={_tangent}";
         }
     }
 }

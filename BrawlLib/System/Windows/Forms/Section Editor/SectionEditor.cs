@@ -40,7 +40,7 @@ namespace System.Windows.Forms
 
             _openedSections.Add(this);
 
-            Text = string.Format("Module Section Editor - {0}", _section.Name);
+            Text = $"Module Section Editor - {_section.Name}";
 
             hexBox1.SectionEditor = this;
             chkCodeSection.Checked = _section._isCodeSection;
@@ -358,27 +358,23 @@ namespace System.Windows.Forms
             string result;
             if (size < kb)
             {
-                result = string.Format("{0} {1}", size, BYTES);
+                result = $"{size} {BYTES}";
             }
             else if (size < mb)
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, kb), KB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, kb)} {KB} ({ConvertBytesDisplay(size)} Bytes)";
             }
             else if (size < gb)
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, mb), MB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, mb)} {MB} ({ConvertBytesDisplay(size)} Bytes)";
             }
             else if (size < tb)
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, gb), GB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, gb)} {GB} ({ConvertBytesDisplay(size)} Bytes)";
             }
             else
             {
-                result = string.Format("{0} {1} ({2} Bytes)",
-                    ConvertToOneDigit(size, tb), TB, ConvertBytesDisplay(size));
+                result = $"{ConvertToOneDigit(size, tb)} {TB} ({ConvertBytesDisplay(size)} Bytes)";
             }
 
             return result;
@@ -420,8 +416,7 @@ namespace System.Windows.Forms
 
         private void PosChanged()
         {
-            toolStripStatusLabel.Text = string.Format("Ln {0}    Col {1}",
-                hexBox1.CurrentLine, hexBox1.CurrentPositionInLine);
+            toolStripStatusLabel.Text = $"Ln {hexBox1.CurrentLine}    Col {hexBox1.CurrentPositionInLine}";
 
             long offset = hexBox1.SelectionStart;
             long t = offset.RoundDown(4);
@@ -602,7 +597,7 @@ namespace System.Windows.Forms
                 grpValue.Enabled = false;
             }
 
-            OffsetToolStripStatusLabel.Text = string.Format("Offset: 0x{0}", offset.ToString("X"));
+            OffsetToolStripStatusLabel.Text = $"Offset: 0x{offset.ToString("X")}";
 
             if (_section.HasCode && ppcDisassembler1.Visible && !ppcDisassembler1._updating)
             {

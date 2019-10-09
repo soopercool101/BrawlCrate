@@ -225,15 +225,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!string.IsNullOrEmpty(value))
                 {
                     MDL0VertexNode newNode =
-                        Model.FindChild(string.Format("Vertices/{0}", value), false) as MDL0VertexNode;
+                        Model.FindChild($"Vertices/{value}", false) as MDL0VertexNode;
                     if (newNode != null)
                     {
                         if (_vertexNode != null)
                         {
                             if (newNode.NumVertices < _vertexNode.NumVertices)
                             {
-                                MessageBox.Show(string.Format("Not enough vertices.\nNeeds: {0}\nSelection: {1}",
-                                    _vertexNode.NumVertices, newNode.NumVertices));
+                                MessageBox.Show(
+                                    $"Not enough vertices.\nNeeds: {_vertexNode.NumVertices}\nSelection: {newNode.NumVertices}");
                                 return;
                             }
 
@@ -288,15 +288,15 @@ namespace BrawlLib.SSBB.ResourceNodes
                 else
                 {
                     MDL0NormalNode newNode =
-                        Model.FindChild(string.Format("Normals/{0}", value), false) as MDL0NormalNode;
+                        Model.FindChild($"Normals/{value}", false) as MDL0NormalNode;
                     if (newNode != null)
                     {
                         if (_normalNode != null)
                         {
                             if (newNode.NumEntries < _normalNode.NumEntries)
                             {
-                                MessageBox.Show(string.Format("Not enough normals.\nNeeds: {0}\nSelection: {1}",
-                                    _normalNode.NumEntries, newNode.NumEntries));
+                                MessageBox.Show(
+                                    $"Not enough normals.\nNeeds: {_normalNode.NumEntries}\nSelection: {newNode.NumEntries}");
                                 return;
                             }
 
@@ -351,7 +351,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                MDL0ColorNode newNode = Model.FindChild(string.Format("Colors/{0}", value), false) as MDL0ColorNode;
+                MDL0ColorNode newNode = Model.FindChild($"Colors/{value}", false) as MDL0ColorNode;
                 if (newNode != null)
                 {
                     if (oldNode != null)
@@ -434,15 +434,15 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
             else
             {
-                MDL0UVNode newNode = Model.FindChild(string.Format("UVs/{0}", value), false) as MDL0UVNode;
+                MDL0UVNode newNode = Model.FindChild($"UVs/{value}", false) as MDL0UVNode;
                 if (newNode != null)
                 {
                     if (oldNode != null)
                     {
                         if (newNode.NumEntries < oldNode.NumEntries)
                         {
-                            MessageBox.Show(string.Format("Not enough UVs.\nNeeds: {0}\nSelection: {1}",
-                                oldNode.NumEntries, newNode.NumEntries));
+                            MessageBox.Show(
+                                $"Not enough UVs.\nNeeds: {oldNode.NumEntries}\nSelection: {newNode.NumEntries}");
                             return;
                         }
 
@@ -545,7 +545,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!string.IsNullOrEmpty(value))
                 {
                     MDL0FurPosNode node =
-                        Model.FindChild(string.Format("FurLayerCoords/{0}", value), false) as MDL0FurPosNode;
+                        Model.FindChild($"FurLayerCoords/{value}", false) as MDL0FurPosNode;
                     if (node != null && _furPosNode != null && node.NumVertices >= _furPosNode.NumVertices)
                     {
                         if (_furPosNode != null && _furPosNode._objects.Contains(this))
@@ -572,7 +572,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (!string.IsNullOrEmpty(value))
                 {
                     MDL0FurVecNode node =
-                        Model.FindChild(string.Format("FurVectors/{0}", value), false) as MDL0FurVecNode;
+                        Model.FindChild($"FurVectors/{value}", false) as MDL0FurVecNode;
                     if (node != null && _furVecNode != null && node.NumEntries >= _furVecNode.NumEntries)
                     {
                         if (_furVecNode != null && _furVecNode._objects.Contains(this))
@@ -2000,11 +2000,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string ToString()
         {
-            return string.Format("{0} {1}: {2} {3}",
-                _isXLU ? "XLU" : "OPA",
-                _drawOrder.ToString(),
-                _material == null ? "(null)" : _material.Name,
-                _visBoneNode == null ? "(null)" : _visBoneNode.Name);
+            return
+                $"{(_isXLU ? "XLU" : "OPA")} {_drawOrder.ToString()}: {(_material == null ? "(null)" : _material.Name)} {(_visBoneNode == null ? "(null)" : _visBoneNode.Name)}";
         }
 
         //Data stored in actual MDL0 opa/xlu draw call

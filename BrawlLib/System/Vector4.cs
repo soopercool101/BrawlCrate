@@ -135,7 +135,7 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})", _x, _y, _z, _w);
+            return $"({_x},{_y},{_z},{_w})";
         }
 
         public override bool Equals(object obj)

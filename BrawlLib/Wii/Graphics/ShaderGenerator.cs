@@ -257,12 +257,12 @@ namespace BrawlLib.Wii.Graphics
                 src = string.Format(src, mr.Type == TexTexgenType.Color1 ? "1" : "0");
             }
 
-            src = string.Format("gl_TextureMatrix[{0}] * {1}", i, src);
+            src = $"gl_TextureMatrix[{i}] * {src}";
 
             //TODO: Normalizing doesn't work right when a mesh is scaled by a bone
             if (mr.Normalize)
             {
-                src = string.Format("normalize({0})", src);
+                src = $"normalize({src})";
             }
 
             wl("vec4 uv{0} = {1};", i, src);
@@ -534,8 +534,8 @@ namespace BrawlLib.Wii.Graphics
             LightChannelControl color = channel._color;
             LightChannelControl alpha = channel._alpha;
 
-            string amb = string.Format("{0}[{1}]", _uaMatColorName[0], index);
-            string clr = string.Format("{0}[{1}]", _uaMatColorName[1], index);
+            string amb = $"{_uaMatColorName[0]}[{index}]";
+            string clr = $"{_uaMatColorName[1]}[{index}]";
 
             string matColorName = "matColor" + index;
             string lightFuncName = "lightFunc" + index;
@@ -604,8 +604,8 @@ namespace BrawlLib.Wii.Graphics
                         #region Diffuse Attenuation
 
                         //Initialize attenuation value with diffuse attenuation
-                        string cAttn = string.Format("float {0}{1} = ", attnName, colorPassSuffix) + "{0};";
-                        string aAttn = string.Format("float {0}{1} = ", attnName, alphaPassSuffix) + "{0};";
+                        string cAttn = $"float {attnName}{colorPassSuffix} = " + "{0};";
+                        string aAttn = $"float {attnName}{alphaPassSuffix} = " + "{0};";
                         switch (color.DiffuseFunction)
                         {
                             case GXDiffuseFn.Disabled:
@@ -909,7 +909,7 @@ namespace BrawlLib.Wii.Graphics
 
         public static string WriteStage(MDL0TEVStageNode stage)
         {
-            string identifier = string.Format("{0} {1}", stage.Parent.Name, stage.Name);
+            string identifier = $"{stage.Parent.Name} {stage.Name}";
 
             Comment(identifier);
             OpenBracket();
@@ -1341,7 +1341,7 @@ namespace BrawlLib.Wii.Graphics
             for (int i = 0; i < p.Length; i++)
             {
                 GLSLLightFrame frame = p[i];
-                string x = string.Format("{0}[{1}].", name, i);
+                string x = $"{name}[{i}].";
                 Uniform(pHandle, x + LightEnabledName, frame.Enabled);
                 Uniform(pHandle, x + LightSpecEnabledName, frame.SpecEnabled);
                 Uniform(pHandle, x + LightPosName, frame.Position);
@@ -1439,12 +1439,12 @@ namespace BrawlLib.Wii.Graphics
 
         private static string TruncCSel(int i)
         {
-            return DoTrunc && i < 8 ? string.Format("{0}({1})", Trunc3Name, _cSel[i]) : _cSel[i];
+            return DoTrunc && i < 8 ? $"{Trunc3Name}({_cSel[i]})" : _cSel[i];
         }
 
         private static string TruncASel(int i)
         {
-            return DoTrunc && i < 4 ? string.Format("{0}({1})", Trunc1Name, _aSel[i]) : _aSel[i];
+            return DoTrunc && i < 4 ? $"{Trunc1Name}({_aSel[i]})" : _aSel[i];
         }
 
         private static readonly string[] _cSel =
@@ -1547,7 +1547,7 @@ namespace BrawlLib.Wii.Graphics
         {
 #if DEBUG
             System.Windows.Forms.MessageBox.Show(_material.RootNode._mainForm, message,
-                string.Format("Handled error compiling {0} shader", _vertex ? "vertex" : "fragment"),
+                $"Handled error compiling {(_vertex ? "vertex" : "fragment")} shader",
                 System.Windows.Forms.MessageBoxButtons.OK);
 #endif
             return "Error";
@@ -1573,8 +1573,7 @@ namespace BrawlLib.Wii.Graphics
                 int lineNumber = 1;
                 foreach (string line in s)
                 {
-                    Console.WriteLine(string.Format("{0}: {1}",
-                        (lineNumber++).ToString().PadLeft(s.Length.ToString().Length, '0'), line));
+                    Console.WriteLine($"{(lineNumber++).ToString().PadLeft(s.Length.ToString().Length, '0')}: {line}");
                 }
 
                 Console.WriteLine("\n\n");

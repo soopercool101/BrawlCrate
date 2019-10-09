@@ -122,7 +122,7 @@ namespace BrawlLib.Modeling
                         {
                             writer.WriteStartElement("ref");
                             {
-                                writer.WriteString(string.Format("{0}.png", tex.Name));
+                                writer.WriteString($"{tex.Name}.png");
                             }
                             writer.WriteEndElement(); //ref
                         }
@@ -156,7 +156,7 @@ namespace BrawlLib.Modeling
                         writer.WriteAttributeString("id", mat._name);
 
                         writer.WriteStartElement("instance_effect");
-                        writer.WriteAttributeString("url", string.Format("#{0}-fx", mat._name));
+                        writer.WriteAttributeString("url", $"#{mat._name}-fx");
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -424,10 +424,8 @@ namespace BrawlLib.Modeling
                 }
 
                 Vector3 p = v.WeightedPosition;
-                writer.WriteString(string.Format("{0} {1} {2}",
-                    p._x.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    p._y.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    p._z.ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(
+                    $"{p._x.ToString(CultureInfo.InvariantCulture.NumberFormat)} {p._y.ToString(CultureInfo.InvariantCulture.NumberFormat)} {p._z.ToString(CultureInfo.InvariantCulture.NumberFormat)}");
             }
 
             writer.WriteEndElement(); //float_array
@@ -519,10 +517,8 @@ namespace BrawlLib.Modeling
 
                 v = _normals[i];
 
-                writer.WriteString(string.Format("{0} {1} {2}",
-                    v._x.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    v._y.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    v._z.ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(
+                    $"{v._x.ToString(CultureInfo.InvariantCulture.NumberFormat)} {v._y.ToString(CultureInfo.InvariantCulture.NumberFormat)} {v._z.ToString(CultureInfo.InvariantCulture.NumberFormat)}");
             }
 
             writer.WriteEndElement(); //float_array
@@ -593,11 +589,8 @@ namespace BrawlLib.Modeling
 
                 RGBAPixel r = _colors[set][i];
 
-                writer.WriteString(string.Format("{0} {1} {2} {3}",
-                    (r.R * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    (r.G * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    (r.B * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    (r.A * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(
+                    $"{(r.R * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat)} {(r.G * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat)} {(r.B * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat)} {(r.A * cFactor).ToString(CultureInfo.InvariantCulture.NumberFormat)}");
             }
 
             writer.WriteEndElement(); //int_array
@@ -672,9 +665,8 @@ namespace BrawlLib.Modeling
                 //Reverse T component to a top-down form
                 //writer.WriteString(String.Format("{0} {1}", pData->_x, 1.0 - pData->_y));
                 //pData++;
-                writer.WriteString(string.Format("{0} {1}",
-                    _uvs[set][i]._x.ToString(CultureInfo.InvariantCulture.NumberFormat),
-                    (1.0f - _uvs[set][i]._y).ToString(CultureInfo.InvariantCulture.NumberFormat)));
+                writer.WriteString(
+                    $"{_uvs[set][i]._x.ToString(CultureInfo.InvariantCulture.NumberFormat)} {(1.0f - _uvs[set][i]._y).ToString(CultureInfo.InvariantCulture.NumberFormat)}");
             }
 
             writer.WriteEndElement(); //int_array
@@ -925,7 +917,7 @@ namespace BrawlLib.Modeling
                 //Technique
                 writer.WriteStartElement("technique_common");
                 writer.WriteStartElement("accessor");
-                writer.WriteAttributeString("source", string.Format("#{0}_JointArr", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_JointArr");
                 writer.WriteAttributeString("count", bones.Length.ToString());
                 writer.WriteStartElement("param");
                 writer.WriteAttributeString("name", "JOINT");
@@ -964,7 +956,7 @@ namespace BrawlLib.Modeling
                 //Technique
                 writer.WriteStartElement("technique_common");
                 writer.WriteStartElement("accessor");
-                writer.WriteAttributeString("source", string.Format("#{0}_MatArr", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_MatArr");
                 writer.WriteAttributeString("count", bones.Length.ToString());
                 writer.WriteAttributeString("stride", "16");
                 writer.WriteStartElement("param");
@@ -1003,7 +995,7 @@ namespace BrawlLib.Modeling
                 //Technique
                 writer.WriteStartElement("technique_common");
                 writer.WriteStartElement("accessor");
-                writer.WriteAttributeString("source", string.Format("#{0}_WeightArr", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_WeightArr");
                 writer.WriteAttributeString("count", weightSet.Length.ToString());
                 writer.WriteStartElement("param");
                 writer.WriteAttributeString("type", "float");
@@ -1017,11 +1009,11 @@ namespace BrawlLib.Modeling
                 writer.WriteStartElement("joints");
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "JOINT");
-                writer.WriteAttributeString("source", string.Format("#{0}_Joints", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_Joints");
                 writer.WriteEndElement(); //input
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "INV_BIND_MATRIX");
-                writer.WriteAttributeString("source", string.Format("#{0}_Matrices", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_Matrices");
                 writer.WriteEndElement(); //input
                 writer.WriteEndElement(); //joints
 
@@ -1031,12 +1023,12 @@ namespace BrawlLib.Modeling
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "JOINT");
                 writer.WriteAttributeString("offset", "0");
-                writer.WriteAttributeString("source", string.Format("#{0}_Joints", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_Joints");
                 writer.WriteEndElement(); //input
                 writer.WriteStartElement("input");
                 writer.WriteAttributeString("semantic", "WEIGHT");
                 writer.WriteAttributeString("offset", "1");
-                writer.WriteAttributeString("source", string.Format("#{0}_Weights", poly.Name));
+                writer.WriteAttributeString("source", $"#{poly.Name}_Weights");
                 writer.WriteEndElement(); //input
 
                 writer.WriteStartElement("vcount");
@@ -1243,7 +1235,7 @@ namespace BrawlLib.Modeling
             writer.WriteAttributeString("type", "NODE");
 
             writer.WriteStartElement("instance_controller");
-            writer.WriteAttributeString("url", string.Format("#{0}_Controller", obj.Name));
+            writer.WriteAttributeString("url", $"#{obj.Name}_Controller");
 
             writer.WriteStartElement("skeleton");
             writer.WriteString("#" + obj.Model._linker.BoneCache[0].Name);
@@ -1349,7 +1341,7 @@ namespace BrawlLib.Modeling
                                         string type = types[index / 3];
                                         string axis = axes[index % 3];
 
-                                        string name = string.Format("{0}_{1}{2}", bone, type, axis);
+                                        string name = $"{bone}_{type}{axis}";
 
                                         //writer.WriteStartElement("animation");
                                         //writer.WriteAttributeString("id", name);
@@ -1653,7 +1645,7 @@ namespace BrawlLib.Modeling
                                             writer.WriteStartElement("channel");
                                             writer.WriteAttributeString("source", "#" + name + "_sampler");
                                             writer.WriteAttributeString("target",
-                                                string.Format("{0}/{1}.{2}", bone, type, axis));
+                                                $"{bone}/{type}.{axis}");
                                             writer.WriteEndElement(); //channel
                                         }
                                         //writer.WriteEndElement(); //animation

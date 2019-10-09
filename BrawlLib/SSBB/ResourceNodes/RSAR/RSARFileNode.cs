@@ -52,7 +52,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
             }
 
-            _name = string.Format("[{0}] {1}", _fileIndex, closestMatch);
+            _name = $"[{_fileIndex}] {closestMatch}";
         }
 
         public List<RSARGroupNode> _groupRefs = new List<RSARGroupNode>();
@@ -174,7 +174,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    _name = string.Format("[{0}] {1}", _fileIndex, ResourceFileType.ToString());
+                    _name = $"[{_fileIndex}] {ResourceFileType.ToString()}";
                 }
             }
 

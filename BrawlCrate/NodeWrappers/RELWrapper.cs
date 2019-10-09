@@ -395,7 +395,7 @@ namespace BrawlCrate.NodeWrappers
 
             SectionEditor x = new SectionEditor(section);
             x.Show();
-            x.Text = string.Format("Module Section Editor - {0}->{1}", r.Object._name, r._name);
+            x.Text = $"Module Section Editor - {r.Object._name}->{r._name}";
 
             x.Position = r.RootOffset - section.RootOffset;
             x.hexBox1.Focus();
@@ -516,7 +516,7 @@ namespace BrawlCrate.NodeWrappers
 
             SectionEditor x = new SectionEditor(section);
             x.Show();
-            x.Text = string.Format("Module Section Editor - {0}", section._name);
+            x.Text = $"Module Section Editor - {section._name}";
             x.Position = r.RootOffset;
             x.hexBox1.Focus();
         }

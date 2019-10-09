@@ -529,7 +529,7 @@ namespace System.Windows.Forms
         {
             RWSDNode node = new RWSDNode
             {
-                _name = string.Format("[{0}] RWSD", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] RWSD",
                 _fileIndex = _targetNode.Files.Count
             };
             node.InitGroups();
@@ -543,7 +543,7 @@ namespace System.Windows.Forms
         {
             RSEQNode node = new RSEQNode
             {
-                _name = string.Format("[{0}] RSEQ", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] RSEQ",
                 _fileIndex = _targetNode.Files.Count
             };
             node._parent = _targetNode;
@@ -556,7 +556,7 @@ namespace System.Windows.Forms
         {
             RBNKNode node = new RBNKNode
             {
-                _name = string.Format("[{0}] RBNK", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] RBNK",
                 _fileIndex = _targetNode.Files.Count
             };
             node.InitGroups();
@@ -570,7 +570,7 @@ namespace System.Windows.Forms
         {
             RSARExtFileNode node = new RSARExtFileNode
             {
-                _name = string.Format("[{0}] External", _targetNode.Files.Count),
+                _name = $"[{_targetNode.Files.Count}] External",
                 _fileIndex = _targetNode.Files.Count
             };
             node._parent = _targetNode;
@@ -591,9 +591,7 @@ namespace System.Windows.Forms
                         dlg.AudioSource = ofd.FileName;
                         if (dlg.ShowDialog(this) == DialogResult.OK)
                         {
-                            r.Name = string.Format("[{0}] {1}",
-                                _targetNode.Files.Count,
-                                Path.GetFileNameWithoutExtension(dlg.AudioSource));
+                            r.Name = $"[{_targetNode.Files.Count}] {Path.GetFileNameWithoutExtension(dlg.AudioSource)}";
                             r.ReplaceRaw(dlg.AudioData);
                         }
                     }
@@ -694,7 +692,7 @@ namespace System.Windows.Forms
                 _targetNode.Files.Insert(i.Index, ext);
 
                 ext.ExtPath = (dir + fileName).Replace('\\', '/');
-                ext.Name = string.Format("[{0}] {1}", i.Index, ext.ExtPath);
+                ext.Name = $"[{i.Index}] {ext.ExtPath}";
 
                 if ((i._node is RBNKNode || i._node is RSARExtFileNode) && rbnkRefs != null)
                 {

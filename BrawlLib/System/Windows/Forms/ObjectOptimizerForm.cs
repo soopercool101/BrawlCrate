@@ -109,8 +109,8 @@ namespace System.Windows.Forms
         private void b_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             float percentChange = 100.0f - _newPointCount / (float) _originalPointCount * 100.0f;
-            lblPercentChange.Text = string.Format("{0}% {1}", Math.Round(Math.Abs(percentChange), 3),
-                percentChange < 0 ? "Increase" : "Decrease");
+            lblPercentChange.Text =
+                $"{Math.Round(Math.Abs(percentChange), 3)}% {(percentChange < 0 ? "Increase" : "Decrease")}";
             lblNewCount.Text = _newPointCount.ToString();
 
             if (_processPending)

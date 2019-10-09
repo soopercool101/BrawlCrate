@@ -448,10 +448,8 @@ namespace BrawlCrate
         {
             if (Program.RootPath != null)
             {
-                Text = string.Format("{0} - {1}", Program.AssemblyTitleShort,
-                    ShowFullPath
-                        ? Program.RootPath
-                        : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1));
+                Text =
+                    $"{Program.AssemblyTitleShort} - {(ShowFullPath ? Program.RootPath : Program.RootPath.Substring(Program.RootPath.LastIndexOf('\\') + 1))}";
             }
             else
             {
@@ -2353,7 +2351,7 @@ namespace BrawlCrate
                 {
                     ToolStripMenuItem parent = (ToolStripMenuItem) OwnerItem;
                     int index = parent.DropDownItems.IndexOf(this);
-                    return string.Format("{0} {1}", index + 1, fileName);
+                    return $"{index + 1} {fileName}";
                 }
                 set { }
             }

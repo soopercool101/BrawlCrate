@@ -741,7 +741,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("[{0}, {1}]", GroupId, Index);
+            return $"[{GroupId}, {Index}]";
         }
     }
 
@@ -791,7 +791,7 @@ namespace BrawlLib.SSBBTypes
 
         public override string ToString()
         {
-            return string.Format("[{0:X}]", (uint) _fileId);
+            return $"[{(uint) _fileId:X}]";
         }
     }
 

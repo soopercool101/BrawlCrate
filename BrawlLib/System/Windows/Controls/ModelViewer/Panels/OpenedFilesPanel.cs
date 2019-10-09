@@ -66,7 +66,7 @@ namespace System.Windows.Forms
             }
 
             string s = Path.GetFileName(listBox1.SelectedItem.ToString());
-            label1.Text = string.Format("{0} - Has {1}changed", s, SelectedFile.IsDirty ? "" : "not ");
+            label1.Text = $"{s} - Has {(SelectedFile.IsDirty ? "" : "not ")}changed";
         }
 
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
@@ -94,7 +94,7 @@ namespace System.Windows.Forms
         {
             ResourceNode r = SelectedFile;
             if (MessageBox.Show(this,
-                    string.Format("Are you sure you want to save {0}?", Path.GetFileName(r._origPath)), "Are you sure?",
+                    $"Are you sure you want to save {Path.GetFileName(r._origPath)}?", "Are you sure?",
                     MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 return;

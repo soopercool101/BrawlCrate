@@ -30,7 +30,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    _name = string.Format("Label[{0}]", Index);
+                    _name = $"Label[{Index}]";
                 }
             }
 

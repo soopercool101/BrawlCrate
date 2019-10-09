@@ -343,7 +343,7 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0}, {1})", (float) _x, (float) _y);
+            return $"({(float) _x}, {(float) _y})";
         }
 
         public static implicit operator Vector2(BVec2 v)
@@ -373,7 +373,7 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0}, {1}, {2})", (float) _x, (float) _y, (float) _z);
+            return $"({(float) _x}, {(float) _y}, {(float) _z})";
         }
 
         public static implicit operator Vector3(BVec3 v)
@@ -415,7 +415,7 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0}, {1}, {2}, {3})", (float) _x, (float) _y, (float) _z, (float) _w);
+            return $"({(float) _x}, {(float) _y}, {(float) _z}, {(float) _w})";
         }
 
         public static implicit operator Vector4(BVec4 v)
@@ -459,8 +459,8 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})", this[0], this[1], this[2],
-                this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11]);
+            return
+                $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})";
         }
 
         public static implicit operator Matrix(bMatrix43 bm)
@@ -570,9 +570,8 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0],
-                this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11],
-                this[12], this[13], this[14], this[15]);
+            return
+                $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})({this[12]},{this[13]},{this[14]},{this[15]})";
         }
 
         public static implicit operator Matrix(bMatrix bm)

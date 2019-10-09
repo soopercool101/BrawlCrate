@@ -290,7 +290,7 @@ namespace System.Windows.Forms
                     g.FillRectangle(Brushes.LightBlue, r.X, r.Y, 210, r.Height);
                 }
 
-                g.DrawString(string.Format(" [{0:d2}]", index), _renderFont, Brushes.Black, 4.0f, e.Bounds.Y - 4);
+                g.DrawString($" [{index:d2}]", _renderFont, Brushes.Black, 4.0f, e.Bounds.Y - 4);
 
                 r.X += 100;
                 r.Width = 30;

@@ -102,7 +102,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 }
                 else
                 {
-                    _name = string.Format("Entry{0}", StringId);
+                    _name = $"Entry{StringId}";
                 }
             }
 

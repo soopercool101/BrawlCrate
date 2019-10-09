@@ -168,16 +168,8 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return string.Format("[{0}]({1},{2},{3})({4},{5},{6})({7},{8},{9})", (Index + 1).ToString().PadLeft(5),
-                !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
-                !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
-                !hasSz ? empty : Scale._z.ToString().TruncateAndFill(len, ' '),
-                !hasRx ? empty : Rotation._x.ToString().TruncateAndFill(len, ' '),
-                !hasRy ? empty : Rotation._y.ToString().TruncateAndFill(len, ' '),
-                !hasRz ? empty : Rotation._z.ToString().TruncateAndFill(len, ' '),
-                !hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '),
-                !hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '),
-                !hasTz ? empty : Translation._z.ToString().TruncateAndFill(len, ' '));
+            return
+                $"[{(Index + 1).ToString().PadLeft(5)}]({(!hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '))},{(!hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '))},{(!hasSz ? empty : Scale._z.ToString().TruncateAndFill(len, ' '))})({(!hasRx ? empty : Rotation._x.ToString().TruncateAndFill(len, ' '))},{(!hasRy ? empty : Rotation._y.ToString().TruncateAndFill(len, ' '))},{(!hasRz ? empty : Rotation._z.ToString().TruncateAndFill(len, ' '))})({(!hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '))},{(!hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '))},{(!hasTz ? empty : Translation._z.ToString().TruncateAndFill(len, ' '))})";
         }
 
         //public override string ToString()
@@ -298,12 +290,8 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return string.Format("[{0}]({1},{2})({3})({4},{5})", (Index + 1).ToString().PadLeft(5),
-                !hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '),
-                !hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '),
-                !hasRx ? empty : Rotation.ToString().TruncateAndFill(len, ' '),
-                !hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '),
-                !hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '));
+            return
+                $"[{(Index + 1).ToString().PadLeft(5)}]({(!hasSx ? empty : Scale._x.ToString().TruncateAndFill(len, ' '))},{(!hasSy ? empty : Scale._y.ToString().TruncateAndFill(len, ' '))})({(!hasRx ? empty : Rotation.ToString().TruncateAndFill(len, ' '))})({(!hasTx ? empty : Translation._x.ToString().TruncateAndFill(len, ' '))},{(!hasTy ? empty : Translation._y.ToString().TruncateAndFill(len, ' '))})";
         }
 
         //public override string ToString()
@@ -386,9 +374,8 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return string.Format("[{0}] StartZ={1}, EndZ={2}", (Index + 1).ToString().PadLeft(5),
-                !hasS ? empty : Start.ToString().TruncateAndFill(len, ' '),
-                !hasE ? empty : End.ToString().TruncateAndFill(len, ' '));
+            return
+                $"[{(Index + 1).ToString().PadLeft(5)}] StartZ={(!hasS ? empty : Start.ToString().TruncateAndFill(len, ' '))}, EndZ={(!hasE ? empty : End.ToString().TruncateAndFill(len, ' '))}";
         }
     }
 
@@ -611,18 +598,8 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return string.Format("[{0}] Start=({1},{2},{3}), End=({4},{5},{6}), SC={7}, SB={8} RD={9}, RB={10}",
-                (Index + 1).ToString().PadLeft(5),
-                !hasSx ? empty : Start._x.ToString().TruncateAndFill(len, ' '),
-                !hasSy ? empty : Start._y.ToString().TruncateAndFill(len, ' '),
-                !hasSz ? empty : Start._z.ToString().TruncateAndFill(len, ' '),
-                !hasEx ? empty : End._x.ToString().TruncateAndFill(len, ' '),
-                !hasEy ? empty : End._y.ToString().TruncateAndFill(len, ' '),
-                !hasEz ? empty : End._z.ToString().TruncateAndFill(len, ' '),
-                !hasSC ? empty : SpotCutoff.ToString().TruncateAndFill(len, ' '),
-                !hasSB ? empty : SpotBright.ToString().TruncateAndFill(len, ' '),
-                !hasRD ? empty : RefDist.ToString().TruncateAndFill(len, ' '),
-                !hasRB ? empty : RefBright.ToString().TruncateAndFill(len, ' '));
+            return
+                $"[{(Index + 1).ToString().PadLeft(5)}] Start=({(!hasSx ? empty : Start._x.ToString().TruncateAndFill(len, ' '))},{(!hasSy ? empty : Start._y.ToString().TruncateAndFill(len, ' '))},{(!hasSz ? empty : Start._z.ToString().TruncateAndFill(len, ' '))}), End=({(!hasEx ? empty : End._x.ToString().TruncateAndFill(len, ' '))},{(!hasEy ? empty : End._y.ToString().TruncateAndFill(len, ' '))},{(!hasEz ? empty : End._z.ToString().TruncateAndFill(len, ' '))}), SC={(!hasSC ? empty : SpotCutoff.ToString().TruncateAndFill(len, ' '))}, SB={(!hasSB ? empty : SpotBright.ToString().TruncateAndFill(len, ' '))} RD={(!hasRD ? empty : RefDist.ToString().TruncateAndFill(len, ' '))}, RB={(!hasRB ? empty : RefBright.ToString().TruncateAndFill(len, ' '))}";
         }
     }
 
@@ -851,24 +828,8 @@ namespace BrawlLib.Wii.Animations
 
         public override string ToString()
         {
-            return string.Format(
-                "[{0}] Pos=({1},{2},{3}), Rot=({4},{5},{6}), Aim=({7},{8},{9}), Twist={10}, FovY={11}, Height={12}, Aspect={13}, NearZ={14}, FarZ={15}",
-                (Index + 1).ToString().PadLeft(5),
-                !hasPx ? empty : Pos._x.ToString().TruncateAndFill(len, ' '),
-                !hasPy ? empty : Pos._y.ToString().TruncateAndFill(len, ' '),
-                !hasPz ? empty : Pos._z.ToString().TruncateAndFill(len, ' '),
-                !hasRx ? empty : Rot._x.ToString().TruncateAndFill(len, ' '),
-                !hasRy ? empty : Rot._y.ToString().TruncateAndFill(len, ' '),
-                !hasRz ? empty : Rot._z.ToString().TruncateAndFill(len, ' '),
-                !hasAx ? empty : Aim._x.ToString().TruncateAndFill(len, ' '),
-                !hasAy ? empty : Aim._y.ToString().TruncateAndFill(len, ' '),
-                !hasAz ? empty : Aim._z.ToString().TruncateAndFill(len, ' '),
-                !hasT ? empty : Twist.ToString().TruncateAndFill(len, ' '),
-                !hasF ? empty : FovY.ToString().TruncateAndFill(len, ' '),
-                !hasH ? empty : Height.ToString().TruncateAndFill(len, ' '),
-                !hasA ? empty : Aspect.ToString().TruncateAndFill(len, ' '),
-                !hasNz ? empty : NearZ.ToString().TruncateAndFill(len, ' '),
-                !hasFz ? empty : FarZ.ToString().TruncateAndFill(len, ' '));
+            return
+                $"[{(Index + 1).ToString().PadLeft(5)}] Pos=({(!hasPx ? empty : Pos._x.ToString().TruncateAndFill(len, ' '))},{(!hasPy ? empty : Pos._y.ToString().TruncateAndFill(len, ' '))},{(!hasPz ? empty : Pos._z.ToString().TruncateAndFill(len, ' '))}), Rot=({(!hasRx ? empty : Rot._x.ToString().TruncateAndFill(len, ' '))},{(!hasRy ? empty : Rot._y.ToString().TruncateAndFill(len, ' '))},{(!hasRz ? empty : Rot._z.ToString().TruncateAndFill(len, ' '))}), Aim=({(!hasAx ? empty : Aim._x.ToString().TruncateAndFill(len, ' '))},{(!hasAy ? empty : Aim._y.ToString().TruncateAndFill(len, ' '))},{(!hasAz ? empty : Aim._z.ToString().TruncateAndFill(len, ' '))}), Twist={(!hasT ? empty : Twist.ToString().TruncateAndFill(len, ' '))}, FovY={(!hasF ? empty : FovY.ToString().TruncateAndFill(len, ' '))}, Height={(!hasH ? empty : Height.ToString().TruncateAndFill(len, ' '))}, Aspect={(!hasA ? empty : Aspect.ToString().TruncateAndFill(len, ' '))}, NearZ={(!hasNz ? empty : NearZ.ToString().TruncateAndFill(len, ' '))}, FarZ={(!hasFz ? empty : FarZ.ToString().TruncateAndFill(len, ' '))}";
         }
     }
 }

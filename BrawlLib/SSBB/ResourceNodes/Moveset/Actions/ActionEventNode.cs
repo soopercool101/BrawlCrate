@@ -380,7 +380,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             unk1 = Header->_unk1;
 
             //Merge values to create ID and match with events to get name
-            _event = uint.Parse(string.Format("{0:X02}{1:X02}{2:X02}{3:X02}", nameSpace, id, numArguments, unk1),
+            _event = uint.Parse($"{nameSpace:X02}{id:X02}{numArguments:X02}{unk1:X02}",
                 System.Globalization.NumberStyles.HexNumber);
             if (MoveDefNode.EventDictionary.ContainsKey(_event))
             {
@@ -391,7 +391,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 if (unk1 > 0)
                 {
                     uint temp = uint.Parse(
-                        string.Format("{0:X02}{1:X02}{2:X02}{3:X02}", nameSpace, id, numArguments, 0),
+                        $"{nameSpace:X02}{id:X02}{numArguments:X02}{0:X02}",
                         System.Globalization.NumberStyles.HexNumber);
                     if (MoveDefNode.EventDictionary.ContainsKey(temp))
                     {

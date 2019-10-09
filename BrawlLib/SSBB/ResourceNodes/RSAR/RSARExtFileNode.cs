@@ -85,7 +85,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _extPath = Header->GetPath(&RSARNode.Header->INFOBlock->_collection);
             if (_name == null)
             {
-                _name = string.Format("[{0}] {1}", _fileIndex, _extPath);
+                _name = $"[{_fileIndex}] {_extPath}";
             }
 
             _extFileSize = Header->_headerLen;

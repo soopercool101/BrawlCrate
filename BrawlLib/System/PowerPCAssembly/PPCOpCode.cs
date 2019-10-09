@@ -99,7 +99,7 @@ namespace System.PowerPcAssembly
 
         public override string GetFormattedOperands()
         {
-            return string.Format("0x{0:X8}", (uint) _data._data);
+            return $"0x{(uint) _data._data:X8}";
         }
     }
 
@@ -113,7 +113,7 @@ namespace System.PowerPcAssembly
 
         public override string GetFormattedOperands()
         {
-            return string.Format("0x{0:X8}", _data._data);
+            return $"0x{_data._data:X8}";
         }
     }
 
@@ -1290,7 +1290,7 @@ namespace System.PowerPcAssembly
 
         public override string GetFormattedOperands()
         {
-            return string.Format("0x{0:X8}", this);
+            return $"0x{this:X8}";
         }
     }
 

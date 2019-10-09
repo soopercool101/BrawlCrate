@@ -9,7 +9,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public override string Name
         {
-            get => string.Format("Stage{0}", Index);
+            get => $"Stage{Index}";
             set => base.Name = value;
         }
 
@@ -148,7 +148,7 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
                 }
                 else if (op > 13)
                 {
-                    s += string.Format("d[x] + ((a[x] {0} b[x]) ? c[x] : 0)", op % 2 == 0 ? ">" : "==");
+                    s += $"d[x] + ((a[x] {(op % 2 == 0 ? ">" : "==")} b[x]) ? c[x] : 0)";
                 }
                 else
                 {
@@ -181,7 +181,7 @@ If the input is 0, nothing multiplied by it can affect transparency. If input is
                 }
                 else if (op > 13)
                 {
-                    s += string.Format("d + ((a {0} b) ? c : 0)", op % 2 == 0 ? ">" : "==");
+                    s += $"d + ((a {(op % 2 == 0 ? ">" : "==")} b) ? c : 0)";
                 }
                 else
                 {

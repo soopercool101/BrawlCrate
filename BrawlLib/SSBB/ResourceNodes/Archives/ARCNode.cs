@@ -854,7 +854,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         protected void UpdateName()
         {
-            Name = string.Format("[{0}]Group", _group);
+            Name = $"[{_group}]Group";
         }
     }
 
@@ -1047,7 +1047,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 fileType = System.Text.RegularExpressions.Regex.Replace(fileType, "(\\B[A-Z])", " $1");
             }
 
-            string s = string.Format("{0} [{1}]", fileType, _fileIndex);
+            string s = $"{fileType} [{_fileIndex}]";
             if (_group != 0)
             {
                 s += $" [Group {_group}]";

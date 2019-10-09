@@ -67,11 +67,11 @@ namespace BrawlLib.SSBB.ResourceNodes
             {
                 if (_dataSize > 0)
                 {
-                    _name = string.Format("Section [{0}]", Index);
+                    _name = $"Section [{Index}]";
                 }
                 else
                 {
-                    _name = string.Format("null [{0}]", Index);
+                    _name = $"null [{Index}]";
                 }
             }
 

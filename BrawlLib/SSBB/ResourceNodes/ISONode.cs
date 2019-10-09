@@ -174,7 +174,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             base.OnInitialize();
 
-            _name = string.Format("[{0}] {1}", Index, PartitionType.ToString());
+            _name = $"[{Index}] {PartitionType.ToString()}";
             _info = Get<PartitionInfo>(0x2A4, true);
 
             long tmdOffset = _info._tmdOffset * OffMult;

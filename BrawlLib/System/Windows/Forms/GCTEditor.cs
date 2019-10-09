@@ -412,7 +412,7 @@ namespace System.Windows.Forms
 
         private Color Error(int x, string text)
         {
-            status.Text = string.Format("Problem on line {0}: {1}", x, text);
+            status.Text = $"Problem on line {x}: {text}";
             return Color.Red;
         }
 

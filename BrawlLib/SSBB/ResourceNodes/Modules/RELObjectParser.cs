@@ -154,7 +154,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 RelocationTarget t = cmd.GetTargetRelocation();
                 if (cmd.Apply(Manager.GetUint(rel), 0) != baseCmd.Apply(Manager.GetUint(baseRel), 0))
                 {
-                    string methodName = string.Format("Function[{0}][{1}]", setIndex, methodIndex);
+                    string methodName = $"Function[{setIndex}][{methodIndex}]";
                     VoidPtr addr = null;
                     if (t != null && t._moduleID == (_objectSection.Root as ModuleNode).ID)
                     {

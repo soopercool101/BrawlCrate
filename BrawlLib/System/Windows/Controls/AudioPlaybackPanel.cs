@@ -428,7 +428,7 @@ namespace System.Windows.Forms
             }
 
             DateTime t = new DateTime((long) trackBarPosition.Value * 10000000 / _targetStream.Frequency);
-            lblProgress.Text = string.Format("{0:mm:ss.ff} / {1:mm:ss.ff}", t, _sampleTime);
+            lblProgress.Text = $"{t:mm:ss.ff} / {_sampleTime:mm:ss.ff}";
         }
 
         private void Seek(int sample)

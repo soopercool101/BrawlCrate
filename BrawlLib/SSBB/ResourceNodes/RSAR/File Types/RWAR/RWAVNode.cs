@@ -143,7 +143,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         {
             if (_name == null)
             {
-                _name = string.Format("Audio[{0}]", Index);
+                _name = $"Audio[{Index}]";
             }
 
             Init(Header->Data->Data, Header->Data->_header._length, &Header->Info->_info);

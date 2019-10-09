@@ -645,7 +645,7 @@ namespace System.Windows.Forms
 
             RWSDDataNode d = new RWSDDataNode
             {
-                _name = string.Format("[{0}]Data", TargetNode.Children[0].Children.Count)
+                _name = $"[{TargetNode.Children[0].Children.Count}]Data"
             };
 
             d.Parent = TargetNode.Children[0];
@@ -665,7 +665,7 @@ namespace System.Windows.Forms
         {
             WAVESoundNode s = new WAVESoundNode
             {
-                Name = string.Format("[{0}]Audio", _targetNode.Children[1].Children.Count),
+                Name = $"[{_targetNode.Children[1].Children.Count}]Audio",
                 Parent = _targetNode.Children[1]
             };
             using (OpenFileDialog ofd = new OpenFileDialog())

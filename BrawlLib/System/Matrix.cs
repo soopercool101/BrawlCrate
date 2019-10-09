@@ -18,7 +18,7 @@ namespace System
         {
             for (int i = 0; i < 16; i++)
             {
-                Data[i] = info.GetSingle(string.Format("_values[{0}]", i));
+                Data[i] = info.GetSingle($"_values[{i}]");
             }
         }
 
@@ -26,7 +26,7 @@ namespace System
         {
             for (int i = 0; i < 16; i++)
             {
-                info.AddValue(string.Format("_values[{0}]", i), Data[i]);
+                info.AddValue($"_values[{i}]", Data[i]);
             }
         }
 
@@ -1603,9 +1603,8 @@ namespace System
 
         public override string ToString()
         {
-            return string.Format("({0},{1},{2},{3})({4},{5},{6},{7})({8},{9},{10},{11})({12},{13},{14},{15})", this[0],
-                this[1], this[2], this[3], this[4], this[5], this[6], this[7], this[8], this[9], this[10], this[11],
-                this[12], this[13], this[14], this[15]);
+            return
+                $"({this[0]},{this[1]},{this[2]},{this[3]})({this[4]},{this[5]},{this[6]},{this[7]})({this[8]},{this[9]},{this[10]},{this[11]})({this[12]},{this[13]},{this[14]},{this[15]})";
         }
     }
 }

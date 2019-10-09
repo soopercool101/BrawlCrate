@@ -89,7 +89,7 @@ namespace BrawlLib.Modeling
 
         public override string ToString()
         {
-            return string.Format("{0}{1}{2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
+            return $"{_scale.ToString()}{_rotate.ToString()}{_translate.ToString()}";
         }
 
         public static readonly FrameState Neutral = new FrameState(new Vector3(1.0f), new Vector3(), new Vector3());
@@ -238,7 +238,7 @@ namespace BrawlLib.Modeling
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}", _scale.ToString(), _rotate.ToString(), _translate.ToString());
+            return $"{_scale.ToString()}, {_rotate.ToString()}, {_translate.ToString()}";
         }
 
         public static readonly TextureFrameState Neutral =

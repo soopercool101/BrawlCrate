@@ -63,7 +63,7 @@ namespace System.Windows.Forms
                     _currentPage = 0;
                     numFrame.Value = 1;
                     numFrame.Maximum = _numFrames;
-                    lblFrameCount.Text = string.Format("/ {0}", _numFrames);
+                    lblFrameCount.Text = $"/ {_numFrames}";
                 }
                 else
                 {
@@ -427,7 +427,7 @@ namespace System.Windows.Forms
 
         public override string ToString()
         {
-            return string.Format("[{0}] {1}%", (_entry._index + 1).ToString().PadLeft(5), _entry._value * 100.0f);
+            return $"[{(_entry._index + 1).ToString().PadLeft(5)}] {_entry._value * 100.0f}%";
         }
     }
 }

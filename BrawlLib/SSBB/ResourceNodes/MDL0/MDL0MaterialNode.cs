@@ -369,7 +369,7 @@ Those properties can use this color as an argument. This color is referred to as
                 }
                 else
                 {
-                    MDL0ShaderNode node = Model.FindChild(string.Format("Shaders/{0}", value), false) as MDL0ShaderNode;
+                    MDL0ShaderNode node = Model.FindChild($"Shaders/{value}", false) as MDL0ShaderNode;
                     if (node != null)
                     {
                         ShaderNode = node;

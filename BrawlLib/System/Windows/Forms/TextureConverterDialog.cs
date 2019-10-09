@@ -516,7 +516,7 @@ namespace System.Windows.Forms
             }
 
             _preview = new Bitmap(_source.Width, _source.Height, PixelFormat.Format32bppArgb);
-            lblSize.Text = string.Format("{0} x {1}", _source.Width, _source.Height);
+            lblSize.Text = $"{_source.Width} x {_source.Height}";
 
             _colorInfo = _source.GetColorInformation();
             lblColors.Text = _colorInfo.ColorCount.ToString();
@@ -671,23 +671,20 @@ namespace System.Windows.Forms
             if (_origTEX0 != null || _bresParent != null)
             {
                 int palSize = PaletteSize(0x40);
-                lblDataSize.Text = string.Format("{0:n0}B",
-                    TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize);
+                lblDataSize.Text =
+                    $"{TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem).GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x40 + palSize:n0}B";
             }
             else if (_origREFT != null || _reftParent != null)
             {
                 int palSize = PaletteSize(0);
-                lblDataSize.Text = string.Format("{0:n0}B",
-                    TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize);
+                lblDataSize.Text =
+                    $"{TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem).GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x20 + palSize:n0}B";
             }
             else if (_origTPL != null || _tplParent != null)
             {
                 int palSize = PaletteSize(0xC);
-                lblDataSize.Text = string.Format("{0:n0}B",
-                    TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem)
-                                    .GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize);
+                lblDataSize.Text =
+                    $"{TextureConverter.Get((WiiPixelFormat) cboFormat.SelectedItem).GetMipOffset(ref w, ref h, (int) numLOD.Value + 1) + 0x28 + palSize:n0}B";
             }
         }
 

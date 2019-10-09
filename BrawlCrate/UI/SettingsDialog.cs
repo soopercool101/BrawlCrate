@@ -143,7 +143,7 @@ namespace BrawlCrate
                         if (check)
                         {
                             _assocList[index].FileType = _typeList[index];
-                            _typeList[index].SetCommand("open", string.Format("\"{0}\" \"%1\"", Program.FullPath));
+                            _typeList[index].SetCommand("open", $"\"{Program.FullPath}\" \"%1\"");
                         }
                         else
                         {
@@ -161,7 +161,7 @@ namespace BrawlCrate
                 if (datFileAssociation.Checked)
                 {
                     FileAssociation.Get(".dat").FileType = FileType.Get("SSBB.DAT");
-                    FileType.Get("SSBB.DAT").SetCommand("open", string.Format("\"{0}\" \"%1\"", Program.FullPath));
+                    FileType.Get("SSBB.DAT").SetCommand("open", $"\"{Program.FullPath}\" \"%1\"");
                 }
                 else
                 {
@@ -172,7 +172,7 @@ namespace BrawlCrate
                 if (binFileAssociation.Checked)
                 {
                     FileAssociation.Get(".bin").FileType = FileType.Get("SSBB.BIN");
-                    FileType.Get("SSBB.BIN").SetCommand("open", string.Format("\"{0}\" \"%1\"", Program.FullPath));
+                    FileType.Get("SSBB.BIN").SetCommand("open", $"\"{Program.FullPath}\" \"%1\"");
                 }
                 else
                 {
