@@ -10,6 +10,13 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal override string DocumentationSubDirectory => "TBGD";
         internal override int EntryOffset => 0x10;
 
+        public TBGDNode()
+        {
+            unk0 = 1;
+            unk1 = 0;
+            unk2 = 0;
+        }
+
         public TBGDNode(int numEntries)
         {
             unk0 = 1;
