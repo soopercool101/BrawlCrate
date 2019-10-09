@@ -889,6 +889,9 @@ namespace BrawlCrate.API
 
         /// <summary>
         ///     Adds a wrapper for a specific user-defined file type.
+        ///
+        ///     This variation requires reference to a pre-existing ResourceType.
+        ///     Will overwrite pre-existing ResourceType-based wrappers.
         /// </summary>
         /// <typeparam name="TypeWrapper">
         ///     The wrapper to be used.
@@ -898,7 +901,24 @@ namespace BrawlCrate.API
         /// </param>
         public static void AddWrapper<TypeWrapper>(ResourceType resourceType) where TypeWrapper : BaseWrapper
         {
-            NodeWrapperAttribute.AddWrapper(resourceType, typeof(TypeWrapper));
+            NodeWrapperAttribute.AddWrapper<TypeWrapper>(resourceType);
+        }
+
+        /// <summary>
+        ///     Adds a wrapper for a specific user-defined node type.
+        ///
+        ///     This variation bases wrappers off of the type of the resource node, offering more flexibility for new types.
+        ///     Will overwrite pre-existing Type-based wrappers. Type-based wrappers take priority over ResourceType-based wrappers.
+        /// </summary>
+        /// <typeparam name="TypeNode">
+        ///     The ResourceNode type to attach the wrapper to.
+        /// </typeparam>
+        /// <typeparam name="TypeWrapper">
+        ///     The wrapper to be used.
+        /// </typeparam>
+        public static void AddWrapper<TypeNode, TypeWrapper>() where TypeNode : ResourceNode where TypeWrapper : BaseWrapper
+        {
+            NodeWrapperAttribute.AddWrapper<TypeNode, TypeWrapper>();
         }
 
         #endregion
