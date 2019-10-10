@@ -52,6 +52,12 @@ namespace BrawlCrate
             _interpolationForm = null;
         }
 
+        private void _disableEditMenu(object sender, EventArgs e)
+        {
+            editToolStripMenuItem.DropDown = null;
+            editToolStripMenuItem.Enabled = false;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -70,6 +76,9 @@ namespace BrawlCrate
             _showFullPath = Properties.Settings.Default.ShowFullPath;
             _showBRRESPreviews = Properties.Settings.Default.PreviewBRRESModels;
             _showARCPreviews = Properties.Settings.Default.PreviewARCModels;
+
+            Activated += resourceTree_SelectionChanged;
+            Deactivate += _disableEditMenu;
 
 #if !DEBUG //Don't need to see this every time a debug build is compiled
             if (CheckUpdatesOnStartup)
@@ -443,6 +452,9 @@ namespace BrawlCrate
             UpdateName();
             UpdateDiscordRPC(null, null);
         }
+
+
+
 
         public void UpdateName()
         {
