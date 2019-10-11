@@ -245,6 +245,10 @@ namespace BrawlCrate.NodeWrappers
                     if (path.EndsWith(".tex0", StringComparison.OrdinalIgnoreCase))
                     {
                         TEX0Node node = NodeFactory.FromFile(null, path) as TEX0Node;
+                        if (node == null)
+                        {
+                            continue;
+                        }
                         ((BRRESNode)_resource).GetOrCreateFolder<TEX0Node>().AddChild(node);
 
                         string palette = Path.ChangeExtension(path, ".plt0");

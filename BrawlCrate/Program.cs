@@ -116,7 +116,7 @@ Full changelog can be viewed from the help menu.";
 #if !MONO
             FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
 #else
-            _folderDlg = new FolderBrowserDialog();
+            FolderDlg = new FolderBrowserDialog();
 #endif
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
