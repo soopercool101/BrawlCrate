@@ -83,12 +83,10 @@ namespace BrawlCrate.NodeWrappers
         }
 
         public override string ExportFilter => FileFilters.Havok;
-        public override string ImportFilter => FileFilters.Havok;
 
         public void ExportPatched()
         {
-            int index = Program.SaveFile(ExportFilter, Text, out string outPath);
-            if (index != 0)
+            if (Program.SaveFile(ExportFilter, Text, out string outPath) != 0)
             {
                 if (Parent == null)
                 {

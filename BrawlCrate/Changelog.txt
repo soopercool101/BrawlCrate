@@ -103,6 +103,10 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which GCTs made with Code Manager would incorrectly detect the first line of code as a code title, breaking the codeset
  . Sped up booting and removed splash screen accordingly
  
+ - BrawlCrate v0.26b Hotfix 2 - (10/11/2019)
+ . Fix bug in which MASQ nodes with non-vanilla PM IDs would crash the program.
+ . Remove shortcut key for culling inversion, fixing issue where screenshots could not be taken when an MDL0 is selected on the main form.
+ 
  - BrawlCrate v0.26b Hotfix 1 - (9/16/2019)
  . Fix bug in which animations for models with non-sequential bonesets wouldn't export as anim properly
  
