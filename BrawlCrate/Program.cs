@@ -42,12 +42,13 @@ Full changelog can be viewed from the help menu.";
         public static readonly string FullPath;
         public static readonly string BrawlLibTitle;
 
-        private static readonly OpenFileDialog _openDlg;
-        private static readonly SaveFileDialog _saveDlg;
+        private static readonly OpenFileDialog OpenDlg;
+        private static readonly OpenFileDialog MultiFileOpenDlg;
+        private static readonly SaveFileDialog SaveDlg;
 #if !MONO
-        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog _folderDlg;
+        private static readonly Ookii.Dialogs.VistaFolderBrowserDialog FolderDlg;
 #else
-        private static readonly FolderBrowserDialog _folderDlg;
+        private static readonly FolderBrowserDialog FolderDlg;
 #endif
 
         internal static ResourceNode _rootNode;
@@ -109,10 +110,11 @@ Full changelog can be viewed from the help menu.";
                                                       .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
-            _openDlg = new OpenFileDialog();
-            _saveDlg = new SaveFileDialog();
+            OpenDlg = new OpenFileDialog();
+            MultiFileOpenDlg = new OpenFileDialog { Multiselect = true };
+            SaveDlg = new SaveFileDialog();
 #if !MONO
-            _folderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
+            FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
 #else
             _folderDlg = new FolderBrowserDialog();
 #endif
@@ -494,9 +496,9 @@ Full changelog can be viewed from the help menu.";
             try
             {
 #endif
-                if (_folderDlg.ShowDialog() == DialogResult.OK)
+                if (FolderDlg.ShowDialog() == DialogResult.OK)
                 {
-                    fileName = _folderDlg.SelectedPath;
+                    fileName = FolderDlg.SelectedPath;
                     return 1;
                 }
 #if !DEBUG
@@ -653,9 +655,9 @@ Full changelog can be viewed from the help menu.";
 
         public static string ChooseFolder()
         {
-            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            if (FolderDlg.ShowDialog() == DialogResult.OK)
             {
-                return _folderDlg.SelectedPath;
+                return FolderDlg.SelectedPath;
             }
 
             return null;
@@ -668,20 +670,20 @@ Full changelog can be viewed from the help menu.";
 
         public static int OpenFile(string filter, out string fileName, bool categorize)
         {
-            _openDlg.Filter = filter;
+            OpenDlg.Filter = filter;
 #if !DEBUG
             try
             {
 #endif
-                if (_openDlg.ShowDialog() == DialogResult.OK)
+                if (OpenDlg.ShowDialog() == DialogResult.OK)
                 {
-                    fileName = _openDlg.FileName;
-                    if (categorize && _openDlg.FilterIndex == 1)
+                    fileName = OpenDlg.FileName;
+                    if (categorize && OpenDlg.FilterIndex == 1)
                     {
-                        return CategorizeFilter(_openDlg.FileName, filter);
+                        return CategorizeFilter(OpenDlg.FileName, filter);
                     }
 
-                    return _openDlg.FilterIndex;
+                    return OpenDlg.FilterIndex;
                 }
 #if !DEBUG
             }
@@ -691,6 +693,29 @@ Full changelog can be viewed from the help menu.";
             }
 #endif
             fileName = null;
+            return 0;
+        }
+
+        public static int OpenFiles(string filter, out string[] fileNames)
+        {
+            MultiFileOpenDlg.Filter = filter;
+#if !DEBUG
+            try
+            {
+#endif
+                if (MultiFileOpenDlg.ShowDialog() == DialogResult.OK)
+                {
+                    fileNames = MultiFileOpenDlg.FileNames;
+                    return fileNames.Length;
+                }
+#if !DEBUG
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+#endif
+            fileNames = null;
             return 0;
         }
 
@@ -704,22 +729,22 @@ Full changelog can be viewed from the help menu.";
             int fIndex = 0;
             fileName = null;
 
-            _saveDlg.Filter = filter;
-            _saveDlg.FileName = name;
-            _saveDlg.FilterIndex = 1;
-            if (_saveDlg.ShowDialog() == DialogResult.OK)
+            SaveDlg.Filter = filter;
+            SaveDlg.FileName = name;
+            SaveDlg.FilterIndex = 1;
+            if (SaveDlg.ShowDialog() == DialogResult.OK)
             {
-                if (categorize && _saveDlg.FilterIndex == 1 && Path.HasExtension(_saveDlg.FileName))
+                if (categorize && SaveDlg.FilterIndex == 1 && Path.HasExtension(SaveDlg.FileName))
                 {
-                    fIndex = CategorizeFilter(_saveDlg.FileName, filter);
+                    fIndex = CategorizeFilter(SaveDlg.FileName, filter);
                 }
                 else
                 {
-                    fIndex = _saveDlg.FilterIndex;
+                    fIndex = SaveDlg.FilterIndex;
                 }
 
                 //Fix extension
-                fileName = ApplyExtension(_saveDlg.FileName, filter, fIndex - 1);
+                fileName = ApplyExtension(SaveDlg.FileName, filter, fIndex - 1);
             }
 
             return fIndex;
@@ -728,9 +753,9 @@ Full changelog can be viewed from the help menu.";
         public static bool SaveFolder(out string folderName)
         {
             folderName = null;
-            if (_folderDlg.ShowDialog() == DialogResult.OK)
+            if (FolderDlg.ShowDialog() == DialogResult.OK)
             {
-                folderName = _folderDlg.SelectedPath;
+                folderName = FolderDlg.SelectedPath;
                 return true;
             }
 

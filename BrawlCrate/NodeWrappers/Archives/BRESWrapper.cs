@@ -227,42 +227,49 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportGIF()
         {
-            int index = Program.OpenFile("Animated GIF (*.gif)|*.gif", out string path);
-            if (index > 0)
+            if (Program.OpenFiles("Animated GIF (*.gif)|*.gif", out string[] paths) > 0)
             {
-                ((BRRESNode) _resource).ImportGIF(path);
+                foreach (string path in paths)
+                {
+                    ((BRRESNode)_resource).ImportGIF(path);
+                }
             }
         }
 
         public void ImportTexture()
         {
-            int index = Program.OpenFile(FileFilters.TEX0, out string path);
-            if (index == 8)
+            if(Program.OpenFiles(FileFilters.TEX0, out string[] paths) > 0)
             {
-                TEX0Node node = NodeFactory.FromFile(null, path) as TEX0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<TEX0Node>().AddChild(node);
-
-                string palette = Path.ChangeExtension(path, ".plt0");
-                if (File.Exists(palette) && node.HasPalette)
+                foreach (string path in paths)
                 {
-                    PLT0Node n = NodeFactory.FromFile(null, palette) as PLT0Node;
-                    ((BRRESNode) _resource).GetOrCreateFolder<PLT0Node>().AddChild(n);
-                }
-
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
-            }
-            else if (index > 0)
-            {
-                using (TextureConverterDialog dlg = new TextureConverterDialog())
-                {
-                    dlg.ImageSource = path;
-                    if (dlg.ShowDialog(MainForm.Instance, Resource as BRRESNode) == DialogResult.OK)
+                    if (path.EndsWith(".tex0", StringComparison.OrdinalIgnoreCase))
                     {
-                        BaseWrapper w = FindResource(dlg.TEX0TextureNode, true);
+                        TEX0Node node = NodeFactory.FromFile(null, path) as TEX0Node;
+                        ((BRRESNode)_resource).GetOrCreateFolder<TEX0Node>().AddChild(node);
+
+                        string palette = Path.ChangeExtension(path, ".plt0");
+                        if (File.Exists(palette) && node.HasPalette)
+                        {
+                            PLT0Node n = NodeFactory.FromFile(null, palette) as PLT0Node;
+                            ((BRRESNode)_resource).GetOrCreateFolder<PLT0Node>().AddChild(n);
+                        }
+
+                        BaseWrapper w = FindResource(node, true);
                         w.EnsureVisible();
                         w.TreeView.SelectedNode = w;
+                    }
+                    else
+                    {
+                        using (TextureConverterDialog dlg = new TextureConverterDialog())
+                        {
+                            dlg.ImageSource = path;
+                            if (dlg.ShowDialog(MainForm.Instance, Resource as BRRESNode) == DialogResult.OK)
+                            {
+                                BaseWrapper w = FindResource(dlg.TEX0TextureNode, true);
+                                w.EnsureVisible();
+                                w.TreeView.SelectedNode = w;
+                            }
+                        }
                     }
                 }
             }
@@ -270,12 +277,31 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportModel()
         {
-            if (Program.OpenFile(FileFilters.MDL0Import, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.MDL0Import, out string[] paths) > 0)
             {
-                MDL0Node node = MDL0Node.FromFile(path);
-                if (node != null)
+                foreach (string path in paths)
                 {
-                    ((BRRESNode) _resource).GetOrCreateFolder<MDL0Node>().AddChild(node);
+                    MDL0Node node = MDL0Node.FromFile(path);
+                    if (node != null)
+                    {
+                        ((BRRESNode)_resource).GetOrCreateFolder<MDL0Node>().AddChild(node);
+
+                        BaseWrapper w = FindResource(node, true);
+                        w.EnsureVisible();
+                        w.TreeView.SelectedNode = w;
+                    }
+                }
+            }
+        }
+
+        public void ImportChr()
+        {
+            if (Program.OpenFiles(FileFilters.CHR0Import, out string[] paths) > 0)
+            {
+                foreach (string path in paths)
+                {
+                    CHR0Node node = CHR0Node.FromFile(path);
+                    ((BRRESNode)_resource).GetOrCreateFolder<CHR0Node>().AddChild(node);
 
                     BaseWrapper w = FindResource(node, true);
                     w.EnsureVisible();
@@ -284,94 +310,99 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public void ImportChr()
-        {
-            if (Program.OpenFile(FileFilters.CHR0Import, out string path) > 0)
-            {
-                CHR0Node node = CHR0Node.FromFile(path);
-                ((BRRESNode) _resource).GetOrCreateFolder<CHR0Node>().AddChild(node);
-
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
-            }
-        }
-
         public void ImportVis()
         {
-            if (Program.OpenFile(FileFilters.VIS0, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.VIS0, out string[] paths) > 0)
             {
-                VIS0Node node = NodeFactory.FromFile(null, path) as VIS0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<VIS0Node>().AddChild(node);
+                foreach (string path in paths)
+                {
+                    VIS0Node node = NodeFactory.FromFile(null, path) as VIS0Node;
+                    ((BRRESNode)_resource).GetOrCreateFolder<VIS0Node>().AddChild(node);
 
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
             }
         }
 
         public void ImportShp()
         {
-            if (Program.OpenFile(FileFilters.SHP0, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.SHP0, out string[] paths) > 0)
             {
-                SHP0Node node = NodeFactory.FromFile(null, path) as SHP0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<SHP0Node>().AddChild(node);
+                foreach (string path in paths)
+                {
+                    SHP0Node node = NodeFactory.FromFile(null, path) as SHP0Node;
+                    ((BRRESNode)_resource).GetOrCreateFolder<SHP0Node>().AddChild(node);
 
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
             }
         }
 
         public void ImportSrt()
         {
-            if (Program.OpenFile(FileFilters.SRT0, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.SRT0, out string[] paths) > 0)
             {
-                SRT0Node node = NodeFactory.FromFile(null, path) as SRT0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<SRT0Node>().AddChild(node);
+                foreach (string path in paths)
+                {
+                    SRT0Node node = NodeFactory.FromFile(null, path) as SRT0Node;
+                    ((BRRESNode)_resource).GetOrCreateFolder<SRT0Node>().AddChild(node);
 
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
             }
         }
 
         public void ImportPat()
         {
-            if (Program.OpenFile(FileFilters.PAT0, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.PAT0, out string[] paths) > 0)
             {
-                PAT0Node node = NodeFactory.FromFile(null, path) as PAT0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<PAT0Node>().AddChild(node);
+                foreach (string path in paths)
+                {
+                    PAT0Node node = NodeFactory.FromFile(null, path) as PAT0Node;
+                    ((BRRESNode)_resource).GetOrCreateFolder<PAT0Node>().AddChild(node);
 
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
             }
         }
 
         public void ImportScn()
         {
-            if (Program.OpenFile(FileFilters.SCN0, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.SCN0, out string[] paths) > 0)
             {
-                SCN0Node node = NodeFactory.FromFile(null, path) as SCN0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<SCN0Node>().AddChild(node);
+                foreach (string path in paths)
+                {
+                    SCN0Node node = NodeFactory.FromFile(null, path) as SCN0Node;
+                    ((BRRESNode)_resource).GetOrCreateFolder<SCN0Node>().AddChild(node);
 
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
             }
         }
 
         public void ImportClr()
         {
-            if (Program.OpenFile(FileFilters.CLR0, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.CLR0, out string[] paths) > 0)
             {
-                CLR0Node node = NodeFactory.FromFile(null, path) as CLR0Node;
-                ((BRRESNode) _resource).GetOrCreateFolder<CLR0Node>().AddChild(node);
+                foreach (string path in paths)
+                {
+                    CLR0Node node = NodeFactory.FromFile(null, path) as CLR0Node;
+                    ((BRRESNode)_resource).GetOrCreateFolder<CLR0Node>().AddChild(node);
 
-                BaseWrapper w = FindResource(node, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
+                    BaseWrapper w = FindResource(node, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
             }
         }
 

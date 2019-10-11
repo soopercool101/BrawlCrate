@@ -392,129 +392,177 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportARC()
         {
-            if (Program.OpenFile(FileFilters.ARCImport, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.ARCImport, out string[] paths) > 0)
             {
-                NewARC().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewARC().Replace(path);
+                }
             }
         }
 
         public void ImportBRES()
         {
-            if (Program.OpenFile(FileFilters.BRES, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.BRES, out string[] paths) > 0)
             {
-                NewBRES().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewBRES().Replace(path);
+                }
             }
         }
 
         public void ImportBLOC()
         {
-            if (Program.OpenFile(FileFilters.BLOC, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.BLOC, out string[] paths) > 0)
             {
-                NewBLOC().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewBLOC().Replace(path);
+                }
             }
         }
 
         public void ImportCollision()
         {
-            if (Program.OpenFile(FileFilters.CollisionDef, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.CollisionDef, out string[] paths) > 0)
             {
-                NewCollision().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewCollision().Replace(path);
+                }
             }
         }
 
         public void ImportMSBin()
         {
-            if (Program.OpenFile(FileFilters.MSBin, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.MSBin, out string[] paths) > 0)
             {
-                NewMSBin().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewMSBin().Replace(path);
+                }
             }
         }
 
         public void ImportSCLA()
         {
-            if (Program.OpenFile(FileFilters.SCLA, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.SCLA, out string[] paths) > 0)
             {
-                NewSCLA().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewSCLA().Replace(path);
+                }
             }
         }
 
         public void ImportSTPM()
         {
-            if (Program.OpenFile(FileFilters.STPM, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.STPM, out string[] paths) > 0)
             {
-                NewSTPM().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewSTPM().Replace(path);
+                }
             }
         }
 
         public void ImportSTDT()
         {
-            if (Program.OpenFile(FileFilters.STDT, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.STDT, out string[] paths) > 0)
             {
-                NewStageTable<STDTNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<STDTNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBCL()
         {
-            if (Program.OpenFile(FileFilters.TBCL, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBCL, out string[] paths) > 0)
             {
-                NewStageTable<TBCLNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBCLNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBGC()
         {
-            if (Program.OpenFile(FileFilters.TBGC, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBGC, out string[] paths) > 0)
             {
-                NewStageTable<TBGCNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBGCNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBGD()
         {
-            if (Program.OpenFile(FileFilters.TBGD, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBGD, out string[] paths) > 0)
             {
-                NewStageTable<TBGDNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBGDNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBGM()
         {
-            if (Program.OpenFile(FileFilters.TBGM, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBGM, out string[] paths) > 0)
             {
-                NewStageTable<TBGMNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBGMNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBLV()
         {
-            if (Program.OpenFile(FileFilters.TBLV, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBLV, out string[] paths) > 0)
             {
-                NewStageTable<TBLVNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBLVNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBRM()
         {
-            if (Program.OpenFile(FileFilters.TBRM, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBRM, out string[] paths) > 0)
             {
-                NewStageTable<TBRMNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBRMNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportTBST()
         {
-            if (Program.OpenFile(FileFilters.TBST, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.TBST, out string[] paths) > 0)
             {
-                NewStageTable<TBSTNode>(0).Replace(path);
+                foreach (string path in paths)
+                {
+                    NewStageTable<TBSTNode>(0).Replace(path);
+                }
             }
         }
 
         public void ImportHavok()
         {
-            if (Program.OpenFile(FileFilters.Havok, out string path) > 0)
+            if (Program.OpenFiles(FileFilters.Havok, out string[] paths) > 0)
             {
-                NewHavok().Replace(path);
+                foreach (string path in paths)
+                {
+                    NewHavok().Replace(path);
+                }
             }
         }
 
