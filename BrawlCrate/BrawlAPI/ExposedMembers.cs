@@ -322,6 +322,7 @@ namespace BrawlCrate.API
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
+                dlg.Title = "Open File";
                 dlg.Multiselect = false;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : string.Empty;
             }
@@ -383,6 +384,7 @@ namespace BrawlCrate.API
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
+                dlg.Title = "Open Files";
                 dlg.Multiselect = true;
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : null;
             }

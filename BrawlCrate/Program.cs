@@ -89,7 +89,7 @@ Full changelog can be viewed from the help menu.";
                 AssemblyTitleFull = AssemblyTitleFull.Replace("BrawlCrate", "PartyBrawl");
             }
 
-            AssemblyTitleShort = AssemblyTitleFull.Replace(" Hotfix ", "h");
+            AssemblyTitleShort = AssemblyTitleFull.Replace("Hotfix ", "h");
 #endif
 #if DEBUG
             AssemblyTitleFull += " DEBUG";
@@ -110,8 +110,8 @@ Full changelog can be viewed from the help menu.";
                                                       .GetCustomAttributes(typeof(AssemblyTitleAttribute), false)[0])
                 .Title;
 
-            OpenDlg = new OpenFileDialog();
-            MultiFileOpenDlg = new OpenFileDialog { Multiselect = true };
+            OpenDlg = new OpenFileDialog { Title = "Open File" };
+            MultiFileOpenDlg = new OpenFileDialog { Title = "Open Files", Multiselect = true };
             SaveDlg = new SaveFileDialog();
 #if !MONO
             FolderDlg = new Ookii.Dialogs.VistaFolderBrowserDialog();
