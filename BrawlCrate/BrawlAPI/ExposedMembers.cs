@@ -895,15 +895,15 @@ namespace BrawlCrate.API
         ///     This variation requires reference to a pre-existing ResourceType.
         ///     Will overwrite pre-existing ResourceType-based wrappers.
         /// </summary>
-        /// <typeparam name="TypeWrapper">
-        ///     The wrapper to be used.
-        /// </typeparam>
         /// <param name="resourceType">
         ///     The resource file type to attach the wrapper to.
         /// </param>
-        public static void AddWrapper<TypeWrapper>(ResourceType resourceType) where TypeWrapper : BaseWrapper
+        /// <param name="wrapper">
+        ///     The wrapper to be used.
+        /// </param>
+        public static void AddWrapper(ResourceType resourceType, PluginWrapper wrapper)
         {
-            NodeWrapperAttribute.AddWrapper<TypeWrapper>(resourceType);
+            NodeWrapperAttribute.AddWrapper(resourceType, wrapper);
         }
 
         /// <summary>
@@ -915,12 +915,12 @@ namespace BrawlCrate.API
         /// <typeparam name="TypeNode">
         ///     The ResourceNode type to attach the wrapper to.
         /// </typeparam>
-        /// <typeparam name="TypeWrapper">
+        /// <param name="wrapper">
         ///     The wrapper to be used.
-        /// </typeparam>
-        public static void AddWrapper<TypeNode, TypeWrapper>() where TypeNode : ResourceNode where TypeWrapper : BaseWrapper
+        /// </param>
+        public static void AddWrapper<TypeNode>(PluginWrapper wrapper) where TypeNode : ResourceNode
         {
-            NodeWrapperAttribute.AddWrapper<TypeNode, TypeWrapper>();
+            NodeWrapperAttribute.AddWrapper<TypeNode>(wrapper);
         }
 
         #endregion

@@ -42,16 +42,23 @@ namespace BrawlCrate.NodeWrappers
             }
         }
 
-        public static Dictionary<Type, Type> TypeWrappers { get; } = new Dictionary<Type, Type>();
+        public static Dictionary<ResourceType, PluginWrapper> PluginResourceWrappers { get; } = new Dictionary<ResourceType, PluginWrapper>();
 
-        public static void AddWrapper<TypeWrapper>(ResourceType r) where TypeWrapper : BaseWrapper
+        public static Dictionary<Type, PluginWrapper> PluginTypeWrappers { get; } = new Dictionary<Type, PluginWrapper>();
+
+        public static void AddWrapper(ResourceType r, PluginWrapper w)
         {
-            ResourceWrappers[r] = typeof(TypeWrapper);
+            PluginResourceWrappers[r] = w;
         }
 
-        public static void AddWrapper<TypeNode, TypeWrapper>() where TypeNode : ResourceNode where TypeWrapper : BaseWrapper
+        public static void AddWrapper<TypeNode>(PluginWrapper w) where TypeNode : ResourceNode
         {
-            TypeWrappers[typeof(TypeNode)] = typeof(TypeWrapper);
+            PluginTypeWrappers[typeof(TypeNode)] = w;
+        }
+
+        public static void AddWrapper(Type t, PluginWrapper w)
+        {
+            PluginTypeWrappers[t] = w;
         }
     }
 
@@ -367,9 +374,13 @@ namespace BrawlCrate.NodeWrappers
         {
             _owner = owner;
             BaseWrapper w;
-            if (NodeWrapperAttribute.TypeWrappers.ContainsKey(node.GetType()))
+            if (NodeWrapperAttribute.PluginTypeWrappers.ContainsKey(node.GetType()))
             {
-                w = Activator.CreateInstance(NodeWrapperAttribute.TypeWrappers[node.GetType()]) as BaseWrapper;
+                w = NodeWrapperAttribute.PluginTypeWrappers[node.GetType()].GetInstance();
+            }
+            else if (NodeWrapperAttribute.PluginResourceWrappers.ContainsKey(node.ResourceFileType))
+            {
+                w = NodeWrapperAttribute.PluginResourceWrappers[node.ResourceFileType].GetInstance();
             }
             else if (NodeWrapperAttribute.ResourceWrappers.ContainsKey(node.ResourceFileType))
             {
