@@ -94,6 +94,7 @@ they be held accountable for the manner in which it is used.
  . Add ability to resize Stage Data Tables
  . Add support for multi-file importing for BRRES and ARC
  . Add "Export Selected" toolstrip for multi-selection
+ . Temp files are now opened using default OS functionality, rather than in a dedicated per-install folder
  . Duplicate now works for most node types
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic

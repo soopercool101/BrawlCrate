@@ -20,7 +20,7 @@ namespace BrawlCrate
         ///     If this isn't equal to the latest release, it assumes it needs to update.
         ///     MAKE SURE THIS IS ALWAYS PROPERLY UPDATED FOR ANY STABLE RELEASE!!!
         /// </summary>
-        public static readonly string TagName = "BrawlCrate_v0.26Hotfix3";
+        public static readonly string TagName = "BrawlCrate_v0.26bHotfix2";
 
         /// <summary>
         ///     Shows upon first launch of a given stable release assuming that automated updating is on.
