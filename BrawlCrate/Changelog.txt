@@ -93,6 +93,7 @@ they be held accountable for the manner in which it is used.
  . Add support for longform assembly title, to be used for hotfixes
  . Add ability to resize Stage Data Tables
  . Add support for multi-file importing for BRRES and ARC
+ . Add "Export Selected" toolstrip for multi-selection
  . Duplicate now works for most node types
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
