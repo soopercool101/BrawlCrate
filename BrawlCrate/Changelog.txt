@@ -92,6 +92,7 @@ they be held accountable for the manner in which it is used.
  . Add new iconography for Canary builds
  . Add support for longform assembly title, to be used for hotfixes
  . Add ability to resize Stage Data Tables
+ . Add support for multi-file importing for BRRES and ARC
  . Duplicate now works for most node types
  . Infinity/Negative Infinity buttons now display for the Stage Table editor when in degrees mode
  . Speed up rendering logic
@@ -101,6 +102,7 @@ they be held accountable for the manner in which it is used.
  . Fix bug in which CE Nodes would crash when populating Events
  . Fix bug in which opening a GCT directly would crash the program
  . Fix bug in which GCTs made with Code Manager would incorrectly detect the first line of code as a code title, breaking the codeset
+ . Fix unintended behavior in which context menu hotkeys could be pressed when the main window is not in focus
  . Sped up booting and removed splash screen accordingly
  
  - BrawlCrate v0.26b Hotfix 2 - (10/11/2019)
