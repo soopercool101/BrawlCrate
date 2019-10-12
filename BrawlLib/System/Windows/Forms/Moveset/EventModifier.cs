@@ -1,7 +1,5 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
-using System.Reflection;
 using System.Drawing;
 
 namespace System.Windows.Forms

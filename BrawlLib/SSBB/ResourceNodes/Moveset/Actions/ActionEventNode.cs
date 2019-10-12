@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using BrawlLib.OpenGL;
 using BrawlLib.SSBBTypes;
 using System.ComponentModel;
-using System.Diagnostics;
-using BrawlLib.SSBB.ResourceNodes;
-using OpenTK.Graphics.OpenGL;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -344,7 +339,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 IEnumerable<ArgVarType> array = from x in arguments select (ArgVarType) (int) x._type;
-                return array.ToArray<ArgVarType>();
+                return array.ToArray();
             }
         }
 
@@ -354,7 +349,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get
             {
                 IEnumerable<int> array = from x in arguments select (int) x._data;
-                return array.ToArray<int>();
+                return array.ToArray();
             }
         }
 

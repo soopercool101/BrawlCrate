@@ -1,9 +1,7 @@
-﻿using System;
-using BrawlLib.SSBB.ResourceNodes;
+﻿using BrawlLib.SSBB.ResourceNodes;
 using System.ComponentModel;
 using System.Drawing;
 using System.Collections.Generic;
-using System.IO;
 
 namespace System.Windows.Forms
 {
@@ -381,7 +379,7 @@ namespace System.Windows.Forms
                     paramEnd = strParams.Length;
                 }
 
-                Array.Resize<string>(ref parameters, index + 1);
+                Array.Resize(ref parameters, index + 1);
                 parameters[index] = strParams.Substring(loc, paramEnd - loc);
                 parameters[index] = Helpers.ClearWhiteSpace(parameters[index]);
 

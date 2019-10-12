@@ -1,7 +1,6 @@
 ﻿using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBBTypes;
-using System;
 using System.Linq;
 
 namespace System.Windows.Forms

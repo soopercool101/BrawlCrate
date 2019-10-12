@@ -1,6 +1,5 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
 using System;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace BrawlCrate.Discord

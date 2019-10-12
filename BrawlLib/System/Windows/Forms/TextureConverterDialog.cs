@@ -12,7 +12,6 @@ using System.Runtime.InteropServices;
 #if !MONO
 using System.Windows.Media.Imaging;
 #endif
-using BrawlLib.Modeling.Triangle_Converter;
 
 namespace System.Windows.Forms
 {

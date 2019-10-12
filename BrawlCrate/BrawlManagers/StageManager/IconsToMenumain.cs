@@ -1,12 +1,9 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
 using BrawlManagerLib;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace BrawlCrate.StageManager
 {

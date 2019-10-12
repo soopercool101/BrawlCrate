@@ -363,7 +363,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 List<string> internalNames = BrawlCrate.FighterNameGenerators
                                                        .InternalNameFromID(((CSSCNode) Parent)._cosmeticSlot,
                                                            BrawlCrate.FighterNameGenerators.cosmeticIDIndex, "+S")
-                                                       .Split('/').ToList<string>();
+                                                       .Split('/').ToList();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists(currentPath + "fighter\\" + s + '\\' + "Fit" + s + _costumeID.ToString("00") +

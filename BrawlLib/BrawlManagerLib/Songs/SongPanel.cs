@@ -3,10 +3,8 @@ using System.Linq;
 using System.Windows.Forms;
 using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
-using BrawlManagerLib;
 using System.Audio;
 using System.ComponentModel;
-using System.Drawing;
 using System.Collections.Generic;
 
 namespace BrawlManagerLib

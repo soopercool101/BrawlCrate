@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using BrawlLib.SSBBTypes;
 using System.ComponentModel;
-using System.IO;
-using BrawlLib.IO;
-using BrawlLib.Wii.Animations;
-using BrawlLib.SSBB.ResourceNodes;
-using BrawlLib.OpenGL;
 using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL;
 
@@ -2019,7 +2013,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => hops.ToArray();
             set
             {
-                hops = value.ToList<float>();
+                hops = value.ToList();
                 SignalPropertyChange();
             }
         }
@@ -2030,7 +2024,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             get => unks.ToArray();
             set
             {
-                unks = value.ToList<float>();
+                unks = value.ToList();
                 SignalPropertyChange();
             }
         }

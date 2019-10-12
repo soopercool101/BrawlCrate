@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using BrawlLib.SSBB.ResourceNodes;
 using System.Diagnostics;
 
 namespace BrawlManagerLib

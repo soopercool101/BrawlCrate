@@ -1,10 +1,7 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
-using BrawlLib;
 using BrawlLib.SSBB.ResourceNodes;
 using BrawlLib.SSBB.ResourceNodes.Archives;
-using System.Collections.Generic;
 using System.IO;
 
 namespace BrawlCrate.NodeWrappers

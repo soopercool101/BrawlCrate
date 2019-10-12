@@ -1,5 +1,4 @@
 ﻿using BrawlCrate.NodeWrappers;
-using BrawlCrate.Properties;
 using BrawlLib.SSBB.ResourceNodes;
 using System;
 using System.Collections.Generic;

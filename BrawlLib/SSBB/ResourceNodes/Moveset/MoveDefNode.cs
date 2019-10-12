@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using BrawlLib.SSBBTypes;
 using System.ComponentModel;
 using System.IO;
 using BrawlLib.IO;
-using BrawlLib.Wii.Animations;
-using BrawlLib.SSBB.ResourceNodes;
 using System.Windows.Forms;
 using BrawlLib.Wii.Compression;
-using System.Runtime.InteropServices;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -2907,8 +2903,8 @@ namespace BrawlLib.SSBB.ResourceNodes
 
                             if (name != "")
                             {
-                                Array.Resize<string>(ref EventDictionary[idNumber].Params, i2 + 1);
-                                Array.Resize<string>(ref EventDictionary[idNumber].pDescs, i2 + 1);
+                                Array.Resize(ref EventDictionary[idNumber].Params, i2 + 1);
+                                Array.Resize(ref EventDictionary[idNumber].pDescs, i2 + 1);
                                 EventDictionary[idNumber].Params[i2] = name;
                                 EventDictionary[idNumber].pDescs[i2] = sr.ReadLine();
                             }
@@ -3531,7 +3527,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     for (int i = 0; !sr.EndOfStream; i++)
                     {
-                        Array.Resize<string>(ref iRequirements, i + 1);
+                        Array.Resize(ref iRequirements, i + 1);
                         iRequirements[i] = sr.ReadLine();
                     }
                 }
@@ -3673,7 +3669,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     for (int i = 0; !sr.EndOfStream; i++)
                     {
-                        Array.Resize<string>(ref iAirGroundStats, i + 1);
+                        Array.Resize(ref iAirGroundStats, i + 1);
                         iAirGroundStats[i] = sr.ReadLine();
                     }
                 }
@@ -3698,7 +3694,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     for (int i = 0; !sr.EndOfStream; i++)
                     {
-                        Array.Resize<string>(ref iCollisionStats, i + 1);
+                        Array.Resize(ref iCollisionStats, i + 1);
                         iCollisionStats[i] = sr.ReadLine();
                     }
                 }
@@ -3721,7 +3717,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                 {
                     for (int i = 0; !sr.EndOfStream; i++)
                     {
-                        Array.Resize<string>(ref iGFXFiles, i + 1);
+                        Array.Resize(ref iGFXFiles, i + 1);
                         iGFXFiles[i] = sr.ReadLine();
                     }
                 }

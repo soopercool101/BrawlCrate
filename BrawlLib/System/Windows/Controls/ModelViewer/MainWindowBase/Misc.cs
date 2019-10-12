@@ -2,7 +2,6 @@
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
 using Gif.Components;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;

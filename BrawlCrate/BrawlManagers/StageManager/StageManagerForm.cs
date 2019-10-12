@@ -7,7 +7,6 @@ using BrawlLib.SSBB.ResourceNodes;
 using System.IO;
 using BrawlLib.Wii.Textures;
 using BrawlManagerLib;
-using System.Diagnostics;
 using BrawlCrate.StageManager.SingleUseDialogs;
 using System.Security.Cryptography;
 using System.Text;

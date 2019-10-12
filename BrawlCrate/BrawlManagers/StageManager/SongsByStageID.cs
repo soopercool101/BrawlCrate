@@ -1,9 +1,7 @@
 ﻿using BrawlLib.SSBB;
 using BrawlManagerLib;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BrawlCrate.StageManager
 {

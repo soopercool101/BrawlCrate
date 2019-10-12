@@ -1,6 +1,4 @@
-﻿using BrawlLib;
-
-namespace System.Windows.Forms
+﻿namespace System.Windows.Forms
 {
     public partial class ExportAllFormatDialog : Form
     {

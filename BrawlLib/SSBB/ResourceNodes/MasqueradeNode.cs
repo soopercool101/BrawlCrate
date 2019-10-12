@@ -278,7 +278,7 @@ namespace BrawlLib.SSBB.ResourceNodes
                     currentPath.LastIndexOf("info", StringComparison.OrdinalIgnoreCase));
                 List<string> internalNames = MasqueradeNode
                                              .MasqueradeInternalNames[((MasqueradeNode) Parent)._cosmeticSlot]
-                                             .Split('/').ToList<string>();
+                                             .Split('/').ToList();
                 foreach (string s in internalNames)
                 {
                     if (File.Exists($"{currentPath}\\fighter\\{s}\\Fit{s}{_costumeID:00}.pac"))

@@ -1,7 +1,6 @@
 ﻿using BrawlLib;
 using BrawlLib.Modeling;
 using BrawlLib.SSBB.ResourceNodes;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;

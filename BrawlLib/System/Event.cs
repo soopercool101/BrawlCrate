@@ -1,9 +1,4 @@
 ﻿using BrawlLib.SSBB.ResourceNodes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace System
 {
@@ -33,7 +28,7 @@ namespace System
 
             lParameters = (eventEvent & 0xFF00) / 0x100;
 
-            Array.Resize<Param>(ref parameters, (int) lParameters);
+            Array.Resize(ref parameters, (int) lParameters);
             for (int i = 0; i < lParameters; i++)
             {
                 parameters[i] = new Param();
