@@ -58,7 +58,7 @@ namespace BrawlCrate.NodeWrappers
 
         public override void Delete()
         {
-            if (Parent == null || Form.ActiveForm != MainForm.Instance)
+            if (Parent == null)
             {
                 return;
             }
