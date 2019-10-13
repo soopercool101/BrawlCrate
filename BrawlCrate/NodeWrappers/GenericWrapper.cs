@@ -301,15 +301,14 @@ namespace BrawlCrate.NodeWrappers
                 return;
             }
 
-            int index = Program.OpenFile(ReplaceFilter, out string inPath);
-            if (index != 0)
+            if (Program.OpenFile(ReplaceFilter, out string inPath))
             {
-                OnReplace(inPath, index);
+                OnReplace(inPath);
                 Link(_resource);
             }
         }
 
-        public virtual void OnReplace(string inStream, int filterIndex)
+        public virtual void OnReplace(string inStream)
         {
             _resource.Replace(inStream);
         }

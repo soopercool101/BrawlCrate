@@ -128,11 +128,11 @@ namespace BrawlCrate.NodeWrappers
 
         public override string ExportFilter => FileFilters.TEX0;
 
-        public override void OnReplace(string inStream, int filterIndex)
+        public override void OnReplace(string inStream)
         {
-            if (filterIndex == 8)
+            if (inStream.EndsWith(".tex0", StringComparison.OrdinalIgnoreCase) || !inStream.Contains("."))
             {
-                base.OnReplace(inStream, filterIndex);
+                base.OnReplace(inStream);
             }
             else
             {

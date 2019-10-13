@@ -655,7 +655,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportMaterial()
         {
-            if (Program.OpenFile(FileFilters.MDL0Material, out string path) > 0)
+            if (Program.OpenFile(FileFilters.MDL0Material, out string path))
             {
                 NewMaterial().Replace(path);
             }
@@ -663,7 +663,7 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportShader()
         {
-            if (Program.OpenFile(FileFilters.MDL0Shader, out string path) > 0)
+            if (Program.OpenFile(FileFilters.MDL0Shader, out string path))
             {
                 NewShader()?.Replace(path);
             }

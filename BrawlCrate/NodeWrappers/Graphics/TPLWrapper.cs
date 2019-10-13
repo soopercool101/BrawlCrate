@@ -87,27 +87,29 @@ namespace BrawlCrate.NodeWrappers
 
         public void ImportTexture()
         {
-            int index = Program.OpenFile(FileFilters.Images, out string path);
-            if (index == 8)
+            if (Program.OpenFile(FileFilters.Images, out string path))
             {
-                TPLTextureNode t = new TPLTextureNode {Name = "Texture"};
-                _resource.AddChild(t);
-                t.Replace(path);
-
-                BaseWrapper w = FindResource(t, true);
-                w.EnsureVisible();
-                w.TreeView.SelectedNode = w;
-            }
-            else if (index > 0)
-            {
-                using (TextureConverterDialog dlg = new TextureConverterDialog())
+                if (path.EndsWith(".tplt", StringComparison.OrdinalIgnoreCase) || !inStream.Contains("."))
                 {
-                    dlg.ImageSource = path;
-                    if (dlg.ShowDialog(MainForm.Instance, Resource as TPLNode) == DialogResult.OK)
+                    TPLTextureNode t = new TPLTextureNode { Name = "Texture" };
+                    _resource.AddChild(t);
+                    t.Replace(path);
+
+                    BaseWrapper w = FindResource(t, true);
+                    w.EnsureVisible();
+                    w.TreeView.SelectedNode = w;
+                }
+                else
+                {
+                    using (TextureConverterDialog dlg = new TextureConverterDialog())
                     {
-                        BaseWrapper w = FindResource(dlg.TPLTextureNode, true);
-                        w.EnsureVisible();
-                        w.TreeView.SelectedNode = w;
+                        dlg.ImageSource = path;
+                        if (dlg.ShowDialog(MainForm.Instance, Resource as TPLNode) == DialogResult.OK)
+                        {
+                            BaseWrapper w = FindResource(dlg.TPLTextureNode, true);
+                            w.EnsureVisible();
+                            w.TreeView.SelectedNode = w;
+                        }
                     }
                 }
             }
@@ -199,11 +201,11 @@ namespace BrawlCrate.NodeWrappers
 
         public override string ExportFilter => FileFilters.Images;
 
-        public override void OnReplace(string inStream, int filterIndex)
+        public override void OnReplace(string inStream)
         {
-            if (filterIndex == 8)
+            if (inStream.EndsWith(".tplt", StringComparison.OrdinalIgnoreCase) || !inStream.Contains("."))
             {
-                base.OnReplace(inStream, filterIndex);
+                base.OnReplace(inStream);
             }
             else
             {

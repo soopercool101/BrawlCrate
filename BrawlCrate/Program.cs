@@ -490,7 +490,7 @@ Full changelog can be viewed from the help menu.";
             return false;
         }
 
-        public static int OpenFolderFile(out string fileName)
+        public static bool OpenFolderFile(out string fileName)
         {
 #if !DEBUG
             try
@@ -499,7 +499,7 @@ Full changelog can be viewed from the help menu.";
                 if (FolderDlg.ShowDialog() == DialogResult.OK)
                 {
                     fileName = FolderDlg.SelectedPath;
-                    return 1;
+                    return true;
                 }
 #if !DEBUG
             }
@@ -509,7 +509,7 @@ Full changelog can be viewed from the help menu.";
             }
 #endif
             fileName = null;
-            return 0;
+            return false;
         }
 
         public static bool OpenFolder(string path)
@@ -522,6 +522,11 @@ Full changelog can be viewed from the help menu.";
             if (string.IsNullOrEmpty(path))
             {
                 return false;
+            }
+
+            if (!path.EndsWith("\\"))
+            {
+                path += "\\";
             }
 
             if (!Directory.Exists(path))
@@ -545,7 +550,7 @@ Full changelog can be viewed from the help menu.";
                 if ((_rootNode = NodeFactory.FromFolder(null, _rootPath = path)) != null)
                 {
                     MainForm.Instance.Reset();
-                    MainForm.Instance.RecentFilesHandler.AddFile(path.EndsWith("\\") ? path : $"{path}\\");
+                    MainForm.Instance.RecentFilesHandler.AddFile(path);
                     return true;
                 }
 
@@ -663,12 +668,12 @@ Full changelog can be viewed from the help menu.";
             return null;
         }
 
-        public static int OpenFile(string filter, out string fileName)
+        public static bool OpenFile(string filter, out string fileName)
         {
             return OpenFile(filter, out fileName, true);
         }
 
-        public static int OpenFile(string filter, out string fileName, bool categorize)
+        public static bool OpenFile(string filter, out string fileName, bool categorize)
         {
             OpenDlg.Filter = filter;
 #if !DEBUG
@@ -678,12 +683,7 @@ Full changelog can be viewed from the help menu.";
                 if (OpenDlg.ShowDialog() == DialogResult.OK)
                 {
                     fileName = OpenDlg.FileName;
-                    if (categorize && OpenDlg.FilterIndex == 1)
-                    {
-                        return CategorizeFilter(OpenDlg.FileName, filter);
-                    }
-
-                    return OpenDlg.FilterIndex;
+                    return true;
                 }
 #if !DEBUG
             }
@@ -693,7 +693,7 @@ Full changelog can be viewed from the help menu.";
             }
 #endif
             fileName = null;
-            return 0;
+            return false;
         }
 
         public static int OpenFiles(string filter, out string[] fileNames)

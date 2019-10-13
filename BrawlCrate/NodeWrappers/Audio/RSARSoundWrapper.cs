@@ -121,8 +121,7 @@ namespace BrawlCrate.NodeWrappers
                     }
                 }
 
-                int index = Program.OpenFile(ReplaceFilter, out string inPath);
-                if (index != 0)
+                if (Program.OpenFile(ReplaceFilter, out string inPath))
                 {
                     n._waveDataNode.Sound.Replace(inPath);
                     MainForm.Instance.resourceTree_SelectionChanged(null, null);
@@ -133,7 +132,7 @@ namespace BrawlCrate.NodeWrappers
         public void ViewFile()
         {
             RSARFileNode n;
-            if ((n = (_resource as RSARSoundNode).SoundFileNode) == null)
+            if ((n = (_resource as RSARSoundNode)?.SoundFileNode) == null)
             {
                 return;
             }

@@ -1098,7 +1098,7 @@ namespace BrawlCrate
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile) != 0)
+            if (Program.OpenFile(SupportedFilesHandler.CompleteFilterEditableOnly, out string inFile))
             {
                 Program.Open(inFile);
             }
@@ -1181,7 +1181,7 @@ namespace BrawlCrate
 
         private void bRStmAudioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path) > 0)
+            if (Program.OpenFile("PCM Audio (*.wav)|*.wav", out string path))
             {
                 if (Program.New<RSTMNode>())
                 {
@@ -1397,7 +1397,7 @@ namespace BrawlCrate
 
         private void openFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Program.OpenFolderFile(out string inFile) != 0)
+            if (Program.OpenFolderFile(out string inFile))
             {
                 Program.OpenFolder(inFile);
             }
