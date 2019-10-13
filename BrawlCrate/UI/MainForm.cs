@@ -130,7 +130,8 @@ namespace BrawlCrate
             }
             else
             {
-                // TO-DO: Delete plugin-centric toolbar items
+                pluginToolStripMenuItem.Visible = false;
+                pluginToolStripMenuItem.Enabled = false;
             }
         }
 
