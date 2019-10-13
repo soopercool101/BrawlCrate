@@ -202,25 +202,6 @@ namespace BrawlCrate.NodeWrappers
         public virtual string ImportFilter => ExportFilter;
         public virtual string ReplaceFilter => ImportFilter;
 
-        public static int CategorizeFilter(string path, string filter)
-        {
-            string ext = "*" + Path.GetExtension(path);
-
-            string[] split = filter.Split('|');
-            for (int i = 3; i < split.Length; i += 2)
-            {
-                foreach (string s in split[i].Split(';'))
-                {
-                    if (s.Equals(ext, StringComparison.OrdinalIgnoreCase))
-                    {
-                        return (i + 1) / 2;
-                    }
-                }
-            }
-
-            return 1;
-        }
-
         public virtual void ExportSelected()
         {
             string folder = Program.ChooseFolder();

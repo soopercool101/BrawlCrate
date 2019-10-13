@@ -427,6 +427,11 @@ Full changelog can be viewed from the help menu.";
                 return false;
             }
 
+            if (path.EndsWith("\\"))
+            {
+                return OpenFolder(path, showErrors);
+            }
+
             if (!File.Exists(path))
             {
                 if (showErrors)
@@ -571,7 +576,6 @@ Full changelog can be viewed from the help menu.";
                 }
             }
 #endif
-
             Close();
 
             return false;
@@ -669,11 +673,6 @@ Full changelog can be viewed from the help menu.";
         }
 
         public static bool OpenFile(string filter, out string fileName)
-        {
-            return OpenFile(filter, out fileName, true);
-        }
-
-        public static bool OpenFile(string filter, out string fileName, bool categorize)
         {
             OpenDlg.Filter = filter;
 #if !DEBUG
