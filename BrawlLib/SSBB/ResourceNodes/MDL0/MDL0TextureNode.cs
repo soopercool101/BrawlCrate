@@ -199,7 +199,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         public void GetSource()
         {
-            Source = BRESNode.FindChild("Textures(NW4R)/" + Name, true, StringComparison.Ordinal) as TEX0Node;
+            Source = BRESNode?.FindChild("Textures(NW4R)/" + Name, true, StringComparison.Ordinal) as TEX0Node;
         }
 
         public void Reload()
