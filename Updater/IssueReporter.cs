@@ -63,13 +63,8 @@ namespace Updater
                                 "An update is available", MessageBoxButtons.YesNo);
                         if (UpdateResult == DialogResult.Yes)
                         {
-                            DialogResult OverwriteResult = MessageBox.Show("Overwrite current installation?", "",
-                                MessageBoxButtons.YesNoCancel);
-                            if (OverwriteResult != DialogResult.Cancel)
-                            {
-                                Task t = Updater.ForceDownloadStable("");
-                                t.Wait();
-                            }
+                            Task t = Updater.ForceDownloadStable("");
+                            t.Wait();
                         }
 
                         return;
