@@ -9,8 +9,10 @@ using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Compression;
 
 namespace Updater
 {
@@ -618,6 +620,224 @@ namespace Updater
 
         #endregion
 
+        #region BrawlAPI Script Updater
+
+        public static async Task BrawlAPICheckUpdates(bool manual)
+        {
+            // check to see if the user is online, and that github is up and running.
+            Console.Write("Checking connection to server... ");
+            try
+            {
+                using (Ping s = new Ping())
+                {
+                    // ReSharper disable once PossibleNullReferenceException
+                    IPStatus status = s.Send("www.github.com").Status;
+                    Console.WriteLine(status);
+                    if (status != IPStatus.Success)
+                    {
+                        Console.WriteLine("Failed to connect");
+                        if (manual)
+                        {
+                            MessageBox.Show("Unable to connect to GitHub. The website may be down.");
+                        }
+
+                        return;
+                    }
+                }
+            }
+            catch
+            {
+                throw new HttpRequestException();
+            }
+            string apiPath = $"{AppPath}\\BrawlAPI\\";
+            List<string> updated = new List<string>();
+            if (Directory.Exists(apiPath))
+            {
+                // Get API download 
+                foreach (FileInfo f in Directory.CreateDirectory(apiPath).GetFiles())
+                {
+                    try
+                    {
+                        // Username and repo are separated by a " " in the filename as a unique identifier
+                        // This works due to " " being an invalid character for github repos and names
+                        string[] repoData = Regex.Matches(f.Name, "([^ .]+)").Cast<Match>().Select(m => m.Value)
+                                                 .ToArray();
+                        // Assert username and repo should be two things
+                        if (repoData.Length == 2 && !f.Name.Contains(".") ||
+                            repoData.Length == 3 && f.Name.Contains("."))
+                        {
+                            // Get the file's contents. API updater files are generated automatically in the following format:
+                            // Line 0:  Release Tag. This is checked against to see if there is a new update for the repo.
+                            // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
+                            // Line 2:  Blank Line for readability
+                            // Line 3+: Each line is a relative path to a file from the installation.
+                            //          This is used to delete relevant files when updating,
+                            //          in case a file is moved or deleted by the update intentionally.
+                            string[] lines = File.ReadAllLines(f.FullName);
+                            if (lines.Length > 1)
+                            {
+                                // Get the latest release of this script repo
+                                Release release = await Github.Repository.Release.GetLatest(repoData[0], repoData[1]);
+                                // Check version against downloaded version
+                                if (!release.TagName.Equals(lines[0]) || !release.TargetCommitish.Equals(lines[1]))
+                                {
+                                    string oldVer = !release.TagName.Equals(lines[0])
+                                        ? lines[0]
+                                        : lines[1];
+                                    // Download the newest release if it's newer
+                                    await BrawlAPIUpdate(repoData[0], repoData[1], manual);
+                                    // If the download failed it would have thrown an error, so assume a successful download and add it to the list
+                                    string newVer = !release.TagName.Equals(lines[0])
+                                        ? release.TagName
+                                        : release.TargetCommitish;
+                                    updated.Add($"{repoData[0]}/{repoData[1]} was updated from {oldVer} to {newVer}\n{release.Body}");
+                                }
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        // Errors are ignored, move on to the next file
+                    }
+                }
+            }
+        }
+
+        public static async Task BrawlAPIUpdate(string repoOwner, string repoName, bool manual)
+        {
+            try
+            {
+                // Delete temp.zip if it exists. If it remains active, it runs the risk of 
+                if (File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
+                {
+                    File.Delete($"{AppPath}\\BrawlAPI\\temp.zip");
+                }
+                // Get the latest release of this script repo
+                Release release = await Github.Repository.Release.GetLatest(repoOwner, repoName);
+                using (WebClient client = new WebClient())
+                {
+                    // Add the user agent header, otherwise we will get access denied.
+                    client.Headers.Add("User-Agent: Other");
+
+                    // Download the release zip asset if one is available. Otherwise, download the source code
+                    // Since scripts should be the only things in these repos other than ReadMe, etc. this will be more or less accurate
+                    string url = client.DownloadString(
+                        release.Assets.Count > 0 &&
+                        release.Assets[0].Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase)
+                            ? release.Assets[0].BrowserDownloadUrl
+                            : $"https://github.com/{repoOwner}/{repoName}/archive/{release.TagName}.zip");
+
+                    DLProgressWindow.finished = false;
+                    // Download the file into a zip folder
+                    DLProgressWindow dlTrack = new DLProgressWindow(
+                        release.Name, AppPath, url, $"{AppPath}\\BrawlAPI\\temp.zip");
+                    while (!DLProgressWindow.finished)
+                    {
+                        // do nothing
+                    }
+
+                    dlTrack.Close();
+                    dlTrack.Dispose();
+
+                    // If the file wasn't downloaded, throw an error
+                    if (!File.Exists($"{AppPath}\\BrawlAPI\\temp.zip"))
+                    {
+                        throw new FileNotFoundException();
+                    }
+
+                    // Uninstall the current version of the scripts. Set manual to false since uninstall messages should not be shown
+                    BrawlAPIUninstall(repoOwner, repoName, false);
+
+                    // Write the settings file and extract any scripts, the readme, and the license from the zip folder
+                    using (StreamWriter sw = new StreamWriter($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName}"))
+                    {
+                        // Line 0:  Release Tag. This is checked against to see if there is a new update for the repo.
+                        sw.WriteLine(release.TagName);
+                        // Line 1:  Release Target Commitish. Used to allow continuous integration repos to work.
+                        sw.WriteLine(release.TargetCommitish);
+                        // Line 2:  Blank Line for readability
+                        sw.WriteLine();
+                        // Line 3+: Each line is a relative path to a file from the installation.
+                        //          This is used to delete relevant files when updating,
+                        //          in case a file is moved or deleted by the update intentionally.
+                        using (ZipArchive archive = ZipFile.OpenRead($"{AppPath}\\BrawlAPI\\temp.zip"))
+                        {
+                            // Only extract zip files, a readme, and a license.
+                            foreach (ZipArchiveEntry e in archive.Entries)
+                            {
+                                if (e.Name.EndsWith(".py", StringComparison.OrdinalIgnoreCase) ||
+                                    e.Name.EndsWith(".fsx", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    // Extract the scripts and add them to the file list
+                                    sw.WriteLine(e.FullName);
+                                    e.ExtractToFile(Path.GetFullPath(Path.Combine($"{AppPath}\\BrawlAPI\\", e.FullName)));
+                                }
+                                else if (e.FullName.Equals("README.md", StringComparison.OrdinalIgnoreCase) ||
+                                         e.FullName.Equals("README.txt", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    // Extract the README. Use a specific path instead of the one specified.
+                                    e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} README.txt");
+                                }
+                                else if (e.FullName.Equals("LICENSE", StringComparison.OrdinalIgnoreCase) ||
+                                         e.FullName.Equals("LICENSE.txt", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    // Extract the LICENSE. Use a specific path instead of the one specified.
+                                    e.ExtractToFile($"{AppPath}\\BrawlAPI\\{repoOwner} {repoName} LICENSE.txt");
+                                }
+                            }
+                        }
+                        sw.Close();
+                    }
+                }
+            }
+            catch
+            {
+                if (manual)
+                {
+                    MessageBox.Show($"Error updating API scripts from {repoOwner}/{repoName}");
+                }
+
+                // Throw error to prevent this from being added to the successfully updated list
+                throw;
+            }
+        }
+
+        public static void BrawlAPIUninstall(string repoOwner, string repoName, bool manual)
+        {
+            string apiPath = $"{AppPath}\\BrawlAPI";
+
+            // Only uninstall if there's documentation on what you should uninstall
+            if (File.Exists($"{apiPath}\\repoOwner repoName"))
+            {
+                // Delete all the files associated with this script repo
+                string[] lines = File.ReadAllLines($"{apiPath}\\repoOwner repoName");
+                for (int i = 3; i < lines.Length; i++)
+                {
+                    string fileName = Path.GetFullPath(Path.Combine(apiPath, lines[i]));
+                    if (File.Exists(fileName))
+                    {
+                        File.Delete(fileName);
+                    }
+                }
+
+                // Delete the readme and license if they exist
+                if (File.Exists($"{apiPath}\\repoOwner repoName README.txt"))
+                {
+                    File.Delete($"{apiPath}\\repoOwner repoName README.txt");
+                }
+
+                if (File.Exists($"{apiPath}\\{repoOwner} {repoName} LICENSE.txt"))
+                {
+                    File.Delete($"{apiPath}\\repoOwner repoName LICENSE.txt");
+                }
+
+                // Delete the documentation file
+                File.Delete($"{apiPath}\\repoOwner repoName");
+            }
+        }
+
+        #endregion
+
         #region Package Downloader
 
         public static async Task DownloadRelease(Release release, bool overwrite, bool automatic, bool manual,
@@ -641,7 +861,7 @@ namespace Updater
                     Directory.CreateDirectory(AppPath + "/" + release.TagName);
                     AppPath += "/" + release.TagName;
                 }
-
+                
                 using (WebClient client = new WebClient())
                 {
                     // Add the user agent header, otherwise we will get access denied.
