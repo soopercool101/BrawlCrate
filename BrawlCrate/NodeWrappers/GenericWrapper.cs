@@ -248,7 +248,7 @@ namespace BrawlCrate.NodeWrappers
             {
                 ExportAllFormatDialog dialog = new ExportAllFormatDialog(ext.Key, ext.Value);
 
-                if (dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.AutoSelect || dialog.Valid && dialog.ShowDialog() == DialogResult.OK)
                 {
                     chosenExtensions.Add(ext.Key, dialog.SelectedExtension);
                 }

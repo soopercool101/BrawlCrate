@@ -27,6 +27,7 @@
             ((FormatForExportAllDialog) comboBox1.SelectedItem).extension.Replace("*", "");
 
         public bool Valid => comboBox1.Items.Count > 0;
+        public bool AutoSelect => comboBox1.Items.Count == 1;
     }
 
     public class FormatForExportAllDialog
