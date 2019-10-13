@@ -125,6 +125,10 @@ namespace BrawlLib.SSBB
             new SupportedFileInfo(true, false, "Data File", "dat"),
             new SupportedFileInfo(true, false, "Binary File", "bin"),
             new SupportedFileInfo(false, "Raw Data File", "*"),
+
+            // BrawlAPI
+            new SupportedFileInfo(false, "Python File", ".py"),
+            new SupportedFileInfo(false, "F# script", ".fsx")
         };
 
         private static string _allSupportedFilter;

@@ -197,6 +197,9 @@ namespace BrawlLib
         public static string GCT =
             SupportedFilesHandler.GetCompleteFilter("gct", "txt");
 
+        public static string APIScripts =
+            SupportedFilesHandler.GetCompleteFilter("py", "fsx");
+
         /// <summary>
         /// Maps node types to the default extension when using Export All.
         /// Nodes that are inside a BRES do not need to be defined here - they will get an extension assigned in BRRESNode.cs.

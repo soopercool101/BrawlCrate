@@ -2,6 +2,7 @@
 using BrawlCrate.API;
 using BrawlCrate.NodeWrappers;
 using BrawlCrate.Properties;
+using BrawlLib;
 using BrawlLib.Imaging;
 using BrawlLib.Modeling;
 using BrawlLib.OpenGL;
@@ -1265,14 +1266,7 @@ namespace BrawlCrate
         private void recentFilesToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             string fileName = ((RecentFileHandler.FileMenuItem) e.ClickedItem).FileName;
-            if (fileName.EndsWith("\\"))
-            {
-                Program.OpenFolder(fileName);
-            }
-            else
-            {
-                Program.Open(fileName);
-            }
+            Program.Open(fileName);
         }
 
         private void checkForUpdatesToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -1331,8 +1325,7 @@ namespace BrawlCrate
         {
             using (OpenFileDialog dlg = new OpenFileDialog
             {
-                Filter =
-                    "All supported files (.py, .fsx)|*.py;*.fsx|Python file (.py)|*.py|F# script (.fsx)|*.fsx|All Files|*"
+                Filter = FileFilters.APIScripts
             })
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
