@@ -111,8 +111,8 @@ namespace BrawlCrate
             {
                 BrawlAPI.Plugins.Clear();
                 BrawlAPI.ResourceParsers.Clear();
-                string plugins = $"{Application.StartupPath}/Plugins";
-                string loaders = $"{Application.StartupPath}/Loaders";
+                string plugins = $"{Program.AppPath}/BrawlAPI/Plugins";
+                string loaders = $"{Program.AppPath}/BrawlAPI/Loaders";
 
                 pluginToolStripMenuItem.DropDown.Items.Clear();
                 if (Directory.Exists(plugins))

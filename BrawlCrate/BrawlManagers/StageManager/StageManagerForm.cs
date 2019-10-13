@@ -190,8 +190,8 @@ namespace BrawlCrate.StageManager
                 MoveToolStripItems(songContextMenu.Items, currentSongToolStripMenuItem.DropDownItems);
             };
 
-            FormClosing += MainForm_FormClosing;
-            FormClosed += MainForm_FormClosed;
+            FormClosing += StageManagerForm_FormClosing;
+            FormClosed += StageManagerForm_FormClosed;
 
             clbTextures.ItemCheck += (o, e) =>
             {
@@ -1356,7 +1356,7 @@ namespace BrawlCrate.StageManager
             }
         }
 
-        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        private void StageManagerForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.PageDown)
             {
@@ -1420,12 +1420,12 @@ namespace BrawlCrate.StageManager
             renderModels.Enabled = loadStagepacsToolStripMenuItem.Checked;
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void StageManagerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = !savePacsIfNecessary();
         }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void StageManagerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             TempFiles.DeleteAll();
         }

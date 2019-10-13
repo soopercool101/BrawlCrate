@@ -988,7 +988,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "StageManagerForm";
             this.Text = "Brawl Stage Manager";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StageManagerForm_KeyDown);
             this.splitContainerLeft.Panel1.ResumeLayout(false);
             this.splitContainerLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerLeft)).EndInit();
