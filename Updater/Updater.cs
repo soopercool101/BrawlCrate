@@ -83,7 +83,7 @@ namespace Updater
             return p;
         }
 
-        public static async Task SetCanaryActive()
+        public static void SetCanaryActive()
         {
             DirectoryInfo CanaryDir = Directory.CreateDirectory(AppPath + "\\Canary");
             CanaryDir.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
@@ -93,17 +93,14 @@ namespace Updater
             }
 
             Console.WriteLine("Canary Active");
-            await Task.Delay(1);
         }
 
-        public static async Task SetCanaryInactive()
+        public static void SetCanaryInactive()
         {
             if (File.Exists(AppPath + "\\Canary\\Active"))
             {
                 File.Delete(AppPath + "\\Canary\\Active");
             }
-
-            await Task.Delay(1);
         }
 
         public static async Task ShowCanaryChangelog()
@@ -990,7 +987,7 @@ namespace Updater
 
         public static async Task ForceDownloadStable(string openFile)
         {
-            await SetCanaryInactive();
+            SetCanaryInactive();
             string repoOwner = mainRepo.Split('/')[0];
             string repoName = mainRepo.Split('/')[1];
             // get Release
