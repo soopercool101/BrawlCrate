@@ -22,7 +22,7 @@
             eventModifier1.Name = "eventModifier1";
             eventModifier1.Size = new Drawing.Size(284, 262);
             eventModifier1.TabIndex = 0;
-            eventModifier1.Completed += eventModifier1_Completed;
+            eventModifier1.Completed += new EventHandler(eventModifier1_Completed);
             // 
             // FormModifyEvent
             // 

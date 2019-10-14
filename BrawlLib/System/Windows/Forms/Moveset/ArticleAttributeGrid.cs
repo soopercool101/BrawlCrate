@@ -54,8 +54,8 @@ namespace System.Windows.Forms
             dtgrdAttributes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgrdAttributes.Size = new Drawing.Size(479, 239);
             dtgrdAttributes.TabIndex = 5;
-            dtgrdAttributes.CellEndEdit += dtgrdAttributes_CellEndEdit;
-            dtgrdAttributes.CurrentCellChanged += dtgrdAttributes_CurrentCellChanged;
+            dtgrdAttributes.CellEndEdit += new DataGridViewCellEventHandler(dtgrdAttributes_CellEndEdit);
+            dtgrdAttributes.CurrentCellChanged += new EventHandler(dtgrdAttributes_CurrentCellChanged);
             // 
             // description
             // 
@@ -72,7 +72,7 @@ namespace System.Windows.Forms
             description.Size = new Drawing.Size(479, 63);
             description.TabIndex = 6;
             description.Text = "No Description Available.";
-            description.TextChanged += description_TextChanged;
+            description.TextChanged += new EventHandler(description_TextChanged);
             // 
             // splitter1
             // 

@@ -221,7 +221,7 @@ namespace System.Windows.Forms
             lstBoneWeights.Name = "lstBoneWeights";
             lstBoneWeights.Size = new Drawing.Size(130, 103);
             lstBoneWeights.TabIndex = 0;
-            lstBoneWeights.DrawItem += lstBoneWeights_DrawItem;
+            lstBoneWeights.DrawItem += new DrawItemEventHandler(lstBoneWeights_DrawItem);
             lstBoneWeights.SelectedIndexChanged += lstBoneWeights_SelectedIndexChanged;
             // 
             // WeightEditor

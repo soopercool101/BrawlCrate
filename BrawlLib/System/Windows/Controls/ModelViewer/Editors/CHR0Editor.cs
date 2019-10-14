@@ -517,7 +517,7 @@ namespace System.Windows.Forms
             numScaleX.TabIndex = 18;
             numScaleX.Text = "0";
             numScaleX.ValueChanged += BoxChangedCreateUndo;
-            numScaleX.MouseDown += box_MouseDown;
+            numScaleX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numScaleY
             // 
@@ -531,7 +531,7 @@ namespace System.Windows.Forms
             numScaleY.TabIndex = 19;
             numScaleY.Text = "0";
             numScaleY.ValueChanged += BoxChangedCreateUndo;
-            numScaleY.MouseDown += box_MouseDown;
+            numScaleY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numScaleZ
             // 
@@ -545,7 +545,7 @@ namespace System.Windows.Forms
             numScaleZ.TabIndex = 20;
             numScaleZ.Text = "0";
             numScaleZ.ValueChanged += BoxChangedCreateUndo;
-            numScaleZ.MouseDown += box_MouseDown;
+            numScaleZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotX
             // 
@@ -559,7 +559,7 @@ namespace System.Windows.Forms
             numRotX.TabIndex = 15;
             numRotX.Text = "0";
             numRotX.ValueChanged += BoxChangedCreateUndo;
-            numRotX.MouseDown += box_MouseDown;
+            numRotX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotY
             // 
@@ -573,7 +573,7 @@ namespace System.Windows.Forms
             numRotY.TabIndex = 16;
             numRotY.Text = "0";
             numRotY.ValueChanged += BoxChangedCreateUndo;
-            numRotY.MouseDown += box_MouseDown;
+            numRotY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotZ
             // 
@@ -587,7 +587,7 @@ namespace System.Windows.Forms
             numRotZ.TabIndex = 17;
             numRotZ.Text = "0";
             numRotZ.ValueChanged += BoxChangedCreateUndo;
-            numRotZ.MouseDown += box_MouseDown;
+            numRotZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransX
             // 
@@ -601,7 +601,7 @@ namespace System.Windows.Forms
             numTransX.TabIndex = 3;
             numTransX.Text = "0";
             numTransX.ValueChanged += BoxChangedCreateUndo;
-            numTransX.MouseDown += box_MouseDown;
+            numTransX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransY
             // 
@@ -615,7 +615,7 @@ namespace System.Windows.Forms
             numTransY.TabIndex = 13;
             numTransY.Text = "0";
             numTransY.ValueChanged += BoxChangedCreateUndo;
-            numTransY.MouseDown += box_MouseDown;
+            numTransY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransZ
             // 
@@ -629,7 +629,7 @@ namespace System.Windows.Forms
             numTransZ.TabIndex = 14;
             numTransZ.Text = "0";
             numTransZ.ValueChanged += BoxChangedCreateUndo;
-            numTransZ.MouseDown += box_MouseDown;
+            numTransZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // CHR0Editor
             // 

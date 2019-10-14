@@ -96,7 +96,7 @@ namespace BrawlCrate
                 c.Dock = DockStyle.Fill;
             }
 
-            m_DelegateOpenFile = Program.Open;
+            m_DelegateOpenFile = new DelegateOpenFile(Program.Open);
             _instance = this;
 
             _currentControl = modelPanel1;
@@ -2381,7 +2381,7 @@ namespace BrawlCrate
 
         private void Init()
         {
-            Settings.Default.PropertyChanged += Default_PropertyChanged;
+            Settings.Default.PropertyChanged += new PropertyChangedEventHandler(Default_PropertyChanged);
         }
 
         public void AddFile(string fileName)

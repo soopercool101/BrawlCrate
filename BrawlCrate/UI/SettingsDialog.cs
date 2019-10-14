@@ -977,7 +977,7 @@ namespace BrawlCrate
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
-            listView1.ItemChecked += ListView1_ItemChecked;
+            listView1.ItemChecked += new ItemCheckedEventHandler(ListView1_ItemChecked);
             // 
             // columnHeader1
             // 

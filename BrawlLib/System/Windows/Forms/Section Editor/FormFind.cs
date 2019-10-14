@@ -236,7 +236,7 @@ namespace System.Windows.Forms
 
             if (hexFind.ByteProvider != null)
             {
-                hexFind.ByteProvider.Changed -= ByteProvider_Changed;
+                hexFind.ByteProvider.Changed -= new EventHandler(ByteProvider_Changed);
             }
 
             byte[] hex = _findOptions.Hex != null ? _findOptions.Hex : new byte[0];

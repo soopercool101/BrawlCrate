@@ -43,11 +43,11 @@ namespace System.Windows.Forms
                 KeyframePanel.visEditor.IndexChanged += VISIndexChanged;
             }
 
-            ModelPanel.PreRender += EventPreRender = modelPanel1_PreRender;
-            ModelPanel.PostRender += EventPostRender = modelPanel1_PostRender;
-            ModelPanel.MouseDown += EventMouseDown = modelPanel1_MouseDown;
-            ModelPanel.MouseMove += EventMouseMove = modelPanel1_MouseMove;
-            ModelPanel.MouseUp += EventMouseUp = modelPanel1_MouseUp;
+            ModelPanel.PreRender += EventPreRender = new GLRenderEventHandler(modelPanel1_PreRender);
+            ModelPanel.PostRender += EventPostRender = new GLRenderEventHandler(modelPanel1_PostRender);
+            ModelPanel.MouseDown += EventMouseDown = new MouseEventHandler(modelPanel1_MouseDown);
+            ModelPanel.MouseMove += EventMouseMove = new MouseEventHandler(modelPanel1_MouseMove);
+            ModelPanel.MouseUp += EventMouseUp = new MouseEventHandler(modelPanel1_MouseUp);
 
             if (PlaybackPanel != null)
             {

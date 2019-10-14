@@ -14,7 +14,7 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
 
-            Paint += UserControl1_Paint;
+            Paint += new PaintEventHandler(UserControl1_Paint);
             Resize += UserControl1_Resize;
         }
 

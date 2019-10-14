@@ -1000,7 +1000,7 @@ namespace System.Windows.Forms
             showCameraCoordinatesToolStripMenuItem.Size = new Drawing.Size(259, 26);
             showCameraCoordinatesToolStripMenuItem.Text = "Show Camera Coordinates";
             showCameraCoordinatesToolStripMenuItem.Click +=
-                showCameraCoordinatesToolStripMenuItem_Click;
+                new EventHandler(showCameraCoordinatesToolStripMenuItem_Click);
             // 
             // firstPersonCameraToolStripMenuItem
             // 
@@ -1040,7 +1040,7 @@ namespace System.Windows.Forms
             removeCurrentViewportToolStripMenuItem.Size = new Drawing.Size(259, 26);
             removeCurrentViewportToolStripMenuItem.Text = "Remove Current Viewport";
             removeCurrentViewportToolStripMenuItem.Click +=
-                removeCurrentViewportToolStripMenuItem_Click;
+                new EventHandler(removeCurrentViewportToolStripMenuItem_Click);
             // 
             // modelToolStripMenuItem
             // 
@@ -1370,7 +1370,7 @@ namespace System.Windows.Forms
             averageAllStartEndTangentsToolStripMenuItem.Size = new Drawing.Size(311, 26);
             averageAllStartEndTangentsToolStripMenuItem.Text = "Average all start/end keyframes";
             averageAllStartEndTangentsToolStripMenuItem.Click +=
-                averageAllStartEndTangentsToolStripMenuItem_Click;
+                new EventHandler(averageAllStartEndTangentsToolStripMenuItem_Click);
             // 
             // averageboneStartendTangentsToolStripMenuItem
             // 
@@ -1379,7 +1379,7 @@ namespace System.Windows.Forms
             averageboneStartendTangentsToolStripMenuItem.Size = new Drawing.Size(311, 26);
             averageboneStartendTangentsToolStripMenuItem.Text = "Average entry start/end keyframes";
             averageboneStartendTangentsToolStripMenuItem.Click +=
-                averageboneStartendTangentsToolStripMenuItem_Click;
+                new EventHandler(averageboneStartendTangentsToolStripMenuItem_Click);
             // 
             // liveTextureFolderToolStripMenuItem
             // 
@@ -1473,7 +1473,7 @@ namespace System.Windows.Forms
             deleteAllOtherModelsToolStripMenuItem.Size = new Drawing.Size(299, 26);
             deleteAllOtherModelsToolStripMenuItem.Text = "Delete all other models";
             deleteAllOtherModelsToolStripMenuItem.Click +=
-                deleteAllOtherModelsToolStripMenuItem_Click;
+                new EventHandler(deleteAllOtherModelsToolStripMenuItem_Click);
             // 
             // chkExternalAnims
             // 
@@ -1978,8 +1978,8 @@ namespace System.Windows.Forms
             Name = "ModelEditControl";
             Size = new Drawing.Size(805, 475);
             SizeChanged += ModelEditControl_SizeChanged;
-            DragDrop += OnDragDrop;
-            DragEnter += OnDragEnter;
+            DragDrop += new DragEventHandler(OnDragDrop);
+            DragEnter += new DragEventHandler(OnDragEnter);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             controlPanel.ResumeLayout(false);
@@ -2039,7 +2039,7 @@ namespace System.Windows.Forms
                 LiveTextureFolderPath.Text =
                     applicationFolder;
 
-            _openFileDelegate = OpenFile;
+            _openFileDelegate = new DelegateOpenFile(OpenFile);
 
             models.DataSource = ModelPanel._renderList;
 

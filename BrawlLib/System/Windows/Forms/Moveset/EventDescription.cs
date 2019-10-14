@@ -28,7 +28,7 @@ namespace System.Windows.Forms
             description.Size = new Drawing.Size(413, 284);
             description.TabIndex = 1;
             description.Text = "No Description Available.";
-            description.TextChanged += description_TextChanged;
+            description.TextChanged += new EventHandler(description_TextChanged);
             // 
             // EventDescription
             // 

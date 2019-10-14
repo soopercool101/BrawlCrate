@@ -41,7 +41,7 @@ namespace BrawlCrate
             Controls.Add(modelEditControl1);
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "ModelForm";
-            FormClosing += ModelForm_FormClosing;
+            FormClosing += new FormClosingEventHandler(ModelForm_FormClosing);
             ResumeLayout(false);
         }
 
