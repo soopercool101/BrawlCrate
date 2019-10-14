@@ -99,7 +99,7 @@ namespace BrawlManagerLib
             btnCancel.TabIndex = 4;
             btnCancel.Text = "&Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // btnOkay
             // 
@@ -110,7 +110,7 @@ namespace BrawlManagerLib
             btnOkay.TabIndex = 3;
             btnOkay.Text = "&Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // label1
             // 
@@ -130,7 +130,7 @@ namespace BrawlManagerLib
             btnCharmap.TabIndex = 2;
             btnCharmap.Text = "Char. Map";
             btnCharmap.UseVisualStyleBackColor = true;
-            btnCharmap.Click += btnCharmap_Click;
+            btnCharmap.Click += new EventHandler(btnCharmap_Click);
             // 
             // NameDialog
             // 

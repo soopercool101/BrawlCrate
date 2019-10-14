@@ -180,7 +180,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 0;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -191,7 +191,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // txtPath
             // 
@@ -212,7 +212,7 @@ namespace System.Windows.Forms
             btnBrowse.TabIndex = 3;
             btnBrowse.Text = "...";
             btnBrowse.UseVisualStyleBackColor = true;
-            btnBrowse.Click += btnBrowse_Click;
+            btnBrowse.Click += new EventHandler(btnBrowse_Click);
             // 
             // lblOffsetValue
             // 

@@ -197,7 +197,7 @@ namespace System.Windows.Forms
             cboLight7.Name = "cboLight7";
             cboLight7.Size = new Drawing.Size(82, 21);
             cboLight7.TabIndex = 19;
-            cboLight7.SelectedIndexChanged += lstLight7_SelectedIndexChanged;
+            cboLight7.SelectedIndexChanged += new EventHandler(lstLight7_SelectedIndexChanged);
             // 
             // cboLight6
             // 
@@ -207,7 +207,7 @@ namespace System.Windows.Forms
             cboLight6.Name = "cboLight6";
             cboLight6.Size = new Drawing.Size(82, 21);
             cboLight6.TabIndex = 18;
-            cboLight6.SelectedIndexChanged += lstLight6_SelectedIndexChanged;
+            cboLight6.SelectedIndexChanged += new EventHandler(lstLight6_SelectedIndexChanged);
             // 
             // cboLight5
             // 
@@ -217,7 +217,7 @@ namespace System.Windows.Forms
             cboLight5.Name = "cboLight5";
             cboLight5.Size = new Drawing.Size(82, 21);
             cboLight5.TabIndex = 17;
-            cboLight5.SelectedIndexChanged += lstLight5_SelectedIndexChanged;
+            cboLight5.SelectedIndexChanged += new EventHandler(lstLight5_SelectedIndexChanged);
             // 
             // cboLight4
             // 
@@ -227,7 +227,7 @@ namespace System.Windows.Forms
             cboLight4.Name = "cboLight4";
             cboLight4.Size = new Drawing.Size(82, 21);
             cboLight4.TabIndex = 16;
-            cboLight4.SelectedIndexChanged += lstLight4_SelectedIndexChanged;
+            cboLight4.SelectedIndexChanged += new EventHandler(lstLight4_SelectedIndexChanged);
             // 
             // cboLight3
             // 
@@ -237,7 +237,7 @@ namespace System.Windows.Forms
             cboLight3.Name = "cboLight3";
             cboLight3.Size = new Drawing.Size(82, 21);
             cboLight3.TabIndex = 15;
-            cboLight3.SelectedIndexChanged += lstLight3_SelectedIndexChanged;
+            cboLight3.SelectedIndexChanged += new EventHandler(lstLight3_SelectedIndexChanged);
             // 
             // cboLight2
             // 
@@ -247,7 +247,7 @@ namespace System.Windows.Forms
             cboLight2.Name = "cboLight2";
             cboLight2.Size = new Drawing.Size(82, 21);
             cboLight2.TabIndex = 14;
-            cboLight2.SelectedIndexChanged += lstLight2_SelectedIndexChanged;
+            cboLight2.SelectedIndexChanged += new EventHandler(lstLight2_SelectedIndexChanged);
             // 
             // cboLight1
             // 
@@ -257,7 +257,7 @@ namespace System.Windows.Forms
             cboLight1.Name = "cboLight1";
             cboLight1.Size = new Drawing.Size(82, 21);
             cboLight1.TabIndex = 13;
-            cboLight1.SelectedIndexChanged += lstLight1_SelectedIndexChanged;
+            cboLight1.SelectedIndexChanged += new EventHandler(lstLight1_SelectedIndexChanged);
             // 
             // cboLight0
             // 
@@ -267,7 +267,7 @@ namespace System.Windows.Forms
             cboLight0.Name = "cboLight0";
             cboLight0.Size = new Drawing.Size(82, 21);
             cboLight0.TabIndex = 12;
-            cboLight0.SelectedIndexChanged += lstLight0_SelectedIndexChanged;
+            cboLight0.SelectedIndexChanged += new EventHandler(lstLight0_SelectedIndexChanged);
             // 
             // label38
             // 
@@ -367,7 +367,7 @@ namespace System.Windows.Forms
             cboAmb.Name = "cboAmb";
             cboAmb.Size = new Drawing.Size(82, 21);
             cboAmb.TabIndex = 11;
-            cboAmb.SelectedIndexChanged += lstAmb_SelectedIndexChanged;
+            cboAmb.SelectedIndexChanged += new EventHandler(lstAmb_SelectedIndexChanged);
             // 
             // AmbLights
             // 
@@ -390,7 +390,7 @@ namespace System.Windows.Forms
             chkAmbAlpha.TabIndex = 6;
             chkAmbAlpha.Text = "Alpha Enabled";
             chkAmbAlpha.UseVisualStyleBackColor = true;
-            chkAmbAlpha.CheckedChanged += chkAmbAlpha_CheckedChanged;
+            chkAmbAlpha.CheckedChanged += new EventHandler(chkAmbAlpha_CheckedChanged);
             // 
             // chkAmbClr
             // 
@@ -401,7 +401,7 @@ namespace System.Windows.Forms
             chkAmbClr.TabIndex = 5;
             chkAmbClr.Text = "Color Enabled";
             chkAmbClr.UseVisualStyleBackColor = true;
-            chkAmbClr.CheckedChanged += chkAmbClr_CheckedChanged;
+            chkAmbClr.CheckedChanged += new EventHandler(chkAmbClr_CheckedChanged);
             // 
             // Lights
             // 
@@ -456,7 +456,7 @@ namespace System.Windows.Forms
             lightCut.TabIndex = 39;
             lightCut.Text = "Cut";
             lightCut.UseVisualStyleBackColor = true;
-            lightCut.Click += lightCut_Click;
+            lightCut.Click += new EventHandler(lightCut_Click);
             // 
             // lightPaste
             // 
@@ -466,7 +466,7 @@ namespace System.Windows.Forms
             lightPaste.TabIndex = 41;
             lightPaste.Text = "Paste";
             lightPaste.UseVisualStyleBackColor = true;
-            lightPaste.Click += lightPaste_Click;
+            lightPaste.Click += new EventHandler(lightPaste_Click);
             // 
             // lightCopy
             // 
@@ -476,7 +476,7 @@ namespace System.Windows.Forms
             lightCopy.TabIndex = 40;
             lightCopy.Text = "Copy";
             lightCopy.UseVisualStyleBackColor = true;
-            lightCopy.Click += lightCopy_Click;
+            lightCopy.Click += new EventHandler(lightCopy_Click);
             // 
             // lightClear
             // 
@@ -486,7 +486,7 @@ namespace System.Windows.Forms
             lightClear.TabIndex = 42;
             lightClear.Text = "Clear";
             lightClear.UseVisualStyleBackColor = true;
-            lightClear.Click += lightClear_Click;
+            lightClear.Click += new EventHandler(lightClear_Click);
             // 
             // label25
             // 
@@ -523,7 +523,7 @@ namespace System.Windows.Forms
             numSpotBright.Size = new Drawing.Size(70, 20);
             numSpotBright.TabIndex = 38;
             numSpotBright.Text = "0";
-            numSpotBright.ValueChanged += BoxChanged;
+            numSpotBright.ValueChanged += new EventHandler(BoxChanged);
             numSpotBright.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label24
@@ -561,7 +561,7 @@ namespace System.Windows.Forms
             numStartZ.Size = new Drawing.Size(70, 20);
             numStartZ.TabIndex = 26;
             numStartZ.Text = "0";
-            numStartZ.ValueChanged += BoxChanged;
+            numStartZ.ValueChanged += new EventHandler(BoxChanged);
             numStartZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRefBright
@@ -576,7 +576,7 @@ namespace System.Windows.Forms
             numRefBright.Size = new Drawing.Size(70, 20);
             numRefBright.TabIndex = 36;
             numRefBright.Text = "0";
-            numRefBright.ValueChanged += BoxChanged;
+            numRefBright.ValueChanged += new EventHandler(BoxChanged);
             numRefBright.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numSpotCut
@@ -591,7 +591,7 @@ namespace System.Windows.Forms
             numSpotCut.Size = new Drawing.Size(70, 20);
             numSpotCut.TabIndex = 34;
             numSpotCut.Text = "0";
-            numSpotCut.ValueChanged += BoxChanged;
+            numSpotCut.ValueChanged += new EventHandler(BoxChanged);
             numSpotCut.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label19
@@ -617,7 +617,7 @@ namespace System.Windows.Forms
             numEndY.Size = new Drawing.Size(70, 20);
             numEndY.TabIndex = 28;
             numEndY.Text = "0";
-            numEndY.ValueChanged += BoxChanged;
+            numEndY.ValueChanged += new EventHandler(BoxChanged);
             numEndY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label20
@@ -643,7 +643,7 @@ namespace System.Windows.Forms
             numEndX.Size = new Drawing.Size(70, 20);
             numEndX.TabIndex = 27;
             numEndX.Text = "0";
-            numEndX.ValueChanged += BoxChanged;
+            numEndX.ValueChanged += new EventHandler(BoxChanged);
             numEndX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label21
@@ -669,7 +669,7 @@ namespace System.Windows.Forms
             numRefDist.Size = new Drawing.Size(70, 20);
             numRefDist.TabIndex = 35;
             numRefDist.Text = "0";
-            numRefDist.ValueChanged += BoxChanged;
+            numRefDist.ValueChanged += new EventHandler(BoxChanged);
             numRefDist.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label22
@@ -695,7 +695,7 @@ namespace System.Windows.Forms
             numStartX.Size = new Drawing.Size(70, 20);
             numStartX.TabIndex = 23;
             numStartX.Text = "0";
-            numStartX.ValueChanged += BoxChanged;
+            numStartX.ValueChanged += new EventHandler(BoxChanged);
             numStartX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numStartY
@@ -710,7 +710,7 @@ namespace System.Windows.Forms
             numStartY.Size = new Drawing.Size(70, 20);
             numStartY.TabIndex = 25;
             numStartY.Text = "0";
-            numStartY.ValueChanged += BoxChanged;
+            numStartY.ValueChanged += new EventHandler(BoxChanged);
             numStartY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numEndZ
@@ -725,7 +725,7 @@ namespace System.Windows.Forms
             numEndZ.Size = new Drawing.Size(70, 20);
             numEndZ.TabIndex = 30;
             numEndZ.Text = "0";
-            numEndZ.ValueChanged += BoxChanged;
+            numEndZ.ValueChanged += new EventHandler(BoxChanged);
             numEndZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label23
@@ -767,7 +767,7 @@ namespace System.Windows.Forms
             cboSpotFunc.Name = "cboSpotFunc";
             cboSpotFunc.Size = new Drawing.Size(70, 21);
             cboSpotFunc.TabIndex = 9;
-            cboSpotFunc.SelectedIndexChanged += lstSpotFunc_SelectedIndexChanged;
+            cboSpotFunc.SelectedIndexChanged += new EventHandler(lstSpotFunc_SelectedIndexChanged);
             // 
             // cboDistFunc
             // 
@@ -777,7 +777,7 @@ namespace System.Windows.Forms
             cboDistFunc.Name = "cboDistFunc";
             cboDistFunc.Size = new Drawing.Size(70, 21);
             cboDistFunc.TabIndex = 8;
-            cboDistFunc.SelectedIndexChanged += lstDistFunc_SelectedIndexChanged;
+            cboDistFunc.SelectedIndexChanged += new EventHandler(lstDistFunc_SelectedIndexChanged);
             // 
             // label29
             // 
@@ -808,7 +808,7 @@ namespace System.Windows.Forms
             chkLightSpec.TabIndex = 5;
             chkLightSpec.Text = "Specular Enabled";
             chkLightSpec.UseVisualStyleBackColor = true;
-            chkLightSpec.CheckedChanged += chkLightSpec_CheckedChanged;
+            chkLightSpec.CheckedChanged += new EventHandler(chkLightSpec_CheckedChanged);
             // 
             // chkLightAlpha
             // 
@@ -819,7 +819,7 @@ namespace System.Windows.Forms
             chkLightAlpha.TabIndex = 4;
             chkLightAlpha.Text = "Alpha Enabled";
             chkLightAlpha.UseVisualStyleBackColor = true;
-            chkLightAlpha.CheckedChanged += chkLightAlpha_CheckedChanged;
+            chkLightAlpha.CheckedChanged += new EventHandler(chkLightAlpha_CheckedChanged);
             // 
             // chkLightClr
             // 
@@ -830,7 +830,7 @@ namespace System.Windows.Forms
             chkLightClr.TabIndex = 3;
             chkLightClr.Text = "Color Enabled";
             chkLightClr.UseVisualStyleBackColor = true;
-            chkLightClr.CheckedChanged += chkLightClr_CheckedChanged;
+            chkLightClr.CheckedChanged += new EventHandler(chkLightClr_CheckedChanged);
             // 
             // label27
             // 
@@ -850,7 +850,7 @@ namespace System.Windows.Forms
             cboLightType.Name = "cboLightType";
             cboLightType.Size = new Drawing.Size(73, 21);
             cboLightType.TabIndex = 0;
-            cboLightType.SelectedIndexChanged += lstLightType_SelectedIndexChanged;
+            cboLightType.SelectedIndexChanged += new EventHandler(lstLightType_SelectedIndexChanged);
             // 
             // Fog
             // 
@@ -887,7 +887,7 @@ namespace System.Windows.Forms
             button3.TabIndex = 35;
             button3.Text = "Paste";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            button3.Click += new EventHandler(button3_Click);
             // 
             // button4
             // 
@@ -897,7 +897,7 @@ namespace System.Windows.Forms
             button4.TabIndex = 34;
             button4.Text = "Copy";
             button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            button4.Click += new EventHandler(button4_Click);
             // 
             // label16
             // 
@@ -922,7 +922,7 @@ namespace System.Windows.Forms
             numFogEndZ.Size = new Drawing.Size(70, 20);
             numFogEndZ.TabIndex = 10;
             numFogEndZ.Text = "0";
-            numFogEndZ.ValueChanged += BoxChanged;
+            numFogEndZ.ValueChanged += new EventHandler(BoxChanged);
             numFogEndZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numFogStartZ
@@ -937,7 +937,7 @@ namespace System.Windows.Forms
             numFogStartZ.Size = new Drawing.Size(70, 20);
             numFogStartZ.TabIndex = 9;
             numFogStartZ.Text = "0";
-            numFogStartZ.ValueChanged += BoxChanged;
+            numFogStartZ.ValueChanged += new EventHandler(BoxChanged);
             numFogStartZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label17
@@ -985,7 +985,7 @@ namespace System.Windows.Forms
             cboFogType.Name = "cboFogType";
             cboFogType.Size = new Drawing.Size(132, 21);
             cboFogType.TabIndex = 37;
-            cboFogType.SelectedIndexChanged += comboBox3_SelectedIndexChanged;
+            cboFogType.SelectedIndexChanged += new EventHandler(comboBox3_SelectedIndexChanged);
             // 
             // Cameras
             // 
@@ -1107,7 +1107,7 @@ namespace System.Windows.Forms
             numPosZ.Size = new Drawing.Size(70, 20);
             numPosZ.TabIndex = 5;
             numPosZ.Text = "0";
-            numPosZ.ValueChanged += BoxChanged;
+            numPosZ.ValueChanged += new EventHandler(BoxChanged);
             numPosZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // btnCut
@@ -1119,7 +1119,7 @@ namespace System.Windows.Forms
             btnCut.TabIndex = 30;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += btnCut_Click;
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // btnPaste
             // 
@@ -1129,7 +1129,7 @@ namespace System.Windows.Forms
             btnPaste.TabIndex = 32;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += btnPaste_Click;
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // btnCopy
             // 
@@ -1139,7 +1139,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 31;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // btnClear
             // 
@@ -1149,7 +1149,7 @@ namespace System.Windows.Forms
             btnClear.TabIndex = 33;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
+            btnClear.Click += new EventHandler(btnClear_Click);
             // 
             // numAimX
             // 
@@ -1163,7 +1163,7 @@ namespace System.Windows.Forms
             numAimX.Size = new Drawing.Size(70, 20);
             numAimX.TabIndex = 11;
             numAimX.Text = "0";
-            numAimX.ValueChanged += BoxChanged;
+            numAimX.ValueChanged += new EventHandler(BoxChanged);
             numAimX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numFarZ
@@ -1178,7 +1178,7 @@ namespace System.Windows.Forms
             numFarZ.Size = new Drawing.Size(70, 20);
             numFarZ.TabIndex = 29;
             numFarZ.Text = "0";
-            numFarZ.ValueChanged += BoxChanged;
+            numFarZ.ValueChanged += new EventHandler(BoxChanged);
             numFarZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotY
@@ -1193,7 +1193,7 @@ namespace System.Windows.Forms
             numRotY.Size = new Drawing.Size(70, 20);
             numRotY.TabIndex = 7;
             numRotY.Text = "0";
-            numRotY.ValueChanged += BoxChanged;
+            numRotY.ValueChanged += new EventHandler(BoxChanged);
             numRotY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numNearZ
@@ -1208,7 +1208,7 @@ namespace System.Windows.Forms
             numNearZ.Size = new Drawing.Size(70, 20);
             numNearZ.TabIndex = 28;
             numNearZ.Text = "0";
-            numNearZ.ValueChanged += BoxChanged;
+            numNearZ.ValueChanged += new EventHandler(BoxChanged);
             numNearZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotX
@@ -1223,7 +1223,7 @@ namespace System.Windows.Forms
             numRotX.Size = new Drawing.Size(70, 20);
             numRotX.TabIndex = 6;
             numRotX.Text = "0";
-            numRotX.ValueChanged += BoxChanged;
+            numRotX.ValueChanged += new EventHandler(BoxChanged);
             numRotX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label12
@@ -1250,7 +1250,7 @@ namespace System.Windows.Forms
             numTwist.Size = new Drawing.Size(70, 20);
             numTwist.TabIndex = 12;
             numTwist.Text = "0";
-            numTwist.ValueChanged += BoxChanged;
+            numTwist.ValueChanged += new EventHandler(BoxChanged);
             numTwist.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label13
@@ -1277,7 +1277,7 @@ namespace System.Windows.Forms
             numPosX.Size = new Drawing.Size(70, 20);
             numPosX.TabIndex = 3;
             numPosX.Text = "0";
-            numPosX.ValueChanged += BoxChanged;
+            numPosX.ValueChanged += new EventHandler(BoxChanged);
             numPosX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numAspect
@@ -1292,7 +1292,7 @@ namespace System.Windows.Forms
             numAspect.Size = new Drawing.Size(70, 20);
             numAspect.TabIndex = 25;
             numAspect.Text = "0";
-            numAspect.ValueChanged += BoxChanged;
+            numAspect.ValueChanged += new EventHandler(BoxChanged);
             numAspect.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numRotZ
@@ -1307,7 +1307,7 @@ namespace System.Windows.Forms
             numRotZ.Size = new Drawing.Size(70, 20);
             numRotZ.TabIndex = 8;
             numRotZ.Text = "0";
-            numRotZ.ValueChanged += BoxChanged;
+            numRotZ.ValueChanged += new EventHandler(BoxChanged);
             numRotZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numHeight
@@ -1322,7 +1322,7 @@ namespace System.Windows.Forms
             numHeight.Size = new Drawing.Size(70, 20);
             numHeight.TabIndex = 24;
             numHeight.Text = "0";
-            numHeight.ValueChanged += BoxChanged;
+            numHeight.ValueChanged += new EventHandler(BoxChanged);
             numHeight.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numPosY
@@ -1337,7 +1337,7 @@ namespace System.Windows.Forms
             numPosY.Size = new Drawing.Size(70, 20);
             numPosY.TabIndex = 4;
             numPosY.Text = "0";
-            numPosY.ValueChanged += BoxChanged;
+            numPosY.ValueChanged += new EventHandler(BoxChanged);
             numPosY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label10
@@ -1386,7 +1386,7 @@ namespace System.Windows.Forms
             numAimY.Size = new Drawing.Size(70, 20);
             numAimY.TabIndex = 21;
             numAimY.Text = "0";
-            numAimY.ValueChanged += BoxChanged;
+            numAimY.ValueChanged += new EventHandler(BoxChanged);
             numAimY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label2
@@ -1412,7 +1412,7 @@ namespace System.Windows.Forms
             numAimZ.Size = new Drawing.Size(70, 20);
             numAimZ.TabIndex = 19;
             numAimZ.Text = "0";
-            numAimZ.ValueChanged += BoxChanged;
+            numAimZ.ValueChanged += new EventHandler(BoxChanged);
             numAimZ.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // label3
@@ -1449,7 +1449,7 @@ namespace System.Windows.Forms
             numFovY.Size = new Drawing.Size(70, 20);
             numFovY.TabIndex = 13;
             numFovY.Text = "0";
-            numFovY.ValueChanged += BoxChanged;
+            numFovY.ValueChanged += new EventHandler(BoxChanged);
             numFovY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // panel1
@@ -1470,7 +1470,7 @@ namespace System.Windows.Forms
             btnUseCamera.TabIndex = 38;
             btnUseCamera.Text = "Use Current Camera";
             btnUseCamera.UseVisualStyleBackColor = true;
-            btnUseCamera.Click += button1_Click_1;
+            btnUseCamera.Click += new EventHandler(button1_Click_1);
             // 
             // groupBox1
             // 
@@ -1493,7 +1493,7 @@ namespace System.Windows.Forms
             cboCamProj.Name = "cboCamProj";
             cboCamProj.Size = new Drawing.Size(70, 21);
             cboCamProj.TabIndex = 35;
-            cboCamProj.SelectedIndexChanged += lstCamProj_SelectedIndexChanged;
+            cboCamProj.SelectedIndexChanged += new EventHandler(lstCamProj_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -1515,7 +1515,7 @@ namespace System.Windows.Forms
             cboCamType.Name = "cboCamType";
             cboCamType.Size = new Drawing.Size(70, 21);
             cboCamType.TabIndex = 34;
-            cboCamType.SelectedIndexChanged += lstCamType_SelectedIndexChanged;
+            cboCamType.SelectedIndexChanged += new EventHandler(lstCamType_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -1548,7 +1548,7 @@ namespace System.Windows.Forms
             cboNodeList.Name = "cboNodeList";
             cboNodeList.Size = new Drawing.Size(72, 21);
             cboNodeList.TabIndex = 0;
-            cboNodeList.SelectedIndexChanged += nodeList_SelectedIndexChanged;
+            cboNodeList.SelectedIndexChanged += new EventHandler(nodeList_SelectedIndexChanged);
             // 
             // btnRename
             // 
@@ -1558,7 +1558,7 @@ namespace System.Windows.Forms
             btnRename.TabIndex = 20;
             btnRename.Text = "Rename";
             btnRename.UseVisualStyleBackColor = true;
-            btnRename.Click += button1_Click;
+            btnRename.Click += new EventHandler(button1_Click);
             // 
             // btnNew
             // 
@@ -1568,7 +1568,7 @@ namespace System.Windows.Forms
             btnNew.TabIndex = 21;
             btnNew.Text = "New";
             btnNew.UseVisualStyleBackColor = true;
-            btnNew.Click += btnNew_Click;
+            btnNew.Click += new EventHandler(btnNew_Click);
             // 
             // btnDelete
             // 
@@ -1578,7 +1578,7 @@ namespace System.Windows.Forms
             btnDelete.TabIndex = 22;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            btnDelete.Click += new EventHandler(btnDelete_Click);
             // 
             // SCN0Editor
             // 

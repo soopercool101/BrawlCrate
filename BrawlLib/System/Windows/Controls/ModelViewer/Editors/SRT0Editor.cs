@@ -83,7 +83,7 @@ namespace System.Windows.Forms
             btnPaste.TabIndex = 23;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += btnPaste_Click;
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -111,7 +111,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 22;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -127,7 +127,7 @@ namespace System.Windows.Forms
             btnCut.TabIndex = 21;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += btnCut_Click;
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // subtract
             // 
@@ -182,7 +182,7 @@ namespace System.Windows.Forms
             numScaleY.Size = new Drawing.Size(82, 20);
             numScaleY.TabIndex = 18;
             numScaleY.Text = "0";
-            numScaleY.ValueChanged += BoxChangedCreateUndo;
+            numScaleY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
             numScaleY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // add
@@ -208,7 +208,7 @@ namespace System.Windows.Forms
             numRot.Size = new Drawing.Size(82, 20);
             numRot.TabIndex = 15;
             numRot.Text = "0";
-            numRot.ValueChanged += BoxChangedCreateUndo;
+            numRot.ValueChanged += new EventHandler(BoxChangedCreateUndo);
             numRot.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // toolStripSeparator1
@@ -234,7 +234,7 @@ namespace System.Windows.Forms
             numTransX.Size = new Drawing.Size(82, 20);
             numTransX.TabIndex = 3;
             numTransX.Text = "0";
-            numTransX.ValueChanged += BoxChangedCreateUndo;
+            numTransX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
             numTransX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // numTransY
@@ -248,7 +248,7 @@ namespace System.Windows.Forms
             numTransY.Size = new Drawing.Size(82, 20);
             numTransY.TabIndex = 13;
             numTransY.Text = "0";
-            numTransY.ValueChanged += BoxChangedCreateUndo;
+            numTransY.ValueChanged += new EventHandler(BoxChangedCreateUndo);
             numTransY.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // lblTransX
@@ -296,7 +296,7 @@ namespace System.Windows.Forms
             addCustomAmountToolStripMenuItem.Name = "addCustomAmountToolStripMenuItem";
             addCustomAmountToolStripMenuItem.Size = new Drawing.Size(166, 22);
             addCustomAmountToolStripMenuItem.Text = "Edit All...";
-            addCustomAmountToolStripMenuItem.Click += addCustomAmountToolStripMenuItem_Click_1;
+            addCustomAmountToolStripMenuItem.Click += new EventHandler(addCustomAmountToolStripMenuItem_Click_1);
             // 
             // btnDelete
             // 
@@ -306,7 +306,7 @@ namespace System.Windows.Forms
             btnDelete.TabIndex = 25;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            btnDelete.Click += new EventHandler(btnDelete_Click);
             // 
             // grpTransform
             // 
@@ -354,7 +354,7 @@ namespace System.Windows.Forms
             numScaleX.Size = new Drawing.Size(82, 20);
             numScaleX.TabIndex = 36;
             numScaleX.Text = "0";
-            numScaleX.ValueChanged += BoxChangedCreateUndo;
+            numScaleX.ValueChanged += new EventHandler(BoxChangedCreateUndo);
             numScaleX.MouseDown += new MouseEventHandler(box_MouseDown);
             // 
             // AllScale
@@ -421,7 +421,7 @@ namespace System.Windows.Forms
             btnClean.TabIndex = 29;
             btnClean.Text = "Clean";
             btnClean.UseVisualStyleBackColor = true;
-            btnClean.Click += btnClean_Click;
+            btnClean.Click += new EventHandler(btnClean_Click);
             // 
             // btnPasteAll
             // 
@@ -431,7 +431,7 @@ namespace System.Windows.Forms
             btnPasteAll.TabIndex = 28;
             btnPasteAll.Text = "Paste";
             btnPasteAll.UseVisualStyleBackColor = true;
-            btnPasteAll.Click += btnPasteAll_Click;
+            btnPasteAll.Click += new EventHandler(btnPasteAll_Click);
             // 
             // btnCopyAll
             // 
@@ -441,7 +441,7 @@ namespace System.Windows.Forms
             btnCopyAll.TabIndex = 27;
             btnCopyAll.Text = "Copy";
             btnCopyAll.UseVisualStyleBackColor = true;
-            btnCopyAll.Click += btnCopyAll_Click;
+            btnCopyAll.Click += new EventHandler(btnCopyAll_Click);
             // 
             // btnClear
             // 
@@ -451,7 +451,7 @@ namespace System.Windows.Forms
             btnClear.TabIndex = 26;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
+            btnClear.Click += new EventHandler(btnClear_Click);
             // 
             // btnInsert
             // 
@@ -461,7 +461,7 @@ namespace System.Windows.Forms
             btnInsert.TabIndex = 24;
             btnInsert.Text = "Insert";
             btnInsert.UseVisualStyleBackColor = true;
-            btnInsert.Click += btnInsert_Click;
+            btnInsert.Click += new EventHandler(btnInsert_Click);
             // 
             // SRT0Editor
             // 

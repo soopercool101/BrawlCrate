@@ -352,7 +352,7 @@ namespace System.Windows.Forms
             numScaleX.Size = new Drawing.Size(70, 20);
             numScaleX.TabIndex = 3;
             numScaleX.Text = "0";
-            numScaleX.ValueChanged += BoxChanged;
+            numScaleX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label4
             // 
@@ -374,7 +374,7 @@ namespace System.Windows.Forms
             numRotX.Size = new Drawing.Size(70, 20);
             numRotX.TabIndex = 6;
             numRotX.Text = "0";
-            numRotX.ValueChanged += BoxChanged;
+            numRotX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numTransX
             // 
@@ -385,7 +385,7 @@ namespace System.Windows.Forms
             numTransX.Size = new Drawing.Size(70, 20);
             numTransX.TabIndex = 9;
             numTransX.Text = "0";
-            numTransX.ValueChanged += BoxChanged;
+            numTransX.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label5
             // 
@@ -418,7 +418,7 @@ namespace System.Windows.Forms
             numScaleY.Size = new Drawing.Size(70, 20);
             numScaleY.TabIndex = 4;
             numScaleY.Text = "0";
-            numScaleY.ValueChanged += BoxChanged;
+            numScaleY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numTransY
             // 
@@ -429,7 +429,7 @@ namespace System.Windows.Forms
             numTransY.Size = new Drawing.Size(70, 20);
             numTransY.TabIndex = 10;
             numTransY.Text = "0";
-            numTransY.ValueChanged += BoxChanged;
+            numTransY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numRotY
             // 
@@ -440,7 +440,7 @@ namespace System.Windows.Forms
             numRotY.Size = new Drawing.Size(70, 20);
             numRotY.TabIndex = 7;
             numRotY.Text = "0";
-            numRotY.ValueChanged += BoxChanged;
+            numRotY.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numScaleZ
             // 
@@ -451,7 +451,7 @@ namespace System.Windows.Forms
             numScaleZ.Size = new Drawing.Size(70, 20);
             numScaleZ.TabIndex = 5;
             numScaleZ.Text = "0";
-            numScaleZ.ValueChanged += BoxChanged;
+            numScaleZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numTransZ
             // 
@@ -462,7 +462,7 @@ namespace System.Windows.Forms
             numTransZ.Size = new Drawing.Size(70, 20);
             numTransZ.TabIndex = 11;
             numTransZ.Text = "0";
-            numTransZ.ValueChanged += BoxChanged;
+            numTransZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // numRotZ
             // 
@@ -473,7 +473,7 @@ namespace System.Windows.Forms
             numRotZ.Size = new Drawing.Size(70, 20);
             numRotZ.TabIndex = 8;
             numRotZ.Text = "0";
-            numRotZ.ValueChanged += BoxChanged;
+            numRotZ.ValueChanged += new EventHandler(BoxChanged);
             // 
             // label7
             // 
@@ -504,7 +504,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numFrame.ValueChanged += numFrame_ValueChanged;
+            numFrame.ValueChanged += new EventHandler(numFrame_ValueChanged);
             // 
             // lblFrameCount
             // 
@@ -525,7 +525,7 @@ namespace System.Windows.Forms
             btnPrev.Text = "<";
             btnPrev.TextAlign = ContentAlignment.TopCenter;
             btnPrev.UseVisualStyleBackColor = true;
-            btnPrev.Click += btnPrev_Click;
+            btnPrev.Click += new EventHandler(btnPrev_Click);
             // 
             // btnNext
             // 
@@ -537,7 +537,7 @@ namespace System.Windows.Forms
             btnNext.Text = ">";
             btnNext.TextAlign = ContentAlignment.TopCenter;
             btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += btnNext_Click;
+            btnNext.Click += new EventHandler(btnNext_Click);
             // 
             // listKeyframes
             // 
@@ -550,7 +550,7 @@ namespace System.Windows.Forms
             listKeyframes.Name = "listKeyframes";
             listKeyframes.Size = new Drawing.Size(294, 76);
             listKeyframes.TabIndex = 18;
-            listKeyframes.SelectedIndexChanged += listKeyframes_SelectedIndexChanged;
+            listKeyframes.SelectedIndexChanged += new EventHandler(listKeyframes_SelectedIndexChanged);
             // 
             // groupBox1
             // 

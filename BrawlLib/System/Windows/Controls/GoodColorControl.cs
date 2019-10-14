@@ -329,7 +329,7 @@ namespace System.Windows.Forms
             txtColorCode.TabIndex = 16;
             txtColorCode.Text = "000000FF";
             txtColorCode.TextAlign = HorizontalAlignment.Center;
-            txtColorCode.TextChanged += txtColorCode_TextChanged;
+            txtColorCode.TextChanged += new EventHandler(txtColorCode_TextChanged);
             txtColorCode.KeyPress += new KeyPressEventHandler(txtColorCode_KeyPress);
             // 
             // GoodColorControl

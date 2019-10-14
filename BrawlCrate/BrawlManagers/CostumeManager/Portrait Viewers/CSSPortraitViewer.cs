@@ -241,7 +241,7 @@ namespace BrawlCrate.CostumeManager
             saveButton.TabIndex = 2;
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += saveButton_Click;
+            saveButton.Click += new EventHandler(saveButton_Click);
             // 
             // CSSPortraitViewer
             // 

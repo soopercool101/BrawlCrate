@@ -46,7 +46,7 @@ namespace System.Windows.Forms
             listBox1.Name = "listBox1";
             listBox1.Size = new Drawing.Size(256, 49);
             listBox1.TabIndex = 0;
-            listBox1.SelectedValueChanged += listBox1_SelectedValueChanged;
+            listBox1.SelectedValueChanged += new EventHandler(listBox1_SelectedValueChanged);
             // 
             // label1
             // 
@@ -66,7 +66,7 @@ namespace System.Windows.Forms
             listBox2.Name = "listBox2";
             listBox2.Size = new Drawing.Size(261, 49);
             listBox2.TabIndex = 2;
-            listBox2.SelectedValueChanged += listBox2_SelectedValueChanged;
+            listBox2.SelectedValueChanged += new EventHandler(listBox2_SelectedValueChanged);
             // 
             // label2
             // 
@@ -86,7 +86,7 @@ namespace System.Windows.Forms
             button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
             button1.Visible = false;
-            button1.Click += button1_Click;
+            button1.Click += new EventHandler(button1_Click);
             // 
             // label3
             // 
@@ -105,7 +105,7 @@ namespace System.Windows.Forms
             trackBar1.Size = new Drawing.Size(204, 45);
             trackBar1.TabIndex = 6;
             trackBar1.TickStyle = TickStyle.None;
-            trackBar1.Scroll += trackBar1_Scroll;
+            trackBar1.Scroll += new EventHandler(trackBar1_Scroll);
             // 
             // label4
             // 
@@ -143,7 +143,7 @@ namespace System.Windows.Forms
             button2.Text = "Remove";
             button2.UseVisualStyleBackColor = true;
             button2.Visible = false;
-            button2.Click += button2_Click;
+            button2.Click += new EventHandler(button2_Click);
             // 
             // label7
             // 
@@ -173,7 +173,7 @@ namespace System.Windows.Forms
             button4.Text = "Add";
             button4.UseVisualStyleBackColor = true;
             button4.Visible = false;
-            button4.Click += button4_Click;
+            button4.Click += new EventHandler(button4_Click);
             // 
             // splitter1
             // 
@@ -210,7 +210,7 @@ namespace System.Windows.Forms
             button5.TabIndex = 18;
             button5.Text = "Set";
             button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            button5.Click += new EventHandler(button5_Click);
             // 
             // textBox1
             // 
@@ -223,7 +223,7 @@ namespace System.Windows.Forms
             textBox1.Size = new Drawing.Size(41, 20);
             textBox1.TabIndex = 9;
             textBox1.Text = "0";
-            textBox1.ValueChanged += PercentChanged;
+            textBox1.ValueChanged += new EventHandler(PercentChanged);
             // 
             // SHP0Editor
             // 

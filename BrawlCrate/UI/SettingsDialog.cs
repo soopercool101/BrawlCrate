@@ -491,7 +491,7 @@ namespace BrawlCrate
             chkShowPropDesc.TabIndex = 7;
             chkShowPropDesc.Text = "Show property description box when available";
             chkShowPropDesc.UseVisualStyleBackColor = true;
-            chkShowPropDesc.CheckedChanged += ChkShowPropDesc_CheckedChanged;
+            chkShowPropDesc.CheckedChanged += new EventHandler(ChkShowPropDesc_CheckedChanged);
             // 
             // chkShowHex
             // 
@@ -502,7 +502,7 @@ namespace BrawlCrate
             chkShowHex.TabIndex = 9;
             chkShowHex.Text = "Show hexadecimal for files without previews";
             chkShowHex.UseVisualStyleBackColor = true;
-            chkShowHex.CheckedChanged += ChkShowHex_CheckedChanged;
+            chkShowHex.CheckedChanged += new EventHandler(ChkShowHex_CheckedChanged);
             // 
             // chkDocUpdates
             // 
@@ -513,7 +513,7 @@ namespace BrawlCrate
             chkDocUpdates.TabIndex = 11;
             chkDocUpdates.Text = "Receive documentation updates";
             chkDocUpdates.UseVisualStyleBackColor = true;
-            chkDocUpdates.CheckedChanged += ChkDocUpdates_CheckedChanged;
+            chkDocUpdates.CheckedChanged += new EventHandler(ChkDocUpdates_CheckedChanged);
             // 
             // chkCanary
             // 
@@ -524,7 +524,7 @@ namespace BrawlCrate
             chkCanary.TabIndex = 13;
             chkCanary.Text = "Opt into BrawlCrate Canary (Experimental) updates";
             chkCanary.UseVisualStyleBackColor = true;
-            chkCanary.CheckedChanged += ChkCanary_CheckedChanged;
+            chkCanary.CheckedChanged += new EventHandler(ChkCanary_CheckedChanged);
             // 
             // tabControl1
             // 
@@ -577,7 +577,7 @@ namespace BrawlCrate
             chkBoxRenderARC.TabIndex = 9;
             chkBoxRenderARC.Text = "Render previews for ARC";
             chkBoxRenderARC.UseVisualStyleBackColor = true;
-            chkBoxRenderARC.CheckedChanged += ChkBoxRenderARC_CheckedChanged;
+            chkBoxRenderARC.CheckedChanged += new EventHandler(ChkBoxRenderARC_CheckedChanged);
             // 
             // chkBoxRenderBRRES
             // 
@@ -588,7 +588,7 @@ namespace BrawlCrate
             chkBoxRenderBRRES.TabIndex = 8;
             chkBoxRenderBRRES.Text = "Render previews for BRRES";
             chkBoxRenderBRRES.UseVisualStyleBackColor = true;
-            chkBoxRenderBRRES.CheckedChanged += ChkBoxRenderBRRES_CheckedChanged;
+            chkBoxRenderBRRES.CheckedChanged += new EventHandler(ChkBoxRenderBRRES_CheckedChanged);
             // 
             // chkBoxMDL0Compatibility
             // 
@@ -599,7 +599,7 @@ namespace BrawlCrate
             chkBoxMDL0Compatibility.TabIndex = 7;
             chkBoxMDL0Compatibility.Text = "Use compatibility mode";
             chkBoxMDL0Compatibility.UseVisualStyleBackColor = true;
-            chkBoxMDL0Compatibility.CheckedChanged += ChkBoxMDL0Compatibility_CheckedChanged;
+            chkBoxMDL0Compatibility.CheckedChanged += new EventHandler(ChkBoxMDL0Compatibility_CheckedChanged);
             // 
             // grpBoxAudioGeneral
             // 
@@ -622,7 +622,7 @@ namespace BrawlCrate
             chkBoxAutoPlayAudio.TabIndex = 7;
             chkBoxAutoPlayAudio.Text = "Automatically play audio nodes";
             chkBoxAutoPlayAudio.UseVisualStyleBackColor = true;
-            chkBoxAutoPlayAudio.CheckedChanged += ChkBoxAutoPlayAudio_CheckedChanged;
+            chkBoxAutoPlayAudio.CheckedChanged += new EventHandler(ChkBoxAutoPlayAudio_CheckedChanged);
             // 
             // grpBoxMainFormGeneral
             // 
@@ -660,7 +660,7 @@ namespace BrawlCrate
             recentFileCountBox.Size = new System.Drawing.Size(100, 20);
             recentFileCountBox.TabIndex = 11;
             recentFileCountBox.Text = "0";
-            recentFileCountBox.TextChanged += RecentFileCountBox_TextChanged;
+            recentFileCountBox.TextChanged += new EventHandler(RecentFileCountBox_TextChanged);
             // 
             // grpBoxFileNameDisplayGeneral
             // 
@@ -685,7 +685,7 @@ namespace BrawlCrate
             rdoShowShortName.TabStop = true;
             rdoShowShortName.Text = "Show filename";
             rdoShowShortName.UseVisualStyleBackColor = true;
-            rdoShowShortName.CheckedChanged += RdoPathDisplay_CheckedChanged;
+            rdoShowShortName.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
             // 
             // rdoShowFullPath
             // 
@@ -697,7 +697,7 @@ namespace BrawlCrate
             rdoShowFullPath.TabStop = true;
             rdoShowFullPath.Text = "Show full path";
             rdoShowFullPath.UseVisualStyleBackColor = true;
-            rdoShowFullPath.CheckedChanged += RdoPathDisplay_CheckedChanged;
+            rdoShowFullPath.CheckedChanged += new EventHandler(RdoPathDisplay_CheckedChanged);
             // 
             // tabCompression
             // 
@@ -733,7 +733,7 @@ namespace BrawlCrate
             chkBoxModuleCompress.TabIndex = 7;
             chkBoxModuleCompress.Text = "Automatically compress files (not recommended)";
             chkBoxModuleCompress.UseVisualStyleBackColor = true;
-            chkBoxModuleCompress.CheckedChanged += ChkBoxModuleCompress_CheckedChanged;
+            chkBoxModuleCompress.CheckedChanged += new EventHandler(ChkBoxModuleCompress_CheckedChanged);
             // 
             // groupBoxStageCompression
             // 
@@ -756,7 +756,7 @@ namespace BrawlCrate
             chkBoxStageCompress.TabIndex = 7;
             chkBoxStageCompress.Text = "Automatically compress files";
             chkBoxStageCompress.UseVisualStyleBackColor = true;
-            chkBoxStageCompress.CheckedChanged += ChkBoxStageCompress_CheckedChanged;
+            chkBoxStageCompress.CheckedChanged += new EventHandler(ChkBoxStageCompress_CheckedChanged);
             // 
             // groupBoxFighterCompression
             // 
@@ -780,7 +780,7 @@ namespace BrawlCrate
             chkBoxFighterPacDecompress.TabIndex = 7;
             chkBoxFighterPacDecompress.Text = "Automatically decompress PAC files";
             chkBoxFighterPacDecompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPacDecompress.CheckedChanged += ChkBoxFighterPacDecompress_CheckedChanged;
+            chkBoxFighterPacDecompress.CheckedChanged += new EventHandler(ChkBoxFighterPacDecompress_CheckedChanged);
             // 
             // chkBoxFighterPcsCompress
             // 
@@ -791,7 +791,7 @@ namespace BrawlCrate
             chkBoxFighterPcsCompress.TabIndex = 9;
             chkBoxFighterPcsCompress.Text = "Automatically compress PCS files";
             chkBoxFighterPcsCompress.UseVisualStyleBackColor = true;
-            chkBoxFighterPcsCompress.CheckedChanged += ChkBoxFighterPcsCompress_CheckedChanged;
+            chkBoxFighterPcsCompress.CheckedChanged += new EventHandler(ChkBoxFighterPcsCompress_CheckedChanged);
             // 
             // tabFileAssociations
             // 
@@ -827,7 +827,7 @@ namespace BrawlCrate
             binFileAssociation.TabIndex = 9;
             binFileAssociation.Text = "Associate with .bin files";
             binFileAssociation.UseVisualStyleBackColor = true;
-            binFileAssociation.CheckedChanged += BinFileAssociation_CheckedChanged;
+            binFileAssociation.CheckedChanged += new EventHandler(BinFileAssociation_CheckedChanged);
             // 
             // datFileAssociation
             // 
@@ -838,7 +838,7 @@ namespace BrawlCrate
             datFileAssociation.TabIndex = 8;
             datFileAssociation.Text = "Associate with .dat files";
             datFileAssociation.UseVisualStyleBackColor = true;
-            datFileAssociation.CheckedChanged += DatFileAssociation_CheckedChanged;
+            datFileAssociation.CheckedChanged += new EventHandler(DatFileAssociation_CheckedChanged);
             // 
             // lblAdminApproval
             // 
@@ -863,7 +863,7 @@ namespace BrawlCrate
             btnApply.TabIndex = 4;
             btnApply.Text = "Apply";
             btnApply.UseVisualStyleBackColor = true;
-            btnApply.Click += BtnApply_Click;
+            btnApply.Click += new EventHandler(BtnApply_Click);
             // 
             // associatiedFilesBox
             // 
@@ -889,7 +889,7 @@ namespace BrawlCrate
             checkBox1.TabIndex = 5;
             checkBox1.Text = "Check All";
             checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
+            checkBox1.CheckedChanged += new EventHandler(CheckBox1_CheckedChanged);
             // 
             // listView1
             // 
@@ -1021,7 +1021,7 @@ namespace BrawlCrate
             txtBoxFSharpPath.Size = new System.Drawing.Size(219, 20);
             txtBoxFSharpPath.TabIndex = 3;
             txtBoxFSharpPath.Text = "(none)";
-            txtBoxFSharpPath.TextChanged += TxtBoxFSharpPath_TextChanged;
+            txtBoxFSharpPath.TextChanged += new EventHandler(TxtBoxFSharpPath_TextChanged);
             // 
             // btnFSharpBrowse
             // 
@@ -1033,7 +1033,7 @@ namespace BrawlCrate
             btnFSharpBrowse.TabIndex = 21;
             btnFSharpBrowse.Text = "...";
             btnFSharpBrowse.UseVisualStyleBackColor = true;
-            btnFSharpBrowse.Click += BtnFSharpBrowse_Click;
+            btnFSharpBrowse.Click += new EventHandler(BtnFSharpBrowse_Click);
             // 
             // btnFSharpDetect
             // 
@@ -1045,7 +1045,7 @@ namespace BrawlCrate
             btnFSharpDetect.TabIndex = 22;
             btnFSharpDetect.Text = "Auto-Detect";
             btnFSharpDetect.UseVisualStyleBackColor = true;
-            btnFSharpDetect.Click += BtnFSharpDetect_Click;
+            btnFSharpDetect.Click += new EventHandler(BtnFSharpDetect_Click);
             // 
             // label2
             // 
@@ -1080,7 +1080,7 @@ namespace BrawlCrate
             txtBoxPythonPath.Size = new System.Drawing.Size(219, 20);
             txtBoxPythonPath.TabIndex = 3;
             txtBoxPythonPath.Text = "(none)";
-            txtBoxPythonPath.TextChanged += TxtBoxPythonPath_TextChanged;
+            txtBoxPythonPath.TextChanged += new EventHandler(TxtBoxPythonPath_TextChanged);
             // 
             // btnPythonBrowse
             // 
@@ -1092,7 +1092,7 @@ namespace BrawlCrate
             btnPythonBrowse.TabIndex = 21;
             btnPythonBrowse.Text = "...";
             btnPythonBrowse.UseVisualStyleBackColor = true;
-            btnPythonBrowse.Click += BtnPythonBrowse_Click;
+            btnPythonBrowse.Click += new EventHandler(BtnPythonBrowse_Click);
             // 
             // btnPythonDetect
             // 
@@ -1104,7 +1104,7 @@ namespace BrawlCrate
             btnPythonDetect.TabIndex = 22;
             btnPythonDetect.Text = "Auto-Detect";
             btnPythonDetect.UseVisualStyleBackColor = true;
-            btnPythonDetect.Click += BtnPythonDetect_Click;
+            btnPythonDetect.Click += new EventHandler(BtnPythonDetect_Click);
             // 
             // label1
             // 
@@ -1137,7 +1137,7 @@ namespace BrawlCrate
             chkBoxAPIEnableLoaders.TabIndex = 8;
             chkBoxAPIEnableLoaders.Text = "Enable Loaders";
             chkBoxAPIEnableLoaders.UseVisualStyleBackColor = true;
-            chkBoxAPIEnableLoaders.CheckedChanged += ChkBoxAPIEnableLoaders_CheckedChanged;
+            chkBoxAPIEnableLoaders.CheckedChanged += new EventHandler(ChkBoxAPIEnableLoaders_CheckedChanged);
             // 
             // chkBoxEnableAPI
             // 
@@ -1148,7 +1148,7 @@ namespace BrawlCrate
             chkBoxEnableAPI.TabIndex = 7;
             chkBoxEnableAPI.Text = "Enable BrawlAPI";
             chkBoxEnableAPI.UseVisualStyleBackColor = true;
-            chkBoxEnableAPI.CheckedChanged += ChkBoxEnableAPI_CheckedChanged;
+            chkBoxEnableAPI.CheckedChanged += new EventHandler(ChkBoxEnableAPI_CheckedChanged);
             // 
             // tabDiscord
             // 
@@ -1183,7 +1183,7 @@ namespace BrawlCrate
             chkBoxEnableDiscordRPC.TabIndex = 1;
             chkBoxEnableDiscordRPC.Text = "Enable Discord Rich Presence";
             chkBoxEnableDiscordRPC.UseVisualStyleBackColor = true;
-            chkBoxEnableDiscordRPC.CheckedChanged += ChkBoxEnableDiscordRPC_CheckedChanged;
+            chkBoxEnableDiscordRPC.CheckedChanged += new EventHandler(ChkBoxEnableDiscordRPC_CheckedChanged);
             // 
             // grpBoxDiscordRPCType
             // 
@@ -1210,7 +1210,7 @@ namespace BrawlCrate
             DiscordRPCCustomName.Size = new System.Drawing.Size(301, 20);
             DiscordRPCCustomName.TabIndex = 2;
             DiscordRPCCustomName.Text = "My Mod";
-            DiscordRPCCustomName.TextChanged += DiscordRPCCustomName_TextChanged;
+            DiscordRPCCustomName.TextChanged += new EventHandler(DiscordRPCCustomName_TextChanged);
             // 
             // rdoDiscordRPCNameCustom
             // 
@@ -1221,7 +1221,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameCustom.TabIndex = 3;
             rdoDiscordRPCNameCustom.TabStop = true;
             rdoDiscordRPCNameCustom.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameCustom.CheckedChanged += DiscordRPCNameSettings_CheckedChanged;
+            rdoDiscordRPCNameCustom.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameExternal
             // 
@@ -1233,7 +1233,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameExternal.TabStop = true;
             rdoDiscordRPCNameExternal.Text = "Use external filename";
             rdoDiscordRPCNameExternal.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameExternal.CheckedChanged += DiscordRPCNameSettings_CheckedChanged;
+            rdoDiscordRPCNameExternal.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameInternal
             // 
@@ -1245,7 +1245,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameInternal.TabStop = true;
             rdoDiscordRPCNameInternal.Text = "Use internal filename";
             rdoDiscordRPCNameInternal.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameInternal.CheckedChanged += DiscordRPCNameSettings_CheckedChanged;
+            rdoDiscordRPCNameInternal.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // rdoDiscordRPCNameDisabled
             // 
@@ -1257,7 +1257,7 @@ namespace BrawlCrate
             rdoDiscordRPCNameDisabled.TabStop = true;
             rdoDiscordRPCNameDisabled.Text = "Disabled";
             rdoDiscordRPCNameDisabled.UseVisualStyleBackColor = true;
-            rdoDiscordRPCNameDisabled.CheckedChanged += DiscordRPCNameSettings_CheckedChanged;
+            rdoDiscordRPCNameDisabled.CheckedChanged += new EventHandler(DiscordRPCNameSettings_CheckedChanged);
             // 
             // tabUpdater
             // 
@@ -1307,7 +1307,7 @@ namespace BrawlCrate
             rdoAutoUpdate.TabStop = true;
             rdoAutoUpdate.Text = "Automatic";
             rdoAutoUpdate.UseVisualStyleBackColor = true;
-            rdoAutoUpdate.CheckedChanged += UpdaterBehavior_CheckedChanged;
+            rdoAutoUpdate.CheckedChanged += new EventHandler(UpdaterBehavior_CheckedChanged);
             // 
             // rdoCheckManual
             // 
@@ -1339,7 +1339,7 @@ namespace BrawlCrate
             Icon = BrawlLib.Properties.Resources.Icon;
             Name = "SettingsDialog";
             Text = "Settings";
-            Shown += SettingsDialog_Shown;
+            Shown += new EventHandler(SettingsDialog_Shown);
             tabControl1.ResumeLayout(false);
             tabGeneral.ResumeLayout(false);
             grpBoxMDL0General.ResumeLayout(false);

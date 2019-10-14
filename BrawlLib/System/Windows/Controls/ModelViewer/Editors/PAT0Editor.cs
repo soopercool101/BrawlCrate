@@ -40,7 +40,7 @@ namespace System.Windows.Forms
             texBox.Name = "texBox";
             texBox.Size = new Drawing.Size(288, 21);
             texBox.TabIndex = 2;
-            texBox.ValueChanged += TexChanged;
+            texBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // pltBox
             // 
@@ -52,7 +52,7 @@ namespace System.Windows.Forms
             pltBox.Name = "pltBox";
             pltBox.Size = new Drawing.Size(288, 21);
             pltBox.TabIndex = 4;
-            pltBox.ValueChanged += TexChanged;
+            pltBox.ValueChanged += new EventHandler(TexChanged);
             // 
             // label2
             // 
@@ -88,7 +88,7 @@ namespace System.Windows.Forms
             btnPaste.TabIndex = 26;
             btnPaste.Text = "Paste";
             btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += btnPaste_Click;
+            btnPaste.Click += new EventHandler(btnPaste_Click);
             // 
             // btnCopy
             // 
@@ -98,7 +98,7 @@ namespace System.Windows.Forms
             btnCopy.TabIndex = 25;
             btnCopy.Text = "Copy";
             btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
+            btnCopy.Click += new EventHandler(btnCopy_Click);
             // 
             // btnCut
             // 
@@ -108,7 +108,7 @@ namespace System.Windows.Forms
             btnCut.TabIndex = 24;
             btnCut.Text = "Cut";
             btnCut.UseVisualStyleBackColor = true;
-            btnCut.Click += btnCut_Click;
+            btnCut.Click += new EventHandler(btnCut_Click);
             // 
             // PAT0Editor
             // 

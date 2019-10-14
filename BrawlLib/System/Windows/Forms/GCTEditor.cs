@@ -23,7 +23,7 @@ namespace System.Windows.Forms
             InitializeComponent();
             txtCode.TextChanged += txtCode_TextChanged;
             lstCodes.ItemChecked += new ItemCheckedEventHandler(lstCodes_ItemChecked);
-            lstCodes.SelectedIndexChanged += lstCodes_SelectedIndexChanged;
+            lstCodes.SelectedIndexChanged += new EventHandler(lstCodes_SelectedIndexChanged);
 
             Text = ((AssemblyTitleAttribute) Attribute.GetCustomAttribute(Assembly.GetEntryAssembly(),
                 typeof(AssemblyTitleAttribute), false)).Title + " - Code Manager";

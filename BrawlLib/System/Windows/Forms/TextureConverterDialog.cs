@@ -1170,7 +1170,7 @@ namespace System.Windows.Forms
             chkPreview.TabIndex = 0;
             chkPreview.Text = "Preview";
             chkPreview.UseVisualStyleBackColor = true;
-            chkPreview.CheckedChanged += chkPreview_CheckedChanged;
+            chkPreview.CheckedChanged += new EventHandler(chkPreview_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -1209,7 +1209,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numLOD.ValueChanged += numLOD_ValueChanged;
+            numLOD.ValueChanged += new EventHandler(numLOD_ValueChanged);
             // 
             // label5
             // 
@@ -1230,7 +1230,7 @@ namespace System.Windows.Forms
             cboFormat.Name = "cboFormat";
             cboFormat.Size = new Drawing.Size(98, 21);
             cboFormat.TabIndex = 1;
-            cboFormat.SelectedIndexChanged += cboFormat_SelectedIndexChanged;
+            cboFormat.SelectedIndexChanged += new EventHandler(cboFormat_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -1251,7 +1251,7 @@ namespace System.Windows.Forms
             btnRecommend.TabIndex = 1;
             btnRecommend.Text = "Recommend";
             btnRecommend.UseVisualStyleBackColor = true;
-            btnRecommend.Click += btnRecommend_Click;
+            btnRecommend.Click += new EventHandler(btnRecommend_Click);
             // 
             // groupBox2
             // 
@@ -1357,7 +1357,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 11;
             btnOkay.Text = "Okay";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -1368,7 +1368,7 @@ namespace System.Windows.Forms
             btnCancel.TabIndex = 12;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
-            btnCancel.Click += btnCancel_Click;
+            btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // grpPalette
             // 
@@ -1397,7 +1397,7 @@ namespace System.Windows.Forms
             ChkImportPalette.TabIndex = 6;
             ChkImportPalette.Text = "Import Palette";
             ChkImportPalette.UseVisualStyleBackColor = true;
-            ChkImportPalette.CheckedChanged += chkImportPalette_CheckedChanged;
+            ChkImportPalette.CheckedChanged += new EventHandler(chkImportPalette_CheckedChanged);
             // 
             // cboAlgorithm
             // 
@@ -1409,7 +1409,7 @@ namespace System.Windows.Forms
             cboAlgorithm.Name = "cboAlgorithm";
             cboAlgorithm.Size = new Drawing.Size(98, 21);
             cboAlgorithm.TabIndex = 5;
-            cboAlgorithm.SelectedIndexChanged += formatChanged;
+            cboAlgorithm.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label8
             // 
@@ -1456,7 +1456,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numPaletteCount.ValueChanged += formatChanged;
+            numPaletteCount.ValueChanged += new EventHandler(formatChanged);
             // 
             // label7
             // 
@@ -1477,7 +1477,7 @@ namespace System.Windows.Forms
             cboPaletteFormat.Name = "cboPaletteFormat";
             cboPaletteFormat.Size = new Drawing.Size(98, 21);
             cboPaletteFormat.TabIndex = 1;
-            cboPaletteFormat.SelectedIndexChanged += formatChanged;
+            cboPaletteFormat.SelectedIndexChanged += new EventHandler(formatChanged);
             // 
             // label6
             // 
@@ -1521,7 +1521,7 @@ namespace System.Windows.Forms
             chkSwapRGB.TabIndex = 8;
             chkSwapRGB.Text = "Swap RGB";
             chkSwapRGB.UseVisualStyleBackColor = true;
-            chkSwapRGB.CheckedChanged += chkSwapRGB_CheckedChanged;
+            chkSwapRGB.CheckedChanged += new EventHandler(chkSwapRGB_CheckedChanged);
             // 
             // chkSwapAlpha
             // 
@@ -1532,7 +1532,7 @@ namespace System.Windows.Forms
             chkSwapAlpha.TabIndex = 9;
             chkSwapAlpha.Text = "Swap Alpha";
             chkSwapAlpha.UseVisualStyleBackColor = true;
-            chkSwapAlpha.CheckedChanged += chkSwapAlpha_CheckedChanged;
+            chkSwapAlpha.CheckedChanged += new EventHandler(chkSwapAlpha_CheckedChanged);
             // 
             // chkConstrainProps
             // 
@@ -1545,7 +1545,7 @@ namespace System.Windows.Forms
             chkConstrainProps.TabIndex = 7;
             chkConstrainProps.Text = "Constrain Proportions";
             chkConstrainProps.UseVisualStyleBackColor = true;
-            chkConstrainProps.CheckedChanged += chkConstrainProps_CheckedChanged;
+            chkConstrainProps.CheckedChanged += new EventHandler(chkConstrainProps_CheckedChanged);
             // 
             // btnApplyDims
             // 
@@ -1557,7 +1557,7 @@ namespace System.Windows.Forms
             btnApplyDims.TabIndex = 6;
             btnApplyDims.Text = "Apply";
             btnApplyDims.UseVisualStyleBackColor = true;
-            btnApplyDims.Click += btnApplyDims_Click;
+            btnApplyDims.Click += new EventHandler(btnApplyDims_Click);
             // 
             // label11
             // 
@@ -1597,7 +1597,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numH.ValueChanged += numH_ValueChanged;
+            numH.ValueChanged += new EventHandler(numH_ValueChanged);
             // 
             // numW
             // 
@@ -1628,7 +1628,7 @@ namespace System.Windows.Forms
                 0,
                 0
             });
-            numW.ValueChanged += numW_ValueChanged;
+            numW.ValueChanged += new EventHandler(numW_ValueChanged);
             // 
             // label10
             // 
@@ -1695,7 +1695,7 @@ namespace System.Windows.Forms
                 0
             });
             numMIPPreview.Visible = false;
-            numMIPPreview.ValueChanged += numMIPPreview_ValueChanged;
+            numMIPPreview.ValueChanged += new EventHandler(numMIPPreview_ValueChanged);
             // 
             // label12
             // 
@@ -1717,7 +1717,7 @@ namespace System.Windows.Forms
             button1.TabIndex = 3;
             button1.Text = "Browse...";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += new EventHandler(button1_Click);
             // 
             // pictureBox1
             // 
@@ -1738,7 +1738,7 @@ namespace System.Windows.Forms
             chkSwapAlphaRGB.TabIndex = 10;
             chkSwapAlphaRGB.Text = "Swap Alpha with RGB";
             chkSwapAlphaRGB.UseVisualStyleBackColor = true;
-            chkSwapAlphaRGB.CheckedChanged += chkSwapAlphaRGB_CheckedChanged;
+            chkSwapAlphaRGB.CheckedChanged += new EventHandler(chkSwapAlphaRGB_CheckedChanged);
             // 
             // TextureConverterDialog
             // 

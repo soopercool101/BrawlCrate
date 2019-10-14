@@ -34,18 +34,18 @@ namespace BrawlCrate.StageManager
             ContextMenuStrip = new ContextMenuStrip();
 
             ToolStripMenuItem replace = new ToolStripMenuItem("Replace");
-            replace.Click += replace_Click;
+            replace.Click += new EventHandler(replace_Click);
             ToolStripMenuItem copy = new ToolStripMenuItem("Copy");
             copy.Click += copy_Click;
             ToolStripMenuItem export = new ToolStripMenuItem("Export");
-            export.Click += export_Click;
+            export.Click += new EventHandler(export_Click);
 
             ContextMenuStrip.Items.Add(replace);
             ContextMenuStrip.Items.Add(copy);
             ContextMenuStrip.Items.Add(export);
 
             borderChange = new ToolStripMenuItem("Repaint border ([)");
-            borderChange.Click += borderChange_Click;
+            borderChange.Click += new EventHandler(borderChange_Click);
         }
 
         private PortraitViewer getPVParent()

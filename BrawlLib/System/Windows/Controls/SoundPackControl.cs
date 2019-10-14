@@ -105,8 +105,8 @@ namespace System.Windows.Forms
             lstSets.UseCompatibleStateImageBehavior = false;
             lstSets.View = View.Details;
             lstSets.ColumnClick += new ColumnClickEventHandler(lstSets_ColumnClick);
-            lstSets.SelectedIndexChanged += lstSets_SelectedIndexChanged;
-            lstSets.DoubleClick += lstSets_DoubleClick;
+            lstSets.SelectedIndexChanged += new EventHandler(lstSets_SelectedIndexChanged);
+            lstSets.DoubleClick += new EventHandler(lstSets_DoubleClick);
             lstSets.KeyDown += new KeyEventHandler(lstSets_KeyDown);
             // 
             // clmType
@@ -147,28 +147,28 @@ namespace System.Windows.Forms
             mnuPath.Name = "mnuPath";
             mnuPath.Size = new Drawing.Size(137, 26);
             mnuPath.Text = "Path...";
-            mnuPath.Click += mnuPath_Click;
+            mnuPath.Click += new EventHandler(mnuPath_Click);
             // 
             // mnuExport
             // 
             mnuExport.Name = "mnuExport";
             mnuExport.Size = new Drawing.Size(137, 26);
             mnuExport.Text = "Export";
-            mnuExport.Click += mnuExport_Click;
+            mnuExport.Click += new EventHandler(mnuExport_Click);
             // 
             // mnuReplace
             // 
             mnuReplace.Name = "mnuReplace";
             mnuReplace.Size = new Drawing.Size(137, 26);
             mnuReplace.Text = "Replace";
-            mnuReplace.Click += mnuReplace_Click;
+            mnuReplace.Click += new EventHandler(mnuReplace_Click);
             // 
             // _deleteToolStripMenuItem
             // 
             _deleteToolStripMenuItem.Name = "_deleteToolStripMenuItem";
             _deleteToolStripMenuItem.Size = new Drawing.Size(137, 26);
             _deleteToolStripMenuItem.Text = "Delete";
-            _deleteToolStripMenuItem.Click += _deleteToolStripMenuItem_Click;
+            _deleteToolStripMenuItem.Click += new EventHandler(_deleteToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -203,35 +203,35 @@ namespace System.Windows.Forms
             rWSDToolStripMenuItem.Name = "rWSDToolStripMenuItem";
             rWSDToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rWSDToolStripMenuItem.Text = "RWSD";
-            rWSDToolStripMenuItem.Click += rWSDToolStripMenuItem_Click;
+            rWSDToolStripMenuItem.Click += new EventHandler(rWSDToolStripMenuItem_Click);
             // 
             // rSEQToolStripMenuItem
             // 
             rSEQToolStripMenuItem.Name = "rSEQToolStripMenuItem";
             rSEQToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rSEQToolStripMenuItem.Text = "RSEQ";
-            rSEQToolStripMenuItem.Click += rSEQToolStripMenuItem_Click;
+            rSEQToolStripMenuItem.Click += new EventHandler(rSEQToolStripMenuItem_Click);
             // 
             // rBNKToolStripMenuItem
             // 
             rBNKToolStripMenuItem.Name = "rBNKToolStripMenuItem";
             rBNKToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rBNKToolStripMenuItem.Text = "RBNK";
-            rBNKToolStripMenuItem.Click += rBNKToolStripMenuItem_Click;
+            rBNKToolStripMenuItem.Click += new EventHandler(rBNKToolStripMenuItem_Click);
             // 
             // rSTMToolStripMenuItem
             // 
             rSTMToolStripMenuItem.Name = "rSTMToolStripMenuItem";
             rSTMToolStripMenuItem.Size = new Drawing.Size(207, 26);
             rSTMToolStripMenuItem.Text = "RSTM";
-            rSTMToolStripMenuItem.Click += rSTMToolStripMenuItem_Click;
+            rSTMToolStripMenuItem.Click += new EventHandler(rSTMToolStripMenuItem_Click);
             // 
             // externalReferenceToolStripMenuItem
             // 
             externalReferenceToolStripMenuItem.Name = "externalReferenceToolStripMenuItem";
             externalReferenceToolStripMenuItem.Size = new Drawing.Size(207, 26);
             externalReferenceToolStripMenuItem.Text = "External Reference";
-            externalReferenceToolStripMenuItem.Click += externalReferenceToolStripMenuItem_Click;
+            externalReferenceToolStripMenuItem.Click += new EventHandler(externalReferenceToolStripMenuItem_Click);
             // 
             // audioPlaybackPanel1
             // 
@@ -260,14 +260,14 @@ namespace System.Windows.Forms
             makeAllExternalToolStripMenuItem.Name = "makeAllExternalToolStripMenuItem";
             makeAllExternalToolStripMenuItem.Size = new Drawing.Size(197, 26);
             makeAllExternalToolStripMenuItem.Text = "Make all external";
-            makeAllExternalToolStripMenuItem.Click += makeAllExternalToolStripMenuItem_Click;
+            makeAllExternalToolStripMenuItem.Click += new EventHandler(makeAllExternalToolStripMenuItem_Click);
             // 
             // makeAllInternalToolStripMenuItem
             // 
             makeAllInternalToolStripMenuItem.Name = "makeAllInternalToolStripMenuItem";
             makeAllInternalToolStripMenuItem.Size = new Drawing.Size(197, 26);
             makeAllInternalToolStripMenuItem.Text = "Make all internal";
-            makeAllInternalToolStripMenuItem.Click += makeAllInternalToolStripMenuItem_Click;
+            makeAllInternalToolStripMenuItem.Click += new EventHandler(makeAllInternalToolStripMenuItem_Click);
             // 
             // SoundPackControl
             // 
@@ -276,7 +276,7 @@ namespace System.Windows.Forms
             Controls.Add(menuStrip1);
             Name = "SoundPackControl";
             Size = new Drawing.Size(389, 253);
-            DoubleClick += lstSets_DoubleClick;
+            DoubleClick += new EventHandler(lstSets_DoubleClick);
             contextMenuStrip1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

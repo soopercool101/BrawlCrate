@@ -41,7 +41,7 @@ namespace System.Windows.Forms
             listBox1.Size = new Drawing.Size(310, 264);
             listBox1.TabIndex = 0;
             listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.SelectedIndexChanged += new EventHandler(listBox1_SelectedIndexChanged);
             listBox1.KeyDown += new KeyEventHandler(listBox1_KeyDown);
             listBox1.MouseDoubleClick += new MouseEventHandler(listBox1_MouseDoubleClick);
             // 
@@ -67,7 +67,7 @@ namespace System.Windows.Forms
             btnToggle.TabIndex = 5;
             btnToggle.Text = "&Toggle";
             btnToggle.UseVisualStyleBackColor = true;
-            btnToggle.Click += btnToggle_Click;
+            btnToggle.Click += new EventHandler(btnToggle_Click);
             // 
             // btnSet
             // 
@@ -78,7 +78,7 @@ namespace System.Windows.Forms
             btnSet.TabIndex = 4;
             btnSet.Text = "&Set";
             btnSet.UseVisualStyleBackColor = true;
-            btnSet.Click += btnSet_Click;
+            btnSet.Click += new EventHandler(btnSet_Click);
             // 
             // btnClear
             // 
@@ -89,7 +89,7 @@ namespace System.Windows.Forms
             btnClear.TabIndex = 3;
             btnClear.Text = "&Clear";
             btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += btnClear_Click;
+            btnClear.Click += new EventHandler(btnClear_Click);
             // 
             // btnInvert
             // 
@@ -99,7 +99,7 @@ namespace System.Windows.Forms
             btnInvert.TabIndex = 2;
             btnInvert.Text = "&Invert";
             btnInvert.UseVisualStyleBackColor = true;
-            btnInvert.Click += btnInvert_Click;
+            btnInvert.Click += new EventHandler(btnInvert_Click);
             // 
             // btnAll
             // 
@@ -109,7 +109,7 @@ namespace System.Windows.Forms
             btnAll.TabIndex = 1;
             btnAll.Text = "Select &All";
             btnAll.UseVisualStyleBackColor = true;
-            btnAll.Click += btnAll_Click;
+            btnAll.Click += new EventHandler(btnAll_Click);
             // 
             // VisEditor
             // 

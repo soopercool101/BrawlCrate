@@ -136,7 +136,7 @@ namespace System.Windows.Forms
             btnOkay.TabIndex = 1;
             btnOkay.Text = "&Done";
             btnOkay.UseVisualStyleBackColor = true;
-            btnOkay.Click += btnOkay_Click;
+            btnOkay.Click += new EventHandler(btnOkay_Click);
             // 
             // panel1
             // 
@@ -182,7 +182,7 @@ namespace System.Windows.Forms
             dataListBox.Name = "dataListBox";
             dataListBox.Size = new Drawing.Size(107, 139);
             dataListBox.TabIndex = 3;
-            dataListBox.SelectedIndexChanged += dataListBox_SelectedIndexChanged;
+            dataListBox.SelectedIndexChanged += new EventHandler(dataListBox_SelectedIndexChanged);
             // 
             // ctxData
             // 
@@ -202,14 +202,14 @@ namespace System.Windows.Forms
             dataReplace.Name = "dataReplace";
             dataReplace.Size = new Drawing.Size(181, 26);
             dataReplace.Text = "Replace";
-            dataReplace.Click += _replaceToolStripMenuItem_Click;
+            dataReplace.Click += new EventHandler(_replaceToolStripMenuItem_Click);
             // 
             // dataExport
             // 
             dataExport.Name = "dataExport";
             dataExport.Size = new Drawing.Size(181, 26);
             dataExport.Text = "Export";
-            dataExport.Click += exportToolStripMenuItem_Click;
+            dataExport.Click += new EventHandler(exportToolStripMenuItem_Click);
             // 
             // dataNew
             // 
@@ -223,42 +223,42 @@ namespace System.Windows.Forms
             dataNew.Name = "dataNew";
             dataNew.Size = new Drawing.Size(181, 26);
             dataNew.Text = "New";
-            dataNew.Click += dataNew_Click;
+            dataNew.Click += new EventHandler(dataNew_Click);
             // 
             // dataNewNullEntry
             // 
             dataNewNullEntry.Name = "dataNewNullEntry";
             dataNewNullEntry.Size = new Drawing.Size(215, 26);
             dataNewNullEntry.Text = "Null Entry";
-            dataNewNullEntry.Click += nullEntryToolStripMenuItem1_Click;
+            dataNewNullEntry.Click += new EventHandler(nullEntryToolStripMenuItem1_Click);
             // 
             // dataNewInstParam
             // 
             dataNewInstParam.Name = "dataNewInstParam";
             dataNewInstParam.Size = new Drawing.Size(215, 26);
             dataNewInstParam.Text = "Instance Parameters";
-            dataNewInstParam.Click += instanceParametersToolStripMenuItem_Click;
+            dataNewInstParam.Click += new EventHandler(instanceParametersToolStripMenuItem_Click);
             // 
             // dataNewRange
             // 
             dataNewRange.Name = "dataNewRange";
             dataNewRange.Size = new Drawing.Size(215, 26);
             dataNewRange.Text = "Range Group";
-            dataNewRange.Click += rangeGroupToolStripMenuItem1_Click;
+            dataNewRange.Click += new EventHandler(rangeGroupToolStripMenuItem1_Click);
             // 
             // dataNewIndex
             // 
             dataNewIndex.Name = "dataNewIndex";
             dataNewIndex.Size = new Drawing.Size(215, 26);
             dataNewIndex.Text = "Index Group";
-            dataNewIndex.Click += indexGroupToolStripMenuItem1_Click;
+            dataNewIndex.Click += new EventHandler(indexGroupToolStripMenuItem1_Click);
             // 
             // dataDelete
             // 
             dataDelete.Name = "dataDelete";
             dataDelete.Size = new Drawing.Size(181, 26);
             dataDelete.Text = "Delete";
-            dataDelete.Click += dataDelete_Click;
+            dataDelete.Click += new EventHandler(dataDelete_Click);
             // 
             // label1
             // 
@@ -305,7 +305,7 @@ namespace System.Windows.Forms
             soundsListBox.Name = "soundsListBox";
             soundsListBox.Size = new Drawing.Size(107, 136);
             soundsListBox.TabIndex = 2;
-            soundsListBox.SelectedIndexChanged += soundsListBox_SelectedIndexChanged;
+            soundsListBox.SelectedIndexChanged += new EventHandler(soundsListBox_SelectedIndexChanged);
             // 
             // ctxSounds
             // 
@@ -325,28 +325,28 @@ namespace System.Windows.Forms
             sndReplace.Name = "sndReplace";
             sndReplace.Size = new Drawing.Size(137, 26);
             sndReplace.Text = "Replace";
-            sndReplace.Click += toolStripMenuItem1_Click;
+            sndReplace.Click += new EventHandler(toolStripMenuItem1_Click);
             // 
             // sndExport
             // 
             sndExport.Name = "sndExport";
             sndExport.Size = new Drawing.Size(137, 26);
             sndExport.Text = "Export";
-            sndExport.Click += toolStripMenuItem2_Click;
+            sndExport.Click += new EventHandler(toolStripMenuItem2_Click);
             // 
             // sndNew
             // 
             sndNew.Name = "sndNew";
             sndNew.Size = new Drawing.Size(137, 26);
             sndNew.Text = "New";
-            sndNew.Click += sndNew_Click;
+            sndNew.Click += new EventHandler(sndNew_Click);
             // 
             // sndDelete
             // 
             sndDelete.Name = "sndDelete";
             sndDelete.Size = new Drawing.Size(137, 26);
             sndDelete.Text = "Delete";
-            sndDelete.Click += sndDelete_Click;
+            sndDelete.Click += new EventHandler(sndDelete_Click);
             // 
             // label2
             // 
@@ -396,7 +396,7 @@ namespace System.Windows.Forms
             button1.TabIndex = 8;
             button1.Text = "View Entries";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button1.Click += new EventHandler(button1_Click);
             // 
             // EditRSARFileDialog
             // 

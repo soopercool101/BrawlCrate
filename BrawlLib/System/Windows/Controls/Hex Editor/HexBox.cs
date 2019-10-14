@@ -1615,7 +1615,7 @@ namespace Be.Windows.Forms
             SetStyle(ControlStyles.ResizeRedraw, true);
 
             _thumbTrackTimer.Interval = 50;
-            _thumbTrackTimer.Tick += PerformScrollThumbTrack;
+            _thumbTrackTimer.Tick += new EventHandler(PerformScrollThumbTrack);
         }
 
         #endregion
@@ -4290,7 +4290,7 @@ namespace Be.Windows.Forms
                 _byteProvider = value;
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged += _byteProvider_LengthChanged;
+                    _byteProvider.LengthChanged += new EventHandler(byteProvider_LengthChanged);
                 }
 
                 OnByteProviderChanged(EventArgs.Empty);

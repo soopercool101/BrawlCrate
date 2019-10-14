@@ -110,7 +110,7 @@ namespace BrawlCrate.Discord
                 }
                 else if (Program.RootPath == null)
                 {
-                    if (((ARCNode) root).IsSubspace)
+                    if (((ARCNode)root).IsSubspace)
                     {
                         DiscordController.presence.details = WorkString + " a subspace stage";
                     }
