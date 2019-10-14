@@ -16,11 +16,11 @@ namespace BrawlCrate.Discord
 
         // Fields to be saved between runs
         private static bool _enabled = true;
-        private const string UserPickedImageKey = "";
+        private static readonly string UserPickedImageKey = "";
         private static ModNameType _modNameType = ModNameType.Disabled;
-        private const string WorkString = "Working on";
+        private static readonly string WorkString = "Working on";
         private static string _userNamedMod = "My Mod";
-        private const bool ShowTimeElapsed = true;
+        private static readonly bool ShowTimeElapsed = true;
 
         private static bool _controllerSet;
         public static bool DiscordControllerSet => _controllerSet;
