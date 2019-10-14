@@ -955,7 +955,12 @@ namespace BrawlLib.SSBB.ResourceNodes
                     return "None";
                 }
 
-                return $"{(redirectTargetNode as ARCEntryNode).AbsoluteIndex.ToString()}. {redirectTargetNode.Name}";
+                if (redirectTargetNode is ARCEntryNode a)
+                {
+                    return $"{a.AbsoluteIndex.ToString()}. {redirectTargetNode.Name}";
+                }
+
+                return $"{redirectTargetNode.Index.ToString()}. {redirectTargetNode.Name}";
             }
         }
 
