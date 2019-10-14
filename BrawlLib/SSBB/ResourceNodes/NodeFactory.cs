@@ -6,6 +6,8 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using BrawlLib.SSBB.ResourceNodes.Archives;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace BrawlLib.SSBB.ResourceNodes
 {
@@ -27,26 +29,30 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         static NodeFactory()
         {
-            foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
+            // Add any BrawlCrate-side parsers (currently only BrawlAPI stuff)
+            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes()?.Where(t => t.IsSubclassOf(typeof(ResourceNode))))
             {
                 AddParser(t);
             }
 
-            foreach (Type t in Assembly.GetEntryAssembly()?.GetTypes())
+            // Add all BrawlLib parsers (excluding MoveDefs, as explained below)
+            foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()
+                                       .Where(t => t.IsSubclassOf(typeof(ResourceNode)) && t != typeof(MoveDefNode)))
             {
                 AddParser(t);
             }
+
+            // Add MoveDef. MoveDef is very generalized as a parser and currently encounters many false positives.
+            // Prevent this by trying everything else first
+            AddParser(typeof(MoveDefNode));
         }
 
         public static void AddParser(Type t)
         {
-            if (t.IsSubclassOf(typeof(ResourceNode)))
+            Delegate del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false);
+            if (del != null)
             {
-                Delegate del = Delegate.CreateDelegate(typeof(ResourceParser), t, "TryParse", false, false);
-                if (del != null)
-                {
-                    _parsers.Add(del as ResourceParser);
-                }
+                _parsers.Add(del as ResourceParser);
             }
         }
 
