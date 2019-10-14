@@ -1622,7 +1622,7 @@ namespace Be.Windows.Forms
 
         #region Scroll methods
 
-        private void _vScrollBar_Scroll(object sender, ScrollEventArgs e)
+        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             switch (e.Type)
             {
@@ -4284,13 +4284,13 @@ namespace Be.Windows.Forms
 
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged -= new EventHandler(byteProvider_LengthChanged);
+                    _byteProvider.LengthChanged -= new EventHandler(ByteProvider_LengthChanged);
                 }
 
                 _byteProvider = value;
                 if (_byteProvider != null)
                 {
-                    _byteProvider.LengthChanged += new EventHandler(byteProvider_LengthChanged);
+                    _byteProvider.LengthChanged += new EventHandler(ByteProvider_LengthChanged);
                 }
 
                 OnByteProviderChanged(EventArgs.Empty);
@@ -5360,7 +5360,7 @@ namespace Be.Windows.Forms
             DestroyCaret();
         }
 
-        private void _byteProvider_LengthChanged(object sender, EventArgs e)
+        private void ByteProvider_LengthChanged(object sender, EventArgs e)
         {
             UpdateScrollSize();
         }
