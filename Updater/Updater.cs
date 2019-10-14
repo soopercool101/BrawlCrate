@@ -791,7 +791,7 @@ namespace Updater
             {
                 if (manual)
                 {
-                    MessageBox.Show($"Error updating API scripts from {repoOwner}/{repoName}");
+                    MessageBox.Show($"Error installing API scripts from {repoOwner}/{repoName}");
                 }
 
                 // Throw error to prevent this from being added to the successfully updated list
@@ -901,7 +901,7 @@ namespace Updater
                     return;
                 }
 
-                // Case 1: Cross-platform (Batch files won't work, so user will have to ), documentation update, or non-overwriting update
+                // Case 1: Cross-platform (Batch files won't work, so user will have to manually reopen), documentation update, or non-overwriting update
                 if (!Process.GetProcessesByName("winlogon").Any() || documentation || !overwrite)
                 {
                     try
