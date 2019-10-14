@@ -846,7 +846,7 @@ namespace Be.Windows.Forms
 
                     if (isInsertMode)
                     {
-                        _hexBox._byteProvider.InsertBytes(pos, new[] {newcb});
+                        _hexBox._byteProvider.InsertBytes(pos, new byte[] {newcb});
                     }
                     else
                     {
@@ -1239,7 +1239,7 @@ namespace Be.Windows.Forms
                 byte b = _hexBox.ByteCharConverter.ToByte(c);
                 if (isInsertMode)
                 {
-                    _hexBox._byteProvider.InsertBytes(pos, new[] {b});
+                    _hexBox._byteProvider.InsertBytes(pos, new byte[] {b});
                 }
                 else
                 {

@@ -899,7 +899,7 @@ namespace BrawlCrate
             listView1.AutoArrange = false;
             listView1.BorderStyle = BorderStyle.FixedSingle;
             listView1.CheckBoxes = true;
-            listView1.Columns.AddRange(new[]
+            listView1.Columns.AddRange(new ColumnHeader[]
             {
                 columnHeader1
             });
@@ -938,7 +938,7 @@ namespace BrawlCrate
             listViewItem27.StateImageIndex = 0;
             listViewItem28.StateImageIndex = 0;
             listViewItem29.StateImageIndex = 0;
-            listView1.Items.AddRange(new[]
+            listView1.Items.AddRange(new ListViewItem[]
             {
                 listViewItem1,
                 listViewItem2,

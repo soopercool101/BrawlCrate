@@ -13,8 +13,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal CLR0v3* Header3 => (CLR0v3*) WorkingUncompressed.Address;
         internal CLR0v4* Header4 => (CLR0v4*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CLR0;
-        public override Type[] AllowedChildTypes => new[] {typeof(CLR0MaterialNode)};
-        public override int[] SupportedVersions => new[] {3, 4};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(CLR0MaterialNode)};
+        public override int[] SupportedVersions => new int[] {3, 4};
 
         public CLR0Node()
         {
@@ -329,7 +329,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal CLR0Material* Header => (CLR0Material*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.CLR0Material;
-        public override Type[] AllowedChildTypes => new[] {typeof(CLR0MaterialEntryNode)};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(CLR0MaterialEntryNode)};
 
         internal CLR0EntryFlags _flags;
 

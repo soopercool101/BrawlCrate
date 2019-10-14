@@ -8,7 +8,7 @@ namespace Be.Windows.Forms
 
         public MemoryDataBlock(byte data)
         {
-            _data = new[] {data};
+            _data = new byte[] {data};
         }
 
         public MemoryDataBlock(byte[] data)

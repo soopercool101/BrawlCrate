@@ -404,7 +404,7 @@ namespace System.Windows.Forms
             // numFrame
             // 
             numFrame.Location = new Drawing.Point(104, 5);
-            numFrame.Minimum = new decimal(new[]
+            numFrame.Minimum = new decimal(new int[]
             {
                 1,
                 0,
@@ -414,7 +414,7 @@ namespace System.Windows.Forms
             numFrame.Name = "numFrame";
             numFrame.Size = new Drawing.Size(58, 20);
             numFrame.TabIndex = 0;
-            numFrame.Value = new decimal(new[]
+            numFrame.Value = new decimal(new int[]
             {
                 1,
                 0,

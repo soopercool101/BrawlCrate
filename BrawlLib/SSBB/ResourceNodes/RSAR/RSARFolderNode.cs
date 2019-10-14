@@ -11,7 +11,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal RSARHeader* Header => (RSARHeader*) WorkingSource.Address;
         public override ResourceType ResourceFileType => ResourceType.RSARFolder;
 
-        public override Type[] AllowedChildTypes => new[]
+        public override Type[] AllowedChildTypes => new Type[]
         {
             typeof(RSARFolderNode),
             typeof(RSARSoundNode),

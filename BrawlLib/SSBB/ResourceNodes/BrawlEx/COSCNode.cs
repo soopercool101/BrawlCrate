@@ -513,7 +513,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             _victoryNameArray[29] = Header->_victoryNameArray[29];
             _victoryNameArray[30] = Header->_victoryNameArray[30];
             _victoryNameArray[31] = Header->_victoryNameArray[31];
-            _victoryName = System.Text.Encoding.UTF8.GetString(_victoryNameArray).TrimEnd(new[] {'\0'});
+            _victoryName = System.Text.Encoding.UTF8.GetString(_victoryNameArray).TrimEnd(new char[] {'\0'});
             if (_name == null && _origPath != null)
             {
                 _name = Path.GetFileNameWithoutExtension(_origPath);

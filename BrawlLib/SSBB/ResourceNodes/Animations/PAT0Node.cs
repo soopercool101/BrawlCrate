@@ -13,8 +13,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal PAT0v3* Header3 => (PAT0v3*) WorkingUncompressed.Address;
         internal PAT0v4* Header4 => (PAT0v4*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.PAT0;
-        public override Type[] AllowedChildTypes => new[] {typeof(PAT0EntryNode)};
-        public override int[] SupportedVersions => new[] {3, 4};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(PAT0EntryNode)};
+        public override int[] SupportedVersions => new int[] {3, 4};
 
         internal List<string> _textureFiles = new List<string>();
         internal List<string> _paletteFiles = new List<string>();
@@ -558,7 +558,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal PAT0Pattern* Header => (PAT0Pattern*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.PAT0Entry;
-        public override Type[] AllowedChildTypes => new[] {typeof(PAT0TextureNode)};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(PAT0TextureNode)};
 
         internal PAT0Flags[] texFlags = new PAT0Flags[8];
 
@@ -795,7 +795,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal PAT0TextureTable* Header => (PAT0TextureTable*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.PAT0Texture;
-        public override Type[] AllowedChildTypes => new[] {typeof(PAT0TextureEntryNode)};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(PAT0TextureEntryNode)};
 
         public PAT0Flags _texFlags;
         public int _textureIndex, textureCount;

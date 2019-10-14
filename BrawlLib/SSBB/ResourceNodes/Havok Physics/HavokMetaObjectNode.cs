@@ -166,7 +166,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             return m;
         }
 
-        private static readonly Type[] MemberTypes = new[]
+        private static readonly Type[] MemberTypes = new Type[]
         {
             null, //void
             typeof(cmBoolNode),

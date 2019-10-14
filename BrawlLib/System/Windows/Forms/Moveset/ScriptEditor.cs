@@ -373,7 +373,7 @@ namespace System.Windows.Forms
             //Search for a ',' or a ')' and return the preceeding string.
             do
             {
-                paramEnd = Helpers.FindFirstOfIgnoreNest(strParams, loc, new[] {',', ')'}, ref chrFound);
+                paramEnd = Helpers.FindFirstOfIgnoreNest(strParams, loc, new char[] {',', ')'}, ref chrFound);
                 if (paramEnd == -1)
                 {
                     paramEnd = strParams.Length;

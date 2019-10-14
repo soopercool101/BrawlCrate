@@ -89,46 +89,46 @@ namespace BrawlCrate.CostumeManager
         // Fighter, CSSSlot, Cosmetic
         private static readonly int[][] IndexMappings =
         {
-            new[] {0x00, 0x00, 0x00},
-            new[] {0x01, 0x01, 0x01},
-            new[] {0x02, 0x02, 0x02},
-            new[] {0x03, 0x03, 0x03},
-            new[] {0x04, 0x05, 0x04},
-            new[] {0x05, 0x06, 0x05},
-            new[] {0x06, 0x07, 0x06},
-            new[] {0x07, 0x08, 0x07},
-            new[] {0x08, 0x09, 0x08},
-            new[] {0x09, 0x0A, 0x09},
-            new[] {0x0A, 0x0B, 0x0A},
-            new[] {0x0B, 0x0C, 0x0B},
-            new[] {0x0C, 0x0D, 0x0C},
-            new[] {0x0D, 0x0E, 0x0D},
-            new[] {0x0E, 0x0F, 0x0E},
-            new[] {0x0F, 0x10, 0x0F},
-            new[] {0x11, 0x11, 0x10},
-            new[] {0x12, 0x12, 0x11},
-            new[] {0x13, 0x13, 0x12},
-            new[] {0x14, 0x14, 0x13},
-            new[] {0x16, 0x16, 0x15},
-            new[] {0x17, 0x17, 0x16},
-            new[] {0x18, 0x04, 0x17},
-            new[] {0x19, 0x18, 0x18},
-            new[] {0x1A, 0x19, 0x19},
-            new[] {0x1B, 0x1A, 0x1A},
-            new[] {0x1C, 0x1B, 0x1B},
-            new[] {0x1D, 0x1C, 0x1C},
-            new[] {0x1E, 0x1D, 0x1D},
-            new[] {0x1F, 0x1E, 0x1E},
-            new[] {0x20, 0x1F, 0x1F},
-            new[] {0x21, 0x20, 0x20},
-            new[] {0x22, 0x21, 0x21},
-            new[] {0x23, 0x22, 0x22},
-            new[] {0x25, 0x23, 0x23},
-            new[] {0x15, 0x15, 0x14},
-            new[] {0x29, 0x24, 0x25},
-            new[] {0x2C, 0x25, 0x27},
-            new[] {0x2E, 0x26, 0x28},
-            new[] {0x2F, 0x27, 0x29},
+            new int[] {0x00, 0x00, 0x00},
+            new int[] {0x01, 0x01, 0x01},
+            new int[] {0x02, 0x02, 0x02},
+            new int[] {0x03, 0x03, 0x03},
+            new int[] {0x04, 0x05, 0x04},
+            new int[] {0x05, 0x06, 0x05},
+            new int[] {0x06, 0x07, 0x06},
+            new int[] {0x07, 0x08, 0x07},
+            new int[] {0x08, 0x09, 0x08},
+            new int[] {0x09, 0x0A, 0x09},
+            new int[] {0x0A, 0x0B, 0x0A},
+            new int[] {0x0B, 0x0C, 0x0B},
+            new int[] {0x0C, 0x0D, 0x0C},
+            new int[] {0x0D, 0x0E, 0x0D},
+            new int[] {0x0E, 0x0F, 0x0E},
+            new int[] {0x0F, 0x10, 0x0F},
+            new int[] {0x11, 0x11, 0x10},
+            new int[] {0x12, 0x12, 0x11},
+            new int[] {0x13, 0x13, 0x12},
+            new int[] {0x14, 0x14, 0x13},
+            new int[] {0x16, 0x16, 0x15},
+            new int[] {0x17, 0x17, 0x16},
+            new int[] {0x18, 0x04, 0x17},
+            new int[] {0x19, 0x18, 0x18},
+            new int[] {0x1A, 0x19, 0x19},
+            new int[] {0x1B, 0x1A, 0x1A},
+            new int[] {0x1C, 0x1B, 0x1B},
+            new int[] {0x1D, 0x1C, 0x1C},
+            new int[] {0x1E, 0x1D, 0x1D},
+            new int[] {0x1F, 0x1E, 0x1E},
+            new int[] {0x20, 0x1F, 0x1F},
+            new int[] {0x21, 0x20, 0x20},
+            new int[] {0x22, 0x21, 0x21},
+            new int[] {0x23, 0x22, 0x22},
+            new int[] {0x25, 0x23, 0x23},
+            new int[] {0x15, 0x15, 0x14},
+            new int[] {0x29, 0x24, 0x25},
+            new int[] {0x2C, 0x25, 0x27},
+            new int[] {0x2E, 0x26, 0x28},
+            new int[] {0x2F, 0x27, 0x29},
         };
 
         private static int? GetCSSSlot(int fighterIndex)
@@ -169,46 +169,46 @@ namespace BrawlCrate.CostumeManager
 
         private static Dictionary<int, int[]> PortraitToCostumeMappings = new Dictionary<int, int[]>
         {
-            {0, new[] {0, 6, 3, 4, 5, 2}},
-            {1, new[] {0, 4, 1, 3, 2, 5}},
-            {2, new[] {0, 1, 3, 5, 6, 4}},
-            {3, new[] {0, 3, 1, 5, 4, 2}},
-            {4, new[] {0, 1, 3, 4, 5, 6}},
-            {5, new[] {0, 4, 3, 1, 2, 5}},
-            {6, new[] {0, 4, 1, 2, 3, 5}},
-            {7, new[] {0, 1, 2, 3}},
-            {8, new[] {0, 5, 1, 3, 4, 6}},
-            {9, new[] {0, 4, 1, 2, 3, 5}},
-            {10, new[] {0, 5, 4, 2, 3, 6}},
-            {11, new[] {0, 4, 1, 3, 5, 6}},
-            {12, new[] {0, 5, 1, 3, 2, 4}},
-            {13, new[] {0, 1, 3, 5, 2, 4}},
-            {14, new[] {0, 1, 3, 5, 2, 4}},
-            {15, new[] {0, 1, 3, 4, 2, 5}},
-            {16, new[] {0, 1, 2, 4, 5, 3}},
-            {17, new[] {0, 1, 2, 3, 4, 5}},
-            {18, new[] {0, 5, 3, 1, 2, 4}},
-            {19, new[] {0, 4, 3, 2, 1, 5}},
-            {21, new[] {0, 4, 1, 2, 3, 5}},
-            {22, new[] {0, 4, 1, 2, 3, 5}},
-            {23, new[] {0, 3, 1, 5, 4, 2}},
-            {24, new[] {0, 4, 1, 5, 2, 3}},
-            {25, new[] {0, 4, 1, 3, 2, 5}},
-            {26, new[] {0, 5, 4, 6, 2, 3}},
-            {27, new[] {0, 1, 2, 3, 4}},
-            {28, new[] {0, 1, 2, 3, 4}},
-            {29, new[] {0, 1, 2, 3, 4}},
-            {30, new[] {0, 1, 2, 3, 4}},
-            {31, new[] {0, 6, 2, 5, 3, 4}},
-            {32, new[] {0, 1, 4, 5, 2}},
-            {33, new[] {0, 5, 1, 3, 2, 4}},
-            {34, new[] {0, 6, 5, 4, 3, 2}},
-            {36, new[] {0, 1, 4, 3, 2}},
-            {37, new[] {0, 1, 5, 2, 4, 3, 6, 7, 9, 8, 10, 11}},
-            {40, new[] {0, 1, 3, 4, 5, 6}},
-            {43, new[] {0, 1, 4, 2, 3, 5}},
-            {45, new[] {0, 1, 3, 4, 2, 5}},
-            {46, new[] {0, 5, 4, 2, 1}},
+            {0, new int[] {0, 6, 3, 4, 5, 2}},
+            {1, new int[] {0, 4, 1, 3, 2, 5}},
+            {2, new int[] {0, 1, 3, 5, 6, 4}},
+            {3, new int[] {0, 3, 1, 5, 4, 2}},
+            {4, new int[] {0, 1, 3, 4, 5, 6}},
+            {5, new int[] {0, 4, 3, 1, 2, 5}},
+            {6, new int[] {0, 4, 1, 2, 3, 5}},
+            {7, new int[] {0, 1, 2, 3}},
+            {8, new int[] {0, 5, 1, 3, 4, 6}},
+            {9, new int[] {0, 4, 1, 2, 3, 5}},
+            {10, new int[] {0, 5, 4, 2, 3, 6}},
+            {11, new int[] {0, 4, 1, 3, 5, 6}},
+            {12, new int[] {0, 5, 1, 3, 2, 4}},
+            {13, new int[] {0, 1, 3, 5, 2, 4}},
+            {14, new int[] {0, 1, 3, 5, 2, 4}},
+            {15, new int[] {0, 1, 3, 4, 2, 5}},
+            {16, new int[] {0, 1, 2, 4, 5, 3}},
+            {17, new int[] {0, 1, 2, 3, 4, 5}},
+            {18, new int[] {0, 5, 3, 1, 2, 4}},
+            {19, new int[] {0, 4, 3, 2, 1, 5}},
+            {21, new int[] {0, 4, 1, 2, 3, 5}},
+            {22, new int[] {0, 4, 1, 2, 3, 5}},
+            {23, new int[] {0, 3, 1, 5, 4, 2}},
+            {24, new int[] {0, 4, 1, 5, 2, 3}},
+            {25, new int[] {0, 4, 1, 3, 2, 5}},
+            {26, new int[] {0, 5, 4, 6, 2, 3}},
+            {27, new int[] {0, 1, 2, 3, 4}},
+            {28, new int[] {0, 1, 2, 3, 4}},
+            {29, new int[] {0, 1, 2, 3, 4}},
+            {30, new int[] {0, 1, 2, 3, 4}},
+            {31, new int[] {0, 6, 2, 5, 3, 4}},
+            {32, new int[] {0, 1, 4, 5, 2}},
+            {33, new int[] {0, 5, 1, 3, 2, 4}},
+            {34, new int[] {0, 6, 5, 4, 3, 2}},
+            {36, new int[] {0, 1, 4, 3, 2}},
+            {37, new int[] {0, 1, 5, 2, 4, 3, 6, 7, 9, 8, 10, 11}},
+            {40, new int[] {0, 1, 3, 4, 5, 6}},
+            {43, new int[] {0, 1, 4, 2, 3, 5}},
+            {45, new int[] {0, 1, 3, 4, 2, 5}},
+            {46, new int[] {0, 5, 4, 2, 1}},
         };
 
         private static Dictionary<int, int[]> PM35Mappings = CompilePM35Mappings();
@@ -223,43 +223,43 @@ namespace BrawlCrate.CostumeManager
                     // Some of these characters have their portraits in a different order than Brawl, or have their additional portraits "out of order."
                     case 0:
                         // Mario
-                        ret.Add(key, new[] {0, 6, 3, 2, 5, 7, 11, 8, 9, 10, /*end*/ 1, 4});
+                        ret.Add(key, new int[] {0, 6, 3, 2, 5, 7, 11, 8, 9, 10, /*end*/ 1, 4});
                         break;
                     case 3:
                         // Samus
-                        ret.Add(key, new[] {0, 3, 1, 4, 2, 5, 7, 8, 6});
+                        ret.Add(key, new int[] {0, 3, 1, 4, 2, 5, 7, 8, 6});
                         break;
                     case 12:
                         // Fox
-                        ret.Add(key, new[] {0, 5, 1, 3, 2, 4, 7, 6});
+                        ret.Add(key, new int[] {0, 5, 1, 3, 2, 4, 7, 6});
                         break;
                     case 23:
                         // Zero Suit Samus
-                        ret.Add(key, new[] {0, 3, 1, 5, 4, 2, 7, 8, 6});
+                        ret.Add(key, new int[] {0, 3, 1, 5, 4, 2, 7, 8, 6});
                         break;
                     case 27:
                         // Mewtwo - uses Pokémon Trainer's character index
-                        ret.Add(key, new[] {0, 2, 1, 3, 4, 5});
+                        ret.Add(key, new int[] {0, 2, 1, 3, 4, 5});
                         break;
                     case 28:
                         // Charizard
-                        ret.Add(key, new[] {0, 1, 3, 2, 4, 5, 6});
+                        ret.Add(key, new int[] {0, 1, 3, 2, 4, 5, 6});
                         break;
                     case 29:
                         // Squirtle
-                        ret.Add(key, new[] {0, 2, 1, 3, 4, 5, 6, 7});
+                        ret.Add(key, new int[] {0, 2, 1, 3, 4, 5, 6, 7});
                         break;
                     case 37:
                         // Wario
-                        ret.Add(key, new[] {6, 7, 10, 8, 11, 9, 0, 1, 3, 2, 5, 4});
+                        ret.Add(key, new int[] {6, 7, 10, 8, 11, 9, 0, 1, 3, 2, 5, 4});
                         break;
                     case 39:
                         // Roy
-                        ret.Add(key, new[] {0, 2, 1, 3, 4, 5, 6});
+                        ret.Add(key, new int[] {0, 2, 1, 3, 4, 5, 6});
                         break;
                     case 46:
                         // Sonic
-                        ret.Add(key, new[] {0, 1, 4, 2, 5, 6, 7, 8});
+                        ret.Add(key, new int[] {0, 1, 4, 2, 5, 6, 7, 8});
                         break;
                     default:
                         if (!PortraitToCostumeMappings.ContainsKey(key))

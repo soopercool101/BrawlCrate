@@ -331,7 +331,7 @@ namespace BrawlLib.SSBBTypes
             return Name;
         }
 
-        public static readonly CollisionTerrain[] Terrains = new[]
+        public static readonly CollisionTerrain[] Terrains = new CollisionTerrain[]
         {
             //                   ID    Display Name                                                 Pluck Speed     R       Y       B       P       W
             new CollisionTerrain(0x00, Properties.Resources.Collision0x00, "100%", 1, 1, 1, 0.4, 0.5),
@@ -609,7 +609,7 @@ namespace BrawlLib.SSBBTypes
             flags = id;
         }
 
-        public static readonly CollisionPlaneInteractionType[] Terrains = new[]
+        public static readonly CollisionPlaneInteractionType[] Terrains = new CollisionPlaneInteractionType[]
         {
             //                                ID      Display Name
             new CollisionPlaneInteractionType(0x0000, Properties.Resources.CollisionTypeNone),

@@ -14,7 +14,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal ARCHeader* Header => (ARCHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.ARC;
-        public override Type[] AllowedChildTypes => new[] {typeof(ARCEntryNode)};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(ARCEntryNode)};
 
 
         #region SpecialNames

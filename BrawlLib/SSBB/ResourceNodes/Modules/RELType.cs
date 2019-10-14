@@ -68,7 +68,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
             if (_fullName.Contains('<') && _fullName.EndsWith(">"))
             {
-                arguments = _fullName.Remove(_fullName.Length - 1).Split(new[] {'<'}, 2)[1].Split(',');
+                arguments = _fullName.Remove(_fullName.Length - 1).Split(new char[] {'<'}, 2)[1].Split(',');
                 for (int i = 0; i < arguments.Length; i++)
                 {
                     arguments[i] = arguments[i].Trim();

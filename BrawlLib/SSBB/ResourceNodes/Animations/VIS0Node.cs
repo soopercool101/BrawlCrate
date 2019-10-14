@@ -11,8 +11,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal VIS0v3* Header3 => (VIS0v3*) WorkingUncompressed.Address;
         internal VIS0v4* Header4 => (VIS0v4*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.VIS0;
-        public override Type[] AllowedChildTypes => new[] {typeof(VIS0EntryNode)};
-        public override int[] SupportedVersions => new[] {3, 4};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(VIS0EntryNode)};
+        public override int[] SupportedVersions => new int[] {3, 4};
 
         public VIS0Node()
         {

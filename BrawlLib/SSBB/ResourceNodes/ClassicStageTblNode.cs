@@ -93,7 +93,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             data = ((ClassicStageBlock*) WorkingUncompressed.Address)->_stages;
 
             List<string> stageList = new List<string>();
-            foreach (int stageID in new[] {StageID1, StageID2, StageID3, StageID4})
+            foreach (int stageID in new int[] {StageID1, StageID2, StageID3, StageID4})
             {
                 if (stageID == 255)
                 {
@@ -473,7 +473,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             VoidPtr ptr = WorkingUncompressed.Address + 8;
-            foreach (string s in new[] {"Easy", "Normal", "Hard", "Very Hard", "Intense"})
+            foreach (string s in new string[] {"Easy", "Normal", "Hard", "Very Hard", "Intense"})
             {
                 DataSource source = new DataSource(ptr, sizeof(ClassicDifficultyData));
                 ClassicDifficultyNode node = new ClassicDifficultyNode();
@@ -595,7 +595,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             Name = name;
         }
 
-        public static readonly BrawlAITypes[] AITypes = new[]
+        public static readonly BrawlAITypes[] AITypes = new BrawlAITypes[]
         {
             new BrawlAITypes(0x00, "Normal"),
             new BrawlAITypes(0x02, "Walk"),

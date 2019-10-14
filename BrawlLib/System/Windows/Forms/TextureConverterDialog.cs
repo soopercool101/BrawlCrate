@@ -1192,7 +1192,7 @@ namespace System.Windows.Forms
             numLOD.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                              | AnchorStyles.Right;
             numLOD.Location = new Drawing.Point(75, 42);
-            numLOD.Minimum = new decimal(new[]
+            numLOD.Minimum = new decimal(new int[]
             {
                 1,
                 0,
@@ -1202,7 +1202,7 @@ namespace System.Windows.Forms
             numLOD.Name = "numLOD";
             numLOD.Size = new Drawing.Size(98, 20);
             numLOD.TabIndex = 3;
-            numLOD.Value = new decimal(new[]
+            numLOD.Value = new decimal(new int[]
             {
                 1,
                 0,
@@ -1424,7 +1424,7 @@ namespace System.Windows.Forms
             // 
             numPaletteCount.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                                       | AnchorStyles.Right;
-            numPaletteCount.Increment = new decimal(new[]
+            numPaletteCount.Increment = new decimal(new int[]
             {
                 16,
                 0,
@@ -1432,14 +1432,14 @@ namespace System.Windows.Forms
                 0
             });
             numPaletteCount.Location = new Drawing.Point(75, 42);
-            numPaletteCount.Maximum = new decimal(new[]
+            numPaletteCount.Maximum = new decimal(new int[]
             {
                 256,
                 0,
                 0,
                 0
             });
-            numPaletteCount.Minimum = new decimal(new[]
+            numPaletteCount.Minimum = new decimal(new int[]
             {
                 16,
                 0,
@@ -1449,7 +1449,7 @@ namespace System.Windows.Forms
             numPaletteCount.Name = "numPaletteCount";
             numPaletteCount.Size = new Drawing.Size(97, 20);
             numPaletteCount.TabIndex = 3;
-            numPaletteCount.Value = new decimal(new[]
+            numPaletteCount.Value = new decimal(new int[]
             {
                 16,
                 0,
@@ -1573,14 +1573,14 @@ namespace System.Windows.Forms
             numH.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numH.Location = new Drawing.Point(73, 60);
-            numH.Maximum = new decimal(new[]
+            numH.Maximum = new decimal(new int[]
             {
                 1024,
                 0,
                 0,
                 0
             });
-            numH.Minimum = new decimal(new[]
+            numH.Minimum = new decimal(new int[]
             {
                 1,
                 0,
@@ -1590,7 +1590,7 @@ namespace System.Windows.Forms
             numH.Name = "numH";
             numH.Size = new Drawing.Size(46, 20);
             numH.TabIndex = 5;
-            numH.Value = new decimal(new[]
+            numH.Value = new decimal(new int[]
             {
                 1,
                 0,
@@ -1604,14 +1604,14 @@ namespace System.Windows.Forms
             numW.Anchor = AnchorStyles.Top | AnchorStyles.Left
                                            | AnchorStyles.Right;
             numW.Location = new Drawing.Point(9, 61);
-            numW.Maximum = new decimal(new[]
+            numW.Maximum = new decimal(new int[]
             {
                 1024,
                 0,
                 0,
                 0
             });
-            numW.Minimum = new decimal(new[]
+            numW.Minimum = new decimal(new int[]
             {
                 1,
                 0,
@@ -1621,7 +1621,7 @@ namespace System.Windows.Forms
             numW.Name = "numW";
             numW.Size = new Drawing.Size(46, 20);
             numW.TabIndex = 3;
-            numW.Value = new decimal(new[]
+            numW.Value = new decimal(new int[]
             {
                 1,
                 0,
@@ -1677,7 +1677,7 @@ namespace System.Windows.Forms
             // 
             numMIPPreview.Dock = DockStyle.Left;
             numMIPPreview.Location = new Drawing.Point(41, 0);
-            numMIPPreview.Minimum = new decimal(new[]
+            numMIPPreview.Minimum = new decimal(new int[]
             {
                 1,
                 0,
@@ -1687,7 +1687,7 @@ namespace System.Windows.Forms
             numMIPPreview.Name = "numMIPPreview";
             numMIPPreview.Size = new Drawing.Size(51, 20);
             numMIPPreview.TabIndex = 1;
-            numMIPPreview.Value = new decimal(new[]
+            numMIPPreview.Value = new decimal(new int[]
             {
                 1,
                 0,

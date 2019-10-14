@@ -249,7 +249,7 @@ namespace BrawlCrate.CostumeManager
             }
 
             index = filter.IndexOf('.', index);
-            int len = Math.Max(filter.Length, filter.IndexOfAny(new[] {';', '|'})) - index;
+            int len = Math.Max(filter.Length, filter.IndexOfAny(new char[] {';', '|'})) - index;
 
             string ext = filter.Substring(index, len);
 

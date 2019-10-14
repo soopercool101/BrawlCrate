@@ -10,7 +10,7 @@ namespace System.Windows.Forms
         {
             InitializeComponent();
 
-            _boxes = new[]
+            _boxes = new NumericInputBox[]
             {
                 numScaleX, numScaleY, numScaleZ,
                 numRotX, numRotY, numRotZ,

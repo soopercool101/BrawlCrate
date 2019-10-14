@@ -42,7 +42,7 @@ namespace System
         public Vector3(string s)
         {
             Vector3 v = new Vector3();
-            char[] delims = new[] {',', '(', ')', ' '};
+            char[] delims = new char[] {',', '(', ')', ' '};
             string[] arr = s.Split(delims, StringSplitOptions.RemoveEmptyEntries);
 
             if (arr.Length == 3)

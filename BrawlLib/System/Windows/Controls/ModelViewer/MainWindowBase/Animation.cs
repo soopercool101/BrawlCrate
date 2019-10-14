@@ -636,15 +636,15 @@ namespace System.Windows.Forms
         {
         }
 
-        public static readonly Type[] Mergeable = new[] {typeof(CHR0Node)};
+        public static readonly Type[] Mergeable = new Type[] {typeof(CHR0Node)};
 
-        public static readonly Type[] Appendable = new[]
+        public static readonly Type[] Appendable = new Type[]
             {typeof(CHR0Node), typeof(SRT0Node), typeof(SHP0Node), typeof(VIS0Node), typeof(PAT0Node)};
 
-        public static readonly Type[] Resizable = new[]
+        public static readonly Type[] Resizable = new Type[]
             {typeof(CHR0Node), typeof(SRT0Node), typeof(SHP0Node), typeof(VIS0Node), typeof(PAT0Node)};
 
-        public static readonly Type[] Interpolated = new[]
+        public static readonly Type[] Interpolated = new Type[]
             {typeof(CHR0Node), typeof(SRT0Node), typeof(SHP0Node), typeof(SCN0Node)};
 
         #endregion
@@ -691,7 +691,7 @@ namespace System.Windows.Forms
             }
         }
 
-        public ResourceType[] ResourceTypeList = new[]
+        public ResourceType[] ResourceTypeList = new ResourceType[]
         {
             ResourceType.CHR0,
             ResourceType.SRT0,

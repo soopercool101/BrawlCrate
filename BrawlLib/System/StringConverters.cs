@@ -7,7 +7,7 @@ namespace System
 {
     public class Vector4StringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', '(', ')', ' '};
+        private static readonly char[] delims = new char[] {',', '(', ')', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -46,7 +46,7 @@ namespace System
 
     public class Vector3StringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', '(', ')', ' '};
+        private static readonly char[] delims = new char[] {',', '(', ')', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -84,7 +84,7 @@ namespace System
 
     public class Vector2StringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', '(', ')', ' '};
+        private static readonly char[] delims = new char[] {',', '(', ')', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -123,7 +123,7 @@ namespace System
     {
         private readonly GoodColorDialog d = new GoodColorDialog();
 
-        private static readonly char[] delims = new[] {',', 'R', 'G', 'B', 'A', ':', ' '};
+        private static readonly char[] delims = new char[] {',', 'R', 'G', 'B', 'A', ':', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -166,7 +166,7 @@ namespace System
 
     public class GXColorS10StringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', 'R', 'G', 'B', 'A', ':', ' '};
+        private static readonly char[] delims = new char[] {',', 'R', 'G', 'B', 'A', ':', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -205,7 +205,7 @@ namespace System
 
     public unsafe class Matrix43StringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', '(', ')', ' '};
+        private static readonly char[] delims = new char[] {',', '(', ')', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -252,7 +252,7 @@ namespace System
 
     public unsafe class MatrixStringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', '(', ')', ' '};
+        private static readonly char[] delims = new char[] {',', '(', ')', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
@@ -303,7 +303,7 @@ namespace System
 
     public class QuaternionStringConverter : TypeConverter
     {
-        private static readonly char[] delims = new[] {',', '(', ')', ' '};
+        private static readonly char[] delims = new char[] {',', '(', ')', ' '};
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {

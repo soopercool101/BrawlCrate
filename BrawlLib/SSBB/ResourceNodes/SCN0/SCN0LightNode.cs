@@ -26,14 +26,14 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal int _entryCount;
 
         //Color arrays
-        public int[] _numEntries = new[] {0, 0};
+        public int[] _numEntries = new int[] {0, 0};
         public RGBAPixel[] _solidColors = new RGBAPixel[2];
 
         private List<RGBAPixel>
             _lightColor = new List<RGBAPixel>(),
             _specColor = new List<RGBAPixel>();
 
-        public bool[] _constants = new[] {true, true};
+        public bool[] _constants = new bool[] {true, true};
 
         #endregion
 
@@ -299,7 +299,7 @@ namespace BrawlLib.SSBB.ResourceNodes
             }
         }
 
-        private static readonly FixedFlags[] _ordered = new[]
+        private static readonly FixedFlags[] _ordered = new FixedFlags[]
         {
             FixedFlags.StartXConstant,
             FixedFlags.StartYConstant,
@@ -434,9 +434,9 @@ namespace BrawlLib.SSBB.ResourceNodes
             base.OnInitialize();
 
             //Initialize defaults
-            _numEntries = new[] {0, 0};
+            _numEntries = new int[] {0, 0};
             _solidColors = new RGBAPixel[2];
-            _constants = new[] {true, true};
+            _constants = new bool[] {true, true};
 
             //Read header values
             _nonSpecLightId = Data->_nonSpecLightId;

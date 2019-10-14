@@ -476,7 +476,7 @@ namespace System.Windows.Forms
             // 
             // numLoopStart
             // 
-            numLoopStart.Increment = new decimal(new[]
+            numLoopStart.Increment = new decimal(new int[]
             {
                 14,
                 0,
@@ -491,7 +491,7 @@ namespace System.Windows.Forms
             // 
             // numLoopEnd
             // 
-            numLoopEnd.Increment = new decimal(new[]
+            numLoopEnd.Increment = new decimal(new int[]
             {
                 14,
                 0,

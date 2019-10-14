@@ -27,8 +27,8 @@ namespace BrawlLib.Wii.Graphics
 
         public static bool _forceRecompile;
 
-#if DEBUG
         //Determines if the final shader should be written to the console for review
+#if DEBUG
         private static readonly bool AlwaysOutputShader = false;
 #endif
         private static readonly bool DoTrunc = false;
@@ -1140,7 +1140,7 @@ namespace BrawlLib.Wii.Graphics
                 switch (i)
                 {
                     case 0:
-                        swapModeTable[i] = new string(new[]
+                        swapModeTable[i] = new string(new char[]
                         {
                             swapColors[(int) node.Swap0Red],
                             swapColors[(int) node.Swap0Green],
@@ -1149,7 +1149,7 @@ namespace BrawlLib.Wii.Graphics
                         });
                         break;
                     case 1:
-                        swapModeTable[i] = new string(new[]
+                        swapModeTable[i] = new string(new char[]
                         {
                             swapColors[(int) node.Swap1Red],
                             swapColors[(int) node.Swap1Green],
@@ -1158,7 +1158,7 @@ namespace BrawlLib.Wii.Graphics
                         });
                         break;
                     case 2:
-                        swapModeTable[i] = new string(new[]
+                        swapModeTable[i] = new string(new char[]
                         {
                             swapColors[(int) node.Swap2Red],
                             swapColors[(int) node.Swap2Green],
@@ -1167,7 +1167,7 @@ namespace BrawlLib.Wii.Graphics
                         });
                         break;
                     case 3:
-                        swapModeTable[i] = new string(new[]
+                        swapModeTable[i] = new string(new char[]
                         {
                             swapColors[(int) node.Swap3Red],
                             swapColors[(int) node.Swap3Green],

@@ -40,7 +40,7 @@ namespace BrawlLib.OpenGL
             _height = b.Height;
             ClearImages();
             ClearTexture();
-            _textures = new[] {b};
+            _textures = new Bitmap[] {b};
             _remake = true;
             _source = null;
         }
@@ -154,7 +154,7 @@ namespace BrawlLib.OpenGL
 
             _source = null;
 
-            _textures = new[] {bmp};
+            _textures = new Bitmap[] {bmp};
 
             if (_textures.Length != 0)
             {

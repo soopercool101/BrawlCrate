@@ -70,7 +70,7 @@ namespace BrawlLib.SSBB
 
         public bool ContainsPac(string filename)
         {
-            int i = filename.IndexOfAny(new[] {'.', '_'});
+            int i = filename.IndexOfAny(new char[] {'.', '_'});
             if (filename.Length < 3 || i < 0)
             {
                 return false;
@@ -196,7 +196,7 @@ namespace BrawlLib.SSBB
             }
         }
 
-        public static readonly Stage[] Stages = new[]
+        public static readonly Stage[] Stages = new Stage[]
         {
             //        ID    Display Name                .rel filename           Name without STG    Allows custom names from stagelist
             new Stage(0x01, "Battlefield", "st_battle.rel", "battlefield", true),
@@ -441,7 +441,7 @@ namespace BrawlLib.SSBB
             new Stage(0xFF, "Custom C0", "st_customC0.rel", "customC0", true),
         };
 
-        public static readonly Stage[] RelList = new[]
+        public static readonly Stage[] RelList = new Stage[]
         {
             //        ID    Display Name                .rel filename           Name without STG
             new Stage(0x00, "STGCUSTOM##.pac", "st_custom##.rel", "custom"),
@@ -495,27 +495,27 @@ namespace BrawlLib.SSBB
             new Stage(0x39, "Classic mode credits", "st_croll.rel", "chararoll")
         };
 
-        public static readonly Stage[] BaseStages = new[]
+        public static readonly Stage[] BaseStages = new Stage[]
         {
             //        ID    Display Name                    .rel filename           Name without STG        Stage Position (Main, then all)                                                     STPM ID     SCLA ID     STDT ID     Collision Datas                                                     Model Datas
-            new Stage(0x01, "Battlefield", "st_battle.rel", "battlefield", 100, new[] {100}, 10, 30, -1,
-                new[] {2}, new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 100, 101, 200}),
-            new Stage(0x02, "Final Destination", "st_final.rel", "final", 100, new[] {100}, 10, 30, -1,
-                new[] {2}, new[] {1, 2, 100, 101}),
+            new Stage(0x01, "Battlefield", "st_battle.rel", "battlefield", 100, new int[] {100}, 10, 30, -1,
+                new int[] {2}, new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 100, 101, 200}),
+            new Stage(0x02, "Final Destination", "st_final.rel", "final", 100, new int[] {100}, 10, 30, -1,
+                new int[] {2}, new int[] {1, 2, 100, 101}),
             new Stage(0x03, "Delfino Plaza", "st_dolpic.rel", "dolpic", 100,
-                new[] {100, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123}, 10, 30, 20,
-                new[] {3, 4, 5, 6, 7, 50, 51, 52, 53, 54, 55, 56, 57, 58},
-                new[]
+                new int[] {100, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123}, 10, 30, 20,
+                new int[] {3, 4, 5, 6, 7, 50, 51, 52, 53, 54, 55, 56, 57, 58},
+                new int[]
                 {
                     0, 1, 4, 5, 6, 7, 8, 9, 10, 12, 13, 22, 23, 32, 33, 42, 43, 44, 50, 100, 112, 113, 114, 115, 116,
                     117, 118, 119, 120, 121, 122, 123
                 }),
-            new Stage(0x04, "Luigi's Mansion", "st_mansion.rel", "mansion", 100, new[] {100}, 10, 30, 20,
-                new[] {2}, new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14}),
-            new Stage(0x05, "Mushroomy Kingdom (1-1)", "st_mariopast.rel", "mariopast_00", 100, new[] {100}, 10, 30,
-                20, new[] {2}, new[] {0, 1, 2, 90, 100, 101, 102, 103, 104}),
-            new Stage(0x05, "Mushroomy Kingdom (1-2)", "st_mariopast.rel", "mariopast_01", 100, new[] {100}, 10, 30,
-                20, new[] {2, 5}, new[] {0, 1, 2, 4, 90, 100, 101, 102, 103, 104}),
+            new Stage(0x04, "Luigi's Mansion", "st_mansion.rel", "mansion", 100, new int[] {100}, 10, 30, 20,
+                new int[] {2}, new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14}),
+            new Stage(0x05, "Mushroomy Kingdom (1-1)", "st_mariopast.rel", "mariopast_00", 100, new int[] {100}, 10, 30,
+                20, new int[] {2}, new int[] {0, 1, 2, 90, 100, 101, 102, 103, 104}),
+            new Stage(0x05, "Mushroomy Kingdom (1-2)", "st_mariopast.rel", "mariopast_01", 100, new int[] {100}, 10, 30,
+                20, new int[] {2, 5}, new int[] {0, 1, 2, 4, 90, 100, 101, 102, 103, 104}),
             new Stage(0x06, "Mario Circuit", "st_kart.rel", "kart"),
             new Stage(0x07, "75 m", "st_donkey.rel", "donkey"),
             new Stage(0x08, "Rumble Falls", "st_jungle.rel", "jungle"),

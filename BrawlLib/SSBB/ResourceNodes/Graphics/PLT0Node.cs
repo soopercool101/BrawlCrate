@@ -15,7 +15,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal BRESCommonHeader* Header => (BRESCommonHeader*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.PLT0;
         public override int DataAlign => 0x20;
-        public override int[] SupportedVersions => new[] {1, 3};
+        public override int[] SupportedVersions => new int[] {1, 3};
 
         public PLT0Node()
         {

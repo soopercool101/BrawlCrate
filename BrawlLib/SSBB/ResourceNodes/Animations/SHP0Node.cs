@@ -14,8 +14,8 @@ namespace BrawlLib.SSBB.ResourceNodes
         internal SHP0v3* Header3 => (SHP0v3*) WorkingUncompressed.Address;
         internal SHP0v4* Header4 => (SHP0v4*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SHP0;
-        public override Type[] AllowedChildTypes => new[] {typeof(SHP0EntryNode)};
-        public override int[] SupportedVersions => new[] {3, 4};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(SHP0EntryNode)};
+        public override int[] SupportedVersions => new int[] {3, 4};
 
         public SHP0Node()
         {
@@ -499,7 +499,7 @@ namespace BrawlLib.SSBB.ResourceNodes
     {
         internal SHP0Entry* Header => (SHP0Entry*) WorkingUncompressed.Address;
         public override ResourceType ResourceFileType => ResourceType.SHP0Entry;
-        public override Type[] AllowedChildTypes => new[] {typeof(SHP0VertexSetNode)};
+        public override Type[] AllowedChildTypes => new Type[] {typeof(SHP0VertexSetNode)};
 
         private List<short> _indices;
         public Bin32 _flags = 3;
@@ -805,7 +805,7 @@ namespace BrawlLib.SSBB.ResourceNodes
 
         #endregion
 
-        [Browsable(false)] public KeyframeArray[] KeyArrays => new[] {Keyframes};
+        [Browsable(false)] public KeyframeArray[] KeyArrays => new KeyframeArray[] {Keyframes};
     }
 
     public class SHP0Keyframe

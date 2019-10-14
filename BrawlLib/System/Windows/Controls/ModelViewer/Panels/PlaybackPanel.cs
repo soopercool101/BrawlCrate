@@ -57,7 +57,7 @@
             numTotalFrames.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numTotalFrames.Enabled = false;
             numTotalFrames.Location = new Drawing.Point(397, 5);
-            numTotalFrames.Maximum = new decimal(new[]
+            numTotalFrames.Maximum = new decimal(new int[]
             {
                 65536,
                 0,
@@ -72,14 +72,14 @@
             // numFPS
             // 
             numFPS.Location = new Drawing.Point(53, 4);
-            numFPS.Maximum = new decimal(new[]
+            numFPS.Maximum = new decimal(new int[]
             {
                 2000,
                 0,
                 0,
                 0
             });
-            numFPS.Minimum = new decimal(new[]
+            numFPS.Minimum = new decimal(new int[]
             {
                 1,
                 0,
@@ -89,7 +89,7 @@
             numFPS.Name = "numFPS";
             numFPS.Size = new Drawing.Size(39, 22);
             numFPS.TabIndex = 15;
-            numFPS.Value = new decimal(new[]
+            numFPS.Value = new decimal(new int[]
             {
                 60,
                 0,
@@ -121,7 +121,7 @@
             // 
             numFrameIndex.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             numFrameIndex.Location = new Drawing.Point(334, 5);
-            numFrameIndex.Maximum = new decimal(new[]
+            numFrameIndex.Maximum = new decimal(new int[]
             {
                 0,
                 0,

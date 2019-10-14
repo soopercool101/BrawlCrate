@@ -235,7 +235,7 @@ A7AC0004 2C1D7FFF
         public byte[] ExportGCT()
         {
             List<byte> l = new List<byte>();
-            foreach (byte[] b in new[] {DataBefore, ExportCode(), DataAfter})
+            foreach (byte[] b in new byte[][] {DataBefore, ExportCode(), DataAfter})
             {
                 l.AddRange(b);
             }

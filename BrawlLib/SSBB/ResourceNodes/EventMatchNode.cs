@@ -262,7 +262,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         public override void OnPopulate()
         {
             VoidPtr ptr = WorkingUncompressed.Address + sizeof(EventMatchFighterHeader);
-            foreach (string s in new[] {"Easy", "Normal", "Hard"})
+            foreach (string s in new string[] {"Easy", "Normal", "Hard"})
             {
                 DataSource source = new DataSource(ptr, sizeof(EventMatchDifficultyData));
                 EventMatchDifficultyNode node = new EventMatchDifficultyNode();

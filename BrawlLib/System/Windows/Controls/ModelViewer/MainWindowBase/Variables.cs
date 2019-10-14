@@ -186,7 +186,7 @@ namespace System.Windows.Forms
 
         #endregion
 
-        public static readonly Type[] AnimTypeList = new[]
+        public static readonly Type[] AnimTypeList = new Type[]
         {
             typeof(CHR0Node),
             typeof(SRT0Node),
