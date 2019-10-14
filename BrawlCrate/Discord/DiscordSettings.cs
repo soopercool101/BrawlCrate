@@ -309,7 +309,13 @@ namespace BrawlCrate.Discord
 
             _enabled = Properties.Settings.Default.DiscordRPCEnabled;
             _controllerSet = _enabled;
-            _modNameType = Properties.Settings.Default.DiscordRPCNameType;
+            if (Properties.Settings.Default.DiscordRPCNameType == null)
+            {
+                Properties.Settings.Default.DiscordRPCNameType = ModNameType.Disabled;
+                Properties.Settings.Default.Save();
+            }
+
+            _modNameType = Properties.Settings.Default.DiscordRPCNameType ?? ModNameType.Disabled;
             _userNamedMod = Properties.Settings.Default.DiscordRPCNameCustom;
             if (update)
             {
