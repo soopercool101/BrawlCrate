@@ -818,18 +818,18 @@ namespace Updater
                 }
 
                 // Delete the readme and license if they exist
-                if (File.Exists($"{apiPath}\\repoOwner repoName README.txt"))
+                if (File.Exists($"{apiPath}\\{repoOwner} {repoName} README.txt"))
                 {
-                    File.Delete($"{apiPath}\\repoOwner repoName README.txt");
+                    File.Delete($"{apiPath}\\{repoOwner} {repoName} README.txt");
                 }
 
                 if (File.Exists($"{apiPath}\\{repoOwner} {repoName} LICENSE.txt"))
                 {
-                    File.Delete($"{apiPath}\\repoOwner repoName LICENSE.txt");
+                    File.Delete($"{apiPath}\\{repoOwner} {repoName} LICENSE.txt");
                 }
 
                 // Delete the documentation file
-                File.Delete($"{apiPath}\\repoOwner repoName");
+                File.Delete($"{apiPath}\\{repoOwner} {repoName}");
             }
         }
 
