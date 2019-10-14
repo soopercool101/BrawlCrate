@@ -199,8 +199,7 @@ namespace BrawlCrate.Discord
                         DiscordController.presence.details = WorkString + " animations";
                     }
                     else if (rootName.StartsWith("home_", StringComparison.OrdinalIgnoreCase)
-                             && Program.RootPath.Substring(0, Program.RootPath.LastIndexOf('\\'))
-                                       .EndsWith("\\system\\homebutton"))
+                             && Program.RootPath.EndsWith("\\system\\homebutton"))
                     {
                         DiscordController.presence.details = WorkString + " the home menu";
                     }

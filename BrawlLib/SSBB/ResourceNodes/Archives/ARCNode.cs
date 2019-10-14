@@ -1022,7 +1022,7 @@ namespace BrawlLib.SSBB.ResourceNodes
         /// </returns>
         private ResourceNode UpdateRedirectTarget()
         {
-            if (RedirectIndex == -1 || Parent == null || Parent.Children.Count <= RedirectIndex)
+            if (RedirectIndex < 0 || Parent == null || Parent.Children.Count <= RedirectIndex)
             {
                 redirectTargetNode = null;
                 UpdateProperties();
