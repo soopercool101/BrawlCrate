@@ -804,10 +804,10 @@ namespace Updater
             string apiPath = $"{AppPath}\\BrawlAPI";
 
             // Only uninstall if there's documentation on what you should uninstall
-            if (File.Exists($"{apiPath}\\repoOwner repoName"))
+            if (File.Exists($"{apiPath}\\{repoOwner} {repoName}"))
             {
                 // Delete all the files associated with this script repo
-                string[] lines = File.ReadAllLines($"{apiPath}\\repoOwner repoName");
+                string[] lines = File.ReadAllLines($"{apiPath}\\{repoOwner} {repoName}");
                 for (int i = 3; i < lines.Length; i++)
                 {
                     string fileName = Path.GetFullPath(Path.Combine(apiPath, lines[i]));
@@ -902,7 +902,7 @@ namespace Updater
                 }
 
                 // Case 1: Cross-platform (Batch files won't work, so user will have to ), documentation update, or non-overwriting update
-                if (Process.GetProcessesByName("winlogon").Count() == 0 || documentation || !overwrite)
+                if (!Process.GetProcessesByName("winlogon").Any() || documentation || !overwrite)
                 {
                     try
                     {
