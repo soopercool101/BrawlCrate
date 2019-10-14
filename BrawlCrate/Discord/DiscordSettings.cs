@@ -57,7 +57,7 @@ namespace BrawlCrate.Discord
 #endif
             };
             ResourceNode root = MainForm.Instance?.RootNode?.Resource;
-            string rootName = root?.Name;
+            string rootName = root?.Name ?? "<null>";
             bool hasGct = (rootName?.EndsWith(".gct") ?? false) || (rootName?.EndsWith(".txt") ?? false);
             bool usingManager = false;
             GCTEditor gctEditor = null;
