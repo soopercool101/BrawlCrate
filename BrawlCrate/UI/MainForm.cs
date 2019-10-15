@@ -112,8 +112,8 @@ namespace BrawlCrate
             {
                 BrawlAPI.Plugins.Clear();
                 BrawlAPI.ResourceParsers.Clear();
-                string plugins = $"{Program.AppPath}/BrawlAPI/Plugins";
-                string loaders = $"{Program.AppPath}/BrawlAPI/Loaders";
+                string plugins = $"{Program.AppPath}\\BrawlAPI\\Plugins";
+                string loaders = $"{Program.AppPath}\\BrawlAPI\\Loaders";
 
                 pluginToolStripMenuItem.DropDown.Items.Clear();
                 if (Directory.Exists(plugins))
@@ -1339,7 +1339,7 @@ namespace BrawlCrate
         {
             BrawlAPI.Plugins.Clear();
             pluginToolStripMenuItem.DropDown.Items.Clear();
-            AddPlugins(pluginToolStripMenuItem, $"{Application.StartupPath}/Plugins");
+            AddPlugins(pluginToolStripMenuItem, $"{Program.AppPath}\\BrawlAPI\\Plugins");
         }
 
         private void AddPlugins(ToolStripMenuItem menu, string path)
